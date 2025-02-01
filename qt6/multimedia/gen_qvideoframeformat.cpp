@@ -27,130 +27,130 @@ QVideoFrameFormat* QVideoFrameFormat_new3(QVideoFrameFormat* format) {
 	return new QVideoFrameFormat(*format);
 }
 
-void QVideoFrameFormat_Swap(QVideoFrameFormat* self, QVideoFrameFormat* other) {
+void QVideoFrameFormat_swap(QVideoFrameFormat* self, QVideoFrameFormat* other) {
 	self->swap(*other);
 }
 
-void QVideoFrameFormat_Detach(QVideoFrameFormat* self) {
+void QVideoFrameFormat_detach(QVideoFrameFormat* self) {
 	self->detach();
 }
 
-void QVideoFrameFormat_OperatorAssign(QVideoFrameFormat* self, QVideoFrameFormat* format) {
+void QVideoFrameFormat_operatorAssign(QVideoFrameFormat* self, QVideoFrameFormat* format) {
 	self->operator=(*format);
 }
 
-bool QVideoFrameFormat_OperatorEqual(const QVideoFrameFormat* self, QVideoFrameFormat* format) {
+bool QVideoFrameFormat_operatorEqual(const QVideoFrameFormat* self, QVideoFrameFormat* format) {
 	return (*self == *format);
 }
 
-bool QVideoFrameFormat_OperatorNotEqual(const QVideoFrameFormat* self, QVideoFrameFormat* format) {
+bool QVideoFrameFormat_operatorNotEqual(const QVideoFrameFormat* self, QVideoFrameFormat* format) {
 	return (*self != *format);
 }
 
-bool QVideoFrameFormat_IsValid(const QVideoFrameFormat* self) {
+bool QVideoFrameFormat_isValid(const QVideoFrameFormat* self) {
 	return self->isValid();
 }
 
-int QVideoFrameFormat_PixelFormat(const QVideoFrameFormat* self) {
+int QVideoFrameFormat_pixelFormat(const QVideoFrameFormat* self) {
 	QVideoFrameFormat::PixelFormat _ret = self->pixelFormat();
 	return static_cast<int>(_ret);
 }
 
-QSize* QVideoFrameFormat_FrameSize(const QVideoFrameFormat* self) {
+QSize* QVideoFrameFormat_frameSize(const QVideoFrameFormat* self) {
 	return new QSize(self->frameSize());
 }
 
-void QVideoFrameFormat_SetFrameSize(QVideoFrameFormat* self, QSize* size) {
+void QVideoFrameFormat_setFrameSize(QVideoFrameFormat* self, QSize* size) {
 	self->setFrameSize(*size);
 }
 
-void QVideoFrameFormat_SetFrameSize2(QVideoFrameFormat* self, int width, int height) {
+void QVideoFrameFormat_setFrameSize2(QVideoFrameFormat* self, int width, int height) {
 	self->setFrameSize(static_cast<int>(width), static_cast<int>(height));
 }
 
-int QVideoFrameFormat_FrameWidth(const QVideoFrameFormat* self) {
+int QVideoFrameFormat_frameWidth(const QVideoFrameFormat* self) {
 	return self->frameWidth();
 }
 
-int QVideoFrameFormat_FrameHeight(const QVideoFrameFormat* self) {
+int QVideoFrameFormat_frameHeight(const QVideoFrameFormat* self) {
 	return self->frameHeight();
 }
 
-int QVideoFrameFormat_PlaneCount(const QVideoFrameFormat* self) {
+int QVideoFrameFormat_planeCount(const QVideoFrameFormat* self) {
 	return self->planeCount();
 }
 
-QRect* QVideoFrameFormat_Viewport(const QVideoFrameFormat* self) {
+QRect* QVideoFrameFormat_viewport(const QVideoFrameFormat* self) {
 	return new QRect(self->viewport());
 }
 
-void QVideoFrameFormat_SetViewport(QVideoFrameFormat* self, QRect* viewport) {
+void QVideoFrameFormat_setViewport(QVideoFrameFormat* self, QRect* viewport) {
 	self->setViewport(*viewport);
 }
 
-int QVideoFrameFormat_ScanLineDirection(const QVideoFrameFormat* self) {
+int QVideoFrameFormat_scanLineDirection(const QVideoFrameFormat* self) {
 	QVideoFrameFormat::Direction _ret = self->scanLineDirection();
 	return static_cast<int>(_ret);
 }
 
-void QVideoFrameFormat_SetScanLineDirection(QVideoFrameFormat* self, int direction) {
+void QVideoFrameFormat_setScanLineDirection(QVideoFrameFormat* self, int direction) {
 	self->setScanLineDirection(static_cast<QVideoFrameFormat::Direction>(direction));
 }
 
-double QVideoFrameFormat_FrameRate(const QVideoFrameFormat* self) {
+double QVideoFrameFormat_frameRate(const QVideoFrameFormat* self) {
 	qreal _ret = self->frameRate();
 	return static_cast<double>(_ret);
 }
 
-void QVideoFrameFormat_SetFrameRate(QVideoFrameFormat* self, double rate) {
+void QVideoFrameFormat_setFrameRate(QVideoFrameFormat* self, double rate) {
 	self->setFrameRate(static_cast<qreal>(rate));
 }
 
-int QVideoFrameFormat_YCbCrColorSpace(const QVideoFrameFormat* self) {
+int QVideoFrameFormat_yCbCrColorSpace(const QVideoFrameFormat* self) {
 	QVideoFrameFormat::YCbCrColorSpace _ret = self->yCbCrColorSpace();
 	return static_cast<int>(_ret);
 }
 
-void QVideoFrameFormat_SetYCbCrColorSpace(QVideoFrameFormat* self, int colorSpace) {
+void QVideoFrameFormat_setYCbCrColorSpace(QVideoFrameFormat* self, int colorSpace) {
 	self->setYCbCrColorSpace(static_cast<QVideoFrameFormat::YCbCrColorSpace>(colorSpace));
 }
 
-int QVideoFrameFormat_ColorSpace(const QVideoFrameFormat* self) {
+int QVideoFrameFormat_colorSpace(const QVideoFrameFormat* self) {
 	QVideoFrameFormat::ColorSpace _ret = self->colorSpace();
 	return static_cast<int>(_ret);
 }
 
-void QVideoFrameFormat_SetColorSpace(QVideoFrameFormat* self, int colorSpace) {
+void QVideoFrameFormat_setColorSpace(QVideoFrameFormat* self, int colorSpace) {
 	self->setColorSpace(static_cast<QVideoFrameFormat::ColorSpace>(colorSpace));
 }
 
-int QVideoFrameFormat_ColorTransfer(const QVideoFrameFormat* self) {
+int QVideoFrameFormat_colorTransfer(const QVideoFrameFormat* self) {
 	QVideoFrameFormat::ColorTransfer _ret = self->colorTransfer();
 	return static_cast<int>(_ret);
 }
 
-void QVideoFrameFormat_SetColorTransfer(QVideoFrameFormat* self, int colorTransfer) {
+void QVideoFrameFormat_setColorTransfer(QVideoFrameFormat* self, int colorTransfer) {
 	self->setColorTransfer(static_cast<QVideoFrameFormat::ColorTransfer>(colorTransfer));
 }
 
-int QVideoFrameFormat_ColorRange(const QVideoFrameFormat* self) {
+int QVideoFrameFormat_colorRange(const QVideoFrameFormat* self) {
 	QVideoFrameFormat::ColorRange _ret = self->colorRange();
 	return static_cast<int>(_ret);
 }
 
-void QVideoFrameFormat_SetColorRange(QVideoFrameFormat* self, int rangeVal) {
-	self->setColorRange(static_cast<QVideoFrameFormat::ColorRange>(rangeVal));
+void QVideoFrameFormat_setColorRange(QVideoFrameFormat* self, int range) {
+	self->setColorRange(static_cast<QVideoFrameFormat::ColorRange>(range));
 }
 
-bool QVideoFrameFormat_IsMirrored(const QVideoFrameFormat* self) {
+bool QVideoFrameFormat_isMirrored(const QVideoFrameFormat* self) {
 	return self->isMirrored();
 }
 
-void QVideoFrameFormat_SetMirrored(QVideoFrameFormat* self, bool mirrored) {
+void QVideoFrameFormat_setMirrored(QVideoFrameFormat* self, bool mirrored) {
 	self->setMirrored(mirrored);
 }
 
-struct miqt_string QVideoFrameFormat_VertexShaderFileName(const QVideoFrameFormat* self) {
+struct miqt_string QVideoFrameFormat_vertexShaderFileName(const QVideoFrameFormat* self) {
 	QString _ret = self->vertexShaderFileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -161,7 +161,7 @@ struct miqt_string QVideoFrameFormat_VertexShaderFileName(const QVideoFrameForma
 	return _ms;
 }
 
-struct miqt_string QVideoFrameFormat_FragmentShaderFileName(const QVideoFrameFormat* self) {
+struct miqt_string QVideoFrameFormat_fragmentShaderFileName(const QVideoFrameFormat* self) {
 	QString _ret = self->fragmentShaderFileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -172,25 +172,25 @@ struct miqt_string QVideoFrameFormat_FragmentShaderFileName(const QVideoFrameFor
 	return _ms;
 }
 
-float QVideoFrameFormat_MaxLuminance(const QVideoFrameFormat* self) {
+float QVideoFrameFormat_maxLuminance(const QVideoFrameFormat* self) {
 	return self->maxLuminance();
 }
 
-void QVideoFrameFormat_SetMaxLuminance(QVideoFrameFormat* self, float lum) {
+void QVideoFrameFormat_setMaxLuminance(QVideoFrameFormat* self, float lum) {
 	self->setMaxLuminance(static_cast<float>(lum));
 }
 
-int QVideoFrameFormat_PixelFormatFromImageFormat(int format) {
+int QVideoFrameFormat_pixelFormatFromImageFormat(int format) {
 	QVideoFrameFormat::PixelFormat _ret = QVideoFrameFormat::pixelFormatFromImageFormat(static_cast<QImage::Format>(format));
 	return static_cast<int>(_ret);
 }
 
-int QVideoFrameFormat_ImageFormatFromPixelFormat(int format) {
+int QVideoFrameFormat_imageFormatFromPixelFormat(int format) {
 	QImage::Format _ret = QVideoFrameFormat::imageFormatFromPixelFormat(static_cast<QVideoFrameFormat::PixelFormat>(format));
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string QVideoFrameFormat_PixelFormatToString(int pixelFormat) {
+struct miqt_string QVideoFrameFormat_pixelFormatToString(int pixelFormat) {
 	QString _ret = QVideoFrameFormat::pixelFormatToString(static_cast<QVideoFrameFormat::PixelFormat>(pixelFormat));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -201,7 +201,7 @@ struct miqt_string QVideoFrameFormat_PixelFormatToString(int pixelFormat) {
 	return _ms;
 }
 
-void QVideoFrameFormat_Delete(QVideoFrameFormat* self) {
+void QVideoFrameFormat_delete(QVideoFrameFormat* self) {
 	delete self;
 }
 

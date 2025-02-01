@@ -97,71 +97,71 @@ func NewQNetworkDatagram5(data []byte, destinationAddress *QHostAddress, port ui
 }
 
 func (this *QNetworkDatagram) OperatorAssign(other *QNetworkDatagram) {
-	C.QNetworkDatagram_OperatorAssign(this.h, other.cPointer())
+	C.QNetworkDatagram_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QNetworkDatagram) Swap(other *QNetworkDatagram) {
-	C.QNetworkDatagram_Swap(this.h, other.cPointer())
+	C.QNetworkDatagram_swap(this.h, other.cPointer())
 }
 
 func (this *QNetworkDatagram) Clear() {
-	C.QNetworkDatagram_Clear(this.h)
+	C.QNetworkDatagram_clear(this.h)
 }
 
 func (this *QNetworkDatagram) IsValid() bool {
-	return (bool)(C.QNetworkDatagram_IsValid(this.h))
+	return (bool)(C.QNetworkDatagram_isValid(this.h))
 }
 
 func (this *QNetworkDatagram) IsNull() bool {
-	return (bool)(C.QNetworkDatagram_IsNull(this.h))
+	return (bool)(C.QNetworkDatagram_isNull(this.h))
 }
 
 func (this *QNetworkDatagram) InterfaceIndex() uint {
-	return (uint)(C.QNetworkDatagram_InterfaceIndex(this.h))
+	return (uint)(C.QNetworkDatagram_interfaceIndex(this.h))
 }
 
 func (this *QNetworkDatagram) SetInterfaceIndex(index uint) {
-	C.QNetworkDatagram_SetInterfaceIndex(this.h, (C.uint)(index))
+	C.QNetworkDatagram_setInterfaceIndex(this.h, (C.uint)(index))
 }
 
 func (this *QNetworkDatagram) SenderAddress() *QHostAddress {
-	_goptr := newQHostAddress(C.QNetworkDatagram_SenderAddress(this.h))
+	_goptr := newQHostAddress(C.QNetworkDatagram_senderAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkDatagram) DestinationAddress() *QHostAddress {
-	_goptr := newQHostAddress(C.QNetworkDatagram_DestinationAddress(this.h))
+	_goptr := newQHostAddress(C.QNetworkDatagram_destinationAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkDatagram) SenderPort() int {
-	return (int)(C.QNetworkDatagram_SenderPort(this.h))
+	return (int)(C.QNetworkDatagram_senderPort(this.h))
 }
 
 func (this *QNetworkDatagram) DestinationPort() int {
-	return (int)(C.QNetworkDatagram_DestinationPort(this.h))
+	return (int)(C.QNetworkDatagram_destinationPort(this.h))
 }
 
 func (this *QNetworkDatagram) SetSender(address *QHostAddress) {
-	C.QNetworkDatagram_SetSender(this.h, address.cPointer())
+	C.QNetworkDatagram_setSender(this.h, address.cPointer())
 }
 
 func (this *QNetworkDatagram) SetDestination(address *QHostAddress, port uint16) {
-	C.QNetworkDatagram_SetDestination(this.h, address.cPointer(), (C.uint16_t)(port))
+	C.QNetworkDatagram_setDestination(this.h, address.cPointer(), (C.uint16_t)(port))
 }
 
 func (this *QNetworkDatagram) HopLimit() int {
-	return (int)(C.QNetworkDatagram_HopLimit(this.h))
+	return (int)(C.QNetworkDatagram_hopLimit(this.h))
 }
 
 func (this *QNetworkDatagram) SetHopLimit(count int) {
-	C.QNetworkDatagram_SetHopLimit(this.h, (C.int)(count))
+	C.QNetworkDatagram_setHopLimit(this.h, (C.int)(count))
 }
 
 func (this *QNetworkDatagram) Data() []byte {
-	var _bytearray C.struct_miqt_string = C.QNetworkDatagram_Data(this.h)
+	var _bytearray C.struct_miqt_string = C.QNetworkDatagram_data(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -175,7 +175,7 @@ func (this *QNetworkDatagram) SetData(data []byte) {
 		data_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	data_alias.len = C.size_t(len(data))
-	C.QNetworkDatagram_SetData(this.h, data_alias)
+	C.QNetworkDatagram_setData(this.h, data_alias)
 }
 
 func (this *QNetworkDatagram) MakeReply(payload []byte) *QNetworkDatagram {
@@ -186,18 +186,18 @@ func (this *QNetworkDatagram) MakeReply(payload []byte) *QNetworkDatagram {
 		payload_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	payload_alias.len = C.size_t(len(payload))
-	_goptr := newQNetworkDatagram(C.QNetworkDatagram_MakeReply(this.h, payload_alias))
+	_goptr := newQNetworkDatagram(C.QNetworkDatagram_makeReply(this.h, payload_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkDatagram) SetSender2(address *QHostAddress, port uint16) {
-	C.QNetworkDatagram_SetSender2(this.h, address.cPointer(), (C.uint16_t)(port))
+	C.QNetworkDatagram_setSender2(this.h, address.cPointer(), (C.uint16_t)(port))
 }
 
 // Delete this object from C++ memory.
 func (this *QNetworkDatagram) Delete() {
-	C.QNetworkDatagram_Delete(this.h)
+	C.QNetworkDatagram_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

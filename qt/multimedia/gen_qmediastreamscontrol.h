@@ -29,27 +29,27 @@ typedef struct QVariant QVariant;
 #endif
 
 void QMediaStreamsControl_virtbase(QMediaStreamsControl* src, QMediaControl** outptr_QMediaControl);
-QMetaObject* QMediaStreamsControl_MetaObject(const QMediaStreamsControl* self);
-void* QMediaStreamsControl_Metacast(QMediaStreamsControl* self, const char* param1);
-struct miqt_string QMediaStreamsControl_Tr(const char* s);
-struct miqt_string QMediaStreamsControl_TrUtf8(const char* s);
-int QMediaStreamsControl_StreamCount(QMediaStreamsControl* self);
-int QMediaStreamsControl_StreamType(QMediaStreamsControl* self, int streamNumber);
-QVariant* QMediaStreamsControl_MetaData(QMediaStreamsControl* self, int streamNumber, struct miqt_string key);
-bool QMediaStreamsControl_IsActive(QMediaStreamsControl* self, int streamNumber);
-void QMediaStreamsControl_SetActive(QMediaStreamsControl* self, int streamNumber, bool state);
-void QMediaStreamsControl_StreamsChanged(QMediaStreamsControl* self);
-void QMediaStreamsControl_connect_StreamsChanged(QMediaStreamsControl* self, intptr_t slot);
-void QMediaStreamsControl_ActiveStreamsChanged(QMediaStreamsControl* self);
-void QMediaStreamsControl_connect_ActiveStreamsChanged(QMediaStreamsControl* self, intptr_t slot);
-struct miqt_string QMediaStreamsControl_Tr2(const char* s, const char* c);
-struct miqt_string QMediaStreamsControl_Tr3(const char* s, const char* c, int n);
-struct miqt_string QMediaStreamsControl_TrUtf82(const char* s, const char* c);
-struct miqt_string QMediaStreamsControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaStreamsControl_Delete(QMediaStreamsControl* self);
+QMetaObject* QMediaStreamsControl_metaObject(const QMediaStreamsControl* self);
+void* QMediaStreamsControl_metacast(QMediaStreamsControl* self, const char* param1);
+struct miqt_string QMediaStreamsControl_tr(const char* s);
+struct miqt_string QMediaStreamsControl_trUtf8(const char* s);
+int QMediaStreamsControl_streamCount(QMediaStreamsControl* self);
+int QMediaStreamsControl_streamType(QMediaStreamsControl* self, int streamNumber);
+QVariant* QMediaStreamsControl_metaData(QMediaStreamsControl* self, int streamNumber, struct miqt_string key);
+bool QMediaStreamsControl_isActive(QMediaStreamsControl* self, int streamNumber);
+void QMediaStreamsControl_setActive(QMediaStreamsControl* self, int streamNumber, bool state);
+void QMediaStreamsControl_streamsChanged(QMediaStreamsControl* self);
+void QMediaStreamsControl_connect_streamsChanged(QMediaStreamsControl* self, intptr_t slot);
+void QMediaStreamsControl_activeStreamsChanged(QMediaStreamsControl* self);
+void QMediaStreamsControl_connect_activeStreamsChanged(QMediaStreamsControl* self, intptr_t slot);
+struct miqt_string QMediaStreamsControl_tr2(const char* s, const char* c);
+struct miqt_string QMediaStreamsControl_tr3(const char* s, const char* c, int n);
+struct miqt_string QMediaStreamsControl_trUtf82(const char* s, const char* c);
+struct miqt_string QMediaStreamsControl_trUtf83(const char* s, const char* c, int n);
+void QMediaStreamsControl_delete(QMediaStreamsControl* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

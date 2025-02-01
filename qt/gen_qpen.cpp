@@ -46,24 +46,24 @@ QPen* QPen_new8(QBrush* brush, double width, int s, int c, int j) {
 	return new QPen(*brush, static_cast<qreal>(width), static_cast<Qt::PenStyle>(s), static_cast<Qt::PenCapStyle>(c), static_cast<Qt::PenJoinStyle>(j));
 }
 
-void QPen_OperatorAssign(QPen* self, QPen* pen) {
+void QPen_operatorAssign(QPen* self, QPen* pen) {
 	self->operator=(*pen);
 }
 
-void QPen_Swap(QPen* self, QPen* other) {
+void QPen_swap(QPen* self, QPen* other) {
 	self->swap(*other);
 }
 
-int QPen_Style(const QPen* self) {
+int QPen_style(const QPen* self) {
 	Qt::PenStyle _ret = self->style();
 	return static_cast<int>(_ret);
 }
 
-void QPen_SetStyle(QPen* self, int style) {
+void QPen_setStyle(QPen* self, int style) {
 	self->setStyle(static_cast<Qt::PenStyle>(style));
 }
 
-struct miqt_array /* of double */  QPen_DashPattern(const QPen* self) {
+struct miqt_array /* of double */  QPen_dashPattern(const QPen* self) {
 	QVector<qreal> _ret = self->dashPattern();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));
@@ -76,7 +76,7 @@ struct miqt_array /* of double */  QPen_DashPattern(const QPen* self) {
 	return _out;
 }
 
-void QPen_SetDashPattern(QPen* self, struct miqt_array /* of double */  pattern) {
+void QPen_setDashPattern(QPen* self, struct miqt_array /* of double */  pattern) {
 	QVector<qreal> pattern_QList;
 	pattern_QList.reserve(pattern.len);
 	double* pattern_arr = static_cast<double*>(pattern.data);
@@ -86,92 +86,92 @@ void QPen_SetDashPattern(QPen* self, struct miqt_array /* of double */  pattern)
 	self->setDashPattern(pattern_QList);
 }
 
-double QPen_DashOffset(const QPen* self) {
+double QPen_dashOffset(const QPen* self) {
 	qreal _ret = self->dashOffset();
 	return static_cast<double>(_ret);
 }
 
-void QPen_SetDashOffset(QPen* self, double doffset) {
+void QPen_setDashOffset(QPen* self, double doffset) {
 	self->setDashOffset(static_cast<qreal>(doffset));
 }
 
-double QPen_MiterLimit(const QPen* self) {
+double QPen_miterLimit(const QPen* self) {
 	qreal _ret = self->miterLimit();
 	return static_cast<double>(_ret);
 }
 
-void QPen_SetMiterLimit(QPen* self, double limit) {
+void QPen_setMiterLimit(QPen* self, double limit) {
 	self->setMiterLimit(static_cast<qreal>(limit));
 }
 
-double QPen_WidthF(const QPen* self) {
+double QPen_widthF(const QPen* self) {
 	qreal _ret = self->widthF();
 	return static_cast<double>(_ret);
 }
 
-void QPen_SetWidthF(QPen* self, double width) {
+void QPen_setWidthF(QPen* self, double width) {
 	self->setWidthF(static_cast<qreal>(width));
 }
 
-int QPen_Width(const QPen* self) {
+int QPen_width(const QPen* self) {
 	return self->width();
 }
 
-void QPen_SetWidth(QPen* self, int width) {
+void QPen_setWidth(QPen* self, int width) {
 	self->setWidth(static_cast<int>(width));
 }
 
-QColor* QPen_Color(const QPen* self) {
+QColor* QPen_color(const QPen* self) {
 	return new QColor(self->color());
 }
 
-void QPen_SetColor(QPen* self, QColor* color) {
+void QPen_setColor(QPen* self, QColor* color) {
 	self->setColor(*color);
 }
 
-QBrush* QPen_Brush(const QPen* self) {
+QBrush* QPen_brush(const QPen* self) {
 	return new QBrush(self->brush());
 }
 
-void QPen_SetBrush(QPen* self, QBrush* brush) {
+void QPen_setBrush(QPen* self, QBrush* brush) {
 	self->setBrush(*brush);
 }
 
-bool QPen_IsSolid(const QPen* self) {
+bool QPen_isSolid(const QPen* self) {
 	return self->isSolid();
 }
 
-int QPen_CapStyle(const QPen* self) {
+int QPen_capStyle(const QPen* self) {
 	Qt::PenCapStyle _ret = self->capStyle();
 	return static_cast<int>(_ret);
 }
 
-void QPen_SetCapStyle(QPen* self, int pcs) {
+void QPen_setCapStyle(QPen* self, int pcs) {
 	self->setCapStyle(static_cast<Qt::PenCapStyle>(pcs));
 }
 
-int QPen_JoinStyle(const QPen* self) {
+int QPen_joinStyle(const QPen* self) {
 	Qt::PenJoinStyle _ret = self->joinStyle();
 	return static_cast<int>(_ret);
 }
 
-void QPen_SetJoinStyle(QPen* self, int pcs) {
+void QPen_setJoinStyle(QPen* self, int pcs) {
 	self->setJoinStyle(static_cast<Qt::PenJoinStyle>(pcs));
 }
 
-bool QPen_IsCosmetic(const QPen* self) {
+bool QPen_isCosmetic(const QPen* self) {
 	return self->isCosmetic();
 }
 
-void QPen_SetCosmetic(QPen* self, bool cosmetic) {
+void QPen_setCosmetic(QPen* self, bool cosmetic) {
 	self->setCosmetic(cosmetic);
 }
 
-bool QPen_OperatorEqual(const QPen* self, QPen* p) {
+bool QPen_operatorEqual(const QPen* self, QPen* p) {
 	return (*self == *p);
 }
 
-bool QPen_OperatorNotEqual(const QPen* self, QPen* p) {
+bool QPen_operatorNotEqual(const QPen* self, QPen* p) {
 	return (*self != *p);
 }
 
@@ -179,11 +179,11 @@ QVariant* QPen_ToQVariant(const QPen* self) {
 	return new QVariant(self->operator QVariant());
 }
 
-bool QPen_IsDetached(QPen* self) {
+bool QPen_isDetached(QPen* self) {
 	return self->isDetached();
 }
 
-void QPen_Delete(QPen* self) {
+void QPen_delete(QPen* self) {
 	delete self;
 }
 

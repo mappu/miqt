@@ -80,19 +80,19 @@ func UnsafeNewQCameraImageProcessing(h unsafe.Pointer) *QCameraImageProcessing {
 }
 
 func (this *QCameraImageProcessing) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraImageProcessing_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraImageProcessing_metaObject(this.h)))
 }
 
 func (this *QCameraImageProcessing) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QCameraImageProcessing_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QCameraImageProcessing_metacast(this.h, param1_Cstring))
 }
 
 func QCameraImageProcessing_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraImageProcessing_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraImageProcessing_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -101,86 +101,86 @@ func QCameraImageProcessing_Tr(s string) string {
 func QCameraImageProcessing_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraImageProcessing_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraImageProcessing_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCameraImageProcessing) IsAvailable() bool {
-	return (bool)(C.QCameraImageProcessing_IsAvailable(this.h))
+	return (bool)(C.QCameraImageProcessing_isAvailable(this.h))
 }
 
 func (this *QCameraImageProcessing) WhiteBalanceMode() QCameraImageProcessing__WhiteBalanceMode {
-	return (QCameraImageProcessing__WhiteBalanceMode)(C.QCameraImageProcessing_WhiteBalanceMode(this.h))
+	return (QCameraImageProcessing__WhiteBalanceMode)(C.QCameraImageProcessing_whiteBalanceMode(this.h))
 }
 
 func (this *QCameraImageProcessing) SetWhiteBalanceMode(mode QCameraImageProcessing__WhiteBalanceMode) {
-	C.QCameraImageProcessing_SetWhiteBalanceMode(this.h, (C.int)(mode))
+	C.QCameraImageProcessing_setWhiteBalanceMode(this.h, (C.int)(mode))
 }
 
 func (this *QCameraImageProcessing) IsWhiteBalanceModeSupported(mode QCameraImageProcessing__WhiteBalanceMode) bool {
-	return (bool)(C.QCameraImageProcessing_IsWhiteBalanceModeSupported(this.h, (C.int)(mode)))
+	return (bool)(C.QCameraImageProcessing_isWhiteBalanceModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCameraImageProcessing) ManualWhiteBalance() float64 {
-	return (float64)(C.QCameraImageProcessing_ManualWhiteBalance(this.h))
+	return (float64)(C.QCameraImageProcessing_manualWhiteBalance(this.h))
 }
 
 func (this *QCameraImageProcessing) SetManualWhiteBalance(colorTemperature float64) {
-	C.QCameraImageProcessing_SetManualWhiteBalance(this.h, (C.double)(colorTemperature))
+	C.QCameraImageProcessing_setManualWhiteBalance(this.h, (C.double)(colorTemperature))
 }
 
 func (this *QCameraImageProcessing) Brightness() float64 {
-	return (float64)(C.QCameraImageProcessing_Brightness(this.h))
+	return (float64)(C.QCameraImageProcessing_brightness(this.h))
 }
 
 func (this *QCameraImageProcessing) SetBrightness(value float64) {
-	C.QCameraImageProcessing_SetBrightness(this.h, (C.double)(value))
+	C.QCameraImageProcessing_setBrightness(this.h, (C.double)(value))
 }
 
 func (this *QCameraImageProcessing) Contrast() float64 {
-	return (float64)(C.QCameraImageProcessing_Contrast(this.h))
+	return (float64)(C.QCameraImageProcessing_contrast(this.h))
 }
 
 func (this *QCameraImageProcessing) SetContrast(value float64) {
-	C.QCameraImageProcessing_SetContrast(this.h, (C.double)(value))
+	C.QCameraImageProcessing_setContrast(this.h, (C.double)(value))
 }
 
 func (this *QCameraImageProcessing) Saturation() float64 {
-	return (float64)(C.QCameraImageProcessing_Saturation(this.h))
+	return (float64)(C.QCameraImageProcessing_saturation(this.h))
 }
 
 func (this *QCameraImageProcessing) SetSaturation(value float64) {
-	C.QCameraImageProcessing_SetSaturation(this.h, (C.double)(value))
+	C.QCameraImageProcessing_setSaturation(this.h, (C.double)(value))
 }
 
 func (this *QCameraImageProcessing) SharpeningLevel() float64 {
-	return (float64)(C.QCameraImageProcessing_SharpeningLevel(this.h))
+	return (float64)(C.QCameraImageProcessing_sharpeningLevel(this.h))
 }
 
 func (this *QCameraImageProcessing) SetSharpeningLevel(value float64) {
-	C.QCameraImageProcessing_SetSharpeningLevel(this.h, (C.double)(value))
+	C.QCameraImageProcessing_setSharpeningLevel(this.h, (C.double)(value))
 }
 
 func (this *QCameraImageProcessing) DenoisingLevel() float64 {
-	return (float64)(C.QCameraImageProcessing_DenoisingLevel(this.h))
+	return (float64)(C.QCameraImageProcessing_denoisingLevel(this.h))
 }
 
 func (this *QCameraImageProcessing) SetDenoisingLevel(value float64) {
-	C.QCameraImageProcessing_SetDenoisingLevel(this.h, (C.double)(value))
+	C.QCameraImageProcessing_setDenoisingLevel(this.h, (C.double)(value))
 }
 
 func (this *QCameraImageProcessing) ColorFilter() QCameraImageProcessing__ColorFilter {
-	return (QCameraImageProcessing__ColorFilter)(C.QCameraImageProcessing_ColorFilter(this.h))
+	return (QCameraImageProcessing__ColorFilter)(C.QCameraImageProcessing_colorFilter(this.h))
 }
 
 func (this *QCameraImageProcessing) SetColorFilter(filter QCameraImageProcessing__ColorFilter) {
-	C.QCameraImageProcessing_SetColorFilter(this.h, (C.int)(filter))
+	C.QCameraImageProcessing_setColorFilter(this.h, (C.int)(filter))
 }
 
 func (this *QCameraImageProcessing) IsColorFilterSupported(filter QCameraImageProcessing__ColorFilter) bool {
-	return (bool)(C.QCameraImageProcessing_IsColorFilterSupported(this.h, (C.int)(filter)))
+	return (bool)(C.QCameraImageProcessing_isColorFilterSupported(this.h, (C.int)(filter)))
 }
 
 func QCameraImageProcessing_Tr2(s string, c string) string {
@@ -188,7 +188,7 @@ func QCameraImageProcessing_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraImageProcessing_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraImageProcessing_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -199,7 +199,7 @@ func QCameraImageProcessing_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraImageProcessing_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraImageProcessing_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -210,7 +210,7 @@ func QCameraImageProcessing_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraImageProcessing_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraImageProcessing_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -221,7 +221,7 @@ func QCameraImageProcessing_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraImageProcessing_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraImageProcessing_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret

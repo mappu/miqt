@@ -1711,7 +1711,7 @@ func NewDisambiguated_t2(param1 *Disambiguated_t) *Disambiguated_t {
 
 // Delete this object from C++ memory.
 func (this *Disambiguated_t) Delete() {
-	C.Disambiguated_t_Delete(this.h)
+	C.Disambiguated_t_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1757,7 +1757,7 @@ func UnsafeNewQInternal(h unsafe.Pointer) *QInternal {
 
 // Delete this object from C++ memory.
 func (this *QInternal) Delete() {
-	C.QInternal_Delete(this.h)
+	C.QInternal_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1844,21 +1844,21 @@ func NewQKeyCombination7(modifiers KeyboardModifier, key Key) *QKeyCombination {
 }
 
 func (this *QKeyCombination) KeyboardModifiers() KeyboardModifier {
-	return (KeyboardModifier)(C.QKeyCombination_KeyboardModifiers(this.h))
+	return (KeyboardModifier)(C.QKeyCombination_keyboardModifiers(this.h))
 }
 
 func (this *QKeyCombination) Key() Key {
-	return (Key)(C.QKeyCombination_Key(this.h))
+	return (Key)(C.QKeyCombination_key(this.h))
 }
 
 func QKeyCombination_FromCombined(combined int) *QKeyCombination {
-	_goptr := newQKeyCombination(C.QKeyCombination_FromCombined((C.int)(combined)))
+	_goptr := newQKeyCombination(C.QKeyCombination_fromCombined((C.int)(combined)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QKeyCombination) ToCombined() int {
-	return (int)(C.QKeyCombination_ToCombined(this.h))
+	return (int)(C.QKeyCombination_toCombined(this.h))
 }
 
 func (this *QKeyCombination) ToInt() int {
@@ -1867,7 +1867,7 @@ func (this *QKeyCombination) ToInt() int {
 
 // Delete this object from C++ memory.
 func (this *QKeyCombination) Delete() {
-	C.QKeyCombination_Delete(this.h)
+	C.QKeyCombination_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

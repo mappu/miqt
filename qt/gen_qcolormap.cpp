@@ -16,45 +16,45 @@ QColormap* QColormap_new(QColormap* colormap) {
 	return new QColormap(*colormap);
 }
 
-void QColormap_Initialize() {
+void QColormap_initialize() {
 	QColormap::initialize();
 }
 
-void QColormap_Cleanup() {
+void QColormap_cleanup() {
 	QColormap::cleanup();
 }
 
-QColormap* QColormap_Instance() {
+QColormap* QColormap_instance() {
 	return new QColormap(QColormap::instance());
 }
 
-void QColormap_OperatorAssign(QColormap* self, QColormap* colormap) {
+void QColormap_operatorAssign(QColormap* self, QColormap* colormap) {
 	self->operator=(*colormap);
 }
 
-int QColormap_Mode(const QColormap* self) {
+int QColormap_mode(const QColormap* self) {
 	QColormap::Mode _ret = self->mode();
 	return static_cast<int>(_ret);
 }
 
-int QColormap_Depth(const QColormap* self) {
+int QColormap_depth(const QColormap* self) {
 	return self->depth();
 }
 
-int QColormap_Size(const QColormap* self) {
+int QColormap_size(const QColormap* self) {
 	return self->size();
 }
 
-unsigned int QColormap_Pixel(const QColormap* self, QColor* color) {
+unsigned int QColormap_pixel(const QColormap* self, QColor* color) {
 	uint _ret = self->pixel(*color);
 	return static_cast<unsigned int>(_ret);
 }
 
-QColor* QColormap_ColorAt(const QColormap* self, unsigned int pixel) {
+QColor* QColormap_colorAt(const QColormap* self, unsigned int pixel) {
 	return new QColor(self->colorAt(static_cast<uint>(pixel)));
 }
 
-struct miqt_array /* of QColor* */  QColormap_Colormap(const QColormap* self) {
+struct miqt_array /* of QColor* */  QColormap_colormap(const QColormap* self) {
 	const QVector<QColor> _ret = self->colormap();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QColor** _arr = static_cast<QColor**>(malloc(sizeof(QColor*) * _ret.length()));
@@ -67,11 +67,11 @@ struct miqt_array /* of QColor* */  QColormap_Colormap(const QColormap* self) {
 	return _out;
 }
 
-QColormap* QColormap_Instance1(int screen) {
+QColormap* QColormap_instance1(int screen) {
 	return new QColormap(QColormap::instance(static_cast<int>(screen)));
 }
 
-void QColormap_Delete(QColormap* self) {
+void QColormap_delete(QColormap* self) {
 	delete self;
 }
 

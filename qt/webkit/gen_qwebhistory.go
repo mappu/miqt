@@ -53,56 +53,56 @@ func NewQWebHistoryItem(other *QWebHistoryItem) *QWebHistoryItem {
 }
 
 func (this *QWebHistoryItem) OperatorAssign(other *QWebHistoryItem) {
-	C.QWebHistoryItem_OperatorAssign(this.h, other.cPointer())
+	C.QWebHistoryItem_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QWebHistoryItem) OriginalUrl() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebHistoryItem_OriginalUrl(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebHistoryItem_originalUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHistoryItem) Url() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebHistoryItem_Url(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebHistoryItem_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHistoryItem) Title() string {
-	var _ms C.struct_miqt_string = C.QWebHistoryItem_Title(this.h)
+	var _ms C.struct_miqt_string = C.QWebHistoryItem_title(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebHistoryItem) LastVisited() *qt.QDateTime {
-	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QWebHistoryItem_LastVisited(this.h)))
+	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QWebHistoryItem_lastVisited(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHistoryItem) Icon() *qt.QIcon {
-	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(C.QWebHistoryItem_Icon(this.h)))
+	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(C.QWebHistoryItem_icon(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHistoryItem) UserData() *qt.QVariant {
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QWebHistoryItem_UserData(this.h)))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QWebHistoryItem_userData(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHistoryItem) SetUserData(userData *qt.QVariant) {
-	C.QWebHistoryItem_SetUserData(this.h, (*C.QVariant)(userData.UnsafePointer()))
+	C.QWebHistoryItem_setUserData(this.h, (*C.QVariant)(userData.UnsafePointer()))
 }
 
 func (this *QWebHistoryItem) IsValid() bool {
-	return (bool)(C.QWebHistoryItem_IsValid(this.h))
+	return (bool)(C.QWebHistoryItem_isValid(this.h))
 }
 
 func (this *QWebHistoryItem) ToMap() map[string]qt.QVariant {
-	var _mm C.struct_miqt_map = C.QWebHistoryItem_ToMap(this.h)
+	var _mm C.struct_miqt_map = C.QWebHistoryItem_toMap(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
 	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
@@ -140,12 +140,12 @@ func (this *QWebHistoryItem) LoadFromMap(mapVal map[string]qt.QVariant) {
 		keys:   unsafe.Pointer(mapVal_Keys_CArray),
 		values: unsafe.Pointer(mapVal_Values_CArray),
 	}
-	C.QWebHistoryItem_LoadFromMap(this.h, mapVal_mm)
+	C.QWebHistoryItem_loadFromMap(this.h, mapVal_mm)
 }
 
 // Delete this object from C++ memory.
 func (this *QWebHistoryItem) Delete() {
-	C.QWebHistoryItem_Delete(this.h)
+	C.QWebHistoryItem_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -190,11 +190,11 @@ func UnsafeNewQWebHistory(h unsafe.Pointer) *QWebHistory {
 }
 
 func (this *QWebHistory) Clear() {
-	C.QWebHistory_Clear(this.h)
+	C.QWebHistory_clear(this.h)
 }
 
 func (this *QWebHistory) Items() []QWebHistoryItem {
-	var _ma C.struct_miqt_array = C.QWebHistory_Items(this.h)
+	var _ma C.struct_miqt_array = C.QWebHistory_items(this.h)
 	_ret := make([]QWebHistoryItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebHistoryItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -206,7 +206,7 @@ func (this *QWebHistory) Items() []QWebHistoryItem {
 }
 
 func (this *QWebHistory) BackItems(maxItems int) []QWebHistoryItem {
-	var _ma C.struct_miqt_array = C.QWebHistory_BackItems(this.h, (C.int)(maxItems))
+	var _ma C.struct_miqt_array = C.QWebHistory_backItems(this.h, (C.int)(maxItems))
 	_ret := make([]QWebHistoryItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebHistoryItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -218,7 +218,7 @@ func (this *QWebHistory) BackItems(maxItems int) []QWebHistoryItem {
 }
 
 func (this *QWebHistory) ForwardItems(maxItems int) []QWebHistoryItem {
-	var _ma C.struct_miqt_array = C.QWebHistory_ForwardItems(this.h, (C.int)(maxItems))
+	var _ma C.struct_miqt_array = C.QWebHistory_forwardItems(this.h, (C.int)(maxItems))
 	_ret := make([]QWebHistoryItem, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebHistoryItem)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -230,67 +230,67 @@ func (this *QWebHistory) ForwardItems(maxItems int) []QWebHistoryItem {
 }
 
 func (this *QWebHistory) CanGoBack() bool {
-	return (bool)(C.QWebHistory_CanGoBack(this.h))
+	return (bool)(C.QWebHistory_canGoBack(this.h))
 }
 
 func (this *QWebHistory) CanGoForward() bool {
-	return (bool)(C.QWebHistory_CanGoForward(this.h))
+	return (bool)(C.QWebHistory_canGoForward(this.h))
 }
 
 func (this *QWebHistory) Back() {
-	C.QWebHistory_Back(this.h)
+	C.QWebHistory_back(this.h)
 }
 
 func (this *QWebHistory) Forward() {
-	C.QWebHistory_Forward(this.h)
+	C.QWebHistory_forward(this.h)
 }
 
 func (this *QWebHistory) GoToItem(item *QWebHistoryItem) {
-	C.QWebHistory_GoToItem(this.h, item.cPointer())
+	C.QWebHistory_goToItem(this.h, item.cPointer())
 }
 
 func (this *QWebHistory) BackItem() *QWebHistoryItem {
-	_goptr := newQWebHistoryItem(C.QWebHistory_BackItem(this.h))
+	_goptr := newQWebHistoryItem(C.QWebHistory_backItem(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHistory) CurrentItem() *QWebHistoryItem {
-	_goptr := newQWebHistoryItem(C.QWebHistory_CurrentItem(this.h))
+	_goptr := newQWebHistoryItem(C.QWebHistory_currentItem(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHistory) ForwardItem() *QWebHistoryItem {
-	_goptr := newQWebHistoryItem(C.QWebHistory_ForwardItem(this.h))
+	_goptr := newQWebHistoryItem(C.QWebHistory_forwardItem(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHistory) ItemAt(i int) *QWebHistoryItem {
-	_goptr := newQWebHistoryItem(C.QWebHistory_ItemAt(this.h, (C.int)(i)))
+	_goptr := newQWebHistoryItem(C.QWebHistory_itemAt(this.h, (C.int)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebHistory) CurrentItemIndex() int {
-	return (int)(C.QWebHistory_CurrentItemIndex(this.h))
+	return (int)(C.QWebHistory_currentItemIndex(this.h))
 }
 
 func (this *QWebHistory) Count() int {
-	return (int)(C.QWebHistory_Count(this.h))
+	return (int)(C.QWebHistory_count(this.h))
 }
 
 func (this *QWebHistory) MaximumItemCount() int {
-	return (int)(C.QWebHistory_MaximumItemCount(this.h))
+	return (int)(C.QWebHistory_maximumItemCount(this.h))
 }
 
 func (this *QWebHistory) SetMaximumItemCount(count int) {
-	C.QWebHistory_SetMaximumItemCount(this.h, (C.int)(count))
+	C.QWebHistory_setMaximumItemCount(this.h, (C.int)(count))
 }
 
 func (this *QWebHistory) ToMap() map[string]qt.QVariant {
-	var _mm C.struct_miqt_map = C.QWebHistory_ToMap(this.h)
+	var _mm C.struct_miqt_map = C.QWebHistory_toMap(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
 	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
@@ -328,5 +328,5 @@ func (this *QWebHistory) LoadFromMap(mapVal map[string]qt.QVariant) {
 		keys:   unsafe.Pointer(mapVal_Keys_CArray),
 		values: unsafe.Pointer(mapVal_Values_CArray),
 	}
-	C.QWebHistory_LoadFromMap(this.h, mapVal_mm)
+	C.QWebHistory_loadFromMap(this.h, mapVal_mm)
 }

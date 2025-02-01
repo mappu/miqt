@@ -37,31 +37,31 @@ QRegExp* QRegExp_new5(struct miqt_string pattern, int cs, int syntax) {
 	return new QRegExp(pattern_QString, static_cast<Qt::CaseSensitivity>(cs), static_cast<QRegExp::PatternSyntax>(syntax));
 }
 
-void QRegExp_OperatorAssign(QRegExp* self, QRegExp* rx) {
+void QRegExp_operatorAssign(QRegExp* self, QRegExp* rx) {
 	self->operator=(*rx);
 }
 
-void QRegExp_Swap(QRegExp* self, QRegExp* other) {
+void QRegExp_swap(QRegExp* self, QRegExp* other) {
 	self->swap(*other);
 }
 
-bool QRegExp_OperatorEqual(const QRegExp* self, QRegExp* rx) {
+bool QRegExp_operatorEqual(const QRegExp* self, QRegExp* rx) {
 	return (*self == *rx);
 }
 
-bool QRegExp_OperatorNotEqual(const QRegExp* self, QRegExp* rx) {
+bool QRegExp_operatorNotEqual(const QRegExp* self, QRegExp* rx) {
 	return (*self != *rx);
 }
 
-bool QRegExp_IsEmpty(const QRegExp* self) {
+bool QRegExp_isEmpty(const QRegExp* self) {
 	return self->isEmpty();
 }
 
-bool QRegExp_IsValid(const QRegExp* self) {
+bool QRegExp_isValid(const QRegExp* self) {
 	return self->isValid();
 }
 
-struct miqt_string QRegExp_Pattern(const QRegExp* self) {
+struct miqt_string QRegExp_pattern(const QRegExp* self) {
 	QString _ret = self->pattern();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -72,61 +72,61 @@ struct miqt_string QRegExp_Pattern(const QRegExp* self) {
 	return _ms;
 }
 
-void QRegExp_SetPattern(QRegExp* self, struct miqt_string pattern) {
+void QRegExp_setPattern(QRegExp* self, struct miqt_string pattern) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
 	self->setPattern(pattern_QString);
 }
 
-int QRegExp_CaseSensitivity(const QRegExp* self) {
+int QRegExp_caseSensitivity(const QRegExp* self) {
 	Qt::CaseSensitivity _ret = self->caseSensitivity();
 	return static_cast<int>(_ret);
 }
 
-void QRegExp_SetCaseSensitivity(QRegExp* self, int cs) {
+void QRegExp_setCaseSensitivity(QRegExp* self, int cs) {
 	self->setCaseSensitivity(static_cast<Qt::CaseSensitivity>(cs));
 }
 
-int QRegExp_PatternSyntax(const QRegExp* self) {
+int QRegExp_patternSyntax(const QRegExp* self) {
 	QRegExp::PatternSyntax _ret = self->patternSyntax();
 	return static_cast<int>(_ret);
 }
 
-void QRegExp_SetPatternSyntax(QRegExp* self, int syntax) {
+void QRegExp_setPatternSyntax(QRegExp* self, int syntax) {
 	self->setPatternSyntax(static_cast<QRegExp::PatternSyntax>(syntax));
 }
 
-bool QRegExp_IsMinimal(const QRegExp* self) {
+bool QRegExp_isMinimal(const QRegExp* self) {
 	return self->isMinimal();
 }
 
-void QRegExp_SetMinimal(QRegExp* self, bool minimal) {
+void QRegExp_setMinimal(QRegExp* self, bool minimal) {
 	self->setMinimal(minimal);
 }
 
-bool QRegExp_ExactMatch(const QRegExp* self, struct miqt_string str) {
+bool QRegExp_exactMatch(const QRegExp* self, struct miqt_string str) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
 	return self->exactMatch(str_QString);
 }
 
-int QRegExp_IndexIn(const QRegExp* self, struct miqt_string str) {
+int QRegExp_indexIn(const QRegExp* self, struct miqt_string str) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
 	return self->indexIn(str_QString);
 }
 
-int QRegExp_LastIndexIn(const QRegExp* self, struct miqt_string str) {
+int QRegExp_lastIndexIn(const QRegExp* self, struct miqt_string str) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
 	return self->lastIndexIn(str_QString);
 }
 
-int QRegExp_MatchedLength(const QRegExp* self) {
+int QRegExp_matchedLength(const QRegExp* self) {
 	return self->matchedLength();
 }
 
-int QRegExp_CaptureCount(const QRegExp* self) {
+int QRegExp_captureCount(const QRegExp* self) {
 	return self->captureCount();
 }
 
-struct miqt_array /* of struct miqt_string */  QRegExp_CapturedTexts(const QRegExp* self) {
+struct miqt_array /* of struct miqt_string */  QRegExp_capturedTexts(const QRegExp* self) {
 	QStringList _ret = self->capturedTexts();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -146,7 +146,7 @@ struct miqt_array /* of struct miqt_string */  QRegExp_CapturedTexts(const QRegE
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_string */  QRegExp_CapturedTexts2(QRegExp* self) {
+struct miqt_array /* of struct miqt_string */  QRegExp_capturedTexts2(QRegExp* self) {
 	QStringList _ret = self->capturedTexts();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -166,7 +166,7 @@ struct miqt_array /* of struct miqt_string */  QRegExp_CapturedTexts2(QRegExp* s
 	return _out;
 }
 
-struct miqt_string QRegExp_Cap(const QRegExp* self) {
+struct miqt_string QRegExp_cap(const QRegExp* self) {
 	QString _ret = self->cap();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -177,7 +177,7 @@ struct miqt_string QRegExp_Cap(const QRegExp* self) {
 	return _ms;
 }
 
-struct miqt_string QRegExp_Cap2(QRegExp* self) {
+struct miqt_string QRegExp_cap2(QRegExp* self) {
 	QString _ret = self->cap();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -188,15 +188,15 @@ struct miqt_string QRegExp_Cap2(QRegExp* self) {
 	return _ms;
 }
 
-int QRegExp_Pos(const QRegExp* self) {
+int QRegExp_pos(const QRegExp* self) {
 	return self->pos();
 }
 
-int QRegExp_Pos2(QRegExp* self) {
+int QRegExp_pos2(QRegExp* self) {
 	return self->pos();
 }
 
-struct miqt_string QRegExp_ErrorString(const QRegExp* self) {
+struct miqt_string QRegExp_errorString(const QRegExp* self) {
 	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -207,7 +207,7 @@ struct miqt_string QRegExp_ErrorString(const QRegExp* self) {
 	return _ms;
 }
 
-struct miqt_string QRegExp_ErrorString2(QRegExp* self) {
+struct miqt_string QRegExp_errorString2(QRegExp* self) {
 	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -218,7 +218,7 @@ struct miqt_string QRegExp_ErrorString2(QRegExp* self) {
 	return _ms;
 }
 
-struct miqt_string QRegExp_Escape(struct miqt_string str) {
+struct miqt_string QRegExp_escape(struct miqt_string str) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
 	QString _ret = QRegExp::escape(str_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -230,27 +230,27 @@ struct miqt_string QRegExp_Escape(struct miqt_string str) {
 	return _ms;
 }
 
-int QRegExp_IndexIn2(const QRegExp* self, struct miqt_string str, int offset) {
+int QRegExp_indexIn2(const QRegExp* self, struct miqt_string str, int offset) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
 	return self->indexIn(str_QString, static_cast<int>(offset));
 }
 
-int QRegExp_IndexIn3(const QRegExp* self, struct miqt_string str, int offset, int caretMode) {
+int QRegExp_indexIn3(const QRegExp* self, struct miqt_string str, int offset, int caretMode) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
 	return self->indexIn(str_QString, static_cast<int>(offset), static_cast<QRegExp::CaretMode>(caretMode));
 }
 
-int QRegExp_LastIndexIn2(const QRegExp* self, struct miqt_string str, int offset) {
+int QRegExp_lastIndexIn2(const QRegExp* self, struct miqt_string str, int offset) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
 	return self->lastIndexIn(str_QString, static_cast<int>(offset));
 }
 
-int QRegExp_LastIndexIn3(const QRegExp* self, struct miqt_string str, int offset, int caretMode) {
+int QRegExp_lastIndexIn3(const QRegExp* self, struct miqt_string str, int offset, int caretMode) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
 	return self->lastIndexIn(str_QString, static_cast<int>(offset), static_cast<QRegExp::CaretMode>(caretMode));
 }
 
-struct miqt_string QRegExp_Cap1(const QRegExp* self, int nth) {
+struct miqt_string QRegExp_cap1(const QRegExp* self, int nth) {
 	QString _ret = self->cap(static_cast<int>(nth));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -261,7 +261,7 @@ struct miqt_string QRegExp_Cap1(const QRegExp* self, int nth) {
 	return _ms;
 }
 
-struct miqt_string QRegExp_Cap1WithNth(QRegExp* self, int nth) {
+struct miqt_string QRegExp_cap1WithNth(QRegExp* self, int nth) {
 	QString _ret = self->cap(static_cast<int>(nth));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -272,15 +272,15 @@ struct miqt_string QRegExp_Cap1WithNth(QRegExp* self, int nth) {
 	return _ms;
 }
 
-int QRegExp_Pos1(const QRegExp* self, int nth) {
+int QRegExp_pos1(const QRegExp* self, int nth) {
 	return self->pos(static_cast<int>(nth));
 }
 
-int QRegExp_Pos1WithNth(QRegExp* self, int nth) {
+int QRegExp_pos1WithNth(QRegExp* self, int nth) {
 	return self->pos(static_cast<int>(nth));
 }
 
-void QRegExp_Delete(QRegExp* self) {
+void QRegExp_delete(QRegExp* self) {
 	delete self;
 }
 

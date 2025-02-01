@@ -59,40 +59,40 @@ func NewQNetworkCacheMetaData2(other *QNetworkCacheMetaData) *QNetworkCacheMetaD
 }
 
 func (this *QNetworkCacheMetaData) OperatorAssign(other *QNetworkCacheMetaData) {
-	C.QNetworkCacheMetaData_OperatorAssign(this.h, other.cPointer())
+	C.QNetworkCacheMetaData_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QNetworkCacheMetaData) Swap(other *QNetworkCacheMetaData) {
-	C.QNetworkCacheMetaData_Swap(this.h, other.cPointer())
+	C.QNetworkCacheMetaData_swap(this.h, other.cPointer())
 }
 
 func (this *QNetworkCacheMetaData) OperatorEqual(other *QNetworkCacheMetaData) bool {
-	return (bool)(C.QNetworkCacheMetaData_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QNetworkCacheMetaData_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkCacheMetaData) OperatorNotEqual(other *QNetworkCacheMetaData) bool {
-	return (bool)(C.QNetworkCacheMetaData_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QNetworkCacheMetaData_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkCacheMetaData) IsValid() bool {
-	return (bool)(C.QNetworkCacheMetaData_IsValid(this.h))
+	return (bool)(C.QNetworkCacheMetaData_isValid(this.h))
 }
 
 func (this *QNetworkCacheMetaData) Url() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QNetworkCacheMetaData_Url(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QNetworkCacheMetaData_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkCacheMetaData) SetUrl(url *qt.QUrl) {
-	C.QNetworkCacheMetaData_SetUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
+	C.QNetworkCacheMetaData_setUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QNetworkCacheMetaData) RawHeaders() []struct {
 	First  []byte
 	Second []byte
 } {
-	var _ma C.struct_miqt_array = C.QNetworkCacheMetaData_RawHeaders(this.h)
+	var _ma C.struct_miqt_array = C.QNetworkCacheMetaData_rawHeaders(this.h)
 	_ret := make([]struct {
 		First  []byte
 		Second []byte
@@ -153,39 +153,39 @@ func (this *QNetworkCacheMetaData) SetRawHeaders(headers []struct {
 		headers_CArray[i] = headers_i_pair
 	}
 	headers_ma := C.struct_miqt_array{len: C.size_t(len(headers)), data: unsafe.Pointer(headers_CArray)}
-	C.QNetworkCacheMetaData_SetRawHeaders(this.h, headers_ma)
+	C.QNetworkCacheMetaData_setRawHeaders(this.h, headers_ma)
 }
 
 func (this *QNetworkCacheMetaData) LastModified() *qt.QDateTime {
-	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QNetworkCacheMetaData_LastModified(this.h)))
+	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QNetworkCacheMetaData_lastModified(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkCacheMetaData) SetLastModified(dateTime *qt.QDateTime) {
-	C.QNetworkCacheMetaData_SetLastModified(this.h, (*C.QDateTime)(dateTime.UnsafePointer()))
+	C.QNetworkCacheMetaData_setLastModified(this.h, (*C.QDateTime)(dateTime.UnsafePointer()))
 }
 
 func (this *QNetworkCacheMetaData) ExpirationDate() *qt.QDateTime {
-	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QNetworkCacheMetaData_ExpirationDate(this.h)))
+	_goptr := qt.UnsafeNewQDateTime(unsafe.Pointer(C.QNetworkCacheMetaData_expirationDate(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkCacheMetaData) SetExpirationDate(dateTime *qt.QDateTime) {
-	C.QNetworkCacheMetaData_SetExpirationDate(this.h, (*C.QDateTime)(dateTime.UnsafePointer()))
+	C.QNetworkCacheMetaData_setExpirationDate(this.h, (*C.QDateTime)(dateTime.UnsafePointer()))
 }
 
 func (this *QNetworkCacheMetaData) SaveToDisk() bool {
-	return (bool)(C.QNetworkCacheMetaData_SaveToDisk(this.h))
+	return (bool)(C.QNetworkCacheMetaData_saveToDisk(this.h))
 }
 
 func (this *QNetworkCacheMetaData) SetSaveToDisk(allow bool) {
-	C.QNetworkCacheMetaData_SetSaveToDisk(this.h, (C.bool)(allow))
+	C.QNetworkCacheMetaData_setSaveToDisk(this.h, (C.bool)(allow))
 }
 
 func (this *QNetworkCacheMetaData) Attributes() map[QNetworkRequest__Attribute]qt.QVariant {
-	var _mm C.struct_miqt_map = C.QNetworkCacheMetaData_Attributes(this.h)
+	var _mm C.struct_miqt_map = C.QNetworkCacheMetaData_attributes(this.h)
 	_ret := make(map[QNetworkRequest__Attribute]qt.QVariant, int(_mm.len))
 	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
@@ -217,12 +217,12 @@ func (this *QNetworkCacheMetaData) SetAttributes(attributes map[QNetworkRequest_
 		keys:   unsafe.Pointer(attributes_Keys_CArray),
 		values: unsafe.Pointer(attributes_Values_CArray),
 	}
-	C.QNetworkCacheMetaData_SetAttributes(this.h, attributes_mm)
+	C.QNetworkCacheMetaData_setAttributes(this.h, attributes_mm)
 }
 
 // Delete this object from C++ memory.
 func (this *QNetworkCacheMetaData) Delete() {
-	C.QNetworkCacheMetaData_Delete(this.h)
+	C.QNetworkCacheMetaData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -271,19 +271,19 @@ func UnsafeNewQAbstractNetworkCache(h unsafe.Pointer) *QAbstractNetworkCache {
 }
 
 func (this *QAbstractNetworkCache) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractNetworkCache_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractNetworkCache_metaObject(this.h)))
 }
 
 func (this *QAbstractNetworkCache) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAbstractNetworkCache_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAbstractNetworkCache_metacast(this.h, param1_Cstring))
 }
 
 func QAbstractNetworkCache_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractNetworkCache_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractNetworkCache_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -292,44 +292,44 @@ func QAbstractNetworkCache_Tr(s string) string {
 func QAbstractNetworkCache_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractNetworkCache_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractNetworkCache_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractNetworkCache) MetaData(url *qt.QUrl) *QNetworkCacheMetaData {
-	_goptr := newQNetworkCacheMetaData(C.QAbstractNetworkCache_MetaData(this.h, (*C.QUrl)(url.UnsafePointer())))
+	_goptr := newQNetworkCacheMetaData(C.QAbstractNetworkCache_metaData(this.h, (*C.QUrl)(url.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractNetworkCache) UpdateMetaData(metaData *QNetworkCacheMetaData) {
-	C.QAbstractNetworkCache_UpdateMetaData(this.h, metaData.cPointer())
+	C.QAbstractNetworkCache_updateMetaData(this.h, metaData.cPointer())
 }
 
 func (this *QAbstractNetworkCache) Data(url *qt.QUrl) *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_Data(this.h, (*C.QUrl)(url.UnsafePointer()))))
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_data(this.h, (*C.QUrl)(url.UnsafePointer()))))
 }
 
 func (this *QAbstractNetworkCache) Remove(url *qt.QUrl) bool {
-	return (bool)(C.QAbstractNetworkCache_Remove(this.h, (*C.QUrl)(url.UnsafePointer())))
+	return (bool)(C.QAbstractNetworkCache_remove(this.h, (*C.QUrl)(url.UnsafePointer())))
 }
 
 func (this *QAbstractNetworkCache) CacheSize() int64 {
-	return (int64)(C.QAbstractNetworkCache_CacheSize(this.h))
+	return (int64)(C.QAbstractNetworkCache_cacheSize(this.h))
 }
 
 func (this *QAbstractNetworkCache) Prepare(metaData *QNetworkCacheMetaData) *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_Prepare(this.h, metaData.cPointer())))
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractNetworkCache_prepare(this.h, metaData.cPointer())))
 }
 
 func (this *QAbstractNetworkCache) Insert(device *qt.QIODevice) {
-	C.QAbstractNetworkCache_Insert(this.h, (*C.QIODevice)(device.UnsafePointer()))
+	C.QAbstractNetworkCache_insert(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QAbstractNetworkCache) Clear() {
-	C.QAbstractNetworkCache_Clear(this.h)
+	C.QAbstractNetworkCache_clear(this.h)
 }
 
 func QAbstractNetworkCache_Tr2(s string, c string) string {
@@ -337,7 +337,7 @@ func QAbstractNetworkCache_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractNetworkCache_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractNetworkCache_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -348,7 +348,7 @@ func QAbstractNetworkCache_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractNetworkCache_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractNetworkCache_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -359,7 +359,7 @@ func QAbstractNetworkCache_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractNetworkCache_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractNetworkCache_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -370,7 +370,7 @@ func QAbstractNetworkCache_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractNetworkCache_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractNetworkCache_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -378,7 +378,7 @@ func QAbstractNetworkCache_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractNetworkCache) Delete() {
-	C.QAbstractNetworkCache_Delete(this.h)
+	C.QAbstractNetworkCache_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

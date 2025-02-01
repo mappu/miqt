@@ -14,7 +14,7 @@ QThreadStorageData* QThreadStorageData_new(QThreadStorageData* param1) {
 	return new QThreadStorageData(*param1);
 }
 
-void QThreadStorageData_Delete(QThreadStorageData* self) {
+void QThreadStorageData_delete(QThreadStorageData* self) {
 	delete self;
 }
 

@@ -103,61 +103,61 @@ func NewQNetworkConfiguration2(other *QNetworkConfiguration) *QNetworkConfigurat
 }
 
 func (this *QNetworkConfiguration) OperatorAssign(other *QNetworkConfiguration) {
-	C.QNetworkConfiguration_OperatorAssign(this.h, other.cPointer())
+	C.QNetworkConfiguration_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QNetworkConfiguration) Swap(other *QNetworkConfiguration) {
-	C.QNetworkConfiguration_Swap(this.h, other.cPointer())
+	C.QNetworkConfiguration_swap(this.h, other.cPointer())
 }
 
 func (this *QNetworkConfiguration) OperatorEqual(other *QNetworkConfiguration) bool {
-	return (bool)(C.QNetworkConfiguration_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QNetworkConfiguration_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkConfiguration) OperatorNotEqual(other *QNetworkConfiguration) bool {
-	return (bool)(C.QNetworkConfiguration_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QNetworkConfiguration_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkConfiguration) State() QNetworkConfiguration__StateFlag {
-	return (QNetworkConfiguration__StateFlag)(C.QNetworkConfiguration_State(this.h))
+	return (QNetworkConfiguration__StateFlag)(C.QNetworkConfiguration_state(this.h))
 }
 
 func (this *QNetworkConfiguration) Type() QNetworkConfiguration__Type {
-	return (QNetworkConfiguration__Type)(C.QNetworkConfiguration_Type(this.h))
+	return (QNetworkConfiguration__Type)(C.QNetworkConfiguration_type(this.h))
 }
 
 func (this *QNetworkConfiguration) Purpose() QNetworkConfiguration__Purpose {
-	return (QNetworkConfiguration__Purpose)(C.QNetworkConfiguration_Purpose(this.h))
+	return (QNetworkConfiguration__Purpose)(C.QNetworkConfiguration_purpose(this.h))
 }
 
 func (this *QNetworkConfiguration) BearerType() QNetworkConfiguration__BearerType {
-	return (QNetworkConfiguration__BearerType)(C.QNetworkConfiguration_BearerType(this.h))
+	return (QNetworkConfiguration__BearerType)(C.QNetworkConfiguration_bearerType(this.h))
 }
 
 func (this *QNetworkConfiguration) BearerTypeFamily() QNetworkConfiguration__BearerType {
-	return (QNetworkConfiguration__BearerType)(C.QNetworkConfiguration_BearerTypeFamily(this.h))
+	return (QNetworkConfiguration__BearerType)(C.QNetworkConfiguration_bearerTypeFamily(this.h))
 }
 
 func (this *QNetworkConfiguration) BearerTypeName() string {
-	var _ms C.struct_miqt_string = C.QNetworkConfiguration_BearerTypeName(this.h)
+	var _ms C.struct_miqt_string = C.QNetworkConfiguration_bearerTypeName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QNetworkConfiguration) Identifier() string {
-	var _ms C.struct_miqt_string = C.QNetworkConfiguration_Identifier(this.h)
+	var _ms C.struct_miqt_string = C.QNetworkConfiguration_identifier(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QNetworkConfiguration) IsRoamingAvailable() bool {
-	return (bool)(C.QNetworkConfiguration_IsRoamingAvailable(this.h))
+	return (bool)(C.QNetworkConfiguration_isRoamingAvailable(this.h))
 }
 
 func (this *QNetworkConfiguration) Children() []QNetworkConfiguration {
-	var _ma C.struct_miqt_array = C.QNetworkConfiguration_Children(this.h)
+	var _ma C.struct_miqt_array = C.QNetworkConfiguration_children(this.h)
 	_ret := make([]QNetworkConfiguration, int(_ma.len))
 	_outCast := (*[0xffff]*C.QNetworkConfiguration)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -169,27 +169,27 @@ func (this *QNetworkConfiguration) Children() []QNetworkConfiguration {
 }
 
 func (this *QNetworkConfiguration) Name() string {
-	var _ms C.struct_miqt_string = C.QNetworkConfiguration_Name(this.h)
+	var _ms C.struct_miqt_string = C.QNetworkConfiguration_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QNetworkConfiguration) IsValid() bool {
-	return (bool)(C.QNetworkConfiguration_IsValid(this.h))
+	return (bool)(C.QNetworkConfiguration_isValid(this.h))
 }
 
 func (this *QNetworkConfiguration) ConnectTimeout() int {
-	return (int)(C.QNetworkConfiguration_ConnectTimeout(this.h))
+	return (int)(C.QNetworkConfiguration_connectTimeout(this.h))
 }
 
 func (this *QNetworkConfiguration) SetConnectTimeout(timeout int) bool {
-	return (bool)(C.QNetworkConfiguration_SetConnectTimeout(this.h, (C.int)(timeout)))
+	return (bool)(C.QNetworkConfiguration_setConnectTimeout(this.h, (C.int)(timeout)))
 }
 
 // Delete this object from C++ memory.
 func (this *QNetworkConfiguration) Delete() {
-	C.QNetworkConfiguration_Delete(this.h)
+	C.QNetworkConfiguration_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

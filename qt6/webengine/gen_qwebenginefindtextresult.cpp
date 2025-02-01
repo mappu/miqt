@@ -18,19 +18,19 @@ QWebEngineFindTextResult* QWebEngineFindTextResult_new2(QWebEngineFindTextResult
 	return new QWebEngineFindTextResult(*other);
 }
 
-int QWebEngineFindTextResult_NumberOfMatches(const QWebEngineFindTextResult* self) {
+int QWebEngineFindTextResult_numberOfMatches(const QWebEngineFindTextResult* self) {
 	return self->numberOfMatches();
 }
 
-int QWebEngineFindTextResult_ActiveMatch(const QWebEngineFindTextResult* self) {
+int QWebEngineFindTextResult_activeMatch(const QWebEngineFindTextResult* self) {
 	return self->activeMatch();
 }
 
-void QWebEngineFindTextResult_OperatorAssign(QWebEngineFindTextResult* self, QWebEngineFindTextResult* other) {
+void QWebEngineFindTextResult_operatorAssign(QWebEngineFindTextResult* self, QWebEngineFindTextResult* other) {
 	self->operator=(*other);
 }
 
-void QWebEngineFindTextResult_Delete(QWebEngineFindTextResult* self) {
+void QWebEngineFindTextResult_delete(QWebEngineFindTextResult* self) {
 	delete self;
 }
 

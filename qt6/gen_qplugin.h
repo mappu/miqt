@@ -42,24 +42,24 @@ typedef struct QPluginMetaData__MagicHeader QPluginMetaData__MagicHeader;
 typedef struct QStaticPlugin QStaticPlugin;
 #endif
 
-unsigned char QPluginMetaData_ArchRequirements();
-void QPluginMetaData_Delete(QPluginMetaData* self);
+unsigned char QPluginMetaData_archRequirements();
+void QPluginMetaData_delete(QPluginMetaData* self);
 
-QJsonObject* QStaticPlugin_MetaData(const QStaticPlugin* self);
-void QStaticPlugin_Delete(QStaticPlugin* self);
+QJsonObject* QStaticPlugin_metaData(const QStaticPlugin* self);
+void QStaticPlugin_delete(QStaticPlugin* self);
 
 QPluginMetaData__Header* QPluginMetaData__Header_new(QPluginMetaData__Header* param1);
-void QPluginMetaData__Header_Delete(QPluginMetaData__Header* self);
+void QPluginMetaData__Header_delete(QPluginMetaData__Header* self);
 
 QPluginMetaData__MagicHeader* QPluginMetaData__MagicHeader_new();
-void QPluginMetaData__MagicHeader_Delete(QPluginMetaData__MagicHeader* self);
+void QPluginMetaData__MagicHeader_delete(QPluginMetaData__MagicHeader* self);
 
 QPluginMetaData__ElfNoteHeader* QPluginMetaData__ElfNoteHeader_new(unsigned int payloadSize);
 QPluginMetaData__ElfNoteHeader* QPluginMetaData__ElfNoteHeader_new2(QPluginMetaData__ElfNoteHeader* param1);
-void QPluginMetaData__ElfNoteHeader_Delete(QPluginMetaData__ElfNoteHeader* self);
+void QPluginMetaData__ElfNoteHeader_delete(QPluginMetaData__ElfNoteHeader* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

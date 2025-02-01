@@ -40,7 +40,7 @@ QUuid* QUuid_new6(QUuid* param1) {
 	return new QUuid(*param1);
 }
 
-struct miqt_string QUuid_ToString(const QUuid* self) {
+struct miqt_string QUuid_toString(const QUuid* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -51,7 +51,7 @@ struct miqt_string QUuid_ToString(const QUuid* self) {
 	return _ms;
 }
 
-struct miqt_string QUuid_ToStringWithMode(const QUuid* self, int mode) {
+struct miqt_string QUuid_toStringWithMode(const QUuid* self, int mode) {
 	QString _ret = self->toString(static_cast<QUuid::StringFormat>(mode));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -62,7 +62,7 @@ struct miqt_string QUuid_ToStringWithMode(const QUuid* self, int mode) {
 	return _ms;
 }
 
-struct miqt_string QUuid_ToByteArray(const QUuid* self) {
+struct miqt_string QUuid_toByteArray(const QUuid* self) {
 	QByteArray _qb = self->toByteArray();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -71,7 +71,7 @@ struct miqt_string QUuid_ToByteArray(const QUuid* self) {
 	return _ms;
 }
 
-struct miqt_string QUuid_ToByteArrayWithMode(const QUuid* self, int mode) {
+struct miqt_string QUuid_toByteArrayWithMode(const QUuid* self, int mode) {
 	QByteArray _qb = self->toByteArray(static_cast<QUuid::StringFormat>(mode));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -80,7 +80,7 @@ struct miqt_string QUuid_ToByteArrayWithMode(const QUuid* self, int mode) {
 	return _ms;
 }
 
-struct miqt_string QUuid_ToRfc4122(const QUuid* self) {
+struct miqt_string QUuid_toRfc4122(const QUuid* self) {
 	QByteArray _qb = self->toRfc4122();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -89,66 +89,66 @@ struct miqt_string QUuid_ToRfc4122(const QUuid* self) {
 	return _ms;
 }
 
-QUuid* QUuid_FromRfc4122(struct miqt_string param1) {
+QUuid* QUuid_fromRfc4122(struct miqt_string param1) {
 	QByteArray param1_QByteArray(param1.data, param1.len);
 	return new QUuid(QUuid::fromRfc4122(param1_QByteArray));
 }
 
-bool QUuid_IsNull(const QUuid* self) {
+bool QUuid_isNull(const QUuid* self) {
 	return self->isNull();
 }
 
-bool QUuid_OperatorEqual(const QUuid* self, QUuid* orig) {
+bool QUuid_operatorEqual(const QUuid* self, QUuid* orig) {
 	return (*self == *orig);
 }
 
-bool QUuid_OperatorNotEqual(const QUuid* self, QUuid* orig) {
+bool QUuid_operatorNotEqual(const QUuid* self, QUuid* orig) {
 	return (*self != *orig);
 }
 
-bool QUuid_OperatorLesser(const QUuid* self, QUuid* other) {
+bool QUuid_operatorLesser(const QUuid* self, QUuid* other) {
 	return (*self < *other);
 }
 
-bool QUuid_OperatorGreater(const QUuid* self, QUuid* other) {
+bool QUuid_operatorGreater(const QUuid* self, QUuid* other) {
 	return (*self > *other);
 }
 
-QUuid* QUuid_CreateUuid() {
+QUuid* QUuid_createUuid() {
 	return new QUuid(QUuid::createUuid());
 }
 
-QUuid* QUuid_CreateUuidV3(QUuid* ns, struct miqt_string baseData) {
+QUuid* QUuid_createUuidV3(QUuid* ns, struct miqt_string baseData) {
 	QByteArray baseData_QByteArray(baseData.data, baseData.len);
 	return new QUuid(QUuid::createUuidV3(*ns, baseData_QByteArray));
 }
 
-QUuid* QUuid_CreateUuidV5(QUuid* ns, struct miqt_string baseData) {
+QUuid* QUuid_createUuidV5(QUuid* ns, struct miqt_string baseData) {
 	QByteArray baseData_QByteArray(baseData.data, baseData.len);
 	return new QUuid(QUuid::createUuidV5(*ns, baseData_QByteArray));
 }
 
-QUuid* QUuid_CreateUuidV32(QUuid* ns, struct miqt_string baseData) {
+QUuid* QUuid_createUuidV32(QUuid* ns, struct miqt_string baseData) {
 	QString baseData_QString = QString::fromUtf8(baseData.data, baseData.len);
 	return new QUuid(QUuid::createUuidV3(*ns, baseData_QString));
 }
 
-QUuid* QUuid_CreateUuidV52(QUuid* ns, struct miqt_string baseData) {
+QUuid* QUuid_createUuidV52(QUuid* ns, struct miqt_string baseData) {
 	QString baseData_QString = QString::fromUtf8(baseData.data, baseData.len);
 	return new QUuid(QUuid::createUuidV5(*ns, baseData_QString));
 }
 
-int QUuid_Variant(const QUuid* self) {
+int QUuid_variant(const QUuid* self) {
 	QUuid::Variant _ret = self->variant();
 	return static_cast<int>(_ret);
 }
 
-int QUuid_Version(const QUuid* self) {
+int QUuid_version(const QUuid* self) {
 	QUuid::Version _ret = self->version();
 	return static_cast<int>(_ret);
 }
 
-void QUuid_Delete(QUuid* self) {
+void QUuid_delete(QUuid* self) {
 	delete self;
 }
 

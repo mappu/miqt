@@ -24,20 +24,20 @@ typedef struct QScriptString QScriptString;
 typedef struct QScriptValue QScriptValue;
 #endif
 
-QScriptValue* QScriptClassPropertyIterator_Object(const QScriptClassPropertyIterator* self);
-bool QScriptClassPropertyIterator_HasNext(const QScriptClassPropertyIterator* self);
-void QScriptClassPropertyIterator_Next(QScriptClassPropertyIterator* self);
-bool QScriptClassPropertyIterator_HasPrevious(const QScriptClassPropertyIterator* self);
-void QScriptClassPropertyIterator_Previous(QScriptClassPropertyIterator* self);
-void QScriptClassPropertyIterator_ToFront(QScriptClassPropertyIterator* self);
-void QScriptClassPropertyIterator_ToBack(QScriptClassPropertyIterator* self);
-QScriptString* QScriptClassPropertyIterator_Name(const QScriptClassPropertyIterator* self);
-unsigned int QScriptClassPropertyIterator_Id(const QScriptClassPropertyIterator* self);
-int QScriptClassPropertyIterator_Flags(const QScriptClassPropertyIterator* self);
-void QScriptClassPropertyIterator_Delete(QScriptClassPropertyIterator* self);
+QScriptValue* QScriptClassPropertyIterator_object(const QScriptClassPropertyIterator* self);
+bool QScriptClassPropertyIterator_hasNext(const QScriptClassPropertyIterator* self);
+void QScriptClassPropertyIterator_next(QScriptClassPropertyIterator* self);
+bool QScriptClassPropertyIterator_hasPrevious(const QScriptClassPropertyIterator* self);
+void QScriptClassPropertyIterator_previous(QScriptClassPropertyIterator* self);
+void QScriptClassPropertyIterator_toFront(QScriptClassPropertyIterator* self);
+void QScriptClassPropertyIterator_toBack(QScriptClassPropertyIterator* self);
+QScriptString* QScriptClassPropertyIterator_name(const QScriptClassPropertyIterator* self);
+unsigned int QScriptClassPropertyIterator_id(const QScriptClassPropertyIterator* self);
+int QScriptClassPropertyIterator_flags(const QScriptClassPropertyIterator* self);
+void QScriptClassPropertyIterator_delete(QScriptClassPropertyIterator* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

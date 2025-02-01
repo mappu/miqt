@@ -100,62 +100,62 @@ func NewQWebEngineContextMenuData2(other *QWebEngineContextMenuData) *QWebEngine
 }
 
 func (this *QWebEngineContextMenuData) OperatorAssign(other *QWebEngineContextMenuData) {
-	C.QWebEngineContextMenuData_OperatorAssign(this.h, other.cPointer())
+	C.QWebEngineContextMenuData_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QWebEngineContextMenuData) IsValid() bool {
-	return (bool)(C.QWebEngineContextMenuData_IsValid(this.h))
+	return (bool)(C.QWebEngineContextMenuData_isValid(this.h))
 }
 
 func (this *QWebEngineContextMenuData) Position() *qt.QPoint {
-	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QWebEngineContextMenuData_Position(this.h)))
+	_goptr := qt.UnsafeNewQPoint(unsafe.Pointer(C.QWebEngineContextMenuData_position(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineContextMenuData) SelectedText() string {
-	var _ms C.struct_miqt_string = C.QWebEngineContextMenuData_SelectedText(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineContextMenuData_selectedText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineContextMenuData) LinkText() string {
-	var _ms C.struct_miqt_string = C.QWebEngineContextMenuData_LinkText(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineContextMenuData_linkText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineContextMenuData) LinkUrl() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineContextMenuData_LinkUrl(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineContextMenuData_linkUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineContextMenuData) MediaUrl() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineContextMenuData_MediaUrl(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineContextMenuData_mediaUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineContextMenuData) MediaType() QWebEngineContextMenuData__MediaType {
-	return (QWebEngineContextMenuData__MediaType)(C.QWebEngineContextMenuData_MediaType(this.h))
+	return (QWebEngineContextMenuData__MediaType)(C.QWebEngineContextMenuData_mediaType(this.h))
 }
 
 func (this *QWebEngineContextMenuData) IsContentEditable() bool {
-	return (bool)(C.QWebEngineContextMenuData_IsContentEditable(this.h))
+	return (bool)(C.QWebEngineContextMenuData_isContentEditable(this.h))
 }
 
 func (this *QWebEngineContextMenuData) MisspelledWord() string {
-	var _ms C.struct_miqt_string = C.QWebEngineContextMenuData_MisspelledWord(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineContextMenuData_misspelledWord(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineContextMenuData) SpellCheckerSuggestions() []string {
-	var _ma C.struct_miqt_array = C.QWebEngineContextMenuData_SpellCheckerSuggestions(this.h)
+	var _ma C.struct_miqt_array = C.QWebEngineContextMenuData_spellCheckerSuggestions(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -168,16 +168,16 @@ func (this *QWebEngineContextMenuData) SpellCheckerSuggestions() []string {
 }
 
 func (this *QWebEngineContextMenuData) MediaFlags() QWebEngineContextMenuData__MediaFlag {
-	return (QWebEngineContextMenuData__MediaFlag)(C.QWebEngineContextMenuData_MediaFlags(this.h))
+	return (QWebEngineContextMenuData__MediaFlag)(C.QWebEngineContextMenuData_mediaFlags(this.h))
 }
 
 func (this *QWebEngineContextMenuData) EditFlags() QWebEngineContextMenuData__EditFlag {
-	return (QWebEngineContextMenuData__EditFlag)(C.QWebEngineContextMenuData_EditFlags(this.h))
+	return (QWebEngineContextMenuData__EditFlag)(C.QWebEngineContextMenuData_editFlags(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QWebEngineContextMenuData) Delete() {
-	C.QWebEngineContextMenuData_Delete(this.h)
+	C.QWebEngineContextMenuData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

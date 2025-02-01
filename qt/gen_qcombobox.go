@@ -84,19 +84,19 @@ func NewQComboBox2() *QComboBox {
 }
 
 func (this *QComboBox) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QComboBox_MetaObject(this.h))
+	return newQMetaObject(C.QComboBox_metaObject(this.h))
 }
 
 func (this *QComboBox) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QComboBox_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QComboBox_metacast(this.h, param1_Cstring))
 }
 
 func QComboBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QComboBox_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QComboBox_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -105,62 +105,62 @@ func QComboBox_Tr(s string) string {
 func QComboBox_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QComboBox_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QComboBox_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QComboBox) MaxVisibleItems() int {
-	return (int)(C.QComboBox_MaxVisibleItems(this.h))
+	return (int)(C.QComboBox_maxVisibleItems(this.h))
 }
 
 func (this *QComboBox) SetMaxVisibleItems(maxItems int) {
-	C.QComboBox_SetMaxVisibleItems(this.h, (C.int)(maxItems))
+	C.QComboBox_setMaxVisibleItems(this.h, (C.int)(maxItems))
 }
 
 func (this *QComboBox) Count() int {
-	return (int)(C.QComboBox_Count(this.h))
+	return (int)(C.QComboBox_count(this.h))
 }
 
 func (this *QComboBox) SetMaxCount(max int) {
-	C.QComboBox_SetMaxCount(this.h, (C.int)(max))
+	C.QComboBox_setMaxCount(this.h, (C.int)(max))
 }
 
 func (this *QComboBox) MaxCount() int {
-	return (int)(C.QComboBox_MaxCount(this.h))
+	return (int)(C.QComboBox_maxCount(this.h))
 }
 
 func (this *QComboBox) AutoCompletion() bool {
-	return (bool)(C.QComboBox_AutoCompletion(this.h))
+	return (bool)(C.QComboBox_autoCompletion(this.h))
 }
 
 func (this *QComboBox) SetAutoCompletion(enable bool) {
-	C.QComboBox_SetAutoCompletion(this.h, (C.bool)(enable))
+	C.QComboBox_setAutoCompletion(this.h, (C.bool)(enable))
 }
 
 func (this *QComboBox) AutoCompletionCaseSensitivity() CaseSensitivity {
-	return (CaseSensitivity)(C.QComboBox_AutoCompletionCaseSensitivity(this.h))
+	return (CaseSensitivity)(C.QComboBox_autoCompletionCaseSensitivity(this.h))
 }
 
 func (this *QComboBox) SetAutoCompletionCaseSensitivity(sensitivity CaseSensitivity) {
-	C.QComboBox_SetAutoCompletionCaseSensitivity(this.h, (C.int)(sensitivity))
+	C.QComboBox_setAutoCompletionCaseSensitivity(this.h, (C.int)(sensitivity))
 }
 
 func (this *QComboBox) DuplicatesEnabled() bool {
-	return (bool)(C.QComboBox_DuplicatesEnabled(this.h))
+	return (bool)(C.QComboBox_duplicatesEnabled(this.h))
 }
 
 func (this *QComboBox) SetDuplicatesEnabled(enable bool) {
-	C.QComboBox_SetDuplicatesEnabled(this.h, (C.bool)(enable))
+	C.QComboBox_setDuplicatesEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QComboBox) SetFrame(frame bool) {
-	C.QComboBox_SetFrame(this.h, (C.bool)(frame))
+	C.QComboBox_setFrame(this.h, (C.bool)(frame))
 }
 
 func (this *QComboBox) HasFrame() bool {
-	return (bool)(C.QComboBox_HasFrame(this.h))
+	return (bool)(C.QComboBox_hasFrame(this.h))
 }
 
 func (this *QComboBox) FindText(text string) int {
@@ -168,45 +168,45 @@ func (this *QComboBox) FindText(text string) int {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (int)(C.QComboBox_FindText(this.h, text_ms))
+	return (int)(C.QComboBox_findText(this.h, text_ms))
 }
 
 func (this *QComboBox) FindData(data *QVariant) int {
-	return (int)(C.QComboBox_FindData(this.h, data.cPointer()))
+	return (int)(C.QComboBox_findData(this.h, data.cPointer()))
 }
 
 func (this *QComboBox) InsertPolicy() QComboBox__InsertPolicy {
-	return (QComboBox__InsertPolicy)(C.QComboBox_InsertPolicy(this.h))
+	return (QComboBox__InsertPolicy)(C.QComboBox_insertPolicy(this.h))
 }
 
 func (this *QComboBox) SetInsertPolicy(policy QComboBox__InsertPolicy) {
-	C.QComboBox_SetInsertPolicy(this.h, (C.int)(policy))
+	C.QComboBox_setInsertPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QComboBox) SizeAdjustPolicy() QComboBox__SizeAdjustPolicy {
-	return (QComboBox__SizeAdjustPolicy)(C.QComboBox_SizeAdjustPolicy(this.h))
+	return (QComboBox__SizeAdjustPolicy)(C.QComboBox_sizeAdjustPolicy(this.h))
 }
 
 func (this *QComboBox) SetSizeAdjustPolicy(policy QComboBox__SizeAdjustPolicy) {
-	C.QComboBox_SetSizeAdjustPolicy(this.h, (C.int)(policy))
+	C.QComboBox_setSizeAdjustPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QComboBox) MinimumContentsLength() int {
-	return (int)(C.QComboBox_MinimumContentsLength(this.h))
+	return (int)(C.QComboBox_minimumContentsLength(this.h))
 }
 
 func (this *QComboBox) SetMinimumContentsLength(characters int) {
-	C.QComboBox_SetMinimumContentsLength(this.h, (C.int)(characters))
+	C.QComboBox_setMinimumContentsLength(this.h, (C.int)(characters))
 }
 
 func (this *QComboBox) IconSize() *QSize {
-	_goptr := newQSize(C.QComboBox_IconSize(this.h))
+	_goptr := newQSize(C.QComboBox_iconSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) SetIconSize(size *QSize) {
-	C.QComboBox_SetIconSize(this.h, size.cPointer())
+	C.QComboBox_setIconSize(this.h, size.cPointer())
 }
 
 func (this *QComboBox) SetPlaceholderText(placeholderText string) {
@@ -214,114 +214,114 @@ func (this *QComboBox) SetPlaceholderText(placeholderText string) {
 	placeholderText_ms.data = C.CString(placeholderText)
 	placeholderText_ms.len = C.size_t(len(placeholderText))
 	defer C.free(unsafe.Pointer(placeholderText_ms.data))
-	C.QComboBox_SetPlaceholderText(this.h, placeholderText_ms)
+	C.QComboBox_setPlaceholderText(this.h, placeholderText_ms)
 }
 
 func (this *QComboBox) PlaceholderText() string {
-	var _ms C.struct_miqt_string = C.QComboBox_PlaceholderText(this.h)
+	var _ms C.struct_miqt_string = C.QComboBox_placeholderText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QComboBox) IsEditable() bool {
-	return (bool)(C.QComboBox_IsEditable(this.h))
+	return (bool)(C.QComboBox_isEditable(this.h))
 }
 
 func (this *QComboBox) SetEditable(editable bool) {
-	C.QComboBox_SetEditable(this.h, (C.bool)(editable))
+	C.QComboBox_setEditable(this.h, (C.bool)(editable))
 }
 
 func (this *QComboBox) SetLineEdit(edit *QLineEdit) {
-	C.QComboBox_SetLineEdit(this.h, edit.cPointer())
+	C.QComboBox_setLineEdit(this.h, edit.cPointer())
 }
 
 func (this *QComboBox) LineEdit() *QLineEdit {
-	return newQLineEdit(C.QComboBox_LineEdit(this.h))
+	return newQLineEdit(C.QComboBox_lineEdit(this.h))
 }
 
 func (this *QComboBox) SetValidator(v *QValidator) {
-	C.QComboBox_SetValidator(this.h, v.cPointer())
+	C.QComboBox_setValidator(this.h, v.cPointer())
 }
 
 func (this *QComboBox) Validator() *QValidator {
-	return newQValidator(C.QComboBox_Validator(this.h))
+	return newQValidator(C.QComboBox_validator(this.h))
 }
 
 func (this *QComboBox) SetCompleter(c *QCompleter) {
-	C.QComboBox_SetCompleter(this.h, c.cPointer())
+	C.QComboBox_setCompleter(this.h, c.cPointer())
 }
 
 func (this *QComboBox) Completer() *QCompleter {
-	return newQCompleter(C.QComboBox_Completer(this.h))
+	return newQCompleter(C.QComboBox_completer(this.h))
 }
 
 func (this *QComboBox) ItemDelegate() *QAbstractItemDelegate {
-	return newQAbstractItemDelegate(C.QComboBox_ItemDelegate(this.h))
+	return newQAbstractItemDelegate(C.QComboBox_itemDelegate(this.h))
 }
 
 func (this *QComboBox) SetItemDelegate(delegate *QAbstractItemDelegate) {
-	C.QComboBox_SetItemDelegate(this.h, delegate.cPointer())
+	C.QComboBox_setItemDelegate(this.h, delegate.cPointer())
 }
 
 func (this *QComboBox) Model() *QAbstractItemModel {
-	return newQAbstractItemModel(C.QComboBox_Model(this.h))
+	return newQAbstractItemModel(C.QComboBox_model(this.h))
 }
 
 func (this *QComboBox) SetModel(model *QAbstractItemModel) {
-	C.QComboBox_SetModel(this.h, model.cPointer())
+	C.QComboBox_setModel(this.h, model.cPointer())
 }
 
 func (this *QComboBox) RootModelIndex() *QModelIndex {
-	_goptr := newQModelIndex(C.QComboBox_RootModelIndex(this.h))
+	_goptr := newQModelIndex(C.QComboBox_rootModelIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) SetRootModelIndex(index *QModelIndex) {
-	C.QComboBox_SetRootModelIndex(this.h, index.cPointer())
+	C.QComboBox_setRootModelIndex(this.h, index.cPointer())
 }
 
 func (this *QComboBox) ModelColumn() int {
-	return (int)(C.QComboBox_ModelColumn(this.h))
+	return (int)(C.QComboBox_modelColumn(this.h))
 }
 
 func (this *QComboBox) SetModelColumn(visibleColumn int) {
-	C.QComboBox_SetModelColumn(this.h, (C.int)(visibleColumn))
+	C.QComboBox_setModelColumn(this.h, (C.int)(visibleColumn))
 }
 
 func (this *QComboBox) CurrentIndex() int {
-	return (int)(C.QComboBox_CurrentIndex(this.h))
+	return (int)(C.QComboBox_currentIndex(this.h))
 }
 
 func (this *QComboBox) CurrentText() string {
-	var _ms C.struct_miqt_string = C.QComboBox_CurrentText(this.h)
+	var _ms C.struct_miqt_string = C.QComboBox_currentText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QComboBox) CurrentData() *QVariant {
-	_goptr := newQVariant(C.QComboBox_CurrentData(this.h))
+	_goptr := newQVariant(C.QComboBox_currentData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) ItemText(index int) string {
-	var _ms C.struct_miqt_string = C.QComboBox_ItemText(this.h, (C.int)(index))
+	var _ms C.struct_miqt_string = C.QComboBox_itemText(this.h, (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QComboBox) ItemIcon(index int) *QIcon {
-	_goptr := newQIcon(C.QComboBox_ItemIcon(this.h, (C.int)(index)))
+	_goptr := newQIcon(C.QComboBox_itemIcon(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) ItemData(index int) *QVariant {
-	_goptr := newQVariant(C.QComboBox_ItemData(this.h, (C.int)(index)))
+	_goptr := newQVariant(C.QComboBox_itemData(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -331,7 +331,7 @@ func (this *QComboBox) AddItem(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QComboBox_AddItem(this.h, text_ms)
+	C.QComboBox_addItem(this.h, text_ms)
 }
 
 func (this *QComboBox) AddItem2(icon *QIcon, text string) {
@@ -339,7 +339,7 @@ func (this *QComboBox) AddItem2(icon *QIcon, text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QComboBox_AddItem2(this.h, icon.cPointer(), text_ms)
+	C.QComboBox_addItem2(this.h, icon.cPointer(), text_ms)
 }
 
 func (this *QComboBox) AddItems(texts []string) {
@@ -353,7 +353,7 @@ func (this *QComboBox) AddItems(texts []string) {
 		texts_CArray[i] = texts_i_ms
 	}
 	texts_ma := C.struct_miqt_array{len: C.size_t(len(texts)), data: unsafe.Pointer(texts_CArray)}
-	C.QComboBox_AddItems(this.h, texts_ma)
+	C.QComboBox_addItems(this.h, texts_ma)
 }
 
 func (this *QComboBox) InsertItem(index int, text string) {
@@ -361,7 +361,7 @@ func (this *QComboBox) InsertItem(index int, text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QComboBox_InsertItem(this.h, (C.int)(index), text_ms)
+	C.QComboBox_insertItem(this.h, (C.int)(index), text_ms)
 }
 
 func (this *QComboBox) InsertItem2(index int, icon *QIcon, text string) {
@@ -369,7 +369,7 @@ func (this *QComboBox) InsertItem2(index int, icon *QIcon, text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QComboBox_InsertItem2(this.h, (C.int)(index), icon.cPointer(), text_ms)
+	C.QComboBox_insertItem2(this.h, (C.int)(index), icon.cPointer(), text_ms)
 }
 
 func (this *QComboBox) InsertItems(index int, texts []string) {
@@ -383,15 +383,15 @@ func (this *QComboBox) InsertItems(index int, texts []string) {
 		texts_CArray[i] = texts_i_ms
 	}
 	texts_ma := C.struct_miqt_array{len: C.size_t(len(texts)), data: unsafe.Pointer(texts_CArray)}
-	C.QComboBox_InsertItems(this.h, (C.int)(index), texts_ma)
+	C.QComboBox_insertItems(this.h, (C.int)(index), texts_ma)
 }
 
 func (this *QComboBox) InsertSeparator(index int) {
-	C.QComboBox_InsertSeparator(this.h, (C.int)(index))
+	C.QComboBox_insertSeparator(this.h, (C.int)(index))
 }
 
 func (this *QComboBox) RemoveItem(index int) {
-	C.QComboBox_RemoveItem(this.h, (C.int)(index))
+	C.QComboBox_removeItem(this.h, (C.int)(index))
 }
 
 func (this *QComboBox) SetItemText(index int, text string) {
@@ -399,67 +399,67 @@ func (this *QComboBox) SetItemText(index int, text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QComboBox_SetItemText(this.h, (C.int)(index), text_ms)
+	C.QComboBox_setItemText(this.h, (C.int)(index), text_ms)
 }
 
 func (this *QComboBox) SetItemIcon(index int, icon *QIcon) {
-	C.QComboBox_SetItemIcon(this.h, (C.int)(index), icon.cPointer())
+	C.QComboBox_setItemIcon(this.h, (C.int)(index), icon.cPointer())
 }
 
 func (this *QComboBox) SetItemData(index int, value *QVariant) {
-	C.QComboBox_SetItemData(this.h, (C.int)(index), value.cPointer())
+	C.QComboBox_setItemData(this.h, (C.int)(index), value.cPointer())
 }
 
 func (this *QComboBox) View() *QAbstractItemView {
-	return newQAbstractItemView(C.QComboBox_View(this.h))
+	return newQAbstractItemView(C.QComboBox_view(this.h))
 }
 
 func (this *QComboBox) SetView(itemView *QAbstractItemView) {
-	C.QComboBox_SetView(this.h, itemView.cPointer())
+	C.QComboBox_setView(this.h, itemView.cPointer())
 }
 
 func (this *QComboBox) SizeHint() *QSize {
-	_goptr := newQSize(C.QComboBox_SizeHint(this.h))
+	_goptr := newQSize(C.QComboBox_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QComboBox_MinimumSizeHint(this.h))
+	_goptr := newQSize(C.QComboBox_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) ShowPopup() {
-	C.QComboBox_ShowPopup(this.h)
+	C.QComboBox_showPopup(this.h)
 }
 
 func (this *QComboBox) HidePopup() {
-	C.QComboBox_HidePopup(this.h)
+	C.QComboBox_hidePopup(this.h)
 }
 
 func (this *QComboBox) Event(event *QEvent) bool {
-	return (bool)(C.QComboBox_Event(this.h, event.cPointer()))
+	return (bool)(C.QComboBox_event(this.h, event.cPointer()))
 }
 
 func (this *QComboBox) InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	_goptr := newQVariant(C.QComboBox_InputMethodQuery(this.h, (C.int)(param1)))
+	_goptr := newQVariant(C.QComboBox_inputMethodQuery(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) InputMethodQuery2(query InputMethodQuery, argument *QVariant) *QVariant {
-	_goptr := newQVariant(C.QComboBox_InputMethodQuery2(this.h, (C.int)(query), argument.cPointer()))
+	_goptr := newQVariant(C.QComboBox_inputMethodQuery2(this.h, (C.int)(query), argument.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) Clear() {
-	C.QComboBox_Clear(this.h)
+	C.QComboBox_clear(this.h)
 }
 
 func (this *QComboBox) ClearEditText() {
-	C.QComboBox_ClearEditText(this.h)
+	C.QComboBox_clearEditText(this.h)
 }
 
 func (this *QComboBox) SetEditText(text string) {
@@ -467,11 +467,11 @@ func (this *QComboBox) SetEditText(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QComboBox_SetEditText(this.h, text_ms)
+	C.QComboBox_setEditText(this.h, text_ms)
 }
 
 func (this *QComboBox) SetCurrentIndex(index int) {
-	C.QComboBox_SetCurrentIndex(this.h, (C.int)(index))
+	C.QComboBox_setCurrentIndex(this.h, (C.int)(index))
 }
 
 func (this *QComboBox) SetCurrentText(text string) {
@@ -479,7 +479,7 @@ func (this *QComboBox) SetCurrentText(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QComboBox_SetCurrentText(this.h, text_ms)
+	C.QComboBox_setCurrentText(this.h, text_ms)
 }
 
 func (this *QComboBox) EditTextChanged(param1 string) {
@@ -487,14 +487,14 @@ func (this *QComboBox) EditTextChanged(param1 string) {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	C.QComboBox_EditTextChanged(this.h, param1_ms)
+	C.QComboBox_editTextChanged(this.h, param1_ms)
 }
 func (this *QComboBox) OnEditTextChanged(slot func(param1 string)) {
-	C.QComboBox_connect_EditTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QComboBox_connect_editTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QComboBox_EditTextChanged
-func miqt_exec_callback_QComboBox_EditTextChanged(cb C.intptr_t, param1 C.struct_miqt_string) {
+//export miqt_exec_callback_QComboBox_editTextChanged
+func miqt_exec_callback_QComboBox_editTextChanged(cb C.intptr_t, param1 C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -510,14 +510,14 @@ func miqt_exec_callback_QComboBox_EditTextChanged(cb C.intptr_t, param1 C.struct
 }
 
 func (this *QComboBox) Activated(index int) {
-	C.QComboBox_Activated(this.h, (C.int)(index))
+	C.QComboBox_activated(this.h, (C.int)(index))
 }
 func (this *QComboBox) OnActivated(slot func(index int)) {
-	C.QComboBox_connect_Activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QComboBox_connect_activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QComboBox_Activated
-func miqt_exec_callback_QComboBox_Activated(cb C.intptr_t, index C.int) {
+//export miqt_exec_callback_QComboBox_activated
+func miqt_exec_callback_QComboBox_activated(cb C.intptr_t, index C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -534,14 +534,14 @@ func (this *QComboBox) TextActivated(param1 string) {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	C.QComboBox_TextActivated(this.h, param1_ms)
+	C.QComboBox_textActivated(this.h, param1_ms)
 }
 func (this *QComboBox) OnTextActivated(slot func(param1 string)) {
-	C.QComboBox_connect_TextActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QComboBox_connect_textActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QComboBox_TextActivated
-func miqt_exec_callback_QComboBox_TextActivated(cb C.intptr_t, param1 C.struct_miqt_string) {
+//export miqt_exec_callback_QComboBox_textActivated
+func miqt_exec_callback_QComboBox_textActivated(cb C.intptr_t, param1 C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -557,14 +557,14 @@ func miqt_exec_callback_QComboBox_TextActivated(cb C.intptr_t, param1 C.struct_m
 }
 
 func (this *QComboBox) Highlighted(index int) {
-	C.QComboBox_Highlighted(this.h, (C.int)(index))
+	C.QComboBox_highlighted(this.h, (C.int)(index))
 }
 func (this *QComboBox) OnHighlighted(slot func(index int)) {
-	C.QComboBox_connect_Highlighted(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QComboBox_connect_highlighted(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QComboBox_Highlighted
-func miqt_exec_callback_QComboBox_Highlighted(cb C.intptr_t, index C.int) {
+//export miqt_exec_callback_QComboBox_highlighted
+func miqt_exec_callback_QComboBox_highlighted(cb C.intptr_t, index C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -581,14 +581,14 @@ func (this *QComboBox) TextHighlighted(param1 string) {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	C.QComboBox_TextHighlighted(this.h, param1_ms)
+	C.QComboBox_textHighlighted(this.h, param1_ms)
 }
 func (this *QComboBox) OnTextHighlighted(slot func(param1 string)) {
-	C.QComboBox_connect_TextHighlighted(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QComboBox_connect_textHighlighted(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QComboBox_TextHighlighted
-func miqt_exec_callback_QComboBox_TextHighlighted(cb C.intptr_t, param1 C.struct_miqt_string) {
+//export miqt_exec_callback_QComboBox_textHighlighted
+func miqt_exec_callback_QComboBox_textHighlighted(cb C.intptr_t, param1 C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -604,14 +604,14 @@ func miqt_exec_callback_QComboBox_TextHighlighted(cb C.intptr_t, param1 C.struct
 }
 
 func (this *QComboBox) CurrentIndexChanged(index int) {
-	C.QComboBox_CurrentIndexChanged(this.h, (C.int)(index))
+	C.QComboBox_currentIndexChanged(this.h, (C.int)(index))
 }
 func (this *QComboBox) OnCurrentIndexChanged(slot func(index int)) {
-	C.QComboBox_connect_CurrentIndexChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QComboBox_connect_currentIndexChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QComboBox_CurrentIndexChanged
-func miqt_exec_callback_QComboBox_CurrentIndexChanged(cb C.intptr_t, index C.int) {
+//export miqt_exec_callback_QComboBox_currentIndexChanged
+func miqt_exec_callback_QComboBox_currentIndexChanged(cb C.intptr_t, index C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -628,14 +628,14 @@ func (this *QComboBox) CurrentIndexChangedWithQString(param1 string) {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	C.QComboBox_CurrentIndexChangedWithQString(this.h, param1_ms)
+	C.QComboBox_currentIndexChangedWithQString(this.h, param1_ms)
 }
 func (this *QComboBox) OnCurrentIndexChangedWithQString(slot func(param1 string)) {
-	C.QComboBox_connect_CurrentIndexChangedWithQString(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QComboBox_connect_currentIndexChangedWithQString(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QComboBox_CurrentIndexChangedWithQString
-func miqt_exec_callback_QComboBox_CurrentIndexChangedWithQString(cb C.intptr_t, param1 C.struct_miqt_string) {
+//export miqt_exec_callback_QComboBox_currentIndexChangedWithQString
+func miqt_exec_callback_QComboBox_currentIndexChangedWithQString(cb C.intptr_t, param1 C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -655,14 +655,14 @@ func (this *QComboBox) CurrentTextChanged(param1 string) {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	C.QComboBox_CurrentTextChanged(this.h, param1_ms)
+	C.QComboBox_currentTextChanged(this.h, param1_ms)
 }
 func (this *QComboBox) OnCurrentTextChanged(slot func(param1 string)) {
-	C.QComboBox_connect_CurrentTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QComboBox_connect_currentTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QComboBox_CurrentTextChanged
-func miqt_exec_callback_QComboBox_CurrentTextChanged(cb C.intptr_t, param1 C.struct_miqt_string) {
+//export miqt_exec_callback_QComboBox_currentTextChanged
+func miqt_exec_callback_QComboBox_currentTextChanged(cb C.intptr_t, param1 C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -682,14 +682,14 @@ func (this *QComboBox) ActivatedWithQString(param1 string) {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	C.QComboBox_ActivatedWithQString(this.h, param1_ms)
+	C.QComboBox_activatedWithQString(this.h, param1_ms)
 }
 func (this *QComboBox) OnActivatedWithQString(slot func(param1 string)) {
-	C.QComboBox_connect_ActivatedWithQString(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QComboBox_connect_activatedWithQString(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QComboBox_ActivatedWithQString
-func miqt_exec_callback_QComboBox_ActivatedWithQString(cb C.intptr_t, param1 C.struct_miqt_string) {
+//export miqt_exec_callback_QComboBox_activatedWithQString
+func miqt_exec_callback_QComboBox_activatedWithQString(cb C.intptr_t, param1 C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -709,14 +709,14 @@ func (this *QComboBox) HighlightedWithQString(param1 string) {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	C.QComboBox_HighlightedWithQString(this.h, param1_ms)
+	C.QComboBox_highlightedWithQString(this.h, param1_ms)
 }
 func (this *QComboBox) OnHighlightedWithQString(slot func(param1 string)) {
-	C.QComboBox_connect_HighlightedWithQString(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QComboBox_connect_highlightedWithQString(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QComboBox_HighlightedWithQString
-func miqt_exec_callback_QComboBox_HighlightedWithQString(cb C.intptr_t, param1 C.struct_miqt_string) {
+//export miqt_exec_callback_QComboBox_highlightedWithQString
+func miqt_exec_callback_QComboBox_highlightedWithQString(cb C.intptr_t, param1 C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -736,7 +736,7 @@ func QComboBox_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QComboBox_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QComboBox_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -747,7 +747,7 @@ func QComboBox_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QComboBox_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QComboBox_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -758,7 +758,7 @@ func QComboBox_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QComboBox_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QComboBox_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -769,7 +769,7 @@ func QComboBox_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QComboBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QComboBox_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -780,25 +780,25 @@ func (this *QComboBox) FindText2(text string, flags MatchFlag) int {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (int)(C.QComboBox_FindText2(this.h, text_ms, (C.int)(flags)))
+	return (int)(C.QComboBox_findText2(this.h, text_ms, (C.int)(flags)))
 }
 
 func (this *QComboBox) FindData2(data *QVariant, role int) int {
-	return (int)(C.QComboBox_FindData2(this.h, data.cPointer(), (C.int)(role)))
+	return (int)(C.QComboBox_findData2(this.h, data.cPointer(), (C.int)(role)))
 }
 
 func (this *QComboBox) FindData3(data *QVariant, role int, flags MatchFlag) int {
-	return (int)(C.QComboBox_FindData3(this.h, data.cPointer(), (C.int)(role), (C.int)(flags)))
+	return (int)(C.QComboBox_findData3(this.h, data.cPointer(), (C.int)(role), (C.int)(flags)))
 }
 
 func (this *QComboBox) CurrentData1(role int) *QVariant {
-	_goptr := newQVariant(C.QComboBox_CurrentData1(this.h, (C.int)(role)))
+	_goptr := newQVariant(C.QComboBox_currentData1(this.h, (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QComboBox) ItemData2(index int, role int) *QVariant {
-	_goptr := newQVariant(C.QComboBox_ItemData2(this.h, (C.int)(index), (C.int)(role)))
+	_goptr := newQVariant(C.QComboBox_itemData2(this.h, (C.int)(index), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -808,7 +808,7 @@ func (this *QComboBox) AddItem22(text string, userData *QVariant) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QComboBox_AddItem22(this.h, text_ms, userData.cPointer())
+	C.QComboBox_addItem22(this.h, text_ms, userData.cPointer())
 }
 
 func (this *QComboBox) AddItem3(icon *QIcon, text string, userData *QVariant) {
@@ -816,7 +816,7 @@ func (this *QComboBox) AddItem3(icon *QIcon, text string, userData *QVariant) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QComboBox_AddItem3(this.h, icon.cPointer(), text_ms, userData.cPointer())
+	C.QComboBox_addItem3(this.h, icon.cPointer(), text_ms, userData.cPointer())
 }
 
 func (this *QComboBox) InsertItem3(index int, text string, userData *QVariant) {
@@ -824,7 +824,7 @@ func (this *QComboBox) InsertItem3(index int, text string, userData *QVariant) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QComboBox_InsertItem3(this.h, (C.int)(index), text_ms, userData.cPointer())
+	C.QComboBox_insertItem3(this.h, (C.int)(index), text_ms, userData.cPointer())
 }
 
 func (this *QComboBox) InsertItem4(index int, icon *QIcon, text string, userData *QVariant) {
@@ -832,29 +832,29 @@ func (this *QComboBox) InsertItem4(index int, icon *QIcon, text string, userData
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QComboBox_InsertItem4(this.h, (C.int)(index), icon.cPointer(), text_ms, userData.cPointer())
+	C.QComboBox_insertItem4(this.h, (C.int)(index), icon.cPointer(), text_ms, userData.cPointer())
 }
 
 func (this *QComboBox) SetItemData3(index int, value *QVariant, role int) {
-	C.QComboBox_SetItemData3(this.h, (C.int)(index), value.cPointer(), (C.int)(role))
+	C.QComboBox_setItemData3(this.h, (C.int)(index), value.cPointer(), (C.int)(role))
 }
 
 func (this *QComboBox) callVirtualBase_SizeHint() *QSize {
 
-	_goptr := newQSize(C.QComboBox_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QComboBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QComboBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QComboBox_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnsizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QComboBox_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_SizeHint
-func miqt_exec_callback_QComboBox_SizeHint(self *C.QComboBox, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QComboBox_sizeHint
+func miqt_exec_callback_QComboBox_sizeHint(self *C.QComboBox, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -868,20 +868,20 @@ func miqt_exec_callback_QComboBox_SizeHint(self *C.QComboBox, cb C.intptr_t) *C.
 
 func (this *QComboBox) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_goptr := newQSize(C.QComboBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QComboBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QComboBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QComboBox_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QComboBox_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_MinimumSizeHint
-func miqt_exec_callback_QComboBox_MinimumSizeHint(self *C.QComboBox, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QComboBox_minimumSizeHint
+func miqt_exec_callback_QComboBox_minimumSizeHint(self *C.QComboBox, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -895,18 +895,18 @@ func miqt_exec_callback_QComboBox_MinimumSizeHint(self *C.QComboBox, cb C.intptr
 
 func (this *QComboBox) callVirtualBase_ShowPopup() {
 
-	C.QComboBox_virtualbase_ShowPopup(unsafe.Pointer(this.h))
+	C.QComboBox_virtualbase_showPopup(unsafe.Pointer(this.h))
 
 }
-func (this *QComboBox) OnShowPopup(slot func(super func())) {
-	ok := C.QComboBox_override_virtual_ShowPopup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnshowPopup(slot func(super func())) {
+	ok := C.QComboBox_override_virtual_showPopup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_ShowPopup
-func miqt_exec_callback_QComboBox_ShowPopup(self *C.QComboBox, cb C.intptr_t) {
+//export miqt_exec_callback_QComboBox_showPopup
+func miqt_exec_callback_QComboBox_showPopup(self *C.QComboBox, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -918,18 +918,18 @@ func miqt_exec_callback_QComboBox_ShowPopup(self *C.QComboBox, cb C.intptr_t) {
 
 func (this *QComboBox) callVirtualBase_HidePopup() {
 
-	C.QComboBox_virtualbase_HidePopup(unsafe.Pointer(this.h))
+	C.QComboBox_virtualbase_hidePopup(unsafe.Pointer(this.h))
 
 }
-func (this *QComboBox) OnHidePopup(slot func(super func())) {
-	ok := C.QComboBox_override_virtual_HidePopup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnhidePopup(slot func(super func())) {
+	ok := C.QComboBox_override_virtual_hidePopup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_HidePopup
-func miqt_exec_callback_QComboBox_HidePopup(self *C.QComboBox, cb C.intptr_t) {
+//export miqt_exec_callback_QComboBox_hidePopup
+func miqt_exec_callback_QComboBox_hidePopup(self *C.QComboBox, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -941,18 +941,18 @@ func miqt_exec_callback_QComboBox_HidePopup(self *C.QComboBox, cb C.intptr_t) {
 
 func (this *QComboBox) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QComboBox_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QComboBox_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QComboBox) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QComboBox_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QComboBox_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_Event
-func miqt_exec_callback_QComboBox_Event(self *C.QComboBox, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QComboBox_event
+func miqt_exec_callback_QComboBox_event(self *C.QComboBox, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -969,20 +969,20 @@ func miqt_exec_callback_QComboBox_Event(self *C.QComboBox, cb C.intptr_t, event 
 
 func (this *QComboBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_goptr := newQVariant(C.QComboBox_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
+	_goptr := newQVariant(C.QComboBox_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QComboBox) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
-	ok := C.QComboBox_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	ok := C.QComboBox_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_InputMethodQuery
-func miqt_exec_callback_QComboBox_InputMethodQuery(self *C.QComboBox, cb C.intptr_t, param1 C.int) *C.QVariant {
+//export miqt_exec_callback_QComboBox_inputMethodQuery
+func miqt_exec_callback_QComboBox_inputMethodQuery(self *C.QComboBox, cb C.intptr_t, param1 C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -999,18 +999,18 @@ func miqt_exec_callback_QComboBox_InputMethodQuery(self *C.QComboBox, cb C.intpt
 
 func (this *QComboBox) callVirtualBase_FocusInEvent(e *QFocusEvent) {
 
-	C.QComboBox_virtualbase_FocusInEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QComboBox_virtualbase_focusInEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnFocusInEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
-	ok := C.QComboBox_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnfocusInEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
+	ok := C.QComboBox_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_FocusInEvent
-func miqt_exec_callback_QComboBox_FocusInEvent(self *C.QComboBox, cb C.intptr_t, e *C.QFocusEvent) {
+//export miqt_exec_callback_QComboBox_focusInEvent
+func miqt_exec_callback_QComboBox_focusInEvent(self *C.QComboBox, cb C.intptr_t, e *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QFocusEvent), e *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1025,18 +1025,18 @@ func miqt_exec_callback_QComboBox_FocusInEvent(self *C.QComboBox, cb C.intptr_t,
 
 func (this *QComboBox) callVirtualBase_FocusOutEvent(e *QFocusEvent) {
 
-	C.QComboBox_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QComboBox_virtualbase_focusOutEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnFocusOutEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
-	ok := C.QComboBox_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnfocusOutEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
+	ok := C.QComboBox_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_FocusOutEvent
-func miqt_exec_callback_QComboBox_FocusOutEvent(self *C.QComboBox, cb C.intptr_t, e *C.QFocusEvent) {
+//export miqt_exec_callback_QComboBox_focusOutEvent
+func miqt_exec_callback_QComboBox_focusOutEvent(self *C.QComboBox, cb C.intptr_t, e *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QFocusEvent), e *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1051,18 +1051,18 @@ func miqt_exec_callback_QComboBox_FocusOutEvent(self *C.QComboBox, cb C.intptr_t
 
 func (this *QComboBox) callVirtualBase_ChangeEvent(e *QEvent) {
 
-	C.QComboBox_virtualbase_ChangeEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QComboBox_virtualbase_changeEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
-	ok := C.QComboBox_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnchangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	ok := C.QComboBox_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_ChangeEvent
-func miqt_exec_callback_QComboBox_ChangeEvent(self *C.QComboBox, cb C.intptr_t, e *C.QEvent) {
+//export miqt_exec_callback_QComboBox_changeEvent
+func miqt_exec_callback_QComboBox_changeEvent(self *C.QComboBox, cb C.intptr_t, e *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent), e *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1077,18 +1077,18 @@ func miqt_exec_callback_QComboBox_ChangeEvent(self *C.QComboBox, cb C.intptr_t, 
 
 func (this *QComboBox) callVirtualBase_ResizeEvent(e *QResizeEvent) {
 
-	C.QComboBox_virtualbase_ResizeEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QComboBox_virtualbase_resizeEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnResizeEvent(slot func(super func(e *QResizeEvent), e *QResizeEvent)) {
-	ok := C.QComboBox_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnresizeEvent(slot func(super func(e *QResizeEvent), e *QResizeEvent)) {
+	ok := C.QComboBox_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_ResizeEvent
-func miqt_exec_callback_QComboBox_ResizeEvent(self *C.QComboBox, cb C.intptr_t, e *C.QResizeEvent) {
+//export miqt_exec_callback_QComboBox_resizeEvent
+func miqt_exec_callback_QComboBox_resizeEvent(self *C.QComboBox, cb C.intptr_t, e *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QResizeEvent), e *QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1103,18 +1103,18 @@ func miqt_exec_callback_QComboBox_ResizeEvent(self *C.QComboBox, cb C.intptr_t, 
 
 func (this *QComboBox) callVirtualBase_PaintEvent(e *QPaintEvent) {
 
-	C.QComboBox_virtualbase_PaintEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QComboBox_virtualbase_paintEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnPaintEvent(slot func(super func(e *QPaintEvent), e *QPaintEvent)) {
-	ok := C.QComboBox_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnpaintEvent(slot func(super func(e *QPaintEvent), e *QPaintEvent)) {
+	ok := C.QComboBox_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_PaintEvent
-func miqt_exec_callback_QComboBox_PaintEvent(self *C.QComboBox, cb C.intptr_t, e *C.QPaintEvent) {
+//export miqt_exec_callback_QComboBox_paintEvent
+func miqt_exec_callback_QComboBox_paintEvent(self *C.QComboBox, cb C.intptr_t, e *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QPaintEvent), e *QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1129,18 +1129,18 @@ func miqt_exec_callback_QComboBox_PaintEvent(self *C.QComboBox, cb C.intptr_t, e
 
 func (this *QComboBox) callVirtualBase_ShowEvent(e *QShowEvent) {
 
-	C.QComboBox_virtualbase_ShowEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QComboBox_virtualbase_showEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnShowEvent(slot func(super func(e *QShowEvent), e *QShowEvent)) {
-	ok := C.QComboBox_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnshowEvent(slot func(super func(e *QShowEvent), e *QShowEvent)) {
+	ok := C.QComboBox_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_ShowEvent
-func miqt_exec_callback_QComboBox_ShowEvent(self *C.QComboBox, cb C.intptr_t, e *C.QShowEvent) {
+//export miqt_exec_callback_QComboBox_showEvent
+func miqt_exec_callback_QComboBox_showEvent(self *C.QComboBox, cb C.intptr_t, e *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QShowEvent), e *QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1155,18 +1155,18 @@ func miqt_exec_callback_QComboBox_ShowEvent(self *C.QComboBox, cb C.intptr_t, e 
 
 func (this *QComboBox) callVirtualBase_HideEvent(e *QHideEvent) {
 
-	C.QComboBox_virtualbase_HideEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QComboBox_virtualbase_hideEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnHideEvent(slot func(super func(e *QHideEvent), e *QHideEvent)) {
-	ok := C.QComboBox_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnhideEvent(slot func(super func(e *QHideEvent), e *QHideEvent)) {
+	ok := C.QComboBox_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_HideEvent
-func miqt_exec_callback_QComboBox_HideEvent(self *C.QComboBox, cb C.intptr_t, e *C.QHideEvent) {
+//export miqt_exec_callback_QComboBox_hideEvent
+func miqt_exec_callback_QComboBox_hideEvent(self *C.QComboBox, cb C.intptr_t, e *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QHideEvent), e *QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1181,18 +1181,18 @@ func miqt_exec_callback_QComboBox_HideEvent(self *C.QComboBox, cb C.intptr_t, e 
 
 func (this *QComboBox) callVirtualBase_MousePressEvent(e *QMouseEvent) {
 
-	C.QComboBox_virtualbase_MousePressEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QComboBox_virtualbase_mousePressEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnMousePressEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
-	ok := C.QComboBox_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnmousePressEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
+	ok := C.QComboBox_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_MousePressEvent
-func miqt_exec_callback_QComboBox_MousePressEvent(self *C.QComboBox, cb C.intptr_t, e *C.QMouseEvent) {
+//export miqt_exec_callback_QComboBox_mousePressEvent
+func miqt_exec_callback_QComboBox_mousePressEvent(self *C.QComboBox, cb C.intptr_t, e *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QMouseEvent), e *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1207,18 +1207,18 @@ func miqt_exec_callback_QComboBox_MousePressEvent(self *C.QComboBox, cb C.intptr
 
 func (this *QComboBox) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
 
-	C.QComboBox_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QComboBox_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnMouseReleaseEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
-	ok := C.QComboBox_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnmouseReleaseEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
+	ok := C.QComboBox_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_MouseReleaseEvent
-func miqt_exec_callback_QComboBox_MouseReleaseEvent(self *C.QComboBox, cb C.intptr_t, e *C.QMouseEvent) {
+//export miqt_exec_callback_QComboBox_mouseReleaseEvent
+func miqt_exec_callback_QComboBox_mouseReleaseEvent(self *C.QComboBox, cb C.intptr_t, e *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QMouseEvent), e *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1233,18 +1233,18 @@ func miqt_exec_callback_QComboBox_MouseReleaseEvent(self *C.QComboBox, cb C.intp
 
 func (this *QComboBox) callVirtualBase_KeyPressEvent(e *QKeyEvent) {
 
-	C.QComboBox_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QComboBox_virtualbase_keyPressEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnKeyPressEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
-	ok := C.QComboBox_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnkeyPressEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
+	ok := C.QComboBox_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_KeyPressEvent
-func miqt_exec_callback_QComboBox_KeyPressEvent(self *C.QComboBox, cb C.intptr_t, e *C.QKeyEvent) {
+//export miqt_exec_callback_QComboBox_keyPressEvent
+func miqt_exec_callback_QComboBox_keyPressEvent(self *C.QComboBox, cb C.intptr_t, e *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QKeyEvent), e *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1259,18 +1259,18 @@ func miqt_exec_callback_QComboBox_KeyPressEvent(self *C.QComboBox, cb C.intptr_t
 
 func (this *QComboBox) callVirtualBase_KeyReleaseEvent(e *QKeyEvent) {
 
-	C.QComboBox_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QComboBox_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnKeyReleaseEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
-	ok := C.QComboBox_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnkeyReleaseEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
+	ok := C.QComboBox_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_KeyReleaseEvent
-func miqt_exec_callback_QComboBox_KeyReleaseEvent(self *C.QComboBox, cb C.intptr_t, e *C.QKeyEvent) {
+//export miqt_exec_callback_QComboBox_keyReleaseEvent
+func miqt_exec_callback_QComboBox_keyReleaseEvent(self *C.QComboBox, cb C.intptr_t, e *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QKeyEvent), e *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1285,18 +1285,18 @@ func miqt_exec_callback_QComboBox_KeyReleaseEvent(self *C.QComboBox, cb C.intptr
 
 func (this *QComboBox) callVirtualBase_WheelEvent(e *QWheelEvent) {
 
-	C.QComboBox_virtualbase_WheelEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QComboBox_virtualbase_wheelEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnWheelEvent(slot func(super func(e *QWheelEvent), e *QWheelEvent)) {
-	ok := C.QComboBox_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnwheelEvent(slot func(super func(e *QWheelEvent), e *QWheelEvent)) {
+	ok := C.QComboBox_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_WheelEvent
-func miqt_exec_callback_QComboBox_WheelEvent(self *C.QComboBox, cb C.intptr_t, e *C.QWheelEvent) {
+//export miqt_exec_callback_QComboBox_wheelEvent
+func miqt_exec_callback_QComboBox_wheelEvent(self *C.QComboBox, cb C.intptr_t, e *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QWheelEvent), e *QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1311,18 +1311,18 @@ func miqt_exec_callback_QComboBox_WheelEvent(self *C.QComboBox, cb C.intptr_t, e
 
 func (this *QComboBox) callVirtualBase_ContextMenuEvent(e *QContextMenuEvent) {
 
-	C.QComboBox_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QComboBox_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnContextMenuEvent(slot func(super func(e *QContextMenuEvent), e *QContextMenuEvent)) {
-	ok := C.QComboBox_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OncontextMenuEvent(slot func(super func(e *QContextMenuEvent), e *QContextMenuEvent)) {
+	ok := C.QComboBox_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_ContextMenuEvent
-func miqt_exec_callback_QComboBox_ContextMenuEvent(self *C.QComboBox, cb C.intptr_t, e *C.QContextMenuEvent) {
+//export miqt_exec_callback_QComboBox_contextMenuEvent
+func miqt_exec_callback_QComboBox_contextMenuEvent(self *C.QComboBox, cb C.intptr_t, e *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QContextMenuEvent), e *QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1337,18 +1337,18 @@ func miqt_exec_callback_QComboBox_ContextMenuEvent(self *C.QComboBox, cb C.intpt
 
 func (this *QComboBox) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
 
-	C.QComboBox_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QComboBox_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QComboBox) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
-	ok := C.QComboBox_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QComboBox_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_InputMethodEvent
-func miqt_exec_callback_QComboBox_InputMethodEvent(self *C.QComboBox, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QComboBox_inputMethodEvent
+func miqt_exec_callback_QComboBox_inputMethodEvent(self *C.QComboBox, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1363,18 +1363,18 @@ func miqt_exec_callback_QComboBox_InputMethodEvent(self *C.QComboBox, cb C.intpt
 
 func (this *QComboBox) callVirtualBase_DevType() int {
 
-	return (int)(C.QComboBox_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QComboBox_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QComboBox) OnDevType(slot func(super func() int) int) {
-	ok := C.QComboBox_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OndevType(slot func(super func() int) int) {
+	ok := C.QComboBox_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_DevType
-func miqt_exec_callback_QComboBox_DevType(self *C.QComboBox, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QComboBox_devType
+func miqt_exec_callback_QComboBox_devType(self *C.QComboBox, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1388,18 +1388,18 @@ func miqt_exec_callback_QComboBox_DevType(self *C.QComboBox, cb C.intptr_t) C.in
 
 func (this *QComboBox) callVirtualBase_SetVisible(visible bool) {
 
-	C.QComboBox_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QComboBox_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QComboBox) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QComboBox_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QComboBox_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_SetVisible
-func miqt_exec_callback_QComboBox_SetVisible(self *C.QComboBox, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QComboBox_setVisible
+func miqt_exec_callback_QComboBox_setVisible(self *C.QComboBox, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1414,18 +1414,18 @@ func miqt_exec_callback_QComboBox_SetVisible(self *C.QComboBox, cb C.intptr_t, v
 
 func (this *QComboBox) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QComboBox_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QComboBox_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QComboBox) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QComboBox_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QComboBox_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_HeightForWidth
-func miqt_exec_callback_QComboBox_HeightForWidth(self *C.QComboBox, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QComboBox_heightForWidth
+func miqt_exec_callback_QComboBox_heightForWidth(self *C.QComboBox, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1442,18 +1442,18 @@ func miqt_exec_callback_QComboBox_HeightForWidth(self *C.QComboBox, cb C.intptr_
 
 func (this *QComboBox) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QComboBox_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QComboBox_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QComboBox) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QComboBox_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QComboBox_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_HasHeightForWidth
-func miqt_exec_callback_QComboBox_HasHeightForWidth(self *C.QComboBox, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QComboBox_hasHeightForWidth
+func miqt_exec_callback_QComboBox_hasHeightForWidth(self *C.QComboBox, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1467,18 +1467,18 @@ func miqt_exec_callback_QComboBox_HasHeightForWidth(self *C.QComboBox, cb C.intp
 
 func (this *QComboBox) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return newQPaintEngine(C.QComboBox_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+	return newQPaintEngine(C.QComboBox_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QComboBox) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	ok := C.QComboBox_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QComboBox_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_PaintEngine
-func miqt_exec_callback_QComboBox_PaintEngine(self *C.QComboBox, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QComboBox_paintEngine
+func miqt_exec_callback_QComboBox_paintEngine(self *C.QComboBox, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1492,18 +1492,18 @@ func miqt_exec_callback_QComboBox_PaintEngine(self *C.QComboBox, cb C.intptr_t) 
 
 func (this *QComboBox) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
 
-	C.QComboBox_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QComboBox_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QComboBox_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QComboBox_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_MouseDoubleClickEvent
-func miqt_exec_callback_QComboBox_MouseDoubleClickEvent(self *C.QComboBox, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QComboBox_mouseDoubleClickEvent
+func miqt_exec_callback_QComboBox_mouseDoubleClickEvent(self *C.QComboBox, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1518,18 +1518,18 @@ func miqt_exec_callback_QComboBox_MouseDoubleClickEvent(self *C.QComboBox, cb C.
 
 func (this *QComboBox) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 
-	C.QComboBox_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QComboBox_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QComboBox_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnmouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QComboBox_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_MouseMoveEvent
-func miqt_exec_callback_QComboBox_MouseMoveEvent(self *C.QComboBox, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QComboBox_mouseMoveEvent
+func miqt_exec_callback_QComboBox_mouseMoveEvent(self *C.QComboBox, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1544,18 +1544,18 @@ func miqt_exec_callback_QComboBox_MouseMoveEvent(self *C.QComboBox, cb C.intptr_
 
 func (this *QComboBox) callVirtualBase_EnterEvent(event *QEvent) {
 
-	C.QComboBox_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QComboBox_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnEnterEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QComboBox_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnenterEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QComboBox_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_EnterEvent
-func miqt_exec_callback_QComboBox_EnterEvent(self *C.QComboBox, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QComboBox_enterEvent
+func miqt_exec_callback_QComboBox_enterEvent(self *C.QComboBox, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1570,18 +1570,18 @@ func miqt_exec_callback_QComboBox_EnterEvent(self *C.QComboBox, cb C.intptr_t, e
 
 func (this *QComboBox) callVirtualBase_LeaveEvent(event *QEvent) {
 
-	C.QComboBox_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QComboBox_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QComboBox_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QComboBox_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_LeaveEvent
-func miqt_exec_callback_QComboBox_LeaveEvent(self *C.QComboBox, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QComboBox_leaveEvent
+func miqt_exec_callback_QComboBox_leaveEvent(self *C.QComboBox, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1596,18 +1596,18 @@ func miqt_exec_callback_QComboBox_LeaveEvent(self *C.QComboBox, cb C.intptr_t, e
 
 func (this *QComboBox) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
-	C.QComboBox_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QComboBox_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
-	ok := C.QComboBox_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QComboBox_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_MoveEvent
-func miqt_exec_callback_QComboBox_MoveEvent(self *C.QComboBox, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QComboBox_moveEvent
+func miqt_exec_callback_QComboBox_moveEvent(self *C.QComboBox, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1622,18 +1622,18 @@ func miqt_exec_callback_QComboBox_MoveEvent(self *C.QComboBox, cb C.intptr_t, ev
 
 func (this *QComboBox) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
-	C.QComboBox_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QComboBox_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
-	ok := C.QComboBox_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QComboBox_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_CloseEvent
-func miqt_exec_callback_QComboBox_CloseEvent(self *C.QComboBox, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QComboBox_closeEvent
+func miqt_exec_callback_QComboBox_closeEvent(self *C.QComboBox, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1648,18 +1648,18 @@ func miqt_exec_callback_QComboBox_CloseEvent(self *C.QComboBox, cb C.intptr_t, e
 
 func (this *QComboBox) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
-	C.QComboBox_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QComboBox_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
-	ok := C.QComboBox_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QComboBox_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_TabletEvent
-func miqt_exec_callback_QComboBox_TabletEvent(self *C.QComboBox, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QComboBox_tabletEvent
+func miqt_exec_callback_QComboBox_tabletEvent(self *C.QComboBox, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1674,18 +1674,18 @@ func miqt_exec_callback_QComboBox_TabletEvent(self *C.QComboBox, cb C.intptr_t, 
 
 func (this *QComboBox) callVirtualBase_ActionEvent(event *QActionEvent) {
 
-	C.QComboBox_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QComboBox_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
-	ok := C.QComboBox_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QComboBox_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_ActionEvent
-func miqt_exec_callback_QComboBox_ActionEvent(self *C.QComboBox, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QComboBox_actionEvent
+func miqt_exec_callback_QComboBox_actionEvent(self *C.QComboBox, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1700,18 +1700,18 @@ func miqt_exec_callback_QComboBox_ActionEvent(self *C.QComboBox, cb C.intptr_t, 
 
 func (this *QComboBox) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
 
-	C.QComboBox_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QComboBox_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
-	ok := C.QComboBox_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	ok := C.QComboBox_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_DragEnterEvent
-func miqt_exec_callback_QComboBox_DragEnterEvent(self *C.QComboBox, cb C.intptr_t, event *C.QDragEnterEvent) {
+//export miqt_exec_callback_QComboBox_dragEnterEvent
+func miqt_exec_callback_QComboBox_dragEnterEvent(self *C.QComboBox, cb C.intptr_t, event *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragEnterEvent), event *QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1726,18 +1726,18 @@ func miqt_exec_callback_QComboBox_DragEnterEvent(self *C.QComboBox, cb C.intptr_
 
 func (this *QComboBox) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 
-	C.QComboBox_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QComboBox_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
-	ok := C.QComboBox_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	ok := C.QComboBox_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_DragMoveEvent
-func miqt_exec_callback_QComboBox_DragMoveEvent(self *C.QComboBox, cb C.intptr_t, event *C.QDragMoveEvent) {
+//export miqt_exec_callback_QComboBox_dragMoveEvent
+func miqt_exec_callback_QComboBox_dragMoveEvent(self *C.QComboBox, cb C.intptr_t, event *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragMoveEvent), event *QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1752,18 +1752,18 @@ func miqt_exec_callback_QComboBox_DragMoveEvent(self *C.QComboBox, cb C.intptr_t
 
 func (this *QComboBox) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
 
-	C.QComboBox_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QComboBox_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
-	ok := C.QComboBox_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	ok := C.QComboBox_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_DragLeaveEvent
-func miqt_exec_callback_QComboBox_DragLeaveEvent(self *C.QComboBox, cb C.intptr_t, event *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QComboBox_dragLeaveEvent
+func miqt_exec_callback_QComboBox_dragLeaveEvent(self *C.QComboBox, cb C.intptr_t, event *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1778,18 +1778,18 @@ func miqt_exec_callback_QComboBox_DragLeaveEvent(self *C.QComboBox, cb C.intptr_
 
 func (this *QComboBox) callVirtualBase_DropEvent(event *QDropEvent) {
 
-	C.QComboBox_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QComboBox_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
-	ok := C.QComboBox_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	ok := C.QComboBox_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_DropEvent
-func miqt_exec_callback_QComboBox_DropEvent(self *C.QComboBox, cb C.intptr_t, event *C.QDropEvent) {
+//export miqt_exec_callback_QComboBox_dropEvent
+func miqt_exec_callback_QComboBox_dropEvent(self *C.QComboBox, cb C.intptr_t, event *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1811,18 +1811,18 @@ func (this *QComboBox) callVirtualBase_NativeEvent(eventType []byte, message uns
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QComboBox_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
+	return (bool)(C.QComboBox_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QComboBox) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
-	ok := C.QComboBox_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	ok := C.QComboBox_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_NativeEvent
-func miqt_exec_callback_QComboBox_NativeEvent(self *C.QComboBox, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
+//export miqt_exec_callback_QComboBox_nativeEvent
+func miqt_exec_callback_QComboBox_nativeEvent(self *C.QComboBox, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1845,18 +1845,18 @@ func miqt_exec_callback_QComboBox_NativeEvent(self *C.QComboBox, cb C.intptr_t, 
 
 func (this *QComboBox) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QComboBox_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QComboBox_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QComboBox) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QComboBox_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QComboBox_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_Metric
-func miqt_exec_callback_QComboBox_Metric(self *C.QComboBox, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QComboBox_metric
+func miqt_exec_callback_QComboBox_metric(self *C.QComboBox, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1873,18 +1873,18 @@ func miqt_exec_callback_QComboBox_Metric(self *C.QComboBox, cb C.intptr_t, param
 
 func (this *QComboBox) callVirtualBase_InitPainter(painter *QPainter) {
 
-	C.QComboBox_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+	C.QComboBox_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QComboBox) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	ok := C.QComboBox_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QComboBox_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_InitPainter
-func miqt_exec_callback_QComboBox_InitPainter(self *C.QComboBox, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QComboBox_initPainter
+func miqt_exec_callback_QComboBox_initPainter(self *C.QComboBox, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1899,18 +1899,18 @@ func miqt_exec_callback_QComboBox_InitPainter(self *C.QComboBox, cb C.intptr_t, 
 
 func (this *QComboBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return newQPaintDevice(C.QComboBox_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+	return newQPaintDevice(C.QComboBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QComboBox) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	ok := C.QComboBox_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QComboBox_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_Redirected
-func miqt_exec_callback_QComboBox_Redirected(self *C.QComboBox, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QComboBox_redirected
+func miqt_exec_callback_QComboBox_redirected(self *C.QComboBox, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1927,18 +1927,18 @@ func miqt_exec_callback_QComboBox_Redirected(self *C.QComboBox, cb C.intptr_t, o
 
 func (this *QComboBox) callVirtualBase_SharedPainter() *QPainter {
 
-	return newQPainter(C.QComboBox_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+	return newQPainter(C.QComboBox_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QComboBox) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	ok := C.QComboBox_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QComboBox_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_SharedPainter
-func miqt_exec_callback_QComboBox_SharedPainter(self *C.QComboBox, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QComboBox_sharedPainter
+func miqt_exec_callback_QComboBox_sharedPainter(self *C.QComboBox, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1952,18 +1952,18 @@ func miqt_exec_callback_QComboBox_SharedPainter(self *C.QComboBox, cb C.intptr_t
 
 func (this *QComboBox) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QComboBox_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QComboBox_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QComboBox) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QComboBox_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QComboBox_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_FocusNextPrevChild
-func miqt_exec_callback_QComboBox_FocusNextPrevChild(self *C.QComboBox, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QComboBox_focusNextPrevChild
+func miqt_exec_callback_QComboBox_focusNextPrevChild(self *C.QComboBox, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1980,18 +1980,18 @@ func miqt_exec_callback_QComboBox_FocusNextPrevChild(self *C.QComboBox, cb C.int
 
 func (this *QComboBox) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QComboBox_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QComboBox_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QComboBox) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QComboBox_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QComboBox_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_EventFilter
-func miqt_exec_callback_QComboBox_EventFilter(self *C.QComboBox, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QComboBox_eventFilter
+func miqt_exec_callback_QComboBox_eventFilter(self *C.QComboBox, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2010,18 +2010,18 @@ func miqt_exec_callback_QComboBox_EventFilter(self *C.QComboBox, cb C.intptr_t, 
 
 func (this *QComboBox) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QComboBox_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QComboBox_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QComboBox_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QComboBox_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_TimerEvent
-func miqt_exec_callback_QComboBox_TimerEvent(self *C.QComboBox, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QComboBox_timerEvent
+func miqt_exec_callback_QComboBox_timerEvent(self *C.QComboBox, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2036,18 +2036,18 @@ func miqt_exec_callback_QComboBox_TimerEvent(self *C.QComboBox, cb C.intptr_t, e
 
 func (this *QComboBox) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QComboBox_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QComboBox_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QComboBox_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QComboBox_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_ChildEvent
-func miqt_exec_callback_QComboBox_ChildEvent(self *C.QComboBox, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QComboBox_childEvent
+func miqt_exec_callback_QComboBox_childEvent(self *C.QComboBox, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2062,18 +2062,18 @@ func miqt_exec_callback_QComboBox_ChildEvent(self *C.QComboBox, cb C.intptr_t, e
 
 func (this *QComboBox) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QComboBox_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QComboBox_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QComboBox_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QComboBox_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_CustomEvent
-func miqt_exec_callback_QComboBox_CustomEvent(self *C.QComboBox, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QComboBox_customEvent
+func miqt_exec_callback_QComboBox_customEvent(self *C.QComboBox, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2088,18 +2088,18 @@ func miqt_exec_callback_QComboBox_CustomEvent(self *C.QComboBox, cb C.intptr_t, 
 
 func (this *QComboBox) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QComboBox_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QComboBox_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QComboBox) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QComboBox_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QComboBox_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_ConnectNotify
-func miqt_exec_callback_QComboBox_ConnectNotify(self *C.QComboBox, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QComboBox_connectNotify
+func miqt_exec_callback_QComboBox_connectNotify(self *C.QComboBox, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2114,18 +2114,18 @@ func miqt_exec_callback_QComboBox_ConnectNotify(self *C.QComboBox, cb C.intptr_t
 
 func (this *QComboBox) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QComboBox_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QComboBox_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QComboBox) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QComboBox_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QComboBox) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QComboBox_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QComboBox_DisconnectNotify
-func miqt_exec_callback_QComboBox_DisconnectNotify(self *C.QComboBox, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QComboBox_disconnectNotify
+func miqt_exec_callback_QComboBox_disconnectNotify(self *C.QComboBox, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2140,7 +2140,7 @@ func miqt_exec_callback_QComboBox_DisconnectNotify(self *C.QComboBox, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QComboBox) Delete() {
-	C.QComboBox_Delete(this.h)
+	C.QComboBox_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

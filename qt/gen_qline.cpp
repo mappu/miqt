@@ -29,87 +29,87 @@ QLine* QLine_new4(QLine* param1) {
 	return new QLine(*param1);
 }
 
-bool QLine_IsNull(const QLine* self) {
+bool QLine_isNull(const QLine* self) {
 	return self->isNull();
 }
 
-QPoint* QLine_P1(const QLine* self) {
+QPoint* QLine_p1(const QLine* self) {
 	return new QPoint(self->p1());
 }
 
-QPoint* QLine_P2(const QLine* self) {
+QPoint* QLine_p2(const QLine* self) {
 	return new QPoint(self->p2());
 }
 
-int QLine_X1(const QLine* self) {
+int QLine_x1(const QLine* self) {
 	return self->x1();
 }
 
-int QLine_Y1(const QLine* self) {
+int QLine_y1(const QLine* self) {
 	return self->y1();
 }
 
-int QLine_X2(const QLine* self) {
+int QLine_x2(const QLine* self) {
 	return self->x2();
 }
 
-int QLine_Y2(const QLine* self) {
+int QLine_y2(const QLine* self) {
 	return self->y2();
 }
 
-int QLine_Dx(const QLine* self) {
+int QLine_dx(const QLine* self) {
 	return self->dx();
 }
 
-int QLine_Dy(const QLine* self) {
+int QLine_dy(const QLine* self) {
 	return self->dy();
 }
 
-void QLine_Translate(QLine* self, QPoint* p) {
+void QLine_translate(QLine* self, QPoint* p) {
 	self->translate(*p);
 }
 
-void QLine_Translate2(QLine* self, int dx, int dy) {
+void QLine_translate2(QLine* self, int dx, int dy) {
 	self->translate(static_cast<int>(dx), static_cast<int>(dy));
 }
 
-QLine* QLine_Translated(const QLine* self, QPoint* p) {
+QLine* QLine_translated(const QLine* self, QPoint* p) {
 	return new QLine(self->translated(*p));
 }
 
-QLine* QLine_Translated2(const QLine* self, int dx, int dy) {
+QLine* QLine_translated2(const QLine* self, int dx, int dy) {
 	return new QLine(self->translated(static_cast<int>(dx), static_cast<int>(dy)));
 }
 
-QPoint* QLine_Center(const QLine* self) {
+QPoint* QLine_center(const QLine* self) {
 	return new QPoint(self->center());
 }
 
-void QLine_SetP1(QLine* self, QPoint* p1) {
+void QLine_setP1(QLine* self, QPoint* p1) {
 	self->setP1(*p1);
 }
 
-void QLine_SetP2(QLine* self, QPoint* p2) {
+void QLine_setP2(QLine* self, QPoint* p2) {
 	self->setP2(*p2);
 }
 
-void QLine_SetPoints(QLine* self, QPoint* p1, QPoint* p2) {
+void QLine_setPoints(QLine* self, QPoint* p1, QPoint* p2) {
 	self->setPoints(*p1, *p2);
 }
 
-void QLine_SetLine(QLine* self, int x1, int y1, int x2, int y2) {
+void QLine_setLine(QLine* self, int x1, int y1, int x2, int y2) {
 	self->setLine(static_cast<int>(x1), static_cast<int>(y1), static_cast<int>(x2), static_cast<int>(y2));
 }
 
-bool QLine_OperatorEqual(const QLine* self, QLine* d) {
+bool QLine_operatorEqual(const QLine* self, QLine* d) {
 	return (*self == *d);
 }
 
-bool QLine_OperatorNotEqual(const QLine* self, QLine* d) {
+bool QLine_operatorNotEqual(const QLine* self, QLine* d) {
 	return (*self != *d);
 }
 
-void QLine_Delete(QLine* self) {
+void QLine_delete(QLine* self) {
 	delete self;
 }
 
@@ -133,151 +133,151 @@ QLineF* QLineF_new5(QLineF* param1) {
 	return new QLineF(*param1);
 }
 
-QLineF* QLineF_FromPolar(double length, double angle) {
+QLineF* QLineF_fromPolar(double length, double angle) {
 	return new QLineF(QLineF::fromPolar(static_cast<qreal>(length), static_cast<qreal>(angle)));
 }
 
-bool QLineF_IsNull(const QLineF* self) {
+bool QLineF_isNull(const QLineF* self) {
 	return self->isNull();
 }
 
-QPointF* QLineF_P1(const QLineF* self) {
+QPointF* QLineF_p1(const QLineF* self) {
 	return new QPointF(self->p1());
 }
 
-QPointF* QLineF_P2(const QLineF* self) {
+QPointF* QLineF_p2(const QLineF* self) {
 	return new QPointF(self->p2());
 }
 
-double QLineF_X1(const QLineF* self) {
+double QLineF_x1(const QLineF* self) {
 	qreal _ret = self->x1();
 	return static_cast<double>(_ret);
 }
 
-double QLineF_Y1(const QLineF* self) {
+double QLineF_y1(const QLineF* self) {
 	qreal _ret = self->y1();
 	return static_cast<double>(_ret);
 }
 
-double QLineF_X2(const QLineF* self) {
+double QLineF_x2(const QLineF* self) {
 	qreal _ret = self->x2();
 	return static_cast<double>(_ret);
 }
 
-double QLineF_Y2(const QLineF* self) {
+double QLineF_y2(const QLineF* self) {
 	qreal _ret = self->y2();
 	return static_cast<double>(_ret);
 }
 
-double QLineF_Dx(const QLineF* self) {
+double QLineF_dx(const QLineF* self) {
 	qreal _ret = self->dx();
 	return static_cast<double>(_ret);
 }
 
-double QLineF_Dy(const QLineF* self) {
+double QLineF_dy(const QLineF* self) {
 	qreal _ret = self->dy();
 	return static_cast<double>(_ret);
 }
 
-double QLineF_Length(const QLineF* self) {
+double QLineF_length(const QLineF* self) {
 	qreal _ret = self->length();
 	return static_cast<double>(_ret);
 }
 
-void QLineF_SetLength(QLineF* self, double lenVal) {
-	self->setLength(static_cast<qreal>(lenVal));
+void QLineF_setLength(QLineF* self, double len) {
+	self->setLength(static_cast<qreal>(len));
 }
 
-double QLineF_Angle(const QLineF* self) {
+double QLineF_angle(const QLineF* self) {
 	qreal _ret = self->angle();
 	return static_cast<double>(_ret);
 }
 
-void QLineF_SetAngle(QLineF* self, double angle) {
+void QLineF_setAngle(QLineF* self, double angle) {
 	self->setAngle(static_cast<qreal>(angle));
 }
 
-double QLineF_AngleTo(const QLineF* self, QLineF* l) {
+double QLineF_angleTo(const QLineF* self, QLineF* l) {
 	qreal _ret = self->angleTo(*l);
 	return static_cast<double>(_ret);
 }
 
-QLineF* QLineF_UnitVector(const QLineF* self) {
+QLineF* QLineF_unitVector(const QLineF* self) {
 	return new QLineF(self->unitVector());
 }
 
-QLineF* QLineF_NormalVector(const QLineF* self) {
+QLineF* QLineF_normalVector(const QLineF* self) {
 	return new QLineF(self->normalVector());
 }
 
-int QLineF_Intersects(const QLineF* self, QLineF* l, QPointF* intersectionPoint) {
+int QLineF_intersects(const QLineF* self, QLineF* l, QPointF* intersectionPoint) {
 	QLineF::IntersectionType _ret = self->intersects(*l, intersectionPoint);
 	return static_cast<int>(_ret);
 }
 
-int QLineF_Intersect(const QLineF* self, QLineF* l, QPointF* intersectionPoint) {
+int QLineF_intersect(const QLineF* self, QLineF* l, QPointF* intersectionPoint) {
 	QLineF::IntersectType _ret = self->intersect(*l, intersectionPoint);
 	return static_cast<int>(_ret);
 }
 
-double QLineF_AngleWithQLineF(const QLineF* self, QLineF* l) {
+double QLineF_angleWithQLineF(const QLineF* self, QLineF* l) {
 	qreal _ret = self->angle(*l);
 	return static_cast<double>(_ret);
 }
 
-QPointF* QLineF_PointAt(const QLineF* self, double t) {
+QPointF* QLineF_pointAt(const QLineF* self, double t) {
 	return new QPointF(self->pointAt(static_cast<qreal>(t)));
 }
 
-void QLineF_Translate(QLineF* self, QPointF* p) {
+void QLineF_translate(QLineF* self, QPointF* p) {
 	self->translate(*p);
 }
 
-void QLineF_Translate2(QLineF* self, double dx, double dy) {
+void QLineF_translate2(QLineF* self, double dx, double dy) {
 	self->translate(static_cast<qreal>(dx), static_cast<qreal>(dy));
 }
 
-QLineF* QLineF_Translated(const QLineF* self, QPointF* p) {
+QLineF* QLineF_translated(const QLineF* self, QPointF* p) {
 	return new QLineF(self->translated(*p));
 }
 
-QLineF* QLineF_Translated2(const QLineF* self, double dx, double dy) {
+QLineF* QLineF_translated2(const QLineF* self, double dx, double dy) {
 	return new QLineF(self->translated(static_cast<qreal>(dx), static_cast<qreal>(dy)));
 }
 
-QPointF* QLineF_Center(const QLineF* self) {
+QPointF* QLineF_center(const QLineF* self) {
 	return new QPointF(self->center());
 }
 
-void QLineF_SetP1(QLineF* self, QPointF* p1) {
+void QLineF_setP1(QLineF* self, QPointF* p1) {
 	self->setP1(*p1);
 }
 
-void QLineF_SetP2(QLineF* self, QPointF* p2) {
+void QLineF_setP2(QLineF* self, QPointF* p2) {
 	self->setP2(*p2);
 }
 
-void QLineF_SetPoints(QLineF* self, QPointF* p1, QPointF* p2) {
+void QLineF_setPoints(QLineF* self, QPointF* p1, QPointF* p2) {
 	self->setPoints(*p1, *p2);
 }
 
-void QLineF_SetLine(QLineF* self, double x1, double y1, double x2, double y2) {
+void QLineF_setLine(QLineF* self, double x1, double y1, double x2, double y2) {
 	self->setLine(static_cast<qreal>(x1), static_cast<qreal>(y1), static_cast<qreal>(x2), static_cast<qreal>(y2));
 }
 
-bool QLineF_OperatorEqual(const QLineF* self, QLineF* d) {
+bool QLineF_operatorEqual(const QLineF* self, QLineF* d) {
 	return (*self == *d);
 }
 
-bool QLineF_OperatorNotEqual(const QLineF* self, QLineF* d) {
+bool QLineF_operatorNotEqual(const QLineF* self, QLineF* d) {
 	return (*self != *d);
 }
 
-QLine* QLineF_ToLine(const QLineF* self) {
+QLine* QLineF_toLine(const QLineF* self) {
 	return new QLine(self->toLine());
 }
 
-void QLineF_Delete(QLineF* self) {
+void QLineF_delete(QLineF* self) {
 	delete self;
 }
 

@@ -87,26 +87,26 @@ func NewQDnsDomainNameRecord2(other *QDnsDomainNameRecord) *QDnsDomainNameRecord
 }
 
 func (this *QDnsDomainNameRecord) OperatorAssign(other *QDnsDomainNameRecord) {
-	C.QDnsDomainNameRecord_OperatorAssign(this.h, other.cPointer())
+	C.QDnsDomainNameRecord_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QDnsDomainNameRecord) Swap(other *QDnsDomainNameRecord) {
-	C.QDnsDomainNameRecord_Swap(this.h, other.cPointer())
+	C.QDnsDomainNameRecord_swap(this.h, other.cPointer())
 }
 
 func (this *QDnsDomainNameRecord) Name() string {
-	var _ms C.struct_miqt_string = C.QDnsDomainNameRecord_Name(this.h)
+	var _ms C.struct_miqt_string = C.QDnsDomainNameRecord_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDnsDomainNameRecord) TimeToLive() uint {
-	return (uint)(C.QDnsDomainNameRecord_TimeToLive(this.h))
+	return (uint)(C.QDnsDomainNameRecord_timeToLive(this.h))
 }
 
 func (this *QDnsDomainNameRecord) Value() string {
-	var _ms C.struct_miqt_string = C.QDnsDomainNameRecord_Value(this.h)
+	var _ms C.struct_miqt_string = C.QDnsDomainNameRecord_value(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -114,7 +114,7 @@ func (this *QDnsDomainNameRecord) Value() string {
 
 // Delete this object from C++ memory.
 func (this *QDnsDomainNameRecord) Delete() {
-	C.QDnsDomainNameRecord_Delete(this.h)
+	C.QDnsDomainNameRecord_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -171,33 +171,33 @@ func NewQDnsHostAddressRecord2(other *QDnsHostAddressRecord) *QDnsHostAddressRec
 }
 
 func (this *QDnsHostAddressRecord) OperatorAssign(other *QDnsHostAddressRecord) {
-	C.QDnsHostAddressRecord_OperatorAssign(this.h, other.cPointer())
+	C.QDnsHostAddressRecord_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QDnsHostAddressRecord) Swap(other *QDnsHostAddressRecord) {
-	C.QDnsHostAddressRecord_Swap(this.h, other.cPointer())
+	C.QDnsHostAddressRecord_swap(this.h, other.cPointer())
 }
 
 func (this *QDnsHostAddressRecord) Name() string {
-	var _ms C.struct_miqt_string = C.QDnsHostAddressRecord_Name(this.h)
+	var _ms C.struct_miqt_string = C.QDnsHostAddressRecord_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDnsHostAddressRecord) TimeToLive() uint {
-	return (uint)(C.QDnsHostAddressRecord_TimeToLive(this.h))
+	return (uint)(C.QDnsHostAddressRecord_timeToLive(this.h))
 }
 
 func (this *QDnsHostAddressRecord) Value() *QHostAddress {
-	_goptr := newQHostAddress(C.QDnsHostAddressRecord_Value(this.h))
+	_goptr := newQHostAddress(C.QDnsHostAddressRecord_value(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QDnsHostAddressRecord) Delete() {
-	C.QDnsHostAddressRecord_Delete(this.h)
+	C.QDnsHostAddressRecord_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -254,38 +254,38 @@ func NewQDnsMailExchangeRecord2(other *QDnsMailExchangeRecord) *QDnsMailExchange
 }
 
 func (this *QDnsMailExchangeRecord) OperatorAssign(other *QDnsMailExchangeRecord) {
-	C.QDnsMailExchangeRecord_OperatorAssign(this.h, other.cPointer())
+	C.QDnsMailExchangeRecord_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QDnsMailExchangeRecord) Swap(other *QDnsMailExchangeRecord) {
-	C.QDnsMailExchangeRecord_Swap(this.h, other.cPointer())
+	C.QDnsMailExchangeRecord_swap(this.h, other.cPointer())
 }
 
 func (this *QDnsMailExchangeRecord) Exchange() string {
-	var _ms C.struct_miqt_string = C.QDnsMailExchangeRecord_Exchange(this.h)
+	var _ms C.struct_miqt_string = C.QDnsMailExchangeRecord_exchange(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDnsMailExchangeRecord) Name() string {
-	var _ms C.struct_miqt_string = C.QDnsMailExchangeRecord_Name(this.h)
+	var _ms C.struct_miqt_string = C.QDnsMailExchangeRecord_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDnsMailExchangeRecord) Preference() uint16 {
-	return (uint16)(C.QDnsMailExchangeRecord_Preference(this.h))
+	return (uint16)(C.QDnsMailExchangeRecord_preference(this.h))
 }
 
 func (this *QDnsMailExchangeRecord) TimeToLive() uint {
-	return (uint)(C.QDnsMailExchangeRecord_TimeToLive(this.h))
+	return (uint)(C.QDnsMailExchangeRecord_timeToLive(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QDnsMailExchangeRecord) Delete() {
-	C.QDnsMailExchangeRecord_Delete(this.h)
+	C.QDnsMailExchangeRecord_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -342,46 +342,46 @@ func NewQDnsServiceRecord2(other *QDnsServiceRecord) *QDnsServiceRecord {
 }
 
 func (this *QDnsServiceRecord) OperatorAssign(other *QDnsServiceRecord) {
-	C.QDnsServiceRecord_OperatorAssign(this.h, other.cPointer())
+	C.QDnsServiceRecord_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QDnsServiceRecord) Swap(other *QDnsServiceRecord) {
-	C.QDnsServiceRecord_Swap(this.h, other.cPointer())
+	C.QDnsServiceRecord_swap(this.h, other.cPointer())
 }
 
 func (this *QDnsServiceRecord) Name() string {
-	var _ms C.struct_miqt_string = C.QDnsServiceRecord_Name(this.h)
+	var _ms C.struct_miqt_string = C.QDnsServiceRecord_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDnsServiceRecord) Port() uint16 {
-	return (uint16)(C.QDnsServiceRecord_Port(this.h))
+	return (uint16)(C.QDnsServiceRecord_port(this.h))
 }
 
 func (this *QDnsServiceRecord) Priority() uint16 {
-	return (uint16)(C.QDnsServiceRecord_Priority(this.h))
+	return (uint16)(C.QDnsServiceRecord_priority(this.h))
 }
 
 func (this *QDnsServiceRecord) Target() string {
-	var _ms C.struct_miqt_string = C.QDnsServiceRecord_Target(this.h)
+	var _ms C.struct_miqt_string = C.QDnsServiceRecord_target(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDnsServiceRecord) TimeToLive() uint {
-	return (uint)(C.QDnsServiceRecord_TimeToLive(this.h))
+	return (uint)(C.QDnsServiceRecord_timeToLive(this.h))
 }
 
 func (this *QDnsServiceRecord) Weight() uint16 {
-	return (uint16)(C.QDnsServiceRecord_Weight(this.h))
+	return (uint16)(C.QDnsServiceRecord_weight(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QDnsServiceRecord) Delete() {
-	C.QDnsServiceRecord_Delete(this.h)
+	C.QDnsServiceRecord_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -438,26 +438,26 @@ func NewQDnsTextRecord2(other *QDnsTextRecord) *QDnsTextRecord {
 }
 
 func (this *QDnsTextRecord) OperatorAssign(other *QDnsTextRecord) {
-	C.QDnsTextRecord_OperatorAssign(this.h, other.cPointer())
+	C.QDnsTextRecord_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QDnsTextRecord) Swap(other *QDnsTextRecord) {
-	C.QDnsTextRecord_Swap(this.h, other.cPointer())
+	C.QDnsTextRecord_swap(this.h, other.cPointer())
 }
 
 func (this *QDnsTextRecord) Name() string {
-	var _ms C.struct_miqt_string = C.QDnsTextRecord_Name(this.h)
+	var _ms C.struct_miqt_string = C.QDnsTextRecord_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDnsTextRecord) TimeToLive() uint {
-	return (uint)(C.QDnsTextRecord_TimeToLive(this.h))
+	return (uint)(C.QDnsTextRecord_timeToLive(this.h))
 }
 
 func (this *QDnsTextRecord) Values() [][]byte {
-	var _ma C.struct_miqt_array = C.QDnsTextRecord_Values(this.h)
+	var _ma C.struct_miqt_array = C.QDnsTextRecord_values(this.h)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -471,7 +471,7 @@ func (this *QDnsTextRecord) Values() [][]byte {
 
 // Delete this object from C++ memory.
 func (this *QDnsTextRecord) Delete() {
-	C.QDnsTextRecord_Delete(this.h)
+	C.QDnsTextRecord_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -572,19 +572,19 @@ func NewQDnsLookup6(typeVal QDnsLookup__Type, name string, nameserver *QHostAddr
 }
 
 func (this *QDnsLookup) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QDnsLookup_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QDnsLookup_metaObject(this.h)))
 }
 
 func (this *QDnsLookup) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QDnsLookup_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QDnsLookup_metacast(this.h, param1_Cstring))
 }
 
 func QDnsLookup_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QDnsLookup_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QDnsLookup_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -593,29 +593,29 @@ func QDnsLookup_Tr(s string) string {
 func QDnsLookup_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QDnsLookup_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QDnsLookup_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDnsLookup) Error() QDnsLookup__Error {
-	return (QDnsLookup__Error)(C.QDnsLookup_Error(this.h))
+	return (QDnsLookup__Error)(C.QDnsLookup_error(this.h))
 }
 
 func (this *QDnsLookup) ErrorString() string {
-	var _ms C.struct_miqt_string = C.QDnsLookup_ErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QDnsLookup_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDnsLookup) IsFinished() bool {
-	return (bool)(C.QDnsLookup_IsFinished(this.h))
+	return (bool)(C.QDnsLookup_isFinished(this.h))
 }
 
 func (this *QDnsLookup) Name() string {
-	var _ms C.struct_miqt_string = C.QDnsLookup_Name(this.h)
+	var _ms C.struct_miqt_string = C.QDnsLookup_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -626,29 +626,29 @@ func (this *QDnsLookup) SetName(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QDnsLookup_SetName(this.h, name_ms)
+	C.QDnsLookup_setName(this.h, name_ms)
 }
 
 func (this *QDnsLookup) Type() QDnsLookup__Type {
-	return (QDnsLookup__Type)(C.QDnsLookup_Type(this.h))
+	return (QDnsLookup__Type)(C.QDnsLookup_type(this.h))
 }
 
 func (this *QDnsLookup) SetType(typeVal QDnsLookup__Type) {
-	C.QDnsLookup_SetType(this.h, (C.int)(typeVal))
+	C.QDnsLookup_setType(this.h, (C.int)(typeVal))
 }
 
 func (this *QDnsLookup) Nameserver() *QHostAddress {
-	_goptr := newQHostAddress(C.QDnsLookup_Nameserver(this.h))
+	_goptr := newQHostAddress(C.QDnsLookup_nameserver(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDnsLookup) SetNameserver(nameserver *QHostAddress) {
-	C.QDnsLookup_SetNameserver(this.h, nameserver.cPointer())
+	C.QDnsLookup_setNameserver(this.h, nameserver.cPointer())
 }
 
 func (this *QDnsLookup) CanonicalNameRecords() []QDnsDomainNameRecord {
-	var _ma C.struct_miqt_array = C.QDnsLookup_CanonicalNameRecords(this.h)
+	var _ma C.struct_miqt_array = C.QDnsLookup_canonicalNameRecords(this.h)
 	_ret := make([]QDnsDomainNameRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -660,7 +660,7 @@ func (this *QDnsLookup) CanonicalNameRecords() []QDnsDomainNameRecord {
 }
 
 func (this *QDnsLookup) HostAddressRecords() []QDnsHostAddressRecord {
-	var _ma C.struct_miqt_array = C.QDnsLookup_HostAddressRecords(this.h)
+	var _ma C.struct_miqt_array = C.QDnsLookup_hostAddressRecords(this.h)
 	_ret := make([]QDnsHostAddressRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsHostAddressRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -672,7 +672,7 @@ func (this *QDnsLookup) HostAddressRecords() []QDnsHostAddressRecord {
 }
 
 func (this *QDnsLookup) MailExchangeRecords() []QDnsMailExchangeRecord {
-	var _ma C.struct_miqt_array = C.QDnsLookup_MailExchangeRecords(this.h)
+	var _ma C.struct_miqt_array = C.QDnsLookup_mailExchangeRecords(this.h)
 	_ret := make([]QDnsMailExchangeRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsMailExchangeRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -684,7 +684,7 @@ func (this *QDnsLookup) MailExchangeRecords() []QDnsMailExchangeRecord {
 }
 
 func (this *QDnsLookup) NameServerRecords() []QDnsDomainNameRecord {
-	var _ma C.struct_miqt_array = C.QDnsLookup_NameServerRecords(this.h)
+	var _ma C.struct_miqt_array = C.QDnsLookup_nameServerRecords(this.h)
 	_ret := make([]QDnsDomainNameRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -696,7 +696,7 @@ func (this *QDnsLookup) NameServerRecords() []QDnsDomainNameRecord {
 }
 
 func (this *QDnsLookup) PointerRecords() []QDnsDomainNameRecord {
-	var _ma C.struct_miqt_array = C.QDnsLookup_PointerRecords(this.h)
+	var _ma C.struct_miqt_array = C.QDnsLookup_pointerRecords(this.h)
 	_ret := make([]QDnsDomainNameRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsDomainNameRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -708,7 +708,7 @@ func (this *QDnsLookup) PointerRecords() []QDnsDomainNameRecord {
 }
 
 func (this *QDnsLookup) ServiceRecords() []QDnsServiceRecord {
-	var _ma C.struct_miqt_array = C.QDnsLookup_ServiceRecords(this.h)
+	var _ma C.struct_miqt_array = C.QDnsLookup_serviceRecords(this.h)
 	_ret := make([]QDnsServiceRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsServiceRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -720,7 +720,7 @@ func (this *QDnsLookup) ServiceRecords() []QDnsServiceRecord {
 }
 
 func (this *QDnsLookup) TextRecords() []QDnsTextRecord {
-	var _ma C.struct_miqt_array = C.QDnsLookup_TextRecords(this.h)
+	var _ma C.struct_miqt_array = C.QDnsLookup_textRecords(this.h)
 	_ret := make([]QDnsTextRecord, int(_ma.len))
 	_outCast := (*[0xffff]*C.QDnsTextRecord)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -732,22 +732,22 @@ func (this *QDnsLookup) TextRecords() []QDnsTextRecord {
 }
 
 func (this *QDnsLookup) Abort() {
-	C.QDnsLookup_Abort(this.h)
+	C.QDnsLookup_abort(this.h)
 }
 
 func (this *QDnsLookup) Lookup() {
-	C.QDnsLookup_Lookup(this.h)
+	C.QDnsLookup_lookup(this.h)
 }
 
 func (this *QDnsLookup) Finished() {
-	C.QDnsLookup_Finished(this.h)
+	C.QDnsLookup_finished(this.h)
 }
 func (this *QDnsLookup) OnFinished(slot func()) {
-	C.QDnsLookup_connect_Finished(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QDnsLookup_connect_finished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QDnsLookup_Finished
-func miqt_exec_callback_QDnsLookup_Finished(cb C.intptr_t) {
+//export miqt_exec_callback_QDnsLookup_finished
+func miqt_exec_callback_QDnsLookup_finished(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -761,14 +761,14 @@ func (this *QDnsLookup) NameChanged(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QDnsLookup_NameChanged(this.h, name_ms)
+	C.QDnsLookup_nameChanged(this.h, name_ms)
 }
 func (this *QDnsLookup) OnNameChanged(slot func(name string)) {
-	C.QDnsLookup_connect_NameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QDnsLookup_connect_nameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QDnsLookup_NameChanged
-func miqt_exec_callback_QDnsLookup_NameChanged(cb C.intptr_t, name C.struct_miqt_string) {
+//export miqt_exec_callback_QDnsLookup_nameChanged
+func miqt_exec_callback_QDnsLookup_nameChanged(cb C.intptr_t, name C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(name string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -784,14 +784,14 @@ func miqt_exec_callback_QDnsLookup_NameChanged(cb C.intptr_t, name C.struct_miqt
 }
 
 func (this *QDnsLookup) TypeChanged(typeVal QDnsLookup__Type) {
-	C.QDnsLookup_TypeChanged(this.h, (C.int)(typeVal))
+	C.QDnsLookup_typeChanged(this.h, (C.int)(typeVal))
 }
 func (this *QDnsLookup) OnTypeChanged(slot func(typeVal QDnsLookup__Type)) {
-	C.QDnsLookup_connect_TypeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QDnsLookup_connect_typeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QDnsLookup_TypeChanged
-func miqt_exec_callback_QDnsLookup_TypeChanged(cb C.intptr_t, typeVal C.int) {
+//export miqt_exec_callback_QDnsLookup_typeChanged
+func miqt_exec_callback_QDnsLookup_typeChanged(cb C.intptr_t, typeVal C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(typeVal QDnsLookup__Type))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -804,14 +804,14 @@ func miqt_exec_callback_QDnsLookup_TypeChanged(cb C.intptr_t, typeVal C.int) {
 }
 
 func (this *QDnsLookup) NameserverChanged(nameserver *QHostAddress) {
-	C.QDnsLookup_NameserverChanged(this.h, nameserver.cPointer())
+	C.QDnsLookup_nameserverChanged(this.h, nameserver.cPointer())
 }
 func (this *QDnsLookup) OnNameserverChanged(slot func(nameserver *QHostAddress)) {
-	C.QDnsLookup_connect_NameserverChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QDnsLookup_connect_nameserverChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QDnsLookup_NameserverChanged
-func miqt_exec_callback_QDnsLookup_NameserverChanged(cb C.intptr_t, nameserver *C.QHostAddress) {
+//export miqt_exec_callback_QDnsLookup_nameserverChanged
+func miqt_exec_callback_QDnsLookup_nameserverChanged(cb C.intptr_t, nameserver *C.QHostAddress) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(nameserver *QHostAddress))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -828,7 +828,7 @@ func QDnsLookup_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QDnsLookup_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QDnsLookup_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -839,7 +839,7 @@ func QDnsLookup_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QDnsLookup_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QDnsLookup_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -850,7 +850,7 @@ func QDnsLookup_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QDnsLookup_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QDnsLookup_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -861,7 +861,7 @@ func QDnsLookup_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QDnsLookup_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QDnsLookup_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -869,18 +869,18 @@ func QDnsLookup_TrUtf83(s string, c string, n int) string {
 
 func (this *QDnsLookup) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.QDnsLookup_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QDnsLookup_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QDnsLookup) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.QDnsLookup_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDnsLookup) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QDnsLookup_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDnsLookup_Event
-func miqt_exec_callback_QDnsLookup_Event(self *C.QDnsLookup, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QDnsLookup_event
+func miqt_exec_callback_QDnsLookup_event(self *C.QDnsLookup, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -897,18 +897,18 @@ func miqt_exec_callback_QDnsLookup_Event(self *C.QDnsLookup, cb C.intptr_t, even
 
 func (this *QDnsLookup) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.QDnsLookup_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QDnsLookup_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QDnsLookup) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.QDnsLookup_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDnsLookup) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QDnsLookup_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDnsLookup_EventFilter
-func miqt_exec_callback_QDnsLookup_EventFilter(self *C.QDnsLookup, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QDnsLookup_eventFilter
+func miqt_exec_callback_QDnsLookup_eventFilter(self *C.QDnsLookup, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -927,18 +927,18 @@ func miqt_exec_callback_QDnsLookup_EventFilter(self *C.QDnsLookup, cb C.intptr_t
 
 func (this *QDnsLookup) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QDnsLookup_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QDnsLookup_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QDnsLookup) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QDnsLookup_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDnsLookup) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QDnsLookup_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDnsLookup_TimerEvent
-func miqt_exec_callback_QDnsLookup_TimerEvent(self *C.QDnsLookup, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QDnsLookup_timerEvent
+func miqt_exec_callback_QDnsLookup_timerEvent(self *C.QDnsLookup, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -953,18 +953,18 @@ func miqt_exec_callback_QDnsLookup_TimerEvent(self *C.QDnsLookup, cb C.intptr_t,
 
 func (this *QDnsLookup) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QDnsLookup_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QDnsLookup_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QDnsLookup) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QDnsLookup_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDnsLookup) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QDnsLookup_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDnsLookup_ChildEvent
-func miqt_exec_callback_QDnsLookup_ChildEvent(self *C.QDnsLookup, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QDnsLookup_childEvent
+func miqt_exec_callback_QDnsLookup_childEvent(self *C.QDnsLookup, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -979,18 +979,18 @@ func miqt_exec_callback_QDnsLookup_ChildEvent(self *C.QDnsLookup, cb C.intptr_t,
 
 func (this *QDnsLookup) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QDnsLookup_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QDnsLookup_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QDnsLookup) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QDnsLookup_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDnsLookup) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QDnsLookup_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDnsLookup_CustomEvent
-func miqt_exec_callback_QDnsLookup_CustomEvent(self *C.QDnsLookup, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QDnsLookup_customEvent
+func miqt_exec_callback_QDnsLookup_customEvent(self *C.QDnsLookup, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1005,18 +1005,18 @@ func miqt_exec_callback_QDnsLookup_CustomEvent(self *C.QDnsLookup, cb C.intptr_t
 
 func (this *QDnsLookup) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QDnsLookup_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QDnsLookup_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QDnsLookup) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QDnsLookup_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDnsLookup) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QDnsLookup_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDnsLookup_ConnectNotify
-func miqt_exec_callback_QDnsLookup_ConnectNotify(self *C.QDnsLookup, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QDnsLookup_connectNotify
+func miqt_exec_callback_QDnsLookup_connectNotify(self *C.QDnsLookup, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1031,18 +1031,18 @@ func miqt_exec_callback_QDnsLookup_ConnectNotify(self *C.QDnsLookup, cb C.intptr
 
 func (this *QDnsLookup) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QDnsLookup_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QDnsLookup_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QDnsLookup) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QDnsLookup_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDnsLookup) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QDnsLookup_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDnsLookup_DisconnectNotify
-func miqt_exec_callback_QDnsLookup_DisconnectNotify(self *C.QDnsLookup, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QDnsLookup_disconnectNotify
+func miqt_exec_callback_QDnsLookup_disconnectNotify(self *C.QDnsLookup, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1057,7 +1057,7 @@ func miqt_exec_callback_QDnsLookup_DisconnectNotify(self *C.QDnsLookup, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QDnsLookup) Delete() {
-	C.QDnsLookup_Delete(this.h)
+	C.QDnsLookup_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

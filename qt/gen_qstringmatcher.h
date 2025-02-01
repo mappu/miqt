@@ -24,23 +24,23 @@ typedef struct QStringMatcher QStringMatcher;
 
 QStringMatcher* QStringMatcher_new();
 QStringMatcher* QStringMatcher_new2(struct miqt_string pattern);
-QStringMatcher* QStringMatcher_new3(QChar* uc, int lenVal);
+QStringMatcher* QStringMatcher_new3(QChar* uc, int len);
 QStringMatcher* QStringMatcher_new4(QStringMatcher* other);
 QStringMatcher* QStringMatcher_new5(struct miqt_string pattern, int cs);
-QStringMatcher* QStringMatcher_new6(QChar* uc, int lenVal, int cs);
-void QStringMatcher_OperatorAssign(QStringMatcher* self, QStringMatcher* other);
-void QStringMatcher_SetPattern(QStringMatcher* self, struct miqt_string pattern);
-void QStringMatcher_SetCaseSensitivity(QStringMatcher* self, int cs);
-int QStringMatcher_IndexIn(const QStringMatcher* self, struct miqt_string str);
-int QStringMatcher_IndexIn2(const QStringMatcher* self, QChar* str, int length);
-struct miqt_string QStringMatcher_Pattern(const QStringMatcher* self);
-int QStringMatcher_CaseSensitivity(const QStringMatcher* self);
-int QStringMatcher_IndexIn22(const QStringMatcher* self, struct miqt_string str, int from);
-int QStringMatcher_IndexIn3(const QStringMatcher* self, QChar* str, int length, int from);
-void QStringMatcher_Delete(QStringMatcher* self);
+QStringMatcher* QStringMatcher_new6(QChar* uc, int len, int cs);
+void QStringMatcher_operatorAssign(QStringMatcher* self, QStringMatcher* other);
+void QStringMatcher_setPattern(QStringMatcher* self, struct miqt_string pattern);
+void QStringMatcher_setCaseSensitivity(QStringMatcher* self, int cs);
+int QStringMatcher_indexIn(const QStringMatcher* self, struct miqt_string str);
+int QStringMatcher_indexIn2(const QStringMatcher* self, QChar* str, int length);
+struct miqt_string QStringMatcher_pattern(const QStringMatcher* self);
+int QStringMatcher_caseSensitivity(const QStringMatcher* self);
+int QStringMatcher_indexIn22(const QStringMatcher* self, struct miqt_string str, int from);
+int QStringMatcher_indexIn3(const QStringMatcher* self, QChar* str, int length, int from);
+void QStringMatcher_delete(QStringMatcher* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

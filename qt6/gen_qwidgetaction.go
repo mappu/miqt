@@ -57,38 +57,38 @@ func NewQWidgetAction(parent *QObject) *QWidgetAction {
 }
 
 func (this *QWidgetAction) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QWidgetAction_MetaObject(this.h))
+	return newQMetaObject(C.QWidgetAction_metaObject(this.h))
 }
 
 func (this *QWidgetAction) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWidgetAction_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWidgetAction_metacast(this.h, param1_Cstring))
 }
 
 func QWidgetAction_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWidgetAction_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWidgetAction_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWidgetAction) SetDefaultWidget(w *QWidget) {
-	C.QWidgetAction_SetDefaultWidget(this.h, w.cPointer())
+	C.QWidgetAction_setDefaultWidget(this.h, w.cPointer())
 }
 
 func (this *QWidgetAction) DefaultWidget() *QWidget {
-	return newQWidget(C.QWidgetAction_DefaultWidget(this.h))
+	return newQWidget(C.QWidgetAction_defaultWidget(this.h))
 }
 
 func (this *QWidgetAction) RequestWidget(parent *QWidget) *QWidget {
-	return newQWidget(C.QWidgetAction_RequestWidget(this.h, parent.cPointer()))
+	return newQWidget(C.QWidgetAction_requestWidget(this.h, parent.cPointer()))
 }
 
 func (this *QWidgetAction) ReleaseWidget(widget *QWidget) {
-	C.QWidgetAction_ReleaseWidget(this.h, widget.cPointer())
+	C.QWidgetAction_releaseWidget(this.h, widget.cPointer())
 }
 
 func QWidgetAction_Tr2(s string, c string) string {
@@ -96,7 +96,7 @@ func QWidgetAction_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWidgetAction_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWidgetAction_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -107,7 +107,7 @@ func QWidgetAction_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWidgetAction_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWidgetAction_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -115,18 +115,18 @@ func QWidgetAction_Tr3(s string, c string, n int) string {
 
 func (this *QWidgetAction) callVirtualBase_Event(param1 *QEvent) bool {
 
-	return (bool)(C.QWidgetAction_virtualbase_Event(unsafe.Pointer(this.h), param1.cPointer()))
+	return (bool)(C.QWidgetAction_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
 }
-func (this *QWidgetAction) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
-	ok := C.QWidgetAction_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWidgetAction) Onevent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	ok := C.QWidgetAction_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWidgetAction_Event
-func miqt_exec_callback_QWidgetAction_Event(self *C.QWidgetAction, cb C.intptr_t, param1 *C.QEvent) C.bool {
+//export miqt_exec_callback_QWidgetAction_event
+func miqt_exec_callback_QWidgetAction_event(self *C.QWidgetAction, cb C.intptr_t, param1 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent) bool, param1 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -143,18 +143,18 @@ func miqt_exec_callback_QWidgetAction_Event(self *C.QWidgetAction, cb C.intptr_t
 
 func (this *QWidgetAction) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
 
-	return (bool)(C.QWidgetAction_virtualbase_EventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
+	return (bool)(C.QWidgetAction_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
 }
-func (this *QWidgetAction) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
-	ok := C.QWidgetAction_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWidgetAction) OneventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	ok := C.QWidgetAction_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWidgetAction_EventFilter
-func miqt_exec_callback_QWidgetAction_EventFilter(self *C.QWidgetAction, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+//export miqt_exec_callback_QWidgetAction_eventFilter
+func miqt_exec_callback_QWidgetAction_eventFilter(self *C.QWidgetAction, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -173,18 +173,18 @@ func miqt_exec_callback_QWidgetAction_EventFilter(self *C.QWidgetAction, cb C.in
 
 func (this *QWidgetAction) callVirtualBase_CreateWidget(parent *QWidget) *QWidget {
 
-	return newQWidget(C.QWidgetAction_virtualbase_CreateWidget(unsafe.Pointer(this.h), parent.cPointer()))
+	return newQWidget(C.QWidgetAction_virtualbase_createWidget(unsafe.Pointer(this.h), parent.cPointer()))
 
 }
-func (this *QWidgetAction) OnCreateWidget(slot func(super func(parent *QWidget) *QWidget, parent *QWidget) *QWidget) {
-	ok := C.QWidgetAction_override_virtual_CreateWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWidgetAction) OncreateWidget(slot func(super func(parent *QWidget) *QWidget, parent *QWidget) *QWidget) {
+	ok := C.QWidgetAction_override_virtual_createWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWidgetAction_CreateWidget
-func miqt_exec_callback_QWidgetAction_CreateWidget(self *C.QWidgetAction, cb C.intptr_t, parent *C.QWidget) *C.QWidget {
+//export miqt_exec_callback_QWidgetAction_createWidget
+func miqt_exec_callback_QWidgetAction_createWidget(self *C.QWidgetAction, cb C.intptr_t, parent *C.QWidget) *C.QWidget {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QWidget) *QWidget, parent *QWidget) *QWidget)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -201,18 +201,18 @@ func miqt_exec_callback_QWidgetAction_CreateWidget(self *C.QWidgetAction, cb C.i
 
 func (this *QWidgetAction) callVirtualBase_DeleteWidget(widget *QWidget) {
 
-	C.QWidgetAction_virtualbase_DeleteWidget(unsafe.Pointer(this.h), widget.cPointer())
+	C.QWidgetAction_virtualbase_deleteWidget(unsafe.Pointer(this.h), widget.cPointer())
 
 }
-func (this *QWidgetAction) OnDeleteWidget(slot func(super func(widget *QWidget), widget *QWidget)) {
-	ok := C.QWidgetAction_override_virtual_DeleteWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWidgetAction) OndeleteWidget(slot func(super func(widget *QWidget), widget *QWidget)) {
+	ok := C.QWidgetAction_override_virtual_deleteWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWidgetAction_DeleteWidget
-func miqt_exec_callback_QWidgetAction_DeleteWidget(self *C.QWidgetAction, cb C.intptr_t, widget *C.QWidget) {
+//export miqt_exec_callback_QWidgetAction_deleteWidget
+func miqt_exec_callback_QWidgetAction_deleteWidget(self *C.QWidgetAction, cb C.intptr_t, widget *C.QWidget) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(widget *QWidget), widget *QWidget))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -227,18 +227,18 @@ func miqt_exec_callback_QWidgetAction_DeleteWidget(self *C.QWidgetAction, cb C.i
 
 func (this *QWidgetAction) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QWidgetAction_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QWidgetAction_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QWidgetAction) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QWidgetAction_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWidgetAction) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QWidgetAction_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWidgetAction_TimerEvent
-func miqt_exec_callback_QWidgetAction_TimerEvent(self *C.QWidgetAction, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QWidgetAction_timerEvent
+func miqt_exec_callback_QWidgetAction_timerEvent(self *C.QWidgetAction, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -253,18 +253,18 @@ func miqt_exec_callback_QWidgetAction_TimerEvent(self *C.QWidgetAction, cb C.int
 
 func (this *QWidgetAction) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QWidgetAction_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QWidgetAction_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QWidgetAction) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QWidgetAction_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWidgetAction) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QWidgetAction_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWidgetAction_ChildEvent
-func miqt_exec_callback_QWidgetAction_ChildEvent(self *C.QWidgetAction, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QWidgetAction_childEvent
+func miqt_exec_callback_QWidgetAction_childEvent(self *C.QWidgetAction, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -279,18 +279,18 @@ func miqt_exec_callback_QWidgetAction_ChildEvent(self *C.QWidgetAction, cb C.int
 
 func (this *QWidgetAction) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QWidgetAction_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QWidgetAction_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QWidgetAction) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QWidgetAction_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWidgetAction) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QWidgetAction_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWidgetAction_CustomEvent
-func miqt_exec_callback_QWidgetAction_CustomEvent(self *C.QWidgetAction, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QWidgetAction_customEvent
+func miqt_exec_callback_QWidgetAction_customEvent(self *C.QWidgetAction, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -305,18 +305,18 @@ func miqt_exec_callback_QWidgetAction_CustomEvent(self *C.QWidgetAction, cb C.in
 
 func (this *QWidgetAction) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QWidgetAction_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QWidgetAction_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QWidgetAction) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QWidgetAction_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWidgetAction) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QWidgetAction_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWidgetAction_ConnectNotify
-func miqt_exec_callback_QWidgetAction_ConnectNotify(self *C.QWidgetAction, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QWidgetAction_connectNotify
+func miqt_exec_callback_QWidgetAction_connectNotify(self *C.QWidgetAction, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -331,18 +331,18 @@ func miqt_exec_callback_QWidgetAction_ConnectNotify(self *C.QWidgetAction, cb C.
 
 func (this *QWidgetAction) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QWidgetAction_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QWidgetAction_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QWidgetAction) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QWidgetAction_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWidgetAction) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QWidgetAction_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWidgetAction_DisconnectNotify
-func miqt_exec_callback_QWidgetAction_DisconnectNotify(self *C.QWidgetAction, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QWidgetAction_disconnectNotify
+func miqt_exec_callback_QWidgetAction_disconnectNotify(self *C.QWidgetAction, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -357,7 +357,7 @@ func miqt_exec_callback_QWidgetAction_DisconnectNotify(self *C.QWidgetAction, cb
 
 // Delete this object from C++ memory.
 func (this *QWidgetAction) Delete() {
-	C.QWidgetAction_Delete(this.h)
+	C.QWidgetAction_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

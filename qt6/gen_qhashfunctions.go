@@ -58,22 +58,22 @@ func NewQHashSeed2(d uint64) *QHashSeed {
 }
 
 func QHashSeed_GlobalSeed() *QHashSeed {
-	_goptr := newQHashSeed(C.QHashSeed_GlobalSeed())
+	_goptr := newQHashSeed(C.QHashSeed_globalSeed())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QHashSeed_SetDeterministicGlobalSeed() {
-	C.QHashSeed_SetDeterministicGlobalSeed()
+	C.QHashSeed_setDeterministicGlobalSeed()
 }
 
 func QHashSeed_ResetRandomGlobalSeed() {
-	C.QHashSeed_ResetRandomGlobalSeed()
+	C.QHashSeed_resetRandomGlobalSeed()
 }
 
 // Delete this object from C++ memory.
 func (this *QHashSeed) Delete() {
-	C.QHashSeed_Delete(this.h)
+	C.QHashSeed_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

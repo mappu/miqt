@@ -85,52 +85,52 @@ func NewQWebEngineCertificateError2(other *QWebEngineCertificateError) *QWebEngi
 }
 
 func (this *QWebEngineCertificateError) Error() QWebEngineCertificateError__Error {
-	return (QWebEngineCertificateError__Error)(C.QWebEngineCertificateError_Error(this.h))
+	return (QWebEngineCertificateError__Error)(C.QWebEngineCertificateError_error(this.h))
 }
 
 func (this *QWebEngineCertificateError) Url() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineCertificateError_Url(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineCertificateError_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineCertificateError) IsOverridable() bool {
-	return (bool)(C.QWebEngineCertificateError_IsOverridable(this.h))
+	return (bool)(C.QWebEngineCertificateError_isOverridable(this.h))
 }
 
 func (this *QWebEngineCertificateError) ErrorDescription() string {
-	var _ms C.struct_miqt_string = C.QWebEngineCertificateError_ErrorDescription(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineCertificateError_errorDescription(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineCertificateError) OperatorAssign(other *QWebEngineCertificateError) {
-	C.QWebEngineCertificateError_OperatorAssign(this.h, other.cPointer())
+	C.QWebEngineCertificateError_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QWebEngineCertificateError) Defer() {
-	C.QWebEngineCertificateError_Defer(this.h)
+	C.QWebEngineCertificateError_defer(this.h)
 }
 
 func (this *QWebEngineCertificateError) Deferred() bool {
-	return (bool)(C.QWebEngineCertificateError_Deferred(this.h))
+	return (bool)(C.QWebEngineCertificateError_deferred(this.h))
 }
 
 func (this *QWebEngineCertificateError) RejectCertificate() {
-	C.QWebEngineCertificateError_RejectCertificate(this.h)
+	C.QWebEngineCertificateError_rejectCertificate(this.h)
 }
 
 func (this *QWebEngineCertificateError) IgnoreCertificateError() {
-	C.QWebEngineCertificateError_IgnoreCertificateError(this.h)
+	C.QWebEngineCertificateError_ignoreCertificateError(this.h)
 }
 
 func (this *QWebEngineCertificateError) Answered() bool {
-	return (bool)(C.QWebEngineCertificateError_Answered(this.h))
+	return (bool)(C.QWebEngineCertificateError_answered(this.h))
 }
 
 func (this *QWebEngineCertificateError) CertificateChain() []network.QSslCertificate {
-	var _ma C.struct_miqt_array = C.QWebEngineCertificateError_CertificateChain(this.h)
+	var _ma C.struct_miqt_array = C.QWebEngineCertificateError_certificateChain(this.h)
 	_ret := make([]network.QSslCertificate, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -143,7 +143,7 @@ func (this *QWebEngineCertificateError) CertificateChain() []network.QSslCertifi
 
 // Delete this object from C++ memory.
 func (this *QWebEngineCertificateError) Delete() {
-	C.QWebEngineCertificateError_Delete(this.h)
+	C.QWebEngineCertificateError_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

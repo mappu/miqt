@@ -19,59 +19,59 @@ QBackingStore* QBackingStore_new(QWindow* window) {
 	return new QBackingStore(window);
 }
 
-QWindow* QBackingStore_Window(const QBackingStore* self) {
+QWindow* QBackingStore_window(const QBackingStore* self) {
 	return self->window();
 }
 
-QPaintDevice* QBackingStore_PaintDevice(QBackingStore* self) {
+QPaintDevice* QBackingStore_paintDevice(QBackingStore* self) {
 	return self->paintDevice();
 }
 
-void QBackingStore_Flush(QBackingStore* self, QRegion* region) {
+void QBackingStore_flush(QBackingStore* self, QRegion* region) {
 	self->flush(*region);
 }
 
-void QBackingStore_Resize(QBackingStore* self, QSize* size) {
+void QBackingStore_resize(QBackingStore* self, QSize* size) {
 	self->resize(*size);
 }
 
-QSize* QBackingStore_Size(const QBackingStore* self) {
+QSize* QBackingStore_size(const QBackingStore* self) {
 	return new QSize(self->size());
 }
 
-bool QBackingStore_Scroll(QBackingStore* self, QRegion* area, int dx, int dy) {
+bool QBackingStore_scroll(QBackingStore* self, QRegion* area, int dx, int dy) {
 	return self->scroll(*area, static_cast<int>(dx), static_cast<int>(dy));
 }
 
-void QBackingStore_BeginPaint(QBackingStore* self, QRegion* param1) {
+void QBackingStore_beginPaint(QBackingStore* self, QRegion* param1) {
 	self->beginPaint(*param1);
 }
 
-void QBackingStore_EndPaint(QBackingStore* self) {
+void QBackingStore_endPaint(QBackingStore* self) {
 	self->endPaint();
 }
 
-void QBackingStore_SetStaticContents(QBackingStore* self, QRegion* region) {
+void QBackingStore_setStaticContents(QBackingStore* self, QRegion* region) {
 	self->setStaticContents(*region);
 }
 
-QRegion* QBackingStore_StaticContents(const QBackingStore* self) {
+QRegion* QBackingStore_staticContents(const QBackingStore* self) {
 	return new QRegion(self->staticContents());
 }
 
-bool QBackingStore_HasStaticContents(const QBackingStore* self) {
+bool QBackingStore_hasStaticContents(const QBackingStore* self) {
 	return self->hasStaticContents();
 }
 
-void QBackingStore_Flush2(QBackingStore* self, QRegion* region, QWindow* window) {
+void QBackingStore_flush2(QBackingStore* self, QRegion* region, QWindow* window) {
 	self->flush(*region, window);
 }
 
-void QBackingStore_Flush3(QBackingStore* self, QRegion* region, QWindow* window, QPoint* offset) {
+void QBackingStore_flush3(QBackingStore* self, QRegion* region, QWindow* window, QPoint* offset) {
 	self->flush(*region, window, *offset);
 }
 
-void QBackingStore_Delete(QBackingStore* self) {
+void QBackingStore_delete(QBackingStore* self) {
 	delete self;
 }
 

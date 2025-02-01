@@ -29,40 +29,40 @@ typedef struct QVariant QVariant;
 #endif
 
 void QMediaObject_virtbase(QMediaObject* src, QObject** outptr_QObject);
-QMetaObject* QMediaObject_MetaObject(const QMediaObject* self);
-void* QMediaObject_Metacast(QMediaObject* self, const char* param1);
-struct miqt_string QMediaObject_Tr(const char* s);
-struct miqt_string QMediaObject_TrUtf8(const char* s);
-bool QMediaObject_IsAvailable(const QMediaObject* self);
-int QMediaObject_Availability(const QMediaObject* self);
-QMediaService* QMediaObject_Service(const QMediaObject* self);
-int QMediaObject_NotifyInterval(const QMediaObject* self);
-void QMediaObject_SetNotifyInterval(QMediaObject* self, int milliSeconds);
-bool QMediaObject_Bind(QMediaObject* self, QObject* param1);
-void QMediaObject_Unbind(QMediaObject* self, QObject* param1);
-bool QMediaObject_IsMetaDataAvailable(const QMediaObject* self);
-QVariant* QMediaObject_MetaData(const QMediaObject* self, struct miqt_string key);
-struct miqt_array /* of struct miqt_string */  QMediaObject_AvailableMetaData(const QMediaObject* self);
-void QMediaObject_NotifyIntervalChanged(QMediaObject* self, int milliSeconds);
-void QMediaObject_connect_NotifyIntervalChanged(QMediaObject* self, intptr_t slot);
-void QMediaObject_MetaDataAvailableChanged(QMediaObject* self, bool available);
-void QMediaObject_connect_MetaDataAvailableChanged(QMediaObject* self, intptr_t slot);
-void QMediaObject_MetaDataChanged(QMediaObject* self);
-void QMediaObject_connect_MetaDataChanged(QMediaObject* self, intptr_t slot);
-void QMediaObject_MetaDataChanged2(QMediaObject* self, struct miqt_string key, QVariant* value);
-void QMediaObject_connect_MetaDataChanged2(QMediaObject* self, intptr_t slot);
-void QMediaObject_AvailabilityChanged(QMediaObject* self, bool available);
-void QMediaObject_connect_AvailabilityChanged(QMediaObject* self, intptr_t slot);
-void QMediaObject_AvailabilityChangedWithAvailability(QMediaObject* self, int availability);
-void QMediaObject_connect_AvailabilityChangedWithAvailability(QMediaObject* self, intptr_t slot);
-struct miqt_string QMediaObject_Tr2(const char* s, const char* c);
-struct miqt_string QMediaObject_Tr3(const char* s, const char* c, int n);
-struct miqt_string QMediaObject_TrUtf82(const char* s, const char* c);
-struct miqt_string QMediaObject_TrUtf83(const char* s, const char* c, int n);
-void QMediaObject_Delete(QMediaObject* self);
+QMetaObject* QMediaObject_metaObject(const QMediaObject* self);
+void* QMediaObject_metacast(QMediaObject* self, const char* param1);
+struct miqt_string QMediaObject_tr(const char* s);
+struct miqt_string QMediaObject_trUtf8(const char* s);
+bool QMediaObject_isAvailable(const QMediaObject* self);
+int QMediaObject_availability(const QMediaObject* self);
+QMediaService* QMediaObject_service(const QMediaObject* self);
+int QMediaObject_notifyInterval(const QMediaObject* self);
+void QMediaObject_setNotifyInterval(QMediaObject* self, int milliSeconds);
+bool QMediaObject_bind(QMediaObject* self, QObject* param1);
+void QMediaObject_unbind(QMediaObject* self, QObject* param1);
+bool QMediaObject_isMetaDataAvailable(const QMediaObject* self);
+QVariant* QMediaObject_metaData(const QMediaObject* self, struct miqt_string key);
+struct miqt_array /* of struct miqt_string */  QMediaObject_availableMetaData(const QMediaObject* self);
+void QMediaObject_notifyIntervalChanged(QMediaObject* self, int milliSeconds);
+void QMediaObject_connect_notifyIntervalChanged(QMediaObject* self, intptr_t slot);
+void QMediaObject_metaDataAvailableChanged(QMediaObject* self, bool available);
+void QMediaObject_connect_metaDataAvailableChanged(QMediaObject* self, intptr_t slot);
+void QMediaObject_metaDataChanged(QMediaObject* self);
+void QMediaObject_connect_metaDataChanged(QMediaObject* self, intptr_t slot);
+void QMediaObject_metaDataChanged2(QMediaObject* self, struct miqt_string key, QVariant* value);
+void QMediaObject_connect_metaDataChanged2(QMediaObject* self, intptr_t slot);
+void QMediaObject_availabilityChanged(QMediaObject* self, bool available);
+void QMediaObject_connect_availabilityChanged(QMediaObject* self, intptr_t slot);
+void QMediaObject_availabilityChangedWithAvailability(QMediaObject* self, int availability);
+void QMediaObject_connect_availabilityChangedWithAvailability(QMediaObject* self, intptr_t slot);
+struct miqt_string QMediaObject_tr2(const char* s, const char* c);
+struct miqt_string QMediaObject_tr3(const char* s, const char* c, int n);
+struct miqt_string QMediaObject_trUtf82(const char* s, const char* c);
+struct miqt_string QMediaObject_trUtf83(const char* s, const char* c, int n);
+void QMediaObject_delete(QMediaObject* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

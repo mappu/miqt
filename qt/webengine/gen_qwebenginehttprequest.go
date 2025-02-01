@@ -78,7 +78,7 @@ func NewQWebEngineHttpRequest4(url *qt.QUrl, method *QWebEngineHttpRequest__Meth
 }
 
 func (this *QWebEngineHttpRequest) OperatorAssign(other *QWebEngineHttpRequest) {
-	C.QWebEngineHttpRequest_OperatorAssign(this.h, other.cPointer())
+	C.QWebEngineHttpRequest_operatorAssign(this.h, other.cPointer())
 }
 
 func QWebEngineHttpRequest_PostRequest(url *qt.QUrl, postData map[string]string) *QWebEngineHttpRequest {
@@ -105,43 +105,43 @@ func QWebEngineHttpRequest_PostRequest(url *qt.QUrl, postData map[string]string)
 		keys:   unsafe.Pointer(postData_Keys_CArray),
 		values: unsafe.Pointer(postData_Values_CArray),
 	}
-	_goptr := newQWebEngineHttpRequest(C.QWebEngineHttpRequest_PostRequest((*C.QUrl)(url.UnsafePointer()), postData_mm))
+	_goptr := newQWebEngineHttpRequest(C.QWebEngineHttpRequest_postRequest((*C.QUrl)(url.UnsafePointer()), postData_mm))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineHttpRequest) Swap(other *QWebEngineHttpRequest) {
-	C.QWebEngineHttpRequest_Swap(this.h, other.cPointer())
+	C.QWebEngineHttpRequest_swap(this.h, other.cPointer())
 }
 
 func (this *QWebEngineHttpRequest) OperatorEqual(other *QWebEngineHttpRequest) bool {
-	return (bool)(C.QWebEngineHttpRequest_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QWebEngineHttpRequest_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QWebEngineHttpRequest) OperatorNotEqual(other *QWebEngineHttpRequest) bool {
-	return (bool)(C.QWebEngineHttpRequest_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QWebEngineHttpRequest_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QWebEngineHttpRequest) Method() QWebEngineHttpRequest__Method {
-	return (QWebEngineHttpRequest__Method)(C.QWebEngineHttpRequest_Method(this.h))
+	return (QWebEngineHttpRequest__Method)(C.QWebEngineHttpRequest_method(this.h))
 }
 
 func (this *QWebEngineHttpRequest) SetMethod(method QWebEngineHttpRequest__Method) {
-	C.QWebEngineHttpRequest_SetMethod(this.h, (C.int)(method))
+	C.QWebEngineHttpRequest_setMethod(this.h, (C.int)(method))
 }
 
 func (this *QWebEngineHttpRequest) Url() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineHttpRequest_Url(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineHttpRequest_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineHttpRequest) SetUrl(url *qt.QUrl) {
-	C.QWebEngineHttpRequest_SetUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
+	C.QWebEngineHttpRequest_setUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QWebEngineHttpRequest) PostData() []byte {
-	var _bytearray C.struct_miqt_string = C.QWebEngineHttpRequest_PostData(this.h)
+	var _bytearray C.struct_miqt_string = C.QWebEngineHttpRequest_postData(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -155,7 +155,7 @@ func (this *QWebEngineHttpRequest) SetPostData(postData []byte) {
 		postData_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	postData_alias.len = C.size_t(len(postData))
-	C.QWebEngineHttpRequest_SetPostData(this.h, postData_alias)
+	C.QWebEngineHttpRequest_setPostData(this.h, postData_alias)
 }
 
 func (this *QWebEngineHttpRequest) HasHeader(headerName []byte) bool {
@@ -166,11 +166,11 @@ func (this *QWebEngineHttpRequest) HasHeader(headerName []byte) bool {
 		headerName_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	headerName_alias.len = C.size_t(len(headerName))
-	return (bool)(C.QWebEngineHttpRequest_HasHeader(this.h, headerName_alias))
+	return (bool)(C.QWebEngineHttpRequest_hasHeader(this.h, headerName_alias))
 }
 
 func (this *QWebEngineHttpRequest) Headers() [][]byte {
-	var _ma C.struct_miqt_array = C.QWebEngineHttpRequest_Headers(this.h)
+	var _ma C.struct_miqt_array = C.QWebEngineHttpRequest_headers(this.h)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -190,7 +190,7 @@ func (this *QWebEngineHttpRequest) Header(headerName []byte) []byte {
 		headerName_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	headerName_alias.len = C.size_t(len(headerName))
-	var _bytearray C.struct_miqt_string = C.QWebEngineHttpRequest_Header(this.h, headerName_alias)
+	var _bytearray C.struct_miqt_string = C.QWebEngineHttpRequest_header(this.h, headerName_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -211,7 +211,7 @@ func (this *QWebEngineHttpRequest) SetHeader(headerName []byte, value []byte) {
 		value_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	value_alias.len = C.size_t(len(value))
-	C.QWebEngineHttpRequest_SetHeader(this.h, headerName_alias, value_alias)
+	C.QWebEngineHttpRequest_setHeader(this.h, headerName_alias, value_alias)
 }
 
 func (this *QWebEngineHttpRequest) UnsetHeader(headerName []byte) {
@@ -222,12 +222,12 @@ func (this *QWebEngineHttpRequest) UnsetHeader(headerName []byte) {
 		headerName_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	headerName_alias.len = C.size_t(len(headerName))
-	C.QWebEngineHttpRequest_UnsetHeader(this.h, headerName_alias)
+	C.QWebEngineHttpRequest_unsetHeader(this.h, headerName_alias)
 }
 
 // Delete this object from C++ memory.
 func (this *QWebEngineHttpRequest) Delete() {
-	C.QWebEngineHttpRequest_Delete(this.h)
+	C.QWebEngineHttpRequest_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

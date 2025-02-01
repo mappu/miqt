@@ -58,20 +58,20 @@ func NewQWebEngineFindTextResult2(other *QWebEngineFindTextResult) *QWebEngineFi
 }
 
 func (this *QWebEngineFindTextResult) NumberOfMatches() int {
-	return (int)(C.QWebEngineFindTextResult_NumberOfMatches(this.h))
+	return (int)(C.QWebEngineFindTextResult_numberOfMatches(this.h))
 }
 
 func (this *QWebEngineFindTextResult) ActiveMatch() int {
-	return (int)(C.QWebEngineFindTextResult_ActiveMatch(this.h))
+	return (int)(C.QWebEngineFindTextResult_activeMatch(this.h))
 }
 
 func (this *QWebEngineFindTextResult) OperatorAssign(other *QWebEngineFindTextResult) {
-	C.QWebEngineFindTextResult_OperatorAssign(this.h, other.cPointer())
+	C.QWebEngineFindTextResult_operatorAssign(this.h, other.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QWebEngineFindTextResult) Delete() {
-	C.QWebEngineFindTextResult_Delete(this.h)
+	C.QWebEngineFindTextResult_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

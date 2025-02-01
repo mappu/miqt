@@ -42,31 +42,31 @@ QMediaResource* QMediaResource_new6(QNetworkRequest* request, struct miqt_string
 	return new QMediaResource(*request, mimeType_QString);
 }
 
-void QMediaResource_OperatorAssign(QMediaResource* self, QMediaResource* other) {
+void QMediaResource_operatorAssign(QMediaResource* self, QMediaResource* other) {
 	self->operator=(*other);
 }
 
-bool QMediaResource_IsNull(const QMediaResource* self) {
+bool QMediaResource_isNull(const QMediaResource* self) {
 	return self->isNull();
 }
 
-bool QMediaResource_OperatorEqual(const QMediaResource* self, QMediaResource* other) {
+bool QMediaResource_operatorEqual(const QMediaResource* self, QMediaResource* other) {
 	return (*self == *other);
 }
 
-bool QMediaResource_OperatorNotEqual(const QMediaResource* self, QMediaResource* other) {
+bool QMediaResource_operatorNotEqual(const QMediaResource* self, QMediaResource* other) {
 	return (*self != *other);
 }
 
-QUrl* QMediaResource_Url(const QMediaResource* self) {
+QUrl* QMediaResource_url(const QMediaResource* self) {
 	return new QUrl(self->url());
 }
 
-QNetworkRequest* QMediaResource_Request(const QMediaResource* self) {
+QNetworkRequest* QMediaResource_request(const QMediaResource* self) {
 	return new QNetworkRequest(self->request());
 }
 
-struct miqt_string QMediaResource_MimeType(const QMediaResource* self) {
+struct miqt_string QMediaResource_mimeType(const QMediaResource* self) {
 	QString _ret = self->mimeType();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -77,7 +77,7 @@ struct miqt_string QMediaResource_MimeType(const QMediaResource* self) {
 	return _ms;
 }
 
-struct miqt_string QMediaResource_Language(const QMediaResource* self) {
+struct miqt_string QMediaResource_language(const QMediaResource* self) {
 	QString _ret = self->language();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -88,12 +88,12 @@ struct miqt_string QMediaResource_Language(const QMediaResource* self) {
 	return _ms;
 }
 
-void QMediaResource_SetLanguage(QMediaResource* self, struct miqt_string language) {
+void QMediaResource_setLanguage(QMediaResource* self, struct miqt_string language) {
 	QString language_QString = QString::fromUtf8(language.data, language.len);
 	self->setLanguage(language_QString);
 }
 
-struct miqt_string QMediaResource_AudioCodec(const QMediaResource* self) {
+struct miqt_string QMediaResource_audioCodec(const QMediaResource* self) {
 	QString _ret = self->audioCodec();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -104,12 +104,12 @@ struct miqt_string QMediaResource_AudioCodec(const QMediaResource* self) {
 	return _ms;
 }
 
-void QMediaResource_SetAudioCodec(QMediaResource* self, struct miqt_string codec) {
+void QMediaResource_setAudioCodec(QMediaResource* self, struct miqt_string codec) {
 	QString codec_QString = QString::fromUtf8(codec.data, codec.len);
 	self->setAudioCodec(codec_QString);
 }
 
-struct miqt_string QMediaResource_VideoCodec(const QMediaResource* self) {
+struct miqt_string QMediaResource_videoCodec(const QMediaResource* self) {
 	QString _ret = self->videoCodec();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -120,65 +120,65 @@ struct miqt_string QMediaResource_VideoCodec(const QMediaResource* self) {
 	return _ms;
 }
 
-void QMediaResource_SetVideoCodec(QMediaResource* self, struct miqt_string codec) {
+void QMediaResource_setVideoCodec(QMediaResource* self, struct miqt_string codec) {
 	QString codec_QString = QString::fromUtf8(codec.data, codec.len);
 	self->setVideoCodec(codec_QString);
 }
 
-long long QMediaResource_DataSize(const QMediaResource* self) {
+long long QMediaResource_dataSize(const QMediaResource* self) {
 	qint64 _ret = self->dataSize();
 	return static_cast<long long>(_ret);
 }
 
-void QMediaResource_SetDataSize(QMediaResource* self, const long long size) {
+void QMediaResource_setDataSize(QMediaResource* self, const long long size) {
 	self->setDataSize(static_cast<const qint64>(size));
 }
 
-int QMediaResource_AudioBitRate(const QMediaResource* self) {
+int QMediaResource_audioBitRate(const QMediaResource* self) {
 	return self->audioBitRate();
 }
 
-void QMediaResource_SetAudioBitRate(QMediaResource* self, int rate) {
+void QMediaResource_setAudioBitRate(QMediaResource* self, int rate) {
 	self->setAudioBitRate(static_cast<int>(rate));
 }
 
-int QMediaResource_SampleRate(const QMediaResource* self) {
+int QMediaResource_sampleRate(const QMediaResource* self) {
 	return self->sampleRate();
 }
 
-void QMediaResource_SetSampleRate(QMediaResource* self, int frequency) {
+void QMediaResource_setSampleRate(QMediaResource* self, int frequency) {
 	self->setSampleRate(static_cast<int>(frequency));
 }
 
-int QMediaResource_ChannelCount(const QMediaResource* self) {
+int QMediaResource_channelCount(const QMediaResource* self) {
 	return self->channelCount();
 }
 
-void QMediaResource_SetChannelCount(QMediaResource* self, int channels) {
+void QMediaResource_setChannelCount(QMediaResource* self, int channels) {
 	self->setChannelCount(static_cast<int>(channels));
 }
 
-int QMediaResource_VideoBitRate(const QMediaResource* self) {
+int QMediaResource_videoBitRate(const QMediaResource* self) {
 	return self->videoBitRate();
 }
 
-void QMediaResource_SetVideoBitRate(QMediaResource* self, int rate) {
+void QMediaResource_setVideoBitRate(QMediaResource* self, int rate) {
 	self->setVideoBitRate(static_cast<int>(rate));
 }
 
-QSize* QMediaResource_Resolution(const QMediaResource* self) {
+QSize* QMediaResource_resolution(const QMediaResource* self) {
 	return new QSize(self->resolution());
 }
 
-void QMediaResource_SetResolution(QMediaResource* self, QSize* resolution) {
+void QMediaResource_setResolution(QMediaResource* self, QSize* resolution) {
 	self->setResolution(*resolution);
 }
 
-void QMediaResource_SetResolution2(QMediaResource* self, int width, int height) {
+void QMediaResource_setResolution2(QMediaResource* self, int width, int height) {
 	self->setResolution(static_cast<int>(width), static_cast<int>(height));
 }
 
-void QMediaResource_Delete(QMediaResource* self) {
+void QMediaResource_delete(QMediaResource* self) {
 	delete self;
 }
 

@@ -75,19 +75,19 @@ func NewQEventTransition4(object *QObject, typeVal QEvent__Type, sourceState *QS
 }
 
 func (this *QEventTransition) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QEventTransition_MetaObject(this.h))
+	return newQMetaObject(C.QEventTransition_metaObject(this.h))
 }
 
 func (this *QEventTransition) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QEventTransition_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QEventTransition_metacast(this.h, param1_Cstring))
 }
 
 func QEventTransition_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QEventTransition_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QEventTransition_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -96,26 +96,26 @@ func QEventTransition_Tr(s string) string {
 func QEventTransition_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QEventTransition_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QEventTransition_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QEventTransition) EventSource() *QObject {
-	return newQObject(C.QEventTransition_EventSource(this.h))
+	return newQObject(C.QEventTransition_eventSource(this.h))
 }
 
 func (this *QEventTransition) SetEventSource(object *QObject) {
-	C.QEventTransition_SetEventSource(this.h, object.cPointer())
+	C.QEventTransition_setEventSource(this.h, object.cPointer())
 }
 
 func (this *QEventTransition) EventType() QEvent__Type {
-	return (QEvent__Type)(C.QEventTransition_EventType(this.h))
+	return (QEvent__Type)(C.QEventTransition_eventType(this.h))
 }
 
 func (this *QEventTransition) SetEventType(typeVal QEvent__Type) {
-	C.QEventTransition_SetEventType(this.h, (C.int)(typeVal))
+	C.QEventTransition_setEventType(this.h, (C.int)(typeVal))
 }
 
 func QEventTransition_Tr2(s string, c string) string {
@@ -123,7 +123,7 @@ func QEventTransition_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QEventTransition_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QEventTransition_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -134,7 +134,7 @@ func QEventTransition_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QEventTransition_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QEventTransition_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -145,7 +145,7 @@ func QEventTransition_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QEventTransition_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QEventTransition_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -156,7 +156,7 @@ func QEventTransition_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QEventTransition_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QEventTransition_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -164,18 +164,18 @@ func QEventTransition_TrUtf83(s string, c string, n int) string {
 
 func (this *QEventTransition) callVirtualBase_EventTest(event *QEvent) bool {
 
-	return (bool)(C.QEventTransition_virtualbase_EventTest(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QEventTransition_virtualbase_eventTest(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QEventTransition) OnEventTest(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QEventTransition_override_virtual_EventTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QEventTransition) OneventTest(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QEventTransition_override_virtual_eventTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QEventTransition_EventTest
-func miqt_exec_callback_QEventTransition_EventTest(self *C.QEventTransition, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QEventTransition_eventTest
+func miqt_exec_callback_QEventTransition_eventTest(self *C.QEventTransition, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -192,18 +192,18 @@ func miqt_exec_callback_QEventTransition_EventTest(self *C.QEventTransition, cb 
 
 func (this *QEventTransition) callVirtualBase_OnTransition(event *QEvent) {
 
-	C.QEventTransition_virtualbase_OnTransition(unsafe.Pointer(this.h), event.cPointer())
+	C.QEventTransition_virtualbase_onTransition(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QEventTransition) OnOnTransition(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QEventTransition_override_virtual_OnTransition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QEventTransition) OnonTransition(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QEventTransition_override_virtual_onTransition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QEventTransition_OnTransition
-func miqt_exec_callback_QEventTransition_OnTransition(self *C.QEventTransition, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QEventTransition_onTransition
+func miqt_exec_callback_QEventTransition_onTransition(self *C.QEventTransition, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -218,18 +218,18 @@ func miqt_exec_callback_QEventTransition_OnTransition(self *C.QEventTransition, 
 
 func (this *QEventTransition) callVirtualBase_Event(e *QEvent) bool {
 
-	return (bool)(C.QEventTransition_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+	return (bool)(C.QEventTransition_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
 }
-func (this *QEventTransition) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	ok := C.QEventTransition_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QEventTransition) Onevent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	ok := C.QEventTransition_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QEventTransition_Event
-func miqt_exec_callback_QEventTransition_Event(self *C.QEventTransition, cb C.intptr_t, e *C.QEvent) C.bool {
+//export miqt_exec_callback_QEventTransition_event
+func miqt_exec_callback_QEventTransition_event(self *C.QEventTransition, cb C.intptr_t, e *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -246,18 +246,18 @@ func miqt_exec_callback_QEventTransition_Event(self *C.QEventTransition, cb C.in
 
 func (this *QEventTransition) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QEventTransition_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QEventTransition_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QEventTransition) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QEventTransition_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QEventTransition) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QEventTransition_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QEventTransition_EventFilter
-func miqt_exec_callback_QEventTransition_EventFilter(self *C.QEventTransition, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QEventTransition_eventFilter
+func miqt_exec_callback_QEventTransition_eventFilter(self *C.QEventTransition, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -276,18 +276,18 @@ func miqt_exec_callback_QEventTransition_EventFilter(self *C.QEventTransition, c
 
 func (this *QEventTransition) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QEventTransition_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QEventTransition_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QEventTransition) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QEventTransition_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QEventTransition) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QEventTransition_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QEventTransition_TimerEvent
-func miqt_exec_callback_QEventTransition_TimerEvent(self *C.QEventTransition, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QEventTransition_timerEvent
+func miqt_exec_callback_QEventTransition_timerEvent(self *C.QEventTransition, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -302,18 +302,18 @@ func miqt_exec_callback_QEventTransition_TimerEvent(self *C.QEventTransition, cb
 
 func (this *QEventTransition) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QEventTransition_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QEventTransition_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QEventTransition) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QEventTransition_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QEventTransition) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QEventTransition_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QEventTransition_ChildEvent
-func miqt_exec_callback_QEventTransition_ChildEvent(self *C.QEventTransition, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QEventTransition_childEvent
+func miqt_exec_callback_QEventTransition_childEvent(self *C.QEventTransition, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -328,18 +328,18 @@ func miqt_exec_callback_QEventTransition_ChildEvent(self *C.QEventTransition, cb
 
 func (this *QEventTransition) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QEventTransition_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QEventTransition_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QEventTransition) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QEventTransition_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QEventTransition) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QEventTransition_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QEventTransition_CustomEvent
-func miqt_exec_callback_QEventTransition_CustomEvent(self *C.QEventTransition, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QEventTransition_customEvent
+func miqt_exec_callback_QEventTransition_customEvent(self *C.QEventTransition, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -354,18 +354,18 @@ func miqt_exec_callback_QEventTransition_CustomEvent(self *C.QEventTransition, c
 
 func (this *QEventTransition) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QEventTransition_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QEventTransition_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QEventTransition) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QEventTransition_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QEventTransition) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QEventTransition_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QEventTransition_ConnectNotify
-func miqt_exec_callback_QEventTransition_ConnectNotify(self *C.QEventTransition, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QEventTransition_connectNotify
+func miqt_exec_callback_QEventTransition_connectNotify(self *C.QEventTransition, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -380,18 +380,18 @@ func miqt_exec_callback_QEventTransition_ConnectNotify(self *C.QEventTransition,
 
 func (this *QEventTransition) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QEventTransition_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QEventTransition_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QEventTransition) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QEventTransition_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QEventTransition) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QEventTransition_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QEventTransition_DisconnectNotify
-func miqt_exec_callback_QEventTransition_DisconnectNotify(self *C.QEventTransition, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QEventTransition_disconnectNotify
+func miqt_exec_callback_QEventTransition_disconnectNotify(self *C.QEventTransition, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -406,7 +406,7 @@ func miqt_exec_callback_QEventTransition_DisconnectNotify(self *C.QEventTransiti
 
 // Delete this object from C++ memory.
 func (this *QEventTransition) Delete() {
-	C.QEventTransition_Delete(this.h)
+	C.QEventTransition_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

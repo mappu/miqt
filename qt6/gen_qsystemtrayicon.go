@@ -94,44 +94,44 @@ func NewQSystemTrayIcon4(icon *QIcon, parent *QObject) *QSystemTrayIcon {
 }
 
 func (this *QSystemTrayIcon) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QSystemTrayIcon_MetaObject(this.h))
+	return newQMetaObject(C.QSystemTrayIcon_metaObject(this.h))
 }
 
 func (this *QSystemTrayIcon) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QSystemTrayIcon_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QSystemTrayIcon_metacast(this.h, param1_Cstring))
 }
 
 func QSystemTrayIcon_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QSystemTrayIcon_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QSystemTrayIcon_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSystemTrayIcon) SetContextMenu(menu *QMenu) {
-	C.QSystemTrayIcon_SetContextMenu(this.h, menu.cPointer())
+	C.QSystemTrayIcon_setContextMenu(this.h, menu.cPointer())
 }
 
 func (this *QSystemTrayIcon) ContextMenu() *QMenu {
-	return newQMenu(C.QSystemTrayIcon_ContextMenu(this.h))
+	return newQMenu(C.QSystemTrayIcon_contextMenu(this.h))
 }
 
 func (this *QSystemTrayIcon) Icon() *QIcon {
-	_goptr := newQIcon(C.QSystemTrayIcon_Icon(this.h))
+	_goptr := newQIcon(C.QSystemTrayIcon_icon(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSystemTrayIcon) SetIcon(icon *QIcon) {
-	C.QSystemTrayIcon_SetIcon(this.h, icon.cPointer())
+	C.QSystemTrayIcon_setIcon(this.h, icon.cPointer())
 }
 
 func (this *QSystemTrayIcon) ToolTip() string {
-	var _ms C.struct_miqt_string = C.QSystemTrayIcon_ToolTip(this.h)
+	var _ms C.struct_miqt_string = C.QSystemTrayIcon_toolTip(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -142,37 +142,37 @@ func (this *QSystemTrayIcon) SetToolTip(tip string) {
 	tip_ms.data = C.CString(tip)
 	tip_ms.len = C.size_t(len(tip))
 	defer C.free(unsafe.Pointer(tip_ms.data))
-	C.QSystemTrayIcon_SetToolTip(this.h, tip_ms)
+	C.QSystemTrayIcon_setToolTip(this.h, tip_ms)
 }
 
 func QSystemTrayIcon_IsSystemTrayAvailable() bool {
-	return (bool)(C.QSystemTrayIcon_IsSystemTrayAvailable())
+	return (bool)(C.QSystemTrayIcon_isSystemTrayAvailable())
 }
 
 func QSystemTrayIcon_SupportsMessages() bool {
-	return (bool)(C.QSystemTrayIcon_SupportsMessages())
+	return (bool)(C.QSystemTrayIcon_supportsMessages())
 }
 
 func (this *QSystemTrayIcon) Geometry() *QRect {
-	_goptr := newQRect(C.QSystemTrayIcon_Geometry(this.h))
+	_goptr := newQRect(C.QSystemTrayIcon_geometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSystemTrayIcon) IsVisible() bool {
-	return (bool)(C.QSystemTrayIcon_IsVisible(this.h))
+	return (bool)(C.QSystemTrayIcon_isVisible(this.h))
 }
 
 func (this *QSystemTrayIcon) SetVisible(visible bool) {
-	C.QSystemTrayIcon_SetVisible(this.h, (C.bool)(visible))
+	C.QSystemTrayIcon_setVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QSystemTrayIcon) Show() {
-	C.QSystemTrayIcon_Show(this.h)
+	C.QSystemTrayIcon_show(this.h)
 }
 
 func (this *QSystemTrayIcon) Hide() {
-	C.QSystemTrayIcon_Hide(this.h)
+	C.QSystemTrayIcon_hide(this.h)
 }
 
 func (this *QSystemTrayIcon) ShowMessage(title string, msg string, icon *QIcon) {
@@ -184,7 +184,7 @@ func (this *QSystemTrayIcon) ShowMessage(title string, msg string, icon *QIcon) 
 	msg_ms.data = C.CString(msg)
 	msg_ms.len = C.size_t(len(msg))
 	defer C.free(unsafe.Pointer(msg_ms.data))
-	C.QSystemTrayIcon_ShowMessage(this.h, title_ms, msg_ms, icon.cPointer())
+	C.QSystemTrayIcon_showMessage(this.h, title_ms, msg_ms, icon.cPointer())
 }
 
 func (this *QSystemTrayIcon) ShowMessage2(title string, msg string) {
@@ -196,18 +196,18 @@ func (this *QSystemTrayIcon) ShowMessage2(title string, msg string) {
 	msg_ms.data = C.CString(msg)
 	msg_ms.len = C.size_t(len(msg))
 	defer C.free(unsafe.Pointer(msg_ms.data))
-	C.QSystemTrayIcon_ShowMessage2(this.h, title_ms, msg_ms)
+	C.QSystemTrayIcon_showMessage2(this.h, title_ms, msg_ms)
 }
 
 func (this *QSystemTrayIcon) Activated(reason QSystemTrayIcon__ActivationReason) {
-	C.QSystemTrayIcon_Activated(this.h, (C.int)(reason))
+	C.QSystemTrayIcon_activated(this.h, (C.int)(reason))
 }
 func (this *QSystemTrayIcon) OnActivated(slot func(reason QSystemTrayIcon__ActivationReason)) {
-	C.QSystemTrayIcon_connect_Activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QSystemTrayIcon_connect_activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QSystemTrayIcon_Activated
-func miqt_exec_callback_QSystemTrayIcon_Activated(cb C.intptr_t, reason C.int) {
+//export miqt_exec_callback_QSystemTrayIcon_activated
+func miqt_exec_callback_QSystemTrayIcon_activated(cb C.intptr_t, reason C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(reason QSystemTrayIcon__ActivationReason))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -220,14 +220,14 @@ func miqt_exec_callback_QSystemTrayIcon_Activated(cb C.intptr_t, reason C.int) {
 }
 
 func (this *QSystemTrayIcon) MessageClicked() {
-	C.QSystemTrayIcon_MessageClicked(this.h)
+	C.QSystemTrayIcon_messageClicked(this.h)
 }
 func (this *QSystemTrayIcon) OnMessageClicked(slot func()) {
-	C.QSystemTrayIcon_connect_MessageClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QSystemTrayIcon_connect_messageClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QSystemTrayIcon_MessageClicked
-func miqt_exec_callback_QSystemTrayIcon_MessageClicked(cb C.intptr_t) {
+//export miqt_exec_callback_QSystemTrayIcon_messageClicked
+func miqt_exec_callback_QSystemTrayIcon_messageClicked(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -241,7 +241,7 @@ func QSystemTrayIcon_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSystemTrayIcon_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QSystemTrayIcon_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -252,7 +252,7 @@ func QSystemTrayIcon_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSystemTrayIcon_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QSystemTrayIcon_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -267,7 +267,7 @@ func (this *QSystemTrayIcon) ShowMessage4(title string, msg string, icon *QIcon,
 	msg_ms.data = C.CString(msg)
 	msg_ms.len = C.size_t(len(msg))
 	defer C.free(unsafe.Pointer(msg_ms.data))
-	C.QSystemTrayIcon_ShowMessage4(this.h, title_ms, msg_ms, icon.cPointer(), (C.int)(msecs))
+	C.QSystemTrayIcon_showMessage4(this.h, title_ms, msg_ms, icon.cPointer(), (C.int)(msecs))
 }
 
 func (this *QSystemTrayIcon) ShowMessage3(title string, msg string, icon QSystemTrayIcon__MessageIcon) {
@@ -279,7 +279,7 @@ func (this *QSystemTrayIcon) ShowMessage3(title string, msg string, icon QSystem
 	msg_ms.data = C.CString(msg)
 	msg_ms.len = C.size_t(len(msg))
 	defer C.free(unsafe.Pointer(msg_ms.data))
-	C.QSystemTrayIcon_ShowMessage3(this.h, title_ms, msg_ms, (C.int)(icon))
+	C.QSystemTrayIcon_showMessage3(this.h, title_ms, msg_ms, (C.int)(icon))
 }
 
 func (this *QSystemTrayIcon) ShowMessage42(title string, msg string, icon QSystemTrayIcon__MessageIcon, msecs int) {
@@ -291,23 +291,23 @@ func (this *QSystemTrayIcon) ShowMessage42(title string, msg string, icon QSyste
 	msg_ms.data = C.CString(msg)
 	msg_ms.len = C.size_t(len(msg))
 	defer C.free(unsafe.Pointer(msg_ms.data))
-	C.QSystemTrayIcon_ShowMessage42(this.h, title_ms, msg_ms, (C.int)(icon), (C.int)(msecs))
+	C.QSystemTrayIcon_showMessage42(this.h, title_ms, msg_ms, (C.int)(icon), (C.int)(msecs))
 }
 
 func (this *QSystemTrayIcon) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QSystemTrayIcon_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QSystemTrayIcon_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QSystemTrayIcon) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QSystemTrayIcon_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSystemTrayIcon) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QSystemTrayIcon_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSystemTrayIcon_Event
-func miqt_exec_callback_QSystemTrayIcon_Event(self *C.QSystemTrayIcon, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QSystemTrayIcon_event
+func miqt_exec_callback_QSystemTrayIcon_event(self *C.QSystemTrayIcon, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -324,18 +324,18 @@ func miqt_exec_callback_QSystemTrayIcon_Event(self *C.QSystemTrayIcon, cb C.intp
 
 func (this *QSystemTrayIcon) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QSystemTrayIcon_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QSystemTrayIcon_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QSystemTrayIcon) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QSystemTrayIcon_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSystemTrayIcon) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QSystemTrayIcon_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSystemTrayIcon_EventFilter
-func miqt_exec_callback_QSystemTrayIcon_EventFilter(self *C.QSystemTrayIcon, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QSystemTrayIcon_eventFilter
+func miqt_exec_callback_QSystemTrayIcon_eventFilter(self *C.QSystemTrayIcon, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -354,18 +354,18 @@ func miqt_exec_callback_QSystemTrayIcon_EventFilter(self *C.QSystemTrayIcon, cb 
 
 func (this *QSystemTrayIcon) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QSystemTrayIcon_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSystemTrayIcon_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSystemTrayIcon) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QSystemTrayIcon_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSystemTrayIcon) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QSystemTrayIcon_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSystemTrayIcon_TimerEvent
-func miqt_exec_callback_QSystemTrayIcon_TimerEvent(self *C.QSystemTrayIcon, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QSystemTrayIcon_timerEvent
+func miqt_exec_callback_QSystemTrayIcon_timerEvent(self *C.QSystemTrayIcon, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -380,18 +380,18 @@ func miqt_exec_callback_QSystemTrayIcon_TimerEvent(self *C.QSystemTrayIcon, cb C
 
 func (this *QSystemTrayIcon) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QSystemTrayIcon_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSystemTrayIcon_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSystemTrayIcon) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QSystemTrayIcon_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSystemTrayIcon) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QSystemTrayIcon_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSystemTrayIcon_ChildEvent
-func miqt_exec_callback_QSystemTrayIcon_ChildEvent(self *C.QSystemTrayIcon, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QSystemTrayIcon_childEvent
+func miqt_exec_callback_QSystemTrayIcon_childEvent(self *C.QSystemTrayIcon, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -406,18 +406,18 @@ func miqt_exec_callback_QSystemTrayIcon_ChildEvent(self *C.QSystemTrayIcon, cb C
 
 func (this *QSystemTrayIcon) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QSystemTrayIcon_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSystemTrayIcon_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSystemTrayIcon) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QSystemTrayIcon_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSystemTrayIcon) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QSystemTrayIcon_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSystemTrayIcon_CustomEvent
-func miqt_exec_callback_QSystemTrayIcon_CustomEvent(self *C.QSystemTrayIcon, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QSystemTrayIcon_customEvent
+func miqt_exec_callback_QSystemTrayIcon_customEvent(self *C.QSystemTrayIcon, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -432,18 +432,18 @@ func miqt_exec_callback_QSystemTrayIcon_CustomEvent(self *C.QSystemTrayIcon, cb 
 
 func (this *QSystemTrayIcon) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QSystemTrayIcon_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QSystemTrayIcon_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSystemTrayIcon) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QSystemTrayIcon_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSystemTrayIcon) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QSystemTrayIcon_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSystemTrayIcon_ConnectNotify
-func miqt_exec_callback_QSystemTrayIcon_ConnectNotify(self *C.QSystemTrayIcon, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QSystemTrayIcon_connectNotify
+func miqt_exec_callback_QSystemTrayIcon_connectNotify(self *C.QSystemTrayIcon, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -458,18 +458,18 @@ func miqt_exec_callback_QSystemTrayIcon_ConnectNotify(self *C.QSystemTrayIcon, c
 
 func (this *QSystemTrayIcon) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QSystemTrayIcon_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QSystemTrayIcon_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSystemTrayIcon) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QSystemTrayIcon_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSystemTrayIcon) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QSystemTrayIcon_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSystemTrayIcon_DisconnectNotify
-func miqt_exec_callback_QSystemTrayIcon_DisconnectNotify(self *C.QSystemTrayIcon, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QSystemTrayIcon_disconnectNotify
+func miqt_exec_callback_QSystemTrayIcon_disconnectNotify(self *C.QSystemTrayIcon, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -484,7 +484,7 @@ func miqt_exec_callback_QSystemTrayIcon_DisconnectNotify(self *C.QSystemTrayIcon
 
 // Delete this object from C++ memory.
 func (this *QSystemTrayIcon) Delete() {
-	C.QSystemTrayIcon_Delete(this.h)
+	C.QSystemTrayIcon_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

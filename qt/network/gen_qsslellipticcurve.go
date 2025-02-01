@@ -62,7 +62,7 @@ func QSslEllipticCurve_FromShortName(name string) *QSslEllipticCurve {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	_goptr := newQSslEllipticCurve(C.QSslEllipticCurve_FromShortName(name_ms))
+	_goptr := newQSslEllipticCurve(C.QSslEllipticCurve_fromShortName(name_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -72,36 +72,36 @@ func QSslEllipticCurve_FromLongName(name string) *QSslEllipticCurve {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	_goptr := newQSslEllipticCurve(C.QSslEllipticCurve_FromLongName(name_ms))
+	_goptr := newQSslEllipticCurve(C.QSslEllipticCurve_fromLongName(name_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSslEllipticCurve) ShortName() string {
-	var _ms C.struct_miqt_string = C.QSslEllipticCurve_ShortName(this.h)
+	var _ms C.struct_miqt_string = C.QSslEllipticCurve_shortName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSslEllipticCurve) LongName() string {
-	var _ms C.struct_miqt_string = C.QSslEllipticCurve_LongName(this.h)
+	var _ms C.struct_miqt_string = C.QSslEllipticCurve_longName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSslEllipticCurve) IsValid() bool {
-	return (bool)(C.QSslEllipticCurve_IsValid(this.h))
+	return (bool)(C.QSslEllipticCurve_isValid(this.h))
 }
 
 func (this *QSslEllipticCurve) IsTlsNamedCurve() bool {
-	return (bool)(C.QSslEllipticCurve_IsTlsNamedCurve(this.h))
+	return (bool)(C.QSslEllipticCurve_isTlsNamedCurve(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QSslEllipticCurve) Delete() {
-	C.QSslEllipticCurve_Delete(this.h)
+	C.QSslEllipticCurve_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

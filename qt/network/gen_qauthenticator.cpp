@@ -23,19 +23,19 @@ QAuthenticator* QAuthenticator_new2(QAuthenticator* other) {
 	return new QAuthenticator(*other);
 }
 
-void QAuthenticator_OperatorAssign(QAuthenticator* self, QAuthenticator* other) {
+void QAuthenticator_operatorAssign(QAuthenticator* self, QAuthenticator* other) {
 	self->operator=(*other);
 }
 
-bool QAuthenticator_OperatorEqual(const QAuthenticator* self, QAuthenticator* other) {
+bool QAuthenticator_operatorEqual(const QAuthenticator* self, QAuthenticator* other) {
 	return (*self == *other);
 }
 
-bool QAuthenticator_OperatorNotEqual(const QAuthenticator* self, QAuthenticator* other) {
+bool QAuthenticator_operatorNotEqual(const QAuthenticator* self, QAuthenticator* other) {
 	return (*self != *other);
 }
 
-struct miqt_string QAuthenticator_User(const QAuthenticator* self) {
+struct miqt_string QAuthenticator_user(const QAuthenticator* self) {
 	QString _ret = self->user();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -46,12 +46,12 @@ struct miqt_string QAuthenticator_User(const QAuthenticator* self) {
 	return _ms;
 }
 
-void QAuthenticator_SetUser(QAuthenticator* self, struct miqt_string user) {
+void QAuthenticator_setUser(QAuthenticator* self, struct miqt_string user) {
 	QString user_QString = QString::fromUtf8(user.data, user.len);
 	self->setUser(user_QString);
 }
 
-struct miqt_string QAuthenticator_Password(const QAuthenticator* self) {
+struct miqt_string QAuthenticator_password(const QAuthenticator* self) {
 	QString _ret = self->password();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -62,12 +62,12 @@ struct miqt_string QAuthenticator_Password(const QAuthenticator* self) {
 	return _ms;
 }
 
-void QAuthenticator_SetPassword(QAuthenticator* self, struct miqt_string password) {
+void QAuthenticator_setPassword(QAuthenticator* self, struct miqt_string password) {
 	QString password_QString = QString::fromUtf8(password.data, password.len);
 	self->setPassword(password_QString);
 }
 
-struct miqt_string QAuthenticator_Realm(const QAuthenticator* self) {
+struct miqt_string QAuthenticator_realm(const QAuthenticator* self) {
 	QString _ret = self->realm();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -78,17 +78,17 @@ struct miqt_string QAuthenticator_Realm(const QAuthenticator* self) {
 	return _ms;
 }
 
-void QAuthenticator_SetRealm(QAuthenticator* self, struct miqt_string realm) {
+void QAuthenticator_setRealm(QAuthenticator* self, struct miqt_string realm) {
 	QString realm_QString = QString::fromUtf8(realm.data, realm.len);
 	self->setRealm(realm_QString);
 }
 
-QVariant* QAuthenticator_Option(const QAuthenticator* self, struct miqt_string opt) {
+QVariant* QAuthenticator_option(const QAuthenticator* self, struct miqt_string opt) {
 	QString opt_QString = QString::fromUtf8(opt.data, opt.len);
 	return new QVariant(self->option(opt_QString));
 }
 
-struct miqt_map /* of struct miqt_string to QVariant* */  QAuthenticator_Options(const QAuthenticator* self) {
+struct miqt_map /* of struct miqt_string to QVariant* */  QAuthenticator_options(const QAuthenticator* self) {
 	QVariantHash _ret = self->options();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
@@ -113,20 +113,20 @@ struct miqt_map /* of struct miqt_string to QVariant* */  QAuthenticator_Options
 	return _out;
 }
 
-void QAuthenticator_SetOption(QAuthenticator* self, struct miqt_string opt, QVariant* value) {
+void QAuthenticator_setOption(QAuthenticator* self, struct miqt_string opt, QVariant* value) {
 	QString opt_QString = QString::fromUtf8(opt.data, opt.len);
 	self->setOption(opt_QString, *value);
 }
 
-bool QAuthenticator_IsNull(const QAuthenticator* self) {
+bool QAuthenticator_isNull(const QAuthenticator* self) {
 	return self->isNull();
 }
 
-void QAuthenticator_Detach(QAuthenticator* self) {
+void QAuthenticator_detach(QAuthenticator* self) {
 	self->detach();
 }
 
-void QAuthenticator_Delete(QAuthenticator* self) {
+void QAuthenticator_delete(QAuthenticator* self) {
 	delete self;
 }
 

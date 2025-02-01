@@ -52,19 +52,19 @@ func UnsafeNewQMediaRecorderControl(h unsafe.Pointer) *QMediaRecorderControl {
 }
 
 func (this *QMediaRecorderControl) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaRecorderControl_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaRecorderControl_metaObject(this.h)))
 }
 
 func (this *QMediaRecorderControl) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QMediaRecorderControl_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QMediaRecorderControl_metacast(this.h, param1_Cstring))
 }
 
 func QMediaRecorderControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaRecorderControl_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaRecorderControl_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -73,55 +73,55 @@ func QMediaRecorderControl_Tr(s string) string {
 func QMediaRecorderControl_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaRecorderControl_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaRecorderControl_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMediaRecorderControl) OutputLocation() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QMediaRecorderControl_OutputLocation(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QMediaRecorderControl_outputLocation(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaRecorderControl) SetOutputLocation(location *qt.QUrl) bool {
-	return (bool)(C.QMediaRecorderControl_SetOutputLocation(this.h, (*C.QUrl)(location.UnsafePointer())))
+	return (bool)(C.QMediaRecorderControl_setOutputLocation(this.h, (*C.QUrl)(location.UnsafePointer())))
 }
 
 func (this *QMediaRecorderControl) State() QMediaRecorder__State {
-	return (QMediaRecorder__State)(C.QMediaRecorderControl_State(this.h))
+	return (QMediaRecorder__State)(C.QMediaRecorderControl_state(this.h))
 }
 
 func (this *QMediaRecorderControl) Status() QMediaRecorder__Status {
-	return (QMediaRecorder__Status)(C.QMediaRecorderControl_Status(this.h))
+	return (QMediaRecorder__Status)(C.QMediaRecorderControl_status(this.h))
 }
 
 func (this *QMediaRecorderControl) Duration() int64 {
-	return (int64)(C.QMediaRecorderControl_Duration(this.h))
+	return (int64)(C.QMediaRecorderControl_duration(this.h))
 }
 
 func (this *QMediaRecorderControl) IsMuted() bool {
-	return (bool)(C.QMediaRecorderControl_IsMuted(this.h))
+	return (bool)(C.QMediaRecorderControl_isMuted(this.h))
 }
 
 func (this *QMediaRecorderControl) Volume() float64 {
-	return (float64)(C.QMediaRecorderControl_Volume(this.h))
+	return (float64)(C.QMediaRecorderControl_volume(this.h))
 }
 
 func (this *QMediaRecorderControl) ApplySettings() {
-	C.QMediaRecorderControl_ApplySettings(this.h)
+	C.QMediaRecorderControl_applySettings(this.h)
 }
 
 func (this *QMediaRecorderControl) StateChanged(state QMediaRecorder__State) {
-	C.QMediaRecorderControl_StateChanged(this.h, (C.int)(state))
+	C.QMediaRecorderControl_stateChanged(this.h, (C.int)(state))
 }
 func (this *QMediaRecorderControl) OnStateChanged(slot func(state QMediaRecorder__State)) {
-	C.QMediaRecorderControl_connect_StateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaRecorderControl_connect_stateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaRecorderControl_StateChanged
-func miqt_exec_callback_QMediaRecorderControl_StateChanged(cb C.intptr_t, state C.int) {
+//export miqt_exec_callback_QMediaRecorderControl_stateChanged
+func miqt_exec_callback_QMediaRecorderControl_stateChanged(cb C.intptr_t, state C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(state QMediaRecorder__State))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -134,14 +134,14 @@ func miqt_exec_callback_QMediaRecorderControl_StateChanged(cb C.intptr_t, state 
 }
 
 func (this *QMediaRecorderControl) StatusChanged(status QMediaRecorder__Status) {
-	C.QMediaRecorderControl_StatusChanged(this.h, (C.int)(status))
+	C.QMediaRecorderControl_statusChanged(this.h, (C.int)(status))
 }
 func (this *QMediaRecorderControl) OnStatusChanged(slot func(status QMediaRecorder__Status)) {
-	C.QMediaRecorderControl_connect_StatusChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaRecorderControl_connect_statusChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaRecorderControl_StatusChanged
-func miqt_exec_callback_QMediaRecorderControl_StatusChanged(cb C.intptr_t, status C.int) {
+//export miqt_exec_callback_QMediaRecorderControl_statusChanged
+func miqt_exec_callback_QMediaRecorderControl_statusChanged(cb C.intptr_t, status C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(status QMediaRecorder__Status))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -154,14 +154,14 @@ func miqt_exec_callback_QMediaRecorderControl_StatusChanged(cb C.intptr_t, statu
 }
 
 func (this *QMediaRecorderControl) DurationChanged(position int64) {
-	C.QMediaRecorderControl_DurationChanged(this.h, (C.longlong)(position))
+	C.QMediaRecorderControl_durationChanged(this.h, (C.longlong)(position))
 }
 func (this *QMediaRecorderControl) OnDurationChanged(slot func(position int64)) {
-	C.QMediaRecorderControl_connect_DurationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaRecorderControl_connect_durationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaRecorderControl_DurationChanged
-func miqt_exec_callback_QMediaRecorderControl_DurationChanged(cb C.intptr_t, position C.longlong) {
+//export miqt_exec_callback_QMediaRecorderControl_durationChanged
+func miqt_exec_callback_QMediaRecorderControl_durationChanged(cb C.intptr_t, position C.longlong) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(position int64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -174,14 +174,14 @@ func miqt_exec_callback_QMediaRecorderControl_DurationChanged(cb C.intptr_t, pos
 }
 
 func (this *QMediaRecorderControl) MutedChanged(muted bool) {
-	C.QMediaRecorderControl_MutedChanged(this.h, (C.bool)(muted))
+	C.QMediaRecorderControl_mutedChanged(this.h, (C.bool)(muted))
 }
 func (this *QMediaRecorderControl) OnMutedChanged(slot func(muted bool)) {
-	C.QMediaRecorderControl_connect_MutedChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaRecorderControl_connect_mutedChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaRecorderControl_MutedChanged
-func miqt_exec_callback_QMediaRecorderControl_MutedChanged(cb C.intptr_t, muted C.bool) {
+//export miqt_exec_callback_QMediaRecorderControl_mutedChanged
+func miqt_exec_callback_QMediaRecorderControl_mutedChanged(cb C.intptr_t, muted C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(muted bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -194,14 +194,14 @@ func miqt_exec_callback_QMediaRecorderControl_MutedChanged(cb C.intptr_t, muted 
 }
 
 func (this *QMediaRecorderControl) VolumeChanged(volume float64) {
-	C.QMediaRecorderControl_VolumeChanged(this.h, (C.double)(volume))
+	C.QMediaRecorderControl_volumeChanged(this.h, (C.double)(volume))
 }
 func (this *QMediaRecorderControl) OnVolumeChanged(slot func(volume float64)) {
-	C.QMediaRecorderControl_connect_VolumeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaRecorderControl_connect_volumeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaRecorderControl_VolumeChanged
-func miqt_exec_callback_QMediaRecorderControl_VolumeChanged(cb C.intptr_t, volume C.double) {
+//export miqt_exec_callback_QMediaRecorderControl_volumeChanged
+func miqt_exec_callback_QMediaRecorderControl_volumeChanged(cb C.intptr_t, volume C.double) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(volume float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -214,14 +214,14 @@ func miqt_exec_callback_QMediaRecorderControl_VolumeChanged(cb C.intptr_t, volum
 }
 
 func (this *QMediaRecorderControl) ActualLocationChanged(location *qt.QUrl) {
-	C.QMediaRecorderControl_ActualLocationChanged(this.h, (*C.QUrl)(location.UnsafePointer()))
+	C.QMediaRecorderControl_actualLocationChanged(this.h, (*C.QUrl)(location.UnsafePointer()))
 }
 func (this *QMediaRecorderControl) OnActualLocationChanged(slot func(location *qt.QUrl)) {
-	C.QMediaRecorderControl_connect_ActualLocationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaRecorderControl_connect_actualLocationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaRecorderControl_ActualLocationChanged
-func miqt_exec_callback_QMediaRecorderControl_ActualLocationChanged(cb C.intptr_t, location *C.QUrl) {
+//export miqt_exec_callback_QMediaRecorderControl_actualLocationChanged
+func miqt_exec_callback_QMediaRecorderControl_actualLocationChanged(cb C.intptr_t, location *C.QUrl) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(location *qt.QUrl))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -238,14 +238,14 @@ func (this *QMediaRecorderControl) Error(error int, errorString string) {
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
 	defer C.free(unsafe.Pointer(errorString_ms.data))
-	C.QMediaRecorderControl_Error(this.h, (C.int)(error), errorString_ms)
+	C.QMediaRecorderControl_error(this.h, (C.int)(error), errorString_ms)
 }
 func (this *QMediaRecorderControl) OnError(slot func(error int, errorString string)) {
-	C.QMediaRecorderControl_connect_Error(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaRecorderControl_connect_error(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaRecorderControl_Error
-func miqt_exec_callback_QMediaRecorderControl_Error(cb C.intptr_t, error C.int, errorString C.struct_miqt_string) {
+//export miqt_exec_callback_QMediaRecorderControl_error
+func miqt_exec_callback_QMediaRecorderControl_error(cb C.intptr_t, error C.int, errorString C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(error int, errorString string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -263,15 +263,15 @@ func miqt_exec_callback_QMediaRecorderControl_Error(cb C.intptr_t, error C.int, 
 }
 
 func (this *QMediaRecorderControl) SetState(state QMediaRecorder__State) {
-	C.QMediaRecorderControl_SetState(this.h, (C.int)(state))
+	C.QMediaRecorderControl_setState(this.h, (C.int)(state))
 }
 
 func (this *QMediaRecorderControl) SetMuted(muted bool) {
-	C.QMediaRecorderControl_SetMuted(this.h, (C.bool)(muted))
+	C.QMediaRecorderControl_setMuted(this.h, (C.bool)(muted))
 }
 
 func (this *QMediaRecorderControl) SetVolume(volume float64) {
-	C.QMediaRecorderControl_SetVolume(this.h, (C.double)(volume))
+	C.QMediaRecorderControl_setVolume(this.h, (C.double)(volume))
 }
 
 func QMediaRecorderControl_Tr2(s string, c string) string {
@@ -279,7 +279,7 @@ func QMediaRecorderControl_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaRecorderControl_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaRecorderControl_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -290,7 +290,7 @@ func QMediaRecorderControl_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaRecorderControl_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaRecorderControl_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -301,7 +301,7 @@ func QMediaRecorderControl_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaRecorderControl_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaRecorderControl_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -312,7 +312,7 @@ func QMediaRecorderControl_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaRecorderControl_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaRecorderControl_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -320,7 +320,7 @@ func QMediaRecorderControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaRecorderControl) Delete() {
-	C.QMediaRecorderControl_Delete(this.h)
+	C.QMediaRecorderControl_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

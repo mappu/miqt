@@ -53,7 +53,7 @@ func NewQThreadStorageData(param1 *QThreadStorageData) *QThreadStorageData {
 
 // Delete this object from C++ memory.
 func (this *QThreadStorageData) Delete() {
-	C.QThreadStorageData_Delete(this.h)
+	C.QThreadStorageData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

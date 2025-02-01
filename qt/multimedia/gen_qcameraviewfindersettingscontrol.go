@@ -62,19 +62,19 @@ func UnsafeNewQCameraViewfinderSettingsControl(h unsafe.Pointer) *QCameraViewfin
 }
 
 func (this *QCameraViewfinderSettingsControl) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraViewfinderSettingsControl_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraViewfinderSettingsControl_metaObject(this.h)))
 }
 
 func (this *QCameraViewfinderSettingsControl) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QCameraViewfinderSettingsControl_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QCameraViewfinderSettingsControl_metacast(this.h, param1_Cstring))
 }
 
 func QCameraViewfinderSettingsControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -83,24 +83,24 @@ func QCameraViewfinderSettingsControl_Tr(s string) string {
 func QCameraViewfinderSettingsControl_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCameraViewfinderSettingsControl) IsViewfinderParameterSupported(parameter QCameraViewfinderSettingsControl__ViewfinderParameter) bool {
-	return (bool)(C.QCameraViewfinderSettingsControl_IsViewfinderParameterSupported(this.h, (C.int)(parameter)))
+	return (bool)(C.QCameraViewfinderSettingsControl_isViewfinderParameterSupported(this.h, (C.int)(parameter)))
 }
 
 func (this *QCameraViewfinderSettingsControl) ViewfinderParameter(parameter QCameraViewfinderSettingsControl__ViewfinderParameter) *qt.QVariant {
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraViewfinderSettingsControl_ViewfinderParameter(this.h, (C.int)(parameter))))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraViewfinderSettingsControl_viewfinderParameter(this.h, (C.int)(parameter))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraViewfinderSettingsControl) SetViewfinderParameter(parameter QCameraViewfinderSettingsControl__ViewfinderParameter, value *qt.QVariant) {
-	C.QCameraViewfinderSettingsControl_SetViewfinderParameter(this.h, (C.int)(parameter), (*C.QVariant)(value.UnsafePointer()))
+	C.QCameraViewfinderSettingsControl_setViewfinderParameter(this.h, (C.int)(parameter), (*C.QVariant)(value.UnsafePointer()))
 }
 
 func QCameraViewfinderSettingsControl_Tr2(s string, c string) string {
@@ -108,7 +108,7 @@ func QCameraViewfinderSettingsControl_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -119,7 +119,7 @@ func QCameraViewfinderSettingsControl_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -130,7 +130,7 @@ func QCameraViewfinderSettingsControl_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -141,7 +141,7 @@ func QCameraViewfinderSettingsControl_TrUtf83(s string, c string, n int) string 
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -149,7 +149,7 @@ func QCameraViewfinderSettingsControl_TrUtf83(s string, c string, n int) string 
 
 // Delete this object from C++ memory.
 func (this *QCameraViewfinderSettingsControl) Delete() {
-	C.QCameraViewfinderSettingsControl_Delete(this.h)
+	C.QCameraViewfinderSettingsControl_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -198,19 +198,19 @@ func UnsafeNewQCameraViewfinderSettingsControl2(h unsafe.Pointer) *QCameraViewfi
 }
 
 func (this *QCameraViewfinderSettingsControl2) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraViewfinderSettingsControl2_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraViewfinderSettingsControl2_metaObject(this.h)))
 }
 
 func (this *QCameraViewfinderSettingsControl2) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QCameraViewfinderSettingsControl2_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QCameraViewfinderSettingsControl2_metacast(this.h, param1_Cstring))
 }
 
 func QCameraViewfinderSettingsControl2_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl2_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl2_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -219,14 +219,14 @@ func QCameraViewfinderSettingsControl2_Tr(s string) string {
 func QCameraViewfinderSettingsControl2_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl2_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl2_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCameraViewfinderSettingsControl2) SupportedViewfinderSettings() []QCameraViewfinderSettings {
-	var _ma C.struct_miqt_array = C.QCameraViewfinderSettingsControl2_SupportedViewfinderSettings(this.h)
+	var _ma C.struct_miqt_array = C.QCameraViewfinderSettingsControl2_supportedViewfinderSettings(this.h)
 	_ret := make([]QCameraViewfinderSettings, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraViewfinderSettings)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -238,13 +238,13 @@ func (this *QCameraViewfinderSettingsControl2) SupportedViewfinderSettings() []Q
 }
 
 func (this *QCameraViewfinderSettingsControl2) ViewfinderSettings() *QCameraViewfinderSettings {
-	_goptr := newQCameraViewfinderSettings(C.QCameraViewfinderSettingsControl2_ViewfinderSettings(this.h))
+	_goptr := newQCameraViewfinderSettings(C.QCameraViewfinderSettingsControl2_viewfinderSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraViewfinderSettingsControl2) SetViewfinderSettings(settings *QCameraViewfinderSettings) {
-	C.QCameraViewfinderSettingsControl2_SetViewfinderSettings(this.h, settings.cPointer())
+	C.QCameraViewfinderSettingsControl2_setViewfinderSettings(this.h, settings.cPointer())
 }
 
 func QCameraViewfinderSettingsControl2_Tr2(s string, c string) string {
@@ -252,7 +252,7 @@ func QCameraViewfinderSettingsControl2_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl2_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl2_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -263,7 +263,7 @@ func QCameraViewfinderSettingsControl2_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl2_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl2_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -274,7 +274,7 @@ func QCameraViewfinderSettingsControl2_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl2_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl2_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -285,7 +285,7 @@ func QCameraViewfinderSettingsControl2_TrUtf83(s string, c string, n int) string
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl2_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraViewfinderSettingsControl2_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -293,7 +293,7 @@ func QCameraViewfinderSettingsControl2_TrUtf83(s string, c string, n int) string
 
 // Delete this object from C++ memory.
 func (this *QCameraViewfinderSettingsControl2) Delete() {
-	C.QCameraViewfinderSettingsControl2_Delete(this.h)
+	C.QCameraViewfinderSettingsControl2_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

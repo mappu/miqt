@@ -30,28 +30,28 @@ QSslError* QSslError_new4(QSslError* other) {
 	return new QSslError(*other);
 }
 
-void QSslError_Swap(QSslError* self, QSslError* other) {
+void QSslError_swap(QSslError* self, QSslError* other) {
 	self->swap(*other);
 }
 
-void QSslError_OperatorAssign(QSslError* self, QSslError* other) {
+void QSslError_operatorAssign(QSslError* self, QSslError* other) {
 	self->operator=(*other);
 }
 
-bool QSslError_OperatorEqual(const QSslError* self, QSslError* other) {
+bool QSslError_operatorEqual(const QSslError* self, QSslError* other) {
 	return (*self == *other);
 }
 
-bool QSslError_OperatorNotEqual(const QSslError* self, QSslError* other) {
+bool QSslError_operatorNotEqual(const QSslError* self, QSslError* other) {
 	return (*self != *other);
 }
 
-int QSslError_Error(const QSslError* self) {
+int QSslError_error(const QSslError* self) {
 	QSslError::SslError _ret = self->error();
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string QSslError_ErrorString(const QSslError* self) {
+struct miqt_string QSslError_errorString(const QSslError* self) {
 	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -62,11 +62,11 @@ struct miqt_string QSslError_ErrorString(const QSslError* self) {
 	return _ms;
 }
 
-QSslCertificate* QSslError_Certificate(const QSslError* self) {
+QSslCertificate* QSslError_certificate(const QSslError* self) {
 	return new QSslCertificate(self->certificate());
 }
 
-void QSslError_Delete(QSslError* self) {
+void QSslError_delete(QSslError* self) {
 	delete self;
 }
 

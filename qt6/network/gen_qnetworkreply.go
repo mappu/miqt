@@ -91,74 +91,74 @@ func UnsafeNewQNetworkReply(h unsafe.Pointer) *QNetworkReply {
 }
 
 func (this *QNetworkReply) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QNetworkReply_MetaObject(this.h)))
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QNetworkReply_metaObject(this.h)))
 }
 
 func (this *QNetworkReply) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QNetworkReply_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QNetworkReply_metacast(this.h, param1_Cstring))
 }
 
 func QNetworkReply_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QNetworkReply_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QNetworkReply_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QNetworkReply) Close() {
-	C.QNetworkReply_Close(this.h)
+	C.QNetworkReply_close(this.h)
 }
 
 func (this *QNetworkReply) IsSequential() bool {
-	return (bool)(C.QNetworkReply_IsSequential(this.h))
+	return (bool)(C.QNetworkReply_isSequential(this.h))
 }
 
 func (this *QNetworkReply) ReadBufferSize() int64 {
-	return (int64)(C.QNetworkReply_ReadBufferSize(this.h))
+	return (int64)(C.QNetworkReply_readBufferSize(this.h))
 }
 
 func (this *QNetworkReply) SetReadBufferSize(size int64) {
-	C.QNetworkReply_SetReadBufferSize(this.h, (C.longlong)(size))
+	C.QNetworkReply_setReadBufferSize(this.h, (C.longlong)(size))
 }
 
 func (this *QNetworkReply) Manager() *QNetworkAccessManager {
-	return newQNetworkAccessManager(C.QNetworkReply_Manager(this.h))
+	return newQNetworkAccessManager(C.QNetworkReply_manager(this.h))
 }
 
 func (this *QNetworkReply) Operation() QNetworkAccessManager__Operation {
-	return (QNetworkAccessManager__Operation)(C.QNetworkReply_Operation(this.h))
+	return (QNetworkAccessManager__Operation)(C.QNetworkReply_operation(this.h))
 }
 
 func (this *QNetworkReply) Request() *QNetworkRequest {
-	_goptr := newQNetworkRequest(C.QNetworkReply_Request(this.h))
+	_goptr := newQNetworkRequest(C.QNetworkReply_request(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkReply) Error() QNetworkReply__NetworkError {
-	return (QNetworkReply__NetworkError)(C.QNetworkReply_Error(this.h))
+	return (QNetworkReply__NetworkError)(C.QNetworkReply_error(this.h))
 }
 
 func (this *QNetworkReply) IsFinished() bool {
-	return (bool)(C.QNetworkReply_IsFinished(this.h))
+	return (bool)(C.QNetworkReply_isFinished(this.h))
 }
 
 func (this *QNetworkReply) IsRunning() bool {
-	return (bool)(C.QNetworkReply_IsRunning(this.h))
+	return (bool)(C.QNetworkReply_isRunning(this.h))
 }
 
 func (this *QNetworkReply) Url() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QNetworkReply_Url(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QNetworkReply_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkReply) Header(header QNetworkRequest__KnownHeaders) *qt6.QVariant {
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QNetworkReply_Header(this.h, (C.int)(header))))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QNetworkReply_header(this.h, (C.int)(header))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -171,11 +171,11 @@ func (this *QNetworkReply) HasRawHeader(headerName []byte) bool {
 		headerName_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	headerName_alias.len = C.size_t(len(headerName))
-	return (bool)(C.QNetworkReply_HasRawHeader(this.h, headerName_alias))
+	return (bool)(C.QNetworkReply_hasRawHeader(this.h, headerName_alias))
 }
 
 func (this *QNetworkReply) RawHeaderList() [][]byte {
-	var _ma C.struct_miqt_array = C.QNetworkReply_RawHeaderList(this.h)
+	var _ma C.struct_miqt_array = C.QNetworkReply_rawHeaderList(this.h)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -195,7 +195,7 @@ func (this *QNetworkReply) RawHeader(headerName []byte) []byte {
 		headerName_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	headerName_alias.len = C.size_t(len(headerName))
-	var _bytearray C.struct_miqt_string = C.QNetworkReply_RawHeader(this.h, headerName_alias)
+	var _bytearray C.struct_miqt_string = C.QNetworkReply_rawHeader(this.h, headerName_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -205,7 +205,7 @@ func (this *QNetworkReply) RawHeaderPairs() []struct {
 	First  []byte
 	Second []byte
 } {
-	var _ma C.struct_miqt_array = C.QNetworkReply_RawHeaderPairs(this.h)
+	var _ma C.struct_miqt_array = C.QNetworkReply_rawHeaderPairs(this.h)
 	_ret := make([]struct {
 		First  []byte
 		Second []byte
@@ -232,19 +232,19 @@ func (this *QNetworkReply) RawHeaderPairs() []struct {
 }
 
 func (this *QNetworkReply) Attribute(code QNetworkRequest__Attribute) *qt6.QVariant {
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QNetworkReply_Attribute(this.h, (C.int)(code))))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QNetworkReply_attribute(this.h, (C.int)(code))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkReply) SslConfiguration() *QSslConfiguration {
-	_goptr := newQSslConfiguration(C.QNetworkReply_SslConfiguration(this.h))
+	_goptr := newQSslConfiguration(C.QNetworkReply_sslConfiguration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkReply) SetSslConfiguration(configuration *QSslConfiguration) {
-	C.QNetworkReply_SetSslConfiguration(this.h, configuration.cPointer())
+	C.QNetworkReply_setSslConfiguration(this.h, configuration.cPointer())
 }
 
 func (this *QNetworkReply) IgnoreSslErrors(errors []QSslError) {
@@ -254,26 +254,26 @@ func (this *QNetworkReply) IgnoreSslErrors(errors []QSslError) {
 		errors_CArray[i] = errors[i].cPointer()
 	}
 	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray)}
-	C.QNetworkReply_IgnoreSslErrors(this.h, errors_ma)
+	C.QNetworkReply_ignoreSslErrors(this.h, errors_ma)
 }
 
 func (this *QNetworkReply) Abort() {
-	C.QNetworkReply_Abort(this.h)
+	C.QNetworkReply_abort(this.h)
 }
 
 func (this *QNetworkReply) IgnoreSslErrors2() {
-	C.QNetworkReply_IgnoreSslErrors2(this.h)
+	C.QNetworkReply_ignoreSslErrors2(this.h)
 }
 
 func (this *QNetworkReply) SocketStartedConnecting() {
-	C.QNetworkReply_SocketStartedConnecting(this.h)
+	C.QNetworkReply_socketStartedConnecting(this.h)
 }
 func (this *QNetworkReply) OnSocketStartedConnecting(slot func()) {
-	C.QNetworkReply_connect_SocketStartedConnecting(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QNetworkReply_connect_socketStartedConnecting(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QNetworkReply_SocketStartedConnecting
-func miqt_exec_callback_QNetworkReply_SocketStartedConnecting(cb C.intptr_t) {
+//export miqt_exec_callback_QNetworkReply_socketStartedConnecting
+func miqt_exec_callback_QNetworkReply_socketStartedConnecting(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -283,14 +283,14 @@ func miqt_exec_callback_QNetworkReply_SocketStartedConnecting(cb C.intptr_t) {
 }
 
 func (this *QNetworkReply) RequestSent() {
-	C.QNetworkReply_RequestSent(this.h)
+	C.QNetworkReply_requestSent(this.h)
 }
 func (this *QNetworkReply) OnRequestSent(slot func()) {
-	C.QNetworkReply_connect_RequestSent(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QNetworkReply_connect_requestSent(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QNetworkReply_RequestSent
-func miqt_exec_callback_QNetworkReply_RequestSent(cb C.intptr_t) {
+//export miqt_exec_callback_QNetworkReply_requestSent
+func miqt_exec_callback_QNetworkReply_requestSent(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -300,14 +300,14 @@ func miqt_exec_callback_QNetworkReply_RequestSent(cb C.intptr_t) {
 }
 
 func (this *QNetworkReply) MetaDataChanged() {
-	C.QNetworkReply_MetaDataChanged(this.h)
+	C.QNetworkReply_metaDataChanged(this.h)
 }
 func (this *QNetworkReply) OnMetaDataChanged(slot func()) {
-	C.QNetworkReply_connect_MetaDataChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QNetworkReply_connect_metaDataChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QNetworkReply_MetaDataChanged
-func miqt_exec_callback_QNetworkReply_MetaDataChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QNetworkReply_metaDataChanged
+func miqt_exec_callback_QNetworkReply_metaDataChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -317,14 +317,14 @@ func miqt_exec_callback_QNetworkReply_MetaDataChanged(cb C.intptr_t) {
 }
 
 func (this *QNetworkReply) Finished() {
-	C.QNetworkReply_Finished(this.h)
+	C.QNetworkReply_finished(this.h)
 }
 func (this *QNetworkReply) OnFinished(slot func()) {
-	C.QNetworkReply_connect_Finished(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QNetworkReply_connect_finished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QNetworkReply_Finished
-func miqt_exec_callback_QNetworkReply_Finished(cb C.intptr_t) {
+//export miqt_exec_callback_QNetworkReply_finished
+func miqt_exec_callback_QNetworkReply_finished(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -334,14 +334,14 @@ func miqt_exec_callback_QNetworkReply_Finished(cb C.intptr_t) {
 }
 
 func (this *QNetworkReply) ErrorOccurred(param1 QNetworkReply__NetworkError) {
-	C.QNetworkReply_ErrorOccurred(this.h, (C.int)(param1))
+	C.QNetworkReply_errorOccurred(this.h, (C.int)(param1))
 }
 func (this *QNetworkReply) OnErrorOccurred(slot func(param1 QNetworkReply__NetworkError)) {
-	C.QNetworkReply_connect_ErrorOccurred(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QNetworkReply_connect_errorOccurred(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QNetworkReply_ErrorOccurred
-func miqt_exec_callback_QNetworkReply_ErrorOccurred(cb C.intptr_t, param1 C.int) {
+//export miqt_exec_callback_QNetworkReply_errorOccurred
+func miqt_exec_callback_QNetworkReply_errorOccurred(cb C.intptr_t, param1 C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 QNetworkReply__NetworkError))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -354,14 +354,14 @@ func miqt_exec_callback_QNetworkReply_ErrorOccurred(cb C.intptr_t, param1 C.int)
 }
 
 func (this *QNetworkReply) Encrypted() {
-	C.QNetworkReply_Encrypted(this.h)
+	C.QNetworkReply_encrypted(this.h)
 }
 func (this *QNetworkReply) OnEncrypted(slot func()) {
-	C.QNetworkReply_connect_Encrypted(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QNetworkReply_connect_encrypted(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QNetworkReply_Encrypted
-func miqt_exec_callback_QNetworkReply_Encrypted(cb C.intptr_t) {
+//export miqt_exec_callback_QNetworkReply_encrypted
+func miqt_exec_callback_QNetworkReply_encrypted(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -377,14 +377,14 @@ func (this *QNetworkReply) SslErrors(errors []QSslError) {
 		errors_CArray[i] = errors[i].cPointer()
 	}
 	errors_ma := C.struct_miqt_array{len: C.size_t(len(errors)), data: unsafe.Pointer(errors_CArray)}
-	C.QNetworkReply_SslErrors(this.h, errors_ma)
+	C.QNetworkReply_sslErrors(this.h, errors_ma)
 }
 func (this *QNetworkReply) OnSslErrors(slot func(errors []QSslError)) {
-	C.QNetworkReply_connect_SslErrors(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QNetworkReply_connect_sslErrors(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QNetworkReply_SslErrors
-func miqt_exec_callback_QNetworkReply_SslErrors(cb C.intptr_t, errors C.struct_miqt_array) {
+//export miqt_exec_callback_QNetworkReply_sslErrors
+func miqt_exec_callback_QNetworkReply_sslErrors(cb C.intptr_t, errors C.struct_miqt_array) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(errors []QSslError))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -405,14 +405,14 @@ func miqt_exec_callback_QNetworkReply_SslErrors(cb C.intptr_t, errors C.struct_m
 }
 
 func (this *QNetworkReply) PreSharedKeyAuthenticationRequired(authenticator *QSslPreSharedKeyAuthenticator) {
-	C.QNetworkReply_PreSharedKeyAuthenticationRequired(this.h, authenticator.cPointer())
+	C.QNetworkReply_preSharedKeyAuthenticationRequired(this.h, authenticator.cPointer())
 }
 func (this *QNetworkReply) OnPreSharedKeyAuthenticationRequired(slot func(authenticator *QSslPreSharedKeyAuthenticator)) {
-	C.QNetworkReply_connect_PreSharedKeyAuthenticationRequired(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QNetworkReply_connect_preSharedKeyAuthenticationRequired(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QNetworkReply_PreSharedKeyAuthenticationRequired
-func miqt_exec_callback_QNetworkReply_PreSharedKeyAuthenticationRequired(cb C.intptr_t, authenticator *C.QSslPreSharedKeyAuthenticator) {
+//export miqt_exec_callback_QNetworkReply_preSharedKeyAuthenticationRequired
+func miqt_exec_callback_QNetworkReply_preSharedKeyAuthenticationRequired(cb C.intptr_t, authenticator *C.QSslPreSharedKeyAuthenticator) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(authenticator *QSslPreSharedKeyAuthenticator))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -425,14 +425,14 @@ func miqt_exec_callback_QNetworkReply_PreSharedKeyAuthenticationRequired(cb C.in
 }
 
 func (this *QNetworkReply) Redirected(url *qt6.QUrl) {
-	C.QNetworkReply_Redirected(this.h, (*C.QUrl)(url.UnsafePointer()))
+	C.QNetworkReply_redirected(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 func (this *QNetworkReply) OnRedirected(slot func(url *qt6.QUrl)) {
-	C.QNetworkReply_connect_Redirected(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QNetworkReply_connect_redirected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QNetworkReply_Redirected
-func miqt_exec_callback_QNetworkReply_Redirected(cb C.intptr_t, url *C.QUrl) {
+//export miqt_exec_callback_QNetworkReply_redirected
+func miqt_exec_callback_QNetworkReply_redirected(cb C.intptr_t, url *C.QUrl) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(url *qt6.QUrl))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -445,14 +445,14 @@ func miqt_exec_callback_QNetworkReply_Redirected(cb C.intptr_t, url *C.QUrl) {
 }
 
 func (this *QNetworkReply) RedirectAllowed() {
-	C.QNetworkReply_RedirectAllowed(this.h)
+	C.QNetworkReply_redirectAllowed(this.h)
 }
 func (this *QNetworkReply) OnRedirectAllowed(slot func()) {
-	C.QNetworkReply_connect_RedirectAllowed(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QNetworkReply_connect_redirectAllowed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QNetworkReply_RedirectAllowed
-func miqt_exec_callback_QNetworkReply_RedirectAllowed(cb C.intptr_t) {
+//export miqt_exec_callback_QNetworkReply_redirectAllowed
+func miqt_exec_callback_QNetworkReply_redirectAllowed(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -462,14 +462,14 @@ func miqt_exec_callback_QNetworkReply_RedirectAllowed(cb C.intptr_t) {
 }
 
 func (this *QNetworkReply) UploadProgress(bytesSent int64, bytesTotal int64) {
-	C.QNetworkReply_UploadProgress(this.h, (C.longlong)(bytesSent), (C.longlong)(bytesTotal))
+	C.QNetworkReply_uploadProgress(this.h, (C.longlong)(bytesSent), (C.longlong)(bytesTotal))
 }
 func (this *QNetworkReply) OnUploadProgress(slot func(bytesSent int64, bytesTotal int64)) {
-	C.QNetworkReply_connect_UploadProgress(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QNetworkReply_connect_uploadProgress(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QNetworkReply_UploadProgress
-func miqt_exec_callback_QNetworkReply_UploadProgress(cb C.intptr_t, bytesSent C.longlong, bytesTotal C.longlong) {
+//export miqt_exec_callback_QNetworkReply_uploadProgress
+func miqt_exec_callback_QNetworkReply_uploadProgress(cb C.intptr_t, bytesSent C.longlong, bytesTotal C.longlong) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(bytesSent int64, bytesTotal int64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -484,14 +484,14 @@ func miqt_exec_callback_QNetworkReply_UploadProgress(cb C.intptr_t, bytesSent C.
 }
 
 func (this *QNetworkReply) DownloadProgress(bytesReceived int64, bytesTotal int64) {
-	C.QNetworkReply_DownloadProgress(this.h, (C.longlong)(bytesReceived), (C.longlong)(bytesTotal))
+	C.QNetworkReply_downloadProgress(this.h, (C.longlong)(bytesReceived), (C.longlong)(bytesTotal))
 }
 func (this *QNetworkReply) OnDownloadProgress(slot func(bytesReceived int64, bytesTotal int64)) {
-	C.QNetworkReply_connect_DownloadProgress(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QNetworkReply_connect_downloadProgress(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QNetworkReply_DownloadProgress
-func miqt_exec_callback_QNetworkReply_DownloadProgress(cb C.intptr_t, bytesReceived C.longlong, bytesTotal C.longlong) {
+//export miqt_exec_callback_QNetworkReply_downloadProgress
+func miqt_exec_callback_QNetworkReply_downloadProgress(cb C.intptr_t, bytesReceived C.longlong, bytesTotal C.longlong) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(bytesReceived int64, bytesTotal int64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -510,7 +510,7 @@ func QNetworkReply_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QNetworkReply_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QNetworkReply_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -521,7 +521,7 @@ func QNetworkReply_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QNetworkReply_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QNetworkReply_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -529,7 +529,7 @@ func QNetworkReply_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QNetworkReply) Delete() {
-	C.QNetworkReply_Delete(this.h)
+	C.QNetworkReply_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

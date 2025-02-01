@@ -24,24 +24,24 @@ typedef struct QVariant QVariant;
 
 QAuthenticator* QAuthenticator_new();
 QAuthenticator* QAuthenticator_new2(QAuthenticator* other);
-void QAuthenticator_OperatorAssign(QAuthenticator* self, QAuthenticator* other);
-bool QAuthenticator_OperatorEqual(const QAuthenticator* self, QAuthenticator* other);
-bool QAuthenticator_OperatorNotEqual(const QAuthenticator* self, QAuthenticator* other);
-struct miqt_string QAuthenticator_User(const QAuthenticator* self);
-void QAuthenticator_SetUser(QAuthenticator* self, struct miqt_string user);
-struct miqt_string QAuthenticator_Password(const QAuthenticator* self);
-void QAuthenticator_SetPassword(QAuthenticator* self, struct miqt_string password);
-struct miqt_string QAuthenticator_Realm(const QAuthenticator* self);
-void QAuthenticator_SetRealm(QAuthenticator* self, struct miqt_string realm);
-QVariant* QAuthenticator_Option(const QAuthenticator* self, struct miqt_string opt);
-struct miqt_map /* of struct miqt_string to QVariant* */  QAuthenticator_Options(const QAuthenticator* self);
-void QAuthenticator_SetOption(QAuthenticator* self, struct miqt_string opt, QVariant* value);
-bool QAuthenticator_IsNull(const QAuthenticator* self);
-void QAuthenticator_Detach(QAuthenticator* self);
-void QAuthenticator_Delete(QAuthenticator* self);
+void QAuthenticator_operatorAssign(QAuthenticator* self, QAuthenticator* other);
+bool QAuthenticator_operatorEqual(const QAuthenticator* self, QAuthenticator* other);
+bool QAuthenticator_operatorNotEqual(const QAuthenticator* self, QAuthenticator* other);
+struct miqt_string QAuthenticator_user(const QAuthenticator* self);
+void QAuthenticator_setUser(QAuthenticator* self, struct miqt_string user);
+struct miqt_string QAuthenticator_password(const QAuthenticator* self);
+void QAuthenticator_setPassword(QAuthenticator* self, struct miqt_string password);
+struct miqt_string QAuthenticator_realm(const QAuthenticator* self);
+void QAuthenticator_setRealm(QAuthenticator* self, struct miqt_string realm);
+QVariant* QAuthenticator_option(const QAuthenticator* self, struct miqt_string opt);
+struct miqt_map /* of struct miqt_string to QVariant* */  QAuthenticator_options(const QAuthenticator* self);
+void QAuthenticator_setOption(QAuthenticator* self, struct miqt_string opt, QVariant* value);
+bool QAuthenticator_isNull(const QAuthenticator* self);
+void QAuthenticator_detach(QAuthenticator* self);
+void QAuthenticator_delete(QAuthenticator* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

@@ -58,27 +58,27 @@ func NewQScriptString2(other *QScriptString) *QScriptString {
 }
 
 func (this *QScriptString) OperatorAssign(other *QScriptString) {
-	C.QScriptString_OperatorAssign(this.h, other.cPointer())
+	C.QScriptString_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QScriptString) IsValid() bool {
-	return (bool)(C.QScriptString_IsValid(this.h))
+	return (bool)(C.QScriptString_isValid(this.h))
 }
 
 func (this *QScriptString) OperatorEqual(other *QScriptString) bool {
-	return (bool)(C.QScriptString_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QScriptString_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QScriptString) OperatorNotEqual(other *QScriptString) bool {
-	return (bool)(C.QScriptString_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QScriptString_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QScriptString) ToArrayIndex() uint {
-	return (uint)(C.QScriptString_ToArrayIndex(this.h))
+	return (uint)(C.QScriptString_toArrayIndex(this.h))
 }
 
 func (this *QScriptString) ToString() string {
-	var _ms C.struct_miqt_string = C.QScriptString_ToString(this.h)
+	var _ms C.struct_miqt_string = C.QScriptString_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -92,12 +92,12 @@ func (this *QScriptString) ToQString() string {
 }
 
 func (this *QScriptString) ToArrayIndex1(ok *bool) uint {
-	return (uint)(C.QScriptString_ToArrayIndex1(this.h, (*C.bool)(unsafe.Pointer(ok))))
+	return (uint)(C.QScriptString_toArrayIndex1(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 // Delete this object from C++ memory.
 func (this *QScriptString) Delete() {
-	C.QScriptString_Delete(this.h)
+	C.QScriptString_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

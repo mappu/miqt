@@ -64,19 +64,19 @@ func NewQNetworkDiskCache2(parent *qt.QObject) *QNetworkDiskCache {
 }
 
 func (this *QNetworkDiskCache) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QNetworkDiskCache_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QNetworkDiskCache_metaObject(this.h)))
 }
 
 func (this *QNetworkDiskCache) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QNetworkDiskCache_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QNetworkDiskCache_metacast(this.h, param1_Cstring))
 }
 
 func QNetworkDiskCache_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QNetworkDiskCache_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QNetworkDiskCache_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -85,14 +85,14 @@ func QNetworkDiskCache_Tr(s string) string {
 func QNetworkDiskCache_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QNetworkDiskCache_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QNetworkDiskCache_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QNetworkDiskCache) CacheDirectory() string {
-	var _ms C.struct_miqt_string = C.QNetworkDiskCache_CacheDirectory(this.h)
+	var _ms C.struct_miqt_string = C.QNetworkDiskCache_cacheDirectory(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -103,45 +103,45 @@ func (this *QNetworkDiskCache) SetCacheDirectory(cacheDir string) {
 	cacheDir_ms.data = C.CString(cacheDir)
 	cacheDir_ms.len = C.size_t(len(cacheDir))
 	defer C.free(unsafe.Pointer(cacheDir_ms.data))
-	C.QNetworkDiskCache_SetCacheDirectory(this.h, cacheDir_ms)
+	C.QNetworkDiskCache_setCacheDirectory(this.h, cacheDir_ms)
 }
 
 func (this *QNetworkDiskCache) MaximumCacheSize() int64 {
-	return (int64)(C.QNetworkDiskCache_MaximumCacheSize(this.h))
+	return (int64)(C.QNetworkDiskCache_maximumCacheSize(this.h))
 }
 
 func (this *QNetworkDiskCache) SetMaximumCacheSize(size int64) {
-	C.QNetworkDiskCache_SetMaximumCacheSize(this.h, (C.longlong)(size))
+	C.QNetworkDiskCache_setMaximumCacheSize(this.h, (C.longlong)(size))
 }
 
 func (this *QNetworkDiskCache) CacheSize() int64 {
-	return (int64)(C.QNetworkDiskCache_CacheSize(this.h))
+	return (int64)(C.QNetworkDiskCache_cacheSize(this.h))
 }
 
 func (this *QNetworkDiskCache) MetaData(url *qt.QUrl) *QNetworkCacheMetaData {
-	_goptr := newQNetworkCacheMetaData(C.QNetworkDiskCache_MetaData(this.h, (*C.QUrl)(url.UnsafePointer())))
+	_goptr := newQNetworkCacheMetaData(C.QNetworkDiskCache_metaData(this.h, (*C.QUrl)(url.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkDiskCache) UpdateMetaData(metaData *QNetworkCacheMetaData) {
-	C.QNetworkDiskCache_UpdateMetaData(this.h, metaData.cPointer())
+	C.QNetworkDiskCache_updateMetaData(this.h, metaData.cPointer())
 }
 
 func (this *QNetworkDiskCache) Data(url *qt.QUrl) *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_Data(this.h, (*C.QUrl)(url.UnsafePointer()))))
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_data(this.h, (*C.QUrl)(url.UnsafePointer()))))
 }
 
 func (this *QNetworkDiskCache) Remove(url *qt.QUrl) bool {
-	return (bool)(C.QNetworkDiskCache_Remove(this.h, (*C.QUrl)(url.UnsafePointer())))
+	return (bool)(C.QNetworkDiskCache_remove(this.h, (*C.QUrl)(url.UnsafePointer())))
 }
 
 func (this *QNetworkDiskCache) Prepare(metaData *QNetworkCacheMetaData) *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_Prepare(this.h, metaData.cPointer())))
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_prepare(this.h, metaData.cPointer())))
 }
 
 func (this *QNetworkDiskCache) Insert(device *qt.QIODevice) {
-	C.QNetworkDiskCache_Insert(this.h, (*C.QIODevice)(device.UnsafePointer()))
+	C.QNetworkDiskCache_insert(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QNetworkDiskCache) FileMetaData(fileName string) *QNetworkCacheMetaData {
@@ -149,13 +149,13 @@ func (this *QNetworkDiskCache) FileMetaData(fileName string) *QNetworkCacheMetaD
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	_goptr := newQNetworkCacheMetaData(C.QNetworkDiskCache_FileMetaData(this.h, fileName_ms))
+	_goptr := newQNetworkCacheMetaData(C.QNetworkDiskCache_fileMetaData(this.h, fileName_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkDiskCache) Clear() {
-	C.QNetworkDiskCache_Clear(this.h)
+	C.QNetworkDiskCache_clear(this.h)
 }
 
 func QNetworkDiskCache_Tr2(s string, c string) string {
@@ -163,7 +163,7 @@ func QNetworkDiskCache_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QNetworkDiskCache_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QNetworkDiskCache_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -174,7 +174,7 @@ func QNetworkDiskCache_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QNetworkDiskCache_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QNetworkDiskCache_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -185,7 +185,7 @@ func QNetworkDiskCache_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QNetworkDiskCache_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QNetworkDiskCache_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -196,7 +196,7 @@ func QNetworkDiskCache_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QNetworkDiskCache_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QNetworkDiskCache_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -204,18 +204,18 @@ func QNetworkDiskCache_TrUtf83(s string, c string, n int) string {
 
 func (this *QNetworkDiskCache) callVirtualBase_CacheSize() int64 {
 
-	return (int64)(C.QNetworkDiskCache_virtualbase_CacheSize(unsafe.Pointer(this.h)))
+	return (int64)(C.QNetworkDiskCache_virtualbase_cacheSize(unsafe.Pointer(this.h)))
 
 }
-func (this *QNetworkDiskCache) OnCacheSize(slot func(super func() int64) int64) {
-	ok := C.QNetworkDiskCache_override_virtual_CacheSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QNetworkDiskCache) OncacheSize(slot func(super func() int64) int64) {
+	ok := C.QNetworkDiskCache_override_virtual_cacheSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QNetworkDiskCache_CacheSize
-func miqt_exec_callback_QNetworkDiskCache_CacheSize(self *C.QNetworkDiskCache, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QNetworkDiskCache_cacheSize
+func miqt_exec_callback_QNetworkDiskCache_cacheSize(self *C.QNetworkDiskCache, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -229,20 +229,20 @@ func miqt_exec_callback_QNetworkDiskCache_CacheSize(self *C.QNetworkDiskCache, c
 
 func (this *QNetworkDiskCache) callVirtualBase_MetaData(url *qt.QUrl) *QNetworkCacheMetaData {
 
-	_goptr := newQNetworkCacheMetaData(C.QNetworkDiskCache_virtualbase_MetaData(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer())))
+	_goptr := newQNetworkCacheMetaData(C.QNetworkDiskCache_virtualbase_metaData(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QNetworkDiskCache) OnMetaData(slot func(super func(url *qt.QUrl) *QNetworkCacheMetaData, url *qt.QUrl) *QNetworkCacheMetaData) {
-	ok := C.QNetworkDiskCache_override_virtual_MetaData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QNetworkDiskCache) OnmetaData(slot func(super func(url *qt.QUrl) *QNetworkCacheMetaData, url *qt.QUrl) *QNetworkCacheMetaData) {
+	ok := C.QNetworkDiskCache_override_virtual_metaData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QNetworkDiskCache_MetaData
-func miqt_exec_callback_QNetworkDiskCache_MetaData(self *C.QNetworkDiskCache, cb C.intptr_t, url *C.QUrl) *C.QNetworkCacheMetaData {
+//export miqt_exec_callback_QNetworkDiskCache_metaData
+func miqt_exec_callback_QNetworkDiskCache_metaData(self *C.QNetworkDiskCache, cb C.intptr_t, url *C.QUrl) *C.QNetworkCacheMetaData {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(url *qt.QUrl) *QNetworkCacheMetaData, url *qt.QUrl) *QNetworkCacheMetaData)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -259,18 +259,18 @@ func miqt_exec_callback_QNetworkDiskCache_MetaData(self *C.QNetworkDiskCache, cb
 
 func (this *QNetworkDiskCache) callVirtualBase_UpdateMetaData(metaData *QNetworkCacheMetaData) {
 
-	C.QNetworkDiskCache_virtualbase_UpdateMetaData(unsafe.Pointer(this.h), metaData.cPointer())
+	C.QNetworkDiskCache_virtualbase_updateMetaData(unsafe.Pointer(this.h), metaData.cPointer())
 
 }
-func (this *QNetworkDiskCache) OnUpdateMetaData(slot func(super func(metaData *QNetworkCacheMetaData), metaData *QNetworkCacheMetaData)) {
-	ok := C.QNetworkDiskCache_override_virtual_UpdateMetaData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QNetworkDiskCache) OnupdateMetaData(slot func(super func(metaData *QNetworkCacheMetaData), metaData *QNetworkCacheMetaData)) {
+	ok := C.QNetworkDiskCache_override_virtual_updateMetaData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QNetworkDiskCache_UpdateMetaData
-func miqt_exec_callback_QNetworkDiskCache_UpdateMetaData(self *C.QNetworkDiskCache, cb C.intptr_t, metaData *C.QNetworkCacheMetaData) {
+//export miqt_exec_callback_QNetworkDiskCache_updateMetaData
+func miqt_exec_callback_QNetworkDiskCache_updateMetaData(self *C.QNetworkDiskCache, cb C.intptr_t, metaData *C.QNetworkCacheMetaData) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(metaData *QNetworkCacheMetaData), metaData *QNetworkCacheMetaData))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -285,18 +285,18 @@ func miqt_exec_callback_QNetworkDiskCache_UpdateMetaData(self *C.QNetworkDiskCac
 
 func (this *QNetworkDiskCache) callVirtualBase_Data(url *qt.QUrl) *qt.QIODevice {
 
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_virtualbase_Data(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer()))))
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_virtualbase_data(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer()))))
 
 }
-func (this *QNetworkDiskCache) OnData(slot func(super func(url *qt.QUrl) *qt.QIODevice, url *qt.QUrl) *qt.QIODevice) {
-	ok := C.QNetworkDiskCache_override_virtual_Data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QNetworkDiskCache) Ondata(slot func(super func(url *qt.QUrl) *qt.QIODevice, url *qt.QUrl) *qt.QIODevice) {
+	ok := C.QNetworkDiskCache_override_virtual_data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QNetworkDiskCache_Data
-func miqt_exec_callback_QNetworkDiskCache_Data(self *C.QNetworkDiskCache, cb C.intptr_t, url *C.QUrl) *C.QIODevice {
+//export miqt_exec_callback_QNetworkDiskCache_data
+func miqt_exec_callback_QNetworkDiskCache_data(self *C.QNetworkDiskCache, cb C.intptr_t, url *C.QUrl) *C.QIODevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(url *qt.QUrl) *qt.QIODevice, url *qt.QUrl) *qt.QIODevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -313,18 +313,18 @@ func miqt_exec_callback_QNetworkDiskCache_Data(self *C.QNetworkDiskCache, cb C.i
 
 func (this *QNetworkDiskCache) callVirtualBase_Remove(url *qt.QUrl) bool {
 
-	return (bool)(C.QNetworkDiskCache_virtualbase_Remove(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer())))
+	return (bool)(C.QNetworkDiskCache_virtualbase_remove(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer())))
 
 }
-func (this *QNetworkDiskCache) OnRemove(slot func(super func(url *qt.QUrl) bool, url *qt.QUrl) bool) {
-	ok := C.QNetworkDiskCache_override_virtual_Remove(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QNetworkDiskCache) Onremove(slot func(super func(url *qt.QUrl) bool, url *qt.QUrl) bool) {
+	ok := C.QNetworkDiskCache_override_virtual_remove(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QNetworkDiskCache_Remove
-func miqt_exec_callback_QNetworkDiskCache_Remove(self *C.QNetworkDiskCache, cb C.intptr_t, url *C.QUrl) C.bool {
+//export miqt_exec_callback_QNetworkDiskCache_remove
+func miqt_exec_callback_QNetworkDiskCache_remove(self *C.QNetworkDiskCache, cb C.intptr_t, url *C.QUrl) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(url *qt.QUrl) bool, url *qt.QUrl) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -341,18 +341,18 @@ func miqt_exec_callback_QNetworkDiskCache_Remove(self *C.QNetworkDiskCache, cb C
 
 func (this *QNetworkDiskCache) callVirtualBase_Prepare(metaData *QNetworkCacheMetaData) *qt.QIODevice {
 
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_virtualbase_Prepare(unsafe.Pointer(this.h), metaData.cPointer())))
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_virtualbase_prepare(unsafe.Pointer(this.h), metaData.cPointer())))
 
 }
-func (this *QNetworkDiskCache) OnPrepare(slot func(super func(metaData *QNetworkCacheMetaData) *qt.QIODevice, metaData *QNetworkCacheMetaData) *qt.QIODevice) {
-	ok := C.QNetworkDiskCache_override_virtual_Prepare(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QNetworkDiskCache) Onprepare(slot func(super func(metaData *QNetworkCacheMetaData) *qt.QIODevice, metaData *QNetworkCacheMetaData) *qt.QIODevice) {
+	ok := C.QNetworkDiskCache_override_virtual_prepare(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QNetworkDiskCache_Prepare
-func miqt_exec_callback_QNetworkDiskCache_Prepare(self *C.QNetworkDiskCache, cb C.intptr_t, metaData *C.QNetworkCacheMetaData) *C.QIODevice {
+//export miqt_exec_callback_QNetworkDiskCache_prepare
+func miqt_exec_callback_QNetworkDiskCache_prepare(self *C.QNetworkDiskCache, cb C.intptr_t, metaData *C.QNetworkCacheMetaData) *C.QIODevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(metaData *QNetworkCacheMetaData) *qt.QIODevice, metaData *QNetworkCacheMetaData) *qt.QIODevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -369,18 +369,18 @@ func miqt_exec_callback_QNetworkDiskCache_Prepare(self *C.QNetworkDiskCache, cb 
 
 func (this *QNetworkDiskCache) callVirtualBase_Insert(device *qt.QIODevice) {
 
-	C.QNetworkDiskCache_virtualbase_Insert(unsafe.Pointer(this.h), (*C.QIODevice)(device.UnsafePointer()))
+	C.QNetworkDiskCache_virtualbase_insert(unsafe.Pointer(this.h), (*C.QIODevice)(device.UnsafePointer()))
 
 }
-func (this *QNetworkDiskCache) OnInsert(slot func(super func(device *qt.QIODevice), device *qt.QIODevice)) {
-	ok := C.QNetworkDiskCache_override_virtual_Insert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QNetworkDiskCache) Oninsert(slot func(super func(device *qt.QIODevice), device *qt.QIODevice)) {
+	ok := C.QNetworkDiskCache_override_virtual_insert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QNetworkDiskCache_Insert
-func miqt_exec_callback_QNetworkDiskCache_Insert(self *C.QNetworkDiskCache, cb C.intptr_t, device *C.QIODevice) {
+//export miqt_exec_callback_QNetworkDiskCache_insert
+func miqt_exec_callback_QNetworkDiskCache_insert(self *C.QNetworkDiskCache, cb C.intptr_t, device *C.QIODevice) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(device *qt.QIODevice), device *qt.QIODevice))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -395,18 +395,18 @@ func miqt_exec_callback_QNetworkDiskCache_Insert(self *C.QNetworkDiskCache, cb C
 
 func (this *QNetworkDiskCache) callVirtualBase_Clear() {
 
-	C.QNetworkDiskCache_virtualbase_Clear(unsafe.Pointer(this.h))
+	C.QNetworkDiskCache_virtualbase_clear(unsafe.Pointer(this.h))
 
 }
-func (this *QNetworkDiskCache) OnClear(slot func(super func())) {
-	ok := C.QNetworkDiskCache_override_virtual_Clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QNetworkDiskCache) Onclear(slot func(super func())) {
+	ok := C.QNetworkDiskCache_override_virtual_clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QNetworkDiskCache_Clear
-func miqt_exec_callback_QNetworkDiskCache_Clear(self *C.QNetworkDiskCache, cb C.intptr_t) {
+//export miqt_exec_callback_QNetworkDiskCache_clear
+func miqt_exec_callback_QNetworkDiskCache_clear(self *C.QNetworkDiskCache, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -418,18 +418,18 @@ func miqt_exec_callback_QNetworkDiskCache_Clear(self *C.QNetworkDiskCache, cb C.
 
 func (this *QNetworkDiskCache) callVirtualBase_Expire() int64 {
 
-	return (int64)(C.QNetworkDiskCache_virtualbase_Expire(unsafe.Pointer(this.h)))
+	return (int64)(C.QNetworkDiskCache_virtualbase_expire(unsafe.Pointer(this.h)))
 
 }
-func (this *QNetworkDiskCache) OnExpire(slot func(super func() int64) int64) {
-	ok := C.QNetworkDiskCache_override_virtual_Expire(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QNetworkDiskCache) Onexpire(slot func(super func() int64) int64) {
+	ok := C.QNetworkDiskCache_override_virtual_expire(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QNetworkDiskCache_Expire
-func miqt_exec_callback_QNetworkDiskCache_Expire(self *C.QNetworkDiskCache, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QNetworkDiskCache_expire
+func miqt_exec_callback_QNetworkDiskCache_expire(self *C.QNetworkDiskCache, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -443,18 +443,18 @@ func miqt_exec_callback_QNetworkDiskCache_Expire(self *C.QNetworkDiskCache, cb C
 
 func (this *QNetworkDiskCache) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.QNetworkDiskCache_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QNetworkDiskCache_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QNetworkDiskCache) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.QNetworkDiskCache_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QNetworkDiskCache) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QNetworkDiskCache_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QNetworkDiskCache_Event
-func miqt_exec_callback_QNetworkDiskCache_Event(self *C.QNetworkDiskCache, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QNetworkDiskCache_event
+func miqt_exec_callback_QNetworkDiskCache_event(self *C.QNetworkDiskCache, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -471,18 +471,18 @@ func miqt_exec_callback_QNetworkDiskCache_Event(self *C.QNetworkDiskCache, cb C.
 
 func (this *QNetworkDiskCache) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.QNetworkDiskCache_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QNetworkDiskCache_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QNetworkDiskCache) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.QNetworkDiskCache_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QNetworkDiskCache) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QNetworkDiskCache_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QNetworkDiskCache_EventFilter
-func miqt_exec_callback_QNetworkDiskCache_EventFilter(self *C.QNetworkDiskCache, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QNetworkDiskCache_eventFilter
+func miqt_exec_callback_QNetworkDiskCache_eventFilter(self *C.QNetworkDiskCache, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -501,18 +501,18 @@ func miqt_exec_callback_QNetworkDiskCache_EventFilter(self *C.QNetworkDiskCache,
 
 func (this *QNetworkDiskCache) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QNetworkDiskCache_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QNetworkDiskCache_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QNetworkDiskCache) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QNetworkDiskCache_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QNetworkDiskCache) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QNetworkDiskCache_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QNetworkDiskCache_TimerEvent
-func miqt_exec_callback_QNetworkDiskCache_TimerEvent(self *C.QNetworkDiskCache, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QNetworkDiskCache_timerEvent
+func miqt_exec_callback_QNetworkDiskCache_timerEvent(self *C.QNetworkDiskCache, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -527,18 +527,18 @@ func miqt_exec_callback_QNetworkDiskCache_TimerEvent(self *C.QNetworkDiskCache, 
 
 func (this *QNetworkDiskCache) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QNetworkDiskCache_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QNetworkDiskCache_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QNetworkDiskCache) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QNetworkDiskCache_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QNetworkDiskCache) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QNetworkDiskCache_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QNetworkDiskCache_ChildEvent
-func miqt_exec_callback_QNetworkDiskCache_ChildEvent(self *C.QNetworkDiskCache, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QNetworkDiskCache_childEvent
+func miqt_exec_callback_QNetworkDiskCache_childEvent(self *C.QNetworkDiskCache, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -553,18 +553,18 @@ func miqt_exec_callback_QNetworkDiskCache_ChildEvent(self *C.QNetworkDiskCache, 
 
 func (this *QNetworkDiskCache) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QNetworkDiskCache_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QNetworkDiskCache_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QNetworkDiskCache) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QNetworkDiskCache_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QNetworkDiskCache) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QNetworkDiskCache_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QNetworkDiskCache_CustomEvent
-func miqt_exec_callback_QNetworkDiskCache_CustomEvent(self *C.QNetworkDiskCache, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QNetworkDiskCache_customEvent
+func miqt_exec_callback_QNetworkDiskCache_customEvent(self *C.QNetworkDiskCache, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -579,18 +579,18 @@ func miqt_exec_callback_QNetworkDiskCache_CustomEvent(self *C.QNetworkDiskCache,
 
 func (this *QNetworkDiskCache) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QNetworkDiskCache_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QNetworkDiskCache_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QNetworkDiskCache) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QNetworkDiskCache_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QNetworkDiskCache) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QNetworkDiskCache_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QNetworkDiskCache_ConnectNotify
-func miqt_exec_callback_QNetworkDiskCache_ConnectNotify(self *C.QNetworkDiskCache, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QNetworkDiskCache_connectNotify
+func miqt_exec_callback_QNetworkDiskCache_connectNotify(self *C.QNetworkDiskCache, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -605,18 +605,18 @@ func miqt_exec_callback_QNetworkDiskCache_ConnectNotify(self *C.QNetworkDiskCach
 
 func (this *QNetworkDiskCache) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QNetworkDiskCache_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QNetworkDiskCache_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QNetworkDiskCache) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QNetworkDiskCache_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QNetworkDiskCache) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QNetworkDiskCache_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QNetworkDiskCache_DisconnectNotify
-func miqt_exec_callback_QNetworkDiskCache_DisconnectNotify(self *C.QNetworkDiskCache, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QNetworkDiskCache_disconnectNotify
+func miqt_exec_callback_QNetworkDiskCache_disconnectNotify(self *C.QNetworkDiskCache, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -631,7 +631,7 @@ func miqt_exec_callback_QNetworkDiskCache_DisconnectNotify(self *C.QNetworkDiskC
 
 // Delete this object from C++ memory.
 func (this *QNetworkDiskCache) Delete() {
-	C.QNetworkDiskCache_Delete(this.h)
+	C.QNetworkDiskCache_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

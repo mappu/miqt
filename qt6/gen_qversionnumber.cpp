@@ -46,31 +46,31 @@ QVersionNumber* QVersionNumber_new6(QVersionNumber* param1) {
 	return new QVersionNumber(*param1);
 }
 
-bool QVersionNumber_IsNull(const QVersionNumber* self) {
+bool QVersionNumber_isNull(const QVersionNumber* self) {
 	return self->isNull();
 }
 
-bool QVersionNumber_IsNormalized(const QVersionNumber* self) {
+bool QVersionNumber_isNormalized(const QVersionNumber* self) {
 	return self->isNormalized();
 }
 
-int QVersionNumber_MajorVersion(const QVersionNumber* self) {
+int QVersionNumber_majorVersion(const QVersionNumber* self) {
 	return self->majorVersion();
 }
 
-int QVersionNumber_MinorVersion(const QVersionNumber* self) {
+int QVersionNumber_minorVersion(const QVersionNumber* self) {
 	return self->minorVersion();
 }
 
-int QVersionNumber_MicroVersion(const QVersionNumber* self) {
+int QVersionNumber_microVersion(const QVersionNumber* self) {
 	return self->microVersion();
 }
 
-QVersionNumber* QVersionNumber_Normalized(const QVersionNumber* self) {
+QVersionNumber* QVersionNumber_normalized(const QVersionNumber* self) {
 	return new QVersionNumber(self->normalized());
 }
 
-struct miqt_array /* of int */  QVersionNumber_Segments(const QVersionNumber* self) {
+struct miqt_array /* of int */  QVersionNumber_segments(const QVersionNumber* self) {
 	QList<int> _ret = self->segments();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -83,28 +83,28 @@ struct miqt_array /* of int */  QVersionNumber_Segments(const QVersionNumber* se
 	return _out;
 }
 
-int QVersionNumber_SegmentAt(const QVersionNumber* self, ptrdiff_t index) {
+int QVersionNumber_segmentAt(const QVersionNumber* self, ptrdiff_t index) {
 	return self->segmentAt((qsizetype)(index));
 }
 
-ptrdiff_t QVersionNumber_SegmentCount(const QVersionNumber* self) {
+ptrdiff_t QVersionNumber_segmentCount(const QVersionNumber* self) {
 	qsizetype _ret = self->segmentCount();
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-bool QVersionNumber_IsPrefixOf(const QVersionNumber* self, QVersionNumber* other) {
+bool QVersionNumber_isPrefixOf(const QVersionNumber* self, QVersionNumber* other) {
 	return self->isPrefixOf(*other);
 }
 
-int QVersionNumber_Compare(QVersionNumber* v1, QVersionNumber* v2) {
+int QVersionNumber_compare(QVersionNumber* v1, QVersionNumber* v2) {
 	return QVersionNumber::compare(*v1, *v2);
 }
 
-QVersionNumber* QVersionNumber_CommonPrefix(QVersionNumber* v1, QVersionNumber* v2) {
+QVersionNumber* QVersionNumber_commonPrefix(QVersionNumber* v1, QVersionNumber* v2) {
 	return new QVersionNumber(QVersionNumber::commonPrefix(*v1, *v2));
 }
 
-struct miqt_string QVersionNumber_ToString(const QVersionNumber* self) {
+struct miqt_string QVersionNumber_toString(const QVersionNumber* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -115,15 +115,15 @@ struct miqt_string QVersionNumber_ToString(const QVersionNumber* self) {
 	return _ms;
 }
 
-QVersionNumber* QVersionNumber_FromString(QAnyStringView* stringVal) {
-	return new QVersionNumber(QVersionNumber::fromString(*stringVal));
+QVersionNumber* QVersionNumber_fromString(QAnyStringView* string) {
+	return new QVersionNumber(QVersionNumber::fromString(*string));
 }
 
-QVersionNumber* QVersionNumber_FromString2(QAnyStringView* stringVal, ptrdiff_t* suffixIndex) {
-	return new QVersionNumber(QVersionNumber::fromString(*stringVal, (qsizetype*)(suffixIndex)));
+QVersionNumber* QVersionNumber_fromString2(QAnyStringView* string, ptrdiff_t* suffixIndex) {
+	return new QVersionNumber(QVersionNumber::fromString(*string, (qsizetype*)(suffixIndex)));
 }
 
-void QVersionNumber_Delete(QVersionNumber* self) {
+void QVersionNumber_delete(QVersionNumber* self) {
 	delete self;
 }
 
@@ -135,33 +135,33 @@ QTypeRevision* QTypeRevision_new2(QTypeRevision* param1) {
 	return new QTypeRevision(*param1);
 }
 
-QTypeRevision* QTypeRevision_Zero() {
+QTypeRevision* QTypeRevision_zero() {
 	return new QTypeRevision(QTypeRevision::zero());
 }
 
-bool QTypeRevision_HasMajorVersion(const QTypeRevision* self) {
+bool QTypeRevision_hasMajorVersion(const QTypeRevision* self) {
 	return self->hasMajorVersion();
 }
 
-unsigned char QTypeRevision_MajorVersion(const QTypeRevision* self) {
+unsigned char QTypeRevision_majorVersion(const QTypeRevision* self) {
 	quint8 _ret = self->majorVersion();
 	return static_cast<unsigned char>(_ret);
 }
 
-bool QTypeRevision_HasMinorVersion(const QTypeRevision* self) {
+bool QTypeRevision_hasMinorVersion(const QTypeRevision* self) {
 	return self->hasMinorVersion();
 }
 
-unsigned char QTypeRevision_MinorVersion(const QTypeRevision* self) {
+unsigned char QTypeRevision_minorVersion(const QTypeRevision* self) {
 	quint8 _ret = self->minorVersion();
 	return static_cast<unsigned char>(_ret);
 }
 
-bool QTypeRevision_IsValid(const QTypeRevision* self) {
+bool QTypeRevision_isValid(const QTypeRevision* self) {
 	return self->isValid();
 }
 
-void QTypeRevision_Delete(QTypeRevision* self) {
+void QTypeRevision_delete(QTypeRevision* self) {
 	delete self;
 }
 

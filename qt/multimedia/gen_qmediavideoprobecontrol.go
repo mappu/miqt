@@ -52,19 +52,19 @@ func UnsafeNewQMediaVideoProbeControl(h unsafe.Pointer) *QMediaVideoProbeControl
 }
 
 func (this *QMediaVideoProbeControl) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaVideoProbeControl_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaVideoProbeControl_metaObject(this.h)))
 }
 
 func (this *QMediaVideoProbeControl) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QMediaVideoProbeControl_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QMediaVideoProbeControl_metacast(this.h, param1_Cstring))
 }
 
 func QMediaVideoProbeControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaVideoProbeControl_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaVideoProbeControl_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -73,21 +73,21 @@ func QMediaVideoProbeControl_Tr(s string) string {
 func QMediaVideoProbeControl_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaVideoProbeControl_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaVideoProbeControl_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMediaVideoProbeControl) VideoFrameProbed(frame *QVideoFrame) {
-	C.QMediaVideoProbeControl_VideoFrameProbed(this.h, frame.cPointer())
+	C.QMediaVideoProbeControl_videoFrameProbed(this.h, frame.cPointer())
 }
 func (this *QMediaVideoProbeControl) OnVideoFrameProbed(slot func(frame *QVideoFrame)) {
-	C.QMediaVideoProbeControl_connect_VideoFrameProbed(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaVideoProbeControl_connect_videoFrameProbed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaVideoProbeControl_VideoFrameProbed
-func miqt_exec_callback_QMediaVideoProbeControl_VideoFrameProbed(cb C.intptr_t, frame *C.QVideoFrame) {
+//export miqt_exec_callback_QMediaVideoProbeControl_videoFrameProbed
+func miqt_exec_callback_QMediaVideoProbeControl_videoFrameProbed(cb C.intptr_t, frame *C.QVideoFrame) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(frame *QVideoFrame))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -100,14 +100,14 @@ func miqt_exec_callback_QMediaVideoProbeControl_VideoFrameProbed(cb C.intptr_t, 
 }
 
 func (this *QMediaVideoProbeControl) Flush() {
-	C.QMediaVideoProbeControl_Flush(this.h)
+	C.QMediaVideoProbeControl_flush(this.h)
 }
 func (this *QMediaVideoProbeControl) OnFlush(slot func()) {
-	C.QMediaVideoProbeControl_connect_Flush(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaVideoProbeControl_connect_flush(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaVideoProbeControl_Flush
-func miqt_exec_callback_QMediaVideoProbeControl_Flush(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaVideoProbeControl_flush
+func miqt_exec_callback_QMediaVideoProbeControl_flush(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -121,7 +121,7 @@ func QMediaVideoProbeControl_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaVideoProbeControl_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaVideoProbeControl_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -132,7 +132,7 @@ func QMediaVideoProbeControl_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaVideoProbeControl_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaVideoProbeControl_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -143,7 +143,7 @@ func QMediaVideoProbeControl_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaVideoProbeControl_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaVideoProbeControl_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -154,7 +154,7 @@ func QMediaVideoProbeControl_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaVideoProbeControl_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaVideoProbeControl_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -162,7 +162,7 @@ func QMediaVideoProbeControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaVideoProbeControl) Delete() {
-	C.QMediaVideoProbeControl_Delete(this.h)
+	C.QMediaVideoProbeControl_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -59,44 +59,44 @@ func NewQSslCertificateExtension2(other *QSslCertificateExtension) *QSslCertific
 }
 
 func (this *QSslCertificateExtension) OperatorAssign(other *QSslCertificateExtension) {
-	C.QSslCertificateExtension_OperatorAssign(this.h, other.cPointer())
+	C.QSslCertificateExtension_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QSslCertificateExtension) Swap(other *QSslCertificateExtension) {
-	C.QSslCertificateExtension_Swap(this.h, other.cPointer())
+	C.QSslCertificateExtension_swap(this.h, other.cPointer())
 }
 
 func (this *QSslCertificateExtension) Oid() string {
-	var _ms C.struct_miqt_string = C.QSslCertificateExtension_Oid(this.h)
+	var _ms C.struct_miqt_string = C.QSslCertificateExtension_oid(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSslCertificateExtension) Name() string {
-	var _ms C.struct_miqt_string = C.QSslCertificateExtension_Name(this.h)
+	var _ms C.struct_miqt_string = C.QSslCertificateExtension_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSslCertificateExtension) Value() *qt6.QVariant {
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QSslCertificateExtension_Value(this.h)))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QSslCertificateExtension_value(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSslCertificateExtension) IsCritical() bool {
-	return (bool)(C.QSslCertificateExtension_IsCritical(this.h))
+	return (bool)(C.QSslCertificateExtension_isCritical(this.h))
 }
 
 func (this *QSslCertificateExtension) IsSupported() bool {
-	return (bool)(C.QSslCertificateExtension_IsSupported(this.h))
+	return (bool)(C.QSslCertificateExtension_isSupported(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QSslCertificateExtension) Delete() {
-	C.QSslCertificateExtension_Delete(this.h)
+	C.QSslCertificateExtension_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

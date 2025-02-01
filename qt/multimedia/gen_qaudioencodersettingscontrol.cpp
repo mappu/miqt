@@ -22,15 +22,15 @@ void QAudioEncoderSettingsControl_virtbase(QAudioEncoderSettingsControl* src, QM
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
 }
 
-QMetaObject* QAudioEncoderSettingsControl_MetaObject(const QAudioEncoderSettingsControl* self) {
+QMetaObject* QAudioEncoderSettingsControl_metaObject(const QAudioEncoderSettingsControl* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QAudioEncoderSettingsControl_Metacast(QAudioEncoderSettingsControl* self, const char* param1) {
+void* QAudioEncoderSettingsControl_metacast(QAudioEncoderSettingsControl* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QAudioEncoderSettingsControl_Tr(const char* s) {
+struct miqt_string QAudioEncoderSettingsControl_tr(const char* s) {
 	QString _ret = QAudioEncoderSettingsControl::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -41,7 +41,7 @@ struct miqt_string QAudioEncoderSettingsControl_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QAudioEncoderSettingsControl_TrUtf8(const char* s) {
+struct miqt_string QAudioEncoderSettingsControl_trUtf8(const char* s) {
 	QString _ret = QAudioEncoderSettingsControl::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -52,7 +52,7 @@ struct miqt_string QAudioEncoderSettingsControl_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array /* of struct miqt_string */  QAudioEncoderSettingsControl_SupportedAudioCodecs(const QAudioEncoderSettingsControl* self) {
+struct miqt_array /* of struct miqt_string */  QAudioEncoderSettingsControl_supportedAudioCodecs(const QAudioEncoderSettingsControl* self) {
 	QStringList _ret = self->supportedAudioCodecs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -72,7 +72,7 @@ struct miqt_array /* of struct miqt_string */  QAudioEncoderSettingsControl_Supp
 	return _out;
 }
 
-struct miqt_string QAudioEncoderSettingsControl_CodecDescription(const QAudioEncoderSettingsControl* self, struct miqt_string codecName) {
+struct miqt_string QAudioEncoderSettingsControl_codecDescription(const QAudioEncoderSettingsControl* self, struct miqt_string codecName) {
 	QString codecName_QString = QString::fromUtf8(codecName.data, codecName.len);
 	QString _ret = self->codecDescription(codecName_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -84,7 +84,7 @@ struct miqt_string QAudioEncoderSettingsControl_CodecDescription(const QAudioEnc
 	return _ms;
 }
 
-struct miqt_array /* of int */  QAudioEncoderSettingsControl_SupportedSampleRates(const QAudioEncoderSettingsControl* self, QAudioEncoderSettings* settings, bool* continuous) {
+struct miqt_array /* of int */  QAudioEncoderSettingsControl_supportedSampleRates(const QAudioEncoderSettingsControl* self, QAudioEncoderSettings* settings, bool* continuous) {
 	QList<int> _ret = self->supportedSampleRates(*settings, continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -97,15 +97,15 @@ struct miqt_array /* of int */  QAudioEncoderSettingsControl_SupportedSampleRate
 	return _out;
 }
 
-QAudioEncoderSettings* QAudioEncoderSettingsControl_AudioSettings(const QAudioEncoderSettingsControl* self) {
+QAudioEncoderSettings* QAudioEncoderSettingsControl_audioSettings(const QAudioEncoderSettingsControl* self) {
 	return new QAudioEncoderSettings(self->audioSettings());
 }
 
-void QAudioEncoderSettingsControl_SetAudioSettings(QAudioEncoderSettingsControl* self, QAudioEncoderSettings* settings) {
+void QAudioEncoderSettingsControl_setAudioSettings(QAudioEncoderSettingsControl* self, QAudioEncoderSettings* settings) {
 	self->setAudioSettings(*settings);
 }
 
-struct miqt_string QAudioEncoderSettingsControl_Tr2(const char* s, const char* c) {
+struct miqt_string QAudioEncoderSettingsControl_tr2(const char* s, const char* c) {
 	QString _ret = QAudioEncoderSettingsControl::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -116,7 +116,7 @@ struct miqt_string QAudioEncoderSettingsControl_Tr2(const char* s, const char* c
 	return _ms;
 }
 
-struct miqt_string QAudioEncoderSettingsControl_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QAudioEncoderSettingsControl_tr3(const char* s, const char* c, int n) {
 	QString _ret = QAudioEncoderSettingsControl::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -127,7 +127,7 @@ struct miqt_string QAudioEncoderSettingsControl_Tr3(const char* s, const char* c
 	return _ms;
 }
 
-struct miqt_string QAudioEncoderSettingsControl_TrUtf82(const char* s, const char* c) {
+struct miqt_string QAudioEncoderSettingsControl_trUtf82(const char* s, const char* c) {
 	QString _ret = QAudioEncoderSettingsControl::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -138,7 +138,7 @@ struct miqt_string QAudioEncoderSettingsControl_TrUtf82(const char* s, const cha
 	return _ms;
 }
 
-struct miqt_string QAudioEncoderSettingsControl_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QAudioEncoderSettingsControl_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QAudioEncoderSettingsControl::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -149,7 +149,7 @@ struct miqt_string QAudioEncoderSettingsControl_TrUtf83(const char* s, const cha
 	return _ms;
 }
 
-void QAudioEncoderSettingsControl_Delete(QAudioEncoderSettingsControl* self) {
+void QAudioEncoderSettingsControl_delete(QAudioEncoderSettingsControl* self) {
 	delete self;
 }
 

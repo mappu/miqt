@@ -258,58 +258,58 @@ func UnsafeNewQAccessible(h unsafe.Pointer) *QAccessible {
 }
 
 func QAccessible_InstallActivationObserver(param1 *QAccessible__ActivationObserver) {
-	C.QAccessible_InstallActivationObserver(param1.cPointer())
+	C.QAccessible_installActivationObserver(param1.cPointer())
 }
 
 func QAccessible_RemoveActivationObserver(param1 *QAccessible__ActivationObserver) {
-	C.QAccessible_RemoveActivationObserver(param1.cPointer())
+	C.QAccessible_removeActivationObserver(param1.cPointer())
 }
 
 func QAccessible_QueryAccessibleInterface(param1 *QObject) *QAccessibleInterface {
-	return newQAccessibleInterface(C.QAccessible_QueryAccessibleInterface(param1.cPointer()))
+	return newQAccessibleInterface(C.QAccessible_queryAccessibleInterface(param1.cPointer()))
 }
 
 func QAccessible_UniqueId(iface *QAccessibleInterface) uint {
-	return (uint)(C.QAccessible_UniqueId(iface.cPointer()))
+	return (uint)(C.QAccessible_uniqueId(iface.cPointer()))
 }
 
 func QAccessible_AccessibleInterface(uniqueId uint) *QAccessibleInterface {
-	return newQAccessibleInterface(C.QAccessible_AccessibleInterface((C.uint)(uniqueId)))
+	return newQAccessibleInterface(C.QAccessible_accessibleInterface((C.uint)(uniqueId)))
 }
 
 func QAccessible_RegisterAccessibleInterface(iface *QAccessibleInterface) uint {
-	return (uint)(C.QAccessible_RegisterAccessibleInterface(iface.cPointer()))
+	return (uint)(C.QAccessible_registerAccessibleInterface(iface.cPointer()))
 }
 
 func QAccessible_DeleteAccessibleInterface(uniqueId uint) {
-	C.QAccessible_DeleteAccessibleInterface((C.uint)(uniqueId))
+	C.QAccessible_deleteAccessibleInterface((C.uint)(uniqueId))
 }
 
 func QAccessible_UpdateAccessibility(event *QAccessibleEvent) {
-	C.QAccessible_UpdateAccessibility(event.cPointer())
+	C.QAccessible_updateAccessibility(event.cPointer())
 }
 
 func QAccessible_IsActive() bool {
-	return (bool)(C.QAccessible_IsActive())
+	return (bool)(C.QAccessible_isActive())
 }
 
 func QAccessible_SetActive(active bool) {
-	C.QAccessible_SetActive((C.bool)(active))
+	C.QAccessible_setActive((C.bool)(active))
 }
 
 func QAccessible_SetRootObject(object *QObject) {
-	C.QAccessible_SetRootObject(object.cPointer())
+	C.QAccessible_setRootObject(object.cPointer())
 }
 
 func QAccessible_Cleanup() {
-	C.QAccessible_Cleanup()
+	C.QAccessible_cleanup()
 }
 
 func QAccessible_QAccessibleTextBoundaryHelper(cursor *QTextCursor, boundaryType QAccessible__TextBoundaryType) struct {
 	First  int
 	Second int
 } {
-	var _mm C.struct_miqt_map = C.QAccessible_QAccessibleTextBoundaryHelper(cursor.cPointer(), (C.int)(boundaryType))
+	var _mm C.struct_miqt_map = C.QAccessible_qAccessibleTextBoundaryHelper(cursor.cPointer(), (C.int)(boundaryType))
 	_First_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
 	_entry_First := (int)(_First_CArray[0])
@@ -324,7 +324,7 @@ func QAccessible_QAccessibleTextBoundaryHelper(cursor *QTextCursor, boundaryType
 
 // Delete this object from C++ memory.
 func (this *QAccessible) Delete() {
-	C.QAccessible_Delete(this.h)
+	C.QAccessible_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -369,22 +369,22 @@ func UnsafeNewQAccessibleInterface(h unsafe.Pointer) *QAccessibleInterface {
 }
 
 func (this *QAccessibleInterface) IsValid() bool {
-	return (bool)(C.QAccessibleInterface_IsValid(this.h))
+	return (bool)(C.QAccessibleInterface_isValid(this.h))
 }
 
 func (this *QAccessibleInterface) Object() *QObject {
-	return newQObject(C.QAccessibleInterface_Object(this.h))
+	return newQObject(C.QAccessibleInterface_object(this.h))
 }
 
 func (this *QAccessibleInterface) Window() *QWindow {
-	return newQWindow(C.QAccessibleInterface_Window(this.h))
+	return newQWindow(C.QAccessibleInterface_window(this.h))
 }
 
 func (this *QAccessibleInterface) Relations(match QAccessible__RelationFlag) []struct {
 	First  *QAccessibleInterface
 	Second QAccessible__RelationFlag
 } {
-	var _ma C.struct_miqt_array = C.QAccessibleInterface_Relations(this.h, (C.int)(match))
+	var _ma C.struct_miqt_array = C.QAccessibleInterface_relations(this.h, (C.int)(match))
 	_ret := make([]struct {
 		First  *QAccessibleInterface
 		Second QAccessible__RelationFlag
@@ -407,31 +407,31 @@ func (this *QAccessibleInterface) Relations(match QAccessible__RelationFlag) []s
 }
 
 func (this *QAccessibleInterface) FocusChild() *QAccessibleInterface {
-	return newQAccessibleInterface(C.QAccessibleInterface_FocusChild(this.h))
+	return newQAccessibleInterface(C.QAccessibleInterface_focusChild(this.h))
 }
 
 func (this *QAccessibleInterface) ChildAt(x int, y int) *QAccessibleInterface {
-	return newQAccessibleInterface(C.QAccessibleInterface_ChildAt(this.h, (C.int)(x), (C.int)(y)))
+	return newQAccessibleInterface(C.QAccessibleInterface_childAt(this.h, (C.int)(x), (C.int)(y)))
 }
 
 func (this *QAccessibleInterface) Parent() *QAccessibleInterface {
-	return newQAccessibleInterface(C.QAccessibleInterface_Parent(this.h))
+	return newQAccessibleInterface(C.QAccessibleInterface_parent(this.h))
 }
 
 func (this *QAccessibleInterface) Child(index int) *QAccessibleInterface {
-	return newQAccessibleInterface(C.QAccessibleInterface_Child(this.h, (C.int)(index)))
+	return newQAccessibleInterface(C.QAccessibleInterface_child(this.h, (C.int)(index)))
 }
 
 func (this *QAccessibleInterface) ChildCount() int {
-	return (int)(C.QAccessibleInterface_ChildCount(this.h))
+	return (int)(C.QAccessibleInterface_childCount(this.h))
 }
 
 func (this *QAccessibleInterface) IndexOfChild(param1 *QAccessibleInterface) int {
-	return (int)(C.QAccessibleInterface_IndexOfChild(this.h, param1.cPointer()))
+	return (int)(C.QAccessibleInterface_indexOfChild(this.h, param1.cPointer()))
 }
 
 func (this *QAccessibleInterface) Text(t QAccessible__Text) string {
-	var _ms C.struct_miqt_string = C.QAccessibleInterface_Text(this.h, (C.int)(t))
+	var _ms C.struct_miqt_string = C.QAccessibleInterface_text(this.h, (C.int)(t))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -442,71 +442,71 @@ func (this *QAccessibleInterface) SetText(t QAccessible__Text, text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QAccessibleInterface_SetText(this.h, (C.int)(t), text_ms)
+	C.QAccessibleInterface_setText(this.h, (C.int)(t), text_ms)
 }
 
 func (this *QAccessibleInterface) Rect() *QRect {
-	_goptr := newQRect(C.QAccessibleInterface_Rect(this.h))
+	_goptr := newQRect(C.QAccessibleInterface_rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleInterface) Role() QAccessible__Role {
-	return (QAccessible__Role)(C.QAccessibleInterface_Role(this.h))
+	return (QAccessible__Role)(C.QAccessibleInterface_role(this.h))
 }
 
 func (this *QAccessibleInterface) State() *QAccessible__State {
-	_goptr := newQAccessible__State(C.QAccessibleInterface_State(this.h))
+	_goptr := newQAccessible__State(C.QAccessibleInterface_state(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleInterface) ForegroundColor() *QColor {
-	_goptr := newQColor(C.QAccessibleInterface_ForegroundColor(this.h))
+	_goptr := newQColor(C.QAccessibleInterface_foregroundColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleInterface) BackgroundColor() *QColor {
-	_goptr := newQColor(C.QAccessibleInterface_BackgroundColor(this.h))
+	_goptr := newQColor(C.QAccessibleInterface_backgroundColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleInterface) TextInterface() *QAccessibleTextInterface {
-	return newQAccessibleTextInterface(C.QAccessibleInterface_TextInterface(this.h))
+	return newQAccessibleTextInterface(C.QAccessibleInterface_textInterface(this.h))
 }
 
 func (this *QAccessibleInterface) EditableTextInterface() *QAccessibleEditableTextInterface {
-	return newQAccessibleEditableTextInterface(C.QAccessibleInterface_EditableTextInterface(this.h))
+	return newQAccessibleEditableTextInterface(C.QAccessibleInterface_editableTextInterface(this.h))
 }
 
 func (this *QAccessibleInterface) ValueInterface() *QAccessibleValueInterface {
-	return newQAccessibleValueInterface(C.QAccessibleInterface_ValueInterface(this.h))
+	return newQAccessibleValueInterface(C.QAccessibleInterface_valueInterface(this.h))
 }
 
 func (this *QAccessibleInterface) ActionInterface() *QAccessibleActionInterface {
-	return newQAccessibleActionInterface(C.QAccessibleInterface_ActionInterface(this.h))
+	return newQAccessibleActionInterface(C.QAccessibleInterface_actionInterface(this.h))
 }
 
 func (this *QAccessibleInterface) ImageInterface() *QAccessibleImageInterface {
-	return newQAccessibleImageInterface(C.QAccessibleInterface_ImageInterface(this.h))
+	return newQAccessibleImageInterface(C.QAccessibleInterface_imageInterface(this.h))
 }
 
 func (this *QAccessibleInterface) TableInterface() *QAccessibleTableInterface {
-	return newQAccessibleTableInterface(C.QAccessibleInterface_TableInterface(this.h))
+	return newQAccessibleTableInterface(C.QAccessibleInterface_tableInterface(this.h))
 }
 
 func (this *QAccessibleInterface) TableCellInterface() *QAccessibleTableCellInterface {
-	return newQAccessibleTableCellInterface(C.QAccessibleInterface_TableCellInterface(this.h))
+	return newQAccessibleTableCellInterface(C.QAccessibleInterface_tableCellInterface(this.h))
 }
 
 func (this *QAccessibleInterface) VirtualHook(id int, data unsafe.Pointer) {
-	C.QAccessibleInterface_VirtualHook(this.h, (C.int)(id), data)
+	C.QAccessibleInterface_virtualHook(this.h, (C.int)(id), data)
 }
 
 func (this *QAccessibleInterface) InterfaceCast(param1 QAccessible__InterfaceType) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QAccessibleInterface_InterfaceCast(this.h, (C.int)(param1)))
+	return (unsafe.Pointer)(C.QAccessibleInterface_interfaceCast(this.h, (C.int)(param1)))
 }
 
 type QAccessibleTextInterface struct {
@@ -542,93 +542,93 @@ func UnsafeNewQAccessibleTextInterface(h unsafe.Pointer) *QAccessibleTextInterfa
 }
 
 func (this *QAccessibleTextInterface) Selection(selectionIndex int, startOffset *int, endOffset *int) {
-	C.QAccessibleTextInterface_Selection(this.h, (C.int)(selectionIndex), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
+	C.QAccessibleTextInterface_selection(this.h, (C.int)(selectionIndex), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
 }
 
 func (this *QAccessibleTextInterface) SelectionCount() int {
-	return (int)(C.QAccessibleTextInterface_SelectionCount(this.h))
+	return (int)(C.QAccessibleTextInterface_selectionCount(this.h))
 }
 
 func (this *QAccessibleTextInterface) AddSelection(startOffset int, endOffset int) {
-	C.QAccessibleTextInterface_AddSelection(this.h, (C.int)(startOffset), (C.int)(endOffset))
+	C.QAccessibleTextInterface_addSelection(this.h, (C.int)(startOffset), (C.int)(endOffset))
 }
 
 func (this *QAccessibleTextInterface) RemoveSelection(selectionIndex int) {
-	C.QAccessibleTextInterface_RemoveSelection(this.h, (C.int)(selectionIndex))
+	C.QAccessibleTextInterface_removeSelection(this.h, (C.int)(selectionIndex))
 }
 
 func (this *QAccessibleTextInterface) SetSelection(selectionIndex int, startOffset int, endOffset int) {
-	C.QAccessibleTextInterface_SetSelection(this.h, (C.int)(selectionIndex), (C.int)(startOffset), (C.int)(endOffset))
+	C.QAccessibleTextInterface_setSelection(this.h, (C.int)(selectionIndex), (C.int)(startOffset), (C.int)(endOffset))
 }
 
 func (this *QAccessibleTextInterface) CursorPosition() int {
-	return (int)(C.QAccessibleTextInterface_CursorPosition(this.h))
+	return (int)(C.QAccessibleTextInterface_cursorPosition(this.h))
 }
 
 func (this *QAccessibleTextInterface) SetCursorPosition(position int) {
-	C.QAccessibleTextInterface_SetCursorPosition(this.h, (C.int)(position))
+	C.QAccessibleTextInterface_setCursorPosition(this.h, (C.int)(position))
 }
 
 func (this *QAccessibleTextInterface) Text(startOffset int, endOffset int) string {
-	var _ms C.struct_miqt_string = C.QAccessibleTextInterface_Text(this.h, (C.int)(startOffset), (C.int)(endOffset))
+	var _ms C.struct_miqt_string = C.QAccessibleTextInterface_text(this.h, (C.int)(startOffset), (C.int)(endOffset))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleTextInterface) TextBeforeOffset(offset int, boundaryType QAccessible__TextBoundaryType, startOffset *int, endOffset *int) string {
-	var _ms C.struct_miqt_string = C.QAccessibleTextInterface_TextBeforeOffset(this.h, (C.int)(offset), (C.int)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
+	var _ms C.struct_miqt_string = C.QAccessibleTextInterface_textBeforeOffset(this.h, (C.int)(offset), (C.int)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleTextInterface) TextAfterOffset(offset int, boundaryType QAccessible__TextBoundaryType, startOffset *int, endOffset *int) string {
-	var _ms C.struct_miqt_string = C.QAccessibleTextInterface_TextAfterOffset(this.h, (C.int)(offset), (C.int)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
+	var _ms C.struct_miqt_string = C.QAccessibleTextInterface_textAfterOffset(this.h, (C.int)(offset), (C.int)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleTextInterface) TextAtOffset(offset int, boundaryType QAccessible__TextBoundaryType, startOffset *int, endOffset *int) string {
-	var _ms C.struct_miqt_string = C.QAccessibleTextInterface_TextAtOffset(this.h, (C.int)(offset), (C.int)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
+	var _ms C.struct_miqt_string = C.QAccessibleTextInterface_textAtOffset(this.h, (C.int)(offset), (C.int)(boundaryType), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleTextInterface) CharacterCount() int {
-	return (int)(C.QAccessibleTextInterface_CharacterCount(this.h))
+	return (int)(C.QAccessibleTextInterface_characterCount(this.h))
 }
 
 func (this *QAccessibleTextInterface) CharacterRect(offset int) *QRect {
-	_goptr := newQRect(C.QAccessibleTextInterface_CharacterRect(this.h, (C.int)(offset)))
+	_goptr := newQRect(C.QAccessibleTextInterface_characterRect(this.h, (C.int)(offset)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleTextInterface) OffsetAtPoint(point *QPoint) int {
-	return (int)(C.QAccessibleTextInterface_OffsetAtPoint(this.h, point.cPointer()))
+	return (int)(C.QAccessibleTextInterface_offsetAtPoint(this.h, point.cPointer()))
 }
 
 func (this *QAccessibleTextInterface) ScrollToSubstring(startIndex int, endIndex int) {
-	C.QAccessibleTextInterface_ScrollToSubstring(this.h, (C.int)(startIndex), (C.int)(endIndex))
+	C.QAccessibleTextInterface_scrollToSubstring(this.h, (C.int)(startIndex), (C.int)(endIndex))
 }
 
 func (this *QAccessibleTextInterface) Attributes(offset int, startOffset *int, endOffset *int) string {
-	var _ms C.struct_miqt_string = C.QAccessibleTextInterface_Attributes(this.h, (C.int)(offset), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
+	var _ms C.struct_miqt_string = C.QAccessibleTextInterface_attributes(this.h, (C.int)(offset), (*C.int)(unsafe.Pointer(startOffset)), (*C.int)(unsafe.Pointer(endOffset)))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleTextInterface) OperatorAssign(param1 *QAccessibleTextInterface) {
-	C.QAccessibleTextInterface_OperatorAssign(this.h, param1.cPointer())
+	C.QAccessibleTextInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextInterface) Delete() {
-	C.QAccessibleTextInterface_Delete(this.h)
+	C.QAccessibleTextInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -673,7 +673,7 @@ func UnsafeNewQAccessibleEditableTextInterface(h unsafe.Pointer) *QAccessibleEdi
 }
 
 func (this *QAccessibleEditableTextInterface) DeleteText(startOffset int, endOffset int) {
-	C.QAccessibleEditableTextInterface_DeleteText(this.h, (C.int)(startOffset), (C.int)(endOffset))
+	C.QAccessibleEditableTextInterface_deleteText(this.h, (C.int)(startOffset), (C.int)(endOffset))
 }
 
 func (this *QAccessibleEditableTextInterface) InsertText(offset int, text string) {
@@ -681,7 +681,7 @@ func (this *QAccessibleEditableTextInterface) InsertText(offset int, text string
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QAccessibleEditableTextInterface_InsertText(this.h, (C.int)(offset), text_ms)
+	C.QAccessibleEditableTextInterface_insertText(this.h, (C.int)(offset), text_ms)
 }
 
 func (this *QAccessibleEditableTextInterface) ReplaceText(startOffset int, endOffset int, text string) {
@@ -689,16 +689,16 @@ func (this *QAccessibleEditableTextInterface) ReplaceText(startOffset int, endOf
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QAccessibleEditableTextInterface_ReplaceText(this.h, (C.int)(startOffset), (C.int)(endOffset), text_ms)
+	C.QAccessibleEditableTextInterface_replaceText(this.h, (C.int)(startOffset), (C.int)(endOffset), text_ms)
 }
 
 func (this *QAccessibleEditableTextInterface) OperatorAssign(param1 *QAccessibleEditableTextInterface) {
-	C.QAccessibleEditableTextInterface_OperatorAssign(this.h, param1.cPointer())
+	C.QAccessibleEditableTextInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QAccessibleEditableTextInterface) Delete() {
-	C.QAccessibleEditableTextInterface_Delete(this.h)
+	C.QAccessibleEditableTextInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -743,40 +743,40 @@ func UnsafeNewQAccessibleValueInterface(h unsafe.Pointer) *QAccessibleValueInter
 }
 
 func (this *QAccessibleValueInterface) CurrentValue() *QVariant {
-	_goptr := newQVariant(C.QAccessibleValueInterface_CurrentValue(this.h))
+	_goptr := newQVariant(C.QAccessibleValueInterface_currentValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleValueInterface) SetCurrentValue(value *QVariant) {
-	C.QAccessibleValueInterface_SetCurrentValue(this.h, value.cPointer())
+	C.QAccessibleValueInterface_setCurrentValue(this.h, value.cPointer())
 }
 
 func (this *QAccessibleValueInterface) MaximumValue() *QVariant {
-	_goptr := newQVariant(C.QAccessibleValueInterface_MaximumValue(this.h))
+	_goptr := newQVariant(C.QAccessibleValueInterface_maximumValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleValueInterface) MinimumValue() *QVariant {
-	_goptr := newQVariant(C.QAccessibleValueInterface_MinimumValue(this.h))
+	_goptr := newQVariant(C.QAccessibleValueInterface_minimumValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleValueInterface) MinimumStepSize() *QVariant {
-	_goptr := newQVariant(C.QAccessibleValueInterface_MinimumStepSize(this.h))
+	_goptr := newQVariant(C.QAccessibleValueInterface_minimumStepSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleValueInterface) OperatorAssign(param1 *QAccessibleValueInterface) {
-	C.QAccessibleValueInterface_OperatorAssign(this.h, param1.cPointer())
+	C.QAccessibleValueInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QAccessibleValueInterface) Delete() {
-	C.QAccessibleValueInterface_Delete(this.h)
+	C.QAccessibleValueInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -821,11 +821,11 @@ func UnsafeNewQAccessibleTableCellInterface(h unsafe.Pointer) *QAccessibleTableC
 }
 
 func (this *QAccessibleTableCellInterface) IsSelected() bool {
-	return (bool)(C.QAccessibleTableCellInterface_IsSelected(this.h))
+	return (bool)(C.QAccessibleTableCellInterface_isSelected(this.h))
 }
 
 func (this *QAccessibleTableCellInterface) ColumnHeaderCells() []*QAccessibleInterface {
-	var _ma C.struct_miqt_array = C.QAccessibleTableCellInterface_ColumnHeaderCells(this.h)
+	var _ma C.struct_miqt_array = C.QAccessibleTableCellInterface_columnHeaderCells(this.h)
 	_ret := make([]*QAccessibleInterface, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -835,7 +835,7 @@ func (this *QAccessibleTableCellInterface) ColumnHeaderCells() []*QAccessibleInt
 }
 
 func (this *QAccessibleTableCellInterface) RowHeaderCells() []*QAccessibleInterface {
-	var _ma C.struct_miqt_array = C.QAccessibleTableCellInterface_RowHeaderCells(this.h)
+	var _ma C.struct_miqt_array = C.QAccessibleTableCellInterface_rowHeaderCells(this.h)
 	_ret := make([]*QAccessibleInterface, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -845,32 +845,32 @@ func (this *QAccessibleTableCellInterface) RowHeaderCells() []*QAccessibleInterf
 }
 
 func (this *QAccessibleTableCellInterface) ColumnIndex() int {
-	return (int)(C.QAccessibleTableCellInterface_ColumnIndex(this.h))
+	return (int)(C.QAccessibleTableCellInterface_columnIndex(this.h))
 }
 
 func (this *QAccessibleTableCellInterface) RowIndex() int {
-	return (int)(C.QAccessibleTableCellInterface_RowIndex(this.h))
+	return (int)(C.QAccessibleTableCellInterface_rowIndex(this.h))
 }
 
 func (this *QAccessibleTableCellInterface) ColumnExtent() int {
-	return (int)(C.QAccessibleTableCellInterface_ColumnExtent(this.h))
+	return (int)(C.QAccessibleTableCellInterface_columnExtent(this.h))
 }
 
 func (this *QAccessibleTableCellInterface) RowExtent() int {
-	return (int)(C.QAccessibleTableCellInterface_RowExtent(this.h))
+	return (int)(C.QAccessibleTableCellInterface_rowExtent(this.h))
 }
 
 func (this *QAccessibleTableCellInterface) Table() *QAccessibleInterface {
-	return newQAccessibleInterface(C.QAccessibleTableCellInterface_Table(this.h))
+	return newQAccessibleInterface(C.QAccessibleTableCellInterface_table(this.h))
 }
 
 func (this *QAccessibleTableCellInterface) OperatorAssign(param1 *QAccessibleTableCellInterface) {
-	C.QAccessibleTableCellInterface_OperatorAssign(this.h, param1.cPointer())
+	C.QAccessibleTableCellInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTableCellInterface) Delete() {
-	C.QAccessibleTableCellInterface_Delete(this.h)
+	C.QAccessibleTableCellInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -915,23 +915,23 @@ func UnsafeNewQAccessibleTableInterface(h unsafe.Pointer) *QAccessibleTableInter
 }
 
 func (this *QAccessibleTableInterface) Caption() *QAccessibleInterface {
-	return newQAccessibleInterface(C.QAccessibleTableInterface_Caption(this.h))
+	return newQAccessibleInterface(C.QAccessibleTableInterface_caption(this.h))
 }
 
 func (this *QAccessibleTableInterface) Summary() *QAccessibleInterface {
-	return newQAccessibleInterface(C.QAccessibleTableInterface_Summary(this.h))
+	return newQAccessibleInterface(C.QAccessibleTableInterface_summary(this.h))
 }
 
 func (this *QAccessibleTableInterface) CellAt(row int, column int) *QAccessibleInterface {
-	return newQAccessibleInterface(C.QAccessibleTableInterface_CellAt(this.h, (C.int)(row), (C.int)(column)))
+	return newQAccessibleInterface(C.QAccessibleTableInterface_cellAt(this.h, (C.int)(row), (C.int)(column)))
 }
 
 func (this *QAccessibleTableInterface) SelectedCellCount() int {
-	return (int)(C.QAccessibleTableInterface_SelectedCellCount(this.h))
+	return (int)(C.QAccessibleTableInterface_selectedCellCount(this.h))
 }
 
 func (this *QAccessibleTableInterface) SelectedCells() []*QAccessibleInterface {
-	var _ma C.struct_miqt_array = C.QAccessibleTableInterface_SelectedCells(this.h)
+	var _ma C.struct_miqt_array = C.QAccessibleTableInterface_selectedCells(this.h)
 	_ret := make([]*QAccessibleInterface, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAccessibleInterface)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -941,37 +941,37 @@ func (this *QAccessibleTableInterface) SelectedCells() []*QAccessibleInterface {
 }
 
 func (this *QAccessibleTableInterface) ColumnDescription(column int) string {
-	var _ms C.struct_miqt_string = C.QAccessibleTableInterface_ColumnDescription(this.h, (C.int)(column))
+	var _ms C.struct_miqt_string = C.QAccessibleTableInterface_columnDescription(this.h, (C.int)(column))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleTableInterface) RowDescription(row int) string {
-	var _ms C.struct_miqt_string = C.QAccessibleTableInterface_RowDescription(this.h, (C.int)(row))
+	var _ms C.struct_miqt_string = C.QAccessibleTableInterface_rowDescription(this.h, (C.int)(row))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleTableInterface) SelectedColumnCount() int {
-	return (int)(C.QAccessibleTableInterface_SelectedColumnCount(this.h))
+	return (int)(C.QAccessibleTableInterface_selectedColumnCount(this.h))
 }
 
 func (this *QAccessibleTableInterface) SelectedRowCount() int {
-	return (int)(C.QAccessibleTableInterface_SelectedRowCount(this.h))
+	return (int)(C.QAccessibleTableInterface_selectedRowCount(this.h))
 }
 
 func (this *QAccessibleTableInterface) ColumnCount() int {
-	return (int)(C.QAccessibleTableInterface_ColumnCount(this.h))
+	return (int)(C.QAccessibleTableInterface_columnCount(this.h))
 }
 
 func (this *QAccessibleTableInterface) RowCount() int {
-	return (int)(C.QAccessibleTableInterface_RowCount(this.h))
+	return (int)(C.QAccessibleTableInterface_rowCount(this.h))
 }
 
 func (this *QAccessibleTableInterface) SelectedColumns() []int {
-	var _ma C.struct_miqt_array = C.QAccessibleTableInterface_SelectedColumns(this.h)
+	var _ma C.struct_miqt_array = C.QAccessibleTableInterface_selectedColumns(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -981,7 +981,7 @@ func (this *QAccessibleTableInterface) SelectedColumns() []int {
 }
 
 func (this *QAccessibleTableInterface) SelectedRows() []int {
-	var _ma C.struct_miqt_array = C.QAccessibleTableInterface_SelectedRows(this.h)
+	var _ma C.struct_miqt_array = C.QAccessibleTableInterface_selectedRows(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -991,36 +991,36 @@ func (this *QAccessibleTableInterface) SelectedRows() []int {
 }
 
 func (this *QAccessibleTableInterface) IsColumnSelected(column int) bool {
-	return (bool)(C.QAccessibleTableInterface_IsColumnSelected(this.h, (C.int)(column)))
+	return (bool)(C.QAccessibleTableInterface_isColumnSelected(this.h, (C.int)(column)))
 }
 
 func (this *QAccessibleTableInterface) IsRowSelected(row int) bool {
-	return (bool)(C.QAccessibleTableInterface_IsRowSelected(this.h, (C.int)(row)))
+	return (bool)(C.QAccessibleTableInterface_isRowSelected(this.h, (C.int)(row)))
 }
 
 func (this *QAccessibleTableInterface) SelectRow(row int) bool {
-	return (bool)(C.QAccessibleTableInterface_SelectRow(this.h, (C.int)(row)))
+	return (bool)(C.QAccessibleTableInterface_selectRow(this.h, (C.int)(row)))
 }
 
 func (this *QAccessibleTableInterface) SelectColumn(column int) bool {
-	return (bool)(C.QAccessibleTableInterface_SelectColumn(this.h, (C.int)(column)))
+	return (bool)(C.QAccessibleTableInterface_selectColumn(this.h, (C.int)(column)))
 }
 
 func (this *QAccessibleTableInterface) UnselectRow(row int) bool {
-	return (bool)(C.QAccessibleTableInterface_UnselectRow(this.h, (C.int)(row)))
+	return (bool)(C.QAccessibleTableInterface_unselectRow(this.h, (C.int)(row)))
 }
 
 func (this *QAccessibleTableInterface) UnselectColumn(column int) bool {
-	return (bool)(C.QAccessibleTableInterface_UnselectColumn(this.h, (C.int)(column)))
+	return (bool)(C.QAccessibleTableInterface_unselectColumn(this.h, (C.int)(column)))
 }
 
 func (this *QAccessibleTableInterface) ModelChange(event *QAccessibleTableModelChangeEvent) {
-	C.QAccessibleTableInterface_ModelChange(this.h, event.cPointer())
+	C.QAccessibleTableInterface_modelChange(this.h, event.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTableInterface) Delete() {
-	C.QAccessibleTableInterface_Delete(this.h)
+	C.QAccessibleTableInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1067,7 +1067,7 @@ func UnsafeNewQAccessibleActionInterface(h unsafe.Pointer) *QAccessibleActionInt
 func QAccessibleActionInterface_Tr(sourceText string) string {
 	sourceText_Cstring := C.CString(sourceText)
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_Tr(sourceText_Cstring)
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_tr(sourceText_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1076,14 +1076,14 @@ func QAccessibleActionInterface_Tr(sourceText string) string {
 func QAccessibleActionInterface_TrUtf8(sourceText string) string {
 	sourceText_Cstring := C.CString(sourceText)
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_TrUtf8(sourceText_Cstring)
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_trUtf8(sourceText_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleActionInterface) ActionNames() []string {
-	var _ma C.struct_miqt_array = C.QAccessibleActionInterface_ActionNames(this.h)
+	var _ma C.struct_miqt_array = C.QAccessibleActionInterface_actionNames(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1100,7 +1100,7 @@ func (this *QAccessibleActionInterface) LocalizedActionName(name string) string 
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_LocalizedActionName(this.h, name_ms)
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_localizedActionName(this.h, name_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1111,7 +1111,7 @@ func (this *QAccessibleActionInterface) LocalizedActionDescription(name string) 
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_LocalizedActionDescription(this.h, name_ms)
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_localizedActionDescription(this.h, name_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1122,7 +1122,7 @@ func (this *QAccessibleActionInterface) DoAction(actionName string) {
 	actionName_ms.data = C.CString(actionName)
 	actionName_ms.len = C.size_t(len(actionName))
 	defer C.free(unsafe.Pointer(actionName_ms.data))
-	C.QAccessibleActionInterface_DoAction(this.h, actionName_ms)
+	C.QAccessibleActionInterface_doAction(this.h, actionName_ms)
 }
 
 func (this *QAccessibleActionInterface) KeyBindingsForAction(actionName string) []string {
@@ -1130,7 +1130,7 @@ func (this *QAccessibleActionInterface) KeyBindingsForAction(actionName string) 
 	actionName_ms.data = C.CString(actionName)
 	actionName_ms.len = C.size_t(len(actionName))
 	defer C.free(unsafe.Pointer(actionName_ms.data))
-	var _ma C.struct_miqt_array = C.QAccessibleActionInterface_KeyBindingsForAction(this.h, actionName_ms)
+	var _ma C.struct_miqt_array = C.QAccessibleActionInterface_keyBindingsForAction(this.h, actionName_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1143,91 +1143,91 @@ func (this *QAccessibleActionInterface) KeyBindingsForAction(actionName string) 
 }
 
 func QAccessibleActionInterface_PressAction() string {
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_PressAction()
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_pressAction()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_IncreaseAction() string {
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_IncreaseAction()
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_increaseAction()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_DecreaseAction() string {
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_DecreaseAction()
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_decreaseAction()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_ShowMenuAction() string {
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_ShowMenuAction()
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_showMenuAction()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_SetFocusAction() string {
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_SetFocusAction()
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_setFocusAction()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_ToggleAction() string {
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_ToggleAction()
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_toggleAction()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_ScrollLeftAction() string {
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_ScrollLeftAction()
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_scrollLeftAction()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_ScrollRightAction() string {
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_ScrollRightAction()
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_scrollRightAction()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_ScrollUpAction() string {
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_ScrollUpAction()
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_scrollUpAction()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_ScrollDownAction() string {
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_ScrollDownAction()
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_scrollDownAction()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_NextPageAction() string {
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_NextPageAction()
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_nextPageAction()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAccessibleActionInterface_PreviousPageAction() string {
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_PreviousPageAction()
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_previousPageAction()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleActionInterface) OperatorAssign(param1 *QAccessibleActionInterface) {
-	C.QAccessibleActionInterface_OperatorAssign(this.h, param1.cPointer())
+	C.QAccessibleActionInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 func QAccessibleActionInterface_Tr2(sourceText string, disambiguation string) string {
@@ -1235,7 +1235,7 @@ func QAccessibleActionInterface_Tr2(sourceText string, disambiguation string) st
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_Tr2(sourceText_Cstring, disambiguation_Cstring)
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_tr2(sourceText_Cstring, disambiguation_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1246,7 +1246,7 @@ func QAccessibleActionInterface_Tr3(sourceText string, disambiguation string, n 
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_Tr3(sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_tr3(sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1257,7 +1257,7 @@ func QAccessibleActionInterface_TrUtf82(sourceText string, disambiguation string
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_TrUtf82(sourceText_Cstring, disambiguation_Cstring)
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_trUtf82(sourceText_Cstring, disambiguation_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1268,7 +1268,7 @@ func QAccessibleActionInterface_TrUtf83(sourceText string, disambiguation string
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_TrUtf83(sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAccessibleActionInterface_trUtf83(sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1276,7 +1276,7 @@ func QAccessibleActionInterface_TrUtf83(sourceText string, disambiguation string
 
 // Delete this object from C++ memory.
 func (this *QAccessibleActionInterface) Delete() {
-	C.QAccessibleActionInterface_Delete(this.h)
+	C.QAccessibleActionInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1321,31 +1321,31 @@ func UnsafeNewQAccessibleImageInterface(h unsafe.Pointer) *QAccessibleImageInter
 }
 
 func (this *QAccessibleImageInterface) ImageDescription() string {
-	var _ms C.struct_miqt_string = C.QAccessibleImageInterface_ImageDescription(this.h)
+	var _ms C.struct_miqt_string = C.QAccessibleImageInterface_imageDescription(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleImageInterface) ImageSize() *QSize {
-	_goptr := newQSize(C.QAccessibleImageInterface_ImageSize(this.h))
+	_goptr := newQSize(C.QAccessibleImageInterface_imageSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleImageInterface) ImagePosition() *QPoint {
-	_goptr := newQPoint(C.QAccessibleImageInterface_ImagePosition(this.h))
+	_goptr := newQPoint(C.QAccessibleImageInterface_imagePosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleImageInterface) OperatorAssign(param1 *QAccessibleImageInterface) {
-	C.QAccessibleImageInterface_OperatorAssign(this.h, param1.cPointer())
+	C.QAccessibleImageInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QAccessibleImageInterface) Delete() {
-	C.QAccessibleImageInterface_Delete(this.h)
+	C.QAccessibleImageInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1402,43 +1402,43 @@ func NewQAccessibleEvent2(iface *QAccessibleInterface, typ QAccessible__Event) *
 }
 
 func (this *QAccessibleEvent) Type() QAccessible__Event {
-	return (QAccessible__Event)(C.QAccessibleEvent_Type(this.h))
+	return (QAccessible__Event)(C.QAccessibleEvent_type(this.h))
 }
 
 func (this *QAccessibleEvent) Object() *QObject {
-	return newQObject(C.QAccessibleEvent_Object(this.h))
+	return newQObject(C.QAccessibleEvent_object(this.h))
 }
 
 func (this *QAccessibleEvent) UniqueId() uint {
-	return (uint)(C.QAccessibleEvent_UniqueId(this.h))
+	return (uint)(C.QAccessibleEvent_uniqueId(this.h))
 }
 
 func (this *QAccessibleEvent) SetChild(chld int) {
-	C.QAccessibleEvent_SetChild(this.h, (C.int)(chld))
+	C.QAccessibleEvent_setChild(this.h, (C.int)(chld))
 }
 
 func (this *QAccessibleEvent) Child() int {
-	return (int)(C.QAccessibleEvent_Child(this.h))
+	return (int)(C.QAccessibleEvent_child(this.h))
 }
 
 func (this *QAccessibleEvent) AccessibleInterface() *QAccessibleInterface {
-	return newQAccessibleInterface(C.QAccessibleEvent_AccessibleInterface(this.h))
+	return newQAccessibleInterface(C.QAccessibleEvent_accessibleInterface(this.h))
 }
 
 func (this *QAccessibleEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
 
-	return newQAccessibleInterface(C.QAccessibleEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h)))
+	return newQAccessibleInterface(C.QAccessibleEvent_virtualbase_accessibleInterface(unsafe.Pointer(this.h)))
 
 }
-func (this *QAccessibleEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
-	ok := C.QAccessibleEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleEvent) OnaccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	ok := C.QAccessibleEvent_override_virtual_accessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleEvent_AccessibleInterface
-func miqt_exec_callback_QAccessibleEvent_AccessibleInterface(self *C.QAccessibleEvent, cb C.intptr_t) *C.QAccessibleInterface {
+//export miqt_exec_callback_QAccessibleEvent_accessibleInterface
+func miqt_exec_callback_QAccessibleEvent_accessibleInterface(self *C.QAccessibleEvent, cb C.intptr_t) *C.QAccessibleInterface {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1452,7 +1452,7 @@ func miqt_exec_callback_QAccessibleEvent_AccessibleInterface(self *C.QAccessible
 
 // Delete this object from C++ memory.
 func (this *QAccessibleEvent) Delete() {
-	C.QAccessibleEvent_Delete(this.h)
+	C.QAccessibleEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1513,25 +1513,25 @@ func NewQAccessibleStateChangeEvent2(iface *QAccessibleInterface, state QAccessi
 }
 
 func (this *QAccessibleStateChangeEvent) ChangedStates() *QAccessible__State {
-	_goptr := newQAccessible__State(C.QAccessibleStateChangeEvent_ChangedStates(this.h))
+	_goptr := newQAccessible__State(C.QAccessibleStateChangeEvent_changedStates(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleStateChangeEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
 
-	return newQAccessibleInterface(C.QAccessibleStateChangeEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h)))
+	return newQAccessibleInterface(C.QAccessibleStateChangeEvent_virtualbase_accessibleInterface(unsafe.Pointer(this.h)))
 
 }
-func (this *QAccessibleStateChangeEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
-	ok := C.QAccessibleStateChangeEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleStateChangeEvent) OnaccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	ok := C.QAccessibleStateChangeEvent_override_virtual_accessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleStateChangeEvent_AccessibleInterface
-func miqt_exec_callback_QAccessibleStateChangeEvent_AccessibleInterface(self *C.QAccessibleStateChangeEvent, cb C.intptr_t) *C.QAccessibleInterface {
+//export miqt_exec_callback_QAccessibleStateChangeEvent_accessibleInterface
+func miqt_exec_callback_QAccessibleStateChangeEvent_accessibleInterface(self *C.QAccessibleStateChangeEvent, cb C.intptr_t) *C.QAccessibleInterface {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1545,7 +1545,7 @@ func miqt_exec_callback_QAccessibleStateChangeEvent_AccessibleInterface(self *C.
 
 // Delete this object from C++ memory.
 func (this *QAccessibleStateChangeEvent) Delete() {
-	C.QAccessibleStateChangeEvent_Delete(this.h)
+	C.QAccessibleStateChangeEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1606,27 +1606,27 @@ func NewQAccessibleTextCursorEvent2(iface *QAccessibleInterface, cursorPos int) 
 }
 
 func (this *QAccessibleTextCursorEvent) SetCursorPosition(position int) {
-	C.QAccessibleTextCursorEvent_SetCursorPosition(this.h, (C.int)(position))
+	C.QAccessibleTextCursorEvent_setCursorPosition(this.h, (C.int)(position))
 }
 
 func (this *QAccessibleTextCursorEvent) CursorPosition() int {
-	return (int)(C.QAccessibleTextCursorEvent_CursorPosition(this.h))
+	return (int)(C.QAccessibleTextCursorEvent_cursorPosition(this.h))
 }
 
 func (this *QAccessibleTextCursorEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
 
-	return newQAccessibleInterface(C.QAccessibleTextCursorEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h)))
+	return newQAccessibleInterface(C.QAccessibleTextCursorEvent_virtualbase_accessibleInterface(unsafe.Pointer(this.h)))
 
 }
-func (this *QAccessibleTextCursorEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
-	ok := C.QAccessibleTextCursorEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleTextCursorEvent) OnaccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	ok := C.QAccessibleTextCursorEvent_override_virtual_accessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleTextCursorEvent_AccessibleInterface
-func miqt_exec_callback_QAccessibleTextCursorEvent_AccessibleInterface(self *C.QAccessibleTextCursorEvent, cb C.intptr_t) *C.QAccessibleInterface {
+//export miqt_exec_callback_QAccessibleTextCursorEvent_accessibleInterface
+func miqt_exec_callback_QAccessibleTextCursorEvent_accessibleInterface(self *C.QAccessibleTextCursorEvent, cb C.intptr_t) *C.QAccessibleInterface {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1640,7 +1640,7 @@ func miqt_exec_callback_QAccessibleTextCursorEvent_AccessibleInterface(self *C.Q
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextCursorEvent) Delete() {
-	C.QAccessibleTextCursorEvent_Delete(this.h)
+	C.QAccessibleTextCursorEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1701,31 +1701,31 @@ func NewQAccessibleTextSelectionEvent2(iface *QAccessibleInterface, start int, e
 }
 
 func (this *QAccessibleTextSelectionEvent) SetSelection(start int, end int) {
-	C.QAccessibleTextSelectionEvent_SetSelection(this.h, (C.int)(start), (C.int)(end))
+	C.QAccessibleTextSelectionEvent_setSelection(this.h, (C.int)(start), (C.int)(end))
 }
 
 func (this *QAccessibleTextSelectionEvent) SelectionStart() int {
-	return (int)(C.QAccessibleTextSelectionEvent_SelectionStart(this.h))
+	return (int)(C.QAccessibleTextSelectionEvent_selectionStart(this.h))
 }
 
 func (this *QAccessibleTextSelectionEvent) SelectionEnd() int {
-	return (int)(C.QAccessibleTextSelectionEvent_SelectionEnd(this.h))
+	return (int)(C.QAccessibleTextSelectionEvent_selectionEnd(this.h))
 }
 
 func (this *QAccessibleTextSelectionEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
 
-	return newQAccessibleInterface(C.QAccessibleTextSelectionEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h)))
+	return newQAccessibleInterface(C.QAccessibleTextSelectionEvent_virtualbase_accessibleInterface(unsafe.Pointer(this.h)))
 
 }
-func (this *QAccessibleTextSelectionEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
-	ok := C.QAccessibleTextSelectionEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleTextSelectionEvent) OnaccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	ok := C.QAccessibleTextSelectionEvent_override_virtual_accessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleTextSelectionEvent_AccessibleInterface
-func miqt_exec_callback_QAccessibleTextSelectionEvent_AccessibleInterface(self *C.QAccessibleTextSelectionEvent, cb C.intptr_t) *C.QAccessibleInterface {
+//export miqt_exec_callback_QAccessibleTextSelectionEvent_accessibleInterface
+func miqt_exec_callback_QAccessibleTextSelectionEvent_accessibleInterface(self *C.QAccessibleTextSelectionEvent, cb C.intptr_t) *C.QAccessibleInterface {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1739,7 +1739,7 @@ func miqt_exec_callback_QAccessibleTextSelectionEvent_AccessibleInterface(self *
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextSelectionEvent) Delete() {
-	C.QAccessibleTextSelectionEvent_Delete(this.h)
+	C.QAccessibleTextSelectionEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1808,30 +1808,30 @@ func NewQAccessibleTextInsertEvent2(iface *QAccessibleInterface, position int, t
 }
 
 func (this *QAccessibleTextInsertEvent) TextInserted() string {
-	var _ms C.struct_miqt_string = C.QAccessibleTextInsertEvent_TextInserted(this.h)
+	var _ms C.struct_miqt_string = C.QAccessibleTextInsertEvent_textInserted(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleTextInsertEvent) ChangePosition() int {
-	return (int)(C.QAccessibleTextInsertEvent_ChangePosition(this.h))
+	return (int)(C.QAccessibleTextInsertEvent_changePosition(this.h))
 }
 
 func (this *QAccessibleTextInsertEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
 
-	return newQAccessibleInterface(C.QAccessibleTextInsertEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h)))
+	return newQAccessibleInterface(C.QAccessibleTextInsertEvent_virtualbase_accessibleInterface(unsafe.Pointer(this.h)))
 
 }
-func (this *QAccessibleTextInsertEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
-	ok := C.QAccessibleTextInsertEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleTextInsertEvent) OnaccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	ok := C.QAccessibleTextInsertEvent_override_virtual_accessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleTextInsertEvent_AccessibleInterface
-func miqt_exec_callback_QAccessibleTextInsertEvent_AccessibleInterface(self *C.QAccessibleTextInsertEvent, cb C.intptr_t) *C.QAccessibleInterface {
+//export miqt_exec_callback_QAccessibleTextInsertEvent_accessibleInterface
+func miqt_exec_callback_QAccessibleTextInsertEvent_accessibleInterface(self *C.QAccessibleTextInsertEvent, cb C.intptr_t) *C.QAccessibleInterface {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1845,7 +1845,7 @@ func miqt_exec_callback_QAccessibleTextInsertEvent_AccessibleInterface(self *C.Q
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextInsertEvent) Delete() {
-	C.QAccessibleTextInsertEvent_Delete(this.h)
+	C.QAccessibleTextInsertEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1914,30 +1914,30 @@ func NewQAccessibleTextRemoveEvent2(iface *QAccessibleInterface, position int, t
 }
 
 func (this *QAccessibleTextRemoveEvent) TextRemoved() string {
-	var _ms C.struct_miqt_string = C.QAccessibleTextRemoveEvent_TextRemoved(this.h)
+	var _ms C.struct_miqt_string = C.QAccessibleTextRemoveEvent_textRemoved(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleTextRemoveEvent) ChangePosition() int {
-	return (int)(C.QAccessibleTextRemoveEvent_ChangePosition(this.h))
+	return (int)(C.QAccessibleTextRemoveEvent_changePosition(this.h))
 }
 
 func (this *QAccessibleTextRemoveEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
 
-	return newQAccessibleInterface(C.QAccessibleTextRemoveEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h)))
+	return newQAccessibleInterface(C.QAccessibleTextRemoveEvent_virtualbase_accessibleInterface(unsafe.Pointer(this.h)))
 
 }
-func (this *QAccessibleTextRemoveEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
-	ok := C.QAccessibleTextRemoveEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleTextRemoveEvent) OnaccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	ok := C.QAccessibleTextRemoveEvent_override_virtual_accessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleTextRemoveEvent_AccessibleInterface
-func miqt_exec_callback_QAccessibleTextRemoveEvent_AccessibleInterface(self *C.QAccessibleTextRemoveEvent, cb C.intptr_t) *C.QAccessibleInterface {
+//export miqt_exec_callback_QAccessibleTextRemoveEvent_accessibleInterface
+func miqt_exec_callback_QAccessibleTextRemoveEvent_accessibleInterface(self *C.QAccessibleTextRemoveEvent, cb C.intptr_t) *C.QAccessibleInterface {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1951,7 +1951,7 @@ func miqt_exec_callback_QAccessibleTextRemoveEvent_AccessibleInterface(self *C.Q
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextRemoveEvent) Delete() {
-	C.QAccessibleTextRemoveEvent_Delete(this.h)
+	C.QAccessibleTextRemoveEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2028,37 +2028,37 @@ func NewQAccessibleTextUpdateEvent2(iface *QAccessibleInterface, position int, o
 }
 
 func (this *QAccessibleTextUpdateEvent) TextRemoved() string {
-	var _ms C.struct_miqt_string = C.QAccessibleTextUpdateEvent_TextRemoved(this.h)
+	var _ms C.struct_miqt_string = C.QAccessibleTextUpdateEvent_textRemoved(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleTextUpdateEvent) TextInserted() string {
-	var _ms C.struct_miqt_string = C.QAccessibleTextUpdateEvent_TextInserted(this.h)
+	var _ms C.struct_miqt_string = C.QAccessibleTextUpdateEvent_textInserted(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleTextUpdateEvent) ChangePosition() int {
-	return (int)(C.QAccessibleTextUpdateEvent_ChangePosition(this.h))
+	return (int)(C.QAccessibleTextUpdateEvent_changePosition(this.h))
 }
 
 func (this *QAccessibleTextUpdateEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
 
-	return newQAccessibleInterface(C.QAccessibleTextUpdateEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h)))
+	return newQAccessibleInterface(C.QAccessibleTextUpdateEvent_virtualbase_accessibleInterface(unsafe.Pointer(this.h)))
 
 }
-func (this *QAccessibleTextUpdateEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
-	ok := C.QAccessibleTextUpdateEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleTextUpdateEvent) OnaccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	ok := C.QAccessibleTextUpdateEvent_override_virtual_accessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleTextUpdateEvent_AccessibleInterface
-func miqt_exec_callback_QAccessibleTextUpdateEvent_AccessibleInterface(self *C.QAccessibleTextUpdateEvent, cb C.intptr_t) *C.QAccessibleInterface {
+//export miqt_exec_callback_QAccessibleTextUpdateEvent_accessibleInterface
+func miqt_exec_callback_QAccessibleTextUpdateEvent_accessibleInterface(self *C.QAccessibleTextUpdateEvent, cb C.intptr_t) *C.QAccessibleInterface {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2072,7 +2072,7 @@ func miqt_exec_callback_QAccessibleTextUpdateEvent_AccessibleInterface(self *C.Q
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTextUpdateEvent) Delete() {
-	C.QAccessibleTextUpdateEvent_Delete(this.h)
+	C.QAccessibleTextUpdateEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2133,29 +2133,29 @@ func NewQAccessibleValueChangeEvent2(iface *QAccessibleInterface, val *QVariant)
 }
 
 func (this *QAccessibleValueChangeEvent) SetValue(val *QVariant) {
-	C.QAccessibleValueChangeEvent_SetValue(this.h, val.cPointer())
+	C.QAccessibleValueChangeEvent_setValue(this.h, val.cPointer())
 }
 
 func (this *QAccessibleValueChangeEvent) Value() *QVariant {
-	_goptr := newQVariant(C.QAccessibleValueChangeEvent_Value(this.h))
+	_goptr := newQVariant(C.QAccessibleValueChangeEvent_value(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleValueChangeEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
 
-	return newQAccessibleInterface(C.QAccessibleValueChangeEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h)))
+	return newQAccessibleInterface(C.QAccessibleValueChangeEvent_virtualbase_accessibleInterface(unsafe.Pointer(this.h)))
 
 }
-func (this *QAccessibleValueChangeEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
-	ok := C.QAccessibleValueChangeEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleValueChangeEvent) OnaccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	ok := C.QAccessibleValueChangeEvent_override_virtual_accessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleValueChangeEvent_AccessibleInterface
-func miqt_exec_callback_QAccessibleValueChangeEvent_AccessibleInterface(self *C.QAccessibleValueChangeEvent, cb C.intptr_t) *C.QAccessibleInterface {
+//export miqt_exec_callback_QAccessibleValueChangeEvent_accessibleInterface
+func miqt_exec_callback_QAccessibleValueChangeEvent_accessibleInterface(self *C.QAccessibleValueChangeEvent, cb C.intptr_t) *C.QAccessibleInterface {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2169,7 +2169,7 @@ func miqt_exec_callback_QAccessibleValueChangeEvent_AccessibleInterface(self *C.
 
 // Delete this object from C++ memory.
 func (this *QAccessibleValueChangeEvent) Delete() {
-	C.QAccessibleValueChangeEvent_Delete(this.h)
+	C.QAccessibleValueChangeEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2230,59 +2230,59 @@ func NewQAccessibleTableModelChangeEvent2(iface *QAccessibleInterface, changeTyp
 }
 
 func (this *QAccessibleTableModelChangeEvent) SetModelChangeType(changeType QAccessibleTableModelChangeEvent__ModelChangeType) {
-	C.QAccessibleTableModelChangeEvent_SetModelChangeType(this.h, (C.int)(changeType))
+	C.QAccessibleTableModelChangeEvent_setModelChangeType(this.h, (C.int)(changeType))
 }
 
 func (this *QAccessibleTableModelChangeEvent) ModelChangeType() QAccessibleTableModelChangeEvent__ModelChangeType {
-	return (QAccessibleTableModelChangeEvent__ModelChangeType)(C.QAccessibleTableModelChangeEvent_ModelChangeType(this.h))
+	return (QAccessibleTableModelChangeEvent__ModelChangeType)(C.QAccessibleTableModelChangeEvent_modelChangeType(this.h))
 }
 
 func (this *QAccessibleTableModelChangeEvent) SetFirstRow(row int) {
-	C.QAccessibleTableModelChangeEvent_SetFirstRow(this.h, (C.int)(row))
+	C.QAccessibleTableModelChangeEvent_setFirstRow(this.h, (C.int)(row))
 }
 
 func (this *QAccessibleTableModelChangeEvent) SetFirstColumn(col int) {
-	C.QAccessibleTableModelChangeEvent_SetFirstColumn(this.h, (C.int)(col))
+	C.QAccessibleTableModelChangeEvent_setFirstColumn(this.h, (C.int)(col))
 }
 
 func (this *QAccessibleTableModelChangeEvent) SetLastRow(row int) {
-	C.QAccessibleTableModelChangeEvent_SetLastRow(this.h, (C.int)(row))
+	C.QAccessibleTableModelChangeEvent_setLastRow(this.h, (C.int)(row))
 }
 
 func (this *QAccessibleTableModelChangeEvent) SetLastColumn(col int) {
-	C.QAccessibleTableModelChangeEvent_SetLastColumn(this.h, (C.int)(col))
+	C.QAccessibleTableModelChangeEvent_setLastColumn(this.h, (C.int)(col))
 }
 
 func (this *QAccessibleTableModelChangeEvent) FirstRow() int {
-	return (int)(C.QAccessibleTableModelChangeEvent_FirstRow(this.h))
+	return (int)(C.QAccessibleTableModelChangeEvent_firstRow(this.h))
 }
 
 func (this *QAccessibleTableModelChangeEvent) FirstColumn() int {
-	return (int)(C.QAccessibleTableModelChangeEvent_FirstColumn(this.h))
+	return (int)(C.QAccessibleTableModelChangeEvent_firstColumn(this.h))
 }
 
 func (this *QAccessibleTableModelChangeEvent) LastRow() int {
-	return (int)(C.QAccessibleTableModelChangeEvent_LastRow(this.h))
+	return (int)(C.QAccessibleTableModelChangeEvent_lastRow(this.h))
 }
 
 func (this *QAccessibleTableModelChangeEvent) LastColumn() int {
-	return (int)(C.QAccessibleTableModelChangeEvent_LastColumn(this.h))
+	return (int)(C.QAccessibleTableModelChangeEvent_lastColumn(this.h))
 }
 
 func (this *QAccessibleTableModelChangeEvent) callVirtualBase_AccessibleInterface() *QAccessibleInterface {
 
-	return newQAccessibleInterface(C.QAccessibleTableModelChangeEvent_virtualbase_AccessibleInterface(unsafe.Pointer(this.h)))
+	return newQAccessibleInterface(C.QAccessibleTableModelChangeEvent_virtualbase_accessibleInterface(unsafe.Pointer(this.h)))
 
 }
-func (this *QAccessibleTableModelChangeEvent) OnAccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
-	ok := C.QAccessibleTableModelChangeEvent_override_virtual_AccessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleTableModelChangeEvent) OnaccessibleInterface(slot func(super func() *QAccessibleInterface) *QAccessibleInterface) {
+	ok := C.QAccessibleTableModelChangeEvent_override_virtual_accessibleInterface(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleTableModelChangeEvent_AccessibleInterface
-func miqt_exec_callback_QAccessibleTableModelChangeEvent_AccessibleInterface(self *C.QAccessibleTableModelChangeEvent, cb C.intptr_t) *C.QAccessibleInterface {
+//export miqt_exec_callback_QAccessibleTableModelChangeEvent_accessibleInterface
+func miqt_exec_callback_QAccessibleTableModelChangeEvent_accessibleInterface(self *C.QAccessibleTableModelChangeEvent, cb C.intptr_t) *C.QAccessibleInterface {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QAccessibleInterface) *QAccessibleInterface)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2296,7 +2296,7 @@ func miqt_exec_callback_QAccessibleTableModelChangeEvent_AccessibleInterface(sel
 
 // Delete this object from C++ memory.
 func (this *QAccessibleTableModelChangeEvent) Delete() {
-	C.QAccessibleTableModelChangeEvent_Delete(this.h)
+	C.QAccessibleTableModelChangeEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2354,7 +2354,7 @@ func NewQAccessible__State2(param1 *QAccessible__State) *QAccessible__State {
 
 // Delete this object from C++ memory.
 func (this *QAccessible__State) Delete() {
-	C.QAccessible__State_Delete(this.h)
+	C.QAccessible__State_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2399,16 +2399,16 @@ func UnsafeNewQAccessible__ActivationObserver(h unsafe.Pointer) *QAccessible__Ac
 }
 
 func (this *QAccessible__ActivationObserver) AccessibilityActiveChanged(active bool) {
-	C.QAccessible__ActivationObserver_AccessibilityActiveChanged(this.h, (C.bool)(active))
+	C.QAccessible__ActivationObserver_accessibilityActiveChanged(this.h, (C.bool)(active))
 }
 
 func (this *QAccessible__ActivationObserver) OperatorAssign(param1 *QAccessible__ActivationObserver) {
-	C.QAccessible__ActivationObserver_OperatorAssign(this.h, param1.cPointer())
+	C.QAccessible__ActivationObserver_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QAccessible__ActivationObserver) Delete() {
-	C.QAccessible__ActivationObserver_Delete(this.h)
+	C.QAccessible__ActivationObserver_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

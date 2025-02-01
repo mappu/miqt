@@ -84,12 +84,12 @@ func NewQStringEncoder5(name string, flags QStringConverterBase__Flag) *QStringE
 }
 
 func (this *QStringEncoder) RequiredSpace(inputLength int64) int64 {
-	return (int64)(C.QStringEncoder_RequiredSpace(this.h, (C.ptrdiff_t)(inputLength)))
+	return (int64)(C.QStringEncoder_requiredSpace(this.h, (C.ptrdiff_t)(inputLength)))
 }
 
 // Delete this object from C++ memory.
 func (this *QStringEncoder) Delete() {
-	C.QStringEncoder_Delete(this.h)
+	C.QStringEncoder_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -172,22 +172,22 @@ func NewQStringDecoder5(name string, f QStringConverterBase__Flag) *QStringDecod
 }
 
 func (this *QStringDecoder) RequiredSpace(inputLength int64) int64 {
-	return (int64)(C.QStringDecoder_RequiredSpace(this.h, (C.ptrdiff_t)(inputLength)))
+	return (int64)(C.QStringDecoder_requiredSpace(this.h, (C.ptrdiff_t)(inputLength)))
 }
 
 func (this *QStringDecoder) AppendToBuffer(out *QChar, ba QByteArrayView) *QChar {
-	return newQChar(C.QStringDecoder_AppendToBuffer(this.h, out.cPointer(), ba.cPointer()))
+	return newQChar(C.QStringDecoder_appendToBuffer(this.h, out.cPointer(), ba.cPointer()))
 }
 
 func QStringDecoder_DecoderForHtml(data QByteArrayView) *QStringDecoder {
-	_goptr := newQStringDecoder(C.QStringDecoder_DecoderForHtml(data.cPointer()))
+	_goptr := newQStringDecoder(C.QStringDecoder_decoderForHtml(data.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QStringDecoder) Delete() {
-	C.QStringDecoder_Delete(this.h)
+	C.QStringDecoder_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

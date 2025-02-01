@@ -37,32 +37,32 @@ typedef struct QTimerEvent QTimerEvent;
 QStylePlugin* QStylePlugin_new();
 QStylePlugin* QStylePlugin_new2(QObject* parent);
 void QStylePlugin_virtbase(QStylePlugin* src, QObject** outptr_QObject);
-QMetaObject* QStylePlugin_MetaObject(const QStylePlugin* self);
-void* QStylePlugin_Metacast(QStylePlugin* self, const char* param1);
-struct miqt_string QStylePlugin_Tr(const char* s);
-QStyle* QStylePlugin_Create(QStylePlugin* self, struct miqt_string key);
-struct miqt_string QStylePlugin_Tr2(const char* s, const char* c);
-struct miqt_string QStylePlugin_Tr3(const char* s, const char* c, int n);
-bool QStylePlugin_override_virtual_Create(void* self, intptr_t slot);
-QStyle* QStylePlugin_virtualbase_Create(void* self, struct miqt_string key);
-bool QStylePlugin_override_virtual_Event(void* self, intptr_t slot);
-bool QStylePlugin_virtualbase_Event(void* self, QEvent* event);
-bool QStylePlugin_override_virtual_EventFilter(void* self, intptr_t slot);
-bool QStylePlugin_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-bool QStylePlugin_override_virtual_TimerEvent(void* self, intptr_t slot);
-void QStylePlugin_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-bool QStylePlugin_override_virtual_ChildEvent(void* self, intptr_t slot);
-void QStylePlugin_virtualbase_ChildEvent(void* self, QChildEvent* event);
-bool QStylePlugin_override_virtual_CustomEvent(void* self, intptr_t slot);
-void QStylePlugin_virtualbase_CustomEvent(void* self, QEvent* event);
-bool QStylePlugin_override_virtual_ConnectNotify(void* self, intptr_t slot);
-void QStylePlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-bool QStylePlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
-void QStylePlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QStylePlugin_Delete(QStylePlugin* self);
+QMetaObject* QStylePlugin_metaObject(const QStylePlugin* self);
+void* QStylePlugin_metacast(QStylePlugin* self, const char* param1);
+struct miqt_string QStylePlugin_tr(const char* s);
+QStyle* QStylePlugin_create(QStylePlugin* self, struct miqt_string key);
+struct miqt_string QStylePlugin_tr2(const char* s, const char* c);
+struct miqt_string QStylePlugin_tr3(const char* s, const char* c, int n);
+bool QStylePlugin_override_virtual_create(void* self, intptr_t slot);
+QStyle* QStylePlugin_virtualbase_create(void* self, struct miqt_string key);
+bool QStylePlugin_override_virtual_event(void* self, intptr_t slot);
+bool QStylePlugin_virtualbase_event(void* self, QEvent* event);
+bool QStylePlugin_override_virtual_eventFilter(void* self, intptr_t slot);
+bool QStylePlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
+bool QStylePlugin_override_virtual_timerEvent(void* self, intptr_t slot);
+void QStylePlugin_virtualbase_timerEvent(void* self, QTimerEvent* event);
+bool QStylePlugin_override_virtual_childEvent(void* self, intptr_t slot);
+void QStylePlugin_virtualbase_childEvent(void* self, QChildEvent* event);
+bool QStylePlugin_override_virtual_customEvent(void* self, intptr_t slot);
+void QStylePlugin_virtualbase_customEvent(void* self, QEvent* event);
+bool QStylePlugin_override_virtual_connectNotify(void* self, intptr_t slot);
+void QStylePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
+bool QStylePlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
+void QStylePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QStylePlugin_delete(QStylePlugin* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

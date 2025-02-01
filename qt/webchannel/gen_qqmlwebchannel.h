@@ -39,35 +39,35 @@ typedef struct QWebChannel QWebChannel;
 QQmlWebChannel* QQmlWebChannel_new();
 QQmlWebChannel* QQmlWebChannel_new2(QObject* parent);
 void QQmlWebChannel_virtbase(QQmlWebChannel* src, QWebChannel** outptr_QWebChannel);
-QMetaObject* QQmlWebChannel_MetaObject(const QQmlWebChannel* self);
-void* QQmlWebChannel_Metacast(QQmlWebChannel* self, const char* param1);
-struct miqt_string QQmlWebChannel_Tr(const char* s);
-struct miqt_string QQmlWebChannel_TrUtf8(const char* s);
-void QQmlWebChannel_RegisterObjects(QQmlWebChannel* self, struct miqt_map /* of struct miqt_string to QVariant* */  objects);
-void QQmlWebChannel_ConnectTo(QQmlWebChannel* self, QObject* transport);
-void QQmlWebChannel_DisconnectFrom(QQmlWebChannel* self, QObject* transport);
-struct miqt_string QQmlWebChannel_Tr2(const char* s, const char* c);
-struct miqt_string QQmlWebChannel_Tr3(const char* s, const char* c, int n);
-struct miqt_string QQmlWebChannel_TrUtf82(const char* s, const char* c);
-struct miqt_string QQmlWebChannel_TrUtf83(const char* s, const char* c, int n);
-bool QQmlWebChannel_override_virtual_Event(void* self, intptr_t slot);
-bool QQmlWebChannel_virtualbase_Event(void* self, QEvent* event);
-bool QQmlWebChannel_override_virtual_EventFilter(void* self, intptr_t slot);
-bool QQmlWebChannel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-bool QQmlWebChannel_override_virtual_TimerEvent(void* self, intptr_t slot);
-void QQmlWebChannel_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-bool QQmlWebChannel_override_virtual_ChildEvent(void* self, intptr_t slot);
-void QQmlWebChannel_virtualbase_ChildEvent(void* self, QChildEvent* event);
-bool QQmlWebChannel_override_virtual_CustomEvent(void* self, intptr_t slot);
-void QQmlWebChannel_virtualbase_CustomEvent(void* self, QEvent* event);
-bool QQmlWebChannel_override_virtual_ConnectNotify(void* self, intptr_t slot);
-void QQmlWebChannel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-bool QQmlWebChannel_override_virtual_DisconnectNotify(void* self, intptr_t slot);
-void QQmlWebChannel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QQmlWebChannel_Delete(QQmlWebChannel* self);
+QMetaObject* QQmlWebChannel_metaObject(const QQmlWebChannel* self);
+void* QQmlWebChannel_metacast(QQmlWebChannel* self, const char* param1);
+struct miqt_string QQmlWebChannel_tr(const char* s);
+struct miqt_string QQmlWebChannel_trUtf8(const char* s);
+void QQmlWebChannel_registerObjects(QQmlWebChannel* self, struct miqt_map /* of struct miqt_string to QVariant* */  objects);
+void QQmlWebChannel_connectTo(QQmlWebChannel* self, QObject* transport);
+void QQmlWebChannel_disconnectFrom(QQmlWebChannel* self, QObject* transport);
+struct miqt_string QQmlWebChannel_tr2(const char* s, const char* c);
+struct miqt_string QQmlWebChannel_tr3(const char* s, const char* c, int n);
+struct miqt_string QQmlWebChannel_trUtf82(const char* s, const char* c);
+struct miqt_string QQmlWebChannel_trUtf83(const char* s, const char* c, int n);
+bool QQmlWebChannel_override_virtual_event(void* self, intptr_t slot);
+bool QQmlWebChannel_virtualbase_event(void* self, QEvent* event);
+bool QQmlWebChannel_override_virtual_eventFilter(void* self, intptr_t slot);
+bool QQmlWebChannel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
+bool QQmlWebChannel_override_virtual_timerEvent(void* self, intptr_t slot);
+void QQmlWebChannel_virtualbase_timerEvent(void* self, QTimerEvent* event);
+bool QQmlWebChannel_override_virtual_childEvent(void* self, intptr_t slot);
+void QQmlWebChannel_virtualbase_childEvent(void* self, QChildEvent* event);
+bool QQmlWebChannel_override_virtual_customEvent(void* self, intptr_t slot);
+void QQmlWebChannel_virtualbase_customEvent(void* self, QEvent* event);
+bool QQmlWebChannel_override_virtual_connectNotify(void* self, intptr_t slot);
+void QQmlWebChannel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
+bool QQmlWebChannel_override_virtual_disconnectNotify(void* self, intptr_t slot);
+void QQmlWebChannel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QQmlWebChannel_delete(QQmlWebChannel* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

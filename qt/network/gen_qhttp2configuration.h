@@ -22,22 +22,22 @@ typedef struct QHttp2Configuration QHttp2Configuration;
 
 QHttp2Configuration* QHttp2Configuration_new();
 QHttp2Configuration* QHttp2Configuration_new2(QHttp2Configuration* other);
-void QHttp2Configuration_OperatorAssign(QHttp2Configuration* self, QHttp2Configuration* other);
-void QHttp2Configuration_SetServerPushEnabled(QHttp2Configuration* self, bool enable);
-bool QHttp2Configuration_ServerPushEnabled(const QHttp2Configuration* self);
-void QHttp2Configuration_SetHuffmanCompressionEnabled(QHttp2Configuration* self, bool enable);
-bool QHttp2Configuration_HuffmanCompressionEnabled(const QHttp2Configuration* self);
-bool QHttp2Configuration_SetSessionReceiveWindowSize(QHttp2Configuration* self, unsigned int size);
-unsigned int QHttp2Configuration_SessionReceiveWindowSize(const QHttp2Configuration* self);
-bool QHttp2Configuration_SetStreamReceiveWindowSize(QHttp2Configuration* self, unsigned int size);
-unsigned int QHttp2Configuration_StreamReceiveWindowSize(const QHttp2Configuration* self);
-bool QHttp2Configuration_SetMaxFrameSize(QHttp2Configuration* self, unsigned int size);
-unsigned int QHttp2Configuration_MaxFrameSize(const QHttp2Configuration* self);
-void QHttp2Configuration_Swap(QHttp2Configuration* self, QHttp2Configuration* other);
-void QHttp2Configuration_Delete(QHttp2Configuration* self);
+void QHttp2Configuration_operatorAssign(QHttp2Configuration* self, QHttp2Configuration* other);
+void QHttp2Configuration_setServerPushEnabled(QHttp2Configuration* self, bool enable);
+bool QHttp2Configuration_serverPushEnabled(const QHttp2Configuration* self);
+void QHttp2Configuration_setHuffmanCompressionEnabled(QHttp2Configuration* self, bool enable);
+bool QHttp2Configuration_huffmanCompressionEnabled(const QHttp2Configuration* self);
+bool QHttp2Configuration_setSessionReceiveWindowSize(QHttp2Configuration* self, unsigned int size);
+unsigned int QHttp2Configuration_sessionReceiveWindowSize(const QHttp2Configuration* self);
+bool QHttp2Configuration_setStreamReceiveWindowSize(QHttp2Configuration* self, unsigned int size);
+unsigned int QHttp2Configuration_streamReceiveWindowSize(const QHttp2Configuration* self);
+bool QHttp2Configuration_setMaxFrameSize(QHttp2Configuration* self, unsigned int size);
+unsigned int QHttp2Configuration_maxFrameSize(const QHttp2Configuration* self);
+void QHttp2Configuration_swap(QHttp2Configuration* self, QHttp2Configuration* other);
+void QHttp2Configuration_delete(QHttp2Configuration* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

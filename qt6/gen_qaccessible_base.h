@@ -40,30 +40,30 @@ typedef struct QObject QObject;
 typedef struct QTextCursor QTextCursor;
 #endif
 
-void QAccessible_InstallActivationObserver(QAccessible__ActivationObserver* param1);
-void QAccessible_RemoveActivationObserver(QAccessible__ActivationObserver* param1);
-QAccessibleInterface* QAccessible_QueryAccessibleInterface(QObject* param1);
-unsigned int QAccessible_UniqueId(QAccessibleInterface* iface);
-QAccessibleInterface* QAccessible_AccessibleInterface(unsigned int uniqueId);
-unsigned int QAccessible_RegisterAccessibleInterface(QAccessibleInterface* iface);
-void QAccessible_DeleteAccessibleInterface(unsigned int uniqueId);
-void QAccessible_UpdateAccessibility(QAccessibleEvent* event);
-bool QAccessible_IsActive();
-void QAccessible_SetActive(bool active);
-void QAccessible_SetRootObject(QObject* object);
-void QAccessible_Cleanup();
-struct miqt_map /* tuple of int and int */  QAccessible_QAccessibleTextBoundaryHelper(QTextCursor* cursor, int boundaryType);
-void QAccessible_Delete(QAccessible* self);
+void QAccessible_installActivationObserver(QAccessible__ActivationObserver* param1);
+void QAccessible_removeActivationObserver(QAccessible__ActivationObserver* param1);
+QAccessibleInterface* QAccessible_queryAccessibleInterface(QObject* param1);
+unsigned int QAccessible_uniqueId(QAccessibleInterface* iface);
+QAccessibleInterface* QAccessible_accessibleInterface(unsigned int uniqueId);
+unsigned int QAccessible_registerAccessibleInterface(QAccessibleInterface* iface);
+void QAccessible_deleteAccessibleInterface(unsigned int uniqueId);
+void QAccessible_updateAccessibility(QAccessibleEvent* event);
+bool QAccessible_isActive();
+void QAccessible_setActive(bool active);
+void QAccessible_setRootObject(QObject* object);
+void QAccessible_cleanup();
+struct miqt_map /* tuple of int and int */  QAccessible_qAccessibleTextBoundaryHelper(QTextCursor* cursor, int boundaryType);
+void QAccessible_delete(QAccessible* self);
 
 QAccessible__State* QAccessible__State_new();
-void QAccessible__State_Delete(QAccessible__State* self);
+void QAccessible__State_delete(QAccessible__State* self);
 
-void QAccessible__ActivationObserver_AccessibilityActiveChanged(QAccessible__ActivationObserver* self, bool active);
-void QAccessible__ActivationObserver_OperatorAssign(QAccessible__ActivationObserver* self, QAccessible__ActivationObserver* param1);
-void QAccessible__ActivationObserver_Delete(QAccessible__ActivationObserver* self);
+void QAccessible__ActivationObserver_accessibilityActiveChanged(QAccessible__ActivationObserver* self, bool active);
+void QAccessible__ActivationObserver_operatorAssign(QAccessible__ActivationObserver* self, QAccessible__ActivationObserver* param1);
+void QAccessible__ActivationObserver_delete(QAccessible__ActivationObserver* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

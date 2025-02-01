@@ -25,24 +25,24 @@ typedef struct QScriptContextInfo QScriptContextInfo;
 QScriptContextInfo* QScriptContextInfo_new(QScriptContext* context);
 QScriptContextInfo* QScriptContextInfo_new2(QScriptContextInfo* other);
 QScriptContextInfo* QScriptContextInfo_new3();
-void QScriptContextInfo_OperatorAssign(QScriptContextInfo* self, QScriptContextInfo* other);
-bool QScriptContextInfo_IsNull(const QScriptContextInfo* self);
-long long QScriptContextInfo_ScriptId(const QScriptContextInfo* self);
-struct miqt_string QScriptContextInfo_FileName(const QScriptContextInfo* self);
-int QScriptContextInfo_LineNumber(const QScriptContextInfo* self);
-int QScriptContextInfo_ColumnNumber(const QScriptContextInfo* self);
-struct miqt_string QScriptContextInfo_FunctionName(const QScriptContextInfo* self);
-int QScriptContextInfo_FunctionType(const QScriptContextInfo* self);
-struct miqt_array /* of struct miqt_string */  QScriptContextInfo_FunctionParameterNames(const QScriptContextInfo* self);
-int QScriptContextInfo_FunctionStartLineNumber(const QScriptContextInfo* self);
-int QScriptContextInfo_FunctionEndLineNumber(const QScriptContextInfo* self);
-int QScriptContextInfo_FunctionMetaIndex(const QScriptContextInfo* self);
-bool QScriptContextInfo_OperatorEqual(const QScriptContextInfo* self, QScriptContextInfo* other);
-bool QScriptContextInfo_OperatorNotEqual(const QScriptContextInfo* self, QScriptContextInfo* other);
-void QScriptContextInfo_Delete(QScriptContextInfo* self);
+void QScriptContextInfo_operatorAssign(QScriptContextInfo* self, QScriptContextInfo* other);
+bool QScriptContextInfo_isNull(const QScriptContextInfo* self);
+long long QScriptContextInfo_scriptId(const QScriptContextInfo* self);
+struct miqt_string QScriptContextInfo_fileName(const QScriptContextInfo* self);
+int QScriptContextInfo_lineNumber(const QScriptContextInfo* self);
+int QScriptContextInfo_columnNumber(const QScriptContextInfo* self);
+struct miqt_string QScriptContextInfo_functionName(const QScriptContextInfo* self);
+int QScriptContextInfo_functionType(const QScriptContextInfo* self);
+struct miqt_array /* of struct miqt_string */  QScriptContextInfo_functionParameterNames(const QScriptContextInfo* self);
+int QScriptContextInfo_functionStartLineNumber(const QScriptContextInfo* self);
+int QScriptContextInfo_functionEndLineNumber(const QScriptContextInfo* self);
+int QScriptContextInfo_functionMetaIndex(const QScriptContextInfo* self);
+bool QScriptContextInfo_operatorEqual(const QScriptContextInfo* self, QScriptContextInfo* other);
+bool QScriptContextInfo_operatorNotEqual(const QScriptContextInfo* self, QScriptContextInfo* other);
+void QScriptContextInfo_delete(QScriptContextInfo* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

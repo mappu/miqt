@@ -63,19 +63,19 @@ func NewQSortFilterProxyModel2(parent *QObject) *QSortFilterProxyModel {
 }
 
 func (this *QSortFilterProxyModel) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QSortFilterProxyModel_MetaObject(this.h))
+	return newQMetaObject(C.QSortFilterProxyModel_metaObject(this.h))
 }
 
 func (this *QSortFilterProxyModel) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QSortFilterProxyModel_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QSortFilterProxyModel_metacast(this.h, param1_Cstring))
 }
 
 func QSortFilterProxyModel_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QSortFilterProxyModel_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QSortFilterProxyModel_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -84,122 +84,122 @@ func QSortFilterProxyModel_Tr(s string) string {
 func QSortFilterProxyModel_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QSortFilterProxyModel_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QSortFilterProxyModel_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSortFilterProxyModel) SetSourceModel(sourceModel *QAbstractItemModel) {
-	C.QSortFilterProxyModel_SetSourceModel(this.h, sourceModel.cPointer())
+	C.QSortFilterProxyModel_setSourceModel(this.h, sourceModel.cPointer())
 }
 
 func (this *QSortFilterProxyModel) MapToSource(proxyIndex *QModelIndex) *QModelIndex {
-	_goptr := newQModelIndex(C.QSortFilterProxyModel_MapToSource(this.h, proxyIndex.cPointer()))
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_mapToSource(this.h, proxyIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) MapFromSource(sourceIndex *QModelIndex) *QModelIndex {
-	_goptr := newQModelIndex(C.QSortFilterProxyModel_MapFromSource(this.h, sourceIndex.cPointer()))
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_mapFromSource(this.h, sourceIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) MapSelectionToSource(proxySelection *QItemSelection) *QItemSelection {
-	_goptr := newQItemSelection(C.QSortFilterProxyModel_MapSelectionToSource(this.h, proxySelection.cPointer()))
+	_goptr := newQItemSelection(C.QSortFilterProxyModel_mapSelectionToSource(this.h, proxySelection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) MapSelectionFromSource(sourceSelection *QItemSelection) *QItemSelection {
-	_goptr := newQItemSelection(C.QSortFilterProxyModel_MapSelectionFromSource(this.h, sourceSelection.cPointer()))
+	_goptr := newQItemSelection(C.QSortFilterProxyModel_mapSelectionFromSource(this.h, sourceSelection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) FilterRegExp() *QRegExp {
-	_goptr := newQRegExp(C.QSortFilterProxyModel_FilterRegExp(this.h))
+	_goptr := newQRegExp(C.QSortFilterProxyModel_filterRegExp(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) FilterRegularExpression() *QRegularExpression {
-	_goptr := newQRegularExpression(C.QSortFilterProxyModel_FilterRegularExpression(this.h))
+	_goptr := newQRegularExpression(C.QSortFilterProxyModel_filterRegularExpression(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) FilterKeyColumn() int {
-	return (int)(C.QSortFilterProxyModel_FilterKeyColumn(this.h))
+	return (int)(C.QSortFilterProxyModel_filterKeyColumn(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetFilterKeyColumn(column int) {
-	C.QSortFilterProxyModel_SetFilterKeyColumn(this.h, (C.int)(column))
+	C.QSortFilterProxyModel_setFilterKeyColumn(this.h, (C.int)(column))
 }
 
 func (this *QSortFilterProxyModel) FilterCaseSensitivity() CaseSensitivity {
-	return (CaseSensitivity)(C.QSortFilterProxyModel_FilterCaseSensitivity(this.h))
+	return (CaseSensitivity)(C.QSortFilterProxyModel_filterCaseSensitivity(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetFilterCaseSensitivity(cs CaseSensitivity) {
-	C.QSortFilterProxyModel_SetFilterCaseSensitivity(this.h, (C.int)(cs))
+	C.QSortFilterProxyModel_setFilterCaseSensitivity(this.h, (C.int)(cs))
 }
 
 func (this *QSortFilterProxyModel) SortCaseSensitivity() CaseSensitivity {
-	return (CaseSensitivity)(C.QSortFilterProxyModel_SortCaseSensitivity(this.h))
+	return (CaseSensitivity)(C.QSortFilterProxyModel_sortCaseSensitivity(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetSortCaseSensitivity(cs CaseSensitivity) {
-	C.QSortFilterProxyModel_SetSortCaseSensitivity(this.h, (C.int)(cs))
+	C.QSortFilterProxyModel_setSortCaseSensitivity(this.h, (C.int)(cs))
 }
 
 func (this *QSortFilterProxyModel) IsSortLocaleAware() bool {
-	return (bool)(C.QSortFilterProxyModel_IsSortLocaleAware(this.h))
+	return (bool)(C.QSortFilterProxyModel_isSortLocaleAware(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetSortLocaleAware(on bool) {
-	C.QSortFilterProxyModel_SetSortLocaleAware(this.h, (C.bool)(on))
+	C.QSortFilterProxyModel_setSortLocaleAware(this.h, (C.bool)(on))
 }
 
 func (this *QSortFilterProxyModel) SortColumn() int {
-	return (int)(C.QSortFilterProxyModel_SortColumn(this.h))
+	return (int)(C.QSortFilterProxyModel_sortColumn(this.h))
 }
 
 func (this *QSortFilterProxyModel) SortOrder() SortOrder {
-	return (SortOrder)(C.QSortFilterProxyModel_SortOrder(this.h))
+	return (SortOrder)(C.QSortFilterProxyModel_sortOrder(this.h))
 }
 
 func (this *QSortFilterProxyModel) DynamicSortFilter() bool {
-	return (bool)(C.QSortFilterProxyModel_DynamicSortFilter(this.h))
+	return (bool)(C.QSortFilterProxyModel_dynamicSortFilter(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetDynamicSortFilter(enable bool) {
-	C.QSortFilterProxyModel_SetDynamicSortFilter(this.h, (C.bool)(enable))
+	C.QSortFilterProxyModel_setDynamicSortFilter(this.h, (C.bool)(enable))
 }
 
 func (this *QSortFilterProxyModel) SortRole() int {
-	return (int)(C.QSortFilterProxyModel_SortRole(this.h))
+	return (int)(C.QSortFilterProxyModel_sortRole(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetSortRole(role int) {
-	C.QSortFilterProxyModel_SetSortRole(this.h, (C.int)(role))
+	C.QSortFilterProxyModel_setSortRole(this.h, (C.int)(role))
 }
 
 func (this *QSortFilterProxyModel) FilterRole() int {
-	return (int)(C.QSortFilterProxyModel_FilterRole(this.h))
+	return (int)(C.QSortFilterProxyModel_filterRole(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetFilterRole(role int) {
-	C.QSortFilterProxyModel_SetFilterRole(this.h, (C.int)(role))
+	C.QSortFilterProxyModel_setFilterRole(this.h, (C.int)(role))
 }
 
 func (this *QSortFilterProxyModel) IsRecursiveFilteringEnabled() bool {
-	return (bool)(C.QSortFilterProxyModel_IsRecursiveFilteringEnabled(this.h))
+	return (bool)(C.QSortFilterProxyModel_isRecursiveFilteringEnabled(this.h))
 }
 
 func (this *QSortFilterProxyModel) SetRecursiveFilteringEnabled(recursive bool) {
-	C.QSortFilterProxyModel_SetRecursiveFilteringEnabled(this.h, (C.bool)(recursive))
+	C.QSortFilterProxyModel_setRecursiveFilteringEnabled(this.h, (C.bool)(recursive))
 }
 
 func (this *QSortFilterProxyModel) SetFilterRegExp(pattern string) {
@@ -207,11 +207,11 @@ func (this *QSortFilterProxyModel) SetFilterRegExp(pattern string) {
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	C.QSortFilterProxyModel_SetFilterRegExp(this.h, pattern_ms)
+	C.QSortFilterProxyModel_setFilterRegExp(this.h, pattern_ms)
 }
 
 func (this *QSortFilterProxyModel) SetFilterRegExpWithRegExp(regExp *QRegExp) {
-	C.QSortFilterProxyModel_SetFilterRegExpWithRegExp(this.h, regExp.cPointer())
+	C.QSortFilterProxyModel_setFilterRegExpWithRegExp(this.h, regExp.cPointer())
 }
 
 func (this *QSortFilterProxyModel) SetFilterRegularExpression(pattern string) {
@@ -219,11 +219,11 @@ func (this *QSortFilterProxyModel) SetFilterRegularExpression(pattern string) {
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	C.QSortFilterProxyModel_SetFilterRegularExpression(this.h, pattern_ms)
+	C.QSortFilterProxyModel_setFilterRegularExpression(this.h, pattern_ms)
 }
 
 func (this *QSortFilterProxyModel) SetFilterRegularExpressionWithRegularExpression(regularExpression *QRegularExpression) {
-	C.QSortFilterProxyModel_SetFilterRegularExpressionWithRegularExpression(this.h, regularExpression.cPointer())
+	C.QSortFilterProxyModel_setFilterRegularExpressionWithRegularExpression(this.h, regularExpression.cPointer())
 }
 
 func (this *QSortFilterProxyModel) SetFilterWildcard(pattern string) {
@@ -231,7 +231,7 @@ func (this *QSortFilterProxyModel) SetFilterWildcard(pattern string) {
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	C.QSortFilterProxyModel_SetFilterWildcard(this.h, pattern_ms)
+	C.QSortFilterProxyModel_setFilterWildcard(this.h, pattern_ms)
 }
 
 func (this *QSortFilterProxyModel) SetFilterFixedString(pattern string) {
@@ -239,65 +239,65 @@ func (this *QSortFilterProxyModel) SetFilterFixedString(pattern string) {
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	C.QSortFilterProxyModel_SetFilterFixedString(this.h, pattern_ms)
+	C.QSortFilterProxyModel_setFilterFixedString(this.h, pattern_ms)
 }
 
 func (this *QSortFilterProxyModel) Clear() {
-	C.QSortFilterProxyModel_Clear(this.h)
+	C.QSortFilterProxyModel_clear(this.h)
 }
 
 func (this *QSortFilterProxyModel) Invalidate() {
-	C.QSortFilterProxyModel_Invalidate(this.h)
+	C.QSortFilterProxyModel_invalidate(this.h)
 }
 
 func (this *QSortFilterProxyModel) Index(row int, column int, parent *QModelIndex) *QModelIndex {
-	_goptr := newQModelIndex(C.QSortFilterProxyModel_Index(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_index(this.h, (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) Parent(child *QModelIndex) *QModelIndex {
-	_goptr := newQModelIndex(C.QSortFilterProxyModel_Parent(this.h, child.cPointer()))
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_parent(this.h, child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	_goptr := newQModelIndex(C.QSortFilterProxyModel_Sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) RowCount(parent *QModelIndex) int {
-	return (int)(C.QSortFilterProxyModel_RowCount(this.h, parent.cPointer()))
+	return (int)(C.QSortFilterProxyModel_rowCount(this.h, parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) ColumnCount(parent *QModelIndex) int {
-	return (int)(C.QSortFilterProxyModel_ColumnCount(this.h, parent.cPointer()))
+	return (int)(C.QSortFilterProxyModel_columnCount(this.h, parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) HasChildren(parent *QModelIndex) bool {
-	return (bool)(C.QSortFilterProxyModel_HasChildren(this.h, parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_hasChildren(this.h, parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) Data(index *QModelIndex, role int) *QVariant {
-	_goptr := newQVariant(C.QSortFilterProxyModel_Data(this.h, index.cPointer(), (C.int)(role)))
+	_goptr := newQVariant(C.QSortFilterProxyModel_data(this.h, index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) SetData(index *QModelIndex, value *QVariant, role int) bool {
-	return (bool)(C.QSortFilterProxyModel_SetData(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
+	return (bool)(C.QSortFilterProxyModel_setData(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QSortFilterProxyModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
-	_goptr := newQVariant(C.QSortFilterProxyModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role)))
+	_goptr := newQVariant(C.QSortFilterProxyModel_headerData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
-	return (bool)(C.QSortFilterProxyModel_SetHeaderData(this.h, (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
+	return (bool)(C.QSortFilterProxyModel_setHeaderData(this.h, (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QSortFilterProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
@@ -307,49 +307,49 @@ func (this *QSortFilterProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	return newQMimeData(C.QSortFilterProxyModel_MimeData(this.h, indexes_ma))
+	return newQMimeData(C.QSortFilterProxyModel_mimeData(this.h, indexes_ma))
 }
 
 func (this *QSortFilterProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	return (bool)(C.QSortFilterProxyModel_DropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_dropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) InsertRows(row int, count int, parent *QModelIndex) bool {
-	return (bool)(C.QSortFilterProxyModel_InsertRows(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_insertRows(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) InsertColumns(column int, count int, parent *QModelIndex) bool {
-	return (bool)(C.QSortFilterProxyModel_InsertColumns(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_insertColumns(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) RemoveRows(row int, count int, parent *QModelIndex) bool {
-	return (bool)(C.QSortFilterProxyModel_RemoveRows(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_removeRows(this.h, (C.int)(row), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) RemoveColumns(column int, count int, parent *QModelIndex) bool {
-	return (bool)(C.QSortFilterProxyModel_RemoveColumns(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_removeColumns(this.h, (C.int)(column), (C.int)(count), parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) FetchMore(parent *QModelIndex) {
-	C.QSortFilterProxyModel_FetchMore(this.h, parent.cPointer())
+	C.QSortFilterProxyModel_fetchMore(this.h, parent.cPointer())
 }
 
 func (this *QSortFilterProxyModel) CanFetchMore(parent *QModelIndex) bool {
-	return (bool)(C.QSortFilterProxyModel_CanFetchMore(this.h, parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_canFetchMore(this.h, parent.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) Flags(index *QModelIndex) ItemFlag {
-	return (ItemFlag)(C.QSortFilterProxyModel_Flags(this.h, index.cPointer()))
+	return (ItemFlag)(C.QSortFilterProxyModel_flags(this.h, index.cPointer()))
 }
 
 func (this *QSortFilterProxyModel) Buddy(index *QModelIndex) *QModelIndex {
-	_goptr := newQModelIndex(C.QSortFilterProxyModel_Buddy(this.h, index.cPointer()))
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_buddy(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
-	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_Match(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
+	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_match(this.h, start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -361,17 +361,17 @@ func (this *QSortFilterProxyModel) Match(start *QModelIndex, role int, value *QV
 }
 
 func (this *QSortFilterProxyModel) Span(index *QModelIndex) *QSize {
-	_goptr := newQSize(C.QSortFilterProxyModel_Span(this.h, index.cPointer()))
+	_goptr := newQSize(C.QSortFilterProxyModel_span(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSortFilterProxyModel) Sort(column int, order SortOrder) {
-	C.QSortFilterProxyModel_Sort(this.h, (C.int)(column), (C.int)(order))
+	C.QSortFilterProxyModel_sort(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QSortFilterProxyModel) MimeTypes() []string {
-	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_MimeTypes(this.h)
+	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_mimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -384,18 +384,18 @@ func (this *QSortFilterProxyModel) MimeTypes() []string {
 }
 
 func (this *QSortFilterProxyModel) SupportedDropActions() DropAction {
-	return (DropAction)(C.QSortFilterProxyModel_SupportedDropActions(this.h))
+	return (DropAction)(C.QSortFilterProxyModel_supportedDropActions(this.h))
 }
 
 func (this *QSortFilterProxyModel) DynamicSortFilterChanged(dynamicSortFilter bool) {
-	C.QSortFilterProxyModel_DynamicSortFilterChanged(this.h, (C.bool)(dynamicSortFilter))
+	C.QSortFilterProxyModel_dynamicSortFilterChanged(this.h, (C.bool)(dynamicSortFilter))
 }
 func (this *QSortFilterProxyModel) OnDynamicSortFilterChanged(slot func(dynamicSortFilter bool)) {
-	C.QSortFilterProxyModel_connect_DynamicSortFilterChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QSortFilterProxyModel_connect_dynamicSortFilterChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_DynamicSortFilterChanged
-func miqt_exec_callback_QSortFilterProxyModel_DynamicSortFilterChanged(cb C.intptr_t, dynamicSortFilter C.bool) {
+//export miqt_exec_callback_QSortFilterProxyModel_dynamicSortFilterChanged
+func miqt_exec_callback_QSortFilterProxyModel_dynamicSortFilterChanged(cb C.intptr_t, dynamicSortFilter C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(dynamicSortFilter bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -408,14 +408,14 @@ func miqt_exec_callback_QSortFilterProxyModel_DynamicSortFilterChanged(cb C.intp
 }
 
 func (this *QSortFilterProxyModel) FilterCaseSensitivityChanged(filterCaseSensitivity CaseSensitivity) {
-	C.QSortFilterProxyModel_FilterCaseSensitivityChanged(this.h, (C.int)(filterCaseSensitivity))
+	C.QSortFilterProxyModel_filterCaseSensitivityChanged(this.h, (C.int)(filterCaseSensitivity))
 }
 func (this *QSortFilterProxyModel) OnFilterCaseSensitivityChanged(slot func(filterCaseSensitivity CaseSensitivity)) {
-	C.QSortFilterProxyModel_connect_FilterCaseSensitivityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QSortFilterProxyModel_connect_filterCaseSensitivityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_FilterCaseSensitivityChanged
-func miqt_exec_callback_QSortFilterProxyModel_FilterCaseSensitivityChanged(cb C.intptr_t, filterCaseSensitivity C.int) {
+//export miqt_exec_callback_QSortFilterProxyModel_filterCaseSensitivityChanged
+func miqt_exec_callback_QSortFilterProxyModel_filterCaseSensitivityChanged(cb C.intptr_t, filterCaseSensitivity C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(filterCaseSensitivity CaseSensitivity))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -428,14 +428,14 @@ func miqt_exec_callback_QSortFilterProxyModel_FilterCaseSensitivityChanged(cb C.
 }
 
 func (this *QSortFilterProxyModel) SortCaseSensitivityChanged(sortCaseSensitivity CaseSensitivity) {
-	C.QSortFilterProxyModel_SortCaseSensitivityChanged(this.h, (C.int)(sortCaseSensitivity))
+	C.QSortFilterProxyModel_sortCaseSensitivityChanged(this.h, (C.int)(sortCaseSensitivity))
 }
 func (this *QSortFilterProxyModel) OnSortCaseSensitivityChanged(slot func(sortCaseSensitivity CaseSensitivity)) {
-	C.QSortFilterProxyModel_connect_SortCaseSensitivityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QSortFilterProxyModel_connect_sortCaseSensitivityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_SortCaseSensitivityChanged
-func miqt_exec_callback_QSortFilterProxyModel_SortCaseSensitivityChanged(cb C.intptr_t, sortCaseSensitivity C.int) {
+//export miqt_exec_callback_QSortFilterProxyModel_sortCaseSensitivityChanged
+func miqt_exec_callback_QSortFilterProxyModel_sortCaseSensitivityChanged(cb C.intptr_t, sortCaseSensitivity C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(sortCaseSensitivity CaseSensitivity))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -448,14 +448,14 @@ func miqt_exec_callback_QSortFilterProxyModel_SortCaseSensitivityChanged(cb C.in
 }
 
 func (this *QSortFilterProxyModel) SortLocaleAwareChanged(sortLocaleAware bool) {
-	C.QSortFilterProxyModel_SortLocaleAwareChanged(this.h, (C.bool)(sortLocaleAware))
+	C.QSortFilterProxyModel_sortLocaleAwareChanged(this.h, (C.bool)(sortLocaleAware))
 }
 func (this *QSortFilterProxyModel) OnSortLocaleAwareChanged(slot func(sortLocaleAware bool)) {
-	C.QSortFilterProxyModel_connect_SortLocaleAwareChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QSortFilterProxyModel_connect_sortLocaleAwareChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_SortLocaleAwareChanged
-func miqt_exec_callback_QSortFilterProxyModel_SortLocaleAwareChanged(cb C.intptr_t, sortLocaleAware C.bool) {
+//export miqt_exec_callback_QSortFilterProxyModel_sortLocaleAwareChanged
+func miqt_exec_callback_QSortFilterProxyModel_sortLocaleAwareChanged(cb C.intptr_t, sortLocaleAware C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(sortLocaleAware bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -468,14 +468,14 @@ func miqt_exec_callback_QSortFilterProxyModel_SortLocaleAwareChanged(cb C.intptr
 }
 
 func (this *QSortFilterProxyModel) SortRoleChanged(sortRole int) {
-	C.QSortFilterProxyModel_SortRoleChanged(this.h, (C.int)(sortRole))
+	C.QSortFilterProxyModel_sortRoleChanged(this.h, (C.int)(sortRole))
 }
 func (this *QSortFilterProxyModel) OnSortRoleChanged(slot func(sortRole int)) {
-	C.QSortFilterProxyModel_connect_SortRoleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QSortFilterProxyModel_connect_sortRoleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_SortRoleChanged
-func miqt_exec_callback_QSortFilterProxyModel_SortRoleChanged(cb C.intptr_t, sortRole C.int) {
+//export miqt_exec_callback_QSortFilterProxyModel_sortRoleChanged
+func miqt_exec_callback_QSortFilterProxyModel_sortRoleChanged(cb C.intptr_t, sortRole C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(sortRole int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -488,14 +488,14 @@ func miqt_exec_callback_QSortFilterProxyModel_SortRoleChanged(cb C.intptr_t, sor
 }
 
 func (this *QSortFilterProxyModel) FilterRoleChanged(filterRole int) {
-	C.QSortFilterProxyModel_FilterRoleChanged(this.h, (C.int)(filterRole))
+	C.QSortFilterProxyModel_filterRoleChanged(this.h, (C.int)(filterRole))
 }
 func (this *QSortFilterProxyModel) OnFilterRoleChanged(slot func(filterRole int)) {
-	C.QSortFilterProxyModel_connect_FilterRoleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QSortFilterProxyModel_connect_filterRoleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_FilterRoleChanged
-func miqt_exec_callback_QSortFilterProxyModel_FilterRoleChanged(cb C.intptr_t, filterRole C.int) {
+//export miqt_exec_callback_QSortFilterProxyModel_filterRoleChanged
+func miqt_exec_callback_QSortFilterProxyModel_filterRoleChanged(cb C.intptr_t, filterRole C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(filterRole int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -508,14 +508,14 @@ func miqt_exec_callback_QSortFilterProxyModel_FilterRoleChanged(cb C.intptr_t, f
 }
 
 func (this *QSortFilterProxyModel) RecursiveFilteringEnabledChanged(recursiveFilteringEnabled bool) {
-	C.QSortFilterProxyModel_RecursiveFilteringEnabledChanged(this.h, (C.bool)(recursiveFilteringEnabled))
+	C.QSortFilterProxyModel_recursiveFilteringEnabledChanged(this.h, (C.bool)(recursiveFilteringEnabled))
 }
 func (this *QSortFilterProxyModel) OnRecursiveFilteringEnabledChanged(slot func(recursiveFilteringEnabled bool)) {
-	C.QSortFilterProxyModel_connect_RecursiveFilteringEnabledChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QSortFilterProxyModel_connect_recursiveFilteringEnabledChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_RecursiveFilteringEnabledChanged
-func miqt_exec_callback_QSortFilterProxyModel_RecursiveFilteringEnabledChanged(cb C.intptr_t, recursiveFilteringEnabled C.bool) {
+//export miqt_exec_callback_QSortFilterProxyModel_recursiveFilteringEnabledChanged
+func miqt_exec_callback_QSortFilterProxyModel_recursiveFilteringEnabledChanged(cb C.intptr_t, recursiveFilteringEnabled C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(recursiveFilteringEnabled bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -532,7 +532,7 @@ func QSortFilterProxyModel_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSortFilterProxyModel_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QSortFilterProxyModel_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -543,7 +543,7 @@ func QSortFilterProxyModel_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSortFilterProxyModel_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QSortFilterProxyModel_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -554,7 +554,7 @@ func QSortFilterProxyModel_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSortFilterProxyModel_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QSortFilterProxyModel_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -565,7 +565,7 @@ func QSortFilterProxyModel_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSortFilterProxyModel_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QSortFilterProxyModel_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -573,18 +573,18 @@ func QSortFilterProxyModel_TrUtf83(s string, c string, n int) string {
 
 func (this *QSortFilterProxyModel) callVirtualBase_SetSourceModel(sourceModel *QAbstractItemModel) {
 
-	C.QSortFilterProxyModel_virtualbase_SetSourceModel(unsafe.Pointer(this.h), sourceModel.cPointer())
+	C.QSortFilterProxyModel_virtualbase_setSourceModel(unsafe.Pointer(this.h), sourceModel.cPointer())
 
 }
-func (this *QSortFilterProxyModel) OnSetSourceModel(slot func(super func(sourceModel *QAbstractItemModel), sourceModel *QAbstractItemModel)) {
-	ok := C.QSortFilterProxyModel_override_virtual_SetSourceModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnsetSourceModel(slot func(super func(sourceModel *QAbstractItemModel), sourceModel *QAbstractItemModel)) {
+	ok := C.QSortFilterProxyModel_override_virtual_setSourceModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_SetSourceModel
-func miqt_exec_callback_QSortFilterProxyModel_SetSourceModel(self *C.QSortFilterProxyModel, cb C.intptr_t, sourceModel *C.QAbstractItemModel) {
+//export miqt_exec_callback_QSortFilterProxyModel_setSourceModel
+func miqt_exec_callback_QSortFilterProxyModel_setSourceModel(self *C.QSortFilterProxyModel, cb C.intptr_t, sourceModel *C.QAbstractItemModel) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceModel *QAbstractItemModel), sourceModel *QAbstractItemModel))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -599,20 +599,20 @@ func miqt_exec_callback_QSortFilterProxyModel_SetSourceModel(self *C.QSortFilter
 
 func (this *QSortFilterProxyModel) callVirtualBase_MapToSource(proxyIndex *QModelIndex) *QModelIndex {
 
-	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_MapToSource(unsafe.Pointer(this.h), proxyIndex.cPointer()))
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_mapToSource(unsafe.Pointer(this.h), proxyIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSortFilterProxyModel) OnMapToSource(slot func(super func(proxyIndex *QModelIndex) *QModelIndex, proxyIndex *QModelIndex) *QModelIndex) {
-	ok := C.QSortFilterProxyModel_override_virtual_MapToSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnmapToSource(slot func(super func(proxyIndex *QModelIndex) *QModelIndex, proxyIndex *QModelIndex) *QModelIndex) {
+	ok := C.QSortFilterProxyModel_override_virtual_mapToSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_MapToSource
-func miqt_exec_callback_QSortFilterProxyModel_MapToSource(self *C.QSortFilterProxyModel, cb C.intptr_t, proxyIndex *C.QModelIndex) *C.QModelIndex {
+//export miqt_exec_callback_QSortFilterProxyModel_mapToSource
+func miqt_exec_callback_QSortFilterProxyModel_mapToSource(self *C.QSortFilterProxyModel, cb C.intptr_t, proxyIndex *C.QModelIndex) *C.QModelIndex {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(proxyIndex *QModelIndex) *QModelIndex, proxyIndex *QModelIndex) *QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -629,20 +629,20 @@ func miqt_exec_callback_QSortFilterProxyModel_MapToSource(self *C.QSortFilterPro
 
 func (this *QSortFilterProxyModel) callVirtualBase_MapFromSource(sourceIndex *QModelIndex) *QModelIndex {
 
-	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_MapFromSource(unsafe.Pointer(this.h), sourceIndex.cPointer()))
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_mapFromSource(unsafe.Pointer(this.h), sourceIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSortFilterProxyModel) OnMapFromSource(slot func(super func(sourceIndex *QModelIndex) *QModelIndex, sourceIndex *QModelIndex) *QModelIndex) {
-	ok := C.QSortFilterProxyModel_override_virtual_MapFromSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnmapFromSource(slot func(super func(sourceIndex *QModelIndex) *QModelIndex, sourceIndex *QModelIndex) *QModelIndex) {
+	ok := C.QSortFilterProxyModel_override_virtual_mapFromSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_MapFromSource
-func miqt_exec_callback_QSortFilterProxyModel_MapFromSource(self *C.QSortFilterProxyModel, cb C.intptr_t, sourceIndex *C.QModelIndex) *C.QModelIndex {
+//export miqt_exec_callback_QSortFilterProxyModel_mapFromSource
+func miqt_exec_callback_QSortFilterProxyModel_mapFromSource(self *C.QSortFilterProxyModel, cb C.intptr_t, sourceIndex *C.QModelIndex) *C.QModelIndex {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceIndex *QModelIndex) *QModelIndex, sourceIndex *QModelIndex) *QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -659,20 +659,20 @@ func miqt_exec_callback_QSortFilterProxyModel_MapFromSource(self *C.QSortFilterP
 
 func (this *QSortFilterProxyModel) callVirtualBase_MapSelectionToSource(proxySelection *QItemSelection) *QItemSelection {
 
-	_goptr := newQItemSelection(C.QSortFilterProxyModel_virtualbase_MapSelectionToSource(unsafe.Pointer(this.h), proxySelection.cPointer()))
+	_goptr := newQItemSelection(C.QSortFilterProxyModel_virtualbase_mapSelectionToSource(unsafe.Pointer(this.h), proxySelection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSortFilterProxyModel) OnMapSelectionToSource(slot func(super func(proxySelection *QItemSelection) *QItemSelection, proxySelection *QItemSelection) *QItemSelection) {
-	ok := C.QSortFilterProxyModel_override_virtual_MapSelectionToSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnmapSelectionToSource(slot func(super func(proxySelection *QItemSelection) *QItemSelection, proxySelection *QItemSelection) *QItemSelection) {
+	ok := C.QSortFilterProxyModel_override_virtual_mapSelectionToSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_MapSelectionToSource
-func miqt_exec_callback_QSortFilterProxyModel_MapSelectionToSource(self *C.QSortFilterProxyModel, cb C.intptr_t, proxySelection *C.QItemSelection) *C.QItemSelection {
+//export miqt_exec_callback_QSortFilterProxyModel_mapSelectionToSource
+func miqt_exec_callback_QSortFilterProxyModel_mapSelectionToSource(self *C.QSortFilterProxyModel, cb C.intptr_t, proxySelection *C.QItemSelection) *C.QItemSelection {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(proxySelection *QItemSelection) *QItemSelection, proxySelection *QItemSelection) *QItemSelection)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -689,20 +689,20 @@ func miqt_exec_callback_QSortFilterProxyModel_MapSelectionToSource(self *C.QSort
 
 func (this *QSortFilterProxyModel) callVirtualBase_MapSelectionFromSource(sourceSelection *QItemSelection) *QItemSelection {
 
-	_goptr := newQItemSelection(C.QSortFilterProxyModel_virtualbase_MapSelectionFromSource(unsafe.Pointer(this.h), sourceSelection.cPointer()))
+	_goptr := newQItemSelection(C.QSortFilterProxyModel_virtualbase_mapSelectionFromSource(unsafe.Pointer(this.h), sourceSelection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSortFilterProxyModel) OnMapSelectionFromSource(slot func(super func(sourceSelection *QItemSelection) *QItemSelection, sourceSelection *QItemSelection) *QItemSelection) {
-	ok := C.QSortFilterProxyModel_override_virtual_MapSelectionFromSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnmapSelectionFromSource(slot func(super func(sourceSelection *QItemSelection) *QItemSelection, sourceSelection *QItemSelection) *QItemSelection) {
+	ok := C.QSortFilterProxyModel_override_virtual_mapSelectionFromSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_MapSelectionFromSource
-func miqt_exec_callback_QSortFilterProxyModel_MapSelectionFromSource(self *C.QSortFilterProxyModel, cb C.intptr_t, sourceSelection *C.QItemSelection) *C.QItemSelection {
+//export miqt_exec_callback_QSortFilterProxyModel_mapSelectionFromSource
+func miqt_exec_callback_QSortFilterProxyModel_mapSelectionFromSource(self *C.QSortFilterProxyModel, cb C.intptr_t, sourceSelection *C.QItemSelection) *C.QItemSelection {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceSelection *QItemSelection) *QItemSelection, sourceSelection *QItemSelection) *QItemSelection)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -719,18 +719,18 @@ func miqt_exec_callback_QSortFilterProxyModel_MapSelectionFromSource(self *C.QSo
 
 func (this *QSortFilterProxyModel) callVirtualBase_FilterAcceptsRow(source_row int, source_parent *QModelIndex) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_FilterAcceptsRow(unsafe.Pointer(this.h), (C.int)(source_row), source_parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_filterAcceptsRow(unsafe.Pointer(this.h), (C.int)(source_row), source_parent.cPointer()))
 
 }
-func (this *QSortFilterProxyModel) OnFilterAcceptsRow(slot func(super func(source_row int, source_parent *QModelIndex) bool, source_row int, source_parent *QModelIndex) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_FilterAcceptsRow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnfilterAcceptsRow(slot func(super func(source_row int, source_parent *QModelIndex) bool, source_row int, source_parent *QModelIndex) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_filterAcceptsRow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsRow
-func miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsRow(self *C.QSortFilterProxyModel, cb C.intptr_t, source_row C.int, source_parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_filterAcceptsRow
+func miqt_exec_callback_QSortFilterProxyModel_filterAcceptsRow(self *C.QSortFilterProxyModel, cb C.intptr_t, source_row C.int, source_parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(source_row int, source_parent *QModelIndex) bool, source_row int, source_parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -749,18 +749,18 @@ func miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsRow(self *C.QSortFilt
 
 func (this *QSortFilterProxyModel) callVirtualBase_FilterAcceptsColumn(source_column int, source_parent *QModelIndex) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_FilterAcceptsColumn(unsafe.Pointer(this.h), (C.int)(source_column), source_parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_filterAcceptsColumn(unsafe.Pointer(this.h), (C.int)(source_column), source_parent.cPointer()))
 
 }
-func (this *QSortFilterProxyModel) OnFilterAcceptsColumn(slot func(super func(source_column int, source_parent *QModelIndex) bool, source_column int, source_parent *QModelIndex) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_FilterAcceptsColumn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnfilterAcceptsColumn(slot func(super func(source_column int, source_parent *QModelIndex) bool, source_column int, source_parent *QModelIndex) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_filterAcceptsColumn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsColumn
-func miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsColumn(self *C.QSortFilterProxyModel, cb C.intptr_t, source_column C.int, source_parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_filterAcceptsColumn
+func miqt_exec_callback_QSortFilterProxyModel_filterAcceptsColumn(self *C.QSortFilterProxyModel, cb C.intptr_t, source_column C.int, source_parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(source_column int, source_parent *QModelIndex) bool, source_column int, source_parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -779,18 +779,18 @@ func miqt_exec_callback_QSortFilterProxyModel_FilterAcceptsColumn(self *C.QSortF
 
 func (this *QSortFilterProxyModel) callVirtualBase_LessThan(source_left *QModelIndex, source_right *QModelIndex) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_LessThan(unsafe.Pointer(this.h), source_left.cPointer(), source_right.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_lessThan(unsafe.Pointer(this.h), source_left.cPointer(), source_right.cPointer()))
 
 }
-func (this *QSortFilterProxyModel) OnLessThan(slot func(super func(source_left *QModelIndex, source_right *QModelIndex) bool, source_left *QModelIndex, source_right *QModelIndex) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_LessThan(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnlessThan(slot func(super func(source_left *QModelIndex, source_right *QModelIndex) bool, source_left *QModelIndex, source_right *QModelIndex) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_lessThan(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_LessThan
-func miqt_exec_callback_QSortFilterProxyModel_LessThan(self *C.QSortFilterProxyModel, cb C.intptr_t, source_left *C.QModelIndex, source_right *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_lessThan
+func miqt_exec_callback_QSortFilterProxyModel_lessThan(self *C.QSortFilterProxyModel, cb C.intptr_t, source_left *C.QModelIndex, source_right *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(source_left *QModelIndex, source_right *QModelIndex) bool, source_left *QModelIndex, source_right *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -809,20 +809,20 @@ func miqt_exec_callback_QSortFilterProxyModel_LessThan(self *C.QSortFilterProxyM
 
 func (this *QSortFilterProxyModel) callVirtualBase_Index(row int, column int, parent *QModelIndex) *QModelIndex {
 
-	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_Index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer()))
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_index(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSortFilterProxyModel) OnIndex(slot func(super func(row int, column int, parent *QModelIndex) *QModelIndex, row int, column int, parent *QModelIndex) *QModelIndex) {
-	ok := C.QSortFilterProxyModel_override_virtual_Index(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) Onindex(slot func(super func(row int, column int, parent *QModelIndex) *QModelIndex, row int, column int, parent *QModelIndex) *QModelIndex) {
+	ok := C.QSortFilterProxyModel_override_virtual_index(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_Index
-func miqt_exec_callback_QSortFilterProxyModel_Index(self *C.QSortFilterProxyModel, cb C.intptr_t, row C.int, column C.int, parent *C.QModelIndex) *C.QModelIndex {
+//export miqt_exec_callback_QSortFilterProxyModel_index
+func miqt_exec_callback_QSortFilterProxyModel_index(self *C.QSortFilterProxyModel, cb C.intptr_t, row C.int, column C.int, parent *C.QModelIndex) *C.QModelIndex {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, column int, parent *QModelIndex) *QModelIndex, row int, column int, parent *QModelIndex) *QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -843,20 +843,20 @@ func miqt_exec_callback_QSortFilterProxyModel_Index(self *C.QSortFilterProxyMode
 
 func (this *QSortFilterProxyModel) callVirtualBase_Parent(child *QModelIndex) *QModelIndex {
 
-	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_Parent(unsafe.Pointer(this.h), child.cPointer()))
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_parent(unsafe.Pointer(this.h), child.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSortFilterProxyModel) OnParent(slot func(super func(child *QModelIndex) *QModelIndex, child *QModelIndex) *QModelIndex) {
-	ok := C.QSortFilterProxyModel_override_virtual_Parent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) Onparent(slot func(super func(child *QModelIndex) *QModelIndex, child *QModelIndex) *QModelIndex) {
+	ok := C.QSortFilterProxyModel_override_virtual_parent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_Parent
-func miqt_exec_callback_QSortFilterProxyModel_Parent(self *C.QSortFilterProxyModel, cb C.intptr_t, child *C.QModelIndex) *C.QModelIndex {
+//export miqt_exec_callback_QSortFilterProxyModel_parent
+func miqt_exec_callback_QSortFilterProxyModel_parent(self *C.QSortFilterProxyModel, cb C.intptr_t, child *C.QModelIndex) *C.QModelIndex {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(child *QModelIndex) *QModelIndex, child *QModelIndex) *QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -873,20 +873,20 @@ func miqt_exec_callback_QSortFilterProxyModel_Parent(self *C.QSortFilterProxyMod
 
 func (this *QSortFilterProxyModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
 
-	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_Sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSortFilterProxyModel) OnSibling(slot func(super func(row int, column int, idx *QModelIndex) *QModelIndex, row int, column int, idx *QModelIndex) *QModelIndex) {
-	ok := C.QSortFilterProxyModel_override_virtual_Sibling(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) Onsibling(slot func(super func(row int, column int, idx *QModelIndex) *QModelIndex, row int, column int, idx *QModelIndex) *QModelIndex) {
+	ok := C.QSortFilterProxyModel_override_virtual_sibling(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_Sibling
-func miqt_exec_callback_QSortFilterProxyModel_Sibling(self *C.QSortFilterProxyModel, cb C.intptr_t, row C.int, column C.int, idx *C.QModelIndex) *C.QModelIndex {
+//export miqt_exec_callback_QSortFilterProxyModel_sibling
+func miqt_exec_callback_QSortFilterProxyModel_sibling(self *C.QSortFilterProxyModel, cb C.intptr_t, row C.int, column C.int, idx *C.QModelIndex) *C.QModelIndex {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, column int, idx *QModelIndex) *QModelIndex, row int, column int, idx *QModelIndex) *QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -907,18 +907,18 @@ func miqt_exec_callback_QSortFilterProxyModel_Sibling(self *C.QSortFilterProxyMo
 
 func (this *QSortFilterProxyModel) callVirtualBase_RowCount(parent *QModelIndex) int {
 
-	return (int)(C.QSortFilterProxyModel_virtualbase_RowCount(unsafe.Pointer(this.h), parent.cPointer()))
+	return (int)(C.QSortFilterProxyModel_virtualbase_rowCount(unsafe.Pointer(this.h), parent.cPointer()))
 
 }
-func (this *QSortFilterProxyModel) OnRowCount(slot func(super func(parent *QModelIndex) int, parent *QModelIndex) int) {
-	ok := C.QSortFilterProxyModel_override_virtual_RowCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnrowCount(slot func(super func(parent *QModelIndex) int, parent *QModelIndex) int) {
+	ok := C.QSortFilterProxyModel_override_virtual_rowCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_RowCount
-func miqt_exec_callback_QSortFilterProxyModel_RowCount(self *C.QSortFilterProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.int {
+//export miqt_exec_callback_QSortFilterProxyModel_rowCount
+func miqt_exec_callback_QSortFilterProxyModel_rowCount(self *C.QSortFilterProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex) int, parent *QModelIndex) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -935,18 +935,18 @@ func miqt_exec_callback_QSortFilterProxyModel_RowCount(self *C.QSortFilterProxyM
 
 func (this *QSortFilterProxyModel) callVirtualBase_ColumnCount(parent *QModelIndex) int {
 
-	return (int)(C.QSortFilterProxyModel_virtualbase_ColumnCount(unsafe.Pointer(this.h), parent.cPointer()))
+	return (int)(C.QSortFilterProxyModel_virtualbase_columnCount(unsafe.Pointer(this.h), parent.cPointer()))
 
 }
-func (this *QSortFilterProxyModel) OnColumnCount(slot func(super func(parent *QModelIndex) int, parent *QModelIndex) int) {
-	ok := C.QSortFilterProxyModel_override_virtual_ColumnCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OncolumnCount(slot func(super func(parent *QModelIndex) int, parent *QModelIndex) int) {
+	ok := C.QSortFilterProxyModel_override_virtual_columnCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_ColumnCount
-func miqt_exec_callback_QSortFilterProxyModel_ColumnCount(self *C.QSortFilterProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.int {
+//export miqt_exec_callback_QSortFilterProxyModel_columnCount
+func miqt_exec_callback_QSortFilterProxyModel_columnCount(self *C.QSortFilterProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex) int, parent *QModelIndex) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -963,18 +963,18 @@ func miqt_exec_callback_QSortFilterProxyModel_ColumnCount(self *C.QSortFilterPro
 
 func (this *QSortFilterProxyModel) callVirtualBase_HasChildren(parent *QModelIndex) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_HasChildren(unsafe.Pointer(this.h), parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_hasChildren(unsafe.Pointer(this.h), parent.cPointer()))
 
 }
-func (this *QSortFilterProxyModel) OnHasChildren(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_HasChildren(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnhasChildren(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_hasChildren(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_HasChildren
-func miqt_exec_callback_QSortFilterProxyModel_HasChildren(self *C.QSortFilterProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_hasChildren
+func miqt_exec_callback_QSortFilterProxyModel_hasChildren(self *C.QSortFilterProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -991,20 +991,20 @@ func miqt_exec_callback_QSortFilterProxyModel_HasChildren(self *C.QSortFilterPro
 
 func (this *QSortFilterProxyModel) callVirtualBase_Data(index *QModelIndex, role int) *QVariant {
 
-	_goptr := newQVariant(C.QSortFilterProxyModel_virtualbase_Data(unsafe.Pointer(this.h), index.cPointer(), (C.int)(role)))
+	_goptr := newQVariant(C.QSortFilterProxyModel_virtualbase_data(unsafe.Pointer(this.h), index.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSortFilterProxyModel) OnData(slot func(super func(index *QModelIndex, role int) *QVariant, index *QModelIndex, role int) *QVariant) {
-	ok := C.QSortFilterProxyModel_override_virtual_Data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) Ondata(slot func(super func(index *QModelIndex, role int) *QVariant, index *QModelIndex, role int) *QVariant) {
+	ok := C.QSortFilterProxyModel_override_virtual_data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_Data
-func miqt_exec_callback_QSortFilterProxyModel_Data(self *C.QSortFilterProxyModel, cb C.intptr_t, index *C.QModelIndex, role C.int) *C.QVariant {
+//export miqt_exec_callback_QSortFilterProxyModel_data
+func miqt_exec_callback_QSortFilterProxyModel_data(self *C.QSortFilterProxyModel, cb C.intptr_t, index *C.QModelIndex, role C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, role int) *QVariant, index *QModelIndex, role int) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1023,18 +1023,18 @@ func miqt_exec_callback_QSortFilterProxyModel_Data(self *C.QSortFilterProxyModel
 
 func (this *QSortFilterProxyModel) callVirtualBase_SetData(index *QModelIndex, value *QVariant, role int) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_SetData(unsafe.Pointer(this.h), index.cPointer(), value.cPointer(), (C.int)(role)))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_setData(unsafe.Pointer(this.h), index.cPointer(), value.cPointer(), (C.int)(role)))
 
 }
-func (this *QSortFilterProxyModel) OnSetData(slot func(super func(index *QModelIndex, value *QVariant, role int) bool, index *QModelIndex, value *QVariant, role int) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_SetData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnsetData(slot func(super func(index *QModelIndex, value *QVariant, role int) bool, index *QModelIndex, value *QVariant, role int) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_setData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_SetData
-func miqt_exec_callback_QSortFilterProxyModel_SetData(self *C.QSortFilterProxyModel, cb C.intptr_t, index *C.QModelIndex, value *C.QVariant, role C.int) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_setData
+func miqt_exec_callback_QSortFilterProxyModel_setData(self *C.QSortFilterProxyModel, cb C.intptr_t, index *C.QModelIndex, value *C.QVariant, role C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, value *QVariant, role int) bool, index *QModelIndex, value *QVariant, role int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1055,20 +1055,20 @@ func miqt_exec_callback_QSortFilterProxyModel_SetData(self *C.QSortFilterProxyMo
 
 func (this *QSortFilterProxyModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
 
-	_goptr := newQVariant(C.QSortFilterProxyModel_virtualbase_HeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
+	_goptr := newQVariant(C.QSortFilterProxyModel_virtualbase_headerData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSortFilterProxyModel) OnHeaderData(slot func(super func(section int, orientation Orientation, role int) *QVariant, section int, orientation Orientation, role int) *QVariant) {
-	ok := C.QSortFilterProxyModel_override_virtual_HeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnheaderData(slot func(super func(section int, orientation Orientation, role int) *QVariant, section int, orientation Orientation, role int) *QVariant) {
+	ok := C.QSortFilterProxyModel_override_virtual_headerData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_HeaderData
-func miqt_exec_callback_QSortFilterProxyModel_HeaderData(self *C.QSortFilterProxyModel, cb C.intptr_t, section C.int, orientation C.int, role C.int) *C.QVariant {
+//export miqt_exec_callback_QSortFilterProxyModel_headerData
+func miqt_exec_callback_QSortFilterProxyModel_headerData(self *C.QSortFilterProxyModel, cb C.intptr_t, section C.int, orientation C.int, role C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(section int, orientation Orientation, role int) *QVariant, section int, orientation Orientation, role int) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1089,18 +1089,18 @@ func miqt_exec_callback_QSortFilterProxyModel_HeaderData(self *C.QSortFilterProx
 
 func (this *QSortFilterProxyModel) callVirtualBase_SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_SetHeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_setHeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
 
 }
-func (this *QSortFilterProxyModel) OnSetHeaderData(slot func(super func(section int, orientation Orientation, value *QVariant, role int) bool, section int, orientation Orientation, value *QVariant, role int) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_SetHeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnsetHeaderData(slot func(super func(section int, orientation Orientation, value *QVariant, role int) bool, section int, orientation Orientation, value *QVariant, role int) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_setHeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_SetHeaderData
-func miqt_exec_callback_QSortFilterProxyModel_SetHeaderData(self *C.QSortFilterProxyModel, cb C.intptr_t, section C.int, orientation C.int, value *C.QVariant, role C.int) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_setHeaderData
+func miqt_exec_callback_QSortFilterProxyModel_setHeaderData(self *C.QSortFilterProxyModel, cb C.intptr_t, section C.int, orientation C.int, value *C.QVariant, role C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(section int, orientation Orientation, value *QVariant, role int) bool, section int, orientation Orientation, value *QVariant, role int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1129,18 +1129,18 @@ func (this *QSortFilterProxyModel) callVirtualBase_MimeData(indexes []QModelInde
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return newQMimeData(C.QSortFilterProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma))
+	return newQMimeData(C.QSortFilterProxyModel_virtualbase_mimeData(unsafe.Pointer(this.h), indexes_ma))
 
 }
-func (this *QSortFilterProxyModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
-	ok := C.QSortFilterProxyModel_override_virtual_MimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnmimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
+	ok := C.QSortFilterProxyModel_override_virtual_mimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_MimeData
-func miqt_exec_callback_QSortFilterProxyModel_MimeData(self *C.QSortFilterProxyModel, cb C.intptr_t, indexes C.struct_miqt_array) *C.QMimeData {
+//export miqt_exec_callback_QSortFilterProxyModel_mimeData
+func miqt_exec_callback_QSortFilterProxyModel_mimeData(self *C.QSortFilterProxyModel, cb C.intptr_t, indexes C.struct_miqt_array) *C.QMimeData {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1165,18 +1165,18 @@ func miqt_exec_callback_QSortFilterProxyModel_MimeData(self *C.QSortFilterProxyM
 
 func (this *QSortFilterProxyModel) callVirtualBase_DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_DropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 
 }
-func (this *QSortFilterProxyModel) OnDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_DropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OndropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_dropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_DropMimeData
-func miqt_exec_callback_QSortFilterProxyModel_DropMimeData(self *C.QSortFilterProxyModel, cb C.intptr_t, data *C.QMimeData, action C.int, row C.int, column C.int, parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_dropMimeData
+func miqt_exec_callback_QSortFilterProxyModel_dropMimeData(self *C.QSortFilterProxyModel, cb C.intptr_t, data *C.QMimeData, action C.int, row C.int, column C.int, parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1201,18 +1201,18 @@ func miqt_exec_callback_QSortFilterProxyModel_DropMimeData(self *C.QSortFilterPr
 
 func (this *QSortFilterProxyModel) callVirtualBase_InsertRows(row int, count int, parent *QModelIndex) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_InsertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
 
 }
-func (this *QSortFilterProxyModel) OnInsertRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_InsertRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OninsertRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_insertRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_InsertRows
-func miqt_exec_callback_QSortFilterProxyModel_InsertRows(self *C.QSortFilterProxyModel, cb C.intptr_t, row C.int, count C.int, parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_insertRows
+func miqt_exec_callback_QSortFilterProxyModel_insertRows(self *C.QSortFilterProxyModel, cb C.intptr_t, row C.int, count C.int, parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1233,18 +1233,18 @@ func miqt_exec_callback_QSortFilterProxyModel_InsertRows(self *C.QSortFilterProx
 
 func (this *QSortFilterProxyModel) callVirtualBase_InsertColumns(column int, count int, parent *QModelIndex) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_InsertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
 
 }
-func (this *QSortFilterProxyModel) OnInsertColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_InsertColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OninsertColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_insertColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_InsertColumns
-func miqt_exec_callback_QSortFilterProxyModel_InsertColumns(self *C.QSortFilterProxyModel, cb C.intptr_t, column C.int, count C.int, parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_insertColumns
+func miqt_exec_callback_QSortFilterProxyModel_insertColumns(self *C.QSortFilterProxyModel, cb C.intptr_t, column C.int, count C.int, parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1265,18 +1265,18 @@ func miqt_exec_callback_QSortFilterProxyModel_InsertColumns(self *C.QSortFilterP
 
 func (this *QSortFilterProxyModel) callVirtualBase_RemoveRows(row int, count int, parent *QModelIndex) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_RemoveRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
 
 }
-func (this *QSortFilterProxyModel) OnRemoveRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_RemoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnremoveRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_removeRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_RemoveRows
-func miqt_exec_callback_QSortFilterProxyModel_RemoveRows(self *C.QSortFilterProxyModel, cb C.intptr_t, row C.int, count C.int, parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_removeRows
+func miqt_exec_callback_QSortFilterProxyModel_removeRows(self *C.QSortFilterProxyModel, cb C.intptr_t, row C.int, count C.int, parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1297,18 +1297,18 @@ func miqt_exec_callback_QSortFilterProxyModel_RemoveRows(self *C.QSortFilterProx
 
 func (this *QSortFilterProxyModel) callVirtualBase_RemoveColumns(column int, count int, parent *QModelIndex) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_RemoveColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
 
 }
-func (this *QSortFilterProxyModel) OnRemoveColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_RemoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnremoveColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_removeColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_RemoveColumns
-func miqt_exec_callback_QSortFilterProxyModel_RemoveColumns(self *C.QSortFilterProxyModel, cb C.intptr_t, column C.int, count C.int, parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_removeColumns
+func miqt_exec_callback_QSortFilterProxyModel_removeColumns(self *C.QSortFilterProxyModel, cb C.intptr_t, column C.int, count C.int, parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1329,18 +1329,18 @@ func miqt_exec_callback_QSortFilterProxyModel_RemoveColumns(self *C.QSortFilterP
 
 func (this *QSortFilterProxyModel) callVirtualBase_FetchMore(parent *QModelIndex) {
 
-	C.QSortFilterProxyModel_virtualbase_FetchMore(unsafe.Pointer(this.h), parent.cPointer())
+	C.QSortFilterProxyModel_virtualbase_fetchMore(unsafe.Pointer(this.h), parent.cPointer())
 
 }
-func (this *QSortFilterProxyModel) OnFetchMore(slot func(super func(parent *QModelIndex), parent *QModelIndex)) {
-	ok := C.QSortFilterProxyModel_override_virtual_FetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnfetchMore(slot func(super func(parent *QModelIndex), parent *QModelIndex)) {
+	ok := C.QSortFilterProxyModel_override_virtual_fetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_FetchMore
-func miqt_exec_callback_QSortFilterProxyModel_FetchMore(self *C.QSortFilterProxyModel, cb C.intptr_t, parent *C.QModelIndex) {
+//export miqt_exec_callback_QSortFilterProxyModel_fetchMore
+func miqt_exec_callback_QSortFilterProxyModel_fetchMore(self *C.QSortFilterProxyModel, cb C.intptr_t, parent *C.QModelIndex) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex), parent *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1355,18 +1355,18 @@ func miqt_exec_callback_QSortFilterProxyModel_FetchMore(self *C.QSortFilterProxy
 
 func (this *QSortFilterProxyModel) callVirtualBase_CanFetchMore(parent *QModelIndex) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_CanFetchMore(unsafe.Pointer(this.h), parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), parent.cPointer()))
 
 }
-func (this *QSortFilterProxyModel) OnCanFetchMore(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_CanFetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OncanFetchMore(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_canFetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_CanFetchMore
-func miqt_exec_callback_QSortFilterProxyModel_CanFetchMore(self *C.QSortFilterProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_canFetchMore
+func miqt_exec_callback_QSortFilterProxyModel_canFetchMore(self *C.QSortFilterProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1383,18 +1383,18 @@ func miqt_exec_callback_QSortFilterProxyModel_CanFetchMore(self *C.QSortFilterPr
 
 func (this *QSortFilterProxyModel) callVirtualBase_Flags(index *QModelIndex) ItemFlag {
 
-	return (ItemFlag)(C.QSortFilterProxyModel_virtualbase_Flags(unsafe.Pointer(this.h), index.cPointer()))
+	return (ItemFlag)(C.QSortFilterProxyModel_virtualbase_flags(unsafe.Pointer(this.h), index.cPointer()))
 
 }
-func (this *QSortFilterProxyModel) OnFlags(slot func(super func(index *QModelIndex) ItemFlag, index *QModelIndex) ItemFlag) {
-	ok := C.QSortFilterProxyModel_override_virtual_Flags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) Onflags(slot func(super func(index *QModelIndex) ItemFlag, index *QModelIndex) ItemFlag) {
+	ok := C.QSortFilterProxyModel_override_virtual_flags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_Flags
-func miqt_exec_callback_QSortFilterProxyModel_Flags(self *C.QSortFilterProxyModel, cb C.intptr_t, index *C.QModelIndex) C.int {
+//export miqt_exec_callback_QSortFilterProxyModel_flags
+func miqt_exec_callback_QSortFilterProxyModel_flags(self *C.QSortFilterProxyModel, cb C.intptr_t, index *C.QModelIndex) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) ItemFlag, index *QModelIndex) ItemFlag)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1411,20 +1411,20 @@ func miqt_exec_callback_QSortFilterProxyModel_Flags(self *C.QSortFilterProxyMode
 
 func (this *QSortFilterProxyModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
 
-	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_Buddy(unsafe.Pointer(this.h), index.cPointer()))
+	_goptr := newQModelIndex(C.QSortFilterProxyModel_virtualbase_buddy(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSortFilterProxyModel) OnBuddy(slot func(super func(index *QModelIndex) *QModelIndex, index *QModelIndex) *QModelIndex) {
-	ok := C.QSortFilterProxyModel_override_virtual_Buddy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) Onbuddy(slot func(super func(index *QModelIndex) *QModelIndex, index *QModelIndex) *QModelIndex) {
+	ok := C.QSortFilterProxyModel_override_virtual_buddy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_Buddy
-func miqt_exec_callback_QSortFilterProxyModel_Buddy(self *C.QSortFilterProxyModel, cb C.intptr_t, index *C.QModelIndex) *C.QModelIndex {
+//export miqt_exec_callback_QSortFilterProxyModel_buddy
+func miqt_exec_callback_QSortFilterProxyModel_buddy(self *C.QSortFilterProxyModel, cb C.intptr_t, index *C.QModelIndex) *C.QModelIndex {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) *QModelIndex, index *QModelIndex) *QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1441,7 +1441,7 @@ func miqt_exec_callback_QSortFilterProxyModel_Buddy(self *C.QSortFilterProxyMode
 
 func (this *QSortFilterProxyModel) callVirtualBase_Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
 
-	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_virtualbase_Match(unsafe.Pointer(this.h), start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
+	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_virtualbase_match(unsafe.Pointer(this.h), start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1452,15 +1452,15 @@ func (this *QSortFilterProxyModel) callVirtualBase_Match(start *QModelIndex, rol
 	return _ret
 
 }
-func (this *QSortFilterProxyModel) OnMatch(slot func(super func(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex, start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex) {
-	ok := C.QSortFilterProxyModel_override_virtual_Match(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) Onmatch(slot func(super func(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex, start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex) {
+	ok := C.QSortFilterProxyModel_override_virtual_match(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_Match
-func miqt_exec_callback_QSortFilterProxyModel_Match(self *C.QSortFilterProxyModel, cb C.intptr_t, start *C.QModelIndex, role C.int, value *C.QVariant, hits C.int, flags C.int) C.struct_miqt_array {
+//export miqt_exec_callback_QSortFilterProxyModel_match
+func miqt_exec_callback_QSortFilterProxyModel_match(self *C.QSortFilterProxyModel, cb C.intptr_t, start *C.QModelIndex, role C.int, value *C.QVariant, hits C.int, flags C.int) C.struct_miqt_array {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex, start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1491,20 +1491,20 @@ func miqt_exec_callback_QSortFilterProxyModel_Match(self *C.QSortFilterProxyMode
 
 func (this *QSortFilterProxyModel) callVirtualBase_Span(index *QModelIndex) *QSize {
 
-	_goptr := newQSize(C.QSortFilterProxyModel_virtualbase_Span(unsafe.Pointer(this.h), index.cPointer()))
+	_goptr := newQSize(C.QSortFilterProxyModel_virtualbase_span(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSortFilterProxyModel) OnSpan(slot func(super func(index *QModelIndex) *QSize, index *QModelIndex) *QSize) {
-	ok := C.QSortFilterProxyModel_override_virtual_Span(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) Onspan(slot func(super func(index *QModelIndex) *QSize, index *QModelIndex) *QSize) {
+	ok := C.QSortFilterProxyModel_override_virtual_span(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_Span
-func miqt_exec_callback_QSortFilterProxyModel_Span(self *C.QSortFilterProxyModel, cb C.intptr_t, index *C.QModelIndex) *C.QSize {
+//export miqt_exec_callback_QSortFilterProxyModel_span
+func miqt_exec_callback_QSortFilterProxyModel_span(self *C.QSortFilterProxyModel, cb C.intptr_t, index *C.QModelIndex) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) *QSize, index *QModelIndex) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1521,18 +1521,18 @@ func miqt_exec_callback_QSortFilterProxyModel_Span(self *C.QSortFilterProxyModel
 
 func (this *QSortFilterProxyModel) callVirtualBase_Sort(column int, order SortOrder) {
 
-	C.QSortFilterProxyModel_virtualbase_Sort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
+	C.QSortFilterProxyModel_virtualbase_sort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
 
 }
-func (this *QSortFilterProxyModel) OnSort(slot func(super func(column int, order SortOrder), column int, order SortOrder)) {
-	ok := C.QSortFilterProxyModel_override_virtual_Sort(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) Onsort(slot func(super func(column int, order SortOrder), column int, order SortOrder)) {
+	ok := C.QSortFilterProxyModel_override_virtual_sort(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_Sort
-func miqt_exec_callback_QSortFilterProxyModel_Sort(self *C.QSortFilterProxyModel, cb C.intptr_t, column C.int, order C.int) {
+//export miqt_exec_callback_QSortFilterProxyModel_sort
+func miqt_exec_callback_QSortFilterProxyModel_sort(self *C.QSortFilterProxyModel, cb C.intptr_t, column C.int, order C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int, order SortOrder), column int, order SortOrder))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1549,7 +1549,7 @@ func miqt_exec_callback_QSortFilterProxyModel_Sort(self *C.QSortFilterProxyModel
 
 func (this *QSortFilterProxyModel) callVirtualBase_MimeTypes() []string {
 
-	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_virtualbase_MimeTypes(unsafe.Pointer(this.h))
+	var _ma C.struct_miqt_array = C.QSortFilterProxyModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1561,15 +1561,15 @@ func (this *QSortFilterProxyModel) callVirtualBase_MimeTypes() []string {
 	return _ret
 
 }
-func (this *QSortFilterProxyModel) OnMimeTypes(slot func(super func() []string) []string) {
-	ok := C.QSortFilterProxyModel_override_virtual_MimeTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnmimeTypes(slot func(super func() []string) []string) {
+	ok := C.QSortFilterProxyModel_override_virtual_mimeTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_MimeTypes
-func miqt_exec_callback_QSortFilterProxyModel_MimeTypes(self *C.QSortFilterProxyModel, cb C.intptr_t) C.struct_miqt_array {
+//export miqt_exec_callback_QSortFilterProxyModel_mimeTypes
+func miqt_exec_callback_QSortFilterProxyModel_mimeTypes(self *C.QSortFilterProxyModel, cb C.intptr_t) C.struct_miqt_array {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() []string) []string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1593,18 +1593,18 @@ func miqt_exec_callback_QSortFilterProxyModel_MimeTypes(self *C.QSortFilterProxy
 
 func (this *QSortFilterProxyModel) callVirtualBase_SupportedDropActions() DropAction {
 
-	return (DropAction)(C.QSortFilterProxyModel_virtualbase_SupportedDropActions(unsafe.Pointer(this.h)))
+	return (DropAction)(C.QSortFilterProxyModel_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
 }
-func (this *QSortFilterProxyModel) OnSupportedDropActions(slot func(super func() DropAction) DropAction) {
-	ok := C.QSortFilterProxyModel_override_virtual_SupportedDropActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnsupportedDropActions(slot func(super func() DropAction) DropAction) {
+	ok := C.QSortFilterProxyModel_override_virtual_supportedDropActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_SupportedDropActions
-func miqt_exec_callback_QSortFilterProxyModel_SupportedDropActions(self *C.QSortFilterProxyModel, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QSortFilterProxyModel_supportedDropActions
+func miqt_exec_callback_QSortFilterProxyModel_supportedDropActions(self *C.QSortFilterProxyModel, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() DropAction) DropAction)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1618,18 +1618,18 @@ func miqt_exec_callback_QSortFilterProxyModel_SupportedDropActions(self *C.QSort
 
 func (this *QSortFilterProxyModel) callVirtualBase_Submit() bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_Submit(unsafe.Pointer(this.h)))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_submit(unsafe.Pointer(this.h)))
 
 }
-func (this *QSortFilterProxyModel) OnSubmit(slot func(super func() bool) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_Submit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) Onsubmit(slot func(super func() bool) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_submit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_Submit
-func miqt_exec_callback_QSortFilterProxyModel_Submit(self *C.QSortFilterProxyModel, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_submit
+func miqt_exec_callback_QSortFilterProxyModel_submit(self *C.QSortFilterProxyModel, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1643,18 +1643,18 @@ func miqt_exec_callback_QSortFilterProxyModel_Submit(self *C.QSortFilterProxyMod
 
 func (this *QSortFilterProxyModel) callVirtualBase_Revert() {
 
-	C.QSortFilterProxyModel_virtualbase_Revert(unsafe.Pointer(this.h))
+	C.QSortFilterProxyModel_virtualbase_revert(unsafe.Pointer(this.h))
 
 }
-func (this *QSortFilterProxyModel) OnRevert(slot func(super func())) {
-	ok := C.QSortFilterProxyModel_override_virtual_Revert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) Onrevert(slot func(super func())) {
+	ok := C.QSortFilterProxyModel_override_virtual_revert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_Revert
-func miqt_exec_callback_QSortFilterProxyModel_Revert(self *C.QSortFilterProxyModel, cb C.intptr_t) {
+//export miqt_exec_callback_QSortFilterProxyModel_revert
+func miqt_exec_callback_QSortFilterProxyModel_revert(self *C.QSortFilterProxyModel, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1666,7 +1666,7 @@ func miqt_exec_callback_QSortFilterProxyModel_Revert(self *C.QSortFilterProxyMod
 
 func (this *QSortFilterProxyModel) callVirtualBase_ItemData(index *QModelIndex) map[int]QVariant {
 
-	var _mm C.struct_miqt_map = C.QSortFilterProxyModel_virtualbase_ItemData(unsafe.Pointer(this.h), index.cPointer())
+	var _mm C.struct_miqt_map = C.QSortFilterProxyModel_virtualbase_itemData(unsafe.Pointer(this.h), index.cPointer())
 	_ret := make(map[int]QVariant, int(_mm.len))
 	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
@@ -1682,15 +1682,15 @@ func (this *QSortFilterProxyModel) callVirtualBase_ItemData(index *QModelIndex) 
 	return _ret
 
 }
-func (this *QSortFilterProxyModel) OnItemData(slot func(super func(index *QModelIndex) map[int]QVariant, index *QModelIndex) map[int]QVariant) {
-	ok := C.QSortFilterProxyModel_override_virtual_ItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnitemData(slot func(super func(index *QModelIndex) map[int]QVariant, index *QModelIndex) map[int]QVariant) {
+	ok := C.QSortFilterProxyModel_override_virtual_itemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_ItemData
-func miqt_exec_callback_QSortFilterProxyModel_ItemData(self *C.QSortFilterProxyModel, cb C.intptr_t, index *C.QModelIndex) C.struct_miqt_map {
+//export miqt_exec_callback_QSortFilterProxyModel_itemData
+func miqt_exec_callback_QSortFilterProxyModel_itemData(self *C.QSortFilterProxyModel, cb C.intptr_t, index *C.QModelIndex) C.struct_miqt_map {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) map[int]QVariant, index *QModelIndex) map[int]QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1737,18 +1737,18 @@ func (this *QSortFilterProxyModel) callVirtualBase_SetItemData(index *QModelInde
 		values: unsafe.Pointer(roles_Values_CArray),
 	}
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_SetItemData(unsafe.Pointer(this.h), index.cPointer(), roles_mm))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_setItemData(unsafe.Pointer(this.h), index.cPointer(), roles_mm))
 
 }
-func (this *QSortFilterProxyModel) OnSetItemData(slot func(super func(index *QModelIndex, roles map[int]QVariant) bool, index *QModelIndex, roles map[int]QVariant) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_SetItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnsetItemData(slot func(super func(index *QModelIndex, roles map[int]QVariant) bool, index *QModelIndex, roles map[int]QVariant) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_setItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_SetItemData
-func miqt_exec_callback_QSortFilterProxyModel_SetItemData(self *C.QSortFilterProxyModel, cb C.intptr_t, index *C.QModelIndex, roles C.struct_miqt_map) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_setItemData
+func miqt_exec_callback_QSortFilterProxyModel_setItemData(self *C.QSortFilterProxyModel, cb C.intptr_t, index *C.QModelIndex, roles C.struct_miqt_map) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, roles map[int]QVariant) bool, index *QModelIndex, roles map[int]QVariant) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1780,18 +1780,18 @@ func miqt_exec_callback_QSortFilterProxyModel_SetItemData(self *C.QSortFilterPro
 
 func (this *QSortFilterProxyModel) callVirtualBase_CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_CanDropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 
 }
-func (this *QSortFilterProxyModel) OnCanDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_CanDropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OncanDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_canDropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_CanDropMimeData
-func miqt_exec_callback_QSortFilterProxyModel_CanDropMimeData(self *C.QSortFilterProxyModel, cb C.intptr_t, data *C.QMimeData, action C.int, row C.int, column C.int, parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_canDropMimeData
+func miqt_exec_callback_QSortFilterProxyModel_canDropMimeData(self *C.QSortFilterProxyModel, cb C.intptr_t, data *C.QMimeData, action C.int, row C.int, column C.int, parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1816,18 +1816,18 @@ func miqt_exec_callback_QSortFilterProxyModel_CanDropMimeData(self *C.QSortFilte
 
 func (this *QSortFilterProxyModel) callVirtualBase_SupportedDragActions() DropAction {
 
-	return (DropAction)(C.QSortFilterProxyModel_virtualbase_SupportedDragActions(unsafe.Pointer(this.h)))
+	return (DropAction)(C.QSortFilterProxyModel_virtualbase_supportedDragActions(unsafe.Pointer(this.h)))
 
 }
-func (this *QSortFilterProxyModel) OnSupportedDragActions(slot func(super func() DropAction) DropAction) {
-	ok := C.QSortFilterProxyModel_override_virtual_SupportedDragActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnsupportedDragActions(slot func(super func() DropAction) DropAction) {
+	ok := C.QSortFilterProxyModel_override_virtual_supportedDragActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_SupportedDragActions
-func miqt_exec_callback_QSortFilterProxyModel_SupportedDragActions(self *C.QSortFilterProxyModel, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QSortFilterProxyModel_supportedDragActions
+func miqt_exec_callback_QSortFilterProxyModel_supportedDragActions(self *C.QSortFilterProxyModel, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() DropAction) DropAction)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1841,18 +1841,18 @@ func miqt_exec_callback_QSortFilterProxyModel_SupportedDragActions(self *C.QSort
 
 func (this *QSortFilterProxyModel) callVirtualBase_MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_MoveRows(unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_moveRows(unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 
 }
-func (this *QSortFilterProxyModel) OnMoveRows(slot func(super func(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_MoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnmoveRows(slot func(super func(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_moveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_MoveRows
-func miqt_exec_callback_QSortFilterProxyModel_MoveRows(self *C.QSortFilterProxyModel, cb C.intptr_t, sourceParent *C.QModelIndex, sourceRow C.int, count C.int, destinationParent *C.QModelIndex, destinationChild C.int) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_moveRows
+func miqt_exec_callback_QSortFilterProxyModel_moveRows(self *C.QSortFilterProxyModel, cb C.intptr_t, sourceParent *C.QModelIndex, sourceRow C.int, count C.int, destinationParent *C.QModelIndex, destinationChild C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1877,18 +1877,18 @@ func miqt_exec_callback_QSortFilterProxyModel_MoveRows(self *C.QSortFilterProxyM
 
 func (this *QSortFilterProxyModel) callVirtualBase_MoveColumns(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_MoveColumns(unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceColumn), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_moveColumns(unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceColumn), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 
 }
-func (this *QSortFilterProxyModel) OnMoveColumns(slot func(super func(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_MoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnmoveColumns(slot func(super func(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_moveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_MoveColumns
-func miqt_exec_callback_QSortFilterProxyModel_MoveColumns(self *C.QSortFilterProxyModel, cb C.intptr_t, sourceParent *C.QModelIndex, sourceColumn C.int, count C.int, destinationParent *C.QModelIndex, destinationChild C.int) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_moveColumns
+func miqt_exec_callback_QSortFilterProxyModel_moveColumns(self *C.QSortFilterProxyModel, cb C.intptr_t, sourceParent *C.QModelIndex, sourceColumn C.int, count C.int, destinationParent *C.QModelIndex, destinationChild C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1913,7 +1913,7 @@ func miqt_exec_callback_QSortFilterProxyModel_MoveColumns(self *C.QSortFilterPro
 
 func (this *QSortFilterProxyModel) callVirtualBase_RoleNames() map[int][]byte {
 
-	var _mm C.struct_miqt_map = C.QSortFilterProxyModel_virtualbase_RoleNames(unsafe.Pointer(this.h))
+	var _mm C.struct_miqt_map = C.QSortFilterProxyModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
 	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
@@ -1929,15 +1929,15 @@ func (this *QSortFilterProxyModel) callVirtualBase_RoleNames() map[int][]byte {
 	return _ret
 
 }
-func (this *QSortFilterProxyModel) OnRoleNames(slot func(super func() map[int][]byte) map[int][]byte) {
-	ok := C.QSortFilterProxyModel_override_virtual_RoleNames(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnroleNames(slot func(super func() map[int][]byte) map[int][]byte) {
+	ok := C.QSortFilterProxyModel_override_virtual_roleNames(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_RoleNames
-func miqt_exec_callback_QSortFilterProxyModel_RoleNames(self *C.QSortFilterProxyModel, cb C.intptr_t) C.struct_miqt_map {
+//export miqt_exec_callback_QSortFilterProxyModel_roleNames
+func miqt_exec_callback_QSortFilterProxyModel_roleNames(self *C.QSortFilterProxyModel, cb C.intptr_t) C.struct_miqt_map {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() map[int][]byte) map[int][]byte)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1973,18 +1973,18 @@ func miqt_exec_callback_QSortFilterProxyModel_RoleNames(self *C.QSortFilterProxy
 
 func (this *QSortFilterProxyModel) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QSortFilterProxyModel) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_Event
-func miqt_exec_callback_QSortFilterProxyModel_Event(self *C.QSortFilterProxyModel, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_event
+func miqt_exec_callback_QSortFilterProxyModel_event(self *C.QSortFilterProxyModel, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2001,18 +2001,18 @@ func miqt_exec_callback_QSortFilterProxyModel_Event(self *C.QSortFilterProxyMode
 
 func (this *QSortFilterProxyModel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QSortFilterProxyModel_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QSortFilterProxyModel_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QSortFilterProxyModel) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QSortFilterProxyModel_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QSortFilterProxyModel_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_EventFilter
-func miqt_exec_callback_QSortFilterProxyModel_EventFilter(self *C.QSortFilterProxyModel, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QSortFilterProxyModel_eventFilter
+func miqt_exec_callback_QSortFilterProxyModel_eventFilter(self *C.QSortFilterProxyModel, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2031,18 +2031,18 @@ func miqt_exec_callback_QSortFilterProxyModel_EventFilter(self *C.QSortFilterPro
 
 func (this *QSortFilterProxyModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QSortFilterProxyModel_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSortFilterProxyModel_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSortFilterProxyModel) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QSortFilterProxyModel_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QSortFilterProxyModel_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_TimerEvent
-func miqt_exec_callback_QSortFilterProxyModel_TimerEvent(self *C.QSortFilterProxyModel, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QSortFilterProxyModel_timerEvent
+func miqt_exec_callback_QSortFilterProxyModel_timerEvent(self *C.QSortFilterProxyModel, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2057,18 +2057,18 @@ func miqt_exec_callback_QSortFilterProxyModel_TimerEvent(self *C.QSortFilterProx
 
 func (this *QSortFilterProxyModel) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QSortFilterProxyModel_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSortFilterProxyModel_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSortFilterProxyModel) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QSortFilterProxyModel_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QSortFilterProxyModel_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_ChildEvent
-func miqt_exec_callback_QSortFilterProxyModel_ChildEvent(self *C.QSortFilterProxyModel, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QSortFilterProxyModel_childEvent
+func miqt_exec_callback_QSortFilterProxyModel_childEvent(self *C.QSortFilterProxyModel, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2083,18 +2083,18 @@ func miqt_exec_callback_QSortFilterProxyModel_ChildEvent(self *C.QSortFilterProx
 
 func (this *QSortFilterProxyModel) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QSortFilterProxyModel_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSortFilterProxyModel_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSortFilterProxyModel) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QSortFilterProxyModel_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QSortFilterProxyModel_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_CustomEvent
-func miqt_exec_callback_QSortFilterProxyModel_CustomEvent(self *C.QSortFilterProxyModel, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QSortFilterProxyModel_customEvent
+func miqt_exec_callback_QSortFilterProxyModel_customEvent(self *C.QSortFilterProxyModel, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2109,18 +2109,18 @@ func miqt_exec_callback_QSortFilterProxyModel_CustomEvent(self *C.QSortFilterPro
 
 func (this *QSortFilterProxyModel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QSortFilterProxyModel_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QSortFilterProxyModel_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSortFilterProxyModel) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QSortFilterProxyModel_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QSortFilterProxyModel_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_ConnectNotify
-func miqt_exec_callback_QSortFilterProxyModel_ConnectNotify(self *C.QSortFilterProxyModel, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QSortFilterProxyModel_connectNotify
+func miqt_exec_callback_QSortFilterProxyModel_connectNotify(self *C.QSortFilterProxyModel, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2135,18 +2135,18 @@ func miqt_exec_callback_QSortFilterProxyModel_ConnectNotify(self *C.QSortFilterP
 
 func (this *QSortFilterProxyModel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QSortFilterProxyModel_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QSortFilterProxyModel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSortFilterProxyModel) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QSortFilterProxyModel_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSortFilterProxyModel) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QSortFilterProxyModel_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSortFilterProxyModel_DisconnectNotify
-func miqt_exec_callback_QSortFilterProxyModel_DisconnectNotify(self *C.QSortFilterProxyModel, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QSortFilterProxyModel_disconnectNotify
+func miqt_exec_callback_QSortFilterProxyModel_disconnectNotify(self *C.QSortFilterProxyModel, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2161,7 +2161,7 @@ func miqt_exec_callback_QSortFilterProxyModel_DisconnectNotify(self *C.QSortFilt
 
 // Delete this object from C++ memory.
 func (this *QSortFilterProxyModel) Delete() {
-	C.QSortFilterProxyModel_Delete(this.h)
+	C.QSortFilterProxyModel_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -103,7 +103,7 @@ func NewQImageWriter4(fileName string, format []byte) *QImageWriter {
 func QImageWriter_Tr(sourceText string) string {
 	sourceText_Cstring := C.CString(sourceText)
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
-	var _ms C.struct_miqt_string = C.QImageWriter_Tr(sourceText_Cstring)
+	var _ms C.struct_miqt_string = C.QImageWriter_tr(sourceText_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -112,7 +112,7 @@ func QImageWriter_Tr(sourceText string) string {
 func QImageWriter_TrUtf8(sourceText string) string {
 	sourceText_Cstring := C.CString(sourceText)
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
-	var _ms C.struct_miqt_string = C.QImageWriter_TrUtf8(sourceText_Cstring)
+	var _ms C.struct_miqt_string = C.QImageWriter_trUtf8(sourceText_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -126,22 +126,22 @@ func (this *QImageWriter) SetFormat(format []byte) {
 		format_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	format_alias.len = C.size_t(len(format))
-	C.QImageWriter_SetFormat(this.h, format_alias)
+	C.QImageWriter_setFormat(this.h, format_alias)
 }
 
 func (this *QImageWriter) Format() []byte {
-	var _bytearray C.struct_miqt_string = C.QImageWriter_Format(this.h)
+	var _bytearray C.struct_miqt_string = C.QImageWriter_format(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QImageWriter) SetDevice(device *QIODevice) {
-	C.QImageWriter_SetDevice(this.h, device.cPointer())
+	C.QImageWriter_setDevice(this.h, device.cPointer())
 }
 
 func (this *QImageWriter) Device() *QIODevice {
-	return newQIODevice(C.QImageWriter_Device(this.h))
+	return newQIODevice(C.QImageWriter_device(this.h))
 }
 
 func (this *QImageWriter) SetFileName(fileName string) {
@@ -149,38 +149,38 @@ func (this *QImageWriter) SetFileName(fileName string) {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	C.QImageWriter_SetFileName(this.h, fileName_ms)
+	C.QImageWriter_setFileName(this.h, fileName_ms)
 }
 
 func (this *QImageWriter) FileName() string {
-	var _ms C.struct_miqt_string = C.QImageWriter_FileName(this.h)
+	var _ms C.struct_miqt_string = C.QImageWriter_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QImageWriter) SetQuality(quality int) {
-	C.QImageWriter_SetQuality(this.h, (C.int)(quality))
+	C.QImageWriter_setQuality(this.h, (C.int)(quality))
 }
 
 func (this *QImageWriter) Quality() int {
-	return (int)(C.QImageWriter_Quality(this.h))
+	return (int)(C.QImageWriter_quality(this.h))
 }
 
 func (this *QImageWriter) SetCompression(compression int) {
-	C.QImageWriter_SetCompression(this.h, (C.int)(compression))
+	C.QImageWriter_setCompression(this.h, (C.int)(compression))
 }
 
 func (this *QImageWriter) Compression() int {
-	return (int)(C.QImageWriter_Compression(this.h))
+	return (int)(C.QImageWriter_compression(this.h))
 }
 
 func (this *QImageWriter) SetGamma(gamma float32) {
-	C.QImageWriter_SetGamma(this.h, (C.float)(gamma))
+	C.QImageWriter_setGamma(this.h, (C.float)(gamma))
 }
 
 func (this *QImageWriter) Gamma() float32 {
-	return (float32)(C.QImageWriter_Gamma(this.h))
+	return (float32)(C.QImageWriter_gamma(this.h))
 }
 
 func (this *QImageWriter) SetSubType(typeVal []byte) {
@@ -191,18 +191,18 @@ func (this *QImageWriter) SetSubType(typeVal []byte) {
 		typeVal_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	typeVal_alias.len = C.size_t(len(typeVal))
-	C.QImageWriter_SetSubType(this.h, typeVal_alias)
+	C.QImageWriter_setSubType(this.h, typeVal_alias)
 }
 
 func (this *QImageWriter) SubType() []byte {
-	var _bytearray C.struct_miqt_string = C.QImageWriter_SubType(this.h)
+	var _bytearray C.struct_miqt_string = C.QImageWriter_subType(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QImageWriter) SupportedSubTypes() [][]byte {
-	var _ma C.struct_miqt_array = C.QImageWriter_SupportedSubTypes(this.h)
+	var _ma C.struct_miqt_array = C.QImageWriter_supportedSubTypes(this.h)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -215,27 +215,27 @@ func (this *QImageWriter) SupportedSubTypes() [][]byte {
 }
 
 func (this *QImageWriter) SetOptimizedWrite(optimize bool) {
-	C.QImageWriter_SetOptimizedWrite(this.h, (C.bool)(optimize))
+	C.QImageWriter_setOptimizedWrite(this.h, (C.bool)(optimize))
 }
 
 func (this *QImageWriter) OptimizedWrite() bool {
-	return (bool)(C.QImageWriter_OptimizedWrite(this.h))
+	return (bool)(C.QImageWriter_optimizedWrite(this.h))
 }
 
 func (this *QImageWriter) SetProgressiveScanWrite(progressive bool) {
-	C.QImageWriter_SetProgressiveScanWrite(this.h, (C.bool)(progressive))
+	C.QImageWriter_setProgressiveScanWrite(this.h, (C.bool)(progressive))
 }
 
 func (this *QImageWriter) ProgressiveScanWrite() bool {
-	return (bool)(C.QImageWriter_ProgressiveScanWrite(this.h))
+	return (bool)(C.QImageWriter_progressiveScanWrite(this.h))
 }
 
 func (this *QImageWriter) Transformation() QImageIOHandler__Transformation {
-	return (QImageIOHandler__Transformation)(C.QImageWriter_Transformation(this.h))
+	return (QImageIOHandler__Transformation)(C.QImageWriter_transformation(this.h))
 }
 
 func (this *QImageWriter) SetTransformation(orientation QImageIOHandler__Transformation) {
-	C.QImageWriter_SetTransformation(this.h, (C.int)(orientation))
+	C.QImageWriter_setTransformation(this.h, (C.int)(orientation))
 }
 
 func (this *QImageWriter) SetDescription(description string) {
@@ -243,11 +243,11 @@ func (this *QImageWriter) SetDescription(description string) {
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
-	C.QImageWriter_SetDescription(this.h, description_ms)
+	C.QImageWriter_setDescription(this.h, description_ms)
 }
 
 func (this *QImageWriter) Description() string {
-	var _ms C.struct_miqt_string = C.QImageWriter_Description(this.h)
+	var _ms C.struct_miqt_string = C.QImageWriter_description(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -262,34 +262,34 @@ func (this *QImageWriter) SetText(key string, text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QImageWriter_SetText(this.h, key_ms, text_ms)
+	C.QImageWriter_setText(this.h, key_ms, text_ms)
 }
 
 func (this *QImageWriter) CanWrite() bool {
-	return (bool)(C.QImageWriter_CanWrite(this.h))
+	return (bool)(C.QImageWriter_canWrite(this.h))
 }
 
 func (this *QImageWriter) Write(image *QImage) bool {
-	return (bool)(C.QImageWriter_Write(this.h, image.cPointer()))
+	return (bool)(C.QImageWriter_write(this.h, image.cPointer()))
 }
 
 func (this *QImageWriter) Error() QImageWriter__ImageWriterError {
-	return (QImageWriter__ImageWriterError)(C.QImageWriter_Error(this.h))
+	return (QImageWriter__ImageWriterError)(C.QImageWriter_error(this.h))
 }
 
 func (this *QImageWriter) ErrorString() string {
-	var _ms C.struct_miqt_string = C.QImageWriter_ErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QImageWriter_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QImageWriter) SupportsOption(option QImageIOHandler__ImageOption) bool {
-	return (bool)(C.QImageWriter_SupportsOption(this.h, (C.int)(option)))
+	return (bool)(C.QImageWriter_supportsOption(this.h, (C.int)(option)))
 }
 
 func QImageWriter_SupportedImageFormats() [][]byte {
-	var _ma C.struct_miqt_array = C.QImageWriter_SupportedImageFormats()
+	var _ma C.struct_miqt_array = C.QImageWriter_supportedImageFormats()
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -302,7 +302,7 @@ func QImageWriter_SupportedImageFormats() [][]byte {
 }
 
 func QImageWriter_SupportedMimeTypes() [][]byte {
-	var _ma C.struct_miqt_array = C.QImageWriter_SupportedMimeTypes()
+	var _ma C.struct_miqt_array = C.QImageWriter_supportedMimeTypes()
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -322,7 +322,7 @@ func QImageWriter_ImageFormatsForMimeType(mimeType []byte) [][]byte {
 		mimeType_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	mimeType_alias.len = C.size_t(len(mimeType))
-	var _ma C.struct_miqt_array = C.QImageWriter_ImageFormatsForMimeType(mimeType_alias)
+	var _ma C.struct_miqt_array = C.QImageWriter_imageFormatsForMimeType(mimeType_alias)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -339,7 +339,7 @@ func QImageWriter_Tr2(sourceText string, disambiguation string) string {
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms C.struct_miqt_string = C.QImageWriter_Tr2(sourceText_Cstring, disambiguation_Cstring)
+	var _ms C.struct_miqt_string = C.QImageWriter_tr2(sourceText_Cstring, disambiguation_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -350,7 +350,7 @@ func QImageWriter_Tr3(sourceText string, disambiguation string, n int) string {
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms C.struct_miqt_string = C.QImageWriter_Tr3(sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QImageWriter_tr3(sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -361,7 +361,7 @@ func QImageWriter_TrUtf82(sourceText string, disambiguation string) string {
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms C.struct_miqt_string = C.QImageWriter_TrUtf82(sourceText_Cstring, disambiguation_Cstring)
+	var _ms C.struct_miqt_string = C.QImageWriter_trUtf82(sourceText_Cstring, disambiguation_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -372,7 +372,7 @@ func QImageWriter_TrUtf83(sourceText string, disambiguation string, n int) strin
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms C.struct_miqt_string = C.QImageWriter_TrUtf83(sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QImageWriter_trUtf83(sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -380,7 +380,7 @@ func QImageWriter_TrUtf83(sourceText string, disambiguation string, n int) strin
 
 // Delete this object from C++ memory.
 func (this *QImageWriter) Delete() {
-	C.QImageWriter_Delete(this.h)
+	C.QImageWriter_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -19,14 +19,14 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QPointingDevice_GrabChanged(intptr_t, QObject*, int, QPointerEvent*, QEventPoint*);
-bool miqt_exec_callback_QPointingDevice_Event(QPointingDevice*, intptr_t, QEvent*);
-bool miqt_exec_callback_QPointingDevice_EventFilter(QPointingDevice*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QPointingDevice_TimerEvent(QPointingDevice*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QPointingDevice_ChildEvent(QPointingDevice*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QPointingDevice_CustomEvent(QPointingDevice*, intptr_t, QEvent*);
-void miqt_exec_callback_QPointingDevice_ConnectNotify(QPointingDevice*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QPointingDevice_DisconnectNotify(QPointingDevice*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPointingDevice_grabChanged(intptr_t, QObject*, int, QPointerEvent*, QEventPoint*);
+bool miqt_exec_callback_QPointingDevice_event(QPointingDevice*, intptr_t, QEvent*);
+bool miqt_exec_callback_QPointingDevice_eventFilter(QPointingDevice*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QPointingDevice_timerEvent(QPointingDevice*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QPointingDevice_childEvent(QPointingDevice*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QPointingDevice_customEvent(QPointingDevice*, intptr_t, QEvent*);
+void miqt_exec_callback_QPointingDevice_connectNotify(QPointingDevice*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QPointingDevice_disconnectNotify(QPointingDevice*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -39,20 +39,20 @@ QPointingDeviceUniqueId* QPointingDeviceUniqueId_new2(QPointingDeviceUniqueId* p
 	return new QPointingDeviceUniqueId(*param1);
 }
 
-QPointingDeviceUniqueId* QPointingDeviceUniqueId_FromNumericId(long long id) {
+QPointingDeviceUniqueId* QPointingDeviceUniqueId_fromNumericId(long long id) {
 	return new QPointingDeviceUniqueId(QPointingDeviceUniqueId::fromNumericId(static_cast<qint64>(id)));
 }
 
-bool QPointingDeviceUniqueId_IsValid(const QPointingDeviceUniqueId* self) {
+bool QPointingDeviceUniqueId_isValid(const QPointingDeviceUniqueId* self) {
 	return self->isValid();
 }
 
-long long QPointingDeviceUniqueId_NumericId(const QPointingDeviceUniqueId* self) {
+long long QPointingDeviceUniqueId_numericId(const QPointingDeviceUniqueId* self) {
 	qint64 _ret = self->numericId();
 	return static_cast<long long>(_ret);
 }
 
-void QPointingDeviceUniqueId_Delete(QPointingDeviceUniqueId* self) {
+void QPointingDeviceUniqueId_delete(QPointingDeviceUniqueId* self) {
 	delete self;
 }
 
@@ -69,130 +69,130 @@ public:
 	virtual ~MiqtVirtualQPointingDevice() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QPointingDevice::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QPointingDevice_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QPointingDevice_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QPointingDevice::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QPointingDevice::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QPointingDevice_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QPointingDevice_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QPointingDevice::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QPointingDevice::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QPointingDevice_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QPointingDevice_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QPointingDevice::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QPointingDevice::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QPointingDevice_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QPointingDevice_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QPointingDevice::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QPointingDevice::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QPointingDevice_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QPointingDevice_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QPointingDevice::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QPointingDevice::connectNotify(signal);
 			return;
 		}
@@ -201,24 +201,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QPointingDevice_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QPointingDevice_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QPointingDevice::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QPointingDevice::disconnectNotify(signal);
 			return;
 		}
@@ -227,13 +227,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QPointingDevice_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QPointingDevice_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QPointingDevice::disconnectNotify(*signal);
 
@@ -276,15 +276,15 @@ void QPointingDevice_virtbase(QPointingDevice* src, QInputDevice** outptr_QInput
 	*outptr_QInputDevice = static_cast<QInputDevice*>(src);
 }
 
-QMetaObject* QPointingDevice_MetaObject(const QPointingDevice* self) {
+QMetaObject* QPointingDevice_metaObject(const QPointingDevice* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QPointingDevice_Metacast(QPointingDevice* self, const char* param1) {
+void* QPointingDevice_metacast(QPointingDevice* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QPointingDevice_Tr(const char* s) {
+struct miqt_string QPointingDevice_tr(const char* s) {
 	QString _ret = QPointingDevice::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -295,48 +295,48 @@ struct miqt_string QPointingDevice_Tr(const char* s) {
 	return _ms;
 }
 
-void QPointingDevice_SetType(QPointingDevice* self, int devType) {
+void QPointingDevice_setType(QPointingDevice* self, int devType) {
 	self->setType(static_cast<QInputDevice::DeviceType>(devType));
 }
 
-void QPointingDevice_SetCapabilities(QPointingDevice* self, int caps) {
+void QPointingDevice_setCapabilities(QPointingDevice* self, int caps) {
 	self->setCapabilities(static_cast<QInputDevice::Capabilities>(caps));
 }
 
-void QPointingDevice_SetMaximumTouchPoints(QPointingDevice* self, int c) {
+void QPointingDevice_setMaximumTouchPoints(QPointingDevice* self, int c) {
 	self->setMaximumTouchPoints(static_cast<int>(c));
 }
 
-int QPointingDevice_PointerType(const QPointingDevice* self) {
+int QPointingDevice_pointerType(const QPointingDevice* self) {
 	QPointingDevice::PointerType _ret = self->pointerType();
 	return static_cast<int>(_ret);
 }
 
-int QPointingDevice_MaximumPoints(const QPointingDevice* self) {
+int QPointingDevice_maximumPoints(const QPointingDevice* self) {
 	return self->maximumPoints();
 }
 
-int QPointingDevice_ButtonCount(const QPointingDevice* self) {
+int QPointingDevice_buttonCount(const QPointingDevice* self) {
 	return self->buttonCount();
 }
 
-QPointingDeviceUniqueId* QPointingDevice_UniqueId(const QPointingDevice* self) {
+QPointingDeviceUniqueId* QPointingDevice_uniqueId(const QPointingDevice* self) {
 	return new QPointingDeviceUniqueId(self->uniqueId());
 }
 
-QPointingDevice* QPointingDevice_PrimaryPointingDevice() {
+QPointingDevice* QPointingDevice_primaryPointingDevice() {
 	return (QPointingDevice*) QPointingDevice::primaryPointingDevice();
 }
 
-bool QPointingDevice_OperatorEqual(const QPointingDevice* self, QPointingDevice* other) {
+bool QPointingDevice_operatorEqual(const QPointingDevice* self, QPointingDevice* other) {
 	return (*self == *other);
 }
 
-void QPointingDevice_GrabChanged(const QPointingDevice* self, QObject* grabber, int transition, QPointerEvent* event, QEventPoint* point) {
+void QPointingDevice_grabChanged(const QPointingDevice* self, QObject* grabber, int transition, QPointerEvent* event, QEventPoint* point) {
 	self->grabChanged(grabber, static_cast<QPointingDevice::GrabTransition>(transition), event, *point);
 }
 
-void QPointingDevice_connect_GrabChanged(QPointingDevice* self, intptr_t slot) {
+void QPointingDevice_connect_grabChanged(QPointingDevice* self, intptr_t slot) {
 	MiqtVirtualQPointingDevice::connect(self, static_cast<void (QPointingDevice::*)(QObject*, QPointingDevice::GrabTransition, const QPointerEvent*, const QEventPoint&) const>(&QPointingDevice::grabChanged), self, [=](QObject* grabber, QPointingDevice::GrabTransition transition, const QPointerEvent* event, const QEventPoint& point) {
 		QObject* sigval1 = grabber;
 		QPointingDevice::GrabTransition transition_ret = transition;
@@ -345,11 +345,11 @@ void QPointingDevice_connect_GrabChanged(QPointingDevice* self, intptr_t slot) {
 		const QEventPoint& point_ret = point;
 		// Cast returned reference into pointer
 		QEventPoint* sigval4 = const_cast<QEventPoint*>(&point_ret);
-		miqt_exec_callback_QPointingDevice_GrabChanged(slot, sigval1, sigval2, sigval3, sigval4);
+		miqt_exec_callback_QPointingDevice_grabChanged(slot, sigval1, sigval2, sigval3, sigval4);
 	});
 }
 
-struct miqt_string QPointingDevice_Tr2(const char* s, const char* c) {
+struct miqt_string QPointingDevice_tr2(const char* s, const char* c) {
 	QString _ret = QPointingDevice::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -360,7 +360,7 @@ struct miqt_string QPointingDevice_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QPointingDevice_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QPointingDevice_tr3(const char* s, const char* c, int n) {
 	QString _ret = QPointingDevice::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -371,110 +371,110 @@ struct miqt_string QPointingDevice_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-QPointingDevice* QPointingDevice_PrimaryPointingDevice1(struct miqt_string seatName) {
+QPointingDevice* QPointingDevice_primaryPointingDevice1(struct miqt_string seatName) {
 	QString seatName_QString = QString::fromUtf8(seatName.data, seatName.len);
 	return (QPointingDevice*) QPointingDevice::primaryPointingDevice(seatName_QString);
 }
 
-bool QPointingDevice_override_virtual_Event(void* self, intptr_t slot) {
+bool QPointingDevice_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQPointingDevice* self_cast = dynamic_cast<MiqtVirtualQPointingDevice*>( (QPointingDevice*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QPointingDevice_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_Event(event);
+bool QPointingDevice_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_event(event);
 }
 
-bool QPointingDevice_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QPointingDevice_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQPointingDevice* self_cast = dynamic_cast<MiqtVirtualQPointingDevice*>( (QPointingDevice*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QPointingDevice_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_EventFilter(watched, event);
+bool QPointingDevice_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QPointingDevice_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QPointingDevice_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQPointingDevice* self_cast = dynamic_cast<MiqtVirtualQPointingDevice*>( (QPointingDevice*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QPointingDevice_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_TimerEvent(event);
+void QPointingDevice_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QPointingDevice_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QPointingDevice_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQPointingDevice* self_cast = dynamic_cast<MiqtVirtualQPointingDevice*>( (QPointingDevice*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QPointingDevice_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_ChildEvent(event);
+void QPointingDevice_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QPointingDevice_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QPointingDevice_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQPointingDevice* self_cast = dynamic_cast<MiqtVirtualQPointingDevice*>( (QPointingDevice*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QPointingDevice_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_CustomEvent(event);
+void QPointingDevice_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QPointingDevice_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QPointingDevice_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQPointingDevice* self_cast = dynamic_cast<MiqtVirtualQPointingDevice*>( (QPointingDevice*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QPointingDevice_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_ConnectNotify(signal);
+void QPointingDevice_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QPointingDevice_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QPointingDevice_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQPointingDevice* self_cast = dynamic_cast<MiqtVirtualQPointingDevice*>( (QPointingDevice*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QPointingDevice_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_DisconnectNotify(signal);
+void QPointingDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QPointingDevice_Delete(QPointingDevice* self) {
+void QPointingDevice_delete(QPointingDevice* self) {
 	delete self;
 }
 

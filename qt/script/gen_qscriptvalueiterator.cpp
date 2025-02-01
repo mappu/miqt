@@ -19,23 +19,23 @@ QScriptValueIterator* QScriptValueIterator_new(QScriptValue* value) {
 	return new QScriptValueIterator(*value);
 }
 
-bool QScriptValueIterator_HasNext(const QScriptValueIterator* self) {
+bool QScriptValueIterator_hasNext(const QScriptValueIterator* self) {
 	return self->hasNext();
 }
 
-void QScriptValueIterator_Next(QScriptValueIterator* self) {
+void QScriptValueIterator_next(QScriptValueIterator* self) {
 	self->next();
 }
 
-bool QScriptValueIterator_HasPrevious(const QScriptValueIterator* self) {
+bool QScriptValueIterator_hasPrevious(const QScriptValueIterator* self) {
 	return self->hasPrevious();
 }
 
-void QScriptValueIterator_Previous(QScriptValueIterator* self) {
+void QScriptValueIterator_previous(QScriptValueIterator* self) {
 	self->previous();
 }
 
-struct miqt_string QScriptValueIterator_Name(const QScriptValueIterator* self) {
+struct miqt_string QScriptValueIterator_name(const QScriptValueIterator* self) {
 	QString _ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -46,40 +46,40 @@ struct miqt_string QScriptValueIterator_Name(const QScriptValueIterator* self) {
 	return _ms;
 }
 
-QScriptString* QScriptValueIterator_ScriptName(const QScriptValueIterator* self) {
+QScriptString* QScriptValueIterator_scriptName(const QScriptValueIterator* self) {
 	return new QScriptString(self->scriptName());
 }
 
-QScriptValue* QScriptValueIterator_Value(const QScriptValueIterator* self) {
+QScriptValue* QScriptValueIterator_value(const QScriptValueIterator* self) {
 	return new QScriptValue(self->value());
 }
 
-void QScriptValueIterator_SetValue(QScriptValueIterator* self, QScriptValue* value) {
+void QScriptValueIterator_setValue(QScriptValueIterator* self, QScriptValue* value) {
 	self->setValue(*value);
 }
 
-int QScriptValueIterator_Flags(const QScriptValueIterator* self) {
+int QScriptValueIterator_flags(const QScriptValueIterator* self) {
 	QScriptValue::PropertyFlags _ret = self->flags();
 	return static_cast<int>(_ret);
 }
 
-void QScriptValueIterator_Remove(QScriptValueIterator* self) {
+void QScriptValueIterator_remove(QScriptValueIterator* self) {
 	self->remove();
 }
 
-void QScriptValueIterator_ToFront(QScriptValueIterator* self) {
+void QScriptValueIterator_toFront(QScriptValueIterator* self) {
 	self->toFront();
 }
 
-void QScriptValueIterator_ToBack(QScriptValueIterator* self) {
+void QScriptValueIterator_toBack(QScriptValueIterator* self) {
 	self->toBack();
 }
 
-void QScriptValueIterator_OperatorAssign(QScriptValueIterator* self, QScriptValue* value) {
+void QScriptValueIterator_operatorAssign(QScriptValueIterator* self, QScriptValue* value) {
 	self->operator=(*value);
 }
 
-void QScriptValueIterator_Delete(QScriptValueIterator* self) {
+void QScriptValueIterator_delete(QScriptValueIterator* self) {
 	delete self;
 }
 

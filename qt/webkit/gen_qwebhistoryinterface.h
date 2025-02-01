@@ -35,40 +35,40 @@ typedef struct QWebHistoryInterface QWebHistoryInterface;
 QWebHistoryInterface* QWebHistoryInterface_new();
 QWebHistoryInterface* QWebHistoryInterface_new2(QObject* parent);
 void QWebHistoryInterface_virtbase(QWebHistoryInterface* src, QObject** outptr_QObject);
-QMetaObject* QWebHistoryInterface_MetaObject(const QWebHistoryInterface* self);
-void* QWebHistoryInterface_Metacast(QWebHistoryInterface* self, const char* param1);
-struct miqt_string QWebHistoryInterface_Tr(const char* s);
-struct miqt_string QWebHistoryInterface_TrUtf8(const char* s);
-void QWebHistoryInterface_SetDefaultInterface(QWebHistoryInterface* defaultInterface);
-QWebHistoryInterface* QWebHistoryInterface_DefaultInterface();
-bool QWebHistoryInterface_HistoryContains(const QWebHistoryInterface* self, struct miqt_string url);
-void QWebHistoryInterface_AddHistoryEntry(QWebHistoryInterface* self, struct miqt_string url);
-struct miqt_string QWebHistoryInterface_Tr2(const char* s, const char* c);
-struct miqt_string QWebHistoryInterface_Tr3(const char* s, const char* c, int n);
-struct miqt_string QWebHistoryInterface_TrUtf82(const char* s, const char* c);
-struct miqt_string QWebHistoryInterface_TrUtf83(const char* s, const char* c, int n);
-bool QWebHistoryInterface_override_virtual_HistoryContains(void* self, intptr_t slot);
-bool QWebHistoryInterface_virtualbase_HistoryContains(const void* self, struct miqt_string url);
-bool QWebHistoryInterface_override_virtual_AddHistoryEntry(void* self, intptr_t slot);
-void QWebHistoryInterface_virtualbase_AddHistoryEntry(void* self, struct miqt_string url);
-bool QWebHistoryInterface_override_virtual_Event(void* self, intptr_t slot);
-bool QWebHistoryInterface_virtualbase_Event(void* self, QEvent* event);
-bool QWebHistoryInterface_override_virtual_EventFilter(void* self, intptr_t slot);
-bool QWebHistoryInterface_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-bool QWebHistoryInterface_override_virtual_TimerEvent(void* self, intptr_t slot);
-void QWebHistoryInterface_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-bool QWebHistoryInterface_override_virtual_ChildEvent(void* self, intptr_t slot);
-void QWebHistoryInterface_virtualbase_ChildEvent(void* self, QChildEvent* event);
-bool QWebHistoryInterface_override_virtual_CustomEvent(void* self, intptr_t slot);
-void QWebHistoryInterface_virtualbase_CustomEvent(void* self, QEvent* event);
-bool QWebHistoryInterface_override_virtual_ConnectNotify(void* self, intptr_t slot);
-void QWebHistoryInterface_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-bool QWebHistoryInterface_override_virtual_DisconnectNotify(void* self, intptr_t slot);
-void QWebHistoryInterface_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QWebHistoryInterface_Delete(QWebHistoryInterface* self);
+QMetaObject* QWebHistoryInterface_metaObject(const QWebHistoryInterface* self);
+void* QWebHistoryInterface_metacast(QWebHistoryInterface* self, const char* param1);
+struct miqt_string QWebHistoryInterface_tr(const char* s);
+struct miqt_string QWebHistoryInterface_trUtf8(const char* s);
+void QWebHistoryInterface_setDefaultInterface(QWebHistoryInterface* defaultInterface);
+QWebHistoryInterface* QWebHistoryInterface_defaultInterface();
+bool QWebHistoryInterface_historyContains(const QWebHistoryInterface* self, struct miqt_string url);
+void QWebHistoryInterface_addHistoryEntry(QWebHistoryInterface* self, struct miqt_string url);
+struct miqt_string QWebHistoryInterface_tr2(const char* s, const char* c);
+struct miqt_string QWebHistoryInterface_tr3(const char* s, const char* c, int n);
+struct miqt_string QWebHistoryInterface_trUtf82(const char* s, const char* c);
+struct miqt_string QWebHistoryInterface_trUtf83(const char* s, const char* c, int n);
+bool QWebHistoryInterface_override_virtual_historyContains(void* self, intptr_t slot);
+bool QWebHistoryInterface_virtualbase_historyContains(const void* self, struct miqt_string url);
+bool QWebHistoryInterface_override_virtual_addHistoryEntry(void* self, intptr_t slot);
+void QWebHistoryInterface_virtualbase_addHistoryEntry(void* self, struct miqt_string url);
+bool QWebHistoryInterface_override_virtual_event(void* self, intptr_t slot);
+bool QWebHistoryInterface_virtualbase_event(void* self, QEvent* event);
+bool QWebHistoryInterface_override_virtual_eventFilter(void* self, intptr_t slot);
+bool QWebHistoryInterface_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
+bool QWebHistoryInterface_override_virtual_timerEvent(void* self, intptr_t slot);
+void QWebHistoryInterface_virtualbase_timerEvent(void* self, QTimerEvent* event);
+bool QWebHistoryInterface_override_virtual_childEvent(void* self, intptr_t slot);
+void QWebHistoryInterface_virtualbase_childEvent(void* self, QChildEvent* event);
+bool QWebHistoryInterface_override_virtual_customEvent(void* self, intptr_t slot);
+void QWebHistoryInterface_virtualbase_customEvent(void* self, QEvent* event);
+bool QWebHistoryInterface_override_virtual_connectNotify(void* self, intptr_t slot);
+void QWebHistoryInterface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
+bool QWebHistoryInterface_override_virtual_disconnectNotify(void* self, intptr_t slot);
+void QWebHistoryInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QWebHistoryInterface_delete(QWebHistoryInterface* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

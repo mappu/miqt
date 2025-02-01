@@ -28,28 +28,28 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QGuiApplication_FontDatabaseChanged(intptr_t);
-void miqt_exec_callback_QGuiApplication_ScreenAdded(intptr_t, QScreen*);
-void miqt_exec_callback_QGuiApplication_ScreenRemoved(intptr_t, QScreen*);
-void miqt_exec_callback_QGuiApplication_PrimaryScreenChanged(intptr_t, QScreen*);
-void miqt_exec_callback_QGuiApplication_LastWindowClosed(intptr_t);
-void miqt_exec_callback_QGuiApplication_FocusObjectChanged(intptr_t, QObject*);
-void miqt_exec_callback_QGuiApplication_FocusWindowChanged(intptr_t, QWindow*);
-void miqt_exec_callback_QGuiApplication_ApplicationStateChanged(intptr_t, int);
-void miqt_exec_callback_QGuiApplication_LayoutDirectionChanged(intptr_t, int);
-void miqt_exec_callback_QGuiApplication_CommitDataRequest(intptr_t, QSessionManager*);
-void miqt_exec_callback_QGuiApplication_SaveStateRequest(intptr_t, QSessionManager*);
-void miqt_exec_callback_QGuiApplication_ApplicationDisplayNameChanged(intptr_t);
-void miqt_exec_callback_QGuiApplication_PaletteChanged(intptr_t, QPalette*);
-void miqt_exec_callback_QGuiApplication_FontChanged(intptr_t, QFont*);
-bool miqt_exec_callback_QGuiApplication_Notify(QGuiApplication*, intptr_t, QObject*, QEvent*);
-bool miqt_exec_callback_QGuiApplication_Event(QGuiApplication*, intptr_t, QEvent*);
-bool miqt_exec_callback_QGuiApplication_EventFilter(QGuiApplication*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QGuiApplication_TimerEvent(QGuiApplication*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QGuiApplication_ChildEvent(QGuiApplication*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QGuiApplication_CustomEvent(QGuiApplication*, intptr_t, QEvent*);
-void miqt_exec_callback_QGuiApplication_ConnectNotify(QGuiApplication*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QGuiApplication_DisconnectNotify(QGuiApplication*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGuiApplication_fontDatabaseChanged(intptr_t);
+void miqt_exec_callback_QGuiApplication_screenAdded(intptr_t, QScreen*);
+void miqt_exec_callback_QGuiApplication_screenRemoved(intptr_t, QScreen*);
+void miqt_exec_callback_QGuiApplication_primaryScreenChanged(intptr_t, QScreen*);
+void miqt_exec_callback_QGuiApplication_lastWindowClosed(intptr_t);
+void miqt_exec_callback_QGuiApplication_focusObjectChanged(intptr_t, QObject*);
+void miqt_exec_callback_QGuiApplication_focusWindowChanged(intptr_t, QWindow*);
+void miqt_exec_callback_QGuiApplication_applicationStateChanged(intptr_t, int);
+void miqt_exec_callback_QGuiApplication_layoutDirectionChanged(intptr_t, int);
+void miqt_exec_callback_QGuiApplication_commitDataRequest(intptr_t, QSessionManager*);
+void miqt_exec_callback_QGuiApplication_saveStateRequest(intptr_t, QSessionManager*);
+void miqt_exec_callback_QGuiApplication_applicationDisplayNameChanged(intptr_t);
+void miqt_exec_callback_QGuiApplication_paletteChanged(intptr_t, QPalette*);
+void miqt_exec_callback_QGuiApplication_fontChanged(intptr_t, QFont*);
+bool miqt_exec_callback_QGuiApplication_notify(QGuiApplication*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QGuiApplication_event(QGuiApplication*, intptr_t, QEvent*);
+bool miqt_exec_callback_QGuiApplication_eventFilter(QGuiApplication*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QGuiApplication_timerEvent(QGuiApplication*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QGuiApplication_childEvent(QGuiApplication*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QGuiApplication_customEvent(QGuiApplication*, intptr_t, QEvent*);
+void miqt_exec_callback_QGuiApplication_connectNotify(QGuiApplication*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QGuiApplication_disconnectNotify(QGuiApplication*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -63,154 +63,154 @@ public:
 	virtual ~MiqtVirtualQGuiApplication() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Notify = 0;
+	intptr_t handle__notify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool notify(QObject* param1, QEvent* param2) override {
-		if (handle__Notify == 0) {
+		if (handle__notify == 0) {
 			return QGuiApplication::notify(param1, param2);
 		}
 		
 		QObject* sigval1 = param1;
 		QEvent* sigval2 = param2;
 
-		bool callback_return_value = miqt_exec_callback_QGuiApplication_Notify(this, handle__Notify, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QGuiApplication_notify(this, handle__notify, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Notify(QObject* param1, QEvent* param2) {
+	bool virtualbase_notify(QObject* param1, QEvent* param2) {
 
 		return QGuiApplication::notify(param1, param2);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* param1) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QGuiApplication::event(param1);
 		}
 		
 		QEvent* sigval1 = param1;
 
-		bool callback_return_value = miqt_exec_callback_QGuiApplication_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QGuiApplication_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* param1) {
+	bool virtualbase_event(QEvent* param1) {
 
 		return QGuiApplication::event(param1);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QGuiApplication::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QGuiApplication_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QGuiApplication_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QGuiApplication::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QGuiApplication::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QGuiApplication_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QGuiApplication_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QGuiApplication::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QGuiApplication::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QGuiApplication_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QGuiApplication_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QGuiApplication::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QGuiApplication::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QGuiApplication_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QGuiApplication_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QGuiApplication::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QGuiApplication::connectNotify(signal);
 			return;
 		}
@@ -219,24 +219,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QGuiApplication_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QGuiApplication_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QGuiApplication::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QGuiApplication::disconnectNotify(signal);
 			return;
 		}
@@ -245,13 +245,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QGuiApplication_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QGuiApplication_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QGuiApplication::disconnectNotify(*signal);
 
@@ -271,15 +271,15 @@ void QGuiApplication_virtbase(QGuiApplication* src, QCoreApplication** outptr_QC
 	*outptr_QCoreApplication = static_cast<QCoreApplication*>(src);
 }
 
-QMetaObject* QGuiApplication_MetaObject(const QGuiApplication* self) {
+QMetaObject* QGuiApplication_metaObject(const QGuiApplication* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QGuiApplication_Metacast(QGuiApplication* self, const char* param1) {
+void* QGuiApplication_metacast(QGuiApplication* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QGuiApplication_Tr(const char* s) {
+struct miqt_string QGuiApplication_tr(const char* s) {
 	QString _ret = QGuiApplication::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -290,12 +290,12 @@ struct miqt_string QGuiApplication_Tr(const char* s) {
 	return _ms;
 }
 
-void QGuiApplication_SetApplicationDisplayName(struct miqt_string name) {
+void QGuiApplication_setApplicationDisplayName(struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QGuiApplication::setApplicationDisplayName(name_QString);
 }
 
-struct miqt_string QGuiApplication_ApplicationDisplayName() {
+struct miqt_string QGuiApplication_applicationDisplayName() {
 	QString _ret = QGuiApplication::applicationDisplayName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -306,12 +306,12 @@ struct miqt_string QGuiApplication_ApplicationDisplayName() {
 	return _ms;
 }
 
-void QGuiApplication_SetDesktopFileName(struct miqt_string name) {
+void QGuiApplication_setDesktopFileName(struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QGuiApplication::setDesktopFileName(name_QString);
 }
 
-struct miqt_string QGuiApplication_DesktopFileName() {
+struct miqt_string QGuiApplication_desktopFileName() {
 	QString _ret = QGuiApplication::desktopFileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -322,7 +322,7 @@ struct miqt_string QGuiApplication_DesktopFileName() {
 	return _ms;
 }
 
-struct miqt_array /* of QWindow* */  QGuiApplication_AllWindows() {
+struct miqt_array /* of QWindow* */  QGuiApplication_allWindows() {
 	QWindowList _ret = QGuiApplication::allWindows();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QWindow** _arr = static_cast<QWindow**>(malloc(sizeof(QWindow*) * _ret.length()));
@@ -335,7 +335,7 @@ struct miqt_array /* of QWindow* */  QGuiApplication_AllWindows() {
 	return _out;
 }
 
-struct miqt_array /* of QWindow* */  QGuiApplication_TopLevelWindows() {
+struct miqt_array /* of QWindow* */  QGuiApplication_topLevelWindows() {
 	QWindowList _ret = QGuiApplication::topLevelWindows();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QWindow** _arr = static_cast<QWindow**>(malloc(sizeof(QWindow*) * _ret.length()));
@@ -348,19 +348,19 @@ struct miqt_array /* of QWindow* */  QGuiApplication_TopLevelWindows() {
 	return _out;
 }
 
-QWindow* QGuiApplication_TopLevelAt(QPoint* pos) {
+QWindow* QGuiApplication_topLevelAt(QPoint* pos) {
 	return QGuiApplication::topLevelAt(*pos);
 }
 
-void QGuiApplication_SetWindowIcon(QIcon* icon) {
+void QGuiApplication_setWindowIcon(QIcon* icon) {
 	QGuiApplication::setWindowIcon(*icon);
 }
 
-QIcon* QGuiApplication_WindowIcon() {
+QIcon* QGuiApplication_windowIcon() {
 	return new QIcon(QGuiApplication::windowIcon());
 }
 
-struct miqt_string QGuiApplication_PlatformName() {
+struct miqt_string QGuiApplication_platformName() {
 	QString _ret = QGuiApplication::platformName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -371,23 +371,23 @@ struct miqt_string QGuiApplication_PlatformName() {
 	return _ms;
 }
 
-QWindow* QGuiApplication_ModalWindow() {
+QWindow* QGuiApplication_modalWindow() {
 	return QGuiApplication::modalWindow();
 }
 
-QWindow* QGuiApplication_FocusWindow() {
+QWindow* QGuiApplication_focusWindow() {
 	return QGuiApplication::focusWindow();
 }
 
-QObject* QGuiApplication_FocusObject() {
+QObject* QGuiApplication_focusObject() {
 	return QGuiApplication::focusObject();
 }
 
-QScreen* QGuiApplication_PrimaryScreen() {
+QScreen* QGuiApplication_primaryScreen() {
 	return QGuiApplication::primaryScreen();
 }
 
-struct miqt_array /* of QScreen* */  QGuiApplication_Screens() {
+struct miqt_array /* of QScreen* */  QGuiApplication_screens() {
 	QList<QScreen *> _ret = QGuiApplication::screens();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QScreen** _arr = static_cast<QScreen**>(malloc(sizeof(QScreen*) * _ret.length()));
@@ -400,134 +400,134 @@ struct miqt_array /* of QScreen* */  QGuiApplication_Screens() {
 	return _out;
 }
 
-QScreen* QGuiApplication_ScreenAt(QPoint* point) {
+QScreen* QGuiApplication_screenAt(QPoint* point) {
 	return QGuiApplication::screenAt(*point);
 }
 
-double QGuiApplication_DevicePixelRatio(const QGuiApplication* self) {
+double QGuiApplication_devicePixelRatio(const QGuiApplication* self) {
 	qreal _ret = self->devicePixelRatio();
 	return static_cast<double>(_ret);
 }
 
-QCursor* QGuiApplication_OverrideCursor() {
+QCursor* QGuiApplication_overrideCursor() {
 	return QGuiApplication::overrideCursor();
 }
 
-void QGuiApplication_SetOverrideCursor(QCursor* overrideCursor) {
+void QGuiApplication_setOverrideCursor(QCursor* overrideCursor) {
 	QGuiApplication::setOverrideCursor(*overrideCursor);
 }
 
-void QGuiApplication_ChangeOverrideCursor(QCursor* param1) {
+void QGuiApplication_changeOverrideCursor(QCursor* param1) {
 	QGuiApplication::changeOverrideCursor(*param1);
 }
 
-void QGuiApplication_RestoreOverrideCursor() {
+void QGuiApplication_restoreOverrideCursor() {
 	QGuiApplication::restoreOverrideCursor();
 }
 
-QFont* QGuiApplication_Font() {
+QFont* QGuiApplication_font() {
 	return new QFont(QGuiApplication::font());
 }
 
-void QGuiApplication_SetFont(QFont* font) {
+void QGuiApplication_setFont(QFont* font) {
 	QGuiApplication::setFont(*font);
 }
 
-QClipboard* QGuiApplication_Clipboard() {
+QClipboard* QGuiApplication_clipboard() {
 	return QGuiApplication::clipboard();
 }
 
-QPalette* QGuiApplication_Palette() {
+QPalette* QGuiApplication_palette() {
 	return new QPalette(QGuiApplication::palette());
 }
 
-void QGuiApplication_SetPalette(QPalette* pal) {
+void QGuiApplication_setPalette(QPalette* pal) {
 	QGuiApplication::setPalette(*pal);
 }
 
-int QGuiApplication_KeyboardModifiers() {
+int QGuiApplication_keyboardModifiers() {
 	Qt::KeyboardModifiers _ret = QGuiApplication::keyboardModifiers();
 	return static_cast<int>(_ret);
 }
 
-int QGuiApplication_QueryKeyboardModifiers() {
+int QGuiApplication_queryKeyboardModifiers() {
 	Qt::KeyboardModifiers _ret = QGuiApplication::queryKeyboardModifiers();
 	return static_cast<int>(_ret);
 }
 
-int QGuiApplication_MouseButtons() {
+int QGuiApplication_mouseButtons() {
 	Qt::MouseButtons _ret = QGuiApplication::mouseButtons();
 	return static_cast<int>(_ret);
 }
 
-void QGuiApplication_SetLayoutDirection(int direction) {
+void QGuiApplication_setLayoutDirection(int direction) {
 	QGuiApplication::setLayoutDirection(static_cast<Qt::LayoutDirection>(direction));
 }
 
-int QGuiApplication_LayoutDirection() {
+int QGuiApplication_layoutDirection() {
 	Qt::LayoutDirection _ret = QGuiApplication::layoutDirection();
 	return static_cast<int>(_ret);
 }
 
-bool QGuiApplication_IsRightToLeft() {
+bool QGuiApplication_isRightToLeft() {
 	return QGuiApplication::isRightToLeft();
 }
 
-bool QGuiApplication_IsLeftToRight() {
+bool QGuiApplication_isLeftToRight() {
 	return QGuiApplication::isLeftToRight();
 }
 
-QStyleHints* QGuiApplication_StyleHints() {
+QStyleHints* QGuiApplication_styleHints() {
 	return QGuiApplication::styleHints();
 }
 
-void QGuiApplication_SetDesktopSettingsAware(bool on) {
+void QGuiApplication_setDesktopSettingsAware(bool on) {
 	QGuiApplication::setDesktopSettingsAware(on);
 }
 
-bool QGuiApplication_DesktopSettingsAware() {
+bool QGuiApplication_desktopSettingsAware() {
 	return QGuiApplication::desktopSettingsAware();
 }
 
-QInputMethod* QGuiApplication_InputMethod() {
+QInputMethod* QGuiApplication_inputMethod() {
 	return QGuiApplication::inputMethod();
 }
 
-void QGuiApplication_SetQuitOnLastWindowClosed(bool quit) {
+void QGuiApplication_setQuitOnLastWindowClosed(bool quit) {
 	QGuiApplication::setQuitOnLastWindowClosed(quit);
 }
 
-bool QGuiApplication_QuitOnLastWindowClosed() {
+bool QGuiApplication_quitOnLastWindowClosed() {
 	return QGuiApplication::quitOnLastWindowClosed();
 }
 
-int QGuiApplication_ApplicationState() {
+int QGuiApplication_applicationState() {
 	Qt::ApplicationState _ret = QGuiApplication::applicationState();
 	return static_cast<int>(_ret);
 }
 
-void QGuiApplication_SetHighDpiScaleFactorRoundingPolicy(int policy) {
+void QGuiApplication_setHighDpiScaleFactorRoundingPolicy(int policy) {
 	QGuiApplication::setHighDpiScaleFactorRoundingPolicy(static_cast<Qt::HighDpiScaleFactorRoundingPolicy>(policy));
 }
 
-int QGuiApplication_HighDpiScaleFactorRoundingPolicy() {
+int QGuiApplication_highDpiScaleFactorRoundingPolicy() {
 	Qt::HighDpiScaleFactorRoundingPolicy _ret = QGuiApplication::highDpiScaleFactorRoundingPolicy();
 	return static_cast<int>(_ret);
 }
 
-int QGuiApplication_Exec() {
+int QGuiApplication_exec() {
 	return QGuiApplication::exec();
 }
 
-bool QGuiApplication_Notify(QGuiApplication* self, QObject* param1, QEvent* param2) {
+bool QGuiApplication_notify(QGuiApplication* self, QObject* param1, QEvent* param2) {
 	return self->notify(param1, param2);
 }
 
-bool QGuiApplication_IsSessionRestored(const QGuiApplication* self) {
+bool QGuiApplication_isSessionRestored(const QGuiApplication* self) {
 	return self->isSessionRestored();
 }
 
-struct miqt_string QGuiApplication_SessionId(const QGuiApplication* self) {
+struct miqt_string QGuiApplication_sessionId(const QGuiApplication* self) {
 	QString _ret = self->sessionId();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -538,7 +538,7 @@ struct miqt_string QGuiApplication_SessionId(const QGuiApplication* self) {
 	return _ms;
 }
 
-struct miqt_string QGuiApplication_SessionKey(const QGuiApplication* self) {
+struct miqt_string QGuiApplication_sessionKey(const QGuiApplication* self) {
 	QString _ret = self->sessionKey();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -549,176 +549,176 @@ struct miqt_string QGuiApplication_SessionKey(const QGuiApplication* self) {
 	return _ms;
 }
 
-bool QGuiApplication_IsSavingSession(const QGuiApplication* self) {
+bool QGuiApplication_isSavingSession(const QGuiApplication* self) {
 	return self->isSavingSession();
 }
 
-void QGuiApplication_Sync() {
+void QGuiApplication_sync() {
 	QGuiApplication::sync();
 }
 
-void QGuiApplication_FontDatabaseChanged(QGuiApplication* self) {
+void QGuiApplication_fontDatabaseChanged(QGuiApplication* self) {
 	self->fontDatabaseChanged();
 }
 
-void QGuiApplication_connect_FontDatabaseChanged(QGuiApplication* self, intptr_t slot) {
+void QGuiApplication_connect_fontDatabaseChanged(QGuiApplication* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)()>(&QGuiApplication::fontDatabaseChanged), self, [=]() {
-		miqt_exec_callback_QGuiApplication_FontDatabaseChanged(slot);
+		miqt_exec_callback_QGuiApplication_fontDatabaseChanged(slot);
 	});
 }
 
-void QGuiApplication_ScreenAdded(QGuiApplication* self, QScreen* screen) {
+void QGuiApplication_screenAdded(QGuiApplication* self, QScreen* screen) {
 	self->screenAdded(screen);
 }
 
-void QGuiApplication_connect_ScreenAdded(QGuiApplication* self, intptr_t slot) {
+void QGuiApplication_connect_screenAdded(QGuiApplication* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QScreen*)>(&QGuiApplication::screenAdded), self, [=](QScreen* screen) {
 		QScreen* sigval1 = screen;
-		miqt_exec_callback_QGuiApplication_ScreenAdded(slot, sigval1);
+		miqt_exec_callback_QGuiApplication_screenAdded(slot, sigval1);
 	});
 }
 
-void QGuiApplication_ScreenRemoved(QGuiApplication* self, QScreen* screen) {
+void QGuiApplication_screenRemoved(QGuiApplication* self, QScreen* screen) {
 	self->screenRemoved(screen);
 }
 
-void QGuiApplication_connect_ScreenRemoved(QGuiApplication* self, intptr_t slot) {
+void QGuiApplication_connect_screenRemoved(QGuiApplication* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QScreen*)>(&QGuiApplication::screenRemoved), self, [=](QScreen* screen) {
 		QScreen* sigval1 = screen;
-		miqt_exec_callback_QGuiApplication_ScreenRemoved(slot, sigval1);
+		miqt_exec_callback_QGuiApplication_screenRemoved(slot, sigval1);
 	});
 }
 
-void QGuiApplication_PrimaryScreenChanged(QGuiApplication* self, QScreen* screen) {
+void QGuiApplication_primaryScreenChanged(QGuiApplication* self, QScreen* screen) {
 	self->primaryScreenChanged(screen);
 }
 
-void QGuiApplication_connect_PrimaryScreenChanged(QGuiApplication* self, intptr_t slot) {
+void QGuiApplication_connect_primaryScreenChanged(QGuiApplication* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QScreen*)>(&QGuiApplication::primaryScreenChanged), self, [=](QScreen* screen) {
 		QScreen* sigval1 = screen;
-		miqt_exec_callback_QGuiApplication_PrimaryScreenChanged(slot, sigval1);
+		miqt_exec_callback_QGuiApplication_primaryScreenChanged(slot, sigval1);
 	});
 }
 
-void QGuiApplication_LastWindowClosed(QGuiApplication* self) {
+void QGuiApplication_lastWindowClosed(QGuiApplication* self) {
 	self->lastWindowClosed();
 }
 
-void QGuiApplication_connect_LastWindowClosed(QGuiApplication* self, intptr_t slot) {
+void QGuiApplication_connect_lastWindowClosed(QGuiApplication* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)()>(&QGuiApplication::lastWindowClosed), self, [=]() {
-		miqt_exec_callback_QGuiApplication_LastWindowClosed(slot);
+		miqt_exec_callback_QGuiApplication_lastWindowClosed(slot);
 	});
 }
 
-void QGuiApplication_FocusObjectChanged(QGuiApplication* self, QObject* focusObject) {
+void QGuiApplication_focusObjectChanged(QGuiApplication* self, QObject* focusObject) {
 	self->focusObjectChanged(focusObject);
 }
 
-void QGuiApplication_connect_FocusObjectChanged(QGuiApplication* self, intptr_t slot) {
+void QGuiApplication_connect_focusObjectChanged(QGuiApplication* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QObject*)>(&QGuiApplication::focusObjectChanged), self, [=](QObject* focusObject) {
 		QObject* sigval1 = focusObject;
-		miqt_exec_callback_QGuiApplication_FocusObjectChanged(slot, sigval1);
+		miqt_exec_callback_QGuiApplication_focusObjectChanged(slot, sigval1);
 	});
 }
 
-void QGuiApplication_FocusWindowChanged(QGuiApplication* self, QWindow* focusWindow) {
+void QGuiApplication_focusWindowChanged(QGuiApplication* self, QWindow* focusWindow) {
 	self->focusWindowChanged(focusWindow);
 }
 
-void QGuiApplication_connect_FocusWindowChanged(QGuiApplication* self, intptr_t slot) {
+void QGuiApplication_connect_focusWindowChanged(QGuiApplication* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QWindow*)>(&QGuiApplication::focusWindowChanged), self, [=](QWindow* focusWindow) {
 		QWindow* sigval1 = focusWindow;
-		miqt_exec_callback_QGuiApplication_FocusWindowChanged(slot, sigval1);
+		miqt_exec_callback_QGuiApplication_focusWindowChanged(slot, sigval1);
 	});
 }
 
-void QGuiApplication_ApplicationStateChanged(QGuiApplication* self, int state) {
+void QGuiApplication_applicationStateChanged(QGuiApplication* self, int state) {
 	self->applicationStateChanged(static_cast<Qt::ApplicationState>(state));
 }
 
-void QGuiApplication_connect_ApplicationStateChanged(QGuiApplication* self, intptr_t slot) {
+void QGuiApplication_connect_applicationStateChanged(QGuiApplication* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(Qt::ApplicationState)>(&QGuiApplication::applicationStateChanged), self, [=](Qt::ApplicationState state) {
 		Qt::ApplicationState state_ret = state;
 		int sigval1 = static_cast<int>(state_ret);
-		miqt_exec_callback_QGuiApplication_ApplicationStateChanged(slot, sigval1);
+		miqt_exec_callback_QGuiApplication_applicationStateChanged(slot, sigval1);
 	});
 }
 
-void QGuiApplication_LayoutDirectionChanged(QGuiApplication* self, int direction) {
+void QGuiApplication_layoutDirectionChanged(QGuiApplication* self, int direction) {
 	self->layoutDirectionChanged(static_cast<Qt::LayoutDirection>(direction));
 }
 
-void QGuiApplication_connect_LayoutDirectionChanged(QGuiApplication* self, intptr_t slot) {
+void QGuiApplication_connect_layoutDirectionChanged(QGuiApplication* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(Qt::LayoutDirection)>(&QGuiApplication::layoutDirectionChanged), self, [=](Qt::LayoutDirection direction) {
 		Qt::LayoutDirection direction_ret = direction;
 		int sigval1 = static_cast<int>(direction_ret);
-		miqt_exec_callback_QGuiApplication_LayoutDirectionChanged(slot, sigval1);
+		miqt_exec_callback_QGuiApplication_layoutDirectionChanged(slot, sigval1);
 	});
 }
 
-void QGuiApplication_CommitDataRequest(QGuiApplication* self, QSessionManager* sessionManager) {
+void QGuiApplication_commitDataRequest(QGuiApplication* self, QSessionManager* sessionManager) {
 	self->commitDataRequest(*sessionManager);
 }
 
-void QGuiApplication_connect_CommitDataRequest(QGuiApplication* self, intptr_t slot) {
+void QGuiApplication_connect_commitDataRequest(QGuiApplication* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QSessionManager&)>(&QGuiApplication::commitDataRequest), self, [=](QSessionManager& sessionManager) {
 		QSessionManager& sessionManager_ret = sessionManager;
 		// Cast returned reference into pointer
 		QSessionManager* sigval1 = &sessionManager_ret;
-		miqt_exec_callback_QGuiApplication_CommitDataRequest(slot, sigval1);
+		miqt_exec_callback_QGuiApplication_commitDataRequest(slot, sigval1);
 	});
 }
 
-void QGuiApplication_SaveStateRequest(QGuiApplication* self, QSessionManager* sessionManager) {
+void QGuiApplication_saveStateRequest(QGuiApplication* self, QSessionManager* sessionManager) {
 	self->saveStateRequest(*sessionManager);
 }
 
-void QGuiApplication_connect_SaveStateRequest(QGuiApplication* self, intptr_t slot) {
+void QGuiApplication_connect_saveStateRequest(QGuiApplication* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(QSessionManager&)>(&QGuiApplication::saveStateRequest), self, [=](QSessionManager& sessionManager) {
 		QSessionManager& sessionManager_ret = sessionManager;
 		// Cast returned reference into pointer
 		QSessionManager* sigval1 = &sessionManager_ret;
-		miqt_exec_callback_QGuiApplication_SaveStateRequest(slot, sigval1);
+		miqt_exec_callback_QGuiApplication_saveStateRequest(slot, sigval1);
 	});
 }
 
-void QGuiApplication_ApplicationDisplayNameChanged(QGuiApplication* self) {
+void QGuiApplication_applicationDisplayNameChanged(QGuiApplication* self) {
 	self->applicationDisplayNameChanged();
 }
 
-void QGuiApplication_connect_ApplicationDisplayNameChanged(QGuiApplication* self, intptr_t slot) {
+void QGuiApplication_connect_applicationDisplayNameChanged(QGuiApplication* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)()>(&QGuiApplication::applicationDisplayNameChanged), self, [=]() {
-		miqt_exec_callback_QGuiApplication_ApplicationDisplayNameChanged(slot);
+		miqt_exec_callback_QGuiApplication_applicationDisplayNameChanged(slot);
 	});
 }
 
-void QGuiApplication_PaletteChanged(QGuiApplication* self, QPalette* pal) {
+void QGuiApplication_paletteChanged(QGuiApplication* self, QPalette* pal) {
 	self->paletteChanged(*pal);
 }
 
-void QGuiApplication_connect_PaletteChanged(QGuiApplication* self, intptr_t slot) {
+void QGuiApplication_connect_paletteChanged(QGuiApplication* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(const QPalette&)>(&QGuiApplication::paletteChanged), self, [=](const QPalette& pal) {
 		const QPalette& pal_ret = pal;
 		// Cast returned reference into pointer
 		QPalette* sigval1 = const_cast<QPalette*>(&pal_ret);
-		miqt_exec_callback_QGuiApplication_PaletteChanged(slot, sigval1);
+		miqt_exec_callback_QGuiApplication_paletteChanged(slot, sigval1);
 	});
 }
 
-void QGuiApplication_FontChanged(QGuiApplication* self, QFont* font) {
+void QGuiApplication_fontChanged(QGuiApplication* self, QFont* font) {
 	self->fontChanged(*font);
 }
 
-void QGuiApplication_connect_FontChanged(QGuiApplication* self, intptr_t slot) {
+void QGuiApplication_connect_fontChanged(QGuiApplication* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication::connect(self, static_cast<void (QGuiApplication::*)(const QFont&)>(&QGuiApplication::fontChanged), self, [=](const QFont& font) {
 		const QFont& font_ret = font;
 		// Cast returned reference into pointer
 		QFont* sigval1 = const_cast<QFont*>(&font_ret);
-		miqt_exec_callback_QGuiApplication_FontChanged(slot, sigval1);
+		miqt_exec_callback_QGuiApplication_fontChanged(slot, sigval1);
 	});
 }
 
-struct miqt_string QGuiApplication_Tr2(const char* s, const char* c) {
+struct miqt_string QGuiApplication_tr2(const char* s, const char* c) {
 	QString _ret = QGuiApplication::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -729,7 +729,7 @@ struct miqt_string QGuiApplication_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QGuiApplication_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QGuiApplication_tr3(const char* s, const char* c, int n) {
 	QString _ret = QGuiApplication::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -740,119 +740,119 @@ struct miqt_string QGuiApplication_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QGuiApplication_override_virtual_Notify(void* self, intptr_t slot) {
+bool QGuiApplication_override_virtual_notify(void* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Notify = slot;
+	self_cast->handle__notify = slot;
 	return true;
 }
 
-bool QGuiApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2) {
-	return ( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_Notify(param1, param2);
+bool QGuiApplication_virtualbase_notify(void* self, QObject* param1, QEvent* param2) {
+	return ( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_notify(param1, param2);
 }
 
-bool QGuiApplication_override_virtual_Event(void* self, intptr_t slot) {
+bool QGuiApplication_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QGuiApplication_virtualbase_Event(void* self, QEvent* param1) {
-	return ( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_Event(param1);
+bool QGuiApplication_virtualbase_event(void* self, QEvent* param1) {
+	return ( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_event(param1);
 }
 
-bool QGuiApplication_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QGuiApplication_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QGuiApplication_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_EventFilter(watched, event);
+bool QGuiApplication_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QGuiApplication_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QGuiApplication_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QGuiApplication_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_TimerEvent(event);
+void QGuiApplication_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QGuiApplication_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QGuiApplication_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QGuiApplication_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_ChildEvent(event);
+void QGuiApplication_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QGuiApplication_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QGuiApplication_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QGuiApplication_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_CustomEvent(event);
+void QGuiApplication_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QGuiApplication_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QGuiApplication_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QGuiApplication_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_ConnectNotify(signal);
+void QGuiApplication_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QGuiApplication_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QGuiApplication_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQGuiApplication* self_cast = dynamic_cast<MiqtVirtualQGuiApplication*>( (QGuiApplication*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QGuiApplication_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_DisconnectNotify(signal);
+void QGuiApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQGuiApplication*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QGuiApplication_Delete(QGuiApplication* self) {
+void QGuiApplication_delete(QGuiApplication* self) {
 	delete self;
 }
 

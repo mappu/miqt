@@ -37,41 +37,41 @@ typedef struct QTimerEvent QTimerEvent;
 QPictureFormatPlugin* QPictureFormatPlugin_new();
 QPictureFormatPlugin* QPictureFormatPlugin_new2(QObject* parent);
 void QPictureFormatPlugin_virtbase(QPictureFormatPlugin* src, QObject** outptr_QObject);
-QMetaObject* QPictureFormatPlugin_MetaObject(const QPictureFormatPlugin* self);
-void* QPictureFormatPlugin_Metacast(QPictureFormatPlugin* self, const char* param1);
-struct miqt_string QPictureFormatPlugin_Tr(const char* s);
-struct miqt_string QPictureFormatPlugin_TrUtf8(const char* s);
-bool QPictureFormatPlugin_LoadPicture(QPictureFormatPlugin* self, struct miqt_string format, struct miqt_string filename, QPicture* pic);
-bool QPictureFormatPlugin_SavePicture(QPictureFormatPlugin* self, struct miqt_string format, struct miqt_string filename, QPicture* pic);
-bool QPictureFormatPlugin_InstallIOHandler(QPictureFormatPlugin* self, struct miqt_string format);
-struct miqt_string QPictureFormatPlugin_Tr2(const char* s, const char* c);
-struct miqt_string QPictureFormatPlugin_Tr3(const char* s, const char* c, int n);
-struct miqt_string QPictureFormatPlugin_TrUtf82(const char* s, const char* c);
-struct miqt_string QPictureFormatPlugin_TrUtf83(const char* s, const char* c, int n);
-bool QPictureFormatPlugin_override_virtual_LoadPicture(void* self, intptr_t slot);
-bool QPictureFormatPlugin_virtualbase_LoadPicture(void* self, struct miqt_string format, struct miqt_string filename, QPicture* pic);
-bool QPictureFormatPlugin_override_virtual_SavePicture(void* self, intptr_t slot);
-bool QPictureFormatPlugin_virtualbase_SavePicture(void* self, struct miqt_string format, struct miqt_string filename, QPicture* pic);
-bool QPictureFormatPlugin_override_virtual_InstallIOHandler(void* self, intptr_t slot);
-bool QPictureFormatPlugin_virtualbase_InstallIOHandler(void* self, struct miqt_string format);
-bool QPictureFormatPlugin_override_virtual_Event(void* self, intptr_t slot);
-bool QPictureFormatPlugin_virtualbase_Event(void* self, QEvent* event);
-bool QPictureFormatPlugin_override_virtual_EventFilter(void* self, intptr_t slot);
-bool QPictureFormatPlugin_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-bool QPictureFormatPlugin_override_virtual_TimerEvent(void* self, intptr_t slot);
-void QPictureFormatPlugin_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-bool QPictureFormatPlugin_override_virtual_ChildEvent(void* self, intptr_t slot);
-void QPictureFormatPlugin_virtualbase_ChildEvent(void* self, QChildEvent* event);
-bool QPictureFormatPlugin_override_virtual_CustomEvent(void* self, intptr_t slot);
-void QPictureFormatPlugin_virtualbase_CustomEvent(void* self, QEvent* event);
-bool QPictureFormatPlugin_override_virtual_ConnectNotify(void* self, intptr_t slot);
-void QPictureFormatPlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-bool QPictureFormatPlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
-void QPictureFormatPlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QPictureFormatPlugin_Delete(QPictureFormatPlugin* self);
+QMetaObject* QPictureFormatPlugin_metaObject(const QPictureFormatPlugin* self);
+void* QPictureFormatPlugin_metacast(QPictureFormatPlugin* self, const char* param1);
+struct miqt_string QPictureFormatPlugin_tr(const char* s);
+struct miqt_string QPictureFormatPlugin_trUtf8(const char* s);
+bool QPictureFormatPlugin_loadPicture(QPictureFormatPlugin* self, struct miqt_string format, struct miqt_string filename, QPicture* pic);
+bool QPictureFormatPlugin_savePicture(QPictureFormatPlugin* self, struct miqt_string format, struct miqt_string filename, QPicture* pic);
+bool QPictureFormatPlugin_installIOHandler(QPictureFormatPlugin* self, struct miqt_string format);
+struct miqt_string QPictureFormatPlugin_tr2(const char* s, const char* c);
+struct miqt_string QPictureFormatPlugin_tr3(const char* s, const char* c, int n);
+struct miqt_string QPictureFormatPlugin_trUtf82(const char* s, const char* c);
+struct miqt_string QPictureFormatPlugin_trUtf83(const char* s, const char* c, int n);
+bool QPictureFormatPlugin_override_virtual_loadPicture(void* self, intptr_t slot);
+bool QPictureFormatPlugin_virtualbase_loadPicture(void* self, struct miqt_string format, struct miqt_string filename, QPicture* pic);
+bool QPictureFormatPlugin_override_virtual_savePicture(void* self, intptr_t slot);
+bool QPictureFormatPlugin_virtualbase_savePicture(void* self, struct miqt_string format, struct miqt_string filename, QPicture* pic);
+bool QPictureFormatPlugin_override_virtual_installIOHandler(void* self, intptr_t slot);
+bool QPictureFormatPlugin_virtualbase_installIOHandler(void* self, struct miqt_string format);
+bool QPictureFormatPlugin_override_virtual_event(void* self, intptr_t slot);
+bool QPictureFormatPlugin_virtualbase_event(void* self, QEvent* event);
+bool QPictureFormatPlugin_override_virtual_eventFilter(void* self, intptr_t slot);
+bool QPictureFormatPlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
+bool QPictureFormatPlugin_override_virtual_timerEvent(void* self, intptr_t slot);
+void QPictureFormatPlugin_virtualbase_timerEvent(void* self, QTimerEvent* event);
+bool QPictureFormatPlugin_override_virtual_childEvent(void* self, intptr_t slot);
+void QPictureFormatPlugin_virtualbase_childEvent(void* self, QChildEvent* event);
+bool QPictureFormatPlugin_override_virtual_customEvent(void* self, intptr_t slot);
+void QPictureFormatPlugin_virtualbase_customEvent(void* self, QEvent* event);
+bool QPictureFormatPlugin_override_virtual_connectNotify(void* self, intptr_t slot);
+void QPictureFormatPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
+bool QPictureFormatPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
+void QPictureFormatPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QPictureFormatPlugin_delete(QPictureFormatPlugin* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

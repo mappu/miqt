@@ -21,7 +21,7 @@ QFontDatabase* QFontDatabase_new() {
 	return new QFontDatabase();
 }
 
-struct miqt_array /* of int */  QFontDatabase_StandardSizes() {
+struct miqt_array /* of int */  QFontDatabase_standardSizes() {
 	QList<int> _ret = QFontDatabase::standardSizes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -34,7 +34,7 @@ struct miqt_array /* of int */  QFontDatabase_StandardSizes() {
 	return _out;
 }
 
-struct miqt_array /* of int */  QFontDatabase_WritingSystems() {
+struct miqt_array /* of int */  QFontDatabase_writingSystems() {
 	QList<QFontDatabase::WritingSystem> _ret = QFontDatabase::writingSystems();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -48,7 +48,7 @@ struct miqt_array /* of int */  QFontDatabase_WritingSystems() {
 	return _out;
 }
 
-struct miqt_array /* of int */  QFontDatabase_WritingSystemsWithFamily(struct miqt_string family) {
+struct miqt_array /* of int */  QFontDatabase_writingSystemsWithFamily(struct miqt_string family) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	QList<QFontDatabase::WritingSystem> _ret = QFontDatabase::writingSystems(family_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -63,7 +63,7 @@ struct miqt_array /* of int */  QFontDatabase_WritingSystemsWithFamily(struct mi
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_string */  QFontDatabase_Families() {
+struct miqt_array /* of struct miqt_string */  QFontDatabase_families() {
 	QStringList _ret = QFontDatabase::families();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -83,7 +83,7 @@ struct miqt_array /* of struct miqt_string */  QFontDatabase_Families() {
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_string */  QFontDatabase_Styles(struct miqt_string family) {
+struct miqt_array /* of struct miqt_string */  QFontDatabase_styles(struct miqt_string family) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	QStringList _ret = QFontDatabase::styles(family_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -104,7 +104,7 @@ struct miqt_array /* of struct miqt_string */  QFontDatabase_Styles(struct miqt_
 	return _out;
 }
 
-struct miqt_array /* of int */  QFontDatabase_PointSizes(struct miqt_string family) {
+struct miqt_array /* of int */  QFontDatabase_pointSizes(struct miqt_string family) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	QList<int> _ret = QFontDatabase::pointSizes(family_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -118,7 +118,7 @@ struct miqt_array /* of int */  QFontDatabase_PointSizes(struct miqt_string fami
 	return _out;
 }
 
-struct miqt_array /* of int */  QFontDatabase_SmoothSizes(struct miqt_string family, struct miqt_string style) {
+struct miqt_array /* of int */  QFontDatabase_smoothSizes(struct miqt_string family, struct miqt_string style) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	QString style_QString = QString::fromUtf8(style.data, style.len);
 	QList<int> _ret = QFontDatabase::smoothSizes(family_QString, style_QString);
@@ -133,7 +133,7 @@ struct miqt_array /* of int */  QFontDatabase_SmoothSizes(struct miqt_string fam
 	return _out;
 }
 
-struct miqt_string QFontDatabase_StyleString(QFont* font) {
+struct miqt_string QFontDatabase_styleString(QFont* font) {
 	QString _ret = QFontDatabase::styleString(*font);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -144,7 +144,7 @@ struct miqt_string QFontDatabase_StyleString(QFont* font) {
 	return _ms;
 }
 
-struct miqt_string QFontDatabase_StyleStringWithFontInfo(QFontInfo* fontInfo) {
+struct miqt_string QFontDatabase_styleStringWithFontInfo(QFontInfo* fontInfo) {
 	QString _ret = QFontDatabase::styleString(*fontInfo);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -155,61 +155,61 @@ struct miqt_string QFontDatabase_StyleStringWithFontInfo(QFontInfo* fontInfo) {
 	return _ms;
 }
 
-QFont* QFontDatabase_Font(struct miqt_string family, struct miqt_string style, int pointSize) {
+QFont* QFontDatabase_font(struct miqt_string family, struct miqt_string style, int pointSize) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	QString style_QString = QString::fromUtf8(style.data, style.len);
 	return new QFont(QFontDatabase::font(family_QString, style_QString, static_cast<int>(pointSize)));
 }
 
-bool QFontDatabase_IsBitmapScalable(struct miqt_string family) {
+bool QFontDatabase_isBitmapScalable(struct miqt_string family) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	return QFontDatabase::isBitmapScalable(family_QString);
 }
 
-bool QFontDatabase_IsSmoothlyScalable(struct miqt_string family) {
+bool QFontDatabase_isSmoothlyScalable(struct miqt_string family) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	return QFontDatabase::isSmoothlyScalable(family_QString);
 }
 
-bool QFontDatabase_IsScalable(struct miqt_string family) {
+bool QFontDatabase_isScalable(struct miqt_string family) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	return QFontDatabase::isScalable(family_QString);
 }
 
-bool QFontDatabase_IsFixedPitch(struct miqt_string family) {
+bool QFontDatabase_isFixedPitch(struct miqt_string family) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	return QFontDatabase::isFixedPitch(family_QString);
 }
 
-bool QFontDatabase_Italic(struct miqt_string family, struct miqt_string style) {
+bool QFontDatabase_italic(struct miqt_string family, struct miqt_string style) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	QString style_QString = QString::fromUtf8(style.data, style.len);
 	return QFontDatabase::italic(family_QString, style_QString);
 }
 
-bool QFontDatabase_Bold(struct miqt_string family, struct miqt_string style) {
+bool QFontDatabase_bold(struct miqt_string family, struct miqt_string style) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	QString style_QString = QString::fromUtf8(style.data, style.len);
 	return QFontDatabase::bold(family_QString, style_QString);
 }
 
-int QFontDatabase_Weight(struct miqt_string family, struct miqt_string style) {
+int QFontDatabase_weight(struct miqt_string family, struct miqt_string style) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	QString style_QString = QString::fromUtf8(style.data, style.len);
 	return QFontDatabase::weight(family_QString, style_QString);
 }
 
-bool QFontDatabase_HasFamily(struct miqt_string family) {
+bool QFontDatabase_hasFamily(struct miqt_string family) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	return QFontDatabase::hasFamily(family_QString);
 }
 
-bool QFontDatabase_IsPrivateFamily(struct miqt_string family) {
+bool QFontDatabase_isPrivateFamily(struct miqt_string family) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	return QFontDatabase::isPrivateFamily(family_QString);
 }
 
-struct miqt_string QFontDatabase_WritingSystemName(int writingSystem) {
+struct miqt_string QFontDatabase_writingSystemName(int writingSystem) {
 	QString _ret = QFontDatabase::writingSystemName(static_cast<QFontDatabase::WritingSystem>(writingSystem));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -220,7 +220,7 @@ struct miqt_string QFontDatabase_WritingSystemName(int writingSystem) {
 	return _ms;
 }
 
-struct miqt_string QFontDatabase_WritingSystemSample(int writingSystem) {
+struct miqt_string QFontDatabase_writingSystemSample(int writingSystem) {
 	QString _ret = QFontDatabase::writingSystemSample(static_cast<QFontDatabase::WritingSystem>(writingSystem));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -231,17 +231,17 @@ struct miqt_string QFontDatabase_WritingSystemSample(int writingSystem) {
 	return _ms;
 }
 
-int QFontDatabase_AddApplicationFont(struct miqt_string fileName) {
+int QFontDatabase_addApplicationFont(struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return QFontDatabase::addApplicationFont(fileName_QString);
 }
 
-int QFontDatabase_AddApplicationFontFromData(struct miqt_string fontData) {
+int QFontDatabase_addApplicationFontFromData(struct miqt_string fontData) {
 	QByteArray fontData_QByteArray(fontData.data, fontData.len);
 	return QFontDatabase::addApplicationFontFromData(fontData_QByteArray);
 }
 
-struct miqt_array /* of struct miqt_string */  QFontDatabase_ApplicationFontFamilies(int id) {
+struct miqt_array /* of struct miqt_string */  QFontDatabase_applicationFontFamilies(int id) {
 	QStringList _ret = QFontDatabase::applicationFontFamilies(static_cast<int>(id));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -261,19 +261,19 @@ struct miqt_array /* of struct miqt_string */  QFontDatabase_ApplicationFontFami
 	return _out;
 }
 
-bool QFontDatabase_RemoveApplicationFont(int id) {
+bool QFontDatabase_removeApplicationFont(int id) {
 	return QFontDatabase::removeApplicationFont(static_cast<int>(id));
 }
 
-bool QFontDatabase_RemoveAllApplicationFonts() {
+bool QFontDatabase_removeAllApplicationFonts() {
 	return QFontDatabase::removeAllApplicationFonts();
 }
 
-QFont* QFontDatabase_SystemFont(int typeVal) {
-	return new QFont(QFontDatabase::systemFont(static_cast<QFontDatabase::SystemFont>(typeVal)));
+QFont* QFontDatabase_systemFont(int type) {
+	return new QFont(QFontDatabase::systemFont(static_cast<QFontDatabase::SystemFont>(type)));
 }
 
-struct miqt_array /* of struct miqt_string */  QFontDatabase_Families1(int writingSystem) {
+struct miqt_array /* of struct miqt_string */  QFontDatabase_families1(int writingSystem) {
 	QStringList _ret = QFontDatabase::families(static_cast<QFontDatabase::WritingSystem>(writingSystem));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -293,7 +293,7 @@ struct miqt_array /* of struct miqt_string */  QFontDatabase_Families1(int writi
 	return _out;
 }
 
-struct miqt_array /* of int */  QFontDatabase_PointSizes2(struct miqt_string family, struct miqt_string style) {
+struct miqt_array /* of int */  QFontDatabase_pointSizes2(struct miqt_string family, struct miqt_string style) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	QString style_QString = QString::fromUtf8(style.data, style.len);
 	QList<int> _ret = QFontDatabase::pointSizes(family_QString, style_QString);
@@ -308,31 +308,31 @@ struct miqt_array /* of int */  QFontDatabase_PointSizes2(struct miqt_string fam
 	return _out;
 }
 
-bool QFontDatabase_IsBitmapScalable2(struct miqt_string family, struct miqt_string style) {
+bool QFontDatabase_isBitmapScalable2(struct miqt_string family, struct miqt_string style) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	QString style_QString = QString::fromUtf8(style.data, style.len);
 	return QFontDatabase::isBitmapScalable(family_QString, style_QString);
 }
 
-bool QFontDatabase_IsSmoothlyScalable2(struct miqt_string family, struct miqt_string style) {
+bool QFontDatabase_isSmoothlyScalable2(struct miqt_string family, struct miqt_string style) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	QString style_QString = QString::fromUtf8(style.data, style.len);
 	return QFontDatabase::isSmoothlyScalable(family_QString, style_QString);
 }
 
-bool QFontDatabase_IsScalable2(struct miqt_string family, struct miqt_string style) {
+bool QFontDatabase_isScalable2(struct miqt_string family, struct miqt_string style) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	QString style_QString = QString::fromUtf8(style.data, style.len);
 	return QFontDatabase::isScalable(family_QString, style_QString);
 }
 
-bool QFontDatabase_IsFixedPitch2(struct miqt_string family, struct miqt_string style) {
+bool QFontDatabase_isFixedPitch2(struct miqt_string family, struct miqt_string style) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	QString style_QString = QString::fromUtf8(style.data, style.len);
 	return QFontDatabase::isFixedPitch(family_QString, style_QString);
 }
 
-void QFontDatabase_Delete(QFontDatabase* self) {
+void QFontDatabase_delete(QFontDatabase* self) {
 	delete self;
 }
 

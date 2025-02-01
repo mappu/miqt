@@ -54,36 +54,36 @@ func NewQLoggingCategory(category string) *QLoggingCategory {
 }
 
 func (this *QLoggingCategory) IsDebugEnabled() bool {
-	return (bool)(C.QLoggingCategory_IsDebugEnabled(this.h))
+	return (bool)(C.QLoggingCategory_isDebugEnabled(this.h))
 }
 
 func (this *QLoggingCategory) IsInfoEnabled() bool {
-	return (bool)(C.QLoggingCategory_IsInfoEnabled(this.h))
+	return (bool)(C.QLoggingCategory_isInfoEnabled(this.h))
 }
 
 func (this *QLoggingCategory) IsWarningEnabled() bool {
-	return (bool)(C.QLoggingCategory_IsWarningEnabled(this.h))
+	return (bool)(C.QLoggingCategory_isWarningEnabled(this.h))
 }
 
 func (this *QLoggingCategory) IsCriticalEnabled() bool {
-	return (bool)(C.QLoggingCategory_IsCriticalEnabled(this.h))
+	return (bool)(C.QLoggingCategory_isCriticalEnabled(this.h))
 }
 
 func (this *QLoggingCategory) CategoryName() string {
-	_ret := C.QLoggingCategory_CategoryName(this.h)
+	_ret := C.QLoggingCategory_categoryName(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QLoggingCategory) OperatorCall() *QLoggingCategory {
-	return newQLoggingCategory(C.QLoggingCategory_OperatorCall(this.h))
+	return newQLoggingCategory(C.QLoggingCategory_operatorCall(this.h))
 }
 
 func (this *QLoggingCategory) OperatorCall2() *QLoggingCategory {
-	return newQLoggingCategory(C.QLoggingCategory_OperatorCall2(this.h))
+	return newQLoggingCategory(C.QLoggingCategory_operatorCall2(this.h))
 }
 
 func QLoggingCategory_DefaultCategory() *QLoggingCategory {
-	return newQLoggingCategory(C.QLoggingCategory_DefaultCategory())
+	return newQLoggingCategory(C.QLoggingCategory_defaultCategory())
 }
 
 func QLoggingCategory_SetFilterRules(rules string) {
@@ -91,12 +91,12 @@ func QLoggingCategory_SetFilterRules(rules string) {
 	rules_ms.data = C.CString(rules)
 	rules_ms.len = C.size_t(len(rules))
 	defer C.free(unsafe.Pointer(rules_ms.data))
-	C.QLoggingCategory_SetFilterRules(rules_ms)
+	C.QLoggingCategory_setFilterRules(rules_ms)
 }
 
 // Delete this object from C++ memory.
 func (this *QLoggingCategory) Delete() {
-	C.QLoggingCategory_Delete(this.h)
+	C.QLoggingCategory_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

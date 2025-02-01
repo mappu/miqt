@@ -107,31 +107,31 @@ func NewQRegExp5(pattern string, cs CaseSensitivity, syntax QRegExp__PatternSynt
 }
 
 func (this *QRegExp) OperatorAssign(rx *QRegExp) {
-	C.QRegExp_OperatorAssign(this.h, rx.cPointer())
+	C.QRegExp_operatorAssign(this.h, rx.cPointer())
 }
 
 func (this *QRegExp) Swap(other *QRegExp) {
-	C.QRegExp_Swap(this.h, other.cPointer())
+	C.QRegExp_swap(this.h, other.cPointer())
 }
 
 func (this *QRegExp) OperatorEqual(rx *QRegExp) bool {
-	return (bool)(C.QRegExp_OperatorEqual(this.h, rx.cPointer()))
+	return (bool)(C.QRegExp_operatorEqual(this.h, rx.cPointer()))
 }
 
 func (this *QRegExp) OperatorNotEqual(rx *QRegExp) bool {
-	return (bool)(C.QRegExp_OperatorNotEqual(this.h, rx.cPointer()))
+	return (bool)(C.QRegExp_operatorNotEqual(this.h, rx.cPointer()))
 }
 
 func (this *QRegExp) IsEmpty() bool {
-	return (bool)(C.QRegExp_IsEmpty(this.h))
+	return (bool)(C.QRegExp_isEmpty(this.h))
 }
 
 func (this *QRegExp) IsValid() bool {
-	return (bool)(C.QRegExp_IsValid(this.h))
+	return (bool)(C.QRegExp_isValid(this.h))
 }
 
 func (this *QRegExp) Pattern() string {
-	var _ms C.struct_miqt_string = C.QRegExp_Pattern(this.h)
+	var _ms C.struct_miqt_string = C.QRegExp_pattern(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -142,31 +142,31 @@ func (this *QRegExp) SetPattern(pattern string) {
 	pattern_ms.data = C.CString(pattern)
 	pattern_ms.len = C.size_t(len(pattern))
 	defer C.free(unsafe.Pointer(pattern_ms.data))
-	C.QRegExp_SetPattern(this.h, pattern_ms)
+	C.QRegExp_setPattern(this.h, pattern_ms)
 }
 
 func (this *QRegExp) CaseSensitivity() CaseSensitivity {
-	return (CaseSensitivity)(C.QRegExp_CaseSensitivity(this.h))
+	return (CaseSensitivity)(C.QRegExp_caseSensitivity(this.h))
 }
 
 func (this *QRegExp) SetCaseSensitivity(cs CaseSensitivity) {
-	C.QRegExp_SetCaseSensitivity(this.h, (C.int)(cs))
+	C.QRegExp_setCaseSensitivity(this.h, (C.int)(cs))
 }
 
 func (this *QRegExp) PatternSyntax() QRegExp__PatternSyntax {
-	return (QRegExp__PatternSyntax)(C.QRegExp_PatternSyntax(this.h))
+	return (QRegExp__PatternSyntax)(C.QRegExp_patternSyntax(this.h))
 }
 
 func (this *QRegExp) SetPatternSyntax(syntax QRegExp__PatternSyntax) {
-	C.QRegExp_SetPatternSyntax(this.h, (C.int)(syntax))
+	C.QRegExp_setPatternSyntax(this.h, (C.int)(syntax))
 }
 
 func (this *QRegExp) IsMinimal() bool {
-	return (bool)(C.QRegExp_IsMinimal(this.h))
+	return (bool)(C.QRegExp_isMinimal(this.h))
 }
 
 func (this *QRegExp) SetMinimal(minimal bool) {
-	C.QRegExp_SetMinimal(this.h, (C.bool)(minimal))
+	C.QRegExp_setMinimal(this.h, (C.bool)(minimal))
 }
 
 func (this *QRegExp) ExactMatch(str string) bool {
@@ -174,7 +174,7 @@ func (this *QRegExp) ExactMatch(str string) bool {
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	return (bool)(C.QRegExp_ExactMatch(this.h, str_ms))
+	return (bool)(C.QRegExp_exactMatch(this.h, str_ms))
 }
 
 func (this *QRegExp) IndexIn(str string) int {
@@ -182,7 +182,7 @@ func (this *QRegExp) IndexIn(str string) int {
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	return (int)(C.QRegExp_IndexIn(this.h, str_ms))
+	return (int)(C.QRegExp_indexIn(this.h, str_ms))
 }
 
 func (this *QRegExp) LastIndexIn(str string) int {
@@ -190,19 +190,19 @@ func (this *QRegExp) LastIndexIn(str string) int {
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	return (int)(C.QRegExp_LastIndexIn(this.h, str_ms))
+	return (int)(C.QRegExp_lastIndexIn(this.h, str_ms))
 }
 
 func (this *QRegExp) MatchedLength() int {
-	return (int)(C.QRegExp_MatchedLength(this.h))
+	return (int)(C.QRegExp_matchedLength(this.h))
 }
 
 func (this *QRegExp) CaptureCount() int {
-	return (int)(C.QRegExp_CaptureCount(this.h))
+	return (int)(C.QRegExp_captureCount(this.h))
 }
 
 func (this *QRegExp) CapturedTexts() []string {
-	var _ma C.struct_miqt_array = C.QRegExp_CapturedTexts(this.h)
+	var _ma C.struct_miqt_array = C.QRegExp_capturedTexts(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -215,7 +215,7 @@ func (this *QRegExp) CapturedTexts() []string {
 }
 
 func (this *QRegExp) CapturedTexts2() []string {
-	var _ma C.struct_miqt_array = C.QRegExp_CapturedTexts2(this.h)
+	var _ma C.struct_miqt_array = C.QRegExp_capturedTexts2(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -228,36 +228,36 @@ func (this *QRegExp) CapturedTexts2() []string {
 }
 
 func (this *QRegExp) Cap() string {
-	var _ms C.struct_miqt_string = C.QRegExp_Cap(this.h)
+	var _ms C.struct_miqt_string = C.QRegExp_cap(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QRegExp) Cap2() string {
-	var _ms C.struct_miqt_string = C.QRegExp_Cap2(this.h)
+	var _ms C.struct_miqt_string = C.QRegExp_cap2(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QRegExp) Pos() int {
-	return (int)(C.QRegExp_Pos(this.h))
+	return (int)(C.QRegExp_pos(this.h))
 }
 
 func (this *QRegExp) Pos2() int {
-	return (int)(C.QRegExp_Pos2(this.h))
+	return (int)(C.QRegExp_pos2(this.h))
 }
 
 func (this *QRegExp) ErrorString() string {
-	var _ms C.struct_miqt_string = C.QRegExp_ErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QRegExp_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QRegExp) ErrorString2() string {
-	var _ms C.struct_miqt_string = C.QRegExp_ErrorString2(this.h)
+	var _ms C.struct_miqt_string = C.QRegExp_errorString2(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -268,7 +268,7 @@ func QRegExp_Escape(str string) string {
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	var _ms C.struct_miqt_string = C.QRegExp_Escape(str_ms)
+	var _ms C.struct_miqt_string = C.QRegExp_escape(str_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -279,7 +279,7 @@ func (this *QRegExp) IndexIn2(str string, offset int) int {
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	return (int)(C.QRegExp_IndexIn2(this.h, str_ms, (C.int)(offset)))
+	return (int)(C.QRegExp_indexIn2(this.h, str_ms, (C.int)(offset)))
 }
 
 func (this *QRegExp) IndexIn3(str string, offset int, caretMode QRegExp__CaretMode) int {
@@ -287,7 +287,7 @@ func (this *QRegExp) IndexIn3(str string, offset int, caretMode QRegExp__CaretMo
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	return (int)(C.QRegExp_IndexIn3(this.h, str_ms, (C.int)(offset), (C.int)(caretMode)))
+	return (int)(C.QRegExp_indexIn3(this.h, str_ms, (C.int)(offset), (C.int)(caretMode)))
 }
 
 func (this *QRegExp) LastIndexIn2(str string, offset int) int {
@@ -295,7 +295,7 @@ func (this *QRegExp) LastIndexIn2(str string, offset int) int {
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	return (int)(C.QRegExp_LastIndexIn2(this.h, str_ms, (C.int)(offset)))
+	return (int)(C.QRegExp_lastIndexIn2(this.h, str_ms, (C.int)(offset)))
 }
 
 func (this *QRegExp) LastIndexIn3(str string, offset int, caretMode QRegExp__CaretMode) int {
@@ -303,34 +303,34 @@ func (this *QRegExp) LastIndexIn3(str string, offset int, caretMode QRegExp__Car
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	return (int)(C.QRegExp_LastIndexIn3(this.h, str_ms, (C.int)(offset), (C.int)(caretMode)))
+	return (int)(C.QRegExp_lastIndexIn3(this.h, str_ms, (C.int)(offset), (C.int)(caretMode)))
 }
 
 func (this *QRegExp) Cap1(nth int) string {
-	var _ms C.struct_miqt_string = C.QRegExp_Cap1(this.h, (C.int)(nth))
+	var _ms C.struct_miqt_string = C.QRegExp_cap1(this.h, (C.int)(nth))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QRegExp) Cap1WithNth(nth int) string {
-	var _ms C.struct_miqt_string = C.QRegExp_Cap1WithNth(this.h, (C.int)(nth))
+	var _ms C.struct_miqt_string = C.QRegExp_cap1WithNth(this.h, (C.int)(nth))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QRegExp) Pos1(nth int) int {
-	return (int)(C.QRegExp_Pos1(this.h, (C.int)(nth)))
+	return (int)(C.QRegExp_pos1(this.h, (C.int)(nth)))
 }
 
 func (this *QRegExp) Pos1WithNth(nth int) int {
-	return (int)(C.QRegExp_Pos1WithNth(this.h, (C.int)(nth)))
+	return (int)(C.QRegExp_pos1WithNth(this.h, (C.int)(nth)))
 }
 
 // Delete this object from C++ memory.
 func (this *QRegExp) Delete() {
-	C.QRegExp_Delete(this.h)
+	C.QRegExp_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

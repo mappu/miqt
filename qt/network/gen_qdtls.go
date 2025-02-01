@@ -87,19 +87,19 @@ func NewQDtlsClientVerifier2(parent *qt.QObject) *QDtlsClientVerifier {
 }
 
 func (this *QDtlsClientVerifier) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QDtlsClientVerifier_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QDtlsClientVerifier_metaObject(this.h)))
 }
 
 func (this *QDtlsClientVerifier) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QDtlsClientVerifier_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QDtlsClientVerifier_metacast(this.h, param1_Cstring))
 }
 
 func QDtlsClientVerifier_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QDtlsClientVerifier_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QDtlsClientVerifier_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -108,18 +108,18 @@ func QDtlsClientVerifier_Tr(s string) string {
 func QDtlsClientVerifier_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QDtlsClientVerifier_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QDtlsClientVerifier_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDtlsClientVerifier) SetCookieGeneratorParameters(params *QDtlsClientVerifier__GeneratorParameters) bool {
-	return (bool)(C.QDtlsClientVerifier_SetCookieGeneratorParameters(this.h, params.cPointer()))
+	return (bool)(C.QDtlsClientVerifier_setCookieGeneratorParameters(this.h, params.cPointer()))
 }
 
 func (this *QDtlsClientVerifier) CookieGeneratorParameters() *QDtlsClientVerifier__GeneratorParameters {
-	_goptr := newQDtlsClientVerifier__GeneratorParameters(C.QDtlsClientVerifier_CookieGeneratorParameters(this.h))
+	_goptr := newQDtlsClientVerifier__GeneratorParameters(C.QDtlsClientVerifier_cookieGeneratorParameters(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -132,22 +132,22 @@ func (this *QDtlsClientVerifier) VerifyClient(socket *QUdpSocket, dgram []byte, 
 		dgram_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	dgram_alias.len = C.size_t(len(dgram))
-	return (bool)(C.QDtlsClientVerifier_VerifyClient(this.h, socket.cPointer(), dgram_alias, address.cPointer(), (C.uint16_t)(port)))
+	return (bool)(C.QDtlsClientVerifier_verifyClient(this.h, socket.cPointer(), dgram_alias, address.cPointer(), (C.uint16_t)(port)))
 }
 
 func (this *QDtlsClientVerifier) VerifiedHello() []byte {
-	var _bytearray C.struct_miqt_string = C.QDtlsClientVerifier_VerifiedHello(this.h)
+	var _bytearray C.struct_miqt_string = C.QDtlsClientVerifier_verifiedHello(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QDtlsClientVerifier) DtlsError() QDtlsError {
-	return (QDtlsError)(C.QDtlsClientVerifier_DtlsError(this.h))
+	return (QDtlsError)(C.QDtlsClientVerifier_dtlsError(this.h))
 }
 
 func (this *QDtlsClientVerifier) DtlsErrorString() string {
-	var _ms C.struct_miqt_string = C.QDtlsClientVerifier_DtlsErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QDtlsClientVerifier_dtlsErrorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -158,7 +158,7 @@ func QDtlsClientVerifier_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QDtlsClientVerifier_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QDtlsClientVerifier_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -169,7 +169,7 @@ func QDtlsClientVerifier_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QDtlsClientVerifier_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QDtlsClientVerifier_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -180,7 +180,7 @@ func QDtlsClientVerifier_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QDtlsClientVerifier_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QDtlsClientVerifier_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -191,7 +191,7 @@ func QDtlsClientVerifier_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QDtlsClientVerifier_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QDtlsClientVerifier_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -199,18 +199,18 @@ func QDtlsClientVerifier_TrUtf83(s string, c string, n int) string {
 
 func (this *QDtlsClientVerifier) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.QDtlsClientVerifier_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QDtlsClientVerifier_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QDtlsClientVerifier) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.QDtlsClientVerifier_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDtlsClientVerifier) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QDtlsClientVerifier_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDtlsClientVerifier_Event
-func miqt_exec_callback_QDtlsClientVerifier_Event(self *C.QDtlsClientVerifier, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QDtlsClientVerifier_event
+func miqt_exec_callback_QDtlsClientVerifier_event(self *C.QDtlsClientVerifier, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -227,18 +227,18 @@ func miqt_exec_callback_QDtlsClientVerifier_Event(self *C.QDtlsClientVerifier, c
 
 func (this *QDtlsClientVerifier) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.QDtlsClientVerifier_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QDtlsClientVerifier_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QDtlsClientVerifier) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.QDtlsClientVerifier_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDtlsClientVerifier) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QDtlsClientVerifier_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDtlsClientVerifier_EventFilter
-func miqt_exec_callback_QDtlsClientVerifier_EventFilter(self *C.QDtlsClientVerifier, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QDtlsClientVerifier_eventFilter
+func miqt_exec_callback_QDtlsClientVerifier_eventFilter(self *C.QDtlsClientVerifier, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -257,18 +257,18 @@ func miqt_exec_callback_QDtlsClientVerifier_EventFilter(self *C.QDtlsClientVerif
 
 func (this *QDtlsClientVerifier) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QDtlsClientVerifier_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QDtlsClientVerifier_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QDtlsClientVerifier) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QDtlsClientVerifier_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDtlsClientVerifier) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QDtlsClientVerifier_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDtlsClientVerifier_TimerEvent
-func miqt_exec_callback_QDtlsClientVerifier_TimerEvent(self *C.QDtlsClientVerifier, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QDtlsClientVerifier_timerEvent
+func miqt_exec_callback_QDtlsClientVerifier_timerEvent(self *C.QDtlsClientVerifier, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -283,18 +283,18 @@ func miqt_exec_callback_QDtlsClientVerifier_TimerEvent(self *C.QDtlsClientVerifi
 
 func (this *QDtlsClientVerifier) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QDtlsClientVerifier_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QDtlsClientVerifier_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QDtlsClientVerifier) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QDtlsClientVerifier_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDtlsClientVerifier) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QDtlsClientVerifier_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDtlsClientVerifier_ChildEvent
-func miqt_exec_callback_QDtlsClientVerifier_ChildEvent(self *C.QDtlsClientVerifier, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QDtlsClientVerifier_childEvent
+func miqt_exec_callback_QDtlsClientVerifier_childEvent(self *C.QDtlsClientVerifier, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -309,18 +309,18 @@ func miqt_exec_callback_QDtlsClientVerifier_ChildEvent(self *C.QDtlsClientVerifi
 
 func (this *QDtlsClientVerifier) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QDtlsClientVerifier_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QDtlsClientVerifier_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QDtlsClientVerifier) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QDtlsClientVerifier_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDtlsClientVerifier) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QDtlsClientVerifier_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDtlsClientVerifier_CustomEvent
-func miqt_exec_callback_QDtlsClientVerifier_CustomEvent(self *C.QDtlsClientVerifier, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QDtlsClientVerifier_customEvent
+func miqt_exec_callback_QDtlsClientVerifier_customEvent(self *C.QDtlsClientVerifier, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -335,18 +335,18 @@ func miqt_exec_callback_QDtlsClientVerifier_CustomEvent(self *C.QDtlsClientVerif
 
 func (this *QDtlsClientVerifier) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QDtlsClientVerifier_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QDtlsClientVerifier_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QDtlsClientVerifier) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QDtlsClientVerifier_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDtlsClientVerifier) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QDtlsClientVerifier_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDtlsClientVerifier_ConnectNotify
-func miqt_exec_callback_QDtlsClientVerifier_ConnectNotify(self *C.QDtlsClientVerifier, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QDtlsClientVerifier_connectNotify
+func miqt_exec_callback_QDtlsClientVerifier_connectNotify(self *C.QDtlsClientVerifier, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -361,18 +361,18 @@ func miqt_exec_callback_QDtlsClientVerifier_ConnectNotify(self *C.QDtlsClientVer
 
 func (this *QDtlsClientVerifier) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QDtlsClientVerifier_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QDtlsClientVerifier_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QDtlsClientVerifier) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QDtlsClientVerifier_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDtlsClientVerifier) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QDtlsClientVerifier_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDtlsClientVerifier_DisconnectNotify
-func miqt_exec_callback_QDtlsClientVerifier_DisconnectNotify(self *C.QDtlsClientVerifier, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QDtlsClientVerifier_disconnectNotify
+func miqt_exec_callback_QDtlsClientVerifier_disconnectNotify(self *C.QDtlsClientVerifier, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -387,7 +387,7 @@ func miqt_exec_callback_QDtlsClientVerifier_DisconnectNotify(self *C.QDtlsClient
 
 // Delete this object from C++ memory.
 func (this *QDtlsClientVerifier) Delete() {
-	C.QDtlsClientVerifier_Delete(this.h)
+	C.QDtlsClientVerifier_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -448,19 +448,19 @@ func NewQDtls2(mode QSslSocket__SslMode, parent *qt.QObject) *QDtls {
 }
 
 func (this *QDtls) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QDtls_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QDtls_metaObject(this.h)))
 }
 
 func (this *QDtls) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QDtls_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QDtls_metacast(this.h, param1_Cstring))
 }
 
 func QDtls_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QDtls_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QDtls_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -469,14 +469,14 @@ func QDtls_Tr(s string) string {
 func QDtls_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QDtls_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QDtls_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDtls) SetPeer(address *QHostAddress, port uint16) bool {
-	return (bool)(C.QDtls_SetPeer(this.h, address.cPointer(), (C.uint16_t)(port)))
+	return (bool)(C.QDtls_setPeer(this.h, address.cPointer(), (C.uint16_t)(port)))
 }
 
 func (this *QDtls) SetPeerVerificationName(name string) bool {
@@ -484,94 +484,94 @@ func (this *QDtls) SetPeerVerificationName(name string) bool {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	return (bool)(C.QDtls_SetPeerVerificationName(this.h, name_ms))
+	return (bool)(C.QDtls_setPeerVerificationName(this.h, name_ms))
 }
 
 func (this *QDtls) PeerAddress() *QHostAddress {
-	_goptr := newQHostAddress(C.QDtls_PeerAddress(this.h))
+	_goptr := newQHostAddress(C.QDtls_peerAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDtls) PeerPort() uint16 {
-	return (uint16)(C.QDtls_PeerPort(this.h))
+	return (uint16)(C.QDtls_peerPort(this.h))
 }
 
 func (this *QDtls) PeerVerificationName() string {
-	var _ms C.struct_miqt_string = C.QDtls_PeerVerificationName(this.h)
+	var _ms C.struct_miqt_string = C.QDtls_peerVerificationName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDtls) SslMode() QSslSocket__SslMode {
-	return (QSslSocket__SslMode)(C.QDtls_SslMode(this.h))
+	return (QSslSocket__SslMode)(C.QDtls_sslMode(this.h))
 }
 
 func (this *QDtls) SetMtuHint(mtuHint uint16) {
-	C.QDtls_SetMtuHint(this.h, (C.uint16_t)(mtuHint))
+	C.QDtls_setMtuHint(this.h, (C.uint16_t)(mtuHint))
 }
 
 func (this *QDtls) MtuHint() uint16 {
-	return (uint16)(C.QDtls_MtuHint(this.h))
+	return (uint16)(C.QDtls_mtuHint(this.h))
 }
 
 func (this *QDtls) SetCookieGeneratorParameters(params *QDtlsClientVerifier__GeneratorParameters) bool {
-	return (bool)(C.QDtls_SetCookieGeneratorParameters(this.h, params.cPointer()))
+	return (bool)(C.QDtls_setCookieGeneratorParameters(this.h, params.cPointer()))
 }
 
 func (this *QDtls) CookieGeneratorParameters() *QDtlsClientVerifier__GeneratorParameters {
-	_goptr := newQDtlsClientVerifier__GeneratorParameters(C.QDtls_CookieGeneratorParameters(this.h))
+	_goptr := newQDtlsClientVerifier__GeneratorParameters(C.QDtls_cookieGeneratorParameters(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDtls) SetDtlsConfiguration(configuration *QSslConfiguration) bool {
-	return (bool)(C.QDtls_SetDtlsConfiguration(this.h, configuration.cPointer()))
+	return (bool)(C.QDtls_setDtlsConfiguration(this.h, configuration.cPointer()))
 }
 
 func (this *QDtls) DtlsConfiguration() *QSslConfiguration {
-	_goptr := newQSslConfiguration(C.QDtls_DtlsConfiguration(this.h))
+	_goptr := newQSslConfiguration(C.QDtls_dtlsConfiguration(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDtls) HandshakeState() QDtls__HandshakeState {
-	return (QDtls__HandshakeState)(C.QDtls_HandshakeState(this.h))
+	return (QDtls__HandshakeState)(C.QDtls_handshakeState(this.h))
 }
 
 func (this *QDtls) DoHandshake(socket *QUdpSocket) bool {
-	return (bool)(C.QDtls_DoHandshake(this.h, socket.cPointer()))
+	return (bool)(C.QDtls_doHandshake(this.h, socket.cPointer()))
 }
 
 func (this *QDtls) HandleTimeout(socket *QUdpSocket) bool {
-	return (bool)(C.QDtls_HandleTimeout(this.h, socket.cPointer()))
+	return (bool)(C.QDtls_handleTimeout(this.h, socket.cPointer()))
 }
 
 func (this *QDtls) ResumeHandshake(socket *QUdpSocket) bool {
-	return (bool)(C.QDtls_ResumeHandshake(this.h, socket.cPointer()))
+	return (bool)(C.QDtls_resumeHandshake(this.h, socket.cPointer()))
 }
 
 func (this *QDtls) AbortHandshake(socket *QUdpSocket) bool {
-	return (bool)(C.QDtls_AbortHandshake(this.h, socket.cPointer()))
+	return (bool)(C.QDtls_abortHandshake(this.h, socket.cPointer()))
 }
 
 func (this *QDtls) Shutdown(socket *QUdpSocket) bool {
-	return (bool)(C.QDtls_Shutdown(this.h, socket.cPointer()))
+	return (bool)(C.QDtls_shutdown(this.h, socket.cPointer()))
 }
 
 func (this *QDtls) IsConnectionEncrypted() bool {
-	return (bool)(C.QDtls_IsConnectionEncrypted(this.h))
+	return (bool)(C.QDtls_isConnectionEncrypted(this.h))
 }
 
 func (this *QDtls) SessionCipher() *QSslCipher {
-	_goptr := newQSslCipher(C.QDtls_SessionCipher(this.h))
+	_goptr := newQSslCipher(C.QDtls_sessionCipher(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDtls) SessionProtocol() QSsl__SslProtocol {
-	return (QSsl__SslProtocol)(C.QDtls_SessionProtocol(this.h))
+	return (QSsl__SslProtocol)(C.QDtls_sessionProtocol(this.h))
 }
 
 func (this *QDtls) WriteDatagramEncrypted(socket *QUdpSocket, dgram []byte) int64 {
@@ -582,7 +582,7 @@ func (this *QDtls) WriteDatagramEncrypted(socket *QUdpSocket, dgram []byte) int6
 		dgram_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	dgram_alias.len = C.size_t(len(dgram))
-	return (int64)(C.QDtls_WriteDatagramEncrypted(this.h, socket.cPointer(), dgram_alias))
+	return (int64)(C.QDtls_writeDatagramEncrypted(this.h, socket.cPointer(), dgram_alias))
 }
 
 func (this *QDtls) DecryptDatagram(socket *QUdpSocket, dgram []byte) []byte {
@@ -593,25 +593,25 @@ func (this *QDtls) DecryptDatagram(socket *QUdpSocket, dgram []byte) []byte {
 		dgram_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	dgram_alias.len = C.size_t(len(dgram))
-	var _bytearray C.struct_miqt_string = C.QDtls_DecryptDatagram(this.h, socket.cPointer(), dgram_alias)
+	var _bytearray C.struct_miqt_string = C.QDtls_decryptDatagram(this.h, socket.cPointer(), dgram_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QDtls) DtlsError() QDtlsError {
-	return (QDtlsError)(C.QDtls_DtlsError(this.h))
+	return (QDtlsError)(C.QDtls_dtlsError(this.h))
 }
 
 func (this *QDtls) DtlsErrorString() string {
-	var _ms C.struct_miqt_string = C.QDtls_DtlsErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QDtls_dtlsErrorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDtls) PeerVerificationErrors() []QSslError {
-	var _ma C.struct_miqt_array = C.QDtls_PeerVerificationErrors(this.h)
+	var _ma C.struct_miqt_array = C.QDtls_peerVerificationErrors(this.h)
 	_ret := make([]QSslError, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslError)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -629,18 +629,18 @@ func (this *QDtls) IgnoreVerificationErrors(errorsToIgnore []QSslError) {
 		errorsToIgnore_CArray[i] = errorsToIgnore[i].cPointer()
 	}
 	errorsToIgnore_ma := C.struct_miqt_array{len: C.size_t(len(errorsToIgnore)), data: unsafe.Pointer(errorsToIgnore_CArray)}
-	C.QDtls_IgnoreVerificationErrors(this.h, errorsToIgnore_ma)
+	C.QDtls_ignoreVerificationErrors(this.h, errorsToIgnore_ma)
 }
 
 func (this *QDtls) PskRequired(authenticator *QSslPreSharedKeyAuthenticator) {
-	C.QDtls_PskRequired(this.h, authenticator.cPointer())
+	C.QDtls_pskRequired(this.h, authenticator.cPointer())
 }
 func (this *QDtls) OnPskRequired(slot func(authenticator *QSslPreSharedKeyAuthenticator)) {
-	C.QDtls_connect_PskRequired(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QDtls_connect_pskRequired(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QDtls_PskRequired
-func miqt_exec_callback_QDtls_PskRequired(cb C.intptr_t, authenticator *C.QSslPreSharedKeyAuthenticator) {
+//export miqt_exec_callback_QDtls_pskRequired
+func miqt_exec_callback_QDtls_pskRequired(cb C.intptr_t, authenticator *C.QSslPreSharedKeyAuthenticator) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(authenticator *QSslPreSharedKeyAuthenticator))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -653,14 +653,14 @@ func miqt_exec_callback_QDtls_PskRequired(cb C.intptr_t, authenticator *C.QSslPr
 }
 
 func (this *QDtls) HandshakeTimeout() {
-	C.QDtls_HandshakeTimeout(this.h)
+	C.QDtls_handshakeTimeout(this.h)
 }
 func (this *QDtls) OnHandshakeTimeout(slot func()) {
-	C.QDtls_connect_HandshakeTimeout(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QDtls_connect_handshakeTimeout(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QDtls_HandshakeTimeout
-func miqt_exec_callback_QDtls_HandshakeTimeout(cb C.intptr_t) {
+//export miqt_exec_callback_QDtls_handshakeTimeout
+func miqt_exec_callback_QDtls_handshakeTimeout(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -674,7 +674,7 @@ func QDtls_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QDtls_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QDtls_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -685,7 +685,7 @@ func QDtls_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QDtls_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QDtls_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -696,7 +696,7 @@ func QDtls_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QDtls_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QDtls_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -707,7 +707,7 @@ func QDtls_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QDtls_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QDtls_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -718,7 +718,7 @@ func (this *QDtls) SetPeer3(address *QHostAddress, port uint16, verificationName
 	verificationName_ms.data = C.CString(verificationName)
 	verificationName_ms.len = C.size_t(len(verificationName))
 	defer C.free(unsafe.Pointer(verificationName_ms.data))
-	return (bool)(C.QDtls_SetPeer3(this.h, address.cPointer(), (C.uint16_t)(port), verificationName_ms))
+	return (bool)(C.QDtls_setPeer3(this.h, address.cPointer(), (C.uint16_t)(port), verificationName_ms))
 }
 
 func (this *QDtls) DoHandshake2(socket *QUdpSocket, dgram []byte) bool {
@@ -729,23 +729,23 @@ func (this *QDtls) DoHandshake2(socket *QUdpSocket, dgram []byte) bool {
 		dgram_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	dgram_alias.len = C.size_t(len(dgram))
-	return (bool)(C.QDtls_DoHandshake2(this.h, socket.cPointer(), dgram_alias))
+	return (bool)(C.QDtls_doHandshake2(this.h, socket.cPointer(), dgram_alias))
 }
 
 func (this *QDtls) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.QDtls_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QDtls_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QDtls) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.QDtls_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDtls) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QDtls_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDtls_Event
-func miqt_exec_callback_QDtls_Event(self *C.QDtls, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QDtls_event
+func miqt_exec_callback_QDtls_event(self *C.QDtls, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -762,18 +762,18 @@ func miqt_exec_callback_QDtls_Event(self *C.QDtls, cb C.intptr_t, event *C.QEven
 
 func (this *QDtls) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.QDtls_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QDtls_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QDtls) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.QDtls_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDtls) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QDtls_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDtls_EventFilter
-func miqt_exec_callback_QDtls_EventFilter(self *C.QDtls, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QDtls_eventFilter
+func miqt_exec_callback_QDtls_eventFilter(self *C.QDtls, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -792,18 +792,18 @@ func miqt_exec_callback_QDtls_EventFilter(self *C.QDtls, cb C.intptr_t, watched 
 
 func (this *QDtls) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QDtls_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QDtls_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QDtls) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QDtls_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDtls) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QDtls_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDtls_TimerEvent
-func miqt_exec_callback_QDtls_TimerEvent(self *C.QDtls, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QDtls_timerEvent
+func miqt_exec_callback_QDtls_timerEvent(self *C.QDtls, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -818,18 +818,18 @@ func miqt_exec_callback_QDtls_TimerEvent(self *C.QDtls, cb C.intptr_t, event *C.
 
 func (this *QDtls) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QDtls_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QDtls_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QDtls) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QDtls_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDtls) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QDtls_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDtls_ChildEvent
-func miqt_exec_callback_QDtls_ChildEvent(self *C.QDtls, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QDtls_childEvent
+func miqt_exec_callback_QDtls_childEvent(self *C.QDtls, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -844,18 +844,18 @@ func miqt_exec_callback_QDtls_ChildEvent(self *C.QDtls, cb C.intptr_t, event *C.
 
 func (this *QDtls) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QDtls_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QDtls_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QDtls) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QDtls_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDtls) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QDtls_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDtls_CustomEvent
-func miqt_exec_callback_QDtls_CustomEvent(self *C.QDtls, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QDtls_customEvent
+func miqt_exec_callback_QDtls_customEvent(self *C.QDtls, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -870,18 +870,18 @@ func miqt_exec_callback_QDtls_CustomEvent(self *C.QDtls, cb C.intptr_t, event *C
 
 func (this *QDtls) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QDtls_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QDtls_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QDtls) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QDtls_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDtls) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QDtls_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDtls_ConnectNotify
-func miqt_exec_callback_QDtls_ConnectNotify(self *C.QDtls, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QDtls_connectNotify
+func miqt_exec_callback_QDtls_connectNotify(self *C.QDtls, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -896,18 +896,18 @@ func miqt_exec_callback_QDtls_ConnectNotify(self *C.QDtls, cb C.intptr_t, signal
 
 func (this *QDtls) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QDtls_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QDtls_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QDtls) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QDtls_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDtls) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QDtls_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDtls_DisconnectNotify
-func miqt_exec_callback_QDtls_DisconnectNotify(self *C.QDtls, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QDtls_disconnectNotify
+func miqt_exec_callback_QDtls_disconnectNotify(self *C.QDtls, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -922,7 +922,7 @@ func miqt_exec_callback_QDtls_DisconnectNotify(self *C.QDtls, cb C.intptr_t, sig
 
 // Delete this object from C++ memory.
 func (this *QDtls) Delete() {
-	C.QDtls_Delete(this.h)
+	C.QDtls_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -992,12 +992,12 @@ func NewQDtlsClientVerifier__GeneratorParameters3(param1 *QDtlsClientVerifier__G
 }
 
 func (this *QDtlsClientVerifier__GeneratorParameters) OperatorAssign(param1 *QDtlsClientVerifier__GeneratorParameters) {
-	C.QDtlsClientVerifier__GeneratorParameters_OperatorAssign(this.h, param1.cPointer())
+	C.QDtlsClientVerifier__GeneratorParameters_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QDtlsClientVerifier__GeneratorParameters) Delete() {
-	C.QDtlsClientVerifier__GeneratorParameters_Delete(this.h)
+	C.QDtlsClientVerifier__GeneratorParameters_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

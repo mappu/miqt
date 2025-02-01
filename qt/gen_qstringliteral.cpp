@@ -10,7 +10,7 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QStringDataPtr_Delete(QStringDataPtr* self) {
+void QStringDataPtr_delete(QStringDataPtr* self) {
 	delete self;
 }
 

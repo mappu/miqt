@@ -15,31 +15,31 @@ QBasicTimer* QBasicTimer_new() {
 	return new QBasicTimer();
 }
 
-void QBasicTimer_Swap(QBasicTimer* self, QBasicTimer* other) {
+void QBasicTimer_swap(QBasicTimer* self, QBasicTimer* other) {
 	self->swap(*other);
 }
 
-bool QBasicTimer_IsActive(const QBasicTimer* self) {
+bool QBasicTimer_isActive(const QBasicTimer* self) {
 	return self->isActive();
 }
 
-int QBasicTimer_TimerId(const QBasicTimer* self) {
+int QBasicTimer_timerId(const QBasicTimer* self) {
 	return self->timerId();
 }
 
-void QBasicTimer_Start(QBasicTimer* self, int msec, QObject* obj) {
+void QBasicTimer_start(QBasicTimer* self, int msec, QObject* obj) {
 	self->start(static_cast<int>(msec), obj);
 }
 
-void QBasicTimer_Start2(QBasicTimer* self, int msec, int timerType, QObject* obj) {
+void QBasicTimer_start2(QBasicTimer* self, int msec, int timerType, QObject* obj) {
 	self->start(static_cast<int>(msec), static_cast<Qt::TimerType>(timerType), obj);
 }
 
-void QBasicTimer_Stop(QBasicTimer* self) {
+void QBasicTimer_stop(QBasicTimer* self) {
 	self->stop();
 }
 
-void QBasicTimer_Delete(QBasicTimer* self) {
+void QBasicTimer_delete(QBasicTimer* self) {
 	delete self;
 }
 

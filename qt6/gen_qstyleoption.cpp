@@ -51,19 +51,19 @@ QStyleOption* QStyleOption_new3(int version) {
 	return new QStyleOption(static_cast<int>(version));
 }
 
-QStyleOption* QStyleOption_new4(int version, int typeVal) {
-	return new QStyleOption(static_cast<int>(version), static_cast<int>(typeVal));
+QStyleOption* QStyleOption_new4(int version, int type) {
+	return new QStyleOption(static_cast<int>(version), static_cast<int>(type));
 }
 
-void QStyleOption_InitFrom(QStyleOption* self, QWidget* w) {
+void QStyleOption_initFrom(QStyleOption* self, QWidget* w) {
 	self->initFrom(w);
 }
 
-void QStyleOption_OperatorAssign(QStyleOption* self, QStyleOption* other) {
+void QStyleOption_operatorAssign(QStyleOption* self, QStyleOption* other) {
 	self->operator=(*other);
 }
 
-void QStyleOption_Delete(QStyleOption* self) {
+void QStyleOption_delete(QStyleOption* self) {
 	delete self;
 }
 
@@ -79,7 +79,7 @@ void QStyleOptionFocusRect_virtbase(QStyleOptionFocusRect* src, QStyleOption** o
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-void QStyleOptionFocusRect_Delete(QStyleOptionFocusRect* self) {
+void QStyleOptionFocusRect_delete(QStyleOptionFocusRect* self) {
 	delete self;
 }
 
@@ -95,7 +95,7 @@ void QStyleOptionFrame_virtbase(QStyleOptionFrame* src, QStyleOption** outptr_QS
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-void QStyleOptionFrame_Delete(QStyleOptionFrame* self) {
+void QStyleOptionFrame_delete(QStyleOptionFrame* self) {
 	delete self;
 }
 
@@ -111,7 +111,7 @@ void QStyleOptionTabWidgetFrame_virtbase(QStyleOptionTabWidgetFrame* src, QStyle
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-void QStyleOptionTabWidgetFrame_Delete(QStyleOptionTabWidgetFrame* self) {
+void QStyleOptionTabWidgetFrame_delete(QStyleOptionTabWidgetFrame* self) {
 	delete self;
 }
 
@@ -127,7 +127,7 @@ void QStyleOptionTabBarBase_virtbase(QStyleOptionTabBarBase* src, QStyleOption**
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-void QStyleOptionTabBarBase_Delete(QStyleOptionTabBarBase* self) {
+void QStyleOptionTabBarBase_delete(QStyleOptionTabBarBase* self) {
 	delete self;
 }
 
@@ -143,7 +143,7 @@ void QStyleOptionHeader_virtbase(QStyleOptionHeader* src, QStyleOption** outptr_
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-void QStyleOptionHeader_Delete(QStyleOptionHeader* self) {
+void QStyleOptionHeader_delete(QStyleOptionHeader* self) {
 	delete self;
 }
 
@@ -159,7 +159,7 @@ void QStyleOptionHeaderV2_virtbase(QStyleOptionHeaderV2* src, QStyleOptionHeader
 	*outptr_QStyleOptionHeader = static_cast<QStyleOptionHeader*>(src);
 }
 
-void QStyleOptionHeaderV2_Delete(QStyleOptionHeaderV2* self) {
+void QStyleOptionHeaderV2_delete(QStyleOptionHeaderV2* self) {
 	delete self;
 }
 
@@ -175,7 +175,7 @@ void QStyleOptionButton_virtbase(QStyleOptionButton* src, QStyleOption** outptr_
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-void QStyleOptionButton_Delete(QStyleOptionButton* self) {
+void QStyleOptionButton_delete(QStyleOptionButton* self) {
 	delete self;
 }
 
@@ -191,7 +191,7 @@ void QStyleOptionTab_virtbase(QStyleOptionTab* src, QStyleOption** outptr_QStyle
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-void QStyleOptionTab_Delete(QStyleOptionTab* self) {
+void QStyleOptionTab_delete(QStyleOptionTab* self) {
 	delete self;
 }
 
@@ -207,7 +207,7 @@ void QStyleOptionToolBar_virtbase(QStyleOptionToolBar* src, QStyleOption** outpt
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-void QStyleOptionToolBar_Delete(QStyleOptionToolBar* self) {
+void QStyleOptionToolBar_delete(QStyleOptionToolBar* self) {
 	delete self;
 }
 
@@ -223,7 +223,7 @@ void QStyleOptionProgressBar_virtbase(QStyleOptionProgressBar* src, QStyleOption
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-void QStyleOptionProgressBar_Delete(QStyleOptionProgressBar* self) {
+void QStyleOptionProgressBar_delete(QStyleOptionProgressBar* self) {
 	delete self;
 }
 
@@ -239,7 +239,7 @@ void QStyleOptionMenuItem_virtbase(QStyleOptionMenuItem* src, QStyleOption** out
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-void QStyleOptionMenuItem_Delete(QStyleOptionMenuItem* self) {
+void QStyleOptionMenuItem_delete(QStyleOptionMenuItem* self) {
 	delete self;
 }
 
@@ -255,7 +255,7 @@ void QStyleOptionDockWidget_virtbase(QStyleOptionDockWidget* src, QStyleOption**
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-void QStyleOptionDockWidget_Delete(QStyleOptionDockWidget* self) {
+void QStyleOptionDockWidget_delete(QStyleOptionDockWidget* self) {
 	delete self;
 }
 
@@ -271,7 +271,7 @@ void QStyleOptionViewItem_virtbase(QStyleOptionViewItem* src, QStyleOption** out
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-void QStyleOptionViewItem_Delete(QStyleOptionViewItem* self) {
+void QStyleOptionViewItem_delete(QStyleOptionViewItem* self) {
 	delete self;
 }
 
@@ -287,7 +287,7 @@ void QStyleOptionToolBox_virtbase(QStyleOptionToolBox* src, QStyleOption** outpt
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-void QStyleOptionToolBox_Delete(QStyleOptionToolBox* self) {
+void QStyleOptionToolBox_delete(QStyleOptionToolBox* self) {
 	delete self;
 }
 
@@ -303,7 +303,7 @@ void QStyleOptionRubberBand_virtbase(QStyleOptionRubberBand* src, QStyleOption**
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-void QStyleOptionRubberBand_Delete(QStyleOptionRubberBand* self) {
+void QStyleOptionRubberBand_delete(QStyleOptionRubberBand* self) {
 	delete self;
 }
 
@@ -319,15 +319,15 @@ QStyleOptionComplex* QStyleOptionComplex_new3(int version) {
 	return new QStyleOptionComplex(static_cast<int>(version));
 }
 
-QStyleOptionComplex* QStyleOptionComplex_new4(int version, int typeVal) {
-	return new QStyleOptionComplex(static_cast<int>(version), static_cast<int>(typeVal));
+QStyleOptionComplex* QStyleOptionComplex_new4(int version, int type) {
+	return new QStyleOptionComplex(static_cast<int>(version), static_cast<int>(type));
 }
 
 void QStyleOptionComplex_virtbase(QStyleOptionComplex* src, QStyleOption** outptr_QStyleOption) {
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-void QStyleOptionComplex_Delete(QStyleOptionComplex* self) {
+void QStyleOptionComplex_delete(QStyleOptionComplex* self) {
 	delete self;
 }
 
@@ -343,7 +343,7 @@ void QStyleOptionSlider_virtbase(QStyleOptionSlider* src, QStyleOptionComplex** 
 	*outptr_QStyleOptionComplex = static_cast<QStyleOptionComplex*>(src);
 }
 
-void QStyleOptionSlider_Delete(QStyleOptionSlider* self) {
+void QStyleOptionSlider_delete(QStyleOptionSlider* self) {
 	delete self;
 }
 
@@ -359,7 +359,7 @@ void QStyleOptionSpinBox_virtbase(QStyleOptionSpinBox* src, QStyleOptionComplex*
 	*outptr_QStyleOptionComplex = static_cast<QStyleOptionComplex*>(src);
 }
 
-void QStyleOptionSpinBox_Delete(QStyleOptionSpinBox* self) {
+void QStyleOptionSpinBox_delete(QStyleOptionSpinBox* self) {
 	delete self;
 }
 
@@ -375,7 +375,7 @@ void QStyleOptionToolButton_virtbase(QStyleOptionToolButton* src, QStyleOptionCo
 	*outptr_QStyleOptionComplex = static_cast<QStyleOptionComplex*>(src);
 }
 
-void QStyleOptionToolButton_Delete(QStyleOptionToolButton* self) {
+void QStyleOptionToolButton_delete(QStyleOptionToolButton* self) {
 	delete self;
 }
 
@@ -391,7 +391,7 @@ void QStyleOptionComboBox_virtbase(QStyleOptionComboBox* src, QStyleOptionComple
 	*outptr_QStyleOptionComplex = static_cast<QStyleOptionComplex*>(src);
 }
 
-void QStyleOptionComboBox_Delete(QStyleOptionComboBox* self) {
+void QStyleOptionComboBox_delete(QStyleOptionComboBox* self) {
 	delete self;
 }
 
@@ -407,7 +407,7 @@ void QStyleOptionTitleBar_virtbase(QStyleOptionTitleBar* src, QStyleOptionComple
 	*outptr_QStyleOptionComplex = static_cast<QStyleOptionComplex*>(src);
 }
 
-void QStyleOptionTitleBar_Delete(QStyleOptionTitleBar* self) {
+void QStyleOptionTitleBar_delete(QStyleOptionTitleBar* self) {
 	delete self;
 }
 
@@ -423,7 +423,7 @@ void QStyleOptionGroupBox_virtbase(QStyleOptionGroupBox* src, QStyleOptionComple
 	*outptr_QStyleOptionComplex = static_cast<QStyleOptionComplex*>(src);
 }
 
-void QStyleOptionGroupBox_Delete(QStyleOptionGroupBox* self) {
+void QStyleOptionGroupBox_delete(QStyleOptionGroupBox* self) {
 	delete self;
 }
 
@@ -439,7 +439,7 @@ void QStyleOptionSizeGrip_virtbase(QStyleOptionSizeGrip* src, QStyleOptionComple
 	*outptr_QStyleOptionComplex = static_cast<QStyleOptionComplex*>(src);
 }
 
-void QStyleOptionSizeGrip_Delete(QStyleOptionSizeGrip* self) {
+void QStyleOptionSizeGrip_delete(QStyleOptionSizeGrip* self) {
 	delete self;
 }
 
@@ -455,12 +455,12 @@ void QStyleOptionGraphicsItem_virtbase(QStyleOptionGraphicsItem* src, QStyleOpti
 	*outptr_QStyleOption = static_cast<QStyleOption*>(src);
 }
 
-double QStyleOptionGraphicsItem_LevelOfDetailFromTransform(QTransform* worldTransform) {
+double QStyleOptionGraphicsItem_levelOfDetailFromTransform(QTransform* worldTransform) {
 	qreal _ret = QStyleOptionGraphicsItem::levelOfDetailFromTransform(*worldTransform);
 	return static_cast<double>(_ret);
 }
 
-void QStyleOptionGraphicsItem_Delete(QStyleOptionGraphicsItem* self) {
+void QStyleOptionGraphicsItem_delete(QStyleOptionGraphicsItem* self) {
 	delete self;
 }
 
@@ -476,15 +476,15 @@ QStyleHintReturn* QStyleHintReturn_new3(int version) {
 	return new QStyleHintReturn(static_cast<int>(version));
 }
 
-QStyleHintReturn* QStyleHintReturn_new4(int version, int typeVal) {
-	return new QStyleHintReturn(static_cast<int>(version), static_cast<int>(typeVal));
+QStyleHintReturn* QStyleHintReturn_new4(int version, int type) {
+	return new QStyleHintReturn(static_cast<int>(version), static_cast<int>(type));
 }
 
-void QStyleHintReturn_OperatorAssign(QStyleHintReturn* self, QStyleHintReturn* param1) {
+void QStyleHintReturn_operatorAssign(QStyleHintReturn* self, QStyleHintReturn* param1) {
 	self->operator=(*param1);
 }
 
-void QStyleHintReturn_Delete(QStyleHintReturn* self) {
+void QStyleHintReturn_delete(QStyleHintReturn* self) {
 	delete self;
 }
 
@@ -500,11 +500,11 @@ void QStyleHintReturnMask_virtbase(QStyleHintReturnMask* src, QStyleHintReturn**
 	*outptr_QStyleHintReturn = static_cast<QStyleHintReturn*>(src);
 }
 
-void QStyleHintReturnMask_OperatorAssign(QStyleHintReturnMask* self, QStyleHintReturnMask* param1) {
+void QStyleHintReturnMask_operatorAssign(QStyleHintReturnMask* self, QStyleHintReturnMask* param1) {
 	self->operator=(*param1);
 }
 
-void QStyleHintReturnMask_Delete(QStyleHintReturnMask* self) {
+void QStyleHintReturnMask_delete(QStyleHintReturnMask* self) {
 	delete self;
 }
 
@@ -520,11 +520,11 @@ void QStyleHintReturnVariant_virtbase(QStyleHintReturnVariant* src, QStyleHintRe
 	*outptr_QStyleHintReturn = static_cast<QStyleHintReturn*>(src);
 }
 
-void QStyleHintReturnVariant_OperatorAssign(QStyleHintReturnVariant* self, QStyleHintReturnVariant* param1) {
+void QStyleHintReturnVariant_operatorAssign(QStyleHintReturnVariant* self, QStyleHintReturnVariant* param1) {
 	self->operator=(*param1);
 }
 
-void QStyleHintReturnVariant_Delete(QStyleHintReturnVariant* self) {
+void QStyleHintReturnVariant_delete(QStyleHintReturnVariant* self) {
 	delete self;
 }
 

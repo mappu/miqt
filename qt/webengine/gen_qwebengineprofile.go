@@ -100,19 +100,19 @@ func NewQWebEngineProfile4(name string, parent *qt.QObject) *QWebEngineProfile {
 }
 
 func (this *QWebEngineProfile) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineProfile_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineProfile_metaObject(this.h)))
 }
 
 func (this *QWebEngineProfile) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWebEngineProfile_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWebEngineProfile_metacast(this.h, param1_Cstring))
 }
 
 func QWebEngineProfile_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineProfile_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineProfile_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -121,25 +121,25 @@ func QWebEngineProfile_Tr(s string) string {
 func QWebEngineProfile_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineProfile_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineProfile_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineProfile) StorageName() string {
-	var _ms C.struct_miqt_string = C.QWebEngineProfile_StorageName(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineProfile_storageName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineProfile) IsOffTheRecord() bool {
-	return (bool)(C.QWebEngineProfile_IsOffTheRecord(this.h))
+	return (bool)(C.QWebEngineProfile_isOffTheRecord(this.h))
 }
 
 func (this *QWebEngineProfile) PersistentStoragePath() string {
-	var _ms C.struct_miqt_string = C.QWebEngineProfile_PersistentStoragePath(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineProfile_persistentStoragePath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -150,11 +150,11 @@ func (this *QWebEngineProfile) SetPersistentStoragePath(path string) {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	C.QWebEngineProfile_SetPersistentStoragePath(this.h, path_ms)
+	C.QWebEngineProfile_setPersistentStoragePath(this.h, path_ms)
 }
 
 func (this *QWebEngineProfile) CachePath() string {
-	var _ms C.struct_miqt_string = C.QWebEngineProfile_CachePath(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineProfile_cachePath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -165,11 +165,11 @@ func (this *QWebEngineProfile) SetCachePath(path string) {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	C.QWebEngineProfile_SetCachePath(this.h, path_ms)
+	C.QWebEngineProfile_setCachePath(this.h, path_ms)
 }
 
 func (this *QWebEngineProfile) HttpUserAgent() string {
-	var _ms C.struct_miqt_string = C.QWebEngineProfile_HttpUserAgent(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineProfile_httpUserAgent(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -180,15 +180,15 @@ func (this *QWebEngineProfile) SetHttpUserAgent(userAgent string) {
 	userAgent_ms.data = C.CString(userAgent)
 	userAgent_ms.len = C.size_t(len(userAgent))
 	defer C.free(unsafe.Pointer(userAgent_ms.data))
-	C.QWebEngineProfile_SetHttpUserAgent(this.h, userAgent_ms)
+	C.QWebEngineProfile_setHttpUserAgent(this.h, userAgent_ms)
 }
 
 func (this *QWebEngineProfile) HttpCacheType() QWebEngineProfile__HttpCacheType {
-	return (QWebEngineProfile__HttpCacheType)(C.QWebEngineProfile_HttpCacheType(this.h))
+	return (QWebEngineProfile__HttpCacheType)(C.QWebEngineProfile_httpCacheType(this.h))
 }
 
 func (this *QWebEngineProfile) SetHttpCacheType(httpCacheType QWebEngineProfile__HttpCacheType) {
-	C.QWebEngineProfile_SetHttpCacheType(this.h, (C.int)(httpCacheType))
+	C.QWebEngineProfile_setHttpCacheType(this.h, (C.int)(httpCacheType))
 }
 
 func (this *QWebEngineProfile) SetHttpAcceptLanguage(httpAcceptLanguage string) {
@@ -196,46 +196,46 @@ func (this *QWebEngineProfile) SetHttpAcceptLanguage(httpAcceptLanguage string) 
 	httpAcceptLanguage_ms.data = C.CString(httpAcceptLanguage)
 	httpAcceptLanguage_ms.len = C.size_t(len(httpAcceptLanguage))
 	defer C.free(unsafe.Pointer(httpAcceptLanguage_ms.data))
-	C.QWebEngineProfile_SetHttpAcceptLanguage(this.h, httpAcceptLanguage_ms)
+	C.QWebEngineProfile_setHttpAcceptLanguage(this.h, httpAcceptLanguage_ms)
 }
 
 func (this *QWebEngineProfile) HttpAcceptLanguage() string {
-	var _ms C.struct_miqt_string = C.QWebEngineProfile_HttpAcceptLanguage(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineProfile_httpAcceptLanguage(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineProfile) PersistentCookiesPolicy() QWebEngineProfile__PersistentCookiesPolicy {
-	return (QWebEngineProfile__PersistentCookiesPolicy)(C.QWebEngineProfile_PersistentCookiesPolicy(this.h))
+	return (QWebEngineProfile__PersistentCookiesPolicy)(C.QWebEngineProfile_persistentCookiesPolicy(this.h))
 }
 
 func (this *QWebEngineProfile) SetPersistentCookiesPolicy(persistentCookiesPolicy QWebEngineProfile__PersistentCookiesPolicy) {
-	C.QWebEngineProfile_SetPersistentCookiesPolicy(this.h, (C.int)(persistentCookiesPolicy))
+	C.QWebEngineProfile_setPersistentCookiesPolicy(this.h, (C.int)(persistentCookiesPolicy))
 }
 
 func (this *QWebEngineProfile) HttpCacheMaximumSize() int {
-	return (int)(C.QWebEngineProfile_HttpCacheMaximumSize(this.h))
+	return (int)(C.QWebEngineProfile_httpCacheMaximumSize(this.h))
 }
 
 func (this *QWebEngineProfile) SetHttpCacheMaximumSize(maxSize int) {
-	C.QWebEngineProfile_SetHttpCacheMaximumSize(this.h, (C.int)(maxSize))
+	C.QWebEngineProfile_setHttpCacheMaximumSize(this.h, (C.int)(maxSize))
 }
 
 func (this *QWebEngineProfile) CookieStore() *QWebEngineCookieStore {
-	return newQWebEngineCookieStore(C.QWebEngineProfile_CookieStore(this.h))
+	return newQWebEngineCookieStore(C.QWebEngineProfile_cookieStore(this.h))
 }
 
 func (this *QWebEngineProfile) SetRequestInterceptor(interceptor *QWebEngineUrlRequestInterceptor) {
-	C.QWebEngineProfile_SetRequestInterceptor(this.h, interceptor.cPointer())
+	C.QWebEngineProfile_setRequestInterceptor(this.h, interceptor.cPointer())
 }
 
 func (this *QWebEngineProfile) SetUrlRequestInterceptor(interceptor *QWebEngineUrlRequestInterceptor) {
-	C.QWebEngineProfile_SetUrlRequestInterceptor(this.h, interceptor.cPointer())
+	C.QWebEngineProfile_setUrlRequestInterceptor(this.h, interceptor.cPointer())
 }
 
 func (this *QWebEngineProfile) ClearAllVisitedLinks() {
-	C.QWebEngineProfile_ClearAllVisitedLinks(this.h)
+	C.QWebEngineProfile_clearAllVisitedLinks(this.h)
 }
 
 func (this *QWebEngineProfile) ClearVisitedLinks(urls []qt.QUrl) {
@@ -245,19 +245,19 @@ func (this *QWebEngineProfile) ClearVisitedLinks(urls []qt.QUrl) {
 		urls_CArray[i] = (*C.QUrl)(urls[i].UnsafePointer())
 	}
 	urls_ma := C.struct_miqt_array{len: C.size_t(len(urls)), data: unsafe.Pointer(urls_CArray)}
-	C.QWebEngineProfile_ClearVisitedLinks(this.h, urls_ma)
+	C.QWebEngineProfile_clearVisitedLinks(this.h, urls_ma)
 }
 
 func (this *QWebEngineProfile) VisitedLinksContainsUrl(url *qt.QUrl) bool {
-	return (bool)(C.QWebEngineProfile_VisitedLinksContainsUrl(this.h, (*C.QUrl)(url.UnsafePointer())))
+	return (bool)(C.QWebEngineProfile_visitedLinksContainsUrl(this.h, (*C.QUrl)(url.UnsafePointer())))
 }
 
 func (this *QWebEngineProfile) Settings() *QWebEngineSettings {
-	return newQWebEngineSettings(C.QWebEngineProfile_Settings(this.h))
+	return newQWebEngineSettings(C.QWebEngineProfile_settings(this.h))
 }
 
 func (this *QWebEngineProfile) Scripts() *QWebEngineScriptCollection {
-	return newQWebEngineScriptCollection(C.QWebEngineProfile_Scripts(this.h))
+	return newQWebEngineScriptCollection(C.QWebEngineProfile_scripts(this.h))
 }
 
 func (this *QWebEngineProfile) UrlSchemeHandler(param1 []byte) *QWebEngineUrlSchemeHandler {
@@ -268,7 +268,7 @@ func (this *QWebEngineProfile) UrlSchemeHandler(param1 []byte) *QWebEngineUrlSch
 		param1_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	param1_alias.len = C.size_t(len(param1))
-	return newQWebEngineUrlSchemeHandler(C.QWebEngineProfile_UrlSchemeHandler(this.h, param1_alias))
+	return newQWebEngineUrlSchemeHandler(C.QWebEngineProfile_urlSchemeHandler(this.h, param1_alias))
 }
 
 func (this *QWebEngineProfile) InstallUrlSchemeHandler(scheme []byte, param2 *QWebEngineUrlSchemeHandler) {
@@ -279,7 +279,7 @@ func (this *QWebEngineProfile) InstallUrlSchemeHandler(scheme []byte, param2 *QW
 		scheme_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	scheme_alias.len = C.size_t(len(scheme))
-	C.QWebEngineProfile_InstallUrlSchemeHandler(this.h, scheme_alias, param2.cPointer())
+	C.QWebEngineProfile_installUrlSchemeHandler(this.h, scheme_alias, param2.cPointer())
 }
 
 func (this *QWebEngineProfile) RemoveUrlScheme(scheme []byte) {
@@ -290,19 +290,19 @@ func (this *QWebEngineProfile) RemoveUrlScheme(scheme []byte) {
 		scheme_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	scheme_alias.len = C.size_t(len(scheme))
-	C.QWebEngineProfile_RemoveUrlScheme(this.h, scheme_alias)
+	C.QWebEngineProfile_removeUrlScheme(this.h, scheme_alias)
 }
 
 func (this *QWebEngineProfile) RemoveUrlSchemeHandler(param1 *QWebEngineUrlSchemeHandler) {
-	C.QWebEngineProfile_RemoveUrlSchemeHandler(this.h, param1.cPointer())
+	C.QWebEngineProfile_removeUrlSchemeHandler(this.h, param1.cPointer())
 }
 
 func (this *QWebEngineProfile) RemoveAllUrlSchemeHandlers() {
-	C.QWebEngineProfile_RemoveAllUrlSchemeHandlers(this.h)
+	C.QWebEngineProfile_removeAllUrlSchemeHandlers(this.h)
 }
 
 func (this *QWebEngineProfile) ClearHttpCache() {
-	C.QWebEngineProfile_ClearHttpCache(this.h)
+	C.QWebEngineProfile_clearHttpCache(this.h)
 }
 
 func (this *QWebEngineProfile) SetSpellCheckLanguages(languages []string) {
@@ -316,11 +316,11 @@ func (this *QWebEngineProfile) SetSpellCheckLanguages(languages []string) {
 		languages_CArray[i] = languages_i_ms
 	}
 	languages_ma := C.struct_miqt_array{len: C.size_t(len(languages)), data: unsafe.Pointer(languages_CArray)}
-	C.QWebEngineProfile_SetSpellCheckLanguages(this.h, languages_ma)
+	C.QWebEngineProfile_setSpellCheckLanguages(this.h, languages_ma)
 }
 
 func (this *QWebEngineProfile) SpellCheckLanguages() []string {
-	var _ma C.struct_miqt_array = C.QWebEngineProfile_SpellCheckLanguages(this.h)
+	var _ma C.struct_miqt_array = C.QWebEngineProfile_spellCheckLanguages(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -333,23 +333,23 @@ func (this *QWebEngineProfile) SpellCheckLanguages() []string {
 }
 
 func (this *QWebEngineProfile) SetSpellCheckEnabled(enabled bool) {
-	C.QWebEngineProfile_SetSpellCheckEnabled(this.h, (C.bool)(enabled))
+	C.QWebEngineProfile_setSpellCheckEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QWebEngineProfile) IsSpellCheckEnabled() bool {
-	return (bool)(C.QWebEngineProfile_IsSpellCheckEnabled(this.h))
+	return (bool)(C.QWebEngineProfile_isSpellCheckEnabled(this.h))
 }
 
 func (this *QWebEngineProfile) SetUseForGlobalCertificateVerification() {
-	C.QWebEngineProfile_SetUseForGlobalCertificateVerification(this.h)
+	C.QWebEngineProfile_setUseForGlobalCertificateVerification(this.h)
 }
 
 func (this *QWebEngineProfile) IsUsedForGlobalCertificateVerification() bool {
-	return (bool)(C.QWebEngineProfile_IsUsedForGlobalCertificateVerification(this.h))
+	return (bool)(C.QWebEngineProfile_isUsedForGlobalCertificateVerification(this.h))
 }
 
 func (this *QWebEngineProfile) DownloadPath() string {
-	var _ms C.struct_miqt_string = C.QWebEngineProfile_DownloadPath(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineProfile_downloadPath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -360,26 +360,26 @@ func (this *QWebEngineProfile) SetDownloadPath(path string) {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	C.QWebEngineProfile_SetDownloadPath(this.h, path_ms)
+	C.QWebEngineProfile_setDownloadPath(this.h, path_ms)
 }
 
 func (this *QWebEngineProfile) ClientCertificateStore() *QWebEngineClientCertificateStore {
-	return newQWebEngineClientCertificateStore(C.QWebEngineProfile_ClientCertificateStore(this.h))
+	return newQWebEngineClientCertificateStore(C.QWebEngineProfile_clientCertificateStore(this.h))
 }
 
 func QWebEngineProfile_DefaultProfile() *QWebEngineProfile {
-	return newQWebEngineProfile(C.QWebEngineProfile_DefaultProfile())
+	return newQWebEngineProfile(C.QWebEngineProfile_defaultProfile())
 }
 
 func (this *QWebEngineProfile) DownloadRequested(download *QWebEngineDownloadItem) {
-	C.QWebEngineProfile_DownloadRequested(this.h, download.cPointer())
+	C.QWebEngineProfile_downloadRequested(this.h, download.cPointer())
 }
 func (this *QWebEngineProfile) OnDownloadRequested(slot func(download *QWebEngineDownloadItem)) {
-	C.QWebEngineProfile_connect_DownloadRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineProfile_connect_downloadRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineProfile_DownloadRequested
-func miqt_exec_callback_QWebEngineProfile_DownloadRequested(cb C.intptr_t, download *C.QWebEngineDownloadItem) {
+//export miqt_exec_callback_QWebEngineProfile_downloadRequested
+func miqt_exec_callback_QWebEngineProfile_downloadRequested(cb C.intptr_t, download *C.QWebEngineDownloadItem) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(download *QWebEngineDownloadItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -396,7 +396,7 @@ func QWebEngineProfile_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineProfile_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineProfile_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -407,7 +407,7 @@ func QWebEngineProfile_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineProfile_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebEngineProfile_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -418,7 +418,7 @@ func QWebEngineProfile_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineProfile_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineProfile_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -429,30 +429,30 @@ func QWebEngineProfile_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineProfile_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebEngineProfile_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineProfile) SetUseForGlobalCertificateVerification1(enabled bool) {
-	C.QWebEngineProfile_SetUseForGlobalCertificateVerification1(this.h, (C.bool)(enabled))
+	C.QWebEngineProfile_setUseForGlobalCertificateVerification1(this.h, (C.bool)(enabled))
 }
 
 func (this *QWebEngineProfile) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.QWebEngineProfile_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QWebEngineProfile_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QWebEngineProfile) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.QWebEngineProfile_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineProfile) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QWebEngineProfile_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineProfile_Event
-func miqt_exec_callback_QWebEngineProfile_Event(self *C.QWebEngineProfile, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QWebEngineProfile_event
+func miqt_exec_callback_QWebEngineProfile_event(self *C.QWebEngineProfile, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -469,18 +469,18 @@ func miqt_exec_callback_QWebEngineProfile_Event(self *C.QWebEngineProfile, cb C.
 
 func (this *QWebEngineProfile) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.QWebEngineProfile_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QWebEngineProfile_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QWebEngineProfile) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.QWebEngineProfile_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineProfile) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QWebEngineProfile_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineProfile_EventFilter
-func miqt_exec_callback_QWebEngineProfile_EventFilter(self *C.QWebEngineProfile, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QWebEngineProfile_eventFilter
+func miqt_exec_callback_QWebEngineProfile_eventFilter(self *C.QWebEngineProfile, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -499,18 +499,18 @@ func miqt_exec_callback_QWebEngineProfile_EventFilter(self *C.QWebEngineProfile,
 
 func (this *QWebEngineProfile) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QWebEngineProfile_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QWebEngineProfile_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineProfile) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QWebEngineProfile_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineProfile) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QWebEngineProfile_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineProfile_TimerEvent
-func miqt_exec_callback_QWebEngineProfile_TimerEvent(self *C.QWebEngineProfile, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QWebEngineProfile_timerEvent
+func miqt_exec_callback_QWebEngineProfile_timerEvent(self *C.QWebEngineProfile, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -525,18 +525,18 @@ func miqt_exec_callback_QWebEngineProfile_TimerEvent(self *C.QWebEngineProfile, 
 
 func (this *QWebEngineProfile) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QWebEngineProfile_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QWebEngineProfile_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineProfile) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QWebEngineProfile_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineProfile) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QWebEngineProfile_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineProfile_ChildEvent
-func miqt_exec_callback_QWebEngineProfile_ChildEvent(self *C.QWebEngineProfile, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QWebEngineProfile_childEvent
+func miqt_exec_callback_QWebEngineProfile_childEvent(self *C.QWebEngineProfile, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -551,18 +551,18 @@ func miqt_exec_callback_QWebEngineProfile_ChildEvent(self *C.QWebEngineProfile, 
 
 func (this *QWebEngineProfile) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QWebEngineProfile_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QWebEngineProfile_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineProfile) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QWebEngineProfile_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineProfile) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QWebEngineProfile_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineProfile_CustomEvent
-func miqt_exec_callback_QWebEngineProfile_CustomEvent(self *C.QWebEngineProfile, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QWebEngineProfile_customEvent
+func miqt_exec_callback_QWebEngineProfile_customEvent(self *C.QWebEngineProfile, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -577,18 +577,18 @@ func miqt_exec_callback_QWebEngineProfile_CustomEvent(self *C.QWebEngineProfile,
 
 func (this *QWebEngineProfile) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QWebEngineProfile_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QWebEngineProfile_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QWebEngineProfile) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QWebEngineProfile_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineProfile) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QWebEngineProfile_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineProfile_ConnectNotify
-func miqt_exec_callback_QWebEngineProfile_ConnectNotify(self *C.QWebEngineProfile, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QWebEngineProfile_connectNotify
+func miqt_exec_callback_QWebEngineProfile_connectNotify(self *C.QWebEngineProfile, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -603,18 +603,18 @@ func miqt_exec_callback_QWebEngineProfile_ConnectNotify(self *C.QWebEngineProfil
 
 func (this *QWebEngineProfile) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QWebEngineProfile_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QWebEngineProfile_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QWebEngineProfile) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QWebEngineProfile_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineProfile) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QWebEngineProfile_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineProfile_DisconnectNotify
-func miqt_exec_callback_QWebEngineProfile_DisconnectNotify(self *C.QWebEngineProfile, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QWebEngineProfile_disconnectNotify
+func miqt_exec_callback_QWebEngineProfile_disconnectNotify(self *C.QWebEngineProfile, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -629,7 +629,7 @@ func miqt_exec_callback_QWebEngineProfile_DisconnectNotify(self *C.QWebEnginePro
 
 // Delete this object from C++ memory.
 func (this *QWebEngineProfile) Delete() {
-	C.QWebEngineProfile_Delete(this.h)
+	C.QWebEngineProfile_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -17,11 +17,11 @@ QsciDocument* QsciDocument_new2(QsciDocument* param1) {
 	return new QsciDocument(*param1);
 }
 
-void QsciDocument_OperatorAssign(QsciDocument* self, QsciDocument* param1) {
+void QsciDocument_operatorAssign(QsciDocument* self, QsciDocument* param1) {
 	self->operator=(*param1);
 }
 
-void QsciDocument_Delete(QsciDocument* self) {
+void QsciDocument_delete(QsciDocument* self) {
 	delete self;
 }
 

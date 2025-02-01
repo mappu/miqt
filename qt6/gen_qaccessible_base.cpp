@@ -17,57 +17,57 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QAccessible_InstallActivationObserver(QAccessible__ActivationObserver* param1) {
+void QAccessible_installActivationObserver(QAccessible__ActivationObserver* param1) {
 	QAccessible::installActivationObserver(param1);
 }
 
-void QAccessible_RemoveActivationObserver(QAccessible__ActivationObserver* param1) {
+void QAccessible_removeActivationObserver(QAccessible__ActivationObserver* param1) {
 	QAccessible::removeActivationObserver(param1);
 }
 
-QAccessibleInterface* QAccessible_QueryAccessibleInterface(QObject* param1) {
+QAccessibleInterface* QAccessible_queryAccessibleInterface(QObject* param1) {
 	return QAccessible::queryAccessibleInterface(param1);
 }
 
-unsigned int QAccessible_UniqueId(QAccessibleInterface* iface) {
+unsigned int QAccessible_uniqueId(QAccessibleInterface* iface) {
 	QAccessible::Id _ret = QAccessible::uniqueId(iface);
 	return static_cast<unsigned int>(_ret);
 }
 
-QAccessibleInterface* QAccessible_AccessibleInterface(unsigned int uniqueId) {
+QAccessibleInterface* QAccessible_accessibleInterface(unsigned int uniqueId) {
 	return QAccessible::accessibleInterface(static_cast<QAccessible::Id>(uniqueId));
 }
 
-unsigned int QAccessible_RegisterAccessibleInterface(QAccessibleInterface* iface) {
+unsigned int QAccessible_registerAccessibleInterface(QAccessibleInterface* iface) {
 	QAccessible::Id _ret = QAccessible::registerAccessibleInterface(iface);
 	return static_cast<unsigned int>(_ret);
 }
 
-void QAccessible_DeleteAccessibleInterface(unsigned int uniqueId) {
+void QAccessible_deleteAccessibleInterface(unsigned int uniqueId) {
 	QAccessible::deleteAccessibleInterface(static_cast<QAccessible::Id>(uniqueId));
 }
 
-void QAccessible_UpdateAccessibility(QAccessibleEvent* event) {
+void QAccessible_updateAccessibility(QAccessibleEvent* event) {
 	QAccessible::updateAccessibility(event);
 }
 
-bool QAccessible_IsActive() {
+bool QAccessible_isActive() {
 	return QAccessible::isActive();
 }
 
-void QAccessible_SetActive(bool active) {
+void QAccessible_setActive(bool active) {
 	QAccessible::setActive(active);
 }
 
-void QAccessible_SetRootObject(QObject* object) {
+void QAccessible_setRootObject(QObject* object) {
 	QAccessible::setRootObject(object);
 }
 
-void QAccessible_Cleanup() {
+void QAccessible_cleanup() {
 	QAccessible::cleanup();
 }
 
-struct miqt_map /* tuple of int and int */  QAccessible_QAccessibleTextBoundaryHelper(QTextCursor* cursor, int boundaryType) {
+struct miqt_map /* tuple of int and int */  QAccessible_qAccessibleTextBoundaryHelper(QTextCursor* cursor, int boundaryType) {
 	QPair<int, int> _ret = QAccessible::qAccessibleTextBoundaryHelper(*cursor, static_cast<QAccessible::TextBoundaryType>(boundaryType));
 	// Convert QPair<> from C++ memory to manually-managed C memory
 	int* _first_arr = static_cast<int*>(malloc(sizeof(int)));
@@ -81,7 +81,7 @@ struct miqt_map /* tuple of int and int */  QAccessible_QAccessibleTextBoundaryH
 	return _out;
 }
 
-void QAccessible_Delete(QAccessible* self) {
+void QAccessible_delete(QAccessible* self) {
 	delete self;
 }
 
@@ -89,19 +89,19 @@ QAccessible__State* QAccessible__State_new() {
 	return new QAccessible::State();
 }
 
-void QAccessible__State_Delete(QAccessible__State* self) {
+void QAccessible__State_delete(QAccessible__State* self) {
 	delete self;
 }
 
-void QAccessible__ActivationObserver_AccessibilityActiveChanged(QAccessible__ActivationObserver* self, bool active) {
+void QAccessible__ActivationObserver_accessibilityActiveChanged(QAccessible__ActivationObserver* self, bool active) {
 	self->accessibilityActiveChanged(active);
 }
 
-void QAccessible__ActivationObserver_OperatorAssign(QAccessible__ActivationObserver* self, QAccessible__ActivationObserver* param1) {
+void QAccessible__ActivationObserver_operatorAssign(QAccessible__ActivationObserver* self, QAccessible__ActivationObserver* param1) {
 	self->operator=(*param1);
 }
 
-void QAccessible__ActivationObserver_Delete(QAccessible__ActivationObserver* self) {
+void QAccessible__ActivationObserver_delete(QAccessible__ActivationObserver* self) {
 	delete self;
 }
 

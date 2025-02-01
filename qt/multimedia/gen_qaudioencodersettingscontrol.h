@@ -29,23 +29,23 @@ typedef struct QObject QObject;
 #endif
 
 void QAudioEncoderSettingsControl_virtbase(QAudioEncoderSettingsControl* src, QMediaControl** outptr_QMediaControl);
-QMetaObject* QAudioEncoderSettingsControl_MetaObject(const QAudioEncoderSettingsControl* self);
-void* QAudioEncoderSettingsControl_Metacast(QAudioEncoderSettingsControl* self, const char* param1);
-struct miqt_string QAudioEncoderSettingsControl_Tr(const char* s);
-struct miqt_string QAudioEncoderSettingsControl_TrUtf8(const char* s);
-struct miqt_array /* of struct miqt_string */  QAudioEncoderSettingsControl_SupportedAudioCodecs(const QAudioEncoderSettingsControl* self);
-struct miqt_string QAudioEncoderSettingsControl_CodecDescription(const QAudioEncoderSettingsControl* self, struct miqt_string codecName);
-struct miqt_array /* of int */  QAudioEncoderSettingsControl_SupportedSampleRates(const QAudioEncoderSettingsControl* self, QAudioEncoderSettings* settings, bool* continuous);
-QAudioEncoderSettings* QAudioEncoderSettingsControl_AudioSettings(const QAudioEncoderSettingsControl* self);
-void QAudioEncoderSettingsControl_SetAudioSettings(QAudioEncoderSettingsControl* self, QAudioEncoderSettings* settings);
-struct miqt_string QAudioEncoderSettingsControl_Tr2(const char* s, const char* c);
-struct miqt_string QAudioEncoderSettingsControl_Tr3(const char* s, const char* c, int n);
-struct miqt_string QAudioEncoderSettingsControl_TrUtf82(const char* s, const char* c);
-struct miqt_string QAudioEncoderSettingsControl_TrUtf83(const char* s, const char* c, int n);
-void QAudioEncoderSettingsControl_Delete(QAudioEncoderSettingsControl* self);
+QMetaObject* QAudioEncoderSettingsControl_metaObject(const QAudioEncoderSettingsControl* self);
+void* QAudioEncoderSettingsControl_metacast(QAudioEncoderSettingsControl* self, const char* param1);
+struct miqt_string QAudioEncoderSettingsControl_tr(const char* s);
+struct miqt_string QAudioEncoderSettingsControl_trUtf8(const char* s);
+struct miqt_array /* of struct miqt_string */  QAudioEncoderSettingsControl_supportedAudioCodecs(const QAudioEncoderSettingsControl* self);
+struct miqt_string QAudioEncoderSettingsControl_codecDescription(const QAudioEncoderSettingsControl* self, struct miqt_string codecName);
+struct miqt_array /* of int */  QAudioEncoderSettingsControl_supportedSampleRates(const QAudioEncoderSettingsControl* self, QAudioEncoderSettings* settings, bool* continuous);
+QAudioEncoderSettings* QAudioEncoderSettingsControl_audioSettings(const QAudioEncoderSettingsControl* self);
+void QAudioEncoderSettingsControl_setAudioSettings(QAudioEncoderSettingsControl* self, QAudioEncoderSettings* settings);
+struct miqt_string QAudioEncoderSettingsControl_tr2(const char* s, const char* c);
+struct miqt_string QAudioEncoderSettingsControl_tr3(const char* s, const char* c, int n);
+struct miqt_string QAudioEncoderSettingsControl_trUtf82(const char* s, const char* c);
+struct miqt_string QAudioEncoderSettingsControl_trUtf83(const char* s, const char* c, int n);
+void QAudioEncoderSettingsControl_delete(QAudioEncoderSettingsControl* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

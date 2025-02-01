@@ -75,11 +75,11 @@ func NewQWebEngineScript2(other *QWebEngineScript) *QWebEngineScript {
 }
 
 func (this *QWebEngineScript) OperatorAssign(other *QWebEngineScript) {
-	C.QWebEngineScript_OperatorAssign(this.h, other.cPointer())
+	C.QWebEngineScript_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QWebEngineScript) Name() string {
-	var _ms C.struct_miqt_string = C.QWebEngineScript_Name(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineScript_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -90,21 +90,21 @@ func (this *QWebEngineScript) SetName(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QWebEngineScript_SetName(this.h, name_ms)
+	C.QWebEngineScript_setName(this.h, name_ms)
 }
 
 func (this *QWebEngineScript) SourceUrl() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineScript_SourceUrl(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineScript_sourceUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineScript) SetSourceUrl(url *qt6.QUrl) {
-	C.QWebEngineScript_SetSourceUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
+	C.QWebEngineScript_setSourceUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QWebEngineScript) SourceCode() string {
-	var _ms C.struct_miqt_string = C.QWebEngineScript_SourceCode(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineScript_sourceCode(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -115,48 +115,48 @@ func (this *QWebEngineScript) SetSourceCode(sourceCode string) {
 	sourceCode_ms.data = C.CString(sourceCode)
 	sourceCode_ms.len = C.size_t(len(sourceCode))
 	defer C.free(unsafe.Pointer(sourceCode_ms.data))
-	C.QWebEngineScript_SetSourceCode(this.h, sourceCode_ms)
+	C.QWebEngineScript_setSourceCode(this.h, sourceCode_ms)
 }
 
 func (this *QWebEngineScript) InjectionPoint() QWebEngineScript__InjectionPoint {
-	return (QWebEngineScript__InjectionPoint)(C.QWebEngineScript_InjectionPoint(this.h))
+	return (QWebEngineScript__InjectionPoint)(C.QWebEngineScript_injectionPoint(this.h))
 }
 
 func (this *QWebEngineScript) SetInjectionPoint(injectionPoint QWebEngineScript__InjectionPoint) {
-	C.QWebEngineScript_SetInjectionPoint(this.h, (C.int)(injectionPoint))
+	C.QWebEngineScript_setInjectionPoint(this.h, (C.int)(injectionPoint))
 }
 
 func (this *QWebEngineScript) WorldId() uint {
-	return (uint)(C.QWebEngineScript_WorldId(this.h))
+	return (uint)(C.QWebEngineScript_worldId(this.h))
 }
 
 func (this *QWebEngineScript) SetWorldId(worldId uint) {
-	C.QWebEngineScript_SetWorldId(this.h, (C.uint)(worldId))
+	C.QWebEngineScript_setWorldId(this.h, (C.uint)(worldId))
 }
 
 func (this *QWebEngineScript) RunsOnSubFrames() bool {
-	return (bool)(C.QWebEngineScript_RunsOnSubFrames(this.h))
+	return (bool)(C.QWebEngineScript_runsOnSubFrames(this.h))
 }
 
 func (this *QWebEngineScript) SetRunsOnSubFrames(on bool) {
-	C.QWebEngineScript_SetRunsOnSubFrames(this.h, (C.bool)(on))
+	C.QWebEngineScript_setRunsOnSubFrames(this.h, (C.bool)(on))
 }
 
 func (this *QWebEngineScript) OperatorEqual(other *QWebEngineScript) bool {
-	return (bool)(C.QWebEngineScript_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QWebEngineScript_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QWebEngineScript) OperatorNotEqual(other *QWebEngineScript) bool {
-	return (bool)(C.QWebEngineScript_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QWebEngineScript_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QWebEngineScript) Swap(other *QWebEngineScript) {
-	C.QWebEngineScript_Swap(this.h, other.cPointer())
+	C.QWebEngineScript_swap(this.h, other.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QWebEngineScript) Delete() {
-	C.QWebEngineScript_Delete(this.h)
+	C.QWebEngineScript_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

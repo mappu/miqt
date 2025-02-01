@@ -52,19 +52,19 @@ func UnsafeNewQMediaAudioProbeControl(h unsafe.Pointer) *QMediaAudioProbeControl
 }
 
 func (this *QMediaAudioProbeControl) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaAudioProbeControl_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaAudioProbeControl_metaObject(this.h)))
 }
 
 func (this *QMediaAudioProbeControl) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QMediaAudioProbeControl_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QMediaAudioProbeControl_metacast(this.h, param1_Cstring))
 }
 
 func QMediaAudioProbeControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaAudioProbeControl_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaAudioProbeControl_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -73,21 +73,21 @@ func QMediaAudioProbeControl_Tr(s string) string {
 func QMediaAudioProbeControl_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaAudioProbeControl_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaAudioProbeControl_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMediaAudioProbeControl) AudioBufferProbed(buffer *QAudioBuffer) {
-	C.QMediaAudioProbeControl_AudioBufferProbed(this.h, buffer.cPointer())
+	C.QMediaAudioProbeControl_audioBufferProbed(this.h, buffer.cPointer())
 }
 func (this *QMediaAudioProbeControl) OnAudioBufferProbed(slot func(buffer *QAudioBuffer)) {
-	C.QMediaAudioProbeControl_connect_AudioBufferProbed(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaAudioProbeControl_connect_audioBufferProbed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaAudioProbeControl_AudioBufferProbed
-func miqt_exec_callback_QMediaAudioProbeControl_AudioBufferProbed(cb C.intptr_t, buffer *C.QAudioBuffer) {
+//export miqt_exec_callback_QMediaAudioProbeControl_audioBufferProbed
+func miqt_exec_callback_QMediaAudioProbeControl_audioBufferProbed(cb C.intptr_t, buffer *C.QAudioBuffer) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(buffer *QAudioBuffer))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -100,14 +100,14 @@ func miqt_exec_callback_QMediaAudioProbeControl_AudioBufferProbed(cb C.intptr_t,
 }
 
 func (this *QMediaAudioProbeControl) Flush() {
-	C.QMediaAudioProbeControl_Flush(this.h)
+	C.QMediaAudioProbeControl_flush(this.h)
 }
 func (this *QMediaAudioProbeControl) OnFlush(slot func()) {
-	C.QMediaAudioProbeControl_connect_Flush(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaAudioProbeControl_connect_flush(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaAudioProbeControl_Flush
-func miqt_exec_callback_QMediaAudioProbeControl_Flush(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaAudioProbeControl_flush
+func miqt_exec_callback_QMediaAudioProbeControl_flush(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -121,7 +121,7 @@ func QMediaAudioProbeControl_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaAudioProbeControl_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaAudioProbeControl_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -132,7 +132,7 @@ func QMediaAudioProbeControl_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaAudioProbeControl_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaAudioProbeControl_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -143,7 +143,7 @@ func QMediaAudioProbeControl_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaAudioProbeControl_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaAudioProbeControl_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -154,7 +154,7 @@ func QMediaAudioProbeControl_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaAudioProbeControl_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaAudioProbeControl_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -162,7 +162,7 @@ func QMediaAudioProbeControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaAudioProbeControl) Delete() {
-	C.QMediaAudioProbeControl_Delete(this.h)
+	C.QMediaAudioProbeControl_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

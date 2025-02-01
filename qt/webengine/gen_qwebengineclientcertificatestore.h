@@ -24,13 +24,13 @@ typedef struct QSslKey QSslKey;
 typedef struct QWebEngineClientCertificateStore QWebEngineClientCertificateStore;
 #endif
 
-void QWebEngineClientCertificateStore_Add(QWebEngineClientCertificateStore* self, QSslCertificate* certificate, QSslKey* privateKey);
-struct miqt_array /* of QSslCertificate* */  QWebEngineClientCertificateStore_Certificates(const QWebEngineClientCertificateStore* self);
-void QWebEngineClientCertificateStore_Remove(QWebEngineClientCertificateStore* self, QSslCertificate* certificate);
-void QWebEngineClientCertificateStore_Clear(QWebEngineClientCertificateStore* self);
+void QWebEngineClientCertificateStore_add(QWebEngineClientCertificateStore* self, QSslCertificate* certificate, QSslKey* privateKey);
+struct miqt_array /* of QSslCertificate* */  QWebEngineClientCertificateStore_certificates(const QWebEngineClientCertificateStore* self);
+void QWebEngineClientCertificateStore_remove(QWebEngineClientCertificateStore* self, QSslCertificate* certificate);
+void QWebEngineClientCertificateStore_clear(QWebEngineClientCertificateStore* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

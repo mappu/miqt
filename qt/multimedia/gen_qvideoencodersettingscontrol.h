@@ -31,24 +31,24 @@ typedef struct QVideoEncoderSettingsControl QVideoEncoderSettingsControl;
 #endif
 
 void QVideoEncoderSettingsControl_virtbase(QVideoEncoderSettingsControl* src, QMediaControl** outptr_QMediaControl);
-QMetaObject* QVideoEncoderSettingsControl_MetaObject(const QVideoEncoderSettingsControl* self);
-void* QVideoEncoderSettingsControl_Metacast(QVideoEncoderSettingsControl* self, const char* param1);
-struct miqt_string QVideoEncoderSettingsControl_Tr(const char* s);
-struct miqt_string QVideoEncoderSettingsControl_TrUtf8(const char* s);
-struct miqt_array /* of QSize* */  QVideoEncoderSettingsControl_SupportedResolutions(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous);
-struct miqt_array /* of double */  QVideoEncoderSettingsControl_SupportedFrameRates(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous);
-struct miqt_array /* of struct miqt_string */  QVideoEncoderSettingsControl_SupportedVideoCodecs(const QVideoEncoderSettingsControl* self);
-struct miqt_string QVideoEncoderSettingsControl_VideoCodecDescription(const QVideoEncoderSettingsControl* self, struct miqt_string codec);
-QVideoEncoderSettings* QVideoEncoderSettingsControl_VideoSettings(const QVideoEncoderSettingsControl* self);
-void QVideoEncoderSettingsControl_SetVideoSettings(QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings);
-struct miqt_string QVideoEncoderSettingsControl_Tr2(const char* s, const char* c);
-struct miqt_string QVideoEncoderSettingsControl_Tr3(const char* s, const char* c, int n);
-struct miqt_string QVideoEncoderSettingsControl_TrUtf82(const char* s, const char* c);
-struct miqt_string QVideoEncoderSettingsControl_TrUtf83(const char* s, const char* c, int n);
-void QVideoEncoderSettingsControl_Delete(QVideoEncoderSettingsControl* self);
+QMetaObject* QVideoEncoderSettingsControl_metaObject(const QVideoEncoderSettingsControl* self);
+void* QVideoEncoderSettingsControl_metacast(QVideoEncoderSettingsControl* self, const char* param1);
+struct miqt_string QVideoEncoderSettingsControl_tr(const char* s);
+struct miqt_string QVideoEncoderSettingsControl_trUtf8(const char* s);
+struct miqt_array /* of QSize* */  QVideoEncoderSettingsControl_supportedResolutions(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous);
+struct miqt_array /* of double */  QVideoEncoderSettingsControl_supportedFrameRates(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous);
+struct miqt_array /* of struct miqt_string */  QVideoEncoderSettingsControl_supportedVideoCodecs(const QVideoEncoderSettingsControl* self);
+struct miqt_string QVideoEncoderSettingsControl_videoCodecDescription(const QVideoEncoderSettingsControl* self, struct miqt_string codec);
+QVideoEncoderSettings* QVideoEncoderSettingsControl_videoSettings(const QVideoEncoderSettingsControl* self);
+void QVideoEncoderSettingsControl_setVideoSettings(QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings);
+struct miqt_string QVideoEncoderSettingsControl_tr2(const char* s, const char* c);
+struct miqt_string QVideoEncoderSettingsControl_tr3(const char* s, const char* c, int n);
+struct miqt_string QVideoEncoderSettingsControl_trUtf82(const char* s, const char* c);
+struct miqt_string QVideoEncoderSettingsControl_trUtf83(const char* s, const char* c, int n);
+void QVideoEncoderSettingsControl_delete(QVideoEncoderSettingsControl* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

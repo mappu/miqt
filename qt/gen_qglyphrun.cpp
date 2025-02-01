@@ -22,27 +22,27 @@ QGlyphRun* QGlyphRun_new2(QGlyphRun* other) {
 	return new QGlyphRun(*other);
 }
 
-void QGlyphRun_OperatorAssign(QGlyphRun* self, QGlyphRun* other) {
+void QGlyphRun_operatorAssign(QGlyphRun* self, QGlyphRun* other) {
 	self->operator=(*other);
 }
 
-void QGlyphRun_Swap(QGlyphRun* self, QGlyphRun* other) {
+void QGlyphRun_swap(QGlyphRun* self, QGlyphRun* other) {
 	self->swap(*other);
 }
 
-QRawFont* QGlyphRun_RawFont(const QGlyphRun* self) {
+QRawFont* QGlyphRun_rawFont(const QGlyphRun* self) {
 	return new QRawFont(self->rawFont());
 }
 
-void QGlyphRun_SetRawFont(QGlyphRun* self, QRawFont* rawFont) {
+void QGlyphRun_setRawFont(QGlyphRun* self, QRawFont* rawFont) {
 	self->setRawFont(*rawFont);
 }
 
-void QGlyphRun_SetRawData(QGlyphRun* self, const unsigned int* glyphIndexArray, QPointF* glyphPositionArray, int size) {
+void QGlyphRun_setRawData(QGlyphRun* self, const unsigned int* glyphIndexArray, QPointF* glyphPositionArray, int size) {
 	self->setRawData(static_cast<const quint32*>(glyphIndexArray), glyphPositionArray, static_cast<int>(size));
 }
 
-struct miqt_array /* of unsigned int */  QGlyphRun_GlyphIndexes(const QGlyphRun* self) {
+struct miqt_array /* of unsigned int */  QGlyphRun_glyphIndexes(const QGlyphRun* self) {
 	QVector<quint32> _ret = self->glyphIndexes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	unsigned int* _arr = static_cast<unsigned int*>(malloc(sizeof(unsigned int) * _ret.length()));
@@ -55,7 +55,7 @@ struct miqt_array /* of unsigned int */  QGlyphRun_GlyphIndexes(const QGlyphRun*
 	return _out;
 }
 
-void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, struct miqt_array /* of unsigned int */  glyphIndexes) {
+void QGlyphRun_setGlyphIndexes(QGlyphRun* self, struct miqt_array /* of unsigned int */  glyphIndexes) {
 	QVector<quint32> glyphIndexes_QList;
 	glyphIndexes_QList.reserve(glyphIndexes.len);
 	unsigned int* glyphIndexes_arr = static_cast<unsigned int*>(glyphIndexes.data);
@@ -65,7 +65,7 @@ void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, struct miqt_array /* of unsigned
 	self->setGlyphIndexes(glyphIndexes_QList);
 }
 
-struct miqt_array /* of QPointF* */  QGlyphRun_Positions(const QGlyphRun* self) {
+struct miqt_array /* of QPointF* */  QGlyphRun_positions(const QGlyphRun* self) {
 	QVector<QPointF> _ret = self->positions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.length()));
@@ -78,7 +78,7 @@ struct miqt_array /* of QPointF* */  QGlyphRun_Positions(const QGlyphRun* self) 
 	return _out;
 }
 
-void QGlyphRun_SetPositions(QGlyphRun* self, struct miqt_array /* of QPointF* */  positions) {
+void QGlyphRun_setPositions(QGlyphRun* self, struct miqt_array /* of QPointF* */  positions) {
 	QVector<QPointF> positions_QList;
 	positions_QList.reserve(positions.len);
 	QPointF** positions_arr = static_cast<QPointF**>(positions.data);
@@ -88,80 +88,80 @@ void QGlyphRun_SetPositions(QGlyphRun* self, struct miqt_array /* of QPointF* */
 	self->setPositions(positions_QList);
 }
 
-void QGlyphRun_Clear(QGlyphRun* self) {
+void QGlyphRun_clear(QGlyphRun* self) {
 	self->clear();
 }
 
-bool QGlyphRun_OperatorEqual(const QGlyphRun* self, QGlyphRun* other) {
+bool QGlyphRun_operatorEqual(const QGlyphRun* self, QGlyphRun* other) {
 	return (*self == *other);
 }
 
-bool QGlyphRun_OperatorNotEqual(const QGlyphRun* self, QGlyphRun* other) {
+bool QGlyphRun_operatorNotEqual(const QGlyphRun* self, QGlyphRun* other) {
 	return (*self != *other);
 }
 
-void QGlyphRun_SetOverline(QGlyphRun* self, bool overline) {
+void QGlyphRun_setOverline(QGlyphRun* self, bool overline) {
 	self->setOverline(overline);
 }
 
-bool QGlyphRun_Overline(const QGlyphRun* self) {
+bool QGlyphRun_overline(const QGlyphRun* self) {
 	return self->overline();
 }
 
-void QGlyphRun_SetUnderline(QGlyphRun* self, bool underline) {
+void QGlyphRun_setUnderline(QGlyphRun* self, bool underline) {
 	self->setUnderline(underline);
 }
 
-bool QGlyphRun_Underline(const QGlyphRun* self) {
+bool QGlyphRun_underline(const QGlyphRun* self) {
 	return self->underline();
 }
 
-void QGlyphRun_SetStrikeOut(QGlyphRun* self, bool strikeOut) {
+void QGlyphRun_setStrikeOut(QGlyphRun* self, bool strikeOut) {
 	self->setStrikeOut(strikeOut);
 }
 
-bool QGlyphRun_StrikeOut(const QGlyphRun* self) {
+bool QGlyphRun_strikeOut(const QGlyphRun* self) {
 	return self->strikeOut();
 }
 
-void QGlyphRun_SetRightToLeft(QGlyphRun* self, bool on) {
+void QGlyphRun_setRightToLeft(QGlyphRun* self, bool on) {
 	self->setRightToLeft(on);
 }
 
-bool QGlyphRun_IsRightToLeft(const QGlyphRun* self) {
+bool QGlyphRun_isRightToLeft(const QGlyphRun* self) {
 	return self->isRightToLeft();
 }
 
-void QGlyphRun_SetFlag(QGlyphRun* self, int flag) {
+void QGlyphRun_setFlag(QGlyphRun* self, int flag) {
 	self->setFlag(static_cast<QGlyphRun::GlyphRunFlag>(flag));
 }
 
-void QGlyphRun_SetFlags(QGlyphRun* self, int flags) {
+void QGlyphRun_setFlags(QGlyphRun* self, int flags) {
 	self->setFlags(static_cast<QGlyphRun::GlyphRunFlags>(flags));
 }
 
-int QGlyphRun_Flags(const QGlyphRun* self) {
+int QGlyphRun_flags(const QGlyphRun* self) {
 	QGlyphRun::GlyphRunFlags _ret = self->flags();
 	return static_cast<int>(_ret);
 }
 
-void QGlyphRun_SetBoundingRect(QGlyphRun* self, QRectF* boundingRect) {
+void QGlyphRun_setBoundingRect(QGlyphRun* self, QRectF* boundingRect) {
 	self->setBoundingRect(*boundingRect);
 }
 
-QRectF* QGlyphRun_BoundingRect(const QGlyphRun* self) {
+QRectF* QGlyphRun_boundingRect(const QGlyphRun* self) {
 	return new QRectF(self->boundingRect());
 }
 
-bool QGlyphRun_IsEmpty(const QGlyphRun* self) {
+bool QGlyphRun_isEmpty(const QGlyphRun* self) {
 	return self->isEmpty();
 }
 
-void QGlyphRun_SetFlag2(QGlyphRun* self, int flag, bool enabled) {
+void QGlyphRun_setFlag2(QGlyphRun* self, int flag, bool enabled) {
 	self->setFlag(static_cast<QGlyphRun::GlyphRunFlag>(flag), enabled);
 }
 
-void QGlyphRun_Delete(QGlyphRun* self) {
+void QGlyphRun_delete(QGlyphRun* self) {
 	delete self;
 }
 

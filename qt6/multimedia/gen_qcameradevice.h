@@ -26,32 +26,32 @@ typedef struct QSize QSize;
 
 QCameraFormat* QCameraFormat_new();
 QCameraFormat* QCameraFormat_new2(QCameraFormat* other);
-void QCameraFormat_OperatorAssign(QCameraFormat* self, QCameraFormat* other);
-int QCameraFormat_PixelFormat(const QCameraFormat* self);
-QSize* QCameraFormat_Resolution(const QCameraFormat* self);
-float QCameraFormat_MinFrameRate(const QCameraFormat* self);
-float QCameraFormat_MaxFrameRate(const QCameraFormat* self);
-bool QCameraFormat_IsNull(const QCameraFormat* self);
-bool QCameraFormat_OperatorEqual(const QCameraFormat* self, QCameraFormat* other);
-bool QCameraFormat_OperatorNotEqual(const QCameraFormat* self, QCameraFormat* other);
-void QCameraFormat_Delete(QCameraFormat* self);
+void QCameraFormat_operatorAssign(QCameraFormat* self, QCameraFormat* other);
+int QCameraFormat_pixelFormat(const QCameraFormat* self);
+QSize* QCameraFormat_resolution(const QCameraFormat* self);
+float QCameraFormat_minFrameRate(const QCameraFormat* self);
+float QCameraFormat_maxFrameRate(const QCameraFormat* self);
+bool QCameraFormat_isNull(const QCameraFormat* self);
+bool QCameraFormat_operatorEqual(const QCameraFormat* self, QCameraFormat* other);
+bool QCameraFormat_operatorNotEqual(const QCameraFormat* self, QCameraFormat* other);
+void QCameraFormat_delete(QCameraFormat* self);
 
 QCameraDevice* QCameraDevice_new();
 QCameraDevice* QCameraDevice_new2(QCameraDevice* other);
-void QCameraDevice_OperatorAssign(QCameraDevice* self, QCameraDevice* other);
-bool QCameraDevice_OperatorEqual(const QCameraDevice* self, QCameraDevice* other);
-bool QCameraDevice_OperatorNotEqual(const QCameraDevice* self, QCameraDevice* other);
-bool QCameraDevice_IsNull(const QCameraDevice* self);
-struct miqt_string QCameraDevice_Id(const QCameraDevice* self);
-struct miqt_string QCameraDevice_Description(const QCameraDevice* self);
-bool QCameraDevice_IsDefault(const QCameraDevice* self);
-int QCameraDevice_Position(const QCameraDevice* self);
-struct miqt_array /* of QSize* */  QCameraDevice_PhotoResolutions(const QCameraDevice* self);
-struct miqt_array /* of QCameraFormat* */  QCameraDevice_VideoFormats(const QCameraDevice* self);
-void QCameraDevice_Delete(QCameraDevice* self);
+void QCameraDevice_operatorAssign(QCameraDevice* self, QCameraDevice* other);
+bool QCameraDevice_operatorEqual(const QCameraDevice* self, QCameraDevice* other);
+bool QCameraDevice_operatorNotEqual(const QCameraDevice* self, QCameraDevice* other);
+bool QCameraDevice_isNull(const QCameraDevice* self);
+struct miqt_string QCameraDevice_id(const QCameraDevice* self);
+struct miqt_string QCameraDevice_description(const QCameraDevice* self);
+bool QCameraDevice_isDefault(const QCameraDevice* self);
+int QCameraDevice_position(const QCameraDevice* self);
+struct miqt_array /* of QSize* */  QCameraDevice_photoResolutions(const QCameraDevice* self);
+struct miqt_array /* of QCameraFormat* */  QCameraDevice_videoFormats(const QCameraDevice* self);
+void QCameraDevice_delete(QCameraDevice* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

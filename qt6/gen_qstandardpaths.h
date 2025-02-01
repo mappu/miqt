@@ -20,20 +20,20 @@ class QStandardPaths;
 typedef struct QStandardPaths QStandardPaths;
 #endif
 
-struct miqt_string QStandardPaths_WritableLocation(int typeVal);
-struct miqt_array /* of struct miqt_string */  QStandardPaths_StandardLocations(int typeVal);
-struct miqt_string QStandardPaths_Locate(int typeVal, struct miqt_string fileName);
-struct miqt_array /* of struct miqt_string */  QStandardPaths_LocateAll(int typeVal, struct miqt_string fileName);
-struct miqt_string QStandardPaths_DisplayName(int typeVal);
-struct miqt_string QStandardPaths_FindExecutable(struct miqt_string executableName);
-void QStandardPaths_SetTestModeEnabled(bool testMode);
-bool QStandardPaths_IsTestModeEnabled();
-struct miqt_string QStandardPaths_Locate3(int typeVal, struct miqt_string fileName, int options);
-struct miqt_array /* of struct miqt_string */  QStandardPaths_LocateAll3(int typeVal, struct miqt_string fileName, int options);
-struct miqt_string QStandardPaths_FindExecutable2(struct miqt_string executableName, struct miqt_array /* of struct miqt_string */  paths);
+struct miqt_string QStandardPaths_writableLocation(int type);
+struct miqt_array /* of struct miqt_string */  QStandardPaths_standardLocations(int type);
+struct miqt_string QStandardPaths_locate(int type, struct miqt_string fileName);
+struct miqt_array /* of struct miqt_string */  QStandardPaths_locateAll(int type, struct miqt_string fileName);
+struct miqt_string QStandardPaths_displayName(int type);
+struct miqt_string QStandardPaths_findExecutable(struct miqt_string executableName);
+void QStandardPaths_setTestModeEnabled(bool testMode);
+bool QStandardPaths_isTestModeEnabled();
+struct miqt_string QStandardPaths_locate3(int type, struct miqt_string fileName, int options);
+struct miqt_array /* of struct miqt_string */  QStandardPaths_locateAll3(int type, struct miqt_string fileName, int options);
+struct miqt_string QStandardPaths_findExecutable2(struct miqt_string executableName, struct miqt_array /* of struct miqt_string */  paths);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

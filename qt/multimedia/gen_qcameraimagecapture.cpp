@@ -23,24 +23,24 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QCameraImageCapture_Error2(intptr_t, int, int, struct miqt_string);
-void miqt_exec_callback_QCameraImageCapture_ReadyForCaptureChanged(intptr_t, bool);
-void miqt_exec_callback_QCameraImageCapture_BufferFormatChanged(intptr_t, int);
-void miqt_exec_callback_QCameraImageCapture_CaptureDestinationChanged(intptr_t, int);
-void miqt_exec_callback_QCameraImageCapture_ImageExposed(intptr_t, int);
-void miqt_exec_callback_QCameraImageCapture_ImageCaptured(intptr_t, int, QImage*);
-void miqt_exec_callback_QCameraImageCapture_ImageMetadataAvailable(intptr_t, int, struct miqt_string, QVariant*);
-void miqt_exec_callback_QCameraImageCapture_ImageAvailable(intptr_t, int, QVideoFrame*);
-void miqt_exec_callback_QCameraImageCapture_ImageSaved(intptr_t, int, struct miqt_string);
-QMediaObject* miqt_exec_callback_QCameraImageCapture_MediaObject(const QCameraImageCapture*, intptr_t);
-bool miqt_exec_callback_QCameraImageCapture_SetMediaObject(QCameraImageCapture*, intptr_t, QMediaObject*);
-bool miqt_exec_callback_QCameraImageCapture_Event(QCameraImageCapture*, intptr_t, QEvent*);
-bool miqt_exec_callback_QCameraImageCapture_EventFilter(QCameraImageCapture*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QCameraImageCapture_TimerEvent(QCameraImageCapture*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QCameraImageCapture_ChildEvent(QCameraImageCapture*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QCameraImageCapture_CustomEvent(QCameraImageCapture*, intptr_t, QEvent*);
-void miqt_exec_callback_QCameraImageCapture_ConnectNotify(QCameraImageCapture*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QCameraImageCapture_DisconnectNotify(QCameraImageCapture*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QCameraImageCapture_error2(intptr_t, int, int, struct miqt_string);
+void miqt_exec_callback_QCameraImageCapture_readyForCaptureChanged(intptr_t, bool);
+void miqt_exec_callback_QCameraImageCapture_bufferFormatChanged(intptr_t, int);
+void miqt_exec_callback_QCameraImageCapture_captureDestinationChanged(intptr_t, int);
+void miqt_exec_callback_QCameraImageCapture_imageExposed(intptr_t, int);
+void miqt_exec_callback_QCameraImageCapture_imageCaptured(intptr_t, int, QImage*);
+void miqt_exec_callback_QCameraImageCapture_imageMetadataAvailable(intptr_t, int, struct miqt_string, QVariant*);
+void miqt_exec_callback_QCameraImageCapture_imageAvailable(intptr_t, int, QVideoFrame*);
+void miqt_exec_callback_QCameraImageCapture_imageSaved(intptr_t, int, struct miqt_string);
+QMediaObject* miqt_exec_callback_QCameraImageCapture_mediaObject(const QCameraImageCapture*, intptr_t);
+bool miqt_exec_callback_QCameraImageCapture_setMediaObject(QCameraImageCapture*, intptr_t, QMediaObject*);
+bool miqt_exec_callback_QCameraImageCapture_event(QCameraImageCapture*, intptr_t, QEvent*);
+bool miqt_exec_callback_QCameraImageCapture_eventFilter(QCameraImageCapture*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QCameraImageCapture_timerEvent(QCameraImageCapture*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QCameraImageCapture_childEvent(QCameraImageCapture*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QCameraImageCapture_customEvent(QCameraImageCapture*, intptr_t, QEvent*);
+void miqt_exec_callback_QCameraImageCapture_connectNotify(QCameraImageCapture*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QCameraImageCapture_disconnectNotify(QCameraImageCapture*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -54,175 +54,175 @@ public:
 	virtual ~MiqtVirtualQCameraImageCapture() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MediaObject = 0;
+	intptr_t handle__mediaObject = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QMediaObject* mediaObject() const override {
-		if (handle__MediaObject == 0) {
+		if (handle__mediaObject == 0) {
 			return QCameraImageCapture::mediaObject();
 		}
 		
 
-		QMediaObject* callback_return_value = miqt_exec_callback_QCameraImageCapture_MediaObject(this, handle__MediaObject);
+		QMediaObject* callback_return_value = miqt_exec_callback_QCameraImageCapture_mediaObject(this, handle__mediaObject);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QMediaObject* virtualbase_MediaObject() const {
+	QMediaObject* virtualbase_mediaObject() const {
 
 		return QCameraImageCapture::mediaObject();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetMediaObject = 0;
+	intptr_t handle__setMediaObject = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool setMediaObject(QMediaObject* mediaObject) override {
-		if (handle__SetMediaObject == 0) {
+		if (handle__setMediaObject == 0) {
 			return QCameraImageCapture::setMediaObject(mediaObject);
 		}
 		
 		QMediaObject* sigval1 = mediaObject;
 
-		bool callback_return_value = miqt_exec_callback_QCameraImageCapture_SetMediaObject(this, handle__SetMediaObject, sigval1);
+		bool callback_return_value = miqt_exec_callback_QCameraImageCapture_setMediaObject(this, handle__setMediaObject, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_SetMediaObject(QMediaObject* mediaObject) {
+	bool virtualbase_setMediaObject(QMediaObject* mediaObject) {
 
 		return QCameraImageCapture::setMediaObject(mediaObject);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QCameraImageCapture::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QCameraImageCapture_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QCameraImageCapture_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QCameraImageCapture::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QCameraImageCapture::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QCameraImageCapture_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QCameraImageCapture_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QCameraImageCapture::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QCameraImageCapture::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QCameraImageCapture_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QCameraImageCapture_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QCameraImageCapture::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QCameraImageCapture::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QCameraImageCapture_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QCameraImageCapture_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QCameraImageCapture::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QCameraImageCapture::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QCameraImageCapture_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QCameraImageCapture_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QCameraImageCapture::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QCameraImageCapture::connectNotify(signal);
 			return;
 		}
@@ -231,24 +231,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QCameraImageCapture_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QCameraImageCapture_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QCameraImageCapture::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QCameraImageCapture::disconnectNotify(signal);
 			return;
 		}
@@ -257,13 +257,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QCameraImageCapture_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QCameraImageCapture_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QCameraImageCapture::disconnectNotify(*signal);
 
@@ -284,15 +284,15 @@ void QCameraImageCapture_virtbase(QCameraImageCapture* src, QObject** outptr_QOb
 	*outptr_QMediaBindableInterface = static_cast<QMediaBindableInterface*>(src);
 }
 
-QMetaObject* QCameraImageCapture_MetaObject(const QCameraImageCapture* self) {
+QMetaObject* QCameraImageCapture_metaObject(const QCameraImageCapture* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QCameraImageCapture_Metacast(QCameraImageCapture* self, const char* param1) {
+void* QCameraImageCapture_metacast(QCameraImageCapture* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QCameraImageCapture_Tr(const char* s) {
+struct miqt_string QCameraImageCapture_tr(const char* s) {
 	QString _ret = QCameraImageCapture::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -303,7 +303,7 @@ struct miqt_string QCameraImageCapture_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QCameraImageCapture_TrUtf8(const char* s) {
+struct miqt_string QCameraImageCapture_trUtf8(const char* s) {
 	QString _ret = QCameraImageCapture::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -314,25 +314,25 @@ struct miqt_string QCameraImageCapture_TrUtf8(const char* s) {
 	return _ms;
 }
 
-bool QCameraImageCapture_IsAvailable(const QCameraImageCapture* self) {
+bool QCameraImageCapture_isAvailable(const QCameraImageCapture* self) {
 	return self->isAvailable();
 }
 
-int QCameraImageCapture_Availability(const QCameraImageCapture* self) {
+int QCameraImageCapture_availability(const QCameraImageCapture* self) {
 	QMultimedia::AvailabilityStatus _ret = self->availability();
 	return static_cast<int>(_ret);
 }
 
-QMediaObject* QCameraImageCapture_MediaObject(const QCameraImageCapture* self) {
+QMediaObject* QCameraImageCapture_mediaObject(const QCameraImageCapture* self) {
 	return self->mediaObject();
 }
 
-int QCameraImageCapture_Error(const QCameraImageCapture* self) {
+int QCameraImageCapture_error(const QCameraImageCapture* self) {
 	QCameraImageCapture::Error _ret = self->error();
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string QCameraImageCapture_ErrorString(const QCameraImageCapture* self) {
+struct miqt_string QCameraImageCapture_errorString(const QCameraImageCapture* self) {
 	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -343,11 +343,11 @@ struct miqt_string QCameraImageCapture_ErrorString(const QCameraImageCapture* se
 	return _ms;
 }
 
-bool QCameraImageCapture_IsReadyForCapture(const QCameraImageCapture* self) {
+bool QCameraImageCapture_isReadyForCapture(const QCameraImageCapture* self) {
 	return self->isReadyForCapture();
 }
 
-struct miqt_array /* of struct miqt_string */  QCameraImageCapture_SupportedImageCodecs(const QCameraImageCapture* self) {
+struct miqt_array /* of struct miqt_string */  QCameraImageCapture_supportedImageCodecs(const QCameraImageCapture* self) {
 	QStringList _ret = self->supportedImageCodecs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -367,7 +367,7 @@ struct miqt_array /* of struct miqt_string */  QCameraImageCapture_SupportedImag
 	return _out;
 }
 
-struct miqt_string QCameraImageCapture_ImageCodecDescription(const QCameraImageCapture* self, struct miqt_string codecName) {
+struct miqt_string QCameraImageCapture_imageCodecDescription(const QCameraImageCapture* self, struct miqt_string codecName) {
 	QString codecName_QString = QString::fromUtf8(codecName.data, codecName.len);
 	QString _ret = self->imageCodecDescription(codecName_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -379,7 +379,7 @@ struct miqt_string QCameraImageCapture_ImageCodecDescription(const QCameraImageC
 	return _ms;
 }
 
-struct miqt_array /* of QSize* */  QCameraImageCapture_SupportedResolutions(const QCameraImageCapture* self) {
+struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutions(const QCameraImageCapture* self) {
 	QList<QSize> _ret = self->supportedResolutions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
@@ -392,15 +392,15 @@ struct miqt_array /* of QSize* */  QCameraImageCapture_SupportedResolutions(cons
 	return _out;
 }
 
-QImageEncoderSettings* QCameraImageCapture_EncodingSettings(const QCameraImageCapture* self) {
+QImageEncoderSettings* QCameraImageCapture_encodingSettings(const QCameraImageCapture* self) {
 	return new QImageEncoderSettings(self->encodingSettings());
 }
 
-void QCameraImageCapture_SetEncodingSettings(QCameraImageCapture* self, QImageEncoderSettings* settings) {
+void QCameraImageCapture_setEncodingSettings(QCameraImageCapture* self, QImageEncoderSettings* settings) {
 	self->setEncodingSettings(*settings);
 }
 
-struct miqt_array /* of int */  QCameraImageCapture_SupportedBufferFormats(const QCameraImageCapture* self) {
+struct miqt_array /* of int */  QCameraImageCapture_supportedBufferFormats(const QCameraImageCapture* self) {
 	QList<QVideoFrame::PixelFormat> _ret = self->supportedBufferFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -414,42 +414,42 @@ struct miqt_array /* of int */  QCameraImageCapture_SupportedBufferFormats(const
 	return _out;
 }
 
-int QCameraImageCapture_BufferFormat(const QCameraImageCapture* self) {
+int QCameraImageCapture_bufferFormat(const QCameraImageCapture* self) {
 	QVideoFrame::PixelFormat _ret = self->bufferFormat();
 	return static_cast<int>(_ret);
 }
 
-void QCameraImageCapture_SetBufferFormat(QCameraImageCapture* self, int format) {
+void QCameraImageCapture_setBufferFormat(QCameraImageCapture* self, int format) {
 	self->setBufferFormat(static_cast<const QVideoFrame::PixelFormat>(format));
 }
 
-bool QCameraImageCapture_IsCaptureDestinationSupported(const QCameraImageCapture* self, int destination) {
+bool QCameraImageCapture_isCaptureDestinationSupported(const QCameraImageCapture* self, int destination) {
 	return self->isCaptureDestinationSupported(static_cast<QCameraImageCapture::CaptureDestinations>(destination));
 }
 
-int QCameraImageCapture_CaptureDestination(const QCameraImageCapture* self) {
+int QCameraImageCapture_captureDestination(const QCameraImageCapture* self) {
 	QCameraImageCapture::CaptureDestinations _ret = self->captureDestination();
 	return static_cast<int>(_ret);
 }
 
-void QCameraImageCapture_SetCaptureDestination(QCameraImageCapture* self, int destination) {
+void QCameraImageCapture_setCaptureDestination(QCameraImageCapture* self, int destination) {
 	self->setCaptureDestination(static_cast<QCameraImageCapture::CaptureDestinations>(destination));
 }
 
-int QCameraImageCapture_Capture(QCameraImageCapture* self) {
+int QCameraImageCapture_capture(QCameraImageCapture* self) {
 	return self->capture();
 }
 
-void QCameraImageCapture_CancelCapture(QCameraImageCapture* self) {
+void QCameraImageCapture_cancelCapture(QCameraImageCapture* self) {
 	self->cancelCapture();
 }
 
-void QCameraImageCapture_Error2(QCameraImageCapture* self, int id, int error, struct miqt_string errorString) {
+void QCameraImageCapture_error2(QCameraImageCapture* self, int id, int error, struct miqt_string errorString) {
 	QString errorString_QString = QString::fromUtf8(errorString.data, errorString.len);
 	self->error(static_cast<int>(id), static_cast<QCameraImageCapture::Error>(error), errorString_QString);
 }
 
-void QCameraImageCapture_connect_Error2(QCameraImageCapture* self, intptr_t slot) {
+void QCameraImageCapture_connect_error2(QCameraImageCapture* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture::connect(self, static_cast<void (QCameraImageCapture::*)(int, QCameraImageCapture::Error, const QString&)>(&QCameraImageCapture::error), self, [=](int id, QCameraImageCapture::Error error, const QString& errorString) {
 		int sigval1 = id;
 		QCameraImageCapture::Error error_ret = error;
@@ -462,76 +462,76 @@ void QCameraImageCapture_connect_Error2(QCameraImageCapture* self, intptr_t slot
 		errorString_ms.data = static_cast<char*>(malloc(errorString_ms.len));
 		memcpy(errorString_ms.data, errorString_b.data(), errorString_ms.len);
 		struct miqt_string sigval3 = errorString_ms;
-		miqt_exec_callback_QCameraImageCapture_Error2(slot, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QCameraImageCapture_error2(slot, sigval1, sigval2, sigval3);
 	});
 }
 
-void QCameraImageCapture_ReadyForCaptureChanged(QCameraImageCapture* self, bool ready) {
+void QCameraImageCapture_readyForCaptureChanged(QCameraImageCapture* self, bool ready) {
 	self->readyForCaptureChanged(ready);
 }
 
-void QCameraImageCapture_connect_ReadyForCaptureChanged(QCameraImageCapture* self, intptr_t slot) {
+void QCameraImageCapture_connect_readyForCaptureChanged(QCameraImageCapture* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture::connect(self, static_cast<void (QCameraImageCapture::*)(bool)>(&QCameraImageCapture::readyForCaptureChanged), self, [=](bool ready) {
 		bool sigval1 = ready;
-		miqt_exec_callback_QCameraImageCapture_ReadyForCaptureChanged(slot, sigval1);
+		miqt_exec_callback_QCameraImageCapture_readyForCaptureChanged(slot, sigval1);
 	});
 }
 
-void QCameraImageCapture_BufferFormatChanged(QCameraImageCapture* self, int format) {
+void QCameraImageCapture_bufferFormatChanged(QCameraImageCapture* self, int format) {
 	self->bufferFormatChanged(static_cast<QVideoFrame::PixelFormat>(format));
 }
 
-void QCameraImageCapture_connect_BufferFormatChanged(QCameraImageCapture* self, intptr_t slot) {
+void QCameraImageCapture_connect_bufferFormatChanged(QCameraImageCapture* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture::connect(self, static_cast<void (QCameraImageCapture::*)(QVideoFrame::PixelFormat)>(&QCameraImageCapture::bufferFormatChanged), self, [=](QVideoFrame::PixelFormat format) {
 		QVideoFrame::PixelFormat format_ret = format;
 		int sigval1 = static_cast<int>(format_ret);
-		miqt_exec_callback_QCameraImageCapture_BufferFormatChanged(slot, sigval1);
+		miqt_exec_callback_QCameraImageCapture_bufferFormatChanged(slot, sigval1);
 	});
 }
 
-void QCameraImageCapture_CaptureDestinationChanged(QCameraImageCapture* self, int destination) {
+void QCameraImageCapture_captureDestinationChanged(QCameraImageCapture* self, int destination) {
 	self->captureDestinationChanged(static_cast<QCameraImageCapture::CaptureDestinations>(destination));
 }
 
-void QCameraImageCapture_connect_CaptureDestinationChanged(QCameraImageCapture* self, intptr_t slot) {
+void QCameraImageCapture_connect_captureDestinationChanged(QCameraImageCapture* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture::connect(self, static_cast<void (QCameraImageCapture::*)(QCameraImageCapture::CaptureDestinations)>(&QCameraImageCapture::captureDestinationChanged), self, [=](QCameraImageCapture::CaptureDestinations destination) {
 		QCameraImageCapture::CaptureDestinations destination_ret = destination;
 		int sigval1 = static_cast<int>(destination_ret);
-		miqt_exec_callback_QCameraImageCapture_CaptureDestinationChanged(slot, sigval1);
+		miqt_exec_callback_QCameraImageCapture_captureDestinationChanged(slot, sigval1);
 	});
 }
 
-void QCameraImageCapture_ImageExposed(QCameraImageCapture* self, int id) {
+void QCameraImageCapture_imageExposed(QCameraImageCapture* self, int id) {
 	self->imageExposed(static_cast<int>(id));
 }
 
-void QCameraImageCapture_connect_ImageExposed(QCameraImageCapture* self, intptr_t slot) {
+void QCameraImageCapture_connect_imageExposed(QCameraImageCapture* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture::connect(self, static_cast<void (QCameraImageCapture::*)(int)>(&QCameraImageCapture::imageExposed), self, [=](int id) {
 		int sigval1 = id;
-		miqt_exec_callback_QCameraImageCapture_ImageExposed(slot, sigval1);
+		miqt_exec_callback_QCameraImageCapture_imageExposed(slot, sigval1);
 	});
 }
 
-void QCameraImageCapture_ImageCaptured(QCameraImageCapture* self, int id, QImage* preview) {
+void QCameraImageCapture_imageCaptured(QCameraImageCapture* self, int id, QImage* preview) {
 	self->imageCaptured(static_cast<int>(id), *preview);
 }
 
-void QCameraImageCapture_connect_ImageCaptured(QCameraImageCapture* self, intptr_t slot) {
+void QCameraImageCapture_connect_imageCaptured(QCameraImageCapture* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture::connect(self, static_cast<void (QCameraImageCapture::*)(int, const QImage&)>(&QCameraImageCapture::imageCaptured), self, [=](int id, const QImage& preview) {
 		int sigval1 = id;
 		const QImage& preview_ret = preview;
 		// Cast returned reference into pointer
 		QImage* sigval2 = const_cast<QImage*>(&preview_ret);
-		miqt_exec_callback_QCameraImageCapture_ImageCaptured(slot, sigval1, sigval2);
+		miqt_exec_callback_QCameraImageCapture_imageCaptured(slot, sigval1, sigval2);
 	});
 }
 
-void QCameraImageCapture_ImageMetadataAvailable(QCameraImageCapture* self, int id, struct miqt_string key, QVariant* value) {
+void QCameraImageCapture_imageMetadataAvailable(QCameraImageCapture* self, int id, struct miqt_string key, QVariant* value) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
 	self->imageMetadataAvailable(static_cast<int>(id), key_QString, *value);
 }
 
-void QCameraImageCapture_connect_ImageMetadataAvailable(QCameraImageCapture* self, intptr_t slot) {
+void QCameraImageCapture_connect_imageMetadataAvailable(QCameraImageCapture* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture::connect(self, static_cast<void (QCameraImageCapture::*)(int, const QString&, const QVariant&)>(&QCameraImageCapture::imageMetadataAvailable), self, [=](int id, const QString& key, const QVariant& value) {
 		int sigval1 = id;
 		const QString key_ret = key;
@@ -545,30 +545,30 @@ void QCameraImageCapture_connect_ImageMetadataAvailable(QCameraImageCapture* sel
 		const QVariant& value_ret = value;
 		// Cast returned reference into pointer
 		QVariant* sigval3 = const_cast<QVariant*>(&value_ret);
-		miqt_exec_callback_QCameraImageCapture_ImageMetadataAvailable(slot, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QCameraImageCapture_imageMetadataAvailable(slot, sigval1, sigval2, sigval3);
 	});
 }
 
-void QCameraImageCapture_ImageAvailable(QCameraImageCapture* self, int id, QVideoFrame* frame) {
+void QCameraImageCapture_imageAvailable(QCameraImageCapture* self, int id, QVideoFrame* frame) {
 	self->imageAvailable(static_cast<int>(id), *frame);
 }
 
-void QCameraImageCapture_connect_ImageAvailable(QCameraImageCapture* self, intptr_t slot) {
+void QCameraImageCapture_connect_imageAvailable(QCameraImageCapture* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture::connect(self, static_cast<void (QCameraImageCapture::*)(int, const QVideoFrame&)>(&QCameraImageCapture::imageAvailable), self, [=](int id, const QVideoFrame& frame) {
 		int sigval1 = id;
 		const QVideoFrame& frame_ret = frame;
 		// Cast returned reference into pointer
 		QVideoFrame* sigval2 = const_cast<QVideoFrame*>(&frame_ret);
-		miqt_exec_callback_QCameraImageCapture_ImageAvailable(slot, sigval1, sigval2);
+		miqt_exec_callback_QCameraImageCapture_imageAvailable(slot, sigval1, sigval2);
 	});
 }
 
-void QCameraImageCapture_ImageSaved(QCameraImageCapture* self, int id, struct miqt_string fileName) {
+void QCameraImageCapture_imageSaved(QCameraImageCapture* self, int id, struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	self->imageSaved(static_cast<int>(id), fileName_QString);
 }
 
-void QCameraImageCapture_connect_ImageSaved(QCameraImageCapture* self, intptr_t slot) {
+void QCameraImageCapture_connect_imageSaved(QCameraImageCapture* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture::connect(self, static_cast<void (QCameraImageCapture::*)(int, const QString&)>(&QCameraImageCapture::imageSaved), self, [=](int id, const QString& fileName) {
 		int sigval1 = id;
 		const QString fileName_ret = fileName;
@@ -579,11 +579,11 @@ void QCameraImageCapture_connect_ImageSaved(QCameraImageCapture* self, intptr_t 
 		fileName_ms.data = static_cast<char*>(malloc(fileName_ms.len));
 		memcpy(fileName_ms.data, fileName_b.data(), fileName_ms.len);
 		struct miqt_string sigval2 = fileName_ms;
-		miqt_exec_callback_QCameraImageCapture_ImageSaved(slot, sigval1, sigval2);
+		miqt_exec_callback_QCameraImageCapture_imageSaved(slot, sigval1, sigval2);
 	});
 }
 
-struct miqt_string QCameraImageCapture_Tr2(const char* s, const char* c) {
+struct miqt_string QCameraImageCapture_tr2(const char* s, const char* c) {
 	QString _ret = QCameraImageCapture::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -594,7 +594,7 @@ struct miqt_string QCameraImageCapture_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QCameraImageCapture_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QCameraImageCapture_tr3(const char* s, const char* c, int n) {
 	QString _ret = QCameraImageCapture::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -605,7 +605,7 @@ struct miqt_string QCameraImageCapture_Tr3(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-struct miqt_string QCameraImageCapture_TrUtf82(const char* s, const char* c) {
+struct miqt_string QCameraImageCapture_trUtf82(const char* s, const char* c) {
 	QString _ret = QCameraImageCapture::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -616,7 +616,7 @@ struct miqt_string QCameraImageCapture_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QCameraImageCapture_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QCameraImageCapture_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QCameraImageCapture::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -627,7 +627,7 @@ struct miqt_string QCameraImageCapture_TrUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-struct miqt_array /* of QSize* */  QCameraImageCapture_SupportedResolutions1(const QCameraImageCapture* self, QImageEncoderSettings* settings) {
+struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutions1(const QCameraImageCapture* self, QImageEncoderSettings* settings) {
 	QList<QSize> _ret = self->supportedResolutions(*settings);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
@@ -640,7 +640,7 @@ struct miqt_array /* of QSize* */  QCameraImageCapture_SupportedResolutions1(con
 	return _out;
 }
 
-struct miqt_array /* of QSize* */  QCameraImageCapture_SupportedResolutions2(const QCameraImageCapture* self, QImageEncoderSettings* settings, bool* continuous) {
+struct miqt_array /* of QSize* */  QCameraImageCapture_supportedResolutions2(const QCameraImageCapture* self, QImageEncoderSettings* settings, bool* continuous) {
 	QList<QSize> _ret = self->supportedResolutions(*settings, continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
@@ -653,138 +653,138 @@ struct miqt_array /* of QSize* */  QCameraImageCapture_SupportedResolutions2(con
 	return _out;
 }
 
-int QCameraImageCapture_Capture1(QCameraImageCapture* self, struct miqt_string location) {
+int QCameraImageCapture_capture1(QCameraImageCapture* self, struct miqt_string location) {
 	QString location_QString = QString::fromUtf8(location.data, location.len);
 	return self->capture(location_QString);
 }
 
-bool QCameraImageCapture_override_virtual_MediaObject(void* self, intptr_t slot) {
+bool QCameraImageCapture_override_virtual_mediaObject(void* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture* self_cast = dynamic_cast<MiqtVirtualQCameraImageCapture*>( (QCameraImageCapture*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MediaObject = slot;
+	self_cast->handle__mediaObject = slot;
 	return true;
 }
 
-QMediaObject* QCameraImageCapture_virtualbase_MediaObject(const void* self) {
-	return ( (const MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_MediaObject();
+QMediaObject* QCameraImageCapture_virtualbase_mediaObject(const void* self) {
+	return ( (const MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_mediaObject();
 }
 
-bool QCameraImageCapture_override_virtual_SetMediaObject(void* self, intptr_t slot) {
+bool QCameraImageCapture_override_virtual_setMediaObject(void* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture* self_cast = dynamic_cast<MiqtVirtualQCameraImageCapture*>( (QCameraImageCapture*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetMediaObject = slot;
+	self_cast->handle__setMediaObject = slot;
 	return true;
 }
 
-bool QCameraImageCapture_virtualbase_SetMediaObject(void* self, QMediaObject* mediaObject) {
-	return ( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_SetMediaObject(mediaObject);
+bool QCameraImageCapture_virtualbase_setMediaObject(void* self, QMediaObject* mediaObject) {
+	return ( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_setMediaObject(mediaObject);
 }
 
-bool QCameraImageCapture_override_virtual_Event(void* self, intptr_t slot) {
+bool QCameraImageCapture_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture* self_cast = dynamic_cast<MiqtVirtualQCameraImageCapture*>( (QCameraImageCapture*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QCameraImageCapture_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_Event(event);
+bool QCameraImageCapture_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_event(event);
 }
 
-bool QCameraImageCapture_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QCameraImageCapture_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture* self_cast = dynamic_cast<MiqtVirtualQCameraImageCapture*>( (QCameraImageCapture*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QCameraImageCapture_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_EventFilter(watched, event);
+bool QCameraImageCapture_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QCameraImageCapture_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QCameraImageCapture_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture* self_cast = dynamic_cast<MiqtVirtualQCameraImageCapture*>( (QCameraImageCapture*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QCameraImageCapture_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_TimerEvent(event);
+void QCameraImageCapture_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QCameraImageCapture_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QCameraImageCapture_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture* self_cast = dynamic_cast<MiqtVirtualQCameraImageCapture*>( (QCameraImageCapture*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QCameraImageCapture_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_ChildEvent(event);
+void QCameraImageCapture_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QCameraImageCapture_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QCameraImageCapture_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture* self_cast = dynamic_cast<MiqtVirtualQCameraImageCapture*>( (QCameraImageCapture*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QCameraImageCapture_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_CustomEvent(event);
+void QCameraImageCapture_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QCameraImageCapture_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QCameraImageCapture_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture* self_cast = dynamic_cast<MiqtVirtualQCameraImageCapture*>( (QCameraImageCapture*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QCameraImageCapture_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_ConnectNotify(signal);
+void QCameraImageCapture_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QCameraImageCapture_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QCameraImageCapture_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQCameraImageCapture* self_cast = dynamic_cast<MiqtVirtualQCameraImageCapture*>( (QCameraImageCapture*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QCameraImageCapture_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_DisconnectNotify(signal);
+void QCameraImageCapture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQCameraImageCapture*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QCameraImageCapture_Delete(QCameraImageCapture* self) {
+void QCameraImageCapture_delete(QCameraImageCapture* self) {
 	delete self;
 }
 

@@ -69,34 +69,34 @@ func NewQPicture3(formatVersion int) *QPicture {
 }
 
 func (this *QPicture) IsNull() bool {
-	return (bool)(C.QPicture_IsNull(this.h))
+	return (bool)(C.QPicture_isNull(this.h))
 }
 
 func (this *QPicture) DevType() int {
-	return (int)(C.QPicture_DevType(this.h))
+	return (int)(C.QPicture_devType(this.h))
 }
 
 func (this *QPicture) Size() uint {
-	return (uint)(C.QPicture_Size(this.h))
+	return (uint)(C.QPicture_size(this.h))
 }
 
 func (this *QPicture) Data() string {
-	_ret := C.QPicture_Data(this.h)
+	_ret := C.QPicture_data(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QPicture) SetData(data string, size uint) {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	C.QPicture_SetData(this.h, data_Cstring, (C.uint)(size))
+	C.QPicture_setData(this.h, data_Cstring, (C.uint)(size))
 }
 
 func (this *QPicture) Play(p *QPainter) bool {
-	return (bool)(C.QPicture_Play(this.h, p.cPointer()))
+	return (bool)(C.QPicture_play(this.h, p.cPointer()))
 }
 
 func (this *QPicture) Load(dev *QIODevice) bool {
-	return (bool)(C.QPicture_Load(this.h, dev.cPointer()))
+	return (bool)(C.QPicture_load(this.h, dev.cPointer()))
 }
 
 func (this *QPicture) LoadWithFileName(fileName string) bool {
@@ -104,11 +104,11 @@ func (this *QPicture) LoadWithFileName(fileName string) bool {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	return (bool)(C.QPicture_LoadWithFileName(this.h, fileName_ms))
+	return (bool)(C.QPicture_loadWithFileName(this.h, fileName_ms))
 }
 
 func (this *QPicture) Save(dev *QIODevice) bool {
-	return (bool)(C.QPicture_Save(this.h, dev.cPointer()))
+	return (bool)(C.QPicture_save(this.h, dev.cPointer()))
 }
 
 func (this *QPicture) SaveWithFileName(fileName string) bool {
@@ -116,33 +116,33 @@ func (this *QPicture) SaveWithFileName(fileName string) bool {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	return (bool)(C.QPicture_SaveWithFileName(this.h, fileName_ms))
+	return (bool)(C.QPicture_saveWithFileName(this.h, fileName_ms))
 }
 
 func (this *QPicture) BoundingRect() *QRect {
-	_goptr := newQRect(C.QPicture_BoundingRect(this.h))
+	_goptr := newQRect(C.QPicture_boundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPicture) SetBoundingRect(r *QRect) {
-	C.QPicture_SetBoundingRect(this.h, r.cPointer())
+	C.QPicture_setBoundingRect(this.h, r.cPointer())
 }
 
 func (this *QPicture) OperatorAssign(p *QPicture) {
-	C.QPicture_OperatorAssign(this.h, p.cPointer())
+	C.QPicture_operatorAssign(this.h, p.cPointer())
 }
 
 func (this *QPicture) Swap(other *QPicture) {
-	C.QPicture_Swap(this.h, other.cPointer())
+	C.QPicture_swap(this.h, other.cPointer())
 }
 
 func (this *QPicture) Detach() {
-	C.QPicture_Detach(this.h)
+	C.QPicture_detach(this.h)
 }
 
 func (this *QPicture) IsDetached() bool {
-	return (bool)(C.QPicture_IsDetached(this.h))
+	return (bool)(C.QPicture_isDetached(this.h))
 }
 
 func QPicture_PictureFormat(fileName string) string {
@@ -150,12 +150,12 @@ func QPicture_PictureFormat(fileName string) string {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	_ret := C.QPicture_PictureFormat(fileName_ms)
+	_ret := C.QPicture_pictureFormat(fileName_ms)
 	return C.GoString(_ret)
 }
 
 func QPicture_InputFormats() [][]byte {
-	var _ma C.struct_miqt_array = C.QPicture_InputFormats()
+	var _ma C.struct_miqt_array = C.QPicture_inputFormats()
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -168,7 +168,7 @@ func QPicture_InputFormats() [][]byte {
 }
 
 func QPicture_OutputFormats() [][]byte {
-	var _ma C.struct_miqt_array = C.QPicture_OutputFormats()
+	var _ma C.struct_miqt_array = C.QPicture_outputFormats()
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -181,7 +181,7 @@ func QPicture_OutputFormats() [][]byte {
 }
 
 func QPicture_InputFormatList() []string {
-	var _ma C.struct_miqt_array = C.QPicture_InputFormatList()
+	var _ma C.struct_miqt_array = C.QPicture_inputFormatList()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -194,7 +194,7 @@ func QPicture_InputFormatList() []string {
 }
 
 func QPicture_OutputFormatList() []string {
-	var _ma C.struct_miqt_array = C.QPicture_OutputFormatList()
+	var _ma C.struct_miqt_array = C.QPicture_outputFormatList()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -207,13 +207,13 @@ func QPicture_OutputFormatList() []string {
 }
 
 func (this *QPicture) PaintEngine() *QPaintEngine {
-	return newQPaintEngine(C.QPicture_PaintEngine(this.h))
+	return newQPaintEngine(C.QPicture_paintEngine(this.h))
 }
 
 func (this *QPicture) Load2(dev *QIODevice, format string) bool {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPicture_Load2(this.h, dev.cPointer(), format_Cstring))
+	return (bool)(C.QPicture_load2(this.h, dev.cPointer(), format_Cstring))
 }
 
 func (this *QPicture) Load22(fileName string, format string) bool {
@@ -223,13 +223,13 @@ func (this *QPicture) Load22(fileName string, format string) bool {
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPicture_Load22(this.h, fileName_ms, format_Cstring))
+	return (bool)(C.QPicture_load22(this.h, fileName_ms, format_Cstring))
 }
 
 func (this *QPicture) Save2(dev *QIODevice, format string) bool {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPicture_Save2(this.h, dev.cPointer(), format_Cstring))
+	return (bool)(C.QPicture_save2(this.h, dev.cPointer(), format_Cstring))
 }
 
 func (this *QPicture) Save22(fileName string, format string) bool {
@@ -239,23 +239,23 @@ func (this *QPicture) Save22(fileName string, format string) bool {
 	defer C.free(unsafe.Pointer(fileName_ms.data))
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	return (bool)(C.QPicture_Save22(this.h, fileName_ms, format_Cstring))
+	return (bool)(C.QPicture_save22(this.h, fileName_ms, format_Cstring))
 }
 
 func (this *QPicture) callVirtualBase_DevType() int {
 
-	return (int)(C.QPicture_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QPicture_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QPicture) OnDevType(slot func(super func() int) int) {
-	ok := C.QPicture_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPicture) OndevType(slot func(super func() int) int) {
+	ok := C.QPicture_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPicture_DevType
-func miqt_exec_callback_QPicture_DevType(self *C.QPicture, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QPicture_devType
+func miqt_exec_callback_QPicture_devType(self *C.QPicture, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -271,18 +271,18 @@ func (this *QPicture) callVirtualBase_SetData(data string, size uint) {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
-	C.QPicture_virtualbase_SetData(unsafe.Pointer(this.h), data_Cstring, (C.uint)(size))
+	C.QPicture_virtualbase_setData(unsafe.Pointer(this.h), data_Cstring, (C.uint)(size))
 
 }
-func (this *QPicture) OnSetData(slot func(super func(data string, size uint), data string, size uint)) {
-	ok := C.QPicture_override_virtual_SetData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPicture) OnsetData(slot func(super func(data string, size uint), data string, size uint)) {
+	ok := C.QPicture_override_virtual_setData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPicture_SetData
-func miqt_exec_callback_QPicture_SetData(self *C.QPicture, cb C.intptr_t, data *C.const_char, size C.uint) {
+//export miqt_exec_callback_QPicture_setData
+func miqt_exec_callback_QPicture_setData(self *C.QPicture, cb C.intptr_t, data *C.const_char, size C.uint) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, size uint), data string, size uint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -300,18 +300,18 @@ func miqt_exec_callback_QPicture_SetData(self *C.QPicture, cb C.intptr_t, data *
 
 func (this *QPicture) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return newQPaintEngine(C.QPicture_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+	return newQPaintEngine(C.QPicture_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QPicture) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	ok := C.QPicture_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPicture) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QPicture_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPicture_PaintEngine
-func miqt_exec_callback_QPicture_PaintEngine(self *C.QPicture, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QPicture_paintEngine
+func miqt_exec_callback_QPicture_paintEngine(self *C.QPicture, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -325,18 +325,18 @@ func miqt_exec_callback_QPicture_PaintEngine(self *C.QPicture, cb C.intptr_t) *C
 
 func (this *QPicture) callVirtualBase_Metric(m QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QPicture_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(m)))
+	return (int)(C.QPicture_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(m)))
 
 }
-func (this *QPicture) OnMetric(slot func(super func(m QPaintDevice__PaintDeviceMetric) int, m QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QPicture_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPicture) Onmetric(slot func(super func(m QPaintDevice__PaintDeviceMetric) int, m QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QPicture_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPicture_Metric
-func miqt_exec_callback_QPicture_Metric(self *C.QPicture, cb C.intptr_t, m C.int) C.int {
+//export miqt_exec_callback_QPicture_metric
+func miqt_exec_callback_QPicture_metric(self *C.QPicture, cb C.intptr_t, m C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(m QPaintDevice__PaintDeviceMetric) int, m QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -353,18 +353,18 @@ func miqt_exec_callback_QPicture_Metric(self *C.QPicture, cb C.intptr_t, m C.int
 
 func (this *QPicture) callVirtualBase_InitPainter(painter *QPainter) {
 
-	C.QPicture_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+	C.QPicture_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QPicture) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	ok := C.QPicture_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPicture) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QPicture_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPicture_InitPainter
-func miqt_exec_callback_QPicture_InitPainter(self *C.QPicture, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QPicture_initPainter
+func miqt_exec_callback_QPicture_initPainter(self *C.QPicture, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -379,18 +379,18 @@ func miqt_exec_callback_QPicture_InitPainter(self *C.QPicture, cb C.intptr_t, pa
 
 func (this *QPicture) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return newQPaintDevice(C.QPicture_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+	return newQPaintDevice(C.QPicture_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QPicture) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	ok := C.QPicture_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPicture) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QPicture_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPicture_Redirected
-func miqt_exec_callback_QPicture_Redirected(self *C.QPicture, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QPicture_redirected
+func miqt_exec_callback_QPicture_redirected(self *C.QPicture, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -407,18 +407,18 @@ func miqt_exec_callback_QPicture_Redirected(self *C.QPicture, cb C.intptr_t, off
 
 func (this *QPicture) callVirtualBase_SharedPainter() *QPainter {
 
-	return newQPainter(C.QPicture_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+	return newQPainter(C.QPicture_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QPicture) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	ok := C.QPicture_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPicture) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QPicture_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPicture_SharedPainter
-func miqt_exec_callback_QPicture_SharedPainter(self *C.QPicture, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QPicture_sharedPainter
+func miqt_exec_callback_QPicture_sharedPainter(self *C.QPicture, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -432,7 +432,7 @@ func miqt_exec_callback_QPicture_SharedPainter(self *C.QPicture, cb C.intptr_t) 
 
 // Delete this object from C++ memory.
 func (this *QPicture) Delete() {
-	C.QPicture_Delete(this.h)
+	C.QPicture_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -503,65 +503,65 @@ func NewQPictureIO3(fileName string, format string) *QPictureIO {
 }
 
 func (this *QPictureIO) Picture() *QPicture {
-	return newQPicture(C.QPictureIO_Picture(this.h))
+	return newQPicture(C.QPictureIO_picture(this.h))
 }
 
 func (this *QPictureIO) Status() int {
-	return (int)(C.QPictureIO_Status(this.h))
+	return (int)(C.QPictureIO_status(this.h))
 }
 
 func (this *QPictureIO) Format() string {
-	_ret := C.QPictureIO_Format(this.h)
+	_ret := C.QPictureIO_format(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QPictureIO) IoDevice() *QIODevice {
-	return newQIODevice(C.QPictureIO_IoDevice(this.h))
+	return newQIODevice(C.QPictureIO_ioDevice(this.h))
 }
 
 func (this *QPictureIO) FileName() string {
-	var _ms C.struct_miqt_string = C.QPictureIO_FileName(this.h)
+	var _ms C.struct_miqt_string = C.QPictureIO_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPictureIO) Quality() int {
-	return (int)(C.QPictureIO_Quality(this.h))
+	return (int)(C.QPictureIO_quality(this.h))
 }
 
 func (this *QPictureIO) Description() string {
-	var _ms C.struct_miqt_string = C.QPictureIO_Description(this.h)
+	var _ms C.struct_miqt_string = C.QPictureIO_description(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPictureIO) Parameters() string {
-	_ret := C.QPictureIO_Parameters(this.h)
+	_ret := C.QPictureIO_parameters(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QPictureIO) Gamma() float32 {
-	return (float32)(C.QPictureIO_Gamma(this.h))
+	return (float32)(C.QPictureIO_gamma(this.h))
 }
 
 func (this *QPictureIO) SetPicture(picture *QPicture) {
-	C.QPictureIO_SetPicture(this.h, picture.cPointer())
+	C.QPictureIO_setPicture(this.h, picture.cPointer())
 }
 
 func (this *QPictureIO) SetStatus(status int) {
-	C.QPictureIO_SetStatus(this.h, (C.int)(status))
+	C.QPictureIO_setStatus(this.h, (C.int)(status))
 }
 
 func (this *QPictureIO) SetFormat(format string) {
 	format_Cstring := C.CString(format)
 	defer C.free(unsafe.Pointer(format_Cstring))
-	C.QPictureIO_SetFormat(this.h, format_Cstring)
+	C.QPictureIO_setFormat(this.h, format_Cstring)
 }
 
 func (this *QPictureIO) SetIODevice(iODevice *QIODevice) {
-	C.QPictureIO_SetIODevice(this.h, iODevice.cPointer())
+	C.QPictureIO_setIODevice(this.h, iODevice.cPointer())
 }
 
 func (this *QPictureIO) SetFileName(fileName string) {
@@ -569,11 +569,11 @@ func (this *QPictureIO) SetFileName(fileName string) {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	C.QPictureIO_SetFileName(this.h, fileName_ms)
+	C.QPictureIO_setFileName(this.h, fileName_ms)
 }
 
 func (this *QPictureIO) SetQuality(quality int) {
-	C.QPictureIO_SetQuality(this.h, (C.int)(quality))
+	C.QPictureIO_setQuality(this.h, (C.int)(quality))
 }
 
 func (this *QPictureIO) SetDescription(description string) {
@@ -581,25 +581,25 @@ func (this *QPictureIO) SetDescription(description string) {
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
-	C.QPictureIO_SetDescription(this.h, description_ms)
+	C.QPictureIO_setDescription(this.h, description_ms)
 }
 
 func (this *QPictureIO) SetParameters(parameters string) {
 	parameters_Cstring := C.CString(parameters)
 	defer C.free(unsafe.Pointer(parameters_Cstring))
-	C.QPictureIO_SetParameters(this.h, parameters_Cstring)
+	C.QPictureIO_setParameters(this.h, parameters_Cstring)
 }
 
 func (this *QPictureIO) SetGamma(gamma float32) {
-	C.QPictureIO_SetGamma(this.h, (C.float)(gamma))
+	C.QPictureIO_setGamma(this.h, (C.float)(gamma))
 }
 
 func (this *QPictureIO) Read() bool {
-	return (bool)(C.QPictureIO_Read(this.h))
+	return (bool)(C.QPictureIO_read(this.h))
 }
 
 func (this *QPictureIO) Write() bool {
-	return (bool)(C.QPictureIO_Write(this.h))
+	return (bool)(C.QPictureIO_write(this.h))
 }
 
 func QPictureIO_PictureFormat(fileName string) []byte {
@@ -607,21 +607,21 @@ func QPictureIO_PictureFormat(fileName string) []byte {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var _bytearray C.struct_miqt_string = C.QPictureIO_PictureFormat(fileName_ms)
+	var _bytearray C.struct_miqt_string = C.QPictureIO_pictureFormat(fileName_ms)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func QPictureIO_PictureFormatWithQIODevice(param1 *QIODevice) []byte {
-	var _bytearray C.struct_miqt_string = C.QPictureIO_PictureFormatWithQIODevice(param1.cPointer())
+	var _bytearray C.struct_miqt_string = C.QPictureIO_pictureFormatWithQIODevice(param1.cPointer())
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func QPictureIO_InputFormats() [][]byte {
-	var _ma C.struct_miqt_array = C.QPictureIO_InputFormats()
+	var _ma C.struct_miqt_array = C.QPictureIO_inputFormats()
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -634,7 +634,7 @@ func QPictureIO_InputFormats() [][]byte {
 }
 
 func QPictureIO_OutputFormats() [][]byte {
-	var _ma C.struct_miqt_array = C.QPictureIO_OutputFormats()
+	var _ma C.struct_miqt_array = C.QPictureIO_outputFormats()
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -648,7 +648,7 @@ func QPictureIO_OutputFormats() [][]byte {
 
 // Delete this object from C++ memory.
 func (this *QPictureIO) Delete() {
-	C.QPictureIO_Delete(this.h)
+	C.QPictureIO_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -58,32 +58,32 @@ func NewQColorTransform2(colorTransform *QColorTransform) *QColorTransform {
 }
 
 func (this *QColorTransform) OperatorAssign(other *QColorTransform) {
-	C.QColorTransform_OperatorAssign(this.h, other.cPointer())
+	C.QColorTransform_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QColorTransform) Swap(other *QColorTransform) {
-	C.QColorTransform_Swap(this.h, other.cPointer())
+	C.QColorTransform_swap(this.h, other.cPointer())
 }
 
 func (this *QColorTransform) Map(argb uint) uint {
-	return (uint)(C.QColorTransform_Map(this.h, (C.uint)(argb)))
+	return (uint)(C.QColorTransform_map(this.h, (C.uint)(argb)))
 }
 
 func (this *QColorTransform) MapWithRgba64(rgba64 QRgba64) *QRgba64 {
-	_goptr := newQRgba64(C.QColorTransform_MapWithRgba64(this.h, rgba64.cPointer()))
+	_goptr := newQRgba64(C.QColorTransform_mapWithRgba64(this.h, rgba64.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColorTransform) MapWithColor(color *QColor) *QColor {
-	_goptr := newQColor(C.QColorTransform_MapWithColor(this.h, color.cPointer()))
+	_goptr := newQColor(C.QColorTransform_mapWithColor(this.h, color.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QColorTransform) Delete() {
-	C.QColorTransform_Delete(this.h)
+	C.QColorTransform_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

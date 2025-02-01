@@ -18,13 +18,13 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QQmlWebChannel_Event(QQmlWebChannel*, intptr_t, QEvent*);
-bool miqt_exec_callback_QQmlWebChannel_EventFilter(QQmlWebChannel*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QQmlWebChannel_TimerEvent(QQmlWebChannel*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QQmlWebChannel_ChildEvent(QQmlWebChannel*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QQmlWebChannel_CustomEvent(QQmlWebChannel*, intptr_t, QEvent*);
-void miqt_exec_callback_QQmlWebChannel_ConnectNotify(QQmlWebChannel*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QQmlWebChannel_DisconnectNotify(QQmlWebChannel*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QQmlWebChannel_event(QQmlWebChannel*, intptr_t, QEvent*);
+bool miqt_exec_callback_QQmlWebChannel_eventFilter(QQmlWebChannel*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QQmlWebChannel_timerEvent(QQmlWebChannel*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QQmlWebChannel_childEvent(QQmlWebChannel*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QQmlWebChannel_customEvent(QQmlWebChannel*, intptr_t, QEvent*);
+void miqt_exec_callback_QQmlWebChannel_connectNotify(QQmlWebChannel*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QQmlWebChannel_disconnectNotify(QQmlWebChannel*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -38,130 +38,130 @@ public:
 	virtual ~MiqtVirtualQQmlWebChannel() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QQmlWebChannel::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QQmlWebChannel_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QQmlWebChannel_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QQmlWebChannel::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QQmlWebChannel::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QQmlWebChannel_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QQmlWebChannel_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QQmlWebChannel::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QQmlWebChannel::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QQmlWebChannel_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QQmlWebChannel_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QQmlWebChannel::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QQmlWebChannel::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QQmlWebChannel_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QQmlWebChannel_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QQmlWebChannel::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QQmlWebChannel::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QQmlWebChannel_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QQmlWebChannel_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QQmlWebChannel::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QQmlWebChannel::connectNotify(signal);
 			return;
 		}
@@ -170,24 +170,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QQmlWebChannel_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QQmlWebChannel_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QQmlWebChannel::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QQmlWebChannel::disconnectNotify(signal);
 			return;
 		}
@@ -196,13 +196,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QQmlWebChannel_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QQmlWebChannel_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QQmlWebChannel::disconnectNotify(*signal);
 
@@ -222,15 +222,15 @@ void QQmlWebChannel_virtbase(QQmlWebChannel* src, QWebChannel** outptr_QWebChann
 	*outptr_QWebChannel = static_cast<QWebChannel*>(src);
 }
 
-QMetaObject* QQmlWebChannel_MetaObject(const QQmlWebChannel* self) {
+QMetaObject* QQmlWebChannel_metaObject(const QQmlWebChannel* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QQmlWebChannel_Metacast(QQmlWebChannel* self, const char* param1) {
+void* QQmlWebChannel_metacast(QQmlWebChannel* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QQmlWebChannel_Tr(const char* s) {
+struct miqt_string QQmlWebChannel_tr(const char* s) {
 	QString _ret = QQmlWebChannel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -241,7 +241,7 @@ struct miqt_string QQmlWebChannel_Tr(const char* s) {
 	return _ms;
 }
 
-void QQmlWebChannel_RegisterObjects(QQmlWebChannel* self, struct miqt_map /* of struct miqt_string to QVariant* */  objects) {
+void QQmlWebChannel_registerObjects(QQmlWebChannel* self, struct miqt_map /* of struct miqt_string to QVariant* */  objects) {
 	QVariantMap objects_QMap;
 	struct miqt_string* objects_karr = static_cast<struct miqt_string*>(objects.keys);
 	QVariant** objects_varr = static_cast<QVariant**>(objects.values);
@@ -252,15 +252,15 @@ void QQmlWebChannel_RegisterObjects(QQmlWebChannel* self, struct miqt_map /* of 
 	self->registerObjects(objects_QMap);
 }
 
-void QQmlWebChannel_ConnectTo(QQmlWebChannel* self, QObject* transport) {
+void QQmlWebChannel_connectTo(QQmlWebChannel* self, QObject* transport) {
 	self->connectTo(transport);
 }
 
-void QQmlWebChannel_DisconnectFrom(QQmlWebChannel* self, QObject* transport) {
+void QQmlWebChannel_disconnectFrom(QQmlWebChannel* self, QObject* transport) {
 	self->disconnectFrom(transport);
 }
 
-struct miqt_string QQmlWebChannel_Tr2(const char* s, const char* c) {
+struct miqt_string QQmlWebChannel_tr2(const char* s, const char* c) {
 	QString _ret = QQmlWebChannel::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -271,7 +271,7 @@ struct miqt_string QQmlWebChannel_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QQmlWebChannel_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QQmlWebChannel_tr3(const char* s, const char* c, int n) {
 	QString _ret = QQmlWebChannel::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -282,105 +282,105 @@ struct miqt_string QQmlWebChannel_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QQmlWebChannel_override_virtual_Event(void* self, intptr_t slot) {
+bool QQmlWebChannel_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQQmlWebChannel* self_cast = dynamic_cast<MiqtVirtualQQmlWebChannel*>( (QQmlWebChannel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QQmlWebChannel_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQQmlWebChannel*)(self) )->virtualbase_Event(event);
+bool QQmlWebChannel_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQQmlWebChannel*)(self) )->virtualbase_event(event);
 }
 
-bool QQmlWebChannel_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QQmlWebChannel_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQQmlWebChannel* self_cast = dynamic_cast<MiqtVirtualQQmlWebChannel*>( (QQmlWebChannel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QQmlWebChannel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQQmlWebChannel*)(self) )->virtualbase_EventFilter(watched, event);
+bool QQmlWebChannel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQQmlWebChannel*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QQmlWebChannel_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QQmlWebChannel_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQQmlWebChannel* self_cast = dynamic_cast<MiqtVirtualQQmlWebChannel*>( (QQmlWebChannel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QQmlWebChannel_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQQmlWebChannel*)(self) )->virtualbase_TimerEvent(event);
+void QQmlWebChannel_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQQmlWebChannel*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QQmlWebChannel_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QQmlWebChannel_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQQmlWebChannel* self_cast = dynamic_cast<MiqtVirtualQQmlWebChannel*>( (QQmlWebChannel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QQmlWebChannel_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQQmlWebChannel*)(self) )->virtualbase_ChildEvent(event);
+void QQmlWebChannel_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQQmlWebChannel*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QQmlWebChannel_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QQmlWebChannel_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQQmlWebChannel* self_cast = dynamic_cast<MiqtVirtualQQmlWebChannel*>( (QQmlWebChannel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QQmlWebChannel_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQQmlWebChannel*)(self) )->virtualbase_CustomEvent(event);
+void QQmlWebChannel_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQQmlWebChannel*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QQmlWebChannel_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QQmlWebChannel_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQQmlWebChannel* self_cast = dynamic_cast<MiqtVirtualQQmlWebChannel*>( (QQmlWebChannel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QQmlWebChannel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQQmlWebChannel*)(self) )->virtualbase_ConnectNotify(signal);
+void QQmlWebChannel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQQmlWebChannel*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QQmlWebChannel_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QQmlWebChannel_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQQmlWebChannel* self_cast = dynamic_cast<MiqtVirtualQQmlWebChannel*>( (QQmlWebChannel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QQmlWebChannel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQQmlWebChannel*)(self) )->virtualbase_DisconnectNotify(signal);
+void QQmlWebChannel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQQmlWebChannel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QQmlWebChannel_Delete(QQmlWebChannel* self) {
+void QQmlWebChannel_delete(QQmlWebChannel* self) {
 	delete self;
 }
 

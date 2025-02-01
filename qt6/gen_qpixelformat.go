@@ -149,96 +149,96 @@ func NewQPixelFormat5(colorModel QPixelFormat__ColorModel, firstSize byte, secon
 }
 
 func (this *QPixelFormat) ColorModel() QPixelFormat__ColorModel {
-	return (QPixelFormat__ColorModel)(C.QPixelFormat_ColorModel(this.h))
+	return (QPixelFormat__ColorModel)(C.QPixelFormat_colorModel(this.h))
 }
 
 func (this *QPixelFormat) ChannelCount() byte {
-	return (byte)(C.QPixelFormat_ChannelCount(this.h))
+	return (byte)(C.QPixelFormat_channelCount(this.h))
 }
 
 func (this *QPixelFormat) RedSize() byte {
-	return (byte)(C.QPixelFormat_RedSize(this.h))
+	return (byte)(C.QPixelFormat_redSize(this.h))
 }
 
 func (this *QPixelFormat) GreenSize() byte {
-	return (byte)(C.QPixelFormat_GreenSize(this.h))
+	return (byte)(C.QPixelFormat_greenSize(this.h))
 }
 
 func (this *QPixelFormat) BlueSize() byte {
-	return (byte)(C.QPixelFormat_BlueSize(this.h))
+	return (byte)(C.QPixelFormat_blueSize(this.h))
 }
 
 func (this *QPixelFormat) CyanSize() byte {
-	return (byte)(C.QPixelFormat_CyanSize(this.h))
+	return (byte)(C.QPixelFormat_cyanSize(this.h))
 }
 
 func (this *QPixelFormat) MagentaSize() byte {
-	return (byte)(C.QPixelFormat_MagentaSize(this.h))
+	return (byte)(C.QPixelFormat_magentaSize(this.h))
 }
 
 func (this *QPixelFormat) YellowSize() byte {
-	return (byte)(C.QPixelFormat_YellowSize(this.h))
+	return (byte)(C.QPixelFormat_yellowSize(this.h))
 }
 
 func (this *QPixelFormat) BlackSize() byte {
-	return (byte)(C.QPixelFormat_BlackSize(this.h))
+	return (byte)(C.QPixelFormat_blackSize(this.h))
 }
 
 func (this *QPixelFormat) HueSize() byte {
-	return (byte)(C.QPixelFormat_HueSize(this.h))
+	return (byte)(C.QPixelFormat_hueSize(this.h))
 }
 
 func (this *QPixelFormat) SaturationSize() byte {
-	return (byte)(C.QPixelFormat_SaturationSize(this.h))
+	return (byte)(C.QPixelFormat_saturationSize(this.h))
 }
 
 func (this *QPixelFormat) LightnessSize() byte {
-	return (byte)(C.QPixelFormat_LightnessSize(this.h))
+	return (byte)(C.QPixelFormat_lightnessSize(this.h))
 }
 
 func (this *QPixelFormat) BrightnessSize() byte {
-	return (byte)(C.QPixelFormat_BrightnessSize(this.h))
+	return (byte)(C.QPixelFormat_brightnessSize(this.h))
 }
 
 func (this *QPixelFormat) AlphaSize() byte {
-	return (byte)(C.QPixelFormat_AlphaSize(this.h))
+	return (byte)(C.QPixelFormat_alphaSize(this.h))
 }
 
 func (this *QPixelFormat) BitsPerPixel() byte {
-	return (byte)(C.QPixelFormat_BitsPerPixel(this.h))
+	return (byte)(C.QPixelFormat_bitsPerPixel(this.h))
 }
 
 func (this *QPixelFormat) AlphaUsage() QPixelFormat__AlphaUsage {
-	return (QPixelFormat__AlphaUsage)(C.QPixelFormat_AlphaUsage(this.h))
+	return (QPixelFormat__AlphaUsage)(C.QPixelFormat_alphaUsage(this.h))
 }
 
 func (this *QPixelFormat) AlphaPosition() QPixelFormat__AlphaPosition {
-	return (QPixelFormat__AlphaPosition)(C.QPixelFormat_AlphaPosition(this.h))
+	return (QPixelFormat__AlphaPosition)(C.QPixelFormat_alphaPosition(this.h))
 }
 
 func (this *QPixelFormat) Premultiplied() QPixelFormat__AlphaPremultiplied {
-	return (QPixelFormat__AlphaPremultiplied)(C.QPixelFormat_Premultiplied(this.h))
+	return (QPixelFormat__AlphaPremultiplied)(C.QPixelFormat_premultiplied(this.h))
 }
 
 func (this *QPixelFormat) TypeInterpretation() QPixelFormat__TypeInterpretation {
-	return (QPixelFormat__TypeInterpretation)(C.QPixelFormat_TypeInterpretation(this.h))
+	return (QPixelFormat__TypeInterpretation)(C.QPixelFormat_typeInterpretation(this.h))
 }
 
 func (this *QPixelFormat) ByteOrder() QPixelFormat__ByteOrder {
-	return (QPixelFormat__ByteOrder)(C.QPixelFormat_ByteOrder(this.h))
+	return (QPixelFormat__ByteOrder)(C.QPixelFormat_byteOrder(this.h))
 }
 
 func (this *QPixelFormat) YuvLayout() QPixelFormat__YUVLayout {
-	return (QPixelFormat__YUVLayout)(C.QPixelFormat_YuvLayout(this.h))
+	return (QPixelFormat__YUVLayout)(C.QPixelFormat_yuvLayout(this.h))
 }
 
 func (this *QPixelFormat) SubEnum() byte {
-	return (byte)(C.QPixelFormat_SubEnum(this.h))
+	return (byte)(C.QPixelFormat_subEnum(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QPixelFormat) Delete() {
-	C.QPixelFormat_Delete(this.h)
+	C.QPixelFormat_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

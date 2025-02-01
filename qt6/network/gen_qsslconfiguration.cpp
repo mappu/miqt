@@ -29,53 +29,53 @@ QSslConfiguration* QSslConfiguration_new2(QSslConfiguration* other) {
 	return new QSslConfiguration(*other);
 }
 
-void QSslConfiguration_OperatorAssign(QSslConfiguration* self, QSslConfiguration* other) {
+void QSslConfiguration_operatorAssign(QSslConfiguration* self, QSslConfiguration* other) {
 	self->operator=(*other);
 }
 
-void QSslConfiguration_Swap(QSslConfiguration* self, QSslConfiguration* other) {
+void QSslConfiguration_swap(QSslConfiguration* self, QSslConfiguration* other) {
 	self->swap(*other);
 }
 
-bool QSslConfiguration_OperatorEqual(const QSslConfiguration* self, QSslConfiguration* other) {
+bool QSslConfiguration_operatorEqual(const QSslConfiguration* self, QSslConfiguration* other) {
 	return (*self == *other);
 }
 
-bool QSslConfiguration_OperatorNotEqual(const QSslConfiguration* self, QSslConfiguration* other) {
+bool QSslConfiguration_operatorNotEqual(const QSslConfiguration* self, QSslConfiguration* other) {
 	return (*self != *other);
 }
 
-bool QSslConfiguration_IsNull(const QSslConfiguration* self) {
+bool QSslConfiguration_isNull(const QSslConfiguration* self) {
 	return self->isNull();
 }
 
-int QSslConfiguration_Protocol(const QSslConfiguration* self) {
+int QSslConfiguration_protocol(const QSslConfiguration* self) {
 	QSsl::SslProtocol _ret = self->protocol();
 	return static_cast<int>(_ret);
 }
 
-void QSslConfiguration_SetProtocol(QSslConfiguration* self, int protocol) {
+void QSslConfiguration_setProtocol(QSslConfiguration* self, int protocol) {
 	self->setProtocol(static_cast<QSsl::SslProtocol>(protocol));
 }
 
-int QSslConfiguration_PeerVerifyMode(const QSslConfiguration* self) {
+int QSslConfiguration_peerVerifyMode(const QSslConfiguration* self) {
 	QSslSocket::PeerVerifyMode _ret = self->peerVerifyMode();
 	return static_cast<int>(_ret);
 }
 
-void QSslConfiguration_SetPeerVerifyMode(QSslConfiguration* self, int mode) {
+void QSslConfiguration_setPeerVerifyMode(QSslConfiguration* self, int mode) {
 	self->setPeerVerifyMode(static_cast<QSslSocket::PeerVerifyMode>(mode));
 }
 
-int QSslConfiguration_PeerVerifyDepth(const QSslConfiguration* self) {
+int QSslConfiguration_peerVerifyDepth(const QSslConfiguration* self) {
 	return self->peerVerifyDepth();
 }
 
-void QSslConfiguration_SetPeerVerifyDepth(QSslConfiguration* self, int depth) {
+void QSslConfiguration_setPeerVerifyDepth(QSslConfiguration* self, int depth) {
 	self->setPeerVerifyDepth(static_cast<int>(depth));
 }
 
-struct miqt_array /* of QSslCertificate* */  QSslConfiguration_LocalCertificateChain(const QSslConfiguration* self) {
+struct miqt_array /* of QSslCertificate* */  QSslConfiguration_localCertificateChain(const QSslConfiguration* self) {
 	QList<QSslCertificate> _ret = self->localCertificateChain();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCertificate** _arr = static_cast<QSslCertificate**>(malloc(sizeof(QSslCertificate*) * _ret.length()));
@@ -88,7 +88,7 @@ struct miqt_array /* of QSslCertificate* */  QSslConfiguration_LocalCertificateC
 	return _out;
 }
 
-void QSslConfiguration_SetLocalCertificateChain(QSslConfiguration* self, struct miqt_array /* of QSslCertificate* */  localChain) {
+void QSslConfiguration_setLocalCertificateChain(QSslConfiguration* self, struct miqt_array /* of QSslCertificate* */  localChain) {
 	QList<QSslCertificate> localChain_QList;
 	localChain_QList.reserve(localChain.len);
 	QSslCertificate** localChain_arr = static_cast<QSslCertificate**>(localChain.data);
@@ -98,19 +98,19 @@ void QSslConfiguration_SetLocalCertificateChain(QSslConfiguration* self, struct 
 	self->setLocalCertificateChain(localChain_QList);
 }
 
-QSslCertificate* QSslConfiguration_LocalCertificate(const QSslConfiguration* self) {
+QSslCertificate* QSslConfiguration_localCertificate(const QSslConfiguration* self) {
 	return new QSslCertificate(self->localCertificate());
 }
 
-void QSslConfiguration_SetLocalCertificate(QSslConfiguration* self, QSslCertificate* certificate) {
+void QSslConfiguration_setLocalCertificate(QSslConfiguration* self, QSslCertificate* certificate) {
 	self->setLocalCertificate(*certificate);
 }
 
-QSslCertificate* QSslConfiguration_PeerCertificate(const QSslConfiguration* self) {
+QSslCertificate* QSslConfiguration_peerCertificate(const QSslConfiguration* self) {
 	return new QSslCertificate(self->peerCertificate());
 }
 
-struct miqt_array /* of QSslCertificate* */  QSslConfiguration_PeerCertificateChain(const QSslConfiguration* self) {
+struct miqt_array /* of QSslCertificate* */  QSslConfiguration_peerCertificateChain(const QSslConfiguration* self) {
 	QList<QSslCertificate> _ret = self->peerCertificateChain();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCertificate** _arr = static_cast<QSslCertificate**>(malloc(sizeof(QSslCertificate*) * _ret.length()));
@@ -123,24 +123,24 @@ struct miqt_array /* of QSslCertificate* */  QSslConfiguration_PeerCertificateCh
 	return _out;
 }
 
-QSslCipher* QSslConfiguration_SessionCipher(const QSslConfiguration* self) {
+QSslCipher* QSslConfiguration_sessionCipher(const QSslConfiguration* self) {
 	return new QSslCipher(self->sessionCipher());
 }
 
-int QSslConfiguration_SessionProtocol(const QSslConfiguration* self) {
+int QSslConfiguration_sessionProtocol(const QSslConfiguration* self) {
 	QSsl::SslProtocol _ret = self->sessionProtocol();
 	return static_cast<int>(_ret);
 }
 
-QSslKey* QSslConfiguration_PrivateKey(const QSslConfiguration* self) {
+QSslKey* QSslConfiguration_privateKey(const QSslConfiguration* self) {
 	return new QSslKey(self->privateKey());
 }
 
-void QSslConfiguration_SetPrivateKey(QSslConfiguration* self, QSslKey* key) {
+void QSslConfiguration_setPrivateKey(QSslConfiguration* self, QSslKey* key) {
 	self->setPrivateKey(*key);
 }
 
-struct miqt_array /* of QSslCipher* */  QSslConfiguration_Ciphers(const QSslConfiguration* self) {
+struct miqt_array /* of QSslCipher* */  QSslConfiguration_ciphers(const QSslConfiguration* self) {
 	QList<QSslCipher> _ret = self->ciphers();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCipher** _arr = static_cast<QSslCipher**>(malloc(sizeof(QSslCipher*) * _ret.length()));
@@ -153,7 +153,7 @@ struct miqt_array /* of QSslCipher* */  QSslConfiguration_Ciphers(const QSslConf
 	return _out;
 }
 
-void QSslConfiguration_SetCiphers(QSslConfiguration* self, struct miqt_array /* of QSslCipher* */  ciphers) {
+void QSslConfiguration_setCiphers(QSslConfiguration* self, struct miqt_array /* of QSslCipher* */  ciphers) {
 	QList<QSslCipher> ciphers_QList;
 	ciphers_QList.reserve(ciphers.len);
 	QSslCipher** ciphers_arr = static_cast<QSslCipher**>(ciphers.data);
@@ -163,12 +163,12 @@ void QSslConfiguration_SetCiphers(QSslConfiguration* self, struct miqt_array /* 
 	self->setCiphers(ciphers_QList);
 }
 
-void QSslConfiguration_SetCiphersWithCiphers(QSslConfiguration* self, struct miqt_string ciphers) {
+void QSslConfiguration_setCiphersWithCiphers(QSslConfiguration* self, struct miqt_string ciphers) {
 	QString ciphers_QString = QString::fromUtf8(ciphers.data, ciphers.len);
 	self->setCiphers(ciphers_QString);
 }
 
-struct miqt_array /* of QSslCipher* */  QSslConfiguration_SupportedCiphers() {
+struct miqt_array /* of QSslCipher* */  QSslConfiguration_supportedCiphers() {
 	QList<QSslCipher> _ret = QSslConfiguration::supportedCiphers();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCipher** _arr = static_cast<QSslCipher**>(malloc(sizeof(QSslCipher*) * _ret.length()));
@@ -181,7 +181,7 @@ struct miqt_array /* of QSslCipher* */  QSslConfiguration_SupportedCiphers() {
 	return _out;
 }
 
-struct miqt_array /* of QSslCertificate* */  QSslConfiguration_CaCertificates(const QSslConfiguration* self) {
+struct miqt_array /* of QSslCertificate* */  QSslConfiguration_caCertificates(const QSslConfiguration* self) {
 	QList<QSslCertificate> _ret = self->caCertificates();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCertificate** _arr = static_cast<QSslCertificate**>(malloc(sizeof(QSslCertificate*) * _ret.length()));
@@ -194,7 +194,7 @@ struct miqt_array /* of QSslCertificate* */  QSslConfiguration_CaCertificates(co
 	return _out;
 }
 
-void QSslConfiguration_SetCaCertificates(QSslConfiguration* self, struct miqt_array /* of QSslCertificate* */  certificates) {
+void QSslConfiguration_setCaCertificates(QSslConfiguration* self, struct miqt_array /* of QSslCertificate* */  certificates) {
 	QList<QSslCertificate> certificates_QList;
 	certificates_QList.reserve(certificates.len);
 	QSslCertificate** certificates_arr = static_cast<QSslCertificate**>(certificates.data);
@@ -204,16 +204,16 @@ void QSslConfiguration_SetCaCertificates(QSslConfiguration* self, struct miqt_ar
 	self->setCaCertificates(certificates_QList);
 }
 
-bool QSslConfiguration_AddCaCertificates(QSslConfiguration* self, struct miqt_string path) {
+bool QSslConfiguration_addCaCertificates(QSslConfiguration* self, struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	return self->addCaCertificates(path_QString);
 }
 
-void QSslConfiguration_AddCaCertificate(QSslConfiguration* self, QSslCertificate* certificate) {
+void QSslConfiguration_addCaCertificate(QSslConfiguration* self, QSslCertificate* certificate) {
 	self->addCaCertificate(*certificate);
 }
 
-void QSslConfiguration_AddCaCertificatesWithCertificates(QSslConfiguration* self, struct miqt_array /* of QSslCertificate* */  certificates) {
+void QSslConfiguration_addCaCertificatesWithCertificates(QSslConfiguration* self, struct miqt_array /* of QSslCertificate* */  certificates) {
 	QList<QSslCertificate> certificates_QList;
 	certificates_QList.reserve(certificates.len);
 	QSslCertificate** certificates_arr = static_cast<QSslCertificate**>(certificates.data);
@@ -223,7 +223,7 @@ void QSslConfiguration_AddCaCertificatesWithCertificates(QSslConfiguration* self
 	self->addCaCertificates(certificates_QList);
 }
 
-struct miqt_array /* of QSslCertificate* */  QSslConfiguration_SystemCaCertificates() {
+struct miqt_array /* of QSslCertificate* */  QSslConfiguration_systemCaCertificates() {
 	QList<QSslCertificate> _ret = QSslConfiguration::systemCaCertificates();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCertificate** _arr = static_cast<QSslCertificate**>(malloc(sizeof(QSslCertificate*) * _ret.length()));
@@ -236,15 +236,15 @@ struct miqt_array /* of QSslCertificate* */  QSslConfiguration_SystemCaCertifica
 	return _out;
 }
 
-void QSslConfiguration_SetSslOption(QSslConfiguration* self, int option, bool on) {
+void QSslConfiguration_setSslOption(QSslConfiguration* self, int option, bool on) {
 	self->setSslOption(static_cast<QSsl::SslOption>(option), on);
 }
 
-bool QSslConfiguration_TestSslOption(const QSslConfiguration* self, int option) {
+bool QSslConfiguration_testSslOption(const QSslConfiguration* self, int option) {
 	return self->testSslOption(static_cast<QSsl::SslOption>(option));
 }
 
-struct miqt_string QSslConfiguration_SessionTicket(const QSslConfiguration* self) {
+struct miqt_string QSslConfiguration_sessionTicket(const QSslConfiguration* self) {
 	QByteArray _qb = self->sessionTicket();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -253,20 +253,20 @@ struct miqt_string QSslConfiguration_SessionTicket(const QSslConfiguration* self
 	return _ms;
 }
 
-void QSslConfiguration_SetSessionTicket(QSslConfiguration* self, struct miqt_string sessionTicket) {
+void QSslConfiguration_setSessionTicket(QSslConfiguration* self, struct miqt_string sessionTicket) {
 	QByteArray sessionTicket_QByteArray(sessionTicket.data, sessionTicket.len);
 	self->setSessionTicket(sessionTicket_QByteArray);
 }
 
-int QSslConfiguration_SessionTicketLifeTimeHint(const QSslConfiguration* self) {
+int QSslConfiguration_sessionTicketLifeTimeHint(const QSslConfiguration* self) {
 	return self->sessionTicketLifeTimeHint();
 }
 
-QSslKey* QSslConfiguration_EphemeralServerKey(const QSslConfiguration* self) {
+QSslKey* QSslConfiguration_ephemeralServerKey(const QSslConfiguration* self) {
 	return new QSslKey(self->ephemeralServerKey());
 }
 
-struct miqt_array /* of QSslEllipticCurve* */  QSslConfiguration_EllipticCurves(const QSslConfiguration* self) {
+struct miqt_array /* of QSslEllipticCurve* */  QSslConfiguration_ellipticCurves(const QSslConfiguration* self) {
 	QList<QSslEllipticCurve> _ret = self->ellipticCurves();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslEllipticCurve** _arr = static_cast<QSslEllipticCurve**>(malloc(sizeof(QSslEllipticCurve*) * _ret.length()));
@@ -279,7 +279,7 @@ struct miqt_array /* of QSslEllipticCurve* */  QSslConfiguration_EllipticCurves(
 	return _out;
 }
 
-void QSslConfiguration_SetEllipticCurves(QSslConfiguration* self, struct miqt_array /* of QSslEllipticCurve* */  curves) {
+void QSslConfiguration_setEllipticCurves(QSslConfiguration* self, struct miqt_array /* of QSslEllipticCurve* */  curves) {
 	QList<QSslEllipticCurve> curves_QList;
 	curves_QList.reserve(curves.len);
 	QSslEllipticCurve** curves_arr = static_cast<QSslEllipticCurve**>(curves.data);
@@ -289,7 +289,7 @@ void QSslConfiguration_SetEllipticCurves(QSslConfiguration* self, struct miqt_ar
 	self->setEllipticCurves(curves_QList);
 }
 
-struct miqt_array /* of QSslEllipticCurve* */  QSslConfiguration_SupportedEllipticCurves() {
+struct miqt_array /* of QSslEllipticCurve* */  QSslConfiguration_supportedEllipticCurves() {
 	QList<QSslEllipticCurve> _ret = QSslConfiguration::supportedEllipticCurves();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslEllipticCurve** _arr = static_cast<QSslEllipticCurve**>(malloc(sizeof(QSslEllipticCurve*) * _ret.length()));
@@ -302,7 +302,7 @@ struct miqt_array /* of QSslEllipticCurve* */  QSslConfiguration_SupportedEllipt
 	return _out;
 }
 
-struct miqt_string QSslConfiguration_PreSharedKeyIdentityHint(const QSslConfiguration* self) {
+struct miqt_string QSslConfiguration_preSharedKeyIdentityHint(const QSslConfiguration* self) {
 	QByteArray _qb = self->preSharedKeyIdentityHint();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -311,77 +311,77 @@ struct miqt_string QSslConfiguration_PreSharedKeyIdentityHint(const QSslConfigur
 	return _ms;
 }
 
-void QSslConfiguration_SetPreSharedKeyIdentityHint(QSslConfiguration* self, struct miqt_string hint) {
+void QSslConfiguration_setPreSharedKeyIdentityHint(QSslConfiguration* self, struct miqt_string hint) {
 	QByteArray hint_QByteArray(hint.data, hint.len);
 	self->setPreSharedKeyIdentityHint(hint_QByteArray);
 }
 
-QSslDiffieHellmanParameters* QSslConfiguration_DiffieHellmanParameters(const QSslConfiguration* self) {
+QSslDiffieHellmanParameters* QSslConfiguration_diffieHellmanParameters(const QSslConfiguration* self) {
 	return new QSslDiffieHellmanParameters(self->diffieHellmanParameters());
 }
 
-void QSslConfiguration_SetDiffieHellmanParameters(QSslConfiguration* self, QSslDiffieHellmanParameters* dhparams) {
+void QSslConfiguration_setDiffieHellmanParameters(QSslConfiguration* self, QSslDiffieHellmanParameters* dhparams) {
 	self->setDiffieHellmanParameters(*dhparams);
 }
 
-void QSslConfiguration_SetBackendConfigurationOption(QSslConfiguration* self, struct miqt_string name, QVariant* value) {
+void QSslConfiguration_setBackendConfigurationOption(QSslConfiguration* self, struct miqt_string name, QVariant* value) {
 	QByteArray name_QByteArray(name.data, name.len);
 	self->setBackendConfigurationOption(name_QByteArray, *value);
 }
 
-void QSslConfiguration_SetBackendConfiguration(QSslConfiguration* self) {
+void QSslConfiguration_setBackendConfiguration(QSslConfiguration* self) {
 	self->setBackendConfiguration();
 }
 
-QSslConfiguration* QSslConfiguration_DefaultConfiguration() {
+QSslConfiguration* QSslConfiguration_defaultConfiguration() {
 	return new QSslConfiguration(QSslConfiguration::defaultConfiguration());
 }
 
-void QSslConfiguration_SetDefaultConfiguration(QSslConfiguration* configuration) {
+void QSslConfiguration_setDefaultConfiguration(QSslConfiguration* configuration) {
 	QSslConfiguration::setDefaultConfiguration(*configuration);
 }
 
-bool QSslConfiguration_DtlsCookieVerificationEnabled(const QSslConfiguration* self) {
+bool QSslConfiguration_dtlsCookieVerificationEnabled(const QSslConfiguration* self) {
 	return self->dtlsCookieVerificationEnabled();
 }
 
-void QSslConfiguration_SetDtlsCookieVerificationEnabled(QSslConfiguration* self, bool enable) {
+void QSslConfiguration_setDtlsCookieVerificationEnabled(QSslConfiguration* self, bool enable) {
 	self->setDtlsCookieVerificationEnabled(enable);
 }
 
-QSslConfiguration* QSslConfiguration_DefaultDtlsConfiguration() {
+QSslConfiguration* QSslConfiguration_defaultDtlsConfiguration() {
 	return new QSslConfiguration(QSslConfiguration::defaultDtlsConfiguration());
 }
 
-void QSslConfiguration_SetDefaultDtlsConfiguration(QSslConfiguration* configuration) {
+void QSslConfiguration_setDefaultDtlsConfiguration(QSslConfiguration* configuration) {
 	QSslConfiguration::setDefaultDtlsConfiguration(*configuration);
 }
 
-bool QSslConfiguration_HandshakeMustInterruptOnError(const QSslConfiguration* self) {
+bool QSslConfiguration_handshakeMustInterruptOnError(const QSslConfiguration* self) {
 	return self->handshakeMustInterruptOnError();
 }
 
-void QSslConfiguration_SetHandshakeMustInterruptOnError(QSslConfiguration* self, bool interrupt) {
+void QSslConfiguration_setHandshakeMustInterruptOnError(QSslConfiguration* self, bool interrupt) {
 	self->setHandshakeMustInterruptOnError(interrupt);
 }
 
-bool QSslConfiguration_MissingCertificateIsFatal(const QSslConfiguration* self) {
+bool QSslConfiguration_missingCertificateIsFatal(const QSslConfiguration* self) {
 	return self->missingCertificateIsFatal();
 }
 
-void QSslConfiguration_SetMissingCertificateIsFatal(QSslConfiguration* self, bool cannotRecover) {
+void QSslConfiguration_setMissingCertificateIsFatal(QSslConfiguration* self, bool cannotRecover) {
 	self->setMissingCertificateIsFatal(cannotRecover);
 }
 
-void QSslConfiguration_SetOcspStaplingEnabled(QSslConfiguration* self, bool enable) {
+void QSslConfiguration_setOcspStaplingEnabled(QSslConfiguration* self, bool enable) {
 	self->setOcspStaplingEnabled(enable);
 }
 
-bool QSslConfiguration_OcspStaplingEnabled(const QSslConfiguration* self) {
+bool QSslConfiguration_ocspStaplingEnabled(const QSslConfiguration* self) {
 	return self->ocspStaplingEnabled();
 }
 
-void QSslConfiguration_SetAllowedNextProtocols(QSslConfiguration* self, struct miqt_array /* of struct miqt_string */  protocols) {
+void QSslConfiguration_setAllowedNextProtocols(QSslConfiguration* self, struct miqt_array /* of struct miqt_string */  protocols) {
 	QList<QByteArray> protocols_QList;
 	protocols_QList.reserve(protocols.len);
 	struct miqt_string* protocols_arr = static_cast<struct miqt_string*>(protocols.data);
@@ -392,7 +392,7 @@ void QSslConfiguration_SetAllowedNextProtocols(QSslConfiguration* self, struct m
 	self->setAllowedNextProtocols(protocols_QList);
 }
 
-struct miqt_array /* of struct miqt_string */  QSslConfiguration_AllowedNextProtocols(const QSslConfiguration* self) {
+struct miqt_array /* of struct miqt_string */  QSslConfiguration_allowedNextProtocols(const QSslConfiguration* self) {
 	QList<QByteArray> _ret = self->allowedNextProtocols();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -410,7 +410,7 @@ struct miqt_array /* of struct miqt_string */  QSslConfiguration_AllowedNextProt
 	return _out;
 }
 
-struct miqt_string QSslConfiguration_NextNegotiatedProtocol(const QSslConfiguration* self) {
+struct miqt_string QSslConfiguration_nextNegotiatedProtocol(const QSslConfiguration* self) {
 	QByteArray _qb = self->nextNegotiatedProtocol();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -419,22 +419,22 @@ struct miqt_string QSslConfiguration_NextNegotiatedProtocol(const QSslConfigurat
 	return _ms;
 }
 
-int QSslConfiguration_NextProtocolNegotiationStatus(const QSslConfiguration* self) {
+int QSslConfiguration_nextProtocolNegotiationStatus(const QSslConfiguration* self) {
 	QSslConfiguration::NextProtocolNegotiationStatus _ret = self->nextProtocolNegotiationStatus();
 	return static_cast<int>(_ret);
 }
 
-bool QSslConfiguration_AddCaCertificates2(QSslConfiguration* self, struct miqt_string path, int format) {
+bool QSslConfiguration_addCaCertificates2(QSslConfiguration* self, struct miqt_string path, int format) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	return self->addCaCertificates(path_QString, static_cast<QSsl::EncodingFormat>(format));
 }
 
-bool QSslConfiguration_AddCaCertificates3(QSslConfiguration* self, struct miqt_string path, int format, int syntax) {
+bool QSslConfiguration_addCaCertificates3(QSslConfiguration* self, struct miqt_string path, int format, int syntax) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	return self->addCaCertificates(path_QString, static_cast<QSsl::EncodingFormat>(format), static_cast<QSslCertificate::PatternSyntax>(syntax));
 }
 
-void QSslConfiguration_Delete(QSslConfiguration* self) {
+void QSslConfiguration_delete(QSslConfiguration* self) {
 	delete self;
 }
 

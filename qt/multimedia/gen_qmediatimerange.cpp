@@ -24,37 +24,37 @@ QMediaTimeInterval* QMediaTimeInterval_new3(QMediaTimeInterval* param1) {
 	return new QMediaTimeInterval(*param1);
 }
 
-void QMediaTimeInterval_OperatorAssign(QMediaTimeInterval* self, QMediaTimeInterval* param1) {
+void QMediaTimeInterval_operatorAssign(QMediaTimeInterval* self, QMediaTimeInterval* param1) {
 	self->operator=(*param1);
 }
 
-long long QMediaTimeInterval_Start(const QMediaTimeInterval* self) {
+long long QMediaTimeInterval_start(const QMediaTimeInterval* self) {
 	qint64 _ret = self->start();
 	return static_cast<long long>(_ret);
 }
 
-long long QMediaTimeInterval_End(const QMediaTimeInterval* self) {
+long long QMediaTimeInterval_end(const QMediaTimeInterval* self) {
 	qint64 _ret = self->end();
 	return static_cast<long long>(_ret);
 }
 
-bool QMediaTimeInterval_Contains(const QMediaTimeInterval* self, long long time) {
+bool QMediaTimeInterval_contains(const QMediaTimeInterval* self, long long time) {
 	return self->contains(static_cast<qint64>(time));
 }
 
-bool QMediaTimeInterval_IsNormal(const QMediaTimeInterval* self) {
+bool QMediaTimeInterval_isNormal(const QMediaTimeInterval* self) {
 	return self->isNormal();
 }
 
-QMediaTimeInterval* QMediaTimeInterval_Normalized(const QMediaTimeInterval* self) {
+QMediaTimeInterval* QMediaTimeInterval_normalized(const QMediaTimeInterval* self) {
 	return new QMediaTimeInterval(self->normalized());
 }
 
-QMediaTimeInterval* QMediaTimeInterval_Translated(const QMediaTimeInterval* self, long long offset) {
+QMediaTimeInterval* QMediaTimeInterval_translated(const QMediaTimeInterval* self, long long offset) {
 	return new QMediaTimeInterval(self->translated(static_cast<qint64>(offset)));
 }
 
-void QMediaTimeInterval_Delete(QMediaTimeInterval* self) {
+void QMediaTimeInterval_delete(QMediaTimeInterval* self) {
 	delete self;
 }
 
@@ -70,29 +70,29 @@ QMediaTimeRange* QMediaTimeRange_new3(QMediaTimeInterval* param1) {
 	return new QMediaTimeRange(*param1);
 }
 
-QMediaTimeRange* QMediaTimeRange_new4(QMediaTimeRange* rangeVal) {
-	return new QMediaTimeRange(*rangeVal);
+QMediaTimeRange* QMediaTimeRange_new4(QMediaTimeRange* range) {
+	return new QMediaTimeRange(*range);
 }
 
-void QMediaTimeRange_OperatorAssign(QMediaTimeRange* self, QMediaTimeRange* param1) {
+void QMediaTimeRange_operatorAssign(QMediaTimeRange* self, QMediaTimeRange* param1) {
 	self->operator=(*param1);
 }
 
-void QMediaTimeRange_OperatorAssignWithQMediaTimeInterval(QMediaTimeRange* self, QMediaTimeInterval* param1) {
+void QMediaTimeRange_operatorAssignWithQMediaTimeInterval(QMediaTimeRange* self, QMediaTimeInterval* param1) {
 	self->operator=(*param1);
 }
 
-long long QMediaTimeRange_EarliestTime(const QMediaTimeRange* self) {
+long long QMediaTimeRange_earliestTime(const QMediaTimeRange* self) {
 	qint64 _ret = self->earliestTime();
 	return static_cast<long long>(_ret);
 }
 
-long long QMediaTimeRange_LatestTime(const QMediaTimeRange* self) {
+long long QMediaTimeRange_latestTime(const QMediaTimeRange* self) {
 	qint64 _ret = self->latestTime();
 	return static_cast<long long>(_ret);
 }
 
-struct miqt_array /* of QMediaTimeInterval* */  QMediaTimeRange_Intervals(const QMediaTimeRange* self) {
+struct miqt_array /* of QMediaTimeInterval* */  QMediaTimeRange_intervals(const QMediaTimeRange* self) {
 	QList<QMediaTimeInterval> _ret = self->intervals();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QMediaTimeInterval** _arr = static_cast<QMediaTimeInterval**>(malloc(sizeof(QMediaTimeInterval*) * _ret.length()));
@@ -105,71 +105,71 @@ struct miqt_array /* of QMediaTimeInterval* */  QMediaTimeRange_Intervals(const 
 	return _out;
 }
 
-bool QMediaTimeRange_IsEmpty(const QMediaTimeRange* self) {
+bool QMediaTimeRange_isEmpty(const QMediaTimeRange* self) {
 	return self->isEmpty();
 }
 
-bool QMediaTimeRange_IsContinuous(const QMediaTimeRange* self) {
+bool QMediaTimeRange_isContinuous(const QMediaTimeRange* self) {
 	return self->isContinuous();
 }
 
-bool QMediaTimeRange_Contains(const QMediaTimeRange* self, long long time) {
+bool QMediaTimeRange_contains(const QMediaTimeRange* self, long long time) {
 	return self->contains(static_cast<qint64>(time));
 }
 
-void QMediaTimeRange_AddInterval(QMediaTimeRange* self, long long start, long long end) {
+void QMediaTimeRange_addInterval(QMediaTimeRange* self, long long start, long long end) {
 	self->addInterval(static_cast<qint64>(start), static_cast<qint64>(end));
 }
 
-void QMediaTimeRange_AddIntervalWithInterval(QMediaTimeRange* self, QMediaTimeInterval* interval) {
+void QMediaTimeRange_addIntervalWithInterval(QMediaTimeRange* self, QMediaTimeInterval* interval) {
 	self->addInterval(*interval);
 }
 
-void QMediaTimeRange_AddTimeRange(QMediaTimeRange* self, QMediaTimeRange* param1) {
+void QMediaTimeRange_addTimeRange(QMediaTimeRange* self, QMediaTimeRange* param1) {
 	self->addTimeRange(*param1);
 }
 
-void QMediaTimeRange_RemoveInterval(QMediaTimeRange* self, long long start, long long end) {
+void QMediaTimeRange_removeInterval(QMediaTimeRange* self, long long start, long long end) {
 	self->removeInterval(static_cast<qint64>(start), static_cast<qint64>(end));
 }
 
-void QMediaTimeRange_RemoveIntervalWithInterval(QMediaTimeRange* self, QMediaTimeInterval* interval) {
+void QMediaTimeRange_removeIntervalWithInterval(QMediaTimeRange* self, QMediaTimeInterval* interval) {
 	self->removeInterval(*interval);
 }
 
-void QMediaTimeRange_RemoveTimeRange(QMediaTimeRange* self, QMediaTimeRange* param1) {
+void QMediaTimeRange_removeTimeRange(QMediaTimeRange* self, QMediaTimeRange* param1) {
 	self->removeTimeRange(*param1);
 }
 
-QMediaTimeRange* QMediaTimeRange_OperatorPlusAssign(QMediaTimeRange* self, QMediaTimeRange* param1) {
+QMediaTimeRange* QMediaTimeRange_operatorPlusAssign(QMediaTimeRange* self, QMediaTimeRange* param1) {
 	QMediaTimeRange& _ret = self->operator+=(*param1);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QMediaTimeRange* QMediaTimeRange_OperatorPlusAssignWithQMediaTimeInterval(QMediaTimeRange* self, QMediaTimeInterval* param1) {
+QMediaTimeRange* QMediaTimeRange_operatorPlusAssignWithQMediaTimeInterval(QMediaTimeRange* self, QMediaTimeInterval* param1) {
 	QMediaTimeRange& _ret = self->operator+=(*param1);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QMediaTimeRange* QMediaTimeRange_OperatorMinusAssign(QMediaTimeRange* self, QMediaTimeRange* param1) {
+QMediaTimeRange* QMediaTimeRange_operatorMinusAssign(QMediaTimeRange* self, QMediaTimeRange* param1) {
 	QMediaTimeRange& _ret = self->operator-=(*param1);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QMediaTimeRange* QMediaTimeRange_OperatorMinusAssignWithQMediaTimeInterval(QMediaTimeRange* self, QMediaTimeInterval* param1) {
+QMediaTimeRange* QMediaTimeRange_operatorMinusAssignWithQMediaTimeInterval(QMediaTimeRange* self, QMediaTimeInterval* param1) {
 	QMediaTimeRange& _ret = self->operator-=(*param1);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-void QMediaTimeRange_Clear(QMediaTimeRange* self) {
+void QMediaTimeRange_clear(QMediaTimeRange* self) {
 	self->clear();
 }
 
-void QMediaTimeRange_Delete(QMediaTimeRange* self) {
+void QMediaTimeRange_delete(QMediaTimeRange* self) {
 	delete self;
 }
 

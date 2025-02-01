@@ -67,17 +67,17 @@ func NewQSslDiffieHellmanParameters2(other *QSslDiffieHellmanParameters) *QSslDi
 }
 
 func QSslDiffieHellmanParameters_DefaultParameters() *QSslDiffieHellmanParameters {
-	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_DefaultParameters())
+	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_defaultParameters())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSslDiffieHellmanParameters) OperatorAssign(other *QSslDiffieHellmanParameters) {
-	C.QSslDiffieHellmanParameters_OperatorAssign(this.h, other.cPointer())
+	C.QSslDiffieHellmanParameters_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QSslDiffieHellmanParameters) Swap(other *QSslDiffieHellmanParameters) {
-	C.QSslDiffieHellmanParameters_Swap(this.h, other.cPointer())
+	C.QSslDiffieHellmanParameters_swap(this.h, other.cPointer())
 }
 
 func QSslDiffieHellmanParameters_FromEncoded(encoded []byte) *QSslDiffieHellmanParameters {
@@ -88,31 +88,31 @@ func QSslDiffieHellmanParameters_FromEncoded(encoded []byte) *QSslDiffieHellmanP
 		encoded_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	encoded_alias.len = C.size_t(len(encoded))
-	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_FromEncoded(encoded_alias))
+	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_fromEncoded(encoded_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QSslDiffieHellmanParameters_FromEncodedWithDevice(device *qt6.QIODevice) *QSslDiffieHellmanParameters {
-	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_FromEncodedWithDevice((*C.QIODevice)(device.UnsafePointer())))
+	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_fromEncodedWithDevice((*C.QIODevice)(device.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSslDiffieHellmanParameters) IsEmpty() bool {
-	return (bool)(C.QSslDiffieHellmanParameters_IsEmpty(this.h))
+	return (bool)(C.QSslDiffieHellmanParameters_isEmpty(this.h))
 }
 
 func (this *QSslDiffieHellmanParameters) IsValid() bool {
-	return (bool)(C.QSslDiffieHellmanParameters_IsValid(this.h))
+	return (bool)(C.QSslDiffieHellmanParameters_isValid(this.h))
 }
 
 func (this *QSslDiffieHellmanParameters) Error() QSslDiffieHellmanParameters__Error {
-	return (QSslDiffieHellmanParameters__Error)(C.QSslDiffieHellmanParameters_Error(this.h))
+	return (QSslDiffieHellmanParameters__Error)(C.QSslDiffieHellmanParameters_error(this.h))
 }
 
 func (this *QSslDiffieHellmanParameters) ErrorString() string {
-	var _ms C.struct_miqt_string = C.QSslDiffieHellmanParameters_ErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QSslDiffieHellmanParameters_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -126,20 +126,20 @@ func QSslDiffieHellmanParameters_FromEncoded2(encoded []byte, format QSsl__Encod
 		encoded_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	encoded_alias.len = C.size_t(len(encoded))
-	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_FromEncoded2(encoded_alias, (C.int)(format)))
+	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_fromEncoded2(encoded_alias, (C.int)(format)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QSslDiffieHellmanParameters_FromEncoded22(device *qt6.QIODevice, format QSsl__EncodingFormat) *QSslDiffieHellmanParameters {
-	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_FromEncoded22((*C.QIODevice)(device.UnsafePointer()), (C.int)(format)))
+	_goptr := newQSslDiffieHellmanParameters(C.QSslDiffieHellmanParameters_fromEncoded22((*C.QIODevice)(device.UnsafePointer()), (C.int)(format)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QSslDiffieHellmanParameters) Delete() {
-	C.QSslDiffieHellmanParameters_Delete(this.h)
+	C.QSslDiffieHellmanParameters_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -67,42 +67,42 @@ func NewQCameraFormat2(other *QCameraFormat) *QCameraFormat {
 }
 
 func (this *QCameraFormat) OperatorAssign(other *QCameraFormat) {
-	C.QCameraFormat_OperatorAssign(this.h, other.cPointer())
+	C.QCameraFormat_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QCameraFormat) PixelFormat() QVideoFrameFormat__PixelFormat {
-	return (QVideoFrameFormat__PixelFormat)(C.QCameraFormat_PixelFormat(this.h))
+	return (QVideoFrameFormat__PixelFormat)(C.QCameraFormat_pixelFormat(this.h))
 }
 
 func (this *QCameraFormat) Resolution() *qt6.QSize {
-	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QCameraFormat_Resolution(this.h)))
+	_goptr := qt6.UnsafeNewQSize(unsafe.Pointer(C.QCameraFormat_resolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraFormat) MinFrameRate() float32 {
-	return (float32)(C.QCameraFormat_MinFrameRate(this.h))
+	return (float32)(C.QCameraFormat_minFrameRate(this.h))
 }
 
 func (this *QCameraFormat) MaxFrameRate() float32 {
-	return (float32)(C.QCameraFormat_MaxFrameRate(this.h))
+	return (float32)(C.QCameraFormat_maxFrameRate(this.h))
 }
 
 func (this *QCameraFormat) IsNull() bool {
-	return (bool)(C.QCameraFormat_IsNull(this.h))
+	return (bool)(C.QCameraFormat_isNull(this.h))
 }
 
 func (this *QCameraFormat) OperatorEqual(other *QCameraFormat) bool {
-	return (bool)(C.QCameraFormat_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QCameraFormat_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QCameraFormat) OperatorNotEqual(other *QCameraFormat) bool {
-	return (bool)(C.QCameraFormat_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QCameraFormat_operatorNotEqual(this.h, other.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QCameraFormat) Delete() {
-	C.QCameraFormat_Delete(this.h)
+	C.QCameraFormat_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -159,45 +159,45 @@ func NewQCameraDevice2(other *QCameraDevice) *QCameraDevice {
 }
 
 func (this *QCameraDevice) OperatorAssign(other *QCameraDevice) {
-	C.QCameraDevice_OperatorAssign(this.h, other.cPointer())
+	C.QCameraDevice_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QCameraDevice) OperatorEqual(other *QCameraDevice) bool {
-	return (bool)(C.QCameraDevice_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QCameraDevice_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QCameraDevice) OperatorNotEqual(other *QCameraDevice) bool {
-	return (bool)(C.QCameraDevice_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QCameraDevice_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QCameraDevice) IsNull() bool {
-	return (bool)(C.QCameraDevice_IsNull(this.h))
+	return (bool)(C.QCameraDevice_isNull(this.h))
 }
 
 func (this *QCameraDevice) Id() []byte {
-	var _bytearray C.struct_miqt_string = C.QCameraDevice_Id(this.h)
+	var _bytearray C.struct_miqt_string = C.QCameraDevice_id(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QCameraDevice) Description() string {
-	var _ms C.struct_miqt_string = C.QCameraDevice_Description(this.h)
+	var _ms C.struct_miqt_string = C.QCameraDevice_description(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCameraDevice) IsDefault() bool {
-	return (bool)(C.QCameraDevice_IsDefault(this.h))
+	return (bool)(C.QCameraDevice_isDefault(this.h))
 }
 
 func (this *QCameraDevice) Position() QCameraDevice__Position {
-	return (QCameraDevice__Position)(C.QCameraDevice_Position(this.h))
+	return (QCameraDevice__Position)(C.QCameraDevice_position(this.h))
 }
 
 func (this *QCameraDevice) PhotoResolutions() []qt6.QSize {
-	var _ma C.struct_miqt_array = C.QCameraDevice_PhotoResolutions(this.h)
+	var _ma C.struct_miqt_array = C.QCameraDevice_photoResolutions(this.h)
 	_ret := make([]qt6.QSize, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSize)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -209,7 +209,7 @@ func (this *QCameraDevice) PhotoResolutions() []qt6.QSize {
 }
 
 func (this *QCameraDevice) VideoFormats() []QCameraFormat {
-	var _ma C.struct_miqt_array = C.QCameraDevice_VideoFormats(this.h)
+	var _ma C.struct_miqt_array = C.QCameraDevice_videoFormats(this.h)
 	_ret := make([]QCameraFormat, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraFormat)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -222,7 +222,7 @@ func (this *QCameraDevice) VideoFormats() []QCameraFormat {
 
 // Delete this object from C++ memory.
 func (this *QCameraDevice) Delete() {
-	C.QCameraDevice_Delete(this.h)
+	C.QCameraDevice_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

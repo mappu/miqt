@@ -26,25 +26,25 @@ typedef struct QWebSecurityOrigin QWebSecurityOrigin;
 
 QWebSecurityOrigin* QWebSecurityOrigin_new(QUrl* url);
 QWebSecurityOrigin* QWebSecurityOrigin_new2(QWebSecurityOrigin* other);
-struct miqt_array /* of QWebSecurityOrigin* */  QWebSecurityOrigin_AllOrigins();
-void QWebSecurityOrigin_AddLocalScheme(struct miqt_string scheme);
-void QWebSecurityOrigin_RemoveLocalScheme(struct miqt_string scheme);
-struct miqt_array /* of struct miqt_string */  QWebSecurityOrigin_LocalSchemes();
-void QWebSecurityOrigin_AddAccessWhitelistEntry(QWebSecurityOrigin* self, struct miqt_string scheme, struct miqt_string host, int subdomainSetting);
-void QWebSecurityOrigin_RemoveAccessWhitelistEntry(QWebSecurityOrigin* self, struct miqt_string scheme, struct miqt_string host, int subdomainSetting);
-struct miqt_string QWebSecurityOrigin_Scheme(const QWebSecurityOrigin* self);
-struct miqt_string QWebSecurityOrigin_Host(const QWebSecurityOrigin* self);
-int QWebSecurityOrigin_Port(const QWebSecurityOrigin* self);
-long long QWebSecurityOrigin_DatabaseUsage(const QWebSecurityOrigin* self);
-long long QWebSecurityOrigin_DatabaseQuota(const QWebSecurityOrigin* self);
-void QWebSecurityOrigin_SetDatabaseQuota(QWebSecurityOrigin* self, long long quota);
-void QWebSecurityOrigin_SetApplicationCacheQuota(QWebSecurityOrigin* self, long long quota);
-struct miqt_array /* of QWebDatabase* */  QWebSecurityOrigin_Databases(const QWebSecurityOrigin* self);
-void QWebSecurityOrigin_OperatorAssign(QWebSecurityOrigin* self, QWebSecurityOrigin* other);
-void QWebSecurityOrigin_Delete(QWebSecurityOrigin* self);
+struct miqt_array /* of QWebSecurityOrigin* */  QWebSecurityOrigin_allOrigins();
+void QWebSecurityOrigin_addLocalScheme(struct miqt_string scheme);
+void QWebSecurityOrigin_removeLocalScheme(struct miqt_string scheme);
+struct miqt_array /* of struct miqt_string */  QWebSecurityOrigin_localSchemes();
+void QWebSecurityOrigin_addAccessWhitelistEntry(QWebSecurityOrigin* self, struct miqt_string scheme, struct miqt_string host, int subdomainSetting);
+void QWebSecurityOrigin_removeAccessWhitelistEntry(QWebSecurityOrigin* self, struct miqt_string scheme, struct miqt_string host, int subdomainSetting);
+struct miqt_string QWebSecurityOrigin_scheme(const QWebSecurityOrigin* self);
+struct miqt_string QWebSecurityOrigin_host(const QWebSecurityOrigin* self);
+int QWebSecurityOrigin_port(const QWebSecurityOrigin* self);
+long long QWebSecurityOrigin_databaseUsage(const QWebSecurityOrigin* self);
+long long QWebSecurityOrigin_databaseQuota(const QWebSecurityOrigin* self);
+void QWebSecurityOrigin_setDatabaseQuota(QWebSecurityOrigin* self, long long quota);
+void QWebSecurityOrigin_setApplicationCacheQuota(QWebSecurityOrigin* self, long long quota);
+struct miqt_array /* of QWebDatabase* */  QWebSecurityOrigin_databases(const QWebSecurityOrigin* self);
+void QWebSecurityOrigin_operatorAssign(QWebSecurityOrigin* self, QWebSecurityOrigin* other);
+void QWebSecurityOrigin_delete(QWebSecurityOrigin* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

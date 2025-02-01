@@ -120,24 +120,24 @@ func UnsafeNewQStringConverter(h unsafe.Pointer) *QStringConverter {
 }
 
 func (this *QStringConverter) IsValid() bool {
-	return (bool)(C.QStringConverter_IsValid(this.h))
+	return (bool)(C.QStringConverter_isValid(this.h))
 }
 
 func (this *QStringConverter) ResetState() {
-	C.QStringConverter_ResetState(this.h)
+	C.QStringConverter_resetState(this.h)
 }
 
 func (this *QStringConverter) HasError() bool {
-	return (bool)(C.QStringConverter_HasError(this.h))
+	return (bool)(C.QStringConverter_hasError(this.h))
 }
 
 func (this *QStringConverter) Name() string {
-	_ret := C.QStringConverter_Name(this.h)
+	_ret := C.QStringConverter_name(this.h)
 	return C.GoString(_ret)
 }
 
 func QStringConverter_NameForEncoding(e QStringConverter__Encoding) string {
-	_ret := C.QStringConverter_NameForEncoding((C.int)(e))
+	_ret := C.QStringConverter_nameForEncoding((C.int)(e))
 	return C.GoString(_ret)
 }
 
@@ -186,16 +186,16 @@ func NewQStringConverterBase__State2(f QStringConverterBase__Flag) *QStringConve
 }
 
 func (this *QStringConverterBase__State) Clear() {
-	C.QStringConverterBase__State_Clear(this.h)
+	C.QStringConverterBase__State_clear(this.h)
 }
 
 func (this *QStringConverterBase__State) Reset() {
-	C.QStringConverterBase__State_Reset(this.h)
+	C.QStringConverterBase__State_reset(this.h)
 }
 
 // Delete this object from C++ memory.
 func (this *QStringConverterBase__State) Delete() {
-	C.QStringConverterBase__State_Delete(this.h)
+	C.QStringConverterBase__State_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

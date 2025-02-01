@@ -33,53 +33,53 @@ typedef struct QVariant QVariant;
 #endif
 
 void QInputMethod_virtbase(QInputMethod* src, QObject** outptr_QObject);
-QMetaObject* QInputMethod_MetaObject(const QInputMethod* self);
-void* QInputMethod_Metacast(QInputMethod* self, const char* param1);
-struct miqt_string QInputMethod_Tr(const char* s);
-struct miqt_string QInputMethod_TrUtf8(const char* s);
-QTransform* QInputMethod_InputItemTransform(const QInputMethod* self);
-void QInputMethod_SetInputItemTransform(QInputMethod* self, QTransform* transform);
-QRectF* QInputMethod_InputItemRectangle(const QInputMethod* self);
-void QInputMethod_SetInputItemRectangle(QInputMethod* self, QRectF* rect);
-QRectF* QInputMethod_CursorRectangle(const QInputMethod* self);
-QRectF* QInputMethod_AnchorRectangle(const QInputMethod* self);
-QRectF* QInputMethod_KeyboardRectangle(const QInputMethod* self);
-QRectF* QInputMethod_InputItemClipRectangle(const QInputMethod* self);
-bool QInputMethod_IsVisible(const QInputMethod* self);
-void QInputMethod_SetVisible(QInputMethod* self, bool visible);
-bool QInputMethod_IsAnimating(const QInputMethod* self);
-QLocale* QInputMethod_Locale(const QInputMethod* self);
-int QInputMethod_InputDirection(const QInputMethod* self);
-QVariant* QInputMethod_QueryFocusObject(int query, QVariant* argument);
-void QInputMethod_Show(QInputMethod* self);
-void QInputMethod_Hide(QInputMethod* self);
-void QInputMethod_Update(QInputMethod* self, int queries);
-void QInputMethod_Reset(QInputMethod* self);
-void QInputMethod_Commit(QInputMethod* self);
-void QInputMethod_InvokeAction(QInputMethod* self, int a, int cursorPosition);
-void QInputMethod_CursorRectangleChanged(QInputMethod* self);
-void QInputMethod_connect_CursorRectangleChanged(QInputMethod* self, intptr_t slot);
-void QInputMethod_AnchorRectangleChanged(QInputMethod* self);
-void QInputMethod_connect_AnchorRectangleChanged(QInputMethod* self, intptr_t slot);
-void QInputMethod_KeyboardRectangleChanged(QInputMethod* self);
-void QInputMethod_connect_KeyboardRectangleChanged(QInputMethod* self, intptr_t slot);
-void QInputMethod_InputItemClipRectangleChanged(QInputMethod* self);
-void QInputMethod_connect_InputItemClipRectangleChanged(QInputMethod* self, intptr_t slot);
-void QInputMethod_VisibleChanged(QInputMethod* self);
-void QInputMethod_connect_VisibleChanged(QInputMethod* self, intptr_t slot);
-void QInputMethod_AnimatingChanged(QInputMethod* self);
-void QInputMethod_connect_AnimatingChanged(QInputMethod* self, intptr_t slot);
-void QInputMethod_LocaleChanged(QInputMethod* self);
-void QInputMethod_connect_LocaleChanged(QInputMethod* self, intptr_t slot);
-void QInputMethod_InputDirectionChanged(QInputMethod* self, int newDirection);
-void QInputMethod_connect_InputDirectionChanged(QInputMethod* self, intptr_t slot);
-struct miqt_string QInputMethod_Tr2(const char* s, const char* c);
-struct miqt_string QInputMethod_Tr3(const char* s, const char* c, int n);
-struct miqt_string QInputMethod_TrUtf82(const char* s, const char* c);
-struct miqt_string QInputMethod_TrUtf83(const char* s, const char* c, int n);
+QMetaObject* QInputMethod_metaObject(const QInputMethod* self);
+void* QInputMethod_metacast(QInputMethod* self, const char* param1);
+struct miqt_string QInputMethod_tr(const char* s);
+struct miqt_string QInputMethod_trUtf8(const char* s);
+QTransform* QInputMethod_inputItemTransform(const QInputMethod* self);
+void QInputMethod_setInputItemTransform(QInputMethod* self, QTransform* transform);
+QRectF* QInputMethod_inputItemRectangle(const QInputMethod* self);
+void QInputMethod_setInputItemRectangle(QInputMethod* self, QRectF* rect);
+QRectF* QInputMethod_cursorRectangle(const QInputMethod* self);
+QRectF* QInputMethod_anchorRectangle(const QInputMethod* self);
+QRectF* QInputMethod_keyboardRectangle(const QInputMethod* self);
+QRectF* QInputMethod_inputItemClipRectangle(const QInputMethod* self);
+bool QInputMethod_isVisible(const QInputMethod* self);
+void QInputMethod_setVisible(QInputMethod* self, bool visible);
+bool QInputMethod_isAnimating(const QInputMethod* self);
+QLocale* QInputMethod_locale(const QInputMethod* self);
+int QInputMethod_inputDirection(const QInputMethod* self);
+QVariant* QInputMethod_queryFocusObject(int query, QVariant* argument);
+void QInputMethod_show(QInputMethod* self);
+void QInputMethod_hide(QInputMethod* self);
+void QInputMethod_update(QInputMethod* self, int queries);
+void QInputMethod_reset(QInputMethod* self);
+void QInputMethod_commit(QInputMethod* self);
+void QInputMethod_invokeAction(QInputMethod* self, int a, int cursorPosition);
+void QInputMethod_cursorRectangleChanged(QInputMethod* self);
+void QInputMethod_connect_cursorRectangleChanged(QInputMethod* self, intptr_t slot);
+void QInputMethod_anchorRectangleChanged(QInputMethod* self);
+void QInputMethod_connect_anchorRectangleChanged(QInputMethod* self, intptr_t slot);
+void QInputMethod_keyboardRectangleChanged(QInputMethod* self);
+void QInputMethod_connect_keyboardRectangleChanged(QInputMethod* self, intptr_t slot);
+void QInputMethod_inputItemClipRectangleChanged(QInputMethod* self);
+void QInputMethod_connect_inputItemClipRectangleChanged(QInputMethod* self, intptr_t slot);
+void QInputMethod_visibleChanged(QInputMethod* self);
+void QInputMethod_connect_visibleChanged(QInputMethod* self, intptr_t slot);
+void QInputMethod_animatingChanged(QInputMethod* self);
+void QInputMethod_connect_animatingChanged(QInputMethod* self, intptr_t slot);
+void QInputMethod_localeChanged(QInputMethod* self);
+void QInputMethod_connect_localeChanged(QInputMethod* self, intptr_t slot);
+void QInputMethod_inputDirectionChanged(QInputMethod* self, int newDirection);
+void QInputMethod_connect_inputDirectionChanged(QInputMethod* self, intptr_t slot);
+struct miqt_string QInputMethod_tr2(const char* s, const char* c);
+struct miqt_string QInputMethod_tr3(const char* s, const char* c, int n);
+struct miqt_string QInputMethod_trUtf82(const char* s, const char* c);
+struct miqt_string QInputMethod_trUtf83(const char* s, const char* c, int n);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

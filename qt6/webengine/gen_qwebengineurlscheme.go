@@ -99,19 +99,19 @@ func NewQWebEngineUrlScheme3(that *QWebEngineUrlScheme) *QWebEngineUrlScheme {
 }
 
 func (this *QWebEngineUrlScheme) OperatorAssign(that *QWebEngineUrlScheme) {
-	C.QWebEngineUrlScheme_OperatorAssign(this.h, that.cPointer())
+	C.QWebEngineUrlScheme_operatorAssign(this.h, that.cPointer())
 }
 
 func (this *QWebEngineUrlScheme) OperatorEqual(that *QWebEngineUrlScheme) bool {
-	return (bool)(C.QWebEngineUrlScheme_OperatorEqual(this.h, that.cPointer()))
+	return (bool)(C.QWebEngineUrlScheme_operatorEqual(this.h, that.cPointer()))
 }
 
 func (this *QWebEngineUrlScheme) OperatorNotEqual(that *QWebEngineUrlScheme) bool {
-	return (bool)(C.QWebEngineUrlScheme_OperatorNotEqual(this.h, that.cPointer()))
+	return (bool)(C.QWebEngineUrlScheme_operatorNotEqual(this.h, that.cPointer()))
 }
 
 func (this *QWebEngineUrlScheme) Name() []byte {
-	var _bytearray C.struct_miqt_string = C.QWebEngineUrlScheme_Name(this.h)
+	var _bytearray C.struct_miqt_string = C.QWebEngineUrlScheme_name(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -125,35 +125,35 @@ func (this *QWebEngineUrlScheme) SetName(newValue []byte) {
 		newValue_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	newValue_alias.len = C.size_t(len(newValue))
-	C.QWebEngineUrlScheme_SetName(this.h, newValue_alias)
+	C.QWebEngineUrlScheme_setName(this.h, newValue_alias)
 }
 
 func (this *QWebEngineUrlScheme) Syntax() QWebEngineUrlScheme__Syntax {
-	return (QWebEngineUrlScheme__Syntax)(C.QWebEngineUrlScheme_Syntax(this.h))
+	return (QWebEngineUrlScheme__Syntax)(C.QWebEngineUrlScheme_syntax(this.h))
 }
 
 func (this *QWebEngineUrlScheme) SetSyntax(newValue QWebEngineUrlScheme__Syntax) {
-	C.QWebEngineUrlScheme_SetSyntax(this.h, (C.int)(newValue))
+	C.QWebEngineUrlScheme_setSyntax(this.h, (C.int)(newValue))
 }
 
 func (this *QWebEngineUrlScheme) DefaultPort() int {
-	return (int)(C.QWebEngineUrlScheme_DefaultPort(this.h))
+	return (int)(C.QWebEngineUrlScheme_defaultPort(this.h))
 }
 
 func (this *QWebEngineUrlScheme) SetDefaultPort(newValue int) {
-	C.QWebEngineUrlScheme_SetDefaultPort(this.h, (C.int)(newValue))
+	C.QWebEngineUrlScheme_setDefaultPort(this.h, (C.int)(newValue))
 }
 
 func (this *QWebEngineUrlScheme) Flags() QWebEngineUrlScheme__Flag {
-	return (QWebEngineUrlScheme__Flag)(C.QWebEngineUrlScheme_Flags(this.h))
+	return (QWebEngineUrlScheme__Flag)(C.QWebEngineUrlScheme_flags(this.h))
 }
 
 func (this *QWebEngineUrlScheme) SetFlags(newValue QWebEngineUrlScheme__Flag) {
-	C.QWebEngineUrlScheme_SetFlags(this.h, (C.int)(newValue))
+	C.QWebEngineUrlScheme_setFlags(this.h, (C.int)(newValue))
 }
 
 func QWebEngineUrlScheme_RegisterScheme(scheme *QWebEngineUrlScheme) {
-	C.QWebEngineUrlScheme_RegisterScheme(scheme.cPointer())
+	C.QWebEngineUrlScheme_registerScheme(scheme.cPointer())
 }
 
 func QWebEngineUrlScheme_SchemeByName(name []byte) *QWebEngineUrlScheme {
@@ -164,14 +164,14 @@ func QWebEngineUrlScheme_SchemeByName(name []byte) *QWebEngineUrlScheme {
 		name_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	name_alias.len = C.size_t(len(name))
-	_goptr := newQWebEngineUrlScheme(C.QWebEngineUrlScheme_SchemeByName(name_alias))
+	_goptr := newQWebEngineUrlScheme(C.QWebEngineUrlScheme_schemeByName(name_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QWebEngineUrlScheme) Delete() {
-	C.QWebEngineUrlScheme_Delete(this.h)
+	C.QWebEngineUrlScheme_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -29,22 +29,22 @@ typedef struct QVariant QVariant;
 #endif
 
 void QCameraImageProcessingControl_virtbase(QCameraImageProcessingControl* src, QMediaControl** outptr_QMediaControl);
-QMetaObject* QCameraImageProcessingControl_MetaObject(const QCameraImageProcessingControl* self);
-void* QCameraImageProcessingControl_Metacast(QCameraImageProcessingControl* self, const char* param1);
-struct miqt_string QCameraImageProcessingControl_Tr(const char* s);
-struct miqt_string QCameraImageProcessingControl_TrUtf8(const char* s);
-bool QCameraImageProcessingControl_IsParameterSupported(const QCameraImageProcessingControl* self, int param1);
-bool QCameraImageProcessingControl_IsParameterValueSupported(const QCameraImageProcessingControl* self, int parameter, QVariant* value);
-QVariant* QCameraImageProcessingControl_Parameter(const QCameraImageProcessingControl* self, int parameter);
-void QCameraImageProcessingControl_SetParameter(QCameraImageProcessingControl* self, int parameter, QVariant* value);
-struct miqt_string QCameraImageProcessingControl_Tr2(const char* s, const char* c);
-struct miqt_string QCameraImageProcessingControl_Tr3(const char* s, const char* c, int n);
-struct miqt_string QCameraImageProcessingControl_TrUtf82(const char* s, const char* c);
-struct miqt_string QCameraImageProcessingControl_TrUtf83(const char* s, const char* c, int n);
-void QCameraImageProcessingControl_Delete(QCameraImageProcessingControl* self);
+QMetaObject* QCameraImageProcessingControl_metaObject(const QCameraImageProcessingControl* self);
+void* QCameraImageProcessingControl_metacast(QCameraImageProcessingControl* self, const char* param1);
+struct miqt_string QCameraImageProcessingControl_tr(const char* s);
+struct miqt_string QCameraImageProcessingControl_trUtf8(const char* s);
+bool QCameraImageProcessingControl_isParameterSupported(const QCameraImageProcessingControl* self, int param1);
+bool QCameraImageProcessingControl_isParameterValueSupported(const QCameraImageProcessingControl* self, int parameter, QVariant* value);
+QVariant* QCameraImageProcessingControl_parameter(const QCameraImageProcessingControl* self, int parameter);
+void QCameraImageProcessingControl_setParameter(QCameraImageProcessingControl* self, int parameter, QVariant* value);
+struct miqt_string QCameraImageProcessingControl_tr2(const char* s, const char* c);
+struct miqt_string QCameraImageProcessingControl_tr3(const char* s, const char* c, int n);
+struct miqt_string QCameraImageProcessingControl_trUtf82(const char* s, const char* c);
+struct miqt_string QCameraImageProcessingControl_trUtf83(const char* s, const char* c, int n);
+void QCameraImageProcessingControl_delete(QCameraImageProcessingControl* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

@@ -26,15 +26,15 @@ typedef struct QWebFullScreenRequest QWebFullScreenRequest;
 
 QWebFullScreenRequest* QWebFullScreenRequest_new();
 QWebFullScreenRequest* QWebFullScreenRequest_new2(QWebFullScreenRequest* param1);
-void QWebFullScreenRequest_Accept(QWebFullScreenRequest* self);
-void QWebFullScreenRequest_Reject(QWebFullScreenRequest* self);
-bool QWebFullScreenRequest_ToggleOn(const QWebFullScreenRequest* self);
-QUrl* QWebFullScreenRequest_Origin(const QWebFullScreenRequest* self);
-QWebElement* QWebFullScreenRequest_Element(const QWebFullScreenRequest* self);
-void QWebFullScreenRequest_Delete(QWebFullScreenRequest* self);
+void QWebFullScreenRequest_accept(QWebFullScreenRequest* self);
+void QWebFullScreenRequest_reject(QWebFullScreenRequest* self);
+bool QWebFullScreenRequest_toggleOn(const QWebFullScreenRequest* self);
+QUrl* QWebFullScreenRequest_origin(const QWebFullScreenRequest* self);
+QWebElement* QWebFullScreenRequest_element(const QWebFullScreenRequest* self);
+void QWebFullScreenRequest_delete(QWebFullScreenRequest* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

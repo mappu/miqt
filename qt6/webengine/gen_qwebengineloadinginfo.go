@@ -75,41 +75,41 @@ func NewQWebEngineLoadingInfo(other *QWebEngineLoadingInfo) *QWebEngineLoadingIn
 }
 
 func (this *QWebEngineLoadingInfo) OperatorAssign(other *QWebEngineLoadingInfo) {
-	C.QWebEngineLoadingInfo_OperatorAssign(this.h, other.cPointer())
+	C.QWebEngineLoadingInfo_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QWebEngineLoadingInfo) Url() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineLoadingInfo_Url(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineLoadingInfo_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineLoadingInfo) IsErrorPage() bool {
-	return (bool)(C.QWebEngineLoadingInfo_IsErrorPage(this.h))
+	return (bool)(C.QWebEngineLoadingInfo_isErrorPage(this.h))
 }
 
 func (this *QWebEngineLoadingInfo) Status() QWebEngineLoadingInfo__LoadStatus {
-	return (QWebEngineLoadingInfo__LoadStatus)(C.QWebEngineLoadingInfo_Status(this.h))
+	return (QWebEngineLoadingInfo__LoadStatus)(C.QWebEngineLoadingInfo_status(this.h))
 }
 
 func (this *QWebEngineLoadingInfo) ErrorString() string {
-	var _ms C.struct_miqt_string = C.QWebEngineLoadingInfo_ErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineLoadingInfo_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineLoadingInfo) ErrorDomain() QWebEngineLoadingInfo__ErrorDomain {
-	return (QWebEngineLoadingInfo__ErrorDomain)(C.QWebEngineLoadingInfo_ErrorDomain(this.h))
+	return (QWebEngineLoadingInfo__ErrorDomain)(C.QWebEngineLoadingInfo_errorDomain(this.h))
 }
 
 func (this *QWebEngineLoadingInfo) ErrorCode() int {
-	return (int)(C.QWebEngineLoadingInfo_ErrorCode(this.h))
+	return (int)(C.QWebEngineLoadingInfo_errorCode(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QWebEngineLoadingInfo) Delete() {
-	C.QWebEngineLoadingInfo_Delete(this.h)
+	C.QWebEngineLoadingInfo_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

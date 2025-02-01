@@ -52,19 +52,19 @@ func UnsafeNewQMediaAvailabilityControl(h unsafe.Pointer) *QMediaAvailabilityCon
 }
 
 func (this *QMediaAvailabilityControl) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaAvailabilityControl_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaAvailabilityControl_metaObject(this.h)))
 }
 
 func (this *QMediaAvailabilityControl) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QMediaAvailabilityControl_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QMediaAvailabilityControl_metacast(this.h, param1_Cstring))
 }
 
 func QMediaAvailabilityControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaAvailabilityControl_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaAvailabilityControl_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -73,25 +73,25 @@ func QMediaAvailabilityControl_Tr(s string) string {
 func QMediaAvailabilityControl_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaAvailabilityControl_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaAvailabilityControl_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMediaAvailabilityControl) Availability() QMultimedia__AvailabilityStatus {
-	return (QMultimedia__AvailabilityStatus)(C.QMediaAvailabilityControl_Availability(this.h))
+	return (QMultimedia__AvailabilityStatus)(C.QMediaAvailabilityControl_availability(this.h))
 }
 
 func (this *QMediaAvailabilityControl) AvailabilityChanged(availability QMultimedia__AvailabilityStatus) {
-	C.QMediaAvailabilityControl_AvailabilityChanged(this.h, (C.int)(availability))
+	C.QMediaAvailabilityControl_availabilityChanged(this.h, (C.int)(availability))
 }
 func (this *QMediaAvailabilityControl) OnAvailabilityChanged(slot func(availability QMultimedia__AvailabilityStatus)) {
-	C.QMediaAvailabilityControl_connect_AvailabilityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaAvailabilityControl_connect_availabilityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaAvailabilityControl_AvailabilityChanged
-func miqt_exec_callback_QMediaAvailabilityControl_AvailabilityChanged(cb C.intptr_t, availability C.int) {
+//export miqt_exec_callback_QMediaAvailabilityControl_availabilityChanged
+func miqt_exec_callback_QMediaAvailabilityControl_availabilityChanged(cb C.intptr_t, availability C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(availability QMultimedia__AvailabilityStatus))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -108,7 +108,7 @@ func QMediaAvailabilityControl_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaAvailabilityControl_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaAvailabilityControl_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -119,7 +119,7 @@ func QMediaAvailabilityControl_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaAvailabilityControl_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaAvailabilityControl_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -130,7 +130,7 @@ func QMediaAvailabilityControl_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaAvailabilityControl_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaAvailabilityControl_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -141,7 +141,7 @@ func QMediaAvailabilityControl_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaAvailabilityControl_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaAvailabilityControl_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -149,7 +149,7 @@ func QMediaAvailabilityControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaAvailabilityControl) Delete() {
-	C.QMediaAvailabilityControl_Delete(this.h)
+	C.QMediaAvailabilityControl_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

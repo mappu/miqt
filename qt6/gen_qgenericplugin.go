@@ -63,19 +63,19 @@ func NewQGenericPlugin2(parent *QObject) *QGenericPlugin {
 }
 
 func (this *QGenericPlugin) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QGenericPlugin_MetaObject(this.h))
+	return newQMetaObject(C.QGenericPlugin_metaObject(this.h))
 }
 
 func (this *QGenericPlugin) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QGenericPlugin_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QGenericPlugin_metacast(this.h, param1_Cstring))
 }
 
 func QGenericPlugin_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QGenericPlugin_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QGenericPlugin_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -90,7 +90,7 @@ func (this *QGenericPlugin) Create(name string, spec string) *QObject {
 	spec_ms.data = C.CString(spec)
 	spec_ms.len = C.size_t(len(spec))
 	defer C.free(unsafe.Pointer(spec_ms.data))
-	return newQObject(C.QGenericPlugin_Create(this.h, name_ms, spec_ms))
+	return newQObject(C.QGenericPlugin_create(this.h, name_ms, spec_ms))
 }
 
 func QGenericPlugin_Tr2(s string, c string) string {
@@ -98,7 +98,7 @@ func QGenericPlugin_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QGenericPlugin_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QGenericPlugin_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -109,20 +109,20 @@ func QGenericPlugin_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QGenericPlugin_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QGenericPlugin_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QGenericPlugin) OnCreate(slot func(name string, spec string) *QObject) {
-	ok := C.QGenericPlugin_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGenericPlugin) Oncreate(slot func(name string, spec string) *QObject) {
+	ok := C.QGenericPlugin_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGenericPlugin_Create
-func miqt_exec_callback_QGenericPlugin_Create(self *C.QGenericPlugin, cb C.intptr_t, name C.struct_miqt_string, spec C.struct_miqt_string) *C.QObject {
+//export miqt_exec_callback_QGenericPlugin_create
+func miqt_exec_callback_QGenericPlugin_create(self *C.QGenericPlugin, cb C.intptr_t, name C.struct_miqt_string, spec C.struct_miqt_string) *C.QObject {
 	gofunc, ok := cgo.Handle(cb).Value().(func(name string, spec string) *QObject)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -146,18 +146,18 @@ func miqt_exec_callback_QGenericPlugin_Create(self *C.QGenericPlugin, cb C.intpt
 
 func (this *QGenericPlugin) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QGenericPlugin_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QGenericPlugin_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QGenericPlugin) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QGenericPlugin_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGenericPlugin) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QGenericPlugin_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGenericPlugin_Event
-func miqt_exec_callback_QGenericPlugin_Event(self *C.QGenericPlugin, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QGenericPlugin_event
+func miqt_exec_callback_QGenericPlugin_event(self *C.QGenericPlugin, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -174,18 +174,18 @@ func miqt_exec_callback_QGenericPlugin_Event(self *C.QGenericPlugin, cb C.intptr
 
 func (this *QGenericPlugin) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QGenericPlugin_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QGenericPlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QGenericPlugin) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QGenericPlugin_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGenericPlugin) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QGenericPlugin_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGenericPlugin_EventFilter
-func miqt_exec_callback_QGenericPlugin_EventFilter(self *C.QGenericPlugin, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QGenericPlugin_eventFilter
+func miqt_exec_callback_QGenericPlugin_eventFilter(self *C.QGenericPlugin, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -204,18 +204,18 @@ func miqt_exec_callback_QGenericPlugin_EventFilter(self *C.QGenericPlugin, cb C.
 
 func (this *QGenericPlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QGenericPlugin_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGenericPlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGenericPlugin) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QGenericPlugin_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGenericPlugin) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QGenericPlugin_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGenericPlugin_TimerEvent
-func miqt_exec_callback_QGenericPlugin_TimerEvent(self *C.QGenericPlugin, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QGenericPlugin_timerEvent
+func miqt_exec_callback_QGenericPlugin_timerEvent(self *C.QGenericPlugin, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -230,18 +230,18 @@ func miqt_exec_callback_QGenericPlugin_TimerEvent(self *C.QGenericPlugin, cb C.i
 
 func (this *QGenericPlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QGenericPlugin_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGenericPlugin_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGenericPlugin) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QGenericPlugin_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGenericPlugin) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QGenericPlugin_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGenericPlugin_ChildEvent
-func miqt_exec_callback_QGenericPlugin_ChildEvent(self *C.QGenericPlugin, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QGenericPlugin_childEvent
+func miqt_exec_callback_QGenericPlugin_childEvent(self *C.QGenericPlugin, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -256,18 +256,18 @@ func miqt_exec_callback_QGenericPlugin_ChildEvent(self *C.QGenericPlugin, cb C.i
 
 func (this *QGenericPlugin) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QGenericPlugin_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGenericPlugin_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGenericPlugin) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QGenericPlugin_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGenericPlugin) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QGenericPlugin_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGenericPlugin_CustomEvent
-func miqt_exec_callback_QGenericPlugin_CustomEvent(self *C.QGenericPlugin, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QGenericPlugin_customEvent
+func miqt_exec_callback_QGenericPlugin_customEvent(self *C.QGenericPlugin, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -282,18 +282,18 @@ func miqt_exec_callback_QGenericPlugin_CustomEvent(self *C.QGenericPlugin, cb C.
 
 func (this *QGenericPlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QGenericPlugin_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QGenericPlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGenericPlugin) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QGenericPlugin_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGenericPlugin) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QGenericPlugin_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGenericPlugin_ConnectNotify
-func miqt_exec_callback_QGenericPlugin_ConnectNotify(self *C.QGenericPlugin, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QGenericPlugin_connectNotify
+func miqt_exec_callback_QGenericPlugin_connectNotify(self *C.QGenericPlugin, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -308,18 +308,18 @@ func miqt_exec_callback_QGenericPlugin_ConnectNotify(self *C.QGenericPlugin, cb 
 
 func (this *QGenericPlugin) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QGenericPlugin_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QGenericPlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGenericPlugin) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QGenericPlugin_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGenericPlugin) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QGenericPlugin_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGenericPlugin_DisconnectNotify
-func miqt_exec_callback_QGenericPlugin_DisconnectNotify(self *C.QGenericPlugin, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QGenericPlugin_disconnectNotify
+func miqt_exec_callback_QGenericPlugin_disconnectNotify(self *C.QGenericPlugin, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -334,7 +334,7 @@ func miqt_exec_callback_QGenericPlugin_DisconnectNotify(self *C.QGenericPlugin, 
 
 // Delete this object from C++ memory.
 func (this *QGenericPlugin) Delete() {
-	C.QGenericPlugin_Delete(this.h)
+	C.QGenericPlugin_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -46,7 +46,7 @@ func UnsafeNewQFactoryInterface(h unsafe.Pointer) *QFactoryInterface {
 }
 
 func (this *QFactoryInterface) Keys() []string {
-	var _ma C.struct_miqt_array = C.QFactoryInterface_Keys(this.h)
+	var _ma C.struct_miqt_array = C.QFactoryInterface_keys(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -60,7 +60,7 @@ func (this *QFactoryInterface) Keys() []string {
 
 // Delete this object from C++ memory.
 func (this *QFactoryInterface) Delete() {
-	C.QFactoryInterface_Delete(this.h)
+	C.QFactoryInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

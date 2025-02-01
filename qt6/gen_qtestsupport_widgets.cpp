@@ -9,8 +9,8 @@
 extern "C" {
 #endif
 
-QTest__QTouchEventWidgetSequence* miqt_exec_callback_QTest__QTouchEventWidgetSequence_Stationary(QTest__QTouchEventWidgetSequence*, intptr_t, int);
-bool miqt_exec_callback_QTest__QTouchEventWidgetSequence_Commit(QTest__QTouchEventWidgetSequence*, intptr_t, bool);
+QTest__QTouchEventWidgetSequence* miqt_exec_callback_QTest__QTouchEventWidgetSequence_stationary(QTest__QTouchEventWidgetSequence*, intptr_t, int);
+bool miqt_exec_callback_QTest__QTouchEventWidgetSequence_commit(QTest__QTouchEventWidgetSequence*, intptr_t, bool);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -23,23 +23,23 @@ public:
 	virtual ~MiqtVirtualQTestQTouchEventWidgetSequence() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Stationary = 0;
+	intptr_t handle__stationary = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QTest::QTouchEventWidgetSequence& stationary(int touchId) override {
-		if (handle__Stationary == 0) {
+		if (handle__stationary == 0) {
 			return QTest__QTouchEventWidgetSequence::stationary(touchId);
 		}
 		
 		int sigval1 = touchId;
 
-		QTest__QTouchEventWidgetSequence* callback_return_value = miqt_exec_callback_QTest__QTouchEventWidgetSequence_Stationary(this, handle__Stationary, sigval1);
+		QTest__QTouchEventWidgetSequence* callback_return_value = miqt_exec_callback_QTest__QTouchEventWidgetSequence_stationary(this, handle__stationary, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QTest__QTouchEventWidgetSequence* virtualbase_Stationary(int touchId) {
+	QTest__QTouchEventWidgetSequence* virtualbase_stationary(int touchId) {
 
 		QTest::QTouchEventWidgetSequence& _ret = QTest__QTouchEventWidgetSequence::stationary(static_cast<int>(touchId));
 		// Cast returned reference into pointer
@@ -48,23 +48,23 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Commit = 0;
+	intptr_t handle__commit = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool commit(bool processEvents) override {
-		if (handle__Commit == 0) {
+		if (handle__commit == 0) {
 			return QTest__QTouchEventWidgetSequence::commit(processEvents);
 		}
 		
 		bool sigval1 = processEvents;
 
-		bool callback_return_value = miqt_exec_callback_QTest__QTouchEventWidgetSequence_Commit(this, handle__Commit, sigval1);
+		bool callback_return_value = miqt_exec_callback_QTest__QTouchEventWidgetSequence_commit(this, handle__commit, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Commit(bool processEvents) {
+	bool virtualbase_commit(bool processEvents) {
 
 		return QTest__QTouchEventWidgetSequence::commit(processEvents);
 
@@ -80,81 +80,81 @@ void QTest__QTouchEventWidgetSequence_virtbase(QTest__QTouchEventWidgetSequence*
 	*outptr_QTest__QTouchEventSequence = static_cast<QTest::QTouchEventSequence*>(src);
 }
 
-QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_Press(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt) {
+QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_press(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt) {
 	QTest::QTouchEventWidgetSequence& _ret = self->press(static_cast<int>(touchId), *pt);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_Move(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt) {
+QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_move(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt) {
 	QTest::QTouchEventWidgetSequence& _ret = self->move(static_cast<int>(touchId), *pt);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_Release(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt) {
+QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_release(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt) {
 	QTest::QTouchEventWidgetSequence& _ret = self->release(static_cast<int>(touchId), *pt);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_Stationary(QTest__QTouchEventWidgetSequence* self, int touchId) {
+QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_stationary(QTest__QTouchEventWidgetSequence* self, int touchId) {
 	QTest::QTouchEventWidgetSequence& _ret = self->stationary(static_cast<int>(touchId));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-bool QTest__QTouchEventWidgetSequence_Commit(QTest__QTouchEventWidgetSequence* self, bool processEvents) {
+bool QTest__QTouchEventWidgetSequence_commit(QTest__QTouchEventWidgetSequence* self, bool processEvents) {
 	return self->commit(processEvents);
 }
 
-QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_Press3(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt, QWidget* widget) {
+QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_press3(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt, QWidget* widget) {
 	QTest::QTouchEventWidgetSequence& _ret = self->press(static_cast<int>(touchId), *pt, widget);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_Move3(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt, QWidget* widget) {
+QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_move3(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt, QWidget* widget) {
 	QTest::QTouchEventWidgetSequence& _ret = self->move(static_cast<int>(touchId), *pt, widget);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_Release3(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt, QWidget* widget) {
+QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_release3(QTest__QTouchEventWidgetSequence* self, int touchId, QPoint* pt, QWidget* widget) {
 	QTest::QTouchEventWidgetSequence& _ret = self->release(static_cast<int>(touchId), *pt, widget);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-bool QTest__QTouchEventWidgetSequence_override_virtual_Stationary(void* self, intptr_t slot) {
+bool QTest__QTouchEventWidgetSequence_override_virtual_stationary(void* self, intptr_t slot) {
 	MiqtVirtualQTestQTouchEventWidgetSequence* self_cast = dynamic_cast<MiqtVirtualQTestQTouchEventWidgetSequence*>( (QTest__QTouchEventWidgetSequence*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Stationary = slot;
+	self_cast->handle__stationary = slot;
 	return true;
 }
 
-QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_virtualbase_Stationary(void* self, int touchId) {
-	return ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->virtualbase_Stationary(touchId);
+QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_virtualbase_stationary(void* self, int touchId) {
+	return ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->virtualbase_stationary(touchId);
 }
 
-bool QTest__QTouchEventWidgetSequence_override_virtual_Commit(void* self, intptr_t slot) {
+bool QTest__QTouchEventWidgetSequence_override_virtual_commit(void* self, intptr_t slot) {
 	MiqtVirtualQTestQTouchEventWidgetSequence* self_cast = dynamic_cast<MiqtVirtualQTestQTouchEventWidgetSequence*>( (QTest__QTouchEventWidgetSequence*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Commit = slot;
+	self_cast->handle__commit = slot;
 	return true;
 }
 
-bool QTest__QTouchEventWidgetSequence_virtualbase_Commit(void* self, bool processEvents) {
-	return ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->virtualbase_Commit(processEvents);
+bool QTest__QTouchEventWidgetSequence_virtualbase_commit(void* self, bool processEvents) {
+	return ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->virtualbase_commit(processEvents);
 }
 
-void QTest__QTouchEventWidgetSequence_Delete(QTest__QTouchEventWidgetSequence* self) {
+void QTest__QTouchEventWidgetSequence_delete(QTest__QTouchEventWidgetSequence* self) {
 	delete self;
 }
 

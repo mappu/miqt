@@ -21,29 +21,29 @@ QMessageAuthenticationCode* QMessageAuthenticationCode_new2(int method, struct m
 	return new QMessageAuthenticationCode(static_cast<QCryptographicHash::Algorithm>(method), key_QByteArray);
 }
 
-void QMessageAuthenticationCode_Reset(QMessageAuthenticationCode* self) {
+void QMessageAuthenticationCode_reset(QMessageAuthenticationCode* self) {
 	self->reset();
 }
 
-void QMessageAuthenticationCode_SetKey(QMessageAuthenticationCode* self, struct miqt_string key) {
+void QMessageAuthenticationCode_setKey(QMessageAuthenticationCode* self, struct miqt_string key) {
 	QByteArray key_QByteArray(key.data, key.len);
 	self->setKey(key_QByteArray);
 }
 
-void QMessageAuthenticationCode_AddData(QMessageAuthenticationCode* self, const char* data, ptrdiff_t length) {
+void QMessageAuthenticationCode_addData(QMessageAuthenticationCode* self, const char* data, ptrdiff_t length) {
 	self->addData(data, (qsizetype)(length));
 }
 
-void QMessageAuthenticationCode_AddDataWithData(QMessageAuthenticationCode* self, struct miqt_string data) {
+void QMessageAuthenticationCode_addDataWithData(QMessageAuthenticationCode* self, struct miqt_string data) {
 	QByteArray data_QByteArray(data.data, data.len);
 	self->addData(data_QByteArray);
 }
 
-bool QMessageAuthenticationCode_AddDataWithDevice(QMessageAuthenticationCode* self, QIODevice* device) {
+bool QMessageAuthenticationCode_addDataWithDevice(QMessageAuthenticationCode* self, QIODevice* device) {
 	return self->addData(device);
 }
 
-struct miqt_string QMessageAuthenticationCode_Result(const QMessageAuthenticationCode* self) {
+struct miqt_string QMessageAuthenticationCode_result(const QMessageAuthenticationCode* self) {
 	QByteArray _qb = self->result();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -52,7 +52,7 @@ struct miqt_string QMessageAuthenticationCode_Result(const QMessageAuthenticatio
 	return _ms;
 }
 
-struct miqt_string QMessageAuthenticationCode_Hash(struct miqt_string message, struct miqt_string key, int method) {
+struct miqt_string QMessageAuthenticationCode_hash(struct miqt_string message, struct miqt_string key, int method) {
 	QByteArray message_QByteArray(message.data, message.len);
 	QByteArray key_QByteArray(key.data, key.len);
 	QByteArray _qb = QMessageAuthenticationCode::hash(message_QByteArray, key_QByteArray, static_cast<QCryptographicHash::Algorithm>(method));
@@ -63,7 +63,7 @@ struct miqt_string QMessageAuthenticationCode_Hash(struct miqt_string message, s
 	return _ms;
 }
 
-void QMessageAuthenticationCode_Delete(QMessageAuthenticationCode* self) {
+void QMessageAuthenticationCode_delete(QMessageAuthenticationCode* self) {
 	delete self;
 }
 

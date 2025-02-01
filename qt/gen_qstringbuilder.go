@@ -47,7 +47,7 @@ func UnsafeNewQAbstractConcatenable(h unsafe.Pointer) *QAbstractConcatenable {
 
 // Delete this object from C++ memory.
 func (this *QAbstractConcatenable) Delete() {
-	C.QAbstractConcatenable_Delete(this.h)
+	C.QAbstractConcatenable_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

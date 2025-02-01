@@ -11,11 +11,11 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QUntypedPropertyData_Delete(QUntypedPropertyData* self) {
+void QUntypedPropertyData_delete(QUntypedPropertyData* self) {
 	delete self;
 }
 
-void QPropertyProxyBindingData_Delete(QPropertyProxyBindingData* self) {
+void QPropertyProxyBindingData_delete(QPropertyProxyBindingData* self) {
 	delete self;
 }
 

@@ -63,26 +63,26 @@ func NewQMenuBar2() *QMenuBar {
 }
 
 func (this *QMenuBar) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QMenuBar_MetaObject(this.h))
+	return newQMetaObject(C.QMenuBar_metaObject(this.h))
 }
 
 func (this *QMenuBar) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QMenuBar_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QMenuBar_metacast(this.h, param1_Cstring))
 }
 
 func QMenuBar_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMenuBar_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMenuBar_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMenuBar) AddMenu(menu *QMenu) *QAction {
-	return newQAction(C.QMenuBar_AddMenu(this.h, menu.cPointer()))
+	return newQAction(C.QMenuBar_addMenu(this.h, menu.cPointer()))
 }
 
 func (this *QMenuBar) AddMenuWithTitle(title string) *QMenu {
@@ -90,7 +90,7 @@ func (this *QMenuBar) AddMenuWithTitle(title string) *QMenu {
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	return newQMenu(C.QMenuBar_AddMenuWithTitle(this.h, title_ms))
+	return newQMenu(C.QMenuBar_addMenuWithTitle(this.h, title_ms))
 }
 
 func (this *QMenuBar) AddMenu2(icon *QIcon, title string) *QMenu {
@@ -98,96 +98,96 @@ func (this *QMenuBar) AddMenu2(icon *QIcon, title string) *QMenu {
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	return newQMenu(C.QMenuBar_AddMenu2(this.h, icon.cPointer(), title_ms))
+	return newQMenu(C.QMenuBar_addMenu2(this.h, icon.cPointer(), title_ms))
 }
 
 func (this *QMenuBar) AddSeparator() *QAction {
-	return newQAction(C.QMenuBar_AddSeparator(this.h))
+	return newQAction(C.QMenuBar_addSeparator(this.h))
 }
 
 func (this *QMenuBar) InsertSeparator(before *QAction) *QAction {
-	return newQAction(C.QMenuBar_InsertSeparator(this.h, before.cPointer()))
+	return newQAction(C.QMenuBar_insertSeparator(this.h, before.cPointer()))
 }
 
 func (this *QMenuBar) InsertMenu(before *QAction, menu *QMenu) *QAction {
-	return newQAction(C.QMenuBar_InsertMenu(this.h, before.cPointer(), menu.cPointer()))
+	return newQAction(C.QMenuBar_insertMenu(this.h, before.cPointer(), menu.cPointer()))
 }
 
 func (this *QMenuBar) Clear() {
-	C.QMenuBar_Clear(this.h)
+	C.QMenuBar_clear(this.h)
 }
 
 func (this *QMenuBar) ActiveAction() *QAction {
-	return newQAction(C.QMenuBar_ActiveAction(this.h))
+	return newQAction(C.QMenuBar_activeAction(this.h))
 }
 
 func (this *QMenuBar) SetActiveAction(action *QAction) {
-	C.QMenuBar_SetActiveAction(this.h, action.cPointer())
+	C.QMenuBar_setActiveAction(this.h, action.cPointer())
 }
 
 func (this *QMenuBar) SetDefaultUp(defaultUp bool) {
-	C.QMenuBar_SetDefaultUp(this.h, (C.bool)(defaultUp))
+	C.QMenuBar_setDefaultUp(this.h, (C.bool)(defaultUp))
 }
 
 func (this *QMenuBar) IsDefaultUp() bool {
-	return (bool)(C.QMenuBar_IsDefaultUp(this.h))
+	return (bool)(C.QMenuBar_isDefaultUp(this.h))
 }
 
 func (this *QMenuBar) SizeHint() *QSize {
-	_goptr := newQSize(C.QMenuBar_SizeHint(this.h))
+	_goptr := newQSize(C.QMenuBar_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMenuBar) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QMenuBar_MinimumSizeHint(this.h))
+	_goptr := newQSize(C.QMenuBar_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMenuBar) HeightForWidth(param1 int) int {
-	return (int)(C.QMenuBar_HeightForWidth(this.h, (C.int)(param1)))
+	return (int)(C.QMenuBar_heightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QMenuBar) ActionGeometry(param1 *QAction) *QRect {
-	_goptr := newQRect(C.QMenuBar_ActionGeometry(this.h, param1.cPointer()))
+	_goptr := newQRect(C.QMenuBar_actionGeometry(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMenuBar) ActionAt(param1 *QPoint) *QAction {
-	return newQAction(C.QMenuBar_ActionAt(this.h, param1.cPointer()))
+	return newQAction(C.QMenuBar_actionAt(this.h, param1.cPointer()))
 }
 
 func (this *QMenuBar) SetCornerWidget(w *QWidget) {
-	C.QMenuBar_SetCornerWidget(this.h, w.cPointer())
+	C.QMenuBar_setCornerWidget(this.h, w.cPointer())
 }
 
 func (this *QMenuBar) CornerWidget() *QWidget {
-	return newQWidget(C.QMenuBar_CornerWidget(this.h))
+	return newQWidget(C.QMenuBar_cornerWidget(this.h))
 }
 
 func (this *QMenuBar) IsNativeMenuBar() bool {
-	return (bool)(C.QMenuBar_IsNativeMenuBar(this.h))
+	return (bool)(C.QMenuBar_isNativeMenuBar(this.h))
 }
 
 func (this *QMenuBar) SetNativeMenuBar(nativeMenuBar bool) {
-	C.QMenuBar_SetNativeMenuBar(this.h, (C.bool)(nativeMenuBar))
+	C.QMenuBar_setNativeMenuBar(this.h, (C.bool)(nativeMenuBar))
 }
 
 func (this *QMenuBar) SetVisible(visible bool) {
-	C.QMenuBar_SetVisible(this.h, (C.bool)(visible))
+	C.QMenuBar_setVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QMenuBar) Triggered(action *QAction) {
-	C.QMenuBar_Triggered(this.h, action.cPointer())
+	C.QMenuBar_triggered(this.h, action.cPointer())
 }
 func (this *QMenuBar) OnTriggered(slot func(action *QAction)) {
-	C.QMenuBar_connect_Triggered(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMenuBar_connect_triggered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMenuBar_Triggered
-func miqt_exec_callback_QMenuBar_Triggered(cb C.intptr_t, action *C.QAction) {
+//export miqt_exec_callback_QMenuBar_triggered
+func miqt_exec_callback_QMenuBar_triggered(cb C.intptr_t, action *C.QAction) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(action *QAction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -200,14 +200,14 @@ func miqt_exec_callback_QMenuBar_Triggered(cb C.intptr_t, action *C.QAction) {
 }
 
 func (this *QMenuBar) Hovered(action *QAction) {
-	C.QMenuBar_Hovered(this.h, action.cPointer())
+	C.QMenuBar_hovered(this.h, action.cPointer())
 }
 func (this *QMenuBar) OnHovered(slot func(action *QAction)) {
-	C.QMenuBar_connect_Hovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMenuBar_connect_hovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMenuBar_Hovered
-func miqt_exec_callback_QMenuBar_Hovered(cb C.intptr_t, action *C.QAction) {
+//export miqt_exec_callback_QMenuBar_hovered
+func miqt_exec_callback_QMenuBar_hovered(cb C.intptr_t, action *C.QAction) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(action *QAction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -224,7 +224,7 @@ func QMenuBar_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMenuBar_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMenuBar_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -235,36 +235,36 @@ func QMenuBar_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMenuBar_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMenuBar_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMenuBar) SetCornerWidget2(w *QWidget, corner Corner) {
-	C.QMenuBar_SetCornerWidget2(this.h, w.cPointer(), (C.int)(corner))
+	C.QMenuBar_setCornerWidget2(this.h, w.cPointer(), (C.int)(corner))
 }
 
 func (this *QMenuBar) CornerWidget1(corner Corner) *QWidget {
-	return newQWidget(C.QMenuBar_CornerWidget1(this.h, (C.int)(corner)))
+	return newQWidget(C.QMenuBar_cornerWidget1(this.h, (C.int)(corner)))
 }
 
 func (this *QMenuBar) callVirtualBase_SizeHint() *QSize {
 
-	_goptr := newQSize(C.QMenuBar_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QMenuBar_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QMenuBar) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QMenuBar_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnsizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QMenuBar_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_SizeHint
-func miqt_exec_callback_QMenuBar_SizeHint(self *C.QMenuBar, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QMenuBar_sizeHint
+func miqt_exec_callback_QMenuBar_sizeHint(self *C.QMenuBar, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -278,20 +278,20 @@ func miqt_exec_callback_QMenuBar_SizeHint(self *C.QMenuBar, cb C.intptr_t) *C.QS
 
 func (this *QMenuBar) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_goptr := newQSize(C.QMenuBar_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QMenuBar_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QMenuBar) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QMenuBar_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QMenuBar_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_MinimumSizeHint
-func miqt_exec_callback_QMenuBar_MinimumSizeHint(self *C.QMenuBar, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QMenuBar_minimumSizeHint
+func miqt_exec_callback_QMenuBar_minimumSizeHint(self *C.QMenuBar, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -305,18 +305,18 @@ func miqt_exec_callback_QMenuBar_MinimumSizeHint(self *C.QMenuBar, cb C.intptr_t
 
 func (this *QMenuBar) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QMenuBar_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QMenuBar_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QMenuBar) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QMenuBar_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QMenuBar_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_HeightForWidth
-func miqt_exec_callback_QMenuBar_HeightForWidth(self *C.QMenuBar, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QMenuBar_heightForWidth
+func miqt_exec_callback_QMenuBar_heightForWidth(self *C.QMenuBar, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -333,18 +333,18 @@ func miqt_exec_callback_QMenuBar_HeightForWidth(self *C.QMenuBar, cb C.intptr_t,
 
 func (this *QMenuBar) callVirtualBase_SetVisible(visible bool) {
 
-	C.QMenuBar_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QMenuBar_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QMenuBar) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QMenuBar_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QMenuBar_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_SetVisible
-func miqt_exec_callback_QMenuBar_SetVisible(self *C.QMenuBar, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QMenuBar_setVisible
+func miqt_exec_callback_QMenuBar_setVisible(self *C.QMenuBar, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -359,18 +359,18 @@ func miqt_exec_callback_QMenuBar_SetVisible(self *C.QMenuBar, cb C.intptr_t, vis
 
 func (this *QMenuBar) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
-	C.QMenuBar_virtualbase_ChangeEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QMenuBar_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QMenuBar) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
-	ok := C.QMenuBar_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnchangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	ok := C.QMenuBar_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_ChangeEvent
-func miqt_exec_callback_QMenuBar_ChangeEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QEvent) {
+//export miqt_exec_callback_QMenuBar_changeEvent
+func miqt_exec_callback_QMenuBar_changeEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent), param1 *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -385,18 +385,18 @@ func miqt_exec_callback_QMenuBar_ChangeEvent(self *C.QMenuBar, cb C.intptr_t, pa
 
 func (this *QMenuBar) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
 
-	C.QMenuBar_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QMenuBar_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QMenuBar) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
-	ok := C.QMenuBar_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnkeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
+	ok := C.QMenuBar_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_KeyPressEvent
-func miqt_exec_callback_QMenuBar_KeyPressEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QKeyEvent) {
+//export miqt_exec_callback_QMenuBar_keyPressEvent
+func miqt_exec_callback_QMenuBar_keyPressEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QKeyEvent), param1 *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -411,18 +411,18 @@ func miqt_exec_callback_QMenuBar_KeyPressEvent(self *C.QMenuBar, cb C.intptr_t, 
 
 func (this *QMenuBar) callVirtualBase_MouseReleaseEvent(param1 *QMouseEvent) {
 
-	C.QMenuBar_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QMenuBar_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QMenuBar) OnMouseReleaseEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	ok := C.QMenuBar_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnmouseReleaseEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	ok := C.QMenuBar_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_MouseReleaseEvent
-func miqt_exec_callback_QMenuBar_MouseReleaseEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QMouseEvent) {
+//export miqt_exec_callback_QMenuBar_mouseReleaseEvent
+func miqt_exec_callback_QMenuBar_mouseReleaseEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -437,18 +437,18 @@ func miqt_exec_callback_QMenuBar_MouseReleaseEvent(self *C.QMenuBar, cb C.intptr
 
 func (this *QMenuBar) callVirtualBase_MousePressEvent(param1 *QMouseEvent) {
 
-	C.QMenuBar_virtualbase_MousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QMenuBar_virtualbase_mousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QMenuBar) OnMousePressEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	ok := C.QMenuBar_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnmousePressEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	ok := C.QMenuBar_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_MousePressEvent
-func miqt_exec_callback_QMenuBar_MousePressEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QMouseEvent) {
+//export miqt_exec_callback_QMenuBar_mousePressEvent
+func miqt_exec_callback_QMenuBar_mousePressEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -463,18 +463,18 @@ func miqt_exec_callback_QMenuBar_MousePressEvent(self *C.QMenuBar, cb C.intptr_t
 
 func (this *QMenuBar) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
 
-	C.QMenuBar_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QMenuBar_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QMenuBar) OnMouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	ok := C.QMenuBar_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnmouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	ok := C.QMenuBar_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_MouseMoveEvent
-func miqt_exec_callback_QMenuBar_MouseMoveEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QMouseEvent) {
+//export miqt_exec_callback_QMenuBar_mouseMoveEvent
+func miqt_exec_callback_QMenuBar_mouseMoveEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -489,18 +489,18 @@ func miqt_exec_callback_QMenuBar_MouseMoveEvent(self *C.QMenuBar, cb C.intptr_t,
 
 func (this *QMenuBar) callVirtualBase_LeaveEvent(param1 *QEvent) {
 
-	C.QMenuBar_virtualbase_LeaveEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QMenuBar_virtualbase_leaveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QMenuBar) OnLeaveEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
-	ok := C.QMenuBar_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnleaveEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	ok := C.QMenuBar_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_LeaveEvent
-func miqt_exec_callback_QMenuBar_LeaveEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QEvent) {
+//export miqt_exec_callback_QMenuBar_leaveEvent
+func miqt_exec_callback_QMenuBar_leaveEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent), param1 *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -515,18 +515,18 @@ func miqt_exec_callback_QMenuBar_LeaveEvent(self *C.QMenuBar, cb C.intptr_t, par
 
 func (this *QMenuBar) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
-	C.QMenuBar_virtualbase_PaintEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QMenuBar_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QMenuBar) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
-	ok := C.QMenuBar_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnpaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	ok := C.QMenuBar_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_PaintEvent
-func miqt_exec_callback_QMenuBar_PaintEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QPaintEvent) {
+//export miqt_exec_callback_QMenuBar_paintEvent
+func miqt_exec_callback_QMenuBar_paintEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QPaintEvent), param1 *QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -541,18 +541,18 @@ func miqt_exec_callback_QMenuBar_PaintEvent(self *C.QMenuBar, cb C.intptr_t, par
 
 func (this *QMenuBar) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
 
-	C.QMenuBar_virtualbase_ResizeEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QMenuBar_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QMenuBar) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
-	ok := C.QMenuBar_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnresizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
+	ok := C.QMenuBar_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_ResizeEvent
-func miqt_exec_callback_QMenuBar_ResizeEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QResizeEvent) {
+//export miqt_exec_callback_QMenuBar_resizeEvent
+func miqt_exec_callback_QMenuBar_resizeEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QResizeEvent), param1 *QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -567,18 +567,18 @@ func miqt_exec_callback_QMenuBar_ResizeEvent(self *C.QMenuBar, cb C.intptr_t, pa
 
 func (this *QMenuBar) callVirtualBase_ActionEvent(param1 *QActionEvent) {
 
-	C.QMenuBar_virtualbase_ActionEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QMenuBar_virtualbase_actionEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QMenuBar) OnActionEvent(slot func(super func(param1 *QActionEvent), param1 *QActionEvent)) {
-	ok := C.QMenuBar_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnactionEvent(slot func(super func(param1 *QActionEvent), param1 *QActionEvent)) {
+	ok := C.QMenuBar_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_ActionEvent
-func miqt_exec_callback_QMenuBar_ActionEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QActionEvent) {
+//export miqt_exec_callback_QMenuBar_actionEvent
+func miqt_exec_callback_QMenuBar_actionEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QActionEvent), param1 *QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -593,18 +593,18 @@ func miqt_exec_callback_QMenuBar_ActionEvent(self *C.QMenuBar, cb C.intptr_t, pa
 
 func (this *QMenuBar) callVirtualBase_FocusOutEvent(param1 *QFocusEvent) {
 
-	C.QMenuBar_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QMenuBar_virtualbase_focusOutEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QMenuBar) OnFocusOutEvent(slot func(super func(param1 *QFocusEvent), param1 *QFocusEvent)) {
-	ok := C.QMenuBar_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnfocusOutEvent(slot func(super func(param1 *QFocusEvent), param1 *QFocusEvent)) {
+	ok := C.QMenuBar_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_FocusOutEvent
-func miqt_exec_callback_QMenuBar_FocusOutEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QFocusEvent) {
+//export miqt_exec_callback_QMenuBar_focusOutEvent
+func miqt_exec_callback_QMenuBar_focusOutEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QFocusEvent), param1 *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -619,18 +619,18 @@ func miqt_exec_callback_QMenuBar_FocusOutEvent(self *C.QMenuBar, cb C.intptr_t, 
 
 func (this *QMenuBar) callVirtualBase_FocusInEvent(param1 *QFocusEvent) {
 
-	C.QMenuBar_virtualbase_FocusInEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QMenuBar_virtualbase_focusInEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QMenuBar) OnFocusInEvent(slot func(super func(param1 *QFocusEvent), param1 *QFocusEvent)) {
-	ok := C.QMenuBar_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnfocusInEvent(slot func(super func(param1 *QFocusEvent), param1 *QFocusEvent)) {
+	ok := C.QMenuBar_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_FocusInEvent
-func miqt_exec_callback_QMenuBar_FocusInEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QFocusEvent) {
+//export miqt_exec_callback_QMenuBar_focusInEvent
+func miqt_exec_callback_QMenuBar_focusInEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QFocusEvent), param1 *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -645,18 +645,18 @@ func miqt_exec_callback_QMenuBar_FocusInEvent(self *C.QMenuBar, cb C.intptr_t, p
 
 func (this *QMenuBar) callVirtualBase_TimerEvent(param1 *QTimerEvent) {
 
-	C.QMenuBar_virtualbase_TimerEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QMenuBar_virtualbase_timerEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QMenuBar) OnTimerEvent(slot func(super func(param1 *QTimerEvent), param1 *QTimerEvent)) {
-	ok := C.QMenuBar_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OntimerEvent(slot func(super func(param1 *QTimerEvent), param1 *QTimerEvent)) {
+	ok := C.QMenuBar_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_TimerEvent
-func miqt_exec_callback_QMenuBar_TimerEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QTimerEvent) {
+//export miqt_exec_callback_QMenuBar_timerEvent
+func miqt_exec_callback_QMenuBar_timerEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QTimerEvent), param1 *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -671,18 +671,18 @@ func miqt_exec_callback_QMenuBar_TimerEvent(self *C.QMenuBar, cb C.intptr_t, par
 
 func (this *QMenuBar) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
 
-	return (bool)(C.QMenuBar_virtualbase_EventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
+	return (bool)(C.QMenuBar_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
 }
-func (this *QMenuBar) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
-	ok := C.QMenuBar_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OneventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	ok := C.QMenuBar_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_EventFilter
-func miqt_exec_callback_QMenuBar_EventFilter(self *C.QMenuBar, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+//export miqt_exec_callback_QMenuBar_eventFilter
+func miqt_exec_callback_QMenuBar_eventFilter(self *C.QMenuBar, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -701,18 +701,18 @@ func miqt_exec_callback_QMenuBar_EventFilter(self *C.QMenuBar, cb C.intptr_t, pa
 
 func (this *QMenuBar) callVirtualBase_Event(param1 *QEvent) bool {
 
-	return (bool)(C.QMenuBar_virtualbase_Event(unsafe.Pointer(this.h), param1.cPointer()))
+	return (bool)(C.QMenuBar_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
 }
-func (this *QMenuBar) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
-	ok := C.QMenuBar_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) Onevent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	ok := C.QMenuBar_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_Event
-func miqt_exec_callback_QMenuBar_Event(self *C.QMenuBar, cb C.intptr_t, param1 *C.QEvent) C.bool {
+//export miqt_exec_callback_QMenuBar_event
+func miqt_exec_callback_QMenuBar_event(self *C.QMenuBar, cb C.intptr_t, param1 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent) bool, param1 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -729,18 +729,18 @@ func miqt_exec_callback_QMenuBar_Event(self *C.QMenuBar, cb C.intptr_t, param1 *
 
 func (this *QMenuBar) callVirtualBase_InitStyleOption(option *QStyleOptionMenuItem, action *QAction) {
 
-	C.QMenuBar_virtualbase_InitStyleOption(unsafe.Pointer(this.h), option.cPointer(), action.cPointer())
+	C.QMenuBar_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer(), action.cPointer())
 
 }
-func (this *QMenuBar) OnInitStyleOption(slot func(super func(option *QStyleOptionMenuItem, action *QAction), option *QStyleOptionMenuItem, action *QAction)) {
-	ok := C.QMenuBar_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OninitStyleOption(slot func(super func(option *QStyleOptionMenuItem, action *QAction), option *QStyleOptionMenuItem, action *QAction)) {
+	ok := C.QMenuBar_override_virtual_initStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_InitStyleOption
-func miqt_exec_callback_QMenuBar_InitStyleOption(self *C.QMenuBar, cb C.intptr_t, option *C.QStyleOptionMenuItem, action *C.QAction) {
+//export miqt_exec_callback_QMenuBar_initStyleOption
+func miqt_exec_callback_QMenuBar_initStyleOption(self *C.QMenuBar, cb C.intptr_t, option *C.QStyleOptionMenuItem, action *C.QAction) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option *QStyleOptionMenuItem, action *QAction), option *QStyleOptionMenuItem, action *QAction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -757,18 +757,18 @@ func miqt_exec_callback_QMenuBar_InitStyleOption(self *C.QMenuBar, cb C.intptr_t
 
 func (this *QMenuBar) callVirtualBase_DevType() int {
 
-	return (int)(C.QMenuBar_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QMenuBar_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QMenuBar) OnDevType(slot func(super func() int) int) {
-	ok := C.QMenuBar_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OndevType(slot func(super func() int) int) {
+	ok := C.QMenuBar_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_DevType
-func miqt_exec_callback_QMenuBar_DevType(self *C.QMenuBar, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QMenuBar_devType
+func miqt_exec_callback_QMenuBar_devType(self *C.QMenuBar, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -782,18 +782,18 @@ func miqt_exec_callback_QMenuBar_DevType(self *C.QMenuBar, cb C.intptr_t) C.int 
 
 func (this *QMenuBar) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QMenuBar_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QMenuBar_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QMenuBar) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QMenuBar_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QMenuBar_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_HasHeightForWidth
-func miqt_exec_callback_QMenuBar_HasHeightForWidth(self *C.QMenuBar, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QMenuBar_hasHeightForWidth
+func miqt_exec_callback_QMenuBar_hasHeightForWidth(self *C.QMenuBar, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -807,18 +807,18 @@ func miqt_exec_callback_QMenuBar_HasHeightForWidth(self *C.QMenuBar, cb C.intptr
 
 func (this *QMenuBar) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return newQPaintEngine(C.QMenuBar_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+	return newQPaintEngine(C.QMenuBar_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QMenuBar) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	ok := C.QMenuBar_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QMenuBar_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_PaintEngine
-func miqt_exec_callback_QMenuBar_PaintEngine(self *C.QMenuBar, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QMenuBar_paintEngine
+func miqt_exec_callback_QMenuBar_paintEngine(self *C.QMenuBar, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -832,18 +832,18 @@ func miqt_exec_callback_QMenuBar_PaintEngine(self *C.QMenuBar, cb C.intptr_t) *C
 
 func (this *QMenuBar) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
 
-	C.QMenuBar_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMenuBar_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMenuBar) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QMenuBar_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QMenuBar_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_MouseDoubleClickEvent
-func miqt_exec_callback_QMenuBar_MouseDoubleClickEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QMenuBar_mouseDoubleClickEvent
+func miqt_exec_callback_QMenuBar_mouseDoubleClickEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -858,18 +858,18 @@ func miqt_exec_callback_QMenuBar_MouseDoubleClickEvent(self *C.QMenuBar, cb C.in
 
 func (this *QMenuBar) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
-	C.QMenuBar_virtualbase_WheelEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMenuBar_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMenuBar) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
-	ok := C.QMenuBar_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnwheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+	ok := C.QMenuBar_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_WheelEvent
-func miqt_exec_callback_QMenuBar_WheelEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QWheelEvent) {
+//export miqt_exec_callback_QMenuBar_wheelEvent
+func miqt_exec_callback_QMenuBar_wheelEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QWheelEvent), event *QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -884,18 +884,18 @@ func miqt_exec_callback_QMenuBar_WheelEvent(self *C.QMenuBar, cb C.intptr_t, eve
 
 func (this *QMenuBar) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
-	C.QMenuBar_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMenuBar_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMenuBar) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QMenuBar_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QMenuBar_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_KeyReleaseEvent
-func miqt_exec_callback_QMenuBar_KeyReleaseEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QMenuBar_keyReleaseEvent
+func miqt_exec_callback_QMenuBar_keyReleaseEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -910,18 +910,18 @@ func miqt_exec_callback_QMenuBar_KeyReleaseEvent(self *C.QMenuBar, cb C.intptr_t
 
 func (this *QMenuBar) callVirtualBase_EnterEvent(event *QEnterEvent) {
 
-	C.QMenuBar_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMenuBar_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMenuBar) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
-	ok := C.QMenuBar_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnenterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+	ok := C.QMenuBar_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_EnterEvent
-func miqt_exec_callback_QMenuBar_EnterEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QEnterEvent) {
+//export miqt_exec_callback_QMenuBar_enterEvent
+func miqt_exec_callback_QMenuBar_enterEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEnterEvent), event *QEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -936,18 +936,18 @@ func miqt_exec_callback_QMenuBar_EnterEvent(self *C.QMenuBar, cb C.intptr_t, eve
 
 func (this *QMenuBar) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
-	C.QMenuBar_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMenuBar_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMenuBar) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
-	ok := C.QMenuBar_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QMenuBar_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_MoveEvent
-func miqt_exec_callback_QMenuBar_MoveEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QMenuBar_moveEvent
+func miqt_exec_callback_QMenuBar_moveEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -962,18 +962,18 @@ func miqt_exec_callback_QMenuBar_MoveEvent(self *C.QMenuBar, cb C.intptr_t, even
 
 func (this *QMenuBar) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
-	C.QMenuBar_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMenuBar_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMenuBar) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
-	ok := C.QMenuBar_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QMenuBar_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_CloseEvent
-func miqt_exec_callback_QMenuBar_CloseEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QMenuBar_closeEvent
+func miqt_exec_callback_QMenuBar_closeEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -988,18 +988,18 @@ func miqt_exec_callback_QMenuBar_CloseEvent(self *C.QMenuBar, cb C.intptr_t, eve
 
 func (this *QMenuBar) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
 
-	C.QMenuBar_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMenuBar_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMenuBar) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
-	ok := C.QMenuBar_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OncontextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+	ok := C.QMenuBar_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_ContextMenuEvent
-func miqt_exec_callback_QMenuBar_ContextMenuEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QContextMenuEvent) {
+//export miqt_exec_callback_QMenuBar_contextMenuEvent
+func miqt_exec_callback_QMenuBar_contextMenuEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QContextMenuEvent), event *QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1014,18 +1014,18 @@ func miqt_exec_callback_QMenuBar_ContextMenuEvent(self *C.QMenuBar, cb C.intptr_
 
 func (this *QMenuBar) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
-	C.QMenuBar_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMenuBar_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMenuBar) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
-	ok := C.QMenuBar_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QMenuBar_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_TabletEvent
-func miqt_exec_callback_QMenuBar_TabletEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QMenuBar_tabletEvent
+func miqt_exec_callback_QMenuBar_tabletEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1040,18 +1040,18 @@ func miqt_exec_callback_QMenuBar_TabletEvent(self *C.QMenuBar, cb C.intptr_t, ev
 
 func (this *QMenuBar) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
 
-	C.QMenuBar_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMenuBar_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMenuBar) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
-	ok := C.QMenuBar_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	ok := C.QMenuBar_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_DragEnterEvent
-func miqt_exec_callback_QMenuBar_DragEnterEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QDragEnterEvent) {
+//export miqt_exec_callback_QMenuBar_dragEnterEvent
+func miqt_exec_callback_QMenuBar_dragEnterEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragEnterEvent), event *QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1066,18 +1066,18 @@ func miqt_exec_callback_QMenuBar_DragEnterEvent(self *C.QMenuBar, cb C.intptr_t,
 
 func (this *QMenuBar) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 
-	C.QMenuBar_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMenuBar_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMenuBar) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
-	ok := C.QMenuBar_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	ok := C.QMenuBar_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_DragMoveEvent
-func miqt_exec_callback_QMenuBar_DragMoveEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QDragMoveEvent) {
+//export miqt_exec_callback_QMenuBar_dragMoveEvent
+func miqt_exec_callback_QMenuBar_dragMoveEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragMoveEvent), event *QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1092,18 +1092,18 @@ func miqt_exec_callback_QMenuBar_DragMoveEvent(self *C.QMenuBar, cb C.intptr_t, 
 
 func (this *QMenuBar) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
 
-	C.QMenuBar_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMenuBar_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMenuBar) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
-	ok := C.QMenuBar_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	ok := C.QMenuBar_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_DragLeaveEvent
-func miqt_exec_callback_QMenuBar_DragLeaveEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QMenuBar_dragLeaveEvent
+func miqt_exec_callback_QMenuBar_dragLeaveEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1118,18 +1118,18 @@ func miqt_exec_callback_QMenuBar_DragLeaveEvent(self *C.QMenuBar, cb C.intptr_t,
 
 func (this *QMenuBar) callVirtualBase_DropEvent(event *QDropEvent) {
 
-	C.QMenuBar_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMenuBar_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMenuBar) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
-	ok := C.QMenuBar_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	ok := C.QMenuBar_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_DropEvent
-func miqt_exec_callback_QMenuBar_DropEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QDropEvent) {
+//export miqt_exec_callback_QMenuBar_dropEvent
+func miqt_exec_callback_QMenuBar_dropEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1144,18 +1144,18 @@ func miqt_exec_callback_QMenuBar_DropEvent(self *C.QMenuBar, cb C.intptr_t, even
 
 func (this *QMenuBar) callVirtualBase_ShowEvent(event *QShowEvent) {
 
-	C.QMenuBar_virtualbase_ShowEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMenuBar_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMenuBar) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
-	ok := C.QMenuBar_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnshowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	ok := C.QMenuBar_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_ShowEvent
-func miqt_exec_callback_QMenuBar_ShowEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QShowEvent) {
+//export miqt_exec_callback_QMenuBar_showEvent
+func miqt_exec_callback_QMenuBar_showEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QShowEvent), event *QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1170,18 +1170,18 @@ func miqt_exec_callback_QMenuBar_ShowEvent(self *C.QMenuBar, cb C.intptr_t, even
 
 func (this *QMenuBar) callVirtualBase_HideEvent(event *QHideEvent) {
 
-	C.QMenuBar_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMenuBar_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMenuBar) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
-	ok := C.QMenuBar_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QMenuBar_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_HideEvent
-func miqt_exec_callback_QMenuBar_HideEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_QMenuBar_hideEvent
+func miqt_exec_callback_QMenuBar_hideEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1203,18 +1203,18 @@ func (this *QMenuBar) callVirtualBase_NativeEvent(eventType []byte, message unsa
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QMenuBar_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
+	return (bool)(C.QMenuBar_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
 
 }
-func (this *QMenuBar) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
-	ok := C.QMenuBar_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+	ok := C.QMenuBar_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_NativeEvent
-func miqt_exec_callback_QMenuBar_NativeEvent(self *C.QMenuBar, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
+//export miqt_exec_callback_QMenuBar_nativeEvent
+func miqt_exec_callback_QMenuBar_nativeEvent(self *C.QMenuBar, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1237,18 +1237,18 @@ func miqt_exec_callback_QMenuBar_NativeEvent(self *C.QMenuBar, cb C.intptr_t, ev
 
 func (this *QMenuBar) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QMenuBar_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QMenuBar_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QMenuBar) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QMenuBar_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QMenuBar_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_Metric
-func miqt_exec_callback_QMenuBar_Metric(self *C.QMenuBar, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QMenuBar_metric
+func miqt_exec_callback_QMenuBar_metric(self *C.QMenuBar, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1265,18 +1265,18 @@ func miqt_exec_callback_QMenuBar_Metric(self *C.QMenuBar, cb C.intptr_t, param1 
 
 func (this *QMenuBar) callVirtualBase_InitPainter(painter *QPainter) {
 
-	C.QMenuBar_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+	C.QMenuBar_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QMenuBar) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	ok := C.QMenuBar_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QMenuBar_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_InitPainter
-func miqt_exec_callback_QMenuBar_InitPainter(self *C.QMenuBar, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QMenuBar_initPainter
+func miqt_exec_callback_QMenuBar_initPainter(self *C.QMenuBar, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1291,18 +1291,18 @@ func miqt_exec_callback_QMenuBar_InitPainter(self *C.QMenuBar, cb C.intptr_t, pa
 
 func (this *QMenuBar) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return newQPaintDevice(C.QMenuBar_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+	return newQPaintDevice(C.QMenuBar_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QMenuBar) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	ok := C.QMenuBar_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QMenuBar_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_Redirected
-func miqt_exec_callback_QMenuBar_Redirected(self *C.QMenuBar, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QMenuBar_redirected
+func miqt_exec_callback_QMenuBar_redirected(self *C.QMenuBar, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1319,18 +1319,18 @@ func miqt_exec_callback_QMenuBar_Redirected(self *C.QMenuBar, cb C.intptr_t, off
 
 func (this *QMenuBar) callVirtualBase_SharedPainter() *QPainter {
 
-	return newQPainter(C.QMenuBar_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+	return newQPainter(C.QMenuBar_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QMenuBar) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	ok := C.QMenuBar_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QMenuBar_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_SharedPainter
-func miqt_exec_callback_QMenuBar_SharedPainter(self *C.QMenuBar, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QMenuBar_sharedPainter
+func miqt_exec_callback_QMenuBar_sharedPainter(self *C.QMenuBar, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1344,18 +1344,18 @@ func miqt_exec_callback_QMenuBar_SharedPainter(self *C.QMenuBar, cb C.intptr_t) 
 
 func (this *QMenuBar) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
 
-	C.QMenuBar_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QMenuBar_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QMenuBar) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
-	ok := C.QMenuBar_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QMenuBar_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_InputMethodEvent
-func miqt_exec_callback_QMenuBar_InputMethodEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QMenuBar_inputMethodEvent
+func miqt_exec_callback_QMenuBar_inputMethodEvent(self *C.QMenuBar, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1370,20 +1370,20 @@ func miqt_exec_callback_QMenuBar_InputMethodEvent(self *C.QMenuBar, cb C.intptr_
 
 func (this *QMenuBar) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_goptr := newQVariant(C.QMenuBar_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
+	_goptr := newQVariant(C.QMenuBar_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QMenuBar) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
-	ok := C.QMenuBar_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	ok := C.QMenuBar_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_InputMethodQuery
-func miqt_exec_callback_QMenuBar_InputMethodQuery(self *C.QMenuBar, cb C.intptr_t, param1 C.int) *C.QVariant {
+//export miqt_exec_callback_QMenuBar_inputMethodQuery
+func miqt_exec_callback_QMenuBar_inputMethodQuery(self *C.QMenuBar, cb C.intptr_t, param1 C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1400,18 +1400,18 @@ func miqt_exec_callback_QMenuBar_InputMethodQuery(self *C.QMenuBar, cb C.intptr_
 
 func (this *QMenuBar) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QMenuBar_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QMenuBar_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QMenuBar) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QMenuBar_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QMenuBar_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_FocusNextPrevChild
-func miqt_exec_callback_QMenuBar_FocusNextPrevChild(self *C.QMenuBar, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QMenuBar_focusNextPrevChild
+func miqt_exec_callback_QMenuBar_focusNextPrevChild(self *C.QMenuBar, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1428,18 +1428,18 @@ func miqt_exec_callback_QMenuBar_FocusNextPrevChild(self *C.QMenuBar, cb C.intpt
 
 func (this *QMenuBar) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QMenuBar_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMenuBar_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMenuBar) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QMenuBar_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QMenuBar_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_ChildEvent
-func miqt_exec_callback_QMenuBar_ChildEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QMenuBar_childEvent
+func miqt_exec_callback_QMenuBar_childEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1454,18 +1454,18 @@ func miqt_exec_callback_QMenuBar_ChildEvent(self *C.QMenuBar, cb C.intptr_t, eve
 
 func (this *QMenuBar) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QMenuBar_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMenuBar_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMenuBar) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QMenuBar_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QMenuBar_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_CustomEvent
-func miqt_exec_callback_QMenuBar_CustomEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QMenuBar_customEvent
+func miqt_exec_callback_QMenuBar_customEvent(self *C.QMenuBar, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1480,18 +1480,18 @@ func miqt_exec_callback_QMenuBar_CustomEvent(self *C.QMenuBar, cb C.intptr_t, ev
 
 func (this *QMenuBar) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QMenuBar_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QMenuBar_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QMenuBar) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QMenuBar_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QMenuBar_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_ConnectNotify
-func miqt_exec_callback_QMenuBar_ConnectNotify(self *C.QMenuBar, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QMenuBar_connectNotify
+func miqt_exec_callback_QMenuBar_connectNotify(self *C.QMenuBar, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1506,18 +1506,18 @@ func miqt_exec_callback_QMenuBar_ConnectNotify(self *C.QMenuBar, cb C.intptr_t, 
 
 func (this *QMenuBar) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QMenuBar_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QMenuBar_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QMenuBar) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QMenuBar_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMenuBar) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QMenuBar_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMenuBar_DisconnectNotify
-func miqt_exec_callback_QMenuBar_DisconnectNotify(self *C.QMenuBar, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QMenuBar_disconnectNotify
+func miqt_exec_callback_QMenuBar_disconnectNotify(self *C.QMenuBar, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1532,7 +1532,7 @@ func miqt_exec_callback_QMenuBar_DisconnectNotify(self *C.QMenuBar, cb C.intptr_
 
 // Delete this object from C++ memory.
 func (this *QMenuBar) Delete() {
-	C.QMenuBar_Delete(this.h)
+	C.QMenuBar_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

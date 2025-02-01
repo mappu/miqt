@@ -24,25 +24,25 @@ typedef struct QSize QSize;
 
 QCameraViewfinderSettings* QCameraViewfinderSettings_new();
 QCameraViewfinderSettings* QCameraViewfinderSettings_new2(QCameraViewfinderSettings* other);
-void QCameraViewfinderSettings_OperatorAssign(QCameraViewfinderSettings* self, QCameraViewfinderSettings* other);
-void QCameraViewfinderSettings_Swap(QCameraViewfinderSettings* self, QCameraViewfinderSettings* other);
-bool QCameraViewfinderSettings_IsNull(const QCameraViewfinderSettings* self);
-QSize* QCameraViewfinderSettings_Resolution(const QCameraViewfinderSettings* self);
-void QCameraViewfinderSettings_SetResolution(QCameraViewfinderSettings* self, QSize* resolution);
-void QCameraViewfinderSettings_SetResolution2(QCameraViewfinderSettings* self, int width, int height);
-double QCameraViewfinderSettings_MinimumFrameRate(const QCameraViewfinderSettings* self);
-void QCameraViewfinderSettings_SetMinimumFrameRate(QCameraViewfinderSettings* self, double rate);
-double QCameraViewfinderSettings_MaximumFrameRate(const QCameraViewfinderSettings* self);
-void QCameraViewfinderSettings_SetMaximumFrameRate(QCameraViewfinderSettings* self, double rate);
-int QCameraViewfinderSettings_PixelFormat(const QCameraViewfinderSettings* self);
-void QCameraViewfinderSettings_SetPixelFormat(QCameraViewfinderSettings* self, int format);
-QSize* QCameraViewfinderSettings_PixelAspectRatio(const QCameraViewfinderSettings* self);
-void QCameraViewfinderSettings_SetPixelAspectRatio(QCameraViewfinderSettings* self, QSize* ratio);
-void QCameraViewfinderSettings_SetPixelAspectRatio2(QCameraViewfinderSettings* self, int horizontal, int vertical);
-void QCameraViewfinderSettings_Delete(QCameraViewfinderSettings* self);
+void QCameraViewfinderSettings_operatorAssign(QCameraViewfinderSettings* self, QCameraViewfinderSettings* other);
+void QCameraViewfinderSettings_swap(QCameraViewfinderSettings* self, QCameraViewfinderSettings* other);
+bool QCameraViewfinderSettings_isNull(const QCameraViewfinderSettings* self);
+QSize* QCameraViewfinderSettings_resolution(const QCameraViewfinderSettings* self);
+void QCameraViewfinderSettings_setResolution(QCameraViewfinderSettings* self, QSize* resolution);
+void QCameraViewfinderSettings_setResolution2(QCameraViewfinderSettings* self, int width, int height);
+double QCameraViewfinderSettings_minimumFrameRate(const QCameraViewfinderSettings* self);
+void QCameraViewfinderSettings_setMinimumFrameRate(QCameraViewfinderSettings* self, double rate);
+double QCameraViewfinderSettings_maximumFrameRate(const QCameraViewfinderSettings* self);
+void QCameraViewfinderSettings_setMaximumFrameRate(QCameraViewfinderSettings* self, double rate);
+int QCameraViewfinderSettings_pixelFormat(const QCameraViewfinderSettings* self);
+void QCameraViewfinderSettings_setPixelFormat(QCameraViewfinderSettings* self, int format);
+QSize* QCameraViewfinderSettings_pixelAspectRatio(const QCameraViewfinderSettings* self);
+void QCameraViewfinderSettings_setPixelAspectRatio(QCameraViewfinderSettings* self, QSize* ratio);
+void QCameraViewfinderSettings_setPixelAspectRatio2(QCameraViewfinderSettings* self, int horizontal, int vertical);
+void QCameraViewfinderSettings_delete(QCameraViewfinderSettings* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

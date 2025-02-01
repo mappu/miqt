@@ -51,19 +51,19 @@ func UnsafeNewQAudioEncoderSettingsControl(h unsafe.Pointer) *QAudioEncoderSetti
 }
 
 func (this *QAudioEncoderSettingsControl) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioEncoderSettingsControl_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioEncoderSettingsControl_metaObject(this.h)))
 }
 
 func (this *QAudioEncoderSettingsControl) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAudioEncoderSettingsControl_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAudioEncoderSettingsControl_metacast(this.h, param1_Cstring))
 }
 
 func QAudioEncoderSettingsControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioEncoderSettingsControl_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAudioEncoderSettingsControl_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -72,14 +72,14 @@ func QAudioEncoderSettingsControl_Tr(s string) string {
 func QAudioEncoderSettingsControl_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioEncoderSettingsControl_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAudioEncoderSettingsControl_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAudioEncoderSettingsControl) SupportedAudioCodecs() []string {
-	var _ma C.struct_miqt_array = C.QAudioEncoderSettingsControl_SupportedAudioCodecs(this.h)
+	var _ma C.struct_miqt_array = C.QAudioEncoderSettingsControl_supportedAudioCodecs(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -96,14 +96,14 @@ func (this *QAudioEncoderSettingsControl) CodecDescription(codecName string) str
 	codecName_ms.data = C.CString(codecName)
 	codecName_ms.len = C.size_t(len(codecName))
 	defer C.free(unsafe.Pointer(codecName_ms.data))
-	var _ms C.struct_miqt_string = C.QAudioEncoderSettingsControl_CodecDescription(this.h, codecName_ms)
+	var _ms C.struct_miqt_string = C.QAudioEncoderSettingsControl_codecDescription(this.h, codecName_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAudioEncoderSettingsControl) SupportedSampleRates(settings *QAudioEncoderSettings, continuous *bool) []int {
-	var _ma C.struct_miqt_array = C.QAudioEncoderSettingsControl_SupportedSampleRates(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
+	var _ma C.struct_miqt_array = C.QAudioEncoderSettingsControl_supportedSampleRates(this.h, settings.cPointer(), (*C.bool)(unsafe.Pointer(continuous)))
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -113,13 +113,13 @@ func (this *QAudioEncoderSettingsControl) SupportedSampleRates(settings *QAudioE
 }
 
 func (this *QAudioEncoderSettingsControl) AudioSettings() *QAudioEncoderSettings {
-	_goptr := newQAudioEncoderSettings(C.QAudioEncoderSettingsControl_AudioSettings(this.h))
+	_goptr := newQAudioEncoderSettings(C.QAudioEncoderSettingsControl_audioSettings(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioEncoderSettingsControl) SetAudioSettings(settings *QAudioEncoderSettings) {
-	C.QAudioEncoderSettingsControl_SetAudioSettings(this.h, settings.cPointer())
+	C.QAudioEncoderSettingsControl_setAudioSettings(this.h, settings.cPointer())
 }
 
 func QAudioEncoderSettingsControl_Tr2(s string, c string) string {
@@ -127,7 +127,7 @@ func QAudioEncoderSettingsControl_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioEncoderSettingsControl_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAudioEncoderSettingsControl_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -138,7 +138,7 @@ func QAudioEncoderSettingsControl_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioEncoderSettingsControl_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAudioEncoderSettingsControl_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -149,7 +149,7 @@ func QAudioEncoderSettingsControl_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioEncoderSettingsControl_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAudioEncoderSettingsControl_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -160,7 +160,7 @@ func QAudioEncoderSettingsControl_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioEncoderSettingsControl_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAudioEncoderSettingsControl_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -168,7 +168,7 @@ func QAudioEncoderSettingsControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAudioEncoderSettingsControl) Delete() {
-	C.QAudioEncoderSettingsControl_Delete(this.h)
+	C.QAudioEncoderSettingsControl_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -12,7 +12,7 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QWebEngineNavigationRequest_ActionChanged(intptr_t);
+void miqt_exec_callback_QWebEngineNavigationRequest_actionChanged(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -21,15 +21,15 @@ void QWebEngineNavigationRequest_virtbase(QWebEngineNavigationRequest* src, QObj
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QWebEngineNavigationRequest_MetaObject(const QWebEngineNavigationRequest* self) {
+QMetaObject* QWebEngineNavigationRequest_metaObject(const QWebEngineNavigationRequest* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QWebEngineNavigationRequest_Metacast(QWebEngineNavigationRequest* self, const char* param1) {
+void* QWebEngineNavigationRequest_metacast(QWebEngineNavigationRequest* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QWebEngineNavigationRequest_Tr(const char* s) {
+struct miqt_string QWebEngineNavigationRequest_tr(const char* s) {
 	QString _ret = QWebEngineNavigationRequest::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -40,38 +40,38 @@ struct miqt_string QWebEngineNavigationRequest_Tr(const char* s) {
 	return _ms;
 }
 
-QUrl* QWebEngineNavigationRequest_Url(const QWebEngineNavigationRequest* self) {
+QUrl* QWebEngineNavigationRequest_url(const QWebEngineNavigationRequest* self) {
 	return new QUrl(self->url());
 }
 
-bool QWebEngineNavigationRequest_IsMainFrame(const QWebEngineNavigationRequest* self) {
+bool QWebEngineNavigationRequest_isMainFrame(const QWebEngineNavigationRequest* self) {
 	return self->isMainFrame();
 }
 
-int QWebEngineNavigationRequest_NavigationType(const QWebEngineNavigationRequest* self) {
+int QWebEngineNavigationRequest_navigationType(const QWebEngineNavigationRequest* self) {
 	QWebEngineNavigationRequest::NavigationType _ret = self->navigationType();
 	return static_cast<int>(_ret);
 }
 
-void QWebEngineNavigationRequest_Accept(QWebEngineNavigationRequest* self) {
+void QWebEngineNavigationRequest_accept(QWebEngineNavigationRequest* self) {
 	self->accept();
 }
 
-void QWebEngineNavigationRequest_Reject(QWebEngineNavigationRequest* self) {
+void QWebEngineNavigationRequest_reject(QWebEngineNavigationRequest* self) {
 	self->reject();
 }
 
-void QWebEngineNavigationRequest_ActionChanged(QWebEngineNavigationRequest* self) {
+void QWebEngineNavigationRequest_actionChanged(QWebEngineNavigationRequest* self) {
 	self->actionChanged();
 }
 
-void QWebEngineNavigationRequest_connect_ActionChanged(QWebEngineNavigationRequest* self, intptr_t slot) {
+void QWebEngineNavigationRequest_connect_actionChanged(QWebEngineNavigationRequest* self, intptr_t slot) {
 	QWebEngineNavigationRequest::connect(self, static_cast<void (QWebEngineNavigationRequest::*)()>(&QWebEngineNavigationRequest::actionChanged), self, [=]() {
-		miqt_exec_callback_QWebEngineNavigationRequest_ActionChanged(slot);
+		miqt_exec_callback_QWebEngineNavigationRequest_actionChanged(slot);
 	});
 }
 
-struct miqt_string QWebEngineNavigationRequest_Tr2(const char* s, const char* c) {
+struct miqt_string QWebEngineNavigationRequest_tr2(const char* s, const char* c) {
 	QString _ret = QWebEngineNavigationRequest::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -82,7 +82,7 @@ struct miqt_string QWebEngineNavigationRequest_Tr2(const char* s, const char* c)
 	return _ms;
 }
 
-struct miqt_string QWebEngineNavigationRequest_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QWebEngineNavigationRequest_tr3(const char* s, const char* c, int n) {
 	QString _ret = QWebEngineNavigationRequest::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -93,7 +93,7 @@ struct miqt_string QWebEngineNavigationRequest_Tr3(const char* s, const char* c,
 	return _ms;
 }
 
-void QWebEngineNavigationRequest_Delete(QWebEngineNavigationRequest* self) {
+void QWebEngineNavigationRequest_delete(QWebEngineNavigationRequest* self) {
 	delete self;
 }
 

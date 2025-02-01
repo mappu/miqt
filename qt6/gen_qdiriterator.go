@@ -166,44 +166,44 @@ func NewQDirIterator9(path string, nameFilters []string, filters QDir__Filter, f
 }
 
 func (this *QDirIterator) Next() string {
-	var _ms C.struct_miqt_string = C.QDirIterator_Next(this.h)
+	var _ms C.struct_miqt_string = C.QDirIterator_next(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDirIterator) NextFileInfo() *QFileInfo {
-	_goptr := newQFileInfo(C.QDirIterator_NextFileInfo(this.h))
+	_goptr := newQFileInfo(C.QDirIterator_nextFileInfo(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDirIterator) HasNext() bool {
-	return (bool)(C.QDirIterator_HasNext(this.h))
+	return (bool)(C.QDirIterator_hasNext(this.h))
 }
 
 func (this *QDirIterator) FileName() string {
-	var _ms C.struct_miqt_string = C.QDirIterator_FileName(this.h)
+	var _ms C.struct_miqt_string = C.QDirIterator_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDirIterator) FilePath() string {
-	var _ms C.struct_miqt_string = C.QDirIterator_FilePath(this.h)
+	var _ms C.struct_miqt_string = C.QDirIterator_filePath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDirIterator) FileInfo() *QFileInfo {
-	_goptr := newQFileInfo(C.QDirIterator_FileInfo(this.h))
+	_goptr := newQFileInfo(C.QDirIterator_fileInfo(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDirIterator) Path() string {
-	var _ms C.struct_miqt_string = C.QDirIterator_Path(this.h)
+	var _ms C.struct_miqt_string = C.QDirIterator_path(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -211,7 +211,7 @@ func (this *QDirIterator) Path() string {
 
 // Delete this object from C++ memory.
 func (this *QDirIterator) Delete() {
-	C.QDirIterator_Delete(this.h)
+	C.QDirIterator_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

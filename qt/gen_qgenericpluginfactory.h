@@ -22,12 +22,12 @@ typedef struct QGenericPluginFactory QGenericPluginFactory;
 typedef struct QObject QObject;
 #endif
 
-struct miqt_array /* of struct miqt_string */  QGenericPluginFactory_Keys();
-QObject* QGenericPluginFactory_Create(struct miqt_string param1, struct miqt_string param2);
-void QGenericPluginFactory_Delete(QGenericPluginFactory* self);
+struct miqt_array /* of struct miqt_string */  QGenericPluginFactory_keys();
+QObject* QGenericPluginFactory_create(struct miqt_string param1, struct miqt_string param2);
+void QGenericPluginFactory_delete(QGenericPluginFactory* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

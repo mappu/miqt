@@ -13,11 +13,11 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QWebEngineClientCertificateStore_Add(QWebEngineClientCertificateStore* self, QSslCertificate* certificate, QSslKey* privateKey) {
+void QWebEngineClientCertificateStore_add(QWebEngineClientCertificateStore* self, QSslCertificate* certificate, QSslKey* privateKey) {
 	self->add(*certificate, *privateKey);
 }
 
-struct miqt_array /* of QSslCertificate* */  QWebEngineClientCertificateStore_Certificates(const QWebEngineClientCertificateStore* self) {
+struct miqt_array /* of QSslCertificate* */  QWebEngineClientCertificateStore_certificates(const QWebEngineClientCertificateStore* self) {
 	QList<QSslCertificate> _ret = self->certificates();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCertificate** _arr = static_cast<QSslCertificate**>(malloc(sizeof(QSslCertificate*) * _ret.length()));
@@ -30,11 +30,11 @@ struct miqt_array /* of QSslCertificate* */  QWebEngineClientCertificateStore_Ce
 	return _out;
 }
 
-void QWebEngineClientCertificateStore_Remove(QWebEngineClientCertificateStore* self, QSslCertificate* certificate) {
+void QWebEngineClientCertificateStore_remove(QWebEngineClientCertificateStore* self, QSslCertificate* certificate) {
 	self->remove(*certificate);
 }
 
-void QWebEngineClientCertificateStore_Clear(QWebEngineClientCertificateStore* self) {
+void QWebEngineClientCertificateStore_clear(QWebEngineClientCertificateStore* self) {
 	self->clear();
 }
 

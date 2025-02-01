@@ -25,43 +25,43 @@ typedef struct QFontInfo QFontInfo;
 #endif
 
 QFontDatabase* QFontDatabase_new();
-struct miqt_array /* of int */  QFontDatabase_StandardSizes();
-struct miqt_array /* of int */  QFontDatabase_WritingSystems();
-struct miqt_array /* of int */  QFontDatabase_WritingSystemsWithFamily(struct miqt_string family);
-struct miqt_array /* of struct miqt_string */  QFontDatabase_Families();
-struct miqt_array /* of struct miqt_string */  QFontDatabase_Styles(struct miqt_string family);
-struct miqt_array /* of int */  QFontDatabase_PointSizes(struct miqt_string family);
-struct miqt_array /* of int */  QFontDatabase_SmoothSizes(struct miqt_string family, struct miqt_string style);
-struct miqt_string QFontDatabase_StyleString(QFont* font);
-struct miqt_string QFontDatabase_StyleStringWithFontInfo(QFontInfo* fontInfo);
-QFont* QFontDatabase_Font(struct miqt_string family, struct miqt_string style, int pointSize);
-bool QFontDatabase_IsBitmapScalable(struct miqt_string family);
-bool QFontDatabase_IsSmoothlyScalable(struct miqt_string family);
-bool QFontDatabase_IsScalable(struct miqt_string family);
-bool QFontDatabase_IsFixedPitch(struct miqt_string family);
-bool QFontDatabase_Italic(struct miqt_string family, struct miqt_string style);
-bool QFontDatabase_Bold(struct miqt_string family, struct miqt_string style);
-int QFontDatabase_Weight(struct miqt_string family, struct miqt_string style);
-bool QFontDatabase_HasFamily(struct miqt_string family);
-bool QFontDatabase_IsPrivateFamily(struct miqt_string family);
-struct miqt_string QFontDatabase_WritingSystemName(int writingSystem);
-struct miqt_string QFontDatabase_WritingSystemSample(int writingSystem);
-int QFontDatabase_AddApplicationFont(struct miqt_string fileName);
-int QFontDatabase_AddApplicationFontFromData(struct miqt_string fontData);
-struct miqt_array /* of struct miqt_string */  QFontDatabase_ApplicationFontFamilies(int id);
-bool QFontDatabase_RemoveApplicationFont(int id);
-bool QFontDatabase_RemoveAllApplicationFonts();
-QFont* QFontDatabase_SystemFont(int typeVal);
-struct miqt_array /* of struct miqt_string */  QFontDatabase_Families1(int writingSystem);
-struct miqt_array /* of int */  QFontDatabase_PointSizes2(struct miqt_string family, struct miqt_string style);
-bool QFontDatabase_IsBitmapScalable2(struct miqt_string family, struct miqt_string style);
-bool QFontDatabase_IsSmoothlyScalable2(struct miqt_string family, struct miqt_string style);
-bool QFontDatabase_IsScalable2(struct miqt_string family, struct miqt_string style);
-bool QFontDatabase_IsFixedPitch2(struct miqt_string family, struct miqt_string style);
-void QFontDatabase_Delete(QFontDatabase* self);
+struct miqt_array /* of int */  QFontDatabase_standardSizes();
+struct miqt_array /* of int */  QFontDatabase_writingSystems();
+struct miqt_array /* of int */  QFontDatabase_writingSystemsWithFamily(struct miqt_string family);
+struct miqt_array /* of struct miqt_string */  QFontDatabase_families();
+struct miqt_array /* of struct miqt_string */  QFontDatabase_styles(struct miqt_string family);
+struct miqt_array /* of int */  QFontDatabase_pointSizes(struct miqt_string family);
+struct miqt_array /* of int */  QFontDatabase_smoothSizes(struct miqt_string family, struct miqt_string style);
+struct miqt_string QFontDatabase_styleString(QFont* font);
+struct miqt_string QFontDatabase_styleStringWithFontInfo(QFontInfo* fontInfo);
+QFont* QFontDatabase_font(struct miqt_string family, struct miqt_string style, int pointSize);
+bool QFontDatabase_isBitmapScalable(struct miqt_string family);
+bool QFontDatabase_isSmoothlyScalable(struct miqt_string family);
+bool QFontDatabase_isScalable(struct miqt_string family);
+bool QFontDatabase_isFixedPitch(struct miqt_string family);
+bool QFontDatabase_italic(struct miqt_string family, struct miqt_string style);
+bool QFontDatabase_bold(struct miqt_string family, struct miqt_string style);
+int QFontDatabase_weight(struct miqt_string family, struct miqt_string style);
+bool QFontDatabase_hasFamily(struct miqt_string family);
+bool QFontDatabase_isPrivateFamily(struct miqt_string family);
+struct miqt_string QFontDatabase_writingSystemName(int writingSystem);
+struct miqt_string QFontDatabase_writingSystemSample(int writingSystem);
+int QFontDatabase_addApplicationFont(struct miqt_string fileName);
+int QFontDatabase_addApplicationFontFromData(struct miqt_string fontData);
+struct miqt_array /* of struct miqt_string */  QFontDatabase_applicationFontFamilies(int id);
+bool QFontDatabase_removeApplicationFont(int id);
+bool QFontDatabase_removeAllApplicationFonts();
+QFont* QFontDatabase_systemFont(int type);
+struct miqt_array /* of struct miqt_string */  QFontDatabase_families1(int writingSystem);
+struct miqt_array /* of int */  QFontDatabase_pointSizes2(struct miqt_string family, struct miqt_string style);
+bool QFontDatabase_isBitmapScalable2(struct miqt_string family, struct miqt_string style);
+bool QFontDatabase_isSmoothlyScalable2(struct miqt_string family, struct miqt_string style);
+bool QFontDatabase_isScalable2(struct miqt_string family, struct miqt_string style);
+bool QFontDatabase_isFixedPitch2(struct miqt_string family, struct miqt_string style);
+void QFontDatabase_delete(QFontDatabase* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

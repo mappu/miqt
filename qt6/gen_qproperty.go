@@ -85,7 +85,7 @@ func NewQPropertyBindingSourceLocation2(param1 *QPropertyBindingSourceLocation) 
 
 // Delete this object from C++ memory.
 func (this *QPropertyBindingSourceLocation) Delete() {
-	C.QPropertyBindingSourceLocation_Delete(this.h)
+	C.QPropertyBindingSourceLocation_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -158,19 +158,19 @@ func NewQPropertyBindingError4(typeVal QPropertyBindingError__Type, description 
 }
 
 func (this *QPropertyBindingError) OperatorAssign(other *QPropertyBindingError) {
-	C.QPropertyBindingError_OperatorAssign(this.h, other.cPointer())
+	C.QPropertyBindingError_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QPropertyBindingError) HasError() bool {
-	return (bool)(C.QPropertyBindingError_HasError(this.h))
+	return (bool)(C.QPropertyBindingError_hasError(this.h))
 }
 
 func (this *QPropertyBindingError) Type() QPropertyBindingError__Type {
-	return (QPropertyBindingError__Type)(C.QPropertyBindingError_Type(this.h))
+	return (QPropertyBindingError__Type)(C.QPropertyBindingError_type(this.h))
 }
 
 func (this *QPropertyBindingError) Description() string {
-	var _ms C.struct_miqt_string = C.QPropertyBindingError_Description(this.h)
+	var _ms C.struct_miqt_string = C.QPropertyBindingError_description(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -178,7 +178,7 @@ func (this *QPropertyBindingError) Description() string {
 
 // Delete this object from C++ memory.
 func (this *QPropertyBindingError) Delete() {
-	C.QPropertyBindingError_Delete(this.h)
+	C.QPropertyBindingError_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -235,28 +235,28 @@ func NewQUntypedPropertyBinding2(other *QUntypedPropertyBinding) *QUntypedProper
 }
 
 func (this *QUntypedPropertyBinding) OperatorAssign(other *QUntypedPropertyBinding) {
-	C.QUntypedPropertyBinding_OperatorAssign(this.h, other.cPointer())
+	C.QUntypedPropertyBinding_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QUntypedPropertyBinding) IsNull() bool {
-	return (bool)(C.QUntypedPropertyBinding_IsNull(this.h))
+	return (bool)(C.QUntypedPropertyBinding_isNull(this.h))
 }
 
 func (this *QUntypedPropertyBinding) Error() *QPropertyBindingError {
-	_goptr := newQPropertyBindingError(C.QUntypedPropertyBinding_Error(this.h))
+	_goptr := newQPropertyBindingError(C.QUntypedPropertyBinding_error(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUntypedPropertyBinding) ValueMetaType() *QMetaType {
-	_goptr := newQMetaType(C.QUntypedPropertyBinding_ValueMetaType(this.h))
+	_goptr := newQMetaType(C.QUntypedPropertyBinding_valueMetaType(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QUntypedPropertyBinding) Delete() {
-	C.QUntypedPropertyBinding_Delete(this.h)
+	C.QUntypedPropertyBinding_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -314,7 +314,7 @@ func NewQPropertyObserverBase2(param1 *QPropertyObserverBase) *QPropertyObserver
 
 // Delete this object from C++ memory.
 func (this *QPropertyObserverBase) Delete() {
-	C.QPropertyObserverBase_Delete(this.h)
+	C.QPropertyObserverBase_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -370,7 +370,7 @@ func NewQPropertyObserver() *QPropertyObserver {
 
 // Delete this object from C++ memory.
 func (this *QPropertyObserver) Delete() {
-	C.QPropertyObserver_Delete(this.h)
+	C.QPropertyObserver_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -426,7 +426,7 @@ func NewQPropertyNotifier() *QPropertyNotifier {
 
 // Delete this object from C++ memory.
 func (this *QPropertyNotifier) Delete() {
-	C.QPropertyNotifier_Delete(this.h)
+	C.QPropertyNotifier_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -483,62 +483,62 @@ func NewQUntypedBindable2(param1 *QUntypedBindable) *QUntypedBindable {
 }
 
 func (this *QUntypedBindable) IsValid() bool {
-	return (bool)(C.QUntypedBindable_IsValid(this.h))
+	return (bool)(C.QUntypedBindable_isValid(this.h))
 }
 
 func (this *QUntypedBindable) IsBindable() bool {
-	return (bool)(C.QUntypedBindable_IsBindable(this.h))
+	return (bool)(C.QUntypedBindable_isBindable(this.h))
 }
 
 func (this *QUntypedBindable) IsReadOnly() bool {
-	return (bool)(C.QUntypedBindable_IsReadOnly(this.h))
+	return (bool)(C.QUntypedBindable_isReadOnly(this.h))
 }
 
 func (this *QUntypedBindable) MakeBinding() *QUntypedPropertyBinding {
-	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_MakeBinding(this.h))
+	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_makeBinding(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUntypedBindable) TakeBinding() *QUntypedPropertyBinding {
-	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_TakeBinding(this.h))
+	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_takeBinding(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUntypedBindable) Observe(observer *QPropertyObserver) {
-	C.QUntypedBindable_Observe(this.h, observer.cPointer())
+	C.QUntypedBindable_observe(this.h, observer.cPointer())
 }
 
 func (this *QUntypedBindable) Binding() *QUntypedPropertyBinding {
-	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_Binding(this.h))
+	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_binding(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUntypedBindable) SetBinding(binding *QUntypedPropertyBinding) bool {
-	return (bool)(C.QUntypedBindable_SetBinding(this.h, binding.cPointer()))
+	return (bool)(C.QUntypedBindable_setBinding(this.h, binding.cPointer()))
 }
 
 func (this *QUntypedBindable) HasBinding() bool {
-	return (bool)(C.QUntypedBindable_HasBinding(this.h))
+	return (bool)(C.QUntypedBindable_hasBinding(this.h))
 }
 
 func (this *QUntypedBindable) MetaType() *QMetaType {
-	_goptr := newQMetaType(C.QUntypedBindable_MetaType(this.h))
+	_goptr := newQMetaType(C.QUntypedBindable_metaType(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUntypedBindable) MakeBinding1(location *QPropertyBindingSourceLocation) *QUntypedPropertyBinding {
-	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_MakeBinding1(this.h, location.cPointer()))
+	_goptr := newQUntypedPropertyBinding(C.QUntypedBindable_makeBinding1(this.h, location.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QUntypedBindable) Delete() {
-	C.QUntypedBindable_Delete(this.h)
+	C.QUntypedBindable_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

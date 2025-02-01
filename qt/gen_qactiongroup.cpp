@@ -18,15 +18,15 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QActionGroup_Triggered(intptr_t, QAction*);
-void miqt_exec_callback_QActionGroup_Hovered(intptr_t, QAction*);
-bool miqt_exec_callback_QActionGroup_Event(QActionGroup*, intptr_t, QEvent*);
-bool miqt_exec_callback_QActionGroup_EventFilter(QActionGroup*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QActionGroup_TimerEvent(QActionGroup*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QActionGroup_ChildEvent(QActionGroup*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QActionGroup_CustomEvent(QActionGroup*, intptr_t, QEvent*);
-void miqt_exec_callback_QActionGroup_ConnectNotify(QActionGroup*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QActionGroup_DisconnectNotify(QActionGroup*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QActionGroup_triggered(intptr_t, QAction*);
+void miqt_exec_callback_QActionGroup_hovered(intptr_t, QAction*);
+bool miqt_exec_callback_QActionGroup_event(QActionGroup*, intptr_t, QEvent*);
+bool miqt_exec_callback_QActionGroup_eventFilter(QActionGroup*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QActionGroup_timerEvent(QActionGroup*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QActionGroup_childEvent(QActionGroup*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QActionGroup_customEvent(QActionGroup*, intptr_t, QEvent*);
+void miqt_exec_callback_QActionGroup_connectNotify(QActionGroup*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QActionGroup_disconnectNotify(QActionGroup*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -39,130 +39,130 @@ public:
 	virtual ~MiqtVirtualQActionGroup() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QActionGroup::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QActionGroup_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QActionGroup_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QActionGroup::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QActionGroup::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QActionGroup_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QActionGroup_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QActionGroup::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QActionGroup::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QActionGroup_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QActionGroup_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QActionGroup::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QActionGroup::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QActionGroup_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QActionGroup_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QActionGroup::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QActionGroup::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QActionGroup_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QActionGroup_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QActionGroup::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QActionGroup::connectNotify(signal);
 			return;
 		}
@@ -171,24 +171,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QActionGroup_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QActionGroup_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QActionGroup::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QActionGroup::disconnectNotify(signal);
 			return;
 		}
@@ -197,13 +197,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QActionGroup_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QActionGroup_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QActionGroup::disconnectNotify(*signal);
 
@@ -219,15 +219,15 @@ void QActionGroup_virtbase(QActionGroup* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QActionGroup_MetaObject(const QActionGroup* self) {
+QMetaObject* QActionGroup_metaObject(const QActionGroup* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QActionGroup_Metacast(QActionGroup* self, const char* param1) {
+void* QActionGroup_metacast(QActionGroup* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QActionGroup_Tr(const char* s) {
+struct miqt_string QActionGroup_tr(const char* s) {
 	QString _ret = QActionGroup::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -238,7 +238,7 @@ struct miqt_string QActionGroup_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QActionGroup_TrUtf8(const char* s) {
+struct miqt_string QActionGroup_trUtf8(const char* s) {
 	QString _ret = QActionGroup::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -249,25 +249,25 @@ struct miqt_string QActionGroup_TrUtf8(const char* s) {
 	return _ms;
 }
 
-QAction* QActionGroup_AddAction(QActionGroup* self, QAction* a) {
+QAction* QActionGroup_addAction(QActionGroup* self, QAction* a) {
 	return self->addAction(a);
 }
 
-QAction* QActionGroup_AddActionWithText(QActionGroup* self, struct miqt_string text) {
+QAction* QActionGroup_addActionWithText(QActionGroup* self, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return self->addAction(text_QString);
 }
 
-QAction* QActionGroup_AddAction2(QActionGroup* self, QIcon* icon, struct miqt_string text) {
+QAction* QActionGroup_addAction2(QActionGroup* self, QIcon* icon, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	return self->addAction(*icon, text_QString);
 }
 
-void QActionGroup_RemoveAction(QActionGroup* self, QAction* a) {
+void QActionGroup_removeAction(QActionGroup* self, QAction* a) {
 	self->removeAction(a);
 }
 
-struct miqt_array /* of QAction* */  QActionGroup_Actions(const QActionGroup* self) {
+struct miqt_array /* of QAction* */  QActionGroup_actions(const QActionGroup* self) {
 	QList<QAction *> _ret = self->actions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAction** _arr = static_cast<QAction**>(malloc(sizeof(QAction*) * _ret.length()));
@@ -280,70 +280,70 @@ struct miqt_array /* of QAction* */  QActionGroup_Actions(const QActionGroup* se
 	return _out;
 }
 
-QAction* QActionGroup_CheckedAction(const QActionGroup* self) {
+QAction* QActionGroup_checkedAction(const QActionGroup* self) {
 	return self->checkedAction();
 }
 
-bool QActionGroup_IsExclusive(const QActionGroup* self) {
+bool QActionGroup_isExclusive(const QActionGroup* self) {
 	return self->isExclusive();
 }
 
-bool QActionGroup_IsEnabled(const QActionGroup* self) {
+bool QActionGroup_isEnabled(const QActionGroup* self) {
 	return self->isEnabled();
 }
 
-bool QActionGroup_IsVisible(const QActionGroup* self) {
+bool QActionGroup_isVisible(const QActionGroup* self) {
 	return self->isVisible();
 }
 
-int QActionGroup_ExclusionPolicy(const QActionGroup* self) {
+int QActionGroup_exclusionPolicy(const QActionGroup* self) {
 	QActionGroup::ExclusionPolicy _ret = self->exclusionPolicy();
 	return static_cast<int>(_ret);
 }
 
-void QActionGroup_SetEnabled(QActionGroup* self, bool enabled) {
+void QActionGroup_setEnabled(QActionGroup* self, bool enabled) {
 	self->setEnabled(enabled);
 }
 
-void QActionGroup_SetDisabled(QActionGroup* self, bool b) {
+void QActionGroup_setDisabled(QActionGroup* self, bool b) {
 	self->setDisabled(b);
 }
 
-void QActionGroup_SetVisible(QActionGroup* self, bool visible) {
+void QActionGroup_setVisible(QActionGroup* self, bool visible) {
 	self->setVisible(visible);
 }
 
-void QActionGroup_SetExclusive(QActionGroup* self, bool exclusive) {
+void QActionGroup_setExclusive(QActionGroup* self, bool exclusive) {
 	self->setExclusive(exclusive);
 }
 
-void QActionGroup_SetExclusionPolicy(QActionGroup* self, int policy) {
+void QActionGroup_setExclusionPolicy(QActionGroup* self, int policy) {
 	self->setExclusionPolicy(static_cast<QActionGroup::ExclusionPolicy>(policy));
 }
 
-void QActionGroup_Triggered(QActionGroup* self, QAction* param1) {
+void QActionGroup_triggered(QActionGroup* self, QAction* param1) {
 	self->triggered(param1);
 }
 
-void QActionGroup_connect_Triggered(QActionGroup* self, intptr_t slot) {
+void QActionGroup_connect_triggered(QActionGroup* self, intptr_t slot) {
 	MiqtVirtualQActionGroup::connect(self, static_cast<void (QActionGroup::*)(QAction*)>(&QActionGroup::triggered), self, [=](QAction* param1) {
 		QAction* sigval1 = param1;
-		miqt_exec_callback_QActionGroup_Triggered(slot, sigval1);
+		miqt_exec_callback_QActionGroup_triggered(slot, sigval1);
 	});
 }
 
-void QActionGroup_Hovered(QActionGroup* self, QAction* param1) {
+void QActionGroup_hovered(QActionGroup* self, QAction* param1) {
 	self->hovered(param1);
 }
 
-void QActionGroup_connect_Hovered(QActionGroup* self, intptr_t slot) {
+void QActionGroup_connect_hovered(QActionGroup* self, intptr_t slot) {
 	MiqtVirtualQActionGroup::connect(self, static_cast<void (QActionGroup::*)(QAction*)>(&QActionGroup::hovered), self, [=](QAction* param1) {
 		QAction* sigval1 = param1;
-		miqt_exec_callback_QActionGroup_Hovered(slot, sigval1);
+		miqt_exec_callback_QActionGroup_hovered(slot, sigval1);
 	});
 }
 
-struct miqt_string QActionGroup_Tr2(const char* s, const char* c) {
+struct miqt_string QActionGroup_tr2(const char* s, const char* c) {
 	QString _ret = QActionGroup::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -354,7 +354,7 @@ struct miqt_string QActionGroup_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QActionGroup_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QActionGroup_tr3(const char* s, const char* c, int n) {
 	QString _ret = QActionGroup::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -365,7 +365,7 @@ struct miqt_string QActionGroup_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string QActionGroup_TrUtf82(const char* s, const char* c) {
+struct miqt_string QActionGroup_trUtf82(const char* s, const char* c) {
 	QString _ret = QActionGroup::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -376,7 +376,7 @@ struct miqt_string QActionGroup_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QActionGroup_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QActionGroup_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QActionGroup::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -387,105 +387,105 @@ struct miqt_string QActionGroup_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QActionGroup_override_virtual_Event(void* self, intptr_t slot) {
+bool QActionGroup_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QActionGroup_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQActionGroup*)(self) )->virtualbase_Event(event);
+bool QActionGroup_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQActionGroup*)(self) )->virtualbase_event(event);
 }
 
-bool QActionGroup_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QActionGroup_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QActionGroup_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQActionGroup*)(self) )->virtualbase_EventFilter(watched, event);
+bool QActionGroup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQActionGroup*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QActionGroup_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QActionGroup_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QActionGroup_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_TimerEvent(event);
+void QActionGroup_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QActionGroup_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QActionGroup_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QActionGroup_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_ChildEvent(event);
+void QActionGroup_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QActionGroup_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QActionGroup_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QActionGroup_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_CustomEvent(event);
+void QActionGroup_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QActionGroup_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QActionGroup_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QActionGroup_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_ConnectNotify(signal);
+void QActionGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QActionGroup_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QActionGroup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQActionGroup* self_cast = dynamic_cast<MiqtVirtualQActionGroup*>( (QActionGroup*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QActionGroup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_DisconnectNotify(signal);
+void QActionGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQActionGroup*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QActionGroup_Delete(QActionGroup* self) {
+void QActionGroup_delete(QActionGroup* self) {
 	delete self;
 }
 

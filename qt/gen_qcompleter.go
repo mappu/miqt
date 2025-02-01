@@ -123,19 +123,19 @@ func NewQCompleter6(completions []string, parent *QObject) *QCompleter {
 }
 
 func (this *QCompleter) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QCompleter_MetaObject(this.h))
+	return newQMetaObject(C.QCompleter_metaObject(this.h))
 }
 
 func (this *QCompleter) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QCompleter_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QCompleter_metacast(this.h, param1_Cstring))
 }
 
 func QCompleter_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCompleter_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCompleter_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -144,127 +144,127 @@ func QCompleter_Tr(s string) string {
 func QCompleter_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCompleter_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCompleter_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCompleter) SetWidget(widget *QWidget) {
-	C.QCompleter_SetWidget(this.h, widget.cPointer())
+	C.QCompleter_setWidget(this.h, widget.cPointer())
 }
 
 func (this *QCompleter) Widget() *QWidget {
-	return newQWidget(C.QCompleter_Widget(this.h))
+	return newQWidget(C.QCompleter_widget(this.h))
 }
 
 func (this *QCompleter) SetModel(c *QAbstractItemModel) {
-	C.QCompleter_SetModel(this.h, c.cPointer())
+	C.QCompleter_setModel(this.h, c.cPointer())
 }
 
 func (this *QCompleter) Model() *QAbstractItemModel {
-	return newQAbstractItemModel(C.QCompleter_Model(this.h))
+	return newQAbstractItemModel(C.QCompleter_model(this.h))
 }
 
 func (this *QCompleter) SetCompletionMode(mode QCompleter__CompletionMode) {
-	C.QCompleter_SetCompletionMode(this.h, (C.int)(mode))
+	C.QCompleter_setCompletionMode(this.h, (C.int)(mode))
 }
 
 func (this *QCompleter) CompletionMode() QCompleter__CompletionMode {
-	return (QCompleter__CompletionMode)(C.QCompleter_CompletionMode(this.h))
+	return (QCompleter__CompletionMode)(C.QCompleter_completionMode(this.h))
 }
 
 func (this *QCompleter) SetFilterMode(filterMode MatchFlag) {
-	C.QCompleter_SetFilterMode(this.h, (C.int)(filterMode))
+	C.QCompleter_setFilterMode(this.h, (C.int)(filterMode))
 }
 
 func (this *QCompleter) FilterMode() MatchFlag {
-	return (MatchFlag)(C.QCompleter_FilterMode(this.h))
+	return (MatchFlag)(C.QCompleter_filterMode(this.h))
 }
 
 func (this *QCompleter) Popup() *QAbstractItemView {
-	return newQAbstractItemView(C.QCompleter_Popup(this.h))
+	return newQAbstractItemView(C.QCompleter_popup(this.h))
 }
 
 func (this *QCompleter) SetPopup(popup *QAbstractItemView) {
-	C.QCompleter_SetPopup(this.h, popup.cPointer())
+	C.QCompleter_setPopup(this.h, popup.cPointer())
 }
 
 func (this *QCompleter) SetCaseSensitivity(caseSensitivity CaseSensitivity) {
-	C.QCompleter_SetCaseSensitivity(this.h, (C.int)(caseSensitivity))
+	C.QCompleter_setCaseSensitivity(this.h, (C.int)(caseSensitivity))
 }
 
 func (this *QCompleter) CaseSensitivity() CaseSensitivity {
-	return (CaseSensitivity)(C.QCompleter_CaseSensitivity(this.h))
+	return (CaseSensitivity)(C.QCompleter_caseSensitivity(this.h))
 }
 
 func (this *QCompleter) SetModelSorting(sorting QCompleter__ModelSorting) {
-	C.QCompleter_SetModelSorting(this.h, (C.int)(sorting))
+	C.QCompleter_setModelSorting(this.h, (C.int)(sorting))
 }
 
 func (this *QCompleter) ModelSorting() QCompleter__ModelSorting {
-	return (QCompleter__ModelSorting)(C.QCompleter_ModelSorting(this.h))
+	return (QCompleter__ModelSorting)(C.QCompleter_modelSorting(this.h))
 }
 
 func (this *QCompleter) SetCompletionColumn(column int) {
-	C.QCompleter_SetCompletionColumn(this.h, (C.int)(column))
+	C.QCompleter_setCompletionColumn(this.h, (C.int)(column))
 }
 
 func (this *QCompleter) CompletionColumn() int {
-	return (int)(C.QCompleter_CompletionColumn(this.h))
+	return (int)(C.QCompleter_completionColumn(this.h))
 }
 
 func (this *QCompleter) SetCompletionRole(role int) {
-	C.QCompleter_SetCompletionRole(this.h, (C.int)(role))
+	C.QCompleter_setCompletionRole(this.h, (C.int)(role))
 }
 
 func (this *QCompleter) CompletionRole() int {
-	return (int)(C.QCompleter_CompletionRole(this.h))
+	return (int)(C.QCompleter_completionRole(this.h))
 }
 
 func (this *QCompleter) WrapAround() bool {
-	return (bool)(C.QCompleter_WrapAround(this.h))
+	return (bool)(C.QCompleter_wrapAround(this.h))
 }
 
 func (this *QCompleter) MaxVisibleItems() int {
-	return (int)(C.QCompleter_MaxVisibleItems(this.h))
+	return (int)(C.QCompleter_maxVisibleItems(this.h))
 }
 
 func (this *QCompleter) SetMaxVisibleItems(maxItems int) {
-	C.QCompleter_SetMaxVisibleItems(this.h, (C.int)(maxItems))
+	C.QCompleter_setMaxVisibleItems(this.h, (C.int)(maxItems))
 }
 
 func (this *QCompleter) CompletionCount() int {
-	return (int)(C.QCompleter_CompletionCount(this.h))
+	return (int)(C.QCompleter_completionCount(this.h))
 }
 
 func (this *QCompleter) SetCurrentRow(row int) bool {
-	return (bool)(C.QCompleter_SetCurrentRow(this.h, (C.int)(row)))
+	return (bool)(C.QCompleter_setCurrentRow(this.h, (C.int)(row)))
 }
 
 func (this *QCompleter) CurrentRow() int {
-	return (int)(C.QCompleter_CurrentRow(this.h))
+	return (int)(C.QCompleter_currentRow(this.h))
 }
 
 func (this *QCompleter) CurrentIndex() *QModelIndex {
-	_goptr := newQModelIndex(C.QCompleter_CurrentIndex(this.h))
+	_goptr := newQModelIndex(C.QCompleter_currentIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCompleter) CurrentCompletion() string {
-	var _ms C.struct_miqt_string = C.QCompleter_CurrentCompletion(this.h)
+	var _ms C.struct_miqt_string = C.QCompleter_currentCompletion(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCompleter) CompletionModel() *QAbstractItemModel {
-	return newQAbstractItemModel(C.QCompleter_CompletionModel(this.h))
+	return newQAbstractItemModel(C.QCompleter_completionModel(this.h))
 }
 
 func (this *QCompleter) CompletionPrefix() string {
-	var _ms C.struct_miqt_string = C.QCompleter_CompletionPrefix(this.h)
+	var _ms C.struct_miqt_string = C.QCompleter_completionPrefix(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -275,19 +275,19 @@ func (this *QCompleter) SetCompletionPrefix(prefix string) {
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
 	defer C.free(unsafe.Pointer(prefix_ms.data))
-	C.QCompleter_SetCompletionPrefix(this.h, prefix_ms)
+	C.QCompleter_setCompletionPrefix(this.h, prefix_ms)
 }
 
 func (this *QCompleter) Complete() {
-	C.QCompleter_Complete(this.h)
+	C.QCompleter_complete(this.h)
 }
 
 func (this *QCompleter) SetWrapAround(wrap bool) {
-	C.QCompleter_SetWrapAround(this.h, (C.bool)(wrap))
+	C.QCompleter_setWrapAround(this.h, (C.bool)(wrap))
 }
 
 func (this *QCompleter) PathFromIndex(index *QModelIndex) string {
-	var _ms C.struct_miqt_string = C.QCompleter_PathFromIndex(this.h, index.cPointer())
+	var _ms C.struct_miqt_string = C.QCompleter_pathFromIndex(this.h, index.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -298,7 +298,7 @@ func (this *QCompleter) SplitPath(path string) []string {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	var _ma C.struct_miqt_array = C.QCompleter_SplitPath(this.h, path_ms)
+	var _ma C.struct_miqt_array = C.QCompleter_splitPath(this.h, path_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -315,14 +315,14 @@ func (this *QCompleter) Activated(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QCompleter_Activated(this.h, text_ms)
+	C.QCompleter_activated(this.h, text_ms)
 }
 func (this *QCompleter) OnActivated(slot func(text string)) {
-	C.QCompleter_connect_Activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCompleter_connect_activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCompleter_Activated
-func miqt_exec_callback_QCompleter_Activated(cb C.intptr_t, text C.struct_miqt_string) {
+//export miqt_exec_callback_QCompleter_activated
+func miqt_exec_callback_QCompleter_activated(cb C.intptr_t, text C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -338,14 +338,14 @@ func miqt_exec_callback_QCompleter_Activated(cb C.intptr_t, text C.struct_miqt_s
 }
 
 func (this *QCompleter) ActivatedWithIndex(index *QModelIndex) {
-	C.QCompleter_ActivatedWithIndex(this.h, index.cPointer())
+	C.QCompleter_activatedWithIndex(this.h, index.cPointer())
 }
 func (this *QCompleter) OnActivatedWithIndex(slot func(index *QModelIndex)) {
-	C.QCompleter_connect_ActivatedWithIndex(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCompleter_connect_activatedWithIndex(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCompleter_ActivatedWithIndex
-func miqt_exec_callback_QCompleter_ActivatedWithIndex(cb C.intptr_t, index *C.QModelIndex) {
+//export miqt_exec_callback_QCompleter_activatedWithIndex
+func miqt_exec_callback_QCompleter_activatedWithIndex(cb C.intptr_t, index *C.QModelIndex) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -362,14 +362,14 @@ func (this *QCompleter) Highlighted(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QCompleter_Highlighted(this.h, text_ms)
+	C.QCompleter_highlighted(this.h, text_ms)
 }
 func (this *QCompleter) OnHighlighted(slot func(text string)) {
-	C.QCompleter_connect_Highlighted(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCompleter_connect_highlighted(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCompleter_Highlighted
-func miqt_exec_callback_QCompleter_Highlighted(cb C.intptr_t, text C.struct_miqt_string) {
+//export miqt_exec_callback_QCompleter_highlighted
+func miqt_exec_callback_QCompleter_highlighted(cb C.intptr_t, text C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -385,14 +385,14 @@ func miqt_exec_callback_QCompleter_Highlighted(cb C.intptr_t, text C.struct_miqt
 }
 
 func (this *QCompleter) HighlightedWithIndex(index *QModelIndex) {
-	C.QCompleter_HighlightedWithIndex(this.h, index.cPointer())
+	C.QCompleter_highlightedWithIndex(this.h, index.cPointer())
 }
 func (this *QCompleter) OnHighlightedWithIndex(slot func(index *QModelIndex)) {
-	C.QCompleter_connect_HighlightedWithIndex(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCompleter_connect_highlightedWithIndex(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCompleter_HighlightedWithIndex
-func miqt_exec_callback_QCompleter_HighlightedWithIndex(cb C.intptr_t, index *C.QModelIndex) {
+//export miqt_exec_callback_QCompleter_highlightedWithIndex
+func miqt_exec_callback_QCompleter_highlightedWithIndex(cb C.intptr_t, index *C.QModelIndex) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(index *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -409,7 +409,7 @@ func QCompleter_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCompleter_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCompleter_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -420,7 +420,7 @@ func QCompleter_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCompleter_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCompleter_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -431,7 +431,7 @@ func QCompleter_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCompleter_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCompleter_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -442,32 +442,32 @@ func QCompleter_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCompleter_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCompleter_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCompleter) Complete1(rect *QRect) {
-	C.QCompleter_Complete1(this.h, rect.cPointer())
+	C.QCompleter_complete1(this.h, rect.cPointer())
 }
 
 func (this *QCompleter) callVirtualBase_PathFromIndex(index *QModelIndex) string {
 
-	var _ms C.struct_miqt_string = C.QCompleter_virtualbase_PathFromIndex(unsafe.Pointer(this.h), index.cPointer())
+	var _ms C.struct_miqt_string = C.QCompleter_virtualbase_pathFromIndex(unsafe.Pointer(this.h), index.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QCompleter) OnPathFromIndex(slot func(super func(index *QModelIndex) string, index *QModelIndex) string) {
-	ok := C.QCompleter_override_virtual_PathFromIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCompleter) OnpathFromIndex(slot func(super func(index *QModelIndex) string, index *QModelIndex) string) {
+	ok := C.QCompleter_override_virtual_pathFromIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCompleter_PathFromIndex
-func miqt_exec_callback_QCompleter_PathFromIndex(self *C.QCompleter, cb C.intptr_t, index *C.QModelIndex) C.struct_miqt_string {
+//export miqt_exec_callback_QCompleter_pathFromIndex
+func miqt_exec_callback_QCompleter_pathFromIndex(self *C.QCompleter, cb C.intptr_t, index *C.QModelIndex) C.struct_miqt_string {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) string, index *QModelIndex) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -492,7 +492,7 @@ func (this *QCompleter) callVirtualBase_SplitPath(path string) []string {
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
 
-	var _ma C.struct_miqt_array = C.QCompleter_virtualbase_SplitPath(unsafe.Pointer(this.h), path_ms)
+	var _ma C.struct_miqt_array = C.QCompleter_virtualbase_splitPath(unsafe.Pointer(this.h), path_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -504,15 +504,15 @@ func (this *QCompleter) callVirtualBase_SplitPath(path string) []string {
 	return _ret
 
 }
-func (this *QCompleter) OnSplitPath(slot func(super func(path string) []string, path string) []string) {
-	ok := C.QCompleter_override_virtual_SplitPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCompleter) OnsplitPath(slot func(super func(path string) []string, path string) []string) {
+	ok := C.QCompleter_override_virtual_splitPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCompleter_SplitPath
-func miqt_exec_callback_QCompleter_SplitPath(self *C.QCompleter, cb C.intptr_t, path C.struct_miqt_string) C.struct_miqt_array {
+//export miqt_exec_callback_QCompleter_splitPath
+func miqt_exec_callback_QCompleter_splitPath(self *C.QCompleter, cb C.intptr_t, path C.struct_miqt_string) C.struct_miqt_array {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(path string) []string, path string) []string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -542,18 +542,18 @@ func miqt_exec_callback_QCompleter_SplitPath(self *C.QCompleter, cb C.intptr_t, 
 
 func (this *QCompleter) callVirtualBase_EventFilter(o *QObject, e *QEvent) bool {
 
-	return (bool)(C.QCompleter_virtualbase_EventFilter(unsafe.Pointer(this.h), o.cPointer(), e.cPointer()))
+	return (bool)(C.QCompleter_virtualbase_eventFilter(unsafe.Pointer(this.h), o.cPointer(), e.cPointer()))
 
 }
-func (this *QCompleter) OnEventFilter(slot func(super func(o *QObject, e *QEvent) bool, o *QObject, e *QEvent) bool) {
-	ok := C.QCompleter_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCompleter) OneventFilter(slot func(super func(o *QObject, e *QEvent) bool, o *QObject, e *QEvent) bool) {
+	ok := C.QCompleter_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCompleter_EventFilter
-func miqt_exec_callback_QCompleter_EventFilter(self *C.QCompleter, cb C.intptr_t, o *C.QObject, e *C.QEvent) C.bool {
+//export miqt_exec_callback_QCompleter_eventFilter
+func miqt_exec_callback_QCompleter_eventFilter(self *C.QCompleter, cb C.intptr_t, o *C.QObject, e *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(o *QObject, e *QEvent) bool, o *QObject, e *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -572,18 +572,18 @@ func miqt_exec_callback_QCompleter_EventFilter(self *C.QCompleter, cb C.intptr_t
 
 func (this *QCompleter) callVirtualBase_Event(param1 *QEvent) bool {
 
-	return (bool)(C.QCompleter_virtualbase_Event(unsafe.Pointer(this.h), param1.cPointer()))
+	return (bool)(C.QCompleter_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
 }
-func (this *QCompleter) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
-	ok := C.QCompleter_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCompleter) Onevent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	ok := C.QCompleter_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCompleter_Event
-func miqt_exec_callback_QCompleter_Event(self *C.QCompleter, cb C.intptr_t, param1 *C.QEvent) C.bool {
+//export miqt_exec_callback_QCompleter_event
+func miqt_exec_callback_QCompleter_event(self *C.QCompleter, cb C.intptr_t, param1 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent) bool, param1 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -600,18 +600,18 @@ func miqt_exec_callback_QCompleter_Event(self *C.QCompleter, cb C.intptr_t, para
 
 func (this *QCompleter) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QCompleter_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QCompleter_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QCompleter) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QCompleter_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCompleter) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QCompleter_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCompleter_TimerEvent
-func miqt_exec_callback_QCompleter_TimerEvent(self *C.QCompleter, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QCompleter_timerEvent
+func miqt_exec_callback_QCompleter_timerEvent(self *C.QCompleter, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -626,18 +626,18 @@ func miqt_exec_callback_QCompleter_TimerEvent(self *C.QCompleter, cb C.intptr_t,
 
 func (this *QCompleter) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QCompleter_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QCompleter_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QCompleter) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QCompleter_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCompleter) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QCompleter_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCompleter_ChildEvent
-func miqt_exec_callback_QCompleter_ChildEvent(self *C.QCompleter, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QCompleter_childEvent
+func miqt_exec_callback_QCompleter_childEvent(self *C.QCompleter, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -652,18 +652,18 @@ func miqt_exec_callback_QCompleter_ChildEvent(self *C.QCompleter, cb C.intptr_t,
 
 func (this *QCompleter) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QCompleter_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QCompleter_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QCompleter) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QCompleter_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCompleter) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QCompleter_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCompleter_CustomEvent
-func miqt_exec_callback_QCompleter_CustomEvent(self *C.QCompleter, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QCompleter_customEvent
+func miqt_exec_callback_QCompleter_customEvent(self *C.QCompleter, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -678,18 +678,18 @@ func miqt_exec_callback_QCompleter_CustomEvent(self *C.QCompleter, cb C.intptr_t
 
 func (this *QCompleter) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QCompleter_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QCompleter_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QCompleter) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QCompleter_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCompleter) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QCompleter_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCompleter_ConnectNotify
-func miqt_exec_callback_QCompleter_ConnectNotify(self *C.QCompleter, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QCompleter_connectNotify
+func miqt_exec_callback_QCompleter_connectNotify(self *C.QCompleter, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -704,18 +704,18 @@ func miqt_exec_callback_QCompleter_ConnectNotify(self *C.QCompleter, cb C.intptr
 
 func (this *QCompleter) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QCompleter_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QCompleter_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QCompleter) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QCompleter_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCompleter) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QCompleter_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCompleter_DisconnectNotify
-func miqt_exec_callback_QCompleter_DisconnectNotify(self *C.QCompleter, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QCompleter_disconnectNotify
+func miqt_exec_callback_QCompleter_disconnectNotify(self *C.QCompleter, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -730,7 +730,7 @@ func miqt_exec_callback_QCompleter_DisconnectNotify(self *C.QCompleter, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QCompleter) Delete() {
-	C.QCompleter_Delete(this.h)
+	C.QCompleter_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

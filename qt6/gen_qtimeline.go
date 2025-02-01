@@ -84,132 +84,132 @@ func NewQTimeLine3(duration int, parent *QObject) *QTimeLine {
 }
 
 func (this *QTimeLine) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QTimeLine_MetaObject(this.h))
+	return newQMetaObject(C.QTimeLine_metaObject(this.h))
 }
 
 func (this *QTimeLine) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QTimeLine_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QTimeLine_metacast(this.h, param1_Cstring))
 }
 
 func QTimeLine_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QTimeLine_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QTimeLine_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTimeLine) State() QTimeLine__State {
-	return (QTimeLine__State)(C.QTimeLine_State(this.h))
+	return (QTimeLine__State)(C.QTimeLine_state(this.h))
 }
 
 func (this *QTimeLine) LoopCount() int {
-	return (int)(C.QTimeLine_LoopCount(this.h))
+	return (int)(C.QTimeLine_loopCount(this.h))
 }
 
 func (this *QTimeLine) SetLoopCount(count int) {
-	C.QTimeLine_SetLoopCount(this.h, (C.int)(count))
+	C.QTimeLine_setLoopCount(this.h, (C.int)(count))
 }
 
 func (this *QTimeLine) Direction() QTimeLine__Direction {
-	return (QTimeLine__Direction)(C.QTimeLine_Direction(this.h))
+	return (QTimeLine__Direction)(C.QTimeLine_direction(this.h))
 }
 
 func (this *QTimeLine) SetDirection(direction QTimeLine__Direction) {
-	C.QTimeLine_SetDirection(this.h, (C.int)(direction))
+	C.QTimeLine_setDirection(this.h, (C.int)(direction))
 }
 
 func (this *QTimeLine) Duration() int {
-	return (int)(C.QTimeLine_Duration(this.h))
+	return (int)(C.QTimeLine_duration(this.h))
 }
 
 func (this *QTimeLine) SetDuration(duration int) {
-	C.QTimeLine_SetDuration(this.h, (C.int)(duration))
+	C.QTimeLine_setDuration(this.h, (C.int)(duration))
 }
 
 func (this *QTimeLine) StartFrame() int {
-	return (int)(C.QTimeLine_StartFrame(this.h))
+	return (int)(C.QTimeLine_startFrame(this.h))
 }
 
 func (this *QTimeLine) SetStartFrame(frame int) {
-	C.QTimeLine_SetStartFrame(this.h, (C.int)(frame))
+	C.QTimeLine_setStartFrame(this.h, (C.int)(frame))
 }
 
 func (this *QTimeLine) EndFrame() int {
-	return (int)(C.QTimeLine_EndFrame(this.h))
+	return (int)(C.QTimeLine_endFrame(this.h))
 }
 
 func (this *QTimeLine) SetEndFrame(frame int) {
-	C.QTimeLine_SetEndFrame(this.h, (C.int)(frame))
+	C.QTimeLine_setEndFrame(this.h, (C.int)(frame))
 }
 
 func (this *QTimeLine) SetFrameRange(startFrame int, endFrame int) {
-	C.QTimeLine_SetFrameRange(this.h, (C.int)(startFrame), (C.int)(endFrame))
+	C.QTimeLine_setFrameRange(this.h, (C.int)(startFrame), (C.int)(endFrame))
 }
 
 func (this *QTimeLine) UpdateInterval() int {
-	return (int)(C.QTimeLine_UpdateInterval(this.h))
+	return (int)(C.QTimeLine_updateInterval(this.h))
 }
 
 func (this *QTimeLine) SetUpdateInterval(interval int) {
-	C.QTimeLine_SetUpdateInterval(this.h, (C.int)(interval))
+	C.QTimeLine_setUpdateInterval(this.h, (C.int)(interval))
 }
 
 func (this *QTimeLine) EasingCurve() *QEasingCurve {
-	_goptr := newQEasingCurve(C.QTimeLine_EasingCurve(this.h))
+	_goptr := newQEasingCurve(C.QTimeLine_easingCurve(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTimeLine) SetEasingCurve(curve *QEasingCurve) {
-	C.QTimeLine_SetEasingCurve(this.h, curve.cPointer())
+	C.QTimeLine_setEasingCurve(this.h, curve.cPointer())
 }
 
 func (this *QTimeLine) CurrentTime() int {
-	return (int)(C.QTimeLine_CurrentTime(this.h))
+	return (int)(C.QTimeLine_currentTime(this.h))
 }
 
 func (this *QTimeLine) CurrentFrame() int {
-	return (int)(C.QTimeLine_CurrentFrame(this.h))
+	return (int)(C.QTimeLine_currentFrame(this.h))
 }
 
 func (this *QTimeLine) CurrentValue() float64 {
-	return (float64)(C.QTimeLine_CurrentValue(this.h))
+	return (float64)(C.QTimeLine_currentValue(this.h))
 }
 
 func (this *QTimeLine) FrameForTime(msec int) int {
-	return (int)(C.QTimeLine_FrameForTime(this.h, (C.int)(msec)))
+	return (int)(C.QTimeLine_frameForTime(this.h, (C.int)(msec)))
 }
 
 func (this *QTimeLine) ValueForTime(msec int) float64 {
-	return (float64)(C.QTimeLine_ValueForTime(this.h, (C.int)(msec)))
+	return (float64)(C.QTimeLine_valueForTime(this.h, (C.int)(msec)))
 }
 
 func (this *QTimeLine) Start() {
-	C.QTimeLine_Start(this.h)
+	C.QTimeLine_start(this.h)
 }
 
 func (this *QTimeLine) Resume() {
-	C.QTimeLine_Resume(this.h)
+	C.QTimeLine_resume(this.h)
 }
 
 func (this *QTimeLine) Stop() {
-	C.QTimeLine_Stop(this.h)
+	C.QTimeLine_stop(this.h)
 }
 
 func (this *QTimeLine) SetPaused(paused bool) {
-	C.QTimeLine_SetPaused(this.h, (C.bool)(paused))
+	C.QTimeLine_setPaused(this.h, (C.bool)(paused))
 }
 
 func (this *QTimeLine) SetCurrentTime(msec int) {
-	C.QTimeLine_SetCurrentTime(this.h, (C.int)(msec))
+	C.QTimeLine_setCurrentTime(this.h, (C.int)(msec))
 }
 
 func (this *QTimeLine) ToggleDirection() {
-	C.QTimeLine_ToggleDirection(this.h)
+	C.QTimeLine_toggleDirection(this.h)
 }
 
 func QTimeLine_Tr2(s string, c string) string {
@@ -217,7 +217,7 @@ func QTimeLine_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTimeLine_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QTimeLine_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -228,7 +228,7 @@ func QTimeLine_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTimeLine_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QTimeLine_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -236,18 +236,18 @@ func QTimeLine_Tr3(s string, c string, n int) string {
 
 func (this *QTimeLine) callVirtualBase_ValueForTime(msec int) float64 {
 
-	return (float64)(C.QTimeLine_virtualbase_ValueForTime(unsafe.Pointer(this.h), (C.int)(msec)))
+	return (float64)(C.QTimeLine_virtualbase_valueForTime(unsafe.Pointer(this.h), (C.int)(msec)))
 
 }
-func (this *QTimeLine) OnValueForTime(slot func(super func(msec int) float64, msec int) float64) {
-	ok := C.QTimeLine_override_virtual_ValueForTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTimeLine) OnvalueForTime(slot func(super func(msec int) float64, msec int) float64) {
+	ok := C.QTimeLine_override_virtual_valueForTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTimeLine_ValueForTime
-func miqt_exec_callback_QTimeLine_ValueForTime(self *C.QTimeLine, cb C.intptr_t, msec C.int) C.double {
+//export miqt_exec_callback_QTimeLine_valueForTime
+func miqt_exec_callback_QTimeLine_valueForTime(self *C.QTimeLine, cb C.intptr_t, msec C.int) C.double {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msec int) float64, msec int) float64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -264,18 +264,18 @@ func miqt_exec_callback_QTimeLine_ValueForTime(self *C.QTimeLine, cb C.intptr_t,
 
 func (this *QTimeLine) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QTimeLine_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTimeLine_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTimeLine) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QTimeLine_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTimeLine) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QTimeLine_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTimeLine_TimerEvent
-func miqt_exec_callback_QTimeLine_TimerEvent(self *C.QTimeLine, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QTimeLine_timerEvent
+func miqt_exec_callback_QTimeLine_timerEvent(self *C.QTimeLine, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -290,18 +290,18 @@ func miqt_exec_callback_QTimeLine_TimerEvent(self *C.QTimeLine, cb C.intptr_t, e
 
 func (this *QTimeLine) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QTimeLine_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QTimeLine_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QTimeLine) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QTimeLine_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTimeLine) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QTimeLine_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTimeLine_Event
-func miqt_exec_callback_QTimeLine_Event(self *C.QTimeLine, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QTimeLine_event
+func miqt_exec_callback_QTimeLine_event(self *C.QTimeLine, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -318,18 +318,18 @@ func miqt_exec_callback_QTimeLine_Event(self *C.QTimeLine, cb C.intptr_t, event 
 
 func (this *QTimeLine) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QTimeLine_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QTimeLine_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QTimeLine) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QTimeLine_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTimeLine) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QTimeLine_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTimeLine_EventFilter
-func miqt_exec_callback_QTimeLine_EventFilter(self *C.QTimeLine, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QTimeLine_eventFilter
+func miqt_exec_callback_QTimeLine_eventFilter(self *C.QTimeLine, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -348,18 +348,18 @@ func miqt_exec_callback_QTimeLine_EventFilter(self *C.QTimeLine, cb C.intptr_t, 
 
 func (this *QTimeLine) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QTimeLine_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTimeLine_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTimeLine) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QTimeLine_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTimeLine) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QTimeLine_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTimeLine_ChildEvent
-func miqt_exec_callback_QTimeLine_ChildEvent(self *C.QTimeLine, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QTimeLine_childEvent
+func miqt_exec_callback_QTimeLine_childEvent(self *C.QTimeLine, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -374,18 +374,18 @@ func miqt_exec_callback_QTimeLine_ChildEvent(self *C.QTimeLine, cb C.intptr_t, e
 
 func (this *QTimeLine) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QTimeLine_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTimeLine_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTimeLine) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QTimeLine_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTimeLine) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QTimeLine_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTimeLine_CustomEvent
-func miqt_exec_callback_QTimeLine_CustomEvent(self *C.QTimeLine, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QTimeLine_customEvent
+func miqt_exec_callback_QTimeLine_customEvent(self *C.QTimeLine, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -400,18 +400,18 @@ func miqt_exec_callback_QTimeLine_CustomEvent(self *C.QTimeLine, cb C.intptr_t, 
 
 func (this *QTimeLine) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QTimeLine_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QTimeLine_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTimeLine) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QTimeLine_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTimeLine) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTimeLine_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTimeLine_ConnectNotify
-func miqt_exec_callback_QTimeLine_ConnectNotify(self *C.QTimeLine, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QTimeLine_connectNotify
+func miqt_exec_callback_QTimeLine_connectNotify(self *C.QTimeLine, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -426,18 +426,18 @@ func miqt_exec_callback_QTimeLine_ConnectNotify(self *C.QTimeLine, cb C.intptr_t
 
 func (this *QTimeLine) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QTimeLine_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QTimeLine_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTimeLine) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QTimeLine_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTimeLine) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTimeLine_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTimeLine_DisconnectNotify
-func miqt_exec_callback_QTimeLine_DisconnectNotify(self *C.QTimeLine, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QTimeLine_disconnectNotify
+func miqt_exec_callback_QTimeLine_disconnectNotify(self *C.QTimeLine, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -452,7 +452,7 @@ func miqt_exec_callback_QTimeLine_DisconnectNotify(self *C.QTimeLine, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QTimeLine) Delete() {
-	C.QTimeLine_Delete(this.h)
+	C.QTimeLine_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

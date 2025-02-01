@@ -46,39 +46,39 @@ QSslCertificate* QSslCertificate_new6(struct miqt_string data, int format) {
 	return new QSslCertificate(data_QByteArray, static_cast<QSsl::EncodingFormat>(format));
 }
 
-void QSslCertificate_OperatorAssign(QSslCertificate* self, QSslCertificate* other) {
+void QSslCertificate_operatorAssign(QSslCertificate* self, QSslCertificate* other) {
 	self->operator=(*other);
 }
 
-void QSslCertificate_Swap(QSslCertificate* self, QSslCertificate* other) {
+void QSslCertificate_swap(QSslCertificate* self, QSslCertificate* other) {
 	self->swap(*other);
 }
 
-bool QSslCertificate_OperatorEqual(const QSslCertificate* self, QSslCertificate* other) {
+bool QSslCertificate_operatorEqual(const QSslCertificate* self, QSslCertificate* other) {
 	return (*self == *other);
 }
 
-bool QSslCertificate_OperatorNotEqual(const QSslCertificate* self, QSslCertificate* other) {
+bool QSslCertificate_operatorNotEqual(const QSslCertificate* self, QSslCertificate* other) {
 	return (*self != *other);
 }
 
-bool QSslCertificate_IsNull(const QSslCertificate* self) {
+bool QSslCertificate_isNull(const QSslCertificate* self) {
 	return self->isNull();
 }
 
-bool QSslCertificate_IsBlacklisted(const QSslCertificate* self) {
+bool QSslCertificate_isBlacklisted(const QSslCertificate* self) {
 	return self->isBlacklisted();
 }
 
-bool QSslCertificate_IsSelfSigned(const QSslCertificate* self) {
+bool QSslCertificate_isSelfSigned(const QSslCertificate* self) {
 	return self->isSelfSigned();
 }
 
-void QSslCertificate_Clear(QSslCertificate* self) {
+void QSslCertificate_clear(QSslCertificate* self) {
 	self->clear();
 }
 
-struct miqt_string QSslCertificate_Version(const QSslCertificate* self) {
+struct miqt_string QSslCertificate_version(const QSslCertificate* self) {
 	QByteArray _qb = self->version();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -87,7 +87,7 @@ struct miqt_string QSslCertificate_Version(const QSslCertificate* self) {
 	return _ms;
 }
 
-struct miqt_string QSslCertificate_SerialNumber(const QSslCertificate* self) {
+struct miqt_string QSslCertificate_serialNumber(const QSslCertificate* self) {
 	QByteArray _qb = self->serialNumber();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -96,7 +96,7 @@ struct miqt_string QSslCertificate_SerialNumber(const QSslCertificate* self) {
 	return _ms;
 }
 
-struct miqt_string QSslCertificate_Digest(const QSslCertificate* self) {
+struct miqt_string QSslCertificate_digest(const QSslCertificate* self) {
 	QByteArray _qb = self->digest();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -105,7 +105,7 @@ struct miqt_string QSslCertificate_Digest(const QSslCertificate* self) {
 	return _ms;
 }
 
-struct miqt_array /* of struct miqt_string */  QSslCertificate_IssuerInfo(const QSslCertificate* self, int info) {
+struct miqt_array /* of struct miqt_string */  QSslCertificate_issuerInfo(const QSslCertificate* self, int info) {
 	QStringList _ret = self->issuerInfo(static_cast<QSslCertificate::SubjectInfo>(info));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -125,7 +125,7 @@ struct miqt_array /* of struct miqt_string */  QSslCertificate_IssuerInfo(const 
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_string */  QSslCertificate_IssuerInfoWithAttribute(const QSslCertificate* self, struct miqt_string attribute) {
+struct miqt_array /* of struct miqt_string */  QSslCertificate_issuerInfoWithAttribute(const QSslCertificate* self, struct miqt_string attribute) {
 	QByteArray attribute_QByteArray(attribute.data, attribute.len);
 	QStringList _ret = self->issuerInfo(attribute_QByteArray);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -146,7 +146,7 @@ struct miqt_array /* of struct miqt_string */  QSslCertificate_IssuerInfoWithAtt
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_string */  QSslCertificate_SubjectInfo(const QSslCertificate* self, int info) {
+struct miqt_array /* of struct miqt_string */  QSslCertificate_subjectInfo(const QSslCertificate* self, int info) {
 	QStringList _ret = self->subjectInfo(static_cast<QSslCertificate::SubjectInfo>(info));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -166,7 +166,7 @@ struct miqt_array /* of struct miqt_string */  QSslCertificate_SubjectInfo(const
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_string */  QSslCertificate_SubjectInfoWithAttribute(const QSslCertificate* self, struct miqt_string attribute) {
+struct miqt_array /* of struct miqt_string */  QSslCertificate_subjectInfoWithAttribute(const QSslCertificate* self, struct miqt_string attribute) {
 	QByteArray attribute_QByteArray(attribute.data, attribute.len);
 	QStringList _ret = self->subjectInfo(attribute_QByteArray);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -187,7 +187,7 @@ struct miqt_array /* of struct miqt_string */  QSslCertificate_SubjectInfoWithAt
 	return _out;
 }
 
-struct miqt_string QSslCertificate_IssuerDisplayName(const QSslCertificate* self) {
+struct miqt_string QSslCertificate_issuerDisplayName(const QSslCertificate* self) {
 	QString _ret = self->issuerDisplayName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -198,7 +198,7 @@ struct miqt_string QSslCertificate_IssuerDisplayName(const QSslCertificate* self
 	return _ms;
 }
 
-struct miqt_string QSslCertificate_SubjectDisplayName(const QSslCertificate* self) {
+struct miqt_string QSslCertificate_subjectDisplayName(const QSslCertificate* self) {
 	QString _ret = self->subjectDisplayName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -209,7 +209,7 @@ struct miqt_string QSslCertificate_SubjectDisplayName(const QSslCertificate* sel
 	return _ms;
 }
 
-struct miqt_array /* of struct miqt_string */  QSslCertificate_SubjectInfoAttributes(const QSslCertificate* self) {
+struct miqt_array /* of struct miqt_string */  QSslCertificate_subjectInfoAttributes(const QSslCertificate* self) {
 	QList<QByteArray> _ret = self->subjectInfoAttributes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -227,7 +227,7 @@ struct miqt_array /* of struct miqt_string */  QSslCertificate_SubjectInfoAttrib
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_string */  QSslCertificate_IssuerInfoAttributes(const QSslCertificate* self) {
+struct miqt_array /* of struct miqt_string */  QSslCertificate_issuerInfoAttributes(const QSslCertificate* self) {
 	QList<QByteArray> _ret = self->issuerInfoAttributes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -245,19 +245,19 @@ struct miqt_array /* of struct miqt_string */  QSslCertificate_IssuerInfoAttribu
 	return _out;
 }
 
-QDateTime* QSslCertificate_EffectiveDate(const QSslCertificate* self) {
+QDateTime* QSslCertificate_effectiveDate(const QSslCertificate* self) {
 	return new QDateTime(self->effectiveDate());
 }
 
-QDateTime* QSslCertificate_ExpiryDate(const QSslCertificate* self) {
+QDateTime* QSslCertificate_expiryDate(const QSslCertificate* self) {
 	return new QDateTime(self->expiryDate());
 }
 
-QSslKey* QSslCertificate_PublicKey(const QSslCertificate* self) {
+QSslKey* QSslCertificate_publicKey(const QSslCertificate* self) {
 	return new QSslKey(self->publicKey());
 }
 
-struct miqt_array /* of QSslCertificateExtension* */  QSslCertificate_Extensions(const QSslCertificate* self) {
+struct miqt_array /* of QSslCertificateExtension* */  QSslCertificate_extensions(const QSslCertificate* self) {
 	QList<QSslCertificateExtension> _ret = self->extensions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCertificateExtension** _arr = static_cast<QSslCertificateExtension**>(malloc(sizeof(QSslCertificateExtension*) * _ret.length()));
@@ -270,7 +270,7 @@ struct miqt_array /* of QSslCertificateExtension* */  QSslCertificate_Extensions
 	return _out;
 }
 
-struct miqt_string QSslCertificate_ToPem(const QSslCertificate* self) {
+struct miqt_string QSslCertificate_toPem(const QSslCertificate* self) {
 	QByteArray _qb = self->toPem();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -279,7 +279,7 @@ struct miqt_string QSslCertificate_ToPem(const QSslCertificate* self) {
 	return _ms;
 }
 
-struct miqt_string QSslCertificate_ToDer(const QSslCertificate* self) {
+struct miqt_string QSslCertificate_toDer(const QSslCertificate* self) {
 	QByteArray _qb = self->toDer();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -288,7 +288,7 @@ struct miqt_string QSslCertificate_ToDer(const QSslCertificate* self) {
 	return _ms;
 }
 
-struct miqt_string QSslCertificate_ToText(const QSslCertificate* self) {
+struct miqt_string QSslCertificate_toText(const QSslCertificate* self) {
 	QString _ret = self->toText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -299,7 +299,7 @@ struct miqt_string QSslCertificate_ToText(const QSslCertificate* self) {
 	return _ms;
 }
 
-struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromPath(struct miqt_string path, int format, int syntax) {
+struct miqt_array /* of QSslCertificate* */  QSslCertificate_fromPath(struct miqt_string path, int format, int syntax) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	QList<QSslCertificate> _ret = QSslCertificate::fromPath(path_QString, static_cast<QSsl::EncodingFormat>(format), static_cast<QRegExp::PatternSyntax>(syntax));
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -313,7 +313,7 @@ struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromPath(struct miq
 	return _out;
 }
 
-struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromPathWithPath(struct miqt_string path) {
+struct miqt_array /* of QSslCertificate* */  QSslCertificate_fromPathWithPath(struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	QList<QSslCertificate> _ret = QSslCertificate::fromPath(path_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -327,7 +327,7 @@ struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromPathWithPath(st
 	return _out;
 }
 
-struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromDevice(QIODevice* device) {
+struct miqt_array /* of QSslCertificate* */  QSslCertificate_fromDevice(QIODevice* device) {
 	QList<QSslCertificate> _ret = QSslCertificate::fromDevice(device);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCertificate** _arr = static_cast<QSslCertificate**>(malloc(sizeof(QSslCertificate*) * _ret.length()));
@@ -340,7 +340,7 @@ struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromDevice(QIODevic
 	return _out;
 }
 
-struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromData(struct miqt_string data) {
+struct miqt_array /* of QSslCertificate* */  QSslCertificate_fromData(struct miqt_string data) {
 	QByteArray data_QByteArray(data.data, data.len);
 	QList<QSslCertificate> _ret = QSslCertificate::fromData(data_QByteArray);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -354,7 +354,7 @@ struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromData(struct miq
 	return _out;
 }
 
-struct miqt_array /* of QSslError* */  QSslCertificate_Verify(struct miqt_array /* of QSslCertificate* */  certificateChain) {
+struct miqt_array /* of QSslError* */  QSslCertificate_verify(struct miqt_array /* of QSslCertificate* */  certificateChain) {
 	QList<QSslCertificate> certificateChain_QList;
 	certificateChain_QList.reserve(certificateChain.len);
 	QSslCertificate** certificateChain_arr = static_cast<QSslCertificate**>(certificateChain.data);
@@ -373,16 +373,16 @@ struct miqt_array /* of QSslError* */  QSslCertificate_Verify(struct miqt_array 
 	return _out;
 }
 
-bool QSslCertificate_ImportPkcs12(QIODevice* device, QSslKey* key, QSslCertificate* cert) {
+bool QSslCertificate_importPkcs12(QIODevice* device, QSslKey* key, QSslCertificate* cert) {
 	return QSslCertificate::importPkcs12(device, key, cert);
 }
 
-void* QSslCertificate_Handle(const QSslCertificate* self) {
+void* QSslCertificate_handle(const QSslCertificate* self) {
 	Qt::HANDLE _ret = self->handle();
 	return static_cast<void*>(_ret);
 }
 
-struct miqt_string QSslCertificate_Digest1(const QSslCertificate* self, int algorithm) {
+struct miqt_string QSslCertificate_digest1(const QSslCertificate* self, int algorithm) {
 	QByteArray _qb = self->digest(static_cast<QCryptographicHash::Algorithm>(algorithm));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -391,7 +391,7 @@ struct miqt_string QSslCertificate_Digest1(const QSslCertificate* self, int algo
 	return _ms;
 }
 
-struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromPath2(struct miqt_string path, int format) {
+struct miqt_array /* of QSslCertificate* */  QSslCertificate_fromPath2(struct miqt_string path, int format) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	QList<QSslCertificate> _ret = QSslCertificate::fromPath(path_QString, static_cast<QSsl::EncodingFormat>(format));
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -405,7 +405,7 @@ struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromPath2(struct mi
 	return _out;
 }
 
-struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromPath3(struct miqt_string path, int format, int syntax) {
+struct miqt_array /* of QSslCertificate* */  QSslCertificate_fromPath3(struct miqt_string path, int format, int syntax) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	QList<QSslCertificate> _ret = QSslCertificate::fromPath(path_QString, static_cast<QSsl::EncodingFormat>(format), static_cast<QSslCertificate::PatternSyntax>(syntax));
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -419,7 +419,7 @@ struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromPath3(struct mi
 	return _out;
 }
 
-struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromDevice2(QIODevice* device, int format) {
+struct miqt_array /* of QSslCertificate* */  QSslCertificate_fromDevice2(QIODevice* device, int format) {
 	QList<QSslCertificate> _ret = QSslCertificate::fromDevice(device, static_cast<QSsl::EncodingFormat>(format));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCertificate** _arr = static_cast<QSslCertificate**>(malloc(sizeof(QSslCertificate*) * _ret.length()));
@@ -432,7 +432,7 @@ struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromDevice2(QIODevi
 	return _out;
 }
 
-struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromData2(struct miqt_string data, int format) {
+struct miqt_array /* of QSslCertificate* */  QSslCertificate_fromData2(struct miqt_string data, int format) {
 	QByteArray data_QByteArray(data.data, data.len);
 	QList<QSslCertificate> _ret = QSslCertificate::fromData(data_QByteArray, static_cast<QSsl::EncodingFormat>(format));
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -446,7 +446,7 @@ struct miqt_array /* of QSslCertificate* */  QSslCertificate_FromData2(struct mi
 	return _out;
 }
 
-struct miqt_array /* of QSslError* */  QSslCertificate_Verify2(struct miqt_array /* of QSslCertificate* */  certificateChain, struct miqt_string hostName) {
+struct miqt_array /* of QSslError* */  QSslCertificate_verify2(struct miqt_array /* of QSslCertificate* */  certificateChain, struct miqt_string hostName) {
 	QList<QSslCertificate> certificateChain_QList;
 	certificateChain_QList.reserve(certificateChain.len);
 	QSslCertificate** certificateChain_arr = static_cast<QSslCertificate**>(certificateChain.data);
@@ -466,7 +466,7 @@ struct miqt_array /* of QSslError* */  QSslCertificate_Verify2(struct miqt_array
 	return _out;
 }
 
-bool QSslCertificate_ImportPkcs124(QIODevice* device, QSslKey* key, QSslCertificate* cert, struct miqt_array /* of QSslCertificate* */  caCertificates) {
+bool QSslCertificate_importPkcs124(QIODevice* device, QSslKey* key, QSslCertificate* cert, struct miqt_array /* of QSslCertificate* */  caCertificates) {
 	QList<QSslCertificate> caCertificates_QList;
 	caCertificates_QList.reserve(caCertificates.len);
 	QSslCertificate** caCertificates_arr = static_cast<QSslCertificate**>(caCertificates.data);
@@ -476,7 +476,7 @@ bool QSslCertificate_ImportPkcs124(QIODevice* device, QSslKey* key, QSslCertific
 	return QSslCertificate::importPkcs12(device, key, cert, &caCertificates_QList);
 }
 
-bool QSslCertificate_ImportPkcs125(QIODevice* device, QSslKey* key, QSslCertificate* cert, struct miqt_array /* of QSslCertificate* */  caCertificates, struct miqt_string passPhrase) {
+bool QSslCertificate_importPkcs125(QIODevice* device, QSslKey* key, QSslCertificate* cert, struct miqt_array /* of QSslCertificate* */  caCertificates, struct miqt_string passPhrase) {
 	QList<QSslCertificate> caCertificates_QList;
 	caCertificates_QList.reserve(caCertificates.len);
 	QSslCertificate** caCertificates_arr = static_cast<QSslCertificate**>(caCertificates.data);
@@ -487,7 +487,7 @@ bool QSslCertificate_ImportPkcs125(QIODevice* device, QSslKey* key, QSslCertific
 	return QSslCertificate::importPkcs12(device, key, cert, &caCertificates_QList, passPhrase_QByteArray);
 }
 
-void QSslCertificate_Delete(QSslCertificate* self) {
+void QSslCertificate_delete(QSslCertificate* self) {
 	delete self;
 }
 

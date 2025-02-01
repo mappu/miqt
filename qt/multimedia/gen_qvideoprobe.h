@@ -41,39 +41,39 @@ typedef struct QVideoProbe QVideoProbe;
 QVideoProbe* QVideoProbe_new();
 QVideoProbe* QVideoProbe_new2(QObject* parent);
 void QVideoProbe_virtbase(QVideoProbe* src, QObject** outptr_QObject);
-QMetaObject* QVideoProbe_MetaObject(const QVideoProbe* self);
-void* QVideoProbe_Metacast(QVideoProbe* self, const char* param1);
-struct miqt_string QVideoProbe_Tr(const char* s);
-struct miqt_string QVideoProbe_TrUtf8(const char* s);
-bool QVideoProbe_SetSource(QVideoProbe* self, QMediaObject* source);
-bool QVideoProbe_SetSourceWithSource(QVideoProbe* self, QMediaRecorder* source);
-bool QVideoProbe_IsActive(const QVideoProbe* self);
-void QVideoProbe_VideoFrameProbed(QVideoProbe* self, QVideoFrame* frame);
-void QVideoProbe_connect_VideoFrameProbed(QVideoProbe* self, intptr_t slot);
-void QVideoProbe_Flush(QVideoProbe* self);
-void QVideoProbe_connect_Flush(QVideoProbe* self, intptr_t slot);
-struct miqt_string QVideoProbe_Tr2(const char* s, const char* c);
-struct miqt_string QVideoProbe_Tr3(const char* s, const char* c, int n);
-struct miqt_string QVideoProbe_TrUtf82(const char* s, const char* c);
-struct miqt_string QVideoProbe_TrUtf83(const char* s, const char* c, int n);
-bool QVideoProbe_override_virtual_Event(void* self, intptr_t slot);
-bool QVideoProbe_virtualbase_Event(void* self, QEvent* event);
-bool QVideoProbe_override_virtual_EventFilter(void* self, intptr_t slot);
-bool QVideoProbe_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-bool QVideoProbe_override_virtual_TimerEvent(void* self, intptr_t slot);
-void QVideoProbe_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-bool QVideoProbe_override_virtual_ChildEvent(void* self, intptr_t slot);
-void QVideoProbe_virtualbase_ChildEvent(void* self, QChildEvent* event);
-bool QVideoProbe_override_virtual_CustomEvent(void* self, intptr_t slot);
-void QVideoProbe_virtualbase_CustomEvent(void* self, QEvent* event);
-bool QVideoProbe_override_virtual_ConnectNotify(void* self, intptr_t slot);
-void QVideoProbe_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-bool QVideoProbe_override_virtual_DisconnectNotify(void* self, intptr_t slot);
-void QVideoProbe_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QVideoProbe_Delete(QVideoProbe* self);
+QMetaObject* QVideoProbe_metaObject(const QVideoProbe* self);
+void* QVideoProbe_metacast(QVideoProbe* self, const char* param1);
+struct miqt_string QVideoProbe_tr(const char* s);
+struct miqt_string QVideoProbe_trUtf8(const char* s);
+bool QVideoProbe_setSource(QVideoProbe* self, QMediaObject* source);
+bool QVideoProbe_setSourceWithSource(QVideoProbe* self, QMediaRecorder* source);
+bool QVideoProbe_isActive(const QVideoProbe* self);
+void QVideoProbe_videoFrameProbed(QVideoProbe* self, QVideoFrame* frame);
+void QVideoProbe_connect_videoFrameProbed(QVideoProbe* self, intptr_t slot);
+void QVideoProbe_flush(QVideoProbe* self);
+void QVideoProbe_connect_flush(QVideoProbe* self, intptr_t slot);
+struct miqt_string QVideoProbe_tr2(const char* s, const char* c);
+struct miqt_string QVideoProbe_tr3(const char* s, const char* c, int n);
+struct miqt_string QVideoProbe_trUtf82(const char* s, const char* c);
+struct miqt_string QVideoProbe_trUtf83(const char* s, const char* c, int n);
+bool QVideoProbe_override_virtual_event(void* self, intptr_t slot);
+bool QVideoProbe_virtualbase_event(void* self, QEvent* event);
+bool QVideoProbe_override_virtual_eventFilter(void* self, intptr_t slot);
+bool QVideoProbe_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
+bool QVideoProbe_override_virtual_timerEvent(void* self, intptr_t slot);
+void QVideoProbe_virtualbase_timerEvent(void* self, QTimerEvent* event);
+bool QVideoProbe_override_virtual_childEvent(void* self, intptr_t slot);
+void QVideoProbe_virtualbase_childEvent(void* self, QChildEvent* event);
+bool QVideoProbe_override_virtual_customEvent(void* self, intptr_t slot);
+void QVideoProbe_virtualbase_customEvent(void* self, QEvent* event);
+bool QVideoProbe_override_virtual_connectNotify(void* self, intptr_t slot);
+void QVideoProbe_virtualbase_connectNotify(void* self, QMetaMethod* signal);
+bool QVideoProbe_override_virtual_disconnectNotify(void* self, intptr_t slot);
+void QVideoProbe_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QVideoProbe_delete(QVideoProbe* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

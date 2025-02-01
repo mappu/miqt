@@ -22,10 +22,10 @@ typedef struct QSharedData QSharedData;
 
 QSharedData* QSharedData_new();
 QSharedData* QSharedData_new2(QSharedData* param1);
-void QSharedData_Delete(QSharedData* self);
+void QSharedData_delete(QSharedData* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

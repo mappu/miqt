@@ -51,19 +51,19 @@ func UnsafeNewQGraphicsAnchor(h unsafe.Pointer) *QGraphicsAnchor {
 }
 
 func (this *QGraphicsAnchor) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QGraphicsAnchor_MetaObject(this.h))
+	return newQMetaObject(C.QGraphicsAnchor_metaObject(this.h))
 }
 
 func (this *QGraphicsAnchor) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QGraphicsAnchor_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QGraphicsAnchor_metacast(this.h, param1_Cstring))
 }
 
 func QGraphicsAnchor_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QGraphicsAnchor_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QGraphicsAnchor_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -72,30 +72,30 @@ func QGraphicsAnchor_Tr(s string) string {
 func QGraphicsAnchor_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QGraphicsAnchor_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QGraphicsAnchor_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QGraphicsAnchor) SetSpacing(spacing float64) {
-	C.QGraphicsAnchor_SetSpacing(this.h, (C.double)(spacing))
+	C.QGraphicsAnchor_setSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QGraphicsAnchor) UnsetSpacing() {
-	C.QGraphicsAnchor_UnsetSpacing(this.h)
+	C.QGraphicsAnchor_unsetSpacing(this.h)
 }
 
 func (this *QGraphicsAnchor) Spacing() float64 {
-	return (float64)(C.QGraphicsAnchor_Spacing(this.h))
+	return (float64)(C.QGraphicsAnchor_spacing(this.h))
 }
 
 func (this *QGraphicsAnchor) SetSizePolicy(policy QSizePolicy__Policy) {
-	C.QGraphicsAnchor_SetSizePolicy(this.h, (C.int)(policy))
+	C.QGraphicsAnchor_setSizePolicy(this.h, (C.int)(policy))
 }
 
 func (this *QGraphicsAnchor) SizePolicy() QSizePolicy__Policy {
-	return (QSizePolicy__Policy)(C.QGraphicsAnchor_SizePolicy(this.h))
+	return (QSizePolicy__Policy)(C.QGraphicsAnchor_sizePolicy(this.h))
 }
 
 func QGraphicsAnchor_Tr2(s string, c string) string {
@@ -103,7 +103,7 @@ func QGraphicsAnchor_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QGraphicsAnchor_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QGraphicsAnchor_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -114,7 +114,7 @@ func QGraphicsAnchor_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QGraphicsAnchor_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QGraphicsAnchor_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -125,7 +125,7 @@ func QGraphicsAnchor_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QGraphicsAnchor_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QGraphicsAnchor_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -136,7 +136,7 @@ func QGraphicsAnchor_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QGraphicsAnchor_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QGraphicsAnchor_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -144,7 +144,7 @@ func QGraphicsAnchor_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QGraphicsAnchor) Delete() {
-	C.QGraphicsAnchor_Delete(this.h)
+	C.QGraphicsAnchor_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -205,79 +205,79 @@ func NewQGraphicsAnchorLayout2(parent *QGraphicsLayoutItem) *QGraphicsAnchorLayo
 }
 
 func (this *QGraphicsAnchorLayout) AddAnchor(firstItem *QGraphicsLayoutItem, firstEdge AnchorPoint, secondItem *QGraphicsLayoutItem, secondEdge AnchorPoint) *QGraphicsAnchor {
-	return newQGraphicsAnchor(C.QGraphicsAnchorLayout_AddAnchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge)))
+	return newQGraphicsAnchor(C.QGraphicsAnchorLayout_addAnchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge)))
 }
 
 func (this *QGraphicsAnchorLayout) Anchor(firstItem *QGraphicsLayoutItem, firstEdge AnchorPoint, secondItem *QGraphicsLayoutItem, secondEdge AnchorPoint) *QGraphicsAnchor {
-	return newQGraphicsAnchor(C.QGraphicsAnchorLayout_Anchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge)))
+	return newQGraphicsAnchor(C.QGraphicsAnchorLayout_anchor(this.h, firstItem.cPointer(), (C.int)(firstEdge), secondItem.cPointer(), (C.int)(secondEdge)))
 }
 
 func (this *QGraphicsAnchorLayout) AddCornerAnchors(firstItem *QGraphicsLayoutItem, firstCorner Corner, secondItem *QGraphicsLayoutItem, secondCorner Corner) {
-	C.QGraphicsAnchorLayout_AddCornerAnchors(this.h, firstItem.cPointer(), (C.int)(firstCorner), secondItem.cPointer(), (C.int)(secondCorner))
+	C.QGraphicsAnchorLayout_addCornerAnchors(this.h, firstItem.cPointer(), (C.int)(firstCorner), secondItem.cPointer(), (C.int)(secondCorner))
 }
 
 func (this *QGraphicsAnchorLayout) AddAnchors(firstItem *QGraphicsLayoutItem, secondItem *QGraphicsLayoutItem) {
-	C.QGraphicsAnchorLayout_AddAnchors(this.h, firstItem.cPointer(), secondItem.cPointer())
+	C.QGraphicsAnchorLayout_addAnchors(this.h, firstItem.cPointer(), secondItem.cPointer())
 }
 
 func (this *QGraphicsAnchorLayout) SetHorizontalSpacing(spacing float64) {
-	C.QGraphicsAnchorLayout_SetHorizontalSpacing(this.h, (C.double)(spacing))
+	C.QGraphicsAnchorLayout_setHorizontalSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QGraphicsAnchorLayout) SetVerticalSpacing(spacing float64) {
-	C.QGraphicsAnchorLayout_SetVerticalSpacing(this.h, (C.double)(spacing))
+	C.QGraphicsAnchorLayout_setVerticalSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QGraphicsAnchorLayout) SetSpacing(spacing float64) {
-	C.QGraphicsAnchorLayout_SetSpacing(this.h, (C.double)(spacing))
+	C.QGraphicsAnchorLayout_setSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QGraphicsAnchorLayout) HorizontalSpacing() float64 {
-	return (float64)(C.QGraphicsAnchorLayout_HorizontalSpacing(this.h))
+	return (float64)(C.QGraphicsAnchorLayout_horizontalSpacing(this.h))
 }
 
 func (this *QGraphicsAnchorLayout) VerticalSpacing() float64 {
-	return (float64)(C.QGraphicsAnchorLayout_VerticalSpacing(this.h))
+	return (float64)(C.QGraphicsAnchorLayout_verticalSpacing(this.h))
 }
 
 func (this *QGraphicsAnchorLayout) RemoveAt(index int) {
-	C.QGraphicsAnchorLayout_RemoveAt(this.h, (C.int)(index))
+	C.QGraphicsAnchorLayout_removeAt(this.h, (C.int)(index))
 }
 
 func (this *QGraphicsAnchorLayout) SetGeometry(rect *QRectF) {
-	C.QGraphicsAnchorLayout_SetGeometry(this.h, rect.cPointer())
+	C.QGraphicsAnchorLayout_setGeometry(this.h, rect.cPointer())
 }
 
 func (this *QGraphicsAnchorLayout) Count() int {
-	return (int)(C.QGraphicsAnchorLayout_Count(this.h))
+	return (int)(C.QGraphicsAnchorLayout_count(this.h))
 }
 
 func (this *QGraphicsAnchorLayout) ItemAt(index int) *QGraphicsLayoutItem {
-	return newQGraphicsLayoutItem(C.QGraphicsAnchorLayout_ItemAt(this.h, (C.int)(index)))
+	return newQGraphicsLayoutItem(C.QGraphicsAnchorLayout_itemAt(this.h, (C.int)(index)))
 }
 
 func (this *QGraphicsAnchorLayout) Invalidate() {
-	C.QGraphicsAnchorLayout_Invalidate(this.h)
+	C.QGraphicsAnchorLayout_invalidate(this.h)
 }
 
 func (this *QGraphicsAnchorLayout) AddAnchors3(firstItem *QGraphicsLayoutItem, secondItem *QGraphicsLayoutItem, orientations Orientation) {
-	C.QGraphicsAnchorLayout_AddAnchors3(this.h, firstItem.cPointer(), secondItem.cPointer(), (C.int)(orientations))
+	C.QGraphicsAnchorLayout_addAnchors3(this.h, firstItem.cPointer(), secondItem.cPointer(), (C.int)(orientations))
 }
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_RemoveAt(index int) {
 
-	C.QGraphicsAnchorLayout_virtualbase_RemoveAt(unsafe.Pointer(this.h), (C.int)(index))
+	C.QGraphicsAnchorLayout_virtualbase_removeAt(unsafe.Pointer(this.h), (C.int)(index))
 
 }
-func (this *QGraphicsAnchorLayout) OnRemoveAt(slot func(super func(index int), index int)) {
-	ok := C.QGraphicsAnchorLayout_override_virtual_RemoveAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsAnchorLayout) OnremoveAt(slot func(super func(index int), index int)) {
+	ok := C.QGraphicsAnchorLayout_override_virtual_removeAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsAnchorLayout_RemoveAt
-func miqt_exec_callback_QGraphicsAnchorLayout_RemoveAt(self *C.QGraphicsAnchorLayout, cb C.intptr_t, index C.int) {
+//export miqt_exec_callback_QGraphicsAnchorLayout_removeAt
+func miqt_exec_callback_QGraphicsAnchorLayout_removeAt(self *C.QGraphicsAnchorLayout, cb C.intptr_t, index C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index int), index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -292,18 +292,18 @@ func miqt_exec_callback_QGraphicsAnchorLayout_RemoveAt(self *C.QGraphicsAnchorLa
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_SetGeometry(rect *QRectF) {
 
-	C.QGraphicsAnchorLayout_virtualbase_SetGeometry(unsafe.Pointer(this.h), rect.cPointer())
+	C.QGraphicsAnchorLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())
 
 }
-func (this *QGraphicsAnchorLayout) OnSetGeometry(slot func(super func(rect *QRectF), rect *QRectF)) {
-	ok := C.QGraphicsAnchorLayout_override_virtual_SetGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsAnchorLayout) OnsetGeometry(slot func(super func(rect *QRectF), rect *QRectF)) {
+	ok := C.QGraphicsAnchorLayout_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsAnchorLayout_SetGeometry
-func miqt_exec_callback_QGraphicsAnchorLayout_SetGeometry(self *C.QGraphicsAnchorLayout, cb C.intptr_t, rect *C.QRectF) {
+//export miqt_exec_callback_QGraphicsAnchorLayout_setGeometry
+func miqt_exec_callback_QGraphicsAnchorLayout_setGeometry(self *C.QGraphicsAnchorLayout, cb C.intptr_t, rect *C.QRectF) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRectF), rect *QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -318,18 +318,18 @@ func miqt_exec_callback_QGraphicsAnchorLayout_SetGeometry(self *C.QGraphicsAncho
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_Count() int {
 
-	return (int)(C.QGraphicsAnchorLayout_virtualbase_Count(unsafe.Pointer(this.h)))
+	return (int)(C.QGraphicsAnchorLayout_virtualbase_count(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsAnchorLayout) OnCount(slot func(super func() int) int) {
-	ok := C.QGraphicsAnchorLayout_override_virtual_Count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsAnchorLayout) Oncount(slot func(super func() int) int) {
+	ok := C.QGraphicsAnchorLayout_override_virtual_count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsAnchorLayout_Count
-func miqt_exec_callback_QGraphicsAnchorLayout_Count(self *C.QGraphicsAnchorLayout, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QGraphicsAnchorLayout_count
+func miqt_exec_callback_QGraphicsAnchorLayout_count(self *C.QGraphicsAnchorLayout, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -343,18 +343,18 @@ func miqt_exec_callback_QGraphicsAnchorLayout_Count(self *C.QGraphicsAnchorLayou
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_ItemAt(index int) *QGraphicsLayoutItem {
 
-	return newQGraphicsLayoutItem(C.QGraphicsAnchorLayout_virtualbase_ItemAt(unsafe.Pointer(this.h), (C.int)(index)))
+	return newQGraphicsLayoutItem(C.QGraphicsAnchorLayout_virtualbase_itemAt(unsafe.Pointer(this.h), (C.int)(index)))
 
 }
-func (this *QGraphicsAnchorLayout) OnItemAt(slot func(super func(index int) *QGraphicsLayoutItem, index int) *QGraphicsLayoutItem) {
-	ok := C.QGraphicsAnchorLayout_override_virtual_ItemAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsAnchorLayout) OnitemAt(slot func(super func(index int) *QGraphicsLayoutItem, index int) *QGraphicsLayoutItem) {
+	ok := C.QGraphicsAnchorLayout_override_virtual_itemAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsAnchorLayout_ItemAt
-func miqt_exec_callback_QGraphicsAnchorLayout_ItemAt(self *C.QGraphicsAnchorLayout, cb C.intptr_t, index C.int) *C.QGraphicsLayoutItem {
+//export miqt_exec_callback_QGraphicsAnchorLayout_itemAt
+func miqt_exec_callback_QGraphicsAnchorLayout_itemAt(self *C.QGraphicsAnchorLayout, cb C.intptr_t, index C.int) *C.QGraphicsLayoutItem {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index int) *QGraphicsLayoutItem, index int) *QGraphicsLayoutItem)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -371,18 +371,18 @@ func miqt_exec_callback_QGraphicsAnchorLayout_ItemAt(self *C.QGraphicsAnchorLayo
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_Invalidate() {
 
-	C.QGraphicsAnchorLayout_virtualbase_Invalidate(unsafe.Pointer(this.h))
+	C.QGraphicsAnchorLayout_virtualbase_invalidate(unsafe.Pointer(this.h))
 
 }
-func (this *QGraphicsAnchorLayout) OnInvalidate(slot func(super func())) {
-	ok := C.QGraphicsAnchorLayout_override_virtual_Invalidate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsAnchorLayout) Oninvalidate(slot func(super func())) {
+	ok := C.QGraphicsAnchorLayout_override_virtual_invalidate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsAnchorLayout_Invalidate
-func miqt_exec_callback_QGraphicsAnchorLayout_Invalidate(self *C.QGraphicsAnchorLayout, cb C.intptr_t) {
+//export miqt_exec_callback_QGraphicsAnchorLayout_invalidate
+func miqt_exec_callback_QGraphicsAnchorLayout_invalidate(self *C.QGraphicsAnchorLayout, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -394,20 +394,20 @@ func miqt_exec_callback_QGraphicsAnchorLayout_Invalidate(self *C.QGraphicsAnchor
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_SizeHint(which SizeHint, constraint *QSizeF) *QSizeF {
 
-	_goptr := newQSizeF(C.QGraphicsAnchorLayout_virtualbase_SizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer()))
+	_goptr := newQSizeF(C.QGraphicsAnchorLayout_virtualbase_sizeHint(unsafe.Pointer(this.h), (C.int)(which), constraint.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QGraphicsAnchorLayout) OnSizeHint(slot func(super func(which SizeHint, constraint *QSizeF) *QSizeF, which SizeHint, constraint *QSizeF) *QSizeF) {
-	ok := C.QGraphicsAnchorLayout_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsAnchorLayout) OnsizeHint(slot func(super func(which SizeHint, constraint *QSizeF) *QSizeF, which SizeHint, constraint *QSizeF) *QSizeF) {
+	ok := C.QGraphicsAnchorLayout_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsAnchorLayout_SizeHint
-func miqt_exec_callback_QGraphicsAnchorLayout_SizeHint(self *C.QGraphicsAnchorLayout, cb C.intptr_t, which C.int, constraint *C.QSizeF) *C.QSizeF {
+//export miqt_exec_callback_QGraphicsAnchorLayout_sizeHint
+func miqt_exec_callback_QGraphicsAnchorLayout_sizeHint(self *C.QGraphicsAnchorLayout, cb C.intptr_t, which C.int, constraint *C.QSizeF) *C.QSizeF {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(which SizeHint, constraint *QSizeF) *QSizeF, which SizeHint, constraint *QSizeF) *QSizeF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -426,18 +426,18 @@ func miqt_exec_callback_QGraphicsAnchorLayout_SizeHint(self *C.QGraphicsAnchorLa
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_GetContentsMargins(left *float64, top *float64, right *float64, bottom *float64) {
 
-	C.QGraphicsAnchorLayout_virtualbase_GetContentsMargins(unsafe.Pointer(this.h), (*C.double)(unsafe.Pointer(left)), (*C.double)(unsafe.Pointer(top)), (*C.double)(unsafe.Pointer(right)), (*C.double)(unsafe.Pointer(bottom)))
+	C.QGraphicsAnchorLayout_virtualbase_getContentsMargins(unsafe.Pointer(this.h), (*C.double)(unsafe.Pointer(left)), (*C.double)(unsafe.Pointer(top)), (*C.double)(unsafe.Pointer(right)), (*C.double)(unsafe.Pointer(bottom)))
 
 }
-func (this *QGraphicsAnchorLayout) OnGetContentsMargins(slot func(super func(left *float64, top *float64, right *float64, bottom *float64), left *float64, top *float64, right *float64, bottom *float64)) {
-	ok := C.QGraphicsAnchorLayout_override_virtual_GetContentsMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsAnchorLayout) OngetContentsMargins(slot func(super func(left *float64, top *float64, right *float64, bottom *float64), left *float64, top *float64, right *float64, bottom *float64)) {
+	ok := C.QGraphicsAnchorLayout_override_virtual_getContentsMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsAnchorLayout_GetContentsMargins
-func miqt_exec_callback_QGraphicsAnchorLayout_GetContentsMargins(self *C.QGraphicsAnchorLayout, cb C.intptr_t, left *C.double, top *C.double, right *C.double, bottom *C.double) {
+//export miqt_exec_callback_QGraphicsAnchorLayout_getContentsMargins
+func miqt_exec_callback_QGraphicsAnchorLayout_getContentsMargins(self *C.QGraphicsAnchorLayout, cb C.intptr_t, left *C.double, top *C.double, right *C.double, bottom *C.double) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(left *float64, top *float64, right *float64, bottom *float64), left *float64, top *float64, right *float64, bottom *float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -458,18 +458,18 @@ func miqt_exec_callback_QGraphicsAnchorLayout_GetContentsMargins(self *C.QGraphi
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_UpdateGeometry() {
 
-	C.QGraphicsAnchorLayout_virtualbase_UpdateGeometry(unsafe.Pointer(this.h))
+	C.QGraphicsAnchorLayout_virtualbase_updateGeometry(unsafe.Pointer(this.h))
 
 }
-func (this *QGraphicsAnchorLayout) OnUpdateGeometry(slot func(super func())) {
-	ok := C.QGraphicsAnchorLayout_override_virtual_UpdateGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsAnchorLayout) OnupdateGeometry(slot func(super func())) {
+	ok := C.QGraphicsAnchorLayout_override_virtual_updateGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsAnchorLayout_UpdateGeometry
-func miqt_exec_callback_QGraphicsAnchorLayout_UpdateGeometry(self *C.QGraphicsAnchorLayout, cb C.intptr_t) {
+//export miqt_exec_callback_QGraphicsAnchorLayout_updateGeometry
+func miqt_exec_callback_QGraphicsAnchorLayout_updateGeometry(self *C.QGraphicsAnchorLayout, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -481,18 +481,18 @@ func miqt_exec_callback_QGraphicsAnchorLayout_UpdateGeometry(self *C.QGraphicsAn
 
 func (this *QGraphicsAnchorLayout) callVirtualBase_WidgetEvent(e *QEvent) {
 
-	C.QGraphicsAnchorLayout_virtualbase_WidgetEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QGraphicsAnchorLayout_virtualbase_widgetEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QGraphicsAnchorLayout) OnWidgetEvent(slot func(super func(e *QEvent), e *QEvent)) {
-	ok := C.QGraphicsAnchorLayout_override_virtual_WidgetEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsAnchorLayout) OnwidgetEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	ok := C.QGraphicsAnchorLayout_override_virtual_widgetEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsAnchorLayout_WidgetEvent
-func miqt_exec_callback_QGraphicsAnchorLayout_WidgetEvent(self *C.QGraphicsAnchorLayout, cb C.intptr_t, e *C.QEvent) {
+//export miqt_exec_callback_QGraphicsAnchorLayout_widgetEvent
+func miqt_exec_callback_QGraphicsAnchorLayout_widgetEvent(self *C.QGraphicsAnchorLayout, cb C.intptr_t, e *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent), e *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -507,7 +507,7 @@ func miqt_exec_callback_QGraphicsAnchorLayout_WidgetEvent(self *C.QGraphicsAncho
 
 // Delete this object from C++ memory.
 func (this *QGraphicsAnchorLayout) Delete() {
-	C.QGraphicsAnchorLayout_Delete(this.h)
+	C.QGraphicsAnchorLayout_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

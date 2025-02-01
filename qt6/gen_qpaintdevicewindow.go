@@ -53,34 +53,34 @@ func UnsafeNewQPaintDeviceWindow(h unsafe.Pointer) *QPaintDeviceWindow {
 }
 
 func (this *QPaintDeviceWindow) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QPaintDeviceWindow_MetaObject(this.h))
+	return newQMetaObject(C.QPaintDeviceWindow_metaObject(this.h))
 }
 
 func (this *QPaintDeviceWindow) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QPaintDeviceWindow_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QPaintDeviceWindow_metacast(this.h, param1_Cstring))
 }
 
 func QPaintDeviceWindow_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QPaintDeviceWindow_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QPaintDeviceWindow_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPaintDeviceWindow) Update(rect *QRect) {
-	C.QPaintDeviceWindow_Update(this.h, rect.cPointer())
+	C.QPaintDeviceWindow_update(this.h, rect.cPointer())
 }
 
 func (this *QPaintDeviceWindow) UpdateWithRegion(region *QRegion) {
-	C.QPaintDeviceWindow_UpdateWithRegion(this.h, region.cPointer())
+	C.QPaintDeviceWindow_updateWithRegion(this.h, region.cPointer())
 }
 
 func (this *QPaintDeviceWindow) Update2() {
-	C.QPaintDeviceWindow_Update2(this.h)
+	C.QPaintDeviceWindow_update2(this.h)
 }
 
 func QPaintDeviceWindow_Tr2(s string, c string) string {
@@ -88,7 +88,7 @@ func QPaintDeviceWindow_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QPaintDeviceWindow_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QPaintDeviceWindow_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -99,7 +99,7 @@ func QPaintDeviceWindow_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QPaintDeviceWindow_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QPaintDeviceWindow_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -107,7 +107,7 @@ func QPaintDeviceWindow_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QPaintDeviceWindow) Delete() {
-	C.QPaintDeviceWindow_Delete(this.h)
+	C.QPaintDeviceWindow_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

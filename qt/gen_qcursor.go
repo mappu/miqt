@@ -100,11 +100,11 @@ func NewQCursor9(pixmap *QPixmap, hotX int, hotY int) *QCursor {
 }
 
 func (this *QCursor) OperatorAssign(cursor *QCursor) {
-	C.QCursor_OperatorAssign(this.h, cursor.cPointer())
+	C.QCursor_operatorAssign(this.h, cursor.cPointer())
 }
 
 func (this *QCursor) Swap(other *QCursor) {
-	C.QCursor_Swap(this.h, other.cPointer())
+	C.QCursor_swap(this.h, other.cPointer())
 }
 
 func (this *QCursor) ToQVariant() *QVariant {
@@ -114,76 +114,76 @@ func (this *QCursor) ToQVariant() *QVariant {
 }
 
 func (this *QCursor) Shape() CursorShape {
-	return (CursorShape)(C.QCursor_Shape(this.h))
+	return (CursorShape)(C.QCursor_shape(this.h))
 }
 
 func (this *QCursor) SetShape(newShape CursorShape) {
-	C.QCursor_SetShape(this.h, (C.int)(newShape))
+	C.QCursor_setShape(this.h, (C.int)(newShape))
 }
 
 func (this *QCursor) Bitmap() *QBitmap {
-	return newQBitmap(C.QCursor_Bitmap(this.h))
+	return newQBitmap(C.QCursor_bitmap(this.h))
 }
 
 func (this *QCursor) Mask() *QBitmap {
-	return newQBitmap(C.QCursor_Mask(this.h))
+	return newQBitmap(C.QCursor_mask(this.h))
 }
 
 func (this *QCursor) BitmapWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QBitmap {
-	_goptr := newQBitmap(C.QCursor_BitmapWithQtReturnByValueConstant(this.h, (C.int)(param1)))
+	_goptr := newQBitmap(C.QCursor_bitmapWithQtReturnByValueConstant(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCursor) MaskWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QBitmap {
-	_goptr := newQBitmap(C.QCursor_MaskWithQtReturnByValueConstant(this.h, (C.int)(param1)))
+	_goptr := newQBitmap(C.QCursor_maskWithQtReturnByValueConstant(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCursor) Pixmap() *QPixmap {
-	_goptr := newQPixmap(C.QCursor_Pixmap(this.h))
+	_goptr := newQPixmap(C.QCursor_pixmap(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCursor) HotSpot() *QPoint {
-	_goptr := newQPoint(C.QCursor_HotSpot(this.h))
+	_goptr := newQPoint(C.QCursor_hotSpot(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QCursor_Pos() *QPoint {
-	_goptr := newQPoint(C.QCursor_Pos())
+	_goptr := newQPoint(C.QCursor_pos())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QCursor_PosWithScreen(screen *QScreen) *QPoint {
-	_goptr := newQPoint(C.QCursor_PosWithScreen(screen.cPointer()))
+	_goptr := newQPoint(C.QCursor_posWithScreen(screen.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QCursor_SetPos(x int, y int) {
-	C.QCursor_SetPos((C.int)(x), (C.int)(y))
+	C.QCursor_setPos((C.int)(x), (C.int)(y))
 }
 
 func QCursor_SetPos2(screen *QScreen, x int, y int) {
-	C.QCursor_SetPos2(screen.cPointer(), (C.int)(x), (C.int)(y))
+	C.QCursor_setPos2(screen.cPointer(), (C.int)(x), (C.int)(y))
 }
 
 func QCursor_SetPosWithQPoint(p *QPoint) {
-	C.QCursor_SetPosWithQPoint(p.cPointer())
+	C.QCursor_setPosWithQPoint(p.cPointer())
 }
 
 func QCursor_SetPos3(screen *QScreen, p *QPoint) {
-	C.QCursor_SetPos3(screen.cPointer(), p.cPointer())
+	C.QCursor_setPos3(screen.cPointer(), p.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QCursor) Delete() {
-	C.QCursor_Delete(this.h)
+	C.QCursor_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

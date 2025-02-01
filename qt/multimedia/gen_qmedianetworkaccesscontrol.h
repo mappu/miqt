@@ -29,22 +29,22 @@ typedef struct QObject QObject;
 #endif
 
 void QMediaNetworkAccessControl_virtbase(QMediaNetworkAccessControl* src, QMediaControl** outptr_QMediaControl);
-QMetaObject* QMediaNetworkAccessControl_MetaObject(const QMediaNetworkAccessControl* self);
-void* QMediaNetworkAccessControl_Metacast(QMediaNetworkAccessControl* self, const char* param1);
-struct miqt_string QMediaNetworkAccessControl_Tr(const char* s);
-struct miqt_string QMediaNetworkAccessControl_TrUtf8(const char* s);
-void QMediaNetworkAccessControl_SetConfigurations(QMediaNetworkAccessControl* self, struct miqt_array /* of QNetworkConfiguration* */  configuration);
-QNetworkConfiguration* QMediaNetworkAccessControl_CurrentConfiguration(const QMediaNetworkAccessControl* self);
-void QMediaNetworkAccessControl_ConfigurationChanged(QMediaNetworkAccessControl* self, QNetworkConfiguration* configuration);
-void QMediaNetworkAccessControl_connect_ConfigurationChanged(QMediaNetworkAccessControl* self, intptr_t slot);
-struct miqt_string QMediaNetworkAccessControl_Tr2(const char* s, const char* c);
-struct miqt_string QMediaNetworkAccessControl_Tr3(const char* s, const char* c, int n);
-struct miqt_string QMediaNetworkAccessControl_TrUtf82(const char* s, const char* c);
-struct miqt_string QMediaNetworkAccessControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaNetworkAccessControl_Delete(QMediaNetworkAccessControl* self);
+QMetaObject* QMediaNetworkAccessControl_metaObject(const QMediaNetworkAccessControl* self);
+void* QMediaNetworkAccessControl_metacast(QMediaNetworkAccessControl* self, const char* param1);
+struct miqt_string QMediaNetworkAccessControl_tr(const char* s);
+struct miqt_string QMediaNetworkAccessControl_trUtf8(const char* s);
+void QMediaNetworkAccessControl_setConfigurations(QMediaNetworkAccessControl* self, struct miqt_array /* of QNetworkConfiguration* */  configuration);
+QNetworkConfiguration* QMediaNetworkAccessControl_currentConfiguration(const QMediaNetworkAccessControl* self);
+void QMediaNetworkAccessControl_configurationChanged(QMediaNetworkAccessControl* self, QNetworkConfiguration* configuration);
+void QMediaNetworkAccessControl_connect_configurationChanged(QMediaNetworkAccessControl* self, intptr_t slot);
+struct miqt_string QMediaNetworkAccessControl_tr2(const char* s, const char* c);
+struct miqt_string QMediaNetworkAccessControl_tr3(const char* s, const char* c, int n);
+struct miqt_string QMediaNetworkAccessControl_trUtf82(const char* s, const char* c);
+struct miqt_string QMediaNetworkAccessControl_trUtf83(const char* s, const char* c, int n);
+void QMediaNetworkAccessControl_delete(QMediaNetworkAccessControl* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

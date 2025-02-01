@@ -35,40 +35,40 @@ typedef struct QTimerEvent QTimerEvent;
 QSound* QSound_new(struct miqt_string filename);
 QSound* QSound_new2(struct miqt_string filename, QObject* parent);
 void QSound_virtbase(QSound* src, QObject** outptr_QObject);
-QMetaObject* QSound_MetaObject(const QSound* self);
-void* QSound_Metacast(QSound* self, const char* param1);
-struct miqt_string QSound_Tr(const char* s);
-struct miqt_string QSound_TrUtf8(const char* s);
-void QSound_Play(struct miqt_string filename);
-int QSound_Loops(const QSound* self);
-int QSound_LoopsRemaining(const QSound* self);
-void QSound_SetLoops(QSound* self, int loops);
-struct miqt_string QSound_FileName(const QSound* self);
-bool QSound_IsFinished(const QSound* self);
-void QSound_Play2(QSound* self);
-void QSound_Stop(QSound* self);
-struct miqt_string QSound_Tr2(const char* s, const char* c);
-struct miqt_string QSound_Tr3(const char* s, const char* c, int n);
-struct miqt_string QSound_TrUtf82(const char* s, const char* c);
-struct miqt_string QSound_TrUtf83(const char* s, const char* c, int n);
-bool QSound_override_virtual_Event(void* self, intptr_t slot);
-bool QSound_virtualbase_Event(void* self, QEvent* event);
-bool QSound_override_virtual_EventFilter(void* self, intptr_t slot);
-bool QSound_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-bool QSound_override_virtual_TimerEvent(void* self, intptr_t slot);
-void QSound_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-bool QSound_override_virtual_ChildEvent(void* self, intptr_t slot);
-void QSound_virtualbase_ChildEvent(void* self, QChildEvent* event);
-bool QSound_override_virtual_CustomEvent(void* self, intptr_t slot);
-void QSound_virtualbase_CustomEvent(void* self, QEvent* event);
-bool QSound_override_virtual_ConnectNotify(void* self, intptr_t slot);
-void QSound_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-bool QSound_override_virtual_DisconnectNotify(void* self, intptr_t slot);
-void QSound_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QSound_Delete(QSound* self);
+QMetaObject* QSound_metaObject(const QSound* self);
+void* QSound_metacast(QSound* self, const char* param1);
+struct miqt_string QSound_tr(const char* s);
+struct miqt_string QSound_trUtf8(const char* s);
+void QSound_play(struct miqt_string filename);
+int QSound_loops(const QSound* self);
+int QSound_loopsRemaining(const QSound* self);
+void QSound_setLoops(QSound* self, int loops);
+struct miqt_string QSound_fileName(const QSound* self);
+bool QSound_isFinished(const QSound* self);
+void QSound_play2(QSound* self);
+void QSound_stop(QSound* self);
+struct miqt_string QSound_tr2(const char* s, const char* c);
+struct miqt_string QSound_tr3(const char* s, const char* c, int n);
+struct miqt_string QSound_trUtf82(const char* s, const char* c);
+struct miqt_string QSound_trUtf83(const char* s, const char* c, int n);
+bool QSound_override_virtual_event(void* self, intptr_t slot);
+bool QSound_virtualbase_event(void* self, QEvent* event);
+bool QSound_override_virtual_eventFilter(void* self, intptr_t slot);
+bool QSound_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
+bool QSound_override_virtual_timerEvent(void* self, intptr_t slot);
+void QSound_virtualbase_timerEvent(void* self, QTimerEvent* event);
+bool QSound_override_virtual_childEvent(void* self, intptr_t slot);
+void QSound_virtualbase_childEvent(void* self, QChildEvent* event);
+bool QSound_override_virtual_customEvent(void* self, intptr_t slot);
+void QSound_virtualbase_customEvent(void* self, QEvent* event);
+bool QSound_override_virtual_connectNotify(void* self, intptr_t slot);
+void QSound_virtualbase_connectNotify(void* self, QMetaMethod* signal);
+bool QSound_override_virtual_disconnectNotify(void* self, intptr_t slot);
+void QSound_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QSound_delete(QSound* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

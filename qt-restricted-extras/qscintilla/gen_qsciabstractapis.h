@@ -36,42 +36,42 @@ typedef struct QsciLexer QsciLexer;
 
 QsciAbstractAPIs* QsciAbstractAPIs_new(QsciLexer* lexer);
 void QsciAbstractAPIs_virtbase(QsciAbstractAPIs* src, QObject** outptr_QObject);
-QMetaObject* QsciAbstractAPIs_MetaObject(const QsciAbstractAPIs* self);
-void* QsciAbstractAPIs_Metacast(QsciAbstractAPIs* self, const char* param1);
-struct miqt_string QsciAbstractAPIs_Tr(const char* s);
-struct miqt_string QsciAbstractAPIs_TrUtf8(const char* s);
-QsciLexer* QsciAbstractAPIs_Lexer(const QsciAbstractAPIs* self);
-void QsciAbstractAPIs_UpdateAutoCompletionList(QsciAbstractAPIs* self, struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list);
-void QsciAbstractAPIs_AutoCompletionSelected(QsciAbstractAPIs* self, struct miqt_string selection);
-struct miqt_array /* of struct miqt_string */  QsciAbstractAPIs_CallTips(QsciAbstractAPIs* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts);
-struct miqt_string QsciAbstractAPIs_Tr2(const char* s, const char* c);
-struct miqt_string QsciAbstractAPIs_Tr3(const char* s, const char* c, int n);
-struct miqt_string QsciAbstractAPIs_TrUtf82(const char* s, const char* c);
-struct miqt_string QsciAbstractAPIs_TrUtf83(const char* s, const char* c, int n);
-bool QsciAbstractAPIs_override_virtual_UpdateAutoCompletionList(void* self, intptr_t slot);
-void QsciAbstractAPIs_virtualbase_UpdateAutoCompletionList(void* self, struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list);
-bool QsciAbstractAPIs_override_virtual_AutoCompletionSelected(void* self, intptr_t slot);
-void QsciAbstractAPIs_virtualbase_AutoCompletionSelected(void* self, struct miqt_string selection);
-bool QsciAbstractAPIs_override_virtual_CallTips(void* self, intptr_t slot);
-struct miqt_array /* of struct miqt_string */  QsciAbstractAPIs_virtualbase_CallTips(void* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts);
-bool QsciAbstractAPIs_override_virtual_Event(void* self, intptr_t slot);
-bool QsciAbstractAPIs_virtualbase_Event(void* self, QEvent* event);
-bool QsciAbstractAPIs_override_virtual_EventFilter(void* self, intptr_t slot);
-bool QsciAbstractAPIs_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-bool QsciAbstractAPIs_override_virtual_TimerEvent(void* self, intptr_t slot);
-void QsciAbstractAPIs_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-bool QsciAbstractAPIs_override_virtual_ChildEvent(void* self, intptr_t slot);
-void QsciAbstractAPIs_virtualbase_ChildEvent(void* self, QChildEvent* event);
-bool QsciAbstractAPIs_override_virtual_CustomEvent(void* self, intptr_t slot);
-void QsciAbstractAPIs_virtualbase_CustomEvent(void* self, QEvent* event);
-bool QsciAbstractAPIs_override_virtual_ConnectNotify(void* self, intptr_t slot);
-void QsciAbstractAPIs_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-bool QsciAbstractAPIs_override_virtual_DisconnectNotify(void* self, intptr_t slot);
-void QsciAbstractAPIs_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QsciAbstractAPIs_Delete(QsciAbstractAPIs* self);
+QMetaObject* QsciAbstractAPIs_metaObject(const QsciAbstractAPIs* self);
+void* QsciAbstractAPIs_metacast(QsciAbstractAPIs* self, const char* param1);
+struct miqt_string QsciAbstractAPIs_tr(const char* s);
+struct miqt_string QsciAbstractAPIs_trUtf8(const char* s);
+QsciLexer* QsciAbstractAPIs_lexer(const QsciAbstractAPIs* self);
+void QsciAbstractAPIs_updateAutoCompletionList(QsciAbstractAPIs* self, struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list);
+void QsciAbstractAPIs_autoCompletionSelected(QsciAbstractAPIs* self, struct miqt_string selection);
+struct miqt_array /* of struct miqt_string */  QsciAbstractAPIs_callTips(QsciAbstractAPIs* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts);
+struct miqt_string QsciAbstractAPIs_tr2(const char* s, const char* c);
+struct miqt_string QsciAbstractAPIs_tr3(const char* s, const char* c, int n);
+struct miqt_string QsciAbstractAPIs_trUtf82(const char* s, const char* c);
+struct miqt_string QsciAbstractAPIs_trUtf83(const char* s, const char* c, int n);
+bool QsciAbstractAPIs_override_virtual_updateAutoCompletionList(void* self, intptr_t slot);
+void QsciAbstractAPIs_virtualbase_updateAutoCompletionList(void* self, struct miqt_array /* of struct miqt_string */  context, struct miqt_array /* of struct miqt_string */  list);
+bool QsciAbstractAPIs_override_virtual_autoCompletionSelected(void* self, intptr_t slot);
+void QsciAbstractAPIs_virtualbase_autoCompletionSelected(void* self, struct miqt_string selection);
+bool QsciAbstractAPIs_override_virtual_callTips(void* self, intptr_t slot);
+struct miqt_array /* of struct miqt_string */  QsciAbstractAPIs_virtualbase_callTips(void* self, struct miqt_array /* of struct miqt_string */  context, int commas, int style, struct miqt_array /* of int */  shifts);
+bool QsciAbstractAPIs_override_virtual_event(void* self, intptr_t slot);
+bool QsciAbstractAPIs_virtualbase_event(void* self, QEvent* event);
+bool QsciAbstractAPIs_override_virtual_eventFilter(void* self, intptr_t slot);
+bool QsciAbstractAPIs_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
+bool QsciAbstractAPIs_override_virtual_timerEvent(void* self, intptr_t slot);
+void QsciAbstractAPIs_virtualbase_timerEvent(void* self, QTimerEvent* event);
+bool QsciAbstractAPIs_override_virtual_childEvent(void* self, intptr_t slot);
+void QsciAbstractAPIs_virtualbase_childEvent(void* self, QChildEvent* event);
+bool QsciAbstractAPIs_override_virtual_customEvent(void* self, intptr_t slot);
+void QsciAbstractAPIs_virtualbase_customEvent(void* self, QEvent* event);
+bool QsciAbstractAPIs_override_virtual_connectNotify(void* self, intptr_t slot);
+void QsciAbstractAPIs_virtualbase_connectNotify(void* self, QMetaMethod* signal);
+bool QsciAbstractAPIs_override_virtual_disconnectNotify(void* self, intptr_t slot);
+void QsciAbstractAPIs_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QsciAbstractAPIs_delete(QsciAbstractAPIs* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

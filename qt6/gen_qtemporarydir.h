@@ -22,18 +22,18 @@ typedef struct QTemporaryDir QTemporaryDir;
 
 QTemporaryDir* QTemporaryDir_new();
 QTemporaryDir* QTemporaryDir_new2(struct miqt_string templateName);
-void QTemporaryDir_Swap(QTemporaryDir* self, QTemporaryDir* other);
-bool QTemporaryDir_IsValid(const QTemporaryDir* self);
-struct miqt_string QTemporaryDir_ErrorString(const QTemporaryDir* self);
-bool QTemporaryDir_AutoRemove(const QTemporaryDir* self);
-void QTemporaryDir_SetAutoRemove(QTemporaryDir* self, bool b);
-bool QTemporaryDir_Remove(QTemporaryDir* self);
-struct miqt_string QTemporaryDir_Path(const QTemporaryDir* self);
-struct miqt_string QTemporaryDir_FilePath(const QTemporaryDir* self, struct miqt_string fileName);
-void QTemporaryDir_Delete(QTemporaryDir* self);
+void QTemporaryDir_swap(QTemporaryDir* self, QTemporaryDir* other);
+bool QTemporaryDir_isValid(const QTemporaryDir* self);
+struct miqt_string QTemporaryDir_errorString(const QTemporaryDir* self);
+bool QTemporaryDir_autoRemove(const QTemporaryDir* self);
+void QTemporaryDir_setAutoRemove(QTemporaryDir* self, bool b);
+bool QTemporaryDir_remove(QTemporaryDir* self);
+struct miqt_string QTemporaryDir_path(const QTemporaryDir* self);
+struct miqt_string QTemporaryDir_filePath(const QTemporaryDir* self, struct miqt_string fileName);
+void QTemporaryDir_delete(QTemporaryDir* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

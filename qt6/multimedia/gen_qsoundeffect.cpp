@@ -18,22 +18,22 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QSoundEffect_SourceChanged(intptr_t);
-void miqt_exec_callback_QSoundEffect_LoopCountChanged(intptr_t);
-void miqt_exec_callback_QSoundEffect_LoopsRemainingChanged(intptr_t);
-void miqt_exec_callback_QSoundEffect_VolumeChanged(intptr_t);
-void miqt_exec_callback_QSoundEffect_MutedChanged(intptr_t);
-void miqt_exec_callback_QSoundEffect_LoadedChanged(intptr_t);
-void miqt_exec_callback_QSoundEffect_PlayingChanged(intptr_t);
-void miqt_exec_callback_QSoundEffect_StatusChanged(intptr_t);
-void miqt_exec_callback_QSoundEffect_AudioDeviceChanged(intptr_t);
-bool miqt_exec_callback_QSoundEffect_Event(QSoundEffect*, intptr_t, QEvent*);
-bool miqt_exec_callback_QSoundEffect_EventFilter(QSoundEffect*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSoundEffect_TimerEvent(QSoundEffect*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSoundEffect_ChildEvent(QSoundEffect*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSoundEffect_CustomEvent(QSoundEffect*, intptr_t, QEvent*);
-void miqt_exec_callback_QSoundEffect_ConnectNotify(QSoundEffect*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSoundEffect_DisconnectNotify(QSoundEffect*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSoundEffect_sourceChanged(intptr_t);
+void miqt_exec_callback_QSoundEffect_loopCountChanged(intptr_t);
+void miqt_exec_callback_QSoundEffect_loopsRemainingChanged(intptr_t);
+void miqt_exec_callback_QSoundEffect_volumeChanged(intptr_t);
+void miqt_exec_callback_QSoundEffect_mutedChanged(intptr_t);
+void miqt_exec_callback_QSoundEffect_loadedChanged(intptr_t);
+void miqt_exec_callback_QSoundEffect_playingChanged(intptr_t);
+void miqt_exec_callback_QSoundEffect_statusChanged(intptr_t);
+void miqt_exec_callback_QSoundEffect_audioDeviceChanged(intptr_t);
+bool miqt_exec_callback_QSoundEffect_event(QSoundEffect*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSoundEffect_eventFilter(QSoundEffect*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSoundEffect_timerEvent(QSoundEffect*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSoundEffect_childEvent(QSoundEffect*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSoundEffect_customEvent(QSoundEffect*, intptr_t, QEvent*);
+void miqt_exec_callback_QSoundEffect_connectNotify(QSoundEffect*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSoundEffect_disconnectNotify(QSoundEffect*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -49,130 +49,130 @@ public:
 	virtual ~MiqtVirtualQSoundEffect() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QSoundEffect::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QSoundEffect_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QSoundEffect_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QSoundEffect::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QSoundEffect::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QSoundEffect_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QSoundEffect_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QSoundEffect::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QSoundEffect::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QSoundEffect_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QSoundEffect_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QSoundEffect::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QSoundEffect::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QSoundEffect_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QSoundEffect_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QSoundEffect::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QSoundEffect::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QSoundEffect_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QSoundEffect_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QSoundEffect::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QSoundEffect::connectNotify(signal);
 			return;
 		}
@@ -181,24 +181,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QSoundEffect_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QSoundEffect_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QSoundEffect::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QSoundEffect::disconnectNotify(signal);
 			return;
 		}
@@ -207,13 +207,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QSoundEffect_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QSoundEffect_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QSoundEffect::disconnectNotify(*signal);
 
@@ -241,15 +241,15 @@ void QSoundEffect_virtbase(QSoundEffect* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QSoundEffect_MetaObject(const QSoundEffect* self) {
+QMetaObject* QSoundEffect_metaObject(const QSoundEffect* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QSoundEffect_Metacast(QSoundEffect* self, const char* param1) {
+void* QSoundEffect_metacast(QSoundEffect* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QSoundEffect_Tr(const char* s) {
+struct miqt_string QSoundEffect_tr(const char* s) {
 	QString _ret = QSoundEffect::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -260,7 +260,7 @@ struct miqt_string QSoundEffect_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_array /* of struct miqt_string */  QSoundEffect_SupportedMimeTypes() {
+struct miqt_array /* of struct miqt_string */  QSoundEffect_supportedMimeTypes() {
 	QStringList _ret = QSoundEffect::supportedMimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -280,162 +280,162 @@ struct miqt_array /* of struct miqt_string */  QSoundEffect_SupportedMimeTypes()
 	return _out;
 }
 
-QUrl* QSoundEffect_Source(const QSoundEffect* self) {
+QUrl* QSoundEffect_source(const QSoundEffect* self) {
 	return new QUrl(self->source());
 }
 
-void QSoundEffect_SetSource(QSoundEffect* self, QUrl* url) {
+void QSoundEffect_setSource(QSoundEffect* self, QUrl* url) {
 	self->setSource(*url);
 }
 
-int QSoundEffect_LoopCount(const QSoundEffect* self) {
+int QSoundEffect_loopCount(const QSoundEffect* self) {
 	return self->loopCount();
 }
 
-int QSoundEffect_LoopsRemaining(const QSoundEffect* self) {
+int QSoundEffect_loopsRemaining(const QSoundEffect* self) {
 	return self->loopsRemaining();
 }
 
-void QSoundEffect_SetLoopCount(QSoundEffect* self, int loopCount) {
+void QSoundEffect_setLoopCount(QSoundEffect* self, int loopCount) {
 	self->setLoopCount(static_cast<int>(loopCount));
 }
 
-QAudioDevice* QSoundEffect_AudioDevice(QSoundEffect* self) {
+QAudioDevice* QSoundEffect_audioDevice(QSoundEffect* self) {
 	return new QAudioDevice(self->audioDevice());
 }
 
-void QSoundEffect_SetAudioDevice(QSoundEffect* self, QAudioDevice* device) {
+void QSoundEffect_setAudioDevice(QSoundEffect* self, QAudioDevice* device) {
 	self->setAudioDevice(*device);
 }
 
-float QSoundEffect_Volume(const QSoundEffect* self) {
+float QSoundEffect_volume(const QSoundEffect* self) {
 	return self->volume();
 }
 
-void QSoundEffect_SetVolume(QSoundEffect* self, float volume) {
+void QSoundEffect_setVolume(QSoundEffect* self, float volume) {
 	self->setVolume(static_cast<float>(volume));
 }
 
-bool QSoundEffect_IsMuted(const QSoundEffect* self) {
+bool QSoundEffect_isMuted(const QSoundEffect* self) {
 	return self->isMuted();
 }
 
-void QSoundEffect_SetMuted(QSoundEffect* self, bool muted) {
+void QSoundEffect_setMuted(QSoundEffect* self, bool muted) {
 	self->setMuted(muted);
 }
 
-bool QSoundEffect_IsLoaded(const QSoundEffect* self) {
+bool QSoundEffect_isLoaded(const QSoundEffect* self) {
 	return self->isLoaded();
 }
 
-bool QSoundEffect_IsPlaying(const QSoundEffect* self) {
+bool QSoundEffect_isPlaying(const QSoundEffect* self) {
 	return self->isPlaying();
 }
 
-int QSoundEffect_Status(const QSoundEffect* self) {
+int QSoundEffect_status(const QSoundEffect* self) {
 	QSoundEffect::Status _ret = self->status();
 	return static_cast<int>(_ret);
 }
 
-void QSoundEffect_SourceChanged(QSoundEffect* self) {
+void QSoundEffect_sourceChanged(QSoundEffect* self) {
 	self->sourceChanged();
 }
 
-void QSoundEffect_connect_SourceChanged(QSoundEffect* self, intptr_t slot) {
+void QSoundEffect_connect_sourceChanged(QSoundEffect* self, intptr_t slot) {
 	MiqtVirtualQSoundEffect::connect(self, static_cast<void (QSoundEffect::*)()>(&QSoundEffect::sourceChanged), self, [=]() {
-		miqt_exec_callback_QSoundEffect_SourceChanged(slot);
+		miqt_exec_callback_QSoundEffect_sourceChanged(slot);
 	});
 }
 
-void QSoundEffect_LoopCountChanged(QSoundEffect* self) {
+void QSoundEffect_loopCountChanged(QSoundEffect* self) {
 	self->loopCountChanged();
 }
 
-void QSoundEffect_connect_LoopCountChanged(QSoundEffect* self, intptr_t slot) {
+void QSoundEffect_connect_loopCountChanged(QSoundEffect* self, intptr_t slot) {
 	MiqtVirtualQSoundEffect::connect(self, static_cast<void (QSoundEffect::*)()>(&QSoundEffect::loopCountChanged), self, [=]() {
-		miqt_exec_callback_QSoundEffect_LoopCountChanged(slot);
+		miqt_exec_callback_QSoundEffect_loopCountChanged(slot);
 	});
 }
 
-void QSoundEffect_LoopsRemainingChanged(QSoundEffect* self) {
+void QSoundEffect_loopsRemainingChanged(QSoundEffect* self) {
 	self->loopsRemainingChanged();
 }
 
-void QSoundEffect_connect_LoopsRemainingChanged(QSoundEffect* self, intptr_t slot) {
+void QSoundEffect_connect_loopsRemainingChanged(QSoundEffect* self, intptr_t slot) {
 	MiqtVirtualQSoundEffect::connect(self, static_cast<void (QSoundEffect::*)()>(&QSoundEffect::loopsRemainingChanged), self, [=]() {
-		miqt_exec_callback_QSoundEffect_LoopsRemainingChanged(slot);
+		miqt_exec_callback_QSoundEffect_loopsRemainingChanged(slot);
 	});
 }
 
-void QSoundEffect_VolumeChanged(QSoundEffect* self) {
+void QSoundEffect_volumeChanged(QSoundEffect* self) {
 	self->volumeChanged();
 }
 
-void QSoundEffect_connect_VolumeChanged(QSoundEffect* self, intptr_t slot) {
+void QSoundEffect_connect_volumeChanged(QSoundEffect* self, intptr_t slot) {
 	MiqtVirtualQSoundEffect::connect(self, static_cast<void (QSoundEffect::*)()>(&QSoundEffect::volumeChanged), self, [=]() {
-		miqt_exec_callback_QSoundEffect_VolumeChanged(slot);
+		miqt_exec_callback_QSoundEffect_volumeChanged(slot);
 	});
 }
 
-void QSoundEffect_MutedChanged(QSoundEffect* self) {
+void QSoundEffect_mutedChanged(QSoundEffect* self) {
 	self->mutedChanged();
 }
 
-void QSoundEffect_connect_MutedChanged(QSoundEffect* self, intptr_t slot) {
+void QSoundEffect_connect_mutedChanged(QSoundEffect* self, intptr_t slot) {
 	MiqtVirtualQSoundEffect::connect(self, static_cast<void (QSoundEffect::*)()>(&QSoundEffect::mutedChanged), self, [=]() {
-		miqt_exec_callback_QSoundEffect_MutedChanged(slot);
+		miqt_exec_callback_QSoundEffect_mutedChanged(slot);
 	});
 }
 
-void QSoundEffect_LoadedChanged(QSoundEffect* self) {
+void QSoundEffect_loadedChanged(QSoundEffect* self) {
 	self->loadedChanged();
 }
 
-void QSoundEffect_connect_LoadedChanged(QSoundEffect* self, intptr_t slot) {
+void QSoundEffect_connect_loadedChanged(QSoundEffect* self, intptr_t slot) {
 	MiqtVirtualQSoundEffect::connect(self, static_cast<void (QSoundEffect::*)()>(&QSoundEffect::loadedChanged), self, [=]() {
-		miqt_exec_callback_QSoundEffect_LoadedChanged(slot);
+		miqt_exec_callback_QSoundEffect_loadedChanged(slot);
 	});
 }
 
-void QSoundEffect_PlayingChanged(QSoundEffect* self) {
+void QSoundEffect_playingChanged(QSoundEffect* self) {
 	self->playingChanged();
 }
 
-void QSoundEffect_connect_PlayingChanged(QSoundEffect* self, intptr_t slot) {
+void QSoundEffect_connect_playingChanged(QSoundEffect* self, intptr_t slot) {
 	MiqtVirtualQSoundEffect::connect(self, static_cast<void (QSoundEffect::*)()>(&QSoundEffect::playingChanged), self, [=]() {
-		miqt_exec_callback_QSoundEffect_PlayingChanged(slot);
+		miqt_exec_callback_QSoundEffect_playingChanged(slot);
 	});
 }
 
-void QSoundEffect_StatusChanged(QSoundEffect* self) {
+void QSoundEffect_statusChanged(QSoundEffect* self) {
 	self->statusChanged();
 }
 
-void QSoundEffect_connect_StatusChanged(QSoundEffect* self, intptr_t slot) {
+void QSoundEffect_connect_statusChanged(QSoundEffect* self, intptr_t slot) {
 	MiqtVirtualQSoundEffect::connect(self, static_cast<void (QSoundEffect::*)()>(&QSoundEffect::statusChanged), self, [=]() {
-		miqt_exec_callback_QSoundEffect_StatusChanged(slot);
+		miqt_exec_callback_QSoundEffect_statusChanged(slot);
 	});
 }
 
-void QSoundEffect_AudioDeviceChanged(QSoundEffect* self) {
+void QSoundEffect_audioDeviceChanged(QSoundEffect* self) {
 	self->audioDeviceChanged();
 }
 
-void QSoundEffect_connect_AudioDeviceChanged(QSoundEffect* self, intptr_t slot) {
+void QSoundEffect_connect_audioDeviceChanged(QSoundEffect* self, intptr_t slot) {
 	MiqtVirtualQSoundEffect::connect(self, static_cast<void (QSoundEffect::*)()>(&QSoundEffect::audioDeviceChanged), self, [=]() {
-		miqt_exec_callback_QSoundEffect_AudioDeviceChanged(slot);
+		miqt_exec_callback_QSoundEffect_audioDeviceChanged(slot);
 	});
 }
 
-void QSoundEffect_Play(QSoundEffect* self) {
+void QSoundEffect_play(QSoundEffect* self) {
 	self->play();
 }
 
-void QSoundEffect_Stop(QSoundEffect* self) {
+void QSoundEffect_stop(QSoundEffect* self) {
 	self->stop();
 }
 
-struct miqt_string QSoundEffect_Tr2(const char* s, const char* c) {
+struct miqt_string QSoundEffect_tr2(const char* s, const char* c) {
 	QString _ret = QSoundEffect::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -446,7 +446,7 @@ struct miqt_string QSoundEffect_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QSoundEffect_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QSoundEffect_tr3(const char* s, const char* c, int n) {
 	QString _ret = QSoundEffect::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -457,105 +457,105 @@ struct miqt_string QSoundEffect_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QSoundEffect_override_virtual_Event(void* self, intptr_t slot) {
+bool QSoundEffect_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QSoundEffect_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_Event(event);
+bool QSoundEffect_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_event(event);
 }
 
-bool QSoundEffect_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QSoundEffect_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QSoundEffect_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_EventFilter(watched, event);
+bool QSoundEffect_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QSoundEffect_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QSoundEffect_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QSoundEffect_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_TimerEvent(event);
+void QSoundEffect_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QSoundEffect_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QSoundEffect_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QSoundEffect_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_ChildEvent(event);
+void QSoundEffect_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QSoundEffect_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QSoundEffect_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QSoundEffect_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_CustomEvent(event);
+void QSoundEffect_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QSoundEffect_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QSoundEffect_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QSoundEffect_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_ConnectNotify(signal);
+void QSoundEffect_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QSoundEffect_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QSoundEffect_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQSoundEffect* self_cast = dynamic_cast<MiqtVirtualQSoundEffect*>( (QSoundEffect*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QSoundEffect_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_DisconnectNotify(signal);
+void QSoundEffect_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQSoundEffect*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QSoundEffect_Delete(QSoundEffect* self) {
+void QSoundEffect_delete(QSoundEffect* self) {
 	delete self;
 }
 

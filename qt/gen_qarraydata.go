@@ -65,56 +65,56 @@ func UnsafeNewQArrayData(h unsafe.Pointer) *QArrayData {
 }
 
 func (this *QArrayData) Data() unsafe.Pointer {
-	return (unsafe.Pointer)(C.QArrayData_Data(this.h))
+	return (unsafe.Pointer)(C.QArrayData_data(this.h))
 }
 
 func (this *QArrayData) Data2() unsafe.Pointer {
-	return (unsafe.Pointer)(C.QArrayData_Data2(this.h))
+	return (unsafe.Pointer)(C.QArrayData_data2(this.h))
 }
 
 func (this *QArrayData) IsMutable() bool {
-	return (bool)(C.QArrayData_IsMutable(this.h))
+	return (bool)(C.QArrayData_isMutable(this.h))
 }
 
 func (this *QArrayData) DetachCapacity(newSize uint64) uint64 {
-	return (uint64)(C.QArrayData_DetachCapacity(this.h, (C.size_t)(newSize)))
+	return (uint64)(C.QArrayData_detachCapacity(this.h, (C.size_t)(newSize)))
 }
 
 func (this *QArrayData) DetachFlags() QArrayData__AllocationOption {
-	return (QArrayData__AllocationOption)(C.QArrayData_DetachFlags(this.h))
+	return (QArrayData__AllocationOption)(C.QArrayData_detachFlags(this.h))
 }
 
 func (this *QArrayData) CloneFlags() QArrayData__AllocationOption {
-	return (QArrayData__AllocationOption)(C.QArrayData_CloneFlags(this.h))
+	return (QArrayData__AllocationOption)(C.QArrayData_cloneFlags(this.h))
 }
 
 func QArrayData_Allocate(objectSize uint64, alignment uint64, capacity uint64) *QArrayData {
-	return newQArrayData(C.QArrayData_Allocate((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity)))
+	return newQArrayData(C.QArrayData_allocate((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity)))
 }
 
 func QArrayData_ReallocateUnaligned(data *QArrayData, objectSize uint64, newCapacity uint64) *QArrayData {
-	return newQArrayData(C.QArrayData_ReallocateUnaligned(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity)))
+	return newQArrayData(C.QArrayData_reallocateUnaligned(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity)))
 }
 
 func QArrayData_Deallocate(data *QArrayData, objectSize uint64, alignment uint64) {
-	C.QArrayData_Deallocate(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(alignment))
+	C.QArrayData_deallocate(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(alignment))
 }
 
 func QArrayData_SharedNull() *QArrayData {
-	return newQArrayData(C.QArrayData_SharedNull())
+	return newQArrayData(C.QArrayData_sharedNull())
 }
 
 func QArrayData_Allocate4(objectSize uint64, alignment uint64, capacity uint64, options QArrayData__AllocationOption) *QArrayData {
-	return newQArrayData(C.QArrayData_Allocate4((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity), (C.int)(options)))
+	return newQArrayData(C.QArrayData_allocate4((C.size_t)(objectSize), (C.size_t)(alignment), (C.size_t)(capacity), (C.int)(options)))
 }
 
 func QArrayData_ReallocateUnaligned4(data *QArrayData, objectSize uint64, newCapacity uint64, newOptions QArrayData__AllocationOption) *QArrayData {
-	return newQArrayData(C.QArrayData_ReallocateUnaligned4(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity), (C.int)(newOptions)))
+	return newQArrayData(C.QArrayData_reallocateUnaligned4(data.cPointer(), (C.size_t)(objectSize), (C.size_t)(newCapacity), (C.int)(newOptions)))
 }
 
 // Delete this object from C++ memory.
 func (this *QArrayData) Delete() {
-	C.QArrayData_Delete(this.h)
+	C.QArrayData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

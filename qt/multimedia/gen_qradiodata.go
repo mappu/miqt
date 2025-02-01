@@ -129,19 +129,19 @@ func NewQRadioData2(mediaObject *QMediaObject, parent *qt.QObject) *QRadioData {
 }
 
 func (this *QRadioData) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QRadioData_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QRadioData_metaObject(this.h)))
 }
 
 func (this *QRadioData) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QRadioData_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QRadioData_metacast(this.h, param1_Cstring))
 }
 
 func QRadioData_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QRadioData_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QRadioData_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -150,69 +150,69 @@ func QRadioData_Tr(s string) string {
 func QRadioData_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QRadioData_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QRadioData_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QRadioData) Availability() QMultimedia__AvailabilityStatus {
-	return (QMultimedia__AvailabilityStatus)(C.QRadioData_Availability(this.h))
+	return (QMultimedia__AvailabilityStatus)(C.QRadioData_availability(this.h))
 }
 
 func (this *QRadioData) MediaObject() *QMediaObject {
-	return newQMediaObject(C.QRadioData_MediaObject(this.h))
+	return newQMediaObject(C.QRadioData_mediaObject(this.h))
 }
 
 func (this *QRadioData) StationId() string {
-	var _ms C.struct_miqt_string = C.QRadioData_StationId(this.h)
+	var _ms C.struct_miqt_string = C.QRadioData_stationId(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QRadioData) ProgramType() QRadioData__ProgramType {
-	return (QRadioData__ProgramType)(C.QRadioData_ProgramType(this.h))
+	return (QRadioData__ProgramType)(C.QRadioData_programType(this.h))
 }
 
 func (this *QRadioData) ProgramTypeName() string {
-	var _ms C.struct_miqt_string = C.QRadioData_ProgramTypeName(this.h)
+	var _ms C.struct_miqt_string = C.QRadioData_programTypeName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QRadioData) StationName() string {
-	var _ms C.struct_miqt_string = C.QRadioData_StationName(this.h)
+	var _ms C.struct_miqt_string = C.QRadioData_stationName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QRadioData) RadioText() string {
-	var _ms C.struct_miqt_string = C.QRadioData_RadioText(this.h)
+	var _ms C.struct_miqt_string = C.QRadioData_radioText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QRadioData) IsAlternativeFrequenciesEnabled() bool {
-	return (bool)(C.QRadioData_IsAlternativeFrequenciesEnabled(this.h))
+	return (bool)(C.QRadioData_isAlternativeFrequenciesEnabled(this.h))
 }
 
 func (this *QRadioData) Error() QRadioData__Error {
-	return (QRadioData__Error)(C.QRadioData_Error(this.h))
+	return (QRadioData__Error)(C.QRadioData_error(this.h))
 }
 
 func (this *QRadioData) ErrorString() string {
-	var _ms C.struct_miqt_string = C.QRadioData_ErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QRadioData_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QRadioData) SetAlternativeFrequenciesEnabled(enabled bool) {
-	C.QRadioData_SetAlternativeFrequenciesEnabled(this.h, (C.bool)(enabled))
+	C.QRadioData_setAlternativeFrequenciesEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QRadioData) StationIdChanged(stationId string) {
@@ -220,14 +220,14 @@ func (this *QRadioData) StationIdChanged(stationId string) {
 	stationId_ms.data = C.CString(stationId)
 	stationId_ms.len = C.size_t(len(stationId))
 	defer C.free(unsafe.Pointer(stationId_ms.data))
-	C.QRadioData_StationIdChanged(this.h, stationId_ms)
+	C.QRadioData_stationIdChanged(this.h, stationId_ms)
 }
 func (this *QRadioData) OnStationIdChanged(slot func(stationId string)) {
-	C.QRadioData_connect_StationIdChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QRadioData_connect_stationIdChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QRadioData_StationIdChanged
-func miqt_exec_callback_QRadioData_StationIdChanged(cb C.intptr_t, stationId C.struct_miqt_string) {
+//export miqt_exec_callback_QRadioData_stationIdChanged
+func miqt_exec_callback_QRadioData_stationIdChanged(cb C.intptr_t, stationId C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(stationId string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -243,14 +243,14 @@ func miqt_exec_callback_QRadioData_StationIdChanged(cb C.intptr_t, stationId C.s
 }
 
 func (this *QRadioData) ProgramTypeChanged(programType QRadioData__ProgramType) {
-	C.QRadioData_ProgramTypeChanged(this.h, (C.int)(programType))
+	C.QRadioData_programTypeChanged(this.h, (C.int)(programType))
 }
 func (this *QRadioData) OnProgramTypeChanged(slot func(programType QRadioData__ProgramType)) {
-	C.QRadioData_connect_ProgramTypeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QRadioData_connect_programTypeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QRadioData_ProgramTypeChanged
-func miqt_exec_callback_QRadioData_ProgramTypeChanged(cb C.intptr_t, programType C.int) {
+//export miqt_exec_callback_QRadioData_programTypeChanged
+func miqt_exec_callback_QRadioData_programTypeChanged(cb C.intptr_t, programType C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(programType QRadioData__ProgramType))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -267,14 +267,14 @@ func (this *QRadioData) ProgramTypeNameChanged(programTypeName string) {
 	programTypeName_ms.data = C.CString(programTypeName)
 	programTypeName_ms.len = C.size_t(len(programTypeName))
 	defer C.free(unsafe.Pointer(programTypeName_ms.data))
-	C.QRadioData_ProgramTypeNameChanged(this.h, programTypeName_ms)
+	C.QRadioData_programTypeNameChanged(this.h, programTypeName_ms)
 }
 func (this *QRadioData) OnProgramTypeNameChanged(slot func(programTypeName string)) {
-	C.QRadioData_connect_ProgramTypeNameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QRadioData_connect_programTypeNameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QRadioData_ProgramTypeNameChanged
-func miqt_exec_callback_QRadioData_ProgramTypeNameChanged(cb C.intptr_t, programTypeName C.struct_miqt_string) {
+//export miqt_exec_callback_QRadioData_programTypeNameChanged
+func miqt_exec_callback_QRadioData_programTypeNameChanged(cb C.intptr_t, programTypeName C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(programTypeName string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -294,14 +294,14 @@ func (this *QRadioData) StationNameChanged(stationName string) {
 	stationName_ms.data = C.CString(stationName)
 	stationName_ms.len = C.size_t(len(stationName))
 	defer C.free(unsafe.Pointer(stationName_ms.data))
-	C.QRadioData_StationNameChanged(this.h, stationName_ms)
+	C.QRadioData_stationNameChanged(this.h, stationName_ms)
 }
 func (this *QRadioData) OnStationNameChanged(slot func(stationName string)) {
-	C.QRadioData_connect_StationNameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QRadioData_connect_stationNameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QRadioData_StationNameChanged
-func miqt_exec_callback_QRadioData_StationNameChanged(cb C.intptr_t, stationName C.struct_miqt_string) {
+//export miqt_exec_callback_QRadioData_stationNameChanged
+func miqt_exec_callback_QRadioData_stationNameChanged(cb C.intptr_t, stationName C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(stationName string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -321,14 +321,14 @@ func (this *QRadioData) RadioTextChanged(radioText string) {
 	radioText_ms.data = C.CString(radioText)
 	radioText_ms.len = C.size_t(len(radioText))
 	defer C.free(unsafe.Pointer(radioText_ms.data))
-	C.QRadioData_RadioTextChanged(this.h, radioText_ms)
+	C.QRadioData_radioTextChanged(this.h, radioText_ms)
 }
 func (this *QRadioData) OnRadioTextChanged(slot func(radioText string)) {
-	C.QRadioData_connect_RadioTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QRadioData_connect_radioTextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QRadioData_RadioTextChanged
-func miqt_exec_callback_QRadioData_RadioTextChanged(cb C.intptr_t, radioText C.struct_miqt_string) {
+//export miqt_exec_callback_QRadioData_radioTextChanged
+func miqt_exec_callback_QRadioData_radioTextChanged(cb C.intptr_t, radioText C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(radioText string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -344,14 +344,14 @@ func miqt_exec_callback_QRadioData_RadioTextChanged(cb C.intptr_t, radioText C.s
 }
 
 func (this *QRadioData) AlternativeFrequenciesEnabledChanged(enabled bool) {
-	C.QRadioData_AlternativeFrequenciesEnabledChanged(this.h, (C.bool)(enabled))
+	C.QRadioData_alternativeFrequenciesEnabledChanged(this.h, (C.bool)(enabled))
 }
 func (this *QRadioData) OnAlternativeFrequenciesEnabledChanged(slot func(enabled bool)) {
-	C.QRadioData_connect_AlternativeFrequenciesEnabledChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QRadioData_connect_alternativeFrequenciesEnabledChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QRadioData_AlternativeFrequenciesEnabledChanged
-func miqt_exec_callback_QRadioData_AlternativeFrequenciesEnabledChanged(cb C.intptr_t, enabled C.bool) {
+//export miqt_exec_callback_QRadioData_alternativeFrequenciesEnabledChanged
+func miqt_exec_callback_QRadioData_alternativeFrequenciesEnabledChanged(cb C.intptr_t, enabled C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(enabled bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -364,14 +364,14 @@ func miqt_exec_callback_QRadioData_AlternativeFrequenciesEnabledChanged(cb C.int
 }
 
 func (this *QRadioData) ErrorWithError(error QRadioData__Error) {
-	C.QRadioData_ErrorWithError(this.h, (C.int)(error))
+	C.QRadioData_errorWithError(this.h, (C.int)(error))
 }
 func (this *QRadioData) OnErrorWithError(slot func(error QRadioData__Error)) {
-	C.QRadioData_connect_ErrorWithError(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QRadioData_connect_errorWithError(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QRadioData_ErrorWithError
-func miqt_exec_callback_QRadioData_ErrorWithError(cb C.intptr_t, error C.int) {
+//export miqt_exec_callback_QRadioData_errorWithError
+func miqt_exec_callback_QRadioData_errorWithError(cb C.intptr_t, error C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(error QRadioData__Error))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -388,7 +388,7 @@ func QRadioData_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QRadioData_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QRadioData_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -399,7 +399,7 @@ func QRadioData_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QRadioData_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QRadioData_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -410,7 +410,7 @@ func QRadioData_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QRadioData_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QRadioData_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -421,7 +421,7 @@ func QRadioData_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QRadioData_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QRadioData_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -429,18 +429,18 @@ func QRadioData_TrUtf83(s string, c string, n int) string {
 
 func (this *QRadioData) callVirtualBase_MediaObject() *QMediaObject {
 
-	return newQMediaObject(C.QRadioData_virtualbase_MediaObject(unsafe.Pointer(this.h)))
+	return newQMediaObject(C.QRadioData_virtualbase_mediaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QRadioData) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
-	ok := C.QRadioData_override_virtual_MediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QRadioData) OnmediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
+	ok := C.QRadioData_override_virtual_mediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QRadioData_MediaObject
-func miqt_exec_callback_QRadioData_MediaObject(self *C.QRadioData, cb C.intptr_t) *C.QMediaObject {
+//export miqt_exec_callback_QRadioData_mediaObject
+func miqt_exec_callback_QRadioData_mediaObject(self *C.QRadioData, cb C.intptr_t) *C.QMediaObject {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMediaObject) *QMediaObject)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -454,18 +454,18 @@ func miqt_exec_callback_QRadioData_MediaObject(self *C.QRadioData, cb C.intptr_t
 
 func (this *QRadioData) callVirtualBase_SetMediaObject(mediaObject *QMediaObject) bool {
 
-	return (bool)(C.QRadioData_virtualbase_SetMediaObject(unsafe.Pointer(this.h), mediaObject.cPointer()))
+	return (bool)(C.QRadioData_virtualbase_setMediaObject(unsafe.Pointer(this.h), mediaObject.cPointer()))
 
 }
-func (this *QRadioData) OnSetMediaObject(slot func(super func(mediaObject *QMediaObject) bool, mediaObject *QMediaObject) bool) {
-	ok := C.QRadioData_override_virtual_SetMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QRadioData) OnsetMediaObject(slot func(super func(mediaObject *QMediaObject) bool, mediaObject *QMediaObject) bool) {
+	ok := C.QRadioData_override_virtual_setMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QRadioData_SetMediaObject
-func miqt_exec_callback_QRadioData_SetMediaObject(self *C.QRadioData, cb C.intptr_t, mediaObject *C.QMediaObject) C.bool {
+//export miqt_exec_callback_QRadioData_setMediaObject
+func miqt_exec_callback_QRadioData_setMediaObject(self *C.QRadioData, cb C.intptr_t, mediaObject *C.QMediaObject) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(mediaObject *QMediaObject) bool, mediaObject *QMediaObject) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -482,18 +482,18 @@ func miqt_exec_callback_QRadioData_SetMediaObject(self *C.QRadioData, cb C.intpt
 
 func (this *QRadioData) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.QRadioData_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QRadioData_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QRadioData) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.QRadioData_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QRadioData) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QRadioData_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QRadioData_Event
-func miqt_exec_callback_QRadioData_Event(self *C.QRadioData, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QRadioData_event
+func miqt_exec_callback_QRadioData_event(self *C.QRadioData, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -510,18 +510,18 @@ func miqt_exec_callback_QRadioData_Event(self *C.QRadioData, cb C.intptr_t, even
 
 func (this *QRadioData) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.QRadioData_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QRadioData_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QRadioData) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.QRadioData_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QRadioData) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QRadioData_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QRadioData_EventFilter
-func miqt_exec_callback_QRadioData_EventFilter(self *C.QRadioData, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QRadioData_eventFilter
+func miqt_exec_callback_QRadioData_eventFilter(self *C.QRadioData, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -540,18 +540,18 @@ func miqt_exec_callback_QRadioData_EventFilter(self *C.QRadioData, cb C.intptr_t
 
 func (this *QRadioData) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QRadioData_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QRadioData_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QRadioData) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QRadioData_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QRadioData) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QRadioData_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QRadioData_TimerEvent
-func miqt_exec_callback_QRadioData_TimerEvent(self *C.QRadioData, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QRadioData_timerEvent
+func miqt_exec_callback_QRadioData_timerEvent(self *C.QRadioData, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -566,18 +566,18 @@ func miqt_exec_callback_QRadioData_TimerEvent(self *C.QRadioData, cb C.intptr_t,
 
 func (this *QRadioData) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QRadioData_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QRadioData_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QRadioData) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QRadioData_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QRadioData) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QRadioData_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QRadioData_ChildEvent
-func miqt_exec_callback_QRadioData_ChildEvent(self *C.QRadioData, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QRadioData_childEvent
+func miqt_exec_callback_QRadioData_childEvent(self *C.QRadioData, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -592,18 +592,18 @@ func miqt_exec_callback_QRadioData_ChildEvent(self *C.QRadioData, cb C.intptr_t,
 
 func (this *QRadioData) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QRadioData_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QRadioData_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QRadioData) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QRadioData_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QRadioData) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QRadioData_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QRadioData_CustomEvent
-func miqt_exec_callback_QRadioData_CustomEvent(self *C.QRadioData, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QRadioData_customEvent
+func miqt_exec_callback_QRadioData_customEvent(self *C.QRadioData, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -618,18 +618,18 @@ func miqt_exec_callback_QRadioData_CustomEvent(self *C.QRadioData, cb C.intptr_t
 
 func (this *QRadioData) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QRadioData_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QRadioData_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QRadioData) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QRadioData_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QRadioData) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QRadioData_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QRadioData_ConnectNotify
-func miqt_exec_callback_QRadioData_ConnectNotify(self *C.QRadioData, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QRadioData_connectNotify
+func miqt_exec_callback_QRadioData_connectNotify(self *C.QRadioData, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -644,18 +644,18 @@ func miqt_exec_callback_QRadioData_ConnectNotify(self *C.QRadioData, cb C.intptr
 
 func (this *QRadioData) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QRadioData_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QRadioData_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QRadioData) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QRadioData_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QRadioData) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QRadioData_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QRadioData_DisconnectNotify
-func miqt_exec_callback_QRadioData_DisconnectNotify(self *C.QRadioData, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QRadioData_disconnectNotify
+func miqt_exec_callback_QRadioData_disconnectNotify(self *C.QRadioData, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -670,7 +670,7 @@ func miqt_exec_callback_QRadioData_DisconnectNotify(self *C.QRadioData, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QRadioData) Delete() {
-	C.QRadioData_Delete(this.h)
+	C.QRadioData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

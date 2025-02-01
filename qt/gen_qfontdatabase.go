@@ -102,7 +102,7 @@ func NewQFontDatabase() *QFontDatabase {
 }
 
 func QFontDatabase_StandardSizes() []int {
-	var _ma C.struct_miqt_array = C.QFontDatabase_StandardSizes()
+	var _ma C.struct_miqt_array = C.QFontDatabase_standardSizes()
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -112,7 +112,7 @@ func QFontDatabase_StandardSizes() []int {
 }
 
 func (this *QFontDatabase) WritingSystems() []QFontDatabase__WritingSystem {
-	var _ma C.struct_miqt_array = C.QFontDatabase_WritingSystems(this.h)
+	var _ma C.struct_miqt_array = C.QFontDatabase_writingSystems(this.h)
 	_ret := make([]QFontDatabase__WritingSystem, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -126,7 +126,7 @@ func (this *QFontDatabase) WritingSystemsWithFamily(family string) []QFontDataba
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	var _ma C.struct_miqt_array = C.QFontDatabase_WritingSystemsWithFamily(this.h, family_ms)
+	var _ma C.struct_miqt_array = C.QFontDatabase_writingSystemsWithFamily(this.h, family_ms)
 	_ret := make([]QFontDatabase__WritingSystem, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -136,7 +136,7 @@ func (this *QFontDatabase) WritingSystemsWithFamily(family string) []QFontDataba
 }
 
 func (this *QFontDatabase) Families() []string {
-	var _ma C.struct_miqt_array = C.QFontDatabase_Families(this.h)
+	var _ma C.struct_miqt_array = C.QFontDatabase_families(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -153,7 +153,7 @@ func (this *QFontDatabase) Styles(family string) []string {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	var _ma C.struct_miqt_array = C.QFontDatabase_Styles(this.h, family_ms)
+	var _ma C.struct_miqt_array = C.QFontDatabase_styles(this.h, family_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -170,7 +170,7 @@ func (this *QFontDatabase) PointSizes(family string) []int {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	var _ma C.struct_miqt_array = C.QFontDatabase_PointSizes(this.h, family_ms)
+	var _ma C.struct_miqt_array = C.QFontDatabase_pointSizes(this.h, family_ms)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -188,7 +188,7 @@ func (this *QFontDatabase) SmoothSizes(family string, style string) []int {
 	style_ms.data = C.CString(style)
 	style_ms.len = C.size_t(len(style))
 	defer C.free(unsafe.Pointer(style_ms.data))
-	var _ma C.struct_miqt_array = C.QFontDatabase_SmoothSizes(this.h, family_ms, style_ms)
+	var _ma C.struct_miqt_array = C.QFontDatabase_smoothSizes(this.h, family_ms, style_ms)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -198,14 +198,14 @@ func (this *QFontDatabase) SmoothSizes(family string, style string) []int {
 }
 
 func (this *QFontDatabase) StyleString(font *QFont) string {
-	var _ms C.struct_miqt_string = C.QFontDatabase_StyleString(this.h, font.cPointer())
+	var _ms C.struct_miqt_string = C.QFontDatabase_styleString(this.h, font.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFontDatabase) StyleStringWithFontInfo(fontInfo *QFontInfo) string {
-	var _ms C.struct_miqt_string = C.QFontDatabase_StyleStringWithFontInfo(this.h, fontInfo.cPointer())
+	var _ms C.struct_miqt_string = C.QFontDatabase_styleStringWithFontInfo(this.h, fontInfo.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -220,7 +220,7 @@ func (this *QFontDatabase) Font(family string, style string, pointSize int) *QFo
 	style_ms.data = C.CString(style)
 	style_ms.len = C.size_t(len(style))
 	defer C.free(unsafe.Pointer(style_ms.data))
-	_goptr := newQFont(C.QFontDatabase_Font(this.h, family_ms, style_ms, (C.int)(pointSize)))
+	_goptr := newQFont(C.QFontDatabase_font(this.h, family_ms, style_ms, (C.int)(pointSize)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -230,7 +230,7 @@ func (this *QFontDatabase) IsBitmapScalable(family string) bool {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	return (bool)(C.QFontDatabase_IsBitmapScalable(this.h, family_ms))
+	return (bool)(C.QFontDatabase_isBitmapScalable(this.h, family_ms))
 }
 
 func (this *QFontDatabase) IsSmoothlyScalable(family string) bool {
@@ -238,7 +238,7 @@ func (this *QFontDatabase) IsSmoothlyScalable(family string) bool {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	return (bool)(C.QFontDatabase_IsSmoothlyScalable(this.h, family_ms))
+	return (bool)(C.QFontDatabase_isSmoothlyScalable(this.h, family_ms))
 }
 
 func (this *QFontDatabase) IsScalable(family string) bool {
@@ -246,7 +246,7 @@ func (this *QFontDatabase) IsScalable(family string) bool {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	return (bool)(C.QFontDatabase_IsScalable(this.h, family_ms))
+	return (bool)(C.QFontDatabase_isScalable(this.h, family_ms))
 }
 
 func (this *QFontDatabase) IsFixedPitch(family string) bool {
@@ -254,7 +254,7 @@ func (this *QFontDatabase) IsFixedPitch(family string) bool {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	return (bool)(C.QFontDatabase_IsFixedPitch(this.h, family_ms))
+	return (bool)(C.QFontDatabase_isFixedPitch(this.h, family_ms))
 }
 
 func (this *QFontDatabase) Italic(family string, style string) bool {
@@ -266,7 +266,7 @@ func (this *QFontDatabase) Italic(family string, style string) bool {
 	style_ms.data = C.CString(style)
 	style_ms.len = C.size_t(len(style))
 	defer C.free(unsafe.Pointer(style_ms.data))
-	return (bool)(C.QFontDatabase_Italic(this.h, family_ms, style_ms))
+	return (bool)(C.QFontDatabase_italic(this.h, family_ms, style_ms))
 }
 
 func (this *QFontDatabase) Bold(family string, style string) bool {
@@ -278,7 +278,7 @@ func (this *QFontDatabase) Bold(family string, style string) bool {
 	style_ms.data = C.CString(style)
 	style_ms.len = C.size_t(len(style))
 	defer C.free(unsafe.Pointer(style_ms.data))
-	return (bool)(C.QFontDatabase_Bold(this.h, family_ms, style_ms))
+	return (bool)(C.QFontDatabase_bold(this.h, family_ms, style_ms))
 }
 
 func (this *QFontDatabase) Weight(family string, style string) int {
@@ -290,7 +290,7 @@ func (this *QFontDatabase) Weight(family string, style string) int {
 	style_ms.data = C.CString(style)
 	style_ms.len = C.size_t(len(style))
 	defer C.free(unsafe.Pointer(style_ms.data))
-	return (int)(C.QFontDatabase_Weight(this.h, family_ms, style_ms))
+	return (int)(C.QFontDatabase_weight(this.h, family_ms, style_ms))
 }
 
 func (this *QFontDatabase) HasFamily(family string) bool {
@@ -298,7 +298,7 @@ func (this *QFontDatabase) HasFamily(family string) bool {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	return (bool)(C.QFontDatabase_HasFamily(this.h, family_ms))
+	return (bool)(C.QFontDatabase_hasFamily(this.h, family_ms))
 }
 
 func (this *QFontDatabase) IsPrivateFamily(family string) bool {
@@ -306,18 +306,18 @@ func (this *QFontDatabase) IsPrivateFamily(family string) bool {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	return (bool)(C.QFontDatabase_IsPrivateFamily(this.h, family_ms))
+	return (bool)(C.QFontDatabase_isPrivateFamily(this.h, family_ms))
 }
 
 func QFontDatabase_WritingSystemName(writingSystem QFontDatabase__WritingSystem) string {
-	var _ms C.struct_miqt_string = C.QFontDatabase_WritingSystemName((C.int)(writingSystem))
+	var _ms C.struct_miqt_string = C.QFontDatabase_writingSystemName((C.int)(writingSystem))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QFontDatabase_WritingSystemSample(writingSystem QFontDatabase__WritingSystem) string {
-	var _ms C.struct_miqt_string = C.QFontDatabase_WritingSystemSample((C.int)(writingSystem))
+	var _ms C.struct_miqt_string = C.QFontDatabase_writingSystemSample((C.int)(writingSystem))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -328,7 +328,7 @@ func QFontDatabase_AddApplicationFont(fileName string) int {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	return (int)(C.QFontDatabase_AddApplicationFont(fileName_ms))
+	return (int)(C.QFontDatabase_addApplicationFont(fileName_ms))
 }
 
 func QFontDatabase_AddApplicationFontFromData(fontData []byte) int {
@@ -339,11 +339,11 @@ func QFontDatabase_AddApplicationFontFromData(fontData []byte) int {
 		fontData_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	fontData_alias.len = C.size_t(len(fontData))
-	return (int)(C.QFontDatabase_AddApplicationFontFromData(fontData_alias))
+	return (int)(C.QFontDatabase_addApplicationFontFromData(fontData_alias))
 }
 
 func QFontDatabase_ApplicationFontFamilies(id int) []string {
-	var _ma C.struct_miqt_array = C.QFontDatabase_ApplicationFontFamilies((C.int)(id))
+	var _ma C.struct_miqt_array = C.QFontDatabase_applicationFontFamilies((C.int)(id))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -356,25 +356,25 @@ func QFontDatabase_ApplicationFontFamilies(id int) []string {
 }
 
 func QFontDatabase_RemoveApplicationFont(id int) bool {
-	return (bool)(C.QFontDatabase_RemoveApplicationFont((C.int)(id)))
+	return (bool)(C.QFontDatabase_removeApplicationFont((C.int)(id)))
 }
 
 func QFontDatabase_RemoveAllApplicationFonts() bool {
-	return (bool)(C.QFontDatabase_RemoveAllApplicationFonts())
+	return (bool)(C.QFontDatabase_removeAllApplicationFonts())
 }
 
 func QFontDatabase_SupportsThreadedFontRendering() bool {
-	return (bool)(C.QFontDatabase_SupportsThreadedFontRendering())
+	return (bool)(C.QFontDatabase_supportsThreadedFontRendering())
 }
 
 func QFontDatabase_SystemFont(typeVal QFontDatabase__SystemFont) *QFont {
-	_goptr := newQFont(C.QFontDatabase_SystemFont((C.int)(typeVal)))
+	_goptr := newQFont(C.QFontDatabase_systemFont((C.int)(typeVal)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFontDatabase) Families1(writingSystem QFontDatabase__WritingSystem) []string {
-	var _ma C.struct_miqt_array = C.QFontDatabase_Families1(this.h, (C.int)(writingSystem))
+	var _ma C.struct_miqt_array = C.QFontDatabase_families1(this.h, (C.int)(writingSystem))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -395,7 +395,7 @@ func (this *QFontDatabase) PointSizes2(family string, style string) []int {
 	style_ms.data = C.CString(style)
 	style_ms.len = C.size_t(len(style))
 	defer C.free(unsafe.Pointer(style_ms.data))
-	var _ma C.struct_miqt_array = C.QFontDatabase_PointSizes2(this.h, family_ms, style_ms)
+	var _ma C.struct_miqt_array = C.QFontDatabase_pointSizes2(this.h, family_ms, style_ms)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -413,7 +413,7 @@ func (this *QFontDatabase) IsBitmapScalable2(family string, style string) bool {
 	style_ms.data = C.CString(style)
 	style_ms.len = C.size_t(len(style))
 	defer C.free(unsafe.Pointer(style_ms.data))
-	return (bool)(C.QFontDatabase_IsBitmapScalable2(this.h, family_ms, style_ms))
+	return (bool)(C.QFontDatabase_isBitmapScalable2(this.h, family_ms, style_ms))
 }
 
 func (this *QFontDatabase) IsSmoothlyScalable2(family string, style string) bool {
@@ -425,7 +425,7 @@ func (this *QFontDatabase) IsSmoothlyScalable2(family string, style string) bool
 	style_ms.data = C.CString(style)
 	style_ms.len = C.size_t(len(style))
 	defer C.free(unsafe.Pointer(style_ms.data))
-	return (bool)(C.QFontDatabase_IsSmoothlyScalable2(this.h, family_ms, style_ms))
+	return (bool)(C.QFontDatabase_isSmoothlyScalable2(this.h, family_ms, style_ms))
 }
 
 func (this *QFontDatabase) IsScalable2(family string, style string) bool {
@@ -437,7 +437,7 @@ func (this *QFontDatabase) IsScalable2(family string, style string) bool {
 	style_ms.data = C.CString(style)
 	style_ms.len = C.size_t(len(style))
 	defer C.free(unsafe.Pointer(style_ms.data))
-	return (bool)(C.QFontDatabase_IsScalable2(this.h, family_ms, style_ms))
+	return (bool)(C.QFontDatabase_isScalable2(this.h, family_ms, style_ms))
 }
 
 func (this *QFontDatabase) IsFixedPitch2(family string, style string) bool {
@@ -449,12 +449,12 @@ func (this *QFontDatabase) IsFixedPitch2(family string, style string) bool {
 	style_ms.data = C.CString(style)
 	style_ms.len = C.size_t(len(style))
 	defer C.free(unsafe.Pointer(style_ms.data))
-	return (bool)(C.QFontDatabase_IsFixedPitch2(this.h, family_ms, style_ms))
+	return (bool)(C.QFontDatabase_isFixedPitch2(this.h, family_ms, style_ms))
 }
 
 // Delete this object from C++ memory.
 func (this *QFontDatabase) Delete() {
-	C.QFontDatabase_Delete(this.h)
+	C.QFontDatabase_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -19,39 +19,39 @@ QSemaphore* QSemaphore_new2(int n) {
 	return new QSemaphore(static_cast<int>(n));
 }
 
-void QSemaphore_Acquire(QSemaphore* self) {
+void QSemaphore_acquire(QSemaphore* self) {
 	self->acquire();
 }
 
-bool QSemaphore_TryAcquire(QSemaphore* self) {
+bool QSemaphore_tryAcquire(QSemaphore* self) {
 	return self->tryAcquire();
 }
 
-bool QSemaphore_TryAcquire2(QSemaphore* self, int n, int timeout) {
+bool QSemaphore_tryAcquire2(QSemaphore* self, int n, int timeout) {
 	return self->tryAcquire(static_cast<int>(n), static_cast<int>(timeout));
 }
 
-void QSemaphore_Release(QSemaphore* self) {
+void QSemaphore_release(QSemaphore* self) {
 	self->release();
 }
 
-int QSemaphore_Available(const QSemaphore* self) {
+int QSemaphore_available(const QSemaphore* self) {
 	return self->available();
 }
 
-void QSemaphore_Acquire1(QSemaphore* self, int n) {
+void QSemaphore_acquire1(QSemaphore* self, int n) {
 	self->acquire(static_cast<int>(n));
 }
 
-bool QSemaphore_TryAcquire1(QSemaphore* self, int n) {
+bool QSemaphore_tryAcquire1(QSemaphore* self, int n) {
 	return self->tryAcquire(static_cast<int>(n));
 }
 
-void QSemaphore_Release1(QSemaphore* self, int n) {
+void QSemaphore_release1(QSemaphore* self, int n) {
 	self->release(static_cast<int>(n));
 }
 
-void QSemaphore_Delete(QSemaphore* self) {
+void QSemaphore_delete(QSemaphore* self) {
 	delete self;
 }
 
@@ -75,19 +75,19 @@ QSemaphoreReleaser* QSemaphoreReleaser_new5(QSemaphore* sem, int n) {
 	return new QSemaphoreReleaser(sem, static_cast<int>(n));
 }
 
-void QSemaphoreReleaser_Swap(QSemaphoreReleaser* self, QSemaphoreReleaser* other) {
+void QSemaphoreReleaser_swap(QSemaphoreReleaser* self, QSemaphoreReleaser* other) {
 	self->swap(*other);
 }
 
-QSemaphore* QSemaphoreReleaser_Semaphore(const QSemaphoreReleaser* self) {
+QSemaphore* QSemaphoreReleaser_semaphore(const QSemaphoreReleaser* self) {
 	return self->semaphore();
 }
 
-QSemaphore* QSemaphoreReleaser_Cancel(QSemaphoreReleaser* self) {
+QSemaphore* QSemaphoreReleaser_cancel(QSemaphoreReleaser* self) {
 	return self->cancel();
 }
 
-void QSemaphoreReleaser_Delete(QSemaphoreReleaser* self) {
+void QSemaphoreReleaser_delete(QSemaphoreReleaser* self) {
 	delete self;
 }
 

@@ -20,11 +20,11 @@ class QFactoryInterface;
 typedef struct QFactoryInterface QFactoryInterface;
 #endif
 
-struct miqt_array /* of struct miqt_string */  QFactoryInterface_Keys(const QFactoryInterface* self);
-void QFactoryInterface_Delete(QFactoryInterface* self);
+struct miqt_array /* of struct miqt_string */  QFactoryInterface_keys(const QFactoryInterface* self);
+void QFactoryInterface_delete(QFactoryInterface* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

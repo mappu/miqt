@@ -58,26 +58,26 @@ func NewQsciAbstractAPIs(lexer *QsciLexer) *QsciAbstractAPIs {
 }
 
 func (this *QsciAbstractAPIs) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciAbstractAPIs_MetaObject(this.h)))
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciAbstractAPIs_metaObject(this.h)))
 }
 
 func (this *QsciAbstractAPIs) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QsciAbstractAPIs_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QsciAbstractAPIs_metacast(this.h, param1_Cstring))
 }
 
 func QsciAbstractAPIs_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QsciAbstractAPIs_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QsciAbstractAPIs_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciAbstractAPIs) Lexer() *QsciLexer {
-	return newQsciLexer(C.QsciAbstractAPIs_Lexer(this.h))
+	return newQsciLexer(C.QsciAbstractAPIs_lexer(this.h))
 }
 
 func (this *QsciAbstractAPIs) UpdateAutoCompletionList(context []string, list []string) {
@@ -101,7 +101,7 @@ func (this *QsciAbstractAPIs) UpdateAutoCompletionList(context []string, list []
 		list_CArray[i] = list_i_ms
 	}
 	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
-	C.QsciAbstractAPIs_UpdateAutoCompletionList(this.h, context_ma, list_ma)
+	C.QsciAbstractAPIs_updateAutoCompletionList(this.h, context_ma, list_ma)
 }
 
 func (this *QsciAbstractAPIs) AutoCompletionSelected(selection string) {
@@ -109,7 +109,7 @@ func (this *QsciAbstractAPIs) AutoCompletionSelected(selection string) {
 	selection_ms.data = C.CString(selection)
 	selection_ms.len = C.size_t(len(selection))
 	defer C.free(unsafe.Pointer(selection_ms.data))
-	C.QsciAbstractAPIs_AutoCompletionSelected(this.h, selection_ms)
+	C.QsciAbstractAPIs_autoCompletionSelected(this.h, selection_ms)
 }
 
 func (this *QsciAbstractAPIs) CallTips(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string {
@@ -129,7 +129,7 @@ func (this *QsciAbstractAPIs) CallTips(context []string, commas int, style QsciS
 		shifts_CArray[i] = (C.int)(shifts[i])
 	}
 	shifts_ma := C.struct_miqt_array{len: C.size_t(len(shifts)), data: unsafe.Pointer(shifts_CArray)}
-	var _ma C.struct_miqt_array = C.QsciAbstractAPIs_CallTips(this.h, context_ma, (C.int)(commas), (C.int)(style), shifts_ma)
+	var _ma C.struct_miqt_array = C.QsciAbstractAPIs_callTips(this.h, context_ma, (C.int)(commas), (C.int)(style), shifts_ma)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -146,7 +146,7 @@ func QsciAbstractAPIs_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QsciAbstractAPIs_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QsciAbstractAPIs_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -157,20 +157,20 @@ func QsciAbstractAPIs_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QsciAbstractAPIs_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QsciAbstractAPIs_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QsciAbstractAPIs) OnUpdateAutoCompletionList(slot func(context []string, list []string)) {
-	ok := C.QsciAbstractAPIs_override_virtual_UpdateAutoCompletionList(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciAbstractAPIs) OnupdateAutoCompletionList(slot func(context []string, list []string)) {
+	ok := C.QsciAbstractAPIs_override_virtual_updateAutoCompletionList(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciAbstractAPIs_UpdateAutoCompletionList
-func miqt_exec_callback_QsciAbstractAPIs_UpdateAutoCompletionList(self *C.QsciAbstractAPIs, cb C.intptr_t, context C.struct_miqt_array, list C.struct_miqt_array) {
+//export miqt_exec_callback_QsciAbstractAPIs_updateAutoCompletionList
+func miqt_exec_callback_QsciAbstractAPIs_updateAutoCompletionList(self *C.QsciAbstractAPIs, cb C.intptr_t, context C.struct_miqt_array, list C.struct_miqt_array) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(context []string, list []string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -209,18 +209,18 @@ func (this *QsciAbstractAPIs) callVirtualBase_AutoCompletionSelected(selection s
 	selection_ms.len = C.size_t(len(selection))
 	defer C.free(unsafe.Pointer(selection_ms.data))
 
-	C.QsciAbstractAPIs_virtualbase_AutoCompletionSelected(unsafe.Pointer(this.h), selection_ms)
+	C.QsciAbstractAPIs_virtualbase_autoCompletionSelected(unsafe.Pointer(this.h), selection_ms)
 
 }
-func (this *QsciAbstractAPIs) OnAutoCompletionSelected(slot func(super func(selection string), selection string)) {
-	ok := C.QsciAbstractAPIs_override_virtual_AutoCompletionSelected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciAbstractAPIs) OnautoCompletionSelected(slot func(super func(selection string), selection string)) {
+	ok := C.QsciAbstractAPIs_override_virtual_autoCompletionSelected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciAbstractAPIs_AutoCompletionSelected
-func miqt_exec_callback_QsciAbstractAPIs_AutoCompletionSelected(self *C.QsciAbstractAPIs, cb C.intptr_t, selection C.struct_miqt_string) {
+//export miqt_exec_callback_QsciAbstractAPIs_autoCompletionSelected
+func miqt_exec_callback_QsciAbstractAPIs_autoCompletionSelected(self *C.QsciAbstractAPIs, cb C.intptr_t, selection C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selection string), selection string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -235,15 +235,15 @@ func miqt_exec_callback_QsciAbstractAPIs_AutoCompletionSelected(self *C.QsciAbst
 	gofunc((&QsciAbstractAPIs{h: self}).callVirtualBase_AutoCompletionSelected, slotval1)
 
 }
-func (this *QsciAbstractAPIs) OnCallTips(slot func(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string) {
-	ok := C.QsciAbstractAPIs_override_virtual_CallTips(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciAbstractAPIs) OncallTips(slot func(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string) {
+	ok := C.QsciAbstractAPIs_override_virtual_callTips(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciAbstractAPIs_CallTips
-func miqt_exec_callback_QsciAbstractAPIs_CallTips(self *C.QsciAbstractAPIs, cb C.intptr_t, context C.struct_miqt_array, commas C.int, style C.int, shifts C.struct_miqt_array) C.struct_miqt_array {
+//export miqt_exec_callback_QsciAbstractAPIs_callTips
+func miqt_exec_callback_QsciAbstractAPIs_callTips(self *C.QsciAbstractAPIs, cb C.intptr_t, context C.struct_miqt_array, commas C.int, style C.int, shifts C.struct_miqt_array) C.struct_miqt_array {
 	gofunc, ok := cgo.Handle(cb).Value().(func(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -291,18 +291,18 @@ func miqt_exec_callback_QsciAbstractAPIs_CallTips(self *C.QsciAbstractAPIs, cb C
 
 func (this *QsciAbstractAPIs) callVirtualBase_Event(event *qt6.QEvent) bool {
 
-	return (bool)(C.QsciAbstractAPIs_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QsciAbstractAPIs_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QsciAbstractAPIs) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
-	ok := C.QsciAbstractAPIs_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciAbstractAPIs) Onevent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	ok := C.QsciAbstractAPIs_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciAbstractAPIs_Event
-func miqt_exec_callback_QsciAbstractAPIs_Event(self *C.QsciAbstractAPIs, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QsciAbstractAPIs_event
+func miqt_exec_callback_QsciAbstractAPIs_event(self *C.QsciAbstractAPIs, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -319,18 +319,18 @@ func miqt_exec_callback_QsciAbstractAPIs_Event(self *C.QsciAbstractAPIs, cb C.in
 
 func (this *QsciAbstractAPIs) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
 
-	return (bool)(C.QsciAbstractAPIs_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QsciAbstractAPIs_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QsciAbstractAPIs) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	ok := C.QsciAbstractAPIs_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciAbstractAPIs) OneventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	ok := C.QsciAbstractAPIs_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciAbstractAPIs_EventFilter
-func miqt_exec_callback_QsciAbstractAPIs_EventFilter(self *C.QsciAbstractAPIs, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QsciAbstractAPIs_eventFilter
+func miqt_exec_callback_QsciAbstractAPIs_eventFilter(self *C.QsciAbstractAPIs, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -349,18 +349,18 @@ func miqt_exec_callback_QsciAbstractAPIs_EventFilter(self *C.QsciAbstractAPIs, c
 
 func (this *QsciAbstractAPIs) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
-	C.QsciAbstractAPIs_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QsciAbstractAPIs_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciAbstractAPIs) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	ok := C.QsciAbstractAPIs_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciAbstractAPIs) OntimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	ok := C.QsciAbstractAPIs_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciAbstractAPIs_TimerEvent
-func miqt_exec_callback_QsciAbstractAPIs_TimerEvent(self *C.QsciAbstractAPIs, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QsciAbstractAPIs_timerEvent
+func miqt_exec_callback_QsciAbstractAPIs_timerEvent(self *C.QsciAbstractAPIs, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -375,18 +375,18 @@ func miqt_exec_callback_QsciAbstractAPIs_TimerEvent(self *C.QsciAbstractAPIs, cb
 
 func (this *QsciAbstractAPIs) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
-	C.QsciAbstractAPIs_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QsciAbstractAPIs_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciAbstractAPIs) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	ok := C.QsciAbstractAPIs_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciAbstractAPIs) OnchildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	ok := C.QsciAbstractAPIs_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciAbstractAPIs_ChildEvent
-func miqt_exec_callback_QsciAbstractAPIs_ChildEvent(self *C.QsciAbstractAPIs, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QsciAbstractAPIs_childEvent
+func miqt_exec_callback_QsciAbstractAPIs_childEvent(self *C.QsciAbstractAPIs, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -401,18 +401,18 @@ func miqt_exec_callback_QsciAbstractAPIs_ChildEvent(self *C.QsciAbstractAPIs, cb
 
 func (this *QsciAbstractAPIs) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
-	C.QsciAbstractAPIs_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QsciAbstractAPIs_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciAbstractAPIs) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	ok := C.QsciAbstractAPIs_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciAbstractAPIs) OncustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	ok := C.QsciAbstractAPIs_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciAbstractAPIs_CustomEvent
-func miqt_exec_callback_QsciAbstractAPIs_CustomEvent(self *C.QsciAbstractAPIs, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QsciAbstractAPIs_customEvent
+func miqt_exec_callback_QsciAbstractAPIs_customEvent(self *C.QsciAbstractAPIs, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -427,18 +427,18 @@ func miqt_exec_callback_QsciAbstractAPIs_CustomEvent(self *C.QsciAbstractAPIs, c
 
 func (this *QsciAbstractAPIs) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QsciAbstractAPIs_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QsciAbstractAPIs_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QsciAbstractAPIs) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QsciAbstractAPIs_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciAbstractAPIs) OnconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QsciAbstractAPIs_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciAbstractAPIs_ConnectNotify
-func miqt_exec_callback_QsciAbstractAPIs_ConnectNotify(self *C.QsciAbstractAPIs, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QsciAbstractAPIs_connectNotify
+func miqt_exec_callback_QsciAbstractAPIs_connectNotify(self *C.QsciAbstractAPIs, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -453,18 +453,18 @@ func miqt_exec_callback_QsciAbstractAPIs_ConnectNotify(self *C.QsciAbstractAPIs,
 
 func (this *QsciAbstractAPIs) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QsciAbstractAPIs_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QsciAbstractAPIs_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QsciAbstractAPIs) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QsciAbstractAPIs_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciAbstractAPIs) OndisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QsciAbstractAPIs_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciAbstractAPIs_DisconnectNotify
-func miqt_exec_callback_QsciAbstractAPIs_DisconnectNotify(self *C.QsciAbstractAPIs, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QsciAbstractAPIs_disconnectNotify
+func miqt_exec_callback_QsciAbstractAPIs_disconnectNotify(self *C.QsciAbstractAPIs, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -479,7 +479,7 @@ func miqt_exec_callback_QsciAbstractAPIs_DisconnectNotify(self *C.QsciAbstractAP
 
 // Delete this object from C++ memory.
 func (this *QsciAbstractAPIs) Delete() {
-	C.QsciAbstractAPIs_Delete(this.h)
+	C.QsciAbstractAPIs_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

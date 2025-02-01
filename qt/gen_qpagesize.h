@@ -37,39 +37,39 @@ QPageSize* QPageSize_new6(QSize* pointSize, struct miqt_string name);
 QPageSize* QPageSize_new7(QSize* pointSize, struct miqt_string name, int matchPolicy);
 QPageSize* QPageSize_new8(QSizeF* size, int units, struct miqt_string name);
 QPageSize* QPageSize_new9(QSizeF* size, int units, struct miqt_string name, int matchPolicy);
-void QPageSize_OperatorAssign(QPageSize* self, QPageSize* other);
-void QPageSize_Swap(QPageSize* self, QPageSize* other);
-bool QPageSize_IsEquivalentTo(const QPageSize* self, QPageSize* other);
-bool QPageSize_IsValid(const QPageSize* self);
-struct miqt_string QPageSize_Key(const QPageSize* self);
-struct miqt_string QPageSize_Name(const QPageSize* self);
-int QPageSize_Id(const QPageSize* self);
-int QPageSize_WindowsId(const QPageSize* self);
-QSizeF* QPageSize_DefinitionSize(const QPageSize* self);
-int QPageSize_DefinitionUnits(const QPageSize* self);
-QSizeF* QPageSize_Size(const QPageSize* self, int units);
-QSize* QPageSize_SizePoints(const QPageSize* self);
-QSize* QPageSize_SizePixels(const QPageSize* self, int resolution);
-QRectF* QPageSize_Rect(const QPageSize* self, int units);
-QRect* QPageSize_RectPoints(const QPageSize* self);
-QRect* QPageSize_RectPixels(const QPageSize* self, int resolution);
-struct miqt_string QPageSize_KeyWithPageSizeId(int pageSizeId);
-struct miqt_string QPageSize_NameWithPageSizeId(int pageSizeId);
-int QPageSize_IdWithPointSize(QSize* pointSize);
-int QPageSize_Id2(QSizeF* size, int units);
-int QPageSize_IdWithWindowsId(int windowsId);
-int QPageSize_WindowsIdWithPageSizeId(int pageSizeId);
-QSizeF* QPageSize_DefinitionSizeWithPageSizeId(int pageSizeId);
-int QPageSize_DefinitionUnitsWithPageSizeId(int pageSizeId);
-QSizeF* QPageSize_Size2(int pageSizeId, int units);
-QSize* QPageSize_SizePointsWithPageSizeId(int pageSizeId);
-QSize* QPageSize_SizePixels2(int pageSizeId, int resolution);
-int QPageSize_Id22(QSize* pointSize, int matchPolicy);
-int QPageSize_Id3(QSizeF* size, int units, int matchPolicy);
-void QPageSize_Delete(QPageSize* self);
+void QPageSize_operatorAssign(QPageSize* self, QPageSize* other);
+void QPageSize_swap(QPageSize* self, QPageSize* other);
+bool QPageSize_isEquivalentTo(const QPageSize* self, QPageSize* other);
+bool QPageSize_isValid(const QPageSize* self);
+struct miqt_string QPageSize_key(const QPageSize* self);
+struct miqt_string QPageSize_name(const QPageSize* self);
+int QPageSize_id(const QPageSize* self);
+int QPageSize_windowsId(const QPageSize* self);
+QSizeF* QPageSize_definitionSize(const QPageSize* self);
+int QPageSize_definitionUnits(const QPageSize* self);
+QSizeF* QPageSize_size(const QPageSize* self, int units);
+QSize* QPageSize_sizePoints(const QPageSize* self);
+QSize* QPageSize_sizePixels(const QPageSize* self, int resolution);
+QRectF* QPageSize_rect(const QPageSize* self, int units);
+QRect* QPageSize_rectPoints(const QPageSize* self);
+QRect* QPageSize_rectPixels(const QPageSize* self, int resolution);
+struct miqt_string QPageSize_keyWithPageSizeId(int pageSizeId);
+struct miqt_string QPageSize_nameWithPageSizeId(int pageSizeId);
+int QPageSize_idWithPointSize(QSize* pointSize);
+int QPageSize_id2(QSizeF* size, int units);
+int QPageSize_idWithWindowsId(int windowsId);
+int QPageSize_windowsIdWithPageSizeId(int pageSizeId);
+QSizeF* QPageSize_definitionSizeWithPageSizeId(int pageSizeId);
+int QPageSize_definitionUnitsWithPageSizeId(int pageSizeId);
+QSizeF* QPageSize_size2(int pageSizeId, int units);
+QSize* QPageSize_sizePointsWithPageSizeId(int pageSizeId);
+QSize* QPageSize_sizePixels2(int pageSizeId, int resolution);
+int QPageSize_id22(QSize* pointSize, int matchPolicy);
+int QPageSize_id3(QSizeF* size, int units, int matchPolicy);
+void QPageSize_delete(QPageSize* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

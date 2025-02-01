@@ -25,23 +25,23 @@ typedef struct QScriptValueIterator QScriptValueIterator;
 #endif
 
 QScriptValueIterator* QScriptValueIterator_new(QScriptValue* value);
-bool QScriptValueIterator_HasNext(const QScriptValueIterator* self);
-void QScriptValueIterator_Next(QScriptValueIterator* self);
-bool QScriptValueIterator_HasPrevious(const QScriptValueIterator* self);
-void QScriptValueIterator_Previous(QScriptValueIterator* self);
-struct miqt_string QScriptValueIterator_Name(const QScriptValueIterator* self);
-QScriptString* QScriptValueIterator_ScriptName(const QScriptValueIterator* self);
-QScriptValue* QScriptValueIterator_Value(const QScriptValueIterator* self);
-void QScriptValueIterator_SetValue(QScriptValueIterator* self, QScriptValue* value);
-int QScriptValueIterator_Flags(const QScriptValueIterator* self);
-void QScriptValueIterator_Remove(QScriptValueIterator* self);
-void QScriptValueIterator_ToFront(QScriptValueIterator* self);
-void QScriptValueIterator_ToBack(QScriptValueIterator* self);
-void QScriptValueIterator_OperatorAssign(QScriptValueIterator* self, QScriptValue* value);
-void QScriptValueIterator_Delete(QScriptValueIterator* self);
+bool QScriptValueIterator_hasNext(const QScriptValueIterator* self);
+void QScriptValueIterator_next(QScriptValueIterator* self);
+bool QScriptValueIterator_hasPrevious(const QScriptValueIterator* self);
+void QScriptValueIterator_previous(QScriptValueIterator* self);
+struct miqt_string QScriptValueIterator_name(const QScriptValueIterator* self);
+QScriptString* QScriptValueIterator_scriptName(const QScriptValueIterator* self);
+QScriptValue* QScriptValueIterator_value(const QScriptValueIterator* self);
+void QScriptValueIterator_setValue(QScriptValueIterator* self, QScriptValue* value);
+int QScriptValueIterator_flags(const QScriptValueIterator* self);
+void QScriptValueIterator_remove(QScriptValueIterator* self);
+void QScriptValueIterator_toFront(QScriptValueIterator* self);
+void QScriptValueIterator_toBack(QScriptValueIterator* self);
+void QScriptValueIterator_operatorAssign(QScriptValueIterator* self, QScriptValue* value);
+void QScriptValueIterator_delete(QScriptValueIterator* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

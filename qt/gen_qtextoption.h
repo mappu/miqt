@@ -31,37 +31,37 @@ typedef struct QTextOption__Tab QTextOption__Tab;
 QTextOption* QTextOption_new();
 QTextOption* QTextOption_new2(int alignment);
 QTextOption* QTextOption_new3(QTextOption* o);
-void QTextOption_OperatorAssign(QTextOption* self, QTextOption* o);
-void QTextOption_SetAlignment(QTextOption* self, int alignment);
-int QTextOption_Alignment(const QTextOption* self);
-void QTextOption_SetTextDirection(QTextOption* self, int aDirection);
-int QTextOption_TextDirection(const QTextOption* self);
-void QTextOption_SetWrapMode(QTextOption* self, int wrap);
-int QTextOption_WrapMode(const QTextOption* self);
-void QTextOption_SetFlags(QTextOption* self, int flags);
-int QTextOption_Flags(const QTextOption* self);
-void QTextOption_SetTabStop(QTextOption* self, double tabStop);
-double QTextOption_TabStop(const QTextOption* self);
-void QTextOption_SetTabStopDistance(QTextOption* self, double tabStopDistance);
-double QTextOption_TabStopDistance(const QTextOption* self);
-void QTextOption_SetTabArray(QTextOption* self, struct miqt_array /* of double */  tabStops);
-struct miqt_array /* of double */  QTextOption_TabArray(const QTextOption* self);
-void QTextOption_SetTabs(QTextOption* self, struct miqt_array /* of QTextOption__Tab* */  tabStops);
-struct miqt_array /* of QTextOption__Tab* */  QTextOption_Tabs(const QTextOption* self);
-void QTextOption_SetUseDesignMetrics(QTextOption* self, bool b);
-bool QTextOption_UseDesignMetrics(const QTextOption* self);
-void QTextOption_Delete(QTextOption* self);
+void QTextOption_operatorAssign(QTextOption* self, QTextOption* o);
+void QTextOption_setAlignment(QTextOption* self, int alignment);
+int QTextOption_alignment(const QTextOption* self);
+void QTextOption_setTextDirection(QTextOption* self, int aDirection);
+int QTextOption_textDirection(const QTextOption* self);
+void QTextOption_setWrapMode(QTextOption* self, int wrap);
+int QTextOption_wrapMode(const QTextOption* self);
+void QTextOption_setFlags(QTextOption* self, int flags);
+int QTextOption_flags(const QTextOption* self);
+void QTextOption_setTabStop(QTextOption* self, double tabStop);
+double QTextOption_tabStop(const QTextOption* self);
+void QTextOption_setTabStopDistance(QTextOption* self, double tabStopDistance);
+double QTextOption_tabStopDistance(const QTextOption* self);
+void QTextOption_setTabArray(QTextOption* self, struct miqt_array /* of double */  tabStops);
+struct miqt_array /* of double */  QTextOption_tabArray(const QTextOption* self);
+void QTextOption_setTabs(QTextOption* self, struct miqt_array /* of QTextOption__Tab* */  tabStops);
+struct miqt_array /* of QTextOption__Tab* */  QTextOption_tabs(const QTextOption* self);
+void QTextOption_setUseDesignMetrics(QTextOption* self, bool b);
+bool QTextOption_useDesignMetrics(const QTextOption* self);
+void QTextOption_delete(QTextOption* self);
 
 QTextOption__Tab* QTextOption__Tab_new();
 QTextOption__Tab* QTextOption__Tab_new2(double pos, int tabType);
 QTextOption__Tab* QTextOption__Tab_new3(QTextOption__Tab* param1);
 QTextOption__Tab* QTextOption__Tab_new4(double pos, int tabType, QChar* delim);
-bool QTextOption__Tab_OperatorEqual(const QTextOption__Tab* self, QTextOption__Tab* other);
-bool QTextOption__Tab_OperatorNotEqual(const QTextOption__Tab* self, QTextOption__Tab* other);
-void QTextOption__Tab_Delete(QTextOption__Tab* self);
+bool QTextOption__Tab_operatorEqual(const QTextOption__Tab* self, QTextOption__Tab* other);
+bool QTextOption__Tab_operatorNotEqual(const QTextOption__Tab* self, QTextOption__Tab* other);
+void QTextOption__Tab_delete(QTextOption__Tab* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

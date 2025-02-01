@@ -63,26 +63,26 @@ func NewQErrorMessage2() *QErrorMessage {
 }
 
 func (this *QErrorMessage) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QErrorMessage_MetaObject(this.h))
+	return newQMetaObject(C.QErrorMessage_metaObject(this.h))
 }
 
 func (this *QErrorMessage) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QErrorMessage_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QErrorMessage_metacast(this.h, param1_Cstring))
 }
 
 func QErrorMessage_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QErrorMessage_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QErrorMessage_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QErrorMessage_QtHandler() *QErrorMessage {
-	return newQErrorMessage(C.QErrorMessage_QtHandler())
+	return newQErrorMessage(C.QErrorMessage_qtHandler())
 }
 
 func (this *QErrorMessage) ShowMessage(message string) {
@@ -90,7 +90,7 @@ func (this *QErrorMessage) ShowMessage(message string) {
 	message_ms.data = C.CString(message)
 	message_ms.len = C.size_t(len(message))
 	defer C.free(unsafe.Pointer(message_ms.data))
-	C.QErrorMessage_ShowMessage(this.h, message_ms)
+	C.QErrorMessage_showMessage(this.h, message_ms)
 }
 
 func (this *QErrorMessage) ShowMessage2(message string, typeVal string) {
@@ -102,7 +102,7 @@ func (this *QErrorMessage) ShowMessage2(message string, typeVal string) {
 	typeVal_ms.data = C.CString(typeVal)
 	typeVal_ms.len = C.size_t(len(typeVal))
 	defer C.free(unsafe.Pointer(typeVal_ms.data))
-	C.QErrorMessage_ShowMessage2(this.h, message_ms, typeVal_ms)
+	C.QErrorMessage_showMessage2(this.h, message_ms, typeVal_ms)
 }
 
 func QErrorMessage_Tr2(s string, c string) string {
@@ -110,7 +110,7 @@ func QErrorMessage_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QErrorMessage_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QErrorMessage_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -121,7 +121,7 @@ func QErrorMessage_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QErrorMessage_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QErrorMessage_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -129,18 +129,18 @@ func QErrorMessage_Tr3(s string, c string, n int) string {
 
 func (this *QErrorMessage) callVirtualBase_Done(param1 int) {
 
-	C.QErrorMessage_virtualbase_Done(unsafe.Pointer(this.h), (C.int)(param1))
+	C.QErrorMessage_virtualbase_done(unsafe.Pointer(this.h), (C.int)(param1))
 
 }
-func (this *QErrorMessage) OnDone(slot func(super func(param1 int), param1 int)) {
-	ok := C.QErrorMessage_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) Ondone(slot func(super func(param1 int), param1 int)) {
+	ok := C.QErrorMessage_override_virtual_done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_Done
-func miqt_exec_callback_QErrorMessage_Done(self *C.QErrorMessage, cb C.intptr_t, param1 C.int) {
+//export miqt_exec_callback_QErrorMessage_done
+func miqt_exec_callback_QErrorMessage_done(self *C.QErrorMessage, cb C.intptr_t, param1 C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int), param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -155,18 +155,18 @@ func miqt_exec_callback_QErrorMessage_Done(self *C.QErrorMessage, cb C.intptr_t,
 
 func (this *QErrorMessage) callVirtualBase_ChangeEvent(e *QEvent) {
 
-	C.QErrorMessage_virtualbase_ChangeEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QErrorMessage_virtualbase_changeEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QErrorMessage) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
-	ok := C.QErrorMessage_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnchangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	ok := C.QErrorMessage_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_ChangeEvent
-func miqt_exec_callback_QErrorMessage_ChangeEvent(self *C.QErrorMessage, cb C.intptr_t, e *C.QEvent) {
+//export miqt_exec_callback_QErrorMessage_changeEvent
+func miqt_exec_callback_QErrorMessage_changeEvent(self *C.QErrorMessage, cb C.intptr_t, e *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent), e *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -181,18 +181,18 @@ func miqt_exec_callback_QErrorMessage_ChangeEvent(self *C.QErrorMessage, cb C.in
 
 func (this *QErrorMessage) callVirtualBase_SetVisible(visible bool) {
 
-	C.QErrorMessage_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QErrorMessage_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QErrorMessage) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QErrorMessage_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QErrorMessage_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_SetVisible
-func miqt_exec_callback_QErrorMessage_SetVisible(self *C.QErrorMessage, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QErrorMessage_setVisible
+func miqt_exec_callback_QErrorMessage_setVisible(self *C.QErrorMessage, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -207,20 +207,20 @@ func miqt_exec_callback_QErrorMessage_SetVisible(self *C.QErrorMessage, cb C.int
 
 func (this *QErrorMessage) callVirtualBase_SizeHint() *QSize {
 
-	_goptr := newQSize(C.QErrorMessage_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QErrorMessage_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QErrorMessage) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QErrorMessage_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnsizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QErrorMessage_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_SizeHint
-func miqt_exec_callback_QErrorMessage_SizeHint(self *C.QErrorMessage, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QErrorMessage_sizeHint
+func miqt_exec_callback_QErrorMessage_sizeHint(self *C.QErrorMessage, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -234,20 +234,20 @@ func miqt_exec_callback_QErrorMessage_SizeHint(self *C.QErrorMessage, cb C.intpt
 
 func (this *QErrorMessage) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_goptr := newQSize(C.QErrorMessage_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QErrorMessage_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QErrorMessage) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QErrorMessage_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QErrorMessage_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_MinimumSizeHint
-func miqt_exec_callback_QErrorMessage_MinimumSizeHint(self *C.QErrorMessage, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QErrorMessage_minimumSizeHint
+func miqt_exec_callback_QErrorMessage_minimumSizeHint(self *C.QErrorMessage, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -261,18 +261,18 @@ func miqt_exec_callback_QErrorMessage_MinimumSizeHint(self *C.QErrorMessage, cb 
 
 func (this *QErrorMessage) callVirtualBase_Open() {
 
-	C.QErrorMessage_virtualbase_Open(unsafe.Pointer(this.h))
+	C.QErrorMessage_virtualbase_open(unsafe.Pointer(this.h))
 
 }
-func (this *QErrorMessage) OnOpen(slot func(super func())) {
-	ok := C.QErrorMessage_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) Onopen(slot func(super func())) {
+	ok := C.QErrorMessage_override_virtual_open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_Open
-func miqt_exec_callback_QErrorMessage_Open(self *C.QErrorMessage, cb C.intptr_t) {
+//export miqt_exec_callback_QErrorMessage_open
+func miqt_exec_callback_QErrorMessage_open(self *C.QErrorMessage, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -284,18 +284,18 @@ func miqt_exec_callback_QErrorMessage_Open(self *C.QErrorMessage, cb C.intptr_t)
 
 func (this *QErrorMessage) callVirtualBase_Exec() int {
 
-	return (int)(C.QErrorMessage_virtualbase_Exec(unsafe.Pointer(this.h)))
+	return (int)(C.QErrorMessage_virtualbase_exec(unsafe.Pointer(this.h)))
 
 }
-func (this *QErrorMessage) OnExec(slot func(super func() int) int) {
-	ok := C.QErrorMessage_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) Onexec(slot func(super func() int) int) {
+	ok := C.QErrorMessage_override_virtual_exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_Exec
-func miqt_exec_callback_QErrorMessage_Exec(self *C.QErrorMessage, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QErrorMessage_exec
+func miqt_exec_callback_QErrorMessage_exec(self *C.QErrorMessage, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -309,18 +309,18 @@ func miqt_exec_callback_QErrorMessage_Exec(self *C.QErrorMessage, cb C.intptr_t)
 
 func (this *QErrorMessage) callVirtualBase_Accept() {
 
-	C.QErrorMessage_virtualbase_Accept(unsafe.Pointer(this.h))
+	C.QErrorMessage_virtualbase_accept(unsafe.Pointer(this.h))
 
 }
-func (this *QErrorMessage) OnAccept(slot func(super func())) {
-	ok := C.QErrorMessage_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) Onaccept(slot func(super func())) {
+	ok := C.QErrorMessage_override_virtual_accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_Accept
-func miqt_exec_callback_QErrorMessage_Accept(self *C.QErrorMessage, cb C.intptr_t) {
+//export miqt_exec_callback_QErrorMessage_accept
+func miqt_exec_callback_QErrorMessage_accept(self *C.QErrorMessage, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -332,18 +332,18 @@ func miqt_exec_callback_QErrorMessage_Accept(self *C.QErrorMessage, cb C.intptr_
 
 func (this *QErrorMessage) callVirtualBase_Reject() {
 
-	C.QErrorMessage_virtualbase_Reject(unsafe.Pointer(this.h))
+	C.QErrorMessage_virtualbase_reject(unsafe.Pointer(this.h))
 
 }
-func (this *QErrorMessage) OnReject(slot func(super func())) {
-	ok := C.QErrorMessage_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) Onreject(slot func(super func())) {
+	ok := C.QErrorMessage_override_virtual_reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_Reject
-func miqt_exec_callback_QErrorMessage_Reject(self *C.QErrorMessage, cb C.intptr_t) {
+//export miqt_exec_callback_QErrorMessage_reject
+func miqt_exec_callback_QErrorMessage_reject(self *C.QErrorMessage, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -355,18 +355,18 @@ func miqt_exec_callback_QErrorMessage_Reject(self *C.QErrorMessage, cb C.intptr_
 
 func (this *QErrorMessage) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
 
-	C.QErrorMessage_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QErrorMessage_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QErrorMessage) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
-	ok := C.QErrorMessage_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnkeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
+	ok := C.QErrorMessage_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_KeyPressEvent
-func miqt_exec_callback_QErrorMessage_KeyPressEvent(self *C.QErrorMessage, cb C.intptr_t, param1 *C.QKeyEvent) {
+//export miqt_exec_callback_QErrorMessage_keyPressEvent
+func miqt_exec_callback_QErrorMessage_keyPressEvent(self *C.QErrorMessage, cb C.intptr_t, param1 *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QKeyEvent), param1 *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -381,18 +381,18 @@ func miqt_exec_callback_QErrorMessage_KeyPressEvent(self *C.QErrorMessage, cb C.
 
 func (this *QErrorMessage) callVirtualBase_CloseEvent(param1 *QCloseEvent) {
 
-	C.QErrorMessage_virtualbase_CloseEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QErrorMessage_virtualbase_closeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QErrorMessage) OnCloseEvent(slot func(super func(param1 *QCloseEvent), param1 *QCloseEvent)) {
-	ok := C.QErrorMessage_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OncloseEvent(slot func(super func(param1 *QCloseEvent), param1 *QCloseEvent)) {
+	ok := C.QErrorMessage_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_CloseEvent
-func miqt_exec_callback_QErrorMessage_CloseEvent(self *C.QErrorMessage, cb C.intptr_t, param1 *C.QCloseEvent) {
+//export miqt_exec_callback_QErrorMessage_closeEvent
+func miqt_exec_callback_QErrorMessage_closeEvent(self *C.QErrorMessage, cb C.intptr_t, param1 *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QCloseEvent), param1 *QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -407,18 +407,18 @@ func miqt_exec_callback_QErrorMessage_CloseEvent(self *C.QErrorMessage, cb C.int
 
 func (this *QErrorMessage) callVirtualBase_ShowEvent(param1 *QShowEvent) {
 
-	C.QErrorMessage_virtualbase_ShowEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QErrorMessage_virtualbase_showEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QErrorMessage) OnShowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
-	ok := C.QErrorMessage_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnshowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
+	ok := C.QErrorMessage_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_ShowEvent
-func miqt_exec_callback_QErrorMessage_ShowEvent(self *C.QErrorMessage, cb C.intptr_t, param1 *C.QShowEvent) {
+//export miqt_exec_callback_QErrorMessage_showEvent
+func miqt_exec_callback_QErrorMessage_showEvent(self *C.QErrorMessage, cb C.intptr_t, param1 *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QShowEvent), param1 *QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -433,18 +433,18 @@ func miqt_exec_callback_QErrorMessage_ShowEvent(self *C.QErrorMessage, cb C.intp
 
 func (this *QErrorMessage) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
 
-	C.QErrorMessage_virtualbase_ResizeEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QErrorMessage_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QErrorMessage) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
-	ok := C.QErrorMessage_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnresizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
+	ok := C.QErrorMessage_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_ResizeEvent
-func miqt_exec_callback_QErrorMessage_ResizeEvent(self *C.QErrorMessage, cb C.intptr_t, param1 *C.QResizeEvent) {
+//export miqt_exec_callback_QErrorMessage_resizeEvent
+func miqt_exec_callback_QErrorMessage_resizeEvent(self *C.QErrorMessage, cb C.intptr_t, param1 *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QResizeEvent), param1 *QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -459,18 +459,18 @@ func miqt_exec_callback_QErrorMessage_ResizeEvent(self *C.QErrorMessage, cb C.in
 
 func (this *QErrorMessage) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
 
-	C.QErrorMessage_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QErrorMessage_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QErrorMessage) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
-	ok := C.QErrorMessage_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OncontextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+	ok := C.QErrorMessage_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_ContextMenuEvent
-func miqt_exec_callback_QErrorMessage_ContextMenuEvent(self *C.QErrorMessage, cb C.intptr_t, param1 *C.QContextMenuEvent) {
+//export miqt_exec_callback_QErrorMessage_contextMenuEvent
+func miqt_exec_callback_QErrorMessage_contextMenuEvent(self *C.QErrorMessage, cb C.intptr_t, param1 *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -485,18 +485,18 @@ func miqt_exec_callback_QErrorMessage_ContextMenuEvent(self *C.QErrorMessage, cb
 
 func (this *QErrorMessage) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
 
-	return (bool)(C.QErrorMessage_virtualbase_EventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
+	return (bool)(C.QErrorMessage_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
 }
-func (this *QErrorMessage) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
-	ok := C.QErrorMessage_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OneventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	ok := C.QErrorMessage_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_EventFilter
-func miqt_exec_callback_QErrorMessage_EventFilter(self *C.QErrorMessage, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+//export miqt_exec_callback_QErrorMessage_eventFilter
+func miqt_exec_callback_QErrorMessage_eventFilter(self *C.QErrorMessage, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -515,18 +515,18 @@ func miqt_exec_callback_QErrorMessage_EventFilter(self *C.QErrorMessage, cb C.in
 
 func (this *QErrorMessage) callVirtualBase_DevType() int {
 
-	return (int)(C.QErrorMessage_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QErrorMessage_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QErrorMessage) OnDevType(slot func(super func() int) int) {
-	ok := C.QErrorMessage_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OndevType(slot func(super func() int) int) {
+	ok := C.QErrorMessage_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_DevType
-func miqt_exec_callback_QErrorMessage_DevType(self *C.QErrorMessage, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QErrorMessage_devType
+func miqt_exec_callback_QErrorMessage_devType(self *C.QErrorMessage, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -540,18 +540,18 @@ func miqt_exec_callback_QErrorMessage_DevType(self *C.QErrorMessage, cb C.intptr
 
 func (this *QErrorMessage) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QErrorMessage_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QErrorMessage_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QErrorMessage) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QErrorMessage_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QErrorMessage_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_HeightForWidth
-func miqt_exec_callback_QErrorMessage_HeightForWidth(self *C.QErrorMessage, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QErrorMessage_heightForWidth
+func miqt_exec_callback_QErrorMessage_heightForWidth(self *C.QErrorMessage, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -568,18 +568,18 @@ func miqt_exec_callback_QErrorMessage_HeightForWidth(self *C.QErrorMessage, cb C
 
 func (this *QErrorMessage) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QErrorMessage_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QErrorMessage_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QErrorMessage) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QErrorMessage_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QErrorMessage_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_HasHeightForWidth
-func miqt_exec_callback_QErrorMessage_HasHeightForWidth(self *C.QErrorMessage, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QErrorMessage_hasHeightForWidth
+func miqt_exec_callback_QErrorMessage_hasHeightForWidth(self *C.QErrorMessage, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -593,18 +593,18 @@ func miqt_exec_callback_QErrorMessage_HasHeightForWidth(self *C.QErrorMessage, c
 
 func (this *QErrorMessage) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return newQPaintEngine(C.QErrorMessage_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+	return newQPaintEngine(C.QErrorMessage_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QErrorMessage) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	ok := C.QErrorMessage_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QErrorMessage_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_PaintEngine
-func miqt_exec_callback_QErrorMessage_PaintEngine(self *C.QErrorMessage, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QErrorMessage_paintEngine
+func miqt_exec_callback_QErrorMessage_paintEngine(self *C.QErrorMessage, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -618,18 +618,18 @@ func miqt_exec_callback_QErrorMessage_PaintEngine(self *C.QErrorMessage, cb C.in
 
 func (this *QErrorMessage) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QErrorMessage_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QErrorMessage_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QErrorMessage) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QErrorMessage_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QErrorMessage_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_Event
-func miqt_exec_callback_QErrorMessage_Event(self *C.QErrorMessage, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QErrorMessage_event
+func miqt_exec_callback_QErrorMessage_event(self *C.QErrorMessage, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -646,18 +646,18 @@ func miqt_exec_callback_QErrorMessage_Event(self *C.QErrorMessage, cb C.intptr_t
 
 func (this *QErrorMessage) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 
-	C.QErrorMessage_virtualbase_MousePressEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QErrorMessage_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnmousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QErrorMessage_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_MousePressEvent
-func miqt_exec_callback_QErrorMessage_MousePressEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QErrorMessage_mousePressEvent
+func miqt_exec_callback_QErrorMessage_mousePressEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -672,18 +672,18 @@ func miqt_exec_callback_QErrorMessage_MousePressEvent(self *C.QErrorMessage, cb 
 
 func (this *QErrorMessage) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
 
-	C.QErrorMessage_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QErrorMessage_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnmouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QErrorMessage_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_MouseReleaseEvent
-func miqt_exec_callback_QErrorMessage_MouseReleaseEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QErrorMessage_mouseReleaseEvent
+func miqt_exec_callback_QErrorMessage_mouseReleaseEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -698,18 +698,18 @@ func miqt_exec_callback_QErrorMessage_MouseReleaseEvent(self *C.QErrorMessage, c
 
 func (this *QErrorMessage) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
 
-	C.QErrorMessage_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QErrorMessage_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QErrorMessage_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_MouseDoubleClickEvent
-func miqt_exec_callback_QErrorMessage_MouseDoubleClickEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QErrorMessage_mouseDoubleClickEvent
+func miqt_exec_callback_QErrorMessage_mouseDoubleClickEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -724,18 +724,18 @@ func miqt_exec_callback_QErrorMessage_MouseDoubleClickEvent(self *C.QErrorMessag
 
 func (this *QErrorMessage) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 
-	C.QErrorMessage_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QErrorMessage_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnmouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QErrorMessage_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_MouseMoveEvent
-func miqt_exec_callback_QErrorMessage_MouseMoveEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QErrorMessage_mouseMoveEvent
+func miqt_exec_callback_QErrorMessage_mouseMoveEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -750,18 +750,18 @@ func miqt_exec_callback_QErrorMessage_MouseMoveEvent(self *C.QErrorMessage, cb C
 
 func (this *QErrorMessage) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
-	C.QErrorMessage_virtualbase_WheelEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
-	ok := C.QErrorMessage_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnwheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+	ok := C.QErrorMessage_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_WheelEvent
-func miqt_exec_callback_QErrorMessage_WheelEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QWheelEvent) {
+//export miqt_exec_callback_QErrorMessage_wheelEvent
+func miqt_exec_callback_QErrorMessage_wheelEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QWheelEvent), event *QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -776,18 +776,18 @@ func miqt_exec_callback_QErrorMessage_WheelEvent(self *C.QErrorMessage, cb C.int
 
 func (this *QErrorMessage) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
-	C.QErrorMessage_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QErrorMessage_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QErrorMessage_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_KeyReleaseEvent
-func miqt_exec_callback_QErrorMessage_KeyReleaseEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QErrorMessage_keyReleaseEvent
+func miqt_exec_callback_QErrorMessage_keyReleaseEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -802,18 +802,18 @@ func miqt_exec_callback_QErrorMessage_KeyReleaseEvent(self *C.QErrorMessage, cb 
 
 func (this *QErrorMessage) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
-	C.QErrorMessage_virtualbase_FocusInEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QErrorMessage_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QErrorMessage_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_FocusInEvent
-func miqt_exec_callback_QErrorMessage_FocusInEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QErrorMessage_focusInEvent
+func miqt_exec_callback_QErrorMessage_focusInEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -828,18 +828,18 @@ func miqt_exec_callback_QErrorMessage_FocusInEvent(self *C.QErrorMessage, cb C.i
 
 func (this *QErrorMessage) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
-	C.QErrorMessage_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QErrorMessage_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QErrorMessage_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_FocusOutEvent
-func miqt_exec_callback_QErrorMessage_FocusOutEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QErrorMessage_focusOutEvent
+func miqt_exec_callback_QErrorMessage_focusOutEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -854,18 +854,18 @@ func miqt_exec_callback_QErrorMessage_FocusOutEvent(self *C.QErrorMessage, cb C.
 
 func (this *QErrorMessage) callVirtualBase_EnterEvent(event *QEnterEvent) {
 
-	C.QErrorMessage_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
-	ok := C.QErrorMessage_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnenterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+	ok := C.QErrorMessage_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_EnterEvent
-func miqt_exec_callback_QErrorMessage_EnterEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QEnterEvent) {
+//export miqt_exec_callback_QErrorMessage_enterEvent
+func miqt_exec_callback_QErrorMessage_enterEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEnterEvent), event *QEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -880,18 +880,18 @@ func miqt_exec_callback_QErrorMessage_EnterEvent(self *C.QErrorMessage, cb C.int
 
 func (this *QErrorMessage) callVirtualBase_LeaveEvent(event *QEvent) {
 
-	C.QErrorMessage_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QErrorMessage_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QErrorMessage_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_LeaveEvent
-func miqt_exec_callback_QErrorMessage_LeaveEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QErrorMessage_leaveEvent
+func miqt_exec_callback_QErrorMessage_leaveEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -906,18 +906,18 @@ func miqt_exec_callback_QErrorMessage_LeaveEvent(self *C.QErrorMessage, cb C.int
 
 func (this *QErrorMessage) callVirtualBase_PaintEvent(event *QPaintEvent) {
 
-	C.QErrorMessage_virtualbase_PaintEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnPaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
-	ok := C.QErrorMessage_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnpaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
+	ok := C.QErrorMessage_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_PaintEvent
-func miqt_exec_callback_QErrorMessage_PaintEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QPaintEvent) {
+//export miqt_exec_callback_QErrorMessage_paintEvent
+func miqt_exec_callback_QErrorMessage_paintEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QPaintEvent), event *QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -932,18 +932,18 @@ func miqt_exec_callback_QErrorMessage_PaintEvent(self *C.QErrorMessage, cb C.int
 
 func (this *QErrorMessage) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
-	C.QErrorMessage_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
-	ok := C.QErrorMessage_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QErrorMessage_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_MoveEvent
-func miqt_exec_callback_QErrorMessage_MoveEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QErrorMessage_moveEvent
+func miqt_exec_callback_QErrorMessage_moveEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -958,18 +958,18 @@ func miqt_exec_callback_QErrorMessage_MoveEvent(self *C.QErrorMessage, cb C.intp
 
 func (this *QErrorMessage) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
-	C.QErrorMessage_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
-	ok := C.QErrorMessage_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QErrorMessage_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_TabletEvent
-func miqt_exec_callback_QErrorMessage_TabletEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QErrorMessage_tabletEvent
+func miqt_exec_callback_QErrorMessage_tabletEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -984,18 +984,18 @@ func miqt_exec_callback_QErrorMessage_TabletEvent(self *C.QErrorMessage, cb C.in
 
 func (this *QErrorMessage) callVirtualBase_ActionEvent(event *QActionEvent) {
 
-	C.QErrorMessage_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
-	ok := C.QErrorMessage_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QErrorMessage_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_ActionEvent
-func miqt_exec_callback_QErrorMessage_ActionEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QErrorMessage_actionEvent
+func miqt_exec_callback_QErrorMessage_actionEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1010,18 +1010,18 @@ func miqt_exec_callback_QErrorMessage_ActionEvent(self *C.QErrorMessage, cb C.in
 
 func (this *QErrorMessage) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
 
-	C.QErrorMessage_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
-	ok := C.QErrorMessage_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	ok := C.QErrorMessage_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_DragEnterEvent
-func miqt_exec_callback_QErrorMessage_DragEnterEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QDragEnterEvent) {
+//export miqt_exec_callback_QErrorMessage_dragEnterEvent
+func miqt_exec_callback_QErrorMessage_dragEnterEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragEnterEvent), event *QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1036,18 +1036,18 @@ func miqt_exec_callback_QErrorMessage_DragEnterEvent(self *C.QErrorMessage, cb C
 
 func (this *QErrorMessage) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 
-	C.QErrorMessage_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
-	ok := C.QErrorMessage_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	ok := C.QErrorMessage_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_DragMoveEvent
-func miqt_exec_callback_QErrorMessage_DragMoveEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QDragMoveEvent) {
+//export miqt_exec_callback_QErrorMessage_dragMoveEvent
+func miqt_exec_callback_QErrorMessage_dragMoveEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragMoveEvent), event *QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1062,18 +1062,18 @@ func miqt_exec_callback_QErrorMessage_DragMoveEvent(self *C.QErrorMessage, cb C.
 
 func (this *QErrorMessage) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
 
-	C.QErrorMessage_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
-	ok := C.QErrorMessage_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	ok := C.QErrorMessage_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_DragLeaveEvent
-func miqt_exec_callback_QErrorMessage_DragLeaveEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QErrorMessage_dragLeaveEvent
+func miqt_exec_callback_QErrorMessage_dragLeaveEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1088,18 +1088,18 @@ func miqt_exec_callback_QErrorMessage_DragLeaveEvent(self *C.QErrorMessage, cb C
 
 func (this *QErrorMessage) callVirtualBase_DropEvent(event *QDropEvent) {
 
-	C.QErrorMessage_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
-	ok := C.QErrorMessage_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	ok := C.QErrorMessage_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_DropEvent
-func miqt_exec_callback_QErrorMessage_DropEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QDropEvent) {
+//export miqt_exec_callback_QErrorMessage_dropEvent
+func miqt_exec_callback_QErrorMessage_dropEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1114,18 +1114,18 @@ func miqt_exec_callback_QErrorMessage_DropEvent(self *C.QErrorMessage, cb C.intp
 
 func (this *QErrorMessage) callVirtualBase_HideEvent(event *QHideEvent) {
 
-	C.QErrorMessage_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
-	ok := C.QErrorMessage_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QErrorMessage_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_HideEvent
-func miqt_exec_callback_QErrorMessage_HideEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_QErrorMessage_hideEvent
+func miqt_exec_callback_QErrorMessage_hideEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1147,18 +1147,18 @@ func (this *QErrorMessage) callVirtualBase_NativeEvent(eventType []byte, message
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QErrorMessage_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
+	return (bool)(C.QErrorMessage_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
 
 }
-func (this *QErrorMessage) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
-	ok := C.QErrorMessage_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+	ok := C.QErrorMessage_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_NativeEvent
-func miqt_exec_callback_QErrorMessage_NativeEvent(self *C.QErrorMessage, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
+//export miqt_exec_callback_QErrorMessage_nativeEvent
+func miqt_exec_callback_QErrorMessage_nativeEvent(self *C.QErrorMessage, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1181,18 +1181,18 @@ func miqt_exec_callback_QErrorMessage_NativeEvent(self *C.QErrorMessage, cb C.in
 
 func (this *QErrorMessage) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QErrorMessage_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QErrorMessage_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QErrorMessage) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QErrorMessage_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QErrorMessage_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_Metric
-func miqt_exec_callback_QErrorMessage_Metric(self *C.QErrorMessage, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QErrorMessage_metric
+func miqt_exec_callback_QErrorMessage_metric(self *C.QErrorMessage, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1209,18 +1209,18 @@ func miqt_exec_callback_QErrorMessage_Metric(self *C.QErrorMessage, cb C.intptr_
 
 func (this *QErrorMessage) callVirtualBase_InitPainter(painter *QPainter) {
 
-	C.QErrorMessage_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+	C.QErrorMessage_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QErrorMessage) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	ok := C.QErrorMessage_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QErrorMessage_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_InitPainter
-func miqt_exec_callback_QErrorMessage_InitPainter(self *C.QErrorMessage, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QErrorMessage_initPainter
+func miqt_exec_callback_QErrorMessage_initPainter(self *C.QErrorMessage, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1235,18 +1235,18 @@ func miqt_exec_callback_QErrorMessage_InitPainter(self *C.QErrorMessage, cb C.in
 
 func (this *QErrorMessage) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return newQPaintDevice(C.QErrorMessage_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+	return newQPaintDevice(C.QErrorMessage_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QErrorMessage) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	ok := C.QErrorMessage_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QErrorMessage_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_Redirected
-func miqt_exec_callback_QErrorMessage_Redirected(self *C.QErrorMessage, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QErrorMessage_redirected
+func miqt_exec_callback_QErrorMessage_redirected(self *C.QErrorMessage, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1263,18 +1263,18 @@ func miqt_exec_callback_QErrorMessage_Redirected(self *C.QErrorMessage, cb C.int
 
 func (this *QErrorMessage) callVirtualBase_SharedPainter() *QPainter {
 
-	return newQPainter(C.QErrorMessage_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+	return newQPainter(C.QErrorMessage_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QErrorMessage) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	ok := C.QErrorMessage_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QErrorMessage_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_SharedPainter
-func miqt_exec_callback_QErrorMessage_SharedPainter(self *C.QErrorMessage, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QErrorMessage_sharedPainter
+func miqt_exec_callback_QErrorMessage_sharedPainter(self *C.QErrorMessage, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1288,18 +1288,18 @@ func miqt_exec_callback_QErrorMessage_SharedPainter(self *C.QErrorMessage, cb C.
 
 func (this *QErrorMessage) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
 
-	C.QErrorMessage_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QErrorMessage_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QErrorMessage) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
-	ok := C.QErrorMessage_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QErrorMessage_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_InputMethodEvent
-func miqt_exec_callback_QErrorMessage_InputMethodEvent(self *C.QErrorMessage, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QErrorMessage_inputMethodEvent
+func miqt_exec_callback_QErrorMessage_inputMethodEvent(self *C.QErrorMessage, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1314,20 +1314,20 @@ func miqt_exec_callback_QErrorMessage_InputMethodEvent(self *C.QErrorMessage, cb
 
 func (this *QErrorMessage) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_goptr := newQVariant(C.QErrorMessage_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
+	_goptr := newQVariant(C.QErrorMessage_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QErrorMessage) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
-	ok := C.QErrorMessage_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	ok := C.QErrorMessage_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_InputMethodQuery
-func miqt_exec_callback_QErrorMessage_InputMethodQuery(self *C.QErrorMessage, cb C.intptr_t, param1 C.int) *C.QVariant {
+//export miqt_exec_callback_QErrorMessage_inputMethodQuery
+func miqt_exec_callback_QErrorMessage_inputMethodQuery(self *C.QErrorMessage, cb C.intptr_t, param1 C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1344,18 +1344,18 @@ func miqt_exec_callback_QErrorMessage_InputMethodQuery(self *C.QErrorMessage, cb
 
 func (this *QErrorMessage) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QErrorMessage_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QErrorMessage_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QErrorMessage) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QErrorMessage_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QErrorMessage_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_FocusNextPrevChild
-func miqt_exec_callback_QErrorMessage_FocusNextPrevChild(self *C.QErrorMessage, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QErrorMessage_focusNextPrevChild
+func miqt_exec_callback_QErrorMessage_focusNextPrevChild(self *C.QErrorMessage, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1372,18 +1372,18 @@ func miqt_exec_callback_QErrorMessage_FocusNextPrevChild(self *C.QErrorMessage, 
 
 func (this *QErrorMessage) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QErrorMessage_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QErrorMessage_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QErrorMessage_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_TimerEvent
-func miqt_exec_callback_QErrorMessage_TimerEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QErrorMessage_timerEvent
+func miqt_exec_callback_QErrorMessage_timerEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1398,18 +1398,18 @@ func miqt_exec_callback_QErrorMessage_TimerEvent(self *C.QErrorMessage, cb C.int
 
 func (this *QErrorMessage) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QErrorMessage_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QErrorMessage_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QErrorMessage_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_ChildEvent
-func miqt_exec_callback_QErrorMessage_ChildEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QErrorMessage_childEvent
+func miqt_exec_callback_QErrorMessage_childEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1424,18 +1424,18 @@ func miqt_exec_callback_QErrorMessage_ChildEvent(self *C.QErrorMessage, cb C.int
 
 func (this *QErrorMessage) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QErrorMessage_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QErrorMessage_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QErrorMessage) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QErrorMessage_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QErrorMessage_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_CustomEvent
-func miqt_exec_callback_QErrorMessage_CustomEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QErrorMessage_customEvent
+func miqt_exec_callback_QErrorMessage_customEvent(self *C.QErrorMessage, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1450,18 +1450,18 @@ func miqt_exec_callback_QErrorMessage_CustomEvent(self *C.QErrorMessage, cb C.in
 
 func (this *QErrorMessage) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QErrorMessage_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QErrorMessage_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QErrorMessage) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QErrorMessage_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QErrorMessage_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_ConnectNotify
-func miqt_exec_callback_QErrorMessage_ConnectNotify(self *C.QErrorMessage, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QErrorMessage_connectNotify
+func miqt_exec_callback_QErrorMessage_connectNotify(self *C.QErrorMessage, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1476,18 +1476,18 @@ func miqt_exec_callback_QErrorMessage_ConnectNotify(self *C.QErrorMessage, cb C.
 
 func (this *QErrorMessage) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QErrorMessage_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QErrorMessage_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QErrorMessage) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QErrorMessage_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QErrorMessage) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QErrorMessage_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QErrorMessage_DisconnectNotify
-func miqt_exec_callback_QErrorMessage_DisconnectNotify(self *C.QErrorMessage, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QErrorMessage_disconnectNotify
+func miqt_exec_callback_QErrorMessage_disconnectNotify(self *C.QErrorMessage, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1502,7 +1502,7 @@ func miqt_exec_callback_QErrorMessage_DisconnectNotify(self *C.QErrorMessage, cb
 
 // Delete this object from C++ memory.
 func (this *QErrorMessage) Delete() {
-	C.QErrorMessage_Delete(this.h)
+	C.QErrorMessage_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

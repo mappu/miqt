@@ -15,19 +15,19 @@ extern "C" {
 } /* extern C */
 #endif
 
-const char* QLibraryInfo_Build() {
+const char* QLibraryInfo_build() {
 	return (const char*) QLibraryInfo::build();
 }
 
-bool QLibraryInfo_IsDebugBuild() {
+bool QLibraryInfo_isDebugBuild() {
 	return QLibraryInfo::isDebugBuild();
 }
 
-QVersionNumber* QLibraryInfo_Version() {
+QVersionNumber* QLibraryInfo_version() {
 	return new QVersionNumber(QLibraryInfo::version());
 }
 
-struct miqt_string QLibraryInfo_Path(int p) {
+struct miqt_string QLibraryInfo_path(int p) {
 	QString _ret = QLibraryInfo::path(static_cast<QLibraryInfo::LibraryPath>(p));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -38,7 +38,7 @@ struct miqt_string QLibraryInfo_Path(int p) {
 	return _ms;
 }
 
-struct miqt_string QLibraryInfo_Location(int location) {
+struct miqt_string QLibraryInfo_location(int location) {
 	QString _ret = QLibraryInfo::location(static_cast<QLibraryInfo::LibraryLocation>(location));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -49,7 +49,7 @@ struct miqt_string QLibraryInfo_Location(int location) {
 	return _ms;
 }
 
-struct miqt_array /* of struct miqt_string */  QLibraryInfo_PlatformPluginArguments(struct miqt_string platformName) {
+struct miqt_array /* of struct miqt_string */  QLibraryInfo_platformPluginArguments(struct miqt_string platformName) {
 	QString platformName_QString = QString::fromUtf8(platformName.data, platformName.len);
 	QStringList _ret = QLibraryInfo::platformPluginArguments(platformName_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -70,7 +70,7 @@ struct miqt_array /* of struct miqt_string */  QLibraryInfo_PlatformPluginArgume
 	return _out;
 }
 
-void QLibraryInfo_Delete(QLibraryInfo* self) {
+void QLibraryInfo_delete(QLibraryInfo* self) {
 	delete self;
 }
 

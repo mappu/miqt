@@ -71,19 +71,19 @@ func NewQAbstractScrollArea2() *QAbstractScrollArea {
 }
 
 func (this *QAbstractScrollArea) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QAbstractScrollArea_MetaObject(this.h))
+	return newQMetaObject(C.QAbstractScrollArea_metaObject(this.h))
 }
 
 func (this *QAbstractScrollArea) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAbstractScrollArea_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAbstractScrollArea_metacast(this.h, param1_Cstring))
 }
 
 func QAbstractScrollArea_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractScrollArea_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractScrollArea_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -92,58 +92,58 @@ func QAbstractScrollArea_Tr(s string) string {
 func QAbstractScrollArea_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractScrollArea_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractScrollArea_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractScrollArea) VerticalScrollBarPolicy() ScrollBarPolicy {
-	return (ScrollBarPolicy)(C.QAbstractScrollArea_VerticalScrollBarPolicy(this.h))
+	return (ScrollBarPolicy)(C.QAbstractScrollArea_verticalScrollBarPolicy(this.h))
 }
 
 func (this *QAbstractScrollArea) SetVerticalScrollBarPolicy(verticalScrollBarPolicy ScrollBarPolicy) {
-	C.QAbstractScrollArea_SetVerticalScrollBarPolicy(this.h, (C.int)(verticalScrollBarPolicy))
+	C.QAbstractScrollArea_setVerticalScrollBarPolicy(this.h, (C.int)(verticalScrollBarPolicy))
 }
 
 func (this *QAbstractScrollArea) VerticalScrollBar() *QScrollBar {
-	return newQScrollBar(C.QAbstractScrollArea_VerticalScrollBar(this.h))
+	return newQScrollBar(C.QAbstractScrollArea_verticalScrollBar(this.h))
 }
 
 func (this *QAbstractScrollArea) SetVerticalScrollBar(scrollbar *QScrollBar) {
-	C.QAbstractScrollArea_SetVerticalScrollBar(this.h, scrollbar.cPointer())
+	C.QAbstractScrollArea_setVerticalScrollBar(this.h, scrollbar.cPointer())
 }
 
 func (this *QAbstractScrollArea) HorizontalScrollBarPolicy() ScrollBarPolicy {
-	return (ScrollBarPolicy)(C.QAbstractScrollArea_HorizontalScrollBarPolicy(this.h))
+	return (ScrollBarPolicy)(C.QAbstractScrollArea_horizontalScrollBarPolicy(this.h))
 }
 
 func (this *QAbstractScrollArea) SetHorizontalScrollBarPolicy(horizontalScrollBarPolicy ScrollBarPolicy) {
-	C.QAbstractScrollArea_SetHorizontalScrollBarPolicy(this.h, (C.int)(horizontalScrollBarPolicy))
+	C.QAbstractScrollArea_setHorizontalScrollBarPolicy(this.h, (C.int)(horizontalScrollBarPolicy))
 }
 
 func (this *QAbstractScrollArea) HorizontalScrollBar() *QScrollBar {
-	return newQScrollBar(C.QAbstractScrollArea_HorizontalScrollBar(this.h))
+	return newQScrollBar(C.QAbstractScrollArea_horizontalScrollBar(this.h))
 }
 
 func (this *QAbstractScrollArea) SetHorizontalScrollBar(scrollbar *QScrollBar) {
-	C.QAbstractScrollArea_SetHorizontalScrollBar(this.h, scrollbar.cPointer())
+	C.QAbstractScrollArea_setHorizontalScrollBar(this.h, scrollbar.cPointer())
 }
 
 func (this *QAbstractScrollArea) CornerWidget() *QWidget {
-	return newQWidget(C.QAbstractScrollArea_CornerWidget(this.h))
+	return newQWidget(C.QAbstractScrollArea_cornerWidget(this.h))
 }
 
 func (this *QAbstractScrollArea) SetCornerWidget(widget *QWidget) {
-	C.QAbstractScrollArea_SetCornerWidget(this.h, widget.cPointer())
+	C.QAbstractScrollArea_setCornerWidget(this.h, widget.cPointer())
 }
 
 func (this *QAbstractScrollArea) AddScrollBarWidget(widget *QWidget, alignment AlignmentFlag) {
-	C.QAbstractScrollArea_AddScrollBarWidget(this.h, widget.cPointer(), (C.int)(alignment))
+	C.QAbstractScrollArea_addScrollBarWidget(this.h, widget.cPointer(), (C.int)(alignment))
 }
 
 func (this *QAbstractScrollArea) ScrollBarWidgets(alignment AlignmentFlag) []*QWidget {
-	var _ma C.struct_miqt_array = C.QAbstractScrollArea_ScrollBarWidgets(this.h, (C.int)(alignment))
+	var _ma C.struct_miqt_array = C.QAbstractScrollArea_scrollBarWidgets(this.h, (C.int)(alignment))
 	_ret := make([]*QWidget, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWidget)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -153,41 +153,41 @@ func (this *QAbstractScrollArea) ScrollBarWidgets(alignment AlignmentFlag) []*QW
 }
 
 func (this *QAbstractScrollArea) Viewport() *QWidget {
-	return newQWidget(C.QAbstractScrollArea_Viewport(this.h))
+	return newQWidget(C.QAbstractScrollArea_viewport(this.h))
 }
 
 func (this *QAbstractScrollArea) SetViewport(widget *QWidget) {
-	C.QAbstractScrollArea_SetViewport(this.h, widget.cPointer())
+	C.QAbstractScrollArea_setViewport(this.h, widget.cPointer())
 }
 
 func (this *QAbstractScrollArea) MaximumViewportSize() *QSize {
-	_goptr := newQSize(C.QAbstractScrollArea_MaximumViewportSize(this.h))
+	_goptr := newQSize(C.QAbstractScrollArea_maximumViewportSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractScrollArea) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QAbstractScrollArea_MinimumSizeHint(this.h))
+	_goptr := newQSize(C.QAbstractScrollArea_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractScrollArea) SizeHint() *QSize {
-	_goptr := newQSize(C.QAbstractScrollArea_SizeHint(this.h))
+	_goptr := newQSize(C.QAbstractScrollArea_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractScrollArea) SetupViewport(viewport *QWidget) {
-	C.QAbstractScrollArea_SetupViewport(this.h, viewport.cPointer())
+	C.QAbstractScrollArea_setupViewport(this.h, viewport.cPointer())
 }
 
 func (this *QAbstractScrollArea) SizeAdjustPolicy() QAbstractScrollArea__SizeAdjustPolicy {
-	return (QAbstractScrollArea__SizeAdjustPolicy)(C.QAbstractScrollArea_SizeAdjustPolicy(this.h))
+	return (QAbstractScrollArea__SizeAdjustPolicy)(C.QAbstractScrollArea_sizeAdjustPolicy(this.h))
 }
 
 func (this *QAbstractScrollArea) SetSizeAdjustPolicy(policy QAbstractScrollArea__SizeAdjustPolicy) {
-	C.QAbstractScrollArea_SetSizeAdjustPolicy(this.h, (C.int)(policy))
+	C.QAbstractScrollArea_setSizeAdjustPolicy(this.h, (C.int)(policy))
 }
 
 func QAbstractScrollArea_Tr2(s string, c string) string {
@@ -195,7 +195,7 @@ func QAbstractScrollArea_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractScrollArea_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractScrollArea_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -206,7 +206,7 @@ func QAbstractScrollArea_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractScrollArea_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractScrollArea_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -217,7 +217,7 @@ func QAbstractScrollArea_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractScrollArea_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractScrollArea_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -228,7 +228,7 @@ func QAbstractScrollArea_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractScrollArea_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractScrollArea_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -236,20 +236,20 @@ func QAbstractScrollArea_TrUtf83(s string, c string, n int) string {
 
 func (this *QAbstractScrollArea) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_goptr := newQSize(C.QAbstractScrollArea_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QAbstractScrollArea_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QAbstractScrollArea) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QAbstractScrollArea_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QAbstractScrollArea_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_MinimumSizeHint
-func miqt_exec_callback_QAbstractScrollArea_MinimumSizeHint(self *C.QAbstractScrollArea, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QAbstractScrollArea_minimumSizeHint
+func miqt_exec_callback_QAbstractScrollArea_minimumSizeHint(self *C.QAbstractScrollArea, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -263,20 +263,20 @@ func miqt_exec_callback_QAbstractScrollArea_MinimumSizeHint(self *C.QAbstractScr
 
 func (this *QAbstractScrollArea) callVirtualBase_SizeHint() *QSize {
 
-	_goptr := newQSize(C.QAbstractScrollArea_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QAbstractScrollArea_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QAbstractScrollArea) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QAbstractScrollArea_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnsizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QAbstractScrollArea_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_SizeHint
-func miqt_exec_callback_QAbstractScrollArea_SizeHint(self *C.QAbstractScrollArea, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QAbstractScrollArea_sizeHint
+func miqt_exec_callback_QAbstractScrollArea_sizeHint(self *C.QAbstractScrollArea, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -290,18 +290,18 @@ func miqt_exec_callback_QAbstractScrollArea_SizeHint(self *C.QAbstractScrollArea
 
 func (this *QAbstractScrollArea) callVirtualBase_SetupViewport(viewport *QWidget) {
 
-	C.QAbstractScrollArea_virtualbase_SetupViewport(unsafe.Pointer(this.h), viewport.cPointer())
+	C.QAbstractScrollArea_virtualbase_setupViewport(unsafe.Pointer(this.h), viewport.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnSetupViewport(slot func(super func(viewport *QWidget), viewport *QWidget)) {
-	ok := C.QAbstractScrollArea_override_virtual_SetupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnsetupViewport(slot func(super func(viewport *QWidget), viewport *QWidget)) {
+	ok := C.QAbstractScrollArea_override_virtual_setupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_SetupViewport
-func miqt_exec_callback_QAbstractScrollArea_SetupViewport(self *C.QAbstractScrollArea, cb C.intptr_t, viewport *C.QWidget) {
+//export miqt_exec_callback_QAbstractScrollArea_setupViewport
+func miqt_exec_callback_QAbstractScrollArea_setupViewport(self *C.QAbstractScrollArea, cb C.intptr_t, viewport *C.QWidget) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(viewport *QWidget), viewport *QWidget))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -316,18 +316,18 @@ func miqt_exec_callback_QAbstractScrollArea_SetupViewport(self *C.QAbstractScrol
 
 func (this *QAbstractScrollArea) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
 
-	return (bool)(C.QAbstractScrollArea_virtualbase_EventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
+	return (bool)(C.QAbstractScrollArea_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
 }
-func (this *QAbstractScrollArea) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
-	ok := C.QAbstractScrollArea_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OneventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	ok := C.QAbstractScrollArea_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_EventFilter
-func miqt_exec_callback_QAbstractScrollArea_EventFilter(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+//export miqt_exec_callback_QAbstractScrollArea_eventFilter
+func miqt_exec_callback_QAbstractScrollArea_eventFilter(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -346,18 +346,18 @@ func miqt_exec_callback_QAbstractScrollArea_EventFilter(self *C.QAbstractScrollA
 
 func (this *QAbstractScrollArea) callVirtualBase_Event(param1 *QEvent) bool {
 
-	return (bool)(C.QAbstractScrollArea_virtualbase_Event(unsafe.Pointer(this.h), param1.cPointer()))
+	return (bool)(C.QAbstractScrollArea_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
 }
-func (this *QAbstractScrollArea) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
-	ok := C.QAbstractScrollArea_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) Onevent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	ok := C.QAbstractScrollArea_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_Event
-func miqt_exec_callback_QAbstractScrollArea_Event(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QEvent) C.bool {
+//export miqt_exec_callback_QAbstractScrollArea_event
+func miqt_exec_callback_QAbstractScrollArea_event(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent) bool, param1 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -374,18 +374,18 @@ func miqt_exec_callback_QAbstractScrollArea_Event(self *C.QAbstractScrollArea, c
 
 func (this *QAbstractScrollArea) callVirtualBase_ViewportEvent(param1 *QEvent) bool {
 
-	return (bool)(C.QAbstractScrollArea_virtualbase_ViewportEvent(unsafe.Pointer(this.h), param1.cPointer()))
+	return (bool)(C.QAbstractScrollArea_virtualbase_viewportEvent(unsafe.Pointer(this.h), param1.cPointer()))
 
 }
-func (this *QAbstractScrollArea) OnViewportEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
-	ok := C.QAbstractScrollArea_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnviewportEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	ok := C.QAbstractScrollArea_override_virtual_viewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_ViewportEvent
-func miqt_exec_callback_QAbstractScrollArea_ViewportEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QEvent) C.bool {
+//export miqt_exec_callback_QAbstractScrollArea_viewportEvent
+func miqt_exec_callback_QAbstractScrollArea_viewportEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent) bool, param1 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -402,18 +402,18 @@ func miqt_exec_callback_QAbstractScrollArea_ViewportEvent(self *C.QAbstractScrol
 
 func (this *QAbstractScrollArea) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
 
-	C.QAbstractScrollArea_virtualbase_ResizeEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractScrollArea_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnresizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_ResizeEvent
-func miqt_exec_callback_QAbstractScrollArea_ResizeEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QResizeEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_resizeEvent
+func miqt_exec_callback_QAbstractScrollArea_resizeEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QResizeEvent), param1 *QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -428,18 +428,18 @@ func miqt_exec_callback_QAbstractScrollArea_ResizeEvent(self *C.QAbstractScrollA
 
 func (this *QAbstractScrollArea) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
-	C.QAbstractScrollArea_virtualbase_PaintEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractScrollArea_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnpaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_PaintEvent
-func miqt_exec_callback_QAbstractScrollArea_PaintEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QPaintEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_paintEvent
+func miqt_exec_callback_QAbstractScrollArea_paintEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QPaintEvent), param1 *QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -454,18 +454,18 @@ func miqt_exec_callback_QAbstractScrollArea_PaintEvent(self *C.QAbstractScrollAr
 
 func (this *QAbstractScrollArea) callVirtualBase_MousePressEvent(param1 *QMouseEvent) {
 
-	C.QAbstractScrollArea_virtualbase_MousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractScrollArea_virtualbase_mousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnMousePressEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnmousePressEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_MousePressEvent
-func miqt_exec_callback_QAbstractScrollArea_MousePressEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QMouseEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_mousePressEvent
+func miqt_exec_callback_QAbstractScrollArea_mousePressEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -480,18 +480,18 @@ func miqt_exec_callback_QAbstractScrollArea_MousePressEvent(self *C.QAbstractScr
 
 func (this *QAbstractScrollArea) callVirtualBase_MouseReleaseEvent(param1 *QMouseEvent) {
 
-	C.QAbstractScrollArea_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractScrollArea_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnMouseReleaseEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnmouseReleaseEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_MouseReleaseEvent
-func miqt_exec_callback_QAbstractScrollArea_MouseReleaseEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QMouseEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_mouseReleaseEvent
+func miqt_exec_callback_QAbstractScrollArea_mouseReleaseEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -506,18 +506,18 @@ func miqt_exec_callback_QAbstractScrollArea_MouseReleaseEvent(self *C.QAbstractS
 
 func (this *QAbstractScrollArea) callVirtualBase_MouseDoubleClickEvent(param1 *QMouseEvent) {
 
-	C.QAbstractScrollArea_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractScrollArea_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnMouseDoubleClickEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnmouseDoubleClickEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_MouseDoubleClickEvent
-func miqt_exec_callback_QAbstractScrollArea_MouseDoubleClickEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QMouseEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_mouseDoubleClickEvent
+func miqt_exec_callback_QAbstractScrollArea_mouseDoubleClickEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -532,18 +532,18 @@ func miqt_exec_callback_QAbstractScrollArea_MouseDoubleClickEvent(self *C.QAbstr
 
 func (this *QAbstractScrollArea) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
 
-	C.QAbstractScrollArea_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractScrollArea_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnMouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnmouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_MouseMoveEvent
-func miqt_exec_callback_QAbstractScrollArea_MouseMoveEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QMouseEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_mouseMoveEvent
+func miqt_exec_callback_QAbstractScrollArea_mouseMoveEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -558,18 +558,18 @@ func miqt_exec_callback_QAbstractScrollArea_MouseMoveEvent(self *C.QAbstractScro
 
 func (this *QAbstractScrollArea) callVirtualBase_WheelEvent(param1 *QWheelEvent) {
 
-	C.QAbstractScrollArea_virtualbase_WheelEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractScrollArea_virtualbase_wheelEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnWheelEvent(slot func(super func(param1 *QWheelEvent), param1 *QWheelEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnwheelEvent(slot func(super func(param1 *QWheelEvent), param1 *QWheelEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_WheelEvent
-func miqt_exec_callback_QAbstractScrollArea_WheelEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QWheelEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_wheelEvent
+func miqt_exec_callback_QAbstractScrollArea_wheelEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QWheelEvent), param1 *QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -584,18 +584,18 @@ func miqt_exec_callback_QAbstractScrollArea_WheelEvent(self *C.QAbstractScrollAr
 
 func (this *QAbstractScrollArea) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
 
-	C.QAbstractScrollArea_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractScrollArea_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OncontextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_ContextMenuEvent
-func miqt_exec_callback_QAbstractScrollArea_ContextMenuEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QContextMenuEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_contextMenuEvent
+func miqt_exec_callback_QAbstractScrollArea_contextMenuEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -610,18 +610,18 @@ func miqt_exec_callback_QAbstractScrollArea_ContextMenuEvent(self *C.QAbstractSc
 
 func (this *QAbstractScrollArea) callVirtualBase_DragEnterEvent(param1 *QDragEnterEvent) {
 
-	C.QAbstractScrollArea_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractScrollArea_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnDragEnterEvent(slot func(super func(param1 *QDragEnterEvent), param1 *QDragEnterEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OndragEnterEvent(slot func(super func(param1 *QDragEnterEvent), param1 *QDragEnterEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_DragEnterEvent
-func miqt_exec_callback_QAbstractScrollArea_DragEnterEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QDragEnterEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_dragEnterEvent
+func miqt_exec_callback_QAbstractScrollArea_dragEnterEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QDragEnterEvent), param1 *QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -636,18 +636,18 @@ func miqt_exec_callback_QAbstractScrollArea_DragEnterEvent(self *C.QAbstractScro
 
 func (this *QAbstractScrollArea) callVirtualBase_DragMoveEvent(param1 *QDragMoveEvent) {
 
-	C.QAbstractScrollArea_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractScrollArea_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnDragMoveEvent(slot func(super func(param1 *QDragMoveEvent), param1 *QDragMoveEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OndragMoveEvent(slot func(super func(param1 *QDragMoveEvent), param1 *QDragMoveEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_DragMoveEvent
-func miqt_exec_callback_QAbstractScrollArea_DragMoveEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QDragMoveEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_dragMoveEvent
+func miqt_exec_callback_QAbstractScrollArea_dragMoveEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QDragMoveEvent), param1 *QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -662,18 +662,18 @@ func miqt_exec_callback_QAbstractScrollArea_DragMoveEvent(self *C.QAbstractScrol
 
 func (this *QAbstractScrollArea) callVirtualBase_DragLeaveEvent(param1 *QDragLeaveEvent) {
 
-	C.QAbstractScrollArea_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractScrollArea_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnDragLeaveEvent(slot func(super func(param1 *QDragLeaveEvent), param1 *QDragLeaveEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OndragLeaveEvent(slot func(super func(param1 *QDragLeaveEvent), param1 *QDragLeaveEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_DragLeaveEvent
-func miqt_exec_callback_QAbstractScrollArea_DragLeaveEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_dragLeaveEvent
+func miqt_exec_callback_QAbstractScrollArea_dragLeaveEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QDragLeaveEvent), param1 *QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -688,18 +688,18 @@ func miqt_exec_callback_QAbstractScrollArea_DragLeaveEvent(self *C.QAbstractScro
 
 func (this *QAbstractScrollArea) callVirtualBase_DropEvent(param1 *QDropEvent) {
 
-	C.QAbstractScrollArea_virtualbase_DropEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractScrollArea_virtualbase_dropEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnDropEvent(slot func(super func(param1 *QDropEvent), param1 *QDropEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OndropEvent(slot func(super func(param1 *QDropEvent), param1 *QDropEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_DropEvent
-func miqt_exec_callback_QAbstractScrollArea_DropEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QDropEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_dropEvent
+func miqt_exec_callback_QAbstractScrollArea_dropEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QDropEvent), param1 *QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -714,18 +714,18 @@ func miqt_exec_callback_QAbstractScrollArea_DropEvent(self *C.QAbstractScrollAre
 
 func (this *QAbstractScrollArea) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
 
-	C.QAbstractScrollArea_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractScrollArea_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnkeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_KeyPressEvent
-func miqt_exec_callback_QAbstractScrollArea_KeyPressEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QKeyEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_keyPressEvent
+func miqt_exec_callback_QAbstractScrollArea_keyPressEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QKeyEvent), param1 *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -740,18 +740,18 @@ func miqt_exec_callback_QAbstractScrollArea_KeyPressEvent(self *C.QAbstractScrol
 
 func (this *QAbstractScrollArea) callVirtualBase_ScrollContentsBy(dx int, dy int) {
 
-	C.QAbstractScrollArea_virtualbase_ScrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
+	C.QAbstractScrollArea_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
 }
-func (this *QAbstractScrollArea) OnScrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
-	ok := C.QAbstractScrollArea_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnscrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
+	ok := C.QAbstractScrollArea_override_virtual_scrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_ScrollContentsBy
-func miqt_exec_callback_QAbstractScrollArea_ScrollContentsBy(self *C.QAbstractScrollArea, cb C.intptr_t, dx C.int, dy C.int) {
+//export miqt_exec_callback_QAbstractScrollArea_scrollContentsBy
+func miqt_exec_callback_QAbstractScrollArea_scrollContentsBy(self *C.QAbstractScrollArea, cb C.intptr_t, dx C.int, dy C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(dx int, dy int), dx int, dy int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -768,20 +768,20 @@ func miqt_exec_callback_QAbstractScrollArea_ScrollContentsBy(self *C.QAbstractSc
 
 func (this *QAbstractScrollArea) callVirtualBase_ViewportSizeHint() *QSize {
 
-	_goptr := newQSize(C.QAbstractScrollArea_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QAbstractScrollArea_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QAbstractScrollArea) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QAbstractScrollArea_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnviewportSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QAbstractScrollArea_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_ViewportSizeHint
-func miqt_exec_callback_QAbstractScrollArea_ViewportSizeHint(self *C.QAbstractScrollArea, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QAbstractScrollArea_viewportSizeHint
+func miqt_exec_callback_QAbstractScrollArea_viewportSizeHint(self *C.QAbstractScrollArea, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -795,18 +795,18 @@ func miqt_exec_callback_QAbstractScrollArea_ViewportSizeHint(self *C.QAbstractSc
 
 func (this *QAbstractScrollArea) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
-	C.QAbstractScrollArea_virtualbase_ChangeEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractScrollArea_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnchangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_ChangeEvent
-func miqt_exec_callback_QAbstractScrollArea_ChangeEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_changeEvent
+func miqt_exec_callback_QAbstractScrollArea_changeEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent), param1 *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -821,18 +821,18 @@ func miqt_exec_callback_QAbstractScrollArea_ChangeEvent(self *C.QAbstractScrollA
 
 func (this *QAbstractScrollArea) callVirtualBase_DevType() int {
 
-	return (int)(C.QAbstractScrollArea_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QAbstractScrollArea_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractScrollArea) OnDevType(slot func(super func() int) int) {
-	ok := C.QAbstractScrollArea_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OndevType(slot func(super func() int) int) {
+	ok := C.QAbstractScrollArea_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_DevType
-func miqt_exec_callback_QAbstractScrollArea_DevType(self *C.QAbstractScrollArea, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QAbstractScrollArea_devType
+func miqt_exec_callback_QAbstractScrollArea_devType(self *C.QAbstractScrollArea, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -846,18 +846,18 @@ func miqt_exec_callback_QAbstractScrollArea_DevType(self *C.QAbstractScrollArea,
 
 func (this *QAbstractScrollArea) callVirtualBase_SetVisible(visible bool) {
 
-	C.QAbstractScrollArea_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QAbstractScrollArea_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QAbstractScrollArea) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QAbstractScrollArea_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QAbstractScrollArea_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_SetVisible
-func miqt_exec_callback_QAbstractScrollArea_SetVisible(self *C.QAbstractScrollArea, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QAbstractScrollArea_setVisible
+func miqt_exec_callback_QAbstractScrollArea_setVisible(self *C.QAbstractScrollArea, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -872,18 +872,18 @@ func miqt_exec_callback_QAbstractScrollArea_SetVisible(self *C.QAbstractScrollAr
 
 func (this *QAbstractScrollArea) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QAbstractScrollArea_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QAbstractScrollArea_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QAbstractScrollArea) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QAbstractScrollArea_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QAbstractScrollArea_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_HeightForWidth
-func miqt_exec_callback_QAbstractScrollArea_HeightForWidth(self *C.QAbstractScrollArea, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QAbstractScrollArea_heightForWidth
+func miqt_exec_callback_QAbstractScrollArea_heightForWidth(self *C.QAbstractScrollArea, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -900,18 +900,18 @@ func miqt_exec_callback_QAbstractScrollArea_HeightForWidth(self *C.QAbstractScro
 
 func (this *QAbstractScrollArea) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QAbstractScrollArea_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QAbstractScrollArea_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractScrollArea) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QAbstractScrollArea_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QAbstractScrollArea_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_HasHeightForWidth
-func miqt_exec_callback_QAbstractScrollArea_HasHeightForWidth(self *C.QAbstractScrollArea, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QAbstractScrollArea_hasHeightForWidth
+func miqt_exec_callback_QAbstractScrollArea_hasHeightForWidth(self *C.QAbstractScrollArea, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -925,18 +925,18 @@ func miqt_exec_callback_QAbstractScrollArea_HasHeightForWidth(self *C.QAbstractS
 
 func (this *QAbstractScrollArea) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return newQPaintEngine(C.QAbstractScrollArea_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+	return newQPaintEngine(C.QAbstractScrollArea_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractScrollArea) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	ok := C.QAbstractScrollArea_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QAbstractScrollArea_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_PaintEngine
-func miqt_exec_callback_QAbstractScrollArea_PaintEngine(self *C.QAbstractScrollArea, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QAbstractScrollArea_paintEngine
+func miqt_exec_callback_QAbstractScrollArea_paintEngine(self *C.QAbstractScrollArea, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -950,18 +950,18 @@ func miqt_exec_callback_QAbstractScrollArea_PaintEngine(self *C.QAbstractScrollA
 
 func (this *QAbstractScrollArea) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
-	C.QAbstractScrollArea_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractScrollArea_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_KeyReleaseEvent
-func miqt_exec_callback_QAbstractScrollArea_KeyReleaseEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_keyReleaseEvent
+func miqt_exec_callback_QAbstractScrollArea_keyReleaseEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -976,18 +976,18 @@ func miqt_exec_callback_QAbstractScrollArea_KeyReleaseEvent(self *C.QAbstractScr
 
 func (this *QAbstractScrollArea) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
-	C.QAbstractScrollArea_virtualbase_FocusInEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractScrollArea_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_FocusInEvent
-func miqt_exec_callback_QAbstractScrollArea_FocusInEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_focusInEvent
+func miqt_exec_callback_QAbstractScrollArea_focusInEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1002,18 +1002,18 @@ func miqt_exec_callback_QAbstractScrollArea_FocusInEvent(self *C.QAbstractScroll
 
 func (this *QAbstractScrollArea) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
-	C.QAbstractScrollArea_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractScrollArea_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_FocusOutEvent
-func miqt_exec_callback_QAbstractScrollArea_FocusOutEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_focusOutEvent
+func miqt_exec_callback_QAbstractScrollArea_focusOutEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1028,18 +1028,18 @@ func miqt_exec_callback_QAbstractScrollArea_FocusOutEvent(self *C.QAbstractScrol
 
 func (this *QAbstractScrollArea) callVirtualBase_EnterEvent(event *QEvent) {
 
-	C.QAbstractScrollArea_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractScrollArea_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnEnterEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnenterEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_EnterEvent
-func miqt_exec_callback_QAbstractScrollArea_EnterEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_enterEvent
+func miqt_exec_callback_QAbstractScrollArea_enterEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1054,18 +1054,18 @@ func miqt_exec_callback_QAbstractScrollArea_EnterEvent(self *C.QAbstractScrollAr
 
 func (this *QAbstractScrollArea) callVirtualBase_LeaveEvent(event *QEvent) {
 
-	C.QAbstractScrollArea_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractScrollArea_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_LeaveEvent
-func miqt_exec_callback_QAbstractScrollArea_LeaveEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_leaveEvent
+func miqt_exec_callback_QAbstractScrollArea_leaveEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1080,18 +1080,18 @@ func miqt_exec_callback_QAbstractScrollArea_LeaveEvent(self *C.QAbstractScrollAr
 
 func (this *QAbstractScrollArea) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
-	C.QAbstractScrollArea_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractScrollArea_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_MoveEvent
-func miqt_exec_callback_QAbstractScrollArea_MoveEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_moveEvent
+func miqt_exec_callback_QAbstractScrollArea_moveEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1106,18 +1106,18 @@ func miqt_exec_callback_QAbstractScrollArea_MoveEvent(self *C.QAbstractScrollAre
 
 func (this *QAbstractScrollArea) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
-	C.QAbstractScrollArea_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractScrollArea_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_CloseEvent
-func miqt_exec_callback_QAbstractScrollArea_CloseEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_closeEvent
+func miqt_exec_callback_QAbstractScrollArea_closeEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1132,18 +1132,18 @@ func miqt_exec_callback_QAbstractScrollArea_CloseEvent(self *C.QAbstractScrollAr
 
 func (this *QAbstractScrollArea) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
-	C.QAbstractScrollArea_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractScrollArea_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_TabletEvent
-func miqt_exec_callback_QAbstractScrollArea_TabletEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_tabletEvent
+func miqt_exec_callback_QAbstractScrollArea_tabletEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1158,18 +1158,18 @@ func miqt_exec_callback_QAbstractScrollArea_TabletEvent(self *C.QAbstractScrollA
 
 func (this *QAbstractScrollArea) callVirtualBase_ActionEvent(event *QActionEvent) {
 
-	C.QAbstractScrollArea_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractScrollArea_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_ActionEvent
-func miqt_exec_callback_QAbstractScrollArea_ActionEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_actionEvent
+func miqt_exec_callback_QAbstractScrollArea_actionEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1184,18 +1184,18 @@ func miqt_exec_callback_QAbstractScrollArea_ActionEvent(self *C.QAbstractScrollA
 
 func (this *QAbstractScrollArea) callVirtualBase_ShowEvent(event *QShowEvent) {
 
-	C.QAbstractScrollArea_virtualbase_ShowEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractScrollArea_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnshowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_ShowEvent
-func miqt_exec_callback_QAbstractScrollArea_ShowEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QShowEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_showEvent
+func miqt_exec_callback_QAbstractScrollArea_showEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QShowEvent), event *QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1210,18 +1210,18 @@ func miqt_exec_callback_QAbstractScrollArea_ShowEvent(self *C.QAbstractScrollAre
 
 func (this *QAbstractScrollArea) callVirtualBase_HideEvent(event *QHideEvent) {
 
-	C.QAbstractScrollArea_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractScrollArea_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_HideEvent
-func miqt_exec_callback_QAbstractScrollArea_HideEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_hideEvent
+func miqt_exec_callback_QAbstractScrollArea_hideEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1243,18 +1243,18 @@ func (this *QAbstractScrollArea) callVirtualBase_NativeEvent(eventType []byte, m
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QAbstractScrollArea_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
+	return (bool)(C.QAbstractScrollArea_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QAbstractScrollArea) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
-	ok := C.QAbstractScrollArea_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	ok := C.QAbstractScrollArea_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_NativeEvent
-func miqt_exec_callback_QAbstractScrollArea_NativeEvent(self *C.QAbstractScrollArea, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
+//export miqt_exec_callback_QAbstractScrollArea_nativeEvent
+func miqt_exec_callback_QAbstractScrollArea_nativeEvent(self *C.QAbstractScrollArea, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1277,18 +1277,18 @@ func miqt_exec_callback_QAbstractScrollArea_NativeEvent(self *C.QAbstractScrollA
 
 func (this *QAbstractScrollArea) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QAbstractScrollArea_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QAbstractScrollArea_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QAbstractScrollArea) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QAbstractScrollArea_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QAbstractScrollArea_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_Metric
-func miqt_exec_callback_QAbstractScrollArea_Metric(self *C.QAbstractScrollArea, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QAbstractScrollArea_metric
+func miqt_exec_callback_QAbstractScrollArea_metric(self *C.QAbstractScrollArea, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1305,18 +1305,18 @@ func miqt_exec_callback_QAbstractScrollArea_Metric(self *C.QAbstractScrollArea, 
 
 func (this *QAbstractScrollArea) callVirtualBase_InitPainter(painter *QPainter) {
 
-	C.QAbstractScrollArea_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+	C.QAbstractScrollArea_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	ok := C.QAbstractScrollArea_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QAbstractScrollArea_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_InitPainter
-func miqt_exec_callback_QAbstractScrollArea_InitPainter(self *C.QAbstractScrollArea, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QAbstractScrollArea_initPainter
+func miqt_exec_callback_QAbstractScrollArea_initPainter(self *C.QAbstractScrollArea, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1331,18 +1331,18 @@ func miqt_exec_callback_QAbstractScrollArea_InitPainter(self *C.QAbstractScrollA
 
 func (this *QAbstractScrollArea) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return newQPaintDevice(C.QAbstractScrollArea_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+	return newQPaintDevice(C.QAbstractScrollArea_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QAbstractScrollArea) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	ok := C.QAbstractScrollArea_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QAbstractScrollArea_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_Redirected
-func miqt_exec_callback_QAbstractScrollArea_Redirected(self *C.QAbstractScrollArea, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QAbstractScrollArea_redirected
+func miqt_exec_callback_QAbstractScrollArea_redirected(self *C.QAbstractScrollArea, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1359,18 +1359,18 @@ func miqt_exec_callback_QAbstractScrollArea_Redirected(self *C.QAbstractScrollAr
 
 func (this *QAbstractScrollArea) callVirtualBase_SharedPainter() *QPainter {
 
-	return newQPainter(C.QAbstractScrollArea_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+	return newQPainter(C.QAbstractScrollArea_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractScrollArea) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	ok := C.QAbstractScrollArea_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QAbstractScrollArea_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_SharedPainter
-func miqt_exec_callback_QAbstractScrollArea_SharedPainter(self *C.QAbstractScrollArea, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QAbstractScrollArea_sharedPainter
+func miqt_exec_callback_QAbstractScrollArea_sharedPainter(self *C.QAbstractScrollArea, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1384,18 +1384,18 @@ func miqt_exec_callback_QAbstractScrollArea_SharedPainter(self *C.QAbstractScrol
 
 func (this *QAbstractScrollArea) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
 
-	C.QAbstractScrollArea_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractScrollArea_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_InputMethodEvent
-func miqt_exec_callback_QAbstractScrollArea_InputMethodEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_inputMethodEvent
+func miqt_exec_callback_QAbstractScrollArea_inputMethodEvent(self *C.QAbstractScrollArea, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1410,20 +1410,20 @@ func miqt_exec_callback_QAbstractScrollArea_InputMethodEvent(self *C.QAbstractSc
 
 func (this *QAbstractScrollArea) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_goptr := newQVariant(C.QAbstractScrollArea_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
+	_goptr := newQVariant(C.QAbstractScrollArea_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QAbstractScrollArea) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
-	ok := C.QAbstractScrollArea_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	ok := C.QAbstractScrollArea_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_InputMethodQuery
-func miqt_exec_callback_QAbstractScrollArea_InputMethodQuery(self *C.QAbstractScrollArea, cb C.intptr_t, param1 C.int) *C.QVariant {
+//export miqt_exec_callback_QAbstractScrollArea_inputMethodQuery
+func miqt_exec_callback_QAbstractScrollArea_inputMethodQuery(self *C.QAbstractScrollArea, cb C.intptr_t, param1 C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1440,18 +1440,18 @@ func miqt_exec_callback_QAbstractScrollArea_InputMethodQuery(self *C.QAbstractSc
 
 func (this *QAbstractScrollArea) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QAbstractScrollArea_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QAbstractScrollArea_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QAbstractScrollArea) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QAbstractScrollArea_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QAbstractScrollArea_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_FocusNextPrevChild
-func miqt_exec_callback_QAbstractScrollArea_FocusNextPrevChild(self *C.QAbstractScrollArea, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QAbstractScrollArea_focusNextPrevChild
+func miqt_exec_callback_QAbstractScrollArea_focusNextPrevChild(self *C.QAbstractScrollArea, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1468,18 +1468,18 @@ func miqt_exec_callback_QAbstractScrollArea_FocusNextPrevChild(self *C.QAbstract
 
 func (this *QAbstractScrollArea) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QAbstractScrollArea_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractScrollArea_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_TimerEvent
-func miqt_exec_callback_QAbstractScrollArea_TimerEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_timerEvent
+func miqt_exec_callback_QAbstractScrollArea_timerEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1494,18 +1494,18 @@ func miqt_exec_callback_QAbstractScrollArea_TimerEvent(self *C.QAbstractScrollAr
 
 func (this *QAbstractScrollArea) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QAbstractScrollArea_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractScrollArea_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_ChildEvent
-func miqt_exec_callback_QAbstractScrollArea_ChildEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_childEvent
+func miqt_exec_callback_QAbstractScrollArea_childEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1520,18 +1520,18 @@ func miqt_exec_callback_QAbstractScrollArea_ChildEvent(self *C.QAbstractScrollAr
 
 func (this *QAbstractScrollArea) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QAbstractScrollArea_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractScrollArea_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QAbstractScrollArea_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QAbstractScrollArea_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_CustomEvent
-func miqt_exec_callback_QAbstractScrollArea_CustomEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QAbstractScrollArea_customEvent
+func miqt_exec_callback_QAbstractScrollArea_customEvent(self *C.QAbstractScrollArea, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1546,18 +1546,18 @@ func miqt_exec_callback_QAbstractScrollArea_CustomEvent(self *C.QAbstractScrollA
 
 func (this *QAbstractScrollArea) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QAbstractScrollArea_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QAbstractScrollArea_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QAbstractScrollArea_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QAbstractScrollArea_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_ConnectNotify
-func miqt_exec_callback_QAbstractScrollArea_ConnectNotify(self *C.QAbstractScrollArea, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAbstractScrollArea_connectNotify
+func miqt_exec_callback_QAbstractScrollArea_connectNotify(self *C.QAbstractScrollArea, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1572,18 +1572,18 @@ func miqt_exec_callback_QAbstractScrollArea_ConnectNotify(self *C.QAbstractScrol
 
 func (this *QAbstractScrollArea) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QAbstractScrollArea_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QAbstractScrollArea_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QAbstractScrollArea) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QAbstractScrollArea_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractScrollArea) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QAbstractScrollArea_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractScrollArea_DisconnectNotify
-func miqt_exec_callback_QAbstractScrollArea_DisconnectNotify(self *C.QAbstractScrollArea, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAbstractScrollArea_disconnectNotify
+func miqt_exec_callback_QAbstractScrollArea_disconnectNotify(self *C.QAbstractScrollArea, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1598,7 +1598,7 @@ func miqt_exec_callback_QAbstractScrollArea_DisconnectNotify(self *C.QAbstractSc
 
 // Delete this object from C++ memory.
 func (this *QAbstractScrollArea) Delete() {
-	C.QAbstractScrollArea_Delete(this.h)
+	C.QAbstractScrollArea_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

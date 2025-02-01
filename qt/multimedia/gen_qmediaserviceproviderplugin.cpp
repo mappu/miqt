@@ -58,28 +58,28 @@ QMediaServiceProviderHint* QMediaServiceProviderHint_new6(QMediaServiceProviderH
 	return new QMediaServiceProviderHint(*other);
 }
 
-void QMediaServiceProviderHint_OperatorAssign(QMediaServiceProviderHint* self, QMediaServiceProviderHint* other) {
+void QMediaServiceProviderHint_operatorAssign(QMediaServiceProviderHint* self, QMediaServiceProviderHint* other) {
 	self->operator=(*other);
 }
 
-bool QMediaServiceProviderHint_OperatorEqual(const QMediaServiceProviderHint* self, QMediaServiceProviderHint* other) {
+bool QMediaServiceProviderHint_operatorEqual(const QMediaServiceProviderHint* self, QMediaServiceProviderHint* other) {
 	return (*self == *other);
 }
 
-bool QMediaServiceProviderHint_OperatorNotEqual(const QMediaServiceProviderHint* self, QMediaServiceProviderHint* other) {
+bool QMediaServiceProviderHint_operatorNotEqual(const QMediaServiceProviderHint* self, QMediaServiceProviderHint* other) {
 	return (*self != *other);
 }
 
-bool QMediaServiceProviderHint_IsNull(const QMediaServiceProviderHint* self) {
+bool QMediaServiceProviderHint_isNull(const QMediaServiceProviderHint* self) {
 	return self->isNull();
 }
 
-int QMediaServiceProviderHint_Type(const QMediaServiceProviderHint* self) {
+int QMediaServiceProviderHint_type(const QMediaServiceProviderHint* self) {
 	QMediaServiceProviderHint::Type _ret = self->type();
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string QMediaServiceProviderHint_MimeType(const QMediaServiceProviderHint* self) {
+struct miqt_string QMediaServiceProviderHint_mimeType(const QMediaServiceProviderHint* self) {
 	QString _ret = self->mimeType();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -90,7 +90,7 @@ struct miqt_string QMediaServiceProviderHint_MimeType(const QMediaServiceProvide
 	return _ms;
 }
 
-struct miqt_array /* of struct miqt_string */  QMediaServiceProviderHint_Codecs(const QMediaServiceProviderHint* self) {
+struct miqt_array /* of struct miqt_string */  QMediaServiceProviderHint_codecs(const QMediaServiceProviderHint* self) {
 	QStringList _ret = self->codecs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -110,7 +110,7 @@ struct miqt_array /* of struct miqt_string */  QMediaServiceProviderHint_Codecs(
 	return _out;
 }
 
-struct miqt_string QMediaServiceProviderHint_Device(const QMediaServiceProviderHint* self) {
+struct miqt_string QMediaServiceProviderHint_device(const QMediaServiceProviderHint* self) {
 	QByteArray _qb = self->device();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -119,38 +119,38 @@ struct miqt_string QMediaServiceProviderHint_Device(const QMediaServiceProviderH
 	return _ms;
 }
 
-int QMediaServiceProviderHint_CameraPosition(const QMediaServiceProviderHint* self) {
+int QMediaServiceProviderHint_cameraPosition(const QMediaServiceProviderHint* self) {
 	QCamera::Position _ret = self->cameraPosition();
 	return static_cast<int>(_ret);
 }
 
-int QMediaServiceProviderHint_Features(const QMediaServiceProviderHint* self) {
+int QMediaServiceProviderHint_features(const QMediaServiceProviderHint* self) {
 	QMediaServiceProviderHint::Features _ret = self->features();
 	return static_cast<int>(_ret);
 }
 
-void QMediaServiceProviderHint_Delete(QMediaServiceProviderHint* self) {
+void QMediaServiceProviderHint_delete(QMediaServiceProviderHint* self) {
 	delete self;
 }
 
-QMediaService* QMediaServiceProviderFactoryInterface_Create(QMediaServiceProviderFactoryInterface* self, struct miqt_string key) {
+QMediaService* QMediaServiceProviderFactoryInterface_create(QMediaServiceProviderFactoryInterface* self, struct miqt_string key) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return self->create(key_QString);
 }
 
-void QMediaServiceProviderFactoryInterface_Release(QMediaServiceProviderFactoryInterface* self, QMediaService* service) {
+void QMediaServiceProviderFactoryInterface_release(QMediaServiceProviderFactoryInterface* self, QMediaService* service) {
 	self->release(service);
 }
 
-void QMediaServiceProviderFactoryInterface_OperatorAssign(QMediaServiceProviderFactoryInterface* self, QMediaServiceProviderFactoryInterface* param1) {
+void QMediaServiceProviderFactoryInterface_operatorAssign(QMediaServiceProviderFactoryInterface* self, QMediaServiceProviderFactoryInterface* param1) {
 	self->operator=(*param1);
 }
 
-void QMediaServiceProviderFactoryInterface_Delete(QMediaServiceProviderFactoryInterface* self) {
+void QMediaServiceProviderFactoryInterface_delete(QMediaServiceProviderFactoryInterface* self) {
 	delete self;
 }
 
-int QMediaServiceSupportedFormatsInterface_HasSupport(const QMediaServiceSupportedFormatsInterface* self, struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs) {
+int QMediaServiceSupportedFormatsInterface_hasSupport(const QMediaServiceSupportedFormatsInterface* self, struct miqt_string mimeType, struct miqt_array /* of struct miqt_string */  codecs) {
 	QString mimeType_QString = QString::fromUtf8(mimeType.data, mimeType.len);
 	QStringList codecs_QList;
 	codecs_QList.reserve(codecs.len);
@@ -163,7 +163,7 @@ int QMediaServiceSupportedFormatsInterface_HasSupport(const QMediaServiceSupport
 	return static_cast<int>(_ret);
 }
 
-struct miqt_array /* of struct miqt_string */  QMediaServiceSupportedFormatsInterface_SupportedMimeTypes(const QMediaServiceSupportedFormatsInterface* self) {
+struct miqt_array /* of struct miqt_string */  QMediaServiceSupportedFormatsInterface_supportedMimeTypes(const QMediaServiceSupportedFormatsInterface* self) {
 	QStringList _ret = self->supportedMimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -183,15 +183,15 @@ struct miqt_array /* of struct miqt_string */  QMediaServiceSupportedFormatsInte
 	return _out;
 }
 
-void QMediaServiceSupportedFormatsInterface_OperatorAssign(QMediaServiceSupportedFormatsInterface* self, QMediaServiceSupportedFormatsInterface* param1) {
+void QMediaServiceSupportedFormatsInterface_operatorAssign(QMediaServiceSupportedFormatsInterface* self, QMediaServiceSupportedFormatsInterface* param1) {
 	self->operator=(*param1);
 }
 
-void QMediaServiceSupportedFormatsInterface_Delete(QMediaServiceSupportedFormatsInterface* self) {
+void QMediaServiceSupportedFormatsInterface_delete(QMediaServiceSupportedFormatsInterface* self) {
 	delete self;
 }
 
-struct miqt_array /* of struct miqt_string */  QMediaServiceSupportedDevicesInterface_Devices(const QMediaServiceSupportedDevicesInterface* self, struct miqt_string service) {
+struct miqt_array /* of struct miqt_string */  QMediaServiceSupportedDevicesInterface_devices(const QMediaServiceSupportedDevicesInterface* self, struct miqt_string service) {
 	QByteArray service_QByteArray(service.data, service.len);
 	QList<QByteArray> _ret = self->devices(service_QByteArray);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -210,7 +210,7 @@ struct miqt_array /* of struct miqt_string */  QMediaServiceSupportedDevicesInte
 	return _out;
 }
 
-struct miqt_string QMediaServiceSupportedDevicesInterface_DeviceDescription(QMediaServiceSupportedDevicesInterface* self, struct miqt_string service, struct miqt_string device) {
+struct miqt_string QMediaServiceSupportedDevicesInterface_deviceDescription(QMediaServiceSupportedDevicesInterface* self, struct miqt_string service, struct miqt_string device) {
 	QByteArray service_QByteArray(service.data, service.len);
 	QByteArray device_QByteArray(device.data, device.len);
 	QString _ret = self->deviceDescription(service_QByteArray, device_QByteArray);
@@ -223,15 +223,15 @@ struct miqt_string QMediaServiceSupportedDevicesInterface_DeviceDescription(QMed
 	return _ms;
 }
 
-void QMediaServiceSupportedDevicesInterface_OperatorAssign(QMediaServiceSupportedDevicesInterface* self, QMediaServiceSupportedDevicesInterface* param1) {
+void QMediaServiceSupportedDevicesInterface_operatorAssign(QMediaServiceSupportedDevicesInterface* self, QMediaServiceSupportedDevicesInterface* param1) {
 	self->operator=(*param1);
 }
 
-void QMediaServiceSupportedDevicesInterface_Delete(QMediaServiceSupportedDevicesInterface* self) {
+void QMediaServiceSupportedDevicesInterface_delete(QMediaServiceSupportedDevicesInterface* self) {
 	delete self;
 }
 
-struct miqt_string QMediaServiceDefaultDeviceInterface_DefaultDevice(const QMediaServiceDefaultDeviceInterface* self, struct miqt_string service) {
+struct miqt_string QMediaServiceDefaultDeviceInterface_defaultDevice(const QMediaServiceDefaultDeviceInterface* self, struct miqt_string service) {
 	QByteArray service_QByteArray(service.data, service.len);
 	QByteArray _qb = self->defaultDevice(service_QByteArray);
 	struct miqt_string _ms;
@@ -241,44 +241,44 @@ struct miqt_string QMediaServiceDefaultDeviceInterface_DefaultDevice(const QMedi
 	return _ms;
 }
 
-void QMediaServiceDefaultDeviceInterface_OperatorAssign(QMediaServiceDefaultDeviceInterface* self, QMediaServiceDefaultDeviceInterface* param1) {
+void QMediaServiceDefaultDeviceInterface_operatorAssign(QMediaServiceDefaultDeviceInterface* self, QMediaServiceDefaultDeviceInterface* param1) {
 	self->operator=(*param1);
 }
 
-void QMediaServiceDefaultDeviceInterface_Delete(QMediaServiceDefaultDeviceInterface* self) {
+void QMediaServiceDefaultDeviceInterface_delete(QMediaServiceDefaultDeviceInterface* self) {
 	delete self;
 }
 
-int QMediaServiceCameraInfoInterface_CameraPosition(const QMediaServiceCameraInfoInterface* self, struct miqt_string device) {
+int QMediaServiceCameraInfoInterface_cameraPosition(const QMediaServiceCameraInfoInterface* self, struct miqt_string device) {
 	QByteArray device_QByteArray(device.data, device.len);
 	QCamera::Position _ret = self->cameraPosition(device_QByteArray);
 	return static_cast<int>(_ret);
 }
 
-int QMediaServiceCameraInfoInterface_CameraOrientation(const QMediaServiceCameraInfoInterface* self, struct miqt_string device) {
+int QMediaServiceCameraInfoInterface_cameraOrientation(const QMediaServiceCameraInfoInterface* self, struct miqt_string device) {
 	QByteArray device_QByteArray(device.data, device.len);
 	return self->cameraOrientation(device_QByteArray);
 }
 
-void QMediaServiceCameraInfoInterface_OperatorAssign(QMediaServiceCameraInfoInterface* self, QMediaServiceCameraInfoInterface* param1) {
+void QMediaServiceCameraInfoInterface_operatorAssign(QMediaServiceCameraInfoInterface* self, QMediaServiceCameraInfoInterface* param1) {
 	self->operator=(*param1);
 }
 
-void QMediaServiceCameraInfoInterface_Delete(QMediaServiceCameraInfoInterface* self) {
+void QMediaServiceCameraInfoInterface_delete(QMediaServiceCameraInfoInterface* self) {
 	delete self;
 }
 
-int QMediaServiceFeaturesInterface_SupportedFeatures(const QMediaServiceFeaturesInterface* self, struct miqt_string service) {
+int QMediaServiceFeaturesInterface_supportedFeatures(const QMediaServiceFeaturesInterface* self, struct miqt_string service) {
 	QByteArray service_QByteArray(service.data, service.len);
 	QMediaServiceProviderHint::Features _ret = self->supportedFeatures(service_QByteArray);
 	return static_cast<int>(_ret);
 }
 
-void QMediaServiceFeaturesInterface_OperatorAssign(QMediaServiceFeaturesInterface* self, QMediaServiceFeaturesInterface* param1) {
+void QMediaServiceFeaturesInterface_operatorAssign(QMediaServiceFeaturesInterface* self, QMediaServiceFeaturesInterface* param1) {
 	self->operator=(*param1);
 }
 
-void QMediaServiceFeaturesInterface_Delete(QMediaServiceFeaturesInterface* self) {
+void QMediaServiceFeaturesInterface_delete(QMediaServiceFeaturesInterface* self) {
 	delete self;
 }
 
@@ -287,15 +287,15 @@ void QMediaServiceProviderPlugin_virtbase(QMediaServiceProviderPlugin* src, QObj
 	*outptr_QMediaServiceProviderFactoryInterface = static_cast<QMediaServiceProviderFactoryInterface*>(src);
 }
 
-QMetaObject* QMediaServiceProviderPlugin_MetaObject(const QMediaServiceProviderPlugin* self) {
+QMetaObject* QMediaServiceProviderPlugin_metaObject(const QMediaServiceProviderPlugin* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QMediaServiceProviderPlugin_Metacast(QMediaServiceProviderPlugin* self, const char* param1) {
+void* QMediaServiceProviderPlugin_metacast(QMediaServiceProviderPlugin* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QMediaServiceProviderPlugin_Tr(const char* s) {
+struct miqt_string QMediaServiceProviderPlugin_tr(const char* s) {
 	QString _ret = QMediaServiceProviderPlugin::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -306,7 +306,7 @@ struct miqt_string QMediaServiceProviderPlugin_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QMediaServiceProviderPlugin_TrUtf8(const char* s) {
+struct miqt_string QMediaServiceProviderPlugin_trUtf8(const char* s) {
 	QString _ret = QMediaServiceProviderPlugin::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -317,16 +317,16 @@ struct miqt_string QMediaServiceProviderPlugin_TrUtf8(const char* s) {
 	return _ms;
 }
 
-QMediaService* QMediaServiceProviderPlugin_Create(QMediaServiceProviderPlugin* self, struct miqt_string key) {
+QMediaService* QMediaServiceProviderPlugin_create(QMediaServiceProviderPlugin* self, struct miqt_string key) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return self->create(key_QString);
 }
 
-void QMediaServiceProviderPlugin_Release(QMediaServiceProviderPlugin* self, QMediaService* service) {
+void QMediaServiceProviderPlugin_release(QMediaServiceProviderPlugin* self, QMediaService* service) {
 	self->release(service);
 }
 
-struct miqt_string QMediaServiceProviderPlugin_Tr2(const char* s, const char* c) {
+struct miqt_string QMediaServiceProviderPlugin_tr2(const char* s, const char* c) {
 	QString _ret = QMediaServiceProviderPlugin::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -337,7 +337,7 @@ struct miqt_string QMediaServiceProviderPlugin_Tr2(const char* s, const char* c)
 	return _ms;
 }
 
-struct miqt_string QMediaServiceProviderPlugin_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QMediaServiceProviderPlugin_tr3(const char* s, const char* c, int n) {
 	QString _ret = QMediaServiceProviderPlugin::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -348,7 +348,7 @@ struct miqt_string QMediaServiceProviderPlugin_Tr3(const char* s, const char* c,
 	return _ms;
 }
 
-struct miqt_string QMediaServiceProviderPlugin_TrUtf82(const char* s, const char* c) {
+struct miqt_string QMediaServiceProviderPlugin_trUtf82(const char* s, const char* c) {
 	QString _ret = QMediaServiceProviderPlugin::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -359,7 +359,7 @@ struct miqt_string QMediaServiceProviderPlugin_TrUtf82(const char* s, const char
 	return _ms;
 }
 
-struct miqt_string QMediaServiceProviderPlugin_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QMediaServiceProviderPlugin_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QMediaServiceProviderPlugin::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -370,7 +370,7 @@ struct miqt_string QMediaServiceProviderPlugin_TrUtf83(const char* s, const char
 	return _ms;
 }
 
-void QMediaServiceProviderPlugin_Delete(QMediaServiceProviderPlugin* self) {
+void QMediaServiceProviderPlugin_delete(QMediaServiceProviderPlugin* self) {
 	delete self;
 }
 

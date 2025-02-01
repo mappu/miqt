@@ -20,12 +20,12 @@ class QContiguousCacheData;
 typedef struct QContiguousCacheData QContiguousCacheData;
 #endif
 
-QContiguousCacheData* QContiguousCacheData_AllocateData(int size, int alignment);
-void QContiguousCacheData_FreeData(QContiguousCacheData* data);
-void QContiguousCacheData_Delete(QContiguousCacheData* self);
+QContiguousCacheData* QContiguousCacheData_allocateData(int size, int alignment);
+void QContiguousCacheData_freeData(QContiguousCacheData* data);
+void QContiguousCacheData_delete(QContiguousCacheData* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

@@ -41,22 +41,22 @@ typedef struct QWindow QWindow;
 #endif
 
 void QPaintDeviceWindow_virtbase(QPaintDeviceWindow* src, QWindow** outptr_QWindow, QPaintDevice** outptr_QPaintDevice);
-QMetaObject* QPaintDeviceWindow_MetaObject(const QPaintDeviceWindow* self);
-void* QPaintDeviceWindow_Metacast(QPaintDeviceWindow* self, const char* param1);
-struct miqt_string QPaintDeviceWindow_Tr(const char* s);
-void QPaintDeviceWindow_Update(QPaintDeviceWindow* self, QRect* rect);
-void QPaintDeviceWindow_UpdateWithRegion(QPaintDeviceWindow* self, QRegion* region);
-void QPaintDeviceWindow_Update2(QPaintDeviceWindow* self);
-void QPaintDeviceWindow_ExposeEvent(QPaintDeviceWindow* self, QExposeEvent* param1);
-void QPaintDeviceWindow_PaintEvent(QPaintDeviceWindow* self, QPaintEvent* event);
-int QPaintDeviceWindow_Metric(const QPaintDeviceWindow* self, int metric);
-bool QPaintDeviceWindow_Event(QPaintDeviceWindow* self, QEvent* event);
-struct miqt_string QPaintDeviceWindow_Tr2(const char* s, const char* c);
-struct miqt_string QPaintDeviceWindow_Tr3(const char* s, const char* c, int n);
-void QPaintDeviceWindow_Delete(QPaintDeviceWindow* self);
+QMetaObject* QPaintDeviceWindow_metaObject(const QPaintDeviceWindow* self);
+void* QPaintDeviceWindow_metacast(QPaintDeviceWindow* self, const char* param1);
+struct miqt_string QPaintDeviceWindow_tr(const char* s);
+void QPaintDeviceWindow_update(QPaintDeviceWindow* self, QRect* rect);
+void QPaintDeviceWindow_updateWithRegion(QPaintDeviceWindow* self, QRegion* region);
+void QPaintDeviceWindow_update2(QPaintDeviceWindow* self);
+void QPaintDeviceWindow_exposeEvent(QPaintDeviceWindow* self, QExposeEvent* param1);
+void QPaintDeviceWindow_paintEvent(QPaintDeviceWindow* self, QPaintEvent* event);
+int QPaintDeviceWindow_metric(const QPaintDeviceWindow* self, int metric);
+bool QPaintDeviceWindow_event(QPaintDeviceWindow* self, QEvent* event);
+struct miqt_string QPaintDeviceWindow_tr2(const char* s, const char* c);
+struct miqt_string QPaintDeviceWindow_tr3(const char* s, const char* c, int n);
+void QPaintDeviceWindow_delete(QPaintDeviceWindow* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

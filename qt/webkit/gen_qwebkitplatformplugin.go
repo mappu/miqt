@@ -92,70 +92,70 @@ func UnsafeNewQWebSelectData(h unsafe.Pointer) *QWebSelectData {
 }
 
 func (this *QWebSelectData) ItemType(param1 int) QWebSelectData__ItemType {
-	return (QWebSelectData__ItemType)(C.QWebSelectData_ItemType(this.h, (C.int)(param1)))
+	return (QWebSelectData__ItemType)(C.QWebSelectData_itemType(this.h, (C.int)(param1)))
 }
 
 func (this *QWebSelectData) ItemText(index int) string {
-	var _ms C.struct_miqt_string = C.QWebSelectData_ItemText(this.h, (C.int)(index))
+	var _ms C.struct_miqt_string = C.QWebSelectData_itemText(this.h, (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebSelectData) ItemToolTip(index int) string {
-	var _ms C.struct_miqt_string = C.QWebSelectData_ItemToolTip(this.h, (C.int)(index))
+	var _ms C.struct_miqt_string = C.QWebSelectData_itemToolTip(this.h, (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebSelectData) ItemIsEnabled(index int) bool {
-	return (bool)(C.QWebSelectData_ItemIsEnabled(this.h, (C.int)(index)))
+	return (bool)(C.QWebSelectData_itemIsEnabled(this.h, (C.int)(index)))
 }
 
 func (this *QWebSelectData) ItemIsSelected(index int) bool {
-	return (bool)(C.QWebSelectData_ItemIsSelected(this.h, (C.int)(index)))
+	return (bool)(C.QWebSelectData_itemIsSelected(this.h, (C.int)(index)))
 }
 
 func (this *QWebSelectData) ItemCount() int {
-	return (int)(C.QWebSelectData_ItemCount(this.h))
+	return (int)(C.QWebSelectData_itemCount(this.h))
 }
 
 func (this *QWebSelectData) Multiple() bool {
-	return (bool)(C.QWebSelectData_Multiple(this.h))
+	return (bool)(C.QWebSelectData_multiple(this.h))
 }
 
 func (this *QWebSelectData) BackgroundColor() *qt.QColor {
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_BackgroundColor(this.h)))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_backgroundColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebSelectData) ForegroundColor() *qt.QColor {
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_ForegroundColor(this.h)))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_foregroundColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebSelectData) ItemBackgroundColor(index int) *qt.QColor {
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_ItemBackgroundColor(this.h, (C.int)(index))))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_itemBackgroundColor(this.h, (C.int)(index))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebSelectData) ItemForegroundColor(index int) *qt.QColor {
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_ItemForegroundColor(this.h, (C.int)(index))))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QWebSelectData_itemForegroundColor(this.h, (C.int)(index))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebSelectData) OperatorAssign(param1 *QWebSelectData) {
-	C.QWebSelectData_OperatorAssign(this.h, param1.cPointer())
+	C.QWebSelectData_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QWebSelectData) Delete() {
-	C.QWebSelectData_Delete(this.h)
+	C.QWebSelectData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -204,19 +204,19 @@ func UnsafeNewQWebSelectMethod(h unsafe.Pointer) *QWebSelectMethod {
 }
 
 func (this *QWebSelectMethod) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebSelectMethod_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebSelectMethod_metaObject(this.h)))
 }
 
 func (this *QWebSelectMethod) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWebSelectMethod_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWebSelectMethod_metacast(this.h, param1_Cstring))
 }
 
 func QWebSelectMethod_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebSelectMethod_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebSelectMethod_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -225,37 +225,37 @@ func QWebSelectMethod_Tr(s string) string {
 func QWebSelectMethod_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebSelectMethod_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebSelectMethod_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebSelectMethod) Show(param1 *QWebSelectData) {
-	C.QWebSelectMethod_Show(this.h, param1.cPointer())
+	C.QWebSelectMethod_show(this.h, param1.cPointer())
 }
 
 func (this *QWebSelectMethod) Hide() {
-	C.QWebSelectMethod_Hide(this.h)
+	C.QWebSelectMethod_hide(this.h)
 }
 
 func (this *QWebSelectMethod) SetGeometry(geometry *qt.QRect) {
-	C.QWebSelectMethod_SetGeometry(this.h, (*C.QRect)(geometry.UnsafePointer()))
+	C.QWebSelectMethod_setGeometry(this.h, (*C.QRect)(geometry.UnsafePointer()))
 }
 
 func (this *QWebSelectMethod) SetFont(font *qt.QFont) {
-	C.QWebSelectMethod_SetFont(this.h, (*C.QFont)(font.UnsafePointer()))
+	C.QWebSelectMethod_setFont(this.h, (*C.QFont)(font.UnsafePointer()))
 }
 
 func (this *QWebSelectMethod) SelectItem(index int, allowMultiplySelections bool, shift bool) {
-	C.QWebSelectMethod_SelectItem(this.h, (C.int)(index), (C.bool)(allowMultiplySelections), (C.bool)(shift))
+	C.QWebSelectMethod_selectItem(this.h, (C.int)(index), (C.bool)(allowMultiplySelections), (C.bool)(shift))
 }
 func (this *QWebSelectMethod) OnSelectItem(slot func(index int, allowMultiplySelections bool, shift bool)) {
-	C.QWebSelectMethod_connect_SelectItem(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebSelectMethod_connect_selectItem(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebSelectMethod_SelectItem
-func miqt_exec_callback_QWebSelectMethod_SelectItem(cb C.intptr_t, index C.int, allowMultiplySelections C.bool, shift C.bool) {
+//export miqt_exec_callback_QWebSelectMethod_selectItem
+func miqt_exec_callback_QWebSelectMethod_selectItem(cb C.intptr_t, index C.int, allowMultiplySelections C.bool, shift C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(index int, allowMultiplySelections bool, shift bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -272,14 +272,14 @@ func miqt_exec_callback_QWebSelectMethod_SelectItem(cb C.intptr_t, index C.int, 
 }
 
 func (this *QWebSelectMethod) DidHide() {
-	C.QWebSelectMethod_DidHide(this.h)
+	C.QWebSelectMethod_didHide(this.h)
 }
 func (this *QWebSelectMethod) OnDidHide(slot func()) {
-	C.QWebSelectMethod_connect_DidHide(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebSelectMethod_connect_didHide(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebSelectMethod_DidHide
-func miqt_exec_callback_QWebSelectMethod_DidHide(cb C.intptr_t) {
+//export miqt_exec_callback_QWebSelectMethod_didHide
+func miqt_exec_callback_QWebSelectMethod_didHide(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -293,7 +293,7 @@ func QWebSelectMethod_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebSelectMethod_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebSelectMethod_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -304,7 +304,7 @@ func QWebSelectMethod_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebSelectMethod_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebSelectMethod_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -315,7 +315,7 @@ func QWebSelectMethod_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebSelectMethod_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebSelectMethod_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -326,7 +326,7 @@ func QWebSelectMethod_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebSelectMethod_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebSelectMethod_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -334,7 +334,7 @@ func QWebSelectMethod_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QWebSelectMethod) Delete() {
-	C.QWebSelectMethod_Delete(this.h)
+	C.QWebSelectMethod_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -379,38 +379,38 @@ func UnsafeNewQWebNotificationData(h unsafe.Pointer) *QWebNotificationData {
 }
 
 func (this *QWebNotificationData) Title() string {
-	var _ms C.struct_miqt_string = C.QWebNotificationData_Title(this.h)
+	var _ms C.struct_miqt_string = C.QWebNotificationData_title(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebNotificationData) Message() string {
-	var _ms C.struct_miqt_string = C.QWebNotificationData_Message(this.h)
+	var _ms C.struct_miqt_string = C.QWebNotificationData_message(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebNotificationData) IconUrl() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebNotificationData_IconUrl(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebNotificationData_iconUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebNotificationData) OpenerPageUrl() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebNotificationData_OpenerPageUrl(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebNotificationData_openerPageUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebNotificationData) OperatorAssign(param1 *QWebNotificationData) {
-	C.QWebNotificationData_OperatorAssign(this.h, param1.cPointer())
+	C.QWebNotificationData_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QWebNotificationData) Delete() {
-	C.QWebNotificationData_Delete(this.h)
+	C.QWebNotificationData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -459,19 +459,19 @@ func UnsafeNewQWebNotificationPresenter(h unsafe.Pointer) *QWebNotificationPrese
 }
 
 func (this *QWebNotificationPresenter) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebNotificationPresenter_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebNotificationPresenter_metaObject(this.h)))
 }
 
 func (this *QWebNotificationPresenter) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWebNotificationPresenter_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWebNotificationPresenter_metacast(this.h, param1_Cstring))
 }
 
 func QWebNotificationPresenter_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebNotificationPresenter_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebNotificationPresenter_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -480,25 +480,25 @@ func QWebNotificationPresenter_Tr(s string) string {
 func QWebNotificationPresenter_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebNotificationPresenter_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebNotificationPresenter_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebNotificationPresenter) ShowNotification(param1 *QWebNotificationData) {
-	C.QWebNotificationPresenter_ShowNotification(this.h, param1.cPointer())
+	C.QWebNotificationPresenter_showNotification(this.h, param1.cPointer())
 }
 
 func (this *QWebNotificationPresenter) NotificationClosed() {
-	C.QWebNotificationPresenter_NotificationClosed(this.h)
+	C.QWebNotificationPresenter_notificationClosed(this.h)
 }
 func (this *QWebNotificationPresenter) OnNotificationClosed(slot func()) {
-	C.QWebNotificationPresenter_connect_NotificationClosed(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebNotificationPresenter_connect_notificationClosed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebNotificationPresenter_NotificationClosed
-func miqt_exec_callback_QWebNotificationPresenter_NotificationClosed(cb C.intptr_t) {
+//export miqt_exec_callback_QWebNotificationPresenter_notificationClosed
+func miqt_exec_callback_QWebNotificationPresenter_notificationClosed(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -508,14 +508,14 @@ func miqt_exec_callback_QWebNotificationPresenter_NotificationClosed(cb C.intptr
 }
 
 func (this *QWebNotificationPresenter) NotificationClicked() {
-	C.QWebNotificationPresenter_NotificationClicked(this.h)
+	C.QWebNotificationPresenter_notificationClicked(this.h)
 }
 func (this *QWebNotificationPresenter) OnNotificationClicked(slot func()) {
-	C.QWebNotificationPresenter_connect_NotificationClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebNotificationPresenter_connect_notificationClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebNotificationPresenter_NotificationClicked
-func miqt_exec_callback_QWebNotificationPresenter_NotificationClicked(cb C.intptr_t) {
+//export miqt_exec_callback_QWebNotificationPresenter_notificationClicked
+func miqt_exec_callback_QWebNotificationPresenter_notificationClicked(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -529,7 +529,7 @@ func QWebNotificationPresenter_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebNotificationPresenter_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebNotificationPresenter_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -540,7 +540,7 @@ func QWebNotificationPresenter_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebNotificationPresenter_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebNotificationPresenter_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -551,7 +551,7 @@ func QWebNotificationPresenter_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebNotificationPresenter_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebNotificationPresenter_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -562,7 +562,7 @@ func QWebNotificationPresenter_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebNotificationPresenter_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebNotificationPresenter_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -570,7 +570,7 @@ func QWebNotificationPresenter_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QWebNotificationPresenter) Delete() {
-	C.QWebNotificationPresenter_Delete(this.h)
+	C.QWebNotificationPresenter_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -619,19 +619,19 @@ func UnsafeNewQWebHapticFeedbackPlayer(h unsafe.Pointer) *QWebHapticFeedbackPlay
 }
 
 func (this *QWebHapticFeedbackPlayer) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebHapticFeedbackPlayer_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebHapticFeedbackPlayer_metaObject(this.h)))
 }
 
 func (this *QWebHapticFeedbackPlayer) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWebHapticFeedbackPlayer_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWebHapticFeedbackPlayer_metacast(this.h, param1_Cstring))
 }
 
 func QWebHapticFeedbackPlayer_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebHapticFeedbackPlayer_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebHapticFeedbackPlayer_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -640,7 +640,7 @@ func QWebHapticFeedbackPlayer_Tr(s string) string {
 func QWebHapticFeedbackPlayer_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebHapticFeedbackPlayer_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebHapticFeedbackPlayer_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -651,7 +651,7 @@ func (this *QWebHapticFeedbackPlayer) PlayHapticFeedback(param1 QWebHapticFeedba
 	hapticType_ms.data = C.CString(hapticType)
 	hapticType_ms.len = C.size_t(len(hapticType))
 	defer C.free(unsafe.Pointer(hapticType_ms.data))
-	C.QWebHapticFeedbackPlayer_PlayHapticFeedback(this.h, (C.int)(param1), hapticType_ms, (C.int)(param3))
+	C.QWebHapticFeedbackPlayer_playHapticFeedback(this.h, (C.int)(param1), hapticType_ms, (C.int)(param3))
 }
 
 func QWebHapticFeedbackPlayer_Tr2(s string, c string) string {
@@ -659,7 +659,7 @@ func QWebHapticFeedbackPlayer_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebHapticFeedbackPlayer_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebHapticFeedbackPlayer_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -670,7 +670,7 @@ func QWebHapticFeedbackPlayer_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebHapticFeedbackPlayer_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebHapticFeedbackPlayer_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -681,7 +681,7 @@ func QWebHapticFeedbackPlayer_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebHapticFeedbackPlayer_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebHapticFeedbackPlayer_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -692,7 +692,7 @@ func QWebHapticFeedbackPlayer_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebHapticFeedbackPlayer_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebHapticFeedbackPlayer_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -700,7 +700,7 @@ func QWebHapticFeedbackPlayer_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QWebHapticFeedbackPlayer) Delete() {
-	C.QWebHapticFeedbackPlayer_Delete(this.h)
+	C.QWebHapticFeedbackPlayer_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -749,19 +749,19 @@ func UnsafeNewQWebTouchModifier(h unsafe.Pointer) *QWebTouchModifier {
 }
 
 func (this *QWebTouchModifier) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebTouchModifier_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebTouchModifier_metaObject(this.h)))
 }
 
 func (this *QWebTouchModifier) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWebTouchModifier_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWebTouchModifier_metacast(this.h, param1_Cstring))
 }
 
 func QWebTouchModifier_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebTouchModifier_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebTouchModifier_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -770,14 +770,14 @@ func QWebTouchModifier_Tr(s string) string {
 func QWebTouchModifier_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebTouchModifier_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebTouchModifier_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebTouchModifier) HitTestPaddingForTouch(param1 QWebTouchModifier__PaddingDirection) uint {
-	return (uint)(C.QWebTouchModifier_HitTestPaddingForTouch(this.h, (C.int)(param1)))
+	return (uint)(C.QWebTouchModifier_hitTestPaddingForTouch(this.h, (C.int)(param1)))
 }
 
 func QWebTouchModifier_Tr2(s string, c string) string {
@@ -785,7 +785,7 @@ func QWebTouchModifier_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebTouchModifier_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebTouchModifier_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -796,7 +796,7 @@ func QWebTouchModifier_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebTouchModifier_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebTouchModifier_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -807,7 +807,7 @@ func QWebTouchModifier_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebTouchModifier_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebTouchModifier_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -818,7 +818,7 @@ func QWebTouchModifier_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebTouchModifier_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebTouchModifier_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -826,7 +826,7 @@ func QWebTouchModifier_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QWebTouchModifier) Delete() {
-	C.QWebTouchModifier_Delete(this.h)
+	C.QWebTouchModifier_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -875,19 +875,19 @@ func UnsafeNewQWebSpellChecker(h unsafe.Pointer) *QWebSpellChecker {
 }
 
 func (this *QWebSpellChecker) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebSpellChecker_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebSpellChecker_metaObject(this.h)))
 }
 
 func (this *QWebSpellChecker) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWebSpellChecker_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWebSpellChecker_metacast(this.h, param1_Cstring))
 }
 
 func QWebSpellChecker_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebSpellChecker_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebSpellChecker_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -896,18 +896,18 @@ func QWebSpellChecker_Tr(s string) string {
 func QWebSpellChecker_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebSpellChecker_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebSpellChecker_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebSpellChecker) IsContinousSpellCheckingEnabled() bool {
-	return (bool)(C.QWebSpellChecker_IsContinousSpellCheckingEnabled(this.h))
+	return (bool)(C.QWebSpellChecker_isContinousSpellCheckingEnabled(this.h))
 }
 
 func (this *QWebSpellChecker) ToggleContinousSpellChecking() {
-	C.QWebSpellChecker_ToggleContinousSpellChecking(this.h)
+	C.QWebSpellChecker_toggleContinousSpellChecking(this.h)
 }
 
 func (this *QWebSpellChecker) LearnWord(word string) {
@@ -915,7 +915,7 @@ func (this *QWebSpellChecker) LearnWord(word string) {
 	word_ms.data = C.CString(word)
 	word_ms.len = C.size_t(len(word))
 	defer C.free(unsafe.Pointer(word_ms.data))
-	C.QWebSpellChecker_LearnWord(this.h, word_ms)
+	C.QWebSpellChecker_learnWord(this.h, word_ms)
 }
 
 func (this *QWebSpellChecker) IgnoreWordInSpellDocument(word string) {
@@ -923,7 +923,7 @@ func (this *QWebSpellChecker) IgnoreWordInSpellDocument(word string) {
 	word_ms.data = C.CString(word)
 	word_ms.len = C.size_t(len(word))
 	defer C.free(unsafe.Pointer(word_ms.data))
-	C.QWebSpellChecker_IgnoreWordInSpellDocument(this.h, word_ms)
+	C.QWebSpellChecker_ignoreWordInSpellDocument(this.h, word_ms)
 }
 
 func (this *QWebSpellChecker) CheckSpellingOfString(word string, misspellingLocation *int, misspellingLength *int) {
@@ -931,7 +931,7 @@ func (this *QWebSpellChecker) CheckSpellingOfString(word string, misspellingLoca
 	word_ms.data = C.CString(word)
 	word_ms.len = C.size_t(len(word))
 	defer C.free(unsafe.Pointer(word_ms.data))
-	C.QWebSpellChecker_CheckSpellingOfString(this.h, word_ms, (*C.int)(unsafe.Pointer(misspellingLocation)), (*C.int)(unsafe.Pointer(misspellingLength)))
+	C.QWebSpellChecker_checkSpellingOfString(this.h, word_ms, (*C.int)(unsafe.Pointer(misspellingLocation)), (*C.int)(unsafe.Pointer(misspellingLength)))
 }
 
 func (this *QWebSpellChecker) AutoCorrectSuggestionForMisspelledWord(word string) string {
@@ -939,7 +939,7 @@ func (this *QWebSpellChecker) AutoCorrectSuggestionForMisspelledWord(word string
 	word_ms.data = C.CString(word)
 	word_ms.len = C.size_t(len(word))
 	defer C.free(unsafe.Pointer(word_ms.data))
-	var _ms C.struct_miqt_string = C.QWebSpellChecker_AutoCorrectSuggestionForMisspelledWord(this.h, word_ms)
+	var _ms C.struct_miqt_string = C.QWebSpellChecker_autoCorrectSuggestionForMisspelledWord(this.h, word_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -964,15 +964,15 @@ func (this *QWebSpellChecker) GuessesForWord(word string, context string, guesse
 		guesses_CArray[i] = guesses_i_ms
 	}
 	guesses_ma := C.struct_miqt_array{len: C.size_t(len(guesses)), data: unsafe.Pointer(guesses_CArray)}
-	C.QWebSpellChecker_GuessesForWord(this.h, word_ms, context_ms, guesses_ma)
+	C.QWebSpellChecker_guessesForWord(this.h, word_ms, context_ms, guesses_ma)
 }
 
 func (this *QWebSpellChecker) IsGrammarCheckingEnabled() bool {
-	return (bool)(C.QWebSpellChecker_IsGrammarCheckingEnabled(this.h))
+	return (bool)(C.QWebSpellChecker_isGrammarCheckingEnabled(this.h))
 }
 
 func (this *QWebSpellChecker) ToggleGrammarChecking() {
-	C.QWebSpellChecker_ToggleGrammarChecking(this.h)
+	C.QWebSpellChecker_toggleGrammarChecking(this.h)
 }
 
 func (this *QWebSpellChecker) CheckGrammarOfString(param1 string, param2 []QWebSpellChecker__GrammarDetail, badGrammarLocation *int, badGrammarLength *int) {
@@ -986,7 +986,7 @@ func (this *QWebSpellChecker) CheckGrammarOfString(param1 string, param2 []QWebS
 		param2_CArray[i] = param2[i].cPointer()
 	}
 	param2_ma := C.struct_miqt_array{len: C.size_t(len(param2)), data: unsafe.Pointer(param2_CArray)}
-	C.QWebSpellChecker_CheckGrammarOfString(this.h, param1_ms, param2_ma, (*C.int)(unsafe.Pointer(badGrammarLocation)), (*C.int)(unsafe.Pointer(badGrammarLength)))
+	C.QWebSpellChecker_checkGrammarOfString(this.h, param1_ms, param2_ma, (*C.int)(unsafe.Pointer(badGrammarLocation)), (*C.int)(unsafe.Pointer(badGrammarLength)))
 }
 
 func QWebSpellChecker_Tr2(s string, c string) string {
@@ -994,7 +994,7 @@ func QWebSpellChecker_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebSpellChecker_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebSpellChecker_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1005,7 +1005,7 @@ func QWebSpellChecker_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebSpellChecker_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebSpellChecker_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1016,7 +1016,7 @@ func QWebSpellChecker_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebSpellChecker_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebSpellChecker_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1027,7 +1027,7 @@ func QWebSpellChecker_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebSpellChecker_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebSpellChecker_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1035,7 +1035,7 @@ func QWebSpellChecker_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QWebSpellChecker) Delete() {
-	C.QWebSpellChecker_Delete(this.h)
+	C.QWebSpellChecker_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1080,20 +1080,20 @@ func UnsafeNewQWebKitPlatformPlugin(h unsafe.Pointer) *QWebKitPlatformPlugin {
 }
 
 func (this *QWebKitPlatformPlugin) SupportsExtension(param1 QWebKitPlatformPlugin__Extension) bool {
-	return (bool)(C.QWebKitPlatformPlugin_SupportsExtension(this.h, (C.int)(param1)))
+	return (bool)(C.QWebKitPlatformPlugin_supportsExtension(this.h, (C.int)(param1)))
 }
 
 func (this *QWebKitPlatformPlugin) CreateExtension(param1 QWebKitPlatformPlugin__Extension) *qt.QObject {
-	return qt.UnsafeNewQObject(unsafe.Pointer(C.QWebKitPlatformPlugin_CreateExtension(this.h, (C.int)(param1))))
+	return qt.UnsafeNewQObject(unsafe.Pointer(C.QWebKitPlatformPlugin_createExtension(this.h, (C.int)(param1))))
 }
 
 func (this *QWebKitPlatformPlugin) OperatorAssign(param1 *QWebKitPlatformPlugin) {
-	C.QWebKitPlatformPlugin_OperatorAssign(this.h, param1.cPointer())
+	C.QWebKitPlatformPlugin_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QWebKitPlatformPlugin) Delete() {
-	C.QWebKitPlatformPlugin_Delete(this.h)
+	C.QWebKitPlatformPlugin_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1144,12 +1144,12 @@ func NewQWebSpellChecker__GrammarDetail(param1 *QWebSpellChecker__GrammarDetail)
 }
 
 func (this *QWebSpellChecker__GrammarDetail) OperatorAssign(param1 *QWebSpellChecker__GrammarDetail) {
-	C.QWebSpellChecker__GrammarDetail_OperatorAssign(this.h, param1.cPointer())
+	C.QWebSpellChecker__GrammarDetail_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QWebSpellChecker__GrammarDetail) Delete() {
-	C.QWebSpellChecker__GrammarDetail_Delete(this.h)
+	C.QWebSpellChecker__GrammarDetail_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

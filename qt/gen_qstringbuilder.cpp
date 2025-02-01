@@ -9,7 +9,7 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QAbstractConcatenable_Delete(QAbstractConcatenable* self) {
+void QAbstractConcatenable_delete(QAbstractConcatenable* self) {
 	delete self;
 }
 

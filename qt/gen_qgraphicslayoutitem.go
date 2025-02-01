@@ -65,183 +65,183 @@ func NewQGraphicsLayoutItem3(parent *QGraphicsLayoutItem, isLayout bool) *QGraph
 }
 
 func (this *QGraphicsLayoutItem) SetSizePolicy(policy *QSizePolicy) {
-	C.QGraphicsLayoutItem_SetSizePolicy(this.h, policy.cPointer())
+	C.QGraphicsLayoutItem_setSizePolicy(this.h, policy.cPointer())
 }
 
 func (this *QGraphicsLayoutItem) SetSizePolicy2(hPolicy QSizePolicy__Policy, vPolicy QSizePolicy__Policy) {
-	C.QGraphicsLayoutItem_SetSizePolicy2(this.h, (C.int)(hPolicy), (C.int)(vPolicy))
+	C.QGraphicsLayoutItem_setSizePolicy2(this.h, (C.int)(hPolicy), (C.int)(vPolicy))
 }
 
 func (this *QGraphicsLayoutItem) SizePolicy() *QSizePolicy {
-	_goptr := newQSizePolicy(C.QGraphicsLayoutItem_SizePolicy(this.h))
+	_goptr := newQSizePolicy(C.QGraphicsLayoutItem_sizePolicy(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsLayoutItem) SetMinimumSize(size *QSizeF) {
-	C.QGraphicsLayoutItem_SetMinimumSize(this.h, size.cPointer())
+	C.QGraphicsLayoutItem_setMinimumSize(this.h, size.cPointer())
 }
 
 func (this *QGraphicsLayoutItem) SetMinimumSize2(w float64, h float64) {
-	C.QGraphicsLayoutItem_SetMinimumSize2(this.h, (C.double)(w), (C.double)(h))
+	C.QGraphicsLayoutItem_setMinimumSize2(this.h, (C.double)(w), (C.double)(h))
 }
 
 func (this *QGraphicsLayoutItem) MinimumSize() *QSizeF {
-	_goptr := newQSizeF(C.QGraphicsLayoutItem_MinimumSize(this.h))
+	_goptr := newQSizeF(C.QGraphicsLayoutItem_minimumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsLayoutItem) SetMinimumWidth(width float64) {
-	C.QGraphicsLayoutItem_SetMinimumWidth(this.h, (C.double)(width))
+	C.QGraphicsLayoutItem_setMinimumWidth(this.h, (C.double)(width))
 }
 
 func (this *QGraphicsLayoutItem) MinimumWidth() float64 {
-	return (float64)(C.QGraphicsLayoutItem_MinimumWidth(this.h))
+	return (float64)(C.QGraphicsLayoutItem_minimumWidth(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetMinimumHeight(height float64) {
-	C.QGraphicsLayoutItem_SetMinimumHeight(this.h, (C.double)(height))
+	C.QGraphicsLayoutItem_setMinimumHeight(this.h, (C.double)(height))
 }
 
 func (this *QGraphicsLayoutItem) MinimumHeight() float64 {
-	return (float64)(C.QGraphicsLayoutItem_MinimumHeight(this.h))
+	return (float64)(C.QGraphicsLayoutItem_minimumHeight(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetPreferredSize(size *QSizeF) {
-	C.QGraphicsLayoutItem_SetPreferredSize(this.h, size.cPointer())
+	C.QGraphicsLayoutItem_setPreferredSize(this.h, size.cPointer())
 }
 
 func (this *QGraphicsLayoutItem) SetPreferredSize2(w float64, h float64) {
-	C.QGraphicsLayoutItem_SetPreferredSize2(this.h, (C.double)(w), (C.double)(h))
+	C.QGraphicsLayoutItem_setPreferredSize2(this.h, (C.double)(w), (C.double)(h))
 }
 
 func (this *QGraphicsLayoutItem) PreferredSize() *QSizeF {
-	_goptr := newQSizeF(C.QGraphicsLayoutItem_PreferredSize(this.h))
+	_goptr := newQSizeF(C.QGraphicsLayoutItem_preferredSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsLayoutItem) SetPreferredWidth(width float64) {
-	C.QGraphicsLayoutItem_SetPreferredWidth(this.h, (C.double)(width))
+	C.QGraphicsLayoutItem_setPreferredWidth(this.h, (C.double)(width))
 }
 
 func (this *QGraphicsLayoutItem) PreferredWidth() float64 {
-	return (float64)(C.QGraphicsLayoutItem_PreferredWidth(this.h))
+	return (float64)(C.QGraphicsLayoutItem_preferredWidth(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetPreferredHeight(height float64) {
-	C.QGraphicsLayoutItem_SetPreferredHeight(this.h, (C.double)(height))
+	C.QGraphicsLayoutItem_setPreferredHeight(this.h, (C.double)(height))
 }
 
 func (this *QGraphicsLayoutItem) PreferredHeight() float64 {
-	return (float64)(C.QGraphicsLayoutItem_PreferredHeight(this.h))
+	return (float64)(C.QGraphicsLayoutItem_preferredHeight(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetMaximumSize(size *QSizeF) {
-	C.QGraphicsLayoutItem_SetMaximumSize(this.h, size.cPointer())
+	C.QGraphicsLayoutItem_setMaximumSize(this.h, size.cPointer())
 }
 
 func (this *QGraphicsLayoutItem) SetMaximumSize2(w float64, h float64) {
-	C.QGraphicsLayoutItem_SetMaximumSize2(this.h, (C.double)(w), (C.double)(h))
+	C.QGraphicsLayoutItem_setMaximumSize2(this.h, (C.double)(w), (C.double)(h))
 }
 
 func (this *QGraphicsLayoutItem) MaximumSize() *QSizeF {
-	_goptr := newQSizeF(C.QGraphicsLayoutItem_MaximumSize(this.h))
+	_goptr := newQSizeF(C.QGraphicsLayoutItem_maximumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsLayoutItem) SetMaximumWidth(width float64) {
-	C.QGraphicsLayoutItem_SetMaximumWidth(this.h, (C.double)(width))
+	C.QGraphicsLayoutItem_setMaximumWidth(this.h, (C.double)(width))
 }
 
 func (this *QGraphicsLayoutItem) MaximumWidth() float64 {
-	return (float64)(C.QGraphicsLayoutItem_MaximumWidth(this.h))
+	return (float64)(C.QGraphicsLayoutItem_maximumWidth(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetMaximumHeight(height float64) {
-	C.QGraphicsLayoutItem_SetMaximumHeight(this.h, (C.double)(height))
+	C.QGraphicsLayoutItem_setMaximumHeight(this.h, (C.double)(height))
 }
 
 func (this *QGraphicsLayoutItem) MaximumHeight() float64 {
-	return (float64)(C.QGraphicsLayoutItem_MaximumHeight(this.h))
+	return (float64)(C.QGraphicsLayoutItem_maximumHeight(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetGeometry(rect *QRectF) {
-	C.QGraphicsLayoutItem_SetGeometry(this.h, rect.cPointer())
+	C.QGraphicsLayoutItem_setGeometry(this.h, rect.cPointer())
 }
 
 func (this *QGraphicsLayoutItem) Geometry() *QRectF {
-	_goptr := newQRectF(C.QGraphicsLayoutItem_Geometry(this.h))
+	_goptr := newQRectF(C.QGraphicsLayoutItem_geometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsLayoutItem) GetContentsMargins(left *float64, top *float64, right *float64, bottom *float64) {
-	C.QGraphicsLayoutItem_GetContentsMargins(this.h, (*C.double)(unsafe.Pointer(left)), (*C.double)(unsafe.Pointer(top)), (*C.double)(unsafe.Pointer(right)), (*C.double)(unsafe.Pointer(bottom)))
+	C.QGraphicsLayoutItem_getContentsMargins(this.h, (*C.double)(unsafe.Pointer(left)), (*C.double)(unsafe.Pointer(top)), (*C.double)(unsafe.Pointer(right)), (*C.double)(unsafe.Pointer(bottom)))
 }
 
 func (this *QGraphicsLayoutItem) ContentsRect() *QRectF {
-	_goptr := newQRectF(C.QGraphicsLayoutItem_ContentsRect(this.h))
+	_goptr := newQRectF(C.QGraphicsLayoutItem_contentsRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsLayoutItem) EffectiveSizeHint(which SizeHint) *QSizeF {
-	_goptr := newQSizeF(C.QGraphicsLayoutItem_EffectiveSizeHint(this.h, (C.int)(which)))
+	_goptr := newQSizeF(C.QGraphicsLayoutItem_effectiveSizeHint(this.h, (C.int)(which)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsLayoutItem) UpdateGeometry() {
-	C.QGraphicsLayoutItem_UpdateGeometry(this.h)
+	C.QGraphicsLayoutItem_updateGeometry(this.h)
 }
 
 func (this *QGraphicsLayoutItem) ParentLayoutItem() *QGraphicsLayoutItem {
-	return newQGraphicsLayoutItem(C.QGraphicsLayoutItem_ParentLayoutItem(this.h))
+	return newQGraphicsLayoutItem(C.QGraphicsLayoutItem_parentLayoutItem(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetParentLayoutItem(parent *QGraphicsLayoutItem) {
-	C.QGraphicsLayoutItem_SetParentLayoutItem(this.h, parent.cPointer())
+	C.QGraphicsLayoutItem_setParentLayoutItem(this.h, parent.cPointer())
 }
 
 func (this *QGraphicsLayoutItem) IsLayout() bool {
-	return (bool)(C.QGraphicsLayoutItem_IsLayout(this.h))
+	return (bool)(C.QGraphicsLayoutItem_isLayout(this.h))
 }
 
 func (this *QGraphicsLayoutItem) GraphicsItem() *QGraphicsItem {
-	return newQGraphicsItem(C.QGraphicsLayoutItem_GraphicsItem(this.h))
+	return newQGraphicsItem(C.QGraphicsLayoutItem_graphicsItem(this.h))
 }
 
 func (this *QGraphicsLayoutItem) OwnedByLayout() bool {
-	return (bool)(C.QGraphicsLayoutItem_OwnedByLayout(this.h))
+	return (bool)(C.QGraphicsLayoutItem_ownedByLayout(this.h))
 }
 
 func (this *QGraphicsLayoutItem) SetSizePolicy3(hPolicy QSizePolicy__Policy, vPolicy QSizePolicy__Policy, controlType QSizePolicy__ControlType) {
-	C.QGraphicsLayoutItem_SetSizePolicy3(this.h, (C.int)(hPolicy), (C.int)(vPolicy), (C.int)(controlType))
+	C.QGraphicsLayoutItem_setSizePolicy3(this.h, (C.int)(hPolicy), (C.int)(vPolicy), (C.int)(controlType))
 }
 
 func (this *QGraphicsLayoutItem) EffectiveSizeHint2(which SizeHint, constraint *QSizeF) *QSizeF {
-	_goptr := newQSizeF(C.QGraphicsLayoutItem_EffectiveSizeHint2(this.h, (C.int)(which), constraint.cPointer()))
+	_goptr := newQSizeF(C.QGraphicsLayoutItem_effectiveSizeHint2(this.h, (C.int)(which), constraint.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsLayoutItem) callVirtualBase_SetGeometry(rect *QRectF) {
 
-	C.QGraphicsLayoutItem_virtualbase_SetGeometry(unsafe.Pointer(this.h), rect.cPointer())
+	C.QGraphicsLayoutItem_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())
 
 }
-func (this *QGraphicsLayoutItem) OnSetGeometry(slot func(super func(rect *QRectF), rect *QRectF)) {
-	ok := C.QGraphicsLayoutItem_override_virtual_SetGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsLayoutItem) OnsetGeometry(slot func(super func(rect *QRectF), rect *QRectF)) {
+	ok := C.QGraphicsLayoutItem_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsLayoutItem_SetGeometry
-func miqt_exec_callback_QGraphicsLayoutItem_SetGeometry(self *C.QGraphicsLayoutItem, cb C.intptr_t, rect *C.QRectF) {
+//export miqt_exec_callback_QGraphicsLayoutItem_setGeometry
+func miqt_exec_callback_QGraphicsLayoutItem_setGeometry(self *C.QGraphicsLayoutItem, cb C.intptr_t, rect *C.QRectF) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRectF), rect *QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -256,18 +256,18 @@ func miqt_exec_callback_QGraphicsLayoutItem_SetGeometry(self *C.QGraphicsLayoutI
 
 func (this *QGraphicsLayoutItem) callVirtualBase_GetContentsMargins(left *float64, top *float64, right *float64, bottom *float64) {
 
-	C.QGraphicsLayoutItem_virtualbase_GetContentsMargins(unsafe.Pointer(this.h), (*C.double)(unsafe.Pointer(left)), (*C.double)(unsafe.Pointer(top)), (*C.double)(unsafe.Pointer(right)), (*C.double)(unsafe.Pointer(bottom)))
+	C.QGraphicsLayoutItem_virtualbase_getContentsMargins(unsafe.Pointer(this.h), (*C.double)(unsafe.Pointer(left)), (*C.double)(unsafe.Pointer(top)), (*C.double)(unsafe.Pointer(right)), (*C.double)(unsafe.Pointer(bottom)))
 
 }
-func (this *QGraphicsLayoutItem) OnGetContentsMargins(slot func(super func(left *float64, top *float64, right *float64, bottom *float64), left *float64, top *float64, right *float64, bottom *float64)) {
-	ok := C.QGraphicsLayoutItem_override_virtual_GetContentsMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsLayoutItem) OngetContentsMargins(slot func(super func(left *float64, top *float64, right *float64, bottom *float64), left *float64, top *float64, right *float64, bottom *float64)) {
+	ok := C.QGraphicsLayoutItem_override_virtual_getContentsMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsLayoutItem_GetContentsMargins
-func miqt_exec_callback_QGraphicsLayoutItem_GetContentsMargins(self *C.QGraphicsLayoutItem, cb C.intptr_t, left *C.double, top *C.double, right *C.double, bottom *C.double) {
+//export miqt_exec_callback_QGraphicsLayoutItem_getContentsMargins
+func miqt_exec_callback_QGraphicsLayoutItem_getContentsMargins(self *C.QGraphicsLayoutItem, cb C.intptr_t, left *C.double, top *C.double, right *C.double, bottom *C.double) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(left *float64, top *float64, right *float64, bottom *float64), left *float64, top *float64, right *float64, bottom *float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -288,18 +288,18 @@ func miqt_exec_callback_QGraphicsLayoutItem_GetContentsMargins(self *C.QGraphics
 
 func (this *QGraphicsLayoutItem) callVirtualBase_UpdateGeometry() {
 
-	C.QGraphicsLayoutItem_virtualbase_UpdateGeometry(unsafe.Pointer(this.h))
+	C.QGraphicsLayoutItem_virtualbase_updateGeometry(unsafe.Pointer(this.h))
 
 }
-func (this *QGraphicsLayoutItem) OnUpdateGeometry(slot func(super func())) {
-	ok := C.QGraphicsLayoutItem_override_virtual_UpdateGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsLayoutItem) OnupdateGeometry(slot func(super func())) {
+	ok := C.QGraphicsLayoutItem_override_virtual_updateGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsLayoutItem_UpdateGeometry
-func miqt_exec_callback_QGraphicsLayoutItem_UpdateGeometry(self *C.QGraphicsLayoutItem, cb C.intptr_t) {
+//export miqt_exec_callback_QGraphicsLayoutItem_updateGeometry
+func miqt_exec_callback_QGraphicsLayoutItem_updateGeometry(self *C.QGraphicsLayoutItem, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -308,15 +308,15 @@ func miqt_exec_callback_QGraphicsLayoutItem_UpdateGeometry(self *C.QGraphicsLayo
 	gofunc((&QGraphicsLayoutItem{h: self}).callVirtualBase_UpdateGeometry)
 
 }
-func (this *QGraphicsLayoutItem) OnSizeHint(slot func(which SizeHint, constraint *QSizeF) *QSizeF) {
-	ok := C.QGraphicsLayoutItem_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsLayoutItem) OnsizeHint(slot func(which SizeHint, constraint *QSizeF) *QSizeF) {
+	ok := C.QGraphicsLayoutItem_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsLayoutItem_SizeHint
-func miqt_exec_callback_QGraphicsLayoutItem_SizeHint(self *C.QGraphicsLayoutItem, cb C.intptr_t, which C.int, constraint *C.QSizeF) *C.QSizeF {
+//export miqt_exec_callback_QGraphicsLayoutItem_sizeHint
+func miqt_exec_callback_QGraphicsLayoutItem_sizeHint(self *C.QGraphicsLayoutItem, cb C.intptr_t, which C.int, constraint *C.QSizeF) *C.QSizeF {
 	gofunc, ok := cgo.Handle(cb).Value().(func(which SizeHint, constraint *QSizeF) *QSizeF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -335,7 +335,7 @@ func miqt_exec_callback_QGraphicsLayoutItem_SizeHint(self *C.QGraphicsLayoutItem
 
 // Delete this object from C++ memory.
 func (this *QGraphicsLayoutItem) Delete() {
-	C.QGraphicsLayoutItem_Delete(this.h)
+	C.QGraphicsLayoutItem_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

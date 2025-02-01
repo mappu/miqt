@@ -46,52 +46,52 @@ func UnsafeNewQScriptClassPropertyIterator(h unsafe.Pointer) *QScriptClassProper
 }
 
 func (this *QScriptClassPropertyIterator) Object() *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptClassPropertyIterator_Object(this.h))
+	_goptr := newQScriptValue(C.QScriptClassPropertyIterator_object(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptClassPropertyIterator) HasNext() bool {
-	return (bool)(C.QScriptClassPropertyIterator_HasNext(this.h))
+	return (bool)(C.QScriptClassPropertyIterator_hasNext(this.h))
 }
 
 func (this *QScriptClassPropertyIterator) Next() {
-	C.QScriptClassPropertyIterator_Next(this.h)
+	C.QScriptClassPropertyIterator_next(this.h)
 }
 
 func (this *QScriptClassPropertyIterator) HasPrevious() bool {
-	return (bool)(C.QScriptClassPropertyIterator_HasPrevious(this.h))
+	return (bool)(C.QScriptClassPropertyIterator_hasPrevious(this.h))
 }
 
 func (this *QScriptClassPropertyIterator) Previous() {
-	C.QScriptClassPropertyIterator_Previous(this.h)
+	C.QScriptClassPropertyIterator_previous(this.h)
 }
 
 func (this *QScriptClassPropertyIterator) ToFront() {
-	C.QScriptClassPropertyIterator_ToFront(this.h)
+	C.QScriptClassPropertyIterator_toFront(this.h)
 }
 
 func (this *QScriptClassPropertyIterator) ToBack() {
-	C.QScriptClassPropertyIterator_ToBack(this.h)
+	C.QScriptClassPropertyIterator_toBack(this.h)
 }
 
 func (this *QScriptClassPropertyIterator) Name() *QScriptString {
-	_goptr := newQScriptString(C.QScriptClassPropertyIterator_Name(this.h))
+	_goptr := newQScriptString(C.QScriptClassPropertyIterator_name(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptClassPropertyIterator) Id() uint {
-	return (uint)(C.QScriptClassPropertyIterator_Id(this.h))
+	return (uint)(C.QScriptClassPropertyIterator_id(this.h))
 }
 
 func (this *QScriptClassPropertyIterator) Flags() QScriptValue__PropertyFlag {
-	return (QScriptValue__PropertyFlag)(C.QScriptClassPropertyIterator_Flags(this.h))
+	return (QScriptValue__PropertyFlag)(C.QScriptClassPropertyIterator_flags(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QScriptClassPropertyIterator) Delete() {
-	C.QScriptClassPropertyIterator_Delete(this.h)
+	C.QScriptClassPropertyIterator_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

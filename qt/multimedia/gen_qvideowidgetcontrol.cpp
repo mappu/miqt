@@ -13,11 +13,11 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QVideoWidgetControl_FullScreenChanged(intptr_t, bool);
-void miqt_exec_callback_QVideoWidgetControl_BrightnessChanged(intptr_t, int);
-void miqt_exec_callback_QVideoWidgetControl_ContrastChanged(intptr_t, int);
-void miqt_exec_callback_QVideoWidgetControl_HueChanged(intptr_t, int);
-void miqt_exec_callback_QVideoWidgetControl_SaturationChanged(intptr_t, int);
+void miqt_exec_callback_QVideoWidgetControl_fullScreenChanged(intptr_t, bool);
+void miqt_exec_callback_QVideoWidgetControl_brightnessChanged(intptr_t, int);
+void miqt_exec_callback_QVideoWidgetControl_contrastChanged(intptr_t, int);
+void miqt_exec_callback_QVideoWidgetControl_hueChanged(intptr_t, int);
+void miqt_exec_callback_QVideoWidgetControl_saturationChanged(intptr_t, int);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -26,15 +26,15 @@ void QVideoWidgetControl_virtbase(QVideoWidgetControl* src, QMediaControl** outp
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
 }
 
-QMetaObject* QVideoWidgetControl_MetaObject(const QVideoWidgetControl* self) {
+QMetaObject* QVideoWidgetControl_metaObject(const QVideoWidgetControl* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QVideoWidgetControl_Metacast(QVideoWidgetControl* self, const char* param1) {
+void* QVideoWidgetControl_metacast(QVideoWidgetControl* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QVideoWidgetControl_Tr(const char* s) {
+struct miqt_string QVideoWidgetControl_tr(const char* s) {
 	QString _ret = QVideoWidgetControl::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -45,7 +45,7 @@ struct miqt_string QVideoWidgetControl_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QVideoWidgetControl_TrUtf8(const char* s) {
+struct miqt_string QVideoWidgetControl_trUtf8(const char* s) {
 	QString _ret = QVideoWidgetControl::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -56,115 +56,115 @@ struct miqt_string QVideoWidgetControl_TrUtf8(const char* s) {
 	return _ms;
 }
 
-QWidget* QVideoWidgetControl_VideoWidget(QVideoWidgetControl* self) {
+QWidget* QVideoWidgetControl_videoWidget(QVideoWidgetControl* self) {
 	return self->videoWidget();
 }
 
-int QVideoWidgetControl_AspectRatioMode(const QVideoWidgetControl* self) {
+int QVideoWidgetControl_aspectRatioMode(const QVideoWidgetControl* self) {
 	Qt::AspectRatioMode _ret = self->aspectRatioMode();
 	return static_cast<int>(_ret);
 }
 
-void QVideoWidgetControl_SetAspectRatioMode(QVideoWidgetControl* self, int mode) {
+void QVideoWidgetControl_setAspectRatioMode(QVideoWidgetControl* self, int mode) {
 	self->setAspectRatioMode(static_cast<Qt::AspectRatioMode>(mode));
 }
 
-bool QVideoWidgetControl_IsFullScreen(const QVideoWidgetControl* self) {
+bool QVideoWidgetControl_isFullScreen(const QVideoWidgetControl* self) {
 	return self->isFullScreen();
 }
 
-void QVideoWidgetControl_SetFullScreen(QVideoWidgetControl* self, bool fullScreen) {
+void QVideoWidgetControl_setFullScreen(QVideoWidgetControl* self, bool fullScreen) {
 	self->setFullScreen(fullScreen);
 }
 
-int QVideoWidgetControl_Brightness(const QVideoWidgetControl* self) {
+int QVideoWidgetControl_brightness(const QVideoWidgetControl* self) {
 	return self->brightness();
 }
 
-void QVideoWidgetControl_SetBrightness(QVideoWidgetControl* self, int brightness) {
+void QVideoWidgetControl_setBrightness(QVideoWidgetControl* self, int brightness) {
 	self->setBrightness(static_cast<int>(brightness));
 }
 
-int QVideoWidgetControl_Contrast(const QVideoWidgetControl* self) {
+int QVideoWidgetControl_contrast(const QVideoWidgetControl* self) {
 	return self->contrast();
 }
 
-void QVideoWidgetControl_SetContrast(QVideoWidgetControl* self, int contrast) {
+void QVideoWidgetControl_setContrast(QVideoWidgetControl* self, int contrast) {
 	self->setContrast(static_cast<int>(contrast));
 }
 
-int QVideoWidgetControl_Hue(const QVideoWidgetControl* self) {
+int QVideoWidgetControl_hue(const QVideoWidgetControl* self) {
 	return self->hue();
 }
 
-void QVideoWidgetControl_SetHue(QVideoWidgetControl* self, int hue) {
+void QVideoWidgetControl_setHue(QVideoWidgetControl* self, int hue) {
 	self->setHue(static_cast<int>(hue));
 }
 
-int QVideoWidgetControl_Saturation(const QVideoWidgetControl* self) {
+int QVideoWidgetControl_saturation(const QVideoWidgetControl* self) {
 	return self->saturation();
 }
 
-void QVideoWidgetControl_SetSaturation(QVideoWidgetControl* self, int saturation) {
+void QVideoWidgetControl_setSaturation(QVideoWidgetControl* self, int saturation) {
 	self->setSaturation(static_cast<int>(saturation));
 }
 
-void QVideoWidgetControl_FullScreenChanged(QVideoWidgetControl* self, bool fullScreen) {
+void QVideoWidgetControl_fullScreenChanged(QVideoWidgetControl* self, bool fullScreen) {
 	self->fullScreenChanged(fullScreen);
 }
 
-void QVideoWidgetControl_connect_FullScreenChanged(QVideoWidgetControl* self, intptr_t slot) {
+void QVideoWidgetControl_connect_fullScreenChanged(QVideoWidgetControl* self, intptr_t slot) {
 	QVideoWidgetControl::connect(self, static_cast<void (QVideoWidgetControl::*)(bool)>(&QVideoWidgetControl::fullScreenChanged), self, [=](bool fullScreen) {
 		bool sigval1 = fullScreen;
-		miqt_exec_callback_QVideoWidgetControl_FullScreenChanged(slot, sigval1);
+		miqt_exec_callback_QVideoWidgetControl_fullScreenChanged(slot, sigval1);
 	});
 }
 
-void QVideoWidgetControl_BrightnessChanged(QVideoWidgetControl* self, int brightness) {
+void QVideoWidgetControl_brightnessChanged(QVideoWidgetControl* self, int brightness) {
 	self->brightnessChanged(static_cast<int>(brightness));
 }
 
-void QVideoWidgetControl_connect_BrightnessChanged(QVideoWidgetControl* self, intptr_t slot) {
+void QVideoWidgetControl_connect_brightnessChanged(QVideoWidgetControl* self, intptr_t slot) {
 	QVideoWidgetControl::connect(self, static_cast<void (QVideoWidgetControl::*)(int)>(&QVideoWidgetControl::brightnessChanged), self, [=](int brightness) {
 		int sigval1 = brightness;
-		miqt_exec_callback_QVideoWidgetControl_BrightnessChanged(slot, sigval1);
+		miqt_exec_callback_QVideoWidgetControl_brightnessChanged(slot, sigval1);
 	});
 }
 
-void QVideoWidgetControl_ContrastChanged(QVideoWidgetControl* self, int contrast) {
+void QVideoWidgetControl_contrastChanged(QVideoWidgetControl* self, int contrast) {
 	self->contrastChanged(static_cast<int>(contrast));
 }
 
-void QVideoWidgetControl_connect_ContrastChanged(QVideoWidgetControl* self, intptr_t slot) {
+void QVideoWidgetControl_connect_contrastChanged(QVideoWidgetControl* self, intptr_t slot) {
 	QVideoWidgetControl::connect(self, static_cast<void (QVideoWidgetControl::*)(int)>(&QVideoWidgetControl::contrastChanged), self, [=](int contrast) {
 		int sigval1 = contrast;
-		miqt_exec_callback_QVideoWidgetControl_ContrastChanged(slot, sigval1);
+		miqt_exec_callback_QVideoWidgetControl_contrastChanged(slot, sigval1);
 	});
 }
 
-void QVideoWidgetControl_HueChanged(QVideoWidgetControl* self, int hue) {
+void QVideoWidgetControl_hueChanged(QVideoWidgetControl* self, int hue) {
 	self->hueChanged(static_cast<int>(hue));
 }
 
-void QVideoWidgetControl_connect_HueChanged(QVideoWidgetControl* self, intptr_t slot) {
+void QVideoWidgetControl_connect_hueChanged(QVideoWidgetControl* self, intptr_t slot) {
 	QVideoWidgetControl::connect(self, static_cast<void (QVideoWidgetControl::*)(int)>(&QVideoWidgetControl::hueChanged), self, [=](int hue) {
 		int sigval1 = hue;
-		miqt_exec_callback_QVideoWidgetControl_HueChanged(slot, sigval1);
+		miqt_exec_callback_QVideoWidgetControl_hueChanged(slot, sigval1);
 	});
 }
 
-void QVideoWidgetControl_SaturationChanged(QVideoWidgetControl* self, int saturation) {
+void QVideoWidgetControl_saturationChanged(QVideoWidgetControl* self, int saturation) {
 	self->saturationChanged(static_cast<int>(saturation));
 }
 
-void QVideoWidgetControl_connect_SaturationChanged(QVideoWidgetControl* self, intptr_t slot) {
+void QVideoWidgetControl_connect_saturationChanged(QVideoWidgetControl* self, intptr_t slot) {
 	QVideoWidgetControl::connect(self, static_cast<void (QVideoWidgetControl::*)(int)>(&QVideoWidgetControl::saturationChanged), self, [=](int saturation) {
 		int sigval1 = saturation;
-		miqt_exec_callback_QVideoWidgetControl_SaturationChanged(slot, sigval1);
+		miqt_exec_callback_QVideoWidgetControl_saturationChanged(slot, sigval1);
 	});
 }
 
-struct miqt_string QVideoWidgetControl_Tr2(const char* s, const char* c) {
+struct miqt_string QVideoWidgetControl_tr2(const char* s, const char* c) {
 	QString _ret = QVideoWidgetControl::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -175,7 +175,7 @@ struct miqt_string QVideoWidgetControl_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QVideoWidgetControl_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QVideoWidgetControl_tr3(const char* s, const char* c, int n) {
 	QString _ret = QVideoWidgetControl::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -186,7 +186,7 @@ struct miqt_string QVideoWidgetControl_Tr3(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-struct miqt_string QVideoWidgetControl_TrUtf82(const char* s, const char* c) {
+struct miqt_string QVideoWidgetControl_trUtf82(const char* s, const char* c) {
 	QString _ret = QVideoWidgetControl::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -197,7 +197,7 @@ struct miqt_string QVideoWidgetControl_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QVideoWidgetControl_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QVideoWidgetControl_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QVideoWidgetControl::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -208,7 +208,7 @@ struct miqt_string QVideoWidgetControl_TrUtf83(const char* s, const char* c, int
 	return _ms;
 }
 
-void QVideoWidgetControl_Delete(QVideoWidgetControl* self) {
+void QVideoWidgetControl_delete(QVideoWidgetControl* self) {
 	delete self;
 }
 

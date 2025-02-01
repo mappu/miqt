@@ -85,129 +85,129 @@ func NewQAbstractSlider2() *QAbstractSlider {
 }
 
 func (this *QAbstractSlider) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QAbstractSlider_MetaObject(this.h))
+	return newQMetaObject(C.QAbstractSlider_metaObject(this.h))
 }
 
 func (this *QAbstractSlider) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAbstractSlider_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAbstractSlider_metacast(this.h, param1_Cstring))
 }
 
 func QAbstractSlider_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractSlider_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractSlider_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractSlider) Orientation() Orientation {
-	return (Orientation)(C.QAbstractSlider_Orientation(this.h))
+	return (Orientation)(C.QAbstractSlider_orientation(this.h))
 }
 
 func (this *QAbstractSlider) SetMinimum(minimum int) {
-	C.QAbstractSlider_SetMinimum(this.h, (C.int)(minimum))
+	C.QAbstractSlider_setMinimum(this.h, (C.int)(minimum))
 }
 
 func (this *QAbstractSlider) Minimum() int {
-	return (int)(C.QAbstractSlider_Minimum(this.h))
+	return (int)(C.QAbstractSlider_minimum(this.h))
 }
 
 func (this *QAbstractSlider) SetMaximum(maximum int) {
-	C.QAbstractSlider_SetMaximum(this.h, (C.int)(maximum))
+	C.QAbstractSlider_setMaximum(this.h, (C.int)(maximum))
 }
 
 func (this *QAbstractSlider) Maximum() int {
-	return (int)(C.QAbstractSlider_Maximum(this.h))
+	return (int)(C.QAbstractSlider_maximum(this.h))
 }
 
 func (this *QAbstractSlider) SetSingleStep(singleStep int) {
-	C.QAbstractSlider_SetSingleStep(this.h, (C.int)(singleStep))
+	C.QAbstractSlider_setSingleStep(this.h, (C.int)(singleStep))
 }
 
 func (this *QAbstractSlider) SingleStep() int {
-	return (int)(C.QAbstractSlider_SingleStep(this.h))
+	return (int)(C.QAbstractSlider_singleStep(this.h))
 }
 
 func (this *QAbstractSlider) SetPageStep(pageStep int) {
-	C.QAbstractSlider_SetPageStep(this.h, (C.int)(pageStep))
+	C.QAbstractSlider_setPageStep(this.h, (C.int)(pageStep))
 }
 
 func (this *QAbstractSlider) PageStep() int {
-	return (int)(C.QAbstractSlider_PageStep(this.h))
+	return (int)(C.QAbstractSlider_pageStep(this.h))
 }
 
 func (this *QAbstractSlider) SetTracking(enable bool) {
-	C.QAbstractSlider_SetTracking(this.h, (C.bool)(enable))
+	C.QAbstractSlider_setTracking(this.h, (C.bool)(enable))
 }
 
 func (this *QAbstractSlider) HasTracking() bool {
-	return (bool)(C.QAbstractSlider_HasTracking(this.h))
+	return (bool)(C.QAbstractSlider_hasTracking(this.h))
 }
 
 func (this *QAbstractSlider) SetSliderDown(sliderDown bool) {
-	C.QAbstractSlider_SetSliderDown(this.h, (C.bool)(sliderDown))
+	C.QAbstractSlider_setSliderDown(this.h, (C.bool)(sliderDown))
 }
 
 func (this *QAbstractSlider) IsSliderDown() bool {
-	return (bool)(C.QAbstractSlider_IsSliderDown(this.h))
+	return (bool)(C.QAbstractSlider_isSliderDown(this.h))
 }
 
 func (this *QAbstractSlider) SetSliderPosition(sliderPosition int) {
-	C.QAbstractSlider_SetSliderPosition(this.h, (C.int)(sliderPosition))
+	C.QAbstractSlider_setSliderPosition(this.h, (C.int)(sliderPosition))
 }
 
 func (this *QAbstractSlider) SliderPosition() int {
-	return (int)(C.QAbstractSlider_SliderPosition(this.h))
+	return (int)(C.QAbstractSlider_sliderPosition(this.h))
 }
 
 func (this *QAbstractSlider) SetInvertedAppearance(invertedAppearance bool) {
-	C.QAbstractSlider_SetInvertedAppearance(this.h, (C.bool)(invertedAppearance))
+	C.QAbstractSlider_setInvertedAppearance(this.h, (C.bool)(invertedAppearance))
 }
 
 func (this *QAbstractSlider) InvertedAppearance() bool {
-	return (bool)(C.QAbstractSlider_InvertedAppearance(this.h))
+	return (bool)(C.QAbstractSlider_invertedAppearance(this.h))
 }
 
 func (this *QAbstractSlider) SetInvertedControls(invertedControls bool) {
-	C.QAbstractSlider_SetInvertedControls(this.h, (C.bool)(invertedControls))
+	C.QAbstractSlider_setInvertedControls(this.h, (C.bool)(invertedControls))
 }
 
 func (this *QAbstractSlider) InvertedControls() bool {
-	return (bool)(C.QAbstractSlider_InvertedControls(this.h))
+	return (bool)(C.QAbstractSlider_invertedControls(this.h))
 }
 
 func (this *QAbstractSlider) Value() int {
-	return (int)(C.QAbstractSlider_Value(this.h))
+	return (int)(C.QAbstractSlider_value(this.h))
 }
 
 func (this *QAbstractSlider) TriggerAction(action QAbstractSlider__SliderAction) {
-	C.QAbstractSlider_TriggerAction(this.h, (C.int)(action))
+	C.QAbstractSlider_triggerAction(this.h, (C.int)(action))
 }
 
 func (this *QAbstractSlider) SetValue(value int) {
-	C.QAbstractSlider_SetValue(this.h, (C.int)(value))
+	C.QAbstractSlider_setValue(this.h, (C.int)(value))
 }
 
 func (this *QAbstractSlider) SetOrientation(orientation Orientation) {
-	C.QAbstractSlider_SetOrientation(this.h, (C.int)(orientation))
+	C.QAbstractSlider_setOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QAbstractSlider) SetRange(min int, max int) {
-	C.QAbstractSlider_SetRange(this.h, (C.int)(min), (C.int)(max))
+	C.QAbstractSlider_setRange(this.h, (C.int)(min), (C.int)(max))
 }
 
 func (this *QAbstractSlider) ValueChanged(value int) {
-	C.QAbstractSlider_ValueChanged(this.h, (C.int)(value))
+	C.QAbstractSlider_valueChanged(this.h, (C.int)(value))
 }
 func (this *QAbstractSlider) OnValueChanged(slot func(value int)) {
-	C.QAbstractSlider_connect_ValueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractSlider_connect_valueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractSlider_ValueChanged
-func miqt_exec_callback_QAbstractSlider_ValueChanged(cb C.intptr_t, value C.int) {
+//export miqt_exec_callback_QAbstractSlider_valueChanged
+func miqt_exec_callback_QAbstractSlider_valueChanged(cb C.intptr_t, value C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(value int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -220,14 +220,14 @@ func miqt_exec_callback_QAbstractSlider_ValueChanged(cb C.intptr_t, value C.int)
 }
 
 func (this *QAbstractSlider) SliderPressed() {
-	C.QAbstractSlider_SliderPressed(this.h)
+	C.QAbstractSlider_sliderPressed(this.h)
 }
 func (this *QAbstractSlider) OnSliderPressed(slot func()) {
-	C.QAbstractSlider_connect_SliderPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractSlider_connect_sliderPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractSlider_SliderPressed
-func miqt_exec_callback_QAbstractSlider_SliderPressed(cb C.intptr_t) {
+//export miqt_exec_callback_QAbstractSlider_sliderPressed
+func miqt_exec_callback_QAbstractSlider_sliderPressed(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -237,14 +237,14 @@ func miqt_exec_callback_QAbstractSlider_SliderPressed(cb C.intptr_t) {
 }
 
 func (this *QAbstractSlider) SliderMoved(position int) {
-	C.QAbstractSlider_SliderMoved(this.h, (C.int)(position))
+	C.QAbstractSlider_sliderMoved(this.h, (C.int)(position))
 }
 func (this *QAbstractSlider) OnSliderMoved(slot func(position int)) {
-	C.QAbstractSlider_connect_SliderMoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractSlider_connect_sliderMoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractSlider_SliderMoved
-func miqt_exec_callback_QAbstractSlider_SliderMoved(cb C.intptr_t, position C.int) {
+//export miqt_exec_callback_QAbstractSlider_sliderMoved
+func miqt_exec_callback_QAbstractSlider_sliderMoved(cb C.intptr_t, position C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(position int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -257,14 +257,14 @@ func miqt_exec_callback_QAbstractSlider_SliderMoved(cb C.intptr_t, position C.in
 }
 
 func (this *QAbstractSlider) SliderReleased() {
-	C.QAbstractSlider_SliderReleased(this.h)
+	C.QAbstractSlider_sliderReleased(this.h)
 }
 func (this *QAbstractSlider) OnSliderReleased(slot func()) {
-	C.QAbstractSlider_connect_SliderReleased(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractSlider_connect_sliderReleased(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractSlider_SliderReleased
-func miqt_exec_callback_QAbstractSlider_SliderReleased(cb C.intptr_t) {
+//export miqt_exec_callback_QAbstractSlider_sliderReleased
+func miqt_exec_callback_QAbstractSlider_sliderReleased(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -274,14 +274,14 @@ func miqt_exec_callback_QAbstractSlider_SliderReleased(cb C.intptr_t) {
 }
 
 func (this *QAbstractSlider) RangeChanged(min int, max int) {
-	C.QAbstractSlider_RangeChanged(this.h, (C.int)(min), (C.int)(max))
+	C.QAbstractSlider_rangeChanged(this.h, (C.int)(min), (C.int)(max))
 }
 func (this *QAbstractSlider) OnRangeChanged(slot func(min int, max int)) {
-	C.QAbstractSlider_connect_RangeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractSlider_connect_rangeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractSlider_RangeChanged
-func miqt_exec_callback_QAbstractSlider_RangeChanged(cb C.intptr_t, min C.int, max C.int) {
+//export miqt_exec_callback_QAbstractSlider_rangeChanged
+func miqt_exec_callback_QAbstractSlider_rangeChanged(cb C.intptr_t, min C.int, max C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(min int, max int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -296,14 +296,14 @@ func miqt_exec_callback_QAbstractSlider_RangeChanged(cb C.intptr_t, min C.int, m
 }
 
 func (this *QAbstractSlider) ActionTriggered(action int) {
-	C.QAbstractSlider_ActionTriggered(this.h, (C.int)(action))
+	C.QAbstractSlider_actionTriggered(this.h, (C.int)(action))
 }
 func (this *QAbstractSlider) OnActionTriggered(slot func(action int)) {
-	C.QAbstractSlider_connect_ActionTriggered(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractSlider_connect_actionTriggered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractSlider_ActionTriggered
-func miqt_exec_callback_QAbstractSlider_ActionTriggered(cb C.intptr_t, action C.int) {
+//export miqt_exec_callback_QAbstractSlider_actionTriggered
+func miqt_exec_callback_QAbstractSlider_actionTriggered(cb C.intptr_t, action C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(action int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -320,7 +320,7 @@ func QAbstractSlider_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractSlider_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractSlider_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -331,7 +331,7 @@ func QAbstractSlider_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractSlider_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractSlider_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -339,18 +339,18 @@ func QAbstractSlider_Tr3(s string, c string, n int) string {
 
 func (this *QAbstractSlider) callVirtualBase_Event(e *QEvent) bool {
 
-	return (bool)(C.QAbstractSlider_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+	return (bool)(C.QAbstractSlider_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
 }
-func (this *QAbstractSlider) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	ok := C.QAbstractSlider_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) Onevent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	ok := C.QAbstractSlider_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_Event
-func miqt_exec_callback_QAbstractSlider_Event(self *C.QAbstractSlider, cb C.intptr_t, e *C.QEvent) C.bool {
+//export miqt_exec_callback_QAbstractSlider_event
+func miqt_exec_callback_QAbstractSlider_event(self *C.QAbstractSlider, cb C.intptr_t, e *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -367,18 +367,18 @@ func miqt_exec_callback_QAbstractSlider_Event(self *C.QAbstractSlider, cb C.intp
 
 func (this *QAbstractSlider) callVirtualBase_SliderChange(change QAbstractSlider__SliderChange) {
 
-	C.QAbstractSlider_virtualbase_SliderChange(unsafe.Pointer(this.h), (C.int)(change))
+	C.QAbstractSlider_virtualbase_sliderChange(unsafe.Pointer(this.h), (C.int)(change))
 
 }
-func (this *QAbstractSlider) OnSliderChange(slot func(super func(change QAbstractSlider__SliderChange), change QAbstractSlider__SliderChange)) {
-	ok := C.QAbstractSlider_override_virtual_SliderChange(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnsliderChange(slot func(super func(change QAbstractSlider__SliderChange), change QAbstractSlider__SliderChange)) {
+	ok := C.QAbstractSlider_override_virtual_sliderChange(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_SliderChange
-func miqt_exec_callback_QAbstractSlider_SliderChange(self *C.QAbstractSlider, cb C.intptr_t, change C.int) {
+//export miqt_exec_callback_QAbstractSlider_sliderChange
+func miqt_exec_callback_QAbstractSlider_sliderChange(self *C.QAbstractSlider, cb C.intptr_t, change C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(change QAbstractSlider__SliderChange), change QAbstractSlider__SliderChange))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -393,18 +393,18 @@ func miqt_exec_callback_QAbstractSlider_SliderChange(self *C.QAbstractSlider, cb
 
 func (this *QAbstractSlider) callVirtualBase_KeyPressEvent(ev *QKeyEvent) {
 
-	C.QAbstractSlider_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), ev.cPointer())
+	C.QAbstractSlider_virtualbase_keyPressEvent(unsafe.Pointer(this.h), ev.cPointer())
 
 }
-func (this *QAbstractSlider) OnKeyPressEvent(slot func(super func(ev *QKeyEvent), ev *QKeyEvent)) {
-	ok := C.QAbstractSlider_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnkeyPressEvent(slot func(super func(ev *QKeyEvent), ev *QKeyEvent)) {
+	ok := C.QAbstractSlider_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_KeyPressEvent
-func miqt_exec_callback_QAbstractSlider_KeyPressEvent(self *C.QAbstractSlider, cb C.intptr_t, ev *C.QKeyEvent) {
+//export miqt_exec_callback_QAbstractSlider_keyPressEvent
+func miqt_exec_callback_QAbstractSlider_keyPressEvent(self *C.QAbstractSlider, cb C.intptr_t, ev *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QKeyEvent), ev *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -419,18 +419,18 @@ func miqt_exec_callback_QAbstractSlider_KeyPressEvent(self *C.QAbstractSlider, c
 
 func (this *QAbstractSlider) callVirtualBase_TimerEvent(param1 *QTimerEvent) {
 
-	C.QAbstractSlider_virtualbase_TimerEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractSlider_virtualbase_timerEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractSlider) OnTimerEvent(slot func(super func(param1 *QTimerEvent), param1 *QTimerEvent)) {
-	ok := C.QAbstractSlider_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OntimerEvent(slot func(super func(param1 *QTimerEvent), param1 *QTimerEvent)) {
+	ok := C.QAbstractSlider_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_TimerEvent
-func miqt_exec_callback_QAbstractSlider_TimerEvent(self *C.QAbstractSlider, cb C.intptr_t, param1 *C.QTimerEvent) {
+//export miqt_exec_callback_QAbstractSlider_timerEvent
+func miqt_exec_callback_QAbstractSlider_timerEvent(self *C.QAbstractSlider, cb C.intptr_t, param1 *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QTimerEvent), param1 *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -445,18 +445,18 @@ func miqt_exec_callback_QAbstractSlider_TimerEvent(self *C.QAbstractSlider, cb C
 
 func (this *QAbstractSlider) callVirtualBase_WheelEvent(e *QWheelEvent) {
 
-	C.QAbstractSlider_virtualbase_WheelEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QAbstractSlider_virtualbase_wheelEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QAbstractSlider) OnWheelEvent(slot func(super func(e *QWheelEvent), e *QWheelEvent)) {
-	ok := C.QAbstractSlider_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnwheelEvent(slot func(super func(e *QWheelEvent), e *QWheelEvent)) {
+	ok := C.QAbstractSlider_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_WheelEvent
-func miqt_exec_callback_QAbstractSlider_WheelEvent(self *C.QAbstractSlider, cb C.intptr_t, e *C.QWheelEvent) {
+//export miqt_exec_callback_QAbstractSlider_wheelEvent
+func miqt_exec_callback_QAbstractSlider_wheelEvent(self *C.QAbstractSlider, cb C.intptr_t, e *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QWheelEvent), e *QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -471,18 +471,18 @@ func miqt_exec_callback_QAbstractSlider_WheelEvent(self *C.QAbstractSlider, cb C
 
 func (this *QAbstractSlider) callVirtualBase_ChangeEvent(e *QEvent) {
 
-	C.QAbstractSlider_virtualbase_ChangeEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QAbstractSlider_virtualbase_changeEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QAbstractSlider) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
-	ok := C.QAbstractSlider_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnchangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	ok := C.QAbstractSlider_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_ChangeEvent
-func miqt_exec_callback_QAbstractSlider_ChangeEvent(self *C.QAbstractSlider, cb C.intptr_t, e *C.QEvent) {
+//export miqt_exec_callback_QAbstractSlider_changeEvent
+func miqt_exec_callback_QAbstractSlider_changeEvent(self *C.QAbstractSlider, cb C.intptr_t, e *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent), e *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -497,18 +497,18 @@ func miqt_exec_callback_QAbstractSlider_ChangeEvent(self *C.QAbstractSlider, cb 
 
 func (this *QAbstractSlider) callVirtualBase_DevType() int {
 
-	return (int)(C.QAbstractSlider_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QAbstractSlider_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractSlider) OnDevType(slot func(super func() int) int) {
-	ok := C.QAbstractSlider_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OndevType(slot func(super func() int) int) {
+	ok := C.QAbstractSlider_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_DevType
-func miqt_exec_callback_QAbstractSlider_DevType(self *C.QAbstractSlider, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QAbstractSlider_devType
+func miqt_exec_callback_QAbstractSlider_devType(self *C.QAbstractSlider, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -522,18 +522,18 @@ func miqt_exec_callback_QAbstractSlider_DevType(self *C.QAbstractSlider, cb C.in
 
 func (this *QAbstractSlider) callVirtualBase_SetVisible(visible bool) {
 
-	C.QAbstractSlider_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QAbstractSlider_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QAbstractSlider) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QAbstractSlider_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QAbstractSlider_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_SetVisible
-func miqt_exec_callback_QAbstractSlider_SetVisible(self *C.QAbstractSlider, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QAbstractSlider_setVisible
+func miqt_exec_callback_QAbstractSlider_setVisible(self *C.QAbstractSlider, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -548,20 +548,20 @@ func miqt_exec_callback_QAbstractSlider_SetVisible(self *C.QAbstractSlider, cb C
 
 func (this *QAbstractSlider) callVirtualBase_SizeHint() *QSize {
 
-	_goptr := newQSize(C.QAbstractSlider_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QAbstractSlider_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QAbstractSlider) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QAbstractSlider_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnsizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QAbstractSlider_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_SizeHint
-func miqt_exec_callback_QAbstractSlider_SizeHint(self *C.QAbstractSlider, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QAbstractSlider_sizeHint
+func miqt_exec_callback_QAbstractSlider_sizeHint(self *C.QAbstractSlider, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -575,20 +575,20 @@ func miqt_exec_callback_QAbstractSlider_SizeHint(self *C.QAbstractSlider, cb C.i
 
 func (this *QAbstractSlider) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_goptr := newQSize(C.QAbstractSlider_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QAbstractSlider_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QAbstractSlider) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QAbstractSlider_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QAbstractSlider_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_MinimumSizeHint
-func miqt_exec_callback_QAbstractSlider_MinimumSizeHint(self *C.QAbstractSlider, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QAbstractSlider_minimumSizeHint
+func miqt_exec_callback_QAbstractSlider_minimumSizeHint(self *C.QAbstractSlider, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -602,18 +602,18 @@ func miqt_exec_callback_QAbstractSlider_MinimumSizeHint(self *C.QAbstractSlider,
 
 func (this *QAbstractSlider) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QAbstractSlider_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QAbstractSlider_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QAbstractSlider) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QAbstractSlider_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QAbstractSlider_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_HeightForWidth
-func miqt_exec_callback_QAbstractSlider_HeightForWidth(self *C.QAbstractSlider, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QAbstractSlider_heightForWidth
+func miqt_exec_callback_QAbstractSlider_heightForWidth(self *C.QAbstractSlider, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -630,18 +630,18 @@ func miqt_exec_callback_QAbstractSlider_HeightForWidth(self *C.QAbstractSlider, 
 
 func (this *QAbstractSlider) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QAbstractSlider_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QAbstractSlider_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractSlider) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QAbstractSlider_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QAbstractSlider_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_HasHeightForWidth
-func miqt_exec_callback_QAbstractSlider_HasHeightForWidth(self *C.QAbstractSlider, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QAbstractSlider_hasHeightForWidth
+func miqt_exec_callback_QAbstractSlider_hasHeightForWidth(self *C.QAbstractSlider, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -655,18 +655,18 @@ func miqt_exec_callback_QAbstractSlider_HasHeightForWidth(self *C.QAbstractSlide
 
 func (this *QAbstractSlider) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return newQPaintEngine(C.QAbstractSlider_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+	return newQPaintEngine(C.QAbstractSlider_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractSlider) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	ok := C.QAbstractSlider_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QAbstractSlider_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_PaintEngine
-func miqt_exec_callback_QAbstractSlider_PaintEngine(self *C.QAbstractSlider, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QAbstractSlider_paintEngine
+func miqt_exec_callback_QAbstractSlider_paintEngine(self *C.QAbstractSlider, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -680,18 +680,18 @@ func miqt_exec_callback_QAbstractSlider_PaintEngine(self *C.QAbstractSlider, cb 
 
 func (this *QAbstractSlider) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 
-	C.QAbstractSlider_virtualbase_MousePressEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QAbstractSlider_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnmousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QAbstractSlider_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_MousePressEvent
-func miqt_exec_callback_QAbstractSlider_MousePressEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QAbstractSlider_mousePressEvent
+func miqt_exec_callback_QAbstractSlider_mousePressEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -706,18 +706,18 @@ func miqt_exec_callback_QAbstractSlider_MousePressEvent(self *C.QAbstractSlider,
 
 func (this *QAbstractSlider) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
 
-	C.QAbstractSlider_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QAbstractSlider_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnmouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QAbstractSlider_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_MouseReleaseEvent
-func miqt_exec_callback_QAbstractSlider_MouseReleaseEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QAbstractSlider_mouseReleaseEvent
+func miqt_exec_callback_QAbstractSlider_mouseReleaseEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -732,18 +732,18 @@ func miqt_exec_callback_QAbstractSlider_MouseReleaseEvent(self *C.QAbstractSlide
 
 func (this *QAbstractSlider) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
 
-	C.QAbstractSlider_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QAbstractSlider_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QAbstractSlider_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_MouseDoubleClickEvent
-func miqt_exec_callback_QAbstractSlider_MouseDoubleClickEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QAbstractSlider_mouseDoubleClickEvent
+func miqt_exec_callback_QAbstractSlider_mouseDoubleClickEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -758,18 +758,18 @@ func miqt_exec_callback_QAbstractSlider_MouseDoubleClickEvent(self *C.QAbstractS
 
 func (this *QAbstractSlider) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 
-	C.QAbstractSlider_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QAbstractSlider_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnmouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QAbstractSlider_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_MouseMoveEvent
-func miqt_exec_callback_QAbstractSlider_MouseMoveEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QAbstractSlider_mouseMoveEvent
+func miqt_exec_callback_QAbstractSlider_mouseMoveEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -784,18 +784,18 @@ func miqt_exec_callback_QAbstractSlider_MouseMoveEvent(self *C.QAbstractSlider, 
 
 func (this *QAbstractSlider) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
-	C.QAbstractSlider_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QAbstractSlider_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QAbstractSlider_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_KeyReleaseEvent
-func miqt_exec_callback_QAbstractSlider_KeyReleaseEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QAbstractSlider_keyReleaseEvent
+func miqt_exec_callback_QAbstractSlider_keyReleaseEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -810,18 +810,18 @@ func miqt_exec_callback_QAbstractSlider_KeyReleaseEvent(self *C.QAbstractSlider,
 
 func (this *QAbstractSlider) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
-	C.QAbstractSlider_virtualbase_FocusInEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QAbstractSlider_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QAbstractSlider_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_FocusInEvent
-func miqt_exec_callback_QAbstractSlider_FocusInEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QAbstractSlider_focusInEvent
+func miqt_exec_callback_QAbstractSlider_focusInEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -836,18 +836,18 @@ func miqt_exec_callback_QAbstractSlider_FocusInEvent(self *C.QAbstractSlider, cb
 
 func (this *QAbstractSlider) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
-	C.QAbstractSlider_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QAbstractSlider_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QAbstractSlider_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_FocusOutEvent
-func miqt_exec_callback_QAbstractSlider_FocusOutEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QAbstractSlider_focusOutEvent
+func miqt_exec_callback_QAbstractSlider_focusOutEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -862,18 +862,18 @@ func miqt_exec_callback_QAbstractSlider_FocusOutEvent(self *C.QAbstractSlider, c
 
 func (this *QAbstractSlider) callVirtualBase_EnterEvent(event *QEnterEvent) {
 
-	C.QAbstractSlider_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
-	ok := C.QAbstractSlider_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnenterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+	ok := C.QAbstractSlider_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_EnterEvent
-func miqt_exec_callback_QAbstractSlider_EnterEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QEnterEvent) {
+//export miqt_exec_callback_QAbstractSlider_enterEvent
+func miqt_exec_callback_QAbstractSlider_enterEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEnterEvent), event *QEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -888,18 +888,18 @@ func miqt_exec_callback_QAbstractSlider_EnterEvent(self *C.QAbstractSlider, cb C
 
 func (this *QAbstractSlider) callVirtualBase_LeaveEvent(event *QEvent) {
 
-	C.QAbstractSlider_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QAbstractSlider_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QAbstractSlider_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_LeaveEvent
-func miqt_exec_callback_QAbstractSlider_LeaveEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QAbstractSlider_leaveEvent
+func miqt_exec_callback_QAbstractSlider_leaveEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -914,18 +914,18 @@ func miqt_exec_callback_QAbstractSlider_LeaveEvent(self *C.QAbstractSlider, cb C
 
 func (this *QAbstractSlider) callVirtualBase_PaintEvent(event *QPaintEvent) {
 
-	C.QAbstractSlider_virtualbase_PaintEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnPaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
-	ok := C.QAbstractSlider_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnpaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
+	ok := C.QAbstractSlider_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_PaintEvent
-func miqt_exec_callback_QAbstractSlider_PaintEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QPaintEvent) {
+//export miqt_exec_callback_QAbstractSlider_paintEvent
+func miqt_exec_callback_QAbstractSlider_paintEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QPaintEvent), event *QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -940,18 +940,18 @@ func miqt_exec_callback_QAbstractSlider_PaintEvent(self *C.QAbstractSlider, cb C
 
 func (this *QAbstractSlider) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
-	C.QAbstractSlider_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
-	ok := C.QAbstractSlider_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QAbstractSlider_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_MoveEvent
-func miqt_exec_callback_QAbstractSlider_MoveEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QAbstractSlider_moveEvent
+func miqt_exec_callback_QAbstractSlider_moveEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -966,18 +966,18 @@ func miqt_exec_callback_QAbstractSlider_MoveEvent(self *C.QAbstractSlider, cb C.
 
 func (this *QAbstractSlider) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 
-	C.QAbstractSlider_virtualbase_ResizeEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
-	ok := C.QAbstractSlider_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnresizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+	ok := C.QAbstractSlider_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_ResizeEvent
-func miqt_exec_callback_QAbstractSlider_ResizeEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QResizeEvent) {
+//export miqt_exec_callback_QAbstractSlider_resizeEvent
+func miqt_exec_callback_QAbstractSlider_resizeEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QResizeEvent), event *QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -992,18 +992,18 @@ func miqt_exec_callback_QAbstractSlider_ResizeEvent(self *C.QAbstractSlider, cb 
 
 func (this *QAbstractSlider) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
-	C.QAbstractSlider_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
-	ok := C.QAbstractSlider_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QAbstractSlider_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_CloseEvent
-func miqt_exec_callback_QAbstractSlider_CloseEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QAbstractSlider_closeEvent
+func miqt_exec_callback_QAbstractSlider_closeEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1018,18 +1018,18 @@ func miqt_exec_callback_QAbstractSlider_CloseEvent(self *C.QAbstractSlider, cb C
 
 func (this *QAbstractSlider) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
 
-	C.QAbstractSlider_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
-	ok := C.QAbstractSlider_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OncontextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+	ok := C.QAbstractSlider_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_ContextMenuEvent
-func miqt_exec_callback_QAbstractSlider_ContextMenuEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QContextMenuEvent) {
+//export miqt_exec_callback_QAbstractSlider_contextMenuEvent
+func miqt_exec_callback_QAbstractSlider_contextMenuEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QContextMenuEvent), event *QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1044,18 +1044,18 @@ func miqt_exec_callback_QAbstractSlider_ContextMenuEvent(self *C.QAbstractSlider
 
 func (this *QAbstractSlider) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
-	C.QAbstractSlider_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
-	ok := C.QAbstractSlider_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QAbstractSlider_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_TabletEvent
-func miqt_exec_callback_QAbstractSlider_TabletEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QAbstractSlider_tabletEvent
+func miqt_exec_callback_QAbstractSlider_tabletEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1070,18 +1070,18 @@ func miqt_exec_callback_QAbstractSlider_TabletEvent(self *C.QAbstractSlider, cb 
 
 func (this *QAbstractSlider) callVirtualBase_ActionEvent(event *QActionEvent) {
 
-	C.QAbstractSlider_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
-	ok := C.QAbstractSlider_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QAbstractSlider_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_ActionEvent
-func miqt_exec_callback_QAbstractSlider_ActionEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QAbstractSlider_actionEvent
+func miqt_exec_callback_QAbstractSlider_actionEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1096,18 +1096,18 @@ func miqt_exec_callback_QAbstractSlider_ActionEvent(self *C.QAbstractSlider, cb 
 
 func (this *QAbstractSlider) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
 
-	C.QAbstractSlider_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
-	ok := C.QAbstractSlider_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	ok := C.QAbstractSlider_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_DragEnterEvent
-func miqt_exec_callback_QAbstractSlider_DragEnterEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QDragEnterEvent) {
+//export miqt_exec_callback_QAbstractSlider_dragEnterEvent
+func miqt_exec_callback_QAbstractSlider_dragEnterEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragEnterEvent), event *QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1122,18 +1122,18 @@ func miqt_exec_callback_QAbstractSlider_DragEnterEvent(self *C.QAbstractSlider, 
 
 func (this *QAbstractSlider) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 
-	C.QAbstractSlider_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
-	ok := C.QAbstractSlider_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	ok := C.QAbstractSlider_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_DragMoveEvent
-func miqt_exec_callback_QAbstractSlider_DragMoveEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QDragMoveEvent) {
+//export miqt_exec_callback_QAbstractSlider_dragMoveEvent
+func miqt_exec_callback_QAbstractSlider_dragMoveEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragMoveEvent), event *QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1148,18 +1148,18 @@ func miqt_exec_callback_QAbstractSlider_DragMoveEvent(self *C.QAbstractSlider, c
 
 func (this *QAbstractSlider) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
 
-	C.QAbstractSlider_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
-	ok := C.QAbstractSlider_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	ok := C.QAbstractSlider_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_DragLeaveEvent
-func miqt_exec_callback_QAbstractSlider_DragLeaveEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QAbstractSlider_dragLeaveEvent
+func miqt_exec_callback_QAbstractSlider_dragLeaveEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1174,18 +1174,18 @@ func miqt_exec_callback_QAbstractSlider_DragLeaveEvent(self *C.QAbstractSlider, 
 
 func (this *QAbstractSlider) callVirtualBase_DropEvent(event *QDropEvent) {
 
-	C.QAbstractSlider_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
-	ok := C.QAbstractSlider_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	ok := C.QAbstractSlider_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_DropEvent
-func miqt_exec_callback_QAbstractSlider_DropEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QDropEvent) {
+//export miqt_exec_callback_QAbstractSlider_dropEvent
+func miqt_exec_callback_QAbstractSlider_dropEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1200,18 +1200,18 @@ func miqt_exec_callback_QAbstractSlider_DropEvent(self *C.QAbstractSlider, cb C.
 
 func (this *QAbstractSlider) callVirtualBase_ShowEvent(event *QShowEvent) {
 
-	C.QAbstractSlider_virtualbase_ShowEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
-	ok := C.QAbstractSlider_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnshowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	ok := C.QAbstractSlider_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_ShowEvent
-func miqt_exec_callback_QAbstractSlider_ShowEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QShowEvent) {
+//export miqt_exec_callback_QAbstractSlider_showEvent
+func miqt_exec_callback_QAbstractSlider_showEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QShowEvent), event *QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1226,18 +1226,18 @@ func miqt_exec_callback_QAbstractSlider_ShowEvent(self *C.QAbstractSlider, cb C.
 
 func (this *QAbstractSlider) callVirtualBase_HideEvent(event *QHideEvent) {
 
-	C.QAbstractSlider_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
-	ok := C.QAbstractSlider_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QAbstractSlider_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_HideEvent
-func miqt_exec_callback_QAbstractSlider_HideEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_QAbstractSlider_hideEvent
+func miqt_exec_callback_QAbstractSlider_hideEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1259,18 +1259,18 @@ func (this *QAbstractSlider) callVirtualBase_NativeEvent(eventType []byte, messa
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QAbstractSlider_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
+	return (bool)(C.QAbstractSlider_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
 
 }
-func (this *QAbstractSlider) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
-	ok := C.QAbstractSlider_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+	ok := C.QAbstractSlider_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_NativeEvent
-func miqt_exec_callback_QAbstractSlider_NativeEvent(self *C.QAbstractSlider, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
+//export miqt_exec_callback_QAbstractSlider_nativeEvent
+func miqt_exec_callback_QAbstractSlider_nativeEvent(self *C.QAbstractSlider, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1293,18 +1293,18 @@ func miqt_exec_callback_QAbstractSlider_NativeEvent(self *C.QAbstractSlider, cb 
 
 func (this *QAbstractSlider) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QAbstractSlider_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QAbstractSlider_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QAbstractSlider) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QAbstractSlider_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QAbstractSlider_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_Metric
-func miqt_exec_callback_QAbstractSlider_Metric(self *C.QAbstractSlider, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QAbstractSlider_metric
+func miqt_exec_callback_QAbstractSlider_metric(self *C.QAbstractSlider, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1321,18 +1321,18 @@ func miqt_exec_callback_QAbstractSlider_Metric(self *C.QAbstractSlider, cb C.int
 
 func (this *QAbstractSlider) callVirtualBase_InitPainter(painter *QPainter) {
 
-	C.QAbstractSlider_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+	C.QAbstractSlider_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QAbstractSlider) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	ok := C.QAbstractSlider_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QAbstractSlider_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_InitPainter
-func miqt_exec_callback_QAbstractSlider_InitPainter(self *C.QAbstractSlider, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QAbstractSlider_initPainter
+func miqt_exec_callback_QAbstractSlider_initPainter(self *C.QAbstractSlider, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1347,18 +1347,18 @@ func miqt_exec_callback_QAbstractSlider_InitPainter(self *C.QAbstractSlider, cb 
 
 func (this *QAbstractSlider) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return newQPaintDevice(C.QAbstractSlider_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+	return newQPaintDevice(C.QAbstractSlider_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QAbstractSlider) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	ok := C.QAbstractSlider_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QAbstractSlider_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_Redirected
-func miqt_exec_callback_QAbstractSlider_Redirected(self *C.QAbstractSlider, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QAbstractSlider_redirected
+func miqt_exec_callback_QAbstractSlider_redirected(self *C.QAbstractSlider, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1375,18 +1375,18 @@ func miqt_exec_callback_QAbstractSlider_Redirected(self *C.QAbstractSlider, cb C
 
 func (this *QAbstractSlider) callVirtualBase_SharedPainter() *QPainter {
 
-	return newQPainter(C.QAbstractSlider_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+	return newQPainter(C.QAbstractSlider_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractSlider) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	ok := C.QAbstractSlider_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QAbstractSlider_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_SharedPainter
-func miqt_exec_callback_QAbstractSlider_SharedPainter(self *C.QAbstractSlider, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QAbstractSlider_sharedPainter
+func miqt_exec_callback_QAbstractSlider_sharedPainter(self *C.QAbstractSlider, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1400,18 +1400,18 @@ func miqt_exec_callback_QAbstractSlider_SharedPainter(self *C.QAbstractSlider, c
 
 func (this *QAbstractSlider) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
 
-	C.QAbstractSlider_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QAbstractSlider_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QAbstractSlider) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
-	ok := C.QAbstractSlider_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QAbstractSlider_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_InputMethodEvent
-func miqt_exec_callback_QAbstractSlider_InputMethodEvent(self *C.QAbstractSlider, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QAbstractSlider_inputMethodEvent
+func miqt_exec_callback_QAbstractSlider_inputMethodEvent(self *C.QAbstractSlider, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1426,20 +1426,20 @@ func miqt_exec_callback_QAbstractSlider_InputMethodEvent(self *C.QAbstractSlider
 
 func (this *QAbstractSlider) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_goptr := newQVariant(C.QAbstractSlider_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
+	_goptr := newQVariant(C.QAbstractSlider_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QAbstractSlider) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
-	ok := C.QAbstractSlider_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	ok := C.QAbstractSlider_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_InputMethodQuery
-func miqt_exec_callback_QAbstractSlider_InputMethodQuery(self *C.QAbstractSlider, cb C.intptr_t, param1 C.int) *C.QVariant {
+//export miqt_exec_callback_QAbstractSlider_inputMethodQuery
+func miqt_exec_callback_QAbstractSlider_inputMethodQuery(self *C.QAbstractSlider, cb C.intptr_t, param1 C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1456,18 +1456,18 @@ func miqt_exec_callback_QAbstractSlider_InputMethodQuery(self *C.QAbstractSlider
 
 func (this *QAbstractSlider) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QAbstractSlider_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QAbstractSlider_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QAbstractSlider) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QAbstractSlider_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QAbstractSlider_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_FocusNextPrevChild
-func miqt_exec_callback_QAbstractSlider_FocusNextPrevChild(self *C.QAbstractSlider, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QAbstractSlider_focusNextPrevChild
+func miqt_exec_callback_QAbstractSlider_focusNextPrevChild(self *C.QAbstractSlider, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1484,18 +1484,18 @@ func miqt_exec_callback_QAbstractSlider_FocusNextPrevChild(self *C.QAbstractSlid
 
 func (this *QAbstractSlider) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QAbstractSlider_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QAbstractSlider_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QAbstractSlider) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QAbstractSlider_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QAbstractSlider_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_EventFilter
-func miqt_exec_callback_QAbstractSlider_EventFilter(self *C.QAbstractSlider, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QAbstractSlider_eventFilter
+func miqt_exec_callback_QAbstractSlider_eventFilter(self *C.QAbstractSlider, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1514,18 +1514,18 @@ func miqt_exec_callback_QAbstractSlider_EventFilter(self *C.QAbstractSlider, cb 
 
 func (this *QAbstractSlider) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QAbstractSlider_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QAbstractSlider_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QAbstractSlider_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_ChildEvent
-func miqt_exec_callback_QAbstractSlider_ChildEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QAbstractSlider_childEvent
+func miqt_exec_callback_QAbstractSlider_childEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1540,18 +1540,18 @@ func miqt_exec_callback_QAbstractSlider_ChildEvent(self *C.QAbstractSlider, cb C
 
 func (this *QAbstractSlider) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QAbstractSlider_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractSlider_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractSlider) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QAbstractSlider_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QAbstractSlider_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_CustomEvent
-func miqt_exec_callback_QAbstractSlider_CustomEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QAbstractSlider_customEvent
+func miqt_exec_callback_QAbstractSlider_customEvent(self *C.QAbstractSlider, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1566,18 +1566,18 @@ func miqt_exec_callback_QAbstractSlider_CustomEvent(self *C.QAbstractSlider, cb 
 
 func (this *QAbstractSlider) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QAbstractSlider_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QAbstractSlider_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QAbstractSlider) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QAbstractSlider_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QAbstractSlider_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_ConnectNotify
-func miqt_exec_callback_QAbstractSlider_ConnectNotify(self *C.QAbstractSlider, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAbstractSlider_connectNotify
+func miqt_exec_callback_QAbstractSlider_connectNotify(self *C.QAbstractSlider, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1592,18 +1592,18 @@ func miqt_exec_callback_QAbstractSlider_ConnectNotify(self *C.QAbstractSlider, c
 
 func (this *QAbstractSlider) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QAbstractSlider_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QAbstractSlider_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QAbstractSlider) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QAbstractSlider_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSlider) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QAbstractSlider_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSlider_DisconnectNotify
-func miqt_exec_callback_QAbstractSlider_DisconnectNotify(self *C.QAbstractSlider, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAbstractSlider_disconnectNotify
+func miqt_exec_callback_QAbstractSlider_disconnectNotify(self *C.QAbstractSlider, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1618,7 +1618,7 @@ func miqt_exec_callback_QAbstractSlider_DisconnectNotify(self *C.QAbstractSlider
 
 // Delete this object from C++ memory.
 func (this *QAbstractSlider) Delete() {
-	C.QAbstractSlider_Delete(this.h)
+	C.QAbstractSlider_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

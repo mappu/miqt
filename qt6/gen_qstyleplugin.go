@@ -63,19 +63,19 @@ func NewQStylePlugin2(parent *QObject) *QStylePlugin {
 }
 
 func (this *QStylePlugin) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QStylePlugin_MetaObject(this.h))
+	return newQMetaObject(C.QStylePlugin_metaObject(this.h))
 }
 
 func (this *QStylePlugin) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QStylePlugin_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QStylePlugin_metacast(this.h, param1_Cstring))
 }
 
 func QStylePlugin_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QStylePlugin_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QStylePlugin_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -86,7 +86,7 @@ func (this *QStylePlugin) Create(key string) *QStyle {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return newQStyle(C.QStylePlugin_Create(this.h, key_ms))
+	return newQStyle(C.QStylePlugin_create(this.h, key_ms))
 }
 
 func QStylePlugin_Tr2(s string, c string) string {
@@ -94,7 +94,7 @@ func QStylePlugin_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QStylePlugin_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QStylePlugin_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -105,20 +105,20 @@ func QStylePlugin_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QStylePlugin_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QStylePlugin_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QStylePlugin) OnCreate(slot func(key string) *QStyle) {
-	ok := C.QStylePlugin_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStylePlugin) Oncreate(slot func(key string) *QStyle) {
+	ok := C.QStylePlugin_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStylePlugin_Create
-func miqt_exec_callback_QStylePlugin_Create(self *C.QStylePlugin, cb C.intptr_t, key C.struct_miqt_string) *C.QStyle {
+//export miqt_exec_callback_QStylePlugin_create
+func miqt_exec_callback_QStylePlugin_create(self *C.QStylePlugin, cb C.intptr_t, key C.struct_miqt_string) *C.QStyle {
 	gofunc, ok := cgo.Handle(cb).Value().(func(key string) *QStyle)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -138,18 +138,18 @@ func miqt_exec_callback_QStylePlugin_Create(self *C.QStylePlugin, cb C.intptr_t,
 
 func (this *QStylePlugin) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QStylePlugin_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QStylePlugin_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QStylePlugin) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QStylePlugin_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStylePlugin) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QStylePlugin_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStylePlugin_Event
-func miqt_exec_callback_QStylePlugin_Event(self *C.QStylePlugin, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QStylePlugin_event
+func miqt_exec_callback_QStylePlugin_event(self *C.QStylePlugin, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -166,18 +166,18 @@ func miqt_exec_callback_QStylePlugin_Event(self *C.QStylePlugin, cb C.intptr_t, 
 
 func (this *QStylePlugin) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QStylePlugin_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QStylePlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QStylePlugin) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QStylePlugin_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStylePlugin) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QStylePlugin_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStylePlugin_EventFilter
-func miqt_exec_callback_QStylePlugin_EventFilter(self *C.QStylePlugin, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QStylePlugin_eventFilter
+func miqt_exec_callback_QStylePlugin_eventFilter(self *C.QStylePlugin, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -196,18 +196,18 @@ func miqt_exec_callback_QStylePlugin_EventFilter(self *C.QStylePlugin, cb C.intp
 
 func (this *QStylePlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QStylePlugin_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QStylePlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStylePlugin) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QStylePlugin_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStylePlugin) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QStylePlugin_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStylePlugin_TimerEvent
-func miqt_exec_callback_QStylePlugin_TimerEvent(self *C.QStylePlugin, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QStylePlugin_timerEvent
+func miqt_exec_callback_QStylePlugin_timerEvent(self *C.QStylePlugin, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -222,18 +222,18 @@ func miqt_exec_callback_QStylePlugin_TimerEvent(self *C.QStylePlugin, cb C.intpt
 
 func (this *QStylePlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QStylePlugin_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QStylePlugin_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStylePlugin) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QStylePlugin_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStylePlugin) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QStylePlugin_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStylePlugin_ChildEvent
-func miqt_exec_callback_QStylePlugin_ChildEvent(self *C.QStylePlugin, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QStylePlugin_childEvent
+func miqt_exec_callback_QStylePlugin_childEvent(self *C.QStylePlugin, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -248,18 +248,18 @@ func miqt_exec_callback_QStylePlugin_ChildEvent(self *C.QStylePlugin, cb C.intpt
 
 func (this *QStylePlugin) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QStylePlugin_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QStylePlugin_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStylePlugin) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QStylePlugin_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStylePlugin) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QStylePlugin_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStylePlugin_CustomEvent
-func miqt_exec_callback_QStylePlugin_CustomEvent(self *C.QStylePlugin, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QStylePlugin_customEvent
+func miqt_exec_callback_QStylePlugin_customEvent(self *C.QStylePlugin, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -274,18 +274,18 @@ func miqt_exec_callback_QStylePlugin_CustomEvent(self *C.QStylePlugin, cb C.intp
 
 func (this *QStylePlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QStylePlugin_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QStylePlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QStylePlugin) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QStylePlugin_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStylePlugin) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QStylePlugin_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStylePlugin_ConnectNotify
-func miqt_exec_callback_QStylePlugin_ConnectNotify(self *C.QStylePlugin, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QStylePlugin_connectNotify
+func miqt_exec_callback_QStylePlugin_connectNotify(self *C.QStylePlugin, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -300,18 +300,18 @@ func miqt_exec_callback_QStylePlugin_ConnectNotify(self *C.QStylePlugin, cb C.in
 
 func (this *QStylePlugin) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QStylePlugin_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QStylePlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QStylePlugin) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QStylePlugin_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStylePlugin) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QStylePlugin_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStylePlugin_DisconnectNotify
-func miqt_exec_callback_QStylePlugin_DisconnectNotify(self *C.QStylePlugin, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QStylePlugin_disconnectNotify
+func miqt_exec_callback_QStylePlugin_disconnectNotify(self *C.QStylePlugin, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -326,7 +326,7 @@ func miqt_exec_callback_QStylePlugin_DisconnectNotify(self *C.QStylePlugin, cb C
 
 // Delete this object from C++ memory.
 func (this *QStylePlugin) Delete() {
-	C.QStylePlugin_Delete(this.h)
+	C.QStylePlugin_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

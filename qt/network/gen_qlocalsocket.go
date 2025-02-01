@@ -89,19 +89,19 @@ func NewQLocalSocket2(parent *qt.QObject) *QLocalSocket {
 }
 
 func (this *QLocalSocket) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QLocalSocket_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QLocalSocket_metaObject(this.h)))
 }
 
 func (this *QLocalSocket) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QLocalSocket_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QLocalSocket_metacast(this.h, param1_Cstring))
 }
 
 func QLocalSocket_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QLocalSocket_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QLocalSocket_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -110,14 +110,14 @@ func QLocalSocket_Tr(s string) string {
 func QLocalSocket_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QLocalSocket_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QLocalSocket_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLocalSocket) ConnectToServer() {
-	C.QLocalSocket_ConnectToServer(this.h)
+	C.QLocalSocket_connectToServer(this.h)
 }
 
 func (this *QLocalSocket) ConnectToServerWithName(name string) {
@@ -125,11 +125,11 @@ func (this *QLocalSocket) ConnectToServerWithName(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QLocalSocket_ConnectToServerWithName(this.h, name_ms)
+	C.QLocalSocket_connectToServerWithName(this.h, name_ms)
 }
 
 func (this *QLocalSocket) DisconnectFromServer() {
-	C.QLocalSocket_DisconnectFromServer(this.h)
+	C.QLocalSocket_disconnectFromServer(this.h)
 }
 
 func (this *QLocalSocket) SetServerName(name string) {
@@ -137,108 +137,108 @@ func (this *QLocalSocket) SetServerName(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QLocalSocket_SetServerName(this.h, name_ms)
+	C.QLocalSocket_setServerName(this.h, name_ms)
 }
 
 func (this *QLocalSocket) ServerName() string {
-	var _ms C.struct_miqt_string = C.QLocalSocket_ServerName(this.h)
+	var _ms C.struct_miqt_string = C.QLocalSocket_serverName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLocalSocket) FullServerName() string {
-	var _ms C.struct_miqt_string = C.QLocalSocket_FullServerName(this.h)
+	var _ms C.struct_miqt_string = C.QLocalSocket_fullServerName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLocalSocket) Abort() {
-	C.QLocalSocket_Abort(this.h)
+	C.QLocalSocket_abort(this.h)
 }
 
 func (this *QLocalSocket) IsSequential() bool {
-	return (bool)(C.QLocalSocket_IsSequential(this.h))
+	return (bool)(C.QLocalSocket_isSequential(this.h))
 }
 
 func (this *QLocalSocket) BytesAvailable() int64 {
-	return (int64)(C.QLocalSocket_BytesAvailable(this.h))
+	return (int64)(C.QLocalSocket_bytesAvailable(this.h))
 }
 
 func (this *QLocalSocket) BytesToWrite() int64 {
-	return (int64)(C.QLocalSocket_BytesToWrite(this.h))
+	return (int64)(C.QLocalSocket_bytesToWrite(this.h))
 }
 
 func (this *QLocalSocket) CanReadLine() bool {
-	return (bool)(C.QLocalSocket_CanReadLine(this.h))
+	return (bool)(C.QLocalSocket_canReadLine(this.h))
 }
 
 func (this *QLocalSocket) Open(openMode qt.QIODevice__OpenModeFlag) bool {
-	return (bool)(C.QLocalSocket_Open(this.h, (C.int)(openMode)))
+	return (bool)(C.QLocalSocket_open(this.h, (C.int)(openMode)))
 }
 
 func (this *QLocalSocket) Close() {
-	C.QLocalSocket_Close(this.h)
+	C.QLocalSocket_close(this.h)
 }
 
 func (this *QLocalSocket) Error() QLocalSocket__LocalSocketError {
-	return (QLocalSocket__LocalSocketError)(C.QLocalSocket_Error(this.h))
+	return (QLocalSocket__LocalSocketError)(C.QLocalSocket_error(this.h))
 }
 
 func (this *QLocalSocket) Flush() bool {
-	return (bool)(C.QLocalSocket_Flush(this.h))
+	return (bool)(C.QLocalSocket_flush(this.h))
 }
 
 func (this *QLocalSocket) IsValid() bool {
-	return (bool)(C.QLocalSocket_IsValid(this.h))
+	return (bool)(C.QLocalSocket_isValid(this.h))
 }
 
 func (this *QLocalSocket) ReadBufferSize() int64 {
-	return (int64)(C.QLocalSocket_ReadBufferSize(this.h))
+	return (int64)(C.QLocalSocket_readBufferSize(this.h))
 }
 
 func (this *QLocalSocket) SetReadBufferSize(size int64) {
-	C.QLocalSocket_SetReadBufferSize(this.h, (C.longlong)(size))
+	C.QLocalSocket_setReadBufferSize(this.h, (C.longlong)(size))
 }
 
 func (this *QLocalSocket) SetSocketDescriptor(socketDescriptor uintptr) bool {
-	return (bool)(C.QLocalSocket_SetSocketDescriptor(this.h, (C.intptr_t)(socketDescriptor)))
+	return (bool)(C.QLocalSocket_setSocketDescriptor(this.h, (C.intptr_t)(socketDescriptor)))
 }
 
 func (this *QLocalSocket) SocketDescriptor() uintptr {
-	return (uintptr)(C.QLocalSocket_SocketDescriptor(this.h))
+	return (uintptr)(C.QLocalSocket_socketDescriptor(this.h))
 }
 
 func (this *QLocalSocket) State() QLocalSocket__LocalSocketState {
-	return (QLocalSocket__LocalSocketState)(C.QLocalSocket_State(this.h))
+	return (QLocalSocket__LocalSocketState)(C.QLocalSocket_state(this.h))
 }
 
 func (this *QLocalSocket) WaitForBytesWritten(msecs int) bool {
-	return (bool)(C.QLocalSocket_WaitForBytesWritten(this.h, (C.int)(msecs)))
+	return (bool)(C.QLocalSocket_waitForBytesWritten(this.h, (C.int)(msecs)))
 }
 
 func (this *QLocalSocket) WaitForConnected() bool {
-	return (bool)(C.QLocalSocket_WaitForConnected(this.h))
+	return (bool)(C.QLocalSocket_waitForConnected(this.h))
 }
 
 func (this *QLocalSocket) WaitForDisconnected() bool {
-	return (bool)(C.QLocalSocket_WaitForDisconnected(this.h))
+	return (bool)(C.QLocalSocket_waitForDisconnected(this.h))
 }
 
 func (this *QLocalSocket) WaitForReadyRead(msecs int) bool {
-	return (bool)(C.QLocalSocket_WaitForReadyRead(this.h, (C.int)(msecs)))
+	return (bool)(C.QLocalSocket_waitForReadyRead(this.h, (C.int)(msecs)))
 }
 
 func (this *QLocalSocket) Connected() {
-	C.QLocalSocket_Connected(this.h)
+	C.QLocalSocket_connected(this.h)
 }
 func (this *QLocalSocket) OnConnected(slot func()) {
-	C.QLocalSocket_connect_Connected(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QLocalSocket_connect_connected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QLocalSocket_Connected
-func miqt_exec_callback_QLocalSocket_Connected(cb C.intptr_t) {
+//export miqt_exec_callback_QLocalSocket_connected
+func miqt_exec_callback_QLocalSocket_connected(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -248,14 +248,14 @@ func miqt_exec_callback_QLocalSocket_Connected(cb C.intptr_t) {
 }
 
 func (this *QLocalSocket) Disconnected() {
-	C.QLocalSocket_Disconnected(this.h)
+	C.QLocalSocket_disconnected(this.h)
 }
 func (this *QLocalSocket) OnDisconnected(slot func()) {
-	C.QLocalSocket_connect_Disconnected(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QLocalSocket_connect_disconnected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QLocalSocket_Disconnected
-func miqt_exec_callback_QLocalSocket_Disconnected(cb C.intptr_t) {
+//export miqt_exec_callback_QLocalSocket_disconnected
+func miqt_exec_callback_QLocalSocket_disconnected(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -265,14 +265,14 @@ func miqt_exec_callback_QLocalSocket_Disconnected(cb C.intptr_t) {
 }
 
 func (this *QLocalSocket) ErrorWithSocketError(socketError QLocalSocket__LocalSocketError) {
-	C.QLocalSocket_ErrorWithSocketError(this.h, (C.int)(socketError))
+	C.QLocalSocket_errorWithSocketError(this.h, (C.int)(socketError))
 }
 func (this *QLocalSocket) OnErrorWithSocketError(slot func(socketError QLocalSocket__LocalSocketError)) {
-	C.QLocalSocket_connect_ErrorWithSocketError(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QLocalSocket_connect_errorWithSocketError(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QLocalSocket_ErrorWithSocketError
-func miqt_exec_callback_QLocalSocket_ErrorWithSocketError(cb C.intptr_t, socketError C.int) {
+//export miqt_exec_callback_QLocalSocket_errorWithSocketError
+func miqt_exec_callback_QLocalSocket_errorWithSocketError(cb C.intptr_t, socketError C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(socketError QLocalSocket__LocalSocketError))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -285,14 +285,14 @@ func miqt_exec_callback_QLocalSocket_ErrorWithSocketError(cb C.intptr_t, socketE
 }
 
 func (this *QLocalSocket) ErrorOccurred(socketError QLocalSocket__LocalSocketError) {
-	C.QLocalSocket_ErrorOccurred(this.h, (C.int)(socketError))
+	C.QLocalSocket_errorOccurred(this.h, (C.int)(socketError))
 }
 func (this *QLocalSocket) OnErrorOccurred(slot func(socketError QLocalSocket__LocalSocketError)) {
-	C.QLocalSocket_connect_ErrorOccurred(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QLocalSocket_connect_errorOccurred(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QLocalSocket_ErrorOccurred
-func miqt_exec_callback_QLocalSocket_ErrorOccurred(cb C.intptr_t, socketError C.int) {
+//export miqt_exec_callback_QLocalSocket_errorOccurred
+func miqt_exec_callback_QLocalSocket_errorOccurred(cb C.intptr_t, socketError C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(socketError QLocalSocket__LocalSocketError))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -305,14 +305,14 @@ func miqt_exec_callback_QLocalSocket_ErrorOccurred(cb C.intptr_t, socketError C.
 }
 
 func (this *QLocalSocket) StateChanged(socketState QLocalSocket__LocalSocketState) {
-	C.QLocalSocket_StateChanged(this.h, (C.int)(socketState))
+	C.QLocalSocket_stateChanged(this.h, (C.int)(socketState))
 }
 func (this *QLocalSocket) OnStateChanged(slot func(socketState QLocalSocket__LocalSocketState)) {
-	C.QLocalSocket_connect_StateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QLocalSocket_connect_stateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QLocalSocket_StateChanged
-func miqt_exec_callback_QLocalSocket_StateChanged(cb C.intptr_t, socketState C.int) {
+//export miqt_exec_callback_QLocalSocket_stateChanged
+func miqt_exec_callback_QLocalSocket_stateChanged(cb C.intptr_t, socketState C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(socketState QLocalSocket__LocalSocketState))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -329,7 +329,7 @@ func QLocalSocket_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QLocalSocket_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QLocalSocket_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -340,7 +340,7 @@ func QLocalSocket_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QLocalSocket_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QLocalSocket_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -351,7 +351,7 @@ func QLocalSocket_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QLocalSocket_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QLocalSocket_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -362,14 +362,14 @@ func QLocalSocket_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QLocalSocket_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QLocalSocket_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLocalSocket) ConnectToServer1(openMode qt.QIODevice__OpenModeFlag) {
-	C.QLocalSocket_ConnectToServer1(this.h, (C.int)(openMode))
+	C.QLocalSocket_connectToServer1(this.h, (C.int)(openMode))
 }
 
 func (this *QLocalSocket) ConnectToServer2(name string, openMode qt.QIODevice__OpenModeFlag) {
@@ -377,39 +377,39 @@ func (this *QLocalSocket) ConnectToServer2(name string, openMode qt.QIODevice__O
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QLocalSocket_ConnectToServer2(this.h, name_ms, (C.int)(openMode))
+	C.QLocalSocket_connectToServer2(this.h, name_ms, (C.int)(openMode))
 }
 
 func (this *QLocalSocket) SetSocketDescriptor2(socketDescriptor uintptr, socketState QLocalSocket__LocalSocketState) bool {
-	return (bool)(C.QLocalSocket_SetSocketDescriptor2(this.h, (C.intptr_t)(socketDescriptor), (C.int)(socketState)))
+	return (bool)(C.QLocalSocket_setSocketDescriptor2(this.h, (C.intptr_t)(socketDescriptor), (C.int)(socketState)))
 }
 
 func (this *QLocalSocket) SetSocketDescriptor3(socketDescriptor uintptr, socketState QLocalSocket__LocalSocketState, openMode qt.QIODevice__OpenModeFlag) bool {
-	return (bool)(C.QLocalSocket_SetSocketDescriptor3(this.h, (C.intptr_t)(socketDescriptor), (C.int)(socketState), (C.int)(openMode)))
+	return (bool)(C.QLocalSocket_setSocketDescriptor3(this.h, (C.intptr_t)(socketDescriptor), (C.int)(socketState), (C.int)(openMode)))
 }
 
 func (this *QLocalSocket) WaitForConnected1(msecs int) bool {
-	return (bool)(C.QLocalSocket_WaitForConnected1(this.h, (C.int)(msecs)))
+	return (bool)(C.QLocalSocket_waitForConnected1(this.h, (C.int)(msecs)))
 }
 
 func (this *QLocalSocket) WaitForDisconnected1(msecs int) bool {
-	return (bool)(C.QLocalSocket_WaitForDisconnected1(this.h, (C.int)(msecs)))
+	return (bool)(C.QLocalSocket_waitForDisconnected1(this.h, (C.int)(msecs)))
 }
 
 func (this *QLocalSocket) callVirtualBase_IsSequential() bool {
 
-	return (bool)(C.QLocalSocket_virtualbase_IsSequential(unsafe.Pointer(this.h)))
+	return (bool)(C.QLocalSocket_virtualbase_isSequential(unsafe.Pointer(this.h)))
 
 }
-func (this *QLocalSocket) OnIsSequential(slot func(super func() bool) bool) {
-	ok := C.QLocalSocket_override_virtual_IsSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) OnisSequential(slot func(super func() bool) bool) {
+	ok := C.QLocalSocket_override_virtual_isSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_IsSequential
-func miqt_exec_callback_QLocalSocket_IsSequential(self *C.QLocalSocket, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QLocalSocket_isSequential
+func miqt_exec_callback_QLocalSocket_isSequential(self *C.QLocalSocket, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -423,18 +423,18 @@ func miqt_exec_callback_QLocalSocket_IsSequential(self *C.QLocalSocket, cb C.int
 
 func (this *QLocalSocket) callVirtualBase_BytesAvailable() int64 {
 
-	return (int64)(C.QLocalSocket_virtualbase_BytesAvailable(unsafe.Pointer(this.h)))
+	return (int64)(C.QLocalSocket_virtualbase_bytesAvailable(unsafe.Pointer(this.h)))
 
 }
-func (this *QLocalSocket) OnBytesAvailable(slot func(super func() int64) int64) {
-	ok := C.QLocalSocket_override_virtual_BytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) OnbytesAvailable(slot func(super func() int64) int64) {
+	ok := C.QLocalSocket_override_virtual_bytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_BytesAvailable
-func miqt_exec_callback_QLocalSocket_BytesAvailable(self *C.QLocalSocket, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QLocalSocket_bytesAvailable
+func miqt_exec_callback_QLocalSocket_bytesAvailable(self *C.QLocalSocket, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -448,18 +448,18 @@ func miqt_exec_callback_QLocalSocket_BytesAvailable(self *C.QLocalSocket, cb C.i
 
 func (this *QLocalSocket) callVirtualBase_BytesToWrite() int64 {
 
-	return (int64)(C.QLocalSocket_virtualbase_BytesToWrite(unsafe.Pointer(this.h)))
+	return (int64)(C.QLocalSocket_virtualbase_bytesToWrite(unsafe.Pointer(this.h)))
 
 }
-func (this *QLocalSocket) OnBytesToWrite(slot func(super func() int64) int64) {
-	ok := C.QLocalSocket_override_virtual_BytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) OnbytesToWrite(slot func(super func() int64) int64) {
+	ok := C.QLocalSocket_override_virtual_bytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_BytesToWrite
-func miqt_exec_callback_QLocalSocket_BytesToWrite(self *C.QLocalSocket, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QLocalSocket_bytesToWrite
+func miqt_exec_callback_QLocalSocket_bytesToWrite(self *C.QLocalSocket, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -473,18 +473,18 @@ func miqt_exec_callback_QLocalSocket_BytesToWrite(self *C.QLocalSocket, cb C.int
 
 func (this *QLocalSocket) callVirtualBase_CanReadLine() bool {
 
-	return (bool)(C.QLocalSocket_virtualbase_CanReadLine(unsafe.Pointer(this.h)))
+	return (bool)(C.QLocalSocket_virtualbase_canReadLine(unsafe.Pointer(this.h)))
 
 }
-func (this *QLocalSocket) OnCanReadLine(slot func(super func() bool) bool) {
-	ok := C.QLocalSocket_override_virtual_CanReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) OncanReadLine(slot func(super func() bool) bool) {
+	ok := C.QLocalSocket_override_virtual_canReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_CanReadLine
-func miqt_exec_callback_QLocalSocket_CanReadLine(self *C.QLocalSocket, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QLocalSocket_canReadLine
+func miqt_exec_callback_QLocalSocket_canReadLine(self *C.QLocalSocket, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -498,18 +498,18 @@ func miqt_exec_callback_QLocalSocket_CanReadLine(self *C.QLocalSocket, cb C.intp
 
 func (this *QLocalSocket) callVirtualBase_Open(openMode qt.QIODevice__OpenModeFlag) bool {
 
-	return (bool)(C.QLocalSocket_virtualbase_Open(unsafe.Pointer(this.h), (C.int)(openMode)))
+	return (bool)(C.QLocalSocket_virtualbase_open(unsafe.Pointer(this.h), (C.int)(openMode)))
 
 }
-func (this *QLocalSocket) OnOpen(slot func(super func(openMode qt.QIODevice__OpenModeFlag) bool, openMode qt.QIODevice__OpenModeFlag) bool) {
-	ok := C.QLocalSocket_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) Onopen(slot func(super func(openMode qt.QIODevice__OpenModeFlag) bool, openMode qt.QIODevice__OpenModeFlag) bool) {
+	ok := C.QLocalSocket_override_virtual_open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_Open
-func miqt_exec_callback_QLocalSocket_Open(self *C.QLocalSocket, cb C.intptr_t, openMode C.int) C.bool {
+//export miqt_exec_callback_QLocalSocket_open
+func miqt_exec_callback_QLocalSocket_open(self *C.QLocalSocket, cb C.intptr_t, openMode C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(openMode qt.QIODevice__OpenModeFlag) bool, openMode qt.QIODevice__OpenModeFlag) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -526,18 +526,18 @@ func miqt_exec_callback_QLocalSocket_Open(self *C.QLocalSocket, cb C.intptr_t, o
 
 func (this *QLocalSocket) callVirtualBase_Close() {
 
-	C.QLocalSocket_virtualbase_Close(unsafe.Pointer(this.h))
+	C.QLocalSocket_virtualbase_close(unsafe.Pointer(this.h))
 
 }
-func (this *QLocalSocket) OnClose(slot func(super func())) {
-	ok := C.QLocalSocket_override_virtual_Close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) Onclose(slot func(super func())) {
+	ok := C.QLocalSocket_override_virtual_close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_Close
-func miqt_exec_callback_QLocalSocket_Close(self *C.QLocalSocket, cb C.intptr_t) {
+//export miqt_exec_callback_QLocalSocket_close
+func miqt_exec_callback_QLocalSocket_close(self *C.QLocalSocket, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -549,18 +549,18 @@ func miqt_exec_callback_QLocalSocket_Close(self *C.QLocalSocket, cb C.intptr_t) 
 
 func (this *QLocalSocket) callVirtualBase_WaitForBytesWritten(msecs int) bool {
 
-	return (bool)(C.QLocalSocket_virtualbase_WaitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
+	return (bool)(C.QLocalSocket_virtualbase_waitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
 
 }
-func (this *QLocalSocket) OnWaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
-	ok := C.QLocalSocket_override_virtual_WaitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) OnwaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
+	ok := C.QLocalSocket_override_virtual_waitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_WaitForBytesWritten
-func miqt_exec_callback_QLocalSocket_WaitForBytesWritten(self *C.QLocalSocket, cb C.intptr_t, msecs C.int) C.bool {
+//export miqt_exec_callback_QLocalSocket_waitForBytesWritten
+func miqt_exec_callback_QLocalSocket_waitForBytesWritten(self *C.QLocalSocket, cb C.intptr_t, msecs C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msecs int) bool, msecs int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -577,18 +577,18 @@ func miqt_exec_callback_QLocalSocket_WaitForBytesWritten(self *C.QLocalSocket, c
 
 func (this *QLocalSocket) callVirtualBase_WaitForReadyRead(msecs int) bool {
 
-	return (bool)(C.QLocalSocket_virtualbase_WaitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
+	return (bool)(C.QLocalSocket_virtualbase_waitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
 
 }
-func (this *QLocalSocket) OnWaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
-	ok := C.QLocalSocket_override_virtual_WaitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) OnwaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
+	ok := C.QLocalSocket_override_virtual_waitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_WaitForReadyRead
-func miqt_exec_callback_QLocalSocket_WaitForReadyRead(self *C.QLocalSocket, cb C.intptr_t, msecs C.int) C.bool {
+//export miqt_exec_callback_QLocalSocket_waitForReadyRead
+func miqt_exec_callback_QLocalSocket_waitForReadyRead(self *C.QLocalSocket, cb C.intptr_t, msecs C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msecs int) bool, msecs int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -607,18 +607,18 @@ func (this *QLocalSocket) callVirtualBase_ReadData(param1 string, param2 int64) 
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 
-	return (int64)(C.QLocalSocket_virtualbase_ReadData(unsafe.Pointer(this.h), param1_Cstring, (C.longlong)(param2)))
+	return (int64)(C.QLocalSocket_virtualbase_readData(unsafe.Pointer(this.h), param1_Cstring, (C.longlong)(param2)))
 
 }
-func (this *QLocalSocket) OnReadData(slot func(super func(param1 string, param2 int64) int64, param1 string, param2 int64) int64) {
-	ok := C.QLocalSocket_override_virtual_ReadData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) OnreadData(slot func(super func(param1 string, param2 int64) int64, param1 string, param2 int64) int64) {
+	ok := C.QLocalSocket_override_virtual_readData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_ReadData
-func miqt_exec_callback_QLocalSocket_ReadData(self *C.QLocalSocket, cb C.intptr_t, param1 *C.char, param2 C.longlong) C.longlong {
+//export miqt_exec_callback_QLocalSocket_readData
+func miqt_exec_callback_QLocalSocket_readData(self *C.QLocalSocket, cb C.intptr_t, param1 *C.char, param2 C.longlong) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string, param2 int64) int64, param1 string, param2 int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -640,18 +640,18 @@ func (this *QLocalSocket) callVirtualBase_WriteData(param1 string, param2 int64)
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
 
-	return (int64)(C.QLocalSocket_virtualbase_WriteData(unsafe.Pointer(this.h), param1_Cstring, (C.longlong)(param2)))
+	return (int64)(C.QLocalSocket_virtualbase_writeData(unsafe.Pointer(this.h), param1_Cstring, (C.longlong)(param2)))
 
 }
-func (this *QLocalSocket) OnWriteData(slot func(super func(param1 string, param2 int64) int64, param1 string, param2 int64) int64) {
-	ok := C.QLocalSocket_override_virtual_WriteData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) OnwriteData(slot func(super func(param1 string, param2 int64) int64, param1 string, param2 int64) int64) {
+	ok := C.QLocalSocket_override_virtual_writeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_WriteData
-func miqt_exec_callback_QLocalSocket_WriteData(self *C.QLocalSocket, cb C.intptr_t, param1 *C.const_char, param2 C.longlong) C.longlong {
+//export miqt_exec_callback_QLocalSocket_writeData
+func miqt_exec_callback_QLocalSocket_writeData(self *C.QLocalSocket, cb C.intptr_t, param1 *C.const_char, param2 C.longlong) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 string, param2 int64) int64, param1 string, param2 int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -671,18 +671,18 @@ func miqt_exec_callback_QLocalSocket_WriteData(self *C.QLocalSocket, cb C.intptr
 
 func (this *QLocalSocket) callVirtualBase_Pos() int64 {
 
-	return (int64)(C.QLocalSocket_virtualbase_Pos(unsafe.Pointer(this.h)))
+	return (int64)(C.QLocalSocket_virtualbase_pos(unsafe.Pointer(this.h)))
 
 }
-func (this *QLocalSocket) OnPos(slot func(super func() int64) int64) {
-	ok := C.QLocalSocket_override_virtual_Pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) Onpos(slot func(super func() int64) int64) {
+	ok := C.QLocalSocket_override_virtual_pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_Pos
-func miqt_exec_callback_QLocalSocket_Pos(self *C.QLocalSocket, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QLocalSocket_pos
+func miqt_exec_callback_QLocalSocket_pos(self *C.QLocalSocket, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -696,18 +696,18 @@ func miqt_exec_callback_QLocalSocket_Pos(self *C.QLocalSocket, cb C.intptr_t) C.
 
 func (this *QLocalSocket) callVirtualBase_Size() int64 {
 
-	return (int64)(C.QLocalSocket_virtualbase_Size(unsafe.Pointer(this.h)))
+	return (int64)(C.QLocalSocket_virtualbase_size(unsafe.Pointer(this.h)))
 
 }
-func (this *QLocalSocket) OnSize(slot func(super func() int64) int64) {
-	ok := C.QLocalSocket_override_virtual_Size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) Onsize(slot func(super func() int64) int64) {
+	ok := C.QLocalSocket_override_virtual_size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_Size
-func miqt_exec_callback_QLocalSocket_Size(self *C.QLocalSocket, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QLocalSocket_size
+func miqt_exec_callback_QLocalSocket_size(self *C.QLocalSocket, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -721,18 +721,18 @@ func miqt_exec_callback_QLocalSocket_Size(self *C.QLocalSocket, cb C.intptr_t) C
 
 func (this *QLocalSocket) callVirtualBase_Seek(pos int64) bool {
 
-	return (bool)(C.QLocalSocket_virtualbase_Seek(unsafe.Pointer(this.h), (C.longlong)(pos)))
+	return (bool)(C.QLocalSocket_virtualbase_seek(unsafe.Pointer(this.h), (C.longlong)(pos)))
 
 }
-func (this *QLocalSocket) OnSeek(slot func(super func(pos int64) bool, pos int64) bool) {
-	ok := C.QLocalSocket_override_virtual_Seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) Onseek(slot func(super func(pos int64) bool, pos int64) bool) {
+	ok := C.QLocalSocket_override_virtual_seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_Seek
-func miqt_exec_callback_QLocalSocket_Seek(self *C.QLocalSocket, cb C.intptr_t, pos C.longlong) C.bool {
+//export miqt_exec_callback_QLocalSocket_seek
+func miqt_exec_callback_QLocalSocket_seek(self *C.QLocalSocket, cb C.intptr_t, pos C.longlong) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos int64) bool, pos int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -749,18 +749,18 @@ func miqt_exec_callback_QLocalSocket_Seek(self *C.QLocalSocket, cb C.intptr_t, p
 
 func (this *QLocalSocket) callVirtualBase_AtEnd() bool {
 
-	return (bool)(C.QLocalSocket_virtualbase_AtEnd(unsafe.Pointer(this.h)))
+	return (bool)(C.QLocalSocket_virtualbase_atEnd(unsafe.Pointer(this.h)))
 
 }
-func (this *QLocalSocket) OnAtEnd(slot func(super func() bool) bool) {
-	ok := C.QLocalSocket_override_virtual_AtEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) OnatEnd(slot func(super func() bool) bool) {
+	ok := C.QLocalSocket_override_virtual_atEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_AtEnd
-func miqt_exec_callback_QLocalSocket_AtEnd(self *C.QLocalSocket, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QLocalSocket_atEnd
+func miqt_exec_callback_QLocalSocket_atEnd(self *C.QLocalSocket, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -774,18 +774,18 @@ func miqt_exec_callback_QLocalSocket_AtEnd(self *C.QLocalSocket, cb C.intptr_t) 
 
 func (this *QLocalSocket) callVirtualBase_Reset() bool {
 
-	return (bool)(C.QLocalSocket_virtualbase_Reset(unsafe.Pointer(this.h)))
+	return (bool)(C.QLocalSocket_virtualbase_reset(unsafe.Pointer(this.h)))
 
 }
-func (this *QLocalSocket) OnReset(slot func(super func() bool) bool) {
-	ok := C.QLocalSocket_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) Onreset(slot func(super func() bool) bool) {
+	ok := C.QLocalSocket_override_virtual_reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_Reset
-func miqt_exec_callback_QLocalSocket_Reset(self *C.QLocalSocket, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QLocalSocket_reset
+func miqt_exec_callback_QLocalSocket_reset(self *C.QLocalSocket, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -801,18 +801,18 @@ func (this *QLocalSocket) callVirtualBase_ReadLineData(data string, maxlen int64
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
-	return (int64)(C.QLocalSocket_virtualbase_ReadLineData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
+	return (int64)(C.QLocalSocket_virtualbase_readLineData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
 
 }
-func (this *QLocalSocket) OnReadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
-	ok := C.QLocalSocket_override_virtual_ReadLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) OnreadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+	ok := C.QLocalSocket_override_virtual_readLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_ReadLineData
-func miqt_exec_callback_QLocalSocket_ReadLineData(self *C.QLocalSocket, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
+//export miqt_exec_callback_QLocalSocket_readLineData
+func miqt_exec_callback_QLocalSocket_readLineData(self *C.QLocalSocket, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -832,18 +832,18 @@ func miqt_exec_callback_QLocalSocket_ReadLineData(self *C.QLocalSocket, cb C.int
 
 func (this *QLocalSocket) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.QLocalSocket_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QLocalSocket_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QLocalSocket) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.QLocalSocket_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QLocalSocket_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_Event
-func miqt_exec_callback_QLocalSocket_Event(self *C.QLocalSocket, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QLocalSocket_event
+func miqt_exec_callback_QLocalSocket_event(self *C.QLocalSocket, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -860,18 +860,18 @@ func miqt_exec_callback_QLocalSocket_Event(self *C.QLocalSocket, cb C.intptr_t, 
 
 func (this *QLocalSocket) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.QLocalSocket_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QLocalSocket_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QLocalSocket) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.QLocalSocket_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QLocalSocket_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_EventFilter
-func miqt_exec_callback_QLocalSocket_EventFilter(self *C.QLocalSocket, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QLocalSocket_eventFilter
+func miqt_exec_callback_QLocalSocket_eventFilter(self *C.QLocalSocket, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -890,18 +890,18 @@ func miqt_exec_callback_QLocalSocket_EventFilter(self *C.QLocalSocket, cb C.intp
 
 func (this *QLocalSocket) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QLocalSocket_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QLocalSocket_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QLocalSocket) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QLocalSocket_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QLocalSocket_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_TimerEvent
-func miqt_exec_callback_QLocalSocket_TimerEvent(self *C.QLocalSocket, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QLocalSocket_timerEvent
+func miqt_exec_callback_QLocalSocket_timerEvent(self *C.QLocalSocket, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -916,18 +916,18 @@ func miqt_exec_callback_QLocalSocket_TimerEvent(self *C.QLocalSocket, cb C.intpt
 
 func (this *QLocalSocket) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QLocalSocket_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QLocalSocket_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QLocalSocket) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QLocalSocket_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QLocalSocket_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_ChildEvent
-func miqt_exec_callback_QLocalSocket_ChildEvent(self *C.QLocalSocket, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QLocalSocket_childEvent
+func miqt_exec_callback_QLocalSocket_childEvent(self *C.QLocalSocket, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -942,18 +942,18 @@ func miqt_exec_callback_QLocalSocket_ChildEvent(self *C.QLocalSocket, cb C.intpt
 
 func (this *QLocalSocket) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QLocalSocket_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QLocalSocket_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QLocalSocket) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QLocalSocket_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QLocalSocket_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_CustomEvent
-func miqt_exec_callback_QLocalSocket_CustomEvent(self *C.QLocalSocket, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QLocalSocket_customEvent
+func miqt_exec_callback_QLocalSocket_customEvent(self *C.QLocalSocket, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -968,18 +968,18 @@ func miqt_exec_callback_QLocalSocket_CustomEvent(self *C.QLocalSocket, cb C.intp
 
 func (this *QLocalSocket) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QLocalSocket_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QLocalSocket_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QLocalSocket) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QLocalSocket_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QLocalSocket_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_ConnectNotify
-func miqt_exec_callback_QLocalSocket_ConnectNotify(self *C.QLocalSocket, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QLocalSocket_connectNotify
+func miqt_exec_callback_QLocalSocket_connectNotify(self *C.QLocalSocket, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -994,18 +994,18 @@ func miqt_exec_callback_QLocalSocket_ConnectNotify(self *C.QLocalSocket, cb C.in
 
 func (this *QLocalSocket) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QLocalSocket_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QLocalSocket_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QLocalSocket) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QLocalSocket_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLocalSocket) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QLocalSocket_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLocalSocket_DisconnectNotify
-func miqt_exec_callback_QLocalSocket_DisconnectNotify(self *C.QLocalSocket, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QLocalSocket_disconnectNotify
+func miqt_exec_callback_QLocalSocket_disconnectNotify(self *C.QLocalSocket, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1020,7 +1020,7 @@ func miqt_exec_callback_QLocalSocket_DisconnectNotify(self *C.QLocalSocket, cb C
 
 // Delete this object from C++ memory.
 func (this *QLocalSocket) Delete() {
-	C.QLocalSocket_Delete(this.h)
+	C.QLocalSocket_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

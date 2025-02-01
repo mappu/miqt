@@ -31,28 +31,28 @@ typedef struct QTransform QTransform;
 QStaticText* QStaticText_new();
 QStaticText* QStaticText_new2(struct miqt_string text);
 QStaticText* QStaticText_new3(QStaticText* other);
-void QStaticText_OperatorAssign(QStaticText* self, QStaticText* param1);
-void QStaticText_Swap(QStaticText* self, QStaticText* other);
-void QStaticText_SetText(QStaticText* self, struct miqt_string text);
-struct miqt_string QStaticText_Text(const QStaticText* self);
-void QStaticText_SetTextFormat(QStaticText* self, int textFormat);
-int QStaticText_TextFormat(const QStaticText* self);
-void QStaticText_SetTextWidth(QStaticText* self, double textWidth);
-double QStaticText_TextWidth(const QStaticText* self);
-void QStaticText_SetTextOption(QStaticText* self, QTextOption* textOption);
-QTextOption* QStaticText_TextOption(const QStaticText* self);
-QSizeF* QStaticText_Size(const QStaticText* self);
-void QStaticText_Prepare(QStaticText* self);
-void QStaticText_SetPerformanceHint(QStaticText* self, int performanceHint);
-int QStaticText_PerformanceHint(const QStaticText* self);
-bool QStaticText_OperatorEqual(const QStaticText* self, QStaticText* param1);
-bool QStaticText_OperatorNotEqual(const QStaticText* self, QStaticText* param1);
-void QStaticText_Prepare1(QStaticText* self, QTransform* matrix);
-void QStaticText_Prepare2(QStaticText* self, QTransform* matrix, QFont* font);
-void QStaticText_Delete(QStaticText* self);
+void QStaticText_operatorAssign(QStaticText* self, QStaticText* param1);
+void QStaticText_swap(QStaticText* self, QStaticText* other);
+void QStaticText_setText(QStaticText* self, struct miqt_string text);
+struct miqt_string QStaticText_text(const QStaticText* self);
+void QStaticText_setTextFormat(QStaticText* self, int textFormat);
+int QStaticText_textFormat(const QStaticText* self);
+void QStaticText_setTextWidth(QStaticText* self, double textWidth);
+double QStaticText_textWidth(const QStaticText* self);
+void QStaticText_setTextOption(QStaticText* self, QTextOption* textOption);
+QTextOption* QStaticText_textOption(const QStaticText* self);
+QSizeF* QStaticText_size(const QStaticText* self);
+void QStaticText_prepare(QStaticText* self);
+void QStaticText_setPerformanceHint(QStaticText* self, int performanceHint);
+int QStaticText_performanceHint(const QStaticText* self);
+bool QStaticText_operatorEqual(const QStaticText* self, QStaticText* param1);
+bool QStaticText_operatorNotEqual(const QStaticText* self, QStaticText* param1);
+void QStaticText_prepare1(QStaticText* self, QTransform* matrix);
+void QStaticText_prepare2(QStaticText* self, QTransform* matrix, QFont* font);
+void QStaticText_delete(QStaticText* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

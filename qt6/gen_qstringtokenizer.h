@@ -24,6 +24,6 @@ QStringTokenizerBaseBase* QStringTokenizerBaseBase_new(QStringTokenizerBaseBase*
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

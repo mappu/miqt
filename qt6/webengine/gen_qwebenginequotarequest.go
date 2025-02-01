@@ -59,34 +59,34 @@ func NewQWebEngineQuotaRequest2(param1 *QWebEngineQuotaRequest) *QWebEngineQuota
 }
 
 func (this *QWebEngineQuotaRequest) Accept() {
-	C.QWebEngineQuotaRequest_Accept(this.h)
+	C.QWebEngineQuotaRequest_accept(this.h)
 }
 
 func (this *QWebEngineQuotaRequest) Reject() {
-	C.QWebEngineQuotaRequest_Reject(this.h)
+	C.QWebEngineQuotaRequest_reject(this.h)
 }
 
 func (this *QWebEngineQuotaRequest) Origin() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineQuotaRequest_Origin(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineQuotaRequest_origin(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineQuotaRequest) RequestedSize() int64 {
-	return (int64)(C.QWebEngineQuotaRequest_RequestedSize(this.h))
+	return (int64)(C.QWebEngineQuotaRequest_requestedSize(this.h))
 }
 
 func (this *QWebEngineQuotaRequest) OperatorEqual(that *QWebEngineQuotaRequest) bool {
-	return (bool)(C.QWebEngineQuotaRequest_OperatorEqual(this.h, that.cPointer()))
+	return (bool)(C.QWebEngineQuotaRequest_operatorEqual(this.h, that.cPointer()))
 }
 
 func (this *QWebEngineQuotaRequest) OperatorNotEqual(that *QWebEngineQuotaRequest) bool {
-	return (bool)(C.QWebEngineQuotaRequest_OperatorNotEqual(this.h, that.cPointer()))
+	return (bool)(C.QWebEngineQuotaRequest_operatorNotEqual(this.h, that.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QWebEngineQuotaRequest) Delete() {
-	C.QWebEngineQuotaRequest_Delete(this.h)
+	C.QWebEngineQuotaRequest_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

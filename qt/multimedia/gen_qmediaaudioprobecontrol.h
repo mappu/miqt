@@ -29,22 +29,22 @@ typedef struct QObject QObject;
 #endif
 
 void QMediaAudioProbeControl_virtbase(QMediaAudioProbeControl* src, QMediaControl** outptr_QMediaControl);
-QMetaObject* QMediaAudioProbeControl_MetaObject(const QMediaAudioProbeControl* self);
-void* QMediaAudioProbeControl_Metacast(QMediaAudioProbeControl* self, const char* param1);
-struct miqt_string QMediaAudioProbeControl_Tr(const char* s);
-struct miqt_string QMediaAudioProbeControl_TrUtf8(const char* s);
-void QMediaAudioProbeControl_AudioBufferProbed(QMediaAudioProbeControl* self, QAudioBuffer* buffer);
-void QMediaAudioProbeControl_connect_AudioBufferProbed(QMediaAudioProbeControl* self, intptr_t slot);
-void QMediaAudioProbeControl_Flush(QMediaAudioProbeControl* self);
-void QMediaAudioProbeControl_connect_Flush(QMediaAudioProbeControl* self, intptr_t slot);
-struct miqt_string QMediaAudioProbeControl_Tr2(const char* s, const char* c);
-struct miqt_string QMediaAudioProbeControl_Tr3(const char* s, const char* c, int n);
-struct miqt_string QMediaAudioProbeControl_TrUtf82(const char* s, const char* c);
-struct miqt_string QMediaAudioProbeControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaAudioProbeControl_Delete(QMediaAudioProbeControl* self);
+QMetaObject* QMediaAudioProbeControl_metaObject(const QMediaAudioProbeControl* self);
+void* QMediaAudioProbeControl_metacast(QMediaAudioProbeControl* self, const char* param1);
+struct miqt_string QMediaAudioProbeControl_tr(const char* s);
+struct miqt_string QMediaAudioProbeControl_trUtf8(const char* s);
+void QMediaAudioProbeControl_audioBufferProbed(QMediaAudioProbeControl* self, QAudioBuffer* buffer);
+void QMediaAudioProbeControl_connect_audioBufferProbed(QMediaAudioProbeControl* self, intptr_t slot);
+void QMediaAudioProbeControl_flush(QMediaAudioProbeControl* self);
+void QMediaAudioProbeControl_connect_flush(QMediaAudioProbeControl* self, intptr_t slot);
+struct miqt_string QMediaAudioProbeControl_tr2(const char* s, const char* c);
+struct miqt_string QMediaAudioProbeControl_tr3(const char* s, const char* c, int n);
+struct miqt_string QMediaAudioProbeControl_trUtf82(const char* s, const char* c);
+struct miqt_string QMediaAudioProbeControl_trUtf83(const char* s, const char* c, int n);
+void QMediaAudioProbeControl_delete(QMediaAudioProbeControl* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

@@ -25,18 +25,18 @@ typedef struct QIODevice QIODevice;
 #endif
 
 QCryptographicHash* QCryptographicHash_new(int method);
-void QCryptographicHash_Reset(QCryptographicHash* self);
-void QCryptographicHash_AddData(QCryptographicHash* self, const char* data, ptrdiff_t length);
-void QCryptographicHash_AddDataWithData(QCryptographicHash* self, QByteArrayView* data);
-bool QCryptographicHash_AddDataWithDevice(QCryptographicHash* self, QIODevice* device);
-struct miqt_string QCryptographicHash_Result(const QCryptographicHash* self);
-QByteArrayView* QCryptographicHash_ResultView(const QCryptographicHash* self);
-struct miqt_string QCryptographicHash_Hash(QByteArrayView* data, int method);
-int QCryptographicHash_HashLength(int method);
-void QCryptographicHash_Delete(QCryptographicHash* self);
+void QCryptographicHash_reset(QCryptographicHash* self);
+void QCryptographicHash_addData(QCryptographicHash* self, const char* data, ptrdiff_t length);
+void QCryptographicHash_addDataWithData(QCryptographicHash* self, QByteArrayView* data);
+bool QCryptographicHash_addDataWithDevice(QCryptographicHash* self, QIODevice* device);
+struct miqt_string QCryptographicHash_result(const QCryptographicHash* self);
+QByteArrayView* QCryptographicHash_resultView(const QCryptographicHash* self);
+struct miqt_string QCryptographicHash_hash(QByteArrayView* data, int method);
+int QCryptographicHash_hashLength(int method);
+void QCryptographicHash_delete(QCryptographicHash* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

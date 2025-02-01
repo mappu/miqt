@@ -21,19 +21,19 @@ typedef struct QLockFile QLockFile;
 #endif
 
 QLockFile* QLockFile_new(struct miqt_string fileName);
-bool QLockFile_Lock(QLockFile* self);
-bool QLockFile_TryLock(QLockFile* self);
-void QLockFile_Unlock(QLockFile* self);
-void QLockFile_SetStaleLockTime(QLockFile* self, int staleLockTime);
-int QLockFile_StaleLockTime(const QLockFile* self);
-bool QLockFile_IsLocked(const QLockFile* self);
-bool QLockFile_RemoveStaleLockFile(QLockFile* self);
-int QLockFile_Error(const QLockFile* self);
-bool QLockFile_TryLock1(QLockFile* self, int timeout);
-void QLockFile_Delete(QLockFile* self);
+bool QLockFile_lock(QLockFile* self);
+bool QLockFile_tryLock(QLockFile* self);
+void QLockFile_unlock(QLockFile* self);
+void QLockFile_setStaleLockTime(QLockFile* self, int staleLockTime);
+int QLockFile_staleLockTime(const QLockFile* self);
+bool QLockFile_isLocked(const QLockFile* self);
+bool QLockFile_removeStaleLockFile(QLockFile* self);
+int QLockFile_error(const QLockFile* self);
+bool QLockFile_tryLock1(QLockFile* self, int timeout);
+void QLockFile_delete(QLockFile* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

@@ -18,30 +18,30 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QBuffer_Open(QBuffer*, intptr_t, int);
-void miqt_exec_callback_QBuffer_Close(QBuffer*, intptr_t);
-long long miqt_exec_callback_QBuffer_Size(const QBuffer*, intptr_t);
-long long miqt_exec_callback_QBuffer_Pos(const QBuffer*, intptr_t);
-bool miqt_exec_callback_QBuffer_Seek(QBuffer*, intptr_t, long long);
-bool miqt_exec_callback_QBuffer_AtEnd(const QBuffer*, intptr_t);
-bool miqt_exec_callback_QBuffer_CanReadLine(const QBuffer*, intptr_t);
-void miqt_exec_callback_QBuffer_ConnectNotify(QBuffer*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QBuffer_DisconnectNotify(QBuffer*, intptr_t, QMetaMethod*);
-long long miqt_exec_callback_QBuffer_ReadData(QBuffer*, intptr_t, char*, long long);
-long long miqt_exec_callback_QBuffer_WriteData(QBuffer*, intptr_t, const char*, long long);
-bool miqt_exec_callback_QBuffer_IsSequential(const QBuffer*, intptr_t);
-bool miqt_exec_callback_QBuffer_Reset(QBuffer*, intptr_t);
-long long miqt_exec_callback_QBuffer_BytesAvailable(const QBuffer*, intptr_t);
-long long miqt_exec_callback_QBuffer_BytesToWrite(const QBuffer*, intptr_t);
-bool miqt_exec_callback_QBuffer_WaitForReadyRead(QBuffer*, intptr_t, int);
-bool miqt_exec_callback_QBuffer_WaitForBytesWritten(QBuffer*, intptr_t, int);
-long long miqt_exec_callback_QBuffer_ReadLineData(QBuffer*, intptr_t, char*, long long);
-long long miqt_exec_callback_QBuffer_SkipData(QBuffer*, intptr_t, long long);
-bool miqt_exec_callback_QBuffer_Event(QBuffer*, intptr_t, QEvent*);
-bool miqt_exec_callback_QBuffer_EventFilter(QBuffer*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QBuffer_TimerEvent(QBuffer*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QBuffer_ChildEvent(QBuffer*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QBuffer_CustomEvent(QBuffer*, intptr_t, QEvent*);
+bool miqt_exec_callback_QBuffer_open(QBuffer*, intptr_t, int);
+void miqt_exec_callback_QBuffer_close(QBuffer*, intptr_t);
+long long miqt_exec_callback_QBuffer_size(const QBuffer*, intptr_t);
+long long miqt_exec_callback_QBuffer_pos(const QBuffer*, intptr_t);
+bool miqt_exec_callback_QBuffer_seek(QBuffer*, intptr_t, long long);
+bool miqt_exec_callback_QBuffer_atEnd(const QBuffer*, intptr_t);
+bool miqt_exec_callback_QBuffer_canReadLine(const QBuffer*, intptr_t);
+void miqt_exec_callback_QBuffer_connectNotify(QBuffer*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QBuffer_disconnectNotify(QBuffer*, intptr_t, QMetaMethod*);
+long long miqt_exec_callback_QBuffer_readData(QBuffer*, intptr_t, char*, long long);
+long long miqt_exec_callback_QBuffer_writeData(QBuffer*, intptr_t, const char*, long long);
+bool miqt_exec_callback_QBuffer_isSequential(const QBuffer*, intptr_t);
+bool miqt_exec_callback_QBuffer_reset(QBuffer*, intptr_t);
+long long miqt_exec_callback_QBuffer_bytesAvailable(const QBuffer*, intptr_t);
+long long miqt_exec_callback_QBuffer_bytesToWrite(const QBuffer*, intptr_t);
+bool miqt_exec_callback_QBuffer_waitForReadyRead(QBuffer*, intptr_t, int);
+bool miqt_exec_callback_QBuffer_waitForBytesWritten(QBuffer*, intptr_t, int);
+long long miqt_exec_callback_QBuffer_readLineData(QBuffer*, intptr_t, char*, long long);
+long long miqt_exec_callback_QBuffer_skipData(QBuffer*, intptr_t, long long);
+bool miqt_exec_callback_QBuffer_event(QBuffer*, intptr_t, QEvent*);
+bool miqt_exec_callback_QBuffer_eventFilter(QBuffer*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QBuffer_timerEvent(QBuffer*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QBuffer_childEvent(QBuffer*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QBuffer_customEvent(QBuffer*, intptr_t, QEvent*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -55,69 +55,69 @@ public:
 	virtual ~MiqtVirtualQBuffer() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Open = 0;
+	intptr_t handle__open = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool open(QIODeviceBase::OpenMode openMode) override {
-		if (handle__Open == 0) {
+		if (handle__open == 0) {
 			return QBuffer::open(openMode);
 		}
 		
 		QIODeviceBase::OpenMode openMode_ret = openMode;
 		int sigval1 = static_cast<int>(openMode_ret);
 
-		bool callback_return_value = miqt_exec_callback_QBuffer_Open(this, handle__Open, sigval1);
+		bool callback_return_value = miqt_exec_callback_QBuffer_open(this, handle__open, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Open(int openMode) {
+	bool virtualbase_open(int openMode) {
 
 		return QBuffer::open(static_cast<QIODeviceBase::OpenMode>(openMode));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Close = 0;
+	intptr_t handle__close = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void close() override {
-		if (handle__Close == 0) {
+		if (handle__close == 0) {
 			QBuffer::close();
 			return;
 		}
 		
 
-		miqt_exec_callback_QBuffer_Close(this, handle__Close);
+		miqt_exec_callback_QBuffer_close(this, handle__close);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_Close() {
+	void virtualbase_close() {
 
 		QBuffer::close();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Size = 0;
+	intptr_t handle__size = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual qint64 size() const override {
-		if (handle__Size == 0) {
+		if (handle__size == 0) {
 			return QBuffer::size();
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QBuffer_Size(this, handle__Size);
+		long long callback_return_value = miqt_exec_callback_QBuffer_size(this, handle__size);
 
 		return static_cast<qint64>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	long long virtualbase_Size() const {
+	long long virtualbase_size() const {
 
 		qint64 _ret = QBuffer::size();
 		return static_cast<long long>(_ret);
@@ -125,22 +125,22 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Pos = 0;
+	intptr_t handle__pos = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual qint64 pos() const override {
-		if (handle__Pos == 0) {
+		if (handle__pos == 0) {
 			return QBuffer::pos();
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QBuffer_Pos(this, handle__Pos);
+		long long callback_return_value = miqt_exec_callback_QBuffer_pos(this, handle__pos);
 
 		return static_cast<qint64>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	long long virtualbase_Pos() const {
+	long long virtualbase_pos() const {
 
 		qint64 _ret = QBuffer::pos();
 		return static_cast<long long>(_ret);
@@ -148,79 +148,79 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Seek = 0;
+	intptr_t handle__seek = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool seek(qint64 off) override {
-		if (handle__Seek == 0) {
+		if (handle__seek == 0) {
 			return QBuffer::seek(off);
 		}
 		
 		qint64 off_ret = off;
 		long long sigval1 = static_cast<long long>(off_ret);
 
-		bool callback_return_value = miqt_exec_callback_QBuffer_Seek(this, handle__Seek, sigval1);
+		bool callback_return_value = miqt_exec_callback_QBuffer_seek(this, handle__seek, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Seek(long long off) {
+	bool virtualbase_seek(long long off) {
 
 		return QBuffer::seek(static_cast<qint64>(off));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__AtEnd = 0;
+	intptr_t handle__atEnd = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool atEnd() const override {
-		if (handle__AtEnd == 0) {
+		if (handle__atEnd == 0) {
 			return QBuffer::atEnd();
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QBuffer_AtEnd(this, handle__AtEnd);
+		bool callback_return_value = miqt_exec_callback_QBuffer_atEnd(this, handle__atEnd);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_AtEnd() const {
+	bool virtualbase_atEnd() const {
 
 		return QBuffer::atEnd();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CanReadLine = 0;
+	intptr_t handle__canReadLine = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool canReadLine() const override {
-		if (handle__CanReadLine == 0) {
+		if (handle__canReadLine == 0) {
 			return QBuffer::canReadLine();
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QBuffer_CanReadLine(this, handle__CanReadLine);
+		bool callback_return_value = miqt_exec_callback_QBuffer_canReadLine(this, handle__canReadLine);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_CanReadLine() const {
+	bool virtualbase_canReadLine() const {
 
 		return QBuffer::canReadLine();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& param1) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QBuffer::connectNotify(param1);
 			return;
 		}
@@ -229,24 +229,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&param1_ret);
 
-		miqt_exec_callback_QBuffer_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QBuffer_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* param1) {
+	void virtualbase_connectNotify(QMetaMethod* param1) {
 
 		QBuffer::connectNotify(*param1);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& param1) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QBuffer::disconnectNotify(param1);
 			return;
 		}
@@ -255,24 +255,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&param1_ret);
 
-		miqt_exec_callback_QBuffer_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QBuffer_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* param1) {
+	void virtualbase_disconnectNotify(QMetaMethod* param1) {
 
 		QBuffer::disconnectNotify(*param1);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ReadData = 0;
+	intptr_t handle__readData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual qint64 readData(char* data, qint64 maxlen) override {
-		if (handle__ReadData == 0) {
+		if (handle__readData == 0) {
 			return QBuffer::readData(data, maxlen);
 		}
 		
@@ -280,13 +280,13 @@ public:
 		qint64 maxlen_ret = maxlen;
 		long long sigval2 = static_cast<long long>(maxlen_ret);
 
-		long long callback_return_value = miqt_exec_callback_QBuffer_ReadData(this, handle__ReadData, sigval1, sigval2);
+		long long callback_return_value = miqt_exec_callback_QBuffer_readData(this, handle__readData, sigval1, sigval2);
 
 		return static_cast<qint64>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	long long virtualbase_ReadData(char* data, long long maxlen) {
+	long long virtualbase_readData(char* data, long long maxlen) {
 
 		qint64 _ret = QBuffer::readData(data, static_cast<qint64>(maxlen));
 		return static_cast<long long>(_ret);
@@ -294,92 +294,92 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__WriteData = 0;
+	intptr_t handle__writeData = 0;
 
 	// Subclass to allow providing a Go implementation
-	virtual qint64 writeData(const char* data, qint64 lenVal) override {
-		if (handle__WriteData == 0) {
-			return QBuffer::writeData(data, lenVal);
+	virtual qint64 writeData(const char* data, qint64 len) override {
+		if (handle__writeData == 0) {
+			return QBuffer::writeData(data, len);
 		}
 		
 		const char* sigval1 = (const char*) data;
-		qint64 lenVal_ret = lenVal;
-		long long sigval2 = static_cast<long long>(lenVal_ret);
+		qint64 len_ret = len;
+		long long sigval2 = static_cast<long long>(len_ret);
 
-		long long callback_return_value = miqt_exec_callback_QBuffer_WriteData(this, handle__WriteData, sigval1, sigval2);
+		long long callback_return_value = miqt_exec_callback_QBuffer_writeData(this, handle__writeData, sigval1, sigval2);
 
 		return static_cast<qint64>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	long long virtualbase_WriteData(const char* data, long long lenVal) {
+	long long virtualbase_writeData(const char* data, long long len) {
 
-		qint64 _ret = QBuffer::writeData(data, static_cast<qint64>(lenVal));
+		qint64 _ret = QBuffer::writeData(data, static_cast<qint64>(len));
 		return static_cast<long long>(_ret);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__IsSequential = 0;
+	intptr_t handle__isSequential = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool isSequential() const override {
-		if (handle__IsSequential == 0) {
+		if (handle__isSequential == 0) {
 			return QBuffer::isSequential();
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QBuffer_IsSequential(this, handle__IsSequential);
+		bool callback_return_value = miqt_exec_callback_QBuffer_isSequential(this, handle__isSequential);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_IsSequential() const {
+	bool virtualbase_isSequential() const {
 
 		return QBuffer::isSequential();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Reset = 0;
+	intptr_t handle__reset = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool reset() override {
-		if (handle__Reset == 0) {
+		if (handle__reset == 0) {
 			return QBuffer::reset();
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QBuffer_Reset(this, handle__Reset);
+		bool callback_return_value = miqt_exec_callback_QBuffer_reset(this, handle__reset);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Reset() {
+	bool virtualbase_reset() {
 
 		return QBuffer::reset();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__BytesAvailable = 0;
+	intptr_t handle__bytesAvailable = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual qint64 bytesAvailable() const override {
-		if (handle__BytesAvailable == 0) {
+		if (handle__bytesAvailable == 0) {
 			return QBuffer::bytesAvailable();
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QBuffer_BytesAvailable(this, handle__BytesAvailable);
+		long long callback_return_value = miqt_exec_callback_QBuffer_bytesAvailable(this, handle__bytesAvailable);
 
 		return static_cast<qint64>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	long long virtualbase_BytesAvailable() const {
+	long long virtualbase_bytesAvailable() const {
 
 		qint64 _ret = QBuffer::bytesAvailable();
 		return static_cast<long long>(_ret);
@@ -387,22 +387,22 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__BytesToWrite = 0;
+	intptr_t handle__bytesToWrite = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual qint64 bytesToWrite() const override {
-		if (handle__BytesToWrite == 0) {
+		if (handle__bytesToWrite == 0) {
 			return QBuffer::bytesToWrite();
 		}
 		
 
-		long long callback_return_value = miqt_exec_callback_QBuffer_BytesToWrite(this, handle__BytesToWrite);
+		long long callback_return_value = miqt_exec_callback_QBuffer_bytesToWrite(this, handle__bytesToWrite);
 
 		return static_cast<qint64>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	long long virtualbase_BytesToWrite() const {
+	long long virtualbase_bytesToWrite() const {
 
 		qint64 _ret = QBuffer::bytesToWrite();
 		return static_cast<long long>(_ret);
@@ -410,57 +410,57 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__WaitForReadyRead = 0;
+	intptr_t handle__waitForReadyRead = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool waitForReadyRead(int msecs) override {
-		if (handle__WaitForReadyRead == 0) {
+		if (handle__waitForReadyRead == 0) {
 			return QBuffer::waitForReadyRead(msecs);
 		}
 		
 		int sigval1 = msecs;
 
-		bool callback_return_value = miqt_exec_callback_QBuffer_WaitForReadyRead(this, handle__WaitForReadyRead, sigval1);
+		bool callback_return_value = miqt_exec_callback_QBuffer_waitForReadyRead(this, handle__waitForReadyRead, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_WaitForReadyRead(int msecs) {
+	bool virtualbase_waitForReadyRead(int msecs) {
 
 		return QBuffer::waitForReadyRead(static_cast<int>(msecs));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__WaitForBytesWritten = 0;
+	intptr_t handle__waitForBytesWritten = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool waitForBytesWritten(int msecs) override {
-		if (handle__WaitForBytesWritten == 0) {
+		if (handle__waitForBytesWritten == 0) {
 			return QBuffer::waitForBytesWritten(msecs);
 		}
 		
 		int sigval1 = msecs;
 
-		bool callback_return_value = miqt_exec_callback_QBuffer_WaitForBytesWritten(this, handle__WaitForBytesWritten, sigval1);
+		bool callback_return_value = miqt_exec_callback_QBuffer_waitForBytesWritten(this, handle__waitForBytesWritten, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_WaitForBytesWritten(int msecs) {
+	bool virtualbase_waitForBytesWritten(int msecs) {
 
 		return QBuffer::waitForBytesWritten(static_cast<int>(msecs));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ReadLineData = 0;
+	intptr_t handle__readLineData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual qint64 readLineData(char* data, qint64 maxlen) override {
-		if (handle__ReadLineData == 0) {
+		if (handle__readLineData == 0) {
 			return QBuffer::readLineData(data, maxlen);
 		}
 		
@@ -468,13 +468,13 @@ public:
 		qint64 maxlen_ret = maxlen;
 		long long sigval2 = static_cast<long long>(maxlen_ret);
 
-		long long callback_return_value = miqt_exec_callback_QBuffer_ReadLineData(this, handle__ReadLineData, sigval1, sigval2);
+		long long callback_return_value = miqt_exec_callback_QBuffer_readLineData(this, handle__readLineData, sigval1, sigval2);
 
 		return static_cast<qint64>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	long long virtualbase_ReadLineData(char* data, long long maxlen) {
+	long long virtualbase_readLineData(char* data, long long maxlen) {
 
 		qint64 _ret = QBuffer::readLineData(data, static_cast<qint64>(maxlen));
 		return static_cast<long long>(_ret);
@@ -482,24 +482,24 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SkipData = 0;
+	intptr_t handle__skipData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual qint64 skipData(qint64 maxSize) override {
-		if (handle__SkipData == 0) {
+		if (handle__skipData == 0) {
 			return QBuffer::skipData(maxSize);
 		}
 		
 		qint64 maxSize_ret = maxSize;
 		long long sigval1 = static_cast<long long>(maxSize_ret);
 
-		long long callback_return_value = miqt_exec_callback_QBuffer_SkipData(this, handle__SkipData, sigval1);
+		long long callback_return_value = miqt_exec_callback_QBuffer_skipData(this, handle__skipData, sigval1);
 
 		return static_cast<qint64>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	long long virtualbase_SkipData(long long maxSize) {
+	long long virtualbase_skipData(long long maxSize) {
 
 		qint64 _ret = QBuffer::skipData(static_cast<qint64>(maxSize));
 		return static_cast<long long>(_ret);
@@ -507,119 +507,119 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QBuffer::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QBuffer_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QBuffer_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QBuffer::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QBuffer::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QBuffer_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QBuffer_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QBuffer::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QBuffer::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QBuffer_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QBuffer_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QBuffer::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QBuffer::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QBuffer_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QBuffer_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QBuffer::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QBuffer::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QBuffer_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QBuffer_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QBuffer::customEvent(event);
 
@@ -639,15 +639,15 @@ void QBuffer_virtbase(QBuffer* src, QIODevice** outptr_QIODevice) {
 	*outptr_QIODevice = static_cast<QIODevice*>(src);
 }
 
-QMetaObject* QBuffer_MetaObject(const QBuffer* self) {
+QMetaObject* QBuffer_metaObject(const QBuffer* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QBuffer_Metacast(QBuffer* self, const char* param1) {
+void* QBuffer_metacast(QBuffer* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QBuffer_Tr(const char* s) {
+struct miqt_string QBuffer_tr(const char* s) {
 	QString _ret = QBuffer::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -658,7 +658,7 @@ struct miqt_string QBuffer_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QBuffer_Buffer(QBuffer* self) {
+struct miqt_string QBuffer_buffer(QBuffer* self) {
 	QByteArray _qb = self->buffer();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -667,7 +667,7 @@ struct miqt_string QBuffer_Buffer(QBuffer* self) {
 	return _ms;
 }
 
-struct miqt_string QBuffer_Buffer2(const QBuffer* self) {
+struct miqt_string QBuffer_buffer2(const QBuffer* self) {
 	const QByteArray _qb = self->buffer();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -676,16 +676,16 @@ struct miqt_string QBuffer_Buffer2(const QBuffer* self) {
 	return _ms;
 }
 
-void QBuffer_SetData(QBuffer* self, struct miqt_string data) {
+void QBuffer_setData(QBuffer* self, struct miqt_string data) {
 	QByteArray data_QByteArray(data.data, data.len);
 	self->setData(data_QByteArray);
 }
 
-void QBuffer_SetData2(QBuffer* self, const char* data, int lenVal) {
-	self->setData(data, static_cast<int>(lenVal));
+void QBuffer_setData2(QBuffer* self, const char* data, int len) {
+	self->setData(data, static_cast<int>(len));
 }
 
-struct miqt_string QBuffer_Data(const QBuffer* self) {
+struct miqt_string QBuffer_data(const QBuffer* self) {
 	const QByteArray _qb = self->data();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -694,37 +694,37 @@ struct miqt_string QBuffer_Data(const QBuffer* self) {
 	return _ms;
 }
 
-bool QBuffer_Open(QBuffer* self, int openMode) {
+bool QBuffer_open(QBuffer* self, int openMode) {
 	return self->open(static_cast<QIODeviceBase::OpenMode>(openMode));
 }
 
-void QBuffer_Close(QBuffer* self) {
+void QBuffer_close(QBuffer* self) {
 	self->close();
 }
 
-long long QBuffer_Size(const QBuffer* self) {
+long long QBuffer_size(const QBuffer* self) {
 	qint64 _ret = self->size();
 	return static_cast<long long>(_ret);
 }
 
-long long QBuffer_Pos(const QBuffer* self) {
+long long QBuffer_pos(const QBuffer* self) {
 	qint64 _ret = self->pos();
 	return static_cast<long long>(_ret);
 }
 
-bool QBuffer_Seek(QBuffer* self, long long off) {
+bool QBuffer_seek(QBuffer* self, long long off) {
 	return self->seek(static_cast<qint64>(off));
 }
 
-bool QBuffer_AtEnd(const QBuffer* self) {
+bool QBuffer_atEnd(const QBuffer* self) {
 	return self->atEnd();
 }
 
-bool QBuffer_CanReadLine(const QBuffer* self) {
+bool QBuffer_canReadLine(const QBuffer* self) {
 	return self->canReadLine();
 }
 
-struct miqt_string QBuffer_Tr2(const char* s, const char* c) {
+struct miqt_string QBuffer_tr2(const char* s, const char* c) {
 	QString _ret = QBuffer::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -735,7 +735,7 @@ struct miqt_string QBuffer_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QBuffer_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QBuffer_tr3(const char* s, const char* c, int n) {
 	QString _ret = QBuffer::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -746,343 +746,343 @@ struct miqt_string QBuffer_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QBuffer_override_virtual_Open(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_open(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Open = slot;
+	self_cast->handle__open = slot;
 	return true;
 }
 
-bool QBuffer_virtualbase_Open(void* self, int openMode) {
-	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_Open(openMode);
+bool QBuffer_virtualbase_open(void* self, int openMode) {
+	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_open(openMode);
 }
 
-bool QBuffer_override_virtual_Close(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_close(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Close = slot;
+	self_cast->handle__close = slot;
 	return true;
 }
 
-void QBuffer_virtualbase_Close(void* self) {
-	( (MiqtVirtualQBuffer*)(self) )->virtualbase_Close();
+void QBuffer_virtualbase_close(void* self) {
+	( (MiqtVirtualQBuffer*)(self) )->virtualbase_close();
 }
 
-bool QBuffer_override_virtual_Size(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_size(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Size = slot;
+	self_cast->handle__size = slot;
 	return true;
 }
 
-long long QBuffer_virtualbase_Size(const void* self) {
-	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_Size();
+long long QBuffer_virtualbase_size(const void* self) {
+	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_size();
 }
 
-bool QBuffer_override_virtual_Pos(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_pos(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Pos = slot;
+	self_cast->handle__pos = slot;
 	return true;
 }
 
-long long QBuffer_virtualbase_Pos(const void* self) {
-	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_Pos();
+long long QBuffer_virtualbase_pos(const void* self) {
+	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_pos();
 }
 
-bool QBuffer_override_virtual_Seek(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_seek(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Seek = slot;
+	self_cast->handle__seek = slot;
 	return true;
 }
 
-bool QBuffer_virtualbase_Seek(void* self, long long off) {
-	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_Seek(off);
+bool QBuffer_virtualbase_seek(void* self, long long off) {
+	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_seek(off);
 }
 
-bool QBuffer_override_virtual_AtEnd(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_atEnd(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__AtEnd = slot;
+	self_cast->handle__atEnd = slot;
 	return true;
 }
 
-bool QBuffer_virtualbase_AtEnd(const void* self) {
-	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_AtEnd();
+bool QBuffer_virtualbase_atEnd(const void* self) {
+	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_atEnd();
 }
 
-bool QBuffer_override_virtual_CanReadLine(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_canReadLine(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CanReadLine = slot;
+	self_cast->handle__canReadLine = slot;
 	return true;
 }
 
-bool QBuffer_virtualbase_CanReadLine(const void* self) {
-	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_CanReadLine();
+bool QBuffer_virtualbase_canReadLine(const void* self) {
+	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_canReadLine();
 }
 
-bool QBuffer_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QBuffer_virtualbase_ConnectNotify(void* self, QMetaMethod* param1) {
-	( (MiqtVirtualQBuffer*)(self) )->virtualbase_ConnectNotify(param1);
+void QBuffer_virtualbase_connectNotify(void* self, QMetaMethod* param1) {
+	( (MiqtVirtualQBuffer*)(self) )->virtualbase_connectNotify(param1);
 }
 
-bool QBuffer_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QBuffer_virtualbase_DisconnectNotify(void* self, QMetaMethod* param1) {
-	( (MiqtVirtualQBuffer*)(self) )->virtualbase_DisconnectNotify(param1);
+void QBuffer_virtualbase_disconnectNotify(void* self, QMetaMethod* param1) {
+	( (MiqtVirtualQBuffer*)(self) )->virtualbase_disconnectNotify(param1);
 }
 
-bool QBuffer_override_virtual_ReadData(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_readData(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ReadData = slot;
+	self_cast->handle__readData = slot;
 	return true;
 }
 
-long long QBuffer_virtualbase_ReadData(void* self, char* data, long long maxlen) {
-	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_ReadData(data, maxlen);
+long long QBuffer_virtualbase_readData(void* self, char* data, long long maxlen) {
+	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_readData(data, maxlen);
 }
 
-bool QBuffer_override_virtual_WriteData(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_writeData(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__WriteData = slot;
+	self_cast->handle__writeData = slot;
 	return true;
 }
 
-long long QBuffer_virtualbase_WriteData(void* self, const char* data, long long lenVal) {
-	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_WriteData(data, lenVal);
+long long QBuffer_virtualbase_writeData(void* self, const char* data, long long len) {
+	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_writeData(data, len);
 }
 
-bool QBuffer_override_virtual_IsSequential(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_isSequential(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__IsSequential = slot;
+	self_cast->handle__isSequential = slot;
 	return true;
 }
 
-bool QBuffer_virtualbase_IsSequential(const void* self) {
-	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_IsSequential();
+bool QBuffer_virtualbase_isSequential(const void* self) {
+	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_isSequential();
 }
 
-bool QBuffer_override_virtual_Reset(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_reset(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Reset = slot;
+	self_cast->handle__reset = slot;
 	return true;
 }
 
-bool QBuffer_virtualbase_Reset(void* self) {
-	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_Reset();
+bool QBuffer_virtualbase_reset(void* self) {
+	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_reset();
 }
 
-bool QBuffer_override_virtual_BytesAvailable(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_bytesAvailable(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__BytesAvailable = slot;
+	self_cast->handle__bytesAvailable = slot;
 	return true;
 }
 
-long long QBuffer_virtualbase_BytesAvailable(const void* self) {
-	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_BytesAvailable();
+long long QBuffer_virtualbase_bytesAvailable(const void* self) {
+	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_bytesAvailable();
 }
 
-bool QBuffer_override_virtual_BytesToWrite(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_bytesToWrite(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__BytesToWrite = slot;
+	self_cast->handle__bytesToWrite = slot;
 	return true;
 }
 
-long long QBuffer_virtualbase_BytesToWrite(const void* self) {
-	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_BytesToWrite();
+long long QBuffer_virtualbase_bytesToWrite(const void* self) {
+	return ( (const MiqtVirtualQBuffer*)(self) )->virtualbase_bytesToWrite();
 }
 
-bool QBuffer_override_virtual_WaitForReadyRead(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__WaitForReadyRead = slot;
+	self_cast->handle__waitForReadyRead = slot;
 	return true;
 }
 
-bool QBuffer_virtualbase_WaitForReadyRead(void* self, int msecs) {
-	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_WaitForReadyRead(msecs);
+bool QBuffer_virtualbase_waitForReadyRead(void* self, int msecs) {
+	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_waitForReadyRead(msecs);
 }
 
-bool QBuffer_override_virtual_WaitForBytesWritten(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_waitForBytesWritten(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__WaitForBytesWritten = slot;
+	self_cast->handle__waitForBytesWritten = slot;
 	return true;
 }
 
-bool QBuffer_virtualbase_WaitForBytesWritten(void* self, int msecs) {
-	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_WaitForBytesWritten(msecs);
+bool QBuffer_virtualbase_waitForBytesWritten(void* self, int msecs) {
+	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_waitForBytesWritten(msecs);
 }
 
-bool QBuffer_override_virtual_ReadLineData(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_readLineData(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ReadLineData = slot;
+	self_cast->handle__readLineData = slot;
 	return true;
 }
 
-long long QBuffer_virtualbase_ReadLineData(void* self, char* data, long long maxlen) {
-	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_ReadLineData(data, maxlen);
+long long QBuffer_virtualbase_readLineData(void* self, char* data, long long maxlen) {
+	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_readLineData(data, maxlen);
 }
 
-bool QBuffer_override_virtual_SkipData(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_skipData(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SkipData = slot;
+	self_cast->handle__skipData = slot;
 	return true;
 }
 
-long long QBuffer_virtualbase_SkipData(void* self, long long maxSize) {
-	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_SkipData(maxSize);
+long long QBuffer_virtualbase_skipData(void* self, long long maxSize) {
+	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_skipData(maxSize);
 }
 
-bool QBuffer_override_virtual_Event(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QBuffer_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_Event(event);
+bool QBuffer_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_event(event);
 }
 
-bool QBuffer_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QBuffer_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_EventFilter(watched, event);
+bool QBuffer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQBuffer*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QBuffer_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QBuffer_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQBuffer*)(self) )->virtualbase_TimerEvent(event);
+void QBuffer_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQBuffer*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QBuffer_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QBuffer_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQBuffer*)(self) )->virtualbase_ChildEvent(event);
+void QBuffer_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQBuffer*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QBuffer_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QBuffer_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQBuffer* self_cast = dynamic_cast<MiqtVirtualQBuffer*>( (QBuffer*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QBuffer_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQBuffer*)(self) )->virtualbase_CustomEvent(event);
+void QBuffer_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQBuffer*)(self) )->virtualbase_customEvent(event);
 }
 
-void QBuffer_Delete(QBuffer* self) {
+void QBuffer_delete(QBuffer* self) {
 	delete self;
 }
 

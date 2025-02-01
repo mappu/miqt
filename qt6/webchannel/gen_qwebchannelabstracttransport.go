@@ -64,37 +64,37 @@ func NewQWebChannelAbstractTransport2(parent *qt6.QObject) *QWebChannelAbstractT
 }
 
 func (this *QWebChannelAbstractTransport) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebChannelAbstractTransport_MetaObject(this.h)))
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebChannelAbstractTransport_metaObject(this.h)))
 }
 
 func (this *QWebChannelAbstractTransport) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWebChannelAbstractTransport_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWebChannelAbstractTransport_metacast(this.h, param1_Cstring))
 }
 
 func QWebChannelAbstractTransport_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebChannelAbstractTransport_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebChannelAbstractTransport_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebChannelAbstractTransport) SendMessage(message *qt6.QJsonObject) {
-	C.QWebChannelAbstractTransport_SendMessage(this.h, (*C.QJsonObject)(message.UnsafePointer()))
+	C.QWebChannelAbstractTransport_sendMessage(this.h, (*C.QJsonObject)(message.UnsafePointer()))
 }
 
 func (this *QWebChannelAbstractTransport) MessageReceived(message *qt6.QJsonObject, transport *QWebChannelAbstractTransport) {
-	C.QWebChannelAbstractTransport_MessageReceived(this.h, (*C.QJsonObject)(message.UnsafePointer()), transport.cPointer())
+	C.QWebChannelAbstractTransport_messageReceived(this.h, (*C.QJsonObject)(message.UnsafePointer()), transport.cPointer())
 }
 func (this *QWebChannelAbstractTransport) OnMessageReceived(slot func(message *qt6.QJsonObject, transport *QWebChannelAbstractTransport)) {
-	C.QWebChannelAbstractTransport_connect_MessageReceived(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebChannelAbstractTransport_connect_messageReceived(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebChannelAbstractTransport_MessageReceived
-func miqt_exec_callback_QWebChannelAbstractTransport_MessageReceived(cb C.intptr_t, message *C.QJsonObject, transport *C.QWebChannelAbstractTransport) {
+//export miqt_exec_callback_QWebChannelAbstractTransport_messageReceived
+func miqt_exec_callback_QWebChannelAbstractTransport_messageReceived(cb C.intptr_t, message *C.QJsonObject, transport *C.QWebChannelAbstractTransport) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(message *qt6.QJsonObject, transport *QWebChannelAbstractTransport))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -113,7 +113,7 @@ func QWebChannelAbstractTransport_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebChannelAbstractTransport_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebChannelAbstractTransport_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -124,20 +124,20 @@ func QWebChannelAbstractTransport_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebChannelAbstractTransport_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebChannelAbstractTransport_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QWebChannelAbstractTransport) OnSendMessage(slot func(message *qt6.QJsonObject)) {
-	ok := C.QWebChannelAbstractTransport_override_virtual_SendMessage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebChannelAbstractTransport) OnsendMessage(slot func(message *qt6.QJsonObject)) {
+	ok := C.QWebChannelAbstractTransport_override_virtual_sendMessage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebChannelAbstractTransport_SendMessage
-func miqt_exec_callback_QWebChannelAbstractTransport_SendMessage(self *C.QWebChannelAbstractTransport, cb C.intptr_t, message *C.QJsonObject) {
+//export miqt_exec_callback_QWebChannelAbstractTransport_sendMessage
+func miqt_exec_callback_QWebChannelAbstractTransport_sendMessage(self *C.QWebChannelAbstractTransport, cb C.intptr_t, message *C.QJsonObject) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(message *qt6.QJsonObject))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -152,18 +152,18 @@ func miqt_exec_callback_QWebChannelAbstractTransport_SendMessage(self *C.QWebCha
 
 func (this *QWebChannelAbstractTransport) callVirtualBase_Event(event *qt6.QEvent) bool {
 
-	return (bool)(C.QWebChannelAbstractTransport_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QWebChannelAbstractTransport_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QWebChannelAbstractTransport) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
-	ok := C.QWebChannelAbstractTransport_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebChannelAbstractTransport) Onevent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	ok := C.QWebChannelAbstractTransport_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebChannelAbstractTransport_Event
-func miqt_exec_callback_QWebChannelAbstractTransport_Event(self *C.QWebChannelAbstractTransport, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QWebChannelAbstractTransport_event
+func miqt_exec_callback_QWebChannelAbstractTransport_event(self *C.QWebChannelAbstractTransport, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -180,18 +180,18 @@ func miqt_exec_callback_QWebChannelAbstractTransport_Event(self *C.QWebChannelAb
 
 func (this *QWebChannelAbstractTransport) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
 
-	return (bool)(C.QWebChannelAbstractTransport_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QWebChannelAbstractTransport_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QWebChannelAbstractTransport) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	ok := C.QWebChannelAbstractTransport_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebChannelAbstractTransport) OneventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	ok := C.QWebChannelAbstractTransport_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebChannelAbstractTransport_EventFilter
-func miqt_exec_callback_QWebChannelAbstractTransport_EventFilter(self *C.QWebChannelAbstractTransport, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QWebChannelAbstractTransport_eventFilter
+func miqt_exec_callback_QWebChannelAbstractTransport_eventFilter(self *C.QWebChannelAbstractTransport, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -210,18 +210,18 @@ func miqt_exec_callback_QWebChannelAbstractTransport_EventFilter(self *C.QWebCha
 
 func (this *QWebChannelAbstractTransport) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
-	C.QWebChannelAbstractTransport_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QWebChannelAbstractTransport_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebChannelAbstractTransport) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	ok := C.QWebChannelAbstractTransport_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebChannelAbstractTransport) OntimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	ok := C.QWebChannelAbstractTransport_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebChannelAbstractTransport_TimerEvent
-func miqt_exec_callback_QWebChannelAbstractTransport_TimerEvent(self *C.QWebChannelAbstractTransport, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QWebChannelAbstractTransport_timerEvent
+func miqt_exec_callback_QWebChannelAbstractTransport_timerEvent(self *C.QWebChannelAbstractTransport, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -236,18 +236,18 @@ func miqt_exec_callback_QWebChannelAbstractTransport_TimerEvent(self *C.QWebChan
 
 func (this *QWebChannelAbstractTransport) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
-	C.QWebChannelAbstractTransport_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QWebChannelAbstractTransport_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebChannelAbstractTransport) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	ok := C.QWebChannelAbstractTransport_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebChannelAbstractTransport) OnchildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	ok := C.QWebChannelAbstractTransport_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebChannelAbstractTransport_ChildEvent
-func miqt_exec_callback_QWebChannelAbstractTransport_ChildEvent(self *C.QWebChannelAbstractTransport, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QWebChannelAbstractTransport_childEvent
+func miqt_exec_callback_QWebChannelAbstractTransport_childEvent(self *C.QWebChannelAbstractTransport, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -262,18 +262,18 @@ func miqt_exec_callback_QWebChannelAbstractTransport_ChildEvent(self *C.QWebChan
 
 func (this *QWebChannelAbstractTransport) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
-	C.QWebChannelAbstractTransport_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QWebChannelAbstractTransport_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebChannelAbstractTransport) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	ok := C.QWebChannelAbstractTransport_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebChannelAbstractTransport) OncustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	ok := C.QWebChannelAbstractTransport_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebChannelAbstractTransport_CustomEvent
-func miqt_exec_callback_QWebChannelAbstractTransport_CustomEvent(self *C.QWebChannelAbstractTransport, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QWebChannelAbstractTransport_customEvent
+func miqt_exec_callback_QWebChannelAbstractTransport_customEvent(self *C.QWebChannelAbstractTransport, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -288,18 +288,18 @@ func miqt_exec_callback_QWebChannelAbstractTransport_CustomEvent(self *C.QWebCha
 
 func (this *QWebChannelAbstractTransport) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QWebChannelAbstractTransport_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QWebChannelAbstractTransport_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QWebChannelAbstractTransport) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QWebChannelAbstractTransport_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebChannelAbstractTransport) OnconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QWebChannelAbstractTransport_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebChannelAbstractTransport_ConnectNotify
-func miqt_exec_callback_QWebChannelAbstractTransport_ConnectNotify(self *C.QWebChannelAbstractTransport, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QWebChannelAbstractTransport_connectNotify
+func miqt_exec_callback_QWebChannelAbstractTransport_connectNotify(self *C.QWebChannelAbstractTransport, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -314,18 +314,18 @@ func miqt_exec_callback_QWebChannelAbstractTransport_ConnectNotify(self *C.QWebC
 
 func (this *QWebChannelAbstractTransport) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QWebChannelAbstractTransport_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QWebChannelAbstractTransport_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QWebChannelAbstractTransport) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QWebChannelAbstractTransport_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebChannelAbstractTransport) OndisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QWebChannelAbstractTransport_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebChannelAbstractTransport_DisconnectNotify
-func miqt_exec_callback_QWebChannelAbstractTransport_DisconnectNotify(self *C.QWebChannelAbstractTransport, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QWebChannelAbstractTransport_disconnectNotify
+func miqt_exec_callback_QWebChannelAbstractTransport_disconnectNotify(self *C.QWebChannelAbstractTransport, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -340,7 +340,7 @@ func miqt_exec_callback_QWebChannelAbstractTransport_DisconnectNotify(self *C.QW
 
 // Delete this object from C++ memory.
 func (this *QWebChannelAbstractTransport) Delete() {
-	C.QWebChannelAbstractTransport_Delete(this.h)
+	C.QWebChannelAbstractTransport_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

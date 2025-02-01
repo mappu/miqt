@@ -20,29 +20,29 @@ QWebFullScreenRequest* QWebFullScreenRequest_new2(QWebFullScreenRequest* param1)
 	return new QWebFullScreenRequest(*param1);
 }
 
-void QWebFullScreenRequest_Accept(QWebFullScreenRequest* self) {
+void QWebFullScreenRequest_accept(QWebFullScreenRequest* self) {
 	self->accept();
 }
 
-void QWebFullScreenRequest_Reject(QWebFullScreenRequest* self) {
+void QWebFullScreenRequest_reject(QWebFullScreenRequest* self) {
 	self->reject();
 }
 
-bool QWebFullScreenRequest_ToggleOn(const QWebFullScreenRequest* self) {
+bool QWebFullScreenRequest_toggleOn(const QWebFullScreenRequest* self) {
 	return self->toggleOn();
 }
 
-QUrl* QWebFullScreenRequest_Origin(const QWebFullScreenRequest* self) {
+QUrl* QWebFullScreenRequest_origin(const QWebFullScreenRequest* self) {
 	return new QUrl(self->origin());
 }
 
-QWebElement* QWebFullScreenRequest_Element(const QWebFullScreenRequest* self) {
+QWebElement* QWebFullScreenRequest_element(const QWebFullScreenRequest* self) {
 	const QWebElement& _ret = self->element();
 	// Cast returned reference into pointer
 	return const_cast<QWebElement*>(&_ret);
 }
 
-void QWebFullScreenRequest_Delete(QWebFullScreenRequest* self) {
+void QWebFullScreenRequest_delete(QWebFullScreenRequest* self) {
 	delete self;
 }
 

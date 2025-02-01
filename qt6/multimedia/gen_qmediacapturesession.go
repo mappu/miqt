@@ -64,89 +64,89 @@ func NewQMediaCaptureSession2(parent *qt6.QObject) *QMediaCaptureSession {
 }
 
 func (this *QMediaCaptureSession) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaCaptureSession_MetaObject(this.h)))
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaCaptureSession_metaObject(this.h)))
 }
 
 func (this *QMediaCaptureSession) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QMediaCaptureSession_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QMediaCaptureSession_metacast(this.h, param1_Cstring))
 }
 
 func QMediaCaptureSession_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaCaptureSession_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaCaptureSession_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMediaCaptureSession) AudioInput() *QAudioInput {
-	return newQAudioInput(C.QMediaCaptureSession_AudioInput(this.h))
+	return newQAudioInput(C.QMediaCaptureSession_audioInput(this.h))
 }
 
 func (this *QMediaCaptureSession) SetAudioInput(input *QAudioInput) {
-	C.QMediaCaptureSession_SetAudioInput(this.h, input.cPointer())
+	C.QMediaCaptureSession_setAudioInput(this.h, input.cPointer())
 }
 
 func (this *QMediaCaptureSession) Camera() *QCamera {
-	return newQCamera(C.QMediaCaptureSession_Camera(this.h))
+	return newQCamera(C.QMediaCaptureSession_camera(this.h))
 }
 
 func (this *QMediaCaptureSession) SetCamera(camera *QCamera) {
-	C.QMediaCaptureSession_SetCamera(this.h, camera.cPointer())
+	C.QMediaCaptureSession_setCamera(this.h, camera.cPointer())
 }
 
 func (this *QMediaCaptureSession) ImageCapture() *QImageCapture {
-	return newQImageCapture(C.QMediaCaptureSession_ImageCapture(this.h))
+	return newQImageCapture(C.QMediaCaptureSession_imageCapture(this.h))
 }
 
 func (this *QMediaCaptureSession) SetImageCapture(imageCapture *QImageCapture) {
-	C.QMediaCaptureSession_SetImageCapture(this.h, imageCapture.cPointer())
+	C.QMediaCaptureSession_setImageCapture(this.h, imageCapture.cPointer())
 }
 
 func (this *QMediaCaptureSession) Recorder() *QMediaRecorder {
-	return newQMediaRecorder(C.QMediaCaptureSession_Recorder(this.h))
+	return newQMediaRecorder(C.QMediaCaptureSession_recorder(this.h))
 }
 
 func (this *QMediaCaptureSession) SetRecorder(recorder *QMediaRecorder) {
-	C.QMediaCaptureSession_SetRecorder(this.h, recorder.cPointer())
+	C.QMediaCaptureSession_setRecorder(this.h, recorder.cPointer())
 }
 
 func (this *QMediaCaptureSession) SetVideoOutput(output *qt6.QObject) {
-	C.QMediaCaptureSession_SetVideoOutput(this.h, (*C.QObject)(output.UnsafePointer()))
+	C.QMediaCaptureSession_setVideoOutput(this.h, (*C.QObject)(output.UnsafePointer()))
 }
 
 func (this *QMediaCaptureSession) VideoOutput() *qt6.QObject {
-	return qt6.UnsafeNewQObject(unsafe.Pointer(C.QMediaCaptureSession_VideoOutput(this.h)))
+	return qt6.UnsafeNewQObject(unsafe.Pointer(C.QMediaCaptureSession_videoOutput(this.h)))
 }
 
 func (this *QMediaCaptureSession) SetVideoSink(sink *QVideoSink) {
-	C.QMediaCaptureSession_SetVideoSink(this.h, sink.cPointer())
+	C.QMediaCaptureSession_setVideoSink(this.h, sink.cPointer())
 }
 
 func (this *QMediaCaptureSession) VideoSink() *QVideoSink {
-	return newQVideoSink(C.QMediaCaptureSession_VideoSink(this.h))
+	return newQVideoSink(C.QMediaCaptureSession_videoSink(this.h))
 }
 
 func (this *QMediaCaptureSession) SetAudioOutput(output *QAudioOutput) {
-	C.QMediaCaptureSession_SetAudioOutput(this.h, output.cPointer())
+	C.QMediaCaptureSession_setAudioOutput(this.h, output.cPointer())
 }
 
 func (this *QMediaCaptureSession) AudioOutput() *QAudioOutput {
-	return newQAudioOutput(C.QMediaCaptureSession_AudioOutput(this.h))
+	return newQAudioOutput(C.QMediaCaptureSession_audioOutput(this.h))
 }
 
 func (this *QMediaCaptureSession) AudioInputChanged() {
-	C.QMediaCaptureSession_AudioInputChanged(this.h)
+	C.QMediaCaptureSession_audioInputChanged(this.h)
 }
 func (this *QMediaCaptureSession) OnAudioInputChanged(slot func()) {
-	C.QMediaCaptureSession_connect_AudioInputChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaCaptureSession_connect_audioInputChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaCaptureSession_AudioInputChanged
-func miqt_exec_callback_QMediaCaptureSession_AudioInputChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaCaptureSession_audioInputChanged
+func miqt_exec_callback_QMediaCaptureSession_audioInputChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -156,14 +156,14 @@ func miqt_exec_callback_QMediaCaptureSession_AudioInputChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaCaptureSession) CameraChanged() {
-	C.QMediaCaptureSession_CameraChanged(this.h)
+	C.QMediaCaptureSession_cameraChanged(this.h)
 }
 func (this *QMediaCaptureSession) OnCameraChanged(slot func()) {
-	C.QMediaCaptureSession_connect_CameraChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaCaptureSession_connect_cameraChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaCaptureSession_CameraChanged
-func miqt_exec_callback_QMediaCaptureSession_CameraChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaCaptureSession_cameraChanged
+func miqt_exec_callback_QMediaCaptureSession_cameraChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -173,14 +173,14 @@ func miqt_exec_callback_QMediaCaptureSession_CameraChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaCaptureSession) ImageCaptureChanged() {
-	C.QMediaCaptureSession_ImageCaptureChanged(this.h)
+	C.QMediaCaptureSession_imageCaptureChanged(this.h)
 }
 func (this *QMediaCaptureSession) OnImageCaptureChanged(slot func()) {
-	C.QMediaCaptureSession_connect_ImageCaptureChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaCaptureSession_connect_imageCaptureChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaCaptureSession_ImageCaptureChanged
-func miqt_exec_callback_QMediaCaptureSession_ImageCaptureChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaCaptureSession_imageCaptureChanged
+func miqt_exec_callback_QMediaCaptureSession_imageCaptureChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -190,14 +190,14 @@ func miqt_exec_callback_QMediaCaptureSession_ImageCaptureChanged(cb C.intptr_t) 
 }
 
 func (this *QMediaCaptureSession) RecorderChanged() {
-	C.QMediaCaptureSession_RecorderChanged(this.h)
+	C.QMediaCaptureSession_recorderChanged(this.h)
 }
 func (this *QMediaCaptureSession) OnRecorderChanged(slot func()) {
-	C.QMediaCaptureSession_connect_RecorderChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaCaptureSession_connect_recorderChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaCaptureSession_RecorderChanged
-func miqt_exec_callback_QMediaCaptureSession_RecorderChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaCaptureSession_recorderChanged
+func miqt_exec_callback_QMediaCaptureSession_recorderChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -207,14 +207,14 @@ func miqt_exec_callback_QMediaCaptureSession_RecorderChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaCaptureSession) VideoOutputChanged() {
-	C.QMediaCaptureSession_VideoOutputChanged(this.h)
+	C.QMediaCaptureSession_videoOutputChanged(this.h)
 }
 func (this *QMediaCaptureSession) OnVideoOutputChanged(slot func()) {
-	C.QMediaCaptureSession_connect_VideoOutputChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaCaptureSession_connect_videoOutputChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaCaptureSession_VideoOutputChanged
-func miqt_exec_callback_QMediaCaptureSession_VideoOutputChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaCaptureSession_videoOutputChanged
+func miqt_exec_callback_QMediaCaptureSession_videoOutputChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -224,14 +224,14 @@ func miqt_exec_callback_QMediaCaptureSession_VideoOutputChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaCaptureSession) AudioOutputChanged() {
-	C.QMediaCaptureSession_AudioOutputChanged(this.h)
+	C.QMediaCaptureSession_audioOutputChanged(this.h)
 }
 func (this *QMediaCaptureSession) OnAudioOutputChanged(slot func()) {
-	C.QMediaCaptureSession_connect_AudioOutputChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaCaptureSession_connect_audioOutputChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaCaptureSession_AudioOutputChanged
-func miqt_exec_callback_QMediaCaptureSession_AudioOutputChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaCaptureSession_audioOutputChanged
+func miqt_exec_callback_QMediaCaptureSession_audioOutputChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -245,7 +245,7 @@ func QMediaCaptureSession_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaCaptureSession_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaCaptureSession_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -256,7 +256,7 @@ func QMediaCaptureSession_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaCaptureSession_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaCaptureSession_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -264,18 +264,18 @@ func QMediaCaptureSession_Tr3(s string, c string, n int) string {
 
 func (this *QMediaCaptureSession) callVirtualBase_Event(event *qt6.QEvent) bool {
 
-	return (bool)(C.QMediaCaptureSession_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QMediaCaptureSession_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QMediaCaptureSession) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
-	ok := C.QMediaCaptureSession_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaCaptureSession) Onevent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	ok := C.QMediaCaptureSession_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaCaptureSession_Event
-func miqt_exec_callback_QMediaCaptureSession_Event(self *C.QMediaCaptureSession, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QMediaCaptureSession_event
+func miqt_exec_callback_QMediaCaptureSession_event(self *C.QMediaCaptureSession, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -292,18 +292,18 @@ func miqt_exec_callback_QMediaCaptureSession_Event(self *C.QMediaCaptureSession,
 
 func (this *QMediaCaptureSession) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
 
-	return (bool)(C.QMediaCaptureSession_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QMediaCaptureSession_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QMediaCaptureSession) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	ok := C.QMediaCaptureSession_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaCaptureSession) OneventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	ok := C.QMediaCaptureSession_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaCaptureSession_EventFilter
-func miqt_exec_callback_QMediaCaptureSession_EventFilter(self *C.QMediaCaptureSession, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QMediaCaptureSession_eventFilter
+func miqt_exec_callback_QMediaCaptureSession_eventFilter(self *C.QMediaCaptureSession, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -322,18 +322,18 @@ func miqt_exec_callback_QMediaCaptureSession_EventFilter(self *C.QMediaCaptureSe
 
 func (this *QMediaCaptureSession) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
-	C.QMediaCaptureSession_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QMediaCaptureSession_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QMediaCaptureSession) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	ok := C.QMediaCaptureSession_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaCaptureSession) OntimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	ok := C.QMediaCaptureSession_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaCaptureSession_TimerEvent
-func miqt_exec_callback_QMediaCaptureSession_TimerEvent(self *C.QMediaCaptureSession, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QMediaCaptureSession_timerEvent
+func miqt_exec_callback_QMediaCaptureSession_timerEvent(self *C.QMediaCaptureSession, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -348,18 +348,18 @@ func miqt_exec_callback_QMediaCaptureSession_TimerEvent(self *C.QMediaCaptureSes
 
 func (this *QMediaCaptureSession) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
-	C.QMediaCaptureSession_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QMediaCaptureSession_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QMediaCaptureSession) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	ok := C.QMediaCaptureSession_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaCaptureSession) OnchildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	ok := C.QMediaCaptureSession_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaCaptureSession_ChildEvent
-func miqt_exec_callback_QMediaCaptureSession_ChildEvent(self *C.QMediaCaptureSession, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QMediaCaptureSession_childEvent
+func miqt_exec_callback_QMediaCaptureSession_childEvent(self *C.QMediaCaptureSession, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -374,18 +374,18 @@ func miqt_exec_callback_QMediaCaptureSession_ChildEvent(self *C.QMediaCaptureSes
 
 func (this *QMediaCaptureSession) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
-	C.QMediaCaptureSession_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QMediaCaptureSession_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QMediaCaptureSession) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	ok := C.QMediaCaptureSession_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaCaptureSession) OncustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	ok := C.QMediaCaptureSession_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaCaptureSession_CustomEvent
-func miqt_exec_callback_QMediaCaptureSession_CustomEvent(self *C.QMediaCaptureSession, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QMediaCaptureSession_customEvent
+func miqt_exec_callback_QMediaCaptureSession_customEvent(self *C.QMediaCaptureSession, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -400,18 +400,18 @@ func miqt_exec_callback_QMediaCaptureSession_CustomEvent(self *C.QMediaCaptureSe
 
 func (this *QMediaCaptureSession) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QMediaCaptureSession_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QMediaCaptureSession_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QMediaCaptureSession) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QMediaCaptureSession_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaCaptureSession) OnconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QMediaCaptureSession_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaCaptureSession_ConnectNotify
-func miqt_exec_callback_QMediaCaptureSession_ConnectNotify(self *C.QMediaCaptureSession, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QMediaCaptureSession_connectNotify
+func miqt_exec_callback_QMediaCaptureSession_connectNotify(self *C.QMediaCaptureSession, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -426,18 +426,18 @@ func miqt_exec_callback_QMediaCaptureSession_ConnectNotify(self *C.QMediaCapture
 
 func (this *QMediaCaptureSession) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QMediaCaptureSession_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QMediaCaptureSession_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QMediaCaptureSession) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QMediaCaptureSession_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaCaptureSession) OndisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QMediaCaptureSession_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaCaptureSession_DisconnectNotify
-func miqt_exec_callback_QMediaCaptureSession_DisconnectNotify(self *C.QMediaCaptureSession, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QMediaCaptureSession_disconnectNotify
+func miqt_exec_callback_QMediaCaptureSession_disconnectNotify(self *C.QMediaCaptureSession, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -452,7 +452,7 @@ func miqt_exec_callback_QMediaCaptureSession_DisconnectNotify(self *C.QMediaCapt
 
 // Delete this object from C++ memory.
 func (this *QMediaCaptureSession) Delete() {
-	C.QMediaCaptureSession_Delete(this.h)
+	C.QMediaCaptureSession_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

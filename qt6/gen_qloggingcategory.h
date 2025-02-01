@@ -21,19 +21,19 @@ typedef struct QLoggingCategory QLoggingCategory;
 #endif
 
 QLoggingCategory* QLoggingCategory_new(const char* category);
-bool QLoggingCategory_IsDebugEnabled(const QLoggingCategory* self);
-bool QLoggingCategory_IsInfoEnabled(const QLoggingCategory* self);
-bool QLoggingCategory_IsWarningEnabled(const QLoggingCategory* self);
-bool QLoggingCategory_IsCriticalEnabled(const QLoggingCategory* self);
-const char* QLoggingCategory_CategoryName(const QLoggingCategory* self);
-QLoggingCategory* QLoggingCategory_OperatorCall(QLoggingCategory* self);
-QLoggingCategory* QLoggingCategory_OperatorCall2(const QLoggingCategory* self);
-QLoggingCategory* QLoggingCategory_DefaultCategory();
-void QLoggingCategory_SetFilterRules(struct miqt_string rules);
-void QLoggingCategory_Delete(QLoggingCategory* self);
+bool QLoggingCategory_isDebugEnabled(const QLoggingCategory* self);
+bool QLoggingCategory_isInfoEnabled(const QLoggingCategory* self);
+bool QLoggingCategory_isWarningEnabled(const QLoggingCategory* self);
+bool QLoggingCategory_isCriticalEnabled(const QLoggingCategory* self);
+const char* QLoggingCategory_categoryName(const QLoggingCategory* self);
+QLoggingCategory* QLoggingCategory_operatorCall(QLoggingCategory* self);
+QLoggingCategory* QLoggingCategory_operatorCall2(const QLoggingCategory* self);
+QLoggingCategory* QLoggingCategory_defaultCategory();
+void QLoggingCategory_setFilterRules(struct miqt_string rules);
+void QLoggingCategory_delete(QLoggingCategory* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

@@ -72,15 +72,15 @@ func NewQHostInfo3(lookupId int) *QHostInfo {
 }
 
 func (this *QHostInfo) OperatorAssign(d *QHostInfo) {
-	C.QHostInfo_OperatorAssign(this.h, d.cPointer())
+	C.QHostInfo_operatorAssign(this.h, d.cPointer())
 }
 
 func (this *QHostInfo) Swap(other *QHostInfo) {
-	C.QHostInfo_Swap(this.h, other.cPointer())
+	C.QHostInfo_swap(this.h, other.cPointer())
 }
 
 func (this *QHostInfo) HostName() string {
-	var _ms C.struct_miqt_string = C.QHostInfo_HostName(this.h)
+	var _ms C.struct_miqt_string = C.QHostInfo_hostName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -91,11 +91,11 @@ func (this *QHostInfo) SetHostName(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QHostInfo_SetHostName(this.h, name_ms)
+	C.QHostInfo_setHostName(this.h, name_ms)
 }
 
 func (this *QHostInfo) Addresses() []QHostAddress {
-	var _ma C.struct_miqt_array = C.QHostInfo_Addresses(this.h)
+	var _ma C.struct_miqt_array = C.QHostInfo_addresses(this.h)
 	_ret := make([]QHostAddress, int(_ma.len))
 	_outCast := (*[0xffff]*C.QHostAddress)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -113,19 +113,19 @@ func (this *QHostInfo) SetAddresses(addresses []QHostAddress) {
 		addresses_CArray[i] = addresses[i].cPointer()
 	}
 	addresses_ma := C.struct_miqt_array{len: C.size_t(len(addresses)), data: unsafe.Pointer(addresses_CArray)}
-	C.QHostInfo_SetAddresses(this.h, addresses_ma)
+	C.QHostInfo_setAddresses(this.h, addresses_ma)
 }
 
 func (this *QHostInfo) Error() QHostInfo__HostInfoError {
-	return (QHostInfo__HostInfoError)(C.QHostInfo_Error(this.h))
+	return (QHostInfo__HostInfoError)(C.QHostInfo_error(this.h))
 }
 
 func (this *QHostInfo) SetError(error QHostInfo__HostInfoError) {
-	C.QHostInfo_SetError(this.h, (C.int)(error))
+	C.QHostInfo_setError(this.h, (C.int)(error))
 }
 
 func (this *QHostInfo) ErrorString() string {
-	var _ms C.struct_miqt_string = C.QHostInfo_ErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QHostInfo_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -136,19 +136,19 @@ func (this *QHostInfo) SetErrorString(errorString string) {
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
 	defer C.free(unsafe.Pointer(errorString_ms.data))
-	C.QHostInfo_SetErrorString(this.h, errorString_ms)
+	C.QHostInfo_setErrorString(this.h, errorString_ms)
 }
 
 func (this *QHostInfo) SetLookupId(id int) {
-	C.QHostInfo_SetLookupId(this.h, (C.int)(id))
+	C.QHostInfo_setLookupId(this.h, (C.int)(id))
 }
 
 func (this *QHostInfo) LookupId() int {
-	return (int)(C.QHostInfo_LookupId(this.h))
+	return (int)(C.QHostInfo_lookupId(this.h))
 }
 
 func QHostInfo_AbortHostLookup(lookupId int) {
-	C.QHostInfo_AbortHostLookup((C.int)(lookupId))
+	C.QHostInfo_abortHostLookup((C.int)(lookupId))
 }
 
 func QHostInfo_FromName(name string) *QHostInfo {
@@ -156,20 +156,20 @@ func QHostInfo_FromName(name string) *QHostInfo {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	_goptr := newQHostInfo(C.QHostInfo_FromName(name_ms))
+	_goptr := newQHostInfo(C.QHostInfo_fromName(name_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QHostInfo_LocalHostName() string {
-	var _ms C.struct_miqt_string = C.QHostInfo_LocalHostName()
+	var _ms C.struct_miqt_string = C.QHostInfo_localHostName()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QHostInfo_LocalDomainName() string {
-	var _ms C.struct_miqt_string = C.QHostInfo_LocalDomainName()
+	var _ms C.struct_miqt_string = C.QHostInfo_localDomainName()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -177,7 +177,7 @@ func QHostInfo_LocalDomainName() string {
 
 // Delete this object from C++ memory.
 func (this *QHostInfo) Delete() {
-	C.QHostInfo_Delete(this.h)
+	C.QHostInfo_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -70,36 +70,36 @@ func NewQTextDocumentFragment4(rhs *QTextDocumentFragment) *QTextDocumentFragmen
 }
 
 func (this *QTextDocumentFragment) OperatorAssign(rhs *QTextDocumentFragment) {
-	C.QTextDocumentFragment_OperatorAssign(this.h, rhs.cPointer())
+	C.QTextDocumentFragment_operatorAssign(this.h, rhs.cPointer())
 }
 
 func (this *QTextDocumentFragment) IsEmpty() bool {
-	return (bool)(C.QTextDocumentFragment_IsEmpty(this.h))
+	return (bool)(C.QTextDocumentFragment_isEmpty(this.h))
 }
 
 func (this *QTextDocumentFragment) ToPlainText() string {
-	var _ms C.struct_miqt_string = C.QTextDocumentFragment_ToPlainText(this.h)
+	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toPlainText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextDocumentFragment) ToRawText() string {
-	var _ms C.struct_miqt_string = C.QTextDocumentFragment_ToRawText(this.h)
+	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toRawText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextDocumentFragment) ToHtml() string {
-	var _ms C.struct_miqt_string = C.QTextDocumentFragment_ToHtml(this.h)
+	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toHtml(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextDocumentFragment) ToMarkdown() string {
-	var _ms C.struct_miqt_string = C.QTextDocumentFragment_ToMarkdown(this.h)
+	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toMarkdown(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -110,7 +110,7 @@ func QTextDocumentFragment_FromPlainText(plainText string) *QTextDocumentFragmen
 	plainText_ms.data = C.CString(plainText)
 	plainText_ms.len = C.size_t(len(plainText))
 	defer C.free(unsafe.Pointer(plainText_ms.data))
-	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_FromPlainText(plainText_ms))
+	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_fromPlainText(plainText_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -120,7 +120,7 @@ func QTextDocumentFragment_FromHtml(html string) *QTextDocumentFragment {
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
 	defer C.free(unsafe.Pointer(html_ms.data))
-	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_FromHtml(html_ms))
+	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_fromHtml(html_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -130,13 +130,13 @@ func QTextDocumentFragment_FromMarkdown(markdown string) *QTextDocumentFragment 
 	markdown_ms.data = C.CString(markdown)
 	markdown_ms.len = C.size_t(len(markdown))
 	defer C.free(unsafe.Pointer(markdown_ms.data))
-	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_FromMarkdown(markdown_ms))
+	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_fromMarkdown(markdown_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextDocumentFragment) ToMarkdown1(features QTextDocument__MarkdownFeature) string {
-	var _ms C.struct_miqt_string = C.QTextDocumentFragment_ToMarkdown1(this.h, (C.int)(features))
+	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toMarkdown1(this.h, (C.int)(features))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -147,7 +147,7 @@ func QTextDocumentFragment_FromHtml2(html string, resourceProvider *QTextDocumen
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
 	defer C.free(unsafe.Pointer(html_ms.data))
-	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_FromHtml2(html_ms, resourceProvider.cPointer()))
+	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_fromHtml2(html_ms, resourceProvider.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -157,14 +157,14 @@ func QTextDocumentFragment_FromMarkdown2(markdown string, features QTextDocument
 	markdown_ms.data = C.CString(markdown)
 	markdown_ms.len = C.size_t(len(markdown))
 	defer C.free(unsafe.Pointer(markdown_ms.data))
-	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_FromMarkdown2(markdown_ms, (C.int)(features)))
+	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_fromMarkdown2(markdown_ms, (C.int)(features)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QTextDocumentFragment) Delete() {
-	C.QTextDocumentFragment_Delete(this.h)
+	C.QTextDocumentFragment_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

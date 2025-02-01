@@ -64,26 +64,26 @@ func NewQMediaDevices2(parent *qt6.QObject) *QMediaDevices {
 }
 
 func (this *QMediaDevices) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaDevices_MetaObject(this.h)))
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaDevices_metaObject(this.h)))
 }
 
 func (this *QMediaDevices) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QMediaDevices_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QMediaDevices_metacast(this.h, param1_Cstring))
 }
 
 func QMediaDevices_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaDevices_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaDevices_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QMediaDevices_AudioInputs() []QAudioDevice {
-	var _ma C.struct_miqt_array = C.QMediaDevices_AudioInputs()
+	var _ma C.struct_miqt_array = C.QMediaDevices_audioInputs()
 	_ret := make([]QAudioDevice, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAudioDevice)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -95,7 +95,7 @@ func QMediaDevices_AudioInputs() []QAudioDevice {
 }
 
 func QMediaDevices_AudioOutputs() []QAudioDevice {
-	var _ma C.struct_miqt_array = C.QMediaDevices_AudioOutputs()
+	var _ma C.struct_miqt_array = C.QMediaDevices_audioOutputs()
 	_ret := make([]QAudioDevice, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAudioDevice)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -107,7 +107,7 @@ func QMediaDevices_AudioOutputs() []QAudioDevice {
 }
 
 func QMediaDevices_VideoInputs() []QCameraDevice {
-	var _ma C.struct_miqt_array = C.QMediaDevices_VideoInputs()
+	var _ma C.struct_miqt_array = C.QMediaDevices_videoInputs()
 	_ret := make([]QCameraDevice, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraDevice)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -119,32 +119,32 @@ func QMediaDevices_VideoInputs() []QCameraDevice {
 }
 
 func QMediaDevices_DefaultAudioInput() *QAudioDevice {
-	_goptr := newQAudioDevice(C.QMediaDevices_DefaultAudioInput())
+	_goptr := newQAudioDevice(C.QMediaDevices_defaultAudioInput())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QMediaDevices_DefaultAudioOutput() *QAudioDevice {
-	_goptr := newQAudioDevice(C.QMediaDevices_DefaultAudioOutput())
+	_goptr := newQAudioDevice(C.QMediaDevices_defaultAudioOutput())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QMediaDevices_DefaultVideoInput() *QCameraDevice {
-	_goptr := newQCameraDevice(C.QMediaDevices_DefaultVideoInput())
+	_goptr := newQCameraDevice(C.QMediaDevices_defaultVideoInput())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaDevices) AudioInputsChanged() {
-	C.QMediaDevices_AudioInputsChanged(this.h)
+	C.QMediaDevices_audioInputsChanged(this.h)
 }
 func (this *QMediaDevices) OnAudioInputsChanged(slot func()) {
-	C.QMediaDevices_connect_AudioInputsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaDevices_connect_audioInputsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaDevices_AudioInputsChanged
-func miqt_exec_callback_QMediaDevices_AudioInputsChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaDevices_audioInputsChanged
+func miqt_exec_callback_QMediaDevices_audioInputsChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -154,14 +154,14 @@ func miqt_exec_callback_QMediaDevices_AudioInputsChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaDevices) AudioOutputsChanged() {
-	C.QMediaDevices_AudioOutputsChanged(this.h)
+	C.QMediaDevices_audioOutputsChanged(this.h)
 }
 func (this *QMediaDevices) OnAudioOutputsChanged(slot func()) {
-	C.QMediaDevices_connect_AudioOutputsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaDevices_connect_audioOutputsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaDevices_AudioOutputsChanged
-func miqt_exec_callback_QMediaDevices_AudioOutputsChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaDevices_audioOutputsChanged
+func miqt_exec_callback_QMediaDevices_audioOutputsChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -171,14 +171,14 @@ func miqt_exec_callback_QMediaDevices_AudioOutputsChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaDevices) VideoInputsChanged() {
-	C.QMediaDevices_VideoInputsChanged(this.h)
+	C.QMediaDevices_videoInputsChanged(this.h)
 }
 func (this *QMediaDevices) OnVideoInputsChanged(slot func()) {
-	C.QMediaDevices_connect_VideoInputsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaDevices_connect_videoInputsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaDevices_VideoInputsChanged
-func miqt_exec_callback_QMediaDevices_VideoInputsChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaDevices_videoInputsChanged
+func miqt_exec_callback_QMediaDevices_videoInputsChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -192,7 +192,7 @@ func QMediaDevices_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaDevices_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaDevices_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -203,7 +203,7 @@ func QMediaDevices_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaDevices_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaDevices_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -211,18 +211,18 @@ func QMediaDevices_Tr3(s string, c string, n int) string {
 
 func (this *QMediaDevices) callVirtualBase_Event(event *qt6.QEvent) bool {
 
-	return (bool)(C.QMediaDevices_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QMediaDevices_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QMediaDevices) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
-	ok := C.QMediaDevices_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaDevices) Onevent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	ok := C.QMediaDevices_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaDevices_Event
-func miqt_exec_callback_QMediaDevices_Event(self *C.QMediaDevices, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QMediaDevices_event
+func miqt_exec_callback_QMediaDevices_event(self *C.QMediaDevices, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -239,18 +239,18 @@ func miqt_exec_callback_QMediaDevices_Event(self *C.QMediaDevices, cb C.intptr_t
 
 func (this *QMediaDevices) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
 
-	return (bool)(C.QMediaDevices_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QMediaDevices_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QMediaDevices) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	ok := C.QMediaDevices_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaDevices) OneventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	ok := C.QMediaDevices_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaDevices_EventFilter
-func miqt_exec_callback_QMediaDevices_EventFilter(self *C.QMediaDevices, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QMediaDevices_eventFilter
+func miqt_exec_callback_QMediaDevices_eventFilter(self *C.QMediaDevices, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -269,18 +269,18 @@ func miqt_exec_callback_QMediaDevices_EventFilter(self *C.QMediaDevices, cb C.in
 
 func (this *QMediaDevices) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
-	C.QMediaDevices_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QMediaDevices_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QMediaDevices) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	ok := C.QMediaDevices_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaDevices) OntimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	ok := C.QMediaDevices_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaDevices_TimerEvent
-func miqt_exec_callback_QMediaDevices_TimerEvent(self *C.QMediaDevices, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QMediaDevices_timerEvent
+func miqt_exec_callback_QMediaDevices_timerEvent(self *C.QMediaDevices, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -295,18 +295,18 @@ func miqt_exec_callback_QMediaDevices_TimerEvent(self *C.QMediaDevices, cb C.int
 
 func (this *QMediaDevices) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
-	C.QMediaDevices_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QMediaDevices_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QMediaDevices) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	ok := C.QMediaDevices_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaDevices) OnchildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	ok := C.QMediaDevices_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaDevices_ChildEvent
-func miqt_exec_callback_QMediaDevices_ChildEvent(self *C.QMediaDevices, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QMediaDevices_childEvent
+func miqt_exec_callback_QMediaDevices_childEvent(self *C.QMediaDevices, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -321,18 +321,18 @@ func miqt_exec_callback_QMediaDevices_ChildEvent(self *C.QMediaDevices, cb C.int
 
 func (this *QMediaDevices) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
-	C.QMediaDevices_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QMediaDevices_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QMediaDevices) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	ok := C.QMediaDevices_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaDevices) OncustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	ok := C.QMediaDevices_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaDevices_CustomEvent
-func miqt_exec_callback_QMediaDevices_CustomEvent(self *C.QMediaDevices, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QMediaDevices_customEvent
+func miqt_exec_callback_QMediaDevices_customEvent(self *C.QMediaDevices, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -347,18 +347,18 @@ func miqt_exec_callback_QMediaDevices_CustomEvent(self *C.QMediaDevices, cb C.in
 
 func (this *QMediaDevices) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QMediaDevices_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QMediaDevices_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QMediaDevices) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QMediaDevices_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaDevices) OnconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QMediaDevices_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaDevices_ConnectNotify
-func miqt_exec_callback_QMediaDevices_ConnectNotify(self *C.QMediaDevices, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QMediaDevices_connectNotify
+func miqt_exec_callback_QMediaDevices_connectNotify(self *C.QMediaDevices, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -373,18 +373,18 @@ func miqt_exec_callback_QMediaDevices_ConnectNotify(self *C.QMediaDevices, cb C.
 
 func (this *QMediaDevices) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QMediaDevices_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QMediaDevices_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QMediaDevices) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QMediaDevices_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaDevices) OndisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QMediaDevices_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaDevices_DisconnectNotify
-func miqt_exec_callback_QMediaDevices_DisconnectNotify(self *C.QMediaDevices, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QMediaDevices_disconnectNotify
+func miqt_exec_callback_QMediaDevices_disconnectNotify(self *C.QMediaDevices, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -399,7 +399,7 @@ func miqt_exec_callback_QMediaDevices_DisconnectNotify(self *C.QMediaDevices, cb
 
 // Delete this object from C++ memory.
 func (this *QMediaDevices) Delete() {
-	C.QMediaDevices_Delete(this.h)
+	C.QMediaDevices_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

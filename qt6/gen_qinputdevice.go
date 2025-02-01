@@ -136,62 +136,62 @@ func NewQInputDevice5(name string, systemId int64, typeVal QInputDevice__DeviceT
 }
 
 func (this *QInputDevice) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QInputDevice_MetaObject(this.h))
+	return newQMetaObject(C.QInputDevice_metaObject(this.h))
 }
 
 func (this *QInputDevice) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QInputDevice_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QInputDevice_metacast(this.h, param1_Cstring))
 }
 
 func QInputDevice_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QInputDevice_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QInputDevice_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QInputDevice) Name() string {
-	var _ms C.struct_miqt_string = C.QInputDevice_Name(this.h)
+	var _ms C.struct_miqt_string = C.QInputDevice_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QInputDevice) Type() QInputDevice__DeviceType {
-	return (QInputDevice__DeviceType)(C.QInputDevice_Type(this.h))
+	return (QInputDevice__DeviceType)(C.QInputDevice_type(this.h))
 }
 
 func (this *QInputDevice) Capabilities() QInputDevice__Capability {
-	return (QInputDevice__Capability)(C.QInputDevice_Capabilities(this.h))
+	return (QInputDevice__Capability)(C.QInputDevice_capabilities(this.h))
 }
 
 func (this *QInputDevice) HasCapability(cap QInputDevice__Capability) bool {
-	return (bool)(C.QInputDevice_HasCapability(this.h, (C.int)(cap)))
+	return (bool)(C.QInputDevice_hasCapability(this.h, (C.int)(cap)))
 }
 
 func (this *QInputDevice) SystemId() int64 {
-	return (int64)(C.QInputDevice_SystemId(this.h))
+	return (int64)(C.QInputDevice_systemId(this.h))
 }
 
 func (this *QInputDevice) SeatName() string {
-	var _ms C.struct_miqt_string = C.QInputDevice_SeatName(this.h)
+	var _ms C.struct_miqt_string = C.QInputDevice_seatName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QInputDevice) AvailableVirtualGeometry() *QRect {
-	_goptr := newQRect(C.QInputDevice_AvailableVirtualGeometry(this.h))
+	_goptr := newQRect(C.QInputDevice_availableVirtualGeometry(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QInputDevice_SeatNames() []string {
-	var _ma C.struct_miqt_array = C.QInputDevice_SeatNames()
+	var _ma C.struct_miqt_array = C.QInputDevice_seatNames()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -204,7 +204,7 @@ func QInputDevice_SeatNames() []string {
 }
 
 func QInputDevice_Devices() []*QInputDevice {
-	var _ma C.struct_miqt_array = C.QInputDevice_Devices()
+	var _ma C.struct_miqt_array = C.QInputDevice_devices()
 	_ret := make([]*QInputDevice, int(_ma.len))
 	_outCast := (*[0xffff]*C.QInputDevice)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -214,22 +214,22 @@ func QInputDevice_Devices() []*QInputDevice {
 }
 
 func QInputDevice_PrimaryKeyboard() *QInputDevice {
-	return newQInputDevice(C.QInputDevice_PrimaryKeyboard())
+	return newQInputDevice(C.QInputDevice_primaryKeyboard())
 }
 
 func (this *QInputDevice) OperatorEqual(other *QInputDevice) bool {
-	return (bool)(C.QInputDevice_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QInputDevice_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QInputDevice) AvailableVirtualGeometryChanged(area QRect) {
-	C.QInputDevice_AvailableVirtualGeometryChanged(this.h, area.cPointer())
+	C.QInputDevice_availableVirtualGeometryChanged(this.h, area.cPointer())
 }
 func (this *QInputDevice) OnAvailableVirtualGeometryChanged(slot func(area QRect)) {
-	C.QInputDevice_connect_AvailableVirtualGeometryChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QInputDevice_connect_availableVirtualGeometryChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QInputDevice_AvailableVirtualGeometryChanged
-func miqt_exec_callback_QInputDevice_AvailableVirtualGeometryChanged(cb C.intptr_t, area *C.QRect) {
+//export miqt_exec_callback_QInputDevice_availableVirtualGeometryChanged
+func miqt_exec_callback_QInputDevice_availableVirtualGeometryChanged(cb C.intptr_t, area *C.QRect) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(area QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -248,7 +248,7 @@ func QInputDevice_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QInputDevice_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QInputDevice_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -259,7 +259,7 @@ func QInputDevice_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QInputDevice_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QInputDevice_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -270,23 +270,23 @@ func QInputDevice_PrimaryKeyboard1(seatName string) *QInputDevice {
 	seatName_ms.data = C.CString(seatName)
 	seatName_ms.len = C.size_t(len(seatName))
 	defer C.free(unsafe.Pointer(seatName_ms.data))
-	return newQInputDevice(C.QInputDevice_PrimaryKeyboard1(seatName_ms))
+	return newQInputDevice(C.QInputDevice_primaryKeyboard1(seatName_ms))
 }
 
 func (this *QInputDevice) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QInputDevice_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QInputDevice_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QInputDevice) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QInputDevice_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QInputDevice) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QInputDevice_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QInputDevice_Event
-func miqt_exec_callback_QInputDevice_Event(self *C.QInputDevice, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QInputDevice_event
+func miqt_exec_callback_QInputDevice_event(self *C.QInputDevice, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -303,18 +303,18 @@ func miqt_exec_callback_QInputDevice_Event(self *C.QInputDevice, cb C.intptr_t, 
 
 func (this *QInputDevice) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QInputDevice_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QInputDevice_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QInputDevice) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QInputDevice_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QInputDevice) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QInputDevice_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QInputDevice_EventFilter
-func miqt_exec_callback_QInputDevice_EventFilter(self *C.QInputDevice, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QInputDevice_eventFilter
+func miqt_exec_callback_QInputDevice_eventFilter(self *C.QInputDevice, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -333,18 +333,18 @@ func miqt_exec_callback_QInputDevice_EventFilter(self *C.QInputDevice, cb C.intp
 
 func (this *QInputDevice) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QInputDevice_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QInputDevice_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QInputDevice) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QInputDevice_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QInputDevice) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QInputDevice_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QInputDevice_TimerEvent
-func miqt_exec_callback_QInputDevice_TimerEvent(self *C.QInputDevice, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QInputDevice_timerEvent
+func miqt_exec_callback_QInputDevice_timerEvent(self *C.QInputDevice, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -359,18 +359,18 @@ func miqt_exec_callback_QInputDevice_TimerEvent(self *C.QInputDevice, cb C.intpt
 
 func (this *QInputDevice) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QInputDevice_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QInputDevice_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QInputDevice) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QInputDevice_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QInputDevice) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QInputDevice_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QInputDevice_ChildEvent
-func miqt_exec_callback_QInputDevice_ChildEvent(self *C.QInputDevice, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QInputDevice_childEvent
+func miqt_exec_callback_QInputDevice_childEvent(self *C.QInputDevice, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -385,18 +385,18 @@ func miqt_exec_callback_QInputDevice_ChildEvent(self *C.QInputDevice, cb C.intpt
 
 func (this *QInputDevice) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QInputDevice_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QInputDevice_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QInputDevice) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QInputDevice_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QInputDevice) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QInputDevice_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QInputDevice_CustomEvent
-func miqt_exec_callback_QInputDevice_CustomEvent(self *C.QInputDevice, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QInputDevice_customEvent
+func miqt_exec_callback_QInputDevice_customEvent(self *C.QInputDevice, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -411,18 +411,18 @@ func miqt_exec_callback_QInputDevice_CustomEvent(self *C.QInputDevice, cb C.intp
 
 func (this *QInputDevice) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QInputDevice_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QInputDevice_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QInputDevice) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QInputDevice_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QInputDevice) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QInputDevice_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QInputDevice_ConnectNotify
-func miqt_exec_callback_QInputDevice_ConnectNotify(self *C.QInputDevice, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QInputDevice_connectNotify
+func miqt_exec_callback_QInputDevice_connectNotify(self *C.QInputDevice, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -437,18 +437,18 @@ func miqt_exec_callback_QInputDevice_ConnectNotify(self *C.QInputDevice, cb C.in
 
 func (this *QInputDevice) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QInputDevice_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QInputDevice_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QInputDevice) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QInputDevice_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QInputDevice) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QInputDevice_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QInputDevice_DisconnectNotify
-func miqt_exec_callback_QInputDevice_DisconnectNotify(self *C.QInputDevice, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QInputDevice_disconnectNotify
+func miqt_exec_callback_QInputDevice_disconnectNotify(self *C.QInputDevice, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -463,7 +463,7 @@ func miqt_exec_callback_QInputDevice_DisconnectNotify(self *C.QInputDevice, cb C
 
 // Delete this object from C++ memory.
 func (this *QInputDevice) Delete() {
-	C.QInputDevice_Delete(this.h)
+	C.QInputDevice_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

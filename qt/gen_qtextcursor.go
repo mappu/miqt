@@ -122,31 +122,31 @@ func NewQTextCursor5(cursor *QTextCursor) *QTextCursor {
 }
 
 func (this *QTextCursor) OperatorAssign(other *QTextCursor) {
-	C.QTextCursor_OperatorAssign(this.h, other.cPointer())
+	C.QTextCursor_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QTextCursor) Swap(other *QTextCursor) {
-	C.QTextCursor_Swap(this.h, other.cPointer())
+	C.QTextCursor_swap(this.h, other.cPointer())
 }
 
 func (this *QTextCursor) IsNull() bool {
-	return (bool)(C.QTextCursor_IsNull(this.h))
+	return (bool)(C.QTextCursor_isNull(this.h))
 }
 
 func (this *QTextCursor) SetPosition(pos int) {
-	C.QTextCursor_SetPosition(this.h, (C.int)(pos))
+	C.QTextCursor_setPosition(this.h, (C.int)(pos))
 }
 
 func (this *QTextCursor) Position() int {
-	return (int)(C.QTextCursor_Position(this.h))
+	return (int)(C.QTextCursor_position(this.h))
 }
 
 func (this *QTextCursor) PositionInBlock() int {
-	return (int)(C.QTextCursor_PositionInBlock(this.h))
+	return (int)(C.QTextCursor_positionInBlock(this.h))
 }
 
 func (this *QTextCursor) Anchor() int {
-	return (int)(C.QTextCursor_Anchor(this.h))
+	return (int)(C.QTextCursor_anchor(this.h))
 }
 
 func (this *QTextCursor) InsertText(text string) {
@@ -154,7 +154,7 @@ func (this *QTextCursor) InsertText(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QTextCursor_InsertText(this.h, text_ms)
+	C.QTextCursor_insertText(this.h, text_ms)
 }
 
 func (this *QTextCursor) InsertText2(text string, format *QTextCharFormat) {
@@ -162,208 +162,208 @@ func (this *QTextCursor) InsertText2(text string, format *QTextCharFormat) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QTextCursor_InsertText2(this.h, text_ms, format.cPointer())
+	C.QTextCursor_insertText2(this.h, text_ms, format.cPointer())
 }
 
 func (this *QTextCursor) MovePosition(op QTextCursor__MoveOperation) bool {
-	return (bool)(C.QTextCursor_MovePosition(this.h, (C.int)(op)))
+	return (bool)(C.QTextCursor_movePosition(this.h, (C.int)(op)))
 }
 
 func (this *QTextCursor) VisualNavigation() bool {
-	return (bool)(C.QTextCursor_VisualNavigation(this.h))
+	return (bool)(C.QTextCursor_visualNavigation(this.h))
 }
 
 func (this *QTextCursor) SetVisualNavigation(b bool) {
-	C.QTextCursor_SetVisualNavigation(this.h, (C.bool)(b))
+	C.QTextCursor_setVisualNavigation(this.h, (C.bool)(b))
 }
 
 func (this *QTextCursor) SetVerticalMovementX(x int) {
-	C.QTextCursor_SetVerticalMovementX(this.h, (C.int)(x))
+	C.QTextCursor_setVerticalMovementX(this.h, (C.int)(x))
 }
 
 func (this *QTextCursor) VerticalMovementX() int {
-	return (int)(C.QTextCursor_VerticalMovementX(this.h))
+	return (int)(C.QTextCursor_verticalMovementX(this.h))
 }
 
 func (this *QTextCursor) SetKeepPositionOnInsert(b bool) {
-	C.QTextCursor_SetKeepPositionOnInsert(this.h, (C.bool)(b))
+	C.QTextCursor_setKeepPositionOnInsert(this.h, (C.bool)(b))
 }
 
 func (this *QTextCursor) KeepPositionOnInsert() bool {
-	return (bool)(C.QTextCursor_KeepPositionOnInsert(this.h))
+	return (bool)(C.QTextCursor_keepPositionOnInsert(this.h))
 }
 
 func (this *QTextCursor) DeleteChar() {
-	C.QTextCursor_DeleteChar(this.h)
+	C.QTextCursor_deleteChar(this.h)
 }
 
 func (this *QTextCursor) DeletePreviousChar() {
-	C.QTextCursor_DeletePreviousChar(this.h)
+	C.QTextCursor_deletePreviousChar(this.h)
 }
 
 func (this *QTextCursor) Select(selection QTextCursor__SelectionType) {
-	C.QTextCursor_Select(this.h, (C.int)(selection))
+	C.QTextCursor_select(this.h, (C.int)(selection))
 }
 
 func (this *QTextCursor) HasSelection() bool {
-	return (bool)(C.QTextCursor_HasSelection(this.h))
+	return (bool)(C.QTextCursor_hasSelection(this.h))
 }
 
 func (this *QTextCursor) HasComplexSelection() bool {
-	return (bool)(C.QTextCursor_HasComplexSelection(this.h))
+	return (bool)(C.QTextCursor_hasComplexSelection(this.h))
 }
 
 func (this *QTextCursor) RemoveSelectedText() {
-	C.QTextCursor_RemoveSelectedText(this.h)
+	C.QTextCursor_removeSelectedText(this.h)
 }
 
 func (this *QTextCursor) ClearSelection() {
-	C.QTextCursor_ClearSelection(this.h)
+	C.QTextCursor_clearSelection(this.h)
 }
 
 func (this *QTextCursor) SelectionStart() int {
-	return (int)(C.QTextCursor_SelectionStart(this.h))
+	return (int)(C.QTextCursor_selectionStart(this.h))
 }
 
 func (this *QTextCursor) SelectionEnd() int {
-	return (int)(C.QTextCursor_SelectionEnd(this.h))
+	return (int)(C.QTextCursor_selectionEnd(this.h))
 }
 
 func (this *QTextCursor) SelectedText() string {
-	var _ms C.struct_miqt_string = C.QTextCursor_SelectedText(this.h)
+	var _ms C.struct_miqt_string = C.QTextCursor_selectedText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextCursor) Selection() *QTextDocumentFragment {
-	_goptr := newQTextDocumentFragment(C.QTextCursor_Selection(this.h))
+	_goptr := newQTextDocumentFragment(C.QTextCursor_selection(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextCursor) SelectedTableCells(firstRow *int, numRows *int, firstColumn *int, numColumns *int) {
-	C.QTextCursor_SelectedTableCells(this.h, (*C.int)(unsafe.Pointer(firstRow)), (*C.int)(unsafe.Pointer(numRows)), (*C.int)(unsafe.Pointer(firstColumn)), (*C.int)(unsafe.Pointer(numColumns)))
+	C.QTextCursor_selectedTableCells(this.h, (*C.int)(unsafe.Pointer(firstRow)), (*C.int)(unsafe.Pointer(numRows)), (*C.int)(unsafe.Pointer(firstColumn)), (*C.int)(unsafe.Pointer(numColumns)))
 }
 
 func (this *QTextCursor) Block() *QTextBlock {
-	_goptr := newQTextBlock(C.QTextCursor_Block(this.h))
+	_goptr := newQTextBlock(C.QTextCursor_block(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextCursor) CharFormat() *QTextCharFormat {
-	_goptr := newQTextCharFormat(C.QTextCursor_CharFormat(this.h))
+	_goptr := newQTextCharFormat(C.QTextCursor_charFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextCursor) SetCharFormat(format *QTextCharFormat) {
-	C.QTextCursor_SetCharFormat(this.h, format.cPointer())
+	C.QTextCursor_setCharFormat(this.h, format.cPointer())
 }
 
 func (this *QTextCursor) MergeCharFormat(modifier *QTextCharFormat) {
-	C.QTextCursor_MergeCharFormat(this.h, modifier.cPointer())
+	C.QTextCursor_mergeCharFormat(this.h, modifier.cPointer())
 }
 
 func (this *QTextCursor) BlockFormat() *QTextBlockFormat {
-	_goptr := newQTextBlockFormat(C.QTextCursor_BlockFormat(this.h))
+	_goptr := newQTextBlockFormat(C.QTextCursor_blockFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextCursor) SetBlockFormat(format *QTextBlockFormat) {
-	C.QTextCursor_SetBlockFormat(this.h, format.cPointer())
+	C.QTextCursor_setBlockFormat(this.h, format.cPointer())
 }
 
 func (this *QTextCursor) MergeBlockFormat(modifier *QTextBlockFormat) {
-	C.QTextCursor_MergeBlockFormat(this.h, modifier.cPointer())
+	C.QTextCursor_mergeBlockFormat(this.h, modifier.cPointer())
 }
 
 func (this *QTextCursor) BlockCharFormat() *QTextCharFormat {
-	_goptr := newQTextCharFormat(C.QTextCursor_BlockCharFormat(this.h))
+	_goptr := newQTextCharFormat(C.QTextCursor_blockCharFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextCursor) SetBlockCharFormat(format *QTextCharFormat) {
-	C.QTextCursor_SetBlockCharFormat(this.h, format.cPointer())
+	C.QTextCursor_setBlockCharFormat(this.h, format.cPointer())
 }
 
 func (this *QTextCursor) MergeBlockCharFormat(modifier *QTextCharFormat) {
-	C.QTextCursor_MergeBlockCharFormat(this.h, modifier.cPointer())
+	C.QTextCursor_mergeBlockCharFormat(this.h, modifier.cPointer())
 }
 
 func (this *QTextCursor) AtBlockStart() bool {
-	return (bool)(C.QTextCursor_AtBlockStart(this.h))
+	return (bool)(C.QTextCursor_atBlockStart(this.h))
 }
 
 func (this *QTextCursor) AtBlockEnd() bool {
-	return (bool)(C.QTextCursor_AtBlockEnd(this.h))
+	return (bool)(C.QTextCursor_atBlockEnd(this.h))
 }
 
 func (this *QTextCursor) AtStart() bool {
-	return (bool)(C.QTextCursor_AtStart(this.h))
+	return (bool)(C.QTextCursor_atStart(this.h))
 }
 
 func (this *QTextCursor) AtEnd() bool {
-	return (bool)(C.QTextCursor_AtEnd(this.h))
+	return (bool)(C.QTextCursor_atEnd(this.h))
 }
 
 func (this *QTextCursor) InsertBlock() {
-	C.QTextCursor_InsertBlock(this.h)
+	C.QTextCursor_insertBlock(this.h)
 }
 
 func (this *QTextCursor) InsertBlockWithFormat(format *QTextBlockFormat) {
-	C.QTextCursor_InsertBlockWithFormat(this.h, format.cPointer())
+	C.QTextCursor_insertBlockWithFormat(this.h, format.cPointer())
 }
 
 func (this *QTextCursor) InsertBlock2(format *QTextBlockFormat, charFormat *QTextCharFormat) {
-	C.QTextCursor_InsertBlock2(this.h, format.cPointer(), charFormat.cPointer())
+	C.QTextCursor_insertBlock2(this.h, format.cPointer(), charFormat.cPointer())
 }
 
 func (this *QTextCursor) InsertList(format *QTextListFormat) *QTextList {
-	return newQTextList(C.QTextCursor_InsertList(this.h, format.cPointer()))
+	return newQTextList(C.QTextCursor_insertList(this.h, format.cPointer()))
 }
 
 func (this *QTextCursor) InsertListWithStyle(style QTextListFormat__Style) *QTextList {
-	return newQTextList(C.QTextCursor_InsertListWithStyle(this.h, (C.int)(style)))
+	return newQTextList(C.QTextCursor_insertListWithStyle(this.h, (C.int)(style)))
 }
 
 func (this *QTextCursor) CreateList(format *QTextListFormat) *QTextList {
-	return newQTextList(C.QTextCursor_CreateList(this.h, format.cPointer()))
+	return newQTextList(C.QTextCursor_createList(this.h, format.cPointer()))
 }
 
 func (this *QTextCursor) CreateListWithStyle(style QTextListFormat__Style) *QTextList {
-	return newQTextList(C.QTextCursor_CreateListWithStyle(this.h, (C.int)(style)))
+	return newQTextList(C.QTextCursor_createListWithStyle(this.h, (C.int)(style)))
 }
 
 func (this *QTextCursor) CurrentList() *QTextList {
-	return newQTextList(C.QTextCursor_CurrentList(this.h))
+	return newQTextList(C.QTextCursor_currentList(this.h))
 }
 
 func (this *QTextCursor) InsertTable(rows int, cols int, format *QTextTableFormat) *QTextTable {
-	return newQTextTable(C.QTextCursor_InsertTable(this.h, (C.int)(rows), (C.int)(cols), format.cPointer()))
+	return newQTextTable(C.QTextCursor_insertTable(this.h, (C.int)(rows), (C.int)(cols), format.cPointer()))
 }
 
 func (this *QTextCursor) InsertTable2(rows int, cols int) *QTextTable {
-	return newQTextTable(C.QTextCursor_InsertTable2(this.h, (C.int)(rows), (C.int)(cols)))
+	return newQTextTable(C.QTextCursor_insertTable2(this.h, (C.int)(rows), (C.int)(cols)))
 }
 
 func (this *QTextCursor) CurrentTable() *QTextTable {
-	return newQTextTable(C.QTextCursor_CurrentTable(this.h))
+	return newQTextTable(C.QTextCursor_currentTable(this.h))
 }
 
 func (this *QTextCursor) InsertFrame(format *QTextFrameFormat) *QTextFrame {
-	return newQTextFrame(C.QTextCursor_InsertFrame(this.h, format.cPointer()))
+	return newQTextFrame(C.QTextCursor_insertFrame(this.h, format.cPointer()))
 }
 
 func (this *QTextCursor) CurrentFrame() *QTextFrame {
-	return newQTextFrame(C.QTextCursor_CurrentFrame(this.h))
+	return newQTextFrame(C.QTextCursor_currentFrame(this.h))
 }
 
 func (this *QTextCursor) InsertFragment(fragment *QTextDocumentFragment) {
-	C.QTextCursor_InsertFragment(this.h, fragment.cPointer())
+	C.QTextCursor_insertFragment(this.h, fragment.cPointer())
 }
 
 func (this *QTextCursor) InsertHtml(html string) {
@@ -371,15 +371,15 @@ func (this *QTextCursor) InsertHtml(html string) {
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
 	defer C.free(unsafe.Pointer(html_ms.data))
-	C.QTextCursor_InsertHtml(this.h, html_ms)
+	C.QTextCursor_insertHtml(this.h, html_ms)
 }
 
 func (this *QTextCursor) InsertImage(format *QTextImageFormat, alignment QTextFrameFormat__Position) {
-	C.QTextCursor_InsertImage(this.h, format.cPointer(), (C.int)(alignment))
+	C.QTextCursor_insertImage(this.h, format.cPointer(), (C.int)(alignment))
 }
 
 func (this *QTextCursor) InsertImageWithFormat(format *QTextImageFormat) {
-	C.QTextCursor_InsertImageWithFormat(this.h, format.cPointer())
+	C.QTextCursor_insertImageWithFormat(this.h, format.cPointer())
 }
 
 func (this *QTextCursor) InsertImageWithName(name string) {
@@ -387,75 +387,75 @@ func (this *QTextCursor) InsertImageWithName(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QTextCursor_InsertImageWithName(this.h, name_ms)
+	C.QTextCursor_insertImageWithName(this.h, name_ms)
 }
 
 func (this *QTextCursor) InsertImageWithImage(image *QImage) {
-	C.QTextCursor_InsertImageWithImage(this.h, image.cPointer())
+	C.QTextCursor_insertImageWithImage(this.h, image.cPointer())
 }
 
 func (this *QTextCursor) BeginEditBlock() {
-	C.QTextCursor_BeginEditBlock(this.h)
+	C.QTextCursor_beginEditBlock(this.h)
 }
 
 func (this *QTextCursor) JoinPreviousEditBlock() {
-	C.QTextCursor_JoinPreviousEditBlock(this.h)
+	C.QTextCursor_joinPreviousEditBlock(this.h)
 }
 
 func (this *QTextCursor) EndEditBlock() {
-	C.QTextCursor_EndEditBlock(this.h)
+	C.QTextCursor_endEditBlock(this.h)
 }
 
 func (this *QTextCursor) OperatorNotEqual(rhs *QTextCursor) bool {
-	return (bool)(C.QTextCursor_OperatorNotEqual(this.h, rhs.cPointer()))
+	return (bool)(C.QTextCursor_operatorNotEqual(this.h, rhs.cPointer()))
 }
 
 func (this *QTextCursor) OperatorLesser(rhs *QTextCursor) bool {
-	return (bool)(C.QTextCursor_OperatorLesser(this.h, rhs.cPointer()))
+	return (bool)(C.QTextCursor_operatorLesser(this.h, rhs.cPointer()))
 }
 
 func (this *QTextCursor) OperatorLesserOrEqual(rhs *QTextCursor) bool {
-	return (bool)(C.QTextCursor_OperatorLesserOrEqual(this.h, rhs.cPointer()))
+	return (bool)(C.QTextCursor_operatorLesserOrEqual(this.h, rhs.cPointer()))
 }
 
 func (this *QTextCursor) OperatorEqual(rhs *QTextCursor) bool {
-	return (bool)(C.QTextCursor_OperatorEqual(this.h, rhs.cPointer()))
+	return (bool)(C.QTextCursor_operatorEqual(this.h, rhs.cPointer()))
 }
 
 func (this *QTextCursor) OperatorGreaterOrEqual(rhs *QTextCursor) bool {
-	return (bool)(C.QTextCursor_OperatorGreaterOrEqual(this.h, rhs.cPointer()))
+	return (bool)(C.QTextCursor_operatorGreaterOrEqual(this.h, rhs.cPointer()))
 }
 
 func (this *QTextCursor) OperatorGreater(rhs *QTextCursor) bool {
-	return (bool)(C.QTextCursor_OperatorGreater(this.h, rhs.cPointer()))
+	return (bool)(C.QTextCursor_operatorGreater(this.h, rhs.cPointer()))
 }
 
 func (this *QTextCursor) IsCopyOf(other *QTextCursor) bool {
-	return (bool)(C.QTextCursor_IsCopyOf(this.h, other.cPointer()))
+	return (bool)(C.QTextCursor_isCopyOf(this.h, other.cPointer()))
 }
 
 func (this *QTextCursor) BlockNumber() int {
-	return (int)(C.QTextCursor_BlockNumber(this.h))
+	return (int)(C.QTextCursor_blockNumber(this.h))
 }
 
 func (this *QTextCursor) ColumnNumber() int {
-	return (int)(C.QTextCursor_ColumnNumber(this.h))
+	return (int)(C.QTextCursor_columnNumber(this.h))
 }
 
 func (this *QTextCursor) Document() *QTextDocument {
-	return newQTextDocument(C.QTextCursor_Document(this.h))
+	return newQTextDocument(C.QTextCursor_document(this.h))
 }
 
 func (this *QTextCursor) SetPosition2(pos int, mode QTextCursor__MoveMode) {
-	C.QTextCursor_SetPosition2(this.h, (C.int)(pos), (C.int)(mode))
+	C.QTextCursor_setPosition2(this.h, (C.int)(pos), (C.int)(mode))
 }
 
 func (this *QTextCursor) MovePosition2(op QTextCursor__MoveOperation, param2 QTextCursor__MoveMode) bool {
-	return (bool)(C.QTextCursor_MovePosition2(this.h, (C.int)(op), (C.int)(param2)))
+	return (bool)(C.QTextCursor_movePosition2(this.h, (C.int)(op), (C.int)(param2)))
 }
 
 func (this *QTextCursor) MovePosition3(op QTextCursor__MoveOperation, param2 QTextCursor__MoveMode, n int) bool {
-	return (bool)(C.QTextCursor_MovePosition3(this.h, (C.int)(op), (C.int)(param2), (C.int)(n)))
+	return (bool)(C.QTextCursor_movePosition3(this.h, (C.int)(op), (C.int)(param2), (C.int)(n)))
 }
 
 func (this *QTextCursor) InsertImage2(image *QImage, name string) {
@@ -463,12 +463,12 @@ func (this *QTextCursor) InsertImage2(image *QImage, name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QTextCursor_InsertImage2(this.h, image.cPointer(), name_ms)
+	C.QTextCursor_insertImage2(this.h, image.cPointer(), name_ms)
 }
 
 // Delete this object from C++ memory.
 func (this *QTextCursor) Delete() {
-	C.QTextCursor_Delete(this.h)
+	C.QTextCursor_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

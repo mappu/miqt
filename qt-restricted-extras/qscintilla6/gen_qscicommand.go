@@ -150,35 +150,35 @@ func UnsafeNewQsciCommand(h unsafe.Pointer) *QsciCommand {
 }
 
 func (this *QsciCommand) Command() QsciCommand__Command {
-	return (QsciCommand__Command)(C.QsciCommand_Command(this.h))
+	return (QsciCommand__Command)(C.QsciCommand_command(this.h))
 }
 
 func (this *QsciCommand) Execute() {
-	C.QsciCommand_Execute(this.h)
+	C.QsciCommand_execute(this.h)
 }
 
 func (this *QsciCommand) SetKey(key int) {
-	C.QsciCommand_SetKey(this.h, (C.int)(key))
+	C.QsciCommand_setKey(this.h, (C.int)(key))
 }
 
 func (this *QsciCommand) SetAlternateKey(altkey int) {
-	C.QsciCommand_SetAlternateKey(this.h, (C.int)(altkey))
+	C.QsciCommand_setAlternateKey(this.h, (C.int)(altkey))
 }
 
 func (this *QsciCommand) Key() int {
-	return (int)(C.QsciCommand_Key(this.h))
+	return (int)(C.QsciCommand_key(this.h))
 }
 
 func (this *QsciCommand) AlternateKey() int {
-	return (int)(C.QsciCommand_AlternateKey(this.h))
+	return (int)(C.QsciCommand_alternateKey(this.h))
 }
 
 func QsciCommand_ValidKey(key int) bool {
-	return (bool)(C.QsciCommand_ValidKey((C.int)(key)))
+	return (bool)(C.QsciCommand_validKey((C.int)(key)))
 }
 
 func (this *QsciCommand) Description() string {
-	var _ms C.struct_miqt_string = C.QsciCommand_Description(this.h)
+	var _ms C.struct_miqt_string = C.QsciCommand_description(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -186,7 +186,7 @@ func (this *QsciCommand) Description() string {
 
 // Delete this object from C++ memory.
 func (this *QsciCommand) Delete() {
-	C.QsciCommand_Delete(this.h)
+	C.QsciCommand_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -58,59 +58,59 @@ func NewQMimeType2(other *QMimeType) *QMimeType {
 }
 
 func (this *QMimeType) OperatorAssign(other *QMimeType) {
-	C.QMimeType_OperatorAssign(this.h, other.cPointer())
+	C.QMimeType_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QMimeType) Swap(other *QMimeType) {
-	C.QMimeType_Swap(this.h, other.cPointer())
+	C.QMimeType_swap(this.h, other.cPointer())
 }
 
 func (this *QMimeType) OperatorEqual(other *QMimeType) bool {
-	return (bool)(C.QMimeType_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QMimeType_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QMimeType) OperatorNotEqual(other *QMimeType) bool {
-	return (bool)(C.QMimeType_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QMimeType_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QMimeType) IsValid() bool {
-	return (bool)(C.QMimeType_IsValid(this.h))
+	return (bool)(C.QMimeType_isValid(this.h))
 }
 
 func (this *QMimeType) IsDefault() bool {
-	return (bool)(C.QMimeType_IsDefault(this.h))
+	return (bool)(C.QMimeType_isDefault(this.h))
 }
 
 func (this *QMimeType) Name() string {
-	var _ms C.struct_miqt_string = C.QMimeType_Name(this.h)
+	var _ms C.struct_miqt_string = C.QMimeType_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMimeType) Comment() string {
-	var _ms C.struct_miqt_string = C.QMimeType_Comment(this.h)
+	var _ms C.struct_miqt_string = C.QMimeType_comment(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMimeType) GenericIconName() string {
-	var _ms C.struct_miqt_string = C.QMimeType_GenericIconName(this.h)
+	var _ms C.struct_miqt_string = C.QMimeType_genericIconName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMimeType) IconName() string {
-	var _ms C.struct_miqt_string = C.QMimeType_IconName(this.h)
+	var _ms C.struct_miqt_string = C.QMimeType_iconName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMimeType) GlobPatterns() []string {
-	var _ma C.struct_miqt_array = C.QMimeType_GlobPatterns(this.h)
+	var _ma C.struct_miqt_array = C.QMimeType_globPatterns(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -123,7 +123,7 @@ func (this *QMimeType) GlobPatterns() []string {
 }
 
 func (this *QMimeType) ParentMimeTypes() []string {
-	var _ma C.struct_miqt_array = C.QMimeType_ParentMimeTypes(this.h)
+	var _ma C.struct_miqt_array = C.QMimeType_parentMimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -136,7 +136,7 @@ func (this *QMimeType) ParentMimeTypes() []string {
 }
 
 func (this *QMimeType) AllAncestors() []string {
-	var _ma C.struct_miqt_array = C.QMimeType_AllAncestors(this.h)
+	var _ma C.struct_miqt_array = C.QMimeType_allAncestors(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -149,7 +149,7 @@ func (this *QMimeType) AllAncestors() []string {
 }
 
 func (this *QMimeType) Aliases() []string {
-	var _ma C.struct_miqt_array = C.QMimeType_Aliases(this.h)
+	var _ma C.struct_miqt_array = C.QMimeType_aliases(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -162,7 +162,7 @@ func (this *QMimeType) Aliases() []string {
 }
 
 func (this *QMimeType) Suffixes() []string {
-	var _ma C.struct_miqt_array = C.QMimeType_Suffixes(this.h)
+	var _ma C.struct_miqt_array = C.QMimeType_suffixes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -175,7 +175,7 @@ func (this *QMimeType) Suffixes() []string {
 }
 
 func (this *QMimeType) PreferredSuffix() string {
-	var _ms C.struct_miqt_string = C.QMimeType_PreferredSuffix(this.h)
+	var _ms C.struct_miqt_string = C.QMimeType_preferredSuffix(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -186,11 +186,11 @@ func (this *QMimeType) Inherits(mimeTypeName string) bool {
 	mimeTypeName_ms.data = C.CString(mimeTypeName)
 	mimeTypeName_ms.len = C.size_t(len(mimeTypeName))
 	defer C.free(unsafe.Pointer(mimeTypeName_ms.data))
-	return (bool)(C.QMimeType_Inherits(this.h, mimeTypeName_ms))
+	return (bool)(C.QMimeType_inherits(this.h, mimeTypeName_ms))
 }
 
 func (this *QMimeType) FilterString() string {
-	var _ms C.struct_miqt_string = C.QMimeType_FilterString(this.h)
+	var _ms C.struct_miqt_string = C.QMimeType_filterString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -198,7 +198,7 @@ func (this *QMimeType) FilterString() string {
 
 // Delete this object from C++ memory.
 func (this *QMimeType) Delete() {
-	C.QMimeType_Delete(this.h)
+	C.QMimeType_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

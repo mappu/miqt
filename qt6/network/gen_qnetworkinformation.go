@@ -80,69 +80,69 @@ func UnsafeNewQNetworkInformation(h unsafe.Pointer) *QNetworkInformation {
 }
 
 func (this *QNetworkInformation) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QNetworkInformation_MetaObject(this.h)))
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QNetworkInformation_metaObject(this.h)))
 }
 
 func (this *QNetworkInformation) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QNetworkInformation_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QNetworkInformation_metacast(this.h, param1_Cstring))
 }
 
 func QNetworkInformation_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QNetworkInformation_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QNetworkInformation_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QNetworkInformation) Reachability() QNetworkInformation__Reachability {
-	return (QNetworkInformation__Reachability)(C.QNetworkInformation_Reachability(this.h))
+	return (QNetworkInformation__Reachability)(C.QNetworkInformation_reachability(this.h))
 }
 
 func (this *QNetworkInformation) IsBehindCaptivePortal() bool {
-	return (bool)(C.QNetworkInformation_IsBehindCaptivePortal(this.h))
+	return (bool)(C.QNetworkInformation_isBehindCaptivePortal(this.h))
 }
 
 func (this *QNetworkInformation) TransportMedium() QNetworkInformation__TransportMedium {
-	return (QNetworkInformation__TransportMedium)(C.QNetworkInformation_TransportMedium(this.h))
+	return (QNetworkInformation__TransportMedium)(C.QNetworkInformation_transportMedium(this.h))
 }
 
 func (this *QNetworkInformation) IsMetered() bool {
-	return (bool)(C.QNetworkInformation_IsMetered(this.h))
+	return (bool)(C.QNetworkInformation_isMetered(this.h))
 }
 
 func (this *QNetworkInformation) BackendName() string {
-	var _ms C.struct_miqt_string = C.QNetworkInformation_BackendName(this.h)
+	var _ms C.struct_miqt_string = C.QNetworkInformation_backendName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QNetworkInformation) Supports(features QNetworkInformation__Feature) bool {
-	return (bool)(C.QNetworkInformation_Supports(this.h, (C.int)(features)))
+	return (bool)(C.QNetworkInformation_supports(this.h, (C.int)(features)))
 }
 
 func (this *QNetworkInformation) SupportedFeatures() QNetworkInformation__Feature {
-	return (QNetworkInformation__Feature)(C.QNetworkInformation_SupportedFeatures(this.h))
+	return (QNetworkInformation__Feature)(C.QNetworkInformation_supportedFeatures(this.h))
 }
 
 func QNetworkInformation_LoadDefaultBackend() bool {
-	return (bool)(C.QNetworkInformation_LoadDefaultBackend())
+	return (bool)(C.QNetworkInformation_loadDefaultBackend())
 }
 
 func QNetworkInformation_LoadBackendByFeatures(features QNetworkInformation__Feature) bool {
-	return (bool)(C.QNetworkInformation_LoadBackendByFeatures((C.int)(features)))
+	return (bool)(C.QNetworkInformation_loadBackendByFeatures((C.int)(features)))
 }
 
 func QNetworkInformation_LoadWithFeatures(features QNetworkInformation__Feature) bool {
-	return (bool)(C.QNetworkInformation_LoadWithFeatures((C.int)(features)))
+	return (bool)(C.QNetworkInformation_loadWithFeatures((C.int)(features)))
 }
 
 func QNetworkInformation_AvailableBackends() []string {
-	var _ma C.struct_miqt_array = C.QNetworkInformation_AvailableBackends()
+	var _ma C.struct_miqt_array = C.QNetworkInformation_availableBackends()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -155,18 +155,18 @@ func QNetworkInformation_AvailableBackends() []string {
 }
 
 func QNetworkInformation_Instance() *QNetworkInformation {
-	return newQNetworkInformation(C.QNetworkInformation_Instance())
+	return newQNetworkInformation(C.QNetworkInformation_instance())
 }
 
 func (this *QNetworkInformation) ReachabilityChanged(newReachability QNetworkInformation__Reachability) {
-	C.QNetworkInformation_ReachabilityChanged(this.h, (C.int)(newReachability))
+	C.QNetworkInformation_reachabilityChanged(this.h, (C.int)(newReachability))
 }
 func (this *QNetworkInformation) OnReachabilityChanged(slot func(newReachability QNetworkInformation__Reachability)) {
-	C.QNetworkInformation_connect_ReachabilityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QNetworkInformation_connect_reachabilityChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QNetworkInformation_ReachabilityChanged
-func miqt_exec_callback_QNetworkInformation_ReachabilityChanged(cb C.intptr_t, newReachability C.int) {
+//export miqt_exec_callback_QNetworkInformation_reachabilityChanged
+func miqt_exec_callback_QNetworkInformation_reachabilityChanged(cb C.intptr_t, newReachability C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(newReachability QNetworkInformation__Reachability))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -179,14 +179,14 @@ func miqt_exec_callback_QNetworkInformation_ReachabilityChanged(cb C.intptr_t, n
 }
 
 func (this *QNetworkInformation) IsBehindCaptivePortalChanged(state bool) {
-	C.QNetworkInformation_IsBehindCaptivePortalChanged(this.h, (C.bool)(state))
+	C.QNetworkInformation_isBehindCaptivePortalChanged(this.h, (C.bool)(state))
 }
 func (this *QNetworkInformation) OnIsBehindCaptivePortalChanged(slot func(state bool)) {
-	C.QNetworkInformation_connect_IsBehindCaptivePortalChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QNetworkInformation_connect_isBehindCaptivePortalChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QNetworkInformation_IsBehindCaptivePortalChanged
-func miqt_exec_callback_QNetworkInformation_IsBehindCaptivePortalChanged(cb C.intptr_t, state C.bool) {
+//export miqt_exec_callback_QNetworkInformation_isBehindCaptivePortalChanged
+func miqt_exec_callback_QNetworkInformation_isBehindCaptivePortalChanged(cb C.intptr_t, state C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(state bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -199,14 +199,14 @@ func miqt_exec_callback_QNetworkInformation_IsBehindCaptivePortalChanged(cb C.in
 }
 
 func (this *QNetworkInformation) TransportMediumChanged(current QNetworkInformation__TransportMedium) {
-	C.QNetworkInformation_TransportMediumChanged(this.h, (C.int)(current))
+	C.QNetworkInformation_transportMediumChanged(this.h, (C.int)(current))
 }
 func (this *QNetworkInformation) OnTransportMediumChanged(slot func(current QNetworkInformation__TransportMedium)) {
-	C.QNetworkInformation_connect_TransportMediumChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QNetworkInformation_connect_transportMediumChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QNetworkInformation_TransportMediumChanged
-func miqt_exec_callback_QNetworkInformation_TransportMediumChanged(cb C.intptr_t, current C.int) {
+//export miqt_exec_callback_QNetworkInformation_transportMediumChanged
+func miqt_exec_callback_QNetworkInformation_transportMediumChanged(cb C.intptr_t, current C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(current QNetworkInformation__TransportMedium))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -219,14 +219,14 @@ func miqt_exec_callback_QNetworkInformation_TransportMediumChanged(cb C.intptr_t
 }
 
 func (this *QNetworkInformation) IsMeteredChanged(isMetered bool) {
-	C.QNetworkInformation_IsMeteredChanged(this.h, (C.bool)(isMetered))
+	C.QNetworkInformation_isMeteredChanged(this.h, (C.bool)(isMetered))
 }
 func (this *QNetworkInformation) OnIsMeteredChanged(slot func(isMetered bool)) {
-	C.QNetworkInformation_connect_IsMeteredChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QNetworkInformation_connect_isMeteredChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QNetworkInformation_IsMeteredChanged
-func miqt_exec_callback_QNetworkInformation_IsMeteredChanged(cb C.intptr_t, isMetered C.bool) {
+//export miqt_exec_callback_QNetworkInformation_isMeteredChanged
+func miqt_exec_callback_QNetworkInformation_isMeteredChanged(cb C.intptr_t, isMetered C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(isMetered bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -243,7 +243,7 @@ func QNetworkInformation_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QNetworkInformation_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QNetworkInformation_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -254,7 +254,7 @@ func QNetworkInformation_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QNetworkInformation_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QNetworkInformation_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret

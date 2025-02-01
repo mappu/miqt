@@ -70,68 +70,68 @@ func NewQDataWidgetMapper2(parent *QObject) *QDataWidgetMapper {
 }
 
 func (this *QDataWidgetMapper) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QDataWidgetMapper_MetaObject(this.h))
+	return newQMetaObject(C.QDataWidgetMapper_metaObject(this.h))
 }
 
 func (this *QDataWidgetMapper) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QDataWidgetMapper_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QDataWidgetMapper_metacast(this.h, param1_Cstring))
 }
 
 func QDataWidgetMapper_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QDataWidgetMapper_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QDataWidgetMapper_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QDataWidgetMapper) SetModel(model *QAbstractItemModel) {
-	C.QDataWidgetMapper_SetModel(this.h, model.cPointer())
+	C.QDataWidgetMapper_setModel(this.h, model.cPointer())
 }
 
 func (this *QDataWidgetMapper) Model() *QAbstractItemModel {
-	return newQAbstractItemModel(C.QDataWidgetMapper_Model(this.h))
+	return newQAbstractItemModel(C.QDataWidgetMapper_model(this.h))
 }
 
 func (this *QDataWidgetMapper) SetItemDelegate(delegate *QAbstractItemDelegate) {
-	C.QDataWidgetMapper_SetItemDelegate(this.h, delegate.cPointer())
+	C.QDataWidgetMapper_setItemDelegate(this.h, delegate.cPointer())
 }
 
 func (this *QDataWidgetMapper) ItemDelegate() *QAbstractItemDelegate {
-	return newQAbstractItemDelegate(C.QDataWidgetMapper_ItemDelegate(this.h))
+	return newQAbstractItemDelegate(C.QDataWidgetMapper_itemDelegate(this.h))
 }
 
 func (this *QDataWidgetMapper) SetRootIndex(index *QModelIndex) {
-	C.QDataWidgetMapper_SetRootIndex(this.h, index.cPointer())
+	C.QDataWidgetMapper_setRootIndex(this.h, index.cPointer())
 }
 
 func (this *QDataWidgetMapper) RootIndex() *QModelIndex {
-	_goptr := newQModelIndex(C.QDataWidgetMapper_RootIndex(this.h))
+	_goptr := newQModelIndex(C.QDataWidgetMapper_rootIndex(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDataWidgetMapper) SetOrientation(aOrientation Orientation) {
-	C.QDataWidgetMapper_SetOrientation(this.h, (C.int)(aOrientation))
+	C.QDataWidgetMapper_setOrientation(this.h, (C.int)(aOrientation))
 }
 
 func (this *QDataWidgetMapper) Orientation() Orientation {
-	return (Orientation)(C.QDataWidgetMapper_Orientation(this.h))
+	return (Orientation)(C.QDataWidgetMapper_orientation(this.h))
 }
 
 func (this *QDataWidgetMapper) SetSubmitPolicy(policy QDataWidgetMapper__SubmitPolicy) {
-	C.QDataWidgetMapper_SetSubmitPolicy(this.h, (C.int)(policy))
+	C.QDataWidgetMapper_setSubmitPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QDataWidgetMapper) SubmitPolicy() QDataWidgetMapper__SubmitPolicy {
-	return (QDataWidgetMapper__SubmitPolicy)(C.QDataWidgetMapper_SubmitPolicy(this.h))
+	return (QDataWidgetMapper__SubmitPolicy)(C.QDataWidgetMapper_submitPolicy(this.h))
 }
 
 func (this *QDataWidgetMapper) AddMapping(widget *QWidget, section int) {
-	C.QDataWidgetMapper_AddMapping(this.h, widget.cPointer(), (C.int)(section))
+	C.QDataWidgetMapper_addMapping(this.h, widget.cPointer(), (C.int)(section))
 }
 
 func (this *QDataWidgetMapper) AddMapping2(widget *QWidget, section int, propertyName []byte) {
@@ -142,77 +142,77 @@ func (this *QDataWidgetMapper) AddMapping2(widget *QWidget, section int, propert
 		propertyName_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	propertyName_alias.len = C.size_t(len(propertyName))
-	C.QDataWidgetMapper_AddMapping2(this.h, widget.cPointer(), (C.int)(section), propertyName_alias)
+	C.QDataWidgetMapper_addMapping2(this.h, widget.cPointer(), (C.int)(section), propertyName_alias)
 }
 
 func (this *QDataWidgetMapper) RemoveMapping(widget *QWidget) {
-	C.QDataWidgetMapper_RemoveMapping(this.h, widget.cPointer())
+	C.QDataWidgetMapper_removeMapping(this.h, widget.cPointer())
 }
 
 func (this *QDataWidgetMapper) MappedSection(widget *QWidget) int {
-	return (int)(C.QDataWidgetMapper_MappedSection(this.h, widget.cPointer()))
+	return (int)(C.QDataWidgetMapper_mappedSection(this.h, widget.cPointer()))
 }
 
 func (this *QDataWidgetMapper) MappedPropertyName(widget *QWidget) []byte {
-	var _bytearray C.struct_miqt_string = C.QDataWidgetMapper_MappedPropertyName(this.h, widget.cPointer())
+	var _bytearray C.struct_miqt_string = C.QDataWidgetMapper_mappedPropertyName(this.h, widget.cPointer())
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QDataWidgetMapper) MappedWidgetAt(section int) *QWidget {
-	return newQWidget(C.QDataWidgetMapper_MappedWidgetAt(this.h, (C.int)(section)))
+	return newQWidget(C.QDataWidgetMapper_mappedWidgetAt(this.h, (C.int)(section)))
 }
 
 func (this *QDataWidgetMapper) ClearMapping() {
-	C.QDataWidgetMapper_ClearMapping(this.h)
+	C.QDataWidgetMapper_clearMapping(this.h)
 }
 
 func (this *QDataWidgetMapper) CurrentIndex() int {
-	return (int)(C.QDataWidgetMapper_CurrentIndex(this.h))
+	return (int)(C.QDataWidgetMapper_currentIndex(this.h))
 }
 
 func (this *QDataWidgetMapper) Revert() {
-	C.QDataWidgetMapper_Revert(this.h)
+	C.QDataWidgetMapper_revert(this.h)
 }
 
 func (this *QDataWidgetMapper) Submit() bool {
-	return (bool)(C.QDataWidgetMapper_Submit(this.h))
+	return (bool)(C.QDataWidgetMapper_submit(this.h))
 }
 
 func (this *QDataWidgetMapper) ToFirst() {
-	C.QDataWidgetMapper_ToFirst(this.h)
+	C.QDataWidgetMapper_toFirst(this.h)
 }
 
 func (this *QDataWidgetMapper) ToLast() {
-	C.QDataWidgetMapper_ToLast(this.h)
+	C.QDataWidgetMapper_toLast(this.h)
 }
 
 func (this *QDataWidgetMapper) ToNext() {
-	C.QDataWidgetMapper_ToNext(this.h)
+	C.QDataWidgetMapper_toNext(this.h)
 }
 
 func (this *QDataWidgetMapper) ToPrevious() {
-	C.QDataWidgetMapper_ToPrevious(this.h)
+	C.QDataWidgetMapper_toPrevious(this.h)
 }
 
 func (this *QDataWidgetMapper) SetCurrentIndex(index int) {
-	C.QDataWidgetMapper_SetCurrentIndex(this.h, (C.int)(index))
+	C.QDataWidgetMapper_setCurrentIndex(this.h, (C.int)(index))
 }
 
 func (this *QDataWidgetMapper) SetCurrentModelIndex(index *QModelIndex) {
-	C.QDataWidgetMapper_SetCurrentModelIndex(this.h, index.cPointer())
+	C.QDataWidgetMapper_setCurrentModelIndex(this.h, index.cPointer())
 }
 
 func (this *QDataWidgetMapper) CurrentIndexChanged(index int) {
-	C.QDataWidgetMapper_CurrentIndexChanged(this.h, (C.int)(index))
+	C.QDataWidgetMapper_currentIndexChanged(this.h, (C.int)(index))
 }
 func (this *QDataWidgetMapper) OnCurrentIndexChanged(slot func(index int)) {
-	C.QDataWidgetMapper_connect_CurrentIndexChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QDataWidgetMapper_connect_currentIndexChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QDataWidgetMapper_CurrentIndexChanged
-func miqt_exec_callback_QDataWidgetMapper_CurrentIndexChanged(cb C.intptr_t, index C.int) {
+//export miqt_exec_callback_QDataWidgetMapper_currentIndexChanged
+func miqt_exec_callback_QDataWidgetMapper_currentIndexChanged(cb C.intptr_t, index C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -229,7 +229,7 @@ func QDataWidgetMapper_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QDataWidgetMapper_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QDataWidgetMapper_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -240,7 +240,7 @@ func QDataWidgetMapper_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QDataWidgetMapper_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QDataWidgetMapper_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -248,18 +248,18 @@ func QDataWidgetMapper_Tr3(s string, c string, n int) string {
 
 func (this *QDataWidgetMapper) callVirtualBase_SetCurrentIndex(index int) {
 
-	C.QDataWidgetMapper_virtualbase_SetCurrentIndex(unsafe.Pointer(this.h), (C.int)(index))
+	C.QDataWidgetMapper_virtualbase_setCurrentIndex(unsafe.Pointer(this.h), (C.int)(index))
 
 }
-func (this *QDataWidgetMapper) OnSetCurrentIndex(slot func(super func(index int), index int)) {
-	ok := C.QDataWidgetMapper_override_virtual_SetCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDataWidgetMapper) OnsetCurrentIndex(slot func(super func(index int), index int)) {
+	ok := C.QDataWidgetMapper_override_virtual_setCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDataWidgetMapper_SetCurrentIndex
-func miqt_exec_callback_QDataWidgetMapper_SetCurrentIndex(self *C.QDataWidgetMapper, cb C.intptr_t, index C.int) {
+//export miqt_exec_callback_QDataWidgetMapper_setCurrentIndex
+func miqt_exec_callback_QDataWidgetMapper_setCurrentIndex(self *C.QDataWidgetMapper, cb C.intptr_t, index C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index int), index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -274,18 +274,18 @@ func miqt_exec_callback_QDataWidgetMapper_SetCurrentIndex(self *C.QDataWidgetMap
 
 func (this *QDataWidgetMapper) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QDataWidgetMapper_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QDataWidgetMapper_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QDataWidgetMapper) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QDataWidgetMapper_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDataWidgetMapper) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QDataWidgetMapper_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDataWidgetMapper_Event
-func miqt_exec_callback_QDataWidgetMapper_Event(self *C.QDataWidgetMapper, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QDataWidgetMapper_event
+func miqt_exec_callback_QDataWidgetMapper_event(self *C.QDataWidgetMapper, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -302,18 +302,18 @@ func miqt_exec_callback_QDataWidgetMapper_Event(self *C.QDataWidgetMapper, cb C.
 
 func (this *QDataWidgetMapper) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QDataWidgetMapper_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QDataWidgetMapper_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QDataWidgetMapper) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QDataWidgetMapper_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDataWidgetMapper) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QDataWidgetMapper_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDataWidgetMapper_EventFilter
-func miqt_exec_callback_QDataWidgetMapper_EventFilter(self *C.QDataWidgetMapper, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QDataWidgetMapper_eventFilter
+func miqt_exec_callback_QDataWidgetMapper_eventFilter(self *C.QDataWidgetMapper, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -332,18 +332,18 @@ func miqt_exec_callback_QDataWidgetMapper_EventFilter(self *C.QDataWidgetMapper,
 
 func (this *QDataWidgetMapper) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QDataWidgetMapper_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QDataWidgetMapper_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDataWidgetMapper) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QDataWidgetMapper_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDataWidgetMapper) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QDataWidgetMapper_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDataWidgetMapper_TimerEvent
-func miqt_exec_callback_QDataWidgetMapper_TimerEvent(self *C.QDataWidgetMapper, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QDataWidgetMapper_timerEvent
+func miqt_exec_callback_QDataWidgetMapper_timerEvent(self *C.QDataWidgetMapper, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -358,18 +358,18 @@ func miqt_exec_callback_QDataWidgetMapper_TimerEvent(self *C.QDataWidgetMapper, 
 
 func (this *QDataWidgetMapper) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QDataWidgetMapper_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QDataWidgetMapper_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDataWidgetMapper) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QDataWidgetMapper_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDataWidgetMapper) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QDataWidgetMapper_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDataWidgetMapper_ChildEvent
-func miqt_exec_callback_QDataWidgetMapper_ChildEvent(self *C.QDataWidgetMapper, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QDataWidgetMapper_childEvent
+func miqt_exec_callback_QDataWidgetMapper_childEvent(self *C.QDataWidgetMapper, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -384,18 +384,18 @@ func miqt_exec_callback_QDataWidgetMapper_ChildEvent(self *C.QDataWidgetMapper, 
 
 func (this *QDataWidgetMapper) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QDataWidgetMapper_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QDataWidgetMapper_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDataWidgetMapper) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QDataWidgetMapper_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDataWidgetMapper) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QDataWidgetMapper_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDataWidgetMapper_CustomEvent
-func miqt_exec_callback_QDataWidgetMapper_CustomEvent(self *C.QDataWidgetMapper, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QDataWidgetMapper_customEvent
+func miqt_exec_callback_QDataWidgetMapper_customEvent(self *C.QDataWidgetMapper, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -410,18 +410,18 @@ func miqt_exec_callback_QDataWidgetMapper_CustomEvent(self *C.QDataWidgetMapper,
 
 func (this *QDataWidgetMapper) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QDataWidgetMapper_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QDataWidgetMapper_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QDataWidgetMapper) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QDataWidgetMapper_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDataWidgetMapper) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QDataWidgetMapper_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDataWidgetMapper_ConnectNotify
-func miqt_exec_callback_QDataWidgetMapper_ConnectNotify(self *C.QDataWidgetMapper, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QDataWidgetMapper_connectNotify
+func miqt_exec_callback_QDataWidgetMapper_connectNotify(self *C.QDataWidgetMapper, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -436,18 +436,18 @@ func miqt_exec_callback_QDataWidgetMapper_ConnectNotify(self *C.QDataWidgetMappe
 
 func (this *QDataWidgetMapper) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QDataWidgetMapper_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QDataWidgetMapper_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QDataWidgetMapper) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QDataWidgetMapper_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QDataWidgetMapper) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QDataWidgetMapper_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QDataWidgetMapper_DisconnectNotify
-func miqt_exec_callback_QDataWidgetMapper_DisconnectNotify(self *C.QDataWidgetMapper, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QDataWidgetMapper_disconnectNotify
+func miqt_exec_callback_QDataWidgetMapper_disconnectNotify(self *C.QDataWidgetMapper, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -462,7 +462,7 @@ func miqt_exec_callback_QDataWidgetMapper_DisconnectNotify(self *C.QDataWidgetMa
 
 // Delete this object from C++ memory.
 func (this *QDataWidgetMapper) Delete() {
-	C.QDataWidgetMapper_Delete(this.h)
+	C.QDataWidgetMapper_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

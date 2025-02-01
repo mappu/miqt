@@ -85,48 +85,48 @@ func UnsafeNewQWebEngineUrlRequestInfo(h unsafe.Pointer) *QWebEngineUrlRequestIn
 }
 
 func (this *QWebEngineUrlRequestInfo) ResourceType() QWebEngineUrlRequestInfo__ResourceType {
-	return (QWebEngineUrlRequestInfo__ResourceType)(C.QWebEngineUrlRequestInfo_ResourceType(this.h))
+	return (QWebEngineUrlRequestInfo__ResourceType)(C.QWebEngineUrlRequestInfo_resourceType(this.h))
 }
 
 func (this *QWebEngineUrlRequestInfo) NavigationType() QWebEngineUrlRequestInfo__NavigationType {
-	return (QWebEngineUrlRequestInfo__NavigationType)(C.QWebEngineUrlRequestInfo_NavigationType(this.h))
+	return (QWebEngineUrlRequestInfo__NavigationType)(C.QWebEngineUrlRequestInfo_navigationType(this.h))
 }
 
 func (this *QWebEngineUrlRequestInfo) RequestUrl() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestInfo_RequestUrl(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestInfo_requestUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineUrlRequestInfo) FirstPartyUrl() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestInfo_FirstPartyUrl(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestInfo_firstPartyUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineUrlRequestInfo) Initiator() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestInfo_Initiator(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestInfo_initiator(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineUrlRequestInfo) RequestMethod() []byte {
-	var _bytearray C.struct_miqt_string = C.QWebEngineUrlRequestInfo_RequestMethod(this.h)
+	var _bytearray C.struct_miqt_string = C.QWebEngineUrlRequestInfo_requestMethod(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QWebEngineUrlRequestInfo) Changed() bool {
-	return (bool)(C.QWebEngineUrlRequestInfo_Changed(this.h))
+	return (bool)(C.QWebEngineUrlRequestInfo_changed(this.h))
 }
 
 func (this *QWebEngineUrlRequestInfo) Block(shouldBlock bool) {
-	C.QWebEngineUrlRequestInfo_Block(this.h, (C.bool)(shouldBlock))
+	C.QWebEngineUrlRequestInfo_block(this.h, (C.bool)(shouldBlock))
 }
 
 func (this *QWebEngineUrlRequestInfo) Redirect(url *qt.QUrl) {
-	C.QWebEngineUrlRequestInfo_Redirect(this.h, (*C.QUrl)(url.UnsafePointer()))
+	C.QWebEngineUrlRequestInfo_redirect(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QWebEngineUrlRequestInfo) SetHttpHeader(name []byte, value []byte) {
@@ -144,5 +144,5 @@ func (this *QWebEngineUrlRequestInfo) SetHttpHeader(name []byte, value []byte) {
 		value_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	value_alias.len = C.size_t(len(value))
-	C.QWebEngineUrlRequestInfo_SetHttpHeader(this.h, name_alias, value_alias)
+	C.QWebEngineUrlRequestInfo_setHttpHeader(this.h, name_alias, value_alias)
 }

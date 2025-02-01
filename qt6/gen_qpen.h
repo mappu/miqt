@@ -34,39 +34,39 @@ QPen* QPen_new5(QPen* pen);
 QPen* QPen_new6(QBrush* brush, double width, int s);
 QPen* QPen_new7(QBrush* brush, double width, int s, int c);
 QPen* QPen_new8(QBrush* brush, double width, int s, int c, int j);
-void QPen_OperatorAssign(QPen* self, QPen* pen);
-void QPen_Swap(QPen* self, QPen* other);
-int QPen_Style(const QPen* self);
-void QPen_SetStyle(QPen* self, int style);
-struct miqt_array /* of double */  QPen_DashPattern(const QPen* self);
-void QPen_SetDashPattern(QPen* self, struct miqt_array /* of double */  pattern);
-double QPen_DashOffset(const QPen* self);
-void QPen_SetDashOffset(QPen* self, double doffset);
-double QPen_MiterLimit(const QPen* self);
-void QPen_SetMiterLimit(QPen* self, double limit);
-double QPen_WidthF(const QPen* self);
-void QPen_SetWidthF(QPen* self, double width);
-int QPen_Width(const QPen* self);
-void QPen_SetWidth(QPen* self, int width);
-QColor* QPen_Color(const QPen* self);
-void QPen_SetColor(QPen* self, QColor* color);
-QBrush* QPen_Brush(const QPen* self);
-void QPen_SetBrush(QPen* self, QBrush* brush);
-bool QPen_IsSolid(const QPen* self);
-int QPen_CapStyle(const QPen* self);
-void QPen_SetCapStyle(QPen* self, int pcs);
-int QPen_JoinStyle(const QPen* self);
-void QPen_SetJoinStyle(QPen* self, int pcs);
-bool QPen_IsCosmetic(const QPen* self);
-void QPen_SetCosmetic(QPen* self, bool cosmetic);
-bool QPen_OperatorEqual(const QPen* self, QPen* p);
-bool QPen_OperatorNotEqual(const QPen* self, QPen* p);
+void QPen_operatorAssign(QPen* self, QPen* pen);
+void QPen_swap(QPen* self, QPen* other);
+int QPen_style(const QPen* self);
+void QPen_setStyle(QPen* self, int style);
+struct miqt_array /* of double */  QPen_dashPattern(const QPen* self);
+void QPen_setDashPattern(QPen* self, struct miqt_array /* of double */  pattern);
+double QPen_dashOffset(const QPen* self);
+void QPen_setDashOffset(QPen* self, double doffset);
+double QPen_miterLimit(const QPen* self);
+void QPen_setMiterLimit(QPen* self, double limit);
+double QPen_widthF(const QPen* self);
+void QPen_setWidthF(QPen* self, double width);
+int QPen_width(const QPen* self);
+void QPen_setWidth(QPen* self, int width);
+QColor* QPen_color(const QPen* self);
+void QPen_setColor(QPen* self, QColor* color);
+QBrush* QPen_brush(const QPen* self);
+void QPen_setBrush(QPen* self, QBrush* brush);
+bool QPen_isSolid(const QPen* self);
+int QPen_capStyle(const QPen* self);
+void QPen_setCapStyle(QPen* self, int pcs);
+int QPen_joinStyle(const QPen* self);
+void QPen_setJoinStyle(QPen* self, int pcs);
+bool QPen_isCosmetic(const QPen* self);
+void QPen_setCosmetic(QPen* self, bool cosmetic);
+bool QPen_operatorEqual(const QPen* self, QPen* p);
+bool QPen_operatorNotEqual(const QPen* self, QPen* p);
 QVariant* QPen_ToQVariant(const QPen* self);
-bool QPen_IsDetached(QPen* self);
-void QPen_Delete(QPen* self);
+bool QPen_isDetached(QPen* self);
+void QPen_delete(QPen* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

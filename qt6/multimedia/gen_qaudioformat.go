@@ -114,88 +114,88 @@ func NewQAudioFormat2(param1 *QAudioFormat) *QAudioFormat {
 }
 
 func (this *QAudioFormat) IsValid() bool {
-	return (bool)(C.QAudioFormat_IsValid(this.h))
+	return (bool)(C.QAudioFormat_isValid(this.h))
 }
 
 func (this *QAudioFormat) SetSampleRate(sampleRate int) {
-	C.QAudioFormat_SetSampleRate(this.h, (C.int)(sampleRate))
+	C.QAudioFormat_setSampleRate(this.h, (C.int)(sampleRate))
 }
 
 func (this *QAudioFormat) SampleRate() int {
-	return (int)(C.QAudioFormat_SampleRate(this.h))
+	return (int)(C.QAudioFormat_sampleRate(this.h))
 }
 
 func (this *QAudioFormat) SetChannelConfig(config QAudioFormat__ChannelConfig) {
-	C.QAudioFormat_SetChannelConfig(this.h, (C.uint32_t)(config))
+	C.QAudioFormat_setChannelConfig(this.h, (C.uint32_t)(config))
 }
 
 func (this *QAudioFormat) ChannelConfig() QAudioFormat__ChannelConfig {
-	return (QAudioFormat__ChannelConfig)(C.QAudioFormat_ChannelConfig(this.h))
+	return (QAudioFormat__ChannelConfig)(C.QAudioFormat_channelConfig(this.h))
 }
 
 func (this *QAudioFormat) SetChannelCount(channelCount int) {
-	C.QAudioFormat_SetChannelCount(this.h, (C.int)(channelCount))
+	C.QAudioFormat_setChannelCount(this.h, (C.int)(channelCount))
 }
 
 func (this *QAudioFormat) ChannelCount() int {
-	return (int)(C.QAudioFormat_ChannelCount(this.h))
+	return (int)(C.QAudioFormat_channelCount(this.h))
 }
 
 func (this *QAudioFormat) ChannelOffset(channel QAudioFormat__AudioChannelPosition) int {
-	return (int)(C.QAudioFormat_ChannelOffset(this.h, (C.int)(channel)))
+	return (int)(C.QAudioFormat_channelOffset(this.h, (C.int)(channel)))
 }
 
 func (this *QAudioFormat) SetSampleFormat(f QAudioFormat__SampleFormat) {
-	C.QAudioFormat_SetSampleFormat(this.h, (C.uint16_t)(f))
+	C.QAudioFormat_setSampleFormat(this.h, (C.uint16_t)(f))
 }
 
 func (this *QAudioFormat) SampleFormat() QAudioFormat__SampleFormat {
-	return (QAudioFormat__SampleFormat)(C.QAudioFormat_SampleFormat(this.h))
+	return (QAudioFormat__SampleFormat)(C.QAudioFormat_sampleFormat(this.h))
 }
 
 func (this *QAudioFormat) BytesForDuration(microseconds int64) int {
-	return (int)(C.QAudioFormat_BytesForDuration(this.h, (C.longlong)(microseconds)))
+	return (int)(C.QAudioFormat_bytesForDuration(this.h, (C.longlong)(microseconds)))
 }
 
 func (this *QAudioFormat) DurationForBytes(byteCount int) int64 {
-	return (int64)(C.QAudioFormat_DurationForBytes(this.h, (C.int)(byteCount)))
+	return (int64)(C.QAudioFormat_durationForBytes(this.h, (C.int)(byteCount)))
 }
 
 func (this *QAudioFormat) BytesForFrames(frameCount int) int {
-	return (int)(C.QAudioFormat_BytesForFrames(this.h, (C.int)(frameCount)))
+	return (int)(C.QAudioFormat_bytesForFrames(this.h, (C.int)(frameCount)))
 }
 
 func (this *QAudioFormat) FramesForBytes(byteCount int) int {
-	return (int)(C.QAudioFormat_FramesForBytes(this.h, (C.int)(byteCount)))
+	return (int)(C.QAudioFormat_framesForBytes(this.h, (C.int)(byteCount)))
 }
 
 func (this *QAudioFormat) FramesForDuration(microseconds int64) int {
-	return (int)(C.QAudioFormat_FramesForDuration(this.h, (C.longlong)(microseconds)))
+	return (int)(C.QAudioFormat_framesForDuration(this.h, (C.longlong)(microseconds)))
 }
 
 func (this *QAudioFormat) DurationForFrames(frameCount int) int64 {
-	return (int64)(C.QAudioFormat_DurationForFrames(this.h, (C.int)(frameCount)))
+	return (int64)(C.QAudioFormat_durationForFrames(this.h, (C.int)(frameCount)))
 }
 
 func (this *QAudioFormat) BytesPerFrame() int {
-	return (int)(C.QAudioFormat_BytesPerFrame(this.h))
+	return (int)(C.QAudioFormat_bytesPerFrame(this.h))
 }
 
 func (this *QAudioFormat) BytesPerSample() int {
-	return (int)(C.QAudioFormat_BytesPerSample(this.h))
+	return (int)(C.QAudioFormat_bytesPerSample(this.h))
 }
 
 func (this *QAudioFormat) NormalizedSampleValue(sample unsafe.Pointer) float32 {
-	return (float32)(C.QAudioFormat_NormalizedSampleValue(this.h, sample))
+	return (float32)(C.QAudioFormat_normalizedSampleValue(this.h, sample))
 }
 
 func QAudioFormat_DefaultChannelConfigForChannelCount(channelCount int) QAudioFormat__ChannelConfig {
-	return (QAudioFormat__ChannelConfig)(C.QAudioFormat_DefaultChannelConfigForChannelCount((C.int)(channelCount)))
+	return (QAudioFormat__ChannelConfig)(C.QAudioFormat_defaultChannelConfigForChannelCount((C.int)(channelCount)))
 }
 
 // Delete this object from C++ memory.
 func (this *QAudioFormat) Delete() {
-	C.QAudioFormat_Delete(this.h)
+	C.QAudioFormat_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

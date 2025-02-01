@@ -44,48 +44,48 @@ typedef struct QTimerEvent QTimerEvent;
 
 QTextList* QTextList_new(QTextDocument* doc);
 void QTextList_virtbase(QTextList* src, QTextBlockGroup** outptr_QTextBlockGroup);
-QMetaObject* QTextList_MetaObject(const QTextList* self);
-void* QTextList_Metacast(QTextList* self, const char* param1);
-struct miqt_string QTextList_Tr(const char* s);
-struct miqt_string QTextList_TrUtf8(const char* s);
-int QTextList_Count(const QTextList* self);
-bool QTextList_IsEmpty(const QTextList* self);
-QTextBlock* QTextList_Item(const QTextList* self, int i);
-int QTextList_ItemNumber(const QTextList* self, QTextBlock* param1);
-struct miqt_string QTextList_ItemText(const QTextList* self, QTextBlock* param1);
-void QTextList_RemoveItem(QTextList* self, int i);
-void QTextList_Remove(QTextList* self, QTextBlock* param1);
-void QTextList_Add(QTextList* self, QTextBlock* block);
-void QTextList_SetFormat(QTextList* self, QTextListFormat* format);
-QTextListFormat* QTextList_Format(const QTextList* self);
-struct miqt_string QTextList_Tr2(const char* s, const char* c);
-struct miqt_string QTextList_Tr3(const char* s, const char* c, int n);
-struct miqt_string QTextList_TrUtf82(const char* s, const char* c);
-struct miqt_string QTextList_TrUtf83(const char* s, const char* c, int n);
-bool QTextList_override_virtual_BlockInserted(void* self, intptr_t slot);
-void QTextList_virtualbase_BlockInserted(void* self, QTextBlock* block);
-bool QTextList_override_virtual_BlockRemoved(void* self, intptr_t slot);
-void QTextList_virtualbase_BlockRemoved(void* self, QTextBlock* block);
-bool QTextList_override_virtual_BlockFormatChanged(void* self, intptr_t slot);
-void QTextList_virtualbase_BlockFormatChanged(void* self, QTextBlock* block);
-bool QTextList_override_virtual_Event(void* self, intptr_t slot);
-bool QTextList_virtualbase_Event(void* self, QEvent* event);
-bool QTextList_override_virtual_EventFilter(void* self, intptr_t slot);
-bool QTextList_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-bool QTextList_override_virtual_TimerEvent(void* self, intptr_t slot);
-void QTextList_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-bool QTextList_override_virtual_ChildEvent(void* self, intptr_t slot);
-void QTextList_virtualbase_ChildEvent(void* self, QChildEvent* event);
-bool QTextList_override_virtual_CustomEvent(void* self, intptr_t slot);
-void QTextList_virtualbase_CustomEvent(void* self, QEvent* event);
-bool QTextList_override_virtual_ConnectNotify(void* self, intptr_t slot);
-void QTextList_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-bool QTextList_override_virtual_DisconnectNotify(void* self, intptr_t slot);
-void QTextList_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QTextList_Delete(QTextList* self);
+QMetaObject* QTextList_metaObject(const QTextList* self);
+void* QTextList_metacast(QTextList* self, const char* param1);
+struct miqt_string QTextList_tr(const char* s);
+struct miqt_string QTextList_trUtf8(const char* s);
+int QTextList_count(const QTextList* self);
+bool QTextList_isEmpty(const QTextList* self);
+QTextBlock* QTextList_item(const QTextList* self, int i);
+int QTextList_itemNumber(const QTextList* self, QTextBlock* param1);
+struct miqt_string QTextList_itemText(const QTextList* self, QTextBlock* param1);
+void QTextList_removeItem(QTextList* self, int i);
+void QTextList_remove(QTextList* self, QTextBlock* param1);
+void QTextList_add(QTextList* self, QTextBlock* block);
+void QTextList_setFormat(QTextList* self, QTextListFormat* format);
+QTextListFormat* QTextList_format(const QTextList* self);
+struct miqt_string QTextList_tr2(const char* s, const char* c);
+struct miqt_string QTextList_tr3(const char* s, const char* c, int n);
+struct miqt_string QTextList_trUtf82(const char* s, const char* c);
+struct miqt_string QTextList_trUtf83(const char* s, const char* c, int n);
+bool QTextList_override_virtual_blockInserted(void* self, intptr_t slot);
+void QTextList_virtualbase_blockInserted(void* self, QTextBlock* block);
+bool QTextList_override_virtual_blockRemoved(void* self, intptr_t slot);
+void QTextList_virtualbase_blockRemoved(void* self, QTextBlock* block);
+bool QTextList_override_virtual_blockFormatChanged(void* self, intptr_t slot);
+void QTextList_virtualbase_blockFormatChanged(void* self, QTextBlock* block);
+bool QTextList_override_virtual_event(void* self, intptr_t slot);
+bool QTextList_virtualbase_event(void* self, QEvent* event);
+bool QTextList_override_virtual_eventFilter(void* self, intptr_t slot);
+bool QTextList_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
+bool QTextList_override_virtual_timerEvent(void* self, intptr_t slot);
+void QTextList_virtualbase_timerEvent(void* self, QTimerEvent* event);
+bool QTextList_override_virtual_childEvent(void* self, intptr_t slot);
+void QTextList_virtualbase_childEvent(void* self, QChildEvent* event);
+bool QTextList_override_virtual_customEvent(void* self, intptr_t slot);
+void QTextList_virtualbase_customEvent(void* self, QEvent* event);
+bool QTextList_override_virtual_connectNotify(void* self, intptr_t slot);
+void QTextList_virtualbase_connectNotify(void* self, QMetaMethod* signal);
+bool QTextList_override_virtual_disconnectNotify(void* self, intptr_t slot);
+void QTextList_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QTextList_delete(QTextList* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

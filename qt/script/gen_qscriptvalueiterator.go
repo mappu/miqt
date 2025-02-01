@@ -52,67 +52,67 @@ func NewQScriptValueIterator(value *QScriptValue) *QScriptValueIterator {
 }
 
 func (this *QScriptValueIterator) HasNext() bool {
-	return (bool)(C.QScriptValueIterator_HasNext(this.h))
+	return (bool)(C.QScriptValueIterator_hasNext(this.h))
 }
 
 func (this *QScriptValueIterator) Next() {
-	C.QScriptValueIterator_Next(this.h)
+	C.QScriptValueIterator_next(this.h)
 }
 
 func (this *QScriptValueIterator) HasPrevious() bool {
-	return (bool)(C.QScriptValueIterator_HasPrevious(this.h))
+	return (bool)(C.QScriptValueIterator_hasPrevious(this.h))
 }
 
 func (this *QScriptValueIterator) Previous() {
-	C.QScriptValueIterator_Previous(this.h)
+	C.QScriptValueIterator_previous(this.h)
 }
 
 func (this *QScriptValueIterator) Name() string {
-	var _ms C.struct_miqt_string = C.QScriptValueIterator_Name(this.h)
+	var _ms C.struct_miqt_string = C.QScriptValueIterator_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QScriptValueIterator) ScriptName() *QScriptString {
-	_goptr := newQScriptString(C.QScriptValueIterator_ScriptName(this.h))
+	_goptr := newQScriptString(C.QScriptValueIterator_scriptName(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValueIterator) Value() *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptValueIterator_Value(this.h))
+	_goptr := newQScriptValue(C.QScriptValueIterator_value(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptValueIterator) SetValue(value *QScriptValue) {
-	C.QScriptValueIterator_SetValue(this.h, value.cPointer())
+	C.QScriptValueIterator_setValue(this.h, value.cPointer())
 }
 
 func (this *QScriptValueIterator) Flags() QScriptValue__PropertyFlag {
-	return (QScriptValue__PropertyFlag)(C.QScriptValueIterator_Flags(this.h))
+	return (QScriptValue__PropertyFlag)(C.QScriptValueIterator_flags(this.h))
 }
 
 func (this *QScriptValueIterator) Remove() {
-	C.QScriptValueIterator_Remove(this.h)
+	C.QScriptValueIterator_remove(this.h)
 }
 
 func (this *QScriptValueIterator) ToFront() {
-	C.QScriptValueIterator_ToFront(this.h)
+	C.QScriptValueIterator_toFront(this.h)
 }
 
 func (this *QScriptValueIterator) ToBack() {
-	C.QScriptValueIterator_ToBack(this.h)
+	C.QScriptValueIterator_toBack(this.h)
 }
 
 func (this *QScriptValueIterator) OperatorAssign(value *QScriptValue) {
-	C.QScriptValueIterator_OperatorAssign(this.h, value.cPointer())
+	C.QScriptValueIterator_operatorAssign(this.h, value.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QScriptValueIterator) Delete() {
-	C.QScriptValueIterator_Delete(this.h)
+	C.QScriptValueIterator_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

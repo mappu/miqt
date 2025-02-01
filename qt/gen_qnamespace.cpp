@@ -10,7 +10,7 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QInternal_Delete(QInternal* self) {
+void QInternal_delete(QInternal* self) {
 	delete self;
 }
 

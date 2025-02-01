@@ -135,24 +135,24 @@ func NewQInputEvent3(typeVal QEvent__Type, modifiers KeyboardModifier) *QInputEv
 }
 
 func (this *QInputEvent) Modifiers() KeyboardModifier {
-	return (KeyboardModifier)(C.QInputEvent_Modifiers(this.h))
+	return (KeyboardModifier)(C.QInputEvent_modifiers(this.h))
 }
 
 func (this *QInputEvent) SetModifiers(amodifiers KeyboardModifier) {
-	C.QInputEvent_SetModifiers(this.h, (C.int)(amodifiers))
+	C.QInputEvent_setModifiers(this.h, (C.int)(amodifiers))
 }
 
 func (this *QInputEvent) Timestamp() uint64 {
-	return (uint64)(C.QInputEvent_Timestamp(this.h))
+	return (uint64)(C.QInputEvent_timestamp(this.h))
 }
 
 func (this *QInputEvent) SetTimestamp(atimestamp uint64) {
-	C.QInputEvent_SetTimestamp(this.h, (C.ulong)(atimestamp))
+	C.QInputEvent_setTimestamp(this.h, (C.ulong)(atimestamp))
 }
 
 // Delete this object from C++ memory.
 func (this *QInputEvent) Delete() {
-	C.QInputEvent_Delete(this.h)
+	C.QInputEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -213,48 +213,48 @@ func NewQEnterEvent2(param1 *QEnterEvent) *QEnterEvent {
 }
 
 func (this *QEnterEvent) Pos() *QPoint {
-	_goptr := newQPoint(C.QEnterEvent_Pos(this.h))
+	_goptr := newQPoint(C.QEnterEvent_pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QEnterEvent) GlobalPos() *QPoint {
-	_goptr := newQPoint(C.QEnterEvent_GlobalPos(this.h))
+	_goptr := newQPoint(C.QEnterEvent_globalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QEnterEvent) X() int {
-	return (int)(C.QEnterEvent_X(this.h))
+	return (int)(C.QEnterEvent_x(this.h))
 }
 
 func (this *QEnterEvent) Y() int {
-	return (int)(C.QEnterEvent_Y(this.h))
+	return (int)(C.QEnterEvent_y(this.h))
 }
 
 func (this *QEnterEvent) GlobalX() int {
-	return (int)(C.QEnterEvent_GlobalX(this.h))
+	return (int)(C.QEnterEvent_globalX(this.h))
 }
 
 func (this *QEnterEvent) GlobalY() int {
-	return (int)(C.QEnterEvent_GlobalY(this.h))
+	return (int)(C.QEnterEvent_globalY(this.h))
 }
 
 func (this *QEnterEvent) LocalPos() *QPointF {
-	return newQPointF(C.QEnterEvent_LocalPos(this.h))
+	return newQPointF(C.QEnterEvent_localPos(this.h))
 }
 
 func (this *QEnterEvent) WindowPos() *QPointF {
-	return newQPointF(C.QEnterEvent_WindowPos(this.h))
+	return newQPointF(C.QEnterEvent_windowPos(this.h))
 }
 
 func (this *QEnterEvent) ScreenPos() *QPointF {
-	return newQPointF(C.QEnterEvent_ScreenPos(this.h))
+	return newQPointF(C.QEnterEvent_screenPos(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QEnterEvent) Delete() {
-	C.QEnterEvent_Delete(this.h)
+	C.QEnterEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -333,68 +333,68 @@ func NewQMouseEvent5(param1 *QMouseEvent) *QMouseEvent {
 }
 
 func (this *QMouseEvent) Pos() *QPoint {
-	_goptr := newQPoint(C.QMouseEvent_Pos(this.h))
+	_goptr := newQPoint(C.QMouseEvent_pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMouseEvent) GlobalPos() *QPoint {
-	_goptr := newQPoint(C.QMouseEvent_GlobalPos(this.h))
+	_goptr := newQPoint(C.QMouseEvent_globalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMouseEvent) X() int {
-	return (int)(C.QMouseEvent_X(this.h))
+	return (int)(C.QMouseEvent_x(this.h))
 }
 
 func (this *QMouseEvent) Y() int {
-	return (int)(C.QMouseEvent_Y(this.h))
+	return (int)(C.QMouseEvent_y(this.h))
 }
 
 func (this *QMouseEvent) GlobalX() int {
-	return (int)(C.QMouseEvent_GlobalX(this.h))
+	return (int)(C.QMouseEvent_globalX(this.h))
 }
 
 func (this *QMouseEvent) GlobalY() int {
-	return (int)(C.QMouseEvent_GlobalY(this.h))
+	return (int)(C.QMouseEvent_globalY(this.h))
 }
 
 func (this *QMouseEvent) LocalPos() *QPointF {
-	return newQPointF(C.QMouseEvent_LocalPos(this.h))
+	return newQPointF(C.QMouseEvent_localPos(this.h))
 }
 
 func (this *QMouseEvent) WindowPos() *QPointF {
-	return newQPointF(C.QMouseEvent_WindowPos(this.h))
+	return newQPointF(C.QMouseEvent_windowPos(this.h))
 }
 
 func (this *QMouseEvent) ScreenPos() *QPointF {
-	return newQPointF(C.QMouseEvent_ScreenPos(this.h))
+	return newQPointF(C.QMouseEvent_screenPos(this.h))
 }
 
 func (this *QMouseEvent) Button() MouseButton {
-	return (MouseButton)(C.QMouseEvent_Button(this.h))
+	return (MouseButton)(C.QMouseEvent_button(this.h))
 }
 
 func (this *QMouseEvent) Buttons() MouseButton {
-	return (MouseButton)(C.QMouseEvent_Buttons(this.h))
+	return (MouseButton)(C.QMouseEvent_buttons(this.h))
 }
 
 func (this *QMouseEvent) SetLocalPos(localPosition *QPointF) {
-	C.QMouseEvent_SetLocalPos(this.h, localPosition.cPointer())
+	C.QMouseEvent_setLocalPos(this.h, localPosition.cPointer())
 }
 
 func (this *QMouseEvent) Source() MouseEventSource {
-	return (MouseEventSource)(C.QMouseEvent_Source(this.h))
+	return (MouseEventSource)(C.QMouseEvent_source(this.h))
 }
 
 func (this *QMouseEvent) Flags() MouseEventFlag {
-	return (MouseEventFlag)(C.QMouseEvent_Flags(this.h))
+	return (MouseEventFlag)(C.QMouseEvent_flags(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QMouseEvent) Delete() {
-	C.QMouseEvent_Delete(this.h)
+	C.QMouseEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -461,28 +461,28 @@ func NewQHoverEvent3(typeVal QEvent__Type, pos *QPointF, oldPos *QPointF, modifi
 }
 
 func (this *QHoverEvent) Pos() *QPoint {
-	_goptr := newQPoint(C.QHoverEvent_Pos(this.h))
+	_goptr := newQPoint(C.QHoverEvent_pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QHoverEvent) OldPos() *QPoint {
-	_goptr := newQPoint(C.QHoverEvent_OldPos(this.h))
+	_goptr := newQPoint(C.QHoverEvent_oldPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QHoverEvent) PosF() *QPointF {
-	return newQPointF(C.QHoverEvent_PosF(this.h))
+	return newQPointF(C.QHoverEvent_posF(this.h))
 }
 
 func (this *QHoverEvent) OldPosF() *QPointF {
-	return newQPointF(C.QHoverEvent_OldPosF(this.h))
+	return newQPointF(C.QHoverEvent_oldPosF(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QHoverEvent) Delete() {
-	C.QHoverEvent_Delete(this.h)
+	C.QHoverEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -597,92 +597,92 @@ func NewQWheelEvent11(pos QPointF, globalPos QPointF, pixelDelta QPoint, angleDe
 }
 
 func (this *QWheelEvent) PixelDelta() *QPoint {
-	_goptr := newQPoint(C.QWheelEvent_PixelDelta(this.h))
+	_goptr := newQPoint(C.QWheelEvent_pixelDelta(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWheelEvent) AngleDelta() *QPoint {
-	_goptr := newQPoint(C.QWheelEvent_AngleDelta(this.h))
+	_goptr := newQPoint(C.QWheelEvent_angleDelta(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWheelEvent) Delta() int {
-	return (int)(C.QWheelEvent_Delta(this.h))
+	return (int)(C.QWheelEvent_delta(this.h))
 }
 
 func (this *QWheelEvent) Orientation() Orientation {
-	return (Orientation)(C.QWheelEvent_Orientation(this.h))
+	return (Orientation)(C.QWheelEvent_orientation(this.h))
 }
 
 func (this *QWheelEvent) Pos() *QPoint {
-	_goptr := newQPoint(C.QWheelEvent_Pos(this.h))
+	_goptr := newQPoint(C.QWheelEvent_pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWheelEvent) GlobalPos() *QPoint {
-	_goptr := newQPoint(C.QWheelEvent_GlobalPos(this.h))
+	_goptr := newQPoint(C.QWheelEvent_globalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWheelEvent) X() int {
-	return (int)(C.QWheelEvent_X(this.h))
+	return (int)(C.QWheelEvent_x(this.h))
 }
 
 func (this *QWheelEvent) Y() int {
-	return (int)(C.QWheelEvent_Y(this.h))
+	return (int)(C.QWheelEvent_y(this.h))
 }
 
 func (this *QWheelEvent) GlobalX() int {
-	return (int)(C.QWheelEvent_GlobalX(this.h))
+	return (int)(C.QWheelEvent_globalX(this.h))
 }
 
 func (this *QWheelEvent) GlobalY() int {
-	return (int)(C.QWheelEvent_GlobalY(this.h))
+	return (int)(C.QWheelEvent_globalY(this.h))
 }
 
 func (this *QWheelEvent) PosF() *QPointF {
-	return newQPointF(C.QWheelEvent_PosF(this.h))
+	return newQPointF(C.QWheelEvent_posF(this.h))
 }
 
 func (this *QWheelEvent) GlobalPosF() *QPointF {
-	return newQPointF(C.QWheelEvent_GlobalPosF(this.h))
+	return newQPointF(C.QWheelEvent_globalPosF(this.h))
 }
 
 func (this *QWheelEvent) Position() *QPointF {
-	_goptr := newQPointF(C.QWheelEvent_Position(this.h))
+	_goptr := newQPointF(C.QWheelEvent_position(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWheelEvent) GlobalPosition() *QPointF {
-	_goptr := newQPointF(C.QWheelEvent_GlobalPosition(this.h))
+	_goptr := newQPointF(C.QWheelEvent_globalPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWheelEvent) Buttons() MouseButton {
-	return (MouseButton)(C.QWheelEvent_Buttons(this.h))
+	return (MouseButton)(C.QWheelEvent_buttons(this.h))
 }
 
 func (this *QWheelEvent) Phase() ScrollPhase {
-	return (ScrollPhase)(C.QWheelEvent_Phase(this.h))
+	return (ScrollPhase)(C.QWheelEvent_phase(this.h))
 }
 
 func (this *QWheelEvent) Inverted() bool {
-	return (bool)(C.QWheelEvent_Inverted(this.h))
+	return (bool)(C.QWheelEvent_inverted(this.h))
 }
 
 func (this *QWheelEvent) Source() MouseEventSource {
-	return (MouseEventSource)(C.QWheelEvent_Source(this.h))
+	return (MouseEventSource)(C.QWheelEvent_source(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QWheelEvent) Delete() {
-	C.QWheelEvent_Delete(this.h)
+	C.QWheelEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -749,100 +749,100 @@ func NewQTabletEvent3(param1 *QTabletEvent) *QTabletEvent {
 }
 
 func (this *QTabletEvent) Pos() *QPoint {
-	_goptr := newQPoint(C.QTabletEvent_Pos(this.h))
+	_goptr := newQPoint(C.QTabletEvent_pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabletEvent) GlobalPos() *QPoint {
-	_goptr := newQPoint(C.QTabletEvent_GlobalPos(this.h))
+	_goptr := newQPoint(C.QTabletEvent_globalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTabletEvent) PosF() *QPointF {
-	return newQPointF(C.QTabletEvent_PosF(this.h))
+	return newQPointF(C.QTabletEvent_posF(this.h))
 }
 
 func (this *QTabletEvent) GlobalPosF() *QPointF {
-	return newQPointF(C.QTabletEvent_GlobalPosF(this.h))
+	return newQPointF(C.QTabletEvent_globalPosF(this.h))
 }
 
 func (this *QTabletEvent) X() int {
-	return (int)(C.QTabletEvent_X(this.h))
+	return (int)(C.QTabletEvent_x(this.h))
 }
 
 func (this *QTabletEvent) Y() int {
-	return (int)(C.QTabletEvent_Y(this.h))
+	return (int)(C.QTabletEvent_y(this.h))
 }
 
 func (this *QTabletEvent) GlobalX() int {
-	return (int)(C.QTabletEvent_GlobalX(this.h))
+	return (int)(C.QTabletEvent_globalX(this.h))
 }
 
 func (this *QTabletEvent) GlobalY() int {
-	return (int)(C.QTabletEvent_GlobalY(this.h))
+	return (int)(C.QTabletEvent_globalY(this.h))
 }
 
 func (this *QTabletEvent) HiResGlobalX() float64 {
-	return (float64)(C.QTabletEvent_HiResGlobalX(this.h))
+	return (float64)(C.QTabletEvent_hiResGlobalX(this.h))
 }
 
 func (this *QTabletEvent) HiResGlobalY() float64 {
-	return (float64)(C.QTabletEvent_HiResGlobalY(this.h))
+	return (float64)(C.QTabletEvent_hiResGlobalY(this.h))
 }
 
 func (this *QTabletEvent) Device() QTabletEvent__TabletDevice {
-	return (QTabletEvent__TabletDevice)(C.QTabletEvent_Device(this.h))
+	return (QTabletEvent__TabletDevice)(C.QTabletEvent_device(this.h))
 }
 
 func (this *QTabletEvent) DeviceType() QTabletEvent__TabletDevice {
-	return (QTabletEvent__TabletDevice)(C.QTabletEvent_DeviceType(this.h))
+	return (QTabletEvent__TabletDevice)(C.QTabletEvent_deviceType(this.h))
 }
 
 func (this *QTabletEvent) PointerType() QTabletEvent__PointerType {
-	return (QTabletEvent__PointerType)(C.QTabletEvent_PointerType(this.h))
+	return (QTabletEvent__PointerType)(C.QTabletEvent_pointerType(this.h))
 }
 
 func (this *QTabletEvent) UniqueId() int64 {
-	return (int64)(C.QTabletEvent_UniqueId(this.h))
+	return (int64)(C.QTabletEvent_uniqueId(this.h))
 }
 
 func (this *QTabletEvent) Pressure() float64 {
-	return (float64)(C.QTabletEvent_Pressure(this.h))
+	return (float64)(C.QTabletEvent_pressure(this.h))
 }
 
 func (this *QTabletEvent) Z() int {
-	return (int)(C.QTabletEvent_Z(this.h))
+	return (int)(C.QTabletEvent_z(this.h))
 }
 
 func (this *QTabletEvent) TangentialPressure() float64 {
-	return (float64)(C.QTabletEvent_TangentialPressure(this.h))
+	return (float64)(C.QTabletEvent_tangentialPressure(this.h))
 }
 
 func (this *QTabletEvent) Rotation() float64 {
-	return (float64)(C.QTabletEvent_Rotation(this.h))
+	return (float64)(C.QTabletEvent_rotation(this.h))
 }
 
 func (this *QTabletEvent) XTilt() int {
-	return (int)(C.QTabletEvent_XTilt(this.h))
+	return (int)(C.QTabletEvent_xTilt(this.h))
 }
 
 func (this *QTabletEvent) YTilt() int {
-	return (int)(C.QTabletEvent_YTilt(this.h))
+	return (int)(C.QTabletEvent_yTilt(this.h))
 }
 
 func (this *QTabletEvent) Button() MouseButton {
-	return (MouseButton)(C.QTabletEvent_Button(this.h))
+	return (MouseButton)(C.QTabletEvent_button(this.h))
 }
 
 func (this *QTabletEvent) Buttons() MouseButton {
-	return (MouseButton)(C.QTabletEvent_Buttons(this.h))
+	return (MouseButton)(C.QTabletEvent_buttons(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QTabletEvent) Delete() {
-	C.QTabletEvent_Delete(this.h)
+	C.QTabletEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -909,44 +909,44 @@ func NewQNativeGestureEvent3(param1 *QNativeGestureEvent) *QNativeGestureEvent {
 }
 
 func (this *QNativeGestureEvent) GestureType() NativeGestureType {
-	return (NativeGestureType)(C.QNativeGestureEvent_GestureType(this.h))
+	return (NativeGestureType)(C.QNativeGestureEvent_gestureType(this.h))
 }
 
 func (this *QNativeGestureEvent) Value() float64 {
-	return (float64)(C.QNativeGestureEvent_Value(this.h))
+	return (float64)(C.QNativeGestureEvent_value(this.h))
 }
 
 func (this *QNativeGestureEvent) Pos() *QPoint {
-	_goptr := newQPoint(C.QNativeGestureEvent_Pos(this.h))
+	_goptr := newQPoint(C.QNativeGestureEvent_pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNativeGestureEvent) GlobalPos() *QPoint {
-	_goptr := newQPoint(C.QNativeGestureEvent_GlobalPos(this.h))
+	_goptr := newQPoint(C.QNativeGestureEvent_globalPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNativeGestureEvent) LocalPos() *QPointF {
-	return newQPointF(C.QNativeGestureEvent_LocalPos(this.h))
+	return newQPointF(C.QNativeGestureEvent_localPos(this.h))
 }
 
 func (this *QNativeGestureEvent) WindowPos() *QPointF {
-	return newQPointF(C.QNativeGestureEvent_WindowPos(this.h))
+	return newQPointF(C.QNativeGestureEvent_windowPos(this.h))
 }
 
 func (this *QNativeGestureEvent) ScreenPos() *QPointF {
-	return newQPointF(C.QNativeGestureEvent_ScreenPos(this.h))
+	return newQPointF(C.QNativeGestureEvent_screenPos(this.h))
 }
 
 func (this *QNativeGestureEvent) Device() *QTouchDevice {
-	return newQTouchDevice(C.QNativeGestureEvent_Device(this.h))
+	return newQTouchDevice(C.QNativeGestureEvent_device(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QNativeGestureEvent) Delete() {
-	C.QNativeGestureEvent_Delete(this.h)
+	C.QNativeGestureEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1073,47 +1073,47 @@ func NewQKeyEvent9(typeVal QEvent__Type, key int, modifiers KeyboardModifier, na
 }
 
 func (this *QKeyEvent) Key() int {
-	return (int)(C.QKeyEvent_Key(this.h))
+	return (int)(C.QKeyEvent_key(this.h))
 }
 
 func (this *QKeyEvent) Matches(key QKeySequence__StandardKey) bool {
-	return (bool)(C.QKeyEvent_Matches(this.h, (C.int)(key)))
+	return (bool)(C.QKeyEvent_matches(this.h, (C.int)(key)))
 }
 
 func (this *QKeyEvent) Modifiers() KeyboardModifier {
-	return (KeyboardModifier)(C.QKeyEvent_Modifiers(this.h))
+	return (KeyboardModifier)(C.QKeyEvent_modifiers(this.h))
 }
 
 func (this *QKeyEvent) Text() string {
-	var _ms C.struct_miqt_string = C.QKeyEvent_Text(this.h)
+	var _ms C.struct_miqt_string = C.QKeyEvent_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QKeyEvent) IsAutoRepeat() bool {
-	return (bool)(C.QKeyEvent_IsAutoRepeat(this.h))
+	return (bool)(C.QKeyEvent_isAutoRepeat(this.h))
 }
 
 func (this *QKeyEvent) Count() int {
-	return (int)(C.QKeyEvent_Count(this.h))
+	return (int)(C.QKeyEvent_count(this.h))
 }
 
 func (this *QKeyEvent) NativeScanCode() uint {
-	return (uint)(C.QKeyEvent_NativeScanCode(this.h))
+	return (uint)(C.QKeyEvent_nativeScanCode(this.h))
 }
 
 func (this *QKeyEvent) NativeVirtualKey() uint {
-	return (uint)(C.QKeyEvent_NativeVirtualKey(this.h))
+	return (uint)(C.QKeyEvent_nativeVirtualKey(this.h))
 }
 
 func (this *QKeyEvent) NativeModifiers() uint {
-	return (uint)(C.QKeyEvent_NativeModifiers(this.h))
+	return (uint)(C.QKeyEvent_nativeModifiers(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QKeyEvent) Delete() {
-	C.QKeyEvent_Delete(this.h)
+	C.QKeyEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1180,20 +1180,20 @@ func NewQFocusEvent3(typeVal QEvent__Type, reason FocusReason) *QFocusEvent {
 }
 
 func (this *QFocusEvent) GotFocus() bool {
-	return (bool)(C.QFocusEvent_GotFocus(this.h))
+	return (bool)(C.QFocusEvent_gotFocus(this.h))
 }
 
 func (this *QFocusEvent) LostFocus() bool {
-	return (bool)(C.QFocusEvent_LostFocus(this.h))
+	return (bool)(C.QFocusEvent_lostFocus(this.h))
 }
 
 func (this *QFocusEvent) Reason() FocusReason {
-	return (FocusReason)(C.QFocusEvent_Reason(this.h))
+	return (FocusReason)(C.QFocusEvent_reason(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QFocusEvent) Delete() {
-	C.QFocusEvent_Delete(this.h)
+	C.QFocusEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1260,16 +1260,16 @@ func NewQPaintEvent3(param1 *QPaintEvent) *QPaintEvent {
 }
 
 func (this *QPaintEvent) Rect() *QRect {
-	return newQRect(C.QPaintEvent_Rect(this.h))
+	return newQRect(C.QPaintEvent_rect(this.h))
 }
 
 func (this *QPaintEvent) Region() *QRegion {
-	return newQRegion(C.QPaintEvent_Region(this.h))
+	return newQRegion(C.QPaintEvent_region(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QPaintEvent) Delete() {
-	C.QPaintEvent_Delete(this.h)
+	C.QPaintEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1330,16 +1330,16 @@ func NewQMoveEvent2(param1 *QMoveEvent) *QMoveEvent {
 }
 
 func (this *QMoveEvent) Pos() *QPoint {
-	return newQPoint(C.QMoveEvent_Pos(this.h))
+	return newQPoint(C.QMoveEvent_pos(this.h))
 }
 
 func (this *QMoveEvent) OldPos() *QPoint {
-	return newQPoint(C.QMoveEvent_OldPos(this.h))
+	return newQPoint(C.QMoveEvent_oldPos(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QMoveEvent) Delete() {
-	C.QMoveEvent_Delete(this.h)
+	C.QMoveEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1400,12 +1400,12 @@ func NewQExposeEvent2(param1 *QExposeEvent) *QExposeEvent {
 }
 
 func (this *QExposeEvent) Region() *QRegion {
-	return newQRegion(C.QExposeEvent_Region(this.h))
+	return newQRegion(C.QExposeEvent_region(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QExposeEvent) Delete() {
-	C.QExposeEvent_Delete(this.h)
+	C.QExposeEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1466,12 +1466,12 @@ func NewQPlatformSurfaceEvent2(param1 *QPlatformSurfaceEvent) *QPlatformSurfaceE
 }
 
 func (this *QPlatformSurfaceEvent) SurfaceEventType() QPlatformSurfaceEvent__SurfaceEventType {
-	return (QPlatformSurfaceEvent__SurfaceEventType)(C.QPlatformSurfaceEvent_SurfaceEventType(this.h))
+	return (QPlatformSurfaceEvent__SurfaceEventType)(C.QPlatformSurfaceEvent_surfaceEventType(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QPlatformSurfaceEvent) Delete() {
-	C.QPlatformSurfaceEvent_Delete(this.h)
+	C.QPlatformSurfaceEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1532,16 +1532,16 @@ func NewQResizeEvent2(param1 *QResizeEvent) *QResizeEvent {
 }
 
 func (this *QResizeEvent) Size() *QSize {
-	return newQSize(C.QResizeEvent_Size(this.h))
+	return newQSize(C.QResizeEvent_size(this.h))
 }
 
 func (this *QResizeEvent) OldSize() *QSize {
-	return newQSize(C.QResizeEvent_OldSize(this.h))
+	return newQSize(C.QResizeEvent_oldSize(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QResizeEvent) Delete() {
-	C.QResizeEvent_Delete(this.h)
+	C.QResizeEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1602,12 +1602,12 @@ func NewQCloseEvent2(param1 *QCloseEvent) *QCloseEvent {
 }
 
 func (this *QCloseEvent) OperatorAssign(param1 *QCloseEvent) {
-	C.QCloseEvent_OperatorAssign(this.h, param1.cPointer())
+	C.QCloseEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QCloseEvent) Delete() {
-	C.QCloseEvent_Delete(this.h)
+	C.QCloseEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1668,12 +1668,12 @@ func NewQIconDragEvent2(param1 *QIconDragEvent) *QIconDragEvent {
 }
 
 func (this *QIconDragEvent) OperatorAssign(param1 *QIconDragEvent) {
-	C.QIconDragEvent_OperatorAssign(this.h, param1.cPointer())
+	C.QIconDragEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QIconDragEvent) Delete() {
-	C.QIconDragEvent_Delete(this.h)
+	C.QIconDragEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1734,12 +1734,12 @@ func NewQShowEvent2(param1 *QShowEvent) *QShowEvent {
 }
 
 func (this *QShowEvent) OperatorAssign(param1 *QShowEvent) {
-	C.QShowEvent_OperatorAssign(this.h, param1.cPointer())
+	C.QShowEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QShowEvent) Delete() {
-	C.QShowEvent_Delete(this.h)
+	C.QShowEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1800,12 +1800,12 @@ func NewQHideEvent2(param1 *QHideEvent) *QHideEvent {
 }
 
 func (this *QHideEvent) OperatorAssign(param1 *QHideEvent) {
-	C.QHideEvent_OperatorAssign(this.h, param1.cPointer())
+	C.QHideEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QHideEvent) Delete() {
-	C.QHideEvent_Delete(this.h)
+	C.QHideEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1878,36 +1878,36 @@ func NewQContextMenuEvent4(param1 *QContextMenuEvent) *QContextMenuEvent {
 }
 
 func (this *QContextMenuEvent) X() int {
-	return (int)(C.QContextMenuEvent_X(this.h))
+	return (int)(C.QContextMenuEvent_x(this.h))
 }
 
 func (this *QContextMenuEvent) Y() int {
-	return (int)(C.QContextMenuEvent_Y(this.h))
+	return (int)(C.QContextMenuEvent_y(this.h))
 }
 
 func (this *QContextMenuEvent) GlobalX() int {
-	return (int)(C.QContextMenuEvent_GlobalX(this.h))
+	return (int)(C.QContextMenuEvent_globalX(this.h))
 }
 
 func (this *QContextMenuEvent) GlobalY() int {
-	return (int)(C.QContextMenuEvent_GlobalY(this.h))
+	return (int)(C.QContextMenuEvent_globalY(this.h))
 }
 
 func (this *QContextMenuEvent) Pos() *QPoint {
-	return newQPoint(C.QContextMenuEvent_Pos(this.h))
+	return newQPoint(C.QContextMenuEvent_pos(this.h))
 }
 
 func (this *QContextMenuEvent) GlobalPos() *QPoint {
-	return newQPoint(C.QContextMenuEvent_GlobalPos(this.h))
+	return newQPoint(C.QContextMenuEvent_globalPos(this.h))
 }
 
 func (this *QContextMenuEvent) Reason() QContextMenuEvent__Reason {
-	return (QContextMenuEvent__Reason)(C.QContextMenuEvent_Reason(this.h))
+	return (QContextMenuEvent__Reason)(C.QContextMenuEvent_reason(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QContextMenuEvent) Delete() {
-	C.QContextMenuEvent_Delete(this.h)
+	C.QContextMenuEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1988,11 +1988,11 @@ func (this *QInputMethodEvent) SetCommitString(commitString string) {
 	commitString_ms.data = C.CString(commitString)
 	commitString_ms.len = C.size_t(len(commitString))
 	defer C.free(unsafe.Pointer(commitString_ms.data))
-	C.QInputMethodEvent_SetCommitString(this.h, commitString_ms)
+	C.QInputMethodEvent_setCommitString(this.h, commitString_ms)
 }
 
 func (this *QInputMethodEvent) Attributes() []QInputMethodEvent__Attribute {
-	var _ma C.struct_miqt_array = C.QInputMethodEvent_Attributes(this.h)
+	var _ma C.struct_miqt_array = C.QInputMethodEvent_attributes(this.h)
 	_ret := make([]QInputMethodEvent__Attribute, int(_ma.len))
 	_outCast := (*[0xffff]*C.QInputMethodEvent__Attribute)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -2004,25 +2004,25 @@ func (this *QInputMethodEvent) Attributes() []QInputMethodEvent__Attribute {
 }
 
 func (this *QInputMethodEvent) PreeditString() string {
-	var _ms C.struct_miqt_string = C.QInputMethodEvent_PreeditString(this.h)
+	var _ms C.struct_miqt_string = C.QInputMethodEvent_preeditString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QInputMethodEvent) CommitString() string {
-	var _ms C.struct_miqt_string = C.QInputMethodEvent_CommitString(this.h)
+	var _ms C.struct_miqt_string = C.QInputMethodEvent_commitString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QInputMethodEvent) ReplacementStart() int {
-	return (int)(C.QInputMethodEvent_ReplacementStart(this.h))
+	return (int)(C.QInputMethodEvent_replacementStart(this.h))
 }
 
 func (this *QInputMethodEvent) ReplacementLength() int {
-	return (int)(C.QInputMethodEvent_ReplacementLength(this.h))
+	return (int)(C.QInputMethodEvent_replacementLength(this.h))
 }
 
 func (this *QInputMethodEvent) SetCommitString2(commitString string, replaceFrom int) {
@@ -2030,7 +2030,7 @@ func (this *QInputMethodEvent) SetCommitString2(commitString string, replaceFrom
 	commitString_ms.data = C.CString(commitString)
 	commitString_ms.len = C.size_t(len(commitString))
 	defer C.free(unsafe.Pointer(commitString_ms.data))
-	C.QInputMethodEvent_SetCommitString2(this.h, commitString_ms, (C.int)(replaceFrom))
+	C.QInputMethodEvent_setCommitString2(this.h, commitString_ms, (C.int)(replaceFrom))
 }
 
 func (this *QInputMethodEvent) SetCommitString3(commitString string, replaceFrom int, replaceLength int) {
@@ -2038,12 +2038,12 @@ func (this *QInputMethodEvent) SetCommitString3(commitString string, replaceFrom
 	commitString_ms.data = C.CString(commitString)
 	commitString_ms.len = C.size_t(len(commitString))
 	defer C.free(unsafe.Pointer(commitString_ms.data))
-	C.QInputMethodEvent_SetCommitString3(this.h, commitString_ms, (C.int)(replaceFrom), (C.int)(replaceLength))
+	C.QInputMethodEvent_setCommitString3(this.h, commitString_ms, (C.int)(replaceFrom), (C.int)(replaceLength))
 }
 
 // Delete this object from C++ memory.
 func (this *QInputMethodEvent) Delete() {
-	C.QInputMethodEvent_Delete(this.h)
+	C.QInputMethodEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2104,22 +2104,22 @@ func NewQInputMethodQueryEvent2(param1 *QInputMethodQueryEvent) *QInputMethodQue
 }
 
 func (this *QInputMethodQueryEvent) Queries() InputMethodQuery {
-	return (InputMethodQuery)(C.QInputMethodQueryEvent_Queries(this.h))
+	return (InputMethodQuery)(C.QInputMethodQueryEvent_queries(this.h))
 }
 
 func (this *QInputMethodQueryEvent) SetValue(query InputMethodQuery, value *QVariant) {
-	C.QInputMethodQueryEvent_SetValue(this.h, (C.int)(query), value.cPointer())
+	C.QInputMethodQueryEvent_setValue(this.h, (C.int)(query), value.cPointer())
 }
 
 func (this *QInputMethodQueryEvent) Value(query InputMethodQuery) *QVariant {
-	_goptr := newQVariant(C.QInputMethodQueryEvent_Value(this.h, (C.int)(query)))
+	_goptr := newQVariant(C.QInputMethodQueryEvent_value(this.h, (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QInputMethodQueryEvent) Delete() {
-	C.QInputMethodQueryEvent_Delete(this.h)
+	C.QInputMethodQueryEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2186,54 +2186,54 @@ func NewQDropEvent3(pos *QPointF, actions DropAction, data *QMimeData, buttons M
 }
 
 func (this *QDropEvent) Pos() *QPoint {
-	_goptr := newQPoint(C.QDropEvent_Pos(this.h))
+	_goptr := newQPoint(C.QDropEvent_pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDropEvent) PosF() *QPointF {
-	return newQPointF(C.QDropEvent_PosF(this.h))
+	return newQPointF(C.QDropEvent_posF(this.h))
 }
 
 func (this *QDropEvent) MouseButtons() MouseButton {
-	return (MouseButton)(C.QDropEvent_MouseButtons(this.h))
+	return (MouseButton)(C.QDropEvent_mouseButtons(this.h))
 }
 
 func (this *QDropEvent) KeyboardModifiers() KeyboardModifier {
-	return (KeyboardModifier)(C.QDropEvent_KeyboardModifiers(this.h))
+	return (KeyboardModifier)(C.QDropEvent_keyboardModifiers(this.h))
 }
 
 func (this *QDropEvent) PossibleActions() DropAction {
-	return (DropAction)(C.QDropEvent_PossibleActions(this.h))
+	return (DropAction)(C.QDropEvent_possibleActions(this.h))
 }
 
 func (this *QDropEvent) ProposedAction() DropAction {
-	return (DropAction)(C.QDropEvent_ProposedAction(this.h))
+	return (DropAction)(C.QDropEvent_proposedAction(this.h))
 }
 
 func (this *QDropEvent) AcceptProposedAction() {
-	C.QDropEvent_AcceptProposedAction(this.h)
+	C.QDropEvent_acceptProposedAction(this.h)
 }
 
 func (this *QDropEvent) DropAction() DropAction {
-	return (DropAction)(C.QDropEvent_DropAction(this.h))
+	return (DropAction)(C.QDropEvent_dropAction(this.h))
 }
 
 func (this *QDropEvent) SetDropAction(action DropAction) {
-	C.QDropEvent_SetDropAction(this.h, (C.int)(action))
+	C.QDropEvent_setDropAction(this.h, (C.int)(action))
 }
 
 func (this *QDropEvent) Source() *QObject {
-	return newQObject(C.QDropEvent_Source(this.h))
+	return newQObject(C.QDropEvent_source(this.h))
 }
 
 func (this *QDropEvent) MimeData() *QMimeData {
-	return newQMimeData(C.QDropEvent_MimeData(this.h))
+	return newQMimeData(C.QDropEvent_mimeData(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QDropEvent) Delete() {
-	C.QDropEvent_Delete(this.h)
+	C.QDropEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2300,30 +2300,30 @@ func NewQDragMoveEvent3(pos *QPoint, actions DropAction, data *QMimeData, button
 }
 
 func (this *QDragMoveEvent) AnswerRect() *QRect {
-	_goptr := newQRect(C.QDragMoveEvent_AnswerRect(this.h))
+	_goptr := newQRect(C.QDragMoveEvent_answerRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QDragMoveEvent) Accept() {
-	C.QDragMoveEvent_Accept(this.h)
+	C.QDragMoveEvent_accept(this.h)
 }
 
 func (this *QDragMoveEvent) Ignore() {
-	C.QDragMoveEvent_Ignore(this.h)
+	C.QDragMoveEvent_ignore(this.h)
 }
 
 func (this *QDragMoveEvent) AcceptWithQRect(r *QRect) {
-	C.QDragMoveEvent_AcceptWithQRect(this.h, r.cPointer())
+	C.QDragMoveEvent_acceptWithQRect(this.h, r.cPointer())
 }
 
 func (this *QDragMoveEvent) IgnoreWithQRect(r *QRect) {
-	C.QDragMoveEvent_IgnoreWithQRect(this.h, r.cPointer())
+	C.QDragMoveEvent_ignoreWithQRect(this.h, r.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QDragMoveEvent) Delete() {
-	C.QDragMoveEvent_Delete(this.h)
+	C.QDragMoveEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2384,12 +2384,12 @@ func NewQDragEnterEvent2(param1 *QDragEnterEvent) *QDragEnterEvent {
 }
 
 func (this *QDragEnterEvent) OperatorAssign(param1 *QDragEnterEvent) {
-	C.QDragEnterEvent_OperatorAssign(this.h, param1.cPointer())
+	C.QDragEnterEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QDragEnterEvent) Delete() {
-	C.QDragEnterEvent_Delete(this.h)
+	C.QDragEnterEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2450,12 +2450,12 @@ func NewQDragLeaveEvent2(param1 *QDragLeaveEvent) *QDragLeaveEvent {
 }
 
 func (this *QDragLeaveEvent) OperatorAssign(param1 *QDragLeaveEvent) {
-	C.QDragLeaveEvent_OperatorAssign(this.h, param1.cPointer())
+	C.QDragLeaveEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QDragLeaveEvent) Delete() {
-	C.QDragLeaveEvent_Delete(this.h)
+	C.QDragLeaveEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2516,32 +2516,32 @@ func NewQHelpEvent2(param1 *QHelpEvent) *QHelpEvent {
 }
 
 func (this *QHelpEvent) X() int {
-	return (int)(C.QHelpEvent_X(this.h))
+	return (int)(C.QHelpEvent_x(this.h))
 }
 
 func (this *QHelpEvent) Y() int {
-	return (int)(C.QHelpEvent_Y(this.h))
+	return (int)(C.QHelpEvent_y(this.h))
 }
 
 func (this *QHelpEvent) GlobalX() int {
-	return (int)(C.QHelpEvent_GlobalX(this.h))
+	return (int)(C.QHelpEvent_globalX(this.h))
 }
 
 func (this *QHelpEvent) GlobalY() int {
-	return (int)(C.QHelpEvent_GlobalY(this.h))
+	return (int)(C.QHelpEvent_globalY(this.h))
 }
 
 func (this *QHelpEvent) Pos() *QPoint {
-	return newQPoint(C.QHelpEvent_Pos(this.h))
+	return newQPoint(C.QHelpEvent_pos(this.h))
 }
 
 func (this *QHelpEvent) GlobalPos() *QPoint {
-	return newQPoint(C.QHelpEvent_GlobalPos(this.h))
+	return newQPoint(C.QHelpEvent_globalPos(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QHelpEvent) Delete() {
-	C.QHelpEvent_Delete(this.h)
+	C.QHelpEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2606,7 +2606,7 @@ func NewQStatusTipEvent2(param1 *QStatusTipEvent) *QStatusTipEvent {
 }
 
 func (this *QStatusTipEvent) Tip() string {
-	var _ms C.struct_miqt_string = C.QStatusTipEvent_Tip(this.h)
+	var _ms C.struct_miqt_string = C.QStatusTipEvent_tip(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -2614,7 +2614,7 @@ func (this *QStatusTipEvent) Tip() string {
 
 // Delete this object from C++ memory.
 func (this *QStatusTipEvent) Delete() {
-	C.QStatusTipEvent_Delete(this.h)
+	C.QStatusTipEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2679,7 +2679,7 @@ func NewQWhatsThisClickedEvent2(param1 *QWhatsThisClickedEvent) *QWhatsThisClick
 }
 
 func (this *QWhatsThisClickedEvent) Href() string {
-	var _ms C.struct_miqt_string = C.QWhatsThisClickedEvent_Href(this.h)
+	var _ms C.struct_miqt_string = C.QWhatsThisClickedEvent_href(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -2687,7 +2687,7 @@ func (this *QWhatsThisClickedEvent) Href() string {
 
 // Delete this object from C++ memory.
 func (this *QWhatsThisClickedEvent) Delete() {
-	C.QWhatsThisClickedEvent_Delete(this.h)
+	C.QWhatsThisClickedEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2754,20 +2754,20 @@ func NewQActionEvent3(typeVal int, action *QAction, before *QAction) *QActionEve
 }
 
 func (this *QActionEvent) Action() *QAction {
-	return newQAction(C.QActionEvent_Action(this.h))
+	return newQAction(C.QActionEvent_action(this.h))
 }
 
 func (this *QActionEvent) Before() *QAction {
-	return newQAction(C.QActionEvent_Before(this.h))
+	return newQAction(C.QActionEvent_before(this.h))
 }
 
 func (this *QActionEvent) OperatorAssign(param1 *QActionEvent) {
-	C.QActionEvent_OperatorAssign(this.h, param1.cPointer())
+	C.QActionEvent_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QActionEvent) Delete() {
-	C.QActionEvent_Delete(this.h)
+	C.QActionEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2838,25 +2838,25 @@ func NewQFileOpenEvent3(param1 *QFileOpenEvent) *QFileOpenEvent {
 }
 
 func (this *QFileOpenEvent) File() string {
-	var _ms C.struct_miqt_string = C.QFileOpenEvent_File(this.h)
+	var _ms C.struct_miqt_string = C.QFileOpenEvent_file(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFileOpenEvent) Url() *QUrl {
-	_goptr := newQUrl(C.QFileOpenEvent_Url(this.h))
+	_goptr := newQUrl(C.QFileOpenEvent_url(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFileOpenEvent) OpenFile(file *QFile, flags QIODevice__OpenModeFlag) bool {
-	return (bool)(C.QFileOpenEvent_OpenFile(this.h, file.cPointer(), (C.int)(flags)))
+	return (bool)(C.QFileOpenEvent_openFile(this.h, file.cPointer(), (C.int)(flags)))
 }
 
 // Delete this object from C++ memory.
 func (this *QFileOpenEvent) Delete() {
-	C.QFileOpenEvent_Delete(this.h)
+	C.QFileOpenEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2917,12 +2917,12 @@ func NewQToolBarChangeEvent2(param1 *QToolBarChangeEvent) *QToolBarChangeEvent {
 }
 
 func (this *QToolBarChangeEvent) Toggle() bool {
-	return (bool)(C.QToolBarChangeEvent_Toggle(this.h))
+	return (bool)(C.QToolBarChangeEvent_toggle(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QToolBarChangeEvent) Delete() {
-	C.QToolBarChangeEvent_Delete(this.h)
+	C.QToolBarChangeEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2989,20 +2989,20 @@ func NewQShortcutEvent3(key *QKeySequence, id int, ambiguous bool) *QShortcutEve
 }
 
 func (this *QShortcutEvent) Key() *QKeySequence {
-	return newQKeySequence(C.QShortcutEvent_Key(this.h))
+	return newQKeySequence(C.QShortcutEvent_key(this.h))
 }
 
 func (this *QShortcutEvent) ShortcutId() int {
-	return (int)(C.QShortcutEvent_ShortcutId(this.h))
+	return (int)(C.QShortcutEvent_shortcutId(this.h))
 }
 
 func (this *QShortcutEvent) IsAmbiguous() bool {
-	return (bool)(C.QShortcutEvent_IsAmbiguous(this.h))
+	return (bool)(C.QShortcutEvent_isAmbiguous(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QShortcutEvent) Delete() {
-	C.QShortcutEvent_Delete(this.h)
+	C.QShortcutEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3069,16 +3069,16 @@ func NewQWindowStateChangeEvent3(aOldState WindowState, isOverride bool) *QWindo
 }
 
 func (this *QWindowStateChangeEvent) OldState() WindowState {
-	return (WindowState)(C.QWindowStateChangeEvent_OldState(this.h))
+	return (WindowState)(C.QWindowStateChangeEvent_oldState(this.h))
 }
 
 func (this *QWindowStateChangeEvent) IsOverride() bool {
-	return (bool)(C.QWindowStateChangeEvent_IsOverride(this.h))
+	return (bool)(C.QWindowStateChangeEvent_isOverride(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QWindowStateChangeEvent) Delete() {
-	C.QWindowStateChangeEvent_Delete(this.h)
+	C.QWindowStateChangeEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3135,22 +3135,22 @@ func NewQPointingDeviceUniqueId2(param1 *QPointingDeviceUniqueId) *QPointingDevi
 }
 
 func QPointingDeviceUniqueId_FromNumericId(id int64) *QPointingDeviceUniqueId {
-	_goptr := newQPointingDeviceUniqueId(C.QPointingDeviceUniqueId_FromNumericId((C.longlong)(id)))
+	_goptr := newQPointingDeviceUniqueId(C.QPointingDeviceUniqueId_fromNumericId((C.longlong)(id)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPointingDeviceUniqueId) IsValid() bool {
-	return (bool)(C.QPointingDeviceUniqueId_IsValid(this.h))
+	return (bool)(C.QPointingDeviceUniqueId_isValid(this.h))
 }
 
 func (this *QPointingDeviceUniqueId) NumericId() int64 {
-	return (int64)(C.QPointingDeviceUniqueId_NumericId(this.h))
+	return (int64)(C.QPointingDeviceUniqueId_numericId(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QPointingDeviceUniqueId) Delete() {
-	C.QPointingDeviceUniqueId_Delete(this.h)
+	C.QPointingDeviceUniqueId_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3241,19 +3241,19 @@ func NewQTouchEvent6(eventType QEvent__Type, device *QTouchDevice, modifiers Key
 }
 
 func (this *QTouchEvent) Window() *QWindow {
-	return newQWindow(C.QTouchEvent_Window(this.h))
+	return newQWindow(C.QTouchEvent_window(this.h))
 }
 
 func (this *QTouchEvent) Target() *QObject {
-	return newQObject(C.QTouchEvent_Target(this.h))
+	return newQObject(C.QTouchEvent_target(this.h))
 }
 
 func (this *QTouchEvent) TouchPointStates() TouchPointState {
-	return (TouchPointState)(C.QTouchEvent_TouchPointStates(this.h))
+	return (TouchPointState)(C.QTouchEvent_touchPointStates(this.h))
 }
 
 func (this *QTouchEvent) TouchPoints() []QTouchEvent__TouchPoint {
-	var _ma C.struct_miqt_array = C.QTouchEvent_TouchPoints(this.h)
+	var _ma C.struct_miqt_array = C.QTouchEvent_touchPoints(this.h)
 	_ret := make([]QTouchEvent__TouchPoint, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTouchEvent__TouchPoint)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -3265,19 +3265,19 @@ func (this *QTouchEvent) TouchPoints() []QTouchEvent__TouchPoint {
 }
 
 func (this *QTouchEvent) Device() *QTouchDevice {
-	return newQTouchDevice(C.QTouchEvent_Device(this.h))
+	return newQTouchDevice(C.QTouchEvent_device(this.h))
 }
 
 func (this *QTouchEvent) SetWindow(awindow *QWindow) {
-	C.QTouchEvent_SetWindow(this.h, awindow.cPointer())
+	C.QTouchEvent_setWindow(this.h, awindow.cPointer())
 }
 
 func (this *QTouchEvent) SetTarget(atarget *QObject) {
-	C.QTouchEvent_SetTarget(this.h, atarget.cPointer())
+	C.QTouchEvent_setTarget(this.h, atarget.cPointer())
 }
 
 func (this *QTouchEvent) SetTouchPointStates(aTouchPointStates TouchPointState) {
-	C.QTouchEvent_SetTouchPointStates(this.h, (C.int)(aTouchPointStates))
+	C.QTouchEvent_setTouchPointStates(this.h, (C.int)(aTouchPointStates))
 }
 
 func (this *QTouchEvent) SetTouchPoints(atouchPoints []QTouchEvent__TouchPoint) {
@@ -3287,16 +3287,16 @@ func (this *QTouchEvent) SetTouchPoints(atouchPoints []QTouchEvent__TouchPoint) 
 		atouchPoints_CArray[i] = atouchPoints[i].cPointer()
 	}
 	atouchPoints_ma := C.struct_miqt_array{len: C.size_t(len(atouchPoints)), data: unsafe.Pointer(atouchPoints_CArray)}
-	C.QTouchEvent_SetTouchPoints(this.h, atouchPoints_ma)
+	C.QTouchEvent_setTouchPoints(this.h, atouchPoints_ma)
 }
 
 func (this *QTouchEvent) SetDevice(adevice *QTouchDevice) {
-	C.QTouchEvent_SetDevice(this.h, adevice.cPointer())
+	C.QTouchEvent_setDevice(this.h, adevice.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QTouchEvent) Delete() {
-	C.QTouchEvent_Delete(this.h)
+	C.QTouchEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3357,44 +3357,44 @@ func NewQScrollPrepareEvent2(param1 *QScrollPrepareEvent) *QScrollPrepareEvent {
 }
 
 func (this *QScrollPrepareEvent) StartPos() *QPointF {
-	_goptr := newQPointF(C.QScrollPrepareEvent_StartPos(this.h))
+	_goptr := newQPointF(C.QScrollPrepareEvent_startPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollPrepareEvent) ViewportSize() *QSizeF {
-	_goptr := newQSizeF(C.QScrollPrepareEvent_ViewportSize(this.h))
+	_goptr := newQSizeF(C.QScrollPrepareEvent_viewportSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollPrepareEvent) ContentPosRange() *QRectF {
-	_goptr := newQRectF(C.QScrollPrepareEvent_ContentPosRange(this.h))
+	_goptr := newQRectF(C.QScrollPrepareEvent_contentPosRange(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollPrepareEvent) ContentPos() *QPointF {
-	_goptr := newQPointF(C.QScrollPrepareEvent_ContentPos(this.h))
+	_goptr := newQPointF(C.QScrollPrepareEvent_contentPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollPrepareEvent) SetViewportSize(size *QSizeF) {
-	C.QScrollPrepareEvent_SetViewportSize(this.h, size.cPointer())
+	C.QScrollPrepareEvent_setViewportSize(this.h, size.cPointer())
 }
 
 func (this *QScrollPrepareEvent) SetContentPosRange(rect *QRectF) {
-	C.QScrollPrepareEvent_SetContentPosRange(this.h, rect.cPointer())
+	C.QScrollPrepareEvent_setContentPosRange(this.h, rect.cPointer())
 }
 
 func (this *QScrollPrepareEvent) SetContentPos(pos *QPointF) {
-	C.QScrollPrepareEvent_SetContentPos(this.h, pos.cPointer())
+	C.QScrollPrepareEvent_setContentPos(this.h, pos.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QScrollPrepareEvent) Delete() {
-	C.QScrollPrepareEvent_Delete(this.h)
+	C.QScrollPrepareEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3455,24 +3455,24 @@ func NewQScrollEvent2(param1 *QScrollEvent) *QScrollEvent {
 }
 
 func (this *QScrollEvent) ContentPos() *QPointF {
-	_goptr := newQPointF(C.QScrollEvent_ContentPos(this.h))
+	_goptr := newQPointF(C.QScrollEvent_contentPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollEvent) OvershootDistance() *QPointF {
-	_goptr := newQPointF(C.QScrollEvent_OvershootDistance(this.h))
+	_goptr := newQPointF(C.QScrollEvent_overshootDistance(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollEvent) ScrollState() QScrollEvent__ScrollState {
-	return (QScrollEvent__ScrollState)(C.QScrollEvent_ScrollState(this.h))
+	return (QScrollEvent__ScrollState)(C.QScrollEvent_scrollState(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QScrollEvent) Delete() {
-	C.QScrollEvent_Delete(this.h)
+	C.QScrollEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3533,16 +3533,16 @@ func NewQScreenOrientationChangeEvent2(param1 *QScreenOrientationChangeEvent) *Q
 }
 
 func (this *QScreenOrientationChangeEvent) Screen() *QScreen {
-	return newQScreen(C.QScreenOrientationChangeEvent_Screen(this.h))
+	return newQScreen(C.QScreenOrientationChangeEvent_screen(this.h))
 }
 
 func (this *QScreenOrientationChangeEvent) Orientation() ScreenOrientation {
-	return (ScreenOrientation)(C.QScreenOrientationChangeEvent_Orientation(this.h))
+	return (ScreenOrientation)(C.QScreenOrientationChangeEvent_orientation(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QScreenOrientationChangeEvent) Delete() {
-	C.QScreenOrientationChangeEvent_Delete(this.h)
+	C.QScreenOrientationChangeEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3603,12 +3603,12 @@ func NewQApplicationStateChangeEvent2(param1 *QApplicationStateChangeEvent) *QAp
 }
 
 func (this *QApplicationStateChangeEvent) ApplicationState() ApplicationState {
-	return (ApplicationState)(C.QApplicationStateChangeEvent_ApplicationState(this.h))
+	return (ApplicationState)(C.QApplicationStateChangeEvent_applicationState(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QApplicationStateChangeEvent) Delete() {
-	C.QApplicationStateChangeEvent_Delete(this.h)
+	C.QApplicationStateChangeEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3671,12 +3671,12 @@ func NewQInputMethodEvent__Attribute3(param1 *QInputMethodEvent__Attribute) *QIn
 }
 
 func (this *QInputMethodEvent__Attribute) OperatorAssign(param1 *QInputMethodEvent__Attribute) {
-	C.QInputMethodEvent__Attribute_OperatorAssign(this.h, param1.cPointer())
+	C.QInputMethodEvent__Attribute_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QInputMethodEvent__Attribute) Delete() {
-	C.QInputMethodEvent__Attribute_Delete(this.h)
+	C.QInputMethodEvent__Attribute_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3739,155 +3739,155 @@ func NewQTouchEvent__TouchPoint3(id int) *QTouchEvent__TouchPoint {
 }
 
 func (this *QTouchEvent__TouchPoint) OperatorAssign(other *QTouchEvent__TouchPoint) {
-	C.QTouchEvent__TouchPoint_OperatorAssign(this.h, other.cPointer())
+	C.QTouchEvent__TouchPoint_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) Swap(other *QTouchEvent__TouchPoint) {
-	C.QTouchEvent__TouchPoint_Swap(this.h, other.cPointer())
+	C.QTouchEvent__TouchPoint_swap(this.h, other.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) Id() int {
-	return (int)(C.QTouchEvent__TouchPoint_Id(this.h))
+	return (int)(C.QTouchEvent__TouchPoint_id(this.h))
 }
 
 func (this *QTouchEvent__TouchPoint) UniqueId() *QPointingDeviceUniqueId {
-	_goptr := newQPointingDeviceUniqueId(C.QTouchEvent__TouchPoint_UniqueId(this.h))
+	_goptr := newQPointingDeviceUniqueId(C.QTouchEvent__TouchPoint_uniqueId(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) State() TouchPointState {
-	return (TouchPointState)(C.QTouchEvent__TouchPoint_State(this.h))
+	return (TouchPointState)(C.QTouchEvent__TouchPoint_state(this.h))
 }
 
 func (this *QTouchEvent__TouchPoint) Pos() *QPointF {
-	_goptr := newQPointF(C.QTouchEvent__TouchPoint_Pos(this.h))
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_pos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) StartPos() *QPointF {
-	_goptr := newQPointF(C.QTouchEvent__TouchPoint_StartPos(this.h))
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_startPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) LastPos() *QPointF {
-	_goptr := newQPointF(C.QTouchEvent__TouchPoint_LastPos(this.h))
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_lastPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) ScenePos() *QPointF {
-	_goptr := newQPointF(C.QTouchEvent__TouchPoint_ScenePos(this.h))
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_scenePos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) StartScenePos() *QPointF {
-	_goptr := newQPointF(C.QTouchEvent__TouchPoint_StartScenePos(this.h))
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_startScenePos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) LastScenePos() *QPointF {
-	_goptr := newQPointF(C.QTouchEvent__TouchPoint_LastScenePos(this.h))
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_lastScenePos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) ScreenPos() *QPointF {
-	_goptr := newQPointF(C.QTouchEvent__TouchPoint_ScreenPos(this.h))
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_screenPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) StartScreenPos() *QPointF {
-	_goptr := newQPointF(C.QTouchEvent__TouchPoint_StartScreenPos(this.h))
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_startScreenPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) LastScreenPos() *QPointF {
-	_goptr := newQPointF(C.QTouchEvent__TouchPoint_LastScreenPos(this.h))
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_lastScreenPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) NormalizedPos() *QPointF {
-	_goptr := newQPointF(C.QTouchEvent__TouchPoint_NormalizedPos(this.h))
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_normalizedPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) StartNormalizedPos() *QPointF {
-	_goptr := newQPointF(C.QTouchEvent__TouchPoint_StartNormalizedPos(this.h))
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_startNormalizedPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) LastNormalizedPos() *QPointF {
-	_goptr := newQPointF(C.QTouchEvent__TouchPoint_LastNormalizedPos(this.h))
+	_goptr := newQPointF(C.QTouchEvent__TouchPoint_lastNormalizedPos(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) Rect() *QRectF {
-	_goptr := newQRectF(C.QTouchEvent__TouchPoint_Rect(this.h))
+	_goptr := newQRectF(C.QTouchEvent__TouchPoint_rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) SceneRect() *QRectF {
-	_goptr := newQRectF(C.QTouchEvent__TouchPoint_SceneRect(this.h))
+	_goptr := newQRectF(C.QTouchEvent__TouchPoint_sceneRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) ScreenRect() *QRectF {
-	_goptr := newQRectF(C.QTouchEvent__TouchPoint_ScreenRect(this.h))
+	_goptr := newQRectF(C.QTouchEvent__TouchPoint_screenRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) SetRect(rect *QRectF) {
-	C.QTouchEvent__TouchPoint_SetRect(this.h, rect.cPointer())
+	C.QTouchEvent__TouchPoint_setRect(this.h, rect.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) SetSceneRect(sceneRect *QRectF) {
-	C.QTouchEvent__TouchPoint_SetSceneRect(this.h, sceneRect.cPointer())
+	C.QTouchEvent__TouchPoint_setSceneRect(this.h, sceneRect.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) SetScreenRect(screenRect *QRectF) {
-	C.QTouchEvent__TouchPoint_SetScreenRect(this.h, screenRect.cPointer())
+	C.QTouchEvent__TouchPoint_setScreenRect(this.h, screenRect.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) Pressure() float64 {
-	return (float64)(C.QTouchEvent__TouchPoint_Pressure(this.h))
+	return (float64)(C.QTouchEvent__TouchPoint_pressure(this.h))
 }
 
 func (this *QTouchEvent__TouchPoint) Rotation() float64 {
-	return (float64)(C.QTouchEvent__TouchPoint_Rotation(this.h))
+	return (float64)(C.QTouchEvent__TouchPoint_rotation(this.h))
 }
 
 func (this *QTouchEvent__TouchPoint) EllipseDiameters() *QSizeF {
-	_goptr := newQSizeF(C.QTouchEvent__TouchPoint_EllipseDiameters(this.h))
+	_goptr := newQSizeF(C.QTouchEvent__TouchPoint_ellipseDiameters(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) Velocity() *QVector2D {
-	_goptr := newQVector2D(C.QTouchEvent__TouchPoint_Velocity(this.h))
+	_goptr := newQVector2D(C.QTouchEvent__TouchPoint_velocity(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTouchEvent__TouchPoint) Flags() QTouchEvent__TouchPoint__InfoFlag {
-	return (QTouchEvent__TouchPoint__InfoFlag)(C.QTouchEvent__TouchPoint_Flags(this.h))
+	return (QTouchEvent__TouchPoint__InfoFlag)(C.QTouchEvent__TouchPoint_flags(this.h))
 }
 
 func (this *QTouchEvent__TouchPoint) RawScreenPositions() []QPointF {
-	var _ma C.struct_miqt_array = C.QTouchEvent__TouchPoint_RawScreenPositions(this.h)
+	var _ma C.struct_miqt_array = C.QTouchEvent__TouchPoint_rawScreenPositions(this.h)
 	_ret := make([]QPointF, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -3899,83 +3899,83 @@ func (this *QTouchEvent__TouchPoint) RawScreenPositions() []QPointF {
 }
 
 func (this *QTouchEvent__TouchPoint) SetId(id int) {
-	C.QTouchEvent__TouchPoint_SetId(this.h, (C.int)(id))
+	C.QTouchEvent__TouchPoint_setId(this.h, (C.int)(id))
 }
 
 func (this *QTouchEvent__TouchPoint) SetUniqueId(uid int64) {
-	C.QTouchEvent__TouchPoint_SetUniqueId(this.h, (C.longlong)(uid))
+	C.QTouchEvent__TouchPoint_setUniqueId(this.h, (C.longlong)(uid))
 }
 
 func (this *QTouchEvent__TouchPoint) SetState(state TouchPointState) {
-	C.QTouchEvent__TouchPoint_SetState(this.h, (C.int)(state))
+	C.QTouchEvent__TouchPoint_setState(this.h, (C.int)(state))
 }
 
 func (this *QTouchEvent__TouchPoint) SetPos(pos *QPointF) {
-	C.QTouchEvent__TouchPoint_SetPos(this.h, pos.cPointer())
+	C.QTouchEvent__TouchPoint_setPos(this.h, pos.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) SetScenePos(scenePos *QPointF) {
-	C.QTouchEvent__TouchPoint_SetScenePos(this.h, scenePos.cPointer())
+	C.QTouchEvent__TouchPoint_setScenePos(this.h, scenePos.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) SetScreenPos(screenPos *QPointF) {
-	C.QTouchEvent__TouchPoint_SetScreenPos(this.h, screenPos.cPointer())
+	C.QTouchEvent__TouchPoint_setScreenPos(this.h, screenPos.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) SetNormalizedPos(normalizedPos *QPointF) {
-	C.QTouchEvent__TouchPoint_SetNormalizedPos(this.h, normalizedPos.cPointer())
+	C.QTouchEvent__TouchPoint_setNormalizedPos(this.h, normalizedPos.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) SetStartPos(startPos *QPointF) {
-	C.QTouchEvent__TouchPoint_SetStartPos(this.h, startPos.cPointer())
+	C.QTouchEvent__TouchPoint_setStartPos(this.h, startPos.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) SetStartScenePos(startScenePos *QPointF) {
-	C.QTouchEvent__TouchPoint_SetStartScenePos(this.h, startScenePos.cPointer())
+	C.QTouchEvent__TouchPoint_setStartScenePos(this.h, startScenePos.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) SetStartScreenPos(startScreenPos *QPointF) {
-	C.QTouchEvent__TouchPoint_SetStartScreenPos(this.h, startScreenPos.cPointer())
+	C.QTouchEvent__TouchPoint_setStartScreenPos(this.h, startScreenPos.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) SetStartNormalizedPos(startNormalizedPos *QPointF) {
-	C.QTouchEvent__TouchPoint_SetStartNormalizedPos(this.h, startNormalizedPos.cPointer())
+	C.QTouchEvent__TouchPoint_setStartNormalizedPos(this.h, startNormalizedPos.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) SetLastPos(lastPos *QPointF) {
-	C.QTouchEvent__TouchPoint_SetLastPos(this.h, lastPos.cPointer())
+	C.QTouchEvent__TouchPoint_setLastPos(this.h, lastPos.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) SetLastScenePos(lastScenePos *QPointF) {
-	C.QTouchEvent__TouchPoint_SetLastScenePos(this.h, lastScenePos.cPointer())
+	C.QTouchEvent__TouchPoint_setLastScenePos(this.h, lastScenePos.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) SetLastScreenPos(lastScreenPos *QPointF) {
-	C.QTouchEvent__TouchPoint_SetLastScreenPos(this.h, lastScreenPos.cPointer())
+	C.QTouchEvent__TouchPoint_setLastScreenPos(this.h, lastScreenPos.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) SetLastNormalizedPos(lastNormalizedPos *QPointF) {
-	C.QTouchEvent__TouchPoint_SetLastNormalizedPos(this.h, lastNormalizedPos.cPointer())
+	C.QTouchEvent__TouchPoint_setLastNormalizedPos(this.h, lastNormalizedPos.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) SetPressure(pressure float64) {
-	C.QTouchEvent__TouchPoint_SetPressure(this.h, (C.double)(pressure))
+	C.QTouchEvent__TouchPoint_setPressure(this.h, (C.double)(pressure))
 }
 
 func (this *QTouchEvent__TouchPoint) SetRotation(angle float64) {
-	C.QTouchEvent__TouchPoint_SetRotation(this.h, (C.double)(angle))
+	C.QTouchEvent__TouchPoint_setRotation(this.h, (C.double)(angle))
 }
 
 func (this *QTouchEvent__TouchPoint) SetEllipseDiameters(dia *QSizeF) {
-	C.QTouchEvent__TouchPoint_SetEllipseDiameters(this.h, dia.cPointer())
+	C.QTouchEvent__TouchPoint_setEllipseDiameters(this.h, dia.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) SetVelocity(v *QVector2D) {
-	C.QTouchEvent__TouchPoint_SetVelocity(this.h, v.cPointer())
+	C.QTouchEvent__TouchPoint_setVelocity(this.h, v.cPointer())
 }
 
 func (this *QTouchEvent__TouchPoint) SetFlags(flags QTouchEvent__TouchPoint__InfoFlag) {
-	C.QTouchEvent__TouchPoint_SetFlags(this.h, (C.int)(flags))
+	C.QTouchEvent__TouchPoint_setFlags(this.h, (C.int)(flags))
 }
 
 func (this *QTouchEvent__TouchPoint) SetRawScreenPositions(positions []QPointF) {
@@ -3985,12 +3985,12 @@ func (this *QTouchEvent__TouchPoint) SetRawScreenPositions(positions []QPointF) 
 		positions_CArray[i] = positions[i].cPointer()
 	}
 	positions_ma := C.struct_miqt_array{len: C.size_t(len(positions)), data: unsafe.Pointer(positions_CArray)}
-	C.QTouchEvent__TouchPoint_SetRawScreenPositions(this.h, positions_ma)
+	C.QTouchEvent__TouchPoint_setRawScreenPositions(this.h, positions_ma)
 }
 
 // Delete this object from C++ memory.
 func (this *QTouchEvent__TouchPoint) Delete() {
-	C.QTouchEvent__TouchPoint_Delete(this.h)
+	C.QTouchEvent__TouchPoint_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

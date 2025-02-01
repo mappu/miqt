@@ -62,19 +62,19 @@ func UnsafeNewQWebEngineUrlRequestJob(h unsafe.Pointer) *QWebEngineUrlRequestJob
 }
 
 func (this *QWebEngineUrlRequestJob) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineUrlRequestJob_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineUrlRequestJob_metaObject(this.h)))
 }
 
 func (this *QWebEngineUrlRequestJob) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWebEngineUrlRequestJob_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWebEngineUrlRequestJob_metacast(this.h, param1_Cstring))
 }
 
 func QWebEngineUrlRequestJob_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineUrlRequestJob_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineUrlRequestJob_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -83,27 +83,27 @@ func QWebEngineUrlRequestJob_Tr(s string) string {
 func QWebEngineUrlRequestJob_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineUrlRequestJob_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineUrlRequestJob_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineUrlRequestJob) RequestUrl() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestJob_RequestUrl(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestJob_requestUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineUrlRequestJob) RequestMethod() []byte {
-	var _bytearray C.struct_miqt_string = C.QWebEngineUrlRequestJob_RequestMethod(this.h)
+	var _bytearray C.struct_miqt_string = C.QWebEngineUrlRequestJob_requestMethod(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QWebEngineUrlRequestJob) Initiator() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestJob_Initiator(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineUrlRequestJob_initiator(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -116,15 +116,15 @@ func (this *QWebEngineUrlRequestJob) Reply(contentType []byte, device *qt.QIODev
 		contentType_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	contentType_alias.len = C.size_t(len(contentType))
-	C.QWebEngineUrlRequestJob_Reply(this.h, contentType_alias, (*C.QIODevice)(device.UnsafePointer()))
+	C.QWebEngineUrlRequestJob_reply(this.h, contentType_alias, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QWebEngineUrlRequestJob) Fail(error QWebEngineUrlRequestJob__Error) {
-	C.QWebEngineUrlRequestJob_Fail(this.h, (C.int)(error))
+	C.QWebEngineUrlRequestJob_fail(this.h, (C.int)(error))
 }
 
 func (this *QWebEngineUrlRequestJob) Redirect(url *qt.QUrl) {
-	C.QWebEngineUrlRequestJob_Redirect(this.h, (*C.QUrl)(url.UnsafePointer()))
+	C.QWebEngineUrlRequestJob_redirect(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func QWebEngineUrlRequestJob_Tr2(s string, c string) string {
@@ -132,7 +132,7 @@ func QWebEngineUrlRequestJob_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineUrlRequestJob_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineUrlRequestJob_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -143,7 +143,7 @@ func QWebEngineUrlRequestJob_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineUrlRequestJob_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebEngineUrlRequestJob_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -154,7 +154,7 @@ func QWebEngineUrlRequestJob_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineUrlRequestJob_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineUrlRequestJob_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -165,7 +165,7 @@ func QWebEngineUrlRequestJob_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineUrlRequestJob_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebEngineUrlRequestJob_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -173,7 +173,7 @@ func QWebEngineUrlRequestJob_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QWebEngineUrlRequestJob) Delete() {
-	C.QWebEngineUrlRequestJob_Delete(this.h)
+	C.QWebEngineUrlRequestJob_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

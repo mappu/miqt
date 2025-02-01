@@ -68,7 +68,7 @@ func NewQPartialOrdering(param1 *QPartialOrdering) *QPartialOrdering {
 
 // Delete this object from C++ memory.
 func (this *QPartialOrdering) Delete() {
-	C.QPartialOrdering_Delete(this.h)
+	C.QPartialOrdering_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

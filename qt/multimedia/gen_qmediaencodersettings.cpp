@@ -26,32 +26,32 @@ QAudioEncoderSettings* QAudioEncoderSettings_new2(QAudioEncoderSettings* other) 
 	return new QAudioEncoderSettings(*other);
 }
 
-void QAudioEncoderSettings_OperatorAssign(QAudioEncoderSettings* self, QAudioEncoderSettings* other) {
+void QAudioEncoderSettings_operatorAssign(QAudioEncoderSettings* self, QAudioEncoderSettings* other) {
 	self->operator=(*other);
 }
 
-bool QAudioEncoderSettings_OperatorEqual(const QAudioEncoderSettings* self, QAudioEncoderSettings* other) {
+bool QAudioEncoderSettings_operatorEqual(const QAudioEncoderSettings* self, QAudioEncoderSettings* other) {
 	return (*self == *other);
 }
 
-bool QAudioEncoderSettings_OperatorNotEqual(const QAudioEncoderSettings* self, QAudioEncoderSettings* other) {
+bool QAudioEncoderSettings_operatorNotEqual(const QAudioEncoderSettings* self, QAudioEncoderSettings* other) {
 	return (*self != *other);
 }
 
-bool QAudioEncoderSettings_IsNull(const QAudioEncoderSettings* self) {
+bool QAudioEncoderSettings_isNull(const QAudioEncoderSettings* self) {
 	return self->isNull();
 }
 
-int QAudioEncoderSettings_EncodingMode(const QAudioEncoderSettings* self) {
+int QAudioEncoderSettings_encodingMode(const QAudioEncoderSettings* self) {
 	QMultimedia::EncodingMode _ret = self->encodingMode();
 	return static_cast<int>(_ret);
 }
 
-void QAudioEncoderSettings_SetEncodingMode(QAudioEncoderSettings* self, int encodingMode) {
+void QAudioEncoderSettings_setEncodingMode(QAudioEncoderSettings* self, int encodingMode) {
 	self->setEncodingMode(static_cast<QMultimedia::EncodingMode>(encodingMode));
 }
 
-struct miqt_string QAudioEncoderSettings_Codec(const QAudioEncoderSettings* self) {
+struct miqt_string QAudioEncoderSettings_codec(const QAudioEncoderSettings* self) {
 	QString _ret = self->codec();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -62,50 +62,50 @@ struct miqt_string QAudioEncoderSettings_Codec(const QAudioEncoderSettings* self
 	return _ms;
 }
 
-void QAudioEncoderSettings_SetCodec(QAudioEncoderSettings* self, struct miqt_string codec) {
+void QAudioEncoderSettings_setCodec(QAudioEncoderSettings* self, struct miqt_string codec) {
 	QString codec_QString = QString::fromUtf8(codec.data, codec.len);
 	self->setCodec(codec_QString);
 }
 
-int QAudioEncoderSettings_BitRate(const QAudioEncoderSettings* self) {
+int QAudioEncoderSettings_bitRate(const QAudioEncoderSettings* self) {
 	return self->bitRate();
 }
 
-void QAudioEncoderSettings_SetBitRate(QAudioEncoderSettings* self, int bitrate) {
+void QAudioEncoderSettings_setBitRate(QAudioEncoderSettings* self, int bitrate) {
 	self->setBitRate(static_cast<int>(bitrate));
 }
 
-int QAudioEncoderSettings_ChannelCount(const QAudioEncoderSettings* self) {
+int QAudioEncoderSettings_channelCount(const QAudioEncoderSettings* self) {
 	return self->channelCount();
 }
 
-void QAudioEncoderSettings_SetChannelCount(QAudioEncoderSettings* self, int channels) {
+void QAudioEncoderSettings_setChannelCount(QAudioEncoderSettings* self, int channels) {
 	self->setChannelCount(static_cast<int>(channels));
 }
 
-int QAudioEncoderSettings_SampleRate(const QAudioEncoderSettings* self) {
+int QAudioEncoderSettings_sampleRate(const QAudioEncoderSettings* self) {
 	return self->sampleRate();
 }
 
-void QAudioEncoderSettings_SetSampleRate(QAudioEncoderSettings* self, int rate) {
+void QAudioEncoderSettings_setSampleRate(QAudioEncoderSettings* self, int rate) {
 	self->setSampleRate(static_cast<int>(rate));
 }
 
-int QAudioEncoderSettings_Quality(const QAudioEncoderSettings* self) {
+int QAudioEncoderSettings_quality(const QAudioEncoderSettings* self) {
 	QMultimedia::EncodingQuality _ret = self->quality();
 	return static_cast<int>(_ret);
 }
 
-void QAudioEncoderSettings_SetQuality(QAudioEncoderSettings* self, int quality) {
+void QAudioEncoderSettings_setQuality(QAudioEncoderSettings* self, int quality) {
 	self->setQuality(static_cast<QMultimedia::EncodingQuality>(quality));
 }
 
-QVariant* QAudioEncoderSettings_EncodingOption(const QAudioEncoderSettings* self, struct miqt_string option) {
+QVariant* QAudioEncoderSettings_encodingOption(const QAudioEncoderSettings* self, struct miqt_string option) {
 	QString option_QString = QString::fromUtf8(option.data, option.len);
 	return new QVariant(self->encodingOption(option_QString));
 }
 
-struct miqt_map /* of struct miqt_string to QVariant* */  QAudioEncoderSettings_EncodingOptions(const QAudioEncoderSettings* self) {
+struct miqt_map /* of struct miqt_string to QVariant* */  QAudioEncoderSettings_encodingOptions(const QAudioEncoderSettings* self) {
 	QVariantMap _ret = self->encodingOptions();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
@@ -130,12 +130,12 @@ struct miqt_map /* of struct miqt_string to QVariant* */  QAudioEncoderSettings_
 	return _out;
 }
 
-void QAudioEncoderSettings_SetEncodingOption(QAudioEncoderSettings* self, struct miqt_string option, QVariant* value) {
+void QAudioEncoderSettings_setEncodingOption(QAudioEncoderSettings* self, struct miqt_string option, QVariant* value) {
 	QString option_QString = QString::fromUtf8(option.data, option.len);
 	self->setEncodingOption(option_QString, *value);
 }
 
-void QAudioEncoderSettings_SetEncodingOptions(QAudioEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options) {
+void QAudioEncoderSettings_setEncodingOptions(QAudioEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options) {
 	QVariantMap options_QMap;
 	struct miqt_string* options_karr = static_cast<struct miqt_string*>(options.keys);
 	QVariant** options_varr = static_cast<QVariant**>(options.values);
@@ -146,7 +146,7 @@ void QAudioEncoderSettings_SetEncodingOptions(QAudioEncoderSettings* self, struc
 	self->setEncodingOptions(options_QMap);
 }
 
-void QAudioEncoderSettings_Delete(QAudioEncoderSettings* self) {
+void QAudioEncoderSettings_delete(QAudioEncoderSettings* self) {
 	delete self;
 }
 
@@ -158,32 +158,32 @@ QVideoEncoderSettings* QVideoEncoderSettings_new2(QVideoEncoderSettings* other) 
 	return new QVideoEncoderSettings(*other);
 }
 
-void QVideoEncoderSettings_OperatorAssign(QVideoEncoderSettings* self, QVideoEncoderSettings* other) {
+void QVideoEncoderSettings_operatorAssign(QVideoEncoderSettings* self, QVideoEncoderSettings* other) {
 	self->operator=(*other);
 }
 
-bool QVideoEncoderSettings_OperatorEqual(const QVideoEncoderSettings* self, QVideoEncoderSettings* other) {
+bool QVideoEncoderSettings_operatorEqual(const QVideoEncoderSettings* self, QVideoEncoderSettings* other) {
 	return (*self == *other);
 }
 
-bool QVideoEncoderSettings_OperatorNotEqual(const QVideoEncoderSettings* self, QVideoEncoderSettings* other) {
+bool QVideoEncoderSettings_operatorNotEqual(const QVideoEncoderSettings* self, QVideoEncoderSettings* other) {
 	return (*self != *other);
 }
 
-bool QVideoEncoderSettings_IsNull(const QVideoEncoderSettings* self) {
+bool QVideoEncoderSettings_isNull(const QVideoEncoderSettings* self) {
 	return self->isNull();
 }
 
-int QVideoEncoderSettings_EncodingMode(const QVideoEncoderSettings* self) {
+int QVideoEncoderSettings_encodingMode(const QVideoEncoderSettings* self) {
 	QMultimedia::EncodingMode _ret = self->encodingMode();
 	return static_cast<int>(_ret);
 }
 
-void QVideoEncoderSettings_SetEncodingMode(QVideoEncoderSettings* self, int encodingMode) {
+void QVideoEncoderSettings_setEncodingMode(QVideoEncoderSettings* self, int encodingMode) {
 	self->setEncodingMode(static_cast<QMultimedia::EncodingMode>(encodingMode));
 }
 
-struct miqt_string QVideoEncoderSettings_Codec(const QVideoEncoderSettings* self) {
+struct miqt_string QVideoEncoderSettings_codec(const QVideoEncoderSettings* self) {
 	QString _ret = self->codec();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -194,55 +194,55 @@ struct miqt_string QVideoEncoderSettings_Codec(const QVideoEncoderSettings* self
 	return _ms;
 }
 
-void QVideoEncoderSettings_SetCodec(QVideoEncoderSettings* self, struct miqt_string codec) {
+void QVideoEncoderSettings_setCodec(QVideoEncoderSettings* self, struct miqt_string codec) {
 	QString codec_QString = QString::fromUtf8(codec.data, codec.len);
 	self->setCodec(codec_QString);
 }
 
-QSize* QVideoEncoderSettings_Resolution(const QVideoEncoderSettings* self) {
+QSize* QVideoEncoderSettings_resolution(const QVideoEncoderSettings* self) {
 	return new QSize(self->resolution());
 }
 
-void QVideoEncoderSettings_SetResolution(QVideoEncoderSettings* self, QSize* resolution) {
+void QVideoEncoderSettings_setResolution(QVideoEncoderSettings* self, QSize* resolution) {
 	self->setResolution(*resolution);
 }
 
-void QVideoEncoderSettings_SetResolution2(QVideoEncoderSettings* self, int width, int height) {
+void QVideoEncoderSettings_setResolution2(QVideoEncoderSettings* self, int width, int height) {
 	self->setResolution(static_cast<int>(width), static_cast<int>(height));
 }
 
-double QVideoEncoderSettings_FrameRate(const QVideoEncoderSettings* self) {
+double QVideoEncoderSettings_frameRate(const QVideoEncoderSettings* self) {
 	qreal _ret = self->frameRate();
 	return static_cast<double>(_ret);
 }
 
-void QVideoEncoderSettings_SetFrameRate(QVideoEncoderSettings* self, double rate) {
+void QVideoEncoderSettings_setFrameRate(QVideoEncoderSettings* self, double rate) {
 	self->setFrameRate(static_cast<qreal>(rate));
 }
 
-int QVideoEncoderSettings_BitRate(const QVideoEncoderSettings* self) {
+int QVideoEncoderSettings_bitRate(const QVideoEncoderSettings* self) {
 	return self->bitRate();
 }
 
-void QVideoEncoderSettings_SetBitRate(QVideoEncoderSettings* self, int bitrate) {
+void QVideoEncoderSettings_setBitRate(QVideoEncoderSettings* self, int bitrate) {
 	self->setBitRate(static_cast<int>(bitrate));
 }
 
-int QVideoEncoderSettings_Quality(const QVideoEncoderSettings* self) {
+int QVideoEncoderSettings_quality(const QVideoEncoderSettings* self) {
 	QMultimedia::EncodingQuality _ret = self->quality();
 	return static_cast<int>(_ret);
 }
 
-void QVideoEncoderSettings_SetQuality(QVideoEncoderSettings* self, int quality) {
+void QVideoEncoderSettings_setQuality(QVideoEncoderSettings* self, int quality) {
 	self->setQuality(static_cast<QMultimedia::EncodingQuality>(quality));
 }
 
-QVariant* QVideoEncoderSettings_EncodingOption(const QVideoEncoderSettings* self, struct miqt_string option) {
+QVariant* QVideoEncoderSettings_encodingOption(const QVideoEncoderSettings* self, struct miqt_string option) {
 	QString option_QString = QString::fromUtf8(option.data, option.len);
 	return new QVariant(self->encodingOption(option_QString));
 }
 
-struct miqt_map /* of struct miqt_string to QVariant* */  QVideoEncoderSettings_EncodingOptions(const QVideoEncoderSettings* self) {
+struct miqt_map /* of struct miqt_string to QVariant* */  QVideoEncoderSettings_encodingOptions(const QVideoEncoderSettings* self) {
 	QVariantMap _ret = self->encodingOptions();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
@@ -267,12 +267,12 @@ struct miqt_map /* of struct miqt_string to QVariant* */  QVideoEncoderSettings_
 	return _out;
 }
 
-void QVideoEncoderSettings_SetEncodingOption(QVideoEncoderSettings* self, struct miqt_string option, QVariant* value) {
+void QVideoEncoderSettings_setEncodingOption(QVideoEncoderSettings* self, struct miqt_string option, QVariant* value) {
 	QString option_QString = QString::fromUtf8(option.data, option.len);
 	self->setEncodingOption(option_QString, *value);
 }
 
-void QVideoEncoderSettings_SetEncodingOptions(QVideoEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options) {
+void QVideoEncoderSettings_setEncodingOptions(QVideoEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options) {
 	QVariantMap options_QMap;
 	struct miqt_string* options_karr = static_cast<struct miqt_string*>(options.keys);
 	QVariant** options_varr = static_cast<QVariant**>(options.values);
@@ -283,7 +283,7 @@ void QVideoEncoderSettings_SetEncodingOptions(QVideoEncoderSettings* self, struc
 	self->setEncodingOptions(options_QMap);
 }
 
-void QVideoEncoderSettings_Delete(QVideoEncoderSettings* self) {
+void QVideoEncoderSettings_delete(QVideoEncoderSettings* self) {
 	delete self;
 }
 
@@ -295,23 +295,23 @@ QImageEncoderSettings* QImageEncoderSettings_new2(QImageEncoderSettings* other) 
 	return new QImageEncoderSettings(*other);
 }
 
-void QImageEncoderSettings_OperatorAssign(QImageEncoderSettings* self, QImageEncoderSettings* other) {
+void QImageEncoderSettings_operatorAssign(QImageEncoderSettings* self, QImageEncoderSettings* other) {
 	self->operator=(*other);
 }
 
-bool QImageEncoderSettings_OperatorEqual(const QImageEncoderSettings* self, QImageEncoderSettings* other) {
+bool QImageEncoderSettings_operatorEqual(const QImageEncoderSettings* self, QImageEncoderSettings* other) {
 	return (*self == *other);
 }
 
-bool QImageEncoderSettings_OperatorNotEqual(const QImageEncoderSettings* self, QImageEncoderSettings* other) {
+bool QImageEncoderSettings_operatorNotEqual(const QImageEncoderSettings* self, QImageEncoderSettings* other) {
 	return (*self != *other);
 }
 
-bool QImageEncoderSettings_IsNull(const QImageEncoderSettings* self) {
+bool QImageEncoderSettings_isNull(const QImageEncoderSettings* self) {
 	return self->isNull();
 }
 
-struct miqt_string QImageEncoderSettings_Codec(const QImageEncoderSettings* self) {
+struct miqt_string QImageEncoderSettings_codec(const QImageEncoderSettings* self) {
 	QString _ret = self->codec();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -322,38 +322,38 @@ struct miqt_string QImageEncoderSettings_Codec(const QImageEncoderSettings* self
 	return _ms;
 }
 
-void QImageEncoderSettings_SetCodec(QImageEncoderSettings* self, struct miqt_string codec) {
+void QImageEncoderSettings_setCodec(QImageEncoderSettings* self, struct miqt_string codec) {
 	QString codec_QString = QString::fromUtf8(codec.data, codec.len);
 	self->setCodec(codec_QString);
 }
 
-QSize* QImageEncoderSettings_Resolution(const QImageEncoderSettings* self) {
+QSize* QImageEncoderSettings_resolution(const QImageEncoderSettings* self) {
 	return new QSize(self->resolution());
 }
 
-void QImageEncoderSettings_SetResolution(QImageEncoderSettings* self, QSize* resolution) {
+void QImageEncoderSettings_setResolution(QImageEncoderSettings* self, QSize* resolution) {
 	self->setResolution(*resolution);
 }
 
-void QImageEncoderSettings_SetResolution2(QImageEncoderSettings* self, int width, int height) {
+void QImageEncoderSettings_setResolution2(QImageEncoderSettings* self, int width, int height) {
 	self->setResolution(static_cast<int>(width), static_cast<int>(height));
 }
 
-int QImageEncoderSettings_Quality(const QImageEncoderSettings* self) {
+int QImageEncoderSettings_quality(const QImageEncoderSettings* self) {
 	QMultimedia::EncodingQuality _ret = self->quality();
 	return static_cast<int>(_ret);
 }
 
-void QImageEncoderSettings_SetQuality(QImageEncoderSettings* self, int quality) {
+void QImageEncoderSettings_setQuality(QImageEncoderSettings* self, int quality) {
 	self->setQuality(static_cast<QMultimedia::EncodingQuality>(quality));
 }
 
-QVariant* QImageEncoderSettings_EncodingOption(const QImageEncoderSettings* self, struct miqt_string option) {
+QVariant* QImageEncoderSettings_encodingOption(const QImageEncoderSettings* self, struct miqt_string option) {
 	QString option_QString = QString::fromUtf8(option.data, option.len);
 	return new QVariant(self->encodingOption(option_QString));
 }
 
-struct miqt_map /* of struct miqt_string to QVariant* */  QImageEncoderSettings_EncodingOptions(const QImageEncoderSettings* self) {
+struct miqt_map /* of struct miqt_string to QVariant* */  QImageEncoderSettings_encodingOptions(const QImageEncoderSettings* self) {
 	QVariantMap _ret = self->encodingOptions();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
@@ -378,12 +378,12 @@ struct miqt_map /* of struct miqt_string to QVariant* */  QImageEncoderSettings_
 	return _out;
 }
 
-void QImageEncoderSettings_SetEncodingOption(QImageEncoderSettings* self, struct miqt_string option, QVariant* value) {
+void QImageEncoderSettings_setEncodingOption(QImageEncoderSettings* self, struct miqt_string option, QVariant* value) {
 	QString option_QString = QString::fromUtf8(option.data, option.len);
 	self->setEncodingOption(option_QString, *value);
 }
 
-void QImageEncoderSettings_SetEncodingOptions(QImageEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options) {
+void QImageEncoderSettings_setEncodingOptions(QImageEncoderSettings* self, struct miqt_map /* of struct miqt_string to QVariant* */  options) {
 	QVariantMap options_QMap;
 	struct miqt_string* options_karr = static_cast<struct miqt_string*>(options.keys);
 	QVariant** options_varr = static_cast<QVariant**>(options.values);
@@ -394,7 +394,7 @@ void QImageEncoderSettings_SetEncodingOptions(QImageEncoderSettings* self, struc
 	self->setEncodingOptions(options_QMap);
 }
 
-void QImageEncoderSettings_Delete(QImageEncoderSettings* self) {
+void QImageEncoderSettings_delete(QImageEncoderSettings* self) {
 	delete self;
 }
 

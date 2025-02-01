@@ -60,17 +60,17 @@ func (this *QAbstractNativeEventFilter) NativeEventFilter(eventType []byte, mess
 		eventType_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	eventType_alias.len = C.size_t(len(eventType))
-	return (bool)(C.QAbstractNativeEventFilter_NativeEventFilter(this.h, eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
+	return (bool)(C.QAbstractNativeEventFilter_nativeEventFilter(this.h, eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 }
-func (this *QAbstractNativeEventFilter) OnNativeEventFilter(slot func(eventType []byte, message unsafe.Pointer, result *int64) bool) {
-	ok := C.QAbstractNativeEventFilter_override_virtual_NativeEventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractNativeEventFilter) OnnativeEventFilter(slot func(eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	ok := C.QAbstractNativeEventFilter_override_virtual_nativeEventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractNativeEventFilter_NativeEventFilter
-func miqt_exec_callback_QAbstractNativeEventFilter_NativeEventFilter(self *C.QAbstractNativeEventFilter, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
+//export miqt_exec_callback_QAbstractNativeEventFilter_nativeEventFilter
+func miqt_exec_callback_QAbstractNativeEventFilter_nativeEventFilter(self *C.QAbstractNativeEventFilter, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(eventType []byte, message unsafe.Pointer, result *int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -93,7 +93,7 @@ func miqt_exec_callback_QAbstractNativeEventFilter_NativeEventFilter(self *C.QAb
 
 // Delete this object from C++ memory.
 func (this *QAbstractNativeEventFilter) Delete() {
-	C.QAbstractNativeEventFilter_Delete(this.h)
+	C.QAbstractNativeEventFilter_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

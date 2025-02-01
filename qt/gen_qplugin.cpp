@@ -11,11 +11,11 @@ extern "C" {
 } /* extern C */
 #endif
 
-QJsonObject* QStaticPlugin_MetaData(const QStaticPlugin* self) {
+QJsonObject* QStaticPlugin_metaData(const QStaticPlugin* self) {
 	return new QJsonObject(self->metaData());
 }
 
-void QStaticPlugin_Delete(QStaticPlugin* self) {
+void QStaticPlugin_delete(QStaticPlugin* self) {
 	delete self;
 }
 

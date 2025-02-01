@@ -52,19 +52,19 @@ func UnsafeNewQAudioDecoderControl(h unsafe.Pointer) *QAudioDecoderControl {
 }
 
 func (this *QAudioDecoderControl) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioDecoderControl_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioDecoderControl_metaObject(this.h)))
 }
 
 func (this *QAudioDecoderControl) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAudioDecoderControl_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAudioDecoderControl_metacast(this.h, param1_Cstring))
 }
 
 func QAudioDecoderControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioDecoderControl_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAudioDecoderControl_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -73,18 +73,18 @@ func QAudioDecoderControl_Tr(s string) string {
 func QAudioDecoderControl_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioDecoderControl_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAudioDecoderControl_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAudioDecoderControl) State() QAudioDecoder__State {
-	return (QAudioDecoder__State)(C.QAudioDecoderControl_State(this.h))
+	return (QAudioDecoder__State)(C.QAudioDecoderControl_state(this.h))
 }
 
 func (this *QAudioDecoderControl) SourceFilename() string {
-	var _ms C.struct_miqt_string = C.QAudioDecoderControl_SourceFilename(this.h)
+	var _ms C.struct_miqt_string = C.QAudioDecoderControl_sourceFilename(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -95,62 +95,62 @@ func (this *QAudioDecoderControl) SetSourceFilename(fileName string) {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	C.QAudioDecoderControl_SetSourceFilename(this.h, fileName_ms)
+	C.QAudioDecoderControl_setSourceFilename(this.h, fileName_ms)
 }
 
 func (this *QAudioDecoderControl) SourceDevice() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioDecoderControl_SourceDevice(this.h)))
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAudioDecoderControl_sourceDevice(this.h)))
 }
 
 func (this *QAudioDecoderControl) SetSourceDevice(device *qt.QIODevice) {
-	C.QAudioDecoderControl_SetSourceDevice(this.h, (*C.QIODevice)(device.UnsafePointer()))
+	C.QAudioDecoderControl_setSourceDevice(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QAudioDecoderControl) Start() {
-	C.QAudioDecoderControl_Start(this.h)
+	C.QAudioDecoderControl_start(this.h)
 }
 
 func (this *QAudioDecoderControl) Stop() {
-	C.QAudioDecoderControl_Stop(this.h)
+	C.QAudioDecoderControl_stop(this.h)
 }
 
 func (this *QAudioDecoderControl) AudioFormat() *QAudioFormat {
-	_goptr := newQAudioFormat(C.QAudioDecoderControl_AudioFormat(this.h))
+	_goptr := newQAudioFormat(C.QAudioDecoderControl_audioFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioDecoderControl) SetAudioFormat(format *QAudioFormat) {
-	C.QAudioDecoderControl_SetAudioFormat(this.h, format.cPointer())
+	C.QAudioDecoderControl_setAudioFormat(this.h, format.cPointer())
 }
 
 func (this *QAudioDecoderControl) Read() *QAudioBuffer {
-	_goptr := newQAudioBuffer(C.QAudioDecoderControl_Read(this.h))
+	_goptr := newQAudioBuffer(C.QAudioDecoderControl_read(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioDecoderControl) BufferAvailable() bool {
-	return (bool)(C.QAudioDecoderControl_BufferAvailable(this.h))
+	return (bool)(C.QAudioDecoderControl_bufferAvailable(this.h))
 }
 
 func (this *QAudioDecoderControl) Position() int64 {
-	return (int64)(C.QAudioDecoderControl_Position(this.h))
+	return (int64)(C.QAudioDecoderControl_position(this.h))
 }
 
 func (this *QAudioDecoderControl) Duration() int64 {
-	return (int64)(C.QAudioDecoderControl_Duration(this.h))
+	return (int64)(C.QAudioDecoderControl_duration(this.h))
 }
 
 func (this *QAudioDecoderControl) StateChanged(newState QAudioDecoder__State) {
-	C.QAudioDecoderControl_StateChanged(this.h, (C.int)(newState))
+	C.QAudioDecoderControl_stateChanged(this.h, (C.int)(newState))
 }
 func (this *QAudioDecoderControl) OnStateChanged(slot func(newState QAudioDecoder__State)) {
-	C.QAudioDecoderControl_connect_StateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAudioDecoderControl_connect_stateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAudioDecoderControl_StateChanged
-func miqt_exec_callback_QAudioDecoderControl_StateChanged(cb C.intptr_t, newState C.int) {
+//export miqt_exec_callback_QAudioDecoderControl_stateChanged
+func miqt_exec_callback_QAudioDecoderControl_stateChanged(cb C.intptr_t, newState C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(newState QAudioDecoder__State))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -163,14 +163,14 @@ func miqt_exec_callback_QAudioDecoderControl_StateChanged(cb C.intptr_t, newStat
 }
 
 func (this *QAudioDecoderControl) FormatChanged(format *QAudioFormat) {
-	C.QAudioDecoderControl_FormatChanged(this.h, format.cPointer())
+	C.QAudioDecoderControl_formatChanged(this.h, format.cPointer())
 }
 func (this *QAudioDecoderControl) OnFormatChanged(slot func(format *QAudioFormat)) {
-	C.QAudioDecoderControl_connect_FormatChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAudioDecoderControl_connect_formatChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAudioDecoderControl_FormatChanged
-func miqt_exec_callback_QAudioDecoderControl_FormatChanged(cb C.intptr_t, format *C.QAudioFormat) {
+//export miqt_exec_callback_QAudioDecoderControl_formatChanged
+func miqt_exec_callback_QAudioDecoderControl_formatChanged(cb C.intptr_t, format *C.QAudioFormat) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(format *QAudioFormat))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -183,14 +183,14 @@ func miqt_exec_callback_QAudioDecoderControl_FormatChanged(cb C.intptr_t, format
 }
 
 func (this *QAudioDecoderControl) SourceChanged() {
-	C.QAudioDecoderControl_SourceChanged(this.h)
+	C.QAudioDecoderControl_sourceChanged(this.h)
 }
 func (this *QAudioDecoderControl) OnSourceChanged(slot func()) {
-	C.QAudioDecoderControl_connect_SourceChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAudioDecoderControl_connect_sourceChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAudioDecoderControl_SourceChanged
-func miqt_exec_callback_QAudioDecoderControl_SourceChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QAudioDecoderControl_sourceChanged
+func miqt_exec_callback_QAudioDecoderControl_sourceChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -204,14 +204,14 @@ func (this *QAudioDecoderControl) Error(error int, errorString string) {
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
 	defer C.free(unsafe.Pointer(errorString_ms.data))
-	C.QAudioDecoderControl_Error(this.h, (C.int)(error), errorString_ms)
+	C.QAudioDecoderControl_error(this.h, (C.int)(error), errorString_ms)
 }
 func (this *QAudioDecoderControl) OnError(slot func(error int, errorString string)) {
-	C.QAudioDecoderControl_connect_Error(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAudioDecoderControl_connect_error(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAudioDecoderControl_Error
-func miqt_exec_callback_QAudioDecoderControl_Error(cb C.intptr_t, error C.int, errorString C.struct_miqt_string) {
+//export miqt_exec_callback_QAudioDecoderControl_error
+func miqt_exec_callback_QAudioDecoderControl_error(cb C.intptr_t, error C.int, errorString C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(error int, errorString string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -229,14 +229,14 @@ func miqt_exec_callback_QAudioDecoderControl_Error(cb C.intptr_t, error C.int, e
 }
 
 func (this *QAudioDecoderControl) BufferReady() {
-	C.QAudioDecoderControl_BufferReady(this.h)
+	C.QAudioDecoderControl_bufferReady(this.h)
 }
 func (this *QAudioDecoderControl) OnBufferReady(slot func()) {
-	C.QAudioDecoderControl_connect_BufferReady(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAudioDecoderControl_connect_bufferReady(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAudioDecoderControl_BufferReady
-func miqt_exec_callback_QAudioDecoderControl_BufferReady(cb C.intptr_t) {
+//export miqt_exec_callback_QAudioDecoderControl_bufferReady
+func miqt_exec_callback_QAudioDecoderControl_bufferReady(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -246,14 +246,14 @@ func miqt_exec_callback_QAudioDecoderControl_BufferReady(cb C.intptr_t) {
 }
 
 func (this *QAudioDecoderControl) BufferAvailableChanged(available bool) {
-	C.QAudioDecoderControl_BufferAvailableChanged(this.h, (C.bool)(available))
+	C.QAudioDecoderControl_bufferAvailableChanged(this.h, (C.bool)(available))
 }
 func (this *QAudioDecoderControl) OnBufferAvailableChanged(slot func(available bool)) {
-	C.QAudioDecoderControl_connect_BufferAvailableChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAudioDecoderControl_connect_bufferAvailableChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAudioDecoderControl_BufferAvailableChanged
-func miqt_exec_callback_QAudioDecoderControl_BufferAvailableChanged(cb C.intptr_t, available C.bool) {
+//export miqt_exec_callback_QAudioDecoderControl_bufferAvailableChanged
+func miqt_exec_callback_QAudioDecoderControl_bufferAvailableChanged(cb C.intptr_t, available C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(available bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -266,14 +266,14 @@ func miqt_exec_callback_QAudioDecoderControl_BufferAvailableChanged(cb C.intptr_
 }
 
 func (this *QAudioDecoderControl) Finished() {
-	C.QAudioDecoderControl_Finished(this.h)
+	C.QAudioDecoderControl_finished(this.h)
 }
 func (this *QAudioDecoderControl) OnFinished(slot func()) {
-	C.QAudioDecoderControl_connect_Finished(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAudioDecoderControl_connect_finished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAudioDecoderControl_Finished
-func miqt_exec_callback_QAudioDecoderControl_Finished(cb C.intptr_t) {
+//export miqt_exec_callback_QAudioDecoderControl_finished
+func miqt_exec_callback_QAudioDecoderControl_finished(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -283,14 +283,14 @@ func miqt_exec_callback_QAudioDecoderControl_Finished(cb C.intptr_t) {
 }
 
 func (this *QAudioDecoderControl) PositionChanged(position int64) {
-	C.QAudioDecoderControl_PositionChanged(this.h, (C.longlong)(position))
+	C.QAudioDecoderControl_positionChanged(this.h, (C.longlong)(position))
 }
 func (this *QAudioDecoderControl) OnPositionChanged(slot func(position int64)) {
-	C.QAudioDecoderControl_connect_PositionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAudioDecoderControl_connect_positionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAudioDecoderControl_PositionChanged
-func miqt_exec_callback_QAudioDecoderControl_PositionChanged(cb C.intptr_t, position C.longlong) {
+//export miqt_exec_callback_QAudioDecoderControl_positionChanged
+func miqt_exec_callback_QAudioDecoderControl_positionChanged(cb C.intptr_t, position C.longlong) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(position int64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -303,14 +303,14 @@ func miqt_exec_callback_QAudioDecoderControl_PositionChanged(cb C.intptr_t, posi
 }
 
 func (this *QAudioDecoderControl) DurationChanged(duration int64) {
-	C.QAudioDecoderControl_DurationChanged(this.h, (C.longlong)(duration))
+	C.QAudioDecoderControl_durationChanged(this.h, (C.longlong)(duration))
 }
 func (this *QAudioDecoderControl) OnDurationChanged(slot func(duration int64)) {
-	C.QAudioDecoderControl_connect_DurationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAudioDecoderControl_connect_durationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAudioDecoderControl_DurationChanged
-func miqt_exec_callback_QAudioDecoderControl_DurationChanged(cb C.intptr_t, duration C.longlong) {
+//export miqt_exec_callback_QAudioDecoderControl_durationChanged
+func miqt_exec_callback_QAudioDecoderControl_durationChanged(cb C.intptr_t, duration C.longlong) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(duration int64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -327,7 +327,7 @@ func QAudioDecoderControl_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioDecoderControl_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAudioDecoderControl_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -338,7 +338,7 @@ func QAudioDecoderControl_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioDecoderControl_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAudioDecoderControl_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -349,7 +349,7 @@ func QAudioDecoderControl_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioDecoderControl_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAudioDecoderControl_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -360,7 +360,7 @@ func QAudioDecoderControl_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioDecoderControl_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAudioDecoderControl_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -368,7 +368,7 @@ func QAudioDecoderControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAudioDecoderControl) Delete() {
-	C.QAudioDecoderControl_Delete(this.h)
+	C.QAudioDecoderControl_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

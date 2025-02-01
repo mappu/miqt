@@ -39,46 +39,46 @@ typedef struct QVideoFrameFormat QVideoFrameFormat;
 QVideoFrame* QVideoFrame_new();
 QVideoFrame* QVideoFrame_new2(QVideoFrameFormat* format);
 QVideoFrame* QVideoFrame_new3(QVideoFrame* other);
-void QVideoFrame_Swap(QVideoFrame* self, QVideoFrame* other);
-void QVideoFrame_OperatorAssign(QVideoFrame* self, QVideoFrame* other);
-bool QVideoFrame_OperatorEqual(const QVideoFrame* self, QVideoFrame* other);
-bool QVideoFrame_OperatorNotEqual(const QVideoFrame* self, QVideoFrame* other);
-bool QVideoFrame_IsValid(const QVideoFrame* self);
-int QVideoFrame_PixelFormat(const QVideoFrame* self);
-QVideoFrameFormat* QVideoFrame_SurfaceFormat(const QVideoFrame* self);
-int QVideoFrame_HandleType(const QVideoFrame* self);
-QSize* QVideoFrame_Size(const QVideoFrame* self);
-int QVideoFrame_Width(const QVideoFrame* self);
-int QVideoFrame_Height(const QVideoFrame* self);
-bool QVideoFrame_IsMapped(const QVideoFrame* self);
-bool QVideoFrame_IsReadable(const QVideoFrame* self);
-bool QVideoFrame_IsWritable(const QVideoFrame* self);
-int QVideoFrame_MapMode(const QVideoFrame* self);
-bool QVideoFrame_Map(QVideoFrame* self, int mode);
-void QVideoFrame_Unmap(QVideoFrame* self);
-int QVideoFrame_BytesPerLine(const QVideoFrame* self, int plane);
-unsigned char* QVideoFrame_Bits(QVideoFrame* self, int plane);
-const unsigned char* QVideoFrame_BitsWithPlane(const QVideoFrame* self, int plane);
-int QVideoFrame_MappedBytes(const QVideoFrame* self, int plane);
-int QVideoFrame_PlaneCount(const QVideoFrame* self);
-long long QVideoFrame_StartTime(const QVideoFrame* self);
-void QVideoFrame_SetStartTime(QVideoFrame* self, long long time);
-long long QVideoFrame_EndTime(const QVideoFrame* self);
-void QVideoFrame_SetEndTime(QVideoFrame* self, long long time);
-void QVideoFrame_SetRotationAngle(QVideoFrame* self, int rotationAngle);
-int QVideoFrame_RotationAngle(const QVideoFrame* self);
-void QVideoFrame_SetMirrored(QVideoFrame* self, bool mirrored);
-bool QVideoFrame_Mirrored(const QVideoFrame* self);
-QImage* QVideoFrame_ToImage(const QVideoFrame* self);
-struct miqt_string QVideoFrame_SubtitleText(const QVideoFrame* self);
-void QVideoFrame_SetSubtitleText(QVideoFrame* self, struct miqt_string text);
-void QVideoFrame_Paint(QVideoFrame* self, QPainter* painter, QRectF* rect, QVideoFrame__PaintOptions* options);
-void QVideoFrame_Delete(QVideoFrame* self);
+void QVideoFrame_swap(QVideoFrame* self, QVideoFrame* other);
+void QVideoFrame_operatorAssign(QVideoFrame* self, QVideoFrame* other);
+bool QVideoFrame_operatorEqual(const QVideoFrame* self, QVideoFrame* other);
+bool QVideoFrame_operatorNotEqual(const QVideoFrame* self, QVideoFrame* other);
+bool QVideoFrame_isValid(const QVideoFrame* self);
+int QVideoFrame_pixelFormat(const QVideoFrame* self);
+QVideoFrameFormat* QVideoFrame_surfaceFormat(const QVideoFrame* self);
+int QVideoFrame_handleType(const QVideoFrame* self);
+QSize* QVideoFrame_size(const QVideoFrame* self);
+int QVideoFrame_width(const QVideoFrame* self);
+int QVideoFrame_height(const QVideoFrame* self);
+bool QVideoFrame_isMapped(const QVideoFrame* self);
+bool QVideoFrame_isReadable(const QVideoFrame* self);
+bool QVideoFrame_isWritable(const QVideoFrame* self);
+int QVideoFrame_mapMode(const QVideoFrame* self);
+bool QVideoFrame_map(QVideoFrame* self, int mode);
+void QVideoFrame_unmap(QVideoFrame* self);
+int QVideoFrame_bytesPerLine(const QVideoFrame* self, int plane);
+unsigned char* QVideoFrame_bits(QVideoFrame* self, int plane);
+const unsigned char* QVideoFrame_bitsWithPlane(const QVideoFrame* self, int plane);
+int QVideoFrame_mappedBytes(const QVideoFrame* self, int plane);
+int QVideoFrame_planeCount(const QVideoFrame* self);
+long long QVideoFrame_startTime(const QVideoFrame* self);
+void QVideoFrame_setStartTime(QVideoFrame* self, long long time);
+long long QVideoFrame_endTime(const QVideoFrame* self);
+void QVideoFrame_setEndTime(QVideoFrame* self, long long time);
+void QVideoFrame_setRotationAngle(QVideoFrame* self, int rotationAngle);
+int QVideoFrame_rotationAngle(const QVideoFrame* self);
+void QVideoFrame_setMirrored(QVideoFrame* self, bool mirrored);
+bool QVideoFrame_mirrored(const QVideoFrame* self);
+QImage* QVideoFrame_toImage(const QVideoFrame* self);
+struct miqt_string QVideoFrame_subtitleText(const QVideoFrame* self);
+void QVideoFrame_setSubtitleText(QVideoFrame* self, struct miqt_string text);
+void QVideoFrame_paint(QVideoFrame* self, QPainter* painter, QRectF* rect, QVideoFrame__PaintOptions* options);
+void QVideoFrame_delete(QVideoFrame* self);
 
-void QVideoFrame__PaintOptions_Delete(QVideoFrame__PaintOptions* self);
+void QVideoFrame__PaintOptions_delete(QVideoFrame__PaintOptions* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

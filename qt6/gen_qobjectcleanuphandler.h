@@ -34,33 +34,33 @@ typedef struct QTimerEvent QTimerEvent;
 
 QObjectCleanupHandler* QObjectCleanupHandler_new();
 void QObjectCleanupHandler_virtbase(QObjectCleanupHandler* src, QObject** outptr_QObject);
-QMetaObject* QObjectCleanupHandler_MetaObject(const QObjectCleanupHandler* self);
-void* QObjectCleanupHandler_Metacast(QObjectCleanupHandler* self, const char* param1);
-struct miqt_string QObjectCleanupHandler_Tr(const char* s);
-QObject* QObjectCleanupHandler_Add(QObjectCleanupHandler* self, QObject* object);
-void QObjectCleanupHandler_Remove(QObjectCleanupHandler* self, QObject* object);
-bool QObjectCleanupHandler_IsEmpty(const QObjectCleanupHandler* self);
-void QObjectCleanupHandler_Clear(QObjectCleanupHandler* self);
-struct miqt_string QObjectCleanupHandler_Tr2(const char* s, const char* c);
-struct miqt_string QObjectCleanupHandler_Tr3(const char* s, const char* c, int n);
-bool QObjectCleanupHandler_override_virtual_Event(void* self, intptr_t slot);
-bool QObjectCleanupHandler_virtualbase_Event(void* self, QEvent* event);
-bool QObjectCleanupHandler_override_virtual_EventFilter(void* self, intptr_t slot);
-bool QObjectCleanupHandler_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-bool QObjectCleanupHandler_override_virtual_TimerEvent(void* self, intptr_t slot);
-void QObjectCleanupHandler_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-bool QObjectCleanupHandler_override_virtual_ChildEvent(void* self, intptr_t slot);
-void QObjectCleanupHandler_virtualbase_ChildEvent(void* self, QChildEvent* event);
-bool QObjectCleanupHandler_override_virtual_CustomEvent(void* self, intptr_t slot);
-void QObjectCleanupHandler_virtualbase_CustomEvent(void* self, QEvent* event);
-bool QObjectCleanupHandler_override_virtual_ConnectNotify(void* self, intptr_t slot);
-void QObjectCleanupHandler_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-bool QObjectCleanupHandler_override_virtual_DisconnectNotify(void* self, intptr_t slot);
-void QObjectCleanupHandler_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QObjectCleanupHandler_Delete(QObjectCleanupHandler* self);
+QMetaObject* QObjectCleanupHandler_metaObject(const QObjectCleanupHandler* self);
+void* QObjectCleanupHandler_metacast(QObjectCleanupHandler* self, const char* param1);
+struct miqt_string QObjectCleanupHandler_tr(const char* s);
+QObject* QObjectCleanupHandler_add(QObjectCleanupHandler* self, QObject* object);
+void QObjectCleanupHandler_remove(QObjectCleanupHandler* self, QObject* object);
+bool QObjectCleanupHandler_isEmpty(const QObjectCleanupHandler* self);
+void QObjectCleanupHandler_clear(QObjectCleanupHandler* self);
+struct miqt_string QObjectCleanupHandler_tr2(const char* s, const char* c);
+struct miqt_string QObjectCleanupHandler_tr3(const char* s, const char* c, int n);
+bool QObjectCleanupHandler_override_virtual_event(void* self, intptr_t slot);
+bool QObjectCleanupHandler_virtualbase_event(void* self, QEvent* event);
+bool QObjectCleanupHandler_override_virtual_eventFilter(void* self, intptr_t slot);
+bool QObjectCleanupHandler_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
+bool QObjectCleanupHandler_override_virtual_timerEvent(void* self, intptr_t slot);
+void QObjectCleanupHandler_virtualbase_timerEvent(void* self, QTimerEvent* event);
+bool QObjectCleanupHandler_override_virtual_childEvent(void* self, intptr_t slot);
+void QObjectCleanupHandler_virtualbase_childEvent(void* self, QChildEvent* event);
+bool QObjectCleanupHandler_override_virtual_customEvent(void* self, intptr_t slot);
+void QObjectCleanupHandler_virtualbase_customEvent(void* self, QEvent* event);
+bool QObjectCleanupHandler_override_virtual_connectNotify(void* self, intptr_t slot);
+void QObjectCleanupHandler_virtualbase_connectNotify(void* self, QMetaMethod* signal);
+bool QObjectCleanupHandler_override_virtual_disconnectNotify(void* self, intptr_t slot);
+void QObjectCleanupHandler_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QObjectCleanupHandler_delete(QObjectCleanupHandler* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

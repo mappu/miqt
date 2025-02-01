@@ -58,12 +58,12 @@ func NewQsciDocument2(param1 *QsciDocument) *QsciDocument {
 }
 
 func (this *QsciDocument) OperatorAssign(param1 *QsciDocument) {
-	C.QsciDocument_OperatorAssign(this.h, param1.cPointer())
+	C.QsciDocument_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QsciDocument) Delete() {
-	C.QsciDocument_Delete(this.h)
+	C.QsciDocument_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -19,15 +19,15 @@ void QCameraImageProcessing_virtbase(QCameraImageProcessing* src, QObject** outp
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QCameraImageProcessing_MetaObject(const QCameraImageProcessing* self) {
+QMetaObject* QCameraImageProcessing_metaObject(const QCameraImageProcessing* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QCameraImageProcessing_Metacast(QCameraImageProcessing* self, const char* param1) {
+void* QCameraImageProcessing_metacast(QCameraImageProcessing* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QCameraImageProcessing_Tr(const char* s) {
+struct miqt_string QCameraImageProcessing_tr(const char* s) {
 	QString _ret = QCameraImageProcessing::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -38,7 +38,7 @@ struct miqt_string QCameraImageProcessing_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QCameraImageProcessing_TrUtf8(const char* s) {
+struct miqt_string QCameraImageProcessing_trUtf8(const char* s) {
 	QString _ret = QCameraImageProcessing::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -49,91 +49,91 @@ struct miqt_string QCameraImageProcessing_TrUtf8(const char* s) {
 	return _ms;
 }
 
-bool QCameraImageProcessing_IsAvailable(const QCameraImageProcessing* self) {
+bool QCameraImageProcessing_isAvailable(const QCameraImageProcessing* self) {
 	return self->isAvailable();
 }
 
-int QCameraImageProcessing_WhiteBalanceMode(const QCameraImageProcessing* self) {
+int QCameraImageProcessing_whiteBalanceMode(const QCameraImageProcessing* self) {
 	QCameraImageProcessing::WhiteBalanceMode _ret = self->whiteBalanceMode();
 	return static_cast<int>(_ret);
 }
 
-void QCameraImageProcessing_SetWhiteBalanceMode(QCameraImageProcessing* self, int mode) {
+void QCameraImageProcessing_setWhiteBalanceMode(QCameraImageProcessing* self, int mode) {
 	self->setWhiteBalanceMode(static_cast<QCameraImageProcessing::WhiteBalanceMode>(mode));
 }
 
-bool QCameraImageProcessing_IsWhiteBalanceModeSupported(const QCameraImageProcessing* self, int mode) {
+bool QCameraImageProcessing_isWhiteBalanceModeSupported(const QCameraImageProcessing* self, int mode) {
 	return self->isWhiteBalanceModeSupported(static_cast<QCameraImageProcessing::WhiteBalanceMode>(mode));
 }
 
-double QCameraImageProcessing_ManualWhiteBalance(const QCameraImageProcessing* self) {
+double QCameraImageProcessing_manualWhiteBalance(const QCameraImageProcessing* self) {
 	qreal _ret = self->manualWhiteBalance();
 	return static_cast<double>(_ret);
 }
 
-void QCameraImageProcessing_SetManualWhiteBalance(QCameraImageProcessing* self, double colorTemperature) {
+void QCameraImageProcessing_setManualWhiteBalance(QCameraImageProcessing* self, double colorTemperature) {
 	self->setManualWhiteBalance(static_cast<qreal>(colorTemperature));
 }
 
-double QCameraImageProcessing_Brightness(const QCameraImageProcessing* self) {
+double QCameraImageProcessing_brightness(const QCameraImageProcessing* self) {
 	qreal _ret = self->brightness();
 	return static_cast<double>(_ret);
 }
 
-void QCameraImageProcessing_SetBrightness(QCameraImageProcessing* self, double value) {
+void QCameraImageProcessing_setBrightness(QCameraImageProcessing* self, double value) {
 	self->setBrightness(static_cast<qreal>(value));
 }
 
-double QCameraImageProcessing_Contrast(const QCameraImageProcessing* self) {
+double QCameraImageProcessing_contrast(const QCameraImageProcessing* self) {
 	qreal _ret = self->contrast();
 	return static_cast<double>(_ret);
 }
 
-void QCameraImageProcessing_SetContrast(QCameraImageProcessing* self, double value) {
+void QCameraImageProcessing_setContrast(QCameraImageProcessing* self, double value) {
 	self->setContrast(static_cast<qreal>(value));
 }
 
-double QCameraImageProcessing_Saturation(const QCameraImageProcessing* self) {
+double QCameraImageProcessing_saturation(const QCameraImageProcessing* self) {
 	qreal _ret = self->saturation();
 	return static_cast<double>(_ret);
 }
 
-void QCameraImageProcessing_SetSaturation(QCameraImageProcessing* self, double value) {
+void QCameraImageProcessing_setSaturation(QCameraImageProcessing* self, double value) {
 	self->setSaturation(static_cast<qreal>(value));
 }
 
-double QCameraImageProcessing_SharpeningLevel(const QCameraImageProcessing* self) {
+double QCameraImageProcessing_sharpeningLevel(const QCameraImageProcessing* self) {
 	qreal _ret = self->sharpeningLevel();
 	return static_cast<double>(_ret);
 }
 
-void QCameraImageProcessing_SetSharpeningLevel(QCameraImageProcessing* self, double value) {
+void QCameraImageProcessing_setSharpeningLevel(QCameraImageProcessing* self, double value) {
 	self->setSharpeningLevel(static_cast<qreal>(value));
 }
 
-double QCameraImageProcessing_DenoisingLevel(const QCameraImageProcessing* self) {
+double QCameraImageProcessing_denoisingLevel(const QCameraImageProcessing* self) {
 	qreal _ret = self->denoisingLevel();
 	return static_cast<double>(_ret);
 }
 
-void QCameraImageProcessing_SetDenoisingLevel(QCameraImageProcessing* self, double value) {
+void QCameraImageProcessing_setDenoisingLevel(QCameraImageProcessing* self, double value) {
 	self->setDenoisingLevel(static_cast<qreal>(value));
 }
 
-int QCameraImageProcessing_ColorFilter(const QCameraImageProcessing* self) {
+int QCameraImageProcessing_colorFilter(const QCameraImageProcessing* self) {
 	QCameraImageProcessing::ColorFilter _ret = self->colorFilter();
 	return static_cast<int>(_ret);
 }
 
-void QCameraImageProcessing_SetColorFilter(QCameraImageProcessing* self, int filter) {
+void QCameraImageProcessing_setColorFilter(QCameraImageProcessing* self, int filter) {
 	self->setColorFilter(static_cast<QCameraImageProcessing::ColorFilter>(filter));
 }
 
-bool QCameraImageProcessing_IsColorFilterSupported(const QCameraImageProcessing* self, int filter) {
+bool QCameraImageProcessing_isColorFilterSupported(const QCameraImageProcessing* self, int filter) {
 	return self->isColorFilterSupported(static_cast<QCameraImageProcessing::ColorFilter>(filter));
 }
 
-struct miqt_string QCameraImageProcessing_Tr2(const char* s, const char* c) {
+struct miqt_string QCameraImageProcessing_tr2(const char* s, const char* c) {
 	QString _ret = QCameraImageProcessing::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -144,7 +144,7 @@ struct miqt_string QCameraImageProcessing_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QCameraImageProcessing_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QCameraImageProcessing_tr3(const char* s, const char* c, int n) {
 	QString _ret = QCameraImageProcessing::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -155,7 +155,7 @@ struct miqt_string QCameraImageProcessing_Tr3(const char* s, const char* c, int 
 	return _ms;
 }
 
-struct miqt_string QCameraImageProcessing_TrUtf82(const char* s, const char* c) {
+struct miqt_string QCameraImageProcessing_trUtf82(const char* s, const char* c) {
 	QString _ret = QCameraImageProcessing::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -166,7 +166,7 @@ struct miqt_string QCameraImageProcessing_TrUtf82(const char* s, const char* c) 
 	return _ms;
 }
 
-struct miqt_string QCameraImageProcessing_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QCameraImageProcessing_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QCameraImageProcessing::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();

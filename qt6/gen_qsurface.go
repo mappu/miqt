@@ -65,32 +65,32 @@ func UnsafeNewQSurface(h unsafe.Pointer) *QSurface {
 }
 
 func (this *QSurface) SurfaceClass() QSurface__SurfaceClass {
-	return (QSurface__SurfaceClass)(C.QSurface_SurfaceClass(this.h))
+	return (QSurface__SurfaceClass)(C.QSurface_surfaceClass(this.h))
 }
 
 func (this *QSurface) Format() *QSurfaceFormat {
-	_goptr := newQSurfaceFormat(C.QSurface_Format(this.h))
+	_goptr := newQSurfaceFormat(C.QSurface_format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSurface) SurfaceType() QSurface__SurfaceType {
-	return (QSurface__SurfaceType)(C.QSurface_SurfaceType(this.h))
+	return (QSurface__SurfaceType)(C.QSurface_surfaceType(this.h))
 }
 
 func (this *QSurface) SupportsOpenGL() bool {
-	return (bool)(C.QSurface_SupportsOpenGL(this.h))
+	return (bool)(C.QSurface_supportsOpenGL(this.h))
 }
 
 func (this *QSurface) Size() *QSize {
-	_goptr := newQSize(C.QSurface_Size(this.h))
+	_goptr := newQSize(C.QSurface_size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QSurface) Delete() {
-	C.QSurface_Delete(this.h)
+	C.QSurface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -70,145 +70,145 @@ func NewQMatrix4(other *QMatrix) *QMatrix {
 }
 
 func (this *QMatrix) OperatorAssign(param1 *QMatrix) {
-	C.QMatrix_OperatorAssign(this.h, param1.cPointer())
+	C.QMatrix_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QMatrix) SetMatrix(m11 float64, m12 float64, m21 float64, m22 float64, dx float64, dy float64) {
-	C.QMatrix_SetMatrix(this.h, (C.double)(m11), (C.double)(m12), (C.double)(m21), (C.double)(m22), (C.double)(dx), (C.double)(dy))
+	C.QMatrix_setMatrix(this.h, (C.double)(m11), (C.double)(m12), (C.double)(m21), (C.double)(m22), (C.double)(dx), (C.double)(dy))
 }
 
 func (this *QMatrix) M11() float64 {
-	return (float64)(C.QMatrix_M11(this.h))
+	return (float64)(C.QMatrix_m11(this.h))
 }
 
 func (this *QMatrix) M12() float64 {
-	return (float64)(C.QMatrix_M12(this.h))
+	return (float64)(C.QMatrix_m12(this.h))
 }
 
 func (this *QMatrix) M21() float64 {
-	return (float64)(C.QMatrix_M21(this.h))
+	return (float64)(C.QMatrix_m21(this.h))
 }
 
 func (this *QMatrix) M22() float64 {
-	return (float64)(C.QMatrix_M22(this.h))
+	return (float64)(C.QMatrix_m22(this.h))
 }
 
 func (this *QMatrix) Dx() float64 {
-	return (float64)(C.QMatrix_Dx(this.h))
+	return (float64)(C.QMatrix_dx(this.h))
 }
 
 func (this *QMatrix) Dy() float64 {
-	return (float64)(C.QMatrix_Dy(this.h))
+	return (float64)(C.QMatrix_dy(this.h))
 }
 
 func (this *QMatrix) Map(x int, y int, tx *int, ty *int) {
-	C.QMatrix_Map(this.h, (C.int)(x), (C.int)(y), (*C.int)(unsafe.Pointer(tx)), (*C.int)(unsafe.Pointer(ty)))
+	C.QMatrix_map(this.h, (C.int)(x), (C.int)(y), (*C.int)(unsafe.Pointer(tx)), (*C.int)(unsafe.Pointer(ty)))
 }
 
 func (this *QMatrix) Map2(x float64, y float64, tx *float64, ty *float64) {
-	C.QMatrix_Map2(this.h, (C.double)(x), (C.double)(y), (*C.double)(unsafe.Pointer(tx)), (*C.double)(unsafe.Pointer(ty)))
+	C.QMatrix_map2(this.h, (C.double)(x), (C.double)(y), (*C.double)(unsafe.Pointer(tx)), (*C.double)(unsafe.Pointer(ty)))
 }
 
 func (this *QMatrix) MapRect(param1 *QRect) *QRect {
-	_goptr := newQRect(C.QMatrix_MapRect(this.h, param1.cPointer()))
+	_goptr := newQRect(C.QMatrix_mapRect(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix) MapRectWithQRectF(param1 *QRectF) *QRectF {
-	_goptr := newQRectF(C.QMatrix_MapRectWithQRectF(this.h, param1.cPointer()))
+	_goptr := newQRectF(C.QMatrix_mapRectWithQRectF(this.h, param1.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix) MapWithQPoint(p *QPoint) *QPoint {
-	_goptr := newQPoint(C.QMatrix_MapWithQPoint(this.h, p.cPointer()))
+	_goptr := newQPoint(C.QMatrix_mapWithQPoint(this.h, p.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix) MapWithQPointF(p *QPointF) *QPointF {
-	_goptr := newQPointF(C.QMatrix_MapWithQPointF(this.h, p.cPointer()))
+	_goptr := newQPointF(C.QMatrix_mapWithQPointF(this.h, p.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix) MapWithQLine(l *QLine) *QLine {
-	_goptr := newQLine(C.QMatrix_MapWithQLine(this.h, l.cPointer()))
+	_goptr := newQLine(C.QMatrix_mapWithQLine(this.h, l.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix) MapWithQLineF(l *QLineF) *QLineF {
-	_goptr := newQLineF(C.QMatrix_MapWithQLineF(this.h, l.cPointer()))
+	_goptr := newQLineF(C.QMatrix_mapWithQLineF(this.h, l.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix) MapWithQRegion(r *QRegion) *QRegion {
-	_goptr := newQRegion(C.QMatrix_MapWithQRegion(this.h, r.cPointer()))
+	_goptr := newQRegion(C.QMatrix_mapWithQRegion(this.h, r.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix) MapWithQPainterPath(p *QPainterPath) *QPainterPath {
-	_goptr := newQPainterPath(C.QMatrix_MapWithQPainterPath(this.h, p.cPointer()))
+	_goptr := newQPainterPath(C.QMatrix_mapWithQPainterPath(this.h, p.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix) Reset() {
-	C.QMatrix_Reset(this.h)
+	C.QMatrix_reset(this.h)
 }
 
 func (this *QMatrix) IsIdentity() bool {
-	return (bool)(C.QMatrix_IsIdentity(this.h))
+	return (bool)(C.QMatrix_isIdentity(this.h))
 }
 
 func (this *QMatrix) Translate(dx float64, dy float64) *QMatrix {
-	return newQMatrix(C.QMatrix_Translate(this.h, (C.double)(dx), (C.double)(dy)))
+	return newQMatrix(C.QMatrix_translate(this.h, (C.double)(dx), (C.double)(dy)))
 }
 
 func (this *QMatrix) Scale(sx float64, sy float64) *QMatrix {
-	return newQMatrix(C.QMatrix_Scale(this.h, (C.double)(sx), (C.double)(sy)))
+	return newQMatrix(C.QMatrix_scale(this.h, (C.double)(sx), (C.double)(sy)))
 }
 
 func (this *QMatrix) Shear(sh float64, sv float64) *QMatrix {
-	return newQMatrix(C.QMatrix_Shear(this.h, (C.double)(sh), (C.double)(sv)))
+	return newQMatrix(C.QMatrix_shear(this.h, (C.double)(sh), (C.double)(sv)))
 }
 
 func (this *QMatrix) Rotate(a float64) *QMatrix {
-	return newQMatrix(C.QMatrix_Rotate(this.h, (C.double)(a)))
+	return newQMatrix(C.QMatrix_rotate(this.h, (C.double)(a)))
 }
 
 func (this *QMatrix) IsInvertible() bool {
-	return (bool)(C.QMatrix_IsInvertible(this.h))
+	return (bool)(C.QMatrix_isInvertible(this.h))
 }
 
 func (this *QMatrix) Determinant() float64 {
-	return (float64)(C.QMatrix_Determinant(this.h))
+	return (float64)(C.QMatrix_determinant(this.h))
 }
 
 func (this *QMatrix) Inverted() *QMatrix {
-	_goptr := newQMatrix(C.QMatrix_Inverted(this.h))
+	_goptr := newQMatrix(C.QMatrix_inverted(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix) OperatorEqual(param1 *QMatrix) bool {
-	return (bool)(C.QMatrix_OperatorEqual(this.h, param1.cPointer()))
+	return (bool)(C.QMatrix_operatorEqual(this.h, param1.cPointer()))
 }
 
 func (this *QMatrix) OperatorNotEqual(param1 *QMatrix) bool {
-	return (bool)(C.QMatrix_OperatorNotEqual(this.h, param1.cPointer()))
+	return (bool)(C.QMatrix_operatorNotEqual(this.h, param1.cPointer()))
 }
 
 func (this *QMatrix) OperatorMultiplyAssign(param1 *QMatrix) *QMatrix {
-	return newQMatrix(C.QMatrix_OperatorMultiplyAssign(this.h, param1.cPointer()))
+	return newQMatrix(C.QMatrix_operatorMultiplyAssign(this.h, param1.cPointer()))
 }
 
 func (this *QMatrix) OperatorMultiply(o *QMatrix) *QMatrix {
-	_goptr := newQMatrix(C.QMatrix_OperatorMultiply(this.h, o.cPointer()))
+	_goptr := newQMatrix(C.QMatrix_operatorMultiply(this.h, o.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -220,14 +220,14 @@ func (this *QMatrix) ToQVariant() *QVariant {
 }
 
 func (this *QMatrix) Inverted1(invertible *bool) *QMatrix {
-	_goptr := newQMatrix(C.QMatrix_Inverted1(this.h, (*C.bool)(unsafe.Pointer(invertible))))
+	_goptr := newQMatrix(C.QMatrix_inverted1(this.h, (*C.bool)(unsafe.Pointer(invertible))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QMatrix) Delete() {
-	C.QMatrix_Delete(this.h)
+	C.QMatrix_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

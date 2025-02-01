@@ -52,19 +52,19 @@ func UnsafeNewQAudioOutputSelectorControl(h unsafe.Pointer) *QAudioOutputSelecto
 }
 
 func (this *QAudioOutputSelectorControl) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioOutputSelectorControl_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioOutputSelectorControl_metaObject(this.h)))
 }
 
 func (this *QAudioOutputSelectorControl) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAudioOutputSelectorControl_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAudioOutputSelectorControl_metacast(this.h, param1_Cstring))
 }
 
 func QAudioOutputSelectorControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -73,14 +73,14 @@ func QAudioOutputSelectorControl_Tr(s string) string {
 func QAudioOutputSelectorControl_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAudioOutputSelectorControl) AvailableOutputs() []string {
-	var _ma C.struct_miqt_array = C.QAudioOutputSelectorControl_AvailableOutputs(this.h)
+	var _ma C.struct_miqt_array = C.QAudioOutputSelectorControl_availableOutputs(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -97,21 +97,21 @@ func (this *QAudioOutputSelectorControl) OutputDescription(name string) string {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_OutputDescription(this.h, name_ms)
+	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_outputDescription(this.h, name_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAudioOutputSelectorControl) DefaultOutput() string {
-	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_DefaultOutput(this.h)
+	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_defaultOutput(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAudioOutputSelectorControl) ActiveOutput() string {
-	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_ActiveOutput(this.h)
+	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_activeOutput(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -122,7 +122,7 @@ func (this *QAudioOutputSelectorControl) SetActiveOutput(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QAudioOutputSelectorControl_SetActiveOutput(this.h, name_ms)
+	C.QAudioOutputSelectorControl_setActiveOutput(this.h, name_ms)
 }
 
 func (this *QAudioOutputSelectorControl) ActiveOutputChanged(name string) {
@@ -130,14 +130,14 @@ func (this *QAudioOutputSelectorControl) ActiveOutputChanged(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QAudioOutputSelectorControl_ActiveOutputChanged(this.h, name_ms)
+	C.QAudioOutputSelectorControl_activeOutputChanged(this.h, name_ms)
 }
 func (this *QAudioOutputSelectorControl) OnActiveOutputChanged(slot func(name string)) {
-	C.QAudioOutputSelectorControl_connect_ActiveOutputChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAudioOutputSelectorControl_connect_activeOutputChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAudioOutputSelectorControl_ActiveOutputChanged
-func miqt_exec_callback_QAudioOutputSelectorControl_ActiveOutputChanged(cb C.intptr_t, name C.struct_miqt_string) {
+//export miqt_exec_callback_QAudioOutputSelectorControl_activeOutputChanged
+func miqt_exec_callback_QAudioOutputSelectorControl_activeOutputChanged(cb C.intptr_t, name C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(name string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -153,14 +153,14 @@ func miqt_exec_callback_QAudioOutputSelectorControl_ActiveOutputChanged(cb C.int
 }
 
 func (this *QAudioOutputSelectorControl) AvailableOutputsChanged() {
-	C.QAudioOutputSelectorControl_AvailableOutputsChanged(this.h)
+	C.QAudioOutputSelectorControl_availableOutputsChanged(this.h)
 }
 func (this *QAudioOutputSelectorControl) OnAvailableOutputsChanged(slot func()) {
-	C.QAudioOutputSelectorControl_connect_AvailableOutputsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAudioOutputSelectorControl_connect_availableOutputsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAudioOutputSelectorControl_AvailableOutputsChanged
-func miqt_exec_callback_QAudioOutputSelectorControl_AvailableOutputsChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QAudioOutputSelectorControl_availableOutputsChanged
+func miqt_exec_callback_QAudioOutputSelectorControl_availableOutputsChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -174,7 +174,7 @@ func QAudioOutputSelectorControl_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -185,7 +185,7 @@ func QAudioOutputSelectorControl_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -196,7 +196,7 @@ func QAudioOutputSelectorControl_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -207,7 +207,7 @@ func QAudioOutputSelectorControl_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAudioOutputSelectorControl_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -215,7 +215,7 @@ func QAudioOutputSelectorControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAudioOutputSelectorControl) Delete() {
-	C.QAudioOutputSelectorControl_Delete(this.h)
+	C.QAudioOutputSelectorControl_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

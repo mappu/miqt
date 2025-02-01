@@ -59,7 +59,7 @@ func NewQSharedData2(param1 *QSharedData) *QSharedData {
 
 // Delete this object from C++ memory.
 func (this *QSharedData) Delete() {
-	C.QSharedData_Delete(this.h)
+	C.QSharedData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -111,7 +111,7 @@ func NewQAdoptSharedDataTag() *QAdoptSharedDataTag {
 
 // Delete this object from C++ memory.
 func (this *QAdoptSharedDataTag) Delete() {
-	C.QAdoptSharedDataTag_Delete(this.h)
+	C.QAdoptSharedDataTag_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

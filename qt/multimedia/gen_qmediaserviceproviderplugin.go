@@ -123,34 +123,34 @@ func NewQMediaServiceProviderHint6(other *QMediaServiceProviderHint) *QMediaServ
 }
 
 func (this *QMediaServiceProviderHint) OperatorAssign(other *QMediaServiceProviderHint) {
-	C.QMediaServiceProviderHint_OperatorAssign(this.h, other.cPointer())
+	C.QMediaServiceProviderHint_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QMediaServiceProviderHint) OperatorEqual(other *QMediaServiceProviderHint) bool {
-	return (bool)(C.QMediaServiceProviderHint_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QMediaServiceProviderHint_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QMediaServiceProviderHint) OperatorNotEqual(other *QMediaServiceProviderHint) bool {
-	return (bool)(C.QMediaServiceProviderHint_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QMediaServiceProviderHint_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QMediaServiceProviderHint) IsNull() bool {
-	return (bool)(C.QMediaServiceProviderHint_IsNull(this.h))
+	return (bool)(C.QMediaServiceProviderHint_isNull(this.h))
 }
 
 func (this *QMediaServiceProviderHint) Type() QMediaServiceProviderHint__Type {
-	return (QMediaServiceProviderHint__Type)(C.QMediaServiceProviderHint_Type(this.h))
+	return (QMediaServiceProviderHint__Type)(C.QMediaServiceProviderHint_type(this.h))
 }
 
 func (this *QMediaServiceProviderHint) MimeType() string {
-	var _ms C.struct_miqt_string = C.QMediaServiceProviderHint_MimeType(this.h)
+	var _ms C.struct_miqt_string = C.QMediaServiceProviderHint_mimeType(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMediaServiceProviderHint) Codecs() []string {
-	var _ma C.struct_miqt_array = C.QMediaServiceProviderHint_Codecs(this.h)
+	var _ma C.struct_miqt_array = C.QMediaServiceProviderHint_codecs(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -163,23 +163,23 @@ func (this *QMediaServiceProviderHint) Codecs() []string {
 }
 
 func (this *QMediaServiceProviderHint) Device() []byte {
-	var _bytearray C.struct_miqt_string = C.QMediaServiceProviderHint_Device(this.h)
+	var _bytearray C.struct_miqt_string = C.QMediaServiceProviderHint_device(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QMediaServiceProviderHint) CameraPosition() QCamera__Position {
-	return (QCamera__Position)(C.QMediaServiceProviderHint_CameraPosition(this.h))
+	return (QCamera__Position)(C.QMediaServiceProviderHint_cameraPosition(this.h))
 }
 
 func (this *QMediaServiceProviderHint) Features() QMediaServiceProviderHint__Feature {
-	return (QMediaServiceProviderHint__Feature)(C.QMediaServiceProviderHint_Features(this.h))
+	return (QMediaServiceProviderHint__Feature)(C.QMediaServiceProviderHint_features(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceProviderHint) Delete() {
-	C.QMediaServiceProviderHint_Delete(this.h)
+	C.QMediaServiceProviderHint_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -228,20 +228,20 @@ func (this *QMediaServiceProviderFactoryInterface) Create(key string) *QMediaSer
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return newQMediaService(C.QMediaServiceProviderFactoryInterface_Create(this.h, key_ms))
+	return newQMediaService(C.QMediaServiceProviderFactoryInterface_create(this.h, key_ms))
 }
 
 func (this *QMediaServiceProviderFactoryInterface) Release(service *QMediaService) {
-	C.QMediaServiceProviderFactoryInterface_Release(this.h, service.cPointer())
+	C.QMediaServiceProviderFactoryInterface_release(this.h, service.cPointer())
 }
 
 func (this *QMediaServiceProviderFactoryInterface) OperatorAssign(param1 *QMediaServiceProviderFactoryInterface) {
-	C.QMediaServiceProviderFactoryInterface_OperatorAssign(this.h, param1.cPointer())
+	C.QMediaServiceProviderFactoryInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceProviderFactoryInterface) Delete() {
-	C.QMediaServiceProviderFactoryInterface_Delete(this.h)
+	C.QMediaServiceProviderFactoryInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -300,11 +300,11 @@ func (this *QMediaServiceSupportedFormatsInterface) HasSupport(mimeType string, 
 		codecs_CArray[i] = codecs_i_ms
 	}
 	codecs_ma := C.struct_miqt_array{len: C.size_t(len(codecs)), data: unsafe.Pointer(codecs_CArray)}
-	return (QMultimedia__SupportEstimate)(C.QMediaServiceSupportedFormatsInterface_HasSupport(this.h, mimeType_ms, codecs_ma))
+	return (QMultimedia__SupportEstimate)(C.QMediaServiceSupportedFormatsInterface_hasSupport(this.h, mimeType_ms, codecs_ma))
 }
 
 func (this *QMediaServiceSupportedFormatsInterface) SupportedMimeTypes() []string {
-	var _ma C.struct_miqt_array = C.QMediaServiceSupportedFormatsInterface_SupportedMimeTypes(this.h)
+	var _ma C.struct_miqt_array = C.QMediaServiceSupportedFormatsInterface_supportedMimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -317,12 +317,12 @@ func (this *QMediaServiceSupportedFormatsInterface) SupportedMimeTypes() []strin
 }
 
 func (this *QMediaServiceSupportedFormatsInterface) OperatorAssign(param1 *QMediaServiceSupportedFormatsInterface) {
-	C.QMediaServiceSupportedFormatsInterface_OperatorAssign(this.h, param1.cPointer())
+	C.QMediaServiceSupportedFormatsInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceSupportedFormatsInterface) Delete() {
-	C.QMediaServiceSupportedFormatsInterface_Delete(this.h)
+	C.QMediaServiceSupportedFormatsInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -374,7 +374,7 @@ func (this *QMediaServiceSupportedDevicesInterface) Devices(service []byte) [][]
 		service_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	service_alias.len = C.size_t(len(service))
-	var _ma C.struct_miqt_array = C.QMediaServiceSupportedDevicesInterface_Devices(this.h, service_alias)
+	var _ma C.struct_miqt_array = C.QMediaServiceSupportedDevicesInterface_devices(this.h, service_alias)
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -401,19 +401,19 @@ func (this *QMediaServiceSupportedDevicesInterface) DeviceDescription(service []
 		device_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	device_alias.len = C.size_t(len(device))
-	var _ms C.struct_miqt_string = C.QMediaServiceSupportedDevicesInterface_DeviceDescription(this.h, service_alias, device_alias)
+	var _ms C.struct_miqt_string = C.QMediaServiceSupportedDevicesInterface_deviceDescription(this.h, service_alias, device_alias)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMediaServiceSupportedDevicesInterface) OperatorAssign(param1 *QMediaServiceSupportedDevicesInterface) {
-	C.QMediaServiceSupportedDevicesInterface_OperatorAssign(this.h, param1.cPointer())
+	C.QMediaServiceSupportedDevicesInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceSupportedDevicesInterface) Delete() {
-	C.QMediaServiceSupportedDevicesInterface_Delete(this.h)
+	C.QMediaServiceSupportedDevicesInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -465,19 +465,19 @@ func (this *QMediaServiceDefaultDeviceInterface) DefaultDevice(service []byte) [
 		service_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	service_alias.len = C.size_t(len(service))
-	var _bytearray C.struct_miqt_string = C.QMediaServiceDefaultDeviceInterface_DefaultDevice(this.h, service_alias)
+	var _bytearray C.struct_miqt_string = C.QMediaServiceDefaultDeviceInterface_defaultDevice(this.h, service_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QMediaServiceDefaultDeviceInterface) OperatorAssign(param1 *QMediaServiceDefaultDeviceInterface) {
-	C.QMediaServiceDefaultDeviceInterface_OperatorAssign(this.h, param1.cPointer())
+	C.QMediaServiceDefaultDeviceInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceDefaultDeviceInterface) Delete() {
-	C.QMediaServiceDefaultDeviceInterface_Delete(this.h)
+	C.QMediaServiceDefaultDeviceInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -529,7 +529,7 @@ func (this *QMediaServiceCameraInfoInterface) CameraPosition(device []byte) QCam
 		device_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	device_alias.len = C.size_t(len(device))
-	return (QCamera__Position)(C.QMediaServiceCameraInfoInterface_CameraPosition(this.h, device_alias))
+	return (QCamera__Position)(C.QMediaServiceCameraInfoInterface_cameraPosition(this.h, device_alias))
 }
 
 func (this *QMediaServiceCameraInfoInterface) CameraOrientation(device []byte) int {
@@ -540,16 +540,16 @@ func (this *QMediaServiceCameraInfoInterface) CameraOrientation(device []byte) i
 		device_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	device_alias.len = C.size_t(len(device))
-	return (int)(C.QMediaServiceCameraInfoInterface_CameraOrientation(this.h, device_alias))
+	return (int)(C.QMediaServiceCameraInfoInterface_cameraOrientation(this.h, device_alias))
 }
 
 func (this *QMediaServiceCameraInfoInterface) OperatorAssign(param1 *QMediaServiceCameraInfoInterface) {
-	C.QMediaServiceCameraInfoInterface_OperatorAssign(this.h, param1.cPointer())
+	C.QMediaServiceCameraInfoInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceCameraInfoInterface) Delete() {
-	C.QMediaServiceCameraInfoInterface_Delete(this.h)
+	C.QMediaServiceCameraInfoInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -601,16 +601,16 @@ func (this *QMediaServiceFeaturesInterface) SupportedFeatures(service []byte) QM
 		service_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	service_alias.len = C.size_t(len(service))
-	return (QMediaServiceProviderHint__Feature)(C.QMediaServiceFeaturesInterface_SupportedFeatures(this.h, service_alias))
+	return (QMediaServiceProviderHint__Feature)(C.QMediaServiceFeaturesInterface_supportedFeatures(this.h, service_alias))
 }
 
 func (this *QMediaServiceFeaturesInterface) OperatorAssign(param1 *QMediaServiceFeaturesInterface) {
-	C.QMediaServiceFeaturesInterface_OperatorAssign(this.h, param1.cPointer())
+	C.QMediaServiceFeaturesInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceFeaturesInterface) Delete() {
-	C.QMediaServiceFeaturesInterface_Delete(this.h)
+	C.QMediaServiceFeaturesInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -662,19 +662,19 @@ func UnsafeNewQMediaServiceProviderPlugin(h unsafe.Pointer) *QMediaServiceProvid
 }
 
 func (this *QMediaServiceProviderPlugin) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaServiceProviderPlugin_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaServiceProviderPlugin_metaObject(this.h)))
 }
 
 func (this *QMediaServiceProviderPlugin) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QMediaServiceProviderPlugin_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QMediaServiceProviderPlugin_metacast(this.h, param1_Cstring))
 }
 
 func QMediaServiceProviderPlugin_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaServiceProviderPlugin_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaServiceProviderPlugin_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -683,7 +683,7 @@ func QMediaServiceProviderPlugin_Tr(s string) string {
 func QMediaServiceProviderPlugin_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaServiceProviderPlugin_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaServiceProviderPlugin_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -694,11 +694,11 @@ func (this *QMediaServiceProviderPlugin) Create(key string) *QMediaService {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return newQMediaService(C.QMediaServiceProviderPlugin_Create(this.h, key_ms))
+	return newQMediaService(C.QMediaServiceProviderPlugin_create(this.h, key_ms))
 }
 
 func (this *QMediaServiceProviderPlugin) Release(service *QMediaService) {
-	C.QMediaServiceProviderPlugin_Release(this.h, service.cPointer())
+	C.QMediaServiceProviderPlugin_release(this.h, service.cPointer())
 }
 
 func QMediaServiceProviderPlugin_Tr2(s string, c string) string {
@@ -706,7 +706,7 @@ func QMediaServiceProviderPlugin_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaServiceProviderPlugin_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaServiceProviderPlugin_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -717,7 +717,7 @@ func QMediaServiceProviderPlugin_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaServiceProviderPlugin_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaServiceProviderPlugin_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -728,7 +728,7 @@ func QMediaServiceProviderPlugin_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaServiceProviderPlugin_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaServiceProviderPlugin_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -739,7 +739,7 @@ func QMediaServiceProviderPlugin_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaServiceProviderPlugin_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaServiceProviderPlugin_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -747,7 +747,7 @@ func QMediaServiceProviderPlugin_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaServiceProviderPlugin) Delete() {
-	C.QMediaServiceProviderPlugin_Delete(this.h)
+	C.QMediaServiceProviderPlugin_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

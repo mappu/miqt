@@ -63,19 +63,19 @@ func NewQTimer2(parent *QObject) *QTimer {
 }
 
 func (this *QTimer) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QTimer_MetaObject(this.h))
+	return newQMetaObject(C.QTimer_metaObject(this.h))
 }
 
 func (this *QTimer) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QTimer_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QTimer_metacast(this.h, param1_Cstring))
 }
 
 func QTimer_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QTimer_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QTimer_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -84,58 +84,58 @@ func QTimer_Tr(s string) string {
 func QTimer_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QTimer_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QTimer_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTimer) IsActive() bool {
-	return (bool)(C.QTimer_IsActive(this.h))
+	return (bool)(C.QTimer_isActive(this.h))
 }
 
 func (this *QTimer) TimerId() int {
-	return (int)(C.QTimer_TimerId(this.h))
+	return (int)(C.QTimer_timerId(this.h))
 }
 
 func (this *QTimer) SetInterval(msec int) {
-	C.QTimer_SetInterval(this.h, (C.int)(msec))
+	C.QTimer_setInterval(this.h, (C.int)(msec))
 }
 
 func (this *QTimer) Interval() int {
-	return (int)(C.QTimer_Interval(this.h))
+	return (int)(C.QTimer_interval(this.h))
 }
 
 func (this *QTimer) RemainingTime() int {
-	return (int)(C.QTimer_RemainingTime(this.h))
+	return (int)(C.QTimer_remainingTime(this.h))
 }
 
 func (this *QTimer) SetTimerType(atype TimerType) {
-	C.QTimer_SetTimerType(this.h, (C.int)(atype))
+	C.QTimer_setTimerType(this.h, (C.int)(atype))
 }
 
 func (this *QTimer) TimerType() TimerType {
-	return (TimerType)(C.QTimer_TimerType(this.h))
+	return (TimerType)(C.QTimer_timerType(this.h))
 }
 
 func (this *QTimer) SetSingleShot(singleShot bool) {
-	C.QTimer_SetSingleShot(this.h, (C.bool)(singleShot))
+	C.QTimer_setSingleShot(this.h, (C.bool)(singleShot))
 }
 
 func (this *QTimer) IsSingleShot() bool {
-	return (bool)(C.QTimer_IsSingleShot(this.h))
+	return (bool)(C.QTimer_isSingleShot(this.h))
 }
 
 func (this *QTimer) Start(msec int) {
-	C.QTimer_Start(this.h, (C.int)(msec))
+	C.QTimer_start(this.h, (C.int)(msec))
 }
 
 func (this *QTimer) Start2() {
-	C.QTimer_Start2(this.h)
+	C.QTimer_start2(this.h)
 }
 
 func (this *QTimer) Stop() {
-	C.QTimer_Stop(this.h)
+	C.QTimer_stop(this.h)
 }
 
 func QTimer_Tr2(s string, c string) string {
@@ -143,7 +143,7 @@ func QTimer_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTimer_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QTimer_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -154,7 +154,7 @@ func QTimer_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTimer_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QTimer_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -165,7 +165,7 @@ func QTimer_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTimer_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QTimer_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -176,7 +176,7 @@ func QTimer_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTimer_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QTimer_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -184,18 +184,18 @@ func QTimer_TrUtf83(s string, c string, n int) string {
 
 func (this *QTimer) callVirtualBase_TimerEvent(param1 *QTimerEvent) {
 
-	C.QTimer_virtualbase_TimerEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QTimer_virtualbase_timerEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QTimer) OnTimerEvent(slot func(super func(param1 *QTimerEvent), param1 *QTimerEvent)) {
-	ok := C.QTimer_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTimer) OntimerEvent(slot func(super func(param1 *QTimerEvent), param1 *QTimerEvent)) {
+	ok := C.QTimer_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTimer_TimerEvent
-func miqt_exec_callback_QTimer_TimerEvent(self *C.QTimer, cb C.intptr_t, param1 *C.QTimerEvent) {
+//export miqt_exec_callback_QTimer_timerEvent
+func miqt_exec_callback_QTimer_timerEvent(self *C.QTimer, cb C.intptr_t, param1 *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QTimerEvent), param1 *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -210,18 +210,18 @@ func miqt_exec_callback_QTimer_TimerEvent(self *C.QTimer, cb C.intptr_t, param1 
 
 func (this *QTimer) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QTimer_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QTimer_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QTimer) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QTimer_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTimer) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QTimer_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTimer_Event
-func miqt_exec_callback_QTimer_Event(self *C.QTimer, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QTimer_event
+func miqt_exec_callback_QTimer_event(self *C.QTimer, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -238,18 +238,18 @@ func miqt_exec_callback_QTimer_Event(self *C.QTimer, cb C.intptr_t, event *C.QEv
 
 func (this *QTimer) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QTimer_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QTimer_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QTimer) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QTimer_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTimer) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QTimer_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTimer_EventFilter
-func miqt_exec_callback_QTimer_EventFilter(self *C.QTimer, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QTimer_eventFilter
+func miqt_exec_callback_QTimer_eventFilter(self *C.QTimer, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -268,18 +268,18 @@ func miqt_exec_callback_QTimer_EventFilter(self *C.QTimer, cb C.intptr_t, watche
 
 func (this *QTimer) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QTimer_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTimer_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTimer) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QTimer_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTimer) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QTimer_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTimer_ChildEvent
-func miqt_exec_callback_QTimer_ChildEvent(self *C.QTimer, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QTimer_childEvent
+func miqt_exec_callback_QTimer_childEvent(self *C.QTimer, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -294,18 +294,18 @@ func miqt_exec_callback_QTimer_ChildEvent(self *C.QTimer, cb C.intptr_t, event *
 
 func (this *QTimer) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QTimer_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTimer_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTimer) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QTimer_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTimer) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QTimer_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTimer_CustomEvent
-func miqt_exec_callback_QTimer_CustomEvent(self *C.QTimer, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QTimer_customEvent
+func miqt_exec_callback_QTimer_customEvent(self *C.QTimer, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -320,18 +320,18 @@ func miqt_exec_callback_QTimer_CustomEvent(self *C.QTimer, cb C.intptr_t, event 
 
 func (this *QTimer) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QTimer_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QTimer_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTimer) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QTimer_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTimer) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTimer_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTimer_ConnectNotify
-func miqt_exec_callback_QTimer_ConnectNotify(self *C.QTimer, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QTimer_connectNotify
+func miqt_exec_callback_QTimer_connectNotify(self *C.QTimer, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -346,18 +346,18 @@ func miqt_exec_callback_QTimer_ConnectNotify(self *C.QTimer, cb C.intptr_t, sign
 
 func (this *QTimer) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QTimer_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QTimer_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTimer) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QTimer_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTimer) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTimer_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTimer_DisconnectNotify
-func miqt_exec_callback_QTimer_DisconnectNotify(self *C.QTimer, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QTimer_disconnectNotify
+func miqt_exec_callback_QTimer_disconnectNotify(self *C.QTimer, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -372,7 +372,7 @@ func miqt_exec_callback_QTimer_DisconnectNotify(self *C.QTimer, cb C.intptr_t, s
 
 // Delete this object from C++ memory.
 func (this *QTimer) Delete() {
-	C.QTimer_Delete(this.h)
+	C.QTimer_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

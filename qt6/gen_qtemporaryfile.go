@@ -83,45 +83,45 @@ func NewQTemporaryFile4(templateName string, parent *QObject) *QTemporaryFile {
 }
 
 func (this *QTemporaryFile) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QTemporaryFile_MetaObject(this.h))
+	return newQMetaObject(C.QTemporaryFile_metaObject(this.h))
 }
 
 func (this *QTemporaryFile) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QTemporaryFile_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QTemporaryFile_metacast(this.h, param1_Cstring))
 }
 
 func QTemporaryFile_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QTemporaryFile_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QTemporaryFile_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTemporaryFile) AutoRemove() bool {
-	return (bool)(C.QTemporaryFile_AutoRemove(this.h))
+	return (bool)(C.QTemporaryFile_autoRemove(this.h))
 }
 
 func (this *QTemporaryFile) SetAutoRemove(b bool) {
-	C.QTemporaryFile_SetAutoRemove(this.h, (C.bool)(b))
+	C.QTemporaryFile_setAutoRemove(this.h, (C.bool)(b))
 }
 
 func (this *QTemporaryFile) Open() bool {
-	return (bool)(C.QTemporaryFile_Open(this.h))
+	return (bool)(C.QTemporaryFile_open(this.h))
 }
 
 func (this *QTemporaryFile) FileName() string {
-	var _ms C.struct_miqt_string = C.QTemporaryFile_FileName(this.h)
+	var _ms C.struct_miqt_string = C.QTemporaryFile_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTemporaryFile) FileTemplate() string {
-	var _ms C.struct_miqt_string = C.QTemporaryFile_FileTemplate(this.h)
+	var _ms C.struct_miqt_string = C.QTemporaryFile_fileTemplate(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -132,7 +132,7 @@ func (this *QTemporaryFile) SetFileTemplate(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QTemporaryFile_SetFileTemplate(this.h, name_ms)
+	C.QTemporaryFile_setFileTemplate(this.h, name_ms)
 }
 
 func (this *QTemporaryFile) Rename(newName string) bool {
@@ -140,7 +140,7 @@ func (this *QTemporaryFile) Rename(newName string) bool {
 	newName_ms.data = C.CString(newName)
 	newName_ms.len = C.size_t(len(newName))
 	defer C.free(unsafe.Pointer(newName_ms.data))
-	return (bool)(C.QTemporaryFile_Rename(this.h, newName_ms))
+	return (bool)(C.QTemporaryFile_rename(this.h, newName_ms))
 }
 
 func QTemporaryFile_CreateNativeFile(fileName string) *QTemporaryFile {
@@ -148,11 +148,11 @@ func QTemporaryFile_CreateNativeFile(fileName string) *QTemporaryFile {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	return newQTemporaryFile(C.QTemporaryFile_CreateNativeFile(fileName_ms))
+	return newQTemporaryFile(C.QTemporaryFile_createNativeFile(fileName_ms))
 }
 
 func QTemporaryFile_CreateNativeFileWithFile(file *QFile) *QTemporaryFile {
-	return newQTemporaryFile(C.QTemporaryFile_CreateNativeFileWithFile(file.cPointer()))
+	return newQTemporaryFile(C.QTemporaryFile_createNativeFileWithFile(file.cPointer()))
 }
 
 func QTemporaryFile_Tr2(s string, c string) string {
@@ -160,7 +160,7 @@ func QTemporaryFile_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTemporaryFile_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QTemporaryFile_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -171,7 +171,7 @@ func QTemporaryFile_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTemporaryFile_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QTemporaryFile_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -179,20 +179,20 @@ func QTemporaryFile_Tr3(s string, c string, n int) string {
 
 func (this *QTemporaryFile) callVirtualBase_FileName() string {
 
-	var _ms C.struct_miqt_string = C.QTemporaryFile_virtualbase_FileName(unsafe.Pointer(this.h))
+	var _ms C.struct_miqt_string = C.QTemporaryFile_virtualbase_fileName(unsafe.Pointer(this.h))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QTemporaryFile) OnFileName(slot func(super func() string) string) {
-	ok := C.QTemporaryFile_override_virtual_FileName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OnfileName(slot func(super func() string) string) {
+	ok := C.QTemporaryFile_override_virtual_fileName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_FileName
-func miqt_exec_callback_QTemporaryFile_FileName(self *C.QTemporaryFile, cb C.intptr_t) C.struct_miqt_string {
+//export miqt_exec_callback_QTemporaryFile_fileName
+func miqt_exec_callback_QTemporaryFile_fileName(self *C.QTemporaryFile, cb C.intptr_t) C.struct_miqt_string {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() string) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -210,18 +210,18 @@ func miqt_exec_callback_QTemporaryFile_FileName(self *C.QTemporaryFile, cb C.int
 
 func (this *QTemporaryFile) callVirtualBase_OpenWithFlags(flags QIODeviceBase__OpenModeFlag) bool {
 
-	return (bool)(C.QTemporaryFile_virtualbase_OpenWithFlags(unsafe.Pointer(this.h), (C.int)(flags)))
+	return (bool)(C.QTemporaryFile_virtualbase_openWithFlags(unsafe.Pointer(this.h), (C.int)(flags)))
 
 }
-func (this *QTemporaryFile) OnOpenWithFlags(slot func(super func(flags QIODeviceBase__OpenModeFlag) bool, flags QIODeviceBase__OpenModeFlag) bool) {
-	ok := C.QTemporaryFile_override_virtual_OpenWithFlags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OnopenWithFlags(slot func(super func(flags QIODeviceBase__OpenModeFlag) bool, flags QIODeviceBase__OpenModeFlag) bool) {
+	ok := C.QTemporaryFile_override_virtual_openWithFlags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_OpenWithFlags
-func miqt_exec_callback_QTemporaryFile_OpenWithFlags(self *C.QTemporaryFile, cb C.intptr_t, flags C.int) C.bool {
+//export miqt_exec_callback_QTemporaryFile_openWithFlags
+func miqt_exec_callback_QTemporaryFile_openWithFlags(self *C.QTemporaryFile, cb C.intptr_t, flags C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(flags QIODeviceBase__OpenModeFlag) bool, flags QIODeviceBase__OpenModeFlag) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -238,18 +238,18 @@ func miqt_exec_callback_QTemporaryFile_OpenWithFlags(self *C.QTemporaryFile, cb 
 
 func (this *QTemporaryFile) callVirtualBase_Size() int64 {
 
-	return (int64)(C.QTemporaryFile_virtualbase_Size(unsafe.Pointer(this.h)))
+	return (int64)(C.QTemporaryFile_virtualbase_size(unsafe.Pointer(this.h)))
 
 }
-func (this *QTemporaryFile) OnSize(slot func(super func() int64) int64) {
-	ok := C.QTemporaryFile_override_virtual_Size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) Onsize(slot func(super func() int64) int64) {
+	ok := C.QTemporaryFile_override_virtual_size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_Size
-func miqt_exec_callback_QTemporaryFile_Size(self *C.QTemporaryFile, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QTemporaryFile_size
+func miqt_exec_callback_QTemporaryFile_size(self *C.QTemporaryFile, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -263,18 +263,18 @@ func miqt_exec_callback_QTemporaryFile_Size(self *C.QTemporaryFile, cb C.intptr_
 
 func (this *QTemporaryFile) callVirtualBase_Resize(sz int64) bool {
 
-	return (bool)(C.QTemporaryFile_virtualbase_Resize(unsafe.Pointer(this.h), (C.longlong)(sz)))
+	return (bool)(C.QTemporaryFile_virtualbase_resize(unsafe.Pointer(this.h), (C.longlong)(sz)))
 
 }
-func (this *QTemporaryFile) OnResize(slot func(super func(sz int64) bool, sz int64) bool) {
-	ok := C.QTemporaryFile_override_virtual_Resize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) Onresize(slot func(super func(sz int64) bool, sz int64) bool) {
+	ok := C.QTemporaryFile_override_virtual_resize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_Resize
-func miqt_exec_callback_QTemporaryFile_Resize(self *C.QTemporaryFile, cb C.intptr_t, sz C.longlong) C.bool {
+//export miqt_exec_callback_QTemporaryFile_resize
+func miqt_exec_callback_QTemporaryFile_resize(self *C.QTemporaryFile, cb C.intptr_t, sz C.longlong) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sz int64) bool, sz int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -291,18 +291,18 @@ func miqt_exec_callback_QTemporaryFile_Resize(self *C.QTemporaryFile, cb C.intpt
 
 func (this *QTemporaryFile) callVirtualBase_Permissions() QFileDevice__Permission {
 
-	return (QFileDevice__Permission)(C.QTemporaryFile_virtualbase_Permissions(unsafe.Pointer(this.h)))
+	return (QFileDevice__Permission)(C.QTemporaryFile_virtualbase_permissions(unsafe.Pointer(this.h)))
 
 }
-func (this *QTemporaryFile) OnPermissions(slot func(super func() QFileDevice__Permission) QFileDevice__Permission) {
-	ok := C.QTemporaryFile_override_virtual_Permissions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) Onpermissions(slot func(super func() QFileDevice__Permission) QFileDevice__Permission) {
+	ok := C.QTemporaryFile_override_virtual_permissions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_Permissions
-func miqt_exec_callback_QTemporaryFile_Permissions(self *C.QTemporaryFile, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QTemporaryFile_permissions
+func miqt_exec_callback_QTemporaryFile_permissions(self *C.QTemporaryFile, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QFileDevice__Permission) QFileDevice__Permission)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -316,18 +316,18 @@ func miqt_exec_callback_QTemporaryFile_Permissions(self *C.QTemporaryFile, cb C.
 
 func (this *QTemporaryFile) callVirtualBase_SetPermissions(permissionSpec QFileDevice__Permission) bool {
 
-	return (bool)(C.QTemporaryFile_virtualbase_SetPermissions(unsafe.Pointer(this.h), (C.int)(permissionSpec)))
+	return (bool)(C.QTemporaryFile_virtualbase_setPermissions(unsafe.Pointer(this.h), (C.int)(permissionSpec)))
 
 }
-func (this *QTemporaryFile) OnSetPermissions(slot func(super func(permissionSpec QFileDevice__Permission) bool, permissionSpec QFileDevice__Permission) bool) {
-	ok := C.QTemporaryFile_override_virtual_SetPermissions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OnsetPermissions(slot func(super func(permissionSpec QFileDevice__Permission) bool, permissionSpec QFileDevice__Permission) bool) {
+	ok := C.QTemporaryFile_override_virtual_setPermissions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_SetPermissions
-func miqt_exec_callback_QTemporaryFile_SetPermissions(self *C.QTemporaryFile, cb C.intptr_t, permissionSpec C.int) C.bool {
+//export miqt_exec_callback_QTemporaryFile_setPermissions
+func miqt_exec_callback_QTemporaryFile_setPermissions(self *C.QTemporaryFile, cb C.intptr_t, permissionSpec C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(permissionSpec QFileDevice__Permission) bool, permissionSpec QFileDevice__Permission) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -344,18 +344,18 @@ func miqt_exec_callback_QTemporaryFile_SetPermissions(self *C.QTemporaryFile, cb
 
 func (this *QTemporaryFile) callVirtualBase_Close() {
 
-	C.QTemporaryFile_virtualbase_Close(unsafe.Pointer(this.h))
+	C.QTemporaryFile_virtualbase_close(unsafe.Pointer(this.h))
 
 }
-func (this *QTemporaryFile) OnClose(slot func(super func())) {
-	ok := C.QTemporaryFile_override_virtual_Close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) Onclose(slot func(super func())) {
+	ok := C.QTemporaryFile_override_virtual_close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_Close
-func miqt_exec_callback_QTemporaryFile_Close(self *C.QTemporaryFile, cb C.intptr_t) {
+//export miqt_exec_callback_QTemporaryFile_close
+func miqt_exec_callback_QTemporaryFile_close(self *C.QTemporaryFile, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -367,18 +367,18 @@ func miqt_exec_callback_QTemporaryFile_Close(self *C.QTemporaryFile, cb C.intptr
 
 func (this *QTemporaryFile) callVirtualBase_IsSequential() bool {
 
-	return (bool)(C.QTemporaryFile_virtualbase_IsSequential(unsafe.Pointer(this.h)))
+	return (bool)(C.QTemporaryFile_virtualbase_isSequential(unsafe.Pointer(this.h)))
 
 }
-func (this *QTemporaryFile) OnIsSequential(slot func(super func() bool) bool) {
-	ok := C.QTemporaryFile_override_virtual_IsSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OnisSequential(slot func(super func() bool) bool) {
+	ok := C.QTemporaryFile_override_virtual_isSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_IsSequential
-func miqt_exec_callback_QTemporaryFile_IsSequential(self *C.QTemporaryFile, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QTemporaryFile_isSequential
+func miqt_exec_callback_QTemporaryFile_isSequential(self *C.QTemporaryFile, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -392,18 +392,18 @@ func miqt_exec_callback_QTemporaryFile_IsSequential(self *C.QTemporaryFile, cb C
 
 func (this *QTemporaryFile) callVirtualBase_Pos() int64 {
 
-	return (int64)(C.QTemporaryFile_virtualbase_Pos(unsafe.Pointer(this.h)))
+	return (int64)(C.QTemporaryFile_virtualbase_pos(unsafe.Pointer(this.h)))
 
 }
-func (this *QTemporaryFile) OnPos(slot func(super func() int64) int64) {
-	ok := C.QTemporaryFile_override_virtual_Pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) Onpos(slot func(super func() int64) int64) {
+	ok := C.QTemporaryFile_override_virtual_pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_Pos
-func miqt_exec_callback_QTemporaryFile_Pos(self *C.QTemporaryFile, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QTemporaryFile_pos
+func miqt_exec_callback_QTemporaryFile_pos(self *C.QTemporaryFile, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -417,18 +417,18 @@ func miqt_exec_callback_QTemporaryFile_Pos(self *C.QTemporaryFile, cb C.intptr_t
 
 func (this *QTemporaryFile) callVirtualBase_Seek(offset int64) bool {
 
-	return (bool)(C.QTemporaryFile_virtualbase_Seek(unsafe.Pointer(this.h), (C.longlong)(offset)))
+	return (bool)(C.QTemporaryFile_virtualbase_seek(unsafe.Pointer(this.h), (C.longlong)(offset)))
 
 }
-func (this *QTemporaryFile) OnSeek(slot func(super func(offset int64) bool, offset int64) bool) {
-	ok := C.QTemporaryFile_override_virtual_Seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) Onseek(slot func(super func(offset int64) bool, offset int64) bool) {
+	ok := C.QTemporaryFile_override_virtual_seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_Seek
-func miqt_exec_callback_QTemporaryFile_Seek(self *C.QTemporaryFile, cb C.intptr_t, offset C.longlong) C.bool {
+//export miqt_exec_callback_QTemporaryFile_seek
+func miqt_exec_callback_QTemporaryFile_seek(self *C.QTemporaryFile, cb C.intptr_t, offset C.longlong) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset int64) bool, offset int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -445,18 +445,18 @@ func miqt_exec_callback_QTemporaryFile_Seek(self *C.QTemporaryFile, cb C.intptr_
 
 func (this *QTemporaryFile) callVirtualBase_AtEnd() bool {
 
-	return (bool)(C.QTemporaryFile_virtualbase_AtEnd(unsafe.Pointer(this.h)))
+	return (bool)(C.QTemporaryFile_virtualbase_atEnd(unsafe.Pointer(this.h)))
 
 }
-func (this *QTemporaryFile) OnAtEnd(slot func(super func() bool) bool) {
-	ok := C.QTemporaryFile_override_virtual_AtEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OnatEnd(slot func(super func() bool) bool) {
+	ok := C.QTemporaryFile_override_virtual_atEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_AtEnd
-func miqt_exec_callback_QTemporaryFile_AtEnd(self *C.QTemporaryFile, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QTemporaryFile_atEnd
+func miqt_exec_callback_QTemporaryFile_atEnd(self *C.QTemporaryFile, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -472,18 +472,18 @@ func (this *QTemporaryFile) callVirtualBase_ReadData(data string, maxlen int64) 
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
-	return (int64)(C.QTemporaryFile_virtualbase_ReadData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
+	return (int64)(C.QTemporaryFile_virtualbase_readData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
 
 }
-func (this *QTemporaryFile) OnReadData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
-	ok := C.QTemporaryFile_override_virtual_ReadData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OnreadData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+	ok := C.QTemporaryFile_override_virtual_readData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_ReadData
-func miqt_exec_callback_QTemporaryFile_ReadData(self *C.QTemporaryFile, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
+//export miqt_exec_callback_QTemporaryFile_readData
+func miqt_exec_callback_QTemporaryFile_readData(self *C.QTemporaryFile, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -505,18 +505,18 @@ func (this *QTemporaryFile) callVirtualBase_WriteData(data string, lenVal int64)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
-	return (int64)(C.QTemporaryFile_virtualbase_WriteData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(lenVal)))
+	return (int64)(C.QTemporaryFile_virtualbase_writeData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(lenVal)))
 
 }
-func (this *QTemporaryFile) OnWriteData(slot func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64) {
-	ok := C.QTemporaryFile_override_virtual_WriteData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OnwriteData(slot func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64) {
+	ok := C.QTemporaryFile_override_virtual_writeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_WriteData
-func miqt_exec_callback_QTemporaryFile_WriteData(self *C.QTemporaryFile, cb C.intptr_t, data *C.const_char, lenVal C.longlong) C.longlong {
+//export miqt_exec_callback_QTemporaryFile_writeData
+func miqt_exec_callback_QTemporaryFile_writeData(self *C.QTemporaryFile, cb C.intptr_t, data *C.const_char, lenVal C.longlong) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -538,18 +538,18 @@ func (this *QTemporaryFile) callVirtualBase_ReadLineData(data string, maxlen int
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
-	return (int64)(C.QTemporaryFile_virtualbase_ReadLineData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
+	return (int64)(C.QTemporaryFile_virtualbase_readLineData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
 
 }
-func (this *QTemporaryFile) OnReadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
-	ok := C.QTemporaryFile_override_virtual_ReadLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OnreadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+	ok := C.QTemporaryFile_override_virtual_readLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_ReadLineData
-func miqt_exec_callback_QTemporaryFile_ReadLineData(self *C.QTemporaryFile, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
+//export miqt_exec_callback_QTemporaryFile_readLineData
+func miqt_exec_callback_QTemporaryFile_readLineData(self *C.QTemporaryFile, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -569,18 +569,18 @@ func miqt_exec_callback_QTemporaryFile_ReadLineData(self *C.QTemporaryFile, cb C
 
 func (this *QTemporaryFile) callVirtualBase_Reset() bool {
 
-	return (bool)(C.QTemporaryFile_virtualbase_Reset(unsafe.Pointer(this.h)))
+	return (bool)(C.QTemporaryFile_virtualbase_reset(unsafe.Pointer(this.h)))
 
 }
-func (this *QTemporaryFile) OnReset(slot func(super func() bool) bool) {
-	ok := C.QTemporaryFile_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) Onreset(slot func(super func() bool) bool) {
+	ok := C.QTemporaryFile_override_virtual_reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_Reset
-func miqt_exec_callback_QTemporaryFile_Reset(self *C.QTemporaryFile, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QTemporaryFile_reset
+func miqt_exec_callback_QTemporaryFile_reset(self *C.QTemporaryFile, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -594,18 +594,18 @@ func miqt_exec_callback_QTemporaryFile_Reset(self *C.QTemporaryFile, cb C.intptr
 
 func (this *QTemporaryFile) callVirtualBase_BytesAvailable() int64 {
 
-	return (int64)(C.QTemporaryFile_virtualbase_BytesAvailable(unsafe.Pointer(this.h)))
+	return (int64)(C.QTemporaryFile_virtualbase_bytesAvailable(unsafe.Pointer(this.h)))
 
 }
-func (this *QTemporaryFile) OnBytesAvailable(slot func(super func() int64) int64) {
-	ok := C.QTemporaryFile_override_virtual_BytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OnbytesAvailable(slot func(super func() int64) int64) {
+	ok := C.QTemporaryFile_override_virtual_bytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_BytesAvailable
-func miqt_exec_callback_QTemporaryFile_BytesAvailable(self *C.QTemporaryFile, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QTemporaryFile_bytesAvailable
+func miqt_exec_callback_QTemporaryFile_bytesAvailable(self *C.QTemporaryFile, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -619,18 +619,18 @@ func miqt_exec_callback_QTemporaryFile_BytesAvailable(self *C.QTemporaryFile, cb
 
 func (this *QTemporaryFile) callVirtualBase_BytesToWrite() int64 {
 
-	return (int64)(C.QTemporaryFile_virtualbase_BytesToWrite(unsafe.Pointer(this.h)))
+	return (int64)(C.QTemporaryFile_virtualbase_bytesToWrite(unsafe.Pointer(this.h)))
 
 }
-func (this *QTemporaryFile) OnBytesToWrite(slot func(super func() int64) int64) {
-	ok := C.QTemporaryFile_override_virtual_BytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OnbytesToWrite(slot func(super func() int64) int64) {
+	ok := C.QTemporaryFile_override_virtual_bytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_BytesToWrite
-func miqt_exec_callback_QTemporaryFile_BytesToWrite(self *C.QTemporaryFile, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QTemporaryFile_bytesToWrite
+func miqt_exec_callback_QTemporaryFile_bytesToWrite(self *C.QTemporaryFile, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -644,18 +644,18 @@ func miqt_exec_callback_QTemporaryFile_BytesToWrite(self *C.QTemporaryFile, cb C
 
 func (this *QTemporaryFile) callVirtualBase_CanReadLine() bool {
 
-	return (bool)(C.QTemporaryFile_virtualbase_CanReadLine(unsafe.Pointer(this.h)))
+	return (bool)(C.QTemporaryFile_virtualbase_canReadLine(unsafe.Pointer(this.h)))
 
 }
-func (this *QTemporaryFile) OnCanReadLine(slot func(super func() bool) bool) {
-	ok := C.QTemporaryFile_override_virtual_CanReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OncanReadLine(slot func(super func() bool) bool) {
+	ok := C.QTemporaryFile_override_virtual_canReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_CanReadLine
-func miqt_exec_callback_QTemporaryFile_CanReadLine(self *C.QTemporaryFile, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QTemporaryFile_canReadLine
+func miqt_exec_callback_QTemporaryFile_canReadLine(self *C.QTemporaryFile, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -669,18 +669,18 @@ func miqt_exec_callback_QTemporaryFile_CanReadLine(self *C.QTemporaryFile, cb C.
 
 func (this *QTemporaryFile) callVirtualBase_WaitForReadyRead(msecs int) bool {
 
-	return (bool)(C.QTemporaryFile_virtualbase_WaitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
+	return (bool)(C.QTemporaryFile_virtualbase_waitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
 
 }
-func (this *QTemporaryFile) OnWaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
-	ok := C.QTemporaryFile_override_virtual_WaitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OnwaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
+	ok := C.QTemporaryFile_override_virtual_waitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_WaitForReadyRead
-func miqt_exec_callback_QTemporaryFile_WaitForReadyRead(self *C.QTemporaryFile, cb C.intptr_t, msecs C.int) C.bool {
+//export miqt_exec_callback_QTemporaryFile_waitForReadyRead
+func miqt_exec_callback_QTemporaryFile_waitForReadyRead(self *C.QTemporaryFile, cb C.intptr_t, msecs C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msecs int) bool, msecs int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -697,18 +697,18 @@ func miqt_exec_callback_QTemporaryFile_WaitForReadyRead(self *C.QTemporaryFile, 
 
 func (this *QTemporaryFile) callVirtualBase_WaitForBytesWritten(msecs int) bool {
 
-	return (bool)(C.QTemporaryFile_virtualbase_WaitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
+	return (bool)(C.QTemporaryFile_virtualbase_waitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
 
 }
-func (this *QTemporaryFile) OnWaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
-	ok := C.QTemporaryFile_override_virtual_WaitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OnwaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
+	ok := C.QTemporaryFile_override_virtual_waitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_WaitForBytesWritten
-func miqt_exec_callback_QTemporaryFile_WaitForBytesWritten(self *C.QTemporaryFile, cb C.intptr_t, msecs C.int) C.bool {
+//export miqt_exec_callback_QTemporaryFile_waitForBytesWritten
+func miqt_exec_callback_QTemporaryFile_waitForBytesWritten(self *C.QTemporaryFile, cb C.intptr_t, msecs C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msecs int) bool, msecs int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -725,18 +725,18 @@ func miqt_exec_callback_QTemporaryFile_WaitForBytesWritten(self *C.QTemporaryFil
 
 func (this *QTemporaryFile) callVirtualBase_SkipData(maxSize int64) int64 {
 
-	return (int64)(C.QTemporaryFile_virtualbase_SkipData(unsafe.Pointer(this.h), (C.longlong)(maxSize)))
+	return (int64)(C.QTemporaryFile_virtualbase_skipData(unsafe.Pointer(this.h), (C.longlong)(maxSize)))
 
 }
-func (this *QTemporaryFile) OnSkipData(slot func(super func(maxSize int64) int64, maxSize int64) int64) {
-	ok := C.QTemporaryFile_override_virtual_SkipData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OnskipData(slot func(super func(maxSize int64) int64, maxSize int64) int64) {
+	ok := C.QTemporaryFile_override_virtual_skipData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_SkipData
-func miqt_exec_callback_QTemporaryFile_SkipData(self *C.QTemporaryFile, cb C.intptr_t, maxSize C.longlong) C.longlong {
+//export miqt_exec_callback_QTemporaryFile_skipData
+func miqt_exec_callback_QTemporaryFile_skipData(self *C.QTemporaryFile, cb C.intptr_t, maxSize C.longlong) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(maxSize int64) int64, maxSize int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -753,18 +753,18 @@ func miqt_exec_callback_QTemporaryFile_SkipData(self *C.QTemporaryFile, cb C.int
 
 func (this *QTemporaryFile) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QTemporaryFile_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QTemporaryFile_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QTemporaryFile) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QTemporaryFile_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QTemporaryFile_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_Event
-func miqt_exec_callback_QTemporaryFile_Event(self *C.QTemporaryFile, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QTemporaryFile_event
+func miqt_exec_callback_QTemporaryFile_event(self *C.QTemporaryFile, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -781,18 +781,18 @@ func miqt_exec_callback_QTemporaryFile_Event(self *C.QTemporaryFile, cb C.intptr
 
 func (this *QTemporaryFile) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QTemporaryFile_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QTemporaryFile_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QTemporaryFile) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QTemporaryFile_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QTemporaryFile_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_EventFilter
-func miqt_exec_callback_QTemporaryFile_EventFilter(self *C.QTemporaryFile, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QTemporaryFile_eventFilter
+func miqt_exec_callback_QTemporaryFile_eventFilter(self *C.QTemporaryFile, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -811,18 +811,18 @@ func miqt_exec_callback_QTemporaryFile_EventFilter(self *C.QTemporaryFile, cb C.
 
 func (this *QTemporaryFile) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QTemporaryFile_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTemporaryFile_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTemporaryFile) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QTemporaryFile_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QTemporaryFile_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_TimerEvent
-func miqt_exec_callback_QTemporaryFile_TimerEvent(self *C.QTemporaryFile, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QTemporaryFile_timerEvent
+func miqt_exec_callback_QTemporaryFile_timerEvent(self *C.QTemporaryFile, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -837,18 +837,18 @@ func miqt_exec_callback_QTemporaryFile_TimerEvent(self *C.QTemporaryFile, cb C.i
 
 func (this *QTemporaryFile) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QTemporaryFile_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTemporaryFile_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTemporaryFile) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QTemporaryFile_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QTemporaryFile_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_ChildEvent
-func miqt_exec_callback_QTemporaryFile_ChildEvent(self *C.QTemporaryFile, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QTemporaryFile_childEvent
+func miqt_exec_callback_QTemporaryFile_childEvent(self *C.QTemporaryFile, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -863,18 +863,18 @@ func miqt_exec_callback_QTemporaryFile_ChildEvent(self *C.QTemporaryFile, cb C.i
 
 func (this *QTemporaryFile) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QTemporaryFile_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTemporaryFile_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTemporaryFile) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QTemporaryFile_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QTemporaryFile_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_CustomEvent
-func miqt_exec_callback_QTemporaryFile_CustomEvent(self *C.QTemporaryFile, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QTemporaryFile_customEvent
+func miqt_exec_callback_QTemporaryFile_customEvent(self *C.QTemporaryFile, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -889,18 +889,18 @@ func miqt_exec_callback_QTemporaryFile_CustomEvent(self *C.QTemporaryFile, cb C.
 
 func (this *QTemporaryFile) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QTemporaryFile_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QTemporaryFile_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTemporaryFile) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QTemporaryFile_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTemporaryFile_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_ConnectNotify
-func miqt_exec_callback_QTemporaryFile_ConnectNotify(self *C.QTemporaryFile, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QTemporaryFile_connectNotify
+func miqt_exec_callback_QTemporaryFile_connectNotify(self *C.QTemporaryFile, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -915,18 +915,18 @@ func miqt_exec_callback_QTemporaryFile_ConnectNotify(self *C.QTemporaryFile, cb 
 
 func (this *QTemporaryFile) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QTemporaryFile_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QTemporaryFile_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTemporaryFile) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QTemporaryFile_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTemporaryFile) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTemporaryFile_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTemporaryFile_DisconnectNotify
-func miqt_exec_callback_QTemporaryFile_DisconnectNotify(self *C.QTemporaryFile, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QTemporaryFile_disconnectNotify
+func miqt_exec_callback_QTemporaryFile_disconnectNotify(self *C.QTemporaryFile, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -941,7 +941,7 @@ func miqt_exec_callback_QTemporaryFile_DisconnectNotify(self *C.QTemporaryFile, 
 
 // Delete this object from C++ memory.
 func (this *QTemporaryFile) Delete() {
-	C.QTemporaryFile_Delete(this.h)
+	C.QTemporaryFile_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

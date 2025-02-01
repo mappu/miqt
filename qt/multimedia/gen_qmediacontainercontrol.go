@@ -51,19 +51,19 @@ func UnsafeNewQMediaContainerControl(h unsafe.Pointer) *QMediaContainerControl {
 }
 
 func (this *QMediaContainerControl) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaContainerControl_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaContainerControl_metaObject(this.h)))
 }
 
 func (this *QMediaContainerControl) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QMediaContainerControl_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QMediaContainerControl_metacast(this.h, param1_Cstring))
 }
 
 func QMediaContainerControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaContainerControl_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaContainerControl_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -72,14 +72,14 @@ func QMediaContainerControl_Tr(s string) string {
 func QMediaContainerControl_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaContainerControl_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaContainerControl_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMediaContainerControl) SupportedContainers() []string {
-	var _ma C.struct_miqt_array = C.QMediaContainerControl_SupportedContainers(this.h)
+	var _ma C.struct_miqt_array = C.QMediaContainerControl_supportedContainers(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -92,7 +92,7 @@ func (this *QMediaContainerControl) SupportedContainers() []string {
 }
 
 func (this *QMediaContainerControl) ContainerFormat() string {
-	var _ms C.struct_miqt_string = C.QMediaContainerControl_ContainerFormat(this.h)
+	var _ms C.struct_miqt_string = C.QMediaContainerControl_containerFormat(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -103,7 +103,7 @@ func (this *QMediaContainerControl) SetContainerFormat(format string) {
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
 	defer C.free(unsafe.Pointer(format_ms.data))
-	C.QMediaContainerControl_SetContainerFormat(this.h, format_ms)
+	C.QMediaContainerControl_setContainerFormat(this.h, format_ms)
 }
 
 func (this *QMediaContainerControl) ContainerDescription(formatMimeType string) string {
@@ -111,7 +111,7 @@ func (this *QMediaContainerControl) ContainerDescription(formatMimeType string) 
 	formatMimeType_ms.data = C.CString(formatMimeType)
 	formatMimeType_ms.len = C.size_t(len(formatMimeType))
 	defer C.free(unsafe.Pointer(formatMimeType_ms.data))
-	var _ms C.struct_miqt_string = C.QMediaContainerControl_ContainerDescription(this.h, formatMimeType_ms)
+	var _ms C.struct_miqt_string = C.QMediaContainerControl_containerDescription(this.h, formatMimeType_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -122,7 +122,7 @@ func QMediaContainerControl_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaContainerControl_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaContainerControl_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -133,7 +133,7 @@ func QMediaContainerControl_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaContainerControl_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaContainerControl_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -144,7 +144,7 @@ func QMediaContainerControl_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaContainerControl_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaContainerControl_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -155,7 +155,7 @@ func QMediaContainerControl_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaContainerControl_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaContainerControl_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -163,7 +163,7 @@ func QMediaContainerControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaContainerControl) Delete() {
-	C.QMediaContainerControl_Delete(this.h)
+	C.QMediaContainerControl_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

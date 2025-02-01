@@ -56,97 +56,97 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QTableView_SetModel(QTableView*, intptr_t, QAbstractItemModel*);
-void miqt_exec_callback_QTableView_SetRootIndex(QTableView*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QTableView_SetSelectionModel(QTableView*, intptr_t, QItemSelectionModel*);
-void miqt_exec_callback_QTableView_DoItemsLayout(QTableView*, intptr_t);
-QRect* miqt_exec_callback_QTableView_VisualRect(const QTableView*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QTableView_ScrollTo(QTableView*, intptr_t, QModelIndex*, int);
-QModelIndex* miqt_exec_callback_QTableView_IndexAt(const QTableView*, intptr_t, QPoint*);
-void miqt_exec_callback_QTableView_ScrollContentsBy(QTableView*, intptr_t, int, int);
-void miqt_exec_callback_QTableView_InitViewItemOption(const QTableView*, intptr_t, QStyleOptionViewItem*);
-void miqt_exec_callback_QTableView_PaintEvent(QTableView*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_QTableView_TimerEvent(QTableView*, intptr_t, QTimerEvent*);
-int miqt_exec_callback_QTableView_HorizontalOffset(const QTableView*, intptr_t);
-int miqt_exec_callback_QTableView_VerticalOffset(const QTableView*, intptr_t);
-QModelIndex* miqt_exec_callback_QTableView_MoveCursor(QTableView*, intptr_t, int, int);
-void miqt_exec_callback_QTableView_SetSelection(QTableView*, intptr_t, QRect*, int);
-QRegion* miqt_exec_callback_QTableView_VisualRegionForSelection(const QTableView*, intptr_t, QItemSelection*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QTableView_SelectedIndexes(const QTableView*, intptr_t);
-void miqt_exec_callback_QTableView_UpdateGeometries(QTableView*, intptr_t);
-QSize* miqt_exec_callback_QTableView_ViewportSizeHint(const QTableView*, intptr_t);
-int miqt_exec_callback_QTableView_SizeHintForRow(const QTableView*, intptr_t, int);
-int miqt_exec_callback_QTableView_SizeHintForColumn(const QTableView*, intptr_t, int);
-void miqt_exec_callback_QTableView_VerticalScrollbarAction(QTableView*, intptr_t, int);
-void miqt_exec_callback_QTableView_HorizontalScrollbarAction(QTableView*, intptr_t, int);
-bool miqt_exec_callback_QTableView_IsIndexHidden(const QTableView*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QTableView_SelectionChanged(QTableView*, intptr_t, QItemSelection*, QItemSelection*);
-void miqt_exec_callback_QTableView_CurrentChanged(QTableView*, intptr_t, QModelIndex*, QModelIndex*);
-void miqt_exec_callback_QTableView_KeyboardSearch(QTableView*, intptr_t, struct miqt_string);
-QAbstractItemDelegate* miqt_exec_callback_QTableView_ItemDelegateForIndex(const QTableView*, intptr_t, QModelIndex*);
-QVariant* miqt_exec_callback_QTableView_InputMethodQuery(const QTableView*, intptr_t, int);
-void miqt_exec_callback_QTableView_Reset(QTableView*, intptr_t);
-void miqt_exec_callback_QTableView_SelectAll(QTableView*, intptr_t);
-void miqt_exec_callback_QTableView_DataChanged(QTableView*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
-void miqt_exec_callback_QTableView_RowsInserted(QTableView*, intptr_t, QModelIndex*, int, int);
-void miqt_exec_callback_QTableView_RowsAboutToBeRemoved(QTableView*, intptr_t, QModelIndex*, int, int);
-void miqt_exec_callback_QTableView_UpdateEditorData(QTableView*, intptr_t);
-void miqt_exec_callback_QTableView_UpdateEditorGeometries(QTableView*, intptr_t);
-void miqt_exec_callback_QTableView_VerticalScrollbarValueChanged(QTableView*, intptr_t, int);
-void miqt_exec_callback_QTableView_HorizontalScrollbarValueChanged(QTableView*, intptr_t, int);
-void miqt_exec_callback_QTableView_CloseEditor(QTableView*, intptr_t, QWidget*, int);
-void miqt_exec_callback_QTableView_CommitData(QTableView*, intptr_t, QWidget*);
-void miqt_exec_callback_QTableView_EditorDestroyed(QTableView*, intptr_t, QObject*);
-bool miqt_exec_callback_QTableView_Edit2(QTableView*, intptr_t, QModelIndex*, int, QEvent*);
-int miqt_exec_callback_QTableView_SelectionCommand(const QTableView*, intptr_t, QModelIndex*, QEvent*);
-void miqt_exec_callback_QTableView_StartDrag(QTableView*, intptr_t, int);
-bool miqt_exec_callback_QTableView_FocusNextPrevChild(QTableView*, intptr_t, bool);
-bool miqt_exec_callback_QTableView_Event(QTableView*, intptr_t, QEvent*);
-bool miqt_exec_callback_QTableView_ViewportEvent(QTableView*, intptr_t, QEvent*);
-void miqt_exec_callback_QTableView_MousePressEvent(QTableView*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QTableView_MouseMoveEvent(QTableView*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QTableView_MouseReleaseEvent(QTableView*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QTableView_MouseDoubleClickEvent(QTableView*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QTableView_DragEnterEvent(QTableView*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QTableView_DragMoveEvent(QTableView*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QTableView_DragLeaveEvent(QTableView*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QTableView_DropEvent(QTableView*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QTableView_FocusInEvent(QTableView*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QTableView_FocusOutEvent(QTableView*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QTableView_KeyPressEvent(QTableView*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QTableView_ResizeEvent(QTableView*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QTableView_InputMethodEvent(QTableView*, intptr_t, QInputMethodEvent*);
-bool miqt_exec_callback_QTableView_EventFilter(QTableView*, intptr_t, QObject*, QEvent*);
-QSize* miqt_exec_callback_QTableView_MinimumSizeHint(const QTableView*, intptr_t);
-QSize* miqt_exec_callback_QTableView_SizeHint(const QTableView*, intptr_t);
-void miqt_exec_callback_QTableView_SetupViewport(QTableView*, intptr_t, QWidget*);
-void miqt_exec_callback_QTableView_WheelEvent(QTableView*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QTableView_ContextMenuEvent(QTableView*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QTableView_ChangeEvent(QTableView*, intptr_t, QEvent*);
-void miqt_exec_callback_QTableView_InitStyleOption(const QTableView*, intptr_t, QStyleOptionFrame*);
-int miqt_exec_callback_QTableView_DevType(const QTableView*, intptr_t);
-void miqt_exec_callback_QTableView_SetVisible(QTableView*, intptr_t, bool);
-int miqt_exec_callback_QTableView_HeightForWidth(const QTableView*, intptr_t, int);
-bool miqt_exec_callback_QTableView_HasHeightForWidth(const QTableView*, intptr_t);
-QPaintEngine* miqt_exec_callback_QTableView_PaintEngine(const QTableView*, intptr_t);
-void miqt_exec_callback_QTableView_KeyReleaseEvent(QTableView*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QTableView_EnterEvent(QTableView*, intptr_t, QEnterEvent*);
-void miqt_exec_callback_QTableView_LeaveEvent(QTableView*, intptr_t, QEvent*);
-void miqt_exec_callback_QTableView_MoveEvent(QTableView*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QTableView_CloseEvent(QTableView*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QTableView_TabletEvent(QTableView*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QTableView_ActionEvent(QTableView*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QTableView_ShowEvent(QTableView*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QTableView_HideEvent(QTableView*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QTableView_NativeEvent(QTableView*, intptr_t, struct miqt_string, void*, intptr_t*);
-int miqt_exec_callback_QTableView_Metric(const QTableView*, intptr_t, int);
-void miqt_exec_callback_QTableView_InitPainter(const QTableView*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QTableView_Redirected(const QTableView*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QTableView_SharedPainter(const QTableView*, intptr_t);
-void miqt_exec_callback_QTableView_ChildEvent(QTableView*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QTableView_CustomEvent(QTableView*, intptr_t, QEvent*);
-void miqt_exec_callback_QTableView_ConnectNotify(QTableView*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QTableView_DisconnectNotify(QTableView*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTableView_setModel(QTableView*, intptr_t, QAbstractItemModel*);
+void miqt_exec_callback_QTableView_setRootIndex(QTableView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QTableView_setSelectionModel(QTableView*, intptr_t, QItemSelectionModel*);
+void miqt_exec_callback_QTableView_doItemsLayout(QTableView*, intptr_t);
+QRect* miqt_exec_callback_QTableView_visualRect(const QTableView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QTableView_scrollTo(QTableView*, intptr_t, QModelIndex*, int);
+QModelIndex* miqt_exec_callback_QTableView_indexAt(const QTableView*, intptr_t, QPoint*);
+void miqt_exec_callback_QTableView_scrollContentsBy(QTableView*, intptr_t, int, int);
+void miqt_exec_callback_QTableView_initViewItemOption(const QTableView*, intptr_t, QStyleOptionViewItem*);
+void miqt_exec_callback_QTableView_paintEvent(QTableView*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_QTableView_timerEvent(QTableView*, intptr_t, QTimerEvent*);
+int miqt_exec_callback_QTableView_horizontalOffset(const QTableView*, intptr_t);
+int miqt_exec_callback_QTableView_verticalOffset(const QTableView*, intptr_t);
+QModelIndex* miqt_exec_callback_QTableView_moveCursor(QTableView*, intptr_t, int, int);
+void miqt_exec_callback_QTableView_setSelection(QTableView*, intptr_t, QRect*, int);
+QRegion* miqt_exec_callback_QTableView_visualRegionForSelection(const QTableView*, intptr_t, QItemSelection*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QTableView_selectedIndexes(const QTableView*, intptr_t);
+void miqt_exec_callback_QTableView_updateGeometries(QTableView*, intptr_t);
+QSize* miqt_exec_callback_QTableView_viewportSizeHint(const QTableView*, intptr_t);
+int miqt_exec_callback_QTableView_sizeHintForRow(const QTableView*, intptr_t, int);
+int miqt_exec_callback_QTableView_sizeHintForColumn(const QTableView*, intptr_t, int);
+void miqt_exec_callback_QTableView_verticalScrollbarAction(QTableView*, intptr_t, int);
+void miqt_exec_callback_QTableView_horizontalScrollbarAction(QTableView*, intptr_t, int);
+bool miqt_exec_callback_QTableView_isIndexHidden(const QTableView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QTableView_selectionChanged(QTableView*, intptr_t, QItemSelection*, QItemSelection*);
+void miqt_exec_callback_QTableView_currentChanged(QTableView*, intptr_t, QModelIndex*, QModelIndex*);
+void miqt_exec_callback_QTableView_keyboardSearch(QTableView*, intptr_t, struct miqt_string);
+QAbstractItemDelegate* miqt_exec_callback_QTableView_itemDelegateForIndex(const QTableView*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QTableView_inputMethodQuery(const QTableView*, intptr_t, int);
+void miqt_exec_callback_QTableView_reset(QTableView*, intptr_t);
+void miqt_exec_callback_QTableView_selectAll(QTableView*, intptr_t);
+void miqt_exec_callback_QTableView_dataChanged(QTableView*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
+void miqt_exec_callback_QTableView_rowsInserted(QTableView*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QTableView_rowsAboutToBeRemoved(QTableView*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QTableView_updateEditorData(QTableView*, intptr_t);
+void miqt_exec_callback_QTableView_updateEditorGeometries(QTableView*, intptr_t);
+void miqt_exec_callback_QTableView_verticalScrollbarValueChanged(QTableView*, intptr_t, int);
+void miqt_exec_callback_QTableView_horizontalScrollbarValueChanged(QTableView*, intptr_t, int);
+void miqt_exec_callback_QTableView_closeEditor(QTableView*, intptr_t, QWidget*, int);
+void miqt_exec_callback_QTableView_commitData(QTableView*, intptr_t, QWidget*);
+void miqt_exec_callback_QTableView_editorDestroyed(QTableView*, intptr_t, QObject*);
+bool miqt_exec_callback_QTableView_edit2(QTableView*, intptr_t, QModelIndex*, int, QEvent*);
+int miqt_exec_callback_QTableView_selectionCommand(const QTableView*, intptr_t, QModelIndex*, QEvent*);
+void miqt_exec_callback_QTableView_startDrag(QTableView*, intptr_t, int);
+bool miqt_exec_callback_QTableView_focusNextPrevChild(QTableView*, intptr_t, bool);
+bool miqt_exec_callback_QTableView_event(QTableView*, intptr_t, QEvent*);
+bool miqt_exec_callback_QTableView_viewportEvent(QTableView*, intptr_t, QEvent*);
+void miqt_exec_callback_QTableView_mousePressEvent(QTableView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTableView_mouseMoveEvent(QTableView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTableView_mouseReleaseEvent(QTableView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTableView_mouseDoubleClickEvent(QTableView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QTableView_dragEnterEvent(QTableView*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QTableView_dragMoveEvent(QTableView*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QTableView_dragLeaveEvent(QTableView*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QTableView_dropEvent(QTableView*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QTableView_focusInEvent(QTableView*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QTableView_focusOutEvent(QTableView*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QTableView_keyPressEvent(QTableView*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTableView_resizeEvent(QTableView*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QTableView_inputMethodEvent(QTableView*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QTableView_eventFilter(QTableView*, intptr_t, QObject*, QEvent*);
+QSize* miqt_exec_callback_QTableView_minimumSizeHint(const QTableView*, intptr_t);
+QSize* miqt_exec_callback_QTableView_sizeHint(const QTableView*, intptr_t);
+void miqt_exec_callback_QTableView_setupViewport(QTableView*, intptr_t, QWidget*);
+void miqt_exec_callback_QTableView_wheelEvent(QTableView*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QTableView_contextMenuEvent(QTableView*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QTableView_changeEvent(QTableView*, intptr_t, QEvent*);
+void miqt_exec_callback_QTableView_initStyleOption(const QTableView*, intptr_t, QStyleOptionFrame*);
+int miqt_exec_callback_QTableView_devType(const QTableView*, intptr_t);
+void miqt_exec_callback_QTableView_setVisible(QTableView*, intptr_t, bool);
+int miqt_exec_callback_QTableView_heightForWidth(const QTableView*, intptr_t, int);
+bool miqt_exec_callback_QTableView_hasHeightForWidth(const QTableView*, intptr_t);
+QPaintEngine* miqt_exec_callback_QTableView_paintEngine(const QTableView*, intptr_t);
+void miqt_exec_callback_QTableView_keyReleaseEvent(QTableView*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QTableView_enterEvent(QTableView*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QTableView_leaveEvent(QTableView*, intptr_t, QEvent*);
+void miqt_exec_callback_QTableView_moveEvent(QTableView*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QTableView_closeEvent(QTableView*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QTableView_tabletEvent(QTableView*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QTableView_actionEvent(QTableView*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QTableView_showEvent(QTableView*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QTableView_hideEvent(QTableView*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QTableView_nativeEvent(QTableView*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QTableView_metric(const QTableView*, intptr_t, int);
+void miqt_exec_callback_QTableView_initPainter(const QTableView*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QTableView_redirected(const QTableView*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QTableView_sharedPainter(const QTableView*, intptr_t);
+void miqt_exec_callback_QTableView_childEvent(QTableView*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QTableView_customEvent(QTableView*, intptr_t, QEvent*);
+void miqt_exec_callback_QTableView_connectNotify(QTableView*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QTableView_disconnectNotify(QTableView*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -160,35 +160,35 @@ public:
 	virtual ~MiqtVirtualQTableView() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetModel = 0;
+	intptr_t handle__setModel = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setModel(QAbstractItemModel* model) override {
-		if (handle__SetModel == 0) {
+		if (handle__setModel == 0) {
 			QTableView::setModel(model);
 			return;
 		}
 		
 		QAbstractItemModel* sigval1 = model;
 
-		miqt_exec_callback_QTableView_SetModel(this, handle__SetModel, sigval1);
+		miqt_exec_callback_QTableView_setModel(this, handle__setModel, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetModel(QAbstractItemModel* model) {
+	void virtualbase_setModel(QAbstractItemModel* model) {
 
 		QTableView::setModel(model);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetRootIndex = 0;
+	intptr_t handle__setRootIndex = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setRootIndex(const QModelIndex& index) override {
-		if (handle__SetRootIndex == 0) {
+		if (handle__setRootIndex == 0) {
 			QTableView::setRootIndex(index);
 			return;
 		}
@@ -197,71 +197,71 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QTableView_SetRootIndex(this, handle__SetRootIndex, sigval1);
+		miqt_exec_callback_QTableView_setRootIndex(this, handle__setRootIndex, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetRootIndex(QModelIndex* index) {
+	void virtualbase_setRootIndex(QModelIndex* index) {
 
 		QTableView::setRootIndex(*index);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetSelectionModel = 0;
+	intptr_t handle__setSelectionModel = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setSelectionModel(QItemSelectionModel* selectionModel) override {
-		if (handle__SetSelectionModel == 0) {
+		if (handle__setSelectionModel == 0) {
 			QTableView::setSelectionModel(selectionModel);
 			return;
 		}
 		
 		QItemSelectionModel* sigval1 = selectionModel;
 
-		miqt_exec_callback_QTableView_SetSelectionModel(this, handle__SetSelectionModel, sigval1);
+		miqt_exec_callback_QTableView_setSelectionModel(this, handle__setSelectionModel, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetSelectionModel(QItemSelectionModel* selectionModel) {
+	void virtualbase_setSelectionModel(QItemSelectionModel* selectionModel) {
 
 		QTableView::setSelectionModel(selectionModel);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DoItemsLayout = 0;
+	intptr_t handle__doItemsLayout = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void doItemsLayout() override {
-		if (handle__DoItemsLayout == 0) {
+		if (handle__doItemsLayout == 0) {
 			QTableView::doItemsLayout();
 			return;
 		}
 		
 
-		miqt_exec_callback_QTableView_DoItemsLayout(this, handle__DoItemsLayout);
+		miqt_exec_callback_QTableView_doItemsLayout(this, handle__doItemsLayout);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DoItemsLayout() {
+	void virtualbase_doItemsLayout() {
 
 		QTableView::doItemsLayout();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__VisualRect = 0;
+	intptr_t handle__visualRect = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QRect visualRect(const QModelIndex& index) const override {
-		if (handle__VisualRect == 0) {
+		if (handle__visualRect == 0) {
 			return QTableView::visualRect(index);
 		}
 		
@@ -269,24 +269,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QRect* callback_return_value = miqt_exec_callback_QTableView_VisualRect(this, handle__VisualRect, sigval1);
+		QRect* callback_return_value = miqt_exec_callback_QTableView_visualRect(this, handle__visualRect, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QRect* virtualbase_VisualRect(QModelIndex* index) const {
+	QRect* virtualbase_visualRect(QModelIndex* index) const {
 
 		return new QRect(QTableView::visualRect(*index));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ScrollTo = 0;
+	intptr_t handle__scrollTo = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void scrollTo(const QModelIndex& index, QAbstractItemView::ScrollHint hint) override {
-		if (handle__ScrollTo == 0) {
+		if (handle__scrollTo == 0) {
 			QTableView::scrollTo(index, hint);
 			return;
 		}
@@ -297,24 +297,24 @@ public:
 		QAbstractItemView::ScrollHint hint_ret = hint;
 		int sigval2 = static_cast<int>(hint_ret);
 
-		miqt_exec_callback_QTableView_ScrollTo(this, handle__ScrollTo, sigval1, sigval2);
+		miqt_exec_callback_QTableView_scrollTo(this, handle__scrollTo, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ScrollTo(QModelIndex* index, int hint) {
+	void virtualbase_scrollTo(QModelIndex* index, int hint) {
 
 		QTableView::scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__IndexAt = 0;
+	intptr_t handle__indexAt = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndex indexAt(const QPoint& p) const override {
-		if (handle__IndexAt == 0) {
+		if (handle__indexAt == 0) {
 			return QTableView::indexAt(p);
 		}
 		
@@ -322,24 +322,24 @@ public:
 		// Cast returned reference into pointer
 		QPoint* sigval1 = const_cast<QPoint*>(&p_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QTableView_IndexAt(this, handle__IndexAt, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QTableView_indexAt(this, handle__indexAt, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_IndexAt(QPoint* p) const {
+	QModelIndex* virtualbase_indexAt(QPoint* p) const {
 
 		return new QModelIndex(QTableView::indexAt(*p));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ScrollContentsBy = 0;
+	intptr_t handle__scrollContentsBy = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void scrollContentsBy(int dx, int dy) override {
-		if (handle__ScrollContentsBy == 0) {
+		if (handle__scrollContentsBy == 0) {
 			QTableView::scrollContentsBy(dx, dy);
 			return;
 		}
@@ -347,140 +347,140 @@ public:
 		int sigval1 = dx;
 		int sigval2 = dy;
 
-		miqt_exec_callback_QTableView_ScrollContentsBy(this, handle__ScrollContentsBy, sigval1, sigval2);
+		miqt_exec_callback_QTableView_scrollContentsBy(this, handle__scrollContentsBy, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ScrollContentsBy(int dx, int dy) {
+	void virtualbase_scrollContentsBy(int dx, int dy) {
 
 		QTableView::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InitViewItemOption = 0;
+	intptr_t handle__initViewItemOption = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void initViewItemOption(QStyleOptionViewItem* option) const override {
-		if (handle__InitViewItemOption == 0) {
+		if (handle__initViewItemOption == 0) {
 			QTableView::initViewItemOption(option);
 			return;
 		}
 		
 		QStyleOptionViewItem* sigval1 = option;
 
-		miqt_exec_callback_QTableView_InitViewItemOption(this, handle__InitViewItemOption, sigval1);
+		miqt_exec_callback_QTableView_initViewItemOption(this, handle__initViewItemOption, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_InitViewItemOption(QStyleOptionViewItem* option) const {
+	void virtualbase_initViewItemOption(QStyleOptionViewItem* option) const {
 
 		QTableView::initViewItemOption(option);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__PaintEvent = 0;
+	intptr_t handle__paintEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void paintEvent(QPaintEvent* e) override {
-		if (handle__PaintEvent == 0) {
+		if (handle__paintEvent == 0) {
 			QTableView::paintEvent(e);
 			return;
 		}
 		
 		QPaintEvent* sigval1 = e;
 
-		miqt_exec_callback_QTableView_PaintEvent(this, handle__PaintEvent, sigval1);
+		miqt_exec_callback_QTableView_paintEvent(this, handle__paintEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_PaintEvent(QPaintEvent* e) {
+	void virtualbase_paintEvent(QPaintEvent* e) {
 
 		QTableView::paintEvent(e);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QTableView::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QTableView_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QTableView::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HorizontalOffset = 0;
+	intptr_t handle__horizontalOffset = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int horizontalOffset() const override {
-		if (handle__HorizontalOffset == 0) {
+		if (handle__horizontalOffset == 0) {
 			return QTableView::horizontalOffset();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QTableView_HorizontalOffset(this, handle__HorizontalOffset);
+		int callback_return_value = miqt_exec_callback_QTableView_horizontalOffset(this, handle__horizontalOffset);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_HorizontalOffset() const {
+	int virtualbase_horizontalOffset() const {
 
 		return QTableView::horizontalOffset();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__VerticalOffset = 0;
+	intptr_t handle__verticalOffset = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int verticalOffset() const override {
-		if (handle__VerticalOffset == 0) {
+		if (handle__verticalOffset == 0) {
 			return QTableView::verticalOffset();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QTableView_VerticalOffset(this, handle__VerticalOffset);
+		int callback_return_value = miqt_exec_callback_QTableView_verticalOffset(this, handle__verticalOffset);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_VerticalOffset() const {
+	int virtualbase_verticalOffset() const {
 
 		return QTableView::verticalOffset();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MoveCursor = 0;
+	intptr_t handle__moveCursor = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndex moveCursor(QAbstractItemView::CursorAction cursorAction, Qt::KeyboardModifiers modifiers) override {
-		if (handle__MoveCursor == 0) {
+		if (handle__moveCursor == 0) {
 			return QTableView::moveCursor(cursorAction, modifiers);
 		}
 		
@@ -489,24 +489,24 @@ public:
 		Qt::KeyboardModifiers modifiers_ret = modifiers;
 		int sigval2 = static_cast<int>(modifiers_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QTableView_MoveCursor(this, handle__MoveCursor, sigval1, sigval2);
+		QModelIndex* callback_return_value = miqt_exec_callback_QTableView_moveCursor(this, handle__moveCursor, sigval1, sigval2);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_MoveCursor(int cursorAction, int modifiers) {
+	QModelIndex* virtualbase_moveCursor(int cursorAction, int modifiers) {
 
 		return new QModelIndex(QTableView::moveCursor(static_cast<QAbstractItemView::CursorAction>(cursorAction), static_cast<Qt::KeyboardModifiers>(modifiers)));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetSelection = 0;
+	intptr_t handle__setSelection = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setSelection(const QRect& rect, QItemSelectionModel::SelectionFlags command) override {
-		if (handle__SetSelection == 0) {
+		if (handle__setSelection == 0) {
 			QTableView::setSelection(rect, command);
 			return;
 		}
@@ -517,24 +517,24 @@ public:
 		QItemSelectionModel::SelectionFlags command_ret = command;
 		int sigval2 = static_cast<int>(command_ret);
 
-		miqt_exec_callback_QTableView_SetSelection(this, handle__SetSelection, sigval1, sigval2);
+		miqt_exec_callback_QTableView_setSelection(this, handle__setSelection, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetSelection(QRect* rect, int command) {
+	void virtualbase_setSelection(QRect* rect, int command) {
 
 		QTableView::setSelection(*rect, static_cast<QItemSelectionModel::SelectionFlags>(command));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__VisualRegionForSelection = 0;
+	intptr_t handle__visualRegionForSelection = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QRegion visualRegionForSelection(const QItemSelection& selection) const override {
-		if (handle__VisualRegionForSelection == 0) {
+		if (handle__visualRegionForSelection == 0) {
 			return QTableView::visualRegionForSelection(selection);
 		}
 		
@@ -542,29 +542,29 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
 
-		QRegion* callback_return_value = miqt_exec_callback_QTableView_VisualRegionForSelection(this, handle__VisualRegionForSelection, sigval1);
+		QRegion* callback_return_value = miqt_exec_callback_QTableView_visualRegionForSelection(this, handle__visualRegionForSelection, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QRegion* virtualbase_VisualRegionForSelection(QItemSelection* selection) const {
+	QRegion* virtualbase_visualRegionForSelection(QItemSelection* selection) const {
 
 		return new QRegion(QTableView::visualRegionForSelection(*selection));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SelectedIndexes = 0;
+	intptr_t handle__selectedIndexes = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndexList selectedIndexes() const override {
-		if (handle__SelectedIndexes == 0) {
+		if (handle__selectedIndexes == 0) {
 			return QTableView::selectedIndexes();
 		}
 		
 
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QTableView_SelectedIndexes(this, handle__SelectedIndexes);
+		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QTableView_selectedIndexes(this, handle__selectedIndexes);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
@@ -576,7 +576,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	struct miqt_array /* of QModelIndex* */  virtualbase_SelectedIndexes() const {
+	struct miqt_array /* of QModelIndex* */  virtualbase_selectedIndexes() const {
 
 		QModelIndexList _ret = QTableView::selectedIndexes();
 		// Convert QList<> from C++ memory to manually-managed C memory
@@ -592,150 +592,150 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__UpdateGeometries = 0;
+	intptr_t handle__updateGeometries = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void updateGeometries() override {
-		if (handle__UpdateGeometries == 0) {
+		if (handle__updateGeometries == 0) {
 			QTableView::updateGeometries();
 			return;
 		}
 		
 
-		miqt_exec_callback_QTableView_UpdateGeometries(this, handle__UpdateGeometries);
+		miqt_exec_callback_QTableView_updateGeometries(this, handle__updateGeometries);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_UpdateGeometries() {
+	void virtualbase_updateGeometries() {
 
 		QTableView::updateGeometries();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ViewportSizeHint = 0;
+	intptr_t handle__viewportSizeHint = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize viewportSizeHint() const override {
-		if (handle__ViewportSizeHint == 0) {
+		if (handle__viewportSizeHint == 0) {
 			return QTableView::viewportSizeHint();
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QTableView_ViewportSizeHint(this, handle__ViewportSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QTableView_viewportSizeHint(this, handle__viewportSizeHint);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSize* virtualbase_ViewportSizeHint() const {
+	QSize* virtualbase_viewportSizeHint() const {
 
 		return new QSize(QTableView::viewportSizeHint());
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SizeHintForRow = 0;
+	intptr_t handle__sizeHintForRow = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int sizeHintForRow(int row) const override {
-		if (handle__SizeHintForRow == 0) {
+		if (handle__sizeHintForRow == 0) {
 			return QTableView::sizeHintForRow(row);
 		}
 		
 		int sigval1 = row;
 
-		int callback_return_value = miqt_exec_callback_QTableView_SizeHintForRow(this, handle__SizeHintForRow, sigval1);
+		int callback_return_value = miqt_exec_callback_QTableView_sizeHintForRow(this, handle__sizeHintForRow, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_SizeHintForRow(int row) const {
+	int virtualbase_sizeHintForRow(int row) const {
 
 		return QTableView::sizeHintForRow(static_cast<int>(row));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SizeHintForColumn = 0;
+	intptr_t handle__sizeHintForColumn = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int sizeHintForColumn(int column) const override {
-		if (handle__SizeHintForColumn == 0) {
+		if (handle__sizeHintForColumn == 0) {
 			return QTableView::sizeHintForColumn(column);
 		}
 		
 		int sigval1 = column;
 
-		int callback_return_value = miqt_exec_callback_QTableView_SizeHintForColumn(this, handle__SizeHintForColumn, sigval1);
+		int callback_return_value = miqt_exec_callback_QTableView_sizeHintForColumn(this, handle__sizeHintForColumn, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_SizeHintForColumn(int column) const {
+	int virtualbase_sizeHintForColumn(int column) const {
 
 		return QTableView::sizeHintForColumn(static_cast<int>(column));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__VerticalScrollbarAction = 0;
+	intptr_t handle__verticalScrollbarAction = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void verticalScrollbarAction(int action) override {
-		if (handle__VerticalScrollbarAction == 0) {
+		if (handle__verticalScrollbarAction == 0) {
 			QTableView::verticalScrollbarAction(action);
 			return;
 		}
 		
 		int sigval1 = action;
 
-		miqt_exec_callback_QTableView_VerticalScrollbarAction(this, handle__VerticalScrollbarAction, sigval1);
+		miqt_exec_callback_QTableView_verticalScrollbarAction(this, handle__verticalScrollbarAction, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_VerticalScrollbarAction(int action) {
+	void virtualbase_verticalScrollbarAction(int action) {
 
 		QTableView::verticalScrollbarAction(static_cast<int>(action));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HorizontalScrollbarAction = 0;
+	intptr_t handle__horizontalScrollbarAction = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void horizontalScrollbarAction(int action) override {
-		if (handle__HorizontalScrollbarAction == 0) {
+		if (handle__horizontalScrollbarAction == 0) {
 			QTableView::horizontalScrollbarAction(action);
 			return;
 		}
 		
 		int sigval1 = action;
 
-		miqt_exec_callback_QTableView_HorizontalScrollbarAction(this, handle__HorizontalScrollbarAction, sigval1);
+		miqt_exec_callback_QTableView_horizontalScrollbarAction(this, handle__horizontalScrollbarAction, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_HorizontalScrollbarAction(int action) {
+	void virtualbase_horizontalScrollbarAction(int action) {
 
 		QTableView::horizontalScrollbarAction(static_cast<int>(action));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__IsIndexHidden = 0;
+	intptr_t handle__isIndexHidden = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool isIndexHidden(const QModelIndex& index) const override {
-		if (handle__IsIndexHidden == 0) {
+		if (handle__isIndexHidden == 0) {
 			return QTableView::isIndexHidden(index);
 		}
 		
@@ -743,24 +743,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		bool callback_return_value = miqt_exec_callback_QTableView_IsIndexHidden(this, handle__IsIndexHidden, sigval1);
+		bool callback_return_value = miqt_exec_callback_QTableView_isIndexHidden(this, handle__isIndexHidden, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_IsIndexHidden(QModelIndex* index) const {
+	bool virtualbase_isIndexHidden(QModelIndex* index) const {
 
 		return QTableView::isIndexHidden(*index);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SelectionChanged = 0;
+	intptr_t handle__selectionChanged = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected) override {
-		if (handle__SelectionChanged == 0) {
+		if (handle__selectionChanged == 0) {
 			QTableView::selectionChanged(selected, deselected);
 			return;
 		}
@@ -772,24 +772,24 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval2 = const_cast<QItemSelection*>(&deselected_ret);
 
-		miqt_exec_callback_QTableView_SelectionChanged(this, handle__SelectionChanged, sigval1, sigval2);
+		miqt_exec_callback_QTableView_selectionChanged(this, handle__selectionChanged, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SelectionChanged(QItemSelection* selected, QItemSelection* deselected) {
+	void virtualbase_selectionChanged(QItemSelection* selected, QItemSelection* deselected) {
 
 		QTableView::selectionChanged(*selected, *deselected);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CurrentChanged = 0;
+	intptr_t handle__currentChanged = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void currentChanged(const QModelIndex& current, const QModelIndex& previous) override {
-		if (handle__CurrentChanged == 0) {
+		if (handle__currentChanged == 0) {
 			QTableView::currentChanged(current, previous);
 			return;
 		}
@@ -801,24 +801,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&previous_ret);
 
-		miqt_exec_callback_QTableView_CurrentChanged(this, handle__CurrentChanged, sigval1, sigval2);
+		miqt_exec_callback_QTableView_currentChanged(this, handle__currentChanged, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CurrentChanged(QModelIndex* current, QModelIndex* previous) {
+	void virtualbase_currentChanged(QModelIndex* current, QModelIndex* previous) {
 
 		QTableView::currentChanged(*current, *previous);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__KeyboardSearch = 0;
+	intptr_t handle__keyboardSearch = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void keyboardSearch(const QString& search) override {
-		if (handle__KeyboardSearch == 0) {
+		if (handle__keyboardSearch == 0) {
 			QTableView::keyboardSearch(search);
 			return;
 		}
@@ -832,13 +832,13 @@ public:
 		memcpy(search_ms.data, search_b.data(), search_ms.len);
 		struct miqt_string sigval1 = search_ms;
 
-		miqt_exec_callback_QTableView_KeyboardSearch(this, handle__KeyboardSearch, sigval1);
+		miqt_exec_callback_QTableView_keyboardSearch(this, handle__keyboardSearch, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_KeyboardSearch(struct miqt_string search) {
+	void virtualbase_keyboardSearch(struct miqt_string search) {
 		QString search_QString = QString::fromUtf8(search.data, search.len);
 
 		QTableView::keyboardSearch(search_QString);
@@ -846,11 +846,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ItemDelegateForIndex = 0;
+	intptr_t handle__itemDelegateForIndex = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QAbstractItemDelegate* itemDelegateForIndex(const QModelIndex& index) const override {
-		if (handle__ItemDelegateForIndex == 0) {
+		if (handle__itemDelegateForIndex == 0) {
 			return QTableView::itemDelegateForIndex(index);
 		}
 		
@@ -858,94 +858,94 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QAbstractItemDelegate* callback_return_value = miqt_exec_callback_QTableView_ItemDelegateForIndex(this, handle__ItemDelegateForIndex, sigval1);
+		QAbstractItemDelegate* callback_return_value = miqt_exec_callback_QTableView_itemDelegateForIndex(this, handle__itemDelegateForIndex, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QAbstractItemDelegate* virtualbase_ItemDelegateForIndex(QModelIndex* index) const {
+	QAbstractItemDelegate* virtualbase_itemDelegateForIndex(QModelIndex* index) const {
 
 		return QTableView::itemDelegateForIndex(*index);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InputMethodQuery = 0;
+	intptr_t handle__inputMethodQuery = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QVariant inputMethodQuery(Qt::InputMethodQuery query) const override {
-		if (handle__InputMethodQuery == 0) {
+		if (handle__inputMethodQuery == 0) {
 			return QTableView::inputMethodQuery(query);
 		}
 		
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QTableView_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QTableView_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QVariant* virtualbase_InputMethodQuery(int query) const {
+	QVariant* virtualbase_inputMethodQuery(int query) const {
 
 		return new QVariant(QTableView::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Reset = 0;
+	intptr_t handle__reset = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void reset() override {
-		if (handle__Reset == 0) {
+		if (handle__reset == 0) {
 			QTableView::reset();
 			return;
 		}
 		
 
-		miqt_exec_callback_QTableView_Reset(this, handle__Reset);
+		miqt_exec_callback_QTableView_reset(this, handle__reset);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_Reset() {
+	void virtualbase_reset() {
 
 		QTableView::reset();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SelectAll = 0;
+	intptr_t handle__selectAll = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void selectAll() override {
-		if (handle__SelectAll == 0) {
+		if (handle__selectAll == 0) {
 			QTableView::selectAll();
 			return;
 		}
 		
 
-		miqt_exec_callback_QTableView_SelectAll(this, handle__SelectAll);
+		miqt_exec_callback_QTableView_selectAll(this, handle__selectAll);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SelectAll() {
+	void virtualbase_selectAll() {
 
 		QTableView::selectAll();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DataChanged = 0;
+	intptr_t handle__dataChanged = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QList<int>& roles) override {
-		if (handle__DataChanged == 0) {
+		if (handle__dataChanged == 0) {
 			QTableView::dataChanged(topLeft, bottomRight, roles);
 			return;
 		}
@@ -967,13 +967,13 @@ public:
 		roles_out.data = static_cast<void*>(roles_arr);
 		struct miqt_array /* of int */  sigval3 = roles_out;
 
-		miqt_exec_callback_QTableView_DataChanged(this, handle__DataChanged, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QTableView_dataChanged(this, handle__dataChanged, sigval1, sigval2, sigval3);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DataChanged(QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
+	void virtualbase_dataChanged(QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
 		QList<int> roles_QList;
 		roles_QList.reserve(roles.len);
 		int* roles_arr = static_cast<int*>(roles.data);
@@ -986,11 +986,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__RowsInserted = 0;
+	intptr_t handle__rowsInserted = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void rowsInserted(const QModelIndex& parent, int start, int end) override {
-		if (handle__RowsInserted == 0) {
+		if (handle__rowsInserted == 0) {
 			QTableView::rowsInserted(parent, start, end);
 			return;
 		}
@@ -1001,24 +1001,24 @@ public:
 		int sigval2 = start;
 		int sigval3 = end;
 
-		miqt_exec_callback_QTableView_RowsInserted(this, handle__RowsInserted, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QTableView_rowsInserted(this, handle__rowsInserted, sigval1, sigval2, sigval3);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_RowsInserted(QModelIndex* parent, int start, int end) {
+	void virtualbase_rowsInserted(QModelIndex* parent, int start, int end) {
 
 		QTableView::rowsInserted(*parent, static_cast<int>(start), static_cast<int>(end));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__RowsAboutToBeRemoved = 0;
+	intptr_t handle__rowsAboutToBeRemoved = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void rowsAboutToBeRemoved(const QModelIndex& parent, int start, int end) override {
-		if (handle__RowsAboutToBeRemoved == 0) {
+		if (handle__rowsAboutToBeRemoved == 0) {
 			QTableView::rowsAboutToBeRemoved(parent, start, end);
 			return;
 		}
@@ -1029,118 +1029,118 @@ public:
 		int sigval2 = start;
 		int sigval3 = end;
 
-		miqt_exec_callback_QTableView_RowsAboutToBeRemoved(this, handle__RowsAboutToBeRemoved, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QTableView_rowsAboutToBeRemoved(this, handle__rowsAboutToBeRemoved, sigval1, sigval2, sigval3);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_RowsAboutToBeRemoved(QModelIndex* parent, int start, int end) {
+	void virtualbase_rowsAboutToBeRemoved(QModelIndex* parent, int start, int end) {
 
 		QTableView::rowsAboutToBeRemoved(*parent, static_cast<int>(start), static_cast<int>(end));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__UpdateEditorData = 0;
+	intptr_t handle__updateEditorData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void updateEditorData() override {
-		if (handle__UpdateEditorData == 0) {
+		if (handle__updateEditorData == 0) {
 			QTableView::updateEditorData();
 			return;
 		}
 		
 
-		miqt_exec_callback_QTableView_UpdateEditorData(this, handle__UpdateEditorData);
+		miqt_exec_callback_QTableView_updateEditorData(this, handle__updateEditorData);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_UpdateEditorData() {
+	void virtualbase_updateEditorData() {
 
 		QTableView::updateEditorData();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__UpdateEditorGeometries = 0;
+	intptr_t handle__updateEditorGeometries = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void updateEditorGeometries() override {
-		if (handle__UpdateEditorGeometries == 0) {
+		if (handle__updateEditorGeometries == 0) {
 			QTableView::updateEditorGeometries();
 			return;
 		}
 		
 
-		miqt_exec_callback_QTableView_UpdateEditorGeometries(this, handle__UpdateEditorGeometries);
+		miqt_exec_callback_QTableView_updateEditorGeometries(this, handle__updateEditorGeometries);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_UpdateEditorGeometries() {
+	void virtualbase_updateEditorGeometries() {
 
 		QTableView::updateEditorGeometries();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__VerticalScrollbarValueChanged = 0;
+	intptr_t handle__verticalScrollbarValueChanged = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void verticalScrollbarValueChanged(int value) override {
-		if (handle__VerticalScrollbarValueChanged == 0) {
+		if (handle__verticalScrollbarValueChanged == 0) {
 			QTableView::verticalScrollbarValueChanged(value);
 			return;
 		}
 		
 		int sigval1 = value;
 
-		miqt_exec_callback_QTableView_VerticalScrollbarValueChanged(this, handle__VerticalScrollbarValueChanged, sigval1);
+		miqt_exec_callback_QTableView_verticalScrollbarValueChanged(this, handle__verticalScrollbarValueChanged, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_VerticalScrollbarValueChanged(int value) {
+	void virtualbase_verticalScrollbarValueChanged(int value) {
 
 		QTableView::verticalScrollbarValueChanged(static_cast<int>(value));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HorizontalScrollbarValueChanged = 0;
+	intptr_t handle__horizontalScrollbarValueChanged = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void horizontalScrollbarValueChanged(int value) override {
-		if (handle__HorizontalScrollbarValueChanged == 0) {
+		if (handle__horizontalScrollbarValueChanged == 0) {
 			QTableView::horizontalScrollbarValueChanged(value);
 			return;
 		}
 		
 		int sigval1 = value;
 
-		miqt_exec_callback_QTableView_HorizontalScrollbarValueChanged(this, handle__HorizontalScrollbarValueChanged, sigval1);
+		miqt_exec_callback_QTableView_horizontalScrollbarValueChanged(this, handle__horizontalScrollbarValueChanged, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_HorizontalScrollbarValueChanged(int value) {
+	void virtualbase_horizontalScrollbarValueChanged(int value) {
 
 		QTableView::horizontalScrollbarValueChanged(static_cast<int>(value));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CloseEditor = 0;
+	intptr_t handle__closeEditor = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void closeEditor(QWidget* editor, QAbstractItemDelegate::EndEditHint hint) override {
-		if (handle__CloseEditor == 0) {
+		if (handle__closeEditor == 0) {
 			QTableView::closeEditor(editor, hint);
 			return;
 		}
@@ -1149,72 +1149,72 @@ public:
 		QAbstractItemDelegate::EndEditHint hint_ret = hint;
 		int sigval2 = static_cast<int>(hint_ret);
 
-		miqt_exec_callback_QTableView_CloseEditor(this, handle__CloseEditor, sigval1, sigval2);
+		miqt_exec_callback_QTableView_closeEditor(this, handle__closeEditor, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CloseEditor(QWidget* editor, int hint) {
+	void virtualbase_closeEditor(QWidget* editor, int hint) {
 
 		QTableView::closeEditor(editor, static_cast<QAbstractItemDelegate::EndEditHint>(hint));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CommitData = 0;
+	intptr_t handle__commitData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void commitData(QWidget* editor) override {
-		if (handle__CommitData == 0) {
+		if (handle__commitData == 0) {
 			QTableView::commitData(editor);
 			return;
 		}
 		
 		QWidget* sigval1 = editor;
 
-		miqt_exec_callback_QTableView_CommitData(this, handle__CommitData, sigval1);
+		miqt_exec_callback_QTableView_commitData(this, handle__commitData, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CommitData(QWidget* editor) {
+	void virtualbase_commitData(QWidget* editor) {
 
 		QTableView::commitData(editor);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EditorDestroyed = 0;
+	intptr_t handle__editorDestroyed = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void editorDestroyed(QObject* editor) override {
-		if (handle__EditorDestroyed == 0) {
+		if (handle__editorDestroyed == 0) {
 			QTableView::editorDestroyed(editor);
 			return;
 		}
 		
 		QObject* sigval1 = editor;
 
-		miqt_exec_callback_QTableView_EditorDestroyed(this, handle__EditorDestroyed, sigval1);
+		miqt_exec_callback_QTableView_editorDestroyed(this, handle__editorDestroyed, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_EditorDestroyed(QObject* editor) {
+	void virtualbase_editorDestroyed(QObject* editor) {
 
 		QTableView::editorDestroyed(editor);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Edit2 = 0;
+	intptr_t handle__edit2 = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool edit(const QModelIndex& index, QAbstractItemView::EditTrigger trigger, QEvent* event) override {
-		if (handle__Edit2 == 0) {
+		if (handle__edit2 == 0) {
 			return QTableView::edit(index, trigger, event);
 		}
 		
@@ -1225,24 +1225,24 @@ public:
 		int sigval2 = static_cast<int>(trigger_ret);
 		QEvent* sigval3 = event;
 
-		bool callback_return_value = miqt_exec_callback_QTableView_Edit2(this, handle__Edit2, sigval1, sigval2, sigval3);
+		bool callback_return_value = miqt_exec_callback_QTableView_edit2(this, handle__edit2, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Edit2(QModelIndex* index, int trigger, QEvent* event) {
+	bool virtualbase_edit2(QModelIndex* index, int trigger, QEvent* event) {
 
 		return QTableView::edit(*index, static_cast<QAbstractItemView::EditTrigger>(trigger), event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SelectionCommand = 0;
+	intptr_t handle__selectionCommand = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QItemSelectionModel::SelectionFlags selectionCommand(const QModelIndex& index, const QEvent* event) const override {
-		if (handle__SelectionCommand == 0) {
+		if (handle__selectionCommand == 0) {
 			return QTableView::selectionCommand(index, event);
 		}
 		
@@ -1251,13 +1251,13 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QEvent* sigval2 = (QEvent*) event;
 
-		int callback_return_value = miqt_exec_callback_QTableView_SelectionCommand(this, handle__SelectionCommand, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QTableView_selectionCommand(this, handle__selectionCommand, sigval1, sigval2);
 
 		return static_cast<QItemSelectionModel::SelectionFlags>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_SelectionCommand(QModelIndex* index, QEvent* event) const {
+	int virtualbase_selectionCommand(QModelIndex* index, QEvent* event) const {
 
 		QItemSelectionModel::SelectionFlags _ret = QTableView::selectionCommand(*index, event);
 		return static_cast<int>(_ret);
@@ -1265,11 +1265,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__StartDrag = 0;
+	intptr_t handle__startDrag = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void startDrag(Qt::DropActions supportedActions) override {
-		if (handle__StartDrag == 0) {
+		if (handle__startDrag == 0) {
 			QTableView::startDrag(supportedActions);
 			return;
 		}
@@ -1277,922 +1277,922 @@ public:
 		Qt::DropActions supportedActions_ret = supportedActions;
 		int sigval1 = static_cast<int>(supportedActions_ret);
 
-		miqt_exec_callback_QTableView_StartDrag(this, handle__StartDrag, sigval1);
+		miqt_exec_callback_QTableView_startDrag(this, handle__startDrag, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_StartDrag(int supportedActions) {
+	void virtualbase_startDrag(int supportedActions) {
 
 		QTableView::startDrag(static_cast<Qt::DropActions>(supportedActions));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__FocusNextPrevChild = 0;
+	intptr_t handle__focusNextPrevChild = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool focusNextPrevChild(bool next) override {
-		if (handle__FocusNextPrevChild == 0) {
+		if (handle__focusNextPrevChild == 0) {
 			return QTableView::focusNextPrevChild(next);
 		}
 		
 		bool sigval1 = next;
 
-		bool callback_return_value = miqt_exec_callback_QTableView_FocusNextPrevChild(this, handle__FocusNextPrevChild, sigval1);
+		bool callback_return_value = miqt_exec_callback_QTableView_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_FocusNextPrevChild(bool next) {
+	bool virtualbase_focusNextPrevChild(bool next) {
 
 		return QTableView::focusNextPrevChild(next);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QTableView::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QTableView_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QTableView_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QTableView::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ViewportEvent = 0;
+	intptr_t handle__viewportEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool viewportEvent(QEvent* event) override {
-		if (handle__ViewportEvent == 0) {
+		if (handle__viewportEvent == 0) {
 			return QTableView::viewportEvent(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QTableView_ViewportEvent(this, handle__ViewportEvent, sigval1);
+		bool callback_return_value = miqt_exec_callback_QTableView_viewportEvent(this, handle__viewportEvent, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_ViewportEvent(QEvent* event) {
+	bool virtualbase_viewportEvent(QEvent* event) {
 
 		return QTableView::viewportEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MousePressEvent = 0;
+	intptr_t handle__mousePressEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void mousePressEvent(QMouseEvent* event) override {
-		if (handle__MousePressEvent == 0) {
+		if (handle__mousePressEvent == 0) {
 			QTableView::mousePressEvent(event);
 			return;
 		}
 		
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_MousePressEvent(this, handle__MousePressEvent, sigval1);
+		miqt_exec_callback_QTableView_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MousePressEvent(QMouseEvent* event) {
+	void virtualbase_mousePressEvent(QMouseEvent* event) {
 
 		QTableView::mousePressEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MouseMoveEvent = 0;
+	intptr_t handle__mouseMoveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void mouseMoveEvent(QMouseEvent* event) override {
-		if (handle__MouseMoveEvent == 0) {
+		if (handle__mouseMoveEvent == 0) {
 			QTableView::mouseMoveEvent(event);
 			return;
 		}
 		
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_MouseMoveEvent(this, handle__MouseMoveEvent, sigval1);
+		miqt_exec_callback_QTableView_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MouseMoveEvent(QMouseEvent* event) {
+	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
 
 		QTableView::mouseMoveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MouseReleaseEvent = 0;
+	intptr_t handle__mouseReleaseEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void mouseReleaseEvent(QMouseEvent* event) override {
-		if (handle__MouseReleaseEvent == 0) {
+		if (handle__mouseReleaseEvent == 0) {
 			QTableView::mouseReleaseEvent(event);
 			return;
 		}
 		
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_MouseReleaseEvent(this, handle__MouseReleaseEvent, sigval1);
+		miqt_exec_callback_QTableView_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MouseReleaseEvent(QMouseEvent* event) {
+	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
 
 		QTableView::mouseReleaseEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MouseDoubleClickEvent = 0;
+	intptr_t handle__mouseDoubleClickEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void mouseDoubleClickEvent(QMouseEvent* event) override {
-		if (handle__MouseDoubleClickEvent == 0) {
+		if (handle__mouseDoubleClickEvent == 0) {
 			QTableView::mouseDoubleClickEvent(event);
 			return;
 		}
 		
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_MouseDoubleClickEvent(this, handle__MouseDoubleClickEvent, sigval1);
+		miqt_exec_callback_QTableView_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MouseDoubleClickEvent(QMouseEvent* event) {
+	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
 
 		QTableView::mouseDoubleClickEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DragEnterEvent = 0;
+	intptr_t handle__dragEnterEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dragEnterEvent(QDragEnterEvent* event) override {
-		if (handle__DragEnterEvent == 0) {
+		if (handle__dragEnterEvent == 0) {
 			QTableView::dragEnterEvent(event);
 			return;
 		}
 		
 		QDragEnterEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_DragEnterEvent(this, handle__DragEnterEvent, sigval1);
+		miqt_exec_callback_QTableView_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DragEnterEvent(QDragEnterEvent* event) {
+	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
 
 		QTableView::dragEnterEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DragMoveEvent = 0;
+	intptr_t handle__dragMoveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dragMoveEvent(QDragMoveEvent* event) override {
-		if (handle__DragMoveEvent == 0) {
+		if (handle__dragMoveEvent == 0) {
 			QTableView::dragMoveEvent(event);
 			return;
 		}
 		
 		QDragMoveEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_DragMoveEvent(this, handle__DragMoveEvent, sigval1);
+		miqt_exec_callback_QTableView_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DragMoveEvent(QDragMoveEvent* event) {
+	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
 
 		QTableView::dragMoveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DragLeaveEvent = 0;
+	intptr_t handle__dragLeaveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dragLeaveEvent(QDragLeaveEvent* event) override {
-		if (handle__DragLeaveEvent == 0) {
+		if (handle__dragLeaveEvent == 0) {
 			QTableView::dragLeaveEvent(event);
 			return;
 		}
 		
 		QDragLeaveEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_DragLeaveEvent(this, handle__DragLeaveEvent, sigval1);
+		miqt_exec_callback_QTableView_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DragLeaveEvent(QDragLeaveEvent* event) {
+	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
 
 		QTableView::dragLeaveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DropEvent = 0;
+	intptr_t handle__dropEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dropEvent(QDropEvent* event) override {
-		if (handle__DropEvent == 0) {
+		if (handle__dropEvent == 0) {
 			QTableView::dropEvent(event);
 			return;
 		}
 		
 		QDropEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_DropEvent(this, handle__DropEvent, sigval1);
+		miqt_exec_callback_QTableView_dropEvent(this, handle__dropEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DropEvent(QDropEvent* event) {
+	void virtualbase_dropEvent(QDropEvent* event) {
 
 		QTableView::dropEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__FocusInEvent = 0;
+	intptr_t handle__focusInEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void focusInEvent(QFocusEvent* event) override {
-		if (handle__FocusInEvent == 0) {
+		if (handle__focusInEvent == 0) {
 			QTableView::focusInEvent(event);
 			return;
 		}
 		
 		QFocusEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_FocusInEvent(this, handle__FocusInEvent, sigval1);
+		miqt_exec_callback_QTableView_focusInEvent(this, handle__focusInEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_FocusInEvent(QFocusEvent* event) {
+	void virtualbase_focusInEvent(QFocusEvent* event) {
 
 		QTableView::focusInEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__FocusOutEvent = 0;
+	intptr_t handle__focusOutEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void focusOutEvent(QFocusEvent* event) override {
-		if (handle__FocusOutEvent == 0) {
+		if (handle__focusOutEvent == 0) {
 			QTableView::focusOutEvent(event);
 			return;
 		}
 		
 		QFocusEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_FocusOutEvent(this, handle__FocusOutEvent, sigval1);
+		miqt_exec_callback_QTableView_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_FocusOutEvent(QFocusEvent* event) {
+	void virtualbase_focusOutEvent(QFocusEvent* event) {
 
 		QTableView::focusOutEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__KeyPressEvent = 0;
+	intptr_t handle__keyPressEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void keyPressEvent(QKeyEvent* event) override {
-		if (handle__KeyPressEvent == 0) {
+		if (handle__keyPressEvent == 0) {
 			QTableView::keyPressEvent(event);
 			return;
 		}
 		
 		QKeyEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_KeyPressEvent(this, handle__KeyPressEvent, sigval1);
+		miqt_exec_callback_QTableView_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_KeyPressEvent(QKeyEvent* event) {
+	void virtualbase_keyPressEvent(QKeyEvent* event) {
 
 		QTableView::keyPressEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ResizeEvent = 0;
+	intptr_t handle__resizeEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void resizeEvent(QResizeEvent* event) override {
-		if (handle__ResizeEvent == 0) {
+		if (handle__resizeEvent == 0) {
 			QTableView::resizeEvent(event);
 			return;
 		}
 		
 		QResizeEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_ResizeEvent(this, handle__ResizeEvent, sigval1);
+		miqt_exec_callback_QTableView_resizeEvent(this, handle__resizeEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ResizeEvent(QResizeEvent* event) {
+	void virtualbase_resizeEvent(QResizeEvent* event) {
 
 		QTableView::resizeEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InputMethodEvent = 0;
+	intptr_t handle__inputMethodEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void inputMethodEvent(QInputMethodEvent* event) override {
-		if (handle__InputMethodEvent == 0) {
+		if (handle__inputMethodEvent == 0) {
 			QTableView::inputMethodEvent(event);
 			return;
 		}
 		
 		QInputMethodEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_InputMethodEvent(this, handle__InputMethodEvent, sigval1);
+		miqt_exec_callback_QTableView_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_InputMethodEvent(QInputMethodEvent* event) {
+	void virtualbase_inputMethodEvent(QInputMethodEvent* event) {
 
 		QTableView::inputMethodEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* object, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QTableView::eventFilter(object, event);
 		}
 		
 		QObject* sigval1 = object;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QTableView_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QTableView_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* object, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* object, QEvent* event) {
 
 		return QTableView::eventFilter(object, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MinimumSizeHint = 0;
+	intptr_t handle__minimumSizeHint = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize minimumSizeHint() const override {
-		if (handle__MinimumSizeHint == 0) {
+		if (handle__minimumSizeHint == 0) {
 			return QTableView::minimumSizeHint();
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QTableView_MinimumSizeHint(this, handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QTableView_minimumSizeHint(this, handle__minimumSizeHint);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSize* virtualbase_MinimumSizeHint() const {
+	QSize* virtualbase_minimumSizeHint() const {
 
 		return new QSize(QTableView::minimumSizeHint());
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SizeHint = 0;
+	intptr_t handle__sizeHint = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize sizeHint() const override {
-		if (handle__SizeHint == 0) {
+		if (handle__sizeHint == 0) {
 			return QTableView::sizeHint();
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QTableView_SizeHint(this, handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QTableView_sizeHint(this, handle__sizeHint);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSize* virtualbase_SizeHint() const {
+	QSize* virtualbase_sizeHint() const {
 
 		return new QSize(QTableView::sizeHint());
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetupViewport = 0;
+	intptr_t handle__setupViewport = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setupViewport(QWidget* viewport) override {
-		if (handle__SetupViewport == 0) {
+		if (handle__setupViewport == 0) {
 			QTableView::setupViewport(viewport);
 			return;
 		}
 		
 		QWidget* sigval1 = viewport;
 
-		miqt_exec_callback_QTableView_SetupViewport(this, handle__SetupViewport, sigval1);
+		miqt_exec_callback_QTableView_setupViewport(this, handle__setupViewport, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetupViewport(QWidget* viewport) {
+	void virtualbase_setupViewport(QWidget* viewport) {
 
 		QTableView::setupViewport(viewport);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__WheelEvent = 0;
+	intptr_t handle__wheelEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void wheelEvent(QWheelEvent* param1) override {
-		if (handle__WheelEvent == 0) {
+		if (handle__wheelEvent == 0) {
 			QTableView::wheelEvent(param1);
 			return;
 		}
 		
 		QWheelEvent* sigval1 = param1;
 
-		miqt_exec_callback_QTableView_WheelEvent(this, handle__WheelEvent, sigval1);
+		miqt_exec_callback_QTableView_wheelEvent(this, handle__wheelEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_WheelEvent(QWheelEvent* param1) {
+	void virtualbase_wheelEvent(QWheelEvent* param1) {
 
 		QTableView::wheelEvent(param1);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ContextMenuEvent = 0;
+	intptr_t handle__contextMenuEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void contextMenuEvent(QContextMenuEvent* param1) override {
-		if (handle__ContextMenuEvent == 0) {
+		if (handle__contextMenuEvent == 0) {
 			QTableView::contextMenuEvent(param1);
 			return;
 		}
 		
 		QContextMenuEvent* sigval1 = param1;
 
-		miqt_exec_callback_QTableView_ContextMenuEvent(this, handle__ContextMenuEvent, sigval1);
+		miqt_exec_callback_QTableView_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ContextMenuEvent(QContextMenuEvent* param1) {
+	void virtualbase_contextMenuEvent(QContextMenuEvent* param1) {
 
 		QTableView::contextMenuEvent(param1);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChangeEvent = 0;
+	intptr_t handle__changeEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void changeEvent(QEvent* param1) override {
-		if (handle__ChangeEvent == 0) {
+		if (handle__changeEvent == 0) {
 			QTableView::changeEvent(param1);
 			return;
 		}
 		
 		QEvent* sigval1 = param1;
 
-		miqt_exec_callback_QTableView_ChangeEvent(this, handle__ChangeEvent, sigval1);
+		miqt_exec_callback_QTableView_changeEvent(this, handle__changeEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChangeEvent(QEvent* param1) {
+	void virtualbase_changeEvent(QEvent* param1) {
 
 		QTableView::changeEvent(param1);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InitStyleOption = 0;
+	intptr_t handle__initStyleOption = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void initStyleOption(QStyleOptionFrame* option) const override {
-		if (handle__InitStyleOption == 0) {
+		if (handle__initStyleOption == 0) {
 			QTableView::initStyleOption(option);
 			return;
 		}
 		
 		QStyleOptionFrame* sigval1 = option;
 
-		miqt_exec_callback_QTableView_InitStyleOption(this, handle__InitStyleOption, sigval1);
+		miqt_exec_callback_QTableView_initStyleOption(this, handle__initStyleOption, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_InitStyleOption(QStyleOptionFrame* option) const {
+	void virtualbase_initStyleOption(QStyleOptionFrame* option) const {
 
 		QTableView::initStyleOption(option);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DevType = 0;
+	intptr_t handle__devType = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int devType() const override {
-		if (handle__DevType == 0) {
+		if (handle__devType == 0) {
 			return QTableView::devType();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QTableView_DevType(this, handle__DevType);
+		int callback_return_value = miqt_exec_callback_QTableView_devType(this, handle__devType);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_DevType() const {
+	int virtualbase_devType() const {
 
 		return QTableView::devType();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetVisible = 0;
+	intptr_t handle__setVisible = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setVisible(bool visible) override {
-		if (handle__SetVisible == 0) {
+		if (handle__setVisible == 0) {
 			QTableView::setVisible(visible);
 			return;
 		}
 		
 		bool sigval1 = visible;
 
-		miqt_exec_callback_QTableView_SetVisible(this, handle__SetVisible, sigval1);
+		miqt_exec_callback_QTableView_setVisible(this, handle__setVisible, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetVisible(bool visible) {
+	void virtualbase_setVisible(bool visible) {
 
 		QTableView::setVisible(visible);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HeightForWidth = 0;
+	intptr_t handle__heightForWidth = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int heightForWidth(int param1) const override {
-		if (handle__HeightForWidth == 0) {
+		if (handle__heightForWidth == 0) {
 			return QTableView::heightForWidth(param1);
 		}
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QTableView_HeightForWidth(this, handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QTableView_heightForWidth(this, handle__heightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_HeightForWidth(int param1) const {
+	int virtualbase_heightForWidth(int param1) const {
 
 		return QTableView::heightForWidth(static_cast<int>(param1));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HasHeightForWidth = 0;
+	intptr_t handle__hasHeightForWidth = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool hasHeightForWidth() const override {
-		if (handle__HasHeightForWidth == 0) {
+		if (handle__hasHeightForWidth == 0) {
 			return QTableView::hasHeightForWidth();
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QTableView_HasHeightForWidth(this, handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QTableView_hasHeightForWidth(this, handle__hasHeightForWidth);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_HasHeightForWidth() const {
+	bool virtualbase_hasHeightForWidth() const {
 
 		return QTableView::hasHeightForWidth();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__PaintEngine = 0;
+	intptr_t handle__paintEngine = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QPaintEngine* paintEngine() const override {
-		if (handle__PaintEngine == 0) {
+		if (handle__paintEngine == 0) {
 			return QTableView::paintEngine();
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QTableView_PaintEngine(this, handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QTableView_paintEngine(this, handle__paintEngine);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_PaintEngine() const {
+	QPaintEngine* virtualbase_paintEngine() const {
 
 		return QTableView::paintEngine();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__KeyReleaseEvent = 0;
+	intptr_t handle__keyReleaseEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void keyReleaseEvent(QKeyEvent* event) override {
-		if (handle__KeyReleaseEvent == 0) {
+		if (handle__keyReleaseEvent == 0) {
 			QTableView::keyReleaseEvent(event);
 			return;
 		}
 		
 		QKeyEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_KeyReleaseEvent(this, handle__KeyReleaseEvent, sigval1);
+		miqt_exec_callback_QTableView_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_KeyReleaseEvent(QKeyEvent* event) {
+	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
 
 		QTableView::keyReleaseEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EnterEvent = 0;
+	intptr_t handle__enterEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void enterEvent(QEnterEvent* event) override {
-		if (handle__EnterEvent == 0) {
+		if (handle__enterEvent == 0) {
 			QTableView::enterEvent(event);
 			return;
 		}
 		
 		QEnterEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_EnterEvent(this, handle__EnterEvent, sigval1);
+		miqt_exec_callback_QTableView_enterEvent(this, handle__enterEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_EnterEvent(QEnterEvent* event) {
+	void virtualbase_enterEvent(QEnterEvent* event) {
 
 		QTableView::enterEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__LeaveEvent = 0;
+	intptr_t handle__leaveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void leaveEvent(QEvent* event) override {
-		if (handle__LeaveEvent == 0) {
+		if (handle__leaveEvent == 0) {
 			QTableView::leaveEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_LeaveEvent(this, handle__LeaveEvent, sigval1);
+		miqt_exec_callback_QTableView_leaveEvent(this, handle__leaveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_LeaveEvent(QEvent* event) {
+	void virtualbase_leaveEvent(QEvent* event) {
 
 		QTableView::leaveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MoveEvent = 0;
+	intptr_t handle__moveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void moveEvent(QMoveEvent* event) override {
-		if (handle__MoveEvent == 0) {
+		if (handle__moveEvent == 0) {
 			QTableView::moveEvent(event);
 			return;
 		}
 		
 		QMoveEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_MoveEvent(this, handle__MoveEvent, sigval1);
+		miqt_exec_callback_QTableView_moveEvent(this, handle__moveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MoveEvent(QMoveEvent* event) {
+	void virtualbase_moveEvent(QMoveEvent* event) {
 
 		QTableView::moveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CloseEvent = 0;
+	intptr_t handle__closeEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void closeEvent(QCloseEvent* event) override {
-		if (handle__CloseEvent == 0) {
+		if (handle__closeEvent == 0) {
 			QTableView::closeEvent(event);
 			return;
 		}
 		
 		QCloseEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_CloseEvent(this, handle__CloseEvent, sigval1);
+		miqt_exec_callback_QTableView_closeEvent(this, handle__closeEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CloseEvent(QCloseEvent* event) {
+	void virtualbase_closeEvent(QCloseEvent* event) {
 
 		QTableView::closeEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TabletEvent = 0;
+	intptr_t handle__tabletEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void tabletEvent(QTabletEvent* event) override {
-		if (handle__TabletEvent == 0) {
+		if (handle__tabletEvent == 0) {
 			QTableView::tabletEvent(event);
 			return;
 		}
 		
 		QTabletEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_TabletEvent(this, handle__TabletEvent, sigval1);
+		miqt_exec_callback_QTableView_tabletEvent(this, handle__tabletEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TabletEvent(QTabletEvent* event) {
+	void virtualbase_tabletEvent(QTabletEvent* event) {
 
 		QTableView::tabletEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ActionEvent = 0;
+	intptr_t handle__actionEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void actionEvent(QActionEvent* event) override {
-		if (handle__ActionEvent == 0) {
+		if (handle__actionEvent == 0) {
 			QTableView::actionEvent(event);
 			return;
 		}
 		
 		QActionEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_ActionEvent(this, handle__ActionEvent, sigval1);
+		miqt_exec_callback_QTableView_actionEvent(this, handle__actionEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ActionEvent(QActionEvent* event) {
+	void virtualbase_actionEvent(QActionEvent* event) {
 
 		QTableView::actionEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ShowEvent = 0;
+	intptr_t handle__showEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void showEvent(QShowEvent* event) override {
-		if (handle__ShowEvent == 0) {
+		if (handle__showEvent == 0) {
 			QTableView::showEvent(event);
 			return;
 		}
 		
 		QShowEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_ShowEvent(this, handle__ShowEvent, sigval1);
+		miqt_exec_callback_QTableView_showEvent(this, handle__showEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ShowEvent(QShowEvent* event) {
+	void virtualbase_showEvent(QShowEvent* event) {
 
 		QTableView::showEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HideEvent = 0;
+	intptr_t handle__hideEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void hideEvent(QHideEvent* event) override {
-		if (handle__HideEvent == 0) {
+		if (handle__hideEvent == 0) {
 			QTableView::hideEvent(event);
 			return;
 		}
 		
 		QHideEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_HideEvent(this, handle__HideEvent, sigval1);
+		miqt_exec_callback_QTableView_hideEvent(this, handle__hideEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_HideEvent(QHideEvent* event) {
+	void virtualbase_hideEvent(QHideEvent* event) {
 
 		QTableView::hideEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__NativeEvent = 0;
+	intptr_t handle__nativeEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool nativeEvent(const QByteArray& eventType, void* message, qintptr* result) override {
-		if (handle__NativeEvent == 0) {
+		if (handle__nativeEvent == 0) {
 			return QTableView::nativeEvent(eventType, message, result);
 		}
 		
@@ -2206,13 +2206,13 @@ public:
 		qintptr* result_ret = result;
 		intptr_t* sigval3 = (intptr_t*)(result_ret);
 
-		bool callback_return_value = miqt_exec_callback_QTableView_NativeEvent(this, handle__NativeEvent, sigval1, sigval2, sigval3);
+		bool callback_return_value = miqt_exec_callback_QTableView_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
+	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
 		QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
 		return QTableView::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
@@ -2220,152 +2220,152 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Metric = 0;
+	intptr_t handle__metric = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int metric(QPaintDevice::PaintDeviceMetric param1) const override {
-		if (handle__Metric == 0) {
+		if (handle__metric == 0) {
 			return QTableView::metric(param1);
 		}
 		
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QTableView_Metric(this, handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QTableView_metric(this, handle__metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_Metric(int param1) const {
+	int virtualbase_metric(int param1) const {
 
 		return QTableView::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InitPainter = 0;
+	intptr_t handle__initPainter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void initPainter(QPainter* painter) const override {
-		if (handle__InitPainter == 0) {
+		if (handle__initPainter == 0) {
 			QTableView::initPainter(painter);
 			return;
 		}
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QTableView_InitPainter(this, handle__InitPainter, sigval1);
+		miqt_exec_callback_QTableView_initPainter(this, handle__initPainter, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_InitPainter(QPainter* painter) const {
+	void virtualbase_initPainter(QPainter* painter) const {
 
 		QTableView::initPainter(painter);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Redirected = 0;
+	intptr_t handle__redirected = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QPaintDevice* redirected(QPoint* offset) const override {
-		if (handle__Redirected == 0) {
+		if (handle__redirected == 0) {
 			return QTableView::redirected(offset);
 		}
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QTableView_Redirected(this, handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QTableView_redirected(this, handle__redirected, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_Redirected(QPoint* offset) const {
+	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
 
 		return QTableView::redirected(offset);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SharedPainter = 0;
+	intptr_t handle__sharedPainter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QPainter* sharedPainter() const override {
-		if (handle__SharedPainter == 0) {
+		if (handle__sharedPainter == 0) {
 			return QTableView::sharedPainter();
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QTableView_SharedPainter(this, handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QTableView_sharedPainter(this, handle__sharedPainter);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QPainter* virtualbase_SharedPainter() const {
+	QPainter* virtualbase_sharedPainter() const {
 
 		return QTableView::sharedPainter();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QTableView::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QTableView_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QTableView::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QTableView::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QTableView_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QTableView_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QTableView::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QTableView::connectNotify(signal);
 			return;
 		}
@@ -2374,24 +2374,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QTableView_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QTableView_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QTableView::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QTableView::disconnectNotify(signal);
 			return;
 		}
@@ -2400,13 +2400,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QTableView_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QTableView_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QTableView::disconnectNotify(*signal);
 
@@ -2426,15 +2426,15 @@ void QTableView_virtbase(QTableView* src, QAbstractItemView** outptr_QAbstractIt
 	*outptr_QAbstractItemView = static_cast<QAbstractItemView*>(src);
 }
 
-QMetaObject* QTableView_MetaObject(const QTableView* self) {
+QMetaObject* QTableView_metaObject(const QTableView* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QTableView_Metacast(QTableView* self, const char* param1) {
+void* QTableView_metacast(QTableView* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QTableView_Tr(const char* s) {
+struct miqt_string QTableView_tr(const char* s) {
 	QString _ret = QTableView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -2445,200 +2445,200 @@ struct miqt_string QTableView_Tr(const char* s) {
 	return _ms;
 }
 
-void QTableView_SetModel(QTableView* self, QAbstractItemModel* model) {
+void QTableView_setModel(QTableView* self, QAbstractItemModel* model) {
 	self->setModel(model);
 }
 
-void QTableView_SetRootIndex(QTableView* self, QModelIndex* index) {
+void QTableView_setRootIndex(QTableView* self, QModelIndex* index) {
 	self->setRootIndex(*index);
 }
 
-void QTableView_SetSelectionModel(QTableView* self, QItemSelectionModel* selectionModel) {
+void QTableView_setSelectionModel(QTableView* self, QItemSelectionModel* selectionModel) {
 	self->setSelectionModel(selectionModel);
 }
 
-void QTableView_DoItemsLayout(QTableView* self) {
+void QTableView_doItemsLayout(QTableView* self) {
 	self->doItemsLayout();
 }
 
-QHeaderView* QTableView_HorizontalHeader(const QTableView* self) {
+QHeaderView* QTableView_horizontalHeader(const QTableView* self) {
 	return self->horizontalHeader();
 }
 
-QHeaderView* QTableView_VerticalHeader(const QTableView* self) {
+QHeaderView* QTableView_verticalHeader(const QTableView* self) {
 	return self->verticalHeader();
 }
 
-void QTableView_SetHorizontalHeader(QTableView* self, QHeaderView* header) {
+void QTableView_setHorizontalHeader(QTableView* self, QHeaderView* header) {
 	self->setHorizontalHeader(header);
 }
 
-void QTableView_SetVerticalHeader(QTableView* self, QHeaderView* header) {
+void QTableView_setVerticalHeader(QTableView* self, QHeaderView* header) {
 	self->setVerticalHeader(header);
 }
 
-int QTableView_RowViewportPosition(const QTableView* self, int row) {
+int QTableView_rowViewportPosition(const QTableView* self, int row) {
 	return self->rowViewportPosition(static_cast<int>(row));
 }
 
-int QTableView_RowAt(const QTableView* self, int y) {
+int QTableView_rowAt(const QTableView* self, int y) {
 	return self->rowAt(static_cast<int>(y));
 }
 
-void QTableView_SetRowHeight(QTableView* self, int row, int height) {
+void QTableView_setRowHeight(QTableView* self, int row, int height) {
 	self->setRowHeight(static_cast<int>(row), static_cast<int>(height));
 }
 
-int QTableView_RowHeight(const QTableView* self, int row) {
+int QTableView_rowHeight(const QTableView* self, int row) {
 	return self->rowHeight(static_cast<int>(row));
 }
 
-int QTableView_ColumnViewportPosition(const QTableView* self, int column) {
+int QTableView_columnViewportPosition(const QTableView* self, int column) {
 	return self->columnViewportPosition(static_cast<int>(column));
 }
 
-int QTableView_ColumnAt(const QTableView* self, int x) {
+int QTableView_columnAt(const QTableView* self, int x) {
 	return self->columnAt(static_cast<int>(x));
 }
 
-void QTableView_SetColumnWidth(QTableView* self, int column, int width) {
+void QTableView_setColumnWidth(QTableView* self, int column, int width) {
 	self->setColumnWidth(static_cast<int>(column), static_cast<int>(width));
 }
 
-int QTableView_ColumnWidth(const QTableView* self, int column) {
+int QTableView_columnWidth(const QTableView* self, int column) {
 	return self->columnWidth(static_cast<int>(column));
 }
 
-bool QTableView_IsRowHidden(const QTableView* self, int row) {
+bool QTableView_isRowHidden(const QTableView* self, int row) {
 	return self->isRowHidden(static_cast<int>(row));
 }
 
-void QTableView_SetRowHidden(QTableView* self, int row, bool hide) {
+void QTableView_setRowHidden(QTableView* self, int row, bool hide) {
 	self->setRowHidden(static_cast<int>(row), hide);
 }
 
-bool QTableView_IsColumnHidden(const QTableView* self, int column) {
+bool QTableView_isColumnHidden(const QTableView* self, int column) {
 	return self->isColumnHidden(static_cast<int>(column));
 }
 
-void QTableView_SetColumnHidden(QTableView* self, int column, bool hide) {
+void QTableView_setColumnHidden(QTableView* self, int column, bool hide) {
 	self->setColumnHidden(static_cast<int>(column), hide);
 }
 
-void QTableView_SetSortingEnabled(QTableView* self, bool enable) {
+void QTableView_setSortingEnabled(QTableView* self, bool enable) {
 	self->setSortingEnabled(enable);
 }
 
-bool QTableView_IsSortingEnabled(const QTableView* self) {
+bool QTableView_isSortingEnabled(const QTableView* self) {
 	return self->isSortingEnabled();
 }
 
-bool QTableView_ShowGrid(const QTableView* self) {
+bool QTableView_showGrid(const QTableView* self) {
 	return self->showGrid();
 }
 
-int QTableView_GridStyle(const QTableView* self) {
+int QTableView_gridStyle(const QTableView* self) {
 	Qt::PenStyle _ret = self->gridStyle();
 	return static_cast<int>(_ret);
 }
 
-void QTableView_SetGridStyle(QTableView* self, int style) {
+void QTableView_setGridStyle(QTableView* self, int style) {
 	self->setGridStyle(static_cast<Qt::PenStyle>(style));
 }
 
-void QTableView_SetWordWrap(QTableView* self, bool on) {
+void QTableView_setWordWrap(QTableView* self, bool on) {
 	self->setWordWrap(on);
 }
 
-bool QTableView_WordWrap(const QTableView* self) {
+bool QTableView_wordWrap(const QTableView* self) {
 	return self->wordWrap();
 }
 
-void QTableView_SetCornerButtonEnabled(QTableView* self, bool enable) {
+void QTableView_setCornerButtonEnabled(QTableView* self, bool enable) {
 	self->setCornerButtonEnabled(enable);
 }
 
-bool QTableView_IsCornerButtonEnabled(const QTableView* self) {
+bool QTableView_isCornerButtonEnabled(const QTableView* self) {
 	return self->isCornerButtonEnabled();
 }
 
-QRect* QTableView_VisualRect(const QTableView* self, QModelIndex* index) {
+QRect* QTableView_visualRect(const QTableView* self, QModelIndex* index) {
 	return new QRect(self->visualRect(*index));
 }
 
-void QTableView_ScrollTo(QTableView* self, QModelIndex* index, int hint) {
+void QTableView_scrollTo(QTableView* self, QModelIndex* index, int hint) {
 	self->scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
 }
 
-QModelIndex* QTableView_IndexAt(const QTableView* self, QPoint* p) {
+QModelIndex* QTableView_indexAt(const QTableView* self, QPoint* p) {
 	return new QModelIndex(self->indexAt(*p));
 }
 
-void QTableView_SetSpan(QTableView* self, int row, int column, int rowSpan, int columnSpan) {
+void QTableView_setSpan(QTableView* self, int row, int column, int rowSpan, int columnSpan) {
 	self->setSpan(static_cast<int>(row), static_cast<int>(column), static_cast<int>(rowSpan), static_cast<int>(columnSpan));
 }
 
-int QTableView_RowSpan(const QTableView* self, int row, int column) {
+int QTableView_rowSpan(const QTableView* self, int row, int column) {
 	return self->rowSpan(static_cast<int>(row), static_cast<int>(column));
 }
 
-int QTableView_ColumnSpan(const QTableView* self, int row, int column) {
+int QTableView_columnSpan(const QTableView* self, int row, int column) {
 	return self->columnSpan(static_cast<int>(row), static_cast<int>(column));
 }
 
-void QTableView_ClearSpans(QTableView* self) {
+void QTableView_clearSpans(QTableView* self) {
 	self->clearSpans();
 }
 
-void QTableView_SelectRow(QTableView* self, int row) {
+void QTableView_selectRow(QTableView* self, int row) {
 	self->selectRow(static_cast<int>(row));
 }
 
-void QTableView_SelectColumn(QTableView* self, int column) {
+void QTableView_selectColumn(QTableView* self, int column) {
 	self->selectColumn(static_cast<int>(column));
 }
 
-void QTableView_HideRow(QTableView* self, int row) {
+void QTableView_hideRow(QTableView* self, int row) {
 	self->hideRow(static_cast<int>(row));
 }
 
-void QTableView_HideColumn(QTableView* self, int column) {
+void QTableView_hideColumn(QTableView* self, int column) {
 	self->hideColumn(static_cast<int>(column));
 }
 
-void QTableView_ShowRow(QTableView* self, int row) {
+void QTableView_showRow(QTableView* self, int row) {
 	self->showRow(static_cast<int>(row));
 }
 
-void QTableView_ShowColumn(QTableView* self, int column) {
+void QTableView_showColumn(QTableView* self, int column) {
 	self->showColumn(static_cast<int>(column));
 }
 
-void QTableView_ResizeRowToContents(QTableView* self, int row) {
+void QTableView_resizeRowToContents(QTableView* self, int row) {
 	self->resizeRowToContents(static_cast<int>(row));
 }
 
-void QTableView_ResizeRowsToContents(QTableView* self) {
+void QTableView_resizeRowsToContents(QTableView* self) {
 	self->resizeRowsToContents();
 }
 
-void QTableView_ResizeColumnToContents(QTableView* self, int column) {
+void QTableView_resizeColumnToContents(QTableView* self, int column) {
 	self->resizeColumnToContents(static_cast<int>(column));
 }
 
-void QTableView_ResizeColumnsToContents(QTableView* self) {
+void QTableView_resizeColumnsToContents(QTableView* self) {
 	self->resizeColumnsToContents();
 }
 
-void QTableView_SortByColumn(QTableView* self, int column, int order) {
+void QTableView_sortByColumn(QTableView* self, int column, int order) {
 	self->sortByColumn(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
-void QTableView_SetShowGrid(QTableView* self, bool show) {
+void QTableView_setShowGrid(QTableView* self, bool show) {
 	self->setShowGrid(show);
 }
 
-struct miqt_string QTableView_Tr2(const char* s, const char* c) {
+struct miqt_string QTableView_tr2(const char* s, const char* c) {
 	QString _ret = QTableView::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -2649,7 +2649,7 @@ struct miqt_string QTableView_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QTableView_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QTableView_tr3(const char* s, const char* c, int n) {
 	QString _ret = QTableView::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -2660,1281 +2660,1281 @@ struct miqt_string QTableView_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QTableView_override_virtual_SetModel(void* self, intptr_t slot) {
+bool QTableView_override_virtual_setModel(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetModel = slot;
+	self_cast->handle__setModel = slot;
 	return true;
 }
 
-void QTableView_virtualbase_SetModel(void* self, QAbstractItemModel* model) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_SetModel(model);
+void QTableView_virtualbase_setModel(void* self, QAbstractItemModel* model) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_setModel(model);
 }
 
-bool QTableView_override_virtual_SetRootIndex(void* self, intptr_t slot) {
+bool QTableView_override_virtual_setRootIndex(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetRootIndex = slot;
+	self_cast->handle__setRootIndex = slot;
 	return true;
 }
 
-void QTableView_virtualbase_SetRootIndex(void* self, QModelIndex* index) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_SetRootIndex(index);
+void QTableView_virtualbase_setRootIndex(void* self, QModelIndex* index) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_setRootIndex(index);
 }
 
-bool QTableView_override_virtual_SetSelectionModel(void* self, intptr_t slot) {
+bool QTableView_override_virtual_setSelectionModel(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetSelectionModel = slot;
+	self_cast->handle__setSelectionModel = slot;
 	return true;
 }
 
-void QTableView_virtualbase_SetSelectionModel(void* self, QItemSelectionModel* selectionModel) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_SetSelectionModel(selectionModel);
+void QTableView_virtualbase_setSelectionModel(void* self, QItemSelectionModel* selectionModel) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_setSelectionModel(selectionModel);
 }
 
-bool QTableView_override_virtual_DoItemsLayout(void* self, intptr_t slot) {
+bool QTableView_override_virtual_doItemsLayout(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DoItemsLayout = slot;
+	self_cast->handle__doItemsLayout = slot;
 	return true;
 }
 
-void QTableView_virtualbase_DoItemsLayout(void* self) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_DoItemsLayout();
+void QTableView_virtualbase_doItemsLayout(void* self) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_doItemsLayout();
 }
 
-bool QTableView_override_virtual_VisualRect(void* self, intptr_t slot) {
+bool QTableView_override_virtual_visualRect(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__VisualRect = slot;
+	self_cast->handle__visualRect = slot;
 	return true;
 }
 
-QRect* QTableView_virtualbase_VisualRect(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_VisualRect(index);
+QRect* QTableView_virtualbase_visualRect(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_visualRect(index);
 }
 
-bool QTableView_override_virtual_ScrollTo(void* self, intptr_t slot) {
+bool QTableView_override_virtual_scrollTo(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ScrollTo = slot;
+	self_cast->handle__scrollTo = slot;
 	return true;
 }
 
-void QTableView_virtualbase_ScrollTo(void* self, QModelIndex* index, int hint) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_ScrollTo(index, hint);
+void QTableView_virtualbase_scrollTo(void* self, QModelIndex* index, int hint) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_scrollTo(index, hint);
 }
 
-bool QTableView_override_virtual_IndexAt(void* self, intptr_t slot) {
+bool QTableView_override_virtual_indexAt(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__IndexAt = slot;
+	self_cast->handle__indexAt = slot;
 	return true;
 }
 
-QModelIndex* QTableView_virtualbase_IndexAt(const void* self, QPoint* p) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_IndexAt(p);
+QModelIndex* QTableView_virtualbase_indexAt(const void* self, QPoint* p) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_indexAt(p);
 }
 
-bool QTableView_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
+bool QTableView_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ScrollContentsBy = slot;
+	self_cast->handle__scrollContentsBy = slot;
 	return true;
 }
 
-void QTableView_virtualbase_ScrollContentsBy(void* self, int dx, int dy) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_ScrollContentsBy(dx, dy);
+void QTableView_virtualbase_scrollContentsBy(void* self, int dx, int dy) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_scrollContentsBy(dx, dy);
 }
 
-bool QTableView_override_virtual_InitViewItemOption(void* self, intptr_t slot) {
+bool QTableView_override_virtual_initViewItemOption(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InitViewItemOption = slot;
+	self_cast->handle__initViewItemOption = slot;
 	return true;
 }
 
-void QTableView_virtualbase_InitViewItemOption(const void* self, QStyleOptionViewItem* option) {
-	( (const MiqtVirtualQTableView*)(self) )->virtualbase_InitViewItemOption(option);
+void QTableView_virtualbase_initViewItemOption(const void* self, QStyleOptionViewItem* option) {
+	( (const MiqtVirtualQTableView*)(self) )->virtualbase_initViewItemOption(option);
 }
 
-bool QTableView_override_virtual_PaintEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_paintEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__PaintEvent = slot;
+	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_PaintEvent(void* self, QPaintEvent* e) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_PaintEvent(e);
+void QTableView_virtualbase_paintEvent(void* self, QPaintEvent* e) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_paintEvent(e);
 }
 
-bool QTableView_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_TimerEvent(event);
+void QTableView_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QTableView_override_virtual_HorizontalOffset(void* self, intptr_t slot) {
+bool QTableView_override_virtual_horizontalOffset(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HorizontalOffset = slot;
+	self_cast->handle__horizontalOffset = slot;
 	return true;
 }
 
-int QTableView_virtualbase_HorizontalOffset(const void* self) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_HorizontalOffset();
+int QTableView_virtualbase_horizontalOffset(const void* self) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_horizontalOffset();
 }
 
-bool QTableView_override_virtual_VerticalOffset(void* self, intptr_t slot) {
+bool QTableView_override_virtual_verticalOffset(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__VerticalOffset = slot;
+	self_cast->handle__verticalOffset = slot;
 	return true;
 }
 
-int QTableView_virtualbase_VerticalOffset(const void* self) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_VerticalOffset();
+int QTableView_virtualbase_verticalOffset(const void* self) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_verticalOffset();
 }
 
-bool QTableView_override_virtual_MoveCursor(void* self, intptr_t slot) {
+bool QTableView_override_virtual_moveCursor(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MoveCursor = slot;
+	self_cast->handle__moveCursor = slot;
 	return true;
 }
 
-QModelIndex* QTableView_virtualbase_MoveCursor(void* self, int cursorAction, int modifiers) {
-	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_MoveCursor(cursorAction, modifiers);
+QModelIndex* QTableView_virtualbase_moveCursor(void* self, int cursorAction, int modifiers) {
+	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_moveCursor(cursorAction, modifiers);
 }
 
-bool QTableView_override_virtual_SetSelection(void* self, intptr_t slot) {
+bool QTableView_override_virtual_setSelection(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetSelection = slot;
+	self_cast->handle__setSelection = slot;
 	return true;
 }
 
-void QTableView_virtualbase_SetSelection(void* self, QRect* rect, int command) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_SetSelection(rect, command);
+void QTableView_virtualbase_setSelection(void* self, QRect* rect, int command) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_setSelection(rect, command);
 }
 
-bool QTableView_override_virtual_VisualRegionForSelection(void* self, intptr_t slot) {
+bool QTableView_override_virtual_visualRegionForSelection(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__VisualRegionForSelection = slot;
+	self_cast->handle__visualRegionForSelection = slot;
 	return true;
 }
 
-QRegion* QTableView_virtualbase_VisualRegionForSelection(const void* self, QItemSelection* selection) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_VisualRegionForSelection(selection);
+QRegion* QTableView_virtualbase_visualRegionForSelection(const void* self, QItemSelection* selection) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_visualRegionForSelection(selection);
 }
 
-bool QTableView_override_virtual_SelectedIndexes(void* self, intptr_t slot) {
+bool QTableView_override_virtual_selectedIndexes(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SelectedIndexes = slot;
+	self_cast->handle__selectedIndexes = slot;
 	return true;
 }
 
-struct miqt_array /* of QModelIndex* */  QTableView_virtualbase_SelectedIndexes(const void* self) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_SelectedIndexes();
+struct miqt_array /* of QModelIndex* */  QTableView_virtualbase_selectedIndexes(const void* self) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_selectedIndexes();
 }
 
-bool QTableView_override_virtual_UpdateGeometries(void* self, intptr_t slot) {
+bool QTableView_override_virtual_updateGeometries(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__UpdateGeometries = slot;
+	self_cast->handle__updateGeometries = slot;
 	return true;
 }
 
-void QTableView_virtualbase_UpdateGeometries(void* self) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_UpdateGeometries();
+void QTableView_virtualbase_updateGeometries(void* self) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_updateGeometries();
 }
 
-bool QTableView_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
+bool QTableView_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ViewportSizeHint = slot;
+	self_cast->handle__viewportSizeHint = slot;
 	return true;
 }
 
-QSize* QTableView_virtualbase_ViewportSizeHint(const void* self) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_ViewportSizeHint();
+QSize* QTableView_virtualbase_viewportSizeHint(const void* self) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_viewportSizeHint();
 }
 
-bool QTableView_override_virtual_SizeHintForRow(void* self, intptr_t slot) {
+bool QTableView_override_virtual_sizeHintForRow(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SizeHintForRow = slot;
+	self_cast->handle__sizeHintForRow = slot;
 	return true;
 }
 
-int QTableView_virtualbase_SizeHintForRow(const void* self, int row) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_SizeHintForRow(row);
+int QTableView_virtualbase_sizeHintForRow(const void* self, int row) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_sizeHintForRow(row);
 }
 
-bool QTableView_override_virtual_SizeHintForColumn(void* self, intptr_t slot) {
+bool QTableView_override_virtual_sizeHintForColumn(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SizeHintForColumn = slot;
+	self_cast->handle__sizeHintForColumn = slot;
 	return true;
 }
 
-int QTableView_virtualbase_SizeHintForColumn(const void* self, int column) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_SizeHintForColumn(column);
+int QTableView_virtualbase_sizeHintForColumn(const void* self, int column) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_sizeHintForColumn(column);
 }
 
-bool QTableView_override_virtual_VerticalScrollbarAction(void* self, intptr_t slot) {
+bool QTableView_override_virtual_verticalScrollbarAction(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__VerticalScrollbarAction = slot;
+	self_cast->handle__verticalScrollbarAction = slot;
 	return true;
 }
 
-void QTableView_virtualbase_VerticalScrollbarAction(void* self, int action) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_VerticalScrollbarAction(action);
+void QTableView_virtualbase_verticalScrollbarAction(void* self, int action) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_verticalScrollbarAction(action);
 }
 
-bool QTableView_override_virtual_HorizontalScrollbarAction(void* self, intptr_t slot) {
+bool QTableView_override_virtual_horizontalScrollbarAction(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HorizontalScrollbarAction = slot;
+	self_cast->handle__horizontalScrollbarAction = slot;
 	return true;
 }
 
-void QTableView_virtualbase_HorizontalScrollbarAction(void* self, int action) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_HorizontalScrollbarAction(action);
+void QTableView_virtualbase_horizontalScrollbarAction(void* self, int action) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_horizontalScrollbarAction(action);
 }
 
-bool QTableView_override_virtual_IsIndexHidden(void* self, intptr_t slot) {
+bool QTableView_override_virtual_isIndexHidden(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__IsIndexHidden = slot;
+	self_cast->handle__isIndexHidden = slot;
 	return true;
 }
 
-bool QTableView_virtualbase_IsIndexHidden(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_IsIndexHidden(index);
+bool QTableView_virtualbase_isIndexHidden(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_isIndexHidden(index);
 }
 
-bool QTableView_override_virtual_SelectionChanged(void* self, intptr_t slot) {
+bool QTableView_override_virtual_selectionChanged(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SelectionChanged = slot;
+	self_cast->handle__selectionChanged = slot;
 	return true;
 }
 
-void QTableView_virtualbase_SelectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_SelectionChanged(selected, deselected);
+void QTableView_virtualbase_selectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_selectionChanged(selected, deselected);
 }
 
-bool QTableView_override_virtual_CurrentChanged(void* self, intptr_t slot) {
+bool QTableView_override_virtual_currentChanged(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CurrentChanged = slot;
+	self_cast->handle__currentChanged = slot;
 	return true;
 }
 
-void QTableView_virtualbase_CurrentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_CurrentChanged(current, previous);
+void QTableView_virtualbase_currentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_currentChanged(current, previous);
 }
 
-bool QTableView_override_virtual_KeyboardSearch(void* self, intptr_t slot) {
+bool QTableView_override_virtual_keyboardSearch(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__KeyboardSearch = slot;
+	self_cast->handle__keyboardSearch = slot;
 	return true;
 }
 
-void QTableView_virtualbase_KeyboardSearch(void* self, struct miqt_string search) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_KeyboardSearch(search);
+void QTableView_virtualbase_keyboardSearch(void* self, struct miqt_string search) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_keyboardSearch(search);
 }
 
-bool QTableView_override_virtual_ItemDelegateForIndex(void* self, intptr_t slot) {
+bool QTableView_override_virtual_itemDelegateForIndex(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ItemDelegateForIndex = slot;
+	self_cast->handle__itemDelegateForIndex = slot;
 	return true;
 }
 
-QAbstractItemDelegate* QTableView_virtualbase_ItemDelegateForIndex(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_ItemDelegateForIndex(index);
+QAbstractItemDelegate* QTableView_virtualbase_itemDelegateForIndex(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_itemDelegateForIndex(index);
 }
 
-bool QTableView_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+bool QTableView_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InputMethodQuery = slot;
+	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
-QVariant* QTableView_virtualbase_InputMethodQuery(const void* self, int query) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_InputMethodQuery(query);
+QVariant* QTableView_virtualbase_inputMethodQuery(const void* self, int query) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_inputMethodQuery(query);
 }
 
-bool QTableView_override_virtual_Reset(void* self, intptr_t slot) {
+bool QTableView_override_virtual_reset(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Reset = slot;
+	self_cast->handle__reset = slot;
 	return true;
 }
 
-void QTableView_virtualbase_Reset(void* self) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_Reset();
+void QTableView_virtualbase_reset(void* self) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_reset();
 }
 
-bool QTableView_override_virtual_SelectAll(void* self, intptr_t slot) {
+bool QTableView_override_virtual_selectAll(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SelectAll = slot;
+	self_cast->handle__selectAll = slot;
 	return true;
 }
 
-void QTableView_virtualbase_SelectAll(void* self) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_SelectAll();
+void QTableView_virtualbase_selectAll(void* self) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_selectAll();
 }
 
-bool QTableView_override_virtual_DataChanged(void* self, intptr_t slot) {
+bool QTableView_override_virtual_dataChanged(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DataChanged = slot;
+	self_cast->handle__dataChanged = slot;
 	return true;
 }
 
-void QTableView_virtualbase_DataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_DataChanged(topLeft, bottomRight, roles);
+void QTableView_virtualbase_dataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_dataChanged(topLeft, bottomRight, roles);
 }
 
-bool QTableView_override_virtual_RowsInserted(void* self, intptr_t slot) {
+bool QTableView_override_virtual_rowsInserted(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__RowsInserted = slot;
+	self_cast->handle__rowsInserted = slot;
 	return true;
 }
 
-void QTableView_virtualbase_RowsInserted(void* self, QModelIndex* parent, int start, int end) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_RowsInserted(parent, start, end);
+void QTableView_virtualbase_rowsInserted(void* self, QModelIndex* parent, int start, int end) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_rowsInserted(parent, start, end);
 }
 
-bool QTableView_override_virtual_RowsAboutToBeRemoved(void* self, intptr_t slot) {
+bool QTableView_override_virtual_rowsAboutToBeRemoved(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__RowsAboutToBeRemoved = slot;
+	self_cast->handle__rowsAboutToBeRemoved = slot;
 	return true;
 }
 
-void QTableView_virtualbase_RowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_RowsAboutToBeRemoved(parent, start, end);
+void QTableView_virtualbase_rowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_rowsAboutToBeRemoved(parent, start, end);
 }
 
-bool QTableView_override_virtual_UpdateEditorData(void* self, intptr_t slot) {
+bool QTableView_override_virtual_updateEditorData(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__UpdateEditorData = slot;
+	self_cast->handle__updateEditorData = slot;
 	return true;
 }
 
-void QTableView_virtualbase_UpdateEditorData(void* self) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_UpdateEditorData();
+void QTableView_virtualbase_updateEditorData(void* self) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_updateEditorData();
 }
 
-bool QTableView_override_virtual_UpdateEditorGeometries(void* self, intptr_t slot) {
+bool QTableView_override_virtual_updateEditorGeometries(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__UpdateEditorGeometries = slot;
+	self_cast->handle__updateEditorGeometries = slot;
 	return true;
 }
 
-void QTableView_virtualbase_UpdateEditorGeometries(void* self) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_UpdateEditorGeometries();
+void QTableView_virtualbase_updateEditorGeometries(void* self) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_updateEditorGeometries();
 }
 
-bool QTableView_override_virtual_VerticalScrollbarValueChanged(void* self, intptr_t slot) {
+bool QTableView_override_virtual_verticalScrollbarValueChanged(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__VerticalScrollbarValueChanged = slot;
+	self_cast->handle__verticalScrollbarValueChanged = slot;
 	return true;
 }
 
-void QTableView_virtualbase_VerticalScrollbarValueChanged(void* self, int value) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_VerticalScrollbarValueChanged(value);
+void QTableView_virtualbase_verticalScrollbarValueChanged(void* self, int value) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_verticalScrollbarValueChanged(value);
 }
 
-bool QTableView_override_virtual_HorizontalScrollbarValueChanged(void* self, intptr_t slot) {
+bool QTableView_override_virtual_horizontalScrollbarValueChanged(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HorizontalScrollbarValueChanged = slot;
+	self_cast->handle__horizontalScrollbarValueChanged = slot;
 	return true;
 }
 
-void QTableView_virtualbase_HorizontalScrollbarValueChanged(void* self, int value) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_HorizontalScrollbarValueChanged(value);
+void QTableView_virtualbase_horizontalScrollbarValueChanged(void* self, int value) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_horizontalScrollbarValueChanged(value);
 }
 
-bool QTableView_override_virtual_CloseEditor(void* self, intptr_t slot) {
+bool QTableView_override_virtual_closeEditor(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CloseEditor = slot;
+	self_cast->handle__closeEditor = slot;
 	return true;
 }
 
-void QTableView_virtualbase_CloseEditor(void* self, QWidget* editor, int hint) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_CloseEditor(editor, hint);
+void QTableView_virtualbase_closeEditor(void* self, QWidget* editor, int hint) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_closeEditor(editor, hint);
 }
 
-bool QTableView_override_virtual_CommitData(void* self, intptr_t slot) {
+bool QTableView_override_virtual_commitData(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CommitData = slot;
+	self_cast->handle__commitData = slot;
 	return true;
 }
 
-void QTableView_virtualbase_CommitData(void* self, QWidget* editor) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_CommitData(editor);
+void QTableView_virtualbase_commitData(void* self, QWidget* editor) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_commitData(editor);
 }
 
-bool QTableView_override_virtual_EditorDestroyed(void* self, intptr_t slot) {
+bool QTableView_override_virtual_editorDestroyed(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EditorDestroyed = slot;
+	self_cast->handle__editorDestroyed = slot;
 	return true;
 }
 
-void QTableView_virtualbase_EditorDestroyed(void* self, QObject* editor) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_EditorDestroyed(editor);
+void QTableView_virtualbase_editorDestroyed(void* self, QObject* editor) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_editorDestroyed(editor);
 }
 
-bool QTableView_override_virtual_Edit2(void* self, intptr_t slot) {
+bool QTableView_override_virtual_edit2(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Edit2 = slot;
+	self_cast->handle__edit2 = slot;
 	return true;
 }
 
-bool QTableView_virtualbase_Edit2(void* self, QModelIndex* index, int trigger, QEvent* event) {
-	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_Edit2(index, trigger, event);
+bool QTableView_virtualbase_edit2(void* self, QModelIndex* index, int trigger, QEvent* event) {
+	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_edit2(index, trigger, event);
 }
 
-bool QTableView_override_virtual_SelectionCommand(void* self, intptr_t slot) {
+bool QTableView_override_virtual_selectionCommand(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SelectionCommand = slot;
+	self_cast->handle__selectionCommand = slot;
 	return true;
 }
 
-int QTableView_virtualbase_SelectionCommand(const void* self, QModelIndex* index, QEvent* event) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_SelectionCommand(index, event);
+int QTableView_virtualbase_selectionCommand(const void* self, QModelIndex* index, QEvent* event) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_selectionCommand(index, event);
 }
 
-bool QTableView_override_virtual_StartDrag(void* self, intptr_t slot) {
+bool QTableView_override_virtual_startDrag(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__StartDrag = slot;
+	self_cast->handle__startDrag = slot;
 	return true;
 }
 
-void QTableView_virtualbase_StartDrag(void* self, int supportedActions) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_StartDrag(supportedActions);
+void QTableView_virtualbase_startDrag(void* self, int supportedActions) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_startDrag(supportedActions);
 }
 
-bool QTableView_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+bool QTableView_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__FocusNextPrevChild = slot;
+	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
-bool QTableView_virtualbase_FocusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_FocusNextPrevChild(next);
+bool QTableView_virtualbase_focusNextPrevChild(void* self, bool next) {
+	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_focusNextPrevChild(next);
 }
 
-bool QTableView_override_virtual_Event(void* self, intptr_t slot) {
+bool QTableView_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QTableView_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_Event(event);
+bool QTableView_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_event(event);
 }
 
-bool QTableView_override_virtual_ViewportEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_viewportEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ViewportEvent = slot;
+	self_cast->handle__viewportEvent = slot;
 	return true;
 }
 
-bool QTableView_virtualbase_ViewportEvent(void* self, QEvent* event) {
-	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_ViewportEvent(event);
+bool QTableView_virtualbase_viewportEvent(void* self, QEvent* event) {
+	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_viewportEvent(event);
 }
 
-bool QTableView_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MousePressEvent = slot;
+	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_MousePressEvent(event);
+void QTableView_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_mousePressEvent(event);
 }
 
-bool QTableView_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MouseMoveEvent = slot;
+	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_MouseMoveEvent(event);
+void QTableView_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_mouseMoveEvent(event);
 }
 
-bool QTableView_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MouseReleaseEvent = slot;
+	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_MouseReleaseEvent(event);
+void QTableView_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_mouseReleaseEvent(event);
 }
 
-bool QTableView_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MouseDoubleClickEvent = slot;
+	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_MouseDoubleClickEvent(event);
+void QTableView_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_mouseDoubleClickEvent(event);
 }
 
-bool QTableView_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DragEnterEvent = slot;
+	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_DragEnterEvent(event);
+void QTableView_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_dragEnterEvent(event);
 }
 
-bool QTableView_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DragMoveEvent = slot;
+	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_DragMoveEvent(event);
+void QTableView_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_dragMoveEvent(event);
 }
 
-bool QTableView_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DragLeaveEvent = slot;
+	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_DragLeaveEvent(event);
+void QTableView_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_dragLeaveEvent(event);
 }
 
-bool QTableView_override_virtual_DropEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_dropEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DropEvent = slot;
+	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_DropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_DropEvent(event);
+void QTableView_virtualbase_dropEvent(void* self, QDropEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_dropEvent(event);
 }
 
-bool QTableView_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__FocusInEvent = slot;
+	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_FocusInEvent(event);
+void QTableView_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_focusInEvent(event);
 }
 
-bool QTableView_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__FocusOutEvent = slot;
+	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_FocusOutEvent(event);
+void QTableView_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_focusOutEvent(event);
 }
 
-bool QTableView_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__KeyPressEvent = slot;
+	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_KeyPressEvent(event);
+void QTableView_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_keyPressEvent(event);
 }
 
-bool QTableView_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ResizeEvent = slot;
+	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_ResizeEvent(event);
+void QTableView_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_resizeEvent(event);
 }
 
-bool QTableView_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InputMethodEvent = slot;
+	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_InputMethodEvent(event);
+void QTableView_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_inputMethodEvent(event);
 }
 
-bool QTableView_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QTableView_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QTableView_virtualbase_EventFilter(void* self, QObject* object, QEvent* event) {
-	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_EventFilter(object, event);
+bool QTableView_virtualbase_eventFilter(void* self, QObject* object, QEvent* event) {
+	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_eventFilter(object, event);
 }
 
-bool QTableView_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+bool QTableView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MinimumSizeHint = slot;
+	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
-QSize* QTableView_virtualbase_MinimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_MinimumSizeHint();
+QSize* QTableView_virtualbase_minimumSizeHint(const void* self) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_minimumSizeHint();
 }
 
-bool QTableView_override_virtual_SizeHint(void* self, intptr_t slot) {
+bool QTableView_override_virtual_sizeHint(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SizeHint = slot;
+	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
-QSize* QTableView_virtualbase_SizeHint(const void* self) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_SizeHint();
+QSize* QTableView_virtualbase_sizeHint(const void* self) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_sizeHint();
 }
 
-bool QTableView_override_virtual_SetupViewport(void* self, intptr_t slot) {
+bool QTableView_override_virtual_setupViewport(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetupViewport = slot;
+	self_cast->handle__setupViewport = slot;
 	return true;
 }
 
-void QTableView_virtualbase_SetupViewport(void* self, QWidget* viewport) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_SetupViewport(viewport);
+void QTableView_virtualbase_setupViewport(void* self, QWidget* viewport) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_setupViewport(viewport);
 }
 
-bool QTableView_override_virtual_WheelEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__WheelEvent = slot;
+	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_WheelEvent(void* self, QWheelEvent* param1) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_WheelEvent(param1);
+void QTableView_virtualbase_wheelEvent(void* self, QWheelEvent* param1) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_wheelEvent(param1);
 }
 
-bool QTableView_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ContextMenuEvent = slot;
+	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_ContextMenuEvent(param1);
+void QTableView_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_contextMenuEvent(param1);
 }
 
-bool QTableView_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_changeEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChangeEvent = slot;
+	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_ChangeEvent(void* self, QEvent* param1) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_ChangeEvent(param1);
+void QTableView_virtualbase_changeEvent(void* self, QEvent* param1) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_changeEvent(param1);
 }
 
-bool QTableView_override_virtual_InitStyleOption(void* self, intptr_t slot) {
+bool QTableView_override_virtual_initStyleOption(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InitStyleOption = slot;
+	self_cast->handle__initStyleOption = slot;
 	return true;
 }
 
-void QTableView_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* option) {
-	( (const MiqtVirtualQTableView*)(self) )->virtualbase_InitStyleOption(option);
+void QTableView_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
+	( (const MiqtVirtualQTableView*)(self) )->virtualbase_initStyleOption(option);
 }
 
-bool QTableView_override_virtual_DevType(void* self, intptr_t slot) {
+bool QTableView_override_virtual_devType(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DevType = slot;
+	self_cast->handle__devType = slot;
 	return true;
 }
 
-int QTableView_virtualbase_DevType(const void* self) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_DevType();
+int QTableView_virtualbase_devType(const void* self) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_devType();
 }
 
-bool QTableView_override_virtual_SetVisible(void* self, intptr_t slot) {
+bool QTableView_override_virtual_setVisible(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetVisible = slot;
+	self_cast->handle__setVisible = slot;
 	return true;
 }
 
-void QTableView_virtualbase_SetVisible(void* self, bool visible) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_SetVisible(visible);
+void QTableView_virtualbase_setVisible(void* self, bool visible) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_setVisible(visible);
 }
 
-bool QTableView_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+bool QTableView_override_virtual_heightForWidth(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HeightForWidth = slot;
+	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
-int QTableView_virtualbase_HeightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_HeightForWidth(param1);
+int QTableView_virtualbase_heightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_heightForWidth(param1);
 }
 
-bool QTableView_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+bool QTableView_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HasHeightForWidth = slot;
+	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
-bool QTableView_virtualbase_HasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_HasHeightForWidth();
+bool QTableView_virtualbase_hasHeightForWidth(const void* self) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_hasHeightForWidth();
 }
 
-bool QTableView_override_virtual_PaintEngine(void* self, intptr_t slot) {
+bool QTableView_override_virtual_paintEngine(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__PaintEngine = slot;
+	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
-QPaintEngine* QTableView_virtualbase_PaintEngine(const void* self) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_PaintEngine();
+QPaintEngine* QTableView_virtualbase_paintEngine(const void* self) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_paintEngine();
 }
 
-bool QTableView_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__KeyReleaseEvent = slot;
+	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_KeyReleaseEvent(event);
+void QTableView_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_keyReleaseEvent(event);
 }
 
-bool QTableView_override_virtual_EnterEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_enterEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EnterEvent = slot;
+	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_EnterEvent(void* self, QEnterEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_EnterEvent(event);
+void QTableView_virtualbase_enterEvent(void* self, QEnterEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_enterEvent(event);
 }
 
-bool QTableView_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__LeaveEvent = slot;
+	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_LeaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_LeaveEvent(event);
+void QTableView_virtualbase_leaveEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_leaveEvent(event);
 }
 
-bool QTableView_override_virtual_MoveEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_moveEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MoveEvent = slot;
+	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_MoveEvent(event);
+void QTableView_virtualbase_moveEvent(void* self, QMoveEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_moveEvent(event);
 }
 
-bool QTableView_override_virtual_CloseEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_closeEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CloseEvent = slot;
+	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_CloseEvent(event);
+void QTableView_virtualbase_closeEvent(void* self, QCloseEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_closeEvent(event);
 }
 
-bool QTableView_override_virtual_TabletEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TabletEvent = slot;
+	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_TabletEvent(event);
+void QTableView_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_tabletEvent(event);
 }
 
-bool QTableView_override_virtual_ActionEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_actionEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ActionEvent = slot;
+	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_ActionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_ActionEvent(event);
+void QTableView_virtualbase_actionEvent(void* self, QActionEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_actionEvent(event);
 }
 
-bool QTableView_override_virtual_ShowEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_showEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ShowEvent = slot;
+	self_cast->handle__showEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_ShowEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_ShowEvent(event);
+void QTableView_virtualbase_showEvent(void* self, QShowEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_showEvent(event);
 }
 
-bool QTableView_override_virtual_HideEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_hideEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HideEvent = slot;
+	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_HideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_HideEvent(event);
+void QTableView_virtualbase_hideEvent(void* self, QHideEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_hideEvent(event);
 }
 
-bool QTableView_override_virtual_NativeEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__NativeEvent = slot;
+	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
-bool QTableView_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
-	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_NativeEvent(eventType, message, result);
+bool QTableView_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
+	return ( (MiqtVirtualQTableView*)(self) )->virtualbase_nativeEvent(eventType, message, result);
 }
 
-bool QTableView_override_virtual_Metric(void* self, intptr_t slot) {
+bool QTableView_override_virtual_metric(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Metric = slot;
+	self_cast->handle__metric = slot;
 	return true;
 }
 
-int QTableView_virtualbase_Metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_Metric(param1);
+int QTableView_virtualbase_metric(const void* self, int param1) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_metric(param1);
 }
 
-bool QTableView_override_virtual_InitPainter(void* self, intptr_t slot) {
+bool QTableView_override_virtual_initPainter(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InitPainter = slot;
+	self_cast->handle__initPainter = slot;
 	return true;
 }
 
-void QTableView_virtualbase_InitPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQTableView*)(self) )->virtualbase_InitPainter(painter);
+void QTableView_virtualbase_initPainter(const void* self, QPainter* painter) {
+	( (const MiqtVirtualQTableView*)(self) )->virtualbase_initPainter(painter);
 }
 
-bool QTableView_override_virtual_Redirected(void* self, intptr_t slot) {
+bool QTableView_override_virtual_redirected(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Redirected = slot;
+	self_cast->handle__redirected = slot;
 	return true;
 }
 
-QPaintDevice* QTableView_virtualbase_Redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_Redirected(offset);
+QPaintDevice* QTableView_virtualbase_redirected(const void* self, QPoint* offset) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_redirected(offset);
 }
 
-bool QTableView_override_virtual_SharedPainter(void* self, intptr_t slot) {
+bool QTableView_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SharedPainter = slot;
+	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
-QPainter* QTableView_virtualbase_SharedPainter(const void* self) {
-	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_SharedPainter();
+QPainter* QTableView_virtualbase_sharedPainter(const void* self) {
+	return ( (const MiqtVirtualQTableView*)(self) )->virtualbase_sharedPainter();
 }
 
-bool QTableView_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_ChildEvent(event);
+void QTableView_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QTableView_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QTableView_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QTableView_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_CustomEvent(event);
+void QTableView_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QTableView_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QTableView_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QTableView_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_ConnectNotify(signal);
+void QTableView_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QTableView_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QTableView_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQTableView* self_cast = dynamic_cast<MiqtVirtualQTableView*>( (QTableView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QTableView_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQTableView*)(self) )->virtualbase_DisconnectNotify(signal);
+void QTableView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQTableView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QTableView_Delete(QTableView* self) {
+void QTableView_delete(QTableView* self) {
 	delete self;
 }
 

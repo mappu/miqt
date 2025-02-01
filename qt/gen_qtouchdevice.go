@@ -71,7 +71,7 @@ func NewQTouchDevice() *QTouchDevice {
 }
 
 func QTouchDevice_Devices() []*QTouchDevice {
-	var _ma C.struct_miqt_array = C.QTouchDevice_Devices()
+	var _ma C.struct_miqt_array = C.QTouchDevice_devices()
 	_ret := make([]*QTouchDevice, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTouchDevice)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -81,22 +81,22 @@ func QTouchDevice_Devices() []*QTouchDevice {
 }
 
 func (this *QTouchDevice) Name() string {
-	var _ms C.struct_miqt_string = C.QTouchDevice_Name(this.h)
+	var _ms C.struct_miqt_string = C.QTouchDevice_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTouchDevice) Type() QTouchDevice__DeviceType {
-	return (QTouchDevice__DeviceType)(C.QTouchDevice_Type(this.h))
+	return (QTouchDevice__DeviceType)(C.QTouchDevice_type(this.h))
 }
 
 func (this *QTouchDevice) Capabilities() QTouchDevice__CapabilityFlag {
-	return (QTouchDevice__CapabilityFlag)(C.QTouchDevice_Capabilities(this.h))
+	return (QTouchDevice__CapabilityFlag)(C.QTouchDevice_capabilities(this.h))
 }
 
 func (this *QTouchDevice) MaximumTouchPoints() int {
-	return (int)(C.QTouchDevice_MaximumTouchPoints(this.h))
+	return (int)(C.QTouchDevice_maximumTouchPoints(this.h))
 }
 
 func (this *QTouchDevice) SetName(name string) {
@@ -104,24 +104,24 @@ func (this *QTouchDevice) SetName(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QTouchDevice_SetName(this.h, name_ms)
+	C.QTouchDevice_setName(this.h, name_ms)
 }
 
 func (this *QTouchDevice) SetType(devType QTouchDevice__DeviceType) {
-	C.QTouchDevice_SetType(this.h, (C.int)(devType))
+	C.QTouchDevice_setType(this.h, (C.int)(devType))
 }
 
 func (this *QTouchDevice) SetCapabilities(caps QTouchDevice__CapabilityFlag) {
-	C.QTouchDevice_SetCapabilities(this.h, (C.int)(caps))
+	C.QTouchDevice_setCapabilities(this.h, (C.int)(caps))
 }
 
 func (this *QTouchDevice) SetMaximumTouchPoints(max int) {
-	C.QTouchDevice_SetMaximumTouchPoints(this.h, (C.int)(max))
+	C.QTouchDevice_setMaximumTouchPoints(this.h, (C.int)(max))
 }
 
 // Delete this object from C++ memory.
 func (this *QTouchDevice) Delete() {
-	C.QTouchDevice_Delete(this.h)
+	C.QTouchDevice_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -22,11 +22,11 @@ typedef struct QJsonObject QJsonObject;
 typedef struct QStaticPlugin QStaticPlugin;
 #endif
 
-QJsonObject* QStaticPlugin_MetaData(const QStaticPlugin* self);
-void QStaticPlugin_Delete(QStaticPlugin* self);
+QJsonObject* QStaticPlugin_metaData(const QStaticPlugin* self);
+void QStaticPlugin_delete(QStaticPlugin* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

@@ -49,107 +49,107 @@ QVector2D* QVector2D_new8(QVector2D* param1) {
 	return new QVector2D(*param1);
 }
 
-bool QVector2D_IsNull(const QVector2D* self) {
+bool QVector2D_isNull(const QVector2D* self) {
 	return self->isNull();
 }
 
-float QVector2D_X(const QVector2D* self) {
+float QVector2D_x(const QVector2D* self) {
 	return self->x();
 }
 
-float QVector2D_Y(const QVector2D* self) {
+float QVector2D_y(const QVector2D* self) {
 	return self->y();
 }
 
-void QVector2D_SetX(QVector2D* self, float x) {
+void QVector2D_setX(QVector2D* self, float x) {
 	self->setX(static_cast<float>(x));
 }
 
-void QVector2D_SetY(QVector2D* self, float y) {
+void QVector2D_setY(QVector2D* self, float y) {
 	self->setY(static_cast<float>(y));
 }
 
-float QVector2D_OperatorSubscript(const QVector2D* self, int i) {
+float QVector2D_operatorSubscript(const QVector2D* self, int i) {
 	return self->operator[](static_cast<int>(i));
 }
 
-float QVector2D_Length(const QVector2D* self) {
+float QVector2D_length(const QVector2D* self) {
 	return self->length();
 }
 
-float QVector2D_LengthSquared(const QVector2D* self) {
+float QVector2D_lengthSquared(const QVector2D* self) {
 	return self->lengthSquared();
 }
 
-QVector2D* QVector2D_Normalized(const QVector2D* self) {
+QVector2D* QVector2D_normalized(const QVector2D* self) {
 	return new QVector2D(self->normalized());
 }
 
-void QVector2D_Normalize(QVector2D* self) {
+void QVector2D_normalize(QVector2D* self) {
 	self->normalize();
 }
 
-float QVector2D_DistanceToPoint(const QVector2D* self, QVector2D* point) {
+float QVector2D_distanceToPoint(const QVector2D* self, QVector2D* point) {
 	return self->distanceToPoint(*point);
 }
 
-float QVector2D_DistanceToLine(const QVector2D* self, QVector2D* point, QVector2D* direction) {
+float QVector2D_distanceToLine(const QVector2D* self, QVector2D* point, QVector2D* direction) {
 	return self->distanceToLine(*point, *direction);
 }
 
-QVector2D* QVector2D_OperatorPlusAssign(QVector2D* self, QVector2D* vector) {
+QVector2D* QVector2D_operatorPlusAssign(QVector2D* self, QVector2D* vector) {
 	QVector2D& _ret = self->operator+=(*vector);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QVector2D* QVector2D_OperatorMinusAssign(QVector2D* self, QVector2D* vector) {
+QVector2D* QVector2D_operatorMinusAssign(QVector2D* self, QVector2D* vector) {
 	QVector2D& _ret = self->operator-=(*vector);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QVector2D* QVector2D_OperatorMultiplyAssign(QVector2D* self, float factor) {
+QVector2D* QVector2D_operatorMultiplyAssign(QVector2D* self, float factor) {
 	QVector2D& _ret = self->operator*=(static_cast<float>(factor));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QVector2D* QVector2D_OperatorMultiplyAssignWithVector(QVector2D* self, QVector2D* vector) {
+QVector2D* QVector2D_operatorMultiplyAssignWithVector(QVector2D* self, QVector2D* vector) {
 	QVector2D& _ret = self->operator*=(*vector);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QVector2D* QVector2D_OperatorDivideAssign(QVector2D* self, float divisor) {
+QVector2D* QVector2D_operatorDivideAssign(QVector2D* self, float divisor) {
 	QVector2D& _ret = self->operator/=(static_cast<float>(divisor));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QVector2D* QVector2D_OperatorDivideAssignWithVector(QVector2D* self, QVector2D* vector) {
+QVector2D* QVector2D_operatorDivideAssignWithVector(QVector2D* self, QVector2D* vector) {
 	QVector2D& _ret = self->operator/=(*vector);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-float QVector2D_DotProduct(QVector2D* v1, QVector2D* v2) {
+float QVector2D_dotProduct(QVector2D* v1, QVector2D* v2) {
 	return QVector2D::dotProduct(*v1, *v2);
 }
 
-QVector3D* QVector2D_ToVector3D(const QVector2D* self) {
+QVector3D* QVector2D_toVector3D(const QVector2D* self) {
 	return new QVector3D(self->toVector3D());
 }
 
-QVector4D* QVector2D_ToVector4D(const QVector2D* self) {
+QVector4D* QVector2D_toVector4D(const QVector2D* self) {
 	return new QVector4D(self->toVector4D());
 }
 
-QPoint* QVector2D_ToPoint(const QVector2D* self) {
+QPoint* QVector2D_toPoint(const QVector2D* self) {
 	return new QPoint(self->toPoint());
 }
 
-QPointF* QVector2D_ToPointF(const QVector2D* self) {
+QPointF* QVector2D_toPointF(const QVector2D* self) {
 	return new QPointF(self->toPointF());
 }
 
@@ -157,7 +157,7 @@ QVariant* QVector2D_ToQVariant(const QVector2D* self) {
 	return new QVariant(self->operator QVariant());
 }
 
-void QVector2D_Delete(QVector2D* self) {
+void QVector2D_delete(QVector2D* self) {
 	delete self;
 }
 
@@ -197,143 +197,143 @@ QVector3D* QVector3D_new9(QVector3D* param1) {
 	return new QVector3D(*param1);
 }
 
-bool QVector3D_IsNull(const QVector3D* self) {
+bool QVector3D_isNull(const QVector3D* self) {
 	return self->isNull();
 }
 
-float QVector3D_X(const QVector3D* self) {
+float QVector3D_x(const QVector3D* self) {
 	return self->x();
 }
 
-float QVector3D_Y(const QVector3D* self) {
+float QVector3D_y(const QVector3D* self) {
 	return self->y();
 }
 
-float QVector3D_Z(const QVector3D* self) {
+float QVector3D_z(const QVector3D* self) {
 	return self->z();
 }
 
-void QVector3D_SetX(QVector3D* self, float x) {
+void QVector3D_setX(QVector3D* self, float x) {
 	self->setX(static_cast<float>(x));
 }
 
-void QVector3D_SetY(QVector3D* self, float y) {
+void QVector3D_setY(QVector3D* self, float y) {
 	self->setY(static_cast<float>(y));
 }
 
-void QVector3D_SetZ(QVector3D* self, float z) {
+void QVector3D_setZ(QVector3D* self, float z) {
 	self->setZ(static_cast<float>(z));
 }
 
-float QVector3D_OperatorSubscript(const QVector3D* self, int i) {
+float QVector3D_operatorSubscript(const QVector3D* self, int i) {
 	return self->operator[](static_cast<int>(i));
 }
 
-float QVector3D_Length(const QVector3D* self) {
+float QVector3D_length(const QVector3D* self) {
 	return self->length();
 }
 
-float QVector3D_LengthSquared(const QVector3D* self) {
+float QVector3D_lengthSquared(const QVector3D* self) {
 	return self->lengthSquared();
 }
 
-QVector3D* QVector3D_Normalized(const QVector3D* self) {
+QVector3D* QVector3D_normalized(const QVector3D* self) {
 	return new QVector3D(self->normalized());
 }
 
-void QVector3D_Normalize(QVector3D* self) {
+void QVector3D_normalize(QVector3D* self) {
 	self->normalize();
 }
 
-QVector3D* QVector3D_OperatorPlusAssign(QVector3D* self, QVector3D* vector) {
+QVector3D* QVector3D_operatorPlusAssign(QVector3D* self, QVector3D* vector) {
 	QVector3D& _ret = self->operator+=(*vector);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QVector3D* QVector3D_OperatorMinusAssign(QVector3D* self, QVector3D* vector) {
+QVector3D* QVector3D_operatorMinusAssign(QVector3D* self, QVector3D* vector) {
 	QVector3D& _ret = self->operator-=(*vector);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QVector3D* QVector3D_OperatorMultiplyAssign(QVector3D* self, float factor) {
+QVector3D* QVector3D_operatorMultiplyAssign(QVector3D* self, float factor) {
 	QVector3D& _ret = self->operator*=(static_cast<float>(factor));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QVector3D* QVector3D_OperatorMultiplyAssignWithVector(QVector3D* self, QVector3D* vector) {
+QVector3D* QVector3D_operatorMultiplyAssignWithVector(QVector3D* self, QVector3D* vector) {
 	QVector3D& _ret = self->operator*=(*vector);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QVector3D* QVector3D_OperatorDivideAssign(QVector3D* self, float divisor) {
+QVector3D* QVector3D_operatorDivideAssign(QVector3D* self, float divisor) {
 	QVector3D& _ret = self->operator/=(static_cast<float>(divisor));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QVector3D* QVector3D_OperatorDivideAssignWithVector(QVector3D* self, QVector3D* vector) {
+QVector3D* QVector3D_operatorDivideAssignWithVector(QVector3D* self, QVector3D* vector) {
 	QVector3D& _ret = self->operator/=(*vector);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-float QVector3D_DotProduct(QVector3D* v1, QVector3D* v2) {
+float QVector3D_dotProduct(QVector3D* v1, QVector3D* v2) {
 	return QVector3D::dotProduct(*v1, *v2);
 }
 
-QVector3D* QVector3D_CrossProduct(QVector3D* v1, QVector3D* v2) {
+QVector3D* QVector3D_crossProduct(QVector3D* v1, QVector3D* v2) {
 	return new QVector3D(QVector3D::crossProduct(*v1, *v2));
 }
 
-QVector3D* QVector3D_Normal(QVector3D* v1, QVector3D* v2) {
+QVector3D* QVector3D_normal(QVector3D* v1, QVector3D* v2) {
 	return new QVector3D(QVector3D::normal(*v1, *v2));
 }
 
-QVector3D* QVector3D_Normal2(QVector3D* v1, QVector3D* v2, QVector3D* v3) {
+QVector3D* QVector3D_normal2(QVector3D* v1, QVector3D* v2, QVector3D* v3) {
 	return new QVector3D(QVector3D::normal(*v1, *v2, *v3));
 }
 
-QVector3D* QVector3D_Project(const QVector3D* self, QMatrix4x4* modelView, QMatrix4x4* projection, QRect* viewport) {
+QVector3D* QVector3D_project(const QVector3D* self, QMatrix4x4* modelView, QMatrix4x4* projection, QRect* viewport) {
 	return new QVector3D(self->project(*modelView, *projection, *viewport));
 }
 
-QVector3D* QVector3D_Unproject(const QVector3D* self, QMatrix4x4* modelView, QMatrix4x4* projection, QRect* viewport) {
+QVector3D* QVector3D_unproject(const QVector3D* self, QMatrix4x4* modelView, QMatrix4x4* projection, QRect* viewport) {
 	return new QVector3D(self->unproject(*modelView, *projection, *viewport));
 }
 
-float QVector3D_DistanceToPoint(const QVector3D* self, QVector3D* point) {
+float QVector3D_distanceToPoint(const QVector3D* self, QVector3D* point) {
 	return self->distanceToPoint(*point);
 }
 
-float QVector3D_DistanceToPlane(const QVector3D* self, QVector3D* plane, QVector3D* normal) {
+float QVector3D_distanceToPlane(const QVector3D* self, QVector3D* plane, QVector3D* normal) {
 	return self->distanceToPlane(*plane, *normal);
 }
 
-float QVector3D_DistanceToPlane2(const QVector3D* self, QVector3D* plane1, QVector3D* plane2, QVector3D* plane3) {
+float QVector3D_distanceToPlane2(const QVector3D* self, QVector3D* plane1, QVector3D* plane2, QVector3D* plane3) {
 	return self->distanceToPlane(*plane1, *plane2, *plane3);
 }
 
-float QVector3D_DistanceToLine(const QVector3D* self, QVector3D* point, QVector3D* direction) {
+float QVector3D_distanceToLine(const QVector3D* self, QVector3D* point, QVector3D* direction) {
 	return self->distanceToLine(*point, *direction);
 }
 
-QVector2D* QVector3D_ToVector2D(const QVector3D* self) {
+QVector2D* QVector3D_toVector2D(const QVector3D* self) {
 	return new QVector2D(self->toVector2D());
 }
 
-QVector4D* QVector3D_ToVector4D(const QVector3D* self) {
+QVector4D* QVector3D_toVector4D(const QVector3D* self) {
 	return new QVector4D(self->toVector4D());
 }
 
-QPoint* QVector3D_ToPoint(const QVector3D* self) {
+QPoint* QVector3D_toPoint(const QVector3D* self) {
 	return new QPoint(self->toPoint());
 }
 
-QPointF* QVector3D_ToPointF(const QVector3D* self) {
+QPointF* QVector3D_toPointF(const QVector3D* self) {
 	return new QPointF(self->toPointF());
 }
 
@@ -341,7 +341,7 @@ QVariant* QVector3D_ToQVariant(const QVector3D* self) {
 	return new QVariant(self->operator QVariant());
 }
 
-void QVector3D_Delete(QVector3D* self) {
+void QVector3D_delete(QVector3D* self) {
 	delete self;
 }
 
@@ -385,123 +385,123 @@ QVector4D* QVector4D_new10(QVector4D* param1) {
 	return new QVector4D(*param1);
 }
 
-bool QVector4D_IsNull(const QVector4D* self) {
+bool QVector4D_isNull(const QVector4D* self) {
 	return self->isNull();
 }
 
-float QVector4D_X(const QVector4D* self) {
+float QVector4D_x(const QVector4D* self) {
 	return self->x();
 }
 
-float QVector4D_Y(const QVector4D* self) {
+float QVector4D_y(const QVector4D* self) {
 	return self->y();
 }
 
-float QVector4D_Z(const QVector4D* self) {
+float QVector4D_z(const QVector4D* self) {
 	return self->z();
 }
 
-float QVector4D_W(const QVector4D* self) {
+float QVector4D_w(const QVector4D* self) {
 	return self->w();
 }
 
-void QVector4D_SetX(QVector4D* self, float x) {
+void QVector4D_setX(QVector4D* self, float x) {
 	self->setX(static_cast<float>(x));
 }
 
-void QVector4D_SetY(QVector4D* self, float y) {
+void QVector4D_setY(QVector4D* self, float y) {
 	self->setY(static_cast<float>(y));
 }
 
-void QVector4D_SetZ(QVector4D* self, float z) {
+void QVector4D_setZ(QVector4D* self, float z) {
 	self->setZ(static_cast<float>(z));
 }
 
-void QVector4D_SetW(QVector4D* self, float w) {
+void QVector4D_setW(QVector4D* self, float w) {
 	self->setW(static_cast<float>(w));
 }
 
-float QVector4D_OperatorSubscript(const QVector4D* self, int i) {
+float QVector4D_operatorSubscript(const QVector4D* self, int i) {
 	return self->operator[](static_cast<int>(i));
 }
 
-float QVector4D_Length(const QVector4D* self) {
+float QVector4D_length(const QVector4D* self) {
 	return self->length();
 }
 
-float QVector4D_LengthSquared(const QVector4D* self) {
+float QVector4D_lengthSquared(const QVector4D* self) {
 	return self->lengthSquared();
 }
 
-QVector4D* QVector4D_Normalized(const QVector4D* self) {
+QVector4D* QVector4D_normalized(const QVector4D* self) {
 	return new QVector4D(self->normalized());
 }
 
-void QVector4D_Normalize(QVector4D* self) {
+void QVector4D_normalize(QVector4D* self) {
 	self->normalize();
 }
 
-QVector4D* QVector4D_OperatorPlusAssign(QVector4D* self, QVector4D* vector) {
+QVector4D* QVector4D_operatorPlusAssign(QVector4D* self, QVector4D* vector) {
 	QVector4D& _ret = self->operator+=(*vector);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QVector4D* QVector4D_OperatorMinusAssign(QVector4D* self, QVector4D* vector) {
+QVector4D* QVector4D_operatorMinusAssign(QVector4D* self, QVector4D* vector) {
 	QVector4D& _ret = self->operator-=(*vector);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QVector4D* QVector4D_OperatorMultiplyAssign(QVector4D* self, float factor) {
+QVector4D* QVector4D_operatorMultiplyAssign(QVector4D* self, float factor) {
 	QVector4D& _ret = self->operator*=(static_cast<float>(factor));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QVector4D* QVector4D_OperatorMultiplyAssignWithVector(QVector4D* self, QVector4D* vector) {
+QVector4D* QVector4D_operatorMultiplyAssignWithVector(QVector4D* self, QVector4D* vector) {
 	QVector4D& _ret = self->operator*=(*vector);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QVector4D* QVector4D_OperatorDivideAssign(QVector4D* self, float divisor) {
+QVector4D* QVector4D_operatorDivideAssign(QVector4D* self, float divisor) {
 	QVector4D& _ret = self->operator/=(static_cast<float>(divisor));
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QVector4D* QVector4D_OperatorDivideAssignWithVector(QVector4D* self, QVector4D* vector) {
+QVector4D* QVector4D_operatorDivideAssignWithVector(QVector4D* self, QVector4D* vector) {
 	QVector4D& _ret = self->operator/=(*vector);
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-float QVector4D_DotProduct(QVector4D* v1, QVector4D* v2) {
+float QVector4D_dotProduct(QVector4D* v1, QVector4D* v2) {
 	return QVector4D::dotProduct(*v1, *v2);
 }
 
-QVector2D* QVector4D_ToVector2D(const QVector4D* self) {
+QVector2D* QVector4D_toVector2D(const QVector4D* self) {
 	return new QVector2D(self->toVector2D());
 }
 
-QVector2D* QVector4D_ToVector2DAffine(const QVector4D* self) {
+QVector2D* QVector4D_toVector2DAffine(const QVector4D* self) {
 	return new QVector2D(self->toVector2DAffine());
 }
 
-QVector3D* QVector4D_ToVector3D(const QVector4D* self) {
+QVector3D* QVector4D_toVector3D(const QVector4D* self) {
 	return new QVector3D(self->toVector3D());
 }
 
-QVector3D* QVector4D_ToVector3DAffine(const QVector4D* self) {
+QVector3D* QVector4D_toVector3DAffine(const QVector4D* self) {
 	return new QVector3D(self->toVector3DAffine());
 }
 
-QPoint* QVector4D_ToPoint(const QVector4D* self) {
+QPoint* QVector4D_toPoint(const QVector4D* self) {
 	return new QPoint(self->toPoint());
 }
 
-QPointF* QVector4D_ToPointF(const QVector4D* self) {
+QPointF* QVector4D_toPointF(const QVector4D* self) {
 	return new QPointF(self->toPointF());
 }
 
@@ -509,7 +509,7 @@ QVariant* QVector4D_ToQVariant(const QVector4D* self) {
 	return new QVariant(self->operator QVariant());
 }
 
-void QVector4D_Delete(QVector4D* self) {
+void QVector4D_delete(QVector4D* self) {
 	delete self;
 }
 

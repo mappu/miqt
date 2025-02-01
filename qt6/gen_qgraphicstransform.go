@@ -63,26 +63,26 @@ func NewQGraphicsTransform2(parent *QObject) *QGraphicsTransform {
 }
 
 func (this *QGraphicsTransform) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QGraphicsTransform_MetaObject(this.h))
+	return newQMetaObject(C.QGraphicsTransform_metaObject(this.h))
 }
 
 func (this *QGraphicsTransform) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QGraphicsTransform_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QGraphicsTransform_metacast(this.h, param1_Cstring))
 }
 
 func QGraphicsTransform_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QGraphicsTransform_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QGraphicsTransform_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QGraphicsTransform) ApplyTo(matrix *QMatrix4x4) {
-	C.QGraphicsTransform_ApplyTo(this.h, matrix.cPointer())
+	C.QGraphicsTransform_applyTo(this.h, matrix.cPointer())
 }
 
 func QGraphicsTransform_Tr2(s string, c string) string {
@@ -90,7 +90,7 @@ func QGraphicsTransform_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QGraphicsTransform_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QGraphicsTransform_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -101,20 +101,20 @@ func QGraphicsTransform_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QGraphicsTransform_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QGraphicsTransform_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QGraphicsTransform) OnApplyTo(slot func(matrix *QMatrix4x4)) {
-	ok := C.QGraphicsTransform_override_virtual_ApplyTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsTransform) OnapplyTo(slot func(matrix *QMatrix4x4)) {
+	ok := C.QGraphicsTransform_override_virtual_applyTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsTransform_ApplyTo
-func miqt_exec_callback_QGraphicsTransform_ApplyTo(self *C.QGraphicsTransform, cb C.intptr_t, matrix *C.QMatrix4x4) {
+//export miqt_exec_callback_QGraphicsTransform_applyTo
+func miqt_exec_callback_QGraphicsTransform_applyTo(self *C.QGraphicsTransform, cb C.intptr_t, matrix *C.QMatrix4x4) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(matrix *QMatrix4x4))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -129,18 +129,18 @@ func miqt_exec_callback_QGraphicsTransform_ApplyTo(self *C.QGraphicsTransform, c
 
 func (this *QGraphicsTransform) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QGraphicsTransform_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QGraphicsTransform_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QGraphicsTransform) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QGraphicsTransform_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsTransform) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QGraphicsTransform_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsTransform_Event
-func miqt_exec_callback_QGraphicsTransform_Event(self *C.QGraphicsTransform, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QGraphicsTransform_event
+func miqt_exec_callback_QGraphicsTransform_event(self *C.QGraphicsTransform, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -157,18 +157,18 @@ func miqt_exec_callback_QGraphicsTransform_Event(self *C.QGraphicsTransform, cb 
 
 func (this *QGraphicsTransform) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QGraphicsTransform_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QGraphicsTransform_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QGraphicsTransform) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QGraphicsTransform_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsTransform) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QGraphicsTransform_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsTransform_EventFilter
-func miqt_exec_callback_QGraphicsTransform_EventFilter(self *C.QGraphicsTransform, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QGraphicsTransform_eventFilter
+func miqt_exec_callback_QGraphicsTransform_eventFilter(self *C.QGraphicsTransform, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -187,18 +187,18 @@ func miqt_exec_callback_QGraphicsTransform_EventFilter(self *C.QGraphicsTransfor
 
 func (this *QGraphicsTransform) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QGraphicsTransform_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGraphicsTransform_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsTransform) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QGraphicsTransform_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsTransform) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QGraphicsTransform_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsTransform_TimerEvent
-func miqt_exec_callback_QGraphicsTransform_TimerEvent(self *C.QGraphicsTransform, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QGraphicsTransform_timerEvent
+func miqt_exec_callback_QGraphicsTransform_timerEvent(self *C.QGraphicsTransform, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -213,18 +213,18 @@ func miqt_exec_callback_QGraphicsTransform_TimerEvent(self *C.QGraphicsTransform
 
 func (this *QGraphicsTransform) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QGraphicsTransform_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGraphicsTransform_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsTransform) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QGraphicsTransform_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsTransform) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QGraphicsTransform_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsTransform_ChildEvent
-func miqt_exec_callback_QGraphicsTransform_ChildEvent(self *C.QGraphicsTransform, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QGraphicsTransform_childEvent
+func miqt_exec_callback_QGraphicsTransform_childEvent(self *C.QGraphicsTransform, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -239,18 +239,18 @@ func miqt_exec_callback_QGraphicsTransform_ChildEvent(self *C.QGraphicsTransform
 
 func (this *QGraphicsTransform) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QGraphicsTransform_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGraphicsTransform_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsTransform) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QGraphicsTransform_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsTransform) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QGraphicsTransform_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsTransform_CustomEvent
-func miqt_exec_callback_QGraphicsTransform_CustomEvent(self *C.QGraphicsTransform, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QGraphicsTransform_customEvent
+func miqt_exec_callback_QGraphicsTransform_customEvent(self *C.QGraphicsTransform, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -265,18 +265,18 @@ func miqt_exec_callback_QGraphicsTransform_CustomEvent(self *C.QGraphicsTransfor
 
 func (this *QGraphicsTransform) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QGraphicsTransform_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QGraphicsTransform_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsTransform) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QGraphicsTransform_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsTransform) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QGraphicsTransform_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsTransform_ConnectNotify
-func miqt_exec_callback_QGraphicsTransform_ConnectNotify(self *C.QGraphicsTransform, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QGraphicsTransform_connectNotify
+func miqt_exec_callback_QGraphicsTransform_connectNotify(self *C.QGraphicsTransform, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -291,18 +291,18 @@ func miqt_exec_callback_QGraphicsTransform_ConnectNotify(self *C.QGraphicsTransf
 
 func (this *QGraphicsTransform) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QGraphicsTransform_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QGraphicsTransform_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsTransform) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QGraphicsTransform_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsTransform) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QGraphicsTransform_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsTransform_DisconnectNotify
-func miqt_exec_callback_QGraphicsTransform_DisconnectNotify(self *C.QGraphicsTransform, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QGraphicsTransform_disconnectNotify
+func miqt_exec_callback_QGraphicsTransform_disconnectNotify(self *C.QGraphicsTransform, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -317,7 +317,7 @@ func miqt_exec_callback_QGraphicsTransform_DisconnectNotify(self *C.QGraphicsTra
 
 // Delete this object from C++ memory.
 func (this *QGraphicsTransform) Delete() {
-	C.QGraphicsTransform_Delete(this.h)
+	C.QGraphicsTransform_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -378,71 +378,71 @@ func NewQGraphicsScale2(parent *QObject) *QGraphicsScale {
 }
 
 func (this *QGraphicsScale) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QGraphicsScale_MetaObject(this.h))
+	return newQMetaObject(C.QGraphicsScale_metaObject(this.h))
 }
 
 func (this *QGraphicsScale) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QGraphicsScale_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QGraphicsScale_metacast(this.h, param1_Cstring))
 }
 
 func QGraphicsScale_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QGraphicsScale_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QGraphicsScale_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QGraphicsScale) Origin() *QVector3D {
-	_goptr := newQVector3D(C.QGraphicsScale_Origin(this.h))
+	_goptr := newQVector3D(C.QGraphicsScale_origin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsScale) SetOrigin(point *QVector3D) {
-	C.QGraphicsScale_SetOrigin(this.h, point.cPointer())
+	C.QGraphicsScale_setOrigin(this.h, point.cPointer())
 }
 
 func (this *QGraphicsScale) XScale() float64 {
-	return (float64)(C.QGraphicsScale_XScale(this.h))
+	return (float64)(C.QGraphicsScale_xScale(this.h))
 }
 
 func (this *QGraphicsScale) SetXScale(xScale float64) {
-	C.QGraphicsScale_SetXScale(this.h, (C.double)(xScale))
+	C.QGraphicsScale_setXScale(this.h, (C.double)(xScale))
 }
 
 func (this *QGraphicsScale) YScale() float64 {
-	return (float64)(C.QGraphicsScale_YScale(this.h))
+	return (float64)(C.QGraphicsScale_yScale(this.h))
 }
 
 func (this *QGraphicsScale) SetYScale(yScale float64) {
-	C.QGraphicsScale_SetYScale(this.h, (C.double)(yScale))
+	C.QGraphicsScale_setYScale(this.h, (C.double)(yScale))
 }
 
 func (this *QGraphicsScale) ZScale() float64 {
-	return (float64)(C.QGraphicsScale_ZScale(this.h))
+	return (float64)(C.QGraphicsScale_zScale(this.h))
 }
 
 func (this *QGraphicsScale) SetZScale(zScale float64) {
-	C.QGraphicsScale_SetZScale(this.h, (C.double)(zScale))
+	C.QGraphicsScale_setZScale(this.h, (C.double)(zScale))
 }
 
 func (this *QGraphicsScale) ApplyTo(matrix *QMatrix4x4) {
-	C.QGraphicsScale_ApplyTo(this.h, matrix.cPointer())
+	C.QGraphicsScale_applyTo(this.h, matrix.cPointer())
 }
 
 func (this *QGraphicsScale) OriginChanged() {
-	C.QGraphicsScale_OriginChanged(this.h)
+	C.QGraphicsScale_originChanged(this.h)
 }
 func (this *QGraphicsScale) OnOriginChanged(slot func()) {
-	C.QGraphicsScale_connect_OriginChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QGraphicsScale_connect_originChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QGraphicsScale_OriginChanged
-func miqt_exec_callback_QGraphicsScale_OriginChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QGraphicsScale_originChanged
+func miqt_exec_callback_QGraphicsScale_originChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -452,14 +452,14 @@ func miqt_exec_callback_QGraphicsScale_OriginChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsScale) XScaleChanged() {
-	C.QGraphicsScale_XScaleChanged(this.h)
+	C.QGraphicsScale_xScaleChanged(this.h)
 }
 func (this *QGraphicsScale) OnXScaleChanged(slot func()) {
-	C.QGraphicsScale_connect_XScaleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QGraphicsScale_connect_xScaleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QGraphicsScale_XScaleChanged
-func miqt_exec_callback_QGraphicsScale_XScaleChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QGraphicsScale_xScaleChanged
+func miqt_exec_callback_QGraphicsScale_xScaleChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -469,14 +469,14 @@ func miqt_exec_callback_QGraphicsScale_XScaleChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsScale) YScaleChanged() {
-	C.QGraphicsScale_YScaleChanged(this.h)
+	C.QGraphicsScale_yScaleChanged(this.h)
 }
 func (this *QGraphicsScale) OnYScaleChanged(slot func()) {
-	C.QGraphicsScale_connect_YScaleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QGraphicsScale_connect_yScaleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QGraphicsScale_YScaleChanged
-func miqt_exec_callback_QGraphicsScale_YScaleChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QGraphicsScale_yScaleChanged
+func miqt_exec_callback_QGraphicsScale_yScaleChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -486,14 +486,14 @@ func miqt_exec_callback_QGraphicsScale_YScaleChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsScale) ZScaleChanged() {
-	C.QGraphicsScale_ZScaleChanged(this.h)
+	C.QGraphicsScale_zScaleChanged(this.h)
 }
 func (this *QGraphicsScale) OnZScaleChanged(slot func()) {
-	C.QGraphicsScale_connect_ZScaleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QGraphicsScale_connect_zScaleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QGraphicsScale_ZScaleChanged
-func miqt_exec_callback_QGraphicsScale_ZScaleChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QGraphicsScale_zScaleChanged
+func miqt_exec_callback_QGraphicsScale_zScaleChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -503,14 +503,14 @@ func miqt_exec_callback_QGraphicsScale_ZScaleChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsScale) ScaleChanged() {
-	C.QGraphicsScale_ScaleChanged(this.h)
+	C.QGraphicsScale_scaleChanged(this.h)
 }
 func (this *QGraphicsScale) OnScaleChanged(slot func()) {
-	C.QGraphicsScale_connect_ScaleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QGraphicsScale_connect_scaleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QGraphicsScale_ScaleChanged
-func miqt_exec_callback_QGraphicsScale_ScaleChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QGraphicsScale_scaleChanged
+func miqt_exec_callback_QGraphicsScale_scaleChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -524,7 +524,7 @@ func QGraphicsScale_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QGraphicsScale_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QGraphicsScale_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -535,7 +535,7 @@ func QGraphicsScale_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QGraphicsScale_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QGraphicsScale_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -543,18 +543,18 @@ func QGraphicsScale_Tr3(s string, c string, n int) string {
 
 func (this *QGraphicsScale) callVirtualBase_ApplyTo(matrix *QMatrix4x4) {
 
-	C.QGraphicsScale_virtualbase_ApplyTo(unsafe.Pointer(this.h), matrix.cPointer())
+	C.QGraphicsScale_virtualbase_applyTo(unsafe.Pointer(this.h), matrix.cPointer())
 
 }
-func (this *QGraphicsScale) OnApplyTo(slot func(super func(matrix *QMatrix4x4), matrix *QMatrix4x4)) {
-	ok := C.QGraphicsScale_override_virtual_ApplyTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsScale) OnapplyTo(slot func(super func(matrix *QMatrix4x4), matrix *QMatrix4x4)) {
+	ok := C.QGraphicsScale_override_virtual_applyTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsScale_ApplyTo
-func miqt_exec_callback_QGraphicsScale_ApplyTo(self *C.QGraphicsScale, cb C.intptr_t, matrix *C.QMatrix4x4) {
+//export miqt_exec_callback_QGraphicsScale_applyTo
+func miqt_exec_callback_QGraphicsScale_applyTo(self *C.QGraphicsScale, cb C.intptr_t, matrix *C.QMatrix4x4) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(matrix *QMatrix4x4), matrix *QMatrix4x4))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -569,18 +569,18 @@ func miqt_exec_callback_QGraphicsScale_ApplyTo(self *C.QGraphicsScale, cb C.intp
 
 func (this *QGraphicsScale) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QGraphicsScale_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QGraphicsScale_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QGraphicsScale) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QGraphicsScale_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsScale) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QGraphicsScale_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsScale_Event
-func miqt_exec_callback_QGraphicsScale_Event(self *C.QGraphicsScale, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QGraphicsScale_event
+func miqt_exec_callback_QGraphicsScale_event(self *C.QGraphicsScale, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -597,18 +597,18 @@ func miqt_exec_callback_QGraphicsScale_Event(self *C.QGraphicsScale, cb C.intptr
 
 func (this *QGraphicsScale) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QGraphicsScale_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QGraphicsScale_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QGraphicsScale) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QGraphicsScale_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsScale) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QGraphicsScale_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsScale_EventFilter
-func miqt_exec_callback_QGraphicsScale_EventFilter(self *C.QGraphicsScale, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QGraphicsScale_eventFilter
+func miqt_exec_callback_QGraphicsScale_eventFilter(self *C.QGraphicsScale, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -627,18 +627,18 @@ func miqt_exec_callback_QGraphicsScale_EventFilter(self *C.QGraphicsScale, cb C.
 
 func (this *QGraphicsScale) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QGraphicsScale_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGraphicsScale_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsScale) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QGraphicsScale_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsScale) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QGraphicsScale_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsScale_TimerEvent
-func miqt_exec_callback_QGraphicsScale_TimerEvent(self *C.QGraphicsScale, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QGraphicsScale_timerEvent
+func miqt_exec_callback_QGraphicsScale_timerEvent(self *C.QGraphicsScale, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -653,18 +653,18 @@ func miqt_exec_callback_QGraphicsScale_TimerEvent(self *C.QGraphicsScale, cb C.i
 
 func (this *QGraphicsScale) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QGraphicsScale_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGraphicsScale_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsScale) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QGraphicsScale_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsScale) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QGraphicsScale_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsScale_ChildEvent
-func miqt_exec_callback_QGraphicsScale_ChildEvent(self *C.QGraphicsScale, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QGraphicsScale_childEvent
+func miqt_exec_callback_QGraphicsScale_childEvent(self *C.QGraphicsScale, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -679,18 +679,18 @@ func miqt_exec_callback_QGraphicsScale_ChildEvent(self *C.QGraphicsScale, cb C.i
 
 func (this *QGraphicsScale) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QGraphicsScale_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGraphicsScale_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsScale) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QGraphicsScale_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsScale) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QGraphicsScale_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsScale_CustomEvent
-func miqt_exec_callback_QGraphicsScale_CustomEvent(self *C.QGraphicsScale, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QGraphicsScale_customEvent
+func miqt_exec_callback_QGraphicsScale_customEvent(self *C.QGraphicsScale, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -705,18 +705,18 @@ func miqt_exec_callback_QGraphicsScale_CustomEvent(self *C.QGraphicsScale, cb C.
 
 func (this *QGraphicsScale) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QGraphicsScale_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QGraphicsScale_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsScale) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QGraphicsScale_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsScale) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QGraphicsScale_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsScale_ConnectNotify
-func miqt_exec_callback_QGraphicsScale_ConnectNotify(self *C.QGraphicsScale, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QGraphicsScale_connectNotify
+func miqt_exec_callback_QGraphicsScale_connectNotify(self *C.QGraphicsScale, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -731,18 +731,18 @@ func miqt_exec_callback_QGraphicsScale_ConnectNotify(self *C.QGraphicsScale, cb 
 
 func (this *QGraphicsScale) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QGraphicsScale_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QGraphicsScale_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsScale) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QGraphicsScale_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsScale) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QGraphicsScale_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsScale_DisconnectNotify
-func miqt_exec_callback_QGraphicsScale_DisconnectNotify(self *C.QGraphicsScale, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QGraphicsScale_disconnectNotify
+func miqt_exec_callback_QGraphicsScale_disconnectNotify(self *C.QGraphicsScale, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -757,7 +757,7 @@ func miqt_exec_callback_QGraphicsScale_DisconnectNotify(self *C.QGraphicsScale, 
 
 // Delete this object from C++ memory.
 func (this *QGraphicsScale) Delete() {
-	C.QGraphicsScale_Delete(this.h)
+	C.QGraphicsScale_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -818,69 +818,69 @@ func NewQGraphicsRotation2(parent *QObject) *QGraphicsRotation {
 }
 
 func (this *QGraphicsRotation) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QGraphicsRotation_MetaObject(this.h))
+	return newQMetaObject(C.QGraphicsRotation_metaObject(this.h))
 }
 
 func (this *QGraphicsRotation) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QGraphicsRotation_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QGraphicsRotation_metacast(this.h, param1_Cstring))
 }
 
 func QGraphicsRotation_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QGraphicsRotation_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QGraphicsRotation_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QGraphicsRotation) Origin() *QVector3D {
-	_goptr := newQVector3D(C.QGraphicsRotation_Origin(this.h))
+	_goptr := newQVector3D(C.QGraphicsRotation_origin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsRotation) SetOrigin(point *QVector3D) {
-	C.QGraphicsRotation_SetOrigin(this.h, point.cPointer())
+	C.QGraphicsRotation_setOrigin(this.h, point.cPointer())
 }
 
 func (this *QGraphicsRotation) Angle() float64 {
-	return (float64)(C.QGraphicsRotation_Angle(this.h))
+	return (float64)(C.QGraphicsRotation_angle(this.h))
 }
 
 func (this *QGraphicsRotation) SetAngle(angle float64) {
-	C.QGraphicsRotation_SetAngle(this.h, (C.double)(angle))
+	C.QGraphicsRotation_setAngle(this.h, (C.double)(angle))
 }
 
 func (this *QGraphicsRotation) Axis() *QVector3D {
-	_goptr := newQVector3D(C.QGraphicsRotation_Axis(this.h))
+	_goptr := newQVector3D(C.QGraphicsRotation_axis(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGraphicsRotation) SetAxis(axis *QVector3D) {
-	C.QGraphicsRotation_SetAxis(this.h, axis.cPointer())
+	C.QGraphicsRotation_setAxis(this.h, axis.cPointer())
 }
 
 func (this *QGraphicsRotation) SetAxisWithAxis(axis Axis) {
-	C.QGraphicsRotation_SetAxisWithAxis(this.h, (C.int)(axis))
+	C.QGraphicsRotation_setAxisWithAxis(this.h, (C.int)(axis))
 }
 
 func (this *QGraphicsRotation) ApplyTo(matrix *QMatrix4x4) {
-	C.QGraphicsRotation_ApplyTo(this.h, matrix.cPointer())
+	C.QGraphicsRotation_applyTo(this.h, matrix.cPointer())
 }
 
 func (this *QGraphicsRotation) OriginChanged() {
-	C.QGraphicsRotation_OriginChanged(this.h)
+	C.QGraphicsRotation_originChanged(this.h)
 }
 func (this *QGraphicsRotation) OnOriginChanged(slot func()) {
-	C.QGraphicsRotation_connect_OriginChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QGraphicsRotation_connect_originChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QGraphicsRotation_OriginChanged
-func miqt_exec_callback_QGraphicsRotation_OriginChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QGraphicsRotation_originChanged
+func miqt_exec_callback_QGraphicsRotation_originChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -890,14 +890,14 @@ func miqt_exec_callback_QGraphicsRotation_OriginChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsRotation) AngleChanged() {
-	C.QGraphicsRotation_AngleChanged(this.h)
+	C.QGraphicsRotation_angleChanged(this.h)
 }
 func (this *QGraphicsRotation) OnAngleChanged(slot func()) {
-	C.QGraphicsRotation_connect_AngleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QGraphicsRotation_connect_angleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QGraphicsRotation_AngleChanged
-func miqt_exec_callback_QGraphicsRotation_AngleChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QGraphicsRotation_angleChanged
+func miqt_exec_callback_QGraphicsRotation_angleChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -907,14 +907,14 @@ func miqt_exec_callback_QGraphicsRotation_AngleChanged(cb C.intptr_t) {
 }
 
 func (this *QGraphicsRotation) AxisChanged() {
-	C.QGraphicsRotation_AxisChanged(this.h)
+	C.QGraphicsRotation_axisChanged(this.h)
 }
 func (this *QGraphicsRotation) OnAxisChanged(slot func()) {
-	C.QGraphicsRotation_connect_AxisChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QGraphicsRotation_connect_axisChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QGraphicsRotation_AxisChanged
-func miqt_exec_callback_QGraphicsRotation_AxisChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QGraphicsRotation_axisChanged
+func miqt_exec_callback_QGraphicsRotation_axisChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -928,7 +928,7 @@ func QGraphicsRotation_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QGraphicsRotation_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QGraphicsRotation_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -939,7 +939,7 @@ func QGraphicsRotation_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QGraphicsRotation_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QGraphicsRotation_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -947,18 +947,18 @@ func QGraphicsRotation_Tr3(s string, c string, n int) string {
 
 func (this *QGraphicsRotation) callVirtualBase_ApplyTo(matrix *QMatrix4x4) {
 
-	C.QGraphicsRotation_virtualbase_ApplyTo(unsafe.Pointer(this.h), matrix.cPointer())
+	C.QGraphicsRotation_virtualbase_applyTo(unsafe.Pointer(this.h), matrix.cPointer())
 
 }
-func (this *QGraphicsRotation) OnApplyTo(slot func(super func(matrix *QMatrix4x4), matrix *QMatrix4x4)) {
-	ok := C.QGraphicsRotation_override_virtual_ApplyTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsRotation) OnapplyTo(slot func(super func(matrix *QMatrix4x4), matrix *QMatrix4x4)) {
+	ok := C.QGraphicsRotation_override_virtual_applyTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsRotation_ApplyTo
-func miqt_exec_callback_QGraphicsRotation_ApplyTo(self *C.QGraphicsRotation, cb C.intptr_t, matrix *C.QMatrix4x4) {
+//export miqt_exec_callback_QGraphicsRotation_applyTo
+func miqt_exec_callback_QGraphicsRotation_applyTo(self *C.QGraphicsRotation, cb C.intptr_t, matrix *C.QMatrix4x4) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(matrix *QMatrix4x4), matrix *QMatrix4x4))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -973,18 +973,18 @@ func miqt_exec_callback_QGraphicsRotation_ApplyTo(self *C.QGraphicsRotation, cb 
 
 func (this *QGraphicsRotation) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QGraphicsRotation_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QGraphicsRotation_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QGraphicsRotation) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QGraphicsRotation_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsRotation) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QGraphicsRotation_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsRotation_Event
-func miqt_exec_callback_QGraphicsRotation_Event(self *C.QGraphicsRotation, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QGraphicsRotation_event
+func miqt_exec_callback_QGraphicsRotation_event(self *C.QGraphicsRotation, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1001,18 +1001,18 @@ func miqt_exec_callback_QGraphicsRotation_Event(self *C.QGraphicsRotation, cb C.
 
 func (this *QGraphicsRotation) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QGraphicsRotation_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QGraphicsRotation_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QGraphicsRotation) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QGraphicsRotation_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsRotation) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QGraphicsRotation_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsRotation_EventFilter
-func miqt_exec_callback_QGraphicsRotation_EventFilter(self *C.QGraphicsRotation, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QGraphicsRotation_eventFilter
+func miqt_exec_callback_QGraphicsRotation_eventFilter(self *C.QGraphicsRotation, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1031,18 +1031,18 @@ func miqt_exec_callback_QGraphicsRotation_EventFilter(self *C.QGraphicsRotation,
 
 func (this *QGraphicsRotation) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QGraphicsRotation_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGraphicsRotation_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsRotation) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QGraphicsRotation_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsRotation) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QGraphicsRotation_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsRotation_TimerEvent
-func miqt_exec_callback_QGraphicsRotation_TimerEvent(self *C.QGraphicsRotation, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QGraphicsRotation_timerEvent
+func miqt_exec_callback_QGraphicsRotation_timerEvent(self *C.QGraphicsRotation, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1057,18 +1057,18 @@ func miqt_exec_callback_QGraphicsRotation_TimerEvent(self *C.QGraphicsRotation, 
 
 func (this *QGraphicsRotation) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QGraphicsRotation_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGraphicsRotation_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsRotation) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QGraphicsRotation_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsRotation) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QGraphicsRotation_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsRotation_ChildEvent
-func miqt_exec_callback_QGraphicsRotation_ChildEvent(self *C.QGraphicsRotation, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QGraphicsRotation_childEvent
+func miqt_exec_callback_QGraphicsRotation_childEvent(self *C.QGraphicsRotation, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1083,18 +1083,18 @@ func miqt_exec_callback_QGraphicsRotation_ChildEvent(self *C.QGraphicsRotation, 
 
 func (this *QGraphicsRotation) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QGraphicsRotation_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGraphicsRotation_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsRotation) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QGraphicsRotation_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsRotation) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QGraphicsRotation_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsRotation_CustomEvent
-func miqt_exec_callback_QGraphicsRotation_CustomEvent(self *C.QGraphicsRotation, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QGraphicsRotation_customEvent
+func miqt_exec_callback_QGraphicsRotation_customEvent(self *C.QGraphicsRotation, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1109,18 +1109,18 @@ func miqt_exec_callback_QGraphicsRotation_CustomEvent(self *C.QGraphicsRotation,
 
 func (this *QGraphicsRotation) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QGraphicsRotation_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QGraphicsRotation_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsRotation) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QGraphicsRotation_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsRotation) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QGraphicsRotation_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsRotation_ConnectNotify
-func miqt_exec_callback_QGraphicsRotation_ConnectNotify(self *C.QGraphicsRotation, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QGraphicsRotation_connectNotify
+func miqt_exec_callback_QGraphicsRotation_connectNotify(self *C.QGraphicsRotation, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1135,18 +1135,18 @@ func miqt_exec_callback_QGraphicsRotation_ConnectNotify(self *C.QGraphicsRotatio
 
 func (this *QGraphicsRotation) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QGraphicsRotation_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QGraphicsRotation_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsRotation) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QGraphicsRotation_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGraphicsRotation) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QGraphicsRotation_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGraphicsRotation_DisconnectNotify
-func miqt_exec_callback_QGraphicsRotation_DisconnectNotify(self *C.QGraphicsRotation, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QGraphicsRotation_disconnectNotify
+func miqt_exec_callback_QGraphicsRotation_disconnectNotify(self *C.QGraphicsRotation, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1161,7 +1161,7 @@ func miqt_exec_callback_QGraphicsRotation_DisconnectNotify(self *C.QGraphicsRota
 
 // Delete this object from C++ memory.
 func (this *QGraphicsRotation) Delete() {
-	C.QGraphicsRotation_Delete(this.h)
+	C.QGraphicsRotation_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

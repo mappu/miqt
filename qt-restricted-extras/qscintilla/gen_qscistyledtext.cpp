@@ -26,11 +26,11 @@ QsciStyledText* QsciStyledText_new3(QsciStyledText* param1) {
 	return new QsciStyledText(*param1);
 }
 
-void QsciStyledText_Apply(const QsciStyledText* self, QsciScintillaBase* sci) {
+void QsciStyledText_apply(const QsciStyledText* self, QsciScintillaBase* sci) {
 	self->apply(sci);
 }
 
-struct miqt_string QsciStyledText_Text(const QsciStyledText* self) {
+struct miqt_string QsciStyledText_text(const QsciStyledText* self) {
 	const QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -41,11 +41,11 @@ struct miqt_string QsciStyledText_Text(const QsciStyledText* self) {
 	return _ms;
 }
 
-int QsciStyledText_Style(const QsciStyledText* self) {
+int QsciStyledText_style(const QsciStyledText* self) {
 	return self->style();
 }
 
-void QsciStyledText_Delete(QsciStyledText* self) {
+void QsciStyledText_delete(QsciStyledText* self) {
 	delete self;
 }
 

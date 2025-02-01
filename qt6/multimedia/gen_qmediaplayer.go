@@ -102,26 +102,26 @@ func NewQMediaPlayer2(parent *qt6.QObject) *QMediaPlayer {
 }
 
 func (this *QMediaPlayer) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaPlayer_MetaObject(this.h)))
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaPlayer_metaObject(this.h)))
 }
 
 func (this *QMediaPlayer) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QMediaPlayer_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QMediaPlayer_metacast(this.h, param1_Cstring))
 }
 
 func QMediaPlayer_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaPlayer_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaPlayer_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMediaPlayer) AudioTracks() []QMediaMetaData {
-	var _ma C.struct_miqt_array = C.QMediaPlayer_AudioTracks(this.h)
+	var _ma C.struct_miqt_array = C.QMediaPlayer_audioTracks(this.h)
 	_ret := make([]QMediaMetaData, int(_ma.len))
 	_outCast := (*[0xffff]*C.QMediaMetaData)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -133,7 +133,7 @@ func (this *QMediaPlayer) AudioTracks() []QMediaMetaData {
 }
 
 func (this *QMediaPlayer) VideoTracks() []QMediaMetaData {
-	var _ma C.struct_miqt_array = C.QMediaPlayer_VideoTracks(this.h)
+	var _ma C.struct_miqt_array = C.QMediaPlayer_videoTracks(this.h)
 	_ret := make([]QMediaMetaData, int(_ma.len))
 	_outCast := (*[0xffff]*C.QMediaMetaData)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -145,7 +145,7 @@ func (this *QMediaPlayer) VideoTracks() []QMediaMetaData {
 }
 
 func (this *QMediaPlayer) SubtitleTracks() []QMediaMetaData {
-	var _ma C.struct_miqt_array = C.QMediaPlayer_SubtitleTracks(this.h)
+	var _ma C.struct_miqt_array = C.QMediaPlayer_subtitleTracks(this.h)
 	_ret := make([]QMediaMetaData, int(_ma.len))
 	_outCast := (*[0xffff]*C.QMediaMetaData)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -157,171 +157,171 @@ func (this *QMediaPlayer) SubtitleTracks() []QMediaMetaData {
 }
 
 func (this *QMediaPlayer) ActiveAudioTrack() int {
-	return (int)(C.QMediaPlayer_ActiveAudioTrack(this.h))
+	return (int)(C.QMediaPlayer_activeAudioTrack(this.h))
 }
 
 func (this *QMediaPlayer) ActiveVideoTrack() int {
-	return (int)(C.QMediaPlayer_ActiveVideoTrack(this.h))
+	return (int)(C.QMediaPlayer_activeVideoTrack(this.h))
 }
 
 func (this *QMediaPlayer) ActiveSubtitleTrack() int {
-	return (int)(C.QMediaPlayer_ActiveSubtitleTrack(this.h))
+	return (int)(C.QMediaPlayer_activeSubtitleTrack(this.h))
 }
 
 func (this *QMediaPlayer) SetActiveAudioTrack(index int) {
-	C.QMediaPlayer_SetActiveAudioTrack(this.h, (C.int)(index))
+	C.QMediaPlayer_setActiveAudioTrack(this.h, (C.int)(index))
 }
 
 func (this *QMediaPlayer) SetActiveVideoTrack(index int) {
-	C.QMediaPlayer_SetActiveVideoTrack(this.h, (C.int)(index))
+	C.QMediaPlayer_setActiveVideoTrack(this.h, (C.int)(index))
 }
 
 func (this *QMediaPlayer) SetActiveSubtitleTrack(index int) {
-	C.QMediaPlayer_SetActiveSubtitleTrack(this.h, (C.int)(index))
+	C.QMediaPlayer_setActiveSubtitleTrack(this.h, (C.int)(index))
 }
 
 func (this *QMediaPlayer) SetAudioOutput(output *QAudioOutput) {
-	C.QMediaPlayer_SetAudioOutput(this.h, output.cPointer())
+	C.QMediaPlayer_setAudioOutput(this.h, output.cPointer())
 }
 
 func (this *QMediaPlayer) AudioOutput() *QAudioOutput {
-	return newQAudioOutput(C.QMediaPlayer_AudioOutput(this.h))
+	return newQAudioOutput(C.QMediaPlayer_audioOutput(this.h))
 }
 
 func (this *QMediaPlayer) SetVideoOutput(videoOutput *qt6.QObject) {
-	C.QMediaPlayer_SetVideoOutput(this.h, (*C.QObject)(videoOutput.UnsafePointer()))
+	C.QMediaPlayer_setVideoOutput(this.h, (*C.QObject)(videoOutput.UnsafePointer()))
 }
 
 func (this *QMediaPlayer) VideoOutput() *qt6.QObject {
-	return qt6.UnsafeNewQObject(unsafe.Pointer(C.QMediaPlayer_VideoOutput(this.h)))
+	return qt6.UnsafeNewQObject(unsafe.Pointer(C.QMediaPlayer_videoOutput(this.h)))
 }
 
 func (this *QMediaPlayer) SetVideoSink(sink *QVideoSink) {
-	C.QMediaPlayer_SetVideoSink(this.h, sink.cPointer())
+	C.QMediaPlayer_setVideoSink(this.h, sink.cPointer())
 }
 
 func (this *QMediaPlayer) VideoSink() *QVideoSink {
-	return newQVideoSink(C.QMediaPlayer_VideoSink(this.h))
+	return newQVideoSink(C.QMediaPlayer_videoSink(this.h))
 }
 
 func (this *QMediaPlayer) Source() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QMediaPlayer_Source(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QMediaPlayer_source(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaPlayer) SourceDevice() *qt6.QIODevice {
-	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QMediaPlayer_SourceDevice(this.h)))
+	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QMediaPlayer_sourceDevice(this.h)))
 }
 
 func (this *QMediaPlayer) PlaybackState() QMediaPlayer__PlaybackState {
-	return (QMediaPlayer__PlaybackState)(C.QMediaPlayer_PlaybackState(this.h))
+	return (QMediaPlayer__PlaybackState)(C.QMediaPlayer_playbackState(this.h))
 }
 
 func (this *QMediaPlayer) MediaStatus() QMediaPlayer__MediaStatus {
-	return (QMediaPlayer__MediaStatus)(C.QMediaPlayer_MediaStatus(this.h))
+	return (QMediaPlayer__MediaStatus)(C.QMediaPlayer_mediaStatus(this.h))
 }
 
 func (this *QMediaPlayer) Duration() int64 {
-	return (int64)(C.QMediaPlayer_Duration(this.h))
+	return (int64)(C.QMediaPlayer_duration(this.h))
 }
 
 func (this *QMediaPlayer) Position() int64 {
-	return (int64)(C.QMediaPlayer_Position(this.h))
+	return (int64)(C.QMediaPlayer_position(this.h))
 }
 
 func (this *QMediaPlayer) HasAudio() bool {
-	return (bool)(C.QMediaPlayer_HasAudio(this.h))
+	return (bool)(C.QMediaPlayer_hasAudio(this.h))
 }
 
 func (this *QMediaPlayer) HasVideo() bool {
-	return (bool)(C.QMediaPlayer_HasVideo(this.h))
+	return (bool)(C.QMediaPlayer_hasVideo(this.h))
 }
 
 func (this *QMediaPlayer) BufferProgress() float32 {
-	return (float32)(C.QMediaPlayer_BufferProgress(this.h))
+	return (float32)(C.QMediaPlayer_bufferProgress(this.h))
 }
 
 func (this *QMediaPlayer) BufferedTimeRange() *QMediaTimeRange {
-	_goptr := newQMediaTimeRange(C.QMediaPlayer_BufferedTimeRange(this.h))
+	_goptr := newQMediaTimeRange(C.QMediaPlayer_bufferedTimeRange(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaPlayer) IsSeekable() bool {
-	return (bool)(C.QMediaPlayer_IsSeekable(this.h))
+	return (bool)(C.QMediaPlayer_isSeekable(this.h))
 }
 
 func (this *QMediaPlayer) PlaybackRate() float64 {
-	return (float64)(C.QMediaPlayer_PlaybackRate(this.h))
+	return (float64)(C.QMediaPlayer_playbackRate(this.h))
 }
 
 func (this *QMediaPlayer) Loops() int {
-	return (int)(C.QMediaPlayer_Loops(this.h))
+	return (int)(C.QMediaPlayer_loops(this.h))
 }
 
 func (this *QMediaPlayer) SetLoops(loops int) {
-	C.QMediaPlayer_SetLoops(this.h, (C.int)(loops))
+	C.QMediaPlayer_setLoops(this.h, (C.int)(loops))
 }
 
 func (this *QMediaPlayer) Error() QMediaPlayer__Error {
-	return (QMediaPlayer__Error)(C.QMediaPlayer_Error(this.h))
+	return (QMediaPlayer__Error)(C.QMediaPlayer_error(this.h))
 }
 
 func (this *QMediaPlayer) ErrorString() string {
-	var _ms C.struct_miqt_string = C.QMediaPlayer_ErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QMediaPlayer_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMediaPlayer) IsAvailable() bool {
-	return (bool)(C.QMediaPlayer_IsAvailable(this.h))
+	return (bool)(C.QMediaPlayer_isAvailable(this.h))
 }
 
 func (this *QMediaPlayer) MetaData() *QMediaMetaData {
-	_goptr := newQMediaMetaData(C.QMediaPlayer_MetaData(this.h))
+	_goptr := newQMediaMetaData(C.QMediaPlayer_metaData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaPlayer) Play() {
-	C.QMediaPlayer_Play(this.h)
+	C.QMediaPlayer_play(this.h)
 }
 
 func (this *QMediaPlayer) Pause() {
-	C.QMediaPlayer_Pause(this.h)
+	C.QMediaPlayer_pause(this.h)
 }
 
 func (this *QMediaPlayer) Stop() {
-	C.QMediaPlayer_Stop(this.h)
+	C.QMediaPlayer_stop(this.h)
 }
 
 func (this *QMediaPlayer) SetPosition(position int64) {
-	C.QMediaPlayer_SetPosition(this.h, (C.longlong)(position))
+	C.QMediaPlayer_setPosition(this.h, (C.longlong)(position))
 }
 
 func (this *QMediaPlayer) SetPlaybackRate(rate float64) {
-	C.QMediaPlayer_SetPlaybackRate(this.h, (C.double)(rate))
+	C.QMediaPlayer_setPlaybackRate(this.h, (C.double)(rate))
 }
 
 func (this *QMediaPlayer) SetSource(source *qt6.QUrl) {
-	C.QMediaPlayer_SetSource(this.h, (*C.QUrl)(source.UnsafePointer()))
+	C.QMediaPlayer_setSource(this.h, (*C.QUrl)(source.UnsafePointer()))
 }
 
 func (this *QMediaPlayer) SetSourceDevice(device *qt6.QIODevice) {
-	C.QMediaPlayer_SetSourceDevice(this.h, (*C.QIODevice)(device.UnsafePointer()))
+	C.QMediaPlayer_setSourceDevice(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QMediaPlayer) SourceChanged(media *qt6.QUrl) {
-	C.QMediaPlayer_SourceChanged(this.h, (*C.QUrl)(media.UnsafePointer()))
+	C.QMediaPlayer_sourceChanged(this.h, (*C.QUrl)(media.UnsafePointer()))
 }
 func (this *QMediaPlayer) OnSourceChanged(slot func(media *qt6.QUrl)) {
-	C.QMediaPlayer_connect_SourceChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_sourceChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_SourceChanged
-func miqt_exec_callback_QMediaPlayer_SourceChanged(cb C.intptr_t, media *C.QUrl) {
+//export miqt_exec_callback_QMediaPlayer_sourceChanged
+func miqt_exec_callback_QMediaPlayer_sourceChanged(cb C.intptr_t, media *C.QUrl) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(media *qt6.QUrl))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -334,14 +334,14 @@ func miqt_exec_callback_QMediaPlayer_SourceChanged(cb C.intptr_t, media *C.QUrl)
 }
 
 func (this *QMediaPlayer) PlaybackStateChanged(newState QMediaPlayer__PlaybackState) {
-	C.QMediaPlayer_PlaybackStateChanged(this.h, (C.int)(newState))
+	C.QMediaPlayer_playbackStateChanged(this.h, (C.int)(newState))
 }
 func (this *QMediaPlayer) OnPlaybackStateChanged(slot func(newState QMediaPlayer__PlaybackState)) {
-	C.QMediaPlayer_connect_PlaybackStateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_playbackStateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_PlaybackStateChanged
-func miqt_exec_callback_QMediaPlayer_PlaybackStateChanged(cb C.intptr_t, newState C.int) {
+//export miqt_exec_callback_QMediaPlayer_playbackStateChanged
+func miqt_exec_callback_QMediaPlayer_playbackStateChanged(cb C.intptr_t, newState C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(newState QMediaPlayer__PlaybackState))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -354,14 +354,14 @@ func miqt_exec_callback_QMediaPlayer_PlaybackStateChanged(cb C.intptr_t, newStat
 }
 
 func (this *QMediaPlayer) MediaStatusChanged(status QMediaPlayer__MediaStatus) {
-	C.QMediaPlayer_MediaStatusChanged(this.h, (C.int)(status))
+	C.QMediaPlayer_mediaStatusChanged(this.h, (C.int)(status))
 }
 func (this *QMediaPlayer) OnMediaStatusChanged(slot func(status QMediaPlayer__MediaStatus)) {
-	C.QMediaPlayer_connect_MediaStatusChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_mediaStatusChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_MediaStatusChanged
-func miqt_exec_callback_QMediaPlayer_MediaStatusChanged(cb C.intptr_t, status C.int) {
+//export miqt_exec_callback_QMediaPlayer_mediaStatusChanged
+func miqt_exec_callback_QMediaPlayer_mediaStatusChanged(cb C.intptr_t, status C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(status QMediaPlayer__MediaStatus))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -374,14 +374,14 @@ func miqt_exec_callback_QMediaPlayer_MediaStatusChanged(cb C.intptr_t, status C.
 }
 
 func (this *QMediaPlayer) DurationChanged(duration int64) {
-	C.QMediaPlayer_DurationChanged(this.h, (C.longlong)(duration))
+	C.QMediaPlayer_durationChanged(this.h, (C.longlong)(duration))
 }
 func (this *QMediaPlayer) OnDurationChanged(slot func(duration int64)) {
-	C.QMediaPlayer_connect_DurationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_durationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_DurationChanged
-func miqt_exec_callback_QMediaPlayer_DurationChanged(cb C.intptr_t, duration C.longlong) {
+//export miqt_exec_callback_QMediaPlayer_durationChanged
+func miqt_exec_callback_QMediaPlayer_durationChanged(cb C.intptr_t, duration C.longlong) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(duration int64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -394,14 +394,14 @@ func miqt_exec_callback_QMediaPlayer_DurationChanged(cb C.intptr_t, duration C.l
 }
 
 func (this *QMediaPlayer) PositionChanged(position int64) {
-	C.QMediaPlayer_PositionChanged(this.h, (C.longlong)(position))
+	C.QMediaPlayer_positionChanged(this.h, (C.longlong)(position))
 }
 func (this *QMediaPlayer) OnPositionChanged(slot func(position int64)) {
-	C.QMediaPlayer_connect_PositionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_positionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_PositionChanged
-func miqt_exec_callback_QMediaPlayer_PositionChanged(cb C.intptr_t, position C.longlong) {
+//export miqt_exec_callback_QMediaPlayer_positionChanged
+func miqt_exec_callback_QMediaPlayer_positionChanged(cb C.intptr_t, position C.longlong) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(position int64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -414,14 +414,14 @@ func miqt_exec_callback_QMediaPlayer_PositionChanged(cb C.intptr_t, position C.l
 }
 
 func (this *QMediaPlayer) HasAudioChanged(available bool) {
-	C.QMediaPlayer_HasAudioChanged(this.h, (C.bool)(available))
+	C.QMediaPlayer_hasAudioChanged(this.h, (C.bool)(available))
 }
 func (this *QMediaPlayer) OnHasAudioChanged(slot func(available bool)) {
-	C.QMediaPlayer_connect_HasAudioChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_hasAudioChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_HasAudioChanged
-func miqt_exec_callback_QMediaPlayer_HasAudioChanged(cb C.intptr_t, available C.bool) {
+//export miqt_exec_callback_QMediaPlayer_hasAudioChanged
+func miqt_exec_callback_QMediaPlayer_hasAudioChanged(cb C.intptr_t, available C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(available bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -434,14 +434,14 @@ func miqt_exec_callback_QMediaPlayer_HasAudioChanged(cb C.intptr_t, available C.
 }
 
 func (this *QMediaPlayer) HasVideoChanged(videoAvailable bool) {
-	C.QMediaPlayer_HasVideoChanged(this.h, (C.bool)(videoAvailable))
+	C.QMediaPlayer_hasVideoChanged(this.h, (C.bool)(videoAvailable))
 }
 func (this *QMediaPlayer) OnHasVideoChanged(slot func(videoAvailable bool)) {
-	C.QMediaPlayer_connect_HasVideoChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_hasVideoChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_HasVideoChanged
-func miqt_exec_callback_QMediaPlayer_HasVideoChanged(cb C.intptr_t, videoAvailable C.bool) {
+//export miqt_exec_callback_QMediaPlayer_hasVideoChanged
+func miqt_exec_callback_QMediaPlayer_hasVideoChanged(cb C.intptr_t, videoAvailable C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(videoAvailable bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -454,14 +454,14 @@ func miqt_exec_callback_QMediaPlayer_HasVideoChanged(cb C.intptr_t, videoAvailab
 }
 
 func (this *QMediaPlayer) BufferProgressChanged(progress float32) {
-	C.QMediaPlayer_BufferProgressChanged(this.h, (C.float)(progress))
+	C.QMediaPlayer_bufferProgressChanged(this.h, (C.float)(progress))
 }
 func (this *QMediaPlayer) OnBufferProgressChanged(slot func(progress float32)) {
-	C.QMediaPlayer_connect_BufferProgressChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_bufferProgressChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_BufferProgressChanged
-func miqt_exec_callback_QMediaPlayer_BufferProgressChanged(cb C.intptr_t, progress C.float) {
+//export miqt_exec_callback_QMediaPlayer_bufferProgressChanged
+func miqt_exec_callback_QMediaPlayer_bufferProgressChanged(cb C.intptr_t, progress C.float) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(progress float32))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -474,14 +474,14 @@ func miqt_exec_callback_QMediaPlayer_BufferProgressChanged(cb C.intptr_t, progre
 }
 
 func (this *QMediaPlayer) SeekableChanged(seekable bool) {
-	C.QMediaPlayer_SeekableChanged(this.h, (C.bool)(seekable))
+	C.QMediaPlayer_seekableChanged(this.h, (C.bool)(seekable))
 }
 func (this *QMediaPlayer) OnSeekableChanged(slot func(seekable bool)) {
-	C.QMediaPlayer_connect_SeekableChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_seekableChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_SeekableChanged
-func miqt_exec_callback_QMediaPlayer_SeekableChanged(cb C.intptr_t, seekable C.bool) {
+//export miqt_exec_callback_QMediaPlayer_seekableChanged
+func miqt_exec_callback_QMediaPlayer_seekableChanged(cb C.intptr_t, seekable C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(seekable bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -494,14 +494,14 @@ func miqt_exec_callback_QMediaPlayer_SeekableChanged(cb C.intptr_t, seekable C.b
 }
 
 func (this *QMediaPlayer) PlaybackRateChanged(rate float64) {
-	C.QMediaPlayer_PlaybackRateChanged(this.h, (C.double)(rate))
+	C.QMediaPlayer_playbackRateChanged(this.h, (C.double)(rate))
 }
 func (this *QMediaPlayer) OnPlaybackRateChanged(slot func(rate float64)) {
-	C.QMediaPlayer_connect_PlaybackRateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_playbackRateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_PlaybackRateChanged
-func miqt_exec_callback_QMediaPlayer_PlaybackRateChanged(cb C.intptr_t, rate C.double) {
+//export miqt_exec_callback_QMediaPlayer_playbackRateChanged
+func miqt_exec_callback_QMediaPlayer_playbackRateChanged(cb C.intptr_t, rate C.double) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(rate float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -514,14 +514,14 @@ func miqt_exec_callback_QMediaPlayer_PlaybackRateChanged(cb C.intptr_t, rate C.d
 }
 
 func (this *QMediaPlayer) LoopsChanged() {
-	C.QMediaPlayer_LoopsChanged(this.h)
+	C.QMediaPlayer_loopsChanged(this.h)
 }
 func (this *QMediaPlayer) OnLoopsChanged(slot func()) {
-	C.QMediaPlayer_connect_LoopsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_loopsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_LoopsChanged
-func miqt_exec_callback_QMediaPlayer_LoopsChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaPlayer_loopsChanged
+func miqt_exec_callback_QMediaPlayer_loopsChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -531,14 +531,14 @@ func miqt_exec_callback_QMediaPlayer_LoopsChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaPlayer) MetaDataChanged() {
-	C.QMediaPlayer_MetaDataChanged(this.h)
+	C.QMediaPlayer_metaDataChanged(this.h)
 }
 func (this *QMediaPlayer) OnMetaDataChanged(slot func()) {
-	C.QMediaPlayer_connect_MetaDataChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_metaDataChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_MetaDataChanged
-func miqt_exec_callback_QMediaPlayer_MetaDataChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaPlayer_metaDataChanged
+func miqt_exec_callback_QMediaPlayer_metaDataChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -548,14 +548,14 @@ func miqt_exec_callback_QMediaPlayer_MetaDataChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaPlayer) VideoOutputChanged() {
-	C.QMediaPlayer_VideoOutputChanged(this.h)
+	C.QMediaPlayer_videoOutputChanged(this.h)
 }
 func (this *QMediaPlayer) OnVideoOutputChanged(slot func()) {
-	C.QMediaPlayer_connect_VideoOutputChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_videoOutputChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_VideoOutputChanged
-func miqt_exec_callback_QMediaPlayer_VideoOutputChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaPlayer_videoOutputChanged
+func miqt_exec_callback_QMediaPlayer_videoOutputChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -565,14 +565,14 @@ func miqt_exec_callback_QMediaPlayer_VideoOutputChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaPlayer) AudioOutputChanged() {
-	C.QMediaPlayer_AudioOutputChanged(this.h)
+	C.QMediaPlayer_audioOutputChanged(this.h)
 }
 func (this *QMediaPlayer) OnAudioOutputChanged(slot func()) {
-	C.QMediaPlayer_connect_AudioOutputChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_audioOutputChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_AudioOutputChanged
-func miqt_exec_callback_QMediaPlayer_AudioOutputChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaPlayer_audioOutputChanged
+func miqt_exec_callback_QMediaPlayer_audioOutputChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -582,14 +582,14 @@ func miqt_exec_callback_QMediaPlayer_AudioOutputChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaPlayer) TracksChanged() {
-	C.QMediaPlayer_TracksChanged(this.h)
+	C.QMediaPlayer_tracksChanged(this.h)
 }
 func (this *QMediaPlayer) OnTracksChanged(slot func()) {
-	C.QMediaPlayer_connect_TracksChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_tracksChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_TracksChanged
-func miqt_exec_callback_QMediaPlayer_TracksChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaPlayer_tracksChanged
+func miqt_exec_callback_QMediaPlayer_tracksChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -599,14 +599,14 @@ func miqt_exec_callback_QMediaPlayer_TracksChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaPlayer) ActiveTracksChanged() {
-	C.QMediaPlayer_ActiveTracksChanged(this.h)
+	C.QMediaPlayer_activeTracksChanged(this.h)
 }
 func (this *QMediaPlayer) OnActiveTracksChanged(slot func()) {
-	C.QMediaPlayer_connect_ActiveTracksChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_activeTracksChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_ActiveTracksChanged
-func miqt_exec_callback_QMediaPlayer_ActiveTracksChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaPlayer_activeTracksChanged
+func miqt_exec_callback_QMediaPlayer_activeTracksChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -616,14 +616,14 @@ func miqt_exec_callback_QMediaPlayer_ActiveTracksChanged(cb C.intptr_t) {
 }
 
 func (this *QMediaPlayer) ErrorChanged() {
-	C.QMediaPlayer_ErrorChanged(this.h)
+	C.QMediaPlayer_errorChanged(this.h)
 }
 func (this *QMediaPlayer) OnErrorChanged(slot func()) {
-	C.QMediaPlayer_connect_ErrorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_errorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_ErrorChanged
-func miqt_exec_callback_QMediaPlayer_ErrorChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMediaPlayer_errorChanged
+func miqt_exec_callback_QMediaPlayer_errorChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -637,14 +637,14 @@ func (this *QMediaPlayer) ErrorOccurred(error QMediaPlayer__Error, errorString s
 	errorString_ms.data = C.CString(errorString)
 	errorString_ms.len = C.size_t(len(errorString))
 	defer C.free(unsafe.Pointer(errorString_ms.data))
-	C.QMediaPlayer_ErrorOccurred(this.h, (C.int)(error), errorString_ms)
+	C.QMediaPlayer_errorOccurred(this.h, (C.int)(error), errorString_ms)
 }
 func (this *QMediaPlayer) OnErrorOccurred(slot func(error QMediaPlayer__Error, errorString string)) {
-	C.QMediaPlayer_connect_ErrorOccurred(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMediaPlayer_connect_errorOccurred(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMediaPlayer_ErrorOccurred
-func miqt_exec_callback_QMediaPlayer_ErrorOccurred(cb C.intptr_t, error C.int, errorString C.struct_miqt_string) {
+//export miqt_exec_callback_QMediaPlayer_errorOccurred
+func miqt_exec_callback_QMediaPlayer_errorOccurred(cb C.intptr_t, error C.int, errorString C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(error QMediaPlayer__Error, errorString string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -666,7 +666,7 @@ func QMediaPlayer_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaPlayer_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaPlayer_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -677,30 +677,30 @@ func QMediaPlayer_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaPlayer_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaPlayer_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMediaPlayer) SetSourceDevice2(device *qt6.QIODevice, sourceUrl *qt6.QUrl) {
-	C.QMediaPlayer_SetSourceDevice2(this.h, (*C.QIODevice)(device.UnsafePointer()), (*C.QUrl)(sourceUrl.UnsafePointer()))
+	C.QMediaPlayer_setSourceDevice2(this.h, (*C.QIODevice)(device.UnsafePointer()), (*C.QUrl)(sourceUrl.UnsafePointer()))
 }
 
 func (this *QMediaPlayer) callVirtualBase_Event(event *qt6.QEvent) bool {
 
-	return (bool)(C.QMediaPlayer_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QMediaPlayer_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QMediaPlayer) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
-	ok := C.QMediaPlayer_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaPlayer) Onevent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	ok := C.QMediaPlayer_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaPlayer_Event
-func miqt_exec_callback_QMediaPlayer_Event(self *C.QMediaPlayer, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QMediaPlayer_event
+func miqt_exec_callback_QMediaPlayer_event(self *C.QMediaPlayer, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -717,18 +717,18 @@ func miqt_exec_callback_QMediaPlayer_Event(self *C.QMediaPlayer, cb C.intptr_t, 
 
 func (this *QMediaPlayer) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
 
-	return (bool)(C.QMediaPlayer_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QMediaPlayer_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QMediaPlayer) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	ok := C.QMediaPlayer_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaPlayer) OneventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	ok := C.QMediaPlayer_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaPlayer_EventFilter
-func miqt_exec_callback_QMediaPlayer_EventFilter(self *C.QMediaPlayer, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QMediaPlayer_eventFilter
+func miqt_exec_callback_QMediaPlayer_eventFilter(self *C.QMediaPlayer, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -747,18 +747,18 @@ func miqt_exec_callback_QMediaPlayer_EventFilter(self *C.QMediaPlayer, cb C.intp
 
 func (this *QMediaPlayer) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
-	C.QMediaPlayer_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QMediaPlayer_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QMediaPlayer) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	ok := C.QMediaPlayer_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaPlayer) OntimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	ok := C.QMediaPlayer_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaPlayer_TimerEvent
-func miqt_exec_callback_QMediaPlayer_TimerEvent(self *C.QMediaPlayer, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QMediaPlayer_timerEvent
+func miqt_exec_callback_QMediaPlayer_timerEvent(self *C.QMediaPlayer, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -773,18 +773,18 @@ func miqt_exec_callback_QMediaPlayer_TimerEvent(self *C.QMediaPlayer, cb C.intpt
 
 func (this *QMediaPlayer) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
-	C.QMediaPlayer_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QMediaPlayer_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QMediaPlayer) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	ok := C.QMediaPlayer_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaPlayer) OnchildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	ok := C.QMediaPlayer_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaPlayer_ChildEvent
-func miqt_exec_callback_QMediaPlayer_ChildEvent(self *C.QMediaPlayer, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QMediaPlayer_childEvent
+func miqt_exec_callback_QMediaPlayer_childEvent(self *C.QMediaPlayer, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -799,18 +799,18 @@ func miqt_exec_callback_QMediaPlayer_ChildEvent(self *C.QMediaPlayer, cb C.intpt
 
 func (this *QMediaPlayer) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
-	C.QMediaPlayer_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QMediaPlayer_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QMediaPlayer) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	ok := C.QMediaPlayer_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaPlayer) OncustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	ok := C.QMediaPlayer_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaPlayer_CustomEvent
-func miqt_exec_callback_QMediaPlayer_CustomEvent(self *C.QMediaPlayer, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QMediaPlayer_customEvent
+func miqt_exec_callback_QMediaPlayer_customEvent(self *C.QMediaPlayer, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -825,18 +825,18 @@ func miqt_exec_callback_QMediaPlayer_CustomEvent(self *C.QMediaPlayer, cb C.intp
 
 func (this *QMediaPlayer) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QMediaPlayer_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QMediaPlayer_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QMediaPlayer) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QMediaPlayer_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaPlayer) OnconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QMediaPlayer_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaPlayer_ConnectNotify
-func miqt_exec_callback_QMediaPlayer_ConnectNotify(self *C.QMediaPlayer, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QMediaPlayer_connectNotify
+func miqt_exec_callback_QMediaPlayer_connectNotify(self *C.QMediaPlayer, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -851,18 +851,18 @@ func miqt_exec_callback_QMediaPlayer_ConnectNotify(self *C.QMediaPlayer, cb C.in
 
 func (this *QMediaPlayer) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QMediaPlayer_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QMediaPlayer_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QMediaPlayer) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QMediaPlayer_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMediaPlayer) OndisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QMediaPlayer_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMediaPlayer_DisconnectNotify
-func miqt_exec_callback_QMediaPlayer_DisconnectNotify(self *C.QMediaPlayer, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QMediaPlayer_disconnectNotify
+func miqt_exec_callback_QMediaPlayer_disconnectNotify(self *C.QMediaPlayer, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -877,7 +877,7 @@ func miqt_exec_callback_QMediaPlayer_DisconnectNotify(self *C.QMediaPlayer, cb C
 
 // Delete this object from C++ memory.
 func (this *QMediaPlayer) Delete() {
-	C.QMediaPlayer_Delete(this.h)
+	C.QMediaPlayer_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

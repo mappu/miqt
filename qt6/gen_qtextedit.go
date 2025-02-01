@@ -99,30 +99,30 @@ func NewQTextEdit4(text string, parent *QWidget) *QTextEdit {
 }
 
 func (this *QTextEdit) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QTextEdit_MetaObject(this.h))
+	return newQMetaObject(C.QTextEdit_metaObject(this.h))
 }
 
 func (this *QTextEdit) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QTextEdit_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QTextEdit_metacast(this.h, param1_Cstring))
 }
 
 func QTextEdit_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QTextEdit_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QTextEdit_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextEdit) SetDocument(document *QTextDocument) {
-	C.QTextEdit_SetDocument(this.h, document.cPointer())
+	C.QTextEdit_setDocument(this.h, document.cPointer())
 }
 
 func (this *QTextEdit) Document() *QTextDocument {
-	return newQTextDocument(C.QTextEdit_Document(this.h))
+	return newQTextDocument(C.QTextEdit_document(this.h))
 }
 
 func (this *QTextEdit) SetPlaceholderText(placeholderText string) {
@@ -130,115 +130,115 @@ func (this *QTextEdit) SetPlaceholderText(placeholderText string) {
 	placeholderText_ms.data = C.CString(placeholderText)
 	placeholderText_ms.len = C.size_t(len(placeholderText))
 	defer C.free(unsafe.Pointer(placeholderText_ms.data))
-	C.QTextEdit_SetPlaceholderText(this.h, placeholderText_ms)
+	C.QTextEdit_setPlaceholderText(this.h, placeholderText_ms)
 }
 
 func (this *QTextEdit) PlaceholderText() string {
-	var _ms C.struct_miqt_string = C.QTextEdit_PlaceholderText(this.h)
+	var _ms C.struct_miqt_string = C.QTextEdit_placeholderText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextEdit) SetTextCursor(cursor *QTextCursor) {
-	C.QTextEdit_SetTextCursor(this.h, cursor.cPointer())
+	C.QTextEdit_setTextCursor(this.h, cursor.cPointer())
 }
 
 func (this *QTextEdit) TextCursor() *QTextCursor {
-	_goptr := newQTextCursor(C.QTextEdit_TextCursor(this.h))
+	_goptr := newQTextCursor(C.QTextEdit_textCursor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) IsReadOnly() bool {
-	return (bool)(C.QTextEdit_IsReadOnly(this.h))
+	return (bool)(C.QTextEdit_isReadOnly(this.h))
 }
 
 func (this *QTextEdit) SetReadOnly(ro bool) {
-	C.QTextEdit_SetReadOnly(this.h, (C.bool)(ro))
+	C.QTextEdit_setReadOnly(this.h, (C.bool)(ro))
 }
 
 func (this *QTextEdit) SetTextInteractionFlags(flags TextInteractionFlag) {
-	C.QTextEdit_SetTextInteractionFlags(this.h, (C.int)(flags))
+	C.QTextEdit_setTextInteractionFlags(this.h, (C.int)(flags))
 }
 
 func (this *QTextEdit) TextInteractionFlags() TextInteractionFlag {
-	return (TextInteractionFlag)(C.QTextEdit_TextInteractionFlags(this.h))
+	return (TextInteractionFlag)(C.QTextEdit_textInteractionFlags(this.h))
 }
 
 func (this *QTextEdit) FontPointSize() float64 {
-	return (float64)(C.QTextEdit_FontPointSize(this.h))
+	return (float64)(C.QTextEdit_fontPointSize(this.h))
 }
 
 func (this *QTextEdit) FontFamily() string {
-	var _ms C.struct_miqt_string = C.QTextEdit_FontFamily(this.h)
+	var _ms C.struct_miqt_string = C.QTextEdit_fontFamily(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextEdit) FontWeight() int {
-	return (int)(C.QTextEdit_FontWeight(this.h))
+	return (int)(C.QTextEdit_fontWeight(this.h))
 }
 
 func (this *QTextEdit) FontUnderline() bool {
-	return (bool)(C.QTextEdit_FontUnderline(this.h))
+	return (bool)(C.QTextEdit_fontUnderline(this.h))
 }
 
 func (this *QTextEdit) FontItalic() bool {
-	return (bool)(C.QTextEdit_FontItalic(this.h))
+	return (bool)(C.QTextEdit_fontItalic(this.h))
 }
 
 func (this *QTextEdit) TextColor() *QColor {
-	_goptr := newQColor(C.QTextEdit_TextColor(this.h))
+	_goptr := newQColor(C.QTextEdit_textColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) TextBackgroundColor() *QColor {
-	_goptr := newQColor(C.QTextEdit_TextBackgroundColor(this.h))
+	_goptr := newQColor(C.QTextEdit_textBackgroundColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) CurrentFont() *QFont {
-	_goptr := newQFont(C.QTextEdit_CurrentFont(this.h))
+	_goptr := newQFont(C.QTextEdit_currentFont(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) Alignment() AlignmentFlag {
-	return (AlignmentFlag)(C.QTextEdit_Alignment(this.h))
+	return (AlignmentFlag)(C.QTextEdit_alignment(this.h))
 }
 
 func (this *QTextEdit) MergeCurrentCharFormat(modifier *QTextCharFormat) {
-	C.QTextEdit_MergeCurrentCharFormat(this.h, modifier.cPointer())
+	C.QTextEdit_mergeCurrentCharFormat(this.h, modifier.cPointer())
 }
 
 func (this *QTextEdit) SetCurrentCharFormat(format *QTextCharFormat) {
-	C.QTextEdit_SetCurrentCharFormat(this.h, format.cPointer())
+	C.QTextEdit_setCurrentCharFormat(this.h, format.cPointer())
 }
 
 func (this *QTextEdit) CurrentCharFormat() *QTextCharFormat {
-	_goptr := newQTextCharFormat(C.QTextEdit_CurrentCharFormat(this.h))
+	_goptr := newQTextCharFormat(C.QTextEdit_currentCharFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) AutoFormatting() QTextEdit__AutoFormattingFlag {
-	return (QTextEdit__AutoFormattingFlag)(C.QTextEdit_AutoFormatting(this.h))
+	return (QTextEdit__AutoFormattingFlag)(C.QTextEdit_autoFormatting(this.h))
 }
 
 func (this *QTextEdit) SetAutoFormatting(features QTextEdit__AutoFormattingFlag) {
-	C.QTextEdit_SetAutoFormatting(this.h, (C.int)(features))
+	C.QTextEdit_setAutoFormatting(this.h, (C.int)(features))
 }
 
 func (this *QTextEdit) TabChangesFocus() bool {
-	return (bool)(C.QTextEdit_TabChangesFocus(this.h))
+	return (bool)(C.QTextEdit_tabChangesFocus(this.h))
 }
 
 func (this *QTextEdit) SetTabChangesFocus(b bool) {
-	C.QTextEdit_SetTabChangesFocus(this.h, (C.bool)(b))
+	C.QTextEdit_setTabChangesFocus(this.h, (C.bool)(b))
 }
 
 func (this *QTextEdit) SetDocumentTitle(title string) {
@@ -246,46 +246,46 @@ func (this *QTextEdit) SetDocumentTitle(title string) {
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	C.QTextEdit_SetDocumentTitle(this.h, title_ms)
+	C.QTextEdit_setDocumentTitle(this.h, title_ms)
 }
 
 func (this *QTextEdit) DocumentTitle() string {
-	var _ms C.struct_miqt_string = C.QTextEdit_DocumentTitle(this.h)
+	var _ms C.struct_miqt_string = C.QTextEdit_documentTitle(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextEdit) IsUndoRedoEnabled() bool {
-	return (bool)(C.QTextEdit_IsUndoRedoEnabled(this.h))
+	return (bool)(C.QTextEdit_isUndoRedoEnabled(this.h))
 }
 
 func (this *QTextEdit) SetUndoRedoEnabled(enable bool) {
-	C.QTextEdit_SetUndoRedoEnabled(this.h, (C.bool)(enable))
+	C.QTextEdit_setUndoRedoEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QTextEdit) LineWrapMode() QTextEdit__LineWrapMode {
-	return (QTextEdit__LineWrapMode)(C.QTextEdit_LineWrapMode(this.h))
+	return (QTextEdit__LineWrapMode)(C.QTextEdit_lineWrapMode(this.h))
 }
 
 func (this *QTextEdit) SetLineWrapMode(mode QTextEdit__LineWrapMode) {
-	C.QTextEdit_SetLineWrapMode(this.h, (C.int)(mode))
+	C.QTextEdit_setLineWrapMode(this.h, (C.int)(mode))
 }
 
 func (this *QTextEdit) LineWrapColumnOrWidth() int {
-	return (int)(C.QTextEdit_LineWrapColumnOrWidth(this.h))
+	return (int)(C.QTextEdit_lineWrapColumnOrWidth(this.h))
 }
 
 func (this *QTextEdit) SetLineWrapColumnOrWidth(w int) {
-	C.QTextEdit_SetLineWrapColumnOrWidth(this.h, (C.int)(w))
+	C.QTextEdit_setLineWrapColumnOrWidth(this.h, (C.int)(w))
 }
 
 func (this *QTextEdit) WordWrapMode() QTextOption__WrapMode {
-	return (QTextOption__WrapMode)(C.QTextEdit_WordWrapMode(this.h))
+	return (QTextOption__WrapMode)(C.QTextEdit_wordWrapMode(this.h))
 }
 
 func (this *QTextEdit) SetWordWrapMode(policy QTextOption__WrapMode) {
-	C.QTextEdit_SetWordWrapMode(this.h, (C.int)(policy))
+	C.QTextEdit_setWordWrapMode(this.h, (C.int)(policy))
 }
 
 func (this *QTextEdit) Find(exp string) bool {
@@ -293,107 +293,107 @@ func (this *QTextEdit) Find(exp string) bool {
 	exp_ms.data = C.CString(exp)
 	exp_ms.len = C.size_t(len(exp))
 	defer C.free(unsafe.Pointer(exp_ms.data))
-	return (bool)(C.QTextEdit_Find(this.h, exp_ms))
+	return (bool)(C.QTextEdit_find(this.h, exp_ms))
 }
 
 func (this *QTextEdit) FindWithExp(exp *QRegularExpression) bool {
-	return (bool)(C.QTextEdit_FindWithExp(this.h, exp.cPointer()))
+	return (bool)(C.QTextEdit_findWithExp(this.h, exp.cPointer()))
 }
 
 func (this *QTextEdit) ToPlainText() string {
-	var _ms C.struct_miqt_string = C.QTextEdit_ToPlainText(this.h)
+	var _ms C.struct_miqt_string = C.QTextEdit_toPlainText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextEdit) ToHtml() string {
-	var _ms C.struct_miqt_string = C.QTextEdit_ToHtml(this.h)
+	var _ms C.struct_miqt_string = C.QTextEdit_toHtml(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextEdit) ToMarkdown() string {
-	var _ms C.struct_miqt_string = C.QTextEdit_ToMarkdown(this.h)
+	var _ms C.struct_miqt_string = C.QTextEdit_toMarkdown(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextEdit) EnsureCursorVisible() {
-	C.QTextEdit_EnsureCursorVisible(this.h)
+	C.QTextEdit_ensureCursorVisible(this.h)
 }
 
 func (this *QTextEdit) LoadResource(typeVal int, name *QUrl) *QVariant {
-	_goptr := newQVariant(C.QTextEdit_LoadResource(this.h, (C.int)(typeVal), name.cPointer()))
+	_goptr := newQVariant(C.QTextEdit_loadResource(this.h, (C.int)(typeVal), name.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) CreateStandardContextMenu() *QMenu {
-	return newQMenu(C.QTextEdit_CreateStandardContextMenu(this.h))
+	return newQMenu(C.QTextEdit_createStandardContextMenu(this.h))
 }
 
 func (this *QTextEdit) CreateStandardContextMenuWithPosition(position *QPoint) *QMenu {
-	return newQMenu(C.QTextEdit_CreateStandardContextMenuWithPosition(this.h, position.cPointer()))
+	return newQMenu(C.QTextEdit_createStandardContextMenuWithPosition(this.h, position.cPointer()))
 }
 
 func (this *QTextEdit) CursorForPosition(pos *QPoint) *QTextCursor {
-	_goptr := newQTextCursor(C.QTextEdit_CursorForPosition(this.h, pos.cPointer()))
+	_goptr := newQTextCursor(C.QTextEdit_cursorForPosition(this.h, pos.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) CursorRect(cursor *QTextCursor) *QRect {
-	_goptr := newQRect(C.QTextEdit_CursorRect(this.h, cursor.cPointer()))
+	_goptr := newQRect(C.QTextEdit_cursorRect(this.h, cursor.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) CursorRect2() *QRect {
-	_goptr := newQRect(C.QTextEdit_CursorRect2(this.h))
+	_goptr := newQRect(C.QTextEdit_cursorRect2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) AnchorAt(pos *QPoint) string {
-	var _ms C.struct_miqt_string = C.QTextEdit_AnchorAt(this.h, pos.cPointer())
+	var _ms C.struct_miqt_string = C.QTextEdit_anchorAt(this.h, pos.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextEdit) OverwriteMode() bool {
-	return (bool)(C.QTextEdit_OverwriteMode(this.h))
+	return (bool)(C.QTextEdit_overwriteMode(this.h))
 }
 
 func (this *QTextEdit) SetOverwriteMode(overwrite bool) {
-	C.QTextEdit_SetOverwriteMode(this.h, (C.bool)(overwrite))
+	C.QTextEdit_setOverwriteMode(this.h, (C.bool)(overwrite))
 }
 
 func (this *QTextEdit) TabStopDistance() float64 {
-	return (float64)(C.QTextEdit_TabStopDistance(this.h))
+	return (float64)(C.QTextEdit_tabStopDistance(this.h))
 }
 
 func (this *QTextEdit) SetTabStopDistance(distance float64) {
-	C.QTextEdit_SetTabStopDistance(this.h, (C.double)(distance))
+	C.QTextEdit_setTabStopDistance(this.h, (C.double)(distance))
 }
 
 func (this *QTextEdit) CursorWidth() int {
-	return (int)(C.QTextEdit_CursorWidth(this.h))
+	return (int)(C.QTextEdit_cursorWidth(this.h))
 }
 
 func (this *QTextEdit) SetCursorWidth(width int) {
-	C.QTextEdit_SetCursorWidth(this.h, (C.int)(width))
+	C.QTextEdit_setCursorWidth(this.h, (C.int)(width))
 }
 
 func (this *QTextEdit) AcceptRichText() bool {
-	return (bool)(C.QTextEdit_AcceptRichText(this.h))
+	return (bool)(C.QTextEdit_acceptRichText(this.h))
 }
 
 func (this *QTextEdit) SetAcceptRichText(accept bool) {
-	C.QTextEdit_SetAcceptRichText(this.h, (C.bool)(accept))
+	C.QTextEdit_setAcceptRichText(this.h, (C.bool)(accept))
 }
 
 func (this *QTextEdit) SetExtraSelections(selections []QTextEdit__ExtraSelection) {
@@ -403,11 +403,11 @@ func (this *QTextEdit) SetExtraSelections(selections []QTextEdit__ExtraSelection
 		selections_CArray[i] = selections[i].cPointer()
 	}
 	selections_ma := C.struct_miqt_array{len: C.size_t(len(selections)), data: unsafe.Pointer(selections_CArray)}
-	C.QTextEdit_SetExtraSelections(this.h, selections_ma)
+	C.QTextEdit_setExtraSelections(this.h, selections_ma)
 }
 
 func (this *QTextEdit) ExtraSelections() []QTextEdit__ExtraSelection {
-	var _ma C.struct_miqt_array = C.QTextEdit_ExtraSelections(this.h)
+	var _ma C.struct_miqt_array = C.QTextEdit_extraSelections(this.h)
 	_ret := make([]QTextEdit__ExtraSelection, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextEdit__ExtraSelection)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -419,31 +419,31 @@ func (this *QTextEdit) ExtraSelections() []QTextEdit__ExtraSelection {
 }
 
 func (this *QTextEdit) MoveCursor(operation QTextCursor__MoveOperation) {
-	C.QTextEdit_MoveCursor(this.h, (C.int)(operation))
+	C.QTextEdit_moveCursor(this.h, (C.int)(operation))
 }
 
 func (this *QTextEdit) CanPaste() bool {
-	return (bool)(C.QTextEdit_CanPaste(this.h))
+	return (bool)(C.QTextEdit_canPaste(this.h))
 }
 
 func (this *QTextEdit) Print(printer *QPagedPaintDevice) {
-	C.QTextEdit_Print(this.h, printer.cPointer())
+	C.QTextEdit_print(this.h, printer.cPointer())
 }
 
 func (this *QTextEdit) InputMethodQuery(property InputMethodQuery) *QVariant {
-	_goptr := newQVariant(C.QTextEdit_InputMethodQuery(this.h, (C.int)(property)))
+	_goptr := newQVariant(C.QTextEdit_inputMethodQuery(this.h, (C.int)(property)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) InputMethodQuery2(query InputMethodQuery, argument QVariant) *QVariant {
-	_goptr := newQVariant(C.QTextEdit_InputMethodQuery2(this.h, (C.int)(query), argument.cPointer()))
+	_goptr := newQVariant(C.QTextEdit_inputMethodQuery2(this.h, (C.int)(query), argument.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextEdit) SetFontPointSize(s float64) {
-	C.QTextEdit_SetFontPointSize(this.h, (C.double)(s))
+	C.QTextEdit_setFontPointSize(this.h, (C.double)(s))
 }
 
 func (this *QTextEdit) SetFontFamily(fontFamily string) {
@@ -451,35 +451,35 @@ func (this *QTextEdit) SetFontFamily(fontFamily string) {
 	fontFamily_ms.data = C.CString(fontFamily)
 	fontFamily_ms.len = C.size_t(len(fontFamily))
 	defer C.free(unsafe.Pointer(fontFamily_ms.data))
-	C.QTextEdit_SetFontFamily(this.h, fontFamily_ms)
+	C.QTextEdit_setFontFamily(this.h, fontFamily_ms)
 }
 
 func (this *QTextEdit) SetFontWeight(w int) {
-	C.QTextEdit_SetFontWeight(this.h, (C.int)(w))
+	C.QTextEdit_setFontWeight(this.h, (C.int)(w))
 }
 
 func (this *QTextEdit) SetFontUnderline(b bool) {
-	C.QTextEdit_SetFontUnderline(this.h, (C.bool)(b))
+	C.QTextEdit_setFontUnderline(this.h, (C.bool)(b))
 }
 
 func (this *QTextEdit) SetFontItalic(b bool) {
-	C.QTextEdit_SetFontItalic(this.h, (C.bool)(b))
+	C.QTextEdit_setFontItalic(this.h, (C.bool)(b))
 }
 
 func (this *QTextEdit) SetTextColor(c *QColor) {
-	C.QTextEdit_SetTextColor(this.h, c.cPointer())
+	C.QTextEdit_setTextColor(this.h, c.cPointer())
 }
 
 func (this *QTextEdit) SetTextBackgroundColor(c *QColor) {
-	C.QTextEdit_SetTextBackgroundColor(this.h, c.cPointer())
+	C.QTextEdit_setTextBackgroundColor(this.h, c.cPointer())
 }
 
 func (this *QTextEdit) SetCurrentFont(f *QFont) {
-	C.QTextEdit_SetCurrentFont(this.h, f.cPointer())
+	C.QTextEdit_setCurrentFont(this.h, f.cPointer())
 }
 
 func (this *QTextEdit) SetAlignment(a AlignmentFlag) {
-	C.QTextEdit_SetAlignment(this.h, (C.int)(a))
+	C.QTextEdit_setAlignment(this.h, (C.int)(a))
 }
 
 func (this *QTextEdit) SetPlainText(text string) {
@@ -487,7 +487,7 @@ func (this *QTextEdit) SetPlainText(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QTextEdit_SetPlainText(this.h, text_ms)
+	C.QTextEdit_setPlainText(this.h, text_ms)
 }
 
 func (this *QTextEdit) SetHtml(text string) {
@@ -495,7 +495,7 @@ func (this *QTextEdit) SetHtml(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QTextEdit_SetHtml(this.h, text_ms)
+	C.QTextEdit_setHtml(this.h, text_ms)
 }
 
 func (this *QTextEdit) SetMarkdown(markdown string) {
@@ -503,7 +503,7 @@ func (this *QTextEdit) SetMarkdown(markdown string) {
 	markdown_ms.data = C.CString(markdown)
 	markdown_ms.len = C.size_t(len(markdown))
 	defer C.free(unsafe.Pointer(markdown_ms.data))
-	C.QTextEdit_SetMarkdown(this.h, markdown_ms)
+	C.QTextEdit_setMarkdown(this.h, markdown_ms)
 }
 
 func (this *QTextEdit) SetText(text string) {
@@ -511,35 +511,35 @@ func (this *QTextEdit) SetText(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QTextEdit_SetText(this.h, text_ms)
+	C.QTextEdit_setText(this.h, text_ms)
 }
 
 func (this *QTextEdit) Cut() {
-	C.QTextEdit_Cut(this.h)
+	C.QTextEdit_cut(this.h)
 }
 
 func (this *QTextEdit) Copy() {
-	C.QTextEdit_Copy(this.h)
+	C.QTextEdit_copy(this.h)
 }
 
 func (this *QTextEdit) Paste() {
-	C.QTextEdit_Paste(this.h)
+	C.QTextEdit_paste(this.h)
 }
 
 func (this *QTextEdit) Undo() {
-	C.QTextEdit_Undo(this.h)
+	C.QTextEdit_undo(this.h)
 }
 
 func (this *QTextEdit) Redo() {
-	C.QTextEdit_Redo(this.h)
+	C.QTextEdit_redo(this.h)
 }
 
 func (this *QTextEdit) Clear() {
-	C.QTextEdit_Clear(this.h)
+	C.QTextEdit_clear(this.h)
 }
 
 func (this *QTextEdit) SelectAll() {
-	C.QTextEdit_SelectAll(this.h)
+	C.QTextEdit_selectAll(this.h)
 }
 
 func (this *QTextEdit) InsertPlainText(text string) {
@@ -547,7 +547,7 @@ func (this *QTextEdit) InsertPlainText(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QTextEdit_InsertPlainText(this.h, text_ms)
+	C.QTextEdit_insertPlainText(this.h, text_ms)
 }
 
 func (this *QTextEdit) InsertHtml(text string) {
@@ -555,7 +555,7 @@ func (this *QTextEdit) InsertHtml(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QTextEdit_InsertHtml(this.h, text_ms)
+	C.QTextEdit_insertHtml(this.h, text_ms)
 }
 
 func (this *QTextEdit) Append(text string) {
@@ -563,7 +563,7 @@ func (this *QTextEdit) Append(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QTextEdit_Append(this.h, text_ms)
+	C.QTextEdit_append(this.h, text_ms)
 }
 
 func (this *QTextEdit) ScrollToAnchor(name string) {
@@ -571,26 +571,26 @@ func (this *QTextEdit) ScrollToAnchor(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QTextEdit_ScrollToAnchor(this.h, name_ms)
+	C.QTextEdit_scrollToAnchor(this.h, name_ms)
 }
 
 func (this *QTextEdit) ZoomIn() {
-	C.QTextEdit_ZoomIn(this.h)
+	C.QTextEdit_zoomIn(this.h)
 }
 
 func (this *QTextEdit) ZoomOut() {
-	C.QTextEdit_ZoomOut(this.h)
+	C.QTextEdit_zoomOut(this.h)
 }
 
 func (this *QTextEdit) TextChanged() {
-	C.QTextEdit_TextChanged(this.h)
+	C.QTextEdit_textChanged(this.h)
 }
 func (this *QTextEdit) OnTextChanged(slot func()) {
-	C.QTextEdit_connect_TextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QTextEdit_connect_textChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QTextEdit_TextChanged
-func miqt_exec_callback_QTextEdit_TextChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QTextEdit_textChanged
+func miqt_exec_callback_QTextEdit_textChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -600,14 +600,14 @@ func miqt_exec_callback_QTextEdit_TextChanged(cb C.intptr_t) {
 }
 
 func (this *QTextEdit) UndoAvailable(b bool) {
-	C.QTextEdit_UndoAvailable(this.h, (C.bool)(b))
+	C.QTextEdit_undoAvailable(this.h, (C.bool)(b))
 }
 func (this *QTextEdit) OnUndoAvailable(slot func(b bool)) {
-	C.QTextEdit_connect_UndoAvailable(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QTextEdit_connect_undoAvailable(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QTextEdit_UndoAvailable
-func miqt_exec_callback_QTextEdit_UndoAvailable(cb C.intptr_t, b C.bool) {
+//export miqt_exec_callback_QTextEdit_undoAvailable
+func miqt_exec_callback_QTextEdit_undoAvailable(cb C.intptr_t, b C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(b bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -620,14 +620,14 @@ func miqt_exec_callback_QTextEdit_UndoAvailable(cb C.intptr_t, b C.bool) {
 }
 
 func (this *QTextEdit) RedoAvailable(b bool) {
-	C.QTextEdit_RedoAvailable(this.h, (C.bool)(b))
+	C.QTextEdit_redoAvailable(this.h, (C.bool)(b))
 }
 func (this *QTextEdit) OnRedoAvailable(slot func(b bool)) {
-	C.QTextEdit_connect_RedoAvailable(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QTextEdit_connect_redoAvailable(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QTextEdit_RedoAvailable
-func miqt_exec_callback_QTextEdit_RedoAvailable(cb C.intptr_t, b C.bool) {
+//export miqt_exec_callback_QTextEdit_redoAvailable
+func miqt_exec_callback_QTextEdit_redoAvailable(cb C.intptr_t, b C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(b bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -640,14 +640,14 @@ func miqt_exec_callback_QTextEdit_RedoAvailable(cb C.intptr_t, b C.bool) {
 }
 
 func (this *QTextEdit) CurrentCharFormatChanged(format *QTextCharFormat) {
-	C.QTextEdit_CurrentCharFormatChanged(this.h, format.cPointer())
+	C.QTextEdit_currentCharFormatChanged(this.h, format.cPointer())
 }
 func (this *QTextEdit) OnCurrentCharFormatChanged(slot func(format *QTextCharFormat)) {
-	C.QTextEdit_connect_CurrentCharFormatChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QTextEdit_connect_currentCharFormatChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QTextEdit_CurrentCharFormatChanged
-func miqt_exec_callback_QTextEdit_CurrentCharFormatChanged(cb C.intptr_t, format *C.QTextCharFormat) {
+//export miqt_exec_callback_QTextEdit_currentCharFormatChanged
+func miqt_exec_callback_QTextEdit_currentCharFormatChanged(cb C.intptr_t, format *C.QTextCharFormat) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(format *QTextCharFormat))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -660,14 +660,14 @@ func miqt_exec_callback_QTextEdit_CurrentCharFormatChanged(cb C.intptr_t, format
 }
 
 func (this *QTextEdit) CopyAvailable(b bool) {
-	C.QTextEdit_CopyAvailable(this.h, (C.bool)(b))
+	C.QTextEdit_copyAvailable(this.h, (C.bool)(b))
 }
 func (this *QTextEdit) OnCopyAvailable(slot func(b bool)) {
-	C.QTextEdit_connect_CopyAvailable(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QTextEdit_connect_copyAvailable(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QTextEdit_CopyAvailable
-func miqt_exec_callback_QTextEdit_CopyAvailable(cb C.intptr_t, b C.bool) {
+//export miqt_exec_callback_QTextEdit_copyAvailable
+func miqt_exec_callback_QTextEdit_copyAvailable(cb C.intptr_t, b C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(b bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -680,14 +680,14 @@ func miqt_exec_callback_QTextEdit_CopyAvailable(cb C.intptr_t, b C.bool) {
 }
 
 func (this *QTextEdit) SelectionChanged() {
-	C.QTextEdit_SelectionChanged(this.h)
+	C.QTextEdit_selectionChanged(this.h)
 }
 func (this *QTextEdit) OnSelectionChanged(slot func()) {
-	C.QTextEdit_connect_SelectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QTextEdit_connect_selectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QTextEdit_SelectionChanged
-func miqt_exec_callback_QTextEdit_SelectionChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QTextEdit_selectionChanged
+func miqt_exec_callback_QTextEdit_selectionChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -697,14 +697,14 @@ func miqt_exec_callback_QTextEdit_SelectionChanged(cb C.intptr_t) {
 }
 
 func (this *QTextEdit) CursorPositionChanged() {
-	C.QTextEdit_CursorPositionChanged(this.h)
+	C.QTextEdit_cursorPositionChanged(this.h)
 }
 func (this *QTextEdit) OnCursorPositionChanged(slot func()) {
-	C.QTextEdit_connect_CursorPositionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QTextEdit_connect_cursorPositionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QTextEdit_CursorPositionChanged
-func miqt_exec_callback_QTextEdit_CursorPositionChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QTextEdit_cursorPositionChanged
+func miqt_exec_callback_QTextEdit_cursorPositionChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -718,7 +718,7 @@ func QTextEdit_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTextEdit_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QTextEdit_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -729,7 +729,7 @@ func QTextEdit_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTextEdit_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QTextEdit_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -740,48 +740,48 @@ func (this *QTextEdit) Find2(exp string, options QTextDocument__FindFlag) bool {
 	exp_ms.data = C.CString(exp)
 	exp_ms.len = C.size_t(len(exp))
 	defer C.free(unsafe.Pointer(exp_ms.data))
-	return (bool)(C.QTextEdit_Find2(this.h, exp_ms, (C.int)(options)))
+	return (bool)(C.QTextEdit_find2(this.h, exp_ms, (C.int)(options)))
 }
 
 func (this *QTextEdit) Find22(exp *QRegularExpression, options QTextDocument__FindFlag) bool {
-	return (bool)(C.QTextEdit_Find22(this.h, exp.cPointer(), (C.int)(options)))
+	return (bool)(C.QTextEdit_find22(this.h, exp.cPointer(), (C.int)(options)))
 }
 
 func (this *QTextEdit) ToMarkdown1(features QTextDocument__MarkdownFeature) string {
-	var _ms C.struct_miqt_string = C.QTextEdit_ToMarkdown1(this.h, (C.int)(features))
+	var _ms C.struct_miqt_string = C.QTextEdit_toMarkdown1(this.h, (C.int)(features))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextEdit) MoveCursor2(operation QTextCursor__MoveOperation, mode QTextCursor__MoveMode) {
-	C.QTextEdit_MoveCursor2(this.h, (C.int)(operation), (C.int)(mode))
+	C.QTextEdit_moveCursor2(this.h, (C.int)(operation), (C.int)(mode))
 }
 
 func (this *QTextEdit) ZoomIn1(rangeVal int) {
-	C.QTextEdit_ZoomIn1(this.h, (C.int)(rangeVal))
+	C.QTextEdit_zoomIn1(this.h, (C.int)(rangeVal))
 }
 
 func (this *QTextEdit) ZoomOut1(rangeVal int) {
-	C.QTextEdit_ZoomOut1(this.h, (C.int)(rangeVal))
+	C.QTextEdit_zoomOut1(this.h, (C.int)(rangeVal))
 }
 
 func (this *QTextEdit) callVirtualBase_LoadResource(typeVal int, name *QUrl) *QVariant {
 
-	_goptr := newQVariant(C.QTextEdit_virtualbase_LoadResource(unsafe.Pointer(this.h), (C.int)(typeVal), name.cPointer()))
+	_goptr := newQVariant(C.QTextEdit_virtualbase_loadResource(unsafe.Pointer(this.h), (C.int)(typeVal), name.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QTextEdit) OnLoadResource(slot func(super func(typeVal int, name *QUrl) *QVariant, typeVal int, name *QUrl) *QVariant) {
-	ok := C.QTextEdit_override_virtual_LoadResource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnloadResource(slot func(super func(typeVal int, name *QUrl) *QVariant, typeVal int, name *QUrl) *QVariant) {
+	ok := C.QTextEdit_override_virtual_loadResource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_LoadResource
-func miqt_exec_callback_QTextEdit_LoadResource(self *C.QTextEdit, cb C.intptr_t, typeVal C.int, name *C.QUrl) *C.QVariant {
+//export miqt_exec_callback_QTextEdit_loadResource
+func miqt_exec_callback_QTextEdit_loadResource(self *C.QTextEdit, cb C.intptr_t, typeVal C.int, name *C.QUrl) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(typeVal int, name *QUrl) *QVariant, typeVal int, name *QUrl) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -800,20 +800,20 @@ func miqt_exec_callback_QTextEdit_LoadResource(self *C.QTextEdit, cb C.intptr_t,
 
 func (this *QTextEdit) callVirtualBase_InputMethodQuery(property InputMethodQuery) *QVariant {
 
-	_goptr := newQVariant(C.QTextEdit_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(property)))
+	_goptr := newQVariant(C.QTextEdit_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(property)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QTextEdit) OnInputMethodQuery(slot func(super func(property InputMethodQuery) *QVariant, property InputMethodQuery) *QVariant) {
-	ok := C.QTextEdit_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OninputMethodQuery(slot func(super func(property InputMethodQuery) *QVariant, property InputMethodQuery) *QVariant) {
+	ok := C.QTextEdit_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_InputMethodQuery
-func miqt_exec_callback_QTextEdit_InputMethodQuery(self *C.QTextEdit, cb C.intptr_t, property C.int) *C.QVariant {
+//export miqt_exec_callback_QTextEdit_inputMethodQuery
+func miqt_exec_callback_QTextEdit_inputMethodQuery(self *C.QTextEdit, cb C.intptr_t, property C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(property InputMethodQuery) *QVariant, property InputMethodQuery) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -830,18 +830,18 @@ func miqt_exec_callback_QTextEdit_InputMethodQuery(self *C.QTextEdit, cb C.intpt
 
 func (this *QTextEdit) callVirtualBase_Event(e *QEvent) bool {
 
-	return (bool)(C.QTextEdit_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+	return (bool)(C.QTextEdit_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
 }
-func (this *QTextEdit) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	ok := C.QTextEdit_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) Onevent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	ok := C.QTextEdit_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_Event
-func miqt_exec_callback_QTextEdit_Event(self *C.QTextEdit, cb C.intptr_t, e *C.QEvent) C.bool {
+//export miqt_exec_callback_QTextEdit_event
+func miqt_exec_callback_QTextEdit_event(self *C.QTextEdit, cb C.intptr_t, e *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -858,18 +858,18 @@ func miqt_exec_callback_QTextEdit_Event(self *C.QTextEdit, cb C.intptr_t, e *C.Q
 
 func (this *QTextEdit) callVirtualBase_TimerEvent(e *QTimerEvent) {
 
-	C.QTextEdit_virtualbase_TimerEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_timerEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnTimerEvent(slot func(super func(e *QTimerEvent), e *QTimerEvent)) {
-	ok := C.QTextEdit_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OntimerEvent(slot func(super func(e *QTimerEvent), e *QTimerEvent)) {
+	ok := C.QTextEdit_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_TimerEvent
-func miqt_exec_callback_QTextEdit_TimerEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QTimerEvent) {
+//export miqt_exec_callback_QTextEdit_timerEvent
+func miqt_exec_callback_QTextEdit_timerEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QTimerEvent), e *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -884,18 +884,18 @@ func miqt_exec_callback_QTextEdit_TimerEvent(self *C.QTextEdit, cb C.intptr_t, e
 
 func (this *QTextEdit) callVirtualBase_KeyPressEvent(e *QKeyEvent) {
 
-	C.QTextEdit_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_keyPressEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnKeyPressEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
-	ok := C.QTextEdit_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnkeyPressEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
+	ok := C.QTextEdit_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_KeyPressEvent
-func miqt_exec_callback_QTextEdit_KeyPressEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QKeyEvent) {
+//export miqt_exec_callback_QTextEdit_keyPressEvent
+func miqt_exec_callback_QTextEdit_keyPressEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QKeyEvent), e *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -910,18 +910,18 @@ func miqt_exec_callback_QTextEdit_KeyPressEvent(self *C.QTextEdit, cb C.intptr_t
 
 func (this *QTextEdit) callVirtualBase_KeyReleaseEvent(e *QKeyEvent) {
 
-	C.QTextEdit_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnKeyReleaseEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
-	ok := C.QTextEdit_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnkeyReleaseEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
+	ok := C.QTextEdit_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_KeyReleaseEvent
-func miqt_exec_callback_QTextEdit_KeyReleaseEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QKeyEvent) {
+//export miqt_exec_callback_QTextEdit_keyReleaseEvent
+func miqt_exec_callback_QTextEdit_keyReleaseEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QKeyEvent), e *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -936,18 +936,18 @@ func miqt_exec_callback_QTextEdit_KeyReleaseEvent(self *C.QTextEdit, cb C.intptr
 
 func (this *QTextEdit) callVirtualBase_ResizeEvent(e *QResizeEvent) {
 
-	C.QTextEdit_virtualbase_ResizeEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_resizeEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnResizeEvent(slot func(super func(e *QResizeEvent), e *QResizeEvent)) {
-	ok := C.QTextEdit_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnresizeEvent(slot func(super func(e *QResizeEvent), e *QResizeEvent)) {
+	ok := C.QTextEdit_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_ResizeEvent
-func miqt_exec_callback_QTextEdit_ResizeEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QResizeEvent) {
+//export miqt_exec_callback_QTextEdit_resizeEvent
+func miqt_exec_callback_QTextEdit_resizeEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QResizeEvent), e *QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -962,18 +962,18 @@ func miqt_exec_callback_QTextEdit_ResizeEvent(self *C.QTextEdit, cb C.intptr_t, 
 
 func (this *QTextEdit) callVirtualBase_PaintEvent(e *QPaintEvent) {
 
-	C.QTextEdit_virtualbase_PaintEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_paintEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnPaintEvent(slot func(super func(e *QPaintEvent), e *QPaintEvent)) {
-	ok := C.QTextEdit_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnpaintEvent(slot func(super func(e *QPaintEvent), e *QPaintEvent)) {
+	ok := C.QTextEdit_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_PaintEvent
-func miqt_exec_callback_QTextEdit_PaintEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QPaintEvent) {
+//export miqt_exec_callback_QTextEdit_paintEvent
+func miqt_exec_callback_QTextEdit_paintEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QPaintEvent), e *QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -988,18 +988,18 @@ func miqt_exec_callback_QTextEdit_PaintEvent(self *C.QTextEdit, cb C.intptr_t, e
 
 func (this *QTextEdit) callVirtualBase_MousePressEvent(e *QMouseEvent) {
 
-	C.QTextEdit_virtualbase_MousePressEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_mousePressEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnMousePressEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
-	ok := C.QTextEdit_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnmousePressEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
+	ok := C.QTextEdit_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_MousePressEvent
-func miqt_exec_callback_QTextEdit_MousePressEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QMouseEvent) {
+//export miqt_exec_callback_QTextEdit_mousePressEvent
+func miqt_exec_callback_QTextEdit_mousePressEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QMouseEvent), e *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1014,18 +1014,18 @@ func miqt_exec_callback_QTextEdit_MousePressEvent(self *C.QTextEdit, cb C.intptr
 
 func (this *QTextEdit) callVirtualBase_MouseMoveEvent(e *QMouseEvent) {
 
-	C.QTextEdit_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnMouseMoveEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
-	ok := C.QTextEdit_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnmouseMoveEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
+	ok := C.QTextEdit_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_MouseMoveEvent
-func miqt_exec_callback_QTextEdit_MouseMoveEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QMouseEvent) {
+//export miqt_exec_callback_QTextEdit_mouseMoveEvent
+func miqt_exec_callback_QTextEdit_mouseMoveEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QMouseEvent), e *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1040,18 +1040,18 @@ func miqt_exec_callback_QTextEdit_MouseMoveEvent(self *C.QTextEdit, cb C.intptr_
 
 func (this *QTextEdit) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
 
-	C.QTextEdit_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnMouseReleaseEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
-	ok := C.QTextEdit_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnmouseReleaseEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
+	ok := C.QTextEdit_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_MouseReleaseEvent
-func miqt_exec_callback_QTextEdit_MouseReleaseEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QMouseEvent) {
+//export miqt_exec_callback_QTextEdit_mouseReleaseEvent
+func miqt_exec_callback_QTextEdit_mouseReleaseEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QMouseEvent), e *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1066,18 +1066,18 @@ func miqt_exec_callback_QTextEdit_MouseReleaseEvent(self *C.QTextEdit, cb C.intp
 
 func (this *QTextEdit) callVirtualBase_MouseDoubleClickEvent(e *QMouseEvent) {
 
-	C.QTextEdit_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnMouseDoubleClickEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
-	ok := C.QTextEdit_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnmouseDoubleClickEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
+	ok := C.QTextEdit_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_MouseDoubleClickEvent
-func miqt_exec_callback_QTextEdit_MouseDoubleClickEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QMouseEvent) {
+//export miqt_exec_callback_QTextEdit_mouseDoubleClickEvent
+func miqt_exec_callback_QTextEdit_mouseDoubleClickEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QMouseEvent), e *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1092,18 +1092,18 @@ func miqt_exec_callback_QTextEdit_MouseDoubleClickEvent(self *C.QTextEdit, cb C.
 
 func (this *QTextEdit) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QTextEdit_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QTextEdit_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QTextEdit) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QTextEdit_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QTextEdit_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_FocusNextPrevChild
-func miqt_exec_callback_QTextEdit_FocusNextPrevChild(self *C.QTextEdit, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QTextEdit_focusNextPrevChild
+func miqt_exec_callback_QTextEdit_focusNextPrevChild(self *C.QTextEdit, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1120,18 +1120,18 @@ func miqt_exec_callback_QTextEdit_FocusNextPrevChild(self *C.QTextEdit, cb C.int
 
 func (this *QTextEdit) callVirtualBase_ContextMenuEvent(e *QContextMenuEvent) {
 
-	C.QTextEdit_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnContextMenuEvent(slot func(super func(e *QContextMenuEvent), e *QContextMenuEvent)) {
-	ok := C.QTextEdit_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OncontextMenuEvent(slot func(super func(e *QContextMenuEvent), e *QContextMenuEvent)) {
+	ok := C.QTextEdit_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_ContextMenuEvent
-func miqt_exec_callback_QTextEdit_ContextMenuEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QContextMenuEvent) {
+//export miqt_exec_callback_QTextEdit_contextMenuEvent
+func miqt_exec_callback_QTextEdit_contextMenuEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QContextMenuEvent), e *QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1146,18 +1146,18 @@ func miqt_exec_callback_QTextEdit_ContextMenuEvent(self *C.QTextEdit, cb C.intpt
 
 func (this *QTextEdit) callVirtualBase_DragEnterEvent(e *QDragEnterEvent) {
 
-	C.QTextEdit_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnDragEnterEvent(slot func(super func(e *QDragEnterEvent), e *QDragEnterEvent)) {
-	ok := C.QTextEdit_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OndragEnterEvent(slot func(super func(e *QDragEnterEvent), e *QDragEnterEvent)) {
+	ok := C.QTextEdit_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_DragEnterEvent
-func miqt_exec_callback_QTextEdit_DragEnterEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QDragEnterEvent) {
+//export miqt_exec_callback_QTextEdit_dragEnterEvent
+func miqt_exec_callback_QTextEdit_dragEnterEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QDragEnterEvent), e *QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1172,18 +1172,18 @@ func miqt_exec_callback_QTextEdit_DragEnterEvent(self *C.QTextEdit, cb C.intptr_
 
 func (this *QTextEdit) callVirtualBase_DragLeaveEvent(e *QDragLeaveEvent) {
 
-	C.QTextEdit_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnDragLeaveEvent(slot func(super func(e *QDragLeaveEvent), e *QDragLeaveEvent)) {
-	ok := C.QTextEdit_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OndragLeaveEvent(slot func(super func(e *QDragLeaveEvent), e *QDragLeaveEvent)) {
+	ok := C.QTextEdit_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_DragLeaveEvent
-func miqt_exec_callback_QTextEdit_DragLeaveEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QTextEdit_dragLeaveEvent
+func miqt_exec_callback_QTextEdit_dragLeaveEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QDragLeaveEvent), e *QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1198,18 +1198,18 @@ func miqt_exec_callback_QTextEdit_DragLeaveEvent(self *C.QTextEdit, cb C.intptr_
 
 func (this *QTextEdit) callVirtualBase_DragMoveEvent(e *QDragMoveEvent) {
 
-	C.QTextEdit_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnDragMoveEvent(slot func(super func(e *QDragMoveEvent), e *QDragMoveEvent)) {
-	ok := C.QTextEdit_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OndragMoveEvent(slot func(super func(e *QDragMoveEvent), e *QDragMoveEvent)) {
+	ok := C.QTextEdit_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_DragMoveEvent
-func miqt_exec_callback_QTextEdit_DragMoveEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QDragMoveEvent) {
+//export miqt_exec_callback_QTextEdit_dragMoveEvent
+func miqt_exec_callback_QTextEdit_dragMoveEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QDragMoveEvent), e *QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1224,18 +1224,18 @@ func miqt_exec_callback_QTextEdit_DragMoveEvent(self *C.QTextEdit, cb C.intptr_t
 
 func (this *QTextEdit) callVirtualBase_DropEvent(e *QDropEvent) {
 
-	C.QTextEdit_virtualbase_DropEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_dropEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnDropEvent(slot func(super func(e *QDropEvent), e *QDropEvent)) {
-	ok := C.QTextEdit_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OndropEvent(slot func(super func(e *QDropEvent), e *QDropEvent)) {
+	ok := C.QTextEdit_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_DropEvent
-func miqt_exec_callback_QTextEdit_DropEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QDropEvent) {
+//export miqt_exec_callback_QTextEdit_dropEvent
+func miqt_exec_callback_QTextEdit_dropEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QDropEvent), e *QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1250,18 +1250,18 @@ func miqt_exec_callback_QTextEdit_DropEvent(self *C.QTextEdit, cb C.intptr_t, e 
 
 func (this *QTextEdit) callVirtualBase_FocusInEvent(e *QFocusEvent) {
 
-	C.QTextEdit_virtualbase_FocusInEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_focusInEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnFocusInEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
-	ok := C.QTextEdit_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnfocusInEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
+	ok := C.QTextEdit_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_FocusInEvent
-func miqt_exec_callback_QTextEdit_FocusInEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QFocusEvent) {
+//export miqt_exec_callback_QTextEdit_focusInEvent
+func miqt_exec_callback_QTextEdit_focusInEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QFocusEvent), e *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1276,18 +1276,18 @@ func miqt_exec_callback_QTextEdit_FocusInEvent(self *C.QTextEdit, cb C.intptr_t,
 
 func (this *QTextEdit) callVirtualBase_FocusOutEvent(e *QFocusEvent) {
 
-	C.QTextEdit_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_focusOutEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnFocusOutEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
-	ok := C.QTextEdit_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnfocusOutEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
+	ok := C.QTextEdit_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_FocusOutEvent
-func miqt_exec_callback_QTextEdit_FocusOutEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QFocusEvent) {
+//export miqt_exec_callback_QTextEdit_focusOutEvent
+func miqt_exec_callback_QTextEdit_focusOutEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QFocusEvent), e *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1302,18 +1302,18 @@ func miqt_exec_callback_QTextEdit_FocusOutEvent(self *C.QTextEdit, cb C.intptr_t
 
 func (this *QTextEdit) callVirtualBase_ShowEvent(param1 *QShowEvent) {
 
-	C.QTextEdit_virtualbase_ShowEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QTextEdit_virtualbase_showEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QTextEdit) OnShowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
-	ok := C.QTextEdit_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnshowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
+	ok := C.QTextEdit_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_ShowEvent
-func miqt_exec_callback_QTextEdit_ShowEvent(self *C.QTextEdit, cb C.intptr_t, param1 *C.QShowEvent) {
+//export miqt_exec_callback_QTextEdit_showEvent
+func miqt_exec_callback_QTextEdit_showEvent(self *C.QTextEdit, cb C.intptr_t, param1 *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QShowEvent), param1 *QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1328,18 +1328,18 @@ func miqt_exec_callback_QTextEdit_ShowEvent(self *C.QTextEdit, cb C.intptr_t, pa
 
 func (this *QTextEdit) callVirtualBase_ChangeEvent(e *QEvent) {
 
-	C.QTextEdit_virtualbase_ChangeEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_changeEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
-	ok := C.QTextEdit_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnchangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
+	ok := C.QTextEdit_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_ChangeEvent
-func miqt_exec_callback_QTextEdit_ChangeEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QEvent) {
+//export miqt_exec_callback_QTextEdit_changeEvent
+func miqt_exec_callback_QTextEdit_changeEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent), e *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1354,18 +1354,18 @@ func miqt_exec_callback_QTextEdit_ChangeEvent(self *C.QTextEdit, cb C.intptr_t, 
 
 func (this *QTextEdit) callVirtualBase_WheelEvent(e *QWheelEvent) {
 
-	C.QTextEdit_virtualbase_WheelEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QTextEdit_virtualbase_wheelEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTextEdit) OnWheelEvent(slot func(super func(e *QWheelEvent), e *QWheelEvent)) {
-	ok := C.QTextEdit_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnwheelEvent(slot func(super func(e *QWheelEvent), e *QWheelEvent)) {
+	ok := C.QTextEdit_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_WheelEvent
-func miqt_exec_callback_QTextEdit_WheelEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QWheelEvent) {
+//export miqt_exec_callback_QTextEdit_wheelEvent
+func miqt_exec_callback_QTextEdit_wheelEvent(self *C.QTextEdit, cb C.intptr_t, e *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QWheelEvent), e *QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1380,18 +1380,18 @@ func miqt_exec_callback_QTextEdit_WheelEvent(self *C.QTextEdit, cb C.intptr_t, e
 
 func (this *QTextEdit) callVirtualBase_CreateMimeDataFromSelection() *QMimeData {
 
-	return newQMimeData(C.QTextEdit_virtualbase_CreateMimeDataFromSelection(unsafe.Pointer(this.h)))
+	return newQMimeData(C.QTextEdit_virtualbase_createMimeDataFromSelection(unsafe.Pointer(this.h)))
 
 }
-func (this *QTextEdit) OnCreateMimeDataFromSelection(slot func(super func() *QMimeData) *QMimeData) {
-	ok := C.QTextEdit_override_virtual_CreateMimeDataFromSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OncreateMimeDataFromSelection(slot func(super func() *QMimeData) *QMimeData) {
+	ok := C.QTextEdit_override_virtual_createMimeDataFromSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_CreateMimeDataFromSelection
-func miqt_exec_callback_QTextEdit_CreateMimeDataFromSelection(self *C.QTextEdit, cb C.intptr_t) *C.QMimeData {
+//export miqt_exec_callback_QTextEdit_createMimeDataFromSelection
+func miqt_exec_callback_QTextEdit_createMimeDataFromSelection(self *C.QTextEdit, cb C.intptr_t) *C.QMimeData {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMimeData) *QMimeData)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1405,18 +1405,18 @@ func miqt_exec_callback_QTextEdit_CreateMimeDataFromSelection(self *C.QTextEdit,
 
 func (this *QTextEdit) callVirtualBase_CanInsertFromMimeData(source *QMimeData) bool {
 
-	return (bool)(C.QTextEdit_virtualbase_CanInsertFromMimeData(unsafe.Pointer(this.h), source.cPointer()))
+	return (bool)(C.QTextEdit_virtualbase_canInsertFromMimeData(unsafe.Pointer(this.h), source.cPointer()))
 
 }
-func (this *QTextEdit) OnCanInsertFromMimeData(slot func(super func(source *QMimeData) bool, source *QMimeData) bool) {
-	ok := C.QTextEdit_override_virtual_CanInsertFromMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OncanInsertFromMimeData(slot func(super func(source *QMimeData) bool, source *QMimeData) bool) {
+	ok := C.QTextEdit_override_virtual_canInsertFromMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_CanInsertFromMimeData
-func miqt_exec_callback_QTextEdit_CanInsertFromMimeData(self *C.QTextEdit, cb C.intptr_t, source *C.QMimeData) C.bool {
+//export miqt_exec_callback_QTextEdit_canInsertFromMimeData
+func miqt_exec_callback_QTextEdit_canInsertFromMimeData(self *C.QTextEdit, cb C.intptr_t, source *C.QMimeData) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(source *QMimeData) bool, source *QMimeData) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1433,18 +1433,18 @@ func miqt_exec_callback_QTextEdit_CanInsertFromMimeData(self *C.QTextEdit, cb C.
 
 func (this *QTextEdit) callVirtualBase_InsertFromMimeData(source *QMimeData) {
 
-	C.QTextEdit_virtualbase_InsertFromMimeData(unsafe.Pointer(this.h), source.cPointer())
+	C.QTextEdit_virtualbase_insertFromMimeData(unsafe.Pointer(this.h), source.cPointer())
 
 }
-func (this *QTextEdit) OnInsertFromMimeData(slot func(super func(source *QMimeData), source *QMimeData)) {
-	ok := C.QTextEdit_override_virtual_InsertFromMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OninsertFromMimeData(slot func(super func(source *QMimeData), source *QMimeData)) {
+	ok := C.QTextEdit_override_virtual_insertFromMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_InsertFromMimeData
-func miqt_exec_callback_QTextEdit_InsertFromMimeData(self *C.QTextEdit, cb C.intptr_t, source *C.QMimeData) {
+//export miqt_exec_callback_QTextEdit_insertFromMimeData
+func miqt_exec_callback_QTextEdit_insertFromMimeData(self *C.QTextEdit, cb C.intptr_t, source *C.QMimeData) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(source *QMimeData), source *QMimeData))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1459,18 +1459,18 @@ func miqt_exec_callback_QTextEdit_InsertFromMimeData(self *C.QTextEdit, cb C.int
 
 func (this *QTextEdit) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
 
-	C.QTextEdit_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QTextEdit_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QTextEdit) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
-	ok := C.QTextEdit_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QTextEdit_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_InputMethodEvent
-func miqt_exec_callback_QTextEdit_InputMethodEvent(self *C.QTextEdit, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QTextEdit_inputMethodEvent
+func miqt_exec_callback_QTextEdit_inputMethodEvent(self *C.QTextEdit, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1485,18 +1485,18 @@ func miqt_exec_callback_QTextEdit_InputMethodEvent(self *C.QTextEdit, cb C.intpt
 
 func (this *QTextEdit) callVirtualBase_ScrollContentsBy(dx int, dy int) {
 
-	C.QTextEdit_virtualbase_ScrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
+	C.QTextEdit_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
 }
-func (this *QTextEdit) OnScrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
-	ok := C.QTextEdit_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnscrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
+	ok := C.QTextEdit_override_virtual_scrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_ScrollContentsBy
-func miqt_exec_callback_QTextEdit_ScrollContentsBy(self *C.QTextEdit, cb C.intptr_t, dx C.int, dy C.int) {
+//export miqt_exec_callback_QTextEdit_scrollContentsBy
+func miqt_exec_callback_QTextEdit_scrollContentsBy(self *C.QTextEdit, cb C.intptr_t, dx C.int, dy C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(dx int, dy int), dx int, dy int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1513,18 +1513,18 @@ func miqt_exec_callback_QTextEdit_ScrollContentsBy(self *C.QTextEdit, cb C.intpt
 
 func (this *QTextEdit) callVirtualBase_DoSetTextCursor(cursor *QTextCursor) {
 
-	C.QTextEdit_virtualbase_DoSetTextCursor(unsafe.Pointer(this.h), cursor.cPointer())
+	C.QTextEdit_virtualbase_doSetTextCursor(unsafe.Pointer(this.h), cursor.cPointer())
 
 }
-func (this *QTextEdit) OnDoSetTextCursor(slot func(super func(cursor *QTextCursor), cursor *QTextCursor)) {
-	ok := C.QTextEdit_override_virtual_DoSetTextCursor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OndoSetTextCursor(slot func(super func(cursor *QTextCursor), cursor *QTextCursor)) {
+	ok := C.QTextEdit_override_virtual_doSetTextCursor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_DoSetTextCursor
-func miqt_exec_callback_QTextEdit_DoSetTextCursor(self *C.QTextEdit, cb C.intptr_t, cursor *C.QTextCursor) {
+//export miqt_exec_callback_QTextEdit_doSetTextCursor
+func miqt_exec_callback_QTextEdit_doSetTextCursor(self *C.QTextEdit, cb C.intptr_t, cursor *C.QTextCursor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(cursor *QTextCursor), cursor *QTextCursor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1539,20 +1539,20 @@ func miqt_exec_callback_QTextEdit_DoSetTextCursor(self *C.QTextEdit, cb C.intptr
 
 func (this *QTextEdit) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_goptr := newQSize(C.QTextEdit_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QTextEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QTextEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QTextEdit_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QTextEdit_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_MinimumSizeHint
-func miqt_exec_callback_QTextEdit_MinimumSizeHint(self *C.QTextEdit, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QTextEdit_minimumSizeHint
+func miqt_exec_callback_QTextEdit_minimumSizeHint(self *C.QTextEdit, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1566,20 +1566,20 @@ func miqt_exec_callback_QTextEdit_MinimumSizeHint(self *C.QTextEdit, cb C.intptr
 
 func (this *QTextEdit) callVirtualBase_SizeHint() *QSize {
 
-	_goptr := newQSize(C.QTextEdit_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QTextEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QTextEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QTextEdit_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnsizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QTextEdit_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_SizeHint
-func miqt_exec_callback_QTextEdit_SizeHint(self *C.QTextEdit, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QTextEdit_sizeHint
+func miqt_exec_callback_QTextEdit_sizeHint(self *C.QTextEdit, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1593,18 +1593,18 @@ func miqt_exec_callback_QTextEdit_SizeHint(self *C.QTextEdit, cb C.intptr_t) *C.
 
 func (this *QTextEdit) callVirtualBase_SetupViewport(viewport *QWidget) {
 
-	C.QTextEdit_virtualbase_SetupViewport(unsafe.Pointer(this.h), viewport.cPointer())
+	C.QTextEdit_virtualbase_setupViewport(unsafe.Pointer(this.h), viewport.cPointer())
 
 }
-func (this *QTextEdit) OnSetupViewport(slot func(super func(viewport *QWidget), viewport *QWidget)) {
-	ok := C.QTextEdit_override_virtual_SetupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnsetupViewport(slot func(super func(viewport *QWidget), viewport *QWidget)) {
+	ok := C.QTextEdit_override_virtual_setupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_SetupViewport
-func miqt_exec_callback_QTextEdit_SetupViewport(self *C.QTextEdit, cb C.intptr_t, viewport *C.QWidget) {
+//export miqt_exec_callback_QTextEdit_setupViewport
+func miqt_exec_callback_QTextEdit_setupViewport(self *C.QTextEdit, cb C.intptr_t, viewport *C.QWidget) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(viewport *QWidget), viewport *QWidget))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1619,18 +1619,18 @@ func miqt_exec_callback_QTextEdit_SetupViewport(self *C.QTextEdit, cb C.intptr_t
 
 func (this *QTextEdit) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
 
-	return (bool)(C.QTextEdit_virtualbase_EventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
+	return (bool)(C.QTextEdit_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
 }
-func (this *QTextEdit) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
-	ok := C.QTextEdit_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OneventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	ok := C.QTextEdit_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_EventFilter
-func miqt_exec_callback_QTextEdit_EventFilter(self *C.QTextEdit, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+//export miqt_exec_callback_QTextEdit_eventFilter
+func miqt_exec_callback_QTextEdit_eventFilter(self *C.QTextEdit, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1649,18 +1649,18 @@ func miqt_exec_callback_QTextEdit_EventFilter(self *C.QTextEdit, cb C.intptr_t, 
 
 func (this *QTextEdit) callVirtualBase_ViewportEvent(param1 *QEvent) bool {
 
-	return (bool)(C.QTextEdit_virtualbase_ViewportEvent(unsafe.Pointer(this.h), param1.cPointer()))
+	return (bool)(C.QTextEdit_virtualbase_viewportEvent(unsafe.Pointer(this.h), param1.cPointer()))
 
 }
-func (this *QTextEdit) OnViewportEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
-	ok := C.QTextEdit_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnviewportEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	ok := C.QTextEdit_override_virtual_viewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_ViewportEvent
-func miqt_exec_callback_QTextEdit_ViewportEvent(self *C.QTextEdit, cb C.intptr_t, param1 *C.QEvent) C.bool {
+//export miqt_exec_callback_QTextEdit_viewportEvent
+func miqt_exec_callback_QTextEdit_viewportEvent(self *C.QTextEdit, cb C.intptr_t, param1 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent) bool, param1 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1677,20 +1677,20 @@ func miqt_exec_callback_QTextEdit_ViewportEvent(self *C.QTextEdit, cb C.intptr_t
 
 func (this *QTextEdit) callVirtualBase_ViewportSizeHint() *QSize {
 
-	_goptr := newQSize(C.QTextEdit_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QTextEdit_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QTextEdit) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QTextEdit_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnviewportSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QTextEdit_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_ViewportSizeHint
-func miqt_exec_callback_QTextEdit_ViewportSizeHint(self *C.QTextEdit, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QTextEdit_viewportSizeHint
+func miqt_exec_callback_QTextEdit_viewportSizeHint(self *C.QTextEdit, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1704,18 +1704,18 @@ func miqt_exec_callback_QTextEdit_ViewportSizeHint(self *C.QTextEdit, cb C.intpt
 
 func (this *QTextEdit) callVirtualBase_InitStyleOption(option *QStyleOptionFrame) {
 
-	C.QTextEdit_virtualbase_InitStyleOption(unsafe.Pointer(this.h), option.cPointer())
+	C.QTextEdit_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
 
 }
-func (this *QTextEdit) OnInitStyleOption(slot func(super func(option *QStyleOptionFrame), option *QStyleOptionFrame)) {
-	ok := C.QTextEdit_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OninitStyleOption(slot func(super func(option *QStyleOptionFrame), option *QStyleOptionFrame)) {
+	ok := C.QTextEdit_override_virtual_initStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_InitStyleOption
-func miqt_exec_callback_QTextEdit_InitStyleOption(self *C.QTextEdit, cb C.intptr_t, option *C.QStyleOptionFrame) {
+//export miqt_exec_callback_QTextEdit_initStyleOption
+func miqt_exec_callback_QTextEdit_initStyleOption(self *C.QTextEdit, cb C.intptr_t, option *C.QStyleOptionFrame) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option *QStyleOptionFrame), option *QStyleOptionFrame))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1730,18 +1730,18 @@ func miqt_exec_callback_QTextEdit_InitStyleOption(self *C.QTextEdit, cb C.intptr
 
 func (this *QTextEdit) callVirtualBase_DevType() int {
 
-	return (int)(C.QTextEdit_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QTextEdit_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QTextEdit) OnDevType(slot func(super func() int) int) {
-	ok := C.QTextEdit_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OndevType(slot func(super func() int) int) {
+	ok := C.QTextEdit_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_DevType
-func miqt_exec_callback_QTextEdit_DevType(self *C.QTextEdit, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QTextEdit_devType
+func miqt_exec_callback_QTextEdit_devType(self *C.QTextEdit, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1755,18 +1755,18 @@ func miqt_exec_callback_QTextEdit_DevType(self *C.QTextEdit, cb C.intptr_t) C.in
 
 func (this *QTextEdit) callVirtualBase_SetVisible(visible bool) {
 
-	C.QTextEdit_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QTextEdit_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QTextEdit) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QTextEdit_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QTextEdit_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_SetVisible
-func miqt_exec_callback_QTextEdit_SetVisible(self *C.QTextEdit, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QTextEdit_setVisible
+func miqt_exec_callback_QTextEdit_setVisible(self *C.QTextEdit, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1781,18 +1781,18 @@ func miqt_exec_callback_QTextEdit_SetVisible(self *C.QTextEdit, cb C.intptr_t, v
 
 func (this *QTextEdit) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QTextEdit_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QTextEdit_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QTextEdit) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QTextEdit_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QTextEdit_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_HeightForWidth
-func miqt_exec_callback_QTextEdit_HeightForWidth(self *C.QTextEdit, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QTextEdit_heightForWidth
+func miqt_exec_callback_QTextEdit_heightForWidth(self *C.QTextEdit, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1809,18 +1809,18 @@ func miqt_exec_callback_QTextEdit_HeightForWidth(self *C.QTextEdit, cb C.intptr_
 
 func (this *QTextEdit) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QTextEdit_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QTextEdit_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QTextEdit) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QTextEdit_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QTextEdit_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_HasHeightForWidth
-func miqt_exec_callback_QTextEdit_HasHeightForWidth(self *C.QTextEdit, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QTextEdit_hasHeightForWidth
+func miqt_exec_callback_QTextEdit_hasHeightForWidth(self *C.QTextEdit, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1834,18 +1834,18 @@ func miqt_exec_callback_QTextEdit_HasHeightForWidth(self *C.QTextEdit, cb C.intp
 
 func (this *QTextEdit) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return newQPaintEngine(C.QTextEdit_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+	return newQPaintEngine(C.QTextEdit_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QTextEdit) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	ok := C.QTextEdit_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QTextEdit_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_PaintEngine
-func miqt_exec_callback_QTextEdit_PaintEngine(self *C.QTextEdit, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QTextEdit_paintEngine
+func miqt_exec_callback_QTextEdit_paintEngine(self *C.QTextEdit, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1859,18 +1859,18 @@ func miqt_exec_callback_QTextEdit_PaintEngine(self *C.QTextEdit, cb C.intptr_t) 
 
 func (this *QTextEdit) callVirtualBase_EnterEvent(event *QEnterEvent) {
 
-	C.QTextEdit_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTextEdit_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextEdit) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
-	ok := C.QTextEdit_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnenterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+	ok := C.QTextEdit_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_EnterEvent
-func miqt_exec_callback_QTextEdit_EnterEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QEnterEvent) {
+//export miqt_exec_callback_QTextEdit_enterEvent
+func miqt_exec_callback_QTextEdit_enterEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEnterEvent), event *QEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1885,18 +1885,18 @@ func miqt_exec_callback_QTextEdit_EnterEvent(self *C.QTextEdit, cb C.intptr_t, e
 
 func (this *QTextEdit) callVirtualBase_LeaveEvent(event *QEvent) {
 
-	C.QTextEdit_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTextEdit_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextEdit) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QTextEdit_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QTextEdit_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_LeaveEvent
-func miqt_exec_callback_QTextEdit_LeaveEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QTextEdit_leaveEvent
+func miqt_exec_callback_QTextEdit_leaveEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1911,18 +1911,18 @@ func miqt_exec_callback_QTextEdit_LeaveEvent(self *C.QTextEdit, cb C.intptr_t, e
 
 func (this *QTextEdit) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
-	C.QTextEdit_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTextEdit_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextEdit) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
-	ok := C.QTextEdit_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QTextEdit_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_MoveEvent
-func miqt_exec_callback_QTextEdit_MoveEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QTextEdit_moveEvent
+func miqt_exec_callback_QTextEdit_moveEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1937,18 +1937,18 @@ func miqt_exec_callback_QTextEdit_MoveEvent(self *C.QTextEdit, cb C.intptr_t, ev
 
 func (this *QTextEdit) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
-	C.QTextEdit_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTextEdit_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextEdit) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
-	ok := C.QTextEdit_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QTextEdit_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_CloseEvent
-func miqt_exec_callback_QTextEdit_CloseEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QTextEdit_closeEvent
+func miqt_exec_callback_QTextEdit_closeEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1963,18 +1963,18 @@ func miqt_exec_callback_QTextEdit_CloseEvent(self *C.QTextEdit, cb C.intptr_t, e
 
 func (this *QTextEdit) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
-	C.QTextEdit_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTextEdit_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextEdit) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
-	ok := C.QTextEdit_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QTextEdit_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_TabletEvent
-func miqt_exec_callback_QTextEdit_TabletEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QTextEdit_tabletEvent
+func miqt_exec_callback_QTextEdit_tabletEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1989,18 +1989,18 @@ func miqt_exec_callback_QTextEdit_TabletEvent(self *C.QTextEdit, cb C.intptr_t, 
 
 func (this *QTextEdit) callVirtualBase_ActionEvent(event *QActionEvent) {
 
-	C.QTextEdit_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTextEdit_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextEdit) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
-	ok := C.QTextEdit_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QTextEdit_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_ActionEvent
-func miqt_exec_callback_QTextEdit_ActionEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QTextEdit_actionEvent
+func miqt_exec_callback_QTextEdit_actionEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2015,18 +2015,18 @@ func miqt_exec_callback_QTextEdit_ActionEvent(self *C.QTextEdit, cb C.intptr_t, 
 
 func (this *QTextEdit) callVirtualBase_HideEvent(event *QHideEvent) {
 
-	C.QTextEdit_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTextEdit_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextEdit) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
-	ok := C.QTextEdit_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QTextEdit_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_HideEvent
-func miqt_exec_callback_QTextEdit_HideEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_QTextEdit_hideEvent
+func miqt_exec_callback_QTextEdit_hideEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2048,18 +2048,18 @@ func (this *QTextEdit) callVirtualBase_NativeEvent(eventType []byte, message uns
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QTextEdit_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
+	return (bool)(C.QTextEdit_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
 
 }
-func (this *QTextEdit) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
-	ok := C.QTextEdit_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+	ok := C.QTextEdit_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_NativeEvent
-func miqt_exec_callback_QTextEdit_NativeEvent(self *C.QTextEdit, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
+//export miqt_exec_callback_QTextEdit_nativeEvent
+func miqt_exec_callback_QTextEdit_nativeEvent(self *C.QTextEdit, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2082,18 +2082,18 @@ func miqt_exec_callback_QTextEdit_NativeEvent(self *C.QTextEdit, cb C.intptr_t, 
 
 func (this *QTextEdit) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QTextEdit_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QTextEdit_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QTextEdit) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QTextEdit_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QTextEdit_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_Metric
-func miqt_exec_callback_QTextEdit_Metric(self *C.QTextEdit, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QTextEdit_metric
+func miqt_exec_callback_QTextEdit_metric(self *C.QTextEdit, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2110,18 +2110,18 @@ func miqt_exec_callback_QTextEdit_Metric(self *C.QTextEdit, cb C.intptr_t, param
 
 func (this *QTextEdit) callVirtualBase_InitPainter(painter *QPainter) {
 
-	C.QTextEdit_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+	C.QTextEdit_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QTextEdit) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	ok := C.QTextEdit_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QTextEdit_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_InitPainter
-func miqt_exec_callback_QTextEdit_InitPainter(self *C.QTextEdit, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QTextEdit_initPainter
+func miqt_exec_callback_QTextEdit_initPainter(self *C.QTextEdit, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2136,18 +2136,18 @@ func miqt_exec_callback_QTextEdit_InitPainter(self *C.QTextEdit, cb C.intptr_t, 
 
 func (this *QTextEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return newQPaintDevice(C.QTextEdit_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+	return newQPaintDevice(C.QTextEdit_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QTextEdit) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	ok := C.QTextEdit_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QTextEdit_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_Redirected
-func miqt_exec_callback_QTextEdit_Redirected(self *C.QTextEdit, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QTextEdit_redirected
+func miqt_exec_callback_QTextEdit_redirected(self *C.QTextEdit, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2164,18 +2164,18 @@ func miqt_exec_callback_QTextEdit_Redirected(self *C.QTextEdit, cb C.intptr_t, o
 
 func (this *QTextEdit) callVirtualBase_SharedPainter() *QPainter {
 
-	return newQPainter(C.QTextEdit_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+	return newQPainter(C.QTextEdit_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QTextEdit) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	ok := C.QTextEdit_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QTextEdit_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_SharedPainter
-func miqt_exec_callback_QTextEdit_SharedPainter(self *C.QTextEdit, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QTextEdit_sharedPainter
+func miqt_exec_callback_QTextEdit_sharedPainter(self *C.QTextEdit, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2189,18 +2189,18 @@ func miqt_exec_callback_QTextEdit_SharedPainter(self *C.QTextEdit, cb C.intptr_t
 
 func (this *QTextEdit) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QTextEdit_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTextEdit_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextEdit) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QTextEdit_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QTextEdit_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_ChildEvent
-func miqt_exec_callback_QTextEdit_ChildEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QTextEdit_childEvent
+func miqt_exec_callback_QTextEdit_childEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2215,18 +2215,18 @@ func miqt_exec_callback_QTextEdit_ChildEvent(self *C.QTextEdit, cb C.intptr_t, e
 
 func (this *QTextEdit) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QTextEdit_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTextEdit_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextEdit) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QTextEdit_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QTextEdit_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_CustomEvent
-func miqt_exec_callback_QTextEdit_CustomEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QTextEdit_customEvent
+func miqt_exec_callback_QTextEdit_customEvent(self *C.QTextEdit, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2241,18 +2241,18 @@ func miqt_exec_callback_QTextEdit_CustomEvent(self *C.QTextEdit, cb C.intptr_t, 
 
 func (this *QTextEdit) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QTextEdit_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QTextEdit_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTextEdit) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QTextEdit_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTextEdit_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_ConnectNotify
-func miqt_exec_callback_QTextEdit_ConnectNotify(self *C.QTextEdit, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QTextEdit_connectNotify
+func miqt_exec_callback_QTextEdit_connectNotify(self *C.QTextEdit, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2267,18 +2267,18 @@ func miqt_exec_callback_QTextEdit_ConnectNotify(self *C.QTextEdit, cb C.intptr_t
 
 func (this *QTextEdit) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QTextEdit_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QTextEdit_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTextEdit) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QTextEdit_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextEdit) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTextEdit_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextEdit_DisconnectNotify
-func miqt_exec_callback_QTextEdit_DisconnectNotify(self *C.QTextEdit, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QTextEdit_disconnectNotify
+func miqt_exec_callback_QTextEdit_disconnectNotify(self *C.QTextEdit, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2293,7 +2293,7 @@ func miqt_exec_callback_QTextEdit_DisconnectNotify(self *C.QTextEdit, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QTextEdit) Delete() {
-	C.QTextEdit_Delete(this.h)
+	C.QTextEdit_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2344,12 +2344,12 @@ func NewQTextEdit__ExtraSelection(param1 *QTextEdit__ExtraSelection) *QTextEdit_
 }
 
 func (this *QTextEdit__ExtraSelection) OperatorAssign(param1 *QTextEdit__ExtraSelection) {
-	C.QTextEdit__ExtraSelection_OperatorAssign(this.h, param1.cPointer())
+	C.QTextEdit__ExtraSelection_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QTextEdit__ExtraSelection) Delete() {
-	C.QTextEdit__ExtraSelection_Delete(this.h)
+	C.QTextEdit__ExtraSelection_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

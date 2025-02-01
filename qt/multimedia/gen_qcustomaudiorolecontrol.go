@@ -52,19 +52,19 @@ func UnsafeNewQCustomAudioRoleControl(h unsafe.Pointer) *QCustomAudioRoleControl
 }
 
 func (this *QCustomAudioRoleControl) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCustomAudioRoleControl_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCustomAudioRoleControl_metaObject(this.h)))
 }
 
 func (this *QCustomAudioRoleControl) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QCustomAudioRoleControl_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QCustomAudioRoleControl_metacast(this.h, param1_Cstring))
 }
 
 func QCustomAudioRoleControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCustomAudioRoleControl_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCustomAudioRoleControl_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -73,14 +73,14 @@ func QCustomAudioRoleControl_Tr(s string) string {
 func QCustomAudioRoleControl_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCustomAudioRoleControl_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCustomAudioRoleControl_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCustomAudioRoleControl) CustomAudioRole() string {
-	var _ms C.struct_miqt_string = C.QCustomAudioRoleControl_CustomAudioRole(this.h)
+	var _ms C.struct_miqt_string = C.QCustomAudioRoleControl_customAudioRole(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -91,11 +91,11 @@ func (this *QCustomAudioRoleControl) SetCustomAudioRole(role string) {
 	role_ms.data = C.CString(role)
 	role_ms.len = C.size_t(len(role))
 	defer C.free(unsafe.Pointer(role_ms.data))
-	C.QCustomAudioRoleControl_SetCustomAudioRole(this.h, role_ms)
+	C.QCustomAudioRoleControl_setCustomAudioRole(this.h, role_ms)
 }
 
 func (this *QCustomAudioRoleControl) SupportedCustomAudioRoles() []string {
-	var _ma C.struct_miqt_array = C.QCustomAudioRoleControl_SupportedCustomAudioRoles(this.h)
+	var _ma C.struct_miqt_array = C.QCustomAudioRoleControl_supportedCustomAudioRoles(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -112,14 +112,14 @@ func (this *QCustomAudioRoleControl) CustomAudioRoleChanged(role string) {
 	role_ms.data = C.CString(role)
 	role_ms.len = C.size_t(len(role))
 	defer C.free(unsafe.Pointer(role_ms.data))
-	C.QCustomAudioRoleControl_CustomAudioRoleChanged(this.h, role_ms)
+	C.QCustomAudioRoleControl_customAudioRoleChanged(this.h, role_ms)
 }
 func (this *QCustomAudioRoleControl) OnCustomAudioRoleChanged(slot func(role string)) {
-	C.QCustomAudioRoleControl_connect_CustomAudioRoleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCustomAudioRoleControl_connect_customAudioRoleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCustomAudioRoleControl_CustomAudioRoleChanged
-func miqt_exec_callback_QCustomAudioRoleControl_CustomAudioRoleChanged(cb C.intptr_t, role C.struct_miqt_string) {
+//export miqt_exec_callback_QCustomAudioRoleControl_customAudioRoleChanged
+func miqt_exec_callback_QCustomAudioRoleControl_customAudioRoleChanged(cb C.intptr_t, role C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(role string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -139,7 +139,7 @@ func QCustomAudioRoleControl_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCustomAudioRoleControl_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCustomAudioRoleControl_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -150,7 +150,7 @@ func QCustomAudioRoleControl_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCustomAudioRoleControl_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCustomAudioRoleControl_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -161,7 +161,7 @@ func QCustomAudioRoleControl_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCustomAudioRoleControl_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCustomAudioRoleControl_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -172,7 +172,7 @@ func QCustomAudioRoleControl_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCustomAudioRoleControl_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCustomAudioRoleControl_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -180,7 +180,7 @@ func QCustomAudioRoleControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QCustomAudioRoleControl) Delete() {
-	C.QCustomAudioRoleControl_Delete(this.h)
+	C.QCustomAudioRoleControl_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

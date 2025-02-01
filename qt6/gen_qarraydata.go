@@ -76,38 +76,38 @@ func UnsafeNewQArrayData(h unsafe.Pointer) *QArrayData {
 }
 
 func (this *QArrayData) AllocatedCapacity() int64 {
-	return (int64)(C.QArrayData_AllocatedCapacity(this.h))
+	return (int64)(C.QArrayData_allocatedCapacity(this.h))
 }
 
 func (this *QArrayData) ConstAllocatedCapacity() int64 {
-	return (int64)(C.QArrayData_ConstAllocatedCapacity(this.h))
+	return (int64)(C.QArrayData_constAllocatedCapacity(this.h))
 }
 
 func (this *QArrayData) Ref() bool {
-	return (bool)(C.QArrayData_Ref(this.h))
+	return (bool)(C.QArrayData_ref(this.h))
 }
 
 func (this *QArrayData) Deref() bool {
-	return (bool)(C.QArrayData_Deref(this.h))
+	return (bool)(C.QArrayData_deref(this.h))
 }
 
 func (this *QArrayData) IsShared() bool {
-	return (bool)(C.QArrayData_IsShared(this.h))
+	return (bool)(C.QArrayData_isShared(this.h))
 }
 
 func (this *QArrayData) NeedsDetach() bool {
-	return (bool)(C.QArrayData_NeedsDetach(this.h))
+	return (bool)(C.QArrayData_needsDetach(this.h))
 }
 
 func (this *QArrayData) DetachCapacity(newSize int64) int64 {
-	return (int64)(C.QArrayData_DetachCapacity(this.h, (C.ptrdiff_t)(newSize)))
+	return (int64)(C.QArrayData_detachCapacity(this.h, (C.ptrdiff_t)(newSize)))
 }
 
 func QArrayData_ReallocateUnaligned(data *QArrayData, dataPointer unsafe.Pointer, objectSize int64, newCapacity int64, option QArrayData__AllocationOption) struct {
 	First  *QArrayData
 	Second unsafe.Pointer
 } {
-	var _mm C.struct_miqt_map = C.QArrayData_ReallocateUnaligned(data.cPointer(), dataPointer, (C.ptrdiff_t)(objectSize), (C.ptrdiff_t)(newCapacity), (C.int)(option))
+	var _mm C.struct_miqt_map = C.QArrayData_reallocateUnaligned(data.cPointer(), dataPointer, (C.ptrdiff_t)(objectSize), (C.ptrdiff_t)(newCapacity), (C.int)(option))
 	_First_CArray := (*[0xffff]*C.QArrayData)(unsafe.Pointer(_mm.keys))
 	_Second_CArray := (*[0xffff]unsafe.Pointer)(unsafe.Pointer(_mm.values))
 	_entry_First := newQArrayData(_First_CArray[0])
@@ -121,12 +121,12 @@ func QArrayData_ReallocateUnaligned(data *QArrayData, dataPointer unsafe.Pointer
 }
 
 func QArrayData_Deallocate(data *QArrayData, objectSize int64, alignment int64) {
-	C.QArrayData_Deallocate(data.cPointer(), (C.ptrdiff_t)(objectSize), (C.ptrdiff_t)(alignment))
+	C.QArrayData_deallocate(data.cPointer(), (C.ptrdiff_t)(objectSize), (C.ptrdiff_t)(alignment))
 }
 
 // Delete this object from C++ memory.
 func (this *QArrayData) Delete() {
-	C.QArrayData_Delete(this.h)
+	C.QArrayData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

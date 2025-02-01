@@ -89,7 +89,7 @@ func NewQTileRules4(rule TileRule) *QTileRules {
 
 // Delete this object from C++ memory.
 func (this *QTileRules) Delete() {
-	C.QTileRules_Delete(this.h)
+	C.QTileRules_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

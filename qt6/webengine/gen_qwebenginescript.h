@@ -24,26 +24,26 @@ typedef struct QWebEngineScript QWebEngineScript;
 
 QWebEngineScript* QWebEngineScript_new();
 QWebEngineScript* QWebEngineScript_new2(QWebEngineScript* other);
-void QWebEngineScript_OperatorAssign(QWebEngineScript* self, QWebEngineScript* other);
-struct miqt_string QWebEngineScript_Name(const QWebEngineScript* self);
-void QWebEngineScript_SetName(QWebEngineScript* self, struct miqt_string name);
-QUrl* QWebEngineScript_SourceUrl(const QWebEngineScript* self);
-void QWebEngineScript_SetSourceUrl(QWebEngineScript* self, QUrl* url);
-struct miqt_string QWebEngineScript_SourceCode(const QWebEngineScript* self);
-void QWebEngineScript_SetSourceCode(QWebEngineScript* self, struct miqt_string sourceCode);
-int QWebEngineScript_InjectionPoint(const QWebEngineScript* self);
-void QWebEngineScript_SetInjectionPoint(QWebEngineScript* self, int injectionPoint);
-unsigned int QWebEngineScript_WorldId(const QWebEngineScript* self);
-void QWebEngineScript_SetWorldId(QWebEngineScript* self, unsigned int worldId);
-bool QWebEngineScript_RunsOnSubFrames(const QWebEngineScript* self);
-void QWebEngineScript_SetRunsOnSubFrames(QWebEngineScript* self, bool on);
-bool QWebEngineScript_OperatorEqual(const QWebEngineScript* self, QWebEngineScript* other);
-bool QWebEngineScript_OperatorNotEqual(const QWebEngineScript* self, QWebEngineScript* other);
-void QWebEngineScript_Swap(QWebEngineScript* self, QWebEngineScript* other);
-void QWebEngineScript_Delete(QWebEngineScript* self);
+void QWebEngineScript_operatorAssign(QWebEngineScript* self, QWebEngineScript* other);
+struct miqt_string QWebEngineScript_name(const QWebEngineScript* self);
+void QWebEngineScript_setName(QWebEngineScript* self, struct miqt_string name);
+QUrl* QWebEngineScript_sourceUrl(const QWebEngineScript* self);
+void QWebEngineScript_setSourceUrl(QWebEngineScript* self, QUrl* url);
+struct miqt_string QWebEngineScript_sourceCode(const QWebEngineScript* self);
+void QWebEngineScript_setSourceCode(QWebEngineScript* self, struct miqt_string sourceCode);
+int QWebEngineScript_injectionPoint(const QWebEngineScript* self);
+void QWebEngineScript_setInjectionPoint(QWebEngineScript* self, int injectionPoint);
+unsigned int QWebEngineScript_worldId(const QWebEngineScript* self);
+void QWebEngineScript_setWorldId(QWebEngineScript* self, unsigned int worldId);
+bool QWebEngineScript_runsOnSubFrames(const QWebEngineScript* self);
+void QWebEngineScript_setRunsOnSubFrames(QWebEngineScript* self, bool on);
+bool QWebEngineScript_operatorEqual(const QWebEngineScript* self, QWebEngineScript* other);
+bool QWebEngineScript_operatorNotEqual(const QWebEngineScript* self, QWebEngineScript* other);
+void QWebEngineScript_swap(QWebEngineScript* self, QWebEngineScript* other);
+void QWebEngineScript_delete(QWebEngineScript* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

@@ -52,19 +52,19 @@ func UnsafeNewQAbstractAudioDeviceInfo(h unsafe.Pointer) *QAbstractAudioDeviceIn
 }
 
 func (this *QAbstractAudioDeviceInfo) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractAudioDeviceInfo_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractAudioDeviceInfo_metaObject(this.h)))
 }
 
 func (this *QAbstractAudioDeviceInfo) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAbstractAudioDeviceInfo_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAbstractAudioDeviceInfo_metacast(this.h, param1_Cstring))
 }
 
 func QAbstractAudioDeviceInfo_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioDeviceInfo_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractAudioDeviceInfo_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -73,31 +73,31 @@ func QAbstractAudioDeviceInfo_Tr(s string) string {
 func QAbstractAudioDeviceInfo_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioDeviceInfo_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractAudioDeviceInfo_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractAudioDeviceInfo) PreferredFormat() *QAudioFormat {
-	_goptr := newQAudioFormat(C.QAbstractAudioDeviceInfo_PreferredFormat(this.h))
+	_goptr := newQAudioFormat(C.QAbstractAudioDeviceInfo_preferredFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAudioDeviceInfo) IsFormatSupported(format *QAudioFormat) bool {
-	return (bool)(C.QAbstractAudioDeviceInfo_IsFormatSupported(this.h, format.cPointer()))
+	return (bool)(C.QAbstractAudioDeviceInfo_isFormatSupported(this.h, format.cPointer()))
 }
 
 func (this *QAbstractAudioDeviceInfo) DeviceName() string {
-	var _ms C.struct_miqt_string = C.QAbstractAudioDeviceInfo_DeviceName(this.h)
+	var _ms C.struct_miqt_string = C.QAbstractAudioDeviceInfo_deviceName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractAudioDeviceInfo) SupportedCodecs() []string {
-	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_SupportedCodecs(this.h)
+	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedCodecs(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -110,7 +110,7 @@ func (this *QAbstractAudioDeviceInfo) SupportedCodecs() []string {
 }
 
 func (this *QAbstractAudioDeviceInfo) SupportedSampleRates() []int {
-	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_SupportedSampleRates(this.h)
+	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedSampleRates(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -120,7 +120,7 @@ func (this *QAbstractAudioDeviceInfo) SupportedSampleRates() []int {
 }
 
 func (this *QAbstractAudioDeviceInfo) SupportedChannelCounts() []int {
-	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_SupportedChannelCounts(this.h)
+	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedChannelCounts(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -130,7 +130,7 @@ func (this *QAbstractAudioDeviceInfo) SupportedChannelCounts() []int {
 }
 
 func (this *QAbstractAudioDeviceInfo) SupportedSampleSizes() []int {
-	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_SupportedSampleSizes(this.h)
+	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedSampleSizes(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -140,7 +140,7 @@ func (this *QAbstractAudioDeviceInfo) SupportedSampleSizes() []int {
 }
 
 func (this *QAbstractAudioDeviceInfo) SupportedByteOrders() []QAudioFormat__Endian {
-	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_SupportedByteOrders(this.h)
+	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedByteOrders(this.h)
 	_ret := make([]QAudioFormat__Endian, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -150,7 +150,7 @@ func (this *QAbstractAudioDeviceInfo) SupportedByteOrders() []QAudioFormat__Endi
 }
 
 func (this *QAbstractAudioDeviceInfo) SupportedSampleTypes() []QAudioFormat__SampleType {
-	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_SupportedSampleTypes(this.h)
+	var _ma C.struct_miqt_array = C.QAbstractAudioDeviceInfo_supportedSampleTypes(this.h)
 	_ret := make([]QAudioFormat__SampleType, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -164,7 +164,7 @@ func QAbstractAudioDeviceInfo_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioDeviceInfo_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractAudioDeviceInfo_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -175,7 +175,7 @@ func QAbstractAudioDeviceInfo_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioDeviceInfo_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractAudioDeviceInfo_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -186,7 +186,7 @@ func QAbstractAudioDeviceInfo_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioDeviceInfo_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractAudioDeviceInfo_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -197,7 +197,7 @@ func QAbstractAudioDeviceInfo_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioDeviceInfo_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractAudioDeviceInfo_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -205,7 +205,7 @@ func QAbstractAudioDeviceInfo_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractAudioDeviceInfo) Delete() {
-	C.QAbstractAudioDeviceInfo_Delete(this.h)
+	C.QAbstractAudioDeviceInfo_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -254,19 +254,19 @@ func UnsafeNewQAbstractAudioOutput(h unsafe.Pointer) *QAbstractAudioOutput {
 }
 
 func (this *QAbstractAudioOutput) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractAudioOutput_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractAudioOutput_metaObject(this.h)))
 }
 
 func (this *QAbstractAudioOutput) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAbstractAudioOutput_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAbstractAudioOutput_metacast(this.h, param1_Cstring))
 }
 
 func QAbstractAudioOutput_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioOutput_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractAudioOutput_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -275,96 +275,96 @@ func QAbstractAudioOutput_Tr(s string) string {
 func QAbstractAudioOutput_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioOutput_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractAudioOutput_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractAudioOutput) Start(device *qt.QIODevice) {
-	C.QAbstractAudioOutput_Start(this.h, (*C.QIODevice)(device.UnsafePointer()))
+	C.QAbstractAudioOutput_start(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QAbstractAudioOutput) Start2() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractAudioOutput_Start2(this.h)))
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractAudioOutput_start2(this.h)))
 }
 
 func (this *QAbstractAudioOutput) Stop() {
-	C.QAbstractAudioOutput_Stop(this.h)
+	C.QAbstractAudioOutput_stop(this.h)
 }
 
 func (this *QAbstractAudioOutput) Reset() {
-	C.QAbstractAudioOutput_Reset(this.h)
+	C.QAbstractAudioOutput_reset(this.h)
 }
 
 func (this *QAbstractAudioOutput) Suspend() {
-	C.QAbstractAudioOutput_Suspend(this.h)
+	C.QAbstractAudioOutput_suspend(this.h)
 }
 
 func (this *QAbstractAudioOutput) Resume() {
-	C.QAbstractAudioOutput_Resume(this.h)
+	C.QAbstractAudioOutput_resume(this.h)
 }
 
 func (this *QAbstractAudioOutput) BytesFree() int {
-	return (int)(C.QAbstractAudioOutput_BytesFree(this.h))
+	return (int)(C.QAbstractAudioOutput_bytesFree(this.h))
 }
 
 func (this *QAbstractAudioOutput) PeriodSize() int {
-	return (int)(C.QAbstractAudioOutput_PeriodSize(this.h))
+	return (int)(C.QAbstractAudioOutput_periodSize(this.h))
 }
 
 func (this *QAbstractAudioOutput) SetBufferSize(value int) {
-	C.QAbstractAudioOutput_SetBufferSize(this.h, (C.int)(value))
+	C.QAbstractAudioOutput_setBufferSize(this.h, (C.int)(value))
 }
 
 func (this *QAbstractAudioOutput) BufferSize() int {
-	return (int)(C.QAbstractAudioOutput_BufferSize(this.h))
+	return (int)(C.QAbstractAudioOutput_bufferSize(this.h))
 }
 
 func (this *QAbstractAudioOutput) SetNotifyInterval(milliSeconds int) {
-	C.QAbstractAudioOutput_SetNotifyInterval(this.h, (C.int)(milliSeconds))
+	C.QAbstractAudioOutput_setNotifyInterval(this.h, (C.int)(milliSeconds))
 }
 
 func (this *QAbstractAudioOutput) NotifyInterval() int {
-	return (int)(C.QAbstractAudioOutput_NotifyInterval(this.h))
+	return (int)(C.QAbstractAudioOutput_notifyInterval(this.h))
 }
 
 func (this *QAbstractAudioOutput) ProcessedUSecs() int64 {
-	return (int64)(C.QAbstractAudioOutput_ProcessedUSecs(this.h))
+	return (int64)(C.QAbstractAudioOutput_processedUSecs(this.h))
 }
 
 func (this *QAbstractAudioOutput) ElapsedUSecs() int64 {
-	return (int64)(C.QAbstractAudioOutput_ElapsedUSecs(this.h))
+	return (int64)(C.QAbstractAudioOutput_elapsedUSecs(this.h))
 }
 
 func (this *QAbstractAudioOutput) Error() QAudio__Error {
-	return (QAudio__Error)(C.QAbstractAudioOutput_Error(this.h))
+	return (QAudio__Error)(C.QAbstractAudioOutput_error(this.h))
 }
 
 func (this *QAbstractAudioOutput) State() QAudio__State {
-	return (QAudio__State)(C.QAbstractAudioOutput_State(this.h))
+	return (QAudio__State)(C.QAbstractAudioOutput_state(this.h))
 }
 
 func (this *QAbstractAudioOutput) SetFormat(fmt *QAudioFormat) {
-	C.QAbstractAudioOutput_SetFormat(this.h, fmt.cPointer())
+	C.QAbstractAudioOutput_setFormat(this.h, fmt.cPointer())
 }
 
 func (this *QAbstractAudioOutput) Format() *QAudioFormat {
-	_goptr := newQAudioFormat(C.QAbstractAudioOutput_Format(this.h))
+	_goptr := newQAudioFormat(C.QAbstractAudioOutput_format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAudioOutput) SetVolume(volume float64) {
-	C.QAbstractAudioOutput_SetVolume(this.h, (C.double)(volume))
+	C.QAbstractAudioOutput_setVolume(this.h, (C.double)(volume))
 }
 
 func (this *QAbstractAudioOutput) Volume() float64 {
-	return (float64)(C.QAbstractAudioOutput_Volume(this.h))
+	return (float64)(C.QAbstractAudioOutput_volume(this.h))
 }
 
 func (this *QAbstractAudioOutput) Category() string {
-	var _ms C.struct_miqt_string = C.QAbstractAudioOutput_Category(this.h)
+	var _ms C.struct_miqt_string = C.QAbstractAudioOutput_category(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -375,18 +375,18 @@ func (this *QAbstractAudioOutput) SetCategory(category string) {
 	category_ms.data = C.CString(category)
 	category_ms.len = C.size_t(len(category))
 	defer C.free(unsafe.Pointer(category_ms.data))
-	C.QAbstractAudioOutput_SetCategory(this.h, category_ms)
+	C.QAbstractAudioOutput_setCategory(this.h, category_ms)
 }
 
 func (this *QAbstractAudioOutput) ErrorChanged(error QAudio__Error) {
-	C.QAbstractAudioOutput_ErrorChanged(this.h, (C.int)(error))
+	C.QAbstractAudioOutput_errorChanged(this.h, (C.int)(error))
 }
 func (this *QAbstractAudioOutput) OnErrorChanged(slot func(error QAudio__Error)) {
-	C.QAbstractAudioOutput_connect_ErrorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractAudioOutput_connect_errorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractAudioOutput_ErrorChanged
-func miqt_exec_callback_QAbstractAudioOutput_ErrorChanged(cb C.intptr_t, error C.int) {
+//export miqt_exec_callback_QAbstractAudioOutput_errorChanged
+func miqt_exec_callback_QAbstractAudioOutput_errorChanged(cb C.intptr_t, error C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(error QAudio__Error))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -399,14 +399,14 @@ func miqt_exec_callback_QAbstractAudioOutput_ErrorChanged(cb C.intptr_t, error C
 }
 
 func (this *QAbstractAudioOutput) StateChanged(state QAudio__State) {
-	C.QAbstractAudioOutput_StateChanged(this.h, (C.int)(state))
+	C.QAbstractAudioOutput_stateChanged(this.h, (C.int)(state))
 }
 func (this *QAbstractAudioOutput) OnStateChanged(slot func(state QAudio__State)) {
-	C.QAbstractAudioOutput_connect_StateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractAudioOutput_connect_stateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractAudioOutput_StateChanged
-func miqt_exec_callback_QAbstractAudioOutput_StateChanged(cb C.intptr_t, state C.int) {
+//export miqt_exec_callback_QAbstractAudioOutput_stateChanged
+func miqt_exec_callback_QAbstractAudioOutput_stateChanged(cb C.intptr_t, state C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(state QAudio__State))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -419,14 +419,14 @@ func miqt_exec_callback_QAbstractAudioOutput_StateChanged(cb C.intptr_t, state C
 }
 
 func (this *QAbstractAudioOutput) Notify() {
-	C.QAbstractAudioOutput_Notify(this.h)
+	C.QAbstractAudioOutput_notify(this.h)
 }
 func (this *QAbstractAudioOutput) OnNotify(slot func()) {
-	C.QAbstractAudioOutput_connect_Notify(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractAudioOutput_connect_notify(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractAudioOutput_Notify
-func miqt_exec_callback_QAbstractAudioOutput_Notify(cb C.intptr_t) {
+//export miqt_exec_callback_QAbstractAudioOutput_notify
+func miqt_exec_callback_QAbstractAudioOutput_notify(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -440,7 +440,7 @@ func QAbstractAudioOutput_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioOutput_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractAudioOutput_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -451,7 +451,7 @@ func QAbstractAudioOutput_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioOutput_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractAudioOutput_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -462,7 +462,7 @@ func QAbstractAudioOutput_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioOutput_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractAudioOutput_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -473,7 +473,7 @@ func QAbstractAudioOutput_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioOutput_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractAudioOutput_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -481,7 +481,7 @@ func QAbstractAudioOutput_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractAudioOutput) Delete() {
-	C.QAbstractAudioOutput_Delete(this.h)
+	C.QAbstractAudioOutput_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -530,19 +530,19 @@ func UnsafeNewQAbstractAudioInput(h unsafe.Pointer) *QAbstractAudioInput {
 }
 
 func (this *QAbstractAudioInput) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractAudioInput_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractAudioInput_metaObject(this.h)))
 }
 
 func (this *QAbstractAudioInput) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAbstractAudioInput_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAbstractAudioInput_metacast(this.h, param1_Cstring))
 }
 
 func QAbstractAudioInput_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioInput_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractAudioInput_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -551,103 +551,103 @@ func QAbstractAudioInput_Tr(s string) string {
 func QAbstractAudioInput_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioInput_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractAudioInput_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractAudioInput) Start(device *qt.QIODevice) {
-	C.QAbstractAudioInput_Start(this.h, (*C.QIODevice)(device.UnsafePointer()))
+	C.QAbstractAudioInput_start(this.h, (*C.QIODevice)(device.UnsafePointer()))
 }
 
 func (this *QAbstractAudioInput) Start2() *qt.QIODevice {
-	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractAudioInput_Start2(this.h)))
+	return qt.UnsafeNewQIODevice(unsafe.Pointer(C.QAbstractAudioInput_start2(this.h)))
 }
 
 func (this *QAbstractAudioInput) Stop() {
-	C.QAbstractAudioInput_Stop(this.h)
+	C.QAbstractAudioInput_stop(this.h)
 }
 
 func (this *QAbstractAudioInput) Reset() {
-	C.QAbstractAudioInput_Reset(this.h)
+	C.QAbstractAudioInput_reset(this.h)
 }
 
 func (this *QAbstractAudioInput) Suspend() {
-	C.QAbstractAudioInput_Suspend(this.h)
+	C.QAbstractAudioInput_suspend(this.h)
 }
 
 func (this *QAbstractAudioInput) Resume() {
-	C.QAbstractAudioInput_Resume(this.h)
+	C.QAbstractAudioInput_resume(this.h)
 }
 
 func (this *QAbstractAudioInput) BytesReady() int {
-	return (int)(C.QAbstractAudioInput_BytesReady(this.h))
+	return (int)(C.QAbstractAudioInput_bytesReady(this.h))
 }
 
 func (this *QAbstractAudioInput) PeriodSize() int {
-	return (int)(C.QAbstractAudioInput_PeriodSize(this.h))
+	return (int)(C.QAbstractAudioInput_periodSize(this.h))
 }
 
 func (this *QAbstractAudioInput) SetBufferSize(value int) {
-	C.QAbstractAudioInput_SetBufferSize(this.h, (C.int)(value))
+	C.QAbstractAudioInput_setBufferSize(this.h, (C.int)(value))
 }
 
 func (this *QAbstractAudioInput) BufferSize() int {
-	return (int)(C.QAbstractAudioInput_BufferSize(this.h))
+	return (int)(C.QAbstractAudioInput_bufferSize(this.h))
 }
 
 func (this *QAbstractAudioInput) SetNotifyInterval(milliSeconds int) {
-	C.QAbstractAudioInput_SetNotifyInterval(this.h, (C.int)(milliSeconds))
+	C.QAbstractAudioInput_setNotifyInterval(this.h, (C.int)(milliSeconds))
 }
 
 func (this *QAbstractAudioInput) NotifyInterval() int {
-	return (int)(C.QAbstractAudioInput_NotifyInterval(this.h))
+	return (int)(C.QAbstractAudioInput_notifyInterval(this.h))
 }
 
 func (this *QAbstractAudioInput) ProcessedUSecs() int64 {
-	return (int64)(C.QAbstractAudioInput_ProcessedUSecs(this.h))
+	return (int64)(C.QAbstractAudioInput_processedUSecs(this.h))
 }
 
 func (this *QAbstractAudioInput) ElapsedUSecs() int64 {
-	return (int64)(C.QAbstractAudioInput_ElapsedUSecs(this.h))
+	return (int64)(C.QAbstractAudioInput_elapsedUSecs(this.h))
 }
 
 func (this *QAbstractAudioInput) Error() QAudio__Error {
-	return (QAudio__Error)(C.QAbstractAudioInput_Error(this.h))
+	return (QAudio__Error)(C.QAbstractAudioInput_error(this.h))
 }
 
 func (this *QAbstractAudioInput) State() QAudio__State {
-	return (QAudio__State)(C.QAbstractAudioInput_State(this.h))
+	return (QAudio__State)(C.QAbstractAudioInput_state(this.h))
 }
 
 func (this *QAbstractAudioInput) SetFormat(fmt *QAudioFormat) {
-	C.QAbstractAudioInput_SetFormat(this.h, fmt.cPointer())
+	C.QAbstractAudioInput_setFormat(this.h, fmt.cPointer())
 }
 
 func (this *QAbstractAudioInput) Format() *QAudioFormat {
-	_goptr := newQAudioFormat(C.QAbstractAudioInput_Format(this.h))
+	_goptr := newQAudioFormat(C.QAbstractAudioInput_format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractAudioInput) SetVolume(volume float64) {
-	C.QAbstractAudioInput_SetVolume(this.h, (C.double)(volume))
+	C.QAbstractAudioInput_setVolume(this.h, (C.double)(volume))
 }
 
 func (this *QAbstractAudioInput) Volume() float64 {
-	return (float64)(C.QAbstractAudioInput_Volume(this.h))
+	return (float64)(C.QAbstractAudioInput_volume(this.h))
 }
 
 func (this *QAbstractAudioInput) ErrorChanged(error QAudio__Error) {
-	C.QAbstractAudioInput_ErrorChanged(this.h, (C.int)(error))
+	C.QAbstractAudioInput_errorChanged(this.h, (C.int)(error))
 }
 func (this *QAbstractAudioInput) OnErrorChanged(slot func(error QAudio__Error)) {
-	C.QAbstractAudioInput_connect_ErrorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractAudioInput_connect_errorChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractAudioInput_ErrorChanged
-func miqt_exec_callback_QAbstractAudioInput_ErrorChanged(cb C.intptr_t, error C.int) {
+//export miqt_exec_callback_QAbstractAudioInput_errorChanged
+func miqt_exec_callback_QAbstractAudioInput_errorChanged(cb C.intptr_t, error C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(error QAudio__Error))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -660,14 +660,14 @@ func miqt_exec_callback_QAbstractAudioInput_ErrorChanged(cb C.intptr_t, error C.
 }
 
 func (this *QAbstractAudioInput) StateChanged(state QAudio__State) {
-	C.QAbstractAudioInput_StateChanged(this.h, (C.int)(state))
+	C.QAbstractAudioInput_stateChanged(this.h, (C.int)(state))
 }
 func (this *QAbstractAudioInput) OnStateChanged(slot func(state QAudio__State)) {
-	C.QAbstractAudioInput_connect_StateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractAudioInput_connect_stateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractAudioInput_StateChanged
-func miqt_exec_callback_QAbstractAudioInput_StateChanged(cb C.intptr_t, state C.int) {
+//export miqt_exec_callback_QAbstractAudioInput_stateChanged
+func miqt_exec_callback_QAbstractAudioInput_stateChanged(cb C.intptr_t, state C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(state QAudio__State))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -680,14 +680,14 @@ func miqt_exec_callback_QAbstractAudioInput_StateChanged(cb C.intptr_t, state C.
 }
 
 func (this *QAbstractAudioInput) Notify() {
-	C.QAbstractAudioInput_Notify(this.h)
+	C.QAbstractAudioInput_notify(this.h)
 }
 func (this *QAbstractAudioInput) OnNotify(slot func()) {
-	C.QAbstractAudioInput_connect_Notify(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractAudioInput_connect_notify(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractAudioInput_Notify
-func miqt_exec_callback_QAbstractAudioInput_Notify(cb C.intptr_t) {
+//export miqt_exec_callback_QAbstractAudioInput_notify
+func miqt_exec_callback_QAbstractAudioInput_notify(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -701,7 +701,7 @@ func QAbstractAudioInput_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioInput_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractAudioInput_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -712,7 +712,7 @@ func QAbstractAudioInput_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioInput_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractAudioInput_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -723,7 +723,7 @@ func QAbstractAudioInput_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioInput_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractAudioInput_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -734,7 +734,7 @@ func QAbstractAudioInput_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractAudioInput_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractAudioInput_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -742,7 +742,7 @@ func QAbstractAudioInput_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractAudioInput) Delete() {
-	C.QAbstractAudioInput_Delete(this.h)
+	C.QAbstractAudioInput_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

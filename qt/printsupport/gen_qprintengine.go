@@ -84,38 +84,38 @@ func UnsafeNewQPrintEngine(h unsafe.Pointer) *QPrintEngine {
 }
 
 func (this *QPrintEngine) SetProperty(key QPrintEngine__PrintEnginePropertyKey, value *qt.QVariant) {
-	C.QPrintEngine_SetProperty(this.h, (C.int)(key), (*C.QVariant)(value.UnsafePointer()))
+	C.QPrintEngine_setProperty(this.h, (C.int)(key), (*C.QVariant)(value.UnsafePointer()))
 }
 
 func (this *QPrintEngine) Property(key QPrintEngine__PrintEnginePropertyKey) *qt.QVariant {
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QPrintEngine_Property(this.h, (C.int)(key))))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QPrintEngine_property(this.h, (C.int)(key))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPrintEngine) NewPage() bool {
-	return (bool)(C.QPrintEngine_NewPage(this.h))
+	return (bool)(C.QPrintEngine_newPage(this.h))
 }
 
 func (this *QPrintEngine) Abort() bool {
-	return (bool)(C.QPrintEngine_Abort(this.h))
+	return (bool)(C.QPrintEngine_abort(this.h))
 }
 
 func (this *QPrintEngine) Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
-	return (int)(C.QPrintEngine_Metric(this.h, (C.int)(param1)))
+	return (int)(C.QPrintEngine_metric(this.h, (C.int)(param1)))
 }
 
 func (this *QPrintEngine) PrinterState() QPrinter__PrinterState {
-	return (QPrinter__PrinterState)(C.QPrintEngine_PrinterState(this.h))
+	return (QPrinter__PrinterState)(C.QPrintEngine_printerState(this.h))
 }
 
 func (this *QPrintEngine) OperatorAssign(param1 *QPrintEngine) {
-	C.QPrintEngine_OperatorAssign(this.h, param1.cPointer())
+	C.QPrintEngine_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QPrintEngine) Delete() {
-	C.QPrintEngine_Delete(this.h)
+	C.QPrintEngine_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -16,7 +16,7 @@ extern "C" {
 } /* extern C */
 #endif
 
-struct miqt_string QLibraryInfo_Licensee() {
+struct miqt_string QLibraryInfo_licensee() {
 	QString _ret = QLibraryInfo::licensee();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -27,7 +27,7 @@ struct miqt_string QLibraryInfo_Licensee() {
 	return _ms;
 }
 
-struct miqt_string QLibraryInfo_LicensedProducts() {
+struct miqt_string QLibraryInfo_licensedProducts() {
 	QString _ret = QLibraryInfo::licensedProducts();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -38,23 +38,23 @@ struct miqt_string QLibraryInfo_LicensedProducts() {
 	return _ms;
 }
 
-QDate* QLibraryInfo_BuildDate() {
+QDate* QLibraryInfo_buildDate() {
 	return new QDate(QLibraryInfo::buildDate());
 }
 
-const char* QLibraryInfo_Build() {
+const char* QLibraryInfo_build() {
 	return (const char*) QLibraryInfo::build();
 }
 
-bool QLibraryInfo_IsDebugBuild() {
+bool QLibraryInfo_isDebugBuild() {
 	return QLibraryInfo::isDebugBuild();
 }
 
-QVersionNumber* QLibraryInfo_Version() {
+QVersionNumber* QLibraryInfo_version() {
 	return new QVersionNumber(QLibraryInfo::version());
 }
 
-struct miqt_string QLibraryInfo_Location(int param1) {
+struct miqt_string QLibraryInfo_location(int param1) {
 	QString _ret = QLibraryInfo::location(static_cast<QLibraryInfo::LibraryLocation>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -65,7 +65,7 @@ struct miqt_string QLibraryInfo_Location(int param1) {
 	return _ms;
 }
 
-struct miqt_array /* of struct miqt_string */  QLibraryInfo_PlatformPluginArguments(struct miqt_string platformName) {
+struct miqt_array /* of struct miqt_string */  QLibraryInfo_platformPluginArguments(struct miqt_string platformName) {
 	QString platformName_QString = QString::fromUtf8(platformName.data, platformName.len);
 	QStringList _ret = QLibraryInfo::platformPluginArguments(platformName_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -86,7 +86,7 @@ struct miqt_array /* of struct miqt_string */  QLibraryInfo_PlatformPluginArgume
 	return _out;
 }
 
-void QLibraryInfo_Delete(QLibraryInfo* self) {
+void QLibraryInfo_delete(QLibraryInfo* self) {
 	delete self;
 }
 

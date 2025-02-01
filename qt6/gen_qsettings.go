@@ -248,77 +248,77 @@ func NewQSettings15(scope QSettings__Scope, parent *QObject) *QSettings {
 }
 
 func (this *QSettings) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QSettings_MetaObject(this.h))
+	return newQMetaObject(C.QSettings_metaObject(this.h))
 }
 
 func (this *QSettings) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QSettings_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QSettings_metacast(this.h, param1_Cstring))
 }
 
 func QSettings_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QSettings_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QSettings_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSettings) Clear() {
-	C.QSettings_Clear(this.h)
+	C.QSettings_clear(this.h)
 }
 
 func (this *QSettings) Sync() {
-	C.QSettings_Sync(this.h)
+	C.QSettings_sync(this.h)
 }
 
 func (this *QSettings) Status() QSettings__Status {
-	return (QSettings__Status)(C.QSettings_Status(this.h))
+	return (QSettings__Status)(C.QSettings_status(this.h))
 }
 
 func (this *QSettings) IsAtomicSyncRequired() bool {
-	return (bool)(C.QSettings_IsAtomicSyncRequired(this.h))
+	return (bool)(C.QSettings_isAtomicSyncRequired(this.h))
 }
 
 func (this *QSettings) SetAtomicSyncRequired(enable bool) {
-	C.QSettings_SetAtomicSyncRequired(this.h, (C.bool)(enable))
+	C.QSettings_setAtomicSyncRequired(this.h, (C.bool)(enable))
 }
 
 func (this *QSettings) BeginGroup(prefix QAnyStringView) {
-	C.QSettings_BeginGroup(this.h, prefix.cPointer())
+	C.QSettings_beginGroup(this.h, prefix.cPointer())
 }
 
 func (this *QSettings) EndGroup() {
-	C.QSettings_EndGroup(this.h)
+	C.QSettings_endGroup(this.h)
 }
 
 func (this *QSettings) Group() string {
-	var _ms C.struct_miqt_string = C.QSettings_Group(this.h)
+	var _ms C.struct_miqt_string = C.QSettings_group(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSettings) BeginReadArray(prefix QAnyStringView) int {
-	return (int)(C.QSettings_BeginReadArray(this.h, prefix.cPointer()))
+	return (int)(C.QSettings_beginReadArray(this.h, prefix.cPointer()))
 }
 
 func (this *QSettings) BeginWriteArray(prefix QAnyStringView) {
-	C.QSettings_BeginWriteArray(this.h, prefix.cPointer())
+	C.QSettings_beginWriteArray(this.h, prefix.cPointer())
 }
 
 func (this *QSettings) EndArray() {
-	C.QSettings_EndArray(this.h)
+	C.QSettings_endArray(this.h)
 }
 
 func (this *QSettings) SetArrayIndex(i int) {
-	C.QSettings_SetArrayIndex(this.h, (C.int)(i))
+	C.QSettings_setArrayIndex(this.h, (C.int)(i))
 }
 
 func (this *QSettings) AllKeys() []string {
-	var _ma C.struct_miqt_array = C.QSettings_AllKeys(this.h)
+	var _ma C.struct_miqt_array = C.QSettings_allKeys(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -331,7 +331,7 @@ func (this *QSettings) AllKeys() []string {
 }
 
 func (this *QSettings) ChildKeys() []string {
-	var _ma C.struct_miqt_array = C.QSettings_ChildKeys(this.h)
+	var _ma C.struct_miqt_array = C.QSettings_childKeys(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -344,7 +344,7 @@ func (this *QSettings) ChildKeys() []string {
 }
 
 func (this *QSettings) ChildGroups() []string {
-	var _ma C.struct_miqt_array = C.QSettings_ChildGroups(this.h)
+	var _ma C.struct_miqt_array = C.QSettings_childGroups(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -357,76 +357,76 @@ func (this *QSettings) ChildGroups() []string {
 }
 
 func (this *QSettings) IsWritable() bool {
-	return (bool)(C.QSettings_IsWritable(this.h))
+	return (bool)(C.QSettings_isWritable(this.h))
 }
 
 func (this *QSettings) SetValue(key QAnyStringView, value *QVariant) {
-	C.QSettings_SetValue(this.h, key.cPointer(), value.cPointer())
+	C.QSettings_setValue(this.h, key.cPointer(), value.cPointer())
 }
 
 func (this *QSettings) Value(key QAnyStringView, defaultValue *QVariant) *QVariant {
-	_goptr := newQVariant(C.QSettings_Value(this.h, key.cPointer(), defaultValue.cPointer()))
+	_goptr := newQVariant(C.QSettings_value(this.h, key.cPointer(), defaultValue.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSettings) ValueWithKey(key QAnyStringView) *QVariant {
-	_goptr := newQVariant(C.QSettings_ValueWithKey(this.h, key.cPointer()))
+	_goptr := newQVariant(C.QSettings_valueWithKey(this.h, key.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSettings) Remove(key QAnyStringView) {
-	C.QSettings_Remove(this.h, key.cPointer())
+	C.QSettings_remove(this.h, key.cPointer())
 }
 
 func (this *QSettings) Contains(key QAnyStringView) bool {
-	return (bool)(C.QSettings_Contains(this.h, key.cPointer()))
+	return (bool)(C.QSettings_contains(this.h, key.cPointer()))
 }
 
 func (this *QSettings) SetFallbacksEnabled(b bool) {
-	C.QSettings_SetFallbacksEnabled(this.h, (C.bool)(b))
+	C.QSettings_setFallbacksEnabled(this.h, (C.bool)(b))
 }
 
 func (this *QSettings) FallbacksEnabled() bool {
-	return (bool)(C.QSettings_FallbacksEnabled(this.h))
+	return (bool)(C.QSettings_fallbacksEnabled(this.h))
 }
 
 func (this *QSettings) FileName() string {
-	var _ms C.struct_miqt_string = C.QSettings_FileName(this.h)
+	var _ms C.struct_miqt_string = C.QSettings_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSettings) Format() QSettings__Format {
-	return (QSettings__Format)(C.QSettings_Format(this.h))
+	return (QSettings__Format)(C.QSettings_format(this.h))
 }
 
 func (this *QSettings) Scope() QSettings__Scope {
-	return (QSettings__Scope)(C.QSettings_Scope(this.h))
+	return (QSettings__Scope)(C.QSettings_scope(this.h))
 }
 
 func (this *QSettings) OrganizationName() string {
-	var _ms C.struct_miqt_string = C.QSettings_OrganizationName(this.h)
+	var _ms C.struct_miqt_string = C.QSettings_organizationName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSettings) ApplicationName() string {
-	var _ms C.struct_miqt_string = C.QSettings_ApplicationName(this.h)
+	var _ms C.struct_miqt_string = C.QSettings_applicationName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QSettings_SetDefaultFormat(format QSettings__Format) {
-	C.QSettings_SetDefaultFormat((C.int)(format))
+	C.QSettings_setDefaultFormat((C.int)(format))
 }
 
 func QSettings_DefaultFormat() QSettings__Format {
-	return (QSettings__Format)(C.QSettings_DefaultFormat())
+	return (QSettings__Format)(C.QSettings_defaultFormat())
 }
 
 func QSettings_SetPath(format QSettings__Format, scope QSettings__Scope, path string) {
@@ -434,7 +434,7 @@ func QSettings_SetPath(format QSettings__Format, scope QSettings__Scope, path st
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	C.QSettings_SetPath((C.int)(format), (C.int)(scope), path_ms)
+	C.QSettings_setPath((C.int)(format), (C.int)(scope), path_ms)
 }
 
 func QSettings_Tr2(s string, c string) string {
@@ -442,7 +442,7 @@ func QSettings_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSettings_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QSettings_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -453,30 +453,30 @@ func QSettings_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSettings_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QSettings_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSettings) BeginWriteArray2(prefix QAnyStringView, size int) {
-	C.QSettings_BeginWriteArray2(this.h, prefix.cPointer(), (C.int)(size))
+	C.QSettings_beginWriteArray2(this.h, prefix.cPointer(), (C.int)(size))
 }
 
 func (this *QSettings) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QSettings_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QSettings_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QSettings) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QSettings_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSettings) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QSettings_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSettings_Event
-func miqt_exec_callback_QSettings_Event(self *C.QSettings, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QSettings_event
+func miqt_exec_callback_QSettings_event(self *C.QSettings, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -493,18 +493,18 @@ func miqt_exec_callback_QSettings_Event(self *C.QSettings, cb C.intptr_t, event 
 
 func (this *QSettings) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QSettings_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QSettings_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QSettings) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QSettings_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSettings) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QSettings_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSettings_EventFilter
-func miqt_exec_callback_QSettings_EventFilter(self *C.QSettings, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QSettings_eventFilter
+func miqt_exec_callback_QSettings_eventFilter(self *C.QSettings, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -523,18 +523,18 @@ func miqt_exec_callback_QSettings_EventFilter(self *C.QSettings, cb C.intptr_t, 
 
 func (this *QSettings) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QSettings_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSettings_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSettings) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QSettings_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSettings) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QSettings_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSettings_TimerEvent
-func miqt_exec_callback_QSettings_TimerEvent(self *C.QSettings, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QSettings_timerEvent
+func miqt_exec_callback_QSettings_timerEvent(self *C.QSettings, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -549,18 +549,18 @@ func miqt_exec_callback_QSettings_TimerEvent(self *C.QSettings, cb C.intptr_t, e
 
 func (this *QSettings) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QSettings_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSettings_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSettings) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QSettings_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSettings) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QSettings_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSettings_ChildEvent
-func miqt_exec_callback_QSettings_ChildEvent(self *C.QSettings, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QSettings_childEvent
+func miqt_exec_callback_QSettings_childEvent(self *C.QSettings, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -575,18 +575,18 @@ func miqt_exec_callback_QSettings_ChildEvent(self *C.QSettings, cb C.intptr_t, e
 
 func (this *QSettings) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QSettings_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSettings_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSettings) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QSettings_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSettings) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QSettings_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSettings_CustomEvent
-func miqt_exec_callback_QSettings_CustomEvent(self *C.QSettings, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QSettings_customEvent
+func miqt_exec_callback_QSettings_customEvent(self *C.QSettings, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -601,18 +601,18 @@ func miqt_exec_callback_QSettings_CustomEvent(self *C.QSettings, cb C.intptr_t, 
 
 func (this *QSettings) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QSettings_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QSettings_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSettings) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QSettings_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSettings) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QSettings_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSettings_ConnectNotify
-func miqt_exec_callback_QSettings_ConnectNotify(self *C.QSettings, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QSettings_connectNotify
+func miqt_exec_callback_QSettings_connectNotify(self *C.QSettings, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -627,18 +627,18 @@ func miqt_exec_callback_QSettings_ConnectNotify(self *C.QSettings, cb C.intptr_t
 
 func (this *QSettings) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QSettings_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QSettings_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSettings) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QSettings_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSettings) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QSettings_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSettings_DisconnectNotify
-func miqt_exec_callback_QSettings_DisconnectNotify(self *C.QSettings, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QSettings_disconnectNotify
+func miqt_exec_callback_QSettings_disconnectNotify(self *C.QSettings, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -653,7 +653,7 @@ func miqt_exec_callback_QSettings_DisconnectNotify(self *C.QSettings, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QSettings) Delete() {
-	C.QSettings_Delete(this.h)
+	C.QSettings_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

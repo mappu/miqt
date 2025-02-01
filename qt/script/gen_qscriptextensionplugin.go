@@ -67,19 +67,19 @@ func NewQScriptExtensionPlugin2(parent *qt.QObject) *QScriptExtensionPlugin {
 }
 
 func (this *QScriptExtensionPlugin) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QScriptExtensionPlugin_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QScriptExtensionPlugin_metaObject(this.h)))
 }
 
 func (this *QScriptExtensionPlugin) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QScriptExtensionPlugin_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QScriptExtensionPlugin_metacast(this.h, param1_Cstring))
 }
 
 func QScriptExtensionPlugin_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QScriptExtensionPlugin_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QScriptExtensionPlugin_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -88,14 +88,14 @@ func QScriptExtensionPlugin_Tr(s string) string {
 func QScriptExtensionPlugin_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QScriptExtensionPlugin_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QScriptExtensionPlugin_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QScriptExtensionPlugin) Keys() []string {
-	var _ma C.struct_miqt_array = C.QScriptExtensionPlugin_Keys(this.h)
+	var _ma C.struct_miqt_array = C.QScriptExtensionPlugin_keys(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -112,7 +112,7 @@ func (this *QScriptExtensionPlugin) Initialize(key string, engine *QScriptEngine
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	C.QScriptExtensionPlugin_Initialize(this.h, key_ms, engine.cPointer())
+	C.QScriptExtensionPlugin_initialize(this.h, key_ms, engine.cPointer())
 }
 
 func (this *QScriptExtensionPlugin) SetupPackage(key string, engine *QScriptEngine) *QScriptValue {
@@ -120,7 +120,7 @@ func (this *QScriptExtensionPlugin) SetupPackage(key string, engine *QScriptEngi
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_goptr := newQScriptValue(C.QScriptExtensionPlugin_SetupPackage(this.h, key_ms, engine.cPointer()))
+	_goptr := newQScriptValue(C.QScriptExtensionPlugin_setupPackage(this.h, key_ms, engine.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -130,7 +130,7 @@ func QScriptExtensionPlugin_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QScriptExtensionPlugin_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QScriptExtensionPlugin_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -141,7 +141,7 @@ func QScriptExtensionPlugin_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QScriptExtensionPlugin_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QScriptExtensionPlugin_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -152,7 +152,7 @@ func QScriptExtensionPlugin_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QScriptExtensionPlugin_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QScriptExtensionPlugin_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -163,20 +163,20 @@ func QScriptExtensionPlugin_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QScriptExtensionPlugin_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QScriptExtensionPlugin_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QScriptExtensionPlugin) OnKeys(slot func() []string) {
-	ok := C.QScriptExtensionPlugin_override_virtual_Keys(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptExtensionPlugin) Onkeys(slot func() []string) {
+	ok := C.QScriptExtensionPlugin_override_virtual_keys(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptExtensionPlugin_Keys
-func miqt_exec_callback_QScriptExtensionPlugin_Keys(self *C.QScriptExtensionPlugin, cb C.intptr_t) C.struct_miqt_array {
+//export miqt_exec_callback_QScriptExtensionPlugin_keys
+func miqt_exec_callback_QScriptExtensionPlugin_keys(self *C.QScriptExtensionPlugin, cb C.intptr_t) C.struct_miqt_array {
 	gofunc, ok := cgo.Handle(cb).Value().(func() []string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -197,15 +197,15 @@ func miqt_exec_callback_QScriptExtensionPlugin_Keys(self *C.QScriptExtensionPlug
 	return virtualReturn_ma
 
 }
-func (this *QScriptExtensionPlugin) OnInitialize(slot func(key string, engine *QScriptEngine)) {
-	ok := C.QScriptExtensionPlugin_override_virtual_Initialize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptExtensionPlugin) Oninitialize(slot func(key string, engine *QScriptEngine)) {
+	ok := C.QScriptExtensionPlugin_override_virtual_initialize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptExtensionPlugin_Initialize
-func miqt_exec_callback_QScriptExtensionPlugin_Initialize(self *C.QScriptExtensionPlugin, cb C.intptr_t, key C.struct_miqt_string, engine *C.QScriptEngine) {
+//export miqt_exec_callback_QScriptExtensionPlugin_initialize
+func miqt_exec_callback_QScriptExtensionPlugin_initialize(self *C.QScriptExtensionPlugin, cb C.intptr_t, key C.struct_miqt_string, engine *C.QScriptEngine) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(key string, engine *QScriptEngine))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -224,18 +224,18 @@ func miqt_exec_callback_QScriptExtensionPlugin_Initialize(self *C.QScriptExtensi
 
 func (this *QScriptExtensionPlugin) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.QScriptExtensionPlugin_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QScriptExtensionPlugin_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QScriptExtensionPlugin) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.QScriptExtensionPlugin_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptExtensionPlugin) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QScriptExtensionPlugin_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptExtensionPlugin_Event
-func miqt_exec_callback_QScriptExtensionPlugin_Event(self *C.QScriptExtensionPlugin, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QScriptExtensionPlugin_event
+func miqt_exec_callback_QScriptExtensionPlugin_event(self *C.QScriptExtensionPlugin, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -252,18 +252,18 @@ func miqt_exec_callback_QScriptExtensionPlugin_Event(self *C.QScriptExtensionPlu
 
 func (this *QScriptExtensionPlugin) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.QScriptExtensionPlugin_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QScriptExtensionPlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QScriptExtensionPlugin) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.QScriptExtensionPlugin_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptExtensionPlugin) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QScriptExtensionPlugin_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptExtensionPlugin_EventFilter
-func miqt_exec_callback_QScriptExtensionPlugin_EventFilter(self *C.QScriptExtensionPlugin, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QScriptExtensionPlugin_eventFilter
+func miqt_exec_callback_QScriptExtensionPlugin_eventFilter(self *C.QScriptExtensionPlugin, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -282,18 +282,18 @@ func miqt_exec_callback_QScriptExtensionPlugin_EventFilter(self *C.QScriptExtens
 
 func (this *QScriptExtensionPlugin) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QScriptExtensionPlugin_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QScriptExtensionPlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QScriptExtensionPlugin) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QScriptExtensionPlugin_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptExtensionPlugin) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QScriptExtensionPlugin_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptExtensionPlugin_TimerEvent
-func miqt_exec_callback_QScriptExtensionPlugin_TimerEvent(self *C.QScriptExtensionPlugin, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QScriptExtensionPlugin_timerEvent
+func miqt_exec_callback_QScriptExtensionPlugin_timerEvent(self *C.QScriptExtensionPlugin, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -308,18 +308,18 @@ func miqt_exec_callback_QScriptExtensionPlugin_TimerEvent(self *C.QScriptExtensi
 
 func (this *QScriptExtensionPlugin) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QScriptExtensionPlugin_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QScriptExtensionPlugin_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QScriptExtensionPlugin) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QScriptExtensionPlugin_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptExtensionPlugin) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QScriptExtensionPlugin_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptExtensionPlugin_ChildEvent
-func miqt_exec_callback_QScriptExtensionPlugin_ChildEvent(self *C.QScriptExtensionPlugin, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QScriptExtensionPlugin_childEvent
+func miqt_exec_callback_QScriptExtensionPlugin_childEvent(self *C.QScriptExtensionPlugin, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -334,18 +334,18 @@ func miqt_exec_callback_QScriptExtensionPlugin_ChildEvent(self *C.QScriptExtensi
 
 func (this *QScriptExtensionPlugin) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QScriptExtensionPlugin_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QScriptExtensionPlugin_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QScriptExtensionPlugin) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QScriptExtensionPlugin_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptExtensionPlugin) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QScriptExtensionPlugin_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptExtensionPlugin_CustomEvent
-func miqt_exec_callback_QScriptExtensionPlugin_CustomEvent(self *C.QScriptExtensionPlugin, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QScriptExtensionPlugin_customEvent
+func miqt_exec_callback_QScriptExtensionPlugin_customEvent(self *C.QScriptExtensionPlugin, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -360,18 +360,18 @@ func miqt_exec_callback_QScriptExtensionPlugin_CustomEvent(self *C.QScriptExtens
 
 func (this *QScriptExtensionPlugin) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QScriptExtensionPlugin_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QScriptExtensionPlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QScriptExtensionPlugin) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QScriptExtensionPlugin_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptExtensionPlugin) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QScriptExtensionPlugin_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptExtensionPlugin_ConnectNotify
-func miqt_exec_callback_QScriptExtensionPlugin_ConnectNotify(self *C.QScriptExtensionPlugin, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QScriptExtensionPlugin_connectNotify
+func miqt_exec_callback_QScriptExtensionPlugin_connectNotify(self *C.QScriptExtensionPlugin, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -386,18 +386,18 @@ func miqt_exec_callback_QScriptExtensionPlugin_ConnectNotify(self *C.QScriptExte
 
 func (this *QScriptExtensionPlugin) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QScriptExtensionPlugin_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QScriptExtensionPlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QScriptExtensionPlugin) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QScriptExtensionPlugin_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptExtensionPlugin) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QScriptExtensionPlugin_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptExtensionPlugin_DisconnectNotify
-func miqt_exec_callback_QScriptExtensionPlugin_DisconnectNotify(self *C.QScriptExtensionPlugin, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QScriptExtensionPlugin_disconnectNotify
+func miqt_exec_callback_QScriptExtensionPlugin_disconnectNotify(self *C.QScriptExtensionPlugin, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -412,7 +412,7 @@ func miqt_exec_callback_QScriptExtensionPlugin_DisconnectNotify(self *C.QScriptE
 
 // Delete this object from C++ memory.
 func (this *QScriptExtensionPlugin) Delete() {
-	C.QScriptExtensionPlugin_Delete(this.h)
+	C.QScriptExtensionPlugin_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

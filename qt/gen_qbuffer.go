@@ -63,19 +63,19 @@ func NewQBuffer2(parent *QObject) *QBuffer {
 }
 
 func (this *QBuffer) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QBuffer_MetaObject(this.h))
+	return newQMetaObject(C.QBuffer_metaObject(this.h))
 }
 
 func (this *QBuffer) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QBuffer_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QBuffer_metacast(this.h, param1_Cstring))
 }
 
 func QBuffer_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QBuffer_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QBuffer_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -84,21 +84,21 @@ func QBuffer_Tr(s string) string {
 func QBuffer_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QBuffer_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QBuffer_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QBuffer) Buffer() []byte {
-	var _bytearray C.struct_miqt_string = C.QBuffer_Buffer(this.h)
+	var _bytearray C.struct_miqt_string = C.QBuffer_buffer(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QBuffer) Buffer2() []byte {
-	var _bytearray C.struct_miqt_string = C.QBuffer_Buffer2(this.h)
+	var _bytearray C.struct_miqt_string = C.QBuffer_buffer2(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -112,48 +112,48 @@ func (this *QBuffer) SetData(data []byte) {
 		data_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	data_alias.len = C.size_t(len(data))
-	C.QBuffer_SetData(this.h, data_alias)
+	C.QBuffer_setData(this.h, data_alias)
 }
 
 func (this *QBuffer) SetData2(data string, lenVal int) {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	C.QBuffer_SetData2(this.h, data_Cstring, (C.int)(lenVal))
+	C.QBuffer_setData2(this.h, data_Cstring, (C.int)(lenVal))
 }
 
 func (this *QBuffer) Data() []byte {
-	var _bytearray C.struct_miqt_string = C.QBuffer_Data(this.h)
+	var _bytearray C.struct_miqt_string = C.QBuffer_data(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QBuffer) Open(openMode QIODevice__OpenModeFlag) bool {
-	return (bool)(C.QBuffer_Open(this.h, (C.int)(openMode)))
+	return (bool)(C.QBuffer_open(this.h, (C.int)(openMode)))
 }
 
 func (this *QBuffer) Close() {
-	C.QBuffer_Close(this.h)
+	C.QBuffer_close(this.h)
 }
 
 func (this *QBuffer) Size() int64 {
-	return (int64)(C.QBuffer_Size(this.h))
+	return (int64)(C.QBuffer_size(this.h))
 }
 
 func (this *QBuffer) Pos() int64 {
-	return (int64)(C.QBuffer_Pos(this.h))
+	return (int64)(C.QBuffer_pos(this.h))
 }
 
 func (this *QBuffer) Seek(off int64) bool {
-	return (bool)(C.QBuffer_Seek(this.h, (C.longlong)(off)))
+	return (bool)(C.QBuffer_seek(this.h, (C.longlong)(off)))
 }
 
 func (this *QBuffer) AtEnd() bool {
-	return (bool)(C.QBuffer_AtEnd(this.h))
+	return (bool)(C.QBuffer_atEnd(this.h))
 }
 
 func (this *QBuffer) CanReadLine() bool {
-	return (bool)(C.QBuffer_CanReadLine(this.h))
+	return (bool)(C.QBuffer_canReadLine(this.h))
 }
 
 func QBuffer_Tr2(s string, c string) string {
@@ -161,7 +161,7 @@ func QBuffer_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QBuffer_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QBuffer_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -172,7 +172,7 @@ func QBuffer_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QBuffer_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QBuffer_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -183,7 +183,7 @@ func QBuffer_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QBuffer_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QBuffer_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -194,7 +194,7 @@ func QBuffer_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QBuffer_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QBuffer_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -202,18 +202,18 @@ func QBuffer_TrUtf83(s string, c string, n int) string {
 
 func (this *QBuffer) callVirtualBase_Open(openMode QIODevice__OpenModeFlag) bool {
 
-	return (bool)(C.QBuffer_virtualbase_Open(unsafe.Pointer(this.h), (C.int)(openMode)))
+	return (bool)(C.QBuffer_virtualbase_open(unsafe.Pointer(this.h), (C.int)(openMode)))
 
 }
-func (this *QBuffer) OnOpen(slot func(super func(openMode QIODevice__OpenModeFlag) bool, openMode QIODevice__OpenModeFlag) bool) {
-	ok := C.QBuffer_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) Onopen(slot func(super func(openMode QIODevice__OpenModeFlag) bool, openMode QIODevice__OpenModeFlag) bool) {
+	ok := C.QBuffer_override_virtual_open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_Open
-func miqt_exec_callback_QBuffer_Open(self *C.QBuffer, cb C.intptr_t, openMode C.int) C.bool {
+//export miqt_exec_callback_QBuffer_open
+func miqt_exec_callback_QBuffer_open(self *C.QBuffer, cb C.intptr_t, openMode C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(openMode QIODevice__OpenModeFlag) bool, openMode QIODevice__OpenModeFlag) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -230,18 +230,18 @@ func miqt_exec_callback_QBuffer_Open(self *C.QBuffer, cb C.intptr_t, openMode C.
 
 func (this *QBuffer) callVirtualBase_Close() {
 
-	C.QBuffer_virtualbase_Close(unsafe.Pointer(this.h))
+	C.QBuffer_virtualbase_close(unsafe.Pointer(this.h))
 
 }
-func (this *QBuffer) OnClose(slot func(super func())) {
-	ok := C.QBuffer_override_virtual_Close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) Onclose(slot func(super func())) {
+	ok := C.QBuffer_override_virtual_close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_Close
-func miqt_exec_callback_QBuffer_Close(self *C.QBuffer, cb C.intptr_t) {
+//export miqt_exec_callback_QBuffer_close
+func miqt_exec_callback_QBuffer_close(self *C.QBuffer, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -253,18 +253,18 @@ func miqt_exec_callback_QBuffer_Close(self *C.QBuffer, cb C.intptr_t) {
 
 func (this *QBuffer) callVirtualBase_Size() int64 {
 
-	return (int64)(C.QBuffer_virtualbase_Size(unsafe.Pointer(this.h)))
+	return (int64)(C.QBuffer_virtualbase_size(unsafe.Pointer(this.h)))
 
 }
-func (this *QBuffer) OnSize(slot func(super func() int64) int64) {
-	ok := C.QBuffer_override_virtual_Size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) Onsize(slot func(super func() int64) int64) {
+	ok := C.QBuffer_override_virtual_size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_Size
-func miqt_exec_callback_QBuffer_Size(self *C.QBuffer, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QBuffer_size
+func miqt_exec_callback_QBuffer_size(self *C.QBuffer, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -278,18 +278,18 @@ func miqt_exec_callback_QBuffer_Size(self *C.QBuffer, cb C.intptr_t) C.longlong 
 
 func (this *QBuffer) callVirtualBase_Pos() int64 {
 
-	return (int64)(C.QBuffer_virtualbase_Pos(unsafe.Pointer(this.h)))
+	return (int64)(C.QBuffer_virtualbase_pos(unsafe.Pointer(this.h)))
 
 }
-func (this *QBuffer) OnPos(slot func(super func() int64) int64) {
-	ok := C.QBuffer_override_virtual_Pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) Onpos(slot func(super func() int64) int64) {
+	ok := C.QBuffer_override_virtual_pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_Pos
-func miqt_exec_callback_QBuffer_Pos(self *C.QBuffer, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QBuffer_pos
+func miqt_exec_callback_QBuffer_pos(self *C.QBuffer, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -303,18 +303,18 @@ func miqt_exec_callback_QBuffer_Pos(self *C.QBuffer, cb C.intptr_t) C.longlong {
 
 func (this *QBuffer) callVirtualBase_Seek(off int64) bool {
 
-	return (bool)(C.QBuffer_virtualbase_Seek(unsafe.Pointer(this.h), (C.longlong)(off)))
+	return (bool)(C.QBuffer_virtualbase_seek(unsafe.Pointer(this.h), (C.longlong)(off)))
 
 }
-func (this *QBuffer) OnSeek(slot func(super func(off int64) bool, off int64) bool) {
-	ok := C.QBuffer_override_virtual_Seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) Onseek(slot func(super func(off int64) bool, off int64) bool) {
+	ok := C.QBuffer_override_virtual_seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_Seek
-func miqt_exec_callback_QBuffer_Seek(self *C.QBuffer, cb C.intptr_t, off C.longlong) C.bool {
+//export miqt_exec_callback_QBuffer_seek
+func miqt_exec_callback_QBuffer_seek(self *C.QBuffer, cb C.intptr_t, off C.longlong) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(off int64) bool, off int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -331,18 +331,18 @@ func miqt_exec_callback_QBuffer_Seek(self *C.QBuffer, cb C.intptr_t, off C.longl
 
 func (this *QBuffer) callVirtualBase_AtEnd() bool {
 
-	return (bool)(C.QBuffer_virtualbase_AtEnd(unsafe.Pointer(this.h)))
+	return (bool)(C.QBuffer_virtualbase_atEnd(unsafe.Pointer(this.h)))
 
 }
-func (this *QBuffer) OnAtEnd(slot func(super func() bool) bool) {
-	ok := C.QBuffer_override_virtual_AtEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) OnatEnd(slot func(super func() bool) bool) {
+	ok := C.QBuffer_override_virtual_atEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_AtEnd
-func miqt_exec_callback_QBuffer_AtEnd(self *C.QBuffer, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QBuffer_atEnd
+func miqt_exec_callback_QBuffer_atEnd(self *C.QBuffer, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -356,18 +356,18 @@ func miqt_exec_callback_QBuffer_AtEnd(self *C.QBuffer, cb C.intptr_t) C.bool {
 
 func (this *QBuffer) callVirtualBase_CanReadLine() bool {
 
-	return (bool)(C.QBuffer_virtualbase_CanReadLine(unsafe.Pointer(this.h)))
+	return (bool)(C.QBuffer_virtualbase_canReadLine(unsafe.Pointer(this.h)))
 
 }
-func (this *QBuffer) OnCanReadLine(slot func(super func() bool) bool) {
-	ok := C.QBuffer_override_virtual_CanReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) OncanReadLine(slot func(super func() bool) bool) {
+	ok := C.QBuffer_override_virtual_canReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_CanReadLine
-func miqt_exec_callback_QBuffer_CanReadLine(self *C.QBuffer, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QBuffer_canReadLine
+func miqt_exec_callback_QBuffer_canReadLine(self *C.QBuffer, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -381,18 +381,18 @@ func miqt_exec_callback_QBuffer_CanReadLine(self *C.QBuffer, cb C.intptr_t) C.bo
 
 func (this *QBuffer) callVirtualBase_ConnectNotify(param1 *QMetaMethod) {
 
-	C.QBuffer_virtualbase_ConnectNotify(unsafe.Pointer(this.h), param1.cPointer())
+	C.QBuffer_virtualbase_connectNotify(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QBuffer) OnConnectNotify(slot func(super func(param1 *QMetaMethod), param1 *QMetaMethod)) {
-	ok := C.QBuffer_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) OnconnectNotify(slot func(super func(param1 *QMetaMethod), param1 *QMetaMethod)) {
+	ok := C.QBuffer_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_ConnectNotify
-func miqt_exec_callback_QBuffer_ConnectNotify(self *C.QBuffer, cb C.intptr_t, param1 *C.QMetaMethod) {
+//export miqt_exec_callback_QBuffer_connectNotify
+func miqt_exec_callback_QBuffer_connectNotify(self *C.QBuffer, cb C.intptr_t, param1 *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMetaMethod), param1 *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -407,18 +407,18 @@ func miqt_exec_callback_QBuffer_ConnectNotify(self *C.QBuffer, cb C.intptr_t, pa
 
 func (this *QBuffer) callVirtualBase_DisconnectNotify(param1 *QMetaMethod) {
 
-	C.QBuffer_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), param1.cPointer())
+	C.QBuffer_virtualbase_disconnectNotify(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QBuffer) OnDisconnectNotify(slot func(super func(param1 *QMetaMethod), param1 *QMetaMethod)) {
-	ok := C.QBuffer_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) OndisconnectNotify(slot func(super func(param1 *QMetaMethod), param1 *QMetaMethod)) {
+	ok := C.QBuffer_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_DisconnectNotify
-func miqt_exec_callback_QBuffer_DisconnectNotify(self *C.QBuffer, cb C.intptr_t, param1 *C.QMetaMethod) {
+//export miqt_exec_callback_QBuffer_disconnectNotify
+func miqt_exec_callback_QBuffer_disconnectNotify(self *C.QBuffer, cb C.intptr_t, param1 *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMetaMethod), param1 *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -435,18 +435,18 @@ func (this *QBuffer) callVirtualBase_ReadData(data string, maxlen int64) int64 {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
-	return (int64)(C.QBuffer_virtualbase_ReadData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
+	return (int64)(C.QBuffer_virtualbase_readData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
 
 }
-func (this *QBuffer) OnReadData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
-	ok := C.QBuffer_override_virtual_ReadData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) OnreadData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+	ok := C.QBuffer_override_virtual_readData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_ReadData
-func miqt_exec_callback_QBuffer_ReadData(self *C.QBuffer, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
+//export miqt_exec_callback_QBuffer_readData
+func miqt_exec_callback_QBuffer_readData(self *C.QBuffer, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -468,18 +468,18 @@ func (this *QBuffer) callVirtualBase_WriteData(data string, lenVal int64) int64 
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
-	return (int64)(C.QBuffer_virtualbase_WriteData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(lenVal)))
+	return (int64)(C.QBuffer_virtualbase_writeData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(lenVal)))
 
 }
-func (this *QBuffer) OnWriteData(slot func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64) {
-	ok := C.QBuffer_override_virtual_WriteData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) OnwriteData(slot func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64) {
+	ok := C.QBuffer_override_virtual_writeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_WriteData
-func miqt_exec_callback_QBuffer_WriteData(self *C.QBuffer, cb C.intptr_t, data *C.const_char, lenVal C.longlong) C.longlong {
+//export miqt_exec_callback_QBuffer_writeData
+func miqt_exec_callback_QBuffer_writeData(self *C.QBuffer, cb C.intptr_t, data *C.const_char, lenVal C.longlong) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -499,18 +499,18 @@ func miqt_exec_callback_QBuffer_WriteData(self *C.QBuffer, cb C.intptr_t, data *
 
 func (this *QBuffer) callVirtualBase_IsSequential() bool {
 
-	return (bool)(C.QBuffer_virtualbase_IsSequential(unsafe.Pointer(this.h)))
+	return (bool)(C.QBuffer_virtualbase_isSequential(unsafe.Pointer(this.h)))
 
 }
-func (this *QBuffer) OnIsSequential(slot func(super func() bool) bool) {
-	ok := C.QBuffer_override_virtual_IsSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) OnisSequential(slot func(super func() bool) bool) {
+	ok := C.QBuffer_override_virtual_isSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_IsSequential
-func miqt_exec_callback_QBuffer_IsSequential(self *C.QBuffer, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QBuffer_isSequential
+func miqt_exec_callback_QBuffer_isSequential(self *C.QBuffer, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -524,18 +524,18 @@ func miqt_exec_callback_QBuffer_IsSequential(self *C.QBuffer, cb C.intptr_t) C.b
 
 func (this *QBuffer) callVirtualBase_Reset() bool {
 
-	return (bool)(C.QBuffer_virtualbase_Reset(unsafe.Pointer(this.h)))
+	return (bool)(C.QBuffer_virtualbase_reset(unsafe.Pointer(this.h)))
 
 }
-func (this *QBuffer) OnReset(slot func(super func() bool) bool) {
-	ok := C.QBuffer_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) Onreset(slot func(super func() bool) bool) {
+	ok := C.QBuffer_override_virtual_reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_Reset
-func miqt_exec_callback_QBuffer_Reset(self *C.QBuffer, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QBuffer_reset
+func miqt_exec_callback_QBuffer_reset(self *C.QBuffer, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -549,18 +549,18 @@ func miqt_exec_callback_QBuffer_Reset(self *C.QBuffer, cb C.intptr_t) C.bool {
 
 func (this *QBuffer) callVirtualBase_BytesAvailable() int64 {
 
-	return (int64)(C.QBuffer_virtualbase_BytesAvailable(unsafe.Pointer(this.h)))
+	return (int64)(C.QBuffer_virtualbase_bytesAvailable(unsafe.Pointer(this.h)))
 
 }
-func (this *QBuffer) OnBytesAvailable(slot func(super func() int64) int64) {
-	ok := C.QBuffer_override_virtual_BytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) OnbytesAvailable(slot func(super func() int64) int64) {
+	ok := C.QBuffer_override_virtual_bytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_BytesAvailable
-func miqt_exec_callback_QBuffer_BytesAvailable(self *C.QBuffer, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QBuffer_bytesAvailable
+func miqt_exec_callback_QBuffer_bytesAvailable(self *C.QBuffer, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -574,18 +574,18 @@ func miqt_exec_callback_QBuffer_BytesAvailable(self *C.QBuffer, cb C.intptr_t) C
 
 func (this *QBuffer) callVirtualBase_BytesToWrite() int64 {
 
-	return (int64)(C.QBuffer_virtualbase_BytesToWrite(unsafe.Pointer(this.h)))
+	return (int64)(C.QBuffer_virtualbase_bytesToWrite(unsafe.Pointer(this.h)))
 
 }
-func (this *QBuffer) OnBytesToWrite(slot func(super func() int64) int64) {
-	ok := C.QBuffer_override_virtual_BytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) OnbytesToWrite(slot func(super func() int64) int64) {
+	ok := C.QBuffer_override_virtual_bytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_BytesToWrite
-func miqt_exec_callback_QBuffer_BytesToWrite(self *C.QBuffer, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QBuffer_bytesToWrite
+func miqt_exec_callback_QBuffer_bytesToWrite(self *C.QBuffer, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -599,18 +599,18 @@ func miqt_exec_callback_QBuffer_BytesToWrite(self *C.QBuffer, cb C.intptr_t) C.l
 
 func (this *QBuffer) callVirtualBase_WaitForReadyRead(msecs int) bool {
 
-	return (bool)(C.QBuffer_virtualbase_WaitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
+	return (bool)(C.QBuffer_virtualbase_waitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
 
 }
-func (this *QBuffer) OnWaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
-	ok := C.QBuffer_override_virtual_WaitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) OnwaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
+	ok := C.QBuffer_override_virtual_waitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_WaitForReadyRead
-func miqt_exec_callback_QBuffer_WaitForReadyRead(self *C.QBuffer, cb C.intptr_t, msecs C.int) C.bool {
+//export miqt_exec_callback_QBuffer_waitForReadyRead
+func miqt_exec_callback_QBuffer_waitForReadyRead(self *C.QBuffer, cb C.intptr_t, msecs C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msecs int) bool, msecs int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -627,18 +627,18 @@ func miqt_exec_callback_QBuffer_WaitForReadyRead(self *C.QBuffer, cb C.intptr_t,
 
 func (this *QBuffer) callVirtualBase_WaitForBytesWritten(msecs int) bool {
 
-	return (bool)(C.QBuffer_virtualbase_WaitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
+	return (bool)(C.QBuffer_virtualbase_waitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
 
 }
-func (this *QBuffer) OnWaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
-	ok := C.QBuffer_override_virtual_WaitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) OnwaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
+	ok := C.QBuffer_override_virtual_waitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_WaitForBytesWritten
-func miqt_exec_callback_QBuffer_WaitForBytesWritten(self *C.QBuffer, cb C.intptr_t, msecs C.int) C.bool {
+//export miqt_exec_callback_QBuffer_waitForBytesWritten
+func miqt_exec_callback_QBuffer_waitForBytesWritten(self *C.QBuffer, cb C.intptr_t, msecs C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msecs int) bool, msecs int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -657,18 +657,18 @@ func (this *QBuffer) callVirtualBase_ReadLineData(data string, maxlen int64) int
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
-	return (int64)(C.QBuffer_virtualbase_ReadLineData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
+	return (int64)(C.QBuffer_virtualbase_readLineData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
 
 }
-func (this *QBuffer) OnReadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
-	ok := C.QBuffer_override_virtual_ReadLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) OnreadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+	ok := C.QBuffer_override_virtual_readLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_ReadLineData
-func miqt_exec_callback_QBuffer_ReadLineData(self *C.QBuffer, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
+//export miqt_exec_callback_QBuffer_readLineData
+func miqt_exec_callback_QBuffer_readLineData(self *C.QBuffer, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -688,18 +688,18 @@ func miqt_exec_callback_QBuffer_ReadLineData(self *C.QBuffer, cb C.intptr_t, dat
 
 func (this *QBuffer) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QBuffer_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QBuffer_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QBuffer) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QBuffer_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QBuffer_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_Event
-func miqt_exec_callback_QBuffer_Event(self *C.QBuffer, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QBuffer_event
+func miqt_exec_callback_QBuffer_event(self *C.QBuffer, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -716,18 +716,18 @@ func miqt_exec_callback_QBuffer_Event(self *C.QBuffer, cb C.intptr_t, event *C.Q
 
 func (this *QBuffer) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QBuffer_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QBuffer_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QBuffer) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QBuffer_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QBuffer_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_EventFilter
-func miqt_exec_callback_QBuffer_EventFilter(self *C.QBuffer, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QBuffer_eventFilter
+func miqt_exec_callback_QBuffer_eventFilter(self *C.QBuffer, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -746,18 +746,18 @@ func miqt_exec_callback_QBuffer_EventFilter(self *C.QBuffer, cb C.intptr_t, watc
 
 func (this *QBuffer) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QBuffer_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QBuffer_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QBuffer) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QBuffer_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QBuffer_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_TimerEvent
-func miqt_exec_callback_QBuffer_TimerEvent(self *C.QBuffer, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QBuffer_timerEvent
+func miqt_exec_callback_QBuffer_timerEvent(self *C.QBuffer, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -772,18 +772,18 @@ func miqt_exec_callback_QBuffer_TimerEvent(self *C.QBuffer, cb C.intptr_t, event
 
 func (this *QBuffer) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QBuffer_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QBuffer_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QBuffer) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QBuffer_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QBuffer_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_ChildEvent
-func miqt_exec_callback_QBuffer_ChildEvent(self *C.QBuffer, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QBuffer_childEvent
+func miqt_exec_callback_QBuffer_childEvent(self *C.QBuffer, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -798,18 +798,18 @@ func miqt_exec_callback_QBuffer_ChildEvent(self *C.QBuffer, cb C.intptr_t, event
 
 func (this *QBuffer) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QBuffer_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QBuffer_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QBuffer) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QBuffer_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QBuffer) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QBuffer_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QBuffer_CustomEvent
-func miqt_exec_callback_QBuffer_CustomEvent(self *C.QBuffer, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QBuffer_customEvent
+func miqt_exec_callback_QBuffer_customEvent(self *C.QBuffer, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -824,7 +824,7 @@ func miqt_exec_callback_QBuffer_CustomEvent(self *C.QBuffer, cb C.intptr_t, even
 
 // Delete this object from C++ memory.
 func (this *QBuffer) Delete() {
-	C.QBuffer_Delete(this.h)
+	C.QBuffer_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

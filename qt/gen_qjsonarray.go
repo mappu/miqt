@@ -58,7 +58,7 @@ func NewQJsonArray2(other *QJsonArray) *QJsonArray {
 }
 
 func (this *QJsonArray) OperatorAssign(other *QJsonArray) {
-	C.QJsonArray_OperatorAssign(this.h, other.cPointer())
+	C.QJsonArray_operatorAssign(this.h, other.cPointer())
 }
 
 func QJsonArray_FromStringList(list []string) *QJsonArray {
@@ -72,200 +72,200 @@ func QJsonArray_FromStringList(list []string) *QJsonArray {
 		list_CArray[i] = list_i_ms
 	}
 	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
-	_goptr := newQJsonArray(C.QJsonArray_FromStringList(list_ma))
+	_goptr := newQJsonArray(C.QJsonArray_fromStringList(list_ma))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) Size() int {
-	return (int)(C.QJsonArray_Size(this.h))
+	return (int)(C.QJsonArray_size(this.h))
 }
 
 func (this *QJsonArray) Count() int {
-	return (int)(C.QJsonArray_Count(this.h))
+	return (int)(C.QJsonArray_count(this.h))
 }
 
 func (this *QJsonArray) IsEmpty() bool {
-	return (bool)(C.QJsonArray_IsEmpty(this.h))
+	return (bool)(C.QJsonArray_isEmpty(this.h))
 }
 
 func (this *QJsonArray) At(i int) *QJsonValue {
-	_goptr := newQJsonValue(C.QJsonArray_At(this.h, (C.int)(i)))
+	_goptr := newQJsonValue(C.QJsonArray_at(this.h, (C.int)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) First() *QJsonValue {
-	_goptr := newQJsonValue(C.QJsonArray_First(this.h))
+	_goptr := newQJsonValue(C.QJsonArray_first(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) Last() *QJsonValue {
-	_goptr := newQJsonValue(C.QJsonArray_Last(this.h))
+	_goptr := newQJsonValue(C.QJsonArray_last(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) Prepend(value *QJsonValue) {
-	C.QJsonArray_Prepend(this.h, value.cPointer())
+	C.QJsonArray_prepend(this.h, value.cPointer())
 }
 
 func (this *QJsonArray) Append(value *QJsonValue) {
-	C.QJsonArray_Append(this.h, value.cPointer())
+	C.QJsonArray_append(this.h, value.cPointer())
 }
 
 func (this *QJsonArray) RemoveAt(i int) {
-	C.QJsonArray_RemoveAt(this.h, (C.int)(i))
+	C.QJsonArray_removeAt(this.h, (C.int)(i))
 }
 
 func (this *QJsonArray) TakeAt(i int) *QJsonValue {
-	_goptr := newQJsonValue(C.QJsonArray_TakeAt(this.h, (C.int)(i)))
+	_goptr := newQJsonValue(C.QJsonArray_takeAt(this.h, (C.int)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) RemoveFirst() {
-	C.QJsonArray_RemoveFirst(this.h)
+	C.QJsonArray_removeFirst(this.h)
 }
 
 func (this *QJsonArray) RemoveLast() {
-	C.QJsonArray_RemoveLast(this.h)
+	C.QJsonArray_removeLast(this.h)
 }
 
 func (this *QJsonArray) Insert(i int, value *QJsonValue) {
-	C.QJsonArray_Insert(this.h, (C.int)(i), value.cPointer())
+	C.QJsonArray_insert(this.h, (C.int)(i), value.cPointer())
 }
 
 func (this *QJsonArray) Replace(i int, value *QJsonValue) {
-	C.QJsonArray_Replace(this.h, (C.int)(i), value.cPointer())
+	C.QJsonArray_replace(this.h, (C.int)(i), value.cPointer())
 }
 
 func (this *QJsonArray) Contains(element *QJsonValue) bool {
-	return (bool)(C.QJsonArray_Contains(this.h, element.cPointer()))
+	return (bool)(C.QJsonArray_contains(this.h, element.cPointer()))
 }
 
 func (this *QJsonArray) OperatorSubscript(i int) *QJsonValueRef {
-	_goptr := newQJsonValueRef(C.QJsonArray_OperatorSubscript(this.h, (C.int)(i)))
+	_goptr := newQJsonValueRef(C.QJsonArray_operatorSubscript(this.h, (C.int)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) OperatorSubscriptWithInt(i int) *QJsonValue {
-	_goptr := newQJsonValue(C.QJsonArray_OperatorSubscriptWithInt(this.h, (C.int)(i)))
+	_goptr := newQJsonValue(C.QJsonArray_operatorSubscriptWithInt(this.h, (C.int)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) OperatorEqual(other *QJsonArray) bool {
-	return (bool)(C.QJsonArray_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QJsonArray_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonArray) OperatorNotEqual(other *QJsonArray) bool {
-	return (bool)(C.QJsonArray_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QJsonArray_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonArray) Swap(other *QJsonArray) {
-	C.QJsonArray_Swap(this.h, other.cPointer())
+	C.QJsonArray_swap(this.h, other.cPointer())
 }
 
 func (this *QJsonArray) Begin() *QJsonArray__iterator {
-	_goptr := newQJsonArray__iterator(C.QJsonArray_Begin(this.h))
+	_goptr := newQJsonArray__iterator(C.QJsonArray_begin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) Begin2() *QJsonArray__const_iterator {
-	_goptr := newQJsonArray__const_iterator(C.QJsonArray_Begin2(this.h))
+	_goptr := newQJsonArray__const_iterator(C.QJsonArray_begin2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) ConstBegin() *QJsonArray__const_iterator {
-	_goptr := newQJsonArray__const_iterator(C.QJsonArray_ConstBegin(this.h))
+	_goptr := newQJsonArray__const_iterator(C.QJsonArray_constBegin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) Cbegin() *QJsonArray__const_iterator {
-	_goptr := newQJsonArray__const_iterator(C.QJsonArray_Cbegin(this.h))
+	_goptr := newQJsonArray__const_iterator(C.QJsonArray_cbegin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) End() *QJsonArray__iterator {
-	_goptr := newQJsonArray__iterator(C.QJsonArray_End(this.h))
+	_goptr := newQJsonArray__iterator(C.QJsonArray_end(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) End2() *QJsonArray__const_iterator {
-	_goptr := newQJsonArray__const_iterator(C.QJsonArray_End2(this.h))
+	_goptr := newQJsonArray__const_iterator(C.QJsonArray_end2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) ConstEnd() *QJsonArray__const_iterator {
-	_goptr := newQJsonArray__const_iterator(C.QJsonArray_ConstEnd(this.h))
+	_goptr := newQJsonArray__const_iterator(C.QJsonArray_constEnd(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) Cend() *QJsonArray__const_iterator {
-	_goptr := newQJsonArray__const_iterator(C.QJsonArray_Cend(this.h))
+	_goptr := newQJsonArray__const_iterator(C.QJsonArray_cend(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) Insert2(before QJsonArray__iterator, value *QJsonValue) *QJsonArray__iterator {
-	_goptr := newQJsonArray__iterator(C.QJsonArray_Insert2(this.h, before.cPointer(), value.cPointer()))
+	_goptr := newQJsonArray__iterator(C.QJsonArray_insert2(this.h, before.cPointer(), value.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) Erase(it QJsonArray__iterator) *QJsonArray__iterator {
-	_goptr := newQJsonArray__iterator(C.QJsonArray_Erase(this.h, it.cPointer()))
+	_goptr := newQJsonArray__iterator(C.QJsonArray_erase(this.h, it.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) OperatorPlus(v *QJsonValue) *QJsonArray {
-	_goptr := newQJsonArray(C.QJsonArray_OperatorPlus(this.h, v.cPointer()))
+	_goptr := newQJsonArray(C.QJsonArray_operatorPlus(this.h, v.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray) OperatorPlusAssign(v *QJsonValue) *QJsonArray {
-	return newQJsonArray(C.QJsonArray_OperatorPlusAssign(this.h, v.cPointer()))
+	return newQJsonArray(C.QJsonArray_operatorPlusAssign(this.h, v.cPointer()))
 }
 
 func (this *QJsonArray) OperatorShiftLeft(v *QJsonValue) *QJsonArray {
-	return newQJsonArray(C.QJsonArray_OperatorShiftLeft(this.h, v.cPointer()))
+	return newQJsonArray(C.QJsonArray_operatorShiftLeft(this.h, v.cPointer()))
 }
 
 func (this *QJsonArray) PushBack(t *QJsonValue) {
-	C.QJsonArray_PushBack(this.h, t.cPointer())
+	C.QJsonArray_pushBack(this.h, t.cPointer())
 }
 
 func (this *QJsonArray) PushFront(t *QJsonValue) {
-	C.QJsonArray_PushFront(this.h, t.cPointer())
+	C.QJsonArray_pushFront(this.h, t.cPointer())
 }
 
 func (this *QJsonArray) PopFront() {
-	C.QJsonArray_PopFront(this.h)
+	C.QJsonArray_popFront(this.h)
 }
 
 func (this *QJsonArray) PopBack() {
-	C.QJsonArray_PopBack(this.h)
+	C.QJsonArray_popBack(this.h)
 }
 
 func (this *QJsonArray) Empty() bool {
-	return (bool)(C.QJsonArray_Empty(this.h))
+	return (bool)(C.QJsonArray_empty(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QJsonArray) Delete() {
-	C.QJsonArray_Delete(this.h)
+	C.QJsonArray_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -328,118 +328,118 @@ func NewQJsonArray__iterator3(param1 *QJsonArray__iterator) *QJsonArray__iterato
 }
 
 func (this *QJsonArray__iterator) OperatorMultiply() *QJsonValueRef {
-	_goptr := newQJsonValueRef(C.QJsonArray__iterator_OperatorMultiply(this.h))
+	_goptr := newQJsonValueRef(C.QJsonArray__iterator_operatorMultiply(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray__iterator) OperatorMinusGreater() *QJsonValueRefPtr {
-	_goptr := newQJsonValueRefPtr(C.QJsonArray__iterator_OperatorMinusGreater(this.h))
+	_goptr := newQJsonValueRefPtr(C.QJsonArray__iterator_operatorMinusGreater(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray__iterator) OperatorSubscript(j int) *QJsonValueRef {
-	_goptr := newQJsonValueRef(C.QJsonArray__iterator_OperatorSubscript(this.h, (C.int)(j)))
+	_goptr := newQJsonValueRef(C.QJsonArray__iterator_operatorSubscript(this.h, (C.int)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray__iterator) OperatorEqual(o *QJsonArray__iterator) bool {
-	return (bool)(C.QJsonArray__iterator_OperatorEqual(this.h, o.cPointer()))
+	return (bool)(C.QJsonArray__iterator_operatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QJsonArray__iterator) OperatorNotEqual(o *QJsonArray__iterator) bool {
-	return (bool)(C.QJsonArray__iterator_OperatorNotEqual(this.h, o.cPointer()))
+	return (bool)(C.QJsonArray__iterator_operatorNotEqual(this.h, o.cPointer()))
 }
 
 func (this *QJsonArray__iterator) OperatorLesser(other *QJsonArray__iterator) bool {
-	return (bool)(C.QJsonArray__iterator_OperatorLesser(this.h, other.cPointer()))
+	return (bool)(C.QJsonArray__iterator_operatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QJsonArray__iterator) OperatorLesserOrEqual(other *QJsonArray__iterator) bool {
-	return (bool)(C.QJsonArray__iterator_OperatorLesserOrEqual(this.h, other.cPointer()))
+	return (bool)(C.QJsonArray__iterator_operatorLesserOrEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonArray__iterator) OperatorGreater(other *QJsonArray__iterator) bool {
-	return (bool)(C.QJsonArray__iterator_OperatorGreater(this.h, other.cPointer()))
+	return (bool)(C.QJsonArray__iterator_operatorGreater(this.h, other.cPointer()))
 }
 
 func (this *QJsonArray__iterator) OperatorGreaterOrEqual(other *QJsonArray__iterator) bool {
-	return (bool)(C.QJsonArray__iterator_OperatorGreaterOrEqual(this.h, other.cPointer()))
+	return (bool)(C.QJsonArray__iterator_operatorGreaterOrEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonArray__iterator) OperatorEqualWithQJsonArrayconstIterator(o *QJsonArray__const_iterator) bool {
-	return (bool)(C.QJsonArray__iterator_OperatorEqualWithQJsonArrayconstIterator(this.h, o.cPointer()))
+	return (bool)(C.QJsonArray__iterator_operatorEqualWithQJsonArrayconstIterator(this.h, o.cPointer()))
 }
 
 func (this *QJsonArray__iterator) OperatorNotEqualWithQJsonArrayconstIterator(o *QJsonArray__const_iterator) bool {
-	return (bool)(C.QJsonArray__iterator_OperatorNotEqualWithQJsonArrayconstIterator(this.h, o.cPointer()))
+	return (bool)(C.QJsonArray__iterator_operatorNotEqualWithQJsonArrayconstIterator(this.h, o.cPointer()))
 }
 
 func (this *QJsonArray__iterator) OperatorLesserWithOther(other *QJsonArray__const_iterator) bool {
-	return (bool)(C.QJsonArray__iterator_OperatorLesserWithOther(this.h, other.cPointer()))
+	return (bool)(C.QJsonArray__iterator_operatorLesserWithOther(this.h, other.cPointer()))
 }
 
 func (this *QJsonArray__iterator) OperatorLesserOrEqualWithOther(other *QJsonArray__const_iterator) bool {
-	return (bool)(C.QJsonArray__iterator_OperatorLesserOrEqualWithOther(this.h, other.cPointer()))
+	return (bool)(C.QJsonArray__iterator_operatorLesserOrEqualWithOther(this.h, other.cPointer()))
 }
 
 func (this *QJsonArray__iterator) OperatorGreaterWithOther(other *QJsonArray__const_iterator) bool {
-	return (bool)(C.QJsonArray__iterator_OperatorGreaterWithOther(this.h, other.cPointer()))
+	return (bool)(C.QJsonArray__iterator_operatorGreaterWithOther(this.h, other.cPointer()))
 }
 
 func (this *QJsonArray__iterator) OperatorGreaterOrEqualWithOther(other *QJsonArray__const_iterator) bool {
-	return (bool)(C.QJsonArray__iterator_OperatorGreaterOrEqualWithOther(this.h, other.cPointer()))
+	return (bool)(C.QJsonArray__iterator_operatorGreaterOrEqualWithOther(this.h, other.cPointer()))
 }
 
 func (this *QJsonArray__iterator) OperatorPlusPlus() *QJsonArray__iterator {
-	return newQJsonArray__iterator(C.QJsonArray__iterator_OperatorPlusPlus(this.h))
+	return newQJsonArray__iterator(C.QJsonArray__iterator_operatorPlusPlus(this.h))
 }
 
 func (this *QJsonArray__iterator) OperatorPlusPlusWithInt(param1 int) *QJsonArray__iterator {
-	_goptr := newQJsonArray__iterator(C.QJsonArray__iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1)))
+	_goptr := newQJsonArray__iterator(C.QJsonArray__iterator_operatorPlusPlusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray__iterator) OperatorMinusMinus() *QJsonArray__iterator {
-	return newQJsonArray__iterator(C.QJsonArray__iterator_OperatorMinusMinus(this.h))
+	return newQJsonArray__iterator(C.QJsonArray__iterator_operatorMinusMinus(this.h))
 }
 
 func (this *QJsonArray__iterator) OperatorMinusMinusWithInt(param1 int) *QJsonArray__iterator {
-	_goptr := newQJsonArray__iterator(C.QJsonArray__iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1)))
+	_goptr := newQJsonArray__iterator(C.QJsonArray__iterator_operatorMinusMinusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray__iterator) OperatorPlusAssign(j int) *QJsonArray__iterator {
-	return newQJsonArray__iterator(C.QJsonArray__iterator_OperatorPlusAssign(this.h, (C.int)(j)))
+	return newQJsonArray__iterator(C.QJsonArray__iterator_operatorPlusAssign(this.h, (C.int)(j)))
 }
 
 func (this *QJsonArray__iterator) OperatorMinusAssign(j int) *QJsonArray__iterator {
-	return newQJsonArray__iterator(C.QJsonArray__iterator_OperatorMinusAssign(this.h, (C.int)(j)))
+	return newQJsonArray__iterator(C.QJsonArray__iterator_operatorMinusAssign(this.h, (C.int)(j)))
 }
 
 func (this *QJsonArray__iterator) OperatorPlus(j int) *QJsonArray__iterator {
-	_goptr := newQJsonArray__iterator(C.QJsonArray__iterator_OperatorPlus(this.h, (C.int)(j)))
+	_goptr := newQJsonArray__iterator(C.QJsonArray__iterator_operatorPlus(this.h, (C.int)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray__iterator) OperatorMinus(j int) *QJsonArray__iterator {
-	_goptr := newQJsonArray__iterator(C.QJsonArray__iterator_OperatorMinus(this.h, (C.int)(j)))
+	_goptr := newQJsonArray__iterator(C.QJsonArray__iterator_operatorMinus(this.h, (C.int)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray__iterator) OperatorMinusWithQJsonArrayiterator(j QJsonArray__iterator) int {
-	return (int)(C.QJsonArray__iterator_OperatorMinusWithQJsonArrayiterator(this.h, j.cPointer()))
+	return (int)(C.QJsonArray__iterator_operatorMinusWithQJsonArrayiterator(this.h, j.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QJsonArray__iterator) Delete() {
-	C.QJsonArray__iterator_Delete(this.h)
+	C.QJsonArray__iterator_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -508,94 +508,94 @@ func NewQJsonArray__const_iterator4(o *QJsonArray__iterator) *QJsonArray__const_
 }
 
 func (this *QJsonArray__const_iterator) OperatorMultiply() *QJsonValue {
-	_goptr := newQJsonValue(C.QJsonArray__const_iterator_OperatorMultiply(this.h))
+	_goptr := newQJsonValue(C.QJsonArray__const_iterator_operatorMultiply(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray__const_iterator) OperatorMinusGreater() *QJsonValuePtr {
-	_goptr := newQJsonValuePtr(C.QJsonArray__const_iterator_OperatorMinusGreater(this.h))
+	_goptr := newQJsonValuePtr(C.QJsonArray__const_iterator_operatorMinusGreater(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray__const_iterator) OperatorSubscript(j int) *QJsonValue {
-	_goptr := newQJsonValue(C.QJsonArray__const_iterator_OperatorSubscript(this.h, (C.int)(j)))
+	_goptr := newQJsonValue(C.QJsonArray__const_iterator_operatorSubscript(this.h, (C.int)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray__const_iterator) OperatorEqual(o *QJsonArray__const_iterator) bool {
-	return (bool)(C.QJsonArray__const_iterator_OperatorEqual(this.h, o.cPointer()))
+	return (bool)(C.QJsonArray__const_iterator_operatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QJsonArray__const_iterator) OperatorNotEqual(o *QJsonArray__const_iterator) bool {
-	return (bool)(C.QJsonArray__const_iterator_OperatorNotEqual(this.h, o.cPointer()))
+	return (bool)(C.QJsonArray__const_iterator_operatorNotEqual(this.h, o.cPointer()))
 }
 
 func (this *QJsonArray__const_iterator) OperatorLesser(other *QJsonArray__const_iterator) bool {
-	return (bool)(C.QJsonArray__const_iterator_OperatorLesser(this.h, other.cPointer()))
+	return (bool)(C.QJsonArray__const_iterator_operatorLesser(this.h, other.cPointer()))
 }
 
 func (this *QJsonArray__const_iterator) OperatorLesserOrEqual(other *QJsonArray__const_iterator) bool {
-	return (bool)(C.QJsonArray__const_iterator_OperatorLesserOrEqual(this.h, other.cPointer()))
+	return (bool)(C.QJsonArray__const_iterator_operatorLesserOrEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonArray__const_iterator) OperatorGreater(other *QJsonArray__const_iterator) bool {
-	return (bool)(C.QJsonArray__const_iterator_OperatorGreater(this.h, other.cPointer()))
+	return (bool)(C.QJsonArray__const_iterator_operatorGreater(this.h, other.cPointer()))
 }
 
 func (this *QJsonArray__const_iterator) OperatorGreaterOrEqual(other *QJsonArray__const_iterator) bool {
-	return (bool)(C.QJsonArray__const_iterator_OperatorGreaterOrEqual(this.h, other.cPointer()))
+	return (bool)(C.QJsonArray__const_iterator_operatorGreaterOrEqual(this.h, other.cPointer()))
 }
 
 func (this *QJsonArray__const_iterator) OperatorPlusPlus() *QJsonArray__const_iterator {
-	return newQJsonArray__const_iterator(C.QJsonArray__const_iterator_OperatorPlusPlus(this.h))
+	return newQJsonArray__const_iterator(C.QJsonArray__const_iterator_operatorPlusPlus(this.h))
 }
 
 func (this *QJsonArray__const_iterator) OperatorPlusPlusWithInt(param1 int) *QJsonArray__const_iterator {
-	_goptr := newQJsonArray__const_iterator(C.QJsonArray__const_iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1)))
+	_goptr := newQJsonArray__const_iterator(C.QJsonArray__const_iterator_operatorPlusPlusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray__const_iterator) OperatorMinusMinus() *QJsonArray__const_iterator {
-	return newQJsonArray__const_iterator(C.QJsonArray__const_iterator_OperatorMinusMinus(this.h))
+	return newQJsonArray__const_iterator(C.QJsonArray__const_iterator_operatorMinusMinus(this.h))
 }
 
 func (this *QJsonArray__const_iterator) OperatorMinusMinusWithInt(param1 int) *QJsonArray__const_iterator {
-	_goptr := newQJsonArray__const_iterator(C.QJsonArray__const_iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1)))
+	_goptr := newQJsonArray__const_iterator(C.QJsonArray__const_iterator_operatorMinusMinusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray__const_iterator) OperatorPlusAssign(j int) *QJsonArray__const_iterator {
-	return newQJsonArray__const_iterator(C.QJsonArray__const_iterator_OperatorPlusAssign(this.h, (C.int)(j)))
+	return newQJsonArray__const_iterator(C.QJsonArray__const_iterator_operatorPlusAssign(this.h, (C.int)(j)))
 }
 
 func (this *QJsonArray__const_iterator) OperatorMinusAssign(j int) *QJsonArray__const_iterator {
-	return newQJsonArray__const_iterator(C.QJsonArray__const_iterator_OperatorMinusAssign(this.h, (C.int)(j)))
+	return newQJsonArray__const_iterator(C.QJsonArray__const_iterator_operatorMinusAssign(this.h, (C.int)(j)))
 }
 
 func (this *QJsonArray__const_iterator) OperatorPlus(j int) *QJsonArray__const_iterator {
-	_goptr := newQJsonArray__const_iterator(C.QJsonArray__const_iterator_OperatorPlus(this.h, (C.int)(j)))
+	_goptr := newQJsonArray__const_iterator(C.QJsonArray__const_iterator_operatorPlus(this.h, (C.int)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray__const_iterator) OperatorMinus(j int) *QJsonArray__const_iterator {
-	_goptr := newQJsonArray__const_iterator(C.QJsonArray__const_iterator_OperatorMinus(this.h, (C.int)(j)))
+	_goptr := newQJsonArray__const_iterator(C.QJsonArray__const_iterator_operatorMinus(this.h, (C.int)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QJsonArray__const_iterator) OperatorMinusWithQJsonArrayconstIterator(j QJsonArray__const_iterator) int {
-	return (int)(C.QJsonArray__const_iterator_OperatorMinusWithQJsonArrayconstIterator(this.h, j.cPointer()))
+	return (int)(C.QJsonArray__const_iterator_operatorMinusWithQJsonArrayconstIterator(this.h, j.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QJsonArray__const_iterator) Delete() {
-	C.QJsonArray__const_iterator_Delete(this.h)
+	C.QJsonArray__const_iterator_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

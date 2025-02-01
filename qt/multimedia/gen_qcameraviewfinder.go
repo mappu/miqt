@@ -64,19 +64,19 @@ func NewQCameraViewfinder2() *QCameraViewfinder {
 }
 
 func (this *QCameraViewfinder) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraViewfinder_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraViewfinder_metaObject(this.h)))
 }
 
 func (this *QCameraViewfinder) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QCameraViewfinder_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QCameraViewfinder_metacast(this.h, param1_Cstring))
 }
 
 func QCameraViewfinder_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinder_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraViewfinder_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -85,14 +85,14 @@ func QCameraViewfinder_Tr(s string) string {
 func QCameraViewfinder_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinder_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraViewfinder_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCameraViewfinder) MediaObject() *QMediaObject {
-	return newQMediaObject(C.QCameraViewfinder_MediaObject(this.h))
+	return newQMediaObject(C.QCameraViewfinder_mediaObject(this.h))
 }
 
 func QCameraViewfinder_Tr2(s string, c string) string {
@@ -100,7 +100,7 @@ func QCameraViewfinder_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinder_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraViewfinder_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -111,7 +111,7 @@ func QCameraViewfinder_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinder_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraViewfinder_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -122,7 +122,7 @@ func QCameraViewfinder_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinder_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraViewfinder_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -133,7 +133,7 @@ func QCameraViewfinder_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraViewfinder_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraViewfinder_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -141,18 +141,18 @@ func QCameraViewfinder_TrUtf83(s string, c string, n int) string {
 
 func (this *QCameraViewfinder) callVirtualBase_MediaObject() *QMediaObject {
 
-	return newQMediaObject(C.QCameraViewfinder_virtualbase_MediaObject(unsafe.Pointer(this.h)))
+	return newQMediaObject(C.QCameraViewfinder_virtualbase_mediaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QCameraViewfinder) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
-	ok := C.QCameraViewfinder_override_virtual_MediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnmediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
+	ok := C.QCameraViewfinder_override_virtual_mediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_MediaObject
-func miqt_exec_callback_QCameraViewfinder_MediaObject(self *C.QCameraViewfinder, cb C.intptr_t) *C.QMediaObject {
+//export miqt_exec_callback_QCameraViewfinder_mediaObject
+func miqt_exec_callback_QCameraViewfinder_mediaObject(self *C.QCameraViewfinder, cb C.intptr_t) *C.QMediaObject {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMediaObject) *QMediaObject)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -166,18 +166,18 @@ func miqt_exec_callback_QCameraViewfinder_MediaObject(self *C.QCameraViewfinder,
 
 func (this *QCameraViewfinder) callVirtualBase_SetMediaObject(object *QMediaObject) bool {
 
-	return (bool)(C.QCameraViewfinder_virtualbase_SetMediaObject(unsafe.Pointer(this.h), object.cPointer()))
+	return (bool)(C.QCameraViewfinder_virtualbase_setMediaObject(unsafe.Pointer(this.h), object.cPointer()))
 
 }
-func (this *QCameraViewfinder) OnSetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
-	ok := C.QCameraViewfinder_override_virtual_SetMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnsetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
+	ok := C.QCameraViewfinder_override_virtual_setMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_SetMediaObject
-func miqt_exec_callback_QCameraViewfinder_SetMediaObject(self *C.QCameraViewfinder, cb C.intptr_t, object *C.QMediaObject) C.bool {
+//export miqt_exec_callback_QCameraViewfinder_setMediaObject
+func miqt_exec_callback_QCameraViewfinder_setMediaObject(self *C.QCameraViewfinder, cb C.intptr_t, object *C.QMediaObject) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(object *QMediaObject) bool, object *QMediaObject) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -194,20 +194,20 @@ func miqt_exec_callback_QCameraViewfinder_SetMediaObject(self *C.QCameraViewfind
 
 func (this *QCameraViewfinder) callVirtualBase_SizeHint() *qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QCameraViewfinder_virtualbase_SizeHint(unsafe.Pointer(this.h))))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QCameraViewfinder_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QCameraViewfinder) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	ok := C.QCameraViewfinder_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnsizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	ok := C.QCameraViewfinder_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_SizeHint
-func miqt_exec_callback_QCameraViewfinder_SizeHint(self *C.QCameraViewfinder, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QCameraViewfinder_sizeHint
+func miqt_exec_callback_QCameraViewfinder_sizeHint(self *C.QCameraViewfinder, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -221,18 +221,18 @@ func miqt_exec_callback_QCameraViewfinder_SizeHint(self *C.QCameraViewfinder, cb
 
 func (this *QCameraViewfinder) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.QCameraViewfinder_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QCameraViewfinder_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QCameraViewfinder) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.QCameraViewfinder_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QCameraViewfinder_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_Event
-func miqt_exec_callback_QCameraViewfinder_Event(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QCameraViewfinder_event
+func miqt_exec_callback_QCameraViewfinder_event(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -249,18 +249,18 @@ func miqt_exec_callback_QCameraViewfinder_Event(self *C.QCameraViewfinder, cb C.
 
 func (this *QCameraViewfinder) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
 
-	C.QCameraViewfinder_virtualbase_ShowEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnShowEvent(slot func(super func(event *qt.QShowEvent), event *qt.QShowEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnshowEvent(slot func(super func(event *qt.QShowEvent), event *qt.QShowEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_ShowEvent
-func miqt_exec_callback_QCameraViewfinder_ShowEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QShowEvent) {
+//export miqt_exec_callback_QCameraViewfinder_showEvent
+func miqt_exec_callback_QCameraViewfinder_showEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QShowEvent), event *qt.QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -275,18 +275,18 @@ func miqt_exec_callback_QCameraViewfinder_ShowEvent(self *C.QCameraViewfinder, c
 
 func (this *QCameraViewfinder) callVirtualBase_HideEvent(event *qt.QHideEvent) {
 
-	C.QCameraViewfinder_virtualbase_HideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnHideEvent(slot func(super func(event *qt.QHideEvent), event *qt.QHideEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnhideEvent(slot func(super func(event *qt.QHideEvent), event *qt.QHideEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_HideEvent
-func miqt_exec_callback_QCameraViewfinder_HideEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_QCameraViewfinder_hideEvent
+func miqt_exec_callback_QCameraViewfinder_hideEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QHideEvent), event *qt.QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -301,18 +301,18 @@ func miqt_exec_callback_QCameraViewfinder_HideEvent(self *C.QCameraViewfinder, c
 
 func (this *QCameraViewfinder) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
 
-	C.QCameraViewfinder_virtualbase_ResizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnResizeEvent(slot func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnresizeEvent(slot func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_ResizeEvent
-func miqt_exec_callback_QCameraViewfinder_ResizeEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QResizeEvent) {
+//export miqt_exec_callback_QCameraViewfinder_resizeEvent
+func miqt_exec_callback_QCameraViewfinder_resizeEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -327,18 +327,18 @@ func miqt_exec_callback_QCameraViewfinder_ResizeEvent(self *C.QCameraViewfinder,
 
 func (this *QCameraViewfinder) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
 
-	C.QCameraViewfinder_virtualbase_MoveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnMoveEvent(slot func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnmoveEvent(slot func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_MoveEvent
-func miqt_exec_callback_QCameraViewfinder_MoveEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QCameraViewfinder_moveEvent
+func miqt_exec_callback_QCameraViewfinder_moveEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -353,18 +353,18 @@ func miqt_exec_callback_QCameraViewfinder_MoveEvent(self *C.QCameraViewfinder, c
 
 func (this *QCameraViewfinder) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
 
-	C.QCameraViewfinder_virtualbase_PaintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnPaintEvent(slot func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnpaintEvent(slot func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_PaintEvent
-func miqt_exec_callback_QCameraViewfinder_PaintEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QPaintEvent) {
+//export miqt_exec_callback_QCameraViewfinder_paintEvent
+func miqt_exec_callback_QCameraViewfinder_paintEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -379,18 +379,18 @@ func miqt_exec_callback_QCameraViewfinder_PaintEvent(self *C.QCameraViewfinder, 
 
 func (this *QCameraViewfinder) callVirtualBase_DevType() int {
 
-	return (int)(C.QCameraViewfinder_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QCameraViewfinder_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QCameraViewfinder) OnDevType(slot func(super func() int) int) {
-	ok := C.QCameraViewfinder_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OndevType(slot func(super func() int) int) {
+	ok := C.QCameraViewfinder_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_DevType
-func miqt_exec_callback_QCameraViewfinder_DevType(self *C.QCameraViewfinder, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QCameraViewfinder_devType
+func miqt_exec_callback_QCameraViewfinder_devType(self *C.QCameraViewfinder, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -404,18 +404,18 @@ func miqt_exec_callback_QCameraViewfinder_DevType(self *C.QCameraViewfinder, cb 
 
 func (this *QCameraViewfinder) callVirtualBase_SetVisible(visible bool) {
 
-	C.QCameraViewfinder_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QCameraViewfinder_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QCameraViewfinder) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QCameraViewfinder_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QCameraViewfinder_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_SetVisible
-func miqt_exec_callback_QCameraViewfinder_SetVisible(self *C.QCameraViewfinder, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QCameraViewfinder_setVisible
+func miqt_exec_callback_QCameraViewfinder_setVisible(self *C.QCameraViewfinder, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -430,20 +430,20 @@ func miqt_exec_callback_QCameraViewfinder_SetVisible(self *C.QCameraViewfinder, 
 
 func (this *QCameraViewfinder) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QCameraViewfinder_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QCameraViewfinder_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QCameraViewfinder) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	ok := C.QCameraViewfinder_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnminimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	ok := C.QCameraViewfinder_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_MinimumSizeHint
-func miqt_exec_callback_QCameraViewfinder_MinimumSizeHint(self *C.QCameraViewfinder, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QCameraViewfinder_minimumSizeHint
+func miqt_exec_callback_QCameraViewfinder_minimumSizeHint(self *C.QCameraViewfinder, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -457,18 +457,18 @@ func miqt_exec_callback_QCameraViewfinder_MinimumSizeHint(self *C.QCameraViewfin
 
 func (this *QCameraViewfinder) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QCameraViewfinder_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QCameraViewfinder_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QCameraViewfinder) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QCameraViewfinder_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QCameraViewfinder_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_HeightForWidth
-func miqt_exec_callback_QCameraViewfinder_HeightForWidth(self *C.QCameraViewfinder, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QCameraViewfinder_heightForWidth
+func miqt_exec_callback_QCameraViewfinder_heightForWidth(self *C.QCameraViewfinder, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -485,18 +485,18 @@ func miqt_exec_callback_QCameraViewfinder_HeightForWidth(self *C.QCameraViewfind
 
 func (this *QCameraViewfinder) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QCameraViewfinder_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QCameraViewfinder_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QCameraViewfinder) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QCameraViewfinder_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QCameraViewfinder_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_HasHeightForWidth
-func miqt_exec_callback_QCameraViewfinder_HasHeightForWidth(self *C.QCameraViewfinder, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QCameraViewfinder_hasHeightForWidth
+func miqt_exec_callback_QCameraViewfinder_hasHeightForWidth(self *C.QCameraViewfinder, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -510,18 +510,18 @@ func miqt_exec_callback_QCameraViewfinder_HasHeightForWidth(self *C.QCameraViewf
 
 func (this *QCameraViewfinder) callVirtualBase_PaintEngine() *qt.QPaintEngine {
 
-	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QCameraViewfinder_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QCameraViewfinder_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
 }
-func (this *QCameraViewfinder) OnPaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
-	ok := C.QCameraViewfinder_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnpaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
+	ok := C.QCameraViewfinder_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_PaintEngine
-func miqt_exec_callback_QCameraViewfinder_PaintEngine(self *C.QCameraViewfinder, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QCameraViewfinder_paintEngine
+func miqt_exec_callback_QCameraViewfinder_paintEngine(self *C.QCameraViewfinder, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QPaintEngine) *qt.QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -535,18 +535,18 @@ func miqt_exec_callback_QCameraViewfinder_PaintEngine(self *C.QCameraViewfinder,
 
 func (this *QCameraViewfinder) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
 
-	C.QCameraViewfinder_virtualbase_MousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnMousePressEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnmousePressEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_MousePressEvent
-func miqt_exec_callback_QCameraViewfinder_MousePressEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QCameraViewfinder_mousePressEvent
+func miqt_exec_callback_QCameraViewfinder_mousePressEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -561,18 +561,18 @@ func miqt_exec_callback_QCameraViewfinder_MousePressEvent(self *C.QCameraViewfin
 
 func (this *QCameraViewfinder) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
 
-	C.QCameraViewfinder_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnMouseReleaseEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnmouseReleaseEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_MouseReleaseEvent
-func miqt_exec_callback_QCameraViewfinder_MouseReleaseEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QCameraViewfinder_mouseReleaseEvent
+func miqt_exec_callback_QCameraViewfinder_mouseReleaseEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -587,18 +587,18 @@ func miqt_exec_callback_QCameraViewfinder_MouseReleaseEvent(self *C.QCameraViewf
 
 func (this *QCameraViewfinder) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
 
-	C.QCameraViewfinder_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnMouseDoubleClickEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnmouseDoubleClickEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_MouseDoubleClickEvent
-func miqt_exec_callback_QCameraViewfinder_MouseDoubleClickEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QCameraViewfinder_mouseDoubleClickEvent
+func miqt_exec_callback_QCameraViewfinder_mouseDoubleClickEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -613,18 +613,18 @@ func miqt_exec_callback_QCameraViewfinder_MouseDoubleClickEvent(self *C.QCameraV
 
 func (this *QCameraViewfinder) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
 
-	C.QCameraViewfinder_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnMouseMoveEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnmouseMoveEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_MouseMoveEvent
-func miqt_exec_callback_QCameraViewfinder_MouseMoveEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QCameraViewfinder_mouseMoveEvent
+func miqt_exec_callback_QCameraViewfinder_mouseMoveEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -639,18 +639,18 @@ func miqt_exec_callback_QCameraViewfinder_MouseMoveEvent(self *C.QCameraViewfind
 
 func (this *QCameraViewfinder) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
 
-	C.QCameraViewfinder_virtualbase_WheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnWheelEvent(slot func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnwheelEvent(slot func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_WheelEvent
-func miqt_exec_callback_QCameraViewfinder_WheelEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QWheelEvent) {
+//export miqt_exec_callback_QCameraViewfinder_wheelEvent
+func miqt_exec_callback_QCameraViewfinder_wheelEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -665,18 +665,18 @@ func miqt_exec_callback_QCameraViewfinder_WheelEvent(self *C.QCameraViewfinder, 
 
 func (this *QCameraViewfinder) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
 
-	C.QCameraViewfinder_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnKeyPressEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnkeyPressEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_KeyPressEvent
-func miqt_exec_callback_QCameraViewfinder_KeyPressEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QCameraViewfinder_keyPressEvent
+func miqt_exec_callback_QCameraViewfinder_keyPressEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -691,18 +691,18 @@ func miqt_exec_callback_QCameraViewfinder_KeyPressEvent(self *C.QCameraViewfinde
 
 func (this *QCameraViewfinder) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
 
-	C.QCameraViewfinder_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnKeyReleaseEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnkeyReleaseEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_KeyReleaseEvent
-func miqt_exec_callback_QCameraViewfinder_KeyReleaseEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QCameraViewfinder_keyReleaseEvent
+func miqt_exec_callback_QCameraViewfinder_keyReleaseEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -717,18 +717,18 @@ func miqt_exec_callback_QCameraViewfinder_KeyReleaseEvent(self *C.QCameraViewfin
 
 func (this *QCameraViewfinder) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
 
-	C.QCameraViewfinder_virtualbase_FocusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnFocusInEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnfocusInEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_FocusInEvent
-func miqt_exec_callback_QCameraViewfinder_FocusInEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QCameraViewfinder_focusInEvent
+func miqt_exec_callback_QCameraViewfinder_focusInEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -743,18 +743,18 @@ func miqt_exec_callback_QCameraViewfinder_FocusInEvent(self *C.QCameraViewfinder
 
 func (this *QCameraViewfinder) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
 
-	C.QCameraViewfinder_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnFocusOutEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnfocusOutEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_FocusOutEvent
-func miqt_exec_callback_QCameraViewfinder_FocusOutEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QCameraViewfinder_focusOutEvent
+func miqt_exec_callback_QCameraViewfinder_focusOutEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -769,18 +769,18 @@ func miqt_exec_callback_QCameraViewfinder_FocusOutEvent(self *C.QCameraViewfinde
 
 func (this *QCameraViewfinder) callVirtualBase_EnterEvent(event *qt.QEvent) {
 
-	C.QCameraViewfinder_virtualbase_EnterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnEnterEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnenterEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_EnterEvent
-func miqt_exec_callback_QCameraViewfinder_EnterEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QCameraViewfinder_enterEvent
+func miqt_exec_callback_QCameraViewfinder_enterEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -795,18 +795,18 @@ func miqt_exec_callback_QCameraViewfinder_EnterEvent(self *C.QCameraViewfinder, 
 
 func (this *QCameraViewfinder) callVirtualBase_LeaveEvent(event *qt.QEvent) {
 
-	C.QCameraViewfinder_virtualbase_LeaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnLeaveEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnleaveEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_LeaveEvent
-func miqt_exec_callback_QCameraViewfinder_LeaveEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QCameraViewfinder_leaveEvent
+func miqt_exec_callback_QCameraViewfinder_leaveEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -821,18 +821,18 @@ func miqt_exec_callback_QCameraViewfinder_LeaveEvent(self *C.QCameraViewfinder, 
 
 func (this *QCameraViewfinder) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
 
-	C.QCameraViewfinder_virtualbase_CloseEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnCloseEvent(slot func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OncloseEvent(slot func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_CloseEvent
-func miqt_exec_callback_QCameraViewfinder_CloseEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QCameraViewfinder_closeEvent
+func miqt_exec_callback_QCameraViewfinder_closeEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -847,18 +847,18 @@ func miqt_exec_callback_QCameraViewfinder_CloseEvent(self *C.QCameraViewfinder, 
 
 func (this *QCameraViewfinder) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
 
-	C.QCameraViewfinder_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnContextMenuEvent(slot func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OncontextMenuEvent(slot func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_ContextMenuEvent
-func miqt_exec_callback_QCameraViewfinder_ContextMenuEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QContextMenuEvent) {
+//export miqt_exec_callback_QCameraViewfinder_contextMenuEvent
+func miqt_exec_callback_QCameraViewfinder_contextMenuEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -873,18 +873,18 @@ func miqt_exec_callback_QCameraViewfinder_ContextMenuEvent(self *C.QCameraViewfi
 
 func (this *QCameraViewfinder) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
 
-	C.QCameraViewfinder_virtualbase_TabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnTabletEvent(slot func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OntabletEvent(slot func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_TabletEvent
-func miqt_exec_callback_QCameraViewfinder_TabletEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QCameraViewfinder_tabletEvent
+func miqt_exec_callback_QCameraViewfinder_tabletEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -899,18 +899,18 @@ func miqt_exec_callback_QCameraViewfinder_TabletEvent(self *C.QCameraViewfinder,
 
 func (this *QCameraViewfinder) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
 
-	C.QCameraViewfinder_virtualbase_ActionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnActionEvent(slot func(super func(event *qt.QActionEvent), event *qt.QActionEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnactionEvent(slot func(super func(event *qt.QActionEvent), event *qt.QActionEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_ActionEvent
-func miqt_exec_callback_QCameraViewfinder_ActionEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QCameraViewfinder_actionEvent
+func miqt_exec_callback_QCameraViewfinder_actionEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QActionEvent), event *qt.QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -925,18 +925,18 @@ func miqt_exec_callback_QCameraViewfinder_ActionEvent(self *C.QCameraViewfinder,
 
 func (this *QCameraViewfinder) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
 
-	C.QCameraViewfinder_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnDragEnterEvent(slot func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OndragEnterEvent(slot func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_DragEnterEvent
-func miqt_exec_callback_QCameraViewfinder_DragEnterEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QDragEnterEvent) {
+//export miqt_exec_callback_QCameraViewfinder_dragEnterEvent
+func miqt_exec_callback_QCameraViewfinder_dragEnterEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -951,18 +951,18 @@ func miqt_exec_callback_QCameraViewfinder_DragEnterEvent(self *C.QCameraViewfind
 
 func (this *QCameraViewfinder) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
 
-	C.QCameraViewfinder_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnDragMoveEvent(slot func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OndragMoveEvent(slot func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_DragMoveEvent
-func miqt_exec_callback_QCameraViewfinder_DragMoveEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QDragMoveEvent) {
+//export miqt_exec_callback_QCameraViewfinder_dragMoveEvent
+func miqt_exec_callback_QCameraViewfinder_dragMoveEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -977,18 +977,18 @@ func miqt_exec_callback_QCameraViewfinder_DragMoveEvent(self *C.QCameraViewfinde
 
 func (this *QCameraViewfinder) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
 
-	C.QCameraViewfinder_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnDragLeaveEvent(slot func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OndragLeaveEvent(slot func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_DragLeaveEvent
-func miqt_exec_callback_QCameraViewfinder_DragLeaveEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QCameraViewfinder_dragLeaveEvent
+func miqt_exec_callback_QCameraViewfinder_dragLeaveEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1003,18 +1003,18 @@ func miqt_exec_callback_QCameraViewfinder_DragLeaveEvent(self *C.QCameraViewfind
 
 func (this *QCameraViewfinder) callVirtualBase_DropEvent(event *qt.QDropEvent) {
 
-	C.QCameraViewfinder_virtualbase_DropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnDropEvent(slot func(super func(event *qt.QDropEvent), event *qt.QDropEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OndropEvent(slot func(super func(event *qt.QDropEvent), event *qt.QDropEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_DropEvent
-func miqt_exec_callback_QCameraViewfinder_DropEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QDropEvent) {
+//export miqt_exec_callback_QCameraViewfinder_dropEvent
+func miqt_exec_callback_QCameraViewfinder_dropEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDropEvent), event *qt.QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1036,18 +1036,18 @@ func (this *QCameraViewfinder) callVirtualBase_NativeEvent(eventType []byte, mes
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QCameraViewfinder_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
+	return (bool)(C.QCameraViewfinder_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QCameraViewfinder) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
-	ok := C.QCameraViewfinder_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	ok := C.QCameraViewfinder_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_NativeEvent
-func miqt_exec_callback_QCameraViewfinder_NativeEvent(self *C.QCameraViewfinder, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
+//export miqt_exec_callback_QCameraViewfinder_nativeEvent
+func miqt_exec_callback_QCameraViewfinder_nativeEvent(self *C.QCameraViewfinder, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1070,18 +1070,18 @@ func miqt_exec_callback_QCameraViewfinder_NativeEvent(self *C.QCameraViewfinder,
 
 func (this *QCameraViewfinder) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
 
-	C.QCameraViewfinder_virtualbase_ChangeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnChangeEvent(slot func(super func(param1 *qt.QEvent), param1 *qt.QEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnchangeEvent(slot func(super func(param1 *qt.QEvent), param1 *qt.QEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_ChangeEvent
-func miqt_exec_callback_QCameraViewfinder_ChangeEvent(self *C.QCameraViewfinder, cb C.intptr_t, param1 *C.QEvent) {
+//export miqt_exec_callback_QCameraViewfinder_changeEvent
+func miqt_exec_callback_QCameraViewfinder_changeEvent(self *C.QCameraViewfinder, cb C.intptr_t, param1 *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QEvent), param1 *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1096,18 +1096,18 @@ func miqt_exec_callback_QCameraViewfinder_ChangeEvent(self *C.QCameraViewfinder,
 
 func (this *QCameraViewfinder) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QCameraViewfinder_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QCameraViewfinder_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QCameraViewfinder) OnMetric(slot func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QCameraViewfinder_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) Onmetric(slot func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QCameraViewfinder_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_Metric
-func miqt_exec_callback_QCameraViewfinder_Metric(self *C.QCameraViewfinder, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QCameraViewfinder_metric
+func miqt_exec_callback_QCameraViewfinder_metric(self *C.QCameraViewfinder, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1124,18 +1124,18 @@ func miqt_exec_callback_QCameraViewfinder_Metric(self *C.QCameraViewfinder, cb C
 
 func (this *QCameraViewfinder) callVirtualBase_InitPainter(painter *qt.QPainter) {
 
-	C.QCameraViewfinder_virtualbase_InitPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnInitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
-	ok := C.QCameraViewfinder_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OninitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
+	ok := C.QCameraViewfinder_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_InitPainter
-func miqt_exec_callback_QCameraViewfinder_InitPainter(self *C.QCameraViewfinder, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QCameraViewfinder_initPainter
+func miqt_exec_callback_QCameraViewfinder_initPainter(self *C.QCameraViewfinder, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter), painter *qt.QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1150,18 +1150,18 @@ func miqt_exec_callback_QCameraViewfinder_InitPainter(self *C.QCameraViewfinder,
 
 func (this *QCameraViewfinder) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 
-	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QCameraViewfinder_virtualbase_Redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
+	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QCameraViewfinder_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
 }
-func (this *QCameraViewfinder) OnRedirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
-	ok := C.QCameraViewfinder_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) Onredirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
+	ok := C.QCameraViewfinder_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_Redirected
-func miqt_exec_callback_QCameraViewfinder_Redirected(self *C.QCameraViewfinder, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QCameraViewfinder_redirected
+func miqt_exec_callback_QCameraViewfinder_redirected(self *C.QCameraViewfinder, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1178,18 +1178,18 @@ func miqt_exec_callback_QCameraViewfinder_Redirected(self *C.QCameraViewfinder, 
 
 func (this *QCameraViewfinder) callVirtualBase_SharedPainter() *qt.QPainter {
 
-	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QCameraViewfinder_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QCameraViewfinder_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
 }
-func (this *QCameraViewfinder) OnSharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
-	ok := C.QCameraViewfinder_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnsharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
+	ok := C.QCameraViewfinder_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_SharedPainter
-func miqt_exec_callback_QCameraViewfinder_SharedPainter(self *C.QCameraViewfinder, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QCameraViewfinder_sharedPainter
+func miqt_exec_callback_QCameraViewfinder_sharedPainter(self *C.QCameraViewfinder, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QPainter) *qt.QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1203,18 +1203,18 @@ func miqt_exec_callback_QCameraViewfinder_SharedPainter(self *C.QCameraViewfinde
 
 func (this *QCameraViewfinder) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
 
-	C.QCameraViewfinder_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnInputMethodEvent(slot func(super func(param1 *qt.QInputMethodEvent), param1 *qt.QInputMethodEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OninputMethodEvent(slot func(super func(param1 *qt.QInputMethodEvent), param1 *qt.QInputMethodEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_InputMethodEvent
-func miqt_exec_callback_QCameraViewfinder_InputMethodEvent(self *C.QCameraViewfinder, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QCameraViewfinder_inputMethodEvent
+func miqt_exec_callback_QCameraViewfinder_inputMethodEvent(self *C.QCameraViewfinder, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QInputMethodEvent), param1 *qt.QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1229,20 +1229,20 @@ func miqt_exec_callback_QCameraViewfinder_InputMethodEvent(self *C.QCameraViewfi
 
 func (this *QCameraViewfinder) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
 
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraViewfinder_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraViewfinder_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QCameraViewfinder) OnInputMethodQuery(slot func(super func(param1 qt.InputMethodQuery) *qt.QVariant, param1 qt.InputMethodQuery) *qt.QVariant) {
-	ok := C.QCameraViewfinder_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OninputMethodQuery(slot func(super func(param1 qt.InputMethodQuery) *qt.QVariant, param1 qt.InputMethodQuery) *qt.QVariant) {
+	ok := C.QCameraViewfinder_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_InputMethodQuery
-func miqt_exec_callback_QCameraViewfinder_InputMethodQuery(self *C.QCameraViewfinder, cb C.intptr_t, param1 C.int) *C.QVariant {
+//export miqt_exec_callback_QCameraViewfinder_inputMethodQuery
+func miqt_exec_callback_QCameraViewfinder_inputMethodQuery(self *C.QCameraViewfinder, cb C.intptr_t, param1 C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.InputMethodQuery) *qt.QVariant, param1 qt.InputMethodQuery) *qt.QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1259,18 +1259,18 @@ func miqt_exec_callback_QCameraViewfinder_InputMethodQuery(self *C.QCameraViewfi
 
 func (this *QCameraViewfinder) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QCameraViewfinder_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QCameraViewfinder_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QCameraViewfinder) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QCameraViewfinder_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QCameraViewfinder_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_FocusNextPrevChild
-func miqt_exec_callback_QCameraViewfinder_FocusNextPrevChild(self *C.QCameraViewfinder, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QCameraViewfinder_focusNextPrevChild
+func miqt_exec_callback_QCameraViewfinder_focusNextPrevChild(self *C.QCameraViewfinder, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1287,18 +1287,18 @@ func miqt_exec_callback_QCameraViewfinder_FocusNextPrevChild(self *C.QCameraView
 
 func (this *QCameraViewfinder) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.QCameraViewfinder_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QCameraViewfinder_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QCameraViewfinder) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.QCameraViewfinder_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QCameraViewfinder_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_EventFilter
-func miqt_exec_callback_QCameraViewfinder_EventFilter(self *C.QCameraViewfinder, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QCameraViewfinder_eventFilter
+func miqt_exec_callback_QCameraViewfinder_eventFilter(self *C.QCameraViewfinder, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1317,18 +1317,18 @@ func miqt_exec_callback_QCameraViewfinder_EventFilter(self *C.QCameraViewfinder,
 
 func (this *QCameraViewfinder) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QCameraViewfinder_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_TimerEvent
-func miqt_exec_callback_QCameraViewfinder_TimerEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QCameraViewfinder_timerEvent
+func miqt_exec_callback_QCameraViewfinder_timerEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1343,18 +1343,18 @@ func miqt_exec_callback_QCameraViewfinder_TimerEvent(self *C.QCameraViewfinder, 
 
 func (this *QCameraViewfinder) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QCameraViewfinder_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_ChildEvent
-func miqt_exec_callback_QCameraViewfinder_ChildEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QCameraViewfinder_childEvent
+func miqt_exec_callback_QCameraViewfinder_childEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1369,18 +1369,18 @@ func miqt_exec_callback_QCameraViewfinder_ChildEvent(self *C.QCameraViewfinder, 
 
 func (this *QCameraViewfinder) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QCameraViewfinder_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QCameraViewfinder_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QCameraViewfinder_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_CustomEvent
-func miqt_exec_callback_QCameraViewfinder_CustomEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QCameraViewfinder_customEvent
+func miqt_exec_callback_QCameraViewfinder_customEvent(self *C.QCameraViewfinder, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1395,18 +1395,18 @@ func miqt_exec_callback_QCameraViewfinder_CustomEvent(self *C.QCameraViewfinder,
 
 func (this *QCameraViewfinder) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QCameraViewfinder_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QCameraViewfinder_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QCameraViewfinder_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_ConnectNotify
-func miqt_exec_callback_QCameraViewfinder_ConnectNotify(self *C.QCameraViewfinder, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QCameraViewfinder_connectNotify
+func miqt_exec_callback_QCameraViewfinder_connectNotify(self *C.QCameraViewfinder, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1421,18 +1421,18 @@ func miqt_exec_callback_QCameraViewfinder_ConnectNotify(self *C.QCameraViewfinde
 
 func (this *QCameraViewfinder) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QCameraViewfinder_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QCameraViewfinder_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QCameraViewfinder) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QCameraViewfinder_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCameraViewfinder) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QCameraViewfinder_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCameraViewfinder_DisconnectNotify
-func miqt_exec_callback_QCameraViewfinder_DisconnectNotify(self *C.QCameraViewfinder, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QCameraViewfinder_disconnectNotify
+func miqt_exec_callback_QCameraViewfinder_disconnectNotify(self *C.QCameraViewfinder, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1447,7 +1447,7 @@ func miqt_exec_callback_QCameraViewfinder_DisconnectNotify(self *C.QCameraViewfi
 
 // Delete this object from C++ memory.
 func (this *QCameraViewfinder) Delete() {
-	C.QCameraViewfinder_Delete(this.h)
+	C.QCameraViewfinder_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

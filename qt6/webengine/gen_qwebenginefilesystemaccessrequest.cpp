@@ -15,41 +15,41 @@ QWebEngineFileSystemAccessRequest* QWebEngineFileSystemAccessRequest_new(QWebEng
 	return new QWebEngineFileSystemAccessRequest(*other);
 }
 
-void QWebEngineFileSystemAccessRequest_OperatorAssign(QWebEngineFileSystemAccessRequest* self, QWebEngineFileSystemAccessRequest* other) {
+void QWebEngineFileSystemAccessRequest_operatorAssign(QWebEngineFileSystemAccessRequest* self, QWebEngineFileSystemAccessRequest* other) {
 	self->operator=(*other);
 }
 
-void QWebEngineFileSystemAccessRequest_Swap(QWebEngineFileSystemAccessRequest* self, QWebEngineFileSystemAccessRequest* other) {
+void QWebEngineFileSystemAccessRequest_swap(QWebEngineFileSystemAccessRequest* self, QWebEngineFileSystemAccessRequest* other) {
 	self->swap(*other);
 }
 
-void QWebEngineFileSystemAccessRequest_Accept(QWebEngineFileSystemAccessRequest* self) {
+void QWebEngineFileSystemAccessRequest_accept(QWebEngineFileSystemAccessRequest* self) {
 	self->accept();
 }
 
-void QWebEngineFileSystemAccessRequest_Reject(QWebEngineFileSystemAccessRequest* self) {
+void QWebEngineFileSystemAccessRequest_reject(QWebEngineFileSystemAccessRequest* self) {
 	self->reject();
 }
 
-QUrl* QWebEngineFileSystemAccessRequest_Origin(const QWebEngineFileSystemAccessRequest* self) {
+QUrl* QWebEngineFileSystemAccessRequest_origin(const QWebEngineFileSystemAccessRequest* self) {
 	return new QUrl(self->origin());
 }
 
-QUrl* QWebEngineFileSystemAccessRequest_FilePath(const QWebEngineFileSystemAccessRequest* self) {
+QUrl* QWebEngineFileSystemAccessRequest_filePath(const QWebEngineFileSystemAccessRequest* self) {
 	return new QUrl(self->filePath());
 }
 
-int QWebEngineFileSystemAccessRequest_HandleType(const QWebEngineFileSystemAccessRequest* self) {
+int QWebEngineFileSystemAccessRequest_handleType(const QWebEngineFileSystemAccessRequest* self) {
 	QWebEngineFileSystemAccessRequest::HandleType _ret = self->handleType();
 	return static_cast<int>(_ret);
 }
 
-int QWebEngineFileSystemAccessRequest_AccessFlags(const QWebEngineFileSystemAccessRequest* self) {
+int QWebEngineFileSystemAccessRequest_accessFlags(const QWebEngineFileSystemAccessRequest* self) {
 	QWebEngineFileSystemAccessRequest::AccessFlags _ret = self->accessFlags();
 	return static_cast<int>(_ret);
 }
 
-void QWebEngineFileSystemAccessRequest_Delete(QWebEngineFileSystemAccessRequest* self) {
+void QWebEngineFileSystemAccessRequest_delete(QWebEngineFileSystemAccessRequest* self) {
 	delete self;
 }
 

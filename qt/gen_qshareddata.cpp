@@ -18,7 +18,7 @@ QSharedData* QSharedData_new2(QSharedData* param1) {
 	return new QSharedData(*param1);
 }
 
-void QSharedData_Delete(QSharedData* self) {
+void QSharedData_delete(QSharedData* self) {
 	delete self;
 }
 

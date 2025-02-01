@@ -17,18 +17,18 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QNetworkConfigurationManager_ConfigurationAdded(intptr_t, QNetworkConfiguration*);
-void miqt_exec_callback_QNetworkConfigurationManager_ConfigurationRemoved(intptr_t, QNetworkConfiguration*);
-void miqt_exec_callback_QNetworkConfigurationManager_ConfigurationChanged(intptr_t, QNetworkConfiguration*);
-void miqt_exec_callback_QNetworkConfigurationManager_OnlineStateChanged(intptr_t, bool);
-void miqt_exec_callback_QNetworkConfigurationManager_UpdateCompleted(intptr_t);
-bool miqt_exec_callback_QNetworkConfigurationManager_Event(QNetworkConfigurationManager*, intptr_t, QEvent*);
-bool miqt_exec_callback_QNetworkConfigurationManager_EventFilter(QNetworkConfigurationManager*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QNetworkConfigurationManager_TimerEvent(QNetworkConfigurationManager*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QNetworkConfigurationManager_ChildEvent(QNetworkConfigurationManager*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QNetworkConfigurationManager_CustomEvent(QNetworkConfigurationManager*, intptr_t, QEvent*);
-void miqt_exec_callback_QNetworkConfigurationManager_ConnectNotify(QNetworkConfigurationManager*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QNetworkConfigurationManager_DisconnectNotify(QNetworkConfigurationManager*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QNetworkConfigurationManager_configurationAdded(intptr_t, QNetworkConfiguration*);
+void miqt_exec_callback_QNetworkConfigurationManager_configurationRemoved(intptr_t, QNetworkConfiguration*);
+void miqt_exec_callback_QNetworkConfigurationManager_configurationChanged(intptr_t, QNetworkConfiguration*);
+void miqt_exec_callback_QNetworkConfigurationManager_onlineStateChanged(intptr_t, bool);
+void miqt_exec_callback_QNetworkConfigurationManager_updateCompleted(intptr_t);
+bool miqt_exec_callback_QNetworkConfigurationManager_event(QNetworkConfigurationManager*, intptr_t, QEvent*);
+bool miqt_exec_callback_QNetworkConfigurationManager_eventFilter(QNetworkConfigurationManager*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QNetworkConfigurationManager_timerEvent(QNetworkConfigurationManager*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QNetworkConfigurationManager_childEvent(QNetworkConfigurationManager*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QNetworkConfigurationManager_customEvent(QNetworkConfigurationManager*, intptr_t, QEvent*);
+void miqt_exec_callback_QNetworkConfigurationManager_connectNotify(QNetworkConfigurationManager*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QNetworkConfigurationManager_disconnectNotify(QNetworkConfigurationManager*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -42,130 +42,130 @@ public:
 	virtual ~MiqtVirtualQNetworkConfigurationManager() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QNetworkConfigurationManager::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QNetworkConfigurationManager_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QNetworkConfigurationManager_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QNetworkConfigurationManager::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QNetworkConfigurationManager::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QNetworkConfigurationManager_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QNetworkConfigurationManager_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QNetworkConfigurationManager::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QNetworkConfigurationManager::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QNetworkConfigurationManager_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QNetworkConfigurationManager_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QNetworkConfigurationManager::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QNetworkConfigurationManager::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QNetworkConfigurationManager_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QNetworkConfigurationManager_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QNetworkConfigurationManager::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QNetworkConfigurationManager::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QNetworkConfigurationManager_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QNetworkConfigurationManager_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QNetworkConfigurationManager::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QNetworkConfigurationManager::connectNotify(signal);
 			return;
 		}
@@ -174,24 +174,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QNetworkConfigurationManager_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QNetworkConfigurationManager_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QNetworkConfigurationManager::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QNetworkConfigurationManager::disconnectNotify(signal);
 			return;
 		}
@@ -200,13 +200,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QNetworkConfigurationManager_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QNetworkConfigurationManager_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QNetworkConfigurationManager::disconnectNotify(*signal);
 
@@ -226,15 +226,15 @@ void QNetworkConfigurationManager_virtbase(QNetworkConfigurationManager* src, QO
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QNetworkConfigurationManager_MetaObject(const QNetworkConfigurationManager* self) {
+QMetaObject* QNetworkConfigurationManager_metaObject(const QNetworkConfigurationManager* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QNetworkConfigurationManager_Metacast(QNetworkConfigurationManager* self, const char* param1) {
+void* QNetworkConfigurationManager_metacast(QNetworkConfigurationManager* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QNetworkConfigurationManager_Tr(const char* s) {
+struct miqt_string QNetworkConfigurationManager_tr(const char* s) {
 	QString _ret = QNetworkConfigurationManager::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -245,7 +245,7 @@ struct miqt_string QNetworkConfigurationManager_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QNetworkConfigurationManager_TrUtf8(const char* s) {
+struct miqt_string QNetworkConfigurationManager_trUtf8(const char* s) {
 	QString _ret = QNetworkConfigurationManager::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -256,16 +256,16 @@ struct miqt_string QNetworkConfigurationManager_TrUtf8(const char* s) {
 	return _ms;
 }
 
-int QNetworkConfigurationManager_Capabilities(const QNetworkConfigurationManager* self) {
+int QNetworkConfigurationManager_capabilities(const QNetworkConfigurationManager* self) {
 	QNetworkConfigurationManager::Capabilities _ret = self->capabilities();
 	return static_cast<int>(_ret);
 }
 
-QNetworkConfiguration* QNetworkConfigurationManager_DefaultConfiguration(const QNetworkConfigurationManager* self) {
+QNetworkConfiguration* QNetworkConfigurationManager_defaultConfiguration(const QNetworkConfigurationManager* self) {
 	return new QNetworkConfiguration(self->defaultConfiguration());
 }
 
-struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfigurationManager_AllConfigurations(const QNetworkConfigurationManager* self) {
+struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfigurationManager_allConfigurations(const QNetworkConfigurationManager* self) {
 	QList<QNetworkConfiguration> _ret = self->allConfigurations();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QNetworkConfiguration** _arr = static_cast<QNetworkConfiguration**>(malloc(sizeof(QNetworkConfiguration*) * _ret.length()));
@@ -278,80 +278,80 @@ struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfigurationManager_
 	return _out;
 }
 
-QNetworkConfiguration* QNetworkConfigurationManager_ConfigurationFromIdentifier(const QNetworkConfigurationManager* self, struct miqt_string identifier) {
+QNetworkConfiguration* QNetworkConfigurationManager_configurationFromIdentifier(const QNetworkConfigurationManager* self, struct miqt_string identifier) {
 	QString identifier_QString = QString::fromUtf8(identifier.data, identifier.len);
 	return new QNetworkConfiguration(self->configurationFromIdentifier(identifier_QString));
 }
 
-bool QNetworkConfigurationManager_IsOnline(const QNetworkConfigurationManager* self) {
+bool QNetworkConfigurationManager_isOnline(const QNetworkConfigurationManager* self) {
 	return self->isOnline();
 }
 
-void QNetworkConfigurationManager_UpdateConfigurations(QNetworkConfigurationManager* self) {
+void QNetworkConfigurationManager_updateConfigurations(QNetworkConfigurationManager* self) {
 	self->updateConfigurations();
 }
 
-void QNetworkConfigurationManager_ConfigurationAdded(QNetworkConfigurationManager* self, QNetworkConfiguration* config) {
+void QNetworkConfigurationManager_configurationAdded(QNetworkConfigurationManager* self, QNetworkConfiguration* config) {
 	self->configurationAdded(*config);
 }
 
-void QNetworkConfigurationManager_connect_ConfigurationAdded(QNetworkConfigurationManager* self, intptr_t slot) {
+void QNetworkConfigurationManager_connect_configurationAdded(QNetworkConfigurationManager* self, intptr_t slot) {
 	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(const QNetworkConfiguration&)>(&QNetworkConfigurationManager::configurationAdded), self, [=](const QNetworkConfiguration& config) {
 		const QNetworkConfiguration& config_ret = config;
 		// Cast returned reference into pointer
 		QNetworkConfiguration* sigval1 = const_cast<QNetworkConfiguration*>(&config_ret);
-		miqt_exec_callback_QNetworkConfigurationManager_ConfigurationAdded(slot, sigval1);
+		miqt_exec_callback_QNetworkConfigurationManager_configurationAdded(slot, sigval1);
 	});
 }
 
-void QNetworkConfigurationManager_ConfigurationRemoved(QNetworkConfigurationManager* self, QNetworkConfiguration* config) {
+void QNetworkConfigurationManager_configurationRemoved(QNetworkConfigurationManager* self, QNetworkConfiguration* config) {
 	self->configurationRemoved(*config);
 }
 
-void QNetworkConfigurationManager_connect_ConfigurationRemoved(QNetworkConfigurationManager* self, intptr_t slot) {
+void QNetworkConfigurationManager_connect_configurationRemoved(QNetworkConfigurationManager* self, intptr_t slot) {
 	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(const QNetworkConfiguration&)>(&QNetworkConfigurationManager::configurationRemoved), self, [=](const QNetworkConfiguration& config) {
 		const QNetworkConfiguration& config_ret = config;
 		// Cast returned reference into pointer
 		QNetworkConfiguration* sigval1 = const_cast<QNetworkConfiguration*>(&config_ret);
-		miqt_exec_callback_QNetworkConfigurationManager_ConfigurationRemoved(slot, sigval1);
+		miqt_exec_callback_QNetworkConfigurationManager_configurationRemoved(slot, sigval1);
 	});
 }
 
-void QNetworkConfigurationManager_ConfigurationChanged(QNetworkConfigurationManager* self, QNetworkConfiguration* config) {
+void QNetworkConfigurationManager_configurationChanged(QNetworkConfigurationManager* self, QNetworkConfiguration* config) {
 	self->configurationChanged(*config);
 }
 
-void QNetworkConfigurationManager_connect_ConfigurationChanged(QNetworkConfigurationManager* self, intptr_t slot) {
+void QNetworkConfigurationManager_connect_configurationChanged(QNetworkConfigurationManager* self, intptr_t slot) {
 	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(const QNetworkConfiguration&)>(&QNetworkConfigurationManager::configurationChanged), self, [=](const QNetworkConfiguration& config) {
 		const QNetworkConfiguration& config_ret = config;
 		// Cast returned reference into pointer
 		QNetworkConfiguration* sigval1 = const_cast<QNetworkConfiguration*>(&config_ret);
-		miqt_exec_callback_QNetworkConfigurationManager_ConfigurationChanged(slot, sigval1);
+		miqt_exec_callback_QNetworkConfigurationManager_configurationChanged(slot, sigval1);
 	});
 }
 
-void QNetworkConfigurationManager_OnlineStateChanged(QNetworkConfigurationManager* self, bool isOnline) {
+void QNetworkConfigurationManager_onlineStateChanged(QNetworkConfigurationManager* self, bool isOnline) {
 	self->onlineStateChanged(isOnline);
 }
 
-void QNetworkConfigurationManager_connect_OnlineStateChanged(QNetworkConfigurationManager* self, intptr_t slot) {
+void QNetworkConfigurationManager_connect_onlineStateChanged(QNetworkConfigurationManager* self, intptr_t slot) {
 	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)(bool)>(&QNetworkConfigurationManager::onlineStateChanged), self, [=](bool isOnline) {
 		bool sigval1 = isOnline;
-		miqt_exec_callback_QNetworkConfigurationManager_OnlineStateChanged(slot, sigval1);
+		miqt_exec_callback_QNetworkConfigurationManager_onlineStateChanged(slot, sigval1);
 	});
 }
 
-void QNetworkConfigurationManager_UpdateCompleted(QNetworkConfigurationManager* self) {
+void QNetworkConfigurationManager_updateCompleted(QNetworkConfigurationManager* self) {
 	self->updateCompleted();
 }
 
-void QNetworkConfigurationManager_connect_UpdateCompleted(QNetworkConfigurationManager* self, intptr_t slot) {
+void QNetworkConfigurationManager_connect_updateCompleted(QNetworkConfigurationManager* self, intptr_t slot) {
 	MiqtVirtualQNetworkConfigurationManager::connect(self, static_cast<void (QNetworkConfigurationManager::*)()>(&QNetworkConfigurationManager::updateCompleted), self, [=]() {
-		miqt_exec_callback_QNetworkConfigurationManager_UpdateCompleted(slot);
+		miqt_exec_callback_QNetworkConfigurationManager_updateCompleted(slot);
 	});
 }
 
-struct miqt_string QNetworkConfigurationManager_Tr2(const char* s, const char* c) {
+struct miqt_string QNetworkConfigurationManager_tr2(const char* s, const char* c) {
 	QString _ret = QNetworkConfigurationManager::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -362,7 +362,7 @@ struct miqt_string QNetworkConfigurationManager_Tr2(const char* s, const char* c
 	return _ms;
 }
 
-struct miqt_string QNetworkConfigurationManager_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QNetworkConfigurationManager_tr3(const char* s, const char* c, int n) {
 	QString _ret = QNetworkConfigurationManager::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -373,7 +373,7 @@ struct miqt_string QNetworkConfigurationManager_Tr3(const char* s, const char* c
 	return _ms;
 }
 
-struct miqt_string QNetworkConfigurationManager_TrUtf82(const char* s, const char* c) {
+struct miqt_string QNetworkConfigurationManager_trUtf82(const char* s, const char* c) {
 	QString _ret = QNetworkConfigurationManager::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -384,7 +384,7 @@ struct miqt_string QNetworkConfigurationManager_TrUtf82(const char* s, const cha
 	return _ms;
 }
 
-struct miqt_string QNetworkConfigurationManager_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QNetworkConfigurationManager_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QNetworkConfigurationManager::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -395,7 +395,7 @@ struct miqt_string QNetworkConfigurationManager_TrUtf83(const char* s, const cha
 	return _ms;
 }
 
-struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfigurationManager_AllConfigurations1(const QNetworkConfigurationManager* self, int flags) {
+struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfigurationManager_allConfigurations1(const QNetworkConfigurationManager* self, int flags) {
 	QList<QNetworkConfiguration> _ret = self->allConfigurations(static_cast<QNetworkConfiguration::StateFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QNetworkConfiguration** _arr = static_cast<QNetworkConfiguration**>(malloc(sizeof(QNetworkConfiguration*) * _ret.length()));
@@ -408,105 +408,105 @@ struct miqt_array /* of QNetworkConfiguration* */  QNetworkConfigurationManager_
 	return _out;
 }
 
-bool QNetworkConfigurationManager_override_virtual_Event(void* self, intptr_t slot) {
+bool QNetworkConfigurationManager_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQNetworkConfigurationManager* self_cast = dynamic_cast<MiqtVirtualQNetworkConfigurationManager*>( (QNetworkConfigurationManager*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QNetworkConfigurationManager_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_Event(event);
+bool QNetworkConfigurationManager_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_event(event);
 }
 
-bool QNetworkConfigurationManager_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QNetworkConfigurationManager_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQNetworkConfigurationManager* self_cast = dynamic_cast<MiqtVirtualQNetworkConfigurationManager*>( (QNetworkConfigurationManager*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QNetworkConfigurationManager_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_EventFilter(watched, event);
+bool QNetworkConfigurationManager_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QNetworkConfigurationManager_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QNetworkConfigurationManager_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQNetworkConfigurationManager* self_cast = dynamic_cast<MiqtVirtualQNetworkConfigurationManager*>( (QNetworkConfigurationManager*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QNetworkConfigurationManager_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_TimerEvent(event);
+void QNetworkConfigurationManager_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QNetworkConfigurationManager_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QNetworkConfigurationManager_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQNetworkConfigurationManager* self_cast = dynamic_cast<MiqtVirtualQNetworkConfigurationManager*>( (QNetworkConfigurationManager*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QNetworkConfigurationManager_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_ChildEvent(event);
+void QNetworkConfigurationManager_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QNetworkConfigurationManager_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QNetworkConfigurationManager_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQNetworkConfigurationManager* self_cast = dynamic_cast<MiqtVirtualQNetworkConfigurationManager*>( (QNetworkConfigurationManager*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QNetworkConfigurationManager_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_CustomEvent(event);
+void QNetworkConfigurationManager_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QNetworkConfigurationManager_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QNetworkConfigurationManager_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQNetworkConfigurationManager* self_cast = dynamic_cast<MiqtVirtualQNetworkConfigurationManager*>( (QNetworkConfigurationManager*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QNetworkConfigurationManager_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_ConnectNotify(signal);
+void QNetworkConfigurationManager_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QNetworkConfigurationManager_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QNetworkConfigurationManager_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQNetworkConfigurationManager* self_cast = dynamic_cast<MiqtVirtualQNetworkConfigurationManager*>( (QNetworkConfigurationManager*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QNetworkConfigurationManager_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_DisconnectNotify(signal);
+void QNetworkConfigurationManager_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QNetworkConfigurationManager_Delete(QNetworkConfigurationManager* self) {
+void QNetworkConfigurationManager_delete(QNetworkConfigurationManager* self) {
 	delete self;
 }
 

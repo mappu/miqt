@@ -27,37 +27,37 @@ typedef struct QObject QObject;
 #endif
 
 void QCameraZoomControl_virtbase(QCameraZoomControl* src, QMediaControl** outptr_QMediaControl);
-QMetaObject* QCameraZoomControl_MetaObject(const QCameraZoomControl* self);
-void* QCameraZoomControl_Metacast(QCameraZoomControl* self, const char* param1);
-struct miqt_string QCameraZoomControl_Tr(const char* s);
-struct miqt_string QCameraZoomControl_TrUtf8(const char* s);
-double QCameraZoomControl_MaximumOpticalZoom(const QCameraZoomControl* self);
-double QCameraZoomControl_MaximumDigitalZoom(const QCameraZoomControl* self);
-double QCameraZoomControl_RequestedOpticalZoom(const QCameraZoomControl* self);
-double QCameraZoomControl_RequestedDigitalZoom(const QCameraZoomControl* self);
-double QCameraZoomControl_CurrentOpticalZoom(const QCameraZoomControl* self);
-double QCameraZoomControl_CurrentDigitalZoom(const QCameraZoomControl* self);
-void QCameraZoomControl_ZoomTo(QCameraZoomControl* self, double optical, double digital);
-void QCameraZoomControl_MaximumOpticalZoomChanged(QCameraZoomControl* self, double param1);
-void QCameraZoomControl_connect_MaximumOpticalZoomChanged(QCameraZoomControl* self, intptr_t slot);
-void QCameraZoomControl_MaximumDigitalZoomChanged(QCameraZoomControl* self, double param1);
-void QCameraZoomControl_connect_MaximumDigitalZoomChanged(QCameraZoomControl* self, intptr_t slot);
-void QCameraZoomControl_RequestedOpticalZoomChanged(QCameraZoomControl* self, double opticalZoom);
-void QCameraZoomControl_connect_RequestedOpticalZoomChanged(QCameraZoomControl* self, intptr_t slot);
-void QCameraZoomControl_RequestedDigitalZoomChanged(QCameraZoomControl* self, double digitalZoom);
-void QCameraZoomControl_connect_RequestedDigitalZoomChanged(QCameraZoomControl* self, intptr_t slot);
-void QCameraZoomControl_CurrentOpticalZoomChanged(QCameraZoomControl* self, double opticalZoom);
-void QCameraZoomControl_connect_CurrentOpticalZoomChanged(QCameraZoomControl* self, intptr_t slot);
-void QCameraZoomControl_CurrentDigitalZoomChanged(QCameraZoomControl* self, double digitalZoom);
-void QCameraZoomControl_connect_CurrentDigitalZoomChanged(QCameraZoomControl* self, intptr_t slot);
-struct miqt_string QCameraZoomControl_Tr2(const char* s, const char* c);
-struct miqt_string QCameraZoomControl_Tr3(const char* s, const char* c, int n);
-struct miqt_string QCameraZoomControl_TrUtf82(const char* s, const char* c);
-struct miqt_string QCameraZoomControl_TrUtf83(const char* s, const char* c, int n);
-void QCameraZoomControl_Delete(QCameraZoomControl* self);
+QMetaObject* QCameraZoomControl_metaObject(const QCameraZoomControl* self);
+void* QCameraZoomControl_metacast(QCameraZoomControl* self, const char* param1);
+struct miqt_string QCameraZoomControl_tr(const char* s);
+struct miqt_string QCameraZoomControl_trUtf8(const char* s);
+double QCameraZoomControl_maximumOpticalZoom(const QCameraZoomControl* self);
+double QCameraZoomControl_maximumDigitalZoom(const QCameraZoomControl* self);
+double QCameraZoomControl_requestedOpticalZoom(const QCameraZoomControl* self);
+double QCameraZoomControl_requestedDigitalZoom(const QCameraZoomControl* self);
+double QCameraZoomControl_currentOpticalZoom(const QCameraZoomControl* self);
+double QCameraZoomControl_currentDigitalZoom(const QCameraZoomControl* self);
+void QCameraZoomControl_zoomTo(QCameraZoomControl* self, double optical, double digital);
+void QCameraZoomControl_maximumOpticalZoomChanged(QCameraZoomControl* self, double param1);
+void QCameraZoomControl_connect_maximumOpticalZoomChanged(QCameraZoomControl* self, intptr_t slot);
+void QCameraZoomControl_maximumDigitalZoomChanged(QCameraZoomControl* self, double param1);
+void QCameraZoomControl_connect_maximumDigitalZoomChanged(QCameraZoomControl* self, intptr_t slot);
+void QCameraZoomControl_requestedOpticalZoomChanged(QCameraZoomControl* self, double opticalZoom);
+void QCameraZoomControl_connect_requestedOpticalZoomChanged(QCameraZoomControl* self, intptr_t slot);
+void QCameraZoomControl_requestedDigitalZoomChanged(QCameraZoomControl* self, double digitalZoom);
+void QCameraZoomControl_connect_requestedDigitalZoomChanged(QCameraZoomControl* self, intptr_t slot);
+void QCameraZoomControl_currentOpticalZoomChanged(QCameraZoomControl* self, double opticalZoom);
+void QCameraZoomControl_connect_currentOpticalZoomChanged(QCameraZoomControl* self, intptr_t slot);
+void QCameraZoomControl_currentDigitalZoomChanged(QCameraZoomControl* self, double digitalZoom);
+void QCameraZoomControl_connect_currentDigitalZoomChanged(QCameraZoomControl* self, intptr_t slot);
+struct miqt_string QCameraZoomControl_tr2(const char* s, const char* c);
+struct miqt_string QCameraZoomControl_tr3(const char* s, const char* c, int n);
+struct miqt_string QCameraZoomControl_trUtf82(const char* s, const char* c);
+struct miqt_string QCameraZoomControl_trUtf83(const char* s, const char* c, int n);
+void QCameraZoomControl_delete(QCameraZoomControl* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

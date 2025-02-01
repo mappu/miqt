@@ -20,18 +20,18 @@ class QsciCommand;
 typedef struct QsciCommand QsciCommand;
 #endif
 
-int QsciCommand_Command(const QsciCommand* self);
-void QsciCommand_Execute(QsciCommand* self);
-void QsciCommand_SetKey(QsciCommand* self, int key);
-void QsciCommand_SetAlternateKey(QsciCommand* self, int altkey);
-int QsciCommand_Key(const QsciCommand* self);
-int QsciCommand_AlternateKey(const QsciCommand* self);
-bool QsciCommand_ValidKey(int key);
-struct miqt_string QsciCommand_Description(const QsciCommand* self);
-void QsciCommand_Delete(QsciCommand* self);
+int QsciCommand_command(const QsciCommand* self);
+void QsciCommand_execute(QsciCommand* self);
+void QsciCommand_setKey(QsciCommand* self, int key);
+void QsciCommand_setAlternateKey(QsciCommand* self, int altkey);
+int QsciCommand_key(const QsciCommand* self);
+int QsciCommand_alternateKey(const QsciCommand* self);
+bool QsciCommand_validKey(int key);
+struct miqt_string QsciCommand_description(const QsciCommand* self);
+void QsciCommand_delete(QsciCommand* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

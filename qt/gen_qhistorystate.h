@@ -39,49 +39,49 @@ typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QHistoryState* QHistoryState_new();
-QHistoryState* QHistoryState_new2(int typeVal);
+QHistoryState* QHistoryState_new2(int type);
 QHistoryState* QHistoryState_new3(QState* parent);
-QHistoryState* QHistoryState_new4(int typeVal, QState* parent);
+QHistoryState* QHistoryState_new4(int type, QState* parent);
 void QHistoryState_virtbase(QHistoryState* src, QAbstractState** outptr_QAbstractState);
-QMetaObject* QHistoryState_MetaObject(const QHistoryState* self);
-void* QHistoryState_Metacast(QHistoryState* self, const char* param1);
-struct miqt_string QHistoryState_Tr(const char* s);
-struct miqt_string QHistoryState_TrUtf8(const char* s);
-QAbstractTransition* QHistoryState_DefaultTransition(const QHistoryState* self);
-void QHistoryState_SetDefaultTransition(QHistoryState* self, QAbstractTransition* transition);
-QAbstractState* QHistoryState_DefaultState(const QHistoryState* self);
-void QHistoryState_SetDefaultState(QHistoryState* self, QAbstractState* state);
-int QHistoryState_HistoryType(const QHistoryState* self);
-void QHistoryState_SetHistoryType(QHistoryState* self, int typeVal);
-void QHistoryState_OnEntry(QHistoryState* self, QEvent* event);
-void QHistoryState_OnExit(QHistoryState* self, QEvent* event);
-bool QHistoryState_Event(QHistoryState* self, QEvent* e);
-struct miqt_string QHistoryState_Tr2(const char* s, const char* c);
-struct miqt_string QHistoryState_Tr3(const char* s, const char* c, int n);
-struct miqt_string QHistoryState_TrUtf82(const char* s, const char* c);
-struct miqt_string QHistoryState_TrUtf83(const char* s, const char* c, int n);
-bool QHistoryState_override_virtual_OnEntry(void* self, intptr_t slot);
-void QHistoryState_virtualbase_OnEntry(void* self, QEvent* event);
-bool QHistoryState_override_virtual_OnExit(void* self, intptr_t slot);
-void QHistoryState_virtualbase_OnExit(void* self, QEvent* event);
-bool QHistoryState_override_virtual_Event(void* self, intptr_t slot);
-bool QHistoryState_virtualbase_Event(void* self, QEvent* e);
-bool QHistoryState_override_virtual_EventFilter(void* self, intptr_t slot);
-bool QHistoryState_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-bool QHistoryState_override_virtual_TimerEvent(void* self, intptr_t slot);
-void QHistoryState_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-bool QHistoryState_override_virtual_ChildEvent(void* self, intptr_t slot);
-void QHistoryState_virtualbase_ChildEvent(void* self, QChildEvent* event);
-bool QHistoryState_override_virtual_CustomEvent(void* self, intptr_t slot);
-void QHistoryState_virtualbase_CustomEvent(void* self, QEvent* event);
-bool QHistoryState_override_virtual_ConnectNotify(void* self, intptr_t slot);
-void QHistoryState_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-bool QHistoryState_override_virtual_DisconnectNotify(void* self, intptr_t slot);
-void QHistoryState_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QHistoryState_Delete(QHistoryState* self);
+QMetaObject* QHistoryState_metaObject(const QHistoryState* self);
+void* QHistoryState_metacast(QHistoryState* self, const char* param1);
+struct miqt_string QHistoryState_tr(const char* s);
+struct miqt_string QHistoryState_trUtf8(const char* s);
+QAbstractTransition* QHistoryState_defaultTransition(const QHistoryState* self);
+void QHistoryState_setDefaultTransition(QHistoryState* self, QAbstractTransition* transition);
+QAbstractState* QHistoryState_defaultState(const QHistoryState* self);
+void QHistoryState_setDefaultState(QHistoryState* self, QAbstractState* state);
+int QHistoryState_historyType(const QHistoryState* self);
+void QHistoryState_setHistoryType(QHistoryState* self, int type);
+void QHistoryState_onEntry(QHistoryState* self, QEvent* event);
+void QHistoryState_onExit(QHistoryState* self, QEvent* event);
+bool QHistoryState_event(QHistoryState* self, QEvent* e);
+struct miqt_string QHistoryState_tr2(const char* s, const char* c);
+struct miqt_string QHistoryState_tr3(const char* s, const char* c, int n);
+struct miqt_string QHistoryState_trUtf82(const char* s, const char* c);
+struct miqt_string QHistoryState_trUtf83(const char* s, const char* c, int n);
+bool QHistoryState_override_virtual_onEntry(void* self, intptr_t slot);
+void QHistoryState_virtualbase_onEntry(void* self, QEvent* event);
+bool QHistoryState_override_virtual_onExit(void* self, intptr_t slot);
+void QHistoryState_virtualbase_onExit(void* self, QEvent* event);
+bool QHistoryState_override_virtual_event(void* self, intptr_t slot);
+bool QHistoryState_virtualbase_event(void* self, QEvent* e);
+bool QHistoryState_override_virtual_eventFilter(void* self, intptr_t slot);
+bool QHistoryState_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
+bool QHistoryState_override_virtual_timerEvent(void* self, intptr_t slot);
+void QHistoryState_virtualbase_timerEvent(void* self, QTimerEvent* event);
+bool QHistoryState_override_virtual_childEvent(void* self, intptr_t slot);
+void QHistoryState_virtualbase_childEvent(void* self, QChildEvent* event);
+bool QHistoryState_override_virtual_customEvent(void* self, intptr_t slot);
+void QHistoryState_virtualbase_customEvent(void* self, QEvent* event);
+bool QHistoryState_override_virtual_connectNotify(void* self, intptr_t slot);
+void QHistoryState_virtualbase_connectNotify(void* self, QMetaMethod* signal);
+bool QHistoryState_override_virtual_disconnectNotify(void* self, intptr_t slot);
+void QHistoryState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QHistoryState_delete(QHistoryState* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

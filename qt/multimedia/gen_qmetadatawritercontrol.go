@@ -52,19 +52,19 @@ func UnsafeNewQMetaDataWriterControl(h unsafe.Pointer) *QMetaDataWriterControl {
 }
 
 func (this *QMetaDataWriterControl) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaDataWriterControl_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMetaDataWriterControl_metaObject(this.h)))
 }
 
 func (this *QMetaDataWriterControl) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QMetaDataWriterControl_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QMetaDataWriterControl_metacast(this.h, param1_Cstring))
 }
 
 func QMetaDataWriterControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMetaDataWriterControl_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMetaDataWriterControl_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -73,18 +73,18 @@ func QMetaDataWriterControl_Tr(s string) string {
 func QMetaDataWriterControl_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMetaDataWriterControl_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMetaDataWriterControl_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMetaDataWriterControl) IsWritable() bool {
-	return (bool)(C.QMetaDataWriterControl_IsWritable(this.h))
+	return (bool)(C.QMetaDataWriterControl_isWritable(this.h))
 }
 
 func (this *QMetaDataWriterControl) IsMetaDataAvailable() bool {
-	return (bool)(C.QMetaDataWriterControl_IsMetaDataAvailable(this.h))
+	return (bool)(C.QMetaDataWriterControl_isMetaDataAvailable(this.h))
 }
 
 func (this *QMetaDataWriterControl) MetaData(key string) *qt.QVariant {
@@ -92,7 +92,7 @@ func (this *QMetaDataWriterControl) MetaData(key string) *qt.QVariant {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QMetaDataWriterControl_MetaData(this.h, key_ms)))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QMetaDataWriterControl_metaData(this.h, key_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -102,11 +102,11 @@ func (this *QMetaDataWriterControl) SetMetaData(key string, value *qt.QVariant) 
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	C.QMetaDataWriterControl_SetMetaData(this.h, key_ms, (*C.QVariant)(value.UnsafePointer()))
+	C.QMetaDataWriterControl_setMetaData(this.h, key_ms, (*C.QVariant)(value.UnsafePointer()))
 }
 
 func (this *QMetaDataWriterControl) AvailableMetaData() []string {
-	var _ma C.struct_miqt_array = C.QMetaDataWriterControl_AvailableMetaData(this.h)
+	var _ma C.struct_miqt_array = C.QMetaDataWriterControl_availableMetaData(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -119,14 +119,14 @@ func (this *QMetaDataWriterControl) AvailableMetaData() []string {
 }
 
 func (this *QMetaDataWriterControl) MetaDataChanged() {
-	C.QMetaDataWriterControl_MetaDataChanged(this.h)
+	C.QMetaDataWriterControl_metaDataChanged(this.h)
 }
 func (this *QMetaDataWriterControl) OnMetaDataChanged(slot func()) {
-	C.QMetaDataWriterControl_connect_MetaDataChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMetaDataWriterControl_connect_metaDataChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMetaDataWriterControl_MetaDataChanged
-func miqt_exec_callback_QMetaDataWriterControl_MetaDataChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QMetaDataWriterControl_metaDataChanged
+func miqt_exec_callback_QMetaDataWriterControl_metaDataChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -140,14 +140,14 @@ func (this *QMetaDataWriterControl) MetaDataChanged2(key string, value *qt.QVari
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	C.QMetaDataWriterControl_MetaDataChanged2(this.h, key_ms, (*C.QVariant)(value.UnsafePointer()))
+	C.QMetaDataWriterControl_metaDataChanged2(this.h, key_ms, (*C.QVariant)(value.UnsafePointer()))
 }
 func (this *QMetaDataWriterControl) OnMetaDataChanged2(slot func(key string, value *qt.QVariant)) {
-	C.QMetaDataWriterControl_connect_MetaDataChanged2(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMetaDataWriterControl_connect_metaDataChanged2(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMetaDataWriterControl_MetaDataChanged2
-func miqt_exec_callback_QMetaDataWriterControl_MetaDataChanged2(cb C.intptr_t, key C.struct_miqt_string, value *C.QVariant) {
+//export miqt_exec_callback_QMetaDataWriterControl_metaDataChanged2
+func miqt_exec_callback_QMetaDataWriterControl_metaDataChanged2(cb C.intptr_t, key C.struct_miqt_string, value *C.QVariant) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(key string, value *qt.QVariant))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -164,14 +164,14 @@ func miqt_exec_callback_QMetaDataWriterControl_MetaDataChanged2(cb C.intptr_t, k
 }
 
 func (this *QMetaDataWriterControl) WritableChanged(writable bool) {
-	C.QMetaDataWriterControl_WritableChanged(this.h, (C.bool)(writable))
+	C.QMetaDataWriterControl_writableChanged(this.h, (C.bool)(writable))
 }
 func (this *QMetaDataWriterControl) OnWritableChanged(slot func(writable bool)) {
-	C.QMetaDataWriterControl_connect_WritableChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMetaDataWriterControl_connect_writableChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMetaDataWriterControl_WritableChanged
-func miqt_exec_callback_QMetaDataWriterControl_WritableChanged(cb C.intptr_t, writable C.bool) {
+//export miqt_exec_callback_QMetaDataWriterControl_writableChanged
+func miqt_exec_callback_QMetaDataWriterControl_writableChanged(cb C.intptr_t, writable C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(writable bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -184,14 +184,14 @@ func miqt_exec_callback_QMetaDataWriterControl_WritableChanged(cb C.intptr_t, wr
 }
 
 func (this *QMetaDataWriterControl) MetaDataAvailableChanged(available bool) {
-	C.QMetaDataWriterControl_MetaDataAvailableChanged(this.h, (C.bool)(available))
+	C.QMetaDataWriterControl_metaDataAvailableChanged(this.h, (C.bool)(available))
 }
 func (this *QMetaDataWriterControl) OnMetaDataAvailableChanged(slot func(available bool)) {
-	C.QMetaDataWriterControl_connect_MetaDataAvailableChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMetaDataWriterControl_connect_metaDataAvailableChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMetaDataWriterControl_MetaDataAvailableChanged
-func miqt_exec_callback_QMetaDataWriterControl_MetaDataAvailableChanged(cb C.intptr_t, available C.bool) {
+//export miqt_exec_callback_QMetaDataWriterControl_metaDataAvailableChanged
+func miqt_exec_callback_QMetaDataWriterControl_metaDataAvailableChanged(cb C.intptr_t, available C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(available bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -208,7 +208,7 @@ func QMetaDataWriterControl_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMetaDataWriterControl_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMetaDataWriterControl_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -219,7 +219,7 @@ func QMetaDataWriterControl_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMetaDataWriterControl_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMetaDataWriterControl_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -230,7 +230,7 @@ func QMetaDataWriterControl_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMetaDataWriterControl_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMetaDataWriterControl_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -241,7 +241,7 @@ func QMetaDataWriterControl_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMetaDataWriterControl_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMetaDataWriterControl_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -249,7 +249,7 @@ func QMetaDataWriterControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMetaDataWriterControl) Delete() {
-	C.QMetaDataWriterControl_Delete(this.h)
+	C.QMetaDataWriterControl_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -58,28 +58,28 @@ func Newqfloat162(f float32) *qfloat16 {
 }
 
 func (this *qfloat16) IsInf() bool {
-	return (bool)(C.qfloat16_IsInf(this.h))
+	return (bool)(C.qfloat16_isInf(this.h))
 }
 
 func (this *qfloat16) IsNaN() bool {
-	return (bool)(C.qfloat16_IsNaN(this.h))
+	return (bool)(C.qfloat16_isNaN(this.h))
 }
 
 func (this *qfloat16) IsFinite() bool {
-	return (bool)(C.qfloat16_IsFinite(this.h))
+	return (bool)(C.qfloat16_isFinite(this.h))
 }
 
 func (this *qfloat16) FpClassify() int {
-	return (int)(C.qfloat16_FpClassify(this.h))
+	return (int)(C.qfloat16_fpClassify(this.h))
 }
 
 func (this *qfloat16) IsNormal() bool {
-	return (bool)(C.qfloat16_IsNormal(this.h))
+	return (bool)(C.qfloat16_isNormal(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *qfloat16) Delete() {
-	C.qfloat16_Delete(this.h)
+	C.qfloat16_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -46,7 +46,7 @@ func UnsafeNewQGenericPluginFactory(h unsafe.Pointer) *QGenericPluginFactory {
 }
 
 func QGenericPluginFactory_Keys() []string {
-	var _ma C.struct_miqt_array = C.QGenericPluginFactory_Keys()
+	var _ma C.struct_miqt_array = C.QGenericPluginFactory_keys()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -67,12 +67,12 @@ func QGenericPluginFactory_Create(param1 string, param2 string) *QObject {
 	param2_ms.data = C.CString(param2)
 	param2_ms.len = C.size_t(len(param2))
 	defer C.free(unsafe.Pointer(param2_ms.data))
-	return newQObject(C.QGenericPluginFactory_Create(param1_ms, param2_ms))
+	return newQObject(C.QGenericPluginFactory_create(param1_ms, param2_ms))
 }
 
 // Delete this object from C++ memory.
 func (this *QGenericPluginFactory) Delete() {
-	C.QGenericPluginFactory_Delete(this.h)
+	C.QGenericPluginFactory_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

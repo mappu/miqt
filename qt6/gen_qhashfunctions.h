@@ -22,13 +22,13 @@ typedef struct QHashSeed QHashSeed;
 
 QHashSeed* QHashSeed_new();
 QHashSeed* QHashSeed_new2(size_t d);
-QHashSeed* QHashSeed_GlobalSeed();
-void QHashSeed_SetDeterministicGlobalSeed();
-void QHashSeed_ResetRandomGlobalSeed();
-void QHashSeed_Delete(QHashSeed* self);
+QHashSeed* QHashSeed_globalSeed();
+void QHashSeed_setDeterministicGlobalSeed();
+void QHashSeed_resetRandomGlobalSeed();
+void QHashSeed_delete(QHashSeed* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

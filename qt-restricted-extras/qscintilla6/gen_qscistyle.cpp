@@ -36,24 +36,24 @@ QsciStyle* QsciStyle_new5(int style, struct miqt_string description, QColor* col
 	return new QsciStyle(static_cast<int>(style), description_QString, *color, *paper, *font, eolFill);
 }
 
-void QsciStyle_Apply(const QsciStyle* self, QsciScintillaBase* sci) {
+void QsciStyle_apply(const QsciStyle* self, QsciScintillaBase* sci) {
 	self->apply(sci);
 }
 
-void QsciStyle_SetStyle(QsciStyle* self, int style) {
+void QsciStyle_setStyle(QsciStyle* self, int style) {
 	self->setStyle(static_cast<int>(style));
 }
 
-int QsciStyle_Style(const QsciStyle* self) {
+int QsciStyle_style(const QsciStyle* self) {
 	return self->style();
 }
 
-void QsciStyle_SetDescription(QsciStyle* self, struct miqt_string description) {
+void QsciStyle_setDescription(QsciStyle* self, struct miqt_string description) {
 	QString description_QString = QString::fromUtf8(description.data, description.len);
 	self->setDescription(description_QString);
 }
 
-struct miqt_string QsciStyle_Description(const QsciStyle* self) {
+struct miqt_string QsciStyle_description(const QsciStyle* self) {
 	QString _ret = self->description();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -64,76 +64,76 @@ struct miqt_string QsciStyle_Description(const QsciStyle* self) {
 	return _ms;
 }
 
-void QsciStyle_SetColor(QsciStyle* self, QColor* color) {
+void QsciStyle_setColor(QsciStyle* self, QColor* color) {
 	self->setColor(*color);
 }
 
-QColor* QsciStyle_Color(const QsciStyle* self) {
+QColor* QsciStyle_color(const QsciStyle* self) {
 	return new QColor(self->color());
 }
 
-void QsciStyle_SetPaper(QsciStyle* self, QColor* paper) {
+void QsciStyle_setPaper(QsciStyle* self, QColor* paper) {
 	self->setPaper(*paper);
 }
 
-QColor* QsciStyle_Paper(const QsciStyle* self) {
+QColor* QsciStyle_paper(const QsciStyle* self) {
 	return new QColor(self->paper());
 }
 
-void QsciStyle_SetFont(QsciStyle* self, QFont* font) {
+void QsciStyle_setFont(QsciStyle* self, QFont* font) {
 	self->setFont(*font);
 }
 
-QFont* QsciStyle_Font(const QsciStyle* self) {
+QFont* QsciStyle_font(const QsciStyle* self) {
 	return new QFont(self->font());
 }
 
-void QsciStyle_SetEolFill(QsciStyle* self, bool fill) {
+void QsciStyle_setEolFill(QsciStyle* self, bool fill) {
 	self->setEolFill(fill);
 }
 
-bool QsciStyle_EolFill(const QsciStyle* self) {
+bool QsciStyle_eolFill(const QsciStyle* self) {
 	return self->eolFill();
 }
 
-void QsciStyle_SetTextCase(QsciStyle* self, int text_case) {
+void QsciStyle_setTextCase(QsciStyle* self, int text_case) {
 	self->setTextCase(static_cast<QsciStyle::TextCase>(text_case));
 }
 
-int QsciStyle_TextCase(const QsciStyle* self) {
+int QsciStyle_textCase(const QsciStyle* self) {
 	QsciStyle::TextCase _ret = self->textCase();
 	return static_cast<int>(_ret);
 }
 
-void QsciStyle_SetVisible(QsciStyle* self, bool visible) {
+void QsciStyle_setVisible(QsciStyle* self, bool visible) {
 	self->setVisible(visible);
 }
 
-bool QsciStyle_Visible(const QsciStyle* self) {
+bool QsciStyle_visible(const QsciStyle* self) {
 	return self->visible();
 }
 
-void QsciStyle_SetChangeable(QsciStyle* self, bool changeable) {
+void QsciStyle_setChangeable(QsciStyle* self, bool changeable) {
 	self->setChangeable(changeable);
 }
 
-bool QsciStyle_Changeable(const QsciStyle* self) {
+bool QsciStyle_changeable(const QsciStyle* self) {
 	return self->changeable();
 }
 
-void QsciStyle_SetHotspot(QsciStyle* self, bool hotspot) {
+void QsciStyle_setHotspot(QsciStyle* self, bool hotspot) {
 	self->setHotspot(hotspot);
 }
 
-bool QsciStyle_Hotspot(const QsciStyle* self) {
+bool QsciStyle_hotspot(const QsciStyle* self) {
 	return self->hotspot();
 }
 
-void QsciStyle_Refresh(QsciStyle* self) {
+void QsciStyle_refresh(QsciStyle* self) {
 	self->refresh();
 }
 
-void QsciStyle_Delete(QsciStyle* self) {
+void QsciStyle_delete(QsciStyle* self) {
 	delete self;
 }
 

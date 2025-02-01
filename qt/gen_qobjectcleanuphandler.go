@@ -57,19 +57,19 @@ func NewQObjectCleanupHandler() *QObjectCleanupHandler {
 }
 
 func (this *QObjectCleanupHandler) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QObjectCleanupHandler_MetaObject(this.h))
+	return newQMetaObject(C.QObjectCleanupHandler_metaObject(this.h))
 }
 
 func (this *QObjectCleanupHandler) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QObjectCleanupHandler_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QObjectCleanupHandler_metacast(this.h, param1_Cstring))
 }
 
 func QObjectCleanupHandler_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QObjectCleanupHandler_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QObjectCleanupHandler_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -78,26 +78,26 @@ func QObjectCleanupHandler_Tr(s string) string {
 func QObjectCleanupHandler_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QObjectCleanupHandler_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QObjectCleanupHandler_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QObjectCleanupHandler) Add(object *QObject) *QObject {
-	return newQObject(C.QObjectCleanupHandler_Add(this.h, object.cPointer()))
+	return newQObject(C.QObjectCleanupHandler_add(this.h, object.cPointer()))
 }
 
 func (this *QObjectCleanupHandler) Remove(object *QObject) {
-	C.QObjectCleanupHandler_Remove(this.h, object.cPointer())
+	C.QObjectCleanupHandler_remove(this.h, object.cPointer())
 }
 
 func (this *QObjectCleanupHandler) IsEmpty() bool {
-	return (bool)(C.QObjectCleanupHandler_IsEmpty(this.h))
+	return (bool)(C.QObjectCleanupHandler_isEmpty(this.h))
 }
 
 func (this *QObjectCleanupHandler) Clear() {
-	C.QObjectCleanupHandler_Clear(this.h)
+	C.QObjectCleanupHandler_clear(this.h)
 }
 
 func QObjectCleanupHandler_Tr2(s string, c string) string {
@@ -105,7 +105,7 @@ func QObjectCleanupHandler_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QObjectCleanupHandler_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QObjectCleanupHandler_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -116,7 +116,7 @@ func QObjectCleanupHandler_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QObjectCleanupHandler_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QObjectCleanupHandler_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -127,7 +127,7 @@ func QObjectCleanupHandler_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QObjectCleanupHandler_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QObjectCleanupHandler_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -138,7 +138,7 @@ func QObjectCleanupHandler_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QObjectCleanupHandler_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QObjectCleanupHandler_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -146,18 +146,18 @@ func QObjectCleanupHandler_TrUtf83(s string, c string, n int) string {
 
 func (this *QObjectCleanupHandler) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QObjectCleanupHandler_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QObjectCleanupHandler_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QObjectCleanupHandler) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QObjectCleanupHandler_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QObjectCleanupHandler) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QObjectCleanupHandler_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QObjectCleanupHandler_Event
-func miqt_exec_callback_QObjectCleanupHandler_Event(self *C.QObjectCleanupHandler, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QObjectCleanupHandler_event
+func miqt_exec_callback_QObjectCleanupHandler_event(self *C.QObjectCleanupHandler, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -174,18 +174,18 @@ func miqt_exec_callback_QObjectCleanupHandler_Event(self *C.QObjectCleanupHandle
 
 func (this *QObjectCleanupHandler) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QObjectCleanupHandler_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QObjectCleanupHandler_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QObjectCleanupHandler) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QObjectCleanupHandler_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QObjectCleanupHandler) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QObjectCleanupHandler_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QObjectCleanupHandler_EventFilter
-func miqt_exec_callback_QObjectCleanupHandler_EventFilter(self *C.QObjectCleanupHandler, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QObjectCleanupHandler_eventFilter
+func miqt_exec_callback_QObjectCleanupHandler_eventFilter(self *C.QObjectCleanupHandler, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -204,18 +204,18 @@ func miqt_exec_callback_QObjectCleanupHandler_EventFilter(self *C.QObjectCleanup
 
 func (this *QObjectCleanupHandler) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QObjectCleanupHandler_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QObjectCleanupHandler_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QObjectCleanupHandler) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QObjectCleanupHandler_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QObjectCleanupHandler) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QObjectCleanupHandler_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QObjectCleanupHandler_TimerEvent
-func miqt_exec_callback_QObjectCleanupHandler_TimerEvent(self *C.QObjectCleanupHandler, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QObjectCleanupHandler_timerEvent
+func miqt_exec_callback_QObjectCleanupHandler_timerEvent(self *C.QObjectCleanupHandler, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -230,18 +230,18 @@ func miqt_exec_callback_QObjectCleanupHandler_TimerEvent(self *C.QObjectCleanupH
 
 func (this *QObjectCleanupHandler) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QObjectCleanupHandler_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QObjectCleanupHandler_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QObjectCleanupHandler) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QObjectCleanupHandler_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QObjectCleanupHandler) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QObjectCleanupHandler_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QObjectCleanupHandler_ChildEvent
-func miqt_exec_callback_QObjectCleanupHandler_ChildEvent(self *C.QObjectCleanupHandler, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QObjectCleanupHandler_childEvent
+func miqt_exec_callback_QObjectCleanupHandler_childEvent(self *C.QObjectCleanupHandler, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -256,18 +256,18 @@ func miqt_exec_callback_QObjectCleanupHandler_ChildEvent(self *C.QObjectCleanupH
 
 func (this *QObjectCleanupHandler) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QObjectCleanupHandler_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QObjectCleanupHandler_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QObjectCleanupHandler) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QObjectCleanupHandler_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QObjectCleanupHandler) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QObjectCleanupHandler_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QObjectCleanupHandler_CustomEvent
-func miqt_exec_callback_QObjectCleanupHandler_CustomEvent(self *C.QObjectCleanupHandler, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QObjectCleanupHandler_customEvent
+func miqt_exec_callback_QObjectCleanupHandler_customEvent(self *C.QObjectCleanupHandler, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -282,18 +282,18 @@ func miqt_exec_callback_QObjectCleanupHandler_CustomEvent(self *C.QObjectCleanup
 
 func (this *QObjectCleanupHandler) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QObjectCleanupHandler_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QObjectCleanupHandler_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QObjectCleanupHandler) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QObjectCleanupHandler_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QObjectCleanupHandler) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QObjectCleanupHandler_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QObjectCleanupHandler_ConnectNotify
-func miqt_exec_callback_QObjectCleanupHandler_ConnectNotify(self *C.QObjectCleanupHandler, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QObjectCleanupHandler_connectNotify
+func miqt_exec_callback_QObjectCleanupHandler_connectNotify(self *C.QObjectCleanupHandler, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -308,18 +308,18 @@ func miqt_exec_callback_QObjectCleanupHandler_ConnectNotify(self *C.QObjectClean
 
 func (this *QObjectCleanupHandler) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QObjectCleanupHandler_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QObjectCleanupHandler_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QObjectCleanupHandler) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QObjectCleanupHandler_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QObjectCleanupHandler) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QObjectCleanupHandler_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QObjectCleanupHandler_DisconnectNotify
-func miqt_exec_callback_QObjectCleanupHandler_DisconnectNotify(self *C.QObjectCleanupHandler, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QObjectCleanupHandler_disconnectNotify
+func miqt_exec_callback_QObjectCleanupHandler_disconnectNotify(self *C.QObjectCleanupHandler, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -334,7 +334,7 @@ func miqt_exec_callback_QObjectCleanupHandler_DisconnectNotify(self *C.QObjectCl
 
 // Delete this object from C++ memory.
 func (this *QObjectCleanupHandler) Delete() {
-	C.QObjectCleanupHandler_Delete(this.h)
+	C.QObjectCleanupHandler_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

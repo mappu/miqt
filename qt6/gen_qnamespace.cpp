@@ -20,11 +20,11 @@ Disambiguated_t* Disambiguated_t_new2(Disambiguated_t* param1) {
 	return new Qt::Disambiguated_t(*param1);
 }
 
-void Disambiguated_t_Delete(Disambiguated_t* self) {
+void Disambiguated_t_delete(Disambiguated_t* self) {
 	delete self;
 }
 
-void QInternal_Delete(QInternal* self) {
+void QInternal_delete(QInternal* self) {
 	delete self;
 }
 
@@ -56,21 +56,21 @@ QKeyCombination* QKeyCombination_new7(int modifiers, int key) {
 	return new QKeyCombination(static_cast<Qt::KeyboardModifiers>(modifiers), static_cast<Qt::Key>(key));
 }
 
-int QKeyCombination_KeyboardModifiers(const QKeyCombination* self) {
+int QKeyCombination_keyboardModifiers(const QKeyCombination* self) {
 	Qt::KeyboardModifiers _ret = self->keyboardModifiers();
 	return static_cast<int>(_ret);
 }
 
-int QKeyCombination_Key(const QKeyCombination* self) {
+int QKeyCombination_key(const QKeyCombination* self) {
 	Qt::Key _ret = self->key();
 	return static_cast<int>(_ret);
 }
 
-QKeyCombination* QKeyCombination_FromCombined(int combined) {
+QKeyCombination* QKeyCombination_fromCombined(int combined) {
 	return new QKeyCombination(QKeyCombination::fromCombined(static_cast<int>(combined)));
 }
 
-int QKeyCombination_ToCombined(const QKeyCombination* self) {
+int QKeyCombination_toCombined(const QKeyCombination* self) {
 	return self->toCombined();
 }
 
@@ -78,7 +78,7 @@ int QKeyCombination_ToInt(const QKeyCombination* self) {
 	return self->operator int();
 }
 
-void QKeyCombination_Delete(QKeyCombination* self) {
+void QKeyCombination_delete(QKeyCombination* self) {
 	delete self;
 }
 

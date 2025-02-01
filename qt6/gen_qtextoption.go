@@ -93,47 +93,47 @@ func NewQTextOption3(o *QTextOption) *QTextOption {
 }
 
 func (this *QTextOption) OperatorAssign(o *QTextOption) {
-	C.QTextOption_OperatorAssign(this.h, o.cPointer())
+	C.QTextOption_operatorAssign(this.h, o.cPointer())
 }
 
 func (this *QTextOption) SetAlignment(alignment AlignmentFlag) {
-	C.QTextOption_SetAlignment(this.h, (C.int)(alignment))
+	C.QTextOption_setAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QTextOption) Alignment() AlignmentFlag {
-	return (AlignmentFlag)(C.QTextOption_Alignment(this.h))
+	return (AlignmentFlag)(C.QTextOption_alignment(this.h))
 }
 
 func (this *QTextOption) SetTextDirection(aDirection LayoutDirection) {
-	C.QTextOption_SetTextDirection(this.h, (C.int)(aDirection))
+	C.QTextOption_setTextDirection(this.h, (C.int)(aDirection))
 }
 
 func (this *QTextOption) TextDirection() LayoutDirection {
-	return (LayoutDirection)(C.QTextOption_TextDirection(this.h))
+	return (LayoutDirection)(C.QTextOption_textDirection(this.h))
 }
 
 func (this *QTextOption) SetWrapMode(wrap QTextOption__WrapMode) {
-	C.QTextOption_SetWrapMode(this.h, (C.int)(wrap))
+	C.QTextOption_setWrapMode(this.h, (C.int)(wrap))
 }
 
 func (this *QTextOption) WrapMode() QTextOption__WrapMode {
-	return (QTextOption__WrapMode)(C.QTextOption_WrapMode(this.h))
+	return (QTextOption__WrapMode)(C.QTextOption_wrapMode(this.h))
 }
 
 func (this *QTextOption) SetFlags(flags QTextOption__Flag) {
-	C.QTextOption_SetFlags(this.h, (C.int)(flags))
+	C.QTextOption_setFlags(this.h, (C.int)(flags))
 }
 
 func (this *QTextOption) Flags() QTextOption__Flag {
-	return (QTextOption__Flag)(C.QTextOption_Flags(this.h))
+	return (QTextOption__Flag)(C.QTextOption_flags(this.h))
 }
 
 func (this *QTextOption) SetTabStopDistance(tabStopDistance float64) {
-	C.QTextOption_SetTabStopDistance(this.h, (C.double)(tabStopDistance))
+	C.QTextOption_setTabStopDistance(this.h, (C.double)(tabStopDistance))
 }
 
 func (this *QTextOption) TabStopDistance() float64 {
-	return (float64)(C.QTextOption_TabStopDistance(this.h))
+	return (float64)(C.QTextOption_tabStopDistance(this.h))
 }
 
 func (this *QTextOption) SetTabArray(tabStops []float64) {
@@ -143,11 +143,11 @@ func (this *QTextOption) SetTabArray(tabStops []float64) {
 		tabStops_CArray[i] = (C.double)(tabStops[i])
 	}
 	tabStops_ma := C.struct_miqt_array{len: C.size_t(len(tabStops)), data: unsafe.Pointer(tabStops_CArray)}
-	C.QTextOption_SetTabArray(this.h, tabStops_ma)
+	C.QTextOption_setTabArray(this.h, tabStops_ma)
 }
 
 func (this *QTextOption) TabArray() []float64 {
-	var _ma C.struct_miqt_array = C.QTextOption_TabArray(this.h)
+	var _ma C.struct_miqt_array = C.QTextOption_tabArray(this.h)
 	_ret := make([]float64, int(_ma.len))
 	_outCast := (*[0xffff]C.double)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -163,11 +163,11 @@ func (this *QTextOption) SetTabs(tabStops []QTextOption__Tab) {
 		tabStops_CArray[i] = tabStops[i].cPointer()
 	}
 	tabStops_ma := C.struct_miqt_array{len: C.size_t(len(tabStops)), data: unsafe.Pointer(tabStops_CArray)}
-	C.QTextOption_SetTabs(this.h, tabStops_ma)
+	C.QTextOption_setTabs(this.h, tabStops_ma)
 }
 
 func (this *QTextOption) Tabs() []QTextOption__Tab {
-	var _ma C.struct_miqt_array = C.QTextOption_Tabs(this.h)
+	var _ma C.struct_miqt_array = C.QTextOption_tabs(this.h)
 	_ret := make([]QTextOption__Tab, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextOption__Tab)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -179,16 +179,16 @@ func (this *QTextOption) Tabs() []QTextOption__Tab {
 }
 
 func (this *QTextOption) SetUseDesignMetrics(b bool) {
-	C.QTextOption_SetUseDesignMetrics(this.h, (C.bool)(b))
+	C.QTextOption_setUseDesignMetrics(this.h, (C.bool)(b))
 }
 
 func (this *QTextOption) UseDesignMetrics() bool {
-	return (bool)(C.QTextOption_UseDesignMetrics(this.h))
+	return (bool)(C.QTextOption_useDesignMetrics(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QTextOption) Delete() {
-	C.QTextOption_Delete(this.h)
+	C.QTextOption_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -251,16 +251,16 @@ func NewQTextOption__Tab3(pos float64, tabType QTextOption__TabType, delim QChar
 }
 
 func (this *QTextOption__Tab) OperatorEqual(other *QTextOption__Tab) bool {
-	return (bool)(C.QTextOption__Tab_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QTextOption__Tab_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QTextOption__Tab) OperatorNotEqual(other *QTextOption__Tab) bool {
-	return (bool)(C.QTextOption__Tab_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QTextOption__Tab_operatorNotEqual(this.h, other.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QTextOption__Tab) Delete() {
-	C.QTextOption__Tab_Delete(this.h)
+	C.QTextOption__Tab_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

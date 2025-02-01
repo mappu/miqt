@@ -77,51 +77,51 @@ func NewQCameraInfo4(name []byte) *QCameraInfo {
 }
 
 func (this *QCameraInfo) OperatorAssign(other *QCameraInfo) {
-	C.QCameraInfo_OperatorAssign(this.h, other.cPointer())
+	C.QCameraInfo_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QCameraInfo) OperatorEqual(other *QCameraInfo) bool {
-	return (bool)(C.QCameraInfo_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QCameraInfo_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QCameraInfo) OperatorNotEqual(other *QCameraInfo) bool {
-	return (bool)(C.QCameraInfo_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QCameraInfo_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QCameraInfo) IsNull() bool {
-	return (bool)(C.QCameraInfo_IsNull(this.h))
+	return (bool)(C.QCameraInfo_isNull(this.h))
 }
 
 func (this *QCameraInfo) DeviceName() string {
-	var _ms C.struct_miqt_string = C.QCameraInfo_DeviceName(this.h)
+	var _ms C.struct_miqt_string = C.QCameraInfo_deviceName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCameraInfo) Description() string {
-	var _ms C.struct_miqt_string = C.QCameraInfo_Description(this.h)
+	var _ms C.struct_miqt_string = C.QCameraInfo_description(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCameraInfo) Position() QCamera__Position {
-	return (QCamera__Position)(C.QCameraInfo_Position(this.h))
+	return (QCamera__Position)(C.QCameraInfo_position(this.h))
 }
 
 func (this *QCameraInfo) Orientation() int {
-	return (int)(C.QCameraInfo_Orientation(this.h))
+	return (int)(C.QCameraInfo_orientation(this.h))
 }
 
 func QCameraInfo_DefaultCamera() *QCameraInfo {
-	_goptr := newQCameraInfo(C.QCameraInfo_DefaultCamera())
+	_goptr := newQCameraInfo(C.QCameraInfo_defaultCamera())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QCameraInfo_AvailableCameras() []QCameraInfo {
-	var _ma C.struct_miqt_array = C.QCameraInfo_AvailableCameras()
+	var _ma C.struct_miqt_array = C.QCameraInfo_availableCameras()
 	_ret := make([]QCameraInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -133,7 +133,7 @@ func QCameraInfo_AvailableCameras() []QCameraInfo {
 }
 
 func QCameraInfo_AvailableCameras1(position QCamera__Position) []QCameraInfo {
-	var _ma C.struct_miqt_array = C.QCameraInfo_AvailableCameras1((C.int)(position))
+	var _ma C.struct_miqt_array = C.QCameraInfo_availableCameras1((C.int)(position))
 	_ret := make([]QCameraInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -146,7 +146,7 @@ func QCameraInfo_AvailableCameras1(position QCamera__Position) []QCameraInfo {
 
 // Delete this object from C++ memory.
 func (this *QCameraInfo) Delete() {
-	C.QCameraInfo_Delete(this.h)
+	C.QCameraInfo_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

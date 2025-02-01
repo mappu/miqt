@@ -46,12 +46,12 @@ func UnsafeNewQPluginMetaData(h unsafe.Pointer) *QPluginMetaData {
 }
 
 func QPluginMetaData_ArchRequirements() byte {
-	return (byte)(C.QPluginMetaData_ArchRequirements())
+	return (byte)(C.QPluginMetaData_archRequirements())
 }
 
 // Delete this object from C++ memory.
 func (this *QPluginMetaData) Delete() {
-	C.QPluginMetaData_Delete(this.h)
+	C.QPluginMetaData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -96,14 +96,14 @@ func UnsafeNewQStaticPlugin(h unsafe.Pointer) *QStaticPlugin {
 }
 
 func (this *QStaticPlugin) MetaData() *QJsonObject {
-	_goptr := newQJsonObject(C.QStaticPlugin_MetaData(this.h))
+	_goptr := newQJsonObject(C.QStaticPlugin_metaData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QStaticPlugin) Delete() {
-	C.QStaticPlugin_Delete(this.h)
+	C.QStaticPlugin_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -155,7 +155,7 @@ func NewQPluginMetaData__Header(param1 *QPluginMetaData__Header) *QPluginMetaDat
 
 // Delete this object from C++ memory.
 func (this *QPluginMetaData__Header) Delete() {
-	C.QPluginMetaData__Header_Delete(this.h)
+	C.QPluginMetaData__Header_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -207,7 +207,7 @@ func NewQPluginMetaData__MagicHeader() *QPluginMetaData__MagicHeader {
 
 // Delete this object from C++ memory.
 func (this *QPluginMetaData__MagicHeader) Delete() {
-	C.QPluginMetaData__MagicHeader_Delete(this.h)
+	C.QPluginMetaData__MagicHeader_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -265,7 +265,7 @@ func NewQPluginMetaData__ElfNoteHeader2(param1 *QPluginMetaData__ElfNoteHeader) 
 
 // Delete this object from C++ memory.
 func (this *QPluginMetaData__ElfNoteHeader) Delete() {
-	C.QPluginMetaData__ElfNoteHeader_Delete(this.h)
+	C.QPluginMetaData__ElfNoteHeader_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

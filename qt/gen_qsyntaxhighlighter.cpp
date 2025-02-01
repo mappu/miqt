@@ -17,14 +17,14 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QSyntaxHighlighter_HighlightBlock(QSyntaxHighlighter*, intptr_t, struct miqt_string);
-bool miqt_exec_callback_QSyntaxHighlighter_Event(QSyntaxHighlighter*, intptr_t, QEvent*);
-bool miqt_exec_callback_QSyntaxHighlighter_EventFilter(QSyntaxHighlighter*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSyntaxHighlighter_TimerEvent(QSyntaxHighlighter*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSyntaxHighlighter_ChildEvent(QSyntaxHighlighter*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSyntaxHighlighter_CustomEvent(QSyntaxHighlighter*, intptr_t, QEvent*);
-void miqt_exec_callback_QSyntaxHighlighter_ConnectNotify(QSyntaxHighlighter*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSyntaxHighlighter_DisconnectNotify(QSyntaxHighlighter*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSyntaxHighlighter_highlightBlock(QSyntaxHighlighter*, intptr_t, struct miqt_string);
+bool miqt_exec_callback_QSyntaxHighlighter_event(QSyntaxHighlighter*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSyntaxHighlighter_eventFilter(QSyntaxHighlighter*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSyntaxHighlighter_timerEvent(QSyntaxHighlighter*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSyntaxHighlighter_childEvent(QSyntaxHighlighter*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSyntaxHighlighter_customEvent(QSyntaxHighlighter*, intptr_t, QEvent*);
+void miqt_exec_callback_QSyntaxHighlighter_connectNotify(QSyntaxHighlighter*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSyntaxHighlighter_disconnectNotify(QSyntaxHighlighter*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -38,11 +38,11 @@ public:
 	virtual ~MiqtVirtualQSyntaxHighlighter() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HighlightBlock = 0;
+	intptr_t handle__highlightBlock = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void highlightBlock(const QString& text) override {
-		if (handle__HighlightBlock == 0) {
+		if (handle__highlightBlock == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
 		
@@ -55,136 +55,136 @@ public:
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval1 = text_ms;
 
-		miqt_exec_callback_QSyntaxHighlighter_HighlightBlock(this, handle__HighlightBlock, sigval1);
+		miqt_exec_callback_QSyntaxHighlighter_highlightBlock(this, handle__highlightBlock, sigval1);
 
 		
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QSyntaxHighlighter::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QSyntaxHighlighter_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QSyntaxHighlighter_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QSyntaxHighlighter::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QSyntaxHighlighter::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QSyntaxHighlighter_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QSyntaxHighlighter_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QSyntaxHighlighter::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QSyntaxHighlighter::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QSyntaxHighlighter_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QSyntaxHighlighter_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QSyntaxHighlighter::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QSyntaxHighlighter::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QSyntaxHighlighter_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QSyntaxHighlighter_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QSyntaxHighlighter::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QSyntaxHighlighter::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QSyntaxHighlighter_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QSyntaxHighlighter_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QSyntaxHighlighter::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QSyntaxHighlighter::connectNotify(signal);
 			return;
 		}
@@ -193,24 +193,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QSyntaxHighlighter_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QSyntaxHighlighter_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QSyntaxHighlighter::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QSyntaxHighlighter::disconnectNotify(signal);
 			return;
 		}
@@ -219,13 +219,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QSyntaxHighlighter_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QSyntaxHighlighter_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QSyntaxHighlighter::disconnectNotify(*signal);
 
@@ -245,15 +245,15 @@ void QSyntaxHighlighter_virtbase(QSyntaxHighlighter* src, QObject** outptr_QObje
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QSyntaxHighlighter_MetaObject(const QSyntaxHighlighter* self) {
+QMetaObject* QSyntaxHighlighter_metaObject(const QSyntaxHighlighter* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QSyntaxHighlighter_Metacast(QSyntaxHighlighter* self, const char* param1) {
+void* QSyntaxHighlighter_metacast(QSyntaxHighlighter* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QSyntaxHighlighter_Tr(const char* s) {
+struct miqt_string QSyntaxHighlighter_tr(const char* s) {
 	QString _ret = QSyntaxHighlighter::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -264,7 +264,7 @@ struct miqt_string QSyntaxHighlighter_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QSyntaxHighlighter_TrUtf8(const char* s) {
+struct miqt_string QSyntaxHighlighter_trUtf8(const char* s) {
 	QString _ret = QSyntaxHighlighter::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -275,23 +275,23 @@ struct miqt_string QSyntaxHighlighter_TrUtf8(const char* s) {
 	return _ms;
 }
 
-void QSyntaxHighlighter_SetDocument(QSyntaxHighlighter* self, QTextDocument* doc) {
+void QSyntaxHighlighter_setDocument(QSyntaxHighlighter* self, QTextDocument* doc) {
 	self->setDocument(doc);
 }
 
-QTextDocument* QSyntaxHighlighter_Document(const QSyntaxHighlighter* self) {
+QTextDocument* QSyntaxHighlighter_document(const QSyntaxHighlighter* self) {
 	return self->document();
 }
 
-void QSyntaxHighlighter_Rehighlight(QSyntaxHighlighter* self) {
+void QSyntaxHighlighter_rehighlight(QSyntaxHighlighter* self) {
 	self->rehighlight();
 }
 
-void QSyntaxHighlighter_RehighlightBlock(QSyntaxHighlighter* self, QTextBlock* block) {
+void QSyntaxHighlighter_rehighlightBlock(QSyntaxHighlighter* self, QTextBlock* block) {
 	self->rehighlightBlock(*block);
 }
 
-struct miqt_string QSyntaxHighlighter_Tr2(const char* s, const char* c) {
+struct miqt_string QSyntaxHighlighter_tr2(const char* s, const char* c) {
 	QString _ret = QSyntaxHighlighter::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -302,7 +302,7 @@ struct miqt_string QSyntaxHighlighter_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QSyntaxHighlighter_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QSyntaxHighlighter_tr3(const char* s, const char* c, int n) {
 	QString _ret = QSyntaxHighlighter::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -313,7 +313,7 @@ struct miqt_string QSyntaxHighlighter_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string QSyntaxHighlighter_TrUtf82(const char* s, const char* c) {
+struct miqt_string QSyntaxHighlighter_trUtf82(const char* s, const char* c) {
 	QString _ret = QSyntaxHighlighter::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -324,7 +324,7 @@ struct miqt_string QSyntaxHighlighter_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QSyntaxHighlighter_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QSyntaxHighlighter_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QSyntaxHighlighter::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -335,115 +335,115 @@ struct miqt_string QSyntaxHighlighter_TrUtf83(const char* s, const char* c, int 
 	return _ms;
 }
 
-bool QSyntaxHighlighter_override_virtual_HighlightBlock(void* self, intptr_t slot) {
+bool QSyntaxHighlighter_override_virtual_highlightBlock(void* self, intptr_t slot) {
 	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HighlightBlock = slot;
+	self_cast->handle__highlightBlock = slot;
 	return true;
 }
 
-bool QSyntaxHighlighter_override_virtual_Event(void* self, intptr_t slot) {
+bool QSyntaxHighlighter_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QSyntaxHighlighter_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_Event(event);
+bool QSyntaxHighlighter_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_event(event);
 }
 
-bool QSyntaxHighlighter_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QSyntaxHighlighter_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QSyntaxHighlighter_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_EventFilter(watched, event);
+bool QSyntaxHighlighter_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QSyntaxHighlighter_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QSyntaxHighlighter_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QSyntaxHighlighter_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_TimerEvent(event);
+void QSyntaxHighlighter_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QSyntaxHighlighter_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QSyntaxHighlighter_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QSyntaxHighlighter_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_ChildEvent(event);
+void QSyntaxHighlighter_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QSyntaxHighlighter_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QSyntaxHighlighter_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QSyntaxHighlighter_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_CustomEvent(event);
+void QSyntaxHighlighter_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QSyntaxHighlighter_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QSyntaxHighlighter_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QSyntaxHighlighter_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_ConnectNotify(signal);
+void QSyntaxHighlighter_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QSyntaxHighlighter_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QSyntaxHighlighter_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQSyntaxHighlighter* self_cast = dynamic_cast<MiqtVirtualQSyntaxHighlighter*>( (QSyntaxHighlighter*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QSyntaxHighlighter_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_DisconnectNotify(signal);
+void QSyntaxHighlighter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQSyntaxHighlighter*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QSyntaxHighlighter_Delete(QSyntaxHighlighter* self) {
+void QSyntaxHighlighter_delete(QSyntaxHighlighter* self) {
 	delete self;
 }
 

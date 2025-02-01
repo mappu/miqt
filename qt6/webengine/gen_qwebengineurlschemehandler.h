@@ -37,32 +37,32 @@ typedef struct QWebEngineUrlSchemeHandler QWebEngineUrlSchemeHandler;
 QWebEngineUrlSchemeHandler* QWebEngineUrlSchemeHandler_new();
 QWebEngineUrlSchemeHandler* QWebEngineUrlSchemeHandler_new2(QObject* parent);
 void QWebEngineUrlSchemeHandler_virtbase(QWebEngineUrlSchemeHandler* src, QObject** outptr_QObject);
-QMetaObject* QWebEngineUrlSchemeHandler_MetaObject(const QWebEngineUrlSchemeHandler* self);
-void* QWebEngineUrlSchemeHandler_Metacast(QWebEngineUrlSchemeHandler* self, const char* param1);
-struct miqt_string QWebEngineUrlSchemeHandler_Tr(const char* s);
-void QWebEngineUrlSchemeHandler_RequestStarted(QWebEngineUrlSchemeHandler* self, QWebEngineUrlRequestJob* param1);
-struct miqt_string QWebEngineUrlSchemeHandler_Tr2(const char* s, const char* c);
-struct miqt_string QWebEngineUrlSchemeHandler_Tr3(const char* s, const char* c, int n);
-bool QWebEngineUrlSchemeHandler_override_virtual_RequestStarted(void* self, intptr_t slot);
-void QWebEngineUrlSchemeHandler_virtualbase_RequestStarted(void* self, QWebEngineUrlRequestJob* param1);
-bool QWebEngineUrlSchemeHandler_override_virtual_Event(void* self, intptr_t slot);
-bool QWebEngineUrlSchemeHandler_virtualbase_Event(void* self, QEvent* event);
-bool QWebEngineUrlSchemeHandler_override_virtual_EventFilter(void* self, intptr_t slot);
-bool QWebEngineUrlSchemeHandler_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-bool QWebEngineUrlSchemeHandler_override_virtual_TimerEvent(void* self, intptr_t slot);
-void QWebEngineUrlSchemeHandler_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-bool QWebEngineUrlSchemeHandler_override_virtual_ChildEvent(void* self, intptr_t slot);
-void QWebEngineUrlSchemeHandler_virtualbase_ChildEvent(void* self, QChildEvent* event);
-bool QWebEngineUrlSchemeHandler_override_virtual_CustomEvent(void* self, intptr_t slot);
-void QWebEngineUrlSchemeHandler_virtualbase_CustomEvent(void* self, QEvent* event);
-bool QWebEngineUrlSchemeHandler_override_virtual_ConnectNotify(void* self, intptr_t slot);
-void QWebEngineUrlSchemeHandler_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-bool QWebEngineUrlSchemeHandler_override_virtual_DisconnectNotify(void* self, intptr_t slot);
-void QWebEngineUrlSchemeHandler_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QWebEngineUrlSchemeHandler_Delete(QWebEngineUrlSchemeHandler* self);
+QMetaObject* QWebEngineUrlSchemeHandler_metaObject(const QWebEngineUrlSchemeHandler* self);
+void* QWebEngineUrlSchemeHandler_metacast(QWebEngineUrlSchemeHandler* self, const char* param1);
+struct miqt_string QWebEngineUrlSchemeHandler_tr(const char* s);
+void QWebEngineUrlSchemeHandler_requestStarted(QWebEngineUrlSchemeHandler* self, QWebEngineUrlRequestJob* param1);
+struct miqt_string QWebEngineUrlSchemeHandler_tr2(const char* s, const char* c);
+struct miqt_string QWebEngineUrlSchemeHandler_tr3(const char* s, const char* c, int n);
+bool QWebEngineUrlSchemeHandler_override_virtual_requestStarted(void* self, intptr_t slot);
+void QWebEngineUrlSchemeHandler_virtualbase_requestStarted(void* self, QWebEngineUrlRequestJob* param1);
+bool QWebEngineUrlSchemeHandler_override_virtual_event(void* self, intptr_t slot);
+bool QWebEngineUrlSchemeHandler_virtualbase_event(void* self, QEvent* event);
+bool QWebEngineUrlSchemeHandler_override_virtual_eventFilter(void* self, intptr_t slot);
+bool QWebEngineUrlSchemeHandler_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
+bool QWebEngineUrlSchemeHandler_override_virtual_timerEvent(void* self, intptr_t slot);
+void QWebEngineUrlSchemeHandler_virtualbase_timerEvent(void* self, QTimerEvent* event);
+bool QWebEngineUrlSchemeHandler_override_virtual_childEvent(void* self, intptr_t slot);
+void QWebEngineUrlSchemeHandler_virtualbase_childEvent(void* self, QChildEvent* event);
+bool QWebEngineUrlSchemeHandler_override_virtual_customEvent(void* self, intptr_t slot);
+void QWebEngineUrlSchemeHandler_virtualbase_customEvent(void* self, QEvent* event);
+bool QWebEngineUrlSchemeHandler_override_virtual_connectNotify(void* self, intptr_t slot);
+void QWebEngineUrlSchemeHandler_virtualbase_connectNotify(void* self, QMetaMethod* signal);
+bool QWebEngineUrlSchemeHandler_override_virtual_disconnectNotify(void* self, intptr_t slot);
+void QWebEngineUrlSchemeHandler_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QWebEngineUrlSchemeHandler_delete(QWebEngineUrlSchemeHandler* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

@@ -61,56 +61,56 @@ func NewQElapsedTimer() *QElapsedTimer {
 }
 
 func QElapsedTimer_ClockType() QElapsedTimer__ClockType {
-	return (QElapsedTimer__ClockType)(C.QElapsedTimer_ClockType())
+	return (QElapsedTimer__ClockType)(C.QElapsedTimer_clockType())
 }
 
 func QElapsedTimer_IsMonotonic() bool {
-	return (bool)(C.QElapsedTimer_IsMonotonic())
+	return (bool)(C.QElapsedTimer_isMonotonic())
 }
 
 func (this *QElapsedTimer) Start() {
-	C.QElapsedTimer_Start(this.h)
+	C.QElapsedTimer_start(this.h)
 }
 
 func (this *QElapsedTimer) Restart() int64 {
-	return (int64)(C.QElapsedTimer_Restart(this.h))
+	return (int64)(C.QElapsedTimer_restart(this.h))
 }
 
 func (this *QElapsedTimer) Invalidate() {
-	C.QElapsedTimer_Invalidate(this.h)
+	C.QElapsedTimer_invalidate(this.h)
 }
 
 func (this *QElapsedTimer) IsValid() bool {
-	return (bool)(C.QElapsedTimer_IsValid(this.h))
+	return (bool)(C.QElapsedTimer_isValid(this.h))
 }
 
 func (this *QElapsedTimer) NsecsElapsed() int64 {
-	return (int64)(C.QElapsedTimer_NsecsElapsed(this.h))
+	return (int64)(C.QElapsedTimer_nsecsElapsed(this.h))
 }
 
 func (this *QElapsedTimer) Elapsed() int64 {
-	return (int64)(C.QElapsedTimer_Elapsed(this.h))
+	return (int64)(C.QElapsedTimer_elapsed(this.h))
 }
 
 func (this *QElapsedTimer) HasExpired(timeout int64) bool {
-	return (bool)(C.QElapsedTimer_HasExpired(this.h, (C.longlong)(timeout)))
+	return (bool)(C.QElapsedTimer_hasExpired(this.h, (C.longlong)(timeout)))
 }
 
 func (this *QElapsedTimer) MsecsSinceReference() int64 {
-	return (int64)(C.QElapsedTimer_MsecsSinceReference(this.h))
+	return (int64)(C.QElapsedTimer_msecsSinceReference(this.h))
 }
 
 func (this *QElapsedTimer) MsecsTo(other *QElapsedTimer) int64 {
-	return (int64)(C.QElapsedTimer_MsecsTo(this.h, other.cPointer()))
+	return (int64)(C.QElapsedTimer_msecsTo(this.h, other.cPointer()))
 }
 
 func (this *QElapsedTimer) SecsTo(other *QElapsedTimer) int64 {
-	return (int64)(C.QElapsedTimer_SecsTo(this.h, other.cPointer()))
+	return (int64)(C.QElapsedTimer_secsTo(this.h, other.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QElapsedTimer) Delete() {
-	C.QElapsedTimer_Delete(this.h)
+	C.QElapsedTimer_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

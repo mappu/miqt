@@ -58,86 +58,86 @@ func NewQFontInfo2(param1 *QFontInfo) *QFontInfo {
 }
 
 func (this *QFontInfo) OperatorAssign(param1 *QFontInfo) {
-	C.QFontInfo_OperatorAssign(this.h, param1.cPointer())
+	C.QFontInfo_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QFontInfo) Swap(other *QFontInfo) {
-	C.QFontInfo_Swap(this.h, other.cPointer())
+	C.QFontInfo_swap(this.h, other.cPointer())
 }
 
 func (this *QFontInfo) Family() string {
-	var _ms C.struct_miqt_string = C.QFontInfo_Family(this.h)
+	var _ms C.struct_miqt_string = C.QFontInfo_family(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFontInfo) StyleName() string {
-	var _ms C.struct_miqt_string = C.QFontInfo_StyleName(this.h)
+	var _ms C.struct_miqt_string = C.QFontInfo_styleName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFontInfo) PixelSize() int {
-	return (int)(C.QFontInfo_PixelSize(this.h))
+	return (int)(C.QFontInfo_pixelSize(this.h))
 }
 
 func (this *QFontInfo) PointSize() int {
-	return (int)(C.QFontInfo_PointSize(this.h))
+	return (int)(C.QFontInfo_pointSize(this.h))
 }
 
 func (this *QFontInfo) PointSizeF() float64 {
-	return (float64)(C.QFontInfo_PointSizeF(this.h))
+	return (float64)(C.QFontInfo_pointSizeF(this.h))
 }
 
 func (this *QFontInfo) Italic() bool {
-	return (bool)(C.QFontInfo_Italic(this.h))
+	return (bool)(C.QFontInfo_italic(this.h))
 }
 
 func (this *QFontInfo) Style() QFont__Style {
-	return (QFont__Style)(C.QFontInfo_Style(this.h))
+	return (QFont__Style)(C.QFontInfo_style(this.h))
 }
 
 func (this *QFontInfo) Weight() int {
-	return (int)(C.QFontInfo_Weight(this.h))
+	return (int)(C.QFontInfo_weight(this.h))
 }
 
 func (this *QFontInfo) Bold() bool {
-	return (bool)(C.QFontInfo_Bold(this.h))
+	return (bool)(C.QFontInfo_bold(this.h))
 }
 
 func (this *QFontInfo) Underline() bool {
-	return (bool)(C.QFontInfo_Underline(this.h))
+	return (bool)(C.QFontInfo_underline(this.h))
 }
 
 func (this *QFontInfo) Overline() bool {
-	return (bool)(C.QFontInfo_Overline(this.h))
+	return (bool)(C.QFontInfo_overline(this.h))
 }
 
 func (this *QFontInfo) StrikeOut() bool {
-	return (bool)(C.QFontInfo_StrikeOut(this.h))
+	return (bool)(C.QFontInfo_strikeOut(this.h))
 }
 
 func (this *QFontInfo) FixedPitch() bool {
-	return (bool)(C.QFontInfo_FixedPitch(this.h))
+	return (bool)(C.QFontInfo_fixedPitch(this.h))
 }
 
 func (this *QFontInfo) StyleHint() QFont__StyleHint {
-	return (QFont__StyleHint)(C.QFontInfo_StyleHint(this.h))
+	return (QFont__StyleHint)(C.QFontInfo_styleHint(this.h))
 }
 
 func (this *QFontInfo) RawMode() bool {
-	return (bool)(C.QFontInfo_RawMode(this.h))
+	return (bool)(C.QFontInfo_rawMode(this.h))
 }
 
 func (this *QFontInfo) ExactMatch() bool {
-	return (bool)(C.QFontInfo_ExactMatch(this.h))
+	return (bool)(C.QFontInfo_exactMatch(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QFontInfo) Delete() {
-	C.QFontInfo_Delete(this.h)
+	C.QFontInfo_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

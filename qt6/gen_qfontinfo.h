@@ -24,28 +24,28 @@ typedef struct QFontInfo QFontInfo;
 
 QFontInfo* QFontInfo_new(QFont* param1);
 QFontInfo* QFontInfo_new2(QFontInfo* param1);
-void QFontInfo_OperatorAssign(QFontInfo* self, QFontInfo* param1);
-void QFontInfo_Swap(QFontInfo* self, QFontInfo* other);
-struct miqt_string QFontInfo_Family(const QFontInfo* self);
-struct miqt_string QFontInfo_StyleName(const QFontInfo* self);
-int QFontInfo_PixelSize(const QFontInfo* self);
-int QFontInfo_PointSize(const QFontInfo* self);
-double QFontInfo_PointSizeF(const QFontInfo* self);
-bool QFontInfo_Italic(const QFontInfo* self);
-int QFontInfo_Style(const QFontInfo* self);
-int QFontInfo_Weight(const QFontInfo* self);
-bool QFontInfo_Bold(const QFontInfo* self);
-bool QFontInfo_Underline(const QFontInfo* self);
-bool QFontInfo_Overline(const QFontInfo* self);
-bool QFontInfo_StrikeOut(const QFontInfo* self);
-bool QFontInfo_FixedPitch(const QFontInfo* self);
-int QFontInfo_StyleHint(const QFontInfo* self);
-int QFontInfo_LegacyWeight(const QFontInfo* self);
-bool QFontInfo_ExactMatch(const QFontInfo* self);
-void QFontInfo_Delete(QFontInfo* self);
+void QFontInfo_operatorAssign(QFontInfo* self, QFontInfo* param1);
+void QFontInfo_swap(QFontInfo* self, QFontInfo* other);
+struct miqt_string QFontInfo_family(const QFontInfo* self);
+struct miqt_string QFontInfo_styleName(const QFontInfo* self);
+int QFontInfo_pixelSize(const QFontInfo* self);
+int QFontInfo_pointSize(const QFontInfo* self);
+double QFontInfo_pointSizeF(const QFontInfo* self);
+bool QFontInfo_italic(const QFontInfo* self);
+int QFontInfo_style(const QFontInfo* self);
+int QFontInfo_weight(const QFontInfo* self);
+bool QFontInfo_bold(const QFontInfo* self);
+bool QFontInfo_underline(const QFontInfo* self);
+bool QFontInfo_overline(const QFontInfo* self);
+bool QFontInfo_strikeOut(const QFontInfo* self);
+bool QFontInfo_fixedPitch(const QFontInfo* self);
+int QFontInfo_styleHint(const QFontInfo* self);
+int QFontInfo_legacyWeight(const QFontInfo* self);
+bool QFontInfo_exactMatch(const QFontInfo* self);
+void QFontInfo_delete(QFontInfo* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

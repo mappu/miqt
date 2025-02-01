@@ -99,19 +99,19 @@ func NewQLineEdit4(param1 string, parent *QWidget) *QLineEdit {
 }
 
 func (this *QLineEdit) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QLineEdit_MetaObject(this.h))
+	return newQMetaObject(C.QLineEdit_metaObject(this.h))
 }
 
 func (this *QLineEdit) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QLineEdit_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QLineEdit_metacast(this.h, param1_Cstring))
 }
 
 func QLineEdit_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QLineEdit_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QLineEdit_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -120,28 +120,28 @@ func QLineEdit_Tr(s string) string {
 func QLineEdit_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QLineEdit_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QLineEdit_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLineEdit) Text() string {
-	var _ms C.struct_miqt_string = C.QLineEdit_Text(this.h)
+	var _ms C.struct_miqt_string = C.QLineEdit_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLineEdit) DisplayText() string {
-	var _ms C.struct_miqt_string = C.QLineEdit_DisplayText(this.h)
+	var _ms C.struct_miqt_string = C.QLineEdit_displayText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLineEdit) PlaceholderText() string {
-	var _ms C.struct_miqt_string = C.QLineEdit_PlaceholderText(this.h)
+	var _ms C.struct_miqt_string = C.QLineEdit_placeholderText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -152,190 +152,190 @@ func (this *QLineEdit) SetPlaceholderText(placeholderText string) {
 	placeholderText_ms.data = C.CString(placeholderText)
 	placeholderText_ms.len = C.size_t(len(placeholderText))
 	defer C.free(unsafe.Pointer(placeholderText_ms.data))
-	C.QLineEdit_SetPlaceholderText(this.h, placeholderText_ms)
+	C.QLineEdit_setPlaceholderText(this.h, placeholderText_ms)
 }
 
 func (this *QLineEdit) MaxLength() int {
-	return (int)(C.QLineEdit_MaxLength(this.h))
+	return (int)(C.QLineEdit_maxLength(this.h))
 }
 
 func (this *QLineEdit) SetMaxLength(maxLength int) {
-	C.QLineEdit_SetMaxLength(this.h, (C.int)(maxLength))
+	C.QLineEdit_setMaxLength(this.h, (C.int)(maxLength))
 }
 
 func (this *QLineEdit) SetFrame(frame bool) {
-	C.QLineEdit_SetFrame(this.h, (C.bool)(frame))
+	C.QLineEdit_setFrame(this.h, (C.bool)(frame))
 }
 
 func (this *QLineEdit) HasFrame() bool {
-	return (bool)(C.QLineEdit_HasFrame(this.h))
+	return (bool)(C.QLineEdit_hasFrame(this.h))
 }
 
 func (this *QLineEdit) SetClearButtonEnabled(enable bool) {
-	C.QLineEdit_SetClearButtonEnabled(this.h, (C.bool)(enable))
+	C.QLineEdit_setClearButtonEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QLineEdit) IsClearButtonEnabled() bool {
-	return (bool)(C.QLineEdit_IsClearButtonEnabled(this.h))
+	return (bool)(C.QLineEdit_isClearButtonEnabled(this.h))
 }
 
 func (this *QLineEdit) EchoMode() QLineEdit__EchoMode {
-	return (QLineEdit__EchoMode)(C.QLineEdit_EchoMode(this.h))
+	return (QLineEdit__EchoMode)(C.QLineEdit_echoMode(this.h))
 }
 
 func (this *QLineEdit) SetEchoMode(echoMode QLineEdit__EchoMode) {
-	C.QLineEdit_SetEchoMode(this.h, (C.int)(echoMode))
+	C.QLineEdit_setEchoMode(this.h, (C.int)(echoMode))
 }
 
 func (this *QLineEdit) IsReadOnly() bool {
-	return (bool)(C.QLineEdit_IsReadOnly(this.h))
+	return (bool)(C.QLineEdit_isReadOnly(this.h))
 }
 
 func (this *QLineEdit) SetReadOnly(readOnly bool) {
-	C.QLineEdit_SetReadOnly(this.h, (C.bool)(readOnly))
+	C.QLineEdit_setReadOnly(this.h, (C.bool)(readOnly))
 }
 
 func (this *QLineEdit) SetValidator(validator *QValidator) {
-	C.QLineEdit_SetValidator(this.h, validator.cPointer())
+	C.QLineEdit_setValidator(this.h, validator.cPointer())
 }
 
 func (this *QLineEdit) Validator() *QValidator {
-	return newQValidator(C.QLineEdit_Validator(this.h))
+	return newQValidator(C.QLineEdit_validator(this.h))
 }
 
 func (this *QLineEdit) SetCompleter(completer *QCompleter) {
-	C.QLineEdit_SetCompleter(this.h, completer.cPointer())
+	C.QLineEdit_setCompleter(this.h, completer.cPointer())
 }
 
 func (this *QLineEdit) Completer() *QCompleter {
-	return newQCompleter(C.QLineEdit_Completer(this.h))
+	return newQCompleter(C.QLineEdit_completer(this.h))
 }
 
 func (this *QLineEdit) SizeHint() *QSize {
-	_goptr := newQSize(C.QLineEdit_SizeHint(this.h))
+	_goptr := newQSize(C.QLineEdit_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLineEdit) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QLineEdit_MinimumSizeHint(this.h))
+	_goptr := newQSize(C.QLineEdit_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLineEdit) CursorPosition() int {
-	return (int)(C.QLineEdit_CursorPosition(this.h))
+	return (int)(C.QLineEdit_cursorPosition(this.h))
 }
 
 func (this *QLineEdit) SetCursorPosition(cursorPosition int) {
-	C.QLineEdit_SetCursorPosition(this.h, (C.int)(cursorPosition))
+	C.QLineEdit_setCursorPosition(this.h, (C.int)(cursorPosition))
 }
 
 func (this *QLineEdit) CursorPositionAt(pos *QPoint) int {
-	return (int)(C.QLineEdit_CursorPositionAt(this.h, pos.cPointer()))
+	return (int)(C.QLineEdit_cursorPositionAt(this.h, pos.cPointer()))
 }
 
 func (this *QLineEdit) SetAlignment(flag AlignmentFlag) {
-	C.QLineEdit_SetAlignment(this.h, (C.int)(flag))
+	C.QLineEdit_setAlignment(this.h, (C.int)(flag))
 }
 
 func (this *QLineEdit) Alignment() AlignmentFlag {
-	return (AlignmentFlag)(C.QLineEdit_Alignment(this.h))
+	return (AlignmentFlag)(C.QLineEdit_alignment(this.h))
 }
 
 func (this *QLineEdit) CursorForward(mark bool) {
-	C.QLineEdit_CursorForward(this.h, (C.bool)(mark))
+	C.QLineEdit_cursorForward(this.h, (C.bool)(mark))
 }
 
 func (this *QLineEdit) CursorBackward(mark bool) {
-	C.QLineEdit_CursorBackward(this.h, (C.bool)(mark))
+	C.QLineEdit_cursorBackward(this.h, (C.bool)(mark))
 }
 
 func (this *QLineEdit) CursorWordForward(mark bool) {
-	C.QLineEdit_CursorWordForward(this.h, (C.bool)(mark))
+	C.QLineEdit_cursorWordForward(this.h, (C.bool)(mark))
 }
 
 func (this *QLineEdit) CursorWordBackward(mark bool) {
-	C.QLineEdit_CursorWordBackward(this.h, (C.bool)(mark))
+	C.QLineEdit_cursorWordBackward(this.h, (C.bool)(mark))
 }
 
 func (this *QLineEdit) Backspace() {
-	C.QLineEdit_Backspace(this.h)
+	C.QLineEdit_backspace(this.h)
 }
 
 func (this *QLineEdit) Del() {
-	C.QLineEdit_Del(this.h)
+	C.QLineEdit_del(this.h)
 }
 
 func (this *QLineEdit) Home(mark bool) {
-	C.QLineEdit_Home(this.h, (C.bool)(mark))
+	C.QLineEdit_home(this.h, (C.bool)(mark))
 }
 
 func (this *QLineEdit) End(mark bool) {
-	C.QLineEdit_End(this.h, (C.bool)(mark))
+	C.QLineEdit_end(this.h, (C.bool)(mark))
 }
 
 func (this *QLineEdit) IsModified() bool {
-	return (bool)(C.QLineEdit_IsModified(this.h))
+	return (bool)(C.QLineEdit_isModified(this.h))
 }
 
 func (this *QLineEdit) SetModified(modified bool) {
-	C.QLineEdit_SetModified(this.h, (C.bool)(modified))
+	C.QLineEdit_setModified(this.h, (C.bool)(modified))
 }
 
 func (this *QLineEdit) SetSelection(param1 int, param2 int) {
-	C.QLineEdit_SetSelection(this.h, (C.int)(param1), (C.int)(param2))
+	C.QLineEdit_setSelection(this.h, (C.int)(param1), (C.int)(param2))
 }
 
 func (this *QLineEdit) HasSelectedText() bool {
-	return (bool)(C.QLineEdit_HasSelectedText(this.h))
+	return (bool)(C.QLineEdit_hasSelectedText(this.h))
 }
 
 func (this *QLineEdit) SelectedText() string {
-	var _ms C.struct_miqt_string = C.QLineEdit_SelectedText(this.h)
+	var _ms C.struct_miqt_string = C.QLineEdit_selectedText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLineEdit) SelectionStart() int {
-	return (int)(C.QLineEdit_SelectionStart(this.h))
+	return (int)(C.QLineEdit_selectionStart(this.h))
 }
 
 func (this *QLineEdit) SelectionEnd() int {
-	return (int)(C.QLineEdit_SelectionEnd(this.h))
+	return (int)(C.QLineEdit_selectionEnd(this.h))
 }
 
 func (this *QLineEdit) SelectionLength() int {
-	return (int)(C.QLineEdit_SelectionLength(this.h))
+	return (int)(C.QLineEdit_selectionLength(this.h))
 }
 
 func (this *QLineEdit) IsUndoAvailable() bool {
-	return (bool)(C.QLineEdit_IsUndoAvailable(this.h))
+	return (bool)(C.QLineEdit_isUndoAvailable(this.h))
 }
 
 func (this *QLineEdit) IsRedoAvailable() bool {
-	return (bool)(C.QLineEdit_IsRedoAvailable(this.h))
+	return (bool)(C.QLineEdit_isRedoAvailable(this.h))
 }
 
 func (this *QLineEdit) SetDragEnabled(b bool) {
-	C.QLineEdit_SetDragEnabled(this.h, (C.bool)(b))
+	C.QLineEdit_setDragEnabled(this.h, (C.bool)(b))
 }
 
 func (this *QLineEdit) DragEnabled() bool {
-	return (bool)(C.QLineEdit_DragEnabled(this.h))
+	return (bool)(C.QLineEdit_dragEnabled(this.h))
 }
 
 func (this *QLineEdit) SetCursorMoveStyle(style CursorMoveStyle) {
-	C.QLineEdit_SetCursorMoveStyle(this.h, (C.int)(style))
+	C.QLineEdit_setCursorMoveStyle(this.h, (C.int)(style))
 }
 
 func (this *QLineEdit) CursorMoveStyle() CursorMoveStyle {
-	return (CursorMoveStyle)(C.QLineEdit_CursorMoveStyle(this.h))
+	return (CursorMoveStyle)(C.QLineEdit_cursorMoveStyle(this.h))
 }
 
 func (this *QLineEdit) InputMask() string {
-	var _ms C.struct_miqt_string = C.QLineEdit_InputMask(this.h)
+	var _ms C.struct_miqt_string = C.QLineEdit_inputMask(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -346,37 +346,37 @@ func (this *QLineEdit) SetInputMask(inputMask string) {
 	inputMask_ms.data = C.CString(inputMask)
 	inputMask_ms.len = C.size_t(len(inputMask))
 	defer C.free(unsafe.Pointer(inputMask_ms.data))
-	C.QLineEdit_SetInputMask(this.h, inputMask_ms)
+	C.QLineEdit_setInputMask(this.h, inputMask_ms)
 }
 
 func (this *QLineEdit) HasAcceptableInput() bool {
-	return (bool)(C.QLineEdit_HasAcceptableInput(this.h))
+	return (bool)(C.QLineEdit_hasAcceptableInput(this.h))
 }
 
 func (this *QLineEdit) SetTextMargins(left int, top int, right int, bottom int) {
-	C.QLineEdit_SetTextMargins(this.h, (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
+	C.QLineEdit_setTextMargins(this.h, (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
 }
 
 func (this *QLineEdit) SetTextMarginsWithMargins(margins *QMargins) {
-	C.QLineEdit_SetTextMarginsWithMargins(this.h, margins.cPointer())
+	C.QLineEdit_setTextMarginsWithMargins(this.h, margins.cPointer())
 }
 
 func (this *QLineEdit) GetTextMargins(left *int, top *int, right *int, bottom *int) {
-	C.QLineEdit_GetTextMargins(this.h, (*C.int)(unsafe.Pointer(left)), (*C.int)(unsafe.Pointer(top)), (*C.int)(unsafe.Pointer(right)), (*C.int)(unsafe.Pointer(bottom)))
+	C.QLineEdit_getTextMargins(this.h, (*C.int)(unsafe.Pointer(left)), (*C.int)(unsafe.Pointer(top)), (*C.int)(unsafe.Pointer(right)), (*C.int)(unsafe.Pointer(bottom)))
 }
 
 func (this *QLineEdit) TextMargins() *QMargins {
-	_goptr := newQMargins(C.QLineEdit_TextMargins(this.h))
+	_goptr := newQMargins(C.QLineEdit_textMargins(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLineEdit) AddAction(action *QAction, position QLineEdit__ActionPosition) {
-	C.QLineEdit_AddAction(this.h, action.cPointer(), (C.int)(position))
+	C.QLineEdit_addAction(this.h, action.cPointer(), (C.int)(position))
 }
 
 func (this *QLineEdit) AddAction2(icon *QIcon, position QLineEdit__ActionPosition) *QAction {
-	return newQAction(C.QLineEdit_AddAction2(this.h, icon.cPointer(), (C.int)(position)))
+	return newQAction(C.QLineEdit_addAction2(this.h, icon.cPointer(), (C.int)(position)))
 }
 
 func (this *QLineEdit) SetText(text string) {
@@ -384,39 +384,39 @@ func (this *QLineEdit) SetText(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QLineEdit_SetText(this.h, text_ms)
+	C.QLineEdit_setText(this.h, text_ms)
 }
 
 func (this *QLineEdit) Clear() {
-	C.QLineEdit_Clear(this.h)
+	C.QLineEdit_clear(this.h)
 }
 
 func (this *QLineEdit) SelectAll() {
-	C.QLineEdit_SelectAll(this.h)
+	C.QLineEdit_selectAll(this.h)
 }
 
 func (this *QLineEdit) Undo() {
-	C.QLineEdit_Undo(this.h)
+	C.QLineEdit_undo(this.h)
 }
 
 func (this *QLineEdit) Redo() {
-	C.QLineEdit_Redo(this.h)
+	C.QLineEdit_redo(this.h)
 }
 
 func (this *QLineEdit) Cut() {
-	C.QLineEdit_Cut(this.h)
+	C.QLineEdit_cut(this.h)
 }
 
 func (this *QLineEdit) Copy() {
-	C.QLineEdit_Copy(this.h)
+	C.QLineEdit_copy(this.h)
 }
 
 func (this *QLineEdit) Paste() {
-	C.QLineEdit_Paste(this.h)
+	C.QLineEdit_paste(this.h)
 }
 
 func (this *QLineEdit) Deselect() {
-	C.QLineEdit_Deselect(this.h)
+	C.QLineEdit_deselect(this.h)
 }
 
 func (this *QLineEdit) Insert(param1 string) {
@@ -424,11 +424,11 @@ func (this *QLineEdit) Insert(param1 string) {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	C.QLineEdit_Insert(this.h, param1_ms)
+	C.QLineEdit_insert(this.h, param1_ms)
 }
 
 func (this *QLineEdit) CreateStandardContextMenu() *QMenu {
-	return newQMenu(C.QLineEdit_CreateStandardContextMenu(this.h))
+	return newQMenu(C.QLineEdit_createStandardContextMenu(this.h))
 }
 
 func (this *QLineEdit) TextChanged(param1 string) {
@@ -436,14 +436,14 @@ func (this *QLineEdit) TextChanged(param1 string) {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	C.QLineEdit_TextChanged(this.h, param1_ms)
+	C.QLineEdit_textChanged(this.h, param1_ms)
 }
 func (this *QLineEdit) OnTextChanged(slot func(param1 string)) {
-	C.QLineEdit_connect_TextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QLineEdit_connect_textChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QLineEdit_TextChanged
-func miqt_exec_callback_QLineEdit_TextChanged(cb C.intptr_t, param1 C.struct_miqt_string) {
+//export miqt_exec_callback_QLineEdit_textChanged
+func miqt_exec_callback_QLineEdit_textChanged(cb C.intptr_t, param1 C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -463,14 +463,14 @@ func (this *QLineEdit) TextEdited(param1 string) {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	C.QLineEdit_TextEdited(this.h, param1_ms)
+	C.QLineEdit_textEdited(this.h, param1_ms)
 }
 func (this *QLineEdit) OnTextEdited(slot func(param1 string)) {
-	C.QLineEdit_connect_TextEdited(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QLineEdit_connect_textEdited(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QLineEdit_TextEdited
-func miqt_exec_callback_QLineEdit_TextEdited(cb C.intptr_t, param1 C.struct_miqt_string) {
+//export miqt_exec_callback_QLineEdit_textEdited
+func miqt_exec_callback_QLineEdit_textEdited(cb C.intptr_t, param1 C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -486,14 +486,14 @@ func miqt_exec_callback_QLineEdit_TextEdited(cb C.intptr_t, param1 C.struct_miqt
 }
 
 func (this *QLineEdit) CursorPositionChanged(param1 int, param2 int) {
-	C.QLineEdit_CursorPositionChanged(this.h, (C.int)(param1), (C.int)(param2))
+	C.QLineEdit_cursorPositionChanged(this.h, (C.int)(param1), (C.int)(param2))
 }
 func (this *QLineEdit) OnCursorPositionChanged(slot func(param1 int, param2 int)) {
-	C.QLineEdit_connect_CursorPositionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QLineEdit_connect_cursorPositionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QLineEdit_CursorPositionChanged
-func miqt_exec_callback_QLineEdit_CursorPositionChanged(cb C.intptr_t, param1 C.int, param2 C.int) {
+//export miqt_exec_callback_QLineEdit_cursorPositionChanged
+func miqt_exec_callback_QLineEdit_cursorPositionChanged(cb C.intptr_t, param1 C.int, param2 C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int, param2 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -508,14 +508,14 @@ func miqt_exec_callback_QLineEdit_CursorPositionChanged(cb C.intptr_t, param1 C.
 }
 
 func (this *QLineEdit) ReturnPressed() {
-	C.QLineEdit_ReturnPressed(this.h)
+	C.QLineEdit_returnPressed(this.h)
 }
 func (this *QLineEdit) OnReturnPressed(slot func()) {
-	C.QLineEdit_connect_ReturnPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QLineEdit_connect_returnPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QLineEdit_ReturnPressed
-func miqt_exec_callback_QLineEdit_ReturnPressed(cb C.intptr_t) {
+//export miqt_exec_callback_QLineEdit_returnPressed
+func miqt_exec_callback_QLineEdit_returnPressed(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -525,14 +525,14 @@ func miqt_exec_callback_QLineEdit_ReturnPressed(cb C.intptr_t) {
 }
 
 func (this *QLineEdit) EditingFinished() {
-	C.QLineEdit_EditingFinished(this.h)
+	C.QLineEdit_editingFinished(this.h)
 }
 func (this *QLineEdit) OnEditingFinished(slot func()) {
-	C.QLineEdit_connect_EditingFinished(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QLineEdit_connect_editingFinished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QLineEdit_EditingFinished
-func miqt_exec_callback_QLineEdit_EditingFinished(cb C.intptr_t) {
+//export miqt_exec_callback_QLineEdit_editingFinished
+func miqt_exec_callback_QLineEdit_editingFinished(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -542,14 +542,14 @@ func miqt_exec_callback_QLineEdit_EditingFinished(cb C.intptr_t) {
 }
 
 func (this *QLineEdit) SelectionChanged() {
-	C.QLineEdit_SelectionChanged(this.h)
+	C.QLineEdit_selectionChanged(this.h)
 }
 func (this *QLineEdit) OnSelectionChanged(slot func()) {
-	C.QLineEdit_connect_SelectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QLineEdit_connect_selectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QLineEdit_SelectionChanged
-func miqt_exec_callback_QLineEdit_SelectionChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QLineEdit_selectionChanged
+func miqt_exec_callback_QLineEdit_selectionChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -559,14 +559,14 @@ func miqt_exec_callback_QLineEdit_SelectionChanged(cb C.intptr_t) {
 }
 
 func (this *QLineEdit) InputRejected() {
-	C.QLineEdit_InputRejected(this.h)
+	C.QLineEdit_inputRejected(this.h)
 }
 func (this *QLineEdit) OnInputRejected(slot func()) {
-	C.QLineEdit_connect_InputRejected(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QLineEdit_connect_inputRejected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QLineEdit_InputRejected
-func miqt_exec_callback_QLineEdit_InputRejected(cb C.intptr_t) {
+//export miqt_exec_callback_QLineEdit_inputRejected
+func miqt_exec_callback_QLineEdit_inputRejected(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -576,19 +576,19 @@ func miqt_exec_callback_QLineEdit_InputRejected(cb C.intptr_t) {
 }
 
 func (this *QLineEdit) InputMethodQuery(param1 InputMethodQuery) *QVariant {
-	_goptr := newQVariant(C.QLineEdit_InputMethodQuery(this.h, (C.int)(param1)))
+	_goptr := newQVariant(C.QLineEdit_inputMethodQuery(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLineEdit) InputMethodQuery2(property InputMethodQuery, argument QVariant) *QVariant {
-	_goptr := newQVariant(C.QLineEdit_InputMethodQuery2(this.h, (C.int)(property), argument.cPointer()))
+	_goptr := newQVariant(C.QLineEdit_inputMethodQuery2(this.h, (C.int)(property), argument.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLineEdit) Event(param1 *QEvent) bool {
-	return (bool)(C.QLineEdit_Event(this.h, param1.cPointer()))
+	return (bool)(C.QLineEdit_event(this.h, param1.cPointer()))
 }
 
 func QLineEdit_Tr2(s string, c string) string {
@@ -596,7 +596,7 @@ func QLineEdit_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QLineEdit_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QLineEdit_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -607,7 +607,7 @@ func QLineEdit_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QLineEdit_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QLineEdit_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -618,7 +618,7 @@ func QLineEdit_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QLineEdit_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QLineEdit_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -629,36 +629,36 @@ func QLineEdit_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QLineEdit_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QLineEdit_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLineEdit) CursorForward2(mark bool, steps int) {
-	C.QLineEdit_CursorForward2(this.h, (C.bool)(mark), (C.int)(steps))
+	C.QLineEdit_cursorForward2(this.h, (C.bool)(mark), (C.int)(steps))
 }
 
 func (this *QLineEdit) CursorBackward2(mark bool, steps int) {
-	C.QLineEdit_CursorBackward2(this.h, (C.bool)(mark), (C.int)(steps))
+	C.QLineEdit_cursorBackward2(this.h, (C.bool)(mark), (C.int)(steps))
 }
 
 func (this *QLineEdit) callVirtualBase_SizeHint() *QSize {
 
-	_goptr := newQSize(C.QLineEdit_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QLineEdit_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QLineEdit) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QLineEdit_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnsizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QLineEdit_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_SizeHint
-func miqt_exec_callback_QLineEdit_SizeHint(self *C.QLineEdit, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QLineEdit_sizeHint
+func miqt_exec_callback_QLineEdit_sizeHint(self *C.QLineEdit, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -672,20 +672,20 @@ func miqt_exec_callback_QLineEdit_SizeHint(self *C.QLineEdit, cb C.intptr_t) *C.
 
 func (this *QLineEdit) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_goptr := newQSize(C.QLineEdit_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QLineEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QLineEdit) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QLineEdit_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QLineEdit_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_MinimumSizeHint
-func miqt_exec_callback_QLineEdit_MinimumSizeHint(self *C.QLineEdit, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QLineEdit_minimumSizeHint
+func miqt_exec_callback_QLineEdit_minimumSizeHint(self *C.QLineEdit, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -699,18 +699,18 @@ func miqt_exec_callback_QLineEdit_MinimumSizeHint(self *C.QLineEdit, cb C.intptr
 
 func (this *QLineEdit) callVirtualBase_MousePressEvent(param1 *QMouseEvent) {
 
-	C.QLineEdit_virtualbase_MousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QLineEdit_virtualbase_mousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QLineEdit) OnMousePressEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	ok := C.QLineEdit_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnmousePressEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	ok := C.QLineEdit_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_MousePressEvent
-func miqt_exec_callback_QLineEdit_MousePressEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QMouseEvent) {
+//export miqt_exec_callback_QLineEdit_mousePressEvent
+func miqt_exec_callback_QLineEdit_mousePressEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -725,18 +725,18 @@ func miqt_exec_callback_QLineEdit_MousePressEvent(self *C.QLineEdit, cb C.intptr
 
 func (this *QLineEdit) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
 
-	C.QLineEdit_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QLineEdit_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QLineEdit) OnMouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	ok := C.QLineEdit_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnmouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	ok := C.QLineEdit_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_MouseMoveEvent
-func miqt_exec_callback_QLineEdit_MouseMoveEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QMouseEvent) {
+//export miqt_exec_callback_QLineEdit_mouseMoveEvent
+func miqt_exec_callback_QLineEdit_mouseMoveEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -751,18 +751,18 @@ func miqt_exec_callback_QLineEdit_MouseMoveEvent(self *C.QLineEdit, cb C.intptr_
 
 func (this *QLineEdit) callVirtualBase_MouseReleaseEvent(param1 *QMouseEvent) {
 
-	C.QLineEdit_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QLineEdit_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QLineEdit) OnMouseReleaseEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	ok := C.QLineEdit_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnmouseReleaseEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	ok := C.QLineEdit_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_MouseReleaseEvent
-func miqt_exec_callback_QLineEdit_MouseReleaseEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QMouseEvent) {
+//export miqt_exec_callback_QLineEdit_mouseReleaseEvent
+func miqt_exec_callback_QLineEdit_mouseReleaseEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -777,18 +777,18 @@ func miqt_exec_callback_QLineEdit_MouseReleaseEvent(self *C.QLineEdit, cb C.intp
 
 func (this *QLineEdit) callVirtualBase_MouseDoubleClickEvent(param1 *QMouseEvent) {
 
-	C.QLineEdit_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QLineEdit_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QLineEdit) OnMouseDoubleClickEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	ok := C.QLineEdit_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnmouseDoubleClickEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	ok := C.QLineEdit_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_MouseDoubleClickEvent
-func miqt_exec_callback_QLineEdit_MouseDoubleClickEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QMouseEvent) {
+//export miqt_exec_callback_QLineEdit_mouseDoubleClickEvent
+func miqt_exec_callback_QLineEdit_mouseDoubleClickEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -803,18 +803,18 @@ func miqt_exec_callback_QLineEdit_MouseDoubleClickEvent(self *C.QLineEdit, cb C.
 
 func (this *QLineEdit) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
 
-	C.QLineEdit_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QLineEdit_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QLineEdit) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
-	ok := C.QLineEdit_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnkeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
+	ok := C.QLineEdit_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_KeyPressEvent
-func miqt_exec_callback_QLineEdit_KeyPressEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QKeyEvent) {
+//export miqt_exec_callback_QLineEdit_keyPressEvent
+func miqt_exec_callback_QLineEdit_keyPressEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QKeyEvent), param1 *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -829,18 +829,18 @@ func miqt_exec_callback_QLineEdit_KeyPressEvent(self *C.QLineEdit, cb C.intptr_t
 
 func (this *QLineEdit) callVirtualBase_FocusInEvent(param1 *QFocusEvent) {
 
-	C.QLineEdit_virtualbase_FocusInEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QLineEdit_virtualbase_focusInEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QLineEdit) OnFocusInEvent(slot func(super func(param1 *QFocusEvent), param1 *QFocusEvent)) {
-	ok := C.QLineEdit_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnfocusInEvent(slot func(super func(param1 *QFocusEvent), param1 *QFocusEvent)) {
+	ok := C.QLineEdit_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_FocusInEvent
-func miqt_exec_callback_QLineEdit_FocusInEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QFocusEvent) {
+//export miqt_exec_callback_QLineEdit_focusInEvent
+func miqt_exec_callback_QLineEdit_focusInEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QFocusEvent), param1 *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -855,18 +855,18 @@ func miqt_exec_callback_QLineEdit_FocusInEvent(self *C.QLineEdit, cb C.intptr_t,
 
 func (this *QLineEdit) callVirtualBase_FocusOutEvent(param1 *QFocusEvent) {
 
-	C.QLineEdit_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QLineEdit_virtualbase_focusOutEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QLineEdit) OnFocusOutEvent(slot func(super func(param1 *QFocusEvent), param1 *QFocusEvent)) {
-	ok := C.QLineEdit_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnfocusOutEvent(slot func(super func(param1 *QFocusEvent), param1 *QFocusEvent)) {
+	ok := C.QLineEdit_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_FocusOutEvent
-func miqt_exec_callback_QLineEdit_FocusOutEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QFocusEvent) {
+//export miqt_exec_callback_QLineEdit_focusOutEvent
+func miqt_exec_callback_QLineEdit_focusOutEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QFocusEvent), param1 *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -881,18 +881,18 @@ func miqt_exec_callback_QLineEdit_FocusOutEvent(self *C.QLineEdit, cb C.intptr_t
 
 func (this *QLineEdit) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
-	C.QLineEdit_virtualbase_PaintEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QLineEdit_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QLineEdit) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
-	ok := C.QLineEdit_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnpaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	ok := C.QLineEdit_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_PaintEvent
-func miqt_exec_callback_QLineEdit_PaintEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QPaintEvent) {
+//export miqt_exec_callback_QLineEdit_paintEvent
+func miqt_exec_callback_QLineEdit_paintEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QPaintEvent), param1 *QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -907,18 +907,18 @@ func miqt_exec_callback_QLineEdit_PaintEvent(self *C.QLineEdit, cb C.intptr_t, p
 
 func (this *QLineEdit) callVirtualBase_DragEnterEvent(param1 *QDragEnterEvent) {
 
-	C.QLineEdit_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QLineEdit_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QLineEdit) OnDragEnterEvent(slot func(super func(param1 *QDragEnterEvent), param1 *QDragEnterEvent)) {
-	ok := C.QLineEdit_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OndragEnterEvent(slot func(super func(param1 *QDragEnterEvent), param1 *QDragEnterEvent)) {
+	ok := C.QLineEdit_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_DragEnterEvent
-func miqt_exec_callback_QLineEdit_DragEnterEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QDragEnterEvent) {
+//export miqt_exec_callback_QLineEdit_dragEnterEvent
+func miqt_exec_callback_QLineEdit_dragEnterEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QDragEnterEvent), param1 *QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -933,18 +933,18 @@ func miqt_exec_callback_QLineEdit_DragEnterEvent(self *C.QLineEdit, cb C.intptr_
 
 func (this *QLineEdit) callVirtualBase_DragMoveEvent(e *QDragMoveEvent) {
 
-	C.QLineEdit_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QLineEdit_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QLineEdit) OnDragMoveEvent(slot func(super func(e *QDragMoveEvent), e *QDragMoveEvent)) {
-	ok := C.QLineEdit_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OndragMoveEvent(slot func(super func(e *QDragMoveEvent), e *QDragMoveEvent)) {
+	ok := C.QLineEdit_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_DragMoveEvent
-func miqt_exec_callback_QLineEdit_DragMoveEvent(self *C.QLineEdit, cb C.intptr_t, e *C.QDragMoveEvent) {
+//export miqt_exec_callback_QLineEdit_dragMoveEvent
+func miqt_exec_callback_QLineEdit_dragMoveEvent(self *C.QLineEdit, cb C.intptr_t, e *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QDragMoveEvent), e *QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -959,18 +959,18 @@ func miqt_exec_callback_QLineEdit_DragMoveEvent(self *C.QLineEdit, cb C.intptr_t
 
 func (this *QLineEdit) callVirtualBase_DragLeaveEvent(e *QDragLeaveEvent) {
 
-	C.QLineEdit_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QLineEdit_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QLineEdit) OnDragLeaveEvent(slot func(super func(e *QDragLeaveEvent), e *QDragLeaveEvent)) {
-	ok := C.QLineEdit_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OndragLeaveEvent(slot func(super func(e *QDragLeaveEvent), e *QDragLeaveEvent)) {
+	ok := C.QLineEdit_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_DragLeaveEvent
-func miqt_exec_callback_QLineEdit_DragLeaveEvent(self *C.QLineEdit, cb C.intptr_t, e *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QLineEdit_dragLeaveEvent
+func miqt_exec_callback_QLineEdit_dragLeaveEvent(self *C.QLineEdit, cb C.intptr_t, e *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QDragLeaveEvent), e *QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -985,18 +985,18 @@ func miqt_exec_callback_QLineEdit_DragLeaveEvent(self *C.QLineEdit, cb C.intptr_
 
 func (this *QLineEdit) callVirtualBase_DropEvent(param1 *QDropEvent) {
 
-	C.QLineEdit_virtualbase_DropEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QLineEdit_virtualbase_dropEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QLineEdit) OnDropEvent(slot func(super func(param1 *QDropEvent), param1 *QDropEvent)) {
-	ok := C.QLineEdit_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OndropEvent(slot func(super func(param1 *QDropEvent), param1 *QDropEvent)) {
+	ok := C.QLineEdit_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_DropEvent
-func miqt_exec_callback_QLineEdit_DropEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QDropEvent) {
+//export miqt_exec_callback_QLineEdit_dropEvent
+func miqt_exec_callback_QLineEdit_dropEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QDropEvent), param1 *QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1011,18 +1011,18 @@ func miqt_exec_callback_QLineEdit_DropEvent(self *C.QLineEdit, cb C.intptr_t, pa
 
 func (this *QLineEdit) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
-	C.QLineEdit_virtualbase_ChangeEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QLineEdit_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QLineEdit) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
-	ok := C.QLineEdit_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnchangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	ok := C.QLineEdit_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_ChangeEvent
-func miqt_exec_callback_QLineEdit_ChangeEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QEvent) {
+//export miqt_exec_callback_QLineEdit_changeEvent
+func miqt_exec_callback_QLineEdit_changeEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent), param1 *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1037,18 +1037,18 @@ func miqt_exec_callback_QLineEdit_ChangeEvent(self *C.QLineEdit, cb C.intptr_t, 
 
 func (this *QLineEdit) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
 
-	C.QLineEdit_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QLineEdit_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QLineEdit) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
-	ok := C.QLineEdit_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OncontextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+	ok := C.QLineEdit_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_ContextMenuEvent
-func miqt_exec_callback_QLineEdit_ContextMenuEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QContextMenuEvent) {
+//export miqt_exec_callback_QLineEdit_contextMenuEvent
+func miqt_exec_callback_QLineEdit_contextMenuEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1063,18 +1063,18 @@ func miqt_exec_callback_QLineEdit_ContextMenuEvent(self *C.QLineEdit, cb C.intpt
 
 func (this *QLineEdit) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
 
-	C.QLineEdit_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QLineEdit_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QLineEdit) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
-	ok := C.QLineEdit_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QLineEdit_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_InputMethodEvent
-func miqt_exec_callback_QLineEdit_InputMethodEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QLineEdit_inputMethodEvent
+func miqt_exec_callback_QLineEdit_inputMethodEvent(self *C.QLineEdit, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1089,20 +1089,20 @@ func miqt_exec_callback_QLineEdit_InputMethodEvent(self *C.QLineEdit, cb C.intpt
 
 func (this *QLineEdit) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_goptr := newQVariant(C.QLineEdit_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
+	_goptr := newQVariant(C.QLineEdit_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QLineEdit) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
-	ok := C.QLineEdit_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	ok := C.QLineEdit_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_InputMethodQuery
-func miqt_exec_callback_QLineEdit_InputMethodQuery(self *C.QLineEdit, cb C.intptr_t, param1 C.int) *C.QVariant {
+//export miqt_exec_callback_QLineEdit_inputMethodQuery
+func miqt_exec_callback_QLineEdit_inputMethodQuery(self *C.QLineEdit, cb C.intptr_t, param1 C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1119,18 +1119,18 @@ func miqt_exec_callback_QLineEdit_InputMethodQuery(self *C.QLineEdit, cb C.intpt
 
 func (this *QLineEdit) callVirtualBase_Event(param1 *QEvent) bool {
 
-	return (bool)(C.QLineEdit_virtualbase_Event(unsafe.Pointer(this.h), param1.cPointer()))
+	return (bool)(C.QLineEdit_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
 }
-func (this *QLineEdit) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
-	ok := C.QLineEdit_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) Onevent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	ok := C.QLineEdit_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_Event
-func miqt_exec_callback_QLineEdit_Event(self *C.QLineEdit, cb C.intptr_t, param1 *C.QEvent) C.bool {
+//export miqt_exec_callback_QLineEdit_event
+func miqt_exec_callback_QLineEdit_event(self *C.QLineEdit, cb C.intptr_t, param1 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent) bool, param1 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1147,18 +1147,18 @@ func miqt_exec_callback_QLineEdit_Event(self *C.QLineEdit, cb C.intptr_t, param1
 
 func (this *QLineEdit) callVirtualBase_DevType() int {
 
-	return (int)(C.QLineEdit_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QLineEdit_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QLineEdit) OnDevType(slot func(super func() int) int) {
-	ok := C.QLineEdit_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OndevType(slot func(super func() int) int) {
+	ok := C.QLineEdit_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_DevType
-func miqt_exec_callback_QLineEdit_DevType(self *C.QLineEdit, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QLineEdit_devType
+func miqt_exec_callback_QLineEdit_devType(self *C.QLineEdit, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1172,18 +1172,18 @@ func miqt_exec_callback_QLineEdit_DevType(self *C.QLineEdit, cb C.intptr_t) C.in
 
 func (this *QLineEdit) callVirtualBase_SetVisible(visible bool) {
 
-	C.QLineEdit_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QLineEdit_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QLineEdit) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QLineEdit_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QLineEdit_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_SetVisible
-func miqt_exec_callback_QLineEdit_SetVisible(self *C.QLineEdit, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QLineEdit_setVisible
+func miqt_exec_callback_QLineEdit_setVisible(self *C.QLineEdit, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1198,18 +1198,18 @@ func miqt_exec_callback_QLineEdit_SetVisible(self *C.QLineEdit, cb C.intptr_t, v
 
 func (this *QLineEdit) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QLineEdit_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QLineEdit_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QLineEdit) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QLineEdit_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QLineEdit_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_HeightForWidth
-func miqt_exec_callback_QLineEdit_HeightForWidth(self *C.QLineEdit, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QLineEdit_heightForWidth
+func miqt_exec_callback_QLineEdit_heightForWidth(self *C.QLineEdit, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1226,18 +1226,18 @@ func miqt_exec_callback_QLineEdit_HeightForWidth(self *C.QLineEdit, cb C.intptr_
 
 func (this *QLineEdit) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QLineEdit_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QLineEdit_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QLineEdit) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QLineEdit_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QLineEdit_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_HasHeightForWidth
-func miqt_exec_callback_QLineEdit_HasHeightForWidth(self *C.QLineEdit, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QLineEdit_hasHeightForWidth
+func miqt_exec_callback_QLineEdit_hasHeightForWidth(self *C.QLineEdit, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1251,18 +1251,18 @@ func miqt_exec_callback_QLineEdit_HasHeightForWidth(self *C.QLineEdit, cb C.intp
 
 func (this *QLineEdit) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return newQPaintEngine(C.QLineEdit_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+	return newQPaintEngine(C.QLineEdit_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QLineEdit) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	ok := C.QLineEdit_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QLineEdit_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_PaintEngine
-func miqt_exec_callback_QLineEdit_PaintEngine(self *C.QLineEdit, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QLineEdit_paintEngine
+func miqt_exec_callback_QLineEdit_paintEngine(self *C.QLineEdit, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1276,18 +1276,18 @@ func miqt_exec_callback_QLineEdit_PaintEngine(self *C.QLineEdit, cb C.intptr_t) 
 
 func (this *QLineEdit) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
-	C.QLineEdit_virtualbase_WheelEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLineEdit_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLineEdit) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
-	ok := C.QLineEdit_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnwheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+	ok := C.QLineEdit_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_WheelEvent
-func miqt_exec_callback_QLineEdit_WheelEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QWheelEvent) {
+//export miqt_exec_callback_QLineEdit_wheelEvent
+func miqt_exec_callback_QLineEdit_wheelEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QWheelEvent), event *QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1302,18 +1302,18 @@ func miqt_exec_callback_QLineEdit_WheelEvent(self *C.QLineEdit, cb C.intptr_t, e
 
 func (this *QLineEdit) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
-	C.QLineEdit_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLineEdit_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLineEdit) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QLineEdit_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QLineEdit_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_KeyReleaseEvent
-func miqt_exec_callback_QLineEdit_KeyReleaseEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QLineEdit_keyReleaseEvent
+func miqt_exec_callback_QLineEdit_keyReleaseEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1328,18 +1328,18 @@ func miqt_exec_callback_QLineEdit_KeyReleaseEvent(self *C.QLineEdit, cb C.intptr
 
 func (this *QLineEdit) callVirtualBase_EnterEvent(event *QEvent) {
 
-	C.QLineEdit_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLineEdit_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLineEdit) OnEnterEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QLineEdit_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnenterEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QLineEdit_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_EnterEvent
-func miqt_exec_callback_QLineEdit_EnterEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QLineEdit_enterEvent
+func miqt_exec_callback_QLineEdit_enterEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1354,18 +1354,18 @@ func miqt_exec_callback_QLineEdit_EnterEvent(self *C.QLineEdit, cb C.intptr_t, e
 
 func (this *QLineEdit) callVirtualBase_LeaveEvent(event *QEvent) {
 
-	C.QLineEdit_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLineEdit_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLineEdit) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QLineEdit_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QLineEdit_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_LeaveEvent
-func miqt_exec_callback_QLineEdit_LeaveEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QLineEdit_leaveEvent
+func miqt_exec_callback_QLineEdit_leaveEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1380,18 +1380,18 @@ func miqt_exec_callback_QLineEdit_LeaveEvent(self *C.QLineEdit, cb C.intptr_t, e
 
 func (this *QLineEdit) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
-	C.QLineEdit_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLineEdit_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLineEdit) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
-	ok := C.QLineEdit_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QLineEdit_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_MoveEvent
-func miqt_exec_callback_QLineEdit_MoveEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QLineEdit_moveEvent
+func miqt_exec_callback_QLineEdit_moveEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1406,18 +1406,18 @@ func miqt_exec_callback_QLineEdit_MoveEvent(self *C.QLineEdit, cb C.intptr_t, ev
 
 func (this *QLineEdit) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 
-	C.QLineEdit_virtualbase_ResizeEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLineEdit_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLineEdit) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
-	ok := C.QLineEdit_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnresizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+	ok := C.QLineEdit_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_ResizeEvent
-func miqt_exec_callback_QLineEdit_ResizeEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QResizeEvent) {
+//export miqt_exec_callback_QLineEdit_resizeEvent
+func miqt_exec_callback_QLineEdit_resizeEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QResizeEvent), event *QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1432,18 +1432,18 @@ func miqt_exec_callback_QLineEdit_ResizeEvent(self *C.QLineEdit, cb C.intptr_t, 
 
 func (this *QLineEdit) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
-	C.QLineEdit_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLineEdit_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLineEdit) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
-	ok := C.QLineEdit_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QLineEdit_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_CloseEvent
-func miqt_exec_callback_QLineEdit_CloseEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QLineEdit_closeEvent
+func miqt_exec_callback_QLineEdit_closeEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1458,18 +1458,18 @@ func miqt_exec_callback_QLineEdit_CloseEvent(self *C.QLineEdit, cb C.intptr_t, e
 
 func (this *QLineEdit) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
-	C.QLineEdit_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLineEdit_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLineEdit) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
-	ok := C.QLineEdit_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QLineEdit_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_TabletEvent
-func miqt_exec_callback_QLineEdit_TabletEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QLineEdit_tabletEvent
+func miqt_exec_callback_QLineEdit_tabletEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1484,18 +1484,18 @@ func miqt_exec_callback_QLineEdit_TabletEvent(self *C.QLineEdit, cb C.intptr_t, 
 
 func (this *QLineEdit) callVirtualBase_ActionEvent(event *QActionEvent) {
 
-	C.QLineEdit_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLineEdit_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLineEdit) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
-	ok := C.QLineEdit_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QLineEdit_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_ActionEvent
-func miqt_exec_callback_QLineEdit_ActionEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QLineEdit_actionEvent
+func miqt_exec_callback_QLineEdit_actionEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1510,18 +1510,18 @@ func miqt_exec_callback_QLineEdit_ActionEvent(self *C.QLineEdit, cb C.intptr_t, 
 
 func (this *QLineEdit) callVirtualBase_ShowEvent(event *QShowEvent) {
 
-	C.QLineEdit_virtualbase_ShowEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLineEdit_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLineEdit) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
-	ok := C.QLineEdit_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnshowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	ok := C.QLineEdit_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_ShowEvent
-func miqt_exec_callback_QLineEdit_ShowEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QShowEvent) {
+//export miqt_exec_callback_QLineEdit_showEvent
+func miqt_exec_callback_QLineEdit_showEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QShowEvent), event *QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1536,18 +1536,18 @@ func miqt_exec_callback_QLineEdit_ShowEvent(self *C.QLineEdit, cb C.intptr_t, ev
 
 func (this *QLineEdit) callVirtualBase_HideEvent(event *QHideEvent) {
 
-	C.QLineEdit_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLineEdit_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLineEdit) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
-	ok := C.QLineEdit_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QLineEdit_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_HideEvent
-func miqt_exec_callback_QLineEdit_HideEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_QLineEdit_hideEvent
+func miqt_exec_callback_QLineEdit_hideEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1569,18 +1569,18 @@ func (this *QLineEdit) callVirtualBase_NativeEvent(eventType []byte, message uns
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QLineEdit_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
+	return (bool)(C.QLineEdit_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QLineEdit) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
-	ok := C.QLineEdit_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	ok := C.QLineEdit_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_NativeEvent
-func miqt_exec_callback_QLineEdit_NativeEvent(self *C.QLineEdit, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
+//export miqt_exec_callback_QLineEdit_nativeEvent
+func miqt_exec_callback_QLineEdit_nativeEvent(self *C.QLineEdit, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1603,18 +1603,18 @@ func miqt_exec_callback_QLineEdit_NativeEvent(self *C.QLineEdit, cb C.intptr_t, 
 
 func (this *QLineEdit) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QLineEdit_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QLineEdit_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QLineEdit) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QLineEdit_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QLineEdit_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_Metric
-func miqt_exec_callback_QLineEdit_Metric(self *C.QLineEdit, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QLineEdit_metric
+func miqt_exec_callback_QLineEdit_metric(self *C.QLineEdit, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1631,18 +1631,18 @@ func miqt_exec_callback_QLineEdit_Metric(self *C.QLineEdit, cb C.intptr_t, param
 
 func (this *QLineEdit) callVirtualBase_InitPainter(painter *QPainter) {
 
-	C.QLineEdit_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+	C.QLineEdit_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QLineEdit) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	ok := C.QLineEdit_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QLineEdit_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_InitPainter
-func miqt_exec_callback_QLineEdit_InitPainter(self *C.QLineEdit, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QLineEdit_initPainter
+func miqt_exec_callback_QLineEdit_initPainter(self *C.QLineEdit, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1657,18 +1657,18 @@ func miqt_exec_callback_QLineEdit_InitPainter(self *C.QLineEdit, cb C.intptr_t, 
 
 func (this *QLineEdit) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return newQPaintDevice(C.QLineEdit_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+	return newQPaintDevice(C.QLineEdit_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QLineEdit) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	ok := C.QLineEdit_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QLineEdit_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_Redirected
-func miqt_exec_callback_QLineEdit_Redirected(self *C.QLineEdit, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QLineEdit_redirected
+func miqt_exec_callback_QLineEdit_redirected(self *C.QLineEdit, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1685,18 +1685,18 @@ func miqt_exec_callback_QLineEdit_Redirected(self *C.QLineEdit, cb C.intptr_t, o
 
 func (this *QLineEdit) callVirtualBase_SharedPainter() *QPainter {
 
-	return newQPainter(C.QLineEdit_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+	return newQPainter(C.QLineEdit_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QLineEdit) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	ok := C.QLineEdit_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QLineEdit_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_SharedPainter
-func miqt_exec_callback_QLineEdit_SharedPainter(self *C.QLineEdit, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QLineEdit_sharedPainter
+func miqt_exec_callback_QLineEdit_sharedPainter(self *C.QLineEdit, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1710,18 +1710,18 @@ func miqt_exec_callback_QLineEdit_SharedPainter(self *C.QLineEdit, cb C.intptr_t
 
 func (this *QLineEdit) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QLineEdit_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QLineEdit_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QLineEdit) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QLineEdit_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QLineEdit_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_FocusNextPrevChild
-func miqt_exec_callback_QLineEdit_FocusNextPrevChild(self *C.QLineEdit, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QLineEdit_focusNextPrevChild
+func miqt_exec_callback_QLineEdit_focusNextPrevChild(self *C.QLineEdit, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1738,18 +1738,18 @@ func miqt_exec_callback_QLineEdit_FocusNextPrevChild(self *C.QLineEdit, cb C.int
 
 func (this *QLineEdit) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QLineEdit_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QLineEdit_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QLineEdit) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QLineEdit_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QLineEdit_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_EventFilter
-func miqt_exec_callback_QLineEdit_EventFilter(self *C.QLineEdit, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QLineEdit_eventFilter
+func miqt_exec_callback_QLineEdit_eventFilter(self *C.QLineEdit, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1768,18 +1768,18 @@ func miqt_exec_callback_QLineEdit_EventFilter(self *C.QLineEdit, cb C.intptr_t, 
 
 func (this *QLineEdit) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QLineEdit_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLineEdit_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLineEdit) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QLineEdit_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QLineEdit_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_TimerEvent
-func miqt_exec_callback_QLineEdit_TimerEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QLineEdit_timerEvent
+func miqt_exec_callback_QLineEdit_timerEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1794,18 +1794,18 @@ func miqt_exec_callback_QLineEdit_TimerEvent(self *C.QLineEdit, cb C.intptr_t, e
 
 func (this *QLineEdit) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QLineEdit_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLineEdit_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLineEdit) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QLineEdit_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QLineEdit_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_ChildEvent
-func miqt_exec_callback_QLineEdit_ChildEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QLineEdit_childEvent
+func miqt_exec_callback_QLineEdit_childEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1820,18 +1820,18 @@ func miqt_exec_callback_QLineEdit_ChildEvent(self *C.QLineEdit, cb C.intptr_t, e
 
 func (this *QLineEdit) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QLineEdit_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLineEdit_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLineEdit) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QLineEdit_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QLineEdit_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_CustomEvent
-func miqt_exec_callback_QLineEdit_CustomEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QLineEdit_customEvent
+func miqt_exec_callback_QLineEdit_customEvent(self *C.QLineEdit, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1846,18 +1846,18 @@ func miqt_exec_callback_QLineEdit_CustomEvent(self *C.QLineEdit, cb C.intptr_t, 
 
 func (this *QLineEdit) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QLineEdit_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QLineEdit_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QLineEdit) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QLineEdit_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QLineEdit_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_ConnectNotify
-func miqt_exec_callback_QLineEdit_ConnectNotify(self *C.QLineEdit, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QLineEdit_connectNotify
+func miqt_exec_callback_QLineEdit_connectNotify(self *C.QLineEdit, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1872,18 +1872,18 @@ func miqt_exec_callback_QLineEdit_ConnectNotify(self *C.QLineEdit, cb C.intptr_t
 
 func (this *QLineEdit) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QLineEdit_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QLineEdit_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QLineEdit) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QLineEdit_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLineEdit) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QLineEdit_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLineEdit_DisconnectNotify
-func miqt_exec_callback_QLineEdit_DisconnectNotify(self *C.QLineEdit, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QLineEdit_disconnectNotify
+func miqt_exec_callback_QLineEdit_disconnectNotify(self *C.QLineEdit, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1898,7 +1898,7 @@ func miqt_exec_callback_QLineEdit_DisconnectNotify(self *C.QLineEdit, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QLineEdit) Delete() {
-	C.QLineEdit_Delete(this.h)
+	C.QLineEdit_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

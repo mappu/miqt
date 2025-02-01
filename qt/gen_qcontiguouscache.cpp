@@ -10,15 +10,15 @@ extern "C" {
 } /* extern C */
 #endif
 
-QContiguousCacheData* QContiguousCacheData_AllocateData(int size, int alignment) {
+QContiguousCacheData* QContiguousCacheData_allocateData(int size, int alignment) {
 	return QContiguousCacheData::allocateData(static_cast<int>(size), static_cast<int>(alignment));
 }
 
-void QContiguousCacheData_FreeData(QContiguousCacheData* data) {
+void QContiguousCacheData_freeData(QContiguousCacheData* data) {
 	QContiguousCacheData::freeData(data);
 }
 
-void QContiguousCacheData_Delete(QContiguousCacheData* self) {
+void QContiguousCacheData_delete(QContiguousCacheData* self) {
 	delete self;
 }
 

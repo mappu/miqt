@@ -24,19 +24,19 @@ QWebEngineContextMenuData* QWebEngineContextMenuData_new2(QWebEngineContextMenuD
 	return new QWebEngineContextMenuData(*other);
 }
 
-void QWebEngineContextMenuData_OperatorAssign(QWebEngineContextMenuData* self, QWebEngineContextMenuData* other) {
+void QWebEngineContextMenuData_operatorAssign(QWebEngineContextMenuData* self, QWebEngineContextMenuData* other) {
 	self->operator=(*other);
 }
 
-bool QWebEngineContextMenuData_IsValid(const QWebEngineContextMenuData* self) {
+bool QWebEngineContextMenuData_isValid(const QWebEngineContextMenuData* self) {
 	return self->isValid();
 }
 
-QPoint* QWebEngineContextMenuData_Position(const QWebEngineContextMenuData* self) {
+QPoint* QWebEngineContextMenuData_position(const QWebEngineContextMenuData* self) {
 	return new QPoint(self->position());
 }
 
-struct miqt_string QWebEngineContextMenuData_SelectedText(const QWebEngineContextMenuData* self) {
+struct miqt_string QWebEngineContextMenuData_selectedText(const QWebEngineContextMenuData* self) {
 	QString _ret = self->selectedText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -47,7 +47,7 @@ struct miqt_string QWebEngineContextMenuData_SelectedText(const QWebEngineContex
 	return _ms;
 }
 
-struct miqt_string QWebEngineContextMenuData_LinkText(const QWebEngineContextMenuData* self) {
+struct miqt_string QWebEngineContextMenuData_linkText(const QWebEngineContextMenuData* self) {
 	QString _ret = self->linkText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -58,24 +58,24 @@ struct miqt_string QWebEngineContextMenuData_LinkText(const QWebEngineContextMen
 	return _ms;
 }
 
-QUrl* QWebEngineContextMenuData_LinkUrl(const QWebEngineContextMenuData* self) {
+QUrl* QWebEngineContextMenuData_linkUrl(const QWebEngineContextMenuData* self) {
 	return new QUrl(self->linkUrl());
 }
 
-QUrl* QWebEngineContextMenuData_MediaUrl(const QWebEngineContextMenuData* self) {
+QUrl* QWebEngineContextMenuData_mediaUrl(const QWebEngineContextMenuData* self) {
 	return new QUrl(self->mediaUrl());
 }
 
-int QWebEngineContextMenuData_MediaType(const QWebEngineContextMenuData* self) {
+int QWebEngineContextMenuData_mediaType(const QWebEngineContextMenuData* self) {
 	QWebEngineContextMenuData::MediaType _ret = self->mediaType();
 	return static_cast<int>(_ret);
 }
 
-bool QWebEngineContextMenuData_IsContentEditable(const QWebEngineContextMenuData* self) {
+bool QWebEngineContextMenuData_isContentEditable(const QWebEngineContextMenuData* self) {
 	return self->isContentEditable();
 }
 
-struct miqt_string QWebEngineContextMenuData_MisspelledWord(const QWebEngineContextMenuData* self) {
+struct miqt_string QWebEngineContextMenuData_misspelledWord(const QWebEngineContextMenuData* self) {
 	QString _ret = self->misspelledWord();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -86,7 +86,7 @@ struct miqt_string QWebEngineContextMenuData_MisspelledWord(const QWebEngineCont
 	return _ms;
 }
 
-struct miqt_array /* of struct miqt_string */  QWebEngineContextMenuData_SpellCheckerSuggestions(const QWebEngineContextMenuData* self) {
+struct miqt_array /* of struct miqt_string */  QWebEngineContextMenuData_spellCheckerSuggestions(const QWebEngineContextMenuData* self) {
 	QStringList _ret = self->spellCheckerSuggestions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -106,17 +106,17 @@ struct miqt_array /* of struct miqt_string */  QWebEngineContextMenuData_SpellCh
 	return _out;
 }
 
-int QWebEngineContextMenuData_MediaFlags(const QWebEngineContextMenuData* self) {
+int QWebEngineContextMenuData_mediaFlags(const QWebEngineContextMenuData* self) {
 	QWebEngineContextMenuData::MediaFlags _ret = self->mediaFlags();
 	return static_cast<int>(_ret);
 }
 
-int QWebEngineContextMenuData_EditFlags(const QWebEngineContextMenuData* self) {
+int QWebEngineContextMenuData_editFlags(const QWebEngineContextMenuData* self) {
 	QWebEngineContextMenuData::EditFlags _ret = self->editFlags();
 	return static_cast<int>(_ret);
 }
 
-void QWebEngineContextMenuData_Delete(QWebEngineContextMenuData* self) {
+void QWebEngineContextMenuData_delete(QWebEngineContextMenuData* self) {
 	delete self;
 }
 

@@ -53,24 +53,24 @@ func NewQWebEngineFullScreenRequest(param1 *QWebEngineFullScreenRequest) *QWebEn
 }
 
 func (this *QWebEngineFullScreenRequest) Reject() {
-	C.QWebEngineFullScreenRequest_Reject(this.h)
+	C.QWebEngineFullScreenRequest_reject(this.h)
 }
 
 func (this *QWebEngineFullScreenRequest) Accept() {
-	C.QWebEngineFullScreenRequest_Accept(this.h)
+	C.QWebEngineFullScreenRequest_accept(this.h)
 }
 
 func (this *QWebEngineFullScreenRequest) ToggleOn() bool {
-	return (bool)(C.QWebEngineFullScreenRequest_ToggleOn(this.h))
+	return (bool)(C.QWebEngineFullScreenRequest_toggleOn(this.h))
 }
 
 func (this *QWebEngineFullScreenRequest) Origin() *qt.QUrl {
-	return qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineFullScreenRequest_Origin(this.h)))
+	return qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineFullScreenRequest_origin(this.h)))
 }
 
 // Delete this object from C++ memory.
 func (this *QWebEngineFullScreenRequest) Delete() {
-	C.QWebEngineFullScreenRequest_Delete(this.h)
+	C.QWebEngineFullScreenRequest_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

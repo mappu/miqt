@@ -57,51 +57,51 @@ func NewQTest__QTouchEventWidgetSequence(param1 *QTest__QTouchEventWidgetSequenc
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Press(touchId int, pt *QPoint) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_Press(this.h, (C.int)(touchId), pt.cPointer()))
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_press(this.h, (C.int)(touchId), pt.cPointer()))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Move(touchId int, pt *QPoint) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_Move(this.h, (C.int)(touchId), pt.cPointer()))
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_move(this.h, (C.int)(touchId), pt.cPointer()))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Release(touchId int, pt *QPoint) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_Release(this.h, (C.int)(touchId), pt.cPointer()))
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_release(this.h, (C.int)(touchId), pt.cPointer()))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Stationary(touchId int) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_Stationary(this.h, (C.int)(touchId)))
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_stationary(this.h, (C.int)(touchId)))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Commit(processEvents bool) bool {
-	return (bool)(C.QTest__QTouchEventWidgetSequence_Commit(this.h, (C.bool)(processEvents)))
+	return (bool)(C.QTest__QTouchEventWidgetSequence_commit(this.h, (C.bool)(processEvents)))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Press3(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_Press3(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_press3(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Move3(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_Move3(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_move3(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) Release3(touchId int, pt *QPoint, widget *QWidget) *QTest__QTouchEventWidgetSequence {
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_Release3(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_release3(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
 }
 
 func (this *QTest__QTouchEventWidgetSequence) callVirtualBase_Stationary(touchId int) *QTest__QTouchEventWidgetSequence {
 
-	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_virtualbase_Stationary(unsafe.Pointer(this.h), (C.int)(touchId)))
+	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_virtualbase_stationary(unsafe.Pointer(this.h), (C.int)(touchId)))
 
 }
-func (this *QTest__QTouchEventWidgetSequence) OnStationary(slot func(super func(touchId int) *QTest__QTouchEventWidgetSequence, touchId int) *QTest__QTouchEventWidgetSequence) {
-	ok := C.QTest__QTouchEventWidgetSequence_override_virtual_Stationary(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTest__QTouchEventWidgetSequence) Onstationary(slot func(super func(touchId int) *QTest__QTouchEventWidgetSequence, touchId int) *QTest__QTouchEventWidgetSequence) {
+	ok := C.QTest__QTouchEventWidgetSequence_override_virtual_stationary(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTest__QTouchEventWidgetSequence_Stationary
-func miqt_exec_callback_QTest__QTouchEventWidgetSequence_Stationary(self *C.QTest__QTouchEventWidgetSequence, cb C.intptr_t, touchId C.int) *C.QTest__QTouchEventWidgetSequence {
+//export miqt_exec_callback_QTest__QTouchEventWidgetSequence_stationary
+func miqt_exec_callback_QTest__QTouchEventWidgetSequence_stationary(self *C.QTest__QTouchEventWidgetSequence, cb C.intptr_t, touchId C.int) *C.QTest__QTouchEventWidgetSequence {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(touchId int) *QTest__QTouchEventWidgetSequence, touchId int) *QTest__QTouchEventWidgetSequence)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -118,18 +118,18 @@ func miqt_exec_callback_QTest__QTouchEventWidgetSequence_Stationary(self *C.QTes
 
 func (this *QTest__QTouchEventWidgetSequence) callVirtualBase_Commit(processEvents bool) bool {
 
-	return (bool)(C.QTest__QTouchEventWidgetSequence_virtualbase_Commit(unsafe.Pointer(this.h), (C.bool)(processEvents)))
+	return (bool)(C.QTest__QTouchEventWidgetSequence_virtualbase_commit(unsafe.Pointer(this.h), (C.bool)(processEvents)))
 
 }
-func (this *QTest__QTouchEventWidgetSequence) OnCommit(slot func(super func(processEvents bool) bool, processEvents bool) bool) {
-	ok := C.QTest__QTouchEventWidgetSequence_override_virtual_Commit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTest__QTouchEventWidgetSequence) Oncommit(slot func(super func(processEvents bool) bool, processEvents bool) bool) {
+	ok := C.QTest__QTouchEventWidgetSequence_override_virtual_commit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTest__QTouchEventWidgetSequence_Commit
-func miqt_exec_callback_QTest__QTouchEventWidgetSequence_Commit(self *C.QTest__QTouchEventWidgetSequence, cb C.intptr_t, processEvents C.bool) C.bool {
+//export miqt_exec_callback_QTest__QTouchEventWidgetSequence_commit
+func miqt_exec_callback_QTest__QTouchEventWidgetSequence_commit(self *C.QTest__QTouchEventWidgetSequence, cb C.intptr_t, processEvents C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(processEvents bool) bool, processEvents bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -146,7 +146,7 @@ func miqt_exec_callback_QTest__QTouchEventWidgetSequence_Commit(self *C.QTest__Q
 
 // Delete this object from C++ memory.
 func (this *QTest__QTouchEventWidgetSequence) Delete() {
-	C.QTest__QTouchEventWidgetSequence_Delete(this.h)
+	C.QTest__QTouchEventWidgetSequence_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

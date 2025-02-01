@@ -12,29 +12,29 @@ extern "C" {
 } /* extern C */
 #endif
 
-int QWebEngineUrlRequestInfo_ResourceType(const QWebEngineUrlRequestInfo* self) {
+int QWebEngineUrlRequestInfo_resourceType(const QWebEngineUrlRequestInfo* self) {
 	QWebEngineUrlRequestInfo::ResourceType _ret = self->resourceType();
 	return static_cast<int>(_ret);
 }
 
-int QWebEngineUrlRequestInfo_NavigationType(const QWebEngineUrlRequestInfo* self) {
+int QWebEngineUrlRequestInfo_navigationType(const QWebEngineUrlRequestInfo* self) {
 	QWebEngineUrlRequestInfo::NavigationType _ret = self->navigationType();
 	return static_cast<int>(_ret);
 }
 
-QUrl* QWebEngineUrlRequestInfo_RequestUrl(const QWebEngineUrlRequestInfo* self) {
+QUrl* QWebEngineUrlRequestInfo_requestUrl(const QWebEngineUrlRequestInfo* self) {
 	return new QUrl(self->requestUrl());
 }
 
-QUrl* QWebEngineUrlRequestInfo_FirstPartyUrl(const QWebEngineUrlRequestInfo* self) {
+QUrl* QWebEngineUrlRequestInfo_firstPartyUrl(const QWebEngineUrlRequestInfo* self) {
 	return new QUrl(self->firstPartyUrl());
 }
 
-QUrl* QWebEngineUrlRequestInfo_Initiator(const QWebEngineUrlRequestInfo* self) {
+QUrl* QWebEngineUrlRequestInfo_initiator(const QWebEngineUrlRequestInfo* self) {
 	return new QUrl(self->initiator());
 }
 
-struct miqt_string QWebEngineUrlRequestInfo_RequestMethod(const QWebEngineUrlRequestInfo* self) {
+struct miqt_string QWebEngineUrlRequestInfo_requestMethod(const QWebEngineUrlRequestInfo* self) {
 	QByteArray _qb = self->requestMethod();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -43,19 +43,19 @@ struct miqt_string QWebEngineUrlRequestInfo_RequestMethod(const QWebEngineUrlReq
 	return _ms;
 }
 
-bool QWebEngineUrlRequestInfo_Changed(const QWebEngineUrlRequestInfo* self) {
+bool QWebEngineUrlRequestInfo_changed(const QWebEngineUrlRequestInfo* self) {
 	return self->changed();
 }
 
-void QWebEngineUrlRequestInfo_Block(QWebEngineUrlRequestInfo* self, bool shouldBlock) {
+void QWebEngineUrlRequestInfo_block(QWebEngineUrlRequestInfo* self, bool shouldBlock) {
 	self->block(shouldBlock);
 }
 
-void QWebEngineUrlRequestInfo_Redirect(QWebEngineUrlRequestInfo* self, QUrl* url) {
+void QWebEngineUrlRequestInfo_redirect(QWebEngineUrlRequestInfo* self, QUrl* url) {
 	self->redirect(*url);
 }
 
-void QWebEngineUrlRequestInfo_SetHttpHeader(QWebEngineUrlRequestInfo* self, struct miqt_string name, struct miqt_string value) {
+void QWebEngineUrlRequestInfo_setHttpHeader(QWebEngineUrlRequestInfo* self, struct miqt_string name, struct miqt_string value) {
 	QByteArray name_QByteArray(name.data, name.len);
 	QByteArray value_QByteArray(value.data, value.len);
 	self->setHttpHeader(name_QByteArray, value_QByteArray);

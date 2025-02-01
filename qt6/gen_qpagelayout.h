@@ -35,43 +35,43 @@ QPageLayout* QPageLayout_new2(QPageSize* pageSize, int orientation, QMarginsF* m
 QPageLayout* QPageLayout_new3(QPageLayout* other);
 QPageLayout* QPageLayout_new4(QPageSize* pageSize, int orientation, QMarginsF* margins, int units);
 QPageLayout* QPageLayout_new5(QPageSize* pageSize, int orientation, QMarginsF* margins, int units, QMarginsF* minMargins);
-void QPageLayout_OperatorAssign(QPageLayout* self, QPageLayout* other);
-void QPageLayout_Swap(QPageLayout* self, QPageLayout* other);
-bool QPageLayout_IsEquivalentTo(const QPageLayout* self, QPageLayout* other);
-bool QPageLayout_IsValid(const QPageLayout* self);
-void QPageLayout_SetMode(QPageLayout* self, int mode);
-int QPageLayout_Mode(const QPageLayout* self);
-void QPageLayout_SetPageSize(QPageLayout* self, QPageSize* pageSize);
-QPageSize* QPageLayout_PageSize(const QPageLayout* self);
-void QPageLayout_SetOrientation(QPageLayout* self, int orientation);
-int QPageLayout_Orientation(const QPageLayout* self);
-void QPageLayout_SetUnits(QPageLayout* self, int units);
-int QPageLayout_Units(const QPageLayout* self);
-bool QPageLayout_SetMargins(QPageLayout* self, QMarginsF* margins);
-bool QPageLayout_SetLeftMargin(QPageLayout* self, double leftMargin);
-bool QPageLayout_SetRightMargin(QPageLayout* self, double rightMargin);
-bool QPageLayout_SetTopMargin(QPageLayout* self, double topMargin);
-bool QPageLayout_SetBottomMargin(QPageLayout* self, double bottomMargin);
-QMarginsF* QPageLayout_Margins(const QPageLayout* self);
-QMarginsF* QPageLayout_MarginsWithUnits(const QPageLayout* self, int units);
-QMargins* QPageLayout_MarginsPoints(const QPageLayout* self);
-QMargins* QPageLayout_MarginsPixels(const QPageLayout* self, int resolution);
-void QPageLayout_SetMinimumMargins(QPageLayout* self, QMarginsF* minMargins);
-QMarginsF* QPageLayout_MinimumMargins(const QPageLayout* self);
-QMarginsF* QPageLayout_MaximumMargins(const QPageLayout* self);
-QRectF* QPageLayout_FullRect(const QPageLayout* self);
-QRectF* QPageLayout_FullRectWithUnits(const QPageLayout* self, int units);
-QRect* QPageLayout_FullRectPoints(const QPageLayout* self);
-QRect* QPageLayout_FullRectPixels(const QPageLayout* self, int resolution);
-QRectF* QPageLayout_PaintRect(const QPageLayout* self);
-QRectF* QPageLayout_PaintRectWithUnits(const QPageLayout* self, int units);
-QRect* QPageLayout_PaintRectPoints(const QPageLayout* self);
-QRect* QPageLayout_PaintRectPixels(const QPageLayout* self, int resolution);
-void QPageLayout_SetPageSize2(QPageLayout* self, QPageSize* pageSize, QMarginsF* minMargins);
-void QPageLayout_Delete(QPageLayout* self);
+void QPageLayout_operatorAssign(QPageLayout* self, QPageLayout* other);
+void QPageLayout_swap(QPageLayout* self, QPageLayout* other);
+bool QPageLayout_isEquivalentTo(const QPageLayout* self, QPageLayout* other);
+bool QPageLayout_isValid(const QPageLayout* self);
+void QPageLayout_setMode(QPageLayout* self, int mode);
+int QPageLayout_mode(const QPageLayout* self);
+void QPageLayout_setPageSize(QPageLayout* self, QPageSize* pageSize);
+QPageSize* QPageLayout_pageSize(const QPageLayout* self);
+void QPageLayout_setOrientation(QPageLayout* self, int orientation);
+int QPageLayout_orientation(const QPageLayout* self);
+void QPageLayout_setUnits(QPageLayout* self, int units);
+int QPageLayout_units(const QPageLayout* self);
+bool QPageLayout_setMargins(QPageLayout* self, QMarginsF* margins);
+bool QPageLayout_setLeftMargin(QPageLayout* self, double leftMargin);
+bool QPageLayout_setRightMargin(QPageLayout* self, double rightMargin);
+bool QPageLayout_setTopMargin(QPageLayout* self, double topMargin);
+bool QPageLayout_setBottomMargin(QPageLayout* self, double bottomMargin);
+QMarginsF* QPageLayout_margins(const QPageLayout* self);
+QMarginsF* QPageLayout_marginsWithUnits(const QPageLayout* self, int units);
+QMargins* QPageLayout_marginsPoints(const QPageLayout* self);
+QMargins* QPageLayout_marginsPixels(const QPageLayout* self, int resolution);
+void QPageLayout_setMinimumMargins(QPageLayout* self, QMarginsF* minMargins);
+QMarginsF* QPageLayout_minimumMargins(const QPageLayout* self);
+QMarginsF* QPageLayout_maximumMargins(const QPageLayout* self);
+QRectF* QPageLayout_fullRect(const QPageLayout* self);
+QRectF* QPageLayout_fullRectWithUnits(const QPageLayout* self, int units);
+QRect* QPageLayout_fullRectPoints(const QPageLayout* self);
+QRect* QPageLayout_fullRectPixels(const QPageLayout* self, int resolution);
+QRectF* QPageLayout_paintRect(const QPageLayout* self);
+QRectF* QPageLayout_paintRectWithUnits(const QPageLayout* self, int units);
+QRect* QPageLayout_paintRectPoints(const QPageLayout* self);
+QRect* QPageLayout_paintRectPixels(const QPageLayout* self, int resolution);
+void QPageLayout_setPageSize2(QPageLayout* self, QPageSize* pageSize, QMarginsF* minMargins);
+void QPageLayout_delete(QPageLayout* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

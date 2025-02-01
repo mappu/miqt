@@ -64,46 +64,46 @@ func NewQsciLexerCustom2(parent *qt6.QObject) *QsciLexerCustom {
 }
 
 func (this *QsciLexerCustom) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciLexerCustom_MetaObject(this.h)))
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciLexerCustom_metaObject(this.h)))
 }
 
 func (this *QsciLexerCustom) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QsciLexerCustom_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QsciLexerCustom_metacast(this.h, param1_Cstring))
 }
 
 func QsciLexerCustom_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QsciLexerCustom_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QsciLexerCustom_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciLexerCustom) SetStyling(length int, style int) {
-	C.QsciLexerCustom_SetStyling(this.h, (C.int)(length), (C.int)(style))
+	C.QsciLexerCustom_setStyling(this.h, (C.int)(length), (C.int)(style))
 }
 
 func (this *QsciLexerCustom) SetStyling2(length int, style *QsciStyle) {
-	C.QsciLexerCustom_SetStyling2(this.h, (C.int)(length), style.cPointer())
+	C.QsciLexerCustom_setStyling2(this.h, (C.int)(length), style.cPointer())
 }
 
 func (this *QsciLexerCustom) StartStyling(pos int) {
-	C.QsciLexerCustom_StartStyling(this.h, (C.int)(pos))
+	C.QsciLexerCustom_startStyling(this.h, (C.int)(pos))
 }
 
 func (this *QsciLexerCustom) StyleText(start int, end int) {
-	C.QsciLexerCustom_StyleText(this.h, (C.int)(start), (C.int)(end))
+	C.QsciLexerCustom_styleText(this.h, (C.int)(start), (C.int)(end))
 }
 
 func (this *QsciLexerCustom) SetEditor(editor *QsciScintilla) {
-	C.QsciLexerCustom_SetEditor(this.h, editor.cPointer())
+	C.QsciLexerCustom_setEditor(this.h, editor.cPointer())
 }
 
 func (this *QsciLexerCustom) StyleBitsNeeded() int {
-	return (int)(C.QsciLexerCustom_StyleBitsNeeded(this.h))
+	return (int)(C.QsciLexerCustom_styleBitsNeeded(this.h))
 }
 
 func QsciLexerCustom_Tr2(s string, c string) string {
@@ -111,7 +111,7 @@ func QsciLexerCustom_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QsciLexerCustom_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QsciLexerCustom_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -122,24 +122,24 @@ func QsciLexerCustom_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QsciLexerCustom_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QsciLexerCustom_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciLexerCustom) StartStyling2(pos int, styleBits int) {
-	C.QsciLexerCustom_StartStyling2(this.h, (C.int)(pos), (C.int)(styleBits))
+	C.QsciLexerCustom_startStyling2(this.h, (C.int)(pos), (C.int)(styleBits))
 }
-func (this *QsciLexerCustom) OnStyleText(slot func(start int, end int)) {
-	ok := C.QsciLexerCustom_override_virtual_StyleText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnstyleText(slot func(start int, end int)) {
+	ok := C.QsciLexerCustom_override_virtual_styleText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_StyleText
-func miqt_exec_callback_QsciLexerCustom_StyleText(self *C.QsciLexerCustom, cb C.intptr_t, start C.int, end C.int) {
+//export miqt_exec_callback_QsciLexerCustom_styleText
+func miqt_exec_callback_QsciLexerCustom_styleText(self *C.QsciLexerCustom, cb C.intptr_t, start C.int, end C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(start int, end int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -156,18 +156,18 @@ func miqt_exec_callback_QsciLexerCustom_StyleText(self *C.QsciLexerCustom, cb C.
 
 func (this *QsciLexerCustom) callVirtualBase_SetEditor(editor *QsciScintilla) {
 
-	C.QsciLexerCustom_virtualbase_SetEditor(unsafe.Pointer(this.h), editor.cPointer())
+	C.QsciLexerCustom_virtualbase_setEditor(unsafe.Pointer(this.h), editor.cPointer())
 
 }
-func (this *QsciLexerCustom) OnSetEditor(slot func(super func(editor *QsciScintilla), editor *QsciScintilla)) {
-	ok := C.QsciLexerCustom_override_virtual_SetEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnsetEditor(slot func(super func(editor *QsciScintilla), editor *QsciScintilla)) {
+	ok := C.QsciLexerCustom_override_virtual_setEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_SetEditor
-func miqt_exec_callback_QsciLexerCustom_SetEditor(self *C.QsciLexerCustom, cb C.intptr_t, editor *C.QsciScintilla) {
+//export miqt_exec_callback_QsciLexerCustom_setEditor
+func miqt_exec_callback_QsciLexerCustom_setEditor(self *C.QsciLexerCustom, cb C.intptr_t, editor *C.QsciScintilla) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(editor *QsciScintilla), editor *QsciScintilla))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -182,18 +182,18 @@ func miqt_exec_callback_QsciLexerCustom_SetEditor(self *C.QsciLexerCustom, cb C.
 
 func (this *QsciLexerCustom) callVirtualBase_StyleBitsNeeded() int {
 
-	return (int)(C.QsciLexerCustom_virtualbase_StyleBitsNeeded(unsafe.Pointer(this.h)))
+	return (int)(C.QsciLexerCustom_virtualbase_styleBitsNeeded(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciLexerCustom) OnStyleBitsNeeded(slot func(super func() int) int) {
-	ok := C.QsciLexerCustom_override_virtual_StyleBitsNeeded(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnstyleBitsNeeded(slot func(super func() int) int) {
+	ok := C.QsciLexerCustom_override_virtual_styleBitsNeeded(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_StyleBitsNeeded
-func miqt_exec_callback_QsciLexerCustom_StyleBitsNeeded(self *C.QsciLexerCustom, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QsciLexerCustom_styleBitsNeeded
+func miqt_exec_callback_QsciLexerCustom_styleBitsNeeded(self *C.QsciLexerCustom, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -204,15 +204,15 @@ func miqt_exec_callback_QsciLexerCustom_StyleBitsNeeded(self *C.QsciLexerCustom,
 	return (C.int)(virtualReturn)
 
 }
-func (this *QsciLexerCustom) OnLanguage(slot func() string) {
-	ok := C.QsciLexerCustom_override_virtual_Language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) Onlanguage(slot func() string) {
+	ok := C.QsciLexerCustom_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_Language
-func miqt_exec_callback_QsciLexerCustom_Language(self *C.QsciLexerCustom, cb C.intptr_t) *C.const_char {
+//export miqt_exec_callback_QsciLexerCustom_language
+func miqt_exec_callback_QsciLexerCustom_language(self *C.QsciLexerCustom, cb C.intptr_t) *C.const_char {
 	gofunc, ok := cgo.Handle(cb).Value().(func() string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -228,19 +228,19 @@ func miqt_exec_callback_QsciLexerCustom_Language(self *C.QsciLexerCustom, cb C.i
 
 func (this *QsciLexerCustom) callVirtualBase_Lexer() string {
 
-	_ret := C.QsciLexerCustom_virtualbase_Lexer(unsafe.Pointer(this.h))
+	_ret := C.QsciLexerCustom_virtualbase_lexer(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
 
 }
-func (this *QsciLexerCustom) OnLexer(slot func(super func() string) string) {
-	ok := C.QsciLexerCustom_override_virtual_Lexer(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) Onlexer(slot func(super func() string) string) {
+	ok := C.QsciLexerCustom_override_virtual_lexer(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_Lexer
-func miqt_exec_callback_QsciLexerCustom_Lexer(self *C.QsciLexerCustom, cb C.intptr_t) *C.const_char {
+//export miqt_exec_callback_QsciLexerCustom_lexer
+func miqt_exec_callback_QsciLexerCustom_lexer(self *C.QsciLexerCustom, cb C.intptr_t) *C.const_char {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() string) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -256,18 +256,18 @@ func miqt_exec_callback_QsciLexerCustom_Lexer(self *C.QsciLexerCustom, cb C.intp
 
 func (this *QsciLexerCustom) callVirtualBase_LexerId() int {
 
-	return (int)(C.QsciLexerCustom_virtualbase_LexerId(unsafe.Pointer(this.h)))
+	return (int)(C.QsciLexerCustom_virtualbase_lexerId(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciLexerCustom) OnLexerId(slot func(super func() int) int) {
-	ok := C.QsciLexerCustom_override_virtual_LexerId(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnlexerId(slot func(super func() int) int) {
+	ok := C.QsciLexerCustom_override_virtual_lexerId(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_LexerId
-func miqt_exec_callback_QsciLexerCustom_LexerId(self *C.QsciLexerCustom, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QsciLexerCustom_lexerId
+func miqt_exec_callback_QsciLexerCustom_lexerId(self *C.QsciLexerCustom, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -281,19 +281,19 @@ func miqt_exec_callback_QsciLexerCustom_LexerId(self *C.QsciLexerCustom, cb C.in
 
 func (this *QsciLexerCustom) callVirtualBase_AutoCompletionFillups() string {
 
-	_ret := C.QsciLexerCustom_virtualbase_AutoCompletionFillups(unsafe.Pointer(this.h))
+	_ret := C.QsciLexerCustom_virtualbase_autoCompletionFillups(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
 
 }
-func (this *QsciLexerCustom) OnAutoCompletionFillups(slot func(super func() string) string) {
-	ok := C.QsciLexerCustom_override_virtual_AutoCompletionFillups(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnautoCompletionFillups(slot func(super func() string) string) {
+	ok := C.QsciLexerCustom_override_virtual_autoCompletionFillups(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_AutoCompletionFillups
-func miqt_exec_callback_QsciLexerCustom_AutoCompletionFillups(self *C.QsciLexerCustom, cb C.intptr_t) *C.const_char {
+//export miqt_exec_callback_QsciLexerCustom_autoCompletionFillups
+func miqt_exec_callback_QsciLexerCustom_autoCompletionFillups(self *C.QsciLexerCustom, cb C.intptr_t) *C.const_char {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() string) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -309,7 +309,7 @@ func miqt_exec_callback_QsciLexerCustom_AutoCompletionFillups(self *C.QsciLexerC
 
 func (this *QsciLexerCustom) callVirtualBase_AutoCompletionWordSeparators() []string {
 
-	var _ma C.struct_miqt_array = C.QsciLexerCustom_virtualbase_AutoCompletionWordSeparators(unsafe.Pointer(this.h))
+	var _ma C.struct_miqt_array = C.QsciLexerCustom_virtualbase_autoCompletionWordSeparators(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -321,15 +321,15 @@ func (this *QsciLexerCustom) callVirtualBase_AutoCompletionWordSeparators() []st
 	return _ret
 
 }
-func (this *QsciLexerCustom) OnAutoCompletionWordSeparators(slot func(super func() []string) []string) {
-	ok := C.QsciLexerCustom_override_virtual_AutoCompletionWordSeparators(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnautoCompletionWordSeparators(slot func(super func() []string) []string) {
+	ok := C.QsciLexerCustom_override_virtual_autoCompletionWordSeparators(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_AutoCompletionWordSeparators
-func miqt_exec_callback_QsciLexerCustom_AutoCompletionWordSeparators(self *C.QsciLexerCustom, cb C.intptr_t) C.struct_miqt_array {
+//export miqt_exec_callback_QsciLexerCustom_autoCompletionWordSeparators
+func miqt_exec_callback_QsciLexerCustom_autoCompletionWordSeparators(self *C.QsciLexerCustom, cb C.intptr_t) C.struct_miqt_array {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() []string) []string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -353,19 +353,19 @@ func miqt_exec_callback_QsciLexerCustom_AutoCompletionWordSeparators(self *C.Qsc
 
 func (this *QsciLexerCustom) callVirtualBase_BlockEnd(style *int) string {
 
-	_ret := C.QsciLexerCustom_virtualbase_BlockEnd(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
+	_ret := C.QsciLexerCustom_virtualbase_blockEnd(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 
 }
-func (this *QsciLexerCustom) OnBlockEnd(slot func(super func(style *int) string, style *int) string) {
-	ok := C.QsciLexerCustom_override_virtual_BlockEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnblockEnd(slot func(super func(style *int) string, style *int) string) {
+	ok := C.QsciLexerCustom_override_virtual_blockEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_BlockEnd
-func miqt_exec_callback_QsciLexerCustom_BlockEnd(self *C.QsciLexerCustom, cb C.intptr_t, style *C.int) *C.const_char {
+//export miqt_exec_callback_QsciLexerCustom_blockEnd
+func miqt_exec_callback_QsciLexerCustom_blockEnd(self *C.QsciLexerCustom, cb C.intptr_t, style *C.int) *C.const_char {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style *int) string, style *int) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -384,18 +384,18 @@ func miqt_exec_callback_QsciLexerCustom_BlockEnd(self *C.QsciLexerCustom, cb C.i
 
 func (this *QsciLexerCustom) callVirtualBase_BlockLookback() int {
 
-	return (int)(C.QsciLexerCustom_virtualbase_BlockLookback(unsafe.Pointer(this.h)))
+	return (int)(C.QsciLexerCustom_virtualbase_blockLookback(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciLexerCustom) OnBlockLookback(slot func(super func() int) int) {
-	ok := C.QsciLexerCustom_override_virtual_BlockLookback(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnblockLookback(slot func(super func() int) int) {
+	ok := C.QsciLexerCustom_override_virtual_blockLookback(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_BlockLookback
-func miqt_exec_callback_QsciLexerCustom_BlockLookback(self *C.QsciLexerCustom, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QsciLexerCustom_blockLookback
+func miqt_exec_callback_QsciLexerCustom_blockLookback(self *C.QsciLexerCustom, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -409,19 +409,19 @@ func miqt_exec_callback_QsciLexerCustom_BlockLookback(self *C.QsciLexerCustom, c
 
 func (this *QsciLexerCustom) callVirtualBase_BlockStart(style *int) string {
 
-	_ret := C.QsciLexerCustom_virtualbase_BlockStart(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
+	_ret := C.QsciLexerCustom_virtualbase_blockStart(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 
 }
-func (this *QsciLexerCustom) OnBlockStart(slot func(super func(style *int) string, style *int) string) {
-	ok := C.QsciLexerCustom_override_virtual_BlockStart(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnblockStart(slot func(super func(style *int) string, style *int) string) {
+	ok := C.QsciLexerCustom_override_virtual_blockStart(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_BlockStart
-func miqt_exec_callback_QsciLexerCustom_BlockStart(self *C.QsciLexerCustom, cb C.intptr_t, style *C.int) *C.const_char {
+//export miqt_exec_callback_QsciLexerCustom_blockStart
+func miqt_exec_callback_QsciLexerCustom_blockStart(self *C.QsciLexerCustom, cb C.intptr_t, style *C.int) *C.const_char {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style *int) string, style *int) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -440,19 +440,19 @@ func miqt_exec_callback_QsciLexerCustom_BlockStart(self *C.QsciLexerCustom, cb C
 
 func (this *QsciLexerCustom) callVirtualBase_BlockStartKeyword(style *int) string {
 
-	_ret := C.QsciLexerCustom_virtualbase_BlockStartKeyword(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
+	_ret := C.QsciLexerCustom_virtualbase_blockStartKeyword(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 
 }
-func (this *QsciLexerCustom) OnBlockStartKeyword(slot func(super func(style *int) string, style *int) string) {
-	ok := C.QsciLexerCustom_override_virtual_BlockStartKeyword(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnblockStartKeyword(slot func(super func(style *int) string, style *int) string) {
+	ok := C.QsciLexerCustom_override_virtual_blockStartKeyword(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_BlockStartKeyword
-func miqt_exec_callback_QsciLexerCustom_BlockStartKeyword(self *C.QsciLexerCustom, cb C.intptr_t, style *C.int) *C.const_char {
+//export miqt_exec_callback_QsciLexerCustom_blockStartKeyword
+func miqt_exec_callback_QsciLexerCustom_blockStartKeyword(self *C.QsciLexerCustom, cb C.intptr_t, style *C.int) *C.const_char {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style *int) string, style *int) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -471,18 +471,18 @@ func miqt_exec_callback_QsciLexerCustom_BlockStartKeyword(self *C.QsciLexerCusto
 
 func (this *QsciLexerCustom) callVirtualBase_BraceStyle() int {
 
-	return (int)(C.QsciLexerCustom_virtualbase_BraceStyle(unsafe.Pointer(this.h)))
+	return (int)(C.QsciLexerCustom_virtualbase_braceStyle(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciLexerCustom) OnBraceStyle(slot func(super func() int) int) {
-	ok := C.QsciLexerCustom_override_virtual_BraceStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnbraceStyle(slot func(super func() int) int) {
+	ok := C.QsciLexerCustom_override_virtual_braceStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_BraceStyle
-func miqt_exec_callback_QsciLexerCustom_BraceStyle(self *C.QsciLexerCustom, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QsciLexerCustom_braceStyle
+func miqt_exec_callback_QsciLexerCustom_braceStyle(self *C.QsciLexerCustom, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -496,18 +496,18 @@ func miqt_exec_callback_QsciLexerCustom_BraceStyle(self *C.QsciLexerCustom, cb C
 
 func (this *QsciLexerCustom) callVirtualBase_CaseSensitive() bool {
 
-	return (bool)(C.QsciLexerCustom_virtualbase_CaseSensitive(unsafe.Pointer(this.h)))
+	return (bool)(C.QsciLexerCustom_virtualbase_caseSensitive(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciLexerCustom) OnCaseSensitive(slot func(super func() bool) bool) {
-	ok := C.QsciLexerCustom_override_virtual_CaseSensitive(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OncaseSensitive(slot func(super func() bool) bool) {
+	ok := C.QsciLexerCustom_override_virtual_caseSensitive(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_CaseSensitive
-func miqt_exec_callback_QsciLexerCustom_CaseSensitive(self *C.QsciLexerCustom, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QsciLexerCustom_caseSensitive
+func miqt_exec_callback_QsciLexerCustom_caseSensitive(self *C.QsciLexerCustom, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -521,20 +521,20 @@ func miqt_exec_callback_QsciLexerCustom_CaseSensitive(self *C.QsciLexerCustom, c
 
 func (this *QsciLexerCustom) callVirtualBase_Color(style int) *qt6.QColor {
 
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerCustom_virtualbase_Color(unsafe.Pointer(this.h), (C.int)(style))))
+	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerCustom_virtualbase_color(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QsciLexerCustom) OnColor(slot func(super func(style int) *qt6.QColor, style int) *qt6.QColor) {
-	ok := C.QsciLexerCustom_override_virtual_Color(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) Oncolor(slot func(super func(style int) *qt6.QColor, style int) *qt6.QColor) {
+	ok := C.QsciLexerCustom_override_virtual_color(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_Color
-func miqt_exec_callback_QsciLexerCustom_Color(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) *C.QColor {
+//export miqt_exec_callback_QsciLexerCustom_color
+func miqt_exec_callback_QsciLexerCustom_color(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) *C.QColor {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt6.QColor, style int) *qt6.QColor)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -551,18 +551,18 @@ func miqt_exec_callback_QsciLexerCustom_Color(self *C.QsciLexerCustom, cb C.intp
 
 func (this *QsciLexerCustom) callVirtualBase_EolFill(style int) bool {
 
-	return (bool)(C.QsciLexerCustom_virtualbase_EolFill(unsafe.Pointer(this.h), (C.int)(style)))
+	return (bool)(C.QsciLexerCustom_virtualbase_eolFill(unsafe.Pointer(this.h), (C.int)(style)))
 
 }
-func (this *QsciLexerCustom) OnEolFill(slot func(super func(style int) bool, style int) bool) {
-	ok := C.QsciLexerCustom_override_virtual_EolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OneolFill(slot func(super func(style int) bool, style int) bool) {
+	ok := C.QsciLexerCustom_override_virtual_eolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_EolFill
-func miqt_exec_callback_QsciLexerCustom_EolFill(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) C.bool {
+//export miqt_exec_callback_QsciLexerCustom_eolFill
+func miqt_exec_callback_QsciLexerCustom_eolFill(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) bool, style int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -579,20 +579,20 @@ func miqt_exec_callback_QsciLexerCustom_EolFill(self *C.QsciLexerCustom, cb C.in
 
 func (this *QsciLexerCustom) callVirtualBase_Font(style int) *qt6.QFont {
 
-	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerCustom_virtualbase_Font(unsafe.Pointer(this.h), (C.int)(style))))
+	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerCustom_virtualbase_font(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QsciLexerCustom) OnFont(slot func(super func(style int) *qt6.QFont, style int) *qt6.QFont) {
-	ok := C.QsciLexerCustom_override_virtual_Font(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) Onfont(slot func(super func(style int) *qt6.QFont, style int) *qt6.QFont) {
+	ok := C.QsciLexerCustom_override_virtual_font(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_Font
-func miqt_exec_callback_QsciLexerCustom_Font(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) *C.QFont {
+//export miqt_exec_callback_QsciLexerCustom_font
+func miqt_exec_callback_QsciLexerCustom_font(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) *C.QFont {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt6.QFont, style int) *qt6.QFont)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -609,18 +609,18 @@ func miqt_exec_callback_QsciLexerCustom_Font(self *C.QsciLexerCustom, cb C.intpt
 
 func (this *QsciLexerCustom) callVirtualBase_IndentationGuideView() int {
 
-	return (int)(C.QsciLexerCustom_virtualbase_IndentationGuideView(unsafe.Pointer(this.h)))
+	return (int)(C.QsciLexerCustom_virtualbase_indentationGuideView(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciLexerCustom) OnIndentationGuideView(slot func(super func() int) int) {
-	ok := C.QsciLexerCustom_override_virtual_IndentationGuideView(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnindentationGuideView(slot func(super func() int) int) {
+	ok := C.QsciLexerCustom_override_virtual_indentationGuideView(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_IndentationGuideView
-func miqt_exec_callback_QsciLexerCustom_IndentationGuideView(self *C.QsciLexerCustom, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QsciLexerCustom_indentationGuideView
+func miqt_exec_callback_QsciLexerCustom_indentationGuideView(self *C.QsciLexerCustom, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -634,19 +634,19 @@ func miqt_exec_callback_QsciLexerCustom_IndentationGuideView(self *C.QsciLexerCu
 
 func (this *QsciLexerCustom) callVirtualBase_Keywords(set int) string {
 
-	_ret := C.QsciLexerCustom_virtualbase_Keywords(unsafe.Pointer(this.h), (C.int)(set))
+	_ret := C.QsciLexerCustom_virtualbase_keywords(unsafe.Pointer(this.h), (C.int)(set))
 	return C.GoString(_ret)
 
 }
-func (this *QsciLexerCustom) OnKeywords(slot func(super func(set int) string, set int) string) {
-	ok := C.QsciLexerCustom_override_virtual_Keywords(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) Onkeywords(slot func(super func(set int) string, set int) string) {
+	ok := C.QsciLexerCustom_override_virtual_keywords(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_Keywords
-func miqt_exec_callback_QsciLexerCustom_Keywords(self *C.QsciLexerCustom, cb C.intptr_t, set C.int) *C.const_char {
+//export miqt_exec_callback_QsciLexerCustom_keywords
+func miqt_exec_callback_QsciLexerCustom_keywords(self *C.QsciLexerCustom, cb C.intptr_t, set C.int) *C.const_char {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(set int) string, set int) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -665,18 +665,18 @@ func miqt_exec_callback_QsciLexerCustom_Keywords(self *C.QsciLexerCustom, cb C.i
 
 func (this *QsciLexerCustom) callVirtualBase_DefaultStyle() int {
 
-	return (int)(C.QsciLexerCustom_virtualbase_DefaultStyle(unsafe.Pointer(this.h)))
+	return (int)(C.QsciLexerCustom_virtualbase_defaultStyle(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciLexerCustom) OnDefaultStyle(slot func(super func() int) int) {
-	ok := C.QsciLexerCustom_override_virtual_DefaultStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OndefaultStyle(slot func(super func() int) int) {
+	ok := C.QsciLexerCustom_override_virtual_defaultStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_DefaultStyle
-func miqt_exec_callback_QsciLexerCustom_DefaultStyle(self *C.QsciLexerCustom, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QsciLexerCustom_defaultStyle
+func miqt_exec_callback_QsciLexerCustom_defaultStyle(self *C.QsciLexerCustom, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -687,15 +687,15 @@ func miqt_exec_callback_QsciLexerCustom_DefaultStyle(self *C.QsciLexerCustom, cb
 	return (C.int)(virtualReturn)
 
 }
-func (this *QsciLexerCustom) OnDescription(slot func(style int) string) {
-	ok := C.QsciLexerCustom_override_virtual_Description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) Ondescription(slot func(style int) string) {
+	ok := C.QsciLexerCustom_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_Description
-func miqt_exec_callback_QsciLexerCustom_Description(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) C.struct_miqt_string {
+//export miqt_exec_callback_QsciLexerCustom_description
+func miqt_exec_callback_QsciLexerCustom_description(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) C.struct_miqt_string {
 	gofunc, ok := cgo.Handle(cb).Value().(func(style int) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -716,20 +716,20 @@ func miqt_exec_callback_QsciLexerCustom_Description(self *C.QsciLexerCustom, cb 
 
 func (this *QsciLexerCustom) callVirtualBase_Paper(style int) *qt6.QColor {
 
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerCustom_virtualbase_Paper(unsafe.Pointer(this.h), (C.int)(style))))
+	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerCustom_virtualbase_paper(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QsciLexerCustom) OnPaper(slot func(super func(style int) *qt6.QColor, style int) *qt6.QColor) {
-	ok := C.QsciLexerCustom_override_virtual_Paper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) Onpaper(slot func(super func(style int) *qt6.QColor, style int) *qt6.QColor) {
+	ok := C.QsciLexerCustom_override_virtual_paper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_Paper
-func miqt_exec_callback_QsciLexerCustom_Paper(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) *C.QColor {
+//export miqt_exec_callback_QsciLexerCustom_paper
+func miqt_exec_callback_QsciLexerCustom_paper(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) *C.QColor {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt6.QColor, style int) *qt6.QColor)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -746,20 +746,20 @@ func miqt_exec_callback_QsciLexerCustom_Paper(self *C.QsciLexerCustom, cb C.intp
 
 func (this *QsciLexerCustom) callVirtualBase_DefaultColorWithStyle(style int) *qt6.QColor {
 
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerCustom_virtualbase_DefaultColorWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
+	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerCustom_virtualbase_defaultColorWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QsciLexerCustom) OnDefaultColorWithStyle(slot func(super func(style int) *qt6.QColor, style int) *qt6.QColor) {
-	ok := C.QsciLexerCustom_override_virtual_DefaultColorWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OndefaultColorWithStyle(slot func(super func(style int) *qt6.QColor, style int) *qt6.QColor) {
+	ok := C.QsciLexerCustom_override_virtual_defaultColorWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_DefaultColorWithStyle
-func miqt_exec_callback_QsciLexerCustom_DefaultColorWithStyle(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) *C.QColor {
+//export miqt_exec_callback_QsciLexerCustom_defaultColorWithStyle
+func miqt_exec_callback_QsciLexerCustom_defaultColorWithStyle(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) *C.QColor {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt6.QColor, style int) *qt6.QColor)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -776,18 +776,18 @@ func miqt_exec_callback_QsciLexerCustom_DefaultColorWithStyle(self *C.QsciLexerC
 
 func (this *QsciLexerCustom) callVirtualBase_DefaultEolFill(style int) bool {
 
-	return (bool)(C.QsciLexerCustom_virtualbase_DefaultEolFill(unsafe.Pointer(this.h), (C.int)(style)))
+	return (bool)(C.QsciLexerCustom_virtualbase_defaultEolFill(unsafe.Pointer(this.h), (C.int)(style)))
 
 }
-func (this *QsciLexerCustom) OnDefaultEolFill(slot func(super func(style int) bool, style int) bool) {
-	ok := C.QsciLexerCustom_override_virtual_DefaultEolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OndefaultEolFill(slot func(super func(style int) bool, style int) bool) {
+	ok := C.QsciLexerCustom_override_virtual_defaultEolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_DefaultEolFill
-func miqt_exec_callback_QsciLexerCustom_DefaultEolFill(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) C.bool {
+//export miqt_exec_callback_QsciLexerCustom_defaultEolFill
+func miqt_exec_callback_QsciLexerCustom_defaultEolFill(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) bool, style int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -804,20 +804,20 @@ func miqt_exec_callback_QsciLexerCustom_DefaultEolFill(self *C.QsciLexerCustom, 
 
 func (this *QsciLexerCustom) callVirtualBase_DefaultFontWithStyle(style int) *qt6.QFont {
 
-	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerCustom_virtualbase_DefaultFontWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
+	_goptr := qt6.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerCustom_virtualbase_defaultFontWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QsciLexerCustom) OnDefaultFontWithStyle(slot func(super func(style int) *qt6.QFont, style int) *qt6.QFont) {
-	ok := C.QsciLexerCustom_override_virtual_DefaultFontWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OndefaultFontWithStyle(slot func(super func(style int) *qt6.QFont, style int) *qt6.QFont) {
+	ok := C.QsciLexerCustom_override_virtual_defaultFontWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_DefaultFontWithStyle
-func miqt_exec_callback_QsciLexerCustom_DefaultFontWithStyle(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) *C.QFont {
+//export miqt_exec_callback_QsciLexerCustom_defaultFontWithStyle
+func miqt_exec_callback_QsciLexerCustom_defaultFontWithStyle(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) *C.QFont {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt6.QFont, style int) *qt6.QFont)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -834,20 +834,20 @@ func miqt_exec_callback_QsciLexerCustom_DefaultFontWithStyle(self *C.QsciLexerCu
 
 func (this *QsciLexerCustom) callVirtualBase_DefaultPaperWithStyle(style int) *qt6.QColor {
 
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerCustom_virtualbase_DefaultPaperWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
+	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerCustom_virtualbase_defaultPaperWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QsciLexerCustom) OnDefaultPaperWithStyle(slot func(super func(style int) *qt6.QColor, style int) *qt6.QColor) {
-	ok := C.QsciLexerCustom_override_virtual_DefaultPaperWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OndefaultPaperWithStyle(slot func(super func(style int) *qt6.QColor, style int) *qt6.QColor) {
+	ok := C.QsciLexerCustom_override_virtual_defaultPaperWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_DefaultPaperWithStyle
-func miqt_exec_callback_QsciLexerCustom_DefaultPaperWithStyle(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) *C.QColor {
+//export miqt_exec_callback_QsciLexerCustom_defaultPaperWithStyle
+func miqt_exec_callback_QsciLexerCustom_defaultPaperWithStyle(self *C.QsciLexerCustom, cb C.intptr_t, style C.int) *C.QColor {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt6.QColor, style int) *qt6.QColor)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -864,18 +864,18 @@ func miqt_exec_callback_QsciLexerCustom_DefaultPaperWithStyle(self *C.QsciLexerC
 
 func (this *QsciLexerCustom) callVirtualBase_RefreshProperties() {
 
-	C.QsciLexerCustom_virtualbase_RefreshProperties(unsafe.Pointer(this.h))
+	C.QsciLexerCustom_virtualbase_refreshProperties(unsafe.Pointer(this.h))
 
 }
-func (this *QsciLexerCustom) OnRefreshProperties(slot func(super func())) {
-	ok := C.QsciLexerCustom_override_virtual_RefreshProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnrefreshProperties(slot func(super func())) {
+	ok := C.QsciLexerCustom_override_virtual_refreshProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_RefreshProperties
-func miqt_exec_callback_QsciLexerCustom_RefreshProperties(self *C.QsciLexerCustom, cb C.intptr_t) {
+//export miqt_exec_callback_QsciLexerCustom_refreshProperties
+func miqt_exec_callback_QsciLexerCustom_refreshProperties(self *C.QsciLexerCustom, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -887,19 +887,19 @@ func miqt_exec_callback_QsciLexerCustom_RefreshProperties(self *C.QsciLexerCusto
 
 func (this *QsciLexerCustom) callVirtualBase_WordCharacters() string {
 
-	_ret := C.QsciLexerCustom_virtualbase_WordCharacters(unsafe.Pointer(this.h))
+	_ret := C.QsciLexerCustom_virtualbase_wordCharacters(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
 
 }
-func (this *QsciLexerCustom) OnWordCharacters(slot func(super func() string) string) {
-	ok := C.QsciLexerCustom_override_virtual_WordCharacters(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnwordCharacters(slot func(super func() string) string) {
+	ok := C.QsciLexerCustom_override_virtual_wordCharacters(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_WordCharacters
-func miqt_exec_callback_QsciLexerCustom_WordCharacters(self *C.QsciLexerCustom, cb C.intptr_t) *C.const_char {
+//export miqt_exec_callback_QsciLexerCustom_wordCharacters
+func miqt_exec_callback_QsciLexerCustom_wordCharacters(self *C.QsciLexerCustom, cb C.intptr_t) *C.const_char {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() string) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -915,18 +915,18 @@ func miqt_exec_callback_QsciLexerCustom_WordCharacters(self *C.QsciLexerCustom, 
 
 func (this *QsciLexerCustom) callVirtualBase_SetAutoIndentStyle(autoindentstyle int) {
 
-	C.QsciLexerCustom_virtualbase_SetAutoIndentStyle(unsafe.Pointer(this.h), (C.int)(autoindentstyle))
+	C.QsciLexerCustom_virtualbase_setAutoIndentStyle(unsafe.Pointer(this.h), (C.int)(autoindentstyle))
 
 }
-func (this *QsciLexerCustom) OnSetAutoIndentStyle(slot func(super func(autoindentstyle int), autoindentstyle int)) {
-	ok := C.QsciLexerCustom_override_virtual_SetAutoIndentStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnsetAutoIndentStyle(slot func(super func(autoindentstyle int), autoindentstyle int)) {
+	ok := C.QsciLexerCustom_override_virtual_setAutoIndentStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_SetAutoIndentStyle
-func miqt_exec_callback_QsciLexerCustom_SetAutoIndentStyle(self *C.QsciLexerCustom, cb C.intptr_t, autoindentstyle C.int) {
+//export miqt_exec_callback_QsciLexerCustom_setAutoIndentStyle
+func miqt_exec_callback_QsciLexerCustom_setAutoIndentStyle(self *C.QsciLexerCustom, cb C.intptr_t, autoindentstyle C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(autoindentstyle int), autoindentstyle int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -941,18 +941,18 @@ func miqt_exec_callback_QsciLexerCustom_SetAutoIndentStyle(self *C.QsciLexerCust
 
 func (this *QsciLexerCustom) callVirtualBase_SetColor(c *qt6.QColor, style int) {
 
-	C.QsciLexerCustom_virtualbase_SetColor(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
+	C.QsciLexerCustom_virtualbase_setColor(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
 
 }
-func (this *QsciLexerCustom) OnSetColor(slot func(super func(c *qt6.QColor, style int), c *qt6.QColor, style int)) {
-	ok := C.QsciLexerCustom_override_virtual_SetColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnsetColor(slot func(super func(c *qt6.QColor, style int), c *qt6.QColor, style int)) {
+	ok := C.QsciLexerCustom_override_virtual_setColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_SetColor
-func miqt_exec_callback_QsciLexerCustom_SetColor(self *C.QsciLexerCustom, cb C.intptr_t, c *C.QColor, style C.int) {
+//export miqt_exec_callback_QsciLexerCustom_setColor
+func miqt_exec_callback_QsciLexerCustom_setColor(self *C.QsciLexerCustom, cb C.intptr_t, c *C.QColor, style C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(c *qt6.QColor, style int), c *qt6.QColor, style int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -969,18 +969,18 @@ func miqt_exec_callback_QsciLexerCustom_SetColor(self *C.QsciLexerCustom, cb C.i
 
 func (this *QsciLexerCustom) callVirtualBase_SetEolFill(eoffill bool, style int) {
 
-	C.QsciLexerCustom_virtualbase_SetEolFill(unsafe.Pointer(this.h), (C.bool)(eoffill), (C.int)(style))
+	C.QsciLexerCustom_virtualbase_setEolFill(unsafe.Pointer(this.h), (C.bool)(eoffill), (C.int)(style))
 
 }
-func (this *QsciLexerCustom) OnSetEolFill(slot func(super func(eoffill bool, style int), eoffill bool, style int)) {
-	ok := C.QsciLexerCustom_override_virtual_SetEolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnsetEolFill(slot func(super func(eoffill bool, style int), eoffill bool, style int)) {
+	ok := C.QsciLexerCustom_override_virtual_setEolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_SetEolFill
-func miqt_exec_callback_QsciLexerCustom_SetEolFill(self *C.QsciLexerCustom, cb C.intptr_t, eoffill C.bool, style C.int) {
+//export miqt_exec_callback_QsciLexerCustom_setEolFill
+func miqt_exec_callback_QsciLexerCustom_setEolFill(self *C.QsciLexerCustom, cb C.intptr_t, eoffill C.bool, style C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eoffill bool, style int), eoffill bool, style int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -997,18 +997,18 @@ func miqt_exec_callback_QsciLexerCustom_SetEolFill(self *C.QsciLexerCustom, cb C
 
 func (this *QsciLexerCustom) callVirtualBase_SetFont(f *qt6.QFont, style int) {
 
-	C.QsciLexerCustom_virtualbase_SetFont(unsafe.Pointer(this.h), (*C.QFont)(f.UnsafePointer()), (C.int)(style))
+	C.QsciLexerCustom_virtualbase_setFont(unsafe.Pointer(this.h), (*C.QFont)(f.UnsafePointer()), (C.int)(style))
 
 }
-func (this *QsciLexerCustom) OnSetFont(slot func(super func(f *qt6.QFont, style int), f *qt6.QFont, style int)) {
-	ok := C.QsciLexerCustom_override_virtual_SetFont(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnsetFont(slot func(super func(f *qt6.QFont, style int), f *qt6.QFont, style int)) {
+	ok := C.QsciLexerCustom_override_virtual_setFont(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_SetFont
-func miqt_exec_callback_QsciLexerCustom_SetFont(self *C.QsciLexerCustom, cb C.intptr_t, f *C.QFont, style C.int) {
+//export miqt_exec_callback_QsciLexerCustom_setFont
+func miqt_exec_callback_QsciLexerCustom_setFont(self *C.QsciLexerCustom, cb C.intptr_t, f *C.QFont, style C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(f *qt6.QFont, style int), f *qt6.QFont, style int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1025,18 +1025,18 @@ func miqt_exec_callback_QsciLexerCustom_SetFont(self *C.QsciLexerCustom, cb C.in
 
 func (this *QsciLexerCustom) callVirtualBase_SetPaper(c *qt6.QColor, style int) {
 
-	C.QsciLexerCustom_virtualbase_SetPaper(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
+	C.QsciLexerCustom_virtualbase_setPaper(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
 
 }
-func (this *QsciLexerCustom) OnSetPaper(slot func(super func(c *qt6.QColor, style int), c *qt6.QColor, style int)) {
-	ok := C.QsciLexerCustom_override_virtual_SetPaper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnsetPaper(slot func(super func(c *qt6.QColor, style int), c *qt6.QColor, style int)) {
+	ok := C.QsciLexerCustom_override_virtual_setPaper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_SetPaper
-func miqt_exec_callback_QsciLexerCustom_SetPaper(self *C.QsciLexerCustom, cb C.intptr_t, c *C.QColor, style C.int) {
+//export miqt_exec_callback_QsciLexerCustom_setPaper
+func miqt_exec_callback_QsciLexerCustom_setPaper(self *C.QsciLexerCustom, cb C.intptr_t, c *C.QColor, style C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(c *qt6.QColor, style int), c *qt6.QColor, style int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1057,18 +1057,18 @@ func (this *QsciLexerCustom) callVirtualBase_ReadProperties(qs *qt6.QSettings, p
 	prefix_ms.len = C.size_t(len(prefix))
 	defer C.free(unsafe.Pointer(prefix_ms.data))
 
-	return (bool)(C.QsciLexerCustom_virtualbase_ReadProperties(unsafe.Pointer(this.h), (*C.QSettings)(qs.UnsafePointer()), prefix_ms))
+	return (bool)(C.QsciLexerCustom_virtualbase_readProperties(unsafe.Pointer(this.h), (*C.QSettings)(qs.UnsafePointer()), prefix_ms))
 
 }
-func (this *QsciLexerCustom) OnReadProperties(slot func(super func(qs *qt6.QSettings, prefix string) bool, qs *qt6.QSettings, prefix string) bool) {
-	ok := C.QsciLexerCustom_override_virtual_ReadProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnreadProperties(slot func(super func(qs *qt6.QSettings, prefix string) bool, qs *qt6.QSettings, prefix string) bool) {
+	ok := C.QsciLexerCustom_override_virtual_readProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_ReadProperties
-func miqt_exec_callback_QsciLexerCustom_ReadProperties(self *C.QsciLexerCustom, cb C.intptr_t, qs *C.QSettings, prefix C.struct_miqt_string) C.bool {
+//export miqt_exec_callback_QsciLexerCustom_readProperties
+func miqt_exec_callback_QsciLexerCustom_readProperties(self *C.QsciLexerCustom, cb C.intptr_t, qs *C.QSettings, prefix C.struct_miqt_string) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(qs *qt6.QSettings, prefix string) bool, qs *qt6.QSettings, prefix string) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1094,18 +1094,18 @@ func (this *QsciLexerCustom) callVirtualBase_WriteProperties(qs *qt6.QSettings, 
 	prefix_ms.len = C.size_t(len(prefix))
 	defer C.free(unsafe.Pointer(prefix_ms.data))
 
-	return (bool)(C.QsciLexerCustom_virtualbase_WriteProperties(unsafe.Pointer(this.h), (*C.QSettings)(qs.UnsafePointer()), prefix_ms))
+	return (bool)(C.QsciLexerCustom_virtualbase_writeProperties(unsafe.Pointer(this.h), (*C.QSettings)(qs.UnsafePointer()), prefix_ms))
 
 }
-func (this *QsciLexerCustom) OnWriteProperties(slot func(super func(qs *qt6.QSettings, prefix string) bool, qs *qt6.QSettings, prefix string) bool) {
-	ok := C.QsciLexerCustom_override_virtual_WriteProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnwriteProperties(slot func(super func(qs *qt6.QSettings, prefix string) bool, qs *qt6.QSettings, prefix string) bool) {
+	ok := C.QsciLexerCustom_override_virtual_writeProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_WriteProperties
-func miqt_exec_callback_QsciLexerCustom_WriteProperties(self *C.QsciLexerCustom, cb C.intptr_t, qs *C.QSettings, prefix C.struct_miqt_string) C.bool {
+//export miqt_exec_callback_QsciLexerCustom_writeProperties
+func miqt_exec_callback_QsciLexerCustom_writeProperties(self *C.QsciLexerCustom, cb C.intptr_t, qs *C.QSettings, prefix C.struct_miqt_string) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(qs *qt6.QSettings, prefix string) bool, qs *qt6.QSettings, prefix string) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1127,18 +1127,18 @@ func miqt_exec_callback_QsciLexerCustom_WriteProperties(self *C.QsciLexerCustom,
 
 func (this *QsciLexerCustom) callVirtualBase_Event(event *qt6.QEvent) bool {
 
-	return (bool)(C.QsciLexerCustom_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QsciLexerCustom_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QsciLexerCustom) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
-	ok := C.QsciLexerCustom_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) Onevent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	ok := C.QsciLexerCustom_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_Event
-func miqt_exec_callback_QsciLexerCustom_Event(self *C.QsciLexerCustom, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QsciLexerCustom_event
+func miqt_exec_callback_QsciLexerCustom_event(self *C.QsciLexerCustom, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1155,18 +1155,18 @@ func miqt_exec_callback_QsciLexerCustom_Event(self *C.QsciLexerCustom, cb C.intp
 
 func (this *QsciLexerCustom) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
 
-	return (bool)(C.QsciLexerCustom_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QsciLexerCustom_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QsciLexerCustom) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	ok := C.QsciLexerCustom_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OneventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	ok := C.QsciLexerCustom_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_EventFilter
-func miqt_exec_callback_QsciLexerCustom_EventFilter(self *C.QsciLexerCustom, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QsciLexerCustom_eventFilter
+func miqt_exec_callback_QsciLexerCustom_eventFilter(self *C.QsciLexerCustom, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1185,18 +1185,18 @@ func miqt_exec_callback_QsciLexerCustom_EventFilter(self *C.QsciLexerCustom, cb 
 
 func (this *QsciLexerCustom) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
-	C.QsciLexerCustom_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QsciLexerCustom_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciLexerCustom) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	ok := C.QsciLexerCustom_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OntimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	ok := C.QsciLexerCustom_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_TimerEvent
-func miqt_exec_callback_QsciLexerCustom_TimerEvent(self *C.QsciLexerCustom, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QsciLexerCustom_timerEvent
+func miqt_exec_callback_QsciLexerCustom_timerEvent(self *C.QsciLexerCustom, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1211,18 +1211,18 @@ func miqt_exec_callback_QsciLexerCustom_TimerEvent(self *C.QsciLexerCustom, cb C
 
 func (this *QsciLexerCustom) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
-	C.QsciLexerCustom_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QsciLexerCustom_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciLexerCustom) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	ok := C.QsciLexerCustom_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnchildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	ok := C.QsciLexerCustom_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_ChildEvent
-func miqt_exec_callback_QsciLexerCustom_ChildEvent(self *C.QsciLexerCustom, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QsciLexerCustom_childEvent
+func miqt_exec_callback_QsciLexerCustom_childEvent(self *C.QsciLexerCustom, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1237,18 +1237,18 @@ func miqt_exec_callback_QsciLexerCustom_ChildEvent(self *C.QsciLexerCustom, cb C
 
 func (this *QsciLexerCustom) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
-	C.QsciLexerCustom_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QsciLexerCustom_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciLexerCustom) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	ok := C.QsciLexerCustom_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OncustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	ok := C.QsciLexerCustom_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_CustomEvent
-func miqt_exec_callback_QsciLexerCustom_CustomEvent(self *C.QsciLexerCustom, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QsciLexerCustom_customEvent
+func miqt_exec_callback_QsciLexerCustom_customEvent(self *C.QsciLexerCustom, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1263,18 +1263,18 @@ func miqt_exec_callback_QsciLexerCustom_CustomEvent(self *C.QsciLexerCustom, cb 
 
 func (this *QsciLexerCustom) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QsciLexerCustom_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QsciLexerCustom_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QsciLexerCustom) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QsciLexerCustom_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OnconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QsciLexerCustom_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_ConnectNotify
-func miqt_exec_callback_QsciLexerCustom_ConnectNotify(self *C.QsciLexerCustom, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QsciLexerCustom_connectNotify
+func miqt_exec_callback_QsciLexerCustom_connectNotify(self *C.QsciLexerCustom, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1289,18 +1289,18 @@ func miqt_exec_callback_QsciLexerCustom_ConnectNotify(self *C.QsciLexerCustom, c
 
 func (this *QsciLexerCustom) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QsciLexerCustom_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QsciLexerCustom_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QsciLexerCustom) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QsciLexerCustom_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerCustom) OndisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QsciLexerCustom_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerCustom_DisconnectNotify
-func miqt_exec_callback_QsciLexerCustom_DisconnectNotify(self *C.QsciLexerCustom, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QsciLexerCustom_disconnectNotify
+func miqt_exec_callback_QsciLexerCustom_disconnectNotify(self *C.QsciLexerCustom, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1315,7 +1315,7 @@ func miqt_exec_callback_QsciLexerCustom_DisconnectNotify(self *C.QsciLexerCustom
 
 // Delete this object from C++ memory.
 func (this *QsciLexerCustom) Delete() {
-	C.QsciLexerCustom_Delete(this.h)
+	C.QsciLexerCustom_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

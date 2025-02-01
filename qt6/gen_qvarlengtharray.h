@@ -20,12 +20,12 @@ class QVLABaseBase;
 typedef struct QVLABaseBase QVLABaseBase;
 #endif
 
-ptrdiff_t QVLABaseBase_Capacity(const QVLABaseBase* self);
-ptrdiff_t QVLABaseBase_Size(const QVLABaseBase* self);
-bool QVLABaseBase_Empty(const QVLABaseBase* self);
+ptrdiff_t QVLABaseBase_capacity(const QVLABaseBase* self);
+ptrdiff_t QVLABaseBase_size(const QVLABaseBase* self);
+bool QVLABaseBase_empty(const QVLABaseBase* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

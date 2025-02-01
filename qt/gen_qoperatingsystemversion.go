@@ -76,37 +76,37 @@ func NewQOperatingSystemVersion3(osType QOperatingSystemVersion__OSType, vmajor 
 }
 
 func QOperatingSystemVersion_Current() *QOperatingSystemVersion {
-	_goptr := newQOperatingSystemVersion(C.QOperatingSystemVersion_Current())
+	_goptr := newQOperatingSystemVersion(C.QOperatingSystemVersion_current())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QOperatingSystemVersion_CurrentType() QOperatingSystemVersion__OSType {
-	return (QOperatingSystemVersion__OSType)(C.QOperatingSystemVersion_CurrentType())
+	return (QOperatingSystemVersion__OSType)(C.QOperatingSystemVersion_currentType())
 }
 
 func (this *QOperatingSystemVersion) MajorVersion() int {
-	return (int)(C.QOperatingSystemVersion_MajorVersion(this.h))
+	return (int)(C.QOperatingSystemVersion_majorVersion(this.h))
 }
 
 func (this *QOperatingSystemVersion) MinorVersion() int {
-	return (int)(C.QOperatingSystemVersion_MinorVersion(this.h))
+	return (int)(C.QOperatingSystemVersion_minorVersion(this.h))
 }
 
 func (this *QOperatingSystemVersion) MicroVersion() int {
-	return (int)(C.QOperatingSystemVersion_MicroVersion(this.h))
+	return (int)(C.QOperatingSystemVersion_microVersion(this.h))
 }
 
 func (this *QOperatingSystemVersion) SegmentCount() int {
-	return (int)(C.QOperatingSystemVersion_SegmentCount(this.h))
+	return (int)(C.QOperatingSystemVersion_segmentCount(this.h))
 }
 
 func (this *QOperatingSystemVersion) Type() QOperatingSystemVersion__OSType {
-	return (QOperatingSystemVersion__OSType)(C.QOperatingSystemVersion_Type(this.h))
+	return (QOperatingSystemVersion__OSType)(C.QOperatingSystemVersion_type(this.h))
 }
 
 func (this *QOperatingSystemVersion) Name() string {
-	var _ms C.struct_miqt_string = C.QOperatingSystemVersion_Name(this.h)
+	var _ms C.struct_miqt_string = C.QOperatingSystemVersion_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -114,7 +114,7 @@ func (this *QOperatingSystemVersion) Name() string {
 
 // Delete this object from C++ memory.
 func (this *QOperatingSystemVersion) Delete() {
-	C.QOperatingSystemVersion_Delete(this.h)
+	C.QOperatingSystemVersion_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

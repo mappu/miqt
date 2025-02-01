@@ -53,19 +53,19 @@ func UnsafeNewQWebEngineCookieStore(h unsafe.Pointer) *QWebEngineCookieStore {
 }
 
 func (this *QWebEngineCookieStore) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineCookieStore_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineCookieStore_metaObject(this.h)))
 }
 
 func (this *QWebEngineCookieStore) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWebEngineCookieStore_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWebEngineCookieStore_metacast(this.h, param1_Cstring))
 }
 
 func QWebEngineCookieStore_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineCookieStore_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineCookieStore_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -74,41 +74,41 @@ func QWebEngineCookieStore_Tr(s string) string {
 func QWebEngineCookieStore_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineCookieStore_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineCookieStore_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineCookieStore) SetCookie(cookie *network.QNetworkCookie) {
-	C.QWebEngineCookieStore_SetCookie(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()))
+	C.QWebEngineCookieStore_setCookie(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()))
 }
 
 func (this *QWebEngineCookieStore) DeleteCookie(cookie *network.QNetworkCookie) {
-	C.QWebEngineCookieStore_DeleteCookie(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()))
+	C.QWebEngineCookieStore_deleteCookie(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()))
 }
 
 func (this *QWebEngineCookieStore) DeleteSessionCookies() {
-	C.QWebEngineCookieStore_DeleteSessionCookies(this.h)
+	C.QWebEngineCookieStore_deleteSessionCookies(this.h)
 }
 
 func (this *QWebEngineCookieStore) DeleteAllCookies() {
-	C.QWebEngineCookieStore_DeleteAllCookies(this.h)
+	C.QWebEngineCookieStore_deleteAllCookies(this.h)
 }
 
 func (this *QWebEngineCookieStore) LoadAllCookies() {
-	C.QWebEngineCookieStore_LoadAllCookies(this.h)
+	C.QWebEngineCookieStore_loadAllCookies(this.h)
 }
 
 func (this *QWebEngineCookieStore) CookieAdded(cookie *network.QNetworkCookie) {
-	C.QWebEngineCookieStore_CookieAdded(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()))
+	C.QWebEngineCookieStore_cookieAdded(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()))
 }
 func (this *QWebEngineCookieStore) OnCookieAdded(slot func(cookie *network.QNetworkCookie)) {
-	C.QWebEngineCookieStore_connect_CookieAdded(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineCookieStore_connect_cookieAdded(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineCookieStore_CookieAdded
-func miqt_exec_callback_QWebEngineCookieStore_CookieAdded(cb C.intptr_t, cookie *C.QNetworkCookie) {
+//export miqt_exec_callback_QWebEngineCookieStore_cookieAdded
+func miqt_exec_callback_QWebEngineCookieStore_cookieAdded(cb C.intptr_t, cookie *C.QNetworkCookie) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(cookie *network.QNetworkCookie))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -121,14 +121,14 @@ func miqt_exec_callback_QWebEngineCookieStore_CookieAdded(cb C.intptr_t, cookie 
 }
 
 func (this *QWebEngineCookieStore) CookieRemoved(cookie *network.QNetworkCookie) {
-	C.QWebEngineCookieStore_CookieRemoved(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()))
+	C.QWebEngineCookieStore_cookieRemoved(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()))
 }
 func (this *QWebEngineCookieStore) OnCookieRemoved(slot func(cookie *network.QNetworkCookie)) {
-	C.QWebEngineCookieStore_connect_CookieRemoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineCookieStore_connect_cookieRemoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineCookieStore_CookieRemoved
-func miqt_exec_callback_QWebEngineCookieStore_CookieRemoved(cb C.intptr_t, cookie *C.QNetworkCookie) {
+//export miqt_exec_callback_QWebEngineCookieStore_cookieRemoved
+func miqt_exec_callback_QWebEngineCookieStore_cookieRemoved(cb C.intptr_t, cookie *C.QNetworkCookie) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(cookie *network.QNetworkCookie))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -145,7 +145,7 @@ func QWebEngineCookieStore_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineCookieStore_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineCookieStore_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -156,7 +156,7 @@ func QWebEngineCookieStore_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineCookieStore_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebEngineCookieStore_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -167,7 +167,7 @@ func QWebEngineCookieStore_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineCookieStore_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineCookieStore_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -178,23 +178,23 @@ func QWebEngineCookieStore_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineCookieStore_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebEngineCookieStore_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineCookieStore) SetCookie2(cookie *network.QNetworkCookie, origin *qt.QUrl) {
-	C.QWebEngineCookieStore_SetCookie2(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()), (*C.QUrl)(origin.UnsafePointer()))
+	C.QWebEngineCookieStore_setCookie2(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()), (*C.QUrl)(origin.UnsafePointer()))
 }
 
 func (this *QWebEngineCookieStore) DeleteCookie2(cookie *network.QNetworkCookie, origin *qt.QUrl) {
-	C.QWebEngineCookieStore_DeleteCookie2(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()), (*C.QUrl)(origin.UnsafePointer()))
+	C.QWebEngineCookieStore_deleteCookie2(this.h, (*C.QNetworkCookie)(cookie.UnsafePointer()), (*C.QUrl)(origin.UnsafePointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QWebEngineCookieStore) Delete() {
-	C.QWebEngineCookieStore_Delete(this.h)
+	C.QWebEngineCookieStore_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -245,12 +245,12 @@ func NewQWebEngineCookieStore__FilterRequest(param1 *QWebEngineCookieStore__Filt
 }
 
 func (this *QWebEngineCookieStore__FilterRequest) OperatorAssign(param1 *QWebEngineCookieStore__FilterRequest) {
-	C.QWebEngineCookieStore__FilterRequest_OperatorAssign(this.h, param1.cPointer())
+	C.QWebEngineCookieStore__FilterRequest_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QWebEngineCookieStore__FilterRequest) Delete() {
-	C.QWebEngineCookieStore__FilterRequest_Delete(this.h)
+	C.QWebEngineCookieStore__FilterRequest_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

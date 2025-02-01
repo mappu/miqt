@@ -22,18 +22,18 @@ typedef struct QScriptString QScriptString;
 
 QScriptString* QScriptString_new();
 QScriptString* QScriptString_new2(QScriptString* other);
-void QScriptString_OperatorAssign(QScriptString* self, QScriptString* other);
-bool QScriptString_IsValid(const QScriptString* self);
-bool QScriptString_OperatorEqual(const QScriptString* self, QScriptString* other);
-bool QScriptString_OperatorNotEqual(const QScriptString* self, QScriptString* other);
-unsigned int QScriptString_ToArrayIndex(const QScriptString* self);
-struct miqt_string QScriptString_ToString(const QScriptString* self);
+void QScriptString_operatorAssign(QScriptString* self, QScriptString* other);
+bool QScriptString_isValid(const QScriptString* self);
+bool QScriptString_operatorEqual(const QScriptString* self, QScriptString* other);
+bool QScriptString_operatorNotEqual(const QScriptString* self, QScriptString* other);
+unsigned int QScriptString_toArrayIndex(const QScriptString* self);
+struct miqt_string QScriptString_toString(const QScriptString* self);
 struct miqt_string QScriptString_ToQString(const QScriptString* self);
-unsigned int QScriptString_ToArrayIndex1(const QScriptString* self, bool* ok);
-void QScriptString_Delete(QScriptString* self);
+unsigned int QScriptString_toArrayIndex1(const QScriptString* self, bool* ok);
+void QScriptString_delete(QScriptString* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

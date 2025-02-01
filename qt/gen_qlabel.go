@@ -99,19 +99,19 @@ func NewQLabel6(text string, parent *QWidget, f WindowType) *QLabel {
 }
 
 func (this *QLabel) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QLabel_MetaObject(this.h))
+	return newQMetaObject(C.QLabel_metaObject(this.h))
 }
 
 func (this *QLabel) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QLabel_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QLabel_metacast(this.h, param1_Cstring))
 }
 
 func QLabel_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QLabel_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QLabel_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -120,148 +120,148 @@ func QLabel_Tr(s string) string {
 func QLabel_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QLabel_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QLabel_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLabel) Text() string {
-	var _ms C.struct_miqt_string = C.QLabel_Text(this.h)
+	var _ms C.struct_miqt_string = C.QLabel_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLabel) Pixmap() *QPixmap {
-	return newQPixmap(C.QLabel_Pixmap(this.h))
+	return newQPixmap(C.QLabel_pixmap(this.h))
 }
 
 func (this *QLabel) PixmapWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QPixmap {
-	_goptr := newQPixmap(C.QLabel_PixmapWithQtReturnByValueConstant(this.h, (C.int)(param1)))
+	_goptr := newQPixmap(C.QLabel_pixmapWithQtReturnByValueConstant(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) Picture() *QPicture {
-	return newQPicture(C.QLabel_Picture(this.h))
+	return newQPicture(C.QLabel_picture(this.h))
 }
 
 func (this *QLabel) PictureWithQtReturnByValueConstant(param1 ReturnByValueConstant) *QPicture {
-	_goptr := newQPicture(C.QLabel_PictureWithQtReturnByValueConstant(this.h, (C.int)(param1)))
+	_goptr := newQPicture(C.QLabel_pictureWithQtReturnByValueConstant(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) Movie() *QMovie {
-	return newQMovie(C.QLabel_Movie(this.h))
+	return newQMovie(C.QLabel_movie(this.h))
 }
 
 func (this *QLabel) TextFormat() TextFormat {
-	return (TextFormat)(C.QLabel_TextFormat(this.h))
+	return (TextFormat)(C.QLabel_textFormat(this.h))
 }
 
 func (this *QLabel) SetTextFormat(textFormat TextFormat) {
-	C.QLabel_SetTextFormat(this.h, (C.int)(textFormat))
+	C.QLabel_setTextFormat(this.h, (C.int)(textFormat))
 }
 
 func (this *QLabel) Alignment() AlignmentFlag {
-	return (AlignmentFlag)(C.QLabel_Alignment(this.h))
+	return (AlignmentFlag)(C.QLabel_alignment(this.h))
 }
 
 func (this *QLabel) SetAlignment(alignment AlignmentFlag) {
-	C.QLabel_SetAlignment(this.h, (C.int)(alignment))
+	C.QLabel_setAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QLabel) SetWordWrap(on bool) {
-	C.QLabel_SetWordWrap(this.h, (C.bool)(on))
+	C.QLabel_setWordWrap(this.h, (C.bool)(on))
 }
 
 func (this *QLabel) WordWrap() bool {
-	return (bool)(C.QLabel_WordWrap(this.h))
+	return (bool)(C.QLabel_wordWrap(this.h))
 }
 
 func (this *QLabel) Indent() int {
-	return (int)(C.QLabel_Indent(this.h))
+	return (int)(C.QLabel_indent(this.h))
 }
 
 func (this *QLabel) SetIndent(indent int) {
-	C.QLabel_SetIndent(this.h, (C.int)(indent))
+	C.QLabel_setIndent(this.h, (C.int)(indent))
 }
 
 func (this *QLabel) Margin() int {
-	return (int)(C.QLabel_Margin(this.h))
+	return (int)(C.QLabel_margin(this.h))
 }
 
 func (this *QLabel) SetMargin(margin int) {
-	C.QLabel_SetMargin(this.h, (C.int)(margin))
+	C.QLabel_setMargin(this.h, (C.int)(margin))
 }
 
 func (this *QLabel) HasScaledContents() bool {
-	return (bool)(C.QLabel_HasScaledContents(this.h))
+	return (bool)(C.QLabel_hasScaledContents(this.h))
 }
 
 func (this *QLabel) SetScaledContents(scaledContents bool) {
-	C.QLabel_SetScaledContents(this.h, (C.bool)(scaledContents))
+	C.QLabel_setScaledContents(this.h, (C.bool)(scaledContents))
 }
 
 func (this *QLabel) SizeHint() *QSize {
-	_goptr := newQSize(C.QLabel_SizeHint(this.h))
+	_goptr := newQSize(C.QLabel_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QLabel_MinimumSizeHint(this.h))
+	_goptr := newQSize(C.QLabel_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QLabel) SetBuddy(buddy *QWidget) {
-	C.QLabel_SetBuddy(this.h, buddy.cPointer())
+	C.QLabel_setBuddy(this.h, buddy.cPointer())
 }
 
 func (this *QLabel) Buddy() *QWidget {
-	return newQWidget(C.QLabel_Buddy(this.h))
+	return newQWidget(C.QLabel_buddy(this.h))
 }
 
 func (this *QLabel) HeightForWidth(param1 int) int {
-	return (int)(C.QLabel_HeightForWidth(this.h, (C.int)(param1)))
+	return (int)(C.QLabel_heightForWidth(this.h, (C.int)(param1)))
 }
 
 func (this *QLabel) OpenExternalLinks() bool {
-	return (bool)(C.QLabel_OpenExternalLinks(this.h))
+	return (bool)(C.QLabel_openExternalLinks(this.h))
 }
 
 func (this *QLabel) SetOpenExternalLinks(open bool) {
-	C.QLabel_SetOpenExternalLinks(this.h, (C.bool)(open))
+	C.QLabel_setOpenExternalLinks(this.h, (C.bool)(open))
 }
 
 func (this *QLabel) SetTextInteractionFlags(flags TextInteractionFlag) {
-	C.QLabel_SetTextInteractionFlags(this.h, (C.int)(flags))
+	C.QLabel_setTextInteractionFlags(this.h, (C.int)(flags))
 }
 
 func (this *QLabel) TextInteractionFlags() TextInteractionFlag {
-	return (TextInteractionFlag)(C.QLabel_TextInteractionFlags(this.h))
+	return (TextInteractionFlag)(C.QLabel_textInteractionFlags(this.h))
 }
 
 func (this *QLabel) SetSelection(param1 int, param2 int) {
-	C.QLabel_SetSelection(this.h, (C.int)(param1), (C.int)(param2))
+	C.QLabel_setSelection(this.h, (C.int)(param1), (C.int)(param2))
 }
 
 func (this *QLabel) HasSelectedText() bool {
-	return (bool)(C.QLabel_HasSelectedText(this.h))
+	return (bool)(C.QLabel_hasSelectedText(this.h))
 }
 
 func (this *QLabel) SelectedText() string {
-	var _ms C.struct_miqt_string = C.QLabel_SelectedText(this.h)
+	var _ms C.struct_miqt_string = C.QLabel_selectedText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLabel) SelectionStart() int {
-	return (int)(C.QLabel_SelectionStart(this.h))
+	return (int)(C.QLabel_selectionStart(this.h))
 }
 
 func (this *QLabel) SetText(text string) {
@@ -269,31 +269,31 @@ func (this *QLabel) SetText(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QLabel_SetText(this.h, text_ms)
+	C.QLabel_setText(this.h, text_ms)
 }
 
 func (this *QLabel) SetPixmap(pixmap *QPixmap) {
-	C.QLabel_SetPixmap(this.h, pixmap.cPointer())
+	C.QLabel_setPixmap(this.h, pixmap.cPointer())
 }
 
 func (this *QLabel) SetPicture(picture *QPicture) {
-	C.QLabel_SetPicture(this.h, picture.cPointer())
+	C.QLabel_setPicture(this.h, picture.cPointer())
 }
 
 func (this *QLabel) SetMovie(movie *QMovie) {
-	C.QLabel_SetMovie(this.h, movie.cPointer())
+	C.QLabel_setMovie(this.h, movie.cPointer())
 }
 
 func (this *QLabel) SetNum(num int) {
-	C.QLabel_SetNum(this.h, (C.int)(num))
+	C.QLabel_setNum(this.h, (C.int)(num))
 }
 
 func (this *QLabel) SetNumWithNum(num float64) {
-	C.QLabel_SetNumWithNum(this.h, (C.double)(num))
+	C.QLabel_setNumWithNum(this.h, (C.double)(num))
 }
 
 func (this *QLabel) Clear() {
-	C.QLabel_Clear(this.h)
+	C.QLabel_clear(this.h)
 }
 
 func (this *QLabel) LinkActivated(link string) {
@@ -301,14 +301,14 @@ func (this *QLabel) LinkActivated(link string) {
 	link_ms.data = C.CString(link)
 	link_ms.len = C.size_t(len(link))
 	defer C.free(unsafe.Pointer(link_ms.data))
-	C.QLabel_LinkActivated(this.h, link_ms)
+	C.QLabel_linkActivated(this.h, link_ms)
 }
 func (this *QLabel) OnLinkActivated(slot func(link string)) {
-	C.QLabel_connect_LinkActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QLabel_connect_linkActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QLabel_LinkActivated
-func miqt_exec_callback_QLabel_LinkActivated(cb C.intptr_t, link C.struct_miqt_string) {
+//export miqt_exec_callback_QLabel_linkActivated
+func miqt_exec_callback_QLabel_linkActivated(cb C.intptr_t, link C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(link string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -328,14 +328,14 @@ func (this *QLabel) LinkHovered(link string) {
 	link_ms.data = C.CString(link)
 	link_ms.len = C.size_t(len(link))
 	defer C.free(unsafe.Pointer(link_ms.data))
-	C.QLabel_LinkHovered(this.h, link_ms)
+	C.QLabel_linkHovered(this.h, link_ms)
 }
 func (this *QLabel) OnLinkHovered(slot func(link string)) {
-	C.QLabel_connect_LinkHovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QLabel_connect_linkHovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QLabel_LinkHovered
-func miqt_exec_callback_QLabel_LinkHovered(cb C.intptr_t, link C.struct_miqt_string) {
+//export miqt_exec_callback_QLabel_linkHovered
+func miqt_exec_callback_QLabel_linkHovered(cb C.intptr_t, link C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(link string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -355,7 +355,7 @@ func QLabel_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QLabel_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QLabel_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -366,7 +366,7 @@ func QLabel_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QLabel_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QLabel_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -377,7 +377,7 @@ func QLabel_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QLabel_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QLabel_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -388,7 +388,7 @@ func QLabel_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QLabel_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QLabel_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -396,20 +396,20 @@ func QLabel_TrUtf83(s string, c string, n int) string {
 
 func (this *QLabel) callVirtualBase_SizeHint() *QSize {
 
-	_goptr := newQSize(C.QLabel_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QLabel_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QLabel) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QLabel_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnsizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QLabel_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_SizeHint
-func miqt_exec_callback_QLabel_SizeHint(self *C.QLabel, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QLabel_sizeHint
+func miqt_exec_callback_QLabel_sizeHint(self *C.QLabel, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -423,20 +423,20 @@ func miqt_exec_callback_QLabel_SizeHint(self *C.QLabel, cb C.intptr_t) *C.QSize 
 
 func (this *QLabel) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_goptr := newQSize(C.QLabel_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QLabel_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QLabel) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QLabel_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QLabel_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_MinimumSizeHint
-func miqt_exec_callback_QLabel_MinimumSizeHint(self *C.QLabel, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QLabel_minimumSizeHint
+func miqt_exec_callback_QLabel_minimumSizeHint(self *C.QLabel, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -450,18 +450,18 @@ func miqt_exec_callback_QLabel_MinimumSizeHint(self *C.QLabel, cb C.intptr_t) *C
 
 func (this *QLabel) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QLabel_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QLabel_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QLabel) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QLabel_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QLabel_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_HeightForWidth
-func miqt_exec_callback_QLabel_HeightForWidth(self *C.QLabel, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QLabel_heightForWidth
+func miqt_exec_callback_QLabel_heightForWidth(self *C.QLabel, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -478,18 +478,18 @@ func miqt_exec_callback_QLabel_HeightForWidth(self *C.QLabel, cb C.intptr_t, par
 
 func (this *QLabel) callVirtualBase_Event(e *QEvent) bool {
 
-	return (bool)(C.QLabel_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+	return (bool)(C.QLabel_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
 }
-func (this *QLabel) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	ok := C.QLabel_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) Onevent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	ok := C.QLabel_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_Event
-func miqt_exec_callback_QLabel_Event(self *C.QLabel, cb C.intptr_t, e *C.QEvent) C.bool {
+//export miqt_exec_callback_QLabel_event
+func miqt_exec_callback_QLabel_event(self *C.QLabel, cb C.intptr_t, e *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -506,18 +506,18 @@ func miqt_exec_callback_QLabel_Event(self *C.QLabel, cb C.intptr_t, e *C.QEvent)
 
 func (this *QLabel) callVirtualBase_KeyPressEvent(ev *QKeyEvent) {
 
-	C.QLabel_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), ev.cPointer())
+	C.QLabel_virtualbase_keyPressEvent(unsafe.Pointer(this.h), ev.cPointer())
 
 }
-func (this *QLabel) OnKeyPressEvent(slot func(super func(ev *QKeyEvent), ev *QKeyEvent)) {
-	ok := C.QLabel_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnkeyPressEvent(slot func(super func(ev *QKeyEvent), ev *QKeyEvent)) {
+	ok := C.QLabel_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_KeyPressEvent
-func miqt_exec_callback_QLabel_KeyPressEvent(self *C.QLabel, cb C.intptr_t, ev *C.QKeyEvent) {
+//export miqt_exec_callback_QLabel_keyPressEvent
+func miqt_exec_callback_QLabel_keyPressEvent(self *C.QLabel, cb C.intptr_t, ev *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QKeyEvent), ev *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -532,18 +532,18 @@ func miqt_exec_callback_QLabel_KeyPressEvent(self *C.QLabel, cb C.intptr_t, ev *
 
 func (this *QLabel) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
-	C.QLabel_virtualbase_PaintEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QLabel_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QLabel) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
-	ok := C.QLabel_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnpaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	ok := C.QLabel_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_PaintEvent
-func miqt_exec_callback_QLabel_PaintEvent(self *C.QLabel, cb C.intptr_t, param1 *C.QPaintEvent) {
+//export miqt_exec_callback_QLabel_paintEvent
+func miqt_exec_callback_QLabel_paintEvent(self *C.QLabel, cb C.intptr_t, param1 *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QPaintEvent), param1 *QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -558,18 +558,18 @@ func miqt_exec_callback_QLabel_PaintEvent(self *C.QLabel, cb C.intptr_t, param1 
 
 func (this *QLabel) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
-	C.QLabel_virtualbase_ChangeEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QLabel_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QLabel) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
-	ok := C.QLabel_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnchangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	ok := C.QLabel_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_ChangeEvent
-func miqt_exec_callback_QLabel_ChangeEvent(self *C.QLabel, cb C.intptr_t, param1 *C.QEvent) {
+//export miqt_exec_callback_QLabel_changeEvent
+func miqt_exec_callback_QLabel_changeEvent(self *C.QLabel, cb C.intptr_t, param1 *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent), param1 *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -584,18 +584,18 @@ func miqt_exec_callback_QLabel_ChangeEvent(self *C.QLabel, cb C.intptr_t, param1
 
 func (this *QLabel) callVirtualBase_MousePressEvent(ev *QMouseEvent) {
 
-	C.QLabel_virtualbase_MousePressEvent(unsafe.Pointer(this.h), ev.cPointer())
+	C.QLabel_virtualbase_mousePressEvent(unsafe.Pointer(this.h), ev.cPointer())
 
 }
-func (this *QLabel) OnMousePressEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
-	ok := C.QLabel_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnmousePressEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	ok := C.QLabel_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_MousePressEvent
-func miqt_exec_callback_QLabel_MousePressEvent(self *C.QLabel, cb C.intptr_t, ev *C.QMouseEvent) {
+//export miqt_exec_callback_QLabel_mousePressEvent
+func miqt_exec_callback_QLabel_mousePressEvent(self *C.QLabel, cb C.intptr_t, ev *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QMouseEvent), ev *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -610,18 +610,18 @@ func miqt_exec_callback_QLabel_MousePressEvent(self *C.QLabel, cb C.intptr_t, ev
 
 func (this *QLabel) callVirtualBase_MouseMoveEvent(ev *QMouseEvent) {
 
-	C.QLabel_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), ev.cPointer())
+	C.QLabel_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), ev.cPointer())
 
 }
-func (this *QLabel) OnMouseMoveEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
-	ok := C.QLabel_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnmouseMoveEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	ok := C.QLabel_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_MouseMoveEvent
-func miqt_exec_callback_QLabel_MouseMoveEvent(self *C.QLabel, cb C.intptr_t, ev *C.QMouseEvent) {
+//export miqt_exec_callback_QLabel_mouseMoveEvent
+func miqt_exec_callback_QLabel_mouseMoveEvent(self *C.QLabel, cb C.intptr_t, ev *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QMouseEvent), ev *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -636,18 +636,18 @@ func miqt_exec_callback_QLabel_MouseMoveEvent(self *C.QLabel, cb C.intptr_t, ev 
 
 func (this *QLabel) callVirtualBase_MouseReleaseEvent(ev *QMouseEvent) {
 
-	C.QLabel_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), ev.cPointer())
+	C.QLabel_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), ev.cPointer())
 
 }
-func (this *QLabel) OnMouseReleaseEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
-	ok := C.QLabel_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnmouseReleaseEvent(slot func(super func(ev *QMouseEvent), ev *QMouseEvent)) {
+	ok := C.QLabel_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_MouseReleaseEvent
-func miqt_exec_callback_QLabel_MouseReleaseEvent(self *C.QLabel, cb C.intptr_t, ev *C.QMouseEvent) {
+//export miqt_exec_callback_QLabel_mouseReleaseEvent
+func miqt_exec_callback_QLabel_mouseReleaseEvent(self *C.QLabel, cb C.intptr_t, ev *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QMouseEvent), ev *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -662,18 +662,18 @@ func miqt_exec_callback_QLabel_MouseReleaseEvent(self *C.QLabel, cb C.intptr_t, 
 
 func (this *QLabel) callVirtualBase_ContextMenuEvent(ev *QContextMenuEvent) {
 
-	C.QLabel_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), ev.cPointer())
+	C.QLabel_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), ev.cPointer())
 
 }
-func (this *QLabel) OnContextMenuEvent(slot func(super func(ev *QContextMenuEvent), ev *QContextMenuEvent)) {
-	ok := C.QLabel_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OncontextMenuEvent(slot func(super func(ev *QContextMenuEvent), ev *QContextMenuEvent)) {
+	ok := C.QLabel_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_ContextMenuEvent
-func miqt_exec_callback_QLabel_ContextMenuEvent(self *C.QLabel, cb C.intptr_t, ev *C.QContextMenuEvent) {
+//export miqt_exec_callback_QLabel_contextMenuEvent
+func miqt_exec_callback_QLabel_contextMenuEvent(self *C.QLabel, cb C.intptr_t, ev *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QContextMenuEvent), ev *QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -688,18 +688,18 @@ func miqt_exec_callback_QLabel_ContextMenuEvent(self *C.QLabel, cb C.intptr_t, e
 
 func (this *QLabel) callVirtualBase_FocusInEvent(ev *QFocusEvent) {
 
-	C.QLabel_virtualbase_FocusInEvent(unsafe.Pointer(this.h), ev.cPointer())
+	C.QLabel_virtualbase_focusInEvent(unsafe.Pointer(this.h), ev.cPointer())
 
 }
-func (this *QLabel) OnFocusInEvent(slot func(super func(ev *QFocusEvent), ev *QFocusEvent)) {
-	ok := C.QLabel_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnfocusInEvent(slot func(super func(ev *QFocusEvent), ev *QFocusEvent)) {
+	ok := C.QLabel_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_FocusInEvent
-func miqt_exec_callback_QLabel_FocusInEvent(self *C.QLabel, cb C.intptr_t, ev *C.QFocusEvent) {
+//export miqt_exec_callback_QLabel_focusInEvent
+func miqt_exec_callback_QLabel_focusInEvent(self *C.QLabel, cb C.intptr_t, ev *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QFocusEvent), ev *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -714,18 +714,18 @@ func miqt_exec_callback_QLabel_FocusInEvent(self *C.QLabel, cb C.intptr_t, ev *C
 
 func (this *QLabel) callVirtualBase_FocusOutEvent(ev *QFocusEvent) {
 
-	C.QLabel_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), ev.cPointer())
+	C.QLabel_virtualbase_focusOutEvent(unsafe.Pointer(this.h), ev.cPointer())
 
 }
-func (this *QLabel) OnFocusOutEvent(slot func(super func(ev *QFocusEvent), ev *QFocusEvent)) {
-	ok := C.QLabel_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnfocusOutEvent(slot func(super func(ev *QFocusEvent), ev *QFocusEvent)) {
+	ok := C.QLabel_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_FocusOutEvent
-func miqt_exec_callback_QLabel_FocusOutEvent(self *C.QLabel, cb C.intptr_t, ev *C.QFocusEvent) {
+//export miqt_exec_callback_QLabel_focusOutEvent
+func miqt_exec_callback_QLabel_focusOutEvent(self *C.QLabel, cb C.intptr_t, ev *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ev *QFocusEvent), ev *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -740,18 +740,18 @@ func miqt_exec_callback_QLabel_FocusOutEvent(self *C.QLabel, cb C.intptr_t, ev *
 
 func (this *QLabel) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QLabel_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QLabel_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QLabel) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QLabel_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QLabel_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_FocusNextPrevChild
-func miqt_exec_callback_QLabel_FocusNextPrevChild(self *C.QLabel, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QLabel_focusNextPrevChild
+func miqt_exec_callback_QLabel_focusNextPrevChild(self *C.QLabel, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -768,18 +768,18 @@ func miqt_exec_callback_QLabel_FocusNextPrevChild(self *C.QLabel, cb C.intptr_t,
 
 func (this *QLabel) callVirtualBase_DevType() int {
 
-	return (int)(C.QLabel_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QLabel_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QLabel) OnDevType(slot func(super func() int) int) {
-	ok := C.QLabel_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OndevType(slot func(super func() int) int) {
+	ok := C.QLabel_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_DevType
-func miqt_exec_callback_QLabel_DevType(self *C.QLabel, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QLabel_devType
+func miqt_exec_callback_QLabel_devType(self *C.QLabel, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -793,18 +793,18 @@ func miqt_exec_callback_QLabel_DevType(self *C.QLabel, cb C.intptr_t) C.int {
 
 func (this *QLabel) callVirtualBase_SetVisible(visible bool) {
 
-	C.QLabel_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QLabel_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QLabel) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QLabel_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QLabel_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_SetVisible
-func miqt_exec_callback_QLabel_SetVisible(self *C.QLabel, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QLabel_setVisible
+func miqt_exec_callback_QLabel_setVisible(self *C.QLabel, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -819,18 +819,18 @@ func miqt_exec_callback_QLabel_SetVisible(self *C.QLabel, cb C.intptr_t, visible
 
 func (this *QLabel) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QLabel_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QLabel_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QLabel) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QLabel_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QLabel_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_HasHeightForWidth
-func miqt_exec_callback_QLabel_HasHeightForWidth(self *C.QLabel, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QLabel_hasHeightForWidth
+func miqt_exec_callback_QLabel_hasHeightForWidth(self *C.QLabel, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -844,18 +844,18 @@ func miqt_exec_callback_QLabel_HasHeightForWidth(self *C.QLabel, cb C.intptr_t) 
 
 func (this *QLabel) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return newQPaintEngine(C.QLabel_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+	return newQPaintEngine(C.QLabel_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QLabel) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	ok := C.QLabel_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QLabel_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_PaintEngine
-func miqt_exec_callback_QLabel_PaintEngine(self *C.QLabel, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QLabel_paintEngine
+func miqt_exec_callback_QLabel_paintEngine(self *C.QLabel, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -869,18 +869,18 @@ func miqt_exec_callback_QLabel_PaintEngine(self *C.QLabel, cb C.intptr_t) *C.QPa
 
 func (this *QLabel) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
 
-	C.QLabel_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QLabel_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QLabel_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_MouseDoubleClickEvent
-func miqt_exec_callback_QLabel_MouseDoubleClickEvent(self *C.QLabel, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QLabel_mouseDoubleClickEvent
+func miqt_exec_callback_QLabel_mouseDoubleClickEvent(self *C.QLabel, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -895,18 +895,18 @@ func miqt_exec_callback_QLabel_MouseDoubleClickEvent(self *C.QLabel, cb C.intptr
 
 func (this *QLabel) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
-	C.QLabel_virtualbase_WheelEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
-	ok := C.QLabel_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnwheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+	ok := C.QLabel_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_WheelEvent
-func miqt_exec_callback_QLabel_WheelEvent(self *C.QLabel, cb C.intptr_t, event *C.QWheelEvent) {
+//export miqt_exec_callback_QLabel_wheelEvent
+func miqt_exec_callback_QLabel_wheelEvent(self *C.QLabel, cb C.intptr_t, event *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QWheelEvent), event *QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -921,18 +921,18 @@ func miqt_exec_callback_QLabel_WheelEvent(self *C.QLabel, cb C.intptr_t, event *
 
 func (this *QLabel) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
-	C.QLabel_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QLabel_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QLabel_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_KeyReleaseEvent
-func miqt_exec_callback_QLabel_KeyReleaseEvent(self *C.QLabel, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QLabel_keyReleaseEvent
+func miqt_exec_callback_QLabel_keyReleaseEvent(self *C.QLabel, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -947,18 +947,18 @@ func miqt_exec_callback_QLabel_KeyReleaseEvent(self *C.QLabel, cb C.intptr_t, ev
 
 func (this *QLabel) callVirtualBase_EnterEvent(event *QEvent) {
 
-	C.QLabel_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnEnterEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QLabel_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnenterEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QLabel_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_EnterEvent
-func miqt_exec_callback_QLabel_EnterEvent(self *C.QLabel, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QLabel_enterEvent
+func miqt_exec_callback_QLabel_enterEvent(self *C.QLabel, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -973,18 +973,18 @@ func miqt_exec_callback_QLabel_EnterEvent(self *C.QLabel, cb C.intptr_t, event *
 
 func (this *QLabel) callVirtualBase_LeaveEvent(event *QEvent) {
 
-	C.QLabel_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QLabel_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QLabel_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_LeaveEvent
-func miqt_exec_callback_QLabel_LeaveEvent(self *C.QLabel, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QLabel_leaveEvent
+func miqt_exec_callback_QLabel_leaveEvent(self *C.QLabel, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -999,18 +999,18 @@ func miqt_exec_callback_QLabel_LeaveEvent(self *C.QLabel, cb C.intptr_t, event *
 
 func (this *QLabel) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
-	C.QLabel_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
-	ok := C.QLabel_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QLabel_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_MoveEvent
-func miqt_exec_callback_QLabel_MoveEvent(self *C.QLabel, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QLabel_moveEvent
+func miqt_exec_callback_QLabel_moveEvent(self *C.QLabel, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1025,18 +1025,18 @@ func miqt_exec_callback_QLabel_MoveEvent(self *C.QLabel, cb C.intptr_t, event *C
 
 func (this *QLabel) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 
-	C.QLabel_virtualbase_ResizeEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
-	ok := C.QLabel_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnresizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+	ok := C.QLabel_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_ResizeEvent
-func miqt_exec_callback_QLabel_ResizeEvent(self *C.QLabel, cb C.intptr_t, event *C.QResizeEvent) {
+//export miqt_exec_callback_QLabel_resizeEvent
+func miqt_exec_callback_QLabel_resizeEvent(self *C.QLabel, cb C.intptr_t, event *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QResizeEvent), event *QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1051,18 +1051,18 @@ func miqt_exec_callback_QLabel_ResizeEvent(self *C.QLabel, cb C.intptr_t, event 
 
 func (this *QLabel) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
-	C.QLabel_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
-	ok := C.QLabel_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QLabel_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_CloseEvent
-func miqt_exec_callback_QLabel_CloseEvent(self *C.QLabel, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QLabel_closeEvent
+func miqt_exec_callback_QLabel_closeEvent(self *C.QLabel, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1077,18 +1077,18 @@ func miqt_exec_callback_QLabel_CloseEvent(self *C.QLabel, cb C.intptr_t, event *
 
 func (this *QLabel) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
-	C.QLabel_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
-	ok := C.QLabel_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QLabel_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_TabletEvent
-func miqt_exec_callback_QLabel_TabletEvent(self *C.QLabel, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QLabel_tabletEvent
+func miqt_exec_callback_QLabel_tabletEvent(self *C.QLabel, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1103,18 +1103,18 @@ func miqt_exec_callback_QLabel_TabletEvent(self *C.QLabel, cb C.intptr_t, event 
 
 func (this *QLabel) callVirtualBase_ActionEvent(event *QActionEvent) {
 
-	C.QLabel_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
-	ok := C.QLabel_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QLabel_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_ActionEvent
-func miqt_exec_callback_QLabel_ActionEvent(self *C.QLabel, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QLabel_actionEvent
+func miqt_exec_callback_QLabel_actionEvent(self *C.QLabel, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1129,18 +1129,18 @@ func miqt_exec_callback_QLabel_ActionEvent(self *C.QLabel, cb C.intptr_t, event 
 
 func (this *QLabel) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
 
-	C.QLabel_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
-	ok := C.QLabel_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	ok := C.QLabel_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_DragEnterEvent
-func miqt_exec_callback_QLabel_DragEnterEvent(self *C.QLabel, cb C.intptr_t, event *C.QDragEnterEvent) {
+//export miqt_exec_callback_QLabel_dragEnterEvent
+func miqt_exec_callback_QLabel_dragEnterEvent(self *C.QLabel, cb C.intptr_t, event *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragEnterEvent), event *QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1155,18 +1155,18 @@ func miqt_exec_callback_QLabel_DragEnterEvent(self *C.QLabel, cb C.intptr_t, eve
 
 func (this *QLabel) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 
-	C.QLabel_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
-	ok := C.QLabel_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	ok := C.QLabel_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_DragMoveEvent
-func miqt_exec_callback_QLabel_DragMoveEvent(self *C.QLabel, cb C.intptr_t, event *C.QDragMoveEvent) {
+//export miqt_exec_callback_QLabel_dragMoveEvent
+func miqt_exec_callback_QLabel_dragMoveEvent(self *C.QLabel, cb C.intptr_t, event *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragMoveEvent), event *QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1181,18 +1181,18 @@ func miqt_exec_callback_QLabel_DragMoveEvent(self *C.QLabel, cb C.intptr_t, even
 
 func (this *QLabel) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
 
-	C.QLabel_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
-	ok := C.QLabel_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	ok := C.QLabel_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_DragLeaveEvent
-func miqt_exec_callback_QLabel_DragLeaveEvent(self *C.QLabel, cb C.intptr_t, event *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QLabel_dragLeaveEvent
+func miqt_exec_callback_QLabel_dragLeaveEvent(self *C.QLabel, cb C.intptr_t, event *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1207,18 +1207,18 @@ func miqt_exec_callback_QLabel_DragLeaveEvent(self *C.QLabel, cb C.intptr_t, eve
 
 func (this *QLabel) callVirtualBase_DropEvent(event *QDropEvent) {
 
-	C.QLabel_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
-	ok := C.QLabel_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	ok := C.QLabel_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_DropEvent
-func miqt_exec_callback_QLabel_DropEvent(self *C.QLabel, cb C.intptr_t, event *C.QDropEvent) {
+//export miqt_exec_callback_QLabel_dropEvent
+func miqt_exec_callback_QLabel_dropEvent(self *C.QLabel, cb C.intptr_t, event *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1233,18 +1233,18 @@ func miqt_exec_callback_QLabel_DropEvent(self *C.QLabel, cb C.intptr_t, event *C
 
 func (this *QLabel) callVirtualBase_ShowEvent(event *QShowEvent) {
 
-	C.QLabel_virtualbase_ShowEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
-	ok := C.QLabel_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnshowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	ok := C.QLabel_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_ShowEvent
-func miqt_exec_callback_QLabel_ShowEvent(self *C.QLabel, cb C.intptr_t, event *C.QShowEvent) {
+//export miqt_exec_callback_QLabel_showEvent
+func miqt_exec_callback_QLabel_showEvent(self *C.QLabel, cb C.intptr_t, event *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QShowEvent), event *QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1259,18 +1259,18 @@ func miqt_exec_callback_QLabel_ShowEvent(self *C.QLabel, cb C.intptr_t, event *C
 
 func (this *QLabel) callVirtualBase_HideEvent(event *QHideEvent) {
 
-	C.QLabel_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
-	ok := C.QLabel_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QLabel_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_HideEvent
-func miqt_exec_callback_QLabel_HideEvent(self *C.QLabel, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_QLabel_hideEvent
+func miqt_exec_callback_QLabel_hideEvent(self *C.QLabel, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1292,18 +1292,18 @@ func (this *QLabel) callVirtualBase_NativeEvent(eventType []byte, message unsafe
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QLabel_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
+	return (bool)(C.QLabel_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QLabel) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
-	ok := C.QLabel_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	ok := C.QLabel_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_NativeEvent
-func miqt_exec_callback_QLabel_NativeEvent(self *C.QLabel, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
+//export miqt_exec_callback_QLabel_nativeEvent
+func miqt_exec_callback_QLabel_nativeEvent(self *C.QLabel, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1326,18 +1326,18 @@ func miqt_exec_callback_QLabel_NativeEvent(self *C.QLabel, cb C.intptr_t, eventT
 
 func (this *QLabel) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QLabel_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QLabel_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QLabel) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QLabel_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QLabel_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_Metric
-func miqt_exec_callback_QLabel_Metric(self *C.QLabel, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QLabel_metric
+func miqt_exec_callback_QLabel_metric(self *C.QLabel, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1354,18 +1354,18 @@ func miqt_exec_callback_QLabel_Metric(self *C.QLabel, cb C.intptr_t, param1 C.in
 
 func (this *QLabel) callVirtualBase_InitPainter(painter *QPainter) {
 
-	C.QLabel_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+	C.QLabel_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QLabel) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	ok := C.QLabel_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QLabel_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_InitPainter
-func miqt_exec_callback_QLabel_InitPainter(self *C.QLabel, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QLabel_initPainter
+func miqt_exec_callback_QLabel_initPainter(self *C.QLabel, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1380,18 +1380,18 @@ func miqt_exec_callback_QLabel_InitPainter(self *C.QLabel, cb C.intptr_t, painte
 
 func (this *QLabel) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return newQPaintDevice(C.QLabel_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+	return newQPaintDevice(C.QLabel_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QLabel) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	ok := C.QLabel_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QLabel_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_Redirected
-func miqt_exec_callback_QLabel_Redirected(self *C.QLabel, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QLabel_redirected
+func miqt_exec_callback_QLabel_redirected(self *C.QLabel, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1408,18 +1408,18 @@ func miqt_exec_callback_QLabel_Redirected(self *C.QLabel, cb C.intptr_t, offset 
 
 func (this *QLabel) callVirtualBase_SharedPainter() *QPainter {
 
-	return newQPainter(C.QLabel_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+	return newQPainter(C.QLabel_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QLabel) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	ok := C.QLabel_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QLabel_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_SharedPainter
-func miqt_exec_callback_QLabel_SharedPainter(self *C.QLabel, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QLabel_sharedPainter
+func miqt_exec_callback_QLabel_sharedPainter(self *C.QLabel, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1433,18 +1433,18 @@ func miqt_exec_callback_QLabel_SharedPainter(self *C.QLabel, cb C.intptr_t) *C.Q
 
 func (this *QLabel) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
 
-	C.QLabel_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QLabel_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QLabel) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
-	ok := C.QLabel_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QLabel_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_InputMethodEvent
-func miqt_exec_callback_QLabel_InputMethodEvent(self *C.QLabel, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QLabel_inputMethodEvent
+func miqt_exec_callback_QLabel_inputMethodEvent(self *C.QLabel, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1459,20 +1459,20 @@ func miqt_exec_callback_QLabel_InputMethodEvent(self *C.QLabel, cb C.intptr_t, p
 
 func (this *QLabel) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_goptr := newQVariant(C.QLabel_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
+	_goptr := newQVariant(C.QLabel_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QLabel) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
-	ok := C.QLabel_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	ok := C.QLabel_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_InputMethodQuery
-func miqt_exec_callback_QLabel_InputMethodQuery(self *C.QLabel, cb C.intptr_t, param1 C.int) *C.QVariant {
+//export miqt_exec_callback_QLabel_inputMethodQuery
+func miqt_exec_callback_QLabel_inputMethodQuery(self *C.QLabel, cb C.intptr_t, param1 C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1489,18 +1489,18 @@ func miqt_exec_callback_QLabel_InputMethodQuery(self *C.QLabel, cb C.intptr_t, p
 
 func (this *QLabel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QLabel_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QLabel_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QLabel) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QLabel_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QLabel_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_EventFilter
-func miqt_exec_callback_QLabel_EventFilter(self *C.QLabel, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QLabel_eventFilter
+func miqt_exec_callback_QLabel_eventFilter(self *C.QLabel, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1519,18 +1519,18 @@ func miqt_exec_callback_QLabel_EventFilter(self *C.QLabel, cb C.intptr_t, watche
 
 func (this *QLabel) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QLabel_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QLabel_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QLabel_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_TimerEvent
-func miqt_exec_callback_QLabel_TimerEvent(self *C.QLabel, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QLabel_timerEvent
+func miqt_exec_callback_QLabel_timerEvent(self *C.QLabel, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1545,18 +1545,18 @@ func miqt_exec_callback_QLabel_TimerEvent(self *C.QLabel, cb C.intptr_t, event *
 
 func (this *QLabel) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QLabel_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QLabel_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QLabel_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_ChildEvent
-func miqt_exec_callback_QLabel_ChildEvent(self *C.QLabel, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QLabel_childEvent
+func miqt_exec_callback_QLabel_childEvent(self *C.QLabel, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1571,18 +1571,18 @@ func miqt_exec_callback_QLabel_ChildEvent(self *C.QLabel, cb C.intptr_t, event *
 
 func (this *QLabel) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QLabel_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLabel_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLabel) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QLabel_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QLabel_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_CustomEvent
-func miqt_exec_callback_QLabel_CustomEvent(self *C.QLabel, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QLabel_customEvent
+func miqt_exec_callback_QLabel_customEvent(self *C.QLabel, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1597,18 +1597,18 @@ func miqt_exec_callback_QLabel_CustomEvent(self *C.QLabel, cb C.intptr_t, event 
 
 func (this *QLabel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QLabel_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QLabel_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QLabel) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QLabel_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QLabel_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_ConnectNotify
-func miqt_exec_callback_QLabel_ConnectNotify(self *C.QLabel, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QLabel_connectNotify
+func miqt_exec_callback_QLabel_connectNotify(self *C.QLabel, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1623,18 +1623,18 @@ func miqt_exec_callback_QLabel_ConnectNotify(self *C.QLabel, cb C.intptr_t, sign
 
 func (this *QLabel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QLabel_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QLabel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QLabel) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QLabel_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLabel) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QLabel_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLabel_DisconnectNotify
-func miqt_exec_callback_QLabel_DisconnectNotify(self *C.QLabel, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QLabel_disconnectNotify
+func miqt_exec_callback_QLabel_disconnectNotify(self *C.QLabel, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1649,7 +1649,7 @@ func miqt_exec_callback_QLabel_DisconnectNotify(self *C.QLabel, cb C.intptr_t, s
 
 // Delete this object from C++ memory.
 func (this *QLabel) Delete() {
-	C.QLabel_Delete(this.h)
+	C.QLabel_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

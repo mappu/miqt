@@ -58,46 +58,46 @@ func NewQAudioDeviceInfo2(other *QAudioDeviceInfo) *QAudioDeviceInfo {
 }
 
 func (this *QAudioDeviceInfo) OperatorAssign(other *QAudioDeviceInfo) {
-	C.QAudioDeviceInfo_OperatorAssign(this.h, other.cPointer())
+	C.QAudioDeviceInfo_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QAudioDeviceInfo) OperatorEqual(other *QAudioDeviceInfo) bool {
-	return (bool)(C.QAudioDeviceInfo_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QAudioDeviceInfo_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QAudioDeviceInfo) OperatorNotEqual(other *QAudioDeviceInfo) bool {
-	return (bool)(C.QAudioDeviceInfo_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QAudioDeviceInfo_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QAudioDeviceInfo) IsNull() bool {
-	return (bool)(C.QAudioDeviceInfo_IsNull(this.h))
+	return (bool)(C.QAudioDeviceInfo_isNull(this.h))
 }
 
 func (this *QAudioDeviceInfo) DeviceName() string {
-	var _ms C.struct_miqt_string = C.QAudioDeviceInfo_DeviceName(this.h)
+	var _ms C.struct_miqt_string = C.QAudioDeviceInfo_deviceName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAudioDeviceInfo) IsFormatSupported(format *QAudioFormat) bool {
-	return (bool)(C.QAudioDeviceInfo_IsFormatSupported(this.h, format.cPointer()))
+	return (bool)(C.QAudioDeviceInfo_isFormatSupported(this.h, format.cPointer()))
 }
 
 func (this *QAudioDeviceInfo) PreferredFormat() *QAudioFormat {
-	_goptr := newQAudioFormat(C.QAudioDeviceInfo_PreferredFormat(this.h))
+	_goptr := newQAudioFormat(C.QAudioDeviceInfo_preferredFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioDeviceInfo) NearestFormat(format *QAudioFormat) *QAudioFormat {
-	_goptr := newQAudioFormat(C.QAudioDeviceInfo_NearestFormat(this.h, format.cPointer()))
+	_goptr := newQAudioFormat(C.QAudioDeviceInfo_nearestFormat(this.h, format.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioDeviceInfo) SupportedCodecs() []string {
-	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_SupportedCodecs(this.h)
+	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_supportedCodecs(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -110,7 +110,7 @@ func (this *QAudioDeviceInfo) SupportedCodecs() []string {
 }
 
 func (this *QAudioDeviceInfo) SupportedSampleRates() []int {
-	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_SupportedSampleRates(this.h)
+	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_supportedSampleRates(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -120,7 +120,7 @@ func (this *QAudioDeviceInfo) SupportedSampleRates() []int {
 }
 
 func (this *QAudioDeviceInfo) SupportedChannelCounts() []int {
-	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_SupportedChannelCounts(this.h)
+	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_supportedChannelCounts(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -130,7 +130,7 @@ func (this *QAudioDeviceInfo) SupportedChannelCounts() []int {
 }
 
 func (this *QAudioDeviceInfo) SupportedSampleSizes() []int {
-	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_SupportedSampleSizes(this.h)
+	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_supportedSampleSizes(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -140,7 +140,7 @@ func (this *QAudioDeviceInfo) SupportedSampleSizes() []int {
 }
 
 func (this *QAudioDeviceInfo) SupportedByteOrders() []QAudioFormat__Endian {
-	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_SupportedByteOrders(this.h)
+	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_supportedByteOrders(this.h)
 	_ret := make([]QAudioFormat__Endian, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -150,7 +150,7 @@ func (this *QAudioDeviceInfo) SupportedByteOrders() []QAudioFormat__Endian {
 }
 
 func (this *QAudioDeviceInfo) SupportedSampleTypes() []QAudioFormat__SampleType {
-	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_SupportedSampleTypes(this.h)
+	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_supportedSampleTypes(this.h)
 	_ret := make([]QAudioFormat__SampleType, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -160,26 +160,26 @@ func (this *QAudioDeviceInfo) SupportedSampleTypes() []QAudioFormat__SampleType 
 }
 
 func (this *QAudioDeviceInfo) Realm() string {
-	var _ms C.struct_miqt_string = C.QAudioDeviceInfo_Realm(this.h)
+	var _ms C.struct_miqt_string = C.QAudioDeviceInfo_realm(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QAudioDeviceInfo_DefaultInputDevice() *QAudioDeviceInfo {
-	_goptr := newQAudioDeviceInfo(C.QAudioDeviceInfo_DefaultInputDevice())
+	_goptr := newQAudioDeviceInfo(C.QAudioDeviceInfo_defaultInputDevice())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QAudioDeviceInfo_DefaultOutputDevice() *QAudioDeviceInfo {
-	_goptr := newQAudioDeviceInfo(C.QAudioDeviceInfo_DefaultOutputDevice())
+	_goptr := newQAudioDeviceInfo(C.QAudioDeviceInfo_defaultOutputDevice())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QAudioDeviceInfo_AvailableDevices(mode QAudio__Mode) []QAudioDeviceInfo {
-	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_AvailableDevices((C.int)(mode))
+	var _ma C.struct_miqt_array = C.QAudioDeviceInfo_availableDevices((C.int)(mode))
 	_ret := make([]QAudioDeviceInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAudioDeviceInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -192,7 +192,7 @@ func QAudioDeviceInfo_AvailableDevices(mode QAudio__Mode) []QAudioDeviceInfo {
 
 // Delete this object from C++ memory.
 func (this *QAudioDeviceInfo) Delete() {
-	C.QAudioDeviceInfo_Delete(this.h)
+	C.QAudioDeviceInfo_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

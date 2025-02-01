@@ -65,71 +65,71 @@ func NewQAmbientSound(engine *QAudioEngine) *QAmbientSound {
 }
 
 func (this *QAmbientSound) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QAmbientSound_MetaObject(this.h)))
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QAmbientSound_metaObject(this.h)))
 }
 
 func (this *QAmbientSound) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAmbientSound_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAmbientSound_metacast(this.h, param1_Cstring))
 }
 
 func QAmbientSound_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAmbientSound_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAmbientSound_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAmbientSound) SetSource(url *qt6.QUrl) {
-	C.QAmbientSound_SetSource(this.h, (*C.QUrl)(url.UnsafePointer()))
+	C.QAmbientSound_setSource(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QAmbientSound) Source() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QAmbientSound_Source(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QAmbientSound_source(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAmbientSound) Loops() int {
-	return (int)(C.QAmbientSound_Loops(this.h))
+	return (int)(C.QAmbientSound_loops(this.h))
 }
 
 func (this *QAmbientSound) SetLoops(loops int) {
-	C.QAmbientSound_SetLoops(this.h, (C.int)(loops))
+	C.QAmbientSound_setLoops(this.h, (C.int)(loops))
 }
 
 func (this *QAmbientSound) AutoPlay() bool {
-	return (bool)(C.QAmbientSound_AutoPlay(this.h))
+	return (bool)(C.QAmbientSound_autoPlay(this.h))
 }
 
 func (this *QAmbientSound) SetAutoPlay(autoPlay bool) {
-	C.QAmbientSound_SetAutoPlay(this.h, (C.bool)(autoPlay))
+	C.QAmbientSound_setAutoPlay(this.h, (C.bool)(autoPlay))
 }
 
 func (this *QAmbientSound) SetVolume(volume float32) {
-	C.QAmbientSound_SetVolume(this.h, (C.float)(volume))
+	C.QAmbientSound_setVolume(this.h, (C.float)(volume))
 }
 
 func (this *QAmbientSound) Volume() float32 {
-	return (float32)(C.QAmbientSound_Volume(this.h))
+	return (float32)(C.QAmbientSound_volume(this.h))
 }
 
 func (this *QAmbientSound) Engine() *QAudioEngine {
-	return newQAudioEngine(C.QAmbientSound_Engine(this.h))
+	return newQAudioEngine(C.QAmbientSound_engine(this.h))
 }
 
 func (this *QAmbientSound) SourceChanged() {
-	C.QAmbientSound_SourceChanged(this.h)
+	C.QAmbientSound_sourceChanged(this.h)
 }
 func (this *QAmbientSound) OnSourceChanged(slot func()) {
-	C.QAmbientSound_connect_SourceChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAmbientSound_connect_sourceChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAmbientSound_SourceChanged
-func miqt_exec_callback_QAmbientSound_SourceChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QAmbientSound_sourceChanged
+func miqt_exec_callback_QAmbientSound_sourceChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -139,14 +139,14 @@ func miqt_exec_callback_QAmbientSound_SourceChanged(cb C.intptr_t) {
 }
 
 func (this *QAmbientSound) LoopsChanged() {
-	C.QAmbientSound_LoopsChanged(this.h)
+	C.QAmbientSound_loopsChanged(this.h)
 }
 func (this *QAmbientSound) OnLoopsChanged(slot func()) {
-	C.QAmbientSound_connect_LoopsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAmbientSound_connect_loopsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAmbientSound_LoopsChanged
-func miqt_exec_callback_QAmbientSound_LoopsChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QAmbientSound_loopsChanged
+func miqt_exec_callback_QAmbientSound_loopsChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -156,14 +156,14 @@ func miqt_exec_callback_QAmbientSound_LoopsChanged(cb C.intptr_t) {
 }
 
 func (this *QAmbientSound) AutoPlayChanged() {
-	C.QAmbientSound_AutoPlayChanged(this.h)
+	C.QAmbientSound_autoPlayChanged(this.h)
 }
 func (this *QAmbientSound) OnAutoPlayChanged(slot func()) {
-	C.QAmbientSound_connect_AutoPlayChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAmbientSound_connect_autoPlayChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAmbientSound_AutoPlayChanged
-func miqt_exec_callback_QAmbientSound_AutoPlayChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QAmbientSound_autoPlayChanged
+func miqt_exec_callback_QAmbientSound_autoPlayChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -173,14 +173,14 @@ func miqt_exec_callback_QAmbientSound_AutoPlayChanged(cb C.intptr_t) {
 }
 
 func (this *QAmbientSound) VolumeChanged() {
-	C.QAmbientSound_VolumeChanged(this.h)
+	C.QAmbientSound_volumeChanged(this.h)
 }
 func (this *QAmbientSound) OnVolumeChanged(slot func()) {
-	C.QAmbientSound_connect_VolumeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAmbientSound_connect_volumeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAmbientSound_VolumeChanged
-func miqt_exec_callback_QAmbientSound_VolumeChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QAmbientSound_volumeChanged
+func miqt_exec_callback_QAmbientSound_volumeChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -190,15 +190,15 @@ func miqt_exec_callback_QAmbientSound_VolumeChanged(cb C.intptr_t) {
 }
 
 func (this *QAmbientSound) Play() {
-	C.QAmbientSound_Play(this.h)
+	C.QAmbientSound_play(this.h)
 }
 
 func (this *QAmbientSound) Pause() {
-	C.QAmbientSound_Pause(this.h)
+	C.QAmbientSound_pause(this.h)
 }
 
 func (this *QAmbientSound) Stop() {
-	C.QAmbientSound_Stop(this.h)
+	C.QAmbientSound_stop(this.h)
 }
 
 func QAmbientSound_Tr2(s string, c string) string {
@@ -206,7 +206,7 @@ func QAmbientSound_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAmbientSound_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAmbientSound_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -217,7 +217,7 @@ func QAmbientSound_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAmbientSound_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAmbientSound_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -225,18 +225,18 @@ func QAmbientSound_Tr3(s string, c string, n int) string {
 
 func (this *QAmbientSound) callVirtualBase_Event(event *qt6.QEvent) bool {
 
-	return (bool)(C.QAmbientSound_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QAmbientSound_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QAmbientSound) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
-	ok := C.QAmbientSound_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAmbientSound) Onevent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	ok := C.QAmbientSound_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAmbientSound_Event
-func miqt_exec_callback_QAmbientSound_Event(self *C.QAmbientSound, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QAmbientSound_event
+func miqt_exec_callback_QAmbientSound_event(self *C.QAmbientSound, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -253,18 +253,18 @@ func miqt_exec_callback_QAmbientSound_Event(self *C.QAmbientSound, cb C.intptr_t
 
 func (this *QAmbientSound) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
 
-	return (bool)(C.QAmbientSound_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QAmbientSound_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QAmbientSound) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	ok := C.QAmbientSound_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAmbientSound) OneventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	ok := C.QAmbientSound_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAmbientSound_EventFilter
-func miqt_exec_callback_QAmbientSound_EventFilter(self *C.QAmbientSound, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QAmbientSound_eventFilter
+func miqt_exec_callback_QAmbientSound_eventFilter(self *C.QAmbientSound, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -283,18 +283,18 @@ func miqt_exec_callback_QAmbientSound_EventFilter(self *C.QAmbientSound, cb C.in
 
 func (this *QAmbientSound) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
-	C.QAmbientSound_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QAmbientSound_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QAmbientSound) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	ok := C.QAmbientSound_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAmbientSound) OntimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	ok := C.QAmbientSound_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAmbientSound_TimerEvent
-func miqt_exec_callback_QAmbientSound_TimerEvent(self *C.QAmbientSound, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QAmbientSound_timerEvent
+func miqt_exec_callback_QAmbientSound_timerEvent(self *C.QAmbientSound, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -309,18 +309,18 @@ func miqt_exec_callback_QAmbientSound_TimerEvent(self *C.QAmbientSound, cb C.int
 
 func (this *QAmbientSound) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
-	C.QAmbientSound_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QAmbientSound_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QAmbientSound) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	ok := C.QAmbientSound_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAmbientSound) OnchildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	ok := C.QAmbientSound_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAmbientSound_ChildEvent
-func miqt_exec_callback_QAmbientSound_ChildEvent(self *C.QAmbientSound, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QAmbientSound_childEvent
+func miqt_exec_callback_QAmbientSound_childEvent(self *C.QAmbientSound, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -335,18 +335,18 @@ func miqt_exec_callback_QAmbientSound_ChildEvent(self *C.QAmbientSound, cb C.int
 
 func (this *QAmbientSound) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
-	C.QAmbientSound_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QAmbientSound_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QAmbientSound) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	ok := C.QAmbientSound_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAmbientSound) OncustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	ok := C.QAmbientSound_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAmbientSound_CustomEvent
-func miqt_exec_callback_QAmbientSound_CustomEvent(self *C.QAmbientSound, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QAmbientSound_customEvent
+func miqt_exec_callback_QAmbientSound_customEvent(self *C.QAmbientSound, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -361,18 +361,18 @@ func miqt_exec_callback_QAmbientSound_CustomEvent(self *C.QAmbientSound, cb C.in
 
 func (this *QAmbientSound) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QAmbientSound_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QAmbientSound_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QAmbientSound) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QAmbientSound_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAmbientSound) OnconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QAmbientSound_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAmbientSound_ConnectNotify
-func miqt_exec_callback_QAmbientSound_ConnectNotify(self *C.QAmbientSound, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAmbientSound_connectNotify
+func miqt_exec_callback_QAmbientSound_connectNotify(self *C.QAmbientSound, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -387,18 +387,18 @@ func miqt_exec_callback_QAmbientSound_ConnectNotify(self *C.QAmbientSound, cb C.
 
 func (this *QAmbientSound) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QAmbientSound_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QAmbientSound_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QAmbientSound) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QAmbientSound_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAmbientSound) OndisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QAmbientSound_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAmbientSound_DisconnectNotify
-func miqt_exec_callback_QAmbientSound_DisconnectNotify(self *C.QAmbientSound, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAmbientSound_disconnectNotify
+func miqt_exec_callback_QAmbientSound_disconnectNotify(self *C.QAmbientSound, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -413,7 +413,7 @@ func miqt_exec_callback_QAmbientSound_DisconnectNotify(self *C.QAmbientSound, cb
 
 // Delete this object from C++ memory.
 func (this *QAmbientSound) Delete() {
-	C.QAmbientSound_Delete(this.h)
+	C.QAmbientSound_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

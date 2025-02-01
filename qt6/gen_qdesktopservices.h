@@ -24,13 +24,13 @@ typedef struct QObject QObject;
 typedef struct QUrl QUrl;
 #endif
 
-bool QDesktopServices_OpenUrl(QUrl* url);
-void QDesktopServices_SetUrlHandler(struct miqt_string scheme, QObject* receiver, const char* method);
-void QDesktopServices_UnsetUrlHandler(struct miqt_string scheme);
-void QDesktopServices_Delete(QDesktopServices* self);
+bool QDesktopServices_openUrl(QUrl* url);
+void QDesktopServices_setUrlHandler(struct miqt_string scheme, QObject* receiver, const char* method);
+void QDesktopServices_unsetUrlHandler(struct miqt_string scheme);
+void QDesktopServices_delete(QDesktopServices* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

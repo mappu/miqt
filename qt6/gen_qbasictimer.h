@@ -23,16 +23,16 @@ typedef struct QObject QObject;
 #endif
 
 QBasicTimer* QBasicTimer_new();
-void QBasicTimer_Swap(QBasicTimer* self, QBasicTimer* other);
-bool QBasicTimer_IsActive(const QBasicTimer* self);
-int QBasicTimer_TimerId(const QBasicTimer* self);
-void QBasicTimer_Start(QBasicTimer* self, int msec, QObject* obj);
-void QBasicTimer_Start2(QBasicTimer* self, int msec, int timerType, QObject* obj);
-void QBasicTimer_Stop(QBasicTimer* self);
-void QBasicTimer_Delete(QBasicTimer* self);
+void QBasicTimer_swap(QBasicTimer* self, QBasicTimer* other);
+bool QBasicTimer_isActive(const QBasicTimer* self);
+int QBasicTimer_timerId(const QBasicTimer* self);
+void QBasicTimer_start(QBasicTimer* self, int msec, QObject* obj);
+void QBasicTimer_start2(QBasicTimer* self, int msec, int timerType, QObject* obj);
+void QBasicTimer_stop(QBasicTimer* self);
+void QBasicTimer_delete(QBasicTimer* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

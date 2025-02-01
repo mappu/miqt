@@ -247,58 +247,58 @@ func UnsafeNewQAccessible(h unsafe.Pointer) *QAccessible {
 }
 
 func QAccessible_InstallActivationObserver(param1 *QAccessible__ActivationObserver) {
-	C.QAccessible_InstallActivationObserver(param1.cPointer())
+	C.QAccessible_installActivationObserver(param1.cPointer())
 }
 
 func QAccessible_RemoveActivationObserver(param1 *QAccessible__ActivationObserver) {
-	C.QAccessible_RemoveActivationObserver(param1.cPointer())
+	C.QAccessible_removeActivationObserver(param1.cPointer())
 }
 
 func QAccessible_QueryAccessibleInterface(param1 *QObject) *QAccessibleInterface {
-	return newQAccessibleInterface(C.QAccessible_QueryAccessibleInterface(param1.cPointer()))
+	return newQAccessibleInterface(C.QAccessible_queryAccessibleInterface(param1.cPointer()))
 }
 
 func QAccessible_UniqueId(iface *QAccessibleInterface) uint {
-	return (uint)(C.QAccessible_UniqueId(iface.cPointer()))
+	return (uint)(C.QAccessible_uniqueId(iface.cPointer()))
 }
 
 func QAccessible_AccessibleInterface(uniqueId uint) *QAccessibleInterface {
-	return newQAccessibleInterface(C.QAccessible_AccessibleInterface((C.uint)(uniqueId)))
+	return newQAccessibleInterface(C.QAccessible_accessibleInterface((C.uint)(uniqueId)))
 }
 
 func QAccessible_RegisterAccessibleInterface(iface *QAccessibleInterface) uint {
-	return (uint)(C.QAccessible_RegisterAccessibleInterface(iface.cPointer()))
+	return (uint)(C.QAccessible_registerAccessibleInterface(iface.cPointer()))
 }
 
 func QAccessible_DeleteAccessibleInterface(uniqueId uint) {
-	C.QAccessible_DeleteAccessibleInterface((C.uint)(uniqueId))
+	C.QAccessible_deleteAccessibleInterface((C.uint)(uniqueId))
 }
 
 func QAccessible_UpdateAccessibility(event *QAccessibleEvent) {
-	C.QAccessible_UpdateAccessibility(event.cPointer())
+	C.QAccessible_updateAccessibility(event.cPointer())
 }
 
 func QAccessible_IsActive() bool {
-	return (bool)(C.QAccessible_IsActive())
+	return (bool)(C.QAccessible_isActive())
 }
 
 func QAccessible_SetActive(active bool) {
-	C.QAccessible_SetActive((C.bool)(active))
+	C.QAccessible_setActive((C.bool)(active))
 }
 
 func QAccessible_SetRootObject(object *QObject) {
-	C.QAccessible_SetRootObject(object.cPointer())
+	C.QAccessible_setRootObject(object.cPointer())
 }
 
 func QAccessible_Cleanup() {
-	C.QAccessible_Cleanup()
+	C.QAccessible_cleanup()
 }
 
 func QAccessible_QAccessibleTextBoundaryHelper(cursor *QTextCursor, boundaryType QAccessible__TextBoundaryType) struct {
 	First  int
 	Second int
 } {
-	var _mm C.struct_miqt_map = C.QAccessible_QAccessibleTextBoundaryHelper(cursor.cPointer(), (C.int)(boundaryType))
+	var _mm C.struct_miqt_map = C.QAccessible_qAccessibleTextBoundaryHelper(cursor.cPointer(), (C.int)(boundaryType))
 	_First_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
 	_entry_First := (int)(_First_CArray[0])
@@ -313,7 +313,7 @@ func QAccessible_QAccessibleTextBoundaryHelper(cursor *QTextCursor, boundaryType
 
 // Delete this object from C++ memory.
 func (this *QAccessible) Delete() {
-	C.QAccessible_Delete(this.h)
+	C.QAccessible_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -365,7 +365,7 @@ func NewQAccessible__State() *QAccessible__State {
 
 // Delete this object from C++ memory.
 func (this *QAccessible__State) Delete() {
-	C.QAccessible__State_Delete(this.h)
+	C.QAccessible__State_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -410,16 +410,16 @@ func UnsafeNewQAccessible__ActivationObserver(h unsafe.Pointer) *QAccessible__Ac
 }
 
 func (this *QAccessible__ActivationObserver) AccessibilityActiveChanged(active bool) {
-	C.QAccessible__ActivationObserver_AccessibilityActiveChanged(this.h, (C.bool)(active))
+	C.QAccessible__ActivationObserver_accessibilityActiveChanged(this.h, (C.bool)(active))
 }
 
 func (this *QAccessible__ActivationObserver) OperatorAssign(param1 *QAccessible__ActivationObserver) {
-	C.QAccessible__ActivationObserver_OperatorAssign(this.h, param1.cPointer())
+	C.QAccessible__ActivationObserver_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QAccessible__ActivationObserver) Delete() {
-	C.QAccessible__ActivationObserver_Delete(this.h)
+	C.QAccessible__ActivationObserver_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

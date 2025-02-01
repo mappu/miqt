@@ -21,17 +21,17 @@ QSslEllipticCurve* QSslEllipticCurve_new2(QSslEllipticCurve* param1) {
 	return new QSslEllipticCurve(*param1);
 }
 
-QSslEllipticCurve* QSslEllipticCurve_FromShortName(struct miqt_string name) {
+QSslEllipticCurve* QSslEllipticCurve_fromShortName(struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	return new QSslEllipticCurve(QSslEllipticCurve::fromShortName(name_QString));
 }
 
-QSslEllipticCurve* QSslEllipticCurve_FromLongName(struct miqt_string name) {
+QSslEllipticCurve* QSslEllipticCurve_fromLongName(struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	return new QSslEllipticCurve(QSslEllipticCurve::fromLongName(name_QString));
 }
 
-struct miqt_string QSslEllipticCurve_ShortName(const QSslEllipticCurve* self) {
+struct miqt_string QSslEllipticCurve_shortName(const QSslEllipticCurve* self) {
 	QString _ret = self->shortName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -42,7 +42,7 @@ struct miqt_string QSslEllipticCurve_ShortName(const QSslEllipticCurve* self) {
 	return _ms;
 }
 
-struct miqt_string QSslEllipticCurve_LongName(const QSslEllipticCurve* self) {
+struct miqt_string QSslEllipticCurve_longName(const QSslEllipticCurve* self) {
 	QString _ret = self->longName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -53,15 +53,15 @@ struct miqt_string QSslEllipticCurve_LongName(const QSslEllipticCurve* self) {
 	return _ms;
 }
 
-bool QSslEllipticCurve_IsValid(const QSslEllipticCurve* self) {
+bool QSslEllipticCurve_isValid(const QSslEllipticCurve* self) {
 	return self->isValid();
 }
 
-bool QSslEllipticCurve_IsTlsNamedCurve(const QSslEllipticCurve* self) {
+bool QSslEllipticCurve_isTlsNamedCurve(const QSslEllipticCurve* self) {
 	return self->isTlsNamedCurve();
 }
 
-void QSslEllipticCurve_Delete(QSslEllipticCurve* self) {
+void QSslEllipticCurve_delete(QSslEllipticCurve* self) {
 	delete self;
 }
 

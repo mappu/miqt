@@ -27,20 +27,20 @@ typedef struct QWaitCondition QWaitCondition;
 #endif
 
 QWaitCondition* QWaitCondition_new();
-bool QWaitCondition_Wait(QWaitCondition* self, QMutex* lockedMutex);
-bool QWaitCondition_Wait2(QWaitCondition* self, QMutex* lockedMutex, unsigned long time);
-bool QWaitCondition_WaitWithLockedReadWriteLock(QWaitCondition* self, QReadWriteLock* lockedReadWriteLock);
-bool QWaitCondition_Wait3(QWaitCondition* self, QReadWriteLock* lockedReadWriteLock, unsigned long time);
-void QWaitCondition_WakeOne(QWaitCondition* self);
-void QWaitCondition_WakeAll(QWaitCondition* self);
-void QWaitCondition_NotifyOne(QWaitCondition* self);
-void QWaitCondition_NotifyAll(QWaitCondition* self);
-bool QWaitCondition_Wait22(QWaitCondition* self, QMutex* lockedMutex, QDeadlineTimer* deadline);
-bool QWaitCondition_Wait23(QWaitCondition* self, QReadWriteLock* lockedReadWriteLock, QDeadlineTimer* deadline);
-void QWaitCondition_Delete(QWaitCondition* self);
+bool QWaitCondition_wait(QWaitCondition* self, QMutex* lockedMutex);
+bool QWaitCondition_wait2(QWaitCondition* self, QMutex* lockedMutex, unsigned long time);
+bool QWaitCondition_waitWithLockedReadWriteLock(QWaitCondition* self, QReadWriteLock* lockedReadWriteLock);
+bool QWaitCondition_wait3(QWaitCondition* self, QReadWriteLock* lockedReadWriteLock, unsigned long time);
+void QWaitCondition_wakeOne(QWaitCondition* self);
+void QWaitCondition_wakeAll(QWaitCondition* self);
+void QWaitCondition_notifyOne(QWaitCondition* self);
+void QWaitCondition_notifyAll(QWaitCondition* self);
+bool QWaitCondition_wait22(QWaitCondition* self, QMutex* lockedMutex, QDeadlineTimer* deadline);
+bool QWaitCondition_wait23(QWaitCondition* self, QReadWriteLock* lockedReadWriteLock, QDeadlineTimer* deadline);
+void QWaitCondition_delete(QWaitCondition* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

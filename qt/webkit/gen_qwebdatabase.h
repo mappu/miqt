@@ -23,19 +23,19 @@ typedef struct QWebSecurityOrigin QWebSecurityOrigin;
 #endif
 
 QWebDatabase* QWebDatabase_new(QWebDatabase* other);
-void QWebDatabase_OperatorAssign(QWebDatabase* self, QWebDatabase* other);
-struct miqt_string QWebDatabase_Name(const QWebDatabase* self);
-struct miqt_string QWebDatabase_DisplayName(const QWebDatabase* self);
-long long QWebDatabase_ExpectedSize(const QWebDatabase* self);
-long long QWebDatabase_Size(const QWebDatabase* self);
-struct miqt_string QWebDatabase_FileName(const QWebDatabase* self);
-QWebSecurityOrigin* QWebDatabase_Origin(const QWebDatabase* self);
-void QWebDatabase_RemoveDatabase(QWebDatabase* param1);
-void QWebDatabase_RemoveAllDatabases();
-void QWebDatabase_Delete(QWebDatabase* self);
+void QWebDatabase_operatorAssign(QWebDatabase* self, QWebDatabase* other);
+struct miqt_string QWebDatabase_name(const QWebDatabase* self);
+struct miqt_string QWebDatabase_displayName(const QWebDatabase* self);
+long long QWebDatabase_expectedSize(const QWebDatabase* self);
+long long QWebDatabase_size(const QWebDatabase* self);
+struct miqt_string QWebDatabase_fileName(const QWebDatabase* self);
+QWebSecurityOrigin* QWebDatabase_origin(const QWebDatabase* self);
+void QWebDatabase_removeDatabase(QWebDatabase* param1);
+void QWebDatabase_removeAllDatabases();
+void QWebDatabase_delete(QWebDatabase* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

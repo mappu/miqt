@@ -20,15 +20,15 @@ void QCameraFeedbackControl_virtbase(QCameraFeedbackControl* src, QMediaControl*
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
 }
 
-QMetaObject* QCameraFeedbackControl_MetaObject(const QCameraFeedbackControl* self) {
+QMetaObject* QCameraFeedbackControl_metaObject(const QCameraFeedbackControl* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QCameraFeedbackControl_Metacast(QCameraFeedbackControl* self, const char* param1) {
+void* QCameraFeedbackControl_metacast(QCameraFeedbackControl* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QCameraFeedbackControl_Tr(const char* s) {
+struct miqt_string QCameraFeedbackControl_tr(const char* s) {
 	QString _ret = QCameraFeedbackControl::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -39,7 +39,7 @@ struct miqt_string QCameraFeedbackControl_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QCameraFeedbackControl_TrUtf8(const char* s) {
+struct miqt_string QCameraFeedbackControl_trUtf8(const char* s) {
 	QString _ret = QCameraFeedbackControl::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -50,28 +50,28 @@ struct miqt_string QCameraFeedbackControl_TrUtf8(const char* s) {
 	return _ms;
 }
 
-bool QCameraFeedbackControl_IsEventFeedbackLocked(const QCameraFeedbackControl* self, int param1) {
+bool QCameraFeedbackControl_isEventFeedbackLocked(const QCameraFeedbackControl* self, int param1) {
 	return self->isEventFeedbackLocked(static_cast<QCameraFeedbackControl::EventType>(param1));
 }
 
-bool QCameraFeedbackControl_IsEventFeedbackEnabled(const QCameraFeedbackControl* self, int param1) {
+bool QCameraFeedbackControl_isEventFeedbackEnabled(const QCameraFeedbackControl* self, int param1) {
 	return self->isEventFeedbackEnabled(static_cast<QCameraFeedbackControl::EventType>(param1));
 }
 
-bool QCameraFeedbackControl_SetEventFeedbackEnabled(QCameraFeedbackControl* self, int param1, bool param2) {
+bool QCameraFeedbackControl_setEventFeedbackEnabled(QCameraFeedbackControl* self, int param1, bool param2) {
 	return self->setEventFeedbackEnabled(static_cast<QCameraFeedbackControl::EventType>(param1), param2);
 }
 
-void QCameraFeedbackControl_ResetEventFeedback(QCameraFeedbackControl* self, int param1) {
+void QCameraFeedbackControl_resetEventFeedback(QCameraFeedbackControl* self, int param1) {
 	self->resetEventFeedback(static_cast<QCameraFeedbackControl::EventType>(param1));
 }
 
-bool QCameraFeedbackControl_SetEventFeedbackSound(QCameraFeedbackControl* self, int param1, struct miqt_string filePath) {
+bool QCameraFeedbackControl_setEventFeedbackSound(QCameraFeedbackControl* self, int param1, struct miqt_string filePath) {
 	QString filePath_QString = QString::fromUtf8(filePath.data, filePath.len);
 	return self->setEventFeedbackSound(static_cast<QCameraFeedbackControl::EventType>(param1), filePath_QString);
 }
 
-struct miqt_string QCameraFeedbackControl_Tr2(const char* s, const char* c) {
+struct miqt_string QCameraFeedbackControl_tr2(const char* s, const char* c) {
 	QString _ret = QCameraFeedbackControl::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -82,7 +82,7 @@ struct miqt_string QCameraFeedbackControl_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QCameraFeedbackControl_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QCameraFeedbackControl_tr3(const char* s, const char* c, int n) {
 	QString _ret = QCameraFeedbackControl::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -93,7 +93,7 @@ struct miqt_string QCameraFeedbackControl_Tr3(const char* s, const char* c, int 
 	return _ms;
 }
 
-struct miqt_string QCameraFeedbackControl_TrUtf82(const char* s, const char* c) {
+struct miqt_string QCameraFeedbackControl_trUtf82(const char* s, const char* c) {
 	QString _ret = QCameraFeedbackControl::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -104,7 +104,7 @@ struct miqt_string QCameraFeedbackControl_TrUtf82(const char* s, const char* c) 
 	return _ms;
 }
 
-struct miqt_string QCameraFeedbackControl_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QCameraFeedbackControl_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QCameraFeedbackControl::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -115,7 +115,7 @@ struct miqt_string QCameraFeedbackControl_TrUtf83(const char* s, const char* c, 
 	return _ms;
 }
 
-void QCameraFeedbackControl_Delete(QCameraFeedbackControl* self) {
+void QCameraFeedbackControl_delete(QCameraFeedbackControl* self) {
 	delete self;
 }
 

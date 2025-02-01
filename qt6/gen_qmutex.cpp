@@ -16,23 +16,23 @@ QBasicMutex* QBasicMutex_new() {
 	return new QBasicMutex();
 }
 
-void QBasicMutex_Lock(QBasicMutex* self) {
+void QBasicMutex_lock(QBasicMutex* self) {
 	self->lock();
 }
 
-void QBasicMutex_Unlock(QBasicMutex* self) {
+void QBasicMutex_unlock(QBasicMutex* self) {
 	self->unlock();
 }
 
-bool QBasicMutex_TryLock(QBasicMutex* self) {
+bool QBasicMutex_tryLock(QBasicMutex* self) {
 	return self->tryLock();
 }
 
-bool QBasicMutex_TryLock2(QBasicMutex* self) {
+bool QBasicMutex_tryLock2(QBasicMutex* self) {
 	return self->try_lock();
 }
 
-void QBasicMutex_Delete(QBasicMutex* self) {
+void QBasicMutex_delete(QBasicMutex* self) {
 	delete self;
 }
 
@@ -44,15 +44,15 @@ void QMutex_virtbase(QMutex* src, QBasicMutex** outptr_QBasicMutex) {
 	*outptr_QBasicMutex = static_cast<QBasicMutex*>(src);
 }
 
-bool QMutex_TryLock(QMutex* self) {
+bool QMutex_tryLock(QMutex* self) {
 	return self->try_lock();
 }
 
-bool QMutex_TryLockWithTimeout(QMutex* self, int timeout) {
+bool QMutex_tryLockWithTimeout(QMutex* self, int timeout) {
 	return self->tryLock(static_cast<int>(timeout));
 }
 
-void QMutex_Delete(QMutex* self) {
+void QMutex_delete(QMutex* self) {
 	delete self;
 }
 
@@ -60,27 +60,27 @@ QRecursiveMutex* QRecursiveMutex_new() {
 	return new QRecursiveMutex();
 }
 
-void QRecursiveMutex_Lock(QRecursiveMutex* self) {
+void QRecursiveMutex_lock(QRecursiveMutex* self) {
 	self->lock();
 }
 
-bool QRecursiveMutex_TryLock(QRecursiveMutex* self) {
+bool QRecursiveMutex_tryLock(QRecursiveMutex* self) {
 	return self->tryLock();
 }
 
-void QRecursiveMutex_Unlock(QRecursiveMutex* self) {
+void QRecursiveMutex_unlock(QRecursiveMutex* self) {
 	self->unlock();
 }
 
-bool QRecursiveMutex_TryLock2(QRecursiveMutex* self) {
+bool QRecursiveMutex_tryLock2(QRecursiveMutex* self) {
 	return self->try_lock();
 }
 
-bool QRecursiveMutex_TryLock1(QRecursiveMutex* self, int timeout) {
+bool QRecursiveMutex_tryLock1(QRecursiveMutex* self, int timeout) {
 	return self->tryLock(static_cast<int>(timeout));
 }
 
-void QRecursiveMutex_Delete(QRecursiveMutex* self) {
+void QRecursiveMutex_delete(QRecursiveMutex* self) {
 	delete self;
 }
 

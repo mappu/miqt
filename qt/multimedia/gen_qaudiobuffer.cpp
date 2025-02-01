@@ -38,53 +38,53 @@ QAudioBuffer* QAudioBuffer_new6(int numFrames, QAudioFormat* format, long long s
 	return new QAudioBuffer(static_cast<int>(numFrames), *format, static_cast<qint64>(startTime));
 }
 
-void QAudioBuffer_OperatorAssign(QAudioBuffer* self, QAudioBuffer* other) {
+void QAudioBuffer_operatorAssign(QAudioBuffer* self, QAudioBuffer* other) {
 	self->operator=(*other);
 }
 
-bool QAudioBuffer_IsValid(const QAudioBuffer* self) {
+bool QAudioBuffer_isValid(const QAudioBuffer* self) {
 	return self->isValid();
 }
 
-QAudioFormat* QAudioBuffer_Format(const QAudioBuffer* self) {
+QAudioFormat* QAudioBuffer_format(const QAudioBuffer* self) {
 	return new QAudioFormat(self->format());
 }
 
-int QAudioBuffer_FrameCount(const QAudioBuffer* self) {
+int QAudioBuffer_frameCount(const QAudioBuffer* self) {
 	return self->frameCount();
 }
 
-int QAudioBuffer_SampleCount(const QAudioBuffer* self) {
+int QAudioBuffer_sampleCount(const QAudioBuffer* self) {
 	return self->sampleCount();
 }
 
-int QAudioBuffer_ByteCount(const QAudioBuffer* self) {
+int QAudioBuffer_byteCount(const QAudioBuffer* self) {
 	return self->byteCount();
 }
 
-long long QAudioBuffer_Duration(const QAudioBuffer* self) {
+long long QAudioBuffer_duration(const QAudioBuffer* self) {
 	qint64 _ret = self->duration();
 	return static_cast<long long>(_ret);
 }
 
-long long QAudioBuffer_StartTime(const QAudioBuffer* self) {
+long long QAudioBuffer_startTime(const QAudioBuffer* self) {
 	qint64 _ret = self->startTime();
 	return static_cast<long long>(_ret);
 }
 
-const void* QAudioBuffer_ConstData(const QAudioBuffer* self) {
+const void* QAudioBuffer_constData(const QAudioBuffer* self) {
 	return (const void*) self->constData();
 }
 
-const void* QAudioBuffer_Data(const QAudioBuffer* self) {
+const void* QAudioBuffer_data(const QAudioBuffer* self) {
 	return (const void*) self->data();
 }
 
-void* QAudioBuffer_Data2(QAudioBuffer* self) {
+void* QAudioBuffer_data2(QAudioBuffer* self) {
 	return self->data();
 }
 
-void QAudioBuffer_Delete(QAudioBuffer* self) {
+void QAudioBuffer_delete(QAudioBuffer* self) {
 	delete self;
 }
 

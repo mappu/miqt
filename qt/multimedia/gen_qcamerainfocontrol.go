@@ -51,19 +51,19 @@ func UnsafeNewQCameraInfoControl(h unsafe.Pointer) *QCameraInfoControl {
 }
 
 func (this *QCameraInfoControl) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraInfoControl_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraInfoControl_metaObject(this.h)))
 }
 
 func (this *QCameraInfoControl) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QCameraInfoControl_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QCameraInfoControl_metacast(this.h, param1_Cstring))
 }
 
 func QCameraInfoControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraInfoControl_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraInfoControl_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -72,7 +72,7 @@ func QCameraInfoControl_Tr(s string) string {
 func QCameraInfoControl_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraInfoControl_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraInfoControl_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -83,7 +83,7 @@ func (this *QCameraInfoControl) CameraPosition(deviceName string) QCamera__Posit
 	deviceName_ms.data = C.CString(deviceName)
 	deviceName_ms.len = C.size_t(len(deviceName))
 	defer C.free(unsafe.Pointer(deviceName_ms.data))
-	return (QCamera__Position)(C.QCameraInfoControl_CameraPosition(this.h, deviceName_ms))
+	return (QCamera__Position)(C.QCameraInfoControl_cameraPosition(this.h, deviceName_ms))
 }
 
 func (this *QCameraInfoControl) CameraOrientation(deviceName string) int {
@@ -91,7 +91,7 @@ func (this *QCameraInfoControl) CameraOrientation(deviceName string) int {
 	deviceName_ms.data = C.CString(deviceName)
 	deviceName_ms.len = C.size_t(len(deviceName))
 	defer C.free(unsafe.Pointer(deviceName_ms.data))
-	return (int)(C.QCameraInfoControl_CameraOrientation(this.h, deviceName_ms))
+	return (int)(C.QCameraInfoControl_cameraOrientation(this.h, deviceName_ms))
 }
 
 func QCameraInfoControl_Tr2(s string, c string) string {
@@ -99,7 +99,7 @@ func QCameraInfoControl_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraInfoControl_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraInfoControl_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -110,7 +110,7 @@ func QCameraInfoControl_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraInfoControl_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraInfoControl_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -121,7 +121,7 @@ func QCameraInfoControl_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraInfoControl_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraInfoControl_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -132,7 +132,7 @@ func QCameraInfoControl_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraInfoControl_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraInfoControl_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -140,7 +140,7 @@ func QCameraInfoControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QCameraInfoControl) Delete() {
-	C.QCameraInfoControl_Delete(this.h)
+	C.QCameraInfoControl_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

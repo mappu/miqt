@@ -57,19 +57,19 @@ func NewQSizeGrip(parent *QWidget) *QSizeGrip {
 }
 
 func (this *QSizeGrip) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QSizeGrip_MetaObject(this.h))
+	return newQMetaObject(C.QSizeGrip_metaObject(this.h))
 }
 
 func (this *QSizeGrip) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QSizeGrip_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QSizeGrip_metacast(this.h, param1_Cstring))
 }
 
 func QSizeGrip_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QSizeGrip_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QSizeGrip_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -78,20 +78,20 @@ func QSizeGrip_Tr(s string) string {
 func QSizeGrip_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QSizeGrip_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QSizeGrip_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSizeGrip) SizeHint() *QSize {
-	_goptr := newQSize(C.QSizeGrip_SizeHint(this.h))
+	_goptr := newQSize(C.QSizeGrip_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSizeGrip) SetVisible(visible bool) {
-	C.QSizeGrip_SetVisible(this.h, (C.bool)(visible))
+	C.QSizeGrip_setVisible(this.h, (C.bool)(visible))
 }
 
 func QSizeGrip_Tr2(s string, c string) string {
@@ -99,7 +99,7 @@ func QSizeGrip_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSizeGrip_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QSizeGrip_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -110,7 +110,7 @@ func QSizeGrip_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSizeGrip_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QSizeGrip_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -121,7 +121,7 @@ func QSizeGrip_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSizeGrip_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QSizeGrip_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -132,7 +132,7 @@ func QSizeGrip_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSizeGrip_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QSizeGrip_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -140,20 +140,20 @@ func QSizeGrip_TrUtf83(s string, c string, n int) string {
 
 func (this *QSizeGrip) callVirtualBase_SizeHint() *QSize {
 
-	_goptr := newQSize(C.QSizeGrip_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QSizeGrip_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSizeGrip) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QSizeGrip_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnsizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QSizeGrip_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_SizeHint
-func miqt_exec_callback_QSizeGrip_SizeHint(self *C.QSizeGrip, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QSizeGrip_sizeHint
+func miqt_exec_callback_QSizeGrip_sizeHint(self *C.QSizeGrip, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -167,18 +167,18 @@ func miqt_exec_callback_QSizeGrip_SizeHint(self *C.QSizeGrip, cb C.intptr_t) *C.
 
 func (this *QSizeGrip) callVirtualBase_SetVisible(visible bool) {
 
-	C.QSizeGrip_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QSizeGrip_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QSizeGrip) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QSizeGrip_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QSizeGrip_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_SetVisible
-func miqt_exec_callback_QSizeGrip_SetVisible(self *C.QSizeGrip, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QSizeGrip_setVisible
+func miqt_exec_callback_QSizeGrip_setVisible(self *C.QSizeGrip, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -193,18 +193,18 @@ func miqt_exec_callback_QSizeGrip_SetVisible(self *C.QSizeGrip, cb C.intptr_t, v
 
 func (this *QSizeGrip) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
-	C.QSizeGrip_virtualbase_PaintEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSizeGrip_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSizeGrip) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
-	ok := C.QSizeGrip_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnpaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	ok := C.QSizeGrip_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_PaintEvent
-func miqt_exec_callback_QSizeGrip_PaintEvent(self *C.QSizeGrip, cb C.intptr_t, param1 *C.QPaintEvent) {
+//export miqt_exec_callback_QSizeGrip_paintEvent
+func miqt_exec_callback_QSizeGrip_paintEvent(self *C.QSizeGrip, cb C.intptr_t, param1 *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QPaintEvent), param1 *QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -219,18 +219,18 @@ func miqt_exec_callback_QSizeGrip_PaintEvent(self *C.QSizeGrip, cb C.intptr_t, p
 
 func (this *QSizeGrip) callVirtualBase_MousePressEvent(param1 *QMouseEvent) {
 
-	C.QSizeGrip_virtualbase_MousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSizeGrip_virtualbase_mousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSizeGrip) OnMousePressEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	ok := C.QSizeGrip_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnmousePressEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	ok := C.QSizeGrip_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_MousePressEvent
-func miqt_exec_callback_QSizeGrip_MousePressEvent(self *C.QSizeGrip, cb C.intptr_t, param1 *C.QMouseEvent) {
+//export miqt_exec_callback_QSizeGrip_mousePressEvent
+func miqt_exec_callback_QSizeGrip_mousePressEvent(self *C.QSizeGrip, cb C.intptr_t, param1 *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -245,18 +245,18 @@ func miqt_exec_callback_QSizeGrip_MousePressEvent(self *C.QSizeGrip, cb C.intptr
 
 func (this *QSizeGrip) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
 
-	C.QSizeGrip_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSizeGrip_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSizeGrip) OnMouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	ok := C.QSizeGrip_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnmouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	ok := C.QSizeGrip_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_MouseMoveEvent
-func miqt_exec_callback_QSizeGrip_MouseMoveEvent(self *C.QSizeGrip, cb C.intptr_t, param1 *C.QMouseEvent) {
+//export miqt_exec_callback_QSizeGrip_mouseMoveEvent
+func miqt_exec_callback_QSizeGrip_mouseMoveEvent(self *C.QSizeGrip, cb C.intptr_t, param1 *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -271,18 +271,18 @@ func miqt_exec_callback_QSizeGrip_MouseMoveEvent(self *C.QSizeGrip, cb C.intptr_
 
 func (this *QSizeGrip) callVirtualBase_MouseReleaseEvent(mouseEvent *QMouseEvent) {
 
-	C.QSizeGrip_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), mouseEvent.cPointer())
+	C.QSizeGrip_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), mouseEvent.cPointer())
 
 }
-func (this *QSizeGrip) OnMouseReleaseEvent(slot func(super func(mouseEvent *QMouseEvent), mouseEvent *QMouseEvent)) {
-	ok := C.QSizeGrip_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnmouseReleaseEvent(slot func(super func(mouseEvent *QMouseEvent), mouseEvent *QMouseEvent)) {
+	ok := C.QSizeGrip_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_MouseReleaseEvent
-func miqt_exec_callback_QSizeGrip_MouseReleaseEvent(self *C.QSizeGrip, cb C.intptr_t, mouseEvent *C.QMouseEvent) {
+//export miqt_exec_callback_QSizeGrip_mouseReleaseEvent
+func miqt_exec_callback_QSizeGrip_mouseReleaseEvent(self *C.QSizeGrip, cb C.intptr_t, mouseEvent *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(mouseEvent *QMouseEvent), mouseEvent *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -297,18 +297,18 @@ func miqt_exec_callback_QSizeGrip_MouseReleaseEvent(self *C.QSizeGrip, cb C.intp
 
 func (this *QSizeGrip) callVirtualBase_MoveEvent(moveEvent *QMoveEvent) {
 
-	C.QSizeGrip_virtualbase_MoveEvent(unsafe.Pointer(this.h), moveEvent.cPointer())
+	C.QSizeGrip_virtualbase_moveEvent(unsafe.Pointer(this.h), moveEvent.cPointer())
 
 }
-func (this *QSizeGrip) OnMoveEvent(slot func(super func(moveEvent *QMoveEvent), moveEvent *QMoveEvent)) {
-	ok := C.QSizeGrip_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnmoveEvent(slot func(super func(moveEvent *QMoveEvent), moveEvent *QMoveEvent)) {
+	ok := C.QSizeGrip_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_MoveEvent
-func miqt_exec_callback_QSizeGrip_MoveEvent(self *C.QSizeGrip, cb C.intptr_t, moveEvent *C.QMoveEvent) {
+//export miqt_exec_callback_QSizeGrip_moveEvent
+func miqt_exec_callback_QSizeGrip_moveEvent(self *C.QSizeGrip, cb C.intptr_t, moveEvent *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(moveEvent *QMoveEvent), moveEvent *QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -323,18 +323,18 @@ func miqt_exec_callback_QSizeGrip_MoveEvent(self *C.QSizeGrip, cb C.intptr_t, mo
 
 func (this *QSizeGrip) callVirtualBase_ShowEvent(showEvent *QShowEvent) {
 
-	C.QSizeGrip_virtualbase_ShowEvent(unsafe.Pointer(this.h), showEvent.cPointer())
+	C.QSizeGrip_virtualbase_showEvent(unsafe.Pointer(this.h), showEvent.cPointer())
 
 }
-func (this *QSizeGrip) OnShowEvent(slot func(super func(showEvent *QShowEvent), showEvent *QShowEvent)) {
-	ok := C.QSizeGrip_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnshowEvent(slot func(super func(showEvent *QShowEvent), showEvent *QShowEvent)) {
+	ok := C.QSizeGrip_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_ShowEvent
-func miqt_exec_callback_QSizeGrip_ShowEvent(self *C.QSizeGrip, cb C.intptr_t, showEvent *C.QShowEvent) {
+//export miqt_exec_callback_QSizeGrip_showEvent
+func miqt_exec_callback_QSizeGrip_showEvent(self *C.QSizeGrip, cb C.intptr_t, showEvent *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(showEvent *QShowEvent), showEvent *QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -349,18 +349,18 @@ func miqt_exec_callback_QSizeGrip_ShowEvent(self *C.QSizeGrip, cb C.intptr_t, sh
 
 func (this *QSizeGrip) callVirtualBase_HideEvent(hideEvent *QHideEvent) {
 
-	C.QSizeGrip_virtualbase_HideEvent(unsafe.Pointer(this.h), hideEvent.cPointer())
+	C.QSizeGrip_virtualbase_hideEvent(unsafe.Pointer(this.h), hideEvent.cPointer())
 
 }
-func (this *QSizeGrip) OnHideEvent(slot func(super func(hideEvent *QHideEvent), hideEvent *QHideEvent)) {
-	ok := C.QSizeGrip_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnhideEvent(slot func(super func(hideEvent *QHideEvent), hideEvent *QHideEvent)) {
+	ok := C.QSizeGrip_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_HideEvent
-func miqt_exec_callback_QSizeGrip_HideEvent(self *C.QSizeGrip, cb C.intptr_t, hideEvent *C.QHideEvent) {
+//export miqt_exec_callback_QSizeGrip_hideEvent
+func miqt_exec_callback_QSizeGrip_hideEvent(self *C.QSizeGrip, cb C.intptr_t, hideEvent *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(hideEvent *QHideEvent), hideEvent *QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -375,18 +375,18 @@ func miqt_exec_callback_QSizeGrip_HideEvent(self *C.QSizeGrip, cb C.intptr_t, hi
 
 func (this *QSizeGrip) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
 
-	return (bool)(C.QSizeGrip_virtualbase_EventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
+	return (bool)(C.QSizeGrip_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
 }
-func (this *QSizeGrip) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
-	ok := C.QSizeGrip_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OneventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	ok := C.QSizeGrip_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_EventFilter
-func miqt_exec_callback_QSizeGrip_EventFilter(self *C.QSizeGrip, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+//export miqt_exec_callback_QSizeGrip_eventFilter
+func miqt_exec_callback_QSizeGrip_eventFilter(self *C.QSizeGrip, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -405,18 +405,18 @@ func miqt_exec_callback_QSizeGrip_EventFilter(self *C.QSizeGrip, cb C.intptr_t, 
 
 func (this *QSizeGrip) callVirtualBase_Event(param1 *QEvent) bool {
 
-	return (bool)(C.QSizeGrip_virtualbase_Event(unsafe.Pointer(this.h), param1.cPointer()))
+	return (bool)(C.QSizeGrip_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
 }
-func (this *QSizeGrip) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
-	ok := C.QSizeGrip_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) Onevent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	ok := C.QSizeGrip_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_Event
-func miqt_exec_callback_QSizeGrip_Event(self *C.QSizeGrip, cb C.intptr_t, param1 *C.QEvent) C.bool {
+//export miqt_exec_callback_QSizeGrip_event
+func miqt_exec_callback_QSizeGrip_event(self *C.QSizeGrip, cb C.intptr_t, param1 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent) bool, param1 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -433,18 +433,18 @@ func miqt_exec_callback_QSizeGrip_Event(self *C.QSizeGrip, cb C.intptr_t, param1
 
 func (this *QSizeGrip) callVirtualBase_DevType() int {
 
-	return (int)(C.QSizeGrip_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QSizeGrip_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QSizeGrip) OnDevType(slot func(super func() int) int) {
-	ok := C.QSizeGrip_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OndevType(slot func(super func() int) int) {
+	ok := C.QSizeGrip_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_DevType
-func miqt_exec_callback_QSizeGrip_DevType(self *C.QSizeGrip, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QSizeGrip_devType
+func miqt_exec_callback_QSizeGrip_devType(self *C.QSizeGrip, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -458,20 +458,20 @@ func miqt_exec_callback_QSizeGrip_DevType(self *C.QSizeGrip, cb C.intptr_t) C.in
 
 func (this *QSizeGrip) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_goptr := newQSize(C.QSizeGrip_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QSizeGrip_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSizeGrip) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QSizeGrip_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QSizeGrip_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_MinimumSizeHint
-func miqt_exec_callback_QSizeGrip_MinimumSizeHint(self *C.QSizeGrip, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QSizeGrip_minimumSizeHint
+func miqt_exec_callback_QSizeGrip_minimumSizeHint(self *C.QSizeGrip, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -485,18 +485,18 @@ func miqt_exec_callback_QSizeGrip_MinimumSizeHint(self *C.QSizeGrip, cb C.intptr
 
 func (this *QSizeGrip) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QSizeGrip_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QSizeGrip_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QSizeGrip) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QSizeGrip_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QSizeGrip_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_HeightForWidth
-func miqt_exec_callback_QSizeGrip_HeightForWidth(self *C.QSizeGrip, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QSizeGrip_heightForWidth
+func miqt_exec_callback_QSizeGrip_heightForWidth(self *C.QSizeGrip, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -513,18 +513,18 @@ func miqt_exec_callback_QSizeGrip_HeightForWidth(self *C.QSizeGrip, cb C.intptr_
 
 func (this *QSizeGrip) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QSizeGrip_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QSizeGrip_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QSizeGrip) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QSizeGrip_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QSizeGrip_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_HasHeightForWidth
-func miqt_exec_callback_QSizeGrip_HasHeightForWidth(self *C.QSizeGrip, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QSizeGrip_hasHeightForWidth
+func miqt_exec_callback_QSizeGrip_hasHeightForWidth(self *C.QSizeGrip, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -538,18 +538,18 @@ func miqt_exec_callback_QSizeGrip_HasHeightForWidth(self *C.QSizeGrip, cb C.intp
 
 func (this *QSizeGrip) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return newQPaintEngine(C.QSizeGrip_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+	return newQPaintEngine(C.QSizeGrip_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QSizeGrip) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	ok := C.QSizeGrip_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QSizeGrip_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_PaintEngine
-func miqt_exec_callback_QSizeGrip_PaintEngine(self *C.QSizeGrip, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QSizeGrip_paintEngine
+func miqt_exec_callback_QSizeGrip_paintEngine(self *C.QSizeGrip, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -563,18 +563,18 @@ func miqt_exec_callback_QSizeGrip_PaintEngine(self *C.QSizeGrip, cb C.intptr_t) 
 
 func (this *QSizeGrip) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
 
-	C.QSizeGrip_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QSizeGrip_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QSizeGrip_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_MouseDoubleClickEvent
-func miqt_exec_callback_QSizeGrip_MouseDoubleClickEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QSizeGrip_mouseDoubleClickEvent
+func miqt_exec_callback_QSizeGrip_mouseDoubleClickEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -589,18 +589,18 @@ func miqt_exec_callback_QSizeGrip_MouseDoubleClickEvent(self *C.QSizeGrip, cb C.
 
 func (this *QSizeGrip) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
-	C.QSizeGrip_virtualbase_WheelEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
-	ok := C.QSizeGrip_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnwheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+	ok := C.QSizeGrip_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_WheelEvent
-func miqt_exec_callback_QSizeGrip_WheelEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QWheelEvent) {
+//export miqt_exec_callback_QSizeGrip_wheelEvent
+func miqt_exec_callback_QSizeGrip_wheelEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QWheelEvent), event *QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -615,18 +615,18 @@ func miqt_exec_callback_QSizeGrip_WheelEvent(self *C.QSizeGrip, cb C.intptr_t, e
 
 func (this *QSizeGrip) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 
-	C.QSizeGrip_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QSizeGrip_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnkeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QSizeGrip_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_KeyPressEvent
-func miqt_exec_callback_QSizeGrip_KeyPressEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QSizeGrip_keyPressEvent
+func miqt_exec_callback_QSizeGrip_keyPressEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -641,18 +641,18 @@ func miqt_exec_callback_QSizeGrip_KeyPressEvent(self *C.QSizeGrip, cb C.intptr_t
 
 func (this *QSizeGrip) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
-	C.QSizeGrip_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QSizeGrip_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QSizeGrip_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_KeyReleaseEvent
-func miqt_exec_callback_QSizeGrip_KeyReleaseEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QSizeGrip_keyReleaseEvent
+func miqt_exec_callback_QSizeGrip_keyReleaseEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -667,18 +667,18 @@ func miqt_exec_callback_QSizeGrip_KeyReleaseEvent(self *C.QSizeGrip, cb C.intptr
 
 func (this *QSizeGrip) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
-	C.QSizeGrip_virtualbase_FocusInEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QSizeGrip_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QSizeGrip_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_FocusInEvent
-func miqt_exec_callback_QSizeGrip_FocusInEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QSizeGrip_focusInEvent
+func miqt_exec_callback_QSizeGrip_focusInEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -693,18 +693,18 @@ func miqt_exec_callback_QSizeGrip_FocusInEvent(self *C.QSizeGrip, cb C.intptr_t,
 
 func (this *QSizeGrip) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
-	C.QSizeGrip_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QSizeGrip_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QSizeGrip_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_FocusOutEvent
-func miqt_exec_callback_QSizeGrip_FocusOutEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QSizeGrip_focusOutEvent
+func miqt_exec_callback_QSizeGrip_focusOutEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -719,18 +719,18 @@ func miqt_exec_callback_QSizeGrip_FocusOutEvent(self *C.QSizeGrip, cb C.intptr_t
 
 func (this *QSizeGrip) callVirtualBase_EnterEvent(event *QEvent) {
 
-	C.QSizeGrip_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnEnterEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QSizeGrip_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnenterEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QSizeGrip_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_EnterEvent
-func miqt_exec_callback_QSizeGrip_EnterEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QSizeGrip_enterEvent
+func miqt_exec_callback_QSizeGrip_enterEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -745,18 +745,18 @@ func miqt_exec_callback_QSizeGrip_EnterEvent(self *C.QSizeGrip, cb C.intptr_t, e
 
 func (this *QSizeGrip) callVirtualBase_LeaveEvent(event *QEvent) {
 
-	C.QSizeGrip_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QSizeGrip_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QSizeGrip_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_LeaveEvent
-func miqt_exec_callback_QSizeGrip_LeaveEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QSizeGrip_leaveEvent
+func miqt_exec_callback_QSizeGrip_leaveEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -771,18 +771,18 @@ func miqt_exec_callback_QSizeGrip_LeaveEvent(self *C.QSizeGrip, cb C.intptr_t, e
 
 func (this *QSizeGrip) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 
-	C.QSizeGrip_virtualbase_ResizeEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
-	ok := C.QSizeGrip_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnresizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+	ok := C.QSizeGrip_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_ResizeEvent
-func miqt_exec_callback_QSizeGrip_ResizeEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QResizeEvent) {
+//export miqt_exec_callback_QSizeGrip_resizeEvent
+func miqt_exec_callback_QSizeGrip_resizeEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QResizeEvent), event *QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -797,18 +797,18 @@ func miqt_exec_callback_QSizeGrip_ResizeEvent(self *C.QSizeGrip, cb C.intptr_t, 
 
 func (this *QSizeGrip) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
-	C.QSizeGrip_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
-	ok := C.QSizeGrip_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QSizeGrip_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_CloseEvent
-func miqt_exec_callback_QSizeGrip_CloseEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QSizeGrip_closeEvent
+func miqt_exec_callback_QSizeGrip_closeEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -823,18 +823,18 @@ func miqt_exec_callback_QSizeGrip_CloseEvent(self *C.QSizeGrip, cb C.intptr_t, e
 
 func (this *QSizeGrip) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
 
-	C.QSizeGrip_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
-	ok := C.QSizeGrip_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OncontextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+	ok := C.QSizeGrip_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_ContextMenuEvent
-func miqt_exec_callback_QSizeGrip_ContextMenuEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QContextMenuEvent) {
+//export miqt_exec_callback_QSizeGrip_contextMenuEvent
+func miqt_exec_callback_QSizeGrip_contextMenuEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QContextMenuEvent), event *QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -849,18 +849,18 @@ func miqt_exec_callback_QSizeGrip_ContextMenuEvent(self *C.QSizeGrip, cb C.intpt
 
 func (this *QSizeGrip) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
-	C.QSizeGrip_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
-	ok := C.QSizeGrip_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QSizeGrip_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_TabletEvent
-func miqt_exec_callback_QSizeGrip_TabletEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QSizeGrip_tabletEvent
+func miqt_exec_callback_QSizeGrip_tabletEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -875,18 +875,18 @@ func miqt_exec_callback_QSizeGrip_TabletEvent(self *C.QSizeGrip, cb C.intptr_t, 
 
 func (this *QSizeGrip) callVirtualBase_ActionEvent(event *QActionEvent) {
 
-	C.QSizeGrip_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
-	ok := C.QSizeGrip_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QSizeGrip_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_ActionEvent
-func miqt_exec_callback_QSizeGrip_ActionEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QSizeGrip_actionEvent
+func miqt_exec_callback_QSizeGrip_actionEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -901,18 +901,18 @@ func miqt_exec_callback_QSizeGrip_ActionEvent(self *C.QSizeGrip, cb C.intptr_t, 
 
 func (this *QSizeGrip) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
 
-	C.QSizeGrip_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
-	ok := C.QSizeGrip_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	ok := C.QSizeGrip_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_DragEnterEvent
-func miqt_exec_callback_QSizeGrip_DragEnterEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QDragEnterEvent) {
+//export miqt_exec_callback_QSizeGrip_dragEnterEvent
+func miqt_exec_callback_QSizeGrip_dragEnterEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragEnterEvent), event *QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -927,18 +927,18 @@ func miqt_exec_callback_QSizeGrip_DragEnterEvent(self *C.QSizeGrip, cb C.intptr_
 
 func (this *QSizeGrip) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 
-	C.QSizeGrip_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
-	ok := C.QSizeGrip_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	ok := C.QSizeGrip_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_DragMoveEvent
-func miqt_exec_callback_QSizeGrip_DragMoveEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QDragMoveEvent) {
+//export miqt_exec_callback_QSizeGrip_dragMoveEvent
+func miqt_exec_callback_QSizeGrip_dragMoveEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragMoveEvent), event *QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -953,18 +953,18 @@ func miqt_exec_callback_QSizeGrip_DragMoveEvent(self *C.QSizeGrip, cb C.intptr_t
 
 func (this *QSizeGrip) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
 
-	C.QSizeGrip_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
-	ok := C.QSizeGrip_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	ok := C.QSizeGrip_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_DragLeaveEvent
-func miqt_exec_callback_QSizeGrip_DragLeaveEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QSizeGrip_dragLeaveEvent
+func miqt_exec_callback_QSizeGrip_dragLeaveEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -979,18 +979,18 @@ func miqt_exec_callback_QSizeGrip_DragLeaveEvent(self *C.QSizeGrip, cb C.intptr_
 
 func (this *QSizeGrip) callVirtualBase_DropEvent(event *QDropEvent) {
 
-	C.QSizeGrip_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
-	ok := C.QSizeGrip_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	ok := C.QSizeGrip_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_DropEvent
-func miqt_exec_callback_QSizeGrip_DropEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QDropEvent) {
+//export miqt_exec_callback_QSizeGrip_dropEvent
+func miqt_exec_callback_QSizeGrip_dropEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1012,18 +1012,18 @@ func (this *QSizeGrip) callVirtualBase_NativeEvent(eventType []byte, message uns
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QSizeGrip_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
+	return (bool)(C.QSizeGrip_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QSizeGrip) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
-	ok := C.QSizeGrip_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	ok := C.QSizeGrip_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_NativeEvent
-func miqt_exec_callback_QSizeGrip_NativeEvent(self *C.QSizeGrip, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
+//export miqt_exec_callback_QSizeGrip_nativeEvent
+func miqt_exec_callback_QSizeGrip_nativeEvent(self *C.QSizeGrip, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1046,18 +1046,18 @@ func miqt_exec_callback_QSizeGrip_NativeEvent(self *C.QSizeGrip, cb C.intptr_t, 
 
 func (this *QSizeGrip) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
-	C.QSizeGrip_virtualbase_ChangeEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSizeGrip_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSizeGrip) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
-	ok := C.QSizeGrip_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnchangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	ok := C.QSizeGrip_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_ChangeEvent
-func miqt_exec_callback_QSizeGrip_ChangeEvent(self *C.QSizeGrip, cb C.intptr_t, param1 *C.QEvent) {
+//export miqt_exec_callback_QSizeGrip_changeEvent
+func miqt_exec_callback_QSizeGrip_changeEvent(self *C.QSizeGrip, cb C.intptr_t, param1 *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent), param1 *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1072,18 +1072,18 @@ func miqt_exec_callback_QSizeGrip_ChangeEvent(self *C.QSizeGrip, cb C.intptr_t, 
 
 func (this *QSizeGrip) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QSizeGrip_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QSizeGrip_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QSizeGrip) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QSizeGrip_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QSizeGrip_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_Metric
-func miqt_exec_callback_QSizeGrip_Metric(self *C.QSizeGrip, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QSizeGrip_metric
+func miqt_exec_callback_QSizeGrip_metric(self *C.QSizeGrip, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1100,18 +1100,18 @@ func miqt_exec_callback_QSizeGrip_Metric(self *C.QSizeGrip, cb C.intptr_t, param
 
 func (this *QSizeGrip) callVirtualBase_InitPainter(painter *QPainter) {
 
-	C.QSizeGrip_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+	C.QSizeGrip_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QSizeGrip) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	ok := C.QSizeGrip_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QSizeGrip_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_InitPainter
-func miqt_exec_callback_QSizeGrip_InitPainter(self *C.QSizeGrip, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QSizeGrip_initPainter
+func miqt_exec_callback_QSizeGrip_initPainter(self *C.QSizeGrip, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1126,18 +1126,18 @@ func miqt_exec_callback_QSizeGrip_InitPainter(self *C.QSizeGrip, cb C.intptr_t, 
 
 func (this *QSizeGrip) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return newQPaintDevice(C.QSizeGrip_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+	return newQPaintDevice(C.QSizeGrip_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QSizeGrip) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	ok := C.QSizeGrip_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QSizeGrip_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_Redirected
-func miqt_exec_callback_QSizeGrip_Redirected(self *C.QSizeGrip, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QSizeGrip_redirected
+func miqt_exec_callback_QSizeGrip_redirected(self *C.QSizeGrip, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1154,18 +1154,18 @@ func miqt_exec_callback_QSizeGrip_Redirected(self *C.QSizeGrip, cb C.intptr_t, o
 
 func (this *QSizeGrip) callVirtualBase_SharedPainter() *QPainter {
 
-	return newQPainter(C.QSizeGrip_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+	return newQPainter(C.QSizeGrip_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QSizeGrip) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	ok := C.QSizeGrip_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QSizeGrip_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_SharedPainter
-func miqt_exec_callback_QSizeGrip_SharedPainter(self *C.QSizeGrip, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QSizeGrip_sharedPainter
+func miqt_exec_callback_QSizeGrip_sharedPainter(self *C.QSizeGrip, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1179,18 +1179,18 @@ func miqt_exec_callback_QSizeGrip_SharedPainter(self *C.QSizeGrip, cb C.intptr_t
 
 func (this *QSizeGrip) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
 
-	C.QSizeGrip_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSizeGrip_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSizeGrip) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
-	ok := C.QSizeGrip_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QSizeGrip_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_InputMethodEvent
-func miqt_exec_callback_QSizeGrip_InputMethodEvent(self *C.QSizeGrip, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QSizeGrip_inputMethodEvent
+func miqt_exec_callback_QSizeGrip_inputMethodEvent(self *C.QSizeGrip, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1205,20 +1205,20 @@ func miqt_exec_callback_QSizeGrip_InputMethodEvent(self *C.QSizeGrip, cb C.intpt
 
 func (this *QSizeGrip) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_goptr := newQVariant(C.QSizeGrip_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
+	_goptr := newQVariant(C.QSizeGrip_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSizeGrip) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
-	ok := C.QSizeGrip_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	ok := C.QSizeGrip_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_InputMethodQuery
-func miqt_exec_callback_QSizeGrip_InputMethodQuery(self *C.QSizeGrip, cb C.intptr_t, param1 C.int) *C.QVariant {
+//export miqt_exec_callback_QSizeGrip_inputMethodQuery
+func miqt_exec_callback_QSizeGrip_inputMethodQuery(self *C.QSizeGrip, cb C.intptr_t, param1 C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1235,18 +1235,18 @@ func miqt_exec_callback_QSizeGrip_InputMethodQuery(self *C.QSizeGrip, cb C.intpt
 
 func (this *QSizeGrip) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QSizeGrip_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QSizeGrip_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QSizeGrip) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QSizeGrip_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QSizeGrip_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_FocusNextPrevChild
-func miqt_exec_callback_QSizeGrip_FocusNextPrevChild(self *C.QSizeGrip, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QSizeGrip_focusNextPrevChild
+func miqt_exec_callback_QSizeGrip_focusNextPrevChild(self *C.QSizeGrip, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1263,18 +1263,18 @@ func miqt_exec_callback_QSizeGrip_FocusNextPrevChild(self *C.QSizeGrip, cb C.int
 
 func (this *QSizeGrip) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QSizeGrip_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QSizeGrip_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QSizeGrip_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_TimerEvent
-func miqt_exec_callback_QSizeGrip_TimerEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QSizeGrip_timerEvent
+func miqt_exec_callback_QSizeGrip_timerEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1289,18 +1289,18 @@ func miqt_exec_callback_QSizeGrip_TimerEvent(self *C.QSizeGrip, cb C.intptr_t, e
 
 func (this *QSizeGrip) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QSizeGrip_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QSizeGrip_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QSizeGrip_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_ChildEvent
-func miqt_exec_callback_QSizeGrip_ChildEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QSizeGrip_childEvent
+func miqt_exec_callback_QSizeGrip_childEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1315,18 +1315,18 @@ func miqt_exec_callback_QSizeGrip_ChildEvent(self *C.QSizeGrip, cb C.intptr_t, e
 
 func (this *QSizeGrip) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QSizeGrip_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSizeGrip_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSizeGrip) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QSizeGrip_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QSizeGrip_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_CustomEvent
-func miqt_exec_callback_QSizeGrip_CustomEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QSizeGrip_customEvent
+func miqt_exec_callback_QSizeGrip_customEvent(self *C.QSizeGrip, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1341,18 +1341,18 @@ func miqt_exec_callback_QSizeGrip_CustomEvent(self *C.QSizeGrip, cb C.intptr_t, 
 
 func (this *QSizeGrip) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QSizeGrip_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QSizeGrip_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSizeGrip) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QSizeGrip_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QSizeGrip_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_ConnectNotify
-func miqt_exec_callback_QSizeGrip_ConnectNotify(self *C.QSizeGrip, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QSizeGrip_connectNotify
+func miqt_exec_callback_QSizeGrip_connectNotify(self *C.QSizeGrip, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1367,18 +1367,18 @@ func miqt_exec_callback_QSizeGrip_ConnectNotify(self *C.QSizeGrip, cb C.intptr_t
 
 func (this *QSizeGrip) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QSizeGrip_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QSizeGrip_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSizeGrip) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QSizeGrip_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSizeGrip) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QSizeGrip_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSizeGrip_DisconnectNotify
-func miqt_exec_callback_QSizeGrip_DisconnectNotify(self *C.QSizeGrip, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QSizeGrip_disconnectNotify
+func miqt_exec_callback_QSizeGrip_disconnectNotify(self *C.QSizeGrip, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1393,7 +1393,7 @@ func miqt_exec_callback_QSizeGrip_DisconnectNotify(self *C.QSizeGrip, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QSizeGrip) Delete() {
-	C.QSizeGrip_Delete(this.h)
+	C.QSizeGrip_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

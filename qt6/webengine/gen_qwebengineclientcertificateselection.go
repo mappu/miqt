@@ -54,25 +54,25 @@ func NewQWebEngineClientCertificateSelection(param1 *QWebEngineClientCertificate
 }
 
 func (this *QWebEngineClientCertificateSelection) OperatorAssign(param1 *QWebEngineClientCertificateSelection) {
-	C.QWebEngineClientCertificateSelection_OperatorAssign(this.h, param1.cPointer())
+	C.QWebEngineClientCertificateSelection_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QWebEngineClientCertificateSelection) Host() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineClientCertificateSelection_Host(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineClientCertificateSelection_host(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineClientCertificateSelection) Select(certificate *network.QSslCertificate) {
-	C.QWebEngineClientCertificateSelection_Select(this.h, (*C.QSslCertificate)(certificate.UnsafePointer()))
+	C.QWebEngineClientCertificateSelection_select(this.h, (*C.QSslCertificate)(certificate.UnsafePointer()))
 }
 
 func (this *QWebEngineClientCertificateSelection) SelectNone() {
-	C.QWebEngineClientCertificateSelection_SelectNone(this.h)
+	C.QWebEngineClientCertificateSelection_selectNone(this.h)
 }
 
 func (this *QWebEngineClientCertificateSelection) Certificates() []network.QSslCertificate {
-	var _ma C.struct_miqt_array = C.QWebEngineClientCertificateSelection_Certificates(this.h)
+	var _ma C.struct_miqt_array = C.QWebEngineClientCertificateSelection_certificates(this.h)
 	_ret := make([]network.QSslCertificate, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -85,7 +85,7 @@ func (this *QWebEngineClientCertificateSelection) Certificates() []network.QSslC
 
 // Delete this object from C++ memory.
 func (this *QWebEngineClientCertificateSelection) Delete() {
-	C.QWebEngineClientCertificateSelection_Delete(this.h)
+	C.QWebEngineClientCertificateSelection_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -28,34 +28,34 @@ QNetworkCookie* QNetworkCookie_new();
 QNetworkCookie* QNetworkCookie_new2(QNetworkCookie* other);
 QNetworkCookie* QNetworkCookie_new3(struct miqt_string name);
 QNetworkCookie* QNetworkCookie_new4(struct miqt_string name, struct miqt_string value);
-void QNetworkCookie_OperatorAssign(QNetworkCookie* self, QNetworkCookie* other);
-void QNetworkCookie_Swap(QNetworkCookie* self, QNetworkCookie* other);
-bool QNetworkCookie_OperatorEqual(const QNetworkCookie* self, QNetworkCookie* other);
-bool QNetworkCookie_OperatorNotEqual(const QNetworkCookie* self, QNetworkCookie* other);
-bool QNetworkCookie_IsSecure(const QNetworkCookie* self);
-void QNetworkCookie_SetSecure(QNetworkCookie* self, bool enable);
-bool QNetworkCookie_IsHttpOnly(const QNetworkCookie* self);
-void QNetworkCookie_SetHttpOnly(QNetworkCookie* self, bool enable);
-bool QNetworkCookie_IsSessionCookie(const QNetworkCookie* self);
-QDateTime* QNetworkCookie_ExpirationDate(const QNetworkCookie* self);
-void QNetworkCookie_SetExpirationDate(QNetworkCookie* self, QDateTime* date);
-struct miqt_string QNetworkCookie_Domain(const QNetworkCookie* self);
-void QNetworkCookie_SetDomain(QNetworkCookie* self, struct miqt_string domain);
-struct miqt_string QNetworkCookie_Path(const QNetworkCookie* self);
-void QNetworkCookie_SetPath(QNetworkCookie* self, struct miqt_string path);
-struct miqt_string QNetworkCookie_Name(const QNetworkCookie* self);
-void QNetworkCookie_SetName(QNetworkCookie* self, struct miqt_string cookieName);
-struct miqt_string QNetworkCookie_Value(const QNetworkCookie* self);
-void QNetworkCookie_SetValue(QNetworkCookie* self, struct miqt_string value);
-struct miqt_string QNetworkCookie_ToRawForm(const QNetworkCookie* self);
-bool QNetworkCookie_HasSameIdentifier(const QNetworkCookie* self, QNetworkCookie* other);
-void QNetworkCookie_Normalize(QNetworkCookie* self, QUrl* url);
-struct miqt_array /* of QNetworkCookie* */  QNetworkCookie_ParseCookies(struct miqt_string cookieString);
-struct miqt_string QNetworkCookie_ToRawForm1(const QNetworkCookie* self, int form);
-void QNetworkCookie_Delete(QNetworkCookie* self);
+void QNetworkCookie_operatorAssign(QNetworkCookie* self, QNetworkCookie* other);
+void QNetworkCookie_swap(QNetworkCookie* self, QNetworkCookie* other);
+bool QNetworkCookie_operatorEqual(const QNetworkCookie* self, QNetworkCookie* other);
+bool QNetworkCookie_operatorNotEqual(const QNetworkCookie* self, QNetworkCookie* other);
+bool QNetworkCookie_isSecure(const QNetworkCookie* self);
+void QNetworkCookie_setSecure(QNetworkCookie* self, bool enable);
+bool QNetworkCookie_isHttpOnly(const QNetworkCookie* self);
+void QNetworkCookie_setHttpOnly(QNetworkCookie* self, bool enable);
+bool QNetworkCookie_isSessionCookie(const QNetworkCookie* self);
+QDateTime* QNetworkCookie_expirationDate(const QNetworkCookie* self);
+void QNetworkCookie_setExpirationDate(QNetworkCookie* self, QDateTime* date);
+struct miqt_string QNetworkCookie_domain(const QNetworkCookie* self);
+void QNetworkCookie_setDomain(QNetworkCookie* self, struct miqt_string domain);
+struct miqt_string QNetworkCookie_path(const QNetworkCookie* self);
+void QNetworkCookie_setPath(QNetworkCookie* self, struct miqt_string path);
+struct miqt_string QNetworkCookie_name(const QNetworkCookie* self);
+void QNetworkCookie_setName(QNetworkCookie* self, struct miqt_string cookieName);
+struct miqt_string QNetworkCookie_value(const QNetworkCookie* self);
+void QNetworkCookie_setValue(QNetworkCookie* self, struct miqt_string value);
+struct miqt_string QNetworkCookie_toRawForm(const QNetworkCookie* self);
+bool QNetworkCookie_hasSameIdentifier(const QNetworkCookie* self, QNetworkCookie* other);
+void QNetworkCookie_normalize(QNetworkCookie* self, QUrl* url);
+struct miqt_array /* of QNetworkCookie* */  QNetworkCookie_parseCookies(struct miqt_string cookieString);
+struct miqt_string QNetworkCookie_toRawForm1(const QNetworkCookie* self, int form);
+void QNetworkCookie_delete(QNetworkCookie* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

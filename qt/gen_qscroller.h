@@ -31,48 +31,48 @@ typedef struct QScrollerProperties QScrollerProperties;
 #endif
 
 void QScroller_virtbase(QScroller* src, QObject** outptr_QObject);
-QMetaObject* QScroller_MetaObject(const QScroller* self);
-void* QScroller_Metacast(QScroller* self, const char* param1);
-struct miqt_string QScroller_Tr(const char* s);
-struct miqt_string QScroller_TrUtf8(const char* s);
-bool QScroller_HasScroller(QObject* target);
-QScroller* QScroller_Scroller(QObject* target);
-QScroller* QScroller_ScrollerWithTarget(QObject* target);
-int QScroller_GrabGesture(QObject* target);
-int QScroller_GrabbedGesture(QObject* target);
-void QScroller_UngrabGesture(QObject* target);
-struct miqt_array /* of QScroller* */  QScroller_ActiveScrollers();
-QObject* QScroller_Target(const QScroller* self);
-int QScroller_State(const QScroller* self);
-bool QScroller_HandleInput(QScroller* self, int input, QPointF* position);
-void QScroller_Stop(QScroller* self);
-QPointF* QScroller_Velocity(const QScroller* self);
-QPointF* QScroller_FinalPosition(const QScroller* self);
-QPointF* QScroller_PixelPerMeter(const QScroller* self);
-QScrollerProperties* QScroller_ScrollerProperties(const QScroller* self);
-void QScroller_SetSnapPositionsX(QScroller* self, struct miqt_array /* of double */  positions);
-void QScroller_SetSnapPositionsX2(QScroller* self, double first, double interval);
-void QScroller_SetSnapPositionsY(QScroller* self, struct miqt_array /* of double */  positions);
-void QScroller_SetSnapPositionsY2(QScroller* self, double first, double interval);
-void QScroller_SetScrollerProperties(QScroller* self, QScrollerProperties* prop);
-void QScroller_ScrollTo(QScroller* self, QPointF* pos);
-void QScroller_ScrollTo2(QScroller* self, QPointF* pos, int scrollTime);
-void QScroller_EnsureVisible(QScroller* self, QRectF* rect, double xmargin, double ymargin);
-void QScroller_EnsureVisible2(QScroller* self, QRectF* rect, double xmargin, double ymargin, int scrollTime);
-void QScroller_ResendPrepareEvent(QScroller* self);
-void QScroller_StateChanged(QScroller* self, int newstate);
-void QScroller_connect_StateChanged(QScroller* self, intptr_t slot);
-void QScroller_ScrollerPropertiesChanged(QScroller* self, QScrollerProperties* param1);
-void QScroller_connect_ScrollerPropertiesChanged(QScroller* self, intptr_t slot);
-struct miqt_string QScroller_Tr2(const char* s, const char* c);
-struct miqt_string QScroller_Tr3(const char* s, const char* c, int n);
-struct miqt_string QScroller_TrUtf82(const char* s, const char* c);
-struct miqt_string QScroller_TrUtf83(const char* s, const char* c, int n);
-int QScroller_GrabGesture2(QObject* target, int gestureType);
-bool QScroller_HandleInput3(QScroller* self, int input, QPointF* position, long long timestamp);
+QMetaObject* QScroller_metaObject(const QScroller* self);
+void* QScroller_metacast(QScroller* self, const char* param1);
+struct miqt_string QScroller_tr(const char* s);
+struct miqt_string QScroller_trUtf8(const char* s);
+bool QScroller_hasScroller(QObject* target);
+QScroller* QScroller_scroller(QObject* target);
+QScroller* QScroller_scrollerWithTarget(QObject* target);
+int QScroller_grabGesture(QObject* target);
+int QScroller_grabbedGesture(QObject* target);
+void QScroller_ungrabGesture(QObject* target);
+struct miqt_array /* of QScroller* */  QScroller_activeScrollers();
+QObject* QScroller_target(const QScroller* self);
+int QScroller_state(const QScroller* self);
+bool QScroller_handleInput(QScroller* self, int input, QPointF* position);
+void QScroller_stop(QScroller* self);
+QPointF* QScroller_velocity(const QScroller* self);
+QPointF* QScroller_finalPosition(const QScroller* self);
+QPointF* QScroller_pixelPerMeter(const QScroller* self);
+QScrollerProperties* QScroller_scrollerProperties(const QScroller* self);
+void QScroller_setSnapPositionsX(QScroller* self, struct miqt_array /* of double */  positions);
+void QScroller_setSnapPositionsX2(QScroller* self, double first, double interval);
+void QScroller_setSnapPositionsY(QScroller* self, struct miqt_array /* of double */  positions);
+void QScroller_setSnapPositionsY2(QScroller* self, double first, double interval);
+void QScroller_setScrollerProperties(QScroller* self, QScrollerProperties* prop);
+void QScroller_scrollTo(QScroller* self, QPointF* pos);
+void QScroller_scrollTo2(QScroller* self, QPointF* pos, int scrollTime);
+void QScroller_ensureVisible(QScroller* self, QRectF* rect, double xmargin, double ymargin);
+void QScroller_ensureVisible2(QScroller* self, QRectF* rect, double xmargin, double ymargin, int scrollTime);
+void QScroller_resendPrepareEvent(QScroller* self);
+void QScroller_stateChanged(QScroller* self, int newstate);
+void QScroller_connect_stateChanged(QScroller* self, intptr_t slot);
+void QScroller_scrollerPropertiesChanged(QScroller* self, QScrollerProperties* param1);
+void QScroller_connect_scrollerPropertiesChanged(QScroller* self, intptr_t slot);
+struct miqt_string QScroller_tr2(const char* s, const char* c);
+struct miqt_string QScroller_tr3(const char* s, const char* c, int n);
+struct miqt_string QScroller_trUtf82(const char* s, const char* c);
+struct miqt_string QScroller_trUtf83(const char* s, const char* c, int n);
+int QScroller_grabGesture2(QObject* target, int gestureType);
+bool QScroller_handleInput3(QScroller* self, int input, QPointF* position, long long timestamp);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

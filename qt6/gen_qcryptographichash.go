@@ -84,50 +84,50 @@ func NewQCryptographicHash(method QCryptographicHash__Algorithm) *QCryptographic
 }
 
 func (this *QCryptographicHash) Reset() {
-	C.QCryptographicHash_Reset(this.h)
+	C.QCryptographicHash_reset(this.h)
 }
 
 func (this *QCryptographicHash) AddData(data string, length int64) {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	C.QCryptographicHash_AddData(this.h, data_Cstring, (C.ptrdiff_t)(length))
+	C.QCryptographicHash_addData(this.h, data_Cstring, (C.ptrdiff_t)(length))
 }
 
 func (this *QCryptographicHash) AddDataWithData(data QByteArrayView) {
-	C.QCryptographicHash_AddDataWithData(this.h, data.cPointer())
+	C.QCryptographicHash_addDataWithData(this.h, data.cPointer())
 }
 
 func (this *QCryptographicHash) AddDataWithDevice(device *QIODevice) bool {
-	return (bool)(C.QCryptographicHash_AddDataWithDevice(this.h, device.cPointer()))
+	return (bool)(C.QCryptographicHash_addDataWithDevice(this.h, device.cPointer()))
 }
 
 func (this *QCryptographicHash) Result() []byte {
-	var _bytearray C.struct_miqt_string = C.QCryptographicHash_Result(this.h)
+	var _bytearray C.struct_miqt_string = C.QCryptographicHash_result(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QCryptographicHash) ResultView() *QByteArrayView {
-	_goptr := newQByteArrayView(C.QCryptographicHash_ResultView(this.h))
+	_goptr := newQByteArrayView(C.QCryptographicHash_resultView(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QCryptographicHash_Hash(data QByteArrayView, method QCryptographicHash__Algorithm) []byte {
-	var _bytearray C.struct_miqt_string = C.QCryptographicHash_Hash(data.cPointer(), (C.int)(method))
+	var _bytearray C.struct_miqt_string = C.QCryptographicHash_hash(data.cPointer(), (C.int)(method))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func QCryptographicHash_HashLength(method QCryptographicHash__Algorithm) int {
-	return (int)(C.QCryptographicHash_HashLength((C.int)(method)))
+	return (int)(C.QCryptographicHash_hashLength((C.int)(method)))
 }
 
 // Delete this object from C++ memory.
 func (this *QCryptographicHash) Delete() {
-	C.QCryptographicHash_Delete(this.h)
+	C.QCryptographicHash_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

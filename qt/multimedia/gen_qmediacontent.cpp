@@ -57,39 +57,39 @@ QMediaContent* QMediaContent_new9(QMediaPlaylist* playlist, QUrl* contentUrl, bo
 	return new QMediaContent(playlist, *contentUrl, takeOwnership);
 }
 
-void QMediaContent_OperatorAssign(QMediaContent* self, QMediaContent* other) {
+void QMediaContent_operatorAssign(QMediaContent* self, QMediaContent* other) {
 	self->operator=(*other);
 }
 
-bool QMediaContent_OperatorEqual(const QMediaContent* self, QMediaContent* other) {
+bool QMediaContent_operatorEqual(const QMediaContent* self, QMediaContent* other) {
 	return (*self == *other);
 }
 
-bool QMediaContent_OperatorNotEqual(const QMediaContent* self, QMediaContent* other) {
+bool QMediaContent_operatorNotEqual(const QMediaContent* self, QMediaContent* other) {
 	return (*self != *other);
 }
 
-bool QMediaContent_IsNull(const QMediaContent* self) {
+bool QMediaContent_isNull(const QMediaContent* self) {
 	return self->isNull();
 }
 
-QNetworkRequest* QMediaContent_Request(const QMediaContent* self) {
+QNetworkRequest* QMediaContent_request(const QMediaContent* self) {
 	return new QNetworkRequest(self->request());
 }
 
-QUrl* QMediaContent_CanonicalUrl(const QMediaContent* self) {
+QUrl* QMediaContent_canonicalUrl(const QMediaContent* self) {
 	return new QUrl(self->canonicalUrl());
 }
 
-QNetworkRequest* QMediaContent_CanonicalRequest(const QMediaContent* self) {
+QNetworkRequest* QMediaContent_canonicalRequest(const QMediaContent* self) {
 	return new QNetworkRequest(self->canonicalRequest());
 }
 
-QMediaResource* QMediaContent_CanonicalResource(const QMediaContent* self) {
+QMediaResource* QMediaContent_canonicalResource(const QMediaContent* self) {
 	return new QMediaResource(self->canonicalResource());
 }
 
-struct miqt_array /* of QMediaResource* */  QMediaContent_Resources(const QMediaContent* self) {
+struct miqt_array /* of QMediaResource* */  QMediaContent_resources(const QMediaContent* self) {
 	QMediaResourceList _ret = self->resources();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QMediaResource** _arr = static_cast<QMediaResource**>(malloc(sizeof(QMediaResource*) * _ret.length()));
@@ -102,11 +102,11 @@ struct miqt_array /* of QMediaResource* */  QMediaContent_Resources(const QMedia
 	return _out;
 }
 
-QMediaPlaylist* QMediaContent_Playlist(const QMediaContent* self) {
+QMediaPlaylist* QMediaContent_playlist(const QMediaContent* self) {
 	return self->playlist();
 }
 
-void QMediaContent_Delete(QMediaContent* self) {
+void QMediaContent_delete(QMediaContent* self) {
 	delete self;
 }
 

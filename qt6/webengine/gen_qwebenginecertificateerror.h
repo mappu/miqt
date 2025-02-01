@@ -25,19 +25,19 @@ typedef struct QWebEngineCertificateError QWebEngineCertificateError;
 #endif
 
 QWebEngineCertificateError* QWebEngineCertificateError_new(QWebEngineCertificateError* other);
-void QWebEngineCertificateError_OperatorAssign(QWebEngineCertificateError* self, QWebEngineCertificateError* other);
-int QWebEngineCertificateError_Type(const QWebEngineCertificateError* self);
-QUrl* QWebEngineCertificateError_Url(const QWebEngineCertificateError* self);
-bool QWebEngineCertificateError_IsOverridable(const QWebEngineCertificateError* self);
-struct miqt_string QWebEngineCertificateError_Description(const QWebEngineCertificateError* self);
-void QWebEngineCertificateError_Defer(QWebEngineCertificateError* self);
-void QWebEngineCertificateError_RejectCertificate(QWebEngineCertificateError* self);
-void QWebEngineCertificateError_AcceptCertificate(QWebEngineCertificateError* self);
-struct miqt_array /* of QSslCertificate* */  QWebEngineCertificateError_CertificateChain(const QWebEngineCertificateError* self);
-void QWebEngineCertificateError_Delete(QWebEngineCertificateError* self);
+void QWebEngineCertificateError_operatorAssign(QWebEngineCertificateError* self, QWebEngineCertificateError* other);
+int QWebEngineCertificateError_type(const QWebEngineCertificateError* self);
+QUrl* QWebEngineCertificateError_url(const QWebEngineCertificateError* self);
+bool QWebEngineCertificateError_isOverridable(const QWebEngineCertificateError* self);
+struct miqt_string QWebEngineCertificateError_description(const QWebEngineCertificateError* self);
+void QWebEngineCertificateError_defer(QWebEngineCertificateError* self);
+void QWebEngineCertificateError_rejectCertificate(QWebEngineCertificateError* self);
+void QWebEngineCertificateError_acceptCertificate(QWebEngineCertificateError* self);
+struct miqt_array /* of QSslCertificate* */  QWebEngineCertificateError_certificateChain(const QWebEngineCertificateError* self);
+void QWebEngineCertificateError_delete(QWebEngineCertificateError* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

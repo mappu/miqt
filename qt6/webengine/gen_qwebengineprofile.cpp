@@ -25,14 +25,14 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QWebEngineProfile_DownloadRequested(intptr_t, QWebEngineDownloadRequest*);
-bool miqt_exec_callback_QWebEngineProfile_Event(QWebEngineProfile*, intptr_t, QEvent*);
-bool miqt_exec_callback_QWebEngineProfile_EventFilter(QWebEngineProfile*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QWebEngineProfile_TimerEvent(QWebEngineProfile*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QWebEngineProfile_ChildEvent(QWebEngineProfile*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QWebEngineProfile_CustomEvent(QWebEngineProfile*, intptr_t, QEvent*);
-void miqt_exec_callback_QWebEngineProfile_ConnectNotify(QWebEngineProfile*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QWebEngineProfile_DisconnectNotify(QWebEngineProfile*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebEngineProfile_downloadRequested(intptr_t, QWebEngineDownloadRequest*);
+bool miqt_exec_callback_QWebEngineProfile_event(QWebEngineProfile*, intptr_t, QEvent*);
+bool miqt_exec_callback_QWebEngineProfile_eventFilter(QWebEngineProfile*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QWebEngineProfile_timerEvent(QWebEngineProfile*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QWebEngineProfile_childEvent(QWebEngineProfile*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QWebEngineProfile_customEvent(QWebEngineProfile*, intptr_t, QEvent*);
+void miqt_exec_callback_QWebEngineProfile_connectNotify(QWebEngineProfile*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QWebEngineProfile_disconnectNotify(QWebEngineProfile*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -48,130 +48,130 @@ public:
 	virtual ~MiqtVirtualQWebEngineProfile() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QWebEngineProfile::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QWebEngineProfile_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QWebEngineProfile_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QWebEngineProfile::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QWebEngineProfile::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QWebEngineProfile_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QWebEngineProfile_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QWebEngineProfile::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QWebEngineProfile::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QWebEngineProfile_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QWebEngineProfile_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QWebEngineProfile::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QWebEngineProfile::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QWebEngineProfile_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QWebEngineProfile_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QWebEngineProfile::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QWebEngineProfile::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QWebEngineProfile_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QWebEngineProfile_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QWebEngineProfile::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QWebEngineProfile::connectNotify(signal);
 			return;
 		}
@@ -180,24 +180,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QWebEngineProfile_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QWebEngineProfile_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QWebEngineProfile::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QWebEngineProfile::disconnectNotify(signal);
 			return;
 		}
@@ -206,13 +206,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QWebEngineProfile_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QWebEngineProfile_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QWebEngineProfile::disconnectNotify(*signal);
 
@@ -242,15 +242,15 @@ void QWebEngineProfile_virtbase(QWebEngineProfile* src, QObject** outptr_QObject
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QWebEngineProfile_MetaObject(const QWebEngineProfile* self) {
+QMetaObject* QWebEngineProfile_metaObject(const QWebEngineProfile* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QWebEngineProfile_Metacast(QWebEngineProfile* self, const char* param1) {
+void* QWebEngineProfile_metacast(QWebEngineProfile* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QWebEngineProfile_Tr(const char* s) {
+struct miqt_string QWebEngineProfile_tr(const char* s) {
 	QString _ret = QWebEngineProfile::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -261,7 +261,7 @@ struct miqt_string QWebEngineProfile_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QWebEngineProfile_StorageName(const QWebEngineProfile* self) {
+struct miqt_string QWebEngineProfile_storageName(const QWebEngineProfile* self) {
 	QString _ret = self->storageName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -272,11 +272,11 @@ struct miqt_string QWebEngineProfile_StorageName(const QWebEngineProfile* self) 
 	return _ms;
 }
 
-bool QWebEngineProfile_IsOffTheRecord(const QWebEngineProfile* self) {
+bool QWebEngineProfile_isOffTheRecord(const QWebEngineProfile* self) {
 	return self->isOffTheRecord();
 }
 
-struct miqt_string QWebEngineProfile_PersistentStoragePath(const QWebEngineProfile* self) {
+struct miqt_string QWebEngineProfile_persistentStoragePath(const QWebEngineProfile* self) {
 	QString _ret = self->persistentStoragePath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -287,12 +287,12 @@ struct miqt_string QWebEngineProfile_PersistentStoragePath(const QWebEngineProfi
 	return _ms;
 }
 
-void QWebEngineProfile_SetPersistentStoragePath(QWebEngineProfile* self, struct miqt_string path) {
+void QWebEngineProfile_setPersistentStoragePath(QWebEngineProfile* self, struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	self->setPersistentStoragePath(path_QString);
 }
 
-struct miqt_string QWebEngineProfile_CachePath(const QWebEngineProfile* self) {
+struct miqt_string QWebEngineProfile_cachePath(const QWebEngineProfile* self) {
 	QString _ret = self->cachePath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -303,12 +303,12 @@ struct miqt_string QWebEngineProfile_CachePath(const QWebEngineProfile* self) {
 	return _ms;
 }
 
-void QWebEngineProfile_SetCachePath(QWebEngineProfile* self, struct miqt_string path) {
+void QWebEngineProfile_setCachePath(QWebEngineProfile* self, struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	self->setCachePath(path_QString);
 }
 
-struct miqt_string QWebEngineProfile_HttpUserAgent(const QWebEngineProfile* self) {
+struct miqt_string QWebEngineProfile_httpUserAgent(const QWebEngineProfile* self) {
 	QString _ret = self->httpUserAgent();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -319,26 +319,26 @@ struct miqt_string QWebEngineProfile_HttpUserAgent(const QWebEngineProfile* self
 	return _ms;
 }
 
-void QWebEngineProfile_SetHttpUserAgent(QWebEngineProfile* self, struct miqt_string userAgent) {
+void QWebEngineProfile_setHttpUserAgent(QWebEngineProfile* self, struct miqt_string userAgent) {
 	QString userAgent_QString = QString::fromUtf8(userAgent.data, userAgent.len);
 	self->setHttpUserAgent(userAgent_QString);
 }
 
-int QWebEngineProfile_HttpCacheType(const QWebEngineProfile* self) {
+int QWebEngineProfile_httpCacheType(const QWebEngineProfile* self) {
 	QWebEngineProfile::HttpCacheType _ret = self->httpCacheType();
 	return static_cast<int>(_ret);
 }
 
-void QWebEngineProfile_SetHttpCacheType(QWebEngineProfile* self, int httpCacheType) {
+void QWebEngineProfile_setHttpCacheType(QWebEngineProfile* self, int httpCacheType) {
 	self->setHttpCacheType(static_cast<QWebEngineProfile::HttpCacheType>(httpCacheType));
 }
 
-void QWebEngineProfile_SetHttpAcceptLanguage(QWebEngineProfile* self, struct miqt_string httpAcceptLanguage) {
+void QWebEngineProfile_setHttpAcceptLanguage(QWebEngineProfile* self, struct miqt_string httpAcceptLanguage) {
 	QString httpAcceptLanguage_QString = QString::fromUtf8(httpAcceptLanguage.data, httpAcceptLanguage.len);
 	self->setHttpAcceptLanguage(httpAcceptLanguage_QString);
 }
 
-struct miqt_string QWebEngineProfile_HttpAcceptLanguage(const QWebEngineProfile* self) {
+struct miqt_string QWebEngineProfile_httpAcceptLanguage(const QWebEngineProfile* self) {
 	QString _ret = self->httpAcceptLanguage();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -349,36 +349,36 @@ struct miqt_string QWebEngineProfile_HttpAcceptLanguage(const QWebEngineProfile*
 	return _ms;
 }
 
-int QWebEngineProfile_PersistentCookiesPolicy(const QWebEngineProfile* self) {
+int QWebEngineProfile_persistentCookiesPolicy(const QWebEngineProfile* self) {
 	QWebEngineProfile::PersistentCookiesPolicy _ret = self->persistentCookiesPolicy();
 	return static_cast<int>(_ret);
 }
 
-void QWebEngineProfile_SetPersistentCookiesPolicy(QWebEngineProfile* self, int persistentCookiesPolicy) {
+void QWebEngineProfile_setPersistentCookiesPolicy(QWebEngineProfile* self, int persistentCookiesPolicy) {
 	self->setPersistentCookiesPolicy(static_cast<QWebEngineProfile::PersistentCookiesPolicy>(persistentCookiesPolicy));
 }
 
-int QWebEngineProfile_HttpCacheMaximumSize(const QWebEngineProfile* self) {
+int QWebEngineProfile_httpCacheMaximumSize(const QWebEngineProfile* self) {
 	return self->httpCacheMaximumSize();
 }
 
-void QWebEngineProfile_SetHttpCacheMaximumSize(QWebEngineProfile* self, int maxSize) {
+void QWebEngineProfile_setHttpCacheMaximumSize(QWebEngineProfile* self, int maxSize) {
 	self->setHttpCacheMaximumSize(static_cast<int>(maxSize));
 }
 
-QWebEngineCookieStore* QWebEngineProfile_CookieStore(QWebEngineProfile* self) {
+QWebEngineCookieStore* QWebEngineProfile_cookieStore(QWebEngineProfile* self) {
 	return self->cookieStore();
 }
 
-void QWebEngineProfile_SetUrlRequestInterceptor(QWebEngineProfile* self, QWebEngineUrlRequestInterceptor* interceptor) {
+void QWebEngineProfile_setUrlRequestInterceptor(QWebEngineProfile* self, QWebEngineUrlRequestInterceptor* interceptor) {
 	self->setUrlRequestInterceptor(interceptor);
 }
 
-void QWebEngineProfile_ClearAllVisitedLinks(QWebEngineProfile* self) {
+void QWebEngineProfile_clearAllVisitedLinks(QWebEngineProfile* self) {
 	self->clearAllVisitedLinks();
 }
 
-void QWebEngineProfile_ClearVisitedLinks(QWebEngineProfile* self, struct miqt_array /* of QUrl* */  urls) {
+void QWebEngineProfile_clearVisitedLinks(QWebEngineProfile* self, struct miqt_array /* of QUrl* */  urls) {
 	QList<QUrl> urls_QList;
 	urls_QList.reserve(urls.len);
 	QUrl** urls_arr = static_cast<QUrl**>(urls.data);
@@ -388,46 +388,46 @@ void QWebEngineProfile_ClearVisitedLinks(QWebEngineProfile* self, struct miqt_ar
 	self->clearVisitedLinks(urls_QList);
 }
 
-bool QWebEngineProfile_VisitedLinksContainsUrl(const QWebEngineProfile* self, QUrl* url) {
+bool QWebEngineProfile_visitedLinksContainsUrl(const QWebEngineProfile* self, QUrl* url) {
 	return self->visitedLinksContainsUrl(*url);
 }
 
-QWebEngineSettings* QWebEngineProfile_Settings(const QWebEngineProfile* self) {
+QWebEngineSettings* QWebEngineProfile_settings(const QWebEngineProfile* self) {
 	return self->settings();
 }
 
-QWebEngineScriptCollection* QWebEngineProfile_Scripts(const QWebEngineProfile* self) {
+QWebEngineScriptCollection* QWebEngineProfile_scripts(const QWebEngineProfile* self) {
 	return self->scripts();
 }
 
-QWebEngineUrlSchemeHandler* QWebEngineProfile_UrlSchemeHandler(const QWebEngineProfile* self, struct miqt_string param1) {
+QWebEngineUrlSchemeHandler* QWebEngineProfile_urlSchemeHandler(const QWebEngineProfile* self, struct miqt_string param1) {
 	QByteArray param1_QByteArray(param1.data, param1.len);
 	return (QWebEngineUrlSchemeHandler*) self->urlSchemeHandler(param1_QByteArray);
 }
 
-void QWebEngineProfile_InstallUrlSchemeHandler(QWebEngineProfile* self, struct miqt_string scheme, QWebEngineUrlSchemeHandler* param2) {
+void QWebEngineProfile_installUrlSchemeHandler(QWebEngineProfile* self, struct miqt_string scheme, QWebEngineUrlSchemeHandler* param2) {
 	QByteArray scheme_QByteArray(scheme.data, scheme.len);
 	self->installUrlSchemeHandler(scheme_QByteArray, param2);
 }
 
-void QWebEngineProfile_RemoveUrlScheme(QWebEngineProfile* self, struct miqt_string scheme) {
+void QWebEngineProfile_removeUrlScheme(QWebEngineProfile* self, struct miqt_string scheme) {
 	QByteArray scheme_QByteArray(scheme.data, scheme.len);
 	self->removeUrlScheme(scheme_QByteArray);
 }
 
-void QWebEngineProfile_RemoveUrlSchemeHandler(QWebEngineProfile* self, QWebEngineUrlSchemeHandler* param1) {
+void QWebEngineProfile_removeUrlSchemeHandler(QWebEngineProfile* self, QWebEngineUrlSchemeHandler* param1) {
 	self->removeUrlSchemeHandler(param1);
 }
 
-void QWebEngineProfile_RemoveAllUrlSchemeHandlers(QWebEngineProfile* self) {
+void QWebEngineProfile_removeAllUrlSchemeHandlers(QWebEngineProfile* self) {
 	self->removeAllUrlSchemeHandlers();
 }
 
-void QWebEngineProfile_ClearHttpCache(QWebEngineProfile* self) {
+void QWebEngineProfile_clearHttpCache(QWebEngineProfile* self) {
 	self->clearHttpCache();
 }
 
-void QWebEngineProfile_SetSpellCheckLanguages(QWebEngineProfile* self, struct miqt_array /* of struct miqt_string */  languages) {
+void QWebEngineProfile_setSpellCheckLanguages(QWebEngineProfile* self, struct miqt_array /* of struct miqt_string */  languages) {
 	QStringList languages_QList;
 	languages_QList.reserve(languages.len);
 	struct miqt_string* languages_arr = static_cast<struct miqt_string*>(languages.data);
@@ -438,7 +438,7 @@ void QWebEngineProfile_SetSpellCheckLanguages(QWebEngineProfile* self, struct mi
 	self->setSpellCheckLanguages(languages_QList);
 }
 
-struct miqt_array /* of struct miqt_string */  QWebEngineProfile_SpellCheckLanguages(const QWebEngineProfile* self) {
+struct miqt_array /* of struct miqt_string */  QWebEngineProfile_spellCheckLanguages(const QWebEngineProfile* self) {
 	QStringList _ret = self->spellCheckLanguages();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -458,15 +458,15 @@ struct miqt_array /* of struct miqt_string */  QWebEngineProfile_SpellCheckLangu
 	return _out;
 }
 
-void QWebEngineProfile_SetSpellCheckEnabled(QWebEngineProfile* self, bool enabled) {
+void QWebEngineProfile_setSpellCheckEnabled(QWebEngineProfile* self, bool enabled) {
 	self->setSpellCheckEnabled(enabled);
 }
 
-bool QWebEngineProfile_IsSpellCheckEnabled(const QWebEngineProfile* self) {
+bool QWebEngineProfile_isSpellCheckEnabled(const QWebEngineProfile* self) {
 	return self->isSpellCheckEnabled();
 }
 
-struct miqt_string QWebEngineProfile_DownloadPath(const QWebEngineProfile* self) {
+struct miqt_string QWebEngineProfile_downloadPath(const QWebEngineProfile* self) {
 	QString _ret = self->downloadPath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -477,31 +477,31 @@ struct miqt_string QWebEngineProfile_DownloadPath(const QWebEngineProfile* self)
 	return _ms;
 }
 
-void QWebEngineProfile_SetDownloadPath(QWebEngineProfile* self, struct miqt_string path) {
+void QWebEngineProfile_setDownloadPath(QWebEngineProfile* self, struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	self->setDownloadPath(path_QString);
 }
 
-QWebEngineClientCertificateStore* QWebEngineProfile_ClientCertificateStore(QWebEngineProfile* self) {
+QWebEngineClientCertificateStore* QWebEngineProfile_clientCertificateStore(QWebEngineProfile* self) {
 	return self->clientCertificateStore();
 }
 
-QWebEngineProfile* QWebEngineProfile_DefaultProfile() {
+QWebEngineProfile* QWebEngineProfile_defaultProfile() {
 	return QWebEngineProfile::defaultProfile();
 }
 
-void QWebEngineProfile_DownloadRequested(QWebEngineProfile* self, QWebEngineDownloadRequest* download) {
+void QWebEngineProfile_downloadRequested(QWebEngineProfile* self, QWebEngineDownloadRequest* download) {
 	self->downloadRequested(download);
 }
 
-void QWebEngineProfile_connect_DownloadRequested(QWebEngineProfile* self, intptr_t slot) {
+void QWebEngineProfile_connect_downloadRequested(QWebEngineProfile* self, intptr_t slot) {
 	MiqtVirtualQWebEngineProfile::connect(self, static_cast<void (QWebEngineProfile::*)(QWebEngineDownloadRequest*)>(&QWebEngineProfile::downloadRequested), self, [=](QWebEngineDownloadRequest* download) {
 		QWebEngineDownloadRequest* sigval1 = download;
-		miqt_exec_callback_QWebEngineProfile_DownloadRequested(slot, sigval1);
+		miqt_exec_callback_QWebEngineProfile_downloadRequested(slot, sigval1);
 	});
 }
 
-struct miqt_string QWebEngineProfile_Tr2(const char* s, const char* c) {
+struct miqt_string QWebEngineProfile_tr2(const char* s, const char* c) {
 	QString _ret = QWebEngineProfile::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -512,7 +512,7 @@ struct miqt_string QWebEngineProfile_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QWebEngineProfile_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QWebEngineProfile_tr3(const char* s, const char* c, int n) {
 	QString _ret = QWebEngineProfile::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -523,105 +523,105 @@ struct miqt_string QWebEngineProfile_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QWebEngineProfile_override_virtual_Event(void* self, intptr_t slot) {
+bool QWebEngineProfile_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQWebEngineProfile* self_cast = dynamic_cast<MiqtVirtualQWebEngineProfile*>( (QWebEngineProfile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QWebEngineProfile_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_Event(event);
+bool QWebEngineProfile_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_event(event);
 }
 
-bool QWebEngineProfile_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QWebEngineProfile_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQWebEngineProfile* self_cast = dynamic_cast<MiqtVirtualQWebEngineProfile*>( (QWebEngineProfile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QWebEngineProfile_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_EventFilter(watched, event);
+bool QWebEngineProfile_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QWebEngineProfile_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QWebEngineProfile_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQWebEngineProfile* self_cast = dynamic_cast<MiqtVirtualQWebEngineProfile*>( (QWebEngineProfile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QWebEngineProfile_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_TimerEvent(event);
+void QWebEngineProfile_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QWebEngineProfile_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QWebEngineProfile_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQWebEngineProfile* self_cast = dynamic_cast<MiqtVirtualQWebEngineProfile*>( (QWebEngineProfile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QWebEngineProfile_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_ChildEvent(event);
+void QWebEngineProfile_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QWebEngineProfile_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QWebEngineProfile_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQWebEngineProfile* self_cast = dynamic_cast<MiqtVirtualQWebEngineProfile*>( (QWebEngineProfile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QWebEngineProfile_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_CustomEvent(event);
+void QWebEngineProfile_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QWebEngineProfile_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QWebEngineProfile_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQWebEngineProfile* self_cast = dynamic_cast<MiqtVirtualQWebEngineProfile*>( (QWebEngineProfile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QWebEngineProfile_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_ConnectNotify(signal);
+void QWebEngineProfile_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QWebEngineProfile_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QWebEngineProfile_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQWebEngineProfile* self_cast = dynamic_cast<MiqtVirtualQWebEngineProfile*>( (QWebEngineProfile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QWebEngineProfile_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_DisconnectNotify(signal);
+void QWebEngineProfile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQWebEngineProfile*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QWebEngineProfile_Delete(QWebEngineProfile* self) {
+void QWebEngineProfile_delete(QWebEngineProfile* self) {
 	delete self;
 }
 

@@ -108,47 +108,47 @@ func NewQMediaContent9(playlist *QMediaPlaylist, contentUrl *qt.QUrl, takeOwners
 }
 
 func (this *QMediaContent) OperatorAssign(other *QMediaContent) {
-	C.QMediaContent_OperatorAssign(this.h, other.cPointer())
+	C.QMediaContent_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QMediaContent) OperatorEqual(other *QMediaContent) bool {
-	return (bool)(C.QMediaContent_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QMediaContent_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QMediaContent) OperatorNotEqual(other *QMediaContent) bool {
-	return (bool)(C.QMediaContent_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QMediaContent_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QMediaContent) IsNull() bool {
-	return (bool)(C.QMediaContent_IsNull(this.h))
+	return (bool)(C.QMediaContent_isNull(this.h))
 }
 
 func (this *QMediaContent) Request() *network.QNetworkRequest {
-	_goptr := network.UnsafeNewQNetworkRequest(unsafe.Pointer(C.QMediaContent_Request(this.h)))
+	_goptr := network.UnsafeNewQNetworkRequest(unsafe.Pointer(C.QMediaContent_request(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaContent) CanonicalUrl() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QMediaContent_CanonicalUrl(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QMediaContent_canonicalUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaContent) CanonicalRequest() *network.QNetworkRequest {
-	_goptr := network.UnsafeNewQNetworkRequest(unsafe.Pointer(C.QMediaContent_CanonicalRequest(this.h)))
+	_goptr := network.UnsafeNewQNetworkRequest(unsafe.Pointer(C.QMediaContent_canonicalRequest(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaContent) CanonicalResource() *QMediaResource {
-	_goptr := newQMediaResource(C.QMediaContent_CanonicalResource(this.h))
+	_goptr := newQMediaResource(C.QMediaContent_canonicalResource(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaContent) Resources() []QMediaResource {
-	var _ma C.struct_miqt_array = C.QMediaContent_Resources(this.h)
+	var _ma C.struct_miqt_array = C.QMediaContent_resources(this.h)
 	_ret := make([]QMediaResource, int(_ma.len))
 	_outCast := (*[0xffff]*C.QMediaResource)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -160,12 +160,12 @@ func (this *QMediaContent) Resources() []QMediaResource {
 }
 
 func (this *QMediaContent) Playlist() *QMediaPlaylist {
-	return newQMediaPlaylist(C.QMediaContent_Playlist(this.h))
+	return newQMediaPlaylist(C.QMediaContent_playlist(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QMediaContent) Delete() {
-	C.QMediaContent_Delete(this.h)
+	C.QMediaContent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

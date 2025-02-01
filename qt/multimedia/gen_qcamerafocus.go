@@ -101,38 +101,38 @@ func NewQCameraFocusZone4(area *qt.QRectF, status QCameraFocusZone__FocusZoneSta
 }
 
 func (this *QCameraFocusZone) OperatorAssign(other *QCameraFocusZone) {
-	C.QCameraFocusZone_OperatorAssign(this.h, other.cPointer())
+	C.QCameraFocusZone_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QCameraFocusZone) OperatorEqual(other *QCameraFocusZone) bool {
-	return (bool)(C.QCameraFocusZone_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QCameraFocusZone_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QCameraFocusZone) OperatorNotEqual(other *QCameraFocusZone) bool {
-	return (bool)(C.QCameraFocusZone_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QCameraFocusZone_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QCameraFocusZone) IsValid() bool {
-	return (bool)(C.QCameraFocusZone_IsValid(this.h))
+	return (bool)(C.QCameraFocusZone_isValid(this.h))
 }
 
 func (this *QCameraFocusZone) Area() *qt.QRectF {
-	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QCameraFocusZone_Area(this.h)))
+	_goptr := qt.UnsafeNewQRectF(unsafe.Pointer(C.QCameraFocusZone_area(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraFocusZone) Status() QCameraFocusZone__FocusZoneStatus {
-	return (QCameraFocusZone__FocusZoneStatus)(C.QCameraFocusZone_Status(this.h))
+	return (QCameraFocusZone__FocusZoneStatus)(C.QCameraFocusZone_status(this.h))
 }
 
 func (this *QCameraFocusZone) SetStatus(status QCameraFocusZone__FocusZoneStatus) {
-	C.QCameraFocusZone_SetStatus(this.h, (C.int)(status))
+	C.QCameraFocusZone_setStatus(this.h, (C.int)(status))
 }
 
 // Delete this object from C++ memory.
 func (this *QCameraFocusZone) Delete() {
-	C.QCameraFocusZone_Delete(this.h)
+	C.QCameraFocusZone_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -181,19 +181,19 @@ func UnsafeNewQCameraFocus(h unsafe.Pointer) *QCameraFocus {
 }
 
 func (this *QCameraFocus) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraFocus_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraFocus_metaObject(this.h)))
 }
 
 func (this *QCameraFocus) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QCameraFocus_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QCameraFocus_metacast(this.h, param1_Cstring))
 }
 
 func QCameraFocus_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraFocus_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraFocus_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -202,52 +202,52 @@ func QCameraFocus_Tr(s string) string {
 func QCameraFocus_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraFocus_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraFocus_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCameraFocus) IsAvailable() bool {
-	return (bool)(C.QCameraFocus_IsAvailable(this.h))
+	return (bool)(C.QCameraFocus_isAvailable(this.h))
 }
 
 func (this *QCameraFocus) FocusMode() QCameraFocus__FocusMode {
-	return (QCameraFocus__FocusMode)(C.QCameraFocus_FocusMode(this.h))
+	return (QCameraFocus__FocusMode)(C.QCameraFocus_focusMode(this.h))
 }
 
 func (this *QCameraFocus) SetFocusMode(mode QCameraFocus__FocusMode) {
-	C.QCameraFocus_SetFocusMode(this.h, (C.int)(mode))
+	C.QCameraFocus_setFocusMode(this.h, (C.int)(mode))
 }
 
 func (this *QCameraFocus) IsFocusModeSupported(mode QCameraFocus__FocusMode) bool {
-	return (bool)(C.QCameraFocus_IsFocusModeSupported(this.h, (C.int)(mode)))
+	return (bool)(C.QCameraFocus_isFocusModeSupported(this.h, (C.int)(mode)))
 }
 
 func (this *QCameraFocus) FocusPointMode() QCameraFocus__FocusPointMode {
-	return (QCameraFocus__FocusPointMode)(C.QCameraFocus_FocusPointMode(this.h))
+	return (QCameraFocus__FocusPointMode)(C.QCameraFocus_focusPointMode(this.h))
 }
 
 func (this *QCameraFocus) SetFocusPointMode(mode QCameraFocus__FocusPointMode) {
-	C.QCameraFocus_SetFocusPointMode(this.h, (C.int)(mode))
+	C.QCameraFocus_setFocusPointMode(this.h, (C.int)(mode))
 }
 
 func (this *QCameraFocus) IsFocusPointModeSupported(param1 QCameraFocus__FocusPointMode) bool {
-	return (bool)(C.QCameraFocus_IsFocusPointModeSupported(this.h, (C.int)(param1)))
+	return (bool)(C.QCameraFocus_isFocusPointModeSupported(this.h, (C.int)(param1)))
 }
 
 func (this *QCameraFocus) CustomFocusPoint() *qt.QPointF {
-	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QCameraFocus_CustomFocusPoint(this.h)))
+	_goptr := qt.UnsafeNewQPointF(unsafe.Pointer(C.QCameraFocus_customFocusPoint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraFocus) SetCustomFocusPoint(point *qt.QPointF) {
-	C.QCameraFocus_SetCustomFocusPoint(this.h, (*C.QPointF)(point.UnsafePointer()))
+	C.QCameraFocus_setCustomFocusPoint(this.h, (*C.QPointF)(point.UnsafePointer()))
 }
 
 func (this *QCameraFocus) FocusZones() []QCameraFocusZone {
-	var _ma C.struct_miqt_array = C.QCameraFocus_FocusZones(this.h)
+	var _ma C.struct_miqt_array = C.QCameraFocus_focusZones(this.h)
 	_ret := make([]QCameraFocusZone, int(_ma.len))
 	_outCast := (*[0xffff]*C.QCameraFocusZone)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -259,34 +259,34 @@ func (this *QCameraFocus) FocusZones() []QCameraFocusZone {
 }
 
 func (this *QCameraFocus) MaximumOpticalZoom() float64 {
-	return (float64)(C.QCameraFocus_MaximumOpticalZoom(this.h))
+	return (float64)(C.QCameraFocus_maximumOpticalZoom(this.h))
 }
 
 func (this *QCameraFocus) MaximumDigitalZoom() float64 {
-	return (float64)(C.QCameraFocus_MaximumDigitalZoom(this.h))
+	return (float64)(C.QCameraFocus_maximumDigitalZoom(this.h))
 }
 
 func (this *QCameraFocus) OpticalZoom() float64 {
-	return (float64)(C.QCameraFocus_OpticalZoom(this.h))
+	return (float64)(C.QCameraFocus_opticalZoom(this.h))
 }
 
 func (this *QCameraFocus) DigitalZoom() float64 {
-	return (float64)(C.QCameraFocus_DigitalZoom(this.h))
+	return (float64)(C.QCameraFocus_digitalZoom(this.h))
 }
 
 func (this *QCameraFocus) ZoomTo(opticalZoom float64, digitalZoom float64) {
-	C.QCameraFocus_ZoomTo(this.h, (C.double)(opticalZoom), (C.double)(digitalZoom))
+	C.QCameraFocus_zoomTo(this.h, (C.double)(opticalZoom), (C.double)(digitalZoom))
 }
 
 func (this *QCameraFocus) OpticalZoomChanged(param1 float64) {
-	C.QCameraFocus_OpticalZoomChanged(this.h, (C.double)(param1))
+	C.QCameraFocus_opticalZoomChanged(this.h, (C.double)(param1))
 }
 func (this *QCameraFocus) OnOpticalZoomChanged(slot func(param1 float64)) {
-	C.QCameraFocus_connect_OpticalZoomChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCameraFocus_connect_opticalZoomChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCameraFocus_OpticalZoomChanged
-func miqt_exec_callback_QCameraFocus_OpticalZoomChanged(cb C.intptr_t, param1 C.double) {
+//export miqt_exec_callback_QCameraFocus_opticalZoomChanged
+func miqt_exec_callback_QCameraFocus_opticalZoomChanged(cb C.intptr_t, param1 C.double) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -299,14 +299,14 @@ func miqt_exec_callback_QCameraFocus_OpticalZoomChanged(cb C.intptr_t, param1 C.
 }
 
 func (this *QCameraFocus) DigitalZoomChanged(param1 float64) {
-	C.QCameraFocus_DigitalZoomChanged(this.h, (C.double)(param1))
+	C.QCameraFocus_digitalZoomChanged(this.h, (C.double)(param1))
 }
 func (this *QCameraFocus) OnDigitalZoomChanged(slot func(param1 float64)) {
-	C.QCameraFocus_connect_DigitalZoomChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCameraFocus_connect_digitalZoomChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCameraFocus_DigitalZoomChanged
-func miqt_exec_callback_QCameraFocus_DigitalZoomChanged(cb C.intptr_t, param1 C.double) {
+//export miqt_exec_callback_QCameraFocus_digitalZoomChanged
+func miqt_exec_callback_QCameraFocus_digitalZoomChanged(cb C.intptr_t, param1 C.double) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -319,14 +319,14 @@ func miqt_exec_callback_QCameraFocus_DigitalZoomChanged(cb C.intptr_t, param1 C.
 }
 
 func (this *QCameraFocus) FocusZonesChanged() {
-	C.QCameraFocus_FocusZonesChanged(this.h)
+	C.QCameraFocus_focusZonesChanged(this.h)
 }
 func (this *QCameraFocus) OnFocusZonesChanged(slot func()) {
-	C.QCameraFocus_connect_FocusZonesChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCameraFocus_connect_focusZonesChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCameraFocus_FocusZonesChanged
-func miqt_exec_callback_QCameraFocus_FocusZonesChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QCameraFocus_focusZonesChanged
+func miqt_exec_callback_QCameraFocus_focusZonesChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -336,14 +336,14 @@ func miqt_exec_callback_QCameraFocus_FocusZonesChanged(cb C.intptr_t) {
 }
 
 func (this *QCameraFocus) MaximumOpticalZoomChanged(param1 float64) {
-	C.QCameraFocus_MaximumOpticalZoomChanged(this.h, (C.double)(param1))
+	C.QCameraFocus_maximumOpticalZoomChanged(this.h, (C.double)(param1))
 }
 func (this *QCameraFocus) OnMaximumOpticalZoomChanged(slot func(param1 float64)) {
-	C.QCameraFocus_connect_MaximumOpticalZoomChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCameraFocus_connect_maximumOpticalZoomChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCameraFocus_MaximumOpticalZoomChanged
-func miqt_exec_callback_QCameraFocus_MaximumOpticalZoomChanged(cb C.intptr_t, param1 C.double) {
+//export miqt_exec_callback_QCameraFocus_maximumOpticalZoomChanged
+func miqt_exec_callback_QCameraFocus_maximumOpticalZoomChanged(cb C.intptr_t, param1 C.double) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -356,14 +356,14 @@ func miqt_exec_callback_QCameraFocus_MaximumOpticalZoomChanged(cb C.intptr_t, pa
 }
 
 func (this *QCameraFocus) MaximumDigitalZoomChanged(param1 float64) {
-	C.QCameraFocus_MaximumDigitalZoomChanged(this.h, (C.double)(param1))
+	C.QCameraFocus_maximumDigitalZoomChanged(this.h, (C.double)(param1))
 }
 func (this *QCameraFocus) OnMaximumDigitalZoomChanged(slot func(param1 float64)) {
-	C.QCameraFocus_connect_MaximumDigitalZoomChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCameraFocus_connect_maximumDigitalZoomChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCameraFocus_MaximumDigitalZoomChanged
-func miqt_exec_callback_QCameraFocus_MaximumDigitalZoomChanged(cb C.intptr_t, param1 C.double) {
+//export miqt_exec_callback_QCameraFocus_maximumDigitalZoomChanged
+func miqt_exec_callback_QCameraFocus_maximumDigitalZoomChanged(cb C.intptr_t, param1 C.double) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 float64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -380,7 +380,7 @@ func QCameraFocus_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraFocus_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraFocus_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -391,7 +391,7 @@ func QCameraFocus_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraFocus_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraFocus_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -402,7 +402,7 @@ func QCameraFocus_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraFocus_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraFocus_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -413,7 +413,7 @@ func QCameraFocus_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraFocus_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraFocus_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret

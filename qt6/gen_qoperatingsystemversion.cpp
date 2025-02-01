@@ -31,11 +31,11 @@ QOperatingSystemVersionBase* QOperatingSystemVersionBase_new4(int osType, int vm
 	return new QOperatingSystemVersionBase(static_cast<QOperatingSystemVersionBase::OSType>(osType), static_cast<int>(vmajor), static_cast<int>(vminor), static_cast<int>(vmicro));
 }
 
-QOperatingSystemVersionBase* QOperatingSystemVersionBase_Current() {
+QOperatingSystemVersionBase* QOperatingSystemVersionBase_current() {
 	return new QOperatingSystemVersionBase(QOperatingSystemVersionBase::current());
 }
 
-struct miqt_string QOperatingSystemVersionBase_Name(QOperatingSystemVersionBase* osversion) {
+struct miqt_string QOperatingSystemVersionBase_name(QOperatingSystemVersionBase* osversion) {
 	QString _ret = QOperatingSystemVersionBase::name(*osversion);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -46,37 +46,37 @@ struct miqt_string QOperatingSystemVersionBase_Name(QOperatingSystemVersionBase*
 	return _ms;
 }
 
-int QOperatingSystemVersionBase_CurrentType() {
+int QOperatingSystemVersionBase_currentType() {
 	QOperatingSystemVersionBase::OSType _ret = QOperatingSystemVersionBase::currentType();
 	return static_cast<int>(_ret);
 }
 
-QVersionNumber* QOperatingSystemVersionBase_Version(const QOperatingSystemVersionBase* self) {
+QVersionNumber* QOperatingSystemVersionBase_version(const QOperatingSystemVersionBase* self) {
 	return new QVersionNumber(self->version());
 }
 
-int QOperatingSystemVersionBase_MajorVersion(const QOperatingSystemVersionBase* self) {
+int QOperatingSystemVersionBase_majorVersion(const QOperatingSystemVersionBase* self) {
 	return self->majorVersion();
 }
 
-int QOperatingSystemVersionBase_MinorVersion(const QOperatingSystemVersionBase* self) {
+int QOperatingSystemVersionBase_minorVersion(const QOperatingSystemVersionBase* self) {
 	return self->minorVersion();
 }
 
-int QOperatingSystemVersionBase_MicroVersion(const QOperatingSystemVersionBase* self) {
+int QOperatingSystemVersionBase_microVersion(const QOperatingSystemVersionBase* self) {
 	return self->microVersion();
 }
 
-int QOperatingSystemVersionBase_SegmentCount(const QOperatingSystemVersionBase* self) {
+int QOperatingSystemVersionBase_segmentCount(const QOperatingSystemVersionBase* self) {
 	return self->segmentCount();
 }
 
-int QOperatingSystemVersionBase_Type(const QOperatingSystemVersionBase* self) {
+int QOperatingSystemVersionBase_type(const QOperatingSystemVersionBase* self) {
 	QOperatingSystemVersionBase::OSType _ret = self->type();
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string QOperatingSystemVersionBase_Name2(const QOperatingSystemVersionBase* self) {
+struct miqt_string QOperatingSystemVersionBase_name2(const QOperatingSystemVersionBase* self) {
 	QString _ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -87,7 +87,7 @@ struct miqt_string QOperatingSystemVersionBase_Name2(const QOperatingSystemVersi
 	return _ms;
 }
 
-void QOperatingSystemVersionBase_Delete(QOperatingSystemVersionBase* self) {
+void QOperatingSystemVersionBase_delete(QOperatingSystemVersionBase* self) {
 	delete self;
 }
 
@@ -115,41 +115,41 @@ void QOperatingSystemVersion_virtbase(QOperatingSystemVersion* src, QOperatingSy
 	*outptr_QOperatingSystemVersionBase = static_cast<QOperatingSystemVersionBase*>(src);
 }
 
-QOperatingSystemVersion* QOperatingSystemVersion_Current() {
+QOperatingSystemVersion* QOperatingSystemVersion_current() {
 	return new QOperatingSystemVersion(QOperatingSystemVersion::current());
 }
 
-int QOperatingSystemVersion_CurrentType() {
+int QOperatingSystemVersion_currentType() {
 	QOperatingSystemVersion::OSType _ret = QOperatingSystemVersion::currentType();
 	return static_cast<int>(_ret);
 }
 
-QVersionNumber* QOperatingSystemVersion_Version(const QOperatingSystemVersion* self) {
+QVersionNumber* QOperatingSystemVersion_version(const QOperatingSystemVersion* self) {
 	return new QVersionNumber(self->version());
 }
 
-int QOperatingSystemVersion_MajorVersion(const QOperatingSystemVersion* self) {
+int QOperatingSystemVersion_majorVersion(const QOperatingSystemVersion* self) {
 	return self->majorVersion();
 }
 
-int QOperatingSystemVersion_MinorVersion(const QOperatingSystemVersion* self) {
+int QOperatingSystemVersion_minorVersion(const QOperatingSystemVersion* self) {
 	return self->minorVersion();
 }
 
-int QOperatingSystemVersion_MicroVersion(const QOperatingSystemVersion* self) {
+int QOperatingSystemVersion_microVersion(const QOperatingSystemVersion* self) {
 	return self->microVersion();
 }
 
-int QOperatingSystemVersion_SegmentCount(const QOperatingSystemVersion* self) {
+int QOperatingSystemVersion_segmentCount(const QOperatingSystemVersion* self) {
 	return self->segmentCount();
 }
 
-int QOperatingSystemVersion_Type(const QOperatingSystemVersion* self) {
+int QOperatingSystemVersion_type(const QOperatingSystemVersion* self) {
 	QOperatingSystemVersion::OSType _ret = self->type();
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string QOperatingSystemVersion_Name(const QOperatingSystemVersion* self) {
+struct miqt_string QOperatingSystemVersion_name(const QOperatingSystemVersion* self) {
 	QString _ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -160,7 +160,7 @@ struct miqt_string QOperatingSystemVersion_Name(const QOperatingSystemVersion* s
 	return _ms;
 }
 
-void QOperatingSystemVersion_Delete(QOperatingSystemVersion* self) {
+void QOperatingSystemVersion_delete(QOperatingSystemVersion* self) {
 	delete self;
 }
 

@@ -85,11 +85,11 @@ func NewQHstsPolicy4(expiry *qt6.QDateTime, flags QHstsPolicy__PolicyFlag, host 
 }
 
 func (this *QHstsPolicy) OperatorAssign(rhs *QHstsPolicy) {
-	C.QHstsPolicy_OperatorAssign(this.h, rhs.cPointer())
+	C.QHstsPolicy_operatorAssign(this.h, rhs.cPointer())
 }
 
 func (this *QHstsPolicy) Swap(other *QHstsPolicy) {
-	C.QHstsPolicy_Swap(this.h, other.cPointer())
+	C.QHstsPolicy_swap(this.h, other.cPointer())
 }
 
 func (this *QHstsPolicy) SetHost(host string) {
@@ -97,36 +97,36 @@ func (this *QHstsPolicy) SetHost(host string) {
 	host_ms.data = C.CString(host)
 	host_ms.len = C.size_t(len(host))
 	defer C.free(unsafe.Pointer(host_ms.data))
-	C.QHstsPolicy_SetHost(this.h, host_ms)
+	C.QHstsPolicy_setHost(this.h, host_ms)
 }
 
 func (this *QHstsPolicy) Host() string {
-	var _ms C.struct_miqt_string = C.QHstsPolicy_Host(this.h)
+	var _ms C.struct_miqt_string = C.QHstsPolicy_host(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QHstsPolicy) SetExpiry(expiry *qt6.QDateTime) {
-	C.QHstsPolicy_SetExpiry(this.h, (*C.QDateTime)(expiry.UnsafePointer()))
+	C.QHstsPolicy_setExpiry(this.h, (*C.QDateTime)(expiry.UnsafePointer()))
 }
 
 func (this *QHstsPolicy) Expiry() *qt6.QDateTime {
-	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(C.QHstsPolicy_Expiry(this.h)))
+	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(C.QHstsPolicy_expiry(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QHstsPolicy) SetIncludesSubDomains(include bool) {
-	C.QHstsPolicy_SetIncludesSubDomains(this.h, (C.bool)(include))
+	C.QHstsPolicy_setIncludesSubDomains(this.h, (C.bool)(include))
 }
 
 func (this *QHstsPolicy) IncludesSubDomains() bool {
-	return (bool)(C.QHstsPolicy_IncludesSubDomains(this.h))
+	return (bool)(C.QHstsPolicy_includesSubDomains(this.h))
 }
 
 func (this *QHstsPolicy) IsExpired() bool {
-	return (bool)(C.QHstsPolicy_IsExpired(this.h))
+	return (bool)(C.QHstsPolicy_isExpired(this.h))
 }
 
 func (this *QHstsPolicy) SetHost2(host string, mode qt6.QUrl__ParsingMode) {
@@ -134,11 +134,11 @@ func (this *QHstsPolicy) SetHost2(host string, mode qt6.QUrl__ParsingMode) {
 	host_ms.data = C.CString(host)
 	host_ms.len = C.size_t(len(host))
 	defer C.free(unsafe.Pointer(host_ms.data))
-	C.QHstsPolicy_SetHost2(this.h, host_ms, (C.int)(mode))
+	C.QHstsPolicy_setHost2(this.h, host_ms, (C.int)(mode))
 }
 
 func (this *QHstsPolicy) Host1(options qt6.QUrl__ComponentFormattingOption) string {
-	var _ms C.struct_miqt_string = C.QHstsPolicy_Host1(this.h, (C.uint)(options))
+	var _ms C.struct_miqt_string = C.QHstsPolicy_host1(this.h, (C.uint)(options))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -146,7 +146,7 @@ func (this *QHstsPolicy) Host1(options qt6.QUrl__ComponentFormattingOption) stri
 
 // Delete this object from C++ memory.
 func (this *QHstsPolicy) Delete() {
-	C.QHstsPolicy_Delete(this.h)
+	C.QHstsPolicy_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -70,22 +70,22 @@ func NewQTextDocumentFragment4(rhs *QTextDocumentFragment) *QTextDocumentFragmen
 }
 
 func (this *QTextDocumentFragment) OperatorAssign(rhs *QTextDocumentFragment) {
-	C.QTextDocumentFragment_OperatorAssign(this.h, rhs.cPointer())
+	C.QTextDocumentFragment_operatorAssign(this.h, rhs.cPointer())
 }
 
 func (this *QTextDocumentFragment) IsEmpty() bool {
-	return (bool)(C.QTextDocumentFragment_IsEmpty(this.h))
+	return (bool)(C.QTextDocumentFragment_isEmpty(this.h))
 }
 
 func (this *QTextDocumentFragment) ToPlainText() string {
-	var _ms C.struct_miqt_string = C.QTextDocumentFragment_ToPlainText(this.h)
+	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toPlainText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextDocumentFragment) ToHtml() string {
-	var _ms C.struct_miqt_string = C.QTextDocumentFragment_ToHtml(this.h)
+	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toHtml(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -96,7 +96,7 @@ func QTextDocumentFragment_FromPlainText(plainText string) *QTextDocumentFragmen
 	plainText_ms.data = C.CString(plainText)
 	plainText_ms.len = C.size_t(len(plainText))
 	defer C.free(unsafe.Pointer(plainText_ms.data))
-	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_FromPlainText(plainText_ms))
+	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_fromPlainText(plainText_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -106,7 +106,7 @@ func QTextDocumentFragment_FromHtml(html string) *QTextDocumentFragment {
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
 	defer C.free(unsafe.Pointer(html_ms.data))
-	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_FromHtml(html_ms))
+	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_fromHtml(html_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -116,7 +116,7 @@ func QTextDocumentFragment_FromHtml2(html string, resourceProvider *QTextDocumen
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
 	defer C.free(unsafe.Pointer(html_ms.data))
-	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_FromHtml2(html_ms, resourceProvider.cPointer()))
+	_goptr := newQTextDocumentFragment(C.QTextDocumentFragment_fromHtml2(html_ms, resourceProvider.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -129,7 +129,7 @@ func (this *QTextDocumentFragment) ToHtml1(encoding []byte) string {
 		encoding_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	encoding_alias.len = C.size_t(len(encoding))
-	var _ms C.struct_miqt_string = C.QTextDocumentFragment_ToHtml1(this.h, encoding_alias)
+	var _ms C.struct_miqt_string = C.QTextDocumentFragment_toHtml1(this.h, encoding_alias)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -137,7 +137,7 @@ func (this *QTextDocumentFragment) ToHtml1(encoding []byte) string {
 
 // Delete this object from C++ memory.
 func (this *QTextDocumentFragment) Delete() {
-	C.QTextDocumentFragment_Delete(this.h)
+	C.QTextDocumentFragment_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
