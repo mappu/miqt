@@ -179,7 +179,7 @@ func (this *QPictureFormatPlugin) callVirtualBase_LoadPicture(format string, fil
 	return (bool)(C.QPictureFormatPlugin_virtualbase_loadPicture(unsafe.Pointer(this.h), format_ms, filename_ms, pic.cPointer()))
 
 }
-func (this *QPictureFormatPlugin) OnloadPicture(slot func(super func(format string, filename string, pic *QPicture) bool, format string, filename string, pic *QPicture) bool) {
+func (this *QPictureFormatPlugin) OnLoadPicture(slot func(super func(format string, filename string, pic *QPicture) bool, format string, filename string, pic *QPicture) bool) {
 	ok := C.QPictureFormatPlugin_override_virtual_loadPicture(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -223,7 +223,7 @@ func (this *QPictureFormatPlugin) callVirtualBase_SavePicture(format string, fil
 	return (bool)(C.QPictureFormatPlugin_virtualbase_savePicture(unsafe.Pointer(this.h), format_ms, filename_ms, pic.cPointer()))
 
 }
-func (this *QPictureFormatPlugin) OnsavePicture(slot func(super func(format string, filename string, pic *QPicture) bool, format string, filename string, pic *QPicture) bool) {
+func (this *QPictureFormatPlugin) OnSavePicture(slot func(super func(format string, filename string, pic *QPicture) bool, format string, filename string, pic *QPicture) bool) {
 	ok := C.QPictureFormatPlugin_override_virtual_savePicture(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -253,7 +253,7 @@ func miqt_exec_callback_QPictureFormatPlugin_savePicture(self *C.QPictureFormatP
 	return (C.bool)(virtualReturn)
 
 }
-func (this *QPictureFormatPlugin) OninstallIOHandler(slot func(format string) bool) {
+func (this *QPictureFormatPlugin) OnInstallIOHandler(slot func(format string) bool) {
 	ok := C.QPictureFormatPlugin_override_virtual_installIOHandler(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -284,7 +284,7 @@ func (this *QPictureFormatPlugin) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QPictureFormatPlugin_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QPictureFormatPlugin) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QPictureFormatPlugin) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QPictureFormatPlugin_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -312,7 +312,7 @@ func (this *QPictureFormatPlugin) callVirtualBase_EventFilter(watched *QObject, 
 	return (bool)(C.QPictureFormatPlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QPictureFormatPlugin) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QPictureFormatPlugin) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QPictureFormatPlugin_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -342,7 +342,7 @@ func (this *QPictureFormatPlugin) callVirtualBase_TimerEvent(event *QTimerEvent)
 	C.QPictureFormatPlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPictureFormatPlugin) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QPictureFormatPlugin) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QPictureFormatPlugin_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -368,7 +368,7 @@ func (this *QPictureFormatPlugin) callVirtualBase_ChildEvent(event *QChildEvent)
 	C.QPictureFormatPlugin_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPictureFormatPlugin) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QPictureFormatPlugin) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QPictureFormatPlugin_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -394,7 +394,7 @@ func (this *QPictureFormatPlugin) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QPictureFormatPlugin_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPictureFormatPlugin) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QPictureFormatPlugin) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QPictureFormatPlugin_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -420,7 +420,7 @@ func (this *QPictureFormatPlugin) callVirtualBase_ConnectNotify(signal *QMetaMet
 	C.QPictureFormatPlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QPictureFormatPlugin) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QPictureFormatPlugin) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QPictureFormatPlugin_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -446,7 +446,7 @@ func (this *QPictureFormatPlugin) callVirtualBase_DisconnectNotify(signal *QMeta
 	C.QPictureFormatPlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QPictureFormatPlugin) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QPictureFormatPlugin) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QPictureFormatPlugin_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

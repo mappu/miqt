@@ -326,7 +326,7 @@ func (this *QTextTable) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QTextTable_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QTextTable) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QTextTable) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QTextTable_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -354,7 +354,7 @@ func (this *QTextTable) callVirtualBase_EventFilter(watched *QObject, event *QEv
 	return (bool)(C.QTextTable_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QTextTable) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QTextTable) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QTextTable_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -384,7 +384,7 @@ func (this *QTextTable) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QTextTable_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextTable) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QTextTable) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QTextTable_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -410,7 +410,7 @@ func (this *QTextTable) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QTextTable_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextTable) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QTextTable) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QTextTable_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -436,7 +436,7 @@ func (this *QTextTable) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QTextTable_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextTable) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QTextTable) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QTextTable_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -462,7 +462,7 @@ func (this *QTextTable) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QTextTable_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTextTable) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QTextTable) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QTextTable_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -488,7 +488,7 @@ func (this *QTextTable) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 	C.QTextTable_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTextTable) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QTextTable) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QTextTable_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

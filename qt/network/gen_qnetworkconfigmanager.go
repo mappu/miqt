@@ -301,7 +301,7 @@ func (this *QNetworkConfigurationManager) callVirtualBase_Event(event *qt.QEvent
 	return (bool)(C.QNetworkConfigurationManager_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QNetworkConfigurationManager) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+func (this *QNetworkConfigurationManager) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
 	ok := C.QNetworkConfigurationManager_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -329,7 +329,7 @@ func (this *QNetworkConfigurationManager) callVirtualBase_EventFilter(watched *q
 	return (bool)(C.QNetworkConfigurationManager_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QNetworkConfigurationManager) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+func (this *QNetworkConfigurationManager) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
 	ok := C.QNetworkConfigurationManager_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -359,7 +359,7 @@ func (this *QNetworkConfigurationManager) callVirtualBase_TimerEvent(event *qt.Q
 	C.QNetworkConfigurationManager_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QNetworkConfigurationManager) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+func (this *QNetworkConfigurationManager) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
 	ok := C.QNetworkConfigurationManager_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -385,7 +385,7 @@ func (this *QNetworkConfigurationManager) callVirtualBase_ChildEvent(event *qt.Q
 	C.QNetworkConfigurationManager_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QNetworkConfigurationManager) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+func (this *QNetworkConfigurationManager) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
 	ok := C.QNetworkConfigurationManager_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -411,7 +411,7 @@ func (this *QNetworkConfigurationManager) callVirtualBase_CustomEvent(event *qt.
 	C.QNetworkConfigurationManager_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QNetworkConfigurationManager) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+func (this *QNetworkConfigurationManager) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
 	ok := C.QNetworkConfigurationManager_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -437,7 +437,7 @@ func (this *QNetworkConfigurationManager) callVirtualBase_ConnectNotify(signal *
 	C.QNetworkConfigurationManager_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QNetworkConfigurationManager) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+func (this *QNetworkConfigurationManager) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
 	ok := C.QNetworkConfigurationManager_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -463,7 +463,7 @@ func (this *QNetworkConfigurationManager) callVirtualBase_DisconnectNotify(signa
 	C.QNetworkConfigurationManager_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QNetworkConfigurationManager) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+func (this *QNetworkConfigurationManager) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
 	ok := C.QNetworkConfigurationManager_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

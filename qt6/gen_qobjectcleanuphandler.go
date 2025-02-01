@@ -118,7 +118,7 @@ func (this *QObjectCleanupHandler) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QObjectCleanupHandler_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QObjectCleanupHandler) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QObjectCleanupHandler) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QObjectCleanupHandler_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -146,7 +146,7 @@ func (this *QObjectCleanupHandler) callVirtualBase_EventFilter(watched *QObject,
 	return (bool)(C.QObjectCleanupHandler_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QObjectCleanupHandler) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QObjectCleanupHandler) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QObjectCleanupHandler_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -176,7 +176,7 @@ func (this *QObjectCleanupHandler) callVirtualBase_TimerEvent(event *QTimerEvent
 	C.QObjectCleanupHandler_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QObjectCleanupHandler) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QObjectCleanupHandler) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QObjectCleanupHandler_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -202,7 +202,7 @@ func (this *QObjectCleanupHandler) callVirtualBase_ChildEvent(event *QChildEvent
 	C.QObjectCleanupHandler_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QObjectCleanupHandler) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QObjectCleanupHandler) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QObjectCleanupHandler_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -228,7 +228,7 @@ func (this *QObjectCleanupHandler) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QObjectCleanupHandler_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QObjectCleanupHandler) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QObjectCleanupHandler) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QObjectCleanupHandler_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -254,7 +254,7 @@ func (this *QObjectCleanupHandler) callVirtualBase_ConnectNotify(signal *QMetaMe
 	C.QObjectCleanupHandler_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QObjectCleanupHandler) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QObjectCleanupHandler) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QObjectCleanupHandler_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -280,7 +280,7 @@ func (this *QObjectCleanupHandler) callVirtualBase_DisconnectNotify(signal *QMet
 	C.QObjectCleanupHandler_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QObjectCleanupHandler) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QObjectCleanupHandler) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QObjectCleanupHandler_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

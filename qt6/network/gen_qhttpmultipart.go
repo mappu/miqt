@@ -267,7 +267,7 @@ func (this *QHttpMultiPart) callVirtualBase_Event(event *qt6.QEvent) bool {
 	return (bool)(C.QHttpMultiPart_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QHttpMultiPart) Onevent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+func (this *QHttpMultiPart) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
 	ok := C.QHttpMultiPart_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -295,7 +295,7 @@ func (this *QHttpMultiPart) callVirtualBase_EventFilter(watched *qt6.QObject, ev
 	return (bool)(C.QHttpMultiPart_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QHttpMultiPart) OneventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+func (this *QHttpMultiPart) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
 	ok := C.QHttpMultiPart_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -325,7 +325,7 @@ func (this *QHttpMultiPart) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 	C.QHttpMultiPart_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QHttpMultiPart) OntimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+func (this *QHttpMultiPart) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
 	ok := C.QHttpMultiPart_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -351,7 +351,7 @@ func (this *QHttpMultiPart) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 	C.QHttpMultiPart_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QHttpMultiPart) OnchildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+func (this *QHttpMultiPart) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
 	ok := C.QHttpMultiPart_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -377,7 +377,7 @@ func (this *QHttpMultiPart) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 	C.QHttpMultiPart_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QHttpMultiPart) OncustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+func (this *QHttpMultiPart) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
 	ok := C.QHttpMultiPart_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -403,7 +403,7 @@ func (this *QHttpMultiPart) callVirtualBase_ConnectNotify(signal *qt6.QMetaMetho
 	C.QHttpMultiPart_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QHttpMultiPart) OnconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+func (this *QHttpMultiPart) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
 	ok := C.QHttpMultiPart_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -429,7 +429,7 @@ func (this *QHttpMultiPart) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMe
 	C.QHttpMultiPart_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QHttpMultiPart) OndisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+func (this *QHttpMultiPart) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
 	ok := C.QHttpMultiPart_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

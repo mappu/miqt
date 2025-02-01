@@ -121,7 +121,7 @@ func (this *QScriptClass) callVirtualBase_QueryProperty(object *QScriptValue, na
 	return (QScriptClass__QueryFlag)(C.QScriptClass_virtualbase_queryProperty(unsafe.Pointer(this.h), object.cPointer(), name.cPointer(), (C.int)(flags), (*C.uint)(unsafe.Pointer(id))))
 
 }
-func (this *QScriptClass) OnqueryProperty(slot func(super func(object *QScriptValue, name *QScriptString, flags QScriptClass__QueryFlag, id *uint) QScriptClass__QueryFlag, object *QScriptValue, name *QScriptString, flags QScriptClass__QueryFlag, id *uint) QScriptClass__QueryFlag) {
+func (this *QScriptClass) OnQueryProperty(slot func(super func(object *QScriptValue, name *QScriptString, flags QScriptClass__QueryFlag, id *uint) QScriptClass__QueryFlag, object *QScriptValue, name *QScriptString, flags QScriptClass__QueryFlag, id *uint) QScriptClass__QueryFlag) {
 	ok := C.QScriptClass_override_virtual_queryProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -157,7 +157,7 @@ func (this *QScriptClass) callVirtualBase_Property(object *QScriptValue, name *Q
 	return _goptr
 
 }
-func (this *QScriptClass) Onproperty(slot func(super func(object *QScriptValue, name *QScriptString, id uint) *QScriptValue, object *QScriptValue, name *QScriptString, id uint) *QScriptValue) {
+func (this *QScriptClass) OnProperty(slot func(super func(object *QScriptValue, name *QScriptString, id uint) *QScriptValue, object *QScriptValue, name *QScriptString, id uint) *QScriptValue) {
 	ok := C.QScriptClass_override_virtual_property(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -189,7 +189,7 @@ func (this *QScriptClass) callVirtualBase_SetProperty(object *QScriptValue, name
 	C.QScriptClass_virtualbase_setProperty(unsafe.Pointer(this.h), object.cPointer(), name.cPointer(), (C.uint)(id), value.cPointer())
 
 }
-func (this *QScriptClass) OnsetProperty(slot func(super func(object *QScriptValue, name *QScriptString, id uint, value *QScriptValue), object *QScriptValue, name *QScriptString, id uint, value *QScriptValue)) {
+func (this *QScriptClass) OnSetProperty(slot func(super func(object *QScriptValue, name *QScriptString, id uint, value *QScriptValue), object *QScriptValue, name *QScriptString, id uint, value *QScriptValue)) {
 	ok := C.QScriptClass_override_virtual_setProperty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -221,7 +221,7 @@ func (this *QScriptClass) callVirtualBase_PropertyFlags(object *QScriptValue, na
 	return (QScriptValue__PropertyFlag)(C.QScriptClass_virtualbase_propertyFlags(unsafe.Pointer(this.h), object.cPointer(), name.cPointer(), (C.uint)(id)))
 
 }
-func (this *QScriptClass) OnpropertyFlags(slot func(super func(object *QScriptValue, name *QScriptString, id uint) QScriptValue__PropertyFlag, object *QScriptValue, name *QScriptString, id uint) QScriptValue__PropertyFlag) {
+func (this *QScriptClass) OnPropertyFlags(slot func(super func(object *QScriptValue, name *QScriptString, id uint) QScriptValue__PropertyFlag, object *QScriptValue, name *QScriptString, id uint) QScriptValue__PropertyFlag) {
 	ok := C.QScriptClass_override_virtual_propertyFlags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -253,7 +253,7 @@ func (this *QScriptClass) callVirtualBase_NewIterator(object *QScriptValue) *QSc
 	return newQScriptClassPropertyIterator(C.QScriptClass_virtualbase_newIterator(unsafe.Pointer(this.h), object.cPointer()))
 
 }
-func (this *QScriptClass) OnnewIterator(slot func(super func(object *QScriptValue) *QScriptClassPropertyIterator, object *QScriptValue) *QScriptClassPropertyIterator) {
+func (this *QScriptClass) OnNewIterator(slot func(super func(object *QScriptValue) *QScriptClassPropertyIterator, object *QScriptValue) *QScriptClassPropertyIterator) {
 	ok := C.QScriptClass_override_virtual_newIterator(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -283,7 +283,7 @@ func (this *QScriptClass) callVirtualBase_Prototype() *QScriptValue {
 	return _goptr
 
 }
-func (this *QScriptClass) Onprototype(slot func(super func() *QScriptValue) *QScriptValue) {
+func (this *QScriptClass) OnPrototype(slot func(super func() *QScriptValue) *QScriptValue) {
 	ok := C.QScriptClass_override_virtual_prototype(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -310,7 +310,7 @@ func (this *QScriptClass) callVirtualBase_Name() string {
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QScriptClass) Onname(slot func(super func() string) string) {
+func (this *QScriptClass) OnName(slot func(super func() string) string) {
 	ok := C.QScriptClass_override_virtual_name(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -339,7 +339,7 @@ func (this *QScriptClass) callVirtualBase_SupportsExtension(extension QScriptCla
 	return (bool)(C.QScriptClass_virtualbase_supportsExtension(unsafe.Pointer(this.h), (C.int)(extension)))
 
 }
-func (this *QScriptClass) OnsupportsExtension(slot func(super func(extension QScriptClass__Extension) bool, extension QScriptClass__Extension) bool) {
+func (this *QScriptClass) OnSupportsExtension(slot func(super func(extension QScriptClass__Extension) bool, extension QScriptClass__Extension) bool) {
 	ok := C.QScriptClass_override_virtual_supportsExtension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -369,7 +369,7 @@ func (this *QScriptClass) callVirtualBase_Extension(extension QScriptClass__Exte
 	return _goptr
 
 }
-func (this *QScriptClass) Onextension(slot func(super func(extension QScriptClass__Extension, argument *qt.QVariant) *qt.QVariant, extension QScriptClass__Extension, argument *qt.QVariant) *qt.QVariant) {
+func (this *QScriptClass) OnExtension(slot func(super func(extension QScriptClass__Extension, argument *qt.QVariant) *qt.QVariant, extension QScriptClass__Extension, argument *qt.QVariant) *qt.QVariant) {
 	ok := C.QScriptClass_override_virtual_extension(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

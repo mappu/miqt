@@ -174,7 +174,7 @@ func (this *QRubberBand) callVirtualBase_Event(e *QEvent) bool {
 	return (bool)(C.QRubberBand_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
 }
-func (this *QRubberBand) Onevent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+func (this *QRubberBand) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
 	ok := C.QRubberBand_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -202,7 +202,7 @@ func (this *QRubberBand) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 	C.QRubberBand_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QRubberBand) OnpaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+func (this *QRubberBand) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
 	ok := C.QRubberBand_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -228,7 +228,7 @@ func (this *QRubberBand) callVirtualBase_ChangeEvent(param1 *QEvent) {
 	C.QRubberBand_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QRubberBand) OnchangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+func (this *QRubberBand) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
 	ok := C.QRubberBand_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -254,7 +254,7 @@ func (this *QRubberBand) callVirtualBase_ShowEvent(param1 *QShowEvent) {
 	C.QRubberBand_virtualbase_showEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QRubberBand) OnshowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
+func (this *QRubberBand) OnShowEvent(slot func(super func(param1 *QShowEvent), param1 *QShowEvent)) {
 	ok := C.QRubberBand_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -280,7 +280,7 @@ func (this *QRubberBand) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
 	C.QRubberBand_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QRubberBand) OnresizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
+func (this *QRubberBand) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
 	ok := C.QRubberBand_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -306,7 +306,7 @@ func (this *QRubberBand) callVirtualBase_MoveEvent(param1 *QMoveEvent) {
 	C.QRubberBand_virtualbase_moveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QRubberBand) OnmoveEvent(slot func(super func(param1 *QMoveEvent), param1 *QMoveEvent)) {
+func (this *QRubberBand) OnMoveEvent(slot func(super func(param1 *QMoveEvent), param1 *QMoveEvent)) {
 	ok := C.QRubberBand_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -332,7 +332,7 @@ func (this *QRubberBand) callVirtualBase_DevType() int {
 	return (int)(C.QRubberBand_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QRubberBand) OndevType(slot func(super func() int) int) {
+func (this *QRubberBand) OnDevType(slot func(super func() int) int) {
 	ok := C.QRubberBand_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -357,7 +357,7 @@ func (this *QRubberBand) callVirtualBase_SetVisible(visible bool) {
 	C.QRubberBand_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QRubberBand) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+func (this *QRubberBand) OnSetVisible(slot func(super func(visible bool), visible bool)) {
 	ok := C.QRubberBand_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -385,7 +385,7 @@ func (this *QRubberBand) callVirtualBase_SizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QRubberBand) OnsizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QRubberBand) OnSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QRubberBand_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -412,7 +412,7 @@ func (this *QRubberBand) callVirtualBase_MinimumSizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QRubberBand) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QRubberBand) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QRubberBand_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -437,7 +437,7 @@ func (this *QRubberBand) callVirtualBase_HeightForWidth(param1 int) int {
 	return (int)(C.QRubberBand_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QRubberBand) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+func (this *QRubberBand) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
 	ok := C.QRubberBand_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -465,7 +465,7 @@ func (this *QRubberBand) callVirtualBase_HasHeightForWidth() bool {
 	return (bool)(C.QRubberBand_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QRubberBand) OnhasHeightForWidth(slot func(super func() bool) bool) {
+func (this *QRubberBand) OnHasHeightForWidth(slot func(super func() bool) bool) {
 	ok := C.QRubberBand_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -490,7 +490,7 @@ func (this *QRubberBand) callVirtualBase_PaintEngine() *QPaintEngine {
 	return newQPaintEngine(C.QRubberBand_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QRubberBand) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+func (this *QRubberBand) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	ok := C.QRubberBand_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -515,7 +515,7 @@ func (this *QRubberBand) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 	C.QRubberBand_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OnmousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QRubberBand) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QRubberBand_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -541,7 +541,7 @@ func (this *QRubberBand) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
 	C.QRubberBand_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OnmouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QRubberBand) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QRubberBand_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -567,7 +567,7 @@ func (this *QRubberBand) callVirtualBase_MouseDoubleClickEvent(event *QMouseEven
 	C.QRubberBand_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QRubberBand) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QRubberBand_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -593,7 +593,7 @@ func (this *QRubberBand) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 	C.QRubberBand_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OnmouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QRubberBand) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QRubberBand_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -619,7 +619,7 @@ func (this *QRubberBand) callVirtualBase_WheelEvent(event *QWheelEvent) {
 	C.QRubberBand_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OnwheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+func (this *QRubberBand) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
 	ok := C.QRubberBand_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -645,7 +645,7 @@ func (this *QRubberBand) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 	C.QRubberBand_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OnkeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+func (this *QRubberBand) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
 	ok := C.QRubberBand_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -671,7 +671,7 @@ func (this *QRubberBand) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 	C.QRubberBand_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+func (this *QRubberBand) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
 	ok := C.QRubberBand_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -697,7 +697,7 @@ func (this *QRubberBand) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 	C.QRubberBand_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+func (this *QRubberBand) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
 	ok := C.QRubberBand_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -723,7 +723,7 @@ func (this *QRubberBand) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 	C.QRubberBand_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+func (this *QRubberBand) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
 	ok := C.QRubberBand_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -749,7 +749,7 @@ func (this *QRubberBand) callVirtualBase_EnterEvent(event *QEvent) {
 	C.QRubberBand_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OnenterEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QRubberBand) OnEnterEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QRubberBand_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -775,7 +775,7 @@ func (this *QRubberBand) callVirtualBase_LeaveEvent(event *QEvent) {
 	C.QRubberBand_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QRubberBand) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QRubberBand_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -801,7 +801,7 @@ func (this *QRubberBand) callVirtualBase_CloseEvent(event *QCloseEvent) {
 	C.QRubberBand_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+func (this *QRubberBand) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
 	ok := C.QRubberBand_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -827,7 +827,7 @@ func (this *QRubberBand) callVirtualBase_ContextMenuEvent(event *QContextMenuEve
 	C.QRubberBand_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OncontextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+func (this *QRubberBand) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
 	ok := C.QRubberBand_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -853,7 +853,7 @@ func (this *QRubberBand) callVirtualBase_TabletEvent(event *QTabletEvent) {
 	C.QRubberBand_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+func (this *QRubberBand) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
 	ok := C.QRubberBand_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -879,7 +879,7 @@ func (this *QRubberBand) callVirtualBase_ActionEvent(event *QActionEvent) {
 	C.QRubberBand_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+func (this *QRubberBand) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
 	ok := C.QRubberBand_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -905,7 +905,7 @@ func (this *QRubberBand) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) 
 	C.QRubberBand_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+func (this *QRubberBand) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
 	ok := C.QRubberBand_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -931,7 +931,7 @@ func (this *QRubberBand) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 	C.QRubberBand_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+func (this *QRubberBand) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
 	ok := C.QRubberBand_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -957,7 +957,7 @@ func (this *QRubberBand) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) 
 	C.QRubberBand_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+func (this *QRubberBand) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
 	ok := C.QRubberBand_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -983,7 +983,7 @@ func (this *QRubberBand) callVirtualBase_DropEvent(event *QDropEvent) {
 	C.QRubberBand_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+func (this *QRubberBand) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
 	ok := C.QRubberBand_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1009,7 +1009,7 @@ func (this *QRubberBand) callVirtualBase_HideEvent(event *QHideEvent) {
 	C.QRubberBand_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+func (this *QRubberBand) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
 	ok := C.QRubberBand_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1042,7 +1042,7 @@ func (this *QRubberBand) callVirtualBase_NativeEvent(eventType []byte, message u
 	return (bool)(C.QRubberBand_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QRubberBand) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+func (this *QRubberBand) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
 	ok := C.QRubberBand_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1076,7 +1076,7 @@ func (this *QRubberBand) callVirtualBase_Metric(param1 QPaintDevice__PaintDevice
 	return (int)(C.QRubberBand_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QRubberBand) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+func (this *QRubberBand) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
 	ok := C.QRubberBand_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1104,7 +1104,7 @@ func (this *QRubberBand) callVirtualBase_InitPainter(painter *QPainter) {
 	C.QRubberBand_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QRubberBand) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+func (this *QRubberBand) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
 	ok := C.QRubberBand_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1130,7 +1130,7 @@ func (this *QRubberBand) callVirtualBase_Redirected(offset *QPoint) *QPaintDevic
 	return newQPaintDevice(C.QRubberBand_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QRubberBand) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+func (this *QRubberBand) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	ok := C.QRubberBand_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1158,7 +1158,7 @@ func (this *QRubberBand) callVirtualBase_SharedPainter() *QPainter {
 	return newQPainter(C.QRubberBand_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QRubberBand) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+func (this *QRubberBand) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	ok := C.QRubberBand_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1183,7 +1183,7 @@ func (this *QRubberBand) callVirtualBase_InputMethodEvent(param1 *QInputMethodEv
 	C.QRubberBand_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QRubberBand) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+func (this *QRubberBand) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
 	ok := C.QRubberBand_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1211,7 +1211,7 @@ func (this *QRubberBand) callVirtualBase_InputMethodQuery(param1 InputMethodQuer
 	return _goptr
 
 }
-func (this *QRubberBand) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+func (this *QRubberBand) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
 	ok := C.QRubberBand_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1239,7 +1239,7 @@ func (this *QRubberBand) callVirtualBase_FocusNextPrevChild(next bool) bool {
 	return (bool)(C.QRubberBand_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QRubberBand) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+func (this *QRubberBand) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
 	ok := C.QRubberBand_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1267,7 +1267,7 @@ func (this *QRubberBand) callVirtualBase_EventFilter(watched *QObject, event *QE
 	return (bool)(C.QRubberBand_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QRubberBand) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QRubberBand) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QRubberBand_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1297,7 +1297,7 @@ func (this *QRubberBand) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QRubberBand_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QRubberBand) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QRubberBand_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1323,7 +1323,7 @@ func (this *QRubberBand) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QRubberBand_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QRubberBand) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QRubberBand_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1349,7 +1349,7 @@ func (this *QRubberBand) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QRubberBand_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRubberBand) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QRubberBand) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QRubberBand_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1375,7 +1375,7 @@ func (this *QRubberBand) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QRubberBand_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QRubberBand) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QRubberBand) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QRubberBand_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1401,7 +1401,7 @@ func (this *QRubberBand) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 	C.QRubberBand_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QRubberBand) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QRubberBand) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QRubberBand_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

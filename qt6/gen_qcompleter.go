@@ -428,7 +428,7 @@ func (this *QCompleter) callVirtualBase_PathFromIndex(index *QModelIndex) string
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QCompleter) OnpathFromIndex(slot func(super func(index *QModelIndex) string, index *QModelIndex) string) {
+func (this *QCompleter) OnPathFromIndex(slot func(super func(index *QModelIndex) string, index *QModelIndex) string) {
 	ok := C.QCompleter_override_virtual_pathFromIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -473,7 +473,7 @@ func (this *QCompleter) callVirtualBase_SplitPath(path string) []string {
 	return _ret
 
 }
-func (this *QCompleter) OnsplitPath(slot func(super func(path string) []string, path string) []string) {
+func (this *QCompleter) OnSplitPath(slot func(super func(path string) []string, path string) []string) {
 	ok := C.QCompleter_override_virtual_splitPath(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -514,7 +514,7 @@ func (this *QCompleter) callVirtualBase_EventFilter(o *QObject, e *QEvent) bool 
 	return (bool)(C.QCompleter_virtualbase_eventFilter(unsafe.Pointer(this.h), o.cPointer(), e.cPointer()))
 
 }
-func (this *QCompleter) OneventFilter(slot func(super func(o *QObject, e *QEvent) bool, o *QObject, e *QEvent) bool) {
+func (this *QCompleter) OnEventFilter(slot func(super func(o *QObject, e *QEvent) bool, o *QObject, e *QEvent) bool) {
 	ok := C.QCompleter_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -544,7 +544,7 @@ func (this *QCompleter) callVirtualBase_Event(param1 *QEvent) bool {
 	return (bool)(C.QCompleter_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
 }
-func (this *QCompleter) Onevent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+func (this *QCompleter) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
 	ok := C.QCompleter_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -572,7 +572,7 @@ func (this *QCompleter) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QCompleter_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QCompleter) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QCompleter) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QCompleter_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -598,7 +598,7 @@ func (this *QCompleter) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QCompleter_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QCompleter) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QCompleter) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QCompleter_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -624,7 +624,7 @@ func (this *QCompleter) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QCompleter_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QCompleter) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QCompleter) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QCompleter_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -650,7 +650,7 @@ func (this *QCompleter) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QCompleter_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QCompleter) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QCompleter) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QCompleter_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -676,7 +676,7 @@ func (this *QCompleter) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 	C.QCompleter_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QCompleter) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QCompleter) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QCompleter_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

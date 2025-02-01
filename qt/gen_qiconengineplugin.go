@@ -141,7 +141,7 @@ func QIconEnginePlugin_TrUtf83(s string, c string, n int) string {
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QIconEnginePlugin) Oncreate(slot func(filename string) *QIconEngine) {
+func (this *QIconEnginePlugin) OnCreate(slot func(filename string) *QIconEngine) {
 	ok := C.QIconEnginePlugin_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -172,7 +172,7 @@ func (this *QIconEnginePlugin) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QIconEnginePlugin_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QIconEnginePlugin) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QIconEnginePlugin) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QIconEnginePlugin_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -200,7 +200,7 @@ func (this *QIconEnginePlugin) callVirtualBase_EventFilter(watched *QObject, eve
 	return (bool)(C.QIconEnginePlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QIconEnginePlugin) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QIconEnginePlugin) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QIconEnginePlugin_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -230,7 +230,7 @@ func (this *QIconEnginePlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QIconEnginePlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QIconEnginePlugin) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QIconEnginePlugin) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QIconEnginePlugin_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -256,7 +256,7 @@ func (this *QIconEnginePlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QIconEnginePlugin_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QIconEnginePlugin) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QIconEnginePlugin) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QIconEnginePlugin_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -282,7 +282,7 @@ func (this *QIconEnginePlugin) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QIconEnginePlugin_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QIconEnginePlugin) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QIconEnginePlugin) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QIconEnginePlugin_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -308,7 +308,7 @@ func (this *QIconEnginePlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod
 	C.QIconEnginePlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QIconEnginePlugin) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QIconEnginePlugin) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QIconEnginePlugin_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -334,7 +334,7 @@ func (this *QIconEnginePlugin) callVirtualBase_DisconnectNotify(signal *QMetaMet
 	C.QIconEnginePlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QIconEnginePlugin) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QIconEnginePlugin) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QIconEnginePlugin_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

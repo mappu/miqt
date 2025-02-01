@@ -128,7 +128,7 @@ func (this *QPauseAnimation) callVirtualBase_Duration() int {
 	return (int)(C.QPauseAnimation_virtualbase_duration(unsafe.Pointer(this.h)))
 
 }
-func (this *QPauseAnimation) Onduration(slot func(super func() int) int) {
+func (this *QPauseAnimation) OnDuration(slot func(super func() int) int) {
 	ok := C.QPauseAnimation_override_virtual_duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -153,7 +153,7 @@ func (this *QPauseAnimation) callVirtualBase_Event(e *QEvent) bool {
 	return (bool)(C.QPauseAnimation_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
 }
-func (this *QPauseAnimation) Onevent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+func (this *QPauseAnimation) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
 	ok := C.QPauseAnimation_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -181,7 +181,7 @@ func (this *QPauseAnimation) callVirtualBase_UpdateCurrentTime(param1 int) {
 	C.QPauseAnimation_virtualbase_updateCurrentTime(unsafe.Pointer(this.h), (C.int)(param1))
 
 }
-func (this *QPauseAnimation) OnupdateCurrentTime(slot func(super func(param1 int), param1 int)) {
+func (this *QPauseAnimation) OnUpdateCurrentTime(slot func(super func(param1 int), param1 int)) {
 	ok := C.QPauseAnimation_override_virtual_updateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -207,7 +207,7 @@ func (this *QPauseAnimation) callVirtualBase_UpdateState(newState QAbstractAnima
 	C.QPauseAnimation_virtualbase_updateState(unsafe.Pointer(this.h), (C.int)(newState), (C.int)(oldState))
 
 }
-func (this *QPauseAnimation) OnupdateState(slot func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
+func (this *QPauseAnimation) OnUpdateState(slot func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
 	ok := C.QPauseAnimation_override_virtual_updateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -235,7 +235,7 @@ func (this *QPauseAnimation) callVirtualBase_UpdateDirection(direction QAbstract
 	C.QPauseAnimation_virtualbase_updateDirection(unsafe.Pointer(this.h), (C.int)(direction))
 
 }
-func (this *QPauseAnimation) OnupdateDirection(slot func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction)) {
+func (this *QPauseAnimation) OnUpdateDirection(slot func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction)) {
 	ok := C.QPauseAnimation_override_virtual_updateDirection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -261,7 +261,7 @@ func (this *QPauseAnimation) callVirtualBase_EventFilter(watched *QObject, event
 	return (bool)(C.QPauseAnimation_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QPauseAnimation) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QPauseAnimation) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QPauseAnimation_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -291,7 +291,7 @@ func (this *QPauseAnimation) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QPauseAnimation_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPauseAnimation) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QPauseAnimation) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QPauseAnimation_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -317,7 +317,7 @@ func (this *QPauseAnimation) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QPauseAnimation_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPauseAnimation) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QPauseAnimation) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QPauseAnimation_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -343,7 +343,7 @@ func (this *QPauseAnimation) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QPauseAnimation_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPauseAnimation) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QPauseAnimation) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QPauseAnimation_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -369,7 +369,7 @@ func (this *QPauseAnimation) callVirtualBase_ConnectNotify(signal *QMetaMethod) 
 	C.QPauseAnimation_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QPauseAnimation) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QPauseAnimation) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QPauseAnimation_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -395,7 +395,7 @@ func (this *QPauseAnimation) callVirtualBase_DisconnectNotify(signal *QMetaMetho
 	C.QPauseAnimation_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QPauseAnimation) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QPauseAnimation) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QPauseAnimation_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

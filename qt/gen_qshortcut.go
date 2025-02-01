@@ -258,7 +258,7 @@ func (this *QShortcut) callVirtualBase_Event(e *QEvent) bool {
 	return (bool)(C.QShortcut_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
 }
-func (this *QShortcut) Onevent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+func (this *QShortcut) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
 	ok := C.QShortcut_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -286,7 +286,7 @@ func (this *QShortcut) callVirtualBase_EventFilter(watched *QObject, event *QEve
 	return (bool)(C.QShortcut_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QShortcut) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QShortcut) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QShortcut_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -316,7 +316,7 @@ func (this *QShortcut) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QShortcut_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QShortcut) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QShortcut) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QShortcut_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -342,7 +342,7 @@ func (this *QShortcut) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QShortcut_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QShortcut) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QShortcut) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QShortcut_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -368,7 +368,7 @@ func (this *QShortcut) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QShortcut_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QShortcut) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QShortcut) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QShortcut_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -394,7 +394,7 @@ func (this *QShortcut) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QShortcut_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QShortcut) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QShortcut) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QShortcut_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -420,7 +420,7 @@ func (this *QShortcut) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 	C.QShortcut_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QShortcut) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QShortcut) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QShortcut_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

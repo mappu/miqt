@@ -137,7 +137,7 @@ func (this *QUndoCommand) callVirtualBase_Undo() {
 	C.QUndoCommand_virtualbase_undo(unsafe.Pointer(this.h))
 
 }
-func (this *QUndoCommand) Onundo(slot func(super func())) {
+func (this *QUndoCommand) OnUndo(slot func(super func())) {
 	ok := C.QUndoCommand_override_virtual_undo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -160,7 +160,7 @@ func (this *QUndoCommand) callVirtualBase_Redo() {
 	C.QUndoCommand_virtualbase_redo(unsafe.Pointer(this.h))
 
 }
-func (this *QUndoCommand) Onredo(slot func(super func())) {
+func (this *QUndoCommand) OnRedo(slot func(super func())) {
 	ok := C.QUndoCommand_override_virtual_redo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -183,7 +183,7 @@ func (this *QUndoCommand) callVirtualBase_Id() int {
 	return (int)(C.QUndoCommand_virtualbase_id(unsafe.Pointer(this.h)))
 
 }
-func (this *QUndoCommand) Onid(slot func(super func() int) int) {
+func (this *QUndoCommand) OnId(slot func(super func() int) int) {
 	ok := C.QUndoCommand_override_virtual_id(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -208,7 +208,7 @@ func (this *QUndoCommand) callVirtualBase_MergeWith(other *QUndoCommand) bool {
 	return (bool)(C.QUndoCommand_virtualbase_mergeWith(unsafe.Pointer(this.h), other.cPointer()))
 
 }
-func (this *QUndoCommand) OnmergeWith(slot func(super func(other *QUndoCommand) bool, other *QUndoCommand) bool) {
+func (this *QUndoCommand) OnMergeWith(slot func(super func(other *QUndoCommand) bool, other *QUndoCommand) bool) {
 	ok := C.QUndoCommand_override_virtual_mergeWith(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -606,7 +606,7 @@ func (this *QUndoStack) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QUndoStack_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QUndoStack) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QUndoStack) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QUndoStack_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -634,7 +634,7 @@ func (this *QUndoStack) callVirtualBase_EventFilter(watched *QObject, event *QEv
 	return (bool)(C.QUndoStack_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QUndoStack) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QUndoStack) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QUndoStack_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -664,7 +664,7 @@ func (this *QUndoStack) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QUndoStack_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoStack) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QUndoStack) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QUndoStack_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -690,7 +690,7 @@ func (this *QUndoStack) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QUndoStack_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoStack) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QUndoStack) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QUndoStack_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -716,7 +716,7 @@ func (this *QUndoStack) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QUndoStack_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoStack) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QUndoStack) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QUndoStack_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -742,7 +742,7 @@ func (this *QUndoStack) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QUndoStack_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QUndoStack) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QUndoStack) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QUndoStack_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -768,7 +768,7 @@ func (this *QUndoStack) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 	C.QUndoStack_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QUndoStack) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QUndoStack) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QUndoStack_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

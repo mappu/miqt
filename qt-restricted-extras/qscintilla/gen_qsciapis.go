@@ -362,7 +362,7 @@ func (this *QsciAPIs) callVirtualBase_UpdateAutoCompletionList(context []string,
 	C.QsciAPIs_virtualbase_updateAutoCompletionList(unsafe.Pointer(this.h), context_ma, list_ma)
 
 }
-func (this *QsciAPIs) OnupdateAutoCompletionList(slot func(super func(context []string, list []string), context []string, list []string)) {
+func (this *QsciAPIs) OnUpdateAutoCompletionList(slot func(super func(context []string, list []string), context []string, list []string)) {
 	ok := C.QsciAPIs_override_virtual_updateAutoCompletionList(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -412,7 +412,7 @@ func (this *QsciAPIs) callVirtualBase_AutoCompletionSelected(sel string) {
 	C.QsciAPIs_virtualbase_autoCompletionSelected(unsafe.Pointer(this.h), sel_ms)
 
 }
-func (this *QsciAPIs) OnautoCompletionSelected(slot func(super func(sel string), sel string)) {
+func (this *QsciAPIs) OnAutoCompletionSelected(slot func(super func(sel string), sel string)) {
 	ok := C.QsciAPIs_override_virtual_autoCompletionSelected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -466,7 +466,7 @@ func (this *QsciAPIs) callVirtualBase_CallTips(context []string, commas int, sty
 	return _ret
 
 }
-func (this *QsciAPIs) OncallTips(slot func(super func(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string, context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string) {
+func (this *QsciAPIs) OnCallTips(slot func(super func(context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string, context []string, commas int, style QsciScintilla__CallTipsStyle, shifts []int) []string) {
 	ok := C.QsciAPIs_override_virtual_callTips(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -525,7 +525,7 @@ func (this *QsciAPIs) callVirtualBase_Event(e *qt.QEvent) bool {
 	return (bool)(C.QsciAPIs_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer())))
 
 }
-func (this *QsciAPIs) Onevent(slot func(super func(e *qt.QEvent) bool, e *qt.QEvent) bool) {
+func (this *QsciAPIs) OnEvent(slot func(super func(e *qt.QEvent) bool, e *qt.QEvent) bool) {
 	ok := C.QsciAPIs_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -553,7 +553,7 @@ func (this *QsciAPIs) callVirtualBase_EventFilter(watched *qt.QObject, event *qt
 	return (bool)(C.QsciAPIs_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QsciAPIs) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+func (this *QsciAPIs) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
 	ok := C.QsciAPIs_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -583,7 +583,7 @@ func (this *QsciAPIs) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 	C.QsciAPIs_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciAPIs) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+func (this *QsciAPIs) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
 	ok := C.QsciAPIs_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -609,7 +609,7 @@ func (this *QsciAPIs) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 	C.QsciAPIs_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciAPIs) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+func (this *QsciAPIs) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
 	ok := C.QsciAPIs_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -635,7 +635,7 @@ func (this *QsciAPIs) callVirtualBase_CustomEvent(event *qt.QEvent) {
 	C.QsciAPIs_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciAPIs) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+func (this *QsciAPIs) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
 	ok := C.QsciAPIs_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -661,7 +661,7 @@ func (this *QsciAPIs) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 	C.QsciAPIs_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QsciAPIs) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+func (this *QsciAPIs) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
 	ok := C.QsciAPIs_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -687,7 +687,7 @@ func (this *QsciAPIs) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 	C.QsciAPIs_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QsciAPIs) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+func (this *QsciAPIs) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
 	ok := C.QsciAPIs_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

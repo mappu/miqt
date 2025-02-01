@@ -382,7 +382,7 @@ func (this *QFormLayout) callVirtualBase_Spacing() int {
 	return (int)(C.QFormLayout_virtualbase_spacing(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) Onspacing(slot func(super func() int) int) {
+func (this *QFormLayout) OnSpacing(slot func(super func() int) int) {
 	ok := C.QFormLayout_override_virtual_spacing(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -407,7 +407,7 @@ func (this *QFormLayout) callVirtualBase_SetSpacing(spacing int) {
 	C.QFormLayout_virtualbase_setSpacing(unsafe.Pointer(this.h), (C.int)(spacing))
 
 }
-func (this *QFormLayout) OnsetSpacing(slot func(super func(spacing int), spacing int)) {
+func (this *QFormLayout) OnSetSpacing(slot func(super func(spacing int), spacing int)) {
 	ok := C.QFormLayout_override_virtual_setSpacing(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -433,7 +433,7 @@ func (this *QFormLayout) callVirtualBase_AddItem(item *QLayoutItem) {
 	C.QFormLayout_virtualbase_addItem(unsafe.Pointer(this.h), item.cPointer())
 
 }
-func (this *QFormLayout) OnaddItem(slot func(super func(item *QLayoutItem), item *QLayoutItem)) {
+func (this *QFormLayout) OnAddItem(slot func(super func(item *QLayoutItem), item *QLayoutItem)) {
 	ok := C.QFormLayout_override_virtual_addItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -459,7 +459,7 @@ func (this *QFormLayout) callVirtualBase_ItemAtWithIndex(index int) *QLayoutItem
 	return newQLayoutItem(C.QFormLayout_virtualbase_itemAtWithIndex(unsafe.Pointer(this.h), (C.int)(index)))
 
 }
-func (this *QFormLayout) OnitemAtWithIndex(slot func(super func(index int) *QLayoutItem, index int) *QLayoutItem) {
+func (this *QFormLayout) OnItemAtWithIndex(slot func(super func(index int) *QLayoutItem, index int) *QLayoutItem) {
 	ok := C.QFormLayout_override_virtual_itemAtWithIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -487,7 +487,7 @@ func (this *QFormLayout) callVirtualBase_TakeAt(index int) *QLayoutItem {
 	return newQLayoutItem(C.QFormLayout_virtualbase_takeAt(unsafe.Pointer(this.h), (C.int)(index)))
 
 }
-func (this *QFormLayout) OntakeAt(slot func(super func(index int) *QLayoutItem, index int) *QLayoutItem) {
+func (this *QFormLayout) OnTakeAt(slot func(super func(index int) *QLayoutItem, index int) *QLayoutItem) {
 	ok := C.QFormLayout_override_virtual_takeAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -515,7 +515,7 @@ func (this *QFormLayout) callVirtualBase_SetGeometry(rect *QRect) {
 	C.QFormLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())
 
 }
-func (this *QFormLayout) OnsetGeometry(slot func(super func(rect *QRect), rect *QRect)) {
+func (this *QFormLayout) OnSetGeometry(slot func(super func(rect *QRect), rect *QRect)) {
 	ok := C.QFormLayout_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -543,7 +543,7 @@ func (this *QFormLayout) callVirtualBase_MinimumSize() *QSize {
 	return _goptr
 
 }
-func (this *QFormLayout) OnminimumSize(slot func(super func() *QSize) *QSize) {
+func (this *QFormLayout) OnMinimumSize(slot func(super func() *QSize) *QSize) {
 	ok := C.QFormLayout_override_virtual_minimumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -570,7 +570,7 @@ func (this *QFormLayout) callVirtualBase_SizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QFormLayout) OnsizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QFormLayout) OnSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QFormLayout_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -595,7 +595,7 @@ func (this *QFormLayout) callVirtualBase_Invalidate() {
 	C.QFormLayout_virtualbase_invalidate(unsafe.Pointer(this.h))
 
 }
-func (this *QFormLayout) Oninvalidate(slot func(super func())) {
+func (this *QFormLayout) OnInvalidate(slot func(super func())) {
 	ok := C.QFormLayout_override_virtual_invalidate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -618,7 +618,7 @@ func (this *QFormLayout) callVirtualBase_HasHeightForWidth() bool {
 	return (bool)(C.QFormLayout_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) OnhasHeightForWidth(slot func(super func() bool) bool) {
+func (this *QFormLayout) OnHasHeightForWidth(slot func(super func() bool) bool) {
 	ok := C.QFormLayout_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -643,7 +643,7 @@ func (this *QFormLayout) callVirtualBase_HeightForWidth(width int) int {
 	return (int)(C.QFormLayout_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(width)))
 
 }
-func (this *QFormLayout) OnheightForWidth(slot func(super func(width int) int, width int) int) {
+func (this *QFormLayout) OnHeightForWidth(slot func(super func(width int) int, width int) int) {
 	ok := C.QFormLayout_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -671,7 +671,7 @@ func (this *QFormLayout) callVirtualBase_ExpandingDirections() Orientation {
 	return (Orientation)(C.QFormLayout_virtualbase_expandingDirections(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) OnexpandingDirections(slot func(super func() Orientation) Orientation) {
+func (this *QFormLayout) OnExpandingDirections(slot func(super func() Orientation) Orientation) {
 	ok := C.QFormLayout_override_virtual_expandingDirections(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -696,7 +696,7 @@ func (this *QFormLayout) callVirtualBase_Count() int {
 	return (int)(C.QFormLayout_virtualbase_count(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) Oncount(slot func(super func() int) int) {
+func (this *QFormLayout) OnCount(slot func(super func() int) int) {
 	ok := C.QFormLayout_override_virtual_count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -723,7 +723,7 @@ func (this *QFormLayout) callVirtualBase_Geometry() *QRect {
 	return _goptr
 
 }
-func (this *QFormLayout) Ongeometry(slot func(super func() *QRect) *QRect) {
+func (this *QFormLayout) OnGeometry(slot func(super func() *QRect) *QRect) {
 	ok := C.QFormLayout_override_virtual_geometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -750,7 +750,7 @@ func (this *QFormLayout) callVirtualBase_MaximumSize() *QSize {
 	return _goptr
 
 }
-func (this *QFormLayout) OnmaximumSize(slot func(super func() *QSize) *QSize) {
+func (this *QFormLayout) OnMaximumSize(slot func(super func() *QSize) *QSize) {
 	ok := C.QFormLayout_override_virtual_maximumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -775,7 +775,7 @@ func (this *QFormLayout) callVirtualBase_IndexOf(param1 *QWidget) int {
 	return (int)(C.QFormLayout_virtualbase_indexOf(unsafe.Pointer(this.h), param1.cPointer()))
 
 }
-func (this *QFormLayout) OnindexOf(slot func(super func(param1 *QWidget) int, param1 *QWidget) int) {
+func (this *QFormLayout) OnIndexOf(slot func(super func(param1 *QWidget) int, param1 *QWidget) int) {
 	ok := C.QFormLayout_override_virtual_indexOf(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -803,7 +803,7 @@ func (this *QFormLayout) callVirtualBase_IsEmpty() bool {
 	return (bool)(C.QFormLayout_virtualbase_isEmpty(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) OnisEmpty(slot func(super func() bool) bool) {
+func (this *QFormLayout) OnIsEmpty(slot func(super func() bool) bool) {
 	ok := C.QFormLayout_override_virtual_isEmpty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -828,7 +828,7 @@ func (this *QFormLayout) callVirtualBase_ControlTypes() QSizePolicy__ControlType
 	return (QSizePolicy__ControlType)(C.QFormLayout_virtualbase_controlTypes(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) OncontrolTypes(slot func(super func() QSizePolicy__ControlType) QSizePolicy__ControlType) {
+func (this *QFormLayout) OnControlTypes(slot func(super func() QSizePolicy__ControlType) QSizePolicy__ControlType) {
 	ok := C.QFormLayout_override_virtual_controlTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -853,7 +853,7 @@ func (this *QFormLayout) callVirtualBase_ReplaceWidget(from *QWidget, to *QWidge
 	return newQLayoutItem(C.QFormLayout_virtualbase_replaceWidget(unsafe.Pointer(this.h), from.cPointer(), to.cPointer(), (C.int)(options)))
 
 }
-func (this *QFormLayout) OnreplaceWidget(slot func(super func(from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem, from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem) {
+func (this *QFormLayout) OnReplaceWidget(slot func(super func(from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem, from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem) {
 	ok := C.QFormLayout_override_virtual_replaceWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -885,7 +885,7 @@ func (this *QFormLayout) callVirtualBase_Layout() *QLayout {
 	return newQLayout(C.QFormLayout_virtualbase_layout(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) Onlayout(slot func(super func() *QLayout) *QLayout) {
+func (this *QFormLayout) OnLayout(slot func(super func() *QLayout) *QLayout) {
 	ok := C.QFormLayout_override_virtual_layout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -910,7 +910,7 @@ func (this *QFormLayout) callVirtualBase_ChildEvent(e *QChildEvent) {
 	C.QFormLayout_virtualbase_childEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QFormLayout) OnchildEvent(slot func(super func(e *QChildEvent), e *QChildEvent)) {
+func (this *QFormLayout) OnChildEvent(slot func(super func(e *QChildEvent), e *QChildEvent)) {
 	ok := C.QFormLayout_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -936,7 +936,7 @@ func (this *QFormLayout) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QFormLayout_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QFormLayout) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QFormLayout) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QFormLayout_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -964,7 +964,7 @@ func (this *QFormLayout) callVirtualBase_EventFilter(watched *QObject, event *QE
 	return (bool)(C.QFormLayout_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QFormLayout) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QFormLayout) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QFormLayout_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -994,7 +994,7 @@ func (this *QFormLayout) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QFormLayout_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QFormLayout) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QFormLayout) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QFormLayout_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1020,7 +1020,7 @@ func (this *QFormLayout) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QFormLayout_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QFormLayout) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QFormLayout) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QFormLayout_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1046,7 +1046,7 @@ func (this *QFormLayout) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QFormLayout_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QFormLayout) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QFormLayout) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QFormLayout_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1072,7 +1072,7 @@ func (this *QFormLayout) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 	C.QFormLayout_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QFormLayout) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QFormLayout) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QFormLayout_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1098,7 +1098,7 @@ func (this *QFormLayout) callVirtualBase_MinimumHeightForWidth(param1 int) int {
 	return (int)(C.QFormLayout_virtualbase_minimumHeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QFormLayout) OnminimumHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+func (this *QFormLayout) OnMinimumHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
 	ok := C.QFormLayout_override_virtual_minimumHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1126,7 +1126,7 @@ func (this *QFormLayout) callVirtualBase_Widget() *QWidget {
 	return newQWidget(C.QFormLayout_virtualbase_widget(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) Onwidget(slot func(super func() *QWidget) *QWidget) {
+func (this *QFormLayout) OnWidget(slot func(super func() *QWidget) *QWidget) {
 	ok := C.QFormLayout_override_virtual_widget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1151,7 +1151,7 @@ func (this *QFormLayout) callVirtualBase_SpacerItem() *QSpacerItem {
 	return newQSpacerItem(C.QFormLayout_virtualbase_spacerItem(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) OnspacerItem(slot func(super func() *QSpacerItem) *QSpacerItem) {
+func (this *QFormLayout) OnSpacerItem(slot func(super func() *QSpacerItem) *QSpacerItem) {
 	ok := C.QFormLayout_override_virtual_spacerItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

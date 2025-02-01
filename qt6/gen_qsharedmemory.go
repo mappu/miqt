@@ -238,7 +238,7 @@ func (this *QSharedMemory) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QSharedMemory_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QSharedMemory) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QSharedMemory) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QSharedMemory_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -266,7 +266,7 @@ func (this *QSharedMemory) callVirtualBase_EventFilter(watched *QObject, event *
 	return (bool)(C.QSharedMemory_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QSharedMemory) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QSharedMemory) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QSharedMemory_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -296,7 +296,7 @@ func (this *QSharedMemory) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QSharedMemory_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSharedMemory) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QSharedMemory) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QSharedMemory_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -322,7 +322,7 @@ func (this *QSharedMemory) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QSharedMemory_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSharedMemory) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QSharedMemory) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QSharedMemory_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -348,7 +348,7 @@ func (this *QSharedMemory) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QSharedMemory_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSharedMemory) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QSharedMemory) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QSharedMemory_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -374,7 +374,7 @@ func (this *QSharedMemory) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QSharedMemory_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSharedMemory) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QSharedMemory) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QSharedMemory_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -400,7 +400,7 @@ func (this *QSharedMemory) callVirtualBase_DisconnectNotify(signal *QMetaMethod)
 	C.QSharedMemory_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSharedMemory) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QSharedMemory) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QSharedMemory_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

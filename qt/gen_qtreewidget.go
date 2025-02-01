@@ -538,7 +538,7 @@ func (this *QTreeWidgetItem) callVirtualBase_Clone() *QTreeWidgetItem {
 	return newQTreeWidgetItem(C.QTreeWidgetItem_virtualbase_clone(unsafe.Pointer(this.h)))
 
 }
-func (this *QTreeWidgetItem) Onclone(slot func(super func() *QTreeWidgetItem) *QTreeWidgetItem) {
+func (this *QTreeWidgetItem) OnClone(slot func(super func() *QTreeWidgetItem) *QTreeWidgetItem) {
 	ok := C.QTreeWidgetItem_override_virtual_clone(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -565,7 +565,7 @@ func (this *QTreeWidgetItem) callVirtualBase_Data(column int, role int) *QVarian
 	return _goptr
 
 }
-func (this *QTreeWidgetItem) Ondata(slot func(super func(column int, role int) *QVariant, column int, role int) *QVariant) {
+func (this *QTreeWidgetItem) OnData(slot func(super func(column int, role int) *QVariant, column int, role int) *QVariant) {
 	ok := C.QTreeWidgetItem_override_virtual_data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -595,7 +595,7 @@ func (this *QTreeWidgetItem) callVirtualBase_SetData(column int, role int, value
 	C.QTreeWidgetItem_virtualbase_setData(unsafe.Pointer(this.h), (C.int)(column), (C.int)(role), value.cPointer())
 
 }
-func (this *QTreeWidgetItem) OnsetData(slot func(super func(column int, role int, value *QVariant), column int, role int, value *QVariant)) {
+func (this *QTreeWidgetItem) OnSetData(slot func(super func(column int, role int, value *QVariant), column int, role int, value *QVariant)) {
 	ok := C.QTreeWidgetItem_override_virtual_setData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -625,7 +625,7 @@ func (this *QTreeWidgetItem) callVirtualBase_OperatorLesser(other *QTreeWidgetIt
 	return (bool)(C.QTreeWidgetItem_virtualbase_operatorLesser(unsafe.Pointer(this.h), other.cPointer()))
 
 }
-func (this *QTreeWidgetItem) OnoperatorLesser(slot func(super func(other *QTreeWidgetItem) bool, other *QTreeWidgetItem) bool) {
+func (this *QTreeWidgetItem) OnOperatorLesser(slot func(super func(other *QTreeWidgetItem) bool, other *QTreeWidgetItem) bool) {
 	ok := C.QTreeWidgetItem_override_virtual_operatorLesser(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -653,7 +653,7 @@ func (this *QTreeWidgetItem) callVirtualBase_Read(in *QDataStream) {
 	C.QTreeWidgetItem_virtualbase_read(unsafe.Pointer(this.h), in.cPointer())
 
 }
-func (this *QTreeWidgetItem) Onread(slot func(super func(in *QDataStream), in *QDataStream)) {
+func (this *QTreeWidgetItem) OnRead(slot func(super func(in *QDataStream), in *QDataStream)) {
 	ok := C.QTreeWidgetItem_override_virtual_read(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -679,7 +679,7 @@ func (this *QTreeWidgetItem) callVirtualBase_Write(out *QDataStream) {
 	C.QTreeWidgetItem_virtualbase_write(unsafe.Pointer(this.h), out.cPointer())
 
 }
-func (this *QTreeWidgetItem) Onwrite(slot func(super func(out *QDataStream), out *QDataStream)) {
+func (this *QTreeWidgetItem) OnWrite(slot func(super func(out *QDataStream), out *QDataStream)) {
 	ok := C.QTreeWidgetItem_override_virtual_write(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1324,7 +1324,7 @@ func (this *QTreeWidget) callVirtualBase_SetSelectionModel(selectionModel *QItem
 	C.QTreeWidget_virtualbase_setSelectionModel(unsafe.Pointer(this.h), selectionModel.cPointer())
 
 }
-func (this *QTreeWidget) OnsetSelectionModel(slot func(super func(selectionModel *QItemSelectionModel), selectionModel *QItemSelectionModel)) {
+func (this *QTreeWidget) OnSetSelectionModel(slot func(super func(selectionModel *QItemSelectionModel), selectionModel *QItemSelectionModel)) {
 	ok := C.QTreeWidget_override_virtual_setSelectionModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1350,7 +1350,7 @@ func (this *QTreeWidget) callVirtualBase_Event(e *QEvent) bool {
 	return (bool)(C.QTreeWidget_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
 }
-func (this *QTreeWidget) Onevent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+func (this *QTreeWidget) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
 	ok := C.QTreeWidget_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1387,7 +1387,7 @@ func (this *QTreeWidget) callVirtualBase_MimeTypes() []string {
 	return _ret
 
 }
-func (this *QTreeWidget) OnmimeTypes(slot func(super func() []string) []string) {
+func (this *QTreeWidget) OnMimeTypes(slot func(super func() []string) []string) {
 	ok := C.QTreeWidget_override_virtual_mimeTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1428,7 +1428,7 @@ func (this *QTreeWidget) callVirtualBase_MimeData(items []*QTreeWidgetItem) *QMi
 	return newQMimeData(C.QTreeWidget_virtualbase_mimeData(unsafe.Pointer(this.h), items_ma))
 
 }
-func (this *QTreeWidget) OnmimeData(slot func(super func(items []*QTreeWidgetItem) *QMimeData, items []*QTreeWidgetItem) *QMimeData) {
+func (this *QTreeWidget) OnMimeData(slot func(super func(items []*QTreeWidgetItem) *QMimeData, items []*QTreeWidgetItem) *QMimeData) {
 	ok := C.QTreeWidget_override_virtual_mimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1462,7 +1462,7 @@ func (this *QTreeWidget) callVirtualBase_DropMimeData(parent *QTreeWidgetItem, i
 	return (bool)(C.QTreeWidget_virtualbase_dropMimeData(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(index), data.cPointer(), (C.int)(action)))
 
 }
-func (this *QTreeWidget) OndropMimeData(slot func(super func(parent *QTreeWidgetItem, index int, data *QMimeData, action DropAction) bool, parent *QTreeWidgetItem, index int, data *QMimeData, action DropAction) bool) {
+func (this *QTreeWidget) OnDropMimeData(slot func(super func(parent *QTreeWidgetItem, index int, data *QMimeData, action DropAction) bool, parent *QTreeWidgetItem, index int, data *QMimeData, action DropAction) bool) {
 	ok := C.QTreeWidget_override_virtual_dropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1496,7 +1496,7 @@ func (this *QTreeWidget) callVirtualBase_SupportedDropActions() DropAction {
 	return (DropAction)(C.QTreeWidget_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
 }
-func (this *QTreeWidget) OnsupportedDropActions(slot func(super func() DropAction) DropAction) {
+func (this *QTreeWidget) OnSupportedDropActions(slot func(super func() DropAction) DropAction) {
 	ok := C.QTreeWidget_override_virtual_supportedDropActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1521,7 +1521,7 @@ func (this *QTreeWidget) callVirtualBase_DropEvent(event *QDropEvent) {
 	C.QTreeWidget_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+func (this *QTreeWidget) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
 	ok := C.QTreeWidget_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1547,7 +1547,7 @@ func (this *QTreeWidget) callVirtualBase_SetRootIndex(index *QModelIndex) {
 	C.QTreeWidget_virtualbase_setRootIndex(unsafe.Pointer(this.h), index.cPointer())
 
 }
-func (this *QTreeWidget) OnsetRootIndex(slot func(super func(index *QModelIndex), index *QModelIndex)) {
+func (this *QTreeWidget) OnSetRootIndex(slot func(super func(index *QModelIndex), index *QModelIndex)) {
 	ok := C.QTreeWidget_override_virtual_setRootIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1577,7 +1577,7 @@ func (this *QTreeWidget) callVirtualBase_KeyboardSearch(search string) {
 	C.QTreeWidget_virtualbase_keyboardSearch(unsafe.Pointer(this.h), search_ms)
 
 }
-func (this *QTreeWidget) OnkeyboardSearch(slot func(super func(search string), search string)) {
+func (this *QTreeWidget) OnKeyboardSearch(slot func(super func(search string), search string)) {
 	ok := C.QTreeWidget_override_virtual_keyboardSearch(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1608,7 +1608,7 @@ func (this *QTreeWidget) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
 	return _goptr
 
 }
-func (this *QTreeWidget) OnvisualRect(slot func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect) {
+func (this *QTreeWidget) OnVisualRect(slot func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect) {
 	ok := C.QTreeWidget_override_virtual_visualRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1636,7 +1636,7 @@ func (this *QTreeWidget) callVirtualBase_ScrollTo(index *QModelIndex, hint QAbst
 	C.QTreeWidget_virtualbase_scrollTo(unsafe.Pointer(this.h), index.cPointer(), (C.int)(hint))
 
 }
-func (this *QTreeWidget) OnscrollTo(slot func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint)) {
+func (this *QTreeWidget) OnScrollTo(slot func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint)) {
 	ok := C.QTreeWidget_override_virtual_scrollTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1666,7 +1666,7 @@ func (this *QTreeWidget) callVirtualBase_IndexAt(p *QPoint) *QModelIndex {
 	return _goptr
 
 }
-func (this *QTreeWidget) OnindexAt(slot func(super func(p *QPoint) *QModelIndex, p *QPoint) *QModelIndex) {
+func (this *QTreeWidget) OnIndexAt(slot func(super func(p *QPoint) *QModelIndex, p *QPoint) *QModelIndex) {
 	ok := C.QTreeWidget_override_virtual_indexAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1694,7 +1694,7 @@ func (this *QTreeWidget) callVirtualBase_DoItemsLayout() {
 	C.QTreeWidget_virtualbase_doItemsLayout(unsafe.Pointer(this.h))
 
 }
-func (this *QTreeWidget) OndoItemsLayout(slot func(super func())) {
+func (this *QTreeWidget) OnDoItemsLayout(slot func(super func())) {
 	ok := C.QTreeWidget_override_virtual_doItemsLayout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1717,7 +1717,7 @@ func (this *QTreeWidget) callVirtualBase_Reset() {
 	C.QTreeWidget_virtualbase_reset(unsafe.Pointer(this.h))
 
 }
-func (this *QTreeWidget) Onreset(slot func(super func())) {
+func (this *QTreeWidget) OnReset(slot func(super func())) {
 	ok := C.QTreeWidget_override_virtual_reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1746,7 +1746,7 @@ func (this *QTreeWidget) callVirtualBase_DataChanged(topLeft *QModelIndex, botto
 	C.QTreeWidget_virtualbase_dataChanged(unsafe.Pointer(this.h), topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
 
 }
-func (this *QTreeWidget) OndataChanged(slot func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
+func (this *QTreeWidget) OnDataChanged(slot func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
 	ok := C.QTreeWidget_override_virtual_dataChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1782,7 +1782,7 @@ func (this *QTreeWidget) callVirtualBase_SelectAll() {
 	C.QTreeWidget_virtualbase_selectAll(unsafe.Pointer(this.h))
 
 }
-func (this *QTreeWidget) OnselectAll(slot func(super func())) {
+func (this *QTreeWidget) OnSelectAll(slot func(super func())) {
 	ok := C.QTreeWidget_override_virtual_selectAll(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1805,7 +1805,7 @@ func (this *QTreeWidget) callVirtualBase_VerticalScrollbarValueChanged(value int
 	C.QTreeWidget_virtualbase_verticalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
 }
-func (this *QTreeWidget) OnverticalScrollbarValueChanged(slot func(super func(value int), value int)) {
+func (this *QTreeWidget) OnVerticalScrollbarValueChanged(slot func(super func(value int), value int)) {
 	ok := C.QTreeWidget_override_virtual_verticalScrollbarValueChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1831,7 +1831,7 @@ func (this *QTreeWidget) callVirtualBase_ScrollContentsBy(dx int, dy int) {
 	C.QTreeWidget_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
 }
-func (this *QTreeWidget) OnscrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
+func (this *QTreeWidget) OnScrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
 	ok := C.QTreeWidget_override_virtual_scrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1859,7 +1859,7 @@ func (this *QTreeWidget) callVirtualBase_RowsInserted(parent *QModelIndex, start
 	C.QTreeWidget_virtualbase_rowsInserted(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
 
 }
-func (this *QTreeWidget) OnrowsInserted(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
+func (this *QTreeWidget) OnRowsInserted(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
 	ok := C.QTreeWidget_override_virtual_rowsInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1889,7 +1889,7 @@ func (this *QTreeWidget) callVirtualBase_RowsAboutToBeRemoved(parent *QModelInde
 	C.QTreeWidget_virtualbase_rowsAboutToBeRemoved(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
 
 }
-func (this *QTreeWidget) OnrowsAboutToBeRemoved(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
+func (this *QTreeWidget) OnRowsAboutToBeRemoved(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
 	ok := C.QTreeWidget_override_virtual_rowsAboutToBeRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1921,7 +1921,7 @@ func (this *QTreeWidget) callVirtualBase_MoveCursor(cursorAction QAbstractItemVi
 	return _goptr
 
 }
-func (this *QTreeWidget) OnmoveCursor(slot func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex) {
+func (this *QTreeWidget) OnMoveCursor(slot func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex) {
 	ok := C.QTreeWidget_override_virtual_moveCursor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1951,7 +1951,7 @@ func (this *QTreeWidget) callVirtualBase_HorizontalOffset() int {
 	return (int)(C.QTreeWidget_virtualbase_horizontalOffset(unsafe.Pointer(this.h)))
 
 }
-func (this *QTreeWidget) OnhorizontalOffset(slot func(super func() int) int) {
+func (this *QTreeWidget) OnHorizontalOffset(slot func(super func() int) int) {
 	ok := C.QTreeWidget_override_virtual_horizontalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1976,7 +1976,7 @@ func (this *QTreeWidget) callVirtualBase_VerticalOffset() int {
 	return (int)(C.QTreeWidget_virtualbase_verticalOffset(unsafe.Pointer(this.h)))
 
 }
-func (this *QTreeWidget) OnverticalOffset(slot func(super func() int) int) {
+func (this *QTreeWidget) OnVerticalOffset(slot func(super func() int) int) {
 	ok := C.QTreeWidget_override_virtual_verticalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2001,7 +2001,7 @@ func (this *QTreeWidget) callVirtualBase_SetSelection(rect *QRect, command QItem
 	C.QTreeWidget_virtualbase_setSelection(unsafe.Pointer(this.h), rect.cPointer(), (C.int)(command))
 
 }
-func (this *QTreeWidget) OnsetSelection(slot func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag)) {
+func (this *QTreeWidget) OnSetSelection(slot func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag)) {
 	ok := C.QTreeWidget_override_virtual_setSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2031,7 +2031,7 @@ func (this *QTreeWidget) callVirtualBase_VisualRegionForSelection(selection *QIt
 	return _goptr
 
 }
-func (this *QTreeWidget) OnvisualRegionForSelection(slot func(super func(selection *QItemSelection) *QRegion, selection *QItemSelection) *QRegion) {
+func (this *QTreeWidget) OnVisualRegionForSelection(slot func(super func(selection *QItemSelection) *QRegion, selection *QItemSelection) *QRegion) {
 	ok := C.QTreeWidget_override_virtual_visualRegionForSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2067,7 +2067,7 @@ func (this *QTreeWidget) callVirtualBase_SelectedIndexes() []QModelIndex {
 	return _ret
 
 }
-func (this *QTreeWidget) OnselectedIndexes(slot func(super func() []QModelIndex) []QModelIndex) {
+func (this *QTreeWidget) OnSelectedIndexes(slot func(super func() []QModelIndex) []QModelIndex) {
 	ok := C.QTreeWidget_override_virtual_selectedIndexes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2098,7 +2098,7 @@ func (this *QTreeWidget) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QTreeWidget_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QTreeWidget) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QTreeWidget_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2124,7 +2124,7 @@ func (this *QTreeWidget) callVirtualBase_PaintEvent(event *QPaintEvent) {
 	C.QTreeWidget_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnpaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
+func (this *QTreeWidget) OnPaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
 	ok := C.QTreeWidget_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2150,7 +2150,7 @@ func (this *QTreeWidget) callVirtualBase_DrawRow(painter *QPainter, options *QSt
 	C.QTreeWidget_virtualbase_drawRow(unsafe.Pointer(this.h), painter.cPointer(), options.cPointer(), index.cPointer())
 
 }
-func (this *QTreeWidget) OndrawRow(slot func(super func(painter *QPainter, options *QStyleOptionViewItem, index *QModelIndex), painter *QPainter, options *QStyleOptionViewItem, index *QModelIndex)) {
+func (this *QTreeWidget) OnDrawRow(slot func(super func(painter *QPainter, options *QStyleOptionViewItem, index *QModelIndex), painter *QPainter, options *QStyleOptionViewItem, index *QModelIndex)) {
 	ok := C.QTreeWidget_override_virtual_drawRow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2180,7 +2180,7 @@ func (this *QTreeWidget) callVirtualBase_DrawBranches(painter *QPainter, rect *Q
 	C.QTreeWidget_virtualbase_drawBranches(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer(), index.cPointer())
 
 }
-func (this *QTreeWidget) OndrawBranches(slot func(super func(painter *QPainter, rect *QRect, index *QModelIndex), painter *QPainter, rect *QRect, index *QModelIndex)) {
+func (this *QTreeWidget) OnDrawBranches(slot func(super func(painter *QPainter, rect *QRect, index *QModelIndex), painter *QPainter, rect *QRect, index *QModelIndex)) {
 	ok := C.QTreeWidget_override_virtual_drawBranches(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2210,7 +2210,7 @@ func (this *QTreeWidget) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 	C.QTreeWidget_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnmousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QTreeWidget) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QTreeWidget_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2236,7 +2236,7 @@ func (this *QTreeWidget) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
 	C.QTreeWidget_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnmouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QTreeWidget) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QTreeWidget_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2262,7 +2262,7 @@ func (this *QTreeWidget) callVirtualBase_MouseDoubleClickEvent(event *QMouseEven
 	C.QTreeWidget_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QTreeWidget) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QTreeWidget_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2288,7 +2288,7 @@ func (this *QTreeWidget) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 	C.QTreeWidget_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnmouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QTreeWidget) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QTreeWidget_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2314,7 +2314,7 @@ func (this *QTreeWidget) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 	C.QTreeWidget_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnkeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+func (this *QTreeWidget) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
 	ok := C.QTreeWidget_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2340,7 +2340,7 @@ func (this *QTreeWidget) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 	C.QTreeWidget_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+func (this *QTreeWidget) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
 	ok := C.QTreeWidget_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2366,7 +2366,7 @@ func (this *QTreeWidget) callVirtualBase_ViewportEvent(event *QEvent) bool {
 	return (bool)(C.QTreeWidget_virtualbase_viewportEvent(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QTreeWidget) OnviewportEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QTreeWidget) OnViewportEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QTreeWidget_override_virtual_viewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2394,7 +2394,7 @@ func (this *QTreeWidget) callVirtualBase_UpdateGeometries() {
 	C.QTreeWidget_virtualbase_updateGeometries(unsafe.Pointer(this.h))
 
 }
-func (this *QTreeWidget) OnupdateGeometries(slot func(super func())) {
+func (this *QTreeWidget) OnUpdateGeometries(slot func(super func())) {
 	ok := C.QTreeWidget_override_virtual_updateGeometries(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2419,7 +2419,7 @@ func (this *QTreeWidget) callVirtualBase_ViewportSizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QTreeWidget) OnviewportSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QTreeWidget) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QTreeWidget_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2444,7 +2444,7 @@ func (this *QTreeWidget) callVirtualBase_SizeHintForColumn(column int) int {
 	return (int)(C.QTreeWidget_virtualbase_sizeHintForColumn(unsafe.Pointer(this.h), (C.int)(column)))
 
 }
-func (this *QTreeWidget) OnsizeHintForColumn(slot func(super func(column int) int, column int) int) {
+func (this *QTreeWidget) OnSizeHintForColumn(slot func(super func(column int) int, column int) int) {
 	ok := C.QTreeWidget_override_virtual_sizeHintForColumn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2472,7 +2472,7 @@ func (this *QTreeWidget) callVirtualBase_HorizontalScrollbarAction(action int) {
 	C.QTreeWidget_virtualbase_horizontalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
 }
-func (this *QTreeWidget) OnhorizontalScrollbarAction(slot func(super func(action int), action int)) {
+func (this *QTreeWidget) OnHorizontalScrollbarAction(slot func(super func(action int), action int)) {
 	ok := C.QTreeWidget_override_virtual_horizontalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2498,7 +2498,7 @@ func (this *QTreeWidget) callVirtualBase_IsIndexHidden(index *QModelIndex) bool 
 	return (bool)(C.QTreeWidget_virtualbase_isIndexHidden(unsafe.Pointer(this.h), index.cPointer()))
 
 }
-func (this *QTreeWidget) OnisIndexHidden(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
+func (this *QTreeWidget) OnIsIndexHidden(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
 	ok := C.QTreeWidget_override_virtual_isIndexHidden(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2526,7 +2526,7 @@ func (this *QTreeWidget) callVirtualBase_SelectionChanged(selected *QItemSelecti
 	C.QTreeWidget_virtualbase_selectionChanged(unsafe.Pointer(this.h), selected.cPointer(), deselected.cPointer())
 
 }
-func (this *QTreeWidget) OnselectionChanged(slot func(super func(selected *QItemSelection, deselected *QItemSelection), selected *QItemSelection, deselected *QItemSelection)) {
+func (this *QTreeWidget) OnSelectionChanged(slot func(super func(selected *QItemSelection, deselected *QItemSelection), selected *QItemSelection, deselected *QItemSelection)) {
 	ok := C.QTreeWidget_override_virtual_selectionChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2554,7 +2554,7 @@ func (this *QTreeWidget) callVirtualBase_CurrentChanged(current *QModelIndex, pr
 	C.QTreeWidget_virtualbase_currentChanged(unsafe.Pointer(this.h), current.cPointer(), previous.cPointer())
 
 }
-func (this *QTreeWidget) OncurrentChanged(slot func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex)) {
+func (this *QTreeWidget) OnCurrentChanged(slot func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex)) {
 	ok := C.QTreeWidget_override_virtual_currentChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2582,7 +2582,7 @@ func (this *QTreeWidget) callVirtualBase_SizeHintForRow(row int) int {
 	return (int)(C.QTreeWidget_virtualbase_sizeHintForRow(unsafe.Pointer(this.h), (C.int)(row)))
 
 }
-func (this *QTreeWidget) OnsizeHintForRow(slot func(super func(row int) int, row int) int) {
+func (this *QTreeWidget) OnSizeHintForRow(slot func(super func(row int) int, row int) int) {
 	ok := C.QTreeWidget_override_virtual_sizeHintForRow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2612,7 +2612,7 @@ func (this *QTreeWidget) callVirtualBase_InputMethodQuery(query InputMethodQuery
 	return _goptr
 
 }
-func (this *QTreeWidget) OninputMethodQuery(slot func(super func(query InputMethodQuery) *QVariant, query InputMethodQuery) *QVariant) {
+func (this *QTreeWidget) OnInputMethodQuery(slot func(super func(query InputMethodQuery) *QVariant, query InputMethodQuery) *QVariant) {
 	ok := C.QTreeWidget_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2640,7 +2640,7 @@ func (this *QTreeWidget) callVirtualBase_UpdateEditorData() {
 	C.QTreeWidget_virtualbase_updateEditorData(unsafe.Pointer(this.h))
 
 }
-func (this *QTreeWidget) OnupdateEditorData(slot func(super func())) {
+func (this *QTreeWidget) OnUpdateEditorData(slot func(super func())) {
 	ok := C.QTreeWidget_override_virtual_updateEditorData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2663,7 +2663,7 @@ func (this *QTreeWidget) callVirtualBase_UpdateEditorGeometries() {
 	C.QTreeWidget_virtualbase_updateEditorGeometries(unsafe.Pointer(this.h))
 
 }
-func (this *QTreeWidget) OnupdateEditorGeometries(slot func(super func())) {
+func (this *QTreeWidget) OnUpdateEditorGeometries(slot func(super func())) {
 	ok := C.QTreeWidget_override_virtual_updateEditorGeometries(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2686,7 +2686,7 @@ func (this *QTreeWidget) callVirtualBase_VerticalScrollbarAction(action int) {
 	C.QTreeWidget_virtualbase_verticalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
 }
-func (this *QTreeWidget) OnverticalScrollbarAction(slot func(super func(action int), action int)) {
+func (this *QTreeWidget) OnVerticalScrollbarAction(slot func(super func(action int), action int)) {
 	ok := C.QTreeWidget_override_virtual_verticalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2712,7 +2712,7 @@ func (this *QTreeWidget) callVirtualBase_HorizontalScrollbarValueChanged(value i
 	C.QTreeWidget_virtualbase_horizontalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
 }
-func (this *QTreeWidget) OnhorizontalScrollbarValueChanged(slot func(super func(value int), value int)) {
+func (this *QTreeWidget) OnHorizontalScrollbarValueChanged(slot func(super func(value int), value int)) {
 	ok := C.QTreeWidget_override_virtual_horizontalScrollbarValueChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2738,7 +2738,7 @@ func (this *QTreeWidget) callVirtualBase_CloseEditor(editor *QWidget, hint QAbst
 	C.QTreeWidget_virtualbase_closeEditor(unsafe.Pointer(this.h), editor.cPointer(), (C.int)(hint))
 
 }
-func (this *QTreeWidget) OncloseEditor(slot func(super func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint), editor *QWidget, hint QAbstractItemDelegate__EndEditHint)) {
+func (this *QTreeWidget) OnCloseEditor(slot func(super func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint), editor *QWidget, hint QAbstractItemDelegate__EndEditHint)) {
 	ok := C.QTreeWidget_override_virtual_closeEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2766,7 +2766,7 @@ func (this *QTreeWidget) callVirtualBase_CommitData(editor *QWidget) {
 	C.QTreeWidget_virtualbase_commitData(unsafe.Pointer(this.h), editor.cPointer())
 
 }
-func (this *QTreeWidget) OncommitData(slot func(super func(editor *QWidget), editor *QWidget)) {
+func (this *QTreeWidget) OnCommitData(slot func(super func(editor *QWidget), editor *QWidget)) {
 	ok := C.QTreeWidget_override_virtual_commitData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2792,7 +2792,7 @@ func (this *QTreeWidget) callVirtualBase_EditorDestroyed(editor *QObject) {
 	C.QTreeWidget_virtualbase_editorDestroyed(unsafe.Pointer(this.h), editor.cPointer())
 
 }
-func (this *QTreeWidget) OneditorDestroyed(slot func(super func(editor *QObject), editor *QObject)) {
+func (this *QTreeWidget) OnEditorDestroyed(slot func(super func(editor *QObject), editor *QObject)) {
 	ok := C.QTreeWidget_override_virtual_editorDestroyed(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2818,7 +2818,7 @@ func (this *QTreeWidget) callVirtualBase_Edit2(index *QModelIndex, trigger QAbst
 	return (bool)(C.QTreeWidget_virtualbase_edit2(unsafe.Pointer(this.h), index.cPointer(), (C.int)(trigger), event.cPointer()))
 
 }
-func (this *QTreeWidget) Onedit2(slot func(super func(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool) {
+func (this *QTreeWidget) OnEdit2(slot func(super func(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool) {
 	ok := C.QTreeWidget_override_virtual_edit2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2850,7 +2850,7 @@ func (this *QTreeWidget) callVirtualBase_SelectionCommand(index *QModelIndex, ev
 	return (QItemSelectionModel__SelectionFlag)(C.QTreeWidget_virtualbase_selectionCommand(unsafe.Pointer(this.h), index.cPointer(), event.cPointer()))
 
 }
-func (this *QTreeWidget) OnselectionCommand(slot func(super func(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag) {
+func (this *QTreeWidget) OnSelectionCommand(slot func(super func(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag) {
 	ok := C.QTreeWidget_override_virtual_selectionCommand(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2880,7 +2880,7 @@ func (this *QTreeWidget) callVirtualBase_StartDrag(supportedActions DropAction) 
 	C.QTreeWidget_virtualbase_startDrag(unsafe.Pointer(this.h), (C.int)(supportedActions))
 
 }
-func (this *QTreeWidget) OnstartDrag(slot func(super func(supportedActions DropAction), supportedActions DropAction)) {
+func (this *QTreeWidget) OnStartDrag(slot func(super func(supportedActions DropAction), supportedActions DropAction)) {
 	ok := C.QTreeWidget_override_virtual_startDrag(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2908,7 +2908,7 @@ func (this *QTreeWidget) callVirtualBase_ViewOptions() *QStyleOptionViewItem {
 	return _goptr
 
 }
-func (this *QTreeWidget) OnviewOptions(slot func(super func() *QStyleOptionViewItem) *QStyleOptionViewItem) {
+func (this *QTreeWidget) OnViewOptions(slot func(super func() *QStyleOptionViewItem) *QStyleOptionViewItem) {
 	ok := C.QTreeWidget_override_virtual_viewOptions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2933,7 +2933,7 @@ func (this *QTreeWidget) callVirtualBase_FocusNextPrevChild(next bool) bool {
 	return (bool)(C.QTreeWidget_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QTreeWidget) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+func (this *QTreeWidget) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
 	ok := C.QTreeWidget_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2961,7 +2961,7 @@ func (this *QTreeWidget) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) 
 	C.QTreeWidget_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+func (this *QTreeWidget) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
 	ok := C.QTreeWidget_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2987,7 +2987,7 @@ func (this *QTreeWidget) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) 
 	C.QTreeWidget_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+func (this *QTreeWidget) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
 	ok := C.QTreeWidget_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3013,7 +3013,7 @@ func (this *QTreeWidget) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 	C.QTreeWidget_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+func (this *QTreeWidget) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
 	ok := C.QTreeWidget_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3039,7 +3039,7 @@ func (this *QTreeWidget) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 	C.QTreeWidget_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+func (this *QTreeWidget) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
 	ok := C.QTreeWidget_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3065,7 +3065,7 @@ func (this *QTreeWidget) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 	C.QTreeWidget_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnresizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+func (this *QTreeWidget) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
 	ok := C.QTreeWidget_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3091,7 +3091,7 @@ func (this *QTreeWidget) callVirtualBase_InputMethodEvent(event *QInputMethodEve
 	C.QTreeWidget_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OninputMethodEvent(slot func(super func(event *QInputMethodEvent), event *QInputMethodEvent)) {
+func (this *QTreeWidget) OnInputMethodEvent(slot func(super func(event *QInputMethodEvent), event *QInputMethodEvent)) {
 	ok := C.QTreeWidget_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3117,7 +3117,7 @@ func (this *QTreeWidget) callVirtualBase_EventFilter(object *QObject, event *QEv
 	return (bool)(C.QTreeWidget_virtualbase_eventFilter(unsafe.Pointer(this.h), object.cPointer(), event.cPointer()))
 
 }
-func (this *QTreeWidget) OneventFilter(slot func(super func(object *QObject, event *QEvent) bool, object *QObject, event *QEvent) bool) {
+func (this *QTreeWidget) OnEventFilter(slot func(super func(object *QObject, event *QEvent) bool, object *QObject, event *QEvent) bool) {
 	ok := C.QTreeWidget_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3149,7 +3149,7 @@ func (this *QTreeWidget) callVirtualBase_MinimumSizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QTreeWidget) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QTreeWidget) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QTreeWidget_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3176,7 +3176,7 @@ func (this *QTreeWidget) callVirtualBase_SizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QTreeWidget) OnsizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QTreeWidget) OnSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QTreeWidget_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3201,7 +3201,7 @@ func (this *QTreeWidget) callVirtualBase_SetupViewport(viewport *QWidget) {
 	C.QTreeWidget_virtualbase_setupViewport(unsafe.Pointer(this.h), viewport.cPointer())
 
 }
-func (this *QTreeWidget) OnsetupViewport(slot func(super func(viewport *QWidget), viewport *QWidget)) {
+func (this *QTreeWidget) OnSetupViewport(slot func(super func(viewport *QWidget), viewport *QWidget)) {
 	ok := C.QTreeWidget_override_virtual_setupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3227,7 +3227,7 @@ func (this *QTreeWidget) callVirtualBase_WheelEvent(param1 *QWheelEvent) {
 	C.QTreeWidget_virtualbase_wheelEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QTreeWidget) OnwheelEvent(slot func(super func(param1 *QWheelEvent), param1 *QWheelEvent)) {
+func (this *QTreeWidget) OnWheelEvent(slot func(super func(param1 *QWheelEvent), param1 *QWheelEvent)) {
 	ok := C.QTreeWidget_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3253,7 +3253,7 @@ func (this *QTreeWidget) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEv
 	C.QTreeWidget_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QTreeWidget) OncontextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+func (this *QTreeWidget) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
 	ok := C.QTreeWidget_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3279,7 +3279,7 @@ func (this *QTreeWidget) callVirtualBase_ChangeEvent(param1 *QEvent) {
 	C.QTreeWidget_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QTreeWidget) OnchangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+func (this *QTreeWidget) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
 	ok := C.QTreeWidget_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3305,7 +3305,7 @@ func (this *QTreeWidget) callVirtualBase_DevType() int {
 	return (int)(C.QTreeWidget_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QTreeWidget) OndevType(slot func(super func() int) int) {
+func (this *QTreeWidget) OnDevType(slot func(super func() int) int) {
 	ok := C.QTreeWidget_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3330,7 +3330,7 @@ func (this *QTreeWidget) callVirtualBase_SetVisible(visible bool) {
 	C.QTreeWidget_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QTreeWidget) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+func (this *QTreeWidget) OnSetVisible(slot func(super func(visible bool), visible bool)) {
 	ok := C.QTreeWidget_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3356,7 +3356,7 @@ func (this *QTreeWidget) callVirtualBase_HeightForWidth(param1 int) int {
 	return (int)(C.QTreeWidget_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QTreeWidget) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+func (this *QTreeWidget) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
 	ok := C.QTreeWidget_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3384,7 +3384,7 @@ func (this *QTreeWidget) callVirtualBase_HasHeightForWidth() bool {
 	return (bool)(C.QTreeWidget_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QTreeWidget) OnhasHeightForWidth(slot func(super func() bool) bool) {
+func (this *QTreeWidget) OnHasHeightForWidth(slot func(super func() bool) bool) {
 	ok := C.QTreeWidget_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3409,7 +3409,7 @@ func (this *QTreeWidget) callVirtualBase_PaintEngine() *QPaintEngine {
 	return newQPaintEngine(C.QTreeWidget_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QTreeWidget) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+func (this *QTreeWidget) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	ok := C.QTreeWidget_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3434,7 +3434,7 @@ func (this *QTreeWidget) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 	C.QTreeWidget_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+func (this *QTreeWidget) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
 	ok := C.QTreeWidget_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3460,7 +3460,7 @@ func (this *QTreeWidget) callVirtualBase_EnterEvent(event *QEvent) {
 	C.QTreeWidget_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnenterEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QTreeWidget) OnEnterEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QTreeWidget_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3486,7 +3486,7 @@ func (this *QTreeWidget) callVirtualBase_LeaveEvent(event *QEvent) {
 	C.QTreeWidget_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QTreeWidget) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QTreeWidget_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3512,7 +3512,7 @@ func (this *QTreeWidget) callVirtualBase_MoveEvent(event *QMoveEvent) {
 	C.QTreeWidget_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+func (this *QTreeWidget) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
 	ok := C.QTreeWidget_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3538,7 +3538,7 @@ func (this *QTreeWidget) callVirtualBase_CloseEvent(event *QCloseEvent) {
 	C.QTreeWidget_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+func (this *QTreeWidget) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
 	ok := C.QTreeWidget_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3564,7 +3564,7 @@ func (this *QTreeWidget) callVirtualBase_TabletEvent(event *QTabletEvent) {
 	C.QTreeWidget_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+func (this *QTreeWidget) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
 	ok := C.QTreeWidget_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3590,7 +3590,7 @@ func (this *QTreeWidget) callVirtualBase_ActionEvent(event *QActionEvent) {
 	C.QTreeWidget_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+func (this *QTreeWidget) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
 	ok := C.QTreeWidget_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3616,7 +3616,7 @@ func (this *QTreeWidget) callVirtualBase_ShowEvent(event *QShowEvent) {
 	C.QTreeWidget_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnshowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+func (this *QTreeWidget) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
 	ok := C.QTreeWidget_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3642,7 +3642,7 @@ func (this *QTreeWidget) callVirtualBase_HideEvent(event *QHideEvent) {
 	C.QTreeWidget_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+func (this *QTreeWidget) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
 	ok := C.QTreeWidget_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3675,7 +3675,7 @@ func (this *QTreeWidget) callVirtualBase_NativeEvent(eventType []byte, message u
 	return (bool)(C.QTreeWidget_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QTreeWidget) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+func (this *QTreeWidget) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
 	ok := C.QTreeWidget_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3709,7 +3709,7 @@ func (this *QTreeWidget) callVirtualBase_Metric(param1 QPaintDevice__PaintDevice
 	return (int)(C.QTreeWidget_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QTreeWidget) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+func (this *QTreeWidget) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
 	ok := C.QTreeWidget_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3737,7 +3737,7 @@ func (this *QTreeWidget) callVirtualBase_InitPainter(painter *QPainter) {
 	C.QTreeWidget_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QTreeWidget) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+func (this *QTreeWidget) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
 	ok := C.QTreeWidget_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3763,7 +3763,7 @@ func (this *QTreeWidget) callVirtualBase_Redirected(offset *QPoint) *QPaintDevic
 	return newQPaintDevice(C.QTreeWidget_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QTreeWidget) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+func (this *QTreeWidget) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	ok := C.QTreeWidget_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3791,7 +3791,7 @@ func (this *QTreeWidget) callVirtualBase_SharedPainter() *QPainter {
 	return newQPainter(C.QTreeWidget_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QTreeWidget) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+func (this *QTreeWidget) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	ok := C.QTreeWidget_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3816,7 +3816,7 @@ func (this *QTreeWidget) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QTreeWidget_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QTreeWidget) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QTreeWidget_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3842,7 +3842,7 @@ func (this *QTreeWidget) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QTreeWidget_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTreeWidget) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QTreeWidget) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QTreeWidget_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3868,7 +3868,7 @@ func (this *QTreeWidget) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QTreeWidget_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTreeWidget) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QTreeWidget) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QTreeWidget_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -3894,7 +3894,7 @@ func (this *QTreeWidget) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 	C.QTreeWidget_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTreeWidget) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QTreeWidget) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QTreeWidget_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

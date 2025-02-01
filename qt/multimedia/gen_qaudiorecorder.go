@@ -230,7 +230,7 @@ func (this *QAudioRecorder) callVirtualBase_MediaObject() *QMediaObject {
 	return newQMediaObject(C.QAudioRecorder_virtualbase_mediaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QAudioRecorder) OnmediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
+func (this *QAudioRecorder) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
 	ok := C.QAudioRecorder_override_virtual_mediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -255,7 +255,7 @@ func (this *QAudioRecorder) callVirtualBase_SetMediaObject(object *QMediaObject)
 	return (bool)(C.QAudioRecorder_virtualbase_setMediaObject(unsafe.Pointer(this.h), object.cPointer()))
 
 }
-func (this *QAudioRecorder) OnsetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
+func (this *QAudioRecorder) OnSetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
 	ok := C.QAudioRecorder_override_virtual_setMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -283,7 +283,7 @@ func (this *QAudioRecorder) callVirtualBase_Event(event *qt.QEvent) bool {
 	return (bool)(C.QAudioRecorder_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QAudioRecorder) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+func (this *QAudioRecorder) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
 	ok := C.QAudioRecorder_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -311,7 +311,7 @@ func (this *QAudioRecorder) callVirtualBase_EventFilter(watched *qt.QObject, eve
 	return (bool)(C.QAudioRecorder_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QAudioRecorder) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+func (this *QAudioRecorder) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
 	ok := C.QAudioRecorder_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -341,7 +341,7 @@ func (this *QAudioRecorder) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 	C.QAudioRecorder_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QAudioRecorder) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+func (this *QAudioRecorder) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
 	ok := C.QAudioRecorder_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -367,7 +367,7 @@ func (this *QAudioRecorder) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 	C.QAudioRecorder_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QAudioRecorder) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+func (this *QAudioRecorder) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
 	ok := C.QAudioRecorder_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -393,7 +393,7 @@ func (this *QAudioRecorder) callVirtualBase_CustomEvent(event *qt.QEvent) {
 	C.QAudioRecorder_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QAudioRecorder) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+func (this *QAudioRecorder) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
 	ok := C.QAudioRecorder_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -419,7 +419,7 @@ func (this *QAudioRecorder) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod
 	C.QAudioRecorder_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QAudioRecorder) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+func (this *QAudioRecorder) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
 	ok := C.QAudioRecorder_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -445,7 +445,7 @@ func (this *QAudioRecorder) callVirtualBase_DisconnectNotify(signal *qt.QMetaMet
 	C.QAudioRecorder_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QAudioRecorder) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+func (this *QAudioRecorder) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
 	ok := C.QAudioRecorder_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

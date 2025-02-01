@@ -311,7 +311,7 @@ func (this *QProgressDialog) callVirtualBase_SizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QProgressDialog) OnsizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QProgressDialog) OnSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QProgressDialog_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -336,7 +336,7 @@ func (this *QProgressDialog) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 	C.QProgressDialog_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnresizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+func (this *QProgressDialog) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
 	ok := C.QProgressDialog_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -362,7 +362,7 @@ func (this *QProgressDialog) callVirtualBase_CloseEvent(event *QCloseEvent) {
 	C.QProgressDialog_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+func (this *QProgressDialog) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
 	ok := C.QProgressDialog_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -388,7 +388,7 @@ func (this *QProgressDialog) callVirtualBase_ChangeEvent(event *QEvent) {
 	C.QProgressDialog_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnchangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QProgressDialog) OnChangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QProgressDialog_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -414,7 +414,7 @@ func (this *QProgressDialog) callVirtualBase_ShowEvent(event *QShowEvent) {
 	C.QProgressDialog_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnshowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+func (this *QProgressDialog) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
 	ok := C.QProgressDialog_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -440,7 +440,7 @@ func (this *QProgressDialog) callVirtualBase_SetVisible(visible bool) {
 	C.QProgressDialog_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QProgressDialog) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+func (this *QProgressDialog) OnSetVisible(slot func(super func(visible bool), visible bool)) {
 	ok := C.QProgressDialog_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -468,7 +468,7 @@ func (this *QProgressDialog) callVirtualBase_MinimumSizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QProgressDialog) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QProgressDialog) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QProgressDialog_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -493,7 +493,7 @@ func (this *QProgressDialog) callVirtualBase_Open() {
 	C.QProgressDialog_virtualbase_open(unsafe.Pointer(this.h))
 
 }
-func (this *QProgressDialog) Onopen(slot func(super func())) {
+func (this *QProgressDialog) OnOpen(slot func(super func())) {
 	ok := C.QProgressDialog_override_virtual_open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -516,7 +516,7 @@ func (this *QProgressDialog) callVirtualBase_Exec() int {
 	return (int)(C.QProgressDialog_virtualbase_exec(unsafe.Pointer(this.h)))
 
 }
-func (this *QProgressDialog) Onexec(slot func(super func() int) int) {
+func (this *QProgressDialog) OnExec(slot func(super func() int) int) {
 	ok := C.QProgressDialog_override_virtual_exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -541,7 +541,7 @@ func (this *QProgressDialog) callVirtualBase_Done(param1 int) {
 	C.QProgressDialog_virtualbase_done(unsafe.Pointer(this.h), (C.int)(param1))
 
 }
-func (this *QProgressDialog) Ondone(slot func(super func(param1 int), param1 int)) {
+func (this *QProgressDialog) OnDone(slot func(super func(param1 int), param1 int)) {
 	ok := C.QProgressDialog_override_virtual_done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -567,7 +567,7 @@ func (this *QProgressDialog) callVirtualBase_Accept() {
 	C.QProgressDialog_virtualbase_accept(unsafe.Pointer(this.h))
 
 }
-func (this *QProgressDialog) Onaccept(slot func(super func())) {
+func (this *QProgressDialog) OnAccept(slot func(super func())) {
 	ok := C.QProgressDialog_override_virtual_accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -590,7 +590,7 @@ func (this *QProgressDialog) callVirtualBase_Reject() {
 	C.QProgressDialog_virtualbase_reject(unsafe.Pointer(this.h))
 
 }
-func (this *QProgressDialog) Onreject(slot func(super func())) {
+func (this *QProgressDialog) OnReject(slot func(super func())) {
 	ok := C.QProgressDialog_override_virtual_reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -613,7 +613,7 @@ func (this *QProgressDialog) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
 	C.QProgressDialog_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QProgressDialog) OnkeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
+func (this *QProgressDialog) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
 	ok := C.QProgressDialog_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -639,7 +639,7 @@ func (this *QProgressDialog) callVirtualBase_ContextMenuEvent(param1 *QContextMe
 	C.QProgressDialog_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QProgressDialog) OncontextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+func (this *QProgressDialog) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
 	ok := C.QProgressDialog_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -665,7 +665,7 @@ func (this *QProgressDialog) callVirtualBase_EventFilter(param1 *QObject, param2
 	return (bool)(C.QProgressDialog_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
 }
-func (this *QProgressDialog) OneventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+func (this *QProgressDialog) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
 	ok := C.QProgressDialog_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -695,7 +695,7 @@ func (this *QProgressDialog) callVirtualBase_DevType() int {
 	return (int)(C.QProgressDialog_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QProgressDialog) OndevType(slot func(super func() int) int) {
+func (this *QProgressDialog) OnDevType(slot func(super func() int) int) {
 	ok := C.QProgressDialog_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -720,7 +720,7 @@ func (this *QProgressDialog) callVirtualBase_HeightForWidth(param1 int) int {
 	return (int)(C.QProgressDialog_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QProgressDialog) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+func (this *QProgressDialog) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
 	ok := C.QProgressDialog_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -748,7 +748,7 @@ func (this *QProgressDialog) callVirtualBase_HasHeightForWidth() bool {
 	return (bool)(C.QProgressDialog_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QProgressDialog) OnhasHeightForWidth(slot func(super func() bool) bool) {
+func (this *QProgressDialog) OnHasHeightForWidth(slot func(super func() bool) bool) {
 	ok := C.QProgressDialog_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -773,7 +773,7 @@ func (this *QProgressDialog) callVirtualBase_PaintEngine() *QPaintEngine {
 	return newQPaintEngine(C.QProgressDialog_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QProgressDialog) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+func (this *QProgressDialog) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	ok := C.QProgressDialog_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -798,7 +798,7 @@ func (this *QProgressDialog) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QProgressDialog_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QProgressDialog) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QProgressDialog) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QProgressDialog_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -826,7 +826,7 @@ func (this *QProgressDialog) callVirtualBase_MousePressEvent(event *QMouseEvent)
 	C.QProgressDialog_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnmousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QProgressDialog) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QProgressDialog_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -852,7 +852,7 @@ func (this *QProgressDialog) callVirtualBase_MouseReleaseEvent(event *QMouseEven
 	C.QProgressDialog_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnmouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QProgressDialog) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QProgressDialog_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -878,7 +878,7 @@ func (this *QProgressDialog) callVirtualBase_MouseDoubleClickEvent(event *QMouse
 	C.QProgressDialog_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QProgressDialog) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QProgressDialog_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -904,7 +904,7 @@ func (this *QProgressDialog) callVirtualBase_MouseMoveEvent(event *QMouseEvent) 
 	C.QProgressDialog_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnmouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QProgressDialog) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QProgressDialog_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -930,7 +930,7 @@ func (this *QProgressDialog) callVirtualBase_WheelEvent(event *QWheelEvent) {
 	C.QProgressDialog_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnwheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+func (this *QProgressDialog) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
 	ok := C.QProgressDialog_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -956,7 +956,7 @@ func (this *QProgressDialog) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 	C.QProgressDialog_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+func (this *QProgressDialog) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
 	ok := C.QProgressDialog_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -982,7 +982,7 @@ func (this *QProgressDialog) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 	C.QProgressDialog_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+func (this *QProgressDialog) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
 	ok := C.QProgressDialog_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1008,7 +1008,7 @@ func (this *QProgressDialog) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 	C.QProgressDialog_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+func (this *QProgressDialog) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
 	ok := C.QProgressDialog_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1034,7 +1034,7 @@ func (this *QProgressDialog) callVirtualBase_EnterEvent(event *QEvent) {
 	C.QProgressDialog_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnenterEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QProgressDialog) OnEnterEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QProgressDialog_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1060,7 +1060,7 @@ func (this *QProgressDialog) callVirtualBase_LeaveEvent(event *QEvent) {
 	C.QProgressDialog_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QProgressDialog) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QProgressDialog_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1086,7 +1086,7 @@ func (this *QProgressDialog) callVirtualBase_PaintEvent(event *QPaintEvent) {
 	C.QProgressDialog_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnpaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
+func (this *QProgressDialog) OnPaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
 	ok := C.QProgressDialog_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1112,7 +1112,7 @@ func (this *QProgressDialog) callVirtualBase_MoveEvent(event *QMoveEvent) {
 	C.QProgressDialog_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+func (this *QProgressDialog) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
 	ok := C.QProgressDialog_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1138,7 +1138,7 @@ func (this *QProgressDialog) callVirtualBase_TabletEvent(event *QTabletEvent) {
 	C.QProgressDialog_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+func (this *QProgressDialog) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
 	ok := C.QProgressDialog_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1164,7 +1164,7 @@ func (this *QProgressDialog) callVirtualBase_ActionEvent(event *QActionEvent) {
 	C.QProgressDialog_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+func (this *QProgressDialog) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
 	ok := C.QProgressDialog_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1190,7 +1190,7 @@ func (this *QProgressDialog) callVirtualBase_DragEnterEvent(event *QDragEnterEve
 	C.QProgressDialog_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+func (this *QProgressDialog) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
 	ok := C.QProgressDialog_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1216,7 +1216,7 @@ func (this *QProgressDialog) callVirtualBase_DragMoveEvent(event *QDragMoveEvent
 	C.QProgressDialog_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+func (this *QProgressDialog) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
 	ok := C.QProgressDialog_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1242,7 +1242,7 @@ func (this *QProgressDialog) callVirtualBase_DragLeaveEvent(event *QDragLeaveEve
 	C.QProgressDialog_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+func (this *QProgressDialog) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
 	ok := C.QProgressDialog_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1268,7 +1268,7 @@ func (this *QProgressDialog) callVirtualBase_DropEvent(event *QDropEvent) {
 	C.QProgressDialog_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+func (this *QProgressDialog) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
 	ok := C.QProgressDialog_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1294,7 +1294,7 @@ func (this *QProgressDialog) callVirtualBase_HideEvent(event *QHideEvent) {
 	C.QProgressDialog_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+func (this *QProgressDialog) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
 	ok := C.QProgressDialog_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1327,7 +1327,7 @@ func (this *QProgressDialog) callVirtualBase_NativeEvent(eventType []byte, messa
 	return (bool)(C.QProgressDialog_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QProgressDialog) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+func (this *QProgressDialog) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
 	ok := C.QProgressDialog_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1361,7 +1361,7 @@ func (this *QProgressDialog) callVirtualBase_Metric(param1 QPaintDevice__PaintDe
 	return (int)(C.QProgressDialog_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QProgressDialog) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+func (this *QProgressDialog) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
 	ok := C.QProgressDialog_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1389,7 +1389,7 @@ func (this *QProgressDialog) callVirtualBase_InitPainter(painter *QPainter) {
 	C.QProgressDialog_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QProgressDialog) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+func (this *QProgressDialog) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
 	ok := C.QProgressDialog_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1415,7 +1415,7 @@ func (this *QProgressDialog) callVirtualBase_Redirected(offset *QPoint) *QPaintD
 	return newQPaintDevice(C.QProgressDialog_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QProgressDialog) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+func (this *QProgressDialog) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	ok := C.QProgressDialog_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1443,7 +1443,7 @@ func (this *QProgressDialog) callVirtualBase_SharedPainter() *QPainter {
 	return newQPainter(C.QProgressDialog_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QProgressDialog) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+func (this *QProgressDialog) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	ok := C.QProgressDialog_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1468,7 +1468,7 @@ func (this *QProgressDialog) callVirtualBase_InputMethodEvent(param1 *QInputMeth
 	C.QProgressDialog_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QProgressDialog) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+func (this *QProgressDialog) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
 	ok := C.QProgressDialog_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1496,7 +1496,7 @@ func (this *QProgressDialog) callVirtualBase_InputMethodQuery(param1 InputMethod
 	return _goptr
 
 }
-func (this *QProgressDialog) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+func (this *QProgressDialog) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
 	ok := C.QProgressDialog_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1524,7 +1524,7 @@ func (this *QProgressDialog) callVirtualBase_FocusNextPrevChild(next bool) bool 
 	return (bool)(C.QProgressDialog_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QProgressDialog) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+func (this *QProgressDialog) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
 	ok := C.QProgressDialog_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1552,7 +1552,7 @@ func (this *QProgressDialog) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QProgressDialog_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QProgressDialog) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QProgressDialog_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1578,7 +1578,7 @@ func (this *QProgressDialog) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QProgressDialog_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QProgressDialog) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QProgressDialog_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1604,7 +1604,7 @@ func (this *QProgressDialog) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QProgressDialog_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QProgressDialog) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QProgressDialog_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1630,7 +1630,7 @@ func (this *QProgressDialog) callVirtualBase_ConnectNotify(signal *QMetaMethod) 
 	C.QProgressDialog_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QProgressDialog) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QProgressDialog) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QProgressDialog_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1656,7 +1656,7 @@ func (this *QProgressDialog) callVirtualBase_DisconnectNotify(signal *QMetaMetho
 	C.QProgressDialog_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QProgressDialog) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QProgressDialog) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QProgressDialog_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

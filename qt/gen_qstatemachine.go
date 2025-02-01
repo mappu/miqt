@@ -293,7 +293,7 @@ func (this *QStateMachine) callVirtualBase_EventFilter(watched *QObject, event *
 	return (bool)(C.QStateMachine_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QStateMachine) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QStateMachine) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QStateMachine_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -323,7 +323,7 @@ func (this *QStateMachine) callVirtualBase_OnEntry(event *QEvent) {
 	C.QStateMachine_virtualbase_onEntry(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OnonEntry(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QStateMachine) OnOnEntry(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QStateMachine_override_virtual_onEntry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -349,7 +349,7 @@ func (this *QStateMachine) callVirtualBase_OnExit(event *QEvent) {
 	C.QStateMachine_virtualbase_onExit(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OnonExit(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QStateMachine) OnOnExit(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QStateMachine_override_virtual_onExit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -375,7 +375,7 @@ func (this *QStateMachine) callVirtualBase_BeginSelectTransitions(event *QEvent)
 	C.QStateMachine_virtualbase_beginSelectTransitions(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OnbeginSelectTransitions(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QStateMachine) OnBeginSelectTransitions(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QStateMachine_override_virtual_beginSelectTransitions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -401,7 +401,7 @@ func (this *QStateMachine) callVirtualBase_EndSelectTransitions(event *QEvent) {
 	C.QStateMachine_virtualbase_endSelectTransitions(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OnendSelectTransitions(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QStateMachine) OnEndSelectTransitions(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QStateMachine_override_virtual_endSelectTransitions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -427,7 +427,7 @@ func (this *QStateMachine) callVirtualBase_BeginMicrostep(event *QEvent) {
 	C.QStateMachine_virtualbase_beginMicrostep(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OnbeginMicrostep(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QStateMachine) OnBeginMicrostep(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QStateMachine_override_virtual_beginMicrostep(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -453,7 +453,7 @@ func (this *QStateMachine) callVirtualBase_EndMicrostep(event *QEvent) {
 	C.QStateMachine_virtualbase_endMicrostep(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OnendMicrostep(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QStateMachine) OnEndMicrostep(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QStateMachine_override_virtual_endMicrostep(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -479,7 +479,7 @@ func (this *QStateMachine) callVirtualBase_Event(e *QEvent) bool {
 	return (bool)(C.QStateMachine_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
 }
-func (this *QStateMachine) Onevent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+func (this *QStateMachine) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
 	ok := C.QStateMachine_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -507,7 +507,7 @@ func (this *QStateMachine) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QStateMachine_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QStateMachine) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QStateMachine_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -533,7 +533,7 @@ func (this *QStateMachine) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QStateMachine_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QStateMachine) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QStateMachine_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -559,7 +559,7 @@ func (this *QStateMachine) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QStateMachine_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QStateMachine) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QStateMachine_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -585,7 +585,7 @@ func (this *QStateMachine) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QStateMachine_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QStateMachine) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QStateMachine) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QStateMachine_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -611,7 +611,7 @@ func (this *QStateMachine) callVirtualBase_DisconnectNotify(signal *QMetaMethod)
 	C.QStateMachine_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QStateMachine) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QStateMachine) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QStateMachine_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

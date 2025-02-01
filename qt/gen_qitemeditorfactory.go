@@ -147,7 +147,7 @@ func (this *QItemEditorFactory) callVirtualBase_CreateEditor(userType int, paren
 	return newQWidget(C.QItemEditorFactory_virtualbase_createEditor(unsafe.Pointer(this.h), (C.int)(userType), parent.cPointer()))
 
 }
-func (this *QItemEditorFactory) OncreateEditor(slot func(super func(userType int, parent *QWidget) *QWidget, userType int, parent *QWidget) *QWidget) {
+func (this *QItemEditorFactory) OnCreateEditor(slot func(super func(userType int, parent *QWidget) *QWidget, userType int, parent *QWidget) *QWidget) {
 	ok := C.QItemEditorFactory_override_virtual_createEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -179,7 +179,7 @@ func (this *QItemEditorFactory) callVirtualBase_ValuePropertyName(userType int) 
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
-func (this *QItemEditorFactory) OnvaluePropertyName(slot func(super func(userType int) []byte, userType int) []byte) {
+func (this *QItemEditorFactory) OnValuePropertyName(slot func(super func(userType int) []byte, userType int) []byte) {
 	ok := C.QItemEditorFactory_override_virtual_valuePropertyName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

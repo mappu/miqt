@@ -173,7 +173,7 @@ func (this *QVideoWidget) callVirtualBase_SizeHint() *qt6.QSize {
 	return _goptr
 
 }
-func (this *QVideoWidget) OnsizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+func (this *QVideoWidget) OnSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
 	ok := C.QVideoWidget_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -198,7 +198,7 @@ func (this *QVideoWidget) callVirtualBase_Event(event *qt6.QEvent) bool {
 	return (bool)(C.QVideoWidget_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QVideoWidget) Onevent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+func (this *QVideoWidget) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
 	ok := C.QVideoWidget_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -226,7 +226,7 @@ func (this *QVideoWidget) callVirtualBase_ShowEvent(event *qt6.QShowEvent) {
 	C.QVideoWidget_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnshowEvent(slot func(super func(event *qt6.QShowEvent), event *qt6.QShowEvent)) {
+func (this *QVideoWidget) OnShowEvent(slot func(super func(event *qt6.QShowEvent), event *qt6.QShowEvent)) {
 	ok := C.QVideoWidget_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -252,7 +252,7 @@ func (this *QVideoWidget) callVirtualBase_HideEvent(event *qt6.QHideEvent) {
 	C.QVideoWidget_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnhideEvent(slot func(super func(event *qt6.QHideEvent), event *qt6.QHideEvent)) {
+func (this *QVideoWidget) OnHideEvent(slot func(super func(event *qt6.QHideEvent), event *qt6.QHideEvent)) {
 	ok := C.QVideoWidget_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -278,7 +278,7 @@ func (this *QVideoWidget) callVirtualBase_ResizeEvent(event *qt6.QResizeEvent) {
 	C.QVideoWidget_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnresizeEvent(slot func(super func(event *qt6.QResizeEvent), event *qt6.QResizeEvent)) {
+func (this *QVideoWidget) OnResizeEvent(slot func(super func(event *qt6.QResizeEvent), event *qt6.QResizeEvent)) {
 	ok := C.QVideoWidget_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -304,7 +304,7 @@ func (this *QVideoWidget) callVirtualBase_MoveEvent(event *qt6.QMoveEvent) {
 	C.QVideoWidget_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnmoveEvent(slot func(super func(event *qt6.QMoveEvent), event *qt6.QMoveEvent)) {
+func (this *QVideoWidget) OnMoveEvent(slot func(super func(event *qt6.QMoveEvent), event *qt6.QMoveEvent)) {
 	ok := C.QVideoWidget_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -330,7 +330,7 @@ func (this *QVideoWidget) callVirtualBase_DevType() int {
 	return (int)(C.QVideoWidget_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QVideoWidget) OndevType(slot func(super func() int) int) {
+func (this *QVideoWidget) OnDevType(slot func(super func() int) int) {
 	ok := C.QVideoWidget_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -355,7 +355,7 @@ func (this *QVideoWidget) callVirtualBase_SetVisible(visible bool) {
 	C.QVideoWidget_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QVideoWidget) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+func (this *QVideoWidget) OnSetVisible(slot func(super func(visible bool), visible bool)) {
 	ok := C.QVideoWidget_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -383,7 +383,7 @@ func (this *QVideoWidget) callVirtualBase_MinimumSizeHint() *qt6.QSize {
 	return _goptr
 
 }
-func (this *QVideoWidget) OnminimumSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
+func (this *QVideoWidget) OnMinimumSizeHint(slot func(super func() *qt6.QSize) *qt6.QSize) {
 	ok := C.QVideoWidget_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -408,7 +408,7 @@ func (this *QVideoWidget) callVirtualBase_HeightForWidth(param1 int) int {
 	return (int)(C.QVideoWidget_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QVideoWidget) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+func (this *QVideoWidget) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
 	ok := C.QVideoWidget_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -436,7 +436,7 @@ func (this *QVideoWidget) callVirtualBase_HasHeightForWidth() bool {
 	return (bool)(C.QVideoWidget_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QVideoWidget) OnhasHeightForWidth(slot func(super func() bool) bool) {
+func (this *QVideoWidget) OnHasHeightForWidth(slot func(super func() bool) bool) {
 	ok := C.QVideoWidget_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -461,7 +461,7 @@ func (this *QVideoWidget) callVirtualBase_PaintEngine() *qt6.QPaintEngine {
 	return qt6.UnsafeNewQPaintEngine(unsafe.Pointer(C.QVideoWidget_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
 }
-func (this *QVideoWidget) OnpaintEngine(slot func(super func() *qt6.QPaintEngine) *qt6.QPaintEngine) {
+func (this *QVideoWidget) OnPaintEngine(slot func(super func() *qt6.QPaintEngine) *qt6.QPaintEngine) {
 	ok := C.QVideoWidget_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -486,7 +486,7 @@ func (this *QVideoWidget) callVirtualBase_MousePressEvent(event *qt6.QMouseEvent
 	C.QVideoWidget_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnmousePressEvent(slot func(super func(event *qt6.QMouseEvent), event *qt6.QMouseEvent)) {
+func (this *QVideoWidget) OnMousePressEvent(slot func(super func(event *qt6.QMouseEvent), event *qt6.QMouseEvent)) {
 	ok := C.QVideoWidget_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -512,7 +512,7 @@ func (this *QVideoWidget) callVirtualBase_MouseReleaseEvent(event *qt6.QMouseEve
 	C.QVideoWidget_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnmouseReleaseEvent(slot func(super func(event *qt6.QMouseEvent), event *qt6.QMouseEvent)) {
+func (this *QVideoWidget) OnMouseReleaseEvent(slot func(super func(event *qt6.QMouseEvent), event *qt6.QMouseEvent)) {
 	ok := C.QVideoWidget_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -538,7 +538,7 @@ func (this *QVideoWidget) callVirtualBase_MouseDoubleClickEvent(event *qt6.QMous
 	C.QVideoWidget_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnmouseDoubleClickEvent(slot func(super func(event *qt6.QMouseEvent), event *qt6.QMouseEvent)) {
+func (this *QVideoWidget) OnMouseDoubleClickEvent(slot func(super func(event *qt6.QMouseEvent), event *qt6.QMouseEvent)) {
 	ok := C.QVideoWidget_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -564,7 +564,7 @@ func (this *QVideoWidget) callVirtualBase_MouseMoveEvent(event *qt6.QMouseEvent)
 	C.QVideoWidget_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnmouseMoveEvent(slot func(super func(event *qt6.QMouseEvent), event *qt6.QMouseEvent)) {
+func (this *QVideoWidget) OnMouseMoveEvent(slot func(super func(event *qt6.QMouseEvent), event *qt6.QMouseEvent)) {
 	ok := C.QVideoWidget_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -590,7 +590,7 @@ func (this *QVideoWidget) callVirtualBase_WheelEvent(event *qt6.QWheelEvent) {
 	C.QVideoWidget_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnwheelEvent(slot func(super func(event *qt6.QWheelEvent), event *qt6.QWheelEvent)) {
+func (this *QVideoWidget) OnWheelEvent(slot func(super func(event *qt6.QWheelEvent), event *qt6.QWheelEvent)) {
 	ok := C.QVideoWidget_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -616,7 +616,7 @@ func (this *QVideoWidget) callVirtualBase_KeyPressEvent(event *qt6.QKeyEvent) {
 	C.QVideoWidget_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnkeyPressEvent(slot func(super func(event *qt6.QKeyEvent), event *qt6.QKeyEvent)) {
+func (this *QVideoWidget) OnKeyPressEvent(slot func(super func(event *qt6.QKeyEvent), event *qt6.QKeyEvent)) {
 	ok := C.QVideoWidget_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -642,7 +642,7 @@ func (this *QVideoWidget) callVirtualBase_KeyReleaseEvent(event *qt6.QKeyEvent) 
 	C.QVideoWidget_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnkeyReleaseEvent(slot func(super func(event *qt6.QKeyEvent), event *qt6.QKeyEvent)) {
+func (this *QVideoWidget) OnKeyReleaseEvent(slot func(super func(event *qt6.QKeyEvent), event *qt6.QKeyEvent)) {
 	ok := C.QVideoWidget_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -668,7 +668,7 @@ func (this *QVideoWidget) callVirtualBase_FocusInEvent(event *qt6.QFocusEvent) {
 	C.QVideoWidget_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnfocusInEvent(slot func(super func(event *qt6.QFocusEvent), event *qt6.QFocusEvent)) {
+func (this *QVideoWidget) OnFocusInEvent(slot func(super func(event *qt6.QFocusEvent), event *qt6.QFocusEvent)) {
 	ok := C.QVideoWidget_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -694,7 +694,7 @@ func (this *QVideoWidget) callVirtualBase_FocusOutEvent(event *qt6.QFocusEvent) 
 	C.QVideoWidget_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnfocusOutEvent(slot func(super func(event *qt6.QFocusEvent), event *qt6.QFocusEvent)) {
+func (this *QVideoWidget) OnFocusOutEvent(slot func(super func(event *qt6.QFocusEvent), event *qt6.QFocusEvent)) {
 	ok := C.QVideoWidget_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -720,7 +720,7 @@ func (this *QVideoWidget) callVirtualBase_EnterEvent(event *qt6.QEnterEvent) {
 	C.QVideoWidget_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEnterEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnenterEvent(slot func(super func(event *qt6.QEnterEvent), event *qt6.QEnterEvent)) {
+func (this *QVideoWidget) OnEnterEvent(slot func(super func(event *qt6.QEnterEvent), event *qt6.QEnterEvent)) {
 	ok := C.QVideoWidget_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -746,7 +746,7 @@ func (this *QVideoWidget) callVirtualBase_LeaveEvent(event *qt6.QEvent) {
 	C.QVideoWidget_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnleaveEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+func (this *QVideoWidget) OnLeaveEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
 	ok := C.QVideoWidget_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -772,7 +772,7 @@ func (this *QVideoWidget) callVirtualBase_PaintEvent(event *qt6.QPaintEvent) {
 	C.QVideoWidget_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnpaintEvent(slot func(super func(event *qt6.QPaintEvent), event *qt6.QPaintEvent)) {
+func (this *QVideoWidget) OnPaintEvent(slot func(super func(event *qt6.QPaintEvent), event *qt6.QPaintEvent)) {
 	ok := C.QVideoWidget_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -798,7 +798,7 @@ func (this *QVideoWidget) callVirtualBase_CloseEvent(event *qt6.QCloseEvent) {
 	C.QVideoWidget_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OncloseEvent(slot func(super func(event *qt6.QCloseEvent), event *qt6.QCloseEvent)) {
+func (this *QVideoWidget) OnCloseEvent(slot func(super func(event *qt6.QCloseEvent), event *qt6.QCloseEvent)) {
 	ok := C.QVideoWidget_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -824,7 +824,7 @@ func (this *QVideoWidget) callVirtualBase_ContextMenuEvent(event *qt6.QContextMe
 	C.QVideoWidget_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OncontextMenuEvent(slot func(super func(event *qt6.QContextMenuEvent), event *qt6.QContextMenuEvent)) {
+func (this *QVideoWidget) OnContextMenuEvent(slot func(super func(event *qt6.QContextMenuEvent), event *qt6.QContextMenuEvent)) {
 	ok := C.QVideoWidget_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -850,7 +850,7 @@ func (this *QVideoWidget) callVirtualBase_TabletEvent(event *qt6.QTabletEvent) {
 	C.QVideoWidget_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OntabletEvent(slot func(super func(event *qt6.QTabletEvent), event *qt6.QTabletEvent)) {
+func (this *QVideoWidget) OnTabletEvent(slot func(super func(event *qt6.QTabletEvent), event *qt6.QTabletEvent)) {
 	ok := C.QVideoWidget_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -876,7 +876,7 @@ func (this *QVideoWidget) callVirtualBase_ActionEvent(event *qt6.QActionEvent) {
 	C.QVideoWidget_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnactionEvent(slot func(super func(event *qt6.QActionEvent), event *qt6.QActionEvent)) {
+func (this *QVideoWidget) OnActionEvent(slot func(super func(event *qt6.QActionEvent), event *qt6.QActionEvent)) {
 	ok := C.QVideoWidget_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -902,7 +902,7 @@ func (this *QVideoWidget) callVirtualBase_DragEnterEvent(event *qt6.QDragEnterEv
 	C.QVideoWidget_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OndragEnterEvent(slot func(super func(event *qt6.QDragEnterEvent), event *qt6.QDragEnterEvent)) {
+func (this *QVideoWidget) OnDragEnterEvent(slot func(super func(event *qt6.QDragEnterEvent), event *qt6.QDragEnterEvent)) {
 	ok := C.QVideoWidget_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -928,7 +928,7 @@ func (this *QVideoWidget) callVirtualBase_DragMoveEvent(event *qt6.QDragMoveEven
 	C.QVideoWidget_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OndragMoveEvent(slot func(super func(event *qt6.QDragMoveEvent), event *qt6.QDragMoveEvent)) {
+func (this *QVideoWidget) OnDragMoveEvent(slot func(super func(event *qt6.QDragMoveEvent), event *qt6.QDragMoveEvent)) {
 	ok := C.QVideoWidget_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -954,7 +954,7 @@ func (this *QVideoWidget) callVirtualBase_DragLeaveEvent(event *qt6.QDragLeaveEv
 	C.QVideoWidget_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OndragLeaveEvent(slot func(super func(event *qt6.QDragLeaveEvent), event *qt6.QDragLeaveEvent)) {
+func (this *QVideoWidget) OnDragLeaveEvent(slot func(super func(event *qt6.QDragLeaveEvent), event *qt6.QDragLeaveEvent)) {
 	ok := C.QVideoWidget_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -980,7 +980,7 @@ func (this *QVideoWidget) callVirtualBase_DropEvent(event *qt6.QDropEvent) {
 	C.QVideoWidget_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OndropEvent(slot func(super func(event *qt6.QDropEvent), event *qt6.QDropEvent)) {
+func (this *QVideoWidget) OnDropEvent(slot func(super func(event *qt6.QDropEvent), event *qt6.QDropEvent)) {
 	ok := C.QVideoWidget_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1013,7 +1013,7 @@ func (this *QVideoWidget) callVirtualBase_NativeEvent(eventType []byte, message 
 	return (bool)(C.QVideoWidget_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
 
 }
-func (this *QVideoWidget) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+func (this *QVideoWidget) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
 	ok := C.QVideoWidget_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1047,7 +1047,7 @@ func (this *QVideoWidget) callVirtualBase_ChangeEvent(param1 *qt6.QEvent) {
 	C.QVideoWidget_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnchangeEvent(slot func(super func(param1 *qt6.QEvent), param1 *qt6.QEvent)) {
+func (this *QVideoWidget) OnChangeEvent(slot func(super func(param1 *qt6.QEvent), param1 *qt6.QEvent)) {
 	ok := C.QVideoWidget_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1073,7 +1073,7 @@ func (this *QVideoWidget) callVirtualBase_Metric(param1 qt6.QPaintDevice__PaintD
 	return (int)(C.QVideoWidget_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QVideoWidget) Onmetric(slot func(super func(param1 qt6.QPaintDevice__PaintDeviceMetric) int, param1 qt6.QPaintDevice__PaintDeviceMetric) int) {
+func (this *QVideoWidget) OnMetric(slot func(super func(param1 qt6.QPaintDevice__PaintDeviceMetric) int, param1 qt6.QPaintDevice__PaintDeviceMetric) int) {
 	ok := C.QVideoWidget_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1101,7 +1101,7 @@ func (this *QVideoWidget) callVirtualBase_InitPainter(painter *qt6.QPainter) {
 	C.QVideoWidget_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OninitPainter(slot func(super func(painter *qt6.QPainter), painter *qt6.QPainter)) {
+func (this *QVideoWidget) OnInitPainter(slot func(super func(painter *qt6.QPainter), painter *qt6.QPainter)) {
 	ok := C.QVideoWidget_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1127,7 +1127,7 @@ func (this *QVideoWidget) callVirtualBase_Redirected(offset *qt6.QPoint) *qt6.QP
 	return qt6.UnsafeNewQPaintDevice(unsafe.Pointer(C.QVideoWidget_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
 }
-func (this *QVideoWidget) Onredirected(slot func(super func(offset *qt6.QPoint) *qt6.QPaintDevice, offset *qt6.QPoint) *qt6.QPaintDevice) {
+func (this *QVideoWidget) OnRedirected(slot func(super func(offset *qt6.QPoint) *qt6.QPaintDevice, offset *qt6.QPoint) *qt6.QPaintDevice) {
 	ok := C.QVideoWidget_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1155,7 +1155,7 @@ func (this *QVideoWidget) callVirtualBase_SharedPainter() *qt6.QPainter {
 	return qt6.UnsafeNewQPainter(unsafe.Pointer(C.QVideoWidget_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
 }
-func (this *QVideoWidget) OnsharedPainter(slot func(super func() *qt6.QPainter) *qt6.QPainter) {
+func (this *QVideoWidget) OnSharedPainter(slot func(super func() *qt6.QPainter) *qt6.QPainter) {
 	ok := C.QVideoWidget_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1180,7 +1180,7 @@ func (this *QVideoWidget) callVirtualBase_InputMethodEvent(param1 *qt6.QInputMet
 	C.QVideoWidget_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OninputMethodEvent(slot func(super func(param1 *qt6.QInputMethodEvent), param1 *qt6.QInputMethodEvent)) {
+func (this *QVideoWidget) OnInputMethodEvent(slot func(super func(param1 *qt6.QInputMethodEvent), param1 *qt6.QInputMethodEvent)) {
 	ok := C.QVideoWidget_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1208,7 +1208,7 @@ func (this *QVideoWidget) callVirtualBase_InputMethodQuery(param1 qt6.InputMetho
 	return _goptr
 
 }
-func (this *QVideoWidget) OninputMethodQuery(slot func(super func(param1 qt6.InputMethodQuery) *qt6.QVariant, param1 qt6.InputMethodQuery) *qt6.QVariant) {
+func (this *QVideoWidget) OnInputMethodQuery(slot func(super func(param1 qt6.InputMethodQuery) *qt6.QVariant, param1 qt6.InputMethodQuery) *qt6.QVariant) {
 	ok := C.QVideoWidget_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1236,7 +1236,7 @@ func (this *QVideoWidget) callVirtualBase_FocusNextPrevChild(next bool) bool {
 	return (bool)(C.QVideoWidget_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QVideoWidget) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+func (this *QVideoWidget) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
 	ok := C.QVideoWidget_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1264,7 +1264,7 @@ func (this *QVideoWidget) callVirtualBase_EventFilter(watched *qt6.QObject, even
 	return (bool)(C.QVideoWidget_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QVideoWidget) OneventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+func (this *QVideoWidget) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
 	ok := C.QVideoWidget_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1294,7 +1294,7 @@ func (this *QVideoWidget) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 	C.QVideoWidget_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OntimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+func (this *QVideoWidget) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
 	ok := C.QVideoWidget_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1320,7 +1320,7 @@ func (this *QVideoWidget) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 	C.QVideoWidget_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnchildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+func (this *QVideoWidget) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
 	ok := C.QVideoWidget_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1346,7 +1346,7 @@ func (this *QVideoWidget) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 	C.QVideoWidget_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OncustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+func (this *QVideoWidget) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
 	ok := C.QVideoWidget_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1372,7 +1372,7 @@ func (this *QVideoWidget) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod)
 	C.QVideoWidget_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+func (this *QVideoWidget) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
 	ok := C.QVideoWidget_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1398,7 +1398,7 @@ func (this *QVideoWidget) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMeth
 	C.QVideoWidget_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OndisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+func (this *QVideoWidget) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
 	ok := C.QVideoWidget_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

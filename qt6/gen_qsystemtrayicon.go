@@ -299,7 +299,7 @@ func (this *QSystemTrayIcon) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QSystemTrayIcon_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QSystemTrayIcon) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QSystemTrayIcon) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QSystemTrayIcon_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -327,7 +327,7 @@ func (this *QSystemTrayIcon) callVirtualBase_EventFilter(watched *QObject, event
 	return (bool)(C.QSystemTrayIcon_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QSystemTrayIcon) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QSystemTrayIcon) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QSystemTrayIcon_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -357,7 +357,7 @@ func (this *QSystemTrayIcon) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QSystemTrayIcon_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSystemTrayIcon) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QSystemTrayIcon) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QSystemTrayIcon_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -383,7 +383,7 @@ func (this *QSystemTrayIcon) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QSystemTrayIcon_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSystemTrayIcon) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QSystemTrayIcon) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QSystemTrayIcon_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -409,7 +409,7 @@ func (this *QSystemTrayIcon) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QSystemTrayIcon_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSystemTrayIcon) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QSystemTrayIcon) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QSystemTrayIcon_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -435,7 +435,7 @@ func (this *QSystemTrayIcon) callVirtualBase_ConnectNotify(signal *QMetaMethod) 
 	C.QSystemTrayIcon_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSystemTrayIcon) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QSystemTrayIcon) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QSystemTrayIcon_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -461,7 +461,7 @@ func (this *QSystemTrayIcon) callVirtualBase_DisconnectNotify(signal *QMetaMetho
 	C.QSystemTrayIcon_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSystemTrayIcon) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QSystemTrayIcon) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QSystemTrayIcon_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

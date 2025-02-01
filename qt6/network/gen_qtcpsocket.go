@@ -121,7 +121,7 @@ func (this *QTcpSocket) callVirtualBase_Resume() {
 	C.QTcpSocket_virtualbase_resume(unsafe.Pointer(this.h))
 
 }
-func (this *QTcpSocket) Onresume(slot func(super func())) {
+func (this *QTcpSocket) OnResume(slot func(super func())) {
 	ok := C.QTcpSocket_override_virtual_resume(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -144,7 +144,7 @@ func (this *QTcpSocket) callVirtualBase_Bind(address *QHostAddress, port uint16,
 	return (bool)(C.QTcpSocket_virtualbase_bind(unsafe.Pointer(this.h), address.cPointer(), (C.uint16_t)(port), (C.int)(mode)))
 
 }
-func (this *QTcpSocket) Onbind(slot func(super func(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool, address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool) {
+func (this *QTcpSocket) OnBind(slot func(super func(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool, address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool) {
 	ok := C.QTcpSocket_override_virtual_bind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -180,7 +180,7 @@ func (this *QTcpSocket) callVirtualBase_ConnectToHost(hostName string, port uint
 	C.QTcpSocket_virtualbase_connectToHost(unsafe.Pointer(this.h), hostName_ms, (C.uint16_t)(port), (C.int)(mode), (C.int)(protocol))
 
 }
-func (this *QTcpSocket) OnconnectToHost(slot func(super func(hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol), hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol)) {
+func (this *QTcpSocket) OnConnectToHost(slot func(super func(hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol), hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol)) {
 	ok := C.QTcpSocket_override_virtual_connectToHost(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -214,7 +214,7 @@ func (this *QTcpSocket) callVirtualBase_DisconnectFromHost() {
 	C.QTcpSocket_virtualbase_disconnectFromHost(unsafe.Pointer(this.h))
 
 }
-func (this *QTcpSocket) OndisconnectFromHost(slot func(super func())) {
+func (this *QTcpSocket) OnDisconnectFromHost(slot func(super func())) {
 	ok := C.QTcpSocket_override_virtual_disconnectFromHost(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -237,7 +237,7 @@ func (this *QTcpSocket) callVirtualBase_BytesAvailable() int64 {
 	return (int64)(C.QTcpSocket_virtualbase_bytesAvailable(unsafe.Pointer(this.h)))
 
 }
-func (this *QTcpSocket) OnbytesAvailable(slot func(super func() int64) int64) {
+func (this *QTcpSocket) OnBytesAvailable(slot func(super func() int64) int64) {
 	ok := C.QTcpSocket_override_virtual_bytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -262,7 +262,7 @@ func (this *QTcpSocket) callVirtualBase_BytesToWrite() int64 {
 	return (int64)(C.QTcpSocket_virtualbase_bytesToWrite(unsafe.Pointer(this.h)))
 
 }
-func (this *QTcpSocket) OnbytesToWrite(slot func(super func() int64) int64) {
+func (this *QTcpSocket) OnBytesToWrite(slot func(super func() int64) int64) {
 	ok := C.QTcpSocket_override_virtual_bytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -287,7 +287,7 @@ func (this *QTcpSocket) callVirtualBase_SetReadBufferSize(size int64) {
 	C.QTcpSocket_virtualbase_setReadBufferSize(unsafe.Pointer(this.h), (C.longlong)(size))
 
 }
-func (this *QTcpSocket) OnsetReadBufferSize(slot func(super func(size int64), size int64)) {
+func (this *QTcpSocket) OnSetReadBufferSize(slot func(super func(size int64), size int64)) {
 	ok := C.QTcpSocket_override_virtual_setReadBufferSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -313,7 +313,7 @@ func (this *QTcpSocket) callVirtualBase_SocketDescriptor() uintptr {
 	return (uintptr)(C.QTcpSocket_virtualbase_socketDescriptor(unsafe.Pointer(this.h)))
 
 }
-func (this *QTcpSocket) OnsocketDescriptor(slot func(super func() uintptr) uintptr) {
+func (this *QTcpSocket) OnSocketDescriptor(slot func(super func() uintptr) uintptr) {
 	ok := C.QTcpSocket_override_virtual_socketDescriptor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -338,7 +338,7 @@ func (this *QTcpSocket) callVirtualBase_SetSocketDescriptor(socketDescriptor uin
 	return (bool)(C.QTcpSocket_virtualbase_setSocketDescriptor(unsafe.Pointer(this.h), (C.intptr_t)(socketDescriptor), (C.int)(state), (C.int)(openMode)))
 
 }
-func (this *QTcpSocket) OnsetSocketDescriptor(slot func(super func(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool, socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool) {
+func (this *QTcpSocket) OnSetSocketDescriptor(slot func(super func(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool, socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool) {
 	ok := C.QTcpSocket_override_virtual_setSocketDescriptor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -370,7 +370,7 @@ func (this *QTcpSocket) callVirtualBase_SetSocketOption(option QAbstractSocket__
 	C.QTcpSocket_virtualbase_setSocketOption(unsafe.Pointer(this.h), (C.int)(option), (*C.QVariant)(value.UnsafePointer()))
 
 }
-func (this *QTcpSocket) OnsetSocketOption(slot func(super func(option QAbstractSocket__SocketOption, value *qt6.QVariant), option QAbstractSocket__SocketOption, value *qt6.QVariant)) {
+func (this *QTcpSocket) OnSetSocketOption(slot func(super func(option QAbstractSocket__SocketOption, value *qt6.QVariant), option QAbstractSocket__SocketOption, value *qt6.QVariant)) {
 	ok := C.QTcpSocket_override_virtual_setSocketOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -400,7 +400,7 @@ func (this *QTcpSocket) callVirtualBase_SocketOption(option QAbstractSocket__Soc
 	return _goptr
 
 }
-func (this *QTcpSocket) OnsocketOption(slot func(super func(option QAbstractSocket__SocketOption) *qt6.QVariant, option QAbstractSocket__SocketOption) *qt6.QVariant) {
+func (this *QTcpSocket) OnSocketOption(slot func(super func(option QAbstractSocket__SocketOption) *qt6.QVariant, option QAbstractSocket__SocketOption) *qt6.QVariant) {
 	ok := C.QTcpSocket_override_virtual_socketOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -428,7 +428,7 @@ func (this *QTcpSocket) callVirtualBase_Close() {
 	C.QTcpSocket_virtualbase_close(unsafe.Pointer(this.h))
 
 }
-func (this *QTcpSocket) Onclose(slot func(super func())) {
+func (this *QTcpSocket) OnClose(slot func(super func())) {
 	ok := C.QTcpSocket_override_virtual_close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -451,7 +451,7 @@ func (this *QTcpSocket) callVirtualBase_IsSequential() bool {
 	return (bool)(C.QTcpSocket_virtualbase_isSequential(unsafe.Pointer(this.h)))
 
 }
-func (this *QTcpSocket) OnisSequential(slot func(super func() bool) bool) {
+func (this *QTcpSocket) OnIsSequential(slot func(super func() bool) bool) {
 	ok := C.QTcpSocket_override_virtual_isSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -476,7 +476,7 @@ func (this *QTcpSocket) callVirtualBase_WaitForConnected(msecs int) bool {
 	return (bool)(C.QTcpSocket_virtualbase_waitForConnected(unsafe.Pointer(this.h), (C.int)(msecs)))
 
 }
-func (this *QTcpSocket) OnwaitForConnected(slot func(super func(msecs int) bool, msecs int) bool) {
+func (this *QTcpSocket) OnWaitForConnected(slot func(super func(msecs int) bool, msecs int) bool) {
 	ok := C.QTcpSocket_override_virtual_waitForConnected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -504,7 +504,7 @@ func (this *QTcpSocket) callVirtualBase_WaitForReadyRead(msecs int) bool {
 	return (bool)(C.QTcpSocket_virtualbase_waitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
 
 }
-func (this *QTcpSocket) OnwaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
+func (this *QTcpSocket) OnWaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
 	ok := C.QTcpSocket_override_virtual_waitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -532,7 +532,7 @@ func (this *QTcpSocket) callVirtualBase_WaitForBytesWritten(msecs int) bool {
 	return (bool)(C.QTcpSocket_virtualbase_waitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
 
 }
-func (this *QTcpSocket) OnwaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
+func (this *QTcpSocket) OnWaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
 	ok := C.QTcpSocket_override_virtual_waitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -560,7 +560,7 @@ func (this *QTcpSocket) callVirtualBase_WaitForDisconnected(msecs int) bool {
 	return (bool)(C.QTcpSocket_virtualbase_waitForDisconnected(unsafe.Pointer(this.h), (C.int)(msecs)))
 
 }
-func (this *QTcpSocket) OnwaitForDisconnected(slot func(super func(msecs int) bool, msecs int) bool) {
+func (this *QTcpSocket) OnWaitForDisconnected(slot func(super func(msecs int) bool, msecs int) bool) {
 	ok := C.QTcpSocket_override_virtual_waitForDisconnected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -590,7 +590,7 @@ func (this *QTcpSocket) callVirtualBase_ReadData(data string, maxlen int64) int6
 	return (int64)(C.QTcpSocket_virtualbase_readData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
 
 }
-func (this *QTcpSocket) OnreadData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+func (this *QTcpSocket) OnReadData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
 	ok := C.QTcpSocket_override_virtual_readData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -623,7 +623,7 @@ func (this *QTcpSocket) callVirtualBase_ReadLineData(data string, maxlen int64) 
 	return (int64)(C.QTcpSocket_virtualbase_readLineData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
 
 }
-func (this *QTcpSocket) OnreadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+func (this *QTcpSocket) OnReadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
 	ok := C.QTcpSocket_override_virtual_readLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -654,7 +654,7 @@ func (this *QTcpSocket) callVirtualBase_SkipData(maxSize int64) int64 {
 	return (int64)(C.QTcpSocket_virtualbase_skipData(unsafe.Pointer(this.h), (C.longlong)(maxSize)))
 
 }
-func (this *QTcpSocket) OnskipData(slot func(super func(maxSize int64) int64, maxSize int64) int64) {
+func (this *QTcpSocket) OnSkipData(slot func(super func(maxSize int64) int64, maxSize int64) int64) {
 	ok := C.QTcpSocket_override_virtual_skipData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -684,7 +684,7 @@ func (this *QTcpSocket) callVirtualBase_WriteData(data string, lenVal int64) int
 	return (int64)(C.QTcpSocket_virtualbase_writeData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(lenVal)))
 
 }
-func (this *QTcpSocket) OnwriteData(slot func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64) {
+func (this *QTcpSocket) OnWriteData(slot func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64) {
 	ok := C.QTcpSocket_override_virtual_writeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -715,7 +715,7 @@ func (this *QTcpSocket) callVirtualBase_Open(mode qt6.QIODeviceBase__OpenModeFla
 	return (bool)(C.QTcpSocket_virtualbase_open(unsafe.Pointer(this.h), (C.int)(mode)))
 
 }
-func (this *QTcpSocket) Onopen(slot func(super func(mode qt6.QIODeviceBase__OpenModeFlag) bool, mode qt6.QIODeviceBase__OpenModeFlag) bool) {
+func (this *QTcpSocket) OnOpen(slot func(super func(mode qt6.QIODeviceBase__OpenModeFlag) bool, mode qt6.QIODeviceBase__OpenModeFlag) bool) {
 	ok := C.QTcpSocket_override_virtual_open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -743,7 +743,7 @@ func (this *QTcpSocket) callVirtualBase_Pos() int64 {
 	return (int64)(C.QTcpSocket_virtualbase_pos(unsafe.Pointer(this.h)))
 
 }
-func (this *QTcpSocket) Onpos(slot func(super func() int64) int64) {
+func (this *QTcpSocket) OnPos(slot func(super func() int64) int64) {
 	ok := C.QTcpSocket_override_virtual_pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -768,7 +768,7 @@ func (this *QTcpSocket) callVirtualBase_Size() int64 {
 	return (int64)(C.QTcpSocket_virtualbase_size(unsafe.Pointer(this.h)))
 
 }
-func (this *QTcpSocket) Onsize(slot func(super func() int64) int64) {
+func (this *QTcpSocket) OnSize(slot func(super func() int64) int64) {
 	ok := C.QTcpSocket_override_virtual_size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -793,7 +793,7 @@ func (this *QTcpSocket) callVirtualBase_Seek(pos int64) bool {
 	return (bool)(C.QTcpSocket_virtualbase_seek(unsafe.Pointer(this.h), (C.longlong)(pos)))
 
 }
-func (this *QTcpSocket) Onseek(slot func(super func(pos int64) bool, pos int64) bool) {
+func (this *QTcpSocket) OnSeek(slot func(super func(pos int64) bool, pos int64) bool) {
 	ok := C.QTcpSocket_override_virtual_seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -821,7 +821,7 @@ func (this *QTcpSocket) callVirtualBase_AtEnd() bool {
 	return (bool)(C.QTcpSocket_virtualbase_atEnd(unsafe.Pointer(this.h)))
 
 }
-func (this *QTcpSocket) OnatEnd(slot func(super func() bool) bool) {
+func (this *QTcpSocket) OnAtEnd(slot func(super func() bool) bool) {
 	ok := C.QTcpSocket_override_virtual_atEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -846,7 +846,7 @@ func (this *QTcpSocket) callVirtualBase_Reset() bool {
 	return (bool)(C.QTcpSocket_virtualbase_reset(unsafe.Pointer(this.h)))
 
 }
-func (this *QTcpSocket) Onreset(slot func(super func() bool) bool) {
+func (this *QTcpSocket) OnReset(slot func(super func() bool) bool) {
 	ok := C.QTcpSocket_override_virtual_reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -871,7 +871,7 @@ func (this *QTcpSocket) callVirtualBase_CanReadLine() bool {
 	return (bool)(C.QTcpSocket_virtualbase_canReadLine(unsafe.Pointer(this.h)))
 
 }
-func (this *QTcpSocket) OncanReadLine(slot func(super func() bool) bool) {
+func (this *QTcpSocket) OnCanReadLine(slot func(super func() bool) bool) {
 	ok := C.QTcpSocket_override_virtual_canReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -896,7 +896,7 @@ func (this *QTcpSocket) callVirtualBase_Event(event *qt6.QEvent) bool {
 	return (bool)(C.QTcpSocket_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QTcpSocket) Onevent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+func (this *QTcpSocket) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
 	ok := C.QTcpSocket_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -924,7 +924,7 @@ func (this *QTcpSocket) callVirtualBase_EventFilter(watched *qt6.QObject, event 
 	return (bool)(C.QTcpSocket_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QTcpSocket) OneventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+func (this *QTcpSocket) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
 	ok := C.QTcpSocket_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -954,7 +954,7 @@ func (this *QTcpSocket) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 	C.QTcpSocket_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QTcpSocket) OntimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+func (this *QTcpSocket) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
 	ok := C.QTcpSocket_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -980,7 +980,7 @@ func (this *QTcpSocket) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 	C.QTcpSocket_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QTcpSocket) OnchildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+func (this *QTcpSocket) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
 	ok := C.QTcpSocket_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1006,7 +1006,7 @@ func (this *QTcpSocket) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 	C.QTcpSocket_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QTcpSocket) OncustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+func (this *QTcpSocket) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
 	ok := C.QTcpSocket_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1032,7 +1032,7 @@ func (this *QTcpSocket) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
 	C.QTcpSocket_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QTcpSocket) OnconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+func (this *QTcpSocket) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
 	ok := C.QTcpSocket_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1058,7 +1058,7 @@ func (this *QTcpSocket) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod
 	C.QTcpSocket_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QTcpSocket) OndisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+func (this *QTcpSocket) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
 	ok := C.QTcpSocket_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

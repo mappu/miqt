@@ -496,7 +496,7 @@ func (this *QMovie) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QMovie_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QMovie) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QMovie) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QMovie_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -524,7 +524,7 @@ func (this *QMovie) callVirtualBase_EventFilter(watched *QObject, event *QEvent)
 	return (bool)(C.QMovie_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QMovie) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QMovie) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QMovie_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -554,7 +554,7 @@ func (this *QMovie) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QMovie_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMovie) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QMovie) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QMovie_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -580,7 +580,7 @@ func (this *QMovie) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QMovie_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMovie) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QMovie) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QMovie_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -606,7 +606,7 @@ func (this *QMovie) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QMovie_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMovie) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QMovie) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QMovie_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -632,7 +632,7 @@ func (this *QMovie) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QMovie_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QMovie) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QMovie) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QMovie_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -658,7 +658,7 @@ func (this *QMovie) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 	C.QMovie_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QMovie) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QMovie) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QMovie_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

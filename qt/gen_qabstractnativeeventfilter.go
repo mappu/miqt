@@ -62,7 +62,7 @@ func (this *QAbstractNativeEventFilter) NativeEventFilter(eventType []byte, mess
 	eventType_alias.len = C.size_t(len(eventType))
 	return (bool)(C.QAbstractNativeEventFilter_nativeEventFilter(this.h, eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 }
-func (this *QAbstractNativeEventFilter) OnnativeEventFilter(slot func(eventType []byte, message unsafe.Pointer, result *int64) bool) {
+func (this *QAbstractNativeEventFilter) OnNativeEventFilter(slot func(eventType []byte, message unsafe.Pointer, result *int64) bool) {
 	ok := C.QAbstractNativeEventFilter_override_virtual_nativeEventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

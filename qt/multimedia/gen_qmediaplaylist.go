@@ -541,7 +541,7 @@ func (this *QMediaPlaylist) callVirtualBase_MediaObject() *QMediaObject {
 	return newQMediaObject(C.QMediaPlaylist_virtualbase_mediaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QMediaPlaylist) OnmediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
+func (this *QMediaPlaylist) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
 	ok := C.QMediaPlaylist_override_virtual_mediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -566,7 +566,7 @@ func (this *QMediaPlaylist) callVirtualBase_SetMediaObject(object *QMediaObject)
 	return (bool)(C.QMediaPlaylist_virtualbase_setMediaObject(unsafe.Pointer(this.h), object.cPointer()))
 
 }
-func (this *QMediaPlaylist) OnsetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
+func (this *QMediaPlaylist) OnSetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
 	ok := C.QMediaPlaylist_override_virtual_setMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -594,7 +594,7 @@ func (this *QMediaPlaylist) callVirtualBase_Event(event *qt.QEvent) bool {
 	return (bool)(C.QMediaPlaylist_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QMediaPlaylist) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+func (this *QMediaPlaylist) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
 	ok := C.QMediaPlaylist_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -622,7 +622,7 @@ func (this *QMediaPlaylist) callVirtualBase_EventFilter(watched *qt.QObject, eve
 	return (bool)(C.QMediaPlaylist_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QMediaPlaylist) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+func (this *QMediaPlaylist) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
 	ok := C.QMediaPlaylist_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -652,7 +652,7 @@ func (this *QMediaPlaylist) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 	C.QMediaPlaylist_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QMediaPlaylist) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+func (this *QMediaPlaylist) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
 	ok := C.QMediaPlaylist_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -678,7 +678,7 @@ func (this *QMediaPlaylist) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 	C.QMediaPlaylist_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QMediaPlaylist) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+func (this *QMediaPlaylist) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
 	ok := C.QMediaPlaylist_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -704,7 +704,7 @@ func (this *QMediaPlaylist) callVirtualBase_CustomEvent(event *qt.QEvent) {
 	C.QMediaPlaylist_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QMediaPlaylist) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+func (this *QMediaPlaylist) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
 	ok := C.QMediaPlaylist_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -730,7 +730,7 @@ func (this *QMediaPlaylist) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod
 	C.QMediaPlaylist_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QMediaPlaylist) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+func (this *QMediaPlaylist) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
 	ok := C.QMediaPlaylist_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -756,7 +756,7 @@ func (this *QMediaPlaylist) callVirtualBase_DisconnectNotify(signal *qt.QMetaMet
 	C.QMediaPlaylist_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QMediaPlaylist) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+func (this *QMediaPlaylist) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
 	ok := C.QMediaPlaylist_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

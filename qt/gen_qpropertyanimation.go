@@ -191,7 +191,7 @@ func (this *QPropertyAnimation) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QPropertyAnimation_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QPropertyAnimation) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QPropertyAnimation) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QPropertyAnimation_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -219,7 +219,7 @@ func (this *QPropertyAnimation) callVirtualBase_UpdateCurrentValue(value *QVaria
 	C.QPropertyAnimation_virtualbase_updateCurrentValue(unsafe.Pointer(this.h), value.cPointer())
 
 }
-func (this *QPropertyAnimation) OnupdateCurrentValue(slot func(super func(value *QVariant), value *QVariant)) {
+func (this *QPropertyAnimation) OnUpdateCurrentValue(slot func(super func(value *QVariant), value *QVariant)) {
 	ok := C.QPropertyAnimation_override_virtual_updateCurrentValue(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -245,7 +245,7 @@ func (this *QPropertyAnimation) callVirtualBase_UpdateState(newState QAbstractAn
 	C.QPropertyAnimation_virtualbase_updateState(unsafe.Pointer(this.h), (C.int)(newState), (C.int)(oldState))
 
 }
-func (this *QPropertyAnimation) OnupdateState(slot func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
+func (this *QPropertyAnimation) OnUpdateState(slot func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
 	ok := C.QPropertyAnimation_override_virtual_updateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -273,7 +273,7 @@ func (this *QPropertyAnimation) callVirtualBase_Duration() int {
 	return (int)(C.QPropertyAnimation_virtualbase_duration(unsafe.Pointer(this.h)))
 
 }
-func (this *QPropertyAnimation) Onduration(slot func(super func() int) int) {
+func (this *QPropertyAnimation) OnDuration(slot func(super func() int) int) {
 	ok := C.QPropertyAnimation_override_virtual_duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -298,7 +298,7 @@ func (this *QPropertyAnimation) callVirtualBase_UpdateCurrentTime(param1 int) {
 	C.QPropertyAnimation_virtualbase_updateCurrentTime(unsafe.Pointer(this.h), (C.int)(param1))
 
 }
-func (this *QPropertyAnimation) OnupdateCurrentTime(slot func(super func(param1 int), param1 int)) {
+func (this *QPropertyAnimation) OnUpdateCurrentTime(slot func(super func(param1 int), param1 int)) {
 	ok := C.QPropertyAnimation_override_virtual_updateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -326,7 +326,7 @@ func (this *QPropertyAnimation) callVirtualBase_Interpolated(from *QVariant, to 
 	return _goptr
 
 }
-func (this *QPropertyAnimation) Oninterpolated(slot func(super func(from *QVariant, to *QVariant, progress float64) *QVariant, from *QVariant, to *QVariant, progress float64) *QVariant) {
+func (this *QPropertyAnimation) OnInterpolated(slot func(super func(from *QVariant, to *QVariant, progress float64) *QVariant, from *QVariant, to *QVariant, progress float64) *QVariant) {
 	ok := C.QPropertyAnimation_override_virtual_interpolated(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -358,7 +358,7 @@ func (this *QPropertyAnimation) callVirtualBase_UpdateDirection(direction QAbstr
 	C.QPropertyAnimation_virtualbase_updateDirection(unsafe.Pointer(this.h), (C.int)(direction))
 
 }
-func (this *QPropertyAnimation) OnupdateDirection(slot func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction)) {
+func (this *QPropertyAnimation) OnUpdateDirection(slot func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction)) {
 	ok := C.QPropertyAnimation_override_virtual_updateDirection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -384,7 +384,7 @@ func (this *QPropertyAnimation) callVirtualBase_EventFilter(watched *QObject, ev
 	return (bool)(C.QPropertyAnimation_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QPropertyAnimation) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QPropertyAnimation) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QPropertyAnimation_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -414,7 +414,7 @@ func (this *QPropertyAnimation) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QPropertyAnimation_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPropertyAnimation) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QPropertyAnimation) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QPropertyAnimation_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -440,7 +440,7 @@ func (this *QPropertyAnimation) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QPropertyAnimation_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPropertyAnimation) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QPropertyAnimation) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QPropertyAnimation_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -466,7 +466,7 @@ func (this *QPropertyAnimation) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QPropertyAnimation_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPropertyAnimation) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QPropertyAnimation) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QPropertyAnimation_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -492,7 +492,7 @@ func (this *QPropertyAnimation) callVirtualBase_ConnectNotify(signal *QMetaMetho
 	C.QPropertyAnimation_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QPropertyAnimation) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QPropertyAnimation) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QPropertyAnimation_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -518,7 +518,7 @@ func (this *QPropertyAnimation) callVirtualBase_DisconnectNotify(signal *QMetaMe
 	C.QPropertyAnimation_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QPropertyAnimation) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QPropertyAnimation) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QPropertyAnimation_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

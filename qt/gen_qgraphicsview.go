@@ -695,7 +695,7 @@ func (this *QGraphicsView) callVirtualBase_SizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QGraphicsView) OnsizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QGraphicsView) OnSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QGraphicsView_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -722,7 +722,7 @@ func (this *QGraphicsView) callVirtualBase_InputMethodQuery(query InputMethodQue
 	return _goptr
 
 }
-func (this *QGraphicsView) OninputMethodQuery(slot func(super func(query InputMethodQuery) *QVariant, query InputMethodQuery) *QVariant) {
+func (this *QGraphicsView) OnInputMethodQuery(slot func(super func(query InputMethodQuery) *QVariant, query InputMethodQuery) *QVariant) {
 	ok := C.QGraphicsView_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -750,7 +750,7 @@ func (this *QGraphicsView) callVirtualBase_SetupViewport(widget *QWidget) {
 	C.QGraphicsView_virtualbase_setupViewport(unsafe.Pointer(this.h), widget.cPointer())
 
 }
-func (this *QGraphicsView) OnsetupViewport(slot func(super func(widget *QWidget), widget *QWidget)) {
+func (this *QGraphicsView) OnSetupViewport(slot func(super func(widget *QWidget), widget *QWidget)) {
 	ok := C.QGraphicsView_override_virtual_setupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -776,7 +776,7 @@ func (this *QGraphicsView) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QGraphicsView_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QGraphicsView) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QGraphicsView) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QGraphicsView_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -804,7 +804,7 @@ func (this *QGraphicsView) callVirtualBase_ViewportEvent(event *QEvent) bool {
 	return (bool)(C.QGraphicsView_virtualbase_viewportEvent(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QGraphicsView) OnviewportEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QGraphicsView) OnViewportEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QGraphicsView_override_virtual_viewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -832,7 +832,7 @@ func (this *QGraphicsView) callVirtualBase_ContextMenuEvent(event *QContextMenuE
 	C.QGraphicsView_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OncontextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+func (this *QGraphicsView) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
 	ok := C.QGraphicsView_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -858,7 +858,7 @@ func (this *QGraphicsView) callVirtualBase_DragEnterEvent(event *QDragEnterEvent
 	C.QGraphicsView_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+func (this *QGraphicsView) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
 	ok := C.QGraphicsView_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -884,7 +884,7 @@ func (this *QGraphicsView) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent
 	C.QGraphicsView_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+func (this *QGraphicsView) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
 	ok := C.QGraphicsView_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -910,7 +910,7 @@ func (this *QGraphicsView) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) 
 	C.QGraphicsView_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+func (this *QGraphicsView) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
 	ok := C.QGraphicsView_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -936,7 +936,7 @@ func (this *QGraphicsView) callVirtualBase_DropEvent(event *QDropEvent) {
 	C.QGraphicsView_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+func (this *QGraphicsView) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
 	ok := C.QGraphicsView_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -962,7 +962,7 @@ func (this *QGraphicsView) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 	C.QGraphicsView_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+func (this *QGraphicsView) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
 	ok := C.QGraphicsView_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -988,7 +988,7 @@ func (this *QGraphicsView) callVirtualBase_FocusNextPrevChild(next bool) bool {
 	return (bool)(C.QGraphicsView_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QGraphicsView) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+func (this *QGraphicsView) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
 	ok := C.QGraphicsView_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1016,7 +1016,7 @@ func (this *QGraphicsView) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 	C.QGraphicsView_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+func (this *QGraphicsView) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
 	ok := C.QGraphicsView_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1042,7 +1042,7 @@ func (this *QGraphicsView) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 	C.QGraphicsView_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnkeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+func (this *QGraphicsView) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
 	ok := C.QGraphicsView_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1068,7 +1068,7 @@ func (this *QGraphicsView) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 	C.QGraphicsView_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+func (this *QGraphicsView) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
 	ok := C.QGraphicsView_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1094,7 +1094,7 @@ func (this *QGraphicsView) callVirtualBase_MouseDoubleClickEvent(event *QMouseEv
 	C.QGraphicsView_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QGraphicsView) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QGraphicsView_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1120,7 +1120,7 @@ func (this *QGraphicsView) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 	C.QGraphicsView_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnmousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QGraphicsView) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QGraphicsView_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1146,7 +1146,7 @@ func (this *QGraphicsView) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 	C.QGraphicsView_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnmouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QGraphicsView) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QGraphicsView_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1172,7 +1172,7 @@ func (this *QGraphicsView) callVirtualBase_MouseReleaseEvent(event *QMouseEvent)
 	C.QGraphicsView_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnmouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QGraphicsView) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QGraphicsView_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1198,7 +1198,7 @@ func (this *QGraphicsView) callVirtualBase_WheelEvent(event *QWheelEvent) {
 	C.QGraphicsView_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnwheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+func (this *QGraphicsView) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
 	ok := C.QGraphicsView_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1224,7 +1224,7 @@ func (this *QGraphicsView) callVirtualBase_PaintEvent(event *QPaintEvent) {
 	C.QGraphicsView_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnpaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
+func (this *QGraphicsView) OnPaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
 	ok := C.QGraphicsView_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1250,7 +1250,7 @@ func (this *QGraphicsView) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 	C.QGraphicsView_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnresizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+func (this *QGraphicsView) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
 	ok := C.QGraphicsView_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1276,7 +1276,7 @@ func (this *QGraphicsView) callVirtualBase_ScrollContentsBy(dx int, dy int) {
 	C.QGraphicsView_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
 }
-func (this *QGraphicsView) OnscrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
+func (this *QGraphicsView) OnScrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
 	ok := C.QGraphicsView_override_virtual_scrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1304,7 +1304,7 @@ func (this *QGraphicsView) callVirtualBase_ShowEvent(event *QShowEvent) {
 	C.QGraphicsView_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnshowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+func (this *QGraphicsView) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
 	ok := C.QGraphicsView_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1330,7 +1330,7 @@ func (this *QGraphicsView) callVirtualBase_InputMethodEvent(event *QInputMethodE
 	C.QGraphicsView_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OninputMethodEvent(slot func(super func(event *QInputMethodEvent), event *QInputMethodEvent)) {
+func (this *QGraphicsView) OnInputMethodEvent(slot func(super func(event *QInputMethodEvent), event *QInputMethodEvent)) {
 	ok := C.QGraphicsView_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1356,7 +1356,7 @@ func (this *QGraphicsView) callVirtualBase_DrawBackground(painter *QPainter, rec
 	C.QGraphicsView_virtualbase_drawBackground(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer())
 
 }
-func (this *QGraphicsView) OndrawBackground(slot func(super func(painter *QPainter, rect *QRectF), painter *QPainter, rect *QRectF)) {
+func (this *QGraphicsView) OnDrawBackground(slot func(super func(painter *QPainter, rect *QRectF), painter *QPainter, rect *QRectF)) {
 	ok := C.QGraphicsView_override_virtual_drawBackground(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1384,7 +1384,7 @@ func (this *QGraphicsView) callVirtualBase_DrawForeground(painter *QPainter, rec
 	C.QGraphicsView_virtualbase_drawForeground(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer())
 
 }
-func (this *QGraphicsView) OndrawForeground(slot func(super func(painter *QPainter, rect *QRectF), painter *QPainter, rect *QRectF)) {
+func (this *QGraphicsView) OnDrawForeground(slot func(super func(painter *QPainter, rect *QRectF), painter *QPainter, rect *QRectF)) {
 	ok := C.QGraphicsView_override_virtual_drawForeground(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1414,7 +1414,7 @@ func (this *QGraphicsView) callVirtualBase_MinimumSizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QGraphicsView) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QGraphicsView) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QGraphicsView_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1439,7 +1439,7 @@ func (this *QGraphicsView) callVirtualBase_EventFilter(param1 *QObject, param2 *
 	return (bool)(C.QGraphicsView_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
 }
-func (this *QGraphicsView) OneventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+func (this *QGraphicsView) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
 	ok := C.QGraphicsView_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1471,7 +1471,7 @@ func (this *QGraphicsView) callVirtualBase_ViewportSizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QGraphicsView) OnviewportSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QGraphicsView) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QGraphicsView_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1496,7 +1496,7 @@ func (this *QGraphicsView) callVirtualBase_ChangeEvent(param1 *QEvent) {
 	C.QGraphicsView_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QGraphicsView) OnchangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+func (this *QGraphicsView) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
 	ok := C.QGraphicsView_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1522,7 +1522,7 @@ func (this *QGraphicsView) callVirtualBase_DevType() int {
 	return (int)(C.QGraphicsView_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsView) OndevType(slot func(super func() int) int) {
+func (this *QGraphicsView) OnDevType(slot func(super func() int) int) {
 	ok := C.QGraphicsView_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1547,7 +1547,7 @@ func (this *QGraphicsView) callVirtualBase_SetVisible(visible bool) {
 	C.QGraphicsView_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QGraphicsView) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+func (this *QGraphicsView) OnSetVisible(slot func(super func(visible bool), visible bool)) {
 	ok := C.QGraphicsView_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1573,7 +1573,7 @@ func (this *QGraphicsView) callVirtualBase_HeightForWidth(param1 int) int {
 	return (int)(C.QGraphicsView_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QGraphicsView) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+func (this *QGraphicsView) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
 	ok := C.QGraphicsView_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1601,7 +1601,7 @@ func (this *QGraphicsView) callVirtualBase_HasHeightForWidth() bool {
 	return (bool)(C.QGraphicsView_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsView) OnhasHeightForWidth(slot func(super func() bool) bool) {
+func (this *QGraphicsView) OnHasHeightForWidth(slot func(super func() bool) bool) {
 	ok := C.QGraphicsView_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1626,7 +1626,7 @@ func (this *QGraphicsView) callVirtualBase_PaintEngine() *QPaintEngine {
 	return newQPaintEngine(C.QGraphicsView_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsView) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+func (this *QGraphicsView) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	ok := C.QGraphicsView_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1651,7 +1651,7 @@ func (this *QGraphicsView) callVirtualBase_EnterEvent(event *QEvent) {
 	C.QGraphicsView_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnenterEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QGraphicsView) OnEnterEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QGraphicsView_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1677,7 +1677,7 @@ func (this *QGraphicsView) callVirtualBase_LeaveEvent(event *QEvent) {
 	C.QGraphicsView_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QGraphicsView) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QGraphicsView_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1703,7 +1703,7 @@ func (this *QGraphicsView) callVirtualBase_MoveEvent(event *QMoveEvent) {
 	C.QGraphicsView_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+func (this *QGraphicsView) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
 	ok := C.QGraphicsView_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1729,7 +1729,7 @@ func (this *QGraphicsView) callVirtualBase_CloseEvent(event *QCloseEvent) {
 	C.QGraphicsView_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+func (this *QGraphicsView) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
 	ok := C.QGraphicsView_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1755,7 +1755,7 @@ func (this *QGraphicsView) callVirtualBase_TabletEvent(event *QTabletEvent) {
 	C.QGraphicsView_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+func (this *QGraphicsView) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
 	ok := C.QGraphicsView_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1781,7 +1781,7 @@ func (this *QGraphicsView) callVirtualBase_ActionEvent(event *QActionEvent) {
 	C.QGraphicsView_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+func (this *QGraphicsView) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
 	ok := C.QGraphicsView_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1807,7 +1807,7 @@ func (this *QGraphicsView) callVirtualBase_HideEvent(event *QHideEvent) {
 	C.QGraphicsView_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+func (this *QGraphicsView) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
 	ok := C.QGraphicsView_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1840,7 +1840,7 @@ func (this *QGraphicsView) callVirtualBase_NativeEvent(eventType []byte, message
 	return (bool)(C.QGraphicsView_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QGraphicsView) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+func (this *QGraphicsView) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
 	ok := C.QGraphicsView_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1874,7 +1874,7 @@ func (this *QGraphicsView) callVirtualBase_Metric(param1 QPaintDevice__PaintDevi
 	return (int)(C.QGraphicsView_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QGraphicsView) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+func (this *QGraphicsView) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
 	ok := C.QGraphicsView_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1902,7 +1902,7 @@ func (this *QGraphicsView) callVirtualBase_InitPainter(painter *QPainter) {
 	C.QGraphicsView_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QGraphicsView) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+func (this *QGraphicsView) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
 	ok := C.QGraphicsView_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1928,7 +1928,7 @@ func (this *QGraphicsView) callVirtualBase_Redirected(offset *QPoint) *QPaintDev
 	return newQPaintDevice(C.QGraphicsView_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QGraphicsView) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+func (this *QGraphicsView) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	ok := C.QGraphicsView_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1956,7 +1956,7 @@ func (this *QGraphicsView) callVirtualBase_SharedPainter() *QPainter {
 	return newQPainter(C.QGraphicsView_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QGraphicsView) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+func (this *QGraphicsView) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	ok := C.QGraphicsView_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1981,7 +1981,7 @@ func (this *QGraphicsView) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QGraphicsView_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QGraphicsView) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QGraphicsView_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2007,7 +2007,7 @@ func (this *QGraphicsView) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QGraphicsView_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QGraphicsView) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QGraphicsView_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2033,7 +2033,7 @@ func (this *QGraphicsView) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QGraphicsView_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsView) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QGraphicsView) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QGraphicsView_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2059,7 +2059,7 @@ func (this *QGraphicsView) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QGraphicsView_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsView) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QGraphicsView) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QGraphicsView_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2085,7 +2085,7 @@ func (this *QGraphicsView) callVirtualBase_DisconnectNotify(signal *QMetaMethod)
 	C.QGraphicsView_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsView) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QGraphicsView) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QGraphicsView_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

@@ -104,7 +104,7 @@ func (this *QAbstractFileIconProvider) callVirtualBase_Icon(param1 QAbstractFile
 	return _goptr
 
 }
-func (this *QAbstractFileIconProvider) Onicon(slot func(super func(param1 QAbstractFileIconProvider__IconType) *QIcon, param1 QAbstractFileIconProvider__IconType) *QIcon) {
+func (this *QAbstractFileIconProvider) OnIcon(slot func(super func(param1 QAbstractFileIconProvider__IconType) *QIcon, param1 QAbstractFileIconProvider__IconType) *QIcon) {
 	ok := C.QAbstractFileIconProvider_override_virtual_icon(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -134,7 +134,7 @@ func (this *QAbstractFileIconProvider) callVirtualBase_IconWithQFileInfo(param1 
 	return _goptr
 
 }
-func (this *QAbstractFileIconProvider) OniconWithQFileInfo(slot func(super func(param1 *QFileInfo) *QIcon, param1 *QFileInfo) *QIcon) {
+func (this *QAbstractFileIconProvider) OnIconWithQFileInfo(slot func(super func(param1 *QFileInfo) *QIcon, param1 *QFileInfo) *QIcon) {
 	ok := C.QAbstractFileIconProvider_override_virtual_iconWithQFileInfo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -164,7 +164,7 @@ func (this *QAbstractFileIconProvider) callVirtualBase_Type(param1 *QFileInfo) s
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QAbstractFileIconProvider) Ontype(slot func(super func(param1 *QFileInfo) string, param1 *QFileInfo) string) {
+func (this *QAbstractFileIconProvider) OnType(slot func(super func(param1 *QFileInfo) string, param1 *QFileInfo) string) {
 	ok := C.QAbstractFileIconProvider_override_virtual_type(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -196,7 +196,7 @@ func (this *QAbstractFileIconProvider) callVirtualBase_SetOptions(options QAbstr
 	C.QAbstractFileIconProvider_virtualbase_setOptions(unsafe.Pointer(this.h), (C.int)(options))
 
 }
-func (this *QAbstractFileIconProvider) OnsetOptions(slot func(super func(options QAbstractFileIconProvider__Option), options QAbstractFileIconProvider__Option)) {
+func (this *QAbstractFileIconProvider) OnSetOptions(slot func(super func(options QAbstractFileIconProvider__Option), options QAbstractFileIconProvider__Option)) {
 	ok := C.QAbstractFileIconProvider_override_virtual_setOptions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -222,7 +222,7 @@ func (this *QAbstractFileIconProvider) callVirtualBase_Options() QAbstractFileIc
 	return (QAbstractFileIconProvider__Option)(C.QAbstractFileIconProvider_virtualbase_options(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractFileIconProvider) Onoptions(slot func(super func() QAbstractFileIconProvider__Option) QAbstractFileIconProvider__Option) {
+func (this *QAbstractFileIconProvider) OnOptions(slot func(super func() QAbstractFileIconProvider__Option) QAbstractFileIconProvider__Option) {
 	ok := C.QAbstractFileIconProvider_override_virtual_options(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

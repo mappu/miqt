@@ -233,7 +233,7 @@ func (this *QPluginLoader) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QPluginLoader_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QPluginLoader) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QPluginLoader) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QPluginLoader_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -261,7 +261,7 @@ func (this *QPluginLoader) callVirtualBase_EventFilter(watched *QObject, event *
 	return (bool)(C.QPluginLoader_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QPluginLoader) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QPluginLoader) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QPluginLoader_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -291,7 +291,7 @@ func (this *QPluginLoader) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QPluginLoader_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPluginLoader) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QPluginLoader) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QPluginLoader_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -317,7 +317,7 @@ func (this *QPluginLoader) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QPluginLoader_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPluginLoader) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QPluginLoader) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QPluginLoader_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -343,7 +343,7 @@ func (this *QPluginLoader) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QPluginLoader_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPluginLoader) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QPluginLoader) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QPluginLoader_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -369,7 +369,7 @@ func (this *QPluginLoader) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QPluginLoader_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QPluginLoader) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QPluginLoader) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QPluginLoader_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -395,7 +395,7 @@ func (this *QPluginLoader) callVirtualBase_DisconnectNotify(signal *QMetaMethod)
 	C.QPluginLoader_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QPluginLoader) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QPluginLoader) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QPluginLoader_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
