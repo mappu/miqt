@@ -246,7 +246,7 @@ func (this *QToolBox) callVirtualBase_Event(e *QEvent) bool {
 	return (bool)(C.QToolBox_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
 }
-func (this *QToolBox) Onevent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+func (this *QToolBox) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
 	ok := C.QToolBox_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -274,7 +274,7 @@ func (this *QToolBox) callVirtualBase_ItemInserted(index int) {
 	C.QToolBox_virtualbase_itemInserted(unsafe.Pointer(this.h), (C.int)(index))
 
 }
-func (this *QToolBox) OnitemInserted(slot func(super func(index int), index int)) {
+func (this *QToolBox) OnItemInserted(slot func(super func(index int), index int)) {
 	ok := C.QToolBox_override_virtual_itemInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -300,7 +300,7 @@ func (this *QToolBox) callVirtualBase_ItemRemoved(index int) {
 	C.QToolBox_virtualbase_itemRemoved(unsafe.Pointer(this.h), (C.int)(index))
 
 }
-func (this *QToolBox) OnitemRemoved(slot func(super func(index int), index int)) {
+func (this *QToolBox) OnItemRemoved(slot func(super func(index int), index int)) {
 	ok := C.QToolBox_override_virtual_itemRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -326,7 +326,7 @@ func (this *QToolBox) callVirtualBase_ShowEvent(e *QShowEvent) {
 	C.QToolBox_virtualbase_showEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QToolBox) OnshowEvent(slot func(super func(e *QShowEvent), e *QShowEvent)) {
+func (this *QToolBox) OnShowEvent(slot func(super func(e *QShowEvent), e *QShowEvent)) {
 	ok := C.QToolBox_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -352,7 +352,7 @@ func (this *QToolBox) callVirtualBase_ChangeEvent(param1 *QEvent) {
 	C.QToolBox_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QToolBox) OnchangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+func (this *QToolBox) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
 	ok := C.QToolBox_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -380,7 +380,7 @@ func (this *QToolBox) callVirtualBase_SizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QToolBox) OnsizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QToolBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QToolBox_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -405,7 +405,7 @@ func (this *QToolBox) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 	C.QToolBox_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QToolBox) OnpaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+func (this *QToolBox) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
 	ok := C.QToolBox_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -431,7 +431,7 @@ func (this *QToolBox) callVirtualBase_InitStyleOption(option *QStyleOptionFrame)
 	C.QToolBox_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
 
 }
-func (this *QToolBox) OninitStyleOption(slot func(super func(option *QStyleOptionFrame), option *QStyleOptionFrame)) {
+func (this *QToolBox) OnInitStyleOption(slot func(super func(option *QStyleOptionFrame), option *QStyleOptionFrame)) {
 	ok := C.QToolBox_override_virtual_initStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -457,7 +457,7 @@ func (this *QToolBox) callVirtualBase_DevType() int {
 	return (int)(C.QToolBox_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QToolBox) OndevType(slot func(super func() int) int) {
+func (this *QToolBox) OnDevType(slot func(super func() int) int) {
 	ok := C.QToolBox_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -482,7 +482,7 @@ func (this *QToolBox) callVirtualBase_SetVisible(visible bool) {
 	C.QToolBox_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QToolBox) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+func (this *QToolBox) OnSetVisible(slot func(super func(visible bool), visible bool)) {
 	ok := C.QToolBox_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -510,7 +510,7 @@ func (this *QToolBox) callVirtualBase_MinimumSizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QToolBox) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QToolBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QToolBox_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -535,7 +535,7 @@ func (this *QToolBox) callVirtualBase_HeightForWidth(param1 int) int {
 	return (int)(C.QToolBox_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QToolBox) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+func (this *QToolBox) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
 	ok := C.QToolBox_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -563,7 +563,7 @@ func (this *QToolBox) callVirtualBase_HasHeightForWidth() bool {
 	return (bool)(C.QToolBox_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QToolBox) OnhasHeightForWidth(slot func(super func() bool) bool) {
+func (this *QToolBox) OnHasHeightForWidth(slot func(super func() bool) bool) {
 	ok := C.QToolBox_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -588,7 +588,7 @@ func (this *QToolBox) callVirtualBase_PaintEngine() *QPaintEngine {
 	return newQPaintEngine(C.QToolBox_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QToolBox) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+func (this *QToolBox) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	ok := C.QToolBox_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -613,7 +613,7 @@ func (this *QToolBox) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 	C.QToolBox_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OnmousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QToolBox) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QToolBox_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -639,7 +639,7 @@ func (this *QToolBox) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
 	C.QToolBox_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OnmouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QToolBox) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QToolBox_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -665,7 +665,7 @@ func (this *QToolBox) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) 
 	C.QToolBox_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QToolBox) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QToolBox_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -691,7 +691,7 @@ func (this *QToolBox) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 	C.QToolBox_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OnmouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QToolBox) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QToolBox_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -717,7 +717,7 @@ func (this *QToolBox) callVirtualBase_WheelEvent(event *QWheelEvent) {
 	C.QToolBox_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OnwheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+func (this *QToolBox) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
 	ok := C.QToolBox_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -743,7 +743,7 @@ func (this *QToolBox) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 	C.QToolBox_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OnkeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+func (this *QToolBox) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
 	ok := C.QToolBox_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -769,7 +769,7 @@ func (this *QToolBox) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 	C.QToolBox_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+func (this *QToolBox) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
 	ok := C.QToolBox_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -795,7 +795,7 @@ func (this *QToolBox) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 	C.QToolBox_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+func (this *QToolBox) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
 	ok := C.QToolBox_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -821,7 +821,7 @@ func (this *QToolBox) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 	C.QToolBox_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+func (this *QToolBox) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
 	ok := C.QToolBox_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -847,7 +847,7 @@ func (this *QToolBox) callVirtualBase_EnterEvent(event *QEnterEvent) {
 	C.QToolBox_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OnenterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+func (this *QToolBox) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
 	ok := C.QToolBox_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -873,7 +873,7 @@ func (this *QToolBox) callVirtualBase_LeaveEvent(event *QEvent) {
 	C.QToolBox_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QToolBox) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QToolBox_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -899,7 +899,7 @@ func (this *QToolBox) callVirtualBase_MoveEvent(event *QMoveEvent) {
 	C.QToolBox_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+func (this *QToolBox) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
 	ok := C.QToolBox_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -925,7 +925,7 @@ func (this *QToolBox) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 	C.QToolBox_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OnresizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+func (this *QToolBox) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
 	ok := C.QToolBox_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -951,7 +951,7 @@ func (this *QToolBox) callVirtualBase_CloseEvent(event *QCloseEvent) {
 	C.QToolBox_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+func (this *QToolBox) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
 	ok := C.QToolBox_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -977,7 +977,7 @@ func (this *QToolBox) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent)
 	C.QToolBox_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OncontextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+func (this *QToolBox) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
 	ok := C.QToolBox_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1003,7 +1003,7 @@ func (this *QToolBox) callVirtualBase_TabletEvent(event *QTabletEvent) {
 	C.QToolBox_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+func (this *QToolBox) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
 	ok := C.QToolBox_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1029,7 +1029,7 @@ func (this *QToolBox) callVirtualBase_ActionEvent(event *QActionEvent) {
 	C.QToolBox_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+func (this *QToolBox) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
 	ok := C.QToolBox_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1055,7 +1055,7 @@ func (this *QToolBox) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
 	C.QToolBox_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+func (this *QToolBox) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
 	ok := C.QToolBox_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1081,7 +1081,7 @@ func (this *QToolBox) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 	C.QToolBox_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+func (this *QToolBox) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
 	ok := C.QToolBox_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1107,7 +1107,7 @@ func (this *QToolBox) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
 	C.QToolBox_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+func (this *QToolBox) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
 	ok := C.QToolBox_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1133,7 +1133,7 @@ func (this *QToolBox) callVirtualBase_DropEvent(event *QDropEvent) {
 	C.QToolBox_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+func (this *QToolBox) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
 	ok := C.QToolBox_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1159,7 +1159,7 @@ func (this *QToolBox) callVirtualBase_HideEvent(event *QHideEvent) {
 	C.QToolBox_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+func (this *QToolBox) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
 	ok := C.QToolBox_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1192,7 +1192,7 @@ func (this *QToolBox) callVirtualBase_NativeEvent(eventType []byte, message unsa
 	return (bool)(C.QToolBox_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
 
 }
-func (this *QToolBox) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+func (this *QToolBox) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
 	ok := C.QToolBox_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1226,7 +1226,7 @@ func (this *QToolBox) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMet
 	return (int)(C.QToolBox_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QToolBox) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+func (this *QToolBox) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
 	ok := C.QToolBox_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1254,7 +1254,7 @@ func (this *QToolBox) callVirtualBase_InitPainter(painter *QPainter) {
 	C.QToolBox_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QToolBox) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+func (this *QToolBox) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
 	ok := C.QToolBox_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1280,7 +1280,7 @@ func (this *QToolBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 	return newQPaintDevice(C.QToolBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QToolBox) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+func (this *QToolBox) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	ok := C.QToolBox_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1308,7 +1308,7 @@ func (this *QToolBox) callVirtualBase_SharedPainter() *QPainter {
 	return newQPainter(C.QToolBox_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QToolBox) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+func (this *QToolBox) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	ok := C.QToolBox_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1333,7 +1333,7 @@ func (this *QToolBox) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent
 	C.QToolBox_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QToolBox) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+func (this *QToolBox) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
 	ok := C.QToolBox_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1361,7 +1361,7 @@ func (this *QToolBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) 
 	return _goptr
 
 }
-func (this *QToolBox) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+func (this *QToolBox) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
 	ok := C.QToolBox_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1389,7 +1389,7 @@ func (this *QToolBox) callVirtualBase_FocusNextPrevChild(next bool) bool {
 	return (bool)(C.QToolBox_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QToolBox) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+func (this *QToolBox) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
 	ok := C.QToolBox_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1417,7 +1417,7 @@ func (this *QToolBox) callVirtualBase_EventFilter(watched *QObject, event *QEven
 	return (bool)(C.QToolBox_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QToolBox) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QToolBox) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QToolBox_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1447,7 +1447,7 @@ func (this *QToolBox) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QToolBox_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QToolBox) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QToolBox_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1473,7 +1473,7 @@ func (this *QToolBox) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QToolBox_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QToolBox) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QToolBox_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1499,7 +1499,7 @@ func (this *QToolBox) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QToolBox_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QToolBox) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QToolBox) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QToolBox_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1525,7 +1525,7 @@ func (this *QToolBox) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QToolBox_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QToolBox) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QToolBox) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QToolBox_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1551,7 +1551,7 @@ func (this *QToolBox) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 	C.QToolBox_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QToolBox) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QToolBox) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QToolBox_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

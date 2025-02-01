@@ -542,7 +542,7 @@ func (this *QRadioTuner) callVirtualBase_Availability() QMultimedia__Availabilit
 	return (QMultimedia__AvailabilityStatus)(C.QRadioTuner_virtualbase_availability(unsafe.Pointer(this.h)))
 
 }
-func (this *QRadioTuner) Onavailability(slot func(super func() QMultimedia__AvailabilityStatus) QMultimedia__AvailabilityStatus) {
+func (this *QRadioTuner) OnAvailability(slot func(super func() QMultimedia__AvailabilityStatus) QMultimedia__AvailabilityStatus) {
 	ok := C.QRadioTuner_override_virtual_availability(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -567,7 +567,7 @@ func (this *QRadioTuner) callVirtualBase_IsAvailable() bool {
 	return (bool)(C.QRadioTuner_virtualbase_isAvailable(unsafe.Pointer(this.h)))
 
 }
-func (this *QRadioTuner) OnisAvailable(slot func(super func() bool) bool) {
+func (this *QRadioTuner) OnIsAvailable(slot func(super func() bool) bool) {
 	ok := C.QRadioTuner_override_virtual_isAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -592,7 +592,7 @@ func (this *QRadioTuner) callVirtualBase_Service() *QMediaService {
 	return newQMediaService(C.QRadioTuner_virtualbase_service(unsafe.Pointer(this.h)))
 
 }
-func (this *QRadioTuner) Onservice(slot func(super func() *QMediaService) *QMediaService) {
+func (this *QRadioTuner) OnService(slot func(super func() *QMediaService) *QMediaService) {
 	ok := C.QRadioTuner_override_virtual_service(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -617,7 +617,7 @@ func (this *QRadioTuner) callVirtualBase_Bind(param1 *qt.QObject) bool {
 	return (bool)(C.QRadioTuner_virtualbase_bind(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer())))
 
 }
-func (this *QRadioTuner) Onbind(slot func(super func(param1 *qt.QObject) bool, param1 *qt.QObject) bool) {
+func (this *QRadioTuner) OnBind(slot func(super func(param1 *qt.QObject) bool, param1 *qt.QObject) bool) {
 	ok := C.QRadioTuner_override_virtual_bind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -645,7 +645,7 @@ func (this *QRadioTuner) callVirtualBase_Unbind(param1 *qt.QObject) {
 	C.QRadioTuner_virtualbase_unbind(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()))
 
 }
-func (this *QRadioTuner) Onunbind(slot func(super func(param1 *qt.QObject), param1 *qt.QObject)) {
+func (this *QRadioTuner) OnUnbind(slot func(super func(param1 *qt.QObject), param1 *qt.QObject)) {
 	ok := C.QRadioTuner_override_virtual_unbind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -671,7 +671,7 @@ func (this *QRadioTuner) callVirtualBase_Event(event *qt.QEvent) bool {
 	return (bool)(C.QRadioTuner_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QRadioTuner) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+func (this *QRadioTuner) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
 	ok := C.QRadioTuner_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -699,7 +699,7 @@ func (this *QRadioTuner) callVirtualBase_EventFilter(watched *qt.QObject, event 
 	return (bool)(C.QRadioTuner_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QRadioTuner) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+func (this *QRadioTuner) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
 	ok := C.QRadioTuner_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -729,7 +729,7 @@ func (this *QRadioTuner) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 	C.QRadioTuner_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QRadioTuner) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+func (this *QRadioTuner) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
 	ok := C.QRadioTuner_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -755,7 +755,7 @@ func (this *QRadioTuner) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 	C.QRadioTuner_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QRadioTuner) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+func (this *QRadioTuner) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
 	ok := C.QRadioTuner_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -781,7 +781,7 @@ func (this *QRadioTuner) callVirtualBase_CustomEvent(event *qt.QEvent) {
 	C.QRadioTuner_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QRadioTuner) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+func (this *QRadioTuner) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
 	ok := C.QRadioTuner_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -807,7 +807,7 @@ func (this *QRadioTuner) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 	C.QRadioTuner_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QRadioTuner) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+func (this *QRadioTuner) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
 	ok := C.QRadioTuner_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -833,7 +833,7 @@ func (this *QRadioTuner) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod
 	C.QRadioTuner_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QRadioTuner) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+func (this *QRadioTuner) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
 	ok := C.QRadioTuner_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

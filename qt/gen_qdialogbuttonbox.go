@@ -368,7 +368,7 @@ func (this *QDialogButtonBox) callVirtualBase_ChangeEvent(event *QEvent) {
 	C.QDialogButtonBox_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnchangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QDialogButtonBox) OnChangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -394,7 +394,7 @@ func (this *QDialogButtonBox) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QDialogButtonBox_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QDialogButtonBox) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QDialogButtonBox) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QDialogButtonBox_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -422,7 +422,7 @@ func (this *QDialogButtonBox) callVirtualBase_DevType() int {
 	return (int)(C.QDialogButtonBox_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QDialogButtonBox) OndevType(slot func(super func() int) int) {
+func (this *QDialogButtonBox) OnDevType(slot func(super func() int) int) {
 	ok := C.QDialogButtonBox_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -447,7 +447,7 @@ func (this *QDialogButtonBox) callVirtualBase_SetVisible(visible bool) {
 	C.QDialogButtonBox_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QDialogButtonBox) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+func (this *QDialogButtonBox) OnSetVisible(slot func(super func(visible bool), visible bool)) {
 	ok := C.QDialogButtonBox_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -475,7 +475,7 @@ func (this *QDialogButtonBox) callVirtualBase_SizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QDialogButtonBox) OnsizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QDialogButtonBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QDialogButtonBox_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -502,7 +502,7 @@ func (this *QDialogButtonBox) callVirtualBase_MinimumSizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QDialogButtonBox) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QDialogButtonBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QDialogButtonBox_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -527,7 +527,7 @@ func (this *QDialogButtonBox) callVirtualBase_HeightForWidth(param1 int) int {
 	return (int)(C.QDialogButtonBox_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QDialogButtonBox) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+func (this *QDialogButtonBox) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
 	ok := C.QDialogButtonBox_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -555,7 +555,7 @@ func (this *QDialogButtonBox) callVirtualBase_HasHeightForWidth() bool {
 	return (bool)(C.QDialogButtonBox_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QDialogButtonBox) OnhasHeightForWidth(slot func(super func() bool) bool) {
+func (this *QDialogButtonBox) OnHasHeightForWidth(slot func(super func() bool) bool) {
 	ok := C.QDialogButtonBox_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -580,7 +580,7 @@ func (this *QDialogButtonBox) callVirtualBase_PaintEngine() *QPaintEngine {
 	return newQPaintEngine(C.QDialogButtonBox_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QDialogButtonBox) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+func (this *QDialogButtonBox) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	ok := C.QDialogButtonBox_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -605,7 +605,7 @@ func (this *QDialogButtonBox) callVirtualBase_MousePressEvent(event *QMouseEvent
 	C.QDialogButtonBox_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnmousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QDialogButtonBox) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -631,7 +631,7 @@ func (this *QDialogButtonBox) callVirtualBase_MouseReleaseEvent(event *QMouseEve
 	C.QDialogButtonBox_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnmouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QDialogButtonBox) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -657,7 +657,7 @@ func (this *QDialogButtonBox) callVirtualBase_MouseDoubleClickEvent(event *QMous
 	C.QDialogButtonBox_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QDialogButtonBox) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -683,7 +683,7 @@ func (this *QDialogButtonBox) callVirtualBase_MouseMoveEvent(event *QMouseEvent)
 	C.QDialogButtonBox_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnmouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QDialogButtonBox) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -709,7 +709,7 @@ func (this *QDialogButtonBox) callVirtualBase_WheelEvent(event *QWheelEvent) {
 	C.QDialogButtonBox_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnwheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+func (this *QDialogButtonBox) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -735,7 +735,7 @@ func (this *QDialogButtonBox) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 	C.QDialogButtonBox_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnkeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+func (this *QDialogButtonBox) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -761,7 +761,7 @@ func (this *QDialogButtonBox) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) 
 	C.QDialogButtonBox_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+func (this *QDialogButtonBox) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -787,7 +787,7 @@ func (this *QDialogButtonBox) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 	C.QDialogButtonBox_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+func (this *QDialogButtonBox) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -813,7 +813,7 @@ func (this *QDialogButtonBox) callVirtualBase_FocusOutEvent(event *QFocusEvent) 
 	C.QDialogButtonBox_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+func (this *QDialogButtonBox) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -839,7 +839,7 @@ func (this *QDialogButtonBox) callVirtualBase_EnterEvent(event *QEvent) {
 	C.QDialogButtonBox_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnenterEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QDialogButtonBox) OnEnterEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -865,7 +865,7 @@ func (this *QDialogButtonBox) callVirtualBase_LeaveEvent(event *QEvent) {
 	C.QDialogButtonBox_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QDialogButtonBox) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -891,7 +891,7 @@ func (this *QDialogButtonBox) callVirtualBase_PaintEvent(event *QPaintEvent) {
 	C.QDialogButtonBox_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnpaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
+func (this *QDialogButtonBox) OnPaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -917,7 +917,7 @@ func (this *QDialogButtonBox) callVirtualBase_MoveEvent(event *QMoveEvent) {
 	C.QDialogButtonBox_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+func (this *QDialogButtonBox) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -943,7 +943,7 @@ func (this *QDialogButtonBox) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 	C.QDialogButtonBox_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnresizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+func (this *QDialogButtonBox) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -969,7 +969,7 @@ func (this *QDialogButtonBox) callVirtualBase_CloseEvent(event *QCloseEvent) {
 	C.QDialogButtonBox_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+func (this *QDialogButtonBox) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -995,7 +995,7 @@ func (this *QDialogButtonBox) callVirtualBase_ContextMenuEvent(event *QContextMe
 	C.QDialogButtonBox_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OncontextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+func (this *QDialogButtonBox) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1021,7 +1021,7 @@ func (this *QDialogButtonBox) callVirtualBase_TabletEvent(event *QTabletEvent) {
 	C.QDialogButtonBox_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+func (this *QDialogButtonBox) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1047,7 +1047,7 @@ func (this *QDialogButtonBox) callVirtualBase_ActionEvent(event *QActionEvent) {
 	C.QDialogButtonBox_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+func (this *QDialogButtonBox) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1073,7 +1073,7 @@ func (this *QDialogButtonBox) callVirtualBase_DragEnterEvent(event *QDragEnterEv
 	C.QDialogButtonBox_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+func (this *QDialogButtonBox) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1099,7 +1099,7 @@ func (this *QDialogButtonBox) callVirtualBase_DragMoveEvent(event *QDragMoveEven
 	C.QDialogButtonBox_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+func (this *QDialogButtonBox) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1125,7 +1125,7 @@ func (this *QDialogButtonBox) callVirtualBase_DragLeaveEvent(event *QDragLeaveEv
 	C.QDialogButtonBox_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+func (this *QDialogButtonBox) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1151,7 +1151,7 @@ func (this *QDialogButtonBox) callVirtualBase_DropEvent(event *QDropEvent) {
 	C.QDialogButtonBox_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+func (this *QDialogButtonBox) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1177,7 +1177,7 @@ func (this *QDialogButtonBox) callVirtualBase_ShowEvent(event *QShowEvent) {
 	C.QDialogButtonBox_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnshowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+func (this *QDialogButtonBox) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1203,7 +1203,7 @@ func (this *QDialogButtonBox) callVirtualBase_HideEvent(event *QHideEvent) {
 	C.QDialogButtonBox_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+func (this *QDialogButtonBox) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1236,7 +1236,7 @@ func (this *QDialogButtonBox) callVirtualBase_NativeEvent(eventType []byte, mess
 	return (bool)(C.QDialogButtonBox_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QDialogButtonBox) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+func (this *QDialogButtonBox) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
 	ok := C.QDialogButtonBox_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1270,7 +1270,7 @@ func (this *QDialogButtonBox) callVirtualBase_Metric(param1 QPaintDevice__PaintD
 	return (int)(C.QDialogButtonBox_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QDialogButtonBox) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+func (this *QDialogButtonBox) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
 	ok := C.QDialogButtonBox_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1298,7 +1298,7 @@ func (this *QDialogButtonBox) callVirtualBase_InitPainter(painter *QPainter) {
 	C.QDialogButtonBox_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QDialogButtonBox) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+func (this *QDialogButtonBox) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
 	ok := C.QDialogButtonBox_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1324,7 +1324,7 @@ func (this *QDialogButtonBox) callVirtualBase_Redirected(offset *QPoint) *QPaint
 	return newQPaintDevice(C.QDialogButtonBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QDialogButtonBox) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+func (this *QDialogButtonBox) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	ok := C.QDialogButtonBox_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1352,7 +1352,7 @@ func (this *QDialogButtonBox) callVirtualBase_SharedPainter() *QPainter {
 	return newQPainter(C.QDialogButtonBox_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QDialogButtonBox) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+func (this *QDialogButtonBox) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	ok := C.QDialogButtonBox_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1377,7 +1377,7 @@ func (this *QDialogButtonBox) callVirtualBase_InputMethodEvent(param1 *QInputMet
 	C.QDialogButtonBox_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QDialogButtonBox) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+func (this *QDialogButtonBox) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1405,7 +1405,7 @@ func (this *QDialogButtonBox) callVirtualBase_InputMethodQuery(param1 InputMetho
 	return _goptr
 
 }
-func (this *QDialogButtonBox) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+func (this *QDialogButtonBox) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
 	ok := C.QDialogButtonBox_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1433,7 +1433,7 @@ func (this *QDialogButtonBox) callVirtualBase_FocusNextPrevChild(next bool) bool
 	return (bool)(C.QDialogButtonBox_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QDialogButtonBox) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+func (this *QDialogButtonBox) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
 	ok := C.QDialogButtonBox_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1461,7 +1461,7 @@ func (this *QDialogButtonBox) callVirtualBase_EventFilter(watched *QObject, even
 	return (bool)(C.QDialogButtonBox_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QDialogButtonBox) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QDialogButtonBox) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QDialogButtonBox_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1491,7 +1491,7 @@ func (this *QDialogButtonBox) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QDialogButtonBox_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QDialogButtonBox) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1517,7 +1517,7 @@ func (this *QDialogButtonBox) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QDialogButtonBox_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QDialogButtonBox) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1543,7 +1543,7 @@ func (this *QDialogButtonBox) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QDialogButtonBox_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDialogButtonBox) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QDialogButtonBox) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QDialogButtonBox_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1569,7 +1569,7 @@ func (this *QDialogButtonBox) callVirtualBase_ConnectNotify(signal *QMetaMethod)
 	C.QDialogButtonBox_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QDialogButtonBox) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QDialogButtonBox) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QDialogButtonBox_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1595,7 +1595,7 @@ func (this *QDialogButtonBox) callVirtualBase_DisconnectNotify(signal *QMetaMeth
 	C.QDialogButtonBox_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QDialogButtonBox) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QDialogButtonBox) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QDialogButtonBox_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

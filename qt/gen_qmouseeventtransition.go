@@ -177,7 +177,7 @@ func (this *QMouseEventTransition) callVirtualBase_OnTransition(event *QEvent) {
 	C.QMouseEventTransition_virtualbase_onTransition(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMouseEventTransition) OnonTransition(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QMouseEventTransition) OnOnTransition(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QMouseEventTransition_override_virtual_onTransition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -203,7 +203,7 @@ func (this *QMouseEventTransition) callVirtualBase_EventTest(event *QEvent) bool
 	return (bool)(C.QMouseEventTransition_virtualbase_eventTest(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QMouseEventTransition) OneventTest(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QMouseEventTransition) OnEventTest(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QMouseEventTransition_override_virtual_eventTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -231,7 +231,7 @@ func (this *QMouseEventTransition) callVirtualBase_Event(e *QEvent) bool {
 	return (bool)(C.QMouseEventTransition_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
 }
-func (this *QMouseEventTransition) Onevent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+func (this *QMouseEventTransition) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
 	ok := C.QMouseEventTransition_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -259,7 +259,7 @@ func (this *QMouseEventTransition) callVirtualBase_EventFilter(watched *QObject,
 	return (bool)(C.QMouseEventTransition_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QMouseEventTransition) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QMouseEventTransition) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QMouseEventTransition_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -289,7 +289,7 @@ func (this *QMouseEventTransition) callVirtualBase_TimerEvent(event *QTimerEvent
 	C.QMouseEventTransition_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMouseEventTransition) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QMouseEventTransition) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QMouseEventTransition_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -315,7 +315,7 @@ func (this *QMouseEventTransition) callVirtualBase_ChildEvent(event *QChildEvent
 	C.QMouseEventTransition_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMouseEventTransition) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QMouseEventTransition) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QMouseEventTransition_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -341,7 +341,7 @@ func (this *QMouseEventTransition) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QMouseEventTransition_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMouseEventTransition) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QMouseEventTransition) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QMouseEventTransition_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -367,7 +367,7 @@ func (this *QMouseEventTransition) callVirtualBase_ConnectNotify(signal *QMetaMe
 	C.QMouseEventTransition_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QMouseEventTransition) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QMouseEventTransition) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QMouseEventTransition_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -393,7 +393,7 @@ func (this *QMouseEventTransition) callVirtualBase_DisconnectNotify(signal *QMet
 	C.QMouseEventTransition_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QMouseEventTransition) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QMouseEventTransition) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QMouseEventTransition_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

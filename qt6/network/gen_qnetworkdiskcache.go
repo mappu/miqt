@@ -176,7 +176,7 @@ func (this *QNetworkDiskCache) callVirtualBase_CacheSize() int64 {
 	return (int64)(C.QNetworkDiskCache_virtualbase_cacheSize(unsafe.Pointer(this.h)))
 
 }
-func (this *QNetworkDiskCache) OncacheSize(slot func(super func() int64) int64) {
+func (this *QNetworkDiskCache) OnCacheSize(slot func(super func() int64) int64) {
 	ok := C.QNetworkDiskCache_override_virtual_cacheSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -203,7 +203,7 @@ func (this *QNetworkDiskCache) callVirtualBase_MetaData(url *qt6.QUrl) *QNetwork
 	return _goptr
 
 }
-func (this *QNetworkDiskCache) OnmetaData(slot func(super func(url *qt6.QUrl) *QNetworkCacheMetaData, url *qt6.QUrl) *QNetworkCacheMetaData) {
+func (this *QNetworkDiskCache) OnMetaData(slot func(super func(url *qt6.QUrl) *QNetworkCacheMetaData, url *qt6.QUrl) *QNetworkCacheMetaData) {
 	ok := C.QNetworkDiskCache_override_virtual_metaData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -231,7 +231,7 @@ func (this *QNetworkDiskCache) callVirtualBase_UpdateMetaData(metaData *QNetwork
 	C.QNetworkDiskCache_virtualbase_updateMetaData(unsafe.Pointer(this.h), metaData.cPointer())
 
 }
-func (this *QNetworkDiskCache) OnupdateMetaData(slot func(super func(metaData *QNetworkCacheMetaData), metaData *QNetworkCacheMetaData)) {
+func (this *QNetworkDiskCache) OnUpdateMetaData(slot func(super func(metaData *QNetworkCacheMetaData), metaData *QNetworkCacheMetaData)) {
 	ok := C.QNetworkDiskCache_override_virtual_updateMetaData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -257,7 +257,7 @@ func (this *QNetworkDiskCache) callVirtualBase_Data(url *qt6.QUrl) *qt6.QIODevic
 	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_virtualbase_data(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer()))))
 
 }
-func (this *QNetworkDiskCache) Ondata(slot func(super func(url *qt6.QUrl) *qt6.QIODevice, url *qt6.QUrl) *qt6.QIODevice) {
+func (this *QNetworkDiskCache) OnData(slot func(super func(url *qt6.QUrl) *qt6.QIODevice, url *qt6.QUrl) *qt6.QIODevice) {
 	ok := C.QNetworkDiskCache_override_virtual_data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -285,7 +285,7 @@ func (this *QNetworkDiskCache) callVirtualBase_Remove(url *qt6.QUrl) bool {
 	return (bool)(C.QNetworkDiskCache_virtualbase_remove(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer())))
 
 }
-func (this *QNetworkDiskCache) Onremove(slot func(super func(url *qt6.QUrl) bool, url *qt6.QUrl) bool) {
+func (this *QNetworkDiskCache) OnRemove(slot func(super func(url *qt6.QUrl) bool, url *qt6.QUrl) bool) {
 	ok := C.QNetworkDiskCache_override_virtual_remove(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -313,7 +313,7 @@ func (this *QNetworkDiskCache) callVirtualBase_Prepare(metaData *QNetworkCacheMe
 	return qt6.UnsafeNewQIODevice(unsafe.Pointer(C.QNetworkDiskCache_virtualbase_prepare(unsafe.Pointer(this.h), metaData.cPointer())))
 
 }
-func (this *QNetworkDiskCache) Onprepare(slot func(super func(metaData *QNetworkCacheMetaData) *qt6.QIODevice, metaData *QNetworkCacheMetaData) *qt6.QIODevice) {
+func (this *QNetworkDiskCache) OnPrepare(slot func(super func(metaData *QNetworkCacheMetaData) *qt6.QIODevice, metaData *QNetworkCacheMetaData) *qt6.QIODevice) {
 	ok := C.QNetworkDiskCache_override_virtual_prepare(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -341,7 +341,7 @@ func (this *QNetworkDiskCache) callVirtualBase_Insert(device *qt6.QIODevice) {
 	C.QNetworkDiskCache_virtualbase_insert(unsafe.Pointer(this.h), (*C.QIODevice)(device.UnsafePointer()))
 
 }
-func (this *QNetworkDiskCache) Oninsert(slot func(super func(device *qt6.QIODevice), device *qt6.QIODevice)) {
+func (this *QNetworkDiskCache) OnInsert(slot func(super func(device *qt6.QIODevice), device *qt6.QIODevice)) {
 	ok := C.QNetworkDiskCache_override_virtual_insert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -367,7 +367,7 @@ func (this *QNetworkDiskCache) callVirtualBase_Clear() {
 	C.QNetworkDiskCache_virtualbase_clear(unsafe.Pointer(this.h))
 
 }
-func (this *QNetworkDiskCache) Onclear(slot func(super func())) {
+func (this *QNetworkDiskCache) OnClear(slot func(super func())) {
 	ok := C.QNetworkDiskCache_override_virtual_clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -390,7 +390,7 @@ func (this *QNetworkDiskCache) callVirtualBase_Expire() int64 {
 	return (int64)(C.QNetworkDiskCache_virtualbase_expire(unsafe.Pointer(this.h)))
 
 }
-func (this *QNetworkDiskCache) Onexpire(slot func(super func() int64) int64) {
+func (this *QNetworkDiskCache) OnExpire(slot func(super func() int64) int64) {
 	ok := C.QNetworkDiskCache_override_virtual_expire(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -415,7 +415,7 @@ func (this *QNetworkDiskCache) callVirtualBase_Event(event *qt6.QEvent) bool {
 	return (bool)(C.QNetworkDiskCache_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QNetworkDiskCache) Onevent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+func (this *QNetworkDiskCache) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
 	ok := C.QNetworkDiskCache_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -443,7 +443,7 @@ func (this *QNetworkDiskCache) callVirtualBase_EventFilter(watched *qt6.QObject,
 	return (bool)(C.QNetworkDiskCache_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QNetworkDiskCache) OneventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+func (this *QNetworkDiskCache) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
 	ok := C.QNetworkDiskCache_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -473,7 +473,7 @@ func (this *QNetworkDiskCache) callVirtualBase_TimerEvent(event *qt6.QTimerEvent
 	C.QNetworkDiskCache_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QNetworkDiskCache) OntimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+func (this *QNetworkDiskCache) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
 	ok := C.QNetworkDiskCache_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -499,7 +499,7 @@ func (this *QNetworkDiskCache) callVirtualBase_ChildEvent(event *qt6.QChildEvent
 	C.QNetworkDiskCache_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QNetworkDiskCache) OnchildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+func (this *QNetworkDiskCache) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
 	ok := C.QNetworkDiskCache_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -525,7 +525,7 @@ func (this *QNetworkDiskCache) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 	C.QNetworkDiskCache_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QNetworkDiskCache) OncustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+func (this *QNetworkDiskCache) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
 	ok := C.QNetworkDiskCache_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -551,7 +551,7 @@ func (this *QNetworkDiskCache) callVirtualBase_ConnectNotify(signal *qt6.QMetaMe
 	C.QNetworkDiskCache_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QNetworkDiskCache) OnconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+func (this *QNetworkDiskCache) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
 	ok := C.QNetworkDiskCache_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -577,7 +577,7 @@ func (this *QNetworkDiskCache) callVirtualBase_DisconnectNotify(signal *qt6.QMet
 	C.QNetworkDiskCache_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QNetworkDiskCache) OndisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+func (this *QNetworkDiskCache) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
 	ok := C.QNetworkDiskCache_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

@@ -118,7 +118,7 @@ func QSyntaxHighlighter_Tr3(s string, c string, n int) string {
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QSyntaxHighlighter) OnhighlightBlock(slot func(text string)) {
+func (this *QSyntaxHighlighter) OnHighlightBlock(slot func(text string)) {
 	ok := C.QSyntaxHighlighter_override_virtual_highlightBlock(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -147,7 +147,7 @@ func (this *QSyntaxHighlighter) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QSyntaxHighlighter_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QSyntaxHighlighter) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QSyntaxHighlighter) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QSyntaxHighlighter_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -175,7 +175,7 @@ func (this *QSyntaxHighlighter) callVirtualBase_EventFilter(watched *QObject, ev
 	return (bool)(C.QSyntaxHighlighter_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QSyntaxHighlighter) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QSyntaxHighlighter) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QSyntaxHighlighter_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -205,7 +205,7 @@ func (this *QSyntaxHighlighter) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QSyntaxHighlighter_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSyntaxHighlighter) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QSyntaxHighlighter) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QSyntaxHighlighter_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -231,7 +231,7 @@ func (this *QSyntaxHighlighter) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QSyntaxHighlighter_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSyntaxHighlighter) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QSyntaxHighlighter) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QSyntaxHighlighter_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -257,7 +257,7 @@ func (this *QSyntaxHighlighter) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QSyntaxHighlighter_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSyntaxHighlighter) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QSyntaxHighlighter) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QSyntaxHighlighter_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -283,7 +283,7 @@ func (this *QSyntaxHighlighter) callVirtualBase_ConnectNotify(signal *QMetaMetho
 	C.QSyntaxHighlighter_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSyntaxHighlighter) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QSyntaxHighlighter) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QSyntaxHighlighter_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -309,7 +309,7 @@ func (this *QSyntaxHighlighter) callVirtualBase_DisconnectNotify(signal *QMetaMe
 	C.QSyntaxHighlighter_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSyntaxHighlighter) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QSyntaxHighlighter) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QSyntaxHighlighter_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

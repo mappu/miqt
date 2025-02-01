@@ -68,7 +68,7 @@ func (this *QScriptExtensionInterface) Initialize(key string, engine *QScriptEng
 func (this *QScriptExtensionInterface) OperatorAssign(param1 *QScriptExtensionInterface) {
 	C.QScriptExtensionInterface_operatorAssign(this.h, param1.cPointer())
 }
-func (this *QScriptExtensionInterface) Oninitialize(slot func(key string, engine *QScriptEngine)) {
+func (this *QScriptExtensionInterface) OnInitialize(slot func(key string, engine *QScriptEngine)) {
 	ok := C.QScriptExtensionInterface_override_virtual_initialize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -92,7 +92,7 @@ func miqt_exec_callback_QScriptExtensionInterface_initialize(self *C.QScriptExte
 	gofunc(slotval1, slotval2)
 
 }
-func (this *QScriptExtensionInterface) Onkeys(slot func() []string) {
+func (this *QScriptExtensionInterface) OnKeys(slot func() []string) {
 	ok := C.QScriptExtensionInterface_override_virtual_keys(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

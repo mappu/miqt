@@ -253,7 +253,7 @@ func (this *QPagedPaintDevice) Margins() *QPagedPaintDevice__Margins {
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
-func (this *QPagedPaintDevice) OnnewPage(slot func() bool) {
+func (this *QPagedPaintDevice) OnNewPage(slot func() bool) {
 	ok := C.QPagedPaintDevice_override_virtual_newPage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -278,7 +278,7 @@ func (this *QPagedPaintDevice) callVirtualBase_SetPageSizeWithSize(size QPagedPa
 	C.QPagedPaintDevice_virtualbase_setPageSizeWithSize(unsafe.Pointer(this.h), (C.int)(size))
 
 }
-func (this *QPagedPaintDevice) OnsetPageSizeWithSize(slot func(super func(size QPagedPaintDevice__PageSize), size QPagedPaintDevice__PageSize)) {
+func (this *QPagedPaintDevice) OnSetPageSizeWithSize(slot func(super func(size QPagedPaintDevice__PageSize), size QPagedPaintDevice__PageSize)) {
 	ok := C.QPagedPaintDevice_override_virtual_setPageSizeWithSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -304,7 +304,7 @@ func (this *QPagedPaintDevice) callVirtualBase_SetPageSizeMM(size *QSizeF) {
 	C.QPagedPaintDevice_virtualbase_setPageSizeMM(unsafe.Pointer(this.h), size.cPointer())
 
 }
-func (this *QPagedPaintDevice) OnsetPageSizeMM(slot func(super func(size *QSizeF), size *QSizeF)) {
+func (this *QPagedPaintDevice) OnSetPageSizeMM(slot func(super func(size *QSizeF), size *QSizeF)) {
 	ok := C.QPagedPaintDevice_override_virtual_setPageSizeMM(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -330,7 +330,7 @@ func (this *QPagedPaintDevice) callVirtualBase_SetMargins(margins *QPagedPaintDe
 	C.QPagedPaintDevice_virtualbase_setMargins(unsafe.Pointer(this.h), margins.cPointer())
 
 }
-func (this *QPagedPaintDevice) OnsetMargins(slot func(super func(margins *QPagedPaintDevice__Margins), margins *QPagedPaintDevice__Margins)) {
+func (this *QPagedPaintDevice) OnSetMargins(slot func(super func(margins *QPagedPaintDevice__Margins), margins *QPagedPaintDevice__Margins)) {
 	ok := C.QPagedPaintDevice_override_virtual_setMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -356,7 +356,7 @@ func (this *QPagedPaintDevice) callVirtualBase_DevType() int {
 	return (int)(C.QPagedPaintDevice_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QPagedPaintDevice) OndevType(slot func(super func() int) int) {
+func (this *QPagedPaintDevice) OnDevType(slot func(super func() int) int) {
 	ok := C.QPagedPaintDevice_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -375,7 +375,7 @@ func miqt_exec_callback_QPagedPaintDevice_devType(self *C.QPagedPaintDevice, cb 
 	return (C.int)(virtualReturn)
 
 }
-func (this *QPagedPaintDevice) OnpaintEngine(slot func() *QPaintEngine) {
+func (this *QPagedPaintDevice) OnPaintEngine(slot func() *QPaintEngine) {
 	ok := C.QPagedPaintDevice_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -400,7 +400,7 @@ func (this *QPagedPaintDevice) callVirtualBase_Metric(metric QPaintDevice__Paint
 	return (int)(C.QPagedPaintDevice_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(metric)))
 
 }
-func (this *QPagedPaintDevice) Onmetric(slot func(super func(metric QPaintDevice__PaintDeviceMetric) int, metric QPaintDevice__PaintDeviceMetric) int) {
+func (this *QPagedPaintDevice) OnMetric(slot func(super func(metric QPaintDevice__PaintDeviceMetric) int, metric QPaintDevice__PaintDeviceMetric) int) {
 	ok := C.QPagedPaintDevice_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -428,7 +428,7 @@ func (this *QPagedPaintDevice) callVirtualBase_InitPainter(painter *QPainter) {
 	C.QPagedPaintDevice_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QPagedPaintDevice) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+func (this *QPagedPaintDevice) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
 	ok := C.QPagedPaintDevice_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -454,7 +454,7 @@ func (this *QPagedPaintDevice) callVirtualBase_Redirected(offset *QPoint) *QPain
 	return newQPaintDevice(C.QPagedPaintDevice_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QPagedPaintDevice) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+func (this *QPagedPaintDevice) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	ok := C.QPagedPaintDevice_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -482,7 +482,7 @@ func (this *QPagedPaintDevice) callVirtualBase_SharedPainter() *QPainter {
 	return newQPainter(C.QPagedPaintDevice_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QPagedPaintDevice) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+func (this *QPagedPaintDevice) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	ok := C.QPagedPaintDevice_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

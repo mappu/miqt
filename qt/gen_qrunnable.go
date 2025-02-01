@@ -67,7 +67,7 @@ func (this *QRunnable) SetAutoDelete(_autoDelete bool) {
 func (this *QRunnable) OperatorAssign(param1 *QRunnable) {
 	C.QRunnable_operatorAssign(this.h, param1.cPointer())
 }
-func (this *QRunnable) Onrun(slot func()) {
+func (this *QRunnable) OnRun(slot func()) {
 	ok := C.QRunnable_override_virtual_run(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

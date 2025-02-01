@@ -534,7 +534,7 @@ func (this *QPrinter) callVirtualBase_DevType() int {
 	return (int)(C.QPrinter_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QPrinter) OndevType(slot func(super func() int) int) {
+func (this *QPrinter) OnDevType(slot func(super func() int) int) {
 	ok := C.QPrinter_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -559,7 +559,7 @@ func (this *QPrinter) callVirtualBase_SetPageSize(pageSize qt.QPagedPaintDevice_
 	C.QPrinter_virtualbase_setPageSize(unsafe.Pointer(this.h), (C.int)(pageSize))
 
 }
-func (this *QPrinter) OnsetPageSize(slot func(super func(pageSize qt.QPagedPaintDevice__PageSize), pageSize qt.QPagedPaintDevice__PageSize)) {
+func (this *QPrinter) OnSetPageSize(slot func(super func(pageSize qt.QPagedPaintDevice__PageSize), pageSize qt.QPagedPaintDevice__PageSize)) {
 	ok := C.QPrinter_override_virtual_setPageSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -585,7 +585,7 @@ func (this *QPrinter) callVirtualBase_SetPageSizeMM(size *qt.QSizeF) {
 	C.QPrinter_virtualbase_setPageSizeMM(unsafe.Pointer(this.h), (*C.QSizeF)(size.UnsafePointer()))
 
 }
-func (this *QPrinter) OnsetPageSizeMM(slot func(super func(size *qt.QSizeF), size *qt.QSizeF)) {
+func (this *QPrinter) OnSetPageSizeMM(slot func(super func(size *qt.QSizeF), size *qt.QSizeF)) {
 	ok := C.QPrinter_override_virtual_setPageSizeMM(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -611,7 +611,7 @@ func (this *QPrinter) callVirtualBase_NewPage() bool {
 	return (bool)(C.QPrinter_virtualbase_newPage(unsafe.Pointer(this.h)))
 
 }
-func (this *QPrinter) OnnewPage(slot func(super func() bool) bool) {
+func (this *QPrinter) OnNewPage(slot func(super func() bool) bool) {
 	ok := C.QPrinter_override_virtual_newPage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -636,7 +636,7 @@ func (this *QPrinter) callVirtualBase_PaintEngine() *qt.QPaintEngine {
 	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QPrinter_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
 }
-func (this *QPrinter) OnpaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
+func (this *QPrinter) OnPaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
 	ok := C.QPrinter_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -661,7 +661,7 @@ func (this *QPrinter) callVirtualBase_SetMargins(m *qt.QPagedPaintDevice__Margin
 	C.QPrinter_virtualbase_setMargins(unsafe.Pointer(this.h), (*C.QPagedPaintDevice__Margins)(m.UnsafePointer()))
 
 }
-func (this *QPrinter) OnsetMargins(slot func(super func(m *qt.QPagedPaintDevice__Margins), m *qt.QPagedPaintDevice__Margins)) {
+func (this *QPrinter) OnSetMargins(slot func(super func(m *qt.QPagedPaintDevice__Margins), m *qt.QPagedPaintDevice__Margins)) {
 	ok := C.QPrinter_override_virtual_setMargins(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -687,7 +687,7 @@ func (this *QPrinter) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDevice
 	return (int)(C.QPrinter_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QPrinter) Onmetric(slot func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int) {
+func (this *QPrinter) OnMetric(slot func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int) {
 	ok := C.QPrinter_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -715,7 +715,7 @@ func (this *QPrinter) callVirtualBase_InitPainter(painter *qt.QPainter) {
 	C.QPrinter_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
 }
-func (this *QPrinter) OninitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
+func (this *QPrinter) OnInitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
 	ok := C.QPrinter_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -741,7 +741,7 @@ func (this *QPrinter) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDe
 	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QPrinter_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
 }
-func (this *QPrinter) Onredirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
+func (this *QPrinter) OnRedirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
 	ok := C.QPrinter_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -769,7 +769,7 @@ func (this *QPrinter) callVirtualBase_SharedPainter() *qt.QPainter {
 	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QPrinter_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
 }
-func (this *QPrinter) OnsharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
+func (this *QPrinter) OnSharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
 	ok := C.QPrinter_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

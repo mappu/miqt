@@ -191,7 +191,7 @@ func QValidator_TrUtf83(s string, c string, n int) string {
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QValidator) Onvalidate(slot func(param1 string, param2 *int) QValidator__State) {
+func (this *QValidator) OnValidate(slot func(param1 string, param2 *int) QValidator__State) {
 	ok := C.QValidator_override_virtual_validate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -227,7 +227,7 @@ func (this *QValidator) callVirtualBase_Fixup(param1 string) {
 	C.QValidator_virtualbase_fixup(unsafe.Pointer(this.h), param1_ms)
 
 }
-func (this *QValidator) Onfixup(slot func(super func(param1 string), param1 string)) {
+func (this *QValidator) OnFixup(slot func(super func(param1 string), param1 string)) {
 	ok := C.QValidator_override_virtual_fixup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -256,7 +256,7 @@ func (this *QValidator) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QValidator_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QValidator) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QValidator) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QValidator_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -284,7 +284,7 @@ func (this *QValidator) callVirtualBase_EventFilter(watched *QObject, event *QEv
 	return (bool)(C.QValidator_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QValidator) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QValidator) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QValidator_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -314,7 +314,7 @@ func (this *QValidator) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QValidator_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QValidator) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QValidator) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QValidator_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -340,7 +340,7 @@ func (this *QValidator) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QValidator_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QValidator) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QValidator) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QValidator_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -366,7 +366,7 @@ func (this *QValidator) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QValidator_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QValidator) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QValidator) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QValidator_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -392,7 +392,7 @@ func (this *QValidator) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QValidator_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QValidator) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QValidator) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QValidator_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -418,7 +418,7 @@ func (this *QValidator) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 	C.QValidator_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QValidator) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QValidator) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QValidator_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -670,7 +670,7 @@ func (this *QIntValidator) callVirtualBase_Validate(param1 string, param2 *int) 
 	return (QValidator__State)(C.QIntValidator_virtualbase_validate(unsafe.Pointer(this.h), param1_ms, (*C.int)(unsafe.Pointer(param2))))
 
 }
-func (this *QIntValidator) Onvalidate(slot func(super func(param1 string, param2 *int) QValidator__State, param1 string, param2 *int) QValidator__State) {
+func (this *QIntValidator) OnValidate(slot func(super func(param1 string, param2 *int) QValidator__State, param1 string, param2 *int) QValidator__State) {
 	ok := C.QIntValidator_override_virtual_validate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -706,7 +706,7 @@ func (this *QIntValidator) callVirtualBase_Fixup(input string) {
 	C.QIntValidator_virtualbase_fixup(unsafe.Pointer(this.h), input_ms)
 
 }
-func (this *QIntValidator) Onfixup(slot func(super func(input string), input string)) {
+func (this *QIntValidator) OnFixup(slot func(super func(input string), input string)) {
 	ok := C.QIntValidator_override_virtual_fixup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -735,7 +735,7 @@ func (this *QIntValidator) callVirtualBase_SetRange(bottom int, top int) {
 	C.QIntValidator_virtualbase_setRange(unsafe.Pointer(this.h), (C.int)(bottom), (C.int)(top))
 
 }
-func (this *QIntValidator) OnsetRange(slot func(super func(bottom int, top int), bottom int, top int)) {
+func (this *QIntValidator) OnSetRange(slot func(super func(bottom int, top int), bottom int, top int)) {
 	ok := C.QIntValidator_override_virtual_setRange(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -763,7 +763,7 @@ func (this *QIntValidator) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QIntValidator_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QIntValidator) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QIntValidator) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QIntValidator_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -791,7 +791,7 @@ func (this *QIntValidator) callVirtualBase_EventFilter(watched *QObject, event *
 	return (bool)(C.QIntValidator_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QIntValidator) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QIntValidator) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QIntValidator_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -821,7 +821,7 @@ func (this *QIntValidator) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QIntValidator_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QIntValidator) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QIntValidator) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QIntValidator_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -847,7 +847,7 @@ func (this *QIntValidator) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QIntValidator_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QIntValidator) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QIntValidator) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QIntValidator_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -873,7 +873,7 @@ func (this *QIntValidator) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QIntValidator_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QIntValidator) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QIntValidator) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QIntValidator_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -899,7 +899,7 @@ func (this *QIntValidator) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QIntValidator_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QIntValidator) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QIntValidator) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QIntValidator_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -925,7 +925,7 @@ func (this *QIntValidator) callVirtualBase_DisconnectNotify(signal *QMetaMethod)
 	C.QIntValidator_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QIntValidator) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QIntValidator) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QIntValidator_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1225,7 +1225,7 @@ func (this *QDoubleValidator) callVirtualBase_Validate(param1 string, param2 *in
 	return (QValidator__State)(C.QDoubleValidator_virtualbase_validate(unsafe.Pointer(this.h), param1_ms, (*C.int)(unsafe.Pointer(param2))))
 
 }
-func (this *QDoubleValidator) Onvalidate(slot func(super func(param1 string, param2 *int) QValidator__State, param1 string, param2 *int) QValidator__State) {
+func (this *QDoubleValidator) OnValidate(slot func(super func(param1 string, param2 *int) QValidator__State, param1 string, param2 *int) QValidator__State) {
 	ok := C.QDoubleValidator_override_virtual_validate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1257,7 +1257,7 @@ func (this *QDoubleValidator) callVirtualBase_SetRange(bottom float64, top float
 	C.QDoubleValidator_virtualbase_setRange(unsafe.Pointer(this.h), (C.double)(bottom), (C.double)(top), (C.int)(decimals))
 
 }
-func (this *QDoubleValidator) OnsetRange(slot func(super func(bottom float64, top float64, decimals int), bottom float64, top float64, decimals int)) {
+func (this *QDoubleValidator) OnSetRange(slot func(super func(bottom float64, top float64, decimals int), bottom float64, top float64, decimals int)) {
 	ok := C.QDoubleValidator_override_virtual_setRange(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1291,7 +1291,7 @@ func (this *QDoubleValidator) callVirtualBase_Fixup(param1 string) {
 	C.QDoubleValidator_virtualbase_fixup(unsafe.Pointer(this.h), param1_ms)
 
 }
-func (this *QDoubleValidator) Onfixup(slot func(super func(param1 string), param1 string)) {
+func (this *QDoubleValidator) OnFixup(slot func(super func(param1 string), param1 string)) {
 	ok := C.QDoubleValidator_override_virtual_fixup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1320,7 +1320,7 @@ func (this *QDoubleValidator) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QDoubleValidator_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QDoubleValidator) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QDoubleValidator) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QDoubleValidator_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1348,7 +1348,7 @@ func (this *QDoubleValidator) callVirtualBase_EventFilter(watched *QObject, even
 	return (bool)(C.QDoubleValidator_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QDoubleValidator) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QDoubleValidator) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QDoubleValidator_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1378,7 +1378,7 @@ func (this *QDoubleValidator) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QDoubleValidator_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDoubleValidator) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QDoubleValidator) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QDoubleValidator_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1404,7 +1404,7 @@ func (this *QDoubleValidator) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QDoubleValidator_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDoubleValidator) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QDoubleValidator) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QDoubleValidator_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1430,7 +1430,7 @@ func (this *QDoubleValidator) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QDoubleValidator_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QDoubleValidator) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QDoubleValidator) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QDoubleValidator_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1456,7 +1456,7 @@ func (this *QDoubleValidator) callVirtualBase_ConnectNotify(signal *QMetaMethod)
 	C.QDoubleValidator_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QDoubleValidator) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QDoubleValidator) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QDoubleValidator_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1482,7 +1482,7 @@ func (this *QDoubleValidator) callVirtualBase_DisconnectNotify(signal *QMetaMeth
 	C.QDoubleValidator_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QDoubleValidator) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QDoubleValidator) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QDoubleValidator_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1694,7 +1694,7 @@ func (this *QRegExpValidator) callVirtualBase_Validate(input string, pos *int) Q
 	return (QValidator__State)(C.QRegExpValidator_virtualbase_validate(unsafe.Pointer(this.h), input_ms, (*C.int)(unsafe.Pointer(pos))))
 
 }
-func (this *QRegExpValidator) Onvalidate(slot func(super func(input string, pos *int) QValidator__State, input string, pos *int) QValidator__State) {
+func (this *QRegExpValidator) OnValidate(slot func(super func(input string, pos *int) QValidator__State, input string, pos *int) QValidator__State) {
 	ok := C.QRegExpValidator_override_virtual_validate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1730,7 +1730,7 @@ func (this *QRegExpValidator) callVirtualBase_Fixup(param1 string) {
 	C.QRegExpValidator_virtualbase_fixup(unsafe.Pointer(this.h), param1_ms)
 
 }
-func (this *QRegExpValidator) Onfixup(slot func(super func(param1 string), param1 string)) {
+func (this *QRegExpValidator) OnFixup(slot func(super func(param1 string), param1 string)) {
 	ok := C.QRegExpValidator_override_virtual_fixup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1759,7 +1759,7 @@ func (this *QRegExpValidator) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QRegExpValidator_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QRegExpValidator) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QRegExpValidator) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QRegExpValidator_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1787,7 +1787,7 @@ func (this *QRegExpValidator) callVirtualBase_EventFilter(watched *QObject, even
 	return (bool)(C.QRegExpValidator_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QRegExpValidator) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QRegExpValidator) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QRegExpValidator_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1817,7 +1817,7 @@ func (this *QRegExpValidator) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QRegExpValidator_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRegExpValidator) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QRegExpValidator) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QRegExpValidator_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1843,7 +1843,7 @@ func (this *QRegExpValidator) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QRegExpValidator_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRegExpValidator) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QRegExpValidator) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QRegExpValidator_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1869,7 +1869,7 @@ func (this *QRegExpValidator) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QRegExpValidator_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRegExpValidator) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QRegExpValidator) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QRegExpValidator_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1895,7 +1895,7 @@ func (this *QRegExpValidator) callVirtualBase_ConnectNotify(signal *QMetaMethod)
 	C.QRegExpValidator_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QRegExpValidator) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QRegExpValidator) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QRegExpValidator_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1921,7 +1921,7 @@ func (this *QRegExpValidator) callVirtualBase_DisconnectNotify(signal *QMetaMeth
 	C.QRegExpValidator_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QRegExpValidator) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QRegExpValidator) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QRegExpValidator_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2135,7 +2135,7 @@ func (this *QRegularExpressionValidator) callVirtualBase_Validate(input string, 
 	return (QValidator__State)(C.QRegularExpressionValidator_virtualbase_validate(unsafe.Pointer(this.h), input_ms, (*C.int)(unsafe.Pointer(pos))))
 
 }
-func (this *QRegularExpressionValidator) Onvalidate(slot func(super func(input string, pos *int) QValidator__State, input string, pos *int) QValidator__State) {
+func (this *QRegularExpressionValidator) OnValidate(slot func(super func(input string, pos *int) QValidator__State, input string, pos *int) QValidator__State) {
 	ok := C.QRegularExpressionValidator_override_virtual_validate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2171,7 +2171,7 @@ func (this *QRegularExpressionValidator) callVirtualBase_Fixup(param1 string) {
 	C.QRegularExpressionValidator_virtualbase_fixup(unsafe.Pointer(this.h), param1_ms)
 
 }
-func (this *QRegularExpressionValidator) Onfixup(slot func(super func(param1 string), param1 string)) {
+func (this *QRegularExpressionValidator) OnFixup(slot func(super func(param1 string), param1 string)) {
 	ok := C.QRegularExpressionValidator_override_virtual_fixup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2200,7 +2200,7 @@ func (this *QRegularExpressionValidator) callVirtualBase_Event(event *QEvent) bo
 	return (bool)(C.QRegularExpressionValidator_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QRegularExpressionValidator) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QRegularExpressionValidator) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QRegularExpressionValidator_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2228,7 +2228,7 @@ func (this *QRegularExpressionValidator) callVirtualBase_EventFilter(watched *QO
 	return (bool)(C.QRegularExpressionValidator_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QRegularExpressionValidator) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QRegularExpressionValidator) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QRegularExpressionValidator_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2258,7 +2258,7 @@ func (this *QRegularExpressionValidator) callVirtualBase_TimerEvent(event *QTime
 	C.QRegularExpressionValidator_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRegularExpressionValidator) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QRegularExpressionValidator) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QRegularExpressionValidator_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2284,7 +2284,7 @@ func (this *QRegularExpressionValidator) callVirtualBase_ChildEvent(event *QChil
 	C.QRegularExpressionValidator_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRegularExpressionValidator) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QRegularExpressionValidator) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QRegularExpressionValidator_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2310,7 +2310,7 @@ func (this *QRegularExpressionValidator) callVirtualBase_CustomEvent(event *QEve
 	C.QRegularExpressionValidator_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QRegularExpressionValidator) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QRegularExpressionValidator) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QRegularExpressionValidator_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2336,7 +2336,7 @@ func (this *QRegularExpressionValidator) callVirtualBase_ConnectNotify(signal *Q
 	C.QRegularExpressionValidator_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QRegularExpressionValidator) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QRegularExpressionValidator) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QRegularExpressionValidator_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2362,7 +2362,7 @@ func (this *QRegularExpressionValidator) callVirtualBase_DisconnectNotify(signal
 	C.QRegularExpressionValidator_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QRegularExpressionValidator) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QRegularExpressionValidator) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QRegularExpressionValidator_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

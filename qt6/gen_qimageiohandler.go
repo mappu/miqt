@@ -193,7 +193,7 @@ func (this *QImageIOHandler) CurrentImageRect() *QRect {
 func QImageIOHandler_AllocateImage(size QSize, format QImage__Format, image *QImage) bool {
 	return (bool)(C.QImageIOHandler_allocateImage(size.cPointer(), (C.int)(format), image.cPointer()))
 }
-func (this *QImageIOHandler) OncanRead(slot func() bool) {
+func (this *QImageIOHandler) OnCanRead(slot func() bool) {
 	ok := C.QImageIOHandler_override_virtual_canRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -212,7 +212,7 @@ func miqt_exec_callback_QImageIOHandler_canRead(self *C.QImageIOHandler, cb C.in
 	return (C.bool)(virtualReturn)
 
 }
-func (this *QImageIOHandler) Onread(slot func(image *QImage) bool) {
+func (this *QImageIOHandler) OnRead(slot func(image *QImage) bool) {
 	ok := C.QImageIOHandler_override_virtual_read(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -240,7 +240,7 @@ func (this *QImageIOHandler) callVirtualBase_Write(image *QImage) bool {
 	return (bool)(C.QImageIOHandler_virtualbase_write(unsafe.Pointer(this.h), image.cPointer()))
 
 }
-func (this *QImageIOHandler) Onwrite(slot func(super func(image *QImage) bool, image *QImage) bool) {
+func (this *QImageIOHandler) OnWrite(slot func(super func(image *QImage) bool, image *QImage) bool) {
 	ok := C.QImageIOHandler_override_virtual_write(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -270,7 +270,7 @@ func (this *QImageIOHandler) callVirtualBase_Option(option QImageIOHandler__Imag
 	return _goptr
 
 }
-func (this *QImageIOHandler) Onoption(slot func(super func(option QImageIOHandler__ImageOption) *QVariant, option QImageIOHandler__ImageOption) *QVariant) {
+func (this *QImageIOHandler) OnOption(slot func(super func(option QImageIOHandler__ImageOption) *QVariant, option QImageIOHandler__ImageOption) *QVariant) {
 	ok := C.QImageIOHandler_override_virtual_option(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -298,7 +298,7 @@ func (this *QImageIOHandler) callVirtualBase_SetOption(option QImageIOHandler__I
 	C.QImageIOHandler_virtualbase_setOption(unsafe.Pointer(this.h), (C.int)(option), value.cPointer())
 
 }
-func (this *QImageIOHandler) OnsetOption(slot func(super func(option QImageIOHandler__ImageOption, value *QVariant), option QImageIOHandler__ImageOption, value *QVariant)) {
+func (this *QImageIOHandler) OnSetOption(slot func(super func(option QImageIOHandler__ImageOption, value *QVariant), option QImageIOHandler__ImageOption, value *QVariant)) {
 	ok := C.QImageIOHandler_override_virtual_setOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -326,7 +326,7 @@ func (this *QImageIOHandler) callVirtualBase_SupportsOption(option QImageIOHandl
 	return (bool)(C.QImageIOHandler_virtualbase_supportsOption(unsafe.Pointer(this.h), (C.int)(option)))
 
 }
-func (this *QImageIOHandler) OnsupportsOption(slot func(super func(option QImageIOHandler__ImageOption) bool, option QImageIOHandler__ImageOption) bool) {
+func (this *QImageIOHandler) OnSupportsOption(slot func(super func(option QImageIOHandler__ImageOption) bool, option QImageIOHandler__ImageOption) bool) {
 	ok := C.QImageIOHandler_override_virtual_supportsOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -354,7 +354,7 @@ func (this *QImageIOHandler) callVirtualBase_JumpToNextImage() bool {
 	return (bool)(C.QImageIOHandler_virtualbase_jumpToNextImage(unsafe.Pointer(this.h)))
 
 }
-func (this *QImageIOHandler) OnjumpToNextImage(slot func(super func() bool) bool) {
+func (this *QImageIOHandler) OnJumpToNextImage(slot func(super func() bool) bool) {
 	ok := C.QImageIOHandler_override_virtual_jumpToNextImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -379,7 +379,7 @@ func (this *QImageIOHandler) callVirtualBase_JumpToImage(imageNumber int) bool {
 	return (bool)(C.QImageIOHandler_virtualbase_jumpToImage(unsafe.Pointer(this.h), (C.int)(imageNumber)))
 
 }
-func (this *QImageIOHandler) OnjumpToImage(slot func(super func(imageNumber int) bool, imageNumber int) bool) {
+func (this *QImageIOHandler) OnJumpToImage(slot func(super func(imageNumber int) bool, imageNumber int) bool) {
 	ok := C.QImageIOHandler_override_virtual_jumpToImage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -407,7 +407,7 @@ func (this *QImageIOHandler) callVirtualBase_LoopCount() int {
 	return (int)(C.QImageIOHandler_virtualbase_loopCount(unsafe.Pointer(this.h)))
 
 }
-func (this *QImageIOHandler) OnloopCount(slot func(super func() int) int) {
+func (this *QImageIOHandler) OnLoopCount(slot func(super func() int) int) {
 	ok := C.QImageIOHandler_override_virtual_loopCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -432,7 +432,7 @@ func (this *QImageIOHandler) callVirtualBase_ImageCount() int {
 	return (int)(C.QImageIOHandler_virtualbase_imageCount(unsafe.Pointer(this.h)))
 
 }
-func (this *QImageIOHandler) OnimageCount(slot func(super func() int) int) {
+func (this *QImageIOHandler) OnImageCount(slot func(super func() int) int) {
 	ok := C.QImageIOHandler_override_virtual_imageCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -457,7 +457,7 @@ func (this *QImageIOHandler) callVirtualBase_NextImageDelay() int {
 	return (int)(C.QImageIOHandler_virtualbase_nextImageDelay(unsafe.Pointer(this.h)))
 
 }
-func (this *QImageIOHandler) OnnextImageDelay(slot func(super func() int) int) {
+func (this *QImageIOHandler) OnNextImageDelay(slot func(super func() int) int) {
 	ok := C.QImageIOHandler_override_virtual_nextImageDelay(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -482,7 +482,7 @@ func (this *QImageIOHandler) callVirtualBase_CurrentImageNumber() int {
 	return (int)(C.QImageIOHandler_virtualbase_currentImageNumber(unsafe.Pointer(this.h)))
 
 }
-func (this *QImageIOHandler) OncurrentImageNumber(slot func(super func() int) int) {
+func (this *QImageIOHandler) OnCurrentImageNumber(slot func(super func() int) int) {
 	ok := C.QImageIOHandler_override_virtual_currentImageNumber(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -509,7 +509,7 @@ func (this *QImageIOHandler) callVirtualBase_CurrentImageRect() *QRect {
 	return _goptr
 
 }
-func (this *QImageIOHandler) OncurrentImageRect(slot func(super func() *QRect) *QRect) {
+func (this *QImageIOHandler) OnCurrentImageRect(slot func(super func() *QRect) *QRect) {
 	ok := C.QImageIOHandler_override_virtual_currentImageRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -653,7 +653,7 @@ func QImageIOPlugin_Tr3(s string, c string, n int) string {
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QImageIOPlugin) Oncapabilities(slot func(device *QIODevice, format []byte) QImageIOPlugin__Capability) {
+func (this *QImageIOPlugin) OnCapabilities(slot func(device *QIODevice, format []byte) QImageIOPlugin__Capability) {
 	ok := C.QImageIOPlugin_override_virtual_capabilities(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -680,7 +680,7 @@ func miqt_exec_callback_QImageIOPlugin_capabilities(self *C.QImageIOPlugin, cb C
 	return (C.int)(virtualReturn)
 
 }
-func (this *QImageIOPlugin) Oncreate(slot func(device *QIODevice, format []byte) *QImageIOHandler) {
+func (this *QImageIOPlugin) OnCreate(slot func(device *QIODevice, format []byte) *QImageIOHandler) {
 	ok := C.QImageIOPlugin_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -713,7 +713,7 @@ func (this *QImageIOPlugin) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QImageIOPlugin_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QImageIOPlugin) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QImageIOPlugin) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QImageIOPlugin_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -741,7 +741,7 @@ func (this *QImageIOPlugin) callVirtualBase_EventFilter(watched *QObject, event 
 	return (bool)(C.QImageIOPlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QImageIOPlugin) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QImageIOPlugin) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QImageIOPlugin_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -771,7 +771,7 @@ func (this *QImageIOPlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QImageIOPlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QImageIOPlugin) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QImageIOPlugin) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QImageIOPlugin_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -797,7 +797,7 @@ func (this *QImageIOPlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QImageIOPlugin_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QImageIOPlugin) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QImageIOPlugin) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QImageIOPlugin_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -823,7 +823,7 @@ func (this *QImageIOPlugin) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QImageIOPlugin_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QImageIOPlugin) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QImageIOPlugin) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QImageIOPlugin_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -849,7 +849,7 @@ func (this *QImageIOPlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QImageIOPlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QImageIOPlugin) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QImageIOPlugin) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QImageIOPlugin_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -875,7 +875,7 @@ func (this *QImageIOPlugin) callVirtualBase_DisconnectNotify(signal *QMetaMethod
 	C.QImageIOPlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QImageIOPlugin) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QImageIOPlugin) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QImageIOPlugin_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

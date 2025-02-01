@@ -210,7 +210,7 @@ func (this *QGraphicsEffect) callVirtualBase_BoundingRectFor(sourceRect *QRectF)
 	return _goptr
 
 }
-func (this *QGraphicsEffect) OnboundingRectFor(slot func(super func(sourceRect *QRectF) *QRectF, sourceRect *QRectF) *QRectF) {
+func (this *QGraphicsEffect) OnBoundingRectFor(slot func(super func(sourceRect *QRectF) *QRectF, sourceRect *QRectF) *QRectF) {
 	ok := C.QGraphicsEffect_override_virtual_boundingRectFor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -232,7 +232,7 @@ func miqt_exec_callback_QGraphicsEffect_boundingRectFor(self *C.QGraphicsEffect,
 	return virtualReturn.cPointer()
 
 }
-func (this *QGraphicsEffect) Ondraw(slot func(painter *QPainter)) {
+func (this *QGraphicsEffect) OnDraw(slot func(painter *QPainter)) {
 	ok := C.QGraphicsEffect_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -258,7 +258,7 @@ func (this *QGraphicsEffect) callVirtualBase_SourceChanged(flags QGraphicsEffect
 	C.QGraphicsEffect_virtualbase_sourceChanged(unsafe.Pointer(this.h), (C.int)(flags))
 
 }
-func (this *QGraphicsEffect) OnsourceChanged(slot func(super func(flags QGraphicsEffect__ChangeFlag), flags QGraphicsEffect__ChangeFlag)) {
+func (this *QGraphicsEffect) OnSourceChanged(slot func(super func(flags QGraphicsEffect__ChangeFlag), flags QGraphicsEffect__ChangeFlag)) {
 	ok := C.QGraphicsEffect_override_virtual_sourceChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -284,7 +284,7 @@ func (this *QGraphicsEffect) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QGraphicsEffect_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QGraphicsEffect) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QGraphicsEffect) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QGraphicsEffect_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -312,7 +312,7 @@ func (this *QGraphicsEffect) callVirtualBase_EventFilter(watched *QObject, event
 	return (bool)(C.QGraphicsEffect_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QGraphicsEffect) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QGraphicsEffect) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QGraphicsEffect_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -342,7 +342,7 @@ func (this *QGraphicsEffect) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QGraphicsEffect_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsEffect) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QGraphicsEffect) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QGraphicsEffect_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -368,7 +368,7 @@ func (this *QGraphicsEffect) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QGraphicsEffect_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsEffect) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QGraphicsEffect) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QGraphicsEffect_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -394,7 +394,7 @@ func (this *QGraphicsEffect) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QGraphicsEffect_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsEffect) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QGraphicsEffect) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QGraphicsEffect_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -420,7 +420,7 @@ func (this *QGraphicsEffect) callVirtualBase_ConnectNotify(signal *QMetaMethod) 
 	C.QGraphicsEffect_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsEffect) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QGraphicsEffect) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QGraphicsEffect_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -446,7 +446,7 @@ func (this *QGraphicsEffect) callVirtualBase_DisconnectNotify(signal *QMetaMetho
 	C.QGraphicsEffect_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsEffect) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QGraphicsEffect) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QGraphicsEffect_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -664,7 +664,7 @@ func (this *QGraphicsColorizeEffect) callVirtualBase_Draw(painter *QPainter) {
 	C.QGraphicsColorizeEffect_virtualbase_draw(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QGraphicsColorizeEffect) Ondraw(slot func(super func(painter *QPainter), painter *QPainter)) {
+func (this *QGraphicsColorizeEffect) OnDraw(slot func(super func(painter *QPainter), painter *QPainter)) {
 	ok := C.QGraphicsColorizeEffect_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -692,7 +692,7 @@ func (this *QGraphicsColorizeEffect) callVirtualBase_BoundingRectFor(sourceRect 
 	return _goptr
 
 }
-func (this *QGraphicsColorizeEffect) OnboundingRectFor(slot func(super func(sourceRect *QRectF) *QRectF, sourceRect *QRectF) *QRectF) {
+func (this *QGraphicsColorizeEffect) OnBoundingRectFor(slot func(super func(sourceRect *QRectF) *QRectF, sourceRect *QRectF) *QRectF) {
 	ok := C.QGraphicsColorizeEffect_override_virtual_boundingRectFor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -720,7 +720,7 @@ func (this *QGraphicsColorizeEffect) callVirtualBase_SourceChanged(flags QGraphi
 	C.QGraphicsColorizeEffect_virtualbase_sourceChanged(unsafe.Pointer(this.h), (C.int)(flags))
 
 }
-func (this *QGraphicsColorizeEffect) OnsourceChanged(slot func(super func(flags QGraphicsEffect__ChangeFlag), flags QGraphicsEffect__ChangeFlag)) {
+func (this *QGraphicsColorizeEffect) OnSourceChanged(slot func(super func(flags QGraphicsEffect__ChangeFlag), flags QGraphicsEffect__ChangeFlag)) {
 	ok := C.QGraphicsColorizeEffect_override_virtual_sourceChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -746,7 +746,7 @@ func (this *QGraphicsColorizeEffect) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QGraphicsColorizeEffect_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QGraphicsColorizeEffect) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QGraphicsColorizeEffect) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QGraphicsColorizeEffect_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -774,7 +774,7 @@ func (this *QGraphicsColorizeEffect) callVirtualBase_EventFilter(watched *QObjec
 	return (bool)(C.QGraphicsColorizeEffect_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QGraphicsColorizeEffect) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QGraphicsColorizeEffect) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QGraphicsColorizeEffect_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -804,7 +804,7 @@ func (this *QGraphicsColorizeEffect) callVirtualBase_TimerEvent(event *QTimerEve
 	C.QGraphicsColorizeEffect_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsColorizeEffect) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QGraphicsColorizeEffect) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QGraphicsColorizeEffect_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -830,7 +830,7 @@ func (this *QGraphicsColorizeEffect) callVirtualBase_ChildEvent(event *QChildEve
 	C.QGraphicsColorizeEffect_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsColorizeEffect) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QGraphicsColorizeEffect) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QGraphicsColorizeEffect_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -856,7 +856,7 @@ func (this *QGraphicsColorizeEffect) callVirtualBase_CustomEvent(event *QEvent) 
 	C.QGraphicsColorizeEffect_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsColorizeEffect) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QGraphicsColorizeEffect) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QGraphicsColorizeEffect_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -882,7 +882,7 @@ func (this *QGraphicsColorizeEffect) callVirtualBase_ConnectNotify(signal *QMeta
 	C.QGraphicsColorizeEffect_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsColorizeEffect) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QGraphicsColorizeEffect) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QGraphicsColorizeEffect_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -908,7 +908,7 @@ func (this *QGraphicsColorizeEffect) callVirtualBase_DisconnectNotify(signal *QM
 	C.QGraphicsColorizeEffect_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsColorizeEffect) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QGraphicsColorizeEffect) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QGraphicsColorizeEffect_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1132,7 +1132,7 @@ func (this *QGraphicsBlurEffect) callVirtualBase_BoundingRectFor(rect *QRectF) *
 	return _goptr
 
 }
-func (this *QGraphicsBlurEffect) OnboundingRectFor(slot func(super func(rect *QRectF) *QRectF, rect *QRectF) *QRectF) {
+func (this *QGraphicsBlurEffect) OnBoundingRectFor(slot func(super func(rect *QRectF) *QRectF, rect *QRectF) *QRectF) {
 	ok := C.QGraphicsBlurEffect_override_virtual_boundingRectFor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1160,7 +1160,7 @@ func (this *QGraphicsBlurEffect) callVirtualBase_Draw(painter *QPainter) {
 	C.QGraphicsBlurEffect_virtualbase_draw(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QGraphicsBlurEffect) Ondraw(slot func(super func(painter *QPainter), painter *QPainter)) {
+func (this *QGraphicsBlurEffect) OnDraw(slot func(super func(painter *QPainter), painter *QPainter)) {
 	ok := C.QGraphicsBlurEffect_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1186,7 +1186,7 @@ func (this *QGraphicsBlurEffect) callVirtualBase_SourceChanged(flags QGraphicsEf
 	C.QGraphicsBlurEffect_virtualbase_sourceChanged(unsafe.Pointer(this.h), (C.int)(flags))
 
 }
-func (this *QGraphicsBlurEffect) OnsourceChanged(slot func(super func(flags QGraphicsEffect__ChangeFlag), flags QGraphicsEffect__ChangeFlag)) {
+func (this *QGraphicsBlurEffect) OnSourceChanged(slot func(super func(flags QGraphicsEffect__ChangeFlag), flags QGraphicsEffect__ChangeFlag)) {
 	ok := C.QGraphicsBlurEffect_override_virtual_sourceChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1212,7 +1212,7 @@ func (this *QGraphicsBlurEffect) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QGraphicsBlurEffect_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QGraphicsBlurEffect) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QGraphicsBlurEffect) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QGraphicsBlurEffect_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1240,7 +1240,7 @@ func (this *QGraphicsBlurEffect) callVirtualBase_EventFilter(watched *QObject, e
 	return (bool)(C.QGraphicsBlurEffect_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QGraphicsBlurEffect) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QGraphicsBlurEffect) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QGraphicsBlurEffect_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1270,7 +1270,7 @@ func (this *QGraphicsBlurEffect) callVirtualBase_TimerEvent(event *QTimerEvent) 
 	C.QGraphicsBlurEffect_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsBlurEffect) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QGraphicsBlurEffect) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QGraphicsBlurEffect_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1296,7 +1296,7 @@ func (this *QGraphicsBlurEffect) callVirtualBase_ChildEvent(event *QChildEvent) 
 	C.QGraphicsBlurEffect_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsBlurEffect) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QGraphicsBlurEffect) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QGraphicsBlurEffect_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1322,7 +1322,7 @@ func (this *QGraphicsBlurEffect) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QGraphicsBlurEffect_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsBlurEffect) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QGraphicsBlurEffect) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QGraphicsBlurEffect_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1348,7 +1348,7 @@ func (this *QGraphicsBlurEffect) callVirtualBase_ConnectNotify(signal *QMetaMeth
 	C.QGraphicsBlurEffect_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsBlurEffect) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QGraphicsBlurEffect) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QGraphicsBlurEffect_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1374,7 +1374,7 @@ func (this *QGraphicsBlurEffect) callVirtualBase_DisconnectNotify(signal *QMetaM
 	C.QGraphicsBlurEffect_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsBlurEffect) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QGraphicsBlurEffect) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QGraphicsBlurEffect_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1654,7 +1654,7 @@ func (this *QGraphicsDropShadowEffect) callVirtualBase_BoundingRectFor(rect *QRe
 	return _goptr
 
 }
-func (this *QGraphicsDropShadowEffect) OnboundingRectFor(slot func(super func(rect *QRectF) *QRectF, rect *QRectF) *QRectF) {
+func (this *QGraphicsDropShadowEffect) OnBoundingRectFor(slot func(super func(rect *QRectF) *QRectF, rect *QRectF) *QRectF) {
 	ok := C.QGraphicsDropShadowEffect_override_virtual_boundingRectFor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1682,7 +1682,7 @@ func (this *QGraphicsDropShadowEffect) callVirtualBase_Draw(painter *QPainter) {
 	C.QGraphicsDropShadowEffect_virtualbase_draw(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QGraphicsDropShadowEffect) Ondraw(slot func(super func(painter *QPainter), painter *QPainter)) {
+func (this *QGraphicsDropShadowEffect) OnDraw(slot func(super func(painter *QPainter), painter *QPainter)) {
 	ok := C.QGraphicsDropShadowEffect_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1708,7 +1708,7 @@ func (this *QGraphicsDropShadowEffect) callVirtualBase_SourceChanged(flags QGrap
 	C.QGraphicsDropShadowEffect_virtualbase_sourceChanged(unsafe.Pointer(this.h), (C.int)(flags))
 
 }
-func (this *QGraphicsDropShadowEffect) OnsourceChanged(slot func(super func(flags QGraphicsEffect__ChangeFlag), flags QGraphicsEffect__ChangeFlag)) {
+func (this *QGraphicsDropShadowEffect) OnSourceChanged(slot func(super func(flags QGraphicsEffect__ChangeFlag), flags QGraphicsEffect__ChangeFlag)) {
 	ok := C.QGraphicsDropShadowEffect_override_virtual_sourceChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1734,7 +1734,7 @@ func (this *QGraphicsDropShadowEffect) callVirtualBase_Event(event *QEvent) bool
 	return (bool)(C.QGraphicsDropShadowEffect_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QGraphicsDropShadowEffect) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QGraphicsDropShadowEffect) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QGraphicsDropShadowEffect_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1762,7 +1762,7 @@ func (this *QGraphicsDropShadowEffect) callVirtualBase_EventFilter(watched *QObj
 	return (bool)(C.QGraphicsDropShadowEffect_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QGraphicsDropShadowEffect) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QGraphicsDropShadowEffect) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QGraphicsDropShadowEffect_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1792,7 +1792,7 @@ func (this *QGraphicsDropShadowEffect) callVirtualBase_TimerEvent(event *QTimerE
 	C.QGraphicsDropShadowEffect_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsDropShadowEffect) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QGraphicsDropShadowEffect) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QGraphicsDropShadowEffect_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1818,7 +1818,7 @@ func (this *QGraphicsDropShadowEffect) callVirtualBase_ChildEvent(event *QChildE
 	C.QGraphicsDropShadowEffect_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsDropShadowEffect) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QGraphicsDropShadowEffect) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QGraphicsDropShadowEffect_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1844,7 +1844,7 @@ func (this *QGraphicsDropShadowEffect) callVirtualBase_CustomEvent(event *QEvent
 	C.QGraphicsDropShadowEffect_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsDropShadowEffect) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QGraphicsDropShadowEffect) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QGraphicsDropShadowEffect_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1870,7 +1870,7 @@ func (this *QGraphicsDropShadowEffect) callVirtualBase_ConnectNotify(signal *QMe
 	C.QGraphicsDropShadowEffect_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsDropShadowEffect) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QGraphicsDropShadowEffect) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QGraphicsDropShadowEffect_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1896,7 +1896,7 @@ func (this *QGraphicsDropShadowEffect) callVirtualBase_DisconnectNotify(signal *
 	C.QGraphicsDropShadowEffect_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsDropShadowEffect) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QGraphicsDropShadowEffect) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QGraphicsDropShadowEffect_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2114,7 +2114,7 @@ func (this *QGraphicsOpacityEffect) callVirtualBase_Draw(painter *QPainter) {
 	C.QGraphicsOpacityEffect_virtualbase_draw(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QGraphicsOpacityEffect) Ondraw(slot func(super func(painter *QPainter), painter *QPainter)) {
+func (this *QGraphicsOpacityEffect) OnDraw(slot func(super func(painter *QPainter), painter *QPainter)) {
 	ok := C.QGraphicsOpacityEffect_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2142,7 +2142,7 @@ func (this *QGraphicsOpacityEffect) callVirtualBase_BoundingRectFor(sourceRect *
 	return _goptr
 
 }
-func (this *QGraphicsOpacityEffect) OnboundingRectFor(slot func(super func(sourceRect *QRectF) *QRectF, sourceRect *QRectF) *QRectF) {
+func (this *QGraphicsOpacityEffect) OnBoundingRectFor(slot func(super func(sourceRect *QRectF) *QRectF, sourceRect *QRectF) *QRectF) {
 	ok := C.QGraphicsOpacityEffect_override_virtual_boundingRectFor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2170,7 +2170,7 @@ func (this *QGraphicsOpacityEffect) callVirtualBase_SourceChanged(flags QGraphic
 	C.QGraphicsOpacityEffect_virtualbase_sourceChanged(unsafe.Pointer(this.h), (C.int)(flags))
 
 }
-func (this *QGraphicsOpacityEffect) OnsourceChanged(slot func(super func(flags QGraphicsEffect__ChangeFlag), flags QGraphicsEffect__ChangeFlag)) {
+func (this *QGraphicsOpacityEffect) OnSourceChanged(slot func(super func(flags QGraphicsEffect__ChangeFlag), flags QGraphicsEffect__ChangeFlag)) {
 	ok := C.QGraphicsOpacityEffect_override_virtual_sourceChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2196,7 +2196,7 @@ func (this *QGraphicsOpacityEffect) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QGraphicsOpacityEffect_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QGraphicsOpacityEffect) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QGraphicsOpacityEffect) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QGraphicsOpacityEffect_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2224,7 +2224,7 @@ func (this *QGraphicsOpacityEffect) callVirtualBase_EventFilter(watched *QObject
 	return (bool)(C.QGraphicsOpacityEffect_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QGraphicsOpacityEffect) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QGraphicsOpacityEffect) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QGraphicsOpacityEffect_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2254,7 +2254,7 @@ func (this *QGraphicsOpacityEffect) callVirtualBase_TimerEvent(event *QTimerEven
 	C.QGraphicsOpacityEffect_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsOpacityEffect) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QGraphicsOpacityEffect) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QGraphicsOpacityEffect_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2280,7 +2280,7 @@ func (this *QGraphicsOpacityEffect) callVirtualBase_ChildEvent(event *QChildEven
 	C.QGraphicsOpacityEffect_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsOpacityEffect) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QGraphicsOpacityEffect) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QGraphicsOpacityEffect_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2306,7 +2306,7 @@ func (this *QGraphicsOpacityEffect) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QGraphicsOpacityEffect_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGraphicsOpacityEffect) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QGraphicsOpacityEffect) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QGraphicsOpacityEffect_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2332,7 +2332,7 @@ func (this *QGraphicsOpacityEffect) callVirtualBase_ConnectNotify(signal *QMetaM
 	C.QGraphicsOpacityEffect_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsOpacityEffect) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QGraphicsOpacityEffect) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QGraphicsOpacityEffect_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2358,7 +2358,7 @@ func (this *QGraphicsOpacityEffect) callVirtualBase_DisconnectNotify(signal *QMe
 	C.QGraphicsOpacityEffect_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGraphicsOpacityEffect) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QGraphicsOpacityEffect) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QGraphicsOpacityEffect_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

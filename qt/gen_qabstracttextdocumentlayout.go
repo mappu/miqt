@@ -309,7 +309,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_update1(cb C.intptr_t, param
 	gofunc(slotval1)
 }
 
-func (this *QAbstractTextDocumentLayout) Ondraw(slot func(painter *QPainter, context *QAbstractTextDocumentLayout__PaintContext)) {
+func (this *QAbstractTextDocumentLayout) OnDraw(slot func(painter *QPainter, context *QAbstractTextDocumentLayout__PaintContext)) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -331,7 +331,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_draw(self *C.QAbstractTextDo
 	gofunc(slotval1, slotval2)
 
 }
-func (this *QAbstractTextDocumentLayout) OnhitTest(slot func(point *QPointF, accuracy HitTestAccuracy) int) {
+func (this *QAbstractTextDocumentLayout) OnHitTest(slot func(point *QPointF, accuracy HitTestAccuracy) int) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_hitTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -355,7 +355,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_hitTest(self *C.QAbstractTex
 	return (C.int)(virtualReturn)
 
 }
-func (this *QAbstractTextDocumentLayout) OnpageCount(slot func() int) {
+func (this *QAbstractTextDocumentLayout) OnPageCount(slot func() int) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_pageCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -374,7 +374,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_pageCount(self *C.QAbstractT
 	return (C.int)(virtualReturn)
 
 }
-func (this *QAbstractTextDocumentLayout) OndocumentSize(slot func() *QSizeF) {
+func (this *QAbstractTextDocumentLayout) OnDocumentSize(slot func() *QSizeF) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_documentSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -393,7 +393,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_documentSize(self *C.QAbstra
 	return virtualReturn.cPointer()
 
 }
-func (this *QAbstractTextDocumentLayout) OnframeBoundingRect(slot func(frame *QTextFrame) *QRectF) {
+func (this *QAbstractTextDocumentLayout) OnFrameBoundingRect(slot func(frame *QTextFrame) *QRectF) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_frameBoundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -415,7 +415,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_frameBoundingRect(self *C.QA
 	return virtualReturn.cPointer()
 
 }
-func (this *QAbstractTextDocumentLayout) OnblockBoundingRect(slot func(block *QTextBlock) *QRectF) {
+func (this *QAbstractTextDocumentLayout) OnBlockBoundingRect(slot func(block *QTextBlock) *QRectF) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_blockBoundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -437,7 +437,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_blockBoundingRect(self *C.QA
 	return virtualReturn.cPointer()
 
 }
-func (this *QAbstractTextDocumentLayout) OndocumentChanged(slot func(from int, charsRemoved int, charsAdded int)) {
+func (this *QAbstractTextDocumentLayout) OnDocumentChanged(slot func(from int, charsRemoved int, charsAdded int)) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_documentChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -467,7 +467,7 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_ResizeInlineObject(item
 	C.QAbstractTextDocumentLayout_virtualbase_resizeInlineObject(unsafe.Pointer(this.h), item.cPointer(), (C.int)(posInDocument), format.cPointer())
 
 }
-func (this *QAbstractTextDocumentLayout) OnresizeInlineObject(slot func(super func(item QTextInlineObject, posInDocument int, format *QTextFormat), item QTextInlineObject, posInDocument int, format *QTextFormat)) {
+func (this *QAbstractTextDocumentLayout) OnResizeInlineObject(slot func(super func(item QTextInlineObject, posInDocument int, format *QTextFormat), item QTextInlineObject, posInDocument int, format *QTextFormat)) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_resizeInlineObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -499,7 +499,7 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_PositionInlineObject(it
 	C.QAbstractTextDocumentLayout_virtualbase_positionInlineObject(unsafe.Pointer(this.h), item.cPointer(), (C.int)(posInDocument), format.cPointer())
 
 }
-func (this *QAbstractTextDocumentLayout) OnpositionInlineObject(slot func(super func(item QTextInlineObject, posInDocument int, format *QTextFormat), item QTextInlineObject, posInDocument int, format *QTextFormat)) {
+func (this *QAbstractTextDocumentLayout) OnPositionInlineObject(slot func(super func(item QTextInlineObject, posInDocument int, format *QTextFormat), item QTextInlineObject, posInDocument int, format *QTextFormat)) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_positionInlineObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -531,7 +531,7 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_DrawInlineObject(painte
 	C.QAbstractTextDocumentLayout_virtualbase_drawInlineObject(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer(), object.cPointer(), (C.int)(posInDocument), format.cPointer())
 
 }
-func (this *QAbstractTextDocumentLayout) OndrawInlineObject(slot func(super func(painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat), painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat)) {
+func (this *QAbstractTextDocumentLayout) OnDrawInlineObject(slot func(super func(painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat), painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat)) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_drawInlineObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -567,7 +567,7 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_Event(event *QEvent) bo
 	return (bool)(C.QAbstractTextDocumentLayout_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QAbstractTextDocumentLayout) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QAbstractTextDocumentLayout) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -595,7 +595,7 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_EventFilter(watched *QO
 	return (bool)(C.QAbstractTextDocumentLayout_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QAbstractTextDocumentLayout) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QAbstractTextDocumentLayout) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -625,7 +625,7 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_TimerEvent(event *QTime
 	C.QAbstractTextDocumentLayout_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractTextDocumentLayout) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QAbstractTextDocumentLayout) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -651,7 +651,7 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_ChildEvent(event *QChil
 	C.QAbstractTextDocumentLayout_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractTextDocumentLayout) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QAbstractTextDocumentLayout) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -677,7 +677,7 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_CustomEvent(event *QEve
 	C.QAbstractTextDocumentLayout_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractTextDocumentLayout) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QAbstractTextDocumentLayout) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -703,7 +703,7 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_ConnectNotify(signal *Q
 	C.QAbstractTextDocumentLayout_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QAbstractTextDocumentLayout) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QAbstractTextDocumentLayout) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -729,7 +729,7 @@ func (this *QAbstractTextDocumentLayout) callVirtualBase_DisconnectNotify(signal
 	C.QAbstractTextDocumentLayout_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QAbstractTextDocumentLayout) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QAbstractTextDocumentLayout) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QAbstractTextDocumentLayout_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

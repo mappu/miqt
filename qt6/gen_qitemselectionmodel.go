@@ -552,7 +552,7 @@ func (this *QItemSelectionModel) callVirtualBase_SetCurrentIndex(index *QModelIn
 	C.QItemSelectionModel_virtualbase_setCurrentIndex(unsafe.Pointer(this.h), index.cPointer(), (C.int)(command))
 
 }
-func (this *QItemSelectionModel) OnsetCurrentIndex(slot func(super func(index *QModelIndex, command QItemSelectionModel__SelectionFlag), index *QModelIndex, command QItemSelectionModel__SelectionFlag)) {
+func (this *QItemSelectionModel) OnSetCurrentIndex(slot func(super func(index *QModelIndex, command QItemSelectionModel__SelectionFlag), index *QModelIndex, command QItemSelectionModel__SelectionFlag)) {
 	ok := C.QItemSelectionModel_override_virtual_setCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -580,7 +580,7 @@ func (this *QItemSelectionModel) callVirtualBase_Select(index *QModelIndex, comm
 	C.QItemSelectionModel_virtualbase_select(unsafe.Pointer(this.h), index.cPointer(), (C.int)(command))
 
 }
-func (this *QItemSelectionModel) Onselect(slot func(super func(index *QModelIndex, command QItemSelectionModel__SelectionFlag), index *QModelIndex, command QItemSelectionModel__SelectionFlag)) {
+func (this *QItemSelectionModel) OnSelect(slot func(super func(index *QModelIndex, command QItemSelectionModel__SelectionFlag), index *QModelIndex, command QItemSelectionModel__SelectionFlag)) {
 	ok := C.QItemSelectionModel_override_virtual_select(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -608,7 +608,7 @@ func (this *QItemSelectionModel) callVirtualBase_Select2(selection *QItemSelecti
 	C.QItemSelectionModel_virtualbase_select2(unsafe.Pointer(this.h), selection.cPointer(), (C.int)(command))
 
 }
-func (this *QItemSelectionModel) Onselect2(slot func(super func(selection *QItemSelection, command QItemSelectionModel__SelectionFlag), selection *QItemSelection, command QItemSelectionModel__SelectionFlag)) {
+func (this *QItemSelectionModel) OnSelect2(slot func(super func(selection *QItemSelection, command QItemSelectionModel__SelectionFlag), selection *QItemSelection, command QItemSelectionModel__SelectionFlag)) {
 	ok := C.QItemSelectionModel_override_virtual_select2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -636,7 +636,7 @@ func (this *QItemSelectionModel) callVirtualBase_Clear() {
 	C.QItemSelectionModel_virtualbase_clear(unsafe.Pointer(this.h))
 
 }
-func (this *QItemSelectionModel) Onclear(slot func(super func())) {
+func (this *QItemSelectionModel) OnClear(slot func(super func())) {
 	ok := C.QItemSelectionModel_override_virtual_clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -659,7 +659,7 @@ func (this *QItemSelectionModel) callVirtualBase_Reset() {
 	C.QItemSelectionModel_virtualbase_reset(unsafe.Pointer(this.h))
 
 }
-func (this *QItemSelectionModel) Onreset(slot func(super func())) {
+func (this *QItemSelectionModel) OnReset(slot func(super func())) {
 	ok := C.QItemSelectionModel_override_virtual_reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -682,7 +682,7 @@ func (this *QItemSelectionModel) callVirtualBase_ClearCurrentIndex() {
 	C.QItemSelectionModel_virtualbase_clearCurrentIndex(unsafe.Pointer(this.h))
 
 }
-func (this *QItemSelectionModel) OnclearCurrentIndex(slot func(super func())) {
+func (this *QItemSelectionModel) OnClearCurrentIndex(slot func(super func())) {
 	ok := C.QItemSelectionModel_override_virtual_clearCurrentIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -705,7 +705,7 @@ func (this *QItemSelectionModel) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QItemSelectionModel_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QItemSelectionModel) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QItemSelectionModel) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QItemSelectionModel_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -733,7 +733,7 @@ func (this *QItemSelectionModel) callVirtualBase_EventFilter(watched *QObject, e
 	return (bool)(C.QItemSelectionModel_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QItemSelectionModel) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QItemSelectionModel) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QItemSelectionModel_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -763,7 +763,7 @@ func (this *QItemSelectionModel) callVirtualBase_TimerEvent(event *QTimerEvent) 
 	C.QItemSelectionModel_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QItemSelectionModel) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QItemSelectionModel) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QItemSelectionModel_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -789,7 +789,7 @@ func (this *QItemSelectionModel) callVirtualBase_ChildEvent(event *QChildEvent) 
 	C.QItemSelectionModel_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QItemSelectionModel) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QItemSelectionModel) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QItemSelectionModel_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -815,7 +815,7 @@ func (this *QItemSelectionModel) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QItemSelectionModel_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QItemSelectionModel) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QItemSelectionModel) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QItemSelectionModel_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -841,7 +841,7 @@ func (this *QItemSelectionModel) callVirtualBase_ConnectNotify(signal *QMetaMeth
 	C.QItemSelectionModel_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QItemSelectionModel) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QItemSelectionModel) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QItemSelectionModel_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -867,7 +867,7 @@ func (this *QItemSelectionModel) callVirtualBase_DisconnectNotify(signal *QMetaM
 	C.QItemSelectionModel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QItemSelectionModel) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QItemSelectionModel) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QItemSelectionModel_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

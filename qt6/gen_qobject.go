@@ -375,7 +375,7 @@ func (this *QObject) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QObject_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QObject) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QObject) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QObject_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -403,7 +403,7 @@ func (this *QObject) callVirtualBase_EventFilter(watched *QObject, event *QEvent
 	return (bool)(C.QObject_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QObject) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QObject) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QObject_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -433,7 +433,7 @@ func (this *QObject) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QObject_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QObject) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QObject) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QObject_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -459,7 +459,7 @@ func (this *QObject) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QObject_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QObject) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QObject) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QObject_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -485,7 +485,7 @@ func (this *QObject) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QObject_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QObject) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QObject) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QObject_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -511,7 +511,7 @@ func (this *QObject) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QObject_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QObject) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QObject) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QObject_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -537,7 +537,7 @@ func (this *QObject) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 	C.QObject_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QObject) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QObject) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QObject_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

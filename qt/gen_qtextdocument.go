@@ -987,7 +987,7 @@ func (this *QTextDocument) callVirtualBase_Clear() {
 	C.QTextDocument_virtualbase_clear(unsafe.Pointer(this.h))
 
 }
-func (this *QTextDocument) Onclear(slot func(super func())) {
+func (this *QTextDocument) OnClear(slot func(super func())) {
 	ok := C.QTextDocument_override_virtual_clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1010,7 +1010,7 @@ func (this *QTextDocument) callVirtualBase_CreateObject(f *QTextFormat) *QTextOb
 	return newQTextObject(C.QTextDocument_virtualbase_createObject(unsafe.Pointer(this.h), f.cPointer()))
 
 }
-func (this *QTextDocument) OncreateObject(slot func(super func(f *QTextFormat) *QTextObject, f *QTextFormat) *QTextObject) {
+func (this *QTextDocument) OnCreateObject(slot func(super func(f *QTextFormat) *QTextObject, f *QTextFormat) *QTextObject) {
 	ok := C.QTextDocument_override_virtual_createObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1040,7 +1040,7 @@ func (this *QTextDocument) callVirtualBase_LoadResource(typeVal int, name *QUrl)
 	return _goptr
 
 }
-func (this *QTextDocument) OnloadResource(slot func(super func(typeVal int, name *QUrl) *QVariant, typeVal int, name *QUrl) *QVariant) {
+func (this *QTextDocument) OnLoadResource(slot func(super func(typeVal int, name *QUrl) *QVariant, typeVal int, name *QUrl) *QVariant) {
 	ok := C.QTextDocument_override_virtual_loadResource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1070,7 +1070,7 @@ func (this *QTextDocument) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QTextDocument_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QTextDocument) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QTextDocument) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QTextDocument_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1098,7 +1098,7 @@ func (this *QTextDocument) callVirtualBase_EventFilter(watched *QObject, event *
 	return (bool)(C.QTextDocument_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QTextDocument) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QTextDocument) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QTextDocument_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1128,7 +1128,7 @@ func (this *QTextDocument) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QTextDocument_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextDocument) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QTextDocument) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QTextDocument_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1154,7 +1154,7 @@ func (this *QTextDocument) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QTextDocument_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextDocument) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QTextDocument) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QTextDocument_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1180,7 +1180,7 @@ func (this *QTextDocument) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QTextDocument_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextDocument) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QTextDocument) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QTextDocument_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1206,7 +1206,7 @@ func (this *QTextDocument) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QTextDocument_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTextDocument) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QTextDocument) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QTextDocument_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1232,7 +1232,7 @@ func (this *QTextDocument) callVirtualBase_DisconnectNotify(signal *QMetaMethod)
 	C.QTextDocument_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTextDocument) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QTextDocument) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QTextDocument_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

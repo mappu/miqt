@@ -339,7 +339,7 @@ func (this *QTableView) callVirtualBase_SetModel(model *QAbstractItemModel) {
 	C.QTableView_virtualbase_setModel(unsafe.Pointer(this.h), model.cPointer())
 
 }
-func (this *QTableView) OnsetModel(slot func(super func(model *QAbstractItemModel), model *QAbstractItemModel)) {
+func (this *QTableView) OnSetModel(slot func(super func(model *QAbstractItemModel), model *QAbstractItemModel)) {
 	ok := C.QTableView_override_virtual_setModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -365,7 +365,7 @@ func (this *QTableView) callVirtualBase_SetRootIndex(index *QModelIndex) {
 	C.QTableView_virtualbase_setRootIndex(unsafe.Pointer(this.h), index.cPointer())
 
 }
-func (this *QTableView) OnsetRootIndex(slot func(super func(index *QModelIndex), index *QModelIndex)) {
+func (this *QTableView) OnSetRootIndex(slot func(super func(index *QModelIndex), index *QModelIndex)) {
 	ok := C.QTableView_override_virtual_setRootIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -391,7 +391,7 @@ func (this *QTableView) callVirtualBase_SetSelectionModel(selectionModel *QItemS
 	C.QTableView_virtualbase_setSelectionModel(unsafe.Pointer(this.h), selectionModel.cPointer())
 
 }
-func (this *QTableView) OnsetSelectionModel(slot func(super func(selectionModel *QItemSelectionModel), selectionModel *QItemSelectionModel)) {
+func (this *QTableView) OnSetSelectionModel(slot func(super func(selectionModel *QItemSelectionModel), selectionModel *QItemSelectionModel)) {
 	ok := C.QTableView_override_virtual_setSelectionModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -417,7 +417,7 @@ func (this *QTableView) callVirtualBase_DoItemsLayout() {
 	C.QTableView_virtualbase_doItemsLayout(unsafe.Pointer(this.h))
 
 }
-func (this *QTableView) OndoItemsLayout(slot func(super func())) {
+func (this *QTableView) OnDoItemsLayout(slot func(super func())) {
 	ok := C.QTableView_override_virtual_doItemsLayout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -442,7 +442,7 @@ func (this *QTableView) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
 	return _goptr
 
 }
-func (this *QTableView) OnvisualRect(slot func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect) {
+func (this *QTableView) OnVisualRect(slot func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect) {
 	ok := C.QTableView_override_virtual_visualRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -470,7 +470,7 @@ func (this *QTableView) callVirtualBase_ScrollTo(index *QModelIndex, hint QAbstr
 	C.QTableView_virtualbase_scrollTo(unsafe.Pointer(this.h), index.cPointer(), (C.int)(hint))
 
 }
-func (this *QTableView) OnscrollTo(slot func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint)) {
+func (this *QTableView) OnScrollTo(slot func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint)) {
 	ok := C.QTableView_override_virtual_scrollTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -500,7 +500,7 @@ func (this *QTableView) callVirtualBase_IndexAt(p *QPoint) *QModelIndex {
 	return _goptr
 
 }
-func (this *QTableView) OnindexAt(slot func(super func(p *QPoint) *QModelIndex, p *QPoint) *QModelIndex) {
+func (this *QTableView) OnIndexAt(slot func(super func(p *QPoint) *QModelIndex, p *QPoint) *QModelIndex) {
 	ok := C.QTableView_override_virtual_indexAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -528,7 +528,7 @@ func (this *QTableView) callVirtualBase_ScrollContentsBy(dx int, dy int) {
 	C.QTableView_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
 }
-func (this *QTableView) OnscrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
+func (this *QTableView) OnScrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
 	ok := C.QTableView_override_virtual_scrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -558,7 +558,7 @@ func (this *QTableView) callVirtualBase_ViewOptions() *QStyleOptionViewItem {
 	return _goptr
 
 }
-func (this *QTableView) OnviewOptions(slot func(super func() *QStyleOptionViewItem) *QStyleOptionViewItem) {
+func (this *QTableView) OnViewOptions(slot func(super func() *QStyleOptionViewItem) *QStyleOptionViewItem) {
 	ok := C.QTableView_override_virtual_viewOptions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -583,7 +583,7 @@ func (this *QTableView) callVirtualBase_PaintEvent(e *QPaintEvent) {
 	C.QTableView_virtualbase_paintEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QTableView) OnpaintEvent(slot func(super func(e *QPaintEvent), e *QPaintEvent)) {
+func (this *QTableView) OnPaintEvent(slot func(super func(e *QPaintEvent), e *QPaintEvent)) {
 	ok := C.QTableView_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -609,7 +609,7 @@ func (this *QTableView) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QTableView_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QTableView) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QTableView_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -635,7 +635,7 @@ func (this *QTableView) callVirtualBase_HorizontalOffset() int {
 	return (int)(C.QTableView_virtualbase_horizontalOffset(unsafe.Pointer(this.h)))
 
 }
-func (this *QTableView) OnhorizontalOffset(slot func(super func() int) int) {
+func (this *QTableView) OnHorizontalOffset(slot func(super func() int) int) {
 	ok := C.QTableView_override_virtual_horizontalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -660,7 +660,7 @@ func (this *QTableView) callVirtualBase_VerticalOffset() int {
 	return (int)(C.QTableView_virtualbase_verticalOffset(unsafe.Pointer(this.h)))
 
 }
-func (this *QTableView) OnverticalOffset(slot func(super func() int) int) {
+func (this *QTableView) OnVerticalOffset(slot func(super func() int) int) {
 	ok := C.QTableView_override_virtual_verticalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -687,7 +687,7 @@ func (this *QTableView) callVirtualBase_MoveCursor(cursorAction QAbstractItemVie
 	return _goptr
 
 }
-func (this *QTableView) OnmoveCursor(slot func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex) {
+func (this *QTableView) OnMoveCursor(slot func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex) {
 	ok := C.QTableView_override_virtual_moveCursor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -717,7 +717,7 @@ func (this *QTableView) callVirtualBase_SetSelection(rect *QRect, command QItemS
 	C.QTableView_virtualbase_setSelection(unsafe.Pointer(this.h), rect.cPointer(), (C.int)(command))
 
 }
-func (this *QTableView) OnsetSelection(slot func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag)) {
+func (this *QTableView) OnSetSelection(slot func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag)) {
 	ok := C.QTableView_override_virtual_setSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -747,7 +747,7 @@ func (this *QTableView) callVirtualBase_VisualRegionForSelection(selection *QIte
 	return _goptr
 
 }
-func (this *QTableView) OnvisualRegionForSelection(slot func(super func(selection *QItemSelection) *QRegion, selection *QItemSelection) *QRegion) {
+func (this *QTableView) OnVisualRegionForSelection(slot func(super func(selection *QItemSelection) *QRegion, selection *QItemSelection) *QRegion) {
 	ok := C.QTableView_override_virtual_visualRegionForSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -783,7 +783,7 @@ func (this *QTableView) callVirtualBase_SelectedIndexes() []QModelIndex {
 	return _ret
 
 }
-func (this *QTableView) OnselectedIndexes(slot func(super func() []QModelIndex) []QModelIndex) {
+func (this *QTableView) OnSelectedIndexes(slot func(super func() []QModelIndex) []QModelIndex) {
 	ok := C.QTableView_override_virtual_selectedIndexes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -814,7 +814,7 @@ func (this *QTableView) callVirtualBase_UpdateGeometries() {
 	C.QTableView_virtualbase_updateGeometries(unsafe.Pointer(this.h))
 
 }
-func (this *QTableView) OnupdateGeometries(slot func(super func())) {
+func (this *QTableView) OnUpdateGeometries(slot func(super func())) {
 	ok := C.QTableView_override_virtual_updateGeometries(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -839,7 +839,7 @@ func (this *QTableView) callVirtualBase_ViewportSizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QTableView) OnviewportSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QTableView) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QTableView_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -864,7 +864,7 @@ func (this *QTableView) callVirtualBase_SizeHintForRow(row int) int {
 	return (int)(C.QTableView_virtualbase_sizeHintForRow(unsafe.Pointer(this.h), (C.int)(row)))
 
 }
-func (this *QTableView) OnsizeHintForRow(slot func(super func(row int) int, row int) int) {
+func (this *QTableView) OnSizeHintForRow(slot func(super func(row int) int, row int) int) {
 	ok := C.QTableView_override_virtual_sizeHintForRow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -892,7 +892,7 @@ func (this *QTableView) callVirtualBase_SizeHintForColumn(column int) int {
 	return (int)(C.QTableView_virtualbase_sizeHintForColumn(unsafe.Pointer(this.h), (C.int)(column)))
 
 }
-func (this *QTableView) OnsizeHintForColumn(slot func(super func(column int) int, column int) int) {
+func (this *QTableView) OnSizeHintForColumn(slot func(super func(column int) int, column int) int) {
 	ok := C.QTableView_override_virtual_sizeHintForColumn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -920,7 +920,7 @@ func (this *QTableView) callVirtualBase_VerticalScrollbarAction(action int) {
 	C.QTableView_virtualbase_verticalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
 }
-func (this *QTableView) OnverticalScrollbarAction(slot func(super func(action int), action int)) {
+func (this *QTableView) OnVerticalScrollbarAction(slot func(super func(action int), action int)) {
 	ok := C.QTableView_override_virtual_verticalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -946,7 +946,7 @@ func (this *QTableView) callVirtualBase_HorizontalScrollbarAction(action int) {
 	C.QTableView_virtualbase_horizontalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
 }
-func (this *QTableView) OnhorizontalScrollbarAction(slot func(super func(action int), action int)) {
+func (this *QTableView) OnHorizontalScrollbarAction(slot func(super func(action int), action int)) {
 	ok := C.QTableView_override_virtual_horizontalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -972,7 +972,7 @@ func (this *QTableView) callVirtualBase_IsIndexHidden(index *QModelIndex) bool {
 	return (bool)(C.QTableView_virtualbase_isIndexHidden(unsafe.Pointer(this.h), index.cPointer()))
 
 }
-func (this *QTableView) OnisIndexHidden(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
+func (this *QTableView) OnIsIndexHidden(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
 	ok := C.QTableView_override_virtual_isIndexHidden(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1000,7 +1000,7 @@ func (this *QTableView) callVirtualBase_SelectionChanged(selected *QItemSelectio
 	C.QTableView_virtualbase_selectionChanged(unsafe.Pointer(this.h), selected.cPointer(), deselected.cPointer())
 
 }
-func (this *QTableView) OnselectionChanged(slot func(super func(selected *QItemSelection, deselected *QItemSelection), selected *QItemSelection, deselected *QItemSelection)) {
+func (this *QTableView) OnSelectionChanged(slot func(super func(selected *QItemSelection, deselected *QItemSelection), selected *QItemSelection, deselected *QItemSelection)) {
 	ok := C.QTableView_override_virtual_selectionChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1028,7 +1028,7 @@ func (this *QTableView) callVirtualBase_CurrentChanged(current *QModelIndex, pre
 	C.QTableView_virtualbase_currentChanged(unsafe.Pointer(this.h), current.cPointer(), previous.cPointer())
 
 }
-func (this *QTableView) OncurrentChanged(slot func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex)) {
+func (this *QTableView) OnCurrentChanged(slot func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex)) {
 	ok := C.QTableView_override_virtual_currentChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1060,7 +1060,7 @@ func (this *QTableView) callVirtualBase_KeyboardSearch(search string) {
 	C.QTableView_virtualbase_keyboardSearch(unsafe.Pointer(this.h), search_ms)
 
 }
-func (this *QTableView) OnkeyboardSearch(slot func(super func(search string), search string)) {
+func (this *QTableView) OnKeyboardSearch(slot func(super func(search string), search string)) {
 	ok := C.QTableView_override_virtual_keyboardSearch(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1091,7 +1091,7 @@ func (this *QTableView) callVirtualBase_InputMethodQuery(query InputMethodQuery)
 	return _goptr
 
 }
-func (this *QTableView) OninputMethodQuery(slot func(super func(query InputMethodQuery) *QVariant, query InputMethodQuery) *QVariant) {
+func (this *QTableView) OnInputMethodQuery(slot func(super func(query InputMethodQuery) *QVariant, query InputMethodQuery) *QVariant) {
 	ok := C.QTableView_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1119,7 +1119,7 @@ func (this *QTableView) callVirtualBase_Reset() {
 	C.QTableView_virtualbase_reset(unsafe.Pointer(this.h))
 
 }
-func (this *QTableView) Onreset(slot func(super func())) {
+func (this *QTableView) OnReset(slot func(super func())) {
 	ok := C.QTableView_override_virtual_reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1142,7 +1142,7 @@ func (this *QTableView) callVirtualBase_SelectAll() {
 	C.QTableView_virtualbase_selectAll(unsafe.Pointer(this.h))
 
 }
-func (this *QTableView) OnselectAll(slot func(super func())) {
+func (this *QTableView) OnSelectAll(slot func(super func())) {
 	ok := C.QTableView_override_virtual_selectAll(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1171,7 +1171,7 @@ func (this *QTableView) callVirtualBase_DataChanged(topLeft *QModelIndex, bottom
 	C.QTableView_virtualbase_dataChanged(unsafe.Pointer(this.h), topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
 
 }
-func (this *QTableView) OndataChanged(slot func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
+func (this *QTableView) OnDataChanged(slot func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
 	ok := C.QTableView_override_virtual_dataChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1207,7 +1207,7 @@ func (this *QTableView) callVirtualBase_RowsInserted(parent *QModelIndex, start 
 	C.QTableView_virtualbase_rowsInserted(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
 
 }
-func (this *QTableView) OnrowsInserted(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
+func (this *QTableView) OnRowsInserted(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
 	ok := C.QTableView_override_virtual_rowsInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1237,7 +1237,7 @@ func (this *QTableView) callVirtualBase_RowsAboutToBeRemoved(parent *QModelIndex
 	C.QTableView_virtualbase_rowsAboutToBeRemoved(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
 
 }
-func (this *QTableView) OnrowsAboutToBeRemoved(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
+func (this *QTableView) OnRowsAboutToBeRemoved(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
 	ok := C.QTableView_override_virtual_rowsAboutToBeRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1267,7 +1267,7 @@ func (this *QTableView) callVirtualBase_UpdateEditorData() {
 	C.QTableView_virtualbase_updateEditorData(unsafe.Pointer(this.h))
 
 }
-func (this *QTableView) OnupdateEditorData(slot func(super func())) {
+func (this *QTableView) OnUpdateEditorData(slot func(super func())) {
 	ok := C.QTableView_override_virtual_updateEditorData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1290,7 +1290,7 @@ func (this *QTableView) callVirtualBase_UpdateEditorGeometries() {
 	C.QTableView_virtualbase_updateEditorGeometries(unsafe.Pointer(this.h))
 
 }
-func (this *QTableView) OnupdateEditorGeometries(slot func(super func())) {
+func (this *QTableView) OnUpdateEditorGeometries(slot func(super func())) {
 	ok := C.QTableView_override_virtual_updateEditorGeometries(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1313,7 +1313,7 @@ func (this *QTableView) callVirtualBase_VerticalScrollbarValueChanged(value int)
 	C.QTableView_virtualbase_verticalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
 }
-func (this *QTableView) OnverticalScrollbarValueChanged(slot func(super func(value int), value int)) {
+func (this *QTableView) OnVerticalScrollbarValueChanged(slot func(super func(value int), value int)) {
 	ok := C.QTableView_override_virtual_verticalScrollbarValueChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1339,7 +1339,7 @@ func (this *QTableView) callVirtualBase_HorizontalScrollbarValueChanged(value in
 	C.QTableView_virtualbase_horizontalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
 }
-func (this *QTableView) OnhorizontalScrollbarValueChanged(slot func(super func(value int), value int)) {
+func (this *QTableView) OnHorizontalScrollbarValueChanged(slot func(super func(value int), value int)) {
 	ok := C.QTableView_override_virtual_horizontalScrollbarValueChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1365,7 +1365,7 @@ func (this *QTableView) callVirtualBase_CloseEditor(editor *QWidget, hint QAbstr
 	C.QTableView_virtualbase_closeEditor(unsafe.Pointer(this.h), editor.cPointer(), (C.int)(hint))
 
 }
-func (this *QTableView) OncloseEditor(slot func(super func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint), editor *QWidget, hint QAbstractItemDelegate__EndEditHint)) {
+func (this *QTableView) OnCloseEditor(slot func(super func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint), editor *QWidget, hint QAbstractItemDelegate__EndEditHint)) {
 	ok := C.QTableView_override_virtual_closeEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1393,7 +1393,7 @@ func (this *QTableView) callVirtualBase_CommitData(editor *QWidget) {
 	C.QTableView_virtualbase_commitData(unsafe.Pointer(this.h), editor.cPointer())
 
 }
-func (this *QTableView) OncommitData(slot func(super func(editor *QWidget), editor *QWidget)) {
+func (this *QTableView) OnCommitData(slot func(super func(editor *QWidget), editor *QWidget)) {
 	ok := C.QTableView_override_virtual_commitData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1419,7 +1419,7 @@ func (this *QTableView) callVirtualBase_EditorDestroyed(editor *QObject) {
 	C.QTableView_virtualbase_editorDestroyed(unsafe.Pointer(this.h), editor.cPointer())
 
 }
-func (this *QTableView) OneditorDestroyed(slot func(super func(editor *QObject), editor *QObject)) {
+func (this *QTableView) OnEditorDestroyed(slot func(super func(editor *QObject), editor *QObject)) {
 	ok := C.QTableView_override_virtual_editorDestroyed(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1445,7 +1445,7 @@ func (this *QTableView) callVirtualBase_Edit2(index *QModelIndex, trigger QAbstr
 	return (bool)(C.QTableView_virtualbase_edit2(unsafe.Pointer(this.h), index.cPointer(), (C.int)(trigger), event.cPointer()))
 
 }
-func (this *QTableView) Onedit2(slot func(super func(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool) {
+func (this *QTableView) OnEdit2(slot func(super func(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool) {
 	ok := C.QTableView_override_virtual_edit2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1477,7 +1477,7 @@ func (this *QTableView) callVirtualBase_SelectionCommand(index *QModelIndex, eve
 	return (QItemSelectionModel__SelectionFlag)(C.QTableView_virtualbase_selectionCommand(unsafe.Pointer(this.h), index.cPointer(), event.cPointer()))
 
 }
-func (this *QTableView) OnselectionCommand(slot func(super func(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag) {
+func (this *QTableView) OnSelectionCommand(slot func(super func(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag) {
 	ok := C.QTableView_override_virtual_selectionCommand(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1507,7 +1507,7 @@ func (this *QTableView) callVirtualBase_StartDrag(supportedActions DropAction) {
 	C.QTableView_virtualbase_startDrag(unsafe.Pointer(this.h), (C.int)(supportedActions))
 
 }
-func (this *QTableView) OnstartDrag(slot func(super func(supportedActions DropAction), supportedActions DropAction)) {
+func (this *QTableView) OnStartDrag(slot func(super func(supportedActions DropAction), supportedActions DropAction)) {
 	ok := C.QTableView_override_virtual_startDrag(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1533,7 +1533,7 @@ func (this *QTableView) callVirtualBase_FocusNextPrevChild(next bool) bool {
 	return (bool)(C.QTableView_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QTableView) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+func (this *QTableView) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
 	ok := C.QTableView_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1561,7 +1561,7 @@ func (this *QTableView) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QTableView_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QTableView) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QTableView) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QTableView_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1589,7 +1589,7 @@ func (this *QTableView) callVirtualBase_ViewportEvent(event *QEvent) bool {
 	return (bool)(C.QTableView_virtualbase_viewportEvent(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QTableView) OnviewportEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QTableView) OnViewportEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QTableView_override_virtual_viewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1617,7 +1617,7 @@ func (this *QTableView) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 	C.QTableView_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OnmousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QTableView) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QTableView_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1643,7 +1643,7 @@ func (this *QTableView) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 	C.QTableView_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OnmouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QTableView) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QTableView_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1669,7 +1669,7 @@ func (this *QTableView) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
 	C.QTableView_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OnmouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QTableView) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QTableView_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1695,7 +1695,7 @@ func (this *QTableView) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent
 	C.QTableView_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QTableView) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QTableView_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1721,7 +1721,7 @@ func (this *QTableView) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
 	C.QTableView_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+func (this *QTableView) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
 	ok := C.QTableView_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1747,7 +1747,7 @@ func (this *QTableView) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 	C.QTableView_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+func (this *QTableView) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
 	ok := C.QTableView_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1773,7 +1773,7 @@ func (this *QTableView) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
 	C.QTableView_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+func (this *QTableView) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
 	ok := C.QTableView_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1799,7 +1799,7 @@ func (this *QTableView) callVirtualBase_DropEvent(event *QDropEvent) {
 	C.QTableView_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+func (this *QTableView) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
 	ok := C.QTableView_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1825,7 +1825,7 @@ func (this *QTableView) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 	C.QTableView_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+func (this *QTableView) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
 	ok := C.QTableView_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1851,7 +1851,7 @@ func (this *QTableView) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 	C.QTableView_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+func (this *QTableView) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
 	ok := C.QTableView_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1877,7 +1877,7 @@ func (this *QTableView) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 	C.QTableView_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OnkeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+func (this *QTableView) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
 	ok := C.QTableView_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1903,7 +1903,7 @@ func (this *QTableView) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 	C.QTableView_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OnresizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+func (this *QTableView) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
 	ok := C.QTableView_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1929,7 +1929,7 @@ func (this *QTableView) callVirtualBase_InputMethodEvent(event *QInputMethodEven
 	C.QTableView_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OninputMethodEvent(slot func(super func(event *QInputMethodEvent), event *QInputMethodEvent)) {
+func (this *QTableView) OnInputMethodEvent(slot func(super func(event *QInputMethodEvent), event *QInputMethodEvent)) {
 	ok := C.QTableView_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1955,7 +1955,7 @@ func (this *QTableView) callVirtualBase_EventFilter(object *QObject, event *QEve
 	return (bool)(C.QTableView_virtualbase_eventFilter(unsafe.Pointer(this.h), object.cPointer(), event.cPointer()))
 
 }
-func (this *QTableView) OneventFilter(slot func(super func(object *QObject, event *QEvent) bool, object *QObject, event *QEvent) bool) {
+func (this *QTableView) OnEventFilter(slot func(super func(object *QObject, event *QEvent) bool, object *QObject, event *QEvent) bool) {
 	ok := C.QTableView_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1987,7 +1987,7 @@ func (this *QTableView) callVirtualBase_MinimumSizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QTableView) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QTableView) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QTableView_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2014,7 +2014,7 @@ func (this *QTableView) callVirtualBase_SizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QTableView) OnsizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QTableView) OnSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QTableView_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2039,7 +2039,7 @@ func (this *QTableView) callVirtualBase_SetupViewport(viewport *QWidget) {
 	C.QTableView_virtualbase_setupViewport(unsafe.Pointer(this.h), viewport.cPointer())
 
 }
-func (this *QTableView) OnsetupViewport(slot func(super func(viewport *QWidget), viewport *QWidget)) {
+func (this *QTableView) OnSetupViewport(slot func(super func(viewport *QWidget), viewport *QWidget)) {
 	ok := C.QTableView_override_virtual_setupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2065,7 +2065,7 @@ func (this *QTableView) callVirtualBase_WheelEvent(param1 *QWheelEvent) {
 	C.QTableView_virtualbase_wheelEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QTableView) OnwheelEvent(slot func(super func(param1 *QWheelEvent), param1 *QWheelEvent)) {
+func (this *QTableView) OnWheelEvent(slot func(super func(param1 *QWheelEvent), param1 *QWheelEvent)) {
 	ok := C.QTableView_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2091,7 +2091,7 @@ func (this *QTableView) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEve
 	C.QTableView_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QTableView) OncontextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+func (this *QTableView) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
 	ok := C.QTableView_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2117,7 +2117,7 @@ func (this *QTableView) callVirtualBase_ChangeEvent(param1 *QEvent) {
 	C.QTableView_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QTableView) OnchangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+func (this *QTableView) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
 	ok := C.QTableView_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2143,7 +2143,7 @@ func (this *QTableView) callVirtualBase_DevType() int {
 	return (int)(C.QTableView_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QTableView) OndevType(slot func(super func() int) int) {
+func (this *QTableView) OnDevType(slot func(super func() int) int) {
 	ok := C.QTableView_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2168,7 +2168,7 @@ func (this *QTableView) callVirtualBase_SetVisible(visible bool) {
 	C.QTableView_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QTableView) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+func (this *QTableView) OnSetVisible(slot func(super func(visible bool), visible bool)) {
 	ok := C.QTableView_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2194,7 +2194,7 @@ func (this *QTableView) callVirtualBase_HeightForWidth(param1 int) int {
 	return (int)(C.QTableView_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QTableView) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+func (this *QTableView) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
 	ok := C.QTableView_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2222,7 +2222,7 @@ func (this *QTableView) callVirtualBase_HasHeightForWidth() bool {
 	return (bool)(C.QTableView_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QTableView) OnhasHeightForWidth(slot func(super func() bool) bool) {
+func (this *QTableView) OnHasHeightForWidth(slot func(super func() bool) bool) {
 	ok := C.QTableView_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2247,7 +2247,7 @@ func (this *QTableView) callVirtualBase_PaintEngine() *QPaintEngine {
 	return newQPaintEngine(C.QTableView_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QTableView) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+func (this *QTableView) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	ok := C.QTableView_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2272,7 +2272,7 @@ func (this *QTableView) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 	C.QTableView_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+func (this *QTableView) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
 	ok := C.QTableView_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2298,7 +2298,7 @@ func (this *QTableView) callVirtualBase_EnterEvent(event *QEvent) {
 	C.QTableView_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OnenterEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QTableView) OnEnterEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QTableView_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2324,7 +2324,7 @@ func (this *QTableView) callVirtualBase_LeaveEvent(event *QEvent) {
 	C.QTableView_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QTableView) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QTableView_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2350,7 +2350,7 @@ func (this *QTableView) callVirtualBase_MoveEvent(event *QMoveEvent) {
 	C.QTableView_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+func (this *QTableView) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
 	ok := C.QTableView_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2376,7 +2376,7 @@ func (this *QTableView) callVirtualBase_CloseEvent(event *QCloseEvent) {
 	C.QTableView_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+func (this *QTableView) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
 	ok := C.QTableView_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2402,7 +2402,7 @@ func (this *QTableView) callVirtualBase_TabletEvent(event *QTabletEvent) {
 	C.QTableView_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+func (this *QTableView) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
 	ok := C.QTableView_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2428,7 +2428,7 @@ func (this *QTableView) callVirtualBase_ActionEvent(event *QActionEvent) {
 	C.QTableView_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+func (this *QTableView) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
 	ok := C.QTableView_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2454,7 +2454,7 @@ func (this *QTableView) callVirtualBase_ShowEvent(event *QShowEvent) {
 	C.QTableView_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OnshowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+func (this *QTableView) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
 	ok := C.QTableView_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2480,7 +2480,7 @@ func (this *QTableView) callVirtualBase_HideEvent(event *QHideEvent) {
 	C.QTableView_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+func (this *QTableView) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
 	ok := C.QTableView_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2513,7 +2513,7 @@ func (this *QTableView) callVirtualBase_NativeEvent(eventType []byte, message un
 	return (bool)(C.QTableView_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QTableView) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+func (this *QTableView) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
 	ok := C.QTableView_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2547,7 +2547,7 @@ func (this *QTableView) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceM
 	return (int)(C.QTableView_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QTableView) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+func (this *QTableView) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
 	ok := C.QTableView_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2575,7 +2575,7 @@ func (this *QTableView) callVirtualBase_InitPainter(painter *QPainter) {
 	C.QTableView_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QTableView) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+func (this *QTableView) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
 	ok := C.QTableView_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2601,7 +2601,7 @@ func (this *QTableView) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice
 	return newQPaintDevice(C.QTableView_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QTableView) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+func (this *QTableView) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	ok := C.QTableView_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2629,7 +2629,7 @@ func (this *QTableView) callVirtualBase_SharedPainter() *QPainter {
 	return newQPainter(C.QTableView_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QTableView) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+func (this *QTableView) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	ok := C.QTableView_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2654,7 +2654,7 @@ func (this *QTableView) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QTableView_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QTableView) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QTableView_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2680,7 +2680,7 @@ func (this *QTableView) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QTableView_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTableView) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QTableView) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QTableView_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2706,7 +2706,7 @@ func (this *QTableView) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QTableView_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTableView) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QTableView) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QTableView_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2732,7 +2732,7 @@ func (this *QTableView) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 	C.QTableView_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTableView) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QTableView) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QTableView_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

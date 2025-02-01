@@ -238,7 +238,7 @@ func (this *QLocalServer) callVirtualBase_HasPendingConnections() bool {
 	return (bool)(C.QLocalServer_virtualbase_hasPendingConnections(unsafe.Pointer(this.h)))
 
 }
-func (this *QLocalServer) OnhasPendingConnections(slot func(super func() bool) bool) {
+func (this *QLocalServer) OnHasPendingConnections(slot func(super func() bool) bool) {
 	ok := C.QLocalServer_override_virtual_hasPendingConnections(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -263,7 +263,7 @@ func (this *QLocalServer) callVirtualBase_NextPendingConnection() *QLocalSocket 
 	return newQLocalSocket(C.QLocalServer_virtualbase_nextPendingConnection(unsafe.Pointer(this.h)))
 
 }
-func (this *QLocalServer) OnnextPendingConnection(slot func(super func() *QLocalSocket) *QLocalSocket) {
+func (this *QLocalServer) OnNextPendingConnection(slot func(super func() *QLocalSocket) *QLocalSocket) {
 	ok := C.QLocalServer_override_virtual_nextPendingConnection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -288,7 +288,7 @@ func (this *QLocalServer) callVirtualBase_IncomingConnection(socketDescriptor ui
 	C.QLocalServer_virtualbase_incomingConnection(unsafe.Pointer(this.h), (C.uintptr_t)(socketDescriptor))
 
 }
-func (this *QLocalServer) OnincomingConnection(slot func(super func(socketDescriptor uintptr), socketDescriptor uintptr)) {
+func (this *QLocalServer) OnIncomingConnection(slot func(super func(socketDescriptor uintptr), socketDescriptor uintptr)) {
 	ok := C.QLocalServer_override_virtual_incomingConnection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -314,7 +314,7 @@ func (this *QLocalServer) callVirtualBase_Event(event *qt6.QEvent) bool {
 	return (bool)(C.QLocalServer_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QLocalServer) Onevent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+func (this *QLocalServer) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
 	ok := C.QLocalServer_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -342,7 +342,7 @@ func (this *QLocalServer) callVirtualBase_EventFilter(watched *qt6.QObject, even
 	return (bool)(C.QLocalServer_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QLocalServer) OneventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+func (this *QLocalServer) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
 	ok := C.QLocalServer_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -372,7 +372,7 @@ func (this *QLocalServer) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 	C.QLocalServer_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QLocalServer) OntimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+func (this *QLocalServer) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
 	ok := C.QLocalServer_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -398,7 +398,7 @@ func (this *QLocalServer) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 	C.QLocalServer_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QLocalServer) OnchildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+func (this *QLocalServer) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
 	ok := C.QLocalServer_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -424,7 +424,7 @@ func (this *QLocalServer) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 	C.QLocalServer_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QLocalServer) OncustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+func (this *QLocalServer) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
 	ok := C.QLocalServer_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -450,7 +450,7 @@ func (this *QLocalServer) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod)
 	C.QLocalServer_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QLocalServer) OnconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+func (this *QLocalServer) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
 	ok := C.QLocalServer_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -476,7 +476,7 @@ func (this *QLocalServer) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMeth
 	C.QLocalServer_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QLocalServer) OndisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+func (this *QLocalServer) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
 	ok := C.QLocalServer_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

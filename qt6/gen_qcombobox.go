@@ -715,7 +715,7 @@ func (this *QComboBox) callVirtualBase_SetModel(model *QAbstractItemModel) {
 	C.QComboBox_virtualbase_setModel(unsafe.Pointer(this.h), model.cPointer())
 
 }
-func (this *QComboBox) OnsetModel(slot func(super func(model *QAbstractItemModel), model *QAbstractItemModel)) {
+func (this *QComboBox) OnSetModel(slot func(super func(model *QAbstractItemModel), model *QAbstractItemModel)) {
 	ok := C.QComboBox_override_virtual_setModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -743,7 +743,7 @@ func (this *QComboBox) callVirtualBase_SizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QComboBox) OnsizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QComboBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QComboBox_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -770,7 +770,7 @@ func (this *QComboBox) callVirtualBase_MinimumSizeHint() *QSize {
 	return _goptr
 
 }
-func (this *QComboBox) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+func (this *QComboBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
 	ok := C.QComboBox_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -795,7 +795,7 @@ func (this *QComboBox) callVirtualBase_ShowPopup() {
 	C.QComboBox_virtualbase_showPopup(unsafe.Pointer(this.h))
 
 }
-func (this *QComboBox) OnshowPopup(slot func(super func())) {
+func (this *QComboBox) OnShowPopup(slot func(super func())) {
 	ok := C.QComboBox_override_virtual_showPopup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -818,7 +818,7 @@ func (this *QComboBox) callVirtualBase_HidePopup() {
 	C.QComboBox_virtualbase_hidePopup(unsafe.Pointer(this.h))
 
 }
-func (this *QComboBox) OnhidePopup(slot func(super func())) {
+func (this *QComboBox) OnHidePopup(slot func(super func())) {
 	ok := C.QComboBox_override_virtual_hidePopup(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -841,7 +841,7 @@ func (this *QComboBox) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QComboBox_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QComboBox) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QComboBox) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QComboBox_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -871,7 +871,7 @@ func (this *QComboBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery)
 	return _goptr
 
 }
-func (this *QComboBox) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+func (this *QComboBox) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
 	ok := C.QComboBox_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -899,7 +899,7 @@ func (this *QComboBox) callVirtualBase_FocusInEvent(e *QFocusEvent) {
 	C.QComboBox_virtualbase_focusInEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnfocusInEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
+func (this *QComboBox) OnFocusInEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
 	ok := C.QComboBox_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -925,7 +925,7 @@ func (this *QComboBox) callVirtualBase_FocusOutEvent(e *QFocusEvent) {
 	C.QComboBox_virtualbase_focusOutEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnfocusOutEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
+func (this *QComboBox) OnFocusOutEvent(slot func(super func(e *QFocusEvent), e *QFocusEvent)) {
 	ok := C.QComboBox_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -951,7 +951,7 @@ func (this *QComboBox) callVirtualBase_ChangeEvent(e *QEvent) {
 	C.QComboBox_virtualbase_changeEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnchangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
+func (this *QComboBox) OnChangeEvent(slot func(super func(e *QEvent), e *QEvent)) {
 	ok := C.QComboBox_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -977,7 +977,7 @@ func (this *QComboBox) callVirtualBase_ResizeEvent(e *QResizeEvent) {
 	C.QComboBox_virtualbase_resizeEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnresizeEvent(slot func(super func(e *QResizeEvent), e *QResizeEvent)) {
+func (this *QComboBox) OnResizeEvent(slot func(super func(e *QResizeEvent), e *QResizeEvent)) {
 	ok := C.QComboBox_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1003,7 +1003,7 @@ func (this *QComboBox) callVirtualBase_PaintEvent(e *QPaintEvent) {
 	C.QComboBox_virtualbase_paintEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnpaintEvent(slot func(super func(e *QPaintEvent), e *QPaintEvent)) {
+func (this *QComboBox) OnPaintEvent(slot func(super func(e *QPaintEvent), e *QPaintEvent)) {
 	ok := C.QComboBox_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1029,7 +1029,7 @@ func (this *QComboBox) callVirtualBase_ShowEvent(e *QShowEvent) {
 	C.QComboBox_virtualbase_showEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnshowEvent(slot func(super func(e *QShowEvent), e *QShowEvent)) {
+func (this *QComboBox) OnShowEvent(slot func(super func(e *QShowEvent), e *QShowEvent)) {
 	ok := C.QComboBox_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1055,7 +1055,7 @@ func (this *QComboBox) callVirtualBase_HideEvent(e *QHideEvent) {
 	C.QComboBox_virtualbase_hideEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnhideEvent(slot func(super func(e *QHideEvent), e *QHideEvent)) {
+func (this *QComboBox) OnHideEvent(slot func(super func(e *QHideEvent), e *QHideEvent)) {
 	ok := C.QComboBox_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1081,7 +1081,7 @@ func (this *QComboBox) callVirtualBase_MousePressEvent(e *QMouseEvent) {
 	C.QComboBox_virtualbase_mousePressEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnmousePressEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
+func (this *QComboBox) OnMousePressEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
 	ok := C.QComboBox_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1107,7 +1107,7 @@ func (this *QComboBox) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
 	C.QComboBox_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnmouseReleaseEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
+func (this *QComboBox) OnMouseReleaseEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
 	ok := C.QComboBox_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1133,7 +1133,7 @@ func (this *QComboBox) callVirtualBase_KeyPressEvent(e *QKeyEvent) {
 	C.QComboBox_virtualbase_keyPressEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnkeyPressEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
+func (this *QComboBox) OnKeyPressEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
 	ok := C.QComboBox_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1159,7 +1159,7 @@ func (this *QComboBox) callVirtualBase_KeyReleaseEvent(e *QKeyEvent) {
 	C.QComboBox_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnkeyReleaseEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
+func (this *QComboBox) OnKeyReleaseEvent(slot func(super func(e *QKeyEvent), e *QKeyEvent)) {
 	ok := C.QComboBox_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1185,7 +1185,7 @@ func (this *QComboBox) callVirtualBase_WheelEvent(e *QWheelEvent) {
 	C.QComboBox_virtualbase_wheelEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OnwheelEvent(slot func(super func(e *QWheelEvent), e *QWheelEvent)) {
+func (this *QComboBox) OnWheelEvent(slot func(super func(e *QWheelEvent), e *QWheelEvent)) {
 	ok := C.QComboBox_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1211,7 +1211,7 @@ func (this *QComboBox) callVirtualBase_ContextMenuEvent(e *QContextMenuEvent) {
 	C.QComboBox_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QComboBox) OncontextMenuEvent(slot func(super func(e *QContextMenuEvent), e *QContextMenuEvent)) {
+func (this *QComboBox) OnContextMenuEvent(slot func(super func(e *QContextMenuEvent), e *QContextMenuEvent)) {
 	ok := C.QComboBox_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1237,7 +1237,7 @@ func (this *QComboBox) callVirtualBase_InputMethodEvent(param1 *QInputMethodEven
 	C.QComboBox_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QComboBox) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+func (this *QComboBox) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
 	ok := C.QComboBox_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1263,7 +1263,7 @@ func (this *QComboBox) callVirtualBase_InitStyleOption(option *QStyleOptionCombo
 	C.QComboBox_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
 
 }
-func (this *QComboBox) OninitStyleOption(slot func(super func(option *QStyleOptionComboBox), option *QStyleOptionComboBox)) {
+func (this *QComboBox) OnInitStyleOption(slot func(super func(option *QStyleOptionComboBox), option *QStyleOptionComboBox)) {
 	ok := C.QComboBox_override_virtual_initStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1289,7 +1289,7 @@ func (this *QComboBox) callVirtualBase_DevType() int {
 	return (int)(C.QComboBox_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QComboBox) OndevType(slot func(super func() int) int) {
+func (this *QComboBox) OnDevType(slot func(super func() int) int) {
 	ok := C.QComboBox_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1314,7 +1314,7 @@ func (this *QComboBox) callVirtualBase_SetVisible(visible bool) {
 	C.QComboBox_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QComboBox) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+func (this *QComboBox) OnSetVisible(slot func(super func(visible bool), visible bool)) {
 	ok := C.QComboBox_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1340,7 +1340,7 @@ func (this *QComboBox) callVirtualBase_HeightForWidth(param1 int) int {
 	return (int)(C.QComboBox_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QComboBox) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+func (this *QComboBox) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
 	ok := C.QComboBox_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1368,7 +1368,7 @@ func (this *QComboBox) callVirtualBase_HasHeightForWidth() bool {
 	return (bool)(C.QComboBox_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QComboBox) OnhasHeightForWidth(slot func(super func() bool) bool) {
+func (this *QComboBox) OnHasHeightForWidth(slot func(super func() bool) bool) {
 	ok := C.QComboBox_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1393,7 +1393,7 @@ func (this *QComboBox) callVirtualBase_PaintEngine() *QPaintEngine {
 	return newQPaintEngine(C.QComboBox_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QComboBox) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+func (this *QComboBox) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
 	ok := C.QComboBox_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1418,7 +1418,7 @@ func (this *QComboBox) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent)
 	C.QComboBox_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QComboBox) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QComboBox_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1444,7 +1444,7 @@ func (this *QComboBox) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 	C.QComboBox_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnmouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+func (this *QComboBox) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
 	ok := C.QComboBox_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1470,7 +1470,7 @@ func (this *QComboBox) callVirtualBase_EnterEvent(event *QEnterEvent) {
 	C.QComboBox_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnenterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+func (this *QComboBox) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
 	ok := C.QComboBox_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1496,7 +1496,7 @@ func (this *QComboBox) callVirtualBase_LeaveEvent(event *QEvent) {
 	C.QComboBox_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QComboBox) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QComboBox_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1522,7 +1522,7 @@ func (this *QComboBox) callVirtualBase_MoveEvent(event *QMoveEvent) {
 	C.QComboBox_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+func (this *QComboBox) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
 	ok := C.QComboBox_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1548,7 +1548,7 @@ func (this *QComboBox) callVirtualBase_CloseEvent(event *QCloseEvent) {
 	C.QComboBox_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+func (this *QComboBox) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
 	ok := C.QComboBox_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1574,7 +1574,7 @@ func (this *QComboBox) callVirtualBase_TabletEvent(event *QTabletEvent) {
 	C.QComboBox_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+func (this *QComboBox) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
 	ok := C.QComboBox_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1600,7 +1600,7 @@ func (this *QComboBox) callVirtualBase_ActionEvent(event *QActionEvent) {
 	C.QComboBox_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+func (this *QComboBox) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
 	ok := C.QComboBox_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1626,7 +1626,7 @@ func (this *QComboBox) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
 	C.QComboBox_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+func (this *QComboBox) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
 	ok := C.QComboBox_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1652,7 +1652,7 @@ func (this *QComboBox) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 	C.QComboBox_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+func (this *QComboBox) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
 	ok := C.QComboBox_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1678,7 +1678,7 @@ func (this *QComboBox) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
 	C.QComboBox_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+func (this *QComboBox) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
 	ok := C.QComboBox_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1704,7 +1704,7 @@ func (this *QComboBox) callVirtualBase_DropEvent(event *QDropEvent) {
 	C.QComboBox_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+func (this *QComboBox) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
 	ok := C.QComboBox_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1737,7 +1737,7 @@ func (this *QComboBox) callVirtualBase_NativeEvent(eventType []byte, message uns
 	return (bool)(C.QComboBox_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
 
 }
-func (this *QComboBox) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+func (this *QComboBox) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
 	ok := C.QComboBox_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1771,7 +1771,7 @@ func (this *QComboBox) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMe
 	return (int)(C.QComboBox_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QComboBox) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+func (this *QComboBox) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
 	ok := C.QComboBox_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1799,7 +1799,7 @@ func (this *QComboBox) callVirtualBase_InitPainter(painter *QPainter) {
 	C.QComboBox_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QComboBox) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+func (this *QComboBox) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
 	ok := C.QComboBox_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1825,7 +1825,7 @@ func (this *QComboBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice 
 	return newQPaintDevice(C.QComboBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QComboBox) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+func (this *QComboBox) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
 	ok := C.QComboBox_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1853,7 +1853,7 @@ func (this *QComboBox) callVirtualBase_SharedPainter() *QPainter {
 	return newQPainter(C.QComboBox_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QComboBox) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+func (this *QComboBox) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
 	ok := C.QComboBox_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1878,7 +1878,7 @@ func (this *QComboBox) callVirtualBase_FocusNextPrevChild(next bool) bool {
 	return (bool)(C.QComboBox_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QComboBox) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+func (this *QComboBox) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
 	ok := C.QComboBox_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1906,7 +1906,7 @@ func (this *QComboBox) callVirtualBase_EventFilter(watched *QObject, event *QEve
 	return (bool)(C.QComboBox_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QComboBox) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QComboBox) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QComboBox_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1936,7 +1936,7 @@ func (this *QComboBox) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QComboBox_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QComboBox) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QComboBox_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1962,7 +1962,7 @@ func (this *QComboBox) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QComboBox_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QComboBox) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QComboBox_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -1988,7 +1988,7 @@ func (this *QComboBox) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QComboBox_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QComboBox) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QComboBox) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QComboBox_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2014,7 +2014,7 @@ func (this *QComboBox) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 	C.QComboBox_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QComboBox) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QComboBox) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QComboBox_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -2040,7 +2040,7 @@ func (this *QComboBox) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 	C.QComboBox_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QComboBox) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+func (this *QComboBox) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
 	ok := C.QComboBox_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")

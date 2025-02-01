@@ -174,7 +174,7 @@ func (this *QBuffer) callVirtualBase_Open(openMode QIODeviceBase__OpenModeFlag) 
 	return (bool)(C.QBuffer_virtualbase_open(unsafe.Pointer(this.h), (C.int)(openMode)))
 
 }
-func (this *QBuffer) Onopen(slot func(super func(openMode QIODeviceBase__OpenModeFlag) bool, openMode QIODeviceBase__OpenModeFlag) bool) {
+func (this *QBuffer) OnOpen(slot func(super func(openMode QIODeviceBase__OpenModeFlag) bool, openMode QIODeviceBase__OpenModeFlag) bool) {
 	ok := C.QBuffer_override_virtual_open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -202,7 +202,7 @@ func (this *QBuffer) callVirtualBase_Close() {
 	C.QBuffer_virtualbase_close(unsafe.Pointer(this.h))
 
 }
-func (this *QBuffer) Onclose(slot func(super func())) {
+func (this *QBuffer) OnClose(slot func(super func())) {
 	ok := C.QBuffer_override_virtual_close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -225,7 +225,7 @@ func (this *QBuffer) callVirtualBase_Size() int64 {
 	return (int64)(C.QBuffer_virtualbase_size(unsafe.Pointer(this.h)))
 
 }
-func (this *QBuffer) Onsize(slot func(super func() int64) int64) {
+func (this *QBuffer) OnSize(slot func(super func() int64) int64) {
 	ok := C.QBuffer_override_virtual_size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -250,7 +250,7 @@ func (this *QBuffer) callVirtualBase_Pos() int64 {
 	return (int64)(C.QBuffer_virtualbase_pos(unsafe.Pointer(this.h)))
 
 }
-func (this *QBuffer) Onpos(slot func(super func() int64) int64) {
+func (this *QBuffer) OnPos(slot func(super func() int64) int64) {
 	ok := C.QBuffer_override_virtual_pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -275,7 +275,7 @@ func (this *QBuffer) callVirtualBase_Seek(off int64) bool {
 	return (bool)(C.QBuffer_virtualbase_seek(unsafe.Pointer(this.h), (C.longlong)(off)))
 
 }
-func (this *QBuffer) Onseek(slot func(super func(off int64) bool, off int64) bool) {
+func (this *QBuffer) OnSeek(slot func(super func(off int64) bool, off int64) bool) {
 	ok := C.QBuffer_override_virtual_seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -303,7 +303,7 @@ func (this *QBuffer) callVirtualBase_AtEnd() bool {
 	return (bool)(C.QBuffer_virtualbase_atEnd(unsafe.Pointer(this.h)))
 
 }
-func (this *QBuffer) OnatEnd(slot func(super func() bool) bool) {
+func (this *QBuffer) OnAtEnd(slot func(super func() bool) bool) {
 	ok := C.QBuffer_override_virtual_atEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -328,7 +328,7 @@ func (this *QBuffer) callVirtualBase_CanReadLine() bool {
 	return (bool)(C.QBuffer_virtualbase_canReadLine(unsafe.Pointer(this.h)))
 
 }
-func (this *QBuffer) OncanReadLine(slot func(super func() bool) bool) {
+func (this *QBuffer) OnCanReadLine(slot func(super func() bool) bool) {
 	ok := C.QBuffer_override_virtual_canReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -353,7 +353,7 @@ func (this *QBuffer) callVirtualBase_ConnectNotify(param1 *QMetaMethod) {
 	C.QBuffer_virtualbase_connectNotify(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QBuffer) OnconnectNotify(slot func(super func(param1 *QMetaMethod), param1 *QMetaMethod)) {
+func (this *QBuffer) OnConnectNotify(slot func(super func(param1 *QMetaMethod), param1 *QMetaMethod)) {
 	ok := C.QBuffer_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -379,7 +379,7 @@ func (this *QBuffer) callVirtualBase_DisconnectNotify(param1 *QMetaMethod) {
 	C.QBuffer_virtualbase_disconnectNotify(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QBuffer) OndisconnectNotify(slot func(super func(param1 *QMetaMethod), param1 *QMetaMethod)) {
+func (this *QBuffer) OnDisconnectNotify(slot func(super func(param1 *QMetaMethod), param1 *QMetaMethod)) {
 	ok := C.QBuffer_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -407,7 +407,7 @@ func (this *QBuffer) callVirtualBase_ReadData(data string, maxlen int64) int64 {
 	return (int64)(C.QBuffer_virtualbase_readData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
 
 }
-func (this *QBuffer) OnreadData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+func (this *QBuffer) OnReadData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
 	ok := C.QBuffer_override_virtual_readData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -440,7 +440,7 @@ func (this *QBuffer) callVirtualBase_WriteData(data string, lenVal int64) int64 
 	return (int64)(C.QBuffer_virtualbase_writeData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(lenVal)))
 
 }
-func (this *QBuffer) OnwriteData(slot func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64) {
+func (this *QBuffer) OnWriteData(slot func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64) {
 	ok := C.QBuffer_override_virtual_writeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -471,7 +471,7 @@ func (this *QBuffer) callVirtualBase_IsSequential() bool {
 	return (bool)(C.QBuffer_virtualbase_isSequential(unsafe.Pointer(this.h)))
 
 }
-func (this *QBuffer) OnisSequential(slot func(super func() bool) bool) {
+func (this *QBuffer) OnIsSequential(slot func(super func() bool) bool) {
 	ok := C.QBuffer_override_virtual_isSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -496,7 +496,7 @@ func (this *QBuffer) callVirtualBase_Reset() bool {
 	return (bool)(C.QBuffer_virtualbase_reset(unsafe.Pointer(this.h)))
 
 }
-func (this *QBuffer) Onreset(slot func(super func() bool) bool) {
+func (this *QBuffer) OnReset(slot func(super func() bool) bool) {
 	ok := C.QBuffer_override_virtual_reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -521,7 +521,7 @@ func (this *QBuffer) callVirtualBase_BytesAvailable() int64 {
 	return (int64)(C.QBuffer_virtualbase_bytesAvailable(unsafe.Pointer(this.h)))
 
 }
-func (this *QBuffer) OnbytesAvailable(slot func(super func() int64) int64) {
+func (this *QBuffer) OnBytesAvailable(slot func(super func() int64) int64) {
 	ok := C.QBuffer_override_virtual_bytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -546,7 +546,7 @@ func (this *QBuffer) callVirtualBase_BytesToWrite() int64 {
 	return (int64)(C.QBuffer_virtualbase_bytesToWrite(unsafe.Pointer(this.h)))
 
 }
-func (this *QBuffer) OnbytesToWrite(slot func(super func() int64) int64) {
+func (this *QBuffer) OnBytesToWrite(slot func(super func() int64) int64) {
 	ok := C.QBuffer_override_virtual_bytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -571,7 +571,7 @@ func (this *QBuffer) callVirtualBase_WaitForReadyRead(msecs int) bool {
 	return (bool)(C.QBuffer_virtualbase_waitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
 
 }
-func (this *QBuffer) OnwaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
+func (this *QBuffer) OnWaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
 	ok := C.QBuffer_override_virtual_waitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -599,7 +599,7 @@ func (this *QBuffer) callVirtualBase_WaitForBytesWritten(msecs int) bool {
 	return (bool)(C.QBuffer_virtualbase_waitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
 
 }
-func (this *QBuffer) OnwaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
+func (this *QBuffer) OnWaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
 	ok := C.QBuffer_override_virtual_waitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -629,7 +629,7 @@ func (this *QBuffer) callVirtualBase_ReadLineData(data string, maxlen int64) int
 	return (int64)(C.QBuffer_virtualbase_readLineData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
 
 }
-func (this *QBuffer) OnreadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+func (this *QBuffer) OnReadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
 	ok := C.QBuffer_override_virtual_readLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -660,7 +660,7 @@ func (this *QBuffer) callVirtualBase_SkipData(maxSize int64) int64 {
 	return (int64)(C.QBuffer_virtualbase_skipData(unsafe.Pointer(this.h), (C.longlong)(maxSize)))
 
 }
-func (this *QBuffer) OnskipData(slot func(super func(maxSize int64) int64, maxSize int64) int64) {
+func (this *QBuffer) OnSkipData(slot func(super func(maxSize int64) int64, maxSize int64) int64) {
 	ok := C.QBuffer_override_virtual_skipData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -688,7 +688,7 @@ func (this *QBuffer) callVirtualBase_Event(event *QEvent) bool {
 	return (bool)(C.QBuffer_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QBuffer) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+func (this *QBuffer) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
 	ok := C.QBuffer_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -716,7 +716,7 @@ func (this *QBuffer) callVirtualBase_EventFilter(watched *QObject, event *QEvent
 	return (bool)(C.QBuffer_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QBuffer) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+func (this *QBuffer) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
 	ok := C.QBuffer_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -746,7 +746,7 @@ func (this *QBuffer) callVirtualBase_TimerEvent(event *QTimerEvent) {
 	C.QBuffer_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QBuffer) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+func (this *QBuffer) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
 	ok := C.QBuffer_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -772,7 +772,7 @@ func (this *QBuffer) callVirtualBase_ChildEvent(event *QChildEvent) {
 	C.QBuffer_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QBuffer) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+func (this *QBuffer) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
 	ok := C.QBuffer_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
@@ -798,7 +798,7 @@ func (this *QBuffer) callVirtualBase_CustomEvent(event *QEvent) {
 	C.QBuffer_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QBuffer) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+func (this *QBuffer) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
 	ok := C.QBuffer_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
