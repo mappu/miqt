@@ -351,9 +351,6 @@ func (nm CppMethod) SafeMethodName() string {
 	)
 	tmp = replacer.Replace(tmp)
 
-	// Also make the first letter uppercase so it becomes public in Go
-	tmp = titleCase(tmp)
-
 	// Replace spaces (e.g. `operator long long` with CamelCase
 	tmp = regexp.MustCompile(` ([a-zA-Z])`).ReplaceAllStringFunc(tmp, func(match string) string { return strings.ToUpper(match[1:]) })
 
