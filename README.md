@@ -36,6 +36,7 @@ You must also meet your Qt license obligations.
 
 These apps are listed in alphabetical order. Raise an issue or PR to have your app listed here!
 
+- [annie-miqt](https://code.ivysaur.me/annie-miqt), a GUI application for downloading videos.
 - [jqview](https://github.com/rcalixte/jqview), The simplest possible native GUI for inspecting JSON objects with jq
 - [mdoutliner](https://github.com/mappu/miqt/tree/master/examples/mdoutliner), Markdown Outliner sample application
 - [qbolt](https://code.ivysaur.me/qbolt), a graphical database manager for BoltDB
@@ -69,10 +70,11 @@ See also [issue #8](https://github.com/mappu/miqt/issues/8).
 MIQT is a clean-room binding that does not use any code from other Qt bindings.
 
 - [therecipe/qt](https://github.com/therecipe/qt) is the most mature Qt binding for Go.
-	- It works by making IPC calls to a separate C++ binary downloaded at runtime from a site under the maintainer's control. This may be less performant than calling Qt directly.
+	- By default, it works by making IPC calls to a separate C++ binary downloaded at runtime from a site under the maintainer's control. This may be less performant than calling Qt directly.
+	- It does not support Go Modules, nor Qt 6
 	- Because of the LGPL license, it's [extremely difficult to make a proprietary app](https://github.com/therecipe/qt/wiki/FAQ#can-i-make-a-proprietary-app-with-this-binding-). See also their [issue 259](https://github.com/therecipe/qt/issues/259).
 - [kitech/qt.go](https://github.com/kitech/qt.go) is another mature Qt binding for Go.
-	- Unfortunately, it's also using the LGPL license.
+	- Unfortunately, it's also using the LGPL license. It also does not support Qt 6.
 - [go-qamel/qamel](https://github.com/go-qamel/qamel) is an MIT-licensed Qt binding for Go.
 	- Unfortunately, it only supports QML, not Qt Widgets.
 
