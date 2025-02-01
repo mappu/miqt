@@ -33,17 +33,17 @@ QDirIterator* QDirIterator_new6(struct miqt_string path, int flags);
 QDirIterator* QDirIterator_new7(struct miqt_string path, int filter, int flags);
 QDirIterator* QDirIterator_new8(struct miqt_string path, struct miqt_array /* of struct miqt_string */  nameFilters, int filters);
 QDirIterator* QDirIterator_new9(struct miqt_string path, struct miqt_array /* of struct miqt_string */  nameFilters, int filters, int flags);
-struct miqt_string QDirIterator_Next(QDirIterator* self);
-QFileInfo* QDirIterator_NextFileInfo(QDirIterator* self);
-bool QDirIterator_HasNext(const QDirIterator* self);
-struct miqt_string QDirIterator_FileName(const QDirIterator* self);
-struct miqt_string QDirIterator_FilePath(const QDirIterator* self);
-QFileInfo* QDirIterator_FileInfo(const QDirIterator* self);
-struct miqt_string QDirIterator_Path(const QDirIterator* self);
-void QDirIterator_Delete(QDirIterator* self);
+struct miqt_string QDirIterator_next(QDirIterator* self);
+QFileInfo* QDirIterator_nextFileInfo(QDirIterator* self);
+bool QDirIterator_hasNext(const QDirIterator* self);
+struct miqt_string QDirIterator_fileName(const QDirIterator* self);
+struct miqt_string QDirIterator_filePath(const QDirIterator* self);
+QFileInfo* QDirIterator_fileInfo(const QDirIterator* self);
+struct miqt_string QDirIterator_path(const QDirIterator* self);
+void QDirIterator_delete(QDirIterator* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

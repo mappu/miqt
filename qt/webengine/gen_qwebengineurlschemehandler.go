@@ -64,19 +64,19 @@ func NewQWebEngineUrlSchemeHandler2(parent *qt.QObject) *QWebEngineUrlSchemeHand
 }
 
 func (this *QWebEngineUrlSchemeHandler) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineUrlSchemeHandler_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineUrlSchemeHandler_metaObject(this.h)))
 }
 
 func (this *QWebEngineUrlSchemeHandler) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWebEngineUrlSchemeHandler_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWebEngineUrlSchemeHandler_metacast(this.h, param1_Cstring))
 }
 
 func QWebEngineUrlSchemeHandler_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineUrlSchemeHandler_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineUrlSchemeHandler_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -85,14 +85,14 @@ func QWebEngineUrlSchemeHandler_Tr(s string) string {
 func QWebEngineUrlSchemeHandler_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineUrlSchemeHandler_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineUrlSchemeHandler_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineUrlSchemeHandler) RequestStarted(param1 *QWebEngineUrlRequestJob) {
-	C.QWebEngineUrlSchemeHandler_RequestStarted(this.h, param1.cPointer())
+	C.QWebEngineUrlSchemeHandler_requestStarted(this.h, param1.cPointer())
 }
 
 func QWebEngineUrlSchemeHandler_Tr2(s string, c string) string {
@@ -100,7 +100,7 @@ func QWebEngineUrlSchemeHandler_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineUrlSchemeHandler_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineUrlSchemeHandler_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -111,7 +111,7 @@ func QWebEngineUrlSchemeHandler_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineUrlSchemeHandler_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebEngineUrlSchemeHandler_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -122,7 +122,7 @@ func QWebEngineUrlSchemeHandler_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineUrlSchemeHandler_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineUrlSchemeHandler_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -133,20 +133,20 @@ func QWebEngineUrlSchemeHandler_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineUrlSchemeHandler_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebEngineUrlSchemeHandler_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QWebEngineUrlSchemeHandler) OnRequestStarted(slot func(param1 *QWebEngineUrlRequestJob)) {
-	ok := C.QWebEngineUrlSchemeHandler_override_virtual_RequestStarted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineUrlSchemeHandler) OnrequestStarted(slot func(param1 *QWebEngineUrlRequestJob)) {
+	ok := C.QWebEngineUrlSchemeHandler_override_virtual_requestStarted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineUrlSchemeHandler_RequestStarted
-func miqt_exec_callback_QWebEngineUrlSchemeHandler_RequestStarted(self *C.QWebEngineUrlSchemeHandler, cb C.intptr_t, param1 *C.QWebEngineUrlRequestJob) {
+//export miqt_exec_callback_QWebEngineUrlSchemeHandler_requestStarted
+func miqt_exec_callback_QWebEngineUrlSchemeHandler_requestStarted(self *C.QWebEngineUrlSchemeHandler, cb C.intptr_t, param1 *C.QWebEngineUrlRequestJob) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QWebEngineUrlRequestJob))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -161,18 +161,18 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_RequestStarted(self *C.QWebEn
 
 func (this *QWebEngineUrlSchemeHandler) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.QWebEngineUrlSchemeHandler_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QWebEngineUrlSchemeHandler_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QWebEngineUrlSchemeHandler) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.QWebEngineUrlSchemeHandler_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineUrlSchemeHandler) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QWebEngineUrlSchemeHandler_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineUrlSchemeHandler_Event
-func miqt_exec_callback_QWebEngineUrlSchemeHandler_Event(self *C.QWebEngineUrlSchemeHandler, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QWebEngineUrlSchemeHandler_event
+func miqt_exec_callback_QWebEngineUrlSchemeHandler_event(self *C.QWebEngineUrlSchemeHandler, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -189,18 +189,18 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_Event(self *C.QWebEngineUrlSc
 
 func (this *QWebEngineUrlSchemeHandler) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.QWebEngineUrlSchemeHandler_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QWebEngineUrlSchemeHandler_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QWebEngineUrlSchemeHandler) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.QWebEngineUrlSchemeHandler_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineUrlSchemeHandler) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QWebEngineUrlSchemeHandler_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineUrlSchemeHandler_EventFilter
-func miqt_exec_callback_QWebEngineUrlSchemeHandler_EventFilter(self *C.QWebEngineUrlSchemeHandler, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QWebEngineUrlSchemeHandler_eventFilter
+func miqt_exec_callback_QWebEngineUrlSchemeHandler_eventFilter(self *C.QWebEngineUrlSchemeHandler, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -219,18 +219,18 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_EventFilter(self *C.QWebEngin
 
 func (this *QWebEngineUrlSchemeHandler) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QWebEngineUrlSchemeHandler_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QWebEngineUrlSchemeHandler_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineUrlSchemeHandler) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QWebEngineUrlSchemeHandler_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineUrlSchemeHandler) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QWebEngineUrlSchemeHandler_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineUrlSchemeHandler_TimerEvent
-func miqt_exec_callback_QWebEngineUrlSchemeHandler_TimerEvent(self *C.QWebEngineUrlSchemeHandler, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QWebEngineUrlSchemeHandler_timerEvent
+func miqt_exec_callback_QWebEngineUrlSchemeHandler_timerEvent(self *C.QWebEngineUrlSchemeHandler, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -245,18 +245,18 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_TimerEvent(self *C.QWebEngine
 
 func (this *QWebEngineUrlSchemeHandler) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QWebEngineUrlSchemeHandler_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QWebEngineUrlSchemeHandler_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineUrlSchemeHandler) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QWebEngineUrlSchemeHandler_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineUrlSchemeHandler) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QWebEngineUrlSchemeHandler_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineUrlSchemeHandler_ChildEvent
-func miqt_exec_callback_QWebEngineUrlSchemeHandler_ChildEvent(self *C.QWebEngineUrlSchemeHandler, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QWebEngineUrlSchemeHandler_childEvent
+func miqt_exec_callback_QWebEngineUrlSchemeHandler_childEvent(self *C.QWebEngineUrlSchemeHandler, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -271,18 +271,18 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_ChildEvent(self *C.QWebEngine
 
 func (this *QWebEngineUrlSchemeHandler) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QWebEngineUrlSchemeHandler_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QWebEngineUrlSchemeHandler_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineUrlSchemeHandler) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QWebEngineUrlSchemeHandler_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineUrlSchemeHandler) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QWebEngineUrlSchemeHandler_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineUrlSchemeHandler_CustomEvent
-func miqt_exec_callback_QWebEngineUrlSchemeHandler_CustomEvent(self *C.QWebEngineUrlSchemeHandler, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QWebEngineUrlSchemeHandler_customEvent
+func miqt_exec_callback_QWebEngineUrlSchemeHandler_customEvent(self *C.QWebEngineUrlSchemeHandler, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -297,18 +297,18 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_CustomEvent(self *C.QWebEngin
 
 func (this *QWebEngineUrlSchemeHandler) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QWebEngineUrlSchemeHandler_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QWebEngineUrlSchemeHandler_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QWebEngineUrlSchemeHandler) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QWebEngineUrlSchemeHandler_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineUrlSchemeHandler) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QWebEngineUrlSchemeHandler_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineUrlSchemeHandler_ConnectNotify
-func miqt_exec_callback_QWebEngineUrlSchemeHandler_ConnectNotify(self *C.QWebEngineUrlSchemeHandler, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QWebEngineUrlSchemeHandler_connectNotify
+func miqt_exec_callback_QWebEngineUrlSchemeHandler_connectNotify(self *C.QWebEngineUrlSchemeHandler, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -323,18 +323,18 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_ConnectNotify(self *C.QWebEng
 
 func (this *QWebEngineUrlSchemeHandler) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QWebEngineUrlSchemeHandler_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QWebEngineUrlSchemeHandler_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QWebEngineUrlSchemeHandler) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QWebEngineUrlSchemeHandler_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineUrlSchemeHandler) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QWebEngineUrlSchemeHandler_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineUrlSchemeHandler_DisconnectNotify
-func miqt_exec_callback_QWebEngineUrlSchemeHandler_DisconnectNotify(self *C.QWebEngineUrlSchemeHandler, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QWebEngineUrlSchemeHandler_disconnectNotify
+func miqt_exec_callback_QWebEngineUrlSchemeHandler_disconnectNotify(self *C.QWebEngineUrlSchemeHandler, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -349,7 +349,7 @@ func miqt_exec_callback_QWebEngineUrlSchemeHandler_DisconnectNotify(self *C.QWeb
 
 // Delete this object from C++ memory.
 func (this *QWebEngineUrlSchemeHandler) Delete() {
-	C.QWebEngineUrlSchemeHandler_Delete(this.h)
+	C.QWebEngineUrlSchemeHandler_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

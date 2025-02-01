@@ -11,29 +11,29 @@ extern "C" {
 } /* extern C */
 #endif
 
-ptrdiff_t QArrayData_AllocatedCapacity(QArrayData* self) {
+ptrdiff_t QArrayData_allocatedCapacity(QArrayData* self) {
 	qsizetype _ret = self->allocatedCapacity();
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-ptrdiff_t QArrayData_ConstAllocatedCapacity(const QArrayData* self) {
+ptrdiff_t QArrayData_constAllocatedCapacity(const QArrayData* self) {
 	qsizetype _ret = self->constAllocatedCapacity();
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-bool QArrayData_Ref(QArrayData* self) {
+bool QArrayData_ref(QArrayData* self) {
 	return self->ref();
 }
 
-bool QArrayData_Deref(QArrayData* self) {
+bool QArrayData_deref(QArrayData* self) {
 	return self->deref();
 }
 
-bool QArrayData_IsShared(const QArrayData* self) {
+bool QArrayData_isShared(const QArrayData* self) {
 	return self->isShared();
 }
 
-bool QArrayData_NeedsDetach(const QArrayData* self) {
+bool QArrayData_needsDetach(const QArrayData* self) {
 
 // This method was changed from const to non-const in Qt 6.7
 #if QT_VERSION < QT_VERSION_CHECK(6,7,0)
@@ -43,12 +43,12 @@ bool QArrayData_NeedsDetach(const QArrayData* self) {
 #endif
 }
 
-ptrdiff_t QArrayData_DetachCapacity(const QArrayData* self, ptrdiff_t newSize) {
+ptrdiff_t QArrayData_detachCapacity(const QArrayData* self, ptrdiff_t newSize) {
 	qsizetype _ret = self->detachCapacity((qsizetype)(newSize));
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-struct miqt_map /* tuple of QArrayData* and void* */  QArrayData_ReallocateUnaligned(QArrayData* data, void* dataPointer, ptrdiff_t objectSize, ptrdiff_t newCapacity, int option) {
+struct miqt_map /* tuple of QArrayData* and void* */  QArrayData_reallocateUnaligned(QArrayData* data, void* dataPointer, ptrdiff_t objectSize, ptrdiff_t newCapacity, int option) {
 	QPair<QArrayData *, void *> _ret = QArrayData::reallocateUnaligned(data, dataPointer, (qsizetype)(objectSize), (qsizetype)(newCapacity), static_cast<QArrayData::AllocationOption>(option));
 	// Convert QPair<> from C++ memory to manually-managed C memory
 	QArrayData** _first_arr = static_cast<QArrayData**>(malloc(sizeof(QArrayData*)));
@@ -62,11 +62,11 @@ struct miqt_map /* tuple of QArrayData* and void* */  QArrayData_ReallocateUnali
 	return _out;
 }
 
-void QArrayData_Deallocate(QArrayData* data, ptrdiff_t objectSize, ptrdiff_t alignment) {
+void QArrayData_deallocate(QArrayData* data, ptrdiff_t objectSize, ptrdiff_t alignment) {
 	QArrayData::deallocate(data, (qsizetype)(objectSize), (qsizetype)(alignment));
 }
 
-void QArrayData_Delete(QArrayData* self) {
+void QArrayData_delete(QArrayData* self) {
 	delete self;
 }
 

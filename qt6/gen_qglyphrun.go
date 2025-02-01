@@ -68,29 +68,29 @@ func NewQGlyphRun2(other *QGlyphRun) *QGlyphRun {
 }
 
 func (this *QGlyphRun) OperatorAssign(other *QGlyphRun) {
-	C.QGlyphRun_OperatorAssign(this.h, other.cPointer())
+	C.QGlyphRun_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QGlyphRun) Swap(other *QGlyphRun) {
-	C.QGlyphRun_Swap(this.h, other.cPointer())
+	C.QGlyphRun_swap(this.h, other.cPointer())
 }
 
 func (this *QGlyphRun) RawFont() *QRawFont {
-	_goptr := newQRawFont(C.QGlyphRun_RawFont(this.h))
+	_goptr := newQRawFont(C.QGlyphRun_rawFont(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGlyphRun) SetRawFont(rawFont *QRawFont) {
-	C.QGlyphRun_SetRawFont(this.h, rawFont.cPointer())
+	C.QGlyphRun_setRawFont(this.h, rawFont.cPointer())
 }
 
 func (this *QGlyphRun) SetRawData(glyphIndexArray *uint, glyphPositionArray *QPointF, size int) {
-	C.QGlyphRun_SetRawData(this.h, (*C.uint)(unsafe.Pointer(glyphIndexArray)), glyphPositionArray.cPointer(), (C.int)(size))
+	C.QGlyphRun_setRawData(this.h, (*C.uint)(unsafe.Pointer(glyphIndexArray)), glyphPositionArray.cPointer(), (C.int)(size))
 }
 
 func (this *QGlyphRun) GlyphIndexes() []uint {
-	var _ma C.struct_miqt_array = C.QGlyphRun_GlyphIndexes(this.h)
+	var _ma C.struct_miqt_array = C.QGlyphRun_glyphIndexes(this.h)
 	_ret := make([]uint, int(_ma.len))
 	_outCast := (*[0xffff]C.uint)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -106,11 +106,11 @@ func (this *QGlyphRun) SetGlyphIndexes(glyphIndexes []uint) {
 		glyphIndexes_CArray[i] = (C.uint)(glyphIndexes[i])
 	}
 	glyphIndexes_ma := C.struct_miqt_array{len: C.size_t(len(glyphIndexes)), data: unsafe.Pointer(glyphIndexes_CArray)}
-	C.QGlyphRun_SetGlyphIndexes(this.h, glyphIndexes_ma)
+	C.QGlyphRun_setGlyphIndexes(this.h, glyphIndexes_ma)
 }
 
 func (this *QGlyphRun) Positions() []QPointF {
-	var _ma C.struct_miqt_array = C.QGlyphRun_Positions(this.h)
+	var _ma C.struct_miqt_array = C.QGlyphRun_positions(this.h)
 	_ret := make([]QPointF, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -128,86 +128,86 @@ func (this *QGlyphRun) SetPositions(positions []QPointF) {
 		positions_CArray[i] = positions[i].cPointer()
 	}
 	positions_ma := C.struct_miqt_array{len: C.size_t(len(positions)), data: unsafe.Pointer(positions_CArray)}
-	C.QGlyphRun_SetPositions(this.h, positions_ma)
+	C.QGlyphRun_setPositions(this.h, positions_ma)
 }
 
 func (this *QGlyphRun) Clear() {
-	C.QGlyphRun_Clear(this.h)
+	C.QGlyphRun_clear(this.h)
 }
 
 func (this *QGlyphRun) OperatorEqual(other *QGlyphRun) bool {
-	return (bool)(C.QGlyphRun_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QGlyphRun_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QGlyphRun) OperatorNotEqual(other *QGlyphRun) bool {
-	return (bool)(C.QGlyphRun_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QGlyphRun_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QGlyphRun) SetOverline(overline bool) {
-	C.QGlyphRun_SetOverline(this.h, (C.bool)(overline))
+	C.QGlyphRun_setOverline(this.h, (C.bool)(overline))
 }
 
 func (this *QGlyphRun) Overline() bool {
-	return (bool)(C.QGlyphRun_Overline(this.h))
+	return (bool)(C.QGlyphRun_overline(this.h))
 }
 
 func (this *QGlyphRun) SetUnderline(underline bool) {
-	C.QGlyphRun_SetUnderline(this.h, (C.bool)(underline))
+	C.QGlyphRun_setUnderline(this.h, (C.bool)(underline))
 }
 
 func (this *QGlyphRun) Underline() bool {
-	return (bool)(C.QGlyphRun_Underline(this.h))
+	return (bool)(C.QGlyphRun_underline(this.h))
 }
 
 func (this *QGlyphRun) SetStrikeOut(strikeOut bool) {
-	C.QGlyphRun_SetStrikeOut(this.h, (C.bool)(strikeOut))
+	C.QGlyphRun_setStrikeOut(this.h, (C.bool)(strikeOut))
 }
 
 func (this *QGlyphRun) StrikeOut() bool {
-	return (bool)(C.QGlyphRun_StrikeOut(this.h))
+	return (bool)(C.QGlyphRun_strikeOut(this.h))
 }
 
 func (this *QGlyphRun) SetRightToLeft(on bool) {
-	C.QGlyphRun_SetRightToLeft(this.h, (C.bool)(on))
+	C.QGlyphRun_setRightToLeft(this.h, (C.bool)(on))
 }
 
 func (this *QGlyphRun) IsRightToLeft() bool {
-	return (bool)(C.QGlyphRun_IsRightToLeft(this.h))
+	return (bool)(C.QGlyphRun_isRightToLeft(this.h))
 }
 
 func (this *QGlyphRun) SetFlag(flag QGlyphRun__GlyphRunFlag) {
-	C.QGlyphRun_SetFlag(this.h, (C.int)(flag))
+	C.QGlyphRun_setFlag(this.h, (C.int)(flag))
 }
 
 func (this *QGlyphRun) SetFlags(flags QGlyphRun__GlyphRunFlag) {
-	C.QGlyphRun_SetFlags(this.h, (C.int)(flags))
+	C.QGlyphRun_setFlags(this.h, (C.int)(flags))
 }
 
 func (this *QGlyphRun) Flags() QGlyphRun__GlyphRunFlag {
-	return (QGlyphRun__GlyphRunFlag)(C.QGlyphRun_Flags(this.h))
+	return (QGlyphRun__GlyphRunFlag)(C.QGlyphRun_flags(this.h))
 }
 
 func (this *QGlyphRun) SetBoundingRect(boundingRect *QRectF) {
-	C.QGlyphRun_SetBoundingRect(this.h, boundingRect.cPointer())
+	C.QGlyphRun_setBoundingRect(this.h, boundingRect.cPointer())
 }
 
 func (this *QGlyphRun) BoundingRect() *QRectF {
-	_goptr := newQRectF(C.QGlyphRun_BoundingRect(this.h))
+	_goptr := newQRectF(C.QGlyphRun_boundingRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGlyphRun) IsEmpty() bool {
-	return (bool)(C.QGlyphRun_IsEmpty(this.h))
+	return (bool)(C.QGlyphRun_isEmpty(this.h))
 }
 
 func (this *QGlyphRun) SetFlag2(flag QGlyphRun__GlyphRunFlag, enabled bool) {
-	C.QGlyphRun_SetFlag2(this.h, (C.int)(flag), (C.bool)(enabled))
+	C.QGlyphRun_setFlag2(this.h, (C.int)(flag), (C.bool)(enabled))
 }
 
 // Delete this object from C++ memory.
 func (this *QGlyphRun) Delete() {
-	C.QGlyphRun_Delete(this.h)
+	C.QGlyphRun_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

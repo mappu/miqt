@@ -18,47 +18,47 @@
 extern "C" {
 #endif
 
-const char* miqt_exec_callback_QsciLexerMakefile_Language(const QsciLexerMakefile*, intptr_t);
-const char* miqt_exec_callback_QsciLexerMakefile_Lexer(const QsciLexerMakefile*, intptr_t);
-int miqt_exec_callback_QsciLexerMakefile_LexerId(const QsciLexerMakefile*, intptr_t);
-const char* miqt_exec_callback_QsciLexerMakefile_AutoCompletionFillups(const QsciLexerMakefile*, intptr_t);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QsciLexerMakefile_AutoCompletionWordSeparators(const QsciLexerMakefile*, intptr_t);
-const char* miqt_exec_callback_QsciLexerMakefile_BlockEnd(const QsciLexerMakefile*, intptr_t, int*);
-int miqt_exec_callback_QsciLexerMakefile_BlockLookback(const QsciLexerMakefile*, intptr_t);
-const char* miqt_exec_callback_QsciLexerMakefile_BlockStart(const QsciLexerMakefile*, intptr_t, int*);
-const char* miqt_exec_callback_QsciLexerMakefile_BlockStartKeyword(const QsciLexerMakefile*, intptr_t, int*);
-int miqt_exec_callback_QsciLexerMakefile_BraceStyle(const QsciLexerMakefile*, intptr_t);
-bool miqt_exec_callback_QsciLexerMakefile_CaseSensitive(const QsciLexerMakefile*, intptr_t);
-QColor* miqt_exec_callback_QsciLexerMakefile_Color(const QsciLexerMakefile*, intptr_t, int);
-bool miqt_exec_callback_QsciLexerMakefile_EolFill(const QsciLexerMakefile*, intptr_t, int);
-QFont* miqt_exec_callback_QsciLexerMakefile_Font(const QsciLexerMakefile*, intptr_t, int);
-int miqt_exec_callback_QsciLexerMakefile_IndentationGuideView(const QsciLexerMakefile*, intptr_t);
-const char* miqt_exec_callback_QsciLexerMakefile_Keywords(const QsciLexerMakefile*, intptr_t, int);
-int miqt_exec_callback_QsciLexerMakefile_DefaultStyle(const QsciLexerMakefile*, intptr_t);
-struct miqt_string miqt_exec_callback_QsciLexerMakefile_Description(const QsciLexerMakefile*, intptr_t, int);
-QColor* miqt_exec_callback_QsciLexerMakefile_Paper(const QsciLexerMakefile*, intptr_t, int);
-QColor* miqt_exec_callback_QsciLexerMakefile_DefaultColorWithStyle(const QsciLexerMakefile*, intptr_t, int);
-bool miqt_exec_callback_QsciLexerMakefile_DefaultEolFill(const QsciLexerMakefile*, intptr_t, int);
-QFont* miqt_exec_callback_QsciLexerMakefile_DefaultFontWithStyle(const QsciLexerMakefile*, intptr_t, int);
-QColor* miqt_exec_callback_QsciLexerMakefile_DefaultPaperWithStyle(const QsciLexerMakefile*, intptr_t, int);
-void miqt_exec_callback_QsciLexerMakefile_SetEditor(QsciLexerMakefile*, intptr_t, QsciScintilla*);
-void miqt_exec_callback_QsciLexerMakefile_RefreshProperties(QsciLexerMakefile*, intptr_t);
-int miqt_exec_callback_QsciLexerMakefile_StyleBitsNeeded(const QsciLexerMakefile*, intptr_t);
-const char* miqt_exec_callback_QsciLexerMakefile_WordCharacters(const QsciLexerMakefile*, intptr_t);
-void miqt_exec_callback_QsciLexerMakefile_SetAutoIndentStyle(QsciLexerMakefile*, intptr_t, int);
-void miqt_exec_callback_QsciLexerMakefile_SetColor(QsciLexerMakefile*, intptr_t, QColor*, int);
-void miqt_exec_callback_QsciLexerMakefile_SetEolFill(QsciLexerMakefile*, intptr_t, bool, int);
-void miqt_exec_callback_QsciLexerMakefile_SetFont(QsciLexerMakefile*, intptr_t, QFont*, int);
-void miqt_exec_callback_QsciLexerMakefile_SetPaper(QsciLexerMakefile*, intptr_t, QColor*, int);
-bool miqt_exec_callback_QsciLexerMakefile_ReadProperties(QsciLexerMakefile*, intptr_t, QSettings*, struct miqt_string);
-bool miqt_exec_callback_QsciLexerMakefile_WriteProperties(const QsciLexerMakefile*, intptr_t, QSettings*, struct miqt_string);
-bool miqt_exec_callback_QsciLexerMakefile_Event(QsciLexerMakefile*, intptr_t, QEvent*);
-bool miqt_exec_callback_QsciLexerMakefile_EventFilter(QsciLexerMakefile*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QsciLexerMakefile_TimerEvent(QsciLexerMakefile*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QsciLexerMakefile_ChildEvent(QsciLexerMakefile*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QsciLexerMakefile_CustomEvent(QsciLexerMakefile*, intptr_t, QEvent*);
-void miqt_exec_callback_QsciLexerMakefile_ConnectNotify(QsciLexerMakefile*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QsciLexerMakefile_DisconnectNotify(QsciLexerMakefile*, intptr_t, QMetaMethod*);
+const char* miqt_exec_callback_QsciLexerMakefile_language(const QsciLexerMakefile*, intptr_t);
+const char* miqt_exec_callback_QsciLexerMakefile_lexer(const QsciLexerMakefile*, intptr_t);
+int miqt_exec_callback_QsciLexerMakefile_lexerId(const QsciLexerMakefile*, intptr_t);
+const char* miqt_exec_callback_QsciLexerMakefile_autoCompletionFillups(const QsciLexerMakefile*, intptr_t);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QsciLexerMakefile_autoCompletionWordSeparators(const QsciLexerMakefile*, intptr_t);
+const char* miqt_exec_callback_QsciLexerMakefile_blockEnd(const QsciLexerMakefile*, intptr_t, int*);
+int miqt_exec_callback_QsciLexerMakefile_blockLookback(const QsciLexerMakefile*, intptr_t);
+const char* miqt_exec_callback_QsciLexerMakefile_blockStart(const QsciLexerMakefile*, intptr_t, int*);
+const char* miqt_exec_callback_QsciLexerMakefile_blockStartKeyword(const QsciLexerMakefile*, intptr_t, int*);
+int miqt_exec_callback_QsciLexerMakefile_braceStyle(const QsciLexerMakefile*, intptr_t);
+bool miqt_exec_callback_QsciLexerMakefile_caseSensitive(const QsciLexerMakefile*, intptr_t);
+QColor* miqt_exec_callback_QsciLexerMakefile_color(const QsciLexerMakefile*, intptr_t, int);
+bool miqt_exec_callback_QsciLexerMakefile_eolFill(const QsciLexerMakefile*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexerMakefile_font(const QsciLexerMakefile*, intptr_t, int);
+int miqt_exec_callback_QsciLexerMakefile_indentationGuideView(const QsciLexerMakefile*, intptr_t);
+const char* miqt_exec_callback_QsciLexerMakefile_keywords(const QsciLexerMakefile*, intptr_t, int);
+int miqt_exec_callback_QsciLexerMakefile_defaultStyle(const QsciLexerMakefile*, intptr_t);
+struct miqt_string miqt_exec_callback_QsciLexerMakefile_description(const QsciLexerMakefile*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerMakefile_paper(const QsciLexerMakefile*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerMakefile_defaultColorWithStyle(const QsciLexerMakefile*, intptr_t, int);
+bool miqt_exec_callback_QsciLexerMakefile_defaultEolFill(const QsciLexerMakefile*, intptr_t, int);
+QFont* miqt_exec_callback_QsciLexerMakefile_defaultFontWithStyle(const QsciLexerMakefile*, intptr_t, int);
+QColor* miqt_exec_callback_QsciLexerMakefile_defaultPaperWithStyle(const QsciLexerMakefile*, intptr_t, int);
+void miqt_exec_callback_QsciLexerMakefile_setEditor(QsciLexerMakefile*, intptr_t, QsciScintilla*);
+void miqt_exec_callback_QsciLexerMakefile_refreshProperties(QsciLexerMakefile*, intptr_t);
+int miqt_exec_callback_QsciLexerMakefile_styleBitsNeeded(const QsciLexerMakefile*, intptr_t);
+const char* miqt_exec_callback_QsciLexerMakefile_wordCharacters(const QsciLexerMakefile*, intptr_t);
+void miqt_exec_callback_QsciLexerMakefile_setAutoIndentStyle(QsciLexerMakefile*, intptr_t, int);
+void miqt_exec_callback_QsciLexerMakefile_setColor(QsciLexerMakefile*, intptr_t, QColor*, int);
+void miqt_exec_callback_QsciLexerMakefile_setEolFill(QsciLexerMakefile*, intptr_t, bool, int);
+void miqt_exec_callback_QsciLexerMakefile_setFont(QsciLexerMakefile*, intptr_t, QFont*, int);
+void miqt_exec_callback_QsciLexerMakefile_setPaper(QsciLexerMakefile*, intptr_t, QColor*, int);
+bool miqt_exec_callback_QsciLexerMakefile_readProperties(QsciLexerMakefile*, intptr_t, QSettings*, struct miqt_string);
+bool miqt_exec_callback_QsciLexerMakefile_writeProperties(const QsciLexerMakefile*, intptr_t, QSettings*, struct miqt_string);
+bool miqt_exec_callback_QsciLexerMakefile_event(QsciLexerMakefile*, intptr_t, QEvent*);
+bool miqt_exec_callback_QsciLexerMakefile_eventFilter(QsciLexerMakefile*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QsciLexerMakefile_timerEvent(QsciLexerMakefile*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QsciLexerMakefile_childEvent(QsciLexerMakefile*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QsciLexerMakefile_customEvent(QsciLexerMakefile*, intptr_t, QEvent*);
+void miqt_exec_callback_QsciLexerMakefile_connectNotify(QsciLexerMakefile*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QsciLexerMakefile_disconnectNotify(QsciLexerMakefile*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -72,97 +72,97 @@ public:
 	virtual ~MiqtVirtualQsciLexerMakefile() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Language = 0;
+	intptr_t handle__language = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual const char* language() const override {
-		if (handle__Language == 0) {
+		if (handle__language == 0) {
 			return nullptr; // Pure virtual, there is no base we can call
 		}
 		
 
-		const char* callback_return_value = miqt_exec_callback_QsciLexerMakefile_Language(this, handle__Language);
+		const char* callback_return_value = miqt_exec_callback_QsciLexerMakefile_language(this, handle__language);
 
 		return callback_return_value;
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Lexer = 0;
+	intptr_t handle__lexer = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual const char* lexer() const override {
-		if (handle__Lexer == 0) {
+		if (handle__lexer == 0) {
 			return QsciLexerMakefile::lexer();
 		}
 		
 
-		const char* callback_return_value = miqt_exec_callback_QsciLexerMakefile_Lexer(this, handle__Lexer);
+		const char* callback_return_value = miqt_exec_callback_QsciLexerMakefile_lexer(this, handle__lexer);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	const char* virtualbase_Lexer() const {
+	const char* virtualbase_lexer() const {
 
 		return (const char*) QsciLexerMakefile::lexer();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__LexerId = 0;
+	intptr_t handle__lexerId = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int lexerId() const override {
-		if (handle__LexerId == 0) {
+		if (handle__lexerId == 0) {
 			return QsciLexerMakefile::lexerId();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QsciLexerMakefile_LexerId(this, handle__LexerId);
+		int callback_return_value = miqt_exec_callback_QsciLexerMakefile_lexerId(this, handle__lexerId);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_LexerId() const {
+	int virtualbase_lexerId() const {
 
 		return QsciLexerMakefile::lexerId();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__AutoCompletionFillups = 0;
+	intptr_t handle__autoCompletionFillups = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual const char* autoCompletionFillups() const override {
-		if (handle__AutoCompletionFillups == 0) {
+		if (handle__autoCompletionFillups == 0) {
 			return QsciLexerMakefile::autoCompletionFillups();
 		}
 		
 
-		const char* callback_return_value = miqt_exec_callback_QsciLexerMakefile_AutoCompletionFillups(this, handle__AutoCompletionFillups);
+		const char* callback_return_value = miqt_exec_callback_QsciLexerMakefile_autoCompletionFillups(this, handle__autoCompletionFillups);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	const char* virtualbase_AutoCompletionFillups() const {
+	const char* virtualbase_autoCompletionFillups() const {
 
 		return (const char*) QsciLexerMakefile::autoCompletionFillups();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__AutoCompletionWordSeparators = 0;
+	intptr_t handle__autoCompletionWordSeparators = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QStringList autoCompletionWordSeparators() const override {
-		if (handle__AutoCompletionWordSeparators == 0) {
+		if (handle__autoCompletionWordSeparators == 0) {
 			return QsciLexerMakefile::autoCompletionWordSeparators();
 		}
 		
 
-		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QsciLexerMakefile_AutoCompletionWordSeparators(this, handle__AutoCompletionWordSeparators);
+		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QsciLexerMakefile_autoCompletionWordSeparators(this, handle__autoCompletionWordSeparators);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
@@ -175,7 +175,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	struct miqt_array /* of struct miqt_string */  virtualbase_AutoCompletionWordSeparators() const {
+	struct miqt_array /* of struct miqt_string */  virtualbase_autoCompletionWordSeparators() const {
 
 		QStringList _ret = QsciLexerMakefile::autoCompletionWordSeparators();
 		// Convert QList<> from C++ memory to manually-managed C memory
@@ -198,529 +198,529 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__BlockEnd = 0;
+	intptr_t handle__blockEnd = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual const char* blockEnd(int* style) const override {
-		if (handle__BlockEnd == 0) {
+		if (handle__blockEnd == 0) {
 			return QsciLexerMakefile::blockEnd(style);
 		}
 		
 		int* sigval1 = style;
 
-		const char* callback_return_value = miqt_exec_callback_QsciLexerMakefile_BlockEnd(this, handle__BlockEnd, sigval1);
+		const char* callback_return_value = miqt_exec_callback_QsciLexerMakefile_blockEnd(this, handle__blockEnd, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	const char* virtualbase_BlockEnd(int* style) const {
+	const char* virtualbase_blockEnd(int* style) const {
 
 		return (const char*) QsciLexerMakefile::blockEnd(static_cast<int*>(style));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__BlockLookback = 0;
+	intptr_t handle__blockLookback = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int blockLookback() const override {
-		if (handle__BlockLookback == 0) {
+		if (handle__blockLookback == 0) {
 			return QsciLexerMakefile::blockLookback();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QsciLexerMakefile_BlockLookback(this, handle__BlockLookback);
+		int callback_return_value = miqt_exec_callback_QsciLexerMakefile_blockLookback(this, handle__blockLookback);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_BlockLookback() const {
+	int virtualbase_blockLookback() const {
 
 		return QsciLexerMakefile::blockLookback();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__BlockStart = 0;
+	intptr_t handle__blockStart = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual const char* blockStart(int* style) const override {
-		if (handle__BlockStart == 0) {
+		if (handle__blockStart == 0) {
 			return QsciLexerMakefile::blockStart(style);
 		}
 		
 		int* sigval1 = style;
 
-		const char* callback_return_value = miqt_exec_callback_QsciLexerMakefile_BlockStart(this, handle__BlockStart, sigval1);
+		const char* callback_return_value = miqt_exec_callback_QsciLexerMakefile_blockStart(this, handle__blockStart, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	const char* virtualbase_BlockStart(int* style) const {
+	const char* virtualbase_blockStart(int* style) const {
 
 		return (const char*) QsciLexerMakefile::blockStart(static_cast<int*>(style));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__BlockStartKeyword = 0;
+	intptr_t handle__blockStartKeyword = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual const char* blockStartKeyword(int* style) const override {
-		if (handle__BlockStartKeyword == 0) {
+		if (handle__blockStartKeyword == 0) {
 			return QsciLexerMakefile::blockStartKeyword(style);
 		}
 		
 		int* sigval1 = style;
 
-		const char* callback_return_value = miqt_exec_callback_QsciLexerMakefile_BlockStartKeyword(this, handle__BlockStartKeyword, sigval1);
+		const char* callback_return_value = miqt_exec_callback_QsciLexerMakefile_blockStartKeyword(this, handle__blockStartKeyword, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	const char* virtualbase_BlockStartKeyword(int* style) const {
+	const char* virtualbase_blockStartKeyword(int* style) const {
 
 		return (const char*) QsciLexerMakefile::blockStartKeyword(static_cast<int*>(style));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__BraceStyle = 0;
+	intptr_t handle__braceStyle = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int braceStyle() const override {
-		if (handle__BraceStyle == 0) {
+		if (handle__braceStyle == 0) {
 			return QsciLexerMakefile::braceStyle();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QsciLexerMakefile_BraceStyle(this, handle__BraceStyle);
+		int callback_return_value = miqt_exec_callback_QsciLexerMakefile_braceStyle(this, handle__braceStyle);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_BraceStyle() const {
+	int virtualbase_braceStyle() const {
 
 		return QsciLexerMakefile::braceStyle();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CaseSensitive = 0;
+	intptr_t handle__caseSensitive = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool caseSensitive() const override {
-		if (handle__CaseSensitive == 0) {
+		if (handle__caseSensitive == 0) {
 			return QsciLexerMakefile::caseSensitive();
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QsciLexerMakefile_CaseSensitive(this, handle__CaseSensitive);
+		bool callback_return_value = miqt_exec_callback_QsciLexerMakefile_caseSensitive(this, handle__caseSensitive);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_CaseSensitive() const {
+	bool virtualbase_caseSensitive() const {
 
 		return QsciLexerMakefile::caseSensitive();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Color = 0;
+	intptr_t handle__color = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QColor color(int style) const override {
-		if (handle__Color == 0) {
+		if (handle__color == 0) {
 			return QsciLexerMakefile::color(style);
 		}
 		
 		int sigval1 = style;
 
-		QColor* callback_return_value = miqt_exec_callback_QsciLexerMakefile_Color(this, handle__Color, sigval1);
+		QColor* callback_return_value = miqt_exec_callback_QsciLexerMakefile_color(this, handle__color, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QColor* virtualbase_Color(int style) const {
+	QColor* virtualbase_color(int style) const {
 
 		return new QColor(QsciLexerMakefile::color(static_cast<int>(style)));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EolFill = 0;
+	intptr_t handle__eolFill = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eolFill(int style) const override {
-		if (handle__EolFill == 0) {
+		if (handle__eolFill == 0) {
 			return QsciLexerMakefile::eolFill(style);
 		}
 		
 		int sigval1 = style;
 
-		bool callback_return_value = miqt_exec_callback_QsciLexerMakefile_EolFill(this, handle__EolFill, sigval1);
+		bool callback_return_value = miqt_exec_callback_QsciLexerMakefile_eolFill(this, handle__eolFill, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EolFill(int style) const {
+	bool virtualbase_eolFill(int style) const {
 
 		return QsciLexerMakefile::eolFill(static_cast<int>(style));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Font = 0;
+	intptr_t handle__font = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QFont font(int style) const override {
-		if (handle__Font == 0) {
+		if (handle__font == 0) {
 			return QsciLexerMakefile::font(style);
 		}
 		
 		int sigval1 = style;
 
-		QFont* callback_return_value = miqt_exec_callback_QsciLexerMakefile_Font(this, handle__Font, sigval1);
+		QFont* callback_return_value = miqt_exec_callback_QsciLexerMakefile_font(this, handle__font, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QFont* virtualbase_Font(int style) const {
+	QFont* virtualbase_font(int style) const {
 
 		return new QFont(QsciLexerMakefile::font(static_cast<int>(style)));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__IndentationGuideView = 0;
+	intptr_t handle__indentationGuideView = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int indentationGuideView() const override {
-		if (handle__IndentationGuideView == 0) {
+		if (handle__indentationGuideView == 0) {
 			return QsciLexerMakefile::indentationGuideView();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QsciLexerMakefile_IndentationGuideView(this, handle__IndentationGuideView);
+		int callback_return_value = miqt_exec_callback_QsciLexerMakefile_indentationGuideView(this, handle__indentationGuideView);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_IndentationGuideView() const {
+	int virtualbase_indentationGuideView() const {
 
 		return QsciLexerMakefile::indentationGuideView();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Keywords = 0;
+	intptr_t handle__keywords = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual const char* keywords(int set) const override {
-		if (handle__Keywords == 0) {
+		if (handle__keywords == 0) {
 			return QsciLexerMakefile::keywords(set);
 		}
 		
 		int sigval1 = set;
 
-		const char* callback_return_value = miqt_exec_callback_QsciLexerMakefile_Keywords(this, handle__Keywords, sigval1);
+		const char* callback_return_value = miqt_exec_callback_QsciLexerMakefile_keywords(this, handle__keywords, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	const char* virtualbase_Keywords(int set) const {
+	const char* virtualbase_keywords(int set) const {
 
 		return (const char*) QsciLexerMakefile::keywords(static_cast<int>(set));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DefaultStyle = 0;
+	intptr_t handle__defaultStyle = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int defaultStyle() const override {
-		if (handle__DefaultStyle == 0) {
+		if (handle__defaultStyle == 0) {
 			return QsciLexerMakefile::defaultStyle();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QsciLexerMakefile_DefaultStyle(this, handle__DefaultStyle);
+		int callback_return_value = miqt_exec_callback_QsciLexerMakefile_defaultStyle(this, handle__defaultStyle);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_DefaultStyle() const {
+	int virtualbase_defaultStyle() const {
 
 		return QsciLexerMakefile::defaultStyle();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Description = 0;
+	intptr_t handle__description = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QString description(int style) const override {
-		if (handle__Description == 0) {
+		if (handle__description == 0) {
 			return QString(); // Pure virtual, there is no base we can call
 		}
 		
 		int sigval1 = style;
 
-		struct miqt_string callback_return_value = miqt_exec_callback_QsciLexerMakefile_Description(this, handle__Description, sigval1);
+		struct miqt_string callback_return_value = miqt_exec_callback_QsciLexerMakefile_description(this, handle__description, sigval1);
 		QString callback_return_value_QString = QString::fromUtf8(callback_return_value.data, callback_return_value.len);
 
 		return callback_return_value_QString;
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Paper = 0;
+	intptr_t handle__paper = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QColor paper(int style) const override {
-		if (handle__Paper == 0) {
+		if (handle__paper == 0) {
 			return QsciLexerMakefile::paper(style);
 		}
 		
 		int sigval1 = style;
 
-		QColor* callback_return_value = miqt_exec_callback_QsciLexerMakefile_Paper(this, handle__Paper, sigval1);
+		QColor* callback_return_value = miqt_exec_callback_QsciLexerMakefile_paper(this, handle__paper, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QColor* virtualbase_Paper(int style) const {
+	QColor* virtualbase_paper(int style) const {
 
 		return new QColor(QsciLexerMakefile::paper(static_cast<int>(style)));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DefaultColorWithStyle = 0;
+	intptr_t handle__defaultColorWithStyle = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QColor defaultColor(int style) const override {
-		if (handle__DefaultColorWithStyle == 0) {
+		if (handle__defaultColorWithStyle == 0) {
 			return QsciLexerMakefile::defaultColor(style);
 		}
 		
 		int sigval1 = style;
 
-		QColor* callback_return_value = miqt_exec_callback_QsciLexerMakefile_DefaultColorWithStyle(this, handle__DefaultColorWithStyle, sigval1);
+		QColor* callback_return_value = miqt_exec_callback_QsciLexerMakefile_defaultColorWithStyle(this, handle__defaultColorWithStyle, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QColor* virtualbase_DefaultColorWithStyle(int style) const {
+	QColor* virtualbase_defaultColorWithStyle(int style) const {
 
 		return new QColor(QsciLexerMakefile::defaultColor(static_cast<int>(style)));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DefaultEolFill = 0;
+	intptr_t handle__defaultEolFill = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool defaultEolFill(int style) const override {
-		if (handle__DefaultEolFill == 0) {
+		if (handle__defaultEolFill == 0) {
 			return QsciLexerMakefile::defaultEolFill(style);
 		}
 		
 		int sigval1 = style;
 
-		bool callback_return_value = miqt_exec_callback_QsciLexerMakefile_DefaultEolFill(this, handle__DefaultEolFill, sigval1);
+		bool callback_return_value = miqt_exec_callback_QsciLexerMakefile_defaultEolFill(this, handle__defaultEolFill, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_DefaultEolFill(int style) const {
+	bool virtualbase_defaultEolFill(int style) const {
 
 		return QsciLexerMakefile::defaultEolFill(static_cast<int>(style));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DefaultFontWithStyle = 0;
+	intptr_t handle__defaultFontWithStyle = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QFont defaultFont(int style) const override {
-		if (handle__DefaultFontWithStyle == 0) {
+		if (handle__defaultFontWithStyle == 0) {
 			return QsciLexerMakefile::defaultFont(style);
 		}
 		
 		int sigval1 = style;
 
-		QFont* callback_return_value = miqt_exec_callback_QsciLexerMakefile_DefaultFontWithStyle(this, handle__DefaultFontWithStyle, sigval1);
+		QFont* callback_return_value = miqt_exec_callback_QsciLexerMakefile_defaultFontWithStyle(this, handle__defaultFontWithStyle, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QFont* virtualbase_DefaultFontWithStyle(int style) const {
+	QFont* virtualbase_defaultFontWithStyle(int style) const {
 
 		return new QFont(QsciLexerMakefile::defaultFont(static_cast<int>(style)));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DefaultPaperWithStyle = 0;
+	intptr_t handle__defaultPaperWithStyle = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QColor defaultPaper(int style) const override {
-		if (handle__DefaultPaperWithStyle == 0) {
+		if (handle__defaultPaperWithStyle == 0) {
 			return QsciLexerMakefile::defaultPaper(style);
 		}
 		
 		int sigval1 = style;
 
-		QColor* callback_return_value = miqt_exec_callback_QsciLexerMakefile_DefaultPaperWithStyle(this, handle__DefaultPaperWithStyle, sigval1);
+		QColor* callback_return_value = miqt_exec_callback_QsciLexerMakefile_defaultPaperWithStyle(this, handle__defaultPaperWithStyle, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QColor* virtualbase_DefaultPaperWithStyle(int style) const {
+	QColor* virtualbase_defaultPaperWithStyle(int style) const {
 
 		return new QColor(QsciLexerMakefile::defaultPaper(static_cast<int>(style)));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetEditor = 0;
+	intptr_t handle__setEditor = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setEditor(QsciScintilla* editor) override {
-		if (handle__SetEditor == 0) {
+		if (handle__setEditor == 0) {
 			QsciLexerMakefile::setEditor(editor);
 			return;
 		}
 		
 		QsciScintilla* sigval1 = editor;
 
-		miqt_exec_callback_QsciLexerMakefile_SetEditor(this, handle__SetEditor, sigval1);
+		miqt_exec_callback_QsciLexerMakefile_setEditor(this, handle__setEditor, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetEditor(QsciScintilla* editor) {
+	void virtualbase_setEditor(QsciScintilla* editor) {
 
 		QsciLexerMakefile::setEditor(editor);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__RefreshProperties = 0;
+	intptr_t handle__refreshProperties = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void refreshProperties() override {
-		if (handle__RefreshProperties == 0) {
+		if (handle__refreshProperties == 0) {
 			QsciLexerMakefile::refreshProperties();
 			return;
 		}
 		
 
-		miqt_exec_callback_QsciLexerMakefile_RefreshProperties(this, handle__RefreshProperties);
+		miqt_exec_callback_QsciLexerMakefile_refreshProperties(this, handle__refreshProperties);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_RefreshProperties() {
+	void virtualbase_refreshProperties() {
 
 		QsciLexerMakefile::refreshProperties();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__StyleBitsNeeded = 0;
+	intptr_t handle__styleBitsNeeded = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int styleBitsNeeded() const override {
-		if (handle__StyleBitsNeeded == 0) {
+		if (handle__styleBitsNeeded == 0) {
 			return QsciLexerMakefile::styleBitsNeeded();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QsciLexerMakefile_StyleBitsNeeded(this, handle__StyleBitsNeeded);
+		int callback_return_value = miqt_exec_callback_QsciLexerMakefile_styleBitsNeeded(this, handle__styleBitsNeeded);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_StyleBitsNeeded() const {
+	int virtualbase_styleBitsNeeded() const {
 
 		return QsciLexerMakefile::styleBitsNeeded();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__WordCharacters = 0;
+	intptr_t handle__wordCharacters = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual const char* wordCharacters() const override {
-		if (handle__WordCharacters == 0) {
+		if (handle__wordCharacters == 0) {
 			return QsciLexerMakefile::wordCharacters();
 		}
 		
 
-		const char* callback_return_value = miqt_exec_callback_QsciLexerMakefile_WordCharacters(this, handle__WordCharacters);
+		const char* callback_return_value = miqt_exec_callback_QsciLexerMakefile_wordCharacters(this, handle__wordCharacters);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	const char* virtualbase_WordCharacters() const {
+	const char* virtualbase_wordCharacters() const {
 
 		return (const char*) QsciLexerMakefile::wordCharacters();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetAutoIndentStyle = 0;
+	intptr_t handle__setAutoIndentStyle = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setAutoIndentStyle(int autoindentstyle) override {
-		if (handle__SetAutoIndentStyle == 0) {
+		if (handle__setAutoIndentStyle == 0) {
 			QsciLexerMakefile::setAutoIndentStyle(autoindentstyle);
 			return;
 		}
 		
 		int sigval1 = autoindentstyle;
 
-		miqt_exec_callback_QsciLexerMakefile_SetAutoIndentStyle(this, handle__SetAutoIndentStyle, sigval1);
+		miqt_exec_callback_QsciLexerMakefile_setAutoIndentStyle(this, handle__setAutoIndentStyle, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetAutoIndentStyle(int autoindentstyle) {
+	void virtualbase_setAutoIndentStyle(int autoindentstyle) {
 
 		QsciLexerMakefile::setAutoIndentStyle(static_cast<int>(autoindentstyle));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetColor = 0;
+	intptr_t handle__setColor = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setColor(const QColor& c, int style) override {
-		if (handle__SetColor == 0) {
+		if (handle__setColor == 0) {
 			QsciLexerMakefile::setColor(c, style);
 			return;
 		}
@@ -730,24 +730,24 @@ public:
 		QColor* sigval1 = const_cast<QColor*>(&c_ret);
 		int sigval2 = style;
 
-		miqt_exec_callback_QsciLexerMakefile_SetColor(this, handle__SetColor, sigval1, sigval2);
+		miqt_exec_callback_QsciLexerMakefile_setColor(this, handle__setColor, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetColor(QColor* c, int style) {
+	void virtualbase_setColor(QColor* c, int style) {
 
 		QsciLexerMakefile::setColor(*c, static_cast<int>(style));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetEolFill = 0;
+	intptr_t handle__setEolFill = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setEolFill(bool eoffill, int style) override {
-		if (handle__SetEolFill == 0) {
+		if (handle__setEolFill == 0) {
 			QsciLexerMakefile::setEolFill(eoffill, style);
 			return;
 		}
@@ -755,24 +755,24 @@ public:
 		bool sigval1 = eoffill;
 		int sigval2 = style;
 
-		miqt_exec_callback_QsciLexerMakefile_SetEolFill(this, handle__SetEolFill, sigval1, sigval2);
+		miqt_exec_callback_QsciLexerMakefile_setEolFill(this, handle__setEolFill, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetEolFill(bool eoffill, int style) {
+	void virtualbase_setEolFill(bool eoffill, int style) {
 
 		QsciLexerMakefile::setEolFill(eoffill, static_cast<int>(style));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetFont = 0;
+	intptr_t handle__setFont = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setFont(const QFont& f, int style) override {
-		if (handle__SetFont == 0) {
+		if (handle__setFont == 0) {
 			QsciLexerMakefile::setFont(f, style);
 			return;
 		}
@@ -782,24 +782,24 @@ public:
 		QFont* sigval1 = const_cast<QFont*>(&f_ret);
 		int sigval2 = style;
 
-		miqt_exec_callback_QsciLexerMakefile_SetFont(this, handle__SetFont, sigval1, sigval2);
+		miqt_exec_callback_QsciLexerMakefile_setFont(this, handle__setFont, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetFont(QFont* f, int style) {
+	void virtualbase_setFont(QFont* f, int style) {
 
 		QsciLexerMakefile::setFont(*f, static_cast<int>(style));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetPaper = 0;
+	intptr_t handle__setPaper = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setPaper(const QColor& c, int style) override {
-		if (handle__SetPaper == 0) {
+		if (handle__setPaper == 0) {
 			QsciLexerMakefile::setPaper(c, style);
 			return;
 		}
@@ -809,24 +809,24 @@ public:
 		QColor* sigval1 = const_cast<QColor*>(&c_ret);
 		int sigval2 = style;
 
-		miqt_exec_callback_QsciLexerMakefile_SetPaper(this, handle__SetPaper, sigval1, sigval2);
+		miqt_exec_callback_QsciLexerMakefile_setPaper(this, handle__setPaper, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetPaper(QColor* c, int style) {
+	void virtualbase_setPaper(QColor* c, int style) {
 
 		QsciLexerMakefile::setPaper(*c, static_cast<int>(style));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ReadProperties = 0;
+	intptr_t handle__readProperties = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool readProperties(QSettings& qs, const QString& prefix) override {
-		if (handle__ReadProperties == 0) {
+		if (handle__readProperties == 0) {
 			return QsciLexerMakefile::readProperties(qs, prefix);
 		}
 		
@@ -842,13 +842,13 @@ public:
 		memcpy(prefix_ms.data, prefix_b.data(), prefix_ms.len);
 		struct miqt_string sigval2 = prefix_ms;
 
-		bool callback_return_value = miqt_exec_callback_QsciLexerMakefile_ReadProperties(this, handle__ReadProperties, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QsciLexerMakefile_readProperties(this, handle__readProperties, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_ReadProperties(QSettings* qs, struct miqt_string prefix) {
+	bool virtualbase_readProperties(QSettings* qs, struct miqt_string prefix) {
 		QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 
 		return QsciLexerMakefile::readProperties(*qs, prefix_QString);
@@ -856,11 +856,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__WriteProperties = 0;
+	intptr_t handle__writeProperties = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool writeProperties(QSettings& qs, const QString& prefix) const override {
-		if (handle__WriteProperties == 0) {
+		if (handle__writeProperties == 0) {
 			return QsciLexerMakefile::writeProperties(qs, prefix);
 		}
 		
@@ -876,13 +876,13 @@ public:
 		memcpy(prefix_ms.data, prefix_b.data(), prefix_ms.len);
 		struct miqt_string sigval2 = prefix_ms;
 
-		bool callback_return_value = miqt_exec_callback_QsciLexerMakefile_WriteProperties(this, handle__WriteProperties, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QsciLexerMakefile_writeProperties(this, handle__writeProperties, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_WriteProperties(QSettings* qs, struct miqt_string prefix) const {
+	bool virtualbase_writeProperties(QSettings* qs, struct miqt_string prefix) const {
 		QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 
 		return QsciLexerMakefile::writeProperties(*qs, prefix_QString);
@@ -890,130 +890,130 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QsciLexerMakefile::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QsciLexerMakefile_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QsciLexerMakefile_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QsciLexerMakefile::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QsciLexerMakefile::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QsciLexerMakefile_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QsciLexerMakefile_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QsciLexerMakefile::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QsciLexerMakefile::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QsciLexerMakefile_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QsciLexerMakefile_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QsciLexerMakefile::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QsciLexerMakefile::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QsciLexerMakefile_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QsciLexerMakefile_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QsciLexerMakefile::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QsciLexerMakefile::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QsciLexerMakefile_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QsciLexerMakefile_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QsciLexerMakefile::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QsciLexerMakefile::connectNotify(signal);
 			return;
 		}
@@ -1022,24 +1022,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QsciLexerMakefile_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QsciLexerMakefile_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QsciLexerMakefile::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QsciLexerMakefile::disconnectNotify(signal);
 			return;
 		}
@@ -1048,13 +1048,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QsciLexerMakefile_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QsciLexerMakefile_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QsciLexerMakefile::disconnectNotify(*signal);
 
@@ -1074,15 +1074,15 @@ void QsciLexerMakefile_virtbase(QsciLexerMakefile* src, QsciLexer** outptr_QsciL
 	*outptr_QsciLexer = static_cast<QsciLexer*>(src);
 }
 
-QMetaObject* QsciLexerMakefile_MetaObject(const QsciLexerMakefile* self) {
+QMetaObject* QsciLexerMakefile_metaObject(const QsciLexerMakefile* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QsciLexerMakefile_Metacast(QsciLexerMakefile* self, const char* param1) {
+void* QsciLexerMakefile_metacast(QsciLexerMakefile* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QsciLexerMakefile_Tr(const char* s) {
+struct miqt_string QsciLexerMakefile_tr(const char* s) {
 	QString _ret = QsciLexerMakefile::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1093,35 +1093,35 @@ struct miqt_string QsciLexerMakefile_Tr(const char* s) {
 	return _ms;
 }
 
-const char* QsciLexerMakefile_Language(const QsciLexerMakefile* self) {
+const char* QsciLexerMakefile_language(const QsciLexerMakefile* self) {
 	return (const char*) self->language();
 }
 
-const char* QsciLexerMakefile_Lexer(const QsciLexerMakefile* self) {
+const char* QsciLexerMakefile_lexer(const QsciLexerMakefile* self) {
 	return (const char*) self->lexer();
 }
 
-const char* QsciLexerMakefile_WordCharacters(const QsciLexerMakefile* self) {
+const char* QsciLexerMakefile_wordCharacters(const QsciLexerMakefile* self) {
 	return (const char*) self->wordCharacters();
 }
 
-QColor* QsciLexerMakefile_DefaultColor(const QsciLexerMakefile* self, int style) {
+QColor* QsciLexerMakefile_defaultColor(const QsciLexerMakefile* self, int style) {
 	return new QColor(self->defaultColor(static_cast<int>(style)));
 }
 
-bool QsciLexerMakefile_DefaultEolFill(const QsciLexerMakefile* self, int style) {
+bool QsciLexerMakefile_defaultEolFill(const QsciLexerMakefile* self, int style) {
 	return self->defaultEolFill(static_cast<int>(style));
 }
 
-QFont* QsciLexerMakefile_DefaultFont(const QsciLexerMakefile* self, int style) {
+QFont* QsciLexerMakefile_defaultFont(const QsciLexerMakefile* self, int style) {
 	return new QFont(self->defaultFont(static_cast<int>(style)));
 }
 
-QColor* QsciLexerMakefile_DefaultPaper(const QsciLexerMakefile* self, int style) {
+QColor* QsciLexerMakefile_defaultPaper(const QsciLexerMakefile* self, int style) {
 	return new QColor(self->defaultPaper(static_cast<int>(style)));
 }
 
-struct miqt_string QsciLexerMakefile_Description(const QsciLexerMakefile* self, int style) {
+struct miqt_string QsciLexerMakefile_description(const QsciLexerMakefile* self, int style) {
 	QString _ret = self->description(static_cast<int>(style));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1132,7 +1132,7 @@ struct miqt_string QsciLexerMakefile_Description(const QsciLexerMakefile* self, 
 	return _ms;
 }
 
-struct miqt_string QsciLexerMakefile_Tr2(const char* s, const char* c) {
+struct miqt_string QsciLexerMakefile_tr2(const char* s, const char* c) {
 	QString _ret = QsciLexerMakefile::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1143,7 +1143,7 @@ struct miqt_string QsciLexerMakefile_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QsciLexerMakefile_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QsciLexerMakefile_tr3(const char* s, const char* c, int n) {
 	QString _ret = QsciLexerMakefile::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1154,573 +1154,573 @@ struct miqt_string QsciLexerMakefile_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QsciLexerMakefile_override_virtual_Language(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_language(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Language = slot;
+	self_cast->handle__language = slot;
 	return true;
 }
 
-bool QsciLexerMakefile_override_virtual_Lexer(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_lexer(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Lexer = slot;
+	self_cast->handle__lexer = slot;
 	return true;
 }
 
-const char* QsciLexerMakefile_virtualbase_Lexer(const void* self) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_Lexer();
+const char* QsciLexerMakefile_virtualbase_lexer(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_lexer();
 }
 
-bool QsciLexerMakefile_override_virtual_LexerId(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_lexerId(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__LexerId = slot;
+	self_cast->handle__lexerId = slot;
 	return true;
 }
 
-int QsciLexerMakefile_virtualbase_LexerId(const void* self) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_LexerId();
+int QsciLexerMakefile_virtualbase_lexerId(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_lexerId();
 }
 
-bool QsciLexerMakefile_override_virtual_AutoCompletionFillups(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_autoCompletionFillups(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__AutoCompletionFillups = slot;
+	self_cast->handle__autoCompletionFillups = slot;
 	return true;
 }
 
-const char* QsciLexerMakefile_virtualbase_AutoCompletionFillups(const void* self) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_AutoCompletionFillups();
+const char* QsciLexerMakefile_virtualbase_autoCompletionFillups(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_autoCompletionFillups();
 }
 
-bool QsciLexerMakefile_override_virtual_AutoCompletionWordSeparators(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_autoCompletionWordSeparators(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__AutoCompletionWordSeparators = slot;
+	self_cast->handle__autoCompletionWordSeparators = slot;
 	return true;
 }
 
-struct miqt_array /* of struct miqt_string */  QsciLexerMakefile_virtualbase_AutoCompletionWordSeparators(const void* self) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_AutoCompletionWordSeparators();
+struct miqt_array /* of struct miqt_string */  QsciLexerMakefile_virtualbase_autoCompletionWordSeparators(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_autoCompletionWordSeparators();
 }
 
-bool QsciLexerMakefile_override_virtual_BlockEnd(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_blockEnd(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__BlockEnd = slot;
+	self_cast->handle__blockEnd = slot;
 	return true;
 }
 
-const char* QsciLexerMakefile_virtualbase_BlockEnd(const void* self, int* style) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_BlockEnd(style);
+const char* QsciLexerMakefile_virtualbase_blockEnd(const void* self, int* style) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_blockEnd(style);
 }
 
-bool QsciLexerMakefile_override_virtual_BlockLookback(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_blockLookback(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__BlockLookback = slot;
+	self_cast->handle__blockLookback = slot;
 	return true;
 }
 
-int QsciLexerMakefile_virtualbase_BlockLookback(const void* self) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_BlockLookback();
+int QsciLexerMakefile_virtualbase_blockLookback(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_blockLookback();
 }
 
-bool QsciLexerMakefile_override_virtual_BlockStart(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_blockStart(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__BlockStart = slot;
+	self_cast->handle__blockStart = slot;
 	return true;
 }
 
-const char* QsciLexerMakefile_virtualbase_BlockStart(const void* self, int* style) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_BlockStart(style);
+const char* QsciLexerMakefile_virtualbase_blockStart(const void* self, int* style) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_blockStart(style);
 }
 
-bool QsciLexerMakefile_override_virtual_BlockStartKeyword(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_blockStartKeyword(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__BlockStartKeyword = slot;
+	self_cast->handle__blockStartKeyword = slot;
 	return true;
 }
 
-const char* QsciLexerMakefile_virtualbase_BlockStartKeyword(const void* self, int* style) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_BlockStartKeyword(style);
+const char* QsciLexerMakefile_virtualbase_blockStartKeyword(const void* self, int* style) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_blockStartKeyword(style);
 }
 
-bool QsciLexerMakefile_override_virtual_BraceStyle(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_braceStyle(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__BraceStyle = slot;
+	self_cast->handle__braceStyle = slot;
 	return true;
 }
 
-int QsciLexerMakefile_virtualbase_BraceStyle(const void* self) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_BraceStyle();
+int QsciLexerMakefile_virtualbase_braceStyle(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_braceStyle();
 }
 
-bool QsciLexerMakefile_override_virtual_CaseSensitive(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_caseSensitive(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CaseSensitive = slot;
+	self_cast->handle__caseSensitive = slot;
 	return true;
 }
 
-bool QsciLexerMakefile_virtualbase_CaseSensitive(const void* self) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_CaseSensitive();
+bool QsciLexerMakefile_virtualbase_caseSensitive(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_caseSensitive();
 }
 
-bool QsciLexerMakefile_override_virtual_Color(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_color(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Color = slot;
+	self_cast->handle__color = slot;
 	return true;
 }
 
-QColor* QsciLexerMakefile_virtualbase_Color(const void* self, int style) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_Color(style);
+QColor* QsciLexerMakefile_virtualbase_color(const void* self, int style) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_color(style);
 }
 
-bool QsciLexerMakefile_override_virtual_EolFill(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_eolFill(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EolFill = slot;
+	self_cast->handle__eolFill = slot;
 	return true;
 }
 
-bool QsciLexerMakefile_virtualbase_EolFill(const void* self, int style) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_EolFill(style);
+bool QsciLexerMakefile_virtualbase_eolFill(const void* self, int style) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_eolFill(style);
 }
 
-bool QsciLexerMakefile_override_virtual_Font(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_font(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Font = slot;
+	self_cast->handle__font = slot;
 	return true;
 }
 
-QFont* QsciLexerMakefile_virtualbase_Font(const void* self, int style) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_Font(style);
+QFont* QsciLexerMakefile_virtualbase_font(const void* self, int style) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_font(style);
 }
 
-bool QsciLexerMakefile_override_virtual_IndentationGuideView(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_indentationGuideView(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__IndentationGuideView = slot;
+	self_cast->handle__indentationGuideView = slot;
 	return true;
 }
 
-int QsciLexerMakefile_virtualbase_IndentationGuideView(const void* self) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_IndentationGuideView();
+int QsciLexerMakefile_virtualbase_indentationGuideView(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_indentationGuideView();
 }
 
-bool QsciLexerMakefile_override_virtual_Keywords(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_keywords(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Keywords = slot;
+	self_cast->handle__keywords = slot;
 	return true;
 }
 
-const char* QsciLexerMakefile_virtualbase_Keywords(const void* self, int set) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_Keywords(set);
+const char* QsciLexerMakefile_virtualbase_keywords(const void* self, int set) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_keywords(set);
 }
 
-bool QsciLexerMakefile_override_virtual_DefaultStyle(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_defaultStyle(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DefaultStyle = slot;
+	self_cast->handle__defaultStyle = slot;
 	return true;
 }
 
-int QsciLexerMakefile_virtualbase_DefaultStyle(const void* self) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_DefaultStyle();
+int QsciLexerMakefile_virtualbase_defaultStyle(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_defaultStyle();
 }
 
-bool QsciLexerMakefile_override_virtual_Description(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_description(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Description = slot;
+	self_cast->handle__description = slot;
 	return true;
 }
 
-bool QsciLexerMakefile_override_virtual_Paper(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_paper(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Paper = slot;
+	self_cast->handle__paper = slot;
 	return true;
 }
 
-QColor* QsciLexerMakefile_virtualbase_Paper(const void* self, int style) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_Paper(style);
+QColor* QsciLexerMakefile_virtualbase_paper(const void* self, int style) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_paper(style);
 }
 
-bool QsciLexerMakefile_override_virtual_DefaultColorWithStyle(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_defaultColorWithStyle(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DefaultColorWithStyle = slot;
+	self_cast->handle__defaultColorWithStyle = slot;
 	return true;
 }
 
-QColor* QsciLexerMakefile_virtualbase_DefaultColorWithStyle(const void* self, int style) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_DefaultColorWithStyle(style);
+QColor* QsciLexerMakefile_virtualbase_defaultColorWithStyle(const void* self, int style) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_defaultColorWithStyle(style);
 }
 
-bool QsciLexerMakefile_override_virtual_DefaultEolFill(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_defaultEolFill(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DefaultEolFill = slot;
+	self_cast->handle__defaultEolFill = slot;
 	return true;
 }
 
-bool QsciLexerMakefile_virtualbase_DefaultEolFill(const void* self, int style) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_DefaultEolFill(style);
+bool QsciLexerMakefile_virtualbase_defaultEolFill(const void* self, int style) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_defaultEolFill(style);
 }
 
-bool QsciLexerMakefile_override_virtual_DefaultFontWithStyle(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_defaultFontWithStyle(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DefaultFontWithStyle = slot;
+	self_cast->handle__defaultFontWithStyle = slot;
 	return true;
 }
 
-QFont* QsciLexerMakefile_virtualbase_DefaultFontWithStyle(const void* self, int style) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_DefaultFontWithStyle(style);
+QFont* QsciLexerMakefile_virtualbase_defaultFontWithStyle(const void* self, int style) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_defaultFontWithStyle(style);
 }
 
-bool QsciLexerMakefile_override_virtual_DefaultPaperWithStyle(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_defaultPaperWithStyle(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DefaultPaperWithStyle = slot;
+	self_cast->handle__defaultPaperWithStyle = slot;
 	return true;
 }
 
-QColor* QsciLexerMakefile_virtualbase_DefaultPaperWithStyle(const void* self, int style) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_DefaultPaperWithStyle(style);
+QColor* QsciLexerMakefile_virtualbase_defaultPaperWithStyle(const void* self, int style) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_defaultPaperWithStyle(style);
 }
 
-bool QsciLexerMakefile_override_virtual_SetEditor(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_setEditor(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetEditor = slot;
+	self_cast->handle__setEditor = slot;
 	return true;
 }
 
-void QsciLexerMakefile_virtualbase_SetEditor(void* self, QsciScintilla* editor) {
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_SetEditor(editor);
+void QsciLexerMakefile_virtualbase_setEditor(void* self, QsciScintilla* editor) {
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_setEditor(editor);
 }
 
-bool QsciLexerMakefile_override_virtual_RefreshProperties(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_refreshProperties(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__RefreshProperties = slot;
+	self_cast->handle__refreshProperties = slot;
 	return true;
 }
 
-void QsciLexerMakefile_virtualbase_RefreshProperties(void* self) {
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_RefreshProperties();
+void QsciLexerMakefile_virtualbase_refreshProperties(void* self) {
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_refreshProperties();
 }
 
-bool QsciLexerMakefile_override_virtual_StyleBitsNeeded(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_styleBitsNeeded(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__StyleBitsNeeded = slot;
+	self_cast->handle__styleBitsNeeded = slot;
 	return true;
 }
 
-int QsciLexerMakefile_virtualbase_StyleBitsNeeded(const void* self) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_StyleBitsNeeded();
+int QsciLexerMakefile_virtualbase_styleBitsNeeded(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_styleBitsNeeded();
 }
 
-bool QsciLexerMakefile_override_virtual_WordCharacters(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_wordCharacters(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__WordCharacters = slot;
+	self_cast->handle__wordCharacters = slot;
 	return true;
 }
 
-const char* QsciLexerMakefile_virtualbase_WordCharacters(const void* self) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_WordCharacters();
+const char* QsciLexerMakefile_virtualbase_wordCharacters(const void* self) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_wordCharacters();
 }
 
-bool QsciLexerMakefile_override_virtual_SetAutoIndentStyle(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_setAutoIndentStyle(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetAutoIndentStyle = slot;
+	self_cast->handle__setAutoIndentStyle = slot;
 	return true;
 }
 
-void QsciLexerMakefile_virtualbase_SetAutoIndentStyle(void* self, int autoindentstyle) {
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_SetAutoIndentStyle(autoindentstyle);
+void QsciLexerMakefile_virtualbase_setAutoIndentStyle(void* self, int autoindentstyle) {
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_setAutoIndentStyle(autoindentstyle);
 }
 
-bool QsciLexerMakefile_override_virtual_SetColor(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_setColor(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetColor = slot;
+	self_cast->handle__setColor = slot;
 	return true;
 }
 
-void QsciLexerMakefile_virtualbase_SetColor(void* self, QColor* c, int style) {
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_SetColor(c, style);
+void QsciLexerMakefile_virtualbase_setColor(void* self, QColor* c, int style) {
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_setColor(c, style);
 }
 
-bool QsciLexerMakefile_override_virtual_SetEolFill(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_setEolFill(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetEolFill = slot;
+	self_cast->handle__setEolFill = slot;
 	return true;
 }
 
-void QsciLexerMakefile_virtualbase_SetEolFill(void* self, bool eoffill, int style) {
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_SetEolFill(eoffill, style);
+void QsciLexerMakefile_virtualbase_setEolFill(void* self, bool eoffill, int style) {
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_setEolFill(eoffill, style);
 }
 
-bool QsciLexerMakefile_override_virtual_SetFont(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_setFont(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetFont = slot;
+	self_cast->handle__setFont = slot;
 	return true;
 }
 
-void QsciLexerMakefile_virtualbase_SetFont(void* self, QFont* f, int style) {
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_SetFont(f, style);
+void QsciLexerMakefile_virtualbase_setFont(void* self, QFont* f, int style) {
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_setFont(f, style);
 }
 
-bool QsciLexerMakefile_override_virtual_SetPaper(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_setPaper(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetPaper = slot;
+	self_cast->handle__setPaper = slot;
 	return true;
 }
 
-void QsciLexerMakefile_virtualbase_SetPaper(void* self, QColor* c, int style) {
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_SetPaper(c, style);
+void QsciLexerMakefile_virtualbase_setPaper(void* self, QColor* c, int style) {
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_setPaper(c, style);
 }
 
-bool QsciLexerMakefile_override_virtual_ReadProperties(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_readProperties(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ReadProperties = slot;
+	self_cast->handle__readProperties = slot;
 	return true;
 }
 
-bool QsciLexerMakefile_virtualbase_ReadProperties(void* self, QSettings* qs, struct miqt_string prefix) {
-	return ( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_ReadProperties(qs, prefix);
+bool QsciLexerMakefile_virtualbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix) {
+	return ( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_readProperties(qs, prefix);
 }
 
-bool QsciLexerMakefile_override_virtual_WriteProperties(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_writeProperties(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__WriteProperties = slot;
+	self_cast->handle__writeProperties = slot;
 	return true;
 }
 
-bool QsciLexerMakefile_virtualbase_WriteProperties(const void* self, QSettings* qs, struct miqt_string prefix) {
-	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_WriteProperties(qs, prefix);
+bool QsciLexerMakefile_virtualbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix) {
+	return ( (const MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_writeProperties(qs, prefix);
 }
 
-bool QsciLexerMakefile_override_virtual_Event(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QsciLexerMakefile_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_Event(event);
+bool QsciLexerMakefile_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_event(event);
 }
 
-bool QsciLexerMakefile_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QsciLexerMakefile_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_EventFilter(watched, event);
+bool QsciLexerMakefile_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QsciLexerMakefile_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QsciLexerMakefile_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_TimerEvent(event);
+void QsciLexerMakefile_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QsciLexerMakefile_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QsciLexerMakefile_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_ChildEvent(event);
+void QsciLexerMakefile_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QsciLexerMakefile_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QsciLexerMakefile_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_CustomEvent(event);
+void QsciLexerMakefile_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QsciLexerMakefile_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QsciLexerMakefile_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_ConnectNotify(signal);
+void QsciLexerMakefile_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QsciLexerMakefile_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QsciLexerMakefile_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQsciLexerMakefile* self_cast = dynamic_cast<MiqtVirtualQsciLexerMakefile*>( (QsciLexerMakefile*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QsciLexerMakefile_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_DisconnectNotify(signal);
+void QsciLexerMakefile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQsciLexerMakefile*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QsciLexerMakefile_Delete(QsciLexerMakefile* self) {
+void QsciLexerMakefile_delete(QsciLexerMakefile* self) {
 	delete self;
 }
 

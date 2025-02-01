@@ -21,15 +21,15 @@ void QVideoRendererControl_virtbase(QVideoRendererControl* src, QMediaControl** 
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
 }
 
-QMetaObject* QVideoRendererControl_MetaObject(const QVideoRendererControl* self) {
+QMetaObject* QVideoRendererControl_metaObject(const QVideoRendererControl* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QVideoRendererControl_Metacast(QVideoRendererControl* self, const char* param1) {
+void* QVideoRendererControl_metacast(QVideoRendererControl* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QVideoRendererControl_Tr(const char* s) {
+struct miqt_string QVideoRendererControl_tr(const char* s) {
 	QString _ret = QVideoRendererControl::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -40,7 +40,7 @@ struct miqt_string QVideoRendererControl_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QVideoRendererControl_TrUtf8(const char* s) {
+struct miqt_string QVideoRendererControl_trUtf8(const char* s) {
 	QString _ret = QVideoRendererControl::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -51,15 +51,15 @@ struct miqt_string QVideoRendererControl_TrUtf8(const char* s) {
 	return _ms;
 }
 
-QAbstractVideoSurface* QVideoRendererControl_Surface(const QVideoRendererControl* self) {
+QAbstractVideoSurface* QVideoRendererControl_surface(const QVideoRendererControl* self) {
 	return self->surface();
 }
 
-void QVideoRendererControl_SetSurface(QVideoRendererControl* self, QAbstractVideoSurface* surface) {
+void QVideoRendererControl_setSurface(QVideoRendererControl* self, QAbstractVideoSurface* surface) {
 	self->setSurface(surface);
 }
 
-struct miqt_string QVideoRendererControl_Tr2(const char* s, const char* c) {
+struct miqt_string QVideoRendererControl_tr2(const char* s, const char* c) {
 	QString _ret = QVideoRendererControl::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -70,7 +70,7 @@ struct miqt_string QVideoRendererControl_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QVideoRendererControl_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QVideoRendererControl_tr3(const char* s, const char* c, int n) {
 	QString _ret = QVideoRendererControl::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -81,7 +81,7 @@ struct miqt_string QVideoRendererControl_Tr3(const char* s, const char* c, int n
 	return _ms;
 }
 
-struct miqt_string QVideoRendererControl_TrUtf82(const char* s, const char* c) {
+struct miqt_string QVideoRendererControl_trUtf82(const char* s, const char* c) {
 	QString _ret = QVideoRendererControl::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -92,7 +92,7 @@ struct miqt_string QVideoRendererControl_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QVideoRendererControl_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QVideoRendererControl_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QVideoRendererControl::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -103,7 +103,7 @@ struct miqt_string QVideoRendererControl_TrUtf83(const char* s, const char* c, i
 	return _ms;
 }
 
-void QVideoRendererControl_Delete(QVideoRendererControl* self) {
+void QVideoRendererControl_delete(QVideoRendererControl* self) {
 	delete self;
 }
 

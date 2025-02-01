@@ -219,19 +219,19 @@ func NewQMessageBox9(title string, text string, icon QMessageBox__Icon, button0 
 }
 
 func (this *QMessageBox) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QMessageBox_MetaObject(this.h))
+	return newQMetaObject(C.QMessageBox_metaObject(this.h))
 }
 
 func (this *QMessageBox) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QMessageBox_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QMessageBox_metacast(this.h, param1_Cstring))
 }
 
 func QMessageBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMessageBox_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMessageBox_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -240,14 +240,14 @@ func QMessageBox_Tr(s string) string {
 func QMessageBox_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMessageBox_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMessageBox_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMessageBox) AddButton(button *QAbstractButton, role QMessageBox__ButtonRole) {
-	C.QMessageBox_AddButton(this.h, button.cPointer(), (C.int)(role))
+	C.QMessageBox_addButton(this.h, button.cPointer(), (C.int)(role))
 }
 
 func (this *QMessageBox) AddButton2(text string, role QMessageBox__ButtonRole) *QPushButton {
@@ -255,19 +255,19 @@ func (this *QMessageBox) AddButton2(text string, role QMessageBox__ButtonRole) *
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return newQPushButton(C.QMessageBox_AddButton2(this.h, text_ms, (C.int)(role)))
+	return newQPushButton(C.QMessageBox_addButton2(this.h, text_ms, (C.int)(role)))
 }
 
 func (this *QMessageBox) AddButtonWithButton(button QMessageBox__StandardButton) *QPushButton {
-	return newQPushButton(C.QMessageBox_AddButtonWithButton(this.h, (C.int)(button)))
+	return newQPushButton(C.QMessageBox_addButtonWithButton(this.h, (C.int)(button)))
 }
 
 func (this *QMessageBox) RemoveButton(button *QAbstractButton) {
-	C.QMessageBox_RemoveButton(this.h, button.cPointer())
+	C.QMessageBox_removeButton(this.h, button.cPointer())
 }
 
 func (this *QMessageBox) Buttons() []*QAbstractButton {
-	var _ma C.struct_miqt_array = C.QMessageBox_Buttons(this.h)
+	var _ma C.struct_miqt_array = C.QMessageBox_buttons(this.h)
 	_ret := make([]*QAbstractButton, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractButton)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -277,55 +277,55 @@ func (this *QMessageBox) Buttons() []*QAbstractButton {
 }
 
 func (this *QMessageBox) ButtonRole(button *QAbstractButton) QMessageBox__ButtonRole {
-	return (QMessageBox__ButtonRole)(C.QMessageBox_ButtonRole(this.h, button.cPointer()))
+	return (QMessageBox__ButtonRole)(C.QMessageBox_buttonRole(this.h, button.cPointer()))
 }
 
 func (this *QMessageBox) SetStandardButtons(buttons QMessageBox__StandardButton) {
-	C.QMessageBox_SetStandardButtons(this.h, (C.int)(buttons))
+	C.QMessageBox_setStandardButtons(this.h, (C.int)(buttons))
 }
 
 func (this *QMessageBox) StandardButtons() QMessageBox__StandardButton {
-	return (QMessageBox__StandardButton)(C.QMessageBox_StandardButtons(this.h))
+	return (QMessageBox__StandardButton)(C.QMessageBox_standardButtons(this.h))
 }
 
 func (this *QMessageBox) StandardButton(button *QAbstractButton) QMessageBox__StandardButton {
-	return (QMessageBox__StandardButton)(C.QMessageBox_StandardButton(this.h, button.cPointer()))
+	return (QMessageBox__StandardButton)(C.QMessageBox_standardButton(this.h, button.cPointer()))
 }
 
 func (this *QMessageBox) Button(which QMessageBox__StandardButton) *QAbstractButton {
-	return newQAbstractButton(C.QMessageBox_Button(this.h, (C.int)(which)))
+	return newQAbstractButton(C.QMessageBox_button(this.h, (C.int)(which)))
 }
 
 func (this *QMessageBox) DefaultButton() *QPushButton {
-	return newQPushButton(C.QMessageBox_DefaultButton(this.h))
+	return newQPushButton(C.QMessageBox_defaultButton(this.h))
 }
 
 func (this *QMessageBox) SetDefaultButton(button *QPushButton) {
-	C.QMessageBox_SetDefaultButton(this.h, button.cPointer())
+	C.QMessageBox_setDefaultButton(this.h, button.cPointer())
 }
 
 func (this *QMessageBox) SetDefaultButtonWithButton(button QMessageBox__StandardButton) {
-	C.QMessageBox_SetDefaultButtonWithButton(this.h, (C.int)(button))
+	C.QMessageBox_setDefaultButtonWithButton(this.h, (C.int)(button))
 }
 
 func (this *QMessageBox) EscapeButton() *QAbstractButton {
-	return newQAbstractButton(C.QMessageBox_EscapeButton(this.h))
+	return newQAbstractButton(C.QMessageBox_escapeButton(this.h))
 }
 
 func (this *QMessageBox) SetEscapeButton(button *QAbstractButton) {
-	C.QMessageBox_SetEscapeButton(this.h, button.cPointer())
+	C.QMessageBox_setEscapeButton(this.h, button.cPointer())
 }
 
 func (this *QMessageBox) SetEscapeButtonWithButton(button QMessageBox__StandardButton) {
-	C.QMessageBox_SetEscapeButtonWithButton(this.h, (C.int)(button))
+	C.QMessageBox_setEscapeButtonWithButton(this.h, (C.int)(button))
 }
 
 func (this *QMessageBox) ClickedButton() *QAbstractButton {
-	return newQAbstractButton(C.QMessageBox_ClickedButton(this.h))
+	return newQAbstractButton(C.QMessageBox_clickedButton(this.h))
 }
 
 func (this *QMessageBox) Text() string {
-	var _ms C.struct_miqt_string = C.QMessageBox_Text(this.h)
+	var _ms C.struct_miqt_string = C.QMessageBox_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -336,49 +336,49 @@ func (this *QMessageBox) SetText(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QMessageBox_SetText(this.h, text_ms)
+	C.QMessageBox_setText(this.h, text_ms)
 }
 
 func (this *QMessageBox) Icon() QMessageBox__Icon {
-	return (QMessageBox__Icon)(C.QMessageBox_Icon(this.h))
+	return (QMessageBox__Icon)(C.QMessageBox_icon(this.h))
 }
 
 func (this *QMessageBox) SetIcon(icon QMessageBox__Icon) {
-	C.QMessageBox_SetIcon(this.h, (C.int)(icon))
+	C.QMessageBox_setIcon(this.h, (C.int)(icon))
 }
 
 func (this *QMessageBox) IconPixmap() *QPixmap {
-	_goptr := newQPixmap(C.QMessageBox_IconPixmap(this.h))
+	_goptr := newQPixmap(C.QMessageBox_iconPixmap(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMessageBox) SetIconPixmap(pixmap *QPixmap) {
-	C.QMessageBox_SetIconPixmap(this.h, pixmap.cPointer())
+	C.QMessageBox_setIconPixmap(this.h, pixmap.cPointer())
 }
 
 func (this *QMessageBox) TextFormat() TextFormat {
-	return (TextFormat)(C.QMessageBox_TextFormat(this.h))
+	return (TextFormat)(C.QMessageBox_textFormat(this.h))
 }
 
 func (this *QMessageBox) SetTextFormat(format TextFormat) {
-	C.QMessageBox_SetTextFormat(this.h, (C.int)(format))
+	C.QMessageBox_setTextFormat(this.h, (C.int)(format))
 }
 
 func (this *QMessageBox) SetTextInteractionFlags(flags TextInteractionFlag) {
-	C.QMessageBox_SetTextInteractionFlags(this.h, (C.int)(flags))
+	C.QMessageBox_setTextInteractionFlags(this.h, (C.int)(flags))
 }
 
 func (this *QMessageBox) TextInteractionFlags() TextInteractionFlag {
-	return (TextInteractionFlag)(C.QMessageBox_TextInteractionFlags(this.h))
+	return (TextInteractionFlag)(C.QMessageBox_textInteractionFlags(this.h))
 }
 
 func (this *QMessageBox) SetCheckBox(cb *QCheckBox) {
-	C.QMessageBox_SetCheckBox(this.h, cb.cPointer())
+	C.QMessageBox_setCheckBox(this.h, cb.cPointer())
 }
 
 func (this *QMessageBox) CheckBox() *QCheckBox {
-	return newQCheckBox(C.QMessageBox_CheckBox(this.h))
+	return newQCheckBox(C.QMessageBox_checkBox(this.h))
 }
 
 func QMessageBox_Information(parent *QWidget, title string, text string) QMessageBox__StandardButton {
@@ -390,7 +390,7 @@ func QMessageBox_Information(parent *QWidget, title string, text string) QMessag
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (QMessageBox__StandardButton)(C.QMessageBox_Information(parent.cPointer(), title_ms, text_ms))
+	return (QMessageBox__StandardButton)(C.QMessageBox_information(parent.cPointer(), title_ms, text_ms))
 }
 
 func QMessageBox_Question(parent *QWidget, title string, text string) QMessageBox__StandardButton {
@@ -402,7 +402,7 @@ func QMessageBox_Question(parent *QWidget, title string, text string) QMessageBo
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (QMessageBox__StandardButton)(C.QMessageBox_Question(parent.cPointer(), title_ms, text_ms))
+	return (QMessageBox__StandardButton)(C.QMessageBox_question(parent.cPointer(), title_ms, text_ms))
 }
 
 func QMessageBox_Warning(parent *QWidget, title string, text string) QMessageBox__StandardButton {
@@ -414,7 +414,7 @@ func QMessageBox_Warning(parent *QWidget, title string, text string) QMessageBox
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (QMessageBox__StandardButton)(C.QMessageBox_Warning(parent.cPointer(), title_ms, text_ms))
+	return (QMessageBox__StandardButton)(C.QMessageBox_warning(parent.cPointer(), title_ms, text_ms))
 }
 
 func QMessageBox_Critical(parent *QWidget, title string, text string) QMessageBox__StandardButton {
@@ -426,7 +426,7 @@ func QMessageBox_Critical(parent *QWidget, title string, text string) QMessageBo
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (QMessageBox__StandardButton)(C.QMessageBox_Critical(parent.cPointer(), title_ms, text_ms))
+	return (QMessageBox__StandardButton)(C.QMessageBox_critical(parent.cPointer(), title_ms, text_ms))
 }
 
 func QMessageBox_About(parent *QWidget, title string, text string) {
@@ -438,11 +438,11 @@ func QMessageBox_About(parent *QWidget, title string, text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QMessageBox_About(parent.cPointer(), title_ms, text_ms)
+	C.QMessageBox_about(parent.cPointer(), title_ms, text_ms)
 }
 
 func QMessageBox_AboutQt(parent *QWidget) {
-	C.QMessageBox_AboutQt(parent.cPointer())
+	C.QMessageBox_aboutQt(parent.cPointer())
 }
 
 func QMessageBox_Information2(parent *QWidget, title string, text string, button0 int) int {
@@ -454,7 +454,7 @@ func QMessageBox_Information2(parent *QWidget, title string, text string, button
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (int)(C.QMessageBox_Information2(parent.cPointer(), title_ms, text_ms, (C.int)(button0)))
+	return (int)(C.QMessageBox_information2(parent.cPointer(), title_ms, text_ms, (C.int)(button0)))
 }
 
 func QMessageBox_Information3(parent *QWidget, title string, text string, button0Text string) int {
@@ -470,7 +470,7 @@ func QMessageBox_Information3(parent *QWidget, title string, text string, button
 	button0Text_ms.data = C.CString(button0Text)
 	button0Text_ms.len = C.size_t(len(button0Text))
 	defer C.free(unsafe.Pointer(button0Text_ms.data))
-	return (int)(C.QMessageBox_Information3(parent.cPointer(), title_ms, text_ms, button0Text_ms))
+	return (int)(C.QMessageBox_information3(parent.cPointer(), title_ms, text_ms, button0Text_ms))
 }
 
 func QMessageBox_Information4(parent *QWidget, title string, text string, button0 QMessageBox__StandardButton) QMessageBox__StandardButton {
@@ -482,7 +482,7 @@ func QMessageBox_Information4(parent *QWidget, title string, text string, button
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (QMessageBox__StandardButton)(C.QMessageBox_Information4(parent.cPointer(), title_ms, text_ms, (C.int)(button0)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_information4(parent.cPointer(), title_ms, text_ms, (C.int)(button0)))
 }
 
 func QMessageBox_Question2(parent *QWidget, title string, text string, button0 int) int {
@@ -494,7 +494,7 @@ func QMessageBox_Question2(parent *QWidget, title string, text string, button0 i
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (int)(C.QMessageBox_Question2(parent.cPointer(), title_ms, text_ms, (C.int)(button0)))
+	return (int)(C.QMessageBox_question2(parent.cPointer(), title_ms, text_ms, (C.int)(button0)))
 }
 
 func QMessageBox_Question3(parent *QWidget, title string, text string, button0Text string) int {
@@ -510,7 +510,7 @@ func QMessageBox_Question3(parent *QWidget, title string, text string, button0Te
 	button0Text_ms.data = C.CString(button0Text)
 	button0Text_ms.len = C.size_t(len(button0Text))
 	defer C.free(unsafe.Pointer(button0Text_ms.data))
-	return (int)(C.QMessageBox_Question3(parent.cPointer(), title_ms, text_ms, button0Text_ms))
+	return (int)(C.QMessageBox_question3(parent.cPointer(), title_ms, text_ms, button0Text_ms))
 }
 
 func QMessageBox_Question4(parent *QWidget, title string, text string, button0 QMessageBox__StandardButton, button1 QMessageBox__StandardButton) int {
@@ -522,7 +522,7 @@ func QMessageBox_Question4(parent *QWidget, title string, text string, button0 Q
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (int)(C.QMessageBox_Question4(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1)))
+	return (int)(C.QMessageBox_question4(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1)))
 }
 
 func QMessageBox_Warning2(parent *QWidget, title string, text string, button0 int, button1 int) int {
@@ -534,7 +534,7 @@ func QMessageBox_Warning2(parent *QWidget, title string, text string, button0 in
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (int)(C.QMessageBox_Warning2(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1)))
+	return (int)(C.QMessageBox_warning2(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1)))
 }
 
 func QMessageBox_Warning3(parent *QWidget, title string, text string, button0Text string) int {
@@ -550,7 +550,7 @@ func QMessageBox_Warning3(parent *QWidget, title string, text string, button0Tex
 	button0Text_ms.data = C.CString(button0Text)
 	button0Text_ms.len = C.size_t(len(button0Text))
 	defer C.free(unsafe.Pointer(button0Text_ms.data))
-	return (int)(C.QMessageBox_Warning3(parent.cPointer(), title_ms, text_ms, button0Text_ms))
+	return (int)(C.QMessageBox_warning3(parent.cPointer(), title_ms, text_ms, button0Text_ms))
 }
 
 func QMessageBox_Warning4(parent *QWidget, title string, text string, button0 QMessageBox__StandardButton, button1 QMessageBox__StandardButton) int {
@@ -562,7 +562,7 @@ func QMessageBox_Warning4(parent *QWidget, title string, text string, button0 QM
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (int)(C.QMessageBox_Warning4(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1)))
+	return (int)(C.QMessageBox_warning4(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1)))
 }
 
 func QMessageBox_Critical2(parent *QWidget, title string, text string, button0 int, button1 int) int {
@@ -574,7 +574,7 @@ func QMessageBox_Critical2(parent *QWidget, title string, text string, button0 i
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (int)(C.QMessageBox_Critical2(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1)))
+	return (int)(C.QMessageBox_critical2(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1)))
 }
 
 func QMessageBox_Critical3(parent *QWidget, title string, text string, button0Text string) int {
@@ -590,7 +590,7 @@ func QMessageBox_Critical3(parent *QWidget, title string, text string, button0Te
 	button0Text_ms.data = C.CString(button0Text)
 	button0Text_ms.len = C.size_t(len(button0Text))
 	defer C.free(unsafe.Pointer(button0Text_ms.data))
-	return (int)(C.QMessageBox_Critical3(parent.cPointer(), title_ms, text_ms, button0Text_ms))
+	return (int)(C.QMessageBox_critical3(parent.cPointer(), title_ms, text_ms, button0Text_ms))
 }
 
 func QMessageBox_Critical4(parent *QWidget, title string, text string, button0 QMessageBox__StandardButton, button1 QMessageBox__StandardButton) int {
@@ -602,11 +602,11 @@ func QMessageBox_Critical4(parent *QWidget, title string, text string, button0 Q
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (int)(C.QMessageBox_Critical4(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1)))
+	return (int)(C.QMessageBox_critical4(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1)))
 }
 
 func (this *QMessageBox) ButtonText(button int) string {
-	var _ms C.struct_miqt_string = C.QMessageBox_ButtonText(this.h, (C.int)(button))
+	var _ms C.struct_miqt_string = C.QMessageBox_buttonText(this.h, (C.int)(button))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -617,11 +617,11 @@ func (this *QMessageBox) SetButtonText(button int, text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QMessageBox_SetButtonText(this.h, (C.int)(button), text_ms)
+	C.QMessageBox_setButtonText(this.h, (C.int)(button), text_ms)
 }
 
 func (this *QMessageBox) InformativeText() string {
-	var _ms C.struct_miqt_string = C.QMessageBox_InformativeText(this.h)
+	var _ms C.struct_miqt_string = C.QMessageBox_informativeText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -632,11 +632,11 @@ func (this *QMessageBox) SetInformativeText(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QMessageBox_SetInformativeText(this.h, text_ms)
+	C.QMessageBox_setInformativeText(this.h, text_ms)
 }
 
 func (this *QMessageBox) DetailedText() string {
-	var _ms C.struct_miqt_string = C.QMessageBox_DetailedText(this.h)
+	var _ms C.struct_miqt_string = C.QMessageBox_detailedText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -647,7 +647,7 @@ func (this *QMessageBox) SetDetailedText(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QMessageBox_SetDetailedText(this.h, text_ms)
+	C.QMessageBox_setDetailedText(this.h, text_ms)
 }
 
 func (this *QMessageBox) SetWindowTitle(title string) {
@@ -655,28 +655,28 @@ func (this *QMessageBox) SetWindowTitle(title string) {
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	C.QMessageBox_SetWindowTitle(this.h, title_ms)
+	C.QMessageBox_setWindowTitle(this.h, title_ms)
 }
 
 func (this *QMessageBox) SetWindowModality(windowModality WindowModality) {
-	C.QMessageBox_SetWindowModality(this.h, (C.int)(windowModality))
+	C.QMessageBox_setWindowModality(this.h, (C.int)(windowModality))
 }
 
 func QMessageBox_StandardIcon(icon QMessageBox__Icon) *QPixmap {
-	_goptr := newQPixmap(C.QMessageBox_StandardIcon((C.int)(icon)))
+	_goptr := newQPixmap(C.QMessageBox_standardIcon((C.int)(icon)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMessageBox) ButtonClicked(button *QAbstractButton) {
-	C.QMessageBox_ButtonClicked(this.h, button.cPointer())
+	C.QMessageBox_buttonClicked(this.h, button.cPointer())
 }
 func (this *QMessageBox) OnButtonClicked(slot func(button *QAbstractButton)) {
-	C.QMessageBox_connect_ButtonClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMessageBox_connect_buttonClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMessageBox_ButtonClicked
-func miqt_exec_callback_QMessageBox_ButtonClicked(cb C.intptr_t, button *C.QAbstractButton) {
+//export miqt_exec_callback_QMessageBox_buttonClicked
+func miqt_exec_callback_QMessageBox_buttonClicked(cb C.intptr_t, button *C.QAbstractButton) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(button *QAbstractButton))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -693,7 +693,7 @@ func QMessageBox_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMessageBox_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMessageBox_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -704,7 +704,7 @@ func QMessageBox_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMessageBox_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMessageBox_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -715,7 +715,7 @@ func QMessageBox_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMessageBox_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMessageBox_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -726,7 +726,7 @@ func QMessageBox_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMessageBox_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMessageBox_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -741,7 +741,7 @@ func QMessageBox_Information42(parent *QWidget, title string, text string, butto
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (QMessageBox__StandardButton)(C.QMessageBox_Information42(parent.cPointer(), title_ms, text_ms, (C.int)(buttons)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_information42(parent.cPointer(), title_ms, text_ms, (C.int)(buttons)))
 }
 
 func QMessageBox_Information5(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
@@ -753,7 +753,7 @@ func QMessageBox_Information5(parent *QWidget, title string, text string, button
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (QMessageBox__StandardButton)(C.QMessageBox_Information5(parent.cPointer(), title_ms, text_ms, (C.int)(buttons), (C.int)(defaultButton)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_information5(parent.cPointer(), title_ms, text_ms, (C.int)(buttons), (C.int)(defaultButton)))
 }
 
 func QMessageBox_Question42(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton) QMessageBox__StandardButton {
@@ -765,7 +765,7 @@ func QMessageBox_Question42(parent *QWidget, title string, text string, buttons 
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (QMessageBox__StandardButton)(C.QMessageBox_Question42(parent.cPointer(), title_ms, text_ms, (C.int)(buttons)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_question42(parent.cPointer(), title_ms, text_ms, (C.int)(buttons)))
 }
 
 func QMessageBox_Question5(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
@@ -777,7 +777,7 @@ func QMessageBox_Question5(parent *QWidget, title string, text string, buttons Q
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (QMessageBox__StandardButton)(C.QMessageBox_Question5(parent.cPointer(), title_ms, text_ms, (C.int)(buttons), (C.int)(defaultButton)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_question5(parent.cPointer(), title_ms, text_ms, (C.int)(buttons), (C.int)(defaultButton)))
 }
 
 func QMessageBox_Warning42(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton) QMessageBox__StandardButton {
@@ -789,7 +789,7 @@ func QMessageBox_Warning42(parent *QWidget, title string, text string, buttons Q
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (QMessageBox__StandardButton)(C.QMessageBox_Warning42(parent.cPointer(), title_ms, text_ms, (C.int)(buttons)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_warning42(parent.cPointer(), title_ms, text_ms, (C.int)(buttons)))
 }
 
 func QMessageBox_Warning5(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
@@ -801,7 +801,7 @@ func QMessageBox_Warning5(parent *QWidget, title string, text string, buttons QM
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (QMessageBox__StandardButton)(C.QMessageBox_Warning5(parent.cPointer(), title_ms, text_ms, (C.int)(buttons), (C.int)(defaultButton)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_warning5(parent.cPointer(), title_ms, text_ms, (C.int)(buttons), (C.int)(defaultButton)))
 }
 
 func QMessageBox_Critical42(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton) QMessageBox__StandardButton {
@@ -813,7 +813,7 @@ func QMessageBox_Critical42(parent *QWidget, title string, text string, buttons 
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (QMessageBox__StandardButton)(C.QMessageBox_Critical42(parent.cPointer(), title_ms, text_ms, (C.int)(buttons)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_critical42(parent.cPointer(), title_ms, text_ms, (C.int)(buttons)))
 }
 
 func QMessageBox_Critical5(parent *QWidget, title string, text string, buttons QMessageBox__StandardButton, defaultButton QMessageBox__StandardButton) QMessageBox__StandardButton {
@@ -825,7 +825,7 @@ func QMessageBox_Critical5(parent *QWidget, title string, text string, buttons Q
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (QMessageBox__StandardButton)(C.QMessageBox_Critical5(parent.cPointer(), title_ms, text_ms, (C.int)(buttons), (C.int)(defaultButton)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_critical5(parent.cPointer(), title_ms, text_ms, (C.int)(buttons), (C.int)(defaultButton)))
 }
 
 func QMessageBox_AboutQt2(parent *QWidget, title string) {
@@ -833,7 +833,7 @@ func QMessageBox_AboutQt2(parent *QWidget, title string) {
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	C.QMessageBox_AboutQt2(parent.cPointer(), title_ms)
+	C.QMessageBox_aboutQt2(parent.cPointer(), title_ms)
 }
 
 func QMessageBox_Information52(parent *QWidget, title string, text string, button0 int, button1 int) int {
@@ -845,7 +845,7 @@ func QMessageBox_Information52(parent *QWidget, title string, text string, butto
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (int)(C.QMessageBox_Information52(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1)))
+	return (int)(C.QMessageBox_information52(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1)))
 }
 
 func QMessageBox_Information6(parent *QWidget, title string, text string, button0 int, button1 int, button2 int) int {
@@ -857,7 +857,7 @@ func QMessageBox_Information6(parent *QWidget, title string, text string, button
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (int)(C.QMessageBox_Information6(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1), (C.int)(button2)))
+	return (int)(C.QMessageBox_information6(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1), (C.int)(button2)))
 }
 
 func QMessageBox_Information53(parent *QWidget, title string, text string, button0Text string, button1Text string) int {
@@ -877,7 +877,7 @@ func QMessageBox_Information53(parent *QWidget, title string, text string, butto
 	button1Text_ms.data = C.CString(button1Text)
 	button1Text_ms.len = C.size_t(len(button1Text))
 	defer C.free(unsafe.Pointer(button1Text_ms.data))
-	return (int)(C.QMessageBox_Information53(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms))
+	return (int)(C.QMessageBox_information53(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms))
 }
 
 func QMessageBox_Information62(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string) int {
@@ -901,7 +901,7 @@ func QMessageBox_Information62(parent *QWidget, title string, text string, butto
 	button2Text_ms.data = C.CString(button2Text)
 	button2Text_ms.len = C.size_t(len(button2Text))
 	defer C.free(unsafe.Pointer(button2Text_ms.data))
-	return (int)(C.QMessageBox_Information62(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms))
+	return (int)(C.QMessageBox_information62(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms))
 }
 
 func QMessageBox_Information7(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string, defaultButtonNumber int) int {
@@ -925,7 +925,7 @@ func QMessageBox_Information7(parent *QWidget, title string, text string, button
 	button2Text_ms.data = C.CString(button2Text)
 	button2Text_ms.len = C.size_t(len(button2Text))
 	defer C.free(unsafe.Pointer(button2Text_ms.data))
-	return (int)(C.QMessageBox_Information7(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber)))
+	return (int)(C.QMessageBox_information7(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber)))
 }
 
 func QMessageBox_Information8(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string, defaultButtonNumber int, escapeButtonNumber int) int {
@@ -949,7 +949,7 @@ func QMessageBox_Information8(parent *QWidget, title string, text string, button
 	button2Text_ms.data = C.CString(button2Text)
 	button2Text_ms.len = C.size_t(len(button2Text))
 	defer C.free(unsafe.Pointer(button2Text_ms.data))
-	return (int)(C.QMessageBox_Information8(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber)))
+	return (int)(C.QMessageBox_information8(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber)))
 }
 
 func QMessageBox_Information54(parent *QWidget, title string, text string, button0 QMessageBox__StandardButton, button1 QMessageBox__StandardButton) QMessageBox__StandardButton {
@@ -961,7 +961,7 @@ func QMessageBox_Information54(parent *QWidget, title string, text string, butto
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (QMessageBox__StandardButton)(C.QMessageBox_Information54(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1)))
+	return (QMessageBox__StandardButton)(C.QMessageBox_information54(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1)))
 }
 
 func QMessageBox_Question52(parent *QWidget, title string, text string, button0 int, button1 int) int {
@@ -973,7 +973,7 @@ func QMessageBox_Question52(parent *QWidget, title string, text string, button0 
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (int)(C.QMessageBox_Question52(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1)))
+	return (int)(C.QMessageBox_question52(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1)))
 }
 
 func QMessageBox_Question6(parent *QWidget, title string, text string, button0 int, button1 int, button2 int) int {
@@ -985,7 +985,7 @@ func QMessageBox_Question6(parent *QWidget, title string, text string, button0 i
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (int)(C.QMessageBox_Question6(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1), (C.int)(button2)))
+	return (int)(C.QMessageBox_question6(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1), (C.int)(button2)))
 }
 
 func QMessageBox_Question53(parent *QWidget, title string, text string, button0Text string, button1Text string) int {
@@ -1005,7 +1005,7 @@ func QMessageBox_Question53(parent *QWidget, title string, text string, button0T
 	button1Text_ms.data = C.CString(button1Text)
 	button1Text_ms.len = C.size_t(len(button1Text))
 	defer C.free(unsafe.Pointer(button1Text_ms.data))
-	return (int)(C.QMessageBox_Question53(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms))
+	return (int)(C.QMessageBox_question53(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms))
 }
 
 func QMessageBox_Question62(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string) int {
@@ -1029,7 +1029,7 @@ func QMessageBox_Question62(parent *QWidget, title string, text string, button0T
 	button2Text_ms.data = C.CString(button2Text)
 	button2Text_ms.len = C.size_t(len(button2Text))
 	defer C.free(unsafe.Pointer(button2Text_ms.data))
-	return (int)(C.QMessageBox_Question62(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms))
+	return (int)(C.QMessageBox_question62(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms))
 }
 
 func QMessageBox_Question7(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string, defaultButtonNumber int) int {
@@ -1053,7 +1053,7 @@ func QMessageBox_Question7(parent *QWidget, title string, text string, button0Te
 	button2Text_ms.data = C.CString(button2Text)
 	button2Text_ms.len = C.size_t(len(button2Text))
 	defer C.free(unsafe.Pointer(button2Text_ms.data))
-	return (int)(C.QMessageBox_Question7(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber)))
+	return (int)(C.QMessageBox_question7(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber)))
 }
 
 func QMessageBox_Question8(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string, defaultButtonNumber int, escapeButtonNumber int) int {
@@ -1077,7 +1077,7 @@ func QMessageBox_Question8(parent *QWidget, title string, text string, button0Te
 	button2Text_ms.data = C.CString(button2Text)
 	button2Text_ms.len = C.size_t(len(button2Text))
 	defer C.free(unsafe.Pointer(button2Text_ms.data))
-	return (int)(C.QMessageBox_Question8(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber)))
+	return (int)(C.QMessageBox_question8(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber)))
 }
 
 func QMessageBox_Warning6(parent *QWidget, title string, text string, button0 int, button1 int, button2 int) int {
@@ -1089,7 +1089,7 @@ func QMessageBox_Warning6(parent *QWidget, title string, text string, button0 in
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (int)(C.QMessageBox_Warning6(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1), (C.int)(button2)))
+	return (int)(C.QMessageBox_warning6(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1), (C.int)(button2)))
 }
 
 func QMessageBox_Warning52(parent *QWidget, title string, text string, button0Text string, button1Text string) int {
@@ -1109,7 +1109,7 @@ func QMessageBox_Warning52(parent *QWidget, title string, text string, button0Te
 	button1Text_ms.data = C.CString(button1Text)
 	button1Text_ms.len = C.size_t(len(button1Text))
 	defer C.free(unsafe.Pointer(button1Text_ms.data))
-	return (int)(C.QMessageBox_Warning52(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms))
+	return (int)(C.QMessageBox_warning52(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms))
 }
 
 func QMessageBox_Warning62(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string) int {
@@ -1133,7 +1133,7 @@ func QMessageBox_Warning62(parent *QWidget, title string, text string, button0Te
 	button2Text_ms.data = C.CString(button2Text)
 	button2Text_ms.len = C.size_t(len(button2Text))
 	defer C.free(unsafe.Pointer(button2Text_ms.data))
-	return (int)(C.QMessageBox_Warning62(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms))
+	return (int)(C.QMessageBox_warning62(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms))
 }
 
 func QMessageBox_Warning7(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string, defaultButtonNumber int) int {
@@ -1157,7 +1157,7 @@ func QMessageBox_Warning7(parent *QWidget, title string, text string, button0Tex
 	button2Text_ms.data = C.CString(button2Text)
 	button2Text_ms.len = C.size_t(len(button2Text))
 	defer C.free(unsafe.Pointer(button2Text_ms.data))
-	return (int)(C.QMessageBox_Warning7(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber)))
+	return (int)(C.QMessageBox_warning7(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber)))
 }
 
 func QMessageBox_Warning8(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string, defaultButtonNumber int, escapeButtonNumber int) int {
@@ -1181,7 +1181,7 @@ func QMessageBox_Warning8(parent *QWidget, title string, text string, button0Tex
 	button2Text_ms.data = C.CString(button2Text)
 	button2Text_ms.len = C.size_t(len(button2Text))
 	defer C.free(unsafe.Pointer(button2Text_ms.data))
-	return (int)(C.QMessageBox_Warning8(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber)))
+	return (int)(C.QMessageBox_warning8(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber)))
 }
 
 func QMessageBox_Critical6(parent *QWidget, title string, text string, button0 int, button1 int, button2 int) int {
@@ -1193,7 +1193,7 @@ func QMessageBox_Critical6(parent *QWidget, title string, text string, button0 i
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return (int)(C.QMessageBox_Critical6(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1), (C.int)(button2)))
+	return (int)(C.QMessageBox_critical6(parent.cPointer(), title_ms, text_ms, (C.int)(button0), (C.int)(button1), (C.int)(button2)))
 }
 
 func QMessageBox_Critical52(parent *QWidget, title string, text string, button0Text string, button1Text string) int {
@@ -1213,7 +1213,7 @@ func QMessageBox_Critical52(parent *QWidget, title string, text string, button0T
 	button1Text_ms.data = C.CString(button1Text)
 	button1Text_ms.len = C.size_t(len(button1Text))
 	defer C.free(unsafe.Pointer(button1Text_ms.data))
-	return (int)(C.QMessageBox_Critical52(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms))
+	return (int)(C.QMessageBox_critical52(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms))
 }
 
 func QMessageBox_Critical62(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string) int {
@@ -1237,7 +1237,7 @@ func QMessageBox_Critical62(parent *QWidget, title string, text string, button0T
 	button2Text_ms.data = C.CString(button2Text)
 	button2Text_ms.len = C.size_t(len(button2Text))
 	defer C.free(unsafe.Pointer(button2Text_ms.data))
-	return (int)(C.QMessageBox_Critical62(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms))
+	return (int)(C.QMessageBox_critical62(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms))
 }
 
 func QMessageBox_Critical7(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string, defaultButtonNumber int) int {
@@ -1261,7 +1261,7 @@ func QMessageBox_Critical7(parent *QWidget, title string, text string, button0Te
 	button2Text_ms.data = C.CString(button2Text)
 	button2Text_ms.len = C.size_t(len(button2Text))
 	defer C.free(unsafe.Pointer(button2Text_ms.data))
-	return (int)(C.QMessageBox_Critical7(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber)))
+	return (int)(C.QMessageBox_critical7(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber)))
 }
 
 func QMessageBox_Critical8(parent *QWidget, title string, text string, button0Text string, button1Text string, button2Text string, defaultButtonNumber int, escapeButtonNumber int) int {
@@ -1285,23 +1285,23 @@ func QMessageBox_Critical8(parent *QWidget, title string, text string, button0Te
 	button2Text_ms.data = C.CString(button2Text)
 	button2Text_ms.len = C.size_t(len(button2Text))
 	defer C.free(unsafe.Pointer(button2Text_ms.data))
-	return (int)(C.QMessageBox_Critical8(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber)))
+	return (int)(C.QMessageBox_critical8(parent.cPointer(), title_ms, text_ms, button0Text_ms, button1Text_ms, button2Text_ms, (C.int)(defaultButtonNumber), (C.int)(escapeButtonNumber)))
 }
 
 func (this *QMessageBox) callVirtualBase_Event(e *QEvent) bool {
 
-	return (bool)(C.QMessageBox_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+	return (bool)(C.QMessageBox_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
 }
-func (this *QMessageBox) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	ok := C.QMessageBox_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) Onevent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	ok := C.QMessageBox_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_Event
-func miqt_exec_callback_QMessageBox_Event(self *C.QMessageBox, cb C.intptr_t, e *C.QEvent) C.bool {
+//export miqt_exec_callback_QMessageBox_event
+func miqt_exec_callback_QMessageBox_event(self *C.QMessageBox, cb C.intptr_t, e *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1318,18 +1318,18 @@ func miqt_exec_callback_QMessageBox_Event(self *C.QMessageBox, cb C.intptr_t, e 
 
 func (this *QMessageBox) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 
-	C.QMessageBox_virtualbase_ResizeEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
-	ok := C.QMessageBox_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnresizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+	ok := C.QMessageBox_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_ResizeEvent
-func miqt_exec_callback_QMessageBox_ResizeEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QResizeEvent) {
+//export miqt_exec_callback_QMessageBox_resizeEvent
+func miqt_exec_callback_QMessageBox_resizeEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QResizeEvent), event *QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1344,18 +1344,18 @@ func miqt_exec_callback_QMessageBox_ResizeEvent(self *C.QMessageBox, cb C.intptr
 
 func (this *QMessageBox) callVirtualBase_ShowEvent(event *QShowEvent) {
 
-	C.QMessageBox_virtualbase_ShowEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
-	ok := C.QMessageBox_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnshowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	ok := C.QMessageBox_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_ShowEvent
-func miqt_exec_callback_QMessageBox_ShowEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QShowEvent) {
+//export miqt_exec_callback_QMessageBox_showEvent
+func miqt_exec_callback_QMessageBox_showEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QShowEvent), event *QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1370,18 +1370,18 @@ func miqt_exec_callback_QMessageBox_ShowEvent(self *C.QMessageBox, cb C.intptr_t
 
 func (this *QMessageBox) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
-	C.QMessageBox_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
-	ok := C.QMessageBox_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QMessageBox_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_CloseEvent
-func miqt_exec_callback_QMessageBox_CloseEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QMessageBox_closeEvent
+func miqt_exec_callback_QMessageBox_closeEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1396,18 +1396,18 @@ func miqt_exec_callback_QMessageBox_CloseEvent(self *C.QMessageBox, cb C.intptr_
 
 func (this *QMessageBox) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 
-	C.QMessageBox_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QMessageBox_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnkeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QMessageBox_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_KeyPressEvent
-func miqt_exec_callback_QMessageBox_KeyPressEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QMessageBox_keyPressEvent
+func miqt_exec_callback_QMessageBox_keyPressEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1422,18 +1422,18 @@ func miqt_exec_callback_QMessageBox_KeyPressEvent(self *C.QMessageBox, cb C.intp
 
 func (this *QMessageBox) callVirtualBase_ChangeEvent(event *QEvent) {
 
-	C.QMessageBox_virtualbase_ChangeEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnChangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QMessageBox_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnchangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QMessageBox_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_ChangeEvent
-func miqt_exec_callback_QMessageBox_ChangeEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QMessageBox_changeEvent
+func miqt_exec_callback_QMessageBox_changeEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1448,18 +1448,18 @@ func miqt_exec_callback_QMessageBox_ChangeEvent(self *C.QMessageBox, cb C.intptr
 
 func (this *QMessageBox) callVirtualBase_SetVisible(visible bool) {
 
-	C.QMessageBox_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QMessageBox_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QMessageBox) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QMessageBox_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QMessageBox_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_SetVisible
-func miqt_exec_callback_QMessageBox_SetVisible(self *C.QMessageBox, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QMessageBox_setVisible
+func miqt_exec_callback_QMessageBox_setVisible(self *C.QMessageBox, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1474,20 +1474,20 @@ func miqt_exec_callback_QMessageBox_SetVisible(self *C.QMessageBox, cb C.intptr_
 
 func (this *QMessageBox) callVirtualBase_SizeHint() *QSize {
 
-	_goptr := newQSize(C.QMessageBox_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QMessageBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QMessageBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QMessageBox_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnsizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QMessageBox_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_SizeHint
-func miqt_exec_callback_QMessageBox_SizeHint(self *C.QMessageBox, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QMessageBox_sizeHint
+func miqt_exec_callback_QMessageBox_sizeHint(self *C.QMessageBox, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1501,20 +1501,20 @@ func miqt_exec_callback_QMessageBox_SizeHint(self *C.QMessageBox, cb C.intptr_t)
 
 func (this *QMessageBox) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_goptr := newQSize(C.QMessageBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QMessageBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QMessageBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QMessageBox_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QMessageBox_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_MinimumSizeHint
-func miqt_exec_callback_QMessageBox_MinimumSizeHint(self *C.QMessageBox, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QMessageBox_minimumSizeHint
+func miqt_exec_callback_QMessageBox_minimumSizeHint(self *C.QMessageBox, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1528,18 +1528,18 @@ func miqt_exec_callback_QMessageBox_MinimumSizeHint(self *C.QMessageBox, cb C.in
 
 func (this *QMessageBox) callVirtualBase_Open() {
 
-	C.QMessageBox_virtualbase_Open(unsafe.Pointer(this.h))
+	C.QMessageBox_virtualbase_open(unsafe.Pointer(this.h))
 
 }
-func (this *QMessageBox) OnOpen(slot func(super func())) {
-	ok := C.QMessageBox_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) Onopen(slot func(super func())) {
+	ok := C.QMessageBox_override_virtual_open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_Open
-func miqt_exec_callback_QMessageBox_Open(self *C.QMessageBox, cb C.intptr_t) {
+//export miqt_exec_callback_QMessageBox_open
+func miqt_exec_callback_QMessageBox_open(self *C.QMessageBox, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1551,18 +1551,18 @@ func miqt_exec_callback_QMessageBox_Open(self *C.QMessageBox, cb C.intptr_t) {
 
 func (this *QMessageBox) callVirtualBase_Exec() int {
 
-	return (int)(C.QMessageBox_virtualbase_Exec(unsafe.Pointer(this.h)))
+	return (int)(C.QMessageBox_virtualbase_exec(unsafe.Pointer(this.h)))
 
 }
-func (this *QMessageBox) OnExec(slot func(super func() int) int) {
-	ok := C.QMessageBox_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) Onexec(slot func(super func() int) int) {
+	ok := C.QMessageBox_override_virtual_exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_Exec
-func miqt_exec_callback_QMessageBox_Exec(self *C.QMessageBox, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QMessageBox_exec
+func miqt_exec_callback_QMessageBox_exec(self *C.QMessageBox, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1576,18 +1576,18 @@ func miqt_exec_callback_QMessageBox_Exec(self *C.QMessageBox, cb C.intptr_t) C.i
 
 func (this *QMessageBox) callVirtualBase_Done(param1 int) {
 
-	C.QMessageBox_virtualbase_Done(unsafe.Pointer(this.h), (C.int)(param1))
+	C.QMessageBox_virtualbase_done(unsafe.Pointer(this.h), (C.int)(param1))
 
 }
-func (this *QMessageBox) OnDone(slot func(super func(param1 int), param1 int)) {
-	ok := C.QMessageBox_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) Ondone(slot func(super func(param1 int), param1 int)) {
+	ok := C.QMessageBox_override_virtual_done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_Done
-func miqt_exec_callback_QMessageBox_Done(self *C.QMessageBox, cb C.intptr_t, param1 C.int) {
+//export miqt_exec_callback_QMessageBox_done
+func miqt_exec_callback_QMessageBox_done(self *C.QMessageBox, cb C.intptr_t, param1 C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int), param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1602,18 +1602,18 @@ func miqt_exec_callback_QMessageBox_Done(self *C.QMessageBox, cb C.intptr_t, par
 
 func (this *QMessageBox) callVirtualBase_Accept() {
 
-	C.QMessageBox_virtualbase_Accept(unsafe.Pointer(this.h))
+	C.QMessageBox_virtualbase_accept(unsafe.Pointer(this.h))
 
 }
-func (this *QMessageBox) OnAccept(slot func(super func())) {
-	ok := C.QMessageBox_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) Onaccept(slot func(super func())) {
+	ok := C.QMessageBox_override_virtual_accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_Accept
-func miqt_exec_callback_QMessageBox_Accept(self *C.QMessageBox, cb C.intptr_t) {
+//export miqt_exec_callback_QMessageBox_accept
+func miqt_exec_callback_QMessageBox_accept(self *C.QMessageBox, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1625,18 +1625,18 @@ func miqt_exec_callback_QMessageBox_Accept(self *C.QMessageBox, cb C.intptr_t) {
 
 func (this *QMessageBox) callVirtualBase_Reject() {
 
-	C.QMessageBox_virtualbase_Reject(unsafe.Pointer(this.h))
+	C.QMessageBox_virtualbase_reject(unsafe.Pointer(this.h))
 
 }
-func (this *QMessageBox) OnReject(slot func(super func())) {
-	ok := C.QMessageBox_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) Onreject(slot func(super func())) {
+	ok := C.QMessageBox_override_virtual_reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_Reject
-func miqt_exec_callback_QMessageBox_Reject(self *C.QMessageBox, cb C.intptr_t) {
+//export miqt_exec_callback_QMessageBox_reject
+func miqt_exec_callback_QMessageBox_reject(self *C.QMessageBox, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1648,18 +1648,18 @@ func miqt_exec_callback_QMessageBox_Reject(self *C.QMessageBox, cb C.intptr_t) {
 
 func (this *QMessageBox) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
 
-	C.QMessageBox_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QMessageBox_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QMessageBox) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
-	ok := C.QMessageBox_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OncontextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+	ok := C.QMessageBox_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_ContextMenuEvent
-func miqt_exec_callback_QMessageBox_ContextMenuEvent(self *C.QMessageBox, cb C.intptr_t, param1 *C.QContextMenuEvent) {
+//export miqt_exec_callback_QMessageBox_contextMenuEvent
+func miqt_exec_callback_QMessageBox_contextMenuEvent(self *C.QMessageBox, cb C.intptr_t, param1 *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1674,18 +1674,18 @@ func miqt_exec_callback_QMessageBox_ContextMenuEvent(self *C.QMessageBox, cb C.i
 
 func (this *QMessageBox) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
 
-	return (bool)(C.QMessageBox_virtualbase_EventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
+	return (bool)(C.QMessageBox_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
 }
-func (this *QMessageBox) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
-	ok := C.QMessageBox_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OneventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	ok := C.QMessageBox_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_EventFilter
-func miqt_exec_callback_QMessageBox_EventFilter(self *C.QMessageBox, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+//export miqt_exec_callback_QMessageBox_eventFilter
+func miqt_exec_callback_QMessageBox_eventFilter(self *C.QMessageBox, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1704,18 +1704,18 @@ func miqt_exec_callback_QMessageBox_EventFilter(self *C.QMessageBox, cb C.intptr
 
 func (this *QMessageBox) callVirtualBase_DevType() int {
 
-	return (int)(C.QMessageBox_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QMessageBox_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QMessageBox) OnDevType(slot func(super func() int) int) {
-	ok := C.QMessageBox_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OndevType(slot func(super func() int) int) {
+	ok := C.QMessageBox_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_DevType
-func miqt_exec_callback_QMessageBox_DevType(self *C.QMessageBox, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QMessageBox_devType
+func miqt_exec_callback_QMessageBox_devType(self *C.QMessageBox, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1729,18 +1729,18 @@ func miqt_exec_callback_QMessageBox_DevType(self *C.QMessageBox, cb C.intptr_t) 
 
 func (this *QMessageBox) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QMessageBox_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QMessageBox_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QMessageBox) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QMessageBox_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QMessageBox_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_HeightForWidth
-func miqt_exec_callback_QMessageBox_HeightForWidth(self *C.QMessageBox, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QMessageBox_heightForWidth
+func miqt_exec_callback_QMessageBox_heightForWidth(self *C.QMessageBox, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1757,18 +1757,18 @@ func miqt_exec_callback_QMessageBox_HeightForWidth(self *C.QMessageBox, cb C.int
 
 func (this *QMessageBox) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QMessageBox_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QMessageBox_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QMessageBox) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QMessageBox_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QMessageBox_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_HasHeightForWidth
-func miqt_exec_callback_QMessageBox_HasHeightForWidth(self *C.QMessageBox, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QMessageBox_hasHeightForWidth
+func miqt_exec_callback_QMessageBox_hasHeightForWidth(self *C.QMessageBox, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1782,18 +1782,18 @@ func miqt_exec_callback_QMessageBox_HasHeightForWidth(self *C.QMessageBox, cb C.
 
 func (this *QMessageBox) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return newQPaintEngine(C.QMessageBox_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+	return newQPaintEngine(C.QMessageBox_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QMessageBox) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	ok := C.QMessageBox_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QMessageBox_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_PaintEngine
-func miqt_exec_callback_QMessageBox_PaintEngine(self *C.QMessageBox, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QMessageBox_paintEngine
+func miqt_exec_callback_QMessageBox_paintEngine(self *C.QMessageBox, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1807,18 +1807,18 @@ func miqt_exec_callback_QMessageBox_PaintEngine(self *C.QMessageBox, cb C.intptr
 
 func (this *QMessageBox) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 
-	C.QMessageBox_virtualbase_MousePressEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QMessageBox_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnmousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QMessageBox_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_MousePressEvent
-func miqt_exec_callback_QMessageBox_MousePressEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QMessageBox_mousePressEvent
+func miqt_exec_callback_QMessageBox_mousePressEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1833,18 +1833,18 @@ func miqt_exec_callback_QMessageBox_MousePressEvent(self *C.QMessageBox, cb C.in
 
 func (this *QMessageBox) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
 
-	C.QMessageBox_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QMessageBox_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnmouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QMessageBox_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_MouseReleaseEvent
-func miqt_exec_callback_QMessageBox_MouseReleaseEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QMessageBox_mouseReleaseEvent
+func miqt_exec_callback_QMessageBox_mouseReleaseEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1859,18 +1859,18 @@ func miqt_exec_callback_QMessageBox_MouseReleaseEvent(self *C.QMessageBox, cb C.
 
 func (this *QMessageBox) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
 
-	C.QMessageBox_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QMessageBox_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QMessageBox_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_MouseDoubleClickEvent
-func miqt_exec_callback_QMessageBox_MouseDoubleClickEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QMessageBox_mouseDoubleClickEvent
+func miqt_exec_callback_QMessageBox_mouseDoubleClickEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1885,18 +1885,18 @@ func miqt_exec_callback_QMessageBox_MouseDoubleClickEvent(self *C.QMessageBox, c
 
 func (this *QMessageBox) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 
-	C.QMessageBox_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QMessageBox_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnmouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QMessageBox_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_MouseMoveEvent
-func miqt_exec_callback_QMessageBox_MouseMoveEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QMessageBox_mouseMoveEvent
+func miqt_exec_callback_QMessageBox_mouseMoveEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1911,18 +1911,18 @@ func miqt_exec_callback_QMessageBox_MouseMoveEvent(self *C.QMessageBox, cb C.int
 
 func (this *QMessageBox) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
-	C.QMessageBox_virtualbase_WheelEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
-	ok := C.QMessageBox_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnwheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+	ok := C.QMessageBox_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_WheelEvent
-func miqt_exec_callback_QMessageBox_WheelEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QWheelEvent) {
+//export miqt_exec_callback_QMessageBox_wheelEvent
+func miqt_exec_callback_QMessageBox_wheelEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QWheelEvent), event *QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1937,18 +1937,18 @@ func miqt_exec_callback_QMessageBox_WheelEvent(self *C.QMessageBox, cb C.intptr_
 
 func (this *QMessageBox) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
-	C.QMessageBox_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QMessageBox_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QMessageBox_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_KeyReleaseEvent
-func miqt_exec_callback_QMessageBox_KeyReleaseEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QMessageBox_keyReleaseEvent
+func miqt_exec_callback_QMessageBox_keyReleaseEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1963,18 +1963,18 @@ func miqt_exec_callback_QMessageBox_KeyReleaseEvent(self *C.QMessageBox, cb C.in
 
 func (this *QMessageBox) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
-	C.QMessageBox_virtualbase_FocusInEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QMessageBox_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QMessageBox_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_FocusInEvent
-func miqt_exec_callback_QMessageBox_FocusInEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QMessageBox_focusInEvent
+func miqt_exec_callback_QMessageBox_focusInEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1989,18 +1989,18 @@ func miqt_exec_callback_QMessageBox_FocusInEvent(self *C.QMessageBox, cb C.intpt
 
 func (this *QMessageBox) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
-	C.QMessageBox_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QMessageBox_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QMessageBox_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_FocusOutEvent
-func miqt_exec_callback_QMessageBox_FocusOutEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QMessageBox_focusOutEvent
+func miqt_exec_callback_QMessageBox_focusOutEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2015,18 +2015,18 @@ func miqt_exec_callback_QMessageBox_FocusOutEvent(self *C.QMessageBox, cb C.intp
 
 func (this *QMessageBox) callVirtualBase_EnterEvent(event *QEvent) {
 
-	C.QMessageBox_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnEnterEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QMessageBox_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnenterEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QMessageBox_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_EnterEvent
-func miqt_exec_callback_QMessageBox_EnterEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QMessageBox_enterEvent
+func miqt_exec_callback_QMessageBox_enterEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2041,18 +2041,18 @@ func miqt_exec_callback_QMessageBox_EnterEvent(self *C.QMessageBox, cb C.intptr_
 
 func (this *QMessageBox) callVirtualBase_LeaveEvent(event *QEvent) {
 
-	C.QMessageBox_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QMessageBox_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QMessageBox_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_LeaveEvent
-func miqt_exec_callback_QMessageBox_LeaveEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QMessageBox_leaveEvent
+func miqt_exec_callback_QMessageBox_leaveEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2067,18 +2067,18 @@ func miqt_exec_callback_QMessageBox_LeaveEvent(self *C.QMessageBox, cb C.intptr_
 
 func (this *QMessageBox) callVirtualBase_PaintEvent(event *QPaintEvent) {
 
-	C.QMessageBox_virtualbase_PaintEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnPaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
-	ok := C.QMessageBox_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnpaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
+	ok := C.QMessageBox_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_PaintEvent
-func miqt_exec_callback_QMessageBox_PaintEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QPaintEvent) {
+//export miqt_exec_callback_QMessageBox_paintEvent
+func miqt_exec_callback_QMessageBox_paintEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QPaintEvent), event *QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2093,18 +2093,18 @@ func miqt_exec_callback_QMessageBox_PaintEvent(self *C.QMessageBox, cb C.intptr_
 
 func (this *QMessageBox) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
-	C.QMessageBox_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
-	ok := C.QMessageBox_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QMessageBox_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_MoveEvent
-func miqt_exec_callback_QMessageBox_MoveEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QMessageBox_moveEvent
+func miqt_exec_callback_QMessageBox_moveEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2119,18 +2119,18 @@ func miqt_exec_callback_QMessageBox_MoveEvent(self *C.QMessageBox, cb C.intptr_t
 
 func (this *QMessageBox) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
-	C.QMessageBox_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
-	ok := C.QMessageBox_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QMessageBox_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_TabletEvent
-func miqt_exec_callback_QMessageBox_TabletEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QMessageBox_tabletEvent
+func miqt_exec_callback_QMessageBox_tabletEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2145,18 +2145,18 @@ func miqt_exec_callback_QMessageBox_TabletEvent(self *C.QMessageBox, cb C.intptr
 
 func (this *QMessageBox) callVirtualBase_ActionEvent(event *QActionEvent) {
 
-	C.QMessageBox_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
-	ok := C.QMessageBox_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QMessageBox_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_ActionEvent
-func miqt_exec_callback_QMessageBox_ActionEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QMessageBox_actionEvent
+func miqt_exec_callback_QMessageBox_actionEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2171,18 +2171,18 @@ func miqt_exec_callback_QMessageBox_ActionEvent(self *C.QMessageBox, cb C.intptr
 
 func (this *QMessageBox) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
 
-	C.QMessageBox_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
-	ok := C.QMessageBox_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	ok := C.QMessageBox_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_DragEnterEvent
-func miqt_exec_callback_QMessageBox_DragEnterEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QDragEnterEvent) {
+//export miqt_exec_callback_QMessageBox_dragEnterEvent
+func miqt_exec_callback_QMessageBox_dragEnterEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragEnterEvent), event *QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2197,18 +2197,18 @@ func miqt_exec_callback_QMessageBox_DragEnterEvent(self *C.QMessageBox, cb C.int
 
 func (this *QMessageBox) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 
-	C.QMessageBox_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
-	ok := C.QMessageBox_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	ok := C.QMessageBox_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_DragMoveEvent
-func miqt_exec_callback_QMessageBox_DragMoveEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QDragMoveEvent) {
+//export miqt_exec_callback_QMessageBox_dragMoveEvent
+func miqt_exec_callback_QMessageBox_dragMoveEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragMoveEvent), event *QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2223,18 +2223,18 @@ func miqt_exec_callback_QMessageBox_DragMoveEvent(self *C.QMessageBox, cb C.intp
 
 func (this *QMessageBox) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
 
-	C.QMessageBox_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
-	ok := C.QMessageBox_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	ok := C.QMessageBox_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_DragLeaveEvent
-func miqt_exec_callback_QMessageBox_DragLeaveEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QMessageBox_dragLeaveEvent
+func miqt_exec_callback_QMessageBox_dragLeaveEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2249,18 +2249,18 @@ func miqt_exec_callback_QMessageBox_DragLeaveEvent(self *C.QMessageBox, cb C.int
 
 func (this *QMessageBox) callVirtualBase_DropEvent(event *QDropEvent) {
 
-	C.QMessageBox_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
-	ok := C.QMessageBox_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	ok := C.QMessageBox_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_DropEvent
-func miqt_exec_callback_QMessageBox_DropEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QDropEvent) {
+//export miqt_exec_callback_QMessageBox_dropEvent
+func miqt_exec_callback_QMessageBox_dropEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2275,18 +2275,18 @@ func miqt_exec_callback_QMessageBox_DropEvent(self *C.QMessageBox, cb C.intptr_t
 
 func (this *QMessageBox) callVirtualBase_HideEvent(event *QHideEvent) {
 
-	C.QMessageBox_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
-	ok := C.QMessageBox_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QMessageBox_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_HideEvent
-func miqt_exec_callback_QMessageBox_HideEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_QMessageBox_hideEvent
+func miqt_exec_callback_QMessageBox_hideEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2308,18 +2308,18 @@ func (this *QMessageBox) callVirtualBase_NativeEvent(eventType []byte, message u
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QMessageBox_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
+	return (bool)(C.QMessageBox_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QMessageBox) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
-	ok := C.QMessageBox_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	ok := C.QMessageBox_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_NativeEvent
-func miqt_exec_callback_QMessageBox_NativeEvent(self *C.QMessageBox, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
+//export miqt_exec_callback_QMessageBox_nativeEvent
+func miqt_exec_callback_QMessageBox_nativeEvent(self *C.QMessageBox, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2342,18 +2342,18 @@ func miqt_exec_callback_QMessageBox_NativeEvent(self *C.QMessageBox, cb C.intptr
 
 func (this *QMessageBox) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QMessageBox_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QMessageBox_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QMessageBox) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QMessageBox_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QMessageBox_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_Metric
-func miqt_exec_callback_QMessageBox_Metric(self *C.QMessageBox, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QMessageBox_metric
+func miqt_exec_callback_QMessageBox_metric(self *C.QMessageBox, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2370,18 +2370,18 @@ func miqt_exec_callback_QMessageBox_Metric(self *C.QMessageBox, cb C.intptr_t, p
 
 func (this *QMessageBox) callVirtualBase_InitPainter(painter *QPainter) {
 
-	C.QMessageBox_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+	C.QMessageBox_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QMessageBox) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	ok := C.QMessageBox_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QMessageBox_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_InitPainter
-func miqt_exec_callback_QMessageBox_InitPainter(self *C.QMessageBox, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QMessageBox_initPainter
+func miqt_exec_callback_QMessageBox_initPainter(self *C.QMessageBox, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2396,18 +2396,18 @@ func miqt_exec_callback_QMessageBox_InitPainter(self *C.QMessageBox, cb C.intptr
 
 func (this *QMessageBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return newQPaintDevice(C.QMessageBox_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+	return newQPaintDevice(C.QMessageBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QMessageBox) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	ok := C.QMessageBox_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QMessageBox_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_Redirected
-func miqt_exec_callback_QMessageBox_Redirected(self *C.QMessageBox, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QMessageBox_redirected
+func miqt_exec_callback_QMessageBox_redirected(self *C.QMessageBox, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2424,18 +2424,18 @@ func miqt_exec_callback_QMessageBox_Redirected(self *C.QMessageBox, cb C.intptr_
 
 func (this *QMessageBox) callVirtualBase_SharedPainter() *QPainter {
 
-	return newQPainter(C.QMessageBox_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+	return newQPainter(C.QMessageBox_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QMessageBox) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	ok := C.QMessageBox_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QMessageBox_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_SharedPainter
-func miqt_exec_callback_QMessageBox_SharedPainter(self *C.QMessageBox, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QMessageBox_sharedPainter
+func miqt_exec_callback_QMessageBox_sharedPainter(self *C.QMessageBox, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2449,18 +2449,18 @@ func miqt_exec_callback_QMessageBox_SharedPainter(self *C.QMessageBox, cb C.intp
 
 func (this *QMessageBox) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
 
-	C.QMessageBox_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QMessageBox_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QMessageBox) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
-	ok := C.QMessageBox_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QMessageBox_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_InputMethodEvent
-func miqt_exec_callback_QMessageBox_InputMethodEvent(self *C.QMessageBox, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QMessageBox_inputMethodEvent
+func miqt_exec_callback_QMessageBox_inputMethodEvent(self *C.QMessageBox, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2475,20 +2475,20 @@ func miqt_exec_callback_QMessageBox_InputMethodEvent(self *C.QMessageBox, cb C.i
 
 func (this *QMessageBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_goptr := newQVariant(C.QMessageBox_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
+	_goptr := newQVariant(C.QMessageBox_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QMessageBox) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
-	ok := C.QMessageBox_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	ok := C.QMessageBox_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_InputMethodQuery
-func miqt_exec_callback_QMessageBox_InputMethodQuery(self *C.QMessageBox, cb C.intptr_t, param1 C.int) *C.QVariant {
+//export miqt_exec_callback_QMessageBox_inputMethodQuery
+func miqt_exec_callback_QMessageBox_inputMethodQuery(self *C.QMessageBox, cb C.intptr_t, param1 C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2505,18 +2505,18 @@ func miqt_exec_callback_QMessageBox_InputMethodQuery(self *C.QMessageBox, cb C.i
 
 func (this *QMessageBox) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QMessageBox_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QMessageBox_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QMessageBox) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QMessageBox_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QMessageBox_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_FocusNextPrevChild
-func miqt_exec_callback_QMessageBox_FocusNextPrevChild(self *C.QMessageBox, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QMessageBox_focusNextPrevChild
+func miqt_exec_callback_QMessageBox_focusNextPrevChild(self *C.QMessageBox, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2533,18 +2533,18 @@ func miqt_exec_callback_QMessageBox_FocusNextPrevChild(self *C.QMessageBox, cb C
 
 func (this *QMessageBox) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QMessageBox_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QMessageBox_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QMessageBox_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_TimerEvent
-func miqt_exec_callback_QMessageBox_TimerEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QMessageBox_timerEvent
+func miqt_exec_callback_QMessageBox_timerEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2559,18 +2559,18 @@ func miqt_exec_callback_QMessageBox_TimerEvent(self *C.QMessageBox, cb C.intptr_
 
 func (this *QMessageBox) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QMessageBox_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QMessageBox_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QMessageBox_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_ChildEvent
-func miqt_exec_callback_QMessageBox_ChildEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QMessageBox_childEvent
+func miqt_exec_callback_QMessageBox_childEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2585,18 +2585,18 @@ func miqt_exec_callback_QMessageBox_ChildEvent(self *C.QMessageBox, cb C.intptr_
 
 func (this *QMessageBox) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QMessageBox_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMessageBox_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMessageBox) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QMessageBox_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QMessageBox_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_CustomEvent
-func miqt_exec_callback_QMessageBox_CustomEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QMessageBox_customEvent
+func miqt_exec_callback_QMessageBox_customEvent(self *C.QMessageBox, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2611,18 +2611,18 @@ func miqt_exec_callback_QMessageBox_CustomEvent(self *C.QMessageBox, cb C.intptr
 
 func (this *QMessageBox) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QMessageBox_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QMessageBox_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QMessageBox) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QMessageBox_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QMessageBox_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_ConnectNotify
-func miqt_exec_callback_QMessageBox_ConnectNotify(self *C.QMessageBox, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QMessageBox_connectNotify
+func miqt_exec_callback_QMessageBox_connectNotify(self *C.QMessageBox, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2637,18 +2637,18 @@ func miqt_exec_callback_QMessageBox_ConnectNotify(self *C.QMessageBox, cb C.intp
 
 func (this *QMessageBox) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QMessageBox_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QMessageBox_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QMessageBox) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QMessageBox_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMessageBox) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QMessageBox_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMessageBox_DisconnectNotify
-func miqt_exec_callback_QMessageBox_DisconnectNotify(self *C.QMessageBox, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QMessageBox_disconnectNotify
+func miqt_exec_callback_QMessageBox_disconnectNotify(self *C.QMessageBox, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2663,7 +2663,7 @@ func miqt_exec_callback_QMessageBox_DisconnectNotify(self *C.QMessageBox, cb C.i
 
 // Delete this object from C++ memory.
 func (this *QMessageBox) Delete() {
-	C.QMessageBox_Delete(this.h)
+	C.QMessageBox_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

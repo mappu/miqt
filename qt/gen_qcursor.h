@@ -39,27 +39,27 @@ QCursor* QCursor_new6(QBitmap* bitmap, QBitmap* mask, int hotX);
 QCursor* QCursor_new7(QBitmap* bitmap, QBitmap* mask, int hotX, int hotY);
 QCursor* QCursor_new8(QPixmap* pixmap, int hotX);
 QCursor* QCursor_new9(QPixmap* pixmap, int hotX, int hotY);
-void QCursor_OperatorAssign(QCursor* self, QCursor* cursor);
-void QCursor_Swap(QCursor* self, QCursor* other);
+void QCursor_operatorAssign(QCursor* self, QCursor* cursor);
+void QCursor_swap(QCursor* self, QCursor* other);
 QVariant* QCursor_ToQVariant(const QCursor* self);
-int QCursor_Shape(const QCursor* self);
-void QCursor_SetShape(QCursor* self, int newShape);
-QBitmap* QCursor_Bitmap(const QCursor* self);
-QBitmap* QCursor_Mask(const QCursor* self);
-QBitmap* QCursor_BitmapWithQtReturnByValueConstant(const QCursor* self, int param1);
-QBitmap* QCursor_MaskWithQtReturnByValueConstant(const QCursor* self, int param1);
-QPixmap* QCursor_Pixmap(const QCursor* self);
-QPoint* QCursor_HotSpot(const QCursor* self);
-QPoint* QCursor_Pos();
-QPoint* QCursor_PosWithScreen(QScreen* screen);
-void QCursor_SetPos(int x, int y);
-void QCursor_SetPos2(QScreen* screen, int x, int y);
-void QCursor_SetPosWithQPoint(QPoint* p);
-void QCursor_SetPos3(QScreen* screen, QPoint* p);
-void QCursor_Delete(QCursor* self);
+int QCursor_shape(const QCursor* self);
+void QCursor_setShape(QCursor* self, int newShape);
+QBitmap* QCursor_bitmap(const QCursor* self);
+QBitmap* QCursor_mask(const QCursor* self);
+QBitmap* QCursor_bitmapWithQtReturnByValueConstant(const QCursor* self, int param1);
+QBitmap* QCursor_maskWithQtReturnByValueConstant(const QCursor* self, int param1);
+QPixmap* QCursor_pixmap(const QCursor* self);
+QPoint* QCursor_hotSpot(const QCursor* self);
+QPoint* QCursor_pos();
+QPoint* QCursor_posWithScreen(QScreen* screen);
+void QCursor_setPos(int x, int y);
+void QCursor_setPos2(QScreen* screen, int x, int y);
+void QCursor_setPosWithQPoint(QPoint* p);
+void QCursor_setPos3(QScreen* screen, QPoint* p);
+void QCursor_delete(QCursor* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

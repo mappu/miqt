@@ -46,11 +46,11 @@ func UnsafeNewQWebEngineClientCertificateStore(h unsafe.Pointer) *QWebEngineClie
 }
 
 func (this *QWebEngineClientCertificateStore) Add(certificate *network.QSslCertificate, privateKey *network.QSslKey) {
-	C.QWebEngineClientCertificateStore_Add(this.h, (*C.QSslCertificate)(certificate.UnsafePointer()), (*C.QSslKey)(privateKey.UnsafePointer()))
+	C.QWebEngineClientCertificateStore_add(this.h, (*C.QSslCertificate)(certificate.UnsafePointer()), (*C.QSslKey)(privateKey.UnsafePointer()))
 }
 
 func (this *QWebEngineClientCertificateStore) Certificates() []network.QSslCertificate {
-	var _ma C.struct_miqt_array = C.QWebEngineClientCertificateStore_Certificates(this.h)
+	var _ma C.struct_miqt_array = C.QWebEngineClientCertificateStore_certificates(this.h)
 	_ret := make([]network.QSslCertificate, int(_ma.len))
 	_outCast := (*[0xffff]*C.QSslCertificate)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -62,9 +62,9 @@ func (this *QWebEngineClientCertificateStore) Certificates() []network.QSslCerti
 }
 
 func (this *QWebEngineClientCertificateStore) Remove(certificate *network.QSslCertificate) {
-	C.QWebEngineClientCertificateStore_Remove(this.h, (*C.QSslCertificate)(certificate.UnsafePointer()))
+	C.QWebEngineClientCertificateStore_remove(this.h, (*C.QSslCertificate)(certificate.UnsafePointer()))
 }
 
 func (this *QWebEngineClientCertificateStore) Clear() {
-	C.QWebEngineClientCertificateStore_Clear(this.h)
+	C.QWebEngineClientCertificateStore_clear(this.h)
 }

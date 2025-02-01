@@ -23,15 +23,15 @@ void QVideoEncoderSettingsControl_virtbase(QVideoEncoderSettingsControl* src, QM
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
 }
 
-QMetaObject* QVideoEncoderSettingsControl_MetaObject(const QVideoEncoderSettingsControl* self) {
+QMetaObject* QVideoEncoderSettingsControl_metaObject(const QVideoEncoderSettingsControl* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QVideoEncoderSettingsControl_Metacast(QVideoEncoderSettingsControl* self, const char* param1) {
+void* QVideoEncoderSettingsControl_metacast(QVideoEncoderSettingsControl* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QVideoEncoderSettingsControl_Tr(const char* s) {
+struct miqt_string QVideoEncoderSettingsControl_tr(const char* s) {
 	QString _ret = QVideoEncoderSettingsControl::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -42,7 +42,7 @@ struct miqt_string QVideoEncoderSettingsControl_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QVideoEncoderSettingsControl_TrUtf8(const char* s) {
+struct miqt_string QVideoEncoderSettingsControl_trUtf8(const char* s) {
 	QString _ret = QVideoEncoderSettingsControl::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -53,7 +53,7 @@ struct miqt_string QVideoEncoderSettingsControl_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array /* of QSize* */  QVideoEncoderSettingsControl_SupportedResolutions(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous) {
+struct miqt_array /* of QSize* */  QVideoEncoderSettingsControl_supportedResolutions(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous) {
 	QList<QSize> _ret = self->supportedResolutions(*settings, continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSize** _arr = static_cast<QSize**>(malloc(sizeof(QSize*) * _ret.length()));
@@ -66,7 +66,7 @@ struct miqt_array /* of QSize* */  QVideoEncoderSettingsControl_SupportedResolut
 	return _out;
 }
 
-struct miqt_array /* of double */  QVideoEncoderSettingsControl_SupportedFrameRates(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous) {
+struct miqt_array /* of double */  QVideoEncoderSettingsControl_supportedFrameRates(const QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings, bool* continuous) {
 	QList<qreal> _ret = self->supportedFrameRates(*settings, continuous);
 	// Convert QList<> from C++ memory to manually-managed C memory
 	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));
@@ -79,7 +79,7 @@ struct miqt_array /* of double */  QVideoEncoderSettingsControl_SupportedFrameRa
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_string */  QVideoEncoderSettingsControl_SupportedVideoCodecs(const QVideoEncoderSettingsControl* self) {
+struct miqt_array /* of struct miqt_string */  QVideoEncoderSettingsControl_supportedVideoCodecs(const QVideoEncoderSettingsControl* self) {
 	QStringList _ret = self->supportedVideoCodecs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -99,7 +99,7 @@ struct miqt_array /* of struct miqt_string */  QVideoEncoderSettingsControl_Supp
 	return _out;
 }
 
-struct miqt_string QVideoEncoderSettingsControl_VideoCodecDescription(const QVideoEncoderSettingsControl* self, struct miqt_string codec) {
+struct miqt_string QVideoEncoderSettingsControl_videoCodecDescription(const QVideoEncoderSettingsControl* self, struct miqt_string codec) {
 	QString codec_QString = QString::fromUtf8(codec.data, codec.len);
 	QString _ret = self->videoCodecDescription(codec_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -111,15 +111,15 @@ struct miqt_string QVideoEncoderSettingsControl_VideoCodecDescription(const QVid
 	return _ms;
 }
 
-QVideoEncoderSettings* QVideoEncoderSettingsControl_VideoSettings(const QVideoEncoderSettingsControl* self) {
+QVideoEncoderSettings* QVideoEncoderSettingsControl_videoSettings(const QVideoEncoderSettingsControl* self) {
 	return new QVideoEncoderSettings(self->videoSettings());
 }
 
-void QVideoEncoderSettingsControl_SetVideoSettings(QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings) {
+void QVideoEncoderSettingsControl_setVideoSettings(QVideoEncoderSettingsControl* self, QVideoEncoderSettings* settings) {
 	self->setVideoSettings(*settings);
 }
 
-struct miqt_string QVideoEncoderSettingsControl_Tr2(const char* s, const char* c) {
+struct miqt_string QVideoEncoderSettingsControl_tr2(const char* s, const char* c) {
 	QString _ret = QVideoEncoderSettingsControl::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -130,7 +130,7 @@ struct miqt_string QVideoEncoderSettingsControl_Tr2(const char* s, const char* c
 	return _ms;
 }
 
-struct miqt_string QVideoEncoderSettingsControl_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QVideoEncoderSettingsControl_tr3(const char* s, const char* c, int n) {
 	QString _ret = QVideoEncoderSettingsControl::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -141,7 +141,7 @@ struct miqt_string QVideoEncoderSettingsControl_Tr3(const char* s, const char* c
 	return _ms;
 }
 
-struct miqt_string QVideoEncoderSettingsControl_TrUtf82(const char* s, const char* c) {
+struct miqt_string QVideoEncoderSettingsControl_trUtf82(const char* s, const char* c) {
 	QString _ret = QVideoEncoderSettingsControl::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -152,7 +152,7 @@ struct miqt_string QVideoEncoderSettingsControl_TrUtf82(const char* s, const cha
 	return _ms;
 }
 
-struct miqt_string QVideoEncoderSettingsControl_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QVideoEncoderSettingsControl_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QVideoEncoderSettingsControl::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -163,7 +163,7 @@ struct miqt_string QVideoEncoderSettingsControl_TrUtf83(const char* s, const cha
 	return _ms;
 }
 
-void QVideoEncoderSettingsControl_Delete(QVideoEncoderSettingsControl* self) {
+void QVideoEncoderSettingsControl_delete(QVideoEncoderSettingsControl* self) {
 	delete self;
 }
 

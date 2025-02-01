@@ -46,15 +46,15 @@ func UnsafeNewQWhatsThis(h unsafe.Pointer) *QWhatsThis {
 }
 
 func QWhatsThis_EnterWhatsThisMode() {
-	C.QWhatsThis_EnterWhatsThisMode()
+	C.QWhatsThis_enterWhatsThisMode()
 }
 
 func QWhatsThis_InWhatsThisMode() bool {
-	return (bool)(C.QWhatsThis_InWhatsThisMode())
+	return (bool)(C.QWhatsThis_inWhatsThisMode())
 }
 
 func QWhatsThis_LeaveWhatsThisMode() {
-	C.QWhatsThis_LeaveWhatsThisMode()
+	C.QWhatsThis_leaveWhatsThisMode()
 }
 
 func QWhatsThis_ShowText(pos *QPoint, text string) {
@@ -62,15 +62,15 @@ func QWhatsThis_ShowText(pos *QPoint, text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QWhatsThis_ShowText(pos.cPointer(), text_ms)
+	C.QWhatsThis_showText(pos.cPointer(), text_ms)
 }
 
 func QWhatsThis_HideText() {
-	C.QWhatsThis_HideText()
+	C.QWhatsThis_hideText()
 }
 
 func QWhatsThis_CreateAction() *QAction {
-	return newQAction(C.QWhatsThis_CreateAction())
+	return newQAction(C.QWhatsThis_createAction())
 }
 
 func QWhatsThis_ShowText3(pos *QPoint, text string, w *QWidget) {
@@ -78,16 +78,16 @@ func QWhatsThis_ShowText3(pos *QPoint, text string, w *QWidget) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QWhatsThis_ShowText3(pos.cPointer(), text_ms, w.cPointer())
+	C.QWhatsThis_showText3(pos.cPointer(), text_ms, w.cPointer())
 }
 
 func QWhatsThis_CreateAction1(parent *QObject) *QAction {
-	return newQAction(C.QWhatsThis_CreateAction1(parent.cPointer()))
+	return newQAction(C.QWhatsThis_createAction1(parent.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QWhatsThis) Delete() {
-	C.QWhatsThis_Delete(this.h)
+	C.QWhatsThis_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

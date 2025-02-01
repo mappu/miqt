@@ -67,19 +67,19 @@ func NewQVideoWidget2() *QVideoWidget {
 }
 
 func (this *QVideoWidget) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QVideoWidget_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QVideoWidget_metaObject(this.h)))
 }
 
 func (this *QVideoWidget) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QVideoWidget_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QVideoWidget_metacast(this.h, param1_Cstring))
 }
 
 func QVideoWidget_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QVideoWidget_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QVideoWidget_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -88,79 +88,79 @@ func QVideoWidget_Tr(s string) string {
 func QVideoWidget_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QVideoWidget_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QVideoWidget_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QVideoWidget) MediaObject() *QMediaObject {
-	return newQMediaObject(C.QVideoWidget_MediaObject(this.h))
+	return newQMediaObject(C.QVideoWidget_mediaObject(this.h))
 }
 
 func (this *QVideoWidget) VideoSurface() *QAbstractVideoSurface {
-	return newQAbstractVideoSurface(C.QVideoWidget_VideoSurface(this.h))
+	return newQAbstractVideoSurface(C.QVideoWidget_videoSurface(this.h))
 }
 
 func (this *QVideoWidget) AspectRatioMode() qt.AspectRatioMode {
-	return (qt.AspectRatioMode)(C.QVideoWidget_AspectRatioMode(this.h))
+	return (qt.AspectRatioMode)(C.QVideoWidget_aspectRatioMode(this.h))
 }
 
 func (this *QVideoWidget) Brightness() int {
-	return (int)(C.QVideoWidget_Brightness(this.h))
+	return (int)(C.QVideoWidget_brightness(this.h))
 }
 
 func (this *QVideoWidget) Contrast() int {
-	return (int)(C.QVideoWidget_Contrast(this.h))
+	return (int)(C.QVideoWidget_contrast(this.h))
 }
 
 func (this *QVideoWidget) Hue() int {
-	return (int)(C.QVideoWidget_Hue(this.h))
+	return (int)(C.QVideoWidget_hue(this.h))
 }
 
 func (this *QVideoWidget) Saturation() int {
-	return (int)(C.QVideoWidget_Saturation(this.h))
+	return (int)(C.QVideoWidget_saturation(this.h))
 }
 
 func (this *QVideoWidget) SizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWidget_SizeHint(this.h)))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWidget_sizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVideoWidget) SetFullScreen(fullScreen bool) {
-	C.QVideoWidget_SetFullScreen(this.h, (C.bool)(fullScreen))
+	C.QVideoWidget_setFullScreen(this.h, (C.bool)(fullScreen))
 }
 
 func (this *QVideoWidget) SetAspectRatioMode(mode qt.AspectRatioMode) {
-	C.QVideoWidget_SetAspectRatioMode(this.h, (C.int)(mode))
+	C.QVideoWidget_setAspectRatioMode(this.h, (C.int)(mode))
 }
 
 func (this *QVideoWidget) SetBrightness(brightness int) {
-	C.QVideoWidget_SetBrightness(this.h, (C.int)(brightness))
+	C.QVideoWidget_setBrightness(this.h, (C.int)(brightness))
 }
 
 func (this *QVideoWidget) SetContrast(contrast int) {
-	C.QVideoWidget_SetContrast(this.h, (C.int)(contrast))
+	C.QVideoWidget_setContrast(this.h, (C.int)(contrast))
 }
 
 func (this *QVideoWidget) SetHue(hue int) {
-	C.QVideoWidget_SetHue(this.h, (C.int)(hue))
+	C.QVideoWidget_setHue(this.h, (C.int)(hue))
 }
 
 func (this *QVideoWidget) SetSaturation(saturation int) {
-	C.QVideoWidget_SetSaturation(this.h, (C.int)(saturation))
+	C.QVideoWidget_setSaturation(this.h, (C.int)(saturation))
 }
 
 func (this *QVideoWidget) FullScreenChanged(fullScreen bool) {
-	C.QVideoWidget_FullScreenChanged(this.h, (C.bool)(fullScreen))
+	C.QVideoWidget_fullScreenChanged(this.h, (C.bool)(fullScreen))
 }
 func (this *QVideoWidget) OnFullScreenChanged(slot func(fullScreen bool)) {
-	C.QVideoWidget_connect_FullScreenChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QVideoWidget_connect_fullScreenChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QVideoWidget_FullScreenChanged
-func miqt_exec_callback_QVideoWidget_FullScreenChanged(cb C.intptr_t, fullScreen C.bool) {
+//export miqt_exec_callback_QVideoWidget_fullScreenChanged
+func miqt_exec_callback_QVideoWidget_fullScreenChanged(cb C.intptr_t, fullScreen C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(fullScreen bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -173,14 +173,14 @@ func miqt_exec_callback_QVideoWidget_FullScreenChanged(cb C.intptr_t, fullScreen
 }
 
 func (this *QVideoWidget) BrightnessChanged(brightness int) {
-	C.QVideoWidget_BrightnessChanged(this.h, (C.int)(brightness))
+	C.QVideoWidget_brightnessChanged(this.h, (C.int)(brightness))
 }
 func (this *QVideoWidget) OnBrightnessChanged(slot func(brightness int)) {
-	C.QVideoWidget_connect_BrightnessChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QVideoWidget_connect_brightnessChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QVideoWidget_BrightnessChanged
-func miqt_exec_callback_QVideoWidget_BrightnessChanged(cb C.intptr_t, brightness C.int) {
+//export miqt_exec_callback_QVideoWidget_brightnessChanged
+func miqt_exec_callback_QVideoWidget_brightnessChanged(cb C.intptr_t, brightness C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(brightness int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -193,14 +193,14 @@ func miqt_exec_callback_QVideoWidget_BrightnessChanged(cb C.intptr_t, brightness
 }
 
 func (this *QVideoWidget) ContrastChanged(contrast int) {
-	C.QVideoWidget_ContrastChanged(this.h, (C.int)(contrast))
+	C.QVideoWidget_contrastChanged(this.h, (C.int)(contrast))
 }
 func (this *QVideoWidget) OnContrastChanged(slot func(contrast int)) {
-	C.QVideoWidget_connect_ContrastChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QVideoWidget_connect_contrastChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QVideoWidget_ContrastChanged
-func miqt_exec_callback_QVideoWidget_ContrastChanged(cb C.intptr_t, contrast C.int) {
+//export miqt_exec_callback_QVideoWidget_contrastChanged
+func miqt_exec_callback_QVideoWidget_contrastChanged(cb C.intptr_t, contrast C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(contrast int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -213,14 +213,14 @@ func miqt_exec_callback_QVideoWidget_ContrastChanged(cb C.intptr_t, contrast C.i
 }
 
 func (this *QVideoWidget) HueChanged(hue int) {
-	C.QVideoWidget_HueChanged(this.h, (C.int)(hue))
+	C.QVideoWidget_hueChanged(this.h, (C.int)(hue))
 }
 func (this *QVideoWidget) OnHueChanged(slot func(hue int)) {
-	C.QVideoWidget_connect_HueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QVideoWidget_connect_hueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QVideoWidget_HueChanged
-func miqt_exec_callback_QVideoWidget_HueChanged(cb C.intptr_t, hue C.int) {
+//export miqt_exec_callback_QVideoWidget_hueChanged
+func miqt_exec_callback_QVideoWidget_hueChanged(cb C.intptr_t, hue C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(hue int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -233,14 +233,14 @@ func miqt_exec_callback_QVideoWidget_HueChanged(cb C.intptr_t, hue C.int) {
 }
 
 func (this *QVideoWidget) SaturationChanged(saturation int) {
-	C.QVideoWidget_SaturationChanged(this.h, (C.int)(saturation))
+	C.QVideoWidget_saturationChanged(this.h, (C.int)(saturation))
 }
 func (this *QVideoWidget) OnSaturationChanged(slot func(saturation int)) {
-	C.QVideoWidget_connect_SaturationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QVideoWidget_connect_saturationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QVideoWidget_SaturationChanged
-func miqt_exec_callback_QVideoWidget_SaturationChanged(cb C.intptr_t, saturation C.int) {
+//export miqt_exec_callback_QVideoWidget_saturationChanged
+func miqt_exec_callback_QVideoWidget_saturationChanged(cb C.intptr_t, saturation C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(saturation int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -257,7 +257,7 @@ func QVideoWidget_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QVideoWidget_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QVideoWidget_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -268,7 +268,7 @@ func QVideoWidget_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QVideoWidget_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QVideoWidget_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -279,7 +279,7 @@ func QVideoWidget_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QVideoWidget_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QVideoWidget_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -290,7 +290,7 @@ func QVideoWidget_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QVideoWidget_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QVideoWidget_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -298,18 +298,18 @@ func QVideoWidget_TrUtf83(s string, c string, n int) string {
 
 func (this *QVideoWidget) callVirtualBase_MediaObject() *QMediaObject {
 
-	return newQMediaObject(C.QVideoWidget_virtualbase_MediaObject(unsafe.Pointer(this.h)))
+	return newQMediaObject(C.QVideoWidget_virtualbase_mediaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QVideoWidget) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
-	ok := C.QVideoWidget_override_virtual_MediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnmediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
+	ok := C.QVideoWidget_override_virtual_mediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_MediaObject
-func miqt_exec_callback_QVideoWidget_MediaObject(self *C.QVideoWidget, cb C.intptr_t) *C.QMediaObject {
+//export miqt_exec_callback_QVideoWidget_mediaObject
+func miqt_exec_callback_QVideoWidget_mediaObject(self *C.QVideoWidget, cb C.intptr_t) *C.QMediaObject {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMediaObject) *QMediaObject)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -323,20 +323,20 @@ func miqt_exec_callback_QVideoWidget_MediaObject(self *C.QVideoWidget, cb C.intp
 
 func (this *QVideoWidget) callVirtualBase_SizeHint() *qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWidget_virtualbase_SizeHint(unsafe.Pointer(this.h))))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWidget_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QVideoWidget) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	ok := C.QVideoWidget_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnsizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	ok := C.QVideoWidget_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_SizeHint
-func miqt_exec_callback_QVideoWidget_SizeHint(self *C.QVideoWidget, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QVideoWidget_sizeHint
+func miqt_exec_callback_QVideoWidget_sizeHint(self *C.QVideoWidget, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -350,18 +350,18 @@ func miqt_exec_callback_QVideoWidget_SizeHint(self *C.QVideoWidget, cb C.intptr_
 
 func (this *QVideoWidget) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.QVideoWidget_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QVideoWidget_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QVideoWidget) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.QVideoWidget_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QVideoWidget_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_Event
-func miqt_exec_callback_QVideoWidget_Event(self *C.QVideoWidget, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QVideoWidget_event
+func miqt_exec_callback_QVideoWidget_event(self *C.QVideoWidget, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -378,18 +378,18 @@ func miqt_exec_callback_QVideoWidget_Event(self *C.QVideoWidget, cb C.intptr_t, 
 
 func (this *QVideoWidget) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
 
-	C.QVideoWidget_virtualbase_ShowEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnShowEvent(slot func(super func(event *qt.QShowEvent), event *qt.QShowEvent)) {
-	ok := C.QVideoWidget_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnshowEvent(slot func(super func(event *qt.QShowEvent), event *qt.QShowEvent)) {
+	ok := C.QVideoWidget_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_ShowEvent
-func miqt_exec_callback_QVideoWidget_ShowEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QShowEvent) {
+//export miqt_exec_callback_QVideoWidget_showEvent
+func miqt_exec_callback_QVideoWidget_showEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QShowEvent), event *qt.QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -404,18 +404,18 @@ func miqt_exec_callback_QVideoWidget_ShowEvent(self *C.QVideoWidget, cb C.intptr
 
 func (this *QVideoWidget) callVirtualBase_HideEvent(event *qt.QHideEvent) {
 
-	C.QVideoWidget_virtualbase_HideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnHideEvent(slot func(super func(event *qt.QHideEvent), event *qt.QHideEvent)) {
-	ok := C.QVideoWidget_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnhideEvent(slot func(super func(event *qt.QHideEvent), event *qt.QHideEvent)) {
+	ok := C.QVideoWidget_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_HideEvent
-func miqt_exec_callback_QVideoWidget_HideEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_QVideoWidget_hideEvent
+func miqt_exec_callback_QVideoWidget_hideEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QHideEvent), event *qt.QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -430,18 +430,18 @@ func miqt_exec_callback_QVideoWidget_HideEvent(self *C.QVideoWidget, cb C.intptr
 
 func (this *QVideoWidget) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
 
-	C.QVideoWidget_virtualbase_ResizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnResizeEvent(slot func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent)) {
-	ok := C.QVideoWidget_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnresizeEvent(slot func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent)) {
+	ok := C.QVideoWidget_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_ResizeEvent
-func miqt_exec_callback_QVideoWidget_ResizeEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QResizeEvent) {
+//export miqt_exec_callback_QVideoWidget_resizeEvent
+func miqt_exec_callback_QVideoWidget_resizeEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -456,18 +456,18 @@ func miqt_exec_callback_QVideoWidget_ResizeEvent(self *C.QVideoWidget, cb C.intp
 
 func (this *QVideoWidget) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
 
-	C.QVideoWidget_virtualbase_MoveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnMoveEvent(slot func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent)) {
-	ok := C.QVideoWidget_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnmoveEvent(slot func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent)) {
+	ok := C.QVideoWidget_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_MoveEvent
-func miqt_exec_callback_QVideoWidget_MoveEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QVideoWidget_moveEvent
+func miqt_exec_callback_QVideoWidget_moveEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -482,18 +482,18 @@ func miqt_exec_callback_QVideoWidget_MoveEvent(self *C.QVideoWidget, cb C.intptr
 
 func (this *QVideoWidget) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
 
-	C.QVideoWidget_virtualbase_PaintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnPaintEvent(slot func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent)) {
-	ok := C.QVideoWidget_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnpaintEvent(slot func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent)) {
+	ok := C.QVideoWidget_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_PaintEvent
-func miqt_exec_callback_QVideoWidget_PaintEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QPaintEvent) {
+//export miqt_exec_callback_QVideoWidget_paintEvent
+func miqt_exec_callback_QVideoWidget_paintEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -508,18 +508,18 @@ func miqt_exec_callback_QVideoWidget_PaintEvent(self *C.QVideoWidget, cb C.intpt
 
 func (this *QVideoWidget) callVirtualBase_SetMediaObject(object *QMediaObject) bool {
 
-	return (bool)(C.QVideoWidget_virtualbase_SetMediaObject(unsafe.Pointer(this.h), object.cPointer()))
+	return (bool)(C.QVideoWidget_virtualbase_setMediaObject(unsafe.Pointer(this.h), object.cPointer()))
 
 }
-func (this *QVideoWidget) OnSetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
-	ok := C.QVideoWidget_override_virtual_SetMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnsetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
+	ok := C.QVideoWidget_override_virtual_setMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_SetMediaObject
-func miqt_exec_callback_QVideoWidget_SetMediaObject(self *C.QVideoWidget, cb C.intptr_t, object *C.QMediaObject) C.bool {
+//export miqt_exec_callback_QVideoWidget_setMediaObject
+func miqt_exec_callback_QVideoWidget_setMediaObject(self *C.QVideoWidget, cb C.intptr_t, object *C.QMediaObject) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(object *QMediaObject) bool, object *QMediaObject) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -536,18 +536,18 @@ func miqt_exec_callback_QVideoWidget_SetMediaObject(self *C.QVideoWidget, cb C.i
 
 func (this *QVideoWidget) callVirtualBase_DevType() int {
 
-	return (int)(C.QVideoWidget_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QVideoWidget_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QVideoWidget) OnDevType(slot func(super func() int) int) {
-	ok := C.QVideoWidget_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OndevType(slot func(super func() int) int) {
+	ok := C.QVideoWidget_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_DevType
-func miqt_exec_callback_QVideoWidget_DevType(self *C.QVideoWidget, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QVideoWidget_devType
+func miqt_exec_callback_QVideoWidget_devType(self *C.QVideoWidget, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -561,18 +561,18 @@ func miqt_exec_callback_QVideoWidget_DevType(self *C.QVideoWidget, cb C.intptr_t
 
 func (this *QVideoWidget) callVirtualBase_SetVisible(visible bool) {
 
-	C.QVideoWidget_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QVideoWidget_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QVideoWidget) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QVideoWidget_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QVideoWidget_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_SetVisible
-func miqt_exec_callback_QVideoWidget_SetVisible(self *C.QVideoWidget, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QVideoWidget_setVisible
+func miqt_exec_callback_QVideoWidget_setVisible(self *C.QVideoWidget, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -587,20 +587,20 @@ func miqt_exec_callback_QVideoWidget_SetVisible(self *C.QVideoWidget, cb C.intpt
 
 func (this *QVideoWidget) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWidget_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoWidget_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QVideoWidget) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	ok := C.QVideoWidget_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnminimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	ok := C.QVideoWidget_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_MinimumSizeHint
-func miqt_exec_callback_QVideoWidget_MinimumSizeHint(self *C.QVideoWidget, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QVideoWidget_minimumSizeHint
+func miqt_exec_callback_QVideoWidget_minimumSizeHint(self *C.QVideoWidget, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -614,18 +614,18 @@ func miqt_exec_callback_QVideoWidget_MinimumSizeHint(self *C.QVideoWidget, cb C.
 
 func (this *QVideoWidget) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QVideoWidget_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QVideoWidget_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QVideoWidget) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QVideoWidget_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QVideoWidget_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_HeightForWidth
-func miqt_exec_callback_QVideoWidget_HeightForWidth(self *C.QVideoWidget, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QVideoWidget_heightForWidth
+func miqt_exec_callback_QVideoWidget_heightForWidth(self *C.QVideoWidget, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -642,18 +642,18 @@ func miqt_exec_callback_QVideoWidget_HeightForWidth(self *C.QVideoWidget, cb C.i
 
 func (this *QVideoWidget) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QVideoWidget_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QVideoWidget_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QVideoWidget) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QVideoWidget_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QVideoWidget_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_HasHeightForWidth
-func miqt_exec_callback_QVideoWidget_HasHeightForWidth(self *C.QVideoWidget, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QVideoWidget_hasHeightForWidth
+func miqt_exec_callback_QVideoWidget_hasHeightForWidth(self *C.QVideoWidget, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -667,18 +667,18 @@ func miqt_exec_callback_QVideoWidget_HasHeightForWidth(self *C.QVideoWidget, cb 
 
 func (this *QVideoWidget) callVirtualBase_PaintEngine() *qt.QPaintEngine {
 
-	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QVideoWidget_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QVideoWidget_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
 }
-func (this *QVideoWidget) OnPaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
-	ok := C.QVideoWidget_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnpaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
+	ok := C.QVideoWidget_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_PaintEngine
-func miqt_exec_callback_QVideoWidget_PaintEngine(self *C.QVideoWidget, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QVideoWidget_paintEngine
+func miqt_exec_callback_QVideoWidget_paintEngine(self *C.QVideoWidget, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QPaintEngine) *qt.QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -692,18 +692,18 @@ func miqt_exec_callback_QVideoWidget_PaintEngine(self *C.QVideoWidget, cb C.intp
 
 func (this *QVideoWidget) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
 
-	C.QVideoWidget_virtualbase_MousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnMousePressEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.QVideoWidget_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnmousePressEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.QVideoWidget_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_MousePressEvent
-func miqt_exec_callback_QVideoWidget_MousePressEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QVideoWidget_mousePressEvent
+func miqt_exec_callback_QVideoWidget_mousePressEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -718,18 +718,18 @@ func miqt_exec_callback_QVideoWidget_MousePressEvent(self *C.QVideoWidget, cb C.
 
 func (this *QVideoWidget) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
 
-	C.QVideoWidget_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnMouseReleaseEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.QVideoWidget_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnmouseReleaseEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.QVideoWidget_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_MouseReleaseEvent
-func miqt_exec_callback_QVideoWidget_MouseReleaseEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QVideoWidget_mouseReleaseEvent
+func miqt_exec_callback_QVideoWidget_mouseReleaseEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -744,18 +744,18 @@ func miqt_exec_callback_QVideoWidget_MouseReleaseEvent(self *C.QVideoWidget, cb 
 
 func (this *QVideoWidget) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
 
-	C.QVideoWidget_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnMouseDoubleClickEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.QVideoWidget_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnmouseDoubleClickEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.QVideoWidget_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_MouseDoubleClickEvent
-func miqt_exec_callback_QVideoWidget_MouseDoubleClickEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QVideoWidget_mouseDoubleClickEvent
+func miqt_exec_callback_QVideoWidget_mouseDoubleClickEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -770,18 +770,18 @@ func miqt_exec_callback_QVideoWidget_MouseDoubleClickEvent(self *C.QVideoWidget,
 
 func (this *QVideoWidget) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
 
-	C.QVideoWidget_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnMouseMoveEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.QVideoWidget_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnmouseMoveEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.QVideoWidget_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_MouseMoveEvent
-func miqt_exec_callback_QVideoWidget_MouseMoveEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QVideoWidget_mouseMoveEvent
+func miqt_exec_callback_QVideoWidget_mouseMoveEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -796,18 +796,18 @@ func miqt_exec_callback_QVideoWidget_MouseMoveEvent(self *C.QVideoWidget, cb C.i
 
 func (this *QVideoWidget) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
 
-	C.QVideoWidget_virtualbase_WheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnWheelEvent(slot func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent)) {
-	ok := C.QVideoWidget_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnwheelEvent(slot func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent)) {
+	ok := C.QVideoWidget_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_WheelEvent
-func miqt_exec_callback_QVideoWidget_WheelEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QWheelEvent) {
+//export miqt_exec_callback_QVideoWidget_wheelEvent
+func miqt_exec_callback_QVideoWidget_wheelEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -822,18 +822,18 @@ func miqt_exec_callback_QVideoWidget_WheelEvent(self *C.QVideoWidget, cb C.intpt
 
 func (this *QVideoWidget) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
 
-	C.QVideoWidget_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnKeyPressEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
-	ok := C.QVideoWidget_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnkeyPressEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
+	ok := C.QVideoWidget_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_KeyPressEvent
-func miqt_exec_callback_QVideoWidget_KeyPressEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QVideoWidget_keyPressEvent
+func miqt_exec_callback_QVideoWidget_keyPressEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -848,18 +848,18 @@ func miqt_exec_callback_QVideoWidget_KeyPressEvent(self *C.QVideoWidget, cb C.in
 
 func (this *QVideoWidget) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
 
-	C.QVideoWidget_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnKeyReleaseEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
-	ok := C.QVideoWidget_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnkeyReleaseEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
+	ok := C.QVideoWidget_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_KeyReleaseEvent
-func miqt_exec_callback_QVideoWidget_KeyReleaseEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QVideoWidget_keyReleaseEvent
+func miqt_exec_callback_QVideoWidget_keyReleaseEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -874,18 +874,18 @@ func miqt_exec_callback_QVideoWidget_KeyReleaseEvent(self *C.QVideoWidget, cb C.
 
 func (this *QVideoWidget) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
 
-	C.QVideoWidget_virtualbase_FocusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnFocusInEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
-	ok := C.QVideoWidget_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnfocusInEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	ok := C.QVideoWidget_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_FocusInEvent
-func miqt_exec_callback_QVideoWidget_FocusInEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QVideoWidget_focusInEvent
+func miqt_exec_callback_QVideoWidget_focusInEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -900,18 +900,18 @@ func miqt_exec_callback_QVideoWidget_FocusInEvent(self *C.QVideoWidget, cb C.int
 
 func (this *QVideoWidget) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
 
-	C.QVideoWidget_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnFocusOutEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
-	ok := C.QVideoWidget_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnfocusOutEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	ok := C.QVideoWidget_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_FocusOutEvent
-func miqt_exec_callback_QVideoWidget_FocusOutEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QVideoWidget_focusOutEvent
+func miqt_exec_callback_QVideoWidget_focusOutEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -926,18 +926,18 @@ func miqt_exec_callback_QVideoWidget_FocusOutEvent(self *C.QVideoWidget, cb C.in
 
 func (this *QVideoWidget) callVirtualBase_EnterEvent(event *qt.QEvent) {
 
-	C.QVideoWidget_virtualbase_EnterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnEnterEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QVideoWidget_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnenterEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QVideoWidget_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_EnterEvent
-func miqt_exec_callback_QVideoWidget_EnterEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QVideoWidget_enterEvent
+func miqt_exec_callback_QVideoWidget_enterEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -952,18 +952,18 @@ func miqt_exec_callback_QVideoWidget_EnterEvent(self *C.QVideoWidget, cb C.intpt
 
 func (this *QVideoWidget) callVirtualBase_LeaveEvent(event *qt.QEvent) {
 
-	C.QVideoWidget_virtualbase_LeaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnLeaveEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QVideoWidget_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnleaveEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QVideoWidget_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_LeaveEvent
-func miqt_exec_callback_QVideoWidget_LeaveEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QVideoWidget_leaveEvent
+func miqt_exec_callback_QVideoWidget_leaveEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -978,18 +978,18 @@ func miqt_exec_callback_QVideoWidget_LeaveEvent(self *C.QVideoWidget, cb C.intpt
 
 func (this *QVideoWidget) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
 
-	C.QVideoWidget_virtualbase_CloseEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnCloseEvent(slot func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent)) {
-	ok := C.QVideoWidget_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OncloseEvent(slot func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent)) {
+	ok := C.QVideoWidget_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_CloseEvent
-func miqt_exec_callback_QVideoWidget_CloseEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QVideoWidget_closeEvent
+func miqt_exec_callback_QVideoWidget_closeEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1004,18 +1004,18 @@ func miqt_exec_callback_QVideoWidget_CloseEvent(self *C.QVideoWidget, cb C.intpt
 
 func (this *QVideoWidget) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
 
-	C.QVideoWidget_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnContextMenuEvent(slot func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent)) {
-	ok := C.QVideoWidget_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OncontextMenuEvent(slot func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent)) {
+	ok := C.QVideoWidget_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_ContextMenuEvent
-func miqt_exec_callback_QVideoWidget_ContextMenuEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QContextMenuEvent) {
+//export miqt_exec_callback_QVideoWidget_contextMenuEvent
+func miqt_exec_callback_QVideoWidget_contextMenuEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1030,18 +1030,18 @@ func miqt_exec_callback_QVideoWidget_ContextMenuEvent(self *C.QVideoWidget, cb C
 
 func (this *QVideoWidget) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
 
-	C.QVideoWidget_virtualbase_TabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnTabletEvent(slot func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent)) {
-	ok := C.QVideoWidget_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OntabletEvent(slot func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent)) {
+	ok := C.QVideoWidget_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_TabletEvent
-func miqt_exec_callback_QVideoWidget_TabletEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QVideoWidget_tabletEvent
+func miqt_exec_callback_QVideoWidget_tabletEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1056,18 +1056,18 @@ func miqt_exec_callback_QVideoWidget_TabletEvent(self *C.QVideoWidget, cb C.intp
 
 func (this *QVideoWidget) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
 
-	C.QVideoWidget_virtualbase_ActionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnActionEvent(slot func(super func(event *qt.QActionEvent), event *qt.QActionEvent)) {
-	ok := C.QVideoWidget_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnactionEvent(slot func(super func(event *qt.QActionEvent), event *qt.QActionEvent)) {
+	ok := C.QVideoWidget_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_ActionEvent
-func miqt_exec_callback_QVideoWidget_ActionEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QVideoWidget_actionEvent
+func miqt_exec_callback_QVideoWidget_actionEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QActionEvent), event *qt.QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1082,18 +1082,18 @@ func miqt_exec_callback_QVideoWidget_ActionEvent(self *C.QVideoWidget, cb C.intp
 
 func (this *QVideoWidget) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
 
-	C.QVideoWidget_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnDragEnterEvent(slot func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent)) {
-	ok := C.QVideoWidget_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OndragEnterEvent(slot func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent)) {
+	ok := C.QVideoWidget_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_DragEnterEvent
-func miqt_exec_callback_QVideoWidget_DragEnterEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QDragEnterEvent) {
+//export miqt_exec_callback_QVideoWidget_dragEnterEvent
+func miqt_exec_callback_QVideoWidget_dragEnterEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1108,18 +1108,18 @@ func miqt_exec_callback_QVideoWidget_DragEnterEvent(self *C.QVideoWidget, cb C.i
 
 func (this *QVideoWidget) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
 
-	C.QVideoWidget_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnDragMoveEvent(slot func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent)) {
-	ok := C.QVideoWidget_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OndragMoveEvent(slot func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent)) {
+	ok := C.QVideoWidget_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_DragMoveEvent
-func miqt_exec_callback_QVideoWidget_DragMoveEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QDragMoveEvent) {
+//export miqt_exec_callback_QVideoWidget_dragMoveEvent
+func miqt_exec_callback_QVideoWidget_dragMoveEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1134,18 +1134,18 @@ func miqt_exec_callback_QVideoWidget_DragMoveEvent(self *C.QVideoWidget, cb C.in
 
 func (this *QVideoWidget) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
 
-	C.QVideoWidget_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnDragLeaveEvent(slot func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent)) {
-	ok := C.QVideoWidget_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OndragLeaveEvent(slot func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent)) {
+	ok := C.QVideoWidget_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_DragLeaveEvent
-func miqt_exec_callback_QVideoWidget_DragLeaveEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QVideoWidget_dragLeaveEvent
+func miqt_exec_callback_QVideoWidget_dragLeaveEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1160,18 +1160,18 @@ func miqt_exec_callback_QVideoWidget_DragLeaveEvent(self *C.QVideoWidget, cb C.i
 
 func (this *QVideoWidget) callVirtualBase_DropEvent(event *qt.QDropEvent) {
 
-	C.QVideoWidget_virtualbase_DropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnDropEvent(slot func(super func(event *qt.QDropEvent), event *qt.QDropEvent)) {
-	ok := C.QVideoWidget_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OndropEvent(slot func(super func(event *qt.QDropEvent), event *qt.QDropEvent)) {
+	ok := C.QVideoWidget_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_DropEvent
-func miqt_exec_callback_QVideoWidget_DropEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QDropEvent) {
+//export miqt_exec_callback_QVideoWidget_dropEvent
+func miqt_exec_callback_QVideoWidget_dropEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDropEvent), event *qt.QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1193,18 +1193,18 @@ func (this *QVideoWidget) callVirtualBase_NativeEvent(eventType []byte, message 
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QVideoWidget_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
+	return (bool)(C.QVideoWidget_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QVideoWidget) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
-	ok := C.QVideoWidget_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	ok := C.QVideoWidget_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_NativeEvent
-func miqt_exec_callback_QVideoWidget_NativeEvent(self *C.QVideoWidget, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
+//export miqt_exec_callback_QVideoWidget_nativeEvent
+func miqt_exec_callback_QVideoWidget_nativeEvent(self *C.QVideoWidget, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1227,18 +1227,18 @@ func miqt_exec_callback_QVideoWidget_NativeEvent(self *C.QVideoWidget, cb C.intp
 
 func (this *QVideoWidget) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
 
-	C.QVideoWidget_virtualbase_ChangeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
+	C.QVideoWidget_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnChangeEvent(slot func(super func(param1 *qt.QEvent), param1 *qt.QEvent)) {
-	ok := C.QVideoWidget_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnchangeEvent(slot func(super func(param1 *qt.QEvent), param1 *qt.QEvent)) {
+	ok := C.QVideoWidget_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_ChangeEvent
-func miqt_exec_callback_QVideoWidget_ChangeEvent(self *C.QVideoWidget, cb C.intptr_t, param1 *C.QEvent) {
+//export miqt_exec_callback_QVideoWidget_changeEvent
+func miqt_exec_callback_QVideoWidget_changeEvent(self *C.QVideoWidget, cb C.intptr_t, param1 *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QEvent), param1 *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1253,18 +1253,18 @@ func miqt_exec_callback_QVideoWidget_ChangeEvent(self *C.QVideoWidget, cb C.intp
 
 func (this *QVideoWidget) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QVideoWidget_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QVideoWidget_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QVideoWidget) OnMetric(slot func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QVideoWidget_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) Onmetric(slot func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QVideoWidget_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_Metric
-func miqt_exec_callback_QVideoWidget_Metric(self *C.QVideoWidget, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QVideoWidget_metric
+func miqt_exec_callback_QVideoWidget_metric(self *C.QVideoWidget, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1281,18 +1281,18 @@ func miqt_exec_callback_QVideoWidget_Metric(self *C.QVideoWidget, cb C.intptr_t,
 
 func (this *QVideoWidget) callVirtualBase_InitPainter(painter *qt.QPainter) {
 
-	C.QVideoWidget_virtualbase_InitPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
+	C.QVideoWidget_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnInitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
-	ok := C.QVideoWidget_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OninitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
+	ok := C.QVideoWidget_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_InitPainter
-func miqt_exec_callback_QVideoWidget_InitPainter(self *C.QVideoWidget, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QVideoWidget_initPainter
+func miqt_exec_callback_QVideoWidget_initPainter(self *C.QVideoWidget, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter), painter *qt.QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1307,18 +1307,18 @@ func miqt_exec_callback_QVideoWidget_InitPainter(self *C.QVideoWidget, cb C.intp
 
 func (this *QVideoWidget) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 
-	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QVideoWidget_virtualbase_Redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
+	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QVideoWidget_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
 }
-func (this *QVideoWidget) OnRedirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
-	ok := C.QVideoWidget_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) Onredirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
+	ok := C.QVideoWidget_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_Redirected
-func miqt_exec_callback_QVideoWidget_Redirected(self *C.QVideoWidget, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QVideoWidget_redirected
+func miqt_exec_callback_QVideoWidget_redirected(self *C.QVideoWidget, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1335,18 +1335,18 @@ func miqt_exec_callback_QVideoWidget_Redirected(self *C.QVideoWidget, cb C.intpt
 
 func (this *QVideoWidget) callVirtualBase_SharedPainter() *qt.QPainter {
 
-	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QVideoWidget_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QVideoWidget_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
 }
-func (this *QVideoWidget) OnSharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
-	ok := C.QVideoWidget_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnsharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
+	ok := C.QVideoWidget_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_SharedPainter
-func miqt_exec_callback_QVideoWidget_SharedPainter(self *C.QVideoWidget, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QVideoWidget_sharedPainter
+func miqt_exec_callback_QVideoWidget_sharedPainter(self *C.QVideoWidget, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QPainter) *qt.QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1360,18 +1360,18 @@ func miqt_exec_callback_QVideoWidget_SharedPainter(self *C.QVideoWidget, cb C.in
 
 func (this *QVideoWidget) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
 
-	C.QVideoWidget_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
+	C.QVideoWidget_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnInputMethodEvent(slot func(super func(param1 *qt.QInputMethodEvent), param1 *qt.QInputMethodEvent)) {
-	ok := C.QVideoWidget_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OninputMethodEvent(slot func(super func(param1 *qt.QInputMethodEvent), param1 *qt.QInputMethodEvent)) {
+	ok := C.QVideoWidget_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_InputMethodEvent
-func miqt_exec_callback_QVideoWidget_InputMethodEvent(self *C.QVideoWidget, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QVideoWidget_inputMethodEvent
+func miqt_exec_callback_QVideoWidget_inputMethodEvent(self *C.QVideoWidget, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QInputMethodEvent), param1 *qt.QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1386,20 +1386,20 @@ func miqt_exec_callback_QVideoWidget_InputMethodEvent(self *C.QVideoWidget, cb C
 
 func (this *QVideoWidget) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
 
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QVideoWidget_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QVideoWidget_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QVideoWidget) OnInputMethodQuery(slot func(super func(param1 qt.InputMethodQuery) *qt.QVariant, param1 qt.InputMethodQuery) *qt.QVariant) {
-	ok := C.QVideoWidget_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OninputMethodQuery(slot func(super func(param1 qt.InputMethodQuery) *qt.QVariant, param1 qt.InputMethodQuery) *qt.QVariant) {
+	ok := C.QVideoWidget_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_InputMethodQuery
-func miqt_exec_callback_QVideoWidget_InputMethodQuery(self *C.QVideoWidget, cb C.intptr_t, param1 C.int) *C.QVariant {
+//export miqt_exec_callback_QVideoWidget_inputMethodQuery
+func miqt_exec_callback_QVideoWidget_inputMethodQuery(self *C.QVideoWidget, cb C.intptr_t, param1 C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.InputMethodQuery) *qt.QVariant, param1 qt.InputMethodQuery) *qt.QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1416,18 +1416,18 @@ func miqt_exec_callback_QVideoWidget_InputMethodQuery(self *C.QVideoWidget, cb C
 
 func (this *QVideoWidget) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QVideoWidget_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QVideoWidget_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QVideoWidget) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QVideoWidget_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QVideoWidget_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_FocusNextPrevChild
-func miqt_exec_callback_QVideoWidget_FocusNextPrevChild(self *C.QVideoWidget, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QVideoWidget_focusNextPrevChild
+func miqt_exec_callback_QVideoWidget_focusNextPrevChild(self *C.QVideoWidget, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1444,18 +1444,18 @@ func miqt_exec_callback_QVideoWidget_FocusNextPrevChild(self *C.QVideoWidget, cb
 
 func (this *QVideoWidget) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.QVideoWidget_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QVideoWidget_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QVideoWidget) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.QVideoWidget_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QVideoWidget_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_EventFilter
-func miqt_exec_callback_QVideoWidget_EventFilter(self *C.QVideoWidget, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QVideoWidget_eventFilter
+func miqt_exec_callback_QVideoWidget_eventFilter(self *C.QVideoWidget, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1474,18 +1474,18 @@ func miqt_exec_callback_QVideoWidget_EventFilter(self *C.QVideoWidget, cb C.intp
 
 func (this *QVideoWidget) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QVideoWidget_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QVideoWidget_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QVideoWidget_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_TimerEvent
-func miqt_exec_callback_QVideoWidget_TimerEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QVideoWidget_timerEvent
+func miqt_exec_callback_QVideoWidget_timerEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1500,18 +1500,18 @@ func miqt_exec_callback_QVideoWidget_TimerEvent(self *C.QVideoWidget, cb C.intpt
 
 func (this *QVideoWidget) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QVideoWidget_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QVideoWidget_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QVideoWidget_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_ChildEvent
-func miqt_exec_callback_QVideoWidget_ChildEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QVideoWidget_childEvent
+func miqt_exec_callback_QVideoWidget_childEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1526,18 +1526,18 @@ func miqt_exec_callback_QVideoWidget_ChildEvent(self *C.QVideoWidget, cb C.intpt
 
 func (this *QVideoWidget) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QVideoWidget_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QVideoWidget_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QVideoWidget_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QVideoWidget_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_CustomEvent
-func miqt_exec_callback_QVideoWidget_CustomEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QVideoWidget_customEvent
+func miqt_exec_callback_QVideoWidget_customEvent(self *C.QVideoWidget, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1552,18 +1552,18 @@ func miqt_exec_callback_QVideoWidget_CustomEvent(self *C.QVideoWidget, cb C.intp
 
 func (this *QVideoWidget) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QVideoWidget_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QVideoWidget_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QVideoWidget_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QVideoWidget_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_ConnectNotify
-func miqt_exec_callback_QVideoWidget_ConnectNotify(self *C.QVideoWidget, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QVideoWidget_connectNotify
+func miqt_exec_callback_QVideoWidget_connectNotify(self *C.QVideoWidget, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1578,18 +1578,18 @@ func miqt_exec_callback_QVideoWidget_ConnectNotify(self *C.QVideoWidget, cb C.in
 
 func (this *QVideoWidget) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QVideoWidget_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QVideoWidget_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QVideoWidget) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QVideoWidget_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QVideoWidget) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QVideoWidget_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QVideoWidget_DisconnectNotify
-func miqt_exec_callback_QVideoWidget_DisconnectNotify(self *C.QVideoWidget, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QVideoWidget_disconnectNotify
+func miqt_exec_callback_QVideoWidget_disconnectNotify(self *C.QVideoWidget, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1604,7 +1604,7 @@ func miqt_exec_callback_QVideoWidget_DisconnectNotify(self *C.QVideoWidget, cb C
 
 // Delete this object from C++ memory.
 func (this *QVideoWidget) Delete() {
-	C.QVideoWidget_Delete(this.h)
+	C.QVideoWidget_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

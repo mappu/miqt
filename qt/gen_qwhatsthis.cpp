@@ -17,41 +17,41 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QWhatsThis_EnterWhatsThisMode() {
+void QWhatsThis_enterWhatsThisMode() {
 	QWhatsThis::enterWhatsThisMode();
 }
 
-bool QWhatsThis_InWhatsThisMode() {
+bool QWhatsThis_inWhatsThisMode() {
 	return QWhatsThis::inWhatsThisMode();
 }
 
-void QWhatsThis_LeaveWhatsThisMode() {
+void QWhatsThis_leaveWhatsThisMode() {
 	QWhatsThis::leaveWhatsThisMode();
 }
 
-void QWhatsThis_ShowText(QPoint* pos, struct miqt_string text) {
+void QWhatsThis_showText(QPoint* pos, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QWhatsThis::showText(*pos, text_QString);
 }
 
-void QWhatsThis_HideText() {
+void QWhatsThis_hideText() {
 	QWhatsThis::hideText();
 }
 
-QAction* QWhatsThis_CreateAction() {
+QAction* QWhatsThis_createAction() {
 	return QWhatsThis::createAction();
 }
 
-void QWhatsThis_ShowText3(QPoint* pos, struct miqt_string text, QWidget* w) {
+void QWhatsThis_showText3(QPoint* pos, struct miqt_string text, QWidget* w) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QWhatsThis::showText(*pos, text_QString, w);
 }
 
-QAction* QWhatsThis_CreateAction1(QObject* parent) {
+QAction* QWhatsThis_createAction1(QObject* parent) {
 	return QWhatsThis::createAction(parent);
 }
 
-void QWhatsThis_Delete(QWhatsThis* self) {
+void QWhatsThis_delete(QWhatsThis* self) {
 	delete self;
 }
 

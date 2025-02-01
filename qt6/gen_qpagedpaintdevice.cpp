@@ -19,39 +19,39 @@ void QPagedPaintDevice_virtbase(QPagedPaintDevice* src, QPaintDevice** outptr_QP
 	*outptr_QPaintDevice = static_cast<QPaintDevice*>(src);
 }
 
-bool QPagedPaintDevice_NewPage(QPagedPaintDevice* self) {
+bool QPagedPaintDevice_newPage(QPagedPaintDevice* self) {
 	return self->newPage();
 }
 
-bool QPagedPaintDevice_SetPageLayout(QPagedPaintDevice* self, QPageLayout* pageLayout) {
+bool QPagedPaintDevice_setPageLayout(QPagedPaintDevice* self, QPageLayout* pageLayout) {
 	return self->setPageLayout(*pageLayout);
 }
 
-bool QPagedPaintDevice_SetPageSize(QPagedPaintDevice* self, QPageSize* pageSize) {
+bool QPagedPaintDevice_setPageSize(QPagedPaintDevice* self, QPageSize* pageSize) {
 	return self->setPageSize(*pageSize);
 }
 
-bool QPagedPaintDevice_SetPageOrientation(QPagedPaintDevice* self, int orientation) {
+bool QPagedPaintDevice_setPageOrientation(QPagedPaintDevice* self, int orientation) {
 	return self->setPageOrientation(static_cast<QPageLayout::Orientation>(orientation));
 }
 
-bool QPagedPaintDevice_SetPageMargins(QPagedPaintDevice* self, QMarginsF* margins, int units) {
+bool QPagedPaintDevice_setPageMargins(QPagedPaintDevice* self, QMarginsF* margins, int units) {
 	return self->setPageMargins(*margins, static_cast<QPageLayout::Unit>(units));
 }
 
-QPageLayout* QPagedPaintDevice_PageLayout(const QPagedPaintDevice* self) {
+QPageLayout* QPagedPaintDevice_pageLayout(const QPagedPaintDevice* self) {
 	return new QPageLayout(self->pageLayout());
 }
 
-void QPagedPaintDevice_SetPageRanges(QPagedPaintDevice* self, QPageRanges* ranges) {
+void QPagedPaintDevice_setPageRanges(QPagedPaintDevice* self, QPageRanges* ranges) {
 	self->setPageRanges(*ranges);
 }
 
-QPageRanges* QPagedPaintDevice_PageRanges(const QPagedPaintDevice* self) {
+QPageRanges* QPagedPaintDevice_pageRanges(const QPagedPaintDevice* self) {
 	return new QPageRanges(self->pageRanges());
 }
 
-void QPagedPaintDevice_Delete(QPagedPaintDevice* self) {
+void QPagedPaintDevice_delete(QPagedPaintDevice* self) {
 	delete self;
 }
 

@@ -32,20 +32,20 @@ QHstsPolicy* QHstsPolicy_new4(QDateTime* expiry, int flags, struct miqt_string h
 	return new QHstsPolicy(*expiry, static_cast<QHstsPolicy::PolicyFlags>(flags), host_QString, static_cast<QUrl::ParsingMode>(mode));
 }
 
-void QHstsPolicy_OperatorAssign(QHstsPolicy* self, QHstsPolicy* rhs) {
+void QHstsPolicy_operatorAssign(QHstsPolicy* self, QHstsPolicy* rhs) {
 	self->operator=(*rhs);
 }
 
-void QHstsPolicy_Swap(QHstsPolicy* self, QHstsPolicy* other) {
+void QHstsPolicy_swap(QHstsPolicy* self, QHstsPolicy* other) {
 	self->swap(*other);
 }
 
-void QHstsPolicy_SetHost(QHstsPolicy* self, struct miqt_string host) {
+void QHstsPolicy_setHost(QHstsPolicy* self, struct miqt_string host) {
 	QString host_QString = QString::fromUtf8(host.data, host.len);
 	self->setHost(host_QString);
 }
 
-struct miqt_string QHstsPolicy_Host(const QHstsPolicy* self) {
+struct miqt_string QHstsPolicy_host(const QHstsPolicy* self) {
 	QString _ret = self->host();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -56,32 +56,32 @@ struct miqt_string QHstsPolicy_Host(const QHstsPolicy* self) {
 	return _ms;
 }
 
-void QHstsPolicy_SetExpiry(QHstsPolicy* self, QDateTime* expiry) {
+void QHstsPolicy_setExpiry(QHstsPolicy* self, QDateTime* expiry) {
 	self->setExpiry(*expiry);
 }
 
-QDateTime* QHstsPolicy_Expiry(const QHstsPolicy* self) {
+QDateTime* QHstsPolicy_expiry(const QHstsPolicy* self) {
 	return new QDateTime(self->expiry());
 }
 
-void QHstsPolicy_SetIncludesSubDomains(QHstsPolicy* self, bool include) {
+void QHstsPolicy_setIncludesSubDomains(QHstsPolicy* self, bool include) {
 	self->setIncludesSubDomains(include);
 }
 
-bool QHstsPolicy_IncludesSubDomains(const QHstsPolicy* self) {
+bool QHstsPolicy_includesSubDomains(const QHstsPolicy* self) {
 	return self->includesSubDomains();
 }
 
-bool QHstsPolicy_IsExpired(const QHstsPolicy* self) {
+bool QHstsPolicy_isExpired(const QHstsPolicy* self) {
 	return self->isExpired();
 }
 
-void QHstsPolicy_SetHost2(QHstsPolicy* self, struct miqt_string host, int mode) {
+void QHstsPolicy_setHost2(QHstsPolicy* self, struct miqt_string host, int mode) {
 	QString host_QString = QString::fromUtf8(host.data, host.len);
 	self->setHost(host_QString, static_cast<QUrl::ParsingMode>(mode));
 }
 
-struct miqt_string QHstsPolicy_Host1(const QHstsPolicy* self, unsigned int options) {
+struct miqt_string QHstsPolicy_host1(const QHstsPolicy* self, unsigned int options) {
 	QString _ret = self->host(static_cast<QUrl::ComponentFormattingOptions>(options));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -92,7 +92,7 @@ struct miqt_string QHstsPolicy_Host1(const QHstsPolicy* self, unsigned int optio
 	return _ms;
 }
 
-void QHstsPolicy_Delete(QHstsPolicy* self) {
+void QHstsPolicy_delete(QHstsPolicy* self) {
 	delete self;
 }
 

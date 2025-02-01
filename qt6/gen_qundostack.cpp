@@ -17,23 +17,23 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QUndoCommand_Undo(QUndoCommand*, intptr_t);
-void miqt_exec_callback_QUndoCommand_Redo(QUndoCommand*, intptr_t);
-int miqt_exec_callback_QUndoCommand_Id(const QUndoCommand*, intptr_t);
-bool miqt_exec_callback_QUndoCommand_MergeWith(QUndoCommand*, intptr_t, QUndoCommand*);
-void miqt_exec_callback_QUndoStack_IndexChanged(intptr_t, int);
-void miqt_exec_callback_QUndoStack_CleanChanged(intptr_t, bool);
-void miqt_exec_callback_QUndoStack_CanUndoChanged(intptr_t, bool);
-void miqt_exec_callback_QUndoStack_CanRedoChanged(intptr_t, bool);
-void miqt_exec_callback_QUndoStack_UndoTextChanged(intptr_t, struct miqt_string);
-void miqt_exec_callback_QUndoStack_RedoTextChanged(intptr_t, struct miqt_string);
-bool miqt_exec_callback_QUndoStack_Event(QUndoStack*, intptr_t, QEvent*);
-bool miqt_exec_callback_QUndoStack_EventFilter(QUndoStack*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QUndoStack_TimerEvent(QUndoStack*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QUndoStack_ChildEvent(QUndoStack*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QUndoStack_CustomEvent(QUndoStack*, intptr_t, QEvent*);
-void miqt_exec_callback_QUndoStack_ConnectNotify(QUndoStack*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QUndoStack_DisconnectNotify(QUndoStack*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QUndoCommand_undo(QUndoCommand*, intptr_t);
+void miqt_exec_callback_QUndoCommand_redo(QUndoCommand*, intptr_t);
+int miqt_exec_callback_QUndoCommand_id(const QUndoCommand*, intptr_t);
+bool miqt_exec_callback_QUndoCommand_mergeWith(QUndoCommand*, intptr_t, QUndoCommand*);
+void miqt_exec_callback_QUndoStack_indexChanged(intptr_t, int);
+void miqt_exec_callback_QUndoStack_cleanChanged(intptr_t, bool);
+void miqt_exec_callback_QUndoStack_canUndoChanged(intptr_t, bool);
+void miqt_exec_callback_QUndoStack_canRedoChanged(intptr_t, bool);
+void miqt_exec_callback_QUndoStack_undoTextChanged(intptr_t, struct miqt_string);
+void miqt_exec_callback_QUndoStack_redoTextChanged(intptr_t, struct miqt_string);
+bool miqt_exec_callback_QUndoStack_event(QUndoStack*, intptr_t, QEvent*);
+bool miqt_exec_callback_QUndoStack_eventFilter(QUndoStack*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QUndoStack_timerEvent(QUndoStack*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QUndoStack_childEvent(QUndoStack*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QUndoStack_customEvent(QUndoStack*, intptr_t, QEvent*);
+void miqt_exec_callback_QUndoStack_connectNotify(QUndoStack*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QUndoStack_disconnectNotify(QUndoStack*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -49,91 +49,91 @@ public:
 	virtual ~MiqtVirtualQUndoCommand() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Undo = 0;
+	intptr_t handle__undo = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void undo() override {
-		if (handle__Undo == 0) {
+		if (handle__undo == 0) {
 			QUndoCommand::undo();
 			return;
 		}
 		
 
-		miqt_exec_callback_QUndoCommand_Undo(this, handle__Undo);
+		miqt_exec_callback_QUndoCommand_undo(this, handle__undo);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_Undo() {
+	void virtualbase_undo() {
 
 		QUndoCommand::undo();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Redo = 0;
+	intptr_t handle__redo = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void redo() override {
-		if (handle__Redo == 0) {
+		if (handle__redo == 0) {
 			QUndoCommand::redo();
 			return;
 		}
 		
 
-		miqt_exec_callback_QUndoCommand_Redo(this, handle__Redo);
+		miqt_exec_callback_QUndoCommand_redo(this, handle__redo);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_Redo() {
+	void virtualbase_redo() {
 
 		QUndoCommand::redo();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Id = 0;
+	intptr_t handle__id = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int id() const override {
-		if (handle__Id == 0) {
+		if (handle__id == 0) {
 			return QUndoCommand::id();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QUndoCommand_Id(this, handle__Id);
+		int callback_return_value = miqt_exec_callback_QUndoCommand_id(this, handle__id);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_Id() const {
+	int virtualbase_id() const {
 
 		return QUndoCommand::id();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MergeWith = 0;
+	intptr_t handle__mergeWith = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool mergeWith(const QUndoCommand* other) override {
-		if (handle__MergeWith == 0) {
+		if (handle__mergeWith == 0) {
 			return QUndoCommand::mergeWith(other);
 		}
 		
 		QUndoCommand* sigval1 = (QUndoCommand*) other;
 
-		bool callback_return_value = miqt_exec_callback_QUndoCommand_MergeWith(this, handle__MergeWith, sigval1);
+		bool callback_return_value = miqt_exec_callback_QUndoCommand_mergeWith(this, handle__mergeWith, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_MergeWith(QUndoCommand* other) {
+	bool virtualbase_mergeWith(QUndoCommand* other) {
 
 		return QUndoCommand::mergeWith(other);
 
@@ -159,15 +159,15 @@ QUndoCommand* QUndoCommand_new4(struct miqt_string text, QUndoCommand* parent) {
 	return new MiqtVirtualQUndoCommand(text_QString, parent);
 }
 
-void QUndoCommand_Undo(QUndoCommand* self) {
+void QUndoCommand_undo(QUndoCommand* self) {
 	self->undo();
 }
 
-void QUndoCommand_Redo(QUndoCommand* self) {
+void QUndoCommand_redo(QUndoCommand* self) {
 	self->redo();
 }
 
-struct miqt_string QUndoCommand_Text(const QUndoCommand* self) {
+struct miqt_string QUndoCommand_text(const QUndoCommand* self) {
 	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -178,7 +178,7 @@ struct miqt_string QUndoCommand_Text(const QUndoCommand* self) {
 	return _ms;
 }
 
-struct miqt_string QUndoCommand_ActionText(const QUndoCommand* self) {
+struct miqt_string QUndoCommand_actionText(const QUndoCommand* self) {
 	QString _ret = self->actionText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -189,92 +189,92 @@ struct miqt_string QUndoCommand_ActionText(const QUndoCommand* self) {
 	return _ms;
 }
 
-void QUndoCommand_SetText(QUndoCommand* self, struct miqt_string text) {
+void QUndoCommand_setText(QUndoCommand* self, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setText(text_QString);
 }
 
-bool QUndoCommand_IsObsolete(const QUndoCommand* self) {
+bool QUndoCommand_isObsolete(const QUndoCommand* self) {
 	return self->isObsolete();
 }
 
-void QUndoCommand_SetObsolete(QUndoCommand* self, bool obsolete) {
+void QUndoCommand_setObsolete(QUndoCommand* self, bool obsolete) {
 	self->setObsolete(obsolete);
 }
 
-int QUndoCommand_Id(const QUndoCommand* self) {
+int QUndoCommand_id(const QUndoCommand* self) {
 	return self->id();
 }
 
-bool QUndoCommand_MergeWith(QUndoCommand* self, QUndoCommand* other) {
+bool QUndoCommand_mergeWith(QUndoCommand* self, QUndoCommand* other) {
 	return self->mergeWith(other);
 }
 
-int QUndoCommand_ChildCount(const QUndoCommand* self) {
+int QUndoCommand_childCount(const QUndoCommand* self) {
 	return self->childCount();
 }
 
-QUndoCommand* QUndoCommand_Child(const QUndoCommand* self, int index) {
+QUndoCommand* QUndoCommand_child(const QUndoCommand* self, int index) {
 	return (QUndoCommand*) self->child(static_cast<int>(index));
 }
 
-bool QUndoCommand_override_virtual_Undo(void* self, intptr_t slot) {
+bool QUndoCommand_override_virtual_undo(void* self, intptr_t slot) {
 	MiqtVirtualQUndoCommand* self_cast = dynamic_cast<MiqtVirtualQUndoCommand*>( (QUndoCommand*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Undo = slot;
+	self_cast->handle__undo = slot;
 	return true;
 }
 
-void QUndoCommand_virtualbase_Undo(void* self) {
-	( (MiqtVirtualQUndoCommand*)(self) )->virtualbase_Undo();
+void QUndoCommand_virtualbase_undo(void* self) {
+	( (MiqtVirtualQUndoCommand*)(self) )->virtualbase_undo();
 }
 
-bool QUndoCommand_override_virtual_Redo(void* self, intptr_t slot) {
+bool QUndoCommand_override_virtual_redo(void* self, intptr_t slot) {
 	MiqtVirtualQUndoCommand* self_cast = dynamic_cast<MiqtVirtualQUndoCommand*>( (QUndoCommand*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Redo = slot;
+	self_cast->handle__redo = slot;
 	return true;
 }
 
-void QUndoCommand_virtualbase_Redo(void* self) {
-	( (MiqtVirtualQUndoCommand*)(self) )->virtualbase_Redo();
+void QUndoCommand_virtualbase_redo(void* self) {
+	( (MiqtVirtualQUndoCommand*)(self) )->virtualbase_redo();
 }
 
-bool QUndoCommand_override_virtual_Id(void* self, intptr_t slot) {
+bool QUndoCommand_override_virtual_id(void* self, intptr_t slot) {
 	MiqtVirtualQUndoCommand* self_cast = dynamic_cast<MiqtVirtualQUndoCommand*>( (QUndoCommand*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Id = slot;
+	self_cast->handle__id = slot;
 	return true;
 }
 
-int QUndoCommand_virtualbase_Id(const void* self) {
-	return ( (const MiqtVirtualQUndoCommand*)(self) )->virtualbase_Id();
+int QUndoCommand_virtualbase_id(const void* self) {
+	return ( (const MiqtVirtualQUndoCommand*)(self) )->virtualbase_id();
 }
 
-bool QUndoCommand_override_virtual_MergeWith(void* self, intptr_t slot) {
+bool QUndoCommand_override_virtual_mergeWith(void* self, intptr_t slot) {
 	MiqtVirtualQUndoCommand* self_cast = dynamic_cast<MiqtVirtualQUndoCommand*>( (QUndoCommand*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MergeWith = slot;
+	self_cast->handle__mergeWith = slot;
 	return true;
 }
 
-bool QUndoCommand_virtualbase_MergeWith(void* self, QUndoCommand* other) {
-	return ( (MiqtVirtualQUndoCommand*)(self) )->virtualbase_MergeWith(other);
+bool QUndoCommand_virtualbase_mergeWith(void* self, QUndoCommand* other) {
+	return ( (MiqtVirtualQUndoCommand*)(self) )->virtualbase_mergeWith(other);
 }
 
-void QUndoCommand_Delete(QUndoCommand* self) {
+void QUndoCommand_delete(QUndoCommand* self) {
 	delete self;
 }
 
@@ -287,130 +287,130 @@ public:
 	virtual ~MiqtVirtualQUndoStack() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QUndoStack::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QUndoStack_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QUndoStack_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QUndoStack::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QUndoStack::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QUndoStack_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QUndoStack_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QUndoStack::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QUndoStack::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoStack_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QUndoStack_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QUndoStack::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QUndoStack::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoStack_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QUndoStack_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QUndoStack::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QUndoStack::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoStack_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QUndoStack_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QUndoStack::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QUndoStack::connectNotify(signal);
 			return;
 		}
@@ -419,24 +419,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QUndoStack_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QUndoStack_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QUndoStack::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QUndoStack::disconnectNotify(signal);
 			return;
 		}
@@ -445,13 +445,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QUndoStack_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QUndoStack_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QUndoStack::disconnectNotify(*signal);
 
@@ -471,15 +471,15 @@ void QUndoStack_virtbase(QUndoStack* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QUndoStack_MetaObject(const QUndoStack* self) {
+QMetaObject* QUndoStack_metaObject(const QUndoStack* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QUndoStack_Metacast(QUndoStack* self, const char* param1) {
+void* QUndoStack_metacast(QUndoStack* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QUndoStack_Tr(const char* s) {
+struct miqt_string QUndoStack_tr(const char* s) {
 	QString _ret = QUndoStack::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -490,23 +490,23 @@ struct miqt_string QUndoStack_Tr(const char* s) {
 	return _ms;
 }
 
-void QUndoStack_Clear(QUndoStack* self) {
+void QUndoStack_clear(QUndoStack* self) {
 	self->clear();
 }
 
-void QUndoStack_Push(QUndoStack* self, QUndoCommand* cmd) {
+void QUndoStack_push(QUndoStack* self, QUndoCommand* cmd) {
 	self->push(cmd);
 }
 
-bool QUndoStack_CanUndo(const QUndoStack* self) {
+bool QUndoStack_canUndo(const QUndoStack* self) {
 	return self->canUndo();
 }
 
-bool QUndoStack_CanRedo(const QUndoStack* self) {
+bool QUndoStack_canRedo(const QUndoStack* self) {
 	return self->canRedo();
 }
 
-struct miqt_string QUndoStack_UndoText(const QUndoStack* self) {
+struct miqt_string QUndoStack_undoText(const QUndoStack* self) {
 	QString _ret = self->undoText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -517,7 +517,7 @@ struct miqt_string QUndoStack_UndoText(const QUndoStack* self) {
 	return _ms;
 }
 
-struct miqt_string QUndoStack_RedoText(const QUndoStack* self) {
+struct miqt_string QUndoStack_redoText(const QUndoStack* self) {
 	QString _ret = self->redoText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -528,15 +528,15 @@ struct miqt_string QUndoStack_RedoText(const QUndoStack* self) {
 	return _ms;
 }
 
-int QUndoStack_Count(const QUndoStack* self) {
+int QUndoStack_count(const QUndoStack* self) {
 	return self->count();
 }
 
-int QUndoStack_Index(const QUndoStack* self) {
+int QUndoStack_index(const QUndoStack* self) {
 	return self->index();
 }
 
-struct miqt_string QUndoStack_Text(const QUndoStack* self, int idx) {
+struct miqt_string QUndoStack_text(const QUndoStack* self, int idx) {
 	QString _ret = self->text(static_cast<int>(idx));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -547,121 +547,121 @@ struct miqt_string QUndoStack_Text(const QUndoStack* self, int idx) {
 	return _ms;
 }
 
-QAction* QUndoStack_CreateUndoAction(const QUndoStack* self, QObject* parent) {
+QAction* QUndoStack_createUndoAction(const QUndoStack* self, QObject* parent) {
 	return self->createUndoAction(parent);
 }
 
-QAction* QUndoStack_CreateRedoAction(const QUndoStack* self, QObject* parent) {
+QAction* QUndoStack_createRedoAction(const QUndoStack* self, QObject* parent) {
 	return self->createRedoAction(parent);
 }
 
-bool QUndoStack_IsActive(const QUndoStack* self) {
+bool QUndoStack_isActive(const QUndoStack* self) {
 	return self->isActive();
 }
 
-bool QUndoStack_IsClean(const QUndoStack* self) {
+bool QUndoStack_isClean(const QUndoStack* self) {
 	return self->isClean();
 }
 
-int QUndoStack_CleanIndex(const QUndoStack* self) {
+int QUndoStack_cleanIndex(const QUndoStack* self) {
 	return self->cleanIndex();
 }
 
-void QUndoStack_BeginMacro(QUndoStack* self, struct miqt_string text) {
+void QUndoStack_beginMacro(QUndoStack* self, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->beginMacro(text_QString);
 }
 
-void QUndoStack_EndMacro(QUndoStack* self) {
+void QUndoStack_endMacro(QUndoStack* self) {
 	self->endMacro();
 }
 
-void QUndoStack_SetUndoLimit(QUndoStack* self, int limit) {
+void QUndoStack_setUndoLimit(QUndoStack* self, int limit) {
 	self->setUndoLimit(static_cast<int>(limit));
 }
 
-int QUndoStack_UndoLimit(const QUndoStack* self) {
+int QUndoStack_undoLimit(const QUndoStack* self) {
 	return self->undoLimit();
 }
 
-QUndoCommand* QUndoStack_Command(const QUndoStack* self, int index) {
+QUndoCommand* QUndoStack_command(const QUndoStack* self, int index) {
 	return (QUndoCommand*) self->command(static_cast<int>(index));
 }
 
-void QUndoStack_SetClean(QUndoStack* self) {
+void QUndoStack_setClean(QUndoStack* self) {
 	self->setClean();
 }
 
-void QUndoStack_ResetClean(QUndoStack* self) {
+void QUndoStack_resetClean(QUndoStack* self) {
 	self->resetClean();
 }
 
-void QUndoStack_SetIndex(QUndoStack* self, int idx) {
+void QUndoStack_setIndex(QUndoStack* self, int idx) {
 	self->setIndex(static_cast<int>(idx));
 }
 
-void QUndoStack_Undo(QUndoStack* self) {
+void QUndoStack_undo(QUndoStack* self) {
 	self->undo();
 }
 
-void QUndoStack_Redo(QUndoStack* self) {
+void QUndoStack_redo(QUndoStack* self) {
 	self->redo();
 }
 
-void QUndoStack_SetActive(QUndoStack* self) {
+void QUndoStack_setActive(QUndoStack* self) {
 	self->setActive();
 }
 
-void QUndoStack_IndexChanged(QUndoStack* self, int idx) {
+void QUndoStack_indexChanged(QUndoStack* self, int idx) {
 	self->indexChanged(static_cast<int>(idx));
 }
 
-void QUndoStack_connect_IndexChanged(QUndoStack* self, intptr_t slot) {
+void QUndoStack_connect_indexChanged(QUndoStack* self, intptr_t slot) {
 	MiqtVirtualQUndoStack::connect(self, static_cast<void (QUndoStack::*)(int)>(&QUndoStack::indexChanged), self, [=](int idx) {
 		int sigval1 = idx;
-		miqt_exec_callback_QUndoStack_IndexChanged(slot, sigval1);
+		miqt_exec_callback_QUndoStack_indexChanged(slot, sigval1);
 	});
 }
 
-void QUndoStack_CleanChanged(QUndoStack* self, bool clean) {
+void QUndoStack_cleanChanged(QUndoStack* self, bool clean) {
 	self->cleanChanged(clean);
 }
 
-void QUndoStack_connect_CleanChanged(QUndoStack* self, intptr_t slot) {
+void QUndoStack_connect_cleanChanged(QUndoStack* self, intptr_t slot) {
 	MiqtVirtualQUndoStack::connect(self, static_cast<void (QUndoStack::*)(bool)>(&QUndoStack::cleanChanged), self, [=](bool clean) {
 		bool sigval1 = clean;
-		miqt_exec_callback_QUndoStack_CleanChanged(slot, sigval1);
+		miqt_exec_callback_QUndoStack_cleanChanged(slot, sigval1);
 	});
 }
 
-void QUndoStack_CanUndoChanged(QUndoStack* self, bool canUndo) {
+void QUndoStack_canUndoChanged(QUndoStack* self, bool canUndo) {
 	self->canUndoChanged(canUndo);
 }
 
-void QUndoStack_connect_CanUndoChanged(QUndoStack* self, intptr_t slot) {
+void QUndoStack_connect_canUndoChanged(QUndoStack* self, intptr_t slot) {
 	MiqtVirtualQUndoStack::connect(self, static_cast<void (QUndoStack::*)(bool)>(&QUndoStack::canUndoChanged), self, [=](bool canUndo) {
 		bool sigval1 = canUndo;
-		miqt_exec_callback_QUndoStack_CanUndoChanged(slot, sigval1);
+		miqt_exec_callback_QUndoStack_canUndoChanged(slot, sigval1);
 	});
 }
 
-void QUndoStack_CanRedoChanged(QUndoStack* self, bool canRedo) {
+void QUndoStack_canRedoChanged(QUndoStack* self, bool canRedo) {
 	self->canRedoChanged(canRedo);
 }
 
-void QUndoStack_connect_CanRedoChanged(QUndoStack* self, intptr_t slot) {
+void QUndoStack_connect_canRedoChanged(QUndoStack* self, intptr_t slot) {
 	MiqtVirtualQUndoStack::connect(self, static_cast<void (QUndoStack::*)(bool)>(&QUndoStack::canRedoChanged), self, [=](bool canRedo) {
 		bool sigval1 = canRedo;
-		miqt_exec_callback_QUndoStack_CanRedoChanged(slot, sigval1);
+		miqt_exec_callback_QUndoStack_canRedoChanged(slot, sigval1);
 	});
 }
 
-void QUndoStack_UndoTextChanged(QUndoStack* self, struct miqt_string undoText) {
+void QUndoStack_undoTextChanged(QUndoStack* self, struct miqt_string undoText) {
 	QString undoText_QString = QString::fromUtf8(undoText.data, undoText.len);
 	self->undoTextChanged(undoText_QString);
 }
 
-void QUndoStack_connect_UndoTextChanged(QUndoStack* self, intptr_t slot) {
+void QUndoStack_connect_undoTextChanged(QUndoStack* self, intptr_t slot) {
 	MiqtVirtualQUndoStack::connect(self, static_cast<void (QUndoStack::*)(const QString&)>(&QUndoStack::undoTextChanged), self, [=](const QString& undoText) {
 		const QString undoText_ret = undoText;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -671,16 +671,16 @@ void QUndoStack_connect_UndoTextChanged(QUndoStack* self, intptr_t slot) {
 		undoText_ms.data = static_cast<char*>(malloc(undoText_ms.len));
 		memcpy(undoText_ms.data, undoText_b.data(), undoText_ms.len);
 		struct miqt_string sigval1 = undoText_ms;
-		miqt_exec_callback_QUndoStack_UndoTextChanged(slot, sigval1);
+		miqt_exec_callback_QUndoStack_undoTextChanged(slot, sigval1);
 	});
 }
 
-void QUndoStack_RedoTextChanged(QUndoStack* self, struct miqt_string redoText) {
+void QUndoStack_redoTextChanged(QUndoStack* self, struct miqt_string redoText) {
 	QString redoText_QString = QString::fromUtf8(redoText.data, redoText.len);
 	self->redoTextChanged(redoText_QString);
 }
 
-void QUndoStack_connect_RedoTextChanged(QUndoStack* self, intptr_t slot) {
+void QUndoStack_connect_redoTextChanged(QUndoStack* self, intptr_t slot) {
 	MiqtVirtualQUndoStack::connect(self, static_cast<void (QUndoStack::*)(const QString&)>(&QUndoStack::redoTextChanged), self, [=](const QString& redoText) {
 		const QString redoText_ret = redoText;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -690,11 +690,11 @@ void QUndoStack_connect_RedoTextChanged(QUndoStack* self, intptr_t slot) {
 		redoText_ms.data = static_cast<char*>(malloc(redoText_ms.len));
 		memcpy(redoText_ms.data, redoText_b.data(), redoText_ms.len);
 		struct miqt_string sigval1 = redoText_ms;
-		miqt_exec_callback_QUndoStack_RedoTextChanged(slot, sigval1);
+		miqt_exec_callback_QUndoStack_redoTextChanged(slot, sigval1);
 	});
 }
 
-struct miqt_string QUndoStack_Tr2(const char* s, const char* c) {
+struct miqt_string QUndoStack_tr2(const char* s, const char* c) {
 	QString _ret = QUndoStack::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -705,7 +705,7 @@ struct miqt_string QUndoStack_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QUndoStack_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QUndoStack_tr3(const char* s, const char* c, int n) {
 	QString _ret = QUndoStack::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -716,119 +716,119 @@ struct miqt_string QUndoStack_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-QAction* QUndoStack_CreateUndoAction2(const QUndoStack* self, QObject* parent, struct miqt_string prefix) {
+QAction* QUndoStack_createUndoAction2(const QUndoStack* self, QObject* parent, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	return self->createUndoAction(parent, prefix_QString);
 }
 
-QAction* QUndoStack_CreateRedoAction2(const QUndoStack* self, QObject* parent, struct miqt_string prefix) {
+QAction* QUndoStack_createRedoAction2(const QUndoStack* self, QObject* parent, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	return self->createRedoAction(parent, prefix_QString);
 }
 
-void QUndoStack_SetActive1(QUndoStack* self, bool active) {
+void QUndoStack_setActive1(QUndoStack* self, bool active) {
 	self->setActive(active);
 }
 
-bool QUndoStack_override_virtual_Event(void* self, intptr_t slot) {
+bool QUndoStack_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQUndoStack* self_cast = dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QUndoStack_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQUndoStack*)(self) )->virtualbase_Event(event);
+bool QUndoStack_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQUndoStack*)(self) )->virtualbase_event(event);
 }
 
-bool QUndoStack_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QUndoStack_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQUndoStack* self_cast = dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QUndoStack_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQUndoStack*)(self) )->virtualbase_EventFilter(watched, event);
+bool QUndoStack_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQUndoStack*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QUndoStack_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QUndoStack_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoStack* self_cast = dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QUndoStack_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_TimerEvent(event);
+void QUndoStack_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QUndoStack_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QUndoStack_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoStack* self_cast = dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QUndoStack_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_ChildEvent(event);
+void QUndoStack_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QUndoStack_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QUndoStack_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoStack* self_cast = dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QUndoStack_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_CustomEvent(event);
+void QUndoStack_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QUndoStack_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QUndoStack_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQUndoStack* self_cast = dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QUndoStack_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_ConnectNotify(signal);
+void QUndoStack_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QUndoStack_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QUndoStack_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQUndoStack* self_cast = dynamic_cast<MiqtVirtualQUndoStack*>( (QUndoStack*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QUndoStack_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_DisconnectNotify(signal);
+void QUndoStack_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQUndoStack*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QUndoStack_Delete(QUndoStack* self) {
+void QUndoStack_delete(QUndoStack* self) {
 	delete self;
 }
 

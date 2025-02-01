@@ -92,21 +92,21 @@ func NewQMediaMetaData2() *QMediaMetaData {
 }
 
 func (this *QMediaMetaData) Value(k QMediaMetaData__Key) *qt6.QVariant {
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QMediaMetaData_Value(this.h, (C.int)(k))))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QMediaMetaData_value(this.h, (C.int)(k))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaMetaData) Insert(k QMediaMetaData__Key, value *qt6.QVariant) {
-	C.QMediaMetaData_Insert(this.h, (C.int)(k), (*C.QVariant)(value.UnsafePointer()))
+	C.QMediaMetaData_insert(this.h, (C.int)(k), (*C.QVariant)(value.UnsafePointer()))
 }
 
 func (this *QMediaMetaData) Remove(k QMediaMetaData__Key) {
-	C.QMediaMetaData_Remove(this.h, (C.int)(k))
+	C.QMediaMetaData_remove(this.h, (C.int)(k))
 }
 
 func (this *QMediaMetaData) Keys() []QMediaMetaData__Key {
-	var _ma C.struct_miqt_array = C.QMediaMetaData_Keys(this.h)
+	var _ma C.struct_miqt_array = C.QMediaMetaData_keys(this.h)
 	_ret := make([]QMediaMetaData__Key, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -116,26 +116,26 @@ func (this *QMediaMetaData) Keys() []QMediaMetaData__Key {
 }
 
 func (this *QMediaMetaData) OperatorSubscript(k QMediaMetaData__Key) *qt6.QVariant {
-	return qt6.UnsafeNewQVariant(unsafe.Pointer(C.QMediaMetaData_OperatorSubscript(this.h, (C.int)(k))))
+	return qt6.UnsafeNewQVariant(unsafe.Pointer(C.QMediaMetaData_operatorSubscript(this.h, (C.int)(k))))
 }
 
 func (this *QMediaMetaData) Clear() {
-	C.QMediaMetaData_Clear(this.h)
+	C.QMediaMetaData_clear(this.h)
 }
 
 func (this *QMediaMetaData) IsEmpty() bool {
-	return (bool)(C.QMediaMetaData_IsEmpty(this.h))
+	return (bool)(C.QMediaMetaData_isEmpty(this.h))
 }
 
 func (this *QMediaMetaData) StringValue(k QMediaMetaData__Key) string {
-	var _ms C.struct_miqt_string = C.QMediaMetaData_StringValue(this.h, (C.int)(k))
+	var _ms C.struct_miqt_string = C.QMediaMetaData_stringValue(this.h, (C.int)(k))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QMediaMetaData_MetaDataKeyToString(k QMediaMetaData__Key) string {
-	var _ms C.struct_miqt_string = C.QMediaMetaData_MetaDataKeyToString((C.int)(k))
+	var _ms C.struct_miqt_string = C.QMediaMetaData_metaDataKeyToString((C.int)(k))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -143,7 +143,7 @@ func QMediaMetaData_MetaDataKeyToString(k QMediaMetaData__Key) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaMetaData) Delete() {
-	C.QMediaMetaData_Delete(this.h)
+	C.QMediaMetaData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

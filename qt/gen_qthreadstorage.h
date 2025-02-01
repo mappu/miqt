@@ -21,10 +21,10 @@ typedef struct QThreadStorageData QThreadStorageData;
 #endif
 
 QThreadStorageData* QThreadStorageData_new(QThreadStorageData* param1);
-void QThreadStorageData_Delete(QThreadStorageData* self);
+void QThreadStorageData_delete(QThreadStorageData* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

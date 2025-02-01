@@ -52,19 +52,19 @@ func UnsafeNewQCameraCaptureDestinationControl(h unsafe.Pointer) *QCameraCapture
 }
 
 func (this *QCameraCaptureDestinationControl) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraCaptureDestinationControl_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraCaptureDestinationControl_metaObject(this.h)))
 }
 
 func (this *QCameraCaptureDestinationControl) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QCameraCaptureDestinationControl_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QCameraCaptureDestinationControl_metacast(this.h, param1_Cstring))
 }
 
 func QCameraCaptureDestinationControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraCaptureDestinationControl_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraCaptureDestinationControl_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -73,33 +73,33 @@ func QCameraCaptureDestinationControl_Tr(s string) string {
 func QCameraCaptureDestinationControl_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraCaptureDestinationControl_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraCaptureDestinationControl_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCameraCaptureDestinationControl) IsCaptureDestinationSupported(destination QCameraImageCapture__CaptureDestination) bool {
-	return (bool)(C.QCameraCaptureDestinationControl_IsCaptureDestinationSupported(this.h, (C.int)(destination)))
+	return (bool)(C.QCameraCaptureDestinationControl_isCaptureDestinationSupported(this.h, (C.int)(destination)))
 }
 
 func (this *QCameraCaptureDestinationControl) CaptureDestination() QCameraImageCapture__CaptureDestination {
-	return (QCameraImageCapture__CaptureDestination)(C.QCameraCaptureDestinationControl_CaptureDestination(this.h))
+	return (QCameraImageCapture__CaptureDestination)(C.QCameraCaptureDestinationControl_captureDestination(this.h))
 }
 
 func (this *QCameraCaptureDestinationControl) SetCaptureDestination(destination QCameraImageCapture__CaptureDestination) {
-	C.QCameraCaptureDestinationControl_SetCaptureDestination(this.h, (C.int)(destination))
+	C.QCameraCaptureDestinationControl_setCaptureDestination(this.h, (C.int)(destination))
 }
 
 func (this *QCameraCaptureDestinationControl) CaptureDestinationChanged(destination QCameraImageCapture__CaptureDestination) {
-	C.QCameraCaptureDestinationControl_CaptureDestinationChanged(this.h, (C.int)(destination))
+	C.QCameraCaptureDestinationControl_captureDestinationChanged(this.h, (C.int)(destination))
 }
 func (this *QCameraCaptureDestinationControl) OnCaptureDestinationChanged(slot func(destination QCameraImageCapture__CaptureDestination)) {
-	C.QCameraCaptureDestinationControl_connect_CaptureDestinationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCameraCaptureDestinationControl_connect_captureDestinationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCameraCaptureDestinationControl_CaptureDestinationChanged
-func miqt_exec_callback_QCameraCaptureDestinationControl_CaptureDestinationChanged(cb C.intptr_t, destination C.int) {
+//export miqt_exec_callback_QCameraCaptureDestinationControl_captureDestinationChanged
+func miqt_exec_callback_QCameraCaptureDestinationControl_captureDestinationChanged(cb C.intptr_t, destination C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(destination QCameraImageCapture__CaptureDestination))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -116,7 +116,7 @@ func QCameraCaptureDestinationControl_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraCaptureDestinationControl_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraCaptureDestinationControl_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -127,7 +127,7 @@ func QCameraCaptureDestinationControl_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraCaptureDestinationControl_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraCaptureDestinationControl_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -138,7 +138,7 @@ func QCameraCaptureDestinationControl_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraCaptureDestinationControl_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraCaptureDestinationControl_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -149,7 +149,7 @@ func QCameraCaptureDestinationControl_TrUtf83(s string, c string, n int) string 
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraCaptureDestinationControl_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraCaptureDestinationControl_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -157,7 +157,7 @@ func QCameraCaptureDestinationControl_TrUtf83(s string, c string, n int) string 
 
 // Delete this object from C++ memory.
 func (this *QCameraCaptureDestinationControl) Delete() {
-	C.QCameraCaptureDestinationControl_Delete(this.h)
+	C.QCameraCaptureDestinationControl_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

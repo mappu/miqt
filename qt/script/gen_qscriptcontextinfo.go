@@ -73,45 +73,45 @@ func NewQScriptContextInfo3() *QScriptContextInfo {
 }
 
 func (this *QScriptContextInfo) OperatorAssign(other *QScriptContextInfo) {
-	C.QScriptContextInfo_OperatorAssign(this.h, other.cPointer())
+	C.QScriptContextInfo_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QScriptContextInfo) IsNull() bool {
-	return (bool)(C.QScriptContextInfo_IsNull(this.h))
+	return (bool)(C.QScriptContextInfo_isNull(this.h))
 }
 
 func (this *QScriptContextInfo) ScriptId() int64 {
-	return (int64)(C.QScriptContextInfo_ScriptId(this.h))
+	return (int64)(C.QScriptContextInfo_scriptId(this.h))
 }
 
 func (this *QScriptContextInfo) FileName() string {
-	var _ms C.struct_miqt_string = C.QScriptContextInfo_FileName(this.h)
+	var _ms C.struct_miqt_string = C.QScriptContextInfo_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QScriptContextInfo) LineNumber() int {
-	return (int)(C.QScriptContextInfo_LineNumber(this.h))
+	return (int)(C.QScriptContextInfo_lineNumber(this.h))
 }
 
 func (this *QScriptContextInfo) ColumnNumber() int {
-	return (int)(C.QScriptContextInfo_ColumnNumber(this.h))
+	return (int)(C.QScriptContextInfo_columnNumber(this.h))
 }
 
 func (this *QScriptContextInfo) FunctionName() string {
-	var _ms C.struct_miqt_string = C.QScriptContextInfo_FunctionName(this.h)
+	var _ms C.struct_miqt_string = C.QScriptContextInfo_functionName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QScriptContextInfo) FunctionType() QScriptContextInfo__FunctionType {
-	return (QScriptContextInfo__FunctionType)(C.QScriptContextInfo_FunctionType(this.h))
+	return (QScriptContextInfo__FunctionType)(C.QScriptContextInfo_functionType(this.h))
 }
 
 func (this *QScriptContextInfo) FunctionParameterNames() []string {
-	var _ma C.struct_miqt_array = C.QScriptContextInfo_FunctionParameterNames(this.h)
+	var _ma C.struct_miqt_array = C.QScriptContextInfo_functionParameterNames(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -124,28 +124,28 @@ func (this *QScriptContextInfo) FunctionParameterNames() []string {
 }
 
 func (this *QScriptContextInfo) FunctionStartLineNumber() int {
-	return (int)(C.QScriptContextInfo_FunctionStartLineNumber(this.h))
+	return (int)(C.QScriptContextInfo_functionStartLineNumber(this.h))
 }
 
 func (this *QScriptContextInfo) FunctionEndLineNumber() int {
-	return (int)(C.QScriptContextInfo_FunctionEndLineNumber(this.h))
+	return (int)(C.QScriptContextInfo_functionEndLineNumber(this.h))
 }
 
 func (this *QScriptContextInfo) FunctionMetaIndex() int {
-	return (int)(C.QScriptContextInfo_FunctionMetaIndex(this.h))
+	return (int)(C.QScriptContextInfo_functionMetaIndex(this.h))
 }
 
 func (this *QScriptContextInfo) OperatorEqual(other *QScriptContextInfo) bool {
-	return (bool)(C.QScriptContextInfo_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QScriptContextInfo_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QScriptContextInfo) OperatorNotEqual(other *QScriptContextInfo) bool {
-	return (bool)(C.QScriptContextInfo_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QScriptContextInfo_operatorNotEqual(this.h, other.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QScriptContextInfo) Delete() {
-	C.QScriptContextInfo_Delete(this.h)
+	C.QScriptContextInfo_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

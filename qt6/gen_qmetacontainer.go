@@ -84,104 +84,104 @@ func NewQMetaContainer2(param1 *QMetaContainer) *QMetaContainer {
 }
 
 func (this *QMetaContainer) HasInputIterator() bool {
-	return (bool)(C.QMetaContainer_HasInputIterator(this.h))
+	return (bool)(C.QMetaContainer_hasInputIterator(this.h))
 }
 
 func (this *QMetaContainer) HasForwardIterator() bool {
-	return (bool)(C.QMetaContainer_HasForwardIterator(this.h))
+	return (bool)(C.QMetaContainer_hasForwardIterator(this.h))
 }
 
 func (this *QMetaContainer) HasBidirectionalIterator() bool {
-	return (bool)(C.QMetaContainer_HasBidirectionalIterator(this.h))
+	return (bool)(C.QMetaContainer_hasBidirectionalIterator(this.h))
 }
 
 func (this *QMetaContainer) HasRandomAccessIterator() bool {
-	return (bool)(C.QMetaContainer_HasRandomAccessIterator(this.h))
+	return (bool)(C.QMetaContainer_hasRandomAccessIterator(this.h))
 }
 
 func (this *QMetaContainer) HasSize() bool {
-	return (bool)(C.QMetaContainer_HasSize(this.h))
+	return (bool)(C.QMetaContainer_hasSize(this.h))
 }
 
 func (this *QMetaContainer) Size(container unsafe.Pointer) int64 {
-	return (int64)(C.QMetaContainer_Size(this.h, container))
+	return (int64)(C.QMetaContainer_size(this.h, container))
 }
 
 func (this *QMetaContainer) CanClear() bool {
-	return (bool)(C.QMetaContainer_CanClear(this.h))
+	return (bool)(C.QMetaContainer_canClear(this.h))
 }
 
 func (this *QMetaContainer) Clear(container unsafe.Pointer) {
-	C.QMetaContainer_Clear(this.h, container)
+	C.QMetaContainer_clear(this.h, container)
 }
 
 func (this *QMetaContainer) HasIterator() bool {
-	return (bool)(C.QMetaContainer_HasIterator(this.h))
+	return (bool)(C.QMetaContainer_hasIterator(this.h))
 }
 
 func (this *QMetaContainer) Begin(container unsafe.Pointer) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QMetaContainer_Begin(this.h, container))
+	return (unsafe.Pointer)(C.QMetaContainer_begin(this.h, container))
 }
 
 func (this *QMetaContainer) End(container unsafe.Pointer) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QMetaContainer_End(this.h, container))
+	return (unsafe.Pointer)(C.QMetaContainer_end(this.h, container))
 }
 
 func (this *QMetaContainer) DestroyIterator(iterator unsafe.Pointer) {
-	C.QMetaContainer_DestroyIterator(this.h, iterator)
+	C.QMetaContainer_destroyIterator(this.h, iterator)
 }
 
 func (this *QMetaContainer) CompareIterator(i unsafe.Pointer, j unsafe.Pointer) bool {
-	return (bool)(C.QMetaContainer_CompareIterator(this.h, i, j))
+	return (bool)(C.QMetaContainer_compareIterator(this.h, i, j))
 }
 
 func (this *QMetaContainer) CopyIterator(target unsafe.Pointer, source unsafe.Pointer) {
-	C.QMetaContainer_CopyIterator(this.h, target, source)
+	C.QMetaContainer_copyIterator(this.h, target, source)
 }
 
 func (this *QMetaContainer) AdvanceIterator(iterator unsafe.Pointer, step int64) {
-	C.QMetaContainer_AdvanceIterator(this.h, iterator, (C.ptrdiff_t)(step))
+	C.QMetaContainer_advanceIterator(this.h, iterator, (C.ptrdiff_t)(step))
 }
 
 func (this *QMetaContainer) DiffIterator(i unsafe.Pointer, j unsafe.Pointer) int64 {
-	return (int64)(C.QMetaContainer_DiffIterator(this.h, i, j))
+	return (int64)(C.QMetaContainer_diffIterator(this.h, i, j))
 }
 
 func (this *QMetaContainer) HasConstIterator() bool {
-	return (bool)(C.QMetaContainer_HasConstIterator(this.h))
+	return (bool)(C.QMetaContainer_hasConstIterator(this.h))
 }
 
 func (this *QMetaContainer) ConstBegin(container unsafe.Pointer) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QMetaContainer_ConstBegin(this.h, container))
+	return (unsafe.Pointer)(C.QMetaContainer_constBegin(this.h, container))
 }
 
 func (this *QMetaContainer) ConstEnd(container unsafe.Pointer) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QMetaContainer_ConstEnd(this.h, container))
+	return (unsafe.Pointer)(C.QMetaContainer_constEnd(this.h, container))
 }
 
 func (this *QMetaContainer) DestroyConstIterator(iterator unsafe.Pointer) {
-	C.QMetaContainer_DestroyConstIterator(this.h, iterator)
+	C.QMetaContainer_destroyConstIterator(this.h, iterator)
 }
 
 func (this *QMetaContainer) CompareConstIterator(i unsafe.Pointer, j unsafe.Pointer) bool {
-	return (bool)(C.QMetaContainer_CompareConstIterator(this.h, i, j))
+	return (bool)(C.QMetaContainer_compareConstIterator(this.h, i, j))
 }
 
 func (this *QMetaContainer) CopyConstIterator(target unsafe.Pointer, source unsafe.Pointer) {
-	C.QMetaContainer_CopyConstIterator(this.h, target, source)
+	C.QMetaContainer_copyConstIterator(this.h, target, source)
 }
 
 func (this *QMetaContainer) AdvanceConstIterator(iterator unsafe.Pointer, step int64) {
-	C.QMetaContainer_AdvanceConstIterator(this.h, iterator, (C.ptrdiff_t)(step))
+	C.QMetaContainer_advanceConstIterator(this.h, iterator, (C.ptrdiff_t)(step))
 }
 
 func (this *QMetaContainer) DiffConstIterator(i unsafe.Pointer, j unsafe.Pointer) int64 {
-	return (int64)(C.QMetaContainer_DiffConstIterator(this.h, i, j))
+	return (int64)(C.QMetaContainer_diffConstIterator(this.h, i, j))
 }
 
 // Delete this object from C++ memory.
 func (this *QMetaContainer) Delete() {
-	C.QMetaContainer_Delete(this.h)
+	C.QMetaContainer_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -236,130 +236,130 @@ func NewQMetaSequence() *QMetaSequence {
 }
 
 func (this *QMetaSequence) ValueMetaType() *QMetaType {
-	_goptr := newQMetaType(C.QMetaSequence_ValueMetaType(this.h))
+	_goptr := newQMetaType(C.QMetaSequence_valueMetaType(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMetaSequence) IsSortable() bool {
-	return (bool)(C.QMetaSequence_IsSortable(this.h))
+	return (bool)(C.QMetaSequence_isSortable(this.h))
 }
 
 func (this *QMetaSequence) CanAddValueAtBegin() bool {
-	return (bool)(C.QMetaSequence_CanAddValueAtBegin(this.h))
+	return (bool)(C.QMetaSequence_canAddValueAtBegin(this.h))
 }
 
 func (this *QMetaSequence) AddValueAtBegin(container unsafe.Pointer, value unsafe.Pointer) {
-	C.QMetaSequence_AddValueAtBegin(this.h, container, value)
+	C.QMetaSequence_addValueAtBegin(this.h, container, value)
 }
 
 func (this *QMetaSequence) CanAddValueAtEnd() bool {
-	return (bool)(C.QMetaSequence_CanAddValueAtEnd(this.h))
+	return (bool)(C.QMetaSequence_canAddValueAtEnd(this.h))
 }
 
 func (this *QMetaSequence) AddValueAtEnd(container unsafe.Pointer, value unsafe.Pointer) {
-	C.QMetaSequence_AddValueAtEnd(this.h, container, value)
+	C.QMetaSequence_addValueAtEnd(this.h, container, value)
 }
 
 func (this *QMetaSequence) CanRemoveValueAtBegin() bool {
-	return (bool)(C.QMetaSequence_CanRemoveValueAtBegin(this.h))
+	return (bool)(C.QMetaSequence_canRemoveValueAtBegin(this.h))
 }
 
 func (this *QMetaSequence) RemoveValueAtBegin(container unsafe.Pointer) {
-	C.QMetaSequence_RemoveValueAtBegin(this.h, container)
+	C.QMetaSequence_removeValueAtBegin(this.h, container)
 }
 
 func (this *QMetaSequence) CanRemoveValueAtEnd() bool {
-	return (bool)(C.QMetaSequence_CanRemoveValueAtEnd(this.h))
+	return (bool)(C.QMetaSequence_canRemoveValueAtEnd(this.h))
 }
 
 func (this *QMetaSequence) RemoveValueAtEnd(container unsafe.Pointer) {
-	C.QMetaSequence_RemoveValueAtEnd(this.h, container)
+	C.QMetaSequence_removeValueAtEnd(this.h, container)
 }
 
 func (this *QMetaSequence) CanGetValueAtIndex() bool {
-	return (bool)(C.QMetaSequence_CanGetValueAtIndex(this.h))
+	return (bool)(C.QMetaSequence_canGetValueAtIndex(this.h))
 }
 
 func (this *QMetaSequence) ValueAtIndex(container unsafe.Pointer, index int64, result unsafe.Pointer) {
-	C.QMetaSequence_ValueAtIndex(this.h, container, (C.ptrdiff_t)(index), result)
+	C.QMetaSequence_valueAtIndex(this.h, container, (C.ptrdiff_t)(index), result)
 }
 
 func (this *QMetaSequence) CanSetValueAtIndex() bool {
-	return (bool)(C.QMetaSequence_CanSetValueAtIndex(this.h))
+	return (bool)(C.QMetaSequence_canSetValueAtIndex(this.h))
 }
 
 func (this *QMetaSequence) SetValueAtIndex(container unsafe.Pointer, index int64, value unsafe.Pointer) {
-	C.QMetaSequence_SetValueAtIndex(this.h, container, (C.ptrdiff_t)(index), value)
+	C.QMetaSequence_setValueAtIndex(this.h, container, (C.ptrdiff_t)(index), value)
 }
 
 func (this *QMetaSequence) CanAddValue() bool {
-	return (bool)(C.QMetaSequence_CanAddValue(this.h))
+	return (bool)(C.QMetaSequence_canAddValue(this.h))
 }
 
 func (this *QMetaSequence) AddValue(container unsafe.Pointer, value unsafe.Pointer) {
-	C.QMetaSequence_AddValue(this.h, container, value)
+	C.QMetaSequence_addValue(this.h, container, value)
 }
 
 func (this *QMetaSequence) CanRemoveValue() bool {
-	return (bool)(C.QMetaSequence_CanRemoveValue(this.h))
+	return (bool)(C.QMetaSequence_canRemoveValue(this.h))
 }
 
 func (this *QMetaSequence) RemoveValue(container unsafe.Pointer) {
-	C.QMetaSequence_RemoveValue(this.h, container)
+	C.QMetaSequence_removeValue(this.h, container)
 }
 
 func (this *QMetaSequence) CanGetValueAtIterator() bool {
-	return (bool)(C.QMetaSequence_CanGetValueAtIterator(this.h))
+	return (bool)(C.QMetaSequence_canGetValueAtIterator(this.h))
 }
 
 func (this *QMetaSequence) ValueAtIterator(iterator unsafe.Pointer, result unsafe.Pointer) {
-	C.QMetaSequence_ValueAtIterator(this.h, iterator, result)
+	C.QMetaSequence_valueAtIterator(this.h, iterator, result)
 }
 
 func (this *QMetaSequence) CanSetValueAtIterator() bool {
-	return (bool)(C.QMetaSequence_CanSetValueAtIterator(this.h))
+	return (bool)(C.QMetaSequence_canSetValueAtIterator(this.h))
 }
 
 func (this *QMetaSequence) SetValueAtIterator(iterator unsafe.Pointer, value unsafe.Pointer) {
-	C.QMetaSequence_SetValueAtIterator(this.h, iterator, value)
+	C.QMetaSequence_setValueAtIterator(this.h, iterator, value)
 }
 
 func (this *QMetaSequence) CanInsertValueAtIterator() bool {
-	return (bool)(C.QMetaSequence_CanInsertValueAtIterator(this.h))
+	return (bool)(C.QMetaSequence_canInsertValueAtIterator(this.h))
 }
 
 func (this *QMetaSequence) InsertValueAtIterator(container unsafe.Pointer, iterator unsafe.Pointer, value unsafe.Pointer) {
-	C.QMetaSequence_InsertValueAtIterator(this.h, container, iterator, value)
+	C.QMetaSequence_insertValueAtIterator(this.h, container, iterator, value)
 }
 
 func (this *QMetaSequence) CanEraseValueAtIterator() bool {
-	return (bool)(C.QMetaSequence_CanEraseValueAtIterator(this.h))
+	return (bool)(C.QMetaSequence_canEraseValueAtIterator(this.h))
 }
 
 func (this *QMetaSequence) EraseValueAtIterator(container unsafe.Pointer, iterator unsafe.Pointer) {
-	C.QMetaSequence_EraseValueAtIterator(this.h, container, iterator)
+	C.QMetaSequence_eraseValueAtIterator(this.h, container, iterator)
 }
 
 func (this *QMetaSequence) CanEraseRangeAtIterator() bool {
-	return (bool)(C.QMetaSequence_CanEraseRangeAtIterator(this.h))
+	return (bool)(C.QMetaSequence_canEraseRangeAtIterator(this.h))
 }
 
 func (this *QMetaSequence) EraseRangeAtIterator(container unsafe.Pointer, iterator1 unsafe.Pointer, iterator2 unsafe.Pointer) {
-	C.QMetaSequence_EraseRangeAtIterator(this.h, container, iterator1, iterator2)
+	C.QMetaSequence_eraseRangeAtIterator(this.h, container, iterator1, iterator2)
 }
 
 func (this *QMetaSequence) CanGetValueAtConstIterator() bool {
-	return (bool)(C.QMetaSequence_CanGetValueAtConstIterator(this.h))
+	return (bool)(C.QMetaSequence_canGetValueAtConstIterator(this.h))
 }
 
 func (this *QMetaSequence) ValueAtConstIterator(iterator unsafe.Pointer, result unsafe.Pointer) {
-	C.QMetaSequence_ValueAtConstIterator(this.h, iterator, result)
+	C.QMetaSequence_valueAtConstIterator(this.h, iterator, result)
 }
 
 // Delete this object from C++ memory.
 func (this *QMetaSequence) Delete() {
-	C.QMetaSequence_Delete(this.h)
+	C.QMetaSequence_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -414,116 +414,116 @@ func NewQMetaAssociation() *QMetaAssociation {
 }
 
 func (this *QMetaAssociation) KeyMetaType() *QMetaType {
-	_goptr := newQMetaType(C.QMetaAssociation_KeyMetaType(this.h))
+	_goptr := newQMetaType(C.QMetaAssociation_keyMetaType(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMetaAssociation) MappedMetaType() *QMetaType {
-	_goptr := newQMetaType(C.QMetaAssociation_MappedMetaType(this.h))
+	_goptr := newQMetaType(C.QMetaAssociation_mappedMetaType(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMetaAssociation) CanInsertKey() bool {
-	return (bool)(C.QMetaAssociation_CanInsertKey(this.h))
+	return (bool)(C.QMetaAssociation_canInsertKey(this.h))
 }
 
 func (this *QMetaAssociation) InsertKey(container unsafe.Pointer, key unsafe.Pointer) {
-	C.QMetaAssociation_InsertKey(this.h, container, key)
+	C.QMetaAssociation_insertKey(this.h, container, key)
 }
 
 func (this *QMetaAssociation) CanRemoveKey() bool {
-	return (bool)(C.QMetaAssociation_CanRemoveKey(this.h))
+	return (bool)(C.QMetaAssociation_canRemoveKey(this.h))
 }
 
 func (this *QMetaAssociation) RemoveKey(container unsafe.Pointer, key unsafe.Pointer) {
-	C.QMetaAssociation_RemoveKey(this.h, container, key)
+	C.QMetaAssociation_removeKey(this.h, container, key)
 }
 
 func (this *QMetaAssociation) CanContainsKey() bool {
-	return (bool)(C.QMetaAssociation_CanContainsKey(this.h))
+	return (bool)(C.QMetaAssociation_canContainsKey(this.h))
 }
 
 func (this *QMetaAssociation) ContainsKey(container unsafe.Pointer, key unsafe.Pointer) bool {
-	return (bool)(C.QMetaAssociation_ContainsKey(this.h, container, key))
+	return (bool)(C.QMetaAssociation_containsKey(this.h, container, key))
 }
 
 func (this *QMetaAssociation) CanGetMappedAtKey() bool {
-	return (bool)(C.QMetaAssociation_CanGetMappedAtKey(this.h))
+	return (bool)(C.QMetaAssociation_canGetMappedAtKey(this.h))
 }
 
 func (this *QMetaAssociation) MappedAtKey(container unsafe.Pointer, key unsafe.Pointer, mapped unsafe.Pointer) {
-	C.QMetaAssociation_MappedAtKey(this.h, container, key, mapped)
+	C.QMetaAssociation_mappedAtKey(this.h, container, key, mapped)
 }
 
 func (this *QMetaAssociation) CanSetMappedAtKey() bool {
-	return (bool)(C.QMetaAssociation_CanSetMappedAtKey(this.h))
+	return (bool)(C.QMetaAssociation_canSetMappedAtKey(this.h))
 }
 
 func (this *QMetaAssociation) SetMappedAtKey(container unsafe.Pointer, key unsafe.Pointer, mapped unsafe.Pointer) {
-	C.QMetaAssociation_SetMappedAtKey(this.h, container, key, mapped)
+	C.QMetaAssociation_setMappedAtKey(this.h, container, key, mapped)
 }
 
 func (this *QMetaAssociation) CanGetKeyAtIterator() bool {
-	return (bool)(C.QMetaAssociation_CanGetKeyAtIterator(this.h))
+	return (bool)(C.QMetaAssociation_canGetKeyAtIterator(this.h))
 }
 
 func (this *QMetaAssociation) KeyAtIterator(iterator unsafe.Pointer, key unsafe.Pointer) {
-	C.QMetaAssociation_KeyAtIterator(this.h, iterator, key)
+	C.QMetaAssociation_keyAtIterator(this.h, iterator, key)
 }
 
 func (this *QMetaAssociation) CanGetKeyAtConstIterator() bool {
-	return (bool)(C.QMetaAssociation_CanGetKeyAtConstIterator(this.h))
+	return (bool)(C.QMetaAssociation_canGetKeyAtConstIterator(this.h))
 }
 
 func (this *QMetaAssociation) KeyAtConstIterator(iterator unsafe.Pointer, key unsafe.Pointer) {
-	C.QMetaAssociation_KeyAtConstIterator(this.h, iterator, key)
+	C.QMetaAssociation_keyAtConstIterator(this.h, iterator, key)
 }
 
 func (this *QMetaAssociation) CanGetMappedAtIterator() bool {
-	return (bool)(C.QMetaAssociation_CanGetMappedAtIterator(this.h))
+	return (bool)(C.QMetaAssociation_canGetMappedAtIterator(this.h))
 }
 
 func (this *QMetaAssociation) MappedAtIterator(iterator unsafe.Pointer, mapped unsafe.Pointer) {
-	C.QMetaAssociation_MappedAtIterator(this.h, iterator, mapped)
+	C.QMetaAssociation_mappedAtIterator(this.h, iterator, mapped)
 }
 
 func (this *QMetaAssociation) CanGetMappedAtConstIterator() bool {
-	return (bool)(C.QMetaAssociation_CanGetMappedAtConstIterator(this.h))
+	return (bool)(C.QMetaAssociation_canGetMappedAtConstIterator(this.h))
 }
 
 func (this *QMetaAssociation) MappedAtConstIterator(iterator unsafe.Pointer, mapped unsafe.Pointer) {
-	C.QMetaAssociation_MappedAtConstIterator(this.h, iterator, mapped)
+	C.QMetaAssociation_mappedAtConstIterator(this.h, iterator, mapped)
 }
 
 func (this *QMetaAssociation) CanSetMappedAtIterator() bool {
-	return (bool)(C.QMetaAssociation_CanSetMappedAtIterator(this.h))
+	return (bool)(C.QMetaAssociation_canSetMappedAtIterator(this.h))
 }
 
 func (this *QMetaAssociation) SetMappedAtIterator(iterator unsafe.Pointer, mapped unsafe.Pointer) {
-	C.QMetaAssociation_SetMappedAtIterator(this.h, iterator, mapped)
+	C.QMetaAssociation_setMappedAtIterator(this.h, iterator, mapped)
 }
 
 func (this *QMetaAssociation) CanCreateIteratorAtKey() bool {
-	return (bool)(C.QMetaAssociation_CanCreateIteratorAtKey(this.h))
+	return (bool)(C.QMetaAssociation_canCreateIteratorAtKey(this.h))
 }
 
 func (this *QMetaAssociation) CreateIteratorAtKey(container unsafe.Pointer, key unsafe.Pointer) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QMetaAssociation_CreateIteratorAtKey(this.h, container, key))
+	return (unsafe.Pointer)(C.QMetaAssociation_createIteratorAtKey(this.h, container, key))
 }
 
 func (this *QMetaAssociation) CanCreateConstIteratorAtKey() bool {
-	return (bool)(C.QMetaAssociation_CanCreateConstIteratorAtKey(this.h))
+	return (bool)(C.QMetaAssociation_canCreateConstIteratorAtKey(this.h))
 }
 
 func (this *QMetaAssociation) CreateConstIteratorAtKey(container unsafe.Pointer, key unsafe.Pointer) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QMetaAssociation_CreateConstIteratorAtKey(this.h, container, key))
+	return (unsafe.Pointer)(C.QMetaAssociation_createConstIteratorAtKey(this.h, container, key))
 }
 
 // Delete this object from C++ memory.
 func (this *QMetaAssociation) Delete() {
-	C.QMetaAssociation_Delete(this.h)
+	C.QMetaAssociation_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -25,65 +25,65 @@ QTextOption* QTextOption_new3(QTextOption* o) {
 	return new QTextOption(*o);
 }
 
-void QTextOption_OperatorAssign(QTextOption* self, QTextOption* o) {
+void QTextOption_operatorAssign(QTextOption* self, QTextOption* o) {
 	self->operator=(*o);
 }
 
-void QTextOption_SetAlignment(QTextOption* self, int alignment) {
+void QTextOption_setAlignment(QTextOption* self, int alignment) {
 	self->setAlignment(static_cast<Qt::Alignment>(alignment));
 }
 
-int QTextOption_Alignment(const QTextOption* self) {
+int QTextOption_alignment(const QTextOption* self) {
 	Qt::Alignment _ret = self->alignment();
 	return static_cast<int>(_ret);
 }
 
-void QTextOption_SetTextDirection(QTextOption* self, int aDirection) {
+void QTextOption_setTextDirection(QTextOption* self, int aDirection) {
 	self->setTextDirection(static_cast<Qt::LayoutDirection>(aDirection));
 }
 
-int QTextOption_TextDirection(const QTextOption* self) {
+int QTextOption_textDirection(const QTextOption* self) {
 	Qt::LayoutDirection _ret = self->textDirection();
 	return static_cast<int>(_ret);
 }
 
-void QTextOption_SetWrapMode(QTextOption* self, int wrap) {
+void QTextOption_setWrapMode(QTextOption* self, int wrap) {
 	self->setWrapMode(static_cast<QTextOption::WrapMode>(wrap));
 }
 
-int QTextOption_WrapMode(const QTextOption* self) {
+int QTextOption_wrapMode(const QTextOption* self) {
 	QTextOption::WrapMode _ret = self->wrapMode();
 	return static_cast<int>(_ret);
 }
 
-void QTextOption_SetFlags(QTextOption* self, int flags) {
+void QTextOption_setFlags(QTextOption* self, int flags) {
 	self->setFlags(static_cast<QTextOption::Flags>(flags));
 }
 
-int QTextOption_Flags(const QTextOption* self) {
+int QTextOption_flags(const QTextOption* self) {
 	QTextOption::Flags _ret = self->flags();
 	return static_cast<int>(_ret);
 }
 
-void QTextOption_SetTabStop(QTextOption* self, double tabStop) {
+void QTextOption_setTabStop(QTextOption* self, double tabStop) {
 	self->setTabStop(static_cast<qreal>(tabStop));
 }
 
-double QTextOption_TabStop(const QTextOption* self) {
+double QTextOption_tabStop(const QTextOption* self) {
 	qreal _ret = self->tabStop();
 	return static_cast<double>(_ret);
 }
 
-void QTextOption_SetTabStopDistance(QTextOption* self, double tabStopDistance) {
+void QTextOption_setTabStopDistance(QTextOption* self, double tabStopDistance) {
 	self->setTabStopDistance(static_cast<qreal>(tabStopDistance));
 }
 
-double QTextOption_TabStopDistance(const QTextOption* self) {
+double QTextOption_tabStopDistance(const QTextOption* self) {
 	qreal _ret = self->tabStopDistance();
 	return static_cast<double>(_ret);
 }
 
-void QTextOption_SetTabArray(QTextOption* self, struct miqt_array /* of double */  tabStops) {
+void QTextOption_setTabArray(QTextOption* self, struct miqt_array /* of double */  tabStops) {
 	QList<qreal> tabStops_QList;
 	tabStops_QList.reserve(tabStops.len);
 	double* tabStops_arr = static_cast<double*>(tabStops.data);
@@ -93,7 +93,7 @@ void QTextOption_SetTabArray(QTextOption* self, struct miqt_array /* of double *
 	self->setTabArray(tabStops_QList);
 }
 
-struct miqt_array /* of double */  QTextOption_TabArray(const QTextOption* self) {
+struct miqt_array /* of double */  QTextOption_tabArray(const QTextOption* self) {
 	QList<qreal> _ret = self->tabArray();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	double* _arr = static_cast<double*>(malloc(sizeof(double) * _ret.length()));
@@ -106,7 +106,7 @@ struct miqt_array /* of double */  QTextOption_TabArray(const QTextOption* self)
 	return _out;
 }
 
-void QTextOption_SetTabs(QTextOption* self, struct miqt_array /* of QTextOption__Tab* */  tabStops) {
+void QTextOption_setTabs(QTextOption* self, struct miqt_array /* of QTextOption__Tab* */  tabStops) {
 	QList<QTextOption::Tab> tabStops_QList;
 	tabStops_QList.reserve(tabStops.len);
 	QTextOption__Tab** tabStops_arr = static_cast<QTextOption__Tab**>(tabStops.data);
@@ -116,7 +116,7 @@ void QTextOption_SetTabs(QTextOption* self, struct miqt_array /* of QTextOption_
 	self->setTabs(tabStops_QList);
 }
 
-struct miqt_array /* of QTextOption__Tab* */  QTextOption_Tabs(const QTextOption* self) {
+struct miqt_array /* of QTextOption__Tab* */  QTextOption_tabs(const QTextOption* self) {
 	QList<QTextOption::Tab> _ret = self->tabs();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QTextOption__Tab** _arr = static_cast<QTextOption__Tab**>(malloc(sizeof(QTextOption__Tab*) * _ret.length()));
@@ -129,15 +129,15 @@ struct miqt_array /* of QTextOption__Tab* */  QTextOption_Tabs(const QTextOption
 	return _out;
 }
 
-void QTextOption_SetUseDesignMetrics(QTextOption* self, bool b) {
+void QTextOption_setUseDesignMetrics(QTextOption* self, bool b) {
 	self->setUseDesignMetrics(b);
 }
 
-bool QTextOption_UseDesignMetrics(const QTextOption* self) {
+bool QTextOption_useDesignMetrics(const QTextOption* self) {
 	return self->useDesignMetrics();
 }
 
-void QTextOption_Delete(QTextOption* self) {
+void QTextOption_delete(QTextOption* self) {
 	delete self;
 }
 
@@ -157,15 +157,15 @@ QTextOption__Tab* QTextOption__Tab_new4(double pos, int tabType, QChar* delim) {
 	return new QTextOption::Tab(static_cast<qreal>(pos), static_cast<QTextOption::TabType>(tabType), *delim);
 }
 
-bool QTextOption__Tab_OperatorEqual(const QTextOption__Tab* self, QTextOption__Tab* other) {
+bool QTextOption__Tab_operatorEqual(const QTextOption__Tab* self, QTextOption__Tab* other) {
 	return (*self == *other);
 }
 
-bool QTextOption__Tab_OperatorNotEqual(const QTextOption__Tab* self, QTextOption__Tab* other) {
+bool QTextOption__Tab_operatorNotEqual(const QTextOption__Tab* self, QTextOption__Tab* other) {
 	return (*self != *other);
 }
 
-void QTextOption__Tab_Delete(QTextOption__Tab* self) {
+void QTextOption__Tab_delete(QTextOption__Tab* self) {
 	delete self;
 }
 

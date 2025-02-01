@@ -18,15 +18,15 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QAudioInput_StateChanged(intptr_t, int);
-void miqt_exec_callback_QAudioInput_Notify(intptr_t);
-bool miqt_exec_callback_QAudioInput_Event(QAudioInput*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAudioInput_EventFilter(QAudioInput*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAudioInput_TimerEvent(QAudioInput*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAudioInput_ChildEvent(QAudioInput*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAudioInput_CustomEvent(QAudioInput*, intptr_t, QEvent*);
-void miqt_exec_callback_QAudioInput_ConnectNotify(QAudioInput*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAudioInput_DisconnectNotify(QAudioInput*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAudioInput_stateChanged(intptr_t, int);
+void miqt_exec_callback_QAudioInput_notify(intptr_t);
+bool miqt_exec_callback_QAudioInput_event(QAudioInput*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAudioInput_eventFilter(QAudioInput*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAudioInput_timerEvent(QAudioInput*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAudioInput_childEvent(QAudioInput*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAudioInput_customEvent(QAudioInput*, intptr_t, QEvent*);
+void miqt_exec_callback_QAudioInput_connectNotify(QAudioInput*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAudioInput_disconnectNotify(QAudioInput*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -44,130 +44,130 @@ public:
 	virtual ~MiqtVirtualQAudioInput() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QAudioInput::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QAudioInput_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QAudioInput_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QAudioInput::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QAudioInput::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QAudioInput_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QAudioInput_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QAudioInput::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QAudioInput::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QAudioInput_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QAudioInput_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QAudioInput::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QAudioInput::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QAudioInput_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QAudioInput_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QAudioInput::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QAudioInput::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QAudioInput_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QAudioInput_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QAudioInput::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QAudioInput::connectNotify(signal);
 			return;
 		}
@@ -176,24 +176,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QAudioInput_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QAudioInput_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QAudioInput::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QAudioInput::disconnectNotify(signal);
 			return;
 		}
@@ -202,13 +202,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QAudioInput_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QAudioInput_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QAudioInput::disconnectNotify(*signal);
 
@@ -244,15 +244,15 @@ void QAudioInput_virtbase(QAudioInput* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QAudioInput_MetaObject(const QAudioInput* self) {
+QMetaObject* QAudioInput_metaObject(const QAudioInput* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QAudioInput_Metacast(QAudioInput* self, const char* param1) {
+void* QAudioInput_metacast(QAudioInput* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QAudioInput_Tr(const char* s) {
+struct miqt_string QAudioInput_tr(const char* s) {
 	QString _ret = QAudioInput::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -263,7 +263,7 @@ struct miqt_string QAudioInput_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QAudioInput_TrUtf8(const char* s) {
+struct miqt_string QAudioInput_trUtf8(const char* s) {
 	QString _ret = QAudioInput::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -274,110 +274,110 @@ struct miqt_string QAudioInput_TrUtf8(const char* s) {
 	return _ms;
 }
 
-QAudioFormat* QAudioInput_Format(const QAudioInput* self) {
+QAudioFormat* QAudioInput_format(const QAudioInput* self) {
 	return new QAudioFormat(self->format());
 }
 
-void QAudioInput_Start(QAudioInput* self, QIODevice* device) {
+void QAudioInput_start(QAudioInput* self, QIODevice* device) {
 	self->start(device);
 }
 
-QIODevice* QAudioInput_Start2(QAudioInput* self) {
+QIODevice* QAudioInput_start2(QAudioInput* self) {
 	return self->start();
 }
 
-void QAudioInput_Stop(QAudioInput* self) {
+void QAudioInput_stop(QAudioInput* self) {
 	self->stop();
 }
 
-void QAudioInput_Reset(QAudioInput* self) {
+void QAudioInput_reset(QAudioInput* self) {
 	self->reset();
 }
 
-void QAudioInput_Suspend(QAudioInput* self) {
+void QAudioInput_suspend(QAudioInput* self) {
 	self->suspend();
 }
 
-void QAudioInput_Resume(QAudioInput* self) {
+void QAudioInput_resume(QAudioInput* self) {
 	self->resume();
 }
 
-void QAudioInput_SetBufferSize(QAudioInput* self, int bytes) {
+void QAudioInput_setBufferSize(QAudioInput* self, int bytes) {
 	self->setBufferSize(static_cast<int>(bytes));
 }
 
-int QAudioInput_BufferSize(const QAudioInput* self) {
+int QAudioInput_bufferSize(const QAudioInput* self) {
 	return self->bufferSize();
 }
 
-int QAudioInput_BytesReady(const QAudioInput* self) {
+int QAudioInput_bytesReady(const QAudioInput* self) {
 	return self->bytesReady();
 }
 
-int QAudioInput_PeriodSize(const QAudioInput* self) {
+int QAudioInput_periodSize(const QAudioInput* self) {
 	return self->periodSize();
 }
 
-void QAudioInput_SetNotifyInterval(QAudioInput* self, int milliSeconds) {
+void QAudioInput_setNotifyInterval(QAudioInput* self, int milliSeconds) {
 	self->setNotifyInterval(static_cast<int>(milliSeconds));
 }
 
-int QAudioInput_NotifyInterval(const QAudioInput* self) {
+int QAudioInput_notifyInterval(const QAudioInput* self) {
 	return self->notifyInterval();
 }
 
-void QAudioInput_SetVolume(QAudioInput* self, double volume) {
+void QAudioInput_setVolume(QAudioInput* self, double volume) {
 	self->setVolume(static_cast<qreal>(volume));
 }
 
-double QAudioInput_Volume(const QAudioInput* self) {
+double QAudioInput_volume(const QAudioInput* self) {
 	qreal _ret = self->volume();
 	return static_cast<double>(_ret);
 }
 
-long long QAudioInput_ProcessedUSecs(const QAudioInput* self) {
+long long QAudioInput_processedUSecs(const QAudioInput* self) {
 	qint64 _ret = self->processedUSecs();
 	return static_cast<long long>(_ret);
 }
 
-long long QAudioInput_ElapsedUSecs(const QAudioInput* self) {
+long long QAudioInput_elapsedUSecs(const QAudioInput* self) {
 	qint64 _ret = self->elapsedUSecs();
 	return static_cast<long long>(_ret);
 }
 
-int QAudioInput_Error(const QAudioInput* self) {
+int QAudioInput_error(const QAudioInput* self) {
 	QAudio::Error _ret = self->error();
 	return static_cast<int>(_ret);
 }
 
-int QAudioInput_State(const QAudioInput* self) {
+int QAudioInput_state(const QAudioInput* self) {
 	QAudio::State _ret = self->state();
 	return static_cast<int>(_ret);
 }
 
-void QAudioInput_StateChanged(QAudioInput* self, int state) {
+void QAudioInput_stateChanged(QAudioInput* self, int state) {
 	self->stateChanged(static_cast<QAudio::State>(state));
 }
 
-void QAudioInput_connect_StateChanged(QAudioInput* self, intptr_t slot) {
+void QAudioInput_connect_stateChanged(QAudioInput* self, intptr_t slot) {
 	MiqtVirtualQAudioInput::connect(self, static_cast<void (QAudioInput::*)(QAudio::State)>(&QAudioInput::stateChanged), self, [=](QAudio::State state) {
 		QAudio::State state_ret = state;
 		int sigval1 = static_cast<int>(state_ret);
-		miqt_exec_callback_QAudioInput_StateChanged(slot, sigval1);
+		miqt_exec_callback_QAudioInput_stateChanged(slot, sigval1);
 	});
 }
 
-void QAudioInput_Notify(QAudioInput* self) {
+void QAudioInput_notify(QAudioInput* self) {
 	self->notify();
 }
 
-void QAudioInput_connect_Notify(QAudioInput* self, intptr_t slot) {
+void QAudioInput_connect_notify(QAudioInput* self, intptr_t slot) {
 	MiqtVirtualQAudioInput::connect(self, static_cast<void (QAudioInput::*)()>(&QAudioInput::notify), self, [=]() {
-		miqt_exec_callback_QAudioInput_Notify(slot);
+		miqt_exec_callback_QAudioInput_notify(slot);
 	});
 }
 
-struct miqt_string QAudioInput_Tr2(const char* s, const char* c) {
+struct miqt_string QAudioInput_tr2(const char* s, const char* c) {
 	QString _ret = QAudioInput::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -388,7 +388,7 @@ struct miqt_string QAudioInput_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QAudioInput_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QAudioInput_tr3(const char* s, const char* c, int n) {
 	QString _ret = QAudioInput::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -399,7 +399,7 @@ struct miqt_string QAudioInput_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string QAudioInput_TrUtf82(const char* s, const char* c) {
+struct miqt_string QAudioInput_trUtf82(const char* s, const char* c) {
 	QString _ret = QAudioInput::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -410,7 +410,7 @@ struct miqt_string QAudioInput_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QAudioInput_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QAudioInput_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QAudioInput::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -421,105 +421,105 @@ struct miqt_string QAudioInput_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QAudioInput_override_virtual_Event(void* self, intptr_t slot) {
+bool QAudioInput_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQAudioInput* self_cast = dynamic_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QAudioInput_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQAudioInput*)(self) )->virtualbase_Event(event);
+bool QAudioInput_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQAudioInput*)(self) )->virtualbase_event(event);
 }
 
-bool QAudioInput_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QAudioInput_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQAudioInput* self_cast = dynamic_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QAudioInput_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQAudioInput*)(self) )->virtualbase_EventFilter(watched, event);
+bool QAudioInput_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQAudioInput*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QAudioInput_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QAudioInput_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQAudioInput* self_cast = dynamic_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QAudioInput_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQAudioInput*)(self) )->virtualbase_TimerEvent(event);
+void QAudioInput_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQAudioInput*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QAudioInput_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QAudioInput_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQAudioInput* self_cast = dynamic_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QAudioInput_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQAudioInput*)(self) )->virtualbase_ChildEvent(event);
+void QAudioInput_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQAudioInput*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QAudioInput_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QAudioInput_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQAudioInput* self_cast = dynamic_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QAudioInput_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAudioInput*)(self) )->virtualbase_CustomEvent(event);
+void QAudioInput_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQAudioInput*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QAudioInput_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QAudioInput_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQAudioInput* self_cast = dynamic_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QAudioInput_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAudioInput*)(self) )->virtualbase_ConnectNotify(signal);
+void QAudioInput_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAudioInput*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QAudioInput_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QAudioInput_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQAudioInput* self_cast = dynamic_cast<MiqtVirtualQAudioInput*>( (QAudioInput*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QAudioInput_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAudioInput*)(self) )->virtualbase_DisconnectNotify(signal);
+void QAudioInput_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAudioInput*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QAudioInput_Delete(QAudioInput* self) {
+void QAudioInput_delete(QAudioInput* self) {
 	delete self;
 }
 

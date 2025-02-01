@@ -20,16 +20,16 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QMimeData_HasFormat(const QMimeData*, intptr_t, struct miqt_string);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QMimeData_Formats(const QMimeData*, intptr_t);
-QVariant* miqt_exec_callback_QMimeData_RetrieveData(const QMimeData*, intptr_t, struct miqt_string, QMetaType*);
-bool miqt_exec_callback_QMimeData_Event(QMimeData*, intptr_t, QEvent*);
-bool miqt_exec_callback_QMimeData_EventFilter(QMimeData*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QMimeData_TimerEvent(QMimeData*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QMimeData_ChildEvent(QMimeData*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QMimeData_CustomEvent(QMimeData*, intptr_t, QEvent*);
-void miqt_exec_callback_QMimeData_ConnectNotify(QMimeData*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QMimeData_DisconnectNotify(QMimeData*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QMimeData_hasFormat(const QMimeData*, intptr_t, struct miqt_string);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QMimeData_formats(const QMimeData*, intptr_t);
+QVariant* miqt_exec_callback_QMimeData_retrieveData(const QMimeData*, intptr_t, struct miqt_string, QMetaType*);
+bool miqt_exec_callback_QMimeData_event(QMimeData*, intptr_t, QEvent*);
+bool miqt_exec_callback_QMimeData_eventFilter(QMimeData*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QMimeData_timerEvent(QMimeData*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QMimeData_childEvent(QMimeData*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QMimeData_customEvent(QMimeData*, intptr_t, QEvent*);
+void miqt_exec_callback_QMimeData_connectNotify(QMimeData*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QMimeData_disconnectNotify(QMimeData*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -42,11 +42,11 @@ public:
 	virtual ~MiqtVirtualQMimeData() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HasFormat = 0;
+	intptr_t handle__hasFormat = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool hasFormat(const QString& mimetype) const override {
-		if (handle__HasFormat == 0) {
+		if (handle__hasFormat == 0) {
 			return QMimeData::hasFormat(mimetype);
 		}
 		
@@ -59,13 +59,13 @@ public:
 		memcpy(mimetype_ms.data, mimetype_b.data(), mimetype_ms.len);
 		struct miqt_string sigval1 = mimetype_ms;
 
-		bool callback_return_value = miqt_exec_callback_QMimeData_HasFormat(this, handle__HasFormat, sigval1);
+		bool callback_return_value = miqt_exec_callback_QMimeData_hasFormat(this, handle__hasFormat, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_HasFormat(struct miqt_string mimetype) const {
+	bool virtualbase_hasFormat(struct miqt_string mimetype) const {
 		QString mimetype_QString = QString::fromUtf8(mimetype.data, mimetype.len);
 
 		return QMimeData::hasFormat(mimetype_QString);
@@ -73,16 +73,16 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Formats = 0;
+	intptr_t handle__formats = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QStringList formats() const override {
-		if (handle__Formats == 0) {
+		if (handle__formats == 0) {
 			return QMimeData::formats();
 		}
 		
 
-		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QMimeData_Formats(this, handle__Formats);
+		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QMimeData_formats(this, handle__formats);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
@@ -95,7 +95,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	struct miqt_array /* of struct miqt_string */  virtualbase_Formats() const {
+	struct miqt_array /* of struct miqt_string */  virtualbase_formats() const {
 
 		QStringList _ret = QMimeData::formats();
 		// Convert QList<> from C++ memory to manually-managed C memory
@@ -118,11 +118,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__RetrieveData = 0;
+	intptr_t handle__retrieveData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QVariant retrieveData(const QString& mimetype, QMetaType preferredType) const override {
-		if (handle__RetrieveData == 0) {
+		if (handle__retrieveData == 0) {
 			return QMimeData::retrieveData(mimetype, preferredType);
 		}
 		
@@ -136,13 +136,13 @@ public:
 		struct miqt_string sigval1 = mimetype_ms;
 		QMetaType* sigval2 = new QMetaType(preferredType);
 
-		QVariant* callback_return_value = miqt_exec_callback_QMimeData_RetrieveData(this, handle__RetrieveData, sigval1, sigval2);
+		QVariant* callback_return_value = miqt_exec_callback_QMimeData_retrieveData(this, handle__retrieveData, sigval1, sigval2);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QVariant* virtualbase_RetrieveData(struct miqt_string mimetype, QMetaType* preferredType) const {
+	QVariant* virtualbase_retrieveData(struct miqt_string mimetype, QMetaType* preferredType) const {
 		QString mimetype_QString = QString::fromUtf8(mimetype.data, mimetype.len);
 
 		return new QVariant(QMimeData::retrieveData(mimetype_QString, *preferredType));
@@ -150,130 +150,130 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QMimeData::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QMimeData_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QMimeData_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QMimeData::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QMimeData::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QMimeData_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QMimeData_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QMimeData::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QMimeData::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QMimeData_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QMimeData_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QMimeData::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QMimeData::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QMimeData_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QMimeData_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QMimeData::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QMimeData::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QMimeData_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QMimeData_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QMimeData::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QMimeData::connectNotify(signal);
 			return;
 		}
@@ -282,24 +282,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QMimeData_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QMimeData_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QMimeData::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QMimeData::disconnectNotify(signal);
 			return;
 		}
@@ -308,13 +308,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QMimeData_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QMimeData_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QMimeData::disconnectNotify(*signal);
 
@@ -330,15 +330,15 @@ void QMimeData_virtbase(QMimeData* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QMimeData_MetaObject(const QMimeData* self) {
+QMetaObject* QMimeData_metaObject(const QMimeData* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QMimeData_Metacast(QMimeData* self, const char* param1) {
+void* QMimeData_metacast(QMimeData* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QMimeData_Tr(const char* s) {
+struct miqt_string QMimeData_tr(const char* s) {
 	QString _ret = QMimeData::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -349,7 +349,7 @@ struct miqt_string QMimeData_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_array /* of QUrl* */  QMimeData_Urls(const QMimeData* self) {
+struct miqt_array /* of QUrl* */  QMimeData_urls(const QMimeData* self) {
 	QList<QUrl> _ret = self->urls();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QUrl** _arr = static_cast<QUrl**>(malloc(sizeof(QUrl*) * _ret.length()));
@@ -362,7 +362,7 @@ struct miqt_array /* of QUrl* */  QMimeData_Urls(const QMimeData* self) {
 	return _out;
 }
 
-void QMimeData_SetUrls(QMimeData* self, struct miqt_array /* of QUrl* */  urls) {
+void QMimeData_setUrls(QMimeData* self, struct miqt_array /* of QUrl* */  urls) {
 	QList<QUrl> urls_QList;
 	urls_QList.reserve(urls.len);
 	QUrl** urls_arr = static_cast<QUrl**>(urls.data);
@@ -372,11 +372,11 @@ void QMimeData_SetUrls(QMimeData* self, struct miqt_array /* of QUrl* */  urls) 
 	self->setUrls(urls_QList);
 }
 
-bool QMimeData_HasUrls(const QMimeData* self) {
+bool QMimeData_hasUrls(const QMimeData* self) {
 	return self->hasUrls();
 }
 
-struct miqt_string QMimeData_Text(const QMimeData* self) {
+struct miqt_string QMimeData_text(const QMimeData* self) {
 	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -387,16 +387,16 @@ struct miqt_string QMimeData_Text(const QMimeData* self) {
 	return _ms;
 }
 
-void QMimeData_SetText(QMimeData* self, struct miqt_string text) {
+void QMimeData_setText(QMimeData* self, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setText(text_QString);
 }
 
-bool QMimeData_HasText(const QMimeData* self) {
+bool QMimeData_hasText(const QMimeData* self) {
 	return self->hasText();
 }
 
-struct miqt_string QMimeData_Html(const QMimeData* self) {
+struct miqt_string QMimeData_html(const QMimeData* self) {
 	QString _ret = self->html();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -407,40 +407,40 @@ struct miqt_string QMimeData_Html(const QMimeData* self) {
 	return _ms;
 }
 
-void QMimeData_SetHtml(QMimeData* self, struct miqt_string html) {
+void QMimeData_setHtml(QMimeData* self, struct miqt_string html) {
 	QString html_QString = QString::fromUtf8(html.data, html.len);
 	self->setHtml(html_QString);
 }
 
-bool QMimeData_HasHtml(const QMimeData* self) {
+bool QMimeData_hasHtml(const QMimeData* self) {
 	return self->hasHtml();
 }
 
-QVariant* QMimeData_ImageData(const QMimeData* self) {
+QVariant* QMimeData_imageData(const QMimeData* self) {
 	return new QVariant(self->imageData());
 }
 
-void QMimeData_SetImageData(QMimeData* self, QVariant* image) {
+void QMimeData_setImageData(QMimeData* self, QVariant* image) {
 	self->setImageData(*image);
 }
 
-bool QMimeData_HasImage(const QMimeData* self) {
+bool QMimeData_hasImage(const QMimeData* self) {
 	return self->hasImage();
 }
 
-QVariant* QMimeData_ColorData(const QMimeData* self) {
+QVariant* QMimeData_colorData(const QMimeData* self) {
 	return new QVariant(self->colorData());
 }
 
-void QMimeData_SetColorData(QMimeData* self, QVariant* color) {
+void QMimeData_setColorData(QMimeData* self, QVariant* color) {
 	self->setColorData(*color);
 }
 
-bool QMimeData_HasColor(const QMimeData* self) {
+bool QMimeData_hasColor(const QMimeData* self) {
 	return self->hasColor();
 }
 
-struct miqt_string QMimeData_Data(const QMimeData* self, struct miqt_string mimetype) {
+struct miqt_string QMimeData_data(const QMimeData* self, struct miqt_string mimetype) {
 	QString mimetype_QString = QString::fromUtf8(mimetype.data, mimetype.len);
 	QByteArray _qb = self->data(mimetype_QString);
 	struct miqt_string _ms;
@@ -450,23 +450,23 @@ struct miqt_string QMimeData_Data(const QMimeData* self, struct miqt_string mime
 	return _ms;
 }
 
-void QMimeData_SetData(QMimeData* self, struct miqt_string mimetype, struct miqt_string data) {
+void QMimeData_setData(QMimeData* self, struct miqt_string mimetype, struct miqt_string data) {
 	QString mimetype_QString = QString::fromUtf8(mimetype.data, mimetype.len);
 	QByteArray data_QByteArray(data.data, data.len);
 	self->setData(mimetype_QString, data_QByteArray);
 }
 
-void QMimeData_RemoveFormat(QMimeData* self, struct miqt_string mimetype) {
+void QMimeData_removeFormat(QMimeData* self, struct miqt_string mimetype) {
 	QString mimetype_QString = QString::fromUtf8(mimetype.data, mimetype.len);
 	self->removeFormat(mimetype_QString);
 }
 
-bool QMimeData_HasFormat(const QMimeData* self, struct miqt_string mimetype) {
+bool QMimeData_hasFormat(const QMimeData* self, struct miqt_string mimetype) {
 	QString mimetype_QString = QString::fromUtf8(mimetype.data, mimetype.len);
 	return self->hasFormat(mimetype_QString);
 }
 
-struct miqt_array /* of struct miqt_string */  QMimeData_Formats(const QMimeData* self) {
+struct miqt_array /* of struct miqt_string */  QMimeData_formats(const QMimeData* self) {
 	QStringList _ret = self->formats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -486,11 +486,11 @@ struct miqt_array /* of struct miqt_string */  QMimeData_Formats(const QMimeData
 	return _out;
 }
 
-void QMimeData_Clear(QMimeData* self) {
+void QMimeData_clear(QMimeData* self) {
 	self->clear();
 }
 
-struct miqt_string QMimeData_Tr2(const char* s, const char* c) {
+struct miqt_string QMimeData_tr2(const char* s, const char* c) {
 	QString _ret = QMimeData::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -501,7 +501,7 @@ struct miqt_string QMimeData_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QMimeData_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QMimeData_tr3(const char* s, const char* c, int n) {
 	QString _ret = QMimeData::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -512,147 +512,147 @@ struct miqt_string QMimeData_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QMimeData_override_virtual_HasFormat(void* self, intptr_t slot) {
+bool QMimeData_override_virtual_hasFormat(void* self, intptr_t slot) {
 	MiqtVirtualQMimeData* self_cast = dynamic_cast<MiqtVirtualQMimeData*>( (QMimeData*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HasFormat = slot;
+	self_cast->handle__hasFormat = slot;
 	return true;
 }
 
-bool QMimeData_virtualbase_HasFormat(const void* self, struct miqt_string mimetype) {
-	return ( (const MiqtVirtualQMimeData*)(self) )->virtualbase_HasFormat(mimetype);
+bool QMimeData_virtualbase_hasFormat(const void* self, struct miqt_string mimetype) {
+	return ( (const MiqtVirtualQMimeData*)(self) )->virtualbase_hasFormat(mimetype);
 }
 
-bool QMimeData_override_virtual_Formats(void* self, intptr_t slot) {
+bool QMimeData_override_virtual_formats(void* self, intptr_t slot) {
 	MiqtVirtualQMimeData* self_cast = dynamic_cast<MiqtVirtualQMimeData*>( (QMimeData*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Formats = slot;
+	self_cast->handle__formats = slot;
 	return true;
 }
 
-struct miqt_array /* of struct miqt_string */  QMimeData_virtualbase_Formats(const void* self) {
-	return ( (const MiqtVirtualQMimeData*)(self) )->virtualbase_Formats();
+struct miqt_array /* of struct miqt_string */  QMimeData_virtualbase_formats(const void* self) {
+	return ( (const MiqtVirtualQMimeData*)(self) )->virtualbase_formats();
 }
 
-bool QMimeData_override_virtual_RetrieveData(void* self, intptr_t slot) {
+bool QMimeData_override_virtual_retrieveData(void* self, intptr_t slot) {
 	MiqtVirtualQMimeData* self_cast = dynamic_cast<MiqtVirtualQMimeData*>( (QMimeData*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__RetrieveData = slot;
+	self_cast->handle__retrieveData = slot;
 	return true;
 }
 
-QVariant* QMimeData_virtualbase_RetrieveData(const void* self, struct miqt_string mimetype, QMetaType* preferredType) {
-	return ( (const MiqtVirtualQMimeData*)(self) )->virtualbase_RetrieveData(mimetype, preferredType);
+QVariant* QMimeData_virtualbase_retrieveData(const void* self, struct miqt_string mimetype, QMetaType* preferredType) {
+	return ( (const MiqtVirtualQMimeData*)(self) )->virtualbase_retrieveData(mimetype, preferredType);
 }
 
-bool QMimeData_override_virtual_Event(void* self, intptr_t slot) {
+bool QMimeData_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQMimeData* self_cast = dynamic_cast<MiqtVirtualQMimeData*>( (QMimeData*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QMimeData_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQMimeData*)(self) )->virtualbase_Event(event);
+bool QMimeData_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQMimeData*)(self) )->virtualbase_event(event);
 }
 
-bool QMimeData_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QMimeData_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQMimeData* self_cast = dynamic_cast<MiqtVirtualQMimeData*>( (QMimeData*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QMimeData_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQMimeData*)(self) )->virtualbase_EventFilter(watched, event);
+bool QMimeData_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQMimeData*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QMimeData_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QMimeData_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQMimeData* self_cast = dynamic_cast<MiqtVirtualQMimeData*>( (QMimeData*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QMimeData_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQMimeData*)(self) )->virtualbase_TimerEvent(event);
+void QMimeData_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQMimeData*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QMimeData_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QMimeData_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQMimeData* self_cast = dynamic_cast<MiqtVirtualQMimeData*>( (QMimeData*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QMimeData_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQMimeData*)(self) )->virtualbase_ChildEvent(event);
+void QMimeData_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQMimeData*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QMimeData_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QMimeData_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQMimeData* self_cast = dynamic_cast<MiqtVirtualQMimeData*>( (QMimeData*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QMimeData_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQMimeData*)(self) )->virtualbase_CustomEvent(event);
+void QMimeData_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQMimeData*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QMimeData_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QMimeData_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQMimeData* self_cast = dynamic_cast<MiqtVirtualQMimeData*>( (QMimeData*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QMimeData_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQMimeData*)(self) )->virtualbase_ConnectNotify(signal);
+void QMimeData_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQMimeData*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QMimeData_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QMimeData_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQMimeData* self_cast = dynamic_cast<MiqtVirtualQMimeData*>( (QMimeData*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QMimeData_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQMimeData*)(self) )->virtualbase_DisconnectNotify(signal);
+void QMimeData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQMimeData*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QMimeData_Delete(QMimeData* self) {
+void QMimeData_delete(QMimeData* self) {
 	delete self;
 }
 

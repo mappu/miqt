@@ -22,15 +22,15 @@ QFontInfo* QFontInfo_new2(QFontInfo* param1) {
 	return new QFontInfo(*param1);
 }
 
-void QFontInfo_OperatorAssign(QFontInfo* self, QFontInfo* param1) {
+void QFontInfo_operatorAssign(QFontInfo* self, QFontInfo* param1) {
 	self->operator=(*param1);
 }
 
-void QFontInfo_Swap(QFontInfo* self, QFontInfo* other) {
+void QFontInfo_swap(QFontInfo* self, QFontInfo* other) {
 	self->swap(*other);
 }
 
-struct miqt_string QFontInfo_Family(const QFontInfo* self) {
+struct miqt_string QFontInfo_family(const QFontInfo* self) {
 	QString _ret = self->family();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -41,7 +41,7 @@ struct miqt_string QFontInfo_Family(const QFontInfo* self) {
 	return _ms;
 }
 
-struct miqt_string QFontInfo_StyleName(const QFontInfo* self) {
+struct miqt_string QFontInfo_styleName(const QFontInfo* self) {
 	QString _ret = self->styleName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -52,66 +52,66 @@ struct miqt_string QFontInfo_StyleName(const QFontInfo* self) {
 	return _ms;
 }
 
-int QFontInfo_PixelSize(const QFontInfo* self) {
+int QFontInfo_pixelSize(const QFontInfo* self) {
 	return self->pixelSize();
 }
 
-int QFontInfo_PointSize(const QFontInfo* self) {
+int QFontInfo_pointSize(const QFontInfo* self) {
 	return self->pointSize();
 }
 
-double QFontInfo_PointSizeF(const QFontInfo* self) {
+double QFontInfo_pointSizeF(const QFontInfo* self) {
 	qreal _ret = self->pointSizeF();
 	return static_cast<double>(_ret);
 }
 
-bool QFontInfo_Italic(const QFontInfo* self) {
+bool QFontInfo_italic(const QFontInfo* self) {
 	return self->italic();
 }
 
-int QFontInfo_Style(const QFontInfo* self) {
+int QFontInfo_style(const QFontInfo* self) {
 	QFont::Style _ret = self->style();
 	return static_cast<int>(_ret);
 }
 
-int QFontInfo_Weight(const QFontInfo* self) {
+int QFontInfo_weight(const QFontInfo* self) {
 	return self->weight();
 }
 
-bool QFontInfo_Bold(const QFontInfo* self) {
+bool QFontInfo_bold(const QFontInfo* self) {
 	return self->bold();
 }
 
-bool QFontInfo_Underline(const QFontInfo* self) {
+bool QFontInfo_underline(const QFontInfo* self) {
 	return self->underline();
 }
 
-bool QFontInfo_Overline(const QFontInfo* self) {
+bool QFontInfo_overline(const QFontInfo* self) {
 	return self->overline();
 }
 
-bool QFontInfo_StrikeOut(const QFontInfo* self) {
+bool QFontInfo_strikeOut(const QFontInfo* self) {
 	return self->strikeOut();
 }
 
-bool QFontInfo_FixedPitch(const QFontInfo* self) {
+bool QFontInfo_fixedPitch(const QFontInfo* self) {
 	return self->fixedPitch();
 }
 
-int QFontInfo_StyleHint(const QFontInfo* self) {
+int QFontInfo_styleHint(const QFontInfo* self) {
 	QFont::StyleHint _ret = self->styleHint();
 	return static_cast<int>(_ret);
 }
 
-int QFontInfo_LegacyWeight(const QFontInfo* self) {
+int QFontInfo_legacyWeight(const QFontInfo* self) {
 	return self->legacyWeight();
 }
 
-bool QFontInfo_ExactMatch(const QFontInfo* self) {
+bool QFontInfo_exactMatch(const QFontInfo* self) {
 	return self->exactMatch();
 }
 
-void QFontInfo_Delete(QFontInfo* self) {
+void QFontInfo_delete(QFontInfo* self) {
 	delete self;
 }
 

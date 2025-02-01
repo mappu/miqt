@@ -25,15 +25,15 @@ typedef struct QWebEngineClientCertificateSelection QWebEngineClientCertificateS
 #endif
 
 QWebEngineClientCertificateSelection* QWebEngineClientCertificateSelection_new(QWebEngineClientCertificateSelection* param1);
-void QWebEngineClientCertificateSelection_OperatorAssign(QWebEngineClientCertificateSelection* self, QWebEngineClientCertificateSelection* param1);
-QUrl* QWebEngineClientCertificateSelection_Host(const QWebEngineClientCertificateSelection* self);
-void QWebEngineClientCertificateSelection_Select(QWebEngineClientCertificateSelection* self, QSslCertificate* certificate);
-void QWebEngineClientCertificateSelection_SelectNone(QWebEngineClientCertificateSelection* self);
-struct miqt_array /* of QSslCertificate* */  QWebEngineClientCertificateSelection_Certificates(const QWebEngineClientCertificateSelection* self);
-void QWebEngineClientCertificateSelection_Delete(QWebEngineClientCertificateSelection* self);
+void QWebEngineClientCertificateSelection_operatorAssign(QWebEngineClientCertificateSelection* self, QWebEngineClientCertificateSelection* param1);
+QUrl* QWebEngineClientCertificateSelection_host(const QWebEngineClientCertificateSelection* self);
+void QWebEngineClientCertificateSelection_select(QWebEngineClientCertificateSelection* self, QSslCertificate* certificate);
+void QWebEngineClientCertificateSelection_selectNone(QWebEngineClientCertificateSelection* self);
+struct miqt_array /* of QSslCertificate* */  QWebEngineClientCertificateSelection_certificates(const QWebEngineClientCertificateSelection* self);
+void QWebEngineClientCertificateSelection_delete(QWebEngineClientCertificateSelection* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

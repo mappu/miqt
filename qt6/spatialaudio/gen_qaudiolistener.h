@@ -38,29 +38,29 @@ typedef struct QVector3D QVector3D;
 
 QAudioListener* QAudioListener_new(QAudioEngine* engine);
 void QAudioListener_virtbase(QAudioListener* src, QObject** outptr_QObject);
-void QAudioListener_SetPosition(QAudioListener* self, QVector3D* pos);
-QVector3D* QAudioListener_Position(const QAudioListener* self);
-void QAudioListener_SetRotation(QAudioListener* self, QQuaternion* q);
-QQuaternion* QAudioListener_Rotation(const QAudioListener* self);
-QAudioEngine* QAudioListener_Engine(const QAudioListener* self);
-bool QAudioListener_override_virtual_Event(void* self, intptr_t slot);
-bool QAudioListener_virtualbase_Event(void* self, QEvent* event);
-bool QAudioListener_override_virtual_EventFilter(void* self, intptr_t slot);
-bool QAudioListener_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-bool QAudioListener_override_virtual_TimerEvent(void* self, intptr_t slot);
-void QAudioListener_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-bool QAudioListener_override_virtual_ChildEvent(void* self, intptr_t slot);
-void QAudioListener_virtualbase_ChildEvent(void* self, QChildEvent* event);
-bool QAudioListener_override_virtual_CustomEvent(void* self, intptr_t slot);
-void QAudioListener_virtualbase_CustomEvent(void* self, QEvent* event);
-bool QAudioListener_override_virtual_ConnectNotify(void* self, intptr_t slot);
-void QAudioListener_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-bool QAudioListener_override_virtual_DisconnectNotify(void* self, intptr_t slot);
-void QAudioListener_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QAudioListener_Delete(QAudioListener* self);
+void QAudioListener_setPosition(QAudioListener* self, QVector3D* pos);
+QVector3D* QAudioListener_position(const QAudioListener* self);
+void QAudioListener_setRotation(QAudioListener* self, QQuaternion* q);
+QQuaternion* QAudioListener_rotation(const QAudioListener* self);
+QAudioEngine* QAudioListener_engine(const QAudioListener* self);
+bool QAudioListener_override_virtual_event(void* self, intptr_t slot);
+bool QAudioListener_virtualbase_event(void* self, QEvent* event);
+bool QAudioListener_override_virtual_eventFilter(void* self, intptr_t slot);
+bool QAudioListener_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
+bool QAudioListener_override_virtual_timerEvent(void* self, intptr_t slot);
+void QAudioListener_virtualbase_timerEvent(void* self, QTimerEvent* event);
+bool QAudioListener_override_virtual_childEvent(void* self, intptr_t slot);
+void QAudioListener_virtualbase_childEvent(void* self, QChildEvent* event);
+bool QAudioListener_override_virtual_customEvent(void* self, intptr_t slot);
+void QAudioListener_virtualbase_customEvent(void* self, QEvent* event);
+bool QAudioListener_override_virtual_connectNotify(void* self, intptr_t slot);
+void QAudioListener_virtualbase_connectNotify(void* self, QMetaMethod* signal);
+bool QAudioListener_override_virtual_disconnectNotify(void* self, intptr_t slot);
+void QAudioListener_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QAudioListener_delete(QAudioListener* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

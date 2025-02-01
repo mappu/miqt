@@ -17,21 +17,21 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QButtonGroup_ButtonClicked(intptr_t, QAbstractButton*);
-void miqt_exec_callback_QButtonGroup_ButtonPressed(intptr_t, QAbstractButton*);
-void miqt_exec_callback_QButtonGroup_ButtonReleased(intptr_t, QAbstractButton*);
-void miqt_exec_callback_QButtonGroup_ButtonToggled(intptr_t, QAbstractButton*, bool);
-void miqt_exec_callback_QButtonGroup_IdClicked(intptr_t, int);
-void miqt_exec_callback_QButtonGroup_IdPressed(intptr_t, int);
-void miqt_exec_callback_QButtonGroup_IdReleased(intptr_t, int);
-void miqt_exec_callback_QButtonGroup_IdToggled(intptr_t, int, bool);
-bool miqt_exec_callback_QButtonGroup_Event(QButtonGroup*, intptr_t, QEvent*);
-bool miqt_exec_callback_QButtonGroup_EventFilter(QButtonGroup*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QButtonGroup_TimerEvent(QButtonGroup*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QButtonGroup_ChildEvent(QButtonGroup*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QButtonGroup_CustomEvent(QButtonGroup*, intptr_t, QEvent*);
-void miqt_exec_callback_QButtonGroup_ConnectNotify(QButtonGroup*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QButtonGroup_DisconnectNotify(QButtonGroup*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QButtonGroup_buttonClicked(intptr_t, QAbstractButton*);
+void miqt_exec_callback_QButtonGroup_buttonPressed(intptr_t, QAbstractButton*);
+void miqt_exec_callback_QButtonGroup_buttonReleased(intptr_t, QAbstractButton*);
+void miqt_exec_callback_QButtonGroup_buttonToggled(intptr_t, QAbstractButton*, bool);
+void miqt_exec_callback_QButtonGroup_idClicked(intptr_t, int);
+void miqt_exec_callback_QButtonGroup_idPressed(intptr_t, int);
+void miqt_exec_callback_QButtonGroup_idReleased(intptr_t, int);
+void miqt_exec_callback_QButtonGroup_idToggled(intptr_t, int, bool);
+bool miqt_exec_callback_QButtonGroup_event(QButtonGroup*, intptr_t, QEvent*);
+bool miqt_exec_callback_QButtonGroup_eventFilter(QButtonGroup*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QButtonGroup_timerEvent(QButtonGroup*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QButtonGroup_childEvent(QButtonGroup*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QButtonGroup_customEvent(QButtonGroup*, intptr_t, QEvent*);
+void miqt_exec_callback_QButtonGroup_connectNotify(QButtonGroup*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QButtonGroup_disconnectNotify(QButtonGroup*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -45,130 +45,130 @@ public:
 	virtual ~MiqtVirtualQButtonGroup() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QButtonGroup::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QButtonGroup_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QButtonGroup_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QButtonGroup::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QButtonGroup::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QButtonGroup_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QButtonGroup_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QButtonGroup::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QButtonGroup::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QButtonGroup_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QButtonGroup_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QButtonGroup::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QButtonGroup::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QButtonGroup_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QButtonGroup_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QButtonGroup::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QButtonGroup::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QButtonGroup_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QButtonGroup_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QButtonGroup::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QButtonGroup::connectNotify(signal);
 			return;
 		}
@@ -177,24 +177,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QButtonGroup_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QButtonGroup_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QButtonGroup::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QButtonGroup::disconnectNotify(signal);
 			return;
 		}
@@ -203,13 +203,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QButtonGroup_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QButtonGroup_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QButtonGroup::disconnectNotify(*signal);
 
@@ -229,15 +229,15 @@ void QButtonGroup_virtbase(QButtonGroup* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QButtonGroup_MetaObject(const QButtonGroup* self) {
+QMetaObject* QButtonGroup_metaObject(const QButtonGroup* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QButtonGroup_Metacast(QButtonGroup* self, const char* param1) {
+void* QButtonGroup_metacast(QButtonGroup* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QButtonGroup_Tr(const char* s) {
+struct miqt_string QButtonGroup_tr(const char* s) {
 	QString _ret = QButtonGroup::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -248,23 +248,23 @@ struct miqt_string QButtonGroup_Tr(const char* s) {
 	return _ms;
 }
 
-void QButtonGroup_SetExclusive(QButtonGroup* self, bool exclusive) {
+void QButtonGroup_setExclusive(QButtonGroup* self, bool exclusive) {
 	self->setExclusive(exclusive);
 }
 
-bool QButtonGroup_Exclusive(const QButtonGroup* self) {
+bool QButtonGroup_exclusive(const QButtonGroup* self) {
 	return self->exclusive();
 }
 
-void QButtonGroup_AddButton(QButtonGroup* self, QAbstractButton* param1) {
+void QButtonGroup_addButton(QButtonGroup* self, QAbstractButton* param1) {
 	self->addButton(param1);
 }
 
-void QButtonGroup_RemoveButton(QButtonGroup* self, QAbstractButton* param1) {
+void QButtonGroup_removeButton(QButtonGroup* self, QAbstractButton* param1) {
 	self->removeButton(param1);
 }
 
-struct miqt_array /* of QAbstractButton* */  QButtonGroup_Buttons(const QButtonGroup* self) {
+struct miqt_array /* of QAbstractButton* */  QButtonGroup_buttons(const QButtonGroup* self) {
 	QList<QAbstractButton *> _ret = self->buttons();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractButton** _arr = static_cast<QAbstractButton**>(malloc(sizeof(QAbstractButton*) * _ret.length()));
@@ -277,117 +277,117 @@ struct miqt_array /* of QAbstractButton* */  QButtonGroup_Buttons(const QButtonG
 	return _out;
 }
 
-QAbstractButton* QButtonGroup_CheckedButton(const QButtonGroup* self) {
+QAbstractButton* QButtonGroup_checkedButton(const QButtonGroup* self) {
 	return self->checkedButton();
 }
 
-QAbstractButton* QButtonGroup_Button(const QButtonGroup* self, int id) {
+QAbstractButton* QButtonGroup_button(const QButtonGroup* self, int id) {
 	return self->button(static_cast<int>(id));
 }
 
-void QButtonGroup_SetId(QButtonGroup* self, QAbstractButton* button, int id) {
+void QButtonGroup_setId(QButtonGroup* self, QAbstractButton* button, int id) {
 	self->setId(button, static_cast<int>(id));
 }
 
-int QButtonGroup_Id(const QButtonGroup* self, QAbstractButton* button) {
+int QButtonGroup_id(const QButtonGroup* self, QAbstractButton* button) {
 	return self->id(button);
 }
 
-int QButtonGroup_CheckedId(const QButtonGroup* self) {
+int QButtonGroup_checkedId(const QButtonGroup* self) {
 	return self->checkedId();
 }
 
-void QButtonGroup_ButtonClicked(QButtonGroup* self, QAbstractButton* param1) {
+void QButtonGroup_buttonClicked(QButtonGroup* self, QAbstractButton* param1) {
 	self->buttonClicked(param1);
 }
 
-void QButtonGroup_connect_ButtonClicked(QButtonGroup* self, intptr_t slot) {
+void QButtonGroup_connect_buttonClicked(QButtonGroup* self, intptr_t slot) {
 	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonClicked), self, [=](QAbstractButton* param1) {
 		QAbstractButton* sigval1 = param1;
-		miqt_exec_callback_QButtonGroup_ButtonClicked(slot, sigval1);
+		miqt_exec_callback_QButtonGroup_buttonClicked(slot, sigval1);
 	});
 }
 
-void QButtonGroup_ButtonPressed(QButtonGroup* self, QAbstractButton* param1) {
+void QButtonGroup_buttonPressed(QButtonGroup* self, QAbstractButton* param1) {
 	self->buttonPressed(param1);
 }
 
-void QButtonGroup_connect_ButtonPressed(QButtonGroup* self, intptr_t slot) {
+void QButtonGroup_connect_buttonPressed(QButtonGroup* self, intptr_t slot) {
 	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonPressed), self, [=](QAbstractButton* param1) {
 		QAbstractButton* sigval1 = param1;
-		miqt_exec_callback_QButtonGroup_ButtonPressed(slot, sigval1);
+		miqt_exec_callback_QButtonGroup_buttonPressed(slot, sigval1);
 	});
 }
 
-void QButtonGroup_ButtonReleased(QButtonGroup* self, QAbstractButton* param1) {
+void QButtonGroup_buttonReleased(QButtonGroup* self, QAbstractButton* param1) {
 	self->buttonReleased(param1);
 }
 
-void QButtonGroup_connect_ButtonReleased(QButtonGroup* self, intptr_t slot) {
+void QButtonGroup_connect_buttonReleased(QButtonGroup* self, intptr_t slot) {
 	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*)>(&QButtonGroup::buttonReleased), self, [=](QAbstractButton* param1) {
 		QAbstractButton* sigval1 = param1;
-		miqt_exec_callback_QButtonGroup_ButtonReleased(slot, sigval1);
+		miqt_exec_callback_QButtonGroup_buttonReleased(slot, sigval1);
 	});
 }
 
-void QButtonGroup_ButtonToggled(QButtonGroup* self, QAbstractButton* param1, bool param2) {
+void QButtonGroup_buttonToggled(QButtonGroup* self, QAbstractButton* param1, bool param2) {
 	self->buttonToggled(param1, param2);
 }
 
-void QButtonGroup_connect_ButtonToggled(QButtonGroup* self, intptr_t slot) {
+void QButtonGroup_connect_buttonToggled(QButtonGroup* self, intptr_t slot) {
 	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(QAbstractButton*, bool)>(&QButtonGroup::buttonToggled), self, [=](QAbstractButton* param1, bool param2) {
 		QAbstractButton* sigval1 = param1;
 		bool sigval2 = param2;
-		miqt_exec_callback_QButtonGroup_ButtonToggled(slot, sigval1, sigval2);
+		miqt_exec_callback_QButtonGroup_buttonToggled(slot, sigval1, sigval2);
 	});
 }
 
-void QButtonGroup_IdClicked(QButtonGroup* self, int param1) {
+void QButtonGroup_idClicked(QButtonGroup* self, int param1) {
 	self->idClicked(static_cast<int>(param1));
 }
 
-void QButtonGroup_connect_IdClicked(QButtonGroup* self, intptr_t slot) {
+void QButtonGroup_connect_idClicked(QButtonGroup* self, intptr_t slot) {
 	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idClicked), self, [=](int param1) {
 		int sigval1 = param1;
-		miqt_exec_callback_QButtonGroup_IdClicked(slot, sigval1);
+		miqt_exec_callback_QButtonGroup_idClicked(slot, sigval1);
 	});
 }
 
-void QButtonGroup_IdPressed(QButtonGroup* self, int param1) {
+void QButtonGroup_idPressed(QButtonGroup* self, int param1) {
 	self->idPressed(static_cast<int>(param1));
 }
 
-void QButtonGroup_connect_IdPressed(QButtonGroup* self, intptr_t slot) {
+void QButtonGroup_connect_idPressed(QButtonGroup* self, intptr_t slot) {
 	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idPressed), self, [=](int param1) {
 		int sigval1 = param1;
-		miqt_exec_callback_QButtonGroup_IdPressed(slot, sigval1);
+		miqt_exec_callback_QButtonGroup_idPressed(slot, sigval1);
 	});
 }
 
-void QButtonGroup_IdReleased(QButtonGroup* self, int param1) {
+void QButtonGroup_idReleased(QButtonGroup* self, int param1) {
 	self->idReleased(static_cast<int>(param1));
 }
 
-void QButtonGroup_connect_IdReleased(QButtonGroup* self, intptr_t slot) {
+void QButtonGroup_connect_idReleased(QButtonGroup* self, intptr_t slot) {
 	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int)>(&QButtonGroup::idReleased), self, [=](int param1) {
 		int sigval1 = param1;
-		miqt_exec_callback_QButtonGroup_IdReleased(slot, sigval1);
+		miqt_exec_callback_QButtonGroup_idReleased(slot, sigval1);
 	});
 }
 
-void QButtonGroup_IdToggled(QButtonGroup* self, int param1, bool param2) {
+void QButtonGroup_idToggled(QButtonGroup* self, int param1, bool param2) {
 	self->idToggled(static_cast<int>(param1), param2);
 }
 
-void QButtonGroup_connect_IdToggled(QButtonGroup* self, intptr_t slot) {
+void QButtonGroup_connect_idToggled(QButtonGroup* self, intptr_t slot) {
 	MiqtVirtualQButtonGroup::connect(self, static_cast<void (QButtonGroup::*)(int, bool)>(&QButtonGroup::idToggled), self, [=](int param1, bool param2) {
 		int sigval1 = param1;
 		bool sigval2 = param2;
-		miqt_exec_callback_QButtonGroup_IdToggled(slot, sigval1, sigval2);
+		miqt_exec_callback_QButtonGroup_idToggled(slot, sigval1, sigval2);
 	});
 }
 
-struct miqt_string QButtonGroup_Tr2(const char* s, const char* c) {
+struct miqt_string QButtonGroup_tr2(const char* s, const char* c) {
 	QString _ret = QButtonGroup::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -398,7 +398,7 @@ struct miqt_string QButtonGroup_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QButtonGroup_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QButtonGroup_tr3(const char* s, const char* c, int n) {
 	QString _ret = QButtonGroup::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -409,109 +409,109 @@ struct miqt_string QButtonGroup_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QButtonGroup_AddButton2(QButtonGroup* self, QAbstractButton* param1, int id) {
+void QButtonGroup_addButton2(QButtonGroup* self, QAbstractButton* param1, int id) {
 	self->addButton(param1, static_cast<int>(id));
 }
 
-bool QButtonGroup_override_virtual_Event(void* self, intptr_t slot) {
+bool QButtonGroup_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QButtonGroup_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_Event(event);
+bool QButtonGroup_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_event(event);
 }
 
-bool QButtonGroup_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QButtonGroup_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QButtonGroup_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_EventFilter(watched, event);
+bool QButtonGroup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QButtonGroup_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QButtonGroup_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QButtonGroup_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_TimerEvent(event);
+void QButtonGroup_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QButtonGroup_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QButtonGroup_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QButtonGroup_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_ChildEvent(event);
+void QButtonGroup_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QButtonGroup_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QButtonGroup_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QButtonGroup_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_CustomEvent(event);
+void QButtonGroup_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QButtonGroup_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QButtonGroup_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QButtonGroup_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_ConnectNotify(signal);
+void QButtonGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QButtonGroup_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QButtonGroup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQButtonGroup* self_cast = dynamic_cast<MiqtVirtualQButtonGroup*>( (QButtonGroup*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QButtonGroup_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_DisconnectNotify(signal);
+void QButtonGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQButtonGroup*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QButtonGroup_Delete(QButtonGroup* self) {
+void QButtonGroup_delete(QButtonGroup* self) {
 	delete self;
 }
 

@@ -1727,7 +1727,7 @@ func UnsafeNewQInternal(h unsafe.Pointer) *QInternal {
 
 // Delete this object from C++ memory.
 func (this *QInternal) Delete() {
-	C.QInternal_Delete(this.h)
+	C.QInternal_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

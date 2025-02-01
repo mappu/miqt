@@ -83,19 +83,19 @@ func NewQPluginLoader4(fileName string, parent *QObject) *QPluginLoader {
 }
 
 func (this *QPluginLoader) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QPluginLoader_MetaObject(this.h))
+	return newQMetaObject(C.QPluginLoader_metaObject(this.h))
 }
 
 func (this *QPluginLoader) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QPluginLoader_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QPluginLoader_metacast(this.h, param1_Cstring))
 }
 
 func QPluginLoader_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QPluginLoader_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QPluginLoader_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -104,24 +104,24 @@ func QPluginLoader_Tr(s string) string {
 func QPluginLoader_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QPluginLoader_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QPluginLoader_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPluginLoader) Instance() *QObject {
-	return newQObject(C.QPluginLoader_Instance(this.h))
+	return newQObject(C.QPluginLoader_instance(this.h))
 }
 
 func (this *QPluginLoader) MetaData() *QJsonObject {
-	_goptr := newQJsonObject(C.QPluginLoader_MetaData(this.h))
+	_goptr := newQJsonObject(C.QPluginLoader_metaData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPluginLoader_StaticInstances() []*QObject {
-	var _ma C.struct_miqt_array = C.QPluginLoader_StaticInstances()
+	var _ma C.struct_miqt_array = C.QPluginLoader_staticInstances()
 	_ret := make([]*QObject, int(_ma.len))
 	_outCast := (*[0xffff]*C.QObject)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -131,7 +131,7 @@ func QPluginLoader_StaticInstances() []*QObject {
 }
 
 func QPluginLoader_StaticPlugins() []QStaticPlugin {
-	var _ma C.struct_miqt_array = C.QPluginLoader_StaticPlugins()
+	var _ma C.struct_miqt_array = C.QPluginLoader_staticPlugins()
 	_ret := make([]QStaticPlugin, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStaticPlugin)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -143,15 +143,15 @@ func QPluginLoader_StaticPlugins() []QStaticPlugin {
 }
 
 func (this *QPluginLoader) Load() bool {
-	return (bool)(C.QPluginLoader_Load(this.h))
+	return (bool)(C.QPluginLoader_load(this.h))
 }
 
 func (this *QPluginLoader) Unload() bool {
-	return (bool)(C.QPluginLoader_Unload(this.h))
+	return (bool)(C.QPluginLoader_unload(this.h))
 }
 
 func (this *QPluginLoader) IsLoaded() bool {
-	return (bool)(C.QPluginLoader_IsLoaded(this.h))
+	return (bool)(C.QPluginLoader_isLoaded(this.h))
 }
 
 func (this *QPluginLoader) SetFileName(fileName string) {
@@ -159,29 +159,29 @@ func (this *QPluginLoader) SetFileName(fileName string) {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	C.QPluginLoader_SetFileName(this.h, fileName_ms)
+	C.QPluginLoader_setFileName(this.h, fileName_ms)
 }
 
 func (this *QPluginLoader) FileName() string {
-	var _ms C.struct_miqt_string = C.QPluginLoader_FileName(this.h)
+	var _ms C.struct_miqt_string = C.QPluginLoader_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPluginLoader) ErrorString() string {
-	var _ms C.struct_miqt_string = C.QPluginLoader_ErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QPluginLoader_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPluginLoader) SetLoadHints(loadHints QLibrary__LoadHint) {
-	C.QPluginLoader_SetLoadHints(this.h, (C.int)(loadHints))
+	C.QPluginLoader_setLoadHints(this.h, (C.int)(loadHints))
 }
 
 func (this *QPluginLoader) LoadHints() QLibrary__LoadHint {
-	return (QLibrary__LoadHint)(C.QPluginLoader_LoadHints(this.h))
+	return (QLibrary__LoadHint)(C.QPluginLoader_loadHints(this.h))
 }
 
 func QPluginLoader_Tr2(s string, c string) string {
@@ -189,7 +189,7 @@ func QPluginLoader_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QPluginLoader_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QPluginLoader_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -200,7 +200,7 @@ func QPluginLoader_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QPluginLoader_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QPluginLoader_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -211,7 +211,7 @@ func QPluginLoader_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QPluginLoader_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QPluginLoader_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -222,7 +222,7 @@ func QPluginLoader_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QPluginLoader_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QPluginLoader_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -230,18 +230,18 @@ func QPluginLoader_TrUtf83(s string, c string, n int) string {
 
 func (this *QPluginLoader) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QPluginLoader_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QPluginLoader_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QPluginLoader) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QPluginLoader_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPluginLoader) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QPluginLoader_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPluginLoader_Event
-func miqt_exec_callback_QPluginLoader_Event(self *C.QPluginLoader, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QPluginLoader_event
+func miqt_exec_callback_QPluginLoader_event(self *C.QPluginLoader, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -258,18 +258,18 @@ func miqt_exec_callback_QPluginLoader_Event(self *C.QPluginLoader, cb C.intptr_t
 
 func (this *QPluginLoader) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QPluginLoader_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QPluginLoader_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QPluginLoader) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QPluginLoader_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPluginLoader) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QPluginLoader_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPluginLoader_EventFilter
-func miqt_exec_callback_QPluginLoader_EventFilter(self *C.QPluginLoader, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QPluginLoader_eventFilter
+func miqt_exec_callback_QPluginLoader_eventFilter(self *C.QPluginLoader, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -288,18 +288,18 @@ func miqt_exec_callback_QPluginLoader_EventFilter(self *C.QPluginLoader, cb C.in
 
 func (this *QPluginLoader) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QPluginLoader_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QPluginLoader_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPluginLoader) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QPluginLoader_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPluginLoader) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QPluginLoader_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPluginLoader_TimerEvent
-func miqt_exec_callback_QPluginLoader_TimerEvent(self *C.QPluginLoader, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QPluginLoader_timerEvent
+func miqt_exec_callback_QPluginLoader_timerEvent(self *C.QPluginLoader, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -314,18 +314,18 @@ func miqt_exec_callback_QPluginLoader_TimerEvent(self *C.QPluginLoader, cb C.int
 
 func (this *QPluginLoader) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QPluginLoader_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QPluginLoader_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPluginLoader) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QPluginLoader_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPluginLoader) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QPluginLoader_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPluginLoader_ChildEvent
-func miqt_exec_callback_QPluginLoader_ChildEvent(self *C.QPluginLoader, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QPluginLoader_childEvent
+func miqt_exec_callback_QPluginLoader_childEvent(self *C.QPluginLoader, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -340,18 +340,18 @@ func miqt_exec_callback_QPluginLoader_ChildEvent(self *C.QPluginLoader, cb C.int
 
 func (this *QPluginLoader) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QPluginLoader_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QPluginLoader_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPluginLoader) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QPluginLoader_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPluginLoader) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QPluginLoader_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPluginLoader_CustomEvent
-func miqt_exec_callback_QPluginLoader_CustomEvent(self *C.QPluginLoader, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QPluginLoader_customEvent
+func miqt_exec_callback_QPluginLoader_customEvent(self *C.QPluginLoader, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -366,18 +366,18 @@ func miqt_exec_callback_QPluginLoader_CustomEvent(self *C.QPluginLoader, cb C.in
 
 func (this *QPluginLoader) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QPluginLoader_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QPluginLoader_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QPluginLoader) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QPluginLoader_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPluginLoader) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QPluginLoader_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPluginLoader_ConnectNotify
-func miqt_exec_callback_QPluginLoader_ConnectNotify(self *C.QPluginLoader, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QPluginLoader_connectNotify
+func miqt_exec_callback_QPluginLoader_connectNotify(self *C.QPluginLoader, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -392,18 +392,18 @@ func miqt_exec_callback_QPluginLoader_ConnectNotify(self *C.QPluginLoader, cb C.
 
 func (this *QPluginLoader) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QPluginLoader_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QPluginLoader_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QPluginLoader) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QPluginLoader_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPluginLoader) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QPluginLoader_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPluginLoader_DisconnectNotify
-func miqt_exec_callback_QPluginLoader_DisconnectNotify(self *C.QPluginLoader, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QPluginLoader_disconnectNotify
+func miqt_exec_callback_QPluginLoader_disconnectNotify(self *C.QPluginLoader, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -418,7 +418,7 @@ func miqt_exec_callback_QPluginLoader_DisconnectNotify(self *C.QPluginLoader, cb
 
 // Delete this object from C++ memory.
 func (this *QPluginLoader) Delete() {
-	C.QPluginLoader_Delete(this.h)
+	C.QPluginLoader_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -27,23 +27,23 @@ typedef struct QObject QObject;
 #endif
 
 void QCustomAudioRoleControl_virtbase(QCustomAudioRoleControl* src, QMediaControl** outptr_QMediaControl);
-QMetaObject* QCustomAudioRoleControl_MetaObject(const QCustomAudioRoleControl* self);
-void* QCustomAudioRoleControl_Metacast(QCustomAudioRoleControl* self, const char* param1);
-struct miqt_string QCustomAudioRoleControl_Tr(const char* s);
-struct miqt_string QCustomAudioRoleControl_TrUtf8(const char* s);
-struct miqt_string QCustomAudioRoleControl_CustomAudioRole(const QCustomAudioRoleControl* self);
-void QCustomAudioRoleControl_SetCustomAudioRole(QCustomAudioRoleControl* self, struct miqt_string role);
-struct miqt_array /* of struct miqt_string */  QCustomAudioRoleControl_SupportedCustomAudioRoles(const QCustomAudioRoleControl* self);
-void QCustomAudioRoleControl_CustomAudioRoleChanged(QCustomAudioRoleControl* self, struct miqt_string role);
-void QCustomAudioRoleControl_connect_CustomAudioRoleChanged(QCustomAudioRoleControl* self, intptr_t slot);
-struct miqt_string QCustomAudioRoleControl_Tr2(const char* s, const char* c);
-struct miqt_string QCustomAudioRoleControl_Tr3(const char* s, const char* c, int n);
-struct miqt_string QCustomAudioRoleControl_TrUtf82(const char* s, const char* c);
-struct miqt_string QCustomAudioRoleControl_TrUtf83(const char* s, const char* c, int n);
-void QCustomAudioRoleControl_Delete(QCustomAudioRoleControl* self);
+QMetaObject* QCustomAudioRoleControl_metaObject(const QCustomAudioRoleControl* self);
+void* QCustomAudioRoleControl_metacast(QCustomAudioRoleControl* self, const char* param1);
+struct miqt_string QCustomAudioRoleControl_tr(const char* s);
+struct miqt_string QCustomAudioRoleControl_trUtf8(const char* s);
+struct miqt_string QCustomAudioRoleControl_customAudioRole(const QCustomAudioRoleControl* self);
+void QCustomAudioRoleControl_setCustomAudioRole(QCustomAudioRoleControl* self, struct miqt_string role);
+struct miqt_array /* of struct miqt_string */  QCustomAudioRoleControl_supportedCustomAudioRoles(const QCustomAudioRoleControl* self);
+void QCustomAudioRoleControl_customAudioRoleChanged(QCustomAudioRoleControl* self, struct miqt_string role);
+void QCustomAudioRoleControl_connect_customAudioRoleChanged(QCustomAudioRoleControl* self, intptr_t slot);
+struct miqt_string QCustomAudioRoleControl_tr2(const char* s, const char* c);
+struct miqt_string QCustomAudioRoleControl_tr3(const char* s, const char* c, int n);
+struct miqt_string QCustomAudioRoleControl_trUtf82(const char* s, const char* c);
+struct miqt_string QCustomAudioRoleControl_trUtf83(const char* s, const char* c, int n);
+void QCustomAudioRoleControl_delete(QCustomAudioRoleControl* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

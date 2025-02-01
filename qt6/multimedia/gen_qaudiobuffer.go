@@ -96,50 +96,50 @@ func NewQAudioBuffer6(numFrames int, format *QAudioFormat, startTime int64) *QAu
 }
 
 func (this *QAudioBuffer) OperatorAssign(other *QAudioBuffer) {
-	C.QAudioBuffer_OperatorAssign(this.h, other.cPointer())
+	C.QAudioBuffer_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QAudioBuffer) Swap(other *QAudioBuffer) {
-	C.QAudioBuffer_Swap(this.h, other.cPointer())
+	C.QAudioBuffer_swap(this.h, other.cPointer())
 }
 
 func (this *QAudioBuffer) IsValid() bool {
-	return (bool)(C.QAudioBuffer_IsValid(this.h))
+	return (bool)(C.QAudioBuffer_isValid(this.h))
 }
 
 func (this *QAudioBuffer) Detach() {
-	C.QAudioBuffer_Detach(this.h)
+	C.QAudioBuffer_detach(this.h)
 }
 
 func (this *QAudioBuffer) Format() *QAudioFormat {
-	_goptr := newQAudioFormat(C.QAudioBuffer_Format(this.h))
+	_goptr := newQAudioFormat(C.QAudioBuffer_format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioBuffer) FrameCount() int64 {
-	return (int64)(C.QAudioBuffer_FrameCount(this.h))
+	return (int64)(C.QAudioBuffer_frameCount(this.h))
 }
 
 func (this *QAudioBuffer) SampleCount() int64 {
-	return (int64)(C.QAudioBuffer_SampleCount(this.h))
+	return (int64)(C.QAudioBuffer_sampleCount(this.h))
 }
 
 func (this *QAudioBuffer) ByteCount() int64 {
-	return (int64)(C.QAudioBuffer_ByteCount(this.h))
+	return (int64)(C.QAudioBuffer_byteCount(this.h))
 }
 
 func (this *QAudioBuffer) Duration() int64 {
-	return (int64)(C.QAudioBuffer_Duration(this.h))
+	return (int64)(C.QAudioBuffer_duration(this.h))
 }
 
 func (this *QAudioBuffer) StartTime() int64 {
-	return (int64)(C.QAudioBuffer_StartTime(this.h))
+	return (int64)(C.QAudioBuffer_startTime(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QAudioBuffer) Delete() {
-	C.QAudioBuffer_Delete(this.h)
+	C.QAudioBuffer_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

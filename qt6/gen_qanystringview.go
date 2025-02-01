@@ -87,67 +87,67 @@ func NewQAnyStringView5(param1 *QAnyStringView) *QAnyStringView {
 }
 
 func (this *QAnyStringView) ToString() string {
-	var _ms C.struct_miqt_string = C.QAnyStringView_ToString(this.h)
+	var _ms C.struct_miqt_string = C.QAnyStringView_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAnyStringView) Size() int64 {
-	return (int64)(C.QAnyStringView_Size(this.h))
+	return (int64)(C.QAnyStringView_size(this.h))
 }
 
 func (this *QAnyStringView) Data() unsafe.Pointer {
-	return (unsafe.Pointer)(C.QAnyStringView_Data(this.h))
+	return (unsafe.Pointer)(C.QAnyStringView_data(this.h))
 }
 
 func QAnyStringView_Compare(lhs QAnyStringView, rhs QAnyStringView) int {
-	return (int)(C.QAnyStringView_Compare(lhs.cPointer(), rhs.cPointer()))
+	return (int)(C.QAnyStringView_compare(lhs.cPointer(), rhs.cPointer()))
 }
 
 func QAnyStringView_Equal(lhs QAnyStringView, rhs QAnyStringView) bool {
-	return (bool)(C.QAnyStringView_Equal(lhs.cPointer(), rhs.cPointer()))
+	return (bool)(C.QAnyStringView_equal(lhs.cPointer(), rhs.cPointer()))
 }
 
 func (this *QAnyStringView) Front() *QChar {
-	_goptr := newQChar(C.QAnyStringView_Front(this.h))
+	_goptr := newQChar(C.QAnyStringView_front(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAnyStringView) Back() *QChar {
-	_goptr := newQChar(C.QAnyStringView_Back(this.h))
+	_goptr := newQChar(C.QAnyStringView_back(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAnyStringView) Empty() bool {
-	return (bool)(C.QAnyStringView_Empty(this.h))
+	return (bool)(C.QAnyStringView_empty(this.h))
 }
 
 func (this *QAnyStringView) SizeBytes() int64 {
-	return (int64)(C.QAnyStringView_SizeBytes(this.h))
+	return (int64)(C.QAnyStringView_sizeBytes(this.h))
 }
 
 func (this *QAnyStringView) IsNull() bool {
-	return (bool)(C.QAnyStringView_IsNull(this.h))
+	return (bool)(C.QAnyStringView_isNull(this.h))
 }
 
 func (this *QAnyStringView) IsEmpty() bool {
-	return (bool)(C.QAnyStringView_IsEmpty(this.h))
+	return (bool)(C.QAnyStringView_isEmpty(this.h))
 }
 
 func (this *QAnyStringView) Length() int64 {
-	return (int64)(C.QAnyStringView_Length(this.h))
+	return (int64)(C.QAnyStringView_length(this.h))
 }
 
 func QAnyStringView_Compare3(lhs QAnyStringView, rhs QAnyStringView, cs CaseSensitivity) int {
-	return (int)(C.QAnyStringView_Compare3(lhs.cPointer(), rhs.cPointer(), (C.int)(cs)))
+	return (int)(C.QAnyStringView_compare3(lhs.cPointer(), rhs.cPointer(), (C.int)(cs)))
 }
 
 // Delete this object from C++ memory.
 func (this *QAnyStringView) Delete() {
-	C.QAnyStringView_Delete(this.h)
+	C.QAnyStringView_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

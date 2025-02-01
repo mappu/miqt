@@ -21,19 +21,19 @@ typedef struct QTouchDevice QTouchDevice;
 #endif
 
 QTouchDevice* QTouchDevice_new();
-struct miqt_array /* of QTouchDevice* */  QTouchDevice_Devices();
-struct miqt_string QTouchDevice_Name(const QTouchDevice* self);
-int QTouchDevice_Type(const QTouchDevice* self);
-int QTouchDevice_Capabilities(const QTouchDevice* self);
-int QTouchDevice_MaximumTouchPoints(const QTouchDevice* self);
-void QTouchDevice_SetName(QTouchDevice* self, struct miqt_string name);
-void QTouchDevice_SetType(QTouchDevice* self, int devType);
-void QTouchDevice_SetCapabilities(QTouchDevice* self, int caps);
-void QTouchDevice_SetMaximumTouchPoints(QTouchDevice* self, int max);
-void QTouchDevice_Delete(QTouchDevice* self);
+struct miqt_array /* of QTouchDevice* */  QTouchDevice_devices();
+struct miqt_string QTouchDevice_name(const QTouchDevice* self);
+int QTouchDevice_type(const QTouchDevice* self);
+int QTouchDevice_capabilities(const QTouchDevice* self);
+int QTouchDevice_maximumTouchPoints(const QTouchDevice* self);
+void QTouchDevice_setName(QTouchDevice* self, struct miqt_string name);
+void QTouchDevice_setType(QTouchDevice* self, int devType);
+void QTouchDevice_setCapabilities(QTouchDevice* self, int caps);
+void QTouchDevice_setMaximumTouchPoints(QTouchDevice* self, int max);
+void QTouchDevice_delete(QTouchDevice* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

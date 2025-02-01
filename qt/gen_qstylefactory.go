@@ -46,7 +46,7 @@ func UnsafeNewQStyleFactory(h unsafe.Pointer) *QStyleFactory {
 }
 
 func QStyleFactory_Keys() []string {
-	var _ma C.struct_miqt_array = C.QStyleFactory_Keys()
+	var _ma C.struct_miqt_array = C.QStyleFactory_keys()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -63,12 +63,12 @@ func QStyleFactory_Create(param1 string) *QStyle {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	return newQStyle(C.QStyleFactory_Create(param1_ms))
+	return newQStyle(C.QStyleFactory_create(param1_ms))
 }
 
 // Delete this object from C++ memory.
 func (this *QStyleFactory) Delete() {
-	C.QStyleFactory_Delete(this.h)
+	C.QStyleFactory_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

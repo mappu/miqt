@@ -24,16 +24,16 @@ typedef struct QWebEngineQuotaRequest QWebEngineQuotaRequest;
 
 QWebEngineQuotaRequest* QWebEngineQuotaRequest_new();
 QWebEngineQuotaRequest* QWebEngineQuotaRequest_new2(QWebEngineQuotaRequest* param1);
-void QWebEngineQuotaRequest_Accept(QWebEngineQuotaRequest* self);
-void QWebEngineQuotaRequest_Reject(QWebEngineQuotaRequest* self);
-QUrl* QWebEngineQuotaRequest_Origin(const QWebEngineQuotaRequest* self);
-long long QWebEngineQuotaRequest_RequestedSize(const QWebEngineQuotaRequest* self);
-bool QWebEngineQuotaRequest_OperatorEqual(const QWebEngineQuotaRequest* self, QWebEngineQuotaRequest* that);
-bool QWebEngineQuotaRequest_OperatorNotEqual(const QWebEngineQuotaRequest* self, QWebEngineQuotaRequest* that);
-void QWebEngineQuotaRequest_Delete(QWebEngineQuotaRequest* self);
+void QWebEngineQuotaRequest_accept(QWebEngineQuotaRequest* self);
+void QWebEngineQuotaRequest_reject(QWebEngineQuotaRequest* self);
+QUrl* QWebEngineQuotaRequest_origin(const QWebEngineQuotaRequest* self);
+long long QWebEngineQuotaRequest_requestedSize(const QWebEngineQuotaRequest* self);
+bool QWebEngineQuotaRequest_operatorEqual(const QWebEngineQuotaRequest* self, QWebEngineQuotaRequest* that);
+bool QWebEngineQuotaRequest_operatorNotEqual(const QWebEngineQuotaRequest* self, QWebEngineQuotaRequest* that);
+void QWebEngineQuotaRequest_delete(QWebEngineQuotaRequest* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

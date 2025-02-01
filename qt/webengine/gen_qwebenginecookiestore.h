@@ -35,33 +35,33 @@ typedef struct QWebEngineCookieStore__FilterRequest QWebEngineCookieStore__Filte
 #endif
 
 void QWebEngineCookieStore_virtbase(QWebEngineCookieStore* src, QObject** outptr_QObject);
-QMetaObject* QWebEngineCookieStore_MetaObject(const QWebEngineCookieStore* self);
-void* QWebEngineCookieStore_Metacast(QWebEngineCookieStore* self, const char* param1);
-struct miqt_string QWebEngineCookieStore_Tr(const char* s);
-struct miqt_string QWebEngineCookieStore_TrUtf8(const char* s);
-void QWebEngineCookieStore_SetCookie(QWebEngineCookieStore* self, QNetworkCookie* cookie);
-void QWebEngineCookieStore_DeleteCookie(QWebEngineCookieStore* self, QNetworkCookie* cookie);
-void QWebEngineCookieStore_DeleteSessionCookies(QWebEngineCookieStore* self);
-void QWebEngineCookieStore_DeleteAllCookies(QWebEngineCookieStore* self);
-void QWebEngineCookieStore_LoadAllCookies(QWebEngineCookieStore* self);
-void QWebEngineCookieStore_CookieAdded(QWebEngineCookieStore* self, QNetworkCookie* cookie);
-void QWebEngineCookieStore_connect_CookieAdded(QWebEngineCookieStore* self, intptr_t slot);
-void QWebEngineCookieStore_CookieRemoved(QWebEngineCookieStore* self, QNetworkCookie* cookie);
-void QWebEngineCookieStore_connect_CookieRemoved(QWebEngineCookieStore* self, intptr_t slot);
-struct miqt_string QWebEngineCookieStore_Tr2(const char* s, const char* c);
-struct miqt_string QWebEngineCookieStore_Tr3(const char* s, const char* c, int n);
-struct miqt_string QWebEngineCookieStore_TrUtf82(const char* s, const char* c);
-struct miqt_string QWebEngineCookieStore_TrUtf83(const char* s, const char* c, int n);
-void QWebEngineCookieStore_SetCookie2(QWebEngineCookieStore* self, QNetworkCookie* cookie, QUrl* origin);
-void QWebEngineCookieStore_DeleteCookie2(QWebEngineCookieStore* self, QNetworkCookie* cookie, QUrl* origin);
-void QWebEngineCookieStore_Delete(QWebEngineCookieStore* self);
+QMetaObject* QWebEngineCookieStore_metaObject(const QWebEngineCookieStore* self);
+void* QWebEngineCookieStore_metacast(QWebEngineCookieStore* self, const char* param1);
+struct miqt_string QWebEngineCookieStore_tr(const char* s);
+struct miqt_string QWebEngineCookieStore_trUtf8(const char* s);
+void QWebEngineCookieStore_setCookie(QWebEngineCookieStore* self, QNetworkCookie* cookie);
+void QWebEngineCookieStore_deleteCookie(QWebEngineCookieStore* self, QNetworkCookie* cookie);
+void QWebEngineCookieStore_deleteSessionCookies(QWebEngineCookieStore* self);
+void QWebEngineCookieStore_deleteAllCookies(QWebEngineCookieStore* self);
+void QWebEngineCookieStore_loadAllCookies(QWebEngineCookieStore* self);
+void QWebEngineCookieStore_cookieAdded(QWebEngineCookieStore* self, QNetworkCookie* cookie);
+void QWebEngineCookieStore_connect_cookieAdded(QWebEngineCookieStore* self, intptr_t slot);
+void QWebEngineCookieStore_cookieRemoved(QWebEngineCookieStore* self, QNetworkCookie* cookie);
+void QWebEngineCookieStore_connect_cookieRemoved(QWebEngineCookieStore* self, intptr_t slot);
+struct miqt_string QWebEngineCookieStore_tr2(const char* s, const char* c);
+struct miqt_string QWebEngineCookieStore_tr3(const char* s, const char* c, int n);
+struct miqt_string QWebEngineCookieStore_trUtf82(const char* s, const char* c);
+struct miqt_string QWebEngineCookieStore_trUtf83(const char* s, const char* c, int n);
+void QWebEngineCookieStore_setCookie2(QWebEngineCookieStore* self, QNetworkCookie* cookie, QUrl* origin);
+void QWebEngineCookieStore_deleteCookie2(QWebEngineCookieStore* self, QNetworkCookie* cookie, QUrl* origin);
+void QWebEngineCookieStore_delete(QWebEngineCookieStore* self);
 
 QWebEngineCookieStore__FilterRequest* QWebEngineCookieStore__FilterRequest_new(QWebEngineCookieStore__FilterRequest* param1);
-void QWebEngineCookieStore__FilterRequest_OperatorAssign(QWebEngineCookieStore__FilterRequest* self, QWebEngineCookieStore__FilterRequest* param1);
-void QWebEngineCookieStore__FilterRequest_Delete(QWebEngineCookieStore__FilterRequest* self);
+void QWebEngineCookieStore__FilterRequest_operatorAssign(QWebEngineCookieStore__FilterRequest* self, QWebEngineCookieStore__FilterRequest* param1);
+void QWebEngineCookieStore__FilterRequest_delete(QWebEngineCookieStore__FilterRequest* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

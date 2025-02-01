@@ -20,8 +20,8 @@ QUrl* QUrl_new() {
 	return new QUrl();
 }
 
-QUrl* QUrl_new2(QUrl* copyVal) {
-	return new QUrl(*copyVal);
+QUrl* QUrl_new2(QUrl* copy) {
+	return new QUrl(*copy);
 }
 
 QUrl* QUrl_new3(struct miqt_string url) {
@@ -34,25 +34,25 @@ QUrl* QUrl_new4(struct miqt_string url, int mode) {
 	return new QUrl(url_QString, static_cast<QUrl::ParsingMode>(mode));
 }
 
-void QUrl_OperatorAssign(QUrl* self, QUrl* copyVal) {
-	self->operator=(*copyVal);
+void QUrl_operatorAssign(QUrl* self, QUrl* copy) {
+	self->operator=(*copy);
 }
 
-void QUrl_OperatorAssignWithUrl(QUrl* self, struct miqt_string url) {
+void QUrl_operatorAssignWithUrl(QUrl* self, struct miqt_string url) {
 	QString url_QString = QString::fromUtf8(url.data, url.len);
 	self->operator=(url_QString);
 }
 
-void QUrl_Swap(QUrl* self, QUrl* other) {
+void QUrl_swap(QUrl* self, QUrl* other) {
 	self->swap(*other);
 }
 
-void QUrl_SetUrl(QUrl* self, struct miqt_string url) {
+void QUrl_setUrl(QUrl* self, struct miqt_string url) {
 	QString url_QString = QString::fromUtf8(url.data, url.len);
 	self->setUrl(url_QString);
 }
 
-struct miqt_string QUrl_Url(const QUrl* self) {
+struct miqt_string QUrl_url(const QUrl* self) {
 	QString _ret = self->url();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -63,7 +63,7 @@ struct miqt_string QUrl_Url(const QUrl* self) {
 	return _ms;
 }
 
-struct miqt_string QUrl_ToString(const QUrl* self) {
+struct miqt_string QUrl_toString(const QUrl* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -74,7 +74,7 @@ struct miqt_string QUrl_ToString(const QUrl* self) {
 	return _ms;
 }
 
-struct miqt_string QUrl_ToDisplayString(const QUrl* self) {
+struct miqt_string QUrl_toDisplayString(const QUrl* self) {
 	QString _ret = self->toDisplayString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -85,7 +85,7 @@ struct miqt_string QUrl_ToDisplayString(const QUrl* self) {
 	return _ms;
 }
 
-struct miqt_string QUrl_ToEncoded(const QUrl* self) {
+struct miqt_string QUrl_toEncoded(const QUrl* self) {
 	QByteArray _qb = self->toEncoded();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -94,27 +94,27 @@ struct miqt_string QUrl_ToEncoded(const QUrl* self) {
 	return _ms;
 }
 
-QUrl* QUrl_FromEncoded(struct miqt_string url) {
+QUrl* QUrl_fromEncoded(struct miqt_string url) {
 	QByteArray url_QByteArray(url.data, url.len);
 	return new QUrl(QUrl::fromEncoded(url_QByteArray));
 }
 
-QUrl* QUrl_FromUserInput(struct miqt_string userInput) {
+QUrl* QUrl_fromUserInput(struct miqt_string userInput) {
 	QString userInput_QString = QString::fromUtf8(userInput.data, userInput.len);
 	return new QUrl(QUrl::fromUserInput(userInput_QString));
 }
 
-QUrl* QUrl_FromUserInput2(struct miqt_string userInput, struct miqt_string workingDirectory) {
+QUrl* QUrl_fromUserInput2(struct miqt_string userInput, struct miqt_string workingDirectory) {
 	QString userInput_QString = QString::fromUtf8(userInput.data, userInput.len);
 	QString workingDirectory_QString = QString::fromUtf8(workingDirectory.data, workingDirectory.len);
 	return new QUrl(QUrl::fromUserInput(userInput_QString, workingDirectory_QString));
 }
 
-bool QUrl_IsValid(const QUrl* self) {
+bool QUrl_isValid(const QUrl* self) {
 	return self->isValid();
 }
 
-struct miqt_string QUrl_ErrorString(const QUrl* self) {
+struct miqt_string QUrl_errorString(const QUrl* self) {
 	QString _ret = self->errorString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -125,20 +125,20 @@ struct miqt_string QUrl_ErrorString(const QUrl* self) {
 	return _ms;
 }
 
-bool QUrl_IsEmpty(const QUrl* self) {
+bool QUrl_isEmpty(const QUrl* self) {
 	return self->isEmpty();
 }
 
-void QUrl_Clear(QUrl* self) {
+void QUrl_clear(QUrl* self) {
 	self->clear();
 }
 
-void QUrl_SetScheme(QUrl* self, struct miqt_string scheme) {
+void QUrl_setScheme(QUrl* self, struct miqt_string scheme) {
 	QString scheme_QString = QString::fromUtf8(scheme.data, scheme.len);
 	self->setScheme(scheme_QString);
 }
 
-struct miqt_string QUrl_Scheme(const QUrl* self) {
+struct miqt_string QUrl_scheme(const QUrl* self) {
 	QString _ret = self->scheme();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -149,12 +149,12 @@ struct miqt_string QUrl_Scheme(const QUrl* self) {
 	return _ms;
 }
 
-void QUrl_SetAuthority(QUrl* self, struct miqt_string authority) {
+void QUrl_setAuthority(QUrl* self, struct miqt_string authority) {
 	QString authority_QString = QString::fromUtf8(authority.data, authority.len);
 	self->setAuthority(authority_QString);
 }
 
-struct miqt_string QUrl_Authority(const QUrl* self) {
+struct miqt_string QUrl_authority(const QUrl* self) {
 	QString _ret = self->authority();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -165,12 +165,12 @@ struct miqt_string QUrl_Authority(const QUrl* self) {
 	return _ms;
 }
 
-void QUrl_SetUserInfo(QUrl* self, struct miqt_string userInfo) {
+void QUrl_setUserInfo(QUrl* self, struct miqt_string userInfo) {
 	QString userInfo_QString = QString::fromUtf8(userInfo.data, userInfo.len);
 	self->setUserInfo(userInfo_QString);
 }
 
-struct miqt_string QUrl_UserInfo(const QUrl* self) {
+struct miqt_string QUrl_userInfo(const QUrl* self) {
 	QString _ret = self->userInfo();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -181,12 +181,12 @@ struct miqt_string QUrl_UserInfo(const QUrl* self) {
 	return _ms;
 }
 
-void QUrl_SetUserName(QUrl* self, struct miqt_string userName) {
+void QUrl_setUserName(QUrl* self, struct miqt_string userName) {
 	QString userName_QString = QString::fromUtf8(userName.data, userName.len);
 	self->setUserName(userName_QString);
 }
 
-struct miqt_string QUrl_UserName(const QUrl* self) {
+struct miqt_string QUrl_userName(const QUrl* self) {
 	QString _ret = self->userName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -197,12 +197,12 @@ struct miqt_string QUrl_UserName(const QUrl* self) {
 	return _ms;
 }
 
-void QUrl_SetPassword(QUrl* self, struct miqt_string password) {
+void QUrl_setPassword(QUrl* self, struct miqt_string password) {
 	QString password_QString = QString::fromUtf8(password.data, password.len);
 	self->setPassword(password_QString);
 }
 
-struct miqt_string QUrl_Password(const QUrl* self) {
+struct miqt_string QUrl_password(const QUrl* self) {
 	QString _ret = self->password();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -213,12 +213,12 @@ struct miqt_string QUrl_Password(const QUrl* self) {
 	return _ms;
 }
 
-void QUrl_SetHost(QUrl* self, struct miqt_string host) {
+void QUrl_setHost(QUrl* self, struct miqt_string host) {
 	QString host_QString = QString::fromUtf8(host.data, host.len);
 	self->setHost(host_QString);
 }
 
-struct miqt_string QUrl_Host(const QUrl* self) {
+struct miqt_string QUrl_host(const QUrl* self) {
 	QString _ret = self->host();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -229,7 +229,7 @@ struct miqt_string QUrl_Host(const QUrl* self) {
 	return _ms;
 }
 
-struct miqt_string QUrl_TopLevelDomain(const QUrl* self) {
+struct miqt_string QUrl_topLevelDomain(const QUrl* self) {
 	QString _ret = self->topLevelDomain();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -240,20 +240,20 @@ struct miqt_string QUrl_TopLevelDomain(const QUrl* self) {
 	return _ms;
 }
 
-void QUrl_SetPort(QUrl* self, int port) {
+void QUrl_setPort(QUrl* self, int port) {
 	self->setPort(static_cast<int>(port));
 }
 
-int QUrl_Port(const QUrl* self) {
+int QUrl_port(const QUrl* self) {
 	return self->port();
 }
 
-void QUrl_SetPath(QUrl* self, struct miqt_string path) {
+void QUrl_setPath(QUrl* self, struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	self->setPath(path_QString);
 }
 
-struct miqt_string QUrl_Path(const QUrl* self) {
+struct miqt_string QUrl_path(const QUrl* self) {
 	QString _ret = self->path();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -264,7 +264,7 @@ struct miqt_string QUrl_Path(const QUrl* self) {
 	return _ms;
 }
 
-struct miqt_string QUrl_FileName(const QUrl* self) {
+struct miqt_string QUrl_fileName(const QUrl* self) {
 	QString _ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -275,20 +275,20 @@ struct miqt_string QUrl_FileName(const QUrl* self) {
 	return _ms;
 }
 
-bool QUrl_HasQuery(const QUrl* self) {
+bool QUrl_hasQuery(const QUrl* self) {
 	return self->hasQuery();
 }
 
-void QUrl_SetQuery(QUrl* self, struct miqt_string query) {
+void QUrl_setQuery(QUrl* self, struct miqt_string query) {
 	QString query_QString = QString::fromUtf8(query.data, query.len);
 	self->setQuery(query_QString);
 }
 
-void QUrl_SetQueryWithQuery(QUrl* self, QUrlQuery* query) {
+void QUrl_setQueryWithQuery(QUrl* self, QUrlQuery* query) {
 	self->setQuery(*query);
 }
 
-struct miqt_string QUrl_Query(const QUrl* self) {
+struct miqt_string QUrl_query(const QUrl* self) {
 	QString _ret = self->query();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -299,11 +299,11 @@ struct miqt_string QUrl_Query(const QUrl* self) {
 	return _ms;
 }
 
-bool QUrl_HasFragment(const QUrl* self) {
+bool QUrl_hasFragment(const QUrl* self) {
 	return self->hasFragment();
 }
 
-struct miqt_string QUrl_Fragment(const QUrl* self) {
+struct miqt_string QUrl_fragment(const QUrl* self) {
 	QString _ret = self->fragment();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -314,33 +314,33 @@ struct miqt_string QUrl_Fragment(const QUrl* self) {
 	return _ms;
 }
 
-void QUrl_SetFragment(QUrl* self, struct miqt_string fragment) {
+void QUrl_setFragment(QUrl* self, struct miqt_string fragment) {
 	QString fragment_QString = QString::fromUtf8(fragment.data, fragment.len);
 	self->setFragment(fragment_QString);
 }
 
-QUrl* QUrl_Resolved(const QUrl* self, QUrl* relative) {
+QUrl* QUrl_resolved(const QUrl* self, QUrl* relative) {
 	return new QUrl(self->resolved(*relative));
 }
 
-bool QUrl_IsRelative(const QUrl* self) {
+bool QUrl_isRelative(const QUrl* self) {
 	return self->isRelative();
 }
 
-bool QUrl_IsParentOf(const QUrl* self, QUrl* url) {
+bool QUrl_isParentOf(const QUrl* self, QUrl* url) {
 	return self->isParentOf(*url);
 }
 
-bool QUrl_IsLocalFile(const QUrl* self) {
+bool QUrl_isLocalFile(const QUrl* self) {
 	return self->isLocalFile();
 }
 
-QUrl* QUrl_FromLocalFile(struct miqt_string localfile) {
+QUrl* QUrl_fromLocalFile(struct miqt_string localfile) {
 	QString localfile_QString = QString::fromUtf8(localfile.data, localfile.len);
 	return new QUrl(QUrl::fromLocalFile(localfile_QString));
 }
 
-struct miqt_string QUrl_ToLocalFile(const QUrl* self) {
+struct miqt_string QUrl_toLocalFile(const QUrl* self) {
 	QString _ret = self->toLocalFile();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -351,27 +351,27 @@ struct miqt_string QUrl_ToLocalFile(const QUrl* self) {
 	return _ms;
 }
 
-void QUrl_Detach(QUrl* self) {
+void QUrl_detach(QUrl* self) {
 	self->detach();
 }
 
-bool QUrl_IsDetached(const QUrl* self) {
+bool QUrl_isDetached(const QUrl* self) {
 	return self->isDetached();
 }
 
-bool QUrl_OperatorLesser(const QUrl* self, QUrl* url) {
+bool QUrl_operatorLesser(const QUrl* self, QUrl* url) {
 	return (*self < *url);
 }
 
-bool QUrl_OperatorEqual(const QUrl* self, QUrl* url) {
+bool QUrl_operatorEqual(const QUrl* self, QUrl* url) {
 	return (*self == *url);
 }
 
-bool QUrl_OperatorNotEqual(const QUrl* self, QUrl* url) {
+bool QUrl_operatorNotEqual(const QUrl* self, QUrl* url) {
 	return (*self != *url);
 }
 
-struct miqt_string QUrl_FromPercentEncoding(struct miqt_string param1) {
+struct miqt_string QUrl_fromPercentEncoding(struct miqt_string param1) {
 	QByteArray param1_QByteArray(param1.data, param1.len);
 	QString _ret = QUrl::fromPercentEncoding(param1_QByteArray);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -383,7 +383,7 @@ struct miqt_string QUrl_FromPercentEncoding(struct miqt_string param1) {
 	return _ms;
 }
 
-struct miqt_string QUrl_ToPercentEncoding(struct miqt_string param1) {
+struct miqt_string QUrl_toPercentEncoding(struct miqt_string param1) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	QByteArray _qb = QUrl::toPercentEncoding(param1_QString);
 	struct miqt_string _ms;
@@ -393,7 +393,7 @@ struct miqt_string QUrl_ToPercentEncoding(struct miqt_string param1) {
 	return _ms;
 }
 
-struct miqt_string QUrl_FromAce(struct miqt_string param1) {
+struct miqt_string QUrl_fromAce(struct miqt_string param1) {
 	QByteArray param1_QByteArray(param1.data, param1.len);
 	QString _ret = QUrl::fromAce(param1_QByteArray);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -405,7 +405,7 @@ struct miqt_string QUrl_FromAce(struct miqt_string param1) {
 	return _ms;
 }
 
-struct miqt_string QUrl_ToAce(struct miqt_string param1) {
+struct miqt_string QUrl_toAce(struct miqt_string param1) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	QByteArray _qb = QUrl::toAce(param1_QString);
 	struct miqt_string _ms;
@@ -415,7 +415,7 @@ struct miqt_string QUrl_ToAce(struct miqt_string param1) {
 	return _ms;
 }
 
-struct miqt_array /* of struct miqt_string */  QUrl_IdnWhitelist() {
+struct miqt_array /* of struct miqt_string */  QUrl_idnWhitelist() {
 	QStringList _ret = QUrl::idnWhitelist();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -435,7 +435,7 @@ struct miqt_array /* of struct miqt_string */  QUrl_IdnWhitelist() {
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_string */  QUrl_ToStringList(struct miqt_array /* of QUrl* */  uris) {
+struct miqt_array /* of struct miqt_string */  QUrl_toStringList(struct miqt_array /* of QUrl* */  uris) {
 	QList<QUrl> uris_QList;
 	uris_QList.reserve(uris.len);
 	QUrl** uris_arr = static_cast<QUrl**>(uris.data);
@@ -461,7 +461,7 @@ struct miqt_array /* of struct miqt_string */  QUrl_ToStringList(struct miqt_arr
 	return _out;
 }
 
-struct miqt_array /* of QUrl* */  QUrl_FromStringList(struct miqt_array /* of struct miqt_string */  uris) {
+struct miqt_array /* of QUrl* */  QUrl_fromStringList(struct miqt_array /* of struct miqt_string */  uris) {
 	QStringList uris_QList;
 	uris_QList.reserve(uris.len);
 	struct miqt_string* uris_arr = static_cast<struct miqt_string*>(uris.data);
@@ -481,7 +481,7 @@ struct miqt_array /* of QUrl* */  QUrl_FromStringList(struct miqt_array /* of st
 	return _out;
 }
 
-void QUrl_SetIdnWhitelist(struct miqt_array /* of struct miqt_string */  idnWhitelist) {
+void QUrl_setIdnWhitelist(struct miqt_array /* of struct miqt_string */  idnWhitelist) {
 	QStringList idnWhitelist_QList;
 	idnWhitelist_QList.reserve(idnWhitelist.len);
 	struct miqt_string* idnWhitelist_arr = static_cast<struct miqt_string*>(idnWhitelist.data);
@@ -492,28 +492,28 @@ void QUrl_SetIdnWhitelist(struct miqt_array /* of struct miqt_string */  idnWhit
 	QUrl::setIdnWhitelist(idnWhitelist_QList);
 }
 
-void QUrl_SetUrl2(QUrl* self, struct miqt_string url, int mode) {
+void QUrl_setUrl2(QUrl* self, struct miqt_string url, int mode) {
 	QString url_QString = QString::fromUtf8(url.data, url.len);
 	self->setUrl(url_QString, static_cast<QUrl::ParsingMode>(mode));
 }
 
-QUrl* QUrl_FromEncoded2(struct miqt_string url, int mode) {
+QUrl* QUrl_fromEncoded2(struct miqt_string url, int mode) {
 	QByteArray url_QByteArray(url.data, url.len);
 	return new QUrl(QUrl::fromEncoded(url_QByteArray, static_cast<QUrl::ParsingMode>(mode)));
 }
 
-QUrl* QUrl_FromUserInput3(struct miqt_string userInput, struct miqt_string workingDirectory, int options) {
+QUrl* QUrl_fromUserInput3(struct miqt_string userInput, struct miqt_string workingDirectory, int options) {
 	QString userInput_QString = QString::fromUtf8(userInput.data, userInput.len);
 	QString workingDirectory_QString = QString::fromUtf8(workingDirectory.data, workingDirectory.len);
 	return new QUrl(QUrl::fromUserInput(userInput_QString, workingDirectory_QString, static_cast<QUrl::UserInputResolutionOptions>(options)));
 }
 
-void QUrl_SetAuthority2(QUrl* self, struct miqt_string authority, int mode) {
+void QUrl_setAuthority2(QUrl* self, struct miqt_string authority, int mode) {
 	QString authority_QString = QString::fromUtf8(authority.data, authority.len);
 	self->setAuthority(authority_QString, static_cast<QUrl::ParsingMode>(mode));
 }
 
-struct miqt_string QUrl_Authority1(const QUrl* self, int options) {
+struct miqt_string QUrl_authority1(const QUrl* self, int options) {
 	QString _ret = self->authority(static_cast<QUrl::ComponentFormattingOptions>(options));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -524,12 +524,12 @@ struct miqt_string QUrl_Authority1(const QUrl* self, int options) {
 	return _ms;
 }
 
-void QUrl_SetUserInfo2(QUrl* self, struct miqt_string userInfo, int mode) {
+void QUrl_setUserInfo2(QUrl* self, struct miqt_string userInfo, int mode) {
 	QString userInfo_QString = QString::fromUtf8(userInfo.data, userInfo.len);
 	self->setUserInfo(userInfo_QString, static_cast<QUrl::ParsingMode>(mode));
 }
 
-struct miqt_string QUrl_UserInfo1(const QUrl* self, int options) {
+struct miqt_string QUrl_userInfo1(const QUrl* self, int options) {
 	QString _ret = self->userInfo(static_cast<QUrl::ComponentFormattingOptions>(options));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -540,12 +540,12 @@ struct miqt_string QUrl_UserInfo1(const QUrl* self, int options) {
 	return _ms;
 }
 
-void QUrl_SetUserName2(QUrl* self, struct miqt_string userName, int mode) {
+void QUrl_setUserName2(QUrl* self, struct miqt_string userName, int mode) {
 	QString userName_QString = QString::fromUtf8(userName.data, userName.len);
 	self->setUserName(userName_QString, static_cast<QUrl::ParsingMode>(mode));
 }
 
-struct miqt_string QUrl_UserName1(const QUrl* self, int options) {
+struct miqt_string QUrl_userName1(const QUrl* self, int options) {
 	QString _ret = self->userName(static_cast<QUrl::ComponentFormattingOptions>(options));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -556,12 +556,12 @@ struct miqt_string QUrl_UserName1(const QUrl* self, int options) {
 	return _ms;
 }
 
-void QUrl_SetPassword2(QUrl* self, struct miqt_string password, int mode) {
+void QUrl_setPassword2(QUrl* self, struct miqt_string password, int mode) {
 	QString password_QString = QString::fromUtf8(password.data, password.len);
 	self->setPassword(password_QString, static_cast<QUrl::ParsingMode>(mode));
 }
 
-struct miqt_string QUrl_Password1(const QUrl* self, int param1) {
+struct miqt_string QUrl_password1(const QUrl* self, int param1) {
 	QString _ret = self->password(static_cast<QUrl::ComponentFormattingOptions>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -572,12 +572,12 @@ struct miqt_string QUrl_Password1(const QUrl* self, int param1) {
 	return _ms;
 }
 
-void QUrl_SetHost2(QUrl* self, struct miqt_string host, int mode) {
+void QUrl_setHost2(QUrl* self, struct miqt_string host, int mode) {
 	QString host_QString = QString::fromUtf8(host.data, host.len);
 	self->setHost(host_QString, static_cast<QUrl::ParsingMode>(mode));
 }
 
-struct miqt_string QUrl_Host1(const QUrl* self, int param1) {
+struct miqt_string QUrl_host1(const QUrl* self, int param1) {
 	QString _ret = self->host(static_cast<QUrl::ComponentFormattingOptions>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -588,7 +588,7 @@ struct miqt_string QUrl_Host1(const QUrl* self, int param1) {
 	return _ms;
 }
 
-struct miqt_string QUrl_TopLevelDomain1(const QUrl* self, int options) {
+struct miqt_string QUrl_topLevelDomain1(const QUrl* self, int options) {
 	QString _ret = self->topLevelDomain(static_cast<QUrl::ComponentFormattingOptions>(options));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -599,16 +599,16 @@ struct miqt_string QUrl_TopLevelDomain1(const QUrl* self, int options) {
 	return _ms;
 }
 
-int QUrl_Port1(const QUrl* self, int defaultPort) {
+int QUrl_port1(const QUrl* self, int defaultPort) {
 	return self->port(static_cast<int>(defaultPort));
 }
 
-void QUrl_SetPath2(QUrl* self, struct miqt_string path, int mode) {
+void QUrl_setPath2(QUrl* self, struct miqt_string path, int mode) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	self->setPath(path_QString, static_cast<QUrl::ParsingMode>(mode));
 }
 
-struct miqt_string QUrl_Path1(const QUrl* self, int options) {
+struct miqt_string QUrl_path1(const QUrl* self, int options) {
 	QString _ret = self->path(static_cast<QUrl::ComponentFormattingOptions>(options));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -619,7 +619,7 @@ struct miqt_string QUrl_Path1(const QUrl* self, int options) {
 	return _ms;
 }
 
-struct miqt_string QUrl_FileName1(const QUrl* self, int options) {
+struct miqt_string QUrl_fileName1(const QUrl* self, int options) {
 	QString _ret = self->fileName(static_cast<QUrl::ComponentFormattingOptions>(options));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -630,12 +630,12 @@ struct miqt_string QUrl_FileName1(const QUrl* self, int options) {
 	return _ms;
 }
 
-void QUrl_SetQuery2(QUrl* self, struct miqt_string query, int mode) {
+void QUrl_setQuery2(QUrl* self, struct miqt_string query, int mode) {
 	QString query_QString = QString::fromUtf8(query.data, query.len);
 	self->setQuery(query_QString, static_cast<QUrl::ParsingMode>(mode));
 }
 
-struct miqt_string QUrl_Query1(const QUrl* self, int param1) {
+struct miqt_string QUrl_query1(const QUrl* self, int param1) {
 	QString _ret = self->query(static_cast<QUrl::ComponentFormattingOptions>(param1));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -646,7 +646,7 @@ struct miqt_string QUrl_Query1(const QUrl* self, int param1) {
 	return _ms;
 }
 
-struct miqt_string QUrl_Fragment1(const QUrl* self, int options) {
+struct miqt_string QUrl_fragment1(const QUrl* self, int options) {
 	QString _ret = self->fragment(static_cast<QUrl::ComponentFormattingOptions>(options));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -657,12 +657,12 @@ struct miqt_string QUrl_Fragment1(const QUrl* self, int options) {
 	return _ms;
 }
 
-void QUrl_SetFragment2(QUrl* self, struct miqt_string fragment, int mode) {
+void QUrl_setFragment2(QUrl* self, struct miqt_string fragment, int mode) {
 	QString fragment_QString = QString::fromUtf8(fragment.data, fragment.len);
 	self->setFragment(fragment_QString, static_cast<QUrl::ParsingMode>(mode));
 }
 
-struct miqt_string QUrl_ToPercentEncoding2(struct miqt_string param1, struct miqt_string exclude) {
+struct miqt_string QUrl_toPercentEncoding2(struct miqt_string param1, struct miqt_string exclude) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	QByteArray exclude_QByteArray(exclude.data, exclude.len);
 	QByteArray _qb = QUrl::toPercentEncoding(param1_QString, exclude_QByteArray);
@@ -673,7 +673,7 @@ struct miqt_string QUrl_ToPercentEncoding2(struct miqt_string param1, struct miq
 	return _ms;
 }
 
-struct miqt_string QUrl_ToPercentEncoding3(struct miqt_string param1, struct miqt_string exclude, struct miqt_string include) {
+struct miqt_string QUrl_toPercentEncoding3(struct miqt_string param1, struct miqt_string exclude, struct miqt_string include) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	QByteArray exclude_QByteArray(exclude.data, exclude.len);
 	QByteArray include_QByteArray(include.data, include.len);
@@ -685,7 +685,7 @@ struct miqt_string QUrl_ToPercentEncoding3(struct miqt_string param1, struct miq
 	return _ms;
 }
 
-struct miqt_array /* of QUrl* */  QUrl_FromStringList2(struct miqt_array /* of struct miqt_string */  uris, int mode) {
+struct miqt_array /* of QUrl* */  QUrl_fromStringList2(struct miqt_array /* of struct miqt_string */  uris, int mode) {
 	QStringList uris_QList;
 	uris_QList.reserve(uris.len);
 	struct miqt_string* uris_arr = static_cast<struct miqt_string*>(uris.data);
@@ -705,7 +705,7 @@ struct miqt_array /* of QUrl* */  QUrl_FromStringList2(struct miqt_array /* of s
 	return _out;
 }
 
-void QUrl_Delete(QUrl* self) {
+void QUrl_delete(QUrl* self) {
 	delete self;
 }
 

@@ -62,21 +62,21 @@ func (this *QScriptExtensionInterface) Initialize(key string, engine *QScriptEng
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	C.QScriptExtensionInterface_Initialize(this.h, key_ms, engine.cPointer())
+	C.QScriptExtensionInterface_initialize(this.h, key_ms, engine.cPointer())
 }
 
 func (this *QScriptExtensionInterface) OperatorAssign(param1 *QScriptExtensionInterface) {
-	C.QScriptExtensionInterface_OperatorAssign(this.h, param1.cPointer())
+	C.QScriptExtensionInterface_operatorAssign(this.h, param1.cPointer())
 }
-func (this *QScriptExtensionInterface) OnInitialize(slot func(key string, engine *QScriptEngine)) {
-	ok := C.QScriptExtensionInterface_override_virtual_Initialize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptExtensionInterface) Oninitialize(slot func(key string, engine *QScriptEngine)) {
+	ok := C.QScriptExtensionInterface_override_virtual_initialize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptExtensionInterface_Initialize
-func miqt_exec_callback_QScriptExtensionInterface_Initialize(self *C.QScriptExtensionInterface, cb C.intptr_t, key C.struct_miqt_string, engine *C.QScriptEngine) {
+//export miqt_exec_callback_QScriptExtensionInterface_initialize
+func miqt_exec_callback_QScriptExtensionInterface_initialize(self *C.QScriptExtensionInterface, cb C.intptr_t, key C.struct_miqt_string, engine *C.QScriptEngine) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(key string, engine *QScriptEngine))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -92,15 +92,15 @@ func miqt_exec_callback_QScriptExtensionInterface_Initialize(self *C.QScriptExte
 	gofunc(slotval1, slotval2)
 
 }
-func (this *QScriptExtensionInterface) OnKeys(slot func() []string) {
-	ok := C.QScriptExtensionInterface_override_virtual_Keys(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptExtensionInterface) Onkeys(slot func() []string) {
+	ok := C.QScriptExtensionInterface_override_virtual_keys(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptExtensionInterface_Keys
-func miqt_exec_callback_QScriptExtensionInterface_Keys(self *C.QScriptExtensionInterface, cb C.intptr_t) C.struct_miqt_array {
+//export miqt_exec_callback_QScriptExtensionInterface_keys
+func miqt_exec_callback_QScriptExtensionInterface_keys(self *C.QScriptExtensionInterface, cb C.intptr_t) C.struct_miqt_array {
 	gofunc, ok := cgo.Handle(cb).Value().(func() []string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -124,7 +124,7 @@ func miqt_exec_callback_QScriptExtensionInterface_Keys(self *C.QScriptExtensionI
 
 // Delete this object from C++ memory.
 func (this *QScriptExtensionInterface) Delete() {
-	C.QScriptExtensionInterface_Delete(this.h)
+	C.QScriptExtensionInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

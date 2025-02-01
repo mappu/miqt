@@ -93,7 +93,7 @@ func NewQByteArrayMatcher6(pattern string, length int64) *QByteArrayMatcher {
 }
 
 func (this *QByteArrayMatcher) OperatorAssign(other *QByteArrayMatcher) {
-	C.QByteArrayMatcher_OperatorAssign(this.h, other.cPointer())
+	C.QByteArrayMatcher_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QByteArrayMatcher) SetPattern(pattern []byte) {
@@ -104,21 +104,21 @@ func (this *QByteArrayMatcher) SetPattern(pattern []byte) {
 		pattern_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	pattern_alias.len = C.size_t(len(pattern))
-	C.QByteArrayMatcher_SetPattern(this.h, pattern_alias)
+	C.QByteArrayMatcher_setPattern(this.h, pattern_alias)
 }
 
 func (this *QByteArrayMatcher) IndexIn(str string, lenVal int64) int64 {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	return (int64)(C.QByteArrayMatcher_IndexIn(this.h, str_Cstring, (C.ptrdiff_t)(lenVal)))
+	return (int64)(C.QByteArrayMatcher_indexIn(this.h, str_Cstring, (C.ptrdiff_t)(lenVal)))
 }
 
 func (this *QByteArrayMatcher) IndexInWithData(data QByteArrayView) int64 {
-	return (int64)(C.QByteArrayMatcher_IndexInWithData(this.h, data.cPointer()))
+	return (int64)(C.QByteArrayMatcher_indexInWithData(this.h, data.cPointer()))
 }
 
 func (this *QByteArrayMatcher) Pattern() []byte {
-	var _bytearray C.struct_miqt_string = C.QByteArrayMatcher_Pattern(this.h)
+	var _bytearray C.struct_miqt_string = C.QByteArrayMatcher_pattern(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -127,16 +127,16 @@ func (this *QByteArrayMatcher) Pattern() []byte {
 func (this *QByteArrayMatcher) IndexIn3(str string, lenVal int64, from int64) int64 {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	return (int64)(C.QByteArrayMatcher_IndexIn3(this.h, str_Cstring, (C.ptrdiff_t)(lenVal), (C.ptrdiff_t)(from)))
+	return (int64)(C.QByteArrayMatcher_indexIn3(this.h, str_Cstring, (C.ptrdiff_t)(lenVal), (C.ptrdiff_t)(from)))
 }
 
 func (this *QByteArrayMatcher) IndexIn2(data QByteArrayView, from int64) int64 {
-	return (int64)(C.QByteArrayMatcher_IndexIn2(this.h, data.cPointer(), (C.ptrdiff_t)(from)))
+	return (int64)(C.QByteArrayMatcher_indexIn2(this.h, data.cPointer(), (C.ptrdiff_t)(from)))
 }
 
 // Delete this object from C++ memory.
 func (this *QByteArrayMatcher) Delete() {
-	C.QByteArrayMatcher_Delete(this.h)
+	C.QByteArrayMatcher_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -33,42 +33,42 @@ typedef struct QVariant QVariant;
 QNetworkRequest* QNetworkRequest_new();
 QNetworkRequest* QNetworkRequest_new2(QUrl* url);
 QNetworkRequest* QNetworkRequest_new3(QNetworkRequest* other);
-void QNetworkRequest_OperatorAssign(QNetworkRequest* self, QNetworkRequest* other);
-void QNetworkRequest_Swap(QNetworkRequest* self, QNetworkRequest* other);
-bool QNetworkRequest_OperatorEqual(const QNetworkRequest* self, QNetworkRequest* other);
-bool QNetworkRequest_OperatorNotEqual(const QNetworkRequest* self, QNetworkRequest* other);
-QUrl* QNetworkRequest_Url(const QNetworkRequest* self);
-void QNetworkRequest_SetUrl(QNetworkRequest* self, QUrl* url);
-QVariant* QNetworkRequest_Header(const QNetworkRequest* self, int header);
-void QNetworkRequest_SetHeader(QNetworkRequest* self, int header, QVariant* value);
-bool QNetworkRequest_HasRawHeader(const QNetworkRequest* self, struct miqt_string headerName);
-struct miqt_array /* of struct miqt_string */  QNetworkRequest_RawHeaderList(const QNetworkRequest* self);
-struct miqt_string QNetworkRequest_RawHeader(const QNetworkRequest* self, struct miqt_string headerName);
-void QNetworkRequest_SetRawHeader(QNetworkRequest* self, struct miqt_string headerName, struct miqt_string value);
-QVariant* QNetworkRequest_Attribute(const QNetworkRequest* self, int code);
-void QNetworkRequest_SetAttribute(QNetworkRequest* self, int code, QVariant* value);
-QSslConfiguration* QNetworkRequest_SslConfiguration(const QNetworkRequest* self);
-void QNetworkRequest_SetSslConfiguration(QNetworkRequest* self, QSslConfiguration* configuration);
-void QNetworkRequest_SetOriginatingObject(QNetworkRequest* self, QObject* object);
-QObject* QNetworkRequest_OriginatingObject(const QNetworkRequest* self);
-int QNetworkRequest_Priority(const QNetworkRequest* self);
-void QNetworkRequest_SetPriority(QNetworkRequest* self, int priority);
-int QNetworkRequest_MaximumRedirectsAllowed(const QNetworkRequest* self);
-void QNetworkRequest_SetMaximumRedirectsAllowed(QNetworkRequest* self, int maximumRedirectsAllowed);
-struct miqt_string QNetworkRequest_PeerVerifyName(const QNetworkRequest* self);
-void QNetworkRequest_SetPeerVerifyName(QNetworkRequest* self, struct miqt_string peerName);
-QHttp2Configuration* QNetworkRequest_Http2Configuration(const QNetworkRequest* self);
-void QNetworkRequest_SetHttp2Configuration(QNetworkRequest* self, QHttp2Configuration* configuration);
-long long QNetworkRequest_DecompressedSafetyCheckThreshold(const QNetworkRequest* self);
-void QNetworkRequest_SetDecompressedSafetyCheckThreshold(QNetworkRequest* self, long long threshold);
-int QNetworkRequest_TransferTimeout(const QNetworkRequest* self);
-void QNetworkRequest_SetTransferTimeout(QNetworkRequest* self);
-QVariant* QNetworkRequest_Attribute2(const QNetworkRequest* self, int code, QVariant* defaultValue);
-void QNetworkRequest_SetTransferTimeout1(QNetworkRequest* self, int timeout);
-void QNetworkRequest_Delete(QNetworkRequest* self);
+void QNetworkRequest_operatorAssign(QNetworkRequest* self, QNetworkRequest* other);
+void QNetworkRequest_swap(QNetworkRequest* self, QNetworkRequest* other);
+bool QNetworkRequest_operatorEqual(const QNetworkRequest* self, QNetworkRequest* other);
+bool QNetworkRequest_operatorNotEqual(const QNetworkRequest* self, QNetworkRequest* other);
+QUrl* QNetworkRequest_url(const QNetworkRequest* self);
+void QNetworkRequest_setUrl(QNetworkRequest* self, QUrl* url);
+QVariant* QNetworkRequest_header(const QNetworkRequest* self, int header);
+void QNetworkRequest_setHeader(QNetworkRequest* self, int header, QVariant* value);
+bool QNetworkRequest_hasRawHeader(const QNetworkRequest* self, struct miqt_string headerName);
+struct miqt_array /* of struct miqt_string */  QNetworkRequest_rawHeaderList(const QNetworkRequest* self);
+struct miqt_string QNetworkRequest_rawHeader(const QNetworkRequest* self, struct miqt_string headerName);
+void QNetworkRequest_setRawHeader(QNetworkRequest* self, struct miqt_string headerName, struct miqt_string value);
+QVariant* QNetworkRequest_attribute(const QNetworkRequest* self, int code);
+void QNetworkRequest_setAttribute(QNetworkRequest* self, int code, QVariant* value);
+QSslConfiguration* QNetworkRequest_sslConfiguration(const QNetworkRequest* self);
+void QNetworkRequest_setSslConfiguration(QNetworkRequest* self, QSslConfiguration* configuration);
+void QNetworkRequest_setOriginatingObject(QNetworkRequest* self, QObject* object);
+QObject* QNetworkRequest_originatingObject(const QNetworkRequest* self);
+int QNetworkRequest_priority(const QNetworkRequest* self);
+void QNetworkRequest_setPriority(QNetworkRequest* self, int priority);
+int QNetworkRequest_maximumRedirectsAllowed(const QNetworkRequest* self);
+void QNetworkRequest_setMaximumRedirectsAllowed(QNetworkRequest* self, int maximumRedirectsAllowed);
+struct miqt_string QNetworkRequest_peerVerifyName(const QNetworkRequest* self);
+void QNetworkRequest_setPeerVerifyName(QNetworkRequest* self, struct miqt_string peerName);
+QHttp2Configuration* QNetworkRequest_http2Configuration(const QNetworkRequest* self);
+void QNetworkRequest_setHttp2Configuration(QNetworkRequest* self, QHttp2Configuration* configuration);
+long long QNetworkRequest_decompressedSafetyCheckThreshold(const QNetworkRequest* self);
+void QNetworkRequest_setDecompressedSafetyCheckThreshold(QNetworkRequest* self, long long threshold);
+int QNetworkRequest_transferTimeout(const QNetworkRequest* self);
+void QNetworkRequest_setTransferTimeout(QNetworkRequest* self);
+QVariant* QNetworkRequest_attribute2(const QNetworkRequest* self, int code, QVariant* defaultValue);
+void QNetworkRequest_setTransferTimeout1(QNetworkRequest* self, int timeout);
+void QNetworkRequest_delete(QNetworkRequest* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

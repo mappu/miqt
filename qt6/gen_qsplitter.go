@@ -75,86 +75,86 @@ func NewQSplitter4(param1 Orientation, parent *QWidget) *QSplitter {
 }
 
 func (this *QSplitter) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QSplitter_MetaObject(this.h))
+	return newQMetaObject(C.QSplitter_metaObject(this.h))
 }
 
 func (this *QSplitter) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QSplitter_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QSplitter_metacast(this.h, param1_Cstring))
 }
 
 func QSplitter_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QSplitter_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QSplitter_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSplitter) AddWidget(widget *QWidget) {
-	C.QSplitter_AddWidget(this.h, widget.cPointer())
+	C.QSplitter_addWidget(this.h, widget.cPointer())
 }
 
 func (this *QSplitter) InsertWidget(index int, widget *QWidget) {
-	C.QSplitter_InsertWidget(this.h, (C.int)(index), widget.cPointer())
+	C.QSplitter_insertWidget(this.h, (C.int)(index), widget.cPointer())
 }
 
 func (this *QSplitter) ReplaceWidget(index int, widget *QWidget) *QWidget {
-	return newQWidget(C.QSplitter_ReplaceWidget(this.h, (C.int)(index), widget.cPointer()))
+	return newQWidget(C.QSplitter_replaceWidget(this.h, (C.int)(index), widget.cPointer()))
 }
 
 func (this *QSplitter) SetOrientation(orientation Orientation) {
-	C.QSplitter_SetOrientation(this.h, (C.int)(orientation))
+	C.QSplitter_setOrientation(this.h, (C.int)(orientation))
 }
 
 func (this *QSplitter) Orientation() Orientation {
-	return (Orientation)(C.QSplitter_Orientation(this.h))
+	return (Orientation)(C.QSplitter_orientation(this.h))
 }
 
 func (this *QSplitter) SetChildrenCollapsible(childrenCollapsible bool) {
-	C.QSplitter_SetChildrenCollapsible(this.h, (C.bool)(childrenCollapsible))
+	C.QSplitter_setChildrenCollapsible(this.h, (C.bool)(childrenCollapsible))
 }
 
 func (this *QSplitter) ChildrenCollapsible() bool {
-	return (bool)(C.QSplitter_ChildrenCollapsible(this.h))
+	return (bool)(C.QSplitter_childrenCollapsible(this.h))
 }
 
 func (this *QSplitter) SetCollapsible(index int, param2 bool) {
-	C.QSplitter_SetCollapsible(this.h, (C.int)(index), (C.bool)(param2))
+	C.QSplitter_setCollapsible(this.h, (C.int)(index), (C.bool)(param2))
 }
 
 func (this *QSplitter) IsCollapsible(index int) bool {
-	return (bool)(C.QSplitter_IsCollapsible(this.h, (C.int)(index)))
+	return (bool)(C.QSplitter_isCollapsible(this.h, (C.int)(index)))
 }
 
 func (this *QSplitter) SetOpaqueResize() {
-	C.QSplitter_SetOpaqueResize(this.h)
+	C.QSplitter_setOpaqueResize(this.h)
 }
 
 func (this *QSplitter) OpaqueResize() bool {
-	return (bool)(C.QSplitter_OpaqueResize(this.h))
+	return (bool)(C.QSplitter_opaqueResize(this.h))
 }
 
 func (this *QSplitter) Refresh() {
-	C.QSplitter_Refresh(this.h)
+	C.QSplitter_refresh(this.h)
 }
 
 func (this *QSplitter) SizeHint() *QSize {
-	_goptr := newQSize(C.QSplitter_SizeHint(this.h))
+	_goptr := newQSize(C.QSplitter_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSplitter) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QSplitter_MinimumSizeHint(this.h))
+	_goptr := newQSize(C.QSplitter_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QSplitter) Sizes() []int {
-	var _ma C.struct_miqt_array = C.QSplitter_Sizes(this.h)
+	var _ma C.struct_miqt_array = C.QSplitter_sizes(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -170,11 +170,11 @@ func (this *QSplitter) SetSizes(list []int) {
 		list_CArray[i] = (C.int)(list[i])
 	}
 	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
-	C.QSplitter_SetSizes(this.h, list_ma)
+	C.QSplitter_setSizes(this.h, list_ma)
 }
 
 func (this *QSplitter) SaveState() []byte {
-	var _bytearray C.struct_miqt_string = C.QSplitter_SaveState(this.h)
+	var _bytearray C.struct_miqt_string = C.QSplitter_saveState(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -188,50 +188,50 @@ func (this *QSplitter) RestoreState(state []byte) bool {
 		state_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	state_alias.len = C.size_t(len(state))
-	return (bool)(C.QSplitter_RestoreState(this.h, state_alias))
+	return (bool)(C.QSplitter_restoreState(this.h, state_alias))
 }
 
 func (this *QSplitter) HandleWidth() int {
-	return (int)(C.QSplitter_HandleWidth(this.h))
+	return (int)(C.QSplitter_handleWidth(this.h))
 }
 
 func (this *QSplitter) SetHandleWidth(handleWidth int) {
-	C.QSplitter_SetHandleWidth(this.h, (C.int)(handleWidth))
+	C.QSplitter_setHandleWidth(this.h, (C.int)(handleWidth))
 }
 
 func (this *QSplitter) IndexOf(w *QWidget) int {
-	return (int)(C.QSplitter_IndexOf(this.h, w.cPointer()))
+	return (int)(C.QSplitter_indexOf(this.h, w.cPointer()))
 }
 
 func (this *QSplitter) Widget(index int) *QWidget {
-	return newQWidget(C.QSplitter_Widget(this.h, (C.int)(index)))
+	return newQWidget(C.QSplitter_widget(this.h, (C.int)(index)))
 }
 
 func (this *QSplitter) Count() int {
-	return (int)(C.QSplitter_Count(this.h))
+	return (int)(C.QSplitter_count(this.h))
 }
 
 func (this *QSplitter) GetRange(index int, param2 *int, param3 *int) {
-	C.QSplitter_GetRange(this.h, (C.int)(index), (*C.int)(unsafe.Pointer(param2)), (*C.int)(unsafe.Pointer(param3)))
+	C.QSplitter_getRange(this.h, (C.int)(index), (*C.int)(unsafe.Pointer(param2)), (*C.int)(unsafe.Pointer(param3)))
 }
 
 func (this *QSplitter) Handle(index int) *QSplitterHandle {
-	return newQSplitterHandle(C.QSplitter_Handle(this.h, (C.int)(index)))
+	return newQSplitterHandle(C.QSplitter_handle(this.h, (C.int)(index)))
 }
 
 func (this *QSplitter) SetStretchFactor(index int, stretch int) {
-	C.QSplitter_SetStretchFactor(this.h, (C.int)(index), (C.int)(stretch))
+	C.QSplitter_setStretchFactor(this.h, (C.int)(index), (C.int)(stretch))
 }
 
 func (this *QSplitter) SplitterMoved(pos int, index int) {
-	C.QSplitter_SplitterMoved(this.h, (C.int)(pos), (C.int)(index))
+	C.QSplitter_splitterMoved(this.h, (C.int)(pos), (C.int)(index))
 }
 func (this *QSplitter) OnSplitterMoved(slot func(pos int, index int)) {
-	C.QSplitter_connect_SplitterMoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QSplitter_connect_splitterMoved(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QSplitter_SplitterMoved
-func miqt_exec_callback_QSplitter_SplitterMoved(cb C.intptr_t, pos C.int, index C.int) {
+//export miqt_exec_callback_QSplitter_splitterMoved
+func miqt_exec_callback_QSplitter_splitterMoved(cb C.intptr_t, pos C.int, index C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(pos int, index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -250,7 +250,7 @@ func QSplitter_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSplitter_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QSplitter_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -261,32 +261,32 @@ func QSplitter_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSplitter_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QSplitter_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSplitter) SetOpaqueResize1(opaque bool) {
-	C.QSplitter_SetOpaqueResize1(this.h, (C.bool)(opaque))
+	C.QSplitter_setOpaqueResize1(this.h, (C.bool)(opaque))
 }
 
 func (this *QSplitter) callVirtualBase_SizeHint() *QSize {
 
-	_goptr := newQSize(C.QSplitter_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QSplitter_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSplitter) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QSplitter_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnsizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QSplitter_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_SizeHint
-func miqt_exec_callback_QSplitter_SizeHint(self *C.QSplitter, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QSplitter_sizeHint
+func miqt_exec_callback_QSplitter_sizeHint(self *C.QSplitter, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -300,20 +300,20 @@ func miqt_exec_callback_QSplitter_SizeHint(self *C.QSplitter, cb C.intptr_t) *C.
 
 func (this *QSplitter) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_goptr := newQSize(C.QSplitter_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QSplitter_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSplitter) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QSplitter_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QSplitter_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_MinimumSizeHint
-func miqt_exec_callback_QSplitter_MinimumSizeHint(self *C.QSplitter, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QSplitter_minimumSizeHint
+func miqt_exec_callback_QSplitter_minimumSizeHint(self *C.QSplitter, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -327,18 +327,18 @@ func miqt_exec_callback_QSplitter_MinimumSizeHint(self *C.QSplitter, cb C.intptr
 
 func (this *QSplitter) callVirtualBase_CreateHandle() *QSplitterHandle {
 
-	return newQSplitterHandle(C.QSplitter_virtualbase_CreateHandle(unsafe.Pointer(this.h)))
+	return newQSplitterHandle(C.QSplitter_virtualbase_createHandle(unsafe.Pointer(this.h)))
 
 }
-func (this *QSplitter) OnCreateHandle(slot func(super func() *QSplitterHandle) *QSplitterHandle) {
-	ok := C.QSplitter_override_virtual_CreateHandle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OncreateHandle(slot func(super func() *QSplitterHandle) *QSplitterHandle) {
+	ok := C.QSplitter_override_virtual_createHandle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_CreateHandle
-func miqt_exec_callback_QSplitter_CreateHandle(self *C.QSplitter, cb C.intptr_t) *C.QSplitterHandle {
+//export miqt_exec_callback_QSplitter_createHandle
+func miqt_exec_callback_QSplitter_createHandle(self *C.QSplitter, cb C.intptr_t) *C.QSplitterHandle {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSplitterHandle) *QSplitterHandle)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -352,18 +352,18 @@ func miqt_exec_callback_QSplitter_CreateHandle(self *C.QSplitter, cb C.intptr_t)
 
 func (this *QSplitter) callVirtualBase_ChildEvent(param1 *QChildEvent) {
 
-	C.QSplitter_virtualbase_ChildEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSplitter_virtualbase_childEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSplitter) OnChildEvent(slot func(super func(param1 *QChildEvent), param1 *QChildEvent)) {
-	ok := C.QSplitter_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnchildEvent(slot func(super func(param1 *QChildEvent), param1 *QChildEvent)) {
+	ok := C.QSplitter_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_ChildEvent
-func miqt_exec_callback_QSplitter_ChildEvent(self *C.QSplitter, cb C.intptr_t, param1 *C.QChildEvent) {
+//export miqt_exec_callback_QSplitter_childEvent
+func miqt_exec_callback_QSplitter_childEvent(self *C.QSplitter, cb C.intptr_t, param1 *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QChildEvent), param1 *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -378,18 +378,18 @@ func miqt_exec_callback_QSplitter_ChildEvent(self *C.QSplitter, cb C.intptr_t, p
 
 func (this *QSplitter) callVirtualBase_Event(param1 *QEvent) bool {
 
-	return (bool)(C.QSplitter_virtualbase_Event(unsafe.Pointer(this.h), param1.cPointer()))
+	return (bool)(C.QSplitter_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
 }
-func (this *QSplitter) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
-	ok := C.QSplitter_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) Onevent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	ok := C.QSplitter_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_Event
-func miqt_exec_callback_QSplitter_Event(self *C.QSplitter, cb C.intptr_t, param1 *C.QEvent) C.bool {
+//export miqt_exec_callback_QSplitter_event
+func miqt_exec_callback_QSplitter_event(self *C.QSplitter, cb C.intptr_t, param1 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent) bool, param1 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -406,18 +406,18 @@ func miqt_exec_callback_QSplitter_Event(self *C.QSplitter, cb C.intptr_t, param1
 
 func (this *QSplitter) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
 
-	C.QSplitter_virtualbase_ResizeEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSplitter_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSplitter) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
-	ok := C.QSplitter_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnresizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
+	ok := C.QSplitter_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_ResizeEvent
-func miqt_exec_callback_QSplitter_ResizeEvent(self *C.QSplitter, cb C.intptr_t, param1 *C.QResizeEvent) {
+//export miqt_exec_callback_QSplitter_resizeEvent
+func miqt_exec_callback_QSplitter_resizeEvent(self *C.QSplitter, cb C.intptr_t, param1 *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QResizeEvent), param1 *QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -432,18 +432,18 @@ func miqt_exec_callback_QSplitter_ResizeEvent(self *C.QSplitter, cb C.intptr_t, 
 
 func (this *QSplitter) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
-	C.QSplitter_virtualbase_ChangeEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSplitter_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSplitter) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
-	ok := C.QSplitter_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnchangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	ok := C.QSplitter_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_ChangeEvent
-func miqt_exec_callback_QSplitter_ChangeEvent(self *C.QSplitter, cb C.intptr_t, param1 *C.QEvent) {
+//export miqt_exec_callback_QSplitter_changeEvent
+func miqt_exec_callback_QSplitter_changeEvent(self *C.QSplitter, cb C.intptr_t, param1 *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent), param1 *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -458,18 +458,18 @@ func miqt_exec_callback_QSplitter_ChangeEvent(self *C.QSplitter, cb C.intptr_t, 
 
 func (this *QSplitter) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
-	C.QSplitter_virtualbase_PaintEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSplitter_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSplitter) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
-	ok := C.QSplitter_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnpaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	ok := C.QSplitter_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_PaintEvent
-func miqt_exec_callback_QSplitter_PaintEvent(self *C.QSplitter, cb C.intptr_t, param1 *C.QPaintEvent) {
+//export miqt_exec_callback_QSplitter_paintEvent
+func miqt_exec_callback_QSplitter_paintEvent(self *C.QSplitter, cb C.intptr_t, param1 *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QPaintEvent), param1 *QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -484,18 +484,18 @@ func miqt_exec_callback_QSplitter_PaintEvent(self *C.QSplitter, cb C.intptr_t, p
 
 func (this *QSplitter) callVirtualBase_InitStyleOption(option *QStyleOptionFrame) {
 
-	C.QSplitter_virtualbase_InitStyleOption(unsafe.Pointer(this.h), option.cPointer())
+	C.QSplitter_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
 
 }
-func (this *QSplitter) OnInitStyleOption(slot func(super func(option *QStyleOptionFrame), option *QStyleOptionFrame)) {
-	ok := C.QSplitter_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OninitStyleOption(slot func(super func(option *QStyleOptionFrame), option *QStyleOptionFrame)) {
+	ok := C.QSplitter_override_virtual_initStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_InitStyleOption
-func miqt_exec_callback_QSplitter_InitStyleOption(self *C.QSplitter, cb C.intptr_t, option *C.QStyleOptionFrame) {
+//export miqt_exec_callback_QSplitter_initStyleOption
+func miqt_exec_callback_QSplitter_initStyleOption(self *C.QSplitter, cb C.intptr_t, option *C.QStyleOptionFrame) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option *QStyleOptionFrame), option *QStyleOptionFrame))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -510,18 +510,18 @@ func miqt_exec_callback_QSplitter_InitStyleOption(self *C.QSplitter, cb C.intptr
 
 func (this *QSplitter) callVirtualBase_DevType() int {
 
-	return (int)(C.QSplitter_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QSplitter_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QSplitter) OnDevType(slot func(super func() int) int) {
-	ok := C.QSplitter_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OndevType(slot func(super func() int) int) {
+	ok := C.QSplitter_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_DevType
-func miqt_exec_callback_QSplitter_DevType(self *C.QSplitter, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QSplitter_devType
+func miqt_exec_callback_QSplitter_devType(self *C.QSplitter, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -535,18 +535,18 @@ func miqt_exec_callback_QSplitter_DevType(self *C.QSplitter, cb C.intptr_t) C.in
 
 func (this *QSplitter) callVirtualBase_SetVisible(visible bool) {
 
-	C.QSplitter_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QSplitter_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QSplitter) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QSplitter_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QSplitter_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_SetVisible
-func miqt_exec_callback_QSplitter_SetVisible(self *C.QSplitter, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QSplitter_setVisible
+func miqt_exec_callback_QSplitter_setVisible(self *C.QSplitter, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -561,18 +561,18 @@ func miqt_exec_callback_QSplitter_SetVisible(self *C.QSplitter, cb C.intptr_t, v
 
 func (this *QSplitter) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QSplitter_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QSplitter_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QSplitter) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QSplitter_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QSplitter_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_HeightForWidth
-func miqt_exec_callback_QSplitter_HeightForWidth(self *C.QSplitter, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QSplitter_heightForWidth
+func miqt_exec_callback_QSplitter_heightForWidth(self *C.QSplitter, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -589,18 +589,18 @@ func miqt_exec_callback_QSplitter_HeightForWidth(self *C.QSplitter, cb C.intptr_
 
 func (this *QSplitter) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QSplitter_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QSplitter_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QSplitter) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QSplitter_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QSplitter_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_HasHeightForWidth
-func miqt_exec_callback_QSplitter_HasHeightForWidth(self *C.QSplitter, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QSplitter_hasHeightForWidth
+func miqt_exec_callback_QSplitter_hasHeightForWidth(self *C.QSplitter, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -614,18 +614,18 @@ func miqt_exec_callback_QSplitter_HasHeightForWidth(self *C.QSplitter, cb C.intp
 
 func (this *QSplitter) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return newQPaintEngine(C.QSplitter_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+	return newQPaintEngine(C.QSplitter_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QSplitter) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	ok := C.QSplitter_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QSplitter_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_PaintEngine
-func miqt_exec_callback_QSplitter_PaintEngine(self *C.QSplitter, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QSplitter_paintEngine
+func miqt_exec_callback_QSplitter_paintEngine(self *C.QSplitter, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -639,18 +639,18 @@ func miqt_exec_callback_QSplitter_PaintEngine(self *C.QSplitter, cb C.intptr_t) 
 
 func (this *QSplitter) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 
-	C.QSplitter_virtualbase_MousePressEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QSplitter_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnmousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QSplitter_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_MousePressEvent
-func miqt_exec_callback_QSplitter_MousePressEvent(self *C.QSplitter, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QSplitter_mousePressEvent
+func miqt_exec_callback_QSplitter_mousePressEvent(self *C.QSplitter, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -665,18 +665,18 @@ func miqt_exec_callback_QSplitter_MousePressEvent(self *C.QSplitter, cb C.intptr
 
 func (this *QSplitter) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
 
-	C.QSplitter_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QSplitter_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnmouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QSplitter_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_MouseReleaseEvent
-func miqt_exec_callback_QSplitter_MouseReleaseEvent(self *C.QSplitter, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QSplitter_mouseReleaseEvent
+func miqt_exec_callback_QSplitter_mouseReleaseEvent(self *C.QSplitter, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -691,18 +691,18 @@ func miqt_exec_callback_QSplitter_MouseReleaseEvent(self *C.QSplitter, cb C.intp
 
 func (this *QSplitter) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
 
-	C.QSplitter_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QSplitter_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QSplitter_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_MouseDoubleClickEvent
-func miqt_exec_callback_QSplitter_MouseDoubleClickEvent(self *C.QSplitter, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QSplitter_mouseDoubleClickEvent
+func miqt_exec_callback_QSplitter_mouseDoubleClickEvent(self *C.QSplitter, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -717,18 +717,18 @@ func miqt_exec_callback_QSplitter_MouseDoubleClickEvent(self *C.QSplitter, cb C.
 
 func (this *QSplitter) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 
-	C.QSplitter_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QSplitter_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnmouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QSplitter_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_MouseMoveEvent
-func miqt_exec_callback_QSplitter_MouseMoveEvent(self *C.QSplitter, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QSplitter_mouseMoveEvent
+func miqt_exec_callback_QSplitter_mouseMoveEvent(self *C.QSplitter, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -743,18 +743,18 @@ func miqt_exec_callback_QSplitter_MouseMoveEvent(self *C.QSplitter, cb C.intptr_
 
 func (this *QSplitter) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
-	C.QSplitter_virtualbase_WheelEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
-	ok := C.QSplitter_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnwheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+	ok := C.QSplitter_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_WheelEvent
-func miqt_exec_callback_QSplitter_WheelEvent(self *C.QSplitter, cb C.intptr_t, event *C.QWheelEvent) {
+//export miqt_exec_callback_QSplitter_wheelEvent
+func miqt_exec_callback_QSplitter_wheelEvent(self *C.QSplitter, cb C.intptr_t, event *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QWheelEvent), event *QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -769,18 +769,18 @@ func miqt_exec_callback_QSplitter_WheelEvent(self *C.QSplitter, cb C.intptr_t, e
 
 func (this *QSplitter) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 
-	C.QSplitter_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QSplitter_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnkeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QSplitter_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_KeyPressEvent
-func miqt_exec_callback_QSplitter_KeyPressEvent(self *C.QSplitter, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QSplitter_keyPressEvent
+func miqt_exec_callback_QSplitter_keyPressEvent(self *C.QSplitter, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -795,18 +795,18 @@ func miqt_exec_callback_QSplitter_KeyPressEvent(self *C.QSplitter, cb C.intptr_t
 
 func (this *QSplitter) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
-	C.QSplitter_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QSplitter_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QSplitter_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_KeyReleaseEvent
-func miqt_exec_callback_QSplitter_KeyReleaseEvent(self *C.QSplitter, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QSplitter_keyReleaseEvent
+func miqt_exec_callback_QSplitter_keyReleaseEvent(self *C.QSplitter, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -821,18 +821,18 @@ func miqt_exec_callback_QSplitter_KeyReleaseEvent(self *C.QSplitter, cb C.intptr
 
 func (this *QSplitter) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
-	C.QSplitter_virtualbase_FocusInEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QSplitter_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QSplitter_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_FocusInEvent
-func miqt_exec_callback_QSplitter_FocusInEvent(self *C.QSplitter, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QSplitter_focusInEvent
+func miqt_exec_callback_QSplitter_focusInEvent(self *C.QSplitter, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -847,18 +847,18 @@ func miqt_exec_callback_QSplitter_FocusInEvent(self *C.QSplitter, cb C.intptr_t,
 
 func (this *QSplitter) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
-	C.QSplitter_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QSplitter_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QSplitter_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_FocusOutEvent
-func miqt_exec_callback_QSplitter_FocusOutEvent(self *C.QSplitter, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QSplitter_focusOutEvent
+func miqt_exec_callback_QSplitter_focusOutEvent(self *C.QSplitter, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -873,18 +873,18 @@ func miqt_exec_callback_QSplitter_FocusOutEvent(self *C.QSplitter, cb C.intptr_t
 
 func (this *QSplitter) callVirtualBase_EnterEvent(event *QEnterEvent) {
 
-	C.QSplitter_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
-	ok := C.QSplitter_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnenterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+	ok := C.QSplitter_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_EnterEvent
-func miqt_exec_callback_QSplitter_EnterEvent(self *C.QSplitter, cb C.intptr_t, event *C.QEnterEvent) {
+//export miqt_exec_callback_QSplitter_enterEvent
+func miqt_exec_callback_QSplitter_enterEvent(self *C.QSplitter, cb C.intptr_t, event *C.QEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEnterEvent), event *QEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -899,18 +899,18 @@ func miqt_exec_callback_QSplitter_EnterEvent(self *C.QSplitter, cb C.intptr_t, e
 
 func (this *QSplitter) callVirtualBase_LeaveEvent(event *QEvent) {
 
-	C.QSplitter_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QSplitter_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QSplitter_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_LeaveEvent
-func miqt_exec_callback_QSplitter_LeaveEvent(self *C.QSplitter, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QSplitter_leaveEvent
+func miqt_exec_callback_QSplitter_leaveEvent(self *C.QSplitter, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -925,18 +925,18 @@ func miqt_exec_callback_QSplitter_LeaveEvent(self *C.QSplitter, cb C.intptr_t, e
 
 func (this *QSplitter) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
-	C.QSplitter_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
-	ok := C.QSplitter_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QSplitter_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_MoveEvent
-func miqt_exec_callback_QSplitter_MoveEvent(self *C.QSplitter, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QSplitter_moveEvent
+func miqt_exec_callback_QSplitter_moveEvent(self *C.QSplitter, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -951,18 +951,18 @@ func miqt_exec_callback_QSplitter_MoveEvent(self *C.QSplitter, cb C.intptr_t, ev
 
 func (this *QSplitter) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
-	C.QSplitter_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
-	ok := C.QSplitter_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QSplitter_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_CloseEvent
-func miqt_exec_callback_QSplitter_CloseEvent(self *C.QSplitter, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QSplitter_closeEvent
+func miqt_exec_callback_QSplitter_closeEvent(self *C.QSplitter, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -977,18 +977,18 @@ func miqt_exec_callback_QSplitter_CloseEvent(self *C.QSplitter, cb C.intptr_t, e
 
 func (this *QSplitter) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
 
-	C.QSplitter_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
-	ok := C.QSplitter_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OncontextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+	ok := C.QSplitter_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_ContextMenuEvent
-func miqt_exec_callback_QSplitter_ContextMenuEvent(self *C.QSplitter, cb C.intptr_t, event *C.QContextMenuEvent) {
+//export miqt_exec_callback_QSplitter_contextMenuEvent
+func miqt_exec_callback_QSplitter_contextMenuEvent(self *C.QSplitter, cb C.intptr_t, event *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QContextMenuEvent), event *QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1003,18 +1003,18 @@ func miqt_exec_callback_QSplitter_ContextMenuEvent(self *C.QSplitter, cb C.intpt
 
 func (this *QSplitter) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
-	C.QSplitter_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
-	ok := C.QSplitter_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QSplitter_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_TabletEvent
-func miqt_exec_callback_QSplitter_TabletEvent(self *C.QSplitter, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QSplitter_tabletEvent
+func miqt_exec_callback_QSplitter_tabletEvent(self *C.QSplitter, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1029,18 +1029,18 @@ func miqt_exec_callback_QSplitter_TabletEvent(self *C.QSplitter, cb C.intptr_t, 
 
 func (this *QSplitter) callVirtualBase_ActionEvent(event *QActionEvent) {
 
-	C.QSplitter_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
-	ok := C.QSplitter_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QSplitter_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_ActionEvent
-func miqt_exec_callback_QSplitter_ActionEvent(self *C.QSplitter, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QSplitter_actionEvent
+func miqt_exec_callback_QSplitter_actionEvent(self *C.QSplitter, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1055,18 +1055,18 @@ func miqt_exec_callback_QSplitter_ActionEvent(self *C.QSplitter, cb C.intptr_t, 
 
 func (this *QSplitter) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
 
-	C.QSplitter_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
-	ok := C.QSplitter_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	ok := C.QSplitter_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_DragEnterEvent
-func miqt_exec_callback_QSplitter_DragEnterEvent(self *C.QSplitter, cb C.intptr_t, event *C.QDragEnterEvent) {
+//export miqt_exec_callback_QSplitter_dragEnterEvent
+func miqt_exec_callback_QSplitter_dragEnterEvent(self *C.QSplitter, cb C.intptr_t, event *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragEnterEvent), event *QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1081,18 +1081,18 @@ func miqt_exec_callback_QSplitter_DragEnterEvent(self *C.QSplitter, cb C.intptr_
 
 func (this *QSplitter) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 
-	C.QSplitter_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
-	ok := C.QSplitter_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	ok := C.QSplitter_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_DragMoveEvent
-func miqt_exec_callback_QSplitter_DragMoveEvent(self *C.QSplitter, cb C.intptr_t, event *C.QDragMoveEvent) {
+//export miqt_exec_callback_QSplitter_dragMoveEvent
+func miqt_exec_callback_QSplitter_dragMoveEvent(self *C.QSplitter, cb C.intptr_t, event *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragMoveEvent), event *QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1107,18 +1107,18 @@ func miqt_exec_callback_QSplitter_DragMoveEvent(self *C.QSplitter, cb C.intptr_t
 
 func (this *QSplitter) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
 
-	C.QSplitter_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
-	ok := C.QSplitter_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	ok := C.QSplitter_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_DragLeaveEvent
-func miqt_exec_callback_QSplitter_DragLeaveEvent(self *C.QSplitter, cb C.intptr_t, event *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QSplitter_dragLeaveEvent
+func miqt_exec_callback_QSplitter_dragLeaveEvent(self *C.QSplitter, cb C.intptr_t, event *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1133,18 +1133,18 @@ func miqt_exec_callback_QSplitter_DragLeaveEvent(self *C.QSplitter, cb C.intptr_
 
 func (this *QSplitter) callVirtualBase_DropEvent(event *QDropEvent) {
 
-	C.QSplitter_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
-	ok := C.QSplitter_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	ok := C.QSplitter_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_DropEvent
-func miqt_exec_callback_QSplitter_DropEvent(self *C.QSplitter, cb C.intptr_t, event *C.QDropEvent) {
+//export miqt_exec_callback_QSplitter_dropEvent
+func miqt_exec_callback_QSplitter_dropEvent(self *C.QSplitter, cb C.intptr_t, event *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1159,18 +1159,18 @@ func miqt_exec_callback_QSplitter_DropEvent(self *C.QSplitter, cb C.intptr_t, ev
 
 func (this *QSplitter) callVirtualBase_ShowEvent(event *QShowEvent) {
 
-	C.QSplitter_virtualbase_ShowEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
-	ok := C.QSplitter_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnshowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	ok := C.QSplitter_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_ShowEvent
-func miqt_exec_callback_QSplitter_ShowEvent(self *C.QSplitter, cb C.intptr_t, event *C.QShowEvent) {
+//export miqt_exec_callback_QSplitter_showEvent
+func miqt_exec_callback_QSplitter_showEvent(self *C.QSplitter, cb C.intptr_t, event *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QShowEvent), event *QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1185,18 +1185,18 @@ func miqt_exec_callback_QSplitter_ShowEvent(self *C.QSplitter, cb C.intptr_t, ev
 
 func (this *QSplitter) callVirtualBase_HideEvent(event *QHideEvent) {
 
-	C.QSplitter_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
-	ok := C.QSplitter_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QSplitter_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_HideEvent
-func miqt_exec_callback_QSplitter_HideEvent(self *C.QSplitter, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_QSplitter_hideEvent
+func miqt_exec_callback_QSplitter_hideEvent(self *C.QSplitter, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1218,18 +1218,18 @@ func (this *QSplitter) callVirtualBase_NativeEvent(eventType []byte, message uns
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QSplitter_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
+	return (bool)(C.QSplitter_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
 
 }
-func (this *QSplitter) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
-	ok := C.QSplitter_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+	ok := C.QSplitter_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_NativeEvent
-func miqt_exec_callback_QSplitter_NativeEvent(self *C.QSplitter, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
+//export miqt_exec_callback_QSplitter_nativeEvent
+func miqt_exec_callback_QSplitter_nativeEvent(self *C.QSplitter, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1252,18 +1252,18 @@ func miqt_exec_callback_QSplitter_NativeEvent(self *C.QSplitter, cb C.intptr_t, 
 
 func (this *QSplitter) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QSplitter_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QSplitter_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QSplitter) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QSplitter_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QSplitter_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_Metric
-func miqt_exec_callback_QSplitter_Metric(self *C.QSplitter, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QSplitter_metric
+func miqt_exec_callback_QSplitter_metric(self *C.QSplitter, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1280,18 +1280,18 @@ func miqt_exec_callback_QSplitter_Metric(self *C.QSplitter, cb C.intptr_t, param
 
 func (this *QSplitter) callVirtualBase_InitPainter(painter *QPainter) {
 
-	C.QSplitter_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+	C.QSplitter_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QSplitter) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	ok := C.QSplitter_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QSplitter_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_InitPainter
-func miqt_exec_callback_QSplitter_InitPainter(self *C.QSplitter, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QSplitter_initPainter
+func miqt_exec_callback_QSplitter_initPainter(self *C.QSplitter, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1306,18 +1306,18 @@ func miqt_exec_callback_QSplitter_InitPainter(self *C.QSplitter, cb C.intptr_t, 
 
 func (this *QSplitter) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return newQPaintDevice(C.QSplitter_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+	return newQPaintDevice(C.QSplitter_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QSplitter) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	ok := C.QSplitter_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QSplitter_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_Redirected
-func miqt_exec_callback_QSplitter_Redirected(self *C.QSplitter, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QSplitter_redirected
+func miqt_exec_callback_QSplitter_redirected(self *C.QSplitter, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1334,18 +1334,18 @@ func miqt_exec_callback_QSplitter_Redirected(self *C.QSplitter, cb C.intptr_t, o
 
 func (this *QSplitter) callVirtualBase_SharedPainter() *QPainter {
 
-	return newQPainter(C.QSplitter_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+	return newQPainter(C.QSplitter_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QSplitter) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	ok := C.QSplitter_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QSplitter_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_SharedPainter
-func miqt_exec_callback_QSplitter_SharedPainter(self *C.QSplitter, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QSplitter_sharedPainter
+func miqt_exec_callback_QSplitter_sharedPainter(self *C.QSplitter, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1359,18 +1359,18 @@ func miqt_exec_callback_QSplitter_SharedPainter(self *C.QSplitter, cb C.intptr_t
 
 func (this *QSplitter) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
 
-	C.QSplitter_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSplitter_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSplitter) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
-	ok := C.QSplitter_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QSplitter_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_InputMethodEvent
-func miqt_exec_callback_QSplitter_InputMethodEvent(self *C.QSplitter, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QSplitter_inputMethodEvent
+func miqt_exec_callback_QSplitter_inputMethodEvent(self *C.QSplitter, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1385,20 +1385,20 @@ func miqt_exec_callback_QSplitter_InputMethodEvent(self *C.QSplitter, cb C.intpt
 
 func (this *QSplitter) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_goptr := newQVariant(C.QSplitter_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
+	_goptr := newQVariant(C.QSplitter_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSplitter) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
-	ok := C.QSplitter_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	ok := C.QSplitter_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_InputMethodQuery
-func miqt_exec_callback_QSplitter_InputMethodQuery(self *C.QSplitter, cb C.intptr_t, param1 C.int) *C.QVariant {
+//export miqt_exec_callback_QSplitter_inputMethodQuery
+func miqt_exec_callback_QSplitter_inputMethodQuery(self *C.QSplitter, cb C.intptr_t, param1 C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1415,18 +1415,18 @@ func miqt_exec_callback_QSplitter_InputMethodQuery(self *C.QSplitter, cb C.intpt
 
 func (this *QSplitter) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QSplitter_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QSplitter_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QSplitter) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QSplitter_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QSplitter_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_FocusNextPrevChild
-func miqt_exec_callback_QSplitter_FocusNextPrevChild(self *C.QSplitter, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QSplitter_focusNextPrevChild
+func miqt_exec_callback_QSplitter_focusNextPrevChild(self *C.QSplitter, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1443,18 +1443,18 @@ func miqt_exec_callback_QSplitter_FocusNextPrevChild(self *C.QSplitter, cb C.int
 
 func (this *QSplitter) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QSplitter_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QSplitter_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QSplitter) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QSplitter_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QSplitter_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_EventFilter
-func miqt_exec_callback_QSplitter_EventFilter(self *C.QSplitter, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QSplitter_eventFilter
+func miqt_exec_callback_QSplitter_eventFilter(self *C.QSplitter, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1473,18 +1473,18 @@ func miqt_exec_callback_QSplitter_EventFilter(self *C.QSplitter, cb C.intptr_t, 
 
 func (this *QSplitter) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QSplitter_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QSplitter_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QSplitter_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_TimerEvent
-func miqt_exec_callback_QSplitter_TimerEvent(self *C.QSplitter, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QSplitter_timerEvent
+func miqt_exec_callback_QSplitter_timerEvent(self *C.QSplitter, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1499,18 +1499,18 @@ func miqt_exec_callback_QSplitter_TimerEvent(self *C.QSplitter, cb C.intptr_t, e
 
 func (this *QSplitter) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QSplitter_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitter_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitter) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QSplitter_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QSplitter_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_CustomEvent
-func miqt_exec_callback_QSplitter_CustomEvent(self *C.QSplitter, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QSplitter_customEvent
+func miqt_exec_callback_QSplitter_customEvent(self *C.QSplitter, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1525,18 +1525,18 @@ func miqt_exec_callback_QSplitter_CustomEvent(self *C.QSplitter, cb C.intptr_t, 
 
 func (this *QSplitter) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QSplitter_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QSplitter_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSplitter) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QSplitter_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QSplitter_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_ConnectNotify
-func miqt_exec_callback_QSplitter_ConnectNotify(self *C.QSplitter, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QSplitter_connectNotify
+func miqt_exec_callback_QSplitter_connectNotify(self *C.QSplitter, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1551,18 +1551,18 @@ func miqt_exec_callback_QSplitter_ConnectNotify(self *C.QSplitter, cb C.intptr_t
 
 func (this *QSplitter) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QSplitter_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QSplitter_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSplitter) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QSplitter_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitter) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QSplitter_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitter_DisconnectNotify
-func miqt_exec_callback_QSplitter_DisconnectNotify(self *C.QSplitter, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QSplitter_disconnectNotify
+func miqt_exec_callback_QSplitter_disconnectNotify(self *C.QSplitter, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1577,7 +1577,7 @@ func miqt_exec_callback_QSplitter_DisconnectNotify(self *C.QSplitter, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QSplitter) Delete() {
-	C.QSplitter_Delete(this.h)
+	C.QSplitter_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1632,42 +1632,42 @@ func NewQSplitterHandle(o Orientation, parent *QSplitter) *QSplitterHandle {
 }
 
 func (this *QSplitterHandle) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QSplitterHandle_MetaObject(this.h))
+	return newQMetaObject(C.QSplitterHandle_metaObject(this.h))
 }
 
 func (this *QSplitterHandle) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QSplitterHandle_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QSplitterHandle_metacast(this.h, param1_Cstring))
 }
 
 func QSplitterHandle_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QSplitterHandle_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QSplitterHandle_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSplitterHandle) SetOrientation(o Orientation) {
-	C.QSplitterHandle_SetOrientation(this.h, (C.int)(o))
+	C.QSplitterHandle_setOrientation(this.h, (C.int)(o))
 }
 
 func (this *QSplitterHandle) Orientation() Orientation {
-	return (Orientation)(C.QSplitterHandle_Orientation(this.h))
+	return (Orientation)(C.QSplitterHandle_orientation(this.h))
 }
 
 func (this *QSplitterHandle) OpaqueResize() bool {
-	return (bool)(C.QSplitterHandle_OpaqueResize(this.h))
+	return (bool)(C.QSplitterHandle_opaqueResize(this.h))
 }
 
 func (this *QSplitterHandle) Splitter() *QSplitter {
-	return newQSplitter(C.QSplitterHandle_Splitter(this.h))
+	return newQSplitter(C.QSplitterHandle_splitter(this.h))
 }
 
 func (this *QSplitterHandle) SizeHint() *QSize {
-	_goptr := newQSize(C.QSplitterHandle_SizeHint(this.h))
+	_goptr := newQSize(C.QSplitterHandle_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -1677,7 +1677,7 @@ func QSplitterHandle_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSplitterHandle_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QSplitterHandle_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1688,7 +1688,7 @@ func QSplitterHandle_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSplitterHandle_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QSplitterHandle_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1696,20 +1696,20 @@ func QSplitterHandle_Tr3(s string, c string, n int) string {
 
 func (this *QSplitterHandle) callVirtualBase_SizeHint() *QSize {
 
-	_goptr := newQSize(C.QSplitterHandle_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QSplitterHandle_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSplitterHandle) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QSplitterHandle_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnsizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QSplitterHandle_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_SizeHint
-func miqt_exec_callback_QSplitterHandle_SizeHint(self *C.QSplitterHandle, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QSplitterHandle_sizeHint
+func miqt_exec_callback_QSplitterHandle_sizeHint(self *C.QSplitterHandle, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1723,18 +1723,18 @@ func miqt_exec_callback_QSplitterHandle_SizeHint(self *C.QSplitterHandle, cb C.i
 
 func (this *QSplitterHandle) callVirtualBase_PaintEvent(param1 *QPaintEvent) {
 
-	C.QSplitterHandle_virtualbase_PaintEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSplitterHandle_virtualbase_paintEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSplitterHandle) OnPaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
-	ok := C.QSplitterHandle_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnpaintEvent(slot func(super func(param1 *QPaintEvent), param1 *QPaintEvent)) {
+	ok := C.QSplitterHandle_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_PaintEvent
-func miqt_exec_callback_QSplitterHandle_PaintEvent(self *C.QSplitterHandle, cb C.intptr_t, param1 *C.QPaintEvent) {
+//export miqt_exec_callback_QSplitterHandle_paintEvent
+func miqt_exec_callback_QSplitterHandle_paintEvent(self *C.QSplitterHandle, cb C.intptr_t, param1 *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QPaintEvent), param1 *QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1749,18 +1749,18 @@ func miqt_exec_callback_QSplitterHandle_PaintEvent(self *C.QSplitterHandle, cb C
 
 func (this *QSplitterHandle) callVirtualBase_MouseMoveEvent(param1 *QMouseEvent) {
 
-	C.QSplitterHandle_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSplitterHandle_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSplitterHandle) OnMouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	ok := C.QSplitterHandle_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnmouseMoveEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	ok := C.QSplitterHandle_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_MouseMoveEvent
-func miqt_exec_callback_QSplitterHandle_MouseMoveEvent(self *C.QSplitterHandle, cb C.intptr_t, param1 *C.QMouseEvent) {
+//export miqt_exec_callback_QSplitterHandle_mouseMoveEvent
+func miqt_exec_callback_QSplitterHandle_mouseMoveEvent(self *C.QSplitterHandle, cb C.intptr_t, param1 *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1775,18 +1775,18 @@ func miqt_exec_callback_QSplitterHandle_MouseMoveEvent(self *C.QSplitterHandle, 
 
 func (this *QSplitterHandle) callVirtualBase_MousePressEvent(param1 *QMouseEvent) {
 
-	C.QSplitterHandle_virtualbase_MousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSplitterHandle_virtualbase_mousePressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSplitterHandle) OnMousePressEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	ok := C.QSplitterHandle_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnmousePressEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	ok := C.QSplitterHandle_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_MousePressEvent
-func miqt_exec_callback_QSplitterHandle_MousePressEvent(self *C.QSplitterHandle, cb C.intptr_t, param1 *C.QMouseEvent) {
+//export miqt_exec_callback_QSplitterHandle_mousePressEvent
+func miqt_exec_callback_QSplitterHandle_mousePressEvent(self *C.QSplitterHandle, cb C.intptr_t, param1 *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1801,18 +1801,18 @@ func miqt_exec_callback_QSplitterHandle_MousePressEvent(self *C.QSplitterHandle,
 
 func (this *QSplitterHandle) callVirtualBase_MouseReleaseEvent(param1 *QMouseEvent) {
 
-	C.QSplitterHandle_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSplitterHandle_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSplitterHandle) OnMouseReleaseEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
-	ok := C.QSplitterHandle_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnmouseReleaseEvent(slot func(super func(param1 *QMouseEvent), param1 *QMouseEvent)) {
+	ok := C.QSplitterHandle_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_MouseReleaseEvent
-func miqt_exec_callback_QSplitterHandle_MouseReleaseEvent(self *C.QSplitterHandle, cb C.intptr_t, param1 *C.QMouseEvent) {
+//export miqt_exec_callback_QSplitterHandle_mouseReleaseEvent
+func miqt_exec_callback_QSplitterHandle_mouseReleaseEvent(self *C.QSplitterHandle, cb C.intptr_t, param1 *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QMouseEvent), param1 *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1827,18 +1827,18 @@ func miqt_exec_callback_QSplitterHandle_MouseReleaseEvent(self *C.QSplitterHandl
 
 func (this *QSplitterHandle) callVirtualBase_ResizeEvent(param1 *QResizeEvent) {
 
-	C.QSplitterHandle_virtualbase_ResizeEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSplitterHandle_virtualbase_resizeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSplitterHandle) OnResizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
-	ok := C.QSplitterHandle_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnresizeEvent(slot func(super func(param1 *QResizeEvent), param1 *QResizeEvent)) {
+	ok := C.QSplitterHandle_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_ResizeEvent
-func miqt_exec_callback_QSplitterHandle_ResizeEvent(self *C.QSplitterHandle, cb C.intptr_t, param1 *C.QResizeEvent) {
+//export miqt_exec_callback_QSplitterHandle_resizeEvent
+func miqt_exec_callback_QSplitterHandle_resizeEvent(self *C.QSplitterHandle, cb C.intptr_t, param1 *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QResizeEvent), param1 *QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1853,18 +1853,18 @@ func miqt_exec_callback_QSplitterHandle_ResizeEvent(self *C.QSplitterHandle, cb 
 
 func (this *QSplitterHandle) callVirtualBase_Event(param1 *QEvent) bool {
 
-	return (bool)(C.QSplitterHandle_virtualbase_Event(unsafe.Pointer(this.h), param1.cPointer()))
+	return (bool)(C.QSplitterHandle_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
 }
-func (this *QSplitterHandle) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
-	ok := C.QSplitterHandle_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) Onevent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	ok := C.QSplitterHandle_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_Event
-func miqt_exec_callback_QSplitterHandle_Event(self *C.QSplitterHandle, cb C.intptr_t, param1 *C.QEvent) C.bool {
+//export miqt_exec_callback_QSplitterHandle_event
+func miqt_exec_callback_QSplitterHandle_event(self *C.QSplitterHandle, cb C.intptr_t, param1 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent) bool, param1 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1881,18 +1881,18 @@ func miqt_exec_callback_QSplitterHandle_Event(self *C.QSplitterHandle, cb C.intp
 
 func (this *QSplitterHandle) callVirtualBase_DevType() int {
 
-	return (int)(C.QSplitterHandle_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QSplitterHandle_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QSplitterHandle) OnDevType(slot func(super func() int) int) {
-	ok := C.QSplitterHandle_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OndevType(slot func(super func() int) int) {
+	ok := C.QSplitterHandle_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_DevType
-func miqt_exec_callback_QSplitterHandle_DevType(self *C.QSplitterHandle, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QSplitterHandle_devType
+func miqt_exec_callback_QSplitterHandle_devType(self *C.QSplitterHandle, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1906,18 +1906,18 @@ func miqt_exec_callback_QSplitterHandle_DevType(self *C.QSplitterHandle, cb C.in
 
 func (this *QSplitterHandle) callVirtualBase_SetVisible(visible bool) {
 
-	C.QSplitterHandle_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QSplitterHandle_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QSplitterHandle) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QSplitterHandle_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QSplitterHandle_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_SetVisible
-func miqt_exec_callback_QSplitterHandle_SetVisible(self *C.QSplitterHandle, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QSplitterHandle_setVisible
+func miqt_exec_callback_QSplitterHandle_setVisible(self *C.QSplitterHandle, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1932,20 +1932,20 @@ func miqt_exec_callback_QSplitterHandle_SetVisible(self *C.QSplitterHandle, cb C
 
 func (this *QSplitterHandle) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_goptr := newQSize(C.QSplitterHandle_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QSplitterHandle_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSplitterHandle) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QSplitterHandle_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QSplitterHandle_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_MinimumSizeHint
-func miqt_exec_callback_QSplitterHandle_MinimumSizeHint(self *C.QSplitterHandle, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QSplitterHandle_minimumSizeHint
+func miqt_exec_callback_QSplitterHandle_minimumSizeHint(self *C.QSplitterHandle, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1959,18 +1959,18 @@ func miqt_exec_callback_QSplitterHandle_MinimumSizeHint(self *C.QSplitterHandle,
 
 func (this *QSplitterHandle) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QSplitterHandle_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QSplitterHandle_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QSplitterHandle) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QSplitterHandle_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QSplitterHandle_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_HeightForWidth
-func miqt_exec_callback_QSplitterHandle_HeightForWidth(self *C.QSplitterHandle, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QSplitterHandle_heightForWidth
+func miqt_exec_callback_QSplitterHandle_heightForWidth(self *C.QSplitterHandle, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1987,18 +1987,18 @@ func miqt_exec_callback_QSplitterHandle_HeightForWidth(self *C.QSplitterHandle, 
 
 func (this *QSplitterHandle) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QSplitterHandle_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QSplitterHandle_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QSplitterHandle) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QSplitterHandle_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QSplitterHandle_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_HasHeightForWidth
-func miqt_exec_callback_QSplitterHandle_HasHeightForWidth(self *C.QSplitterHandle, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QSplitterHandle_hasHeightForWidth
+func miqt_exec_callback_QSplitterHandle_hasHeightForWidth(self *C.QSplitterHandle, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2012,18 +2012,18 @@ func miqt_exec_callback_QSplitterHandle_HasHeightForWidth(self *C.QSplitterHandl
 
 func (this *QSplitterHandle) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return newQPaintEngine(C.QSplitterHandle_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+	return newQPaintEngine(C.QSplitterHandle_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QSplitterHandle) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	ok := C.QSplitterHandle_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QSplitterHandle_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_PaintEngine
-func miqt_exec_callback_QSplitterHandle_PaintEngine(self *C.QSplitterHandle, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QSplitterHandle_paintEngine
+func miqt_exec_callback_QSplitterHandle_paintEngine(self *C.QSplitterHandle, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2037,18 +2037,18 @@ func miqt_exec_callback_QSplitterHandle_PaintEngine(self *C.QSplitterHandle, cb 
 
 func (this *QSplitterHandle) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
 
-	C.QSplitterHandle_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QSplitterHandle_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QSplitterHandle_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_MouseDoubleClickEvent
-func miqt_exec_callback_QSplitterHandle_MouseDoubleClickEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QSplitterHandle_mouseDoubleClickEvent
+func miqt_exec_callback_QSplitterHandle_mouseDoubleClickEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2063,18 +2063,18 @@ func miqt_exec_callback_QSplitterHandle_MouseDoubleClickEvent(self *C.QSplitterH
 
 func (this *QSplitterHandle) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
-	C.QSplitterHandle_virtualbase_WheelEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
-	ok := C.QSplitterHandle_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnwheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+	ok := C.QSplitterHandle_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_WheelEvent
-func miqt_exec_callback_QSplitterHandle_WheelEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QWheelEvent) {
+//export miqt_exec_callback_QSplitterHandle_wheelEvent
+func miqt_exec_callback_QSplitterHandle_wheelEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QWheelEvent), event *QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2089,18 +2089,18 @@ func miqt_exec_callback_QSplitterHandle_WheelEvent(self *C.QSplitterHandle, cb C
 
 func (this *QSplitterHandle) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 
-	C.QSplitterHandle_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QSplitterHandle_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnkeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QSplitterHandle_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_KeyPressEvent
-func miqt_exec_callback_QSplitterHandle_KeyPressEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QSplitterHandle_keyPressEvent
+func miqt_exec_callback_QSplitterHandle_keyPressEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2115,18 +2115,18 @@ func miqt_exec_callback_QSplitterHandle_KeyPressEvent(self *C.QSplitterHandle, c
 
 func (this *QSplitterHandle) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
-	C.QSplitterHandle_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QSplitterHandle_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QSplitterHandle_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_KeyReleaseEvent
-func miqt_exec_callback_QSplitterHandle_KeyReleaseEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QSplitterHandle_keyReleaseEvent
+func miqt_exec_callback_QSplitterHandle_keyReleaseEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2141,18 +2141,18 @@ func miqt_exec_callback_QSplitterHandle_KeyReleaseEvent(self *C.QSplitterHandle,
 
 func (this *QSplitterHandle) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
-	C.QSplitterHandle_virtualbase_FocusInEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QSplitterHandle_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QSplitterHandle_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_FocusInEvent
-func miqt_exec_callback_QSplitterHandle_FocusInEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QSplitterHandle_focusInEvent
+func miqt_exec_callback_QSplitterHandle_focusInEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2167,18 +2167,18 @@ func miqt_exec_callback_QSplitterHandle_FocusInEvent(self *C.QSplitterHandle, cb
 
 func (this *QSplitterHandle) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
-	C.QSplitterHandle_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QSplitterHandle_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QSplitterHandle_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_FocusOutEvent
-func miqt_exec_callback_QSplitterHandle_FocusOutEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QSplitterHandle_focusOutEvent
+func miqt_exec_callback_QSplitterHandle_focusOutEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2193,18 +2193,18 @@ func miqt_exec_callback_QSplitterHandle_FocusOutEvent(self *C.QSplitterHandle, c
 
 func (this *QSplitterHandle) callVirtualBase_EnterEvent(event *QEnterEvent) {
 
-	C.QSplitterHandle_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
-	ok := C.QSplitterHandle_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnenterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+	ok := C.QSplitterHandle_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_EnterEvent
-func miqt_exec_callback_QSplitterHandle_EnterEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QEnterEvent) {
+//export miqt_exec_callback_QSplitterHandle_enterEvent
+func miqt_exec_callback_QSplitterHandle_enterEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEnterEvent), event *QEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2219,18 +2219,18 @@ func miqt_exec_callback_QSplitterHandle_EnterEvent(self *C.QSplitterHandle, cb C
 
 func (this *QSplitterHandle) callVirtualBase_LeaveEvent(event *QEvent) {
 
-	C.QSplitterHandle_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QSplitterHandle_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QSplitterHandle_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_LeaveEvent
-func miqt_exec_callback_QSplitterHandle_LeaveEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QSplitterHandle_leaveEvent
+func miqt_exec_callback_QSplitterHandle_leaveEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2245,18 +2245,18 @@ func miqt_exec_callback_QSplitterHandle_LeaveEvent(self *C.QSplitterHandle, cb C
 
 func (this *QSplitterHandle) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
-	C.QSplitterHandle_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
-	ok := C.QSplitterHandle_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QSplitterHandle_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_MoveEvent
-func miqt_exec_callback_QSplitterHandle_MoveEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QSplitterHandle_moveEvent
+func miqt_exec_callback_QSplitterHandle_moveEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2271,18 +2271,18 @@ func miqt_exec_callback_QSplitterHandle_MoveEvent(self *C.QSplitterHandle, cb C.
 
 func (this *QSplitterHandle) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
-	C.QSplitterHandle_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
-	ok := C.QSplitterHandle_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QSplitterHandle_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_CloseEvent
-func miqt_exec_callback_QSplitterHandle_CloseEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QSplitterHandle_closeEvent
+func miqt_exec_callback_QSplitterHandle_closeEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2297,18 +2297,18 @@ func miqt_exec_callback_QSplitterHandle_CloseEvent(self *C.QSplitterHandle, cb C
 
 func (this *QSplitterHandle) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
 
-	C.QSplitterHandle_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
-	ok := C.QSplitterHandle_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OncontextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+	ok := C.QSplitterHandle_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_ContextMenuEvent
-func miqt_exec_callback_QSplitterHandle_ContextMenuEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QContextMenuEvent) {
+//export miqt_exec_callback_QSplitterHandle_contextMenuEvent
+func miqt_exec_callback_QSplitterHandle_contextMenuEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QContextMenuEvent), event *QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2323,18 +2323,18 @@ func miqt_exec_callback_QSplitterHandle_ContextMenuEvent(self *C.QSplitterHandle
 
 func (this *QSplitterHandle) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
-	C.QSplitterHandle_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
-	ok := C.QSplitterHandle_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QSplitterHandle_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_TabletEvent
-func miqt_exec_callback_QSplitterHandle_TabletEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QSplitterHandle_tabletEvent
+func miqt_exec_callback_QSplitterHandle_tabletEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2349,18 +2349,18 @@ func miqt_exec_callback_QSplitterHandle_TabletEvent(self *C.QSplitterHandle, cb 
 
 func (this *QSplitterHandle) callVirtualBase_ActionEvent(event *QActionEvent) {
 
-	C.QSplitterHandle_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
-	ok := C.QSplitterHandle_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QSplitterHandle_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_ActionEvent
-func miqt_exec_callback_QSplitterHandle_ActionEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QSplitterHandle_actionEvent
+func miqt_exec_callback_QSplitterHandle_actionEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2375,18 +2375,18 @@ func miqt_exec_callback_QSplitterHandle_ActionEvent(self *C.QSplitterHandle, cb 
 
 func (this *QSplitterHandle) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
 
-	C.QSplitterHandle_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
-	ok := C.QSplitterHandle_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	ok := C.QSplitterHandle_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_DragEnterEvent
-func miqt_exec_callback_QSplitterHandle_DragEnterEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QDragEnterEvent) {
+//export miqt_exec_callback_QSplitterHandle_dragEnterEvent
+func miqt_exec_callback_QSplitterHandle_dragEnterEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragEnterEvent), event *QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2401,18 +2401,18 @@ func miqt_exec_callback_QSplitterHandle_DragEnterEvent(self *C.QSplitterHandle, 
 
 func (this *QSplitterHandle) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 
-	C.QSplitterHandle_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
-	ok := C.QSplitterHandle_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	ok := C.QSplitterHandle_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_DragMoveEvent
-func miqt_exec_callback_QSplitterHandle_DragMoveEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QDragMoveEvent) {
+//export miqt_exec_callback_QSplitterHandle_dragMoveEvent
+func miqt_exec_callback_QSplitterHandle_dragMoveEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragMoveEvent), event *QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2427,18 +2427,18 @@ func miqt_exec_callback_QSplitterHandle_DragMoveEvent(self *C.QSplitterHandle, c
 
 func (this *QSplitterHandle) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
 
-	C.QSplitterHandle_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
-	ok := C.QSplitterHandle_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	ok := C.QSplitterHandle_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_DragLeaveEvent
-func miqt_exec_callback_QSplitterHandle_DragLeaveEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QSplitterHandle_dragLeaveEvent
+func miqt_exec_callback_QSplitterHandle_dragLeaveEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2453,18 +2453,18 @@ func miqt_exec_callback_QSplitterHandle_DragLeaveEvent(self *C.QSplitterHandle, 
 
 func (this *QSplitterHandle) callVirtualBase_DropEvent(event *QDropEvent) {
 
-	C.QSplitterHandle_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
-	ok := C.QSplitterHandle_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	ok := C.QSplitterHandle_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_DropEvent
-func miqt_exec_callback_QSplitterHandle_DropEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QDropEvent) {
+//export miqt_exec_callback_QSplitterHandle_dropEvent
+func miqt_exec_callback_QSplitterHandle_dropEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2479,18 +2479,18 @@ func miqt_exec_callback_QSplitterHandle_DropEvent(self *C.QSplitterHandle, cb C.
 
 func (this *QSplitterHandle) callVirtualBase_ShowEvent(event *QShowEvent) {
 
-	C.QSplitterHandle_virtualbase_ShowEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
-	ok := C.QSplitterHandle_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnshowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	ok := C.QSplitterHandle_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_ShowEvent
-func miqt_exec_callback_QSplitterHandle_ShowEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QShowEvent) {
+//export miqt_exec_callback_QSplitterHandle_showEvent
+func miqt_exec_callback_QSplitterHandle_showEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QShowEvent), event *QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2505,18 +2505,18 @@ func miqt_exec_callback_QSplitterHandle_ShowEvent(self *C.QSplitterHandle, cb C.
 
 func (this *QSplitterHandle) callVirtualBase_HideEvent(event *QHideEvent) {
 
-	C.QSplitterHandle_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
-	ok := C.QSplitterHandle_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QSplitterHandle_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_HideEvent
-func miqt_exec_callback_QSplitterHandle_HideEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_QSplitterHandle_hideEvent
+func miqt_exec_callback_QSplitterHandle_hideEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2538,18 +2538,18 @@ func (this *QSplitterHandle) callVirtualBase_NativeEvent(eventType []byte, messa
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QSplitterHandle_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
+	return (bool)(C.QSplitterHandle_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
 
 }
-func (this *QSplitterHandle) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
-	ok := C.QSplitterHandle_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+	ok := C.QSplitterHandle_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_NativeEvent
-func miqt_exec_callback_QSplitterHandle_NativeEvent(self *C.QSplitterHandle, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
+//export miqt_exec_callback_QSplitterHandle_nativeEvent
+func miqt_exec_callback_QSplitterHandle_nativeEvent(self *C.QSplitterHandle, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2572,18 +2572,18 @@ func miqt_exec_callback_QSplitterHandle_NativeEvent(self *C.QSplitterHandle, cb 
 
 func (this *QSplitterHandle) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
-	C.QSplitterHandle_virtualbase_ChangeEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSplitterHandle_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSplitterHandle) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
-	ok := C.QSplitterHandle_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnchangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	ok := C.QSplitterHandle_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_ChangeEvent
-func miqt_exec_callback_QSplitterHandle_ChangeEvent(self *C.QSplitterHandle, cb C.intptr_t, param1 *C.QEvent) {
+//export miqt_exec_callback_QSplitterHandle_changeEvent
+func miqt_exec_callback_QSplitterHandle_changeEvent(self *C.QSplitterHandle, cb C.intptr_t, param1 *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent), param1 *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2598,18 +2598,18 @@ func miqt_exec_callback_QSplitterHandle_ChangeEvent(self *C.QSplitterHandle, cb 
 
 func (this *QSplitterHandle) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QSplitterHandle_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QSplitterHandle_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QSplitterHandle) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QSplitterHandle_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QSplitterHandle_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_Metric
-func miqt_exec_callback_QSplitterHandle_Metric(self *C.QSplitterHandle, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QSplitterHandle_metric
+func miqt_exec_callback_QSplitterHandle_metric(self *C.QSplitterHandle, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2626,18 +2626,18 @@ func miqt_exec_callback_QSplitterHandle_Metric(self *C.QSplitterHandle, cb C.int
 
 func (this *QSplitterHandle) callVirtualBase_InitPainter(painter *QPainter) {
 
-	C.QSplitterHandle_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+	C.QSplitterHandle_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QSplitterHandle) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	ok := C.QSplitterHandle_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QSplitterHandle_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_InitPainter
-func miqt_exec_callback_QSplitterHandle_InitPainter(self *C.QSplitterHandle, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QSplitterHandle_initPainter
+func miqt_exec_callback_QSplitterHandle_initPainter(self *C.QSplitterHandle, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2652,18 +2652,18 @@ func miqt_exec_callback_QSplitterHandle_InitPainter(self *C.QSplitterHandle, cb 
 
 func (this *QSplitterHandle) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return newQPaintDevice(C.QSplitterHandle_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+	return newQPaintDevice(C.QSplitterHandle_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QSplitterHandle) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	ok := C.QSplitterHandle_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QSplitterHandle_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_Redirected
-func miqt_exec_callback_QSplitterHandle_Redirected(self *C.QSplitterHandle, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QSplitterHandle_redirected
+func miqt_exec_callback_QSplitterHandle_redirected(self *C.QSplitterHandle, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2680,18 +2680,18 @@ func miqt_exec_callback_QSplitterHandle_Redirected(self *C.QSplitterHandle, cb C
 
 func (this *QSplitterHandle) callVirtualBase_SharedPainter() *QPainter {
 
-	return newQPainter(C.QSplitterHandle_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+	return newQPainter(C.QSplitterHandle_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QSplitterHandle) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	ok := C.QSplitterHandle_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QSplitterHandle_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_SharedPainter
-func miqt_exec_callback_QSplitterHandle_SharedPainter(self *C.QSplitterHandle, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QSplitterHandle_sharedPainter
+func miqt_exec_callback_QSplitterHandle_sharedPainter(self *C.QSplitterHandle, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2705,18 +2705,18 @@ func miqt_exec_callback_QSplitterHandle_SharedPainter(self *C.QSplitterHandle, c
 
 func (this *QSplitterHandle) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
 
-	C.QSplitterHandle_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QSplitterHandle_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QSplitterHandle) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
-	ok := C.QSplitterHandle_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QSplitterHandle_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_InputMethodEvent
-func miqt_exec_callback_QSplitterHandle_InputMethodEvent(self *C.QSplitterHandle, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QSplitterHandle_inputMethodEvent
+func miqt_exec_callback_QSplitterHandle_inputMethodEvent(self *C.QSplitterHandle, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2731,20 +2731,20 @@ func miqt_exec_callback_QSplitterHandle_InputMethodEvent(self *C.QSplitterHandle
 
 func (this *QSplitterHandle) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_goptr := newQVariant(C.QSplitterHandle_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
+	_goptr := newQVariant(C.QSplitterHandle_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QSplitterHandle) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
-	ok := C.QSplitterHandle_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	ok := C.QSplitterHandle_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_InputMethodQuery
-func miqt_exec_callback_QSplitterHandle_InputMethodQuery(self *C.QSplitterHandle, cb C.intptr_t, param1 C.int) *C.QVariant {
+//export miqt_exec_callback_QSplitterHandle_inputMethodQuery
+func miqt_exec_callback_QSplitterHandle_inputMethodQuery(self *C.QSplitterHandle, cb C.intptr_t, param1 C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2761,18 +2761,18 @@ func miqt_exec_callback_QSplitterHandle_InputMethodQuery(self *C.QSplitterHandle
 
 func (this *QSplitterHandle) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QSplitterHandle_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QSplitterHandle_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QSplitterHandle) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QSplitterHandle_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QSplitterHandle_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_FocusNextPrevChild
-func miqt_exec_callback_QSplitterHandle_FocusNextPrevChild(self *C.QSplitterHandle, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QSplitterHandle_focusNextPrevChild
+func miqt_exec_callback_QSplitterHandle_focusNextPrevChild(self *C.QSplitterHandle, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2789,18 +2789,18 @@ func miqt_exec_callback_QSplitterHandle_FocusNextPrevChild(self *C.QSplitterHand
 
 func (this *QSplitterHandle) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QSplitterHandle_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QSplitterHandle_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QSplitterHandle) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QSplitterHandle_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QSplitterHandle_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_EventFilter
-func miqt_exec_callback_QSplitterHandle_EventFilter(self *C.QSplitterHandle, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QSplitterHandle_eventFilter
+func miqt_exec_callback_QSplitterHandle_eventFilter(self *C.QSplitterHandle, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2819,18 +2819,18 @@ func miqt_exec_callback_QSplitterHandle_EventFilter(self *C.QSplitterHandle, cb 
 
 func (this *QSplitterHandle) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QSplitterHandle_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QSplitterHandle_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QSplitterHandle_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_TimerEvent
-func miqt_exec_callback_QSplitterHandle_TimerEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QSplitterHandle_timerEvent
+func miqt_exec_callback_QSplitterHandle_timerEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2845,18 +2845,18 @@ func miqt_exec_callback_QSplitterHandle_TimerEvent(self *C.QSplitterHandle, cb C
 
 func (this *QSplitterHandle) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QSplitterHandle_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QSplitterHandle_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QSplitterHandle_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_ChildEvent
-func miqt_exec_callback_QSplitterHandle_ChildEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QSplitterHandle_childEvent
+func miqt_exec_callback_QSplitterHandle_childEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2871,18 +2871,18 @@ func miqt_exec_callback_QSplitterHandle_ChildEvent(self *C.QSplitterHandle, cb C
 
 func (this *QSplitterHandle) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QSplitterHandle_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSplitterHandle_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSplitterHandle) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QSplitterHandle_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QSplitterHandle_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_CustomEvent
-func miqt_exec_callback_QSplitterHandle_CustomEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QSplitterHandle_customEvent
+func miqt_exec_callback_QSplitterHandle_customEvent(self *C.QSplitterHandle, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2897,18 +2897,18 @@ func miqt_exec_callback_QSplitterHandle_CustomEvent(self *C.QSplitterHandle, cb 
 
 func (this *QSplitterHandle) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QSplitterHandle_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QSplitterHandle_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSplitterHandle) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QSplitterHandle_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QSplitterHandle_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_ConnectNotify
-func miqt_exec_callback_QSplitterHandle_ConnectNotify(self *C.QSplitterHandle, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QSplitterHandle_connectNotify
+func miqt_exec_callback_QSplitterHandle_connectNotify(self *C.QSplitterHandle, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2923,18 +2923,18 @@ func miqt_exec_callback_QSplitterHandle_ConnectNotify(self *C.QSplitterHandle, c
 
 func (this *QSplitterHandle) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QSplitterHandle_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QSplitterHandle_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSplitterHandle) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QSplitterHandle_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSplitterHandle) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QSplitterHandle_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSplitterHandle_DisconnectNotify
-func miqt_exec_callback_QSplitterHandle_DisconnectNotify(self *C.QSplitterHandle, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QSplitterHandle_disconnectNotify
+func miqt_exec_callback_QSplitterHandle_disconnectNotify(self *C.QSplitterHandle, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2949,7 +2949,7 @@ func miqt_exec_callback_QSplitterHandle_DisconnectNotify(self *C.QSplitterHandle
 
 // Delete this object from C++ memory.
 func (this *QSplitterHandle) Delete() {
-	C.QSplitterHandle_Delete(this.h)
+	C.QSplitterHandle_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -21,15 +21,15 @@ void QMediaContainerControl_virtbase(QMediaContainerControl* src, QMediaControl*
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
 }
 
-QMetaObject* QMediaContainerControl_MetaObject(const QMediaContainerControl* self) {
+QMetaObject* QMediaContainerControl_metaObject(const QMediaContainerControl* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QMediaContainerControl_Metacast(QMediaContainerControl* self, const char* param1) {
+void* QMediaContainerControl_metacast(QMediaContainerControl* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QMediaContainerControl_Tr(const char* s) {
+struct miqt_string QMediaContainerControl_tr(const char* s) {
 	QString _ret = QMediaContainerControl::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -40,7 +40,7 @@ struct miqt_string QMediaContainerControl_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QMediaContainerControl_TrUtf8(const char* s) {
+struct miqt_string QMediaContainerControl_trUtf8(const char* s) {
 	QString _ret = QMediaContainerControl::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -51,7 +51,7 @@ struct miqt_string QMediaContainerControl_TrUtf8(const char* s) {
 	return _ms;
 }
 
-struct miqt_array /* of struct miqt_string */  QMediaContainerControl_SupportedContainers(const QMediaContainerControl* self) {
+struct miqt_array /* of struct miqt_string */  QMediaContainerControl_supportedContainers(const QMediaContainerControl* self) {
 	QStringList _ret = self->supportedContainers();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -71,7 +71,7 @@ struct miqt_array /* of struct miqt_string */  QMediaContainerControl_SupportedC
 	return _out;
 }
 
-struct miqt_string QMediaContainerControl_ContainerFormat(const QMediaContainerControl* self) {
+struct miqt_string QMediaContainerControl_containerFormat(const QMediaContainerControl* self) {
 	QString _ret = self->containerFormat();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -82,12 +82,12 @@ struct miqt_string QMediaContainerControl_ContainerFormat(const QMediaContainerC
 	return _ms;
 }
 
-void QMediaContainerControl_SetContainerFormat(QMediaContainerControl* self, struct miqt_string format) {
+void QMediaContainerControl_setContainerFormat(QMediaContainerControl* self, struct miqt_string format) {
 	QString format_QString = QString::fromUtf8(format.data, format.len);
 	self->setContainerFormat(format_QString);
 }
 
-struct miqt_string QMediaContainerControl_ContainerDescription(const QMediaContainerControl* self, struct miqt_string formatMimeType) {
+struct miqt_string QMediaContainerControl_containerDescription(const QMediaContainerControl* self, struct miqt_string formatMimeType) {
 	QString formatMimeType_QString = QString::fromUtf8(formatMimeType.data, formatMimeType.len);
 	QString _ret = self->containerDescription(formatMimeType_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -99,7 +99,7 @@ struct miqt_string QMediaContainerControl_ContainerDescription(const QMediaConta
 	return _ms;
 }
 
-struct miqt_string QMediaContainerControl_Tr2(const char* s, const char* c) {
+struct miqt_string QMediaContainerControl_tr2(const char* s, const char* c) {
 	QString _ret = QMediaContainerControl::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -110,7 +110,7 @@ struct miqt_string QMediaContainerControl_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QMediaContainerControl_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QMediaContainerControl_tr3(const char* s, const char* c, int n) {
 	QString _ret = QMediaContainerControl::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -121,7 +121,7 @@ struct miqt_string QMediaContainerControl_Tr3(const char* s, const char* c, int 
 	return _ms;
 }
 
-struct miqt_string QMediaContainerControl_TrUtf82(const char* s, const char* c) {
+struct miqt_string QMediaContainerControl_trUtf82(const char* s, const char* c) {
 	QString _ret = QMediaContainerControl::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -132,7 +132,7 @@ struct miqt_string QMediaContainerControl_TrUtf82(const char* s, const char* c) 
 	return _ms;
 }
 
-struct miqt_string QMediaContainerControl_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QMediaContainerControl_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QMediaContainerControl::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -143,7 +143,7 @@ struct miqt_string QMediaContainerControl_TrUtf83(const char* s, const char* c, 
 	return _ms;
 }
 
-void QMediaContainerControl_Delete(QMediaContainerControl* self) {
+void QMediaContainerControl_delete(QMediaContainerControl* self) {
 	delete self;
 }
 

@@ -124,45 +124,45 @@ func NewQColorSpace8(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF
 }
 
 func (this *QColorSpace) OperatorAssign(colorSpace *QColorSpace) {
-	C.QColorSpace_OperatorAssign(this.h, colorSpace.cPointer())
+	C.QColorSpace_operatorAssign(this.h, colorSpace.cPointer())
 }
 
 func (this *QColorSpace) Swap(colorSpace *QColorSpace) {
-	C.QColorSpace_Swap(this.h, colorSpace.cPointer())
+	C.QColorSpace_swap(this.h, colorSpace.cPointer())
 }
 
 func (this *QColorSpace) Primaries() QColorSpace__Primaries {
-	return (QColorSpace__Primaries)(C.QColorSpace_Primaries(this.h))
+	return (QColorSpace__Primaries)(C.QColorSpace_primaries(this.h))
 }
 
 func (this *QColorSpace) TransferFunction() QColorSpace__TransferFunction {
-	return (QColorSpace__TransferFunction)(C.QColorSpace_TransferFunction(this.h))
+	return (QColorSpace__TransferFunction)(C.QColorSpace_transferFunction(this.h))
 }
 
 func (this *QColorSpace) Gamma() float32 {
-	return (float32)(C.QColorSpace_Gamma(this.h))
+	return (float32)(C.QColorSpace_gamma(this.h))
 }
 
 func (this *QColorSpace) SetTransferFunction(transferFunction QColorSpace__TransferFunction) {
-	C.QColorSpace_SetTransferFunction(this.h, (C.int)(transferFunction))
+	C.QColorSpace_setTransferFunction(this.h, (C.int)(transferFunction))
 }
 
 func (this *QColorSpace) WithTransferFunction(transferFunction QColorSpace__TransferFunction) *QColorSpace {
-	_goptr := newQColorSpace(C.QColorSpace_WithTransferFunction(this.h, (C.int)(transferFunction)))
+	_goptr := newQColorSpace(C.QColorSpace_withTransferFunction(this.h, (C.int)(transferFunction)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColorSpace) SetPrimaries(primariesId QColorSpace__Primaries) {
-	C.QColorSpace_SetPrimaries(this.h, (C.int)(primariesId))
+	C.QColorSpace_setPrimaries(this.h, (C.int)(primariesId))
 }
 
 func (this *QColorSpace) SetPrimaries2(whitePoint *QPointF, redPoint *QPointF, greenPoint *QPointF, bluePoint *QPointF) {
-	C.QColorSpace_SetPrimaries2(this.h, whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer())
+	C.QColorSpace_setPrimaries2(this.h, whitePoint.cPointer(), redPoint.cPointer(), greenPoint.cPointer(), bluePoint.cPointer())
 }
 
 func (this *QColorSpace) IsValid() bool {
-	return (bool)(C.QColorSpace_IsValid(this.h))
+	return (bool)(C.QColorSpace_isValid(this.h))
 }
 
 func QColorSpace_FromIccProfile(iccProfile []byte) *QColorSpace {
@@ -173,20 +173,20 @@ func QColorSpace_FromIccProfile(iccProfile []byte) *QColorSpace {
 		iccProfile_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	iccProfile_alias.len = C.size_t(len(iccProfile))
-	_goptr := newQColorSpace(C.QColorSpace_FromIccProfile(iccProfile_alias))
+	_goptr := newQColorSpace(C.QColorSpace_fromIccProfile(iccProfile_alias))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QColorSpace) IccProfile() []byte {
-	var _bytearray C.struct_miqt_string = C.QColorSpace_IccProfile(this.h)
+	var _bytearray C.struct_miqt_string = C.QColorSpace_iccProfile(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QColorSpace) TransformationToColorSpace(colorspace *QColorSpace) *QColorTransform {
-	_goptr := newQColorTransform(C.QColorSpace_TransformationToColorSpace(this.h, colorspace.cPointer()))
+	_goptr := newQColorTransform(C.QColorSpace_transformationToColorSpace(this.h, colorspace.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -198,18 +198,18 @@ func (this *QColorSpace) ToQVariant() *QVariant {
 }
 
 func (this *QColorSpace) SetTransferFunction2(transferFunction QColorSpace__TransferFunction, gamma float32) {
-	C.QColorSpace_SetTransferFunction2(this.h, (C.int)(transferFunction), (C.float)(gamma))
+	C.QColorSpace_setTransferFunction2(this.h, (C.int)(transferFunction), (C.float)(gamma))
 }
 
 func (this *QColorSpace) WithTransferFunction2(transferFunction QColorSpace__TransferFunction, gamma float32) *QColorSpace {
-	_goptr := newQColorSpace(C.QColorSpace_WithTransferFunction2(this.h, (C.int)(transferFunction), (C.float)(gamma)))
+	_goptr := newQColorSpace(C.QColorSpace_withTransferFunction2(this.h, (C.int)(transferFunction), (C.float)(gamma)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QColorSpace) Delete() {
-	C.QColorSpace_Delete(this.h)
+	C.QColorSpace_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

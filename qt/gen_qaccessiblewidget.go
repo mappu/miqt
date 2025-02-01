@@ -74,26 +74,26 @@ func NewQAccessibleWidget3(o *QWidget, r QAccessible__Role, name string) *QAcces
 }
 
 func (this *QAccessibleWidget) IsValid() bool {
-	return (bool)(C.QAccessibleWidget_IsValid(this.h))
+	return (bool)(C.QAccessibleWidget_isValid(this.h))
 }
 
 func (this *QAccessibleWidget) Window() *QWindow {
-	return newQWindow(C.QAccessibleWidget_Window(this.h))
+	return newQWindow(C.QAccessibleWidget_window(this.h))
 }
 
 func (this *QAccessibleWidget) ChildCount() int {
-	return (int)(C.QAccessibleWidget_ChildCount(this.h))
+	return (int)(C.QAccessibleWidget_childCount(this.h))
 }
 
 func (this *QAccessibleWidget) IndexOfChild(child *QAccessibleInterface) int {
-	return (int)(C.QAccessibleWidget_IndexOfChild(this.h, child.cPointer()))
+	return (int)(C.QAccessibleWidget_indexOfChild(this.h, child.cPointer()))
 }
 
 func (this *QAccessibleWidget) Relations(match QAccessible__RelationFlag) []struct {
 	First  *QAccessibleInterface
 	Second QAccessible__RelationFlag
 } {
-	var _ma C.struct_miqt_array = C.QAccessibleWidget_Relations(this.h, (C.int)(match))
+	var _ma C.struct_miqt_array = C.QAccessibleWidget_relations(this.h, (C.int)(match))
 	_ret := make([]struct {
 		First  *QAccessibleInterface
 		Second QAccessible__RelationFlag
@@ -116,58 +116,58 @@ func (this *QAccessibleWidget) Relations(match QAccessible__RelationFlag) []stru
 }
 
 func (this *QAccessibleWidget) FocusChild() *QAccessibleInterface {
-	return newQAccessibleInterface(C.QAccessibleWidget_FocusChild(this.h))
+	return newQAccessibleInterface(C.QAccessibleWidget_focusChild(this.h))
 }
 
 func (this *QAccessibleWidget) Rect() *QRect {
-	_goptr := newQRect(C.QAccessibleWidget_Rect(this.h))
+	_goptr := newQRect(C.QAccessibleWidget_rect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleWidget) Parent() *QAccessibleInterface {
-	return newQAccessibleInterface(C.QAccessibleWidget_Parent(this.h))
+	return newQAccessibleInterface(C.QAccessibleWidget_parent(this.h))
 }
 
 func (this *QAccessibleWidget) Child(index int) *QAccessibleInterface {
-	return newQAccessibleInterface(C.QAccessibleWidget_Child(this.h, (C.int)(index)))
+	return newQAccessibleInterface(C.QAccessibleWidget_child(this.h, (C.int)(index)))
 }
 
 func (this *QAccessibleWidget) Text(t QAccessible__Text) string {
-	var _ms C.struct_miqt_string = C.QAccessibleWidget_Text(this.h, (C.int)(t))
+	var _ms C.struct_miqt_string = C.QAccessibleWidget_text(this.h, (C.int)(t))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAccessibleWidget) Role() QAccessible__Role {
-	return (QAccessible__Role)(C.QAccessibleWidget_Role(this.h))
+	return (QAccessible__Role)(C.QAccessibleWidget_role(this.h))
 }
 
 func (this *QAccessibleWidget) State() *QAccessible__State {
-	_goptr := newQAccessible__State(C.QAccessibleWidget_State(this.h))
+	_goptr := newQAccessible__State(C.QAccessibleWidget_state(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleWidget) ForegroundColor() *QColor {
-	_goptr := newQColor(C.QAccessibleWidget_ForegroundColor(this.h))
+	_goptr := newQColor(C.QAccessibleWidget_foregroundColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleWidget) BackgroundColor() *QColor {
-	_goptr := newQColor(C.QAccessibleWidget_BackgroundColor(this.h))
+	_goptr := newQColor(C.QAccessibleWidget_backgroundColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAccessibleWidget) InterfaceCast(t QAccessible__InterfaceType) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QAccessibleWidget_InterfaceCast(this.h, (C.int)(t)))
+	return (unsafe.Pointer)(C.QAccessibleWidget_interfaceCast(this.h, (C.int)(t)))
 }
 
 func (this *QAccessibleWidget) ActionNames() []string {
-	var _ma C.struct_miqt_array = C.QAccessibleWidget_ActionNames(this.h)
+	var _ma C.struct_miqt_array = C.QAccessibleWidget_actionNames(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -184,7 +184,7 @@ func (this *QAccessibleWidget) DoAction(actionName string) {
 	actionName_ms.data = C.CString(actionName)
 	actionName_ms.len = C.size_t(len(actionName))
 	defer C.free(unsafe.Pointer(actionName_ms.data))
-	C.QAccessibleWidget_DoAction(this.h, actionName_ms)
+	C.QAccessibleWidget_doAction(this.h, actionName_ms)
 }
 
 func (this *QAccessibleWidget) KeyBindingsForAction(actionName string) []string {
@@ -192,7 +192,7 @@ func (this *QAccessibleWidget) KeyBindingsForAction(actionName string) []string 
 	actionName_ms.data = C.CString(actionName)
 	actionName_ms.len = C.size_t(len(actionName))
 	defer C.free(unsafe.Pointer(actionName_ms.data))
-	var _ma C.struct_miqt_array = C.QAccessibleWidget_KeyBindingsForAction(this.h, actionName_ms)
+	var _ma C.struct_miqt_array = C.QAccessibleWidget_keyBindingsForAction(this.h, actionName_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {

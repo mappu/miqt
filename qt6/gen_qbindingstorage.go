@@ -47,7 +47,7 @@ func UnsafeNewQBindingStatus(h unsafe.Pointer) *QBindingStatus {
 
 // Delete this object from C++ memory.
 func (this *QBindingStatus) Delete() {
-	C.QBindingStatus_Delete(this.h)
+	C.QBindingStatus_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -98,20 +98,20 @@ func NewQBindingStorage() *QBindingStorage {
 }
 
 func (this *QBindingStorage) IsEmpty() bool {
-	return (bool)(C.QBindingStorage_IsEmpty(this.h))
+	return (bool)(C.QBindingStorage_isEmpty(this.h))
 }
 
 func (this *QBindingStorage) IsValid() bool {
-	return (bool)(C.QBindingStorage_IsValid(this.h))
+	return (bool)(C.QBindingStorage_isValid(this.h))
 }
 
 func (this *QBindingStorage) RegisterDependency(data *QUntypedPropertyData) {
-	C.QBindingStorage_RegisterDependency(this.h, data.cPointer())
+	C.QBindingStorage_registerDependency(this.h, data.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QBindingStorage) Delete() {
-	C.QBindingStorage_Delete(this.h)
+	C.QBindingStorage_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

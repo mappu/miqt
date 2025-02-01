@@ -74,19 +74,19 @@ func NewQAbstractVideoSurface2(parent *qt.QObject) *QAbstractVideoSurface {
 }
 
 func (this *QAbstractVideoSurface) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractVideoSurface_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractVideoSurface_metaObject(this.h)))
 }
 
 func (this *QAbstractVideoSurface) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAbstractVideoSurface_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAbstractVideoSurface_metacast(this.h, param1_Cstring))
 }
 
 func QAbstractVideoSurface_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractVideoSurface_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractVideoSurface_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -95,14 +95,14 @@ func QAbstractVideoSurface_Tr(s string) string {
 func QAbstractVideoSurface_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractVideoSurface_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractVideoSurface_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractVideoSurface) SupportedPixelFormats(typeVal QAbstractVideoBuffer__HandleType) []QVideoFrame__PixelFormat {
-	var _ma C.struct_miqt_array = C.QAbstractVideoSurface_SupportedPixelFormats(this.h, (C.int)(typeVal))
+	var _ma C.struct_miqt_array = C.QAbstractVideoSurface_supportedPixelFormats(this.h, (C.int)(typeVal))
 	_ret := make([]QVideoFrame__PixelFormat, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -112,56 +112,56 @@ func (this *QAbstractVideoSurface) SupportedPixelFormats(typeVal QAbstractVideoB
 }
 
 func (this *QAbstractVideoSurface) IsFormatSupported(format *QVideoSurfaceFormat) bool {
-	return (bool)(C.QAbstractVideoSurface_IsFormatSupported(this.h, format.cPointer()))
+	return (bool)(C.QAbstractVideoSurface_isFormatSupported(this.h, format.cPointer()))
 }
 
 func (this *QAbstractVideoSurface) NearestFormat(format *QVideoSurfaceFormat) *QVideoSurfaceFormat {
-	_goptr := newQVideoSurfaceFormat(C.QAbstractVideoSurface_NearestFormat(this.h, format.cPointer()))
+	_goptr := newQVideoSurfaceFormat(C.QAbstractVideoSurface_nearestFormat(this.h, format.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractVideoSurface) SurfaceFormat() *QVideoSurfaceFormat {
-	_goptr := newQVideoSurfaceFormat(C.QAbstractVideoSurface_SurfaceFormat(this.h))
+	_goptr := newQVideoSurfaceFormat(C.QAbstractVideoSurface_surfaceFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractVideoSurface) NativeResolution() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QAbstractVideoSurface_NativeResolution(this.h)))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QAbstractVideoSurface_nativeResolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractVideoSurface) Start(format *QVideoSurfaceFormat) bool {
-	return (bool)(C.QAbstractVideoSurface_Start(this.h, format.cPointer()))
+	return (bool)(C.QAbstractVideoSurface_start(this.h, format.cPointer()))
 }
 
 func (this *QAbstractVideoSurface) Stop() {
-	C.QAbstractVideoSurface_Stop(this.h)
+	C.QAbstractVideoSurface_stop(this.h)
 }
 
 func (this *QAbstractVideoSurface) IsActive() bool {
-	return (bool)(C.QAbstractVideoSurface_IsActive(this.h))
+	return (bool)(C.QAbstractVideoSurface_isActive(this.h))
 }
 
 func (this *QAbstractVideoSurface) Present(frame *QVideoFrame) bool {
-	return (bool)(C.QAbstractVideoSurface_Present(this.h, frame.cPointer()))
+	return (bool)(C.QAbstractVideoSurface_present(this.h, frame.cPointer()))
 }
 
 func (this *QAbstractVideoSurface) Error() QAbstractVideoSurface__Error {
-	return (QAbstractVideoSurface__Error)(C.QAbstractVideoSurface_Error(this.h))
+	return (QAbstractVideoSurface__Error)(C.QAbstractVideoSurface_error(this.h))
 }
 
 func (this *QAbstractVideoSurface) ActiveChanged(active bool) {
-	C.QAbstractVideoSurface_ActiveChanged(this.h, (C.bool)(active))
+	C.QAbstractVideoSurface_activeChanged(this.h, (C.bool)(active))
 }
 func (this *QAbstractVideoSurface) OnActiveChanged(slot func(active bool)) {
-	C.QAbstractVideoSurface_connect_ActiveChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractVideoSurface_connect_activeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_ActiveChanged
-func miqt_exec_callback_QAbstractVideoSurface_ActiveChanged(cb C.intptr_t, active C.bool) {
+//export miqt_exec_callback_QAbstractVideoSurface_activeChanged
+func miqt_exec_callback_QAbstractVideoSurface_activeChanged(cb C.intptr_t, active C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(active bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -174,14 +174,14 @@ func miqt_exec_callback_QAbstractVideoSurface_ActiveChanged(cb C.intptr_t, activ
 }
 
 func (this *QAbstractVideoSurface) SurfaceFormatChanged(format *QVideoSurfaceFormat) {
-	C.QAbstractVideoSurface_SurfaceFormatChanged(this.h, format.cPointer())
+	C.QAbstractVideoSurface_surfaceFormatChanged(this.h, format.cPointer())
 }
 func (this *QAbstractVideoSurface) OnSurfaceFormatChanged(slot func(format *QVideoSurfaceFormat)) {
-	C.QAbstractVideoSurface_connect_SurfaceFormatChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractVideoSurface_connect_surfaceFormatChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_SurfaceFormatChanged
-func miqt_exec_callback_QAbstractVideoSurface_SurfaceFormatChanged(cb C.intptr_t, format *C.QVideoSurfaceFormat) {
+//export miqt_exec_callback_QAbstractVideoSurface_surfaceFormatChanged
+func miqt_exec_callback_QAbstractVideoSurface_surfaceFormatChanged(cb C.intptr_t, format *C.QVideoSurfaceFormat) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(format *QVideoSurfaceFormat))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -194,14 +194,14 @@ func miqt_exec_callback_QAbstractVideoSurface_SurfaceFormatChanged(cb C.intptr_t
 }
 
 func (this *QAbstractVideoSurface) SupportedFormatsChanged() {
-	C.QAbstractVideoSurface_SupportedFormatsChanged(this.h)
+	C.QAbstractVideoSurface_supportedFormatsChanged(this.h)
 }
 func (this *QAbstractVideoSurface) OnSupportedFormatsChanged(slot func()) {
-	C.QAbstractVideoSurface_connect_SupportedFormatsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractVideoSurface_connect_supportedFormatsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_SupportedFormatsChanged
-func miqt_exec_callback_QAbstractVideoSurface_SupportedFormatsChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QAbstractVideoSurface_supportedFormatsChanged
+func miqt_exec_callback_QAbstractVideoSurface_supportedFormatsChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -211,14 +211,14 @@ func miqt_exec_callback_QAbstractVideoSurface_SupportedFormatsChanged(cb C.intpt
 }
 
 func (this *QAbstractVideoSurface) NativeResolutionChanged(resolution *qt.QSize) {
-	C.QAbstractVideoSurface_NativeResolutionChanged(this.h, (*C.QSize)(resolution.UnsafePointer()))
+	C.QAbstractVideoSurface_nativeResolutionChanged(this.h, (*C.QSize)(resolution.UnsafePointer()))
 }
 func (this *QAbstractVideoSurface) OnNativeResolutionChanged(slot func(resolution *qt.QSize)) {
-	C.QAbstractVideoSurface_connect_NativeResolutionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractVideoSurface_connect_nativeResolutionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_NativeResolutionChanged
-func miqt_exec_callback_QAbstractVideoSurface_NativeResolutionChanged(cb C.intptr_t, resolution *C.QSize) {
+//export miqt_exec_callback_QAbstractVideoSurface_nativeResolutionChanged
+func miqt_exec_callback_QAbstractVideoSurface_nativeResolutionChanged(cb C.intptr_t, resolution *C.QSize) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(resolution *qt.QSize))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -235,7 +235,7 @@ func QAbstractVideoSurface_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractVideoSurface_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractVideoSurface_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -246,7 +246,7 @@ func QAbstractVideoSurface_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractVideoSurface_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractVideoSurface_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -257,7 +257,7 @@ func QAbstractVideoSurface_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractVideoSurface_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractVideoSurface_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -268,20 +268,20 @@ func QAbstractVideoSurface_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractVideoSurface_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractVideoSurface_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QAbstractVideoSurface) OnSupportedPixelFormats(slot func(typeVal QAbstractVideoBuffer__HandleType) []QVideoFrame__PixelFormat) {
-	ok := C.QAbstractVideoSurface_override_virtual_SupportedPixelFormats(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractVideoSurface) OnsupportedPixelFormats(slot func(typeVal QAbstractVideoBuffer__HandleType) []QVideoFrame__PixelFormat) {
+	ok := C.QAbstractVideoSurface_override_virtual_supportedPixelFormats(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_SupportedPixelFormats
-func miqt_exec_callback_QAbstractVideoSurface_SupportedPixelFormats(self *C.QAbstractVideoSurface, cb C.intptr_t, typeVal C.int) C.struct_miqt_array {
+//export miqt_exec_callback_QAbstractVideoSurface_supportedPixelFormats
+func miqt_exec_callback_QAbstractVideoSurface_supportedPixelFormats(self *C.QAbstractVideoSurface, cb C.intptr_t, typeVal C.int) C.struct_miqt_array {
 	gofunc, ok := cgo.Handle(cb).Value().(func(typeVal QAbstractVideoBuffer__HandleType) []QVideoFrame__PixelFormat)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -304,18 +304,18 @@ func miqt_exec_callback_QAbstractVideoSurface_SupportedPixelFormats(self *C.QAbs
 
 func (this *QAbstractVideoSurface) callVirtualBase_IsFormatSupported(format *QVideoSurfaceFormat) bool {
 
-	return (bool)(C.QAbstractVideoSurface_virtualbase_IsFormatSupported(unsafe.Pointer(this.h), format.cPointer()))
+	return (bool)(C.QAbstractVideoSurface_virtualbase_isFormatSupported(unsafe.Pointer(this.h), format.cPointer()))
 
 }
-func (this *QAbstractVideoSurface) OnIsFormatSupported(slot func(super func(format *QVideoSurfaceFormat) bool, format *QVideoSurfaceFormat) bool) {
-	ok := C.QAbstractVideoSurface_override_virtual_IsFormatSupported(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractVideoSurface) OnisFormatSupported(slot func(super func(format *QVideoSurfaceFormat) bool, format *QVideoSurfaceFormat) bool) {
+	ok := C.QAbstractVideoSurface_override_virtual_isFormatSupported(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_IsFormatSupported
-func miqt_exec_callback_QAbstractVideoSurface_IsFormatSupported(self *C.QAbstractVideoSurface, cb C.intptr_t, format *C.QVideoSurfaceFormat) C.bool {
+//export miqt_exec_callback_QAbstractVideoSurface_isFormatSupported
+func miqt_exec_callback_QAbstractVideoSurface_isFormatSupported(self *C.QAbstractVideoSurface, cb C.intptr_t, format *C.QVideoSurfaceFormat) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(format *QVideoSurfaceFormat) bool, format *QVideoSurfaceFormat) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -332,20 +332,20 @@ func miqt_exec_callback_QAbstractVideoSurface_IsFormatSupported(self *C.QAbstrac
 
 func (this *QAbstractVideoSurface) callVirtualBase_NearestFormat(format *QVideoSurfaceFormat) *QVideoSurfaceFormat {
 
-	_goptr := newQVideoSurfaceFormat(C.QAbstractVideoSurface_virtualbase_NearestFormat(unsafe.Pointer(this.h), format.cPointer()))
+	_goptr := newQVideoSurfaceFormat(C.QAbstractVideoSurface_virtualbase_nearestFormat(unsafe.Pointer(this.h), format.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QAbstractVideoSurface) OnNearestFormat(slot func(super func(format *QVideoSurfaceFormat) *QVideoSurfaceFormat, format *QVideoSurfaceFormat) *QVideoSurfaceFormat) {
-	ok := C.QAbstractVideoSurface_override_virtual_NearestFormat(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractVideoSurface) OnnearestFormat(slot func(super func(format *QVideoSurfaceFormat) *QVideoSurfaceFormat, format *QVideoSurfaceFormat) *QVideoSurfaceFormat) {
+	ok := C.QAbstractVideoSurface_override_virtual_nearestFormat(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_NearestFormat
-func miqt_exec_callback_QAbstractVideoSurface_NearestFormat(self *C.QAbstractVideoSurface, cb C.intptr_t, format *C.QVideoSurfaceFormat) *C.QVideoSurfaceFormat {
+//export miqt_exec_callback_QAbstractVideoSurface_nearestFormat
+func miqt_exec_callback_QAbstractVideoSurface_nearestFormat(self *C.QAbstractVideoSurface, cb C.intptr_t, format *C.QVideoSurfaceFormat) *C.QVideoSurfaceFormat {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(format *QVideoSurfaceFormat) *QVideoSurfaceFormat, format *QVideoSurfaceFormat) *QVideoSurfaceFormat)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -362,18 +362,18 @@ func miqt_exec_callback_QAbstractVideoSurface_NearestFormat(self *C.QAbstractVid
 
 func (this *QAbstractVideoSurface) callVirtualBase_Start(format *QVideoSurfaceFormat) bool {
 
-	return (bool)(C.QAbstractVideoSurface_virtualbase_Start(unsafe.Pointer(this.h), format.cPointer()))
+	return (bool)(C.QAbstractVideoSurface_virtualbase_start(unsafe.Pointer(this.h), format.cPointer()))
 
 }
-func (this *QAbstractVideoSurface) OnStart(slot func(super func(format *QVideoSurfaceFormat) bool, format *QVideoSurfaceFormat) bool) {
-	ok := C.QAbstractVideoSurface_override_virtual_Start(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractVideoSurface) Onstart(slot func(super func(format *QVideoSurfaceFormat) bool, format *QVideoSurfaceFormat) bool) {
+	ok := C.QAbstractVideoSurface_override_virtual_start(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_Start
-func miqt_exec_callback_QAbstractVideoSurface_Start(self *C.QAbstractVideoSurface, cb C.intptr_t, format *C.QVideoSurfaceFormat) C.bool {
+//export miqt_exec_callback_QAbstractVideoSurface_start
+func miqt_exec_callback_QAbstractVideoSurface_start(self *C.QAbstractVideoSurface, cb C.intptr_t, format *C.QVideoSurfaceFormat) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(format *QVideoSurfaceFormat) bool, format *QVideoSurfaceFormat) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -390,18 +390,18 @@ func miqt_exec_callback_QAbstractVideoSurface_Start(self *C.QAbstractVideoSurfac
 
 func (this *QAbstractVideoSurface) callVirtualBase_Stop() {
 
-	C.QAbstractVideoSurface_virtualbase_Stop(unsafe.Pointer(this.h))
+	C.QAbstractVideoSurface_virtualbase_stop(unsafe.Pointer(this.h))
 
 }
-func (this *QAbstractVideoSurface) OnStop(slot func(super func())) {
-	ok := C.QAbstractVideoSurface_override_virtual_Stop(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractVideoSurface) Onstop(slot func(super func())) {
+	ok := C.QAbstractVideoSurface_override_virtual_stop(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_Stop
-func miqt_exec_callback_QAbstractVideoSurface_Stop(self *C.QAbstractVideoSurface, cb C.intptr_t) {
+//export miqt_exec_callback_QAbstractVideoSurface_stop
+func miqt_exec_callback_QAbstractVideoSurface_stop(self *C.QAbstractVideoSurface, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -410,15 +410,15 @@ func miqt_exec_callback_QAbstractVideoSurface_Stop(self *C.QAbstractVideoSurface
 	gofunc((&QAbstractVideoSurface{h: self}).callVirtualBase_Stop)
 
 }
-func (this *QAbstractVideoSurface) OnPresent(slot func(frame *QVideoFrame) bool) {
-	ok := C.QAbstractVideoSurface_override_virtual_Present(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractVideoSurface) Onpresent(slot func(frame *QVideoFrame) bool) {
+	ok := C.QAbstractVideoSurface_override_virtual_present(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_Present
-func miqt_exec_callback_QAbstractVideoSurface_Present(self *C.QAbstractVideoSurface, cb C.intptr_t, frame *C.QVideoFrame) C.bool {
+//export miqt_exec_callback_QAbstractVideoSurface_present
+func miqt_exec_callback_QAbstractVideoSurface_present(self *C.QAbstractVideoSurface, cb C.intptr_t, frame *C.QVideoFrame) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(frame *QVideoFrame) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -435,18 +435,18 @@ func miqt_exec_callback_QAbstractVideoSurface_Present(self *C.QAbstractVideoSurf
 
 func (this *QAbstractVideoSurface) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.QAbstractVideoSurface_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QAbstractVideoSurface_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QAbstractVideoSurface) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.QAbstractVideoSurface_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractVideoSurface) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QAbstractVideoSurface_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_Event
-func miqt_exec_callback_QAbstractVideoSurface_Event(self *C.QAbstractVideoSurface, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QAbstractVideoSurface_event
+func miqt_exec_callback_QAbstractVideoSurface_event(self *C.QAbstractVideoSurface, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -463,18 +463,18 @@ func miqt_exec_callback_QAbstractVideoSurface_Event(self *C.QAbstractVideoSurfac
 
 func (this *QAbstractVideoSurface) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.QAbstractVideoSurface_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QAbstractVideoSurface_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QAbstractVideoSurface) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.QAbstractVideoSurface_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractVideoSurface) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QAbstractVideoSurface_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_EventFilter
-func miqt_exec_callback_QAbstractVideoSurface_EventFilter(self *C.QAbstractVideoSurface, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QAbstractVideoSurface_eventFilter
+func miqt_exec_callback_QAbstractVideoSurface_eventFilter(self *C.QAbstractVideoSurface, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -493,18 +493,18 @@ func miqt_exec_callback_QAbstractVideoSurface_EventFilter(self *C.QAbstractVideo
 
 func (this *QAbstractVideoSurface) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QAbstractVideoSurface_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QAbstractVideoSurface_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QAbstractVideoSurface) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QAbstractVideoSurface_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractVideoSurface) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QAbstractVideoSurface_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_TimerEvent
-func miqt_exec_callback_QAbstractVideoSurface_TimerEvent(self *C.QAbstractVideoSurface, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QAbstractVideoSurface_timerEvent
+func miqt_exec_callback_QAbstractVideoSurface_timerEvent(self *C.QAbstractVideoSurface, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -519,18 +519,18 @@ func miqt_exec_callback_QAbstractVideoSurface_TimerEvent(self *C.QAbstractVideoS
 
 func (this *QAbstractVideoSurface) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QAbstractVideoSurface_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QAbstractVideoSurface_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QAbstractVideoSurface) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QAbstractVideoSurface_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractVideoSurface) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QAbstractVideoSurface_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_ChildEvent
-func miqt_exec_callback_QAbstractVideoSurface_ChildEvent(self *C.QAbstractVideoSurface, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QAbstractVideoSurface_childEvent
+func miqt_exec_callback_QAbstractVideoSurface_childEvent(self *C.QAbstractVideoSurface, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -545,18 +545,18 @@ func miqt_exec_callback_QAbstractVideoSurface_ChildEvent(self *C.QAbstractVideoS
 
 func (this *QAbstractVideoSurface) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QAbstractVideoSurface_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QAbstractVideoSurface_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QAbstractVideoSurface) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QAbstractVideoSurface_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractVideoSurface) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QAbstractVideoSurface_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_CustomEvent
-func miqt_exec_callback_QAbstractVideoSurface_CustomEvent(self *C.QAbstractVideoSurface, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QAbstractVideoSurface_customEvent
+func miqt_exec_callback_QAbstractVideoSurface_customEvent(self *C.QAbstractVideoSurface, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -571,18 +571,18 @@ func miqt_exec_callback_QAbstractVideoSurface_CustomEvent(self *C.QAbstractVideo
 
 func (this *QAbstractVideoSurface) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QAbstractVideoSurface_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QAbstractVideoSurface_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QAbstractVideoSurface) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QAbstractVideoSurface_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractVideoSurface) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QAbstractVideoSurface_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_ConnectNotify
-func miqt_exec_callback_QAbstractVideoSurface_ConnectNotify(self *C.QAbstractVideoSurface, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAbstractVideoSurface_connectNotify
+func miqt_exec_callback_QAbstractVideoSurface_connectNotify(self *C.QAbstractVideoSurface, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -597,18 +597,18 @@ func miqt_exec_callback_QAbstractVideoSurface_ConnectNotify(self *C.QAbstractVid
 
 func (this *QAbstractVideoSurface) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QAbstractVideoSurface_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QAbstractVideoSurface_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QAbstractVideoSurface) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QAbstractVideoSurface_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractVideoSurface) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QAbstractVideoSurface_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractVideoSurface_DisconnectNotify
-func miqt_exec_callback_QAbstractVideoSurface_DisconnectNotify(self *C.QAbstractVideoSurface, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAbstractVideoSurface_disconnectNotify
+func miqt_exec_callback_QAbstractVideoSurface_disconnectNotify(self *C.QAbstractVideoSurface, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -623,7 +623,7 @@ func miqt_exec_callback_QAbstractVideoSurface_DisconnectNotify(self *C.QAbstract
 
 // Delete this object from C++ memory.
 func (this *QAbstractVideoSurface) Delete() {
-	C.QAbstractVideoSurface_Delete(this.h)
+	C.QAbstractVideoSurface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -46,12 +46,12 @@ func UnsafeNewQScopedPointerPodDeleter(h unsafe.Pointer) *QScopedPointerPodDelet
 }
 
 func QScopedPointerPodDeleter_Cleanup(pointer unsafe.Pointer) {
-	C.QScopedPointerPodDeleter_Cleanup(pointer)
+	C.QScopedPointerPodDeleter_cleanup(pointer)
 }
 
 // Delete this object from C++ memory.
 func (this *QScopedPointerPodDeleter) Delete() {
-	C.QScopedPointerPodDeleter_Delete(this.h)
+	C.QScopedPointerPodDeleter_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

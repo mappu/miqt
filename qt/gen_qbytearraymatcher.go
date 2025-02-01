@@ -79,7 +79,7 @@ func NewQByteArrayMatcher4(other *QByteArrayMatcher) *QByteArrayMatcher {
 }
 
 func (this *QByteArrayMatcher) OperatorAssign(other *QByteArrayMatcher) {
-	C.QByteArrayMatcher_OperatorAssign(this.h, other.cPointer())
+	C.QByteArrayMatcher_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QByteArrayMatcher) SetPattern(pattern []byte) {
@@ -90,7 +90,7 @@ func (this *QByteArrayMatcher) SetPattern(pattern []byte) {
 		pattern_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	pattern_alias.len = C.size_t(len(pattern))
-	C.QByteArrayMatcher_SetPattern(this.h, pattern_alias)
+	C.QByteArrayMatcher_setPattern(this.h, pattern_alias)
 }
 
 func (this *QByteArrayMatcher) IndexIn(ba []byte) int {
@@ -101,17 +101,17 @@ func (this *QByteArrayMatcher) IndexIn(ba []byte) int {
 		ba_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	ba_alias.len = C.size_t(len(ba))
-	return (int)(C.QByteArrayMatcher_IndexIn(this.h, ba_alias))
+	return (int)(C.QByteArrayMatcher_indexIn(this.h, ba_alias))
 }
 
 func (this *QByteArrayMatcher) IndexIn2(str string, lenVal int) int {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	return (int)(C.QByteArrayMatcher_IndexIn2(this.h, str_Cstring, (C.int)(lenVal)))
+	return (int)(C.QByteArrayMatcher_indexIn2(this.h, str_Cstring, (C.int)(lenVal)))
 }
 
 func (this *QByteArrayMatcher) Pattern() []byte {
-	var _bytearray C.struct_miqt_string = C.QByteArrayMatcher_Pattern(this.h)
+	var _bytearray C.struct_miqt_string = C.QByteArrayMatcher_pattern(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -125,18 +125,18 @@ func (this *QByteArrayMatcher) IndexIn22(ba []byte, from int) int {
 		ba_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	ba_alias.len = C.size_t(len(ba))
-	return (int)(C.QByteArrayMatcher_IndexIn22(this.h, ba_alias, (C.int)(from)))
+	return (int)(C.QByteArrayMatcher_indexIn22(this.h, ba_alias, (C.int)(from)))
 }
 
 func (this *QByteArrayMatcher) IndexIn3(str string, lenVal int, from int) int {
 	str_Cstring := C.CString(str)
 	defer C.free(unsafe.Pointer(str_Cstring))
-	return (int)(C.QByteArrayMatcher_IndexIn3(this.h, str_Cstring, (C.int)(lenVal), (C.int)(from)))
+	return (int)(C.QByteArrayMatcher_indexIn3(this.h, str_Cstring, (C.int)(lenVal), (C.int)(from)))
 }
 
 // Delete this object from C++ memory.
 func (this *QByteArrayMatcher) Delete() {
-	C.QByteArrayMatcher_Delete(this.h)
+	C.QByteArrayMatcher_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -182,7 +182,7 @@ func UnsafeNewQStaticByteArrayMatcherBase(h unsafe.Pointer) *QStaticByteArrayMat
 
 // Delete this object from C++ memory.
 func (this *QStaticByteArrayMatcherBase) Delete() {
-	C.QStaticByteArrayMatcherBase_Delete(this.h)
+	C.QStaticByteArrayMatcherBase_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

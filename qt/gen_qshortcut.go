@@ -91,19 +91,19 @@ func NewQShortcut5(key *QKeySequence, parent *QWidget, member string, ambiguousM
 }
 
 func (this *QShortcut) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QShortcut_MetaObject(this.h))
+	return newQMetaObject(C.QShortcut_metaObject(this.h))
 }
 
 func (this *QShortcut) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QShortcut_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QShortcut_metacast(this.h, param1_Cstring))
 }
 
 func QShortcut_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QShortcut_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QShortcut_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -112,36 +112,36 @@ func QShortcut_Tr(s string) string {
 func QShortcut_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QShortcut_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QShortcut_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QShortcut) SetKey(key *QKeySequence) {
-	C.QShortcut_SetKey(this.h, key.cPointer())
+	C.QShortcut_setKey(this.h, key.cPointer())
 }
 
 func (this *QShortcut) Key() *QKeySequence {
-	_goptr := newQKeySequence(C.QShortcut_Key(this.h))
+	_goptr := newQKeySequence(C.QShortcut_key(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QShortcut) SetEnabled(enable bool) {
-	C.QShortcut_SetEnabled(this.h, (C.bool)(enable))
+	C.QShortcut_setEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QShortcut) IsEnabled() bool {
-	return (bool)(C.QShortcut_IsEnabled(this.h))
+	return (bool)(C.QShortcut_isEnabled(this.h))
 }
 
 func (this *QShortcut) SetContext(context ShortcutContext) {
-	C.QShortcut_SetContext(this.h, (C.int)(context))
+	C.QShortcut_setContext(this.h, (C.int)(context))
 }
 
 func (this *QShortcut) Context() ShortcutContext {
-	return (ShortcutContext)(C.QShortcut_Context(this.h))
+	return (ShortcutContext)(C.QShortcut_context(this.h))
 }
 
 func (this *QShortcut) SetWhatsThis(text string) {
@@ -149,41 +149,41 @@ func (this *QShortcut) SetWhatsThis(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QShortcut_SetWhatsThis(this.h, text_ms)
+	C.QShortcut_setWhatsThis(this.h, text_ms)
 }
 
 func (this *QShortcut) WhatsThis() string {
-	var _ms C.struct_miqt_string = C.QShortcut_WhatsThis(this.h)
+	var _ms C.struct_miqt_string = C.QShortcut_whatsThis(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QShortcut) SetAutoRepeat(on bool) {
-	C.QShortcut_SetAutoRepeat(this.h, (C.bool)(on))
+	C.QShortcut_setAutoRepeat(this.h, (C.bool)(on))
 }
 
 func (this *QShortcut) AutoRepeat() bool {
-	return (bool)(C.QShortcut_AutoRepeat(this.h))
+	return (bool)(C.QShortcut_autoRepeat(this.h))
 }
 
 func (this *QShortcut) Id() int {
-	return (int)(C.QShortcut_Id(this.h))
+	return (int)(C.QShortcut_id(this.h))
 }
 
 func (this *QShortcut) ParentWidget() *QWidget {
-	return newQWidget(C.QShortcut_ParentWidget(this.h))
+	return newQWidget(C.QShortcut_parentWidget(this.h))
 }
 
 func (this *QShortcut) Activated() {
-	C.QShortcut_Activated(this.h)
+	C.QShortcut_activated(this.h)
 }
 func (this *QShortcut) OnActivated(slot func()) {
-	C.QShortcut_connect_Activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QShortcut_connect_activated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QShortcut_Activated
-func miqt_exec_callback_QShortcut_Activated(cb C.intptr_t) {
+//export miqt_exec_callback_QShortcut_activated
+func miqt_exec_callback_QShortcut_activated(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -193,14 +193,14 @@ func miqt_exec_callback_QShortcut_Activated(cb C.intptr_t) {
 }
 
 func (this *QShortcut) ActivatedAmbiguously() {
-	C.QShortcut_ActivatedAmbiguously(this.h)
+	C.QShortcut_activatedAmbiguously(this.h)
 }
 func (this *QShortcut) OnActivatedAmbiguously(slot func()) {
-	C.QShortcut_connect_ActivatedAmbiguously(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QShortcut_connect_activatedAmbiguously(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QShortcut_ActivatedAmbiguously
-func miqt_exec_callback_QShortcut_ActivatedAmbiguously(cb C.intptr_t) {
+//export miqt_exec_callback_QShortcut_activatedAmbiguously
+func miqt_exec_callback_QShortcut_activatedAmbiguously(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -214,7 +214,7 @@ func QShortcut_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QShortcut_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QShortcut_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -225,7 +225,7 @@ func QShortcut_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QShortcut_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QShortcut_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -236,7 +236,7 @@ func QShortcut_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QShortcut_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QShortcut_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -247,7 +247,7 @@ func QShortcut_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QShortcut_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QShortcut_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -255,18 +255,18 @@ func QShortcut_TrUtf83(s string, c string, n int) string {
 
 func (this *QShortcut) callVirtualBase_Event(e *QEvent) bool {
 
-	return (bool)(C.QShortcut_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+	return (bool)(C.QShortcut_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
 }
-func (this *QShortcut) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	ok := C.QShortcut_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QShortcut) Onevent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	ok := C.QShortcut_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QShortcut_Event
-func miqt_exec_callback_QShortcut_Event(self *C.QShortcut, cb C.intptr_t, e *C.QEvent) C.bool {
+//export miqt_exec_callback_QShortcut_event
+func miqt_exec_callback_QShortcut_event(self *C.QShortcut, cb C.intptr_t, e *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -283,18 +283,18 @@ func miqt_exec_callback_QShortcut_Event(self *C.QShortcut, cb C.intptr_t, e *C.Q
 
 func (this *QShortcut) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QShortcut_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QShortcut_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QShortcut) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QShortcut_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QShortcut) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QShortcut_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QShortcut_EventFilter
-func miqt_exec_callback_QShortcut_EventFilter(self *C.QShortcut, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QShortcut_eventFilter
+func miqt_exec_callback_QShortcut_eventFilter(self *C.QShortcut, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -313,18 +313,18 @@ func miqt_exec_callback_QShortcut_EventFilter(self *C.QShortcut, cb C.intptr_t, 
 
 func (this *QShortcut) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QShortcut_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QShortcut_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QShortcut) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QShortcut_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QShortcut) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QShortcut_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QShortcut_TimerEvent
-func miqt_exec_callback_QShortcut_TimerEvent(self *C.QShortcut, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QShortcut_timerEvent
+func miqt_exec_callback_QShortcut_timerEvent(self *C.QShortcut, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -339,18 +339,18 @@ func miqt_exec_callback_QShortcut_TimerEvent(self *C.QShortcut, cb C.intptr_t, e
 
 func (this *QShortcut) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QShortcut_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QShortcut_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QShortcut) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QShortcut_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QShortcut) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QShortcut_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QShortcut_ChildEvent
-func miqt_exec_callback_QShortcut_ChildEvent(self *C.QShortcut, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QShortcut_childEvent
+func miqt_exec_callback_QShortcut_childEvent(self *C.QShortcut, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -365,18 +365,18 @@ func miqt_exec_callback_QShortcut_ChildEvent(self *C.QShortcut, cb C.intptr_t, e
 
 func (this *QShortcut) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QShortcut_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QShortcut_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QShortcut) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QShortcut_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QShortcut) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QShortcut_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QShortcut_CustomEvent
-func miqt_exec_callback_QShortcut_CustomEvent(self *C.QShortcut, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QShortcut_customEvent
+func miqt_exec_callback_QShortcut_customEvent(self *C.QShortcut, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -391,18 +391,18 @@ func miqt_exec_callback_QShortcut_CustomEvent(self *C.QShortcut, cb C.intptr_t, 
 
 func (this *QShortcut) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QShortcut_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QShortcut_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QShortcut) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QShortcut_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QShortcut) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QShortcut_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QShortcut_ConnectNotify
-func miqt_exec_callback_QShortcut_ConnectNotify(self *C.QShortcut, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QShortcut_connectNotify
+func miqt_exec_callback_QShortcut_connectNotify(self *C.QShortcut, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -417,18 +417,18 @@ func miqt_exec_callback_QShortcut_ConnectNotify(self *C.QShortcut, cb C.intptr_t
 
 func (this *QShortcut) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QShortcut_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QShortcut_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QShortcut) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QShortcut_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QShortcut) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QShortcut_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QShortcut_DisconnectNotify
-func miqt_exec_callback_QShortcut_DisconnectNotify(self *C.QShortcut, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QShortcut_disconnectNotify
+func miqt_exec_callback_QShortcut_disconnectNotify(self *C.QShortcut, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -443,7 +443,7 @@ func miqt_exec_callback_QShortcut_DisconnectNotify(self *C.QShortcut, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QShortcut) Delete() {
-	C.QShortcut_Delete(this.h)
+	C.QShortcut_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -31,20 +31,20 @@ typedef struct QWebEnginePage QWebEnginePage;
 #endif
 
 void QWebEngineNewWindowRequest_virtbase(QWebEngineNewWindowRequest* src, QObject** outptr_QObject);
-QMetaObject* QWebEngineNewWindowRequest_MetaObject(const QWebEngineNewWindowRequest* self);
-void* QWebEngineNewWindowRequest_Metacast(QWebEngineNewWindowRequest* self, const char* param1);
-struct miqt_string QWebEngineNewWindowRequest_Tr(const char* s);
-int QWebEngineNewWindowRequest_Destination(const QWebEngineNewWindowRequest* self);
-QUrl* QWebEngineNewWindowRequest_RequestedUrl(const QWebEngineNewWindowRequest* self);
-QRect* QWebEngineNewWindowRequest_RequestedGeometry(const QWebEngineNewWindowRequest* self);
-bool QWebEngineNewWindowRequest_IsUserInitiated(const QWebEngineNewWindowRequest* self);
-void QWebEngineNewWindowRequest_OpenIn(QWebEngineNewWindowRequest* self, QWebEnginePage* param1);
-struct miqt_string QWebEngineNewWindowRequest_Tr2(const char* s, const char* c);
-struct miqt_string QWebEngineNewWindowRequest_Tr3(const char* s, const char* c, int n);
-void QWebEngineNewWindowRequest_Delete(QWebEngineNewWindowRequest* self);
+QMetaObject* QWebEngineNewWindowRequest_metaObject(const QWebEngineNewWindowRequest* self);
+void* QWebEngineNewWindowRequest_metacast(QWebEngineNewWindowRequest* self, const char* param1);
+struct miqt_string QWebEngineNewWindowRequest_tr(const char* s);
+int QWebEngineNewWindowRequest_destination(const QWebEngineNewWindowRequest* self);
+QUrl* QWebEngineNewWindowRequest_requestedUrl(const QWebEngineNewWindowRequest* self);
+QRect* QWebEngineNewWindowRequest_requestedGeometry(const QWebEngineNewWindowRequest* self);
+bool QWebEngineNewWindowRequest_isUserInitiated(const QWebEngineNewWindowRequest* self);
+void QWebEngineNewWindowRequest_openIn(QWebEngineNewWindowRequest* self, QWebEnginePage* param1);
+struct miqt_string QWebEngineNewWindowRequest_tr2(const char* s, const char* c);
+struct miqt_string QWebEngineNewWindowRequest_tr3(const char* s, const char* c, int n);
+void QWebEngineNewWindowRequest_delete(QWebEngineNewWindowRequest* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

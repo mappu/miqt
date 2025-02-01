@@ -39,39 +39,39 @@ typedef struct QTimerEvent QTimerEvent;
 QSyntaxHighlighter* QSyntaxHighlighter_new(QObject* parent);
 QSyntaxHighlighter* QSyntaxHighlighter_new2(QTextDocument* parent);
 void QSyntaxHighlighter_virtbase(QSyntaxHighlighter* src, QObject** outptr_QObject);
-QMetaObject* QSyntaxHighlighter_MetaObject(const QSyntaxHighlighter* self);
-void* QSyntaxHighlighter_Metacast(QSyntaxHighlighter* self, const char* param1);
-struct miqt_string QSyntaxHighlighter_Tr(const char* s);
-struct miqt_string QSyntaxHighlighter_TrUtf8(const char* s);
-void QSyntaxHighlighter_SetDocument(QSyntaxHighlighter* self, QTextDocument* doc);
-QTextDocument* QSyntaxHighlighter_Document(const QSyntaxHighlighter* self);
-void QSyntaxHighlighter_Rehighlight(QSyntaxHighlighter* self);
-void QSyntaxHighlighter_RehighlightBlock(QSyntaxHighlighter* self, QTextBlock* block);
-void QSyntaxHighlighter_HighlightBlock(QSyntaxHighlighter* self, struct miqt_string text);
-struct miqt_string QSyntaxHighlighter_Tr2(const char* s, const char* c);
-struct miqt_string QSyntaxHighlighter_Tr3(const char* s, const char* c, int n);
-struct miqt_string QSyntaxHighlighter_TrUtf82(const char* s, const char* c);
-struct miqt_string QSyntaxHighlighter_TrUtf83(const char* s, const char* c, int n);
-bool QSyntaxHighlighter_override_virtual_HighlightBlock(void* self, intptr_t slot);
-void QSyntaxHighlighter_virtualbase_HighlightBlock(void* self, struct miqt_string text);
-bool QSyntaxHighlighter_override_virtual_Event(void* self, intptr_t slot);
-bool QSyntaxHighlighter_virtualbase_Event(void* self, QEvent* event);
-bool QSyntaxHighlighter_override_virtual_EventFilter(void* self, intptr_t slot);
-bool QSyntaxHighlighter_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-bool QSyntaxHighlighter_override_virtual_TimerEvent(void* self, intptr_t slot);
-void QSyntaxHighlighter_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-bool QSyntaxHighlighter_override_virtual_ChildEvent(void* self, intptr_t slot);
-void QSyntaxHighlighter_virtualbase_ChildEvent(void* self, QChildEvent* event);
-bool QSyntaxHighlighter_override_virtual_CustomEvent(void* self, intptr_t slot);
-void QSyntaxHighlighter_virtualbase_CustomEvent(void* self, QEvent* event);
-bool QSyntaxHighlighter_override_virtual_ConnectNotify(void* self, intptr_t slot);
-void QSyntaxHighlighter_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-bool QSyntaxHighlighter_override_virtual_DisconnectNotify(void* self, intptr_t slot);
-void QSyntaxHighlighter_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QSyntaxHighlighter_Delete(QSyntaxHighlighter* self);
+QMetaObject* QSyntaxHighlighter_metaObject(const QSyntaxHighlighter* self);
+void* QSyntaxHighlighter_metacast(QSyntaxHighlighter* self, const char* param1);
+struct miqt_string QSyntaxHighlighter_tr(const char* s);
+struct miqt_string QSyntaxHighlighter_trUtf8(const char* s);
+void QSyntaxHighlighter_setDocument(QSyntaxHighlighter* self, QTextDocument* doc);
+QTextDocument* QSyntaxHighlighter_document(const QSyntaxHighlighter* self);
+void QSyntaxHighlighter_rehighlight(QSyntaxHighlighter* self);
+void QSyntaxHighlighter_rehighlightBlock(QSyntaxHighlighter* self, QTextBlock* block);
+void QSyntaxHighlighter_highlightBlock(QSyntaxHighlighter* self, struct miqt_string text);
+struct miqt_string QSyntaxHighlighter_tr2(const char* s, const char* c);
+struct miqt_string QSyntaxHighlighter_tr3(const char* s, const char* c, int n);
+struct miqt_string QSyntaxHighlighter_trUtf82(const char* s, const char* c);
+struct miqt_string QSyntaxHighlighter_trUtf83(const char* s, const char* c, int n);
+bool QSyntaxHighlighter_override_virtual_highlightBlock(void* self, intptr_t slot);
+void QSyntaxHighlighter_virtualbase_highlightBlock(void* self, struct miqt_string text);
+bool QSyntaxHighlighter_override_virtual_event(void* self, intptr_t slot);
+bool QSyntaxHighlighter_virtualbase_event(void* self, QEvent* event);
+bool QSyntaxHighlighter_override_virtual_eventFilter(void* self, intptr_t slot);
+bool QSyntaxHighlighter_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
+bool QSyntaxHighlighter_override_virtual_timerEvent(void* self, intptr_t slot);
+void QSyntaxHighlighter_virtualbase_timerEvent(void* self, QTimerEvent* event);
+bool QSyntaxHighlighter_override_virtual_childEvent(void* self, intptr_t slot);
+void QSyntaxHighlighter_virtualbase_childEvent(void* self, QChildEvent* event);
+bool QSyntaxHighlighter_override_virtual_customEvent(void* self, intptr_t slot);
+void QSyntaxHighlighter_virtualbase_customEvent(void* self, QEvent* event);
+bool QSyntaxHighlighter_override_virtual_connectNotify(void* self, intptr_t slot);
+void QSyntaxHighlighter_virtualbase_connectNotify(void* self, QMetaMethod* signal);
+bool QSyntaxHighlighter_override_virtual_disconnectNotify(void* self, intptr_t slot);
+void QSyntaxHighlighter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QSyntaxHighlighter_delete(QSyntaxHighlighter* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

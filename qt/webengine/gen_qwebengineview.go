@@ -64,19 +64,19 @@ func NewQWebEngineView2() *QWebEngineView {
 }
 
 func (this *QWebEngineView) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineView_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineView_metaObject(this.h)))
 }
 
 func (this *QWebEngineView) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWebEngineView_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWebEngineView_metacast(this.h, param1_Cstring))
 }
 
 func QWebEngineView_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineView_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineView_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -85,26 +85,26 @@ func QWebEngineView_Tr(s string) string {
 func QWebEngineView_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineView_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineView_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineView) Page() *QWebEnginePage {
-	return newQWebEnginePage(C.QWebEngineView_Page(this.h))
+	return newQWebEnginePage(C.QWebEngineView_page(this.h))
 }
 
 func (this *QWebEngineView) SetPage(page *QWebEnginePage) {
-	C.QWebEngineView_SetPage(this.h, page.cPointer())
+	C.QWebEngineView_setPage(this.h, page.cPointer())
 }
 
 func (this *QWebEngineView) Load(url *qt.QUrl) {
-	C.QWebEngineView_Load(this.h, (*C.QUrl)(url.UnsafePointer()))
+	C.QWebEngineView_load(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QWebEngineView) LoadWithRequest(request *QWebEngineHttpRequest) {
-	C.QWebEngineView_LoadWithRequest(this.h, request.cPointer())
+	C.QWebEngineView_loadWithRequest(this.h, request.cPointer())
 }
 
 func (this *QWebEngineView) SetHtml(html string) {
@@ -112,7 +112,7 @@ func (this *QWebEngineView) SetHtml(html string) {
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
 	defer C.free(unsafe.Pointer(html_ms.data))
-	C.QWebEngineView_SetHtml(this.h, html_ms)
+	C.QWebEngineView_setHtml(this.h, html_ms)
 }
 
 func (this *QWebEngineView) SetContent(data []byte) {
@@ -123,67 +123,67 @@ func (this *QWebEngineView) SetContent(data []byte) {
 		data_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	data_alias.len = C.size_t(len(data))
-	C.QWebEngineView_SetContent(this.h, data_alias)
+	C.QWebEngineView_setContent(this.h, data_alias)
 }
 
 func (this *QWebEngineView) History() *QWebEngineHistory {
-	return newQWebEngineHistory(C.QWebEngineView_History(this.h))
+	return newQWebEngineHistory(C.QWebEngineView_history(this.h))
 }
 
 func (this *QWebEngineView) Title() string {
-	var _ms C.struct_miqt_string = C.QWebEngineView_Title(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineView_title(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineView) SetUrl(url *qt.QUrl) {
-	C.QWebEngineView_SetUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
+	C.QWebEngineView_setUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QWebEngineView) Url() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineView_Url(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineView_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineView) IconUrl() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineView_IconUrl(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineView_iconUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineView) Icon() *qt.QIcon {
-	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(C.QWebEngineView_Icon(this.h)))
+	_goptr := qt.UnsafeNewQIcon(unsafe.Pointer(C.QWebEngineView_icon(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineView) HasSelection() bool {
-	return (bool)(C.QWebEngineView_HasSelection(this.h))
+	return (bool)(C.QWebEngineView_hasSelection(this.h))
 }
 
 func (this *QWebEngineView) SelectedText() string {
-	var _ms C.struct_miqt_string = C.QWebEngineView_SelectedText(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineView_selectedText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineView) PageAction(action QWebEnginePage__WebAction) *qt.QAction {
-	return qt.UnsafeNewQAction(unsafe.Pointer(C.QWebEngineView_PageAction(this.h, (C.int)(action))))
+	return qt.UnsafeNewQAction(unsafe.Pointer(C.QWebEngineView_pageAction(this.h, (C.int)(action))))
 }
 
 func (this *QWebEngineView) TriggerPageAction(action QWebEnginePage__WebAction) {
-	C.QWebEngineView_TriggerPageAction(this.h, (C.int)(action))
+	C.QWebEngineView_triggerPageAction(this.h, (C.int)(action))
 }
 
 func (this *QWebEngineView) ZoomFactor() float64 {
-	return (float64)(C.QWebEngineView_ZoomFactor(this.h))
+	return (float64)(C.QWebEngineView_zoomFactor(this.h))
 }
 
 func (this *QWebEngineView) SetZoomFactor(factor float64) {
-	C.QWebEngineView_SetZoomFactor(this.h, (C.double)(factor))
+	C.QWebEngineView_setZoomFactor(this.h, (C.double)(factor))
 }
 
 func (this *QWebEngineView) FindText(subString string) {
@@ -191,44 +191,44 @@ func (this *QWebEngineView) FindText(subString string) {
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
 	defer C.free(unsafe.Pointer(subString_ms.data))
-	C.QWebEngineView_FindText(this.h, subString_ms)
+	C.QWebEngineView_findText(this.h, subString_ms)
 }
 
 func (this *QWebEngineView) SizeHint() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebEngineView_SizeHint(this.h)))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebEngineView_sizeHint(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineView) Settings() *QWebEngineSettings {
-	return newQWebEngineSettings(C.QWebEngineView_Settings(this.h))
+	return newQWebEngineSettings(C.QWebEngineView_settings(this.h))
 }
 
 func (this *QWebEngineView) Stop() {
-	C.QWebEngineView_Stop(this.h)
+	C.QWebEngineView_stop(this.h)
 }
 
 func (this *QWebEngineView) Back() {
-	C.QWebEngineView_Back(this.h)
+	C.QWebEngineView_back(this.h)
 }
 
 func (this *QWebEngineView) Forward() {
-	C.QWebEngineView_Forward(this.h)
+	C.QWebEngineView_forward(this.h)
 }
 
 func (this *QWebEngineView) Reload() {
-	C.QWebEngineView_Reload(this.h)
+	C.QWebEngineView_reload(this.h)
 }
 
 func (this *QWebEngineView) LoadStarted() {
-	C.QWebEngineView_LoadStarted(this.h)
+	C.QWebEngineView_loadStarted(this.h)
 }
 func (this *QWebEngineView) OnLoadStarted(slot func()) {
-	C.QWebEngineView_connect_LoadStarted(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineView_connect_loadStarted(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineView_LoadStarted
-func miqt_exec_callback_QWebEngineView_LoadStarted(cb C.intptr_t) {
+//export miqt_exec_callback_QWebEngineView_loadStarted
+func miqt_exec_callback_QWebEngineView_loadStarted(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -238,14 +238,14 @@ func miqt_exec_callback_QWebEngineView_LoadStarted(cb C.intptr_t) {
 }
 
 func (this *QWebEngineView) LoadProgress(progress int) {
-	C.QWebEngineView_LoadProgress(this.h, (C.int)(progress))
+	C.QWebEngineView_loadProgress(this.h, (C.int)(progress))
 }
 func (this *QWebEngineView) OnLoadProgress(slot func(progress int)) {
-	C.QWebEngineView_connect_LoadProgress(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineView_connect_loadProgress(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineView_LoadProgress
-func miqt_exec_callback_QWebEngineView_LoadProgress(cb C.intptr_t, progress C.int) {
+//export miqt_exec_callback_QWebEngineView_loadProgress
+func miqt_exec_callback_QWebEngineView_loadProgress(cb C.intptr_t, progress C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(progress int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -258,14 +258,14 @@ func miqt_exec_callback_QWebEngineView_LoadProgress(cb C.intptr_t, progress C.in
 }
 
 func (this *QWebEngineView) LoadFinished(param1 bool) {
-	C.QWebEngineView_LoadFinished(this.h, (C.bool)(param1))
+	C.QWebEngineView_loadFinished(this.h, (C.bool)(param1))
 }
 func (this *QWebEngineView) OnLoadFinished(slot func(param1 bool)) {
-	C.QWebEngineView_connect_LoadFinished(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineView_connect_loadFinished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineView_LoadFinished
-func miqt_exec_callback_QWebEngineView_LoadFinished(cb C.intptr_t, param1 C.bool) {
+//export miqt_exec_callback_QWebEngineView_loadFinished
+func miqt_exec_callback_QWebEngineView_loadFinished(cb C.intptr_t, param1 C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -282,14 +282,14 @@ func (this *QWebEngineView) TitleChanged(title string) {
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	C.QWebEngineView_TitleChanged(this.h, title_ms)
+	C.QWebEngineView_titleChanged(this.h, title_ms)
 }
 func (this *QWebEngineView) OnTitleChanged(slot func(title string)) {
-	C.QWebEngineView_connect_TitleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineView_connect_titleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineView_TitleChanged
-func miqt_exec_callback_QWebEngineView_TitleChanged(cb C.intptr_t, title C.struct_miqt_string) {
+//export miqt_exec_callback_QWebEngineView_titleChanged
+func miqt_exec_callback_QWebEngineView_titleChanged(cb C.intptr_t, title C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(title string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -305,14 +305,14 @@ func miqt_exec_callback_QWebEngineView_TitleChanged(cb C.intptr_t, title C.struc
 }
 
 func (this *QWebEngineView) SelectionChanged() {
-	C.QWebEngineView_SelectionChanged(this.h)
+	C.QWebEngineView_selectionChanged(this.h)
 }
 func (this *QWebEngineView) OnSelectionChanged(slot func()) {
-	C.QWebEngineView_connect_SelectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineView_connect_selectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineView_SelectionChanged
-func miqt_exec_callback_QWebEngineView_SelectionChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QWebEngineView_selectionChanged
+func miqt_exec_callback_QWebEngineView_selectionChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -322,14 +322,14 @@ func miqt_exec_callback_QWebEngineView_SelectionChanged(cb C.intptr_t) {
 }
 
 func (this *QWebEngineView) UrlChanged(param1 *qt.QUrl) {
-	C.QWebEngineView_UrlChanged(this.h, (*C.QUrl)(param1.UnsafePointer()))
+	C.QWebEngineView_urlChanged(this.h, (*C.QUrl)(param1.UnsafePointer()))
 }
 func (this *QWebEngineView) OnUrlChanged(slot func(param1 *qt.QUrl)) {
-	C.QWebEngineView_connect_UrlChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineView_connect_urlChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineView_UrlChanged
-func miqt_exec_callback_QWebEngineView_UrlChanged(cb C.intptr_t, param1 *C.QUrl) {
+//export miqt_exec_callback_QWebEngineView_urlChanged
+func miqt_exec_callback_QWebEngineView_urlChanged(cb C.intptr_t, param1 *C.QUrl) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *qt.QUrl))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -342,14 +342,14 @@ func miqt_exec_callback_QWebEngineView_UrlChanged(cb C.intptr_t, param1 *C.QUrl)
 }
 
 func (this *QWebEngineView) IconUrlChanged(param1 *qt.QUrl) {
-	C.QWebEngineView_IconUrlChanged(this.h, (*C.QUrl)(param1.UnsafePointer()))
+	C.QWebEngineView_iconUrlChanged(this.h, (*C.QUrl)(param1.UnsafePointer()))
 }
 func (this *QWebEngineView) OnIconUrlChanged(slot func(param1 *qt.QUrl)) {
-	C.QWebEngineView_connect_IconUrlChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineView_connect_iconUrlChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineView_IconUrlChanged
-func miqt_exec_callback_QWebEngineView_IconUrlChanged(cb C.intptr_t, param1 *C.QUrl) {
+//export miqt_exec_callback_QWebEngineView_iconUrlChanged
+func miqt_exec_callback_QWebEngineView_iconUrlChanged(cb C.intptr_t, param1 *C.QUrl) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *qt.QUrl))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -362,14 +362,14 @@ func miqt_exec_callback_QWebEngineView_IconUrlChanged(cb C.intptr_t, param1 *C.Q
 }
 
 func (this *QWebEngineView) IconChanged(param1 *qt.QIcon) {
-	C.QWebEngineView_IconChanged(this.h, (*C.QIcon)(param1.UnsafePointer()))
+	C.QWebEngineView_iconChanged(this.h, (*C.QIcon)(param1.UnsafePointer()))
 }
 func (this *QWebEngineView) OnIconChanged(slot func(param1 *qt.QIcon)) {
-	C.QWebEngineView_connect_IconChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineView_connect_iconChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineView_IconChanged
-func miqt_exec_callback_QWebEngineView_IconChanged(cb C.intptr_t, param1 *C.QIcon) {
+//export miqt_exec_callback_QWebEngineView_iconChanged
+func miqt_exec_callback_QWebEngineView_iconChanged(cb C.intptr_t, param1 *C.QIcon) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *qt.QIcon))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -382,14 +382,14 @@ func miqt_exec_callback_QWebEngineView_IconChanged(cb C.intptr_t, param1 *C.QIco
 }
 
 func (this *QWebEngineView) RenderProcessTerminated(terminationStatus QWebEnginePage__RenderProcessTerminationStatus, exitCode int) {
-	C.QWebEngineView_RenderProcessTerminated(this.h, (C.int)(terminationStatus), (C.int)(exitCode))
+	C.QWebEngineView_renderProcessTerminated(this.h, (C.int)(terminationStatus), (C.int)(exitCode))
 }
 func (this *QWebEngineView) OnRenderProcessTerminated(slot func(terminationStatus QWebEnginePage__RenderProcessTerminationStatus, exitCode int)) {
-	C.QWebEngineView_connect_RenderProcessTerminated(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineView_connect_renderProcessTerminated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineView_RenderProcessTerminated
-func miqt_exec_callback_QWebEngineView_RenderProcessTerminated(cb C.intptr_t, terminationStatus C.int, exitCode C.int) {
+//export miqt_exec_callback_QWebEngineView_renderProcessTerminated
+func miqt_exec_callback_QWebEngineView_renderProcessTerminated(cb C.intptr_t, terminationStatus C.int, exitCode C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(terminationStatus QWebEnginePage__RenderProcessTerminationStatus, exitCode int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -408,7 +408,7 @@ func QWebEngineView_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineView_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineView_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -419,7 +419,7 @@ func QWebEngineView_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineView_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebEngineView_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -430,7 +430,7 @@ func QWebEngineView_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineView_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineView_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -441,7 +441,7 @@ func QWebEngineView_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineView_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebEngineView_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -452,7 +452,7 @@ func (this *QWebEngineView) SetHtml2(html string, baseUrl *qt.QUrl) {
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
 	defer C.free(unsafe.Pointer(html_ms.data))
-	C.QWebEngineView_SetHtml2(this.h, html_ms, (*C.QUrl)(baseUrl.UnsafePointer()))
+	C.QWebEngineView_setHtml2(this.h, html_ms, (*C.QUrl)(baseUrl.UnsafePointer()))
 }
 
 func (this *QWebEngineView) SetContent2(data []byte, mimeType string) {
@@ -467,7 +467,7 @@ func (this *QWebEngineView) SetContent2(data []byte, mimeType string) {
 	mimeType_ms.data = C.CString(mimeType)
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
-	C.QWebEngineView_SetContent2(this.h, data_alias, mimeType_ms)
+	C.QWebEngineView_setContent2(this.h, data_alias, mimeType_ms)
 }
 
 func (this *QWebEngineView) SetContent3(data []byte, mimeType string, baseUrl *qt.QUrl) {
@@ -482,11 +482,11 @@ func (this *QWebEngineView) SetContent3(data []byte, mimeType string, baseUrl *q
 	mimeType_ms.data = C.CString(mimeType)
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
-	C.QWebEngineView_SetContent3(this.h, data_alias, mimeType_ms, (*C.QUrl)(baseUrl.UnsafePointer()))
+	C.QWebEngineView_setContent3(this.h, data_alias, mimeType_ms, (*C.QUrl)(baseUrl.UnsafePointer()))
 }
 
 func (this *QWebEngineView) TriggerPageAction2(action QWebEnginePage__WebAction, checked bool) {
-	C.QWebEngineView_TriggerPageAction2(this.h, (C.int)(action), (C.bool)(checked))
+	C.QWebEngineView_triggerPageAction2(this.h, (C.int)(action), (C.bool)(checked))
 }
 
 func (this *QWebEngineView) FindText2(subString string, options QWebEnginePage__FindFlag) {
@@ -494,25 +494,25 @@ func (this *QWebEngineView) FindText2(subString string, options QWebEnginePage__
 	subString_ms.data = C.CString(subString)
 	subString_ms.len = C.size_t(len(subString))
 	defer C.free(unsafe.Pointer(subString_ms.data))
-	C.QWebEngineView_FindText2(this.h, subString_ms, (C.int)(options))
+	C.QWebEngineView_findText2(this.h, subString_ms, (C.int)(options))
 }
 
 func (this *QWebEngineView) callVirtualBase_SizeHint() *qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebEngineView_virtualbase_SizeHint(unsafe.Pointer(this.h))))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebEngineView_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QWebEngineView) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	ok := C.QWebEngineView_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnsizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	ok := C.QWebEngineView_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_SizeHint
-func miqt_exec_callback_QWebEngineView_SizeHint(self *C.QWebEngineView, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QWebEngineView_sizeHint
+func miqt_exec_callback_QWebEngineView_sizeHint(self *C.QWebEngineView, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -526,18 +526,18 @@ func miqt_exec_callback_QWebEngineView_SizeHint(self *C.QWebEngineView, cb C.int
 
 func (this *QWebEngineView) callVirtualBase_CreateWindow(typeVal QWebEnginePage__WebWindowType) *QWebEngineView {
 
-	return newQWebEngineView(C.QWebEngineView_virtualbase_CreateWindow(unsafe.Pointer(this.h), (C.int)(typeVal)))
+	return newQWebEngineView(C.QWebEngineView_virtualbase_createWindow(unsafe.Pointer(this.h), (C.int)(typeVal)))
 
 }
-func (this *QWebEngineView) OnCreateWindow(slot func(super func(typeVal QWebEnginePage__WebWindowType) *QWebEngineView, typeVal QWebEnginePage__WebWindowType) *QWebEngineView) {
-	ok := C.QWebEngineView_override_virtual_CreateWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OncreateWindow(slot func(super func(typeVal QWebEnginePage__WebWindowType) *QWebEngineView, typeVal QWebEnginePage__WebWindowType) *QWebEngineView) {
+	ok := C.QWebEngineView_override_virtual_createWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_CreateWindow
-func miqt_exec_callback_QWebEngineView_CreateWindow(self *C.QWebEngineView, cb C.intptr_t, typeVal C.int) *C.QWebEngineView {
+//export miqt_exec_callback_QWebEngineView_createWindow
+func miqt_exec_callback_QWebEngineView_createWindow(self *C.QWebEngineView, cb C.intptr_t, typeVal C.int) *C.QWebEngineView {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(typeVal QWebEnginePage__WebWindowType) *QWebEngineView, typeVal QWebEnginePage__WebWindowType) *QWebEngineView)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -554,18 +554,18 @@ func miqt_exec_callback_QWebEngineView_CreateWindow(self *C.QWebEngineView, cb C
 
 func (this *QWebEngineView) callVirtualBase_ContextMenuEvent(param1 *qt.QContextMenuEvent) {
 
-	C.QWebEngineView_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(param1.UnsafePointer()))
+	C.QWebEngineView_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(param1.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnContextMenuEvent(slot func(super func(param1 *qt.QContextMenuEvent), param1 *qt.QContextMenuEvent)) {
-	ok := C.QWebEngineView_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OncontextMenuEvent(slot func(super func(param1 *qt.QContextMenuEvent), param1 *qt.QContextMenuEvent)) {
+	ok := C.QWebEngineView_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_ContextMenuEvent
-func miqt_exec_callback_QWebEngineView_ContextMenuEvent(self *C.QWebEngineView, cb C.intptr_t, param1 *C.QContextMenuEvent) {
+//export miqt_exec_callback_QWebEngineView_contextMenuEvent
+func miqt_exec_callback_QWebEngineView_contextMenuEvent(self *C.QWebEngineView, cb C.intptr_t, param1 *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QContextMenuEvent), param1 *qt.QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -580,18 +580,18 @@ func miqt_exec_callback_QWebEngineView_ContextMenuEvent(self *C.QWebEngineView, 
 
 func (this *QWebEngineView) callVirtualBase_Event(param1 *qt.QEvent) bool {
 
-	return (bool)(C.QWebEngineView_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
+	return (bool)(C.QWebEngineView_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
 
 }
-func (this *QWebEngineView) OnEvent(slot func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool) {
-	ok := C.QWebEngineView_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) Onevent(slot func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool) {
+	ok := C.QWebEngineView_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_Event
-func miqt_exec_callback_QWebEngineView_Event(self *C.QWebEngineView, cb C.intptr_t, param1 *C.QEvent) C.bool {
+//export miqt_exec_callback_QWebEngineView_event
+func miqt_exec_callback_QWebEngineView_event(self *C.QWebEngineView, cb C.intptr_t, param1 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -608,18 +608,18 @@ func miqt_exec_callback_QWebEngineView_Event(self *C.QWebEngineView, cb C.intptr
 
 func (this *QWebEngineView) callVirtualBase_ShowEvent(param1 *qt.QShowEvent) {
 
-	C.QWebEngineView_virtualbase_ShowEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(param1.UnsafePointer()))
+	C.QWebEngineView_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(param1.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnShowEvent(slot func(super func(param1 *qt.QShowEvent), param1 *qt.QShowEvent)) {
-	ok := C.QWebEngineView_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnshowEvent(slot func(super func(param1 *qt.QShowEvent), param1 *qt.QShowEvent)) {
+	ok := C.QWebEngineView_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_ShowEvent
-func miqt_exec_callback_QWebEngineView_ShowEvent(self *C.QWebEngineView, cb C.intptr_t, param1 *C.QShowEvent) {
+//export miqt_exec_callback_QWebEngineView_showEvent
+func miqt_exec_callback_QWebEngineView_showEvent(self *C.QWebEngineView, cb C.intptr_t, param1 *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QShowEvent), param1 *qt.QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -634,18 +634,18 @@ func miqt_exec_callback_QWebEngineView_ShowEvent(self *C.QWebEngineView, cb C.in
 
 func (this *QWebEngineView) callVirtualBase_HideEvent(param1 *qt.QHideEvent) {
 
-	C.QWebEngineView_virtualbase_HideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(param1.UnsafePointer()))
+	C.QWebEngineView_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(param1.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnHideEvent(slot func(super func(param1 *qt.QHideEvent), param1 *qt.QHideEvent)) {
-	ok := C.QWebEngineView_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnhideEvent(slot func(super func(param1 *qt.QHideEvent), param1 *qt.QHideEvent)) {
+	ok := C.QWebEngineView_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_HideEvent
-func miqt_exec_callback_QWebEngineView_HideEvent(self *C.QWebEngineView, cb C.intptr_t, param1 *C.QHideEvent) {
+//export miqt_exec_callback_QWebEngineView_hideEvent
+func miqt_exec_callback_QWebEngineView_hideEvent(self *C.QWebEngineView, cb C.intptr_t, param1 *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QHideEvent), param1 *qt.QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -660,18 +660,18 @@ func miqt_exec_callback_QWebEngineView_HideEvent(self *C.QWebEngineView, cb C.in
 
 func (this *QWebEngineView) callVirtualBase_CloseEvent(param1 *qt.QCloseEvent) {
 
-	C.QWebEngineView_virtualbase_CloseEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(param1.UnsafePointer()))
+	C.QWebEngineView_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(param1.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnCloseEvent(slot func(super func(param1 *qt.QCloseEvent), param1 *qt.QCloseEvent)) {
-	ok := C.QWebEngineView_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OncloseEvent(slot func(super func(param1 *qt.QCloseEvent), param1 *qt.QCloseEvent)) {
+	ok := C.QWebEngineView_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_CloseEvent
-func miqt_exec_callback_QWebEngineView_CloseEvent(self *C.QWebEngineView, cb C.intptr_t, param1 *C.QCloseEvent) {
+//export miqt_exec_callback_QWebEngineView_closeEvent
+func miqt_exec_callback_QWebEngineView_closeEvent(self *C.QWebEngineView, cb C.intptr_t, param1 *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QCloseEvent), param1 *qt.QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -686,18 +686,18 @@ func miqt_exec_callback_QWebEngineView_CloseEvent(self *C.QWebEngineView, cb C.i
 
 func (this *QWebEngineView) callVirtualBase_DragEnterEvent(e *qt.QDragEnterEvent) {
 
-	C.QWebEngineView_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(e.UnsafePointer()))
+	C.QWebEngineView_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(e.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnDragEnterEvent(slot func(super func(e *qt.QDragEnterEvent), e *qt.QDragEnterEvent)) {
-	ok := C.QWebEngineView_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OndragEnterEvent(slot func(super func(e *qt.QDragEnterEvent), e *qt.QDragEnterEvent)) {
+	ok := C.QWebEngineView_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_DragEnterEvent
-func miqt_exec_callback_QWebEngineView_DragEnterEvent(self *C.QWebEngineView, cb C.intptr_t, e *C.QDragEnterEvent) {
+//export miqt_exec_callback_QWebEngineView_dragEnterEvent
+func miqt_exec_callback_QWebEngineView_dragEnterEvent(self *C.QWebEngineView, cb C.intptr_t, e *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QDragEnterEvent), e *qt.QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -712,18 +712,18 @@ func miqt_exec_callback_QWebEngineView_DragEnterEvent(self *C.QWebEngineView, cb
 
 func (this *QWebEngineView) callVirtualBase_DragLeaveEvent(e *qt.QDragLeaveEvent) {
 
-	C.QWebEngineView_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(e.UnsafePointer()))
+	C.QWebEngineView_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(e.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnDragLeaveEvent(slot func(super func(e *qt.QDragLeaveEvent), e *qt.QDragLeaveEvent)) {
-	ok := C.QWebEngineView_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OndragLeaveEvent(slot func(super func(e *qt.QDragLeaveEvent), e *qt.QDragLeaveEvent)) {
+	ok := C.QWebEngineView_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_DragLeaveEvent
-func miqt_exec_callback_QWebEngineView_DragLeaveEvent(self *C.QWebEngineView, cb C.intptr_t, e *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QWebEngineView_dragLeaveEvent
+func miqt_exec_callback_QWebEngineView_dragLeaveEvent(self *C.QWebEngineView, cb C.intptr_t, e *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QDragLeaveEvent), e *qt.QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -738,18 +738,18 @@ func miqt_exec_callback_QWebEngineView_DragLeaveEvent(self *C.QWebEngineView, cb
 
 func (this *QWebEngineView) callVirtualBase_DragMoveEvent(e *qt.QDragMoveEvent) {
 
-	C.QWebEngineView_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(e.UnsafePointer()))
+	C.QWebEngineView_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(e.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnDragMoveEvent(slot func(super func(e *qt.QDragMoveEvent), e *qt.QDragMoveEvent)) {
-	ok := C.QWebEngineView_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OndragMoveEvent(slot func(super func(e *qt.QDragMoveEvent), e *qt.QDragMoveEvent)) {
+	ok := C.QWebEngineView_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_DragMoveEvent
-func miqt_exec_callback_QWebEngineView_DragMoveEvent(self *C.QWebEngineView, cb C.intptr_t, e *C.QDragMoveEvent) {
+//export miqt_exec_callback_QWebEngineView_dragMoveEvent
+func miqt_exec_callback_QWebEngineView_dragMoveEvent(self *C.QWebEngineView, cb C.intptr_t, e *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QDragMoveEvent), e *qt.QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -764,18 +764,18 @@ func miqt_exec_callback_QWebEngineView_DragMoveEvent(self *C.QWebEngineView, cb 
 
 func (this *QWebEngineView) callVirtualBase_DropEvent(e *qt.QDropEvent) {
 
-	C.QWebEngineView_virtualbase_DropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(e.UnsafePointer()))
+	C.QWebEngineView_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(e.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnDropEvent(slot func(super func(e *qt.QDropEvent), e *qt.QDropEvent)) {
-	ok := C.QWebEngineView_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OndropEvent(slot func(super func(e *qt.QDropEvent), e *qt.QDropEvent)) {
+	ok := C.QWebEngineView_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_DropEvent
-func miqt_exec_callback_QWebEngineView_DropEvent(self *C.QWebEngineView, cb C.intptr_t, e *C.QDropEvent) {
+//export miqt_exec_callback_QWebEngineView_dropEvent
+func miqt_exec_callback_QWebEngineView_dropEvent(self *C.QWebEngineView, cb C.intptr_t, e *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QDropEvent), e *qt.QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -790,18 +790,18 @@ func miqt_exec_callback_QWebEngineView_DropEvent(self *C.QWebEngineView, cb C.in
 
 func (this *QWebEngineView) callVirtualBase_DevType() int {
 
-	return (int)(C.QWebEngineView_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QWebEngineView_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QWebEngineView) OnDevType(slot func(super func() int) int) {
-	ok := C.QWebEngineView_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OndevType(slot func(super func() int) int) {
+	ok := C.QWebEngineView_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_DevType
-func miqt_exec_callback_QWebEngineView_DevType(self *C.QWebEngineView, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QWebEngineView_devType
+func miqt_exec_callback_QWebEngineView_devType(self *C.QWebEngineView, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -815,18 +815,18 @@ func miqt_exec_callback_QWebEngineView_DevType(self *C.QWebEngineView, cb C.intp
 
 func (this *QWebEngineView) callVirtualBase_SetVisible(visible bool) {
 
-	C.QWebEngineView_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QWebEngineView_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QWebEngineView) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QWebEngineView_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QWebEngineView_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_SetVisible
-func miqt_exec_callback_QWebEngineView_SetVisible(self *C.QWebEngineView, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QWebEngineView_setVisible
+func miqt_exec_callback_QWebEngineView_setVisible(self *C.QWebEngineView, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -841,20 +841,20 @@ func miqt_exec_callback_QWebEngineView_SetVisible(self *C.QWebEngineView, cb C.i
 
 func (this *QWebEngineView) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebEngineView_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QWebEngineView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QWebEngineView) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	ok := C.QWebEngineView_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnminimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	ok := C.QWebEngineView_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_MinimumSizeHint
-func miqt_exec_callback_QWebEngineView_MinimumSizeHint(self *C.QWebEngineView, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QWebEngineView_minimumSizeHint
+func miqt_exec_callback_QWebEngineView_minimumSizeHint(self *C.QWebEngineView, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -868,18 +868,18 @@ func miqt_exec_callback_QWebEngineView_MinimumSizeHint(self *C.QWebEngineView, c
 
 func (this *QWebEngineView) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QWebEngineView_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QWebEngineView_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QWebEngineView) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QWebEngineView_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QWebEngineView_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_HeightForWidth
-func miqt_exec_callback_QWebEngineView_HeightForWidth(self *C.QWebEngineView, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QWebEngineView_heightForWidth
+func miqt_exec_callback_QWebEngineView_heightForWidth(self *C.QWebEngineView, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -896,18 +896,18 @@ func miqt_exec_callback_QWebEngineView_HeightForWidth(self *C.QWebEngineView, cb
 
 func (this *QWebEngineView) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QWebEngineView_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QWebEngineView_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QWebEngineView) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QWebEngineView_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QWebEngineView_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_HasHeightForWidth
-func miqt_exec_callback_QWebEngineView_HasHeightForWidth(self *C.QWebEngineView, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QWebEngineView_hasHeightForWidth
+func miqt_exec_callback_QWebEngineView_hasHeightForWidth(self *C.QWebEngineView, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -921,18 +921,18 @@ func miqt_exec_callback_QWebEngineView_HasHeightForWidth(self *C.QWebEngineView,
 
 func (this *QWebEngineView) callVirtualBase_PaintEngine() *qt.QPaintEngine {
 
-	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QWebEngineView_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QWebEngineView_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
 }
-func (this *QWebEngineView) OnPaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
-	ok := C.QWebEngineView_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnpaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
+	ok := C.QWebEngineView_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_PaintEngine
-func miqt_exec_callback_QWebEngineView_PaintEngine(self *C.QWebEngineView, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QWebEngineView_paintEngine
+func miqt_exec_callback_QWebEngineView_paintEngine(self *C.QWebEngineView, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QPaintEngine) *qt.QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -946,18 +946,18 @@ func miqt_exec_callback_QWebEngineView_PaintEngine(self *C.QWebEngineView, cb C.
 
 func (this *QWebEngineView) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
 
-	C.QWebEngineView_virtualbase_MousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnMousePressEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.QWebEngineView_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnmousePressEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.QWebEngineView_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_MousePressEvent
-func miqt_exec_callback_QWebEngineView_MousePressEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QWebEngineView_mousePressEvent
+func miqt_exec_callback_QWebEngineView_mousePressEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -972,18 +972,18 @@ func miqt_exec_callback_QWebEngineView_MousePressEvent(self *C.QWebEngineView, c
 
 func (this *QWebEngineView) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
 
-	C.QWebEngineView_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnMouseReleaseEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.QWebEngineView_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnmouseReleaseEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.QWebEngineView_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_MouseReleaseEvent
-func miqt_exec_callback_QWebEngineView_MouseReleaseEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QWebEngineView_mouseReleaseEvent
+func miqt_exec_callback_QWebEngineView_mouseReleaseEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -998,18 +998,18 @@ func miqt_exec_callback_QWebEngineView_MouseReleaseEvent(self *C.QWebEngineView,
 
 func (this *QWebEngineView) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
 
-	C.QWebEngineView_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnMouseDoubleClickEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.QWebEngineView_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnmouseDoubleClickEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.QWebEngineView_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_MouseDoubleClickEvent
-func miqt_exec_callback_QWebEngineView_MouseDoubleClickEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QWebEngineView_mouseDoubleClickEvent
+func miqt_exec_callback_QWebEngineView_mouseDoubleClickEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1024,18 +1024,18 @@ func miqt_exec_callback_QWebEngineView_MouseDoubleClickEvent(self *C.QWebEngineV
 
 func (this *QWebEngineView) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
 
-	C.QWebEngineView_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnMouseMoveEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.QWebEngineView_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnmouseMoveEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.QWebEngineView_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_MouseMoveEvent
-func miqt_exec_callback_QWebEngineView_MouseMoveEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QWebEngineView_mouseMoveEvent
+func miqt_exec_callback_QWebEngineView_mouseMoveEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1050,18 +1050,18 @@ func miqt_exec_callback_QWebEngineView_MouseMoveEvent(self *C.QWebEngineView, cb
 
 func (this *QWebEngineView) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
 
-	C.QWebEngineView_virtualbase_WheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnWheelEvent(slot func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent)) {
-	ok := C.QWebEngineView_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnwheelEvent(slot func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent)) {
+	ok := C.QWebEngineView_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_WheelEvent
-func miqt_exec_callback_QWebEngineView_WheelEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QWheelEvent) {
+//export miqt_exec_callback_QWebEngineView_wheelEvent
+func miqt_exec_callback_QWebEngineView_wheelEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1076,18 +1076,18 @@ func miqt_exec_callback_QWebEngineView_WheelEvent(self *C.QWebEngineView, cb C.i
 
 func (this *QWebEngineView) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
 
-	C.QWebEngineView_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnKeyPressEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
-	ok := C.QWebEngineView_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnkeyPressEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
+	ok := C.QWebEngineView_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_KeyPressEvent
-func miqt_exec_callback_QWebEngineView_KeyPressEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QWebEngineView_keyPressEvent
+func miqt_exec_callback_QWebEngineView_keyPressEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1102,18 +1102,18 @@ func miqt_exec_callback_QWebEngineView_KeyPressEvent(self *C.QWebEngineView, cb 
 
 func (this *QWebEngineView) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
 
-	C.QWebEngineView_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnKeyReleaseEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
-	ok := C.QWebEngineView_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnkeyReleaseEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
+	ok := C.QWebEngineView_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_KeyReleaseEvent
-func miqt_exec_callback_QWebEngineView_KeyReleaseEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QWebEngineView_keyReleaseEvent
+func miqt_exec_callback_QWebEngineView_keyReleaseEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1128,18 +1128,18 @@ func miqt_exec_callback_QWebEngineView_KeyReleaseEvent(self *C.QWebEngineView, c
 
 func (this *QWebEngineView) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
 
-	C.QWebEngineView_virtualbase_FocusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnFocusInEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
-	ok := C.QWebEngineView_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnfocusInEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	ok := C.QWebEngineView_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_FocusInEvent
-func miqt_exec_callback_QWebEngineView_FocusInEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QWebEngineView_focusInEvent
+func miqt_exec_callback_QWebEngineView_focusInEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1154,18 +1154,18 @@ func miqt_exec_callback_QWebEngineView_FocusInEvent(self *C.QWebEngineView, cb C
 
 func (this *QWebEngineView) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
 
-	C.QWebEngineView_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnFocusOutEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
-	ok := C.QWebEngineView_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnfocusOutEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	ok := C.QWebEngineView_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_FocusOutEvent
-func miqt_exec_callback_QWebEngineView_FocusOutEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QWebEngineView_focusOutEvent
+func miqt_exec_callback_QWebEngineView_focusOutEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1180,18 +1180,18 @@ func miqt_exec_callback_QWebEngineView_FocusOutEvent(self *C.QWebEngineView, cb 
 
 func (this *QWebEngineView) callVirtualBase_EnterEvent(event *qt.QEvent) {
 
-	C.QWebEngineView_virtualbase_EnterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnEnterEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QWebEngineView_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnenterEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QWebEngineView_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_EnterEvent
-func miqt_exec_callback_QWebEngineView_EnterEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QWebEngineView_enterEvent
+func miqt_exec_callback_QWebEngineView_enterEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1206,18 +1206,18 @@ func miqt_exec_callback_QWebEngineView_EnterEvent(self *C.QWebEngineView, cb C.i
 
 func (this *QWebEngineView) callVirtualBase_LeaveEvent(event *qt.QEvent) {
 
-	C.QWebEngineView_virtualbase_LeaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnLeaveEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QWebEngineView_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnleaveEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QWebEngineView_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_LeaveEvent
-func miqt_exec_callback_QWebEngineView_LeaveEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QWebEngineView_leaveEvent
+func miqt_exec_callback_QWebEngineView_leaveEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1232,18 +1232,18 @@ func miqt_exec_callback_QWebEngineView_LeaveEvent(self *C.QWebEngineView, cb C.i
 
 func (this *QWebEngineView) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
 
-	C.QWebEngineView_virtualbase_PaintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnPaintEvent(slot func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent)) {
-	ok := C.QWebEngineView_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnpaintEvent(slot func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent)) {
+	ok := C.QWebEngineView_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_PaintEvent
-func miqt_exec_callback_QWebEngineView_PaintEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QPaintEvent) {
+//export miqt_exec_callback_QWebEngineView_paintEvent
+func miqt_exec_callback_QWebEngineView_paintEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1258,18 +1258,18 @@ func miqt_exec_callback_QWebEngineView_PaintEvent(self *C.QWebEngineView, cb C.i
 
 func (this *QWebEngineView) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
 
-	C.QWebEngineView_virtualbase_MoveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnMoveEvent(slot func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent)) {
-	ok := C.QWebEngineView_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnmoveEvent(slot func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent)) {
+	ok := C.QWebEngineView_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_MoveEvent
-func miqt_exec_callback_QWebEngineView_MoveEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QWebEngineView_moveEvent
+func miqt_exec_callback_QWebEngineView_moveEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1284,18 +1284,18 @@ func miqt_exec_callback_QWebEngineView_MoveEvent(self *C.QWebEngineView, cb C.in
 
 func (this *QWebEngineView) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
 
-	C.QWebEngineView_virtualbase_ResizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnResizeEvent(slot func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent)) {
-	ok := C.QWebEngineView_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnresizeEvent(slot func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent)) {
+	ok := C.QWebEngineView_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_ResizeEvent
-func miqt_exec_callback_QWebEngineView_ResizeEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QResizeEvent) {
+//export miqt_exec_callback_QWebEngineView_resizeEvent
+func miqt_exec_callback_QWebEngineView_resizeEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1310,18 +1310,18 @@ func miqt_exec_callback_QWebEngineView_ResizeEvent(self *C.QWebEngineView, cb C.
 
 func (this *QWebEngineView) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
 
-	C.QWebEngineView_virtualbase_TabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnTabletEvent(slot func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent)) {
-	ok := C.QWebEngineView_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OntabletEvent(slot func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent)) {
+	ok := C.QWebEngineView_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_TabletEvent
-func miqt_exec_callback_QWebEngineView_TabletEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QWebEngineView_tabletEvent
+func miqt_exec_callback_QWebEngineView_tabletEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1336,18 +1336,18 @@ func miqt_exec_callback_QWebEngineView_TabletEvent(self *C.QWebEngineView, cb C.
 
 func (this *QWebEngineView) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
 
-	C.QWebEngineView_virtualbase_ActionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnActionEvent(slot func(super func(event *qt.QActionEvent), event *qt.QActionEvent)) {
-	ok := C.QWebEngineView_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnactionEvent(slot func(super func(event *qt.QActionEvent), event *qt.QActionEvent)) {
+	ok := C.QWebEngineView_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_ActionEvent
-func miqt_exec_callback_QWebEngineView_ActionEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QWebEngineView_actionEvent
+func miqt_exec_callback_QWebEngineView_actionEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QActionEvent), event *qt.QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1369,18 +1369,18 @@ func (this *QWebEngineView) callVirtualBase_NativeEvent(eventType []byte, messag
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QWebEngineView_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
+	return (bool)(C.QWebEngineView_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QWebEngineView) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
-	ok := C.QWebEngineView_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	ok := C.QWebEngineView_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_NativeEvent
-func miqt_exec_callback_QWebEngineView_NativeEvent(self *C.QWebEngineView, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
+//export miqt_exec_callback_QWebEngineView_nativeEvent
+func miqt_exec_callback_QWebEngineView_nativeEvent(self *C.QWebEngineView, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1403,18 +1403,18 @@ func miqt_exec_callback_QWebEngineView_NativeEvent(self *C.QWebEngineView, cb C.
 
 func (this *QWebEngineView) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
 
-	C.QWebEngineView_virtualbase_ChangeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
+	C.QWebEngineView_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnChangeEvent(slot func(super func(param1 *qt.QEvent), param1 *qt.QEvent)) {
-	ok := C.QWebEngineView_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnchangeEvent(slot func(super func(param1 *qt.QEvent), param1 *qt.QEvent)) {
+	ok := C.QWebEngineView_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_ChangeEvent
-func miqt_exec_callback_QWebEngineView_ChangeEvent(self *C.QWebEngineView, cb C.intptr_t, param1 *C.QEvent) {
+//export miqt_exec_callback_QWebEngineView_changeEvent
+func miqt_exec_callback_QWebEngineView_changeEvent(self *C.QWebEngineView, cb C.intptr_t, param1 *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QEvent), param1 *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1429,18 +1429,18 @@ func miqt_exec_callback_QWebEngineView_ChangeEvent(self *C.QWebEngineView, cb C.
 
 func (this *QWebEngineView) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QWebEngineView_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QWebEngineView_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QWebEngineView) OnMetric(slot func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QWebEngineView_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) Onmetric(slot func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QWebEngineView_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_Metric
-func miqt_exec_callback_QWebEngineView_Metric(self *C.QWebEngineView, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QWebEngineView_metric
+func miqt_exec_callback_QWebEngineView_metric(self *C.QWebEngineView, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1457,18 +1457,18 @@ func miqt_exec_callback_QWebEngineView_Metric(self *C.QWebEngineView, cb C.intpt
 
 func (this *QWebEngineView) callVirtualBase_InitPainter(painter *qt.QPainter) {
 
-	C.QWebEngineView_virtualbase_InitPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
+	C.QWebEngineView_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnInitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
-	ok := C.QWebEngineView_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OninitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
+	ok := C.QWebEngineView_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_InitPainter
-func miqt_exec_callback_QWebEngineView_InitPainter(self *C.QWebEngineView, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QWebEngineView_initPainter
+func miqt_exec_callback_QWebEngineView_initPainter(self *C.QWebEngineView, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter), painter *qt.QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1483,18 +1483,18 @@ func miqt_exec_callback_QWebEngineView_InitPainter(self *C.QWebEngineView, cb C.
 
 func (this *QWebEngineView) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 
-	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QWebEngineView_virtualbase_Redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
+	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QWebEngineView_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
 }
-func (this *QWebEngineView) OnRedirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
-	ok := C.QWebEngineView_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) Onredirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
+	ok := C.QWebEngineView_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_Redirected
-func miqt_exec_callback_QWebEngineView_Redirected(self *C.QWebEngineView, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QWebEngineView_redirected
+func miqt_exec_callback_QWebEngineView_redirected(self *C.QWebEngineView, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1511,18 +1511,18 @@ func miqt_exec_callback_QWebEngineView_Redirected(self *C.QWebEngineView, cb C.i
 
 func (this *QWebEngineView) callVirtualBase_SharedPainter() *qt.QPainter {
 
-	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QWebEngineView_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QWebEngineView_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
 }
-func (this *QWebEngineView) OnSharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
-	ok := C.QWebEngineView_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnsharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
+	ok := C.QWebEngineView_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_SharedPainter
-func miqt_exec_callback_QWebEngineView_SharedPainter(self *C.QWebEngineView, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QWebEngineView_sharedPainter
+func miqt_exec_callback_QWebEngineView_sharedPainter(self *C.QWebEngineView, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QPainter) *qt.QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1536,18 +1536,18 @@ func miqt_exec_callback_QWebEngineView_SharedPainter(self *C.QWebEngineView, cb 
 
 func (this *QWebEngineView) callVirtualBase_InputMethodEvent(param1 *qt.QInputMethodEvent) {
 
-	C.QWebEngineView_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
+	C.QWebEngineView_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(param1.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnInputMethodEvent(slot func(super func(param1 *qt.QInputMethodEvent), param1 *qt.QInputMethodEvent)) {
-	ok := C.QWebEngineView_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OninputMethodEvent(slot func(super func(param1 *qt.QInputMethodEvent), param1 *qt.QInputMethodEvent)) {
+	ok := C.QWebEngineView_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_InputMethodEvent
-func miqt_exec_callback_QWebEngineView_InputMethodEvent(self *C.QWebEngineView, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QWebEngineView_inputMethodEvent
+func miqt_exec_callback_QWebEngineView_inputMethodEvent(self *C.QWebEngineView, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QInputMethodEvent), param1 *qt.QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1562,20 +1562,20 @@ func miqt_exec_callback_QWebEngineView_InputMethodEvent(self *C.QWebEngineView, 
 
 func (this *QWebEngineView) callVirtualBase_InputMethodQuery(param1 qt.InputMethodQuery) *qt.QVariant {
 
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QWebEngineView_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QWebEngineView_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QWebEngineView) OnInputMethodQuery(slot func(super func(param1 qt.InputMethodQuery) *qt.QVariant, param1 qt.InputMethodQuery) *qt.QVariant) {
-	ok := C.QWebEngineView_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OninputMethodQuery(slot func(super func(param1 qt.InputMethodQuery) *qt.QVariant, param1 qt.InputMethodQuery) *qt.QVariant) {
+	ok := C.QWebEngineView_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_InputMethodQuery
-func miqt_exec_callback_QWebEngineView_InputMethodQuery(self *C.QWebEngineView, cb C.intptr_t, param1 C.int) *C.QVariant {
+//export miqt_exec_callback_QWebEngineView_inputMethodQuery
+func miqt_exec_callback_QWebEngineView_inputMethodQuery(self *C.QWebEngineView, cb C.intptr_t, param1 C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.InputMethodQuery) *qt.QVariant, param1 qt.InputMethodQuery) *qt.QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1592,18 +1592,18 @@ func miqt_exec_callback_QWebEngineView_InputMethodQuery(self *C.QWebEngineView, 
 
 func (this *QWebEngineView) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QWebEngineView_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QWebEngineView_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QWebEngineView) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QWebEngineView_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QWebEngineView_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_FocusNextPrevChild
-func miqt_exec_callback_QWebEngineView_FocusNextPrevChild(self *C.QWebEngineView, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QWebEngineView_focusNextPrevChild
+func miqt_exec_callback_QWebEngineView_focusNextPrevChild(self *C.QWebEngineView, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1620,18 +1620,18 @@ func miqt_exec_callback_QWebEngineView_FocusNextPrevChild(self *C.QWebEngineView
 
 func (this *QWebEngineView) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.QWebEngineView_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QWebEngineView_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QWebEngineView) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.QWebEngineView_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QWebEngineView_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_EventFilter
-func miqt_exec_callback_QWebEngineView_EventFilter(self *C.QWebEngineView, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QWebEngineView_eventFilter
+func miqt_exec_callback_QWebEngineView_eventFilter(self *C.QWebEngineView, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1650,18 +1650,18 @@ func miqt_exec_callback_QWebEngineView_EventFilter(self *C.QWebEngineView, cb C.
 
 func (this *QWebEngineView) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QWebEngineView_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QWebEngineView_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QWebEngineView_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_TimerEvent
-func miqt_exec_callback_QWebEngineView_TimerEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QWebEngineView_timerEvent
+func miqt_exec_callback_QWebEngineView_timerEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1676,18 +1676,18 @@ func miqt_exec_callback_QWebEngineView_TimerEvent(self *C.QWebEngineView, cb C.i
 
 func (this *QWebEngineView) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QWebEngineView_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QWebEngineView_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QWebEngineView_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_ChildEvent
-func miqt_exec_callback_QWebEngineView_ChildEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QWebEngineView_childEvent
+func miqt_exec_callback_QWebEngineView_childEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1702,18 +1702,18 @@ func miqt_exec_callback_QWebEngineView_ChildEvent(self *C.QWebEngineView, cb C.i
 
 func (this *QWebEngineView) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QWebEngineView_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QWebEngineView_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QWebEngineView_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QWebEngineView_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_CustomEvent
-func miqt_exec_callback_QWebEngineView_CustomEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QWebEngineView_customEvent
+func miqt_exec_callback_QWebEngineView_customEvent(self *C.QWebEngineView, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1728,18 +1728,18 @@ func miqt_exec_callback_QWebEngineView_CustomEvent(self *C.QWebEngineView, cb C.
 
 func (this *QWebEngineView) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QWebEngineView_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QWebEngineView_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QWebEngineView_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QWebEngineView_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_ConnectNotify
-func miqt_exec_callback_QWebEngineView_ConnectNotify(self *C.QWebEngineView, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QWebEngineView_connectNotify
+func miqt_exec_callback_QWebEngineView_connectNotify(self *C.QWebEngineView, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1754,18 +1754,18 @@ func miqt_exec_callback_QWebEngineView_ConnectNotify(self *C.QWebEngineView, cb 
 
 func (this *QWebEngineView) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QWebEngineView_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QWebEngineView_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QWebEngineView) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QWebEngineView_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEngineView) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QWebEngineView_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEngineView_DisconnectNotify
-func miqt_exec_callback_QWebEngineView_DisconnectNotify(self *C.QWebEngineView, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QWebEngineView_disconnectNotify
+func miqt_exec_callback_QWebEngineView_disconnectNotify(self *C.QWebEngineView, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1780,7 +1780,7 @@ func miqt_exec_callback_QWebEngineView_DisconnectNotify(self *C.QWebEngineView, 
 
 // Delete this object from C++ memory.
 func (this *QWebEngineView) Delete() {
-	C.QWebEngineView_Delete(this.h)
+	C.QWebEngineView_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

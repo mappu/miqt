@@ -18,7 +18,7 @@ int QCborError_ToQCborError__Code(const QCborError* self) {
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string QCborError_ToString(const QCborError* self) {
+struct miqt_string QCborError_toString(const QCborError* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -29,7 +29,7 @@ struct miqt_string QCborError_ToString(const QCborError* self) {
 	return _ms;
 }
 
-void QCborError_Delete(QCborError* self) {
+void QCborError_delete(QCborError* self) {
 	delete self;
 }
 

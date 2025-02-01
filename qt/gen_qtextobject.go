@@ -51,19 +51,19 @@ func UnsafeNewQTextObject(h unsafe.Pointer) *QTextObject {
 }
 
 func (this *QTextObject) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QTextObject_MetaObject(this.h))
+	return newQMetaObject(C.QTextObject_metaObject(this.h))
 }
 
 func (this *QTextObject) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QTextObject_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QTextObject_metacast(this.h, param1_Cstring))
 }
 
 func QTextObject_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QTextObject_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QTextObject_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -72,28 +72,28 @@ func QTextObject_Tr(s string) string {
 func QTextObject_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QTextObject_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QTextObject_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextObject) Format() *QTextFormat {
-	_goptr := newQTextFormat(C.QTextObject_Format(this.h))
+	_goptr := newQTextFormat(C.QTextObject_format(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextObject) FormatIndex() int {
-	return (int)(C.QTextObject_FormatIndex(this.h))
+	return (int)(C.QTextObject_formatIndex(this.h))
 }
 
 func (this *QTextObject) Document() *QTextDocument {
-	return newQTextDocument(C.QTextObject_Document(this.h))
+	return newQTextDocument(C.QTextObject_document(this.h))
 }
 
 func (this *QTextObject) ObjectIndex() int {
-	return (int)(C.QTextObject_ObjectIndex(this.h))
+	return (int)(C.QTextObject_objectIndex(this.h))
 }
 
 func QTextObject_Tr2(s string, c string) string {
@@ -101,7 +101,7 @@ func QTextObject_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTextObject_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QTextObject_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -112,7 +112,7 @@ func QTextObject_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTextObject_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QTextObject_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -123,7 +123,7 @@ func QTextObject_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTextObject_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QTextObject_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -134,7 +134,7 @@ func QTextObject_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTextObject_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QTextObject_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -177,19 +177,19 @@ func UnsafeNewQTextBlockGroup(h unsafe.Pointer) *QTextBlockGroup {
 }
 
 func (this *QTextBlockGroup) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QTextBlockGroup_MetaObject(this.h))
+	return newQMetaObject(C.QTextBlockGroup_metaObject(this.h))
 }
 
 func (this *QTextBlockGroup) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QTextBlockGroup_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QTextBlockGroup_metacast(this.h, param1_Cstring))
 }
 
 func QTextBlockGroup_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QTextBlockGroup_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QTextBlockGroup_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -198,7 +198,7 @@ func QTextBlockGroup_Tr(s string) string {
 func QTextBlockGroup_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QTextBlockGroup_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QTextBlockGroup_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -209,7 +209,7 @@ func QTextBlockGroup_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTextBlockGroup_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QTextBlockGroup_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -220,7 +220,7 @@ func QTextBlockGroup_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTextBlockGroup_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QTextBlockGroup_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -231,7 +231,7 @@ func QTextBlockGroup_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTextBlockGroup_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QTextBlockGroup_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -242,7 +242,7 @@ func QTextBlockGroup_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTextBlockGroup_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QTextBlockGroup_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -281,12 +281,12 @@ func UnsafeNewQTextFrameLayoutData(h unsafe.Pointer) *QTextFrameLayoutData {
 }
 
 func (this *QTextFrameLayoutData) OperatorAssign(param1 *QTextFrameLayoutData) {
-	C.QTextFrameLayoutData_OperatorAssign(this.h, param1.cPointer())
+	C.QTextFrameLayoutData_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QTextFrameLayoutData) Delete() {
-	C.QTextFrameLayoutData_Delete(this.h)
+	C.QTextFrameLayoutData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -341,19 +341,19 @@ func NewQTextFrame(doc *QTextDocument) *QTextFrame {
 }
 
 func (this *QTextFrame) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QTextFrame_MetaObject(this.h))
+	return newQMetaObject(C.QTextFrame_metaObject(this.h))
 }
 
 func (this *QTextFrame) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QTextFrame_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QTextFrame_metacast(this.h, param1_Cstring))
 }
 
 func QTextFrame_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QTextFrame_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QTextFrame_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -362,52 +362,52 @@ func QTextFrame_Tr(s string) string {
 func QTextFrame_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QTextFrame_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QTextFrame_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextFrame) SetFrameFormat(format *QTextFrameFormat) {
-	C.QTextFrame_SetFrameFormat(this.h, format.cPointer())
+	C.QTextFrame_setFrameFormat(this.h, format.cPointer())
 }
 
 func (this *QTextFrame) FrameFormat() *QTextFrameFormat {
-	_goptr := newQTextFrameFormat(C.QTextFrame_FrameFormat(this.h))
+	_goptr := newQTextFrameFormat(C.QTextFrame_frameFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFrame) FirstCursorPosition() *QTextCursor {
-	_goptr := newQTextCursor(C.QTextFrame_FirstCursorPosition(this.h))
+	_goptr := newQTextCursor(C.QTextFrame_firstCursorPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFrame) LastCursorPosition() *QTextCursor {
-	_goptr := newQTextCursor(C.QTextFrame_LastCursorPosition(this.h))
+	_goptr := newQTextCursor(C.QTextFrame_lastCursorPosition(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFrame) FirstPosition() int {
-	return (int)(C.QTextFrame_FirstPosition(this.h))
+	return (int)(C.QTextFrame_firstPosition(this.h))
 }
 
 func (this *QTextFrame) LastPosition() int {
-	return (int)(C.QTextFrame_LastPosition(this.h))
+	return (int)(C.QTextFrame_lastPosition(this.h))
 }
 
 func (this *QTextFrame) LayoutData() *QTextFrameLayoutData {
-	return newQTextFrameLayoutData(C.QTextFrame_LayoutData(this.h))
+	return newQTextFrameLayoutData(C.QTextFrame_layoutData(this.h))
 }
 
 func (this *QTextFrame) SetLayoutData(data *QTextFrameLayoutData) {
-	C.QTextFrame_SetLayoutData(this.h, data.cPointer())
+	C.QTextFrame_setLayoutData(this.h, data.cPointer())
 }
 
 func (this *QTextFrame) ChildFrames() []*QTextFrame {
-	var _ma C.struct_miqt_array = C.QTextFrame_ChildFrames(this.h)
+	var _ma C.struct_miqt_array = C.QTextFrame_childFrames(this.h)
 	_ret := make([]*QTextFrame, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextFrame)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -417,17 +417,17 @@ func (this *QTextFrame) ChildFrames() []*QTextFrame {
 }
 
 func (this *QTextFrame) ParentFrame() *QTextFrame {
-	return newQTextFrame(C.QTextFrame_ParentFrame(this.h))
+	return newQTextFrame(C.QTextFrame_parentFrame(this.h))
 }
 
 func (this *QTextFrame) Begin() *QTextFrame__iterator {
-	_goptr := newQTextFrame__iterator(C.QTextFrame_Begin(this.h))
+	_goptr := newQTextFrame__iterator(C.QTextFrame_begin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFrame) End() *QTextFrame__iterator {
-	_goptr := newQTextFrame__iterator(C.QTextFrame_End(this.h))
+	_goptr := newQTextFrame__iterator(C.QTextFrame_end(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -437,7 +437,7 @@ func QTextFrame_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTextFrame_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QTextFrame_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -448,7 +448,7 @@ func QTextFrame_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTextFrame_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QTextFrame_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -459,7 +459,7 @@ func QTextFrame_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTextFrame_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QTextFrame_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -470,7 +470,7 @@ func QTextFrame_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTextFrame_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QTextFrame_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -478,18 +478,18 @@ func QTextFrame_TrUtf83(s string, c string, n int) string {
 
 func (this *QTextFrame) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QTextFrame_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QTextFrame_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QTextFrame) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QTextFrame_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextFrame) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QTextFrame_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextFrame_Event
-func miqt_exec_callback_QTextFrame_Event(self *C.QTextFrame, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QTextFrame_event
+func miqt_exec_callback_QTextFrame_event(self *C.QTextFrame, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -506,18 +506,18 @@ func miqt_exec_callback_QTextFrame_Event(self *C.QTextFrame, cb C.intptr_t, even
 
 func (this *QTextFrame) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QTextFrame_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QTextFrame_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QTextFrame) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QTextFrame_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextFrame) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QTextFrame_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextFrame_EventFilter
-func miqt_exec_callback_QTextFrame_EventFilter(self *C.QTextFrame, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QTextFrame_eventFilter
+func miqt_exec_callback_QTextFrame_eventFilter(self *C.QTextFrame, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -536,18 +536,18 @@ func miqt_exec_callback_QTextFrame_EventFilter(self *C.QTextFrame, cb C.intptr_t
 
 func (this *QTextFrame) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QTextFrame_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTextFrame_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextFrame) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QTextFrame_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextFrame) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QTextFrame_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextFrame_TimerEvent
-func miqt_exec_callback_QTextFrame_TimerEvent(self *C.QTextFrame, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QTextFrame_timerEvent
+func miqt_exec_callback_QTextFrame_timerEvent(self *C.QTextFrame, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -562,18 +562,18 @@ func miqt_exec_callback_QTextFrame_TimerEvent(self *C.QTextFrame, cb C.intptr_t,
 
 func (this *QTextFrame) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QTextFrame_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTextFrame_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextFrame) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QTextFrame_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextFrame) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QTextFrame_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextFrame_ChildEvent
-func miqt_exec_callback_QTextFrame_ChildEvent(self *C.QTextFrame, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QTextFrame_childEvent
+func miqt_exec_callback_QTextFrame_childEvent(self *C.QTextFrame, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -588,18 +588,18 @@ func miqt_exec_callback_QTextFrame_ChildEvent(self *C.QTextFrame, cb C.intptr_t,
 
 func (this *QTextFrame) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QTextFrame_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTextFrame_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTextFrame) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QTextFrame_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextFrame) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QTextFrame_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextFrame_CustomEvent
-func miqt_exec_callback_QTextFrame_CustomEvent(self *C.QTextFrame, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QTextFrame_customEvent
+func miqt_exec_callback_QTextFrame_customEvent(self *C.QTextFrame, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -614,18 +614,18 @@ func miqt_exec_callback_QTextFrame_CustomEvent(self *C.QTextFrame, cb C.intptr_t
 
 func (this *QTextFrame) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QTextFrame_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QTextFrame_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTextFrame) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QTextFrame_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextFrame) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTextFrame_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextFrame_ConnectNotify
-func miqt_exec_callback_QTextFrame_ConnectNotify(self *C.QTextFrame, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QTextFrame_connectNotify
+func miqt_exec_callback_QTextFrame_connectNotify(self *C.QTextFrame, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -640,18 +640,18 @@ func miqt_exec_callback_QTextFrame_ConnectNotify(self *C.QTextFrame, cb C.intptr
 
 func (this *QTextFrame) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QTextFrame_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QTextFrame_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTextFrame) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QTextFrame_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTextFrame) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTextFrame_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTextFrame_DisconnectNotify
-func miqt_exec_callback_QTextFrame_DisconnectNotify(self *C.QTextFrame, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QTextFrame_disconnectNotify
+func miqt_exec_callback_QTextFrame_disconnectNotify(self *C.QTextFrame, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -666,7 +666,7 @@ func miqt_exec_callback_QTextFrame_DisconnectNotify(self *C.QTextFrame, cb C.int
 
 // Delete this object from C++ memory.
 func (this *QTextFrame) Delete() {
-	C.QTextFrame_Delete(this.h)
+	C.QTextFrame_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -711,12 +711,12 @@ func UnsafeNewQTextBlockUserData(h unsafe.Pointer) *QTextBlockUserData {
 }
 
 func (this *QTextBlockUserData) OperatorAssign(param1 *QTextBlockUserData) {
-	C.QTextBlockUserData_OperatorAssign(this.h, param1.cPointer())
+	C.QTextBlockUserData_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QTextBlockUserData) Delete() {
-	C.QTextBlockUserData_Delete(this.h)
+	C.QTextBlockUserData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -773,78 +773,78 @@ func NewQTextBlock2(o *QTextBlock) *QTextBlock {
 }
 
 func (this *QTextBlock) OperatorAssign(o *QTextBlock) {
-	C.QTextBlock_OperatorAssign(this.h, o.cPointer())
+	C.QTextBlock_operatorAssign(this.h, o.cPointer())
 }
 
 func (this *QTextBlock) IsValid() bool {
-	return (bool)(C.QTextBlock_IsValid(this.h))
+	return (bool)(C.QTextBlock_isValid(this.h))
 }
 
 func (this *QTextBlock) OperatorEqual(o *QTextBlock) bool {
-	return (bool)(C.QTextBlock_OperatorEqual(this.h, o.cPointer()))
+	return (bool)(C.QTextBlock_operatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QTextBlock) OperatorNotEqual(o *QTextBlock) bool {
-	return (bool)(C.QTextBlock_OperatorNotEqual(this.h, o.cPointer()))
+	return (bool)(C.QTextBlock_operatorNotEqual(this.h, o.cPointer()))
 }
 
 func (this *QTextBlock) OperatorLesser(o *QTextBlock) bool {
-	return (bool)(C.QTextBlock_OperatorLesser(this.h, o.cPointer()))
+	return (bool)(C.QTextBlock_operatorLesser(this.h, o.cPointer()))
 }
 
 func (this *QTextBlock) Position() int {
-	return (int)(C.QTextBlock_Position(this.h))
+	return (int)(C.QTextBlock_position(this.h))
 }
 
 func (this *QTextBlock) Length() int {
-	return (int)(C.QTextBlock_Length(this.h))
+	return (int)(C.QTextBlock_length(this.h))
 }
 
 func (this *QTextBlock) Contains(position int) bool {
-	return (bool)(C.QTextBlock_Contains(this.h, (C.int)(position)))
+	return (bool)(C.QTextBlock_contains(this.h, (C.int)(position)))
 }
 
 func (this *QTextBlock) Layout() *QTextLayout {
-	return newQTextLayout(C.QTextBlock_Layout(this.h))
+	return newQTextLayout(C.QTextBlock_layout(this.h))
 }
 
 func (this *QTextBlock) ClearLayout() {
-	C.QTextBlock_ClearLayout(this.h)
+	C.QTextBlock_clearLayout(this.h)
 }
 
 func (this *QTextBlock) BlockFormat() *QTextBlockFormat {
-	_goptr := newQTextBlockFormat(C.QTextBlock_BlockFormat(this.h))
+	_goptr := newQTextBlockFormat(C.QTextBlock_blockFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextBlock) BlockFormatIndex() int {
-	return (int)(C.QTextBlock_BlockFormatIndex(this.h))
+	return (int)(C.QTextBlock_blockFormatIndex(this.h))
 }
 
 func (this *QTextBlock) CharFormat() *QTextCharFormat {
-	_goptr := newQTextCharFormat(C.QTextBlock_CharFormat(this.h))
+	_goptr := newQTextCharFormat(C.QTextBlock_charFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextBlock) CharFormatIndex() int {
-	return (int)(C.QTextBlock_CharFormatIndex(this.h))
+	return (int)(C.QTextBlock_charFormatIndex(this.h))
 }
 
 func (this *QTextBlock) TextDirection() LayoutDirection {
-	return (LayoutDirection)(C.QTextBlock_TextDirection(this.h))
+	return (LayoutDirection)(C.QTextBlock_textDirection(this.h))
 }
 
 func (this *QTextBlock) Text() string {
-	var _ms C.struct_miqt_string = C.QTextBlock_Text(this.h)
+	var _ms C.struct_miqt_string = C.QTextBlock_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextBlock) TextFormats() []QTextLayout__FormatRange {
-	var _ma C.struct_miqt_array = C.QTextBlock_TextFormats(this.h)
+	var _ma C.struct_miqt_array = C.QTextBlock_textFormats(this.h)
 	_ret := make([]QTextLayout__FormatRange, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextLayout__FormatRange)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -856,92 +856,92 @@ func (this *QTextBlock) TextFormats() []QTextLayout__FormatRange {
 }
 
 func (this *QTextBlock) Document() *QTextDocument {
-	return newQTextDocument(C.QTextBlock_Document(this.h))
+	return newQTextDocument(C.QTextBlock_document(this.h))
 }
 
 func (this *QTextBlock) TextList() *QTextList {
-	return newQTextList(C.QTextBlock_TextList(this.h))
+	return newQTextList(C.QTextBlock_textList(this.h))
 }
 
 func (this *QTextBlock) UserData() *QTextBlockUserData {
-	return newQTextBlockUserData(C.QTextBlock_UserData(this.h))
+	return newQTextBlockUserData(C.QTextBlock_userData(this.h))
 }
 
 func (this *QTextBlock) SetUserData(data *QTextBlockUserData) {
-	C.QTextBlock_SetUserData(this.h, data.cPointer())
+	C.QTextBlock_setUserData(this.h, data.cPointer())
 }
 
 func (this *QTextBlock) UserState() int {
-	return (int)(C.QTextBlock_UserState(this.h))
+	return (int)(C.QTextBlock_userState(this.h))
 }
 
 func (this *QTextBlock) SetUserState(state int) {
-	C.QTextBlock_SetUserState(this.h, (C.int)(state))
+	C.QTextBlock_setUserState(this.h, (C.int)(state))
 }
 
 func (this *QTextBlock) Revision() int {
-	return (int)(C.QTextBlock_Revision(this.h))
+	return (int)(C.QTextBlock_revision(this.h))
 }
 
 func (this *QTextBlock) SetRevision(rev int) {
-	C.QTextBlock_SetRevision(this.h, (C.int)(rev))
+	C.QTextBlock_setRevision(this.h, (C.int)(rev))
 }
 
 func (this *QTextBlock) IsVisible() bool {
-	return (bool)(C.QTextBlock_IsVisible(this.h))
+	return (bool)(C.QTextBlock_isVisible(this.h))
 }
 
 func (this *QTextBlock) SetVisible(visible bool) {
-	C.QTextBlock_SetVisible(this.h, (C.bool)(visible))
+	C.QTextBlock_setVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QTextBlock) BlockNumber() int {
-	return (int)(C.QTextBlock_BlockNumber(this.h))
+	return (int)(C.QTextBlock_blockNumber(this.h))
 }
 
 func (this *QTextBlock) FirstLineNumber() int {
-	return (int)(C.QTextBlock_FirstLineNumber(this.h))
+	return (int)(C.QTextBlock_firstLineNumber(this.h))
 }
 
 func (this *QTextBlock) SetLineCount(count int) {
-	C.QTextBlock_SetLineCount(this.h, (C.int)(count))
+	C.QTextBlock_setLineCount(this.h, (C.int)(count))
 }
 
 func (this *QTextBlock) LineCount() int {
-	return (int)(C.QTextBlock_LineCount(this.h))
+	return (int)(C.QTextBlock_lineCount(this.h))
 }
 
 func (this *QTextBlock) Begin() *QTextBlock__iterator {
-	_goptr := newQTextBlock__iterator(C.QTextBlock_Begin(this.h))
+	_goptr := newQTextBlock__iterator(C.QTextBlock_begin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextBlock) End() *QTextBlock__iterator {
-	_goptr := newQTextBlock__iterator(C.QTextBlock_End(this.h))
+	_goptr := newQTextBlock__iterator(C.QTextBlock_end(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextBlock) Next() *QTextBlock {
-	_goptr := newQTextBlock(C.QTextBlock_Next(this.h))
+	_goptr := newQTextBlock(C.QTextBlock_next(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextBlock) Previous() *QTextBlock {
-	_goptr := newQTextBlock(C.QTextBlock_Previous(this.h))
+	_goptr := newQTextBlock(C.QTextBlock_previous(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextBlock) FragmentIndex() int {
-	return (int)(C.QTextBlock_FragmentIndex(this.h))
+	return (int)(C.QTextBlock_fragmentIndex(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QTextBlock) Delete() {
-	C.QTextBlock_Delete(this.h)
+	C.QTextBlock_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -998,56 +998,56 @@ func NewQTextFragment2(o *QTextFragment) *QTextFragment {
 }
 
 func (this *QTextFragment) OperatorAssign(o *QTextFragment) {
-	C.QTextFragment_OperatorAssign(this.h, o.cPointer())
+	C.QTextFragment_operatorAssign(this.h, o.cPointer())
 }
 
 func (this *QTextFragment) IsValid() bool {
-	return (bool)(C.QTextFragment_IsValid(this.h))
+	return (bool)(C.QTextFragment_isValid(this.h))
 }
 
 func (this *QTextFragment) OperatorEqual(o *QTextFragment) bool {
-	return (bool)(C.QTextFragment_OperatorEqual(this.h, o.cPointer()))
+	return (bool)(C.QTextFragment_operatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QTextFragment) OperatorNotEqual(o *QTextFragment) bool {
-	return (bool)(C.QTextFragment_OperatorNotEqual(this.h, o.cPointer()))
+	return (bool)(C.QTextFragment_operatorNotEqual(this.h, o.cPointer()))
 }
 
 func (this *QTextFragment) OperatorLesser(o *QTextFragment) bool {
-	return (bool)(C.QTextFragment_OperatorLesser(this.h, o.cPointer()))
+	return (bool)(C.QTextFragment_operatorLesser(this.h, o.cPointer()))
 }
 
 func (this *QTextFragment) Position() int {
-	return (int)(C.QTextFragment_Position(this.h))
+	return (int)(C.QTextFragment_position(this.h))
 }
 
 func (this *QTextFragment) Length() int {
-	return (int)(C.QTextFragment_Length(this.h))
+	return (int)(C.QTextFragment_length(this.h))
 }
 
 func (this *QTextFragment) Contains(position int) bool {
-	return (bool)(C.QTextFragment_Contains(this.h, (C.int)(position)))
+	return (bool)(C.QTextFragment_contains(this.h, (C.int)(position)))
 }
 
 func (this *QTextFragment) CharFormat() *QTextCharFormat {
-	_goptr := newQTextCharFormat(C.QTextFragment_CharFormat(this.h))
+	_goptr := newQTextCharFormat(C.QTextFragment_charFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFragment) CharFormatIndex() int {
-	return (int)(C.QTextFragment_CharFormatIndex(this.h))
+	return (int)(C.QTextFragment_charFormatIndex(this.h))
 }
 
 func (this *QTextFragment) Text() string {
-	var _ms C.struct_miqt_string = C.QTextFragment_Text(this.h)
+	var _ms C.struct_miqt_string = C.QTextFragment_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextFragment) GlyphRuns() []QGlyphRun {
-	var _ma C.struct_miqt_array = C.QTextFragment_GlyphRuns(this.h)
+	var _ma C.struct_miqt_array = C.QTextFragment_glyphRuns(this.h)
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1059,7 +1059,7 @@ func (this *QTextFragment) GlyphRuns() []QGlyphRun {
 }
 
 func (this *QTextFragment) GlyphRuns1(from int) []QGlyphRun {
-	var _ma C.struct_miqt_array = C.QTextFragment_GlyphRuns1(this.h, (C.int)(from))
+	var _ma C.struct_miqt_array = C.QTextFragment_glyphRuns1(this.h, (C.int)(from))
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1071,7 +1071,7 @@ func (this *QTextFragment) GlyphRuns1(from int) []QGlyphRun {
 }
 
 func (this *QTextFragment) GlyphRuns2(from int, length int) []QGlyphRun {
-	var _ma C.struct_miqt_array = C.QTextFragment_GlyphRuns2(this.h, (C.int)(from), (C.int)(length))
+	var _ma C.struct_miqt_array = C.QTextFragment_glyphRuns2(this.h, (C.int)(from), (C.int)(length))
 	_ret := make([]QGlyphRun, int(_ma.len))
 	_outCast := (*[0xffff]*C.QGlyphRun)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1084,7 +1084,7 @@ func (this *QTextFragment) GlyphRuns2(from int, length int) []QGlyphRun {
 
 // Delete this object from C++ memory.
 func (this *QTextFragment) Delete() {
-	C.QTextFragment_Delete(this.h)
+	C.QTextFragment_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1141,58 +1141,58 @@ func NewQTextFrame__iterator2(o *QTextFrame__iterator) *QTextFrame__iterator {
 }
 
 func (this *QTextFrame__iterator) OperatorAssign(o *QTextFrame__iterator) {
-	C.QTextFrame__iterator_OperatorAssign(this.h, o.cPointer())
+	C.QTextFrame__iterator_operatorAssign(this.h, o.cPointer())
 }
 
 func (this *QTextFrame__iterator) ParentFrame() *QTextFrame {
-	return newQTextFrame(C.QTextFrame__iterator_ParentFrame(this.h))
+	return newQTextFrame(C.QTextFrame__iterator_parentFrame(this.h))
 }
 
 func (this *QTextFrame__iterator) CurrentFrame() *QTextFrame {
-	return newQTextFrame(C.QTextFrame__iterator_CurrentFrame(this.h))
+	return newQTextFrame(C.QTextFrame__iterator_currentFrame(this.h))
 }
 
 func (this *QTextFrame__iterator) CurrentBlock() *QTextBlock {
-	_goptr := newQTextBlock(C.QTextFrame__iterator_CurrentBlock(this.h))
+	_goptr := newQTextBlock(C.QTextFrame__iterator_currentBlock(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFrame__iterator) AtEnd() bool {
-	return (bool)(C.QTextFrame__iterator_AtEnd(this.h))
+	return (bool)(C.QTextFrame__iterator_atEnd(this.h))
 }
 
 func (this *QTextFrame__iterator) OperatorEqual(o *QTextFrame__iterator) bool {
-	return (bool)(C.QTextFrame__iterator_OperatorEqual(this.h, o.cPointer()))
+	return (bool)(C.QTextFrame__iterator_operatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QTextFrame__iterator) OperatorNotEqual(o *QTextFrame__iterator) bool {
-	return (bool)(C.QTextFrame__iterator_OperatorNotEqual(this.h, o.cPointer()))
+	return (bool)(C.QTextFrame__iterator_operatorNotEqual(this.h, o.cPointer()))
 }
 
 func (this *QTextFrame__iterator) OperatorPlusPlus() *QTextFrame__iterator {
-	return newQTextFrame__iterator(C.QTextFrame__iterator_OperatorPlusPlus(this.h))
+	return newQTextFrame__iterator(C.QTextFrame__iterator_operatorPlusPlus(this.h))
 }
 
 func (this *QTextFrame__iterator) OperatorPlusPlusWithInt(param1 int) *QTextFrame__iterator {
-	_goptr := newQTextFrame__iterator(C.QTextFrame__iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1)))
+	_goptr := newQTextFrame__iterator(C.QTextFrame__iterator_operatorPlusPlusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFrame__iterator) OperatorMinusMinus() *QTextFrame__iterator {
-	return newQTextFrame__iterator(C.QTextFrame__iterator_OperatorMinusMinus(this.h))
+	return newQTextFrame__iterator(C.QTextFrame__iterator_operatorMinusMinus(this.h))
 }
 
 func (this *QTextFrame__iterator) OperatorMinusMinusWithInt(param1 int) *QTextFrame__iterator {
-	_goptr := newQTextFrame__iterator(C.QTextFrame__iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1)))
+	_goptr := newQTextFrame__iterator(C.QTextFrame__iterator_operatorMinusMinusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QTextFrame__iterator) Delete() {
-	C.QTextFrame__iterator_Delete(this.h)
+	C.QTextFrame__iterator_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1249,50 +1249,50 @@ func NewQTextBlock__iterator2(o *QTextBlock__iterator) *QTextBlock__iterator {
 }
 
 func (this *QTextBlock__iterator) OperatorAssign(o *QTextBlock__iterator) {
-	C.QTextBlock__iterator_OperatorAssign(this.h, o.cPointer())
+	C.QTextBlock__iterator_operatorAssign(this.h, o.cPointer())
 }
 
 func (this *QTextBlock__iterator) Fragment() *QTextFragment {
-	_goptr := newQTextFragment(C.QTextBlock__iterator_Fragment(this.h))
+	_goptr := newQTextFragment(C.QTextBlock__iterator_fragment(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextBlock__iterator) AtEnd() bool {
-	return (bool)(C.QTextBlock__iterator_AtEnd(this.h))
+	return (bool)(C.QTextBlock__iterator_atEnd(this.h))
 }
 
 func (this *QTextBlock__iterator) OperatorEqual(o *QTextBlock__iterator) bool {
-	return (bool)(C.QTextBlock__iterator_OperatorEqual(this.h, o.cPointer()))
+	return (bool)(C.QTextBlock__iterator_operatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QTextBlock__iterator) OperatorNotEqual(o *QTextBlock__iterator) bool {
-	return (bool)(C.QTextBlock__iterator_OperatorNotEqual(this.h, o.cPointer()))
+	return (bool)(C.QTextBlock__iterator_operatorNotEqual(this.h, o.cPointer()))
 }
 
 func (this *QTextBlock__iterator) OperatorPlusPlus() *QTextBlock__iterator {
-	return newQTextBlock__iterator(C.QTextBlock__iterator_OperatorPlusPlus(this.h))
+	return newQTextBlock__iterator(C.QTextBlock__iterator_operatorPlusPlus(this.h))
 }
 
 func (this *QTextBlock__iterator) OperatorPlusPlusWithInt(param1 int) *QTextBlock__iterator {
-	_goptr := newQTextBlock__iterator(C.QTextBlock__iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1)))
+	_goptr := newQTextBlock__iterator(C.QTextBlock__iterator_operatorPlusPlusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextBlock__iterator) OperatorMinusMinus() *QTextBlock__iterator {
-	return newQTextBlock__iterator(C.QTextBlock__iterator_OperatorMinusMinus(this.h))
+	return newQTextBlock__iterator(C.QTextBlock__iterator_operatorMinusMinus(this.h))
 }
 
 func (this *QTextBlock__iterator) OperatorMinusMinusWithInt(param1 int) *QTextBlock__iterator {
-	_goptr := newQTextBlock__iterator(C.QTextBlock__iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1)))
+	_goptr := newQTextBlock__iterator(C.QTextBlock__iterator_operatorMinusMinusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QTextBlock__iterator) Delete() {
-	C.QTextBlock__iterator_Delete(this.h)
+	C.QTextBlock__iterator_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

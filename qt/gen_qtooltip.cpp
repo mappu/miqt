@@ -18,30 +18,30 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QToolTip_ShowText(QPoint* pos, struct miqt_string text) {
+void QToolTip_showText(QPoint* pos, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QToolTip::showText(*pos, text_QString);
 }
 
-void QToolTip_ShowText2(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect) {
+void QToolTip_showText2(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QToolTip::showText(*pos, text_QString, w, *rect);
 }
 
-void QToolTip_ShowText3(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect, int msecShowTime) {
+void QToolTip_showText3(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect, int msecShowTime) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QToolTip::showText(*pos, text_QString, w, *rect, static_cast<int>(msecShowTime));
 }
 
-void QToolTip_HideText() {
+void QToolTip_hideText() {
 	QToolTip::hideText();
 }
 
-bool QToolTip_IsVisible() {
+bool QToolTip_isVisible() {
 	return QToolTip::isVisible();
 }
 
-struct miqt_string QToolTip_Text() {
+struct miqt_string QToolTip_text() {
 	QString _ret = QToolTip::text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -52,28 +52,28 @@ struct miqt_string QToolTip_Text() {
 	return _ms;
 }
 
-QPalette* QToolTip_Palette() {
+QPalette* QToolTip_palette() {
 	return new QPalette(QToolTip::palette());
 }
 
-void QToolTip_SetPalette(QPalette* palette) {
+void QToolTip_setPalette(QPalette* palette) {
 	QToolTip::setPalette(*palette);
 }
 
-QFont* QToolTip_Font() {
+QFont* QToolTip_font() {
 	return new QFont(QToolTip::font());
 }
 
-void QToolTip_SetFont(QFont* font) {
+void QToolTip_setFont(QFont* font) {
 	QToolTip::setFont(*font);
 }
 
-void QToolTip_ShowText32(QPoint* pos, struct miqt_string text, QWidget* w) {
+void QToolTip_showText32(QPoint* pos, struct miqt_string text, QWidget* w) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	QToolTip::showText(*pos, text_QString, w);
 }
 
-void QToolTip_Delete(QToolTip* self) {
+void QToolTip_delete(QToolTip* self) {
 	delete self;
 }
 

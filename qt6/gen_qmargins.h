@@ -25,50 +25,50 @@ typedef struct QMarginsF QMarginsF;
 QMargins* QMargins_new();
 QMargins* QMargins_new2(int left, int top, int right, int bottom);
 QMargins* QMargins_new3(QMargins* param1);
-bool QMargins_IsNull(const QMargins* self);
-int QMargins_Left(const QMargins* self);
-int QMargins_Top(const QMargins* self);
-int QMargins_Right(const QMargins* self);
-int QMargins_Bottom(const QMargins* self);
-void QMargins_SetLeft(QMargins* self, int left);
-void QMargins_SetTop(QMargins* self, int top);
-void QMargins_SetRight(QMargins* self, int right);
-void QMargins_SetBottom(QMargins* self, int bottom);
-QMargins* QMargins_OperatorPlusAssign(QMargins* self, QMargins* margins);
-QMargins* QMargins_OperatorMinusAssign(QMargins* self, QMargins* margins);
-QMargins* QMargins_OperatorPlusAssignWithInt(QMargins* self, int param1);
-QMargins* QMargins_OperatorMinusAssignWithInt(QMargins* self, int param1);
-QMargins* QMargins_OperatorMultiplyAssign(QMargins* self, int param1);
-QMargins* QMargins_OperatorDivideAssign(QMargins* self, int param1);
-QMargins* QMargins_OperatorMultiplyAssignWithQreal(QMargins* self, double param1);
-QMargins* QMargins_OperatorDivideAssignWithQreal(QMargins* self, double param1);
-QMarginsF* QMargins_ToMarginsF(const QMargins* self);
-void QMargins_Delete(QMargins* self);
+bool QMargins_isNull(const QMargins* self);
+int QMargins_left(const QMargins* self);
+int QMargins_top(const QMargins* self);
+int QMargins_right(const QMargins* self);
+int QMargins_bottom(const QMargins* self);
+void QMargins_setLeft(QMargins* self, int left);
+void QMargins_setTop(QMargins* self, int top);
+void QMargins_setRight(QMargins* self, int right);
+void QMargins_setBottom(QMargins* self, int bottom);
+QMargins* QMargins_operatorPlusAssign(QMargins* self, QMargins* margins);
+QMargins* QMargins_operatorMinusAssign(QMargins* self, QMargins* margins);
+QMargins* QMargins_operatorPlusAssignWithInt(QMargins* self, int param1);
+QMargins* QMargins_operatorMinusAssignWithInt(QMargins* self, int param1);
+QMargins* QMargins_operatorMultiplyAssign(QMargins* self, int param1);
+QMargins* QMargins_operatorDivideAssign(QMargins* self, int param1);
+QMargins* QMargins_operatorMultiplyAssignWithQreal(QMargins* self, double param1);
+QMargins* QMargins_operatorDivideAssignWithQreal(QMargins* self, double param1);
+QMarginsF* QMargins_toMarginsF(const QMargins* self);
+void QMargins_delete(QMargins* self);
 
 QMarginsF* QMarginsF_new();
 QMarginsF* QMarginsF_new2(double left, double top, double right, double bottom);
 QMarginsF* QMarginsF_new3(QMargins* margins);
 QMarginsF* QMarginsF_new4(QMarginsF* param1);
-bool QMarginsF_IsNull(const QMarginsF* self);
-double QMarginsF_Left(const QMarginsF* self);
-double QMarginsF_Top(const QMarginsF* self);
-double QMarginsF_Right(const QMarginsF* self);
-double QMarginsF_Bottom(const QMarginsF* self);
-void QMarginsF_SetLeft(QMarginsF* self, double aleft);
-void QMarginsF_SetTop(QMarginsF* self, double atop);
-void QMarginsF_SetRight(QMarginsF* self, double aright);
-void QMarginsF_SetBottom(QMarginsF* self, double abottom);
-QMarginsF* QMarginsF_OperatorPlusAssign(QMarginsF* self, QMarginsF* margins);
-QMarginsF* QMarginsF_OperatorMinusAssign(QMarginsF* self, QMarginsF* margins);
-QMarginsF* QMarginsF_OperatorPlusAssignWithAddend(QMarginsF* self, double addend);
-QMarginsF* QMarginsF_OperatorMinusAssignWithSubtrahend(QMarginsF* self, double subtrahend);
-QMarginsF* QMarginsF_OperatorMultiplyAssign(QMarginsF* self, double factor);
-QMarginsF* QMarginsF_OperatorDivideAssign(QMarginsF* self, double divisor);
-QMargins* QMarginsF_ToMargins(const QMarginsF* self);
-void QMarginsF_Delete(QMarginsF* self);
+bool QMarginsF_isNull(const QMarginsF* self);
+double QMarginsF_left(const QMarginsF* self);
+double QMarginsF_top(const QMarginsF* self);
+double QMarginsF_right(const QMarginsF* self);
+double QMarginsF_bottom(const QMarginsF* self);
+void QMarginsF_setLeft(QMarginsF* self, double aleft);
+void QMarginsF_setTop(QMarginsF* self, double atop);
+void QMarginsF_setRight(QMarginsF* self, double aright);
+void QMarginsF_setBottom(QMarginsF* self, double abottom);
+QMarginsF* QMarginsF_operatorPlusAssign(QMarginsF* self, QMarginsF* margins);
+QMarginsF* QMarginsF_operatorMinusAssign(QMarginsF* self, QMarginsF* margins);
+QMarginsF* QMarginsF_operatorPlusAssignWithAddend(QMarginsF* self, double addend);
+QMarginsF* QMarginsF_operatorMinusAssignWithSubtrahend(QMarginsF* self, double subtrahend);
+QMarginsF* QMarginsF_operatorMultiplyAssign(QMarginsF* self, double factor);
+QMarginsF* QMarginsF_operatorDivideAssign(QMarginsF* self, double divisor);
+QMargins* QMarginsF_toMargins(const QMarginsF* self);
+void QMarginsF_delete(QMarginsF* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

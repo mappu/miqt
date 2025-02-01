@@ -59,37 +59,37 @@ func NewQWebEngineRegisterProtocolHandlerRequest2(param1 *QWebEngineRegisterProt
 }
 
 func (this *QWebEngineRegisterProtocolHandlerRequest) Accept() {
-	C.QWebEngineRegisterProtocolHandlerRequest_Accept(this.h)
+	C.QWebEngineRegisterProtocolHandlerRequest_accept(this.h)
 }
 
 func (this *QWebEngineRegisterProtocolHandlerRequest) Reject() {
-	C.QWebEngineRegisterProtocolHandlerRequest_Reject(this.h)
+	C.QWebEngineRegisterProtocolHandlerRequest_reject(this.h)
 }
 
 func (this *QWebEngineRegisterProtocolHandlerRequest) Origin() *qt.QUrl {
-	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineRegisterProtocolHandlerRequest_Origin(this.h)))
+	_goptr := qt.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineRegisterProtocolHandlerRequest_origin(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineRegisterProtocolHandlerRequest) Scheme() string {
-	var _ms C.struct_miqt_string = C.QWebEngineRegisterProtocolHandlerRequest_Scheme(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineRegisterProtocolHandlerRequest_scheme(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineRegisterProtocolHandlerRequest) OperatorEqual(that *QWebEngineRegisterProtocolHandlerRequest) bool {
-	return (bool)(C.QWebEngineRegisterProtocolHandlerRequest_OperatorEqual(this.h, that.cPointer()))
+	return (bool)(C.QWebEngineRegisterProtocolHandlerRequest_operatorEqual(this.h, that.cPointer()))
 }
 
 func (this *QWebEngineRegisterProtocolHandlerRequest) OperatorNotEqual(that *QWebEngineRegisterProtocolHandlerRequest) bool {
-	return (bool)(C.QWebEngineRegisterProtocolHandlerRequest_OperatorNotEqual(this.h, that.cPointer()))
+	return (bool)(C.QWebEngineRegisterProtocolHandlerRequest_operatorNotEqual(this.h, that.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QWebEngineRegisterProtocolHandlerRequest) Delete() {
-	C.QWebEngineRegisterProtocolHandlerRequest_Delete(this.h)
+	C.QWebEngineRegisterProtocolHandlerRequest_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

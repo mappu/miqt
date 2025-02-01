@@ -37,49 +37,49 @@ QTimeZone* QTimeZone_new4(struct miqt_string zoneId, int offsetSeconds, struct m
 QTimeZone* QTimeZone_new5(QTimeZone* other);
 QTimeZone* QTimeZone_new6(struct miqt_string zoneId, int offsetSeconds, struct miqt_string name, struct miqt_string abbreviation, int country);
 QTimeZone* QTimeZone_new7(struct miqt_string zoneId, int offsetSeconds, struct miqt_string name, struct miqt_string abbreviation, int country, struct miqt_string comment);
-void QTimeZone_OperatorAssign(QTimeZone* self, QTimeZone* other);
-void QTimeZone_Swap(QTimeZone* self, QTimeZone* other);
-bool QTimeZone_IsValid(const QTimeZone* self);
-struct miqt_string QTimeZone_Id(const QTimeZone* self);
-int QTimeZone_Country(const QTimeZone* self);
-struct miqt_string QTimeZone_Comment(const QTimeZone* self);
-struct miqt_string QTimeZone_DisplayName(const QTimeZone* self, QDateTime* atDateTime);
-struct miqt_string QTimeZone_DisplayNameWithTimeType(const QTimeZone* self, int timeType);
-struct miqt_string QTimeZone_Abbreviation(const QTimeZone* self, QDateTime* atDateTime);
-int QTimeZone_OffsetFromUtc(const QTimeZone* self, QDateTime* atDateTime);
-int QTimeZone_StandardTimeOffset(const QTimeZone* self, QDateTime* atDateTime);
-int QTimeZone_DaylightTimeOffset(const QTimeZone* self, QDateTime* atDateTime);
-bool QTimeZone_HasDaylightTime(const QTimeZone* self);
-bool QTimeZone_IsDaylightTime(const QTimeZone* self, QDateTime* atDateTime);
-QTimeZone__OffsetData* QTimeZone_OffsetData(const QTimeZone* self, QDateTime* forDateTime);
-bool QTimeZone_HasTransitions(const QTimeZone* self);
-QTimeZone__OffsetData* QTimeZone_NextTransition(const QTimeZone* self, QDateTime* afterDateTime);
-QTimeZone__OffsetData* QTimeZone_PreviousTransition(const QTimeZone* self, QDateTime* beforeDateTime);
-struct miqt_array /* of QTimeZone__OffsetData* */  QTimeZone_Transitions(const QTimeZone* self, QDateTime* fromDateTime, QDateTime* toDateTime);
-struct miqt_string QTimeZone_SystemTimeZoneId();
-QTimeZone* QTimeZone_SystemTimeZone();
-QTimeZone* QTimeZone_Utc();
-bool QTimeZone_IsTimeZoneIdAvailable(struct miqt_string ianaId);
-struct miqt_array /* of struct miqt_string */  QTimeZone_AvailableTimeZoneIds();
-struct miqt_array /* of struct miqt_string */  QTimeZone_AvailableTimeZoneIdsWithCountry(int country);
-struct miqt_array /* of struct miqt_string */  QTimeZone_AvailableTimeZoneIdsWithOffsetSeconds(int offsetSeconds);
-struct miqt_string QTimeZone_IanaIdToWindowsId(struct miqt_string ianaId);
-struct miqt_string QTimeZone_WindowsIdToDefaultIanaId(struct miqt_string windowsId);
-struct miqt_string QTimeZone_WindowsIdToDefaultIanaId2(struct miqt_string windowsId, int country);
-struct miqt_array /* of struct miqt_string */  QTimeZone_WindowsIdToIanaIds(struct miqt_string windowsId);
-struct miqt_array /* of struct miqt_string */  QTimeZone_WindowsIdToIanaIds2(struct miqt_string windowsId, int country);
-struct miqt_string QTimeZone_DisplayName2(const QTimeZone* self, QDateTime* atDateTime, int nameType);
-struct miqt_string QTimeZone_DisplayName3(const QTimeZone* self, QDateTime* atDateTime, int nameType, QLocale* locale);
-struct miqt_string QTimeZone_DisplayName22(const QTimeZone* self, int timeType, int nameType);
-struct miqt_string QTimeZone_DisplayName32(const QTimeZone* self, int timeType, int nameType, QLocale* locale);
-void QTimeZone_Delete(QTimeZone* self);
+void QTimeZone_operatorAssign(QTimeZone* self, QTimeZone* other);
+void QTimeZone_swap(QTimeZone* self, QTimeZone* other);
+bool QTimeZone_isValid(const QTimeZone* self);
+struct miqt_string QTimeZone_id(const QTimeZone* self);
+int QTimeZone_country(const QTimeZone* self);
+struct miqt_string QTimeZone_comment(const QTimeZone* self);
+struct miqt_string QTimeZone_displayName(const QTimeZone* self, QDateTime* atDateTime);
+struct miqt_string QTimeZone_displayNameWithTimeType(const QTimeZone* self, int timeType);
+struct miqt_string QTimeZone_abbreviation(const QTimeZone* self, QDateTime* atDateTime);
+int QTimeZone_offsetFromUtc(const QTimeZone* self, QDateTime* atDateTime);
+int QTimeZone_standardTimeOffset(const QTimeZone* self, QDateTime* atDateTime);
+int QTimeZone_daylightTimeOffset(const QTimeZone* self, QDateTime* atDateTime);
+bool QTimeZone_hasDaylightTime(const QTimeZone* self);
+bool QTimeZone_isDaylightTime(const QTimeZone* self, QDateTime* atDateTime);
+QTimeZone__OffsetData* QTimeZone_offsetData(const QTimeZone* self, QDateTime* forDateTime);
+bool QTimeZone_hasTransitions(const QTimeZone* self);
+QTimeZone__OffsetData* QTimeZone_nextTransition(const QTimeZone* self, QDateTime* afterDateTime);
+QTimeZone__OffsetData* QTimeZone_previousTransition(const QTimeZone* self, QDateTime* beforeDateTime);
+struct miqt_array /* of QTimeZone__OffsetData* */  QTimeZone_transitions(const QTimeZone* self, QDateTime* fromDateTime, QDateTime* toDateTime);
+struct miqt_string QTimeZone_systemTimeZoneId();
+QTimeZone* QTimeZone_systemTimeZone();
+QTimeZone* QTimeZone_utc();
+bool QTimeZone_isTimeZoneIdAvailable(struct miqt_string ianaId);
+struct miqt_array /* of struct miqt_string */  QTimeZone_availableTimeZoneIds();
+struct miqt_array /* of struct miqt_string */  QTimeZone_availableTimeZoneIdsWithCountry(int country);
+struct miqt_array /* of struct miqt_string */  QTimeZone_availableTimeZoneIdsWithOffsetSeconds(int offsetSeconds);
+struct miqt_string QTimeZone_ianaIdToWindowsId(struct miqt_string ianaId);
+struct miqt_string QTimeZone_windowsIdToDefaultIanaId(struct miqt_string windowsId);
+struct miqt_string QTimeZone_windowsIdToDefaultIanaId2(struct miqt_string windowsId, int country);
+struct miqt_array /* of struct miqt_string */  QTimeZone_windowsIdToIanaIds(struct miqt_string windowsId);
+struct miqt_array /* of struct miqt_string */  QTimeZone_windowsIdToIanaIds2(struct miqt_string windowsId, int country);
+struct miqt_string QTimeZone_displayName2(const QTimeZone* self, QDateTime* atDateTime, int nameType);
+struct miqt_string QTimeZone_displayName3(const QTimeZone* self, QDateTime* atDateTime, int nameType, QLocale* locale);
+struct miqt_string QTimeZone_displayName22(const QTimeZone* self, int timeType, int nameType);
+struct miqt_string QTimeZone_displayName32(const QTimeZone* self, int timeType, int nameType, QLocale* locale);
+void QTimeZone_delete(QTimeZone* self);
 
 QTimeZone__OffsetData* QTimeZone__OffsetData_new(QTimeZone__OffsetData* param1);
-void QTimeZone__OffsetData_OperatorAssign(QTimeZone__OffsetData* self, QTimeZone__OffsetData* param1);
-void QTimeZone__OffsetData_Delete(QTimeZone__OffsetData* self);
+void QTimeZone__OffsetData_operatorAssign(QTimeZone__OffsetData* self, QTimeZone__OffsetData* param1);
+void QTimeZone__OffsetData_delete(QTimeZone__OffsetData* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

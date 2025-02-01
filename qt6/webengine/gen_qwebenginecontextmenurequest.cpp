@@ -22,15 +22,15 @@ void QWebEngineContextMenuRequest_virtbase(QWebEngineContextMenuRequest* src, QO
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QWebEngineContextMenuRequest_MetaObject(const QWebEngineContextMenuRequest* self) {
+QMetaObject* QWebEngineContextMenuRequest_metaObject(const QWebEngineContextMenuRequest* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QWebEngineContextMenuRequest_Metacast(QWebEngineContextMenuRequest* self, const char* param1) {
+void* QWebEngineContextMenuRequest_metacast(QWebEngineContextMenuRequest* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QWebEngineContextMenuRequest_Tr(const char* s) {
+struct miqt_string QWebEngineContextMenuRequest_tr(const char* s) {
 	QString _ret = QWebEngineContextMenuRequest::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -41,11 +41,11 @@ struct miqt_string QWebEngineContextMenuRequest_Tr(const char* s) {
 	return _ms;
 }
 
-QPoint* QWebEngineContextMenuRequest_Position(const QWebEngineContextMenuRequest* self) {
+QPoint* QWebEngineContextMenuRequest_position(const QWebEngineContextMenuRequest* self) {
 	return new QPoint(self->position());
 }
 
-struct miqt_string QWebEngineContextMenuRequest_SelectedText(const QWebEngineContextMenuRequest* self) {
+struct miqt_string QWebEngineContextMenuRequest_selectedText(const QWebEngineContextMenuRequest* self) {
 	QString _ret = self->selectedText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -56,7 +56,7 @@ struct miqt_string QWebEngineContextMenuRequest_SelectedText(const QWebEngineCon
 	return _ms;
 }
 
-struct miqt_string QWebEngineContextMenuRequest_LinkText(const QWebEngineContextMenuRequest* self) {
+struct miqt_string QWebEngineContextMenuRequest_linkText(const QWebEngineContextMenuRequest* self) {
 	QString _ret = self->linkText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -67,24 +67,24 @@ struct miqt_string QWebEngineContextMenuRequest_LinkText(const QWebEngineContext
 	return _ms;
 }
 
-QUrl* QWebEngineContextMenuRequest_LinkUrl(const QWebEngineContextMenuRequest* self) {
+QUrl* QWebEngineContextMenuRequest_linkUrl(const QWebEngineContextMenuRequest* self) {
 	return new QUrl(self->linkUrl());
 }
 
-QUrl* QWebEngineContextMenuRequest_MediaUrl(const QWebEngineContextMenuRequest* self) {
+QUrl* QWebEngineContextMenuRequest_mediaUrl(const QWebEngineContextMenuRequest* self) {
 	return new QUrl(self->mediaUrl());
 }
 
-int QWebEngineContextMenuRequest_MediaType(const QWebEngineContextMenuRequest* self) {
+int QWebEngineContextMenuRequest_mediaType(const QWebEngineContextMenuRequest* self) {
 	QWebEngineContextMenuRequest::MediaType _ret = self->mediaType();
 	return static_cast<int>(_ret);
 }
 
-bool QWebEngineContextMenuRequest_IsContentEditable(const QWebEngineContextMenuRequest* self) {
+bool QWebEngineContextMenuRequest_isContentEditable(const QWebEngineContextMenuRequest* self) {
 	return self->isContentEditable();
 }
 
-struct miqt_string QWebEngineContextMenuRequest_MisspelledWord(const QWebEngineContextMenuRequest* self) {
+struct miqt_string QWebEngineContextMenuRequest_misspelledWord(const QWebEngineContextMenuRequest* self) {
 	QString _ret = self->misspelledWord();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -95,7 +95,7 @@ struct miqt_string QWebEngineContextMenuRequest_MisspelledWord(const QWebEngineC
 	return _ms;
 }
 
-struct miqt_array /* of struct miqt_string */  QWebEngineContextMenuRequest_SpellCheckerSuggestions(const QWebEngineContextMenuRequest* self) {
+struct miqt_array /* of struct miqt_string */  QWebEngineContextMenuRequest_spellCheckerSuggestions(const QWebEngineContextMenuRequest* self) {
 	QStringList _ret = self->spellCheckerSuggestions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -115,25 +115,25 @@ struct miqt_array /* of struct miqt_string */  QWebEngineContextMenuRequest_Spel
 	return _out;
 }
 
-bool QWebEngineContextMenuRequest_IsAccepted(const QWebEngineContextMenuRequest* self) {
+bool QWebEngineContextMenuRequest_isAccepted(const QWebEngineContextMenuRequest* self) {
 	return self->isAccepted();
 }
 
-void QWebEngineContextMenuRequest_SetAccepted(QWebEngineContextMenuRequest* self, bool accepted) {
+void QWebEngineContextMenuRequest_setAccepted(QWebEngineContextMenuRequest* self, bool accepted) {
 	self->setAccepted(accepted);
 }
 
-int QWebEngineContextMenuRequest_MediaFlags(const QWebEngineContextMenuRequest* self) {
+int QWebEngineContextMenuRequest_mediaFlags(const QWebEngineContextMenuRequest* self) {
 	QWebEngineContextMenuRequest::MediaFlags _ret = self->mediaFlags();
 	return static_cast<int>(_ret);
 }
 
-int QWebEngineContextMenuRequest_EditFlags(const QWebEngineContextMenuRequest* self) {
+int QWebEngineContextMenuRequest_editFlags(const QWebEngineContextMenuRequest* self) {
 	QWebEngineContextMenuRequest::EditFlags _ret = self->editFlags();
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string QWebEngineContextMenuRequest_Tr2(const char* s, const char* c) {
+struct miqt_string QWebEngineContextMenuRequest_tr2(const char* s, const char* c) {
 	QString _ret = QWebEngineContextMenuRequest::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -144,7 +144,7 @@ struct miqt_string QWebEngineContextMenuRequest_Tr2(const char* s, const char* c
 	return _ms;
 }
 
-struct miqt_string QWebEngineContextMenuRequest_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QWebEngineContextMenuRequest_tr3(const char* s, const char* c, int n) {
 	QString _ret = QWebEngineContextMenuRequest::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -155,7 +155,7 @@ struct miqt_string QWebEngineContextMenuRequest_Tr3(const char* s, const char* c
 	return _ms;
 }
 
-void QWebEngineContextMenuRequest_Delete(QWebEngineContextMenuRequest* self) {
+void QWebEngineContextMenuRequest_delete(QWebEngineContextMenuRequest* self) {
 	delete self;
 }
 

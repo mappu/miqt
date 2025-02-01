@@ -53,30 +53,30 @@ func NewQWebEngineFullScreenRequest(other *QWebEngineFullScreenRequest) *QWebEng
 }
 
 func (this *QWebEngineFullScreenRequest) OperatorAssign(other *QWebEngineFullScreenRequest) {
-	C.QWebEngineFullScreenRequest_OperatorAssign(this.h, other.cPointer())
+	C.QWebEngineFullScreenRequest_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QWebEngineFullScreenRequest) Reject() {
-	C.QWebEngineFullScreenRequest_Reject(this.h)
+	C.QWebEngineFullScreenRequest_reject(this.h)
 }
 
 func (this *QWebEngineFullScreenRequest) Accept() {
-	C.QWebEngineFullScreenRequest_Accept(this.h)
+	C.QWebEngineFullScreenRequest_accept(this.h)
 }
 
 func (this *QWebEngineFullScreenRequest) ToggleOn() bool {
-	return (bool)(C.QWebEngineFullScreenRequest_ToggleOn(this.h))
+	return (bool)(C.QWebEngineFullScreenRequest_toggleOn(this.h))
 }
 
 func (this *QWebEngineFullScreenRequest) Origin() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineFullScreenRequest_Origin(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineFullScreenRequest_origin(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QWebEngineFullScreenRequest) Delete() {
-	C.QWebEngineFullScreenRequest_Delete(this.h)
+	C.QWebEngineFullScreenRequest_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

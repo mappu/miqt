@@ -31,23 +31,23 @@ typedef struct QWindow QWindow;
 #endif
 
 QBackingStore* QBackingStore_new(QWindow* window);
-QWindow* QBackingStore_Window(const QBackingStore* self);
-QPaintDevice* QBackingStore_PaintDevice(QBackingStore* self);
-void QBackingStore_Flush(QBackingStore* self, QRegion* region);
-void QBackingStore_Resize(QBackingStore* self, QSize* size);
-QSize* QBackingStore_Size(const QBackingStore* self);
-bool QBackingStore_Scroll(QBackingStore* self, QRegion* area, int dx, int dy);
-void QBackingStore_BeginPaint(QBackingStore* self, QRegion* param1);
-void QBackingStore_EndPaint(QBackingStore* self);
-void QBackingStore_SetStaticContents(QBackingStore* self, QRegion* region);
-QRegion* QBackingStore_StaticContents(const QBackingStore* self);
-bool QBackingStore_HasStaticContents(const QBackingStore* self);
-void QBackingStore_Flush2(QBackingStore* self, QRegion* region, QWindow* window);
-void QBackingStore_Flush3(QBackingStore* self, QRegion* region, QWindow* window, QPoint* offset);
-void QBackingStore_Delete(QBackingStore* self);
+QWindow* QBackingStore_window(const QBackingStore* self);
+QPaintDevice* QBackingStore_paintDevice(QBackingStore* self);
+void QBackingStore_flush(QBackingStore* self, QRegion* region);
+void QBackingStore_resize(QBackingStore* self, QSize* size);
+QSize* QBackingStore_size(const QBackingStore* self);
+bool QBackingStore_scroll(QBackingStore* self, QRegion* area, int dx, int dy);
+void QBackingStore_beginPaint(QBackingStore* self, QRegion* param1);
+void QBackingStore_endPaint(QBackingStore* self);
+void QBackingStore_setStaticContents(QBackingStore* self, QRegion* region);
+QRegion* QBackingStore_staticContents(const QBackingStore* self);
+bool QBackingStore_hasStaticContents(const QBackingStore* self);
+void QBackingStore_flush2(QBackingStore* self, QRegion* region, QWindow* window);
+void QBackingStore_flush3(QBackingStore* self, QRegion* region, QWindow* window, QPoint* offset);
+void QBackingStore_delete(QBackingStore* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

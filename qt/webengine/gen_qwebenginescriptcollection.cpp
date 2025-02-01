@@ -15,28 +15,28 @@ extern "C" {
 } /* extern C */
 #endif
 
-bool QWebEngineScriptCollection_IsEmpty(const QWebEngineScriptCollection* self) {
+bool QWebEngineScriptCollection_isEmpty(const QWebEngineScriptCollection* self) {
 	return self->isEmpty();
 }
 
-int QWebEngineScriptCollection_Count(const QWebEngineScriptCollection* self) {
+int QWebEngineScriptCollection_count(const QWebEngineScriptCollection* self) {
 	return self->count();
 }
 
-int QWebEngineScriptCollection_Size(const QWebEngineScriptCollection* self) {
+int QWebEngineScriptCollection_size(const QWebEngineScriptCollection* self) {
 	return self->size();
 }
 
-bool QWebEngineScriptCollection_Contains(const QWebEngineScriptCollection* self, QWebEngineScript* value) {
+bool QWebEngineScriptCollection_contains(const QWebEngineScriptCollection* self, QWebEngineScript* value) {
 	return self->contains(*value);
 }
 
-QWebEngineScript* QWebEngineScriptCollection_FindScript(const QWebEngineScriptCollection* self, struct miqt_string name) {
+QWebEngineScript* QWebEngineScriptCollection_findScript(const QWebEngineScriptCollection* self, struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	return new QWebEngineScript(self->findScript(name_QString));
 }
 
-struct miqt_array /* of QWebEngineScript* */  QWebEngineScriptCollection_FindScripts(const QWebEngineScriptCollection* self, struct miqt_string name) {
+struct miqt_array /* of QWebEngineScript* */  QWebEngineScriptCollection_findScripts(const QWebEngineScriptCollection* self, struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	QList<QWebEngineScript> _ret = self->findScripts(name_QString);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -50,11 +50,11 @@ struct miqt_array /* of QWebEngineScript* */  QWebEngineScriptCollection_FindScr
 	return _out;
 }
 
-void QWebEngineScriptCollection_Insert(QWebEngineScriptCollection* self, QWebEngineScript* param1) {
+void QWebEngineScriptCollection_insert(QWebEngineScriptCollection* self, QWebEngineScript* param1) {
 	self->insert(*param1);
 }
 
-void QWebEngineScriptCollection_InsertWithList(QWebEngineScriptCollection* self, struct miqt_array /* of QWebEngineScript* */  list) {
+void QWebEngineScriptCollection_insertWithList(QWebEngineScriptCollection* self, struct miqt_array /* of QWebEngineScript* */  list) {
 	QList<QWebEngineScript> list_QList;
 	list_QList.reserve(list.len);
 	QWebEngineScript** list_arr = static_cast<QWebEngineScript**>(list.data);
@@ -64,15 +64,15 @@ void QWebEngineScriptCollection_InsertWithList(QWebEngineScriptCollection* self,
 	self->insert(list_QList);
 }
 
-bool QWebEngineScriptCollection_Remove(QWebEngineScriptCollection* self, QWebEngineScript* param1) {
+bool QWebEngineScriptCollection_remove(QWebEngineScriptCollection* self, QWebEngineScript* param1) {
 	return self->remove(*param1);
 }
 
-void QWebEngineScriptCollection_Clear(QWebEngineScriptCollection* self) {
+void QWebEngineScriptCollection_clear(QWebEngineScriptCollection* self) {
 	self->clear();
 }
 
-struct miqt_array /* of QWebEngineScript* */  QWebEngineScriptCollection_ToList(const QWebEngineScriptCollection* self) {
+struct miqt_array /* of QWebEngineScript* */  QWebEngineScriptCollection_toList(const QWebEngineScriptCollection* self) {
 	QList<QWebEngineScript> _ret = self->toList();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QWebEngineScript** _arr = static_cast<QWebEngineScript**>(malloc(sizeof(QWebEngineScript*) * _ret.length()));
@@ -85,7 +85,7 @@ struct miqt_array /* of QWebEngineScript* */  QWebEngineScriptCollection_ToList(
 	return _out;
 }
 
-void QWebEngineScriptCollection_Delete(QWebEngineScriptCollection* self) {
+void QWebEngineScriptCollection_delete(QWebEngineScriptCollection* self) {
 	delete self;
 }
 

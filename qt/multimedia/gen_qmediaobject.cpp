@@ -14,12 +14,12 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QMediaObject_NotifyIntervalChanged(intptr_t, int);
-void miqt_exec_callback_QMediaObject_MetaDataAvailableChanged(intptr_t, bool);
-void miqt_exec_callback_QMediaObject_MetaDataChanged(intptr_t);
-void miqt_exec_callback_QMediaObject_MetaDataChanged2(intptr_t, struct miqt_string, QVariant*);
-void miqt_exec_callback_QMediaObject_AvailabilityChanged(intptr_t, bool);
-void miqt_exec_callback_QMediaObject_AvailabilityChangedWithAvailability(intptr_t, int);
+void miqt_exec_callback_QMediaObject_notifyIntervalChanged(intptr_t, int);
+void miqt_exec_callback_QMediaObject_metaDataAvailableChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaObject_metaDataChanged(intptr_t);
+void miqt_exec_callback_QMediaObject_metaDataChanged2(intptr_t, struct miqt_string, QVariant*);
+void miqt_exec_callback_QMediaObject_availabilityChanged(intptr_t, bool);
+void miqt_exec_callback_QMediaObject_availabilityChangedWithAvailability(intptr_t, int);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -28,15 +28,15 @@ void QMediaObject_virtbase(QMediaObject* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QMediaObject_MetaObject(const QMediaObject* self) {
+QMetaObject* QMediaObject_metaObject(const QMediaObject* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QMediaObject_Metacast(QMediaObject* self, const char* param1) {
+void* QMediaObject_metacast(QMediaObject* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QMediaObject_Tr(const char* s) {
+struct miqt_string QMediaObject_tr(const char* s) {
 	QString _ret = QMediaObject::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -47,7 +47,7 @@ struct miqt_string QMediaObject_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QMediaObject_TrUtf8(const char* s) {
+struct miqt_string QMediaObject_trUtf8(const char* s) {
 	QString _ret = QMediaObject::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -58,45 +58,45 @@ struct miqt_string QMediaObject_TrUtf8(const char* s) {
 	return _ms;
 }
 
-bool QMediaObject_IsAvailable(const QMediaObject* self) {
+bool QMediaObject_isAvailable(const QMediaObject* self) {
 	return self->isAvailable();
 }
 
-int QMediaObject_Availability(const QMediaObject* self) {
+int QMediaObject_availability(const QMediaObject* self) {
 	QMultimedia::AvailabilityStatus _ret = self->availability();
 	return static_cast<int>(_ret);
 }
 
-QMediaService* QMediaObject_Service(const QMediaObject* self) {
+QMediaService* QMediaObject_service(const QMediaObject* self) {
 	return self->service();
 }
 
-int QMediaObject_NotifyInterval(const QMediaObject* self) {
+int QMediaObject_notifyInterval(const QMediaObject* self) {
 	return self->notifyInterval();
 }
 
-void QMediaObject_SetNotifyInterval(QMediaObject* self, int milliSeconds) {
+void QMediaObject_setNotifyInterval(QMediaObject* self, int milliSeconds) {
 	self->setNotifyInterval(static_cast<int>(milliSeconds));
 }
 
-bool QMediaObject_Bind(QMediaObject* self, QObject* param1) {
+bool QMediaObject_bind(QMediaObject* self, QObject* param1) {
 	return self->bind(param1);
 }
 
-void QMediaObject_Unbind(QMediaObject* self, QObject* param1) {
+void QMediaObject_unbind(QMediaObject* self, QObject* param1) {
 	self->unbind(param1);
 }
 
-bool QMediaObject_IsMetaDataAvailable(const QMediaObject* self) {
+bool QMediaObject_isMetaDataAvailable(const QMediaObject* self) {
 	return self->isMetaDataAvailable();
 }
 
-QVariant* QMediaObject_MetaData(const QMediaObject* self, struct miqt_string key) {
+QVariant* QMediaObject_metaData(const QMediaObject* self, struct miqt_string key) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QVariant(self->metaData(key_QString));
 }
 
-struct miqt_array /* of struct miqt_string */  QMediaObject_AvailableMetaData(const QMediaObject* self) {
+struct miqt_array /* of struct miqt_string */  QMediaObject_availableMetaData(const QMediaObject* self) {
 	QStringList _ret = self->availableMetaData();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -116,44 +116,44 @@ struct miqt_array /* of struct miqt_string */  QMediaObject_AvailableMetaData(co
 	return _out;
 }
 
-void QMediaObject_NotifyIntervalChanged(QMediaObject* self, int milliSeconds) {
+void QMediaObject_notifyIntervalChanged(QMediaObject* self, int milliSeconds) {
 	self->notifyIntervalChanged(static_cast<int>(milliSeconds));
 }
 
-void QMediaObject_connect_NotifyIntervalChanged(QMediaObject* self, intptr_t slot) {
+void QMediaObject_connect_notifyIntervalChanged(QMediaObject* self, intptr_t slot) {
 	QMediaObject::connect(self, static_cast<void (QMediaObject::*)(int)>(&QMediaObject::notifyIntervalChanged), self, [=](int milliSeconds) {
 		int sigval1 = milliSeconds;
-		miqt_exec_callback_QMediaObject_NotifyIntervalChanged(slot, sigval1);
+		miqt_exec_callback_QMediaObject_notifyIntervalChanged(slot, sigval1);
 	});
 }
 
-void QMediaObject_MetaDataAvailableChanged(QMediaObject* self, bool available) {
+void QMediaObject_metaDataAvailableChanged(QMediaObject* self, bool available) {
 	self->metaDataAvailableChanged(available);
 }
 
-void QMediaObject_connect_MetaDataAvailableChanged(QMediaObject* self, intptr_t slot) {
+void QMediaObject_connect_metaDataAvailableChanged(QMediaObject* self, intptr_t slot) {
 	QMediaObject::connect(self, static_cast<void (QMediaObject::*)(bool)>(&QMediaObject::metaDataAvailableChanged), self, [=](bool available) {
 		bool sigval1 = available;
-		miqt_exec_callback_QMediaObject_MetaDataAvailableChanged(slot, sigval1);
+		miqt_exec_callback_QMediaObject_metaDataAvailableChanged(slot, sigval1);
 	});
 }
 
-void QMediaObject_MetaDataChanged(QMediaObject* self) {
+void QMediaObject_metaDataChanged(QMediaObject* self) {
 	self->metaDataChanged();
 }
 
-void QMediaObject_connect_MetaDataChanged(QMediaObject* self, intptr_t slot) {
+void QMediaObject_connect_metaDataChanged(QMediaObject* self, intptr_t slot) {
 	QMediaObject::connect(self, static_cast<void (QMediaObject::*)()>(&QMediaObject::metaDataChanged), self, [=]() {
-		miqt_exec_callback_QMediaObject_MetaDataChanged(slot);
+		miqt_exec_callback_QMediaObject_metaDataChanged(slot);
 	});
 }
 
-void QMediaObject_MetaDataChanged2(QMediaObject* self, struct miqt_string key, QVariant* value) {
+void QMediaObject_metaDataChanged2(QMediaObject* self, struct miqt_string key, QVariant* value) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
 	self->metaDataChanged(key_QString, *value);
 }
 
-void QMediaObject_connect_MetaDataChanged2(QMediaObject* self, intptr_t slot) {
+void QMediaObject_connect_metaDataChanged2(QMediaObject* self, intptr_t slot) {
 	QMediaObject::connect(self, static_cast<void (QMediaObject::*)(const QString&, const QVariant&)>(&QMediaObject::metaDataChanged), self, [=](const QString& key, const QVariant& value) {
 		const QString key_ret = key;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -166,34 +166,34 @@ void QMediaObject_connect_MetaDataChanged2(QMediaObject* self, intptr_t slot) {
 		const QVariant& value_ret = value;
 		// Cast returned reference into pointer
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
-		miqt_exec_callback_QMediaObject_MetaDataChanged2(slot, sigval1, sigval2);
+		miqt_exec_callback_QMediaObject_metaDataChanged2(slot, sigval1, sigval2);
 	});
 }
 
-void QMediaObject_AvailabilityChanged(QMediaObject* self, bool available) {
+void QMediaObject_availabilityChanged(QMediaObject* self, bool available) {
 	self->availabilityChanged(available);
 }
 
-void QMediaObject_connect_AvailabilityChanged(QMediaObject* self, intptr_t slot) {
+void QMediaObject_connect_availabilityChanged(QMediaObject* self, intptr_t slot) {
 	QMediaObject::connect(self, static_cast<void (QMediaObject::*)(bool)>(&QMediaObject::availabilityChanged), self, [=](bool available) {
 		bool sigval1 = available;
-		miqt_exec_callback_QMediaObject_AvailabilityChanged(slot, sigval1);
+		miqt_exec_callback_QMediaObject_availabilityChanged(slot, sigval1);
 	});
 }
 
-void QMediaObject_AvailabilityChangedWithAvailability(QMediaObject* self, int availability) {
+void QMediaObject_availabilityChangedWithAvailability(QMediaObject* self, int availability) {
 	self->availabilityChanged(static_cast<QMultimedia::AvailabilityStatus>(availability));
 }
 
-void QMediaObject_connect_AvailabilityChangedWithAvailability(QMediaObject* self, intptr_t slot) {
+void QMediaObject_connect_availabilityChangedWithAvailability(QMediaObject* self, intptr_t slot) {
 	QMediaObject::connect(self, static_cast<void (QMediaObject::*)(QMultimedia::AvailabilityStatus)>(&QMediaObject::availabilityChanged), self, [=](QMultimedia::AvailabilityStatus availability) {
 		QMultimedia::AvailabilityStatus availability_ret = availability;
 		int sigval1 = static_cast<int>(availability_ret);
-		miqt_exec_callback_QMediaObject_AvailabilityChangedWithAvailability(slot, sigval1);
+		miqt_exec_callback_QMediaObject_availabilityChangedWithAvailability(slot, sigval1);
 	});
 }
 
-struct miqt_string QMediaObject_Tr2(const char* s, const char* c) {
+struct miqt_string QMediaObject_tr2(const char* s, const char* c) {
 	QString _ret = QMediaObject::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -204,7 +204,7 @@ struct miqt_string QMediaObject_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QMediaObject_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QMediaObject_tr3(const char* s, const char* c, int n) {
 	QString _ret = QMediaObject::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -215,7 +215,7 @@ struct miqt_string QMediaObject_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string QMediaObject_TrUtf82(const char* s, const char* c) {
+struct miqt_string QMediaObject_trUtf82(const char* s, const char* c) {
 	QString _ret = QMediaObject::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -226,7 +226,7 @@ struct miqt_string QMediaObject_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QMediaObject_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QMediaObject_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QMediaObject::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -237,7 +237,7 @@ struct miqt_string QMediaObject_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QMediaObject_Delete(QMediaObject* self) {
+void QMediaObject_delete(QMediaObject* self) {
 	delete self;
 }
 

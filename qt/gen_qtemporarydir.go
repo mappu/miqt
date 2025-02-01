@@ -62,30 +62,30 @@ func NewQTemporaryDir2(templateName string) *QTemporaryDir {
 }
 
 func (this *QTemporaryDir) IsValid() bool {
-	return (bool)(C.QTemporaryDir_IsValid(this.h))
+	return (bool)(C.QTemporaryDir_isValid(this.h))
 }
 
 func (this *QTemporaryDir) ErrorString() string {
-	var _ms C.struct_miqt_string = C.QTemporaryDir_ErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QTemporaryDir_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTemporaryDir) AutoRemove() bool {
-	return (bool)(C.QTemporaryDir_AutoRemove(this.h))
+	return (bool)(C.QTemporaryDir_autoRemove(this.h))
 }
 
 func (this *QTemporaryDir) SetAutoRemove(b bool) {
-	C.QTemporaryDir_SetAutoRemove(this.h, (C.bool)(b))
+	C.QTemporaryDir_setAutoRemove(this.h, (C.bool)(b))
 }
 
 func (this *QTemporaryDir) Remove() bool {
-	return (bool)(C.QTemporaryDir_Remove(this.h))
+	return (bool)(C.QTemporaryDir_remove(this.h))
 }
 
 func (this *QTemporaryDir) Path() string {
-	var _ms C.struct_miqt_string = C.QTemporaryDir_Path(this.h)
+	var _ms C.struct_miqt_string = C.QTemporaryDir_path(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -96,7 +96,7 @@ func (this *QTemporaryDir) FilePath(fileName string) string {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	var _ms C.struct_miqt_string = C.QTemporaryDir_FilePath(this.h, fileName_ms)
+	var _ms C.struct_miqt_string = C.QTemporaryDir_filePath(this.h, fileName_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -104,7 +104,7 @@ func (this *QTemporaryDir) FilePath(fileName string) string {
 
 // Delete this object from C++ memory.
 func (this *QTemporaryDir) Delete() {
-	C.QTemporaryDir_Delete(this.h)
+	C.QTemporaryDir_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

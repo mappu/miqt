@@ -24,23 +24,23 @@ QSslCipher* QSslCipher_new();
 QSslCipher* QSslCipher_new2(struct miqt_string name);
 QSslCipher* QSslCipher_new3(struct miqt_string name, int protocol);
 QSslCipher* QSslCipher_new4(QSslCipher* other);
-void QSslCipher_OperatorAssign(QSslCipher* self, QSslCipher* other);
-void QSslCipher_Swap(QSslCipher* self, QSslCipher* other);
-bool QSslCipher_OperatorEqual(const QSslCipher* self, QSslCipher* other);
-bool QSslCipher_OperatorNotEqual(const QSslCipher* self, QSslCipher* other);
-bool QSslCipher_IsNull(const QSslCipher* self);
-struct miqt_string QSslCipher_Name(const QSslCipher* self);
-int QSslCipher_SupportedBits(const QSslCipher* self);
-int QSslCipher_UsedBits(const QSslCipher* self);
-struct miqt_string QSslCipher_KeyExchangeMethod(const QSslCipher* self);
-struct miqt_string QSslCipher_AuthenticationMethod(const QSslCipher* self);
-struct miqt_string QSslCipher_EncryptionMethod(const QSslCipher* self);
-struct miqt_string QSslCipher_ProtocolString(const QSslCipher* self);
-int QSslCipher_Protocol(const QSslCipher* self);
-void QSslCipher_Delete(QSslCipher* self);
+void QSslCipher_operatorAssign(QSslCipher* self, QSslCipher* other);
+void QSslCipher_swap(QSslCipher* self, QSslCipher* other);
+bool QSslCipher_operatorEqual(const QSslCipher* self, QSslCipher* other);
+bool QSslCipher_operatorNotEqual(const QSslCipher* self, QSslCipher* other);
+bool QSslCipher_isNull(const QSslCipher* self);
+struct miqt_string QSslCipher_name(const QSslCipher* self);
+int QSslCipher_supportedBits(const QSslCipher* self);
+int QSslCipher_usedBits(const QSslCipher* self);
+struct miqt_string QSslCipher_keyExchangeMethod(const QSslCipher* self);
+struct miqt_string QSslCipher_authenticationMethod(const QSslCipher* self);
+struct miqt_string QSslCipher_encryptionMethod(const QSslCipher* self);
+struct miqt_string QSslCipher_protocolString(const QSslCipher* self);
+int QSslCipher_protocol(const QSslCipher* self);
+void QSslCipher_delete(QSslCipher* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

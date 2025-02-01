@@ -22,12 +22,12 @@ typedef struct QStyle QStyle;
 typedef struct QStyleFactory QStyleFactory;
 #endif
 
-struct miqt_array /* of struct miqt_string */  QStyleFactory_Keys();
-QStyle* QStyleFactory_Create(struct miqt_string param1);
-void QStyleFactory_Delete(QStyleFactory* self);
+struct miqt_array /* of struct miqt_string */  QStyleFactory_keys();
+QStyle* QStyleFactory_create(struct miqt_string param1);
+void QStyleFactory_delete(QStyleFactory* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

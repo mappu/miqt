@@ -51,19 +51,19 @@ func UnsafeNewQMediaService(h unsafe.Pointer) *QMediaService {
 }
 
 func (this *QMediaService) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaService_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QMediaService_metaObject(this.h)))
 }
 
 func (this *QMediaService) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QMediaService_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QMediaService_metacast(this.h, param1_Cstring))
 }
 
 func QMediaService_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaService_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaService_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -72,7 +72,7 @@ func QMediaService_Tr(s string) string {
 func QMediaService_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaService_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaService_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -81,11 +81,11 @@ func QMediaService_TrUtf8(s string) string {
 func (this *QMediaService) RequestControl(name string) *QMediaControl {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	return newQMediaControl(C.QMediaService_RequestControl(this.h, name_Cstring))
+	return newQMediaControl(C.QMediaService_requestControl(this.h, name_Cstring))
 }
 
 func (this *QMediaService) ReleaseControl(control *QMediaControl) {
-	C.QMediaService_ReleaseControl(this.h, control.cPointer())
+	C.QMediaService_releaseControl(this.h, control.cPointer())
 }
 
 func QMediaService_Tr2(s string, c string) string {
@@ -93,7 +93,7 @@ func QMediaService_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaService_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaService_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -104,7 +104,7 @@ func QMediaService_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaService_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaService_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -115,7 +115,7 @@ func QMediaService_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaService_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMediaService_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -126,7 +126,7 @@ func QMediaService_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMediaService_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMediaService_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -134,7 +134,7 @@ func QMediaService_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QMediaService) Delete() {
-	C.QMediaService_Delete(this.h)
+	C.QMediaService_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

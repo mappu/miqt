@@ -87,86 +87,86 @@ func NewQFormLayout2() *QFormLayout {
 }
 
 func (this *QFormLayout) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QFormLayout_MetaObject(this.h))
+	return newQMetaObject(C.QFormLayout_metaObject(this.h))
 }
 
 func (this *QFormLayout) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QFormLayout_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QFormLayout_metacast(this.h, param1_Cstring))
 }
 
 func QFormLayout_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QFormLayout_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QFormLayout_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QFormLayout) SetFieldGrowthPolicy(policy QFormLayout__FieldGrowthPolicy) {
-	C.QFormLayout_SetFieldGrowthPolicy(this.h, (C.int)(policy))
+	C.QFormLayout_setFieldGrowthPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QFormLayout) FieldGrowthPolicy() QFormLayout__FieldGrowthPolicy {
-	return (QFormLayout__FieldGrowthPolicy)(C.QFormLayout_FieldGrowthPolicy(this.h))
+	return (QFormLayout__FieldGrowthPolicy)(C.QFormLayout_fieldGrowthPolicy(this.h))
 }
 
 func (this *QFormLayout) SetRowWrapPolicy(policy QFormLayout__RowWrapPolicy) {
-	C.QFormLayout_SetRowWrapPolicy(this.h, (C.int)(policy))
+	C.QFormLayout_setRowWrapPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QFormLayout) RowWrapPolicy() QFormLayout__RowWrapPolicy {
-	return (QFormLayout__RowWrapPolicy)(C.QFormLayout_RowWrapPolicy(this.h))
+	return (QFormLayout__RowWrapPolicy)(C.QFormLayout_rowWrapPolicy(this.h))
 }
 
 func (this *QFormLayout) SetLabelAlignment(alignment AlignmentFlag) {
-	C.QFormLayout_SetLabelAlignment(this.h, (C.int)(alignment))
+	C.QFormLayout_setLabelAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QFormLayout) LabelAlignment() AlignmentFlag {
-	return (AlignmentFlag)(C.QFormLayout_LabelAlignment(this.h))
+	return (AlignmentFlag)(C.QFormLayout_labelAlignment(this.h))
 }
 
 func (this *QFormLayout) SetFormAlignment(alignment AlignmentFlag) {
-	C.QFormLayout_SetFormAlignment(this.h, (C.int)(alignment))
+	C.QFormLayout_setFormAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QFormLayout) FormAlignment() AlignmentFlag {
-	return (AlignmentFlag)(C.QFormLayout_FormAlignment(this.h))
+	return (AlignmentFlag)(C.QFormLayout_formAlignment(this.h))
 }
 
 func (this *QFormLayout) SetHorizontalSpacing(spacing int) {
-	C.QFormLayout_SetHorizontalSpacing(this.h, (C.int)(spacing))
+	C.QFormLayout_setHorizontalSpacing(this.h, (C.int)(spacing))
 }
 
 func (this *QFormLayout) HorizontalSpacing() int {
-	return (int)(C.QFormLayout_HorizontalSpacing(this.h))
+	return (int)(C.QFormLayout_horizontalSpacing(this.h))
 }
 
 func (this *QFormLayout) SetVerticalSpacing(spacing int) {
-	C.QFormLayout_SetVerticalSpacing(this.h, (C.int)(spacing))
+	C.QFormLayout_setVerticalSpacing(this.h, (C.int)(spacing))
 }
 
 func (this *QFormLayout) VerticalSpacing() int {
-	return (int)(C.QFormLayout_VerticalSpacing(this.h))
+	return (int)(C.QFormLayout_verticalSpacing(this.h))
 }
 
 func (this *QFormLayout) Spacing() int {
-	return (int)(C.QFormLayout_Spacing(this.h))
+	return (int)(C.QFormLayout_spacing(this.h))
 }
 
 func (this *QFormLayout) SetSpacing(spacing int) {
-	C.QFormLayout_SetSpacing(this.h, (C.int)(spacing))
+	C.QFormLayout_setSpacing(this.h, (C.int)(spacing))
 }
 
 func (this *QFormLayout) AddRow(label *QWidget, field *QWidget) {
-	C.QFormLayout_AddRow(this.h, label.cPointer(), field.cPointer())
+	C.QFormLayout_addRow(this.h, label.cPointer(), field.cPointer())
 }
 
 func (this *QFormLayout) AddRow2(label *QWidget, field *QLayout) {
-	C.QFormLayout_AddRow2(this.h, label.cPointer(), field.cPointer())
+	C.QFormLayout_addRow2(this.h, label.cPointer(), field.cPointer())
 }
 
 func (this *QFormLayout) AddRow3(labelText string, field *QWidget) {
@@ -174,7 +174,7 @@ func (this *QFormLayout) AddRow3(labelText string, field *QWidget) {
 	labelText_ms.data = C.CString(labelText)
 	labelText_ms.len = C.size_t(len(labelText))
 	defer C.free(unsafe.Pointer(labelText_ms.data))
-	C.QFormLayout_AddRow3(this.h, labelText_ms, field.cPointer())
+	C.QFormLayout_addRow3(this.h, labelText_ms, field.cPointer())
 }
 
 func (this *QFormLayout) AddRow4(labelText string, field *QLayout) {
@@ -182,23 +182,23 @@ func (this *QFormLayout) AddRow4(labelText string, field *QLayout) {
 	labelText_ms.data = C.CString(labelText)
 	labelText_ms.len = C.size_t(len(labelText))
 	defer C.free(unsafe.Pointer(labelText_ms.data))
-	C.QFormLayout_AddRow4(this.h, labelText_ms, field.cPointer())
+	C.QFormLayout_addRow4(this.h, labelText_ms, field.cPointer())
 }
 
 func (this *QFormLayout) AddRowWithWidget(widget *QWidget) {
-	C.QFormLayout_AddRowWithWidget(this.h, widget.cPointer())
+	C.QFormLayout_addRowWithWidget(this.h, widget.cPointer())
 }
 
 func (this *QFormLayout) AddRowWithLayout(layout *QLayout) {
-	C.QFormLayout_AddRowWithLayout(this.h, layout.cPointer())
+	C.QFormLayout_addRowWithLayout(this.h, layout.cPointer())
 }
 
 func (this *QFormLayout) InsertRow(row int, label *QWidget, field *QWidget) {
-	C.QFormLayout_InsertRow(this.h, (C.int)(row), label.cPointer(), field.cPointer())
+	C.QFormLayout_insertRow(this.h, (C.int)(row), label.cPointer(), field.cPointer())
 }
 
 func (this *QFormLayout) InsertRow2(row int, label *QWidget, field *QLayout) {
-	C.QFormLayout_InsertRow2(this.h, (C.int)(row), label.cPointer(), field.cPointer())
+	C.QFormLayout_insertRow2(this.h, (C.int)(row), label.cPointer(), field.cPointer())
 }
 
 func (this *QFormLayout) InsertRow3(row int, labelText string, field *QWidget) {
@@ -206,7 +206,7 @@ func (this *QFormLayout) InsertRow3(row int, labelText string, field *QWidget) {
 	labelText_ms.data = C.CString(labelText)
 	labelText_ms.len = C.size_t(len(labelText))
 	defer C.free(unsafe.Pointer(labelText_ms.data))
-	C.QFormLayout_InsertRow3(this.h, (C.int)(row), labelText_ms, field.cPointer())
+	C.QFormLayout_insertRow3(this.h, (C.int)(row), labelText_ms, field.cPointer())
 }
 
 func (this *QFormLayout) InsertRow4(row int, labelText string, field *QLayout) {
@@ -214,145 +214,145 @@ func (this *QFormLayout) InsertRow4(row int, labelText string, field *QLayout) {
 	labelText_ms.data = C.CString(labelText)
 	labelText_ms.len = C.size_t(len(labelText))
 	defer C.free(unsafe.Pointer(labelText_ms.data))
-	C.QFormLayout_InsertRow4(this.h, (C.int)(row), labelText_ms, field.cPointer())
+	C.QFormLayout_insertRow4(this.h, (C.int)(row), labelText_ms, field.cPointer())
 }
 
 func (this *QFormLayout) InsertRow5(row int, widget *QWidget) {
-	C.QFormLayout_InsertRow5(this.h, (C.int)(row), widget.cPointer())
+	C.QFormLayout_insertRow5(this.h, (C.int)(row), widget.cPointer())
 }
 
 func (this *QFormLayout) InsertRow6(row int, layout *QLayout) {
-	C.QFormLayout_InsertRow6(this.h, (C.int)(row), layout.cPointer())
+	C.QFormLayout_insertRow6(this.h, (C.int)(row), layout.cPointer())
 }
 
 func (this *QFormLayout) RemoveRow(row int) {
-	C.QFormLayout_RemoveRow(this.h, (C.int)(row))
+	C.QFormLayout_removeRow(this.h, (C.int)(row))
 }
 
 func (this *QFormLayout) RemoveRowWithWidget(widget *QWidget) {
-	C.QFormLayout_RemoveRowWithWidget(this.h, widget.cPointer())
+	C.QFormLayout_removeRowWithWidget(this.h, widget.cPointer())
 }
 
 func (this *QFormLayout) RemoveRowWithLayout(layout *QLayout) {
-	C.QFormLayout_RemoveRowWithLayout(this.h, layout.cPointer())
+	C.QFormLayout_removeRowWithLayout(this.h, layout.cPointer())
 }
 
 func (this *QFormLayout) TakeRow(row int) *QFormLayout__TakeRowResult {
-	_goptr := newQFormLayout__TakeRowResult(C.QFormLayout_TakeRow(this.h, (C.int)(row)))
+	_goptr := newQFormLayout__TakeRowResult(C.QFormLayout_takeRow(this.h, (C.int)(row)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFormLayout) TakeRowWithWidget(widget *QWidget) *QFormLayout__TakeRowResult {
-	_goptr := newQFormLayout__TakeRowResult(C.QFormLayout_TakeRowWithWidget(this.h, widget.cPointer()))
+	_goptr := newQFormLayout__TakeRowResult(C.QFormLayout_takeRowWithWidget(this.h, widget.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFormLayout) TakeRowWithLayout(layout *QLayout) *QFormLayout__TakeRowResult {
-	_goptr := newQFormLayout__TakeRowResult(C.QFormLayout_TakeRowWithLayout(this.h, layout.cPointer()))
+	_goptr := newQFormLayout__TakeRowResult(C.QFormLayout_takeRowWithLayout(this.h, layout.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFormLayout) SetItem(row int, role QFormLayout__ItemRole, item *QLayoutItem) {
-	C.QFormLayout_SetItem(this.h, (C.int)(row), (C.int)(role), item.cPointer())
+	C.QFormLayout_setItem(this.h, (C.int)(row), (C.int)(role), item.cPointer())
 }
 
 func (this *QFormLayout) SetWidget(row int, role QFormLayout__ItemRole, widget *QWidget) {
-	C.QFormLayout_SetWidget(this.h, (C.int)(row), (C.int)(role), widget.cPointer())
+	C.QFormLayout_setWidget(this.h, (C.int)(row), (C.int)(role), widget.cPointer())
 }
 
 func (this *QFormLayout) SetLayout(row int, role QFormLayout__ItemRole, layout *QLayout) {
-	C.QFormLayout_SetLayout(this.h, (C.int)(row), (C.int)(role), layout.cPointer())
+	C.QFormLayout_setLayout(this.h, (C.int)(row), (C.int)(role), layout.cPointer())
 }
 
 func (this *QFormLayout) SetRowVisible(row int, on bool) {
-	C.QFormLayout_SetRowVisible(this.h, (C.int)(row), (C.bool)(on))
+	C.QFormLayout_setRowVisible(this.h, (C.int)(row), (C.bool)(on))
 }
 
 func (this *QFormLayout) SetRowVisible2(widget *QWidget, on bool) {
-	C.QFormLayout_SetRowVisible2(this.h, widget.cPointer(), (C.bool)(on))
+	C.QFormLayout_setRowVisible2(this.h, widget.cPointer(), (C.bool)(on))
 }
 
 func (this *QFormLayout) SetRowVisible3(layout *QLayout, on bool) {
-	C.QFormLayout_SetRowVisible3(this.h, layout.cPointer(), (C.bool)(on))
+	C.QFormLayout_setRowVisible3(this.h, layout.cPointer(), (C.bool)(on))
 }
 
 func (this *QFormLayout) IsRowVisible(row int) bool {
-	return (bool)(C.QFormLayout_IsRowVisible(this.h, (C.int)(row)))
+	return (bool)(C.QFormLayout_isRowVisible(this.h, (C.int)(row)))
 }
 
 func (this *QFormLayout) IsRowVisibleWithWidget(widget *QWidget) bool {
-	return (bool)(C.QFormLayout_IsRowVisibleWithWidget(this.h, widget.cPointer()))
+	return (bool)(C.QFormLayout_isRowVisibleWithWidget(this.h, widget.cPointer()))
 }
 
 func (this *QFormLayout) IsRowVisibleWithLayout(layout *QLayout) bool {
-	return (bool)(C.QFormLayout_IsRowVisibleWithLayout(this.h, layout.cPointer()))
+	return (bool)(C.QFormLayout_isRowVisibleWithLayout(this.h, layout.cPointer()))
 }
 
 func (this *QFormLayout) ItemAt(row int, role QFormLayout__ItemRole) *QLayoutItem {
-	return newQLayoutItem(C.QFormLayout_ItemAt(this.h, (C.int)(row), (C.int)(role)))
+	return newQLayoutItem(C.QFormLayout_itemAt(this.h, (C.int)(row), (C.int)(role)))
 }
 
 func (this *QFormLayout) LabelForField(field *QWidget) *QWidget {
-	return newQWidget(C.QFormLayout_LabelForField(this.h, field.cPointer()))
+	return newQWidget(C.QFormLayout_labelForField(this.h, field.cPointer()))
 }
 
 func (this *QFormLayout) LabelForFieldWithField(field *QLayout) *QWidget {
-	return newQWidget(C.QFormLayout_LabelForFieldWithField(this.h, field.cPointer()))
+	return newQWidget(C.QFormLayout_labelForFieldWithField(this.h, field.cPointer()))
 }
 
 func (this *QFormLayout) AddItem(item *QLayoutItem) {
-	C.QFormLayout_AddItem(this.h, item.cPointer())
+	C.QFormLayout_addItem(this.h, item.cPointer())
 }
 
 func (this *QFormLayout) ItemAtWithIndex(index int) *QLayoutItem {
-	return newQLayoutItem(C.QFormLayout_ItemAtWithIndex(this.h, (C.int)(index)))
+	return newQLayoutItem(C.QFormLayout_itemAtWithIndex(this.h, (C.int)(index)))
 }
 
 func (this *QFormLayout) TakeAt(index int) *QLayoutItem {
-	return newQLayoutItem(C.QFormLayout_TakeAt(this.h, (C.int)(index)))
+	return newQLayoutItem(C.QFormLayout_takeAt(this.h, (C.int)(index)))
 }
 
 func (this *QFormLayout) SetGeometry(rect *QRect) {
-	C.QFormLayout_SetGeometry(this.h, rect.cPointer())
+	C.QFormLayout_setGeometry(this.h, rect.cPointer())
 }
 
 func (this *QFormLayout) MinimumSize() *QSize {
-	_goptr := newQSize(C.QFormLayout_MinimumSize(this.h))
+	_goptr := newQSize(C.QFormLayout_minimumSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFormLayout) SizeHint() *QSize {
-	_goptr := newQSize(C.QFormLayout_SizeHint(this.h))
+	_goptr := newQSize(C.QFormLayout_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QFormLayout) Invalidate() {
-	C.QFormLayout_Invalidate(this.h)
+	C.QFormLayout_invalidate(this.h)
 }
 
 func (this *QFormLayout) HasHeightForWidth() bool {
-	return (bool)(C.QFormLayout_HasHeightForWidth(this.h))
+	return (bool)(C.QFormLayout_hasHeightForWidth(this.h))
 }
 
 func (this *QFormLayout) HeightForWidth(width int) int {
-	return (int)(C.QFormLayout_HeightForWidth(this.h, (C.int)(width)))
+	return (int)(C.QFormLayout_heightForWidth(this.h, (C.int)(width)))
 }
 
 func (this *QFormLayout) ExpandingDirections() Orientation {
-	return (Orientation)(C.QFormLayout_ExpandingDirections(this.h))
+	return (Orientation)(C.QFormLayout_expandingDirections(this.h))
 }
 
 func (this *QFormLayout) Count() int {
-	return (int)(C.QFormLayout_Count(this.h))
+	return (int)(C.QFormLayout_count(this.h))
 }
 
 func (this *QFormLayout) RowCount() int {
-	return (int)(C.QFormLayout_RowCount(this.h))
+	return (int)(C.QFormLayout_rowCount(this.h))
 }
 
 func QFormLayout_Tr2(s string, c string) string {
@@ -360,7 +360,7 @@ func QFormLayout_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QFormLayout_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QFormLayout_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -371,7 +371,7 @@ func QFormLayout_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QFormLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QFormLayout_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -379,18 +379,18 @@ func QFormLayout_Tr3(s string, c string, n int) string {
 
 func (this *QFormLayout) callVirtualBase_Spacing() int {
 
-	return (int)(C.QFormLayout_virtualbase_Spacing(unsafe.Pointer(this.h)))
+	return (int)(C.QFormLayout_virtualbase_spacing(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) OnSpacing(slot func(super func() int) int) {
-	ok := C.QFormLayout_override_virtual_Spacing(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) Onspacing(slot func(super func() int) int) {
+	ok := C.QFormLayout_override_virtual_spacing(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_Spacing
-func miqt_exec_callback_QFormLayout_Spacing(self *C.QFormLayout, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QFormLayout_spacing
+func miqt_exec_callback_QFormLayout_spacing(self *C.QFormLayout, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -404,18 +404,18 @@ func miqt_exec_callback_QFormLayout_Spacing(self *C.QFormLayout, cb C.intptr_t) 
 
 func (this *QFormLayout) callVirtualBase_SetSpacing(spacing int) {
 
-	C.QFormLayout_virtualbase_SetSpacing(unsafe.Pointer(this.h), (C.int)(spacing))
+	C.QFormLayout_virtualbase_setSpacing(unsafe.Pointer(this.h), (C.int)(spacing))
 
 }
-func (this *QFormLayout) OnSetSpacing(slot func(super func(spacing int), spacing int)) {
-	ok := C.QFormLayout_override_virtual_SetSpacing(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnsetSpacing(slot func(super func(spacing int), spacing int)) {
+	ok := C.QFormLayout_override_virtual_setSpacing(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_SetSpacing
-func miqt_exec_callback_QFormLayout_SetSpacing(self *C.QFormLayout, cb C.intptr_t, spacing C.int) {
+//export miqt_exec_callback_QFormLayout_setSpacing
+func miqt_exec_callback_QFormLayout_setSpacing(self *C.QFormLayout, cb C.intptr_t, spacing C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(spacing int), spacing int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -430,18 +430,18 @@ func miqt_exec_callback_QFormLayout_SetSpacing(self *C.QFormLayout, cb C.intptr_
 
 func (this *QFormLayout) callVirtualBase_AddItem(item *QLayoutItem) {
 
-	C.QFormLayout_virtualbase_AddItem(unsafe.Pointer(this.h), item.cPointer())
+	C.QFormLayout_virtualbase_addItem(unsafe.Pointer(this.h), item.cPointer())
 
 }
-func (this *QFormLayout) OnAddItem(slot func(super func(item *QLayoutItem), item *QLayoutItem)) {
-	ok := C.QFormLayout_override_virtual_AddItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnaddItem(slot func(super func(item *QLayoutItem), item *QLayoutItem)) {
+	ok := C.QFormLayout_override_virtual_addItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_AddItem
-func miqt_exec_callback_QFormLayout_AddItem(self *C.QFormLayout, cb C.intptr_t, item *C.QLayoutItem) {
+//export miqt_exec_callback_QFormLayout_addItem
+func miqt_exec_callback_QFormLayout_addItem(self *C.QFormLayout, cb C.intptr_t, item *C.QLayoutItem) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(item *QLayoutItem), item *QLayoutItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -456,18 +456,18 @@ func miqt_exec_callback_QFormLayout_AddItem(self *C.QFormLayout, cb C.intptr_t, 
 
 func (this *QFormLayout) callVirtualBase_ItemAtWithIndex(index int) *QLayoutItem {
 
-	return newQLayoutItem(C.QFormLayout_virtualbase_ItemAtWithIndex(unsafe.Pointer(this.h), (C.int)(index)))
+	return newQLayoutItem(C.QFormLayout_virtualbase_itemAtWithIndex(unsafe.Pointer(this.h), (C.int)(index)))
 
 }
-func (this *QFormLayout) OnItemAtWithIndex(slot func(super func(index int) *QLayoutItem, index int) *QLayoutItem) {
-	ok := C.QFormLayout_override_virtual_ItemAtWithIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnitemAtWithIndex(slot func(super func(index int) *QLayoutItem, index int) *QLayoutItem) {
+	ok := C.QFormLayout_override_virtual_itemAtWithIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_ItemAtWithIndex
-func miqt_exec_callback_QFormLayout_ItemAtWithIndex(self *C.QFormLayout, cb C.intptr_t, index C.int) *C.QLayoutItem {
+//export miqt_exec_callback_QFormLayout_itemAtWithIndex
+func miqt_exec_callback_QFormLayout_itemAtWithIndex(self *C.QFormLayout, cb C.intptr_t, index C.int) *C.QLayoutItem {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index int) *QLayoutItem, index int) *QLayoutItem)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -484,18 +484,18 @@ func miqt_exec_callback_QFormLayout_ItemAtWithIndex(self *C.QFormLayout, cb C.in
 
 func (this *QFormLayout) callVirtualBase_TakeAt(index int) *QLayoutItem {
 
-	return newQLayoutItem(C.QFormLayout_virtualbase_TakeAt(unsafe.Pointer(this.h), (C.int)(index)))
+	return newQLayoutItem(C.QFormLayout_virtualbase_takeAt(unsafe.Pointer(this.h), (C.int)(index)))
 
 }
-func (this *QFormLayout) OnTakeAt(slot func(super func(index int) *QLayoutItem, index int) *QLayoutItem) {
-	ok := C.QFormLayout_override_virtual_TakeAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OntakeAt(slot func(super func(index int) *QLayoutItem, index int) *QLayoutItem) {
+	ok := C.QFormLayout_override_virtual_takeAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_TakeAt
-func miqt_exec_callback_QFormLayout_TakeAt(self *C.QFormLayout, cb C.intptr_t, index C.int) *C.QLayoutItem {
+//export miqt_exec_callback_QFormLayout_takeAt
+func miqt_exec_callback_QFormLayout_takeAt(self *C.QFormLayout, cb C.intptr_t, index C.int) *C.QLayoutItem {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index int) *QLayoutItem, index int) *QLayoutItem)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -512,18 +512,18 @@ func miqt_exec_callback_QFormLayout_TakeAt(self *C.QFormLayout, cb C.intptr_t, i
 
 func (this *QFormLayout) callVirtualBase_SetGeometry(rect *QRect) {
 
-	C.QFormLayout_virtualbase_SetGeometry(unsafe.Pointer(this.h), rect.cPointer())
+	C.QFormLayout_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())
 
 }
-func (this *QFormLayout) OnSetGeometry(slot func(super func(rect *QRect), rect *QRect)) {
-	ok := C.QFormLayout_override_virtual_SetGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnsetGeometry(slot func(super func(rect *QRect), rect *QRect)) {
+	ok := C.QFormLayout_override_virtual_setGeometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_SetGeometry
-func miqt_exec_callback_QFormLayout_SetGeometry(self *C.QFormLayout, cb C.intptr_t, rect *C.QRect) {
+//export miqt_exec_callback_QFormLayout_setGeometry
+func miqt_exec_callback_QFormLayout_setGeometry(self *C.QFormLayout, cb C.intptr_t, rect *C.QRect) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRect), rect *QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -538,20 +538,20 @@ func miqt_exec_callback_QFormLayout_SetGeometry(self *C.QFormLayout, cb C.intptr
 
 func (this *QFormLayout) callVirtualBase_MinimumSize() *QSize {
 
-	_goptr := newQSize(C.QFormLayout_virtualbase_MinimumSize(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QFormLayout_virtualbase_minimumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QFormLayout) OnMinimumSize(slot func(super func() *QSize) *QSize) {
-	ok := C.QFormLayout_override_virtual_MinimumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnminimumSize(slot func(super func() *QSize) *QSize) {
+	ok := C.QFormLayout_override_virtual_minimumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_MinimumSize
-func miqt_exec_callback_QFormLayout_MinimumSize(self *C.QFormLayout, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QFormLayout_minimumSize
+func miqt_exec_callback_QFormLayout_minimumSize(self *C.QFormLayout, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -565,20 +565,20 @@ func miqt_exec_callback_QFormLayout_MinimumSize(self *C.QFormLayout, cb C.intptr
 
 func (this *QFormLayout) callVirtualBase_SizeHint() *QSize {
 
-	_goptr := newQSize(C.QFormLayout_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QFormLayout_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QFormLayout) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QFormLayout_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnsizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QFormLayout_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_SizeHint
-func miqt_exec_callback_QFormLayout_SizeHint(self *C.QFormLayout, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QFormLayout_sizeHint
+func miqt_exec_callback_QFormLayout_sizeHint(self *C.QFormLayout, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -592,18 +592,18 @@ func miqt_exec_callback_QFormLayout_SizeHint(self *C.QFormLayout, cb C.intptr_t)
 
 func (this *QFormLayout) callVirtualBase_Invalidate() {
 
-	C.QFormLayout_virtualbase_Invalidate(unsafe.Pointer(this.h))
+	C.QFormLayout_virtualbase_invalidate(unsafe.Pointer(this.h))
 
 }
-func (this *QFormLayout) OnInvalidate(slot func(super func())) {
-	ok := C.QFormLayout_override_virtual_Invalidate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) Oninvalidate(slot func(super func())) {
+	ok := C.QFormLayout_override_virtual_invalidate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_Invalidate
-func miqt_exec_callback_QFormLayout_Invalidate(self *C.QFormLayout, cb C.intptr_t) {
+//export miqt_exec_callback_QFormLayout_invalidate
+func miqt_exec_callback_QFormLayout_invalidate(self *C.QFormLayout, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -615,18 +615,18 @@ func miqt_exec_callback_QFormLayout_Invalidate(self *C.QFormLayout, cb C.intptr_
 
 func (this *QFormLayout) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QFormLayout_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QFormLayout_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QFormLayout_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QFormLayout_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_HasHeightForWidth
-func miqt_exec_callback_QFormLayout_HasHeightForWidth(self *C.QFormLayout, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QFormLayout_hasHeightForWidth
+func miqt_exec_callback_QFormLayout_hasHeightForWidth(self *C.QFormLayout, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -640,18 +640,18 @@ func miqt_exec_callback_QFormLayout_HasHeightForWidth(self *C.QFormLayout, cb C.
 
 func (this *QFormLayout) callVirtualBase_HeightForWidth(width int) int {
 
-	return (int)(C.QFormLayout_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(width)))
+	return (int)(C.QFormLayout_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(width)))
 
 }
-func (this *QFormLayout) OnHeightForWidth(slot func(super func(width int) int, width int) int) {
-	ok := C.QFormLayout_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnheightForWidth(slot func(super func(width int) int, width int) int) {
+	ok := C.QFormLayout_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_HeightForWidth
-func miqt_exec_callback_QFormLayout_HeightForWidth(self *C.QFormLayout, cb C.intptr_t, width C.int) C.int {
+//export miqt_exec_callback_QFormLayout_heightForWidth
+func miqt_exec_callback_QFormLayout_heightForWidth(self *C.QFormLayout, cb C.intptr_t, width C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(width int) int, width int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -668,18 +668,18 @@ func miqt_exec_callback_QFormLayout_HeightForWidth(self *C.QFormLayout, cb C.int
 
 func (this *QFormLayout) callVirtualBase_ExpandingDirections() Orientation {
 
-	return (Orientation)(C.QFormLayout_virtualbase_ExpandingDirections(unsafe.Pointer(this.h)))
+	return (Orientation)(C.QFormLayout_virtualbase_expandingDirections(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) OnExpandingDirections(slot func(super func() Orientation) Orientation) {
-	ok := C.QFormLayout_override_virtual_ExpandingDirections(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnexpandingDirections(slot func(super func() Orientation) Orientation) {
+	ok := C.QFormLayout_override_virtual_expandingDirections(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_ExpandingDirections
-func miqt_exec_callback_QFormLayout_ExpandingDirections(self *C.QFormLayout, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QFormLayout_expandingDirections
+func miqt_exec_callback_QFormLayout_expandingDirections(self *C.QFormLayout, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() Orientation) Orientation)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -693,18 +693,18 @@ func miqt_exec_callback_QFormLayout_ExpandingDirections(self *C.QFormLayout, cb 
 
 func (this *QFormLayout) callVirtualBase_Count() int {
 
-	return (int)(C.QFormLayout_virtualbase_Count(unsafe.Pointer(this.h)))
+	return (int)(C.QFormLayout_virtualbase_count(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) OnCount(slot func(super func() int) int) {
-	ok := C.QFormLayout_override_virtual_Count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) Oncount(slot func(super func() int) int) {
+	ok := C.QFormLayout_override_virtual_count(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_Count
-func miqt_exec_callback_QFormLayout_Count(self *C.QFormLayout, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QFormLayout_count
+func miqt_exec_callback_QFormLayout_count(self *C.QFormLayout, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -718,20 +718,20 @@ func miqt_exec_callback_QFormLayout_Count(self *C.QFormLayout, cb C.intptr_t) C.
 
 func (this *QFormLayout) callVirtualBase_Geometry() *QRect {
 
-	_goptr := newQRect(C.QFormLayout_virtualbase_Geometry(unsafe.Pointer(this.h)))
+	_goptr := newQRect(C.QFormLayout_virtualbase_geometry(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QFormLayout) OnGeometry(slot func(super func() *QRect) *QRect) {
-	ok := C.QFormLayout_override_virtual_Geometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) Ongeometry(slot func(super func() *QRect) *QRect) {
+	ok := C.QFormLayout_override_virtual_geometry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_Geometry
-func miqt_exec_callback_QFormLayout_Geometry(self *C.QFormLayout, cb C.intptr_t) *C.QRect {
+//export miqt_exec_callback_QFormLayout_geometry
+func miqt_exec_callback_QFormLayout_geometry(self *C.QFormLayout, cb C.intptr_t) *C.QRect {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QRect) *QRect)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -745,20 +745,20 @@ func miqt_exec_callback_QFormLayout_Geometry(self *C.QFormLayout, cb C.intptr_t)
 
 func (this *QFormLayout) callVirtualBase_MaximumSize() *QSize {
 
-	_goptr := newQSize(C.QFormLayout_virtualbase_MaximumSize(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QFormLayout_virtualbase_maximumSize(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QFormLayout) OnMaximumSize(slot func(super func() *QSize) *QSize) {
-	ok := C.QFormLayout_override_virtual_MaximumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnmaximumSize(slot func(super func() *QSize) *QSize) {
+	ok := C.QFormLayout_override_virtual_maximumSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_MaximumSize
-func miqt_exec_callback_QFormLayout_MaximumSize(self *C.QFormLayout, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QFormLayout_maximumSize
+func miqt_exec_callback_QFormLayout_maximumSize(self *C.QFormLayout, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -772,18 +772,18 @@ func miqt_exec_callback_QFormLayout_MaximumSize(self *C.QFormLayout, cb C.intptr
 
 func (this *QFormLayout) callVirtualBase_IndexOf(param1 *QWidget) int {
 
-	return (int)(C.QFormLayout_virtualbase_IndexOf(unsafe.Pointer(this.h), param1.cPointer()))
+	return (int)(C.QFormLayout_virtualbase_indexOf(unsafe.Pointer(this.h), param1.cPointer()))
 
 }
-func (this *QFormLayout) OnIndexOf(slot func(super func(param1 *QWidget) int, param1 *QWidget) int) {
-	ok := C.QFormLayout_override_virtual_IndexOf(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnindexOf(slot func(super func(param1 *QWidget) int, param1 *QWidget) int) {
+	ok := C.QFormLayout_override_virtual_indexOf(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_IndexOf
-func miqt_exec_callback_QFormLayout_IndexOf(self *C.QFormLayout, cb C.intptr_t, param1 *C.QWidget) C.int {
+//export miqt_exec_callback_QFormLayout_indexOf
+func miqt_exec_callback_QFormLayout_indexOf(self *C.QFormLayout, cb C.intptr_t, param1 *C.QWidget) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QWidget) int, param1 *QWidget) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -800,18 +800,18 @@ func miqt_exec_callback_QFormLayout_IndexOf(self *C.QFormLayout, cb C.intptr_t, 
 
 func (this *QFormLayout) callVirtualBase_IsEmpty() bool {
 
-	return (bool)(C.QFormLayout_virtualbase_IsEmpty(unsafe.Pointer(this.h)))
+	return (bool)(C.QFormLayout_virtualbase_isEmpty(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) OnIsEmpty(slot func(super func() bool) bool) {
-	ok := C.QFormLayout_override_virtual_IsEmpty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnisEmpty(slot func(super func() bool) bool) {
+	ok := C.QFormLayout_override_virtual_isEmpty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_IsEmpty
-func miqt_exec_callback_QFormLayout_IsEmpty(self *C.QFormLayout, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QFormLayout_isEmpty
+func miqt_exec_callback_QFormLayout_isEmpty(self *C.QFormLayout, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -825,18 +825,18 @@ func miqt_exec_callback_QFormLayout_IsEmpty(self *C.QFormLayout, cb C.intptr_t) 
 
 func (this *QFormLayout) callVirtualBase_ControlTypes() QSizePolicy__ControlType {
 
-	return (QSizePolicy__ControlType)(C.QFormLayout_virtualbase_ControlTypes(unsafe.Pointer(this.h)))
+	return (QSizePolicy__ControlType)(C.QFormLayout_virtualbase_controlTypes(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) OnControlTypes(slot func(super func() QSizePolicy__ControlType) QSizePolicy__ControlType) {
-	ok := C.QFormLayout_override_virtual_ControlTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OncontrolTypes(slot func(super func() QSizePolicy__ControlType) QSizePolicy__ControlType) {
+	ok := C.QFormLayout_override_virtual_controlTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_ControlTypes
-func miqt_exec_callback_QFormLayout_ControlTypes(self *C.QFormLayout, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QFormLayout_controlTypes
+func miqt_exec_callback_QFormLayout_controlTypes(self *C.QFormLayout, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() QSizePolicy__ControlType) QSizePolicy__ControlType)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -850,18 +850,18 @@ func miqt_exec_callback_QFormLayout_ControlTypes(self *C.QFormLayout, cb C.intpt
 
 func (this *QFormLayout) callVirtualBase_ReplaceWidget(from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem {
 
-	return newQLayoutItem(C.QFormLayout_virtualbase_ReplaceWidget(unsafe.Pointer(this.h), from.cPointer(), to.cPointer(), (C.int)(options)))
+	return newQLayoutItem(C.QFormLayout_virtualbase_replaceWidget(unsafe.Pointer(this.h), from.cPointer(), to.cPointer(), (C.int)(options)))
 
 }
-func (this *QFormLayout) OnReplaceWidget(slot func(super func(from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem, from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem) {
-	ok := C.QFormLayout_override_virtual_ReplaceWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnreplaceWidget(slot func(super func(from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem, from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem) {
+	ok := C.QFormLayout_override_virtual_replaceWidget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_ReplaceWidget
-func miqt_exec_callback_QFormLayout_ReplaceWidget(self *C.QFormLayout, cb C.intptr_t, from *C.QWidget, to *C.QWidget, options C.int) *C.QLayoutItem {
+//export miqt_exec_callback_QFormLayout_replaceWidget
+func miqt_exec_callback_QFormLayout_replaceWidget(self *C.QFormLayout, cb C.intptr_t, from *C.QWidget, to *C.QWidget, options C.int) *C.QLayoutItem {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem, from *QWidget, to *QWidget, options FindChildOption) *QLayoutItem)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -882,18 +882,18 @@ func miqt_exec_callback_QFormLayout_ReplaceWidget(self *C.QFormLayout, cb C.intp
 
 func (this *QFormLayout) callVirtualBase_Layout() *QLayout {
 
-	return newQLayout(C.QFormLayout_virtualbase_Layout(unsafe.Pointer(this.h)))
+	return newQLayout(C.QFormLayout_virtualbase_layout(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) OnLayout(slot func(super func() *QLayout) *QLayout) {
-	ok := C.QFormLayout_override_virtual_Layout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) Onlayout(slot func(super func() *QLayout) *QLayout) {
+	ok := C.QFormLayout_override_virtual_layout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_Layout
-func miqt_exec_callback_QFormLayout_Layout(self *C.QFormLayout, cb C.intptr_t) *C.QLayout {
+//export miqt_exec_callback_QFormLayout_layout
+func miqt_exec_callback_QFormLayout_layout(self *C.QFormLayout, cb C.intptr_t) *C.QLayout {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QLayout) *QLayout)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -907,18 +907,18 @@ func miqt_exec_callback_QFormLayout_Layout(self *C.QFormLayout, cb C.intptr_t) *
 
 func (this *QFormLayout) callVirtualBase_ChildEvent(e *QChildEvent) {
 
-	C.QFormLayout_virtualbase_ChildEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QFormLayout_virtualbase_childEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QFormLayout) OnChildEvent(slot func(super func(e *QChildEvent), e *QChildEvent)) {
-	ok := C.QFormLayout_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnchildEvent(slot func(super func(e *QChildEvent), e *QChildEvent)) {
+	ok := C.QFormLayout_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_ChildEvent
-func miqt_exec_callback_QFormLayout_ChildEvent(self *C.QFormLayout, cb C.intptr_t, e *C.QChildEvent) {
+//export miqt_exec_callback_QFormLayout_childEvent
+func miqt_exec_callback_QFormLayout_childEvent(self *C.QFormLayout, cb C.intptr_t, e *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QChildEvent), e *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -933,18 +933,18 @@ func miqt_exec_callback_QFormLayout_ChildEvent(self *C.QFormLayout, cb C.intptr_
 
 func (this *QFormLayout) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QFormLayout_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QFormLayout_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QFormLayout) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QFormLayout_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QFormLayout_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_Event
-func miqt_exec_callback_QFormLayout_Event(self *C.QFormLayout, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QFormLayout_event
+func miqt_exec_callback_QFormLayout_event(self *C.QFormLayout, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -961,18 +961,18 @@ func miqt_exec_callback_QFormLayout_Event(self *C.QFormLayout, cb C.intptr_t, ev
 
 func (this *QFormLayout) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QFormLayout_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QFormLayout_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QFormLayout) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QFormLayout_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QFormLayout_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_EventFilter
-func miqt_exec_callback_QFormLayout_EventFilter(self *C.QFormLayout, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QFormLayout_eventFilter
+func miqt_exec_callback_QFormLayout_eventFilter(self *C.QFormLayout, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -991,18 +991,18 @@ func miqt_exec_callback_QFormLayout_EventFilter(self *C.QFormLayout, cb C.intptr
 
 func (this *QFormLayout) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QFormLayout_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QFormLayout_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QFormLayout) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QFormLayout_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QFormLayout_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_TimerEvent
-func miqt_exec_callback_QFormLayout_TimerEvent(self *C.QFormLayout, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QFormLayout_timerEvent
+func miqt_exec_callback_QFormLayout_timerEvent(self *C.QFormLayout, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1017,18 +1017,18 @@ func miqt_exec_callback_QFormLayout_TimerEvent(self *C.QFormLayout, cb C.intptr_
 
 func (this *QFormLayout) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QFormLayout_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QFormLayout_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QFormLayout) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QFormLayout_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QFormLayout_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_CustomEvent
-func miqt_exec_callback_QFormLayout_CustomEvent(self *C.QFormLayout, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QFormLayout_customEvent
+func miqt_exec_callback_QFormLayout_customEvent(self *C.QFormLayout, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1043,18 +1043,18 @@ func miqt_exec_callback_QFormLayout_CustomEvent(self *C.QFormLayout, cb C.intptr
 
 func (this *QFormLayout) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QFormLayout_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QFormLayout_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QFormLayout) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QFormLayout_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QFormLayout_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_ConnectNotify
-func miqt_exec_callback_QFormLayout_ConnectNotify(self *C.QFormLayout, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QFormLayout_connectNotify
+func miqt_exec_callback_QFormLayout_connectNotify(self *C.QFormLayout, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1069,18 +1069,18 @@ func miqt_exec_callback_QFormLayout_ConnectNotify(self *C.QFormLayout, cb C.intp
 
 func (this *QFormLayout) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QFormLayout_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QFormLayout_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QFormLayout) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QFormLayout_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QFormLayout_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_DisconnectNotify
-func miqt_exec_callback_QFormLayout_DisconnectNotify(self *C.QFormLayout, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QFormLayout_disconnectNotify
+func miqt_exec_callback_QFormLayout_disconnectNotify(self *C.QFormLayout, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1095,18 +1095,18 @@ func miqt_exec_callback_QFormLayout_DisconnectNotify(self *C.QFormLayout, cb C.i
 
 func (this *QFormLayout) callVirtualBase_MinimumHeightForWidth(param1 int) int {
 
-	return (int)(C.QFormLayout_virtualbase_MinimumHeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QFormLayout_virtualbase_minimumHeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QFormLayout) OnMinimumHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QFormLayout_override_virtual_MinimumHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnminimumHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QFormLayout_override_virtual_minimumHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_MinimumHeightForWidth
-func miqt_exec_callback_QFormLayout_MinimumHeightForWidth(self *C.QFormLayout, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QFormLayout_minimumHeightForWidth
+func miqt_exec_callback_QFormLayout_minimumHeightForWidth(self *C.QFormLayout, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1123,18 +1123,18 @@ func miqt_exec_callback_QFormLayout_MinimumHeightForWidth(self *C.QFormLayout, c
 
 func (this *QFormLayout) callVirtualBase_Widget() *QWidget {
 
-	return newQWidget(C.QFormLayout_virtualbase_Widget(unsafe.Pointer(this.h)))
+	return newQWidget(C.QFormLayout_virtualbase_widget(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) OnWidget(slot func(super func() *QWidget) *QWidget) {
-	ok := C.QFormLayout_override_virtual_Widget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) Onwidget(slot func(super func() *QWidget) *QWidget) {
+	ok := C.QFormLayout_override_virtual_widget(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_Widget
-func miqt_exec_callback_QFormLayout_Widget(self *C.QFormLayout, cb C.intptr_t) *C.QWidget {
+//export miqt_exec_callback_QFormLayout_widget
+func miqt_exec_callback_QFormLayout_widget(self *C.QFormLayout, cb C.intptr_t) *C.QWidget {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QWidget) *QWidget)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1148,18 +1148,18 @@ func miqt_exec_callback_QFormLayout_Widget(self *C.QFormLayout, cb C.intptr_t) *
 
 func (this *QFormLayout) callVirtualBase_SpacerItem() *QSpacerItem {
 
-	return newQSpacerItem(C.QFormLayout_virtualbase_SpacerItem(unsafe.Pointer(this.h)))
+	return newQSpacerItem(C.QFormLayout_virtualbase_spacerItem(unsafe.Pointer(this.h)))
 
 }
-func (this *QFormLayout) OnSpacerItem(slot func(super func() *QSpacerItem) *QSpacerItem) {
-	ok := C.QFormLayout_override_virtual_SpacerItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QFormLayout) OnspacerItem(slot func(super func() *QSpacerItem) *QSpacerItem) {
+	ok := C.QFormLayout_override_virtual_spacerItem(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QFormLayout_SpacerItem
-func miqt_exec_callback_QFormLayout_SpacerItem(self *C.QFormLayout, cb C.intptr_t) *C.QSpacerItem {
+//export miqt_exec_callback_QFormLayout_spacerItem
+func miqt_exec_callback_QFormLayout_spacerItem(self *C.QFormLayout, cb C.intptr_t) *C.QSpacerItem {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSpacerItem) *QSpacerItem)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1173,7 +1173,7 @@ func miqt_exec_callback_QFormLayout_SpacerItem(self *C.QFormLayout, cb C.intptr_
 
 // Delete this object from C++ memory.
 func (this *QFormLayout) Delete() {
-	C.QFormLayout_Delete(this.h)
+	C.QFormLayout_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1219,7 +1219,7 @@ func UnsafeNewQFormLayout__TakeRowResult(h unsafe.Pointer) *QFormLayout__TakeRow
 
 // Delete this object from C++ memory.
 func (this *QFormLayout__TakeRowResult) Delete() {
-	C.QFormLayout__TakeRowResult_Delete(this.h)
+	C.QFormLayout__TakeRowResult_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -15,20 +15,20 @@ extern "C" {
 } /* extern C */
 #endif
 
-unsigned char QPluginMetaData_ArchRequirements() {
+unsigned char QPluginMetaData_archRequirements() {
 	quint8 _ret = QPluginMetaData::archRequirements();
 	return static_cast<unsigned char>(_ret);
 }
 
-void QPluginMetaData_Delete(QPluginMetaData* self) {
+void QPluginMetaData_delete(QPluginMetaData* self) {
 	delete self;
 }
 
-QJsonObject* QStaticPlugin_MetaData(const QStaticPlugin* self) {
+QJsonObject* QStaticPlugin_metaData(const QStaticPlugin* self) {
 	return new QJsonObject(self->metaData());
 }
 
-void QStaticPlugin_Delete(QStaticPlugin* self) {
+void QStaticPlugin_delete(QStaticPlugin* self) {
 	delete self;
 }
 
@@ -36,7 +36,7 @@ QPluginMetaData__Header* QPluginMetaData__Header_new(QPluginMetaData__Header* pa
 	return new QPluginMetaData::Header(*param1);
 }
 
-void QPluginMetaData__Header_Delete(QPluginMetaData__Header* self) {
+void QPluginMetaData__Header_delete(QPluginMetaData__Header* self) {
 	delete self;
 }
 
@@ -44,7 +44,7 @@ QPluginMetaData__MagicHeader* QPluginMetaData__MagicHeader_new() {
 	return new QPluginMetaData::MagicHeader();
 }
 
-void QPluginMetaData__MagicHeader_Delete(QPluginMetaData__MagicHeader* self) {
+void QPluginMetaData__MagicHeader_delete(QPluginMetaData__MagicHeader* self) {
 	delete self;
 }
 
@@ -56,7 +56,7 @@ QPluginMetaData__ElfNoteHeader* QPluginMetaData__ElfNoteHeader_new2(QPluginMetaD
 	return new QPluginMetaData::ElfNoteHeader(*param1);
 }
 
-void QPluginMetaData__ElfNoteHeader_Delete(QPluginMetaData__ElfNoteHeader* self) {
+void QPluginMetaData__ElfNoteHeader_delete(QPluginMetaData__ElfNoteHeader* self) {
 	delete self;
 }
 

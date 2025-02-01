@@ -100,233 +100,233 @@ func NewQMatrix4x47(param1 *QMatrix4x4) *QMatrix4x4 {
 }
 
 func (this *QMatrix4x4) Column(index int) *QVector4D {
-	_goptr := newQVector4D(C.QMatrix4x4_Column(this.h, (C.int)(index)))
+	_goptr := newQVector4D(C.QMatrix4x4_column(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) SetColumn(index int, value *QVector4D) {
-	C.QMatrix4x4_SetColumn(this.h, (C.int)(index), value.cPointer())
+	C.QMatrix4x4_setColumn(this.h, (C.int)(index), value.cPointer())
 }
 
 func (this *QMatrix4x4) Row(index int) *QVector4D {
-	_goptr := newQVector4D(C.QMatrix4x4_Row(this.h, (C.int)(index)))
+	_goptr := newQVector4D(C.QMatrix4x4_row(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) SetRow(index int, value *QVector4D) {
-	C.QMatrix4x4_SetRow(this.h, (C.int)(index), value.cPointer())
+	C.QMatrix4x4_setRow(this.h, (C.int)(index), value.cPointer())
 }
 
 func (this *QMatrix4x4) IsAffine() bool {
-	return (bool)(C.QMatrix4x4_IsAffine(this.h))
+	return (bool)(C.QMatrix4x4_isAffine(this.h))
 }
 
 func (this *QMatrix4x4) IsIdentity() bool {
-	return (bool)(C.QMatrix4x4_IsIdentity(this.h))
+	return (bool)(C.QMatrix4x4_isIdentity(this.h))
 }
 
 func (this *QMatrix4x4) SetToIdentity() {
-	C.QMatrix4x4_SetToIdentity(this.h)
+	C.QMatrix4x4_setToIdentity(this.h)
 }
 
 func (this *QMatrix4x4) Fill(value float32) {
-	C.QMatrix4x4_Fill(this.h, (C.float)(value))
+	C.QMatrix4x4_fill(this.h, (C.float)(value))
 }
 
 func (this *QMatrix4x4) Determinant() float64 {
-	return (float64)(C.QMatrix4x4_Determinant(this.h))
+	return (float64)(C.QMatrix4x4_determinant(this.h))
 }
 
 func (this *QMatrix4x4) Inverted() *QMatrix4x4 {
-	_goptr := newQMatrix4x4(C.QMatrix4x4_Inverted(this.h))
+	_goptr := newQMatrix4x4(C.QMatrix4x4_inverted(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) Transposed() *QMatrix4x4 {
-	_goptr := newQMatrix4x4(C.QMatrix4x4_Transposed(this.h))
+	_goptr := newQMatrix4x4(C.QMatrix4x4_transposed(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) OperatorPlusAssign(other *QMatrix4x4) *QMatrix4x4 {
-	return newQMatrix4x4(C.QMatrix4x4_OperatorPlusAssign(this.h, other.cPointer()))
+	return newQMatrix4x4(C.QMatrix4x4_operatorPlusAssign(this.h, other.cPointer()))
 }
 
 func (this *QMatrix4x4) OperatorMinusAssign(other *QMatrix4x4) *QMatrix4x4 {
-	return newQMatrix4x4(C.QMatrix4x4_OperatorMinusAssign(this.h, other.cPointer()))
+	return newQMatrix4x4(C.QMatrix4x4_operatorMinusAssign(this.h, other.cPointer()))
 }
 
 func (this *QMatrix4x4) OperatorMultiplyAssign(other *QMatrix4x4) *QMatrix4x4 {
-	return newQMatrix4x4(C.QMatrix4x4_OperatorMultiplyAssign(this.h, other.cPointer()))
+	return newQMatrix4x4(C.QMatrix4x4_operatorMultiplyAssign(this.h, other.cPointer()))
 }
 
 func (this *QMatrix4x4) OperatorMultiplyAssignWithFactor(factor float32) *QMatrix4x4 {
-	return newQMatrix4x4(C.QMatrix4x4_OperatorMultiplyAssignWithFactor(this.h, (C.float)(factor)))
+	return newQMatrix4x4(C.QMatrix4x4_operatorMultiplyAssignWithFactor(this.h, (C.float)(factor)))
 }
 
 func (this *QMatrix4x4) OperatorDivideAssign(divisor float32) *QMatrix4x4 {
-	return newQMatrix4x4(C.QMatrix4x4_OperatorDivideAssign(this.h, (C.float)(divisor)))
+	return newQMatrix4x4(C.QMatrix4x4_operatorDivideAssign(this.h, (C.float)(divisor)))
 }
 
 func (this *QMatrix4x4) OperatorEqual(other *QMatrix4x4) bool {
-	return (bool)(C.QMatrix4x4_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QMatrix4x4_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QMatrix4x4) OperatorNotEqual(other *QMatrix4x4) bool {
-	return (bool)(C.QMatrix4x4_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QMatrix4x4_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QMatrix4x4) Scale(vector *QVector3D) {
-	C.QMatrix4x4_Scale(this.h, vector.cPointer())
+	C.QMatrix4x4_scale(this.h, vector.cPointer())
 }
 
 func (this *QMatrix4x4) Translate(vector *QVector3D) {
-	C.QMatrix4x4_Translate(this.h, vector.cPointer())
+	C.QMatrix4x4_translate(this.h, vector.cPointer())
 }
 
 func (this *QMatrix4x4) Rotate(angle float32, vector *QVector3D) {
-	C.QMatrix4x4_Rotate(this.h, (C.float)(angle), vector.cPointer())
+	C.QMatrix4x4_rotate(this.h, (C.float)(angle), vector.cPointer())
 }
 
 func (this *QMatrix4x4) Scale2(x float32, y float32) {
-	C.QMatrix4x4_Scale2(this.h, (C.float)(x), (C.float)(y))
+	C.QMatrix4x4_scale2(this.h, (C.float)(x), (C.float)(y))
 }
 
 func (this *QMatrix4x4) Scale3(x float32, y float32, z float32) {
-	C.QMatrix4x4_Scale3(this.h, (C.float)(x), (C.float)(y), (C.float)(z))
+	C.QMatrix4x4_scale3(this.h, (C.float)(x), (C.float)(y), (C.float)(z))
 }
 
 func (this *QMatrix4x4) ScaleWithFactor(factor float32) {
-	C.QMatrix4x4_ScaleWithFactor(this.h, (C.float)(factor))
+	C.QMatrix4x4_scaleWithFactor(this.h, (C.float)(factor))
 }
 
 func (this *QMatrix4x4) Translate2(x float32, y float32) {
-	C.QMatrix4x4_Translate2(this.h, (C.float)(x), (C.float)(y))
+	C.QMatrix4x4_translate2(this.h, (C.float)(x), (C.float)(y))
 }
 
 func (this *QMatrix4x4) Translate3(x float32, y float32, z float32) {
-	C.QMatrix4x4_Translate3(this.h, (C.float)(x), (C.float)(y), (C.float)(z))
+	C.QMatrix4x4_translate3(this.h, (C.float)(x), (C.float)(y), (C.float)(z))
 }
 
 func (this *QMatrix4x4) Rotate2(angle float32, x float32, y float32) {
-	C.QMatrix4x4_Rotate2(this.h, (C.float)(angle), (C.float)(x), (C.float)(y))
+	C.QMatrix4x4_rotate2(this.h, (C.float)(angle), (C.float)(x), (C.float)(y))
 }
 
 func (this *QMatrix4x4) RotateWithQuaternion(quaternion *QQuaternion) {
-	C.QMatrix4x4_RotateWithQuaternion(this.h, quaternion.cPointer())
+	C.QMatrix4x4_rotateWithQuaternion(this.h, quaternion.cPointer())
 }
 
 func (this *QMatrix4x4) Ortho(rect *QRect) {
-	C.QMatrix4x4_Ortho(this.h, rect.cPointer())
+	C.QMatrix4x4_ortho(this.h, rect.cPointer())
 }
 
 func (this *QMatrix4x4) OrthoWithRect(rect *QRectF) {
-	C.QMatrix4x4_OrthoWithRect(this.h, rect.cPointer())
+	C.QMatrix4x4_orthoWithRect(this.h, rect.cPointer())
 }
 
 func (this *QMatrix4x4) Ortho2(left float32, right float32, bottom float32, top float32, nearPlane float32, farPlane float32) {
-	C.QMatrix4x4_Ortho2(this.h, (C.float)(left), (C.float)(right), (C.float)(bottom), (C.float)(top), (C.float)(nearPlane), (C.float)(farPlane))
+	C.QMatrix4x4_ortho2(this.h, (C.float)(left), (C.float)(right), (C.float)(bottom), (C.float)(top), (C.float)(nearPlane), (C.float)(farPlane))
 }
 
 func (this *QMatrix4x4) Frustum(left float32, right float32, bottom float32, top float32, nearPlane float32, farPlane float32) {
-	C.QMatrix4x4_Frustum(this.h, (C.float)(left), (C.float)(right), (C.float)(bottom), (C.float)(top), (C.float)(nearPlane), (C.float)(farPlane))
+	C.QMatrix4x4_frustum(this.h, (C.float)(left), (C.float)(right), (C.float)(bottom), (C.float)(top), (C.float)(nearPlane), (C.float)(farPlane))
 }
 
 func (this *QMatrix4x4) Perspective(verticalAngle float32, aspectRatio float32, nearPlane float32, farPlane float32) {
-	C.QMatrix4x4_Perspective(this.h, (C.float)(verticalAngle), (C.float)(aspectRatio), (C.float)(nearPlane), (C.float)(farPlane))
+	C.QMatrix4x4_perspective(this.h, (C.float)(verticalAngle), (C.float)(aspectRatio), (C.float)(nearPlane), (C.float)(farPlane))
 }
 
 func (this *QMatrix4x4) LookAt(eye *QVector3D, center *QVector3D, up *QVector3D) {
-	C.QMatrix4x4_LookAt(this.h, eye.cPointer(), center.cPointer(), up.cPointer())
+	C.QMatrix4x4_lookAt(this.h, eye.cPointer(), center.cPointer(), up.cPointer())
 }
 
 func (this *QMatrix4x4) Viewport(rect *QRectF) {
-	C.QMatrix4x4_Viewport(this.h, rect.cPointer())
+	C.QMatrix4x4_viewport(this.h, rect.cPointer())
 }
 
 func (this *QMatrix4x4) Viewport2(left float32, bottom float32, width float32, height float32) {
-	C.QMatrix4x4_Viewport2(this.h, (C.float)(left), (C.float)(bottom), (C.float)(width), (C.float)(height))
+	C.QMatrix4x4_viewport2(this.h, (C.float)(left), (C.float)(bottom), (C.float)(width), (C.float)(height))
 }
 
 func (this *QMatrix4x4) FlipCoordinates() {
-	C.QMatrix4x4_FlipCoordinates(this.h)
+	C.QMatrix4x4_flipCoordinates(this.h)
 }
 
 func (this *QMatrix4x4) CopyDataTo(values *float32) {
-	C.QMatrix4x4_CopyDataTo(this.h, (*C.float)(unsafe.Pointer(values)))
+	C.QMatrix4x4_copyDataTo(this.h, (*C.float)(unsafe.Pointer(values)))
 }
 
 func (this *QMatrix4x4) ToTransform() *QTransform {
-	_goptr := newQTransform(C.QMatrix4x4_ToTransform(this.h))
+	_goptr := newQTransform(C.QMatrix4x4_toTransform(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) ToTransformWithDistanceToPlane(distanceToPlane float32) *QTransform {
-	_goptr := newQTransform(C.QMatrix4x4_ToTransformWithDistanceToPlane(this.h, (C.float)(distanceToPlane)))
+	_goptr := newQTransform(C.QMatrix4x4_toTransformWithDistanceToPlane(this.h, (C.float)(distanceToPlane)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) Map(point *QPoint) *QPoint {
-	_goptr := newQPoint(C.QMatrix4x4_Map(this.h, point.cPointer()))
+	_goptr := newQPoint(C.QMatrix4x4_map(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) MapWithPoint(point *QPointF) *QPointF {
-	_goptr := newQPointF(C.QMatrix4x4_MapWithPoint(this.h, point.cPointer()))
+	_goptr := newQPointF(C.QMatrix4x4_mapWithPoint(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) Map2(point *QVector3D) *QVector3D {
-	_goptr := newQVector3D(C.QMatrix4x4_Map2(this.h, point.cPointer()))
+	_goptr := newQVector3D(C.QMatrix4x4_map2(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) MapVector(vector *QVector3D) *QVector3D {
-	_goptr := newQVector3D(C.QMatrix4x4_MapVector(this.h, vector.cPointer()))
+	_goptr := newQVector3D(C.QMatrix4x4_mapVector(this.h, vector.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) Map3(point *QVector4D) *QVector4D {
-	_goptr := newQVector4D(C.QMatrix4x4_Map3(this.h, point.cPointer()))
+	_goptr := newQVector4D(C.QMatrix4x4_map3(this.h, point.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) MapRect(rect *QRect) *QRect {
-	_goptr := newQRect(C.QMatrix4x4_MapRect(this.h, rect.cPointer()))
+	_goptr := newQRect(C.QMatrix4x4_mapRect(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) MapRectWithRect(rect *QRectF) *QRectF {
-	_goptr := newQRectF(C.QMatrix4x4_MapRectWithRect(this.h, rect.cPointer()))
+	_goptr := newQRectF(C.QMatrix4x4_mapRectWithRect(this.h, rect.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) Data() *float32 {
-	return (*float32)(unsafe.Pointer(C.QMatrix4x4_Data(this.h)))
+	return (*float32)(unsafe.Pointer(C.QMatrix4x4_data(this.h)))
 }
 
 func (this *QMatrix4x4) Data2() *float32 {
-	return (*float32)(unsafe.Pointer(C.QMatrix4x4_Data2(this.h)))
+	return (*float32)(unsafe.Pointer(C.QMatrix4x4_data2(this.h)))
 }
 
 func (this *QMatrix4x4) ConstData() *float32 {
-	return (*float32)(unsafe.Pointer(C.QMatrix4x4_ConstData(this.h)))
+	return (*float32)(unsafe.Pointer(C.QMatrix4x4_constData(this.h)))
 }
 
 func (this *QMatrix4x4) Optimize() {
-	C.QMatrix4x4_Optimize(this.h)
+	C.QMatrix4x4_optimize(this.h)
 }
 
 func (this *QMatrix4x4) ToQVariant() *QVariant {
@@ -336,34 +336,34 @@ func (this *QMatrix4x4) ToQVariant() *QVariant {
 }
 
 func (this *QMatrix4x4) ProjectedRotate(angle float32, x float32, y float32, z float32) {
-	C.QMatrix4x4_ProjectedRotate(this.h, (C.float)(angle), (C.float)(x), (C.float)(y), (C.float)(z))
+	C.QMatrix4x4_projectedRotate(this.h, (C.float)(angle), (C.float)(x), (C.float)(y), (C.float)(z))
 }
 
 func (this *QMatrix4x4) Flags() QMatrix4x4__Flag {
-	return (QMatrix4x4__Flag)(C.QMatrix4x4_Flags(this.h))
+	return (QMatrix4x4__Flag)(C.QMatrix4x4_flags(this.h))
 }
 
 func (this *QMatrix4x4) Inverted1(invertible *bool) *QMatrix4x4 {
-	_goptr := newQMatrix4x4(C.QMatrix4x4_Inverted1(this.h, (*C.bool)(unsafe.Pointer(invertible))))
+	_goptr := newQMatrix4x4(C.QMatrix4x4_inverted1(this.h, (*C.bool)(unsafe.Pointer(invertible))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMatrix4x4) Rotate4(angle float32, x float32, y float32, z float32) {
-	C.QMatrix4x4_Rotate4(this.h, (C.float)(angle), (C.float)(x), (C.float)(y), (C.float)(z))
+	C.QMatrix4x4_rotate4(this.h, (C.float)(angle), (C.float)(x), (C.float)(y), (C.float)(z))
 }
 
 func (this *QMatrix4x4) Viewport5(left float32, bottom float32, width float32, height float32, nearPlane float32) {
-	C.QMatrix4x4_Viewport5(this.h, (C.float)(left), (C.float)(bottom), (C.float)(width), (C.float)(height), (C.float)(nearPlane))
+	C.QMatrix4x4_viewport5(this.h, (C.float)(left), (C.float)(bottom), (C.float)(width), (C.float)(height), (C.float)(nearPlane))
 }
 
 func (this *QMatrix4x4) Viewport6(left float32, bottom float32, width float32, height float32, nearPlane float32, farPlane float32) {
-	C.QMatrix4x4_Viewport6(this.h, (C.float)(left), (C.float)(bottom), (C.float)(width), (C.float)(height), (C.float)(nearPlane), (C.float)(farPlane))
+	C.QMatrix4x4_viewport6(this.h, (C.float)(left), (C.float)(bottom), (C.float)(width), (C.float)(height), (C.float)(nearPlane), (C.float)(farPlane))
 }
 
 // Delete this object from C++ memory.
 func (this *QMatrix4x4) Delete() {
-	C.QMatrix4x4_Delete(this.h)
+	C.QMatrix4x4_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

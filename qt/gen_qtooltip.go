@@ -50,7 +50,7 @@ func QToolTip_ShowText(pos *QPoint, text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QToolTip_ShowText(pos.cPointer(), text_ms)
+	C.QToolTip_showText(pos.cPointer(), text_ms)
 }
 
 func QToolTip_ShowText2(pos *QPoint, text string, w *QWidget, rect *QRect) {
@@ -58,7 +58,7 @@ func QToolTip_ShowText2(pos *QPoint, text string, w *QWidget, rect *QRect) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QToolTip_ShowText2(pos.cPointer(), text_ms, w.cPointer(), rect.cPointer())
+	C.QToolTip_showText2(pos.cPointer(), text_ms, w.cPointer(), rect.cPointer())
 }
 
 func QToolTip_ShowText3(pos *QPoint, text string, w *QWidget, rect *QRect, msecShowTime int) {
@@ -66,42 +66,42 @@ func QToolTip_ShowText3(pos *QPoint, text string, w *QWidget, rect *QRect, msecS
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QToolTip_ShowText3(pos.cPointer(), text_ms, w.cPointer(), rect.cPointer(), (C.int)(msecShowTime))
+	C.QToolTip_showText3(pos.cPointer(), text_ms, w.cPointer(), rect.cPointer(), (C.int)(msecShowTime))
 }
 
 func QToolTip_HideText() {
-	C.QToolTip_HideText()
+	C.QToolTip_hideText()
 }
 
 func QToolTip_IsVisible() bool {
-	return (bool)(C.QToolTip_IsVisible())
+	return (bool)(C.QToolTip_isVisible())
 }
 
 func QToolTip_Text() string {
-	var _ms C.struct_miqt_string = C.QToolTip_Text()
+	var _ms C.struct_miqt_string = C.QToolTip_text()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QToolTip_Palette() *QPalette {
-	_goptr := newQPalette(C.QToolTip_Palette())
+	_goptr := newQPalette(C.QToolTip_palette())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QToolTip_SetPalette(palette *QPalette) {
-	C.QToolTip_SetPalette(palette.cPointer())
+	C.QToolTip_setPalette(palette.cPointer())
 }
 
 func QToolTip_Font() *QFont {
-	_goptr := newQFont(C.QToolTip_Font())
+	_goptr := newQFont(C.QToolTip_font())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QToolTip_SetFont(font *QFont) {
-	C.QToolTip_SetFont(font.cPointer())
+	C.QToolTip_setFont(font.cPointer())
 }
 
 func QToolTip_ShowText32(pos *QPoint, text string, w *QWidget) {
@@ -109,12 +109,12 @@ func QToolTip_ShowText32(pos *QPoint, text string, w *QWidget) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QToolTip_ShowText32(pos.cPointer(), text_ms, w.cPointer())
+	C.QToolTip_showText32(pos.cPointer(), text_ms, w.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QToolTip) Delete() {
-	C.QToolTip_Delete(this.h)
+	C.QToolTip_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

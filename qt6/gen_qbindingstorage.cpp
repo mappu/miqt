@@ -12,7 +12,7 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QBindingStatus_Delete(QBindingStatus* self) {
+void QBindingStatus_delete(QBindingStatus* self) {
 	delete self;
 }
 
@@ -20,19 +20,19 @@ QBindingStorage* QBindingStorage_new() {
 	return new QBindingStorage();
 }
 
-bool QBindingStorage_IsEmpty(QBindingStorage* self) {
+bool QBindingStorage_isEmpty(QBindingStorage* self) {
 	return self->isEmpty();
 }
 
-bool QBindingStorage_IsValid(const QBindingStorage* self) {
+bool QBindingStorage_isValid(const QBindingStorage* self) {
 	return self->isValid();
 }
 
-void QBindingStorage_RegisterDependency(const QBindingStorage* self, QUntypedPropertyData* data) {
+void QBindingStorage_registerDependency(const QBindingStorage* self, QUntypedPropertyData* data) {
 	self->registerDependency(data);
 }
 
-void QBindingStorage_Delete(QBindingStorage* self) {
+void QBindingStorage_delete(QBindingStorage* self) {
 	delete self;
 }
 

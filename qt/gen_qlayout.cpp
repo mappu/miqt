@@ -21,33 +21,33 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QLayout_Invalidate(QLayout*, intptr_t);
-QRect* miqt_exec_callback_QLayout_Geometry(const QLayout*, intptr_t);
-void miqt_exec_callback_QLayout_AddItem(QLayout*, intptr_t, QLayoutItem*);
-int miqt_exec_callback_QLayout_ExpandingDirections(const QLayout*, intptr_t);
-QSize* miqt_exec_callback_QLayout_MinimumSize(const QLayout*, intptr_t);
-QSize* miqt_exec_callback_QLayout_MaximumSize(const QLayout*, intptr_t);
-void miqt_exec_callback_QLayout_SetGeometry(QLayout*, intptr_t, QRect*);
-QLayoutItem* miqt_exec_callback_QLayout_ItemAt(const QLayout*, intptr_t, int);
-QLayoutItem* miqt_exec_callback_QLayout_TakeAt(QLayout*, intptr_t, int);
-int miqt_exec_callback_QLayout_IndexOf(const QLayout*, intptr_t, QWidget*);
-int miqt_exec_callback_QLayout_Count(const QLayout*, intptr_t);
-bool miqt_exec_callback_QLayout_IsEmpty(const QLayout*, intptr_t);
-int miqt_exec_callback_QLayout_ControlTypes(const QLayout*, intptr_t);
-QLayout* miqt_exec_callback_QLayout_Layout(QLayout*, intptr_t);
-void miqt_exec_callback_QLayout_ChildEvent(QLayout*, intptr_t, QChildEvent*);
-bool miqt_exec_callback_QLayout_Event(QLayout*, intptr_t, QEvent*);
-bool miqt_exec_callback_QLayout_EventFilter(QLayout*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QLayout_TimerEvent(QLayout*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QLayout_CustomEvent(QLayout*, intptr_t, QEvent*);
-void miqt_exec_callback_QLayout_ConnectNotify(QLayout*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QLayout_DisconnectNotify(QLayout*, intptr_t, QMetaMethod*);
-QSize* miqt_exec_callback_QLayout_SizeHint(const QLayout*, intptr_t);
-bool miqt_exec_callback_QLayout_HasHeightForWidth(const QLayout*, intptr_t);
-int miqt_exec_callback_QLayout_HeightForWidth(const QLayout*, intptr_t, int);
-int miqt_exec_callback_QLayout_MinimumHeightForWidth(const QLayout*, intptr_t, int);
-QWidget* miqt_exec_callback_QLayout_Widget(QLayout*, intptr_t);
-QSpacerItem* miqt_exec_callback_QLayout_SpacerItem(QLayout*, intptr_t);
+void miqt_exec_callback_QLayout_invalidate(QLayout*, intptr_t);
+QRect* miqt_exec_callback_QLayout_geometry(const QLayout*, intptr_t);
+void miqt_exec_callback_QLayout_addItem(QLayout*, intptr_t, QLayoutItem*);
+int miqt_exec_callback_QLayout_expandingDirections(const QLayout*, intptr_t);
+QSize* miqt_exec_callback_QLayout_minimumSize(const QLayout*, intptr_t);
+QSize* miqt_exec_callback_QLayout_maximumSize(const QLayout*, intptr_t);
+void miqt_exec_callback_QLayout_setGeometry(QLayout*, intptr_t, QRect*);
+QLayoutItem* miqt_exec_callback_QLayout_itemAt(const QLayout*, intptr_t, int);
+QLayoutItem* miqt_exec_callback_QLayout_takeAt(QLayout*, intptr_t, int);
+int miqt_exec_callback_QLayout_indexOf(const QLayout*, intptr_t, QWidget*);
+int miqt_exec_callback_QLayout_count(const QLayout*, intptr_t);
+bool miqt_exec_callback_QLayout_isEmpty(const QLayout*, intptr_t);
+int miqt_exec_callback_QLayout_controlTypes(const QLayout*, intptr_t);
+QLayout* miqt_exec_callback_QLayout_layout(QLayout*, intptr_t);
+void miqt_exec_callback_QLayout_childEvent(QLayout*, intptr_t, QChildEvent*);
+bool miqt_exec_callback_QLayout_event(QLayout*, intptr_t, QEvent*);
+bool miqt_exec_callback_QLayout_eventFilter(QLayout*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QLayout_timerEvent(QLayout*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QLayout_customEvent(QLayout*, intptr_t, QEvent*);
+void miqt_exec_callback_QLayout_connectNotify(QLayout*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QLayout_disconnectNotify(QLayout*, intptr_t, QMetaMethod*);
+QSize* miqt_exec_callback_QLayout_sizeHint(const QLayout*, intptr_t);
+bool miqt_exec_callback_QLayout_hasHeightForWidth(const QLayout*, intptr_t);
+int miqt_exec_callback_QLayout_heightForWidth(const QLayout*, intptr_t, int);
+int miqt_exec_callback_QLayout_minimumHeightForWidth(const QLayout*, intptr_t, int);
+QWidget* miqt_exec_callback_QLayout_widget(QLayout*, intptr_t);
+QSpacerItem* miqt_exec_callback_QLayout_spacerItem(QLayout*, intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -61,83 +61,83 @@ public:
 	virtual ~MiqtVirtualQLayout() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Invalidate = 0;
+	intptr_t handle__invalidate = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void invalidate() override {
-		if (handle__Invalidate == 0) {
+		if (handle__invalidate == 0) {
 			QLayout::invalidate();
 			return;
 		}
 		
 
-		miqt_exec_callback_QLayout_Invalidate(this, handle__Invalidate);
+		miqt_exec_callback_QLayout_invalidate(this, handle__invalidate);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_Invalidate() {
+	void virtualbase_invalidate() {
 
 		QLayout::invalidate();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Geometry = 0;
+	intptr_t handle__geometry = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QRect geometry() const override {
-		if (handle__Geometry == 0) {
+		if (handle__geometry == 0) {
 			return QLayout::geometry();
 		}
 		
 
-		QRect* callback_return_value = miqt_exec_callback_QLayout_Geometry(this, handle__Geometry);
+		QRect* callback_return_value = miqt_exec_callback_QLayout_geometry(this, handle__geometry);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QRect* virtualbase_Geometry() const {
+	QRect* virtualbase_geometry() const {
 
 		return new QRect(QLayout::geometry());
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__AddItem = 0;
+	intptr_t handle__addItem = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void addItem(QLayoutItem* param1) override {
-		if (handle__AddItem == 0) {
+		if (handle__addItem == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
 		
 		QLayoutItem* sigval1 = param1;
 
-		miqt_exec_callback_QLayout_AddItem(this, handle__AddItem, sigval1);
+		miqt_exec_callback_QLayout_addItem(this, handle__addItem, sigval1);
 
 		
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ExpandingDirections = 0;
+	intptr_t handle__expandingDirections = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual Qt::Orientations expandingDirections() const override {
-		if (handle__ExpandingDirections == 0) {
+		if (handle__expandingDirections == 0) {
 			return QLayout::expandingDirections();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QLayout_ExpandingDirections(this, handle__ExpandingDirections);
+		int callback_return_value = miqt_exec_callback_QLayout_expandingDirections(this, handle__expandingDirections);
 
 		return static_cast<Qt::Orientations>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_ExpandingDirections() const {
+	int virtualbase_expandingDirections() const {
 
 		Qt::Orientations _ret = QLayout::expandingDirections();
 		return static_cast<int>(_ret);
@@ -145,55 +145,55 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MinimumSize = 0;
+	intptr_t handle__minimumSize = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize minimumSize() const override {
-		if (handle__MinimumSize == 0) {
+		if (handle__minimumSize == 0) {
 			return QLayout::minimumSize();
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QLayout_MinimumSize(this, handle__MinimumSize);
+		QSize* callback_return_value = miqt_exec_callback_QLayout_minimumSize(this, handle__minimumSize);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSize* virtualbase_MinimumSize() const {
+	QSize* virtualbase_minimumSize() const {
 
 		return new QSize(QLayout::minimumSize());
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MaximumSize = 0;
+	intptr_t handle__maximumSize = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize maximumSize() const override {
-		if (handle__MaximumSize == 0) {
+		if (handle__maximumSize == 0) {
 			return QLayout::maximumSize();
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QLayout_MaximumSize(this, handle__MaximumSize);
+		QSize* callback_return_value = miqt_exec_callback_QLayout_maximumSize(this, handle__maximumSize);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSize* virtualbase_MaximumSize() const {
+	QSize* virtualbase_maximumSize() const {
 
 		return new QSize(QLayout::maximumSize());
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetGeometry = 0;
+	intptr_t handle__setGeometry = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setGeometry(const QRect& geometry) override {
-		if (handle__SetGeometry == 0) {
+		if (handle__setGeometry == 0) {
 			QLayout::setGeometry(geometry);
 			return;
 		}
@@ -202,127 +202,127 @@ public:
 		// Cast returned reference into pointer
 		QRect* sigval1 = const_cast<QRect*>(&geometry_ret);
 
-		miqt_exec_callback_QLayout_SetGeometry(this, handle__SetGeometry, sigval1);
+		miqt_exec_callback_QLayout_setGeometry(this, handle__setGeometry, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetGeometry(QRect* geometry) {
+	void virtualbase_setGeometry(QRect* geometry) {
 
 		QLayout::setGeometry(*geometry);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ItemAt = 0;
+	intptr_t handle__itemAt = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QLayoutItem* itemAt(int index) const override {
-		if (handle__ItemAt == 0) {
+		if (handle__itemAt == 0) {
 			return nullptr; // Pure virtual, there is no base we can call
 		}
 		
 		int sigval1 = index;
 
-		QLayoutItem* callback_return_value = miqt_exec_callback_QLayout_ItemAt(this, handle__ItemAt, sigval1);
+		QLayoutItem* callback_return_value = miqt_exec_callback_QLayout_itemAt(this, handle__itemAt, sigval1);
 
 		return callback_return_value;
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TakeAt = 0;
+	intptr_t handle__takeAt = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QLayoutItem* takeAt(int index) override {
-		if (handle__TakeAt == 0) {
+		if (handle__takeAt == 0) {
 			return nullptr; // Pure virtual, there is no base we can call
 		}
 		
 		int sigval1 = index;
 
-		QLayoutItem* callback_return_value = miqt_exec_callback_QLayout_TakeAt(this, handle__TakeAt, sigval1);
+		QLayoutItem* callback_return_value = miqt_exec_callback_QLayout_takeAt(this, handle__takeAt, sigval1);
 
 		return callback_return_value;
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__IndexOf = 0;
+	intptr_t handle__indexOf = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int indexOf(QWidget* param1) const override {
-		if (handle__IndexOf == 0) {
+		if (handle__indexOf == 0) {
 			return QLayout::indexOf(param1);
 		}
 		
 		QWidget* sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QLayout_IndexOf(this, handle__IndexOf, sigval1);
+		int callback_return_value = miqt_exec_callback_QLayout_indexOf(this, handle__indexOf, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_IndexOf(QWidget* param1) const {
+	int virtualbase_indexOf(QWidget* param1) const {
 
 		return QLayout::indexOf(param1);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Count = 0;
+	intptr_t handle__count = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int count() const override {
-		if (handle__Count == 0) {
+		if (handle__count == 0) {
 			return 0; // Pure virtual, there is no base we can call
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QLayout_Count(this, handle__Count);
+		int callback_return_value = miqt_exec_callback_QLayout_count(this, handle__count);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__IsEmpty = 0;
+	intptr_t handle__isEmpty = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool isEmpty() const override {
-		if (handle__IsEmpty == 0) {
+		if (handle__isEmpty == 0) {
 			return QLayout::isEmpty();
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QLayout_IsEmpty(this, handle__IsEmpty);
+		bool callback_return_value = miqt_exec_callback_QLayout_isEmpty(this, handle__isEmpty);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_IsEmpty() const {
+	bool virtualbase_isEmpty() const {
 
 		return QLayout::isEmpty();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ControlTypes = 0;
+	intptr_t handle__controlTypes = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSizePolicy::ControlTypes controlTypes() const override {
-		if (handle__ControlTypes == 0) {
+		if (handle__controlTypes == 0) {
 			return QLayout::controlTypes();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QLayout_ControlTypes(this, handle__ControlTypes);
+		int callback_return_value = miqt_exec_callback_QLayout_controlTypes(this, handle__controlTypes);
 
 		return static_cast<QSizePolicy::ControlTypes>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_ControlTypes() const {
+	int virtualbase_controlTypes() const {
 
 		QSizePolicy::ControlTypes _ret = QLayout::controlTypes();
 		return static_cast<int>(_ret);
@@ -330,152 +330,152 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Layout = 0;
+	intptr_t handle__layout = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QLayout* layout() override {
-		if (handle__Layout == 0) {
+		if (handle__layout == 0) {
 			return QLayout::layout();
 		}
 		
 
-		QLayout* callback_return_value = miqt_exec_callback_QLayout_Layout(this, handle__Layout);
+		QLayout* callback_return_value = miqt_exec_callback_QLayout_layout(this, handle__layout);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QLayout* virtualbase_Layout() {
+	QLayout* virtualbase_layout() {
 
 		return QLayout::layout();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* e) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QLayout::childEvent(e);
 			return;
 		}
 		
 		QChildEvent* sigval1 = e;
 
-		miqt_exec_callback_QLayout_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QLayout_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* e) {
+	void virtualbase_childEvent(QChildEvent* e) {
 
 		QLayout::childEvent(e);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QLayout::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QLayout_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QLayout_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QLayout::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QLayout::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QLayout_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QLayout_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QLayout::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QLayout::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QLayout_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QLayout_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QLayout::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QLayout::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QLayout_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QLayout_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QLayout::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QLayout::connectNotify(signal);
 			return;
 		}
@@ -484,24 +484,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QLayout_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QLayout_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QLayout::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QLayout::disconnectNotify(signal);
 			return;
 		}
@@ -510,140 +510,140 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QLayout_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QLayout_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QLayout::disconnectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SizeHint = 0;
+	intptr_t handle__sizeHint = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize sizeHint() const override {
-		if (handle__SizeHint == 0) {
+		if (handle__sizeHint == 0) {
 			return QSize(); // Pure virtual, there is no base we can call
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QLayout_SizeHint(this, handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QLayout_sizeHint(this, handle__sizeHint);
 
 		return *callback_return_value;
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HasHeightForWidth = 0;
+	intptr_t handle__hasHeightForWidth = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool hasHeightForWidth() const override {
-		if (handle__HasHeightForWidth == 0) {
+		if (handle__hasHeightForWidth == 0) {
 			return QLayout::hasHeightForWidth();
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QLayout_HasHeightForWidth(this, handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QLayout_hasHeightForWidth(this, handle__hasHeightForWidth);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_HasHeightForWidth() const {
+	bool virtualbase_hasHeightForWidth() const {
 
 		return QLayout::hasHeightForWidth();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HeightForWidth = 0;
+	intptr_t handle__heightForWidth = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int heightForWidth(int param1) const override {
-		if (handle__HeightForWidth == 0) {
+		if (handle__heightForWidth == 0) {
 			return QLayout::heightForWidth(param1);
 		}
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QLayout_HeightForWidth(this, handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QLayout_heightForWidth(this, handle__heightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_HeightForWidth(int param1) const {
+	int virtualbase_heightForWidth(int param1) const {
 
 		return QLayout::heightForWidth(static_cast<int>(param1));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MinimumHeightForWidth = 0;
+	intptr_t handle__minimumHeightForWidth = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int minimumHeightForWidth(int param1) const override {
-		if (handle__MinimumHeightForWidth == 0) {
+		if (handle__minimumHeightForWidth == 0) {
 			return QLayout::minimumHeightForWidth(param1);
 		}
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QLayout_MinimumHeightForWidth(this, handle__MinimumHeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QLayout_minimumHeightForWidth(this, handle__minimumHeightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_MinimumHeightForWidth(int param1) const {
+	int virtualbase_minimumHeightForWidth(int param1) const {
 
 		return QLayout::minimumHeightForWidth(static_cast<int>(param1));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Widget = 0;
+	intptr_t handle__widget = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QWidget* widget() override {
-		if (handle__Widget == 0) {
+		if (handle__widget == 0) {
 			return QLayout::widget();
 		}
 		
 
-		QWidget* callback_return_value = miqt_exec_callback_QLayout_Widget(this, handle__Widget);
+		QWidget* callback_return_value = miqt_exec_callback_QLayout_widget(this, handle__widget);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QWidget* virtualbase_Widget() {
+	QWidget* virtualbase_widget() {
 
 		return QLayout::widget();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SpacerItem = 0;
+	intptr_t handle__spacerItem = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSpacerItem* spacerItem() override {
-		if (handle__SpacerItem == 0) {
+		if (handle__spacerItem == 0) {
 			return QLayout::spacerItem();
 		}
 		
 
-		QSpacerItem* callback_return_value = miqt_exec_callback_QLayout_SpacerItem(this, handle__SpacerItem);
+		QSpacerItem* callback_return_value = miqt_exec_callback_QLayout_spacerItem(this, handle__spacerItem);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSpacerItem* virtualbase_SpacerItem() {
+	QSpacerItem* virtualbase_spacerItem() {
 
 		return QLayout::spacerItem();
 
@@ -664,15 +664,15 @@ void QLayout_virtbase(QLayout* src, QObject** outptr_QObject, QLayoutItem** outp
 	*outptr_QLayoutItem = static_cast<QLayoutItem*>(src);
 }
 
-QMetaObject* QLayout_MetaObject(const QLayout* self) {
+QMetaObject* QLayout_metaObject(const QLayout* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QLayout_Metacast(QLayout* self, const char* param1) {
+void* QLayout_metacast(QLayout* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QLayout_Tr(const char* s) {
+struct miqt_string QLayout_tr(const char* s) {
 	QString _ret = QLayout::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -683,7 +683,7 @@ struct miqt_string QLayout_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QLayout_TrUtf8(const char* s) {
+struct miqt_string QLayout_trUtf8(const char* s) {
 	QString _ret = QLayout::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -694,186 +694,186 @@ struct miqt_string QLayout_TrUtf8(const char* s) {
 	return _ms;
 }
 
-int QLayout_Margin(const QLayout* self) {
+int QLayout_margin(const QLayout* self) {
 	return self->margin();
 }
 
-void QLayout_SetMargin(QLayout* self, int margin) {
+void QLayout_setMargin(QLayout* self, int margin) {
 	self->setMargin(static_cast<int>(margin));
 }
 
-int QLayout_Spacing(const QLayout* self) {
+int QLayout_spacing(const QLayout* self) {
 	return self->spacing();
 }
 
-void QLayout_SetSpacing(QLayout* self, int spacing) {
+void QLayout_setSpacing(QLayout* self, int spacing) {
 	self->setSpacing(static_cast<int>(spacing));
 }
 
-void QLayout_SetContentsMargins(QLayout* self, int left, int top, int right, int bottom) {
+void QLayout_setContentsMargins(QLayout* self, int left, int top, int right, int bottom) {
 	self->setContentsMargins(static_cast<int>(left), static_cast<int>(top), static_cast<int>(right), static_cast<int>(bottom));
 }
 
-void QLayout_SetContentsMarginsWithMargins(QLayout* self, QMargins* margins) {
+void QLayout_setContentsMarginsWithMargins(QLayout* self, QMargins* margins) {
 	self->setContentsMargins(*margins);
 }
 
-void QLayout_GetContentsMargins(const QLayout* self, int* left, int* top, int* right, int* bottom) {
+void QLayout_getContentsMargins(const QLayout* self, int* left, int* top, int* right, int* bottom) {
 	self->getContentsMargins(static_cast<int*>(left), static_cast<int*>(top), static_cast<int*>(right), static_cast<int*>(bottom));
 }
 
-QMargins* QLayout_ContentsMargins(const QLayout* self) {
+QMargins* QLayout_contentsMargins(const QLayout* self) {
 	return new QMargins(self->contentsMargins());
 }
 
-QRect* QLayout_ContentsRect(const QLayout* self) {
+QRect* QLayout_contentsRect(const QLayout* self) {
 	return new QRect(self->contentsRect());
 }
 
-bool QLayout_SetAlignment(QLayout* self, QWidget* w, int alignment) {
+bool QLayout_setAlignment(QLayout* self, QWidget* w, int alignment) {
 	return self->setAlignment(w, static_cast<Qt::Alignment>(alignment));
 }
 
-bool QLayout_SetAlignment2(QLayout* self, QLayout* l, int alignment) {
+bool QLayout_setAlignment2(QLayout* self, QLayout* l, int alignment) {
 	return self->setAlignment(l, static_cast<Qt::Alignment>(alignment));
 }
 
-void QLayout_SetSizeConstraint(QLayout* self, int sizeConstraint) {
+void QLayout_setSizeConstraint(QLayout* self, int sizeConstraint) {
 	self->setSizeConstraint(static_cast<QLayout::SizeConstraint>(sizeConstraint));
 }
 
-int QLayout_SizeConstraint(const QLayout* self) {
+int QLayout_sizeConstraint(const QLayout* self) {
 	QLayout::SizeConstraint _ret = self->sizeConstraint();
 	return static_cast<int>(_ret);
 }
 
-void QLayout_SetMenuBar(QLayout* self, QWidget* w) {
+void QLayout_setMenuBar(QLayout* self, QWidget* w) {
 	self->setMenuBar(w);
 }
 
-QWidget* QLayout_MenuBar(const QLayout* self) {
+QWidget* QLayout_menuBar(const QLayout* self) {
 	return self->menuBar();
 }
 
-QWidget* QLayout_ParentWidget(const QLayout* self) {
+QWidget* QLayout_parentWidget(const QLayout* self) {
 	return self->parentWidget();
 }
 
-void QLayout_Invalidate(QLayout* self) {
+void QLayout_invalidate(QLayout* self) {
 	self->invalidate();
 }
 
-QRect* QLayout_Geometry(const QLayout* self) {
+QRect* QLayout_geometry(const QLayout* self) {
 	return new QRect(self->geometry());
 }
 
-bool QLayout_Activate(QLayout* self) {
+bool QLayout_activate(QLayout* self) {
 	return self->activate();
 }
 
-void QLayout_Update(QLayout* self) {
+void QLayout_update(QLayout* self) {
 	self->update();
 }
 
-void QLayout_AddWidget(QLayout* self, QWidget* w) {
+void QLayout_addWidget(QLayout* self, QWidget* w) {
 	self->addWidget(w);
 }
 
-void QLayout_AddItem(QLayout* self, QLayoutItem* param1) {
+void QLayout_addItem(QLayout* self, QLayoutItem* param1) {
 	self->addItem(param1);
 }
 
-void QLayout_RemoveWidget(QLayout* self, QWidget* w) {
+void QLayout_removeWidget(QLayout* self, QWidget* w) {
 	self->removeWidget(w);
 }
 
-void QLayout_RemoveItem(QLayout* self, QLayoutItem* param1) {
+void QLayout_removeItem(QLayout* self, QLayoutItem* param1) {
 	self->removeItem(param1);
 }
 
-int QLayout_ExpandingDirections(const QLayout* self) {
+int QLayout_expandingDirections(const QLayout* self) {
 	Qt::Orientations _ret = self->expandingDirections();
 	return static_cast<int>(_ret);
 }
 
-QSize* QLayout_MinimumSize(const QLayout* self) {
+QSize* QLayout_minimumSize(const QLayout* self) {
 	return new QSize(self->minimumSize());
 }
 
-QSize* QLayout_MaximumSize(const QLayout* self) {
+QSize* QLayout_maximumSize(const QLayout* self) {
 	return new QSize(self->maximumSize());
 }
 
-void QLayout_SetGeometry(QLayout* self, QRect* geometry) {
+void QLayout_setGeometry(QLayout* self, QRect* geometry) {
 	self->setGeometry(*geometry);
 }
 
-QLayoutItem* QLayout_ItemAt(const QLayout* self, int index) {
+QLayoutItem* QLayout_itemAt(const QLayout* self, int index) {
 	return self->itemAt(static_cast<int>(index));
 }
 
-QLayoutItem* QLayout_TakeAt(QLayout* self, int index) {
+QLayoutItem* QLayout_takeAt(QLayout* self, int index) {
 	return self->takeAt(static_cast<int>(index));
 }
 
-int QLayout_IndexOf(const QLayout* self, QWidget* param1) {
+int QLayout_indexOf(const QLayout* self, QWidget* param1) {
 	return self->indexOf(param1);
 }
 
-int QLayout_IndexOfWithQLayoutItem(const QLayout* self, QLayoutItem* param1) {
+int QLayout_indexOfWithQLayoutItem(const QLayout* self, QLayoutItem* param1) {
 	return self->indexOf(param1);
 }
 
-int QLayout_Count(const QLayout* self) {
+int QLayout_count(const QLayout* self) {
 	return self->count();
 }
 
-bool QLayout_IsEmpty(const QLayout* self) {
+bool QLayout_isEmpty(const QLayout* self) {
 	return self->isEmpty();
 }
 
-int QLayout_ControlTypes(const QLayout* self) {
+int QLayout_controlTypes(const QLayout* self) {
 	QSizePolicy::ControlTypes _ret = self->controlTypes();
 	return static_cast<int>(_ret);
 }
 
-QLayoutItem* QLayout_ReplaceWidget(QLayout* self, QWidget* from, QWidget* to) {
+QLayoutItem* QLayout_replaceWidget(QLayout* self, QWidget* from, QWidget* to) {
 	return self->replaceWidget(from, to);
 }
 
-int QLayout_TotalHeightForWidth(const QLayout* self, int w) {
+int QLayout_totalHeightForWidth(const QLayout* self, int w) {
 	return self->totalHeightForWidth(static_cast<int>(w));
 }
 
-QSize* QLayout_TotalMinimumSize(const QLayout* self) {
+QSize* QLayout_totalMinimumSize(const QLayout* self) {
 	return new QSize(self->totalMinimumSize());
 }
 
-QSize* QLayout_TotalMaximumSize(const QLayout* self) {
+QSize* QLayout_totalMaximumSize(const QLayout* self) {
 	return new QSize(self->totalMaximumSize());
 }
 
-QSize* QLayout_TotalSizeHint(const QLayout* self) {
+QSize* QLayout_totalSizeHint(const QLayout* self) {
 	return new QSize(self->totalSizeHint());
 }
 
-QLayout* QLayout_Layout(QLayout* self) {
+QLayout* QLayout_layout(QLayout* self) {
 	return self->layout();
 }
 
-void QLayout_SetEnabled(QLayout* self, bool enabled) {
+void QLayout_setEnabled(QLayout* self, bool enabled) {
 	self->setEnabled(enabled);
 }
 
-bool QLayout_IsEnabled(const QLayout* self) {
+bool QLayout_isEnabled(const QLayout* self) {
 	return self->isEnabled();
 }
 
-QSize* QLayout_ClosestAcceptableSize(QWidget* w, QSize* s) {
+QSize* QLayout_closestAcceptableSize(QWidget* w, QSize* s) {
 	return new QSize(QLayout::closestAcceptableSize(w, *s));
 }
 
-struct miqt_string QLayout_Tr2(const char* s, const char* c) {
+struct miqt_string QLayout_tr2(const char* s, const char* c) {
 	QString _ret = QLayout::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -884,7 +884,7 @@ struct miqt_string QLayout_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QLayout_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QLayout_tr3(const char* s, const char* c, int n) {
 	QString _ret = QLayout::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -895,7 +895,7 @@ struct miqt_string QLayout_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string QLayout_TrUtf82(const char* s, const char* c) {
+struct miqt_string QLayout_trUtf82(const char* s, const char* c) {
 	QString _ret = QLayout::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -906,7 +906,7 @@ struct miqt_string QLayout_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QLayout_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QLayout_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QLayout::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -917,369 +917,369 @@ struct miqt_string QLayout_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-QLayoutItem* QLayout_ReplaceWidget3(QLayout* self, QWidget* from, QWidget* to, int options) {
+QLayoutItem* QLayout_replaceWidget3(QLayout* self, QWidget* from, QWidget* to, int options) {
 	return self->replaceWidget(from, to, static_cast<Qt::FindChildOptions>(options));
 }
 
-bool QLayout_override_virtual_Invalidate(void* self, intptr_t slot) {
+bool QLayout_override_virtual_invalidate(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Invalidate = slot;
+	self_cast->handle__invalidate = slot;
 	return true;
 }
 
-void QLayout_virtualbase_Invalidate(void* self) {
-	( (MiqtVirtualQLayout*)(self) )->virtualbase_Invalidate();
+void QLayout_virtualbase_invalidate(void* self) {
+	( (MiqtVirtualQLayout*)(self) )->virtualbase_invalidate();
 }
 
-bool QLayout_override_virtual_Geometry(void* self, intptr_t slot) {
+bool QLayout_override_virtual_geometry(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Geometry = slot;
+	self_cast->handle__geometry = slot;
 	return true;
 }
 
-QRect* QLayout_virtualbase_Geometry(const void* self) {
-	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_Geometry();
+QRect* QLayout_virtualbase_geometry(const void* self) {
+	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_geometry();
 }
 
-bool QLayout_override_virtual_AddItem(void* self, intptr_t slot) {
+bool QLayout_override_virtual_addItem(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__AddItem = slot;
+	self_cast->handle__addItem = slot;
 	return true;
 }
 
-bool QLayout_override_virtual_ExpandingDirections(void* self, intptr_t slot) {
+bool QLayout_override_virtual_expandingDirections(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ExpandingDirections = slot;
+	self_cast->handle__expandingDirections = slot;
 	return true;
 }
 
-int QLayout_virtualbase_ExpandingDirections(const void* self) {
-	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_ExpandingDirections();
+int QLayout_virtualbase_expandingDirections(const void* self) {
+	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_expandingDirections();
 }
 
-bool QLayout_override_virtual_MinimumSize(void* self, intptr_t slot) {
+bool QLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MinimumSize = slot;
+	self_cast->handle__minimumSize = slot;
 	return true;
 }
 
-QSize* QLayout_virtualbase_MinimumSize(const void* self) {
-	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_MinimumSize();
+QSize* QLayout_virtualbase_minimumSize(const void* self) {
+	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_minimumSize();
 }
 
-bool QLayout_override_virtual_MaximumSize(void* self, intptr_t slot) {
+bool QLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MaximumSize = slot;
+	self_cast->handle__maximumSize = slot;
 	return true;
 }
 
-QSize* QLayout_virtualbase_MaximumSize(const void* self) {
-	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_MaximumSize();
+QSize* QLayout_virtualbase_maximumSize(const void* self) {
+	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_maximumSize();
 }
 
-bool QLayout_override_virtual_SetGeometry(void* self, intptr_t slot) {
+bool QLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetGeometry = slot;
+	self_cast->handle__setGeometry = slot;
 	return true;
 }
 
-void QLayout_virtualbase_SetGeometry(void* self, QRect* geometry) {
-	( (MiqtVirtualQLayout*)(self) )->virtualbase_SetGeometry(geometry);
+void QLayout_virtualbase_setGeometry(void* self, QRect* geometry) {
+	( (MiqtVirtualQLayout*)(self) )->virtualbase_setGeometry(geometry);
 }
 
-bool QLayout_override_virtual_ItemAt(void* self, intptr_t slot) {
+bool QLayout_override_virtual_itemAt(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ItemAt = slot;
+	self_cast->handle__itemAt = slot;
 	return true;
 }
 
-bool QLayout_override_virtual_TakeAt(void* self, intptr_t slot) {
+bool QLayout_override_virtual_takeAt(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TakeAt = slot;
+	self_cast->handle__takeAt = slot;
 	return true;
 }
 
-bool QLayout_override_virtual_IndexOf(void* self, intptr_t slot) {
+bool QLayout_override_virtual_indexOf(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__IndexOf = slot;
+	self_cast->handle__indexOf = slot;
 	return true;
 }
 
-int QLayout_virtualbase_IndexOf(const void* self, QWidget* param1) {
-	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_IndexOf(param1);
+int QLayout_virtualbase_indexOf(const void* self, QWidget* param1) {
+	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_indexOf(param1);
 }
 
-bool QLayout_override_virtual_Count(void* self, intptr_t slot) {
+bool QLayout_override_virtual_count(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Count = slot;
+	self_cast->handle__count = slot;
 	return true;
 }
 
-bool QLayout_override_virtual_IsEmpty(void* self, intptr_t slot) {
+bool QLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__IsEmpty = slot;
+	self_cast->handle__isEmpty = slot;
 	return true;
 }
 
-bool QLayout_virtualbase_IsEmpty(const void* self) {
-	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_IsEmpty();
+bool QLayout_virtualbase_isEmpty(const void* self) {
+	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_isEmpty();
 }
 
-bool QLayout_override_virtual_ControlTypes(void* self, intptr_t slot) {
+bool QLayout_override_virtual_controlTypes(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ControlTypes = slot;
+	self_cast->handle__controlTypes = slot;
 	return true;
 }
 
-int QLayout_virtualbase_ControlTypes(const void* self) {
-	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_ControlTypes();
+int QLayout_virtualbase_controlTypes(const void* self) {
+	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_controlTypes();
 }
 
-bool QLayout_override_virtual_Layout(void* self, intptr_t slot) {
+bool QLayout_override_virtual_layout(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Layout = slot;
+	self_cast->handle__layout = slot;
 	return true;
 }
 
-QLayout* QLayout_virtualbase_Layout(void* self) {
-	return ( (MiqtVirtualQLayout*)(self) )->virtualbase_Layout();
+QLayout* QLayout_virtualbase_layout(void* self) {
+	return ( (MiqtVirtualQLayout*)(self) )->virtualbase_layout();
 }
 
-bool QLayout_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QLayout_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QLayout_virtualbase_ChildEvent(void* self, QChildEvent* e) {
-	( (MiqtVirtualQLayout*)(self) )->virtualbase_ChildEvent(e);
+void QLayout_virtualbase_childEvent(void* self, QChildEvent* e) {
+	( (MiqtVirtualQLayout*)(self) )->virtualbase_childEvent(e);
 }
 
-bool QLayout_override_virtual_Event(void* self, intptr_t slot) {
+bool QLayout_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QLayout_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQLayout*)(self) )->virtualbase_Event(event);
+bool QLayout_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQLayout*)(self) )->virtualbase_event(event);
 }
 
-bool QLayout_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QLayout_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QLayout_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQLayout*)(self) )->virtualbase_EventFilter(watched, event);
+bool QLayout_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQLayout*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QLayout_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QLayout_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QLayout_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQLayout*)(self) )->virtualbase_TimerEvent(event);
+void QLayout_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQLayout*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QLayout_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QLayout_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QLayout_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQLayout*)(self) )->virtualbase_CustomEvent(event);
+void QLayout_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQLayout*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QLayout_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QLayout_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QLayout_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQLayout*)(self) )->virtualbase_ConnectNotify(signal);
+void QLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQLayout*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QLayout_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QLayout_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QLayout_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQLayout*)(self) )->virtualbase_DisconnectNotify(signal);
+void QLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQLayout*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-bool QLayout_override_virtual_SizeHint(void* self, intptr_t slot) {
+bool QLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SizeHint = slot;
+	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
-bool QLayout_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+bool QLayout_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HasHeightForWidth = slot;
+	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
-bool QLayout_virtualbase_HasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_HasHeightForWidth();
+bool QLayout_virtualbase_hasHeightForWidth(const void* self) {
+	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_hasHeightForWidth();
 }
 
-bool QLayout_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+bool QLayout_override_virtual_heightForWidth(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HeightForWidth = slot;
+	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
-int QLayout_virtualbase_HeightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_HeightForWidth(param1);
+int QLayout_virtualbase_heightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_heightForWidth(param1);
 }
 
-bool QLayout_override_virtual_MinimumHeightForWidth(void* self, intptr_t slot) {
+bool QLayout_override_virtual_minimumHeightForWidth(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MinimumHeightForWidth = slot;
+	self_cast->handle__minimumHeightForWidth = slot;
 	return true;
 }
 
-int QLayout_virtualbase_MinimumHeightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_MinimumHeightForWidth(param1);
+int QLayout_virtualbase_minimumHeightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualQLayout*)(self) )->virtualbase_minimumHeightForWidth(param1);
 }
 
-bool QLayout_override_virtual_Widget(void* self, intptr_t slot) {
+bool QLayout_override_virtual_widget(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Widget = slot;
+	self_cast->handle__widget = slot;
 	return true;
 }
 
-QWidget* QLayout_virtualbase_Widget(void* self) {
-	return ( (MiqtVirtualQLayout*)(self) )->virtualbase_Widget();
+QWidget* QLayout_virtualbase_widget(void* self) {
+	return ( (MiqtVirtualQLayout*)(self) )->virtualbase_widget();
 }
 
-bool QLayout_override_virtual_SpacerItem(void* self, intptr_t slot) {
+bool QLayout_override_virtual_spacerItem(void* self, intptr_t slot) {
 	MiqtVirtualQLayout* self_cast = dynamic_cast<MiqtVirtualQLayout*>( (QLayout*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SpacerItem = slot;
+	self_cast->handle__spacerItem = slot;
 	return true;
 }
 
-QSpacerItem* QLayout_virtualbase_SpacerItem(void* self) {
-	return ( (MiqtVirtualQLayout*)(self) )->virtualbase_SpacerItem();
+QSpacerItem* QLayout_virtualbase_spacerItem(void* self) {
+	return ( (MiqtVirtualQLayout*)(self) )->virtualbase_spacerItem();
 }
 
-void QLayout_Delete(QLayout* self) {
+void QLayout_delete(QLayout* self) {
 	delete self;
 }
 

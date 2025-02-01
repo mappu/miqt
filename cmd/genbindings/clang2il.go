@@ -702,11 +702,6 @@ func parseMethod(node map[string]interface{}, mm *CppMethod) error {
 					}
 				}
 
-				// Block reserved Go words, replace with generic parameters
-				if goReservedWord(parmName) {
-					parmName += "Val"
-				}
-
 				// Update the name for the existing nth parameter
 				mm.Parameters[paramCounter].ParameterName = parmName
 

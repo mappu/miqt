@@ -33,137 +33,137 @@ QVideoFrame* QVideoFrame_new4(QVideoFrame* other) {
 	return new QVideoFrame(*other);
 }
 
-void QVideoFrame_OperatorAssign(QVideoFrame* self, QVideoFrame* other) {
+void QVideoFrame_operatorAssign(QVideoFrame* self, QVideoFrame* other) {
 	self->operator=(*other);
 }
 
-bool QVideoFrame_OperatorEqual(const QVideoFrame* self, QVideoFrame* other) {
+bool QVideoFrame_operatorEqual(const QVideoFrame* self, QVideoFrame* other) {
 	return (*self == *other);
 }
 
-bool QVideoFrame_OperatorNotEqual(const QVideoFrame* self, QVideoFrame* other) {
+bool QVideoFrame_operatorNotEqual(const QVideoFrame* self, QVideoFrame* other) {
 	return (*self != *other);
 }
 
-bool QVideoFrame_IsValid(const QVideoFrame* self) {
+bool QVideoFrame_isValid(const QVideoFrame* self) {
 	return self->isValid();
 }
 
-int QVideoFrame_PixelFormat(const QVideoFrame* self) {
+int QVideoFrame_pixelFormat(const QVideoFrame* self) {
 	QVideoFrame::PixelFormat _ret = self->pixelFormat();
 	return static_cast<int>(_ret);
 }
 
-int QVideoFrame_HandleType(const QVideoFrame* self) {
+int QVideoFrame_handleType(const QVideoFrame* self) {
 	QAbstractVideoBuffer::HandleType _ret = self->handleType();
 	return static_cast<int>(_ret);
 }
 
-QSize* QVideoFrame_Size(const QVideoFrame* self) {
+QSize* QVideoFrame_size(const QVideoFrame* self) {
 	return new QSize(self->size());
 }
 
-int QVideoFrame_Width(const QVideoFrame* self) {
+int QVideoFrame_width(const QVideoFrame* self) {
 	return self->width();
 }
 
-int QVideoFrame_Height(const QVideoFrame* self) {
+int QVideoFrame_height(const QVideoFrame* self) {
 	return self->height();
 }
 
-int QVideoFrame_FieldType(const QVideoFrame* self) {
+int QVideoFrame_fieldType(const QVideoFrame* self) {
 	QVideoFrame::FieldType _ret = self->fieldType();
 	return static_cast<int>(_ret);
 }
 
-void QVideoFrame_SetFieldType(QVideoFrame* self, int fieldType) {
+void QVideoFrame_setFieldType(QVideoFrame* self, int fieldType) {
 	self->setFieldType(static_cast<QVideoFrame::FieldType>(fieldType));
 }
 
-bool QVideoFrame_IsMapped(const QVideoFrame* self) {
+bool QVideoFrame_isMapped(const QVideoFrame* self) {
 	return self->isMapped();
 }
 
-bool QVideoFrame_IsReadable(const QVideoFrame* self) {
+bool QVideoFrame_isReadable(const QVideoFrame* self) {
 	return self->isReadable();
 }
 
-bool QVideoFrame_IsWritable(const QVideoFrame* self) {
+bool QVideoFrame_isWritable(const QVideoFrame* self) {
 	return self->isWritable();
 }
 
-int QVideoFrame_MapMode(const QVideoFrame* self) {
+int QVideoFrame_mapMode(const QVideoFrame* self) {
 	QAbstractVideoBuffer::MapMode _ret = self->mapMode();
 	return static_cast<int>(_ret);
 }
 
-bool QVideoFrame_Map(QVideoFrame* self, int mode) {
+bool QVideoFrame_map(QVideoFrame* self, int mode) {
 	return self->map(static_cast<QAbstractVideoBuffer::MapMode>(mode));
 }
 
-void QVideoFrame_Unmap(QVideoFrame* self) {
+void QVideoFrame_unmap(QVideoFrame* self) {
 	self->unmap();
 }
 
-int QVideoFrame_BytesPerLine(const QVideoFrame* self) {
+int QVideoFrame_bytesPerLine(const QVideoFrame* self) {
 	return self->bytesPerLine();
 }
 
-int QVideoFrame_BytesPerLineWithPlane(const QVideoFrame* self, int plane) {
+int QVideoFrame_bytesPerLineWithPlane(const QVideoFrame* self, int plane) {
 	return self->bytesPerLine(static_cast<int>(plane));
 }
 
-unsigned char* QVideoFrame_Bits(QVideoFrame* self) {
+unsigned char* QVideoFrame_bits(QVideoFrame* self) {
 	uchar* _ret = self->bits();
 	return static_cast<unsigned char*>(_ret);
 }
 
-unsigned char* QVideoFrame_BitsWithPlane(QVideoFrame* self, int plane) {
+unsigned char* QVideoFrame_bitsWithPlane(QVideoFrame* self, int plane) {
 	uchar* _ret = self->bits(static_cast<int>(plane));
 	return static_cast<unsigned char*>(_ret);
 }
 
-const unsigned char* QVideoFrame_Bits2(const QVideoFrame* self) {
+const unsigned char* QVideoFrame_bits2(const QVideoFrame* self) {
 	const uchar* _ret = self->bits();
 	return static_cast<const unsigned char*>(_ret);
 }
 
-const unsigned char* QVideoFrame_Bits3(const QVideoFrame* self, int plane) {
+const unsigned char* QVideoFrame_bits3(const QVideoFrame* self, int plane) {
 	const uchar* _ret = self->bits(static_cast<int>(plane));
 	return static_cast<const unsigned char*>(_ret);
 }
 
-int QVideoFrame_MappedBytes(const QVideoFrame* self) {
+int QVideoFrame_mappedBytes(const QVideoFrame* self) {
 	return self->mappedBytes();
 }
 
-int QVideoFrame_PlaneCount(const QVideoFrame* self) {
+int QVideoFrame_planeCount(const QVideoFrame* self) {
 	return self->planeCount();
 }
 
-QVariant* QVideoFrame_Handle(const QVideoFrame* self) {
+QVariant* QVideoFrame_handle(const QVideoFrame* self) {
 	return new QVariant(self->handle());
 }
 
-long long QVideoFrame_StartTime(const QVideoFrame* self) {
+long long QVideoFrame_startTime(const QVideoFrame* self) {
 	qint64 _ret = self->startTime();
 	return static_cast<long long>(_ret);
 }
 
-void QVideoFrame_SetStartTime(QVideoFrame* self, long long time) {
+void QVideoFrame_setStartTime(QVideoFrame* self, long long time) {
 	self->setStartTime(static_cast<qint64>(time));
 }
 
-long long QVideoFrame_EndTime(const QVideoFrame* self) {
+long long QVideoFrame_endTime(const QVideoFrame* self) {
 	qint64 _ret = self->endTime();
 	return static_cast<long long>(_ret);
 }
 
-void QVideoFrame_SetEndTime(QVideoFrame* self, long long time) {
+void QVideoFrame_setEndTime(QVideoFrame* self, long long time) {
 	self->setEndTime(static_cast<qint64>(time));
 }
 
-struct miqt_map /* of struct miqt_string to QVariant* */  QVideoFrame_AvailableMetaData(const QVideoFrame* self) {
+struct miqt_map /* of struct miqt_string to QVariant* */  QVideoFrame_availableMetaData(const QVideoFrame* self) {
 	QVariantMap _ret = self->availableMetaData();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
@@ -188,31 +188,31 @@ struct miqt_map /* of struct miqt_string to QVariant* */  QVideoFrame_AvailableM
 	return _out;
 }
 
-QVariant* QVideoFrame_MetaData(const QVideoFrame* self, struct miqt_string key) {
+QVariant* QVideoFrame_metaData(const QVideoFrame* self, struct miqt_string key) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QVariant(self->metaData(key_QString));
 }
 
-void QVideoFrame_SetMetaData(QVideoFrame* self, struct miqt_string key, QVariant* value) {
+void QVideoFrame_setMetaData(QVideoFrame* self, struct miqt_string key, QVariant* value) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
 	self->setMetaData(key_QString, *value);
 }
 
-QImage* QVideoFrame_Image(const QVideoFrame* self) {
+QImage* QVideoFrame_image(const QVideoFrame* self) {
 	return new QImage(self->image());
 }
 
-int QVideoFrame_PixelFormatFromImageFormat(int format) {
+int QVideoFrame_pixelFormatFromImageFormat(int format) {
 	QVideoFrame::PixelFormat _ret = QVideoFrame::pixelFormatFromImageFormat(static_cast<QImage::Format>(format));
 	return static_cast<int>(_ret);
 }
 
-int QVideoFrame_ImageFormatFromPixelFormat(int format) {
+int QVideoFrame_imageFormatFromPixelFormat(int format) {
 	QImage::Format _ret = QVideoFrame::imageFormatFromPixelFormat(static_cast<QVideoFrame::PixelFormat>(format));
 	return static_cast<int>(_ret);
 }
 
-void QVideoFrame_Delete(QVideoFrame* self) {
+void QVideoFrame_delete(QVideoFrame* self) {
 	delete self;
 }
 

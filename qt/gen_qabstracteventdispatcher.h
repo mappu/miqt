@@ -37,45 +37,45 @@ typedef struct QThread QThread;
 #endif
 
 void QAbstractEventDispatcher_virtbase(QAbstractEventDispatcher* src, QObject** outptr_QObject);
-QMetaObject* QAbstractEventDispatcher_MetaObject(const QAbstractEventDispatcher* self);
-void* QAbstractEventDispatcher_Metacast(QAbstractEventDispatcher* self, const char* param1);
-struct miqt_string QAbstractEventDispatcher_Tr(const char* s);
-struct miqt_string QAbstractEventDispatcher_TrUtf8(const char* s);
-QAbstractEventDispatcher* QAbstractEventDispatcher_Instance();
-bool QAbstractEventDispatcher_ProcessEvents(QAbstractEventDispatcher* self, int flags);
-bool QAbstractEventDispatcher_HasPendingEvents(QAbstractEventDispatcher* self);
-void QAbstractEventDispatcher_RegisterSocketNotifier(QAbstractEventDispatcher* self, QSocketNotifier* notifier);
-void QAbstractEventDispatcher_UnregisterSocketNotifier(QAbstractEventDispatcher* self, QSocketNotifier* notifier);
-int QAbstractEventDispatcher_RegisterTimer(QAbstractEventDispatcher* self, int interval, int timerType, QObject* object);
-void QAbstractEventDispatcher_RegisterTimer2(QAbstractEventDispatcher* self, int timerId, int interval, int timerType, QObject* object);
-bool QAbstractEventDispatcher_UnregisterTimer(QAbstractEventDispatcher* self, int timerId);
-bool QAbstractEventDispatcher_UnregisterTimers(QAbstractEventDispatcher* self, QObject* object);
-struct miqt_array /* of QAbstractEventDispatcher__TimerInfo* */  QAbstractEventDispatcher_RegisteredTimers(const QAbstractEventDispatcher* self, QObject* object);
-int QAbstractEventDispatcher_RemainingTime(QAbstractEventDispatcher* self, int timerId);
-void QAbstractEventDispatcher_WakeUp(QAbstractEventDispatcher* self);
-void QAbstractEventDispatcher_Interrupt(QAbstractEventDispatcher* self);
-void QAbstractEventDispatcher_Flush(QAbstractEventDispatcher* self);
-void QAbstractEventDispatcher_StartingUp(QAbstractEventDispatcher* self);
-void QAbstractEventDispatcher_ClosingDown(QAbstractEventDispatcher* self);
-void QAbstractEventDispatcher_InstallNativeEventFilter(QAbstractEventDispatcher* self, QAbstractNativeEventFilter* filterObj);
-void QAbstractEventDispatcher_RemoveNativeEventFilter(QAbstractEventDispatcher* self, QAbstractNativeEventFilter* filterObj);
-bool QAbstractEventDispatcher_FilterNativeEvent(QAbstractEventDispatcher* self, struct miqt_string eventType, void* message, long* result);
-void QAbstractEventDispatcher_AboutToBlock(QAbstractEventDispatcher* self);
-void QAbstractEventDispatcher_connect_AboutToBlock(QAbstractEventDispatcher* self, intptr_t slot);
-void QAbstractEventDispatcher_Awake(QAbstractEventDispatcher* self);
-void QAbstractEventDispatcher_connect_Awake(QAbstractEventDispatcher* self, intptr_t slot);
-struct miqt_string QAbstractEventDispatcher_Tr2(const char* s, const char* c);
-struct miqt_string QAbstractEventDispatcher_Tr3(const char* s, const char* c, int n);
-struct miqt_string QAbstractEventDispatcher_TrUtf82(const char* s, const char* c);
-struct miqt_string QAbstractEventDispatcher_TrUtf83(const char* s, const char* c, int n);
-QAbstractEventDispatcher* QAbstractEventDispatcher_Instance1(QThread* thread);
-void QAbstractEventDispatcher_Delete(QAbstractEventDispatcher* self);
+QMetaObject* QAbstractEventDispatcher_metaObject(const QAbstractEventDispatcher* self);
+void* QAbstractEventDispatcher_metacast(QAbstractEventDispatcher* self, const char* param1);
+struct miqt_string QAbstractEventDispatcher_tr(const char* s);
+struct miqt_string QAbstractEventDispatcher_trUtf8(const char* s);
+QAbstractEventDispatcher* QAbstractEventDispatcher_instance();
+bool QAbstractEventDispatcher_processEvents(QAbstractEventDispatcher* self, int flags);
+bool QAbstractEventDispatcher_hasPendingEvents(QAbstractEventDispatcher* self);
+void QAbstractEventDispatcher_registerSocketNotifier(QAbstractEventDispatcher* self, QSocketNotifier* notifier);
+void QAbstractEventDispatcher_unregisterSocketNotifier(QAbstractEventDispatcher* self, QSocketNotifier* notifier);
+int QAbstractEventDispatcher_registerTimer(QAbstractEventDispatcher* self, int interval, int timerType, QObject* object);
+void QAbstractEventDispatcher_registerTimer2(QAbstractEventDispatcher* self, int timerId, int interval, int timerType, QObject* object);
+bool QAbstractEventDispatcher_unregisterTimer(QAbstractEventDispatcher* self, int timerId);
+bool QAbstractEventDispatcher_unregisterTimers(QAbstractEventDispatcher* self, QObject* object);
+struct miqt_array /* of QAbstractEventDispatcher__TimerInfo* */  QAbstractEventDispatcher_registeredTimers(const QAbstractEventDispatcher* self, QObject* object);
+int QAbstractEventDispatcher_remainingTime(QAbstractEventDispatcher* self, int timerId);
+void QAbstractEventDispatcher_wakeUp(QAbstractEventDispatcher* self);
+void QAbstractEventDispatcher_interrupt(QAbstractEventDispatcher* self);
+void QAbstractEventDispatcher_flush(QAbstractEventDispatcher* self);
+void QAbstractEventDispatcher_startingUp(QAbstractEventDispatcher* self);
+void QAbstractEventDispatcher_closingDown(QAbstractEventDispatcher* self);
+void QAbstractEventDispatcher_installNativeEventFilter(QAbstractEventDispatcher* self, QAbstractNativeEventFilter* filterObj);
+void QAbstractEventDispatcher_removeNativeEventFilter(QAbstractEventDispatcher* self, QAbstractNativeEventFilter* filterObj);
+bool QAbstractEventDispatcher_filterNativeEvent(QAbstractEventDispatcher* self, struct miqt_string eventType, void* message, long* result);
+void QAbstractEventDispatcher_aboutToBlock(QAbstractEventDispatcher* self);
+void QAbstractEventDispatcher_connect_aboutToBlock(QAbstractEventDispatcher* self, intptr_t slot);
+void QAbstractEventDispatcher_awake(QAbstractEventDispatcher* self);
+void QAbstractEventDispatcher_connect_awake(QAbstractEventDispatcher* self, intptr_t slot);
+struct miqt_string QAbstractEventDispatcher_tr2(const char* s, const char* c);
+struct miqt_string QAbstractEventDispatcher_tr3(const char* s, const char* c, int n);
+struct miqt_string QAbstractEventDispatcher_trUtf82(const char* s, const char* c);
+struct miqt_string QAbstractEventDispatcher_trUtf83(const char* s, const char* c, int n);
+QAbstractEventDispatcher* QAbstractEventDispatcher_instance1(QThread* thread);
+void QAbstractEventDispatcher_delete(QAbstractEventDispatcher* self);
 
 QAbstractEventDispatcher__TimerInfo* QAbstractEventDispatcher__TimerInfo_new(int id, int i, int t);
-void QAbstractEventDispatcher__TimerInfo_Delete(QAbstractEventDispatcher__TimerInfo* self);
+void QAbstractEventDispatcher__TimerInfo_delete(QAbstractEventDispatcher__TimerInfo* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

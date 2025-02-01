@@ -27,32 +27,32 @@ typedef struct QLocale QLocale;
 #endif
 
 QCollatorSortKey* QCollatorSortKey_new(QCollatorSortKey* other);
-void QCollatorSortKey_OperatorAssign(QCollatorSortKey* self, QCollatorSortKey* other);
-void QCollatorSortKey_Swap(QCollatorSortKey* self, QCollatorSortKey* other);
-int QCollatorSortKey_Compare(const QCollatorSortKey* self, QCollatorSortKey* key);
-void QCollatorSortKey_Delete(QCollatorSortKey* self);
+void QCollatorSortKey_operatorAssign(QCollatorSortKey* self, QCollatorSortKey* other);
+void QCollatorSortKey_swap(QCollatorSortKey* self, QCollatorSortKey* other);
+int QCollatorSortKey_compare(const QCollatorSortKey* self, QCollatorSortKey* key);
+void QCollatorSortKey_delete(QCollatorSortKey* self);
 
 QCollator* QCollator_new();
 QCollator* QCollator_new2(QLocale* locale);
 QCollator* QCollator_new3(QCollator* param1);
-void QCollator_OperatorAssign(QCollator* self, QCollator* param1);
-void QCollator_Swap(QCollator* self, QCollator* other);
-void QCollator_SetLocale(QCollator* self, QLocale* locale);
-QLocale* QCollator_Locale(const QCollator* self);
-int QCollator_CaseSensitivity(const QCollator* self);
-void QCollator_SetCaseSensitivity(QCollator* self, int cs);
-void QCollator_SetNumericMode(QCollator* self, bool on);
-bool QCollator_NumericMode(const QCollator* self);
-void QCollator_SetIgnorePunctuation(QCollator* self, bool on);
-bool QCollator_IgnorePunctuation(const QCollator* self);
-int QCollator_Compare(const QCollator* self, struct miqt_string s1, struct miqt_string s2);
-int QCollator_Compare3(const QCollator* self, QChar* s1, int len1, QChar* s2, int len2);
-bool QCollator_OperatorCall(const QCollator* self, struct miqt_string s1, struct miqt_string s2);
-QCollatorSortKey* QCollator_SortKey(const QCollator* self, struct miqt_string stringVal);
-void QCollator_Delete(QCollator* self);
+void QCollator_operatorAssign(QCollator* self, QCollator* param1);
+void QCollator_swap(QCollator* self, QCollator* other);
+void QCollator_setLocale(QCollator* self, QLocale* locale);
+QLocale* QCollator_locale(const QCollator* self);
+int QCollator_caseSensitivity(const QCollator* self);
+void QCollator_setCaseSensitivity(QCollator* self, int cs);
+void QCollator_setNumericMode(QCollator* self, bool on);
+bool QCollator_numericMode(const QCollator* self);
+void QCollator_setIgnorePunctuation(QCollator* self, bool on);
+bool QCollator_ignorePunctuation(const QCollator* self);
+int QCollator_compare(const QCollator* self, struct miqt_string s1, struct miqt_string s2);
+int QCollator_compare3(const QCollator* self, QChar* s1, int len1, QChar* s2, int len2);
+bool QCollator_operatorCall(const QCollator* self, struct miqt_string s1, struct miqt_string s2);
+QCollatorSortKey* QCollator_sortKey(const QCollator* self, struct miqt_string string);
+void QCollator_delete(QCollator* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

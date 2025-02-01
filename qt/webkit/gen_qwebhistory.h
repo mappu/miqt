@@ -31,41 +31,41 @@ typedef struct QWebHistoryItem QWebHistoryItem;
 #endif
 
 QWebHistoryItem* QWebHistoryItem_new(QWebHistoryItem* other);
-void QWebHistoryItem_OperatorAssign(QWebHistoryItem* self, QWebHistoryItem* other);
-QUrl* QWebHistoryItem_OriginalUrl(const QWebHistoryItem* self);
-QUrl* QWebHistoryItem_Url(const QWebHistoryItem* self);
-struct miqt_string QWebHistoryItem_Title(const QWebHistoryItem* self);
-QDateTime* QWebHistoryItem_LastVisited(const QWebHistoryItem* self);
-QIcon* QWebHistoryItem_Icon(const QWebHistoryItem* self);
-QVariant* QWebHistoryItem_UserData(const QWebHistoryItem* self);
-void QWebHistoryItem_SetUserData(QWebHistoryItem* self, QVariant* userData);
-bool QWebHistoryItem_IsValid(const QWebHistoryItem* self);
-struct miqt_map /* of struct miqt_string to QVariant* */  QWebHistoryItem_ToMap(const QWebHistoryItem* self);
-void QWebHistoryItem_LoadFromMap(QWebHistoryItem* self, struct miqt_map /* of struct miqt_string to QVariant* */  mapVal);
-void QWebHistoryItem_Delete(QWebHistoryItem* self);
+void QWebHistoryItem_operatorAssign(QWebHistoryItem* self, QWebHistoryItem* other);
+QUrl* QWebHistoryItem_originalUrl(const QWebHistoryItem* self);
+QUrl* QWebHistoryItem_url(const QWebHistoryItem* self);
+struct miqt_string QWebHistoryItem_title(const QWebHistoryItem* self);
+QDateTime* QWebHistoryItem_lastVisited(const QWebHistoryItem* self);
+QIcon* QWebHistoryItem_icon(const QWebHistoryItem* self);
+QVariant* QWebHistoryItem_userData(const QWebHistoryItem* self);
+void QWebHistoryItem_setUserData(QWebHistoryItem* self, QVariant* userData);
+bool QWebHistoryItem_isValid(const QWebHistoryItem* self);
+struct miqt_map /* of struct miqt_string to QVariant* */  QWebHistoryItem_toMap(const QWebHistoryItem* self);
+void QWebHistoryItem_loadFromMap(QWebHistoryItem* self, struct miqt_map /* of struct miqt_string to QVariant* */  map);
+void QWebHistoryItem_delete(QWebHistoryItem* self);
 
-void QWebHistory_Clear(QWebHistory* self);
-struct miqt_array /* of QWebHistoryItem* */  QWebHistory_Items(const QWebHistory* self);
-struct miqt_array /* of QWebHistoryItem* */  QWebHistory_BackItems(const QWebHistory* self, int maxItems);
-struct miqt_array /* of QWebHistoryItem* */  QWebHistory_ForwardItems(const QWebHistory* self, int maxItems);
-bool QWebHistory_CanGoBack(const QWebHistory* self);
-bool QWebHistory_CanGoForward(const QWebHistory* self);
-void QWebHistory_Back(QWebHistory* self);
-void QWebHistory_Forward(QWebHistory* self);
-void QWebHistory_GoToItem(QWebHistory* self, QWebHistoryItem* item);
-QWebHistoryItem* QWebHistory_BackItem(const QWebHistory* self);
-QWebHistoryItem* QWebHistory_CurrentItem(const QWebHistory* self);
-QWebHistoryItem* QWebHistory_ForwardItem(const QWebHistory* self);
-QWebHistoryItem* QWebHistory_ItemAt(const QWebHistory* self, int i);
-int QWebHistory_CurrentItemIndex(const QWebHistory* self);
-int QWebHistory_Count(const QWebHistory* self);
-int QWebHistory_MaximumItemCount(const QWebHistory* self);
-void QWebHistory_SetMaximumItemCount(QWebHistory* self, int count);
-struct miqt_map /* of struct miqt_string to QVariant* */  QWebHistory_ToMap(const QWebHistory* self);
-void QWebHistory_LoadFromMap(QWebHistory* self, struct miqt_map /* of struct miqt_string to QVariant* */  mapVal);
+void QWebHistory_clear(QWebHistory* self);
+struct miqt_array /* of QWebHistoryItem* */  QWebHistory_items(const QWebHistory* self);
+struct miqt_array /* of QWebHistoryItem* */  QWebHistory_backItems(const QWebHistory* self, int maxItems);
+struct miqt_array /* of QWebHistoryItem* */  QWebHistory_forwardItems(const QWebHistory* self, int maxItems);
+bool QWebHistory_canGoBack(const QWebHistory* self);
+bool QWebHistory_canGoForward(const QWebHistory* self);
+void QWebHistory_back(QWebHistory* self);
+void QWebHistory_forward(QWebHistory* self);
+void QWebHistory_goToItem(QWebHistory* self, QWebHistoryItem* item);
+QWebHistoryItem* QWebHistory_backItem(const QWebHistory* self);
+QWebHistoryItem* QWebHistory_currentItem(const QWebHistory* self);
+QWebHistoryItem* QWebHistory_forwardItem(const QWebHistory* self);
+QWebHistoryItem* QWebHistory_itemAt(const QWebHistory* self, int i);
+int QWebHistory_currentItemIndex(const QWebHistory* self);
+int QWebHistory_count(const QWebHistory* self);
+int QWebHistory_maximumItemCount(const QWebHistory* self);
+void QWebHistory_setMaximumItemCount(QWebHistory* self, int count);
+struct miqt_map /* of struct miqt_string to QVariant* */  QWebHistory_toMap(const QWebHistory* self);
+void QWebHistory_loadFromMap(QWebHistory* self, struct miqt_map /* of struct miqt_string to QVariant* */  map);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

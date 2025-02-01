@@ -21,24 +21,24 @@ typedef struct QElapsedTimer QElapsedTimer;
 #endif
 
 QElapsedTimer* QElapsedTimer_new();
-int QElapsedTimer_ClockType();
-bool QElapsedTimer_IsMonotonic();
-void QElapsedTimer_Start(QElapsedTimer* self);
-long long QElapsedTimer_Restart(QElapsedTimer* self);
-void QElapsedTimer_Invalidate(QElapsedTimer* self);
-bool QElapsedTimer_IsValid(const QElapsedTimer* self);
-long long QElapsedTimer_NsecsElapsed(const QElapsedTimer* self);
-long long QElapsedTimer_Elapsed(const QElapsedTimer* self);
-bool QElapsedTimer_HasExpired(const QElapsedTimer* self, long long timeout);
-long long QElapsedTimer_MsecsSinceReference(const QElapsedTimer* self);
-long long QElapsedTimer_MsecsTo(const QElapsedTimer* self, QElapsedTimer* other);
-long long QElapsedTimer_SecsTo(const QElapsedTimer* self, QElapsedTimer* other);
-bool QElapsedTimer_OperatorEqual(const QElapsedTimer* self, QElapsedTimer* other);
-bool QElapsedTimer_OperatorNotEqual(const QElapsedTimer* self, QElapsedTimer* other);
-void QElapsedTimer_Delete(QElapsedTimer* self);
+int QElapsedTimer_clockType();
+bool QElapsedTimer_isMonotonic();
+void QElapsedTimer_start(QElapsedTimer* self);
+long long QElapsedTimer_restart(QElapsedTimer* self);
+void QElapsedTimer_invalidate(QElapsedTimer* self);
+bool QElapsedTimer_isValid(const QElapsedTimer* self);
+long long QElapsedTimer_nsecsElapsed(const QElapsedTimer* self);
+long long QElapsedTimer_elapsed(const QElapsedTimer* self);
+bool QElapsedTimer_hasExpired(const QElapsedTimer* self, long long timeout);
+long long QElapsedTimer_msecsSinceReference(const QElapsedTimer* self);
+long long QElapsedTimer_msecsTo(const QElapsedTimer* self, QElapsedTimer* other);
+long long QElapsedTimer_secsTo(const QElapsedTimer* self, QElapsedTimer* other);
+bool QElapsedTimer_operatorEqual(const QElapsedTimer* self, QElapsedTimer* other);
+bool QElapsedTimer_operatorNotEqual(const QElapsedTimer* self, QElapsedTimer* other);
+void QElapsedTimer_delete(QElapsedTimer* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

@@ -11,15 +11,15 @@ extern "C" {
 } /* extern C */
 #endif
 
-bool QsciCommandSet_ReadSettings(QsciCommandSet* self, QSettings* qs) {
+bool QsciCommandSet_readSettings(QsciCommandSet* self, QSettings* qs) {
 	return self->readSettings(*qs);
 }
 
-bool QsciCommandSet_WriteSettings(QsciCommandSet* self, QSettings* qs) {
+bool QsciCommandSet_writeSettings(QsciCommandSet* self, QSettings* qs) {
 	return self->writeSettings(*qs);
 }
 
-struct miqt_array /* of QsciCommand* */  QsciCommandSet_Commands(QsciCommandSet* self) {
+struct miqt_array /* of QsciCommand* */  QsciCommandSet_commands(QsciCommandSet* self) {
 	QList<QsciCommand *>& _ret = self->commands();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QsciCommand** _arr = static_cast<QsciCommand**>(malloc(sizeof(QsciCommand*) * _ret.length()));
@@ -32,27 +32,27 @@ struct miqt_array /* of QsciCommand* */  QsciCommandSet_Commands(QsciCommandSet*
 	return _out;
 }
 
-void QsciCommandSet_ClearKeys(QsciCommandSet* self) {
+void QsciCommandSet_clearKeys(QsciCommandSet* self) {
 	self->clearKeys();
 }
 
-void QsciCommandSet_ClearAlternateKeys(QsciCommandSet* self) {
+void QsciCommandSet_clearAlternateKeys(QsciCommandSet* self) {
 	self->clearAlternateKeys();
 }
 
-QsciCommand* QsciCommandSet_BoundTo(const QsciCommandSet* self, int key) {
+QsciCommand* QsciCommandSet_boundTo(const QsciCommandSet* self, int key) {
 	return self->boundTo(static_cast<int>(key));
 }
 
-QsciCommand* QsciCommandSet_Find(const QsciCommandSet* self, int command) {
+QsciCommand* QsciCommandSet_find(const QsciCommandSet* self, int command) {
 	return self->find(static_cast<QsciCommand::Command>(command));
 }
 
-bool QsciCommandSet_ReadSettings2(QsciCommandSet* self, QSettings* qs, const char* prefix) {
+bool QsciCommandSet_readSettings2(QsciCommandSet* self, QSettings* qs, const char* prefix) {
 	return self->readSettings(*qs, prefix);
 }
 
-bool QsciCommandSet_WriteSettings2(QsciCommandSet* self, QSettings* qs, const char* prefix) {
+bool QsciCommandSet_writeSettings2(QsciCommandSet* self, QSettings* qs, const char* prefix) {
 	return self->writeSettings(*qs, prefix);
 }
 

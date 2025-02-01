@@ -16,8 +16,8 @@ extern "C" {
 } /* extern C */
 #endif
 
-QMetaType* QMetaType_new(int typeVal) {
-	return new QMetaType(static_cast<int>(typeVal));
+QMetaType* QMetaType_new(int type) {
+	return new QMetaType(static_cast<int>(type));
 }
 
 QMetaType* QMetaType_new2() {
@@ -28,229 +28,229 @@ QMetaType* QMetaType_new3(QMetaType* param1) {
 	return new QMetaType(*param1);
 }
 
-void QMetaType_RegisterNormalizedTypedef(struct miqt_string normalizedTypeName, QMetaType* typeVal) {
+void QMetaType_registerNormalizedTypedef(struct miqt_string normalizedTypeName, QMetaType* type) {
 	QByteArray normalizedTypeName_QByteArray(normalizedTypeName.data, normalizedTypeName.len);
-	QMetaType::registerNormalizedTypedef(normalizedTypeName_QByteArray, *typeVal);
+	QMetaType::registerNormalizedTypedef(normalizedTypeName_QByteArray, *type);
 }
 
-int QMetaType_Type(const char* typeName) {
+int QMetaType_type(const char* typeName) {
 	return QMetaType::type(typeName);
 }
 
-int QMetaType_TypeWithTypeName(struct miqt_string typeName) {
+int QMetaType_typeWithTypeName(struct miqt_string typeName) {
 	QByteArray typeName_QByteArray(typeName.data, typeName.len);
 	return QMetaType::type(typeName_QByteArray);
 }
 
-const char* QMetaType_TypeName(int typeVal) {
-	return (const char*) QMetaType::typeName(static_cast<int>(typeVal));
+const char* QMetaType_typeName(int type) {
+	return (const char*) QMetaType::typeName(static_cast<int>(type));
 }
 
-int QMetaType_SizeOf(int typeVal) {
-	return QMetaType::sizeOf(static_cast<int>(typeVal));
+int QMetaType_sizeOf(int type) {
+	return QMetaType::sizeOf(static_cast<int>(type));
 }
 
-int QMetaType_TypeFlags(int typeVal) {
-	QMetaType::TypeFlags _ret = QMetaType::typeFlags(static_cast<int>(typeVal));
+int QMetaType_typeFlags(int type) {
+	QMetaType::TypeFlags _ret = QMetaType::typeFlags(static_cast<int>(type));
 	return static_cast<int>(_ret);
 }
 
-QMetaObject* QMetaType_MetaObjectForType(int typeVal) {
-	return (QMetaObject*) QMetaType::metaObjectForType(static_cast<int>(typeVal));
+QMetaObject* QMetaType_metaObjectForType(int type) {
+	return (QMetaObject*) QMetaType::metaObjectForType(static_cast<int>(type));
 }
 
-void* QMetaType_Create(int typeVal) {
-	return QMetaType::create(static_cast<int>(typeVal));
+void* QMetaType_create(int type) {
+	return QMetaType::create(static_cast<int>(type));
 }
 
-void QMetaType_Destroy(int typeVal, void* data) {
-	QMetaType::destroy(static_cast<int>(typeVal), data);
+void QMetaType_destroy(int type, void* data) {
+	QMetaType::destroy(static_cast<int>(type), data);
 }
 
-void* QMetaType_Construct(int typeVal, void* where, const void* copyVal) {
-	return QMetaType::construct(static_cast<int>(typeVal), where, copyVal);
+void* QMetaType_construct(int type, void* where, const void* copy) {
+	return QMetaType::construct(static_cast<int>(type), where, copy);
 }
 
-void QMetaType_Destruct(int typeVal, void* where) {
-	QMetaType::destruct(static_cast<int>(typeVal), where);
+void QMetaType_destruct(int type, void* where) {
+	QMetaType::destruct(static_cast<int>(type), where);
 }
 
-bool QMetaType_IsRegistered(int typeVal) {
-	return QMetaType::isRegistered(static_cast<int>(typeVal));
+bool QMetaType_isRegistered(int type) {
+	return QMetaType::isRegistered(static_cast<int>(type));
 }
 
-bool QMetaType_IsValid(const QMetaType* self) {
+bool QMetaType_isValid(const QMetaType* self) {
 	return self->isValid();
 }
 
-bool QMetaType_IsRegistered2(const QMetaType* self) {
+bool QMetaType_isRegistered2(const QMetaType* self) {
 	return self->isRegistered();
 }
 
-int QMetaType_Id(const QMetaType* self) {
+int QMetaType_id(const QMetaType* self) {
 	return self->id();
 }
 
-ptrdiff_t QMetaType_SizeOf2(const QMetaType* self) {
+ptrdiff_t QMetaType_sizeOf2(const QMetaType* self) {
 	qsizetype _ret = self->sizeOf();
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-ptrdiff_t QMetaType_AlignOf(const QMetaType* self) {
+ptrdiff_t QMetaType_alignOf(const QMetaType* self) {
 	qsizetype _ret = self->alignOf();
 	return static_cast<ptrdiff_t>(_ret);
 }
 
-int QMetaType_Flags(const QMetaType* self) {
+int QMetaType_flags(const QMetaType* self) {
 	QMetaType::TypeFlags _ret = self->flags();
 	return static_cast<int>(_ret);
 }
 
-QMetaObject* QMetaType_MetaObject(const QMetaType* self) {
+QMetaObject* QMetaType_metaObject(const QMetaType* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-const char* QMetaType_Name(const QMetaType* self) {
+const char* QMetaType_name(const QMetaType* self) {
 	return (const char*) self->name();
 }
 
-void* QMetaType_Create2(const QMetaType* self) {
+void* QMetaType_create2(const QMetaType* self) {
 	return self->create();
 }
 
-void QMetaType_DestroyWithData(const QMetaType* self, void* data) {
+void QMetaType_destroyWithData(const QMetaType* self, void* data) {
 	self->destroy(data);
 }
 
-void* QMetaType_ConstructWithWhere(const QMetaType* self, void* where) {
+void* QMetaType_constructWithWhere(const QMetaType* self, void* where) {
 	return self->construct(where);
 }
 
-void QMetaType_DestructWithData(const QMetaType* self, void* data) {
+void QMetaType_destructWithData(const QMetaType* self, void* data) {
 	self->destruct(data);
 }
 
-QPartialOrdering* QMetaType_Compare(const QMetaType* self, const void* lhs, const void* rhs) {
+QPartialOrdering* QMetaType_compare(const QMetaType* self, const void* lhs, const void* rhs) {
 	return new QPartialOrdering(self->compare(lhs, rhs));
 }
 
-bool QMetaType_Equals(const QMetaType* self, const void* lhs, const void* rhs) {
+bool QMetaType_equals(const QMetaType* self, const void* lhs, const void* rhs) {
 	return self->equals(lhs, rhs);
 }
 
-bool QMetaType_IsEqualityComparable(const QMetaType* self) {
+bool QMetaType_isEqualityComparable(const QMetaType* self) {
 	return self->isEqualityComparable();
 }
 
-bool QMetaType_IsOrdered(const QMetaType* self) {
+bool QMetaType_isOrdered(const QMetaType* self) {
 	return self->isOrdered();
 }
 
-bool QMetaType_Save(const QMetaType* self, QDataStream* stream, const void* data) {
+bool QMetaType_save(const QMetaType* self, QDataStream* stream, const void* data) {
 	return self->save(*stream, data);
 }
 
-bool QMetaType_Load(const QMetaType* self, QDataStream* stream, void* data) {
+bool QMetaType_load(const QMetaType* self, QDataStream* stream, void* data) {
 	return self->load(*stream, data);
 }
 
-bool QMetaType_HasRegisteredDataStreamOperators(const QMetaType* self) {
+bool QMetaType_hasRegisteredDataStreamOperators(const QMetaType* self) {
 	return self->hasRegisteredDataStreamOperators();
 }
 
-bool QMetaType_Save2(QDataStream* stream, int typeVal, const void* data) {
-	return QMetaType::save(*stream, static_cast<int>(typeVal), data);
+bool QMetaType_save2(QDataStream* stream, int type, const void* data) {
+	return QMetaType::save(*stream, static_cast<int>(type), data);
 }
 
-bool QMetaType_Load2(QDataStream* stream, int typeVal, void* data) {
-	return QMetaType::load(*stream, static_cast<int>(typeVal), data);
+bool QMetaType_load2(QDataStream* stream, int type, void* data) {
+	return QMetaType::load(*stream, static_cast<int>(type), data);
 }
 
-QMetaType* QMetaType_FromName(QByteArrayView* name) {
+QMetaType* QMetaType_fromName(QByteArrayView* name) {
 	return new QMetaType(QMetaType::fromName(*name));
 }
 
-bool QMetaType_DebugStream(QMetaType* self, QDebug* dbg, const void* rhs) {
+bool QMetaType_debugStream(QMetaType* self, QDebug* dbg, const void* rhs) {
 	return self->debugStream(*dbg, rhs);
 }
 
-bool QMetaType_HasRegisteredDebugStreamOperator(const QMetaType* self) {
+bool QMetaType_hasRegisteredDebugStreamOperator(const QMetaType* self) {
 	return self->hasRegisteredDebugStreamOperator();
 }
 
-bool QMetaType_DebugStream2(QDebug* dbg, const void* rhs, int typeId) {
+bool QMetaType_debugStream2(QDebug* dbg, const void* rhs, int typeId) {
 	return QMetaType::debugStream(*dbg, rhs, static_cast<int>(typeId));
 }
 
-bool QMetaType_HasRegisteredDebugStreamOperatorWithTypeId(int typeId) {
+bool QMetaType_hasRegisteredDebugStreamOperatorWithTypeId(int typeId) {
 	return QMetaType::hasRegisteredDebugStreamOperator(static_cast<int>(typeId));
 }
 
-bool QMetaType_Convert(QMetaType* fromType, const void* from, QMetaType* toType, void* to) {
+bool QMetaType_convert(QMetaType* fromType, const void* from, QMetaType* toType, void* to) {
 	return QMetaType::convert(*fromType, from, *toType, to);
 }
 
-bool QMetaType_CanConvert(QMetaType* fromType, QMetaType* toType) {
+bool QMetaType_canConvert(QMetaType* fromType, QMetaType* toType) {
 	return QMetaType::canConvert(*fromType, *toType);
 }
 
-bool QMetaType_View(QMetaType* fromType, void* from, QMetaType* toType, void* to) {
+bool QMetaType_view(QMetaType* fromType, void* from, QMetaType* toType, void* to) {
 	return QMetaType::view(*fromType, from, *toType, to);
 }
 
-bool QMetaType_CanView(QMetaType* fromType, QMetaType* toType) {
+bool QMetaType_canView(QMetaType* fromType, QMetaType* toType) {
 	return QMetaType::canView(*fromType, *toType);
 }
 
-bool QMetaType_Convert2(const void* from, int fromTypeId, void* to, int toTypeId) {
+bool QMetaType_convert2(const void* from, int fromTypeId, void* to, int toTypeId) {
 	return QMetaType::convert(from, static_cast<int>(fromTypeId), to, static_cast<int>(toTypeId));
 }
 
-bool QMetaType_Compare2(const void* lhs, const void* rhs, int typeId, int* result) {
+bool QMetaType_compare2(const void* lhs, const void* rhs, int typeId, int* result) {
 	return QMetaType::compare(lhs, rhs, static_cast<int>(typeId), static_cast<int*>(result));
 }
 
-bool QMetaType_Equals2(const void* lhs, const void* rhs, int typeId, int* result) {
+bool QMetaType_equals2(const void* lhs, const void* rhs, int typeId, int* result) {
 	return QMetaType::equals(lhs, rhs, static_cast<int>(typeId), static_cast<int*>(result));
 }
 
-bool QMetaType_HasRegisteredConverterFunction(QMetaType* fromType, QMetaType* toType) {
+bool QMetaType_hasRegisteredConverterFunction(QMetaType* fromType, QMetaType* toType) {
 	return QMetaType::hasRegisteredConverterFunction(*fromType, *toType);
 }
 
-bool QMetaType_HasRegisteredMutableViewFunction(QMetaType* fromType, QMetaType* toType) {
+bool QMetaType_hasRegisteredMutableViewFunction(QMetaType* fromType, QMetaType* toType) {
 	return QMetaType::hasRegisteredMutableViewFunction(*fromType, *toType);
 }
 
-void QMetaType_UnregisterConverterFunction(QMetaType* from, QMetaType* to) {
+void QMetaType_unregisterConverterFunction(QMetaType* from, QMetaType* to) {
 	QMetaType::unregisterConverterFunction(*from, *to);
 }
 
-void QMetaType_UnregisterMutableViewFunction(QMetaType* from, QMetaType* to) {
+void QMetaType_unregisterMutableViewFunction(QMetaType* from, QMetaType* to) {
 	QMetaType::unregisterMutableViewFunction(*from, *to);
 }
 
-void QMetaType_UnregisterMetaType(QMetaType* typeVal) {
-	QMetaType::unregisterMetaType(*typeVal);
+void QMetaType_unregisterMetaType(QMetaType* type) {
+	QMetaType::unregisterMetaType(*type);
 }
 
-void* QMetaType_Create22(int typeVal, const void* copyVal) {
-	return QMetaType::create(static_cast<int>(typeVal), copyVal);
+void* QMetaType_create22(int type, const void* copy) {
+	return QMetaType::create(static_cast<int>(type), copy);
 }
 
-int QMetaType_Id1(const QMetaType* self, int param1) {
+int QMetaType_id1(const QMetaType* self, int param1) {
 	return self->id(static_cast<int>(param1));
 }
 
-void* QMetaType_Create1(const QMetaType* self, const void* copyVal) {
-	return self->create(copyVal);
+void* QMetaType_create1(const QMetaType* self, const void* copy) {
+	return self->create(copy);
 }
 
-void* QMetaType_Construct2(const QMetaType* self, void* where, const void* copyVal) {
-	return self->construct(where, copyVal);
+void* QMetaType_construct2(const QMetaType* self, void* where, const void* copy) {
+	return self->construct(where, copy);
 }
 
-void QMetaType_Delete(QMetaType* self) {
+void QMetaType_delete(QMetaType* self) {
 	delete self;
 }
 

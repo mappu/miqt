@@ -48,8 +48,8 @@ QVariant* QVariant_new() {
 	return new QVariant();
 }
 
-QVariant* QVariant_new2(QMetaType* typeVal) {
-	return new QVariant(*typeVal);
+QVariant* QVariant_new2(QMetaType* type) {
+	return new QVariant(*type);
 }
 
 QVariant* QVariant_new3(QVariant* other) {
@@ -97,9 +97,9 @@ QVariant* QVariant_new13(QBitArray* bitarray) {
 	return new QVariant(*bitarray);
 }
 
-QVariant* QVariant_new14(struct miqt_string stringVal) {
-	QString stringVal_QString = QString::fromUtf8(stringVal.data, stringVal.len);
-	return new QVariant(stringVal_QString);
+QVariant* QVariant_new14(struct miqt_string string) {
+	QString string_QString = QString::fromUtf8(string.data, string.len);
+	return new QVariant(string_QString);
 }
 
 QVariant* QVariant_new15(struct miqt_array /* of struct miqt_string */  stringlist) {
@@ -129,15 +129,15 @@ QVariant* QVariant_new19(QDateTime* datetime) {
 	return new QVariant(*datetime);
 }
 
-QVariant* QVariant_new20(struct miqt_map /* of struct miqt_string to QVariant* */  mapVal) {
-	QMap<QString, QVariant> mapVal_QMap;
-	struct miqt_string* mapVal_karr = static_cast<struct miqt_string*>(mapVal.keys);
-	QVariant** mapVal_varr = static_cast<QVariant**>(mapVal.values);
-	for(size_t i = 0; i < mapVal.len; ++i) {
-		QString mapVal_karr_i_QString = QString::fromUtf8(mapVal_karr[i].data, mapVal_karr[i].len);
-		mapVal_QMap[mapVal_karr_i_QString] = *(mapVal_varr[i]);
+QVariant* QVariant_new20(struct miqt_map /* of struct miqt_string to QVariant* */  map) {
+	QMap<QString, QVariant> map_QMap;
+	struct miqt_string* map_karr = static_cast<struct miqt_string*>(map.keys);
+	QVariant** map_varr = static_cast<QVariant**>(map.values);
+	for(size_t i = 0; i < map.len; ++i) {
+		QString map_karr_i_QString = QString::fromUtf8(map_karr[i].data, map_karr[i].len);
+		map_QMap[map_karr_i_QString] = *(map_varr[i]);
 	}
-	return new QVariant(mapVal_QMap);
+	return new QVariant(map_QMap);
 }
 
 QVariant* QVariant_new21(struct miqt_map /* of struct miqt_string to QVariant* */  hash) {
@@ -228,115 +228,115 @@ QVariant* QVariant_new40(QPersistentModelIndex* modelIndex) {
 	return new QVariant(*modelIndex);
 }
 
-QVariant* QVariant_new41(int typeVal) {
-	return new QVariant(static_cast<QVariant::Type>(typeVal));
+QVariant* QVariant_new41(int type) {
+	return new QVariant(static_cast<QVariant::Type>(type));
 }
 
-QVariant* QVariant_new42(QMetaType* typeVal, const void* copyVal) {
-	return new QVariant(*typeVal, copyVal);
+QVariant* QVariant_new42(QMetaType* type, const void* copy) {
+	return new QVariant(*type, copy);
 }
 
-void QVariant_OperatorAssign(QVariant* self, QVariant* other) {
+void QVariant_operatorAssign(QVariant* self, QVariant* other) {
 	self->operator=(*other);
 }
 
-void QVariant_Swap(QVariant* self, QVariant* other) {
+void QVariant_swap(QVariant* self, QVariant* other) {
 	self->swap(*other);
 }
 
-int QVariant_UserType(const QVariant* self) {
+int QVariant_userType(const QVariant* self) {
 	return self->userType();
 }
 
-int QVariant_TypeId(const QVariant* self) {
+int QVariant_typeId(const QVariant* self) {
 	return self->typeId();
 }
 
-const char* QVariant_TypeName(const QVariant* self) {
+const char* QVariant_typeName(const QVariant* self) {
 	return (const char*) self->typeName();
 }
 
-QMetaType* QVariant_MetaType(const QVariant* self) {
+QMetaType* QVariant_metaType(const QVariant* self) {
 	return new QMetaType(self->metaType());
 }
 
-bool QVariant_CanConvert(const QVariant* self, QMetaType* targetType) {
+bool QVariant_canConvert(const QVariant* self, QMetaType* targetType) {
 	return self->canConvert(*targetType);
 }
 
-bool QVariant_Convert(QVariant* self, QMetaType* typeVal) {
-	return self->convert(*typeVal);
+bool QVariant_convert(QVariant* self, QMetaType* type) {
+	return self->convert(*type);
 }
 
-bool QVariant_CanView(const QVariant* self, QMetaType* targetType) {
+bool QVariant_canView(const QVariant* self, QMetaType* targetType) {
 	return self->canView(*targetType);
 }
 
-bool QVariant_CanConvertWithTargetTypeId(const QVariant* self, int targetTypeId) {
+bool QVariant_canConvertWithTargetTypeId(const QVariant* self, int targetTypeId) {
 	return self->canConvert(static_cast<int>(targetTypeId));
 }
 
-bool QVariant_ConvertWithTargetTypeId(QVariant* self, int targetTypeId) {
+bool QVariant_convertWithTargetTypeId(QVariant* self, int targetTypeId) {
 	return self->convert(static_cast<int>(targetTypeId));
 }
 
-bool QVariant_IsValid(const QVariant* self) {
+bool QVariant_isValid(const QVariant* self) {
 	return self->isValid();
 }
 
-bool QVariant_IsNull(const QVariant* self) {
+bool QVariant_isNull(const QVariant* self) {
 	return self->isNull();
 }
 
-void QVariant_Clear(QVariant* self) {
+void QVariant_clear(QVariant* self) {
 	self->clear();
 }
 
-void QVariant_Detach(QVariant* self) {
+void QVariant_detach(QVariant* self) {
 	self->detach();
 }
 
-bool QVariant_IsDetached(const QVariant* self) {
+bool QVariant_isDetached(const QVariant* self) {
 	return self->isDetached();
 }
 
-int QVariant_ToInt(const QVariant* self) {
+int QVariant_toInt(const QVariant* self) {
 	return self->toInt();
 }
 
-unsigned int QVariant_ToUInt(const QVariant* self) {
+unsigned int QVariant_toUInt(const QVariant* self) {
 	uint _ret = self->toUInt();
 	return static_cast<unsigned int>(_ret);
 }
 
-long long QVariant_ToLongLong(const QVariant* self) {
+long long QVariant_toLongLong(const QVariant* self) {
 	qlonglong _ret = self->toLongLong();
 	return static_cast<long long>(_ret);
 }
 
-unsigned long long QVariant_ToULongLong(const QVariant* self) {
+unsigned long long QVariant_toULongLong(const QVariant* self) {
 	qulonglong _ret = self->toULongLong();
 	return static_cast<unsigned long long>(_ret);
 }
 
-bool QVariant_ToBool(const QVariant* self) {
+bool QVariant_toBool(const QVariant* self) {
 	return self->toBool();
 }
 
-double QVariant_ToDouble(const QVariant* self) {
+double QVariant_toDouble(const QVariant* self) {
 	return self->toDouble();
 }
 
-float QVariant_ToFloat(const QVariant* self) {
+float QVariant_toFloat(const QVariant* self) {
 	return self->toFloat();
 }
 
-double QVariant_ToReal(const QVariant* self) {
+double QVariant_toReal(const QVariant* self) {
 	qreal _ret = self->toReal();
 	return static_cast<double>(_ret);
 }
 
-struct miqt_string QVariant_ToByteArray(const QVariant* self) {
+struct miqt_string QVariant_toByteArray(const QVariant* self) {
 	QByteArray _qb = self->toByteArray();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -345,11 +345,11 @@ struct miqt_string QVariant_ToByteArray(const QVariant* self) {
 	return _ms;
 }
 
-QBitArray* QVariant_ToBitArray(const QVariant* self) {
+QBitArray* QVariant_toBitArray(const QVariant* self) {
 	return new QBitArray(self->toBitArray());
 }
 
-struct miqt_string QVariant_ToString(const QVariant* self) {
+struct miqt_string QVariant_toString(const QVariant* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -360,7 +360,7 @@ struct miqt_string QVariant_ToString(const QVariant* self) {
 	return _ms;
 }
 
-struct miqt_array /* of struct miqt_string */  QVariant_ToStringList(const QVariant* self) {
+struct miqt_array /* of struct miqt_string */  QVariant_toStringList(const QVariant* self) {
 	QStringList _ret = self->toStringList();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -380,23 +380,23 @@ struct miqt_array /* of struct miqt_string */  QVariant_ToStringList(const QVari
 	return _out;
 }
 
-QChar* QVariant_ToChar(const QVariant* self) {
+QChar* QVariant_toChar(const QVariant* self) {
 	return new QChar(self->toChar());
 }
 
-QDate* QVariant_ToDate(const QVariant* self) {
+QDate* QVariant_toDate(const QVariant* self) {
 	return new QDate(self->toDate());
 }
 
-QTime* QVariant_ToTime(const QVariant* self) {
+QTime* QVariant_toTime(const QVariant* self) {
 	return new QTime(self->toTime());
 }
 
-QDateTime* QVariant_ToDateTime(const QVariant* self) {
+QDateTime* QVariant_toDateTime(const QVariant* self) {
 	return new QDateTime(self->toDateTime());
 }
 
-struct miqt_map /* of struct miqt_string to QVariant* */  QVariant_ToMap(const QVariant* self) {
+struct miqt_map /* of struct miqt_string to QVariant* */  QVariant_toMap(const QVariant* self) {
 	QMap<QString, QVariant> _ret = self->toMap();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
@@ -421,7 +421,7 @@ struct miqt_map /* of struct miqt_string to QVariant* */  QVariant_ToMap(const Q
 	return _out;
 }
 
-struct miqt_map /* of struct miqt_string to QVariant* */  QVariant_ToHash(const QVariant* self) {
+struct miqt_map /* of struct miqt_string to QVariant* */  QVariant_toHash(const QVariant* self) {
 	QHash<QString, QVariant> _ret = self->toHash();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	struct miqt_string* _karr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.size()));
@@ -446,157 +446,157 @@ struct miqt_map /* of struct miqt_string to QVariant* */  QVariant_ToHash(const 
 	return _out;
 }
 
-QPoint* QVariant_ToPoint(const QVariant* self) {
+QPoint* QVariant_toPoint(const QVariant* self) {
 	return new QPoint(self->toPoint());
 }
 
-QPointF* QVariant_ToPointF(const QVariant* self) {
+QPointF* QVariant_toPointF(const QVariant* self) {
 	return new QPointF(self->toPointF());
 }
 
-QRect* QVariant_ToRect(const QVariant* self) {
+QRect* QVariant_toRect(const QVariant* self) {
 	return new QRect(self->toRect());
 }
 
-QSize* QVariant_ToSize(const QVariant* self) {
+QSize* QVariant_toSize(const QVariant* self) {
 	return new QSize(self->toSize());
 }
 
-QSizeF* QVariant_ToSizeF(const QVariant* self) {
+QSizeF* QVariant_toSizeF(const QVariant* self) {
 	return new QSizeF(self->toSizeF());
 }
 
-QLine* QVariant_ToLine(const QVariant* self) {
+QLine* QVariant_toLine(const QVariant* self) {
 	return new QLine(self->toLine());
 }
 
-QLineF* QVariant_ToLineF(const QVariant* self) {
+QLineF* QVariant_toLineF(const QVariant* self) {
 	return new QLineF(self->toLineF());
 }
 
-QRectF* QVariant_ToRectF(const QVariant* self) {
+QRectF* QVariant_toRectF(const QVariant* self) {
 	return new QRectF(self->toRectF());
 }
 
-QLocale* QVariant_ToLocale(const QVariant* self) {
+QLocale* QVariant_toLocale(const QVariant* self) {
 	return new QLocale(self->toLocale());
 }
 
-QRegularExpression* QVariant_ToRegularExpression(const QVariant* self) {
+QRegularExpression* QVariant_toRegularExpression(const QVariant* self) {
 	return new QRegularExpression(self->toRegularExpression());
 }
 
-QEasingCurve* QVariant_ToEasingCurve(const QVariant* self) {
+QEasingCurve* QVariant_toEasingCurve(const QVariant* self) {
 	return new QEasingCurve(self->toEasingCurve());
 }
 
-QUuid* QVariant_ToUuid(const QVariant* self) {
+QUuid* QVariant_toUuid(const QVariant* self) {
 	return new QUuid(self->toUuid());
 }
 
-QUrl* QVariant_ToUrl(const QVariant* self) {
+QUrl* QVariant_toUrl(const QVariant* self) {
 	return new QUrl(self->toUrl());
 }
 
-QJsonValue* QVariant_ToJsonValue(const QVariant* self) {
+QJsonValue* QVariant_toJsonValue(const QVariant* self) {
 	return new QJsonValue(self->toJsonValue());
 }
 
-QJsonObject* QVariant_ToJsonObject(const QVariant* self) {
+QJsonObject* QVariant_toJsonObject(const QVariant* self) {
 	return new QJsonObject(self->toJsonObject());
 }
 
-QJsonArray* QVariant_ToJsonArray(const QVariant* self) {
+QJsonArray* QVariant_toJsonArray(const QVariant* self) {
 	return new QJsonArray(self->toJsonArray());
 }
 
-QJsonDocument* QVariant_ToJsonDocument(const QVariant* self) {
+QJsonDocument* QVariant_toJsonDocument(const QVariant* self) {
 	return new QJsonDocument(self->toJsonDocument());
 }
 
-QModelIndex* QVariant_ToModelIndex(const QVariant* self) {
+QModelIndex* QVariant_toModelIndex(const QVariant* self) {
 	return new QModelIndex(self->toModelIndex());
 }
 
-QPersistentModelIndex* QVariant_ToPersistentModelIndex(const QVariant* self) {
+QPersistentModelIndex* QVariant_toPersistentModelIndex(const QVariant* self) {
 	return new QPersistentModelIndex(self->toPersistentModelIndex());
 }
 
-void QVariant_Load(QVariant* self, QDataStream* ds) {
+void QVariant_load(QVariant* self, QDataStream* ds) {
 	self->load(*ds);
 }
 
-void QVariant_Save(const QVariant* self, QDataStream* ds) {
+void QVariant_save(const QVariant* self, QDataStream* ds) {
 	self->save(*ds);
 }
 
-int QVariant_Type(const QVariant* self) {
+int QVariant_type(const QVariant* self) {
 	QVariant::Type _ret = self->type();
 	return static_cast<int>(_ret);
 }
 
-const char* QVariant_TypeToName(int typeId) {
+const char* QVariant_typeToName(int typeId) {
 	return (const char*) QVariant::typeToName(static_cast<int>(typeId));
 }
 
-int QVariant_NameToType(const char* name) {
+int QVariant_nameToType(const char* name) {
 	QVariant::Type _ret = QVariant::nameToType(name);
 	return static_cast<int>(_ret);
 }
 
-void* QVariant_Data(QVariant* self) {
+void* QVariant_data(QVariant* self) {
 	return self->data();
 }
 
-const void* QVariant_ConstData(const QVariant* self) {
+const void* QVariant_constData(const QVariant* self) {
 	return (const void*) self->constData();
 }
 
-const void* QVariant_Data2(const QVariant* self) {
+const void* QVariant_data2(const QVariant* self) {
 	return (const void*) self->data();
 }
 
-void QVariant_SetValue(QVariant* self, QVariant* avalue) {
+void QVariant_setValue(QVariant* self, QVariant* avalue) {
 	self->setValue(*avalue);
 }
 
-QPartialOrdering* QVariant_Compare(QVariant* lhs, QVariant* rhs) {
+QPartialOrdering* QVariant_compare(QVariant* lhs, QVariant* rhs) {
 	return new QPartialOrdering(QVariant::compare(*lhs, *rhs));
 }
 
-int QVariant_ToInt1(const QVariant* self, bool* ok) {
+int QVariant_toInt1(const QVariant* self, bool* ok) {
 	return self->toInt(ok);
 }
 
-unsigned int QVariant_ToUInt1(const QVariant* self, bool* ok) {
+unsigned int QVariant_toUInt1(const QVariant* self, bool* ok) {
 	uint _ret = self->toUInt(ok);
 	return static_cast<unsigned int>(_ret);
 }
 
-long long QVariant_ToLongLong1(const QVariant* self, bool* ok) {
+long long QVariant_toLongLong1(const QVariant* self, bool* ok) {
 	qlonglong _ret = self->toLongLong(ok);
 	return static_cast<long long>(_ret);
 }
 
-unsigned long long QVariant_ToULongLong1(const QVariant* self, bool* ok) {
+unsigned long long QVariant_toULongLong1(const QVariant* self, bool* ok) {
 	qulonglong _ret = self->toULongLong(ok);
 	return static_cast<unsigned long long>(_ret);
 }
 
-double QVariant_ToDouble1(const QVariant* self, bool* ok) {
+double QVariant_toDouble1(const QVariant* self, bool* ok) {
 	return self->toDouble(ok);
 }
 
-float QVariant_ToFloat1(const QVariant* self, bool* ok) {
+float QVariant_toFloat1(const QVariant* self, bool* ok) {
 	return self->toFloat(ok);
 }
 
-double QVariant_ToReal1(const QVariant* self, bool* ok) {
+double QVariant_toReal1(const QVariant* self, bool* ok) {
 	qreal _ret = self->toReal(ok);
 	return static_cast<double>(_ret);
 }
 
-void QVariant_Delete(QVariant* self) {
+void QVariant_delete(QVariant* self) {
 	delete self;
 }
 
@@ -608,19 +608,19 @@ QVariantConstPointer* QVariantConstPointer_new2(QVariantConstPointer* param1) {
 	return new QVariantConstPointer(*param1);
 }
 
-QVariant* QVariantConstPointer_OperatorMultiply(const QVariantConstPointer* self) {
+QVariant* QVariantConstPointer_operatorMultiply(const QVariantConstPointer* self) {
 	return new QVariant(self->operator*());
 }
 
-QVariant* QVariantConstPointer_OperatorMinusGreater(const QVariantConstPointer* self) {
+QVariant* QVariantConstPointer_operatorMinusGreater(const QVariantConstPointer* self) {
 	return (QVariant*) self->operator->();
 }
 
-void QVariantConstPointer_OperatorAssign(QVariantConstPointer* self, QVariantConstPointer* param1) {
+void QVariantConstPointer_operatorAssign(QVariantConstPointer* self, QVariantConstPointer* param1) {
 	self->operator=(*param1);
 }
 
-void QVariantConstPointer_Delete(QVariantConstPointer* self) {
+void QVariantConstPointer_delete(QVariantConstPointer* self) {
 	delete self;
 }
 

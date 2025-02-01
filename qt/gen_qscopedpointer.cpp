@@ -10,11 +10,11 @@ extern "C" {
 } /* extern C */
 #endif
 
-void QScopedPointerPodDeleter_Cleanup(void* pointer) {
+void QScopedPointerPodDeleter_cleanup(void* pointer) {
 	QScopedPointerPodDeleter::cleanup(pointer);
 }
 
-void QScopedPointerPodDeleter_Delete(QScopedPointerPodDeleter* self) {
+void QScopedPointerPodDeleter_delete(QScopedPointerPodDeleter* self) {
 	delete self;
 }
 

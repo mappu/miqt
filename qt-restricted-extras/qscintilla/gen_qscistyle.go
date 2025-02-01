@@ -93,15 +93,15 @@ func NewQsciStyle5(style int, description string, color *qt.QColor, paper *qt.QC
 }
 
 func (this *QsciStyle) Apply(sci *QsciScintillaBase) {
-	C.QsciStyle_Apply(this.h, sci.cPointer())
+	C.QsciStyle_apply(this.h, sci.cPointer())
 }
 
 func (this *QsciStyle) SetStyle(style int) {
-	C.QsciStyle_SetStyle(this.h, (C.int)(style))
+	C.QsciStyle_setStyle(this.h, (C.int)(style))
 }
 
 func (this *QsciStyle) Style() int {
-	return (int)(C.QsciStyle_Style(this.h))
+	return (int)(C.QsciStyle_style(this.h))
 }
 
 func (this *QsciStyle) SetDescription(description string) {
@@ -109,93 +109,93 @@ func (this *QsciStyle) SetDescription(description string) {
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
-	C.QsciStyle_SetDescription(this.h, description_ms)
+	C.QsciStyle_setDescription(this.h, description_ms)
 }
 
 func (this *QsciStyle) Description() string {
-	var _ms C.struct_miqt_string = C.QsciStyle_Description(this.h)
+	var _ms C.struct_miqt_string = C.QsciStyle_description(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciStyle) SetColor(color *qt.QColor) {
-	C.QsciStyle_SetColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QsciStyle_setColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QsciStyle) Color() *qt.QColor {
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciStyle_Color(this.h)))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciStyle_color(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciStyle) SetPaper(paper *qt.QColor) {
-	C.QsciStyle_SetPaper(this.h, (*C.QColor)(paper.UnsafePointer()))
+	C.QsciStyle_setPaper(this.h, (*C.QColor)(paper.UnsafePointer()))
 }
 
 func (this *QsciStyle) Paper() *qt.QColor {
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciStyle_Paper(this.h)))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciStyle_paper(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciStyle) SetFont(font *qt.QFont) {
-	C.QsciStyle_SetFont(this.h, (*C.QFont)(font.UnsafePointer()))
+	C.QsciStyle_setFont(this.h, (*C.QFont)(font.UnsafePointer()))
 }
 
 func (this *QsciStyle) Font() *qt.QFont {
-	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciStyle_Font(this.h)))
+	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciStyle_font(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciStyle) SetEolFill(fill bool) {
-	C.QsciStyle_SetEolFill(this.h, (C.bool)(fill))
+	C.QsciStyle_setEolFill(this.h, (C.bool)(fill))
 }
 
 func (this *QsciStyle) EolFill() bool {
-	return (bool)(C.QsciStyle_EolFill(this.h))
+	return (bool)(C.QsciStyle_eolFill(this.h))
 }
 
 func (this *QsciStyle) SetTextCase(text_case QsciStyle__TextCase) {
-	C.QsciStyle_SetTextCase(this.h, (C.int)(text_case))
+	C.QsciStyle_setTextCase(this.h, (C.int)(text_case))
 }
 
 func (this *QsciStyle) TextCase() QsciStyle__TextCase {
-	return (QsciStyle__TextCase)(C.QsciStyle_TextCase(this.h))
+	return (QsciStyle__TextCase)(C.QsciStyle_textCase(this.h))
 }
 
 func (this *QsciStyle) SetVisible(visible bool) {
-	C.QsciStyle_SetVisible(this.h, (C.bool)(visible))
+	C.QsciStyle_setVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QsciStyle) Visible() bool {
-	return (bool)(C.QsciStyle_Visible(this.h))
+	return (bool)(C.QsciStyle_visible(this.h))
 }
 
 func (this *QsciStyle) SetChangeable(changeable bool) {
-	C.QsciStyle_SetChangeable(this.h, (C.bool)(changeable))
+	C.QsciStyle_setChangeable(this.h, (C.bool)(changeable))
 }
 
 func (this *QsciStyle) Changeable() bool {
-	return (bool)(C.QsciStyle_Changeable(this.h))
+	return (bool)(C.QsciStyle_changeable(this.h))
 }
 
 func (this *QsciStyle) SetHotspot(hotspot bool) {
-	C.QsciStyle_SetHotspot(this.h, (C.bool)(hotspot))
+	C.QsciStyle_setHotspot(this.h, (C.bool)(hotspot))
 }
 
 func (this *QsciStyle) Hotspot() bool {
-	return (bool)(C.QsciStyle_Hotspot(this.h))
+	return (bool)(C.QsciStyle_hotspot(this.h))
 }
 
 func (this *QsciStyle) Refresh() {
-	C.QsciStyle_Refresh(this.h)
+	C.QsciStyle_refresh(this.h)
 }
 
 // Delete this object from C++ memory.
 func (this *QsciStyle) Delete() {
-	C.QsciStyle_Delete(this.h)
+	C.QsciStyle_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

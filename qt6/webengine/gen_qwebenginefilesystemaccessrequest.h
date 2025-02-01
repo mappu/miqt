@@ -23,18 +23,18 @@ typedef struct QWebEngineFileSystemAccessRequest QWebEngineFileSystemAccessReque
 #endif
 
 QWebEngineFileSystemAccessRequest* QWebEngineFileSystemAccessRequest_new(QWebEngineFileSystemAccessRequest* other);
-void QWebEngineFileSystemAccessRequest_OperatorAssign(QWebEngineFileSystemAccessRequest* self, QWebEngineFileSystemAccessRequest* other);
-void QWebEngineFileSystemAccessRequest_Swap(QWebEngineFileSystemAccessRequest* self, QWebEngineFileSystemAccessRequest* other);
-void QWebEngineFileSystemAccessRequest_Accept(QWebEngineFileSystemAccessRequest* self);
-void QWebEngineFileSystemAccessRequest_Reject(QWebEngineFileSystemAccessRequest* self);
-QUrl* QWebEngineFileSystemAccessRequest_Origin(const QWebEngineFileSystemAccessRequest* self);
-QUrl* QWebEngineFileSystemAccessRequest_FilePath(const QWebEngineFileSystemAccessRequest* self);
-int QWebEngineFileSystemAccessRequest_HandleType(const QWebEngineFileSystemAccessRequest* self);
-int QWebEngineFileSystemAccessRequest_AccessFlags(const QWebEngineFileSystemAccessRequest* self);
-void QWebEngineFileSystemAccessRequest_Delete(QWebEngineFileSystemAccessRequest* self);
+void QWebEngineFileSystemAccessRequest_operatorAssign(QWebEngineFileSystemAccessRequest* self, QWebEngineFileSystemAccessRequest* other);
+void QWebEngineFileSystemAccessRequest_swap(QWebEngineFileSystemAccessRequest* self, QWebEngineFileSystemAccessRequest* other);
+void QWebEngineFileSystemAccessRequest_accept(QWebEngineFileSystemAccessRequest* self);
+void QWebEngineFileSystemAccessRequest_reject(QWebEngineFileSystemAccessRequest* self);
+QUrl* QWebEngineFileSystemAccessRequest_origin(const QWebEngineFileSystemAccessRequest* self);
+QUrl* QWebEngineFileSystemAccessRequest_filePath(const QWebEngineFileSystemAccessRequest* self);
+int QWebEngineFileSystemAccessRequest_handleType(const QWebEngineFileSystemAccessRequest* self);
+int QWebEngineFileSystemAccessRequest_accessFlags(const QWebEngineFileSystemAccessRequest* self);
+void QWebEngineFileSystemAccessRequest_delete(QWebEngineFileSystemAccessRequest* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

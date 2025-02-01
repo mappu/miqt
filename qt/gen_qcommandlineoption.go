@@ -211,15 +211,15 @@ func NewQCommandLineOption9(names []string, description string, valueName string
 }
 
 func (this *QCommandLineOption) OperatorAssign(other *QCommandLineOption) {
-	C.QCommandLineOption_OperatorAssign(this.h, other.cPointer())
+	C.QCommandLineOption_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QCommandLineOption) Swap(other *QCommandLineOption) {
-	C.QCommandLineOption_Swap(this.h, other.cPointer())
+	C.QCommandLineOption_swap(this.h, other.cPointer())
 }
 
 func (this *QCommandLineOption) Names() []string {
-	var _ma C.struct_miqt_array = C.QCommandLineOption_Names(this.h)
+	var _ma C.struct_miqt_array = C.QCommandLineOption_names(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -236,11 +236,11 @@ func (this *QCommandLineOption) SetValueName(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QCommandLineOption_SetValueName(this.h, name_ms)
+	C.QCommandLineOption_setValueName(this.h, name_ms)
 }
 
 func (this *QCommandLineOption) ValueName() string {
-	var _ms C.struct_miqt_string = C.QCommandLineOption_ValueName(this.h)
+	var _ms C.struct_miqt_string = C.QCommandLineOption_valueName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -251,11 +251,11 @@ func (this *QCommandLineOption) SetDescription(description string) {
 	description_ms.data = C.CString(description)
 	description_ms.len = C.size_t(len(description))
 	defer C.free(unsafe.Pointer(description_ms.data))
-	C.QCommandLineOption_SetDescription(this.h, description_ms)
+	C.QCommandLineOption_setDescription(this.h, description_ms)
 }
 
 func (this *QCommandLineOption) Description() string {
-	var _ms C.struct_miqt_string = C.QCommandLineOption_Description(this.h)
+	var _ms C.struct_miqt_string = C.QCommandLineOption_description(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -266,7 +266,7 @@ func (this *QCommandLineOption) SetDefaultValue(defaultValue string) {
 	defaultValue_ms.data = C.CString(defaultValue)
 	defaultValue_ms.len = C.size_t(len(defaultValue))
 	defer C.free(unsafe.Pointer(defaultValue_ms.data))
-	C.QCommandLineOption_SetDefaultValue(this.h, defaultValue_ms)
+	C.QCommandLineOption_setDefaultValue(this.h, defaultValue_ms)
 }
 
 func (this *QCommandLineOption) SetDefaultValues(defaultValues []string) {
@@ -280,11 +280,11 @@ func (this *QCommandLineOption) SetDefaultValues(defaultValues []string) {
 		defaultValues_CArray[i] = defaultValues_i_ms
 	}
 	defaultValues_ma := C.struct_miqt_array{len: C.size_t(len(defaultValues)), data: unsafe.Pointer(defaultValues_CArray)}
-	C.QCommandLineOption_SetDefaultValues(this.h, defaultValues_ma)
+	C.QCommandLineOption_setDefaultValues(this.h, defaultValues_ma)
 }
 
 func (this *QCommandLineOption) DefaultValues() []string {
-	var _ma C.struct_miqt_array = C.QCommandLineOption_DefaultValues(this.h)
+	var _ma C.struct_miqt_array = C.QCommandLineOption_defaultValues(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -297,24 +297,24 @@ func (this *QCommandLineOption) DefaultValues() []string {
 }
 
 func (this *QCommandLineOption) Flags() QCommandLineOption__Flag {
-	return (QCommandLineOption__Flag)(C.QCommandLineOption_Flags(this.h))
+	return (QCommandLineOption__Flag)(C.QCommandLineOption_flags(this.h))
 }
 
 func (this *QCommandLineOption) SetFlags(aflags QCommandLineOption__Flag) {
-	C.QCommandLineOption_SetFlags(this.h, (C.int)(aflags))
+	C.QCommandLineOption_setFlags(this.h, (C.int)(aflags))
 }
 
 func (this *QCommandLineOption) SetHidden(hidden bool) {
-	C.QCommandLineOption_SetHidden(this.h, (C.bool)(hidden))
+	C.QCommandLineOption_setHidden(this.h, (C.bool)(hidden))
 }
 
 func (this *QCommandLineOption) IsHidden() bool {
-	return (bool)(C.QCommandLineOption_IsHidden(this.h))
+	return (bool)(C.QCommandLineOption_isHidden(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QCommandLineOption) Delete() {
-	C.QCommandLineOption_Delete(this.h)
+	C.QCommandLineOption_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

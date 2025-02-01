@@ -47,20 +47,20 @@ func UnsafeNewQAccessibleBridge(h unsafe.Pointer) *QAccessibleBridge {
 }
 
 func (this *QAccessibleBridge) SetRootObject(rootObject *QAccessibleInterface) {
-	C.QAccessibleBridge_SetRootObject(this.h, rootObject.cPointer())
+	C.QAccessibleBridge_setRootObject(this.h, rootObject.cPointer())
 }
 
 func (this *QAccessibleBridge) NotifyAccessibilityUpdate(event *QAccessibleEvent) {
-	C.QAccessibleBridge_NotifyAccessibilityUpdate(this.h, event.cPointer())
+	C.QAccessibleBridge_notifyAccessibilityUpdate(this.h, event.cPointer())
 }
 
 func (this *QAccessibleBridge) OperatorAssign(param1 *QAccessibleBridge) {
-	C.QAccessibleBridge_OperatorAssign(this.h, param1.cPointer())
+	C.QAccessibleBridge_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QAccessibleBridge) Delete() {
-	C.QAccessibleBridge_Delete(this.h)
+	C.QAccessibleBridge_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -121,19 +121,19 @@ func NewQAccessibleBridgePlugin2(parent *QObject) *QAccessibleBridgePlugin {
 }
 
 func (this *QAccessibleBridgePlugin) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QAccessibleBridgePlugin_MetaObject(this.h))
+	return newQMetaObject(C.QAccessibleBridgePlugin_metaObject(this.h))
 }
 
 func (this *QAccessibleBridgePlugin) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAccessibleBridgePlugin_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAccessibleBridgePlugin_metacast(this.h, param1_Cstring))
 }
 
 func QAccessibleBridgePlugin_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAccessibleBridgePlugin_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAccessibleBridgePlugin_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -144,7 +144,7 @@ func (this *QAccessibleBridgePlugin) Create(key string) *QAccessibleBridge {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return newQAccessibleBridge(C.QAccessibleBridgePlugin_Create(this.h, key_ms))
+	return newQAccessibleBridge(C.QAccessibleBridgePlugin_create(this.h, key_ms))
 }
 
 func QAccessibleBridgePlugin_Tr2(s string, c string) string {
@@ -152,7 +152,7 @@ func QAccessibleBridgePlugin_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAccessibleBridgePlugin_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAccessibleBridgePlugin_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -163,20 +163,20 @@ func QAccessibleBridgePlugin_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAccessibleBridgePlugin_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAccessibleBridgePlugin_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QAccessibleBridgePlugin) OnCreate(slot func(key string) *QAccessibleBridge) {
-	ok := C.QAccessibleBridgePlugin_override_virtual_Create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleBridgePlugin) Oncreate(slot func(key string) *QAccessibleBridge) {
+	ok := C.QAccessibleBridgePlugin_override_virtual_create(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleBridgePlugin_Create
-func miqt_exec_callback_QAccessibleBridgePlugin_Create(self *C.QAccessibleBridgePlugin, cb C.intptr_t, key C.struct_miqt_string) *C.QAccessibleBridge {
+//export miqt_exec_callback_QAccessibleBridgePlugin_create
+func miqt_exec_callback_QAccessibleBridgePlugin_create(self *C.QAccessibleBridgePlugin, cb C.intptr_t, key C.struct_miqt_string) *C.QAccessibleBridge {
 	gofunc, ok := cgo.Handle(cb).Value().(func(key string) *QAccessibleBridge)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -196,18 +196,18 @@ func miqt_exec_callback_QAccessibleBridgePlugin_Create(self *C.QAccessibleBridge
 
 func (this *QAccessibleBridgePlugin) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QAccessibleBridgePlugin_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QAccessibleBridgePlugin_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QAccessibleBridgePlugin) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QAccessibleBridgePlugin_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleBridgePlugin) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QAccessibleBridgePlugin_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleBridgePlugin_Event
-func miqt_exec_callback_QAccessibleBridgePlugin_Event(self *C.QAccessibleBridgePlugin, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QAccessibleBridgePlugin_event
+func miqt_exec_callback_QAccessibleBridgePlugin_event(self *C.QAccessibleBridgePlugin, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -224,18 +224,18 @@ func miqt_exec_callback_QAccessibleBridgePlugin_Event(self *C.QAccessibleBridgeP
 
 func (this *QAccessibleBridgePlugin) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QAccessibleBridgePlugin_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QAccessibleBridgePlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QAccessibleBridgePlugin) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QAccessibleBridgePlugin_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleBridgePlugin) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QAccessibleBridgePlugin_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleBridgePlugin_EventFilter
-func miqt_exec_callback_QAccessibleBridgePlugin_EventFilter(self *C.QAccessibleBridgePlugin, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QAccessibleBridgePlugin_eventFilter
+func miqt_exec_callback_QAccessibleBridgePlugin_eventFilter(self *C.QAccessibleBridgePlugin, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -254,18 +254,18 @@ func miqt_exec_callback_QAccessibleBridgePlugin_EventFilter(self *C.QAccessibleB
 
 func (this *QAccessibleBridgePlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QAccessibleBridgePlugin_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAccessibleBridgePlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAccessibleBridgePlugin) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QAccessibleBridgePlugin_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleBridgePlugin) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QAccessibleBridgePlugin_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleBridgePlugin_TimerEvent
-func miqt_exec_callback_QAccessibleBridgePlugin_TimerEvent(self *C.QAccessibleBridgePlugin, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QAccessibleBridgePlugin_timerEvent
+func miqt_exec_callback_QAccessibleBridgePlugin_timerEvent(self *C.QAccessibleBridgePlugin, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -280,18 +280,18 @@ func miqt_exec_callback_QAccessibleBridgePlugin_TimerEvent(self *C.QAccessibleBr
 
 func (this *QAccessibleBridgePlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QAccessibleBridgePlugin_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAccessibleBridgePlugin_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAccessibleBridgePlugin) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QAccessibleBridgePlugin_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleBridgePlugin) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QAccessibleBridgePlugin_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleBridgePlugin_ChildEvent
-func miqt_exec_callback_QAccessibleBridgePlugin_ChildEvent(self *C.QAccessibleBridgePlugin, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QAccessibleBridgePlugin_childEvent
+func miqt_exec_callback_QAccessibleBridgePlugin_childEvent(self *C.QAccessibleBridgePlugin, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -306,18 +306,18 @@ func miqt_exec_callback_QAccessibleBridgePlugin_ChildEvent(self *C.QAccessibleBr
 
 func (this *QAccessibleBridgePlugin) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QAccessibleBridgePlugin_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAccessibleBridgePlugin_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAccessibleBridgePlugin) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QAccessibleBridgePlugin_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleBridgePlugin) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QAccessibleBridgePlugin_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleBridgePlugin_CustomEvent
-func miqt_exec_callback_QAccessibleBridgePlugin_CustomEvent(self *C.QAccessibleBridgePlugin, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QAccessibleBridgePlugin_customEvent
+func miqt_exec_callback_QAccessibleBridgePlugin_customEvent(self *C.QAccessibleBridgePlugin, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -332,18 +332,18 @@ func miqt_exec_callback_QAccessibleBridgePlugin_CustomEvent(self *C.QAccessibleB
 
 func (this *QAccessibleBridgePlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QAccessibleBridgePlugin_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QAccessibleBridgePlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QAccessibleBridgePlugin) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QAccessibleBridgePlugin_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleBridgePlugin) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QAccessibleBridgePlugin_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleBridgePlugin_ConnectNotify
-func miqt_exec_callback_QAccessibleBridgePlugin_ConnectNotify(self *C.QAccessibleBridgePlugin, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAccessibleBridgePlugin_connectNotify
+func miqt_exec_callback_QAccessibleBridgePlugin_connectNotify(self *C.QAccessibleBridgePlugin, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -358,18 +358,18 @@ func miqt_exec_callback_QAccessibleBridgePlugin_ConnectNotify(self *C.QAccessibl
 
 func (this *QAccessibleBridgePlugin) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QAccessibleBridgePlugin_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QAccessibleBridgePlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QAccessibleBridgePlugin) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QAccessibleBridgePlugin_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAccessibleBridgePlugin) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QAccessibleBridgePlugin_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAccessibleBridgePlugin_DisconnectNotify
-func miqt_exec_callback_QAccessibleBridgePlugin_DisconnectNotify(self *C.QAccessibleBridgePlugin, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAccessibleBridgePlugin_disconnectNotify
+func miqt_exec_callback_QAccessibleBridgePlugin_disconnectNotify(self *C.QAccessibleBridgePlugin, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -384,7 +384,7 @@ func miqt_exec_callback_QAccessibleBridgePlugin_DisconnectNotify(self *C.QAccess
 
 // Delete this object from C++ memory.
 func (this *QAccessibleBridgePlugin) Delete() {
-	C.QAccessibleBridgePlugin_Delete(this.h)
+	C.QAccessibleBridgePlugin_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

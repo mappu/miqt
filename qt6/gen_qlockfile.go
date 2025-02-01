@@ -65,51 +65,51 @@ func NewQLockFile(fileName string) *QLockFile {
 }
 
 func (this *QLockFile) FileName() string {
-	var _ms C.struct_miqt_string = C.QLockFile_FileName(this.h)
+	var _ms C.struct_miqt_string = C.QLockFile_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLockFile) Lock() bool {
-	return (bool)(C.QLockFile_Lock(this.h))
+	return (bool)(C.QLockFile_lock(this.h))
 }
 
 func (this *QLockFile) TryLock() bool {
-	return (bool)(C.QLockFile_TryLock(this.h))
+	return (bool)(C.QLockFile_tryLock(this.h))
 }
 
 func (this *QLockFile) Unlock() {
-	C.QLockFile_Unlock(this.h)
+	C.QLockFile_unlock(this.h)
 }
 
 func (this *QLockFile) SetStaleLockTime(staleLockTime int) {
-	C.QLockFile_SetStaleLockTime(this.h, (C.int)(staleLockTime))
+	C.QLockFile_setStaleLockTime(this.h, (C.int)(staleLockTime))
 }
 
 func (this *QLockFile) StaleLockTime() int {
-	return (int)(C.QLockFile_StaleLockTime(this.h))
+	return (int)(C.QLockFile_staleLockTime(this.h))
 }
 
 func (this *QLockFile) IsLocked() bool {
-	return (bool)(C.QLockFile_IsLocked(this.h))
+	return (bool)(C.QLockFile_isLocked(this.h))
 }
 
 func (this *QLockFile) RemoveStaleLockFile() bool {
-	return (bool)(C.QLockFile_RemoveStaleLockFile(this.h))
+	return (bool)(C.QLockFile_removeStaleLockFile(this.h))
 }
 
 func (this *QLockFile) Error() QLockFile__LockError {
-	return (QLockFile__LockError)(C.QLockFile_Error(this.h))
+	return (QLockFile__LockError)(C.QLockFile_error(this.h))
 }
 
 func (this *QLockFile) TryLock1(timeout int) bool {
-	return (bool)(C.QLockFile_TryLock1(this.h, (C.int)(timeout)))
+	return (bool)(C.QLockFile_tryLock1(this.h, (C.int)(timeout)))
 }
 
 // Delete this object from C++ memory.
 func (this *QLockFile) Delete() {
-	C.QLockFile_Delete(this.h)
+	C.QLockFile_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

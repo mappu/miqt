@@ -127,11 +127,11 @@ func NewQPalette7(palette *QPalette) *QPalette {
 }
 
 func (this *QPalette) OperatorAssign(palette *QPalette) {
-	C.QPalette_OperatorAssign(this.h, palette.cPointer())
+	C.QPalette_operatorAssign(this.h, palette.cPointer())
 }
 
 func (this *QPalette) Swap(other *QPalette) {
-	C.QPalette_Swap(this.h, other.cPointer())
+	C.QPalette_swap(this.h, other.cPointer())
 }
 
 func (this *QPalette) ToQVariant() *QVariant {
@@ -141,170 +141,170 @@ func (this *QPalette) ToQVariant() *QVariant {
 }
 
 func (this *QPalette) CurrentColorGroup() QPalette__ColorGroup {
-	return (QPalette__ColorGroup)(C.QPalette_CurrentColorGroup(this.h))
+	return (QPalette__ColorGroup)(C.QPalette_currentColorGroup(this.h))
 }
 
 func (this *QPalette) SetCurrentColorGroup(cg QPalette__ColorGroup) {
-	C.QPalette_SetCurrentColorGroup(this.h, (C.int)(cg))
+	C.QPalette_setCurrentColorGroup(this.h, (C.int)(cg))
 }
 
 func (this *QPalette) Color(cg QPalette__ColorGroup, cr QPalette__ColorRole) *QColor {
-	return newQColor(C.QPalette_Color(this.h, (C.int)(cg), (C.int)(cr)))
+	return newQColor(C.QPalette_color(this.h, (C.int)(cg), (C.int)(cr)))
 }
 
 func (this *QPalette) Brush(cg QPalette__ColorGroup, cr QPalette__ColorRole) *QBrush {
-	return newQBrush(C.QPalette_Brush(this.h, (C.int)(cg), (C.int)(cr)))
+	return newQBrush(C.QPalette_brush(this.h, (C.int)(cg), (C.int)(cr)))
 }
 
 func (this *QPalette) SetColor(cg QPalette__ColorGroup, cr QPalette__ColorRole, color *QColor) {
-	C.QPalette_SetColor(this.h, (C.int)(cg), (C.int)(cr), color.cPointer())
+	C.QPalette_setColor(this.h, (C.int)(cg), (C.int)(cr), color.cPointer())
 }
 
 func (this *QPalette) SetColor2(cr QPalette__ColorRole, color *QColor) {
-	C.QPalette_SetColor2(this.h, (C.int)(cr), color.cPointer())
+	C.QPalette_setColor2(this.h, (C.int)(cr), color.cPointer())
 }
 
 func (this *QPalette) SetBrush(cr QPalette__ColorRole, brush *QBrush) {
-	C.QPalette_SetBrush(this.h, (C.int)(cr), brush.cPointer())
+	C.QPalette_setBrush(this.h, (C.int)(cr), brush.cPointer())
 }
 
 func (this *QPalette) IsBrushSet(cg QPalette__ColorGroup, cr QPalette__ColorRole) bool {
-	return (bool)(C.QPalette_IsBrushSet(this.h, (C.int)(cg), (C.int)(cr)))
+	return (bool)(C.QPalette_isBrushSet(this.h, (C.int)(cg), (C.int)(cr)))
 }
 
 func (this *QPalette) SetBrush2(cg QPalette__ColorGroup, cr QPalette__ColorRole, brush *QBrush) {
-	C.QPalette_SetBrush2(this.h, (C.int)(cg), (C.int)(cr), brush.cPointer())
+	C.QPalette_setBrush2(this.h, (C.int)(cg), (C.int)(cr), brush.cPointer())
 }
 
 func (this *QPalette) SetColorGroup(cr QPalette__ColorGroup, windowText *QBrush, button *QBrush, light *QBrush, dark *QBrush, mid *QBrush, text *QBrush, bright_text *QBrush, base *QBrush, window *QBrush) {
-	C.QPalette_SetColorGroup(this.h, (C.int)(cr), windowText.cPointer(), button.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), bright_text.cPointer(), base.cPointer(), window.cPointer())
+	C.QPalette_setColorGroup(this.h, (C.int)(cr), windowText.cPointer(), button.cPointer(), light.cPointer(), dark.cPointer(), mid.cPointer(), text.cPointer(), bright_text.cPointer(), base.cPointer(), window.cPointer())
 }
 
 func (this *QPalette) IsEqual(cr1 QPalette__ColorGroup, cr2 QPalette__ColorGroup) bool {
-	return (bool)(C.QPalette_IsEqual(this.h, (C.int)(cr1), (C.int)(cr2)))
+	return (bool)(C.QPalette_isEqual(this.h, (C.int)(cr1), (C.int)(cr2)))
 }
 
 func (this *QPalette) ColorWithCr(cr QPalette__ColorRole) *QColor {
-	return newQColor(C.QPalette_ColorWithCr(this.h, (C.int)(cr)))
+	return newQColor(C.QPalette_colorWithCr(this.h, (C.int)(cr)))
 }
 
 func (this *QPalette) BrushWithCr(cr QPalette__ColorRole) *QBrush {
-	return newQBrush(C.QPalette_BrushWithCr(this.h, (C.int)(cr)))
+	return newQBrush(C.QPalette_brushWithCr(this.h, (C.int)(cr)))
 }
 
 func (this *QPalette) WindowText() *QBrush {
-	return newQBrush(C.QPalette_WindowText(this.h))
+	return newQBrush(C.QPalette_windowText(this.h))
 }
 
 func (this *QPalette) Button() *QBrush {
-	return newQBrush(C.QPalette_Button(this.h))
+	return newQBrush(C.QPalette_button(this.h))
 }
 
 func (this *QPalette) Light() *QBrush {
-	return newQBrush(C.QPalette_Light(this.h))
+	return newQBrush(C.QPalette_light(this.h))
 }
 
 func (this *QPalette) Dark() *QBrush {
-	return newQBrush(C.QPalette_Dark(this.h))
+	return newQBrush(C.QPalette_dark(this.h))
 }
 
 func (this *QPalette) Mid() *QBrush {
-	return newQBrush(C.QPalette_Mid(this.h))
+	return newQBrush(C.QPalette_mid(this.h))
 }
 
 func (this *QPalette) Text() *QBrush {
-	return newQBrush(C.QPalette_Text(this.h))
+	return newQBrush(C.QPalette_text(this.h))
 }
 
 func (this *QPalette) Base() *QBrush {
-	return newQBrush(C.QPalette_Base(this.h))
+	return newQBrush(C.QPalette_base(this.h))
 }
 
 func (this *QPalette) AlternateBase() *QBrush {
-	return newQBrush(C.QPalette_AlternateBase(this.h))
+	return newQBrush(C.QPalette_alternateBase(this.h))
 }
 
 func (this *QPalette) ToolTipBase() *QBrush {
-	return newQBrush(C.QPalette_ToolTipBase(this.h))
+	return newQBrush(C.QPalette_toolTipBase(this.h))
 }
 
 func (this *QPalette) ToolTipText() *QBrush {
-	return newQBrush(C.QPalette_ToolTipText(this.h))
+	return newQBrush(C.QPalette_toolTipText(this.h))
 }
 
 func (this *QPalette) Window() *QBrush {
-	return newQBrush(C.QPalette_Window(this.h))
+	return newQBrush(C.QPalette_window(this.h))
 }
 
 func (this *QPalette) Midlight() *QBrush {
-	return newQBrush(C.QPalette_Midlight(this.h))
+	return newQBrush(C.QPalette_midlight(this.h))
 }
 
 func (this *QPalette) BrightText() *QBrush {
-	return newQBrush(C.QPalette_BrightText(this.h))
+	return newQBrush(C.QPalette_brightText(this.h))
 }
 
 func (this *QPalette) ButtonText() *QBrush {
-	return newQBrush(C.QPalette_ButtonText(this.h))
+	return newQBrush(C.QPalette_buttonText(this.h))
 }
 
 func (this *QPalette) Shadow() *QBrush {
-	return newQBrush(C.QPalette_Shadow(this.h))
+	return newQBrush(C.QPalette_shadow(this.h))
 }
 
 func (this *QPalette) Highlight() *QBrush {
-	return newQBrush(C.QPalette_Highlight(this.h))
+	return newQBrush(C.QPalette_highlight(this.h))
 }
 
 func (this *QPalette) HighlightedText() *QBrush {
-	return newQBrush(C.QPalette_HighlightedText(this.h))
+	return newQBrush(C.QPalette_highlightedText(this.h))
 }
 
 func (this *QPalette) Link() *QBrush {
-	return newQBrush(C.QPalette_Link(this.h))
+	return newQBrush(C.QPalette_link(this.h))
 }
 
 func (this *QPalette) LinkVisited() *QBrush {
-	return newQBrush(C.QPalette_LinkVisited(this.h))
+	return newQBrush(C.QPalette_linkVisited(this.h))
 }
 
 func (this *QPalette) PlaceholderText() *QBrush {
-	return newQBrush(C.QPalette_PlaceholderText(this.h))
+	return newQBrush(C.QPalette_placeholderText(this.h))
 }
 
 func (this *QPalette) OperatorEqual(p *QPalette) bool {
-	return (bool)(C.QPalette_OperatorEqual(this.h, p.cPointer()))
+	return (bool)(C.QPalette_operatorEqual(this.h, p.cPointer()))
 }
 
 func (this *QPalette) OperatorNotEqual(p *QPalette) bool {
-	return (bool)(C.QPalette_OperatorNotEqual(this.h, p.cPointer()))
+	return (bool)(C.QPalette_operatorNotEqual(this.h, p.cPointer()))
 }
 
 func (this *QPalette) IsCopyOf(p *QPalette) bool {
-	return (bool)(C.QPalette_IsCopyOf(this.h, p.cPointer()))
+	return (bool)(C.QPalette_isCopyOf(this.h, p.cPointer()))
 }
 
 func (this *QPalette) CacheKey() int64 {
-	return (int64)(C.QPalette_CacheKey(this.h))
+	return (int64)(C.QPalette_cacheKey(this.h))
 }
 
 func (this *QPalette) Resolve(other *QPalette) *QPalette {
-	_goptr := newQPalette(C.QPalette_Resolve(this.h, other.cPointer()))
+	_goptr := newQPalette(C.QPalette_resolve(this.h, other.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPalette) ResolveMask() uint64 {
-	return (uint64)(C.QPalette_ResolveMask(this.h))
+	return (uint64)(C.QPalette_resolveMask(this.h))
 }
 
 func (this *QPalette) SetResolveMask(mask uint64) {
-	C.QPalette_SetResolveMask(this.h, (C.ulonglong)(mask))
+	C.QPalette_setResolveMask(this.h, (C.ulonglong)(mask))
 }
 
 // Delete this object from C++ memory.
 func (this *QPalette) Delete() {
-	C.QPalette_Delete(this.h)
+	C.QPalette_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

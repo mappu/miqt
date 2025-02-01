@@ -192,13 +192,13 @@ func NewQMetaType2(typeVal int) *QMetaType {
 }
 
 func QMetaType_UnregisterType(typeVal int) bool {
-	return (bool)(C.QMetaType_UnregisterType((C.int)(typeVal)))
+	return (bool)(C.QMetaType_unregisterType((C.int)(typeVal)))
 }
 
 func QMetaType_RegisterTypedef(typeName string, aliasId int) int {
 	typeName_Cstring := C.CString(typeName)
 	defer C.free(unsafe.Pointer(typeName_Cstring))
-	return (int)(C.QMetaType_RegisterTypedef(typeName_Cstring, (C.int)(aliasId)))
+	return (int)(C.QMetaType_registerTypedef(typeName_Cstring, (C.int)(aliasId)))
 }
 
 func QMetaType_RegisterNormalizedTypedef(normalizedTypeName []byte, aliasId int) int {
@@ -209,13 +209,13 @@ func QMetaType_RegisterNormalizedTypedef(normalizedTypeName []byte, aliasId int)
 		normalizedTypeName_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	normalizedTypeName_alias.len = C.size_t(len(normalizedTypeName))
-	return (int)(C.QMetaType_RegisterNormalizedTypedef(normalizedTypeName_alias, (C.int)(aliasId)))
+	return (int)(C.QMetaType_registerNormalizedTypedef(normalizedTypeName_alias, (C.int)(aliasId)))
 }
 
 func QMetaType_Type(typeName string) int {
 	typeName_Cstring := C.CString(typeName)
 	defer C.free(unsafe.Pointer(typeName_Cstring))
-	return (int)(C.QMetaType_Type(typeName_Cstring))
+	return (int)(C.QMetaType_type(typeName_Cstring))
 }
 
 func QMetaType_TypeWithTypeName(typeName []byte) int {
@@ -226,144 +226,144 @@ func QMetaType_TypeWithTypeName(typeName []byte) int {
 		typeName_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	typeName_alias.len = C.size_t(len(typeName))
-	return (int)(C.QMetaType_TypeWithTypeName(typeName_alias))
+	return (int)(C.QMetaType_typeWithTypeName(typeName_alias))
 }
 
 func QMetaType_TypeName(typeVal int) string {
-	_ret := C.QMetaType_TypeName((C.int)(typeVal))
+	_ret := C.QMetaType_typeName((C.int)(typeVal))
 	return C.GoString(_ret)
 }
 
 func QMetaType_SizeOf(typeVal int) int {
-	return (int)(C.QMetaType_SizeOf((C.int)(typeVal)))
+	return (int)(C.QMetaType_sizeOf((C.int)(typeVal)))
 }
 
 func QMetaType_TypeFlags(typeVal int) QMetaType__TypeFlag {
-	return (QMetaType__TypeFlag)(C.QMetaType_TypeFlags((C.int)(typeVal)))
+	return (QMetaType__TypeFlag)(C.QMetaType_typeFlags((C.int)(typeVal)))
 }
 
 func QMetaType_MetaObjectForType(typeVal int) *QMetaObject {
-	return newQMetaObject(C.QMetaType_MetaObjectForType((C.int)(typeVal)))
+	return newQMetaObject(C.QMetaType_metaObjectForType((C.int)(typeVal)))
 }
 
 func QMetaType_IsRegistered(typeVal int) bool {
-	return (bool)(C.QMetaType_IsRegistered((C.int)(typeVal)))
+	return (bool)(C.QMetaType_isRegistered((C.int)(typeVal)))
 }
 
 func QMetaType_Create(typeVal int) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QMetaType_Create((C.int)(typeVal)))
+	return (unsafe.Pointer)(C.QMetaType_create((C.int)(typeVal)))
 }
 
 func QMetaType_Destroy(typeVal int, data unsafe.Pointer) {
-	C.QMetaType_Destroy((C.int)(typeVal), data)
+	C.QMetaType_destroy((C.int)(typeVal), data)
 }
 
 func QMetaType_Construct(typeVal int, where unsafe.Pointer, copyVal unsafe.Pointer) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QMetaType_Construct((C.int)(typeVal), where, copyVal))
+	return (unsafe.Pointer)(C.QMetaType_construct((C.int)(typeVal), where, copyVal))
 }
 
 func QMetaType_Destruct(typeVal int, where unsafe.Pointer) {
-	C.QMetaType_Destruct((C.int)(typeVal), where)
+	C.QMetaType_destruct((C.int)(typeVal), where)
 }
 
 func QMetaType_Save(stream *QDataStream, typeVal int, data unsafe.Pointer) bool {
-	return (bool)(C.QMetaType_Save(stream.cPointer(), (C.int)(typeVal), data))
+	return (bool)(C.QMetaType_save(stream.cPointer(), (C.int)(typeVal), data))
 }
 
 func QMetaType_Load(stream *QDataStream, typeVal int, data unsafe.Pointer) bool {
-	return (bool)(C.QMetaType_Load(stream.cPointer(), (C.int)(typeVal), data))
+	return (bool)(C.QMetaType_load(stream.cPointer(), (C.int)(typeVal), data))
 }
 
 func (this *QMetaType) IsValid() bool {
-	return (bool)(C.QMetaType_IsValid(this.h))
+	return (bool)(C.QMetaType_isValid(this.h))
 }
 
 func (this *QMetaType) IsRegistered2() bool {
-	return (bool)(C.QMetaType_IsRegistered2(this.h))
+	return (bool)(C.QMetaType_isRegistered2(this.h))
 }
 
 func (this *QMetaType) Id() int {
-	return (int)(C.QMetaType_Id(this.h))
+	return (int)(C.QMetaType_id(this.h))
 }
 
 func (this *QMetaType) SizeOf2() int {
-	return (int)(C.QMetaType_SizeOf2(this.h))
+	return (int)(C.QMetaType_sizeOf2(this.h))
 }
 
 func (this *QMetaType) Flags() QMetaType__TypeFlag {
-	return (QMetaType__TypeFlag)(C.QMetaType_Flags(this.h))
+	return (QMetaType__TypeFlag)(C.QMetaType_flags(this.h))
 }
 
 func (this *QMetaType) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QMetaType_MetaObject(this.h))
+	return newQMetaObject(C.QMetaType_metaObject(this.h))
 }
 
 func (this *QMetaType) Name() []byte {
-	var _bytearray C.struct_miqt_string = C.QMetaType_Name(this.h)
+	var _bytearray C.struct_miqt_string = C.QMetaType_name(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QMetaType) Create2() unsafe.Pointer {
-	return (unsafe.Pointer)(C.QMetaType_Create2(this.h))
+	return (unsafe.Pointer)(C.QMetaType_create2(this.h))
 }
 
 func (this *QMetaType) DestroyWithData(data unsafe.Pointer) {
-	C.QMetaType_DestroyWithData(this.h, data)
+	C.QMetaType_destroyWithData(this.h, data)
 }
 
 func (this *QMetaType) ConstructWithWhere(where unsafe.Pointer) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QMetaType_ConstructWithWhere(this.h, where))
+	return (unsafe.Pointer)(C.QMetaType_constructWithWhere(this.h, where))
 }
 
 func (this *QMetaType) DestructWithData(data unsafe.Pointer) {
-	C.QMetaType_DestructWithData(this.h, data)
+	C.QMetaType_destructWithData(this.h, data)
 }
 
 func QMetaType_HasRegisteredComparators(typeId int) bool {
-	return (bool)(C.QMetaType_HasRegisteredComparators((C.int)(typeId)))
+	return (bool)(C.QMetaType_hasRegisteredComparators((C.int)(typeId)))
 }
 
 func QMetaType_HasRegisteredDebugStreamOperator(typeId int) bool {
-	return (bool)(C.QMetaType_HasRegisteredDebugStreamOperator((C.int)(typeId)))
+	return (bool)(C.QMetaType_hasRegisteredDebugStreamOperator((C.int)(typeId)))
 }
 
 func QMetaType_Convert(from unsafe.Pointer, fromTypeId int, to unsafe.Pointer, toTypeId int) bool {
-	return (bool)(C.QMetaType_Convert(from, (C.int)(fromTypeId), to, (C.int)(toTypeId)))
+	return (bool)(C.QMetaType_convert(from, (C.int)(fromTypeId), to, (C.int)(toTypeId)))
 }
 
 func QMetaType_Compare(lhs unsafe.Pointer, rhs unsafe.Pointer, typeId int, result *int) bool {
-	return (bool)(C.QMetaType_Compare(lhs, rhs, (C.int)(typeId), (*C.int)(unsafe.Pointer(result))))
+	return (bool)(C.QMetaType_compare(lhs, rhs, (C.int)(typeId), (*C.int)(unsafe.Pointer(result))))
 }
 
 func QMetaType_Equals(lhs unsafe.Pointer, rhs unsafe.Pointer, typeId int, result *int) bool {
-	return (bool)(C.QMetaType_Equals(lhs, rhs, (C.int)(typeId), (*C.int)(unsafe.Pointer(result))))
+	return (bool)(C.QMetaType_equals(lhs, rhs, (C.int)(typeId), (*C.int)(unsafe.Pointer(result))))
 }
 
 func QMetaType_DebugStream(dbg *QDebug, rhs unsafe.Pointer, typeId int) bool {
-	return (bool)(C.QMetaType_DebugStream(dbg.cPointer(), rhs, (C.int)(typeId)))
+	return (bool)(C.QMetaType_debugStream(dbg.cPointer(), rhs, (C.int)(typeId)))
 }
 
 func QMetaType_HasRegisteredConverterFunction(fromTypeId int, toTypeId int) bool {
-	return (bool)(C.QMetaType_HasRegisteredConverterFunction((C.int)(fromTypeId), (C.int)(toTypeId)))
+	return (bool)(C.QMetaType_hasRegisteredConverterFunction((C.int)(fromTypeId), (C.int)(toTypeId)))
 }
 
 func QMetaType_Create22(typeVal int, copyVal unsafe.Pointer) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QMetaType_Create22((C.int)(typeVal), copyVal))
+	return (unsafe.Pointer)(C.QMetaType_create22((C.int)(typeVal), copyVal))
 }
 
 func (this *QMetaType) Create1(copyVal unsafe.Pointer) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QMetaType_Create1(this.h, copyVal))
+	return (unsafe.Pointer)(C.QMetaType_create1(this.h, copyVal))
 }
 
 func (this *QMetaType) Construct2(where unsafe.Pointer, copyVal unsafe.Pointer) unsafe.Pointer {
-	return (unsafe.Pointer)(C.QMetaType_Construct2(this.h, where, copyVal))
+	return (unsafe.Pointer)(C.QMetaType_construct2(this.h, where, copyVal))
 }
 
 // Delete this object from C++ memory.
 func (this *QMetaType) Delete() {
-	C.QMetaType_Delete(this.h)
+	C.QMetaType_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

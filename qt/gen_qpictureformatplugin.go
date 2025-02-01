@@ -63,19 +63,19 @@ func NewQPictureFormatPlugin2(parent *QObject) *QPictureFormatPlugin {
 }
 
 func (this *QPictureFormatPlugin) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QPictureFormatPlugin_MetaObject(this.h))
+	return newQMetaObject(C.QPictureFormatPlugin_metaObject(this.h))
 }
 
 func (this *QPictureFormatPlugin) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QPictureFormatPlugin_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QPictureFormatPlugin_metacast(this.h, param1_Cstring))
 }
 
 func QPictureFormatPlugin_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -84,7 +84,7 @@ func QPictureFormatPlugin_Tr(s string) string {
 func QPictureFormatPlugin_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -99,7 +99,7 @@ func (this *QPictureFormatPlugin) LoadPicture(format string, filename string, pi
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
 	defer C.free(unsafe.Pointer(filename_ms.data))
-	return (bool)(C.QPictureFormatPlugin_LoadPicture(this.h, format_ms, filename_ms, pic.cPointer()))
+	return (bool)(C.QPictureFormatPlugin_loadPicture(this.h, format_ms, filename_ms, pic.cPointer()))
 }
 
 func (this *QPictureFormatPlugin) SavePicture(format string, filename string, pic *QPicture) bool {
@@ -111,7 +111,7 @@ func (this *QPictureFormatPlugin) SavePicture(format string, filename string, pi
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
 	defer C.free(unsafe.Pointer(filename_ms.data))
-	return (bool)(C.QPictureFormatPlugin_SavePicture(this.h, format_ms, filename_ms, pic.cPointer()))
+	return (bool)(C.QPictureFormatPlugin_savePicture(this.h, format_ms, filename_ms, pic.cPointer()))
 }
 
 func (this *QPictureFormatPlugin) InstallIOHandler(format string) bool {
@@ -119,7 +119,7 @@ func (this *QPictureFormatPlugin) InstallIOHandler(format string) bool {
 	format_ms.data = C.CString(format)
 	format_ms.len = C.size_t(len(format))
 	defer C.free(unsafe.Pointer(format_ms.data))
-	return (bool)(C.QPictureFormatPlugin_InstallIOHandler(this.h, format_ms))
+	return (bool)(C.QPictureFormatPlugin_installIOHandler(this.h, format_ms))
 }
 
 func QPictureFormatPlugin_Tr2(s string, c string) string {
@@ -127,7 +127,7 @@ func QPictureFormatPlugin_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -138,7 +138,7 @@ func QPictureFormatPlugin_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -149,7 +149,7 @@ func QPictureFormatPlugin_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -160,7 +160,7 @@ func QPictureFormatPlugin_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QPictureFormatPlugin_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -176,18 +176,18 @@ func (this *QPictureFormatPlugin) callVirtualBase_LoadPicture(format string, fil
 	filename_ms.len = C.size_t(len(filename))
 	defer C.free(unsafe.Pointer(filename_ms.data))
 
-	return (bool)(C.QPictureFormatPlugin_virtualbase_LoadPicture(unsafe.Pointer(this.h), format_ms, filename_ms, pic.cPointer()))
+	return (bool)(C.QPictureFormatPlugin_virtualbase_loadPicture(unsafe.Pointer(this.h), format_ms, filename_ms, pic.cPointer()))
 
 }
-func (this *QPictureFormatPlugin) OnLoadPicture(slot func(super func(format string, filename string, pic *QPicture) bool, format string, filename string, pic *QPicture) bool) {
-	ok := C.QPictureFormatPlugin_override_virtual_LoadPicture(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPictureFormatPlugin) OnloadPicture(slot func(super func(format string, filename string, pic *QPicture) bool, format string, filename string, pic *QPicture) bool) {
+	ok := C.QPictureFormatPlugin_override_virtual_loadPicture(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPictureFormatPlugin_LoadPicture
-func miqt_exec_callback_QPictureFormatPlugin_LoadPicture(self *C.QPictureFormatPlugin, cb C.intptr_t, format C.struct_miqt_string, filename C.struct_miqt_string, pic *C.QPicture) C.bool {
+//export miqt_exec_callback_QPictureFormatPlugin_loadPicture
+func miqt_exec_callback_QPictureFormatPlugin_loadPicture(self *C.QPictureFormatPlugin, cb C.intptr_t, format C.struct_miqt_string, filename C.struct_miqt_string, pic *C.QPicture) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(format string, filename string, pic *QPicture) bool, format string, filename string, pic *QPicture) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -220,18 +220,18 @@ func (this *QPictureFormatPlugin) callVirtualBase_SavePicture(format string, fil
 	filename_ms.len = C.size_t(len(filename))
 	defer C.free(unsafe.Pointer(filename_ms.data))
 
-	return (bool)(C.QPictureFormatPlugin_virtualbase_SavePicture(unsafe.Pointer(this.h), format_ms, filename_ms, pic.cPointer()))
+	return (bool)(C.QPictureFormatPlugin_virtualbase_savePicture(unsafe.Pointer(this.h), format_ms, filename_ms, pic.cPointer()))
 
 }
-func (this *QPictureFormatPlugin) OnSavePicture(slot func(super func(format string, filename string, pic *QPicture) bool, format string, filename string, pic *QPicture) bool) {
-	ok := C.QPictureFormatPlugin_override_virtual_SavePicture(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPictureFormatPlugin) OnsavePicture(slot func(super func(format string, filename string, pic *QPicture) bool, format string, filename string, pic *QPicture) bool) {
+	ok := C.QPictureFormatPlugin_override_virtual_savePicture(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPictureFormatPlugin_SavePicture
-func miqt_exec_callback_QPictureFormatPlugin_SavePicture(self *C.QPictureFormatPlugin, cb C.intptr_t, format C.struct_miqt_string, filename C.struct_miqt_string, pic *C.QPicture) C.bool {
+//export miqt_exec_callback_QPictureFormatPlugin_savePicture
+func miqt_exec_callback_QPictureFormatPlugin_savePicture(self *C.QPictureFormatPlugin, cb C.intptr_t, format C.struct_miqt_string, filename C.struct_miqt_string, pic *C.QPicture) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(format string, filename string, pic *QPicture) bool, format string, filename string, pic *QPicture) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -253,15 +253,15 @@ func miqt_exec_callback_QPictureFormatPlugin_SavePicture(self *C.QPictureFormatP
 	return (C.bool)(virtualReturn)
 
 }
-func (this *QPictureFormatPlugin) OnInstallIOHandler(slot func(format string) bool) {
-	ok := C.QPictureFormatPlugin_override_virtual_InstallIOHandler(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPictureFormatPlugin) OninstallIOHandler(slot func(format string) bool) {
+	ok := C.QPictureFormatPlugin_override_virtual_installIOHandler(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPictureFormatPlugin_InstallIOHandler
-func miqt_exec_callback_QPictureFormatPlugin_InstallIOHandler(self *C.QPictureFormatPlugin, cb C.intptr_t, format C.struct_miqt_string) C.bool {
+//export miqt_exec_callback_QPictureFormatPlugin_installIOHandler
+func miqt_exec_callback_QPictureFormatPlugin_installIOHandler(self *C.QPictureFormatPlugin, cb C.intptr_t, format C.struct_miqt_string) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(format string) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -281,18 +281,18 @@ func miqt_exec_callback_QPictureFormatPlugin_InstallIOHandler(self *C.QPictureFo
 
 func (this *QPictureFormatPlugin) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QPictureFormatPlugin_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QPictureFormatPlugin_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QPictureFormatPlugin) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QPictureFormatPlugin_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPictureFormatPlugin) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QPictureFormatPlugin_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPictureFormatPlugin_Event
-func miqt_exec_callback_QPictureFormatPlugin_Event(self *C.QPictureFormatPlugin, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QPictureFormatPlugin_event
+func miqt_exec_callback_QPictureFormatPlugin_event(self *C.QPictureFormatPlugin, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -309,18 +309,18 @@ func miqt_exec_callback_QPictureFormatPlugin_Event(self *C.QPictureFormatPlugin,
 
 func (this *QPictureFormatPlugin) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QPictureFormatPlugin_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QPictureFormatPlugin_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QPictureFormatPlugin) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QPictureFormatPlugin_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPictureFormatPlugin) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QPictureFormatPlugin_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPictureFormatPlugin_EventFilter
-func miqt_exec_callback_QPictureFormatPlugin_EventFilter(self *C.QPictureFormatPlugin, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QPictureFormatPlugin_eventFilter
+func miqt_exec_callback_QPictureFormatPlugin_eventFilter(self *C.QPictureFormatPlugin, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -339,18 +339,18 @@ func miqt_exec_callback_QPictureFormatPlugin_EventFilter(self *C.QPictureFormatP
 
 func (this *QPictureFormatPlugin) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QPictureFormatPlugin_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QPictureFormatPlugin_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPictureFormatPlugin) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QPictureFormatPlugin_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPictureFormatPlugin) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QPictureFormatPlugin_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPictureFormatPlugin_TimerEvent
-func miqt_exec_callback_QPictureFormatPlugin_TimerEvent(self *C.QPictureFormatPlugin, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QPictureFormatPlugin_timerEvent
+func miqt_exec_callback_QPictureFormatPlugin_timerEvent(self *C.QPictureFormatPlugin, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -365,18 +365,18 @@ func miqt_exec_callback_QPictureFormatPlugin_TimerEvent(self *C.QPictureFormatPl
 
 func (this *QPictureFormatPlugin) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QPictureFormatPlugin_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QPictureFormatPlugin_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPictureFormatPlugin) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QPictureFormatPlugin_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPictureFormatPlugin) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QPictureFormatPlugin_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPictureFormatPlugin_ChildEvent
-func miqt_exec_callback_QPictureFormatPlugin_ChildEvent(self *C.QPictureFormatPlugin, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QPictureFormatPlugin_childEvent
+func miqt_exec_callback_QPictureFormatPlugin_childEvent(self *C.QPictureFormatPlugin, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -391,18 +391,18 @@ func miqt_exec_callback_QPictureFormatPlugin_ChildEvent(self *C.QPictureFormatPl
 
 func (this *QPictureFormatPlugin) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QPictureFormatPlugin_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QPictureFormatPlugin_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPictureFormatPlugin) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QPictureFormatPlugin_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPictureFormatPlugin) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QPictureFormatPlugin_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPictureFormatPlugin_CustomEvent
-func miqt_exec_callback_QPictureFormatPlugin_CustomEvent(self *C.QPictureFormatPlugin, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QPictureFormatPlugin_customEvent
+func miqt_exec_callback_QPictureFormatPlugin_customEvent(self *C.QPictureFormatPlugin, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -417,18 +417,18 @@ func miqt_exec_callback_QPictureFormatPlugin_CustomEvent(self *C.QPictureFormatP
 
 func (this *QPictureFormatPlugin) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QPictureFormatPlugin_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QPictureFormatPlugin_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QPictureFormatPlugin) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QPictureFormatPlugin_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPictureFormatPlugin) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QPictureFormatPlugin_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPictureFormatPlugin_ConnectNotify
-func miqt_exec_callback_QPictureFormatPlugin_ConnectNotify(self *C.QPictureFormatPlugin, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QPictureFormatPlugin_connectNotify
+func miqt_exec_callback_QPictureFormatPlugin_connectNotify(self *C.QPictureFormatPlugin, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -443,18 +443,18 @@ func miqt_exec_callback_QPictureFormatPlugin_ConnectNotify(self *C.QPictureForma
 
 func (this *QPictureFormatPlugin) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QPictureFormatPlugin_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QPictureFormatPlugin_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QPictureFormatPlugin) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QPictureFormatPlugin_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPictureFormatPlugin) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QPictureFormatPlugin_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPictureFormatPlugin_DisconnectNotify
-func miqt_exec_callback_QPictureFormatPlugin_DisconnectNotify(self *C.QPictureFormatPlugin, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QPictureFormatPlugin_disconnectNotify
+func miqt_exec_callback_QPictureFormatPlugin_disconnectNotify(self *C.QPictureFormatPlugin, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -469,7 +469,7 @@ func miqt_exec_callback_QPictureFormatPlugin_DisconnectNotify(self *C.QPictureFo
 
 // Delete this object from C++ memory.
 func (this *QPictureFormatPlugin) Delete() {
-	C.QPictureFormatPlugin_Delete(this.h)
+	C.QPictureFormatPlugin_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

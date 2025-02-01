@@ -65,36 +65,36 @@ func NewQReadWriteLock2(recursionMode QReadWriteLock__RecursionMode) *QReadWrite
 }
 
 func (this *QReadWriteLock) LockForRead() {
-	C.QReadWriteLock_LockForRead(this.h)
+	C.QReadWriteLock_lockForRead(this.h)
 }
 
 func (this *QReadWriteLock) TryLockForRead() bool {
-	return (bool)(C.QReadWriteLock_TryLockForRead(this.h))
+	return (bool)(C.QReadWriteLock_tryLockForRead(this.h))
 }
 
 func (this *QReadWriteLock) TryLockForReadWithTimeout(timeout int) bool {
-	return (bool)(C.QReadWriteLock_TryLockForReadWithTimeout(this.h, (C.int)(timeout)))
+	return (bool)(C.QReadWriteLock_tryLockForReadWithTimeout(this.h, (C.int)(timeout)))
 }
 
 func (this *QReadWriteLock) LockForWrite() {
-	C.QReadWriteLock_LockForWrite(this.h)
+	C.QReadWriteLock_lockForWrite(this.h)
 }
 
 func (this *QReadWriteLock) TryLockForWrite() bool {
-	return (bool)(C.QReadWriteLock_TryLockForWrite(this.h))
+	return (bool)(C.QReadWriteLock_tryLockForWrite(this.h))
 }
 
 func (this *QReadWriteLock) TryLockForWriteWithTimeout(timeout int) bool {
-	return (bool)(C.QReadWriteLock_TryLockForWriteWithTimeout(this.h, (C.int)(timeout)))
+	return (bool)(C.QReadWriteLock_tryLockForWriteWithTimeout(this.h, (C.int)(timeout)))
 }
 
 func (this *QReadWriteLock) Unlock() {
-	C.QReadWriteLock_Unlock(this.h)
+	C.QReadWriteLock_unlock(this.h)
 }
 
 // Delete this object from C++ memory.
 func (this *QReadWriteLock) Delete() {
-	C.QReadWriteLock_Delete(this.h)
+	C.QReadWriteLock_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -145,20 +145,20 @@ func NewQReadLocker(readWriteLock *QReadWriteLock) *QReadLocker {
 }
 
 func (this *QReadLocker) Unlock() {
-	C.QReadLocker_Unlock(this.h)
+	C.QReadLocker_unlock(this.h)
 }
 
 func (this *QReadLocker) Relock() {
-	C.QReadLocker_Relock(this.h)
+	C.QReadLocker_relock(this.h)
 }
 
 func (this *QReadLocker) ReadWriteLock() *QReadWriteLock {
-	return newQReadWriteLock(C.QReadLocker_ReadWriteLock(this.h))
+	return newQReadWriteLock(C.QReadLocker_readWriteLock(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QReadLocker) Delete() {
-	C.QReadLocker_Delete(this.h)
+	C.QReadLocker_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -209,20 +209,20 @@ func NewQWriteLocker(readWriteLock *QReadWriteLock) *QWriteLocker {
 }
 
 func (this *QWriteLocker) Unlock() {
-	C.QWriteLocker_Unlock(this.h)
+	C.QWriteLocker_unlock(this.h)
 }
 
 func (this *QWriteLocker) Relock() {
-	C.QWriteLocker_Relock(this.h)
+	C.QWriteLocker_relock(this.h)
 }
 
 func (this *QWriteLocker) ReadWriteLock() *QReadWriteLock {
-	return newQReadWriteLock(C.QWriteLocker_ReadWriteLock(this.h))
+	return newQReadWriteLock(C.QWriteLocker_readWriteLock(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QWriteLocker) Delete() {
-	C.QWriteLocker_Delete(this.h)
+	C.QWriteLocker_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

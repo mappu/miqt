@@ -46,16 +46,16 @@ func UnsafeNewQContiguousCacheData(h unsafe.Pointer) *QContiguousCacheData {
 }
 
 func QContiguousCacheData_AllocateData(size int64, alignment int64) *QContiguousCacheData {
-	return newQContiguousCacheData(C.QContiguousCacheData_AllocateData((C.ptrdiff_t)(size), (C.ptrdiff_t)(alignment)))
+	return newQContiguousCacheData(C.QContiguousCacheData_allocateData((C.ptrdiff_t)(size), (C.ptrdiff_t)(alignment)))
 }
 
 func QContiguousCacheData_FreeData(data *QContiguousCacheData) {
-	C.QContiguousCacheData_FreeData(data.cPointer())
+	C.QContiguousCacheData_freeData(data.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QContiguousCacheData) Delete() {
-	C.QContiguousCacheData_Delete(this.h)
+	C.QContiguousCacheData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

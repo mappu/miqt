@@ -22,19 +22,19 @@ typedef struct QWebEngineScript QWebEngineScript;
 typedef struct QWebEngineScriptCollection QWebEngineScriptCollection;
 #endif
 
-bool QWebEngineScriptCollection_IsEmpty(const QWebEngineScriptCollection* self);
-int QWebEngineScriptCollection_Count(const QWebEngineScriptCollection* self);
-bool QWebEngineScriptCollection_Contains(const QWebEngineScriptCollection* self, QWebEngineScript* value);
-struct miqt_array /* of QWebEngineScript* */  QWebEngineScriptCollection_Find(const QWebEngineScriptCollection* self, struct miqt_string name);
-void QWebEngineScriptCollection_Insert(QWebEngineScriptCollection* self, QWebEngineScript* param1);
-void QWebEngineScriptCollection_InsertWithList(QWebEngineScriptCollection* self, struct miqt_array /* of QWebEngineScript* */  list);
-bool QWebEngineScriptCollection_Remove(QWebEngineScriptCollection* self, QWebEngineScript* param1);
-void QWebEngineScriptCollection_Clear(QWebEngineScriptCollection* self);
-struct miqt_array /* of QWebEngineScript* */  QWebEngineScriptCollection_ToList(const QWebEngineScriptCollection* self);
-void QWebEngineScriptCollection_Delete(QWebEngineScriptCollection* self);
+bool QWebEngineScriptCollection_isEmpty(const QWebEngineScriptCollection* self);
+int QWebEngineScriptCollection_count(const QWebEngineScriptCollection* self);
+bool QWebEngineScriptCollection_contains(const QWebEngineScriptCollection* self, QWebEngineScript* value);
+struct miqt_array /* of QWebEngineScript* */  QWebEngineScriptCollection_find(const QWebEngineScriptCollection* self, struct miqt_string name);
+void QWebEngineScriptCollection_insert(QWebEngineScriptCollection* self, QWebEngineScript* param1);
+void QWebEngineScriptCollection_insertWithList(QWebEngineScriptCollection* self, struct miqt_array /* of QWebEngineScript* */  list);
+bool QWebEngineScriptCollection_remove(QWebEngineScriptCollection* self, QWebEngineScript* param1);
+void QWebEngineScriptCollection_clear(QWebEngineScriptCollection* self);
+struct miqt_array /* of QWebEngineScript* */  QWebEngineScriptCollection_toList(const QWebEngineScriptCollection* self);
+void QWebEngineScriptCollection_delete(QWebEngineScriptCollection* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

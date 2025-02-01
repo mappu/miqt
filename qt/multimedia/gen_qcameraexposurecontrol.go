@@ -68,19 +68,19 @@ func UnsafeNewQCameraExposureControl(h unsafe.Pointer) *QCameraExposureControl {
 }
 
 func (this *QCameraExposureControl) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraExposureControl_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraExposureControl_metaObject(this.h)))
 }
 
 func (this *QCameraExposureControl) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QCameraExposureControl_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QCameraExposureControl_metacast(this.h, param1_Cstring))
 }
 
 func QCameraExposureControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraExposureControl_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraExposureControl_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -89,41 +89,41 @@ func QCameraExposureControl_Tr(s string) string {
 func QCameraExposureControl_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraExposureControl_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraExposureControl_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCameraExposureControl) IsParameterSupported(parameter QCameraExposureControl__ExposureParameter) bool {
-	return (bool)(C.QCameraExposureControl_IsParameterSupported(this.h, (C.int)(parameter)))
+	return (bool)(C.QCameraExposureControl_isParameterSupported(this.h, (C.int)(parameter)))
 }
 
 func (this *QCameraExposureControl) RequestedValue(parameter QCameraExposureControl__ExposureParameter) *qt.QVariant {
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraExposureControl_RequestedValue(this.h, (C.int)(parameter))))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraExposureControl_requestedValue(this.h, (C.int)(parameter))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraExposureControl) ActualValue(parameter QCameraExposureControl__ExposureParameter) *qt.QVariant {
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraExposureControl_ActualValue(this.h, (C.int)(parameter))))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraExposureControl_actualValue(this.h, (C.int)(parameter))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraExposureControl) SetValue(parameter QCameraExposureControl__ExposureParameter, value *qt.QVariant) bool {
-	return (bool)(C.QCameraExposureControl_SetValue(this.h, (C.int)(parameter), (*C.QVariant)(value.UnsafePointer())))
+	return (bool)(C.QCameraExposureControl_setValue(this.h, (C.int)(parameter), (*C.QVariant)(value.UnsafePointer())))
 }
 
 func (this *QCameraExposureControl) RequestedValueChanged(parameter int) {
-	C.QCameraExposureControl_RequestedValueChanged(this.h, (C.int)(parameter))
+	C.QCameraExposureControl_requestedValueChanged(this.h, (C.int)(parameter))
 }
 func (this *QCameraExposureControl) OnRequestedValueChanged(slot func(parameter int)) {
-	C.QCameraExposureControl_connect_RequestedValueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCameraExposureControl_connect_requestedValueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCameraExposureControl_RequestedValueChanged
-func miqt_exec_callback_QCameraExposureControl_RequestedValueChanged(cb C.intptr_t, parameter C.int) {
+//export miqt_exec_callback_QCameraExposureControl_requestedValueChanged
+func miqt_exec_callback_QCameraExposureControl_requestedValueChanged(cb C.intptr_t, parameter C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(parameter int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -136,14 +136,14 @@ func miqt_exec_callback_QCameraExposureControl_RequestedValueChanged(cb C.intptr
 }
 
 func (this *QCameraExposureControl) ActualValueChanged(parameter int) {
-	C.QCameraExposureControl_ActualValueChanged(this.h, (C.int)(parameter))
+	C.QCameraExposureControl_actualValueChanged(this.h, (C.int)(parameter))
 }
 func (this *QCameraExposureControl) OnActualValueChanged(slot func(parameter int)) {
-	C.QCameraExposureControl_connect_ActualValueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCameraExposureControl_connect_actualValueChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCameraExposureControl_ActualValueChanged
-func miqt_exec_callback_QCameraExposureControl_ActualValueChanged(cb C.intptr_t, parameter C.int) {
+//export miqt_exec_callback_QCameraExposureControl_actualValueChanged
+func miqt_exec_callback_QCameraExposureControl_actualValueChanged(cb C.intptr_t, parameter C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(parameter int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -156,14 +156,14 @@ func miqt_exec_callback_QCameraExposureControl_ActualValueChanged(cb C.intptr_t,
 }
 
 func (this *QCameraExposureControl) ParameterRangeChanged(parameter int) {
-	C.QCameraExposureControl_ParameterRangeChanged(this.h, (C.int)(parameter))
+	C.QCameraExposureControl_parameterRangeChanged(this.h, (C.int)(parameter))
 }
 func (this *QCameraExposureControl) OnParameterRangeChanged(slot func(parameter int)) {
-	C.QCameraExposureControl_connect_ParameterRangeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCameraExposureControl_connect_parameterRangeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCameraExposureControl_ParameterRangeChanged
-func miqt_exec_callback_QCameraExposureControl_ParameterRangeChanged(cb C.intptr_t, parameter C.int) {
+//export miqt_exec_callback_QCameraExposureControl_parameterRangeChanged
+func miqt_exec_callback_QCameraExposureControl_parameterRangeChanged(cb C.intptr_t, parameter C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(parameter int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -180,7 +180,7 @@ func QCameraExposureControl_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraExposureControl_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraExposureControl_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -191,7 +191,7 @@ func QCameraExposureControl_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraExposureControl_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraExposureControl_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -202,7 +202,7 @@ func QCameraExposureControl_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraExposureControl_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraExposureControl_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -213,7 +213,7 @@ func QCameraExposureControl_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraExposureControl_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraExposureControl_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -221,7 +221,7 @@ func QCameraExposureControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QCameraExposureControl) Delete() {
-	C.QCameraExposureControl_Delete(this.h)
+	C.QCameraExposureControl_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

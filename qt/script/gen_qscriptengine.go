@@ -84,31 +84,31 @@ func NewQScriptSyntaxCheckResult(other *QScriptSyntaxCheckResult) *QScriptSyntax
 }
 
 func (this *QScriptSyntaxCheckResult) State() QScriptSyntaxCheckResult__State {
-	return (QScriptSyntaxCheckResult__State)(C.QScriptSyntaxCheckResult_State(this.h))
+	return (QScriptSyntaxCheckResult__State)(C.QScriptSyntaxCheckResult_state(this.h))
 }
 
 func (this *QScriptSyntaxCheckResult) ErrorLineNumber() int {
-	return (int)(C.QScriptSyntaxCheckResult_ErrorLineNumber(this.h))
+	return (int)(C.QScriptSyntaxCheckResult_errorLineNumber(this.h))
 }
 
 func (this *QScriptSyntaxCheckResult) ErrorColumnNumber() int {
-	return (int)(C.QScriptSyntaxCheckResult_ErrorColumnNumber(this.h))
+	return (int)(C.QScriptSyntaxCheckResult_errorColumnNumber(this.h))
 }
 
 func (this *QScriptSyntaxCheckResult) ErrorMessage() string {
-	var _ms C.struct_miqt_string = C.QScriptSyntaxCheckResult_ErrorMessage(this.h)
+	var _ms C.struct_miqt_string = C.QScriptSyntaxCheckResult_errorMessage(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QScriptSyntaxCheckResult) OperatorAssign(other *QScriptSyntaxCheckResult) {
-	C.QScriptSyntaxCheckResult_OperatorAssign(this.h, other.cPointer())
+	C.QScriptSyntaxCheckResult_operatorAssign(this.h, other.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QScriptSyntaxCheckResult) Delete() {
-	C.QScriptSyntaxCheckResult_Delete(this.h)
+	C.QScriptSyntaxCheckResult_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -169,19 +169,19 @@ func NewQScriptEngine2(parent *qt.QObject) *QScriptEngine {
 }
 
 func (this *QScriptEngine) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QScriptEngine_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QScriptEngine_metaObject(this.h)))
 }
 
 func (this *QScriptEngine) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QScriptEngine_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QScriptEngine_metacast(this.h, param1_Cstring))
 }
 
 func QScriptEngine_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QScriptEngine_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QScriptEngine_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -190,32 +190,32 @@ func QScriptEngine_Tr(s string) string {
 func QScriptEngine_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QScriptEngine_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QScriptEngine_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QScriptEngine) GlobalObject() *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_GlobalObject(this.h))
+	_goptr := newQScriptValue(C.QScriptEngine_globalObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) SetGlobalObject(object *QScriptValue) {
-	C.QScriptEngine_SetGlobalObject(this.h, object.cPointer())
+	C.QScriptEngine_setGlobalObject(this.h, object.cPointer())
 }
 
 func (this *QScriptEngine) CurrentContext() *QScriptContext {
-	return newQScriptContext(C.QScriptEngine_CurrentContext(this.h))
+	return newQScriptContext(C.QScriptEngine_currentContext(this.h))
 }
 
 func (this *QScriptEngine) PushContext() *QScriptContext {
-	return newQScriptContext(C.QScriptEngine_PushContext(this.h))
+	return newQScriptContext(C.QScriptEngine_pushContext(this.h))
 }
 
 func (this *QScriptEngine) PopContext() {
-	C.QScriptEngine_PopContext(this.h)
+	C.QScriptEngine_popContext(this.h)
 }
 
 func (this *QScriptEngine) CanEvaluate(program string) bool {
@@ -223,7 +223,7 @@ func (this *QScriptEngine) CanEvaluate(program string) bool {
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
 	defer C.free(unsafe.Pointer(program_ms.data))
-	return (bool)(C.QScriptEngine_CanEvaluate(this.h, program_ms))
+	return (bool)(C.QScriptEngine_canEvaluate(this.h, program_ms))
 }
 
 func QScriptEngine_CheckSyntax(program string) *QScriptSyntaxCheckResult {
@@ -231,7 +231,7 @@ func QScriptEngine_CheckSyntax(program string) *QScriptSyntaxCheckResult {
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
 	defer C.free(unsafe.Pointer(program_ms.data))
-	_goptr := newQScriptSyntaxCheckResult(C.QScriptEngine_CheckSyntax(program_ms))
+	_goptr := newQScriptSyntaxCheckResult(C.QScriptEngine_checkSyntax(program_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -241,41 +241,41 @@ func (this *QScriptEngine) Evaluate(program string) *QScriptValue {
 	program_ms.data = C.CString(program)
 	program_ms.len = C.size_t(len(program))
 	defer C.free(unsafe.Pointer(program_ms.data))
-	_goptr := newQScriptValue(C.QScriptEngine_Evaluate(this.h, program_ms))
+	_goptr := newQScriptValue(C.QScriptEngine_evaluate(this.h, program_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) EvaluateWithProgram(program *QScriptProgram) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_EvaluateWithProgram(this.h, program.cPointer()))
+	_goptr := newQScriptValue(C.QScriptEngine_evaluateWithProgram(this.h, program.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) IsEvaluating() bool {
-	return (bool)(C.QScriptEngine_IsEvaluating(this.h))
+	return (bool)(C.QScriptEngine_isEvaluating(this.h))
 }
 
 func (this *QScriptEngine) AbortEvaluation() {
-	C.QScriptEngine_AbortEvaluation(this.h)
+	C.QScriptEngine_abortEvaluation(this.h)
 }
 
 func (this *QScriptEngine) HasUncaughtException() bool {
-	return (bool)(C.QScriptEngine_HasUncaughtException(this.h))
+	return (bool)(C.QScriptEngine_hasUncaughtException(this.h))
 }
 
 func (this *QScriptEngine) UncaughtException() *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_UncaughtException(this.h))
+	_goptr := newQScriptValue(C.QScriptEngine_uncaughtException(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) UncaughtExceptionLineNumber() int {
-	return (int)(C.QScriptEngine_UncaughtExceptionLineNumber(this.h))
+	return (int)(C.QScriptEngine_uncaughtExceptionLineNumber(this.h))
 }
 
 func (this *QScriptEngine) UncaughtExceptionBacktrace() []string {
-	var _ma C.struct_miqt_array = C.QScriptEngine_UncaughtExceptionBacktrace(this.h)
+	var _ma C.struct_miqt_array = C.QScriptEngine_uncaughtExceptionBacktrace(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -288,53 +288,53 @@ func (this *QScriptEngine) UncaughtExceptionBacktrace() []string {
 }
 
 func (this *QScriptEngine) ClearExceptions() {
-	C.QScriptEngine_ClearExceptions(this.h)
+	C.QScriptEngine_clearExceptions(this.h)
 }
 
 func (this *QScriptEngine) NullValue() *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NullValue(this.h))
+	_goptr := newQScriptValue(C.QScriptEngine_nullValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) UndefinedValue() *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_UndefinedValue(this.h))
+	_goptr := newQScriptValue(C.QScriptEngine_undefinedValue(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewVariant(value *qt.QVariant) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewVariant(this.h, (*C.QVariant)(value.UnsafePointer())))
+	_goptr := newQScriptValue(C.QScriptEngine_newVariant(this.h, (*C.QVariant)(value.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewVariant2(object *QScriptValue, value *qt.QVariant) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewVariant2(this.h, object.cPointer(), (*C.QVariant)(value.UnsafePointer())))
+	_goptr := newQScriptValue(C.QScriptEngine_newVariant2(this.h, object.cPointer(), (*C.QVariant)(value.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewRegExp(regexp *qt.QRegExp) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewRegExp(this.h, (*C.QRegExp)(regexp.UnsafePointer())))
+	_goptr := newQScriptValue(C.QScriptEngine_newRegExp(this.h, (*C.QRegExp)(regexp.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewObject() *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewObject(this.h))
+	_goptr := newQScriptValue(C.QScriptEngine_newObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewObjectWithScriptClass(scriptClass *QScriptClass) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewObjectWithScriptClass(this.h, scriptClass.cPointer()))
+	_goptr := newQScriptValue(C.QScriptEngine_newObjectWithScriptClass(this.h, scriptClass.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewArray() *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewArray(this.h))
+	_goptr := newQScriptValue(C.QScriptEngine_newArray(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -348,59 +348,59 @@ func (this *QScriptEngine) NewRegExp2(pattern string, flags string) *QScriptValu
 	flags_ms.data = C.CString(flags)
 	flags_ms.len = C.size_t(len(flags))
 	defer C.free(unsafe.Pointer(flags_ms.data))
-	_goptr := newQScriptValue(C.QScriptEngine_NewRegExp2(this.h, pattern_ms, flags_ms))
+	_goptr := newQScriptValue(C.QScriptEngine_newRegExp2(this.h, pattern_ms, flags_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewDate(value float64) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewDate(this.h, (C.double)(value)))
+	_goptr := newQScriptValue(C.QScriptEngine_newDate(this.h, (C.double)(value)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewDateWithValue(value *qt.QDateTime) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewDateWithValue(this.h, (*C.QDateTime)(value.UnsafePointer())))
+	_goptr := newQScriptValue(C.QScriptEngine_newDateWithValue(this.h, (*C.QDateTime)(value.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewActivationObject() *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewActivationObject(this.h))
+	_goptr := newQScriptValue(C.QScriptEngine_newActivationObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewQObject(object *qt.QObject) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewQObject(this.h, (*C.QObject)(object.UnsafePointer())))
+	_goptr := newQScriptValue(C.QScriptEngine_newQObject(this.h, (*C.QObject)(object.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewQObject2(scriptObject *QScriptValue, qtObject *qt.QObject) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewQObject2(this.h, scriptObject.cPointer(), (*C.QObject)(qtObject.UnsafePointer())))
+	_goptr := newQScriptValue(C.QScriptEngine_newQObject2(this.h, scriptObject.cPointer(), (*C.QObject)(qtObject.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewQMetaObject(metaObject *qt.QMetaObject) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewQMetaObject(this.h, (*C.QMetaObject)(metaObject.UnsafePointer())))
+	_goptr := newQScriptValue(C.QScriptEngine_newQMetaObject(this.h, (*C.QMetaObject)(metaObject.UnsafePointer())))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) DefaultPrototype(metaTypeId int) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_DefaultPrototype(this.h, (C.int)(metaTypeId)))
+	_goptr := newQScriptValue(C.QScriptEngine_defaultPrototype(this.h, (C.int)(metaTypeId)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) SetDefaultPrototype(metaTypeId int, prototype *QScriptValue) {
-	C.QScriptEngine_SetDefaultPrototype(this.h, (C.int)(metaTypeId), prototype.cPointer())
+	C.QScriptEngine_setDefaultPrototype(this.h, (C.int)(metaTypeId), prototype.cPointer())
 }
 
 func (this *QScriptEngine) InstallTranslatorFunctions() {
-	C.QScriptEngine_InstallTranslatorFunctions(this.h)
+	C.QScriptEngine_installTranslatorFunctions(this.h)
 }
 
 func (this *QScriptEngine) ImportExtension(extension string) *QScriptValue {
@@ -408,13 +408,13 @@ func (this *QScriptEngine) ImportExtension(extension string) *QScriptValue {
 	extension_ms.data = C.CString(extension)
 	extension_ms.len = C.size_t(len(extension))
 	defer C.free(unsafe.Pointer(extension_ms.data))
-	_goptr := newQScriptValue(C.QScriptEngine_ImportExtension(this.h, extension_ms))
+	_goptr := newQScriptValue(C.QScriptEngine_importExtension(this.h, extension_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) AvailableExtensions() []string {
-	var _ma C.struct_miqt_array = C.QScriptEngine_AvailableExtensions(this.h)
+	var _ma C.struct_miqt_array = C.QScriptEngine_availableExtensions(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -427,7 +427,7 @@ func (this *QScriptEngine) AvailableExtensions() []string {
 }
 
 func (this *QScriptEngine) ImportedExtensions() []string {
-	var _ma C.struct_miqt_array = C.QScriptEngine_ImportedExtensions(this.h)
+	var _ma C.struct_miqt_array = C.QScriptEngine_importedExtensions(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -440,27 +440,27 @@ func (this *QScriptEngine) ImportedExtensions() []string {
 }
 
 func (this *QScriptEngine) CollectGarbage() {
-	C.QScriptEngine_CollectGarbage(this.h)
+	C.QScriptEngine_collectGarbage(this.h)
 }
 
 func (this *QScriptEngine) ReportAdditionalMemoryCost(size int) {
-	C.QScriptEngine_ReportAdditionalMemoryCost(this.h, (C.int)(size))
+	C.QScriptEngine_reportAdditionalMemoryCost(this.h, (C.int)(size))
 }
 
 func (this *QScriptEngine) SetProcessEventsInterval(interval int) {
-	C.QScriptEngine_SetProcessEventsInterval(this.h, (C.int)(interval))
+	C.QScriptEngine_setProcessEventsInterval(this.h, (C.int)(interval))
 }
 
 func (this *QScriptEngine) ProcessEventsInterval() int {
-	return (int)(C.QScriptEngine_ProcessEventsInterval(this.h))
+	return (int)(C.QScriptEngine_processEventsInterval(this.h))
 }
 
 func (this *QScriptEngine) SetAgent(agent *QScriptEngineAgent) {
-	C.QScriptEngine_SetAgent(this.h, agent.cPointer())
+	C.QScriptEngine_setAgent(this.h, agent.cPointer())
 }
 
 func (this *QScriptEngine) Agent() *QScriptEngineAgent {
-	return newQScriptEngineAgent(C.QScriptEngine_Agent(this.h))
+	return newQScriptEngineAgent(C.QScriptEngine_agent(this.h))
 }
 
 func (this *QScriptEngine) ToStringHandle(str string) *QScriptString {
@@ -468,32 +468,32 @@ func (this *QScriptEngine) ToStringHandle(str string) *QScriptString {
 	str_ms.data = C.CString(str)
 	str_ms.len = C.size_t(len(str))
 	defer C.free(unsafe.Pointer(str_ms.data))
-	_goptr := newQScriptString(C.QScriptEngine_ToStringHandle(this.h, str_ms))
+	_goptr := newQScriptString(C.QScriptEngine_toStringHandle(this.h, str_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) ToObject(value *QScriptValue) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_ToObject(this.h, value.cPointer()))
+	_goptr := newQScriptValue(C.QScriptEngine_toObject(this.h, value.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) ObjectById(id int64) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_ObjectById(this.h, (C.longlong)(id)))
+	_goptr := newQScriptValue(C.QScriptEngine_objectById(this.h, (C.longlong)(id)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) SignalHandlerException(exception *QScriptValue) {
-	C.QScriptEngine_SignalHandlerException(this.h, exception.cPointer())
+	C.QScriptEngine_signalHandlerException(this.h, exception.cPointer())
 }
 func (this *QScriptEngine) OnSignalHandlerException(slot func(exception *QScriptValue)) {
-	C.QScriptEngine_connect_SignalHandlerException(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QScriptEngine_connect_signalHandlerException(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QScriptEngine_SignalHandlerException
-func miqt_exec_callback_QScriptEngine_SignalHandlerException(cb C.intptr_t, exception *C.QScriptValue) {
+//export miqt_exec_callback_QScriptEngine_signalHandlerException
+func miqt_exec_callback_QScriptEngine_signalHandlerException(cb C.intptr_t, exception *C.QScriptValue) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(exception *QScriptValue))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -510,7 +510,7 @@ func QScriptEngine_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QScriptEngine_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QScriptEngine_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -521,7 +521,7 @@ func QScriptEngine_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QScriptEngine_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QScriptEngine_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -532,7 +532,7 @@ func QScriptEngine_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QScriptEngine_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QScriptEngine_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -543,7 +543,7 @@ func QScriptEngine_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QScriptEngine_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QScriptEngine_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -558,7 +558,7 @@ func (this *QScriptEngine) Evaluate2(program string, fileName string) *QScriptVa
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	_goptr := newQScriptValue(C.QScriptEngine_Evaluate2(this.h, program_ms, fileName_ms))
+	_goptr := newQScriptValue(C.QScriptEngine_evaluate2(this.h, program_ms, fileName_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -572,75 +572,75 @@ func (this *QScriptEngine) Evaluate3(program string, fileName string, lineNumber
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	_goptr := newQScriptValue(C.QScriptEngine_Evaluate3(this.h, program_ms, fileName_ms, (C.int)(lineNumber)))
+	_goptr := newQScriptValue(C.QScriptEngine_evaluate3(this.h, program_ms, fileName_ms, (C.int)(lineNumber)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) AbortEvaluation1(result *QScriptValue) {
-	C.QScriptEngine_AbortEvaluation1(this.h, result.cPointer())
+	C.QScriptEngine_abortEvaluation1(this.h, result.cPointer())
 }
 
 func (this *QScriptEngine) NewObject2(scriptClass *QScriptClass, data *QScriptValue) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewObject2(this.h, scriptClass.cPointer(), data.cPointer()))
+	_goptr := newQScriptValue(C.QScriptEngine_newObject2(this.h, scriptClass.cPointer(), data.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewArray1(length uint) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewArray1(this.h, (C.uint)(length)))
+	_goptr := newQScriptValue(C.QScriptEngine_newArray1(this.h, (C.uint)(length)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewQObject22(object *qt.QObject, ownership QScriptEngine__ValueOwnership) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewQObject22(this.h, (*C.QObject)(object.UnsafePointer()), (C.int)(ownership)))
+	_goptr := newQScriptValue(C.QScriptEngine_newQObject22(this.h, (*C.QObject)(object.UnsafePointer()), (C.int)(ownership)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewQObject3(object *qt.QObject, ownership QScriptEngine__ValueOwnership, options *QScriptEngine__QObjectWrapOption) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewQObject3(this.h, (*C.QObject)(object.UnsafePointer()), (C.int)(ownership), (*C.int)(unsafe.Pointer(options))))
+	_goptr := newQScriptValue(C.QScriptEngine_newQObject3(this.h, (*C.QObject)(object.UnsafePointer()), (C.int)(ownership), (*C.int)(unsafe.Pointer(options))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewQObject32(scriptObject *QScriptValue, qtObject *qt.QObject, ownership QScriptEngine__ValueOwnership) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewQObject32(this.h, scriptObject.cPointer(), (*C.QObject)(qtObject.UnsafePointer()), (C.int)(ownership)))
+	_goptr := newQScriptValue(C.QScriptEngine_newQObject32(this.h, scriptObject.cPointer(), (*C.QObject)(qtObject.UnsafePointer()), (C.int)(ownership)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewQObject4(scriptObject *QScriptValue, qtObject *qt.QObject, ownership QScriptEngine__ValueOwnership, options *QScriptEngine__QObjectWrapOption) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewQObject4(this.h, scriptObject.cPointer(), (*C.QObject)(qtObject.UnsafePointer()), (C.int)(ownership), (*C.int)(unsafe.Pointer(options))))
+	_goptr := newQScriptValue(C.QScriptEngine_newQObject4(this.h, scriptObject.cPointer(), (*C.QObject)(qtObject.UnsafePointer()), (C.int)(ownership), (*C.int)(unsafe.Pointer(options))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) NewQMetaObject2(metaObject *qt.QMetaObject, ctor *QScriptValue) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptEngine_NewQMetaObject2(this.h, (*C.QMetaObject)(metaObject.UnsafePointer()), ctor.cPointer()))
+	_goptr := newQScriptValue(C.QScriptEngine_newQMetaObject2(this.h, (*C.QMetaObject)(metaObject.UnsafePointer()), ctor.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptEngine) InstallTranslatorFunctions1(object *QScriptValue) {
-	C.QScriptEngine_InstallTranslatorFunctions1(this.h, object.cPointer())
+	C.QScriptEngine_installTranslatorFunctions1(this.h, object.cPointer())
 }
 
 func (this *QScriptEngine) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.QScriptEngine_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QScriptEngine_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QScriptEngine) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.QScriptEngine_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptEngine) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QScriptEngine_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptEngine_Event
-func miqt_exec_callback_QScriptEngine_Event(self *C.QScriptEngine, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QScriptEngine_event
+func miqt_exec_callback_QScriptEngine_event(self *C.QScriptEngine, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -657,18 +657,18 @@ func miqt_exec_callback_QScriptEngine_Event(self *C.QScriptEngine, cb C.intptr_t
 
 func (this *QScriptEngine) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.QScriptEngine_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QScriptEngine_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QScriptEngine) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.QScriptEngine_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptEngine) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QScriptEngine_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptEngine_EventFilter
-func miqt_exec_callback_QScriptEngine_EventFilter(self *C.QScriptEngine, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QScriptEngine_eventFilter
+func miqt_exec_callback_QScriptEngine_eventFilter(self *C.QScriptEngine, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -687,18 +687,18 @@ func miqt_exec_callback_QScriptEngine_EventFilter(self *C.QScriptEngine, cb C.in
 
 func (this *QScriptEngine) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QScriptEngine_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QScriptEngine_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QScriptEngine) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QScriptEngine_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptEngine) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QScriptEngine_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptEngine_TimerEvent
-func miqt_exec_callback_QScriptEngine_TimerEvent(self *C.QScriptEngine, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QScriptEngine_timerEvent
+func miqt_exec_callback_QScriptEngine_timerEvent(self *C.QScriptEngine, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -713,18 +713,18 @@ func miqt_exec_callback_QScriptEngine_TimerEvent(self *C.QScriptEngine, cb C.int
 
 func (this *QScriptEngine) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QScriptEngine_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QScriptEngine_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QScriptEngine) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QScriptEngine_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptEngine) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QScriptEngine_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptEngine_ChildEvent
-func miqt_exec_callback_QScriptEngine_ChildEvent(self *C.QScriptEngine, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QScriptEngine_childEvent
+func miqt_exec_callback_QScriptEngine_childEvent(self *C.QScriptEngine, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -739,18 +739,18 @@ func miqt_exec_callback_QScriptEngine_ChildEvent(self *C.QScriptEngine, cb C.int
 
 func (this *QScriptEngine) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QScriptEngine_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QScriptEngine_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QScriptEngine) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QScriptEngine_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptEngine) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QScriptEngine_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptEngine_CustomEvent
-func miqt_exec_callback_QScriptEngine_CustomEvent(self *C.QScriptEngine, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QScriptEngine_customEvent
+func miqt_exec_callback_QScriptEngine_customEvent(self *C.QScriptEngine, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -765,18 +765,18 @@ func miqt_exec_callback_QScriptEngine_CustomEvent(self *C.QScriptEngine, cb C.in
 
 func (this *QScriptEngine) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QScriptEngine_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QScriptEngine_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QScriptEngine) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QScriptEngine_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptEngine) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QScriptEngine_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptEngine_ConnectNotify
-func miqt_exec_callback_QScriptEngine_ConnectNotify(self *C.QScriptEngine, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QScriptEngine_connectNotify
+func miqt_exec_callback_QScriptEngine_connectNotify(self *C.QScriptEngine, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -791,18 +791,18 @@ func miqt_exec_callback_QScriptEngine_ConnectNotify(self *C.QScriptEngine, cb C.
 
 func (this *QScriptEngine) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QScriptEngine_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QScriptEngine_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QScriptEngine) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QScriptEngine_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QScriptEngine) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QScriptEngine_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QScriptEngine_DisconnectNotify
-func miqt_exec_callback_QScriptEngine_DisconnectNotify(self *C.QScriptEngine, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QScriptEngine_disconnectNotify
+func miqt_exec_callback_QScriptEngine_disconnectNotify(self *C.QScriptEngine, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -817,7 +817,7 @@ func miqt_exec_callback_QScriptEngine_DisconnectNotify(self *C.QScriptEngine, cb
 
 // Delete this object from C++ memory.
 func (this *QScriptEngine) Delete() {
-	C.QScriptEngine_Delete(this.h)
+	C.QScriptEngine_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

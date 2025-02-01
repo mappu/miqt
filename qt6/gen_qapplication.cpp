@@ -24,15 +24,15 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QApplication_FocusChanged(intptr_t, QWidget*, QWidget*);
-bool miqt_exec_callback_QApplication_Notify(QApplication*, intptr_t, QObject*, QEvent*);
-bool miqt_exec_callback_QApplication_Event(QApplication*, intptr_t, QEvent*);
-bool miqt_exec_callback_QApplication_EventFilter(QApplication*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QApplication_TimerEvent(QApplication*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QApplication_ChildEvent(QApplication*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QApplication_CustomEvent(QApplication*, intptr_t, QEvent*);
-void miqt_exec_callback_QApplication_ConnectNotify(QApplication*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QApplication_DisconnectNotify(QApplication*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QApplication_focusChanged(intptr_t, QWidget*, QWidget*);
+bool miqt_exec_callback_QApplication_notify(QApplication*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_QApplication_event(QApplication*, intptr_t, QEvent*);
+bool miqt_exec_callback_QApplication_eventFilter(QApplication*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QApplication_timerEvent(QApplication*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QApplication_childEvent(QApplication*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QApplication_customEvent(QApplication*, intptr_t, QEvent*);
+void miqt_exec_callback_QApplication_connectNotify(QApplication*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QApplication_disconnectNotify(QApplication*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -46,154 +46,154 @@ public:
 	virtual ~MiqtVirtualQApplication() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Notify = 0;
+	intptr_t handle__notify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool notify(QObject* param1, QEvent* param2) override {
-		if (handle__Notify == 0) {
+		if (handle__notify == 0) {
 			return QApplication::notify(param1, param2);
 		}
 		
 		QObject* sigval1 = param1;
 		QEvent* sigval2 = param2;
 
-		bool callback_return_value = miqt_exec_callback_QApplication_Notify(this, handle__Notify, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QApplication_notify(this, handle__notify, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Notify(QObject* param1, QEvent* param2) {
+	bool virtualbase_notify(QObject* param1, QEvent* param2) {
 
 		return QApplication::notify(param1, param2);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* param1) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QApplication::event(param1);
 		}
 		
 		QEvent* sigval1 = param1;
 
-		bool callback_return_value = miqt_exec_callback_QApplication_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QApplication_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* param1) {
+	bool virtualbase_event(QEvent* param1) {
 
 		return QApplication::event(param1);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QApplication::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QApplication_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QApplication_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QApplication::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QApplication::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QApplication_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QApplication_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QApplication::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QApplication::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QApplication_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QApplication_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QApplication::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QApplication::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QApplication_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QApplication_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QApplication::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QApplication::connectNotify(signal);
 			return;
 		}
@@ -202,24 +202,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QApplication_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QApplication_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QApplication::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QApplication::disconnectNotify(signal);
 			return;
 		}
@@ -228,13 +228,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QApplication_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QApplication_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QApplication::disconnectNotify(*signal);
 
@@ -254,15 +254,15 @@ void QApplication_virtbase(QApplication* src, QGuiApplication** outptr_QGuiAppli
 	*outptr_QGuiApplication = static_cast<QGuiApplication*>(src);
 }
 
-QMetaObject* QApplication_MetaObject(const QApplication* self) {
+QMetaObject* QApplication_metaObject(const QApplication* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QApplication_Metacast(QApplication* self, const char* param1) {
+void* QApplication_metacast(QApplication* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QApplication_Tr(const char* s) {
+struct miqt_string QApplication_tr(const char* s) {
 	QString _ret = QApplication::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -273,52 +273,52 @@ struct miqt_string QApplication_Tr(const char* s) {
 	return _ms;
 }
 
-QStyle* QApplication_Style() {
+QStyle* QApplication_style() {
 	return QApplication::style();
 }
 
-void QApplication_SetStyle(QStyle* style) {
+void QApplication_setStyle(QStyle* style) {
 	QApplication::setStyle(style);
 }
 
-QStyle* QApplication_SetStyleWithStyle(struct miqt_string style) {
+QStyle* QApplication_setStyleWithStyle(struct miqt_string style) {
 	QString style_QString = QString::fromUtf8(style.data, style.len);
 	return QApplication::setStyle(style_QString);
 }
 
-QPalette* QApplication_Palette(QWidget* param1) {
+QPalette* QApplication_palette(QWidget* param1) {
 	return new QPalette(QApplication::palette(param1));
 }
 
-QPalette* QApplication_PaletteWithClassName(const char* className) {
+QPalette* QApplication_paletteWithClassName(const char* className) {
 	return new QPalette(QApplication::palette(className));
 }
 
-void QApplication_SetPalette(QPalette* param1) {
+void QApplication_setPalette(QPalette* param1) {
 	QApplication::setPalette(*param1);
 }
 
-QFont* QApplication_Font() {
+QFont* QApplication_font() {
 	return new QFont(QApplication::font());
 }
 
-QFont* QApplication_FontWithQWidget(QWidget* param1) {
+QFont* QApplication_fontWithQWidget(QWidget* param1) {
 	return new QFont(QApplication::font(param1));
 }
 
-QFont* QApplication_FontWithClassName(const char* className) {
+QFont* QApplication_fontWithClassName(const char* className) {
 	return new QFont(QApplication::font(className));
 }
 
-void QApplication_SetFont(QFont* param1) {
+void QApplication_setFont(QFont* param1) {
 	QApplication::setFont(*param1);
 }
 
-QFontMetrics* QApplication_FontMetrics() {
+QFontMetrics* QApplication_fontMetrics() {
 	return new QFontMetrics(QApplication::fontMetrics());
 }
 
-struct miqt_array /* of QWidget* */  QApplication_AllWidgets() {
+struct miqt_array /* of QWidget* */  QApplication_allWidgets() {
 	QWidgetList _ret = QApplication::allWidgets();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QWidget** _arr = static_cast<QWidget**>(malloc(sizeof(QWidget*) * _ret.length()));
@@ -331,7 +331,7 @@ struct miqt_array /* of QWidget* */  QApplication_AllWidgets() {
 	return _out;
 }
 
-struct miqt_array /* of QWidget* */  QApplication_TopLevelWidgets() {
+struct miqt_array /* of QWidget* */  QApplication_topLevelWidgets() {
 	QWidgetList _ret = QApplication::topLevelWidgets();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QWidget** _arr = static_cast<QWidget**>(malloc(sizeof(QWidget*) * _ret.length()));
@@ -344,127 +344,127 @@ struct miqt_array /* of QWidget* */  QApplication_TopLevelWidgets() {
 	return _out;
 }
 
-QWidget* QApplication_ActivePopupWidget() {
+QWidget* QApplication_activePopupWidget() {
 	return QApplication::activePopupWidget();
 }
 
-QWidget* QApplication_ActiveModalWidget() {
+QWidget* QApplication_activeModalWidget() {
 	return QApplication::activeModalWidget();
 }
 
-QWidget* QApplication_FocusWidget() {
+QWidget* QApplication_focusWidget() {
 	return QApplication::focusWidget();
 }
 
-QWidget* QApplication_ActiveWindow() {
+QWidget* QApplication_activeWindow() {
 	return QApplication::activeWindow();
 }
 
-void QApplication_SetActiveWindow(QWidget* act) {
+void QApplication_setActiveWindow(QWidget* act) {
 	QApplication::setActiveWindow(act);
 }
 
-QWidget* QApplication_WidgetAt(QPoint* p) {
+QWidget* QApplication_widgetAt(QPoint* p) {
 	return QApplication::widgetAt(*p);
 }
 
-QWidget* QApplication_WidgetAt2(int x, int y) {
+QWidget* QApplication_widgetAt2(int x, int y) {
 	return QApplication::widgetAt(static_cast<int>(x), static_cast<int>(y));
 }
 
-QWidget* QApplication_TopLevelAt(QPoint* p) {
+QWidget* QApplication_topLevelAt(QPoint* p) {
 	return QApplication::topLevelAt(*p);
 }
 
-QWidget* QApplication_TopLevelAt2(int x, int y) {
+QWidget* QApplication_topLevelAt2(int x, int y) {
 	return QApplication::topLevelAt(static_cast<int>(x), static_cast<int>(y));
 }
 
-void QApplication_Beep() {
+void QApplication_beep() {
 	QApplication::beep();
 }
 
-void QApplication_Alert(QWidget* widget) {
+void QApplication_alert(QWidget* widget) {
 	QApplication::alert(widget);
 }
 
-void QApplication_SetCursorFlashTime(int cursorFlashTime) {
+void QApplication_setCursorFlashTime(int cursorFlashTime) {
 	QApplication::setCursorFlashTime(static_cast<int>(cursorFlashTime));
 }
 
-int QApplication_CursorFlashTime() {
+int QApplication_cursorFlashTime() {
 	return QApplication::cursorFlashTime();
 }
 
-void QApplication_SetDoubleClickInterval(int doubleClickInterval) {
+void QApplication_setDoubleClickInterval(int doubleClickInterval) {
 	QApplication::setDoubleClickInterval(static_cast<int>(doubleClickInterval));
 }
 
-int QApplication_DoubleClickInterval() {
+int QApplication_doubleClickInterval() {
 	return QApplication::doubleClickInterval();
 }
 
-void QApplication_SetKeyboardInputInterval(int keyboardInputInterval) {
+void QApplication_setKeyboardInputInterval(int keyboardInputInterval) {
 	QApplication::setKeyboardInputInterval(static_cast<int>(keyboardInputInterval));
 }
 
-int QApplication_KeyboardInputInterval() {
+int QApplication_keyboardInputInterval() {
 	return QApplication::keyboardInputInterval();
 }
 
-void QApplication_SetWheelScrollLines(int wheelScrollLines) {
+void QApplication_setWheelScrollLines(int wheelScrollLines) {
 	QApplication::setWheelScrollLines(static_cast<int>(wheelScrollLines));
 }
 
-int QApplication_WheelScrollLines() {
+int QApplication_wheelScrollLines() {
 	return QApplication::wheelScrollLines();
 }
 
-void QApplication_SetStartDragTime(int ms) {
+void QApplication_setStartDragTime(int ms) {
 	QApplication::setStartDragTime(static_cast<int>(ms));
 }
 
-int QApplication_StartDragTime() {
+int QApplication_startDragTime() {
 	return QApplication::startDragTime();
 }
 
-void QApplication_SetStartDragDistance(int l) {
+void QApplication_setStartDragDistance(int l) {
 	QApplication::setStartDragDistance(static_cast<int>(l));
 }
 
-int QApplication_StartDragDistance() {
+int QApplication_startDragDistance() {
 	return QApplication::startDragDistance();
 }
 
-bool QApplication_IsEffectEnabled(int param1) {
+bool QApplication_isEffectEnabled(int param1) {
 	return QApplication::isEffectEnabled(static_cast<Qt::UIEffect>(param1));
 }
 
-void QApplication_SetEffectEnabled(int param1) {
+void QApplication_setEffectEnabled(int param1) {
 	QApplication::setEffectEnabled(static_cast<Qt::UIEffect>(param1));
 }
 
-int QApplication_Exec() {
+int QApplication_exec() {
 	return QApplication::exec();
 }
 
-bool QApplication_Notify(QApplication* self, QObject* param1, QEvent* param2) {
+bool QApplication_notify(QApplication* self, QObject* param1, QEvent* param2) {
 	return self->notify(param1, param2);
 }
 
-void QApplication_FocusChanged(QApplication* self, QWidget* old, QWidget* now) {
+void QApplication_focusChanged(QApplication* self, QWidget* old, QWidget* now) {
 	self->focusChanged(old, now);
 }
 
-void QApplication_connect_FocusChanged(QApplication* self, intptr_t slot) {
+void QApplication_connect_focusChanged(QApplication* self, intptr_t slot) {
 	MiqtVirtualQApplication::connect(self, static_cast<void (QApplication::*)(QWidget*, QWidget*)>(&QApplication::focusChanged), self, [=](QWidget* old, QWidget* now) {
 		QWidget* sigval1 = old;
 		QWidget* sigval2 = now;
-		miqt_exec_callback_QApplication_FocusChanged(slot, sigval1, sigval2);
+		miqt_exec_callback_QApplication_focusChanged(slot, sigval1, sigval2);
 	});
 }
 
-struct miqt_string QApplication_StyleSheet(const QApplication* self) {
+struct miqt_string QApplication_styleSheet(const QApplication* self) {
 	QString _ret = self->styleSheet();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -475,28 +475,28 @@ struct miqt_string QApplication_StyleSheet(const QApplication* self) {
 	return _ms;
 }
 
-void QApplication_SetStyleSheet(QApplication* self, struct miqt_string sheet) {
+void QApplication_setStyleSheet(QApplication* self, struct miqt_string sheet) {
 	QString sheet_QString = QString::fromUtf8(sheet.data, sheet.len);
 	self->setStyleSheet(sheet_QString);
 }
 
-void QApplication_SetAutoSipEnabled(QApplication* self, const bool enabled) {
+void QApplication_setAutoSipEnabled(QApplication* self, const bool enabled) {
 	self->setAutoSipEnabled(enabled);
 }
 
-bool QApplication_AutoSipEnabled(const QApplication* self) {
+bool QApplication_autoSipEnabled(const QApplication* self) {
 	return self->autoSipEnabled();
 }
 
-void QApplication_CloseAllWindows() {
+void QApplication_closeAllWindows() {
 	QApplication::closeAllWindows();
 }
 
-void QApplication_AboutQt() {
+void QApplication_aboutQt() {
 	QApplication::aboutQt();
 }
 
-struct miqt_string QApplication_Tr2(const char* s, const char* c) {
+struct miqt_string QApplication_tr2(const char* s, const char* c) {
 	QString _ret = QApplication::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -507,7 +507,7 @@ struct miqt_string QApplication_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QApplication_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QApplication_tr3(const char* s, const char* c, int n) {
 	QString _ret = QApplication::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -518,135 +518,135 @@ struct miqt_string QApplication_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QApplication_SetPalette2(QPalette* param1, const char* className) {
+void QApplication_setPalette2(QPalette* param1, const char* className) {
 	QApplication::setPalette(*param1, className);
 }
 
-void QApplication_SetFont2(QFont* param1, const char* className) {
+void QApplication_setFont2(QFont* param1, const char* className) {
 	QApplication::setFont(*param1, className);
 }
 
-void QApplication_Alert2(QWidget* widget, int duration) {
+void QApplication_alert2(QWidget* widget, int duration) {
 	QApplication::alert(widget, static_cast<int>(duration));
 }
 
-void QApplication_SetEffectEnabled2(int param1, bool enable) {
+void QApplication_setEffectEnabled2(int param1, bool enable) {
 	QApplication::setEffectEnabled(static_cast<Qt::UIEffect>(param1), enable);
 }
 
-bool QApplication_override_virtual_Notify(void* self, intptr_t slot) {
+bool QApplication_override_virtual_notify(void* self, intptr_t slot) {
 	MiqtVirtualQApplication* self_cast = dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Notify = slot;
+	self_cast->handle__notify = slot;
 	return true;
 }
 
-bool QApplication_virtualbase_Notify(void* self, QObject* param1, QEvent* param2) {
-	return ( (MiqtVirtualQApplication*)(self) )->virtualbase_Notify(param1, param2);
+bool QApplication_virtualbase_notify(void* self, QObject* param1, QEvent* param2) {
+	return ( (MiqtVirtualQApplication*)(self) )->virtualbase_notify(param1, param2);
 }
 
-bool QApplication_override_virtual_Event(void* self, intptr_t slot) {
+bool QApplication_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQApplication* self_cast = dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QApplication_virtualbase_Event(void* self, QEvent* param1) {
-	return ( (MiqtVirtualQApplication*)(self) )->virtualbase_Event(param1);
+bool QApplication_virtualbase_event(void* self, QEvent* param1) {
+	return ( (MiqtVirtualQApplication*)(self) )->virtualbase_event(param1);
 }
 
-bool QApplication_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QApplication_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQApplication* self_cast = dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QApplication_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQApplication*)(self) )->virtualbase_EventFilter(watched, event);
+bool QApplication_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQApplication*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QApplication_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QApplication_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQApplication* self_cast = dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QApplication_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQApplication*)(self) )->virtualbase_TimerEvent(event);
+void QApplication_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQApplication*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QApplication_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QApplication_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQApplication* self_cast = dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QApplication_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQApplication*)(self) )->virtualbase_ChildEvent(event);
+void QApplication_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQApplication*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QApplication_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QApplication_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQApplication* self_cast = dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QApplication_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQApplication*)(self) )->virtualbase_CustomEvent(event);
+void QApplication_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQApplication*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QApplication_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QApplication_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQApplication* self_cast = dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QApplication_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQApplication*)(self) )->virtualbase_ConnectNotify(signal);
+void QApplication_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQApplication*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QApplication_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QApplication_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQApplication* self_cast = dynamic_cast<MiqtVirtualQApplication*>( (QApplication*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QApplication_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQApplication*)(self) )->virtualbase_DisconnectNotify(signal);
+void QApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQApplication*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QApplication_Delete(QApplication* self) {
+void QApplication_delete(QApplication* self) {
 	delete self;
 }
 

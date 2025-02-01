@@ -11,11 +11,11 @@ extern "C" {
 } /* extern C */
 #endif
 
-QMediaObject* QMediaBindableInterface_MediaObject(const QMediaBindableInterface* self) {
+QMediaObject* QMediaBindableInterface_mediaObject(const QMediaBindableInterface* self) {
 	return self->mediaObject();
 }
 
-void QMediaBindableInterface_Delete(QMediaBindableInterface* self) {
+void QMediaBindableInterface_delete(QMediaBindableInterface* self) {
 	delete self;
 }
 

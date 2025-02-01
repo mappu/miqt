@@ -25,18 +25,18 @@ typedef struct QObject QObject;
 #endif
 
 void QMediaControl_virtbase(QMediaControl* src, QObject** outptr_QObject);
-QMetaObject* QMediaControl_MetaObject(const QMediaControl* self);
-void* QMediaControl_Metacast(QMediaControl* self, const char* param1);
-struct miqt_string QMediaControl_Tr(const char* s);
-struct miqt_string QMediaControl_TrUtf8(const char* s);
-struct miqt_string QMediaControl_Tr2(const char* s, const char* c);
-struct miqt_string QMediaControl_Tr3(const char* s, const char* c, int n);
-struct miqt_string QMediaControl_TrUtf82(const char* s, const char* c);
-struct miqt_string QMediaControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaControl_Delete(QMediaControl* self);
+QMetaObject* QMediaControl_metaObject(const QMediaControl* self);
+void* QMediaControl_metacast(QMediaControl* self, const char* param1);
+struct miqt_string QMediaControl_tr(const char* s);
+struct miqt_string QMediaControl_trUtf8(const char* s);
+struct miqt_string QMediaControl_tr2(const char* s, const char* c);
+struct miqt_string QMediaControl_tr3(const char* s, const char* c, int n);
+struct miqt_string QMediaControl_trUtf82(const char* s, const char* c);
+struct miqt_string QMediaControl_trUtf83(const char* s, const char* c, int n);
+void QMediaControl_delete(QMediaControl* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

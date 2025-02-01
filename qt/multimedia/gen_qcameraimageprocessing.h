@@ -25,36 +25,36 @@ typedef struct QObject QObject;
 #endif
 
 void QCameraImageProcessing_virtbase(QCameraImageProcessing* src, QObject** outptr_QObject);
-QMetaObject* QCameraImageProcessing_MetaObject(const QCameraImageProcessing* self);
-void* QCameraImageProcessing_Metacast(QCameraImageProcessing* self, const char* param1);
-struct miqt_string QCameraImageProcessing_Tr(const char* s);
-struct miqt_string QCameraImageProcessing_TrUtf8(const char* s);
-bool QCameraImageProcessing_IsAvailable(const QCameraImageProcessing* self);
-int QCameraImageProcessing_WhiteBalanceMode(const QCameraImageProcessing* self);
-void QCameraImageProcessing_SetWhiteBalanceMode(QCameraImageProcessing* self, int mode);
-bool QCameraImageProcessing_IsWhiteBalanceModeSupported(const QCameraImageProcessing* self, int mode);
-double QCameraImageProcessing_ManualWhiteBalance(const QCameraImageProcessing* self);
-void QCameraImageProcessing_SetManualWhiteBalance(QCameraImageProcessing* self, double colorTemperature);
-double QCameraImageProcessing_Brightness(const QCameraImageProcessing* self);
-void QCameraImageProcessing_SetBrightness(QCameraImageProcessing* self, double value);
-double QCameraImageProcessing_Contrast(const QCameraImageProcessing* self);
-void QCameraImageProcessing_SetContrast(QCameraImageProcessing* self, double value);
-double QCameraImageProcessing_Saturation(const QCameraImageProcessing* self);
-void QCameraImageProcessing_SetSaturation(QCameraImageProcessing* self, double value);
-double QCameraImageProcessing_SharpeningLevel(const QCameraImageProcessing* self);
-void QCameraImageProcessing_SetSharpeningLevel(QCameraImageProcessing* self, double value);
-double QCameraImageProcessing_DenoisingLevel(const QCameraImageProcessing* self);
-void QCameraImageProcessing_SetDenoisingLevel(QCameraImageProcessing* self, double value);
-int QCameraImageProcessing_ColorFilter(const QCameraImageProcessing* self);
-void QCameraImageProcessing_SetColorFilter(QCameraImageProcessing* self, int filter);
-bool QCameraImageProcessing_IsColorFilterSupported(const QCameraImageProcessing* self, int filter);
-struct miqt_string QCameraImageProcessing_Tr2(const char* s, const char* c);
-struct miqt_string QCameraImageProcessing_Tr3(const char* s, const char* c, int n);
-struct miqt_string QCameraImageProcessing_TrUtf82(const char* s, const char* c);
-struct miqt_string QCameraImageProcessing_TrUtf83(const char* s, const char* c, int n);
+QMetaObject* QCameraImageProcessing_metaObject(const QCameraImageProcessing* self);
+void* QCameraImageProcessing_metacast(QCameraImageProcessing* self, const char* param1);
+struct miqt_string QCameraImageProcessing_tr(const char* s);
+struct miqt_string QCameraImageProcessing_trUtf8(const char* s);
+bool QCameraImageProcessing_isAvailable(const QCameraImageProcessing* self);
+int QCameraImageProcessing_whiteBalanceMode(const QCameraImageProcessing* self);
+void QCameraImageProcessing_setWhiteBalanceMode(QCameraImageProcessing* self, int mode);
+bool QCameraImageProcessing_isWhiteBalanceModeSupported(const QCameraImageProcessing* self, int mode);
+double QCameraImageProcessing_manualWhiteBalance(const QCameraImageProcessing* self);
+void QCameraImageProcessing_setManualWhiteBalance(QCameraImageProcessing* self, double colorTemperature);
+double QCameraImageProcessing_brightness(const QCameraImageProcessing* self);
+void QCameraImageProcessing_setBrightness(QCameraImageProcessing* self, double value);
+double QCameraImageProcessing_contrast(const QCameraImageProcessing* self);
+void QCameraImageProcessing_setContrast(QCameraImageProcessing* self, double value);
+double QCameraImageProcessing_saturation(const QCameraImageProcessing* self);
+void QCameraImageProcessing_setSaturation(QCameraImageProcessing* self, double value);
+double QCameraImageProcessing_sharpeningLevel(const QCameraImageProcessing* self);
+void QCameraImageProcessing_setSharpeningLevel(QCameraImageProcessing* self, double value);
+double QCameraImageProcessing_denoisingLevel(const QCameraImageProcessing* self);
+void QCameraImageProcessing_setDenoisingLevel(QCameraImageProcessing* self, double value);
+int QCameraImageProcessing_colorFilter(const QCameraImageProcessing* self);
+void QCameraImageProcessing_setColorFilter(QCameraImageProcessing* self, int filter);
+bool QCameraImageProcessing_isColorFilterSupported(const QCameraImageProcessing* self, int filter);
+struct miqt_string QCameraImageProcessing_tr2(const char* s, const char* c);
+struct miqt_string QCameraImageProcessing_tr3(const char* s, const char* c, int n);
+struct miqt_string QCameraImageProcessing_trUtf82(const char* s, const char* c);
+struct miqt_string QCameraImageProcessing_trUtf83(const char* s, const char* c, int n);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

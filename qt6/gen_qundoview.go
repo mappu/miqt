@@ -87,30 +87,30 @@ func NewQUndoView6(group *QUndoGroup, parent *QWidget) *QUndoView {
 }
 
 func (this *QUndoView) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QUndoView_MetaObject(this.h))
+	return newQMetaObject(C.QUndoView_metaObject(this.h))
 }
 
 func (this *QUndoView) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QUndoView_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QUndoView_metacast(this.h, param1_Cstring))
 }
 
 func QUndoView_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QUndoView_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QUndoView_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QUndoView) Stack() *QUndoStack {
-	return newQUndoStack(C.QUndoView_Stack(this.h))
+	return newQUndoStack(C.QUndoView_stack(this.h))
 }
 
 func (this *QUndoView) Group() *QUndoGroup {
-	return newQUndoGroup(C.QUndoView_Group(this.h))
+	return newQUndoGroup(C.QUndoView_group(this.h))
 }
 
 func (this *QUndoView) SetEmptyLabel(label string) {
@@ -118,32 +118,32 @@ func (this *QUndoView) SetEmptyLabel(label string) {
 	label_ms.data = C.CString(label)
 	label_ms.len = C.size_t(len(label))
 	defer C.free(unsafe.Pointer(label_ms.data))
-	C.QUndoView_SetEmptyLabel(this.h, label_ms)
+	C.QUndoView_setEmptyLabel(this.h, label_ms)
 }
 
 func (this *QUndoView) EmptyLabel() string {
-	var _ms C.struct_miqt_string = C.QUndoView_EmptyLabel(this.h)
+	var _ms C.struct_miqt_string = C.QUndoView_emptyLabel(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QUndoView) SetCleanIcon(icon *QIcon) {
-	C.QUndoView_SetCleanIcon(this.h, icon.cPointer())
+	C.QUndoView_setCleanIcon(this.h, icon.cPointer())
 }
 
 func (this *QUndoView) CleanIcon() *QIcon {
-	_goptr := newQIcon(C.QUndoView_CleanIcon(this.h))
+	_goptr := newQIcon(C.QUndoView_cleanIcon(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUndoView) SetStack(stack *QUndoStack) {
-	C.QUndoView_SetStack(this.h, stack.cPointer())
+	C.QUndoView_setStack(this.h, stack.cPointer())
 }
 
 func (this *QUndoView) SetGroup(group *QUndoGroup) {
-	C.QUndoView_SetGroup(this.h, group.cPointer())
+	C.QUndoView_setGroup(this.h, group.cPointer())
 }
 
 func QUndoView_Tr2(s string, c string) string {
@@ -151,7 +151,7 @@ func QUndoView_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QUndoView_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QUndoView_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -162,7 +162,7 @@ func QUndoView_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QUndoView_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QUndoView_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -170,20 +170,20 @@ func QUndoView_Tr3(s string, c string, n int) string {
 
 func (this *QUndoView) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
 
-	_goptr := newQRect(C.QUndoView_virtualbase_VisualRect(unsafe.Pointer(this.h), index.cPointer()))
+	_goptr := newQRect(C.QUndoView_virtualbase_visualRect(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QUndoView) OnVisualRect(slot func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect) {
-	ok := C.QUndoView_override_virtual_VisualRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnvisualRect(slot func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect) {
+	ok := C.QUndoView_override_virtual_visualRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_VisualRect
-func miqt_exec_callback_QUndoView_VisualRect(self *C.QUndoView, cb C.intptr_t, index *C.QModelIndex) *C.QRect {
+//export miqt_exec_callback_QUndoView_visualRect
+func miqt_exec_callback_QUndoView_visualRect(self *C.QUndoView, cb C.intptr_t, index *C.QModelIndex) *C.QRect {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) *QRect, index *QModelIndex) *QRect)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -200,18 +200,18 @@ func miqt_exec_callback_QUndoView_VisualRect(self *C.QUndoView, cb C.intptr_t, i
 
 func (this *QUndoView) callVirtualBase_ScrollTo(index *QModelIndex, hint QAbstractItemView__ScrollHint) {
 
-	C.QUndoView_virtualbase_ScrollTo(unsafe.Pointer(this.h), index.cPointer(), (C.int)(hint))
+	C.QUndoView_virtualbase_scrollTo(unsafe.Pointer(this.h), index.cPointer(), (C.int)(hint))
 
 }
-func (this *QUndoView) OnScrollTo(slot func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint)) {
-	ok := C.QUndoView_override_virtual_ScrollTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnscrollTo(slot func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint)) {
+	ok := C.QUndoView_override_virtual_scrollTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_ScrollTo
-func miqt_exec_callback_QUndoView_ScrollTo(self *C.QUndoView, cb C.intptr_t, index *C.QModelIndex, hint C.int) {
+//export miqt_exec_callback_QUndoView_scrollTo
+func miqt_exec_callback_QUndoView_scrollTo(self *C.QUndoView, cb C.intptr_t, index *C.QModelIndex, hint C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, hint QAbstractItemView__ScrollHint), index *QModelIndex, hint QAbstractItemView__ScrollHint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -228,20 +228,20 @@ func miqt_exec_callback_QUndoView_ScrollTo(self *C.QUndoView, cb C.intptr_t, ind
 
 func (this *QUndoView) callVirtualBase_IndexAt(p *QPoint) *QModelIndex {
 
-	_goptr := newQModelIndex(C.QUndoView_virtualbase_IndexAt(unsafe.Pointer(this.h), p.cPointer()))
+	_goptr := newQModelIndex(C.QUndoView_virtualbase_indexAt(unsafe.Pointer(this.h), p.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QUndoView) OnIndexAt(slot func(super func(p *QPoint) *QModelIndex, p *QPoint) *QModelIndex) {
-	ok := C.QUndoView_override_virtual_IndexAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnindexAt(slot func(super func(p *QPoint) *QModelIndex, p *QPoint) *QModelIndex) {
+	ok := C.QUndoView_override_virtual_indexAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_IndexAt
-func miqt_exec_callback_QUndoView_IndexAt(self *C.QUndoView, cb C.intptr_t, p *C.QPoint) *C.QModelIndex {
+//export miqt_exec_callback_QUndoView_indexAt
+func miqt_exec_callback_QUndoView_indexAt(self *C.QUndoView, cb C.intptr_t, p *C.QPoint) *C.QModelIndex {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(p *QPoint) *QModelIndex, p *QPoint) *QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -258,18 +258,18 @@ func miqt_exec_callback_QUndoView_IndexAt(self *C.QUndoView, cb C.intptr_t, p *C
 
 func (this *QUndoView) callVirtualBase_DoItemsLayout() {
 
-	C.QUndoView_virtualbase_DoItemsLayout(unsafe.Pointer(this.h))
+	C.QUndoView_virtualbase_doItemsLayout(unsafe.Pointer(this.h))
 
 }
-func (this *QUndoView) OnDoItemsLayout(slot func(super func())) {
-	ok := C.QUndoView_override_virtual_DoItemsLayout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OndoItemsLayout(slot func(super func())) {
+	ok := C.QUndoView_override_virtual_doItemsLayout(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_DoItemsLayout
-func miqt_exec_callback_QUndoView_DoItemsLayout(self *C.QUndoView, cb C.intptr_t) {
+//export miqt_exec_callback_QUndoView_doItemsLayout
+func miqt_exec_callback_QUndoView_doItemsLayout(self *C.QUndoView, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -281,18 +281,18 @@ func miqt_exec_callback_QUndoView_DoItemsLayout(self *C.QUndoView, cb C.intptr_t
 
 func (this *QUndoView) callVirtualBase_Reset() {
 
-	C.QUndoView_virtualbase_Reset(unsafe.Pointer(this.h))
+	C.QUndoView_virtualbase_reset(unsafe.Pointer(this.h))
 
 }
-func (this *QUndoView) OnReset(slot func(super func())) {
-	ok := C.QUndoView_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) Onreset(slot func(super func())) {
+	ok := C.QUndoView_override_virtual_reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_Reset
-func miqt_exec_callback_QUndoView_Reset(self *C.QUndoView, cb C.intptr_t) {
+//export miqt_exec_callback_QUndoView_reset
+func miqt_exec_callback_QUndoView_reset(self *C.QUndoView, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -304,18 +304,18 @@ func miqt_exec_callback_QUndoView_Reset(self *C.QUndoView, cb C.intptr_t) {
 
 func (this *QUndoView) callVirtualBase_SetRootIndex(index *QModelIndex) {
 
-	C.QUndoView_virtualbase_SetRootIndex(unsafe.Pointer(this.h), index.cPointer())
+	C.QUndoView_virtualbase_setRootIndex(unsafe.Pointer(this.h), index.cPointer())
 
 }
-func (this *QUndoView) OnSetRootIndex(slot func(super func(index *QModelIndex), index *QModelIndex)) {
-	ok := C.QUndoView_override_virtual_SetRootIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnsetRootIndex(slot func(super func(index *QModelIndex), index *QModelIndex)) {
+	ok := C.QUndoView_override_virtual_setRootIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_SetRootIndex
-func miqt_exec_callback_QUndoView_SetRootIndex(self *C.QUndoView, cb C.intptr_t, index *C.QModelIndex) {
+//export miqt_exec_callback_QUndoView_setRootIndex
+func miqt_exec_callback_QUndoView_setRootIndex(self *C.QUndoView, cb C.intptr_t, index *C.QModelIndex) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex), index *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -330,18 +330,18 @@ func miqt_exec_callback_QUndoView_SetRootIndex(self *C.QUndoView, cb C.intptr_t,
 
 func (this *QUndoView) callVirtualBase_Event(e *QEvent) bool {
 
-	return (bool)(C.QUndoView_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+	return (bool)(C.QUndoView_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
 }
-func (this *QUndoView) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	ok := C.QUndoView_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) Onevent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	ok := C.QUndoView_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_Event
-func miqt_exec_callback_QUndoView_Event(self *C.QUndoView, cb C.intptr_t, e *C.QEvent) C.bool {
+//export miqt_exec_callback_QUndoView_event
+func miqt_exec_callback_QUndoView_event(self *C.QUndoView, cb C.intptr_t, e *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -358,18 +358,18 @@ func miqt_exec_callback_QUndoView_Event(self *C.QUndoView, cb C.intptr_t, e *C.Q
 
 func (this *QUndoView) callVirtualBase_ScrollContentsBy(dx int, dy int) {
 
-	C.QUndoView_virtualbase_ScrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
+	C.QUndoView_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
 }
-func (this *QUndoView) OnScrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
-	ok := C.QUndoView_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnscrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
+	ok := C.QUndoView_override_virtual_scrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_ScrollContentsBy
-func miqt_exec_callback_QUndoView_ScrollContentsBy(self *C.QUndoView, cb C.intptr_t, dx C.int, dy C.int) {
+//export miqt_exec_callback_QUndoView_scrollContentsBy
+func miqt_exec_callback_QUndoView_scrollContentsBy(self *C.QUndoView, cb C.intptr_t, dx C.int, dy C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(dx int, dy int), dx int, dy int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -392,18 +392,18 @@ func (this *QUndoView) callVirtualBase_DataChanged(topLeft *QModelIndex, bottomR
 	}
 	roles_ma := C.struct_miqt_array{len: C.size_t(len(roles)), data: unsafe.Pointer(roles_CArray)}
 
-	C.QUndoView_virtualbase_DataChanged(unsafe.Pointer(this.h), topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
+	C.QUndoView_virtualbase_dataChanged(unsafe.Pointer(this.h), topLeft.cPointer(), bottomRight.cPointer(), roles_ma)
 
 }
-func (this *QUndoView) OnDataChanged(slot func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
-	ok := C.QUndoView_override_virtual_DataChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OndataChanged(slot func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int)) {
+	ok := C.QUndoView_override_virtual_dataChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_DataChanged
-func miqt_exec_callback_QUndoView_DataChanged(self *C.QUndoView, cb C.intptr_t, topLeft *C.QModelIndex, bottomRight *C.QModelIndex, roles C.struct_miqt_array) {
+//export miqt_exec_callback_QUndoView_dataChanged
+func miqt_exec_callback_QUndoView_dataChanged(self *C.QUndoView, cb C.intptr_t, topLeft *C.QModelIndex, bottomRight *C.QModelIndex, roles C.struct_miqt_array) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(topLeft *QModelIndex, bottomRight *QModelIndex, roles []int), topLeft *QModelIndex, bottomRight *QModelIndex, roles []int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -428,18 +428,18 @@ func miqt_exec_callback_QUndoView_DataChanged(self *C.QUndoView, cb C.intptr_t, 
 
 func (this *QUndoView) callVirtualBase_RowsInserted(parent *QModelIndex, start int, end int) {
 
-	C.QUndoView_virtualbase_RowsInserted(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
+	C.QUndoView_virtualbase_rowsInserted(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
 
 }
-func (this *QUndoView) OnRowsInserted(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
-	ok := C.QUndoView_override_virtual_RowsInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnrowsInserted(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
+	ok := C.QUndoView_override_virtual_rowsInserted(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_RowsInserted
-func miqt_exec_callback_QUndoView_RowsInserted(self *C.QUndoView, cb C.intptr_t, parent *C.QModelIndex, start C.int, end C.int) {
+//export miqt_exec_callback_QUndoView_rowsInserted
+func miqt_exec_callback_QUndoView_rowsInserted(self *C.QUndoView, cb C.intptr_t, parent *C.QModelIndex, start C.int, end C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -458,18 +458,18 @@ func miqt_exec_callback_QUndoView_RowsInserted(self *C.QUndoView, cb C.intptr_t,
 
 func (this *QUndoView) callVirtualBase_RowsAboutToBeRemoved(parent *QModelIndex, start int, end int) {
 
-	C.QUndoView_virtualbase_RowsAboutToBeRemoved(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
+	C.QUndoView_virtualbase_rowsAboutToBeRemoved(unsafe.Pointer(this.h), parent.cPointer(), (C.int)(start), (C.int)(end))
 
 }
-func (this *QUndoView) OnRowsAboutToBeRemoved(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
-	ok := C.QUndoView_override_virtual_RowsAboutToBeRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnrowsAboutToBeRemoved(slot func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int)) {
+	ok := C.QUndoView_override_virtual_rowsAboutToBeRemoved(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_RowsAboutToBeRemoved
-func miqt_exec_callback_QUndoView_RowsAboutToBeRemoved(self *C.QUndoView, cb C.intptr_t, parent *C.QModelIndex, start C.int, end C.int) {
+//export miqt_exec_callback_QUndoView_rowsAboutToBeRemoved
+func miqt_exec_callback_QUndoView_rowsAboutToBeRemoved(self *C.QUndoView, cb C.intptr_t, parent *C.QModelIndex, start C.int, end C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex, start int, end int), parent *QModelIndex, start int, end int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -488,18 +488,18 @@ func miqt_exec_callback_QUndoView_RowsAboutToBeRemoved(self *C.QUndoView, cb C.i
 
 func (this *QUndoView) callVirtualBase_MouseMoveEvent(e *QMouseEvent) {
 
-	C.QUndoView_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QUndoView_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QUndoView) OnMouseMoveEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
-	ok := C.QUndoView_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnmouseMoveEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
+	ok := C.QUndoView_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_MouseMoveEvent
-func miqt_exec_callback_QUndoView_MouseMoveEvent(self *C.QUndoView, cb C.intptr_t, e *C.QMouseEvent) {
+//export miqt_exec_callback_QUndoView_mouseMoveEvent
+func miqt_exec_callback_QUndoView_mouseMoveEvent(self *C.QUndoView, cb C.intptr_t, e *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QMouseEvent), e *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -514,18 +514,18 @@ func miqt_exec_callback_QUndoView_MouseMoveEvent(self *C.QUndoView, cb C.intptr_
 
 func (this *QUndoView) callVirtualBase_MouseReleaseEvent(e *QMouseEvent) {
 
-	C.QUndoView_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QUndoView_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QUndoView) OnMouseReleaseEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
-	ok := C.QUndoView_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnmouseReleaseEvent(slot func(super func(e *QMouseEvent), e *QMouseEvent)) {
+	ok := C.QUndoView_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_MouseReleaseEvent
-func miqt_exec_callback_QUndoView_MouseReleaseEvent(self *C.QUndoView, cb C.intptr_t, e *C.QMouseEvent) {
+//export miqt_exec_callback_QUndoView_mouseReleaseEvent
+func miqt_exec_callback_QUndoView_mouseReleaseEvent(self *C.QUndoView, cb C.intptr_t, e *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QMouseEvent), e *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -540,18 +540,18 @@ func miqt_exec_callback_QUndoView_MouseReleaseEvent(self *C.QUndoView, cb C.intp
 
 func (this *QUndoView) callVirtualBase_WheelEvent(e *QWheelEvent) {
 
-	C.QUndoView_virtualbase_WheelEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QUndoView_virtualbase_wheelEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QUndoView) OnWheelEvent(slot func(super func(e *QWheelEvent), e *QWheelEvent)) {
-	ok := C.QUndoView_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnwheelEvent(slot func(super func(e *QWheelEvent), e *QWheelEvent)) {
+	ok := C.QUndoView_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_WheelEvent
-func miqt_exec_callback_QUndoView_WheelEvent(self *C.QUndoView, cb C.intptr_t, e *C.QWheelEvent) {
+//export miqt_exec_callback_QUndoView_wheelEvent
+func miqt_exec_callback_QUndoView_wheelEvent(self *C.QUndoView, cb C.intptr_t, e *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QWheelEvent), e *QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -566,18 +566,18 @@ func miqt_exec_callback_QUndoView_WheelEvent(self *C.QUndoView, cb C.intptr_t, e
 
 func (this *QUndoView) callVirtualBase_TimerEvent(e *QTimerEvent) {
 
-	C.QUndoView_virtualbase_TimerEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QUndoView_virtualbase_timerEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QUndoView) OnTimerEvent(slot func(super func(e *QTimerEvent), e *QTimerEvent)) {
-	ok := C.QUndoView_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OntimerEvent(slot func(super func(e *QTimerEvent), e *QTimerEvent)) {
+	ok := C.QUndoView_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_TimerEvent
-func miqt_exec_callback_QUndoView_TimerEvent(self *C.QUndoView, cb C.intptr_t, e *C.QTimerEvent) {
+//export miqt_exec_callback_QUndoView_timerEvent
+func miqt_exec_callback_QUndoView_timerEvent(self *C.QUndoView, cb C.intptr_t, e *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QTimerEvent), e *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -592,18 +592,18 @@ func miqt_exec_callback_QUndoView_TimerEvent(self *C.QUndoView, cb C.intptr_t, e
 
 func (this *QUndoView) callVirtualBase_ResizeEvent(e *QResizeEvent) {
 
-	C.QUndoView_virtualbase_ResizeEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QUndoView_virtualbase_resizeEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QUndoView) OnResizeEvent(slot func(super func(e *QResizeEvent), e *QResizeEvent)) {
-	ok := C.QUndoView_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnresizeEvent(slot func(super func(e *QResizeEvent), e *QResizeEvent)) {
+	ok := C.QUndoView_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_ResizeEvent
-func miqt_exec_callback_QUndoView_ResizeEvent(self *C.QUndoView, cb C.intptr_t, e *C.QResizeEvent) {
+//export miqt_exec_callback_QUndoView_resizeEvent
+func miqt_exec_callback_QUndoView_resizeEvent(self *C.QUndoView, cb C.intptr_t, e *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QResizeEvent), e *QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -618,18 +618,18 @@ func miqt_exec_callback_QUndoView_ResizeEvent(self *C.QUndoView, cb C.intptr_t, 
 
 func (this *QUndoView) callVirtualBase_DragMoveEvent(e *QDragMoveEvent) {
 
-	C.QUndoView_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QUndoView_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QUndoView) OnDragMoveEvent(slot func(super func(e *QDragMoveEvent), e *QDragMoveEvent)) {
-	ok := C.QUndoView_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OndragMoveEvent(slot func(super func(e *QDragMoveEvent), e *QDragMoveEvent)) {
+	ok := C.QUndoView_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_DragMoveEvent
-func miqt_exec_callback_QUndoView_DragMoveEvent(self *C.QUndoView, cb C.intptr_t, e *C.QDragMoveEvent) {
+//export miqt_exec_callback_QUndoView_dragMoveEvent
+func miqt_exec_callback_QUndoView_dragMoveEvent(self *C.QUndoView, cb C.intptr_t, e *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QDragMoveEvent), e *QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -644,18 +644,18 @@ func miqt_exec_callback_QUndoView_DragMoveEvent(self *C.QUndoView, cb C.intptr_t
 
 func (this *QUndoView) callVirtualBase_DragLeaveEvent(e *QDragLeaveEvent) {
 
-	C.QUndoView_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QUndoView_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QUndoView) OnDragLeaveEvent(slot func(super func(e *QDragLeaveEvent), e *QDragLeaveEvent)) {
-	ok := C.QUndoView_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OndragLeaveEvent(slot func(super func(e *QDragLeaveEvent), e *QDragLeaveEvent)) {
+	ok := C.QUndoView_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_DragLeaveEvent
-func miqt_exec_callback_QUndoView_DragLeaveEvent(self *C.QUndoView, cb C.intptr_t, e *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QUndoView_dragLeaveEvent
+func miqt_exec_callback_QUndoView_dragLeaveEvent(self *C.QUndoView, cb C.intptr_t, e *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QDragLeaveEvent), e *QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -670,18 +670,18 @@ func miqt_exec_callback_QUndoView_DragLeaveEvent(self *C.QUndoView, cb C.intptr_
 
 func (this *QUndoView) callVirtualBase_DropEvent(e *QDropEvent) {
 
-	C.QUndoView_virtualbase_DropEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QUndoView_virtualbase_dropEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QUndoView) OnDropEvent(slot func(super func(e *QDropEvent), e *QDropEvent)) {
-	ok := C.QUndoView_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OndropEvent(slot func(super func(e *QDropEvent), e *QDropEvent)) {
+	ok := C.QUndoView_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_DropEvent
-func miqt_exec_callback_QUndoView_DropEvent(self *C.QUndoView, cb C.intptr_t, e *C.QDropEvent) {
+//export miqt_exec_callback_QUndoView_dropEvent
+func miqt_exec_callback_QUndoView_dropEvent(self *C.QUndoView, cb C.intptr_t, e *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QDropEvent), e *QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -696,18 +696,18 @@ func miqt_exec_callback_QUndoView_DropEvent(self *C.QUndoView, cb C.intptr_t, e 
 
 func (this *QUndoView) callVirtualBase_StartDrag(supportedActions DropAction) {
 
-	C.QUndoView_virtualbase_StartDrag(unsafe.Pointer(this.h), (C.int)(supportedActions))
+	C.QUndoView_virtualbase_startDrag(unsafe.Pointer(this.h), (C.int)(supportedActions))
 
 }
-func (this *QUndoView) OnStartDrag(slot func(super func(supportedActions DropAction), supportedActions DropAction)) {
-	ok := C.QUndoView_override_virtual_StartDrag(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnstartDrag(slot func(super func(supportedActions DropAction), supportedActions DropAction)) {
+	ok := C.QUndoView_override_virtual_startDrag(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_StartDrag
-func miqt_exec_callback_QUndoView_StartDrag(self *C.QUndoView, cb C.intptr_t, supportedActions C.int) {
+//export miqt_exec_callback_QUndoView_startDrag
+func miqt_exec_callback_QUndoView_startDrag(self *C.QUndoView, cb C.intptr_t, supportedActions C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(supportedActions DropAction), supportedActions DropAction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -722,18 +722,18 @@ func miqt_exec_callback_QUndoView_StartDrag(self *C.QUndoView, cb C.intptr_t, su
 
 func (this *QUndoView) callVirtualBase_InitViewItemOption(option *QStyleOptionViewItem) {
 
-	C.QUndoView_virtualbase_InitViewItemOption(unsafe.Pointer(this.h), option.cPointer())
+	C.QUndoView_virtualbase_initViewItemOption(unsafe.Pointer(this.h), option.cPointer())
 
 }
-func (this *QUndoView) OnInitViewItemOption(slot func(super func(option *QStyleOptionViewItem), option *QStyleOptionViewItem)) {
-	ok := C.QUndoView_override_virtual_InitViewItemOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OninitViewItemOption(slot func(super func(option *QStyleOptionViewItem), option *QStyleOptionViewItem)) {
+	ok := C.QUndoView_override_virtual_initViewItemOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_InitViewItemOption
-func miqt_exec_callback_QUndoView_InitViewItemOption(self *C.QUndoView, cb C.intptr_t, option *C.QStyleOptionViewItem) {
+//export miqt_exec_callback_QUndoView_initViewItemOption
+func miqt_exec_callback_QUndoView_initViewItemOption(self *C.QUndoView, cb C.intptr_t, option *C.QStyleOptionViewItem) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option *QStyleOptionViewItem), option *QStyleOptionViewItem))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -748,18 +748,18 @@ func miqt_exec_callback_QUndoView_InitViewItemOption(self *C.QUndoView, cb C.int
 
 func (this *QUndoView) callVirtualBase_PaintEvent(e *QPaintEvent) {
 
-	C.QUndoView_virtualbase_PaintEvent(unsafe.Pointer(this.h), e.cPointer())
+	C.QUndoView_virtualbase_paintEvent(unsafe.Pointer(this.h), e.cPointer())
 
 }
-func (this *QUndoView) OnPaintEvent(slot func(super func(e *QPaintEvent), e *QPaintEvent)) {
-	ok := C.QUndoView_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnpaintEvent(slot func(super func(e *QPaintEvent), e *QPaintEvent)) {
+	ok := C.QUndoView_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_PaintEvent
-func miqt_exec_callback_QUndoView_PaintEvent(self *C.QUndoView, cb C.intptr_t, e *C.QPaintEvent) {
+//export miqt_exec_callback_QUndoView_paintEvent
+func miqt_exec_callback_QUndoView_paintEvent(self *C.QUndoView, cb C.intptr_t, e *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QPaintEvent), e *QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -774,18 +774,18 @@ func miqt_exec_callback_QUndoView_PaintEvent(self *C.QUndoView, cb C.intptr_t, e
 
 func (this *QUndoView) callVirtualBase_HorizontalOffset() int {
 
-	return (int)(C.QUndoView_virtualbase_HorizontalOffset(unsafe.Pointer(this.h)))
+	return (int)(C.QUndoView_virtualbase_horizontalOffset(unsafe.Pointer(this.h)))
 
 }
-func (this *QUndoView) OnHorizontalOffset(slot func(super func() int) int) {
-	ok := C.QUndoView_override_virtual_HorizontalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnhorizontalOffset(slot func(super func() int) int) {
+	ok := C.QUndoView_override_virtual_horizontalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_HorizontalOffset
-func miqt_exec_callback_QUndoView_HorizontalOffset(self *C.QUndoView, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QUndoView_horizontalOffset
+func miqt_exec_callback_QUndoView_horizontalOffset(self *C.QUndoView, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -799,18 +799,18 @@ func miqt_exec_callback_QUndoView_HorizontalOffset(self *C.QUndoView, cb C.intpt
 
 func (this *QUndoView) callVirtualBase_VerticalOffset() int {
 
-	return (int)(C.QUndoView_virtualbase_VerticalOffset(unsafe.Pointer(this.h)))
+	return (int)(C.QUndoView_virtualbase_verticalOffset(unsafe.Pointer(this.h)))
 
 }
-func (this *QUndoView) OnVerticalOffset(slot func(super func() int) int) {
-	ok := C.QUndoView_override_virtual_VerticalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnverticalOffset(slot func(super func() int) int) {
+	ok := C.QUndoView_override_virtual_verticalOffset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_VerticalOffset
-func miqt_exec_callback_QUndoView_VerticalOffset(self *C.QUndoView, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QUndoView_verticalOffset
+func miqt_exec_callback_QUndoView_verticalOffset(self *C.QUndoView, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -824,20 +824,20 @@ func miqt_exec_callback_QUndoView_VerticalOffset(self *C.QUndoView, cb C.intptr_
 
 func (this *QUndoView) callVirtualBase_MoveCursor(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex {
 
-	_goptr := newQModelIndex(C.QUndoView_virtualbase_MoveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers)))
+	_goptr := newQModelIndex(C.QUndoView_virtualbase_moveCursor(unsafe.Pointer(this.h), (C.int)(cursorAction), (C.int)(modifiers)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QUndoView) OnMoveCursor(slot func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex) {
-	ok := C.QUndoView_override_virtual_MoveCursor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnmoveCursor(slot func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex) {
+	ok := C.QUndoView_override_virtual_moveCursor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_MoveCursor
-func miqt_exec_callback_QUndoView_MoveCursor(self *C.QUndoView, cb C.intptr_t, cursorAction C.int, modifiers C.int) *C.QModelIndex {
+//export miqt_exec_callback_QUndoView_moveCursor
+func miqt_exec_callback_QUndoView_moveCursor(self *C.QUndoView, cb C.intptr_t, cursorAction C.int, modifiers C.int) *C.QModelIndex {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex, cursorAction QAbstractItemView__CursorAction, modifiers KeyboardModifier) *QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -856,18 +856,18 @@ func miqt_exec_callback_QUndoView_MoveCursor(self *C.QUndoView, cb C.intptr_t, c
 
 func (this *QUndoView) callVirtualBase_SetSelection(rect *QRect, command QItemSelectionModel__SelectionFlag) {
 
-	C.QUndoView_virtualbase_SetSelection(unsafe.Pointer(this.h), rect.cPointer(), (C.int)(command))
+	C.QUndoView_virtualbase_setSelection(unsafe.Pointer(this.h), rect.cPointer(), (C.int)(command))
 
 }
-func (this *QUndoView) OnSetSelection(slot func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag)) {
-	ok := C.QUndoView_override_virtual_SetSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnsetSelection(slot func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag)) {
+	ok := C.QUndoView_override_virtual_setSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_SetSelection
-func miqt_exec_callback_QUndoView_SetSelection(self *C.QUndoView, cb C.intptr_t, rect *C.QRect, command C.int) {
+//export miqt_exec_callback_QUndoView_setSelection
+func miqt_exec_callback_QUndoView_setSelection(self *C.QUndoView, cb C.intptr_t, rect *C.QRect, command C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rect *QRect, command QItemSelectionModel__SelectionFlag), rect *QRect, command QItemSelectionModel__SelectionFlag))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -884,20 +884,20 @@ func miqt_exec_callback_QUndoView_SetSelection(self *C.QUndoView, cb C.intptr_t,
 
 func (this *QUndoView) callVirtualBase_VisualRegionForSelection(selection *QItemSelection) *QRegion {
 
-	_goptr := newQRegion(C.QUndoView_virtualbase_VisualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer()))
+	_goptr := newQRegion(C.QUndoView_virtualbase_visualRegionForSelection(unsafe.Pointer(this.h), selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QUndoView) OnVisualRegionForSelection(slot func(super func(selection *QItemSelection) *QRegion, selection *QItemSelection) *QRegion) {
-	ok := C.QUndoView_override_virtual_VisualRegionForSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnvisualRegionForSelection(slot func(super func(selection *QItemSelection) *QRegion, selection *QItemSelection) *QRegion) {
+	ok := C.QUndoView_override_virtual_visualRegionForSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_VisualRegionForSelection
-func miqt_exec_callback_QUndoView_VisualRegionForSelection(self *C.QUndoView, cb C.intptr_t, selection *C.QItemSelection) *C.QRegion {
+//export miqt_exec_callback_QUndoView_visualRegionForSelection
+func miqt_exec_callback_QUndoView_visualRegionForSelection(self *C.QUndoView, cb C.intptr_t, selection *C.QItemSelection) *C.QRegion {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selection *QItemSelection) *QRegion, selection *QItemSelection) *QRegion)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -914,7 +914,7 @@ func miqt_exec_callback_QUndoView_VisualRegionForSelection(self *C.QUndoView, cb
 
 func (this *QUndoView) callVirtualBase_SelectedIndexes() []QModelIndex {
 
-	var _ma C.struct_miqt_array = C.QUndoView_virtualbase_SelectedIndexes(unsafe.Pointer(this.h))
+	var _ma C.struct_miqt_array = C.QUndoView_virtualbase_selectedIndexes(unsafe.Pointer(this.h))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -925,15 +925,15 @@ func (this *QUndoView) callVirtualBase_SelectedIndexes() []QModelIndex {
 	return _ret
 
 }
-func (this *QUndoView) OnSelectedIndexes(slot func(super func() []QModelIndex) []QModelIndex) {
-	ok := C.QUndoView_override_virtual_SelectedIndexes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnselectedIndexes(slot func(super func() []QModelIndex) []QModelIndex) {
+	ok := C.QUndoView_override_virtual_selectedIndexes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_SelectedIndexes
-func miqt_exec_callback_QUndoView_SelectedIndexes(self *C.QUndoView, cb C.intptr_t) C.struct_miqt_array {
+//export miqt_exec_callback_QUndoView_selectedIndexes
+func miqt_exec_callback_QUndoView_selectedIndexes(self *C.QUndoView, cb C.intptr_t) C.struct_miqt_array {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() []QModelIndex) []QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -953,18 +953,18 @@ func miqt_exec_callback_QUndoView_SelectedIndexes(self *C.QUndoView, cb C.intptr
 
 func (this *QUndoView) callVirtualBase_UpdateGeometries() {
 
-	C.QUndoView_virtualbase_UpdateGeometries(unsafe.Pointer(this.h))
+	C.QUndoView_virtualbase_updateGeometries(unsafe.Pointer(this.h))
 
 }
-func (this *QUndoView) OnUpdateGeometries(slot func(super func())) {
-	ok := C.QUndoView_override_virtual_UpdateGeometries(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnupdateGeometries(slot func(super func())) {
+	ok := C.QUndoView_override_virtual_updateGeometries(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_UpdateGeometries
-func miqt_exec_callback_QUndoView_UpdateGeometries(self *C.QUndoView, cb C.intptr_t) {
+//export miqt_exec_callback_QUndoView_updateGeometries
+func miqt_exec_callback_QUndoView_updateGeometries(self *C.QUndoView, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -976,18 +976,18 @@ func miqt_exec_callback_QUndoView_UpdateGeometries(self *C.QUndoView, cb C.intpt
 
 func (this *QUndoView) callVirtualBase_IsIndexHidden(index *QModelIndex) bool {
 
-	return (bool)(C.QUndoView_virtualbase_IsIndexHidden(unsafe.Pointer(this.h), index.cPointer()))
+	return (bool)(C.QUndoView_virtualbase_isIndexHidden(unsafe.Pointer(this.h), index.cPointer()))
 
 }
-func (this *QUndoView) OnIsIndexHidden(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
-	ok := C.QUndoView_override_virtual_IsIndexHidden(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnisIndexHidden(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
+	ok := C.QUndoView_override_virtual_isIndexHidden(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_IsIndexHidden
-func miqt_exec_callback_QUndoView_IsIndexHidden(self *C.QUndoView, cb C.intptr_t, index *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QUndoView_isIndexHidden
+func miqt_exec_callback_QUndoView_isIndexHidden(self *C.QUndoView, cb C.intptr_t, index *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) bool, index *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1004,18 +1004,18 @@ func miqt_exec_callback_QUndoView_IsIndexHidden(self *C.QUndoView, cb C.intptr_t
 
 func (this *QUndoView) callVirtualBase_SelectionChanged(selected *QItemSelection, deselected *QItemSelection) {
 
-	C.QUndoView_virtualbase_SelectionChanged(unsafe.Pointer(this.h), selected.cPointer(), deselected.cPointer())
+	C.QUndoView_virtualbase_selectionChanged(unsafe.Pointer(this.h), selected.cPointer(), deselected.cPointer())
 
 }
-func (this *QUndoView) OnSelectionChanged(slot func(super func(selected *QItemSelection, deselected *QItemSelection), selected *QItemSelection, deselected *QItemSelection)) {
-	ok := C.QUndoView_override_virtual_SelectionChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnselectionChanged(slot func(super func(selected *QItemSelection, deselected *QItemSelection), selected *QItemSelection, deselected *QItemSelection)) {
+	ok := C.QUndoView_override_virtual_selectionChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_SelectionChanged
-func miqt_exec_callback_QUndoView_SelectionChanged(self *C.QUndoView, cb C.intptr_t, selected *C.QItemSelection, deselected *C.QItemSelection) {
+//export miqt_exec_callback_QUndoView_selectionChanged
+func miqt_exec_callback_QUndoView_selectionChanged(self *C.QUndoView, cb C.intptr_t, selected *C.QItemSelection, deselected *C.QItemSelection) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selected *QItemSelection, deselected *QItemSelection), selected *QItemSelection, deselected *QItemSelection))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1032,18 +1032,18 @@ func miqt_exec_callback_QUndoView_SelectionChanged(self *C.QUndoView, cb C.intpt
 
 func (this *QUndoView) callVirtualBase_CurrentChanged(current *QModelIndex, previous *QModelIndex) {
 
-	C.QUndoView_virtualbase_CurrentChanged(unsafe.Pointer(this.h), current.cPointer(), previous.cPointer())
+	C.QUndoView_virtualbase_currentChanged(unsafe.Pointer(this.h), current.cPointer(), previous.cPointer())
 
 }
-func (this *QUndoView) OnCurrentChanged(slot func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex)) {
-	ok := C.QUndoView_override_virtual_CurrentChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OncurrentChanged(slot func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex)) {
+	ok := C.QUndoView_override_virtual_currentChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_CurrentChanged
-func miqt_exec_callback_QUndoView_CurrentChanged(self *C.QUndoView, cb C.intptr_t, current *C.QModelIndex, previous *C.QModelIndex) {
+//export miqt_exec_callback_QUndoView_currentChanged
+func miqt_exec_callback_QUndoView_currentChanged(self *C.QUndoView, cb C.intptr_t, current *C.QModelIndex, previous *C.QModelIndex) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(current *QModelIndex, previous *QModelIndex), current *QModelIndex, previous *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1060,20 +1060,20 @@ func miqt_exec_callback_QUndoView_CurrentChanged(self *C.QUndoView, cb C.intptr_
 
 func (this *QUndoView) callVirtualBase_ViewportSizeHint() *QSize {
 
-	_goptr := newQSize(C.QUndoView_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QUndoView_virtualbase_viewportSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QUndoView) OnViewportSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QUndoView_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnviewportSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QUndoView_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_ViewportSizeHint
-func miqt_exec_callback_QUndoView_ViewportSizeHint(self *C.QUndoView, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QUndoView_viewportSizeHint
+func miqt_exec_callback_QUndoView_viewportSizeHint(self *C.QUndoView, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1087,18 +1087,18 @@ func miqt_exec_callback_QUndoView_ViewportSizeHint(self *C.QUndoView, cb C.intpt
 
 func (this *QUndoView) callVirtualBase_SetModel(model *QAbstractItemModel) {
 
-	C.QUndoView_virtualbase_SetModel(unsafe.Pointer(this.h), model.cPointer())
+	C.QUndoView_virtualbase_setModel(unsafe.Pointer(this.h), model.cPointer())
 
 }
-func (this *QUndoView) OnSetModel(slot func(super func(model *QAbstractItemModel), model *QAbstractItemModel)) {
-	ok := C.QUndoView_override_virtual_SetModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnsetModel(slot func(super func(model *QAbstractItemModel), model *QAbstractItemModel)) {
+	ok := C.QUndoView_override_virtual_setModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_SetModel
-func miqt_exec_callback_QUndoView_SetModel(self *C.QUndoView, cb C.intptr_t, model *C.QAbstractItemModel) {
+//export miqt_exec_callback_QUndoView_setModel
+func miqt_exec_callback_QUndoView_setModel(self *C.QUndoView, cb C.intptr_t, model *C.QAbstractItemModel) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(model *QAbstractItemModel), model *QAbstractItemModel))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1113,18 +1113,18 @@ func miqt_exec_callback_QUndoView_SetModel(self *C.QUndoView, cb C.intptr_t, mod
 
 func (this *QUndoView) callVirtualBase_SetSelectionModel(selectionModel *QItemSelectionModel) {
 
-	C.QUndoView_virtualbase_SetSelectionModel(unsafe.Pointer(this.h), selectionModel.cPointer())
+	C.QUndoView_virtualbase_setSelectionModel(unsafe.Pointer(this.h), selectionModel.cPointer())
 
 }
-func (this *QUndoView) OnSetSelectionModel(slot func(super func(selectionModel *QItemSelectionModel), selectionModel *QItemSelectionModel)) {
-	ok := C.QUndoView_override_virtual_SetSelectionModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnsetSelectionModel(slot func(super func(selectionModel *QItemSelectionModel), selectionModel *QItemSelectionModel)) {
+	ok := C.QUndoView_override_virtual_setSelectionModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_SetSelectionModel
-func miqt_exec_callback_QUndoView_SetSelectionModel(self *C.QUndoView, cb C.intptr_t, selectionModel *C.QItemSelectionModel) {
+//export miqt_exec_callback_QUndoView_setSelectionModel
+func miqt_exec_callback_QUndoView_setSelectionModel(self *C.QUndoView, cb C.intptr_t, selectionModel *C.QItemSelectionModel) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selectionModel *QItemSelectionModel), selectionModel *QItemSelectionModel))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1143,18 +1143,18 @@ func (this *QUndoView) callVirtualBase_KeyboardSearch(search string) {
 	search_ms.len = C.size_t(len(search))
 	defer C.free(unsafe.Pointer(search_ms.data))
 
-	C.QUndoView_virtualbase_KeyboardSearch(unsafe.Pointer(this.h), search_ms)
+	C.QUndoView_virtualbase_keyboardSearch(unsafe.Pointer(this.h), search_ms)
 
 }
-func (this *QUndoView) OnKeyboardSearch(slot func(super func(search string), search string)) {
-	ok := C.QUndoView_override_virtual_KeyboardSearch(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnkeyboardSearch(slot func(super func(search string), search string)) {
+	ok := C.QUndoView_override_virtual_keyboardSearch(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_KeyboardSearch
-func miqt_exec_callback_QUndoView_KeyboardSearch(self *C.QUndoView, cb C.intptr_t, search C.struct_miqt_string) {
+//export miqt_exec_callback_QUndoView_keyboardSearch
+func miqt_exec_callback_QUndoView_keyboardSearch(self *C.QUndoView, cb C.intptr_t, search C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(search string), search string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1172,18 +1172,18 @@ func miqt_exec_callback_QUndoView_KeyboardSearch(self *C.QUndoView, cb C.intptr_
 
 func (this *QUndoView) callVirtualBase_SizeHintForRow(row int) int {
 
-	return (int)(C.QUndoView_virtualbase_SizeHintForRow(unsafe.Pointer(this.h), (C.int)(row)))
+	return (int)(C.QUndoView_virtualbase_sizeHintForRow(unsafe.Pointer(this.h), (C.int)(row)))
 
 }
-func (this *QUndoView) OnSizeHintForRow(slot func(super func(row int) int, row int) int) {
-	ok := C.QUndoView_override_virtual_SizeHintForRow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnsizeHintForRow(slot func(super func(row int) int, row int) int) {
+	ok := C.QUndoView_override_virtual_sizeHintForRow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_SizeHintForRow
-func miqt_exec_callback_QUndoView_SizeHintForRow(self *C.QUndoView, cb C.intptr_t, row C.int) C.int {
+//export miqt_exec_callback_QUndoView_sizeHintForRow
+func miqt_exec_callback_QUndoView_sizeHintForRow(self *C.QUndoView, cb C.intptr_t, row C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int) int, row int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1200,18 +1200,18 @@ func miqt_exec_callback_QUndoView_SizeHintForRow(self *C.QUndoView, cb C.intptr_
 
 func (this *QUndoView) callVirtualBase_SizeHintForColumn(column int) int {
 
-	return (int)(C.QUndoView_virtualbase_SizeHintForColumn(unsafe.Pointer(this.h), (C.int)(column)))
+	return (int)(C.QUndoView_virtualbase_sizeHintForColumn(unsafe.Pointer(this.h), (C.int)(column)))
 
 }
-func (this *QUndoView) OnSizeHintForColumn(slot func(super func(column int) int, column int) int) {
-	ok := C.QUndoView_override_virtual_SizeHintForColumn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnsizeHintForColumn(slot func(super func(column int) int, column int) int) {
+	ok := C.QUndoView_override_virtual_sizeHintForColumn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_SizeHintForColumn
-func miqt_exec_callback_QUndoView_SizeHintForColumn(self *C.QUndoView, cb C.intptr_t, column C.int) C.int {
+//export miqt_exec_callback_QUndoView_sizeHintForColumn
+func miqt_exec_callback_QUndoView_sizeHintForColumn(self *C.QUndoView, cb C.intptr_t, column C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int) int, column int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1228,18 +1228,18 @@ func miqt_exec_callback_QUndoView_SizeHintForColumn(self *C.QUndoView, cb C.intp
 
 func (this *QUndoView) callVirtualBase_ItemDelegateForIndex(index *QModelIndex) *QAbstractItemDelegate {
 
-	return newQAbstractItemDelegate(C.QUndoView_virtualbase_ItemDelegateForIndex(unsafe.Pointer(this.h), index.cPointer()))
+	return newQAbstractItemDelegate(C.QUndoView_virtualbase_itemDelegateForIndex(unsafe.Pointer(this.h), index.cPointer()))
 
 }
-func (this *QUndoView) OnItemDelegateForIndex(slot func(super func(index *QModelIndex) *QAbstractItemDelegate, index *QModelIndex) *QAbstractItemDelegate) {
-	ok := C.QUndoView_override_virtual_ItemDelegateForIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnitemDelegateForIndex(slot func(super func(index *QModelIndex) *QAbstractItemDelegate, index *QModelIndex) *QAbstractItemDelegate) {
+	ok := C.QUndoView_override_virtual_itemDelegateForIndex(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_ItemDelegateForIndex
-func miqt_exec_callback_QUndoView_ItemDelegateForIndex(self *C.QUndoView, cb C.intptr_t, index *C.QModelIndex) *C.QAbstractItemDelegate {
+//export miqt_exec_callback_QUndoView_itemDelegateForIndex
+func miqt_exec_callback_QUndoView_itemDelegateForIndex(self *C.QUndoView, cb C.intptr_t, index *C.QModelIndex) *C.QAbstractItemDelegate {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) *QAbstractItemDelegate, index *QModelIndex) *QAbstractItemDelegate)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1256,20 +1256,20 @@ func miqt_exec_callback_QUndoView_ItemDelegateForIndex(self *C.QUndoView, cb C.i
 
 func (this *QUndoView) callVirtualBase_InputMethodQuery(query InputMethodQuery) *QVariant {
 
-	_goptr := newQVariant(C.QUndoView_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
+	_goptr := newQVariant(C.QUndoView_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QUndoView) OnInputMethodQuery(slot func(super func(query InputMethodQuery) *QVariant, query InputMethodQuery) *QVariant) {
-	ok := C.QUndoView_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OninputMethodQuery(slot func(super func(query InputMethodQuery) *QVariant, query InputMethodQuery) *QVariant) {
+	ok := C.QUndoView_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_InputMethodQuery
-func miqt_exec_callback_QUndoView_InputMethodQuery(self *C.QUndoView, cb C.intptr_t, query C.int) *C.QVariant {
+//export miqt_exec_callback_QUndoView_inputMethodQuery
+func miqt_exec_callback_QUndoView_inputMethodQuery(self *C.QUndoView, cb C.intptr_t, query C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(query InputMethodQuery) *QVariant, query InputMethodQuery) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1286,18 +1286,18 @@ func miqt_exec_callback_QUndoView_InputMethodQuery(self *C.QUndoView, cb C.intpt
 
 func (this *QUndoView) callVirtualBase_SelectAll() {
 
-	C.QUndoView_virtualbase_SelectAll(unsafe.Pointer(this.h))
+	C.QUndoView_virtualbase_selectAll(unsafe.Pointer(this.h))
 
 }
-func (this *QUndoView) OnSelectAll(slot func(super func())) {
-	ok := C.QUndoView_override_virtual_SelectAll(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnselectAll(slot func(super func())) {
+	ok := C.QUndoView_override_virtual_selectAll(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_SelectAll
-func miqt_exec_callback_QUndoView_SelectAll(self *C.QUndoView, cb C.intptr_t) {
+//export miqt_exec_callback_QUndoView_selectAll
+func miqt_exec_callback_QUndoView_selectAll(self *C.QUndoView, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1309,18 +1309,18 @@ func miqt_exec_callback_QUndoView_SelectAll(self *C.QUndoView, cb C.intptr_t) {
 
 func (this *QUndoView) callVirtualBase_UpdateEditorData() {
 
-	C.QUndoView_virtualbase_UpdateEditorData(unsafe.Pointer(this.h))
+	C.QUndoView_virtualbase_updateEditorData(unsafe.Pointer(this.h))
 
 }
-func (this *QUndoView) OnUpdateEditorData(slot func(super func())) {
-	ok := C.QUndoView_override_virtual_UpdateEditorData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnupdateEditorData(slot func(super func())) {
+	ok := C.QUndoView_override_virtual_updateEditorData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_UpdateEditorData
-func miqt_exec_callback_QUndoView_UpdateEditorData(self *C.QUndoView, cb C.intptr_t) {
+//export miqt_exec_callback_QUndoView_updateEditorData
+func miqt_exec_callback_QUndoView_updateEditorData(self *C.QUndoView, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1332,18 +1332,18 @@ func miqt_exec_callback_QUndoView_UpdateEditorData(self *C.QUndoView, cb C.intpt
 
 func (this *QUndoView) callVirtualBase_UpdateEditorGeometries() {
 
-	C.QUndoView_virtualbase_UpdateEditorGeometries(unsafe.Pointer(this.h))
+	C.QUndoView_virtualbase_updateEditorGeometries(unsafe.Pointer(this.h))
 
 }
-func (this *QUndoView) OnUpdateEditorGeometries(slot func(super func())) {
-	ok := C.QUndoView_override_virtual_UpdateEditorGeometries(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnupdateEditorGeometries(slot func(super func())) {
+	ok := C.QUndoView_override_virtual_updateEditorGeometries(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_UpdateEditorGeometries
-func miqt_exec_callback_QUndoView_UpdateEditorGeometries(self *C.QUndoView, cb C.intptr_t) {
+//export miqt_exec_callback_QUndoView_updateEditorGeometries
+func miqt_exec_callback_QUndoView_updateEditorGeometries(self *C.QUndoView, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1355,18 +1355,18 @@ func miqt_exec_callback_QUndoView_UpdateEditorGeometries(self *C.QUndoView, cb C
 
 func (this *QUndoView) callVirtualBase_VerticalScrollbarAction(action int) {
 
-	C.QUndoView_virtualbase_VerticalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
+	C.QUndoView_virtualbase_verticalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
 }
-func (this *QUndoView) OnVerticalScrollbarAction(slot func(super func(action int), action int)) {
-	ok := C.QUndoView_override_virtual_VerticalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnverticalScrollbarAction(slot func(super func(action int), action int)) {
+	ok := C.QUndoView_override_virtual_verticalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_VerticalScrollbarAction
-func miqt_exec_callback_QUndoView_VerticalScrollbarAction(self *C.QUndoView, cb C.intptr_t, action C.int) {
+//export miqt_exec_callback_QUndoView_verticalScrollbarAction
+func miqt_exec_callback_QUndoView_verticalScrollbarAction(self *C.QUndoView, cb C.intptr_t, action C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(action int), action int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1381,18 +1381,18 @@ func miqt_exec_callback_QUndoView_VerticalScrollbarAction(self *C.QUndoView, cb 
 
 func (this *QUndoView) callVirtualBase_HorizontalScrollbarAction(action int) {
 
-	C.QUndoView_virtualbase_HorizontalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
+	C.QUndoView_virtualbase_horizontalScrollbarAction(unsafe.Pointer(this.h), (C.int)(action))
 
 }
-func (this *QUndoView) OnHorizontalScrollbarAction(slot func(super func(action int), action int)) {
-	ok := C.QUndoView_override_virtual_HorizontalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnhorizontalScrollbarAction(slot func(super func(action int), action int)) {
+	ok := C.QUndoView_override_virtual_horizontalScrollbarAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_HorizontalScrollbarAction
-func miqt_exec_callback_QUndoView_HorizontalScrollbarAction(self *C.QUndoView, cb C.intptr_t, action C.int) {
+//export miqt_exec_callback_QUndoView_horizontalScrollbarAction
+func miqt_exec_callback_QUndoView_horizontalScrollbarAction(self *C.QUndoView, cb C.intptr_t, action C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(action int), action int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1407,18 +1407,18 @@ func miqt_exec_callback_QUndoView_HorizontalScrollbarAction(self *C.QUndoView, c
 
 func (this *QUndoView) callVirtualBase_VerticalScrollbarValueChanged(value int) {
 
-	C.QUndoView_virtualbase_VerticalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
+	C.QUndoView_virtualbase_verticalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
 }
-func (this *QUndoView) OnVerticalScrollbarValueChanged(slot func(super func(value int), value int)) {
-	ok := C.QUndoView_override_virtual_VerticalScrollbarValueChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnverticalScrollbarValueChanged(slot func(super func(value int), value int)) {
+	ok := C.QUndoView_override_virtual_verticalScrollbarValueChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_VerticalScrollbarValueChanged
-func miqt_exec_callback_QUndoView_VerticalScrollbarValueChanged(self *C.QUndoView, cb C.intptr_t, value C.int) {
+//export miqt_exec_callback_QUndoView_verticalScrollbarValueChanged
+func miqt_exec_callback_QUndoView_verticalScrollbarValueChanged(self *C.QUndoView, cb C.intptr_t, value C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(value int), value int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1433,18 +1433,18 @@ func miqt_exec_callback_QUndoView_VerticalScrollbarValueChanged(self *C.QUndoVie
 
 func (this *QUndoView) callVirtualBase_HorizontalScrollbarValueChanged(value int) {
 
-	C.QUndoView_virtualbase_HorizontalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
+	C.QUndoView_virtualbase_horizontalScrollbarValueChanged(unsafe.Pointer(this.h), (C.int)(value))
 
 }
-func (this *QUndoView) OnHorizontalScrollbarValueChanged(slot func(super func(value int), value int)) {
-	ok := C.QUndoView_override_virtual_HorizontalScrollbarValueChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnhorizontalScrollbarValueChanged(slot func(super func(value int), value int)) {
+	ok := C.QUndoView_override_virtual_horizontalScrollbarValueChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_HorizontalScrollbarValueChanged
-func miqt_exec_callback_QUndoView_HorizontalScrollbarValueChanged(self *C.QUndoView, cb C.intptr_t, value C.int) {
+//export miqt_exec_callback_QUndoView_horizontalScrollbarValueChanged
+func miqt_exec_callback_QUndoView_horizontalScrollbarValueChanged(self *C.QUndoView, cb C.intptr_t, value C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(value int), value int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1459,18 +1459,18 @@ func miqt_exec_callback_QUndoView_HorizontalScrollbarValueChanged(self *C.QUndoV
 
 func (this *QUndoView) callVirtualBase_CloseEditor(editor *QWidget, hint QAbstractItemDelegate__EndEditHint) {
 
-	C.QUndoView_virtualbase_CloseEditor(unsafe.Pointer(this.h), editor.cPointer(), (C.int)(hint))
+	C.QUndoView_virtualbase_closeEditor(unsafe.Pointer(this.h), editor.cPointer(), (C.int)(hint))
 
 }
-func (this *QUndoView) OnCloseEditor(slot func(super func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint), editor *QWidget, hint QAbstractItemDelegate__EndEditHint)) {
-	ok := C.QUndoView_override_virtual_CloseEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OncloseEditor(slot func(super func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint), editor *QWidget, hint QAbstractItemDelegate__EndEditHint)) {
+	ok := C.QUndoView_override_virtual_closeEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_CloseEditor
-func miqt_exec_callback_QUndoView_CloseEditor(self *C.QUndoView, cb C.intptr_t, editor *C.QWidget, hint C.int) {
+//export miqt_exec_callback_QUndoView_closeEditor
+func miqt_exec_callback_QUndoView_closeEditor(self *C.QUndoView, cb C.intptr_t, editor *C.QWidget, hint C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(editor *QWidget, hint QAbstractItemDelegate__EndEditHint), editor *QWidget, hint QAbstractItemDelegate__EndEditHint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1487,18 +1487,18 @@ func miqt_exec_callback_QUndoView_CloseEditor(self *C.QUndoView, cb C.intptr_t, 
 
 func (this *QUndoView) callVirtualBase_CommitData(editor *QWidget) {
 
-	C.QUndoView_virtualbase_CommitData(unsafe.Pointer(this.h), editor.cPointer())
+	C.QUndoView_virtualbase_commitData(unsafe.Pointer(this.h), editor.cPointer())
 
 }
-func (this *QUndoView) OnCommitData(slot func(super func(editor *QWidget), editor *QWidget)) {
-	ok := C.QUndoView_override_virtual_CommitData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OncommitData(slot func(super func(editor *QWidget), editor *QWidget)) {
+	ok := C.QUndoView_override_virtual_commitData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_CommitData
-func miqt_exec_callback_QUndoView_CommitData(self *C.QUndoView, cb C.intptr_t, editor *C.QWidget) {
+//export miqt_exec_callback_QUndoView_commitData
+func miqt_exec_callback_QUndoView_commitData(self *C.QUndoView, cb C.intptr_t, editor *C.QWidget) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(editor *QWidget), editor *QWidget))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1513,18 +1513,18 @@ func miqt_exec_callback_QUndoView_CommitData(self *C.QUndoView, cb C.intptr_t, e
 
 func (this *QUndoView) callVirtualBase_EditorDestroyed(editor *QObject) {
 
-	C.QUndoView_virtualbase_EditorDestroyed(unsafe.Pointer(this.h), editor.cPointer())
+	C.QUndoView_virtualbase_editorDestroyed(unsafe.Pointer(this.h), editor.cPointer())
 
 }
-func (this *QUndoView) OnEditorDestroyed(slot func(super func(editor *QObject), editor *QObject)) {
-	ok := C.QUndoView_override_virtual_EditorDestroyed(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OneditorDestroyed(slot func(super func(editor *QObject), editor *QObject)) {
+	ok := C.QUndoView_override_virtual_editorDestroyed(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_EditorDestroyed
-func miqt_exec_callback_QUndoView_EditorDestroyed(self *C.QUndoView, cb C.intptr_t, editor *C.QObject) {
+//export miqt_exec_callback_QUndoView_editorDestroyed
+func miqt_exec_callback_QUndoView_editorDestroyed(self *C.QUndoView, cb C.intptr_t, editor *C.QObject) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(editor *QObject), editor *QObject))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1539,18 +1539,18 @@ func miqt_exec_callback_QUndoView_EditorDestroyed(self *C.QUndoView, cb C.intptr
 
 func (this *QUndoView) callVirtualBase_Edit2(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool {
 
-	return (bool)(C.QUndoView_virtualbase_Edit2(unsafe.Pointer(this.h), index.cPointer(), (C.int)(trigger), event.cPointer()))
+	return (bool)(C.QUndoView_virtualbase_edit2(unsafe.Pointer(this.h), index.cPointer(), (C.int)(trigger), event.cPointer()))
 
 }
-func (this *QUndoView) OnEdit2(slot func(super func(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool) {
-	ok := C.QUndoView_override_virtual_Edit2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) Onedit2(slot func(super func(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool) {
+	ok := C.QUndoView_override_virtual_edit2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_Edit2
-func miqt_exec_callback_QUndoView_Edit2(self *C.QUndoView, cb C.intptr_t, index *C.QModelIndex, trigger C.int, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QUndoView_edit2
+func miqt_exec_callback_QUndoView_edit2(self *C.QUndoView, cb C.intptr_t, index *C.QModelIndex, trigger C.int, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool, index *QModelIndex, trigger QAbstractItemView__EditTrigger, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1571,18 +1571,18 @@ func miqt_exec_callback_QUndoView_Edit2(self *C.QUndoView, cb C.intptr_t, index 
 
 func (this *QUndoView) callVirtualBase_SelectionCommand(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag {
 
-	return (QItemSelectionModel__SelectionFlag)(C.QUndoView_virtualbase_SelectionCommand(unsafe.Pointer(this.h), index.cPointer(), event.cPointer()))
+	return (QItemSelectionModel__SelectionFlag)(C.QUndoView_virtualbase_selectionCommand(unsafe.Pointer(this.h), index.cPointer(), event.cPointer()))
 
 }
-func (this *QUndoView) OnSelectionCommand(slot func(super func(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag) {
-	ok := C.QUndoView_override_virtual_SelectionCommand(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnselectionCommand(slot func(super func(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag) {
+	ok := C.QUndoView_override_virtual_selectionCommand(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_SelectionCommand
-func miqt_exec_callback_QUndoView_SelectionCommand(self *C.QUndoView, cb C.intptr_t, index *C.QModelIndex, event *C.QEvent) C.int {
+//export miqt_exec_callback_QUndoView_selectionCommand
+func miqt_exec_callback_QUndoView_selectionCommand(self *C.QUndoView, cb C.intptr_t, index *C.QModelIndex, event *C.QEvent) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag, index *QModelIndex, event *QEvent) QItemSelectionModel__SelectionFlag)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1601,18 +1601,18 @@ func miqt_exec_callback_QUndoView_SelectionCommand(self *C.QUndoView, cb C.intpt
 
 func (this *QUndoView) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QUndoView_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QUndoView_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QUndoView) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QUndoView_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QUndoView_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_FocusNextPrevChild
-func miqt_exec_callback_QUndoView_FocusNextPrevChild(self *C.QUndoView, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QUndoView_focusNextPrevChild
+func miqt_exec_callback_QUndoView_focusNextPrevChild(self *C.QUndoView, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1629,18 +1629,18 @@ func miqt_exec_callback_QUndoView_FocusNextPrevChild(self *C.QUndoView, cb C.int
 
 func (this *QUndoView) callVirtualBase_ViewportEvent(event *QEvent) bool {
 
-	return (bool)(C.QUndoView_virtualbase_ViewportEvent(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QUndoView_virtualbase_viewportEvent(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QUndoView) OnViewportEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QUndoView_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnviewportEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QUndoView_override_virtual_viewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_ViewportEvent
-func miqt_exec_callback_QUndoView_ViewportEvent(self *C.QUndoView, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QUndoView_viewportEvent
+func miqt_exec_callback_QUndoView_viewportEvent(self *C.QUndoView, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1657,18 +1657,18 @@ func miqt_exec_callback_QUndoView_ViewportEvent(self *C.QUndoView, cb C.intptr_t
 
 func (this *QUndoView) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 
-	C.QUndoView_virtualbase_MousePressEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QUndoView_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnmousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QUndoView_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_MousePressEvent
-func miqt_exec_callback_QUndoView_MousePressEvent(self *C.QUndoView, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QUndoView_mousePressEvent
+func miqt_exec_callback_QUndoView_mousePressEvent(self *C.QUndoView, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1683,18 +1683,18 @@ func miqt_exec_callback_QUndoView_MousePressEvent(self *C.QUndoView, cb C.intptr
 
 func (this *QUndoView) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
 
-	C.QUndoView_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QUndoView_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QUndoView_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_MouseDoubleClickEvent
-func miqt_exec_callback_QUndoView_MouseDoubleClickEvent(self *C.QUndoView, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QUndoView_mouseDoubleClickEvent
+func miqt_exec_callback_QUndoView_mouseDoubleClickEvent(self *C.QUndoView, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1709,18 +1709,18 @@ func miqt_exec_callback_QUndoView_MouseDoubleClickEvent(self *C.QUndoView, cb C.
 
 func (this *QUndoView) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
 
-	C.QUndoView_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
-	ok := C.QUndoView_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	ok := C.QUndoView_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_DragEnterEvent
-func miqt_exec_callback_QUndoView_DragEnterEvent(self *C.QUndoView, cb C.intptr_t, event *C.QDragEnterEvent) {
+//export miqt_exec_callback_QUndoView_dragEnterEvent
+func miqt_exec_callback_QUndoView_dragEnterEvent(self *C.QUndoView, cb C.intptr_t, event *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragEnterEvent), event *QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1735,18 +1735,18 @@ func miqt_exec_callback_QUndoView_DragEnterEvent(self *C.QUndoView, cb C.intptr_
 
 func (this *QUndoView) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
-	C.QUndoView_virtualbase_FocusInEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QUndoView_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QUndoView_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_FocusInEvent
-func miqt_exec_callback_QUndoView_FocusInEvent(self *C.QUndoView, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QUndoView_focusInEvent
+func miqt_exec_callback_QUndoView_focusInEvent(self *C.QUndoView, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1761,18 +1761,18 @@ func miqt_exec_callback_QUndoView_FocusInEvent(self *C.QUndoView, cb C.intptr_t,
 
 func (this *QUndoView) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
-	C.QUndoView_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QUndoView_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QUndoView_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_FocusOutEvent
-func miqt_exec_callback_QUndoView_FocusOutEvent(self *C.QUndoView, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QUndoView_focusOutEvent
+func miqt_exec_callback_QUndoView_focusOutEvent(self *C.QUndoView, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1787,18 +1787,18 @@ func miqt_exec_callback_QUndoView_FocusOutEvent(self *C.QUndoView, cb C.intptr_t
 
 func (this *QUndoView) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 
-	C.QUndoView_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QUndoView_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnkeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QUndoView_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_KeyPressEvent
-func miqt_exec_callback_QUndoView_KeyPressEvent(self *C.QUndoView, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QUndoView_keyPressEvent
+func miqt_exec_callback_QUndoView_keyPressEvent(self *C.QUndoView, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1813,18 +1813,18 @@ func miqt_exec_callback_QUndoView_KeyPressEvent(self *C.QUndoView, cb C.intptr_t
 
 func (this *QUndoView) callVirtualBase_InputMethodEvent(event *QInputMethodEvent) {
 
-	C.QUndoView_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnInputMethodEvent(slot func(super func(event *QInputMethodEvent), event *QInputMethodEvent)) {
-	ok := C.QUndoView_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OninputMethodEvent(slot func(super func(event *QInputMethodEvent), event *QInputMethodEvent)) {
+	ok := C.QUndoView_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_InputMethodEvent
-func miqt_exec_callback_QUndoView_InputMethodEvent(self *C.QUndoView, cb C.intptr_t, event *C.QInputMethodEvent) {
+//export miqt_exec_callback_QUndoView_inputMethodEvent
+func miqt_exec_callback_QUndoView_inputMethodEvent(self *C.QUndoView, cb C.intptr_t, event *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QInputMethodEvent), event *QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1839,18 +1839,18 @@ func miqt_exec_callback_QUndoView_InputMethodEvent(self *C.QUndoView, cb C.intpt
 
 func (this *QUndoView) callVirtualBase_EventFilter(object *QObject, event *QEvent) bool {
 
-	return (bool)(C.QUndoView_virtualbase_EventFilter(unsafe.Pointer(this.h), object.cPointer(), event.cPointer()))
+	return (bool)(C.QUndoView_virtualbase_eventFilter(unsafe.Pointer(this.h), object.cPointer(), event.cPointer()))
 
 }
-func (this *QUndoView) OnEventFilter(slot func(super func(object *QObject, event *QEvent) bool, object *QObject, event *QEvent) bool) {
-	ok := C.QUndoView_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OneventFilter(slot func(super func(object *QObject, event *QEvent) bool, object *QObject, event *QEvent) bool) {
+	ok := C.QUndoView_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_EventFilter
-func miqt_exec_callback_QUndoView_EventFilter(self *C.QUndoView, cb C.intptr_t, object *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QUndoView_eventFilter
+func miqt_exec_callback_QUndoView_eventFilter(self *C.QUndoView, cb C.intptr_t, object *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(object *QObject, event *QEvent) bool, object *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1869,20 +1869,20 @@ func miqt_exec_callback_QUndoView_EventFilter(self *C.QUndoView, cb C.intptr_t, 
 
 func (this *QUndoView) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_goptr := newQSize(C.QUndoView_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QUndoView_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QUndoView) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QUndoView_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QUndoView_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_MinimumSizeHint
-func miqt_exec_callback_QUndoView_MinimumSizeHint(self *C.QUndoView, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QUndoView_minimumSizeHint
+func miqt_exec_callback_QUndoView_minimumSizeHint(self *C.QUndoView, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1896,20 +1896,20 @@ func miqt_exec_callback_QUndoView_MinimumSizeHint(self *C.QUndoView, cb C.intptr
 
 func (this *QUndoView) callVirtualBase_SizeHint() *QSize {
 
-	_goptr := newQSize(C.QUndoView_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QUndoView_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QUndoView) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QUndoView_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnsizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QUndoView_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_SizeHint
-func miqt_exec_callback_QUndoView_SizeHint(self *C.QUndoView, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QUndoView_sizeHint
+func miqt_exec_callback_QUndoView_sizeHint(self *C.QUndoView, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1923,18 +1923,18 @@ func miqt_exec_callback_QUndoView_SizeHint(self *C.QUndoView, cb C.intptr_t) *C.
 
 func (this *QUndoView) callVirtualBase_SetupViewport(viewport *QWidget) {
 
-	C.QUndoView_virtualbase_SetupViewport(unsafe.Pointer(this.h), viewport.cPointer())
+	C.QUndoView_virtualbase_setupViewport(unsafe.Pointer(this.h), viewport.cPointer())
 
 }
-func (this *QUndoView) OnSetupViewport(slot func(super func(viewport *QWidget), viewport *QWidget)) {
-	ok := C.QUndoView_override_virtual_SetupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnsetupViewport(slot func(super func(viewport *QWidget), viewport *QWidget)) {
+	ok := C.QUndoView_override_virtual_setupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_SetupViewport
-func miqt_exec_callback_QUndoView_SetupViewport(self *C.QUndoView, cb C.intptr_t, viewport *C.QWidget) {
+//export miqt_exec_callback_QUndoView_setupViewport
+func miqt_exec_callback_QUndoView_setupViewport(self *C.QUndoView, cb C.intptr_t, viewport *C.QWidget) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(viewport *QWidget), viewport *QWidget))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1949,18 +1949,18 @@ func miqt_exec_callback_QUndoView_SetupViewport(self *C.QUndoView, cb C.intptr_t
 
 func (this *QUndoView) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
 
-	C.QUndoView_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QUndoView_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QUndoView) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
-	ok := C.QUndoView_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OncontextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+	ok := C.QUndoView_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_ContextMenuEvent
-func miqt_exec_callback_QUndoView_ContextMenuEvent(self *C.QUndoView, cb C.intptr_t, param1 *C.QContextMenuEvent) {
+//export miqt_exec_callback_QUndoView_contextMenuEvent
+func miqt_exec_callback_QUndoView_contextMenuEvent(self *C.QUndoView, cb C.intptr_t, param1 *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1975,18 +1975,18 @@ func miqt_exec_callback_QUndoView_ContextMenuEvent(self *C.QUndoView, cb C.intpt
 
 func (this *QUndoView) callVirtualBase_ChangeEvent(param1 *QEvent) {
 
-	C.QUndoView_virtualbase_ChangeEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QUndoView_virtualbase_changeEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QUndoView) OnChangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
-	ok := C.QUndoView_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnchangeEvent(slot func(super func(param1 *QEvent), param1 *QEvent)) {
+	ok := C.QUndoView_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_ChangeEvent
-func miqt_exec_callback_QUndoView_ChangeEvent(self *C.QUndoView, cb C.intptr_t, param1 *C.QEvent) {
+//export miqt_exec_callback_QUndoView_changeEvent
+func miqt_exec_callback_QUndoView_changeEvent(self *C.QUndoView, cb C.intptr_t, param1 *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent), param1 *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2001,18 +2001,18 @@ func miqt_exec_callback_QUndoView_ChangeEvent(self *C.QUndoView, cb C.intptr_t, 
 
 func (this *QUndoView) callVirtualBase_InitStyleOption(option *QStyleOptionFrame) {
 
-	C.QUndoView_virtualbase_InitStyleOption(unsafe.Pointer(this.h), option.cPointer())
+	C.QUndoView_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
 
 }
-func (this *QUndoView) OnInitStyleOption(slot func(super func(option *QStyleOptionFrame), option *QStyleOptionFrame)) {
-	ok := C.QUndoView_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OninitStyleOption(slot func(super func(option *QStyleOptionFrame), option *QStyleOptionFrame)) {
+	ok := C.QUndoView_override_virtual_initStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_InitStyleOption
-func miqt_exec_callback_QUndoView_InitStyleOption(self *C.QUndoView, cb C.intptr_t, option *C.QStyleOptionFrame) {
+//export miqt_exec_callback_QUndoView_initStyleOption
+func miqt_exec_callback_QUndoView_initStyleOption(self *C.QUndoView, cb C.intptr_t, option *C.QStyleOptionFrame) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option *QStyleOptionFrame), option *QStyleOptionFrame))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2027,18 +2027,18 @@ func miqt_exec_callback_QUndoView_InitStyleOption(self *C.QUndoView, cb C.intptr
 
 func (this *QUndoView) callVirtualBase_DevType() int {
 
-	return (int)(C.QUndoView_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QUndoView_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QUndoView) OnDevType(slot func(super func() int) int) {
-	ok := C.QUndoView_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OndevType(slot func(super func() int) int) {
+	ok := C.QUndoView_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_DevType
-func miqt_exec_callback_QUndoView_DevType(self *C.QUndoView, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QUndoView_devType
+func miqt_exec_callback_QUndoView_devType(self *C.QUndoView, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2052,18 +2052,18 @@ func miqt_exec_callback_QUndoView_DevType(self *C.QUndoView, cb C.intptr_t) C.in
 
 func (this *QUndoView) callVirtualBase_SetVisible(visible bool) {
 
-	C.QUndoView_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QUndoView_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QUndoView) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QUndoView_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QUndoView_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_SetVisible
-func miqt_exec_callback_QUndoView_SetVisible(self *C.QUndoView, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QUndoView_setVisible
+func miqt_exec_callback_QUndoView_setVisible(self *C.QUndoView, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2078,18 +2078,18 @@ func miqt_exec_callback_QUndoView_SetVisible(self *C.QUndoView, cb C.intptr_t, v
 
 func (this *QUndoView) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QUndoView_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QUndoView_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QUndoView) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QUndoView_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QUndoView_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_HeightForWidth
-func miqt_exec_callback_QUndoView_HeightForWidth(self *C.QUndoView, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QUndoView_heightForWidth
+func miqt_exec_callback_QUndoView_heightForWidth(self *C.QUndoView, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2106,18 +2106,18 @@ func miqt_exec_callback_QUndoView_HeightForWidth(self *C.QUndoView, cb C.intptr_
 
 func (this *QUndoView) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QUndoView_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QUndoView_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QUndoView) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QUndoView_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QUndoView_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_HasHeightForWidth
-func miqt_exec_callback_QUndoView_HasHeightForWidth(self *C.QUndoView, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QUndoView_hasHeightForWidth
+func miqt_exec_callback_QUndoView_hasHeightForWidth(self *C.QUndoView, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2131,18 +2131,18 @@ func miqt_exec_callback_QUndoView_HasHeightForWidth(self *C.QUndoView, cb C.intp
 
 func (this *QUndoView) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return newQPaintEngine(C.QUndoView_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+	return newQPaintEngine(C.QUndoView_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QUndoView) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	ok := C.QUndoView_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QUndoView_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_PaintEngine
-func miqt_exec_callback_QUndoView_PaintEngine(self *C.QUndoView, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QUndoView_paintEngine
+func miqt_exec_callback_QUndoView_paintEngine(self *C.QUndoView, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2156,18 +2156,18 @@ func miqt_exec_callback_QUndoView_PaintEngine(self *C.QUndoView, cb C.intptr_t) 
 
 func (this *QUndoView) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
-	C.QUndoView_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QUndoView_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QUndoView_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_KeyReleaseEvent
-func miqt_exec_callback_QUndoView_KeyReleaseEvent(self *C.QUndoView, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QUndoView_keyReleaseEvent
+func miqt_exec_callback_QUndoView_keyReleaseEvent(self *C.QUndoView, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2182,18 +2182,18 @@ func miqt_exec_callback_QUndoView_KeyReleaseEvent(self *C.QUndoView, cb C.intptr
 
 func (this *QUndoView) callVirtualBase_EnterEvent(event *QEnterEvent) {
 
-	C.QUndoView_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
-	ok := C.QUndoView_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnenterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+	ok := C.QUndoView_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_EnterEvent
-func miqt_exec_callback_QUndoView_EnterEvent(self *C.QUndoView, cb C.intptr_t, event *C.QEnterEvent) {
+//export miqt_exec_callback_QUndoView_enterEvent
+func miqt_exec_callback_QUndoView_enterEvent(self *C.QUndoView, cb C.intptr_t, event *C.QEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEnterEvent), event *QEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2208,18 +2208,18 @@ func miqt_exec_callback_QUndoView_EnterEvent(self *C.QUndoView, cb C.intptr_t, e
 
 func (this *QUndoView) callVirtualBase_LeaveEvent(event *QEvent) {
 
-	C.QUndoView_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QUndoView_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QUndoView_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_LeaveEvent
-func miqt_exec_callback_QUndoView_LeaveEvent(self *C.QUndoView, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QUndoView_leaveEvent
+func miqt_exec_callback_QUndoView_leaveEvent(self *C.QUndoView, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2234,18 +2234,18 @@ func miqt_exec_callback_QUndoView_LeaveEvent(self *C.QUndoView, cb C.intptr_t, e
 
 func (this *QUndoView) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
-	C.QUndoView_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
-	ok := C.QUndoView_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QUndoView_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_MoveEvent
-func miqt_exec_callback_QUndoView_MoveEvent(self *C.QUndoView, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QUndoView_moveEvent
+func miqt_exec_callback_QUndoView_moveEvent(self *C.QUndoView, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2260,18 +2260,18 @@ func miqt_exec_callback_QUndoView_MoveEvent(self *C.QUndoView, cb C.intptr_t, ev
 
 func (this *QUndoView) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
-	C.QUndoView_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
-	ok := C.QUndoView_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QUndoView_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_CloseEvent
-func miqt_exec_callback_QUndoView_CloseEvent(self *C.QUndoView, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QUndoView_closeEvent
+func miqt_exec_callback_QUndoView_closeEvent(self *C.QUndoView, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2286,18 +2286,18 @@ func miqt_exec_callback_QUndoView_CloseEvent(self *C.QUndoView, cb C.intptr_t, e
 
 func (this *QUndoView) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
-	C.QUndoView_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
-	ok := C.QUndoView_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QUndoView_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_TabletEvent
-func miqt_exec_callback_QUndoView_TabletEvent(self *C.QUndoView, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QUndoView_tabletEvent
+func miqt_exec_callback_QUndoView_tabletEvent(self *C.QUndoView, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2312,18 +2312,18 @@ func miqt_exec_callback_QUndoView_TabletEvent(self *C.QUndoView, cb C.intptr_t, 
 
 func (this *QUndoView) callVirtualBase_ActionEvent(event *QActionEvent) {
 
-	C.QUndoView_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
-	ok := C.QUndoView_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QUndoView_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_ActionEvent
-func miqt_exec_callback_QUndoView_ActionEvent(self *C.QUndoView, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QUndoView_actionEvent
+func miqt_exec_callback_QUndoView_actionEvent(self *C.QUndoView, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2338,18 +2338,18 @@ func miqt_exec_callback_QUndoView_ActionEvent(self *C.QUndoView, cb C.intptr_t, 
 
 func (this *QUndoView) callVirtualBase_ShowEvent(event *QShowEvent) {
 
-	C.QUndoView_virtualbase_ShowEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
-	ok := C.QUndoView_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnshowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	ok := C.QUndoView_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_ShowEvent
-func miqt_exec_callback_QUndoView_ShowEvent(self *C.QUndoView, cb C.intptr_t, event *C.QShowEvent) {
+//export miqt_exec_callback_QUndoView_showEvent
+func miqt_exec_callback_QUndoView_showEvent(self *C.QUndoView, cb C.intptr_t, event *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QShowEvent), event *QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2364,18 +2364,18 @@ func miqt_exec_callback_QUndoView_ShowEvent(self *C.QUndoView, cb C.intptr_t, ev
 
 func (this *QUndoView) callVirtualBase_HideEvent(event *QHideEvent) {
 
-	C.QUndoView_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
-	ok := C.QUndoView_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QUndoView_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_HideEvent
-func miqt_exec_callback_QUndoView_HideEvent(self *C.QUndoView, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_QUndoView_hideEvent
+func miqt_exec_callback_QUndoView_hideEvent(self *C.QUndoView, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2397,18 +2397,18 @@ func (this *QUndoView) callVirtualBase_NativeEvent(eventType []byte, message uns
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QUndoView_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
+	return (bool)(C.QUndoView_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
 
 }
-func (this *QUndoView) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
-	ok := C.QUndoView_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+	ok := C.QUndoView_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_NativeEvent
-func miqt_exec_callback_QUndoView_NativeEvent(self *C.QUndoView, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
+//export miqt_exec_callback_QUndoView_nativeEvent
+func miqt_exec_callback_QUndoView_nativeEvent(self *C.QUndoView, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2431,18 +2431,18 @@ func miqt_exec_callback_QUndoView_NativeEvent(self *C.QUndoView, cb C.intptr_t, 
 
 func (this *QUndoView) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QUndoView_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QUndoView_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QUndoView) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QUndoView_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QUndoView_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_Metric
-func miqt_exec_callback_QUndoView_Metric(self *C.QUndoView, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QUndoView_metric
+func miqt_exec_callback_QUndoView_metric(self *C.QUndoView, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2459,18 +2459,18 @@ func miqt_exec_callback_QUndoView_Metric(self *C.QUndoView, cb C.intptr_t, param
 
 func (this *QUndoView) callVirtualBase_InitPainter(painter *QPainter) {
 
-	C.QUndoView_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+	C.QUndoView_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QUndoView) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	ok := C.QUndoView_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QUndoView_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_InitPainter
-func miqt_exec_callback_QUndoView_InitPainter(self *C.QUndoView, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QUndoView_initPainter
+func miqt_exec_callback_QUndoView_initPainter(self *C.QUndoView, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2485,18 +2485,18 @@ func miqt_exec_callback_QUndoView_InitPainter(self *C.QUndoView, cb C.intptr_t, 
 
 func (this *QUndoView) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return newQPaintDevice(C.QUndoView_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+	return newQPaintDevice(C.QUndoView_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QUndoView) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	ok := C.QUndoView_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QUndoView_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_Redirected
-func miqt_exec_callback_QUndoView_Redirected(self *C.QUndoView, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QUndoView_redirected
+func miqt_exec_callback_QUndoView_redirected(self *C.QUndoView, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2513,18 +2513,18 @@ func miqt_exec_callback_QUndoView_Redirected(self *C.QUndoView, cb C.intptr_t, o
 
 func (this *QUndoView) callVirtualBase_SharedPainter() *QPainter {
 
-	return newQPainter(C.QUndoView_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+	return newQPainter(C.QUndoView_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QUndoView) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	ok := C.QUndoView_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QUndoView_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_SharedPainter
-func miqt_exec_callback_QUndoView_SharedPainter(self *C.QUndoView, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QUndoView_sharedPainter
+func miqt_exec_callback_QUndoView_sharedPainter(self *C.QUndoView, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2538,18 +2538,18 @@ func miqt_exec_callback_QUndoView_SharedPainter(self *C.QUndoView, cb C.intptr_t
 
 func (this *QUndoView) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QUndoView_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QUndoView_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QUndoView_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_ChildEvent
-func miqt_exec_callback_QUndoView_ChildEvent(self *C.QUndoView, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QUndoView_childEvent
+func miqt_exec_callback_QUndoView_childEvent(self *C.QUndoView, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2564,18 +2564,18 @@ func miqt_exec_callback_QUndoView_ChildEvent(self *C.QUndoView, cb C.intptr_t, e
 
 func (this *QUndoView) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QUndoView_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QUndoView_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QUndoView) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QUndoView_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QUndoView_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_CustomEvent
-func miqt_exec_callback_QUndoView_CustomEvent(self *C.QUndoView, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QUndoView_customEvent
+func miqt_exec_callback_QUndoView_customEvent(self *C.QUndoView, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2590,18 +2590,18 @@ func miqt_exec_callback_QUndoView_CustomEvent(self *C.QUndoView, cb C.intptr_t, 
 
 func (this *QUndoView) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QUndoView_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QUndoView_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QUndoView) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QUndoView_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QUndoView_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_ConnectNotify
-func miqt_exec_callback_QUndoView_ConnectNotify(self *C.QUndoView, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QUndoView_connectNotify
+func miqt_exec_callback_QUndoView_connectNotify(self *C.QUndoView, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2616,18 +2616,18 @@ func miqt_exec_callback_QUndoView_ConnectNotify(self *C.QUndoView, cb C.intptr_t
 
 func (this *QUndoView) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QUndoView_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QUndoView_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QUndoView) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QUndoView_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QUndoView) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QUndoView_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QUndoView_DisconnectNotify
-func miqt_exec_callback_QUndoView_DisconnectNotify(self *C.QUndoView, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QUndoView_disconnectNotify
+func miqt_exec_callback_QUndoView_disconnectNotify(self *C.QUndoView, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2642,7 +2642,7 @@ func miqt_exec_callback_QUndoView_DisconnectNotify(self *C.QUndoView, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QUndoView) Delete() {
-	C.QUndoView_Delete(this.h)
+	C.QUndoView_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

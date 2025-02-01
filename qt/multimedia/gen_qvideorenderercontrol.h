@@ -29,20 +29,20 @@ typedef struct QVideoRendererControl QVideoRendererControl;
 #endif
 
 void QVideoRendererControl_virtbase(QVideoRendererControl* src, QMediaControl** outptr_QMediaControl);
-QMetaObject* QVideoRendererControl_MetaObject(const QVideoRendererControl* self);
-void* QVideoRendererControl_Metacast(QVideoRendererControl* self, const char* param1);
-struct miqt_string QVideoRendererControl_Tr(const char* s);
-struct miqt_string QVideoRendererControl_TrUtf8(const char* s);
-QAbstractVideoSurface* QVideoRendererControl_Surface(const QVideoRendererControl* self);
-void QVideoRendererControl_SetSurface(QVideoRendererControl* self, QAbstractVideoSurface* surface);
-struct miqt_string QVideoRendererControl_Tr2(const char* s, const char* c);
-struct miqt_string QVideoRendererControl_Tr3(const char* s, const char* c, int n);
-struct miqt_string QVideoRendererControl_TrUtf82(const char* s, const char* c);
-struct miqt_string QVideoRendererControl_TrUtf83(const char* s, const char* c, int n);
-void QVideoRendererControl_Delete(QVideoRendererControl* self);
+QMetaObject* QVideoRendererControl_metaObject(const QVideoRendererControl* self);
+void* QVideoRendererControl_metacast(QVideoRendererControl* self, const char* param1);
+struct miqt_string QVideoRendererControl_tr(const char* s);
+struct miqt_string QVideoRendererControl_trUtf8(const char* s);
+QAbstractVideoSurface* QVideoRendererControl_surface(const QVideoRendererControl* self);
+void QVideoRendererControl_setSurface(QVideoRendererControl* self, QAbstractVideoSurface* surface);
+struct miqt_string QVideoRendererControl_tr2(const char* s, const char* c);
+struct miqt_string QVideoRendererControl_tr3(const char* s, const char* c, int n);
+struct miqt_string QVideoRendererControl_trUtf82(const char* s, const char* c);
+struct miqt_string QVideoRendererControl_trUtf83(const char* s, const char* c, int n);
+void QVideoRendererControl_delete(QVideoRendererControl* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

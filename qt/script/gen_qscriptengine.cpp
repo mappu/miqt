@@ -26,14 +26,14 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QScriptEngine_SignalHandlerException(intptr_t, QScriptValue*);
-bool miqt_exec_callback_QScriptEngine_Event(QScriptEngine*, intptr_t, QEvent*);
-bool miqt_exec_callback_QScriptEngine_EventFilter(QScriptEngine*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QScriptEngine_TimerEvent(QScriptEngine*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QScriptEngine_ChildEvent(QScriptEngine*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QScriptEngine_CustomEvent(QScriptEngine*, intptr_t, QEvent*);
-void miqt_exec_callback_QScriptEngine_ConnectNotify(QScriptEngine*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QScriptEngine_DisconnectNotify(QScriptEngine*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QScriptEngine_signalHandlerException(intptr_t, QScriptValue*);
+bool miqt_exec_callback_QScriptEngine_event(QScriptEngine*, intptr_t, QEvent*);
+bool miqt_exec_callback_QScriptEngine_eventFilter(QScriptEngine*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QScriptEngine_timerEvent(QScriptEngine*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QScriptEngine_childEvent(QScriptEngine*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QScriptEngine_customEvent(QScriptEngine*, intptr_t, QEvent*);
+void miqt_exec_callback_QScriptEngine_connectNotify(QScriptEngine*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QScriptEngine_disconnectNotify(QScriptEngine*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -42,20 +42,20 @@ QScriptSyntaxCheckResult* QScriptSyntaxCheckResult_new(QScriptSyntaxCheckResult*
 	return new QScriptSyntaxCheckResult(*other);
 }
 
-int QScriptSyntaxCheckResult_State(const QScriptSyntaxCheckResult* self) {
+int QScriptSyntaxCheckResult_state(const QScriptSyntaxCheckResult* self) {
 	QScriptSyntaxCheckResult::State _ret = self->state();
 	return static_cast<int>(_ret);
 }
 
-int QScriptSyntaxCheckResult_ErrorLineNumber(const QScriptSyntaxCheckResult* self) {
+int QScriptSyntaxCheckResult_errorLineNumber(const QScriptSyntaxCheckResult* self) {
 	return self->errorLineNumber();
 }
 
-int QScriptSyntaxCheckResult_ErrorColumnNumber(const QScriptSyntaxCheckResult* self) {
+int QScriptSyntaxCheckResult_errorColumnNumber(const QScriptSyntaxCheckResult* self) {
 	return self->errorColumnNumber();
 }
 
-struct miqt_string QScriptSyntaxCheckResult_ErrorMessage(const QScriptSyntaxCheckResult* self) {
+struct miqt_string QScriptSyntaxCheckResult_errorMessage(const QScriptSyntaxCheckResult* self) {
 	QString _ret = self->errorMessage();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -66,11 +66,11 @@ struct miqt_string QScriptSyntaxCheckResult_ErrorMessage(const QScriptSyntaxChec
 	return _ms;
 }
 
-void QScriptSyntaxCheckResult_OperatorAssign(QScriptSyntaxCheckResult* self, QScriptSyntaxCheckResult* other) {
+void QScriptSyntaxCheckResult_operatorAssign(QScriptSyntaxCheckResult* self, QScriptSyntaxCheckResult* other) {
 	self->operator=(*other);
 }
 
-void QScriptSyntaxCheckResult_Delete(QScriptSyntaxCheckResult* self) {
+void QScriptSyntaxCheckResult_delete(QScriptSyntaxCheckResult* self) {
 	delete self;
 }
 
@@ -83,130 +83,130 @@ public:
 	virtual ~MiqtVirtualQScriptEngine() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QScriptEngine::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QScriptEngine_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QScriptEngine_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QScriptEngine::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QScriptEngine::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QScriptEngine_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QScriptEngine_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QScriptEngine::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QScriptEngine::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QScriptEngine_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QScriptEngine_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QScriptEngine::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QScriptEngine::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QScriptEngine_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QScriptEngine_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QScriptEngine::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QScriptEngine::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QScriptEngine_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QScriptEngine_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QScriptEngine::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QScriptEngine::connectNotify(signal);
 			return;
 		}
@@ -215,24 +215,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QScriptEngine_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QScriptEngine_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QScriptEngine::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QScriptEngine::disconnectNotify(signal);
 			return;
 		}
@@ -241,13 +241,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QScriptEngine_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QScriptEngine_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QScriptEngine::disconnectNotify(*signal);
 
@@ -267,15 +267,15 @@ void QScriptEngine_virtbase(QScriptEngine* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QScriptEngine_MetaObject(const QScriptEngine* self) {
+QMetaObject* QScriptEngine_metaObject(const QScriptEngine* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QScriptEngine_Metacast(QScriptEngine* self, const char* param1) {
+void* QScriptEngine_metacast(QScriptEngine* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QScriptEngine_Tr(const char* s) {
+struct miqt_string QScriptEngine_tr(const char* s) {
 	QString _ret = QScriptEngine::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -286,7 +286,7 @@ struct miqt_string QScriptEngine_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QScriptEngine_TrUtf8(const char* s) {
+struct miqt_string QScriptEngine_trUtf8(const char* s) {
 	QString _ret = QScriptEngine::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -297,66 +297,66 @@ struct miqt_string QScriptEngine_TrUtf8(const char* s) {
 	return _ms;
 }
 
-QScriptValue* QScriptEngine_GlobalObject(const QScriptEngine* self) {
+QScriptValue* QScriptEngine_globalObject(const QScriptEngine* self) {
 	return new QScriptValue(self->globalObject());
 }
 
-void QScriptEngine_SetGlobalObject(QScriptEngine* self, QScriptValue* object) {
+void QScriptEngine_setGlobalObject(QScriptEngine* self, QScriptValue* object) {
 	self->setGlobalObject(*object);
 }
 
-QScriptContext* QScriptEngine_CurrentContext(const QScriptEngine* self) {
+QScriptContext* QScriptEngine_currentContext(const QScriptEngine* self) {
 	return self->currentContext();
 }
 
-QScriptContext* QScriptEngine_PushContext(QScriptEngine* self) {
+QScriptContext* QScriptEngine_pushContext(QScriptEngine* self) {
 	return self->pushContext();
 }
 
-void QScriptEngine_PopContext(QScriptEngine* self) {
+void QScriptEngine_popContext(QScriptEngine* self) {
 	self->popContext();
 }
 
-bool QScriptEngine_CanEvaluate(const QScriptEngine* self, struct miqt_string program) {
+bool QScriptEngine_canEvaluate(const QScriptEngine* self, struct miqt_string program) {
 	QString program_QString = QString::fromUtf8(program.data, program.len);
 	return self->canEvaluate(program_QString);
 }
 
-QScriptSyntaxCheckResult* QScriptEngine_CheckSyntax(struct miqt_string program) {
+QScriptSyntaxCheckResult* QScriptEngine_checkSyntax(struct miqt_string program) {
 	QString program_QString = QString::fromUtf8(program.data, program.len);
 	return new QScriptSyntaxCheckResult(QScriptEngine::checkSyntax(program_QString));
 }
 
-QScriptValue* QScriptEngine_Evaluate(QScriptEngine* self, struct miqt_string program) {
+QScriptValue* QScriptEngine_evaluate(QScriptEngine* self, struct miqt_string program) {
 	QString program_QString = QString::fromUtf8(program.data, program.len);
 	return new QScriptValue(self->evaluate(program_QString));
 }
 
-QScriptValue* QScriptEngine_EvaluateWithProgram(QScriptEngine* self, QScriptProgram* program) {
+QScriptValue* QScriptEngine_evaluateWithProgram(QScriptEngine* self, QScriptProgram* program) {
 	return new QScriptValue(self->evaluate(*program));
 }
 
-bool QScriptEngine_IsEvaluating(const QScriptEngine* self) {
+bool QScriptEngine_isEvaluating(const QScriptEngine* self) {
 	return self->isEvaluating();
 }
 
-void QScriptEngine_AbortEvaluation(QScriptEngine* self) {
+void QScriptEngine_abortEvaluation(QScriptEngine* self) {
 	self->abortEvaluation();
 }
 
-bool QScriptEngine_HasUncaughtException(const QScriptEngine* self) {
+bool QScriptEngine_hasUncaughtException(const QScriptEngine* self) {
 	return self->hasUncaughtException();
 }
 
-QScriptValue* QScriptEngine_UncaughtException(const QScriptEngine* self) {
+QScriptValue* QScriptEngine_uncaughtException(const QScriptEngine* self) {
 	return new QScriptValue(self->uncaughtException());
 }
 
-int QScriptEngine_UncaughtExceptionLineNumber(const QScriptEngine* self) {
+int QScriptEngine_uncaughtExceptionLineNumber(const QScriptEngine* self) {
 	return self->uncaughtExceptionLineNumber();
 }
 
-struct miqt_array /* of struct miqt_string */  QScriptEngine_UncaughtExceptionBacktrace(const QScriptEngine* self) {
+struct miqt_array /* of struct miqt_string */  QScriptEngine_uncaughtExceptionBacktrace(const QScriptEngine* self) {
 	QStringList _ret = self->uncaughtExceptionBacktrace();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -376,90 +376,90 @@ struct miqt_array /* of struct miqt_string */  QScriptEngine_UncaughtExceptionBa
 	return _out;
 }
 
-void QScriptEngine_ClearExceptions(QScriptEngine* self) {
+void QScriptEngine_clearExceptions(QScriptEngine* self) {
 	self->clearExceptions();
 }
 
-QScriptValue* QScriptEngine_NullValue(QScriptEngine* self) {
+QScriptValue* QScriptEngine_nullValue(QScriptEngine* self) {
 	return new QScriptValue(self->nullValue());
 }
 
-QScriptValue* QScriptEngine_UndefinedValue(QScriptEngine* self) {
+QScriptValue* QScriptEngine_undefinedValue(QScriptEngine* self) {
 	return new QScriptValue(self->undefinedValue());
 }
 
-QScriptValue* QScriptEngine_NewVariant(QScriptEngine* self, QVariant* value) {
+QScriptValue* QScriptEngine_newVariant(QScriptEngine* self, QVariant* value) {
 	return new QScriptValue(self->newVariant(*value));
 }
 
-QScriptValue* QScriptEngine_NewVariant2(QScriptEngine* self, QScriptValue* object, QVariant* value) {
+QScriptValue* QScriptEngine_newVariant2(QScriptEngine* self, QScriptValue* object, QVariant* value) {
 	return new QScriptValue(self->newVariant(*object, *value));
 }
 
-QScriptValue* QScriptEngine_NewRegExp(QScriptEngine* self, QRegExp* regexp) {
+QScriptValue* QScriptEngine_newRegExp(QScriptEngine* self, QRegExp* regexp) {
 	return new QScriptValue(self->newRegExp(*regexp));
 }
 
-QScriptValue* QScriptEngine_NewObject(QScriptEngine* self) {
+QScriptValue* QScriptEngine_newObject(QScriptEngine* self) {
 	return new QScriptValue(self->newObject());
 }
 
-QScriptValue* QScriptEngine_NewObjectWithScriptClass(QScriptEngine* self, QScriptClass* scriptClass) {
+QScriptValue* QScriptEngine_newObjectWithScriptClass(QScriptEngine* self, QScriptClass* scriptClass) {
 	return new QScriptValue(self->newObject(scriptClass));
 }
 
-QScriptValue* QScriptEngine_NewArray(QScriptEngine* self) {
+QScriptValue* QScriptEngine_newArray(QScriptEngine* self) {
 	return new QScriptValue(self->newArray());
 }
 
-QScriptValue* QScriptEngine_NewRegExp2(QScriptEngine* self, struct miqt_string pattern, struct miqt_string flags) {
+QScriptValue* QScriptEngine_newRegExp2(QScriptEngine* self, struct miqt_string pattern, struct miqt_string flags) {
 	QString pattern_QString = QString::fromUtf8(pattern.data, pattern.len);
 	QString flags_QString = QString::fromUtf8(flags.data, flags.len);
 	return new QScriptValue(self->newRegExp(pattern_QString, flags_QString));
 }
 
-QScriptValue* QScriptEngine_NewDate(QScriptEngine* self, double value) {
+QScriptValue* QScriptEngine_newDate(QScriptEngine* self, double value) {
 	return new QScriptValue(self->newDate(static_cast<qsreal>(value)));
 }
 
-QScriptValue* QScriptEngine_NewDateWithValue(QScriptEngine* self, QDateTime* value) {
+QScriptValue* QScriptEngine_newDateWithValue(QScriptEngine* self, QDateTime* value) {
 	return new QScriptValue(self->newDate(*value));
 }
 
-QScriptValue* QScriptEngine_NewActivationObject(QScriptEngine* self) {
+QScriptValue* QScriptEngine_newActivationObject(QScriptEngine* self) {
 	return new QScriptValue(self->newActivationObject());
 }
 
-QScriptValue* QScriptEngine_NewQObject(QScriptEngine* self, QObject* object) {
+QScriptValue* QScriptEngine_newQObject(QScriptEngine* self, QObject* object) {
 	return new QScriptValue(self->newQObject(object));
 }
 
-QScriptValue* QScriptEngine_NewQObject2(QScriptEngine* self, QScriptValue* scriptObject, QObject* qtObject) {
+QScriptValue* QScriptEngine_newQObject2(QScriptEngine* self, QScriptValue* scriptObject, QObject* qtObject) {
 	return new QScriptValue(self->newQObject(*scriptObject, qtObject));
 }
 
-QScriptValue* QScriptEngine_NewQMetaObject(QScriptEngine* self, QMetaObject* metaObject) {
+QScriptValue* QScriptEngine_newQMetaObject(QScriptEngine* self, QMetaObject* metaObject) {
 	return new QScriptValue(self->newQMetaObject(metaObject));
 }
 
-QScriptValue* QScriptEngine_DefaultPrototype(const QScriptEngine* self, int metaTypeId) {
+QScriptValue* QScriptEngine_defaultPrototype(const QScriptEngine* self, int metaTypeId) {
 	return new QScriptValue(self->defaultPrototype(static_cast<int>(metaTypeId)));
 }
 
-void QScriptEngine_SetDefaultPrototype(QScriptEngine* self, int metaTypeId, QScriptValue* prototype) {
+void QScriptEngine_setDefaultPrototype(QScriptEngine* self, int metaTypeId, QScriptValue* prototype) {
 	self->setDefaultPrototype(static_cast<int>(metaTypeId), *prototype);
 }
 
-void QScriptEngine_InstallTranslatorFunctions(QScriptEngine* self) {
+void QScriptEngine_installTranslatorFunctions(QScriptEngine* self) {
 	self->installTranslatorFunctions();
 }
 
-QScriptValue* QScriptEngine_ImportExtension(QScriptEngine* self, struct miqt_string extension) {
+QScriptValue* QScriptEngine_importExtension(QScriptEngine* self, struct miqt_string extension) {
 	QString extension_QString = QString::fromUtf8(extension.data, extension.len);
 	return new QScriptValue(self->importExtension(extension_QString));
 }
 
-struct miqt_array /* of struct miqt_string */  QScriptEngine_AvailableExtensions(const QScriptEngine* self) {
+struct miqt_array /* of struct miqt_string */  QScriptEngine_availableExtensions(const QScriptEngine* self) {
 	QStringList _ret = self->availableExtensions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -479,7 +479,7 @@ struct miqt_array /* of struct miqt_string */  QScriptEngine_AvailableExtensions
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_string */  QScriptEngine_ImportedExtensions(const QScriptEngine* self) {
+struct miqt_array /* of struct miqt_string */  QScriptEngine_importedExtensions(const QScriptEngine* self) {
 	QStringList _ret = self->importedExtensions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -499,57 +499,57 @@ struct miqt_array /* of struct miqt_string */  QScriptEngine_ImportedExtensions(
 	return _out;
 }
 
-void QScriptEngine_CollectGarbage(QScriptEngine* self) {
+void QScriptEngine_collectGarbage(QScriptEngine* self) {
 	self->collectGarbage();
 }
 
-void QScriptEngine_ReportAdditionalMemoryCost(QScriptEngine* self, int size) {
+void QScriptEngine_reportAdditionalMemoryCost(QScriptEngine* self, int size) {
 	self->reportAdditionalMemoryCost(static_cast<int>(size));
 }
 
-void QScriptEngine_SetProcessEventsInterval(QScriptEngine* self, int interval) {
+void QScriptEngine_setProcessEventsInterval(QScriptEngine* self, int interval) {
 	self->setProcessEventsInterval(static_cast<int>(interval));
 }
 
-int QScriptEngine_ProcessEventsInterval(const QScriptEngine* self) {
+int QScriptEngine_processEventsInterval(const QScriptEngine* self) {
 	return self->processEventsInterval();
 }
 
-void QScriptEngine_SetAgent(QScriptEngine* self, QScriptEngineAgent* agent) {
+void QScriptEngine_setAgent(QScriptEngine* self, QScriptEngineAgent* agent) {
 	self->setAgent(agent);
 }
 
-QScriptEngineAgent* QScriptEngine_Agent(const QScriptEngine* self) {
+QScriptEngineAgent* QScriptEngine_agent(const QScriptEngine* self) {
 	return self->agent();
 }
 
-QScriptString* QScriptEngine_ToStringHandle(QScriptEngine* self, struct miqt_string str) {
+QScriptString* QScriptEngine_toStringHandle(QScriptEngine* self, struct miqt_string str) {
 	QString str_QString = QString::fromUtf8(str.data, str.len);
 	return new QScriptString(self->toStringHandle(str_QString));
 }
 
-QScriptValue* QScriptEngine_ToObject(QScriptEngine* self, QScriptValue* value) {
+QScriptValue* QScriptEngine_toObject(QScriptEngine* self, QScriptValue* value) {
 	return new QScriptValue(self->toObject(*value));
 }
 
-QScriptValue* QScriptEngine_ObjectById(const QScriptEngine* self, long long id) {
+QScriptValue* QScriptEngine_objectById(const QScriptEngine* self, long long id) {
 	return new QScriptValue(self->objectById(static_cast<qint64>(id)));
 }
 
-void QScriptEngine_SignalHandlerException(QScriptEngine* self, QScriptValue* exception) {
+void QScriptEngine_signalHandlerException(QScriptEngine* self, QScriptValue* exception) {
 	self->signalHandlerException(*exception);
 }
 
-void QScriptEngine_connect_SignalHandlerException(QScriptEngine* self, intptr_t slot) {
+void QScriptEngine_connect_signalHandlerException(QScriptEngine* self, intptr_t slot) {
 	MiqtVirtualQScriptEngine::connect(self, static_cast<void (QScriptEngine::*)(const QScriptValue&)>(&QScriptEngine::signalHandlerException), self, [=](const QScriptValue& exception) {
 		const QScriptValue& exception_ret = exception;
 		// Cast returned reference into pointer
 		QScriptValue* sigval1 = const_cast<QScriptValue*>(&exception_ret);
-		miqt_exec_callback_QScriptEngine_SignalHandlerException(slot, sigval1);
+		miqt_exec_callback_QScriptEngine_signalHandlerException(slot, sigval1);
 	});
 }
 
-struct miqt_string QScriptEngine_Tr2(const char* s, const char* c) {
+struct miqt_string QScriptEngine_tr2(const char* s, const char* c) {
 	QString _ret = QScriptEngine::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -560,7 +560,7 @@ struct miqt_string QScriptEngine_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QScriptEngine_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QScriptEngine_tr3(const char* s, const char* c, int n) {
 	QString _ret = QScriptEngine::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -571,7 +571,7 @@ struct miqt_string QScriptEngine_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string QScriptEngine_TrUtf82(const char* s, const char* c) {
+struct miqt_string QScriptEngine_trUtf82(const char* s, const char* c) {
 	QString _ret = QScriptEngine::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -582,7 +582,7 @@ struct miqt_string QScriptEngine_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QScriptEngine_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QScriptEngine_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QScriptEngine::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -593,153 +593,153 @@ struct miqt_string QScriptEngine_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-QScriptValue* QScriptEngine_Evaluate2(QScriptEngine* self, struct miqt_string program, struct miqt_string fileName) {
+QScriptValue* QScriptEngine_evaluate2(QScriptEngine* self, struct miqt_string program, struct miqt_string fileName) {
 	QString program_QString = QString::fromUtf8(program.data, program.len);
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return new QScriptValue(self->evaluate(program_QString, fileName_QString));
 }
 
-QScriptValue* QScriptEngine_Evaluate3(QScriptEngine* self, struct miqt_string program, struct miqt_string fileName, int lineNumber) {
+QScriptValue* QScriptEngine_evaluate3(QScriptEngine* self, struct miqt_string program, struct miqt_string fileName, int lineNumber) {
 	QString program_QString = QString::fromUtf8(program.data, program.len);
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	return new QScriptValue(self->evaluate(program_QString, fileName_QString, static_cast<int>(lineNumber)));
 }
 
-void QScriptEngine_AbortEvaluation1(QScriptEngine* self, QScriptValue* result) {
+void QScriptEngine_abortEvaluation1(QScriptEngine* self, QScriptValue* result) {
 	self->abortEvaluation(*result);
 }
 
-QScriptValue* QScriptEngine_NewObject2(QScriptEngine* self, QScriptClass* scriptClass, QScriptValue* data) {
+QScriptValue* QScriptEngine_newObject2(QScriptEngine* self, QScriptClass* scriptClass, QScriptValue* data) {
 	return new QScriptValue(self->newObject(scriptClass, *data));
 }
 
-QScriptValue* QScriptEngine_NewArray1(QScriptEngine* self, unsigned int length) {
+QScriptValue* QScriptEngine_newArray1(QScriptEngine* self, unsigned int length) {
 	return new QScriptValue(self->newArray(static_cast<uint>(length)));
 }
 
-QScriptValue* QScriptEngine_NewQObject22(QScriptEngine* self, QObject* object, int ownership) {
+QScriptValue* QScriptEngine_newQObject22(QScriptEngine* self, QObject* object, int ownership) {
 	return new QScriptValue(self->newQObject(object, static_cast<QScriptEngine::ValueOwnership>(ownership)));
 }
 
-QScriptValue* QScriptEngine_NewQObject3(QScriptEngine* self, QObject* object, int ownership, int* options) {
+QScriptValue* QScriptEngine_newQObject3(QScriptEngine* self, QObject* object, int ownership, int* options) {
 	return new QScriptValue(self->newQObject(object, static_cast<QScriptEngine::ValueOwnership>(ownership), (const QScriptEngine::QObjectWrapOptions&)(*options)));
 }
 
-QScriptValue* QScriptEngine_NewQObject32(QScriptEngine* self, QScriptValue* scriptObject, QObject* qtObject, int ownership) {
+QScriptValue* QScriptEngine_newQObject32(QScriptEngine* self, QScriptValue* scriptObject, QObject* qtObject, int ownership) {
 	return new QScriptValue(self->newQObject(*scriptObject, qtObject, static_cast<QScriptEngine::ValueOwnership>(ownership)));
 }
 
-QScriptValue* QScriptEngine_NewQObject4(QScriptEngine* self, QScriptValue* scriptObject, QObject* qtObject, int ownership, int* options) {
+QScriptValue* QScriptEngine_newQObject4(QScriptEngine* self, QScriptValue* scriptObject, QObject* qtObject, int ownership, int* options) {
 	return new QScriptValue(self->newQObject(*scriptObject, qtObject, static_cast<QScriptEngine::ValueOwnership>(ownership), (const QScriptEngine::QObjectWrapOptions&)(*options)));
 }
 
-QScriptValue* QScriptEngine_NewQMetaObject2(QScriptEngine* self, QMetaObject* metaObject, QScriptValue* ctor) {
+QScriptValue* QScriptEngine_newQMetaObject2(QScriptEngine* self, QMetaObject* metaObject, QScriptValue* ctor) {
 	return new QScriptValue(self->newQMetaObject(metaObject, *ctor));
 }
 
-void QScriptEngine_InstallTranslatorFunctions1(QScriptEngine* self, QScriptValue* object) {
+void QScriptEngine_installTranslatorFunctions1(QScriptEngine* self, QScriptValue* object) {
 	self->installTranslatorFunctions(*object);
 }
 
-bool QScriptEngine_override_virtual_Event(void* self, intptr_t slot) {
+bool QScriptEngine_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQScriptEngine* self_cast = dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QScriptEngine_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_Event(event);
+bool QScriptEngine_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_event(event);
 }
 
-bool QScriptEngine_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QScriptEngine_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQScriptEngine* self_cast = dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QScriptEngine_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_EventFilter(watched, event);
+bool QScriptEngine_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QScriptEngine_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QScriptEngine_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQScriptEngine* self_cast = dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QScriptEngine_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_TimerEvent(event);
+void QScriptEngine_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QScriptEngine_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QScriptEngine_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQScriptEngine* self_cast = dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QScriptEngine_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_ChildEvent(event);
+void QScriptEngine_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QScriptEngine_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QScriptEngine_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQScriptEngine* self_cast = dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QScriptEngine_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_CustomEvent(event);
+void QScriptEngine_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QScriptEngine_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QScriptEngine_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQScriptEngine* self_cast = dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QScriptEngine_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_ConnectNotify(signal);
+void QScriptEngine_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QScriptEngine_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QScriptEngine_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQScriptEngine* self_cast = dynamic_cast<MiqtVirtualQScriptEngine*>( (QScriptEngine*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QScriptEngine_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_DisconnectNotify(signal);
+void QScriptEngine_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQScriptEngine*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QScriptEngine_Delete(QScriptEngine* self) {
+void QScriptEngine_delete(QScriptEngine* self) {
 	delete self;
 }
 

@@ -161,57 +161,57 @@ func NewQSslKey12(handle unsafe.Pointer, typeVal QSsl__KeyType) *QSslKey {
 }
 
 func (this *QSslKey) OperatorAssign(other *QSslKey) {
-	C.QSslKey_OperatorAssign(this.h, other.cPointer())
+	C.QSslKey_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QSslKey) Swap(other *QSslKey) {
-	C.QSslKey_Swap(this.h, other.cPointer())
+	C.QSslKey_swap(this.h, other.cPointer())
 }
 
 func (this *QSslKey) IsNull() bool {
-	return (bool)(C.QSslKey_IsNull(this.h))
+	return (bool)(C.QSslKey_isNull(this.h))
 }
 
 func (this *QSslKey) Clear() {
-	C.QSslKey_Clear(this.h)
+	C.QSslKey_clear(this.h)
 }
 
 func (this *QSslKey) Length() int {
-	return (int)(C.QSslKey_Length(this.h))
+	return (int)(C.QSslKey_length(this.h))
 }
 
 func (this *QSslKey) Type() QSsl__KeyType {
-	return (QSsl__KeyType)(C.QSslKey_Type(this.h))
+	return (QSsl__KeyType)(C.QSslKey_type(this.h))
 }
 
 func (this *QSslKey) Algorithm() QSsl__KeyAlgorithm {
-	return (QSsl__KeyAlgorithm)(C.QSslKey_Algorithm(this.h))
+	return (QSsl__KeyAlgorithm)(C.QSslKey_algorithm(this.h))
 }
 
 func (this *QSslKey) ToPem() []byte {
-	var _bytearray C.struct_miqt_string = C.QSslKey_ToPem(this.h)
+	var _bytearray C.struct_miqt_string = C.QSslKey_toPem(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QSslKey) ToDer() []byte {
-	var _bytearray C.struct_miqt_string = C.QSslKey_ToDer(this.h)
+	var _bytearray C.struct_miqt_string = C.QSslKey_toDer(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QSslKey) Handle() unsafe.Pointer {
-	return (unsafe.Pointer)(C.QSslKey_Handle(this.h))
+	return (unsafe.Pointer)(C.QSslKey_handle(this.h))
 }
 
 func (this *QSslKey) OperatorEqual(key *QSslKey) bool {
-	return (bool)(C.QSslKey_OperatorEqual(this.h, key.cPointer()))
+	return (bool)(C.QSslKey_operatorEqual(this.h, key.cPointer()))
 }
 
 func (this *QSslKey) OperatorNotEqual(key *QSslKey) bool {
-	return (bool)(C.QSslKey_OperatorNotEqual(this.h, key.cPointer()))
+	return (bool)(C.QSslKey_operatorNotEqual(this.h, key.cPointer()))
 }
 
 func (this *QSslKey) ToPem1(passPhrase []byte) []byte {
@@ -222,7 +222,7 @@ func (this *QSslKey) ToPem1(passPhrase []byte) []byte {
 		passPhrase_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	passPhrase_alias.len = C.size_t(len(passPhrase))
-	var _bytearray C.struct_miqt_string = C.QSslKey_ToPem1(this.h, passPhrase_alias)
+	var _bytearray C.struct_miqt_string = C.QSslKey_toPem1(this.h, passPhrase_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -236,7 +236,7 @@ func (this *QSslKey) ToDer1(passPhrase []byte) []byte {
 		passPhrase_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	passPhrase_alias.len = C.size_t(len(passPhrase))
-	var _bytearray C.struct_miqt_string = C.QSslKey_ToDer1(this.h, passPhrase_alias)
+	var _bytearray C.struct_miqt_string = C.QSslKey_toDer1(this.h, passPhrase_alias)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -244,7 +244,7 @@ func (this *QSslKey) ToDer1(passPhrase []byte) []byte {
 
 // Delete this object from C++ memory.
 func (this *QSslKey) Delete() {
-	C.QSslKey_Delete(this.h)
+	C.QSslKey_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

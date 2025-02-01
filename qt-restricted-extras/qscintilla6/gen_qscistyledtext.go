@@ -72,23 +72,23 @@ func NewQsciStyledText3(param1 *QsciStyledText) *QsciStyledText {
 }
 
 func (this *QsciStyledText) Apply(sci *QsciScintillaBase) {
-	C.QsciStyledText_Apply(this.h, sci.cPointer())
+	C.QsciStyledText_apply(this.h, sci.cPointer())
 }
 
 func (this *QsciStyledText) Text() string {
-	var _ms C.struct_miqt_string = C.QsciStyledText_Text(this.h)
+	var _ms C.struct_miqt_string = C.QsciStyledText_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciStyledText) Style() int {
-	return (int)(C.QsciStyledText_Style(this.h))
+	return (int)(C.QsciStyledText_style(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QsciStyledText) Delete() {
-	C.QsciStyledText_Delete(this.h)
+	C.QsciStyledText_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

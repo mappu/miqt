@@ -38,44 +38,44 @@ typedef struct QWidgetAction QWidgetAction;
 
 QWidgetAction* QWidgetAction_new(QObject* parent);
 void QWidgetAction_virtbase(QWidgetAction* src, QAction** outptr_QAction);
-QMetaObject* QWidgetAction_MetaObject(const QWidgetAction* self);
-void* QWidgetAction_Metacast(QWidgetAction* self, const char* param1);
-struct miqt_string QWidgetAction_Tr(const char* s);
-struct miqt_string QWidgetAction_TrUtf8(const char* s);
-void QWidgetAction_SetDefaultWidget(QWidgetAction* self, QWidget* w);
-QWidget* QWidgetAction_DefaultWidget(const QWidgetAction* self);
-QWidget* QWidgetAction_RequestWidget(QWidgetAction* self, QWidget* parent);
-void QWidgetAction_ReleaseWidget(QWidgetAction* self, QWidget* widget);
-bool QWidgetAction_Event(QWidgetAction* self, QEvent* param1);
-bool QWidgetAction_EventFilter(QWidgetAction* self, QObject* param1, QEvent* param2);
-QWidget* QWidgetAction_CreateWidget(QWidgetAction* self, QWidget* parent);
-void QWidgetAction_DeleteWidget(QWidgetAction* self, QWidget* widget);
-struct miqt_string QWidgetAction_Tr2(const char* s, const char* c);
-struct miqt_string QWidgetAction_Tr3(const char* s, const char* c, int n);
-struct miqt_string QWidgetAction_TrUtf82(const char* s, const char* c);
-struct miqt_string QWidgetAction_TrUtf83(const char* s, const char* c, int n);
-bool QWidgetAction_override_virtual_Event(void* self, intptr_t slot);
-bool QWidgetAction_virtualbase_Event(void* self, QEvent* param1);
-bool QWidgetAction_override_virtual_EventFilter(void* self, intptr_t slot);
-bool QWidgetAction_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2);
-bool QWidgetAction_override_virtual_CreateWidget(void* self, intptr_t slot);
-QWidget* QWidgetAction_virtualbase_CreateWidget(void* self, QWidget* parent);
-bool QWidgetAction_override_virtual_DeleteWidget(void* self, intptr_t slot);
-void QWidgetAction_virtualbase_DeleteWidget(void* self, QWidget* widget);
-bool QWidgetAction_override_virtual_TimerEvent(void* self, intptr_t slot);
-void QWidgetAction_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-bool QWidgetAction_override_virtual_ChildEvent(void* self, intptr_t slot);
-void QWidgetAction_virtualbase_ChildEvent(void* self, QChildEvent* event);
-bool QWidgetAction_override_virtual_CustomEvent(void* self, intptr_t slot);
-void QWidgetAction_virtualbase_CustomEvent(void* self, QEvent* event);
-bool QWidgetAction_override_virtual_ConnectNotify(void* self, intptr_t slot);
-void QWidgetAction_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-bool QWidgetAction_override_virtual_DisconnectNotify(void* self, intptr_t slot);
-void QWidgetAction_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QWidgetAction_Delete(QWidgetAction* self);
+QMetaObject* QWidgetAction_metaObject(const QWidgetAction* self);
+void* QWidgetAction_metacast(QWidgetAction* self, const char* param1);
+struct miqt_string QWidgetAction_tr(const char* s);
+struct miqt_string QWidgetAction_trUtf8(const char* s);
+void QWidgetAction_setDefaultWidget(QWidgetAction* self, QWidget* w);
+QWidget* QWidgetAction_defaultWidget(const QWidgetAction* self);
+QWidget* QWidgetAction_requestWidget(QWidgetAction* self, QWidget* parent);
+void QWidgetAction_releaseWidget(QWidgetAction* self, QWidget* widget);
+bool QWidgetAction_event(QWidgetAction* self, QEvent* param1);
+bool QWidgetAction_eventFilter(QWidgetAction* self, QObject* param1, QEvent* param2);
+QWidget* QWidgetAction_createWidget(QWidgetAction* self, QWidget* parent);
+void QWidgetAction_deleteWidget(QWidgetAction* self, QWidget* widget);
+struct miqt_string QWidgetAction_tr2(const char* s, const char* c);
+struct miqt_string QWidgetAction_tr3(const char* s, const char* c, int n);
+struct miqt_string QWidgetAction_trUtf82(const char* s, const char* c);
+struct miqt_string QWidgetAction_trUtf83(const char* s, const char* c, int n);
+bool QWidgetAction_override_virtual_event(void* self, intptr_t slot);
+bool QWidgetAction_virtualbase_event(void* self, QEvent* param1);
+bool QWidgetAction_override_virtual_eventFilter(void* self, intptr_t slot);
+bool QWidgetAction_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2);
+bool QWidgetAction_override_virtual_createWidget(void* self, intptr_t slot);
+QWidget* QWidgetAction_virtualbase_createWidget(void* self, QWidget* parent);
+bool QWidgetAction_override_virtual_deleteWidget(void* self, intptr_t slot);
+void QWidgetAction_virtualbase_deleteWidget(void* self, QWidget* widget);
+bool QWidgetAction_override_virtual_timerEvent(void* self, intptr_t slot);
+void QWidgetAction_virtualbase_timerEvent(void* self, QTimerEvent* event);
+bool QWidgetAction_override_virtual_childEvent(void* self, intptr_t slot);
+void QWidgetAction_virtualbase_childEvent(void* self, QChildEvent* event);
+bool QWidgetAction_override_virtual_customEvent(void* self, intptr_t slot);
+void QWidgetAction_virtualbase_customEvent(void* self, QEvent* event);
+bool QWidgetAction_override_virtual_connectNotify(void* self, intptr_t slot);
+void QWidgetAction_virtualbase_connectNotify(void* self, QMetaMethod* signal);
+bool QWidgetAction_override_virtual_disconnectNotify(void* self, intptr_t slot);
+void QWidgetAction_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QWidgetAction_delete(QWidgetAction* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

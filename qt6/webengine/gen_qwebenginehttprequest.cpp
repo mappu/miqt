@@ -33,11 +33,11 @@ QWebEngineHttpRequest* QWebEngineHttpRequest_new4(QUrl* url, int* method) {
 	return new QWebEngineHttpRequest(*url, (const QWebEngineHttpRequest::Method&)(*method));
 }
 
-void QWebEngineHttpRequest_OperatorAssign(QWebEngineHttpRequest* self, QWebEngineHttpRequest* other) {
+void QWebEngineHttpRequest_operatorAssign(QWebEngineHttpRequest* self, QWebEngineHttpRequest* other) {
 	self->operator=(*other);
 }
 
-QWebEngineHttpRequest* QWebEngineHttpRequest_PostRequest(QUrl* url, struct miqt_map /* of struct miqt_string to struct miqt_string */  postData) {
+QWebEngineHttpRequest* QWebEngineHttpRequest_postRequest(QUrl* url, struct miqt_map /* of struct miqt_string to struct miqt_string */  postData) {
 	QMap<QString, QString> postData_QMap;
 	struct miqt_string* postData_karr = static_cast<struct miqt_string*>(postData.keys);
 	struct miqt_string* postData_varr = static_cast<struct miqt_string*>(postData.values);
@@ -49,36 +49,36 @@ QWebEngineHttpRequest* QWebEngineHttpRequest_PostRequest(QUrl* url, struct miqt_
 	return new QWebEngineHttpRequest(QWebEngineHttpRequest::postRequest(*url, postData_QMap));
 }
 
-void QWebEngineHttpRequest_Swap(QWebEngineHttpRequest* self, QWebEngineHttpRequest* other) {
+void QWebEngineHttpRequest_swap(QWebEngineHttpRequest* self, QWebEngineHttpRequest* other) {
 	self->swap(*other);
 }
 
-bool QWebEngineHttpRequest_OperatorEqual(const QWebEngineHttpRequest* self, QWebEngineHttpRequest* other) {
+bool QWebEngineHttpRequest_operatorEqual(const QWebEngineHttpRequest* self, QWebEngineHttpRequest* other) {
 	return (*self == *other);
 }
 
-bool QWebEngineHttpRequest_OperatorNotEqual(const QWebEngineHttpRequest* self, QWebEngineHttpRequest* other) {
+bool QWebEngineHttpRequest_operatorNotEqual(const QWebEngineHttpRequest* self, QWebEngineHttpRequest* other) {
 	return (*self != *other);
 }
 
-int QWebEngineHttpRequest_Method(const QWebEngineHttpRequest* self) {
+int QWebEngineHttpRequest_method(const QWebEngineHttpRequest* self) {
 	QWebEngineHttpRequest::Method _ret = self->method();
 	return static_cast<int>(_ret);
 }
 
-void QWebEngineHttpRequest_SetMethod(QWebEngineHttpRequest* self, int method) {
+void QWebEngineHttpRequest_setMethod(QWebEngineHttpRequest* self, int method) {
 	self->setMethod(static_cast<QWebEngineHttpRequest::Method>(method));
 }
 
-QUrl* QWebEngineHttpRequest_Url(const QWebEngineHttpRequest* self) {
+QUrl* QWebEngineHttpRequest_url(const QWebEngineHttpRequest* self) {
 	return new QUrl(self->url());
 }
 
-void QWebEngineHttpRequest_SetUrl(QWebEngineHttpRequest* self, QUrl* url) {
+void QWebEngineHttpRequest_setUrl(QWebEngineHttpRequest* self, QUrl* url) {
 	self->setUrl(*url);
 }
 
-struct miqt_string QWebEngineHttpRequest_PostData(const QWebEngineHttpRequest* self) {
+struct miqt_string QWebEngineHttpRequest_postData(const QWebEngineHttpRequest* self) {
 	QByteArray _qb = self->postData();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -87,17 +87,17 @@ struct miqt_string QWebEngineHttpRequest_PostData(const QWebEngineHttpRequest* s
 	return _ms;
 }
 
-void QWebEngineHttpRequest_SetPostData(QWebEngineHttpRequest* self, struct miqt_string postData) {
+void QWebEngineHttpRequest_setPostData(QWebEngineHttpRequest* self, struct miqt_string postData) {
 	QByteArray postData_QByteArray(postData.data, postData.len);
 	self->setPostData(postData_QByteArray);
 }
 
-bool QWebEngineHttpRequest_HasHeader(const QWebEngineHttpRequest* self, struct miqt_string headerName) {
+bool QWebEngineHttpRequest_hasHeader(const QWebEngineHttpRequest* self, struct miqt_string headerName) {
 	QByteArray headerName_QByteArray(headerName.data, headerName.len);
 	return self->hasHeader(headerName_QByteArray);
 }
 
-struct miqt_array /* of struct miqt_string */  QWebEngineHttpRequest_Headers(const QWebEngineHttpRequest* self) {
+struct miqt_array /* of struct miqt_string */  QWebEngineHttpRequest_headers(const QWebEngineHttpRequest* self) {
 	QList<QByteArray> _ret = self->headers();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -115,7 +115,7 @@ struct miqt_array /* of struct miqt_string */  QWebEngineHttpRequest_Headers(con
 	return _out;
 }
 
-struct miqt_string QWebEngineHttpRequest_Header(const QWebEngineHttpRequest* self, struct miqt_string headerName) {
+struct miqt_string QWebEngineHttpRequest_header(const QWebEngineHttpRequest* self, struct miqt_string headerName) {
 	QByteArray headerName_QByteArray(headerName.data, headerName.len);
 	QByteArray _qb = self->header(headerName_QByteArray);
 	struct miqt_string _ms;
@@ -125,18 +125,18 @@ struct miqt_string QWebEngineHttpRequest_Header(const QWebEngineHttpRequest* sel
 	return _ms;
 }
 
-void QWebEngineHttpRequest_SetHeader(QWebEngineHttpRequest* self, struct miqt_string headerName, struct miqt_string value) {
+void QWebEngineHttpRequest_setHeader(QWebEngineHttpRequest* self, struct miqt_string headerName, struct miqt_string value) {
 	QByteArray headerName_QByteArray(headerName.data, headerName.len);
 	QByteArray value_QByteArray(value.data, value.len);
 	self->setHeader(headerName_QByteArray, value_QByteArray);
 }
 
-void QWebEngineHttpRequest_UnsetHeader(QWebEngineHttpRequest* self, struct miqt_string headerName) {
+void QWebEngineHttpRequest_unsetHeader(QWebEngineHttpRequest* self, struct miqt_string headerName) {
 	QByteArray headerName_QByteArray(headerName.data, headerName.len);
 	self->unsetHeader(headerName_QByteArray);
 }
 
-void QWebEngineHttpRequest_Delete(QWebEngineHttpRequest* self) {
+void QWebEngineHttpRequest_delete(QWebEngineHttpRequest* self) {
 	delete self;
 }
 

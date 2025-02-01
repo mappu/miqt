@@ -268,19 +268,19 @@ func NewQsciScintilla2() *QsciScintilla {
 }
 
 func (this *QsciScintilla) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciScintilla_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciScintilla_metaObject(this.h)))
 }
 
 func (this *QsciScintilla) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QsciScintilla_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QsciScintilla_metacast(this.h, param1_Cstring))
 }
 
 func QsciScintilla_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QsciScintilla_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QsciScintilla_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -289,14 +289,14 @@ func QsciScintilla_Tr(s string) string {
 func QsciScintilla_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QsciScintilla_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QsciScintilla_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciScintilla) ApiContext(pos int, context_start *int, last_word_start *int) []string {
-	var _ma C.struct_miqt_array = C.QsciScintilla_ApiContext(this.h, (C.int)(pos), (*C.int)(unsafe.Pointer(context_start)), (*C.int)(unsafe.Pointer(last_word_start)))
+	var _ma C.struct_miqt_array = C.QsciScintilla_apiContext(this.h, (C.int)(pos), (*C.int)(unsafe.Pointer(context_start)), (*C.int)(unsafe.Pointer(last_word_start)))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -313,7 +313,7 @@ func (this *QsciScintilla) Annotate(line int, text string, style int) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QsciScintilla_Annotate(this.h, (C.int)(line), text_ms, (C.int)(style))
+	C.QsciScintilla_annotate(this.h, (C.int)(line), text_ms, (C.int)(style))
 }
 
 func (this *QsciScintilla) Annotate2(line int, text string, style *QsciStyle) {
@@ -321,123 +321,123 @@ func (this *QsciScintilla) Annotate2(line int, text string, style *QsciStyle) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QsciScintilla_Annotate2(this.h, (C.int)(line), text_ms, style.cPointer())
+	C.QsciScintilla_annotate2(this.h, (C.int)(line), text_ms, style.cPointer())
 }
 
 func (this *QsciScintilla) Annotate3(line int, text *QsciStyledText) {
-	C.QsciScintilla_Annotate3(this.h, (C.int)(line), text.cPointer())
+	C.QsciScintilla_annotate3(this.h, (C.int)(line), text.cPointer())
 }
 
 func (this *QsciScintilla) Annotation(line int) string {
-	var _ms C.struct_miqt_string = C.QsciScintilla_Annotation(this.h, (C.int)(line))
+	var _ms C.struct_miqt_string = C.QsciScintilla_annotation(this.h, (C.int)(line))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciScintilla) AnnotationDisplay() QsciScintilla__AnnotationDisplay {
-	return (QsciScintilla__AnnotationDisplay)(C.QsciScintilla_AnnotationDisplay(this.h))
+	return (QsciScintilla__AnnotationDisplay)(C.QsciScintilla_annotationDisplay(this.h))
 }
 
 func (this *QsciScintilla) ClearAnnotations() {
-	C.QsciScintilla_ClearAnnotations(this.h)
+	C.QsciScintilla_clearAnnotations(this.h)
 }
 
 func (this *QsciScintilla) AutoCompletionCaseSensitivity() bool {
-	return (bool)(C.QsciScintilla_AutoCompletionCaseSensitivity(this.h))
+	return (bool)(C.QsciScintilla_autoCompletionCaseSensitivity(this.h))
 }
 
 func (this *QsciScintilla) AutoCompletionFillupsEnabled() bool {
-	return (bool)(C.QsciScintilla_AutoCompletionFillupsEnabled(this.h))
+	return (bool)(C.QsciScintilla_autoCompletionFillupsEnabled(this.h))
 }
 
 func (this *QsciScintilla) AutoCompletionReplaceWord() bool {
-	return (bool)(C.QsciScintilla_AutoCompletionReplaceWord(this.h))
+	return (bool)(C.QsciScintilla_autoCompletionReplaceWord(this.h))
 }
 
 func (this *QsciScintilla) AutoCompletionShowSingle() bool {
-	return (bool)(C.QsciScintilla_AutoCompletionShowSingle(this.h))
+	return (bool)(C.QsciScintilla_autoCompletionShowSingle(this.h))
 }
 
 func (this *QsciScintilla) AutoCompletionSource() QsciScintilla__AutoCompletionSource {
-	return (QsciScintilla__AutoCompletionSource)(C.QsciScintilla_AutoCompletionSource(this.h))
+	return (QsciScintilla__AutoCompletionSource)(C.QsciScintilla_autoCompletionSource(this.h))
 }
 
 func (this *QsciScintilla) AutoCompletionThreshold() int {
-	return (int)(C.QsciScintilla_AutoCompletionThreshold(this.h))
+	return (int)(C.QsciScintilla_autoCompletionThreshold(this.h))
 }
 
 func (this *QsciScintilla) AutoCompletionUseSingle() QsciScintilla__AutoCompletionUseSingle {
-	return (QsciScintilla__AutoCompletionUseSingle)(C.QsciScintilla_AutoCompletionUseSingle(this.h))
+	return (QsciScintilla__AutoCompletionUseSingle)(C.QsciScintilla_autoCompletionUseSingle(this.h))
 }
 
 func (this *QsciScintilla) AutoIndent() bool {
-	return (bool)(C.QsciScintilla_AutoIndent(this.h))
+	return (bool)(C.QsciScintilla_autoIndent(this.h))
 }
 
 func (this *QsciScintilla) BackspaceUnindents() bool {
-	return (bool)(C.QsciScintilla_BackspaceUnindents(this.h))
+	return (bool)(C.QsciScintilla_backspaceUnindents(this.h))
 }
 
 func (this *QsciScintilla) BeginUndoAction() {
-	C.QsciScintilla_BeginUndoAction(this.h)
+	C.QsciScintilla_beginUndoAction(this.h)
 }
 
 func (this *QsciScintilla) BraceMatching() QsciScintilla__BraceMatch {
-	return (QsciScintilla__BraceMatch)(C.QsciScintilla_BraceMatching(this.h))
+	return (QsciScintilla__BraceMatch)(C.QsciScintilla_braceMatching(this.h))
 }
 
 func (this *QsciScintilla) Bytes(start int, end int) []byte {
-	var _bytearray C.struct_miqt_string = C.QsciScintilla_Bytes(this.h, (C.int)(start), (C.int)(end))
+	var _bytearray C.struct_miqt_string = C.QsciScintilla_bytes(this.h, (C.int)(start), (C.int)(end))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QsciScintilla) CallTipsPosition() QsciScintilla__CallTipsPosition {
-	return (QsciScintilla__CallTipsPosition)(C.QsciScintilla_CallTipsPosition(this.h))
+	return (QsciScintilla__CallTipsPosition)(C.QsciScintilla_callTipsPosition(this.h))
 }
 
 func (this *QsciScintilla) CallTipsStyle() QsciScintilla__CallTipsStyle {
-	return (QsciScintilla__CallTipsStyle)(C.QsciScintilla_CallTipsStyle(this.h))
+	return (QsciScintilla__CallTipsStyle)(C.QsciScintilla_callTipsStyle(this.h))
 }
 
 func (this *QsciScintilla) CallTipsVisible() int {
-	return (int)(C.QsciScintilla_CallTipsVisible(this.h))
+	return (int)(C.QsciScintilla_callTipsVisible(this.h))
 }
 
 func (this *QsciScintilla) CancelFind() {
-	C.QsciScintilla_CancelFind(this.h)
+	C.QsciScintilla_cancelFind(this.h)
 }
 
 func (this *QsciScintilla) CancelList() {
-	C.QsciScintilla_CancelList(this.h)
+	C.QsciScintilla_cancelList(this.h)
 }
 
 func (this *QsciScintilla) CaseSensitive() bool {
-	return (bool)(C.QsciScintilla_CaseSensitive(this.h))
+	return (bool)(C.QsciScintilla_caseSensitive(this.h))
 }
 
 func (this *QsciScintilla) ClearFolds() {
-	C.QsciScintilla_ClearFolds(this.h)
+	C.QsciScintilla_clearFolds(this.h)
 }
 
 func (this *QsciScintilla) ClearIndicatorRange(lineFrom int, indexFrom int, lineTo int, indexTo int, indicatorNumber int) {
-	C.QsciScintilla_ClearIndicatorRange(this.h, (C.int)(lineFrom), (C.int)(indexFrom), (C.int)(lineTo), (C.int)(indexTo), (C.int)(indicatorNumber))
+	C.QsciScintilla_clearIndicatorRange(this.h, (C.int)(lineFrom), (C.int)(indexFrom), (C.int)(lineTo), (C.int)(indexTo), (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) ClearRegisteredImages() {
-	C.QsciScintilla_ClearRegisteredImages(this.h)
+	C.QsciScintilla_clearRegisteredImages(this.h)
 }
 
 func (this *QsciScintilla) Color() *qt.QColor {
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_Color(this.h)))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_color(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciScintilla) ContractedFolds() []int {
-	var _ma C.struct_miqt_array = C.QsciScintilla_ContractedFolds(this.h)
+	var _ma C.struct_miqt_array = C.QsciScintilla_contractedFolds(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -447,59 +447,59 @@ func (this *QsciScintilla) ContractedFolds() []int {
 }
 
 func (this *QsciScintilla) ConvertEols(mode QsciScintilla__EolMode) {
-	C.QsciScintilla_ConvertEols(this.h, (C.int)(mode))
+	C.QsciScintilla_convertEols(this.h, (C.int)(mode))
 }
 
 func (this *QsciScintilla) CreateStandardContextMenu() *qt.QMenu {
-	return qt.UnsafeNewQMenu(unsafe.Pointer(C.QsciScintilla_CreateStandardContextMenu(this.h)))
+	return qt.UnsafeNewQMenu(unsafe.Pointer(C.QsciScintilla_createStandardContextMenu(this.h)))
 }
 
 func (this *QsciScintilla) Document() *QsciDocument {
-	_goptr := newQsciDocument(C.QsciScintilla_Document(this.h))
+	_goptr := newQsciDocument(C.QsciScintilla_document(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciScintilla) EndUndoAction() {
-	C.QsciScintilla_EndUndoAction(this.h)
+	C.QsciScintilla_endUndoAction(this.h)
 }
 
 func (this *QsciScintilla) EdgeColor() *qt.QColor {
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_EdgeColor(this.h)))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_edgeColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciScintilla) EdgeColumn() int {
-	return (int)(C.QsciScintilla_EdgeColumn(this.h))
+	return (int)(C.QsciScintilla_edgeColumn(this.h))
 }
 
 func (this *QsciScintilla) EdgeMode() QsciScintilla__EdgeMode {
-	return (QsciScintilla__EdgeMode)(C.QsciScintilla_EdgeMode(this.h))
+	return (QsciScintilla__EdgeMode)(C.QsciScintilla_edgeMode(this.h))
 }
 
 func (this *QsciScintilla) SetFont(f *qt.QFont) {
-	C.QsciScintilla_SetFont(this.h, (*C.QFont)(f.UnsafePointer()))
+	C.QsciScintilla_setFont(this.h, (*C.QFont)(f.UnsafePointer()))
 }
 
 func (this *QsciScintilla) EolMode() QsciScintilla__EolMode {
-	return (QsciScintilla__EolMode)(C.QsciScintilla_EolMode(this.h))
+	return (QsciScintilla__EolMode)(C.QsciScintilla_eolMode(this.h))
 }
 
 func (this *QsciScintilla) EolVisibility() bool {
-	return (bool)(C.QsciScintilla_EolVisibility(this.h))
+	return (bool)(C.QsciScintilla_eolVisibility(this.h))
 }
 
 func (this *QsciScintilla) ExtraAscent() int {
-	return (int)(C.QsciScintilla_ExtraAscent(this.h))
+	return (int)(C.QsciScintilla_extraAscent(this.h))
 }
 
 func (this *QsciScintilla) ExtraDescent() int {
-	return (int)(C.QsciScintilla_ExtraDescent(this.h))
+	return (int)(C.QsciScintilla_extraDescent(this.h))
 }
 
 func (this *QsciScintilla) FillIndicatorRange(lineFrom int, indexFrom int, lineTo int, indexTo int, indicatorNumber int) {
-	C.QsciScintilla_FillIndicatorRange(this.h, (C.int)(lineFrom), (C.int)(indexFrom), (C.int)(lineTo), (C.int)(indexTo), (C.int)(indicatorNumber))
+	C.QsciScintilla_fillIndicatorRange(this.h, (C.int)(lineFrom), (C.int)(indexFrom), (C.int)(lineTo), (C.int)(indexTo), (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) FindFirst(expr string, re bool, cs bool, wo bool, wrap bool, forward bool, line int, index int, show bool, posix bool, cxx11 bool) bool {
@@ -507,7 +507,7 @@ func (this *QsciScintilla) FindFirst(expr string, re bool, cs bool, wo bool, wra
 	expr_ms.data = C.CString(expr)
 	expr_ms.len = C.size_t(len(expr))
 	defer C.free(unsafe.Pointer(expr_ms.data))
-	return (bool)(C.QsciScintilla_FindFirst(this.h, expr_ms, (C.bool)(re), (C.bool)(cs), (C.bool)(wo), (C.bool)(wrap), (C.bool)(forward), (C.int)(line), (C.int)(index), (C.bool)(show), (C.bool)(posix), (C.bool)(cxx11)))
+	return (bool)(C.QsciScintilla_findFirst(this.h, expr_ms, (C.bool)(re), (C.bool)(cs), (C.bool)(wo), (C.bool)(wrap), (C.bool)(forward), (C.int)(line), (C.int)(index), (C.bool)(show), (C.bool)(posix), (C.bool)(cxx11)))
 }
 
 func (this *QsciScintilla) FindFirstInSelection(expr string, re bool, cs bool, wo bool, forward bool, show bool, posix bool, cxx11 bool) bool {
@@ -515,227 +515,227 @@ func (this *QsciScintilla) FindFirstInSelection(expr string, re bool, cs bool, w
 	expr_ms.data = C.CString(expr)
 	expr_ms.len = C.size_t(len(expr))
 	defer C.free(unsafe.Pointer(expr_ms.data))
-	return (bool)(C.QsciScintilla_FindFirstInSelection(this.h, expr_ms, (C.bool)(re), (C.bool)(cs), (C.bool)(wo), (C.bool)(forward), (C.bool)(show), (C.bool)(posix), (C.bool)(cxx11)))
+	return (bool)(C.QsciScintilla_findFirstInSelection(this.h, expr_ms, (C.bool)(re), (C.bool)(cs), (C.bool)(wo), (C.bool)(forward), (C.bool)(show), (C.bool)(posix), (C.bool)(cxx11)))
 }
 
 func (this *QsciScintilla) FindNext() bool {
-	return (bool)(C.QsciScintilla_FindNext(this.h))
+	return (bool)(C.QsciScintilla_findNext(this.h))
 }
 
 func (this *QsciScintilla) FindMatchingBrace(brace *int64, other *int64, mode QsciScintilla__BraceMatch) bool {
-	return (bool)(C.QsciScintilla_FindMatchingBrace(this.h, (*C.long)(unsafe.Pointer(brace)), (*C.long)(unsafe.Pointer(other)), (C.int)(mode)))
+	return (bool)(C.QsciScintilla_findMatchingBrace(this.h, (*C.long)(unsafe.Pointer(brace)), (*C.long)(unsafe.Pointer(other)), (C.int)(mode)))
 }
 
 func (this *QsciScintilla) FirstVisibleLine() int {
-	return (int)(C.QsciScintilla_FirstVisibleLine(this.h))
+	return (int)(C.QsciScintilla_firstVisibleLine(this.h))
 }
 
 func (this *QsciScintilla) Folding() QsciScintilla__FoldStyle {
-	return (QsciScintilla__FoldStyle)(C.QsciScintilla_Folding(this.h))
+	return (QsciScintilla__FoldStyle)(C.QsciScintilla_folding(this.h))
 }
 
 func (this *QsciScintilla) GetCursorPosition(line *int, index *int) {
-	C.QsciScintilla_GetCursorPosition(this.h, (*C.int)(unsafe.Pointer(line)), (*C.int)(unsafe.Pointer(index)))
+	C.QsciScintilla_getCursorPosition(this.h, (*C.int)(unsafe.Pointer(line)), (*C.int)(unsafe.Pointer(index)))
 }
 
 func (this *QsciScintilla) GetSelection(lineFrom *int, indexFrom *int, lineTo *int, indexTo *int) {
-	C.QsciScintilla_GetSelection(this.h, (*C.int)(unsafe.Pointer(lineFrom)), (*C.int)(unsafe.Pointer(indexFrom)), (*C.int)(unsafe.Pointer(lineTo)), (*C.int)(unsafe.Pointer(indexTo)))
+	C.QsciScintilla_getSelection(this.h, (*C.int)(unsafe.Pointer(lineFrom)), (*C.int)(unsafe.Pointer(indexFrom)), (*C.int)(unsafe.Pointer(lineTo)), (*C.int)(unsafe.Pointer(indexTo)))
 }
 
 func (this *QsciScintilla) HasSelectedText() bool {
-	return (bool)(C.QsciScintilla_HasSelectedText(this.h))
+	return (bool)(C.QsciScintilla_hasSelectedText(this.h))
 }
 
 func (this *QsciScintilla) Indentation(line int) int {
-	return (int)(C.QsciScintilla_Indentation(this.h, (C.int)(line)))
+	return (int)(C.QsciScintilla_indentation(this.h, (C.int)(line)))
 }
 
 func (this *QsciScintilla) IndentationGuides() bool {
-	return (bool)(C.QsciScintilla_IndentationGuides(this.h))
+	return (bool)(C.QsciScintilla_indentationGuides(this.h))
 }
 
 func (this *QsciScintilla) IndentationsUseTabs() bool {
-	return (bool)(C.QsciScintilla_IndentationsUseTabs(this.h))
+	return (bool)(C.QsciScintilla_indentationsUseTabs(this.h))
 }
 
 func (this *QsciScintilla) IndentationWidth() int {
-	return (int)(C.QsciScintilla_IndentationWidth(this.h))
+	return (int)(C.QsciScintilla_indentationWidth(this.h))
 }
 
 func (this *QsciScintilla) IndicatorDefine(style QsciScintilla__IndicatorStyle) int {
-	return (int)(C.QsciScintilla_IndicatorDefine(this.h, (C.int)(style)))
+	return (int)(C.QsciScintilla_indicatorDefine(this.h, (C.int)(style)))
 }
 
 func (this *QsciScintilla) IndicatorDrawUnder(indicatorNumber int) bool {
-	return (bool)(C.QsciScintilla_IndicatorDrawUnder(this.h, (C.int)(indicatorNumber)))
+	return (bool)(C.QsciScintilla_indicatorDrawUnder(this.h, (C.int)(indicatorNumber)))
 }
 
 func (this *QsciScintilla) IsCallTipActive() bool {
-	return (bool)(C.QsciScintilla_IsCallTipActive(this.h))
+	return (bool)(C.QsciScintilla_isCallTipActive(this.h))
 }
 
 func (this *QsciScintilla) IsListActive() bool {
-	return (bool)(C.QsciScintilla_IsListActive(this.h))
+	return (bool)(C.QsciScintilla_isListActive(this.h))
 }
 
 func (this *QsciScintilla) IsModified() bool {
-	return (bool)(C.QsciScintilla_IsModified(this.h))
+	return (bool)(C.QsciScintilla_isModified(this.h))
 }
 
 func (this *QsciScintilla) IsReadOnly() bool {
-	return (bool)(C.QsciScintilla_IsReadOnly(this.h))
+	return (bool)(C.QsciScintilla_isReadOnly(this.h))
 }
 
 func (this *QsciScintilla) IsRedoAvailable() bool {
-	return (bool)(C.QsciScintilla_IsRedoAvailable(this.h))
+	return (bool)(C.QsciScintilla_isRedoAvailable(this.h))
 }
 
 func (this *QsciScintilla) IsUndoAvailable() bool {
-	return (bool)(C.QsciScintilla_IsUndoAvailable(this.h))
+	return (bool)(C.QsciScintilla_isUndoAvailable(this.h))
 }
 
 func (this *QsciScintilla) IsUtf8() bool {
-	return (bool)(C.QsciScintilla_IsUtf8(this.h))
+	return (bool)(C.QsciScintilla_isUtf8(this.h))
 }
 
 func (this *QsciScintilla) IsWordCharacter(ch int8) bool {
-	return (bool)(C.QsciScintilla_IsWordCharacter(this.h, (C.char)(ch)))
+	return (bool)(C.QsciScintilla_isWordCharacter(this.h, (C.char)(ch)))
 }
 
 func (this *QsciScintilla) LineAt(point *qt.QPoint) int {
-	return (int)(C.QsciScintilla_LineAt(this.h, (*C.QPoint)(point.UnsafePointer())))
+	return (int)(C.QsciScintilla_lineAt(this.h, (*C.QPoint)(point.UnsafePointer())))
 }
 
 func (this *QsciScintilla) LineIndexFromPosition(position int, line *int, index *int) {
-	C.QsciScintilla_LineIndexFromPosition(this.h, (C.int)(position), (*C.int)(unsafe.Pointer(line)), (*C.int)(unsafe.Pointer(index)))
+	C.QsciScintilla_lineIndexFromPosition(this.h, (C.int)(position), (*C.int)(unsafe.Pointer(line)), (*C.int)(unsafe.Pointer(index)))
 }
 
 func (this *QsciScintilla) LineLength(line int) int {
-	return (int)(C.QsciScintilla_LineLength(this.h, (C.int)(line)))
+	return (int)(C.QsciScintilla_lineLength(this.h, (C.int)(line)))
 }
 
 func (this *QsciScintilla) Lines() int {
-	return (int)(C.QsciScintilla_Lines(this.h))
+	return (int)(C.QsciScintilla_lines(this.h))
 }
 
 func (this *QsciScintilla) Length() int {
-	return (int)(C.QsciScintilla_Length(this.h))
+	return (int)(C.QsciScintilla_length(this.h))
 }
 
 func (this *QsciScintilla) Lexer() *QsciLexer {
-	return newQsciLexer(C.QsciScintilla_Lexer(this.h))
+	return newQsciLexer(C.QsciScintilla_lexer(this.h))
 }
 
 func (this *QsciScintilla) MarginBackgroundColor(margin int) *qt.QColor {
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_MarginBackgroundColor(this.h, (C.int)(margin))))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_marginBackgroundColor(this.h, (C.int)(margin))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciScintilla) MarginLineNumbers(margin int) bool {
-	return (bool)(C.QsciScintilla_MarginLineNumbers(this.h, (C.int)(margin)))
+	return (bool)(C.QsciScintilla_marginLineNumbers(this.h, (C.int)(margin)))
 }
 
 func (this *QsciScintilla) MarginMarkerMask(margin int) int {
-	return (int)(C.QsciScintilla_MarginMarkerMask(this.h, (C.int)(margin)))
+	return (int)(C.QsciScintilla_marginMarkerMask(this.h, (C.int)(margin)))
 }
 
 func (this *QsciScintilla) MarginOptions() int {
-	return (int)(C.QsciScintilla_MarginOptions(this.h))
+	return (int)(C.QsciScintilla_marginOptions(this.h))
 }
 
 func (this *QsciScintilla) MarginSensitivity(margin int) bool {
-	return (bool)(C.QsciScintilla_MarginSensitivity(this.h, (C.int)(margin)))
+	return (bool)(C.QsciScintilla_marginSensitivity(this.h, (C.int)(margin)))
 }
 
 func (this *QsciScintilla) MarginType(margin int) QsciScintilla__MarginType {
-	return (QsciScintilla__MarginType)(C.QsciScintilla_MarginType(this.h, (C.int)(margin)))
+	return (QsciScintilla__MarginType)(C.QsciScintilla_marginType(this.h, (C.int)(margin)))
 }
 
 func (this *QsciScintilla) MarginWidth(margin int) int {
-	return (int)(C.QsciScintilla_MarginWidth(this.h, (C.int)(margin)))
+	return (int)(C.QsciScintilla_marginWidth(this.h, (C.int)(margin)))
 }
 
 func (this *QsciScintilla) Margins() int {
-	return (int)(C.QsciScintilla_Margins(this.h))
+	return (int)(C.QsciScintilla_margins(this.h))
 }
 
 func (this *QsciScintilla) MarkerDefine(sym QsciScintilla__MarkerSymbol) int {
-	return (int)(C.QsciScintilla_MarkerDefine(this.h, (C.int)(sym)))
+	return (int)(C.QsciScintilla_markerDefine(this.h, (C.int)(sym)))
 }
 
 func (this *QsciScintilla) MarkerDefineWithCh(ch int8) int {
-	return (int)(C.QsciScintilla_MarkerDefineWithCh(this.h, (C.char)(ch)))
+	return (int)(C.QsciScintilla_markerDefineWithCh(this.h, (C.char)(ch)))
 }
 
 func (this *QsciScintilla) MarkerDefineWithPm(pm *qt.QPixmap) int {
-	return (int)(C.QsciScintilla_MarkerDefineWithPm(this.h, (*C.QPixmap)(pm.UnsafePointer())))
+	return (int)(C.QsciScintilla_markerDefineWithPm(this.h, (*C.QPixmap)(pm.UnsafePointer())))
 }
 
 func (this *QsciScintilla) MarkerDefineWithIm(im *qt.QImage) int {
-	return (int)(C.QsciScintilla_MarkerDefineWithIm(this.h, (*C.QImage)(im.UnsafePointer())))
+	return (int)(C.QsciScintilla_markerDefineWithIm(this.h, (*C.QImage)(im.UnsafePointer())))
 }
 
 func (this *QsciScintilla) MarkerAdd(linenr int, markerNumber int) int {
-	return (int)(C.QsciScintilla_MarkerAdd(this.h, (C.int)(linenr), (C.int)(markerNumber)))
+	return (int)(C.QsciScintilla_markerAdd(this.h, (C.int)(linenr), (C.int)(markerNumber)))
 }
 
 func (this *QsciScintilla) MarkersAtLine(linenr int) uint {
-	return (uint)(C.QsciScintilla_MarkersAtLine(this.h, (C.int)(linenr)))
+	return (uint)(C.QsciScintilla_markersAtLine(this.h, (C.int)(linenr)))
 }
 
 func (this *QsciScintilla) MarkerDelete(linenr int) {
-	C.QsciScintilla_MarkerDelete(this.h, (C.int)(linenr))
+	C.QsciScintilla_markerDelete(this.h, (C.int)(linenr))
 }
 
 func (this *QsciScintilla) MarkerDeleteAll() {
-	C.QsciScintilla_MarkerDeleteAll(this.h)
+	C.QsciScintilla_markerDeleteAll(this.h)
 }
 
 func (this *QsciScintilla) MarkerDeleteHandle(mhandle int) {
-	C.QsciScintilla_MarkerDeleteHandle(this.h, (C.int)(mhandle))
+	C.QsciScintilla_markerDeleteHandle(this.h, (C.int)(mhandle))
 }
 
 func (this *QsciScintilla) MarkerLine(mhandle int) int {
-	return (int)(C.QsciScintilla_MarkerLine(this.h, (C.int)(mhandle)))
+	return (int)(C.QsciScintilla_markerLine(this.h, (C.int)(mhandle)))
 }
 
 func (this *QsciScintilla) MarkerFindNext(linenr int, mask uint) int {
-	return (int)(C.QsciScintilla_MarkerFindNext(this.h, (C.int)(linenr), (C.uint)(mask)))
+	return (int)(C.QsciScintilla_markerFindNext(this.h, (C.int)(linenr), (C.uint)(mask)))
 }
 
 func (this *QsciScintilla) MarkerFindPrevious(linenr int, mask uint) int {
-	return (int)(C.QsciScintilla_MarkerFindPrevious(this.h, (C.int)(linenr), (C.uint)(mask)))
+	return (int)(C.QsciScintilla_markerFindPrevious(this.h, (C.int)(linenr), (C.uint)(mask)))
 }
 
 func (this *QsciScintilla) OverwriteMode() bool {
-	return (bool)(C.QsciScintilla_OverwriteMode(this.h))
+	return (bool)(C.QsciScintilla_overwriteMode(this.h))
 }
 
 func (this *QsciScintilla) Paper() *qt.QColor {
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_Paper(this.h)))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciScintilla_paper(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciScintilla) PositionFromLineIndex(line int, index int) int {
-	return (int)(C.QsciScintilla_PositionFromLineIndex(this.h, (C.int)(line), (C.int)(index)))
+	return (int)(C.QsciScintilla_positionFromLineIndex(this.h, (C.int)(line), (C.int)(index)))
 }
 
 func (this *QsciScintilla) Read(io *qt.QIODevice) bool {
-	return (bool)(C.QsciScintilla_Read(this.h, (*C.QIODevice)(io.UnsafePointer())))
+	return (bool)(C.QsciScintilla_read(this.h, (*C.QIODevice)(io.UnsafePointer())))
 }
 
 func (this *QsciScintilla) Recolor(start int, end int) {
-	C.QsciScintilla_Recolor(this.h, (C.int)(start), (C.int)(end))
+	C.QsciScintilla_recolor(this.h, (C.int)(start), (C.int)(end))
 }
 
 func (this *QsciScintilla) RegisterImage(id int, pm *qt.QPixmap) {
-	C.QsciScintilla_RegisterImage(this.h, (C.int)(id), (*C.QPixmap)(pm.UnsafePointer()))
+	C.QsciScintilla_registerImage(this.h, (C.int)(id), (*C.QPixmap)(pm.UnsafePointer()))
 }
 
 func (this *QsciScintilla) RegisterImage2(id int, im *qt.QImage) {
-	C.QsciScintilla_RegisterImage2(this.h, (C.int)(id), (*C.QImage)(im.UnsafePointer()))
+	C.QsciScintilla_registerImage2(this.h, (C.int)(id), (*C.QImage)(im.UnsafePointer()))
 }
 
 func (this *QsciScintilla) Replace(replaceStr string) {
@@ -743,45 +743,45 @@ func (this *QsciScintilla) Replace(replaceStr string) {
 	replaceStr_ms.data = C.CString(replaceStr)
 	replaceStr_ms.len = C.size_t(len(replaceStr))
 	defer C.free(unsafe.Pointer(replaceStr_ms.data))
-	C.QsciScintilla_Replace(this.h, replaceStr_ms)
+	C.QsciScintilla_replace(this.h, replaceStr_ms)
 }
 
 func (this *QsciScintilla) ResetFoldMarginColors() {
-	C.QsciScintilla_ResetFoldMarginColors(this.h)
+	C.QsciScintilla_resetFoldMarginColors(this.h)
 }
 
 func (this *QsciScintilla) ResetHotspotBackgroundColor() {
-	C.QsciScintilla_ResetHotspotBackgroundColor(this.h)
+	C.QsciScintilla_resetHotspotBackgroundColor(this.h)
 }
 
 func (this *QsciScintilla) ResetHotspotForegroundColor() {
-	C.QsciScintilla_ResetHotspotForegroundColor(this.h)
+	C.QsciScintilla_resetHotspotForegroundColor(this.h)
 }
 
 func (this *QsciScintilla) ScrollWidth() int {
-	return (int)(C.QsciScintilla_ScrollWidth(this.h))
+	return (int)(C.QsciScintilla_scrollWidth(this.h))
 }
 
 func (this *QsciScintilla) ScrollWidthTracking() bool {
-	return (bool)(C.QsciScintilla_ScrollWidthTracking(this.h))
+	return (bool)(C.QsciScintilla_scrollWidthTracking(this.h))
 }
 
 func (this *QsciScintilla) SetFoldMarginColors(fore *qt.QColor, back *qt.QColor) {
-	C.QsciScintilla_SetFoldMarginColors(this.h, (*C.QColor)(fore.UnsafePointer()), (*C.QColor)(back.UnsafePointer()))
+	C.QsciScintilla_setFoldMarginColors(this.h, (*C.QColor)(fore.UnsafePointer()), (*C.QColor)(back.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetAnnotationDisplay(display QsciScintilla__AnnotationDisplay) {
-	C.QsciScintilla_SetAnnotationDisplay(this.h, (C.int)(display))
+	C.QsciScintilla_setAnnotationDisplay(this.h, (C.int)(display))
 }
 
 func (this *QsciScintilla) SetAutoCompletionFillupsEnabled(enabled bool) {
-	C.QsciScintilla_SetAutoCompletionFillupsEnabled(this.h, (C.bool)(enabled))
+	C.QsciScintilla_setAutoCompletionFillupsEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QsciScintilla) SetAutoCompletionFillups(fillups string) {
 	fillups_Cstring := C.CString(fillups)
 	defer C.free(unsafe.Pointer(fillups_Cstring))
-	C.QsciScintilla_SetAutoCompletionFillups(this.h, fillups_Cstring)
+	C.QsciScintilla_setAutoCompletionFillups(this.h, fillups_Cstring)
 }
 
 func (this *QsciScintilla) SetAutoCompletionWordSeparators(separators []string) {
@@ -795,31 +795,31 @@ func (this *QsciScintilla) SetAutoCompletionWordSeparators(separators []string) 
 		separators_CArray[i] = separators_i_ms
 	}
 	separators_ma := C.struct_miqt_array{len: C.size_t(len(separators)), data: unsafe.Pointer(separators_CArray)}
-	C.QsciScintilla_SetAutoCompletionWordSeparators(this.h, separators_ma)
+	C.QsciScintilla_setAutoCompletionWordSeparators(this.h, separators_ma)
 }
 
 func (this *QsciScintilla) SetCallTipsBackgroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetCallTipsBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setCallTipsBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetCallTipsForegroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetCallTipsForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setCallTipsForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetCallTipsHighlightColor(col *qt.QColor) {
-	C.QsciScintilla_SetCallTipsHighlightColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setCallTipsHighlightColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetCallTipsPosition(position QsciScintilla__CallTipsPosition) {
-	C.QsciScintilla_SetCallTipsPosition(this.h, (C.int)(position))
+	C.QsciScintilla_setCallTipsPosition(this.h, (C.int)(position))
 }
 
 func (this *QsciScintilla) SetCallTipsStyle(style QsciScintilla__CallTipsStyle) {
-	C.QsciScintilla_SetCallTipsStyle(this.h, (C.int)(style))
+	C.QsciScintilla_setCallTipsStyle(this.h, (C.int)(style))
 }
 
 func (this *QsciScintilla) SetCallTipsVisible(nr int) {
-	C.QsciScintilla_SetCallTipsVisible(this.h, (C.int)(nr))
+	C.QsciScintilla_setCallTipsVisible(this.h, (C.int)(nr))
 }
 
 func (this *QsciScintilla) SetContractedFolds(folds []int) {
@@ -829,63 +829,63 @@ func (this *QsciScintilla) SetContractedFolds(folds []int) {
 		folds_CArray[i] = (C.int)(folds[i])
 	}
 	folds_ma := C.struct_miqt_array{len: C.size_t(len(folds)), data: unsafe.Pointer(folds_CArray)}
-	C.QsciScintilla_SetContractedFolds(this.h, folds_ma)
+	C.QsciScintilla_setContractedFolds(this.h, folds_ma)
 }
 
 func (this *QsciScintilla) SetDocument(document *QsciDocument) {
-	C.QsciScintilla_SetDocument(this.h, document.cPointer())
+	C.QsciScintilla_setDocument(this.h, document.cPointer())
 }
 
 func (this *QsciScintilla) AddEdgeColumn(colnr int, col *qt.QColor) {
-	C.QsciScintilla_AddEdgeColumn(this.h, (C.int)(colnr), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_addEdgeColumn(this.h, (C.int)(colnr), (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) ClearEdgeColumns() {
-	C.QsciScintilla_ClearEdgeColumns(this.h)
+	C.QsciScintilla_clearEdgeColumns(this.h)
 }
 
 func (this *QsciScintilla) SetEdgeColor(col *qt.QColor) {
-	C.QsciScintilla_SetEdgeColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setEdgeColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetEdgeColumn(colnr int) {
-	C.QsciScintilla_SetEdgeColumn(this.h, (C.int)(colnr))
+	C.QsciScintilla_setEdgeColumn(this.h, (C.int)(colnr))
 }
 
 func (this *QsciScintilla) SetEdgeMode(mode QsciScintilla__EdgeMode) {
-	C.QsciScintilla_SetEdgeMode(this.h, (C.int)(mode))
+	C.QsciScintilla_setEdgeMode(this.h, (C.int)(mode))
 }
 
 func (this *QsciScintilla) SetFirstVisibleLine(linenr int) {
-	C.QsciScintilla_SetFirstVisibleLine(this.h, (C.int)(linenr))
+	C.QsciScintilla_setFirstVisibleLine(this.h, (C.int)(linenr))
 }
 
 func (this *QsciScintilla) SetIndicatorDrawUnder(under bool) {
-	C.QsciScintilla_SetIndicatorDrawUnder(this.h, (C.bool)(under))
+	C.QsciScintilla_setIndicatorDrawUnder(this.h, (C.bool)(under))
 }
 
 func (this *QsciScintilla) SetIndicatorForegroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetIndicatorForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setIndicatorForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetIndicatorHoverForegroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetIndicatorHoverForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setIndicatorHoverForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetIndicatorHoverStyle(style QsciScintilla__IndicatorStyle) {
-	C.QsciScintilla_SetIndicatorHoverStyle(this.h, (C.int)(style))
+	C.QsciScintilla_setIndicatorHoverStyle(this.h, (C.int)(style))
 }
 
 func (this *QsciScintilla) SetIndicatorOutlineColor(col *qt.QColor) {
-	C.QsciScintilla_SetIndicatorOutlineColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setIndicatorOutlineColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMarginBackgroundColor(margin int, col *qt.QColor) {
-	C.QsciScintilla_SetMarginBackgroundColor(this.h, (C.int)(margin), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setMarginBackgroundColor(this.h, (C.int)(margin), (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMarginOptions(options int) {
-	C.QsciScintilla_SetMarginOptions(this.h, (C.int)(options))
+	C.QsciScintilla_setMarginOptions(this.h, (C.int)(options))
 }
 
 func (this *QsciScintilla) SetMarginText(line int, text string, style int) {
@@ -893,7 +893,7 @@ func (this *QsciScintilla) SetMarginText(line int, text string, style int) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QsciScintilla_SetMarginText(this.h, (C.int)(line), text_ms, (C.int)(style))
+	C.QsciScintilla_setMarginText(this.h, (C.int)(line), text_ms, (C.int)(style))
 }
 
 func (this *QsciScintilla) SetMarginText2(line int, text string, style *QsciStyle) {
@@ -901,138 +901,138 @@ func (this *QsciScintilla) SetMarginText2(line int, text string, style *QsciStyl
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QsciScintilla_SetMarginText2(this.h, (C.int)(line), text_ms, style.cPointer())
+	C.QsciScintilla_setMarginText2(this.h, (C.int)(line), text_ms, style.cPointer())
 }
 
 func (this *QsciScintilla) SetMarginText3(line int, text *QsciStyledText) {
-	C.QsciScintilla_SetMarginText3(this.h, (C.int)(line), text.cPointer())
+	C.QsciScintilla_setMarginText3(this.h, (C.int)(line), text.cPointer())
 }
 
 func (this *QsciScintilla) SetMarginType(margin int, typeVal QsciScintilla__MarginType) {
-	C.QsciScintilla_SetMarginType(this.h, (C.int)(margin), (C.int)(typeVal))
+	C.QsciScintilla_setMarginType(this.h, (C.int)(margin), (C.int)(typeVal))
 }
 
 func (this *QsciScintilla) ClearMarginText() {
-	C.QsciScintilla_ClearMarginText(this.h)
+	C.QsciScintilla_clearMarginText(this.h)
 }
 
 func (this *QsciScintilla) SetMargins(margins int) {
-	C.QsciScintilla_SetMargins(this.h, (C.int)(margins))
+	C.QsciScintilla_setMargins(this.h, (C.int)(margins))
 }
 
 func (this *QsciScintilla) SetMarkerBackgroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetMarkerBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setMarkerBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMarkerForegroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetMarkerForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setMarkerForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMatchedBraceBackgroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetMatchedBraceBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setMatchedBraceBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMatchedBraceForegroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetMatchedBraceForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setMatchedBraceForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMatchedBraceIndicator(indicatorNumber int) {
-	C.QsciScintilla_SetMatchedBraceIndicator(this.h, (C.int)(indicatorNumber))
+	C.QsciScintilla_setMatchedBraceIndicator(this.h, (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) ResetMatchedBraceIndicator() {
-	C.QsciScintilla_ResetMatchedBraceIndicator(this.h)
+	C.QsciScintilla_resetMatchedBraceIndicator(this.h)
 }
 
 func (this *QsciScintilla) SetScrollWidth(pixelWidth int) {
-	C.QsciScintilla_SetScrollWidth(this.h, (C.int)(pixelWidth))
+	C.QsciScintilla_setScrollWidth(this.h, (C.int)(pixelWidth))
 }
 
 func (this *QsciScintilla) SetScrollWidthTracking(enabled bool) {
-	C.QsciScintilla_SetScrollWidthTracking(this.h, (C.bool)(enabled))
+	C.QsciScintilla_setScrollWidthTracking(this.h, (C.bool)(enabled))
 }
 
 func (this *QsciScintilla) SetTabDrawMode(mode QsciScintilla__TabDrawMode) {
-	C.QsciScintilla_SetTabDrawMode(this.h, (C.int)(mode))
+	C.QsciScintilla_setTabDrawMode(this.h, (C.int)(mode))
 }
 
 func (this *QsciScintilla) SetUnmatchedBraceBackgroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetUnmatchedBraceBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setUnmatchedBraceBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetUnmatchedBraceForegroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetUnmatchedBraceForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setUnmatchedBraceForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetUnmatchedBraceIndicator(indicatorNumber int) {
-	C.QsciScintilla_SetUnmatchedBraceIndicator(this.h, (C.int)(indicatorNumber))
+	C.QsciScintilla_setUnmatchedBraceIndicator(this.h, (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) ResetUnmatchedBraceIndicator() {
-	C.QsciScintilla_ResetUnmatchedBraceIndicator(this.h)
+	C.QsciScintilla_resetUnmatchedBraceIndicator(this.h)
 }
 
 func (this *QsciScintilla) SetWrapVisualFlags(endFlag QsciScintilla__WrapVisualFlag) {
-	C.QsciScintilla_SetWrapVisualFlags(this.h, (C.int)(endFlag))
+	C.QsciScintilla_setWrapVisualFlags(this.h, (C.int)(endFlag))
 }
 
 func (this *QsciScintilla) SelectedText() string {
-	var _ms C.struct_miqt_string = C.QsciScintilla_SelectedText(this.h)
+	var _ms C.struct_miqt_string = C.QsciScintilla_selectedText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciScintilla) SelectionToEol() bool {
-	return (bool)(C.QsciScintilla_SelectionToEol(this.h))
+	return (bool)(C.QsciScintilla_selectionToEol(this.h))
 }
 
 func (this *QsciScintilla) SetHotspotBackgroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetHotspotBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setHotspotBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetHotspotForegroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetHotspotForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setHotspotForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetHotspotUnderline(enable bool) {
-	C.QsciScintilla_SetHotspotUnderline(this.h, (C.bool)(enable))
+	C.QsciScintilla_setHotspotUnderline(this.h, (C.bool)(enable))
 }
 
 func (this *QsciScintilla) SetHotspotWrap(enable bool) {
-	C.QsciScintilla_SetHotspotWrap(this.h, (C.bool)(enable))
+	C.QsciScintilla_setHotspotWrap(this.h, (C.bool)(enable))
 }
 
 func (this *QsciScintilla) SetSelectionToEol(filled bool) {
-	C.QsciScintilla_SetSelectionToEol(this.h, (C.bool)(filled))
+	C.QsciScintilla_setSelectionToEol(this.h, (C.bool)(filled))
 }
 
 func (this *QsciScintilla) SetExtraAscent(extra int) {
-	C.QsciScintilla_SetExtraAscent(this.h, (C.int)(extra))
+	C.QsciScintilla_setExtraAscent(this.h, (C.int)(extra))
 }
 
 func (this *QsciScintilla) SetExtraDescent(extra int) {
-	C.QsciScintilla_SetExtraDescent(this.h, (C.int)(extra))
+	C.QsciScintilla_setExtraDescent(this.h, (C.int)(extra))
 }
 
 func (this *QsciScintilla) SetOverwriteMode(overwrite bool) {
-	C.QsciScintilla_SetOverwriteMode(this.h, (C.bool)(overwrite))
+	C.QsciScintilla_setOverwriteMode(this.h, (C.bool)(overwrite))
 }
 
 func (this *QsciScintilla) SetWhitespaceBackgroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetWhitespaceBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setWhitespaceBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetWhitespaceForegroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetWhitespaceForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setWhitespaceForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetWhitespaceSize(size int) {
-	C.QsciScintilla_SetWhitespaceSize(this.h, (C.int)(size))
+	C.QsciScintilla_setWhitespaceSize(this.h, (C.int)(size))
 }
 
 func (this *QsciScintilla) SetWrapIndentMode(mode QsciScintilla__WrapIndentMode) {
-	C.QsciScintilla_SetWrapIndentMode(this.h, (C.int)(mode))
+	C.QsciScintilla_setWrapIndentMode(this.h, (C.int)(mode))
 }
 
 func (this *QsciScintilla) ShowUserList(id int, list []string) {
@@ -1046,87 +1046,87 @@ func (this *QsciScintilla) ShowUserList(id int, list []string) {
 		list_CArray[i] = list_i_ms
 	}
 	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
-	C.QsciScintilla_ShowUserList(this.h, (C.int)(id), list_ma)
+	C.QsciScintilla_showUserList(this.h, (C.int)(id), list_ma)
 }
 
 func (this *QsciScintilla) StandardCommands() *QsciCommandSet {
-	return newQsciCommandSet(C.QsciScintilla_StandardCommands(this.h))
+	return newQsciCommandSet(C.QsciScintilla_standardCommands(this.h))
 }
 
 func (this *QsciScintilla) TabDrawMode() QsciScintilla__TabDrawMode {
-	return (QsciScintilla__TabDrawMode)(C.QsciScintilla_TabDrawMode(this.h))
+	return (QsciScintilla__TabDrawMode)(C.QsciScintilla_tabDrawMode(this.h))
 }
 
 func (this *QsciScintilla) TabIndents() bool {
-	return (bool)(C.QsciScintilla_TabIndents(this.h))
+	return (bool)(C.QsciScintilla_tabIndents(this.h))
 }
 
 func (this *QsciScintilla) TabWidth() int {
-	return (int)(C.QsciScintilla_TabWidth(this.h))
+	return (int)(C.QsciScintilla_tabWidth(this.h))
 }
 
 func (this *QsciScintilla) Text() string {
-	var _ms C.struct_miqt_string = C.QsciScintilla_Text(this.h)
+	var _ms C.struct_miqt_string = C.QsciScintilla_text(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciScintilla) TextWithLine(line int) string {
-	var _ms C.struct_miqt_string = C.QsciScintilla_TextWithLine(this.h, (C.int)(line))
+	var _ms C.struct_miqt_string = C.QsciScintilla_textWithLine(this.h, (C.int)(line))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciScintilla) Text2(start int, end int) string {
-	var _ms C.struct_miqt_string = C.QsciScintilla_Text2(this.h, (C.int)(start), (C.int)(end))
+	var _ms C.struct_miqt_string = C.QsciScintilla_text2(this.h, (C.int)(start), (C.int)(end))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciScintilla) TextHeight(linenr int) int {
-	return (int)(C.QsciScintilla_TextHeight(this.h, (C.int)(linenr)))
+	return (int)(C.QsciScintilla_textHeight(this.h, (C.int)(linenr)))
 }
 
 func (this *QsciScintilla) WhitespaceSize() int {
-	return (int)(C.QsciScintilla_WhitespaceSize(this.h))
+	return (int)(C.QsciScintilla_whitespaceSize(this.h))
 }
 
 func (this *QsciScintilla) WhitespaceVisibility() QsciScintilla__WhitespaceVisibility {
-	return (QsciScintilla__WhitespaceVisibility)(C.QsciScintilla_WhitespaceVisibility(this.h))
+	return (QsciScintilla__WhitespaceVisibility)(C.QsciScintilla_whitespaceVisibility(this.h))
 }
 
 func (this *QsciScintilla) WordAtLineIndex(line int, index int) string {
-	var _ms C.struct_miqt_string = C.QsciScintilla_WordAtLineIndex(this.h, (C.int)(line), (C.int)(index))
+	var _ms C.struct_miqt_string = C.QsciScintilla_wordAtLineIndex(this.h, (C.int)(line), (C.int)(index))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciScintilla) WordAtPoint(point *qt.QPoint) string {
-	var _ms C.struct_miqt_string = C.QsciScintilla_WordAtPoint(this.h, (*C.QPoint)(point.UnsafePointer()))
+	var _ms C.struct_miqt_string = C.QsciScintilla_wordAtPoint(this.h, (*C.QPoint)(point.UnsafePointer()))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciScintilla) WordCharacters() string {
-	_ret := C.QsciScintilla_WordCharacters(this.h)
+	_ret := C.QsciScintilla_wordCharacters(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QsciScintilla) WrapMode() QsciScintilla__WrapMode {
-	return (QsciScintilla__WrapMode)(C.QsciScintilla_WrapMode(this.h))
+	return (QsciScintilla__WrapMode)(C.QsciScintilla_wrapMode(this.h))
 }
 
 func (this *QsciScintilla) WrapIndentMode() QsciScintilla__WrapIndentMode {
-	return (QsciScintilla__WrapIndentMode)(C.QsciScintilla_WrapIndentMode(this.h))
+	return (QsciScintilla__WrapIndentMode)(C.QsciScintilla_wrapIndentMode(this.h))
 }
 
 func (this *QsciScintilla) Write(io *qt.QIODevice) bool {
-	return (bool)(C.QsciScintilla_Write(this.h, (*C.QIODevice)(io.UnsafePointer())))
+	return (bool)(C.QsciScintilla_write(this.h, (*C.QIODevice)(io.UnsafePointer())))
 }
 
 func (this *QsciScintilla) Append(text string) {
@@ -1134,55 +1134,55 @@ func (this *QsciScintilla) Append(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QsciScintilla_Append(this.h, text_ms)
+	C.QsciScintilla_append(this.h, text_ms)
 }
 
 func (this *QsciScintilla) AutoCompleteFromAll() {
-	C.QsciScintilla_AutoCompleteFromAll(this.h)
+	C.QsciScintilla_autoCompleteFromAll(this.h)
 }
 
 func (this *QsciScintilla) AutoCompleteFromAPIs() {
-	C.QsciScintilla_AutoCompleteFromAPIs(this.h)
+	C.QsciScintilla_autoCompleteFromAPIs(this.h)
 }
 
 func (this *QsciScintilla) AutoCompleteFromDocument() {
-	C.QsciScintilla_AutoCompleteFromDocument(this.h)
+	C.QsciScintilla_autoCompleteFromDocument(this.h)
 }
 
 func (this *QsciScintilla) CallTip() {
-	C.QsciScintilla_CallTip(this.h)
+	C.QsciScintilla_callTip(this.h)
 }
 
 func (this *QsciScintilla) Clear() {
-	C.QsciScintilla_Clear(this.h)
+	C.QsciScintilla_clear(this.h)
 }
 
 func (this *QsciScintilla) Copy() {
-	C.QsciScintilla_Copy(this.h)
+	C.QsciScintilla_copy(this.h)
 }
 
 func (this *QsciScintilla) Cut() {
-	C.QsciScintilla_Cut(this.h)
+	C.QsciScintilla_cut(this.h)
 }
 
 func (this *QsciScintilla) EnsureCursorVisible() {
-	C.QsciScintilla_EnsureCursorVisible(this.h)
+	C.QsciScintilla_ensureCursorVisible(this.h)
 }
 
 func (this *QsciScintilla) EnsureLineVisible(line int) {
-	C.QsciScintilla_EnsureLineVisible(this.h, (C.int)(line))
+	C.QsciScintilla_ensureLineVisible(this.h, (C.int)(line))
 }
 
 func (this *QsciScintilla) FoldAll(children bool) {
-	C.QsciScintilla_FoldAll(this.h, (C.bool)(children))
+	C.QsciScintilla_foldAll(this.h, (C.bool)(children))
 }
 
 func (this *QsciScintilla) FoldLine(line int) {
-	C.QsciScintilla_FoldLine(this.h, (C.int)(line))
+	C.QsciScintilla_foldLine(this.h, (C.int)(line))
 }
 
 func (this *QsciScintilla) Indent(line int) {
-	C.QsciScintilla_Indent(this.h, (C.int)(line))
+	C.QsciScintilla_indent(this.h, (C.int)(line))
 }
 
 func (this *QsciScintilla) Insert(text string) {
@@ -1190,7 +1190,7 @@ func (this *QsciScintilla) Insert(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QsciScintilla_Insert(this.h, text_ms)
+	C.QsciScintilla_insert(this.h, text_ms)
 }
 
 func (this *QsciScintilla) InsertAt(text string, line int, index int) {
@@ -1198,23 +1198,23 @@ func (this *QsciScintilla) InsertAt(text string, line int, index int) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QsciScintilla_InsertAt(this.h, text_ms, (C.int)(line), (C.int)(index))
+	C.QsciScintilla_insertAt(this.h, text_ms, (C.int)(line), (C.int)(index))
 }
 
 func (this *QsciScintilla) MoveToMatchingBrace() {
-	C.QsciScintilla_MoveToMatchingBrace(this.h)
+	C.QsciScintilla_moveToMatchingBrace(this.h)
 }
 
 func (this *QsciScintilla) Paste() {
-	C.QsciScintilla_Paste(this.h)
+	C.QsciScintilla_paste(this.h)
 }
 
 func (this *QsciScintilla) Redo() {
-	C.QsciScintilla_Redo(this.h)
+	C.QsciScintilla_redo(this.h)
 }
 
 func (this *QsciScintilla) RemoveSelectedText() {
-	C.QsciScintilla_RemoveSelectedText(this.h)
+	C.QsciScintilla_removeSelectedText(this.h)
 }
 
 func (this *QsciScintilla) ReplaceSelectedText(text string) {
@@ -1222,155 +1222,155 @@ func (this *QsciScintilla) ReplaceSelectedText(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QsciScintilla_ReplaceSelectedText(this.h, text_ms)
+	C.QsciScintilla_replaceSelectedText(this.h, text_ms)
 }
 
 func (this *QsciScintilla) ResetSelectionBackgroundColor() {
-	C.QsciScintilla_ResetSelectionBackgroundColor(this.h)
+	C.QsciScintilla_resetSelectionBackgroundColor(this.h)
 }
 
 func (this *QsciScintilla) ResetSelectionForegroundColor() {
-	C.QsciScintilla_ResetSelectionForegroundColor(this.h)
+	C.QsciScintilla_resetSelectionForegroundColor(this.h)
 }
 
 func (this *QsciScintilla) SelectAll(selectVal bool) {
-	C.QsciScintilla_SelectAll(this.h, (C.bool)(selectVal))
+	C.QsciScintilla_selectAll(this.h, (C.bool)(selectVal))
 }
 
 func (this *QsciScintilla) SelectToMatchingBrace() {
-	C.QsciScintilla_SelectToMatchingBrace(this.h)
+	C.QsciScintilla_selectToMatchingBrace(this.h)
 }
 
 func (this *QsciScintilla) SetAutoCompletionCaseSensitivity(cs bool) {
-	C.QsciScintilla_SetAutoCompletionCaseSensitivity(this.h, (C.bool)(cs))
+	C.QsciScintilla_setAutoCompletionCaseSensitivity(this.h, (C.bool)(cs))
 }
 
 func (this *QsciScintilla) SetAutoCompletionReplaceWord(replace bool) {
-	C.QsciScintilla_SetAutoCompletionReplaceWord(this.h, (C.bool)(replace))
+	C.QsciScintilla_setAutoCompletionReplaceWord(this.h, (C.bool)(replace))
 }
 
 func (this *QsciScintilla) SetAutoCompletionShowSingle(single bool) {
-	C.QsciScintilla_SetAutoCompletionShowSingle(this.h, (C.bool)(single))
+	C.QsciScintilla_setAutoCompletionShowSingle(this.h, (C.bool)(single))
 }
 
 func (this *QsciScintilla) SetAutoCompletionSource(source QsciScintilla__AutoCompletionSource) {
-	C.QsciScintilla_SetAutoCompletionSource(this.h, (C.int)(source))
+	C.QsciScintilla_setAutoCompletionSource(this.h, (C.int)(source))
 }
 
 func (this *QsciScintilla) SetAutoCompletionThreshold(thresh int) {
-	C.QsciScintilla_SetAutoCompletionThreshold(this.h, (C.int)(thresh))
+	C.QsciScintilla_setAutoCompletionThreshold(this.h, (C.int)(thresh))
 }
 
 func (this *QsciScintilla) SetAutoCompletionUseSingle(single QsciScintilla__AutoCompletionUseSingle) {
-	C.QsciScintilla_SetAutoCompletionUseSingle(this.h, (C.int)(single))
+	C.QsciScintilla_setAutoCompletionUseSingle(this.h, (C.int)(single))
 }
 
 func (this *QsciScintilla) SetAutoIndent(autoindent bool) {
-	C.QsciScintilla_SetAutoIndent(this.h, (C.bool)(autoindent))
+	C.QsciScintilla_setAutoIndent(this.h, (C.bool)(autoindent))
 }
 
 func (this *QsciScintilla) SetBraceMatching(bm QsciScintilla__BraceMatch) {
-	C.QsciScintilla_SetBraceMatching(this.h, (C.int)(bm))
+	C.QsciScintilla_setBraceMatching(this.h, (C.int)(bm))
 }
 
 func (this *QsciScintilla) SetBackspaceUnindents(unindent bool) {
-	C.QsciScintilla_SetBackspaceUnindents(this.h, (C.bool)(unindent))
+	C.QsciScintilla_setBackspaceUnindents(this.h, (C.bool)(unindent))
 }
 
 func (this *QsciScintilla) SetCaretForegroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetCaretForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setCaretForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetCaretLineBackgroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetCaretLineBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setCaretLineBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetCaretLineFrameWidth(width int) {
-	C.QsciScintilla_SetCaretLineFrameWidth(this.h, (C.int)(width))
+	C.QsciScintilla_setCaretLineFrameWidth(this.h, (C.int)(width))
 }
 
 func (this *QsciScintilla) SetCaretLineVisible(enable bool) {
-	C.QsciScintilla_SetCaretLineVisible(this.h, (C.bool)(enable))
+	C.QsciScintilla_setCaretLineVisible(this.h, (C.bool)(enable))
 }
 
 func (this *QsciScintilla) SetCaretWidth(width int) {
-	C.QsciScintilla_SetCaretWidth(this.h, (C.int)(width))
+	C.QsciScintilla_setCaretWidth(this.h, (C.int)(width))
 }
 
 func (this *QsciScintilla) SetColor(c *qt.QColor) {
-	C.QsciScintilla_SetColor(this.h, (*C.QColor)(c.UnsafePointer()))
+	C.QsciScintilla_setColor(this.h, (*C.QColor)(c.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetCursorPosition(line int, index int) {
-	C.QsciScintilla_SetCursorPosition(this.h, (C.int)(line), (C.int)(index))
+	C.QsciScintilla_setCursorPosition(this.h, (C.int)(line), (C.int)(index))
 }
 
 func (this *QsciScintilla) SetEolMode(mode QsciScintilla__EolMode) {
-	C.QsciScintilla_SetEolMode(this.h, (C.int)(mode))
+	C.QsciScintilla_setEolMode(this.h, (C.int)(mode))
 }
 
 func (this *QsciScintilla) SetEolVisibility(visible bool) {
-	C.QsciScintilla_SetEolVisibility(this.h, (C.bool)(visible))
+	C.QsciScintilla_setEolVisibility(this.h, (C.bool)(visible))
 }
 
 func (this *QsciScintilla) SetFolding(fold QsciScintilla__FoldStyle, margin int) {
-	C.QsciScintilla_SetFolding(this.h, (C.int)(fold), (C.int)(margin))
+	C.QsciScintilla_setFolding(this.h, (C.int)(fold), (C.int)(margin))
 }
 
 func (this *QsciScintilla) SetIndentation(line int, indentation int) {
-	C.QsciScintilla_SetIndentation(this.h, (C.int)(line), (C.int)(indentation))
+	C.QsciScintilla_setIndentation(this.h, (C.int)(line), (C.int)(indentation))
 }
 
 func (this *QsciScintilla) SetIndentationGuides(enable bool) {
-	C.QsciScintilla_SetIndentationGuides(this.h, (C.bool)(enable))
+	C.QsciScintilla_setIndentationGuides(this.h, (C.bool)(enable))
 }
 
 func (this *QsciScintilla) SetIndentationGuidesBackgroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetIndentationGuidesBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setIndentationGuidesBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetIndentationGuidesForegroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetIndentationGuidesForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setIndentationGuidesForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetIndentationsUseTabs(tabs bool) {
-	C.QsciScintilla_SetIndentationsUseTabs(this.h, (C.bool)(tabs))
+	C.QsciScintilla_setIndentationsUseTabs(this.h, (C.bool)(tabs))
 }
 
 func (this *QsciScintilla) SetIndentationWidth(width int) {
-	C.QsciScintilla_SetIndentationWidth(this.h, (C.int)(width))
+	C.QsciScintilla_setIndentationWidth(this.h, (C.int)(width))
 }
 
 func (this *QsciScintilla) SetLexer(lexer *QsciLexer) {
-	C.QsciScintilla_SetLexer(this.h, lexer.cPointer())
+	C.QsciScintilla_setLexer(this.h, lexer.cPointer())
 }
 
 func (this *QsciScintilla) SetMarginsBackgroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetMarginsBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setMarginsBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMarginsFont(f *qt.QFont) {
-	C.QsciScintilla_SetMarginsFont(this.h, (*C.QFont)(f.UnsafePointer()))
+	C.QsciScintilla_setMarginsFont(this.h, (*C.QFont)(f.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMarginsForegroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetMarginsForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setMarginsForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetMarginLineNumbers(margin int, lnrs bool) {
-	C.QsciScintilla_SetMarginLineNumbers(this.h, (C.int)(margin), (C.bool)(lnrs))
+	C.QsciScintilla_setMarginLineNumbers(this.h, (C.int)(margin), (C.bool)(lnrs))
 }
 
 func (this *QsciScintilla) SetMarginMarkerMask(margin int, mask int) {
-	C.QsciScintilla_SetMarginMarkerMask(this.h, (C.int)(margin), (C.int)(mask))
+	C.QsciScintilla_setMarginMarkerMask(this.h, (C.int)(margin), (C.int)(mask))
 }
 
 func (this *QsciScintilla) SetMarginSensitivity(margin int, sens bool) {
-	C.QsciScintilla_SetMarginSensitivity(this.h, (C.int)(margin), (C.bool)(sens))
+	C.QsciScintilla_setMarginSensitivity(this.h, (C.int)(margin), (C.bool)(sens))
 }
 
 func (this *QsciScintilla) SetMarginWidth(margin int, width int) {
-	C.QsciScintilla_SetMarginWidth(this.h, (C.int)(margin), (C.int)(width))
+	C.QsciScintilla_setMarginWidth(this.h, (C.int)(margin), (C.int)(width))
 }
 
 func (this *QsciScintilla) SetMarginWidth2(margin int, s string) {
@@ -1378,39 +1378,39 @@ func (this *QsciScintilla) SetMarginWidth2(margin int, s string) {
 	s_ms.data = C.CString(s)
 	s_ms.len = C.size_t(len(s))
 	defer C.free(unsafe.Pointer(s_ms.data))
-	C.QsciScintilla_SetMarginWidth2(this.h, (C.int)(margin), s_ms)
+	C.QsciScintilla_setMarginWidth2(this.h, (C.int)(margin), s_ms)
 }
 
 func (this *QsciScintilla) SetModified(m bool) {
-	C.QsciScintilla_SetModified(this.h, (C.bool)(m))
+	C.QsciScintilla_setModified(this.h, (C.bool)(m))
 }
 
 func (this *QsciScintilla) SetPaper(c *qt.QColor) {
-	C.QsciScintilla_SetPaper(this.h, (*C.QColor)(c.UnsafePointer()))
+	C.QsciScintilla_setPaper(this.h, (*C.QColor)(c.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetReadOnly(ro bool) {
-	C.QsciScintilla_SetReadOnly(this.h, (C.bool)(ro))
+	C.QsciScintilla_setReadOnly(this.h, (C.bool)(ro))
 }
 
 func (this *QsciScintilla) SetSelection(lineFrom int, indexFrom int, lineTo int, indexTo int) {
-	C.QsciScintilla_SetSelection(this.h, (C.int)(lineFrom), (C.int)(indexFrom), (C.int)(lineTo), (C.int)(indexTo))
+	C.QsciScintilla_setSelection(this.h, (C.int)(lineFrom), (C.int)(indexFrom), (C.int)(lineTo), (C.int)(indexTo))
 }
 
 func (this *QsciScintilla) SetSelectionBackgroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetSelectionBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setSelectionBackgroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetSelectionForegroundColor(col *qt.QColor) {
-	C.QsciScintilla_SetSelectionForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_setSelectionForegroundColor(this.h, (*C.QColor)(col.UnsafePointer()))
 }
 
 func (this *QsciScintilla) SetTabIndents(indent bool) {
-	C.QsciScintilla_SetTabIndents(this.h, (C.bool)(indent))
+	C.QsciScintilla_setTabIndents(this.h, (C.bool)(indent))
 }
 
 func (this *QsciScintilla) SetTabWidth(width int) {
-	C.QsciScintilla_SetTabWidth(this.h, (C.int)(width))
+	C.QsciScintilla_setTabWidth(this.h, (C.int)(width))
 }
 
 func (this *QsciScintilla) SetText(text string) {
@@ -1418,58 +1418,58 @@ func (this *QsciScintilla) SetText(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QsciScintilla_SetText(this.h, text_ms)
+	C.QsciScintilla_setText(this.h, text_ms)
 }
 
 func (this *QsciScintilla) SetUtf8(cp bool) {
-	C.QsciScintilla_SetUtf8(this.h, (C.bool)(cp))
+	C.QsciScintilla_setUtf8(this.h, (C.bool)(cp))
 }
 
 func (this *QsciScintilla) SetWhitespaceVisibility(mode QsciScintilla__WhitespaceVisibility) {
-	C.QsciScintilla_SetWhitespaceVisibility(this.h, (C.int)(mode))
+	C.QsciScintilla_setWhitespaceVisibility(this.h, (C.int)(mode))
 }
 
 func (this *QsciScintilla) SetWrapMode(mode QsciScintilla__WrapMode) {
-	C.QsciScintilla_SetWrapMode(this.h, (C.int)(mode))
+	C.QsciScintilla_setWrapMode(this.h, (C.int)(mode))
 }
 
 func (this *QsciScintilla) Undo() {
-	C.QsciScintilla_Undo(this.h)
+	C.QsciScintilla_undo(this.h)
 }
 
 func (this *QsciScintilla) Unindent(line int) {
-	C.QsciScintilla_Unindent(this.h, (C.int)(line))
+	C.QsciScintilla_unindent(this.h, (C.int)(line))
 }
 
 func (this *QsciScintilla) ZoomIn(rangeVal int) {
-	C.QsciScintilla_ZoomIn(this.h, (C.int)(rangeVal))
+	C.QsciScintilla_zoomIn(this.h, (C.int)(rangeVal))
 }
 
 func (this *QsciScintilla) ZoomIn2() {
-	C.QsciScintilla_ZoomIn2(this.h)
+	C.QsciScintilla_zoomIn2(this.h)
 }
 
 func (this *QsciScintilla) ZoomOut(rangeVal int) {
-	C.QsciScintilla_ZoomOut(this.h, (C.int)(rangeVal))
+	C.QsciScintilla_zoomOut(this.h, (C.int)(rangeVal))
 }
 
 func (this *QsciScintilla) ZoomOut2() {
-	C.QsciScintilla_ZoomOut2(this.h)
+	C.QsciScintilla_zoomOut2(this.h)
 }
 
 func (this *QsciScintilla) ZoomTo(size int) {
-	C.QsciScintilla_ZoomTo(this.h, (C.int)(size))
+	C.QsciScintilla_zoomTo(this.h, (C.int)(size))
 }
 
 func (this *QsciScintilla) CursorPositionChanged(line int, index int) {
-	C.QsciScintilla_CursorPositionChanged(this.h, (C.int)(line), (C.int)(index))
+	C.QsciScintilla_cursorPositionChanged(this.h, (C.int)(line), (C.int)(index))
 }
 func (this *QsciScintilla) OnCursorPositionChanged(slot func(line int, index int)) {
-	C.QsciScintilla_connect_CursorPositionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QsciScintilla_connect_cursorPositionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QsciScintilla_CursorPositionChanged
-func miqt_exec_callback_QsciScintilla_CursorPositionChanged(cb C.intptr_t, line C.int, index C.int) {
+//export miqt_exec_callback_QsciScintilla_cursorPositionChanged
+func miqt_exec_callback_QsciScintilla_cursorPositionChanged(cb C.intptr_t, line C.int, index C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(line int, index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1484,14 +1484,14 @@ func miqt_exec_callback_QsciScintilla_CursorPositionChanged(cb C.intptr_t, line 
 }
 
 func (this *QsciScintilla) CopyAvailable(yes bool) {
-	C.QsciScintilla_CopyAvailable(this.h, (C.bool)(yes))
+	C.QsciScintilla_copyAvailable(this.h, (C.bool)(yes))
 }
 func (this *QsciScintilla) OnCopyAvailable(slot func(yes bool)) {
-	C.QsciScintilla_connect_CopyAvailable(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QsciScintilla_connect_copyAvailable(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QsciScintilla_CopyAvailable
-func miqt_exec_callback_QsciScintilla_CopyAvailable(cb C.intptr_t, yes C.bool) {
+//export miqt_exec_callback_QsciScintilla_copyAvailable
+func miqt_exec_callback_QsciScintilla_copyAvailable(cb C.intptr_t, yes C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(yes bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1504,14 +1504,14 @@ func miqt_exec_callback_QsciScintilla_CopyAvailable(cb C.intptr_t, yes C.bool) {
 }
 
 func (this *QsciScintilla) IndicatorClicked(line int, index int, state qt.KeyboardModifier) {
-	C.QsciScintilla_IndicatorClicked(this.h, (C.int)(line), (C.int)(index), (C.int)(state))
+	C.QsciScintilla_indicatorClicked(this.h, (C.int)(line), (C.int)(index), (C.int)(state))
 }
 func (this *QsciScintilla) OnIndicatorClicked(slot func(line int, index int, state qt.KeyboardModifier)) {
-	C.QsciScintilla_connect_IndicatorClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QsciScintilla_connect_indicatorClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QsciScintilla_IndicatorClicked
-func miqt_exec_callback_QsciScintilla_IndicatorClicked(cb C.intptr_t, line C.int, index C.int, state C.int) {
+//export miqt_exec_callback_QsciScintilla_indicatorClicked
+func miqt_exec_callback_QsciScintilla_indicatorClicked(cb C.intptr_t, line C.int, index C.int, state C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(line int, index int, state qt.KeyboardModifier))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1528,14 +1528,14 @@ func miqt_exec_callback_QsciScintilla_IndicatorClicked(cb C.intptr_t, line C.int
 }
 
 func (this *QsciScintilla) IndicatorReleased(line int, index int, state qt.KeyboardModifier) {
-	C.QsciScintilla_IndicatorReleased(this.h, (C.int)(line), (C.int)(index), (C.int)(state))
+	C.QsciScintilla_indicatorReleased(this.h, (C.int)(line), (C.int)(index), (C.int)(state))
 }
 func (this *QsciScintilla) OnIndicatorReleased(slot func(line int, index int, state qt.KeyboardModifier)) {
-	C.QsciScintilla_connect_IndicatorReleased(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QsciScintilla_connect_indicatorReleased(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QsciScintilla_IndicatorReleased
-func miqt_exec_callback_QsciScintilla_IndicatorReleased(cb C.intptr_t, line C.int, index C.int, state C.int) {
+//export miqt_exec_callback_QsciScintilla_indicatorReleased
+func miqt_exec_callback_QsciScintilla_indicatorReleased(cb C.intptr_t, line C.int, index C.int, state C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(line int, index int, state qt.KeyboardModifier))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1552,14 +1552,14 @@ func miqt_exec_callback_QsciScintilla_IndicatorReleased(cb C.intptr_t, line C.in
 }
 
 func (this *QsciScintilla) LinesChanged() {
-	C.QsciScintilla_LinesChanged(this.h)
+	C.QsciScintilla_linesChanged(this.h)
 }
 func (this *QsciScintilla) OnLinesChanged(slot func()) {
-	C.QsciScintilla_connect_LinesChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QsciScintilla_connect_linesChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QsciScintilla_LinesChanged
-func miqt_exec_callback_QsciScintilla_LinesChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_linesChanged
+func miqt_exec_callback_QsciScintilla_linesChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1569,14 +1569,14 @@ func miqt_exec_callback_QsciScintilla_LinesChanged(cb C.intptr_t) {
 }
 
 func (this *QsciScintilla) MarginClicked(margin int, line int, state qt.KeyboardModifier) {
-	C.QsciScintilla_MarginClicked(this.h, (C.int)(margin), (C.int)(line), (C.int)(state))
+	C.QsciScintilla_marginClicked(this.h, (C.int)(margin), (C.int)(line), (C.int)(state))
 }
 func (this *QsciScintilla) OnMarginClicked(slot func(margin int, line int, state qt.KeyboardModifier)) {
-	C.QsciScintilla_connect_MarginClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QsciScintilla_connect_marginClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QsciScintilla_MarginClicked
-func miqt_exec_callback_QsciScintilla_MarginClicked(cb C.intptr_t, margin C.int, line C.int, state C.int) {
+//export miqt_exec_callback_QsciScintilla_marginClicked
+func miqt_exec_callback_QsciScintilla_marginClicked(cb C.intptr_t, margin C.int, line C.int, state C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(margin int, line int, state qt.KeyboardModifier))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1593,14 +1593,14 @@ func miqt_exec_callback_QsciScintilla_MarginClicked(cb C.intptr_t, margin C.int,
 }
 
 func (this *QsciScintilla) MarginRightClicked(margin int, line int, state qt.KeyboardModifier) {
-	C.QsciScintilla_MarginRightClicked(this.h, (C.int)(margin), (C.int)(line), (C.int)(state))
+	C.QsciScintilla_marginRightClicked(this.h, (C.int)(margin), (C.int)(line), (C.int)(state))
 }
 func (this *QsciScintilla) OnMarginRightClicked(slot func(margin int, line int, state qt.KeyboardModifier)) {
-	C.QsciScintilla_connect_MarginRightClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QsciScintilla_connect_marginRightClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QsciScintilla_MarginRightClicked
-func miqt_exec_callback_QsciScintilla_MarginRightClicked(cb C.intptr_t, margin C.int, line C.int, state C.int) {
+//export miqt_exec_callback_QsciScintilla_marginRightClicked
+func miqt_exec_callback_QsciScintilla_marginRightClicked(cb C.intptr_t, margin C.int, line C.int, state C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(margin int, line int, state qt.KeyboardModifier))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1617,14 +1617,14 @@ func miqt_exec_callback_QsciScintilla_MarginRightClicked(cb C.intptr_t, margin C
 }
 
 func (this *QsciScintilla) ModificationAttempted() {
-	C.QsciScintilla_ModificationAttempted(this.h)
+	C.QsciScintilla_modificationAttempted(this.h)
 }
 func (this *QsciScintilla) OnModificationAttempted(slot func()) {
-	C.QsciScintilla_connect_ModificationAttempted(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QsciScintilla_connect_modificationAttempted(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QsciScintilla_ModificationAttempted
-func miqt_exec_callback_QsciScintilla_ModificationAttempted(cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_modificationAttempted
+func miqt_exec_callback_QsciScintilla_modificationAttempted(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1634,14 +1634,14 @@ func miqt_exec_callback_QsciScintilla_ModificationAttempted(cb C.intptr_t) {
 }
 
 func (this *QsciScintilla) ModificationChanged(m bool) {
-	C.QsciScintilla_ModificationChanged(this.h, (C.bool)(m))
+	C.QsciScintilla_modificationChanged(this.h, (C.bool)(m))
 }
 func (this *QsciScintilla) OnModificationChanged(slot func(m bool)) {
-	C.QsciScintilla_connect_ModificationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QsciScintilla_connect_modificationChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QsciScintilla_ModificationChanged
-func miqt_exec_callback_QsciScintilla_ModificationChanged(cb C.intptr_t, m C.bool) {
+//export miqt_exec_callback_QsciScintilla_modificationChanged
+func miqt_exec_callback_QsciScintilla_modificationChanged(cb C.intptr_t, m C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(m bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1654,14 +1654,14 @@ func miqt_exec_callback_QsciScintilla_ModificationChanged(cb C.intptr_t, m C.boo
 }
 
 func (this *QsciScintilla) SelectionChanged() {
-	C.QsciScintilla_SelectionChanged(this.h)
+	C.QsciScintilla_selectionChanged(this.h)
 }
 func (this *QsciScintilla) OnSelectionChanged(slot func()) {
-	C.QsciScintilla_connect_SelectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QsciScintilla_connect_selectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QsciScintilla_SelectionChanged
-func miqt_exec_callback_QsciScintilla_SelectionChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_selectionChanged
+func miqt_exec_callback_QsciScintilla_selectionChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1671,14 +1671,14 @@ func miqt_exec_callback_QsciScintilla_SelectionChanged(cb C.intptr_t) {
 }
 
 func (this *QsciScintilla) TextChanged() {
-	C.QsciScintilla_TextChanged(this.h)
+	C.QsciScintilla_textChanged(this.h)
 }
 func (this *QsciScintilla) OnTextChanged(slot func()) {
-	C.QsciScintilla_connect_TextChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QsciScintilla_connect_textChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QsciScintilla_TextChanged
-func miqt_exec_callback_QsciScintilla_TextChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_textChanged
+func miqt_exec_callback_QsciScintilla_textChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1692,14 +1692,14 @@ func (this *QsciScintilla) UserListActivated(id int, stringVal string) {
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	C.QsciScintilla_UserListActivated(this.h, (C.int)(id), stringVal_ms)
+	C.QsciScintilla_userListActivated(this.h, (C.int)(id), stringVal_ms)
 }
 func (this *QsciScintilla) OnUserListActivated(slot func(id int, stringVal string)) {
-	C.QsciScintilla_connect_UserListActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QsciScintilla_connect_userListActivated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QsciScintilla_UserListActivated
-func miqt_exec_callback_QsciScintilla_UserListActivated(cb C.intptr_t, id C.int, stringVal C.struct_miqt_string) {
+//export miqt_exec_callback_QsciScintilla_userListActivated
+func miqt_exec_callback_QsciScintilla_userListActivated(cb C.intptr_t, id C.int, stringVal C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(id int, stringVal string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1721,7 +1721,7 @@ func QsciScintilla_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QsciScintilla_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QsciScintilla_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1732,7 +1732,7 @@ func QsciScintilla_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QsciScintilla_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QsciScintilla_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1743,7 +1743,7 @@ func QsciScintilla_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QsciScintilla_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QsciScintilla_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1754,87 +1754,87 @@ func QsciScintilla_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QsciScintilla_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QsciScintilla_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciScintilla) ClearAnnotations1(line int) {
-	C.QsciScintilla_ClearAnnotations1(this.h, (C.int)(line))
+	C.QsciScintilla_clearAnnotations1(this.h, (C.int)(line))
 }
 
 func (this *QsciScintilla) IndicatorDefine2(style QsciScintilla__IndicatorStyle, indicatorNumber int) int {
-	return (int)(C.QsciScintilla_IndicatorDefine2(this.h, (C.int)(style), (C.int)(indicatorNumber)))
+	return (int)(C.QsciScintilla_indicatorDefine2(this.h, (C.int)(style), (C.int)(indicatorNumber)))
 }
 
 func (this *QsciScintilla) MarkerDefine2(sym QsciScintilla__MarkerSymbol, markerNumber int) int {
-	return (int)(C.QsciScintilla_MarkerDefine2(this.h, (C.int)(sym), (C.int)(markerNumber)))
+	return (int)(C.QsciScintilla_markerDefine2(this.h, (C.int)(sym), (C.int)(markerNumber)))
 }
 
 func (this *QsciScintilla) MarkerDefine22(ch int8, markerNumber int) int {
-	return (int)(C.QsciScintilla_MarkerDefine22(this.h, (C.char)(ch), (C.int)(markerNumber)))
+	return (int)(C.QsciScintilla_markerDefine22(this.h, (C.char)(ch), (C.int)(markerNumber)))
 }
 
 func (this *QsciScintilla) MarkerDefine23(pm *qt.QPixmap, markerNumber int) int {
-	return (int)(C.QsciScintilla_MarkerDefine23(this.h, (*C.QPixmap)(pm.UnsafePointer()), (C.int)(markerNumber)))
+	return (int)(C.QsciScintilla_markerDefine23(this.h, (*C.QPixmap)(pm.UnsafePointer()), (C.int)(markerNumber)))
 }
 
 func (this *QsciScintilla) MarkerDefine24(im *qt.QImage, markerNumber int) int {
-	return (int)(C.QsciScintilla_MarkerDefine24(this.h, (*C.QImage)(im.UnsafePointer()), (C.int)(markerNumber)))
+	return (int)(C.QsciScintilla_markerDefine24(this.h, (*C.QImage)(im.UnsafePointer()), (C.int)(markerNumber)))
 }
 
 func (this *QsciScintilla) MarkerDelete2(linenr int, markerNumber int) {
-	C.QsciScintilla_MarkerDelete2(this.h, (C.int)(linenr), (C.int)(markerNumber))
+	C.QsciScintilla_markerDelete2(this.h, (C.int)(linenr), (C.int)(markerNumber))
 }
 
 func (this *QsciScintilla) MarkerDeleteAll1(markerNumber int) {
-	C.QsciScintilla_MarkerDeleteAll1(this.h, (C.int)(markerNumber))
+	C.QsciScintilla_markerDeleteAll1(this.h, (C.int)(markerNumber))
 }
 
 func (this *QsciScintilla) SetIndicatorDrawUnder2(under bool, indicatorNumber int) {
-	C.QsciScintilla_SetIndicatorDrawUnder2(this.h, (C.bool)(under), (C.int)(indicatorNumber))
+	C.QsciScintilla_setIndicatorDrawUnder2(this.h, (C.bool)(under), (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) SetIndicatorForegroundColor2(col *qt.QColor, indicatorNumber int) {
-	C.QsciScintilla_SetIndicatorForegroundColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(indicatorNumber))
+	C.QsciScintilla_setIndicatorForegroundColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) SetIndicatorHoverForegroundColor2(col *qt.QColor, indicatorNumber int) {
-	C.QsciScintilla_SetIndicatorHoverForegroundColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(indicatorNumber))
+	C.QsciScintilla_setIndicatorHoverForegroundColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) SetIndicatorHoverStyle2(style QsciScintilla__IndicatorStyle, indicatorNumber int) {
-	C.QsciScintilla_SetIndicatorHoverStyle2(this.h, (C.int)(style), (C.int)(indicatorNumber))
+	C.QsciScintilla_setIndicatorHoverStyle2(this.h, (C.int)(style), (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) SetIndicatorOutlineColor2(col *qt.QColor, indicatorNumber int) {
-	C.QsciScintilla_SetIndicatorOutlineColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(indicatorNumber))
+	C.QsciScintilla_setIndicatorOutlineColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(indicatorNumber))
 }
 
 func (this *QsciScintilla) ClearMarginText1(line int) {
-	C.QsciScintilla_ClearMarginText1(this.h, (C.int)(line))
+	C.QsciScintilla_clearMarginText1(this.h, (C.int)(line))
 }
 
 func (this *QsciScintilla) SetMarkerBackgroundColor2(col *qt.QColor, markerNumber int) {
-	C.QsciScintilla_SetMarkerBackgroundColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(markerNumber))
+	C.QsciScintilla_setMarkerBackgroundColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(markerNumber))
 }
 
 func (this *QsciScintilla) SetMarkerForegroundColor2(col *qt.QColor, markerNumber int) {
-	C.QsciScintilla_SetMarkerForegroundColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(markerNumber))
+	C.QsciScintilla_setMarkerForegroundColor2(this.h, (*C.QColor)(col.UnsafePointer()), (C.int)(markerNumber))
 }
 
 func (this *QsciScintilla) SetWrapVisualFlags2(endFlag QsciScintilla__WrapVisualFlag, startFlag QsciScintilla__WrapVisualFlag) {
-	C.QsciScintilla_SetWrapVisualFlags2(this.h, (C.int)(endFlag), (C.int)(startFlag))
+	C.QsciScintilla_setWrapVisualFlags2(this.h, (C.int)(endFlag), (C.int)(startFlag))
 }
 
 func (this *QsciScintilla) SetWrapVisualFlags3(endFlag QsciScintilla__WrapVisualFlag, startFlag QsciScintilla__WrapVisualFlag, indent int) {
-	C.QsciScintilla_SetWrapVisualFlags3(this.h, (C.int)(endFlag), (C.int)(startFlag), (C.int)(indent))
+	C.QsciScintilla_setWrapVisualFlags3(this.h, (C.int)(endFlag), (C.int)(startFlag), (C.int)(indent))
 }
 
 func (this *QsciScintilla) callVirtualBase_ApiContext(pos int, context_start *int, last_word_start *int) []string {
 
-	var _ma C.struct_miqt_array = C.QsciScintilla_virtualbase_ApiContext(unsafe.Pointer(this.h), (C.int)(pos), (*C.int)(unsafe.Pointer(context_start)), (*C.int)(unsafe.Pointer(last_word_start)))
+	var _ma C.struct_miqt_array = C.QsciScintilla_virtualbase_apiContext(unsafe.Pointer(this.h), (C.int)(pos), (*C.int)(unsafe.Pointer(context_start)), (*C.int)(unsafe.Pointer(last_word_start)))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1846,15 +1846,15 @@ func (this *QsciScintilla) callVirtualBase_ApiContext(pos int, context_start *in
 	return _ret
 
 }
-func (this *QsciScintilla) OnApiContext(slot func(super func(pos int, context_start *int, last_word_start *int) []string, pos int, context_start *int, last_word_start *int) []string) {
-	ok := C.QsciScintilla_override_virtual_ApiContext(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnapiContext(slot func(super func(pos int, context_start *int, last_word_start *int) []string, pos int, context_start *int, last_word_start *int) []string) {
+	ok := C.QsciScintilla_override_virtual_apiContext(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ApiContext
-func miqt_exec_callback_QsciScintilla_ApiContext(self *C.QsciScintilla, cb C.intptr_t, pos C.int, context_start *C.int, last_word_start *C.int) C.struct_miqt_array {
+//export miqt_exec_callback_QsciScintilla_apiContext
+func miqt_exec_callback_QsciScintilla_apiContext(self *C.QsciScintilla, cb C.intptr_t, pos C.int, context_start *C.int, last_word_start *C.int) C.struct_miqt_array {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos int, context_start *int, last_word_start *int) []string, pos int, context_start *int, last_word_start *int) []string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1889,18 +1889,18 @@ func (this *QsciScintilla) callVirtualBase_FindFirst(expr string, re bool, cs bo
 	expr_ms.len = C.size_t(len(expr))
 	defer C.free(unsafe.Pointer(expr_ms.data))
 
-	return (bool)(C.QsciScintilla_virtualbase_FindFirst(unsafe.Pointer(this.h), expr_ms, (C.bool)(re), (C.bool)(cs), (C.bool)(wo), (C.bool)(wrap), (C.bool)(forward), (C.int)(line), (C.int)(index), (C.bool)(show), (C.bool)(posix), (C.bool)(cxx11)))
+	return (bool)(C.QsciScintilla_virtualbase_findFirst(unsafe.Pointer(this.h), expr_ms, (C.bool)(re), (C.bool)(cs), (C.bool)(wo), (C.bool)(wrap), (C.bool)(forward), (C.int)(line), (C.int)(index), (C.bool)(show), (C.bool)(posix), (C.bool)(cxx11)))
 
 }
-func (this *QsciScintilla) OnFindFirst(slot func(super func(expr string, re bool, cs bool, wo bool, wrap bool, forward bool, line int, index int, show bool, posix bool, cxx11 bool) bool, expr string, re bool, cs bool, wo bool, wrap bool, forward bool, line int, index int, show bool, posix bool, cxx11 bool) bool) {
-	ok := C.QsciScintilla_override_virtual_FindFirst(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnfindFirst(slot func(super func(expr string, re bool, cs bool, wo bool, wrap bool, forward bool, line int, index int, show bool, posix bool, cxx11 bool) bool, expr string, re bool, cs bool, wo bool, wrap bool, forward bool, line int, index int, show bool, posix bool, cxx11 bool) bool) {
+	ok := C.QsciScintilla_override_virtual_findFirst(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_FindFirst
-func miqt_exec_callback_QsciScintilla_FindFirst(self *C.QsciScintilla, cb C.intptr_t, expr C.struct_miqt_string, re C.bool, cs C.bool, wo C.bool, wrap C.bool, forward C.bool, line C.int, index C.int, show C.bool, posix C.bool, cxx11 C.bool) C.bool {
+//export miqt_exec_callback_QsciScintilla_findFirst
+func miqt_exec_callback_QsciScintilla_findFirst(self *C.QsciScintilla, cb C.intptr_t, expr C.struct_miqt_string, re C.bool, cs C.bool, wo C.bool, wrap C.bool, forward C.bool, line C.int, index C.int, show C.bool, posix C.bool, cxx11 C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(expr string, re bool, cs bool, wo bool, wrap bool, forward bool, line int, index int, show bool, posix bool, cxx11 bool) bool, expr string, re bool, cs bool, wo bool, wrap bool, forward bool, line int, index int, show bool, posix bool, cxx11 bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1943,18 +1943,18 @@ func (this *QsciScintilla) callVirtualBase_FindFirstInSelection(expr string, re 
 	expr_ms.len = C.size_t(len(expr))
 	defer C.free(unsafe.Pointer(expr_ms.data))
 
-	return (bool)(C.QsciScintilla_virtualbase_FindFirstInSelection(unsafe.Pointer(this.h), expr_ms, (C.bool)(re), (C.bool)(cs), (C.bool)(wo), (C.bool)(forward), (C.bool)(show), (C.bool)(posix), (C.bool)(cxx11)))
+	return (bool)(C.QsciScintilla_virtualbase_findFirstInSelection(unsafe.Pointer(this.h), expr_ms, (C.bool)(re), (C.bool)(cs), (C.bool)(wo), (C.bool)(forward), (C.bool)(show), (C.bool)(posix), (C.bool)(cxx11)))
 
 }
-func (this *QsciScintilla) OnFindFirstInSelection(slot func(super func(expr string, re bool, cs bool, wo bool, forward bool, show bool, posix bool, cxx11 bool) bool, expr string, re bool, cs bool, wo bool, forward bool, show bool, posix bool, cxx11 bool) bool) {
-	ok := C.QsciScintilla_override_virtual_FindFirstInSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnfindFirstInSelection(slot func(super func(expr string, re bool, cs bool, wo bool, forward bool, show bool, posix bool, cxx11 bool) bool, expr string, re bool, cs bool, wo bool, forward bool, show bool, posix bool, cxx11 bool) bool) {
+	ok := C.QsciScintilla_override_virtual_findFirstInSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_FindFirstInSelection
-func miqt_exec_callback_QsciScintilla_FindFirstInSelection(self *C.QsciScintilla, cb C.intptr_t, expr C.struct_miqt_string, re C.bool, cs C.bool, wo C.bool, forward C.bool, show C.bool, posix C.bool, cxx11 C.bool) C.bool {
+//export miqt_exec_callback_QsciScintilla_findFirstInSelection
+func miqt_exec_callback_QsciScintilla_findFirstInSelection(self *C.QsciScintilla, cb C.intptr_t, expr C.struct_miqt_string, re C.bool, cs C.bool, wo C.bool, forward C.bool, show C.bool, posix C.bool, cxx11 C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(expr string, re bool, cs bool, wo bool, forward bool, show bool, posix bool, cxx11 bool) bool, expr string, re bool, cs bool, wo bool, forward bool, show bool, posix bool, cxx11 bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1987,18 +1987,18 @@ func miqt_exec_callback_QsciScintilla_FindFirstInSelection(self *C.QsciScintilla
 
 func (this *QsciScintilla) callVirtualBase_FindNext() bool {
 
-	return (bool)(C.QsciScintilla_virtualbase_FindNext(unsafe.Pointer(this.h)))
+	return (bool)(C.QsciScintilla_virtualbase_findNext(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciScintilla) OnFindNext(slot func(super func() bool) bool) {
-	ok := C.QsciScintilla_override_virtual_FindNext(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnfindNext(slot func(super func() bool) bool) {
+	ok := C.QsciScintilla_override_virtual_findNext(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_FindNext
-func miqt_exec_callback_QsciScintilla_FindNext(self *C.QsciScintilla, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QsciScintilla_findNext
+func miqt_exec_callback_QsciScintilla_findNext(self *C.QsciScintilla, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2012,18 +2012,18 @@ func miqt_exec_callback_QsciScintilla_FindNext(self *C.QsciScintilla, cb C.intpt
 
 func (this *QsciScintilla) callVirtualBase_Recolor(start int, end int) {
 
-	C.QsciScintilla_virtualbase_Recolor(unsafe.Pointer(this.h), (C.int)(start), (C.int)(end))
+	C.QsciScintilla_virtualbase_recolor(unsafe.Pointer(this.h), (C.int)(start), (C.int)(end))
 
 }
-func (this *QsciScintilla) OnRecolor(slot func(super func(start int, end int), start int, end int)) {
-	ok := C.QsciScintilla_override_virtual_Recolor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) Onrecolor(slot func(super func(start int, end int), start int, end int)) {
+	ok := C.QsciScintilla_override_virtual_recolor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_Recolor
-func miqt_exec_callback_QsciScintilla_Recolor(self *C.QsciScintilla, cb C.intptr_t, start C.int, end C.int) {
+//export miqt_exec_callback_QsciScintilla_recolor
+func miqt_exec_callback_QsciScintilla_recolor(self *C.QsciScintilla, cb C.intptr_t, start C.int, end C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(start int, end int), start int, end int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2044,18 +2044,18 @@ func (this *QsciScintilla) callVirtualBase_Replace(replaceStr string) {
 	replaceStr_ms.len = C.size_t(len(replaceStr))
 	defer C.free(unsafe.Pointer(replaceStr_ms.data))
 
-	C.QsciScintilla_virtualbase_Replace(unsafe.Pointer(this.h), replaceStr_ms)
+	C.QsciScintilla_virtualbase_replace(unsafe.Pointer(this.h), replaceStr_ms)
 
 }
-func (this *QsciScintilla) OnReplace(slot func(super func(replaceStr string), replaceStr string)) {
-	ok := C.QsciScintilla_override_virtual_Replace(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) Onreplace(slot func(super func(replaceStr string), replaceStr string)) {
+	ok := C.QsciScintilla_override_virtual_replace(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_Replace
-func miqt_exec_callback_QsciScintilla_Replace(self *C.QsciScintilla, cb C.intptr_t, replaceStr C.struct_miqt_string) {
+//export miqt_exec_callback_QsciScintilla_replace
+func miqt_exec_callback_QsciScintilla_replace(self *C.QsciScintilla, cb C.intptr_t, replaceStr C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(replaceStr string), replaceStr string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2077,18 +2077,18 @@ func (this *QsciScintilla) callVirtualBase_Append(text string) {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	C.QsciScintilla_virtualbase_Append(unsafe.Pointer(this.h), text_ms)
+	C.QsciScintilla_virtualbase_append(unsafe.Pointer(this.h), text_ms)
 
 }
-func (this *QsciScintilla) OnAppend(slot func(super func(text string), text string)) {
-	ok := C.QsciScintilla_override_virtual_Append(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) Onappend(slot func(super func(text string), text string)) {
+	ok := C.QsciScintilla_override_virtual_append(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_Append
-func miqt_exec_callback_QsciScintilla_Append(self *C.QsciScintilla, cb C.intptr_t, text C.struct_miqt_string) {
+//export miqt_exec_callback_QsciScintilla_append
+func miqt_exec_callback_QsciScintilla_append(self *C.QsciScintilla, cb C.intptr_t, text C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(text string), text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2106,18 +2106,18 @@ func miqt_exec_callback_QsciScintilla_Append(self *C.QsciScintilla, cb C.intptr_
 
 func (this *QsciScintilla) callVirtualBase_AutoCompleteFromAll() {
 
-	C.QsciScintilla_virtualbase_AutoCompleteFromAll(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_autoCompleteFromAll(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnAutoCompleteFromAll(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_AutoCompleteFromAll(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnautoCompleteFromAll(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_autoCompleteFromAll(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_AutoCompleteFromAll
-func miqt_exec_callback_QsciScintilla_AutoCompleteFromAll(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_autoCompleteFromAll
+func miqt_exec_callback_QsciScintilla_autoCompleteFromAll(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2129,18 +2129,18 @@ func miqt_exec_callback_QsciScintilla_AutoCompleteFromAll(self *C.QsciScintilla,
 
 func (this *QsciScintilla) callVirtualBase_AutoCompleteFromAPIs() {
 
-	C.QsciScintilla_virtualbase_AutoCompleteFromAPIs(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_autoCompleteFromAPIs(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnAutoCompleteFromAPIs(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_AutoCompleteFromAPIs(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnautoCompleteFromAPIs(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_autoCompleteFromAPIs(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_AutoCompleteFromAPIs
-func miqt_exec_callback_QsciScintilla_AutoCompleteFromAPIs(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_autoCompleteFromAPIs
+func miqt_exec_callback_QsciScintilla_autoCompleteFromAPIs(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2152,18 +2152,18 @@ func miqt_exec_callback_QsciScintilla_AutoCompleteFromAPIs(self *C.QsciScintilla
 
 func (this *QsciScintilla) callVirtualBase_AutoCompleteFromDocument() {
 
-	C.QsciScintilla_virtualbase_AutoCompleteFromDocument(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_autoCompleteFromDocument(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnAutoCompleteFromDocument(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_AutoCompleteFromDocument(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnautoCompleteFromDocument(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_autoCompleteFromDocument(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_AutoCompleteFromDocument
-func miqt_exec_callback_QsciScintilla_AutoCompleteFromDocument(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_autoCompleteFromDocument
+func miqt_exec_callback_QsciScintilla_autoCompleteFromDocument(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2175,18 +2175,18 @@ func miqt_exec_callback_QsciScintilla_AutoCompleteFromDocument(self *C.QsciScint
 
 func (this *QsciScintilla) callVirtualBase_CallTip() {
 
-	C.QsciScintilla_virtualbase_CallTip(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_callTip(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnCallTip(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_CallTip(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OncallTip(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_callTip(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_CallTip
-func miqt_exec_callback_QsciScintilla_CallTip(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_callTip
+func miqt_exec_callback_QsciScintilla_callTip(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2198,18 +2198,18 @@ func miqt_exec_callback_QsciScintilla_CallTip(self *C.QsciScintilla, cb C.intptr
 
 func (this *QsciScintilla) callVirtualBase_Clear() {
 
-	C.QsciScintilla_virtualbase_Clear(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_clear(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnClear(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_Clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) Onclear(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_clear(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_Clear
-func miqt_exec_callback_QsciScintilla_Clear(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_clear
+func miqt_exec_callback_QsciScintilla_clear(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2221,18 +2221,18 @@ func miqt_exec_callback_QsciScintilla_Clear(self *C.QsciScintilla, cb C.intptr_t
 
 func (this *QsciScintilla) callVirtualBase_Copy() {
 
-	C.QsciScintilla_virtualbase_Copy(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_copy(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnCopy(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_Copy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) Oncopy(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_copy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_Copy
-func miqt_exec_callback_QsciScintilla_Copy(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_copy
+func miqt_exec_callback_QsciScintilla_copy(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2244,18 +2244,18 @@ func miqt_exec_callback_QsciScintilla_Copy(self *C.QsciScintilla, cb C.intptr_t)
 
 func (this *QsciScintilla) callVirtualBase_Cut() {
 
-	C.QsciScintilla_virtualbase_Cut(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_cut(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnCut(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_Cut(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) Oncut(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_cut(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_Cut
-func miqt_exec_callback_QsciScintilla_Cut(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_cut
+func miqt_exec_callback_QsciScintilla_cut(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2267,18 +2267,18 @@ func miqt_exec_callback_QsciScintilla_Cut(self *C.QsciScintilla, cb C.intptr_t) 
 
 func (this *QsciScintilla) callVirtualBase_EnsureCursorVisible() {
 
-	C.QsciScintilla_virtualbase_EnsureCursorVisible(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_ensureCursorVisible(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnEnsureCursorVisible(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_EnsureCursorVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnensureCursorVisible(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_ensureCursorVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_EnsureCursorVisible
-func miqt_exec_callback_QsciScintilla_EnsureCursorVisible(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_ensureCursorVisible
+func miqt_exec_callback_QsciScintilla_ensureCursorVisible(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2290,18 +2290,18 @@ func miqt_exec_callback_QsciScintilla_EnsureCursorVisible(self *C.QsciScintilla,
 
 func (this *QsciScintilla) callVirtualBase_EnsureLineVisible(line int) {
 
-	C.QsciScintilla_virtualbase_EnsureLineVisible(unsafe.Pointer(this.h), (C.int)(line))
+	C.QsciScintilla_virtualbase_ensureLineVisible(unsafe.Pointer(this.h), (C.int)(line))
 
 }
-func (this *QsciScintilla) OnEnsureLineVisible(slot func(super func(line int), line int)) {
-	ok := C.QsciScintilla_override_virtual_EnsureLineVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnensureLineVisible(slot func(super func(line int), line int)) {
+	ok := C.QsciScintilla_override_virtual_ensureLineVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_EnsureLineVisible
-func miqt_exec_callback_QsciScintilla_EnsureLineVisible(self *C.QsciScintilla, cb C.intptr_t, line C.int) {
+//export miqt_exec_callback_QsciScintilla_ensureLineVisible
+func miqt_exec_callback_QsciScintilla_ensureLineVisible(self *C.QsciScintilla, cb C.intptr_t, line C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(line int), line int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2316,18 +2316,18 @@ func miqt_exec_callback_QsciScintilla_EnsureLineVisible(self *C.QsciScintilla, c
 
 func (this *QsciScintilla) callVirtualBase_FoldAll(children bool) {
 
-	C.QsciScintilla_virtualbase_FoldAll(unsafe.Pointer(this.h), (C.bool)(children))
+	C.QsciScintilla_virtualbase_foldAll(unsafe.Pointer(this.h), (C.bool)(children))
 
 }
-func (this *QsciScintilla) OnFoldAll(slot func(super func(children bool), children bool)) {
-	ok := C.QsciScintilla_override_virtual_FoldAll(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnfoldAll(slot func(super func(children bool), children bool)) {
+	ok := C.QsciScintilla_override_virtual_foldAll(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_FoldAll
-func miqt_exec_callback_QsciScintilla_FoldAll(self *C.QsciScintilla, cb C.intptr_t, children C.bool) {
+//export miqt_exec_callback_QsciScintilla_foldAll
+func miqt_exec_callback_QsciScintilla_foldAll(self *C.QsciScintilla, cb C.intptr_t, children C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(children bool), children bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2342,18 +2342,18 @@ func miqt_exec_callback_QsciScintilla_FoldAll(self *C.QsciScintilla, cb C.intptr
 
 func (this *QsciScintilla) callVirtualBase_FoldLine(line int) {
 
-	C.QsciScintilla_virtualbase_FoldLine(unsafe.Pointer(this.h), (C.int)(line))
+	C.QsciScintilla_virtualbase_foldLine(unsafe.Pointer(this.h), (C.int)(line))
 
 }
-func (this *QsciScintilla) OnFoldLine(slot func(super func(line int), line int)) {
-	ok := C.QsciScintilla_override_virtual_FoldLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnfoldLine(slot func(super func(line int), line int)) {
+	ok := C.QsciScintilla_override_virtual_foldLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_FoldLine
-func miqt_exec_callback_QsciScintilla_FoldLine(self *C.QsciScintilla, cb C.intptr_t, line C.int) {
+//export miqt_exec_callback_QsciScintilla_foldLine
+func miqt_exec_callback_QsciScintilla_foldLine(self *C.QsciScintilla, cb C.intptr_t, line C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(line int), line int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2368,18 +2368,18 @@ func miqt_exec_callback_QsciScintilla_FoldLine(self *C.QsciScintilla, cb C.intpt
 
 func (this *QsciScintilla) callVirtualBase_Indent(line int) {
 
-	C.QsciScintilla_virtualbase_Indent(unsafe.Pointer(this.h), (C.int)(line))
+	C.QsciScintilla_virtualbase_indent(unsafe.Pointer(this.h), (C.int)(line))
 
 }
-func (this *QsciScintilla) OnIndent(slot func(super func(line int), line int)) {
-	ok := C.QsciScintilla_override_virtual_Indent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) Onindent(slot func(super func(line int), line int)) {
+	ok := C.QsciScintilla_override_virtual_indent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_Indent
-func miqt_exec_callback_QsciScintilla_Indent(self *C.QsciScintilla, cb C.intptr_t, line C.int) {
+//export miqt_exec_callback_QsciScintilla_indent
+func miqt_exec_callback_QsciScintilla_indent(self *C.QsciScintilla, cb C.intptr_t, line C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(line int), line int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2398,18 +2398,18 @@ func (this *QsciScintilla) callVirtualBase_Insert(text string) {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	C.QsciScintilla_virtualbase_Insert(unsafe.Pointer(this.h), text_ms)
+	C.QsciScintilla_virtualbase_insert(unsafe.Pointer(this.h), text_ms)
 
 }
-func (this *QsciScintilla) OnInsert(slot func(super func(text string), text string)) {
-	ok := C.QsciScintilla_override_virtual_Insert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) Oninsert(slot func(super func(text string), text string)) {
+	ok := C.QsciScintilla_override_virtual_insert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_Insert
-func miqt_exec_callback_QsciScintilla_Insert(self *C.QsciScintilla, cb C.intptr_t, text C.struct_miqt_string) {
+//export miqt_exec_callback_QsciScintilla_insert
+func miqt_exec_callback_QsciScintilla_insert(self *C.QsciScintilla, cb C.intptr_t, text C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(text string), text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2431,18 +2431,18 @@ func (this *QsciScintilla) callVirtualBase_InsertAt(text string, line int, index
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	C.QsciScintilla_virtualbase_InsertAt(unsafe.Pointer(this.h), text_ms, (C.int)(line), (C.int)(index))
+	C.QsciScintilla_virtualbase_insertAt(unsafe.Pointer(this.h), text_ms, (C.int)(line), (C.int)(index))
 
 }
-func (this *QsciScintilla) OnInsertAt(slot func(super func(text string, line int, index int), text string, line int, index int)) {
-	ok := C.QsciScintilla_override_virtual_InsertAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OninsertAt(slot func(super func(text string, line int, index int), text string, line int, index int)) {
+	ok := C.QsciScintilla_override_virtual_insertAt(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_InsertAt
-func miqt_exec_callback_QsciScintilla_InsertAt(self *C.QsciScintilla, cb C.intptr_t, text C.struct_miqt_string, line C.int, index C.int) {
+//export miqt_exec_callback_QsciScintilla_insertAt
+func miqt_exec_callback_QsciScintilla_insertAt(self *C.QsciScintilla, cb C.intptr_t, text C.struct_miqt_string, line C.int, index C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(text string, line int, index int), text string, line int, index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2463,18 +2463,18 @@ func miqt_exec_callback_QsciScintilla_InsertAt(self *C.QsciScintilla, cb C.intpt
 
 func (this *QsciScintilla) callVirtualBase_MoveToMatchingBrace() {
 
-	C.QsciScintilla_virtualbase_MoveToMatchingBrace(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_moveToMatchingBrace(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnMoveToMatchingBrace(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_MoveToMatchingBrace(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnmoveToMatchingBrace(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_moveToMatchingBrace(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_MoveToMatchingBrace
-func miqt_exec_callback_QsciScintilla_MoveToMatchingBrace(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_moveToMatchingBrace
+func miqt_exec_callback_QsciScintilla_moveToMatchingBrace(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2486,18 +2486,18 @@ func miqt_exec_callback_QsciScintilla_MoveToMatchingBrace(self *C.QsciScintilla,
 
 func (this *QsciScintilla) callVirtualBase_Paste() {
 
-	C.QsciScintilla_virtualbase_Paste(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_paste(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnPaste(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_Paste(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) Onpaste(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_paste(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_Paste
-func miqt_exec_callback_QsciScintilla_Paste(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_paste
+func miqt_exec_callback_QsciScintilla_paste(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2509,18 +2509,18 @@ func miqt_exec_callback_QsciScintilla_Paste(self *C.QsciScintilla, cb C.intptr_t
 
 func (this *QsciScintilla) callVirtualBase_Redo() {
 
-	C.QsciScintilla_virtualbase_Redo(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_redo(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnRedo(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_Redo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) Onredo(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_redo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_Redo
-func miqt_exec_callback_QsciScintilla_Redo(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_redo
+func miqt_exec_callback_QsciScintilla_redo(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2532,18 +2532,18 @@ func miqt_exec_callback_QsciScintilla_Redo(self *C.QsciScintilla, cb C.intptr_t)
 
 func (this *QsciScintilla) callVirtualBase_RemoveSelectedText() {
 
-	C.QsciScintilla_virtualbase_RemoveSelectedText(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_removeSelectedText(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnRemoveSelectedText(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_RemoveSelectedText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnremoveSelectedText(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_removeSelectedText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_RemoveSelectedText
-func miqt_exec_callback_QsciScintilla_RemoveSelectedText(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_removeSelectedText
+func miqt_exec_callback_QsciScintilla_removeSelectedText(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2559,18 +2559,18 @@ func (this *QsciScintilla) callVirtualBase_ReplaceSelectedText(text string) {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	C.QsciScintilla_virtualbase_ReplaceSelectedText(unsafe.Pointer(this.h), text_ms)
+	C.QsciScintilla_virtualbase_replaceSelectedText(unsafe.Pointer(this.h), text_ms)
 
 }
-func (this *QsciScintilla) OnReplaceSelectedText(slot func(super func(text string), text string)) {
-	ok := C.QsciScintilla_override_virtual_ReplaceSelectedText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnreplaceSelectedText(slot func(super func(text string), text string)) {
+	ok := C.QsciScintilla_override_virtual_replaceSelectedText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ReplaceSelectedText
-func miqt_exec_callback_QsciScintilla_ReplaceSelectedText(self *C.QsciScintilla, cb C.intptr_t, text C.struct_miqt_string) {
+//export miqt_exec_callback_QsciScintilla_replaceSelectedText
+func miqt_exec_callback_QsciScintilla_replaceSelectedText(self *C.QsciScintilla, cb C.intptr_t, text C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(text string), text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2588,18 +2588,18 @@ func miqt_exec_callback_QsciScintilla_ReplaceSelectedText(self *C.QsciScintilla,
 
 func (this *QsciScintilla) callVirtualBase_ResetSelectionBackgroundColor() {
 
-	C.QsciScintilla_virtualbase_ResetSelectionBackgroundColor(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_resetSelectionBackgroundColor(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnResetSelectionBackgroundColor(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_ResetSelectionBackgroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnresetSelectionBackgroundColor(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_resetSelectionBackgroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ResetSelectionBackgroundColor
-func miqt_exec_callback_QsciScintilla_ResetSelectionBackgroundColor(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_resetSelectionBackgroundColor
+func miqt_exec_callback_QsciScintilla_resetSelectionBackgroundColor(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2611,18 +2611,18 @@ func miqt_exec_callback_QsciScintilla_ResetSelectionBackgroundColor(self *C.Qsci
 
 func (this *QsciScintilla) callVirtualBase_ResetSelectionForegroundColor() {
 
-	C.QsciScintilla_virtualbase_ResetSelectionForegroundColor(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_resetSelectionForegroundColor(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnResetSelectionForegroundColor(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_ResetSelectionForegroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnresetSelectionForegroundColor(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_resetSelectionForegroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ResetSelectionForegroundColor
-func miqt_exec_callback_QsciScintilla_ResetSelectionForegroundColor(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_resetSelectionForegroundColor
+func miqt_exec_callback_QsciScintilla_resetSelectionForegroundColor(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2634,18 +2634,18 @@ func miqt_exec_callback_QsciScintilla_ResetSelectionForegroundColor(self *C.Qsci
 
 func (this *QsciScintilla) callVirtualBase_SelectAll(selectVal bool) {
 
-	C.QsciScintilla_virtualbase_SelectAll(unsafe.Pointer(this.h), (C.bool)(selectVal))
+	C.QsciScintilla_virtualbase_selectAll(unsafe.Pointer(this.h), (C.bool)(selectVal))
 
 }
-func (this *QsciScintilla) OnSelectAll(slot func(super func(selectVal bool), selectVal bool)) {
-	ok := C.QsciScintilla_override_virtual_SelectAll(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnselectAll(slot func(super func(selectVal bool), selectVal bool)) {
+	ok := C.QsciScintilla_override_virtual_selectAll(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SelectAll
-func miqt_exec_callback_QsciScintilla_SelectAll(self *C.QsciScintilla, cb C.intptr_t, selectVal C.bool) {
+//export miqt_exec_callback_QsciScintilla_selectAll
+func miqt_exec_callback_QsciScintilla_selectAll(self *C.QsciScintilla, cb C.intptr_t, selectVal C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selectVal bool), selectVal bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2660,18 +2660,18 @@ func miqt_exec_callback_QsciScintilla_SelectAll(self *C.QsciScintilla, cb C.intp
 
 func (this *QsciScintilla) callVirtualBase_SelectToMatchingBrace() {
 
-	C.QsciScintilla_virtualbase_SelectToMatchingBrace(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_selectToMatchingBrace(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnSelectToMatchingBrace(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_SelectToMatchingBrace(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnselectToMatchingBrace(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_selectToMatchingBrace(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SelectToMatchingBrace
-func miqt_exec_callback_QsciScintilla_SelectToMatchingBrace(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_selectToMatchingBrace
+func miqt_exec_callback_QsciScintilla_selectToMatchingBrace(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2683,18 +2683,18 @@ func miqt_exec_callback_QsciScintilla_SelectToMatchingBrace(self *C.QsciScintill
 
 func (this *QsciScintilla) callVirtualBase_SetAutoCompletionCaseSensitivity(cs bool) {
 
-	C.QsciScintilla_virtualbase_SetAutoCompletionCaseSensitivity(unsafe.Pointer(this.h), (C.bool)(cs))
+	C.QsciScintilla_virtualbase_setAutoCompletionCaseSensitivity(unsafe.Pointer(this.h), (C.bool)(cs))
 
 }
-func (this *QsciScintilla) OnSetAutoCompletionCaseSensitivity(slot func(super func(cs bool), cs bool)) {
-	ok := C.QsciScintilla_override_virtual_SetAutoCompletionCaseSensitivity(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetAutoCompletionCaseSensitivity(slot func(super func(cs bool), cs bool)) {
+	ok := C.QsciScintilla_override_virtual_setAutoCompletionCaseSensitivity(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetAutoCompletionCaseSensitivity
-func miqt_exec_callback_QsciScintilla_SetAutoCompletionCaseSensitivity(self *C.QsciScintilla, cb C.intptr_t, cs C.bool) {
+//export miqt_exec_callback_QsciScintilla_setAutoCompletionCaseSensitivity
+func miqt_exec_callback_QsciScintilla_setAutoCompletionCaseSensitivity(self *C.QsciScintilla, cb C.intptr_t, cs C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(cs bool), cs bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2709,18 +2709,18 @@ func miqt_exec_callback_QsciScintilla_SetAutoCompletionCaseSensitivity(self *C.Q
 
 func (this *QsciScintilla) callVirtualBase_SetAutoCompletionReplaceWord(replace bool) {
 
-	C.QsciScintilla_virtualbase_SetAutoCompletionReplaceWord(unsafe.Pointer(this.h), (C.bool)(replace))
+	C.QsciScintilla_virtualbase_setAutoCompletionReplaceWord(unsafe.Pointer(this.h), (C.bool)(replace))
 
 }
-func (this *QsciScintilla) OnSetAutoCompletionReplaceWord(slot func(super func(replace bool), replace bool)) {
-	ok := C.QsciScintilla_override_virtual_SetAutoCompletionReplaceWord(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetAutoCompletionReplaceWord(slot func(super func(replace bool), replace bool)) {
+	ok := C.QsciScintilla_override_virtual_setAutoCompletionReplaceWord(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetAutoCompletionReplaceWord
-func miqt_exec_callback_QsciScintilla_SetAutoCompletionReplaceWord(self *C.QsciScintilla, cb C.intptr_t, replace C.bool) {
+//export miqt_exec_callback_QsciScintilla_setAutoCompletionReplaceWord
+func miqt_exec_callback_QsciScintilla_setAutoCompletionReplaceWord(self *C.QsciScintilla, cb C.intptr_t, replace C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(replace bool), replace bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2735,18 +2735,18 @@ func miqt_exec_callback_QsciScintilla_SetAutoCompletionReplaceWord(self *C.QsciS
 
 func (this *QsciScintilla) callVirtualBase_SetAutoCompletionShowSingle(single bool) {
 
-	C.QsciScintilla_virtualbase_SetAutoCompletionShowSingle(unsafe.Pointer(this.h), (C.bool)(single))
+	C.QsciScintilla_virtualbase_setAutoCompletionShowSingle(unsafe.Pointer(this.h), (C.bool)(single))
 
 }
-func (this *QsciScintilla) OnSetAutoCompletionShowSingle(slot func(super func(single bool), single bool)) {
-	ok := C.QsciScintilla_override_virtual_SetAutoCompletionShowSingle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetAutoCompletionShowSingle(slot func(super func(single bool), single bool)) {
+	ok := C.QsciScintilla_override_virtual_setAutoCompletionShowSingle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetAutoCompletionShowSingle
-func miqt_exec_callback_QsciScintilla_SetAutoCompletionShowSingle(self *C.QsciScintilla, cb C.intptr_t, single C.bool) {
+//export miqt_exec_callback_QsciScintilla_setAutoCompletionShowSingle
+func miqt_exec_callback_QsciScintilla_setAutoCompletionShowSingle(self *C.QsciScintilla, cb C.intptr_t, single C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(single bool), single bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2761,18 +2761,18 @@ func miqt_exec_callback_QsciScintilla_SetAutoCompletionShowSingle(self *C.QsciSc
 
 func (this *QsciScintilla) callVirtualBase_SetAutoCompletionSource(source QsciScintilla__AutoCompletionSource) {
 
-	C.QsciScintilla_virtualbase_SetAutoCompletionSource(unsafe.Pointer(this.h), (C.int)(source))
+	C.QsciScintilla_virtualbase_setAutoCompletionSource(unsafe.Pointer(this.h), (C.int)(source))
 
 }
-func (this *QsciScintilla) OnSetAutoCompletionSource(slot func(super func(source QsciScintilla__AutoCompletionSource), source QsciScintilla__AutoCompletionSource)) {
-	ok := C.QsciScintilla_override_virtual_SetAutoCompletionSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetAutoCompletionSource(slot func(super func(source QsciScintilla__AutoCompletionSource), source QsciScintilla__AutoCompletionSource)) {
+	ok := C.QsciScintilla_override_virtual_setAutoCompletionSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetAutoCompletionSource
-func miqt_exec_callback_QsciScintilla_SetAutoCompletionSource(self *C.QsciScintilla, cb C.intptr_t, source C.int) {
+//export miqt_exec_callback_QsciScintilla_setAutoCompletionSource
+func miqt_exec_callback_QsciScintilla_setAutoCompletionSource(self *C.QsciScintilla, cb C.intptr_t, source C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(source QsciScintilla__AutoCompletionSource), source QsciScintilla__AutoCompletionSource))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2787,18 +2787,18 @@ func miqt_exec_callback_QsciScintilla_SetAutoCompletionSource(self *C.QsciScinti
 
 func (this *QsciScintilla) callVirtualBase_SetAutoCompletionThreshold(thresh int) {
 
-	C.QsciScintilla_virtualbase_SetAutoCompletionThreshold(unsafe.Pointer(this.h), (C.int)(thresh))
+	C.QsciScintilla_virtualbase_setAutoCompletionThreshold(unsafe.Pointer(this.h), (C.int)(thresh))
 
 }
-func (this *QsciScintilla) OnSetAutoCompletionThreshold(slot func(super func(thresh int), thresh int)) {
-	ok := C.QsciScintilla_override_virtual_SetAutoCompletionThreshold(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetAutoCompletionThreshold(slot func(super func(thresh int), thresh int)) {
+	ok := C.QsciScintilla_override_virtual_setAutoCompletionThreshold(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetAutoCompletionThreshold
-func miqt_exec_callback_QsciScintilla_SetAutoCompletionThreshold(self *C.QsciScintilla, cb C.intptr_t, thresh C.int) {
+//export miqt_exec_callback_QsciScintilla_setAutoCompletionThreshold
+func miqt_exec_callback_QsciScintilla_setAutoCompletionThreshold(self *C.QsciScintilla, cb C.intptr_t, thresh C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(thresh int), thresh int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2813,18 +2813,18 @@ func miqt_exec_callback_QsciScintilla_SetAutoCompletionThreshold(self *C.QsciSci
 
 func (this *QsciScintilla) callVirtualBase_SetAutoCompletionUseSingle(single QsciScintilla__AutoCompletionUseSingle) {
 
-	C.QsciScintilla_virtualbase_SetAutoCompletionUseSingle(unsafe.Pointer(this.h), (C.int)(single))
+	C.QsciScintilla_virtualbase_setAutoCompletionUseSingle(unsafe.Pointer(this.h), (C.int)(single))
 
 }
-func (this *QsciScintilla) OnSetAutoCompletionUseSingle(slot func(super func(single QsciScintilla__AutoCompletionUseSingle), single QsciScintilla__AutoCompletionUseSingle)) {
-	ok := C.QsciScintilla_override_virtual_SetAutoCompletionUseSingle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetAutoCompletionUseSingle(slot func(super func(single QsciScintilla__AutoCompletionUseSingle), single QsciScintilla__AutoCompletionUseSingle)) {
+	ok := C.QsciScintilla_override_virtual_setAutoCompletionUseSingle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetAutoCompletionUseSingle
-func miqt_exec_callback_QsciScintilla_SetAutoCompletionUseSingle(self *C.QsciScintilla, cb C.intptr_t, single C.int) {
+//export miqt_exec_callback_QsciScintilla_setAutoCompletionUseSingle
+func miqt_exec_callback_QsciScintilla_setAutoCompletionUseSingle(self *C.QsciScintilla, cb C.intptr_t, single C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(single QsciScintilla__AutoCompletionUseSingle), single QsciScintilla__AutoCompletionUseSingle))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2839,18 +2839,18 @@ func miqt_exec_callback_QsciScintilla_SetAutoCompletionUseSingle(self *C.QsciSci
 
 func (this *QsciScintilla) callVirtualBase_SetAutoIndent(autoindent bool) {
 
-	C.QsciScintilla_virtualbase_SetAutoIndent(unsafe.Pointer(this.h), (C.bool)(autoindent))
+	C.QsciScintilla_virtualbase_setAutoIndent(unsafe.Pointer(this.h), (C.bool)(autoindent))
 
 }
-func (this *QsciScintilla) OnSetAutoIndent(slot func(super func(autoindent bool), autoindent bool)) {
-	ok := C.QsciScintilla_override_virtual_SetAutoIndent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetAutoIndent(slot func(super func(autoindent bool), autoindent bool)) {
+	ok := C.QsciScintilla_override_virtual_setAutoIndent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetAutoIndent
-func miqt_exec_callback_QsciScintilla_SetAutoIndent(self *C.QsciScintilla, cb C.intptr_t, autoindent C.bool) {
+//export miqt_exec_callback_QsciScintilla_setAutoIndent
+func miqt_exec_callback_QsciScintilla_setAutoIndent(self *C.QsciScintilla, cb C.intptr_t, autoindent C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(autoindent bool), autoindent bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2865,18 +2865,18 @@ func miqt_exec_callback_QsciScintilla_SetAutoIndent(self *C.QsciScintilla, cb C.
 
 func (this *QsciScintilla) callVirtualBase_SetBraceMatching(bm QsciScintilla__BraceMatch) {
 
-	C.QsciScintilla_virtualbase_SetBraceMatching(unsafe.Pointer(this.h), (C.int)(bm))
+	C.QsciScintilla_virtualbase_setBraceMatching(unsafe.Pointer(this.h), (C.int)(bm))
 
 }
-func (this *QsciScintilla) OnSetBraceMatching(slot func(super func(bm QsciScintilla__BraceMatch), bm QsciScintilla__BraceMatch)) {
-	ok := C.QsciScintilla_override_virtual_SetBraceMatching(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetBraceMatching(slot func(super func(bm QsciScintilla__BraceMatch), bm QsciScintilla__BraceMatch)) {
+	ok := C.QsciScintilla_override_virtual_setBraceMatching(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetBraceMatching
-func miqt_exec_callback_QsciScintilla_SetBraceMatching(self *C.QsciScintilla, cb C.intptr_t, bm C.int) {
+//export miqt_exec_callback_QsciScintilla_setBraceMatching
+func miqt_exec_callback_QsciScintilla_setBraceMatching(self *C.QsciScintilla, cb C.intptr_t, bm C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(bm QsciScintilla__BraceMatch), bm QsciScintilla__BraceMatch))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2891,18 +2891,18 @@ func miqt_exec_callback_QsciScintilla_SetBraceMatching(self *C.QsciScintilla, cb
 
 func (this *QsciScintilla) callVirtualBase_SetBackspaceUnindents(unindent bool) {
 
-	C.QsciScintilla_virtualbase_SetBackspaceUnindents(unsafe.Pointer(this.h), (C.bool)(unindent))
+	C.QsciScintilla_virtualbase_setBackspaceUnindents(unsafe.Pointer(this.h), (C.bool)(unindent))
 
 }
-func (this *QsciScintilla) OnSetBackspaceUnindents(slot func(super func(unindent bool), unindent bool)) {
-	ok := C.QsciScintilla_override_virtual_SetBackspaceUnindents(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetBackspaceUnindents(slot func(super func(unindent bool), unindent bool)) {
+	ok := C.QsciScintilla_override_virtual_setBackspaceUnindents(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetBackspaceUnindents
-func miqt_exec_callback_QsciScintilla_SetBackspaceUnindents(self *C.QsciScintilla, cb C.intptr_t, unindent C.bool) {
+//export miqt_exec_callback_QsciScintilla_setBackspaceUnindents
+func miqt_exec_callback_QsciScintilla_setBackspaceUnindents(self *C.QsciScintilla, cb C.intptr_t, unindent C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(unindent bool), unindent bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2917,18 +2917,18 @@ func miqt_exec_callback_QsciScintilla_SetBackspaceUnindents(self *C.QsciScintill
 
 func (this *QsciScintilla) callVirtualBase_SetCaretForegroundColor(col *qt.QColor) {
 
-	C.QsciScintilla_virtualbase_SetCaretForegroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setCaretForegroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnSetCaretForegroundColor(slot func(super func(col *qt.QColor), col *qt.QColor)) {
-	ok := C.QsciScintilla_override_virtual_SetCaretForegroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetCaretForegroundColor(slot func(super func(col *qt.QColor), col *qt.QColor)) {
+	ok := C.QsciScintilla_override_virtual_setCaretForegroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetCaretForegroundColor
-func miqt_exec_callback_QsciScintilla_SetCaretForegroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
+//export miqt_exec_callback_QsciScintilla_setCaretForegroundColor
+func miqt_exec_callback_QsciScintilla_setCaretForegroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col *qt.QColor), col *qt.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2943,18 +2943,18 @@ func miqt_exec_callback_QsciScintilla_SetCaretForegroundColor(self *C.QsciScinti
 
 func (this *QsciScintilla) callVirtualBase_SetCaretLineBackgroundColor(col *qt.QColor) {
 
-	C.QsciScintilla_virtualbase_SetCaretLineBackgroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setCaretLineBackgroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnSetCaretLineBackgroundColor(slot func(super func(col *qt.QColor), col *qt.QColor)) {
-	ok := C.QsciScintilla_override_virtual_SetCaretLineBackgroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetCaretLineBackgroundColor(slot func(super func(col *qt.QColor), col *qt.QColor)) {
+	ok := C.QsciScintilla_override_virtual_setCaretLineBackgroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetCaretLineBackgroundColor
-func miqt_exec_callback_QsciScintilla_SetCaretLineBackgroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
+//export miqt_exec_callback_QsciScintilla_setCaretLineBackgroundColor
+func miqt_exec_callback_QsciScintilla_setCaretLineBackgroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col *qt.QColor), col *qt.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2969,18 +2969,18 @@ func miqt_exec_callback_QsciScintilla_SetCaretLineBackgroundColor(self *C.QsciSc
 
 func (this *QsciScintilla) callVirtualBase_SetCaretLineFrameWidth(width int) {
 
-	C.QsciScintilla_virtualbase_SetCaretLineFrameWidth(unsafe.Pointer(this.h), (C.int)(width))
+	C.QsciScintilla_virtualbase_setCaretLineFrameWidth(unsafe.Pointer(this.h), (C.int)(width))
 
 }
-func (this *QsciScintilla) OnSetCaretLineFrameWidth(slot func(super func(width int), width int)) {
-	ok := C.QsciScintilla_override_virtual_SetCaretLineFrameWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetCaretLineFrameWidth(slot func(super func(width int), width int)) {
+	ok := C.QsciScintilla_override_virtual_setCaretLineFrameWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetCaretLineFrameWidth
-func miqt_exec_callback_QsciScintilla_SetCaretLineFrameWidth(self *C.QsciScintilla, cb C.intptr_t, width C.int) {
+//export miqt_exec_callback_QsciScintilla_setCaretLineFrameWidth
+func miqt_exec_callback_QsciScintilla_setCaretLineFrameWidth(self *C.QsciScintilla, cb C.intptr_t, width C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(width int), width int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -2995,18 +2995,18 @@ func miqt_exec_callback_QsciScintilla_SetCaretLineFrameWidth(self *C.QsciScintil
 
 func (this *QsciScintilla) callVirtualBase_SetCaretLineVisible(enable bool) {
 
-	C.QsciScintilla_virtualbase_SetCaretLineVisible(unsafe.Pointer(this.h), (C.bool)(enable))
+	C.QsciScintilla_virtualbase_setCaretLineVisible(unsafe.Pointer(this.h), (C.bool)(enable))
 
 }
-func (this *QsciScintilla) OnSetCaretLineVisible(slot func(super func(enable bool), enable bool)) {
-	ok := C.QsciScintilla_override_virtual_SetCaretLineVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetCaretLineVisible(slot func(super func(enable bool), enable bool)) {
+	ok := C.QsciScintilla_override_virtual_setCaretLineVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetCaretLineVisible
-func miqt_exec_callback_QsciScintilla_SetCaretLineVisible(self *C.QsciScintilla, cb C.intptr_t, enable C.bool) {
+//export miqt_exec_callback_QsciScintilla_setCaretLineVisible
+func miqt_exec_callback_QsciScintilla_setCaretLineVisible(self *C.QsciScintilla, cb C.intptr_t, enable C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(enable bool), enable bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3021,18 +3021,18 @@ func miqt_exec_callback_QsciScintilla_SetCaretLineVisible(self *C.QsciScintilla,
 
 func (this *QsciScintilla) callVirtualBase_SetCaretWidth(width int) {
 
-	C.QsciScintilla_virtualbase_SetCaretWidth(unsafe.Pointer(this.h), (C.int)(width))
+	C.QsciScintilla_virtualbase_setCaretWidth(unsafe.Pointer(this.h), (C.int)(width))
 
 }
-func (this *QsciScintilla) OnSetCaretWidth(slot func(super func(width int), width int)) {
-	ok := C.QsciScintilla_override_virtual_SetCaretWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetCaretWidth(slot func(super func(width int), width int)) {
+	ok := C.QsciScintilla_override_virtual_setCaretWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetCaretWidth
-func miqt_exec_callback_QsciScintilla_SetCaretWidth(self *C.QsciScintilla, cb C.intptr_t, width C.int) {
+//export miqt_exec_callback_QsciScintilla_setCaretWidth
+func miqt_exec_callback_QsciScintilla_setCaretWidth(self *C.QsciScintilla, cb C.intptr_t, width C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(width int), width int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3047,18 +3047,18 @@ func miqt_exec_callback_QsciScintilla_SetCaretWidth(self *C.QsciScintilla, cb C.
 
 func (this *QsciScintilla) callVirtualBase_SetColor(c *qt.QColor) {
 
-	C.QsciScintilla_virtualbase_SetColor(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setColor(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnSetColor(slot func(super func(c *qt.QColor), c *qt.QColor)) {
-	ok := C.QsciScintilla_override_virtual_SetColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetColor(slot func(super func(c *qt.QColor), c *qt.QColor)) {
+	ok := C.QsciScintilla_override_virtual_setColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetColor
-func miqt_exec_callback_QsciScintilla_SetColor(self *C.QsciScintilla, cb C.intptr_t, c *C.QColor) {
+//export miqt_exec_callback_QsciScintilla_setColor
+func miqt_exec_callback_QsciScintilla_setColor(self *C.QsciScintilla, cb C.intptr_t, c *C.QColor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(c *qt.QColor), c *qt.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3073,18 +3073,18 @@ func miqt_exec_callback_QsciScintilla_SetColor(self *C.QsciScintilla, cb C.intpt
 
 func (this *QsciScintilla) callVirtualBase_SetCursorPosition(line int, index int) {
 
-	C.QsciScintilla_virtualbase_SetCursorPosition(unsafe.Pointer(this.h), (C.int)(line), (C.int)(index))
+	C.QsciScintilla_virtualbase_setCursorPosition(unsafe.Pointer(this.h), (C.int)(line), (C.int)(index))
 
 }
-func (this *QsciScintilla) OnSetCursorPosition(slot func(super func(line int, index int), line int, index int)) {
-	ok := C.QsciScintilla_override_virtual_SetCursorPosition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetCursorPosition(slot func(super func(line int, index int), line int, index int)) {
+	ok := C.QsciScintilla_override_virtual_setCursorPosition(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetCursorPosition
-func miqt_exec_callback_QsciScintilla_SetCursorPosition(self *C.QsciScintilla, cb C.intptr_t, line C.int, index C.int) {
+//export miqt_exec_callback_QsciScintilla_setCursorPosition
+func miqt_exec_callback_QsciScintilla_setCursorPosition(self *C.QsciScintilla, cb C.intptr_t, line C.int, index C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(line int, index int), line int, index int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3101,18 +3101,18 @@ func miqt_exec_callback_QsciScintilla_SetCursorPosition(self *C.QsciScintilla, c
 
 func (this *QsciScintilla) callVirtualBase_SetEolMode(mode QsciScintilla__EolMode) {
 
-	C.QsciScintilla_virtualbase_SetEolMode(unsafe.Pointer(this.h), (C.int)(mode))
+	C.QsciScintilla_virtualbase_setEolMode(unsafe.Pointer(this.h), (C.int)(mode))
 
 }
-func (this *QsciScintilla) OnSetEolMode(slot func(super func(mode QsciScintilla__EolMode), mode QsciScintilla__EolMode)) {
-	ok := C.QsciScintilla_override_virtual_SetEolMode(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetEolMode(slot func(super func(mode QsciScintilla__EolMode), mode QsciScintilla__EolMode)) {
+	ok := C.QsciScintilla_override_virtual_setEolMode(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetEolMode
-func miqt_exec_callback_QsciScintilla_SetEolMode(self *C.QsciScintilla, cb C.intptr_t, mode C.int) {
+//export miqt_exec_callback_QsciScintilla_setEolMode
+func miqt_exec_callback_QsciScintilla_setEolMode(self *C.QsciScintilla, cb C.intptr_t, mode C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(mode QsciScintilla__EolMode), mode QsciScintilla__EolMode))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3127,18 +3127,18 @@ func miqt_exec_callback_QsciScintilla_SetEolMode(self *C.QsciScintilla, cb C.int
 
 func (this *QsciScintilla) callVirtualBase_SetEolVisibility(visible bool) {
 
-	C.QsciScintilla_virtualbase_SetEolVisibility(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QsciScintilla_virtualbase_setEolVisibility(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QsciScintilla) OnSetEolVisibility(slot func(super func(visible bool), visible bool)) {
-	ok := C.QsciScintilla_override_virtual_SetEolVisibility(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetEolVisibility(slot func(super func(visible bool), visible bool)) {
+	ok := C.QsciScintilla_override_virtual_setEolVisibility(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetEolVisibility
-func miqt_exec_callback_QsciScintilla_SetEolVisibility(self *C.QsciScintilla, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QsciScintilla_setEolVisibility
+func miqt_exec_callback_QsciScintilla_setEolVisibility(self *C.QsciScintilla, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3153,18 +3153,18 @@ func miqt_exec_callback_QsciScintilla_SetEolVisibility(self *C.QsciScintilla, cb
 
 func (this *QsciScintilla) callVirtualBase_SetFolding(fold QsciScintilla__FoldStyle, margin int) {
 
-	C.QsciScintilla_virtualbase_SetFolding(unsafe.Pointer(this.h), (C.int)(fold), (C.int)(margin))
+	C.QsciScintilla_virtualbase_setFolding(unsafe.Pointer(this.h), (C.int)(fold), (C.int)(margin))
 
 }
-func (this *QsciScintilla) OnSetFolding(slot func(super func(fold QsciScintilla__FoldStyle, margin int), fold QsciScintilla__FoldStyle, margin int)) {
-	ok := C.QsciScintilla_override_virtual_SetFolding(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetFolding(slot func(super func(fold QsciScintilla__FoldStyle, margin int), fold QsciScintilla__FoldStyle, margin int)) {
+	ok := C.QsciScintilla_override_virtual_setFolding(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetFolding
-func miqt_exec_callback_QsciScintilla_SetFolding(self *C.QsciScintilla, cb C.intptr_t, fold C.int, margin C.int) {
+//export miqt_exec_callback_QsciScintilla_setFolding
+func miqt_exec_callback_QsciScintilla_setFolding(self *C.QsciScintilla, cb C.intptr_t, fold C.int, margin C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(fold QsciScintilla__FoldStyle, margin int), fold QsciScintilla__FoldStyle, margin int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3181,18 +3181,18 @@ func miqt_exec_callback_QsciScintilla_SetFolding(self *C.QsciScintilla, cb C.int
 
 func (this *QsciScintilla) callVirtualBase_SetIndentation(line int, indentation int) {
 
-	C.QsciScintilla_virtualbase_SetIndentation(unsafe.Pointer(this.h), (C.int)(line), (C.int)(indentation))
+	C.QsciScintilla_virtualbase_setIndentation(unsafe.Pointer(this.h), (C.int)(line), (C.int)(indentation))
 
 }
-func (this *QsciScintilla) OnSetIndentation(slot func(super func(line int, indentation int), line int, indentation int)) {
-	ok := C.QsciScintilla_override_virtual_SetIndentation(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetIndentation(slot func(super func(line int, indentation int), line int, indentation int)) {
+	ok := C.QsciScintilla_override_virtual_setIndentation(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetIndentation
-func miqt_exec_callback_QsciScintilla_SetIndentation(self *C.QsciScintilla, cb C.intptr_t, line C.int, indentation C.int) {
+//export miqt_exec_callback_QsciScintilla_setIndentation
+func miqt_exec_callback_QsciScintilla_setIndentation(self *C.QsciScintilla, cb C.intptr_t, line C.int, indentation C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(line int, indentation int), line int, indentation int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3209,18 +3209,18 @@ func miqt_exec_callback_QsciScintilla_SetIndentation(self *C.QsciScintilla, cb C
 
 func (this *QsciScintilla) callVirtualBase_SetIndentationGuides(enable bool) {
 
-	C.QsciScintilla_virtualbase_SetIndentationGuides(unsafe.Pointer(this.h), (C.bool)(enable))
+	C.QsciScintilla_virtualbase_setIndentationGuides(unsafe.Pointer(this.h), (C.bool)(enable))
 
 }
-func (this *QsciScintilla) OnSetIndentationGuides(slot func(super func(enable bool), enable bool)) {
-	ok := C.QsciScintilla_override_virtual_SetIndentationGuides(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetIndentationGuides(slot func(super func(enable bool), enable bool)) {
+	ok := C.QsciScintilla_override_virtual_setIndentationGuides(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetIndentationGuides
-func miqt_exec_callback_QsciScintilla_SetIndentationGuides(self *C.QsciScintilla, cb C.intptr_t, enable C.bool) {
+//export miqt_exec_callback_QsciScintilla_setIndentationGuides
+func miqt_exec_callback_QsciScintilla_setIndentationGuides(self *C.QsciScintilla, cb C.intptr_t, enable C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(enable bool), enable bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3235,18 +3235,18 @@ func miqt_exec_callback_QsciScintilla_SetIndentationGuides(self *C.QsciScintilla
 
 func (this *QsciScintilla) callVirtualBase_SetIndentationGuidesBackgroundColor(col *qt.QColor) {
 
-	C.QsciScintilla_virtualbase_SetIndentationGuidesBackgroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setIndentationGuidesBackgroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnSetIndentationGuidesBackgroundColor(slot func(super func(col *qt.QColor), col *qt.QColor)) {
-	ok := C.QsciScintilla_override_virtual_SetIndentationGuidesBackgroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetIndentationGuidesBackgroundColor(slot func(super func(col *qt.QColor), col *qt.QColor)) {
+	ok := C.QsciScintilla_override_virtual_setIndentationGuidesBackgroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetIndentationGuidesBackgroundColor
-func miqt_exec_callback_QsciScintilla_SetIndentationGuidesBackgroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
+//export miqt_exec_callback_QsciScintilla_setIndentationGuidesBackgroundColor
+func miqt_exec_callback_QsciScintilla_setIndentationGuidesBackgroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col *qt.QColor), col *qt.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3261,18 +3261,18 @@ func miqt_exec_callback_QsciScintilla_SetIndentationGuidesBackgroundColor(self *
 
 func (this *QsciScintilla) callVirtualBase_SetIndentationGuidesForegroundColor(col *qt.QColor) {
 
-	C.QsciScintilla_virtualbase_SetIndentationGuidesForegroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setIndentationGuidesForegroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnSetIndentationGuidesForegroundColor(slot func(super func(col *qt.QColor), col *qt.QColor)) {
-	ok := C.QsciScintilla_override_virtual_SetIndentationGuidesForegroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetIndentationGuidesForegroundColor(slot func(super func(col *qt.QColor), col *qt.QColor)) {
+	ok := C.QsciScintilla_override_virtual_setIndentationGuidesForegroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetIndentationGuidesForegroundColor
-func miqt_exec_callback_QsciScintilla_SetIndentationGuidesForegroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
+//export miqt_exec_callback_QsciScintilla_setIndentationGuidesForegroundColor
+func miqt_exec_callback_QsciScintilla_setIndentationGuidesForegroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col *qt.QColor), col *qt.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3287,18 +3287,18 @@ func miqt_exec_callback_QsciScintilla_SetIndentationGuidesForegroundColor(self *
 
 func (this *QsciScintilla) callVirtualBase_SetIndentationsUseTabs(tabs bool) {
 
-	C.QsciScintilla_virtualbase_SetIndentationsUseTabs(unsafe.Pointer(this.h), (C.bool)(tabs))
+	C.QsciScintilla_virtualbase_setIndentationsUseTabs(unsafe.Pointer(this.h), (C.bool)(tabs))
 
 }
-func (this *QsciScintilla) OnSetIndentationsUseTabs(slot func(super func(tabs bool), tabs bool)) {
-	ok := C.QsciScintilla_override_virtual_SetIndentationsUseTabs(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetIndentationsUseTabs(slot func(super func(tabs bool), tabs bool)) {
+	ok := C.QsciScintilla_override_virtual_setIndentationsUseTabs(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetIndentationsUseTabs
-func miqt_exec_callback_QsciScintilla_SetIndentationsUseTabs(self *C.QsciScintilla, cb C.intptr_t, tabs C.bool) {
+//export miqt_exec_callback_QsciScintilla_setIndentationsUseTabs
+func miqt_exec_callback_QsciScintilla_setIndentationsUseTabs(self *C.QsciScintilla, cb C.intptr_t, tabs C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(tabs bool), tabs bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3313,18 +3313,18 @@ func miqt_exec_callback_QsciScintilla_SetIndentationsUseTabs(self *C.QsciScintil
 
 func (this *QsciScintilla) callVirtualBase_SetIndentationWidth(width int) {
 
-	C.QsciScintilla_virtualbase_SetIndentationWidth(unsafe.Pointer(this.h), (C.int)(width))
+	C.QsciScintilla_virtualbase_setIndentationWidth(unsafe.Pointer(this.h), (C.int)(width))
 
 }
-func (this *QsciScintilla) OnSetIndentationWidth(slot func(super func(width int), width int)) {
-	ok := C.QsciScintilla_override_virtual_SetIndentationWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetIndentationWidth(slot func(super func(width int), width int)) {
+	ok := C.QsciScintilla_override_virtual_setIndentationWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetIndentationWidth
-func miqt_exec_callback_QsciScintilla_SetIndentationWidth(self *C.QsciScintilla, cb C.intptr_t, width C.int) {
+//export miqt_exec_callback_QsciScintilla_setIndentationWidth
+func miqt_exec_callback_QsciScintilla_setIndentationWidth(self *C.QsciScintilla, cb C.intptr_t, width C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(width int), width int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3339,18 +3339,18 @@ func miqt_exec_callback_QsciScintilla_SetIndentationWidth(self *C.QsciScintilla,
 
 func (this *QsciScintilla) callVirtualBase_SetLexer(lexer *QsciLexer) {
 
-	C.QsciScintilla_virtualbase_SetLexer(unsafe.Pointer(this.h), lexer.cPointer())
+	C.QsciScintilla_virtualbase_setLexer(unsafe.Pointer(this.h), lexer.cPointer())
 
 }
-func (this *QsciScintilla) OnSetLexer(slot func(super func(lexer *QsciLexer), lexer *QsciLexer)) {
-	ok := C.QsciScintilla_override_virtual_SetLexer(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetLexer(slot func(super func(lexer *QsciLexer), lexer *QsciLexer)) {
+	ok := C.QsciScintilla_override_virtual_setLexer(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetLexer
-func miqt_exec_callback_QsciScintilla_SetLexer(self *C.QsciScintilla, cb C.intptr_t, lexer *C.QsciLexer) {
+//export miqt_exec_callback_QsciScintilla_setLexer
+func miqt_exec_callback_QsciScintilla_setLexer(self *C.QsciScintilla, cb C.intptr_t, lexer *C.QsciLexer) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(lexer *QsciLexer), lexer *QsciLexer))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3365,18 +3365,18 @@ func miqt_exec_callback_QsciScintilla_SetLexer(self *C.QsciScintilla, cb C.intpt
 
 func (this *QsciScintilla) callVirtualBase_SetMarginsBackgroundColor(col *qt.QColor) {
 
-	C.QsciScintilla_virtualbase_SetMarginsBackgroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setMarginsBackgroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnSetMarginsBackgroundColor(slot func(super func(col *qt.QColor), col *qt.QColor)) {
-	ok := C.QsciScintilla_override_virtual_SetMarginsBackgroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetMarginsBackgroundColor(slot func(super func(col *qt.QColor), col *qt.QColor)) {
+	ok := C.QsciScintilla_override_virtual_setMarginsBackgroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetMarginsBackgroundColor
-func miqt_exec_callback_QsciScintilla_SetMarginsBackgroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
+//export miqt_exec_callback_QsciScintilla_setMarginsBackgroundColor
+func miqt_exec_callback_QsciScintilla_setMarginsBackgroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col *qt.QColor), col *qt.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3391,18 +3391,18 @@ func miqt_exec_callback_QsciScintilla_SetMarginsBackgroundColor(self *C.QsciScin
 
 func (this *QsciScintilla) callVirtualBase_SetMarginsFont(f *qt.QFont) {
 
-	C.QsciScintilla_virtualbase_SetMarginsFont(unsafe.Pointer(this.h), (*C.QFont)(f.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setMarginsFont(unsafe.Pointer(this.h), (*C.QFont)(f.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnSetMarginsFont(slot func(super func(f *qt.QFont), f *qt.QFont)) {
-	ok := C.QsciScintilla_override_virtual_SetMarginsFont(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetMarginsFont(slot func(super func(f *qt.QFont), f *qt.QFont)) {
+	ok := C.QsciScintilla_override_virtual_setMarginsFont(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetMarginsFont
-func miqt_exec_callback_QsciScintilla_SetMarginsFont(self *C.QsciScintilla, cb C.intptr_t, f *C.QFont) {
+//export miqt_exec_callback_QsciScintilla_setMarginsFont
+func miqt_exec_callback_QsciScintilla_setMarginsFont(self *C.QsciScintilla, cb C.intptr_t, f *C.QFont) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(f *qt.QFont), f *qt.QFont))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3417,18 +3417,18 @@ func miqt_exec_callback_QsciScintilla_SetMarginsFont(self *C.QsciScintilla, cb C
 
 func (this *QsciScintilla) callVirtualBase_SetMarginsForegroundColor(col *qt.QColor) {
 
-	C.QsciScintilla_virtualbase_SetMarginsForegroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setMarginsForegroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnSetMarginsForegroundColor(slot func(super func(col *qt.QColor), col *qt.QColor)) {
-	ok := C.QsciScintilla_override_virtual_SetMarginsForegroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetMarginsForegroundColor(slot func(super func(col *qt.QColor), col *qt.QColor)) {
+	ok := C.QsciScintilla_override_virtual_setMarginsForegroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetMarginsForegroundColor
-func miqt_exec_callback_QsciScintilla_SetMarginsForegroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
+//export miqt_exec_callback_QsciScintilla_setMarginsForegroundColor
+func miqt_exec_callback_QsciScintilla_setMarginsForegroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col *qt.QColor), col *qt.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3443,18 +3443,18 @@ func miqt_exec_callback_QsciScintilla_SetMarginsForegroundColor(self *C.QsciScin
 
 func (this *QsciScintilla) callVirtualBase_SetMarginLineNumbers(margin int, lnrs bool) {
 
-	C.QsciScintilla_virtualbase_SetMarginLineNumbers(unsafe.Pointer(this.h), (C.int)(margin), (C.bool)(lnrs))
+	C.QsciScintilla_virtualbase_setMarginLineNumbers(unsafe.Pointer(this.h), (C.int)(margin), (C.bool)(lnrs))
 
 }
-func (this *QsciScintilla) OnSetMarginLineNumbers(slot func(super func(margin int, lnrs bool), margin int, lnrs bool)) {
-	ok := C.QsciScintilla_override_virtual_SetMarginLineNumbers(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetMarginLineNumbers(slot func(super func(margin int, lnrs bool), margin int, lnrs bool)) {
+	ok := C.QsciScintilla_override_virtual_setMarginLineNumbers(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetMarginLineNumbers
-func miqt_exec_callback_QsciScintilla_SetMarginLineNumbers(self *C.QsciScintilla, cb C.intptr_t, margin C.int, lnrs C.bool) {
+//export miqt_exec_callback_QsciScintilla_setMarginLineNumbers
+func miqt_exec_callback_QsciScintilla_setMarginLineNumbers(self *C.QsciScintilla, cb C.intptr_t, margin C.int, lnrs C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(margin int, lnrs bool), margin int, lnrs bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3471,18 +3471,18 @@ func miqt_exec_callback_QsciScintilla_SetMarginLineNumbers(self *C.QsciScintilla
 
 func (this *QsciScintilla) callVirtualBase_SetMarginMarkerMask(margin int, mask int) {
 
-	C.QsciScintilla_virtualbase_SetMarginMarkerMask(unsafe.Pointer(this.h), (C.int)(margin), (C.int)(mask))
+	C.QsciScintilla_virtualbase_setMarginMarkerMask(unsafe.Pointer(this.h), (C.int)(margin), (C.int)(mask))
 
 }
-func (this *QsciScintilla) OnSetMarginMarkerMask(slot func(super func(margin int, mask int), margin int, mask int)) {
-	ok := C.QsciScintilla_override_virtual_SetMarginMarkerMask(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetMarginMarkerMask(slot func(super func(margin int, mask int), margin int, mask int)) {
+	ok := C.QsciScintilla_override_virtual_setMarginMarkerMask(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetMarginMarkerMask
-func miqt_exec_callback_QsciScintilla_SetMarginMarkerMask(self *C.QsciScintilla, cb C.intptr_t, margin C.int, mask C.int) {
+//export miqt_exec_callback_QsciScintilla_setMarginMarkerMask
+func miqt_exec_callback_QsciScintilla_setMarginMarkerMask(self *C.QsciScintilla, cb C.intptr_t, margin C.int, mask C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(margin int, mask int), margin int, mask int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3499,18 +3499,18 @@ func miqt_exec_callback_QsciScintilla_SetMarginMarkerMask(self *C.QsciScintilla,
 
 func (this *QsciScintilla) callVirtualBase_SetMarginSensitivity(margin int, sens bool) {
 
-	C.QsciScintilla_virtualbase_SetMarginSensitivity(unsafe.Pointer(this.h), (C.int)(margin), (C.bool)(sens))
+	C.QsciScintilla_virtualbase_setMarginSensitivity(unsafe.Pointer(this.h), (C.int)(margin), (C.bool)(sens))
 
 }
-func (this *QsciScintilla) OnSetMarginSensitivity(slot func(super func(margin int, sens bool), margin int, sens bool)) {
-	ok := C.QsciScintilla_override_virtual_SetMarginSensitivity(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetMarginSensitivity(slot func(super func(margin int, sens bool), margin int, sens bool)) {
+	ok := C.QsciScintilla_override_virtual_setMarginSensitivity(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetMarginSensitivity
-func miqt_exec_callback_QsciScintilla_SetMarginSensitivity(self *C.QsciScintilla, cb C.intptr_t, margin C.int, sens C.bool) {
+//export miqt_exec_callback_QsciScintilla_setMarginSensitivity
+func miqt_exec_callback_QsciScintilla_setMarginSensitivity(self *C.QsciScintilla, cb C.intptr_t, margin C.int, sens C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(margin int, sens bool), margin int, sens bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3527,18 +3527,18 @@ func miqt_exec_callback_QsciScintilla_SetMarginSensitivity(self *C.QsciScintilla
 
 func (this *QsciScintilla) callVirtualBase_SetMarginWidth(margin int, width int) {
 
-	C.QsciScintilla_virtualbase_SetMarginWidth(unsafe.Pointer(this.h), (C.int)(margin), (C.int)(width))
+	C.QsciScintilla_virtualbase_setMarginWidth(unsafe.Pointer(this.h), (C.int)(margin), (C.int)(width))
 
 }
-func (this *QsciScintilla) OnSetMarginWidth(slot func(super func(margin int, width int), margin int, width int)) {
-	ok := C.QsciScintilla_override_virtual_SetMarginWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetMarginWidth(slot func(super func(margin int, width int), margin int, width int)) {
+	ok := C.QsciScintilla_override_virtual_setMarginWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetMarginWidth
-func miqt_exec_callback_QsciScintilla_SetMarginWidth(self *C.QsciScintilla, cb C.intptr_t, margin C.int, width C.int) {
+//export miqt_exec_callback_QsciScintilla_setMarginWidth
+func miqt_exec_callback_QsciScintilla_setMarginWidth(self *C.QsciScintilla, cb C.intptr_t, margin C.int, width C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(margin int, width int), margin int, width int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3559,18 +3559,18 @@ func (this *QsciScintilla) callVirtualBase_SetMarginWidth2(margin int, s string)
 	s_ms.len = C.size_t(len(s))
 	defer C.free(unsafe.Pointer(s_ms.data))
 
-	C.QsciScintilla_virtualbase_SetMarginWidth2(unsafe.Pointer(this.h), (C.int)(margin), s_ms)
+	C.QsciScintilla_virtualbase_setMarginWidth2(unsafe.Pointer(this.h), (C.int)(margin), s_ms)
 
 }
-func (this *QsciScintilla) OnSetMarginWidth2(slot func(super func(margin int, s string), margin int, s string)) {
-	ok := C.QsciScintilla_override_virtual_SetMarginWidth2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetMarginWidth2(slot func(super func(margin int, s string), margin int, s string)) {
+	ok := C.QsciScintilla_override_virtual_setMarginWidth2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetMarginWidth2
-func miqt_exec_callback_QsciScintilla_SetMarginWidth2(self *C.QsciScintilla, cb C.intptr_t, margin C.int, s C.struct_miqt_string) {
+//export miqt_exec_callback_QsciScintilla_setMarginWidth2
+func miqt_exec_callback_QsciScintilla_setMarginWidth2(self *C.QsciScintilla, cb C.intptr_t, margin C.int, s C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(margin int, s string), margin int, s string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3590,18 +3590,18 @@ func miqt_exec_callback_QsciScintilla_SetMarginWidth2(self *C.QsciScintilla, cb 
 
 func (this *QsciScintilla) callVirtualBase_SetModified(m bool) {
 
-	C.QsciScintilla_virtualbase_SetModified(unsafe.Pointer(this.h), (C.bool)(m))
+	C.QsciScintilla_virtualbase_setModified(unsafe.Pointer(this.h), (C.bool)(m))
 
 }
-func (this *QsciScintilla) OnSetModified(slot func(super func(m bool), m bool)) {
-	ok := C.QsciScintilla_override_virtual_SetModified(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetModified(slot func(super func(m bool), m bool)) {
+	ok := C.QsciScintilla_override_virtual_setModified(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetModified
-func miqt_exec_callback_QsciScintilla_SetModified(self *C.QsciScintilla, cb C.intptr_t, m C.bool) {
+//export miqt_exec_callback_QsciScintilla_setModified
+func miqt_exec_callback_QsciScintilla_setModified(self *C.QsciScintilla, cb C.intptr_t, m C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(m bool), m bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3616,18 +3616,18 @@ func miqt_exec_callback_QsciScintilla_SetModified(self *C.QsciScintilla, cb C.in
 
 func (this *QsciScintilla) callVirtualBase_SetPaper(c *qt.QColor) {
 
-	C.QsciScintilla_virtualbase_SetPaper(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setPaper(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnSetPaper(slot func(super func(c *qt.QColor), c *qt.QColor)) {
-	ok := C.QsciScintilla_override_virtual_SetPaper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetPaper(slot func(super func(c *qt.QColor), c *qt.QColor)) {
+	ok := C.QsciScintilla_override_virtual_setPaper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetPaper
-func miqt_exec_callback_QsciScintilla_SetPaper(self *C.QsciScintilla, cb C.intptr_t, c *C.QColor) {
+//export miqt_exec_callback_QsciScintilla_setPaper
+func miqt_exec_callback_QsciScintilla_setPaper(self *C.QsciScintilla, cb C.intptr_t, c *C.QColor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(c *qt.QColor), c *qt.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3642,18 +3642,18 @@ func miqt_exec_callback_QsciScintilla_SetPaper(self *C.QsciScintilla, cb C.intpt
 
 func (this *QsciScintilla) callVirtualBase_SetReadOnly(ro bool) {
 
-	C.QsciScintilla_virtualbase_SetReadOnly(unsafe.Pointer(this.h), (C.bool)(ro))
+	C.QsciScintilla_virtualbase_setReadOnly(unsafe.Pointer(this.h), (C.bool)(ro))
 
 }
-func (this *QsciScintilla) OnSetReadOnly(slot func(super func(ro bool), ro bool)) {
-	ok := C.QsciScintilla_override_virtual_SetReadOnly(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetReadOnly(slot func(super func(ro bool), ro bool)) {
+	ok := C.QsciScintilla_override_virtual_setReadOnly(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetReadOnly
-func miqt_exec_callback_QsciScintilla_SetReadOnly(self *C.QsciScintilla, cb C.intptr_t, ro C.bool) {
+//export miqt_exec_callback_QsciScintilla_setReadOnly
+func miqt_exec_callback_QsciScintilla_setReadOnly(self *C.QsciScintilla, cb C.intptr_t, ro C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(ro bool), ro bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3668,18 +3668,18 @@ func miqt_exec_callback_QsciScintilla_SetReadOnly(self *C.QsciScintilla, cb C.in
 
 func (this *QsciScintilla) callVirtualBase_SetSelection(lineFrom int, indexFrom int, lineTo int, indexTo int) {
 
-	C.QsciScintilla_virtualbase_SetSelection(unsafe.Pointer(this.h), (C.int)(lineFrom), (C.int)(indexFrom), (C.int)(lineTo), (C.int)(indexTo))
+	C.QsciScintilla_virtualbase_setSelection(unsafe.Pointer(this.h), (C.int)(lineFrom), (C.int)(indexFrom), (C.int)(lineTo), (C.int)(indexTo))
 
 }
-func (this *QsciScintilla) OnSetSelection(slot func(super func(lineFrom int, indexFrom int, lineTo int, indexTo int), lineFrom int, indexFrom int, lineTo int, indexTo int)) {
-	ok := C.QsciScintilla_override_virtual_SetSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetSelection(slot func(super func(lineFrom int, indexFrom int, lineTo int, indexTo int), lineFrom int, indexFrom int, lineTo int, indexTo int)) {
+	ok := C.QsciScintilla_override_virtual_setSelection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetSelection
-func miqt_exec_callback_QsciScintilla_SetSelection(self *C.QsciScintilla, cb C.intptr_t, lineFrom C.int, indexFrom C.int, lineTo C.int, indexTo C.int) {
+//export miqt_exec_callback_QsciScintilla_setSelection
+func miqt_exec_callback_QsciScintilla_setSelection(self *C.QsciScintilla, cb C.intptr_t, lineFrom C.int, indexFrom C.int, lineTo C.int, indexTo C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(lineFrom int, indexFrom int, lineTo int, indexTo int), lineFrom int, indexFrom int, lineTo int, indexTo int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3700,18 +3700,18 @@ func miqt_exec_callback_QsciScintilla_SetSelection(self *C.QsciScintilla, cb C.i
 
 func (this *QsciScintilla) callVirtualBase_SetSelectionBackgroundColor(col *qt.QColor) {
 
-	C.QsciScintilla_virtualbase_SetSelectionBackgroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setSelectionBackgroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnSetSelectionBackgroundColor(slot func(super func(col *qt.QColor), col *qt.QColor)) {
-	ok := C.QsciScintilla_override_virtual_SetSelectionBackgroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetSelectionBackgroundColor(slot func(super func(col *qt.QColor), col *qt.QColor)) {
+	ok := C.QsciScintilla_override_virtual_setSelectionBackgroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetSelectionBackgroundColor
-func miqt_exec_callback_QsciScintilla_SetSelectionBackgroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
+//export miqt_exec_callback_QsciScintilla_setSelectionBackgroundColor
+func miqt_exec_callback_QsciScintilla_setSelectionBackgroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col *qt.QColor), col *qt.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3726,18 +3726,18 @@ func miqt_exec_callback_QsciScintilla_SetSelectionBackgroundColor(self *C.QsciSc
 
 func (this *QsciScintilla) callVirtualBase_SetSelectionForegroundColor(col *qt.QColor) {
 
-	C.QsciScintilla_virtualbase_SetSelectionForegroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setSelectionForegroundColor(unsafe.Pointer(this.h), (*C.QColor)(col.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnSetSelectionForegroundColor(slot func(super func(col *qt.QColor), col *qt.QColor)) {
-	ok := C.QsciScintilla_override_virtual_SetSelectionForegroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetSelectionForegroundColor(slot func(super func(col *qt.QColor), col *qt.QColor)) {
+	ok := C.QsciScintilla_override_virtual_setSelectionForegroundColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetSelectionForegroundColor
-func miqt_exec_callback_QsciScintilla_SetSelectionForegroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
+//export miqt_exec_callback_QsciScintilla_setSelectionForegroundColor
+func miqt_exec_callback_QsciScintilla_setSelectionForegroundColor(self *C.QsciScintilla, cb C.intptr_t, col *C.QColor) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(col *qt.QColor), col *qt.QColor))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3752,18 +3752,18 @@ func miqt_exec_callback_QsciScintilla_SetSelectionForegroundColor(self *C.QsciSc
 
 func (this *QsciScintilla) callVirtualBase_SetTabIndents(indent bool) {
 
-	C.QsciScintilla_virtualbase_SetTabIndents(unsafe.Pointer(this.h), (C.bool)(indent))
+	C.QsciScintilla_virtualbase_setTabIndents(unsafe.Pointer(this.h), (C.bool)(indent))
 
 }
-func (this *QsciScintilla) OnSetTabIndents(slot func(super func(indent bool), indent bool)) {
-	ok := C.QsciScintilla_override_virtual_SetTabIndents(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetTabIndents(slot func(super func(indent bool), indent bool)) {
+	ok := C.QsciScintilla_override_virtual_setTabIndents(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetTabIndents
-func miqt_exec_callback_QsciScintilla_SetTabIndents(self *C.QsciScintilla, cb C.intptr_t, indent C.bool) {
+//export miqt_exec_callback_QsciScintilla_setTabIndents
+func miqt_exec_callback_QsciScintilla_setTabIndents(self *C.QsciScintilla, cb C.intptr_t, indent C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(indent bool), indent bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3778,18 +3778,18 @@ func miqt_exec_callback_QsciScintilla_SetTabIndents(self *C.QsciScintilla, cb C.
 
 func (this *QsciScintilla) callVirtualBase_SetTabWidth(width int) {
 
-	C.QsciScintilla_virtualbase_SetTabWidth(unsafe.Pointer(this.h), (C.int)(width))
+	C.QsciScintilla_virtualbase_setTabWidth(unsafe.Pointer(this.h), (C.int)(width))
 
 }
-func (this *QsciScintilla) OnSetTabWidth(slot func(super func(width int), width int)) {
-	ok := C.QsciScintilla_override_virtual_SetTabWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetTabWidth(slot func(super func(width int), width int)) {
+	ok := C.QsciScintilla_override_virtual_setTabWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetTabWidth
-func miqt_exec_callback_QsciScintilla_SetTabWidth(self *C.QsciScintilla, cb C.intptr_t, width C.int) {
+//export miqt_exec_callback_QsciScintilla_setTabWidth
+func miqt_exec_callback_QsciScintilla_setTabWidth(self *C.QsciScintilla, cb C.intptr_t, width C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(width int), width int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3808,18 +3808,18 @@ func (this *QsciScintilla) callVirtualBase_SetText(text string) {
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
 
-	C.QsciScintilla_virtualbase_SetText(unsafe.Pointer(this.h), text_ms)
+	C.QsciScintilla_virtualbase_setText(unsafe.Pointer(this.h), text_ms)
 
 }
-func (this *QsciScintilla) OnSetText(slot func(super func(text string), text string)) {
-	ok := C.QsciScintilla_override_virtual_SetText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetText(slot func(super func(text string), text string)) {
+	ok := C.QsciScintilla_override_virtual_setText(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetText
-func miqt_exec_callback_QsciScintilla_SetText(self *C.QsciScintilla, cb C.intptr_t, text C.struct_miqt_string) {
+//export miqt_exec_callback_QsciScintilla_setText
+func miqt_exec_callback_QsciScintilla_setText(self *C.QsciScintilla, cb C.intptr_t, text C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(text string), text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3837,18 +3837,18 @@ func miqt_exec_callback_QsciScintilla_SetText(self *C.QsciScintilla, cb C.intptr
 
 func (this *QsciScintilla) callVirtualBase_SetUtf8(cp bool) {
 
-	C.QsciScintilla_virtualbase_SetUtf8(unsafe.Pointer(this.h), (C.bool)(cp))
+	C.QsciScintilla_virtualbase_setUtf8(unsafe.Pointer(this.h), (C.bool)(cp))
 
 }
-func (this *QsciScintilla) OnSetUtf8(slot func(super func(cp bool), cp bool)) {
-	ok := C.QsciScintilla_override_virtual_SetUtf8(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetUtf8(slot func(super func(cp bool), cp bool)) {
+	ok := C.QsciScintilla_override_virtual_setUtf8(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetUtf8
-func miqt_exec_callback_QsciScintilla_SetUtf8(self *C.QsciScintilla, cb C.intptr_t, cp C.bool) {
+//export miqt_exec_callback_QsciScintilla_setUtf8
+func miqt_exec_callback_QsciScintilla_setUtf8(self *C.QsciScintilla, cb C.intptr_t, cp C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(cp bool), cp bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3863,18 +3863,18 @@ func miqt_exec_callback_QsciScintilla_SetUtf8(self *C.QsciScintilla, cb C.intptr
 
 func (this *QsciScintilla) callVirtualBase_SetWhitespaceVisibility(mode QsciScintilla__WhitespaceVisibility) {
 
-	C.QsciScintilla_virtualbase_SetWhitespaceVisibility(unsafe.Pointer(this.h), (C.int)(mode))
+	C.QsciScintilla_virtualbase_setWhitespaceVisibility(unsafe.Pointer(this.h), (C.int)(mode))
 
 }
-func (this *QsciScintilla) OnSetWhitespaceVisibility(slot func(super func(mode QsciScintilla__WhitespaceVisibility), mode QsciScintilla__WhitespaceVisibility)) {
-	ok := C.QsciScintilla_override_virtual_SetWhitespaceVisibility(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetWhitespaceVisibility(slot func(super func(mode QsciScintilla__WhitespaceVisibility), mode QsciScintilla__WhitespaceVisibility)) {
+	ok := C.QsciScintilla_override_virtual_setWhitespaceVisibility(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetWhitespaceVisibility
-func miqt_exec_callback_QsciScintilla_SetWhitespaceVisibility(self *C.QsciScintilla, cb C.intptr_t, mode C.int) {
+//export miqt_exec_callback_QsciScintilla_setWhitespaceVisibility
+func miqt_exec_callback_QsciScintilla_setWhitespaceVisibility(self *C.QsciScintilla, cb C.intptr_t, mode C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(mode QsciScintilla__WhitespaceVisibility), mode QsciScintilla__WhitespaceVisibility))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3889,18 +3889,18 @@ func miqt_exec_callback_QsciScintilla_SetWhitespaceVisibility(self *C.QsciScinti
 
 func (this *QsciScintilla) callVirtualBase_SetWrapMode(mode QsciScintilla__WrapMode) {
 
-	C.QsciScintilla_virtualbase_SetWrapMode(unsafe.Pointer(this.h), (C.int)(mode))
+	C.QsciScintilla_virtualbase_setWrapMode(unsafe.Pointer(this.h), (C.int)(mode))
 
 }
-func (this *QsciScintilla) OnSetWrapMode(slot func(super func(mode QsciScintilla__WrapMode), mode QsciScintilla__WrapMode)) {
-	ok := C.QsciScintilla_override_virtual_SetWrapMode(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetWrapMode(slot func(super func(mode QsciScintilla__WrapMode), mode QsciScintilla__WrapMode)) {
+	ok := C.QsciScintilla_override_virtual_setWrapMode(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetWrapMode
-func miqt_exec_callback_QsciScintilla_SetWrapMode(self *C.QsciScintilla, cb C.intptr_t, mode C.int) {
+//export miqt_exec_callback_QsciScintilla_setWrapMode
+func miqt_exec_callback_QsciScintilla_setWrapMode(self *C.QsciScintilla, cb C.intptr_t, mode C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(mode QsciScintilla__WrapMode), mode QsciScintilla__WrapMode))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3915,18 +3915,18 @@ func miqt_exec_callback_QsciScintilla_SetWrapMode(self *C.QsciScintilla, cb C.in
 
 func (this *QsciScintilla) callVirtualBase_Undo() {
 
-	C.QsciScintilla_virtualbase_Undo(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_undo(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnUndo(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_Undo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) Onundo(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_undo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_Undo
-func miqt_exec_callback_QsciScintilla_Undo(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_undo
+func miqt_exec_callback_QsciScintilla_undo(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3938,18 +3938,18 @@ func miqt_exec_callback_QsciScintilla_Undo(self *C.QsciScintilla, cb C.intptr_t)
 
 func (this *QsciScintilla) callVirtualBase_Unindent(line int) {
 
-	C.QsciScintilla_virtualbase_Unindent(unsafe.Pointer(this.h), (C.int)(line))
+	C.QsciScintilla_virtualbase_unindent(unsafe.Pointer(this.h), (C.int)(line))
 
 }
-func (this *QsciScintilla) OnUnindent(slot func(super func(line int), line int)) {
-	ok := C.QsciScintilla_override_virtual_Unindent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) Onunindent(slot func(super func(line int), line int)) {
+	ok := C.QsciScintilla_override_virtual_unindent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_Unindent
-func miqt_exec_callback_QsciScintilla_Unindent(self *C.QsciScintilla, cb C.intptr_t, line C.int) {
+//export miqt_exec_callback_QsciScintilla_unindent
+func miqt_exec_callback_QsciScintilla_unindent(self *C.QsciScintilla, cb C.intptr_t, line C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(line int), line int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3964,18 +3964,18 @@ func miqt_exec_callback_QsciScintilla_Unindent(self *C.QsciScintilla, cb C.intpt
 
 func (this *QsciScintilla) callVirtualBase_ZoomIn(rangeVal int) {
 
-	C.QsciScintilla_virtualbase_ZoomIn(unsafe.Pointer(this.h), (C.int)(rangeVal))
+	C.QsciScintilla_virtualbase_zoomIn(unsafe.Pointer(this.h), (C.int)(rangeVal))
 
 }
-func (this *QsciScintilla) OnZoomIn(slot func(super func(rangeVal int), rangeVal int)) {
-	ok := C.QsciScintilla_override_virtual_ZoomIn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnzoomIn(slot func(super func(rangeVal int), rangeVal int)) {
+	ok := C.QsciScintilla_override_virtual_zoomIn(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ZoomIn
-func miqt_exec_callback_QsciScintilla_ZoomIn(self *C.QsciScintilla, cb C.intptr_t, rangeVal C.int) {
+//export miqt_exec_callback_QsciScintilla_zoomIn
+func miqt_exec_callback_QsciScintilla_zoomIn(self *C.QsciScintilla, cb C.intptr_t, rangeVal C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rangeVal int), rangeVal int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -3990,18 +3990,18 @@ func miqt_exec_callback_QsciScintilla_ZoomIn(self *C.QsciScintilla, cb C.intptr_
 
 func (this *QsciScintilla) callVirtualBase_ZoomIn2() {
 
-	C.QsciScintilla_virtualbase_ZoomIn2(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_zoomIn2(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnZoomIn2(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_ZoomIn2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnzoomIn2(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_zoomIn2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ZoomIn2
-func miqt_exec_callback_QsciScintilla_ZoomIn2(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_zoomIn2
+func miqt_exec_callback_QsciScintilla_zoomIn2(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4013,18 +4013,18 @@ func miqt_exec_callback_QsciScintilla_ZoomIn2(self *C.QsciScintilla, cb C.intptr
 
 func (this *QsciScintilla) callVirtualBase_ZoomOut(rangeVal int) {
 
-	C.QsciScintilla_virtualbase_ZoomOut(unsafe.Pointer(this.h), (C.int)(rangeVal))
+	C.QsciScintilla_virtualbase_zoomOut(unsafe.Pointer(this.h), (C.int)(rangeVal))
 
 }
-func (this *QsciScintilla) OnZoomOut(slot func(super func(rangeVal int), rangeVal int)) {
-	ok := C.QsciScintilla_override_virtual_ZoomOut(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnzoomOut(slot func(super func(rangeVal int), rangeVal int)) {
+	ok := C.QsciScintilla_override_virtual_zoomOut(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ZoomOut
-func miqt_exec_callback_QsciScintilla_ZoomOut(self *C.QsciScintilla, cb C.intptr_t, rangeVal C.int) {
+//export miqt_exec_callback_QsciScintilla_zoomOut
+func miqt_exec_callback_QsciScintilla_zoomOut(self *C.QsciScintilla, cb C.intptr_t, rangeVal C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(rangeVal int), rangeVal int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4039,18 +4039,18 @@ func miqt_exec_callback_QsciScintilla_ZoomOut(self *C.QsciScintilla, cb C.intptr
 
 func (this *QsciScintilla) callVirtualBase_ZoomOut2() {
 
-	C.QsciScintilla_virtualbase_ZoomOut2(unsafe.Pointer(this.h))
+	C.QsciScintilla_virtualbase_zoomOut2(unsafe.Pointer(this.h))
 
 }
-func (this *QsciScintilla) OnZoomOut2(slot func(super func())) {
-	ok := C.QsciScintilla_override_virtual_ZoomOut2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnzoomOut2(slot func(super func())) {
+	ok := C.QsciScintilla_override_virtual_zoomOut2(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ZoomOut2
-func miqt_exec_callback_QsciScintilla_ZoomOut2(self *C.QsciScintilla, cb C.intptr_t) {
+//export miqt_exec_callback_QsciScintilla_zoomOut2
+func miqt_exec_callback_QsciScintilla_zoomOut2(self *C.QsciScintilla, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4062,18 +4062,18 @@ func miqt_exec_callback_QsciScintilla_ZoomOut2(self *C.QsciScintilla, cb C.intpt
 
 func (this *QsciScintilla) callVirtualBase_ZoomTo(size int) {
 
-	C.QsciScintilla_virtualbase_ZoomTo(unsafe.Pointer(this.h), (C.int)(size))
+	C.QsciScintilla_virtualbase_zoomTo(unsafe.Pointer(this.h), (C.int)(size))
 
 }
-func (this *QsciScintilla) OnZoomTo(slot func(super func(size int), size int)) {
-	ok := C.QsciScintilla_override_virtual_ZoomTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnzoomTo(slot func(super func(size int), size int)) {
+	ok := C.QsciScintilla_override_virtual_zoomTo(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ZoomTo
-func miqt_exec_callback_QsciScintilla_ZoomTo(self *C.QsciScintilla, cb C.intptr_t, size C.int) {
+//export miqt_exec_callback_QsciScintilla_zoomTo
+func miqt_exec_callback_QsciScintilla_zoomTo(self *C.QsciScintilla, cb C.intptr_t, size C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(size int), size int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4088,18 +4088,18 @@ func miqt_exec_callback_QsciScintilla_ZoomTo(self *C.QsciScintilla, cb C.intptr_
 
 func (this *QsciScintilla) callVirtualBase_Event(e *qt.QEvent) bool {
 
-	return (bool)(C.QsciScintilla_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer())))
+	return (bool)(C.QsciScintilla_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer())))
 
 }
-func (this *QsciScintilla) OnEvent(slot func(super func(e *qt.QEvent) bool, e *qt.QEvent) bool) {
-	ok := C.QsciScintilla_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) Onevent(slot func(super func(e *qt.QEvent) bool, e *qt.QEvent) bool) {
+	ok := C.QsciScintilla_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_Event
-func miqt_exec_callback_QsciScintilla_Event(self *C.QsciScintilla, cb C.intptr_t, e *C.QEvent) C.bool {
+//export miqt_exec_callback_QsciScintilla_event
+func miqt_exec_callback_QsciScintilla_event(self *C.QsciScintilla, cb C.intptr_t, e *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QEvent) bool, e *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4116,18 +4116,18 @@ func miqt_exec_callback_QsciScintilla_Event(self *C.QsciScintilla, cb C.intptr_t
 
 func (this *QsciScintilla) callVirtualBase_ChangeEvent(e *qt.QEvent) {
 
-	C.QsciScintilla_virtualbase_ChangeEvent(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer()))
+	C.QsciScintilla_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(e.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnChangeEvent(slot func(super func(e *qt.QEvent), e *qt.QEvent)) {
-	ok := C.QsciScintilla_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnchangeEvent(slot func(super func(e *qt.QEvent), e *qt.QEvent)) {
+	ok := C.QsciScintilla_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ChangeEvent
-func miqt_exec_callback_QsciScintilla_ChangeEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QEvent) {
+//export miqt_exec_callback_QsciScintilla_changeEvent
+func miqt_exec_callback_QsciScintilla_changeEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QEvent), e *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4142,18 +4142,18 @@ func miqt_exec_callback_QsciScintilla_ChangeEvent(self *C.QsciScintilla, cb C.in
 
 func (this *QsciScintilla) callVirtualBase_ContextMenuEvent(e *qt.QContextMenuEvent) {
 
-	C.QsciScintilla_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(e.UnsafePointer()))
+	C.QsciScintilla_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(e.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnContextMenuEvent(slot func(super func(e *qt.QContextMenuEvent), e *qt.QContextMenuEvent)) {
-	ok := C.QsciScintilla_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OncontextMenuEvent(slot func(super func(e *qt.QContextMenuEvent), e *qt.QContextMenuEvent)) {
+	ok := C.QsciScintilla_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ContextMenuEvent
-func miqt_exec_callback_QsciScintilla_ContextMenuEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QContextMenuEvent) {
+//export miqt_exec_callback_QsciScintilla_contextMenuEvent
+func miqt_exec_callback_QsciScintilla_contextMenuEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QContextMenuEvent), e *qt.QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4168,18 +4168,18 @@ func miqt_exec_callback_QsciScintilla_ContextMenuEvent(self *C.QsciScintilla, cb
 
 func (this *QsciScintilla) callVirtualBase_WheelEvent(e *qt.QWheelEvent) {
 
-	C.QsciScintilla_virtualbase_WheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(e.UnsafePointer()))
+	C.QsciScintilla_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(e.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnWheelEvent(slot func(super func(e *qt.QWheelEvent), e *qt.QWheelEvent)) {
-	ok := C.QsciScintilla_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnwheelEvent(slot func(super func(e *qt.QWheelEvent), e *qt.QWheelEvent)) {
+	ok := C.QsciScintilla_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_WheelEvent
-func miqt_exec_callback_QsciScintilla_WheelEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QWheelEvent) {
+//export miqt_exec_callback_QsciScintilla_wheelEvent
+func miqt_exec_callback_QsciScintilla_wheelEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QWheelEvent), e *qt.QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4194,18 +4194,18 @@ func miqt_exec_callback_QsciScintilla_WheelEvent(self *C.QsciScintilla, cb C.int
 
 func (this *QsciScintilla) callVirtualBase_CanInsertFromMimeData(source *qt.QMimeData) bool {
 
-	return (bool)(C.QsciScintilla_virtualbase_CanInsertFromMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(source.UnsafePointer())))
+	return (bool)(C.QsciScintilla_virtualbase_canInsertFromMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(source.UnsafePointer())))
 
 }
-func (this *QsciScintilla) OnCanInsertFromMimeData(slot func(super func(source *qt.QMimeData) bool, source *qt.QMimeData) bool) {
-	ok := C.QsciScintilla_override_virtual_CanInsertFromMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OncanInsertFromMimeData(slot func(super func(source *qt.QMimeData) bool, source *qt.QMimeData) bool) {
+	ok := C.QsciScintilla_override_virtual_canInsertFromMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_CanInsertFromMimeData
-func miqt_exec_callback_QsciScintilla_CanInsertFromMimeData(self *C.QsciScintilla, cb C.intptr_t, source *C.QMimeData) C.bool {
+//export miqt_exec_callback_QsciScintilla_canInsertFromMimeData
+func miqt_exec_callback_QsciScintilla_canInsertFromMimeData(self *C.QsciScintilla, cb C.intptr_t, source *C.QMimeData) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(source *qt.QMimeData) bool, source *qt.QMimeData) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4222,20 +4222,20 @@ func miqt_exec_callback_QsciScintilla_CanInsertFromMimeData(self *C.QsciScintill
 
 func (this *QsciScintilla) callVirtualBase_FromMimeData(source *qt.QMimeData, rectangular *bool) []byte {
 
-	var _bytearray C.struct_miqt_string = C.QsciScintilla_virtualbase_FromMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(source.UnsafePointer()), (*C.bool)(unsafe.Pointer(rectangular)))
+	var _bytearray C.struct_miqt_string = C.QsciScintilla_virtualbase_fromMimeData(unsafe.Pointer(this.h), (*C.QMimeData)(source.UnsafePointer()), (*C.bool)(unsafe.Pointer(rectangular)))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
-func (this *QsciScintilla) OnFromMimeData(slot func(super func(source *qt.QMimeData, rectangular *bool) []byte, source *qt.QMimeData, rectangular *bool) []byte) {
-	ok := C.QsciScintilla_override_virtual_FromMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnfromMimeData(slot func(super func(source *qt.QMimeData, rectangular *bool) []byte, source *qt.QMimeData, rectangular *bool) []byte) {
+	ok := C.QsciScintilla_override_virtual_fromMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_FromMimeData
-func miqt_exec_callback_QsciScintilla_FromMimeData(self *C.QsciScintilla, cb C.intptr_t, source *C.QMimeData, rectangular *C.bool) C.struct_miqt_string {
+//export miqt_exec_callback_QsciScintilla_fromMimeData
+func miqt_exec_callback_QsciScintilla_fromMimeData(self *C.QsciScintilla, cb C.intptr_t, source *C.QMimeData, rectangular *C.bool) C.struct_miqt_string {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(source *qt.QMimeData, rectangular *bool) []byte, source *qt.QMimeData, rectangular *bool) []byte)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4268,18 +4268,18 @@ func (this *QsciScintilla) callVirtualBase_ToMimeData(text []byte, rectangular b
 	}
 	text_alias.len = C.size_t(len(text))
 
-	return qt.UnsafeNewQMimeData(unsafe.Pointer(C.QsciScintilla_virtualbase_ToMimeData(unsafe.Pointer(this.h), text_alias, (C.bool)(rectangular))))
+	return qt.UnsafeNewQMimeData(unsafe.Pointer(C.QsciScintilla_virtualbase_toMimeData(unsafe.Pointer(this.h), text_alias, (C.bool)(rectangular))))
 
 }
-func (this *QsciScintilla) OnToMimeData(slot func(super func(text []byte, rectangular bool) *qt.QMimeData, text []byte, rectangular bool) *qt.QMimeData) {
-	ok := C.QsciScintilla_override_virtual_ToMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OntoMimeData(slot func(super func(text []byte, rectangular bool) *qt.QMimeData, text []byte, rectangular bool) *qt.QMimeData) {
+	ok := C.QsciScintilla_override_virtual_toMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ToMimeData
-func miqt_exec_callback_QsciScintilla_ToMimeData(self *C.QsciScintilla, cb C.intptr_t, text C.struct_miqt_string, rectangular C.bool) *C.QMimeData {
+//export miqt_exec_callback_QsciScintilla_toMimeData
+func miqt_exec_callback_QsciScintilla_toMimeData(self *C.QsciScintilla, cb C.intptr_t, text C.struct_miqt_string, rectangular C.bool) *C.QMimeData {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(text []byte, rectangular bool) *qt.QMimeData, text []byte, rectangular bool) *qt.QMimeData)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4300,18 +4300,18 @@ func miqt_exec_callback_QsciScintilla_ToMimeData(self *C.QsciScintilla, cb C.int
 
 func (this *QsciScintilla) callVirtualBase_DragEnterEvent(e *qt.QDragEnterEvent) {
 
-	C.QsciScintilla_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(e.UnsafePointer()))
+	C.QsciScintilla_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(e.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnDragEnterEvent(slot func(super func(e *qt.QDragEnterEvent), e *qt.QDragEnterEvent)) {
-	ok := C.QsciScintilla_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OndragEnterEvent(slot func(super func(e *qt.QDragEnterEvent), e *qt.QDragEnterEvent)) {
+	ok := C.QsciScintilla_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_DragEnterEvent
-func miqt_exec_callback_QsciScintilla_DragEnterEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QDragEnterEvent) {
+//export miqt_exec_callback_QsciScintilla_dragEnterEvent
+func miqt_exec_callback_QsciScintilla_dragEnterEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QDragEnterEvent), e *qt.QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4326,18 +4326,18 @@ func miqt_exec_callback_QsciScintilla_DragEnterEvent(self *C.QsciScintilla, cb C
 
 func (this *QsciScintilla) callVirtualBase_DragLeaveEvent(e *qt.QDragLeaveEvent) {
 
-	C.QsciScintilla_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(e.UnsafePointer()))
+	C.QsciScintilla_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(e.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnDragLeaveEvent(slot func(super func(e *qt.QDragLeaveEvent), e *qt.QDragLeaveEvent)) {
-	ok := C.QsciScintilla_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OndragLeaveEvent(slot func(super func(e *qt.QDragLeaveEvent), e *qt.QDragLeaveEvent)) {
+	ok := C.QsciScintilla_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_DragLeaveEvent
-func miqt_exec_callback_QsciScintilla_DragLeaveEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QsciScintilla_dragLeaveEvent
+func miqt_exec_callback_QsciScintilla_dragLeaveEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QDragLeaveEvent), e *qt.QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4352,18 +4352,18 @@ func miqt_exec_callback_QsciScintilla_DragLeaveEvent(self *C.QsciScintilla, cb C
 
 func (this *QsciScintilla) callVirtualBase_DragMoveEvent(e *qt.QDragMoveEvent) {
 
-	C.QsciScintilla_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(e.UnsafePointer()))
+	C.QsciScintilla_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(e.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnDragMoveEvent(slot func(super func(e *qt.QDragMoveEvent), e *qt.QDragMoveEvent)) {
-	ok := C.QsciScintilla_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OndragMoveEvent(slot func(super func(e *qt.QDragMoveEvent), e *qt.QDragMoveEvent)) {
+	ok := C.QsciScintilla_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_DragMoveEvent
-func miqt_exec_callback_QsciScintilla_DragMoveEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QDragMoveEvent) {
+//export miqt_exec_callback_QsciScintilla_dragMoveEvent
+func miqt_exec_callback_QsciScintilla_dragMoveEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QDragMoveEvent), e *qt.QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4378,18 +4378,18 @@ func miqt_exec_callback_QsciScintilla_DragMoveEvent(self *C.QsciScintilla, cb C.
 
 func (this *QsciScintilla) callVirtualBase_DropEvent(e *qt.QDropEvent) {
 
-	C.QsciScintilla_virtualbase_DropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(e.UnsafePointer()))
+	C.QsciScintilla_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(e.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnDropEvent(slot func(super func(e *qt.QDropEvent), e *qt.QDropEvent)) {
-	ok := C.QsciScintilla_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OndropEvent(slot func(super func(e *qt.QDropEvent), e *qt.QDropEvent)) {
+	ok := C.QsciScintilla_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_DropEvent
-func miqt_exec_callback_QsciScintilla_DropEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QDropEvent) {
+//export miqt_exec_callback_QsciScintilla_dropEvent
+func miqt_exec_callback_QsciScintilla_dropEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QDropEvent), e *qt.QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4404,18 +4404,18 @@ func miqt_exec_callback_QsciScintilla_DropEvent(self *C.QsciScintilla, cb C.intp
 
 func (this *QsciScintilla) callVirtualBase_FocusInEvent(e *qt.QFocusEvent) {
 
-	C.QsciScintilla_virtualbase_FocusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(e.UnsafePointer()))
+	C.QsciScintilla_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(e.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnFocusInEvent(slot func(super func(e *qt.QFocusEvent), e *qt.QFocusEvent)) {
-	ok := C.QsciScintilla_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnfocusInEvent(slot func(super func(e *qt.QFocusEvent), e *qt.QFocusEvent)) {
+	ok := C.QsciScintilla_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_FocusInEvent
-func miqt_exec_callback_QsciScintilla_FocusInEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QFocusEvent) {
+//export miqt_exec_callback_QsciScintilla_focusInEvent
+func miqt_exec_callback_QsciScintilla_focusInEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QFocusEvent), e *qt.QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4430,18 +4430,18 @@ func miqt_exec_callback_QsciScintilla_FocusInEvent(self *C.QsciScintilla, cb C.i
 
 func (this *QsciScintilla) callVirtualBase_FocusOutEvent(e *qt.QFocusEvent) {
 
-	C.QsciScintilla_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(e.UnsafePointer()))
+	C.QsciScintilla_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(e.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnFocusOutEvent(slot func(super func(e *qt.QFocusEvent), e *qt.QFocusEvent)) {
-	ok := C.QsciScintilla_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnfocusOutEvent(slot func(super func(e *qt.QFocusEvent), e *qt.QFocusEvent)) {
+	ok := C.QsciScintilla_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_FocusOutEvent
-func miqt_exec_callback_QsciScintilla_FocusOutEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QFocusEvent) {
+//export miqt_exec_callback_QsciScintilla_focusOutEvent
+func miqt_exec_callback_QsciScintilla_focusOutEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QFocusEvent), e *qt.QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4456,18 +4456,18 @@ func miqt_exec_callback_QsciScintilla_FocusOutEvent(self *C.QsciScintilla, cb C.
 
 func (this *QsciScintilla) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QsciScintilla_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QsciScintilla_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QsciScintilla) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QsciScintilla_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QsciScintilla_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_FocusNextPrevChild
-func miqt_exec_callback_QsciScintilla_FocusNextPrevChild(self *C.QsciScintilla, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QsciScintilla_focusNextPrevChild
+func miqt_exec_callback_QsciScintilla_focusNextPrevChild(self *C.QsciScintilla, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4484,18 +4484,18 @@ func miqt_exec_callback_QsciScintilla_FocusNextPrevChild(self *C.QsciScintilla, 
 
 func (this *QsciScintilla) callVirtualBase_KeyPressEvent(e *qt.QKeyEvent) {
 
-	C.QsciScintilla_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(e.UnsafePointer()))
+	C.QsciScintilla_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(e.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnKeyPressEvent(slot func(super func(e *qt.QKeyEvent), e *qt.QKeyEvent)) {
-	ok := C.QsciScintilla_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnkeyPressEvent(slot func(super func(e *qt.QKeyEvent), e *qt.QKeyEvent)) {
+	ok := C.QsciScintilla_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_KeyPressEvent
-func miqt_exec_callback_QsciScintilla_KeyPressEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QKeyEvent) {
+//export miqt_exec_callback_QsciScintilla_keyPressEvent
+func miqt_exec_callback_QsciScintilla_keyPressEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QKeyEvent), e *qt.QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4510,18 +4510,18 @@ func miqt_exec_callback_QsciScintilla_KeyPressEvent(self *C.QsciScintilla, cb C.
 
 func (this *QsciScintilla) callVirtualBase_InputMethodEvent(event *qt.QInputMethodEvent) {
 
-	C.QsciScintilla_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(event.UnsafePointer()))
+	C.QsciScintilla_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnInputMethodEvent(slot func(super func(event *qt.QInputMethodEvent), event *qt.QInputMethodEvent)) {
-	ok := C.QsciScintilla_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OninputMethodEvent(slot func(super func(event *qt.QInputMethodEvent), event *qt.QInputMethodEvent)) {
+	ok := C.QsciScintilla_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_InputMethodEvent
-func miqt_exec_callback_QsciScintilla_InputMethodEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QInputMethodEvent) {
+//export miqt_exec_callback_QsciScintilla_inputMethodEvent
+func miqt_exec_callback_QsciScintilla_inputMethodEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QInputMethodEvent), event *qt.QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4536,20 +4536,20 @@ func miqt_exec_callback_QsciScintilla_InputMethodEvent(self *C.QsciScintilla, cb
 
 func (this *QsciScintilla) callVirtualBase_InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
 
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QsciScintilla_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QsciScintilla_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QsciScintilla) OnInputMethodQuery(slot func(super func(query qt.InputMethodQuery) *qt.QVariant, query qt.InputMethodQuery) *qt.QVariant) {
-	ok := C.QsciScintilla_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OninputMethodQuery(slot func(super func(query qt.InputMethodQuery) *qt.QVariant, query qt.InputMethodQuery) *qt.QVariant) {
+	ok := C.QsciScintilla_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_InputMethodQuery
-func miqt_exec_callback_QsciScintilla_InputMethodQuery(self *C.QsciScintilla, cb C.intptr_t, query C.int) *C.QVariant {
+//export miqt_exec_callback_QsciScintilla_inputMethodQuery
+func miqt_exec_callback_QsciScintilla_inputMethodQuery(self *C.QsciScintilla, cb C.intptr_t, query C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(query qt.InputMethodQuery) *qt.QVariant, query qt.InputMethodQuery) *qt.QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4566,18 +4566,18 @@ func miqt_exec_callback_QsciScintilla_InputMethodQuery(self *C.QsciScintilla, cb
 
 func (this *QsciScintilla) callVirtualBase_MouseDoubleClickEvent(e *qt.QMouseEvent) {
 
-	C.QsciScintilla_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
+	C.QsciScintilla_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnMouseDoubleClickEvent(slot func(super func(e *qt.QMouseEvent), e *qt.QMouseEvent)) {
-	ok := C.QsciScintilla_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnmouseDoubleClickEvent(slot func(super func(e *qt.QMouseEvent), e *qt.QMouseEvent)) {
+	ok := C.QsciScintilla_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_MouseDoubleClickEvent
-func miqt_exec_callback_QsciScintilla_MouseDoubleClickEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QMouseEvent) {
+//export miqt_exec_callback_QsciScintilla_mouseDoubleClickEvent
+func miqt_exec_callback_QsciScintilla_mouseDoubleClickEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QMouseEvent), e *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4592,18 +4592,18 @@ func miqt_exec_callback_QsciScintilla_MouseDoubleClickEvent(self *C.QsciScintill
 
 func (this *QsciScintilla) callVirtualBase_MouseMoveEvent(e *qt.QMouseEvent) {
 
-	C.QsciScintilla_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
+	C.QsciScintilla_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnMouseMoveEvent(slot func(super func(e *qt.QMouseEvent), e *qt.QMouseEvent)) {
-	ok := C.QsciScintilla_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnmouseMoveEvent(slot func(super func(e *qt.QMouseEvent), e *qt.QMouseEvent)) {
+	ok := C.QsciScintilla_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_MouseMoveEvent
-func miqt_exec_callback_QsciScintilla_MouseMoveEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QMouseEvent) {
+//export miqt_exec_callback_QsciScintilla_mouseMoveEvent
+func miqt_exec_callback_QsciScintilla_mouseMoveEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QMouseEvent), e *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4618,18 +4618,18 @@ func miqt_exec_callback_QsciScintilla_MouseMoveEvent(self *C.QsciScintilla, cb C
 
 func (this *QsciScintilla) callVirtualBase_MousePressEvent(e *qt.QMouseEvent) {
 
-	C.QsciScintilla_virtualbase_MousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
+	C.QsciScintilla_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnMousePressEvent(slot func(super func(e *qt.QMouseEvent), e *qt.QMouseEvent)) {
-	ok := C.QsciScintilla_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnmousePressEvent(slot func(super func(e *qt.QMouseEvent), e *qt.QMouseEvent)) {
+	ok := C.QsciScintilla_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_MousePressEvent
-func miqt_exec_callback_QsciScintilla_MousePressEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QMouseEvent) {
+//export miqt_exec_callback_QsciScintilla_mousePressEvent
+func miqt_exec_callback_QsciScintilla_mousePressEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QMouseEvent), e *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4644,18 +4644,18 @@ func miqt_exec_callback_QsciScintilla_MousePressEvent(self *C.QsciScintilla, cb 
 
 func (this *QsciScintilla) callVirtualBase_MouseReleaseEvent(e *qt.QMouseEvent) {
 
-	C.QsciScintilla_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
+	C.QsciScintilla_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(e.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnMouseReleaseEvent(slot func(super func(e *qt.QMouseEvent), e *qt.QMouseEvent)) {
-	ok := C.QsciScintilla_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnmouseReleaseEvent(slot func(super func(e *qt.QMouseEvent), e *qt.QMouseEvent)) {
+	ok := C.QsciScintilla_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_MouseReleaseEvent
-func miqt_exec_callback_QsciScintilla_MouseReleaseEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QMouseEvent) {
+//export miqt_exec_callback_QsciScintilla_mouseReleaseEvent
+func miqt_exec_callback_QsciScintilla_mouseReleaseEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QMouseEvent), e *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4670,18 +4670,18 @@ func miqt_exec_callback_QsciScintilla_MouseReleaseEvent(self *C.QsciScintilla, c
 
 func (this *QsciScintilla) callVirtualBase_PaintEvent(e *qt.QPaintEvent) {
 
-	C.QsciScintilla_virtualbase_PaintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(e.UnsafePointer()))
+	C.QsciScintilla_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(e.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnPaintEvent(slot func(super func(e *qt.QPaintEvent), e *qt.QPaintEvent)) {
-	ok := C.QsciScintilla_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnpaintEvent(slot func(super func(e *qt.QPaintEvent), e *qt.QPaintEvent)) {
+	ok := C.QsciScintilla_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_PaintEvent
-func miqt_exec_callback_QsciScintilla_PaintEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QPaintEvent) {
+//export miqt_exec_callback_QsciScintilla_paintEvent
+func miqt_exec_callback_QsciScintilla_paintEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QPaintEvent), e *qt.QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4696,18 +4696,18 @@ func miqt_exec_callback_QsciScintilla_PaintEvent(self *C.QsciScintilla, cb C.int
 
 func (this *QsciScintilla) callVirtualBase_ResizeEvent(e *qt.QResizeEvent) {
 
-	C.QsciScintilla_virtualbase_ResizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(e.UnsafePointer()))
+	C.QsciScintilla_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(e.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnResizeEvent(slot func(super func(e *qt.QResizeEvent), e *qt.QResizeEvent)) {
-	ok := C.QsciScintilla_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnresizeEvent(slot func(super func(e *qt.QResizeEvent), e *qt.QResizeEvent)) {
+	ok := C.QsciScintilla_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ResizeEvent
-func miqt_exec_callback_QsciScintilla_ResizeEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QResizeEvent) {
+//export miqt_exec_callback_QsciScintilla_resizeEvent
+func miqt_exec_callback_QsciScintilla_resizeEvent(self *C.QsciScintilla, cb C.intptr_t, e *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *qt.QResizeEvent), e *qt.QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4722,18 +4722,18 @@ func miqt_exec_callback_QsciScintilla_ResizeEvent(self *C.QsciScintilla, cb C.in
 
 func (this *QsciScintilla) callVirtualBase_ScrollContentsBy(dx int, dy int) {
 
-	C.QsciScintilla_virtualbase_ScrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
+	C.QsciScintilla_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
 
 }
-func (this *QsciScintilla) OnScrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
-	ok := C.QsciScintilla_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnscrollContentsBy(slot func(super func(dx int, dy int), dx int, dy int)) {
+	ok := C.QsciScintilla_override_virtual_scrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ScrollContentsBy
-func miqt_exec_callback_QsciScintilla_ScrollContentsBy(self *C.QsciScintilla, cb C.intptr_t, dx C.int, dy C.int) {
+//export miqt_exec_callback_QsciScintilla_scrollContentsBy
+func miqt_exec_callback_QsciScintilla_scrollContentsBy(self *C.QsciScintilla, cb C.intptr_t, dx C.int, dy C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(dx int, dy int), dx int, dy int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4750,20 +4750,20 @@ func miqt_exec_callback_QsciScintilla_ScrollContentsBy(self *C.QsciScintilla, cb
 
 func (this *QsciScintilla) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QsciScintilla_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QsciScintilla_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QsciScintilla) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	ok := C.QsciScintilla_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnminimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	ok := C.QsciScintilla_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_MinimumSizeHint
-func miqt_exec_callback_QsciScintilla_MinimumSizeHint(self *C.QsciScintilla, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QsciScintilla_minimumSizeHint
+func miqt_exec_callback_QsciScintilla_minimumSizeHint(self *C.QsciScintilla, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4777,20 +4777,20 @@ func miqt_exec_callback_QsciScintilla_MinimumSizeHint(self *C.QsciScintilla, cb 
 
 func (this *QsciScintilla) callVirtualBase_SizeHint() *qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QsciScintilla_virtualbase_SizeHint(unsafe.Pointer(this.h))))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QsciScintilla_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QsciScintilla) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	ok := C.QsciScintilla_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	ok := C.QsciScintilla_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SizeHint
-func miqt_exec_callback_QsciScintilla_SizeHint(self *C.QsciScintilla, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QsciScintilla_sizeHint
+func miqt_exec_callback_QsciScintilla_sizeHint(self *C.QsciScintilla, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4804,18 +4804,18 @@ func miqt_exec_callback_QsciScintilla_SizeHint(self *C.QsciScintilla, cb C.intpt
 
 func (this *QsciScintilla) callVirtualBase_SetupViewport(viewport *qt.QWidget) {
 
-	C.QsciScintilla_virtualbase_SetupViewport(unsafe.Pointer(this.h), (*C.QWidget)(viewport.UnsafePointer()))
+	C.QsciScintilla_virtualbase_setupViewport(unsafe.Pointer(this.h), (*C.QWidget)(viewport.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnSetupViewport(slot func(super func(viewport *qt.QWidget), viewport *qt.QWidget)) {
-	ok := C.QsciScintilla_override_virtual_SetupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetupViewport(slot func(super func(viewport *qt.QWidget), viewport *qt.QWidget)) {
+	ok := C.QsciScintilla_override_virtual_setupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetupViewport
-func miqt_exec_callback_QsciScintilla_SetupViewport(self *C.QsciScintilla, cb C.intptr_t, viewport *C.QWidget) {
+//export miqt_exec_callback_QsciScintilla_setupViewport
+func miqt_exec_callback_QsciScintilla_setupViewport(self *C.QsciScintilla, cb C.intptr_t, viewport *C.QWidget) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(viewport *qt.QWidget), viewport *qt.QWidget))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4830,18 +4830,18 @@ func miqt_exec_callback_QsciScintilla_SetupViewport(self *C.QsciScintilla, cb C.
 
 func (this *QsciScintilla) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
 
-	return (bool)(C.QsciScintilla_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
+	return (bool)(C.QsciScintilla_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
 
 }
-func (this *QsciScintilla) OnEventFilter(slot func(super func(param1 *qt.QObject, param2 *qt.QEvent) bool, param1 *qt.QObject, param2 *qt.QEvent) bool) {
-	ok := C.QsciScintilla_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OneventFilter(slot func(super func(param1 *qt.QObject, param2 *qt.QEvent) bool, param1 *qt.QObject, param2 *qt.QEvent) bool) {
+	ok := C.QsciScintilla_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_EventFilter
-func miqt_exec_callback_QsciScintilla_EventFilter(self *C.QsciScintilla, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+//export miqt_exec_callback_QsciScintilla_eventFilter
+func miqt_exec_callback_QsciScintilla_eventFilter(self *C.QsciScintilla, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QObject, param2 *qt.QEvent) bool, param1 *qt.QObject, param2 *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4860,18 +4860,18 @@ func miqt_exec_callback_QsciScintilla_EventFilter(self *C.QsciScintilla, cb C.in
 
 func (this *QsciScintilla) callVirtualBase_ViewportEvent(param1 *qt.QEvent) bool {
 
-	return (bool)(C.QsciScintilla_virtualbase_ViewportEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
+	return (bool)(C.QsciScintilla_virtualbase_viewportEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
 
 }
-func (this *QsciScintilla) OnViewportEvent(slot func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool) {
-	ok := C.QsciScintilla_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnviewportEvent(slot func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool) {
+	ok := C.QsciScintilla_override_virtual_viewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ViewportEvent
-func miqt_exec_callback_QsciScintilla_ViewportEvent(self *C.QsciScintilla, cb C.intptr_t, param1 *C.QEvent) C.bool {
+//export miqt_exec_callback_QsciScintilla_viewportEvent
+func miqt_exec_callback_QsciScintilla_viewportEvent(self *C.QsciScintilla, cb C.intptr_t, param1 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4888,20 +4888,20 @@ func miqt_exec_callback_QsciScintilla_ViewportEvent(self *C.QsciScintilla, cb C.
 
 func (this *QsciScintilla) callVirtualBase_ViewportSizeHint() *qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QsciScintilla_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QsciScintilla_virtualbase_viewportSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QsciScintilla) OnViewportSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	ok := C.QsciScintilla_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnviewportSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	ok := C.QsciScintilla_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ViewportSizeHint
-func miqt_exec_callback_QsciScintilla_ViewportSizeHint(self *C.QsciScintilla, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QsciScintilla_viewportSizeHint
+func miqt_exec_callback_QsciScintilla_viewportSizeHint(self *C.QsciScintilla, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4915,18 +4915,18 @@ func miqt_exec_callback_QsciScintilla_ViewportSizeHint(self *C.QsciScintilla, cb
 
 func (this *QsciScintilla) callVirtualBase_DevType() int {
 
-	return (int)(C.QsciScintilla_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QsciScintilla_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciScintilla) OnDevType(slot func(super func() int) int) {
-	ok := C.QsciScintilla_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OndevType(slot func(super func() int) int) {
+	ok := C.QsciScintilla_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_DevType
-func miqt_exec_callback_QsciScintilla_DevType(self *C.QsciScintilla, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QsciScintilla_devType
+func miqt_exec_callback_QsciScintilla_devType(self *C.QsciScintilla, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4940,18 +4940,18 @@ func miqt_exec_callback_QsciScintilla_DevType(self *C.QsciScintilla, cb C.intptr
 
 func (this *QsciScintilla) callVirtualBase_SetVisible(visible bool) {
 
-	C.QsciScintilla_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QsciScintilla_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QsciScintilla) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QsciScintilla_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QsciScintilla_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SetVisible
-func miqt_exec_callback_QsciScintilla_SetVisible(self *C.QsciScintilla, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QsciScintilla_setVisible
+func miqt_exec_callback_QsciScintilla_setVisible(self *C.QsciScintilla, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4966,18 +4966,18 @@ func miqt_exec_callback_QsciScintilla_SetVisible(self *C.QsciScintilla, cb C.int
 
 func (this *QsciScintilla) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QsciScintilla_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QsciScintilla_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QsciScintilla) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QsciScintilla_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QsciScintilla_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_HeightForWidth
-func miqt_exec_callback_QsciScintilla_HeightForWidth(self *C.QsciScintilla, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QsciScintilla_heightForWidth
+func miqt_exec_callback_QsciScintilla_heightForWidth(self *C.QsciScintilla, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -4994,18 +4994,18 @@ func miqt_exec_callback_QsciScintilla_HeightForWidth(self *C.QsciScintilla, cb C
 
 func (this *QsciScintilla) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QsciScintilla_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QsciScintilla_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciScintilla) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QsciScintilla_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QsciScintilla_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_HasHeightForWidth
-func miqt_exec_callback_QsciScintilla_HasHeightForWidth(self *C.QsciScintilla, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QsciScintilla_hasHeightForWidth
+func miqt_exec_callback_QsciScintilla_hasHeightForWidth(self *C.QsciScintilla, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5019,18 +5019,18 @@ func miqt_exec_callback_QsciScintilla_HasHeightForWidth(self *C.QsciScintilla, c
 
 func (this *QsciScintilla) callVirtualBase_PaintEngine() *qt.QPaintEngine {
 
-	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QsciScintilla_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.QsciScintilla_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
 }
-func (this *QsciScintilla) OnPaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
-	ok := C.QsciScintilla_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnpaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
+	ok := C.QsciScintilla_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_PaintEngine
-func miqt_exec_callback_QsciScintilla_PaintEngine(self *C.QsciScintilla, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QsciScintilla_paintEngine
+func miqt_exec_callback_QsciScintilla_paintEngine(self *C.QsciScintilla, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QPaintEngine) *qt.QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5044,18 +5044,18 @@ func miqt_exec_callback_QsciScintilla_PaintEngine(self *C.QsciScintilla, cb C.in
 
 func (this *QsciScintilla) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
 
-	C.QsciScintilla_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
+	C.QsciScintilla_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnKeyReleaseEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
-	ok := C.QsciScintilla_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnkeyReleaseEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
+	ok := C.QsciScintilla_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_KeyReleaseEvent
-func miqt_exec_callback_QsciScintilla_KeyReleaseEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QsciScintilla_keyReleaseEvent
+func miqt_exec_callback_QsciScintilla_keyReleaseEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5070,18 +5070,18 @@ func miqt_exec_callback_QsciScintilla_KeyReleaseEvent(self *C.QsciScintilla, cb 
 
 func (this *QsciScintilla) callVirtualBase_EnterEvent(event *qt.QEvent) {
 
-	C.QsciScintilla_virtualbase_EnterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QsciScintilla_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnEnterEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QsciScintilla_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnenterEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QsciScintilla_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_EnterEvent
-func miqt_exec_callback_QsciScintilla_EnterEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QsciScintilla_enterEvent
+func miqt_exec_callback_QsciScintilla_enterEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5096,18 +5096,18 @@ func miqt_exec_callback_QsciScintilla_EnterEvent(self *C.QsciScintilla, cb C.int
 
 func (this *QsciScintilla) callVirtualBase_LeaveEvent(event *qt.QEvent) {
 
-	C.QsciScintilla_virtualbase_LeaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QsciScintilla_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnLeaveEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QsciScintilla_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnleaveEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QsciScintilla_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_LeaveEvent
-func miqt_exec_callback_QsciScintilla_LeaveEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QsciScintilla_leaveEvent
+func miqt_exec_callback_QsciScintilla_leaveEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5122,18 +5122,18 @@ func miqt_exec_callback_QsciScintilla_LeaveEvent(self *C.QsciScintilla, cb C.int
 
 func (this *QsciScintilla) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
 
-	C.QsciScintilla_virtualbase_MoveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
+	C.QsciScintilla_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnMoveEvent(slot func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent)) {
-	ok := C.QsciScintilla_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnmoveEvent(slot func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent)) {
+	ok := C.QsciScintilla_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_MoveEvent
-func miqt_exec_callback_QsciScintilla_MoveEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QsciScintilla_moveEvent
+func miqt_exec_callback_QsciScintilla_moveEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5148,18 +5148,18 @@ func miqt_exec_callback_QsciScintilla_MoveEvent(self *C.QsciScintilla, cb C.intp
 
 func (this *QsciScintilla) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
 
-	C.QsciScintilla_virtualbase_CloseEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
+	C.QsciScintilla_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnCloseEvent(slot func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent)) {
-	ok := C.QsciScintilla_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OncloseEvent(slot func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent)) {
+	ok := C.QsciScintilla_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_CloseEvent
-func miqt_exec_callback_QsciScintilla_CloseEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QsciScintilla_closeEvent
+func miqt_exec_callback_QsciScintilla_closeEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5174,18 +5174,18 @@ func miqt_exec_callback_QsciScintilla_CloseEvent(self *C.QsciScintilla, cb C.int
 
 func (this *QsciScintilla) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
 
-	C.QsciScintilla_virtualbase_TabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
+	C.QsciScintilla_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnTabletEvent(slot func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent)) {
-	ok := C.QsciScintilla_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OntabletEvent(slot func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent)) {
+	ok := C.QsciScintilla_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_TabletEvent
-func miqt_exec_callback_QsciScintilla_TabletEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QsciScintilla_tabletEvent
+func miqt_exec_callback_QsciScintilla_tabletEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5200,18 +5200,18 @@ func miqt_exec_callback_QsciScintilla_TabletEvent(self *C.QsciScintilla, cb C.in
 
 func (this *QsciScintilla) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
 
-	C.QsciScintilla_virtualbase_ActionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
+	C.QsciScintilla_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnActionEvent(slot func(super func(event *qt.QActionEvent), event *qt.QActionEvent)) {
-	ok := C.QsciScintilla_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnactionEvent(slot func(super func(event *qt.QActionEvent), event *qt.QActionEvent)) {
+	ok := C.QsciScintilla_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ActionEvent
-func miqt_exec_callback_QsciScintilla_ActionEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QsciScintilla_actionEvent
+func miqt_exec_callback_QsciScintilla_actionEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QActionEvent), event *qt.QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5226,18 +5226,18 @@ func miqt_exec_callback_QsciScintilla_ActionEvent(self *C.QsciScintilla, cb C.in
 
 func (this *QsciScintilla) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
 
-	C.QsciScintilla_virtualbase_ShowEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
+	C.QsciScintilla_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnShowEvent(slot func(super func(event *qt.QShowEvent), event *qt.QShowEvent)) {
-	ok := C.QsciScintilla_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnshowEvent(slot func(super func(event *qt.QShowEvent), event *qt.QShowEvent)) {
+	ok := C.QsciScintilla_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ShowEvent
-func miqt_exec_callback_QsciScintilla_ShowEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QShowEvent) {
+//export miqt_exec_callback_QsciScintilla_showEvent
+func miqt_exec_callback_QsciScintilla_showEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QShowEvent), event *qt.QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5252,18 +5252,18 @@ func miqt_exec_callback_QsciScintilla_ShowEvent(self *C.QsciScintilla, cb C.intp
 
 func (this *QsciScintilla) callVirtualBase_HideEvent(event *qt.QHideEvent) {
 
-	C.QsciScintilla_virtualbase_HideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
+	C.QsciScintilla_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnHideEvent(slot func(super func(event *qt.QHideEvent), event *qt.QHideEvent)) {
-	ok := C.QsciScintilla_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnhideEvent(slot func(super func(event *qt.QHideEvent), event *qt.QHideEvent)) {
+	ok := C.QsciScintilla_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_HideEvent
-func miqt_exec_callback_QsciScintilla_HideEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_QsciScintilla_hideEvent
+func miqt_exec_callback_QsciScintilla_hideEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QHideEvent), event *qt.QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5285,18 +5285,18 @@ func (this *QsciScintilla) callVirtualBase_NativeEvent(eventType []byte, message
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QsciScintilla_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
+	return (bool)(C.QsciScintilla_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QsciScintilla) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
-	ok := C.QsciScintilla_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	ok := C.QsciScintilla_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_NativeEvent
-func miqt_exec_callback_QsciScintilla_NativeEvent(self *C.QsciScintilla, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
+//export miqt_exec_callback_QsciScintilla_nativeEvent
+func miqt_exec_callback_QsciScintilla_nativeEvent(self *C.QsciScintilla, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5319,18 +5319,18 @@ func miqt_exec_callback_QsciScintilla_NativeEvent(self *C.QsciScintilla, cb C.in
 
 func (this *QsciScintilla) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QsciScintilla_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QsciScintilla_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QsciScintilla) OnMetric(slot func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QsciScintilla_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) Onmetric(slot func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QsciScintilla_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_Metric
-func miqt_exec_callback_QsciScintilla_Metric(self *C.QsciScintilla, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QsciScintilla_metric
+func miqt_exec_callback_QsciScintilla_metric(self *C.QsciScintilla, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5347,18 +5347,18 @@ func miqt_exec_callback_QsciScintilla_Metric(self *C.QsciScintilla, cb C.intptr_
 
 func (this *QsciScintilla) callVirtualBase_InitPainter(painter *qt.QPainter) {
 
-	C.QsciScintilla_virtualbase_InitPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
+	C.QsciScintilla_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnInitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
-	ok := C.QsciScintilla_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OninitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
+	ok := C.QsciScintilla_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_InitPainter
-func miqt_exec_callback_QsciScintilla_InitPainter(self *C.QsciScintilla, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QsciScintilla_initPainter
+func miqt_exec_callback_QsciScintilla_initPainter(self *C.QsciScintilla, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter), painter *qt.QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5373,18 +5373,18 @@ func miqt_exec_callback_QsciScintilla_InitPainter(self *C.QsciScintilla, cb C.in
 
 func (this *QsciScintilla) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 
-	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QsciScintilla_virtualbase_Redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
+	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.QsciScintilla_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
 }
-func (this *QsciScintilla) OnRedirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
-	ok := C.QsciScintilla_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) Onredirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
+	ok := C.QsciScintilla_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_Redirected
-func miqt_exec_callback_QsciScintilla_Redirected(self *C.QsciScintilla, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QsciScintilla_redirected
+func miqt_exec_callback_QsciScintilla_redirected(self *C.QsciScintilla, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5401,18 +5401,18 @@ func miqt_exec_callback_QsciScintilla_Redirected(self *C.QsciScintilla, cb C.int
 
 func (this *QsciScintilla) callVirtualBase_SharedPainter() *qt.QPainter {
 
-	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QsciScintilla_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return qt.UnsafeNewQPainter(unsafe.Pointer(C.QsciScintilla_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
 }
-func (this *QsciScintilla) OnSharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
-	ok := C.QsciScintilla_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnsharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
+	ok := C.QsciScintilla_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_SharedPainter
-func miqt_exec_callback_QsciScintilla_SharedPainter(self *C.QsciScintilla, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QsciScintilla_sharedPainter
+func miqt_exec_callback_QsciScintilla_sharedPainter(self *C.QsciScintilla, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QPainter) *qt.QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5426,18 +5426,18 @@ func miqt_exec_callback_QsciScintilla_SharedPainter(self *C.QsciScintilla, cb C.
 
 func (this *QsciScintilla) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QsciScintilla_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QsciScintilla_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QsciScintilla_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QsciScintilla_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_TimerEvent
-func miqt_exec_callback_QsciScintilla_TimerEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QsciScintilla_timerEvent
+func miqt_exec_callback_QsciScintilla_timerEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5452,18 +5452,18 @@ func miqt_exec_callback_QsciScintilla_TimerEvent(self *C.QsciScintilla, cb C.int
 
 func (this *QsciScintilla) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QsciScintilla_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QsciScintilla_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QsciScintilla_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QsciScintilla_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ChildEvent
-func miqt_exec_callback_QsciScintilla_ChildEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QsciScintilla_childEvent
+func miqt_exec_callback_QsciScintilla_childEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5478,18 +5478,18 @@ func miqt_exec_callback_QsciScintilla_ChildEvent(self *C.QsciScintilla, cb C.int
 
 func (this *QsciScintilla) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QsciScintilla_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QsciScintilla_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QsciScintilla_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QsciScintilla_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_CustomEvent
-func miqt_exec_callback_QsciScintilla_CustomEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QsciScintilla_customEvent
+func miqt_exec_callback_QsciScintilla_customEvent(self *C.QsciScintilla, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5504,18 +5504,18 @@ func miqt_exec_callback_QsciScintilla_CustomEvent(self *C.QsciScintilla, cb C.in
 
 func (this *QsciScintilla) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QsciScintilla_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QsciScintilla_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QsciScintilla_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QsciScintilla_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_ConnectNotify
-func miqt_exec_callback_QsciScintilla_ConnectNotify(self *C.QsciScintilla, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QsciScintilla_connectNotify
+func miqt_exec_callback_QsciScintilla_connectNotify(self *C.QsciScintilla, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5530,18 +5530,18 @@ func miqt_exec_callback_QsciScintilla_ConnectNotify(self *C.QsciScintilla, cb C.
 
 func (this *QsciScintilla) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QsciScintilla_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QsciScintilla_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QsciScintilla) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QsciScintilla_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciScintilla) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QsciScintilla_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciScintilla_DisconnectNotify
-func miqt_exec_callback_QsciScintilla_DisconnectNotify(self *C.QsciScintilla, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QsciScintilla_disconnectNotify
+func miqt_exec_callback_QsciScintilla_disconnectNotify(self *C.QsciScintilla, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5556,7 +5556,7 @@ func miqt_exec_callback_QsciScintilla_DisconnectNotify(self *C.QsciScintilla, cb
 
 // Delete this object from C++ memory.
 func (this *QsciScintilla) Delete() {
-	C.QsciScintilla_Delete(this.h)
+	C.QsciScintilla_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

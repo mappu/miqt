@@ -29,28 +29,28 @@ typedef struct QVariant QVariant;
 #endif
 
 void QCameraExposureControl_virtbase(QCameraExposureControl* src, QMediaControl** outptr_QMediaControl);
-QMetaObject* QCameraExposureControl_MetaObject(const QCameraExposureControl* self);
-void* QCameraExposureControl_Metacast(QCameraExposureControl* self, const char* param1);
-struct miqt_string QCameraExposureControl_Tr(const char* s);
-struct miqt_string QCameraExposureControl_TrUtf8(const char* s);
-bool QCameraExposureControl_IsParameterSupported(const QCameraExposureControl* self, int parameter);
-QVariant* QCameraExposureControl_RequestedValue(const QCameraExposureControl* self, int parameter);
-QVariant* QCameraExposureControl_ActualValue(const QCameraExposureControl* self, int parameter);
-bool QCameraExposureControl_SetValue(QCameraExposureControl* self, int parameter, QVariant* value);
-void QCameraExposureControl_RequestedValueChanged(QCameraExposureControl* self, int parameter);
-void QCameraExposureControl_connect_RequestedValueChanged(QCameraExposureControl* self, intptr_t slot);
-void QCameraExposureControl_ActualValueChanged(QCameraExposureControl* self, int parameter);
-void QCameraExposureControl_connect_ActualValueChanged(QCameraExposureControl* self, intptr_t slot);
-void QCameraExposureControl_ParameterRangeChanged(QCameraExposureControl* self, int parameter);
-void QCameraExposureControl_connect_ParameterRangeChanged(QCameraExposureControl* self, intptr_t slot);
-struct miqt_string QCameraExposureControl_Tr2(const char* s, const char* c);
-struct miqt_string QCameraExposureControl_Tr3(const char* s, const char* c, int n);
-struct miqt_string QCameraExposureControl_TrUtf82(const char* s, const char* c);
-struct miqt_string QCameraExposureControl_TrUtf83(const char* s, const char* c, int n);
-void QCameraExposureControl_Delete(QCameraExposureControl* self);
+QMetaObject* QCameraExposureControl_metaObject(const QCameraExposureControl* self);
+void* QCameraExposureControl_metacast(QCameraExposureControl* self, const char* param1);
+struct miqt_string QCameraExposureControl_tr(const char* s);
+struct miqt_string QCameraExposureControl_trUtf8(const char* s);
+bool QCameraExposureControl_isParameterSupported(const QCameraExposureControl* self, int parameter);
+QVariant* QCameraExposureControl_requestedValue(const QCameraExposureControl* self, int parameter);
+QVariant* QCameraExposureControl_actualValue(const QCameraExposureControl* self, int parameter);
+bool QCameraExposureControl_setValue(QCameraExposureControl* self, int parameter, QVariant* value);
+void QCameraExposureControl_requestedValueChanged(QCameraExposureControl* self, int parameter);
+void QCameraExposureControl_connect_requestedValueChanged(QCameraExposureControl* self, intptr_t slot);
+void QCameraExposureControl_actualValueChanged(QCameraExposureControl* self, int parameter);
+void QCameraExposureControl_connect_actualValueChanged(QCameraExposureControl* self, intptr_t slot);
+void QCameraExposureControl_parameterRangeChanged(QCameraExposureControl* self, int parameter);
+void QCameraExposureControl_connect_parameterRangeChanged(QCameraExposureControl* self, intptr_t slot);
+struct miqt_string QCameraExposureControl_tr2(const char* s, const char* c);
+struct miqt_string QCameraExposureControl_tr3(const char* s, const char* c, int n);
+struct miqt_string QCameraExposureControl_trUtf82(const char* s, const char* c);
+struct miqt_string QCameraExposureControl_trUtf83(const char* s, const char* c, int n);
+void QCameraExposureControl_delete(QCameraExposureControl* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

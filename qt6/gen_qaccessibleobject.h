@@ -37,27 +37,27 @@ typedef struct QWindow QWindow;
 #endif
 
 void QAccessibleObject_virtbase(QAccessibleObject* src, QAccessibleInterface** outptr_QAccessibleInterface);
-bool QAccessibleObject_IsValid(const QAccessibleObject* self);
-QObject* QAccessibleObject_Object(const QAccessibleObject* self);
-QRect* QAccessibleObject_Rect(const QAccessibleObject* self);
-void QAccessibleObject_SetText(QAccessibleObject* self, int t, struct miqt_string text);
-QAccessibleInterface* QAccessibleObject_ChildAt(const QAccessibleObject* self, int x, int y);
+bool QAccessibleObject_isValid(const QAccessibleObject* self);
+QObject* QAccessibleObject_object(const QAccessibleObject* self);
+QRect* QAccessibleObject_rect(const QAccessibleObject* self);
+void QAccessibleObject_setText(QAccessibleObject* self, int t, struct miqt_string text);
+QAccessibleInterface* QAccessibleObject_childAt(const QAccessibleObject* self, int x, int y);
 
 QAccessibleApplication* QAccessibleApplication_new();
 void QAccessibleApplication_virtbase(QAccessibleApplication* src, QAccessibleObject** outptr_QAccessibleObject);
-QWindow* QAccessibleApplication_Window(const QAccessibleApplication* self);
-int QAccessibleApplication_ChildCount(const QAccessibleApplication* self);
-int QAccessibleApplication_IndexOfChild(const QAccessibleApplication* self, QAccessibleInterface* param1);
-QAccessibleInterface* QAccessibleApplication_FocusChild(const QAccessibleApplication* self);
-QAccessibleInterface* QAccessibleApplication_Parent(const QAccessibleApplication* self);
-QAccessibleInterface* QAccessibleApplication_Child(const QAccessibleApplication* self, int index);
-struct miqt_string QAccessibleApplication_Text(const QAccessibleApplication* self, int t);
-int QAccessibleApplication_Role(const QAccessibleApplication* self);
-QAccessible__State* QAccessibleApplication_State(const QAccessibleApplication* self);
-void QAccessibleApplication_Delete(QAccessibleApplication* self);
+QWindow* QAccessibleApplication_window(const QAccessibleApplication* self);
+int QAccessibleApplication_childCount(const QAccessibleApplication* self);
+int QAccessibleApplication_indexOfChild(const QAccessibleApplication* self, QAccessibleInterface* param1);
+QAccessibleInterface* QAccessibleApplication_focusChild(const QAccessibleApplication* self);
+QAccessibleInterface* QAccessibleApplication_parent(const QAccessibleApplication* self);
+QAccessibleInterface* QAccessibleApplication_child(const QAccessibleApplication* self, int index);
+struct miqt_string QAccessibleApplication_text(const QAccessibleApplication* self, int t);
+int QAccessibleApplication_role(const QAccessibleApplication* self);
+QAccessible__State* QAccessibleApplication_state(const QAccessibleApplication* self);
+void QAccessibleApplication_delete(QAccessibleApplication* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

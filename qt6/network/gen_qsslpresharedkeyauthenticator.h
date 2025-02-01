@@ -22,19 +22,19 @@ typedef struct QSslPreSharedKeyAuthenticator QSslPreSharedKeyAuthenticator;
 
 QSslPreSharedKeyAuthenticator* QSslPreSharedKeyAuthenticator_new();
 QSslPreSharedKeyAuthenticator* QSslPreSharedKeyAuthenticator_new2(QSslPreSharedKeyAuthenticator* authenticator);
-void QSslPreSharedKeyAuthenticator_OperatorAssign(QSslPreSharedKeyAuthenticator* self, QSslPreSharedKeyAuthenticator* authenticator);
-void QSslPreSharedKeyAuthenticator_Swap(QSslPreSharedKeyAuthenticator* self, QSslPreSharedKeyAuthenticator* other);
-struct miqt_string QSslPreSharedKeyAuthenticator_IdentityHint(const QSslPreSharedKeyAuthenticator* self);
-void QSslPreSharedKeyAuthenticator_SetIdentity(QSslPreSharedKeyAuthenticator* self, struct miqt_string identity);
-struct miqt_string QSslPreSharedKeyAuthenticator_Identity(const QSslPreSharedKeyAuthenticator* self);
-int QSslPreSharedKeyAuthenticator_MaximumIdentityLength(const QSslPreSharedKeyAuthenticator* self);
-void QSslPreSharedKeyAuthenticator_SetPreSharedKey(QSslPreSharedKeyAuthenticator* self, struct miqt_string preSharedKey);
-struct miqt_string QSslPreSharedKeyAuthenticator_PreSharedKey(const QSslPreSharedKeyAuthenticator* self);
-int QSslPreSharedKeyAuthenticator_MaximumPreSharedKeyLength(const QSslPreSharedKeyAuthenticator* self);
-void QSslPreSharedKeyAuthenticator_Delete(QSslPreSharedKeyAuthenticator* self);
+void QSslPreSharedKeyAuthenticator_operatorAssign(QSslPreSharedKeyAuthenticator* self, QSslPreSharedKeyAuthenticator* authenticator);
+void QSslPreSharedKeyAuthenticator_swap(QSslPreSharedKeyAuthenticator* self, QSslPreSharedKeyAuthenticator* other);
+struct miqt_string QSslPreSharedKeyAuthenticator_identityHint(const QSslPreSharedKeyAuthenticator* self);
+void QSslPreSharedKeyAuthenticator_setIdentity(QSslPreSharedKeyAuthenticator* self, struct miqt_string identity);
+struct miqt_string QSslPreSharedKeyAuthenticator_identity(const QSslPreSharedKeyAuthenticator* self);
+int QSslPreSharedKeyAuthenticator_maximumIdentityLength(const QSslPreSharedKeyAuthenticator* self);
+void QSslPreSharedKeyAuthenticator_setPreSharedKey(QSslPreSharedKeyAuthenticator* self, struct miqt_string preSharedKey);
+struct miqt_string QSslPreSharedKeyAuthenticator_preSharedKey(const QSslPreSharedKeyAuthenticator* self);
+int QSslPreSharedKeyAuthenticator_maximumPreSharedKeyLength(const QSslPreSharedKeyAuthenticator* self);
+void QSslPreSharedKeyAuthenticator_delete(QSslPreSharedKeyAuthenticator* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

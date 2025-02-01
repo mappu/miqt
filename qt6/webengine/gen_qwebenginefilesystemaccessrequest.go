@@ -67,44 +67,44 @@ func NewQWebEngineFileSystemAccessRequest(other *QWebEngineFileSystemAccessReque
 }
 
 func (this *QWebEngineFileSystemAccessRequest) OperatorAssign(other *QWebEngineFileSystemAccessRequest) {
-	C.QWebEngineFileSystemAccessRequest_OperatorAssign(this.h, other.cPointer())
+	C.QWebEngineFileSystemAccessRequest_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QWebEngineFileSystemAccessRequest) Swap(other *QWebEngineFileSystemAccessRequest) {
-	C.QWebEngineFileSystemAccessRequest_Swap(this.h, other.cPointer())
+	C.QWebEngineFileSystemAccessRequest_swap(this.h, other.cPointer())
 }
 
 func (this *QWebEngineFileSystemAccessRequest) Accept() {
-	C.QWebEngineFileSystemAccessRequest_Accept(this.h)
+	C.QWebEngineFileSystemAccessRequest_accept(this.h)
 }
 
 func (this *QWebEngineFileSystemAccessRequest) Reject() {
-	C.QWebEngineFileSystemAccessRequest_Reject(this.h)
+	C.QWebEngineFileSystemAccessRequest_reject(this.h)
 }
 
 func (this *QWebEngineFileSystemAccessRequest) Origin() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineFileSystemAccessRequest_Origin(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineFileSystemAccessRequest_origin(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineFileSystemAccessRequest) FilePath() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineFileSystemAccessRequest_FilePath(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineFileSystemAccessRequest_filePath(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineFileSystemAccessRequest) HandleType() QWebEngineFileSystemAccessRequest__HandleType {
-	return (QWebEngineFileSystemAccessRequest__HandleType)(C.QWebEngineFileSystemAccessRequest_HandleType(this.h))
+	return (QWebEngineFileSystemAccessRequest__HandleType)(C.QWebEngineFileSystemAccessRequest_handleType(this.h))
 }
 
 func (this *QWebEngineFileSystemAccessRequest) AccessFlags() QWebEngineFileSystemAccessRequest__AccessFlag {
-	return (QWebEngineFileSystemAccessRequest__AccessFlag)(C.QWebEngineFileSystemAccessRequest_AccessFlags(this.h))
+	return (QWebEngineFileSystemAccessRequest__AccessFlag)(C.QWebEngineFileSystemAccessRequest_accessFlags(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QWebEngineFileSystemAccessRequest) Delete() {
-	C.QWebEngineFileSystemAccessRequest_Delete(this.h)
+	C.QWebEngineFileSystemAccessRequest_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

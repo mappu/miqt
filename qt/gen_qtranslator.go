@@ -63,19 +63,19 @@ func NewQTranslator2(parent *QObject) *QTranslator {
 }
 
 func (this *QTranslator) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QTranslator_MetaObject(this.h))
+	return newQMetaObject(C.QTranslator_metaObject(this.h))
 }
 
 func (this *QTranslator) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QTranslator_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QTranslator_metacast(this.h, param1_Cstring))
 }
 
 func QTranslator_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QTranslator_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QTranslator_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -84,7 +84,7 @@ func QTranslator_Tr(s string) string {
 func QTranslator_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QTranslator_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QTranslator_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -97,25 +97,25 @@ func (this *QTranslator) Translate(context string, sourceText string, disambigua
 	defer C.free(unsafe.Pointer(sourceText_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms C.struct_miqt_string = C.QTranslator_Translate(this.h, context_Cstring, sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QTranslator_translate(this.h, context_Cstring, sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTranslator) IsEmpty() bool {
-	return (bool)(C.QTranslator_IsEmpty(this.h))
+	return (bool)(C.QTranslator_isEmpty(this.h))
 }
 
 func (this *QTranslator) Language() string {
-	var _ms C.struct_miqt_string = C.QTranslator_Language(this.h)
+	var _ms C.struct_miqt_string = C.QTranslator_language(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTranslator) FilePath() string {
-	var _ms C.struct_miqt_string = C.QTranslator_FilePath(this.h)
+	var _ms C.struct_miqt_string = C.QTranslator_filePath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -126,7 +126,7 @@ func (this *QTranslator) Load(filename string) bool {
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
 	defer C.free(unsafe.Pointer(filename_ms.data))
-	return (bool)(C.QTranslator_Load(this.h, filename_ms))
+	return (bool)(C.QTranslator_load(this.h, filename_ms))
 }
 
 func (this *QTranslator) Load2(locale *QLocale, filename string) bool {
@@ -134,11 +134,11 @@ func (this *QTranslator) Load2(locale *QLocale, filename string) bool {
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
 	defer C.free(unsafe.Pointer(filename_ms.data))
-	return (bool)(C.QTranslator_Load2(this.h, locale.cPointer(), filename_ms))
+	return (bool)(C.QTranslator_load2(this.h, locale.cPointer(), filename_ms))
 }
 
 func (this *QTranslator) Load3(data *byte, lenVal int) bool {
-	return (bool)(C.QTranslator_Load3(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.int)(lenVal)))
+	return (bool)(C.QTranslator_load3(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.int)(lenVal)))
 }
 
 func QTranslator_Tr2(s string, c string) string {
@@ -146,7 +146,7 @@ func QTranslator_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTranslator_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QTranslator_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -157,7 +157,7 @@ func QTranslator_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTranslator_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QTranslator_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -168,7 +168,7 @@ func QTranslator_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTranslator_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QTranslator_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -179,7 +179,7 @@ func QTranslator_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QTranslator_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QTranslator_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -194,7 +194,7 @@ func (this *QTranslator) Load22(filename string, directory string) bool {
 	directory_ms.data = C.CString(directory)
 	directory_ms.len = C.size_t(len(directory))
 	defer C.free(unsafe.Pointer(directory_ms.data))
-	return (bool)(C.QTranslator_Load22(this.h, filename_ms, directory_ms))
+	return (bool)(C.QTranslator_load22(this.h, filename_ms, directory_ms))
 }
 
 func (this *QTranslator) Load32(filename string, directory string, search_delimiters string) bool {
@@ -210,7 +210,7 @@ func (this *QTranslator) Load32(filename string, directory string, search_delimi
 	search_delimiters_ms.data = C.CString(search_delimiters)
 	search_delimiters_ms.len = C.size_t(len(search_delimiters))
 	defer C.free(unsafe.Pointer(search_delimiters_ms.data))
-	return (bool)(C.QTranslator_Load32(this.h, filename_ms, directory_ms, search_delimiters_ms))
+	return (bool)(C.QTranslator_load32(this.h, filename_ms, directory_ms, search_delimiters_ms))
 }
 
 func (this *QTranslator) Load4(filename string, directory string, search_delimiters string, suffix string) bool {
@@ -230,7 +230,7 @@ func (this *QTranslator) Load4(filename string, directory string, search_delimit
 	suffix_ms.data = C.CString(suffix)
 	suffix_ms.len = C.size_t(len(suffix))
 	defer C.free(unsafe.Pointer(suffix_ms.data))
-	return (bool)(C.QTranslator_Load4(this.h, filename_ms, directory_ms, search_delimiters_ms, suffix_ms))
+	return (bool)(C.QTranslator_load4(this.h, filename_ms, directory_ms, search_delimiters_ms, suffix_ms))
 }
 
 func (this *QTranslator) Load33(locale *QLocale, filename string, prefix string) bool {
@@ -242,7 +242,7 @@ func (this *QTranslator) Load33(locale *QLocale, filename string, prefix string)
 	prefix_ms.data = C.CString(prefix)
 	prefix_ms.len = C.size_t(len(prefix))
 	defer C.free(unsafe.Pointer(prefix_ms.data))
-	return (bool)(C.QTranslator_Load33(this.h, locale.cPointer(), filename_ms, prefix_ms))
+	return (bool)(C.QTranslator_load33(this.h, locale.cPointer(), filename_ms, prefix_ms))
 }
 
 func (this *QTranslator) Load42(locale *QLocale, filename string, prefix string, directory string) bool {
@@ -258,7 +258,7 @@ func (this *QTranslator) Load42(locale *QLocale, filename string, prefix string,
 	directory_ms.data = C.CString(directory)
 	directory_ms.len = C.size_t(len(directory))
 	defer C.free(unsafe.Pointer(directory_ms.data))
-	return (bool)(C.QTranslator_Load42(this.h, locale.cPointer(), filename_ms, prefix_ms, directory_ms))
+	return (bool)(C.QTranslator_load42(this.h, locale.cPointer(), filename_ms, prefix_ms, directory_ms))
 }
 
 func (this *QTranslator) Load5(locale *QLocale, filename string, prefix string, directory string, suffix string) bool {
@@ -278,7 +278,7 @@ func (this *QTranslator) Load5(locale *QLocale, filename string, prefix string, 
 	suffix_ms.data = C.CString(suffix)
 	suffix_ms.len = C.size_t(len(suffix))
 	defer C.free(unsafe.Pointer(suffix_ms.data))
-	return (bool)(C.QTranslator_Load5(this.h, locale.cPointer(), filename_ms, prefix_ms, directory_ms, suffix_ms))
+	return (bool)(C.QTranslator_load5(this.h, locale.cPointer(), filename_ms, prefix_ms, directory_ms, suffix_ms))
 }
 
 func (this *QTranslator) Load34(data *byte, lenVal int, directory string) bool {
@@ -286,7 +286,7 @@ func (this *QTranslator) Load34(data *byte, lenVal int, directory string) bool {
 	directory_ms.data = C.CString(directory)
 	directory_ms.len = C.size_t(len(directory))
 	defer C.free(unsafe.Pointer(directory_ms.data))
-	return (bool)(C.QTranslator_Load34(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.int)(lenVal), directory_ms))
+	return (bool)(C.QTranslator_load34(this.h, (*C.uchar)(unsafe.Pointer(data)), (C.int)(lenVal), directory_ms))
 }
 
 func (this *QTranslator) callVirtualBase_Translate(context string, sourceText string, disambiguation string, n int) string {
@@ -297,20 +297,20 @@ func (this *QTranslator) callVirtualBase_Translate(context string, sourceText st
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
 
-	var _ms C.struct_miqt_string = C.QTranslator_virtualbase_Translate(unsafe.Pointer(this.h), context_Cstring, sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QTranslator_virtualbase_translate(unsafe.Pointer(this.h), context_Cstring, sourceText_Cstring, disambiguation_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
-func (this *QTranslator) OnTranslate(slot func(super func(context string, sourceText string, disambiguation string, n int) string, context string, sourceText string, disambiguation string, n int) string) {
-	ok := C.QTranslator_override_virtual_Translate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTranslator) Ontranslate(slot func(super func(context string, sourceText string, disambiguation string, n int) string, context string, sourceText string, disambiguation string, n int) string) {
+	ok := C.QTranslator_override_virtual_translate(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTranslator_Translate
-func miqt_exec_callback_QTranslator_Translate(self *C.QTranslator, cb C.intptr_t, context *C.const_char, sourceText *C.const_char, disambiguation *C.const_char, n C.int) C.struct_miqt_string {
+//export miqt_exec_callback_QTranslator_translate
+func miqt_exec_callback_QTranslator_translate(self *C.QTranslator, cb C.intptr_t, context *C.const_char, sourceText *C.const_char, disambiguation *C.const_char, n C.int) C.struct_miqt_string {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(context string, sourceText string, disambiguation string, n int) string, context string, sourceText string, disambiguation string, n int) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -340,18 +340,18 @@ func miqt_exec_callback_QTranslator_Translate(self *C.QTranslator, cb C.intptr_t
 
 func (this *QTranslator) callVirtualBase_IsEmpty() bool {
 
-	return (bool)(C.QTranslator_virtualbase_IsEmpty(unsafe.Pointer(this.h)))
+	return (bool)(C.QTranslator_virtualbase_isEmpty(unsafe.Pointer(this.h)))
 
 }
-func (this *QTranslator) OnIsEmpty(slot func(super func() bool) bool) {
-	ok := C.QTranslator_override_virtual_IsEmpty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTranslator) OnisEmpty(slot func(super func() bool) bool) {
+	ok := C.QTranslator_override_virtual_isEmpty(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTranslator_IsEmpty
-func miqt_exec_callback_QTranslator_IsEmpty(self *C.QTranslator, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QTranslator_isEmpty
+func miqt_exec_callback_QTranslator_isEmpty(self *C.QTranslator, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -365,18 +365,18 @@ func miqt_exec_callback_QTranslator_IsEmpty(self *C.QTranslator, cb C.intptr_t) 
 
 func (this *QTranslator) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QTranslator_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QTranslator_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QTranslator) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QTranslator_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTranslator) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QTranslator_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTranslator_Event
-func miqt_exec_callback_QTranslator_Event(self *C.QTranslator, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QTranslator_event
+func miqt_exec_callback_QTranslator_event(self *C.QTranslator, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -393,18 +393,18 @@ func miqt_exec_callback_QTranslator_Event(self *C.QTranslator, cb C.intptr_t, ev
 
 func (this *QTranslator) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QTranslator_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QTranslator_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QTranslator) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QTranslator_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTranslator) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QTranslator_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTranslator_EventFilter
-func miqt_exec_callback_QTranslator_EventFilter(self *C.QTranslator, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QTranslator_eventFilter
+func miqt_exec_callback_QTranslator_eventFilter(self *C.QTranslator, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -423,18 +423,18 @@ func miqt_exec_callback_QTranslator_EventFilter(self *C.QTranslator, cb C.intptr
 
 func (this *QTranslator) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QTranslator_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTranslator_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTranslator) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QTranslator_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTranslator) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QTranslator_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTranslator_TimerEvent
-func miqt_exec_callback_QTranslator_TimerEvent(self *C.QTranslator, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QTranslator_timerEvent
+func miqt_exec_callback_QTranslator_timerEvent(self *C.QTranslator, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -449,18 +449,18 @@ func miqt_exec_callback_QTranslator_TimerEvent(self *C.QTranslator, cb C.intptr_
 
 func (this *QTranslator) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QTranslator_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTranslator_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTranslator) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QTranslator_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTranslator) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QTranslator_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTranslator_ChildEvent
-func miqt_exec_callback_QTranslator_ChildEvent(self *C.QTranslator, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QTranslator_childEvent
+func miqt_exec_callback_QTranslator_childEvent(self *C.QTranslator, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -475,18 +475,18 @@ func miqt_exec_callback_QTranslator_ChildEvent(self *C.QTranslator, cb C.intptr_
 
 func (this *QTranslator) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QTranslator_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QTranslator_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QTranslator) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QTranslator_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTranslator) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QTranslator_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTranslator_CustomEvent
-func miqt_exec_callback_QTranslator_CustomEvent(self *C.QTranslator, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QTranslator_customEvent
+func miqt_exec_callback_QTranslator_customEvent(self *C.QTranslator, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -501,18 +501,18 @@ func miqt_exec_callback_QTranslator_CustomEvent(self *C.QTranslator, cb C.intptr
 
 func (this *QTranslator) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QTranslator_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QTranslator_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTranslator) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QTranslator_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTranslator) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTranslator_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTranslator_ConnectNotify
-func miqt_exec_callback_QTranslator_ConnectNotify(self *C.QTranslator, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QTranslator_connectNotify
+func miqt_exec_callback_QTranslator_connectNotify(self *C.QTranslator, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -527,18 +527,18 @@ func miqt_exec_callback_QTranslator_ConnectNotify(self *C.QTranslator, cb C.intp
 
 func (this *QTranslator) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QTranslator_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QTranslator_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QTranslator) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QTranslator_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QTranslator) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QTranslator_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QTranslator_DisconnectNotify
-func miqt_exec_callback_QTranslator_DisconnectNotify(self *C.QTranslator, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QTranslator_disconnectNotify
+func miqt_exec_callback_QTranslator_disconnectNotify(self *C.QTranslator, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -553,7 +553,7 @@ func miqt_exec_callback_QTranslator_DisconnectNotify(self *C.QTranslator, cb C.i
 
 // Delete this object from C++ memory.
 func (this *QTranslator) Delete() {
-	C.QTranslator_Delete(this.h)
+	C.QTranslator_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

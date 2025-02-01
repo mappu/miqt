@@ -65,7 +65,7 @@ func NewQMessageAuthenticationCode2(method QCryptographicHash__Algorithm, key []
 }
 
 func (this *QMessageAuthenticationCode) Reset() {
-	C.QMessageAuthenticationCode_Reset(this.h)
+	C.QMessageAuthenticationCode_reset(this.h)
 }
 
 func (this *QMessageAuthenticationCode) SetKey(key []byte) {
@@ -76,13 +76,13 @@ func (this *QMessageAuthenticationCode) SetKey(key []byte) {
 		key_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	key_alias.len = C.size_t(len(key))
-	C.QMessageAuthenticationCode_SetKey(this.h, key_alias)
+	C.QMessageAuthenticationCode_setKey(this.h, key_alias)
 }
 
 func (this *QMessageAuthenticationCode) AddData(data string, length int) {
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
-	C.QMessageAuthenticationCode_AddData(this.h, data_Cstring, (C.int)(length))
+	C.QMessageAuthenticationCode_addData(this.h, data_Cstring, (C.int)(length))
 }
 
 func (this *QMessageAuthenticationCode) AddDataWithData(data []byte) {
@@ -93,15 +93,15 @@ func (this *QMessageAuthenticationCode) AddDataWithData(data []byte) {
 		data_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	data_alias.len = C.size_t(len(data))
-	C.QMessageAuthenticationCode_AddDataWithData(this.h, data_alias)
+	C.QMessageAuthenticationCode_addDataWithData(this.h, data_alias)
 }
 
 func (this *QMessageAuthenticationCode) AddDataWithDevice(device *QIODevice) bool {
-	return (bool)(C.QMessageAuthenticationCode_AddDataWithDevice(this.h, device.cPointer()))
+	return (bool)(C.QMessageAuthenticationCode_addDataWithDevice(this.h, device.cPointer()))
 }
 
 func (this *QMessageAuthenticationCode) Result() []byte {
-	var _bytearray C.struct_miqt_string = C.QMessageAuthenticationCode_Result(this.h)
+	var _bytearray C.struct_miqt_string = C.QMessageAuthenticationCode_result(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -122,7 +122,7 @@ func QMessageAuthenticationCode_Hash(message []byte, key []byte, method QCryptog
 		key_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	key_alias.len = C.size_t(len(key))
-	var _bytearray C.struct_miqt_string = C.QMessageAuthenticationCode_Hash(message_alias, key_alias, (C.int)(method))
+	var _bytearray C.struct_miqt_string = C.QMessageAuthenticationCode_hash(message_alias, key_alias, (C.int)(method))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -130,7 +130,7 @@ func QMessageAuthenticationCode_Hash(message []byte, key []byte, method QCryptog
 
 // Delete this object from C++ memory.
 func (this *QMessageAuthenticationCode) Delete() {
-	C.QMessageAuthenticationCode_Delete(this.h)
+	C.QMessageAuthenticationCode_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

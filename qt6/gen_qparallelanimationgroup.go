@@ -63,26 +63,26 @@ func NewQParallelAnimationGroup2(parent *QObject) *QParallelAnimationGroup {
 }
 
 func (this *QParallelAnimationGroup) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QParallelAnimationGroup_MetaObject(this.h))
+	return newQMetaObject(C.QParallelAnimationGroup_metaObject(this.h))
 }
 
 func (this *QParallelAnimationGroup) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QParallelAnimationGroup_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QParallelAnimationGroup_metacast(this.h, param1_Cstring))
 }
 
 func QParallelAnimationGroup_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QParallelAnimationGroup_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QParallelAnimationGroup_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QParallelAnimationGroup) Duration() int {
-	return (int)(C.QParallelAnimationGroup_Duration(this.h))
+	return (int)(C.QParallelAnimationGroup_duration(this.h))
 }
 
 func QParallelAnimationGroup_Tr2(s string, c string) string {
@@ -90,7 +90,7 @@ func QParallelAnimationGroup_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QParallelAnimationGroup_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QParallelAnimationGroup_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -101,7 +101,7 @@ func QParallelAnimationGroup_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QParallelAnimationGroup_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QParallelAnimationGroup_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -109,18 +109,18 @@ func QParallelAnimationGroup_Tr3(s string, c string, n int) string {
 
 func (this *QParallelAnimationGroup) callVirtualBase_Duration() int {
 
-	return (int)(C.QParallelAnimationGroup_virtualbase_Duration(unsafe.Pointer(this.h)))
+	return (int)(C.QParallelAnimationGroup_virtualbase_duration(unsafe.Pointer(this.h)))
 
 }
-func (this *QParallelAnimationGroup) OnDuration(slot func(super func() int) int) {
-	ok := C.QParallelAnimationGroup_override_virtual_Duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QParallelAnimationGroup) Onduration(slot func(super func() int) int) {
+	ok := C.QParallelAnimationGroup_override_virtual_duration(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QParallelAnimationGroup_Duration
-func miqt_exec_callback_QParallelAnimationGroup_Duration(self *C.QParallelAnimationGroup, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QParallelAnimationGroup_duration
+func miqt_exec_callback_QParallelAnimationGroup_duration(self *C.QParallelAnimationGroup, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -134,18 +134,18 @@ func miqt_exec_callback_QParallelAnimationGroup_Duration(self *C.QParallelAnimat
 
 func (this *QParallelAnimationGroup) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QParallelAnimationGroup_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QParallelAnimationGroup_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QParallelAnimationGroup) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QParallelAnimationGroup_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QParallelAnimationGroup) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QParallelAnimationGroup_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QParallelAnimationGroup_Event
-func miqt_exec_callback_QParallelAnimationGroup_Event(self *C.QParallelAnimationGroup, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QParallelAnimationGroup_event
+func miqt_exec_callback_QParallelAnimationGroup_event(self *C.QParallelAnimationGroup, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -162,18 +162,18 @@ func miqt_exec_callback_QParallelAnimationGroup_Event(self *C.QParallelAnimation
 
 func (this *QParallelAnimationGroup) callVirtualBase_UpdateCurrentTime(currentTime int) {
 
-	C.QParallelAnimationGroup_virtualbase_UpdateCurrentTime(unsafe.Pointer(this.h), (C.int)(currentTime))
+	C.QParallelAnimationGroup_virtualbase_updateCurrentTime(unsafe.Pointer(this.h), (C.int)(currentTime))
 
 }
-func (this *QParallelAnimationGroup) OnUpdateCurrentTime(slot func(super func(currentTime int), currentTime int)) {
-	ok := C.QParallelAnimationGroup_override_virtual_UpdateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QParallelAnimationGroup) OnupdateCurrentTime(slot func(super func(currentTime int), currentTime int)) {
+	ok := C.QParallelAnimationGroup_override_virtual_updateCurrentTime(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QParallelAnimationGroup_UpdateCurrentTime
-func miqt_exec_callback_QParallelAnimationGroup_UpdateCurrentTime(self *C.QParallelAnimationGroup, cb C.intptr_t, currentTime C.int) {
+//export miqt_exec_callback_QParallelAnimationGroup_updateCurrentTime
+func miqt_exec_callback_QParallelAnimationGroup_updateCurrentTime(self *C.QParallelAnimationGroup, cb C.intptr_t, currentTime C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(currentTime int), currentTime int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -188,18 +188,18 @@ func miqt_exec_callback_QParallelAnimationGroup_UpdateCurrentTime(self *C.QParal
 
 func (this *QParallelAnimationGroup) callVirtualBase_UpdateState(newState QAbstractAnimation__State, oldState QAbstractAnimation__State) {
 
-	C.QParallelAnimationGroup_virtualbase_UpdateState(unsafe.Pointer(this.h), (C.int)(newState), (C.int)(oldState))
+	C.QParallelAnimationGroup_virtualbase_updateState(unsafe.Pointer(this.h), (C.int)(newState), (C.int)(oldState))
 
 }
-func (this *QParallelAnimationGroup) OnUpdateState(slot func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
-	ok := C.QParallelAnimationGroup_override_virtual_UpdateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QParallelAnimationGroup) OnupdateState(slot func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State)) {
+	ok := C.QParallelAnimationGroup_override_virtual_updateState(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QParallelAnimationGroup_UpdateState
-func miqt_exec_callback_QParallelAnimationGroup_UpdateState(self *C.QParallelAnimationGroup, cb C.intptr_t, newState C.int, oldState C.int) {
+//export miqt_exec_callback_QParallelAnimationGroup_updateState
+func miqt_exec_callback_QParallelAnimationGroup_updateState(self *C.QParallelAnimationGroup, cb C.intptr_t, newState C.int, oldState C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(newState QAbstractAnimation__State, oldState QAbstractAnimation__State), newState QAbstractAnimation__State, oldState QAbstractAnimation__State))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -216,18 +216,18 @@ func miqt_exec_callback_QParallelAnimationGroup_UpdateState(self *C.QParallelAni
 
 func (this *QParallelAnimationGroup) callVirtualBase_UpdateDirection(direction QAbstractAnimation__Direction) {
 
-	C.QParallelAnimationGroup_virtualbase_UpdateDirection(unsafe.Pointer(this.h), (C.int)(direction))
+	C.QParallelAnimationGroup_virtualbase_updateDirection(unsafe.Pointer(this.h), (C.int)(direction))
 
 }
-func (this *QParallelAnimationGroup) OnUpdateDirection(slot func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction)) {
-	ok := C.QParallelAnimationGroup_override_virtual_UpdateDirection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QParallelAnimationGroup) OnupdateDirection(slot func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction)) {
+	ok := C.QParallelAnimationGroup_override_virtual_updateDirection(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QParallelAnimationGroup_UpdateDirection
-func miqt_exec_callback_QParallelAnimationGroup_UpdateDirection(self *C.QParallelAnimationGroup, cb C.intptr_t, direction C.int) {
+//export miqt_exec_callback_QParallelAnimationGroup_updateDirection
+func miqt_exec_callback_QParallelAnimationGroup_updateDirection(self *C.QParallelAnimationGroup, cb C.intptr_t, direction C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(direction QAbstractAnimation__Direction), direction QAbstractAnimation__Direction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -242,18 +242,18 @@ func miqt_exec_callback_QParallelAnimationGroup_UpdateDirection(self *C.QParalle
 
 func (this *QParallelAnimationGroup) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QParallelAnimationGroup_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QParallelAnimationGroup_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QParallelAnimationGroup) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QParallelAnimationGroup_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QParallelAnimationGroup) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QParallelAnimationGroup_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QParallelAnimationGroup_EventFilter
-func miqt_exec_callback_QParallelAnimationGroup_EventFilter(self *C.QParallelAnimationGroup, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QParallelAnimationGroup_eventFilter
+func miqt_exec_callback_QParallelAnimationGroup_eventFilter(self *C.QParallelAnimationGroup, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -272,18 +272,18 @@ func miqt_exec_callback_QParallelAnimationGroup_EventFilter(self *C.QParallelAni
 
 func (this *QParallelAnimationGroup) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QParallelAnimationGroup_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QParallelAnimationGroup_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QParallelAnimationGroup) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QParallelAnimationGroup_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QParallelAnimationGroup) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QParallelAnimationGroup_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QParallelAnimationGroup_TimerEvent
-func miqt_exec_callback_QParallelAnimationGroup_TimerEvent(self *C.QParallelAnimationGroup, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QParallelAnimationGroup_timerEvent
+func miqt_exec_callback_QParallelAnimationGroup_timerEvent(self *C.QParallelAnimationGroup, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -298,18 +298,18 @@ func miqt_exec_callback_QParallelAnimationGroup_TimerEvent(self *C.QParallelAnim
 
 func (this *QParallelAnimationGroup) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QParallelAnimationGroup_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QParallelAnimationGroup_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QParallelAnimationGroup) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QParallelAnimationGroup_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QParallelAnimationGroup) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QParallelAnimationGroup_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QParallelAnimationGroup_ChildEvent
-func miqt_exec_callback_QParallelAnimationGroup_ChildEvent(self *C.QParallelAnimationGroup, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QParallelAnimationGroup_childEvent
+func miqt_exec_callback_QParallelAnimationGroup_childEvent(self *C.QParallelAnimationGroup, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -324,18 +324,18 @@ func miqt_exec_callback_QParallelAnimationGroup_ChildEvent(self *C.QParallelAnim
 
 func (this *QParallelAnimationGroup) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QParallelAnimationGroup_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QParallelAnimationGroup_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QParallelAnimationGroup) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QParallelAnimationGroup_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QParallelAnimationGroup) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QParallelAnimationGroup_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QParallelAnimationGroup_CustomEvent
-func miqt_exec_callback_QParallelAnimationGroup_CustomEvent(self *C.QParallelAnimationGroup, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QParallelAnimationGroup_customEvent
+func miqt_exec_callback_QParallelAnimationGroup_customEvent(self *C.QParallelAnimationGroup, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -350,18 +350,18 @@ func miqt_exec_callback_QParallelAnimationGroup_CustomEvent(self *C.QParallelAni
 
 func (this *QParallelAnimationGroup) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QParallelAnimationGroup_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QParallelAnimationGroup_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QParallelAnimationGroup) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QParallelAnimationGroup_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QParallelAnimationGroup) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QParallelAnimationGroup_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QParallelAnimationGroup_ConnectNotify
-func miqt_exec_callback_QParallelAnimationGroup_ConnectNotify(self *C.QParallelAnimationGroup, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QParallelAnimationGroup_connectNotify
+func miqt_exec_callback_QParallelAnimationGroup_connectNotify(self *C.QParallelAnimationGroup, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -376,18 +376,18 @@ func miqt_exec_callback_QParallelAnimationGroup_ConnectNotify(self *C.QParallelA
 
 func (this *QParallelAnimationGroup) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QParallelAnimationGroup_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QParallelAnimationGroup_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QParallelAnimationGroup) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QParallelAnimationGroup_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QParallelAnimationGroup) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QParallelAnimationGroup_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QParallelAnimationGroup_DisconnectNotify
-func miqt_exec_callback_QParallelAnimationGroup_DisconnectNotify(self *C.QParallelAnimationGroup, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QParallelAnimationGroup_disconnectNotify
+func miqt_exec_callback_QParallelAnimationGroup_disconnectNotify(self *C.QParallelAnimationGroup, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -402,7 +402,7 @@ func miqt_exec_callback_QParallelAnimationGroup_DisconnectNotify(self *C.QParall
 
 // Delete this object from C++ memory.
 func (this *QParallelAnimationGroup) Delete() {
-	C.QParallelAnimationGroup_Delete(this.h)
+	C.QParallelAnimationGroup_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

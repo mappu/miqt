@@ -84,62 +84,62 @@ func (this *QResource) SetFileName(file string) {
 	file_ms.data = C.CString(file)
 	file_ms.len = C.size_t(len(file))
 	defer C.free(unsafe.Pointer(file_ms.data))
-	C.QResource_SetFileName(this.h, file_ms)
+	C.QResource_setFileName(this.h, file_ms)
 }
 
 func (this *QResource) FileName() string {
-	var _ms C.struct_miqt_string = C.QResource_FileName(this.h)
+	var _ms C.struct_miqt_string = C.QResource_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QResource) AbsoluteFilePath() string {
-	var _ms C.struct_miqt_string = C.QResource_AbsoluteFilePath(this.h)
+	var _ms C.struct_miqt_string = C.QResource_absoluteFilePath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QResource) SetLocale(locale *QLocale) {
-	C.QResource_SetLocale(this.h, locale.cPointer())
+	C.QResource_setLocale(this.h, locale.cPointer())
 }
 
 func (this *QResource) Locale() *QLocale {
-	_goptr := newQLocale(C.QResource_Locale(this.h))
+	_goptr := newQLocale(C.QResource_locale(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QResource) IsValid() bool {
-	return (bool)(C.QResource_IsValid(this.h))
+	return (bool)(C.QResource_isValid(this.h))
 }
 
 func (this *QResource) CompressionAlgorithm() QResource__Compression {
-	return (QResource__Compression)(C.QResource_CompressionAlgorithm(this.h))
+	return (QResource__Compression)(C.QResource_compressionAlgorithm(this.h))
 }
 
 func (this *QResource) Size() int64 {
-	return (int64)(C.QResource_Size(this.h))
+	return (int64)(C.QResource_size(this.h))
 }
 
 func (this *QResource) Data() *byte {
-	return (*byte)(unsafe.Pointer(C.QResource_Data(this.h)))
+	return (*byte)(unsafe.Pointer(C.QResource_data(this.h)))
 }
 
 func (this *QResource) UncompressedSize() int64 {
-	return (int64)(C.QResource_UncompressedSize(this.h))
+	return (int64)(C.QResource_uncompressedSize(this.h))
 }
 
 func (this *QResource) UncompressedData() []byte {
-	var _bytearray C.struct_miqt_string = C.QResource_UncompressedData(this.h)
+	var _bytearray C.struct_miqt_string = C.QResource_uncompressedData(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QResource) LastModified() *QDateTime {
-	_goptr := newQDateTime(C.QResource_LastModified(this.h))
+	_goptr := newQDateTime(C.QResource_lastModified(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -149,11 +149,11 @@ func QResource_AddSearchPath(path string) {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	C.QResource_AddSearchPath(path_ms)
+	C.QResource_addSearchPath(path_ms)
 }
 
 func QResource_SearchPaths() []string {
-	var _ma C.struct_miqt_array = C.QResource_SearchPaths()
+	var _ma C.struct_miqt_array = C.QResource_searchPaths()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -166,7 +166,7 @@ func QResource_SearchPaths() []string {
 }
 
 func (this *QResource) IsCompressed() bool {
-	return (bool)(C.QResource_IsCompressed(this.h))
+	return (bool)(C.QResource_isCompressed(this.h))
 }
 
 func QResource_RegisterResource(rccFilename string) bool {
@@ -174,7 +174,7 @@ func QResource_RegisterResource(rccFilename string) bool {
 	rccFilename_ms.data = C.CString(rccFilename)
 	rccFilename_ms.len = C.size_t(len(rccFilename))
 	defer C.free(unsafe.Pointer(rccFilename_ms.data))
-	return (bool)(C.QResource_RegisterResource(rccFilename_ms))
+	return (bool)(C.QResource_registerResource(rccFilename_ms))
 }
 
 func QResource_UnregisterResource(rccFilename string) bool {
@@ -182,15 +182,15 @@ func QResource_UnregisterResource(rccFilename string) bool {
 	rccFilename_ms.data = C.CString(rccFilename)
 	rccFilename_ms.len = C.size_t(len(rccFilename))
 	defer C.free(unsafe.Pointer(rccFilename_ms.data))
-	return (bool)(C.QResource_UnregisterResource(rccFilename_ms))
+	return (bool)(C.QResource_unregisterResource(rccFilename_ms))
 }
 
 func QResource_RegisterResourceWithRccData(rccData *byte) bool {
-	return (bool)(C.QResource_RegisterResourceWithRccData((*C.uchar)(unsafe.Pointer(rccData))))
+	return (bool)(C.QResource_registerResourceWithRccData((*C.uchar)(unsafe.Pointer(rccData))))
 }
 
 func QResource_UnregisterResourceWithRccData(rccData *byte) bool {
-	return (bool)(C.QResource_UnregisterResourceWithRccData((*C.uchar)(unsafe.Pointer(rccData))))
+	return (bool)(C.QResource_unregisterResourceWithRccData((*C.uchar)(unsafe.Pointer(rccData))))
 }
 
 func QResource_RegisterResource2(rccFilename string, resourceRoot string) bool {
@@ -202,7 +202,7 @@ func QResource_RegisterResource2(rccFilename string, resourceRoot string) bool {
 	resourceRoot_ms.data = C.CString(resourceRoot)
 	resourceRoot_ms.len = C.size_t(len(resourceRoot))
 	defer C.free(unsafe.Pointer(resourceRoot_ms.data))
-	return (bool)(C.QResource_RegisterResource2(rccFilename_ms, resourceRoot_ms))
+	return (bool)(C.QResource_registerResource2(rccFilename_ms, resourceRoot_ms))
 }
 
 func QResource_UnregisterResource2(rccFilename string, resourceRoot string) bool {
@@ -214,7 +214,7 @@ func QResource_UnregisterResource2(rccFilename string, resourceRoot string) bool
 	resourceRoot_ms.data = C.CString(resourceRoot)
 	resourceRoot_ms.len = C.size_t(len(resourceRoot))
 	defer C.free(unsafe.Pointer(resourceRoot_ms.data))
-	return (bool)(C.QResource_UnregisterResource2(rccFilename_ms, resourceRoot_ms))
+	return (bool)(C.QResource_unregisterResource2(rccFilename_ms, resourceRoot_ms))
 }
 
 func QResource_RegisterResource22(rccData *byte, resourceRoot string) bool {
@@ -222,7 +222,7 @@ func QResource_RegisterResource22(rccData *byte, resourceRoot string) bool {
 	resourceRoot_ms.data = C.CString(resourceRoot)
 	resourceRoot_ms.len = C.size_t(len(resourceRoot))
 	defer C.free(unsafe.Pointer(resourceRoot_ms.data))
-	return (bool)(C.QResource_RegisterResource22((*C.uchar)(unsafe.Pointer(rccData)), resourceRoot_ms))
+	return (bool)(C.QResource_registerResource22((*C.uchar)(unsafe.Pointer(rccData)), resourceRoot_ms))
 }
 
 func QResource_UnregisterResource22(rccData *byte, resourceRoot string) bool {
@@ -230,12 +230,12 @@ func QResource_UnregisterResource22(rccData *byte, resourceRoot string) bool {
 	resourceRoot_ms.data = C.CString(resourceRoot)
 	resourceRoot_ms.len = C.size_t(len(resourceRoot))
 	defer C.free(unsafe.Pointer(resourceRoot_ms.data))
-	return (bool)(C.QResource_UnregisterResource22((*C.uchar)(unsafe.Pointer(rccData)), resourceRoot_ms))
+	return (bool)(C.QResource_unregisterResource22((*C.uchar)(unsafe.Pointer(rccData)), resourceRoot_ms))
 }
 
 // Delete this object from C++ memory.
 func (this *QResource) Delete() {
-	C.QResource_Delete(this.h)
+	C.QResource_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

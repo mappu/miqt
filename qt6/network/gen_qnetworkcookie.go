@@ -108,61 +108,61 @@ func NewQNetworkCookie4(name []byte, value []byte) *QNetworkCookie {
 }
 
 func (this *QNetworkCookie) OperatorAssign(other *QNetworkCookie) {
-	C.QNetworkCookie_OperatorAssign(this.h, other.cPointer())
+	C.QNetworkCookie_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QNetworkCookie) Swap(other *QNetworkCookie) {
-	C.QNetworkCookie_Swap(this.h, other.cPointer())
+	C.QNetworkCookie_swap(this.h, other.cPointer())
 }
 
 func (this *QNetworkCookie) OperatorEqual(other *QNetworkCookie) bool {
-	return (bool)(C.QNetworkCookie_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QNetworkCookie_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkCookie) OperatorNotEqual(other *QNetworkCookie) bool {
-	return (bool)(C.QNetworkCookie_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QNetworkCookie_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QNetworkCookie) IsSecure() bool {
-	return (bool)(C.QNetworkCookie_IsSecure(this.h))
+	return (bool)(C.QNetworkCookie_isSecure(this.h))
 }
 
 func (this *QNetworkCookie) SetSecure(enable bool) {
-	C.QNetworkCookie_SetSecure(this.h, (C.bool)(enable))
+	C.QNetworkCookie_setSecure(this.h, (C.bool)(enable))
 }
 
 func (this *QNetworkCookie) IsHttpOnly() bool {
-	return (bool)(C.QNetworkCookie_IsHttpOnly(this.h))
+	return (bool)(C.QNetworkCookie_isHttpOnly(this.h))
 }
 
 func (this *QNetworkCookie) SetHttpOnly(enable bool) {
-	C.QNetworkCookie_SetHttpOnly(this.h, (C.bool)(enable))
+	C.QNetworkCookie_setHttpOnly(this.h, (C.bool)(enable))
 }
 
 func (this *QNetworkCookie) SameSitePolicy() QNetworkCookie__SameSite {
-	return (QNetworkCookie__SameSite)(C.QNetworkCookie_SameSitePolicy(this.h))
+	return (QNetworkCookie__SameSite)(C.QNetworkCookie_sameSitePolicy(this.h))
 }
 
 func (this *QNetworkCookie) SetSameSitePolicy(sameSite QNetworkCookie__SameSite) {
-	C.QNetworkCookie_SetSameSitePolicy(this.h, (C.int)(sameSite))
+	C.QNetworkCookie_setSameSitePolicy(this.h, (C.int)(sameSite))
 }
 
 func (this *QNetworkCookie) IsSessionCookie() bool {
-	return (bool)(C.QNetworkCookie_IsSessionCookie(this.h))
+	return (bool)(C.QNetworkCookie_isSessionCookie(this.h))
 }
 
 func (this *QNetworkCookie) ExpirationDate() *qt6.QDateTime {
-	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(C.QNetworkCookie_ExpirationDate(this.h)))
+	_goptr := qt6.UnsafeNewQDateTime(unsafe.Pointer(C.QNetworkCookie_expirationDate(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QNetworkCookie) SetExpirationDate(date *qt6.QDateTime) {
-	C.QNetworkCookie_SetExpirationDate(this.h, (*C.QDateTime)(date.UnsafePointer()))
+	C.QNetworkCookie_setExpirationDate(this.h, (*C.QDateTime)(date.UnsafePointer()))
 }
 
 func (this *QNetworkCookie) Domain() string {
-	var _ms C.struct_miqt_string = C.QNetworkCookie_Domain(this.h)
+	var _ms C.struct_miqt_string = C.QNetworkCookie_domain(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -173,11 +173,11 @@ func (this *QNetworkCookie) SetDomain(domain string) {
 	domain_ms.data = C.CString(domain)
 	domain_ms.len = C.size_t(len(domain))
 	defer C.free(unsafe.Pointer(domain_ms.data))
-	C.QNetworkCookie_SetDomain(this.h, domain_ms)
+	C.QNetworkCookie_setDomain(this.h, domain_ms)
 }
 
 func (this *QNetworkCookie) Path() string {
-	var _ms C.struct_miqt_string = C.QNetworkCookie_Path(this.h)
+	var _ms C.struct_miqt_string = C.QNetworkCookie_path(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -188,11 +188,11 @@ func (this *QNetworkCookie) SetPath(path string) {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	C.QNetworkCookie_SetPath(this.h, path_ms)
+	C.QNetworkCookie_setPath(this.h, path_ms)
 }
 
 func (this *QNetworkCookie) Name() []byte {
-	var _bytearray C.struct_miqt_string = C.QNetworkCookie_Name(this.h)
+	var _bytearray C.struct_miqt_string = C.QNetworkCookie_name(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -206,11 +206,11 @@ func (this *QNetworkCookie) SetName(cookieName []byte) {
 		cookieName_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	cookieName_alias.len = C.size_t(len(cookieName))
-	C.QNetworkCookie_SetName(this.h, cookieName_alias)
+	C.QNetworkCookie_setName(this.h, cookieName_alias)
 }
 
 func (this *QNetworkCookie) Value() []byte {
-	var _bytearray C.struct_miqt_string = C.QNetworkCookie_Value(this.h)
+	var _bytearray C.struct_miqt_string = C.QNetworkCookie_value(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -224,22 +224,22 @@ func (this *QNetworkCookie) SetValue(value []byte) {
 		value_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	value_alias.len = C.size_t(len(value))
-	C.QNetworkCookie_SetValue(this.h, value_alias)
+	C.QNetworkCookie_setValue(this.h, value_alias)
 }
 
 func (this *QNetworkCookie) ToRawForm() []byte {
-	var _bytearray C.struct_miqt_string = C.QNetworkCookie_ToRawForm(this.h)
+	var _bytearray C.struct_miqt_string = C.QNetworkCookie_toRawForm(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QNetworkCookie) HasSameIdentifier(other *QNetworkCookie) bool {
-	return (bool)(C.QNetworkCookie_HasSameIdentifier(this.h, other.cPointer()))
+	return (bool)(C.QNetworkCookie_hasSameIdentifier(this.h, other.cPointer()))
 }
 
 func (this *QNetworkCookie) Normalize(url *qt6.QUrl) {
-	C.QNetworkCookie_Normalize(this.h, (*C.QUrl)(url.UnsafePointer()))
+	C.QNetworkCookie_normalize(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func QNetworkCookie_ParseCookies(cookieString []byte) []QNetworkCookie {
@@ -250,7 +250,7 @@ func QNetworkCookie_ParseCookies(cookieString []byte) []QNetworkCookie {
 		cookieString_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	cookieString_alias.len = C.size_t(len(cookieString))
-	var _ma C.struct_miqt_array = C.QNetworkCookie_ParseCookies(cookieString_alias)
+	var _ma C.struct_miqt_array = C.QNetworkCookie_parseCookies(cookieString_alias)
 	_ret := make([]QNetworkCookie, int(_ma.len))
 	_outCast := (*[0xffff]*C.QNetworkCookie)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -262,7 +262,7 @@ func QNetworkCookie_ParseCookies(cookieString []byte) []QNetworkCookie {
 }
 
 func (this *QNetworkCookie) ToRawForm1(form QNetworkCookie__RawForm) []byte {
-	var _bytearray C.struct_miqt_string = C.QNetworkCookie_ToRawForm1(this.h, (C.int)(form))
+	var _bytearray C.struct_miqt_string = C.QNetworkCookie_toRawForm1(this.h, (C.int)(form))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -270,7 +270,7 @@ func (this *QNetworkCookie) ToRawForm1(form QNetworkCookie__RawForm) []byte {
 
 // Delete this object from C++ memory.
 func (this *QNetworkCookie) Delete() {
-	C.QNetworkCookie_Delete(this.h)
+	C.QNetworkCookie_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

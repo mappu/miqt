@@ -29,43 +29,43 @@ typedef struct QUrl QUrl;
 #endif
 
 void QMediaRecorderControl_virtbase(QMediaRecorderControl* src, QMediaControl** outptr_QMediaControl);
-QMetaObject* QMediaRecorderControl_MetaObject(const QMediaRecorderControl* self);
-void* QMediaRecorderControl_Metacast(QMediaRecorderControl* self, const char* param1);
-struct miqt_string QMediaRecorderControl_Tr(const char* s);
-struct miqt_string QMediaRecorderControl_TrUtf8(const char* s);
-QUrl* QMediaRecorderControl_OutputLocation(const QMediaRecorderControl* self);
-bool QMediaRecorderControl_SetOutputLocation(QMediaRecorderControl* self, QUrl* location);
-int QMediaRecorderControl_State(const QMediaRecorderControl* self);
-int QMediaRecorderControl_Status(const QMediaRecorderControl* self);
-long long QMediaRecorderControl_Duration(const QMediaRecorderControl* self);
-bool QMediaRecorderControl_IsMuted(const QMediaRecorderControl* self);
-double QMediaRecorderControl_Volume(const QMediaRecorderControl* self);
-void QMediaRecorderControl_ApplySettings(QMediaRecorderControl* self);
-void QMediaRecorderControl_StateChanged(QMediaRecorderControl* self, int state);
-void QMediaRecorderControl_connect_StateChanged(QMediaRecorderControl* self, intptr_t slot);
-void QMediaRecorderControl_StatusChanged(QMediaRecorderControl* self, int status);
-void QMediaRecorderControl_connect_StatusChanged(QMediaRecorderControl* self, intptr_t slot);
-void QMediaRecorderControl_DurationChanged(QMediaRecorderControl* self, long long position);
-void QMediaRecorderControl_connect_DurationChanged(QMediaRecorderControl* self, intptr_t slot);
-void QMediaRecorderControl_MutedChanged(QMediaRecorderControl* self, bool muted);
-void QMediaRecorderControl_connect_MutedChanged(QMediaRecorderControl* self, intptr_t slot);
-void QMediaRecorderControl_VolumeChanged(QMediaRecorderControl* self, double volume);
-void QMediaRecorderControl_connect_VolumeChanged(QMediaRecorderControl* self, intptr_t slot);
-void QMediaRecorderControl_ActualLocationChanged(QMediaRecorderControl* self, QUrl* location);
-void QMediaRecorderControl_connect_ActualLocationChanged(QMediaRecorderControl* self, intptr_t slot);
-void QMediaRecorderControl_Error(QMediaRecorderControl* self, int error, struct miqt_string errorString);
-void QMediaRecorderControl_connect_Error(QMediaRecorderControl* self, intptr_t slot);
-void QMediaRecorderControl_SetState(QMediaRecorderControl* self, int state);
-void QMediaRecorderControl_SetMuted(QMediaRecorderControl* self, bool muted);
-void QMediaRecorderControl_SetVolume(QMediaRecorderControl* self, double volume);
-struct miqt_string QMediaRecorderControl_Tr2(const char* s, const char* c);
-struct miqt_string QMediaRecorderControl_Tr3(const char* s, const char* c, int n);
-struct miqt_string QMediaRecorderControl_TrUtf82(const char* s, const char* c);
-struct miqt_string QMediaRecorderControl_TrUtf83(const char* s, const char* c, int n);
-void QMediaRecorderControl_Delete(QMediaRecorderControl* self);
+QMetaObject* QMediaRecorderControl_metaObject(const QMediaRecorderControl* self);
+void* QMediaRecorderControl_metacast(QMediaRecorderControl* self, const char* param1);
+struct miqt_string QMediaRecorderControl_tr(const char* s);
+struct miqt_string QMediaRecorderControl_trUtf8(const char* s);
+QUrl* QMediaRecorderControl_outputLocation(const QMediaRecorderControl* self);
+bool QMediaRecorderControl_setOutputLocation(QMediaRecorderControl* self, QUrl* location);
+int QMediaRecorderControl_state(const QMediaRecorderControl* self);
+int QMediaRecorderControl_status(const QMediaRecorderControl* self);
+long long QMediaRecorderControl_duration(const QMediaRecorderControl* self);
+bool QMediaRecorderControl_isMuted(const QMediaRecorderControl* self);
+double QMediaRecorderControl_volume(const QMediaRecorderControl* self);
+void QMediaRecorderControl_applySettings(QMediaRecorderControl* self);
+void QMediaRecorderControl_stateChanged(QMediaRecorderControl* self, int state);
+void QMediaRecorderControl_connect_stateChanged(QMediaRecorderControl* self, intptr_t slot);
+void QMediaRecorderControl_statusChanged(QMediaRecorderControl* self, int status);
+void QMediaRecorderControl_connect_statusChanged(QMediaRecorderControl* self, intptr_t slot);
+void QMediaRecorderControl_durationChanged(QMediaRecorderControl* self, long long position);
+void QMediaRecorderControl_connect_durationChanged(QMediaRecorderControl* self, intptr_t slot);
+void QMediaRecorderControl_mutedChanged(QMediaRecorderControl* self, bool muted);
+void QMediaRecorderControl_connect_mutedChanged(QMediaRecorderControl* self, intptr_t slot);
+void QMediaRecorderControl_volumeChanged(QMediaRecorderControl* self, double volume);
+void QMediaRecorderControl_connect_volumeChanged(QMediaRecorderControl* self, intptr_t slot);
+void QMediaRecorderControl_actualLocationChanged(QMediaRecorderControl* self, QUrl* location);
+void QMediaRecorderControl_connect_actualLocationChanged(QMediaRecorderControl* self, intptr_t slot);
+void QMediaRecorderControl_error(QMediaRecorderControl* self, int error, struct miqt_string errorString);
+void QMediaRecorderControl_connect_error(QMediaRecorderControl* self, intptr_t slot);
+void QMediaRecorderControl_setState(QMediaRecorderControl* self, int state);
+void QMediaRecorderControl_setMuted(QMediaRecorderControl* self, bool muted);
+void QMediaRecorderControl_setVolume(QMediaRecorderControl* self, double volume);
+struct miqt_string QMediaRecorderControl_tr2(const char* s, const char* c);
+struct miqt_string QMediaRecorderControl_tr3(const char* s, const char* c, int n);
+struct miqt_string QMediaRecorderControl_trUtf82(const char* s, const char* c);
+struct miqt_string QMediaRecorderControl_trUtf83(const char* s, const char* c, int n);
+void QMediaRecorderControl_delete(QMediaRecorderControl* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

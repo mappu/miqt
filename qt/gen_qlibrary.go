@@ -141,19 +141,19 @@ func NewQLibrary8(fileName string, version string, parent *QObject) *QLibrary {
 }
 
 func (this *QLibrary) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QLibrary_MetaObject(this.h))
+	return newQMetaObject(C.QLibrary_metaObject(this.h))
 }
 
 func (this *QLibrary) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QLibrary_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QLibrary_metacast(this.h, param1_Cstring))
 }
 
 func QLibrary_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QLibrary_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QLibrary_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -162,22 +162,22 @@ func QLibrary_Tr(s string) string {
 func QLibrary_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QLibrary_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QLibrary_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLibrary) Load() bool {
-	return (bool)(C.QLibrary_Load(this.h))
+	return (bool)(C.QLibrary_load(this.h))
 }
 
 func (this *QLibrary) Unload() bool {
-	return (bool)(C.QLibrary_Unload(this.h))
+	return (bool)(C.QLibrary_unload(this.h))
 }
 
 func (this *QLibrary) IsLoaded() bool {
-	return (bool)(C.QLibrary_IsLoaded(this.h))
+	return (bool)(C.QLibrary_isLoaded(this.h))
 }
 
 func QLibrary_IsLibrary(fileName string) bool {
@@ -185,7 +185,7 @@ func QLibrary_IsLibrary(fileName string) bool {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	return (bool)(C.QLibrary_IsLibrary(fileName_ms))
+	return (bool)(C.QLibrary_isLibrary(fileName_ms))
 }
 
 func (this *QLibrary) SetFileName(fileName string) {
@@ -193,11 +193,11 @@ func (this *QLibrary) SetFileName(fileName string) {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	C.QLibrary_SetFileName(this.h, fileName_ms)
+	C.QLibrary_setFileName(this.h, fileName_ms)
 }
 
 func (this *QLibrary) FileName() string {
-	var _ms C.struct_miqt_string = C.QLibrary_FileName(this.h)
+	var _ms C.struct_miqt_string = C.QLibrary_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -208,7 +208,7 @@ func (this *QLibrary) SetFileNameAndVersion(fileName string, verNum int) {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	C.QLibrary_SetFileNameAndVersion(this.h, fileName_ms, (C.int)(verNum))
+	C.QLibrary_setFileNameAndVersion(this.h, fileName_ms, (C.int)(verNum))
 }
 
 func (this *QLibrary) SetFileNameAndVersion2(fileName string, version string) {
@@ -220,22 +220,22 @@ func (this *QLibrary) SetFileNameAndVersion2(fileName string, version string) {
 	version_ms.data = C.CString(version)
 	version_ms.len = C.size_t(len(version))
 	defer C.free(unsafe.Pointer(version_ms.data))
-	C.QLibrary_SetFileNameAndVersion2(this.h, fileName_ms, version_ms)
+	C.QLibrary_setFileNameAndVersion2(this.h, fileName_ms, version_ms)
 }
 
 func (this *QLibrary) ErrorString() string {
-	var _ms C.struct_miqt_string = C.QLibrary_ErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QLibrary_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QLibrary) SetLoadHints(hints QLibrary__LoadHint) {
-	C.QLibrary_SetLoadHints(this.h, (C.int)(hints))
+	C.QLibrary_setLoadHints(this.h, (C.int)(hints))
 }
 
 func (this *QLibrary) LoadHints() QLibrary__LoadHint {
-	return (QLibrary__LoadHint)(C.QLibrary_LoadHints(this.h))
+	return (QLibrary__LoadHint)(C.QLibrary_loadHints(this.h))
 }
 
 func QLibrary_Tr2(s string, c string) string {
@@ -243,7 +243,7 @@ func QLibrary_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QLibrary_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QLibrary_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -254,7 +254,7 @@ func QLibrary_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QLibrary_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QLibrary_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -265,7 +265,7 @@ func QLibrary_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QLibrary_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QLibrary_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -276,7 +276,7 @@ func QLibrary_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QLibrary_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QLibrary_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -284,18 +284,18 @@ func QLibrary_TrUtf83(s string, c string, n int) string {
 
 func (this *QLibrary) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QLibrary_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QLibrary_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QLibrary) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QLibrary_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLibrary) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QLibrary_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLibrary_Event
-func miqt_exec_callback_QLibrary_Event(self *C.QLibrary, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QLibrary_event
+func miqt_exec_callback_QLibrary_event(self *C.QLibrary, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -312,18 +312,18 @@ func miqt_exec_callback_QLibrary_Event(self *C.QLibrary, cb C.intptr_t, event *C
 
 func (this *QLibrary) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QLibrary_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QLibrary_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QLibrary) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QLibrary_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLibrary) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QLibrary_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLibrary_EventFilter
-func miqt_exec_callback_QLibrary_EventFilter(self *C.QLibrary, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QLibrary_eventFilter
+func miqt_exec_callback_QLibrary_eventFilter(self *C.QLibrary, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -342,18 +342,18 @@ func miqt_exec_callback_QLibrary_EventFilter(self *C.QLibrary, cb C.intptr_t, wa
 
 func (this *QLibrary) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QLibrary_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLibrary_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLibrary) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QLibrary_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLibrary) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QLibrary_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLibrary_TimerEvent
-func miqt_exec_callback_QLibrary_TimerEvent(self *C.QLibrary, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QLibrary_timerEvent
+func miqt_exec_callback_QLibrary_timerEvent(self *C.QLibrary, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -368,18 +368,18 @@ func miqt_exec_callback_QLibrary_TimerEvent(self *C.QLibrary, cb C.intptr_t, eve
 
 func (this *QLibrary) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QLibrary_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLibrary_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLibrary) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QLibrary_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLibrary) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QLibrary_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLibrary_ChildEvent
-func miqt_exec_callback_QLibrary_ChildEvent(self *C.QLibrary, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QLibrary_childEvent
+func miqt_exec_callback_QLibrary_childEvent(self *C.QLibrary, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -394,18 +394,18 @@ func miqt_exec_callback_QLibrary_ChildEvent(self *C.QLibrary, cb C.intptr_t, eve
 
 func (this *QLibrary) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QLibrary_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QLibrary_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QLibrary) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QLibrary_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLibrary) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QLibrary_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLibrary_CustomEvent
-func miqt_exec_callback_QLibrary_CustomEvent(self *C.QLibrary, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QLibrary_customEvent
+func miqt_exec_callback_QLibrary_customEvent(self *C.QLibrary, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -420,18 +420,18 @@ func miqt_exec_callback_QLibrary_CustomEvent(self *C.QLibrary, cb C.intptr_t, ev
 
 func (this *QLibrary) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QLibrary_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QLibrary_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QLibrary) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QLibrary_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLibrary) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QLibrary_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLibrary_ConnectNotify
-func miqt_exec_callback_QLibrary_ConnectNotify(self *C.QLibrary, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QLibrary_connectNotify
+func miqt_exec_callback_QLibrary_connectNotify(self *C.QLibrary, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -446,18 +446,18 @@ func miqt_exec_callback_QLibrary_ConnectNotify(self *C.QLibrary, cb C.intptr_t, 
 
 func (this *QLibrary) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QLibrary_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QLibrary_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QLibrary) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QLibrary_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QLibrary) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QLibrary_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QLibrary_DisconnectNotify
-func miqt_exec_callback_QLibrary_DisconnectNotify(self *C.QLibrary, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QLibrary_disconnectNotify
+func miqt_exec_callback_QLibrary_disconnectNotify(self *C.QLibrary, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -472,7 +472,7 @@ func miqt_exec_callback_QLibrary_DisconnectNotify(self *C.QLibrary, cb C.intptr_
 
 // Delete this object from C++ memory.
 func (this *QLibrary) Delete() {
-	C.QLibrary_Delete(this.h)
+	C.QLibrary_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

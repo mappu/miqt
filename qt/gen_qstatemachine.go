@@ -92,19 +92,19 @@ func NewQStateMachine4(childMode QState__ChildMode, parent *QObject) *QStateMach
 }
 
 func (this *QStateMachine) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QStateMachine_MetaObject(this.h))
+	return newQMetaObject(C.QStateMachine_metaObject(this.h))
 }
 
 func (this *QStateMachine) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QStateMachine_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QStateMachine_metacast(this.h, param1_Cstring))
 }
 
 func QStateMachine_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QStateMachine_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QStateMachine_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -113,53 +113,53 @@ func QStateMachine_Tr(s string) string {
 func QStateMachine_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QStateMachine_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QStateMachine_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QStateMachine) AddState(state *QAbstractState) {
-	C.QStateMachine_AddState(this.h, state.cPointer())
+	C.QStateMachine_addState(this.h, state.cPointer())
 }
 
 func (this *QStateMachine) RemoveState(state *QAbstractState) {
-	C.QStateMachine_RemoveState(this.h, state.cPointer())
+	C.QStateMachine_removeState(this.h, state.cPointer())
 }
 
 func (this *QStateMachine) Error() QStateMachine__Error {
-	return (QStateMachine__Error)(C.QStateMachine_Error(this.h))
+	return (QStateMachine__Error)(C.QStateMachine_error(this.h))
 }
 
 func (this *QStateMachine) ErrorString() string {
-	var _ms C.struct_miqt_string = C.QStateMachine_ErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QStateMachine_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QStateMachine) ClearError() {
-	C.QStateMachine_ClearError(this.h)
+	C.QStateMachine_clearError(this.h)
 }
 
 func (this *QStateMachine) IsRunning() bool {
-	return (bool)(C.QStateMachine_IsRunning(this.h))
+	return (bool)(C.QStateMachine_isRunning(this.h))
 }
 
 func (this *QStateMachine) IsAnimated() bool {
-	return (bool)(C.QStateMachine_IsAnimated(this.h))
+	return (bool)(C.QStateMachine_isAnimated(this.h))
 }
 
 func (this *QStateMachine) SetAnimated(enabled bool) {
-	C.QStateMachine_SetAnimated(this.h, (C.bool)(enabled))
+	C.QStateMachine_setAnimated(this.h, (C.bool)(enabled))
 }
 
 func (this *QStateMachine) AddDefaultAnimation(animation *QAbstractAnimation) {
-	C.QStateMachine_AddDefaultAnimation(this.h, animation.cPointer())
+	C.QStateMachine_addDefaultAnimation(this.h, animation.cPointer())
 }
 
 func (this *QStateMachine) DefaultAnimations() []*QAbstractAnimation {
-	var _ma C.struct_miqt_array = C.QStateMachine_DefaultAnimations(this.h)
+	var _ma C.struct_miqt_array = C.QStateMachine_defaultAnimations(this.h)
 	_ret := make([]*QAbstractAnimation, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractAnimation)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -169,31 +169,31 @@ func (this *QStateMachine) DefaultAnimations() []*QAbstractAnimation {
 }
 
 func (this *QStateMachine) RemoveDefaultAnimation(animation *QAbstractAnimation) {
-	C.QStateMachine_RemoveDefaultAnimation(this.h, animation.cPointer())
+	C.QStateMachine_removeDefaultAnimation(this.h, animation.cPointer())
 }
 
 func (this *QStateMachine) GlobalRestorePolicy() QState__RestorePolicy {
-	return (QState__RestorePolicy)(C.QStateMachine_GlobalRestorePolicy(this.h))
+	return (QState__RestorePolicy)(C.QStateMachine_globalRestorePolicy(this.h))
 }
 
 func (this *QStateMachine) SetGlobalRestorePolicy(restorePolicy QState__RestorePolicy) {
-	C.QStateMachine_SetGlobalRestorePolicy(this.h, (C.int)(restorePolicy))
+	C.QStateMachine_setGlobalRestorePolicy(this.h, (C.int)(restorePolicy))
 }
 
 func (this *QStateMachine) PostEvent(event *QEvent) {
-	C.QStateMachine_PostEvent(this.h, event.cPointer())
+	C.QStateMachine_postEvent(this.h, event.cPointer())
 }
 
 func (this *QStateMachine) PostDelayedEvent(event *QEvent, delay int) int {
-	return (int)(C.QStateMachine_PostDelayedEvent(this.h, event.cPointer(), (C.int)(delay)))
+	return (int)(C.QStateMachine_postDelayedEvent(this.h, event.cPointer(), (C.int)(delay)))
 }
 
 func (this *QStateMachine) CancelDelayedEvent(id int) bool {
-	return (bool)(C.QStateMachine_CancelDelayedEvent(this.h, (C.int)(id)))
+	return (bool)(C.QStateMachine_cancelDelayedEvent(this.h, (C.int)(id)))
 }
 
 func (this *QStateMachine) Configuration() map[*QAbstractState]struct{} {
-	var _ma C.struct_miqt_array = C.QStateMachine_Configuration(this.h)
+	var _ma C.struct_miqt_array = C.QStateMachine_configuration(this.h)
 	_ret := make(map[*QAbstractState]struct{}, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractState)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -205,30 +205,30 @@ func (this *QStateMachine) Configuration() map[*QAbstractState]struct{} {
 }
 
 func (this *QStateMachine) EventFilter(watched *QObject, event *QEvent) bool {
-	return (bool)(C.QStateMachine_EventFilter(this.h, watched.cPointer(), event.cPointer()))
+	return (bool)(C.QStateMachine_eventFilter(this.h, watched.cPointer(), event.cPointer()))
 }
 
 func (this *QStateMachine) Start() {
-	C.QStateMachine_Start(this.h)
+	C.QStateMachine_start(this.h)
 }
 
 func (this *QStateMachine) Stop() {
-	C.QStateMachine_Stop(this.h)
+	C.QStateMachine_stop(this.h)
 }
 
 func (this *QStateMachine) SetRunning(running bool) {
-	C.QStateMachine_SetRunning(this.h, (C.bool)(running))
+	C.QStateMachine_setRunning(this.h, (C.bool)(running))
 }
 
 func (this *QStateMachine) RunningChanged(running bool) {
-	C.QStateMachine_RunningChanged(this.h, (C.bool)(running))
+	C.QStateMachine_runningChanged(this.h, (C.bool)(running))
 }
 func (this *QStateMachine) OnRunningChanged(slot func(running bool)) {
-	C.QStateMachine_connect_RunningChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QStateMachine_connect_runningChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QStateMachine_RunningChanged
-func miqt_exec_callback_QStateMachine_RunningChanged(cb C.intptr_t, running C.bool) {
+//export miqt_exec_callback_QStateMachine_runningChanged
+func miqt_exec_callback_QStateMachine_runningChanged(cb C.intptr_t, running C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(running bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -245,7 +245,7 @@ func QStateMachine_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QStateMachine_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QStateMachine_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -256,7 +256,7 @@ func QStateMachine_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QStateMachine_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QStateMachine_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -267,7 +267,7 @@ func QStateMachine_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QStateMachine_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QStateMachine_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -278,30 +278,30 @@ func QStateMachine_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QStateMachine_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QStateMachine_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QStateMachine) PostEvent2(event *QEvent, priority QStateMachine__EventPriority) {
-	C.QStateMachine_PostEvent2(this.h, event.cPointer(), (C.int)(priority))
+	C.QStateMachine_postEvent2(this.h, event.cPointer(), (C.int)(priority))
 }
 
 func (this *QStateMachine) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QStateMachine_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QStateMachine_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QStateMachine) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QStateMachine_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStateMachine) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QStateMachine_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStateMachine_EventFilter
-func miqt_exec_callback_QStateMachine_EventFilter(self *C.QStateMachine, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QStateMachine_eventFilter
+func miqt_exec_callback_QStateMachine_eventFilter(self *C.QStateMachine, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -320,18 +320,18 @@ func miqt_exec_callback_QStateMachine_EventFilter(self *C.QStateMachine, cb C.in
 
 func (this *QStateMachine) callVirtualBase_OnEntry(event *QEvent) {
 
-	C.QStateMachine_virtualbase_OnEntry(unsafe.Pointer(this.h), event.cPointer())
+	C.QStateMachine_virtualbase_onEntry(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OnOnEntry(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QStateMachine_override_virtual_OnEntry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStateMachine) OnonEntry(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QStateMachine_override_virtual_onEntry(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStateMachine_OnEntry
-func miqt_exec_callback_QStateMachine_OnEntry(self *C.QStateMachine, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QStateMachine_onEntry
+func miqt_exec_callback_QStateMachine_onEntry(self *C.QStateMachine, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -346,18 +346,18 @@ func miqt_exec_callback_QStateMachine_OnEntry(self *C.QStateMachine, cb C.intptr
 
 func (this *QStateMachine) callVirtualBase_OnExit(event *QEvent) {
 
-	C.QStateMachine_virtualbase_OnExit(unsafe.Pointer(this.h), event.cPointer())
+	C.QStateMachine_virtualbase_onExit(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OnOnExit(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QStateMachine_override_virtual_OnExit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStateMachine) OnonExit(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QStateMachine_override_virtual_onExit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStateMachine_OnExit
-func miqt_exec_callback_QStateMachine_OnExit(self *C.QStateMachine, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QStateMachine_onExit
+func miqt_exec_callback_QStateMachine_onExit(self *C.QStateMachine, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -372,18 +372,18 @@ func miqt_exec_callback_QStateMachine_OnExit(self *C.QStateMachine, cb C.intptr_
 
 func (this *QStateMachine) callVirtualBase_BeginSelectTransitions(event *QEvent) {
 
-	C.QStateMachine_virtualbase_BeginSelectTransitions(unsafe.Pointer(this.h), event.cPointer())
+	C.QStateMachine_virtualbase_beginSelectTransitions(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OnBeginSelectTransitions(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QStateMachine_override_virtual_BeginSelectTransitions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStateMachine) OnbeginSelectTransitions(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QStateMachine_override_virtual_beginSelectTransitions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStateMachine_BeginSelectTransitions
-func miqt_exec_callback_QStateMachine_BeginSelectTransitions(self *C.QStateMachine, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QStateMachine_beginSelectTransitions
+func miqt_exec_callback_QStateMachine_beginSelectTransitions(self *C.QStateMachine, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -398,18 +398,18 @@ func miqt_exec_callback_QStateMachine_BeginSelectTransitions(self *C.QStateMachi
 
 func (this *QStateMachine) callVirtualBase_EndSelectTransitions(event *QEvent) {
 
-	C.QStateMachine_virtualbase_EndSelectTransitions(unsafe.Pointer(this.h), event.cPointer())
+	C.QStateMachine_virtualbase_endSelectTransitions(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OnEndSelectTransitions(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QStateMachine_override_virtual_EndSelectTransitions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStateMachine) OnendSelectTransitions(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QStateMachine_override_virtual_endSelectTransitions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStateMachine_EndSelectTransitions
-func miqt_exec_callback_QStateMachine_EndSelectTransitions(self *C.QStateMachine, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QStateMachine_endSelectTransitions
+func miqt_exec_callback_QStateMachine_endSelectTransitions(self *C.QStateMachine, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -424,18 +424,18 @@ func miqt_exec_callback_QStateMachine_EndSelectTransitions(self *C.QStateMachine
 
 func (this *QStateMachine) callVirtualBase_BeginMicrostep(event *QEvent) {
 
-	C.QStateMachine_virtualbase_BeginMicrostep(unsafe.Pointer(this.h), event.cPointer())
+	C.QStateMachine_virtualbase_beginMicrostep(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OnBeginMicrostep(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QStateMachine_override_virtual_BeginMicrostep(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStateMachine) OnbeginMicrostep(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QStateMachine_override_virtual_beginMicrostep(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStateMachine_BeginMicrostep
-func miqt_exec_callback_QStateMachine_BeginMicrostep(self *C.QStateMachine, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QStateMachine_beginMicrostep
+func miqt_exec_callback_QStateMachine_beginMicrostep(self *C.QStateMachine, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -450,18 +450,18 @@ func miqt_exec_callback_QStateMachine_BeginMicrostep(self *C.QStateMachine, cb C
 
 func (this *QStateMachine) callVirtualBase_EndMicrostep(event *QEvent) {
 
-	C.QStateMachine_virtualbase_EndMicrostep(unsafe.Pointer(this.h), event.cPointer())
+	C.QStateMachine_virtualbase_endMicrostep(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OnEndMicrostep(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QStateMachine_override_virtual_EndMicrostep(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStateMachine) OnendMicrostep(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QStateMachine_override_virtual_endMicrostep(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStateMachine_EndMicrostep
-func miqt_exec_callback_QStateMachine_EndMicrostep(self *C.QStateMachine, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QStateMachine_endMicrostep
+func miqt_exec_callback_QStateMachine_endMicrostep(self *C.QStateMachine, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -476,18 +476,18 @@ func miqt_exec_callback_QStateMachine_EndMicrostep(self *C.QStateMachine, cb C.i
 
 func (this *QStateMachine) callVirtualBase_Event(e *QEvent) bool {
 
-	return (bool)(C.QStateMachine_virtualbase_Event(unsafe.Pointer(this.h), e.cPointer()))
+	return (bool)(C.QStateMachine_virtualbase_event(unsafe.Pointer(this.h), e.cPointer()))
 
 }
-func (this *QStateMachine) OnEvent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
-	ok := C.QStateMachine_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStateMachine) Onevent(slot func(super func(e *QEvent) bool, e *QEvent) bool) {
+	ok := C.QStateMachine_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStateMachine_Event
-func miqt_exec_callback_QStateMachine_Event(self *C.QStateMachine, cb C.intptr_t, e *C.QEvent) C.bool {
+//export miqt_exec_callback_QStateMachine_event
+func miqt_exec_callback_QStateMachine_event(self *C.QStateMachine, cb C.intptr_t, e *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(e *QEvent) bool, e *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -504,18 +504,18 @@ func miqt_exec_callback_QStateMachine_Event(self *C.QStateMachine, cb C.intptr_t
 
 func (this *QStateMachine) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QStateMachine_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QStateMachine_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QStateMachine_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStateMachine) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QStateMachine_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStateMachine_TimerEvent
-func miqt_exec_callback_QStateMachine_TimerEvent(self *C.QStateMachine, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QStateMachine_timerEvent
+func miqt_exec_callback_QStateMachine_timerEvent(self *C.QStateMachine, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -530,18 +530,18 @@ func miqt_exec_callback_QStateMachine_TimerEvent(self *C.QStateMachine, cb C.int
 
 func (this *QStateMachine) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QStateMachine_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QStateMachine_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QStateMachine_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStateMachine) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QStateMachine_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStateMachine_ChildEvent
-func miqt_exec_callback_QStateMachine_ChildEvent(self *C.QStateMachine, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QStateMachine_childEvent
+func miqt_exec_callback_QStateMachine_childEvent(self *C.QStateMachine, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -556,18 +556,18 @@ func miqt_exec_callback_QStateMachine_ChildEvent(self *C.QStateMachine, cb C.int
 
 func (this *QStateMachine) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QStateMachine_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QStateMachine_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QStateMachine) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QStateMachine_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStateMachine) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QStateMachine_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStateMachine_CustomEvent
-func miqt_exec_callback_QStateMachine_CustomEvent(self *C.QStateMachine, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QStateMachine_customEvent
+func miqt_exec_callback_QStateMachine_customEvent(self *C.QStateMachine, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -582,18 +582,18 @@ func miqt_exec_callback_QStateMachine_CustomEvent(self *C.QStateMachine, cb C.in
 
 func (this *QStateMachine) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QStateMachine_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QStateMachine_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QStateMachine) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QStateMachine_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStateMachine) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QStateMachine_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStateMachine_ConnectNotify
-func miqt_exec_callback_QStateMachine_ConnectNotify(self *C.QStateMachine, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QStateMachine_connectNotify
+func miqt_exec_callback_QStateMachine_connectNotify(self *C.QStateMachine, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -608,18 +608,18 @@ func miqt_exec_callback_QStateMachine_ConnectNotify(self *C.QStateMachine, cb C.
 
 func (this *QStateMachine) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QStateMachine_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QStateMachine_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QStateMachine) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QStateMachine_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QStateMachine) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QStateMachine_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QStateMachine_DisconnectNotify
-func miqt_exec_callback_QStateMachine_DisconnectNotify(self *C.QStateMachine, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QStateMachine_disconnectNotify
+func miqt_exec_callback_QStateMachine_disconnectNotify(self *C.QStateMachine, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -634,7 +634,7 @@ func miqt_exec_callback_QStateMachine_DisconnectNotify(self *C.QStateMachine, cb
 
 // Delete this object from C++ memory.
 func (this *QStateMachine) Delete() {
-	C.QStateMachine_Delete(this.h)
+	C.QStateMachine_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -689,16 +689,16 @@ func NewQStateMachine__SignalEvent(param1 *QStateMachine__SignalEvent) *QStateMa
 }
 
 func (this *QStateMachine__SignalEvent) Sender() *QObject {
-	return newQObject(C.QStateMachine__SignalEvent_Sender(this.h))
+	return newQObject(C.QStateMachine__SignalEvent_sender(this.h))
 }
 
 func (this *QStateMachine__SignalEvent) SignalIndex() int {
-	return (int)(C.QStateMachine__SignalEvent_SignalIndex(this.h))
+	return (int)(C.QStateMachine__SignalEvent_signalIndex(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QStateMachine__SignalEvent) Delete() {
-	C.QStateMachine__SignalEvent_Delete(this.h)
+	C.QStateMachine__SignalEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -759,16 +759,16 @@ func NewQStateMachine__WrappedEvent2(param1 *QStateMachine__WrappedEvent) *QStat
 }
 
 func (this *QStateMachine__WrappedEvent) Object() *QObject {
-	return newQObject(C.QStateMachine__WrappedEvent_Object(this.h))
+	return newQObject(C.QStateMachine__WrappedEvent_object(this.h))
 }
 
 func (this *QStateMachine__WrappedEvent) Event() *QEvent {
-	return newQEvent(C.QStateMachine__WrappedEvent_Event(this.h))
+	return newQEvent(C.QStateMachine__WrappedEvent_event(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QStateMachine__WrappedEvent) Delete() {
-	C.QStateMachine__WrappedEvent_Delete(this.h)
+	C.QStateMachine__WrappedEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

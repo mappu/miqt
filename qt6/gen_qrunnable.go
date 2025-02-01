@@ -53,25 +53,25 @@ func NewQRunnable() *QRunnable {
 }
 
 func (this *QRunnable) Run() {
-	C.QRunnable_Run(this.h)
+	C.QRunnable_run(this.h)
 }
 
 func (this *QRunnable) AutoDelete() bool {
-	return (bool)(C.QRunnable_AutoDelete(this.h))
+	return (bool)(C.QRunnable_autoDelete(this.h))
 }
 
 func (this *QRunnable) SetAutoDelete(autoDelete bool) {
-	C.QRunnable_SetAutoDelete(this.h, (C.bool)(autoDelete))
+	C.QRunnable_setAutoDelete(this.h, (C.bool)(autoDelete))
 }
-func (this *QRunnable) OnRun(slot func()) {
-	ok := C.QRunnable_override_virtual_Run(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QRunnable) Onrun(slot func()) {
+	ok := C.QRunnable_override_virtual_run(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QRunnable_Run
-func miqt_exec_callback_QRunnable_Run(self *C.QRunnable, cb C.intptr_t) {
+//export miqt_exec_callback_QRunnable_run
+func miqt_exec_callback_QRunnable_run(self *C.QRunnable, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -83,7 +83,7 @@ func miqt_exec_callback_QRunnable_Run(self *C.QRunnable, cb C.intptr_t) {
 
 // Delete this object from C++ memory.
 func (this *QRunnable) Delete() {
-	C.QRunnable_Delete(this.h)
+	C.QRunnable_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

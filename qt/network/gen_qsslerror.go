@@ -113,41 +113,41 @@ func NewQSslError4(other *QSslError) *QSslError {
 }
 
 func (this *QSslError) Swap(other *QSslError) {
-	C.QSslError_Swap(this.h, other.cPointer())
+	C.QSslError_swap(this.h, other.cPointer())
 }
 
 func (this *QSslError) OperatorAssign(other *QSslError) {
-	C.QSslError_OperatorAssign(this.h, other.cPointer())
+	C.QSslError_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QSslError) OperatorEqual(other *QSslError) bool {
-	return (bool)(C.QSslError_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QSslError_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QSslError) OperatorNotEqual(other *QSslError) bool {
-	return (bool)(C.QSslError_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QSslError_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QSslError) Error() QSslError__SslError {
-	return (QSslError__SslError)(C.QSslError_Error(this.h))
+	return (QSslError__SslError)(C.QSslError_error(this.h))
 }
 
 func (this *QSslError) ErrorString() string {
-	var _ms C.struct_miqt_string = C.QSslError_ErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QSslError_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSslError) Certificate() *QSslCertificate {
-	_goptr := newQSslCertificate(C.QSslError_Certificate(this.h))
+	_goptr := newQSslCertificate(C.QSslError_certificate(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QSslError) Delete() {
-	C.QSslError_Delete(this.h)
+	C.QSslError_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

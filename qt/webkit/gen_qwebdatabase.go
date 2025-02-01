@@ -52,55 +52,55 @@ func NewQWebDatabase(other *QWebDatabase) *QWebDatabase {
 }
 
 func (this *QWebDatabase) OperatorAssign(other *QWebDatabase) {
-	C.QWebDatabase_OperatorAssign(this.h, other.cPointer())
+	C.QWebDatabase_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QWebDatabase) Name() string {
-	var _ms C.struct_miqt_string = C.QWebDatabase_Name(this.h)
+	var _ms C.struct_miqt_string = C.QWebDatabase_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebDatabase) DisplayName() string {
-	var _ms C.struct_miqt_string = C.QWebDatabase_DisplayName(this.h)
+	var _ms C.struct_miqt_string = C.QWebDatabase_displayName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebDatabase) ExpectedSize() int64 {
-	return (int64)(C.QWebDatabase_ExpectedSize(this.h))
+	return (int64)(C.QWebDatabase_expectedSize(this.h))
 }
 
 func (this *QWebDatabase) Size() int64 {
-	return (int64)(C.QWebDatabase_Size(this.h))
+	return (int64)(C.QWebDatabase_size(this.h))
 }
 
 func (this *QWebDatabase) FileName() string {
-	var _ms C.struct_miqt_string = C.QWebDatabase_FileName(this.h)
+	var _ms C.struct_miqt_string = C.QWebDatabase_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebDatabase) Origin() *QWebSecurityOrigin {
-	_goptr := newQWebSecurityOrigin(C.QWebDatabase_Origin(this.h))
+	_goptr := newQWebSecurityOrigin(C.QWebDatabase_origin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QWebDatabase_RemoveDatabase(param1 *QWebDatabase) {
-	C.QWebDatabase_RemoveDatabase(param1.cPointer())
+	C.QWebDatabase_removeDatabase(param1.cPointer())
 }
 
 func QWebDatabase_RemoveAllDatabases() {
-	C.QWebDatabase_RemoveAllDatabases()
+	C.QWebDatabase_removeAllDatabases()
 }
 
 // Delete this object from C++ memory.
 func (this *QWebDatabase) Delete() {
-	C.QWebDatabase_Delete(this.h)
+	C.QWebDatabase_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -154,19 +154,19 @@ func NewQMovie8(fileName string, format []byte, parent *QObject) *QMovie {
 }
 
 func (this *QMovie) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QMovie_MetaObject(this.h))
+	return newQMetaObject(C.QMovie_metaObject(this.h))
 }
 
 func (this *QMovie) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QMovie_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QMovie_metacast(this.h, param1_Cstring))
 }
 
 func QMovie_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMovie_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMovie_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -175,14 +175,14 @@ func QMovie_Tr(s string) string {
 func QMovie_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QMovie_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QMovie_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QMovie_SupportedFormats() [][]byte {
-	var _ma C.struct_miqt_array = C.QMovie_SupportedFormats()
+	var _ma C.struct_miqt_array = C.QMovie_supportedFormats()
 	_ret := make([][]byte, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -195,11 +195,11 @@ func QMovie_SupportedFormats() [][]byte {
 }
 
 func (this *QMovie) SetDevice(device *QIODevice) {
-	C.QMovie_SetDevice(this.h, device.cPointer())
+	C.QMovie_setDevice(this.h, device.cPointer())
 }
 
 func (this *QMovie) Device() *QIODevice {
-	return newQIODevice(C.QMovie_Device(this.h))
+	return newQIODevice(C.QMovie_device(this.h))
 }
 
 func (this *QMovie) SetFileName(fileName string) {
@@ -207,11 +207,11 @@ func (this *QMovie) SetFileName(fileName string) {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	C.QMovie_SetFileName(this.h, fileName_ms)
+	C.QMovie_setFileName(this.h, fileName_ms)
 }
 
 func (this *QMovie) FileName() string {
-	var _ms C.struct_miqt_string = C.QMovie_FileName(this.h)
+	var _ms C.struct_miqt_string = C.QMovie_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -225,114 +225,114 @@ func (this *QMovie) SetFormat(format []byte) {
 		format_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	format_alias.len = C.size_t(len(format))
-	C.QMovie_SetFormat(this.h, format_alias)
+	C.QMovie_setFormat(this.h, format_alias)
 }
 
 func (this *QMovie) Format() []byte {
-	var _bytearray C.struct_miqt_string = C.QMovie_Format(this.h)
+	var _bytearray C.struct_miqt_string = C.QMovie_format(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QMovie) SetBackgroundColor(color *QColor) {
-	C.QMovie_SetBackgroundColor(this.h, color.cPointer())
+	C.QMovie_setBackgroundColor(this.h, color.cPointer())
 }
 
 func (this *QMovie) BackgroundColor() *QColor {
-	_goptr := newQColor(C.QMovie_BackgroundColor(this.h))
+	_goptr := newQColor(C.QMovie_backgroundColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMovie) State() QMovie__MovieState {
-	return (QMovie__MovieState)(C.QMovie_State(this.h))
+	return (QMovie__MovieState)(C.QMovie_state(this.h))
 }
 
 func (this *QMovie) FrameRect() *QRect {
-	_goptr := newQRect(C.QMovie_FrameRect(this.h))
+	_goptr := newQRect(C.QMovie_frameRect(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMovie) CurrentImage() *QImage {
-	_goptr := newQImage(C.QMovie_CurrentImage(this.h))
+	_goptr := newQImage(C.QMovie_currentImage(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMovie) CurrentPixmap() *QPixmap {
-	_goptr := newQPixmap(C.QMovie_CurrentPixmap(this.h))
+	_goptr := newQPixmap(C.QMovie_currentPixmap(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMovie) IsValid() bool {
-	return (bool)(C.QMovie_IsValid(this.h))
+	return (bool)(C.QMovie_isValid(this.h))
 }
 
 func (this *QMovie) LastError() QImageReader__ImageReaderError {
-	return (QImageReader__ImageReaderError)(C.QMovie_LastError(this.h))
+	return (QImageReader__ImageReaderError)(C.QMovie_lastError(this.h))
 }
 
 func (this *QMovie) LastErrorString() string {
-	var _ms C.struct_miqt_string = C.QMovie_LastErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QMovie_lastErrorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QMovie) JumpToFrame(frameNumber int) bool {
-	return (bool)(C.QMovie_JumpToFrame(this.h, (C.int)(frameNumber)))
+	return (bool)(C.QMovie_jumpToFrame(this.h, (C.int)(frameNumber)))
 }
 
 func (this *QMovie) LoopCount() int {
-	return (int)(C.QMovie_LoopCount(this.h))
+	return (int)(C.QMovie_loopCount(this.h))
 }
 
 func (this *QMovie) FrameCount() int {
-	return (int)(C.QMovie_FrameCount(this.h))
+	return (int)(C.QMovie_frameCount(this.h))
 }
 
 func (this *QMovie) NextFrameDelay() int {
-	return (int)(C.QMovie_NextFrameDelay(this.h))
+	return (int)(C.QMovie_nextFrameDelay(this.h))
 }
 
 func (this *QMovie) CurrentFrameNumber() int {
-	return (int)(C.QMovie_CurrentFrameNumber(this.h))
+	return (int)(C.QMovie_currentFrameNumber(this.h))
 }
 
 func (this *QMovie) Speed() int {
-	return (int)(C.QMovie_Speed(this.h))
+	return (int)(C.QMovie_speed(this.h))
 }
 
 func (this *QMovie) ScaledSize() *QSize {
-	_goptr := newQSize(C.QMovie_ScaledSize(this.h))
+	_goptr := newQSize(C.QMovie_scaledSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMovie) SetScaledSize(size *QSize) {
-	C.QMovie_SetScaledSize(this.h, size.cPointer())
+	C.QMovie_setScaledSize(this.h, size.cPointer())
 }
 
 func (this *QMovie) CacheMode() QMovie__CacheMode {
-	return (QMovie__CacheMode)(C.QMovie_CacheMode(this.h))
+	return (QMovie__CacheMode)(C.QMovie_cacheMode(this.h))
 }
 
 func (this *QMovie) SetCacheMode(mode QMovie__CacheMode) {
-	C.QMovie_SetCacheMode(this.h, (C.int)(mode))
+	C.QMovie_setCacheMode(this.h, (C.int)(mode))
 }
 
 func (this *QMovie) Started() {
-	C.QMovie_Started(this.h)
+	C.QMovie_started(this.h)
 }
 func (this *QMovie) OnStarted(slot func()) {
-	C.QMovie_connect_Started(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMovie_connect_started(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMovie_Started
-func miqt_exec_callback_QMovie_Started(cb C.intptr_t) {
+//export miqt_exec_callback_QMovie_started
+func miqt_exec_callback_QMovie_started(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -342,14 +342,14 @@ func miqt_exec_callback_QMovie_Started(cb C.intptr_t) {
 }
 
 func (this *QMovie) Resized(size *QSize) {
-	C.QMovie_Resized(this.h, size.cPointer())
+	C.QMovie_resized(this.h, size.cPointer())
 }
 func (this *QMovie) OnResized(slot func(size *QSize)) {
-	C.QMovie_connect_Resized(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMovie_connect_resized(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMovie_Resized
-func miqt_exec_callback_QMovie_Resized(cb C.intptr_t, size *C.QSize) {
+//export miqt_exec_callback_QMovie_resized
+func miqt_exec_callback_QMovie_resized(cb C.intptr_t, size *C.QSize) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(size *QSize))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -362,14 +362,14 @@ func miqt_exec_callback_QMovie_Resized(cb C.intptr_t, size *C.QSize) {
 }
 
 func (this *QMovie) Updated(rect *QRect) {
-	C.QMovie_Updated(this.h, rect.cPointer())
+	C.QMovie_updated(this.h, rect.cPointer())
 }
 func (this *QMovie) OnUpdated(slot func(rect *QRect)) {
-	C.QMovie_connect_Updated(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMovie_connect_updated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMovie_Updated
-func miqt_exec_callback_QMovie_Updated(cb C.intptr_t, rect *C.QRect) {
+//export miqt_exec_callback_QMovie_updated
+func miqt_exec_callback_QMovie_updated(cb C.intptr_t, rect *C.QRect) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(rect *QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -382,14 +382,14 @@ func miqt_exec_callback_QMovie_Updated(cb C.intptr_t, rect *C.QRect) {
 }
 
 func (this *QMovie) StateChanged(state QMovie__MovieState) {
-	C.QMovie_StateChanged(this.h, (C.int)(state))
+	C.QMovie_stateChanged(this.h, (C.int)(state))
 }
 func (this *QMovie) OnStateChanged(slot func(state QMovie__MovieState)) {
-	C.QMovie_connect_StateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMovie_connect_stateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMovie_StateChanged
-func miqt_exec_callback_QMovie_StateChanged(cb C.intptr_t, state C.int) {
+//export miqt_exec_callback_QMovie_stateChanged
+func miqt_exec_callback_QMovie_stateChanged(cb C.intptr_t, state C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(state QMovie__MovieState))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -402,14 +402,14 @@ func miqt_exec_callback_QMovie_StateChanged(cb C.intptr_t, state C.int) {
 }
 
 func (this *QMovie) Error(error QImageReader__ImageReaderError) {
-	C.QMovie_Error(this.h, (C.int)(error))
+	C.QMovie_error(this.h, (C.int)(error))
 }
 func (this *QMovie) OnError(slot func(error QImageReader__ImageReaderError)) {
-	C.QMovie_connect_Error(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMovie_connect_error(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMovie_Error
-func miqt_exec_callback_QMovie_Error(cb C.intptr_t, error C.int) {
+//export miqt_exec_callback_QMovie_error
+func miqt_exec_callback_QMovie_error(cb C.intptr_t, error C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(error QImageReader__ImageReaderError))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -422,14 +422,14 @@ func miqt_exec_callback_QMovie_Error(cb C.intptr_t, error C.int) {
 }
 
 func (this *QMovie) Finished() {
-	C.QMovie_Finished(this.h)
+	C.QMovie_finished(this.h)
 }
 func (this *QMovie) OnFinished(slot func()) {
-	C.QMovie_connect_Finished(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMovie_connect_finished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMovie_Finished
-func miqt_exec_callback_QMovie_Finished(cb C.intptr_t) {
+//export miqt_exec_callback_QMovie_finished
+func miqt_exec_callback_QMovie_finished(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -439,14 +439,14 @@ func miqt_exec_callback_QMovie_Finished(cb C.intptr_t) {
 }
 
 func (this *QMovie) FrameChanged(frameNumber int) {
-	C.QMovie_FrameChanged(this.h, (C.int)(frameNumber))
+	C.QMovie_frameChanged(this.h, (C.int)(frameNumber))
 }
 func (this *QMovie) OnFrameChanged(slot func(frameNumber int)) {
-	C.QMovie_connect_FrameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QMovie_connect_frameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QMovie_FrameChanged
-func miqt_exec_callback_QMovie_FrameChanged(cb C.intptr_t, frameNumber C.int) {
+//export miqt_exec_callback_QMovie_frameChanged
+func miqt_exec_callback_QMovie_frameChanged(cb C.intptr_t, frameNumber C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(frameNumber int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -459,23 +459,23 @@ func miqt_exec_callback_QMovie_FrameChanged(cb C.intptr_t, frameNumber C.int) {
 }
 
 func (this *QMovie) Start() {
-	C.QMovie_Start(this.h)
+	C.QMovie_start(this.h)
 }
 
 func (this *QMovie) JumpToNextFrame() bool {
-	return (bool)(C.QMovie_JumpToNextFrame(this.h))
+	return (bool)(C.QMovie_jumpToNextFrame(this.h))
 }
 
 func (this *QMovie) SetPaused(paused bool) {
-	C.QMovie_SetPaused(this.h, (C.bool)(paused))
+	C.QMovie_setPaused(this.h, (C.bool)(paused))
 }
 
 func (this *QMovie) Stop() {
-	C.QMovie_Stop(this.h)
+	C.QMovie_stop(this.h)
 }
 
 func (this *QMovie) SetSpeed(percentSpeed int) {
-	C.QMovie_SetSpeed(this.h, (C.int)(percentSpeed))
+	C.QMovie_setSpeed(this.h, (C.int)(percentSpeed))
 }
 
 func QMovie_Tr2(s string, c string) string {
@@ -483,7 +483,7 @@ func QMovie_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMovie_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMovie_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -494,7 +494,7 @@ func QMovie_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMovie_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMovie_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -505,7 +505,7 @@ func QMovie_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMovie_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QMovie_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -516,7 +516,7 @@ func QMovie_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QMovie_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QMovie_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -524,18 +524,18 @@ func QMovie_TrUtf83(s string, c string, n int) string {
 
 func (this *QMovie) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QMovie_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QMovie_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QMovie) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QMovie_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMovie) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QMovie_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMovie_Event
-func miqt_exec_callback_QMovie_Event(self *C.QMovie, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QMovie_event
+func miqt_exec_callback_QMovie_event(self *C.QMovie, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -552,18 +552,18 @@ func miqt_exec_callback_QMovie_Event(self *C.QMovie, cb C.intptr_t, event *C.QEv
 
 func (this *QMovie) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QMovie_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QMovie_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QMovie) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QMovie_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMovie) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QMovie_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMovie_EventFilter
-func miqt_exec_callback_QMovie_EventFilter(self *C.QMovie, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QMovie_eventFilter
+func miqt_exec_callback_QMovie_eventFilter(self *C.QMovie, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -582,18 +582,18 @@ func miqt_exec_callback_QMovie_EventFilter(self *C.QMovie, cb C.intptr_t, watche
 
 func (this *QMovie) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QMovie_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMovie_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMovie) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QMovie_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMovie) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QMovie_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMovie_TimerEvent
-func miqt_exec_callback_QMovie_TimerEvent(self *C.QMovie, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QMovie_timerEvent
+func miqt_exec_callback_QMovie_timerEvent(self *C.QMovie, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -608,18 +608,18 @@ func miqt_exec_callback_QMovie_TimerEvent(self *C.QMovie, cb C.intptr_t, event *
 
 func (this *QMovie) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QMovie_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMovie_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMovie) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QMovie_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMovie) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QMovie_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMovie_ChildEvent
-func miqt_exec_callback_QMovie_ChildEvent(self *C.QMovie, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QMovie_childEvent
+func miqt_exec_callback_QMovie_childEvent(self *C.QMovie, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -634,18 +634,18 @@ func miqt_exec_callback_QMovie_ChildEvent(self *C.QMovie, cb C.intptr_t, event *
 
 func (this *QMovie) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QMovie_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QMovie_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QMovie) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QMovie_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMovie) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QMovie_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMovie_CustomEvent
-func miqt_exec_callback_QMovie_CustomEvent(self *C.QMovie, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QMovie_customEvent
+func miqt_exec_callback_QMovie_customEvent(self *C.QMovie, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -660,18 +660,18 @@ func miqt_exec_callback_QMovie_CustomEvent(self *C.QMovie, cb C.intptr_t, event 
 
 func (this *QMovie) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QMovie_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QMovie_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QMovie) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QMovie_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMovie) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QMovie_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMovie_ConnectNotify
-func miqt_exec_callback_QMovie_ConnectNotify(self *C.QMovie, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QMovie_connectNotify
+func miqt_exec_callback_QMovie_connectNotify(self *C.QMovie, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -686,18 +686,18 @@ func miqt_exec_callback_QMovie_ConnectNotify(self *C.QMovie, cb C.intptr_t, sign
 
 func (this *QMovie) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QMovie_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QMovie_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QMovie) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QMovie_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QMovie) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QMovie_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QMovie_DisconnectNotify
-func miqt_exec_callback_QMovie_DisconnectNotify(self *C.QMovie, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QMovie_disconnectNotify
+func miqt_exec_callback_QMovie_disconnectNotify(self *C.QMovie, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -712,7 +712,7 @@ func miqt_exec_callback_QMovie_DisconnectNotify(self *C.QMovie, cb C.intptr_t, s
 
 // Delete this object from C++ memory.
 func (this *QMovie) Delete() {
-	C.QMovie_Delete(this.h)
+	C.QMovie_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

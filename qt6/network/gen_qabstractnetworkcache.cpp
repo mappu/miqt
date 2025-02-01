@@ -32,35 +32,35 @@ QNetworkCacheMetaData* QNetworkCacheMetaData_new2(QNetworkCacheMetaData* other) 
 	return new QNetworkCacheMetaData(*other);
 }
 
-void QNetworkCacheMetaData_OperatorAssign(QNetworkCacheMetaData* self, QNetworkCacheMetaData* other) {
+void QNetworkCacheMetaData_operatorAssign(QNetworkCacheMetaData* self, QNetworkCacheMetaData* other) {
 	self->operator=(*other);
 }
 
-void QNetworkCacheMetaData_Swap(QNetworkCacheMetaData* self, QNetworkCacheMetaData* other) {
+void QNetworkCacheMetaData_swap(QNetworkCacheMetaData* self, QNetworkCacheMetaData* other) {
 	self->swap(*other);
 }
 
-bool QNetworkCacheMetaData_OperatorEqual(const QNetworkCacheMetaData* self, QNetworkCacheMetaData* other) {
+bool QNetworkCacheMetaData_operatorEqual(const QNetworkCacheMetaData* self, QNetworkCacheMetaData* other) {
 	return (*self == *other);
 }
 
-bool QNetworkCacheMetaData_OperatorNotEqual(const QNetworkCacheMetaData* self, QNetworkCacheMetaData* other) {
+bool QNetworkCacheMetaData_operatorNotEqual(const QNetworkCacheMetaData* self, QNetworkCacheMetaData* other) {
 	return (*self != *other);
 }
 
-bool QNetworkCacheMetaData_IsValid(const QNetworkCacheMetaData* self) {
+bool QNetworkCacheMetaData_isValid(const QNetworkCacheMetaData* self) {
 	return self->isValid();
 }
 
-QUrl* QNetworkCacheMetaData_Url(const QNetworkCacheMetaData* self) {
+QUrl* QNetworkCacheMetaData_url(const QNetworkCacheMetaData* self) {
 	return new QUrl(self->url());
 }
 
-void QNetworkCacheMetaData_SetUrl(QNetworkCacheMetaData* self, QUrl* url) {
+void QNetworkCacheMetaData_setUrl(QNetworkCacheMetaData* self, QUrl* url) {
 	self->setUrl(*url);
 }
 
-struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  QNetworkCacheMetaData_RawHeaders(const QNetworkCacheMetaData* self) {
+struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  QNetworkCacheMetaData_rawHeaders(const QNetworkCacheMetaData* self) {
 	QNetworkCacheMetaData::RawHeaderList _ret = self->rawHeaders();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ * _arr = static_cast<struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ *>(malloc(sizeof(struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ ) * _ret.length()));
@@ -93,7 +93,7 @@ struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct 
 	return _out;
 }
 
-void QNetworkCacheMetaData_SetRawHeaders(QNetworkCacheMetaData* self, struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  headers) {
+void QNetworkCacheMetaData_setRawHeaders(QNetworkCacheMetaData* self, struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  headers) {
 	QNetworkCacheMetaData::RawHeaderList headers_QList;
 	headers_QList.reserve(headers.len);
 	struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ * headers_arr = static_cast<struct miqt_map /* tuple of struct miqt_string and struct miqt_string */ *>(headers.data);
@@ -110,31 +110,31 @@ void QNetworkCacheMetaData_SetRawHeaders(QNetworkCacheMetaData* self, struct miq
 	self->setRawHeaders(headers_QList);
 }
 
-QDateTime* QNetworkCacheMetaData_LastModified(const QNetworkCacheMetaData* self) {
+QDateTime* QNetworkCacheMetaData_lastModified(const QNetworkCacheMetaData* self) {
 	return new QDateTime(self->lastModified());
 }
 
-void QNetworkCacheMetaData_SetLastModified(QNetworkCacheMetaData* self, QDateTime* dateTime) {
+void QNetworkCacheMetaData_setLastModified(QNetworkCacheMetaData* self, QDateTime* dateTime) {
 	self->setLastModified(*dateTime);
 }
 
-QDateTime* QNetworkCacheMetaData_ExpirationDate(const QNetworkCacheMetaData* self) {
+QDateTime* QNetworkCacheMetaData_expirationDate(const QNetworkCacheMetaData* self) {
 	return new QDateTime(self->expirationDate());
 }
 
-void QNetworkCacheMetaData_SetExpirationDate(QNetworkCacheMetaData* self, QDateTime* dateTime) {
+void QNetworkCacheMetaData_setExpirationDate(QNetworkCacheMetaData* self, QDateTime* dateTime) {
 	self->setExpirationDate(*dateTime);
 }
 
-bool QNetworkCacheMetaData_SaveToDisk(const QNetworkCacheMetaData* self) {
+bool QNetworkCacheMetaData_saveToDisk(const QNetworkCacheMetaData* self) {
 	return self->saveToDisk();
 }
 
-void QNetworkCacheMetaData_SetSaveToDisk(QNetworkCacheMetaData* self, bool allow) {
+void QNetworkCacheMetaData_setSaveToDisk(QNetworkCacheMetaData* self, bool allow) {
 	self->setSaveToDisk(allow);
 }
 
-struct miqt_map /* of int to QVariant* */  QNetworkCacheMetaData_Attributes(const QNetworkCacheMetaData* self) {
+struct miqt_map /* of int to QVariant* */  QNetworkCacheMetaData_attributes(const QNetworkCacheMetaData* self) {
 	QNetworkCacheMetaData::AttributesMap _ret = self->attributes();
 	// Convert QMap<> from C++ memory to manually-managed C memory
 	int* _karr = static_cast<int*>(malloc(sizeof(int) * _ret.size()));
@@ -153,7 +153,7 @@ struct miqt_map /* of int to QVariant* */  QNetworkCacheMetaData_Attributes(cons
 	return _out;
 }
 
-void QNetworkCacheMetaData_SetAttributes(QNetworkCacheMetaData* self, struct miqt_map /* of int to QVariant* */  attributes) {
+void QNetworkCacheMetaData_setAttributes(QNetworkCacheMetaData* self, struct miqt_map /* of int to QVariant* */  attributes) {
 	QNetworkCacheMetaData::AttributesMap attributes_QMap;
 	attributes_QMap.reserve(attributes.len);
 	int* attributes_karr = static_cast<int*>(attributes.keys);
@@ -164,7 +164,7 @@ void QNetworkCacheMetaData_SetAttributes(QNetworkCacheMetaData* self, struct miq
 	self->setAttributes(attributes_QMap);
 }
 
-void QNetworkCacheMetaData_Delete(QNetworkCacheMetaData* self) {
+void QNetworkCacheMetaData_delete(QNetworkCacheMetaData* self) {
 	delete self;
 }
 
@@ -172,15 +172,15 @@ void QAbstractNetworkCache_virtbase(QAbstractNetworkCache* src, QObject** outptr
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QAbstractNetworkCache_MetaObject(const QAbstractNetworkCache* self) {
+QMetaObject* QAbstractNetworkCache_metaObject(const QAbstractNetworkCache* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QAbstractNetworkCache_Metacast(QAbstractNetworkCache* self, const char* param1) {
+void* QAbstractNetworkCache_metacast(QAbstractNetworkCache* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QAbstractNetworkCache_Tr(const char* s) {
+struct miqt_string QAbstractNetworkCache_tr(const char* s) {
 	QString _ret = QAbstractNetworkCache::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -191,40 +191,40 @@ struct miqt_string QAbstractNetworkCache_Tr(const char* s) {
 	return _ms;
 }
 
-QNetworkCacheMetaData* QAbstractNetworkCache_MetaData(QAbstractNetworkCache* self, QUrl* url) {
+QNetworkCacheMetaData* QAbstractNetworkCache_metaData(QAbstractNetworkCache* self, QUrl* url) {
 	return new QNetworkCacheMetaData(self->metaData(*url));
 }
 
-void QAbstractNetworkCache_UpdateMetaData(QAbstractNetworkCache* self, QNetworkCacheMetaData* metaData) {
+void QAbstractNetworkCache_updateMetaData(QAbstractNetworkCache* self, QNetworkCacheMetaData* metaData) {
 	self->updateMetaData(*metaData);
 }
 
-QIODevice* QAbstractNetworkCache_Data(QAbstractNetworkCache* self, QUrl* url) {
+QIODevice* QAbstractNetworkCache_data(QAbstractNetworkCache* self, QUrl* url) {
 	return self->data(*url);
 }
 
-bool QAbstractNetworkCache_Remove(QAbstractNetworkCache* self, QUrl* url) {
+bool QAbstractNetworkCache_remove(QAbstractNetworkCache* self, QUrl* url) {
 	return self->remove(*url);
 }
 
-long long QAbstractNetworkCache_CacheSize(const QAbstractNetworkCache* self) {
+long long QAbstractNetworkCache_cacheSize(const QAbstractNetworkCache* self) {
 	qint64 _ret = self->cacheSize();
 	return static_cast<long long>(_ret);
 }
 
-QIODevice* QAbstractNetworkCache_Prepare(QAbstractNetworkCache* self, QNetworkCacheMetaData* metaData) {
+QIODevice* QAbstractNetworkCache_prepare(QAbstractNetworkCache* self, QNetworkCacheMetaData* metaData) {
 	return self->prepare(*metaData);
 }
 
-void QAbstractNetworkCache_Insert(QAbstractNetworkCache* self, QIODevice* device) {
+void QAbstractNetworkCache_insert(QAbstractNetworkCache* self, QIODevice* device) {
 	self->insert(device);
 }
 
-void QAbstractNetworkCache_Clear(QAbstractNetworkCache* self) {
+void QAbstractNetworkCache_clear(QAbstractNetworkCache* self) {
 	self->clear();
 }
 
-struct miqt_string QAbstractNetworkCache_Tr2(const char* s, const char* c) {
+struct miqt_string QAbstractNetworkCache_tr2(const char* s, const char* c) {
 	QString _ret = QAbstractNetworkCache::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -235,7 +235,7 @@ struct miqt_string QAbstractNetworkCache_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QAbstractNetworkCache_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QAbstractNetworkCache_tr3(const char* s, const char* c, int n) {
 	QString _ret = QAbstractNetworkCache::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -246,7 +246,7 @@ struct miqt_string QAbstractNetworkCache_Tr3(const char* s, const char* c, int n
 	return _ms;
 }
 
-void QAbstractNetworkCache_Delete(QAbstractNetworkCache* self) {
+void QAbstractNetworkCache_delete(QAbstractNetworkCache* self) {
 	delete self;
 }
 

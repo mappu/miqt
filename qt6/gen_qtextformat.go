@@ -306,23 +306,23 @@ func NewQTextLength3(param1 *QTextLength) *QTextLength {
 }
 
 func (this *QTextLength) Type() QTextLength__Type {
-	return (QTextLength__Type)(C.QTextLength_Type(this.h))
+	return (QTextLength__Type)(C.QTextLength_type(this.h))
 }
 
 func (this *QTextLength) Value(maximumLength float64) float64 {
-	return (float64)(C.QTextLength_Value(this.h, (C.double)(maximumLength)))
+	return (float64)(C.QTextLength_value(this.h, (C.double)(maximumLength)))
 }
 
 func (this *QTextLength) RawValue() float64 {
-	return (float64)(C.QTextLength_RawValue(this.h))
+	return (float64)(C.QTextLength_rawValue(this.h))
 }
 
 func (this *QTextLength) OperatorEqual(other *QTextLength) bool {
-	return (bool)(C.QTextLength_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QTextLength_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QTextLength) OperatorNotEqual(other *QTextLength) bool {
-	return (bool)(C.QTextLength_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QTextLength_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QTextLength) ToQVariant() *QVariant {
@@ -333,7 +333,7 @@ func (this *QTextLength) ToQVariant() *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QTextLength) Delete() {
-	C.QTextLength_Delete(this.h)
+	C.QTextLength_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -396,100 +396,100 @@ func NewQTextFormat3(rhs *QTextFormat) *QTextFormat {
 }
 
 func (this *QTextFormat) OperatorAssign(rhs *QTextFormat) {
-	C.QTextFormat_OperatorAssign(this.h, rhs.cPointer())
+	C.QTextFormat_operatorAssign(this.h, rhs.cPointer())
 }
 
 func (this *QTextFormat) Swap(other *QTextFormat) {
-	C.QTextFormat_Swap(this.h, other.cPointer())
+	C.QTextFormat_swap(this.h, other.cPointer())
 }
 
 func (this *QTextFormat) Merge(other *QTextFormat) {
-	C.QTextFormat_Merge(this.h, other.cPointer())
+	C.QTextFormat_merge(this.h, other.cPointer())
 }
 
 func (this *QTextFormat) IsValid() bool {
-	return (bool)(C.QTextFormat_IsValid(this.h))
+	return (bool)(C.QTextFormat_isValid(this.h))
 }
 
 func (this *QTextFormat) IsEmpty() bool {
-	return (bool)(C.QTextFormat_IsEmpty(this.h))
+	return (bool)(C.QTextFormat_isEmpty(this.h))
 }
 
 func (this *QTextFormat) Type() int {
-	return (int)(C.QTextFormat_Type(this.h))
+	return (int)(C.QTextFormat_type(this.h))
 }
 
 func (this *QTextFormat) ObjectIndex() int {
-	return (int)(C.QTextFormat_ObjectIndex(this.h))
+	return (int)(C.QTextFormat_objectIndex(this.h))
 }
 
 func (this *QTextFormat) SetObjectIndex(object int) {
-	C.QTextFormat_SetObjectIndex(this.h, (C.int)(object))
+	C.QTextFormat_setObjectIndex(this.h, (C.int)(object))
 }
 
 func (this *QTextFormat) Property(propertyId int) *QVariant {
-	_goptr := newQVariant(C.QTextFormat_Property(this.h, (C.int)(propertyId)))
+	_goptr := newQVariant(C.QTextFormat_property(this.h, (C.int)(propertyId)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) SetProperty(propertyId int, value *QVariant) {
-	C.QTextFormat_SetProperty(this.h, (C.int)(propertyId), value.cPointer())
+	C.QTextFormat_setProperty(this.h, (C.int)(propertyId), value.cPointer())
 }
 
 func (this *QTextFormat) ClearProperty(propertyId int) {
-	C.QTextFormat_ClearProperty(this.h, (C.int)(propertyId))
+	C.QTextFormat_clearProperty(this.h, (C.int)(propertyId))
 }
 
 func (this *QTextFormat) HasProperty(propertyId int) bool {
-	return (bool)(C.QTextFormat_HasProperty(this.h, (C.int)(propertyId)))
+	return (bool)(C.QTextFormat_hasProperty(this.h, (C.int)(propertyId)))
 }
 
 func (this *QTextFormat) BoolProperty(propertyId int) bool {
-	return (bool)(C.QTextFormat_BoolProperty(this.h, (C.int)(propertyId)))
+	return (bool)(C.QTextFormat_boolProperty(this.h, (C.int)(propertyId)))
 }
 
 func (this *QTextFormat) IntProperty(propertyId int) int {
-	return (int)(C.QTextFormat_IntProperty(this.h, (C.int)(propertyId)))
+	return (int)(C.QTextFormat_intProperty(this.h, (C.int)(propertyId)))
 }
 
 func (this *QTextFormat) DoubleProperty(propertyId int) float64 {
-	return (float64)(C.QTextFormat_DoubleProperty(this.h, (C.int)(propertyId)))
+	return (float64)(C.QTextFormat_doubleProperty(this.h, (C.int)(propertyId)))
 }
 
 func (this *QTextFormat) StringProperty(propertyId int) string {
-	var _ms C.struct_miqt_string = C.QTextFormat_StringProperty(this.h, (C.int)(propertyId))
+	var _ms C.struct_miqt_string = C.QTextFormat_stringProperty(this.h, (C.int)(propertyId))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextFormat) ColorProperty(propertyId int) *QColor {
-	_goptr := newQColor(C.QTextFormat_ColorProperty(this.h, (C.int)(propertyId)))
+	_goptr := newQColor(C.QTextFormat_colorProperty(this.h, (C.int)(propertyId)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) PenProperty(propertyId int) *QPen {
-	_goptr := newQPen(C.QTextFormat_PenProperty(this.h, (C.int)(propertyId)))
+	_goptr := newQPen(C.QTextFormat_penProperty(this.h, (C.int)(propertyId)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) BrushProperty(propertyId int) *QBrush {
-	_goptr := newQBrush(C.QTextFormat_BrushProperty(this.h, (C.int)(propertyId)))
+	_goptr := newQBrush(C.QTextFormat_brushProperty(this.h, (C.int)(propertyId)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) LengthProperty(propertyId int) *QTextLength {
-	_goptr := newQTextLength(C.QTextFormat_LengthProperty(this.h, (C.int)(propertyId)))
+	_goptr := newQTextLength(C.QTextFormat_lengthProperty(this.h, (C.int)(propertyId)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) LengthVectorProperty(propertyId int) []QTextLength {
-	var _ma C.struct_miqt_array = C.QTextFormat_LengthVectorProperty(this.h, (C.int)(propertyId))
+	var _ma C.struct_miqt_array = C.QTextFormat_lengthVectorProperty(this.h, (C.int)(propertyId))
 	_ret := make([]QTextLength, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextLength)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -507,11 +507,11 @@ func (this *QTextFormat) SetProperty2(propertyId int, lengths []QTextLength) {
 		lengths_CArray[i] = lengths[i].cPointer()
 	}
 	lengths_ma := C.struct_miqt_array{len: C.size_t(len(lengths)), data: unsafe.Pointer(lengths_CArray)}
-	C.QTextFormat_SetProperty2(this.h, (C.int)(propertyId), lengths_ma)
+	C.QTextFormat_setProperty2(this.h, (C.int)(propertyId), lengths_ma)
 }
 
 func (this *QTextFormat) Properties() map[int]QVariant {
-	var _mm C.struct_miqt_map = C.QTextFormat_Properties(this.h)
+	var _mm C.struct_miqt_map = C.QTextFormat_properties(this.h)
 	_ret := make(map[int]QVariant, int(_mm.len))
 	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
@@ -528,93 +528,93 @@ func (this *QTextFormat) Properties() map[int]QVariant {
 }
 
 func (this *QTextFormat) PropertyCount() int {
-	return (int)(C.QTextFormat_PropertyCount(this.h))
+	return (int)(C.QTextFormat_propertyCount(this.h))
 }
 
 func (this *QTextFormat) SetObjectType(typeVal int) {
-	C.QTextFormat_SetObjectType(this.h, (C.int)(typeVal))
+	C.QTextFormat_setObjectType(this.h, (C.int)(typeVal))
 }
 
 func (this *QTextFormat) ObjectType() int {
-	return (int)(C.QTextFormat_ObjectType(this.h))
+	return (int)(C.QTextFormat_objectType(this.h))
 }
 
 func (this *QTextFormat) IsCharFormat() bool {
-	return (bool)(C.QTextFormat_IsCharFormat(this.h))
+	return (bool)(C.QTextFormat_isCharFormat(this.h))
 }
 
 func (this *QTextFormat) IsBlockFormat() bool {
-	return (bool)(C.QTextFormat_IsBlockFormat(this.h))
+	return (bool)(C.QTextFormat_isBlockFormat(this.h))
 }
 
 func (this *QTextFormat) IsListFormat() bool {
-	return (bool)(C.QTextFormat_IsListFormat(this.h))
+	return (bool)(C.QTextFormat_isListFormat(this.h))
 }
 
 func (this *QTextFormat) IsFrameFormat() bool {
-	return (bool)(C.QTextFormat_IsFrameFormat(this.h))
+	return (bool)(C.QTextFormat_isFrameFormat(this.h))
 }
 
 func (this *QTextFormat) IsImageFormat() bool {
-	return (bool)(C.QTextFormat_IsImageFormat(this.h))
+	return (bool)(C.QTextFormat_isImageFormat(this.h))
 }
 
 func (this *QTextFormat) IsTableFormat() bool {
-	return (bool)(C.QTextFormat_IsTableFormat(this.h))
+	return (bool)(C.QTextFormat_isTableFormat(this.h))
 }
 
 func (this *QTextFormat) IsTableCellFormat() bool {
-	return (bool)(C.QTextFormat_IsTableCellFormat(this.h))
+	return (bool)(C.QTextFormat_isTableCellFormat(this.h))
 }
 
 func (this *QTextFormat) ToBlockFormat() *QTextBlockFormat {
-	_goptr := newQTextBlockFormat(C.QTextFormat_ToBlockFormat(this.h))
+	_goptr := newQTextBlockFormat(C.QTextFormat_toBlockFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToCharFormat() *QTextCharFormat {
-	_goptr := newQTextCharFormat(C.QTextFormat_ToCharFormat(this.h))
+	_goptr := newQTextCharFormat(C.QTextFormat_toCharFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToListFormat() *QTextListFormat {
-	_goptr := newQTextListFormat(C.QTextFormat_ToListFormat(this.h))
+	_goptr := newQTextListFormat(C.QTextFormat_toListFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToTableFormat() *QTextTableFormat {
-	_goptr := newQTextTableFormat(C.QTextFormat_ToTableFormat(this.h))
+	_goptr := newQTextTableFormat(C.QTextFormat_toTableFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToFrameFormat() *QTextFrameFormat {
-	_goptr := newQTextFrameFormat(C.QTextFormat_ToFrameFormat(this.h))
+	_goptr := newQTextFrameFormat(C.QTextFormat_toFrameFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToImageFormat() *QTextImageFormat {
-	_goptr := newQTextImageFormat(C.QTextFormat_ToImageFormat(this.h))
+	_goptr := newQTextImageFormat(C.QTextFormat_toImageFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ToTableCellFormat() *QTextTableCellFormat {
-	_goptr := newQTextTableCellFormat(C.QTextFormat_ToTableCellFormat(this.h))
+	_goptr := newQTextTableCellFormat(C.QTextFormat_toTableCellFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) OperatorEqual(rhs *QTextFormat) bool {
-	return (bool)(C.QTextFormat_OperatorEqual(this.h, rhs.cPointer()))
+	return (bool)(C.QTextFormat_operatorEqual(this.h, rhs.cPointer()))
 }
 
 func (this *QTextFormat) OperatorNotEqual(rhs *QTextFormat) bool {
-	return (bool)(C.QTextFormat_OperatorNotEqual(this.h, rhs.cPointer()))
+	return (bool)(C.QTextFormat_operatorNotEqual(this.h, rhs.cPointer()))
 }
 
 func (this *QTextFormat) ToQVariant() *QVariant {
@@ -624,44 +624,44 @@ func (this *QTextFormat) ToQVariant() *QVariant {
 }
 
 func (this *QTextFormat) SetLayoutDirection(direction LayoutDirection) {
-	C.QTextFormat_SetLayoutDirection(this.h, (C.int)(direction))
+	C.QTextFormat_setLayoutDirection(this.h, (C.int)(direction))
 }
 
 func (this *QTextFormat) LayoutDirection() LayoutDirection {
-	return (LayoutDirection)(C.QTextFormat_LayoutDirection(this.h))
+	return (LayoutDirection)(C.QTextFormat_layoutDirection(this.h))
 }
 
 func (this *QTextFormat) SetBackground(brush *QBrush) {
-	C.QTextFormat_SetBackground(this.h, brush.cPointer())
+	C.QTextFormat_setBackground(this.h, brush.cPointer())
 }
 
 func (this *QTextFormat) Background() *QBrush {
-	_goptr := newQBrush(C.QTextFormat_Background(this.h))
+	_goptr := newQBrush(C.QTextFormat_background(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ClearBackground() {
-	C.QTextFormat_ClearBackground(this.h)
+	C.QTextFormat_clearBackground(this.h)
 }
 
 func (this *QTextFormat) SetForeground(brush *QBrush) {
-	C.QTextFormat_SetForeground(this.h, brush.cPointer())
+	C.QTextFormat_setForeground(this.h, brush.cPointer())
 }
 
 func (this *QTextFormat) Foreground() *QBrush {
-	_goptr := newQBrush(C.QTextFormat_Foreground(this.h))
+	_goptr := newQBrush(C.QTextFormat_foreground(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFormat) ClearForeground() {
-	C.QTextFormat_ClearForeground(this.h)
+	C.QTextFormat_clearForeground(this.h)
 }
 
 // Delete this object from C++ memory.
 func (this *QTextFormat) Delete() {
-	C.QTextFormat_Delete(this.h)
+	C.QTextFormat_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -722,15 +722,15 @@ func NewQTextCharFormat2(param1 *QTextCharFormat) *QTextCharFormat {
 }
 
 func (this *QTextCharFormat) IsValid() bool {
-	return (bool)(C.QTextCharFormat_IsValid(this.h))
+	return (bool)(C.QTextCharFormat_isValid(this.h))
 }
 
 func (this *QTextCharFormat) SetFont(font *QFont) {
-	C.QTextCharFormat_SetFont(this.h, font.cPointer())
+	C.QTextCharFormat_setFont(this.h, font.cPointer())
 }
 
 func (this *QTextCharFormat) Font() *QFont {
-	_goptr := newQFont(C.QTextCharFormat_Font(this.h))
+	_goptr := newQFont(C.QTextCharFormat_font(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -740,11 +740,11 @@ func (this *QTextCharFormat) SetFontFamily(family string) {
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	C.QTextCharFormat_SetFontFamily(this.h, family_ms)
+	C.QTextCharFormat_setFontFamily(this.h, family_ms)
 }
 
 func (this *QTextCharFormat) FontFamily() string {
-	var _ms C.struct_miqt_string = C.QTextCharFormat_FontFamily(this.h)
+	var _ms C.struct_miqt_string = C.QTextCharFormat_fontFamily(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -761,11 +761,11 @@ func (this *QTextCharFormat) SetFontFamilies(families []string) {
 		families_CArray[i] = families_i_ms
 	}
 	families_ma := C.struct_miqt_array{len: C.size_t(len(families)), data: unsafe.Pointer(families_CArray)}
-	C.QTextCharFormat_SetFontFamilies(this.h, families_ma)
+	C.QTextCharFormat_setFontFamilies(this.h, families_ma)
 }
 
 func (this *QTextCharFormat) FontFamilies() *QVariant {
-	_goptr := newQVariant(C.QTextCharFormat_FontFamilies(this.h))
+	_goptr := newQVariant(C.QTextCharFormat_fontFamilies(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -775,175 +775,175 @@ func (this *QTextCharFormat) SetFontStyleName(styleName string) {
 	styleName_ms.data = C.CString(styleName)
 	styleName_ms.len = C.size_t(len(styleName))
 	defer C.free(unsafe.Pointer(styleName_ms.data))
-	C.QTextCharFormat_SetFontStyleName(this.h, styleName_ms)
+	C.QTextCharFormat_setFontStyleName(this.h, styleName_ms)
 }
 
 func (this *QTextCharFormat) FontStyleName() *QVariant {
-	_goptr := newQVariant(C.QTextCharFormat_FontStyleName(this.h))
+	_goptr := newQVariant(C.QTextCharFormat_fontStyleName(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextCharFormat) SetFontPointSize(size float64) {
-	C.QTextCharFormat_SetFontPointSize(this.h, (C.double)(size))
+	C.QTextCharFormat_setFontPointSize(this.h, (C.double)(size))
 }
 
 func (this *QTextCharFormat) FontPointSize() float64 {
-	return (float64)(C.QTextCharFormat_FontPointSize(this.h))
+	return (float64)(C.QTextCharFormat_fontPointSize(this.h))
 }
 
 func (this *QTextCharFormat) SetFontWeight(weight int) {
-	C.QTextCharFormat_SetFontWeight(this.h, (C.int)(weight))
+	C.QTextCharFormat_setFontWeight(this.h, (C.int)(weight))
 }
 
 func (this *QTextCharFormat) FontWeight() int {
-	return (int)(C.QTextCharFormat_FontWeight(this.h))
+	return (int)(C.QTextCharFormat_fontWeight(this.h))
 }
 
 func (this *QTextCharFormat) SetFontItalic(italic bool) {
-	C.QTextCharFormat_SetFontItalic(this.h, (C.bool)(italic))
+	C.QTextCharFormat_setFontItalic(this.h, (C.bool)(italic))
 }
 
 func (this *QTextCharFormat) FontItalic() bool {
-	return (bool)(C.QTextCharFormat_FontItalic(this.h))
+	return (bool)(C.QTextCharFormat_fontItalic(this.h))
 }
 
 func (this *QTextCharFormat) SetFontCapitalization(capitalization QFont__Capitalization) {
-	C.QTextCharFormat_SetFontCapitalization(this.h, (C.int)(capitalization))
+	C.QTextCharFormat_setFontCapitalization(this.h, (C.int)(capitalization))
 }
 
 func (this *QTextCharFormat) FontCapitalization() QFont__Capitalization {
-	return (QFont__Capitalization)(C.QTextCharFormat_FontCapitalization(this.h))
+	return (QFont__Capitalization)(C.QTextCharFormat_fontCapitalization(this.h))
 }
 
 func (this *QTextCharFormat) SetFontLetterSpacingType(letterSpacingType QFont__SpacingType) {
-	C.QTextCharFormat_SetFontLetterSpacingType(this.h, (C.int)(letterSpacingType))
+	C.QTextCharFormat_setFontLetterSpacingType(this.h, (C.int)(letterSpacingType))
 }
 
 func (this *QTextCharFormat) FontLetterSpacingType() QFont__SpacingType {
-	return (QFont__SpacingType)(C.QTextCharFormat_FontLetterSpacingType(this.h))
+	return (QFont__SpacingType)(C.QTextCharFormat_fontLetterSpacingType(this.h))
 }
 
 func (this *QTextCharFormat) SetFontLetterSpacing(spacing float64) {
-	C.QTextCharFormat_SetFontLetterSpacing(this.h, (C.double)(spacing))
+	C.QTextCharFormat_setFontLetterSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QTextCharFormat) FontLetterSpacing() float64 {
-	return (float64)(C.QTextCharFormat_FontLetterSpacing(this.h))
+	return (float64)(C.QTextCharFormat_fontLetterSpacing(this.h))
 }
 
 func (this *QTextCharFormat) SetFontWordSpacing(spacing float64) {
-	C.QTextCharFormat_SetFontWordSpacing(this.h, (C.double)(spacing))
+	C.QTextCharFormat_setFontWordSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QTextCharFormat) FontWordSpacing() float64 {
-	return (float64)(C.QTextCharFormat_FontWordSpacing(this.h))
+	return (float64)(C.QTextCharFormat_fontWordSpacing(this.h))
 }
 
 func (this *QTextCharFormat) SetFontUnderline(underline bool) {
-	C.QTextCharFormat_SetFontUnderline(this.h, (C.bool)(underline))
+	C.QTextCharFormat_setFontUnderline(this.h, (C.bool)(underline))
 }
 
 func (this *QTextCharFormat) FontUnderline() bool {
-	return (bool)(C.QTextCharFormat_FontUnderline(this.h))
+	return (bool)(C.QTextCharFormat_fontUnderline(this.h))
 }
 
 func (this *QTextCharFormat) SetFontOverline(overline bool) {
-	C.QTextCharFormat_SetFontOverline(this.h, (C.bool)(overline))
+	C.QTextCharFormat_setFontOverline(this.h, (C.bool)(overline))
 }
 
 func (this *QTextCharFormat) FontOverline() bool {
-	return (bool)(C.QTextCharFormat_FontOverline(this.h))
+	return (bool)(C.QTextCharFormat_fontOverline(this.h))
 }
 
 func (this *QTextCharFormat) SetFontStrikeOut(strikeOut bool) {
-	C.QTextCharFormat_SetFontStrikeOut(this.h, (C.bool)(strikeOut))
+	C.QTextCharFormat_setFontStrikeOut(this.h, (C.bool)(strikeOut))
 }
 
 func (this *QTextCharFormat) FontStrikeOut() bool {
-	return (bool)(C.QTextCharFormat_FontStrikeOut(this.h))
+	return (bool)(C.QTextCharFormat_fontStrikeOut(this.h))
 }
 
 func (this *QTextCharFormat) SetUnderlineColor(color *QColor) {
-	C.QTextCharFormat_SetUnderlineColor(this.h, color.cPointer())
+	C.QTextCharFormat_setUnderlineColor(this.h, color.cPointer())
 }
 
 func (this *QTextCharFormat) UnderlineColor() *QColor {
-	_goptr := newQColor(C.QTextCharFormat_UnderlineColor(this.h))
+	_goptr := newQColor(C.QTextCharFormat_underlineColor(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextCharFormat) SetFontFixedPitch(fixedPitch bool) {
-	C.QTextCharFormat_SetFontFixedPitch(this.h, (C.bool)(fixedPitch))
+	C.QTextCharFormat_setFontFixedPitch(this.h, (C.bool)(fixedPitch))
 }
 
 func (this *QTextCharFormat) FontFixedPitch() bool {
-	return (bool)(C.QTextCharFormat_FontFixedPitch(this.h))
+	return (bool)(C.QTextCharFormat_fontFixedPitch(this.h))
 }
 
 func (this *QTextCharFormat) SetFontStretch(factor int) {
-	C.QTextCharFormat_SetFontStretch(this.h, (C.int)(factor))
+	C.QTextCharFormat_setFontStretch(this.h, (C.int)(factor))
 }
 
 func (this *QTextCharFormat) FontStretch() int {
-	return (int)(C.QTextCharFormat_FontStretch(this.h))
+	return (int)(C.QTextCharFormat_fontStretch(this.h))
 }
 
 func (this *QTextCharFormat) SetFontStyleHint(hint QFont__StyleHint) {
-	C.QTextCharFormat_SetFontStyleHint(this.h, (C.int)(hint))
+	C.QTextCharFormat_setFontStyleHint(this.h, (C.int)(hint))
 }
 
 func (this *QTextCharFormat) SetFontStyleStrategy(strategy QFont__StyleStrategy) {
-	C.QTextCharFormat_SetFontStyleStrategy(this.h, (C.int)(strategy))
+	C.QTextCharFormat_setFontStyleStrategy(this.h, (C.int)(strategy))
 }
 
 func (this *QTextCharFormat) FontStyleHint() QFont__StyleHint {
-	return (QFont__StyleHint)(C.QTextCharFormat_FontStyleHint(this.h))
+	return (QFont__StyleHint)(C.QTextCharFormat_fontStyleHint(this.h))
 }
 
 func (this *QTextCharFormat) FontStyleStrategy() QFont__StyleStrategy {
-	return (QFont__StyleStrategy)(C.QTextCharFormat_FontStyleStrategy(this.h))
+	return (QFont__StyleStrategy)(C.QTextCharFormat_fontStyleStrategy(this.h))
 }
 
 func (this *QTextCharFormat) SetFontHintingPreference(hintingPreference QFont__HintingPreference) {
-	C.QTextCharFormat_SetFontHintingPreference(this.h, (C.int)(hintingPreference))
+	C.QTextCharFormat_setFontHintingPreference(this.h, (C.int)(hintingPreference))
 }
 
 func (this *QTextCharFormat) FontHintingPreference() QFont__HintingPreference {
-	return (QFont__HintingPreference)(C.QTextCharFormat_FontHintingPreference(this.h))
+	return (QFont__HintingPreference)(C.QTextCharFormat_fontHintingPreference(this.h))
 }
 
 func (this *QTextCharFormat) SetFontKerning(enable bool) {
-	C.QTextCharFormat_SetFontKerning(this.h, (C.bool)(enable))
+	C.QTextCharFormat_setFontKerning(this.h, (C.bool)(enable))
 }
 
 func (this *QTextCharFormat) FontKerning() bool {
-	return (bool)(C.QTextCharFormat_FontKerning(this.h))
+	return (bool)(C.QTextCharFormat_fontKerning(this.h))
 }
 
 func (this *QTextCharFormat) SetUnderlineStyle(style QTextCharFormat__UnderlineStyle) {
-	C.QTextCharFormat_SetUnderlineStyle(this.h, (C.int)(style))
+	C.QTextCharFormat_setUnderlineStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextCharFormat) UnderlineStyle() QTextCharFormat__UnderlineStyle {
-	return (QTextCharFormat__UnderlineStyle)(C.QTextCharFormat_UnderlineStyle(this.h))
+	return (QTextCharFormat__UnderlineStyle)(C.QTextCharFormat_underlineStyle(this.h))
 }
 
 func (this *QTextCharFormat) SetVerticalAlignment(alignment QTextCharFormat__VerticalAlignment) {
-	C.QTextCharFormat_SetVerticalAlignment(this.h, (C.int)(alignment))
+	C.QTextCharFormat_setVerticalAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QTextCharFormat) VerticalAlignment() QTextCharFormat__VerticalAlignment {
-	return (QTextCharFormat__VerticalAlignment)(C.QTextCharFormat_VerticalAlignment(this.h))
+	return (QTextCharFormat__VerticalAlignment)(C.QTextCharFormat_verticalAlignment(this.h))
 }
 
 func (this *QTextCharFormat) SetTextOutline(pen *QPen) {
-	C.QTextCharFormat_SetTextOutline(this.h, pen.cPointer())
+	C.QTextCharFormat_setTextOutline(this.h, pen.cPointer())
 }
 
 func (this *QTextCharFormat) TextOutline() *QPen {
-	_goptr := newQPen(C.QTextCharFormat_TextOutline(this.h))
+	_goptr := newQPen(C.QTextCharFormat_textOutline(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -953,46 +953,46 @@ func (this *QTextCharFormat) SetToolTip(tip string) {
 	tip_ms.data = C.CString(tip)
 	tip_ms.len = C.size_t(len(tip))
 	defer C.free(unsafe.Pointer(tip_ms.data))
-	C.QTextCharFormat_SetToolTip(this.h, tip_ms)
+	C.QTextCharFormat_setToolTip(this.h, tip_ms)
 }
 
 func (this *QTextCharFormat) ToolTip() string {
-	var _ms C.struct_miqt_string = C.QTextCharFormat_ToolTip(this.h)
+	var _ms C.struct_miqt_string = C.QTextCharFormat_toolTip(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextCharFormat) SetSuperScriptBaseline(baseline float64) {
-	C.QTextCharFormat_SetSuperScriptBaseline(this.h, (C.double)(baseline))
+	C.QTextCharFormat_setSuperScriptBaseline(this.h, (C.double)(baseline))
 }
 
 func (this *QTextCharFormat) SuperScriptBaseline() float64 {
-	return (float64)(C.QTextCharFormat_SuperScriptBaseline(this.h))
+	return (float64)(C.QTextCharFormat_superScriptBaseline(this.h))
 }
 
 func (this *QTextCharFormat) SetSubScriptBaseline(baseline float64) {
-	C.QTextCharFormat_SetSubScriptBaseline(this.h, (C.double)(baseline))
+	C.QTextCharFormat_setSubScriptBaseline(this.h, (C.double)(baseline))
 }
 
 func (this *QTextCharFormat) SubScriptBaseline() float64 {
-	return (float64)(C.QTextCharFormat_SubScriptBaseline(this.h))
+	return (float64)(C.QTextCharFormat_subScriptBaseline(this.h))
 }
 
 func (this *QTextCharFormat) SetBaselineOffset(baseline float64) {
-	C.QTextCharFormat_SetBaselineOffset(this.h, (C.double)(baseline))
+	C.QTextCharFormat_setBaselineOffset(this.h, (C.double)(baseline))
 }
 
 func (this *QTextCharFormat) BaselineOffset() float64 {
-	return (float64)(C.QTextCharFormat_BaselineOffset(this.h))
+	return (float64)(C.QTextCharFormat_baselineOffset(this.h))
 }
 
 func (this *QTextCharFormat) SetAnchor(anchor bool) {
-	C.QTextCharFormat_SetAnchor(this.h, (C.bool)(anchor))
+	C.QTextCharFormat_setAnchor(this.h, (C.bool)(anchor))
 }
 
 func (this *QTextCharFormat) IsAnchor() bool {
-	return (bool)(C.QTextCharFormat_IsAnchor(this.h))
+	return (bool)(C.QTextCharFormat_isAnchor(this.h))
 }
 
 func (this *QTextCharFormat) SetAnchorHref(value string) {
@@ -1000,11 +1000,11 @@ func (this *QTextCharFormat) SetAnchorHref(value string) {
 	value_ms.data = C.CString(value)
 	value_ms.len = C.size_t(len(value))
 	defer C.free(unsafe.Pointer(value_ms.data))
-	C.QTextCharFormat_SetAnchorHref(this.h, value_ms)
+	C.QTextCharFormat_setAnchorHref(this.h, value_ms)
 }
 
 func (this *QTextCharFormat) AnchorHref() string {
-	var _ms C.struct_miqt_string = C.QTextCharFormat_AnchorHref(this.h)
+	var _ms C.struct_miqt_string = C.QTextCharFormat_anchorHref(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1021,11 +1021,11 @@ func (this *QTextCharFormat) SetAnchorNames(names []string) {
 		names_CArray[i] = names_i_ms
 	}
 	names_ma := C.struct_miqt_array{len: C.size_t(len(names)), data: unsafe.Pointer(names_CArray)}
-	C.QTextCharFormat_SetAnchorNames(this.h, names_ma)
+	C.QTextCharFormat_setAnchorNames(this.h, names_ma)
 }
 
 func (this *QTextCharFormat) AnchorNames() []string {
-	var _ma C.struct_miqt_array = C.QTextCharFormat_AnchorNames(this.h)
+	var _ma C.struct_miqt_array = C.QTextCharFormat_anchorNames(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1038,32 +1038,32 @@ func (this *QTextCharFormat) AnchorNames() []string {
 }
 
 func (this *QTextCharFormat) SetTableCellRowSpan(tableCellRowSpan int) {
-	C.QTextCharFormat_SetTableCellRowSpan(this.h, (C.int)(tableCellRowSpan))
+	C.QTextCharFormat_setTableCellRowSpan(this.h, (C.int)(tableCellRowSpan))
 }
 
 func (this *QTextCharFormat) TableCellRowSpan() int {
-	return (int)(C.QTextCharFormat_TableCellRowSpan(this.h))
+	return (int)(C.QTextCharFormat_tableCellRowSpan(this.h))
 }
 
 func (this *QTextCharFormat) SetTableCellColumnSpan(tableCellColumnSpan int) {
-	C.QTextCharFormat_SetTableCellColumnSpan(this.h, (C.int)(tableCellColumnSpan))
+	C.QTextCharFormat_setTableCellColumnSpan(this.h, (C.int)(tableCellColumnSpan))
 }
 
 func (this *QTextCharFormat) TableCellColumnSpan() int {
-	return (int)(C.QTextCharFormat_TableCellColumnSpan(this.h))
+	return (int)(C.QTextCharFormat_tableCellColumnSpan(this.h))
 }
 
 func (this *QTextCharFormat) SetFont2(font *QFont, behavior QTextCharFormat__FontPropertiesInheritanceBehavior) {
-	C.QTextCharFormat_SetFont2(this.h, font.cPointer(), (C.int)(behavior))
+	C.QTextCharFormat_setFont2(this.h, font.cPointer(), (C.int)(behavior))
 }
 
 func (this *QTextCharFormat) SetFontStyleHint2(hint QFont__StyleHint, strategy QFont__StyleStrategy) {
-	C.QTextCharFormat_SetFontStyleHint2(this.h, (C.int)(hint), (C.int)(strategy))
+	C.QTextCharFormat_setFontStyleHint2(this.h, (C.int)(hint), (C.int)(strategy))
 }
 
 // Delete this object from C++ memory.
 func (this *QTextCharFormat) Delete() {
-	C.QTextCharFormat_Delete(this.h)
+	C.QTextCharFormat_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1124,103 +1124,103 @@ func NewQTextBlockFormat2(param1 *QTextBlockFormat) *QTextBlockFormat {
 }
 
 func (this *QTextBlockFormat) IsValid() bool {
-	return (bool)(C.QTextBlockFormat_IsValid(this.h))
+	return (bool)(C.QTextBlockFormat_isValid(this.h))
 }
 
 func (this *QTextBlockFormat) SetAlignment(alignment AlignmentFlag) {
-	C.QTextBlockFormat_SetAlignment(this.h, (C.int)(alignment))
+	C.QTextBlockFormat_setAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QTextBlockFormat) Alignment() AlignmentFlag {
-	return (AlignmentFlag)(C.QTextBlockFormat_Alignment(this.h))
+	return (AlignmentFlag)(C.QTextBlockFormat_alignment(this.h))
 }
 
 func (this *QTextBlockFormat) SetTopMargin(margin float64) {
-	C.QTextBlockFormat_SetTopMargin(this.h, (C.double)(margin))
+	C.QTextBlockFormat_setTopMargin(this.h, (C.double)(margin))
 }
 
 func (this *QTextBlockFormat) TopMargin() float64 {
-	return (float64)(C.QTextBlockFormat_TopMargin(this.h))
+	return (float64)(C.QTextBlockFormat_topMargin(this.h))
 }
 
 func (this *QTextBlockFormat) SetBottomMargin(margin float64) {
-	C.QTextBlockFormat_SetBottomMargin(this.h, (C.double)(margin))
+	C.QTextBlockFormat_setBottomMargin(this.h, (C.double)(margin))
 }
 
 func (this *QTextBlockFormat) BottomMargin() float64 {
-	return (float64)(C.QTextBlockFormat_BottomMargin(this.h))
+	return (float64)(C.QTextBlockFormat_bottomMargin(this.h))
 }
 
 func (this *QTextBlockFormat) SetLeftMargin(margin float64) {
-	C.QTextBlockFormat_SetLeftMargin(this.h, (C.double)(margin))
+	C.QTextBlockFormat_setLeftMargin(this.h, (C.double)(margin))
 }
 
 func (this *QTextBlockFormat) LeftMargin() float64 {
-	return (float64)(C.QTextBlockFormat_LeftMargin(this.h))
+	return (float64)(C.QTextBlockFormat_leftMargin(this.h))
 }
 
 func (this *QTextBlockFormat) SetRightMargin(margin float64) {
-	C.QTextBlockFormat_SetRightMargin(this.h, (C.double)(margin))
+	C.QTextBlockFormat_setRightMargin(this.h, (C.double)(margin))
 }
 
 func (this *QTextBlockFormat) RightMargin() float64 {
-	return (float64)(C.QTextBlockFormat_RightMargin(this.h))
+	return (float64)(C.QTextBlockFormat_rightMargin(this.h))
 }
 
 func (this *QTextBlockFormat) SetTextIndent(aindent float64) {
-	C.QTextBlockFormat_SetTextIndent(this.h, (C.double)(aindent))
+	C.QTextBlockFormat_setTextIndent(this.h, (C.double)(aindent))
 }
 
 func (this *QTextBlockFormat) TextIndent() float64 {
-	return (float64)(C.QTextBlockFormat_TextIndent(this.h))
+	return (float64)(C.QTextBlockFormat_textIndent(this.h))
 }
 
 func (this *QTextBlockFormat) SetIndent(indent int) {
-	C.QTextBlockFormat_SetIndent(this.h, (C.int)(indent))
+	C.QTextBlockFormat_setIndent(this.h, (C.int)(indent))
 }
 
 func (this *QTextBlockFormat) Indent() int {
-	return (int)(C.QTextBlockFormat_Indent(this.h))
+	return (int)(C.QTextBlockFormat_indent(this.h))
 }
 
 func (this *QTextBlockFormat) SetHeadingLevel(alevel int) {
-	C.QTextBlockFormat_SetHeadingLevel(this.h, (C.int)(alevel))
+	C.QTextBlockFormat_setHeadingLevel(this.h, (C.int)(alevel))
 }
 
 func (this *QTextBlockFormat) HeadingLevel() int {
-	return (int)(C.QTextBlockFormat_HeadingLevel(this.h))
+	return (int)(C.QTextBlockFormat_headingLevel(this.h))
 }
 
 func (this *QTextBlockFormat) SetLineHeight(height float64, heightType int) {
-	C.QTextBlockFormat_SetLineHeight(this.h, (C.double)(height), (C.int)(heightType))
+	C.QTextBlockFormat_setLineHeight(this.h, (C.double)(height), (C.int)(heightType))
 }
 
 func (this *QTextBlockFormat) LineHeight(scriptLineHeight float64, scaling float64) float64 {
-	return (float64)(C.QTextBlockFormat_LineHeight(this.h, (C.double)(scriptLineHeight), (C.double)(scaling)))
+	return (float64)(C.QTextBlockFormat_lineHeight(this.h, (C.double)(scriptLineHeight), (C.double)(scaling)))
 }
 
 func (this *QTextBlockFormat) LineHeight2() float64 {
-	return (float64)(C.QTextBlockFormat_LineHeight2(this.h))
+	return (float64)(C.QTextBlockFormat_lineHeight2(this.h))
 }
 
 func (this *QTextBlockFormat) LineHeightType() int {
-	return (int)(C.QTextBlockFormat_LineHeightType(this.h))
+	return (int)(C.QTextBlockFormat_lineHeightType(this.h))
 }
 
 func (this *QTextBlockFormat) SetNonBreakableLines(b bool) {
-	C.QTextBlockFormat_SetNonBreakableLines(this.h, (C.bool)(b))
+	C.QTextBlockFormat_setNonBreakableLines(this.h, (C.bool)(b))
 }
 
 func (this *QTextBlockFormat) NonBreakableLines() bool {
-	return (bool)(C.QTextBlockFormat_NonBreakableLines(this.h))
+	return (bool)(C.QTextBlockFormat_nonBreakableLines(this.h))
 }
 
 func (this *QTextBlockFormat) SetPageBreakPolicy(flags QTextFormat__PageBreakFlag) {
-	C.QTextBlockFormat_SetPageBreakPolicy(this.h, (C.int)(flags))
+	C.QTextBlockFormat_setPageBreakPolicy(this.h, (C.int)(flags))
 }
 
 func (this *QTextBlockFormat) PageBreakPolicy() QTextFormat__PageBreakFlag {
-	return (QTextFormat__PageBreakFlag)(C.QTextBlockFormat_PageBreakPolicy(this.h))
+	return (QTextFormat__PageBreakFlag)(C.QTextBlockFormat_pageBreakPolicy(this.h))
 }
 
 func (this *QTextBlockFormat) SetTabPositions(tabs []QTextOption__Tab) {
@@ -1230,11 +1230,11 @@ func (this *QTextBlockFormat) SetTabPositions(tabs []QTextOption__Tab) {
 		tabs_CArray[i] = tabs[i].cPointer()
 	}
 	tabs_ma := C.struct_miqt_array{len: C.size_t(len(tabs)), data: unsafe.Pointer(tabs_CArray)}
-	C.QTextBlockFormat_SetTabPositions(this.h, tabs_ma)
+	C.QTextBlockFormat_setTabPositions(this.h, tabs_ma)
 }
 
 func (this *QTextBlockFormat) TabPositions() []QTextOption__Tab {
-	var _ma C.struct_miqt_array = C.QTextBlockFormat_TabPositions(this.h)
+	var _ma C.struct_miqt_array = C.QTextBlockFormat_tabPositions(this.h)
 	_ret := make([]QTextOption__Tab, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextOption__Tab)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1246,16 +1246,16 @@ func (this *QTextBlockFormat) TabPositions() []QTextOption__Tab {
 }
 
 func (this *QTextBlockFormat) SetMarker(marker QTextBlockFormat__MarkerType) {
-	C.QTextBlockFormat_SetMarker(this.h, (C.int)(marker))
+	C.QTextBlockFormat_setMarker(this.h, (C.int)(marker))
 }
 
 func (this *QTextBlockFormat) Marker() QTextBlockFormat__MarkerType {
-	return (QTextBlockFormat__MarkerType)(C.QTextBlockFormat_Marker(this.h))
+	return (QTextBlockFormat__MarkerType)(C.QTextBlockFormat_marker(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QTextBlockFormat) Delete() {
-	C.QTextBlockFormat_Delete(this.h)
+	C.QTextBlockFormat_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1316,23 +1316,23 @@ func NewQTextListFormat2(param1 *QTextListFormat) *QTextListFormat {
 }
 
 func (this *QTextListFormat) IsValid() bool {
-	return (bool)(C.QTextListFormat_IsValid(this.h))
+	return (bool)(C.QTextListFormat_isValid(this.h))
 }
 
 func (this *QTextListFormat) SetStyle(style QTextListFormat__Style) {
-	C.QTextListFormat_SetStyle(this.h, (C.int)(style))
+	C.QTextListFormat_setStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextListFormat) Style() QTextListFormat__Style {
-	return (QTextListFormat__Style)(C.QTextListFormat_Style(this.h))
+	return (QTextListFormat__Style)(C.QTextListFormat_style(this.h))
 }
 
 func (this *QTextListFormat) SetIndent(indent int) {
-	C.QTextListFormat_SetIndent(this.h, (C.int)(indent))
+	C.QTextListFormat_setIndent(this.h, (C.int)(indent))
 }
 
 func (this *QTextListFormat) Indent() int {
-	return (int)(C.QTextListFormat_Indent(this.h))
+	return (int)(C.QTextListFormat_indent(this.h))
 }
 
 func (this *QTextListFormat) SetNumberPrefix(numberPrefix string) {
@@ -1340,11 +1340,11 @@ func (this *QTextListFormat) SetNumberPrefix(numberPrefix string) {
 	numberPrefix_ms.data = C.CString(numberPrefix)
 	numberPrefix_ms.len = C.size_t(len(numberPrefix))
 	defer C.free(unsafe.Pointer(numberPrefix_ms.data))
-	C.QTextListFormat_SetNumberPrefix(this.h, numberPrefix_ms)
+	C.QTextListFormat_setNumberPrefix(this.h, numberPrefix_ms)
 }
 
 func (this *QTextListFormat) NumberPrefix() string {
-	var _ms C.struct_miqt_string = C.QTextListFormat_NumberPrefix(this.h)
+	var _ms C.struct_miqt_string = C.QTextListFormat_numberPrefix(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1355,11 +1355,11 @@ func (this *QTextListFormat) SetNumberSuffix(numberSuffix string) {
 	numberSuffix_ms.data = C.CString(numberSuffix)
 	numberSuffix_ms.len = C.size_t(len(numberSuffix))
 	defer C.free(unsafe.Pointer(numberSuffix_ms.data))
-	C.QTextListFormat_SetNumberSuffix(this.h, numberSuffix_ms)
+	C.QTextListFormat_setNumberSuffix(this.h, numberSuffix_ms)
 }
 
 func (this *QTextListFormat) NumberSuffix() string {
-	var _ms C.struct_miqt_string = C.QTextListFormat_NumberSuffix(this.h)
+	var _ms C.struct_miqt_string = C.QTextListFormat_numberSuffix(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1367,7 +1367,7 @@ func (this *QTextListFormat) NumberSuffix() string {
 
 // Delete this object from C++ memory.
 func (this *QTextListFormat) Delete() {
-	C.QTextListFormat_Delete(this.h)
+	C.QTextListFormat_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1422,7 +1422,7 @@ func NewQTextImageFormat() *QTextImageFormat {
 }
 
 func (this *QTextImageFormat) IsValid() bool {
-	return (bool)(C.QTextImageFormat_IsValid(this.h))
+	return (bool)(C.QTextImageFormat_isValid(this.h))
 }
 
 func (this *QTextImageFormat) SetName(name string) {
@@ -1430,47 +1430,47 @@ func (this *QTextImageFormat) SetName(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QTextImageFormat_SetName(this.h, name_ms)
+	C.QTextImageFormat_setName(this.h, name_ms)
 }
 
 func (this *QTextImageFormat) Name() string {
-	var _ms C.struct_miqt_string = C.QTextImageFormat_Name(this.h)
+	var _ms C.struct_miqt_string = C.QTextImageFormat_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QTextImageFormat) SetWidth(width float64) {
-	C.QTextImageFormat_SetWidth(this.h, (C.double)(width))
+	C.QTextImageFormat_setWidth(this.h, (C.double)(width))
 }
 
 func (this *QTextImageFormat) Width() float64 {
-	return (float64)(C.QTextImageFormat_Width(this.h))
+	return (float64)(C.QTextImageFormat_width(this.h))
 }
 
 func (this *QTextImageFormat) SetHeight(height float64) {
-	C.QTextImageFormat_SetHeight(this.h, (C.double)(height))
+	C.QTextImageFormat_setHeight(this.h, (C.double)(height))
 }
 
 func (this *QTextImageFormat) Height() float64 {
-	return (float64)(C.QTextImageFormat_Height(this.h))
+	return (float64)(C.QTextImageFormat_height(this.h))
 }
 
 func (this *QTextImageFormat) SetQuality(quality int) {
-	C.QTextImageFormat_SetQuality(this.h, (C.int)(quality))
+	C.QTextImageFormat_setQuality(this.h, (C.int)(quality))
 }
 
 func (this *QTextImageFormat) SetQuality2() {
-	C.QTextImageFormat_SetQuality2(this.h)
+	C.QTextImageFormat_setQuality2(this.h)
 }
 
 func (this *QTextImageFormat) Quality() int {
-	return (int)(C.QTextImageFormat_Quality(this.h))
+	return (int)(C.QTextImageFormat_quality(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QTextImageFormat) Delete() {
-	C.QTextImageFormat_Delete(this.h)
+	C.QTextImageFormat_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1531,130 +1531,130 @@ func NewQTextFrameFormat2(param1 *QTextFrameFormat) *QTextFrameFormat {
 }
 
 func (this *QTextFrameFormat) IsValid() bool {
-	return (bool)(C.QTextFrameFormat_IsValid(this.h))
+	return (bool)(C.QTextFrameFormat_isValid(this.h))
 }
 
 func (this *QTextFrameFormat) SetPosition(f QTextFrameFormat__Position) {
-	C.QTextFrameFormat_SetPosition(this.h, (C.int)(f))
+	C.QTextFrameFormat_setPosition(this.h, (C.int)(f))
 }
 
 func (this *QTextFrameFormat) Position() QTextFrameFormat__Position {
-	return (QTextFrameFormat__Position)(C.QTextFrameFormat_Position(this.h))
+	return (QTextFrameFormat__Position)(C.QTextFrameFormat_position(this.h))
 }
 
 func (this *QTextFrameFormat) SetBorder(border float64) {
-	C.QTextFrameFormat_SetBorder(this.h, (C.double)(border))
+	C.QTextFrameFormat_setBorder(this.h, (C.double)(border))
 }
 
 func (this *QTextFrameFormat) Border() float64 {
-	return (float64)(C.QTextFrameFormat_Border(this.h))
+	return (float64)(C.QTextFrameFormat_border(this.h))
 }
 
 func (this *QTextFrameFormat) SetBorderBrush(brush *QBrush) {
-	C.QTextFrameFormat_SetBorderBrush(this.h, brush.cPointer())
+	C.QTextFrameFormat_setBorderBrush(this.h, brush.cPointer())
 }
 
 func (this *QTextFrameFormat) BorderBrush() *QBrush {
-	_goptr := newQBrush(C.QTextFrameFormat_BorderBrush(this.h))
+	_goptr := newQBrush(C.QTextFrameFormat_borderBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFrameFormat) SetBorderStyle(style QTextFrameFormat__BorderStyle) {
-	C.QTextFrameFormat_SetBorderStyle(this.h, (C.int)(style))
+	C.QTextFrameFormat_setBorderStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextFrameFormat) BorderStyle() QTextFrameFormat__BorderStyle {
-	return (QTextFrameFormat__BorderStyle)(C.QTextFrameFormat_BorderStyle(this.h))
+	return (QTextFrameFormat__BorderStyle)(C.QTextFrameFormat_borderStyle(this.h))
 }
 
 func (this *QTextFrameFormat) SetMargin(margin float64) {
-	C.QTextFrameFormat_SetMargin(this.h, (C.double)(margin))
+	C.QTextFrameFormat_setMargin(this.h, (C.double)(margin))
 }
 
 func (this *QTextFrameFormat) Margin() float64 {
-	return (float64)(C.QTextFrameFormat_Margin(this.h))
+	return (float64)(C.QTextFrameFormat_margin(this.h))
 }
 
 func (this *QTextFrameFormat) SetTopMargin(margin float64) {
-	C.QTextFrameFormat_SetTopMargin(this.h, (C.double)(margin))
+	C.QTextFrameFormat_setTopMargin(this.h, (C.double)(margin))
 }
 
 func (this *QTextFrameFormat) TopMargin() float64 {
-	return (float64)(C.QTextFrameFormat_TopMargin(this.h))
+	return (float64)(C.QTextFrameFormat_topMargin(this.h))
 }
 
 func (this *QTextFrameFormat) SetBottomMargin(margin float64) {
-	C.QTextFrameFormat_SetBottomMargin(this.h, (C.double)(margin))
+	C.QTextFrameFormat_setBottomMargin(this.h, (C.double)(margin))
 }
 
 func (this *QTextFrameFormat) BottomMargin() float64 {
-	return (float64)(C.QTextFrameFormat_BottomMargin(this.h))
+	return (float64)(C.QTextFrameFormat_bottomMargin(this.h))
 }
 
 func (this *QTextFrameFormat) SetLeftMargin(margin float64) {
-	C.QTextFrameFormat_SetLeftMargin(this.h, (C.double)(margin))
+	C.QTextFrameFormat_setLeftMargin(this.h, (C.double)(margin))
 }
 
 func (this *QTextFrameFormat) LeftMargin() float64 {
-	return (float64)(C.QTextFrameFormat_LeftMargin(this.h))
+	return (float64)(C.QTextFrameFormat_leftMargin(this.h))
 }
 
 func (this *QTextFrameFormat) SetRightMargin(margin float64) {
-	C.QTextFrameFormat_SetRightMargin(this.h, (C.double)(margin))
+	C.QTextFrameFormat_setRightMargin(this.h, (C.double)(margin))
 }
 
 func (this *QTextFrameFormat) RightMargin() float64 {
-	return (float64)(C.QTextFrameFormat_RightMargin(this.h))
+	return (float64)(C.QTextFrameFormat_rightMargin(this.h))
 }
 
 func (this *QTextFrameFormat) SetPadding(padding float64) {
-	C.QTextFrameFormat_SetPadding(this.h, (C.double)(padding))
+	C.QTextFrameFormat_setPadding(this.h, (C.double)(padding))
 }
 
 func (this *QTextFrameFormat) Padding() float64 {
-	return (float64)(C.QTextFrameFormat_Padding(this.h))
+	return (float64)(C.QTextFrameFormat_padding(this.h))
 }
 
 func (this *QTextFrameFormat) SetWidth(width float64) {
-	C.QTextFrameFormat_SetWidth(this.h, (C.double)(width))
+	C.QTextFrameFormat_setWidth(this.h, (C.double)(width))
 }
 
 func (this *QTextFrameFormat) SetWidthWithLength(length *QTextLength) {
-	C.QTextFrameFormat_SetWidthWithLength(this.h, length.cPointer())
+	C.QTextFrameFormat_setWidthWithLength(this.h, length.cPointer())
 }
 
 func (this *QTextFrameFormat) Width() *QTextLength {
-	_goptr := newQTextLength(C.QTextFrameFormat_Width(this.h))
+	_goptr := newQTextLength(C.QTextFrameFormat_width(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFrameFormat) SetHeight(height float64) {
-	C.QTextFrameFormat_SetHeight(this.h, (C.double)(height))
+	C.QTextFrameFormat_setHeight(this.h, (C.double)(height))
 }
 
 func (this *QTextFrameFormat) SetHeightWithHeight(height *QTextLength) {
-	C.QTextFrameFormat_SetHeightWithHeight(this.h, height.cPointer())
+	C.QTextFrameFormat_setHeightWithHeight(this.h, height.cPointer())
 }
 
 func (this *QTextFrameFormat) Height() *QTextLength {
-	_goptr := newQTextLength(C.QTextFrameFormat_Height(this.h))
+	_goptr := newQTextLength(C.QTextFrameFormat_height(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextFrameFormat) SetPageBreakPolicy(flags QTextFormat__PageBreakFlag) {
-	C.QTextFrameFormat_SetPageBreakPolicy(this.h, (C.int)(flags))
+	C.QTextFrameFormat_setPageBreakPolicy(this.h, (C.int)(flags))
 }
 
 func (this *QTextFrameFormat) PageBreakPolicy() QTextFormat__PageBreakFlag {
-	return (QTextFormat__PageBreakFlag)(C.QTextFrameFormat_PageBreakPolicy(this.h))
+	return (QTextFormat__PageBreakFlag)(C.QTextFrameFormat_pageBreakPolicy(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QTextFrameFormat) Delete() {
-	C.QTextFrameFormat_Delete(this.h)
+	C.QTextFrameFormat_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1709,15 +1709,15 @@ func NewQTextTableFormat() *QTextTableFormat {
 }
 
 func (this *QTextTableFormat) IsValid() bool {
-	return (bool)(C.QTextTableFormat_IsValid(this.h))
+	return (bool)(C.QTextTableFormat_isValid(this.h))
 }
 
 func (this *QTextTableFormat) Columns() int {
-	return (int)(C.QTextTableFormat_Columns(this.h))
+	return (int)(C.QTextTableFormat_columns(this.h))
 }
 
 func (this *QTextTableFormat) SetColumns(columns int) {
-	C.QTextTableFormat_SetColumns(this.h, (C.int)(columns))
+	C.QTextTableFormat_setColumns(this.h, (C.int)(columns))
 }
 
 func (this *QTextTableFormat) SetColumnWidthConstraints(constraints []QTextLength) {
@@ -1727,11 +1727,11 @@ func (this *QTextTableFormat) SetColumnWidthConstraints(constraints []QTextLengt
 		constraints_CArray[i] = constraints[i].cPointer()
 	}
 	constraints_ma := C.struct_miqt_array{len: C.size_t(len(constraints)), data: unsafe.Pointer(constraints_CArray)}
-	C.QTextTableFormat_SetColumnWidthConstraints(this.h, constraints_ma)
+	C.QTextTableFormat_setColumnWidthConstraints(this.h, constraints_ma)
 }
 
 func (this *QTextTableFormat) ColumnWidthConstraints() []QTextLength {
-	var _ma C.struct_miqt_array = C.QTextTableFormat_ColumnWidthConstraints(this.h)
+	var _ma C.struct_miqt_array = C.QTextTableFormat_columnWidthConstraints(this.h)
 	_ret := make([]QTextLength, int(_ma.len))
 	_outCast := (*[0xffff]*C.QTextLength)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1743,52 +1743,52 @@ func (this *QTextTableFormat) ColumnWidthConstraints() []QTextLength {
 }
 
 func (this *QTextTableFormat) ClearColumnWidthConstraints() {
-	C.QTextTableFormat_ClearColumnWidthConstraints(this.h)
+	C.QTextTableFormat_clearColumnWidthConstraints(this.h)
 }
 
 func (this *QTextTableFormat) CellSpacing() float64 {
-	return (float64)(C.QTextTableFormat_CellSpacing(this.h))
+	return (float64)(C.QTextTableFormat_cellSpacing(this.h))
 }
 
 func (this *QTextTableFormat) SetCellSpacing(spacing float64) {
-	C.QTextTableFormat_SetCellSpacing(this.h, (C.double)(spacing))
+	C.QTextTableFormat_setCellSpacing(this.h, (C.double)(spacing))
 }
 
 func (this *QTextTableFormat) CellPadding() float64 {
-	return (float64)(C.QTextTableFormat_CellPadding(this.h))
+	return (float64)(C.QTextTableFormat_cellPadding(this.h))
 }
 
 func (this *QTextTableFormat) SetCellPadding(padding float64) {
-	C.QTextTableFormat_SetCellPadding(this.h, (C.double)(padding))
+	C.QTextTableFormat_setCellPadding(this.h, (C.double)(padding))
 }
 
 func (this *QTextTableFormat) SetAlignment(alignment AlignmentFlag) {
-	C.QTextTableFormat_SetAlignment(this.h, (C.int)(alignment))
+	C.QTextTableFormat_setAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QTextTableFormat) Alignment() AlignmentFlag {
-	return (AlignmentFlag)(C.QTextTableFormat_Alignment(this.h))
+	return (AlignmentFlag)(C.QTextTableFormat_alignment(this.h))
 }
 
 func (this *QTextTableFormat) SetHeaderRowCount(count int) {
-	C.QTextTableFormat_SetHeaderRowCount(this.h, (C.int)(count))
+	C.QTextTableFormat_setHeaderRowCount(this.h, (C.int)(count))
 }
 
 func (this *QTextTableFormat) HeaderRowCount() int {
-	return (int)(C.QTextTableFormat_HeaderRowCount(this.h))
+	return (int)(C.QTextTableFormat_headerRowCount(this.h))
 }
 
 func (this *QTextTableFormat) SetBorderCollapse(borderCollapse bool) {
-	C.QTextTableFormat_SetBorderCollapse(this.h, (C.bool)(borderCollapse))
+	C.QTextTableFormat_setBorderCollapse(this.h, (C.bool)(borderCollapse))
 }
 
 func (this *QTextTableFormat) BorderCollapse() bool {
-	return (bool)(C.QTextTableFormat_BorderCollapse(this.h))
+	return (bool)(C.QTextTableFormat_borderCollapse(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QTextTableFormat) Delete() {
-	C.QTextTableFormat_Delete(this.h)
+	C.QTextTableFormat_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1843,164 +1843,164 @@ func NewQTextTableCellFormat() *QTextTableCellFormat {
 }
 
 func (this *QTextTableCellFormat) IsValid() bool {
-	return (bool)(C.QTextTableCellFormat_IsValid(this.h))
+	return (bool)(C.QTextTableCellFormat_isValid(this.h))
 }
 
 func (this *QTextTableCellFormat) SetTopPadding(padding float64) {
-	C.QTextTableCellFormat_SetTopPadding(this.h, (C.double)(padding))
+	C.QTextTableCellFormat_setTopPadding(this.h, (C.double)(padding))
 }
 
 func (this *QTextTableCellFormat) TopPadding() float64 {
-	return (float64)(C.QTextTableCellFormat_TopPadding(this.h))
+	return (float64)(C.QTextTableCellFormat_topPadding(this.h))
 }
 
 func (this *QTextTableCellFormat) SetBottomPadding(padding float64) {
-	C.QTextTableCellFormat_SetBottomPadding(this.h, (C.double)(padding))
+	C.QTextTableCellFormat_setBottomPadding(this.h, (C.double)(padding))
 }
 
 func (this *QTextTableCellFormat) BottomPadding() float64 {
-	return (float64)(C.QTextTableCellFormat_BottomPadding(this.h))
+	return (float64)(C.QTextTableCellFormat_bottomPadding(this.h))
 }
 
 func (this *QTextTableCellFormat) SetLeftPadding(padding float64) {
-	C.QTextTableCellFormat_SetLeftPadding(this.h, (C.double)(padding))
+	C.QTextTableCellFormat_setLeftPadding(this.h, (C.double)(padding))
 }
 
 func (this *QTextTableCellFormat) LeftPadding() float64 {
-	return (float64)(C.QTextTableCellFormat_LeftPadding(this.h))
+	return (float64)(C.QTextTableCellFormat_leftPadding(this.h))
 }
 
 func (this *QTextTableCellFormat) SetRightPadding(padding float64) {
-	C.QTextTableCellFormat_SetRightPadding(this.h, (C.double)(padding))
+	C.QTextTableCellFormat_setRightPadding(this.h, (C.double)(padding))
 }
 
 func (this *QTextTableCellFormat) RightPadding() float64 {
-	return (float64)(C.QTextTableCellFormat_RightPadding(this.h))
+	return (float64)(C.QTextTableCellFormat_rightPadding(this.h))
 }
 
 func (this *QTextTableCellFormat) SetPadding(padding float64) {
-	C.QTextTableCellFormat_SetPadding(this.h, (C.double)(padding))
+	C.QTextTableCellFormat_setPadding(this.h, (C.double)(padding))
 }
 
 func (this *QTextTableCellFormat) SetTopBorder(width float64) {
-	C.QTextTableCellFormat_SetTopBorder(this.h, (C.double)(width))
+	C.QTextTableCellFormat_setTopBorder(this.h, (C.double)(width))
 }
 
 func (this *QTextTableCellFormat) TopBorder() float64 {
-	return (float64)(C.QTextTableCellFormat_TopBorder(this.h))
+	return (float64)(C.QTextTableCellFormat_topBorder(this.h))
 }
 
 func (this *QTextTableCellFormat) SetBottomBorder(width float64) {
-	C.QTextTableCellFormat_SetBottomBorder(this.h, (C.double)(width))
+	C.QTextTableCellFormat_setBottomBorder(this.h, (C.double)(width))
 }
 
 func (this *QTextTableCellFormat) BottomBorder() float64 {
-	return (float64)(C.QTextTableCellFormat_BottomBorder(this.h))
+	return (float64)(C.QTextTableCellFormat_bottomBorder(this.h))
 }
 
 func (this *QTextTableCellFormat) SetLeftBorder(width float64) {
-	C.QTextTableCellFormat_SetLeftBorder(this.h, (C.double)(width))
+	C.QTextTableCellFormat_setLeftBorder(this.h, (C.double)(width))
 }
 
 func (this *QTextTableCellFormat) LeftBorder() float64 {
-	return (float64)(C.QTextTableCellFormat_LeftBorder(this.h))
+	return (float64)(C.QTextTableCellFormat_leftBorder(this.h))
 }
 
 func (this *QTextTableCellFormat) SetRightBorder(width float64) {
-	C.QTextTableCellFormat_SetRightBorder(this.h, (C.double)(width))
+	C.QTextTableCellFormat_setRightBorder(this.h, (C.double)(width))
 }
 
 func (this *QTextTableCellFormat) RightBorder() float64 {
-	return (float64)(C.QTextTableCellFormat_RightBorder(this.h))
+	return (float64)(C.QTextTableCellFormat_rightBorder(this.h))
 }
 
 func (this *QTextTableCellFormat) SetBorder(width float64) {
-	C.QTextTableCellFormat_SetBorder(this.h, (C.double)(width))
+	C.QTextTableCellFormat_setBorder(this.h, (C.double)(width))
 }
 
 func (this *QTextTableCellFormat) SetTopBorderStyle(style QTextFrameFormat__BorderStyle) {
-	C.QTextTableCellFormat_SetTopBorderStyle(this.h, (C.int)(style))
+	C.QTextTableCellFormat_setTopBorderStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextTableCellFormat) TopBorderStyle() QTextFrameFormat__BorderStyle {
-	return (QTextFrameFormat__BorderStyle)(C.QTextTableCellFormat_TopBorderStyle(this.h))
+	return (QTextFrameFormat__BorderStyle)(C.QTextTableCellFormat_topBorderStyle(this.h))
 }
 
 func (this *QTextTableCellFormat) SetBottomBorderStyle(style QTextFrameFormat__BorderStyle) {
-	C.QTextTableCellFormat_SetBottomBorderStyle(this.h, (C.int)(style))
+	C.QTextTableCellFormat_setBottomBorderStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextTableCellFormat) BottomBorderStyle() QTextFrameFormat__BorderStyle {
-	return (QTextFrameFormat__BorderStyle)(C.QTextTableCellFormat_BottomBorderStyle(this.h))
+	return (QTextFrameFormat__BorderStyle)(C.QTextTableCellFormat_bottomBorderStyle(this.h))
 }
 
 func (this *QTextTableCellFormat) SetLeftBorderStyle(style QTextFrameFormat__BorderStyle) {
-	C.QTextTableCellFormat_SetLeftBorderStyle(this.h, (C.int)(style))
+	C.QTextTableCellFormat_setLeftBorderStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextTableCellFormat) LeftBorderStyle() QTextFrameFormat__BorderStyle {
-	return (QTextFrameFormat__BorderStyle)(C.QTextTableCellFormat_LeftBorderStyle(this.h))
+	return (QTextFrameFormat__BorderStyle)(C.QTextTableCellFormat_leftBorderStyle(this.h))
 }
 
 func (this *QTextTableCellFormat) SetRightBorderStyle(style QTextFrameFormat__BorderStyle) {
-	C.QTextTableCellFormat_SetRightBorderStyle(this.h, (C.int)(style))
+	C.QTextTableCellFormat_setRightBorderStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextTableCellFormat) RightBorderStyle() QTextFrameFormat__BorderStyle {
-	return (QTextFrameFormat__BorderStyle)(C.QTextTableCellFormat_RightBorderStyle(this.h))
+	return (QTextFrameFormat__BorderStyle)(C.QTextTableCellFormat_rightBorderStyle(this.h))
 }
 
 func (this *QTextTableCellFormat) SetBorderStyle(style QTextFrameFormat__BorderStyle) {
-	C.QTextTableCellFormat_SetBorderStyle(this.h, (C.int)(style))
+	C.QTextTableCellFormat_setBorderStyle(this.h, (C.int)(style))
 }
 
 func (this *QTextTableCellFormat) SetTopBorderBrush(brush *QBrush) {
-	C.QTextTableCellFormat_SetTopBorderBrush(this.h, brush.cPointer())
+	C.QTextTableCellFormat_setTopBorderBrush(this.h, brush.cPointer())
 }
 
 func (this *QTextTableCellFormat) TopBorderBrush() *QBrush {
-	_goptr := newQBrush(C.QTextTableCellFormat_TopBorderBrush(this.h))
+	_goptr := newQBrush(C.QTextTableCellFormat_topBorderBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTableCellFormat) SetBottomBorderBrush(brush *QBrush) {
-	C.QTextTableCellFormat_SetBottomBorderBrush(this.h, brush.cPointer())
+	C.QTextTableCellFormat_setBottomBorderBrush(this.h, brush.cPointer())
 }
 
 func (this *QTextTableCellFormat) BottomBorderBrush() *QBrush {
-	_goptr := newQBrush(C.QTextTableCellFormat_BottomBorderBrush(this.h))
+	_goptr := newQBrush(C.QTextTableCellFormat_bottomBorderBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTableCellFormat) SetLeftBorderBrush(brush *QBrush) {
-	C.QTextTableCellFormat_SetLeftBorderBrush(this.h, brush.cPointer())
+	C.QTextTableCellFormat_setLeftBorderBrush(this.h, brush.cPointer())
 }
 
 func (this *QTextTableCellFormat) LeftBorderBrush() *QBrush {
-	_goptr := newQBrush(C.QTextTableCellFormat_LeftBorderBrush(this.h))
+	_goptr := newQBrush(C.QTextTableCellFormat_leftBorderBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTableCellFormat) SetRightBorderBrush(brush *QBrush) {
-	C.QTextTableCellFormat_SetRightBorderBrush(this.h, brush.cPointer())
+	C.QTextTableCellFormat_setRightBorderBrush(this.h, brush.cPointer())
 }
 
 func (this *QTextTableCellFormat) RightBorderBrush() *QBrush {
-	_goptr := newQBrush(C.QTextTableCellFormat_RightBorderBrush(this.h))
+	_goptr := newQBrush(C.QTextTableCellFormat_rightBorderBrush(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextTableCellFormat) SetBorderBrush(brush *QBrush) {
-	C.QTextTableCellFormat_SetBorderBrush(this.h, brush.cPointer())
+	C.QTextTableCellFormat_setBorderBrush(this.h, brush.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QTextTableCellFormat) Delete() {
-	C.QTextTableCellFormat_Delete(this.h)
+	C.QTextTableCellFormat_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

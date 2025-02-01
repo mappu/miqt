@@ -28,36 +28,36 @@ QUrlQuery* QUrlQuery_new();
 QUrlQuery* QUrlQuery_new2(QUrl* url);
 QUrlQuery* QUrlQuery_new3(struct miqt_string queryString);
 QUrlQuery* QUrlQuery_new4(QUrlQuery* other);
-void QUrlQuery_OperatorAssign(QUrlQuery* self, QUrlQuery* other);
-bool QUrlQuery_OperatorEqual(const QUrlQuery* self, QUrlQuery* other);
-bool QUrlQuery_OperatorNotEqual(const QUrlQuery* self, QUrlQuery* other);
-void QUrlQuery_Swap(QUrlQuery* self, QUrlQuery* other);
-bool QUrlQuery_IsEmpty(const QUrlQuery* self);
-bool QUrlQuery_IsDetached(const QUrlQuery* self);
-void QUrlQuery_Clear(QUrlQuery* self);
-struct miqt_string QUrlQuery_Query(const QUrlQuery* self);
-void QUrlQuery_SetQuery(QUrlQuery* self, struct miqt_string queryString);
-struct miqt_string QUrlQuery_ToString(const QUrlQuery* self);
-void QUrlQuery_SetQueryDelimiters(QUrlQuery* self, QChar* valueDelimiter, QChar* pairDelimiter);
-QChar* QUrlQuery_QueryValueDelimiter(const QUrlQuery* self);
-QChar* QUrlQuery_QueryPairDelimiter(const QUrlQuery* self);
-void QUrlQuery_SetQueryItems(QUrlQuery* self, struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  query);
-struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  QUrlQuery_QueryItems(const QUrlQuery* self);
-bool QUrlQuery_HasQueryItem(const QUrlQuery* self, struct miqt_string key);
-void QUrlQuery_AddQueryItem(QUrlQuery* self, struct miqt_string key, struct miqt_string value);
-void QUrlQuery_RemoveQueryItem(QUrlQuery* self, struct miqt_string key);
-struct miqt_string QUrlQuery_QueryItemValue(const QUrlQuery* self, struct miqt_string key);
-struct miqt_array /* of struct miqt_string */  QUrlQuery_AllQueryItemValues(const QUrlQuery* self, struct miqt_string key);
-void QUrlQuery_RemoveAllQueryItems(QUrlQuery* self, struct miqt_string key);
-struct miqt_string QUrlQuery_Query1(const QUrlQuery* self, unsigned int encoding);
-struct miqt_string QUrlQuery_ToString1(const QUrlQuery* self, unsigned int encoding);
-struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  QUrlQuery_QueryItems1(const QUrlQuery* self, unsigned int encoding);
-struct miqt_string QUrlQuery_QueryItemValue2(const QUrlQuery* self, struct miqt_string key, unsigned int encoding);
-struct miqt_array /* of struct miqt_string */  QUrlQuery_AllQueryItemValues2(const QUrlQuery* self, struct miqt_string key, unsigned int encoding);
-void QUrlQuery_Delete(QUrlQuery* self);
+void QUrlQuery_operatorAssign(QUrlQuery* self, QUrlQuery* other);
+bool QUrlQuery_operatorEqual(const QUrlQuery* self, QUrlQuery* other);
+bool QUrlQuery_operatorNotEqual(const QUrlQuery* self, QUrlQuery* other);
+void QUrlQuery_swap(QUrlQuery* self, QUrlQuery* other);
+bool QUrlQuery_isEmpty(const QUrlQuery* self);
+bool QUrlQuery_isDetached(const QUrlQuery* self);
+void QUrlQuery_clear(QUrlQuery* self);
+struct miqt_string QUrlQuery_query(const QUrlQuery* self);
+void QUrlQuery_setQuery(QUrlQuery* self, struct miqt_string queryString);
+struct miqt_string QUrlQuery_toString(const QUrlQuery* self);
+void QUrlQuery_setQueryDelimiters(QUrlQuery* self, QChar* valueDelimiter, QChar* pairDelimiter);
+QChar* QUrlQuery_queryValueDelimiter(const QUrlQuery* self);
+QChar* QUrlQuery_queryPairDelimiter(const QUrlQuery* self);
+void QUrlQuery_setQueryItems(QUrlQuery* self, struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  query);
+struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  QUrlQuery_queryItems(const QUrlQuery* self);
+bool QUrlQuery_hasQueryItem(const QUrlQuery* self, struct miqt_string key);
+void QUrlQuery_addQueryItem(QUrlQuery* self, struct miqt_string key, struct miqt_string value);
+void QUrlQuery_removeQueryItem(QUrlQuery* self, struct miqt_string key);
+struct miqt_string QUrlQuery_queryItemValue(const QUrlQuery* self, struct miqt_string key);
+struct miqt_array /* of struct miqt_string */  QUrlQuery_allQueryItemValues(const QUrlQuery* self, struct miqt_string key);
+void QUrlQuery_removeAllQueryItems(QUrlQuery* self, struct miqt_string key);
+struct miqt_string QUrlQuery_query1(const QUrlQuery* self, unsigned int encoding);
+struct miqt_string QUrlQuery_toString1(const QUrlQuery* self, unsigned int encoding);
+struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  QUrlQuery_queryItems1(const QUrlQuery* self, unsigned int encoding);
+struct miqt_string QUrlQuery_queryItemValue2(const QUrlQuery* self, struct miqt_string key, unsigned int encoding);
+struct miqt_array /* of struct miqt_string */  QUrlQuery_allQueryItemValues2(const QUrlQuery* self, struct miqt_string key, unsigned int encoding);
+void QUrlQuery_delete(QUrlQuery* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

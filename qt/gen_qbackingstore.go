@@ -52,64 +52,64 @@ func NewQBackingStore(window *QWindow) *QBackingStore {
 }
 
 func (this *QBackingStore) Window() *QWindow {
-	return newQWindow(C.QBackingStore_Window(this.h))
+	return newQWindow(C.QBackingStore_window(this.h))
 }
 
 func (this *QBackingStore) PaintDevice() *QPaintDevice {
-	return newQPaintDevice(C.QBackingStore_PaintDevice(this.h))
+	return newQPaintDevice(C.QBackingStore_paintDevice(this.h))
 }
 
 func (this *QBackingStore) Flush(region *QRegion) {
-	C.QBackingStore_Flush(this.h, region.cPointer())
+	C.QBackingStore_flush(this.h, region.cPointer())
 }
 
 func (this *QBackingStore) Resize(size *QSize) {
-	C.QBackingStore_Resize(this.h, size.cPointer())
+	C.QBackingStore_resize(this.h, size.cPointer())
 }
 
 func (this *QBackingStore) Size() *QSize {
-	_goptr := newQSize(C.QBackingStore_Size(this.h))
+	_goptr := newQSize(C.QBackingStore_size(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBackingStore) Scroll(area *QRegion, dx int, dy int) bool {
-	return (bool)(C.QBackingStore_Scroll(this.h, area.cPointer(), (C.int)(dx), (C.int)(dy)))
+	return (bool)(C.QBackingStore_scroll(this.h, area.cPointer(), (C.int)(dx), (C.int)(dy)))
 }
 
 func (this *QBackingStore) BeginPaint(param1 *QRegion) {
-	C.QBackingStore_BeginPaint(this.h, param1.cPointer())
+	C.QBackingStore_beginPaint(this.h, param1.cPointer())
 }
 
 func (this *QBackingStore) EndPaint() {
-	C.QBackingStore_EndPaint(this.h)
+	C.QBackingStore_endPaint(this.h)
 }
 
 func (this *QBackingStore) SetStaticContents(region *QRegion) {
-	C.QBackingStore_SetStaticContents(this.h, region.cPointer())
+	C.QBackingStore_setStaticContents(this.h, region.cPointer())
 }
 
 func (this *QBackingStore) StaticContents() *QRegion {
-	_goptr := newQRegion(C.QBackingStore_StaticContents(this.h))
+	_goptr := newQRegion(C.QBackingStore_staticContents(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QBackingStore) HasStaticContents() bool {
-	return (bool)(C.QBackingStore_HasStaticContents(this.h))
+	return (bool)(C.QBackingStore_hasStaticContents(this.h))
 }
 
 func (this *QBackingStore) Flush2(region *QRegion, window *QWindow) {
-	C.QBackingStore_Flush2(this.h, region.cPointer(), window.cPointer())
+	C.QBackingStore_flush2(this.h, region.cPointer(), window.cPointer())
 }
 
 func (this *QBackingStore) Flush3(region *QRegion, window *QWindow, offset *QPoint) {
-	C.QBackingStore_Flush3(this.h, region.cPointer(), window.cPointer(), offset.cPointer())
+	C.QBackingStore_flush3(this.h, region.cPointer(), window.cPointer(), offset.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QBackingStore) Delete() {
-	C.QBackingStore_Delete(this.h)
+	C.QBackingStore_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

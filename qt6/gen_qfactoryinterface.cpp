@@ -14,7 +14,7 @@ extern "C" {
 } /* extern C */
 #endif
 
-struct miqt_array /* of struct miqt_string */  QFactoryInterface_Keys(const QFactoryInterface* self) {
+struct miqt_array /* of struct miqt_string */  QFactoryInterface_keys(const QFactoryInterface* self) {
 	QStringList _ret = self->keys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -34,7 +34,7 @@ struct miqt_array /* of struct miqt_string */  QFactoryInterface_Keys(const QFac
 	return _out;
 }
 
-void QFactoryInterface_Delete(QFactoryInterface* self) {
+void QFactoryInterface_delete(QFactoryInterface* self) {
 	delete self;
 }
 

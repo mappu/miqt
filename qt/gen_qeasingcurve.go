@@ -118,55 +118,55 @@ func NewQEasingCurve3(typeVal QEasingCurve__Type) *QEasingCurve {
 }
 
 func (this *QEasingCurve) OperatorAssign(other *QEasingCurve) {
-	C.QEasingCurve_OperatorAssign(this.h, other.cPointer())
+	C.QEasingCurve_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QEasingCurve) Swap(other *QEasingCurve) {
-	C.QEasingCurve_Swap(this.h, other.cPointer())
+	C.QEasingCurve_swap(this.h, other.cPointer())
 }
 
 func (this *QEasingCurve) OperatorEqual(other *QEasingCurve) bool {
-	return (bool)(C.QEasingCurve_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QEasingCurve_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QEasingCurve) OperatorNotEqual(other *QEasingCurve) bool {
-	return (bool)(C.QEasingCurve_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QEasingCurve_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QEasingCurve) Amplitude() float64 {
-	return (float64)(C.QEasingCurve_Amplitude(this.h))
+	return (float64)(C.QEasingCurve_amplitude(this.h))
 }
 
 func (this *QEasingCurve) SetAmplitude(amplitude float64) {
-	C.QEasingCurve_SetAmplitude(this.h, (C.double)(amplitude))
+	C.QEasingCurve_setAmplitude(this.h, (C.double)(amplitude))
 }
 
 func (this *QEasingCurve) Period() float64 {
-	return (float64)(C.QEasingCurve_Period(this.h))
+	return (float64)(C.QEasingCurve_period(this.h))
 }
 
 func (this *QEasingCurve) SetPeriod(period float64) {
-	C.QEasingCurve_SetPeriod(this.h, (C.double)(period))
+	C.QEasingCurve_setPeriod(this.h, (C.double)(period))
 }
 
 func (this *QEasingCurve) Overshoot() float64 {
-	return (float64)(C.QEasingCurve_Overshoot(this.h))
+	return (float64)(C.QEasingCurve_overshoot(this.h))
 }
 
 func (this *QEasingCurve) SetOvershoot(overshoot float64) {
-	C.QEasingCurve_SetOvershoot(this.h, (C.double)(overshoot))
+	C.QEasingCurve_setOvershoot(this.h, (C.double)(overshoot))
 }
 
 func (this *QEasingCurve) AddCubicBezierSegment(c1 *QPointF, c2 *QPointF, endPoint *QPointF) {
-	C.QEasingCurve_AddCubicBezierSegment(this.h, c1.cPointer(), c2.cPointer(), endPoint.cPointer())
+	C.QEasingCurve_addCubicBezierSegment(this.h, c1.cPointer(), c2.cPointer(), endPoint.cPointer())
 }
 
 func (this *QEasingCurve) AddTCBSegment(nextPoint *QPointF, t float64, c float64, b float64) {
-	C.QEasingCurve_AddTCBSegment(this.h, nextPoint.cPointer(), (C.double)(t), (C.double)(c), (C.double)(b))
+	C.QEasingCurve_addTCBSegment(this.h, nextPoint.cPointer(), (C.double)(t), (C.double)(c), (C.double)(b))
 }
 
 func (this *QEasingCurve) ToCubicSpline() []QPointF {
-	var _ma C.struct_miqt_array = C.QEasingCurve_ToCubicSpline(this.h)
+	var _ma C.struct_miqt_array = C.QEasingCurve_toCubicSpline(this.h)
 	_ret := make([]QPointF, int(_ma.len))
 	_outCast := (*[0xffff]*C.QPointF)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -178,20 +178,20 @@ func (this *QEasingCurve) ToCubicSpline() []QPointF {
 }
 
 func (this *QEasingCurve) Type() QEasingCurve__Type {
-	return (QEasingCurve__Type)(C.QEasingCurve_Type(this.h))
+	return (QEasingCurve__Type)(C.QEasingCurve_type(this.h))
 }
 
 func (this *QEasingCurve) SetType(typeVal QEasingCurve__Type) {
-	C.QEasingCurve_SetType(this.h, (C.int)(typeVal))
+	C.QEasingCurve_setType(this.h, (C.int)(typeVal))
 }
 
 func (this *QEasingCurve) ValueForProgress(progress float64) float64 {
-	return (float64)(C.QEasingCurve_ValueForProgress(this.h, (C.double)(progress)))
+	return (float64)(C.QEasingCurve_valueForProgress(this.h, (C.double)(progress)))
 }
 
 // Delete this object from C++ memory.
 func (this *QEasingCurve) Delete() {
-	C.QEasingCurve_Delete(this.h)
+	C.QEasingCurve_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

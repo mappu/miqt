@@ -31,12 +31,12 @@ QResource* QResource_new3(struct miqt_string file, QLocale* locale) {
 	return new QResource(file_QString, *locale);
 }
 
-void QResource_SetFileName(QResource* self, struct miqt_string file) {
+void QResource_setFileName(QResource* self, struct miqt_string file) {
 	QString file_QString = QString::fromUtf8(file.data, file.len);
 	self->setFileName(file_QString);
 }
 
-struct miqt_string QResource_FileName(const QResource* self) {
+struct miqt_string QResource_fileName(const QResource* self) {
 	QString _ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -47,7 +47,7 @@ struct miqt_string QResource_FileName(const QResource* self) {
 	return _ms;
 }
 
-struct miqt_string QResource_AbsoluteFilePath(const QResource* self) {
+struct miqt_string QResource_absoluteFilePath(const QResource* self) {
 	QString _ret = self->absoluteFilePath();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -58,39 +58,39 @@ struct miqt_string QResource_AbsoluteFilePath(const QResource* self) {
 	return _ms;
 }
 
-void QResource_SetLocale(QResource* self, QLocale* locale) {
+void QResource_setLocale(QResource* self, QLocale* locale) {
 	self->setLocale(*locale);
 }
 
-QLocale* QResource_Locale(const QResource* self) {
+QLocale* QResource_locale(const QResource* self) {
 	return new QLocale(self->locale());
 }
 
-bool QResource_IsValid(const QResource* self) {
+bool QResource_isValid(const QResource* self) {
 	return self->isValid();
 }
 
-int QResource_CompressionAlgorithm(const QResource* self) {
+int QResource_compressionAlgorithm(const QResource* self) {
 	QResource::Compression _ret = self->compressionAlgorithm();
 	return static_cast<int>(_ret);
 }
 
-long long QResource_Size(const QResource* self) {
+long long QResource_size(const QResource* self) {
 	qint64 _ret = self->size();
 	return static_cast<long long>(_ret);
 }
 
-const unsigned char* QResource_Data(const QResource* self) {
+const unsigned char* QResource_data(const QResource* self) {
 	const uchar* _ret = self->data();
 	return static_cast<const unsigned char*>(_ret);
 }
 
-long long QResource_UncompressedSize(const QResource* self) {
+long long QResource_uncompressedSize(const QResource* self) {
 	qint64 _ret = self->uncompressedSize();
 	return static_cast<long long>(_ret);
 }
 
-struct miqt_string QResource_UncompressedData(const QResource* self) {
+struct miqt_string QResource_uncompressedData(const QResource* self) {
 	QByteArray _qb = self->uncompressedData();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -99,16 +99,16 @@ struct miqt_string QResource_UncompressedData(const QResource* self) {
 	return _ms;
 }
 
-QDateTime* QResource_LastModified(const QResource* self) {
+QDateTime* QResource_lastModified(const QResource* self) {
 	return new QDateTime(self->lastModified());
 }
 
-void QResource_AddSearchPath(struct miqt_string path) {
+void QResource_addSearchPath(struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	QResource::addSearchPath(path_QString);
 }
 
-struct miqt_array /* of struct miqt_string */  QResource_SearchPaths() {
+struct miqt_array /* of struct miqt_string */  QResource_searchPaths() {
 	QStringList _ret = QResource::searchPaths();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -128,51 +128,51 @@ struct miqt_array /* of struct miqt_string */  QResource_SearchPaths() {
 	return _out;
 }
 
-bool QResource_IsCompressed(const QResource* self) {
+bool QResource_isCompressed(const QResource* self) {
 	return self->isCompressed();
 }
 
-bool QResource_RegisterResource(struct miqt_string rccFilename) {
+bool QResource_registerResource(struct miqt_string rccFilename) {
 	QString rccFilename_QString = QString::fromUtf8(rccFilename.data, rccFilename.len);
 	return QResource::registerResource(rccFilename_QString);
 }
 
-bool QResource_UnregisterResource(struct miqt_string rccFilename) {
+bool QResource_unregisterResource(struct miqt_string rccFilename) {
 	QString rccFilename_QString = QString::fromUtf8(rccFilename.data, rccFilename.len);
 	return QResource::unregisterResource(rccFilename_QString);
 }
 
-bool QResource_RegisterResourceWithRccData(const unsigned char* rccData) {
+bool QResource_registerResourceWithRccData(const unsigned char* rccData) {
 	return QResource::registerResource(static_cast<const uchar*>(rccData));
 }
 
-bool QResource_UnregisterResourceWithRccData(const unsigned char* rccData) {
+bool QResource_unregisterResourceWithRccData(const unsigned char* rccData) {
 	return QResource::unregisterResource(static_cast<const uchar*>(rccData));
 }
 
-bool QResource_RegisterResource2(struct miqt_string rccFilename, struct miqt_string resourceRoot) {
+bool QResource_registerResource2(struct miqt_string rccFilename, struct miqt_string resourceRoot) {
 	QString rccFilename_QString = QString::fromUtf8(rccFilename.data, rccFilename.len);
 	QString resourceRoot_QString = QString::fromUtf8(resourceRoot.data, resourceRoot.len);
 	return QResource::registerResource(rccFilename_QString, resourceRoot_QString);
 }
 
-bool QResource_UnregisterResource2(struct miqt_string rccFilename, struct miqt_string resourceRoot) {
+bool QResource_unregisterResource2(struct miqt_string rccFilename, struct miqt_string resourceRoot) {
 	QString rccFilename_QString = QString::fromUtf8(rccFilename.data, rccFilename.len);
 	QString resourceRoot_QString = QString::fromUtf8(resourceRoot.data, resourceRoot.len);
 	return QResource::unregisterResource(rccFilename_QString, resourceRoot_QString);
 }
 
-bool QResource_RegisterResource22(const unsigned char* rccData, struct miqt_string resourceRoot) {
+bool QResource_registerResource22(const unsigned char* rccData, struct miqt_string resourceRoot) {
 	QString resourceRoot_QString = QString::fromUtf8(resourceRoot.data, resourceRoot.len);
 	return QResource::registerResource(static_cast<const uchar*>(rccData), resourceRoot_QString);
 }
 
-bool QResource_UnregisterResource22(const unsigned char* rccData, struct miqt_string resourceRoot) {
+bool QResource_unregisterResource22(const unsigned char* rccData, struct miqt_string resourceRoot) {
 	QString resourceRoot_QString = QString::fromUtf8(resourceRoot.data, resourceRoot.len);
 	return QResource::unregisterResource(static_cast<const uchar*>(rccData), resourceRoot_QString);
 }
 
-void QResource_Delete(QResource* self) {
+void QResource_delete(QResource* self) {
 	delete self;
 }
 

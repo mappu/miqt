@@ -63,78 +63,78 @@ func NewQAbstractProxyModel2(parent *QObject) *QAbstractProxyModel {
 }
 
 func (this *QAbstractProxyModel) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QAbstractProxyModel_MetaObject(this.h))
+	return newQMetaObject(C.QAbstractProxyModel_metaObject(this.h))
 }
 
 func (this *QAbstractProxyModel) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAbstractProxyModel_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAbstractProxyModel_metacast(this.h, param1_Cstring))
 }
 
 func QAbstractProxyModel_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractProxyModel_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractProxyModel_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractProxyModel) SetSourceModel(sourceModel *QAbstractItemModel) {
-	C.QAbstractProxyModel_SetSourceModel(this.h, sourceModel.cPointer())
+	C.QAbstractProxyModel_setSourceModel(this.h, sourceModel.cPointer())
 }
 
 func (this *QAbstractProxyModel) SourceModel() *QAbstractItemModel {
-	return newQAbstractItemModel(C.QAbstractProxyModel_SourceModel(this.h))
+	return newQAbstractItemModel(C.QAbstractProxyModel_sourceModel(this.h))
 }
 
 func (this *QAbstractProxyModel) MapToSource(proxyIndex *QModelIndex) *QModelIndex {
-	_goptr := newQModelIndex(C.QAbstractProxyModel_MapToSource(this.h, proxyIndex.cPointer()))
+	_goptr := newQModelIndex(C.QAbstractProxyModel_mapToSource(this.h, proxyIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractProxyModel) MapFromSource(sourceIndex *QModelIndex) *QModelIndex {
-	_goptr := newQModelIndex(C.QAbstractProxyModel_MapFromSource(this.h, sourceIndex.cPointer()))
+	_goptr := newQModelIndex(C.QAbstractProxyModel_mapFromSource(this.h, sourceIndex.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractProxyModel) MapSelectionToSource(selection *QItemSelection) *QItemSelection {
-	_goptr := newQItemSelection(C.QAbstractProxyModel_MapSelectionToSource(this.h, selection.cPointer()))
+	_goptr := newQItemSelection(C.QAbstractProxyModel_mapSelectionToSource(this.h, selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractProxyModel) MapSelectionFromSource(selection *QItemSelection) *QItemSelection {
-	_goptr := newQItemSelection(C.QAbstractProxyModel_MapSelectionFromSource(this.h, selection.cPointer()))
+	_goptr := newQItemSelection(C.QAbstractProxyModel_mapSelectionFromSource(this.h, selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractProxyModel) Submit() bool {
-	return (bool)(C.QAbstractProxyModel_Submit(this.h))
+	return (bool)(C.QAbstractProxyModel_submit(this.h))
 }
 
 func (this *QAbstractProxyModel) Revert() {
-	C.QAbstractProxyModel_Revert(this.h)
+	C.QAbstractProxyModel_revert(this.h)
 }
 
 func (this *QAbstractProxyModel) Data(proxyIndex *QModelIndex, role int) *QVariant {
-	_goptr := newQVariant(C.QAbstractProxyModel_Data(this.h, proxyIndex.cPointer(), (C.int)(role)))
+	_goptr := newQVariant(C.QAbstractProxyModel_data(this.h, proxyIndex.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractProxyModel) HeaderData(section int, orientation Orientation, role int) *QVariant {
-	_goptr := newQVariant(C.QAbstractProxyModel_HeaderData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role)))
+	_goptr := newQVariant(C.QAbstractProxyModel_headerData(this.h, (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractProxyModel) ItemData(index *QModelIndex) map[int]QVariant {
-	var _mm C.struct_miqt_map = C.QAbstractProxyModel_ItemData(this.h, index.cPointer())
+	var _mm C.struct_miqt_map = C.QAbstractProxyModel_itemData(this.h, index.cPointer())
 	_ret := make(map[int]QVariant, int(_mm.len))
 	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
@@ -151,11 +151,11 @@ func (this *QAbstractProxyModel) ItemData(index *QModelIndex) map[int]QVariant {
 }
 
 func (this *QAbstractProxyModel) Flags(index *QModelIndex) ItemFlag {
-	return (ItemFlag)(C.QAbstractProxyModel_Flags(this.h, index.cPointer()))
+	return (ItemFlag)(C.QAbstractProxyModel_flags(this.h, index.cPointer()))
 }
 
 func (this *QAbstractProxyModel) SetData(index *QModelIndex, value *QVariant, role int) bool {
-	return (bool)(C.QAbstractProxyModel_SetData(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
+	return (bool)(C.QAbstractProxyModel_setData(this.h, index.cPointer(), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QAbstractProxyModel) SetItemData(index *QModelIndex, roles map[int]QVariant) bool {
@@ -174,47 +174,47 @@ func (this *QAbstractProxyModel) SetItemData(index *QModelIndex, roles map[int]Q
 		keys:   unsafe.Pointer(roles_Keys_CArray),
 		values: unsafe.Pointer(roles_Values_CArray),
 	}
-	return (bool)(C.QAbstractProxyModel_SetItemData(this.h, index.cPointer(), roles_mm))
+	return (bool)(C.QAbstractProxyModel_setItemData(this.h, index.cPointer(), roles_mm))
 }
 
 func (this *QAbstractProxyModel) SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
-	return (bool)(C.QAbstractProxyModel_SetHeaderData(this.h, (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
+	return (bool)(C.QAbstractProxyModel_setHeaderData(this.h, (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
 }
 
 func (this *QAbstractProxyModel) ClearItemData(index *QModelIndex) bool {
-	return (bool)(C.QAbstractProxyModel_ClearItemData(this.h, index.cPointer()))
+	return (bool)(C.QAbstractProxyModel_clearItemData(this.h, index.cPointer()))
 }
 
 func (this *QAbstractProxyModel) Buddy(index *QModelIndex) *QModelIndex {
-	_goptr := newQModelIndex(C.QAbstractProxyModel_Buddy(this.h, index.cPointer()))
+	_goptr := newQModelIndex(C.QAbstractProxyModel_buddy(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractProxyModel) CanFetchMore(parent *QModelIndex) bool {
-	return (bool)(C.QAbstractProxyModel_CanFetchMore(this.h, parent.cPointer()))
+	return (bool)(C.QAbstractProxyModel_canFetchMore(this.h, parent.cPointer()))
 }
 
 func (this *QAbstractProxyModel) FetchMore(parent *QModelIndex) {
-	C.QAbstractProxyModel_FetchMore(this.h, parent.cPointer())
+	C.QAbstractProxyModel_fetchMore(this.h, parent.cPointer())
 }
 
 func (this *QAbstractProxyModel) Sort(column int, order SortOrder) {
-	C.QAbstractProxyModel_Sort(this.h, (C.int)(column), (C.int)(order))
+	C.QAbstractProxyModel_sort(this.h, (C.int)(column), (C.int)(order))
 }
 
 func (this *QAbstractProxyModel) Span(index *QModelIndex) *QSize {
-	_goptr := newQSize(C.QAbstractProxyModel_Span(this.h, index.cPointer()))
+	_goptr := newQSize(C.QAbstractProxyModel_span(this.h, index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractProxyModel) HasChildren(parent *QModelIndex) bool {
-	return (bool)(C.QAbstractProxyModel_HasChildren(this.h, parent.cPointer()))
+	return (bool)(C.QAbstractProxyModel_hasChildren(this.h, parent.cPointer()))
 }
 
 func (this *QAbstractProxyModel) Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
-	_goptr := newQModelIndex(C.QAbstractProxyModel_Sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
+	_goptr := newQModelIndex(C.QAbstractProxyModel_sibling(this.h, (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -226,19 +226,19 @@ func (this *QAbstractProxyModel) MimeData(indexes []QModelIndex) *QMimeData {
 		indexes_CArray[i] = indexes[i].cPointer()
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
-	return newQMimeData(C.QAbstractProxyModel_MimeData(this.h, indexes_ma))
+	return newQMimeData(C.QAbstractProxyModel_mimeData(this.h, indexes_ma))
 }
 
 func (this *QAbstractProxyModel) CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	return (bool)(C.QAbstractProxyModel_CanDropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QAbstractProxyModel_canDropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QAbstractProxyModel) DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
-	return (bool)(C.QAbstractProxyModel_DropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QAbstractProxyModel_dropMimeData(this.h, data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 }
 
 func (this *QAbstractProxyModel) MimeTypes() []string {
-	var _ma C.struct_miqt_array = C.QAbstractProxyModel_MimeTypes(this.h)
+	var _ma C.struct_miqt_array = C.QAbstractProxyModel_mimeTypes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -251,15 +251,15 @@ func (this *QAbstractProxyModel) MimeTypes() []string {
 }
 
 func (this *QAbstractProxyModel) SupportedDragActions() DropAction {
-	return (DropAction)(C.QAbstractProxyModel_SupportedDragActions(this.h))
+	return (DropAction)(C.QAbstractProxyModel_supportedDragActions(this.h))
 }
 
 func (this *QAbstractProxyModel) SupportedDropActions() DropAction {
-	return (DropAction)(C.QAbstractProxyModel_SupportedDropActions(this.h))
+	return (DropAction)(C.QAbstractProxyModel_supportedDropActions(this.h))
 }
 
 func (this *QAbstractProxyModel) RoleNames() map[int][]byte {
-	var _mm C.struct_miqt_map = C.QAbstractProxyModel_RoleNames(this.h)
+	var _mm C.struct_miqt_map = C.QAbstractProxyModel_roleNames(this.h)
 	_ret := make(map[int][]byte, int(_mm.len))
 	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
@@ -280,7 +280,7 @@ func QAbstractProxyModel_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractProxyModel_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractProxyModel_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -291,7 +291,7 @@ func QAbstractProxyModel_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractProxyModel_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractProxyModel_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -299,18 +299,18 @@ func QAbstractProxyModel_Tr3(s string, c string, n int) string {
 
 func (this *QAbstractProxyModel) callVirtualBase_SetSourceModel(sourceModel *QAbstractItemModel) {
 
-	C.QAbstractProxyModel_virtualbase_SetSourceModel(unsafe.Pointer(this.h), sourceModel.cPointer())
+	C.QAbstractProxyModel_virtualbase_setSourceModel(unsafe.Pointer(this.h), sourceModel.cPointer())
 
 }
-func (this *QAbstractProxyModel) OnSetSourceModel(slot func(super func(sourceModel *QAbstractItemModel), sourceModel *QAbstractItemModel)) {
-	ok := C.QAbstractProxyModel_override_virtual_SetSourceModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnsetSourceModel(slot func(super func(sourceModel *QAbstractItemModel), sourceModel *QAbstractItemModel)) {
+	ok := C.QAbstractProxyModel_override_virtual_setSourceModel(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_SetSourceModel
-func miqt_exec_callback_QAbstractProxyModel_SetSourceModel(self *C.QAbstractProxyModel, cb C.intptr_t, sourceModel *C.QAbstractItemModel) {
+//export miqt_exec_callback_QAbstractProxyModel_setSourceModel
+func miqt_exec_callback_QAbstractProxyModel_setSourceModel(self *C.QAbstractProxyModel, cb C.intptr_t, sourceModel *C.QAbstractItemModel) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceModel *QAbstractItemModel), sourceModel *QAbstractItemModel))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -322,15 +322,15 @@ func miqt_exec_callback_QAbstractProxyModel_SetSourceModel(self *C.QAbstractProx
 	gofunc((&QAbstractProxyModel{h: self}).callVirtualBase_SetSourceModel, slotval1)
 
 }
-func (this *QAbstractProxyModel) OnMapToSource(slot func(proxyIndex *QModelIndex) *QModelIndex) {
-	ok := C.QAbstractProxyModel_override_virtual_MapToSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnmapToSource(slot func(proxyIndex *QModelIndex) *QModelIndex) {
+	ok := C.QAbstractProxyModel_override_virtual_mapToSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_MapToSource
-func miqt_exec_callback_QAbstractProxyModel_MapToSource(self *C.QAbstractProxyModel, cb C.intptr_t, proxyIndex *C.QModelIndex) *C.QModelIndex {
+//export miqt_exec_callback_QAbstractProxyModel_mapToSource
+func miqt_exec_callback_QAbstractProxyModel_mapToSource(self *C.QAbstractProxyModel, cb C.intptr_t, proxyIndex *C.QModelIndex) *C.QModelIndex {
 	gofunc, ok := cgo.Handle(cb).Value().(func(proxyIndex *QModelIndex) *QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -344,15 +344,15 @@ func miqt_exec_callback_QAbstractProxyModel_MapToSource(self *C.QAbstractProxyMo
 	return virtualReturn.cPointer()
 
 }
-func (this *QAbstractProxyModel) OnMapFromSource(slot func(sourceIndex *QModelIndex) *QModelIndex) {
-	ok := C.QAbstractProxyModel_override_virtual_MapFromSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnmapFromSource(slot func(sourceIndex *QModelIndex) *QModelIndex) {
+	ok := C.QAbstractProxyModel_override_virtual_mapFromSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_MapFromSource
-func miqt_exec_callback_QAbstractProxyModel_MapFromSource(self *C.QAbstractProxyModel, cb C.intptr_t, sourceIndex *C.QModelIndex) *C.QModelIndex {
+//export miqt_exec_callback_QAbstractProxyModel_mapFromSource
+func miqt_exec_callback_QAbstractProxyModel_mapFromSource(self *C.QAbstractProxyModel, cb C.intptr_t, sourceIndex *C.QModelIndex) *C.QModelIndex {
 	gofunc, ok := cgo.Handle(cb).Value().(func(sourceIndex *QModelIndex) *QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -369,20 +369,20 @@ func miqt_exec_callback_QAbstractProxyModel_MapFromSource(self *C.QAbstractProxy
 
 func (this *QAbstractProxyModel) callVirtualBase_MapSelectionToSource(selection *QItemSelection) *QItemSelection {
 
-	_goptr := newQItemSelection(C.QAbstractProxyModel_virtualbase_MapSelectionToSource(unsafe.Pointer(this.h), selection.cPointer()))
+	_goptr := newQItemSelection(C.QAbstractProxyModel_virtualbase_mapSelectionToSource(unsafe.Pointer(this.h), selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QAbstractProxyModel) OnMapSelectionToSource(slot func(super func(selection *QItemSelection) *QItemSelection, selection *QItemSelection) *QItemSelection) {
-	ok := C.QAbstractProxyModel_override_virtual_MapSelectionToSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnmapSelectionToSource(slot func(super func(selection *QItemSelection) *QItemSelection, selection *QItemSelection) *QItemSelection) {
+	ok := C.QAbstractProxyModel_override_virtual_mapSelectionToSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_MapSelectionToSource
-func miqt_exec_callback_QAbstractProxyModel_MapSelectionToSource(self *C.QAbstractProxyModel, cb C.intptr_t, selection *C.QItemSelection) *C.QItemSelection {
+//export miqt_exec_callback_QAbstractProxyModel_mapSelectionToSource
+func miqt_exec_callback_QAbstractProxyModel_mapSelectionToSource(self *C.QAbstractProxyModel, cb C.intptr_t, selection *C.QItemSelection) *C.QItemSelection {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selection *QItemSelection) *QItemSelection, selection *QItemSelection) *QItemSelection)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -399,20 +399,20 @@ func miqt_exec_callback_QAbstractProxyModel_MapSelectionToSource(self *C.QAbstra
 
 func (this *QAbstractProxyModel) callVirtualBase_MapSelectionFromSource(selection *QItemSelection) *QItemSelection {
 
-	_goptr := newQItemSelection(C.QAbstractProxyModel_virtualbase_MapSelectionFromSource(unsafe.Pointer(this.h), selection.cPointer()))
+	_goptr := newQItemSelection(C.QAbstractProxyModel_virtualbase_mapSelectionFromSource(unsafe.Pointer(this.h), selection.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QAbstractProxyModel) OnMapSelectionFromSource(slot func(super func(selection *QItemSelection) *QItemSelection, selection *QItemSelection) *QItemSelection) {
-	ok := C.QAbstractProxyModel_override_virtual_MapSelectionFromSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnmapSelectionFromSource(slot func(super func(selection *QItemSelection) *QItemSelection, selection *QItemSelection) *QItemSelection) {
+	ok := C.QAbstractProxyModel_override_virtual_mapSelectionFromSource(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_MapSelectionFromSource
-func miqt_exec_callback_QAbstractProxyModel_MapSelectionFromSource(self *C.QAbstractProxyModel, cb C.intptr_t, selection *C.QItemSelection) *C.QItemSelection {
+//export miqt_exec_callback_QAbstractProxyModel_mapSelectionFromSource
+func miqt_exec_callback_QAbstractProxyModel_mapSelectionFromSource(self *C.QAbstractProxyModel, cb C.intptr_t, selection *C.QItemSelection) *C.QItemSelection {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(selection *QItemSelection) *QItemSelection, selection *QItemSelection) *QItemSelection)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -429,18 +429,18 @@ func miqt_exec_callback_QAbstractProxyModel_MapSelectionFromSource(self *C.QAbst
 
 func (this *QAbstractProxyModel) callVirtualBase_Submit() bool {
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_Submit(unsafe.Pointer(this.h)))
+	return (bool)(C.QAbstractProxyModel_virtualbase_submit(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractProxyModel) OnSubmit(slot func(super func() bool) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_Submit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) Onsubmit(slot func(super func() bool) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_submit(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_Submit
-func miqt_exec_callback_QAbstractProxyModel_Submit(self *C.QAbstractProxyModel, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_submit
+func miqt_exec_callback_QAbstractProxyModel_submit(self *C.QAbstractProxyModel, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -454,18 +454,18 @@ func miqt_exec_callback_QAbstractProxyModel_Submit(self *C.QAbstractProxyModel, 
 
 func (this *QAbstractProxyModel) callVirtualBase_Revert() {
 
-	C.QAbstractProxyModel_virtualbase_Revert(unsafe.Pointer(this.h))
+	C.QAbstractProxyModel_virtualbase_revert(unsafe.Pointer(this.h))
 
 }
-func (this *QAbstractProxyModel) OnRevert(slot func(super func())) {
-	ok := C.QAbstractProxyModel_override_virtual_Revert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) Onrevert(slot func(super func())) {
+	ok := C.QAbstractProxyModel_override_virtual_revert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_Revert
-func miqt_exec_callback_QAbstractProxyModel_Revert(self *C.QAbstractProxyModel, cb C.intptr_t) {
+//export miqt_exec_callback_QAbstractProxyModel_revert
+func miqt_exec_callback_QAbstractProxyModel_revert(self *C.QAbstractProxyModel, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -477,20 +477,20 @@ func miqt_exec_callback_QAbstractProxyModel_Revert(self *C.QAbstractProxyModel, 
 
 func (this *QAbstractProxyModel) callVirtualBase_Data(proxyIndex *QModelIndex, role int) *QVariant {
 
-	_goptr := newQVariant(C.QAbstractProxyModel_virtualbase_Data(unsafe.Pointer(this.h), proxyIndex.cPointer(), (C.int)(role)))
+	_goptr := newQVariant(C.QAbstractProxyModel_virtualbase_data(unsafe.Pointer(this.h), proxyIndex.cPointer(), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QAbstractProxyModel) OnData(slot func(super func(proxyIndex *QModelIndex, role int) *QVariant, proxyIndex *QModelIndex, role int) *QVariant) {
-	ok := C.QAbstractProxyModel_override_virtual_Data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) Ondata(slot func(super func(proxyIndex *QModelIndex, role int) *QVariant, proxyIndex *QModelIndex, role int) *QVariant) {
+	ok := C.QAbstractProxyModel_override_virtual_data(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_Data
-func miqt_exec_callback_QAbstractProxyModel_Data(self *C.QAbstractProxyModel, cb C.intptr_t, proxyIndex *C.QModelIndex, role C.int) *C.QVariant {
+//export miqt_exec_callback_QAbstractProxyModel_data
+func miqt_exec_callback_QAbstractProxyModel_data(self *C.QAbstractProxyModel, cb C.intptr_t, proxyIndex *C.QModelIndex, role C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(proxyIndex *QModelIndex, role int) *QVariant, proxyIndex *QModelIndex, role int) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -509,20 +509,20 @@ func miqt_exec_callback_QAbstractProxyModel_Data(self *C.QAbstractProxyModel, cb
 
 func (this *QAbstractProxyModel) callVirtualBase_HeaderData(section int, orientation Orientation, role int) *QVariant {
 
-	_goptr := newQVariant(C.QAbstractProxyModel_virtualbase_HeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
+	_goptr := newQVariant(C.QAbstractProxyModel_virtualbase_headerData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), (C.int)(role)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QAbstractProxyModel) OnHeaderData(slot func(super func(section int, orientation Orientation, role int) *QVariant, section int, orientation Orientation, role int) *QVariant) {
-	ok := C.QAbstractProxyModel_override_virtual_HeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnheaderData(slot func(super func(section int, orientation Orientation, role int) *QVariant, section int, orientation Orientation, role int) *QVariant) {
+	ok := C.QAbstractProxyModel_override_virtual_headerData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_HeaderData
-func miqt_exec_callback_QAbstractProxyModel_HeaderData(self *C.QAbstractProxyModel, cb C.intptr_t, section C.int, orientation C.int, role C.int) *C.QVariant {
+//export miqt_exec_callback_QAbstractProxyModel_headerData
+func miqt_exec_callback_QAbstractProxyModel_headerData(self *C.QAbstractProxyModel, cb C.intptr_t, section C.int, orientation C.int, role C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(section int, orientation Orientation, role int) *QVariant, section int, orientation Orientation, role int) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -543,7 +543,7 @@ func miqt_exec_callback_QAbstractProxyModel_HeaderData(self *C.QAbstractProxyMod
 
 func (this *QAbstractProxyModel) callVirtualBase_ItemData(index *QModelIndex) map[int]QVariant {
 
-	var _mm C.struct_miqt_map = C.QAbstractProxyModel_virtualbase_ItemData(unsafe.Pointer(this.h), index.cPointer())
+	var _mm C.struct_miqt_map = C.QAbstractProxyModel_virtualbase_itemData(unsafe.Pointer(this.h), index.cPointer())
 	_ret := make(map[int]QVariant, int(_mm.len))
 	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
@@ -559,15 +559,15 @@ func (this *QAbstractProxyModel) callVirtualBase_ItemData(index *QModelIndex) ma
 	return _ret
 
 }
-func (this *QAbstractProxyModel) OnItemData(slot func(super func(index *QModelIndex) map[int]QVariant, index *QModelIndex) map[int]QVariant) {
-	ok := C.QAbstractProxyModel_override_virtual_ItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnitemData(slot func(super func(index *QModelIndex) map[int]QVariant, index *QModelIndex) map[int]QVariant) {
+	ok := C.QAbstractProxyModel_override_virtual_itemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_ItemData
-func miqt_exec_callback_QAbstractProxyModel_ItemData(self *C.QAbstractProxyModel, cb C.intptr_t, index *C.QModelIndex) C.struct_miqt_map {
+//export miqt_exec_callback_QAbstractProxyModel_itemData
+func miqt_exec_callback_QAbstractProxyModel_itemData(self *C.QAbstractProxyModel, cb C.intptr_t, index *C.QModelIndex) C.struct_miqt_map {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) map[int]QVariant, index *QModelIndex) map[int]QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -599,18 +599,18 @@ func miqt_exec_callback_QAbstractProxyModel_ItemData(self *C.QAbstractProxyModel
 
 func (this *QAbstractProxyModel) callVirtualBase_Flags(index *QModelIndex) ItemFlag {
 
-	return (ItemFlag)(C.QAbstractProxyModel_virtualbase_Flags(unsafe.Pointer(this.h), index.cPointer()))
+	return (ItemFlag)(C.QAbstractProxyModel_virtualbase_flags(unsafe.Pointer(this.h), index.cPointer()))
 
 }
-func (this *QAbstractProxyModel) OnFlags(slot func(super func(index *QModelIndex) ItemFlag, index *QModelIndex) ItemFlag) {
-	ok := C.QAbstractProxyModel_override_virtual_Flags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) Onflags(slot func(super func(index *QModelIndex) ItemFlag, index *QModelIndex) ItemFlag) {
+	ok := C.QAbstractProxyModel_override_virtual_flags(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_Flags
-func miqt_exec_callback_QAbstractProxyModel_Flags(self *C.QAbstractProxyModel, cb C.intptr_t, index *C.QModelIndex) C.int {
+//export miqt_exec_callback_QAbstractProxyModel_flags
+func miqt_exec_callback_QAbstractProxyModel_flags(self *C.QAbstractProxyModel, cb C.intptr_t, index *C.QModelIndex) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) ItemFlag, index *QModelIndex) ItemFlag)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -627,18 +627,18 @@ func miqt_exec_callback_QAbstractProxyModel_Flags(self *C.QAbstractProxyModel, c
 
 func (this *QAbstractProxyModel) callVirtualBase_SetData(index *QModelIndex, value *QVariant, role int) bool {
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_SetData(unsafe.Pointer(this.h), index.cPointer(), value.cPointer(), (C.int)(role)))
+	return (bool)(C.QAbstractProxyModel_virtualbase_setData(unsafe.Pointer(this.h), index.cPointer(), value.cPointer(), (C.int)(role)))
 
 }
-func (this *QAbstractProxyModel) OnSetData(slot func(super func(index *QModelIndex, value *QVariant, role int) bool, index *QModelIndex, value *QVariant, role int) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_SetData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnsetData(slot func(super func(index *QModelIndex, value *QVariant, role int) bool, index *QModelIndex, value *QVariant, role int) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_setData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_SetData
-func miqt_exec_callback_QAbstractProxyModel_SetData(self *C.QAbstractProxyModel, cb C.intptr_t, index *C.QModelIndex, value *C.QVariant, role C.int) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_setData
+func miqt_exec_callback_QAbstractProxyModel_setData(self *C.QAbstractProxyModel, cb C.intptr_t, index *C.QModelIndex, value *C.QVariant, role C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, value *QVariant, role int) bool, index *QModelIndex, value *QVariant, role int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -674,18 +674,18 @@ func (this *QAbstractProxyModel) callVirtualBase_SetItemData(index *QModelIndex,
 		values: unsafe.Pointer(roles_Values_CArray),
 	}
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_SetItemData(unsafe.Pointer(this.h), index.cPointer(), roles_mm))
+	return (bool)(C.QAbstractProxyModel_virtualbase_setItemData(unsafe.Pointer(this.h), index.cPointer(), roles_mm))
 
 }
-func (this *QAbstractProxyModel) OnSetItemData(slot func(super func(index *QModelIndex, roles map[int]QVariant) bool, index *QModelIndex, roles map[int]QVariant) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_SetItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnsetItemData(slot func(super func(index *QModelIndex, roles map[int]QVariant) bool, index *QModelIndex, roles map[int]QVariant) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_setItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_SetItemData
-func miqt_exec_callback_QAbstractProxyModel_SetItemData(self *C.QAbstractProxyModel, cb C.intptr_t, index *C.QModelIndex, roles C.struct_miqt_map) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_setItemData
+func miqt_exec_callback_QAbstractProxyModel_setItemData(self *C.QAbstractProxyModel, cb C.intptr_t, index *C.QModelIndex, roles C.struct_miqt_map) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, roles map[int]QVariant) bool, index *QModelIndex, roles map[int]QVariant) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -717,18 +717,18 @@ func miqt_exec_callback_QAbstractProxyModel_SetItemData(self *C.QAbstractProxyMo
 
 func (this *QAbstractProxyModel) callVirtualBase_SetHeaderData(section int, orientation Orientation, value *QVariant, role int) bool {
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_SetHeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
+	return (bool)(C.QAbstractProxyModel_virtualbase_setHeaderData(unsafe.Pointer(this.h), (C.int)(section), (C.int)(orientation), value.cPointer(), (C.int)(role)))
 
 }
-func (this *QAbstractProxyModel) OnSetHeaderData(slot func(super func(section int, orientation Orientation, value *QVariant, role int) bool, section int, orientation Orientation, value *QVariant, role int) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_SetHeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnsetHeaderData(slot func(super func(section int, orientation Orientation, value *QVariant, role int) bool, section int, orientation Orientation, value *QVariant, role int) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_setHeaderData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_SetHeaderData
-func miqt_exec_callback_QAbstractProxyModel_SetHeaderData(self *C.QAbstractProxyModel, cb C.intptr_t, section C.int, orientation C.int, value *C.QVariant, role C.int) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_setHeaderData
+func miqt_exec_callback_QAbstractProxyModel_setHeaderData(self *C.QAbstractProxyModel, cb C.intptr_t, section C.int, orientation C.int, value *C.QVariant, role C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(section int, orientation Orientation, value *QVariant, role int) bool, section int, orientation Orientation, value *QVariant, role int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -751,18 +751,18 @@ func miqt_exec_callback_QAbstractProxyModel_SetHeaderData(self *C.QAbstractProxy
 
 func (this *QAbstractProxyModel) callVirtualBase_ClearItemData(index *QModelIndex) bool {
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_ClearItemData(unsafe.Pointer(this.h), index.cPointer()))
+	return (bool)(C.QAbstractProxyModel_virtualbase_clearItemData(unsafe.Pointer(this.h), index.cPointer()))
 
 }
-func (this *QAbstractProxyModel) OnClearItemData(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_ClearItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnclearItemData(slot func(super func(index *QModelIndex) bool, index *QModelIndex) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_clearItemData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_ClearItemData
-func miqt_exec_callback_QAbstractProxyModel_ClearItemData(self *C.QAbstractProxyModel, cb C.intptr_t, index *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_clearItemData
+func miqt_exec_callback_QAbstractProxyModel_clearItemData(self *C.QAbstractProxyModel, cb C.intptr_t, index *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) bool, index *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -779,20 +779,20 @@ func miqt_exec_callback_QAbstractProxyModel_ClearItemData(self *C.QAbstractProxy
 
 func (this *QAbstractProxyModel) callVirtualBase_Buddy(index *QModelIndex) *QModelIndex {
 
-	_goptr := newQModelIndex(C.QAbstractProxyModel_virtualbase_Buddy(unsafe.Pointer(this.h), index.cPointer()))
+	_goptr := newQModelIndex(C.QAbstractProxyModel_virtualbase_buddy(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QAbstractProxyModel) OnBuddy(slot func(super func(index *QModelIndex) *QModelIndex, index *QModelIndex) *QModelIndex) {
-	ok := C.QAbstractProxyModel_override_virtual_Buddy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) Onbuddy(slot func(super func(index *QModelIndex) *QModelIndex, index *QModelIndex) *QModelIndex) {
+	ok := C.QAbstractProxyModel_override_virtual_buddy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_Buddy
-func miqt_exec_callback_QAbstractProxyModel_Buddy(self *C.QAbstractProxyModel, cb C.intptr_t, index *C.QModelIndex) *C.QModelIndex {
+//export miqt_exec_callback_QAbstractProxyModel_buddy
+func miqt_exec_callback_QAbstractProxyModel_buddy(self *C.QAbstractProxyModel, cb C.intptr_t, index *C.QModelIndex) *C.QModelIndex {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) *QModelIndex, index *QModelIndex) *QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -809,18 +809,18 @@ func miqt_exec_callback_QAbstractProxyModel_Buddy(self *C.QAbstractProxyModel, c
 
 func (this *QAbstractProxyModel) callVirtualBase_CanFetchMore(parent *QModelIndex) bool {
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_CanFetchMore(unsafe.Pointer(this.h), parent.cPointer()))
+	return (bool)(C.QAbstractProxyModel_virtualbase_canFetchMore(unsafe.Pointer(this.h), parent.cPointer()))
 
 }
-func (this *QAbstractProxyModel) OnCanFetchMore(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_CanFetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OncanFetchMore(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_canFetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_CanFetchMore
-func miqt_exec_callback_QAbstractProxyModel_CanFetchMore(self *C.QAbstractProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_canFetchMore
+func miqt_exec_callback_QAbstractProxyModel_canFetchMore(self *C.QAbstractProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -837,18 +837,18 @@ func miqt_exec_callback_QAbstractProxyModel_CanFetchMore(self *C.QAbstractProxyM
 
 func (this *QAbstractProxyModel) callVirtualBase_FetchMore(parent *QModelIndex) {
 
-	C.QAbstractProxyModel_virtualbase_FetchMore(unsafe.Pointer(this.h), parent.cPointer())
+	C.QAbstractProxyModel_virtualbase_fetchMore(unsafe.Pointer(this.h), parent.cPointer())
 
 }
-func (this *QAbstractProxyModel) OnFetchMore(slot func(super func(parent *QModelIndex), parent *QModelIndex)) {
-	ok := C.QAbstractProxyModel_override_virtual_FetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnfetchMore(slot func(super func(parent *QModelIndex), parent *QModelIndex)) {
+	ok := C.QAbstractProxyModel_override_virtual_fetchMore(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_FetchMore
-func miqt_exec_callback_QAbstractProxyModel_FetchMore(self *C.QAbstractProxyModel, cb C.intptr_t, parent *C.QModelIndex) {
+//export miqt_exec_callback_QAbstractProxyModel_fetchMore
+func miqt_exec_callback_QAbstractProxyModel_fetchMore(self *C.QAbstractProxyModel, cb C.intptr_t, parent *C.QModelIndex) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex), parent *QModelIndex))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -863,18 +863,18 @@ func miqt_exec_callback_QAbstractProxyModel_FetchMore(self *C.QAbstractProxyMode
 
 func (this *QAbstractProxyModel) callVirtualBase_Sort(column int, order SortOrder) {
 
-	C.QAbstractProxyModel_virtualbase_Sort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
+	C.QAbstractProxyModel_virtualbase_sort(unsafe.Pointer(this.h), (C.int)(column), (C.int)(order))
 
 }
-func (this *QAbstractProxyModel) OnSort(slot func(super func(column int, order SortOrder), column int, order SortOrder)) {
-	ok := C.QAbstractProxyModel_override_virtual_Sort(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) Onsort(slot func(super func(column int, order SortOrder), column int, order SortOrder)) {
+	ok := C.QAbstractProxyModel_override_virtual_sort(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_Sort
-func miqt_exec_callback_QAbstractProxyModel_Sort(self *C.QAbstractProxyModel, cb C.intptr_t, column C.int, order C.int) {
+//export miqt_exec_callback_QAbstractProxyModel_sort
+func miqt_exec_callback_QAbstractProxyModel_sort(self *C.QAbstractProxyModel, cb C.intptr_t, column C.int, order C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int, order SortOrder), column int, order SortOrder))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -891,20 +891,20 @@ func miqt_exec_callback_QAbstractProxyModel_Sort(self *C.QAbstractProxyModel, cb
 
 func (this *QAbstractProxyModel) callVirtualBase_Span(index *QModelIndex) *QSize {
 
-	_goptr := newQSize(C.QAbstractProxyModel_virtualbase_Span(unsafe.Pointer(this.h), index.cPointer()))
+	_goptr := newQSize(C.QAbstractProxyModel_virtualbase_span(unsafe.Pointer(this.h), index.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QAbstractProxyModel) OnSpan(slot func(super func(index *QModelIndex) *QSize, index *QModelIndex) *QSize) {
-	ok := C.QAbstractProxyModel_override_virtual_Span(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) Onspan(slot func(super func(index *QModelIndex) *QSize, index *QModelIndex) *QSize) {
+	ok := C.QAbstractProxyModel_override_virtual_span(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_Span
-func miqt_exec_callback_QAbstractProxyModel_Span(self *C.QAbstractProxyModel, cb C.intptr_t, index *C.QModelIndex) *C.QSize {
+//export miqt_exec_callback_QAbstractProxyModel_span
+func miqt_exec_callback_QAbstractProxyModel_span(self *C.QAbstractProxyModel, cb C.intptr_t, index *C.QModelIndex) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex) *QSize, index *QModelIndex) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -921,18 +921,18 @@ func miqt_exec_callback_QAbstractProxyModel_Span(self *C.QAbstractProxyModel, cb
 
 func (this *QAbstractProxyModel) callVirtualBase_HasChildren(parent *QModelIndex) bool {
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_HasChildren(unsafe.Pointer(this.h), parent.cPointer()))
+	return (bool)(C.QAbstractProxyModel_virtualbase_hasChildren(unsafe.Pointer(this.h), parent.cPointer()))
 
 }
-func (this *QAbstractProxyModel) OnHasChildren(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_HasChildren(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnhasChildren(slot func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_hasChildren(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_HasChildren
-func miqt_exec_callback_QAbstractProxyModel_HasChildren(self *C.QAbstractProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_hasChildren
+func miqt_exec_callback_QAbstractProxyModel_hasChildren(self *C.QAbstractProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(parent *QModelIndex) bool, parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -949,20 +949,20 @@ func miqt_exec_callback_QAbstractProxyModel_HasChildren(self *C.QAbstractProxyMo
 
 func (this *QAbstractProxyModel) callVirtualBase_Sibling(row int, column int, idx *QModelIndex) *QModelIndex {
 
-	_goptr := newQModelIndex(C.QAbstractProxyModel_virtualbase_Sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
+	_goptr := newQModelIndex(C.QAbstractProxyModel_virtualbase_sibling(unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), idx.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QAbstractProxyModel) OnSibling(slot func(super func(row int, column int, idx *QModelIndex) *QModelIndex, row int, column int, idx *QModelIndex) *QModelIndex) {
-	ok := C.QAbstractProxyModel_override_virtual_Sibling(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) Onsibling(slot func(super func(row int, column int, idx *QModelIndex) *QModelIndex, row int, column int, idx *QModelIndex) *QModelIndex) {
+	ok := C.QAbstractProxyModel_override_virtual_sibling(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_Sibling
-func miqt_exec_callback_QAbstractProxyModel_Sibling(self *C.QAbstractProxyModel, cb C.intptr_t, row C.int, column C.int, idx *C.QModelIndex) *C.QModelIndex {
+//export miqt_exec_callback_QAbstractProxyModel_sibling
+func miqt_exec_callback_QAbstractProxyModel_sibling(self *C.QAbstractProxyModel, cb C.intptr_t, row C.int, column C.int, idx *C.QModelIndex) *C.QModelIndex {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, column int, idx *QModelIndex) *QModelIndex, row int, column int, idx *QModelIndex) *QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -989,18 +989,18 @@ func (this *QAbstractProxyModel) callVirtualBase_MimeData(indexes []QModelIndex)
 	}
 	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
 
-	return newQMimeData(C.QAbstractProxyModel_virtualbase_MimeData(unsafe.Pointer(this.h), indexes_ma))
+	return newQMimeData(C.QAbstractProxyModel_virtualbase_mimeData(unsafe.Pointer(this.h), indexes_ma))
 
 }
-func (this *QAbstractProxyModel) OnMimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
-	ok := C.QAbstractProxyModel_override_virtual_MimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnmimeData(slot func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData) {
+	ok := C.QAbstractProxyModel_override_virtual_mimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_MimeData
-func miqt_exec_callback_QAbstractProxyModel_MimeData(self *C.QAbstractProxyModel, cb C.intptr_t, indexes C.struct_miqt_array) *C.QMimeData {
+//export miqt_exec_callback_QAbstractProxyModel_mimeData
+func miqt_exec_callback_QAbstractProxyModel_mimeData(self *C.QAbstractProxyModel, cb C.intptr_t, indexes C.struct_miqt_array) *C.QMimeData {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(indexes []QModelIndex) *QMimeData, indexes []QModelIndex) *QMimeData)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1025,18 +1025,18 @@ func miqt_exec_callback_QAbstractProxyModel_MimeData(self *C.QAbstractProxyModel
 
 func (this *QAbstractProxyModel) callVirtualBase_CanDropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_CanDropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QAbstractProxyModel_virtualbase_canDropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 
 }
-func (this *QAbstractProxyModel) OnCanDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_CanDropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OncanDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_canDropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_CanDropMimeData
-func miqt_exec_callback_QAbstractProxyModel_CanDropMimeData(self *C.QAbstractProxyModel, cb C.intptr_t, data *C.QMimeData, action C.int, row C.int, column C.int, parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_canDropMimeData
+func miqt_exec_callback_QAbstractProxyModel_canDropMimeData(self *C.QAbstractProxyModel, cb C.intptr_t, data *C.QMimeData, action C.int, row C.int, column C.int, parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1061,18 +1061,18 @@ func miqt_exec_callback_QAbstractProxyModel_CanDropMimeData(self *C.QAbstractPro
 
 func (this *QAbstractProxyModel) callVirtualBase_DropMimeData(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool {
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_DropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
+	return (bool)(C.QAbstractProxyModel_virtualbase_dropMimeData(unsafe.Pointer(this.h), data.cPointer(), (C.int)(action), (C.int)(row), (C.int)(column), parent.cPointer()))
 
 }
-func (this *QAbstractProxyModel) OnDropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_DropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OndropMimeData(slot func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_dropMimeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_DropMimeData
-func miqt_exec_callback_QAbstractProxyModel_DropMimeData(self *C.QAbstractProxyModel, cb C.intptr_t, data *C.QMimeData, action C.int, row C.int, column C.int, parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_dropMimeData
+func miqt_exec_callback_QAbstractProxyModel_dropMimeData(self *C.QAbstractProxyModel, cb C.intptr_t, data *C.QMimeData, action C.int, row C.int, column C.int, parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool, data *QMimeData, action DropAction, row int, column int, parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1097,7 +1097,7 @@ func miqt_exec_callback_QAbstractProxyModel_DropMimeData(self *C.QAbstractProxyM
 
 func (this *QAbstractProxyModel) callVirtualBase_MimeTypes() []string {
 
-	var _ma C.struct_miqt_array = C.QAbstractProxyModel_virtualbase_MimeTypes(unsafe.Pointer(this.h))
+	var _ma C.struct_miqt_array = C.QAbstractProxyModel_virtualbase_mimeTypes(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1109,15 +1109,15 @@ func (this *QAbstractProxyModel) callVirtualBase_MimeTypes() []string {
 	return _ret
 
 }
-func (this *QAbstractProxyModel) OnMimeTypes(slot func(super func() []string) []string) {
-	ok := C.QAbstractProxyModel_override_virtual_MimeTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnmimeTypes(slot func(super func() []string) []string) {
+	ok := C.QAbstractProxyModel_override_virtual_mimeTypes(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_MimeTypes
-func miqt_exec_callback_QAbstractProxyModel_MimeTypes(self *C.QAbstractProxyModel, cb C.intptr_t) C.struct_miqt_array {
+//export miqt_exec_callback_QAbstractProxyModel_mimeTypes
+func miqt_exec_callback_QAbstractProxyModel_mimeTypes(self *C.QAbstractProxyModel, cb C.intptr_t) C.struct_miqt_array {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() []string) []string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1141,18 +1141,18 @@ func miqt_exec_callback_QAbstractProxyModel_MimeTypes(self *C.QAbstractProxyMode
 
 func (this *QAbstractProxyModel) callVirtualBase_SupportedDragActions() DropAction {
 
-	return (DropAction)(C.QAbstractProxyModel_virtualbase_SupportedDragActions(unsafe.Pointer(this.h)))
+	return (DropAction)(C.QAbstractProxyModel_virtualbase_supportedDragActions(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractProxyModel) OnSupportedDragActions(slot func(super func() DropAction) DropAction) {
-	ok := C.QAbstractProxyModel_override_virtual_SupportedDragActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnsupportedDragActions(slot func(super func() DropAction) DropAction) {
+	ok := C.QAbstractProxyModel_override_virtual_supportedDragActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_SupportedDragActions
-func miqt_exec_callback_QAbstractProxyModel_SupportedDragActions(self *C.QAbstractProxyModel, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QAbstractProxyModel_supportedDragActions
+func miqt_exec_callback_QAbstractProxyModel_supportedDragActions(self *C.QAbstractProxyModel, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() DropAction) DropAction)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1166,18 +1166,18 @@ func miqt_exec_callback_QAbstractProxyModel_SupportedDragActions(self *C.QAbstra
 
 func (this *QAbstractProxyModel) callVirtualBase_SupportedDropActions() DropAction {
 
-	return (DropAction)(C.QAbstractProxyModel_virtualbase_SupportedDropActions(unsafe.Pointer(this.h)))
+	return (DropAction)(C.QAbstractProxyModel_virtualbase_supportedDropActions(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractProxyModel) OnSupportedDropActions(slot func(super func() DropAction) DropAction) {
-	ok := C.QAbstractProxyModel_override_virtual_SupportedDropActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnsupportedDropActions(slot func(super func() DropAction) DropAction) {
+	ok := C.QAbstractProxyModel_override_virtual_supportedDropActions(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_SupportedDropActions
-func miqt_exec_callback_QAbstractProxyModel_SupportedDropActions(self *C.QAbstractProxyModel, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QAbstractProxyModel_supportedDropActions
+func miqt_exec_callback_QAbstractProxyModel_supportedDropActions(self *C.QAbstractProxyModel, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() DropAction) DropAction)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1191,7 +1191,7 @@ func miqt_exec_callback_QAbstractProxyModel_SupportedDropActions(self *C.QAbstra
 
 func (this *QAbstractProxyModel) callVirtualBase_RoleNames() map[int][]byte {
 
-	var _mm C.struct_miqt_map = C.QAbstractProxyModel_virtualbase_RoleNames(unsafe.Pointer(this.h))
+	var _mm C.struct_miqt_map = C.QAbstractProxyModel_virtualbase_roleNames(unsafe.Pointer(this.h))
 	_ret := make(map[int][]byte, int(_mm.len))
 	_Keys := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.values))
@@ -1207,15 +1207,15 @@ func (this *QAbstractProxyModel) callVirtualBase_RoleNames() map[int][]byte {
 	return _ret
 
 }
-func (this *QAbstractProxyModel) OnRoleNames(slot func(super func() map[int][]byte) map[int][]byte) {
-	ok := C.QAbstractProxyModel_override_virtual_RoleNames(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnroleNames(slot func(super func() map[int][]byte) map[int][]byte) {
+	ok := C.QAbstractProxyModel_override_virtual_roleNames(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_RoleNames
-func miqt_exec_callback_QAbstractProxyModel_RoleNames(self *C.QAbstractProxyModel, cb C.intptr_t) C.struct_miqt_map {
+//export miqt_exec_callback_QAbstractProxyModel_roleNames
+func miqt_exec_callback_QAbstractProxyModel_roleNames(self *C.QAbstractProxyModel, cb C.intptr_t) C.struct_miqt_map {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() map[int][]byte) map[int][]byte)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1248,15 +1248,15 @@ func miqt_exec_callback_QAbstractProxyModel_RoleNames(self *C.QAbstractProxyMode
 	return virtualReturn_mm
 
 }
-func (this *QAbstractProxyModel) OnIndex(slot func(row int, column int, parent *QModelIndex) *QModelIndex) {
-	ok := C.QAbstractProxyModel_override_virtual_Index(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) Onindex(slot func(row int, column int, parent *QModelIndex) *QModelIndex) {
+	ok := C.QAbstractProxyModel_override_virtual_index(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_Index
-func miqt_exec_callback_QAbstractProxyModel_Index(self *C.QAbstractProxyModel, cb C.intptr_t, row C.int, column C.int, parent *C.QModelIndex) *C.QModelIndex {
+//export miqt_exec_callback_QAbstractProxyModel_index
+func miqt_exec_callback_QAbstractProxyModel_index(self *C.QAbstractProxyModel, cb C.intptr_t, row C.int, column C.int, parent *C.QModelIndex) *C.QModelIndex {
 	gofunc, ok := cgo.Handle(cb).Value().(func(row int, column int, parent *QModelIndex) *QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1274,15 +1274,15 @@ func miqt_exec_callback_QAbstractProxyModel_Index(self *C.QAbstractProxyModel, c
 	return virtualReturn.cPointer()
 
 }
-func (this *QAbstractProxyModel) OnParent(slot func(child *QModelIndex) *QModelIndex) {
-	ok := C.QAbstractProxyModel_override_virtual_Parent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) Onparent(slot func(child *QModelIndex) *QModelIndex) {
+	ok := C.QAbstractProxyModel_override_virtual_parent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_Parent
-func miqt_exec_callback_QAbstractProxyModel_Parent(self *C.QAbstractProxyModel, cb C.intptr_t, child *C.QModelIndex) *C.QModelIndex {
+//export miqt_exec_callback_QAbstractProxyModel_parent
+func miqt_exec_callback_QAbstractProxyModel_parent(self *C.QAbstractProxyModel, cb C.intptr_t, child *C.QModelIndex) *C.QModelIndex {
 	gofunc, ok := cgo.Handle(cb).Value().(func(child *QModelIndex) *QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1296,15 +1296,15 @@ func miqt_exec_callback_QAbstractProxyModel_Parent(self *C.QAbstractProxyModel, 
 	return virtualReturn.cPointer()
 
 }
-func (this *QAbstractProxyModel) OnRowCount(slot func(parent *QModelIndex) int) {
-	ok := C.QAbstractProxyModel_override_virtual_RowCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnrowCount(slot func(parent *QModelIndex) int) {
+	ok := C.QAbstractProxyModel_override_virtual_rowCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_RowCount
-func miqt_exec_callback_QAbstractProxyModel_RowCount(self *C.QAbstractProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.int {
+//export miqt_exec_callback_QAbstractProxyModel_rowCount
+func miqt_exec_callback_QAbstractProxyModel_rowCount(self *C.QAbstractProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(parent *QModelIndex) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1318,15 +1318,15 @@ func miqt_exec_callback_QAbstractProxyModel_RowCount(self *C.QAbstractProxyModel
 	return (C.int)(virtualReturn)
 
 }
-func (this *QAbstractProxyModel) OnColumnCount(slot func(parent *QModelIndex) int) {
-	ok := C.QAbstractProxyModel_override_virtual_ColumnCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OncolumnCount(slot func(parent *QModelIndex) int) {
+	ok := C.QAbstractProxyModel_override_virtual_columnCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_ColumnCount
-func miqt_exec_callback_QAbstractProxyModel_ColumnCount(self *C.QAbstractProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.int {
+//export miqt_exec_callback_QAbstractProxyModel_columnCount
+func miqt_exec_callback_QAbstractProxyModel_columnCount(self *C.QAbstractProxyModel, cb C.intptr_t, parent *C.QModelIndex) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(parent *QModelIndex) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1343,18 +1343,18 @@ func miqt_exec_callback_QAbstractProxyModel_ColumnCount(self *C.QAbstractProxyMo
 
 func (this *QAbstractProxyModel) callVirtualBase_InsertRows(row int, count int, parent *QModelIndex) bool {
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_InsertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
+	return (bool)(C.QAbstractProxyModel_virtualbase_insertRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
 
 }
-func (this *QAbstractProxyModel) OnInsertRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_InsertRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OninsertRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_insertRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_InsertRows
-func miqt_exec_callback_QAbstractProxyModel_InsertRows(self *C.QAbstractProxyModel, cb C.intptr_t, row C.int, count C.int, parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_insertRows
+func miqt_exec_callback_QAbstractProxyModel_insertRows(self *C.QAbstractProxyModel, cb C.intptr_t, row C.int, count C.int, parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1375,18 +1375,18 @@ func miqt_exec_callback_QAbstractProxyModel_InsertRows(self *C.QAbstractProxyMod
 
 func (this *QAbstractProxyModel) callVirtualBase_InsertColumns(column int, count int, parent *QModelIndex) bool {
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_InsertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
+	return (bool)(C.QAbstractProxyModel_virtualbase_insertColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
 
 }
-func (this *QAbstractProxyModel) OnInsertColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_InsertColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OninsertColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_insertColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_InsertColumns
-func miqt_exec_callback_QAbstractProxyModel_InsertColumns(self *C.QAbstractProxyModel, cb C.intptr_t, column C.int, count C.int, parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_insertColumns
+func miqt_exec_callback_QAbstractProxyModel_insertColumns(self *C.QAbstractProxyModel, cb C.intptr_t, column C.int, count C.int, parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1407,18 +1407,18 @@ func miqt_exec_callback_QAbstractProxyModel_InsertColumns(self *C.QAbstractProxy
 
 func (this *QAbstractProxyModel) callVirtualBase_RemoveRows(row int, count int, parent *QModelIndex) bool {
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_RemoveRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
+	return (bool)(C.QAbstractProxyModel_virtualbase_removeRows(unsafe.Pointer(this.h), (C.int)(row), (C.int)(count), parent.cPointer()))
 
 }
-func (this *QAbstractProxyModel) OnRemoveRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_RemoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnremoveRows(slot func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_removeRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_RemoveRows
-func miqt_exec_callback_QAbstractProxyModel_RemoveRows(self *C.QAbstractProxyModel, cb C.intptr_t, row C.int, count C.int, parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_removeRows
+func miqt_exec_callback_QAbstractProxyModel_removeRows(self *C.QAbstractProxyModel, cb C.intptr_t, row C.int, count C.int, parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(row int, count int, parent *QModelIndex) bool, row int, count int, parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1439,18 +1439,18 @@ func miqt_exec_callback_QAbstractProxyModel_RemoveRows(self *C.QAbstractProxyMod
 
 func (this *QAbstractProxyModel) callVirtualBase_RemoveColumns(column int, count int, parent *QModelIndex) bool {
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_RemoveColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
+	return (bool)(C.QAbstractProxyModel_virtualbase_removeColumns(unsafe.Pointer(this.h), (C.int)(column), (C.int)(count), parent.cPointer()))
 
 }
-func (this *QAbstractProxyModel) OnRemoveColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_RemoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnremoveColumns(slot func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_removeColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_RemoveColumns
-func miqt_exec_callback_QAbstractProxyModel_RemoveColumns(self *C.QAbstractProxyModel, cb C.intptr_t, column C.int, count C.int, parent *C.QModelIndex) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_removeColumns
+func miqt_exec_callback_QAbstractProxyModel_removeColumns(self *C.QAbstractProxyModel, cb C.intptr_t, column C.int, count C.int, parent *C.QModelIndex) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(column int, count int, parent *QModelIndex) bool, column int, count int, parent *QModelIndex) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1471,18 +1471,18 @@ func miqt_exec_callback_QAbstractProxyModel_RemoveColumns(self *C.QAbstractProxy
 
 func (this *QAbstractProxyModel) callVirtualBase_MoveRows(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool {
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_MoveRows(unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
+	return (bool)(C.QAbstractProxyModel_virtualbase_moveRows(unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceRow), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 
 }
-func (this *QAbstractProxyModel) OnMoveRows(slot func(super func(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_MoveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnmoveRows(slot func(super func(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_moveRows(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_MoveRows
-func miqt_exec_callback_QAbstractProxyModel_MoveRows(self *C.QAbstractProxyModel, cb C.intptr_t, sourceParent *C.QModelIndex, sourceRow C.int, count C.int, destinationParent *C.QModelIndex, destinationChild C.int) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_moveRows
+func miqt_exec_callback_QAbstractProxyModel_moveRows(self *C.QAbstractProxyModel, cb C.intptr_t, sourceParent *C.QModelIndex, sourceRow C.int, count C.int, destinationParent *C.QModelIndex, destinationChild C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceRow int, count int, destinationParent *QModelIndex, destinationChild int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1507,18 +1507,18 @@ func miqt_exec_callback_QAbstractProxyModel_MoveRows(self *C.QAbstractProxyModel
 
 func (this *QAbstractProxyModel) callVirtualBase_MoveColumns(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool {
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_MoveColumns(unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceColumn), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
+	return (bool)(C.QAbstractProxyModel_virtualbase_moveColumns(unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceColumn), (C.int)(count), destinationParent.cPointer(), (C.int)(destinationChild)))
 
 }
-func (this *QAbstractProxyModel) OnMoveColumns(slot func(super func(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_MoveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnmoveColumns(slot func(super func(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_moveColumns(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_MoveColumns
-func miqt_exec_callback_QAbstractProxyModel_MoveColumns(self *C.QAbstractProxyModel, cb C.intptr_t, sourceParent *C.QModelIndex, sourceColumn C.int, count C.int, destinationParent *C.QModelIndex, destinationChild C.int) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_moveColumns
+func miqt_exec_callback_QAbstractProxyModel_moveColumns(self *C.QAbstractProxyModel, cb C.intptr_t, sourceParent *C.QModelIndex, sourceColumn C.int, count C.int, destinationParent *C.QModelIndex, destinationChild C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool, sourceParent *QModelIndex, sourceColumn int, count int, destinationParent *QModelIndex, destinationChild int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1543,7 +1543,7 @@ func miqt_exec_callback_QAbstractProxyModel_MoveColumns(self *C.QAbstractProxyMo
 
 func (this *QAbstractProxyModel) callVirtualBase_Match(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex {
 
-	var _ma C.struct_miqt_array = C.QAbstractProxyModel_virtualbase_Match(unsafe.Pointer(this.h), start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
+	var _ma C.struct_miqt_array = C.QAbstractProxyModel_virtualbase_match(unsafe.Pointer(this.h), start.cPointer(), (C.int)(role), value.cPointer(), (C.int)(hits), (C.int)(flags))
 	_ret := make([]QModelIndex, int(_ma.len))
 	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1554,15 +1554,15 @@ func (this *QAbstractProxyModel) callVirtualBase_Match(start *QModelIndex, role 
 	return _ret
 
 }
-func (this *QAbstractProxyModel) OnMatch(slot func(super func(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex, start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex) {
-	ok := C.QAbstractProxyModel_override_virtual_Match(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) Onmatch(slot func(super func(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex, start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex) {
+	ok := C.QAbstractProxyModel_override_virtual_match(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_Match
-func miqt_exec_callback_QAbstractProxyModel_Match(self *C.QAbstractProxyModel, cb C.intptr_t, start *C.QModelIndex, role C.int, value *C.QVariant, hits C.int, flags C.int) C.struct_miqt_array {
+//export miqt_exec_callback_QAbstractProxyModel_match
+func miqt_exec_callback_QAbstractProxyModel_match(self *C.QAbstractProxyModel, cb C.intptr_t, start *C.QModelIndex, role C.int, value *C.QVariant, hits C.int, flags C.int) C.struct_miqt_array {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex, start *QModelIndex, role int, value *QVariant, hits int, flags MatchFlag) []QModelIndex)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1593,18 +1593,18 @@ func miqt_exec_callback_QAbstractProxyModel_Match(self *C.QAbstractProxyModel, c
 
 func (this *QAbstractProxyModel) callVirtualBase_MultiData(index *QModelIndex, roleDataSpan QModelRoleDataSpan) {
 
-	C.QAbstractProxyModel_virtualbase_MultiData(unsafe.Pointer(this.h), index.cPointer(), roleDataSpan.cPointer())
+	C.QAbstractProxyModel_virtualbase_multiData(unsafe.Pointer(this.h), index.cPointer(), roleDataSpan.cPointer())
 
 }
-func (this *QAbstractProxyModel) OnMultiData(slot func(super func(index *QModelIndex, roleDataSpan QModelRoleDataSpan), index *QModelIndex, roleDataSpan QModelRoleDataSpan)) {
-	ok := C.QAbstractProxyModel_override_virtual_MultiData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnmultiData(slot func(super func(index *QModelIndex, roleDataSpan QModelRoleDataSpan), index *QModelIndex, roleDataSpan QModelRoleDataSpan)) {
+	ok := C.QAbstractProxyModel_override_virtual_multiData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_MultiData
-func miqt_exec_callback_QAbstractProxyModel_MultiData(self *C.QAbstractProxyModel, cb C.intptr_t, index *C.QModelIndex, roleDataSpan *C.QModelRoleDataSpan) {
+//export miqt_exec_callback_QAbstractProxyModel_multiData
+func miqt_exec_callback_QAbstractProxyModel_multiData(self *C.QAbstractProxyModel, cb C.intptr_t, index *C.QModelIndex, roleDataSpan *C.QModelRoleDataSpan) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(index *QModelIndex, roleDataSpan QModelRoleDataSpan), index *QModelIndex, roleDataSpan QModelRoleDataSpan))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1623,18 +1623,18 @@ func miqt_exec_callback_QAbstractProxyModel_MultiData(self *C.QAbstractProxyMode
 
 func (this *QAbstractProxyModel) callVirtualBase_ResetInternalData() {
 
-	C.QAbstractProxyModel_virtualbase_ResetInternalData(unsafe.Pointer(this.h))
+	C.QAbstractProxyModel_virtualbase_resetInternalData(unsafe.Pointer(this.h))
 
 }
-func (this *QAbstractProxyModel) OnResetInternalData(slot func(super func())) {
-	ok := C.QAbstractProxyModel_override_virtual_ResetInternalData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnresetInternalData(slot func(super func())) {
+	ok := C.QAbstractProxyModel_override_virtual_resetInternalData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_ResetInternalData
-func miqt_exec_callback_QAbstractProxyModel_ResetInternalData(self *C.QAbstractProxyModel, cb C.intptr_t) {
+//export miqt_exec_callback_QAbstractProxyModel_resetInternalData
+func miqt_exec_callback_QAbstractProxyModel_resetInternalData(self *C.QAbstractProxyModel, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1646,18 +1646,18 @@ func miqt_exec_callback_QAbstractProxyModel_ResetInternalData(self *C.QAbstractP
 
 func (this *QAbstractProxyModel) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QAbstractProxyModel_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QAbstractProxyModel) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_Event
-func miqt_exec_callback_QAbstractProxyModel_Event(self *C.QAbstractProxyModel, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_event
+func miqt_exec_callback_QAbstractProxyModel_event(self *C.QAbstractProxyModel, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1674,18 +1674,18 @@ func miqt_exec_callback_QAbstractProxyModel_Event(self *C.QAbstractProxyModel, c
 
 func (this *QAbstractProxyModel) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QAbstractProxyModel_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QAbstractProxyModel_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QAbstractProxyModel) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QAbstractProxyModel_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QAbstractProxyModel_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_EventFilter
-func miqt_exec_callback_QAbstractProxyModel_EventFilter(self *C.QAbstractProxyModel, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QAbstractProxyModel_eventFilter
+func miqt_exec_callback_QAbstractProxyModel_eventFilter(self *C.QAbstractProxyModel, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1704,18 +1704,18 @@ func miqt_exec_callback_QAbstractProxyModel_EventFilter(self *C.QAbstractProxyMo
 
 func (this *QAbstractProxyModel) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QAbstractProxyModel_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractProxyModel_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractProxyModel) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QAbstractProxyModel_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QAbstractProxyModel_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_TimerEvent
-func miqt_exec_callback_QAbstractProxyModel_TimerEvent(self *C.QAbstractProxyModel, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QAbstractProxyModel_timerEvent
+func miqt_exec_callback_QAbstractProxyModel_timerEvent(self *C.QAbstractProxyModel, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1730,18 +1730,18 @@ func miqt_exec_callback_QAbstractProxyModel_TimerEvent(self *C.QAbstractProxyMod
 
 func (this *QAbstractProxyModel) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QAbstractProxyModel_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractProxyModel_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractProxyModel) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QAbstractProxyModel_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QAbstractProxyModel_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_ChildEvent
-func miqt_exec_callback_QAbstractProxyModel_ChildEvent(self *C.QAbstractProxyModel, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QAbstractProxyModel_childEvent
+func miqt_exec_callback_QAbstractProxyModel_childEvent(self *C.QAbstractProxyModel, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1756,18 +1756,18 @@ func miqt_exec_callback_QAbstractProxyModel_ChildEvent(self *C.QAbstractProxyMod
 
 func (this *QAbstractProxyModel) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QAbstractProxyModel_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractProxyModel_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractProxyModel) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QAbstractProxyModel_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QAbstractProxyModel_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_CustomEvent
-func miqt_exec_callback_QAbstractProxyModel_CustomEvent(self *C.QAbstractProxyModel, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QAbstractProxyModel_customEvent
+func miqt_exec_callback_QAbstractProxyModel_customEvent(self *C.QAbstractProxyModel, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1782,18 +1782,18 @@ func miqt_exec_callback_QAbstractProxyModel_CustomEvent(self *C.QAbstractProxyMo
 
 func (this *QAbstractProxyModel) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QAbstractProxyModel_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QAbstractProxyModel_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QAbstractProxyModel) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QAbstractProxyModel_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QAbstractProxyModel_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_ConnectNotify
-func miqt_exec_callback_QAbstractProxyModel_ConnectNotify(self *C.QAbstractProxyModel, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAbstractProxyModel_connectNotify
+func miqt_exec_callback_QAbstractProxyModel_connectNotify(self *C.QAbstractProxyModel, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1808,18 +1808,18 @@ func miqt_exec_callback_QAbstractProxyModel_ConnectNotify(self *C.QAbstractProxy
 
 func (this *QAbstractProxyModel) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QAbstractProxyModel_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QAbstractProxyModel_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QAbstractProxyModel) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QAbstractProxyModel_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractProxyModel) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QAbstractProxyModel_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractProxyModel_DisconnectNotify
-func miqt_exec_callback_QAbstractProxyModel_DisconnectNotify(self *C.QAbstractProxyModel, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAbstractProxyModel_disconnectNotify
+func miqt_exec_callback_QAbstractProxyModel_disconnectNotify(self *C.QAbstractProxyModel, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1834,7 +1834,7 @@ func miqt_exec_callback_QAbstractProxyModel_DisconnectNotify(self *C.QAbstractPr
 
 // Delete this object from C++ memory.
 func (this *QAbstractProxyModel) Delete() {
-	C.QAbstractProxyModel_Delete(this.h)
+	C.QAbstractProxyModel_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

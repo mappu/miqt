@@ -15,7 +15,7 @@ extern "C" {
 } /* extern C */
 #endif
 
-struct miqt_array /* of struct miqt_string */  QStyleFactory_Keys() {
+struct miqt_array /* of struct miqt_string */  QStyleFactory_keys() {
 	QStringList _ret = QStyleFactory::keys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -35,12 +35,12 @@ struct miqt_array /* of struct miqt_string */  QStyleFactory_Keys() {
 	return _out;
 }
 
-QStyle* QStyleFactory_Create(struct miqt_string param1) {
+QStyle* QStyleFactory_create(struct miqt_string param1) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	return QStyleFactory::create(param1_QString);
 }
 
-void QStyleFactory_Delete(QStyleFactory* self) {
+void QStyleFactory_delete(QStyleFactory* self) {
 	delete self;
 }
 

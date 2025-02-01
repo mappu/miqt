@@ -71,55 +71,55 @@ func UnsafeNewQWebEngineNavigationRequest(h unsafe.Pointer) *QWebEngineNavigatio
 }
 
 func (this *QWebEngineNavigationRequest) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineNavigationRequest_MetaObject(this.h)))
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineNavigationRequest_metaObject(this.h)))
 }
 
 func (this *QWebEngineNavigationRequest) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWebEngineNavigationRequest_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWebEngineNavigationRequest_metacast(this.h, param1_Cstring))
 }
 
 func QWebEngineNavigationRequest_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineNavigationRequest_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineNavigationRequest_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineNavigationRequest) Url() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineNavigationRequest_Url(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineNavigationRequest_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineNavigationRequest) IsMainFrame() bool {
-	return (bool)(C.QWebEngineNavigationRequest_IsMainFrame(this.h))
+	return (bool)(C.QWebEngineNavigationRequest_isMainFrame(this.h))
 }
 
 func (this *QWebEngineNavigationRequest) NavigationType() QWebEngineNavigationRequest__NavigationType {
-	return (QWebEngineNavigationRequest__NavigationType)(C.QWebEngineNavigationRequest_NavigationType(this.h))
+	return (QWebEngineNavigationRequest__NavigationType)(C.QWebEngineNavigationRequest_navigationType(this.h))
 }
 
 func (this *QWebEngineNavigationRequest) Accept() {
-	C.QWebEngineNavigationRequest_Accept(this.h)
+	C.QWebEngineNavigationRequest_accept(this.h)
 }
 
 func (this *QWebEngineNavigationRequest) Reject() {
-	C.QWebEngineNavigationRequest_Reject(this.h)
+	C.QWebEngineNavigationRequest_reject(this.h)
 }
 
 func (this *QWebEngineNavigationRequest) ActionChanged() {
-	C.QWebEngineNavigationRequest_ActionChanged(this.h)
+	C.QWebEngineNavigationRequest_actionChanged(this.h)
 }
 func (this *QWebEngineNavigationRequest) OnActionChanged(slot func()) {
-	C.QWebEngineNavigationRequest_connect_ActionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineNavigationRequest_connect_actionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineNavigationRequest_ActionChanged
-func miqt_exec_callback_QWebEngineNavigationRequest_ActionChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QWebEngineNavigationRequest_actionChanged
+func miqt_exec_callback_QWebEngineNavigationRequest_actionChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -133,7 +133,7 @@ func QWebEngineNavigationRequest_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineNavigationRequest_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineNavigationRequest_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -144,7 +144,7 @@ func QWebEngineNavigationRequest_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineNavigationRequest_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebEngineNavigationRequest_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -152,7 +152,7 @@ func QWebEngineNavigationRequest_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QWebEngineNavigationRequest) Delete() {
-	C.QWebEngineNavigationRequest_Delete(this.h)
+	C.QWebEngineNavigationRequest_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

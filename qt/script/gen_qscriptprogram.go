@@ -96,42 +96,42 @@ func NewQScriptProgram5(sourceCode string, fileName string, firstLineNumber int)
 }
 
 func (this *QScriptProgram) OperatorAssign(other *QScriptProgram) {
-	C.QScriptProgram_OperatorAssign(this.h, other.cPointer())
+	C.QScriptProgram_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QScriptProgram) IsNull() bool {
-	return (bool)(C.QScriptProgram_IsNull(this.h))
+	return (bool)(C.QScriptProgram_isNull(this.h))
 }
 
 func (this *QScriptProgram) SourceCode() string {
-	var _ms C.struct_miqt_string = C.QScriptProgram_SourceCode(this.h)
+	var _ms C.struct_miqt_string = C.QScriptProgram_sourceCode(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QScriptProgram) FileName() string {
-	var _ms C.struct_miqt_string = C.QScriptProgram_FileName(this.h)
+	var _ms C.struct_miqt_string = C.QScriptProgram_fileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QScriptProgram) FirstLineNumber() int {
-	return (int)(C.QScriptProgram_FirstLineNumber(this.h))
+	return (int)(C.QScriptProgram_firstLineNumber(this.h))
 }
 
 func (this *QScriptProgram) OperatorEqual(other *QScriptProgram) bool {
-	return (bool)(C.QScriptProgram_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QScriptProgram_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QScriptProgram) OperatorNotEqual(other *QScriptProgram) bool {
-	return (bool)(C.QScriptProgram_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QScriptProgram_operatorNotEqual(this.h, other.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QScriptProgram) Delete() {
-	C.QScriptProgram_Delete(this.h)
+	C.QScriptProgram_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

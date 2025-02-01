@@ -46,7 +46,7 @@ func UnsafeNewQDesktopServices(h unsafe.Pointer) *QDesktopServices {
 }
 
 func QDesktopServices_OpenUrl(url *QUrl) bool {
-	return (bool)(C.QDesktopServices_OpenUrl(url.cPointer()))
+	return (bool)(C.QDesktopServices_openUrl(url.cPointer()))
 }
 
 func QDesktopServices_SetUrlHandler(scheme string, receiver *QObject, method string) {
@@ -56,7 +56,7 @@ func QDesktopServices_SetUrlHandler(scheme string, receiver *QObject, method str
 	defer C.free(unsafe.Pointer(scheme_ms.data))
 	method_Cstring := C.CString(method)
 	defer C.free(unsafe.Pointer(method_Cstring))
-	C.QDesktopServices_SetUrlHandler(scheme_ms, receiver.cPointer(), method_Cstring)
+	C.QDesktopServices_setUrlHandler(scheme_ms, receiver.cPointer(), method_Cstring)
 }
 
 func QDesktopServices_UnsetUrlHandler(scheme string) {
@@ -64,12 +64,12 @@ func QDesktopServices_UnsetUrlHandler(scheme string) {
 	scheme_ms.data = C.CString(scheme)
 	scheme_ms.len = C.size_t(len(scheme))
 	defer C.free(unsafe.Pointer(scheme_ms.data))
-	C.QDesktopServices_UnsetUrlHandler(scheme_ms)
+	C.QDesktopServices_unsetUrlHandler(scheme_ms)
 }
 
 // Delete this object from C++ memory.
 func (this *QDesktopServices) Delete() {
-	C.QDesktopServices_Delete(this.h)
+	C.QDesktopServices_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

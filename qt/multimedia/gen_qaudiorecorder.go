@@ -64,19 +64,19 @@ func NewQAudioRecorder2(parent *qt.QObject) *QAudioRecorder {
 }
 
 func (this *QAudioRecorder) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioRecorder_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QAudioRecorder_metaObject(this.h)))
 }
 
 func (this *QAudioRecorder) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAudioRecorder_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAudioRecorder_metacast(this.h, param1_Cstring))
 }
 
 func QAudioRecorder_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioRecorder_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAudioRecorder_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -85,14 +85,14 @@ func QAudioRecorder_Tr(s string) string {
 func QAudioRecorder_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioRecorder_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAudioRecorder_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAudioRecorder) AudioInputs() []string {
-	var _ma C.struct_miqt_array = C.QAudioRecorder_AudioInputs(this.h)
+	var _ma C.struct_miqt_array = C.QAudioRecorder_audioInputs(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -105,7 +105,7 @@ func (this *QAudioRecorder) AudioInputs() []string {
 }
 
 func (this *QAudioRecorder) DefaultAudioInput() string {
-	var _ms C.struct_miqt_string = C.QAudioRecorder_DefaultAudioInput(this.h)
+	var _ms C.struct_miqt_string = C.QAudioRecorder_defaultAudioInput(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -116,14 +116,14 @@ func (this *QAudioRecorder) AudioInputDescription(name string) string {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var _ms C.struct_miqt_string = C.QAudioRecorder_AudioInputDescription(this.h, name_ms)
+	var _ms C.struct_miqt_string = C.QAudioRecorder_audioInputDescription(this.h, name_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAudioRecorder) AudioInput() string {
-	var _ms C.struct_miqt_string = C.QAudioRecorder_AudioInput(this.h)
+	var _ms C.struct_miqt_string = C.QAudioRecorder_audioInput(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -134,7 +134,7 @@ func (this *QAudioRecorder) SetAudioInput(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QAudioRecorder_SetAudioInput(this.h, name_ms)
+	C.QAudioRecorder_setAudioInput(this.h, name_ms)
 }
 
 func (this *QAudioRecorder) AudioInputChanged(name string) {
@@ -142,14 +142,14 @@ func (this *QAudioRecorder) AudioInputChanged(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QAudioRecorder_AudioInputChanged(this.h, name_ms)
+	C.QAudioRecorder_audioInputChanged(this.h, name_ms)
 }
 func (this *QAudioRecorder) OnAudioInputChanged(slot func(name string)) {
-	C.QAudioRecorder_connect_AudioInputChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAudioRecorder_connect_audioInputChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAudioRecorder_AudioInputChanged
-func miqt_exec_callback_QAudioRecorder_AudioInputChanged(cb C.intptr_t, name C.struct_miqt_string) {
+//export miqt_exec_callback_QAudioRecorder_audioInputChanged
+func miqt_exec_callback_QAudioRecorder_audioInputChanged(cb C.intptr_t, name C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(name string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -165,14 +165,14 @@ func miqt_exec_callback_QAudioRecorder_AudioInputChanged(cb C.intptr_t, name C.s
 }
 
 func (this *QAudioRecorder) AvailableAudioInputsChanged() {
-	C.QAudioRecorder_AvailableAudioInputsChanged(this.h)
+	C.QAudioRecorder_availableAudioInputsChanged(this.h)
 }
 func (this *QAudioRecorder) OnAvailableAudioInputsChanged(slot func()) {
-	C.QAudioRecorder_connect_AvailableAudioInputsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAudioRecorder_connect_availableAudioInputsChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAudioRecorder_AvailableAudioInputsChanged
-func miqt_exec_callback_QAudioRecorder_AvailableAudioInputsChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QAudioRecorder_availableAudioInputsChanged
+func miqt_exec_callback_QAudioRecorder_availableAudioInputsChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -186,7 +186,7 @@ func QAudioRecorder_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioRecorder_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAudioRecorder_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -197,7 +197,7 @@ func QAudioRecorder_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioRecorder_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAudioRecorder_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -208,7 +208,7 @@ func QAudioRecorder_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioRecorder_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAudioRecorder_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -219,7 +219,7 @@ func QAudioRecorder_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAudioRecorder_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAudioRecorder_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -227,18 +227,18 @@ func QAudioRecorder_TrUtf83(s string, c string, n int) string {
 
 func (this *QAudioRecorder) callVirtualBase_MediaObject() *QMediaObject {
 
-	return newQMediaObject(C.QAudioRecorder_virtualbase_MediaObject(unsafe.Pointer(this.h)))
+	return newQMediaObject(C.QAudioRecorder_virtualbase_mediaObject(unsafe.Pointer(this.h)))
 
 }
-func (this *QAudioRecorder) OnMediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
-	ok := C.QAudioRecorder_override_virtual_MediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAudioRecorder) OnmediaObject(slot func(super func() *QMediaObject) *QMediaObject) {
+	ok := C.QAudioRecorder_override_virtual_mediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAudioRecorder_MediaObject
-func miqt_exec_callback_QAudioRecorder_MediaObject(self *C.QAudioRecorder, cb C.intptr_t) *C.QMediaObject {
+//export miqt_exec_callback_QAudioRecorder_mediaObject
+func miqt_exec_callback_QAudioRecorder_mediaObject(self *C.QAudioRecorder, cb C.intptr_t) *C.QMediaObject {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QMediaObject) *QMediaObject)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -252,18 +252,18 @@ func miqt_exec_callback_QAudioRecorder_MediaObject(self *C.QAudioRecorder, cb C.
 
 func (this *QAudioRecorder) callVirtualBase_SetMediaObject(object *QMediaObject) bool {
 
-	return (bool)(C.QAudioRecorder_virtualbase_SetMediaObject(unsafe.Pointer(this.h), object.cPointer()))
+	return (bool)(C.QAudioRecorder_virtualbase_setMediaObject(unsafe.Pointer(this.h), object.cPointer()))
 
 }
-func (this *QAudioRecorder) OnSetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
-	ok := C.QAudioRecorder_override_virtual_SetMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAudioRecorder) OnsetMediaObject(slot func(super func(object *QMediaObject) bool, object *QMediaObject) bool) {
+	ok := C.QAudioRecorder_override_virtual_setMediaObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAudioRecorder_SetMediaObject
-func miqt_exec_callback_QAudioRecorder_SetMediaObject(self *C.QAudioRecorder, cb C.intptr_t, object *C.QMediaObject) C.bool {
+//export miqt_exec_callback_QAudioRecorder_setMediaObject
+func miqt_exec_callback_QAudioRecorder_setMediaObject(self *C.QAudioRecorder, cb C.intptr_t, object *C.QMediaObject) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(object *QMediaObject) bool, object *QMediaObject) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -280,18 +280,18 @@ func miqt_exec_callback_QAudioRecorder_SetMediaObject(self *C.QAudioRecorder, cb
 
 func (this *QAudioRecorder) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.QAudioRecorder_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QAudioRecorder_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QAudioRecorder) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.QAudioRecorder_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAudioRecorder) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QAudioRecorder_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAudioRecorder_Event
-func miqt_exec_callback_QAudioRecorder_Event(self *C.QAudioRecorder, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QAudioRecorder_event
+func miqt_exec_callback_QAudioRecorder_event(self *C.QAudioRecorder, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -308,18 +308,18 @@ func miqt_exec_callback_QAudioRecorder_Event(self *C.QAudioRecorder, cb C.intptr
 
 func (this *QAudioRecorder) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.QAudioRecorder_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QAudioRecorder_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QAudioRecorder) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.QAudioRecorder_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAudioRecorder) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QAudioRecorder_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAudioRecorder_EventFilter
-func miqt_exec_callback_QAudioRecorder_EventFilter(self *C.QAudioRecorder, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QAudioRecorder_eventFilter
+func miqt_exec_callback_QAudioRecorder_eventFilter(self *C.QAudioRecorder, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -338,18 +338,18 @@ func miqt_exec_callback_QAudioRecorder_EventFilter(self *C.QAudioRecorder, cb C.
 
 func (this *QAudioRecorder) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QAudioRecorder_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QAudioRecorder_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QAudioRecorder) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QAudioRecorder_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAudioRecorder) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QAudioRecorder_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAudioRecorder_TimerEvent
-func miqt_exec_callback_QAudioRecorder_TimerEvent(self *C.QAudioRecorder, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QAudioRecorder_timerEvent
+func miqt_exec_callback_QAudioRecorder_timerEvent(self *C.QAudioRecorder, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -364,18 +364,18 @@ func miqt_exec_callback_QAudioRecorder_TimerEvent(self *C.QAudioRecorder, cb C.i
 
 func (this *QAudioRecorder) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QAudioRecorder_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QAudioRecorder_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QAudioRecorder) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QAudioRecorder_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAudioRecorder) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QAudioRecorder_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAudioRecorder_ChildEvent
-func miqt_exec_callback_QAudioRecorder_ChildEvent(self *C.QAudioRecorder, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QAudioRecorder_childEvent
+func miqt_exec_callback_QAudioRecorder_childEvent(self *C.QAudioRecorder, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -390,18 +390,18 @@ func miqt_exec_callback_QAudioRecorder_ChildEvent(self *C.QAudioRecorder, cb C.i
 
 func (this *QAudioRecorder) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QAudioRecorder_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QAudioRecorder_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QAudioRecorder) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QAudioRecorder_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAudioRecorder) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QAudioRecorder_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAudioRecorder_CustomEvent
-func miqt_exec_callback_QAudioRecorder_CustomEvent(self *C.QAudioRecorder, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QAudioRecorder_customEvent
+func miqt_exec_callback_QAudioRecorder_customEvent(self *C.QAudioRecorder, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -416,18 +416,18 @@ func miqt_exec_callback_QAudioRecorder_CustomEvent(self *C.QAudioRecorder, cb C.
 
 func (this *QAudioRecorder) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QAudioRecorder_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QAudioRecorder_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QAudioRecorder) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QAudioRecorder_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAudioRecorder) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QAudioRecorder_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAudioRecorder_ConnectNotify
-func miqt_exec_callback_QAudioRecorder_ConnectNotify(self *C.QAudioRecorder, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAudioRecorder_connectNotify
+func miqt_exec_callback_QAudioRecorder_connectNotify(self *C.QAudioRecorder, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -442,18 +442,18 @@ func miqt_exec_callback_QAudioRecorder_ConnectNotify(self *C.QAudioRecorder, cb 
 
 func (this *QAudioRecorder) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QAudioRecorder_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QAudioRecorder_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QAudioRecorder) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QAudioRecorder_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAudioRecorder) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QAudioRecorder_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAudioRecorder_DisconnectNotify
-func miqt_exec_callback_QAudioRecorder_DisconnectNotify(self *C.QAudioRecorder, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAudioRecorder_disconnectNotify
+func miqt_exec_callback_QAudioRecorder_disconnectNotify(self *C.QAudioRecorder, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -468,7 +468,7 @@ func miqt_exec_callback_QAudioRecorder_DisconnectNotify(self *C.QAudioRecorder, 
 
 // Delete this object from C++ memory.
 func (this *QAudioRecorder) Delete() {
-	C.QAudioRecorder_Delete(this.h)
+	C.QAudioRecorder_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

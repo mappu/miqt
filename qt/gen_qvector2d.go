@@ -94,103 +94,103 @@ func NewQVector2D8(param1 *QVector2D) *QVector2D {
 }
 
 func (this *QVector2D) IsNull() bool {
-	return (bool)(C.QVector2D_IsNull(this.h))
+	return (bool)(C.QVector2D_isNull(this.h))
 }
 
 func (this *QVector2D) X() float32 {
-	return (float32)(C.QVector2D_X(this.h))
+	return (float32)(C.QVector2D_x(this.h))
 }
 
 func (this *QVector2D) Y() float32 {
-	return (float32)(C.QVector2D_Y(this.h))
+	return (float32)(C.QVector2D_y(this.h))
 }
 
 func (this *QVector2D) SetX(x float32) {
-	C.QVector2D_SetX(this.h, (C.float)(x))
+	C.QVector2D_setX(this.h, (C.float)(x))
 }
 
 func (this *QVector2D) SetY(y float32) {
-	C.QVector2D_SetY(this.h, (C.float)(y))
+	C.QVector2D_setY(this.h, (C.float)(y))
 }
 
 func (this *QVector2D) OperatorSubscript(i int) float32 {
-	return (float32)(C.QVector2D_OperatorSubscript(this.h, (C.int)(i)))
+	return (float32)(C.QVector2D_operatorSubscript(this.h, (C.int)(i)))
 }
 
 func (this *QVector2D) Length() float32 {
-	return (float32)(C.QVector2D_Length(this.h))
+	return (float32)(C.QVector2D_length(this.h))
 }
 
 func (this *QVector2D) LengthSquared() float32 {
-	return (float32)(C.QVector2D_LengthSquared(this.h))
+	return (float32)(C.QVector2D_lengthSquared(this.h))
 }
 
 func (this *QVector2D) Normalized() *QVector2D {
-	_goptr := newQVector2D(C.QVector2D_Normalized(this.h))
+	_goptr := newQVector2D(C.QVector2D_normalized(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVector2D) Normalize() {
-	C.QVector2D_Normalize(this.h)
+	C.QVector2D_normalize(this.h)
 }
 
 func (this *QVector2D) DistanceToPoint(point *QVector2D) float32 {
-	return (float32)(C.QVector2D_DistanceToPoint(this.h, point.cPointer()))
+	return (float32)(C.QVector2D_distanceToPoint(this.h, point.cPointer()))
 }
 
 func (this *QVector2D) DistanceToLine(point *QVector2D, direction *QVector2D) float32 {
-	return (float32)(C.QVector2D_DistanceToLine(this.h, point.cPointer(), direction.cPointer()))
+	return (float32)(C.QVector2D_distanceToLine(this.h, point.cPointer(), direction.cPointer()))
 }
 
 func (this *QVector2D) OperatorPlusAssign(vector *QVector2D) *QVector2D {
-	return newQVector2D(C.QVector2D_OperatorPlusAssign(this.h, vector.cPointer()))
+	return newQVector2D(C.QVector2D_operatorPlusAssign(this.h, vector.cPointer()))
 }
 
 func (this *QVector2D) OperatorMinusAssign(vector *QVector2D) *QVector2D {
-	return newQVector2D(C.QVector2D_OperatorMinusAssign(this.h, vector.cPointer()))
+	return newQVector2D(C.QVector2D_operatorMinusAssign(this.h, vector.cPointer()))
 }
 
 func (this *QVector2D) OperatorMultiplyAssign(factor float32) *QVector2D {
-	return newQVector2D(C.QVector2D_OperatorMultiplyAssign(this.h, (C.float)(factor)))
+	return newQVector2D(C.QVector2D_operatorMultiplyAssign(this.h, (C.float)(factor)))
 }
 
 func (this *QVector2D) OperatorMultiplyAssignWithVector(vector *QVector2D) *QVector2D {
-	return newQVector2D(C.QVector2D_OperatorMultiplyAssignWithVector(this.h, vector.cPointer()))
+	return newQVector2D(C.QVector2D_operatorMultiplyAssignWithVector(this.h, vector.cPointer()))
 }
 
 func (this *QVector2D) OperatorDivideAssign(divisor float32) *QVector2D {
-	return newQVector2D(C.QVector2D_OperatorDivideAssign(this.h, (C.float)(divisor)))
+	return newQVector2D(C.QVector2D_operatorDivideAssign(this.h, (C.float)(divisor)))
 }
 
 func (this *QVector2D) OperatorDivideAssignWithVector(vector *QVector2D) *QVector2D {
-	return newQVector2D(C.QVector2D_OperatorDivideAssignWithVector(this.h, vector.cPointer()))
+	return newQVector2D(C.QVector2D_operatorDivideAssignWithVector(this.h, vector.cPointer()))
 }
 
 func QVector2D_DotProduct(v1 *QVector2D, v2 *QVector2D) float32 {
-	return (float32)(C.QVector2D_DotProduct(v1.cPointer(), v2.cPointer()))
+	return (float32)(C.QVector2D_dotProduct(v1.cPointer(), v2.cPointer()))
 }
 
 func (this *QVector2D) ToVector3D() *QVector3D {
-	_goptr := newQVector3D(C.QVector2D_ToVector3D(this.h))
+	_goptr := newQVector3D(C.QVector2D_toVector3D(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVector2D) ToVector4D() *QVector4D {
-	_goptr := newQVector4D(C.QVector2D_ToVector4D(this.h))
+	_goptr := newQVector4D(C.QVector2D_toVector4D(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVector2D) ToPoint() *QPoint {
-	_goptr := newQPoint(C.QVector2D_ToPoint(this.h))
+	_goptr := newQPoint(C.QVector2D_toPoint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVector2D) ToPointF() *QPointF {
-	_goptr := newQPointF(C.QVector2D_ToPointF(this.h))
+	_goptr := newQPointF(C.QVector2D_toPointF(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -203,7 +203,7 @@ func (this *QVector2D) ToQVariant() *QVariant {
 
 // Delete this object from C++ memory.
 func (this *QVector2D) Delete() {
-	C.QVector2D_Delete(this.h)
+	C.QVector2D_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

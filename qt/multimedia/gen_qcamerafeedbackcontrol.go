@@ -67,19 +67,19 @@ func UnsafeNewQCameraFeedbackControl(h unsafe.Pointer) *QCameraFeedbackControl {
 }
 
 func (this *QCameraFeedbackControl) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraFeedbackControl_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraFeedbackControl_metaObject(this.h)))
 }
 
 func (this *QCameraFeedbackControl) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QCameraFeedbackControl_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QCameraFeedbackControl_metacast(this.h, param1_Cstring))
 }
 
 func QCameraFeedbackControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraFeedbackControl_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraFeedbackControl_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -88,26 +88,26 @@ func QCameraFeedbackControl_Tr(s string) string {
 func QCameraFeedbackControl_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraFeedbackControl_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraFeedbackControl_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCameraFeedbackControl) IsEventFeedbackLocked(param1 QCameraFeedbackControl__EventType) bool {
-	return (bool)(C.QCameraFeedbackControl_IsEventFeedbackLocked(this.h, (C.int)(param1)))
+	return (bool)(C.QCameraFeedbackControl_isEventFeedbackLocked(this.h, (C.int)(param1)))
 }
 
 func (this *QCameraFeedbackControl) IsEventFeedbackEnabled(param1 QCameraFeedbackControl__EventType) bool {
-	return (bool)(C.QCameraFeedbackControl_IsEventFeedbackEnabled(this.h, (C.int)(param1)))
+	return (bool)(C.QCameraFeedbackControl_isEventFeedbackEnabled(this.h, (C.int)(param1)))
 }
 
 func (this *QCameraFeedbackControl) SetEventFeedbackEnabled(param1 QCameraFeedbackControl__EventType, param2 bool) bool {
-	return (bool)(C.QCameraFeedbackControl_SetEventFeedbackEnabled(this.h, (C.int)(param1), (C.bool)(param2)))
+	return (bool)(C.QCameraFeedbackControl_setEventFeedbackEnabled(this.h, (C.int)(param1), (C.bool)(param2)))
 }
 
 func (this *QCameraFeedbackControl) ResetEventFeedback(param1 QCameraFeedbackControl__EventType) {
-	C.QCameraFeedbackControl_ResetEventFeedback(this.h, (C.int)(param1))
+	C.QCameraFeedbackControl_resetEventFeedback(this.h, (C.int)(param1))
 }
 
 func (this *QCameraFeedbackControl) SetEventFeedbackSound(param1 QCameraFeedbackControl__EventType, filePath string) bool {
@@ -115,7 +115,7 @@ func (this *QCameraFeedbackControl) SetEventFeedbackSound(param1 QCameraFeedback
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
 	defer C.free(unsafe.Pointer(filePath_ms.data))
-	return (bool)(C.QCameraFeedbackControl_SetEventFeedbackSound(this.h, (C.int)(param1), filePath_ms))
+	return (bool)(C.QCameraFeedbackControl_setEventFeedbackSound(this.h, (C.int)(param1), filePath_ms))
 }
 
 func QCameraFeedbackControl_Tr2(s string, c string) string {
@@ -123,7 +123,7 @@ func QCameraFeedbackControl_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraFeedbackControl_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraFeedbackControl_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -134,7 +134,7 @@ func QCameraFeedbackControl_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraFeedbackControl_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraFeedbackControl_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -145,7 +145,7 @@ func QCameraFeedbackControl_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraFeedbackControl_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraFeedbackControl_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -156,7 +156,7 @@ func QCameraFeedbackControl_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraFeedbackControl_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraFeedbackControl_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -164,7 +164,7 @@ func QCameraFeedbackControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QCameraFeedbackControl) Delete() {
-	C.QCameraFeedbackControl_Delete(this.h)
+	C.QCameraFeedbackControl_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

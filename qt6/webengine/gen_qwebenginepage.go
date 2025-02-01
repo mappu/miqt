@@ -213,49 +213,49 @@ func NewQWebEnginePage4(profile *QWebEngineProfile, parent *qt6.QObject) *QWebEn
 }
 
 func (this *QWebEnginePage) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEnginePage_MetaObject(this.h)))
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEnginePage_metaObject(this.h)))
 }
 
 func (this *QWebEnginePage) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWebEnginePage_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWebEnginePage_metacast(this.h, param1_Cstring))
 }
 
 func QWebEnginePage_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEnginePage_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEnginePage_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEnginePage) History() *QWebEngineHistory {
-	return newQWebEngineHistory(C.QWebEnginePage_History(this.h))
+	return newQWebEngineHistory(C.QWebEnginePage_history(this.h))
 }
 
 func (this *QWebEnginePage) HasSelection() bool {
-	return (bool)(C.QWebEnginePage_HasSelection(this.h))
+	return (bool)(C.QWebEnginePage_hasSelection(this.h))
 }
 
 func (this *QWebEnginePage) SelectedText() string {
-	var _ms C.struct_miqt_string = C.QWebEnginePage_SelectedText(this.h)
+	var _ms C.struct_miqt_string = C.QWebEnginePage_selectedText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEnginePage) Profile() *QWebEngineProfile {
-	return newQWebEngineProfile(C.QWebEnginePage_Profile(this.h))
+	return newQWebEngineProfile(C.QWebEnginePage_profile(this.h))
 }
 
 func (this *QWebEnginePage) Action(action QWebEnginePage__WebAction) *qt6.QAction {
-	return qt6.UnsafeNewQAction(unsafe.Pointer(C.QWebEnginePage_Action(this.h, (C.int)(action))))
+	return qt6.UnsafeNewQAction(unsafe.Pointer(C.QWebEnginePage_action(this.h, (C.int)(action))))
 }
 
 func (this *QWebEnginePage) TriggerAction(action QWebEnginePage__WebAction, checked bool) {
-	C.QWebEnginePage_TriggerAction(this.h, (C.int)(action), (C.bool)(checked))
+	C.QWebEnginePage_triggerAction(this.h, (C.int)(action), (C.bool)(checked))
 }
 
 func (this *QWebEnginePage) ReplaceMisspelledWord(replacement string) {
@@ -263,31 +263,31 @@ func (this *QWebEnginePage) ReplaceMisspelledWord(replacement string) {
 	replacement_ms.data = C.CString(replacement)
 	replacement_ms.len = C.size_t(len(replacement))
 	defer C.free(unsafe.Pointer(replacement_ms.data))
-	C.QWebEnginePage_ReplaceMisspelledWord(this.h, replacement_ms)
+	C.QWebEnginePage_replaceMisspelledWord(this.h, replacement_ms)
 }
 
 func (this *QWebEnginePage) Event(param1 *qt6.QEvent) bool {
-	return (bool)(C.QWebEnginePage_Event(this.h, (*C.QEvent)(param1.UnsafePointer())))
+	return (bool)(C.QWebEnginePage_event(this.h, (*C.QEvent)(param1.UnsafePointer())))
 }
 
 func (this *QWebEnginePage) SetFeaturePermission(securityOrigin *qt6.QUrl, feature QWebEnginePage__Feature, policy QWebEnginePage__PermissionPolicy) {
-	C.QWebEnginePage_SetFeaturePermission(this.h, (*C.QUrl)(securityOrigin.UnsafePointer()), (C.int)(feature), (C.int)(policy))
+	C.QWebEnginePage_setFeaturePermission(this.h, (*C.QUrl)(securityOrigin.UnsafePointer()), (C.int)(feature), (C.int)(policy))
 }
 
 func (this *QWebEnginePage) IsLoading() bool {
-	return (bool)(C.QWebEnginePage_IsLoading(this.h))
+	return (bool)(C.QWebEnginePage_isLoading(this.h))
 }
 
 func (this *QWebEnginePage) Load(url *qt6.QUrl) {
-	C.QWebEnginePage_Load(this.h, (*C.QUrl)(url.UnsafePointer()))
+	C.QWebEnginePage_load(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QWebEnginePage) LoadWithRequest(request *QWebEngineHttpRequest) {
-	C.QWebEnginePage_LoadWithRequest(this.h, request.cPointer())
+	C.QWebEnginePage_loadWithRequest(this.h, request.cPointer())
 }
 
 func (this *QWebEnginePage) Download(url *qt6.QUrl) {
-	C.QWebEnginePage_Download(this.h, (*C.QUrl)(url.UnsafePointer()))
+	C.QWebEnginePage_download(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QWebEnginePage) SetHtml(html string) {
@@ -295,7 +295,7 @@ func (this *QWebEnginePage) SetHtml(html string) {
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
 	defer C.free(unsafe.Pointer(html_ms.data))
-	C.QWebEnginePage_SetHtml(this.h, html_ms)
+	C.QWebEnginePage_setHtml(this.h, html_ms)
 }
 
 func (this *QWebEnginePage) SetContent(data []byte) {
@@ -306,88 +306,88 @@ func (this *QWebEnginePage) SetContent(data []byte) {
 		data_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	data_alias.len = C.size_t(len(data))
-	C.QWebEnginePage_SetContent(this.h, data_alias)
+	C.QWebEnginePage_setContent(this.h, data_alias)
 }
 
 func (this *QWebEnginePage) Title() string {
-	var _ms C.struct_miqt_string = C.QWebEnginePage_Title(this.h)
+	var _ms C.struct_miqt_string = C.QWebEnginePage_title(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEnginePage) SetUrl(url *qt6.QUrl) {
-	C.QWebEnginePage_SetUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
+	C.QWebEnginePage_setUrl(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 
 func (this *QWebEnginePage) Url() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEnginePage_Url(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEnginePage_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) RequestedUrl() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEnginePage_RequestedUrl(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEnginePage_requestedUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) IconUrl() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEnginePage_IconUrl(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEnginePage_iconUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) Icon() *qt6.QIcon {
-	_goptr := qt6.UnsafeNewQIcon(unsafe.Pointer(C.QWebEnginePage_Icon(this.h)))
+	_goptr := qt6.UnsafeNewQIcon(unsafe.Pointer(C.QWebEnginePage_icon(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) ZoomFactor() float64 {
-	return (float64)(C.QWebEnginePage_ZoomFactor(this.h))
+	return (float64)(C.QWebEnginePage_zoomFactor(this.h))
 }
 
 func (this *QWebEnginePage) SetZoomFactor(factor float64) {
-	C.QWebEnginePage_SetZoomFactor(this.h, (C.double)(factor))
+	C.QWebEnginePage_setZoomFactor(this.h, (C.double)(factor))
 }
 
 func (this *QWebEnginePage) ScrollPosition() *qt6.QPointF {
-	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QWebEnginePage_ScrollPosition(this.h)))
+	_goptr := qt6.UnsafeNewQPointF(unsafe.Pointer(C.QWebEnginePage_scrollPosition(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) ContentsSize() *qt6.QSizeF {
-	_goptr := qt6.UnsafeNewQSizeF(unsafe.Pointer(C.QWebEnginePage_ContentsSize(this.h)))
+	_goptr := qt6.UnsafeNewQSizeF(unsafe.Pointer(C.QWebEnginePage_contentsSize(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) Scripts() *QWebEngineScriptCollection {
-	return newQWebEngineScriptCollection(C.QWebEnginePage_Scripts(this.h))
+	return newQWebEngineScriptCollection(C.QWebEnginePage_scripts(this.h))
 }
 
 func (this *QWebEnginePage) Settings() *QWebEngineSettings {
-	return newQWebEngineSettings(C.QWebEnginePage_Settings(this.h))
+	return newQWebEngineSettings(C.QWebEnginePage_settings(this.h))
 }
 
 func (this *QWebEnginePage) WebChannel() *webchannel.QWebChannel {
-	return webchannel.UnsafeNewQWebChannel(unsafe.Pointer(C.QWebEnginePage_WebChannel(this.h)))
+	return webchannel.UnsafeNewQWebChannel(unsafe.Pointer(C.QWebEnginePage_webChannel(this.h)))
 }
 
 func (this *QWebEnginePage) SetWebChannel(param1 *webchannel.QWebChannel) {
-	C.QWebEnginePage_SetWebChannel(this.h, (*C.QWebChannel)(param1.UnsafePointer()))
+	C.QWebEnginePage_setWebChannel(this.h, (*C.QWebChannel)(param1.UnsafePointer()))
 }
 
 func (this *QWebEnginePage) BackgroundColor() *qt6.QColor {
-	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QWebEnginePage_BackgroundColor(this.h)))
+	_goptr := qt6.UnsafeNewQColor(unsafe.Pointer(C.QWebEnginePage_backgroundColor(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEnginePage) SetBackgroundColor(color *qt6.QColor) {
-	C.QWebEnginePage_SetBackgroundColor(this.h, (*C.QColor)(color.UnsafePointer()))
+	C.QWebEnginePage_setBackgroundColor(this.h, (*C.QColor)(color.UnsafePointer()))
 }
 
 func (this *QWebEnginePage) Save(filePath string) {
@@ -395,23 +395,23 @@ func (this *QWebEnginePage) Save(filePath string) {
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
 	defer C.free(unsafe.Pointer(filePath_ms.data))
-	C.QWebEnginePage_Save(this.h, filePath_ms)
+	C.QWebEnginePage_save(this.h, filePath_ms)
 }
 
 func (this *QWebEnginePage) IsAudioMuted() bool {
-	return (bool)(C.QWebEnginePage_IsAudioMuted(this.h))
+	return (bool)(C.QWebEnginePage_isAudioMuted(this.h))
 }
 
 func (this *QWebEnginePage) SetAudioMuted(muted bool) {
-	C.QWebEnginePage_SetAudioMuted(this.h, (C.bool)(muted))
+	C.QWebEnginePage_setAudioMuted(this.h, (C.bool)(muted))
 }
 
 func (this *QWebEnginePage) RecentlyAudible() bool {
-	return (bool)(C.QWebEnginePage_RecentlyAudible(this.h))
+	return (bool)(C.QWebEnginePage_recentlyAudible(this.h))
 }
 
 func (this *QWebEnginePage) RenderProcessPid() int64 {
-	return (int64)(C.QWebEnginePage_RenderProcessPid(this.h))
+	return (int64)(C.QWebEnginePage_renderProcessPid(this.h))
 }
 
 func (this *QWebEnginePage) PrintToPdf(filePath string) {
@@ -419,62 +419,62 @@ func (this *QWebEnginePage) PrintToPdf(filePath string) {
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
 	defer C.free(unsafe.Pointer(filePath_ms.data))
-	C.QWebEnginePage_PrintToPdf(this.h, filePath_ms)
+	C.QWebEnginePage_printToPdf(this.h, filePath_ms)
 }
 
 func (this *QWebEnginePage) SetInspectedPage(page *QWebEnginePage) {
-	C.QWebEnginePage_SetInspectedPage(this.h, page.cPointer())
+	C.QWebEnginePage_setInspectedPage(this.h, page.cPointer())
 }
 
 func (this *QWebEnginePage) InspectedPage() *QWebEnginePage {
-	return newQWebEnginePage(C.QWebEnginePage_InspectedPage(this.h))
+	return newQWebEnginePage(C.QWebEnginePage_inspectedPage(this.h))
 }
 
 func (this *QWebEnginePage) SetDevToolsPage(page *QWebEnginePage) {
-	C.QWebEnginePage_SetDevToolsPage(this.h, page.cPointer())
+	C.QWebEnginePage_setDevToolsPage(this.h, page.cPointer())
 }
 
 func (this *QWebEnginePage) DevToolsPage() *QWebEnginePage {
-	return newQWebEnginePage(C.QWebEnginePage_DevToolsPage(this.h))
+	return newQWebEnginePage(C.QWebEnginePage_devToolsPage(this.h))
 }
 
 func (this *QWebEnginePage) SetUrlRequestInterceptor(interceptor *QWebEngineUrlRequestInterceptor) {
-	C.QWebEnginePage_SetUrlRequestInterceptor(this.h, interceptor.cPointer())
+	C.QWebEnginePage_setUrlRequestInterceptor(this.h, interceptor.cPointer())
 }
 
 func (this *QWebEnginePage) LifecycleState() QWebEnginePage__LifecycleState {
-	return (QWebEnginePage__LifecycleState)(C.QWebEnginePage_LifecycleState(this.h))
+	return (QWebEnginePage__LifecycleState)(C.QWebEnginePage_lifecycleState(this.h))
 }
 
 func (this *QWebEnginePage) SetLifecycleState(state QWebEnginePage__LifecycleState) {
-	C.QWebEnginePage_SetLifecycleState(this.h, (C.int)(state))
+	C.QWebEnginePage_setLifecycleState(this.h, (C.int)(state))
 }
 
 func (this *QWebEnginePage) RecommendedState() QWebEnginePage__LifecycleState {
-	return (QWebEnginePage__LifecycleState)(C.QWebEnginePage_RecommendedState(this.h))
+	return (QWebEnginePage__LifecycleState)(C.QWebEnginePage_recommendedState(this.h))
 }
 
 func (this *QWebEnginePage) IsVisible() bool {
-	return (bool)(C.QWebEnginePage_IsVisible(this.h))
+	return (bool)(C.QWebEnginePage_isVisible(this.h))
 }
 
 func (this *QWebEnginePage) SetVisible(visible bool) {
-	C.QWebEnginePage_SetVisible(this.h, (C.bool)(visible))
+	C.QWebEnginePage_setVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QWebEnginePage) AcceptAsNewWindow(request *QWebEngineNewWindowRequest) {
-	C.QWebEnginePage_AcceptAsNewWindow(this.h, request.cPointer())
+	C.QWebEnginePage_acceptAsNewWindow(this.h, request.cPointer())
 }
 
 func (this *QWebEnginePage) LoadStarted() {
-	C.QWebEnginePage_LoadStarted(this.h)
+	C.QWebEnginePage_loadStarted(this.h)
 }
 func (this *QWebEnginePage) OnLoadStarted(slot func()) {
-	C.QWebEnginePage_connect_LoadStarted(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_loadStarted(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_LoadStarted
-func miqt_exec_callback_QWebEnginePage_LoadStarted(cb C.intptr_t) {
+//export miqt_exec_callback_QWebEnginePage_loadStarted
+func miqt_exec_callback_QWebEnginePage_loadStarted(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -484,14 +484,14 @@ func miqt_exec_callback_QWebEnginePage_LoadStarted(cb C.intptr_t) {
 }
 
 func (this *QWebEnginePage) LoadProgress(progress int) {
-	C.QWebEnginePage_LoadProgress(this.h, (C.int)(progress))
+	C.QWebEnginePage_loadProgress(this.h, (C.int)(progress))
 }
 func (this *QWebEnginePage) OnLoadProgress(slot func(progress int)) {
-	C.QWebEnginePage_connect_LoadProgress(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_loadProgress(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_LoadProgress
-func miqt_exec_callback_QWebEnginePage_LoadProgress(cb C.intptr_t, progress C.int) {
+//export miqt_exec_callback_QWebEnginePage_loadProgress
+func miqt_exec_callback_QWebEnginePage_loadProgress(cb C.intptr_t, progress C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(progress int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -504,14 +504,14 @@ func miqt_exec_callback_QWebEnginePage_LoadProgress(cb C.intptr_t, progress C.in
 }
 
 func (this *QWebEnginePage) LoadFinished(ok bool) {
-	C.QWebEnginePage_LoadFinished(this.h, (C.bool)(ok))
+	C.QWebEnginePage_loadFinished(this.h, (C.bool)(ok))
 }
 func (this *QWebEnginePage) OnLoadFinished(slot func(ok bool)) {
-	C.QWebEnginePage_connect_LoadFinished(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_loadFinished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_LoadFinished
-func miqt_exec_callback_QWebEnginePage_LoadFinished(cb C.intptr_t, ok C.bool) {
+//export miqt_exec_callback_QWebEnginePage_loadFinished
+func miqt_exec_callback_QWebEnginePage_loadFinished(cb C.intptr_t, ok C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(ok bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -524,14 +524,14 @@ func miqt_exec_callback_QWebEnginePage_LoadFinished(cb C.intptr_t, ok C.bool) {
 }
 
 func (this *QWebEnginePage) LoadingChanged(loadingInfo *QWebEngineLoadingInfo) {
-	C.QWebEnginePage_LoadingChanged(this.h, loadingInfo.cPointer())
+	C.QWebEnginePage_loadingChanged(this.h, loadingInfo.cPointer())
 }
 func (this *QWebEnginePage) OnLoadingChanged(slot func(loadingInfo *QWebEngineLoadingInfo)) {
-	C.QWebEnginePage_connect_LoadingChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_loadingChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_LoadingChanged
-func miqt_exec_callback_QWebEnginePage_LoadingChanged(cb C.intptr_t, loadingInfo *C.QWebEngineLoadingInfo) {
+//export miqt_exec_callback_QWebEnginePage_loadingChanged
+func miqt_exec_callback_QWebEnginePage_loadingChanged(cb C.intptr_t, loadingInfo *C.QWebEngineLoadingInfo) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(loadingInfo *QWebEngineLoadingInfo))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -548,14 +548,14 @@ func (this *QWebEnginePage) LinkHovered(url string) {
 	url_ms.data = C.CString(url)
 	url_ms.len = C.size_t(len(url))
 	defer C.free(unsafe.Pointer(url_ms.data))
-	C.QWebEnginePage_LinkHovered(this.h, url_ms)
+	C.QWebEnginePage_linkHovered(this.h, url_ms)
 }
 func (this *QWebEnginePage) OnLinkHovered(slot func(url string)) {
-	C.QWebEnginePage_connect_LinkHovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_linkHovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_LinkHovered
-func miqt_exec_callback_QWebEnginePage_LinkHovered(cb C.intptr_t, url C.struct_miqt_string) {
+//export miqt_exec_callback_QWebEnginePage_linkHovered
+func miqt_exec_callback_QWebEnginePage_linkHovered(cb C.intptr_t, url C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(url string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -571,14 +571,14 @@ func miqt_exec_callback_QWebEnginePage_LinkHovered(cb C.intptr_t, url C.struct_m
 }
 
 func (this *QWebEnginePage) SelectionChanged() {
-	C.QWebEnginePage_SelectionChanged(this.h)
+	C.QWebEnginePage_selectionChanged(this.h)
 }
 func (this *QWebEnginePage) OnSelectionChanged(slot func()) {
-	C.QWebEnginePage_connect_SelectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_selectionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_SelectionChanged
-func miqt_exec_callback_QWebEnginePage_SelectionChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QWebEnginePage_selectionChanged
+func miqt_exec_callback_QWebEnginePage_selectionChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -588,14 +588,14 @@ func miqt_exec_callback_QWebEnginePage_SelectionChanged(cb C.intptr_t) {
 }
 
 func (this *QWebEnginePage) GeometryChangeRequested(geom *qt6.QRect) {
-	C.QWebEnginePage_GeometryChangeRequested(this.h, (*C.QRect)(geom.UnsafePointer()))
+	C.QWebEnginePage_geometryChangeRequested(this.h, (*C.QRect)(geom.UnsafePointer()))
 }
 func (this *QWebEnginePage) OnGeometryChangeRequested(slot func(geom *qt6.QRect)) {
-	C.QWebEnginePage_connect_GeometryChangeRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_geometryChangeRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_GeometryChangeRequested
-func miqt_exec_callback_QWebEnginePage_GeometryChangeRequested(cb C.intptr_t, geom *C.QRect) {
+//export miqt_exec_callback_QWebEnginePage_geometryChangeRequested
+func miqt_exec_callback_QWebEnginePage_geometryChangeRequested(cb C.intptr_t, geom *C.QRect) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(geom *qt6.QRect))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -608,14 +608,14 @@ func miqt_exec_callback_QWebEnginePage_GeometryChangeRequested(cb C.intptr_t, ge
 }
 
 func (this *QWebEnginePage) WindowCloseRequested() {
-	C.QWebEnginePage_WindowCloseRequested(this.h)
+	C.QWebEnginePage_windowCloseRequested(this.h)
 }
 func (this *QWebEnginePage) OnWindowCloseRequested(slot func()) {
-	C.QWebEnginePage_connect_WindowCloseRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_windowCloseRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_WindowCloseRequested
-func miqt_exec_callback_QWebEnginePage_WindowCloseRequested(cb C.intptr_t) {
+//export miqt_exec_callback_QWebEnginePage_windowCloseRequested
+func miqt_exec_callback_QWebEnginePage_windowCloseRequested(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -625,14 +625,14 @@ func miqt_exec_callback_QWebEnginePage_WindowCloseRequested(cb C.intptr_t) {
 }
 
 func (this *QWebEnginePage) FeaturePermissionRequested(securityOrigin *qt6.QUrl, feature QWebEnginePage__Feature) {
-	C.QWebEnginePage_FeaturePermissionRequested(this.h, (*C.QUrl)(securityOrigin.UnsafePointer()), (C.int)(feature))
+	C.QWebEnginePage_featurePermissionRequested(this.h, (*C.QUrl)(securityOrigin.UnsafePointer()), (C.int)(feature))
 }
 func (this *QWebEnginePage) OnFeaturePermissionRequested(slot func(securityOrigin *qt6.QUrl, feature QWebEnginePage__Feature)) {
-	C.QWebEnginePage_connect_FeaturePermissionRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_featurePermissionRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_FeaturePermissionRequested
-func miqt_exec_callback_QWebEnginePage_FeaturePermissionRequested(cb C.intptr_t, securityOrigin *C.QUrl, feature C.int) {
+//export miqt_exec_callback_QWebEnginePage_featurePermissionRequested
+func miqt_exec_callback_QWebEnginePage_featurePermissionRequested(cb C.intptr_t, securityOrigin *C.QUrl, feature C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(securityOrigin *qt6.QUrl, feature QWebEnginePage__Feature))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -647,14 +647,14 @@ func miqt_exec_callback_QWebEnginePage_FeaturePermissionRequested(cb C.intptr_t,
 }
 
 func (this *QWebEnginePage) FeaturePermissionRequestCanceled(securityOrigin *qt6.QUrl, feature QWebEnginePage__Feature) {
-	C.QWebEnginePage_FeaturePermissionRequestCanceled(this.h, (*C.QUrl)(securityOrigin.UnsafePointer()), (C.int)(feature))
+	C.QWebEnginePage_featurePermissionRequestCanceled(this.h, (*C.QUrl)(securityOrigin.UnsafePointer()), (C.int)(feature))
 }
 func (this *QWebEnginePage) OnFeaturePermissionRequestCanceled(slot func(securityOrigin *qt6.QUrl, feature QWebEnginePage__Feature)) {
-	C.QWebEnginePage_connect_FeaturePermissionRequestCanceled(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_featurePermissionRequestCanceled(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_FeaturePermissionRequestCanceled
-func miqt_exec_callback_QWebEnginePage_FeaturePermissionRequestCanceled(cb C.intptr_t, securityOrigin *C.QUrl, feature C.int) {
+//export miqt_exec_callback_QWebEnginePage_featurePermissionRequestCanceled
+func miqt_exec_callback_QWebEnginePage_featurePermissionRequestCanceled(cb C.intptr_t, securityOrigin *C.QUrl, feature C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(securityOrigin *qt6.QUrl, feature QWebEnginePage__Feature))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -669,14 +669,14 @@ func miqt_exec_callback_QWebEnginePage_FeaturePermissionRequestCanceled(cb C.int
 }
 
 func (this *QWebEnginePage) FullScreenRequested(fullScreenRequest QWebEngineFullScreenRequest) {
-	C.QWebEnginePage_FullScreenRequested(this.h, fullScreenRequest.cPointer())
+	C.QWebEnginePage_fullScreenRequested(this.h, fullScreenRequest.cPointer())
 }
 func (this *QWebEnginePage) OnFullScreenRequested(slot func(fullScreenRequest QWebEngineFullScreenRequest)) {
-	C.QWebEnginePage_connect_FullScreenRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_fullScreenRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_FullScreenRequested
-func miqt_exec_callback_QWebEnginePage_FullScreenRequested(cb C.intptr_t, fullScreenRequest *C.QWebEngineFullScreenRequest) {
+//export miqt_exec_callback_QWebEnginePage_fullScreenRequested
+func miqt_exec_callback_QWebEnginePage_fullScreenRequested(cb C.intptr_t, fullScreenRequest *C.QWebEngineFullScreenRequest) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(fullScreenRequest QWebEngineFullScreenRequest))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -691,14 +691,14 @@ func miqt_exec_callback_QWebEnginePage_FullScreenRequested(cb C.intptr_t, fullSc
 }
 
 func (this *QWebEnginePage) QuotaRequested(quotaRequest QWebEngineQuotaRequest) {
-	C.QWebEnginePage_QuotaRequested(this.h, quotaRequest.cPointer())
+	C.QWebEnginePage_quotaRequested(this.h, quotaRequest.cPointer())
 }
 func (this *QWebEnginePage) OnQuotaRequested(slot func(quotaRequest QWebEngineQuotaRequest)) {
-	C.QWebEnginePage_connect_QuotaRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_quotaRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_QuotaRequested
-func miqt_exec_callback_QWebEnginePage_QuotaRequested(cb C.intptr_t, quotaRequest *C.QWebEngineQuotaRequest) {
+//export miqt_exec_callback_QWebEnginePage_quotaRequested
+func miqt_exec_callback_QWebEnginePage_quotaRequested(cb C.intptr_t, quotaRequest *C.QWebEngineQuotaRequest) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(quotaRequest QWebEngineQuotaRequest))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -713,14 +713,14 @@ func miqt_exec_callback_QWebEnginePage_QuotaRequested(cb C.intptr_t, quotaReques
 }
 
 func (this *QWebEnginePage) RegisterProtocolHandlerRequested(request QWebEngineRegisterProtocolHandlerRequest) {
-	C.QWebEnginePage_RegisterProtocolHandlerRequested(this.h, request.cPointer())
+	C.QWebEnginePage_registerProtocolHandlerRequested(this.h, request.cPointer())
 }
 func (this *QWebEnginePage) OnRegisterProtocolHandlerRequested(slot func(request QWebEngineRegisterProtocolHandlerRequest)) {
-	C.QWebEnginePage_connect_RegisterProtocolHandlerRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_registerProtocolHandlerRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_RegisterProtocolHandlerRequested
-func miqt_exec_callback_QWebEnginePage_RegisterProtocolHandlerRequested(cb C.intptr_t, request *C.QWebEngineRegisterProtocolHandlerRequest) {
+//export miqt_exec_callback_QWebEnginePage_registerProtocolHandlerRequested
+func miqt_exec_callback_QWebEnginePage_registerProtocolHandlerRequested(cb C.intptr_t, request *C.QWebEngineRegisterProtocolHandlerRequest) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(request QWebEngineRegisterProtocolHandlerRequest))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -735,14 +735,14 @@ func miqt_exec_callback_QWebEnginePage_RegisterProtocolHandlerRequested(cb C.int
 }
 
 func (this *QWebEnginePage) FileSystemAccessRequested(request QWebEngineFileSystemAccessRequest) {
-	C.QWebEnginePage_FileSystemAccessRequested(this.h, request.cPointer())
+	C.QWebEnginePage_fileSystemAccessRequested(this.h, request.cPointer())
 }
 func (this *QWebEnginePage) OnFileSystemAccessRequested(slot func(request QWebEngineFileSystemAccessRequest)) {
-	C.QWebEnginePage_connect_FileSystemAccessRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_fileSystemAccessRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_FileSystemAccessRequested
-func miqt_exec_callback_QWebEnginePage_FileSystemAccessRequested(cb C.intptr_t, request *C.QWebEngineFileSystemAccessRequest) {
+//export miqt_exec_callback_QWebEnginePage_fileSystemAccessRequested
+func miqt_exec_callback_QWebEnginePage_fileSystemAccessRequested(cb C.intptr_t, request *C.QWebEngineFileSystemAccessRequest) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(request QWebEngineFileSystemAccessRequest))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -757,14 +757,14 @@ func miqt_exec_callback_QWebEnginePage_FileSystemAccessRequested(cb C.intptr_t, 
 }
 
 func (this *QWebEnginePage) SelectClientCertificate(clientCertSelection QWebEngineClientCertificateSelection) {
-	C.QWebEnginePage_SelectClientCertificate(this.h, clientCertSelection.cPointer())
+	C.QWebEnginePage_selectClientCertificate(this.h, clientCertSelection.cPointer())
 }
 func (this *QWebEnginePage) OnSelectClientCertificate(slot func(clientCertSelection QWebEngineClientCertificateSelection)) {
-	C.QWebEnginePage_connect_SelectClientCertificate(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_selectClientCertificate(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_SelectClientCertificate
-func miqt_exec_callback_QWebEnginePage_SelectClientCertificate(cb C.intptr_t, clientCertSelection *C.QWebEngineClientCertificateSelection) {
+//export miqt_exec_callback_QWebEnginePage_selectClientCertificate
+func miqt_exec_callback_QWebEnginePage_selectClientCertificate(cb C.intptr_t, clientCertSelection *C.QWebEngineClientCertificateSelection) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(clientCertSelection QWebEngineClientCertificateSelection))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -779,14 +779,14 @@ func miqt_exec_callback_QWebEnginePage_SelectClientCertificate(cb C.intptr_t, cl
 }
 
 func (this *QWebEnginePage) AuthenticationRequired(requestUrl *qt6.QUrl, authenticator *network.QAuthenticator) {
-	C.QWebEnginePage_AuthenticationRequired(this.h, (*C.QUrl)(requestUrl.UnsafePointer()), (*C.QAuthenticator)(authenticator.UnsafePointer()))
+	C.QWebEnginePage_authenticationRequired(this.h, (*C.QUrl)(requestUrl.UnsafePointer()), (*C.QAuthenticator)(authenticator.UnsafePointer()))
 }
 func (this *QWebEnginePage) OnAuthenticationRequired(slot func(requestUrl *qt6.QUrl, authenticator *network.QAuthenticator)) {
-	C.QWebEnginePage_connect_AuthenticationRequired(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_authenticationRequired(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_AuthenticationRequired
-func miqt_exec_callback_QWebEnginePage_AuthenticationRequired(cb C.intptr_t, requestUrl *C.QUrl, authenticator *C.QAuthenticator) {
+//export miqt_exec_callback_QWebEnginePage_authenticationRequired
+func miqt_exec_callback_QWebEnginePage_authenticationRequired(cb C.intptr_t, requestUrl *C.QUrl, authenticator *C.QAuthenticator) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(requestUrl *qt6.QUrl, authenticator *network.QAuthenticator))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -805,14 +805,14 @@ func (this *QWebEnginePage) ProxyAuthenticationRequired(requestUrl *qt6.QUrl, au
 	proxyHost_ms.data = C.CString(proxyHost)
 	proxyHost_ms.len = C.size_t(len(proxyHost))
 	defer C.free(unsafe.Pointer(proxyHost_ms.data))
-	C.QWebEnginePage_ProxyAuthenticationRequired(this.h, (*C.QUrl)(requestUrl.UnsafePointer()), (*C.QAuthenticator)(authenticator.UnsafePointer()), proxyHost_ms)
+	C.QWebEnginePage_proxyAuthenticationRequired(this.h, (*C.QUrl)(requestUrl.UnsafePointer()), (*C.QAuthenticator)(authenticator.UnsafePointer()), proxyHost_ms)
 }
 func (this *QWebEnginePage) OnProxyAuthenticationRequired(slot func(requestUrl *qt6.QUrl, authenticator *network.QAuthenticator, proxyHost string)) {
-	C.QWebEnginePage_connect_ProxyAuthenticationRequired(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_proxyAuthenticationRequired(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_ProxyAuthenticationRequired
-func miqt_exec_callback_QWebEnginePage_ProxyAuthenticationRequired(cb C.intptr_t, requestUrl *C.QUrl, authenticator *C.QAuthenticator, proxyHost C.struct_miqt_string) {
+//export miqt_exec_callback_QWebEnginePage_proxyAuthenticationRequired
+func miqt_exec_callback_QWebEnginePage_proxyAuthenticationRequired(cb C.intptr_t, requestUrl *C.QUrl, authenticator *C.QAuthenticator, proxyHost C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(requestUrl *qt6.QUrl, authenticator *network.QAuthenticator, proxyHost string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -832,14 +832,14 @@ func miqt_exec_callback_QWebEnginePage_ProxyAuthenticationRequired(cb C.intptr_t
 }
 
 func (this *QWebEnginePage) RenderProcessTerminated(terminationStatus QWebEnginePage__RenderProcessTerminationStatus, exitCode int) {
-	C.QWebEnginePage_RenderProcessTerminated(this.h, (C.int)(terminationStatus), (C.int)(exitCode))
+	C.QWebEnginePage_renderProcessTerminated(this.h, (C.int)(terminationStatus), (C.int)(exitCode))
 }
 func (this *QWebEnginePage) OnRenderProcessTerminated(slot func(terminationStatus QWebEnginePage__RenderProcessTerminationStatus, exitCode int)) {
-	C.QWebEnginePage_connect_RenderProcessTerminated(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_renderProcessTerminated(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_RenderProcessTerminated
-func miqt_exec_callback_QWebEnginePage_RenderProcessTerminated(cb C.intptr_t, terminationStatus C.int, exitCode C.int) {
+//export miqt_exec_callback_QWebEnginePage_renderProcessTerminated
+func miqt_exec_callback_QWebEnginePage_renderProcessTerminated(cb C.intptr_t, terminationStatus C.int, exitCode C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(terminationStatus QWebEnginePage__RenderProcessTerminationStatus, exitCode int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -854,14 +854,14 @@ func miqt_exec_callback_QWebEnginePage_RenderProcessTerminated(cb C.intptr_t, te
 }
 
 func (this *QWebEnginePage) CertificateError(certificateError *QWebEngineCertificateError) {
-	C.QWebEnginePage_CertificateError(this.h, certificateError.cPointer())
+	C.QWebEnginePage_certificateError(this.h, certificateError.cPointer())
 }
 func (this *QWebEnginePage) OnCertificateError(slot func(certificateError *QWebEngineCertificateError)) {
-	C.QWebEnginePage_connect_CertificateError(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_certificateError(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_CertificateError
-func miqt_exec_callback_QWebEnginePage_CertificateError(cb C.intptr_t, certificateError *C.QWebEngineCertificateError) {
+//export miqt_exec_callback_QWebEnginePage_certificateError
+func miqt_exec_callback_QWebEnginePage_certificateError(cb C.intptr_t, certificateError *C.QWebEngineCertificateError) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(certificateError *QWebEngineCertificateError))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -874,14 +874,14 @@ func miqt_exec_callback_QWebEnginePage_CertificateError(cb C.intptr_t, certifica
 }
 
 func (this *QWebEnginePage) NavigationRequested(request *QWebEngineNavigationRequest) {
-	C.QWebEnginePage_NavigationRequested(this.h, request.cPointer())
+	C.QWebEnginePage_navigationRequested(this.h, request.cPointer())
 }
 func (this *QWebEnginePage) OnNavigationRequested(slot func(request *QWebEngineNavigationRequest)) {
-	C.QWebEnginePage_connect_NavigationRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_navigationRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_NavigationRequested
-func miqt_exec_callback_QWebEnginePage_NavigationRequested(cb C.intptr_t, request *C.QWebEngineNavigationRequest) {
+//export miqt_exec_callback_QWebEnginePage_navigationRequested
+func miqt_exec_callback_QWebEnginePage_navigationRequested(cb C.intptr_t, request *C.QWebEngineNavigationRequest) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(request *QWebEngineNavigationRequest))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -894,14 +894,14 @@ func miqt_exec_callback_QWebEnginePage_NavigationRequested(cb C.intptr_t, reques
 }
 
 func (this *QWebEnginePage) NewWindowRequested(request *QWebEngineNewWindowRequest) {
-	C.QWebEnginePage_NewWindowRequested(this.h, request.cPointer())
+	C.QWebEnginePage_newWindowRequested(this.h, request.cPointer())
 }
 func (this *QWebEnginePage) OnNewWindowRequested(slot func(request *QWebEngineNewWindowRequest)) {
-	C.QWebEnginePage_connect_NewWindowRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_newWindowRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_NewWindowRequested
-func miqt_exec_callback_QWebEnginePage_NewWindowRequested(cb C.intptr_t, request *C.QWebEngineNewWindowRequest) {
+//export miqt_exec_callback_QWebEnginePage_newWindowRequested
+func miqt_exec_callback_QWebEnginePage_newWindowRequested(cb C.intptr_t, request *C.QWebEngineNewWindowRequest) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(request *QWebEngineNewWindowRequest))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -918,14 +918,14 @@ func (this *QWebEnginePage) TitleChanged(title string) {
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	C.QWebEnginePage_TitleChanged(this.h, title_ms)
+	C.QWebEnginePage_titleChanged(this.h, title_ms)
 }
 func (this *QWebEnginePage) OnTitleChanged(slot func(title string)) {
-	C.QWebEnginePage_connect_TitleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_titleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_TitleChanged
-func miqt_exec_callback_QWebEnginePage_TitleChanged(cb C.intptr_t, title C.struct_miqt_string) {
+//export miqt_exec_callback_QWebEnginePage_titleChanged
+func miqt_exec_callback_QWebEnginePage_titleChanged(cb C.intptr_t, title C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(title string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -941,14 +941,14 @@ func miqt_exec_callback_QWebEnginePage_TitleChanged(cb C.intptr_t, title C.struc
 }
 
 func (this *QWebEnginePage) UrlChanged(url *qt6.QUrl) {
-	C.QWebEnginePage_UrlChanged(this.h, (*C.QUrl)(url.UnsafePointer()))
+	C.QWebEnginePage_urlChanged(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 func (this *QWebEnginePage) OnUrlChanged(slot func(url *qt6.QUrl)) {
-	C.QWebEnginePage_connect_UrlChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_urlChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_UrlChanged
-func miqt_exec_callback_QWebEnginePage_UrlChanged(cb C.intptr_t, url *C.QUrl) {
+//export miqt_exec_callback_QWebEnginePage_urlChanged
+func miqt_exec_callback_QWebEnginePage_urlChanged(cb C.intptr_t, url *C.QUrl) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(url *qt6.QUrl))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -961,14 +961,14 @@ func miqt_exec_callback_QWebEnginePage_UrlChanged(cb C.intptr_t, url *C.QUrl) {
 }
 
 func (this *QWebEnginePage) IconUrlChanged(url *qt6.QUrl) {
-	C.QWebEnginePage_IconUrlChanged(this.h, (*C.QUrl)(url.UnsafePointer()))
+	C.QWebEnginePage_iconUrlChanged(this.h, (*C.QUrl)(url.UnsafePointer()))
 }
 func (this *QWebEnginePage) OnIconUrlChanged(slot func(url *qt6.QUrl)) {
-	C.QWebEnginePage_connect_IconUrlChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_iconUrlChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_IconUrlChanged
-func miqt_exec_callback_QWebEnginePage_IconUrlChanged(cb C.intptr_t, url *C.QUrl) {
+//export miqt_exec_callback_QWebEnginePage_iconUrlChanged
+func miqt_exec_callback_QWebEnginePage_iconUrlChanged(cb C.intptr_t, url *C.QUrl) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(url *qt6.QUrl))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -981,14 +981,14 @@ func miqt_exec_callback_QWebEnginePage_IconUrlChanged(cb C.intptr_t, url *C.QUrl
 }
 
 func (this *QWebEnginePage) IconChanged(icon *qt6.QIcon) {
-	C.QWebEnginePage_IconChanged(this.h, (*C.QIcon)(icon.UnsafePointer()))
+	C.QWebEnginePage_iconChanged(this.h, (*C.QIcon)(icon.UnsafePointer()))
 }
 func (this *QWebEnginePage) OnIconChanged(slot func(icon *qt6.QIcon)) {
-	C.QWebEnginePage_connect_IconChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_iconChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_IconChanged
-func miqt_exec_callback_QWebEnginePage_IconChanged(cb C.intptr_t, icon *C.QIcon) {
+//export miqt_exec_callback_QWebEnginePage_iconChanged
+func miqt_exec_callback_QWebEnginePage_iconChanged(cb C.intptr_t, icon *C.QIcon) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(icon *qt6.QIcon))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1001,14 +1001,14 @@ func miqt_exec_callback_QWebEnginePage_IconChanged(cb C.intptr_t, icon *C.QIcon)
 }
 
 func (this *QWebEnginePage) ScrollPositionChanged(position *qt6.QPointF) {
-	C.QWebEnginePage_ScrollPositionChanged(this.h, (*C.QPointF)(position.UnsafePointer()))
+	C.QWebEnginePage_scrollPositionChanged(this.h, (*C.QPointF)(position.UnsafePointer()))
 }
 func (this *QWebEnginePage) OnScrollPositionChanged(slot func(position *qt6.QPointF)) {
-	C.QWebEnginePage_connect_ScrollPositionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_scrollPositionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_ScrollPositionChanged
-func miqt_exec_callback_QWebEnginePage_ScrollPositionChanged(cb C.intptr_t, position *C.QPointF) {
+//export miqt_exec_callback_QWebEnginePage_scrollPositionChanged
+func miqt_exec_callback_QWebEnginePage_scrollPositionChanged(cb C.intptr_t, position *C.QPointF) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(position *qt6.QPointF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1021,14 +1021,14 @@ func miqt_exec_callback_QWebEnginePage_ScrollPositionChanged(cb C.intptr_t, posi
 }
 
 func (this *QWebEnginePage) ContentsSizeChanged(size *qt6.QSizeF) {
-	C.QWebEnginePage_ContentsSizeChanged(this.h, (*C.QSizeF)(size.UnsafePointer()))
+	C.QWebEnginePage_contentsSizeChanged(this.h, (*C.QSizeF)(size.UnsafePointer()))
 }
 func (this *QWebEnginePage) OnContentsSizeChanged(slot func(size *qt6.QSizeF)) {
-	C.QWebEnginePage_connect_ContentsSizeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_contentsSizeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_ContentsSizeChanged
-func miqt_exec_callback_QWebEnginePage_ContentsSizeChanged(cb C.intptr_t, size *C.QSizeF) {
+//export miqt_exec_callback_QWebEnginePage_contentsSizeChanged
+func miqt_exec_callback_QWebEnginePage_contentsSizeChanged(cb C.intptr_t, size *C.QSizeF) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(size *qt6.QSizeF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1041,14 +1041,14 @@ func miqt_exec_callback_QWebEnginePage_ContentsSizeChanged(cb C.intptr_t, size *
 }
 
 func (this *QWebEnginePage) AudioMutedChanged(muted bool) {
-	C.QWebEnginePage_AudioMutedChanged(this.h, (C.bool)(muted))
+	C.QWebEnginePage_audioMutedChanged(this.h, (C.bool)(muted))
 }
 func (this *QWebEnginePage) OnAudioMutedChanged(slot func(muted bool)) {
-	C.QWebEnginePage_connect_AudioMutedChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_audioMutedChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_AudioMutedChanged
-func miqt_exec_callback_QWebEnginePage_AudioMutedChanged(cb C.intptr_t, muted C.bool) {
+//export miqt_exec_callback_QWebEnginePage_audioMutedChanged
+func miqt_exec_callback_QWebEnginePage_audioMutedChanged(cb C.intptr_t, muted C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(muted bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1061,14 +1061,14 @@ func miqt_exec_callback_QWebEnginePage_AudioMutedChanged(cb C.intptr_t, muted C.
 }
 
 func (this *QWebEnginePage) RecentlyAudibleChanged(recentlyAudible bool) {
-	C.QWebEnginePage_RecentlyAudibleChanged(this.h, (C.bool)(recentlyAudible))
+	C.QWebEnginePage_recentlyAudibleChanged(this.h, (C.bool)(recentlyAudible))
 }
 func (this *QWebEnginePage) OnRecentlyAudibleChanged(slot func(recentlyAudible bool)) {
-	C.QWebEnginePage_connect_RecentlyAudibleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_recentlyAudibleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_RecentlyAudibleChanged
-func miqt_exec_callback_QWebEnginePage_RecentlyAudibleChanged(cb C.intptr_t, recentlyAudible C.bool) {
+//export miqt_exec_callback_QWebEnginePage_recentlyAudibleChanged
+func miqt_exec_callback_QWebEnginePage_recentlyAudibleChanged(cb C.intptr_t, recentlyAudible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(recentlyAudible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1081,14 +1081,14 @@ func miqt_exec_callback_QWebEnginePage_RecentlyAudibleChanged(cb C.intptr_t, rec
 }
 
 func (this *QWebEnginePage) RenderProcessPidChanged(pid int64) {
-	C.QWebEnginePage_RenderProcessPidChanged(this.h, (C.longlong)(pid))
+	C.QWebEnginePage_renderProcessPidChanged(this.h, (C.longlong)(pid))
 }
 func (this *QWebEnginePage) OnRenderProcessPidChanged(slot func(pid int64)) {
-	C.QWebEnginePage_connect_RenderProcessPidChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_renderProcessPidChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_RenderProcessPidChanged
-func miqt_exec_callback_QWebEnginePage_RenderProcessPidChanged(cb C.intptr_t, pid C.longlong) {
+//export miqt_exec_callback_QWebEnginePage_renderProcessPidChanged
+func miqt_exec_callback_QWebEnginePage_renderProcessPidChanged(cb C.intptr_t, pid C.longlong) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(pid int64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1105,14 +1105,14 @@ func (this *QWebEnginePage) PdfPrintingFinished(filePath string, success bool) {
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
 	defer C.free(unsafe.Pointer(filePath_ms.data))
-	C.QWebEnginePage_PdfPrintingFinished(this.h, filePath_ms, (C.bool)(success))
+	C.QWebEnginePage_pdfPrintingFinished(this.h, filePath_ms, (C.bool)(success))
 }
 func (this *QWebEnginePage) OnPdfPrintingFinished(slot func(filePath string, success bool)) {
-	C.QWebEnginePage_connect_PdfPrintingFinished(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_pdfPrintingFinished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_PdfPrintingFinished
-func miqt_exec_callback_QWebEnginePage_PdfPrintingFinished(cb C.intptr_t, filePath C.struct_miqt_string, success C.bool) {
+//export miqt_exec_callback_QWebEnginePage_pdfPrintingFinished
+func miqt_exec_callback_QWebEnginePage_pdfPrintingFinished(cb C.intptr_t, filePath C.struct_miqt_string, success C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(filePath string, success bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1129,14 +1129,14 @@ func miqt_exec_callback_QWebEnginePage_PdfPrintingFinished(cb C.intptr_t, filePa
 }
 
 func (this *QWebEnginePage) PrintRequested() {
-	C.QWebEnginePage_PrintRequested(this.h)
+	C.QWebEnginePage_printRequested(this.h)
 }
 func (this *QWebEnginePage) OnPrintRequested(slot func()) {
-	C.QWebEnginePage_connect_PrintRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_printRequested(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_PrintRequested
-func miqt_exec_callback_QWebEnginePage_PrintRequested(cb C.intptr_t) {
+//export miqt_exec_callback_QWebEnginePage_printRequested
+func miqt_exec_callback_QWebEnginePage_printRequested(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1146,14 +1146,14 @@ func miqt_exec_callback_QWebEnginePage_PrintRequested(cb C.intptr_t) {
 }
 
 func (this *QWebEnginePage) VisibleChanged(visible bool) {
-	C.QWebEnginePage_VisibleChanged(this.h, (C.bool)(visible))
+	C.QWebEnginePage_visibleChanged(this.h, (C.bool)(visible))
 }
 func (this *QWebEnginePage) OnVisibleChanged(slot func(visible bool)) {
-	C.QWebEnginePage_connect_VisibleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_visibleChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_VisibleChanged
-func miqt_exec_callback_QWebEnginePage_VisibleChanged(cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QWebEnginePage_visibleChanged
+func miqt_exec_callback_QWebEnginePage_visibleChanged(cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1166,14 +1166,14 @@ func miqt_exec_callback_QWebEnginePage_VisibleChanged(cb C.intptr_t, visible C.b
 }
 
 func (this *QWebEnginePage) LifecycleStateChanged(state QWebEnginePage__LifecycleState) {
-	C.QWebEnginePage_LifecycleStateChanged(this.h, (C.int)(state))
+	C.QWebEnginePage_lifecycleStateChanged(this.h, (C.int)(state))
 }
 func (this *QWebEnginePage) OnLifecycleStateChanged(slot func(state QWebEnginePage__LifecycleState)) {
-	C.QWebEnginePage_connect_LifecycleStateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_lifecycleStateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_LifecycleStateChanged
-func miqt_exec_callback_QWebEnginePage_LifecycleStateChanged(cb C.intptr_t, state C.int) {
+//export miqt_exec_callback_QWebEnginePage_lifecycleStateChanged
+func miqt_exec_callback_QWebEnginePage_lifecycleStateChanged(cb C.intptr_t, state C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(state QWebEnginePage__LifecycleState))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1186,14 +1186,14 @@ func miqt_exec_callback_QWebEnginePage_LifecycleStateChanged(cb C.intptr_t, stat
 }
 
 func (this *QWebEnginePage) RecommendedStateChanged(state QWebEnginePage__LifecycleState) {
-	C.QWebEnginePage_RecommendedStateChanged(this.h, (C.int)(state))
+	C.QWebEnginePage_recommendedStateChanged(this.h, (C.int)(state))
 }
 func (this *QWebEnginePage) OnRecommendedStateChanged(slot func(state QWebEnginePage__LifecycleState)) {
-	C.QWebEnginePage_connect_RecommendedStateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_recommendedStateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_RecommendedStateChanged
-func miqt_exec_callback_QWebEnginePage_RecommendedStateChanged(cb C.intptr_t, state C.int) {
+//export miqt_exec_callback_QWebEnginePage_recommendedStateChanged
+func miqt_exec_callback_QWebEnginePage_recommendedStateChanged(cb C.intptr_t, state C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(state QWebEnginePage__LifecycleState))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1206,14 +1206,14 @@ func miqt_exec_callback_QWebEnginePage_RecommendedStateChanged(cb C.intptr_t, st
 }
 
 func (this *QWebEnginePage) FindTextFinished(result *QWebEngineFindTextResult) {
-	C.QWebEnginePage_FindTextFinished(this.h, result.cPointer())
+	C.QWebEnginePage_findTextFinished(this.h, result.cPointer())
 }
 func (this *QWebEnginePage) OnFindTextFinished(slot func(result *QWebEngineFindTextResult)) {
-	C.QWebEnginePage_connect_FindTextFinished(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEnginePage_connect_findTextFinished(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEnginePage_FindTextFinished
-func miqt_exec_callback_QWebEnginePage_FindTextFinished(cb C.intptr_t, result *C.QWebEngineFindTextResult) {
+//export miqt_exec_callback_QWebEnginePage_findTextFinished
+func miqt_exec_callback_QWebEnginePage_findTextFinished(cb C.intptr_t, result *C.QWebEngineFindTextResult) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(result *QWebEngineFindTextResult))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1247,7 +1247,7 @@ func QWebEnginePage_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEnginePage_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEnginePage_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1258,7 +1258,7 @@ func QWebEnginePage_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEnginePage_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebEnginePage_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -1269,7 +1269,7 @@ func (this *QWebEnginePage) Download2(url *qt6.QUrl, filename string) {
 	filename_ms.data = C.CString(filename)
 	filename_ms.len = C.size_t(len(filename))
 	defer C.free(unsafe.Pointer(filename_ms.data))
-	C.QWebEnginePage_Download2(this.h, (*C.QUrl)(url.UnsafePointer()), filename_ms)
+	C.QWebEnginePage_download2(this.h, (*C.QUrl)(url.UnsafePointer()), filename_ms)
 }
 
 func (this *QWebEnginePage) SetHtml2(html string, baseUrl *qt6.QUrl) {
@@ -1277,7 +1277,7 @@ func (this *QWebEnginePage) SetHtml2(html string, baseUrl *qt6.QUrl) {
 	html_ms.data = C.CString(html)
 	html_ms.len = C.size_t(len(html))
 	defer C.free(unsafe.Pointer(html_ms.data))
-	C.QWebEnginePage_SetHtml2(this.h, html_ms, (*C.QUrl)(baseUrl.UnsafePointer()))
+	C.QWebEnginePage_setHtml2(this.h, html_ms, (*C.QUrl)(baseUrl.UnsafePointer()))
 }
 
 func (this *QWebEnginePage) SetContent2(data []byte, mimeType string) {
@@ -1292,7 +1292,7 @@ func (this *QWebEnginePage) SetContent2(data []byte, mimeType string) {
 	mimeType_ms.data = C.CString(mimeType)
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
-	C.QWebEnginePage_SetContent2(this.h, data_alias, mimeType_ms)
+	C.QWebEnginePage_setContent2(this.h, data_alias, mimeType_ms)
 }
 
 func (this *QWebEnginePage) SetContent3(data []byte, mimeType string, baseUrl *qt6.QUrl) {
@@ -1307,11 +1307,11 @@ func (this *QWebEnginePage) SetContent3(data []byte, mimeType string, baseUrl *q
 	mimeType_ms.data = C.CString(mimeType)
 	mimeType_ms.len = C.size_t(len(mimeType))
 	defer C.free(unsafe.Pointer(mimeType_ms.data))
-	C.QWebEnginePage_SetContent3(this.h, data_alias, mimeType_ms, (*C.QUrl)(baseUrl.UnsafePointer()))
+	C.QWebEnginePage_setContent3(this.h, data_alias, mimeType_ms, (*C.QUrl)(baseUrl.UnsafePointer()))
 }
 
 func (this *QWebEnginePage) SetWebChannel2(param1 *webchannel.QWebChannel, worldId uint) {
-	C.QWebEnginePage_SetWebChannel2(this.h, (*C.QWebChannel)(param1.UnsafePointer()), (C.uint)(worldId))
+	C.QWebEnginePage_setWebChannel2(this.h, (*C.QWebChannel)(param1.UnsafePointer()), (C.uint)(worldId))
 }
 
 func (this *QWebEnginePage) Save2(filePath string, format QWebEngineDownloadRequest__SavePageFormat) {
@@ -1319,7 +1319,7 @@ func (this *QWebEnginePage) Save2(filePath string, format QWebEngineDownloadRequ
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
 	defer C.free(unsafe.Pointer(filePath_ms.data))
-	C.QWebEnginePage_Save2(this.h, filePath_ms, (C.int)(format))
+	C.QWebEnginePage_save2(this.h, filePath_ms, (C.int)(format))
 }
 
 func (this *QWebEnginePage) PrintToPdf2(filePath string, layout *qt6.QPageLayout) {
@@ -1327,7 +1327,7 @@ func (this *QWebEnginePage) PrintToPdf2(filePath string, layout *qt6.QPageLayout
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
 	defer C.free(unsafe.Pointer(filePath_ms.data))
-	C.QWebEnginePage_PrintToPdf2(this.h, filePath_ms, (*C.QPageLayout)(layout.UnsafePointer()))
+	C.QWebEnginePage_printToPdf2(this.h, filePath_ms, (*C.QPageLayout)(layout.UnsafePointer()))
 }
 
 func (this *QWebEnginePage) PrintToPdf3(filePath string, layout *qt6.QPageLayout, ranges *qt6.QPageRanges) {
@@ -1335,23 +1335,23 @@ func (this *QWebEnginePage) PrintToPdf3(filePath string, layout *qt6.QPageLayout
 	filePath_ms.data = C.CString(filePath)
 	filePath_ms.len = C.size_t(len(filePath))
 	defer C.free(unsafe.Pointer(filePath_ms.data))
-	C.QWebEnginePage_PrintToPdf3(this.h, filePath_ms, (*C.QPageLayout)(layout.UnsafePointer()), (*C.QPageRanges)(ranges.UnsafePointer()))
+	C.QWebEnginePage_printToPdf3(this.h, filePath_ms, (*C.QPageLayout)(layout.UnsafePointer()), (*C.QPageRanges)(ranges.UnsafePointer()))
 }
 
 func (this *QWebEnginePage) callVirtualBase_TriggerAction(action QWebEnginePage__WebAction, checked bool) {
 
-	C.QWebEnginePage_virtualbase_TriggerAction(unsafe.Pointer(this.h), (C.int)(action), (C.bool)(checked))
+	C.QWebEnginePage_virtualbase_triggerAction(unsafe.Pointer(this.h), (C.int)(action), (C.bool)(checked))
 
 }
-func (this *QWebEnginePage) OnTriggerAction(slot func(super func(action QWebEnginePage__WebAction, checked bool), action QWebEnginePage__WebAction, checked bool)) {
-	ok := C.QWebEnginePage_override_virtual_TriggerAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEnginePage) OntriggerAction(slot func(super func(action QWebEnginePage__WebAction, checked bool), action QWebEnginePage__WebAction, checked bool)) {
+	ok := C.QWebEnginePage_override_virtual_triggerAction(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEnginePage_TriggerAction
-func miqt_exec_callback_QWebEnginePage_TriggerAction(self *C.QWebEnginePage, cb C.intptr_t, action C.int, checked C.bool) {
+//export miqt_exec_callback_QWebEnginePage_triggerAction
+func miqt_exec_callback_QWebEnginePage_triggerAction(self *C.QWebEnginePage, cb C.intptr_t, action C.int, checked C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(action QWebEnginePage__WebAction, checked bool), action QWebEnginePage__WebAction, checked bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1368,18 +1368,18 @@ func miqt_exec_callback_QWebEnginePage_TriggerAction(self *C.QWebEnginePage, cb 
 
 func (this *QWebEnginePage) callVirtualBase_Event(param1 *qt6.QEvent) bool {
 
-	return (bool)(C.QWebEnginePage_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
+	return (bool)(C.QWebEnginePage_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
 
 }
-func (this *QWebEnginePage) OnEvent(slot func(super func(param1 *qt6.QEvent) bool, param1 *qt6.QEvent) bool) {
-	ok := C.QWebEnginePage_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEnginePage) Onevent(slot func(super func(param1 *qt6.QEvent) bool, param1 *qt6.QEvent) bool) {
+	ok := C.QWebEnginePage_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEnginePage_Event
-func miqt_exec_callback_QWebEnginePage_Event(self *C.QWebEnginePage, cb C.intptr_t, param1 *C.QEvent) C.bool {
+//export miqt_exec_callback_QWebEnginePage_event
+func miqt_exec_callback_QWebEnginePage_event(self *C.QWebEnginePage, cb C.intptr_t, param1 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt6.QEvent) bool, param1 *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1396,18 +1396,18 @@ func miqt_exec_callback_QWebEnginePage_Event(self *C.QWebEnginePage, cb C.intptr
 
 func (this *QWebEnginePage) callVirtualBase_CreateWindow(typeVal QWebEnginePage__WebWindowType) *QWebEnginePage {
 
-	return newQWebEnginePage(C.QWebEnginePage_virtualbase_CreateWindow(unsafe.Pointer(this.h), (C.int)(typeVal)))
+	return newQWebEnginePage(C.QWebEnginePage_virtualbase_createWindow(unsafe.Pointer(this.h), (C.int)(typeVal)))
 
 }
-func (this *QWebEnginePage) OnCreateWindow(slot func(super func(typeVal QWebEnginePage__WebWindowType) *QWebEnginePage, typeVal QWebEnginePage__WebWindowType) *QWebEnginePage) {
-	ok := C.QWebEnginePage_override_virtual_CreateWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEnginePage) OncreateWindow(slot func(super func(typeVal QWebEnginePage__WebWindowType) *QWebEnginePage, typeVal QWebEnginePage__WebWindowType) *QWebEnginePage) {
+	ok := C.QWebEnginePage_override_virtual_createWindow(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEnginePage_CreateWindow
-func miqt_exec_callback_QWebEnginePage_CreateWindow(self *C.QWebEnginePage, cb C.intptr_t, typeVal C.int) *C.QWebEnginePage {
+//export miqt_exec_callback_QWebEnginePage_createWindow
+func miqt_exec_callback_QWebEnginePage_createWindow(self *C.QWebEnginePage, cb C.intptr_t, typeVal C.int) *C.QWebEnginePage {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(typeVal QWebEnginePage__WebWindowType) *QWebEnginePage, typeVal QWebEnginePage__WebWindowType) *QWebEnginePage)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1444,7 +1444,7 @@ func (this *QWebEnginePage) callVirtualBase_ChooseFiles(mode QWebEnginePage__Fil
 	}
 	acceptedMimeTypes_ma := C.struct_miqt_array{len: C.size_t(len(acceptedMimeTypes)), data: unsafe.Pointer(acceptedMimeTypes_CArray)}
 
-	var _ma C.struct_miqt_array = C.QWebEnginePage_virtualbase_ChooseFiles(unsafe.Pointer(this.h), (C.int)(mode), oldFiles_ma, acceptedMimeTypes_ma)
+	var _ma C.struct_miqt_array = C.QWebEnginePage_virtualbase_chooseFiles(unsafe.Pointer(this.h), (C.int)(mode), oldFiles_ma, acceptedMimeTypes_ma)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -1456,15 +1456,15 @@ func (this *QWebEnginePage) callVirtualBase_ChooseFiles(mode QWebEnginePage__Fil
 	return _ret
 
 }
-func (this *QWebEnginePage) OnChooseFiles(slot func(super func(mode QWebEnginePage__FileSelectionMode, oldFiles []string, acceptedMimeTypes []string) []string, mode QWebEnginePage__FileSelectionMode, oldFiles []string, acceptedMimeTypes []string) []string) {
-	ok := C.QWebEnginePage_override_virtual_ChooseFiles(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEnginePage) OnchooseFiles(slot func(super func(mode QWebEnginePage__FileSelectionMode, oldFiles []string, acceptedMimeTypes []string) []string, mode QWebEnginePage__FileSelectionMode, oldFiles []string, acceptedMimeTypes []string) []string) {
+	ok := C.QWebEnginePage_override_virtual_chooseFiles(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEnginePage_ChooseFiles
-func miqt_exec_callback_QWebEnginePage_ChooseFiles(self *C.QWebEnginePage, cb C.intptr_t, mode C.int, oldFiles C.struct_miqt_array, acceptedMimeTypes C.struct_miqt_array) C.struct_miqt_array {
+//export miqt_exec_callback_QWebEnginePage_chooseFiles
+func miqt_exec_callback_QWebEnginePage_chooseFiles(self *C.QWebEnginePage, cb C.intptr_t, mode C.int, oldFiles C.struct_miqt_array, acceptedMimeTypes C.struct_miqt_array) C.struct_miqt_array {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(mode QWebEnginePage__FileSelectionMode, oldFiles []string, acceptedMimeTypes []string) []string, mode QWebEnginePage__FileSelectionMode, oldFiles []string, acceptedMimeTypes []string) []string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1517,18 +1517,18 @@ func (this *QWebEnginePage) callVirtualBase_JavaScriptAlert(securityOrigin *qt6.
 	msg_ms.len = C.size_t(len(msg))
 	defer C.free(unsafe.Pointer(msg_ms.data))
 
-	C.QWebEnginePage_virtualbase_JavaScriptAlert(unsafe.Pointer(this.h), (*C.QUrl)(securityOrigin.UnsafePointer()), msg_ms)
+	C.QWebEnginePage_virtualbase_javaScriptAlert(unsafe.Pointer(this.h), (*C.QUrl)(securityOrigin.UnsafePointer()), msg_ms)
 
 }
-func (this *QWebEnginePage) OnJavaScriptAlert(slot func(super func(securityOrigin *qt6.QUrl, msg string), securityOrigin *qt6.QUrl, msg string)) {
-	ok := C.QWebEnginePage_override_virtual_JavaScriptAlert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEnginePage) OnjavaScriptAlert(slot func(super func(securityOrigin *qt6.QUrl, msg string), securityOrigin *qt6.QUrl, msg string)) {
+	ok := C.QWebEnginePage_override_virtual_javaScriptAlert(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEnginePage_JavaScriptAlert
-func miqt_exec_callback_QWebEnginePage_JavaScriptAlert(self *C.QWebEnginePage, cb C.intptr_t, securityOrigin *C.QUrl, msg C.struct_miqt_string) {
+//export miqt_exec_callback_QWebEnginePage_javaScriptAlert
+func miqt_exec_callback_QWebEnginePage_javaScriptAlert(self *C.QWebEnginePage, cb C.intptr_t, securityOrigin *C.QUrl, msg C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(securityOrigin *qt6.QUrl, msg string), securityOrigin *qt6.QUrl, msg string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1552,18 +1552,18 @@ func (this *QWebEnginePage) callVirtualBase_JavaScriptConfirm(securityOrigin *qt
 	msg_ms.len = C.size_t(len(msg))
 	defer C.free(unsafe.Pointer(msg_ms.data))
 
-	return (bool)(C.QWebEnginePage_virtualbase_JavaScriptConfirm(unsafe.Pointer(this.h), (*C.QUrl)(securityOrigin.UnsafePointer()), msg_ms))
+	return (bool)(C.QWebEnginePage_virtualbase_javaScriptConfirm(unsafe.Pointer(this.h), (*C.QUrl)(securityOrigin.UnsafePointer()), msg_ms))
 
 }
-func (this *QWebEnginePage) OnJavaScriptConfirm(slot func(super func(securityOrigin *qt6.QUrl, msg string) bool, securityOrigin *qt6.QUrl, msg string) bool) {
-	ok := C.QWebEnginePage_override_virtual_JavaScriptConfirm(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEnginePage) OnjavaScriptConfirm(slot func(super func(securityOrigin *qt6.QUrl, msg string) bool, securityOrigin *qt6.QUrl, msg string) bool) {
+	ok := C.QWebEnginePage_override_virtual_javaScriptConfirm(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEnginePage_JavaScriptConfirm
-func miqt_exec_callback_QWebEnginePage_JavaScriptConfirm(self *C.QWebEnginePage, cb C.intptr_t, securityOrigin *C.QUrl, msg C.struct_miqt_string) C.bool {
+//export miqt_exec_callback_QWebEnginePage_javaScriptConfirm
+func miqt_exec_callback_QWebEnginePage_javaScriptConfirm(self *C.QWebEnginePage, cb C.intptr_t, securityOrigin *C.QUrl, msg C.struct_miqt_string) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(securityOrigin *qt6.QUrl, msg string) bool, securityOrigin *qt6.QUrl, msg string) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1593,18 +1593,18 @@ func (this *QWebEnginePage) callVirtualBase_JavaScriptConsoleMessage(level QWebE
 	sourceID_ms.len = C.size_t(len(sourceID))
 	defer C.free(unsafe.Pointer(sourceID_ms.data))
 
-	C.QWebEnginePage_virtualbase_JavaScriptConsoleMessage(unsafe.Pointer(this.h), (C.int)(level), message_ms, (C.int)(lineNumber), sourceID_ms)
+	C.QWebEnginePage_virtualbase_javaScriptConsoleMessage(unsafe.Pointer(this.h), (C.int)(level), message_ms, (C.int)(lineNumber), sourceID_ms)
 
 }
-func (this *QWebEnginePage) OnJavaScriptConsoleMessage(slot func(super func(level QWebEnginePage__JavaScriptConsoleMessageLevel, message string, lineNumber int, sourceID string), level QWebEnginePage__JavaScriptConsoleMessageLevel, message string, lineNumber int, sourceID string)) {
-	ok := C.QWebEnginePage_override_virtual_JavaScriptConsoleMessage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEnginePage) OnjavaScriptConsoleMessage(slot func(super func(level QWebEnginePage__JavaScriptConsoleMessageLevel, message string, lineNumber int, sourceID string), level QWebEnginePage__JavaScriptConsoleMessageLevel, message string, lineNumber int, sourceID string)) {
+	ok := C.QWebEnginePage_override_virtual_javaScriptConsoleMessage(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEnginePage_JavaScriptConsoleMessage
-func miqt_exec_callback_QWebEnginePage_JavaScriptConsoleMessage(self *C.QWebEnginePage, cb C.intptr_t, level C.int, message C.struct_miqt_string, lineNumber C.int, sourceID C.struct_miqt_string) {
+//export miqt_exec_callback_QWebEnginePage_javaScriptConsoleMessage
+func miqt_exec_callback_QWebEnginePage_javaScriptConsoleMessage(self *C.QWebEnginePage, cb C.intptr_t, level C.int, message C.struct_miqt_string, lineNumber C.int, sourceID C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(level QWebEnginePage__JavaScriptConsoleMessageLevel, message string, lineNumber int, sourceID string), level QWebEnginePage__JavaScriptConsoleMessageLevel, message string, lineNumber int, sourceID string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1630,18 +1630,18 @@ func miqt_exec_callback_QWebEnginePage_JavaScriptConsoleMessage(self *C.QWebEngi
 
 func (this *QWebEnginePage) callVirtualBase_AcceptNavigationRequest(url *qt6.QUrl, typeVal QWebEnginePage__NavigationType, isMainFrame bool) bool {
 
-	return (bool)(C.QWebEnginePage_virtualbase_AcceptNavigationRequest(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer()), (C.int)(typeVal), (C.bool)(isMainFrame)))
+	return (bool)(C.QWebEnginePage_virtualbase_acceptNavigationRequest(unsafe.Pointer(this.h), (*C.QUrl)(url.UnsafePointer()), (C.int)(typeVal), (C.bool)(isMainFrame)))
 
 }
-func (this *QWebEnginePage) OnAcceptNavigationRequest(slot func(super func(url *qt6.QUrl, typeVal QWebEnginePage__NavigationType, isMainFrame bool) bool, url *qt6.QUrl, typeVal QWebEnginePage__NavigationType, isMainFrame bool) bool) {
-	ok := C.QWebEnginePage_override_virtual_AcceptNavigationRequest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEnginePage) OnacceptNavigationRequest(slot func(super func(url *qt6.QUrl, typeVal QWebEnginePage__NavigationType, isMainFrame bool) bool, url *qt6.QUrl, typeVal QWebEnginePage__NavigationType, isMainFrame bool) bool) {
+	ok := C.QWebEnginePage_override_virtual_acceptNavigationRequest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEnginePage_AcceptNavigationRequest
-func miqt_exec_callback_QWebEnginePage_AcceptNavigationRequest(self *C.QWebEnginePage, cb C.intptr_t, url *C.QUrl, typeVal C.int, isMainFrame C.bool) C.bool {
+//export miqt_exec_callback_QWebEnginePage_acceptNavigationRequest
+func miqt_exec_callback_QWebEnginePage_acceptNavigationRequest(self *C.QWebEnginePage, cb C.intptr_t, url *C.QUrl, typeVal C.int, isMainFrame C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(url *qt6.QUrl, typeVal QWebEnginePage__NavigationType, isMainFrame bool) bool, url *qt6.QUrl, typeVal QWebEnginePage__NavigationType, isMainFrame bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1662,18 +1662,18 @@ func miqt_exec_callback_QWebEnginePage_AcceptNavigationRequest(self *C.QWebEngin
 
 func (this *QWebEnginePage) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
 
-	return (bool)(C.QWebEnginePage_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QWebEnginePage_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QWebEnginePage) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	ok := C.QWebEnginePage_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEnginePage) OneventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	ok := C.QWebEnginePage_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEnginePage_EventFilter
-func miqt_exec_callback_QWebEnginePage_EventFilter(self *C.QWebEnginePage, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QWebEnginePage_eventFilter
+func miqt_exec_callback_QWebEnginePage_eventFilter(self *C.QWebEnginePage, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1692,18 +1692,18 @@ func miqt_exec_callback_QWebEnginePage_EventFilter(self *C.QWebEnginePage, cb C.
 
 func (this *QWebEnginePage) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
-	C.QWebEnginePage_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QWebEnginePage_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEnginePage) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	ok := C.QWebEnginePage_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEnginePage) OntimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	ok := C.QWebEnginePage_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEnginePage_TimerEvent
-func miqt_exec_callback_QWebEnginePage_TimerEvent(self *C.QWebEnginePage, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QWebEnginePage_timerEvent
+func miqt_exec_callback_QWebEnginePage_timerEvent(self *C.QWebEnginePage, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1718,18 +1718,18 @@ func miqt_exec_callback_QWebEnginePage_TimerEvent(self *C.QWebEnginePage, cb C.i
 
 func (this *QWebEnginePage) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
-	C.QWebEnginePage_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QWebEnginePage_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEnginePage) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	ok := C.QWebEnginePage_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEnginePage) OnchildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	ok := C.QWebEnginePage_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEnginePage_ChildEvent
-func miqt_exec_callback_QWebEnginePage_ChildEvent(self *C.QWebEnginePage, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QWebEnginePage_childEvent
+func miqt_exec_callback_QWebEnginePage_childEvent(self *C.QWebEnginePage, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1744,18 +1744,18 @@ func miqt_exec_callback_QWebEnginePage_ChildEvent(self *C.QWebEnginePage, cb C.i
 
 func (this *QWebEnginePage) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
-	C.QWebEnginePage_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QWebEnginePage_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QWebEnginePage) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	ok := C.QWebEnginePage_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEnginePage) OncustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	ok := C.QWebEnginePage_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEnginePage_CustomEvent
-func miqt_exec_callback_QWebEnginePage_CustomEvent(self *C.QWebEnginePage, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QWebEnginePage_customEvent
+func miqt_exec_callback_QWebEnginePage_customEvent(self *C.QWebEnginePage, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1770,18 +1770,18 @@ func miqt_exec_callback_QWebEnginePage_CustomEvent(self *C.QWebEnginePage, cb C.
 
 func (this *QWebEnginePage) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QWebEnginePage_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QWebEnginePage_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QWebEnginePage) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QWebEnginePage_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEnginePage) OnconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QWebEnginePage_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEnginePage_ConnectNotify
-func miqt_exec_callback_QWebEnginePage_ConnectNotify(self *C.QWebEnginePage, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QWebEnginePage_connectNotify
+func miqt_exec_callback_QWebEnginePage_connectNotify(self *C.QWebEnginePage, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1796,18 +1796,18 @@ func miqt_exec_callback_QWebEnginePage_ConnectNotify(self *C.QWebEnginePage, cb 
 
 func (this *QWebEnginePage) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QWebEnginePage_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QWebEnginePage_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QWebEnginePage) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QWebEnginePage_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QWebEnginePage) OndisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QWebEnginePage_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QWebEnginePage_DisconnectNotify
-func miqt_exec_callback_QWebEnginePage_DisconnectNotify(self *C.QWebEnginePage, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QWebEnginePage_disconnectNotify
+func miqt_exec_callback_QWebEnginePage_disconnectNotify(self *C.QWebEnginePage, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1822,7 +1822,7 @@ func miqt_exec_callback_QWebEnginePage_DisconnectNotify(self *C.QWebEnginePage, 
 
 // Delete this object from C++ memory.
 func (this *QWebEnginePage) Delete() {
-	C.QWebEnginePage_Delete(this.h)
+	C.QWebEnginePage_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

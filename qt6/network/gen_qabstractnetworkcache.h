@@ -36,43 +36,43 @@ typedef struct QVariant QVariant;
 
 QNetworkCacheMetaData* QNetworkCacheMetaData_new();
 QNetworkCacheMetaData* QNetworkCacheMetaData_new2(QNetworkCacheMetaData* other);
-void QNetworkCacheMetaData_OperatorAssign(QNetworkCacheMetaData* self, QNetworkCacheMetaData* other);
-void QNetworkCacheMetaData_Swap(QNetworkCacheMetaData* self, QNetworkCacheMetaData* other);
-bool QNetworkCacheMetaData_OperatorEqual(const QNetworkCacheMetaData* self, QNetworkCacheMetaData* other);
-bool QNetworkCacheMetaData_OperatorNotEqual(const QNetworkCacheMetaData* self, QNetworkCacheMetaData* other);
-bool QNetworkCacheMetaData_IsValid(const QNetworkCacheMetaData* self);
-QUrl* QNetworkCacheMetaData_Url(const QNetworkCacheMetaData* self);
-void QNetworkCacheMetaData_SetUrl(QNetworkCacheMetaData* self, QUrl* url);
-struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  QNetworkCacheMetaData_RawHeaders(const QNetworkCacheMetaData* self);
-void QNetworkCacheMetaData_SetRawHeaders(QNetworkCacheMetaData* self, struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  headers);
-QDateTime* QNetworkCacheMetaData_LastModified(const QNetworkCacheMetaData* self);
-void QNetworkCacheMetaData_SetLastModified(QNetworkCacheMetaData* self, QDateTime* dateTime);
-QDateTime* QNetworkCacheMetaData_ExpirationDate(const QNetworkCacheMetaData* self);
-void QNetworkCacheMetaData_SetExpirationDate(QNetworkCacheMetaData* self, QDateTime* dateTime);
-bool QNetworkCacheMetaData_SaveToDisk(const QNetworkCacheMetaData* self);
-void QNetworkCacheMetaData_SetSaveToDisk(QNetworkCacheMetaData* self, bool allow);
-struct miqt_map /* of int to QVariant* */  QNetworkCacheMetaData_Attributes(const QNetworkCacheMetaData* self);
-void QNetworkCacheMetaData_SetAttributes(QNetworkCacheMetaData* self, struct miqt_map /* of int to QVariant* */  attributes);
-void QNetworkCacheMetaData_Delete(QNetworkCacheMetaData* self);
+void QNetworkCacheMetaData_operatorAssign(QNetworkCacheMetaData* self, QNetworkCacheMetaData* other);
+void QNetworkCacheMetaData_swap(QNetworkCacheMetaData* self, QNetworkCacheMetaData* other);
+bool QNetworkCacheMetaData_operatorEqual(const QNetworkCacheMetaData* self, QNetworkCacheMetaData* other);
+bool QNetworkCacheMetaData_operatorNotEqual(const QNetworkCacheMetaData* self, QNetworkCacheMetaData* other);
+bool QNetworkCacheMetaData_isValid(const QNetworkCacheMetaData* self);
+QUrl* QNetworkCacheMetaData_url(const QNetworkCacheMetaData* self);
+void QNetworkCacheMetaData_setUrl(QNetworkCacheMetaData* self, QUrl* url);
+struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  QNetworkCacheMetaData_rawHeaders(const QNetworkCacheMetaData* self);
+void QNetworkCacheMetaData_setRawHeaders(QNetworkCacheMetaData* self, struct miqt_array /* of struct miqt_map  tuple of struct miqt_string and struct miqt_string   */  headers);
+QDateTime* QNetworkCacheMetaData_lastModified(const QNetworkCacheMetaData* self);
+void QNetworkCacheMetaData_setLastModified(QNetworkCacheMetaData* self, QDateTime* dateTime);
+QDateTime* QNetworkCacheMetaData_expirationDate(const QNetworkCacheMetaData* self);
+void QNetworkCacheMetaData_setExpirationDate(QNetworkCacheMetaData* self, QDateTime* dateTime);
+bool QNetworkCacheMetaData_saveToDisk(const QNetworkCacheMetaData* self);
+void QNetworkCacheMetaData_setSaveToDisk(QNetworkCacheMetaData* self, bool allow);
+struct miqt_map /* of int to QVariant* */  QNetworkCacheMetaData_attributes(const QNetworkCacheMetaData* self);
+void QNetworkCacheMetaData_setAttributes(QNetworkCacheMetaData* self, struct miqt_map /* of int to QVariant* */  attributes);
+void QNetworkCacheMetaData_delete(QNetworkCacheMetaData* self);
 
 void QAbstractNetworkCache_virtbase(QAbstractNetworkCache* src, QObject** outptr_QObject);
-QMetaObject* QAbstractNetworkCache_MetaObject(const QAbstractNetworkCache* self);
-void* QAbstractNetworkCache_Metacast(QAbstractNetworkCache* self, const char* param1);
-struct miqt_string QAbstractNetworkCache_Tr(const char* s);
-QNetworkCacheMetaData* QAbstractNetworkCache_MetaData(QAbstractNetworkCache* self, QUrl* url);
-void QAbstractNetworkCache_UpdateMetaData(QAbstractNetworkCache* self, QNetworkCacheMetaData* metaData);
-QIODevice* QAbstractNetworkCache_Data(QAbstractNetworkCache* self, QUrl* url);
-bool QAbstractNetworkCache_Remove(QAbstractNetworkCache* self, QUrl* url);
-long long QAbstractNetworkCache_CacheSize(const QAbstractNetworkCache* self);
-QIODevice* QAbstractNetworkCache_Prepare(QAbstractNetworkCache* self, QNetworkCacheMetaData* metaData);
-void QAbstractNetworkCache_Insert(QAbstractNetworkCache* self, QIODevice* device);
-void QAbstractNetworkCache_Clear(QAbstractNetworkCache* self);
-struct miqt_string QAbstractNetworkCache_Tr2(const char* s, const char* c);
-struct miqt_string QAbstractNetworkCache_Tr3(const char* s, const char* c, int n);
-void QAbstractNetworkCache_Delete(QAbstractNetworkCache* self);
+QMetaObject* QAbstractNetworkCache_metaObject(const QAbstractNetworkCache* self);
+void* QAbstractNetworkCache_metacast(QAbstractNetworkCache* self, const char* param1);
+struct miqt_string QAbstractNetworkCache_tr(const char* s);
+QNetworkCacheMetaData* QAbstractNetworkCache_metaData(QAbstractNetworkCache* self, QUrl* url);
+void QAbstractNetworkCache_updateMetaData(QAbstractNetworkCache* self, QNetworkCacheMetaData* metaData);
+QIODevice* QAbstractNetworkCache_data(QAbstractNetworkCache* self, QUrl* url);
+bool QAbstractNetworkCache_remove(QAbstractNetworkCache* self, QUrl* url);
+long long QAbstractNetworkCache_cacheSize(const QAbstractNetworkCache* self);
+QIODevice* QAbstractNetworkCache_prepare(QAbstractNetworkCache* self, QNetworkCacheMetaData* metaData);
+void QAbstractNetworkCache_insert(QAbstractNetworkCache* self, QIODevice* device);
+void QAbstractNetworkCache_clear(QAbstractNetworkCache* self);
+struct miqt_string QAbstractNetworkCache_tr2(const char* s, const char* c);
+struct miqt_string QAbstractNetworkCache_tr3(const char* s, const char* c, int n);
+void QAbstractNetworkCache_delete(QAbstractNetworkCache* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

@@ -35,48 +35,48 @@ typedef struct QTimerEvent QTimerEvent;
 #endif
 
 QInputDevice* QInputDevice_new();
-QInputDevice* QInputDevice_new2(struct miqt_string name, long long systemId, int typeVal);
+QInputDevice* QInputDevice_new2(struct miqt_string name, long long systemId, int type);
 QInputDevice* QInputDevice_new3(QObject* parent);
-QInputDevice* QInputDevice_new4(struct miqt_string name, long long systemId, int typeVal, struct miqt_string seatName);
-QInputDevice* QInputDevice_new5(struct miqt_string name, long long systemId, int typeVal, struct miqt_string seatName, QObject* parent);
+QInputDevice* QInputDevice_new4(struct miqt_string name, long long systemId, int type, struct miqt_string seatName);
+QInputDevice* QInputDevice_new5(struct miqt_string name, long long systemId, int type, struct miqt_string seatName, QObject* parent);
 void QInputDevice_virtbase(QInputDevice* src, QObject** outptr_QObject);
-QMetaObject* QInputDevice_MetaObject(const QInputDevice* self);
-void* QInputDevice_Metacast(QInputDevice* self, const char* param1);
-struct miqt_string QInputDevice_Tr(const char* s);
-struct miqt_string QInputDevice_Name(const QInputDevice* self);
-int QInputDevice_Type(const QInputDevice* self);
-int QInputDevice_Capabilities(const QInputDevice* self);
-bool QInputDevice_HasCapability(const QInputDevice* self, int cap);
-long long QInputDevice_SystemId(const QInputDevice* self);
-struct miqt_string QInputDevice_SeatName(const QInputDevice* self);
-QRect* QInputDevice_AvailableVirtualGeometry(const QInputDevice* self);
-struct miqt_array /* of struct miqt_string */  QInputDevice_SeatNames();
-struct miqt_array /* of QInputDevice* */  QInputDevice_Devices();
-QInputDevice* QInputDevice_PrimaryKeyboard();
-bool QInputDevice_OperatorEqual(const QInputDevice* self, QInputDevice* other);
-void QInputDevice_AvailableVirtualGeometryChanged(QInputDevice* self, QRect* area);
-void QInputDevice_connect_AvailableVirtualGeometryChanged(QInputDevice* self, intptr_t slot);
-struct miqt_string QInputDevice_Tr2(const char* s, const char* c);
-struct miqt_string QInputDevice_Tr3(const char* s, const char* c, int n);
-QInputDevice* QInputDevice_PrimaryKeyboard1(struct miqt_string seatName);
-bool QInputDevice_override_virtual_Event(void* self, intptr_t slot);
-bool QInputDevice_virtualbase_Event(void* self, QEvent* event);
-bool QInputDevice_override_virtual_EventFilter(void* self, intptr_t slot);
-bool QInputDevice_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-bool QInputDevice_override_virtual_TimerEvent(void* self, intptr_t slot);
-void QInputDevice_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-bool QInputDevice_override_virtual_ChildEvent(void* self, intptr_t slot);
-void QInputDevice_virtualbase_ChildEvent(void* self, QChildEvent* event);
-bool QInputDevice_override_virtual_CustomEvent(void* self, intptr_t slot);
-void QInputDevice_virtualbase_CustomEvent(void* self, QEvent* event);
-bool QInputDevice_override_virtual_ConnectNotify(void* self, intptr_t slot);
-void QInputDevice_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-bool QInputDevice_override_virtual_DisconnectNotify(void* self, intptr_t slot);
-void QInputDevice_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QInputDevice_Delete(QInputDevice* self);
+QMetaObject* QInputDevice_metaObject(const QInputDevice* self);
+void* QInputDevice_metacast(QInputDevice* self, const char* param1);
+struct miqt_string QInputDevice_tr(const char* s);
+struct miqt_string QInputDevice_name(const QInputDevice* self);
+int QInputDevice_type(const QInputDevice* self);
+int QInputDevice_capabilities(const QInputDevice* self);
+bool QInputDevice_hasCapability(const QInputDevice* self, int cap);
+long long QInputDevice_systemId(const QInputDevice* self);
+struct miqt_string QInputDevice_seatName(const QInputDevice* self);
+QRect* QInputDevice_availableVirtualGeometry(const QInputDevice* self);
+struct miqt_array /* of struct miqt_string */  QInputDevice_seatNames();
+struct miqt_array /* of QInputDevice* */  QInputDevice_devices();
+QInputDevice* QInputDevice_primaryKeyboard();
+bool QInputDevice_operatorEqual(const QInputDevice* self, QInputDevice* other);
+void QInputDevice_availableVirtualGeometryChanged(QInputDevice* self, QRect* area);
+void QInputDevice_connect_availableVirtualGeometryChanged(QInputDevice* self, intptr_t slot);
+struct miqt_string QInputDevice_tr2(const char* s, const char* c);
+struct miqt_string QInputDevice_tr3(const char* s, const char* c, int n);
+QInputDevice* QInputDevice_primaryKeyboard1(struct miqt_string seatName);
+bool QInputDevice_override_virtual_event(void* self, intptr_t slot);
+bool QInputDevice_virtualbase_event(void* self, QEvent* event);
+bool QInputDevice_override_virtual_eventFilter(void* self, intptr_t slot);
+bool QInputDevice_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
+bool QInputDevice_override_virtual_timerEvent(void* self, intptr_t slot);
+void QInputDevice_virtualbase_timerEvent(void* self, QTimerEvent* event);
+bool QInputDevice_override_virtual_childEvent(void* self, intptr_t slot);
+void QInputDevice_virtualbase_childEvent(void* self, QChildEvent* event);
+bool QInputDevice_override_virtual_customEvent(void* self, intptr_t slot);
+void QInputDevice_virtualbase_customEvent(void* self, QEvent* event);
+bool QInputDevice_override_virtual_connectNotify(void* self, intptr_t slot);
+void QInputDevice_virtualbase_connectNotify(void* self, QMetaMethod* signal);
+bool QInputDevice_override_virtual_disconnectNotify(void* self, intptr_t slot);
+void QInputDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QInputDevice_delete(QInputDevice* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

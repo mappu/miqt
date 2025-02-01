@@ -68,26 +68,26 @@ func NewQsciMacro2(asc string, parent *QsciScintilla) *QsciMacro {
 }
 
 func (this *QsciMacro) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciMacro_MetaObject(this.h)))
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciMacro_metaObject(this.h)))
 }
 
 func (this *QsciMacro) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QsciMacro_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QsciMacro_metacast(this.h, param1_Cstring))
 }
 
 func QsciMacro_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QsciMacro_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QsciMacro_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciMacro) Clear() {
-	C.QsciMacro_Clear(this.h)
+	C.QsciMacro_clear(this.h)
 }
 
 func (this *QsciMacro) Load(asc string) bool {
@@ -95,26 +95,26 @@ func (this *QsciMacro) Load(asc string) bool {
 	asc_ms.data = C.CString(asc)
 	asc_ms.len = C.size_t(len(asc))
 	defer C.free(unsafe.Pointer(asc_ms.data))
-	return (bool)(C.QsciMacro_Load(this.h, asc_ms))
+	return (bool)(C.QsciMacro_load(this.h, asc_ms))
 }
 
 func (this *QsciMacro) Save() string {
-	var _ms C.struct_miqt_string = C.QsciMacro_Save(this.h)
+	var _ms C.struct_miqt_string = C.QsciMacro_save(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciMacro) Play() {
-	C.QsciMacro_Play(this.h)
+	C.QsciMacro_play(this.h)
 }
 
 func (this *QsciMacro) StartRecording() {
-	C.QsciMacro_StartRecording(this.h)
+	C.QsciMacro_startRecording(this.h)
 }
 
 func (this *QsciMacro) EndRecording() {
-	C.QsciMacro_EndRecording(this.h)
+	C.QsciMacro_endRecording(this.h)
 }
 
 func QsciMacro_Tr2(s string, c string) string {
@@ -122,7 +122,7 @@ func QsciMacro_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QsciMacro_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QsciMacro_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -133,7 +133,7 @@ func QsciMacro_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QsciMacro_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QsciMacro_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -141,18 +141,18 @@ func QsciMacro_Tr3(s string, c string, n int) string {
 
 func (this *QsciMacro) callVirtualBase_Play() {
 
-	C.QsciMacro_virtualbase_Play(unsafe.Pointer(this.h))
+	C.QsciMacro_virtualbase_play(unsafe.Pointer(this.h))
 
 }
-func (this *QsciMacro) OnPlay(slot func(super func())) {
-	ok := C.QsciMacro_override_virtual_Play(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciMacro) Onplay(slot func(super func())) {
+	ok := C.QsciMacro_override_virtual_play(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciMacro_Play
-func miqt_exec_callback_QsciMacro_Play(self *C.QsciMacro, cb C.intptr_t) {
+//export miqt_exec_callback_QsciMacro_play
+func miqt_exec_callback_QsciMacro_play(self *C.QsciMacro, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -164,18 +164,18 @@ func miqt_exec_callback_QsciMacro_Play(self *C.QsciMacro, cb C.intptr_t) {
 
 func (this *QsciMacro) callVirtualBase_StartRecording() {
 
-	C.QsciMacro_virtualbase_StartRecording(unsafe.Pointer(this.h))
+	C.QsciMacro_virtualbase_startRecording(unsafe.Pointer(this.h))
 
 }
-func (this *QsciMacro) OnStartRecording(slot func(super func())) {
-	ok := C.QsciMacro_override_virtual_StartRecording(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciMacro) OnstartRecording(slot func(super func())) {
+	ok := C.QsciMacro_override_virtual_startRecording(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciMacro_StartRecording
-func miqt_exec_callback_QsciMacro_StartRecording(self *C.QsciMacro, cb C.intptr_t) {
+//export miqt_exec_callback_QsciMacro_startRecording
+func miqt_exec_callback_QsciMacro_startRecording(self *C.QsciMacro, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -187,18 +187,18 @@ func miqt_exec_callback_QsciMacro_StartRecording(self *C.QsciMacro, cb C.intptr_
 
 func (this *QsciMacro) callVirtualBase_EndRecording() {
 
-	C.QsciMacro_virtualbase_EndRecording(unsafe.Pointer(this.h))
+	C.QsciMacro_virtualbase_endRecording(unsafe.Pointer(this.h))
 
 }
-func (this *QsciMacro) OnEndRecording(slot func(super func())) {
-	ok := C.QsciMacro_override_virtual_EndRecording(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciMacro) OnendRecording(slot func(super func())) {
+	ok := C.QsciMacro_override_virtual_endRecording(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciMacro_EndRecording
-func miqt_exec_callback_QsciMacro_EndRecording(self *C.QsciMacro, cb C.intptr_t) {
+//export miqt_exec_callback_QsciMacro_endRecording
+func miqt_exec_callback_QsciMacro_endRecording(self *C.QsciMacro, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -210,18 +210,18 @@ func miqt_exec_callback_QsciMacro_EndRecording(self *C.QsciMacro, cb C.intptr_t)
 
 func (this *QsciMacro) callVirtualBase_Event(event *qt6.QEvent) bool {
 
-	return (bool)(C.QsciMacro_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QsciMacro_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QsciMacro) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
-	ok := C.QsciMacro_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciMacro) Onevent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	ok := C.QsciMacro_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciMacro_Event
-func miqt_exec_callback_QsciMacro_Event(self *C.QsciMacro, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QsciMacro_event
+func miqt_exec_callback_QsciMacro_event(self *C.QsciMacro, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -238,18 +238,18 @@ func miqt_exec_callback_QsciMacro_Event(self *C.QsciMacro, cb C.intptr_t, event 
 
 func (this *QsciMacro) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
 
-	return (bool)(C.QsciMacro_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QsciMacro_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QsciMacro) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	ok := C.QsciMacro_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciMacro) OneventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	ok := C.QsciMacro_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciMacro_EventFilter
-func miqt_exec_callback_QsciMacro_EventFilter(self *C.QsciMacro, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QsciMacro_eventFilter
+func miqt_exec_callback_QsciMacro_eventFilter(self *C.QsciMacro, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -268,18 +268,18 @@ func miqt_exec_callback_QsciMacro_EventFilter(self *C.QsciMacro, cb C.intptr_t, 
 
 func (this *QsciMacro) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
-	C.QsciMacro_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QsciMacro_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciMacro) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	ok := C.QsciMacro_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciMacro) OntimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	ok := C.QsciMacro_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciMacro_TimerEvent
-func miqt_exec_callback_QsciMacro_TimerEvent(self *C.QsciMacro, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QsciMacro_timerEvent
+func miqt_exec_callback_QsciMacro_timerEvent(self *C.QsciMacro, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -294,18 +294,18 @@ func miqt_exec_callback_QsciMacro_TimerEvent(self *C.QsciMacro, cb C.intptr_t, e
 
 func (this *QsciMacro) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
-	C.QsciMacro_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QsciMacro_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciMacro) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	ok := C.QsciMacro_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciMacro) OnchildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	ok := C.QsciMacro_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciMacro_ChildEvent
-func miqt_exec_callback_QsciMacro_ChildEvent(self *C.QsciMacro, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QsciMacro_childEvent
+func miqt_exec_callback_QsciMacro_childEvent(self *C.QsciMacro, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -320,18 +320,18 @@ func miqt_exec_callback_QsciMacro_ChildEvent(self *C.QsciMacro, cb C.intptr_t, e
 
 func (this *QsciMacro) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
-	C.QsciMacro_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QsciMacro_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciMacro) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	ok := C.QsciMacro_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciMacro) OncustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	ok := C.QsciMacro_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciMacro_CustomEvent
-func miqt_exec_callback_QsciMacro_CustomEvent(self *C.QsciMacro, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QsciMacro_customEvent
+func miqt_exec_callback_QsciMacro_customEvent(self *C.QsciMacro, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -346,18 +346,18 @@ func miqt_exec_callback_QsciMacro_CustomEvent(self *C.QsciMacro, cb C.intptr_t, 
 
 func (this *QsciMacro) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QsciMacro_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QsciMacro_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QsciMacro) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QsciMacro_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciMacro) OnconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QsciMacro_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciMacro_ConnectNotify
-func miqt_exec_callback_QsciMacro_ConnectNotify(self *C.QsciMacro, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QsciMacro_connectNotify
+func miqt_exec_callback_QsciMacro_connectNotify(self *C.QsciMacro, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -372,18 +372,18 @@ func miqt_exec_callback_QsciMacro_ConnectNotify(self *C.QsciMacro, cb C.intptr_t
 
 func (this *QsciMacro) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QsciMacro_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QsciMacro_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QsciMacro) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QsciMacro_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciMacro) OndisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QsciMacro_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciMacro_DisconnectNotify
-func miqt_exec_callback_QsciMacro_DisconnectNotify(self *C.QsciMacro, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QsciMacro_disconnectNotify
+func miqt_exec_callback_QsciMacro_disconnectNotify(self *C.QsciMacro, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -398,7 +398,7 @@ func miqt_exec_callback_QsciMacro_DisconnectNotify(self *C.QsciMacro, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QsciMacro) Delete() {
-	C.QsciMacro_Delete(this.h)
+	C.QsciMacro_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

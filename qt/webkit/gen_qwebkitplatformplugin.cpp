@@ -24,20 +24,20 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QWebSelectMethod_SelectItem(intptr_t, int, bool, bool);
-void miqt_exec_callback_QWebSelectMethod_DidHide(intptr_t);
-void miqt_exec_callback_QWebNotificationPresenter_NotificationClosed(intptr_t);
-void miqt_exec_callback_QWebNotificationPresenter_NotificationClicked(intptr_t);
+void miqt_exec_callback_QWebSelectMethod_selectItem(intptr_t, int, bool, bool);
+void miqt_exec_callback_QWebSelectMethod_didHide(intptr_t);
+void miqt_exec_callback_QWebNotificationPresenter_notificationClosed(intptr_t);
+void miqt_exec_callback_QWebNotificationPresenter_notificationClicked(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
 
-int QWebSelectData_ItemType(const QWebSelectData* self, int param1) {
+int QWebSelectData_itemType(const QWebSelectData* self, int param1) {
 	QWebSelectData::ItemType _ret = self->itemType(static_cast<int>(param1));
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string QWebSelectData_ItemText(const QWebSelectData* self, int index) {
+struct miqt_string QWebSelectData_itemText(const QWebSelectData* self, int index) {
 	QString _ret = self->itemText(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -48,7 +48,7 @@ struct miqt_string QWebSelectData_ItemText(const QWebSelectData* self, int index
 	return _ms;
 }
 
-struct miqt_string QWebSelectData_ItemToolTip(const QWebSelectData* self, int index) {
+struct miqt_string QWebSelectData_itemToolTip(const QWebSelectData* self, int index) {
 	QString _ret = self->itemToolTip(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -59,43 +59,43 @@ struct miqt_string QWebSelectData_ItemToolTip(const QWebSelectData* self, int in
 	return _ms;
 }
 
-bool QWebSelectData_ItemIsEnabled(const QWebSelectData* self, int index) {
+bool QWebSelectData_itemIsEnabled(const QWebSelectData* self, int index) {
 	return self->itemIsEnabled(static_cast<int>(index));
 }
 
-bool QWebSelectData_ItemIsSelected(const QWebSelectData* self, int index) {
+bool QWebSelectData_itemIsSelected(const QWebSelectData* self, int index) {
 	return self->itemIsSelected(static_cast<int>(index));
 }
 
-int QWebSelectData_ItemCount(const QWebSelectData* self) {
+int QWebSelectData_itemCount(const QWebSelectData* self) {
 	return self->itemCount();
 }
 
-bool QWebSelectData_Multiple(const QWebSelectData* self) {
+bool QWebSelectData_multiple(const QWebSelectData* self) {
 	return self->multiple();
 }
 
-QColor* QWebSelectData_BackgroundColor(const QWebSelectData* self) {
+QColor* QWebSelectData_backgroundColor(const QWebSelectData* self) {
 	return new QColor(self->backgroundColor());
 }
 
-QColor* QWebSelectData_ForegroundColor(const QWebSelectData* self) {
+QColor* QWebSelectData_foregroundColor(const QWebSelectData* self) {
 	return new QColor(self->foregroundColor());
 }
 
-QColor* QWebSelectData_ItemBackgroundColor(const QWebSelectData* self, int index) {
+QColor* QWebSelectData_itemBackgroundColor(const QWebSelectData* self, int index) {
 	return new QColor(self->itemBackgroundColor(static_cast<int>(index)));
 }
 
-QColor* QWebSelectData_ItemForegroundColor(const QWebSelectData* self, int index) {
+QColor* QWebSelectData_itemForegroundColor(const QWebSelectData* self, int index) {
 	return new QColor(self->itemForegroundColor(static_cast<int>(index)));
 }
 
-void QWebSelectData_OperatorAssign(QWebSelectData* self, QWebSelectData* param1) {
+void QWebSelectData_operatorAssign(QWebSelectData* self, QWebSelectData* param1) {
 	self->operator=(*param1);
 }
 
-void QWebSelectData_Delete(QWebSelectData* self) {
+void QWebSelectData_delete(QWebSelectData* self) {
 	delete self;
 }
 
@@ -103,15 +103,15 @@ void QWebSelectMethod_virtbase(QWebSelectMethod* src, QObject** outptr_QObject) 
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QWebSelectMethod_MetaObject(const QWebSelectMethod* self) {
+QMetaObject* QWebSelectMethod_metaObject(const QWebSelectMethod* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QWebSelectMethod_Metacast(QWebSelectMethod* self, const char* param1) {
+void* QWebSelectMethod_metacast(QWebSelectMethod* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QWebSelectMethod_Tr(const char* s) {
+struct miqt_string QWebSelectMethod_tr(const char* s) {
 	QString _ret = QWebSelectMethod::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -122,7 +122,7 @@ struct miqt_string QWebSelectMethod_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QWebSelectMethod_TrUtf8(const char* s) {
+struct miqt_string QWebSelectMethod_trUtf8(const char* s) {
 	QString _ret = QWebSelectMethod::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -133,46 +133,46 @@ struct miqt_string QWebSelectMethod_TrUtf8(const char* s) {
 	return _ms;
 }
 
-void QWebSelectMethod_Show(QWebSelectMethod* self, QWebSelectData* param1) {
+void QWebSelectMethod_show(QWebSelectMethod* self, QWebSelectData* param1) {
 	self->show(*param1);
 }
 
-void QWebSelectMethod_Hide(QWebSelectMethod* self) {
+void QWebSelectMethod_hide(QWebSelectMethod* self) {
 	self->hide();
 }
 
-void QWebSelectMethod_SetGeometry(QWebSelectMethod* self, QRect* geometry) {
+void QWebSelectMethod_setGeometry(QWebSelectMethod* self, QRect* geometry) {
 	self->setGeometry(*geometry);
 }
 
-void QWebSelectMethod_SetFont(QWebSelectMethod* self, QFont* font) {
+void QWebSelectMethod_setFont(QWebSelectMethod* self, QFont* font) {
 	self->setFont(*font);
 }
 
-void QWebSelectMethod_SelectItem(QWebSelectMethod* self, int index, bool allowMultiplySelections, bool shift) {
+void QWebSelectMethod_selectItem(QWebSelectMethod* self, int index, bool allowMultiplySelections, bool shift) {
 	self->selectItem(static_cast<int>(index), allowMultiplySelections, shift);
 }
 
-void QWebSelectMethod_connect_SelectItem(QWebSelectMethod* self, intptr_t slot) {
+void QWebSelectMethod_connect_selectItem(QWebSelectMethod* self, intptr_t slot) {
 	QWebSelectMethod::connect(self, static_cast<void (QWebSelectMethod::*)(int, bool, bool)>(&QWebSelectMethod::selectItem), self, [=](int index, bool allowMultiplySelections, bool shift) {
 		int sigval1 = index;
 		bool sigval2 = allowMultiplySelections;
 		bool sigval3 = shift;
-		miqt_exec_callback_QWebSelectMethod_SelectItem(slot, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QWebSelectMethod_selectItem(slot, sigval1, sigval2, sigval3);
 	});
 }
 
-void QWebSelectMethod_DidHide(QWebSelectMethod* self) {
+void QWebSelectMethod_didHide(QWebSelectMethod* self) {
 	self->didHide();
 }
 
-void QWebSelectMethod_connect_DidHide(QWebSelectMethod* self, intptr_t slot) {
+void QWebSelectMethod_connect_didHide(QWebSelectMethod* self, intptr_t slot) {
 	QWebSelectMethod::connect(self, static_cast<void (QWebSelectMethod::*)()>(&QWebSelectMethod::didHide), self, [=]() {
-		miqt_exec_callback_QWebSelectMethod_DidHide(slot);
+		miqt_exec_callback_QWebSelectMethod_didHide(slot);
 	});
 }
 
-struct miqt_string QWebSelectMethod_Tr2(const char* s, const char* c) {
+struct miqt_string QWebSelectMethod_tr2(const char* s, const char* c) {
 	QString _ret = QWebSelectMethod::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -183,7 +183,7 @@ struct miqt_string QWebSelectMethod_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QWebSelectMethod_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QWebSelectMethod_tr3(const char* s, const char* c, int n) {
 	QString _ret = QWebSelectMethod::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -194,7 +194,7 @@ struct miqt_string QWebSelectMethod_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string QWebSelectMethod_TrUtf82(const char* s, const char* c) {
+struct miqt_string QWebSelectMethod_trUtf82(const char* s, const char* c) {
 	QString _ret = QWebSelectMethod::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -205,7 +205,7 @@ struct miqt_string QWebSelectMethod_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QWebSelectMethod_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QWebSelectMethod_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QWebSelectMethod::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -216,11 +216,11 @@ struct miqt_string QWebSelectMethod_TrUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-void QWebSelectMethod_Delete(QWebSelectMethod* self) {
+void QWebSelectMethod_delete(QWebSelectMethod* self) {
 	delete self;
 }
 
-struct miqt_string QWebNotificationData_Title(const QWebNotificationData* self) {
+struct miqt_string QWebNotificationData_title(const QWebNotificationData* self) {
 	const QString _ret = self->title();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -231,7 +231,7 @@ struct miqt_string QWebNotificationData_Title(const QWebNotificationData* self) 
 	return _ms;
 }
 
-struct miqt_string QWebNotificationData_Message(const QWebNotificationData* self) {
+struct miqt_string QWebNotificationData_message(const QWebNotificationData* self) {
 	const QString _ret = self->message();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -242,19 +242,19 @@ struct miqt_string QWebNotificationData_Message(const QWebNotificationData* self
 	return _ms;
 }
 
-QUrl* QWebNotificationData_IconUrl(const QWebNotificationData* self) {
+QUrl* QWebNotificationData_iconUrl(const QWebNotificationData* self) {
 	return new QUrl(self->iconUrl());
 }
 
-QUrl* QWebNotificationData_OpenerPageUrl(const QWebNotificationData* self) {
+QUrl* QWebNotificationData_openerPageUrl(const QWebNotificationData* self) {
 	return new QUrl(self->openerPageUrl());
 }
 
-void QWebNotificationData_OperatorAssign(QWebNotificationData* self, QWebNotificationData* param1) {
+void QWebNotificationData_operatorAssign(QWebNotificationData* self, QWebNotificationData* param1) {
 	self->operator=(*param1);
 }
 
-void QWebNotificationData_Delete(QWebNotificationData* self) {
+void QWebNotificationData_delete(QWebNotificationData* self) {
 	delete self;
 }
 
@@ -262,15 +262,15 @@ void QWebNotificationPresenter_virtbase(QWebNotificationPresenter* src, QObject*
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QWebNotificationPresenter_MetaObject(const QWebNotificationPresenter* self) {
+QMetaObject* QWebNotificationPresenter_metaObject(const QWebNotificationPresenter* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QWebNotificationPresenter_Metacast(QWebNotificationPresenter* self, const char* param1) {
+void* QWebNotificationPresenter_metacast(QWebNotificationPresenter* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QWebNotificationPresenter_Tr(const char* s) {
+struct miqt_string QWebNotificationPresenter_tr(const char* s) {
 	QString _ret = QWebNotificationPresenter::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -281,7 +281,7 @@ struct miqt_string QWebNotificationPresenter_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QWebNotificationPresenter_TrUtf8(const char* s) {
+struct miqt_string QWebNotificationPresenter_trUtf8(const char* s) {
 	QString _ret = QWebNotificationPresenter::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -292,31 +292,31 @@ struct miqt_string QWebNotificationPresenter_TrUtf8(const char* s) {
 	return _ms;
 }
 
-void QWebNotificationPresenter_ShowNotification(QWebNotificationPresenter* self, QWebNotificationData* param1) {
+void QWebNotificationPresenter_showNotification(QWebNotificationPresenter* self, QWebNotificationData* param1) {
 	self->showNotification(param1);
 }
 
-void QWebNotificationPresenter_NotificationClosed(QWebNotificationPresenter* self) {
+void QWebNotificationPresenter_notificationClosed(QWebNotificationPresenter* self) {
 	self->notificationClosed();
 }
 
-void QWebNotificationPresenter_connect_NotificationClosed(QWebNotificationPresenter* self, intptr_t slot) {
+void QWebNotificationPresenter_connect_notificationClosed(QWebNotificationPresenter* self, intptr_t slot) {
 	QWebNotificationPresenter::connect(self, static_cast<void (QWebNotificationPresenter::*)()>(&QWebNotificationPresenter::notificationClosed), self, [=]() {
-		miqt_exec_callback_QWebNotificationPresenter_NotificationClosed(slot);
+		miqt_exec_callback_QWebNotificationPresenter_notificationClosed(slot);
 	});
 }
 
-void QWebNotificationPresenter_NotificationClicked(QWebNotificationPresenter* self) {
+void QWebNotificationPresenter_notificationClicked(QWebNotificationPresenter* self) {
 	self->notificationClicked();
 }
 
-void QWebNotificationPresenter_connect_NotificationClicked(QWebNotificationPresenter* self, intptr_t slot) {
+void QWebNotificationPresenter_connect_notificationClicked(QWebNotificationPresenter* self, intptr_t slot) {
 	QWebNotificationPresenter::connect(self, static_cast<void (QWebNotificationPresenter::*)()>(&QWebNotificationPresenter::notificationClicked), self, [=]() {
-		miqt_exec_callback_QWebNotificationPresenter_NotificationClicked(slot);
+		miqt_exec_callback_QWebNotificationPresenter_notificationClicked(slot);
 	});
 }
 
-struct miqt_string QWebNotificationPresenter_Tr2(const char* s, const char* c) {
+struct miqt_string QWebNotificationPresenter_tr2(const char* s, const char* c) {
 	QString _ret = QWebNotificationPresenter::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -327,7 +327,7 @@ struct miqt_string QWebNotificationPresenter_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QWebNotificationPresenter_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QWebNotificationPresenter_tr3(const char* s, const char* c, int n) {
 	QString _ret = QWebNotificationPresenter::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -338,7 +338,7 @@ struct miqt_string QWebNotificationPresenter_Tr3(const char* s, const char* c, i
 	return _ms;
 }
 
-struct miqt_string QWebNotificationPresenter_TrUtf82(const char* s, const char* c) {
+struct miqt_string QWebNotificationPresenter_trUtf82(const char* s, const char* c) {
 	QString _ret = QWebNotificationPresenter::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -349,7 +349,7 @@ struct miqt_string QWebNotificationPresenter_TrUtf82(const char* s, const char* 
 	return _ms;
 }
 
-struct miqt_string QWebNotificationPresenter_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QWebNotificationPresenter_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QWebNotificationPresenter::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -360,7 +360,7 @@ struct miqt_string QWebNotificationPresenter_TrUtf83(const char* s, const char* 
 	return _ms;
 }
 
-void QWebNotificationPresenter_Delete(QWebNotificationPresenter* self) {
+void QWebNotificationPresenter_delete(QWebNotificationPresenter* self) {
 	delete self;
 }
 
@@ -368,15 +368,15 @@ void QWebHapticFeedbackPlayer_virtbase(QWebHapticFeedbackPlayer* src, QObject** 
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QWebHapticFeedbackPlayer_MetaObject(const QWebHapticFeedbackPlayer* self) {
+QMetaObject* QWebHapticFeedbackPlayer_metaObject(const QWebHapticFeedbackPlayer* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QWebHapticFeedbackPlayer_Metacast(QWebHapticFeedbackPlayer* self, const char* param1) {
+void* QWebHapticFeedbackPlayer_metacast(QWebHapticFeedbackPlayer* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QWebHapticFeedbackPlayer_Tr(const char* s) {
+struct miqt_string QWebHapticFeedbackPlayer_tr(const char* s) {
 	QString _ret = QWebHapticFeedbackPlayer::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -387,7 +387,7 @@ struct miqt_string QWebHapticFeedbackPlayer_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QWebHapticFeedbackPlayer_TrUtf8(const char* s) {
+struct miqt_string QWebHapticFeedbackPlayer_trUtf8(const char* s) {
 	QString _ret = QWebHapticFeedbackPlayer::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -398,12 +398,12 @@ struct miqt_string QWebHapticFeedbackPlayer_TrUtf8(const char* s) {
 	return _ms;
 }
 
-void QWebHapticFeedbackPlayer_PlayHapticFeedback(QWebHapticFeedbackPlayer* self, int param1, struct miqt_string hapticType, int param3) {
+void QWebHapticFeedbackPlayer_playHapticFeedback(QWebHapticFeedbackPlayer* self, int param1, struct miqt_string hapticType, int param3) {
 	QString hapticType_QString = QString::fromUtf8(hapticType.data, hapticType.len);
 	self->playHapticFeedback(static_cast<const QWebHapticFeedbackPlayer::HapticEvent>(param1), hapticType_QString, static_cast<const QWebHapticFeedbackPlayer::HapticStrength>(param3));
 }
 
-struct miqt_string QWebHapticFeedbackPlayer_Tr2(const char* s, const char* c) {
+struct miqt_string QWebHapticFeedbackPlayer_tr2(const char* s, const char* c) {
 	QString _ret = QWebHapticFeedbackPlayer::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -414,7 +414,7 @@ struct miqt_string QWebHapticFeedbackPlayer_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QWebHapticFeedbackPlayer_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QWebHapticFeedbackPlayer_tr3(const char* s, const char* c, int n) {
 	QString _ret = QWebHapticFeedbackPlayer::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -425,7 +425,7 @@ struct miqt_string QWebHapticFeedbackPlayer_Tr3(const char* s, const char* c, in
 	return _ms;
 }
 
-struct miqt_string QWebHapticFeedbackPlayer_TrUtf82(const char* s, const char* c) {
+struct miqt_string QWebHapticFeedbackPlayer_trUtf82(const char* s, const char* c) {
 	QString _ret = QWebHapticFeedbackPlayer::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -436,7 +436,7 @@ struct miqt_string QWebHapticFeedbackPlayer_TrUtf82(const char* s, const char* c
 	return _ms;
 }
 
-struct miqt_string QWebHapticFeedbackPlayer_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QWebHapticFeedbackPlayer_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QWebHapticFeedbackPlayer::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -447,7 +447,7 @@ struct miqt_string QWebHapticFeedbackPlayer_TrUtf83(const char* s, const char* c
 	return _ms;
 }
 
-void QWebHapticFeedbackPlayer_Delete(QWebHapticFeedbackPlayer* self) {
+void QWebHapticFeedbackPlayer_delete(QWebHapticFeedbackPlayer* self) {
 	delete self;
 }
 
@@ -455,15 +455,15 @@ void QWebTouchModifier_virtbase(QWebTouchModifier* src, QObject** outptr_QObject
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QWebTouchModifier_MetaObject(const QWebTouchModifier* self) {
+QMetaObject* QWebTouchModifier_metaObject(const QWebTouchModifier* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QWebTouchModifier_Metacast(QWebTouchModifier* self, const char* param1) {
+void* QWebTouchModifier_metacast(QWebTouchModifier* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QWebTouchModifier_Tr(const char* s) {
+struct miqt_string QWebTouchModifier_tr(const char* s) {
 	QString _ret = QWebTouchModifier::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -474,7 +474,7 @@ struct miqt_string QWebTouchModifier_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QWebTouchModifier_TrUtf8(const char* s) {
+struct miqt_string QWebTouchModifier_trUtf8(const char* s) {
 	QString _ret = QWebTouchModifier::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -485,11 +485,11 @@ struct miqt_string QWebTouchModifier_TrUtf8(const char* s) {
 	return _ms;
 }
 
-unsigned int QWebTouchModifier_HitTestPaddingForTouch(const QWebTouchModifier* self, int param1) {
+unsigned int QWebTouchModifier_hitTestPaddingForTouch(const QWebTouchModifier* self, int param1) {
 	return self->hitTestPaddingForTouch(static_cast<const QWebTouchModifier::PaddingDirection>(param1));
 }
 
-struct miqt_string QWebTouchModifier_Tr2(const char* s, const char* c) {
+struct miqt_string QWebTouchModifier_tr2(const char* s, const char* c) {
 	QString _ret = QWebTouchModifier::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -500,7 +500,7 @@ struct miqt_string QWebTouchModifier_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QWebTouchModifier_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QWebTouchModifier_tr3(const char* s, const char* c, int n) {
 	QString _ret = QWebTouchModifier::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -511,7 +511,7 @@ struct miqt_string QWebTouchModifier_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string QWebTouchModifier_TrUtf82(const char* s, const char* c) {
+struct miqt_string QWebTouchModifier_trUtf82(const char* s, const char* c) {
 	QString _ret = QWebTouchModifier::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -522,7 +522,7 @@ struct miqt_string QWebTouchModifier_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QWebTouchModifier_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QWebTouchModifier_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QWebTouchModifier::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -533,7 +533,7 @@ struct miqt_string QWebTouchModifier_TrUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
-void QWebTouchModifier_Delete(QWebTouchModifier* self) {
+void QWebTouchModifier_delete(QWebTouchModifier* self) {
 	delete self;
 }
 
@@ -541,15 +541,15 @@ void QWebSpellChecker_virtbase(QWebSpellChecker* src, QObject** outptr_QObject) 
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QWebSpellChecker_MetaObject(const QWebSpellChecker* self) {
+QMetaObject* QWebSpellChecker_metaObject(const QWebSpellChecker* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QWebSpellChecker_Metacast(QWebSpellChecker* self, const char* param1) {
+void* QWebSpellChecker_metacast(QWebSpellChecker* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QWebSpellChecker_Tr(const char* s) {
+struct miqt_string QWebSpellChecker_tr(const char* s) {
 	QString _ret = QWebSpellChecker::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -560,7 +560,7 @@ struct miqt_string QWebSpellChecker_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QWebSpellChecker_TrUtf8(const char* s) {
+struct miqt_string QWebSpellChecker_trUtf8(const char* s) {
 	QString _ret = QWebSpellChecker::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -571,30 +571,30 @@ struct miqt_string QWebSpellChecker_TrUtf8(const char* s) {
 	return _ms;
 }
 
-bool QWebSpellChecker_IsContinousSpellCheckingEnabled(const QWebSpellChecker* self) {
+bool QWebSpellChecker_isContinousSpellCheckingEnabled(const QWebSpellChecker* self) {
 	return self->isContinousSpellCheckingEnabled();
 }
 
-void QWebSpellChecker_ToggleContinousSpellChecking(QWebSpellChecker* self) {
+void QWebSpellChecker_toggleContinousSpellChecking(QWebSpellChecker* self) {
 	self->toggleContinousSpellChecking();
 }
 
-void QWebSpellChecker_LearnWord(QWebSpellChecker* self, struct miqt_string word) {
+void QWebSpellChecker_learnWord(QWebSpellChecker* self, struct miqt_string word) {
 	QString word_QString = QString::fromUtf8(word.data, word.len);
 	self->learnWord(word_QString);
 }
 
-void QWebSpellChecker_IgnoreWordInSpellDocument(QWebSpellChecker* self, struct miqt_string word) {
+void QWebSpellChecker_ignoreWordInSpellDocument(QWebSpellChecker* self, struct miqt_string word) {
 	QString word_QString = QString::fromUtf8(word.data, word.len);
 	self->ignoreWordInSpellDocument(word_QString);
 }
 
-void QWebSpellChecker_CheckSpellingOfString(QWebSpellChecker* self, struct miqt_string word, int* misspellingLocation, int* misspellingLength) {
+void QWebSpellChecker_checkSpellingOfString(QWebSpellChecker* self, struct miqt_string word, int* misspellingLocation, int* misspellingLength) {
 	QString word_QString = QString::fromUtf8(word.data, word.len);
 	self->checkSpellingOfString(word_QString, static_cast<int*>(misspellingLocation), static_cast<int*>(misspellingLength));
 }
 
-struct miqt_string QWebSpellChecker_AutoCorrectSuggestionForMisspelledWord(QWebSpellChecker* self, struct miqt_string word) {
+struct miqt_string QWebSpellChecker_autoCorrectSuggestionForMisspelledWord(QWebSpellChecker* self, struct miqt_string word) {
 	QString word_QString = QString::fromUtf8(word.data, word.len);
 	QString _ret = self->autoCorrectSuggestionForMisspelledWord(word_QString);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -606,7 +606,7 @@ struct miqt_string QWebSpellChecker_AutoCorrectSuggestionForMisspelledWord(QWebS
 	return _ms;
 }
 
-void QWebSpellChecker_GuessesForWord(QWebSpellChecker* self, struct miqt_string word, struct miqt_string context, struct miqt_array /* of struct miqt_string */  guesses) {
+void QWebSpellChecker_guessesForWord(QWebSpellChecker* self, struct miqt_string word, struct miqt_string context, struct miqt_array /* of struct miqt_string */  guesses) {
 	QString word_QString = QString::fromUtf8(word.data, word.len);
 	QString context_QString = QString::fromUtf8(context.data, context.len);
 	QStringList guesses_QList;
@@ -619,15 +619,15 @@ void QWebSpellChecker_GuessesForWord(QWebSpellChecker* self, struct miqt_string 
 	self->guessesForWord(word_QString, context_QString, guesses_QList);
 }
 
-bool QWebSpellChecker_IsGrammarCheckingEnabled(QWebSpellChecker* self) {
+bool QWebSpellChecker_isGrammarCheckingEnabled(QWebSpellChecker* self) {
 	return self->isGrammarCheckingEnabled();
 }
 
-void QWebSpellChecker_ToggleGrammarChecking(QWebSpellChecker* self) {
+void QWebSpellChecker_toggleGrammarChecking(QWebSpellChecker* self) {
 	self->toggleGrammarChecking();
 }
 
-void QWebSpellChecker_CheckGrammarOfString(QWebSpellChecker* self, struct miqt_string param1, struct miqt_array /* of QWebSpellChecker__GrammarDetail* */  param2, int* badGrammarLocation, int* badGrammarLength) {
+void QWebSpellChecker_checkGrammarOfString(QWebSpellChecker* self, struct miqt_string param1, struct miqt_array /* of QWebSpellChecker__GrammarDetail* */  param2, int* badGrammarLocation, int* badGrammarLength) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	QList<QWebSpellChecker::GrammarDetail> param2_QList;
 	param2_QList.reserve(param2.len);
@@ -638,7 +638,7 @@ void QWebSpellChecker_CheckGrammarOfString(QWebSpellChecker* self, struct miqt_s
 	self->checkGrammarOfString(param1_QString, param2_QList, static_cast<int*>(badGrammarLocation), static_cast<int*>(badGrammarLength));
 }
 
-struct miqt_string QWebSpellChecker_Tr2(const char* s, const char* c) {
+struct miqt_string QWebSpellChecker_tr2(const char* s, const char* c) {
 	QString _ret = QWebSpellChecker::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -649,7 +649,7 @@ struct miqt_string QWebSpellChecker_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QWebSpellChecker_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QWebSpellChecker_tr3(const char* s, const char* c, int n) {
 	QString _ret = QWebSpellChecker::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -660,7 +660,7 @@ struct miqt_string QWebSpellChecker_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string QWebSpellChecker_TrUtf82(const char* s, const char* c) {
+struct miqt_string QWebSpellChecker_trUtf82(const char* s, const char* c) {
 	QString _ret = QWebSpellChecker::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -671,7 +671,7 @@ struct miqt_string QWebSpellChecker_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QWebSpellChecker_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QWebSpellChecker_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QWebSpellChecker::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -682,23 +682,23 @@ struct miqt_string QWebSpellChecker_TrUtf83(const char* s, const char* c, int n)
 	return _ms;
 }
 
-void QWebSpellChecker_Delete(QWebSpellChecker* self) {
+void QWebSpellChecker_delete(QWebSpellChecker* self) {
 	delete self;
 }
 
-bool QWebKitPlatformPlugin_SupportsExtension(const QWebKitPlatformPlugin* self, int param1) {
+bool QWebKitPlatformPlugin_supportsExtension(const QWebKitPlatformPlugin* self, int param1) {
 	return self->supportsExtension(static_cast<QWebKitPlatformPlugin::Extension>(param1));
 }
 
-QObject* QWebKitPlatformPlugin_CreateExtension(const QWebKitPlatformPlugin* self, int param1) {
+QObject* QWebKitPlatformPlugin_createExtension(const QWebKitPlatformPlugin* self, int param1) {
 	return self->createExtension(static_cast<QWebKitPlatformPlugin::Extension>(param1));
 }
 
-void QWebKitPlatformPlugin_OperatorAssign(QWebKitPlatformPlugin* self, QWebKitPlatformPlugin* param1) {
+void QWebKitPlatformPlugin_operatorAssign(QWebKitPlatformPlugin* self, QWebKitPlatformPlugin* param1) {
 	self->operator=(*param1);
 }
 
-void QWebKitPlatformPlugin_Delete(QWebKitPlatformPlugin* self) {
+void QWebKitPlatformPlugin_delete(QWebKitPlatformPlugin* self) {
 	delete self;
 }
 
@@ -706,11 +706,11 @@ QWebSpellChecker__GrammarDetail* QWebSpellChecker__GrammarDetail_new(QWebSpellCh
 	return new QWebSpellChecker::GrammarDetail(*param1);
 }
 
-void QWebSpellChecker__GrammarDetail_OperatorAssign(QWebSpellChecker__GrammarDetail* self, QWebSpellChecker__GrammarDetail* param1) {
+void QWebSpellChecker__GrammarDetail_operatorAssign(QWebSpellChecker__GrammarDetail* self, QWebSpellChecker__GrammarDetail* param1) {
 	self->operator=(*param1);
 }
 
-void QWebSpellChecker__GrammarDetail_Delete(QWebSpellChecker__GrammarDetail* self) {
+void QWebSpellChecker__GrammarDetail_delete(QWebSpellChecker__GrammarDetail* self) {
 	delete self;
 }
 

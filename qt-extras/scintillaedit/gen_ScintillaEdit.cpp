@@ -127,161 +127,161 @@ void miqt_exec_callback_Scintilla__Internal__ListBox_ClearRegisteredImages(Scint
 void miqt_exec_callback_Scintilla__Internal__ListBox_SetDelegate(Scintilla__Internal__ListBox*, intptr_t, Scintilla__Internal__IListBoxDelegate*);
 void miqt_exec_callback_Scintilla__Internal__ListBox_SetList(Scintilla__Internal__ListBox*, intptr_t, const char*, char, char);
 void miqt_exec_callback_Scintilla__Internal__ListBox_SetOptions(Scintilla__Internal__ListBox*, intptr_t, Scintilla__Internal__ListOptions*);
-void miqt_exec_callback_ScintillaEditBase_HorizontalScrolled(intptr_t, int);
-void miqt_exec_callback_ScintillaEditBase_VerticalScrolled(intptr_t, int);
-void miqt_exec_callback_ScintillaEditBase_HorizontalRangeChanged(intptr_t, int, int);
-void miqt_exec_callback_ScintillaEditBase_VerticalRangeChanged(intptr_t, int, int);
-void miqt_exec_callback_ScintillaEditBase_NotifyChange(intptr_t);
-void miqt_exec_callback_ScintillaEditBase_LinesAdded(intptr_t, intptr_t);
-void miqt_exec_callback_ScintillaEditBase_AboutToCopy(intptr_t, QMimeData*);
-void miqt_exec_callback_ScintillaEditBase_StyleNeeded(intptr_t, intptr_t);
-void miqt_exec_callback_ScintillaEditBase_CharAdded(intptr_t, int);
-void miqt_exec_callback_ScintillaEditBase_SavePointChanged(intptr_t, bool);
-void miqt_exec_callback_ScintillaEditBase_ModifyAttemptReadOnly(intptr_t);
-void miqt_exec_callback_ScintillaEditBase_Key(intptr_t, int);
-void miqt_exec_callback_ScintillaEditBase_DoubleClick(intptr_t, intptr_t, intptr_t);
-void miqt_exec_callback_ScintillaEditBase_UpdateUi(intptr_t, int);
-void miqt_exec_callback_ScintillaEditBase_Modified(intptr_t, int, intptr_t, intptr_t, intptr_t, struct miqt_string, intptr_t, int, int);
-void miqt_exec_callback_ScintillaEditBase_MacroRecord(intptr_t, int, uintptr_t, intptr_t);
-void miqt_exec_callback_ScintillaEditBase_MarginClicked(intptr_t, intptr_t, int, int);
-void miqt_exec_callback_ScintillaEditBase_TextAreaClicked(intptr_t, intptr_t, int);
-void miqt_exec_callback_ScintillaEditBase_NeedShown(intptr_t, intptr_t, intptr_t);
-void miqt_exec_callback_ScintillaEditBase_Painted(intptr_t);
-void miqt_exec_callback_ScintillaEditBase_UserListSelection(intptr_t);
-void miqt_exec_callback_ScintillaEditBase_UriDropped(intptr_t, struct miqt_string);
-void miqt_exec_callback_ScintillaEditBase_DwellStart(intptr_t, int, int);
-void miqt_exec_callback_ScintillaEditBase_DwellEnd(intptr_t, int, int);
-void miqt_exec_callback_ScintillaEditBase_Zoom(intptr_t, int);
-void miqt_exec_callback_ScintillaEditBase_HotSpotClick(intptr_t, intptr_t, int);
-void miqt_exec_callback_ScintillaEditBase_HotSpotDoubleClick(intptr_t, intptr_t, int);
-void miqt_exec_callback_ScintillaEditBase_CallTipClick(intptr_t);
-void miqt_exec_callback_ScintillaEditBase_AutoCompleteSelection(intptr_t, intptr_t, struct miqt_string);
-void miqt_exec_callback_ScintillaEditBase_AutoCompleteCancelled(intptr_t);
-void miqt_exec_callback_ScintillaEditBase_FocusChanged(intptr_t, bool);
-void miqt_exec_callback_ScintillaEditBase_Notify(intptr_t, Scintilla__NotificationData*);
-void miqt_exec_callback_ScintillaEditBase_Command(intptr_t, uintptr_t, intptr_t);
-void miqt_exec_callback_ScintillaEditBase_ButtonPressed(intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEditBase_ButtonReleased(intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEditBase_KeyPressed(intptr_t, QKeyEvent*);
-void miqt_exec_callback_ScintillaEditBase_Resized(intptr_t);
-intptr_t miqt_exec_callback_ScintillaEditBase_Send(const ScintillaEditBase*, intptr_t, unsigned int, uintptr_t, intptr_t);
-intptr_t miqt_exec_callback_ScintillaEditBase_Sends(const ScintillaEditBase*, intptr_t, unsigned int, uintptr_t, const char*);
-bool miqt_exec_callback_ScintillaEditBase_Event(ScintillaEditBase*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaEditBase_PaintEvent(ScintillaEditBase*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_ScintillaEditBase_WheelEvent(ScintillaEditBase*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_ScintillaEditBase_FocusInEvent(ScintillaEditBase*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_ScintillaEditBase_FocusOutEvent(ScintillaEditBase*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_ScintillaEditBase_ResizeEvent(ScintillaEditBase*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_ScintillaEditBase_KeyPressEvent(ScintillaEditBase*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_ScintillaEditBase_MousePressEvent(ScintillaEditBase*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEditBase_MouseReleaseEvent(ScintillaEditBase*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEditBase_MouseDoubleClickEvent(ScintillaEditBase*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEditBase_MouseMoveEvent(ScintillaEditBase*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEditBase_ContextMenuEvent(ScintillaEditBase*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_ScintillaEditBase_DragEnterEvent(ScintillaEditBase*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_ScintillaEditBase_DragLeaveEvent(ScintillaEditBase*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_ScintillaEditBase_DragMoveEvent(ScintillaEditBase*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_ScintillaEditBase_DropEvent(ScintillaEditBase*, intptr_t, QDropEvent*);
-void miqt_exec_callback_ScintillaEditBase_InputMethodEvent(ScintillaEditBase*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_ScintillaEditBase_InputMethodQuery(const ScintillaEditBase*, intptr_t, int);
-void miqt_exec_callback_ScintillaEditBase_ScrollContentsBy(ScintillaEditBase*, intptr_t, int, int);
-QSize* miqt_exec_callback_ScintillaEditBase_MinimumSizeHint(const ScintillaEditBase*, intptr_t);
-QSize* miqt_exec_callback_ScintillaEditBase_SizeHint(const ScintillaEditBase*, intptr_t);
-void miqt_exec_callback_ScintillaEditBase_SetupViewport(ScintillaEditBase*, intptr_t, QWidget*);
-bool miqt_exec_callback_ScintillaEditBase_EventFilter(ScintillaEditBase*, intptr_t, QObject*, QEvent*);
-bool miqt_exec_callback_ScintillaEditBase_ViewportEvent(ScintillaEditBase*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_ScintillaEditBase_ViewportSizeHint(const ScintillaEditBase*, intptr_t);
-void miqt_exec_callback_ScintillaEditBase_ChangeEvent(ScintillaEditBase*, intptr_t, QEvent*);
-int miqt_exec_callback_ScintillaEditBase_DevType(const ScintillaEditBase*, intptr_t);
-void miqt_exec_callback_ScintillaEditBase_SetVisible(ScintillaEditBase*, intptr_t, bool);
-int miqt_exec_callback_ScintillaEditBase_HeightForWidth(const ScintillaEditBase*, intptr_t, int);
-bool miqt_exec_callback_ScintillaEditBase_HasHeightForWidth(const ScintillaEditBase*, intptr_t);
-QPaintEngine* miqt_exec_callback_ScintillaEditBase_PaintEngine(const ScintillaEditBase*, intptr_t);
-void miqt_exec_callback_ScintillaEditBase_KeyReleaseEvent(ScintillaEditBase*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_ScintillaEditBase_EnterEvent(ScintillaEditBase*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaEditBase_LeaveEvent(ScintillaEditBase*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaEditBase_MoveEvent(ScintillaEditBase*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_ScintillaEditBase_CloseEvent(ScintillaEditBase*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_ScintillaEditBase_TabletEvent(ScintillaEditBase*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_ScintillaEditBase_ActionEvent(ScintillaEditBase*, intptr_t, QActionEvent*);
-void miqt_exec_callback_ScintillaEditBase_ShowEvent(ScintillaEditBase*, intptr_t, QShowEvent*);
-void miqt_exec_callback_ScintillaEditBase_HideEvent(ScintillaEditBase*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_ScintillaEditBase_NativeEvent(ScintillaEditBase*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_ScintillaEditBase_Metric(const ScintillaEditBase*, intptr_t, int);
-void miqt_exec_callback_ScintillaEditBase_InitPainter(const ScintillaEditBase*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_ScintillaEditBase_Redirected(const ScintillaEditBase*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_ScintillaEditBase_SharedPainter(const ScintillaEditBase*, intptr_t);
-bool miqt_exec_callback_ScintillaEditBase_FocusNextPrevChild(ScintillaEditBase*, intptr_t, bool);
-void miqt_exec_callback_ScintillaEditBase_TimerEvent(ScintillaEditBase*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_ScintillaEditBase_ChildEvent(ScintillaEditBase*, intptr_t, QChildEvent*);
-void miqt_exec_callback_ScintillaEditBase_CustomEvent(ScintillaEditBase*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaEditBase_ConnectNotify(ScintillaEditBase*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_ScintillaEditBase_DisconnectNotify(ScintillaEditBase*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_ScintillaDocument_ModifyAttempt(intptr_t);
-void miqt_exec_callback_ScintillaDocument_SavePoint(intptr_t, bool);
-void miqt_exec_callback_ScintillaDocument_Modified(intptr_t, int, int, struct miqt_string, int, int, int, int, int);
-void miqt_exec_callback_ScintillaDocument_StyleNeeded(intptr_t, int);
-void miqt_exec_callback_ScintillaDocument_ErrorOccurred(intptr_t, int);
-bool miqt_exec_callback_ScintillaDocument_Event(ScintillaDocument*, intptr_t, QEvent*);
-bool miqt_exec_callback_ScintillaDocument_EventFilter(ScintillaDocument*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_ScintillaDocument_TimerEvent(ScintillaDocument*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_ScintillaDocument_ChildEvent(ScintillaDocument*, intptr_t, QChildEvent*);
-void miqt_exec_callback_ScintillaDocument_CustomEvent(ScintillaDocument*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaDocument_ConnectNotify(ScintillaDocument*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_ScintillaDocument_DisconnectNotify(ScintillaDocument*, intptr_t, QMetaMethod*);
-intptr_t miqt_exec_callback_ScintillaEdit_Send(const ScintillaEdit*, intptr_t, unsigned int, uintptr_t, intptr_t);
-intptr_t miqt_exec_callback_ScintillaEdit_Sends(const ScintillaEdit*, intptr_t, unsigned int, uintptr_t, const char*);
-bool miqt_exec_callback_ScintillaEdit_Event(ScintillaEdit*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaEdit_PaintEvent(ScintillaEdit*, intptr_t, QPaintEvent*);
-void miqt_exec_callback_ScintillaEdit_WheelEvent(ScintillaEdit*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_ScintillaEdit_FocusInEvent(ScintillaEdit*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_ScintillaEdit_FocusOutEvent(ScintillaEdit*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_ScintillaEdit_ResizeEvent(ScintillaEdit*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_ScintillaEdit_KeyPressEvent(ScintillaEdit*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_ScintillaEdit_MousePressEvent(ScintillaEdit*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEdit_MouseReleaseEvent(ScintillaEdit*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEdit_MouseDoubleClickEvent(ScintillaEdit*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEdit_MouseMoveEvent(ScintillaEdit*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_ScintillaEdit_ContextMenuEvent(ScintillaEdit*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_ScintillaEdit_DragEnterEvent(ScintillaEdit*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_ScintillaEdit_DragLeaveEvent(ScintillaEdit*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_ScintillaEdit_DragMoveEvent(ScintillaEdit*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_ScintillaEdit_DropEvent(ScintillaEdit*, intptr_t, QDropEvent*);
-void miqt_exec_callback_ScintillaEdit_InputMethodEvent(ScintillaEdit*, intptr_t, QInputMethodEvent*);
-QVariant* miqt_exec_callback_ScintillaEdit_InputMethodQuery(const ScintillaEdit*, intptr_t, int);
-void miqt_exec_callback_ScintillaEdit_ScrollContentsBy(ScintillaEdit*, intptr_t, int, int);
-QSize* miqt_exec_callback_ScintillaEdit_MinimumSizeHint(const ScintillaEdit*, intptr_t);
-QSize* miqt_exec_callback_ScintillaEdit_SizeHint(const ScintillaEdit*, intptr_t);
-void miqt_exec_callback_ScintillaEdit_SetupViewport(ScintillaEdit*, intptr_t, QWidget*);
-bool miqt_exec_callback_ScintillaEdit_EventFilter(ScintillaEdit*, intptr_t, QObject*, QEvent*);
-bool miqt_exec_callback_ScintillaEdit_ViewportEvent(ScintillaEdit*, intptr_t, QEvent*);
-QSize* miqt_exec_callback_ScintillaEdit_ViewportSizeHint(const ScintillaEdit*, intptr_t);
-void miqt_exec_callback_ScintillaEdit_ChangeEvent(ScintillaEdit*, intptr_t, QEvent*);
-int miqt_exec_callback_ScintillaEdit_DevType(const ScintillaEdit*, intptr_t);
-void miqt_exec_callback_ScintillaEdit_SetVisible(ScintillaEdit*, intptr_t, bool);
-int miqt_exec_callback_ScintillaEdit_HeightForWidth(const ScintillaEdit*, intptr_t, int);
-bool miqt_exec_callback_ScintillaEdit_HasHeightForWidth(const ScintillaEdit*, intptr_t);
-QPaintEngine* miqt_exec_callback_ScintillaEdit_PaintEngine(const ScintillaEdit*, intptr_t);
-void miqt_exec_callback_ScintillaEdit_KeyReleaseEvent(ScintillaEdit*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_ScintillaEdit_EnterEvent(ScintillaEdit*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaEdit_LeaveEvent(ScintillaEdit*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaEdit_MoveEvent(ScintillaEdit*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_ScintillaEdit_CloseEvent(ScintillaEdit*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_ScintillaEdit_TabletEvent(ScintillaEdit*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_ScintillaEdit_ActionEvent(ScintillaEdit*, intptr_t, QActionEvent*);
-void miqt_exec_callback_ScintillaEdit_ShowEvent(ScintillaEdit*, intptr_t, QShowEvent*);
-void miqt_exec_callback_ScintillaEdit_HideEvent(ScintillaEdit*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_ScintillaEdit_NativeEvent(ScintillaEdit*, intptr_t, struct miqt_string, void*, long*);
-int miqt_exec_callback_ScintillaEdit_Metric(const ScintillaEdit*, intptr_t, int);
-void miqt_exec_callback_ScintillaEdit_InitPainter(const ScintillaEdit*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_ScintillaEdit_Redirected(const ScintillaEdit*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_ScintillaEdit_SharedPainter(const ScintillaEdit*, intptr_t);
-bool miqt_exec_callback_ScintillaEdit_FocusNextPrevChild(ScintillaEdit*, intptr_t, bool);
-void miqt_exec_callback_ScintillaEdit_TimerEvent(ScintillaEdit*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_ScintillaEdit_ChildEvent(ScintillaEdit*, intptr_t, QChildEvent*);
-void miqt_exec_callback_ScintillaEdit_CustomEvent(ScintillaEdit*, intptr_t, QEvent*);
-void miqt_exec_callback_ScintillaEdit_ConnectNotify(ScintillaEdit*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_ScintillaEdit_DisconnectNotify(ScintillaEdit*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_ScintillaEditBase_horizontalScrolled(intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_verticalScrolled(intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_horizontalRangeChanged(intptr_t, int, int);
+void miqt_exec_callback_ScintillaEditBase_verticalRangeChanged(intptr_t, int, int);
+void miqt_exec_callback_ScintillaEditBase_notifyChange(intptr_t);
+void miqt_exec_callback_ScintillaEditBase_linesAdded(intptr_t, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_aboutToCopy(intptr_t, QMimeData*);
+void miqt_exec_callback_ScintillaEditBase_styleNeeded(intptr_t, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_charAdded(intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_savePointChanged(intptr_t, bool);
+void miqt_exec_callback_ScintillaEditBase_modifyAttemptReadOnly(intptr_t);
+void miqt_exec_callback_ScintillaEditBase_key(intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_doubleClick(intptr_t, intptr_t, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_updateUi(intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_modified(intptr_t, int, intptr_t, intptr_t, intptr_t, struct miqt_string, intptr_t, int, int);
+void miqt_exec_callback_ScintillaEditBase_macroRecord(intptr_t, int, uintptr_t, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_marginClicked(intptr_t, intptr_t, int, int);
+void miqt_exec_callback_ScintillaEditBase_textAreaClicked(intptr_t, intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_needShown(intptr_t, intptr_t, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_painted(intptr_t);
+void miqt_exec_callback_ScintillaEditBase_userListSelection(intptr_t);
+void miqt_exec_callback_ScintillaEditBase_uriDropped(intptr_t, struct miqt_string);
+void miqt_exec_callback_ScintillaEditBase_dwellStart(intptr_t, int, int);
+void miqt_exec_callback_ScintillaEditBase_dwellEnd(intptr_t, int, int);
+void miqt_exec_callback_ScintillaEditBase_zoom(intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_hotSpotClick(intptr_t, intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_hotSpotDoubleClick(intptr_t, intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_callTipClick(intptr_t);
+void miqt_exec_callback_ScintillaEditBase_autoCompleteSelection(intptr_t, intptr_t, struct miqt_string);
+void miqt_exec_callback_ScintillaEditBase_autoCompleteCancelled(intptr_t);
+void miqt_exec_callback_ScintillaEditBase_focusChanged(intptr_t, bool);
+void miqt_exec_callback_ScintillaEditBase_notify(intptr_t, Scintilla__NotificationData*);
+void miqt_exec_callback_ScintillaEditBase_command(intptr_t, uintptr_t, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_buttonPressed(intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEditBase_buttonReleased(intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEditBase_keyPressed(intptr_t, QKeyEvent*);
+void miqt_exec_callback_ScintillaEditBase_resized(intptr_t);
+intptr_t miqt_exec_callback_ScintillaEditBase_send(const ScintillaEditBase*, intptr_t, unsigned int, uintptr_t, intptr_t);
+intptr_t miqt_exec_callback_ScintillaEditBase_sends(const ScintillaEditBase*, intptr_t, unsigned int, uintptr_t, const char*);
+bool miqt_exec_callback_ScintillaEditBase_event(ScintillaEditBase*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaEditBase_paintEvent(ScintillaEditBase*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_ScintillaEditBase_wheelEvent(ScintillaEditBase*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_ScintillaEditBase_focusInEvent(ScintillaEditBase*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_ScintillaEditBase_focusOutEvent(ScintillaEditBase*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_ScintillaEditBase_resizeEvent(ScintillaEditBase*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_ScintillaEditBase_keyPressEvent(ScintillaEditBase*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_ScintillaEditBase_mousePressEvent(ScintillaEditBase*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEditBase_mouseReleaseEvent(ScintillaEditBase*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEditBase_mouseDoubleClickEvent(ScintillaEditBase*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEditBase_mouseMoveEvent(ScintillaEditBase*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEditBase_contextMenuEvent(ScintillaEditBase*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_ScintillaEditBase_dragEnterEvent(ScintillaEditBase*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_ScintillaEditBase_dragLeaveEvent(ScintillaEditBase*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_ScintillaEditBase_dragMoveEvent(ScintillaEditBase*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_ScintillaEditBase_dropEvent(ScintillaEditBase*, intptr_t, QDropEvent*);
+void miqt_exec_callback_ScintillaEditBase_inputMethodEvent(ScintillaEditBase*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_ScintillaEditBase_inputMethodQuery(const ScintillaEditBase*, intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_scrollContentsBy(ScintillaEditBase*, intptr_t, int, int);
+QSize* miqt_exec_callback_ScintillaEditBase_minimumSizeHint(const ScintillaEditBase*, intptr_t);
+QSize* miqt_exec_callback_ScintillaEditBase_sizeHint(const ScintillaEditBase*, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_setupViewport(ScintillaEditBase*, intptr_t, QWidget*);
+bool miqt_exec_callback_ScintillaEditBase_eventFilter(ScintillaEditBase*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_ScintillaEditBase_viewportEvent(ScintillaEditBase*, intptr_t, QEvent*);
+QSize* miqt_exec_callback_ScintillaEditBase_viewportSizeHint(const ScintillaEditBase*, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_changeEvent(ScintillaEditBase*, intptr_t, QEvent*);
+int miqt_exec_callback_ScintillaEditBase_devType(const ScintillaEditBase*, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_setVisible(ScintillaEditBase*, intptr_t, bool);
+int miqt_exec_callback_ScintillaEditBase_heightForWidth(const ScintillaEditBase*, intptr_t, int);
+bool miqt_exec_callback_ScintillaEditBase_hasHeightForWidth(const ScintillaEditBase*, intptr_t);
+QPaintEngine* miqt_exec_callback_ScintillaEditBase_paintEngine(const ScintillaEditBase*, intptr_t);
+void miqt_exec_callback_ScintillaEditBase_keyReleaseEvent(ScintillaEditBase*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_ScintillaEditBase_enterEvent(ScintillaEditBase*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaEditBase_leaveEvent(ScintillaEditBase*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaEditBase_moveEvent(ScintillaEditBase*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_ScintillaEditBase_closeEvent(ScintillaEditBase*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_ScintillaEditBase_tabletEvent(ScintillaEditBase*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_ScintillaEditBase_actionEvent(ScintillaEditBase*, intptr_t, QActionEvent*);
+void miqt_exec_callback_ScintillaEditBase_showEvent(ScintillaEditBase*, intptr_t, QShowEvent*);
+void miqt_exec_callback_ScintillaEditBase_hideEvent(ScintillaEditBase*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_ScintillaEditBase_nativeEvent(ScintillaEditBase*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_ScintillaEditBase_metric(const ScintillaEditBase*, intptr_t, int);
+void miqt_exec_callback_ScintillaEditBase_initPainter(const ScintillaEditBase*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_ScintillaEditBase_redirected(const ScintillaEditBase*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_ScintillaEditBase_sharedPainter(const ScintillaEditBase*, intptr_t);
+bool miqt_exec_callback_ScintillaEditBase_focusNextPrevChild(ScintillaEditBase*, intptr_t, bool);
+void miqt_exec_callback_ScintillaEditBase_timerEvent(ScintillaEditBase*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_ScintillaEditBase_childEvent(ScintillaEditBase*, intptr_t, QChildEvent*);
+void miqt_exec_callback_ScintillaEditBase_customEvent(ScintillaEditBase*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaEditBase_connectNotify(ScintillaEditBase*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_ScintillaEditBase_disconnectNotify(ScintillaEditBase*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_ScintillaDocument_modifyAttempt(intptr_t);
+void miqt_exec_callback_ScintillaDocument_savePoint(intptr_t, bool);
+void miqt_exec_callback_ScintillaDocument_modified(intptr_t, int, int, struct miqt_string, int, int, int, int, int);
+void miqt_exec_callback_ScintillaDocument_styleNeeded(intptr_t, int);
+void miqt_exec_callback_ScintillaDocument_errorOccurred(intptr_t, int);
+bool miqt_exec_callback_ScintillaDocument_event(ScintillaDocument*, intptr_t, QEvent*);
+bool miqt_exec_callback_ScintillaDocument_eventFilter(ScintillaDocument*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_ScintillaDocument_timerEvent(ScintillaDocument*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_ScintillaDocument_childEvent(ScintillaDocument*, intptr_t, QChildEvent*);
+void miqt_exec_callback_ScintillaDocument_customEvent(ScintillaDocument*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaDocument_connectNotify(ScintillaDocument*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_ScintillaDocument_disconnectNotify(ScintillaDocument*, intptr_t, QMetaMethod*);
+intptr_t miqt_exec_callback_ScintillaEdit_send(const ScintillaEdit*, intptr_t, unsigned int, uintptr_t, intptr_t);
+intptr_t miqt_exec_callback_ScintillaEdit_sends(const ScintillaEdit*, intptr_t, unsigned int, uintptr_t, const char*);
+bool miqt_exec_callback_ScintillaEdit_event(ScintillaEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaEdit_paintEvent(ScintillaEdit*, intptr_t, QPaintEvent*);
+void miqt_exec_callback_ScintillaEdit_wheelEvent(ScintillaEdit*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_ScintillaEdit_focusInEvent(ScintillaEdit*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_ScintillaEdit_focusOutEvent(ScintillaEdit*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_ScintillaEdit_resizeEvent(ScintillaEdit*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_ScintillaEdit_keyPressEvent(ScintillaEdit*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_ScintillaEdit_mousePressEvent(ScintillaEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEdit_mouseReleaseEvent(ScintillaEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEdit_mouseDoubleClickEvent(ScintillaEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEdit_mouseMoveEvent(ScintillaEdit*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_ScintillaEdit_contextMenuEvent(ScintillaEdit*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_ScintillaEdit_dragEnterEvent(ScintillaEdit*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_ScintillaEdit_dragLeaveEvent(ScintillaEdit*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_ScintillaEdit_dragMoveEvent(ScintillaEdit*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_ScintillaEdit_dropEvent(ScintillaEdit*, intptr_t, QDropEvent*);
+void miqt_exec_callback_ScintillaEdit_inputMethodEvent(ScintillaEdit*, intptr_t, QInputMethodEvent*);
+QVariant* miqt_exec_callback_ScintillaEdit_inputMethodQuery(const ScintillaEdit*, intptr_t, int);
+void miqt_exec_callback_ScintillaEdit_scrollContentsBy(ScintillaEdit*, intptr_t, int, int);
+QSize* miqt_exec_callback_ScintillaEdit_minimumSizeHint(const ScintillaEdit*, intptr_t);
+QSize* miqt_exec_callback_ScintillaEdit_sizeHint(const ScintillaEdit*, intptr_t);
+void miqt_exec_callback_ScintillaEdit_setupViewport(ScintillaEdit*, intptr_t, QWidget*);
+bool miqt_exec_callback_ScintillaEdit_eventFilter(ScintillaEdit*, intptr_t, QObject*, QEvent*);
+bool miqt_exec_callback_ScintillaEdit_viewportEvent(ScintillaEdit*, intptr_t, QEvent*);
+QSize* miqt_exec_callback_ScintillaEdit_viewportSizeHint(const ScintillaEdit*, intptr_t);
+void miqt_exec_callback_ScintillaEdit_changeEvent(ScintillaEdit*, intptr_t, QEvent*);
+int miqt_exec_callback_ScintillaEdit_devType(const ScintillaEdit*, intptr_t);
+void miqt_exec_callback_ScintillaEdit_setVisible(ScintillaEdit*, intptr_t, bool);
+int miqt_exec_callback_ScintillaEdit_heightForWidth(const ScintillaEdit*, intptr_t, int);
+bool miqt_exec_callback_ScintillaEdit_hasHeightForWidth(const ScintillaEdit*, intptr_t);
+QPaintEngine* miqt_exec_callback_ScintillaEdit_paintEngine(const ScintillaEdit*, intptr_t);
+void miqt_exec_callback_ScintillaEdit_keyReleaseEvent(ScintillaEdit*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_ScintillaEdit_enterEvent(ScintillaEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaEdit_leaveEvent(ScintillaEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaEdit_moveEvent(ScintillaEdit*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_ScintillaEdit_closeEvent(ScintillaEdit*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_ScintillaEdit_tabletEvent(ScintillaEdit*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_ScintillaEdit_actionEvent(ScintillaEdit*, intptr_t, QActionEvent*);
+void miqt_exec_callback_ScintillaEdit_showEvent(ScintillaEdit*, intptr_t, QShowEvent*);
+void miqt_exec_callback_ScintillaEdit_hideEvent(ScintillaEdit*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_ScintillaEdit_nativeEvent(ScintillaEdit*, intptr_t, struct miqt_string, void*, long*);
+int miqt_exec_callback_ScintillaEdit_metric(const ScintillaEdit*, intptr_t, int);
+void miqt_exec_callback_ScintillaEdit_initPainter(const ScintillaEdit*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_ScintillaEdit_redirected(const ScintillaEdit*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_ScintillaEdit_sharedPainter(const ScintillaEdit*, intptr_t);
+bool miqt_exec_callback_ScintillaEdit_focusNextPrevChild(ScintillaEdit*, intptr_t, bool);
+void miqt_exec_callback_ScintillaEdit_timerEvent(ScintillaEdit*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_ScintillaEdit_childEvent(ScintillaEdit*, intptr_t, QChildEvent*);
+void miqt_exec_callback_ScintillaEdit_customEvent(ScintillaEdit*, intptr_t, QEvent*);
+void miqt_exec_callback_ScintillaEdit_connectNotify(ScintillaEdit*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_ScintillaEdit_disconnectNotify(ScintillaEdit*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -306,27 +306,27 @@ Scintilla__Internal__Point* Scintilla__Internal__Point_FromInts(int x_, int y_) 
 	return new Scintilla::Internal::Point(Scintilla::Internal::Point::FromInts(static_cast<int>(x_), static_cast<int>(y_)));
 }
 
-bool Scintilla__Internal__Point_OperatorEqual(const Scintilla__Internal__Point* self, Scintilla__Internal__Point* other) {
+bool Scintilla__Internal__Point_operatorEqual(const Scintilla__Internal__Point* self, Scintilla__Internal__Point* other) {
 	return (*self == *other);
 }
 
-bool Scintilla__Internal__Point_OperatorNotEqual(const Scintilla__Internal__Point* self, Scintilla__Internal__Point* other) {
+bool Scintilla__Internal__Point_operatorNotEqual(const Scintilla__Internal__Point* self, Scintilla__Internal__Point* other) {
 	return (*self != *other);
 }
 
-Scintilla__Internal__Point* Scintilla__Internal__Point_OperatorPlus(const Scintilla__Internal__Point* self, Scintilla__Internal__Point* other) {
+Scintilla__Internal__Point* Scintilla__Internal__Point_operatorPlus(const Scintilla__Internal__Point* self, Scintilla__Internal__Point* other) {
 	return new Scintilla::Internal::Point(self->operator+(*other));
 }
 
-Scintilla__Internal__Point* Scintilla__Internal__Point_OperatorMinus(const Scintilla__Internal__Point* self, Scintilla__Internal__Point* other) {
+Scintilla__Internal__Point* Scintilla__Internal__Point_operatorMinus(const Scintilla__Internal__Point* self, Scintilla__Internal__Point* other) {
 	return new Scintilla::Internal::Point(self->operator-(*other));
 }
 
-void Scintilla__Internal__Point_Delete(Scintilla__Internal__Point* self) {
+void Scintilla__Internal__Point_delete(Scintilla__Internal__Point* self) {
 	delete self;
 }
 
-bool Scintilla__Internal__Interval_OperatorEqual(const Scintilla__Internal__Interval* self, Scintilla__Internal__Interval* other) {
+bool Scintilla__Internal__Interval_operatorEqual(const Scintilla__Internal__Interval* self, Scintilla__Internal__Interval* other) {
 	return (*self == *other);
 }
 
@@ -347,7 +347,7 @@ Scintilla__Internal__Interval* Scintilla__Internal__Interval_Offset(const Scinti
 	return new Scintilla::Internal::Interval(self->Offset(static_cast<Scintilla::Internal::XYPOSITION>(offset)));
 }
 
-void Scintilla__Internal__Interval_Delete(Scintilla__Internal__Interval* self) {
+void Scintilla__Internal__Interval_delete(Scintilla__Internal__Interval* self) {
 	delete self;
 }
 
@@ -379,7 +379,7 @@ Scintilla__Internal__PRectangle* Scintilla__Internal__PRectangle_FromInts(int le
 	return new Scintilla::Internal::PRectangle(Scintilla::Internal::PRectangle::FromInts(static_cast<int>(left_), static_cast<int>(top_), static_cast<int>(right_), static_cast<int>(bottom_)));
 }
 
-bool Scintilla__Internal__PRectangle_OperatorEqual(const Scintilla__Internal__PRectangle* self, Scintilla__Internal__PRectangle* rc) {
+bool Scintilla__Internal__PRectangle_operatorEqual(const Scintilla__Internal__PRectangle* self, Scintilla__Internal__PRectangle* rc) {
 	return (*self == *rc);
 }
 
@@ -437,7 +437,7 @@ bool Scintilla__Internal__PRectangle_Empty(const Scintilla__Internal__PRectangle
 	return self->Empty();
 }
 
-void Scintilla__Internal__PRectangle_Delete(Scintilla__Internal__PRectangle* self) {
+void Scintilla__Internal__PRectangle_delete(Scintilla__Internal__PRectangle* self) {
 	delete self;
 }
 
@@ -525,7 +525,7 @@ float Scintilla__Internal__ColourRGBA_GetAlphaComponent(const Scintilla__Interna
 	return self->GetAlphaComponent();
 }
 
-bool Scintilla__Internal__ColourRGBA_OperatorEqual(const Scintilla__Internal__ColourRGBA* self, Scintilla__Internal__ColourRGBA* other) {
+bool Scintilla__Internal__ColourRGBA_operatorEqual(const Scintilla__Internal__ColourRGBA* self, Scintilla__Internal__ColourRGBA* other) {
 	return (*self == *other);
 }
 
@@ -541,7 +541,7 @@ Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_MixedWith2(cons
 	return new Scintilla::Internal::ColourRGBA(self->MixedWith(*other, static_cast<double>(proportion)));
 }
 
-void Scintilla__Internal__ColourRGBA_OperatorAssign(Scintilla__Internal__ColourRGBA* self, Scintilla__Internal__ColourRGBA* param1) {
+void Scintilla__Internal__ColourRGBA_operatorAssign(Scintilla__Internal__ColourRGBA* self, Scintilla__Internal__ColourRGBA* param1) {
 	self->operator=(*param1);
 }
 
@@ -549,7 +549,7 @@ Scintilla__Internal__ColourRGBA* Scintilla__Internal__ColourRGBA_Grey2(unsigned 
 	return new Scintilla::Internal::ColourRGBA(Scintilla::Internal::ColourRGBA::Grey(static_cast<unsigned int>(grey), static_cast<unsigned int>(alpha)));
 }
 
-void Scintilla__Internal__ColourRGBA_Delete(Scintilla__Internal__ColourRGBA* self) {
+void Scintilla__Internal__ColourRGBA_delete(Scintilla__Internal__ColourRGBA* self) {
 	delete self;
 }
 
@@ -569,7 +569,7 @@ float Scintilla__Internal__Stroke_WidthF(const Scintilla__Internal__Stroke* self
 	return self->WidthF();
 }
 
-void Scintilla__Internal__Stroke_Delete(Scintilla__Internal__Stroke* self) {
+void Scintilla__Internal__Stroke_delete(Scintilla__Internal__Stroke* self) {
 	delete self;
 }
 
@@ -581,7 +581,7 @@ Scintilla__Internal__Fill* Scintilla__Internal__Fill_new2(Scintilla__Internal__F
 	return new Scintilla::Internal::Fill(*param1);
 }
 
-void Scintilla__Internal__Fill_Delete(Scintilla__Internal__Fill* self) {
+void Scintilla__Internal__Fill_delete(Scintilla__Internal__Fill* self) {
 	delete self;
 }
 
@@ -601,7 +601,7 @@ Scintilla__Internal__FillStroke* Scintilla__Internal__FillStroke_new4(Scintilla_
 	return new Scintilla::Internal::FillStroke(*colourBoth, static_cast<Scintilla::Internal::XYPOSITION>(widthStroke_));
 }
 
-void Scintilla__Internal__FillStroke_Delete(Scintilla__Internal__FillStroke* self) {
+void Scintilla__Internal__FillStroke_delete(Scintilla__Internal__FillStroke* self) {
 	delete self;
 }
 
@@ -609,51 +609,51 @@ Scintilla__Internal__ColourStop* Scintilla__Internal__ColourStop_new(double posi
 	return new Scintilla::Internal::ColourStop(static_cast<Scintilla::Internal::XYPOSITION>(position_), *colour_);
 }
 
-void Scintilla__Internal__ColourStop_Delete(Scintilla__Internal__ColourStop* self) {
+void Scintilla__Internal__ColourStop_delete(Scintilla__Internal__ColourStop* self) {
 	delete self;
 }
 
-void Scintilla__CharacterRange_Delete(Scintilla__CharacterRange* self) {
+void Scintilla__CharacterRange_delete(Scintilla__CharacterRange* self) {
 	delete self;
 }
 
-void Scintilla__CharacterRangeFull_Delete(Scintilla__CharacterRangeFull* self) {
+void Scintilla__CharacterRangeFull_delete(Scintilla__CharacterRangeFull* self) {
 	delete self;
 }
 
-void Scintilla__TextRange_Delete(Scintilla__TextRange* self) {
+void Scintilla__TextRange_delete(Scintilla__TextRange* self) {
 	delete self;
 }
 
-void Scintilla__TextRangeFull_Delete(Scintilla__TextRangeFull* self) {
+void Scintilla__TextRangeFull_delete(Scintilla__TextRangeFull* self) {
 	delete self;
 }
 
-void Scintilla__TextToFind_Delete(Scintilla__TextToFind* self) {
+void Scintilla__TextToFind_delete(Scintilla__TextToFind* self) {
 	delete self;
 }
 
-void Scintilla__TextToFindFull_Delete(Scintilla__TextToFindFull* self) {
+void Scintilla__TextToFindFull_delete(Scintilla__TextToFindFull* self) {
 	delete self;
 }
 
-void Scintilla__Rectangle_Delete(Scintilla__Rectangle* self) {
+void Scintilla__Rectangle_delete(Scintilla__Rectangle* self) {
 	delete self;
 }
 
-void Scintilla__RangeToFormat_Delete(Scintilla__RangeToFormat* self) {
+void Scintilla__RangeToFormat_delete(Scintilla__RangeToFormat* self) {
 	delete self;
 }
 
-void Scintilla__RangeToFormatFull_Delete(Scintilla__RangeToFormatFull* self) {
+void Scintilla__RangeToFormatFull_delete(Scintilla__RangeToFormatFull* self) {
 	delete self;
 }
 
-void Scintilla__NotifyHeader_Delete(Scintilla__NotifyHeader* self) {
+void Scintilla__NotifyHeader_delete(Scintilla__NotifyHeader* self) {
 	delete self;
 }
 
-void Scintilla__NotificationData_Delete(Scintilla__NotificationData* self) {
+void Scintilla__NotificationData_delete(Scintilla__NotificationData* self) {
 	delete self;
 }
 
@@ -693,7 +693,7 @@ Scintilla__Internal__FontParameters* Scintilla__Internal__FontParameters_new9(co
 	return new Scintilla::Internal::FontParameters(faceName_, static_cast<Scintilla::Internal::XYPOSITION>(size_), static_cast<Scintilla::FontWeight>(weight_), italic_, static_cast<Scintilla::FontQuality>(extraFontFlag_), static_cast<Scintilla::Technology>(technology_), static_cast<Scintilla::CharacterSet>(characterSet_), localeName_, static_cast<Scintilla::FontStretch>(stretch_));
 }
 
-void Scintilla__Internal__FontParameters_Delete(Scintilla__Internal__FontParameters* self) {
+void Scintilla__Internal__FontParameters_delete(Scintilla__Internal__FontParameters* self) {
 	delete self;
 }
 
@@ -701,7 +701,7 @@ Scintilla__Internal__Font* Scintilla__Internal__Font_new() {
 	return new Scintilla::Internal::Font();
 }
 
-void Scintilla__Internal__Font_Delete(Scintilla__Internal__Font* self) {
+void Scintilla__Internal__Font_delete(Scintilla__Internal__Font* self) {
 	delete self;
 }
 
@@ -747,11 +747,11 @@ double Scintilla__Internal__IScreenLine_TabPositionAfter(const Scintilla__Intern
 	return static_cast<double>(_ret);
 }
 
-void Scintilla__Internal__IScreenLine_OperatorAssign(Scintilla__Internal__IScreenLine* self, Scintilla__Internal__IScreenLine* param1) {
+void Scintilla__Internal__IScreenLine_operatorAssign(Scintilla__Internal__IScreenLine* self, Scintilla__Internal__IScreenLine* param1) {
 	self->operator=(*param1);
 }
 
-void Scintilla__Internal__IScreenLine_Delete(Scintilla__Internal__IScreenLine* self) {
+void Scintilla__Internal__IScreenLine_delete(Scintilla__Internal__IScreenLine* self) {
 	delete self;
 }
 
@@ -764,11 +764,11 @@ double Scintilla__Internal__IScreenLineLayout_XFromPosition(Scintilla__Internal_
 	return static_cast<double>(_ret);
 }
 
-void Scintilla__Internal__IScreenLineLayout_OperatorAssign(Scintilla__Internal__IScreenLineLayout* self, Scintilla__Internal__IScreenLineLayout* param1) {
+void Scintilla__Internal__IScreenLineLayout_operatorAssign(Scintilla__Internal__IScreenLineLayout* self, Scintilla__Internal__IScreenLineLayout* param1) {
 	self->operator=(*param1);
 }
 
-void Scintilla__Internal__IScreenLineLayout_Delete(Scintilla__Internal__IScreenLineLayout* self) {
+void Scintilla__Internal__IScreenLineLayout_delete(Scintilla__Internal__IScreenLineLayout* self) {
 	delete self;
 }
 
@@ -780,7 +780,7 @@ Scintilla__Internal__SurfaceMode* Scintilla__Internal__SurfaceMode_new2(int code
 	return new Scintilla::Internal::SurfaceMode(static_cast<int>(codePage_), bidiR2L_);
 }
 
-void Scintilla__Internal__SurfaceMode_Delete(Scintilla__Internal__SurfaceMode* self) {
+void Scintilla__Internal__SurfaceMode_delete(Scintilla__Internal__SurfaceMode* self) {
 	delete self;
 }
 
@@ -1788,7 +1788,7 @@ bool Scintilla__Internal__Surface_override_virtual_FlushDrawing(void* self, intp
 	return true;
 }
 
-void Scintilla__Internal__Surface_Delete(Scintilla__Internal__Surface* self) {
+void Scintilla__Internal__Surface_delete(Scintilla__Internal__Surface* self) {
 	delete self;
 }
 
@@ -1796,7 +1796,7 @@ Scintilla__Internal__Window* Scintilla__Internal__Window_new() {
 	return new Scintilla::Internal::Window();
 }
 
-void Scintilla__Internal__Window_OperatorAssign(Scintilla__Internal__Window* self, void* wid_) {
+void Scintilla__Internal__Window_operatorAssign(Scintilla__Internal__Window* self, void* wid_) {
 	self->operator=(wid_);
 }
 
@@ -1853,7 +1853,7 @@ void Scintilla__Internal__Window_Show1(Scintilla__Internal__Window* self, bool s
 	self->Show(show);
 }
 
-void Scintilla__Internal__Window_Delete(Scintilla__Internal__Window* self) {
+void Scintilla__Internal__Window_delete(Scintilla__Internal__Window* self) {
 	delete self;
 }
 
@@ -1861,7 +1861,7 @@ Scintilla__Internal__ListBoxEvent* Scintilla__Internal__ListBoxEvent_new(int eve
 	return new Scintilla::Internal::ListBoxEvent(static_cast<Scintilla::Internal::ListBoxEvent::EventType>(event_));
 }
 
-void Scintilla__Internal__ListBoxEvent_Delete(Scintilla__Internal__ListBoxEvent* self) {
+void Scintilla__Internal__ListBoxEvent_delete(Scintilla__Internal__ListBoxEvent* self) {
 	delete self;
 }
 
@@ -1869,15 +1869,15 @@ void Scintilla__Internal__IListBoxDelegate_ListNotify(Scintilla__Internal__IList
 	self->ListNotify(plbe);
 }
 
-void Scintilla__Internal__IListBoxDelegate_OperatorAssign(Scintilla__Internal__IListBoxDelegate* self, Scintilla__Internal__IListBoxDelegate* param1) {
+void Scintilla__Internal__IListBoxDelegate_operatorAssign(Scintilla__Internal__IListBoxDelegate* self, Scintilla__Internal__IListBoxDelegate* param1) {
 	self->operator=(*param1);
 }
 
-void Scintilla__Internal__IListBoxDelegate_Delete(Scintilla__Internal__IListBoxDelegate* self) {
+void Scintilla__Internal__IListBoxDelegate_delete(Scintilla__Internal__IListBoxDelegate* self) {
 	delete self;
 }
 
-void Scintilla__Internal__ListOptions_Delete(Scintilla__Internal__ListOptions* self) {
+void Scintilla__Internal__ListOptions_delete(Scintilla__Internal__ListOptions* self) {
 	delete self;
 }
 
@@ -2024,13 +2024,13 @@ public:
 	intptr_t handle__Append = 0;
 
 	// Subclass to allow providing a Go implementation
-	virtual void Append(char* s, int typeVal) override {
+	virtual void Append(char* s, int type) override {
 		if (handle__Append == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
 		
 		char* sigval1 = s;
-		int sigval2 = typeVal;
+		int sigval2 = type;
 
 		miqt_exec_callback_Scintilla__Internal__ListBox_Append(this, handle__Append, sigval1, sigval2);
 
@@ -2103,12 +2103,12 @@ public:
 	intptr_t handle__RegisterImage = 0;
 
 	// Subclass to allow providing a Go implementation
-	virtual void RegisterImage(int typeVal, const char* xpm_data) override {
+	virtual void RegisterImage(int type, const char* xpm_data) override {
 		if (handle__RegisterImage == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
 		
-		int sigval1 = typeVal;
+		int sigval1 = type;
 		const char* sigval2 = (const char*) xpm_data;
 
 		miqt_exec_callback_Scintilla__Internal__ListBox_RegisterImage(this, handle__RegisterImage, sigval1, sigval2);
@@ -2120,12 +2120,12 @@ public:
 	intptr_t handle__RegisterRGBAImage = 0;
 
 	// Subclass to allow providing a Go implementation
-	virtual void RegisterRGBAImage(int typeVal, int width, int height, const unsigned char* pixelsImage) override {
+	virtual void RegisterRGBAImage(int type, int width, int height, const unsigned char* pixelsImage) override {
 		if (handle__RegisterRGBAImage == 0) {
 			return; // Pure virtual, there is no base we can call
 		}
 		
-		int sigval1 = typeVal;
+		int sigval1 = type;
 		int sigval2 = width;
 		int sigval3 = height;
 		const unsigned char* sigval4 = (const unsigned char*) pixelsImage;
@@ -2242,8 +2242,8 @@ void Scintilla__Internal__ListBox_Clear(Scintilla__Internal__ListBox* self) {
 	self->Clear();
 }
 
-void Scintilla__Internal__ListBox_Append(Scintilla__Internal__ListBox* self, char* s, int typeVal) {
-	self->Append(s, static_cast<int>(typeVal));
+void Scintilla__Internal__ListBox_Append(Scintilla__Internal__ListBox* self, char* s, int type) {
+	self->Append(s, static_cast<int>(type));
 }
 
 int Scintilla__Internal__ListBox_Length(Scintilla__Internal__ListBox* self) {
@@ -2262,12 +2262,12 @@ int Scintilla__Internal__ListBox_Find(Scintilla__Internal__ListBox* self, const 
 	return self->Find(prefix);
 }
 
-void Scintilla__Internal__ListBox_RegisterImage(Scintilla__Internal__ListBox* self, int typeVal, const char* xpm_data) {
-	self->RegisterImage(static_cast<int>(typeVal), xpm_data);
+void Scintilla__Internal__ListBox_RegisterImage(Scintilla__Internal__ListBox* self, int type, const char* xpm_data) {
+	self->RegisterImage(static_cast<int>(type), xpm_data);
 }
 
-void Scintilla__Internal__ListBox_RegisterRGBAImage(Scintilla__Internal__ListBox* self, int typeVal, int width, int height, const unsigned char* pixelsImage) {
-	self->RegisterRGBAImage(static_cast<int>(typeVal), static_cast<int>(width), static_cast<int>(height), static_cast<const unsigned char*>(pixelsImage));
+void Scintilla__Internal__ListBox_RegisterRGBAImage(Scintilla__Internal__ListBox* self, int type, int width, int height, const unsigned char* pixelsImage) {
+	self->RegisterRGBAImage(static_cast<int>(type), static_cast<int>(width), static_cast<int>(height), static_cast<const unsigned char*>(pixelsImage));
 }
 
 void Scintilla__Internal__ListBox_ClearRegisteredImages(Scintilla__Internal__ListBox* self) {
@@ -2476,7 +2476,7 @@ bool Scintilla__Internal__ListBox_override_virtual_SetOptions(void* self, intptr
 	return true;
 }
 
-void Scintilla__Internal__ListBox_Delete(Scintilla__Internal__ListBox* self) {
+void Scintilla__Internal__ListBox_delete(Scintilla__Internal__ListBox* self) {
 	delete self;
 }
 
@@ -2501,51 +2501,51 @@ void Scintilla__Internal__Menu_Show(Scintilla__Internal__Menu* self, Scintilla__
 	self->Show(*pt, *w);
 }
 
-void Scintilla__Internal__Menu_Delete(Scintilla__Internal__Menu* self) {
+void Scintilla__Internal__Menu_delete(Scintilla__Internal__Menu* self) {
 	delete self;
 }
 
-void Sci_CharacterRange_Delete(Sci_CharacterRange* self) {
+void Sci_CharacterRange_delete(Sci_CharacterRange* self) {
 	delete self;
 }
 
-void Sci_CharacterRangeFull_Delete(Sci_CharacterRangeFull* self) {
+void Sci_CharacterRangeFull_delete(Sci_CharacterRangeFull* self) {
 	delete self;
 }
 
-void Sci_TextRange_Delete(Sci_TextRange* self) {
+void Sci_TextRange_delete(Sci_TextRange* self) {
 	delete self;
 }
 
-void Sci_TextRangeFull_Delete(Sci_TextRangeFull* self) {
+void Sci_TextRangeFull_delete(Sci_TextRangeFull* self) {
 	delete self;
 }
 
-void Sci_TextToFind_Delete(Sci_TextToFind* self) {
+void Sci_TextToFind_delete(Sci_TextToFind* self) {
 	delete self;
 }
 
-void Sci_TextToFindFull_Delete(Sci_TextToFindFull* self) {
+void Sci_TextToFindFull_delete(Sci_TextToFindFull* self) {
 	delete self;
 }
 
-void Sci_Rectangle_Delete(Sci_Rectangle* self) {
+void Sci_Rectangle_delete(Sci_Rectangle* self) {
 	delete self;
 }
 
-void Sci_RangeToFormat_Delete(Sci_RangeToFormat* self) {
+void Sci_RangeToFormat_delete(Sci_RangeToFormat* self) {
 	delete self;
 }
 
-void Sci_RangeToFormatFull_Delete(Sci_RangeToFormatFull* self) {
+void Sci_RangeToFormatFull_delete(Sci_RangeToFormatFull* self) {
 	delete self;
 }
 
-void Sci_NotifyHeader_Delete(Sci_NotifyHeader* self) {
+void Sci_NotifyHeader_delete(Sci_NotifyHeader* self) {
 	delete self;
 }
 
-void SCNotification_Delete(SCNotification* self) {
+void SCNotification_delete(SCNotification* self) {
 	delete self;
 }
 
@@ -2558,11 +2558,11 @@ public:
 	virtual ~MiqtVirtualScintillaEditBase() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Send = 0;
+	intptr_t handle__send = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual sptr_t send(unsigned int iMessage, uptr_t wParam, sptr_t lParam) const override {
-		if (handle__Send == 0) {
+		if (handle__send == 0) {
 			return ScintillaEditBase::send(iMessage, wParam, lParam);
 		}
 		
@@ -2572,13 +2572,13 @@ public:
 		sptr_t lParam_ret = lParam;
 		intptr_t sigval3 = static_cast<intptr_t>(lParam_ret);
 
-		intptr_t callback_return_value = miqt_exec_callback_ScintillaEditBase_Send(this, handle__Send, sigval1, sigval2, sigval3);
+		intptr_t callback_return_value = miqt_exec_callback_ScintillaEditBase_send(this, handle__send, sigval1, sigval2, sigval3);
 
 		return static_cast<sptr_t>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	intptr_t virtualbase_Send(unsigned int iMessage, uintptr_t wParam, intptr_t lParam) const {
+	intptr_t virtualbase_send(unsigned int iMessage, uintptr_t wParam, intptr_t lParam) const {
 
 		sptr_t _ret = ScintillaEditBase::send(static_cast<unsigned int>(iMessage), static_cast<uptr_t>(wParam), static_cast<sptr_t>(lParam));
 		return static_cast<intptr_t>(_ret);
@@ -2586,11 +2586,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Sends = 0;
+	intptr_t handle__sends = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual sptr_t sends(unsigned int iMessage, uptr_t wParam, const char* s) const override {
-		if (handle__Sends == 0) {
+		if (handle__sends == 0) {
 			return ScintillaEditBase::sends(iMessage, wParam, s);
 		}
 		
@@ -2599,13 +2599,13 @@ public:
 		uintptr_t sigval2 = static_cast<uintptr_t>(wParam_ret);
 		const char* sigval3 = (const char*) s;
 
-		intptr_t callback_return_value = miqt_exec_callback_ScintillaEditBase_Sends(this, handle__Sends, sigval1, sigval2, sigval3);
+		intptr_t callback_return_value = miqt_exec_callback_ScintillaEditBase_sends(this, handle__sends, sigval1, sigval2, sigval3);
 
 		return static_cast<sptr_t>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	intptr_t virtualbase_Sends(unsigned int iMessage, uintptr_t wParam, const char* s) const {
+	intptr_t virtualbase_sends(unsigned int iMessage, uintptr_t wParam, const char* s) const {
 
 		sptr_t _ret = ScintillaEditBase::sends(static_cast<unsigned int>(iMessage), static_cast<uptr_t>(wParam), s);
 		return static_cast<intptr_t>(_ret);
@@ -2613,442 +2613,442 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return ScintillaEditBase::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_ScintillaEditBase_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_ScintillaEditBase_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return ScintillaEditBase::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__PaintEvent = 0;
+	intptr_t handle__paintEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void paintEvent(QPaintEvent* event) override {
-		if (handle__PaintEvent == 0) {
+		if (handle__paintEvent == 0) {
 			ScintillaEditBase::paintEvent(event);
 			return;
 		}
 		
 		QPaintEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_PaintEvent(this, handle__PaintEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_paintEvent(this, handle__paintEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_PaintEvent(QPaintEvent* event) {
+	void virtualbase_paintEvent(QPaintEvent* event) {
 
 		ScintillaEditBase::paintEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__WheelEvent = 0;
+	intptr_t handle__wheelEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void wheelEvent(QWheelEvent* event) override {
-		if (handle__WheelEvent == 0) {
+		if (handle__wheelEvent == 0) {
 			ScintillaEditBase::wheelEvent(event);
 			return;
 		}
 		
 		QWheelEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_WheelEvent(this, handle__WheelEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_wheelEvent(this, handle__wheelEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_WheelEvent(QWheelEvent* event) {
+	void virtualbase_wheelEvent(QWheelEvent* event) {
 
 		ScintillaEditBase::wheelEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__FocusInEvent = 0;
+	intptr_t handle__focusInEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void focusInEvent(QFocusEvent* event) override {
-		if (handle__FocusInEvent == 0) {
+		if (handle__focusInEvent == 0) {
 			ScintillaEditBase::focusInEvent(event);
 			return;
 		}
 		
 		QFocusEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_FocusInEvent(this, handle__FocusInEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_focusInEvent(this, handle__focusInEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_FocusInEvent(QFocusEvent* event) {
+	void virtualbase_focusInEvent(QFocusEvent* event) {
 
 		ScintillaEditBase::focusInEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__FocusOutEvent = 0;
+	intptr_t handle__focusOutEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void focusOutEvent(QFocusEvent* event) override {
-		if (handle__FocusOutEvent == 0) {
+		if (handle__focusOutEvent == 0) {
 			ScintillaEditBase::focusOutEvent(event);
 			return;
 		}
 		
 		QFocusEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_FocusOutEvent(this, handle__FocusOutEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_FocusOutEvent(QFocusEvent* event) {
+	void virtualbase_focusOutEvent(QFocusEvent* event) {
 
 		ScintillaEditBase::focusOutEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ResizeEvent = 0;
+	intptr_t handle__resizeEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void resizeEvent(QResizeEvent* event) override {
-		if (handle__ResizeEvent == 0) {
+		if (handle__resizeEvent == 0) {
 			ScintillaEditBase::resizeEvent(event);
 			return;
 		}
 		
 		QResizeEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_ResizeEvent(this, handle__ResizeEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_resizeEvent(this, handle__resizeEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ResizeEvent(QResizeEvent* event) {
+	void virtualbase_resizeEvent(QResizeEvent* event) {
 
 		ScintillaEditBase::resizeEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__KeyPressEvent = 0;
+	intptr_t handle__keyPressEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void keyPressEvent(QKeyEvent* event) override {
-		if (handle__KeyPressEvent == 0) {
+		if (handle__keyPressEvent == 0) {
 			ScintillaEditBase::keyPressEvent(event);
 			return;
 		}
 		
 		QKeyEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_KeyPressEvent(this, handle__KeyPressEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_KeyPressEvent(QKeyEvent* event) {
+	void virtualbase_keyPressEvent(QKeyEvent* event) {
 
 		ScintillaEditBase::keyPressEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MousePressEvent = 0;
+	intptr_t handle__mousePressEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void mousePressEvent(QMouseEvent* event) override {
-		if (handle__MousePressEvent == 0) {
+		if (handle__mousePressEvent == 0) {
 			ScintillaEditBase::mousePressEvent(event);
 			return;
 		}
 		
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_MousePressEvent(this, handle__MousePressEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MousePressEvent(QMouseEvent* event) {
+	void virtualbase_mousePressEvent(QMouseEvent* event) {
 
 		ScintillaEditBase::mousePressEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MouseReleaseEvent = 0;
+	intptr_t handle__mouseReleaseEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void mouseReleaseEvent(QMouseEvent* event) override {
-		if (handle__MouseReleaseEvent == 0) {
+		if (handle__mouseReleaseEvent == 0) {
 			ScintillaEditBase::mouseReleaseEvent(event);
 			return;
 		}
 		
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_MouseReleaseEvent(this, handle__MouseReleaseEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MouseReleaseEvent(QMouseEvent* event) {
+	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
 
 		ScintillaEditBase::mouseReleaseEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MouseDoubleClickEvent = 0;
+	intptr_t handle__mouseDoubleClickEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void mouseDoubleClickEvent(QMouseEvent* event) override {
-		if (handle__MouseDoubleClickEvent == 0) {
+		if (handle__mouseDoubleClickEvent == 0) {
 			ScintillaEditBase::mouseDoubleClickEvent(event);
 			return;
 		}
 		
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_MouseDoubleClickEvent(this, handle__MouseDoubleClickEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MouseDoubleClickEvent(QMouseEvent* event) {
+	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
 
 		ScintillaEditBase::mouseDoubleClickEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MouseMoveEvent = 0;
+	intptr_t handle__mouseMoveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void mouseMoveEvent(QMouseEvent* event) override {
-		if (handle__MouseMoveEvent == 0) {
+		if (handle__mouseMoveEvent == 0) {
 			ScintillaEditBase::mouseMoveEvent(event);
 			return;
 		}
 		
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_MouseMoveEvent(this, handle__MouseMoveEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MouseMoveEvent(QMouseEvent* event) {
+	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
 
 		ScintillaEditBase::mouseMoveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ContextMenuEvent = 0;
+	intptr_t handle__contextMenuEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void contextMenuEvent(QContextMenuEvent* event) override {
-		if (handle__ContextMenuEvent == 0) {
+		if (handle__contextMenuEvent == 0) {
 			ScintillaEditBase::contextMenuEvent(event);
 			return;
 		}
 		
 		QContextMenuEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_ContextMenuEvent(this, handle__ContextMenuEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ContextMenuEvent(QContextMenuEvent* event) {
+	void virtualbase_contextMenuEvent(QContextMenuEvent* event) {
 
 		ScintillaEditBase::contextMenuEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DragEnterEvent = 0;
+	intptr_t handle__dragEnterEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dragEnterEvent(QDragEnterEvent* event) override {
-		if (handle__DragEnterEvent == 0) {
+		if (handle__dragEnterEvent == 0) {
 			ScintillaEditBase::dragEnterEvent(event);
 			return;
 		}
 		
 		QDragEnterEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_DragEnterEvent(this, handle__DragEnterEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DragEnterEvent(QDragEnterEvent* event) {
+	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
 
 		ScintillaEditBase::dragEnterEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DragLeaveEvent = 0;
+	intptr_t handle__dragLeaveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dragLeaveEvent(QDragLeaveEvent* event) override {
-		if (handle__DragLeaveEvent == 0) {
+		if (handle__dragLeaveEvent == 0) {
 			ScintillaEditBase::dragLeaveEvent(event);
 			return;
 		}
 		
 		QDragLeaveEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_DragLeaveEvent(this, handle__DragLeaveEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DragLeaveEvent(QDragLeaveEvent* event) {
+	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
 
 		ScintillaEditBase::dragLeaveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DragMoveEvent = 0;
+	intptr_t handle__dragMoveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dragMoveEvent(QDragMoveEvent* event) override {
-		if (handle__DragMoveEvent == 0) {
+		if (handle__dragMoveEvent == 0) {
 			ScintillaEditBase::dragMoveEvent(event);
 			return;
 		}
 		
 		QDragMoveEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_DragMoveEvent(this, handle__DragMoveEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DragMoveEvent(QDragMoveEvent* event) {
+	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
 
 		ScintillaEditBase::dragMoveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DropEvent = 0;
+	intptr_t handle__dropEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dropEvent(QDropEvent* event) override {
-		if (handle__DropEvent == 0) {
+		if (handle__dropEvent == 0) {
 			ScintillaEditBase::dropEvent(event);
 			return;
 		}
 		
 		QDropEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_DropEvent(this, handle__DropEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_dropEvent(this, handle__dropEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DropEvent(QDropEvent* event) {
+	void virtualbase_dropEvent(QDropEvent* event) {
 
 		ScintillaEditBase::dropEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InputMethodEvent = 0;
+	intptr_t handle__inputMethodEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void inputMethodEvent(QInputMethodEvent* event) override {
-		if (handle__InputMethodEvent == 0) {
+		if (handle__inputMethodEvent == 0) {
 			ScintillaEditBase::inputMethodEvent(event);
 			return;
 		}
 		
 		QInputMethodEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_InputMethodEvent(this, handle__InputMethodEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_InputMethodEvent(QInputMethodEvent* event) {
+	void virtualbase_inputMethodEvent(QInputMethodEvent* event) {
 
 		ScintillaEditBase::inputMethodEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InputMethodQuery = 0;
+	intptr_t handle__inputMethodQuery = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QVariant inputMethodQuery(Qt::InputMethodQuery query) const override {
-		if (handle__InputMethodQuery == 0) {
+		if (handle__inputMethodQuery == 0) {
 			return ScintillaEditBase::inputMethodQuery(query);
 		}
 		
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_ScintillaEditBase_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_ScintillaEditBase_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QVariant* virtualbase_InputMethodQuery(int query) const {
+	QVariant* virtualbase_inputMethodQuery(int query) const {
 
 		return new QVariant(ScintillaEditBase::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ScrollContentsBy = 0;
+	intptr_t handle__scrollContentsBy = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void scrollContentsBy(int param1, int param2) override {
-		if (handle__ScrollContentsBy == 0) {
+		if (handle__scrollContentsBy == 0) {
 			ScintillaEditBase::scrollContentsBy(param1, param2);
 			return;
 		}
@@ -3056,514 +3056,514 @@ public:
 		int sigval1 = param1;
 		int sigval2 = param2;
 
-		miqt_exec_callback_ScintillaEditBase_ScrollContentsBy(this, handle__ScrollContentsBy, sigval1, sigval2);
+		miqt_exec_callback_ScintillaEditBase_scrollContentsBy(this, handle__scrollContentsBy, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ScrollContentsBy(int param1, int param2) {
+	void virtualbase_scrollContentsBy(int param1, int param2) {
 
 		ScintillaEditBase::scrollContentsBy(static_cast<int>(param1), static_cast<int>(param2));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MinimumSizeHint = 0;
+	intptr_t handle__minimumSizeHint = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize minimumSizeHint() const override {
-		if (handle__MinimumSizeHint == 0) {
+		if (handle__minimumSizeHint == 0) {
 			return ScintillaEditBase::minimumSizeHint();
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEditBase_MinimumSizeHint(this, handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_ScintillaEditBase_minimumSizeHint(this, handle__minimumSizeHint);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSize* virtualbase_MinimumSizeHint() const {
+	QSize* virtualbase_minimumSizeHint() const {
 
 		return new QSize(ScintillaEditBase::minimumSizeHint());
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SizeHint = 0;
+	intptr_t handle__sizeHint = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize sizeHint() const override {
-		if (handle__SizeHint == 0) {
+		if (handle__sizeHint == 0) {
 			return ScintillaEditBase::sizeHint();
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEditBase_SizeHint(this, handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_ScintillaEditBase_sizeHint(this, handle__sizeHint);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSize* virtualbase_SizeHint() const {
+	QSize* virtualbase_sizeHint() const {
 
 		return new QSize(ScintillaEditBase::sizeHint());
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetupViewport = 0;
+	intptr_t handle__setupViewport = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setupViewport(QWidget* viewport) override {
-		if (handle__SetupViewport == 0) {
+		if (handle__setupViewport == 0) {
 			ScintillaEditBase::setupViewport(viewport);
 			return;
 		}
 		
 		QWidget* sigval1 = viewport;
 
-		miqt_exec_callback_ScintillaEditBase_SetupViewport(this, handle__SetupViewport, sigval1);
+		miqt_exec_callback_ScintillaEditBase_setupViewport(this, handle__setupViewport, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetupViewport(QWidget* viewport) {
+	void virtualbase_setupViewport(QWidget* viewport) {
 
 		ScintillaEditBase::setupViewport(viewport);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* param1, QEvent* param2) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return ScintillaEditBase::eventFilter(param1, param2);
 		}
 		
 		QObject* sigval1 = param1;
 		QEvent* sigval2 = param2;
 
-		bool callback_return_value = miqt_exec_callback_ScintillaEditBase_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_ScintillaEditBase_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* param1, QEvent* param2) {
+	bool virtualbase_eventFilter(QObject* param1, QEvent* param2) {
 
 		return ScintillaEditBase::eventFilter(param1, param2);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ViewportEvent = 0;
+	intptr_t handle__viewportEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool viewportEvent(QEvent* param1) override {
-		if (handle__ViewportEvent == 0) {
+		if (handle__viewportEvent == 0) {
 			return ScintillaEditBase::viewportEvent(param1);
 		}
 		
 		QEvent* sigval1 = param1;
 
-		bool callback_return_value = miqt_exec_callback_ScintillaEditBase_ViewportEvent(this, handle__ViewportEvent, sigval1);
+		bool callback_return_value = miqt_exec_callback_ScintillaEditBase_viewportEvent(this, handle__viewportEvent, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_ViewportEvent(QEvent* param1) {
+	bool virtualbase_viewportEvent(QEvent* param1) {
 
 		return ScintillaEditBase::viewportEvent(param1);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ViewportSizeHint = 0;
+	intptr_t handle__viewportSizeHint = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize viewportSizeHint() const override {
-		if (handle__ViewportSizeHint == 0) {
+		if (handle__viewportSizeHint == 0) {
 			return ScintillaEditBase::viewportSizeHint();
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEditBase_ViewportSizeHint(this, handle__ViewportSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_ScintillaEditBase_viewportSizeHint(this, handle__viewportSizeHint);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSize* virtualbase_ViewportSizeHint() const {
+	QSize* virtualbase_viewportSizeHint() const {
 
 		return new QSize(ScintillaEditBase::viewportSizeHint());
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChangeEvent = 0;
+	intptr_t handle__changeEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void changeEvent(QEvent* param1) override {
-		if (handle__ChangeEvent == 0) {
+		if (handle__changeEvent == 0) {
 			ScintillaEditBase::changeEvent(param1);
 			return;
 		}
 		
 		QEvent* sigval1 = param1;
 
-		miqt_exec_callback_ScintillaEditBase_ChangeEvent(this, handle__ChangeEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_changeEvent(this, handle__changeEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChangeEvent(QEvent* param1) {
+	void virtualbase_changeEvent(QEvent* param1) {
 
 		ScintillaEditBase::changeEvent(param1);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DevType = 0;
+	intptr_t handle__devType = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int devType() const override {
-		if (handle__DevType == 0) {
+		if (handle__devType == 0) {
 			return ScintillaEditBase::devType();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_ScintillaEditBase_DevType(this, handle__DevType);
+		int callback_return_value = miqt_exec_callback_ScintillaEditBase_devType(this, handle__devType);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_DevType() const {
+	int virtualbase_devType() const {
 
 		return ScintillaEditBase::devType();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetVisible = 0;
+	intptr_t handle__setVisible = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setVisible(bool visible) override {
-		if (handle__SetVisible == 0) {
+		if (handle__setVisible == 0) {
 			ScintillaEditBase::setVisible(visible);
 			return;
 		}
 		
 		bool sigval1 = visible;
 
-		miqt_exec_callback_ScintillaEditBase_SetVisible(this, handle__SetVisible, sigval1);
+		miqt_exec_callback_ScintillaEditBase_setVisible(this, handle__setVisible, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetVisible(bool visible) {
+	void virtualbase_setVisible(bool visible) {
 
 		ScintillaEditBase::setVisible(visible);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HeightForWidth = 0;
+	intptr_t handle__heightForWidth = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int heightForWidth(int param1) const override {
-		if (handle__HeightForWidth == 0) {
+		if (handle__heightForWidth == 0) {
 			return ScintillaEditBase::heightForWidth(param1);
 		}
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_ScintillaEditBase_HeightForWidth(this, handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_ScintillaEditBase_heightForWidth(this, handle__heightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_HeightForWidth(int param1) const {
+	int virtualbase_heightForWidth(int param1) const {
 
 		return ScintillaEditBase::heightForWidth(static_cast<int>(param1));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HasHeightForWidth = 0;
+	intptr_t handle__hasHeightForWidth = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool hasHeightForWidth() const override {
-		if (handle__HasHeightForWidth == 0) {
+		if (handle__hasHeightForWidth == 0) {
 			return ScintillaEditBase::hasHeightForWidth();
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_ScintillaEditBase_HasHeightForWidth(this, handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_ScintillaEditBase_hasHeightForWidth(this, handle__hasHeightForWidth);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_HasHeightForWidth() const {
+	bool virtualbase_hasHeightForWidth() const {
 
 		return ScintillaEditBase::hasHeightForWidth();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__PaintEngine = 0;
+	intptr_t handle__paintEngine = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QPaintEngine* paintEngine() const override {
-		if (handle__PaintEngine == 0) {
+		if (handle__paintEngine == 0) {
 			return ScintillaEditBase::paintEngine();
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_ScintillaEditBase_PaintEngine(this, handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_ScintillaEditBase_paintEngine(this, handle__paintEngine);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_PaintEngine() const {
+	QPaintEngine* virtualbase_paintEngine() const {
 
 		return ScintillaEditBase::paintEngine();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__KeyReleaseEvent = 0;
+	intptr_t handle__keyReleaseEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void keyReleaseEvent(QKeyEvent* event) override {
-		if (handle__KeyReleaseEvent == 0) {
+		if (handle__keyReleaseEvent == 0) {
 			ScintillaEditBase::keyReleaseEvent(event);
 			return;
 		}
 		
 		QKeyEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_KeyReleaseEvent(this, handle__KeyReleaseEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_KeyReleaseEvent(QKeyEvent* event) {
+	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
 
 		ScintillaEditBase::keyReleaseEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EnterEvent = 0;
+	intptr_t handle__enterEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void enterEvent(QEvent* event) override {
-		if (handle__EnterEvent == 0) {
+		if (handle__enterEvent == 0) {
 			ScintillaEditBase::enterEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_EnterEvent(this, handle__EnterEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_enterEvent(this, handle__enterEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_EnterEvent(QEvent* event) {
+	void virtualbase_enterEvent(QEvent* event) {
 
 		ScintillaEditBase::enterEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__LeaveEvent = 0;
+	intptr_t handle__leaveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void leaveEvent(QEvent* event) override {
-		if (handle__LeaveEvent == 0) {
+		if (handle__leaveEvent == 0) {
 			ScintillaEditBase::leaveEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_LeaveEvent(this, handle__LeaveEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_leaveEvent(this, handle__leaveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_LeaveEvent(QEvent* event) {
+	void virtualbase_leaveEvent(QEvent* event) {
 
 		ScintillaEditBase::leaveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MoveEvent = 0;
+	intptr_t handle__moveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void moveEvent(QMoveEvent* event) override {
-		if (handle__MoveEvent == 0) {
+		if (handle__moveEvent == 0) {
 			ScintillaEditBase::moveEvent(event);
 			return;
 		}
 		
 		QMoveEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_MoveEvent(this, handle__MoveEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_moveEvent(this, handle__moveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MoveEvent(QMoveEvent* event) {
+	void virtualbase_moveEvent(QMoveEvent* event) {
 
 		ScintillaEditBase::moveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CloseEvent = 0;
+	intptr_t handle__closeEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void closeEvent(QCloseEvent* event) override {
-		if (handle__CloseEvent == 0) {
+		if (handle__closeEvent == 0) {
 			ScintillaEditBase::closeEvent(event);
 			return;
 		}
 		
 		QCloseEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_CloseEvent(this, handle__CloseEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_closeEvent(this, handle__closeEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CloseEvent(QCloseEvent* event) {
+	void virtualbase_closeEvent(QCloseEvent* event) {
 
 		ScintillaEditBase::closeEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TabletEvent = 0;
+	intptr_t handle__tabletEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void tabletEvent(QTabletEvent* event) override {
-		if (handle__TabletEvent == 0) {
+		if (handle__tabletEvent == 0) {
 			ScintillaEditBase::tabletEvent(event);
 			return;
 		}
 		
 		QTabletEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_TabletEvent(this, handle__TabletEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_tabletEvent(this, handle__tabletEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TabletEvent(QTabletEvent* event) {
+	void virtualbase_tabletEvent(QTabletEvent* event) {
 
 		ScintillaEditBase::tabletEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ActionEvent = 0;
+	intptr_t handle__actionEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void actionEvent(QActionEvent* event) override {
-		if (handle__ActionEvent == 0) {
+		if (handle__actionEvent == 0) {
 			ScintillaEditBase::actionEvent(event);
 			return;
 		}
 		
 		QActionEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_ActionEvent(this, handle__ActionEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_actionEvent(this, handle__actionEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ActionEvent(QActionEvent* event) {
+	void virtualbase_actionEvent(QActionEvent* event) {
 
 		ScintillaEditBase::actionEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ShowEvent = 0;
+	intptr_t handle__showEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void showEvent(QShowEvent* event) override {
-		if (handle__ShowEvent == 0) {
+		if (handle__showEvent == 0) {
 			ScintillaEditBase::showEvent(event);
 			return;
 		}
 		
 		QShowEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_ShowEvent(this, handle__ShowEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_showEvent(this, handle__showEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ShowEvent(QShowEvent* event) {
+	void virtualbase_showEvent(QShowEvent* event) {
 
 		ScintillaEditBase::showEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HideEvent = 0;
+	intptr_t handle__hideEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void hideEvent(QHideEvent* event) override {
-		if (handle__HideEvent == 0) {
+		if (handle__hideEvent == 0) {
 			ScintillaEditBase::hideEvent(event);
 			return;
 		}
 		
 		QHideEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_HideEvent(this, handle__HideEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_hideEvent(this, handle__hideEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_HideEvent(QHideEvent* event) {
+	void virtualbase_hideEvent(QHideEvent* event) {
 
 		ScintillaEditBase::hideEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__NativeEvent = 0;
+	intptr_t handle__nativeEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool nativeEvent(const QByteArray& eventType, void* message, long* result) override {
-		if (handle__NativeEvent == 0) {
+		if (handle__nativeEvent == 0) {
 			return ScintillaEditBase::nativeEvent(eventType, message, result);
 		}
 		
@@ -3576,13 +3576,13 @@ public:
 		void* sigval2 = message;
 		long* sigval3 = result;
 
-		bool callback_return_value = miqt_exec_callback_ScintillaEditBase_NativeEvent(this, handle__NativeEvent, sigval1, sigval2, sigval3);
+		bool callback_return_value = miqt_exec_callback_ScintillaEditBase_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, long* result) {
+	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, long* result) {
 		QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
 		return ScintillaEditBase::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
@@ -3590,199 +3590,199 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Metric = 0;
+	intptr_t handle__metric = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int metric(QPaintDevice::PaintDeviceMetric param1) const override {
-		if (handle__Metric == 0) {
+		if (handle__metric == 0) {
 			return ScintillaEditBase::metric(param1);
 		}
 		
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_ScintillaEditBase_Metric(this, handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_ScintillaEditBase_metric(this, handle__metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_Metric(int param1) const {
+	int virtualbase_metric(int param1) const {
 
 		return ScintillaEditBase::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InitPainter = 0;
+	intptr_t handle__initPainter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void initPainter(QPainter* painter) const override {
-		if (handle__InitPainter == 0) {
+		if (handle__initPainter == 0) {
 			ScintillaEditBase::initPainter(painter);
 			return;
 		}
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_ScintillaEditBase_InitPainter(this, handle__InitPainter, sigval1);
+		miqt_exec_callback_ScintillaEditBase_initPainter(this, handle__initPainter, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_InitPainter(QPainter* painter) const {
+	void virtualbase_initPainter(QPainter* painter) const {
 
 		ScintillaEditBase::initPainter(painter);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Redirected = 0;
+	intptr_t handle__redirected = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QPaintDevice* redirected(QPoint* offset) const override {
-		if (handle__Redirected == 0) {
+		if (handle__redirected == 0) {
 			return ScintillaEditBase::redirected(offset);
 		}
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_ScintillaEditBase_Redirected(this, handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_ScintillaEditBase_redirected(this, handle__redirected, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_Redirected(QPoint* offset) const {
+	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
 
 		return ScintillaEditBase::redirected(offset);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SharedPainter = 0;
+	intptr_t handle__sharedPainter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QPainter* sharedPainter() const override {
-		if (handle__SharedPainter == 0) {
+		if (handle__sharedPainter == 0) {
 			return ScintillaEditBase::sharedPainter();
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_ScintillaEditBase_SharedPainter(this, handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_ScintillaEditBase_sharedPainter(this, handle__sharedPainter);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QPainter* virtualbase_SharedPainter() const {
+	QPainter* virtualbase_sharedPainter() const {
 
 		return ScintillaEditBase::sharedPainter();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__FocusNextPrevChild = 0;
+	intptr_t handle__focusNextPrevChild = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool focusNextPrevChild(bool next) override {
-		if (handle__FocusNextPrevChild == 0) {
+		if (handle__focusNextPrevChild == 0) {
 			return ScintillaEditBase::focusNextPrevChild(next);
 		}
 		
 		bool sigval1 = next;
 
-		bool callback_return_value = miqt_exec_callback_ScintillaEditBase_FocusNextPrevChild(this, handle__FocusNextPrevChild, sigval1);
+		bool callback_return_value = miqt_exec_callback_ScintillaEditBase_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_FocusNextPrevChild(bool next) {
+	bool virtualbase_focusNextPrevChild(bool next) {
 
 		return ScintillaEditBase::focusNextPrevChild(next);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			ScintillaEditBase::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		ScintillaEditBase::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			ScintillaEditBase::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		ScintillaEditBase::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			ScintillaEditBase::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEditBase_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_ScintillaEditBase_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		ScintillaEditBase::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			ScintillaEditBase::connectNotify(signal);
 			return;
 		}
@@ -3791,24 +3791,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_ScintillaEditBase_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_ScintillaEditBase_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		ScintillaEditBase::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			ScintillaEditBase::disconnectNotify(signal);
 			return;
 		}
@@ -3817,13 +3817,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_ScintillaEditBase_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_ScintillaEditBase_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		ScintillaEditBase::disconnectNotify(*signal);
 
@@ -3843,15 +3843,15 @@ void ScintillaEditBase_virtbase(ScintillaEditBase* src, QAbstractScrollArea** ou
 	*outptr_QAbstractScrollArea = static_cast<QAbstractScrollArea*>(src);
 }
 
-QMetaObject* ScintillaEditBase_MetaObject(const ScintillaEditBase* self) {
+QMetaObject* ScintillaEditBase_metaObject(const ScintillaEditBase* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* ScintillaEditBase_Metacast(ScintillaEditBase* self, const char* param1) {
+void* ScintillaEditBase_metacast(ScintillaEditBase* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string ScintillaEditBase_Tr(const char* s) {
+struct miqt_string ScintillaEditBase_tr(const char* s) {
 	QString _ret = ScintillaEditBase::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -3862,7 +3862,7 @@ struct miqt_string ScintillaEditBase_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string ScintillaEditBase_TrUtf8(const char* s) {
+struct miqt_string ScintillaEditBase_trUtf8(const char* s) {
 	QString _ret = ScintillaEditBase::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -3873,201 +3873,201 @@ struct miqt_string ScintillaEditBase_TrUtf8(const char* s) {
 	return _ms;
 }
 
-intptr_t ScintillaEditBase_Send(const ScintillaEditBase* self, unsigned int iMessage, uintptr_t wParam, intptr_t lParam) {
+intptr_t ScintillaEditBase_send(const ScintillaEditBase* self, unsigned int iMessage, uintptr_t wParam, intptr_t lParam) {
 	sptr_t _ret = self->send(static_cast<unsigned int>(iMessage), static_cast<uptr_t>(wParam), static_cast<sptr_t>(lParam));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEditBase_Sends(const ScintillaEditBase* self, unsigned int iMessage, uintptr_t wParam, const char* s) {
+intptr_t ScintillaEditBase_sends(const ScintillaEditBase* self, unsigned int iMessage, uintptr_t wParam, const char* s) {
 	sptr_t _ret = self->sends(static_cast<unsigned int>(iMessage), static_cast<uptr_t>(wParam), s);
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEditBase_ScrollHorizontal(ScintillaEditBase* self, int value) {
+void ScintillaEditBase_scrollHorizontal(ScintillaEditBase* self, int value) {
 	self->scrollHorizontal(static_cast<int>(value));
 }
 
-void ScintillaEditBase_ScrollVertical(ScintillaEditBase* self, int value) {
+void ScintillaEditBase_scrollVertical(ScintillaEditBase* self, int value) {
 	self->scrollVertical(static_cast<int>(value));
 }
 
-void ScintillaEditBase_NotifyParent(ScintillaEditBase* self, Scintilla__NotificationData* scn) {
+void ScintillaEditBase_notifyParent(ScintillaEditBase* self, Scintilla__NotificationData* scn) {
 	self->notifyParent(*scn);
 }
 
-void ScintillaEditBase_EventCommand(ScintillaEditBase* self, uintptr_t wParam, intptr_t lParam) {
+void ScintillaEditBase_eventCommand(ScintillaEditBase* self, uintptr_t wParam, intptr_t lParam) {
 	self->event_command(static_cast<Scintilla::uptr_t>(wParam), static_cast<Scintilla::sptr_t>(lParam));
 }
 
-void ScintillaEditBase_HorizontalScrolled(ScintillaEditBase* self, int value) {
+void ScintillaEditBase_horizontalScrolled(ScintillaEditBase* self, int value) {
 	self->horizontalScrolled(static_cast<int>(value));
 }
 
-void ScintillaEditBase_connect_HorizontalScrolled(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_horizontalScrolled(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int)>(&ScintillaEditBase::horizontalScrolled), self, [=](int value) {
 		int sigval1 = value;
-		miqt_exec_callback_ScintillaEditBase_HorizontalScrolled(slot, sigval1);
+		miqt_exec_callback_ScintillaEditBase_horizontalScrolled(slot, sigval1);
 	});
 }
 
-void ScintillaEditBase_VerticalScrolled(ScintillaEditBase* self, int value) {
+void ScintillaEditBase_verticalScrolled(ScintillaEditBase* self, int value) {
 	self->verticalScrolled(static_cast<int>(value));
 }
 
-void ScintillaEditBase_connect_VerticalScrolled(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_verticalScrolled(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int)>(&ScintillaEditBase::verticalScrolled), self, [=](int value) {
 		int sigval1 = value;
-		miqt_exec_callback_ScintillaEditBase_VerticalScrolled(slot, sigval1);
+		miqt_exec_callback_ScintillaEditBase_verticalScrolled(slot, sigval1);
 	});
 }
 
-void ScintillaEditBase_HorizontalRangeChanged(ScintillaEditBase* self, int max, int page) {
+void ScintillaEditBase_horizontalRangeChanged(ScintillaEditBase* self, int max, int page) {
 	self->horizontalRangeChanged(static_cast<int>(max), static_cast<int>(page));
 }
 
-void ScintillaEditBase_connect_HorizontalRangeChanged(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_horizontalRangeChanged(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int, int)>(&ScintillaEditBase::horizontalRangeChanged), self, [=](int max, int page) {
 		int sigval1 = max;
 		int sigval2 = page;
-		miqt_exec_callback_ScintillaEditBase_HorizontalRangeChanged(slot, sigval1, sigval2);
+		miqt_exec_callback_ScintillaEditBase_horizontalRangeChanged(slot, sigval1, sigval2);
 	});
 }
 
-void ScintillaEditBase_VerticalRangeChanged(ScintillaEditBase* self, int max, int page) {
+void ScintillaEditBase_verticalRangeChanged(ScintillaEditBase* self, int max, int page) {
 	self->verticalRangeChanged(static_cast<int>(max), static_cast<int>(page));
 }
 
-void ScintillaEditBase_connect_VerticalRangeChanged(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_verticalRangeChanged(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int, int)>(&ScintillaEditBase::verticalRangeChanged), self, [=](int max, int page) {
 		int sigval1 = max;
 		int sigval2 = page;
-		miqt_exec_callback_ScintillaEditBase_VerticalRangeChanged(slot, sigval1, sigval2);
+		miqt_exec_callback_ScintillaEditBase_verticalRangeChanged(slot, sigval1, sigval2);
 	});
 }
 
-void ScintillaEditBase_NotifyChange(ScintillaEditBase* self) {
+void ScintillaEditBase_notifyChange(ScintillaEditBase* self) {
 	self->notifyChange();
 }
 
-void ScintillaEditBase_connect_NotifyChange(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_notifyChange(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::notifyChange), self, [=]() {
-		miqt_exec_callback_ScintillaEditBase_NotifyChange(slot);
+		miqt_exec_callback_ScintillaEditBase_notifyChange(slot);
 	});
 }
 
-void ScintillaEditBase_LinesAdded(ScintillaEditBase* self, intptr_t linesAdded) {
+void ScintillaEditBase_linesAdded(ScintillaEditBase* self, intptr_t linesAdded) {
 	self->linesAdded(static_cast<Scintilla::Position>(linesAdded));
 }
 
-void ScintillaEditBase_connect_LinesAdded(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_linesAdded(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position)>(&ScintillaEditBase::linesAdded), self, [=](Scintilla::Position linesAdded) {
 		Scintilla::Position linesAdded_ret = linesAdded;
 		intptr_t sigval1 = static_cast<intptr_t>(linesAdded_ret);
-		miqt_exec_callback_ScintillaEditBase_LinesAdded(slot, sigval1);
+		miqt_exec_callback_ScintillaEditBase_linesAdded(slot, sigval1);
 	});
 }
 
-void ScintillaEditBase_AboutToCopy(ScintillaEditBase* self, QMimeData* data) {
+void ScintillaEditBase_aboutToCopy(ScintillaEditBase* self, QMimeData* data) {
 	self->aboutToCopy(data);
 }
 
-void ScintillaEditBase_connect_AboutToCopy(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_aboutToCopy(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(QMimeData*)>(&ScintillaEditBase::aboutToCopy), self, [=](QMimeData* data) {
 		QMimeData* sigval1 = data;
-		miqt_exec_callback_ScintillaEditBase_AboutToCopy(slot, sigval1);
+		miqt_exec_callback_ScintillaEditBase_aboutToCopy(slot, sigval1);
 	});
 }
 
-void ScintillaEditBase_StyleNeeded(ScintillaEditBase* self, intptr_t position) {
+void ScintillaEditBase_styleNeeded(ScintillaEditBase* self, intptr_t position) {
 	self->styleNeeded(static_cast<Scintilla::Position>(position));
 }
 
-void ScintillaEditBase_connect_StyleNeeded(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_styleNeeded(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position)>(&ScintillaEditBase::styleNeeded), self, [=](Scintilla::Position position) {
 		Scintilla::Position position_ret = position;
 		intptr_t sigval1 = static_cast<intptr_t>(position_ret);
-		miqt_exec_callback_ScintillaEditBase_StyleNeeded(slot, sigval1);
+		miqt_exec_callback_ScintillaEditBase_styleNeeded(slot, sigval1);
 	});
 }
 
-void ScintillaEditBase_CharAdded(ScintillaEditBase* self, int ch) {
+void ScintillaEditBase_charAdded(ScintillaEditBase* self, int ch) {
 	self->charAdded(static_cast<int>(ch));
 }
 
-void ScintillaEditBase_connect_CharAdded(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_charAdded(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int)>(&ScintillaEditBase::charAdded), self, [=](int ch) {
 		int sigval1 = ch;
-		miqt_exec_callback_ScintillaEditBase_CharAdded(slot, sigval1);
+		miqt_exec_callback_ScintillaEditBase_charAdded(slot, sigval1);
 	});
 }
 
-void ScintillaEditBase_SavePointChanged(ScintillaEditBase* self, bool dirty) {
+void ScintillaEditBase_savePointChanged(ScintillaEditBase* self, bool dirty) {
 	self->savePointChanged(dirty);
 }
 
-void ScintillaEditBase_connect_SavePointChanged(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_savePointChanged(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(bool)>(&ScintillaEditBase::savePointChanged), self, [=](bool dirty) {
 		bool sigval1 = dirty;
-		miqt_exec_callback_ScintillaEditBase_SavePointChanged(slot, sigval1);
+		miqt_exec_callback_ScintillaEditBase_savePointChanged(slot, sigval1);
 	});
 }
 
-void ScintillaEditBase_ModifyAttemptReadOnly(ScintillaEditBase* self) {
+void ScintillaEditBase_modifyAttemptReadOnly(ScintillaEditBase* self) {
 	self->modifyAttemptReadOnly();
 }
 
-void ScintillaEditBase_connect_ModifyAttemptReadOnly(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_modifyAttemptReadOnly(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::modifyAttemptReadOnly), self, [=]() {
-		miqt_exec_callback_ScintillaEditBase_ModifyAttemptReadOnly(slot);
+		miqt_exec_callback_ScintillaEditBase_modifyAttemptReadOnly(slot);
 	});
 }
 
-void ScintillaEditBase_Key(ScintillaEditBase* self, int key) {
+void ScintillaEditBase_key(ScintillaEditBase* self, int key) {
 	self->key(static_cast<int>(key));
 }
 
-void ScintillaEditBase_connect_Key(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_key(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int)>(&ScintillaEditBase::key), self, [=](int key) {
 		int sigval1 = key;
-		miqt_exec_callback_ScintillaEditBase_Key(slot, sigval1);
+		miqt_exec_callback_ScintillaEditBase_key(slot, sigval1);
 	});
 }
 
-void ScintillaEditBase_DoubleClick(ScintillaEditBase* self, intptr_t position, intptr_t line) {
+void ScintillaEditBase_doubleClick(ScintillaEditBase* self, intptr_t position, intptr_t line) {
 	self->doubleClick(static_cast<Scintilla::Position>(position), static_cast<Scintilla::Position>(line));
 }
 
-void ScintillaEditBase_connect_DoubleClick(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_doubleClick(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, Scintilla::Position)>(&ScintillaEditBase::doubleClick), self, [=](Scintilla::Position position, Scintilla::Position line) {
 		Scintilla::Position position_ret = position;
 		intptr_t sigval1 = static_cast<intptr_t>(position_ret);
 		Scintilla::Position line_ret = line;
 		intptr_t sigval2 = static_cast<intptr_t>(line_ret);
-		miqt_exec_callback_ScintillaEditBase_DoubleClick(slot, sigval1, sigval2);
+		miqt_exec_callback_ScintillaEditBase_doubleClick(slot, sigval1, sigval2);
 	});
 }
 
-void ScintillaEditBase_UpdateUi(ScintillaEditBase* self, int updated) {
+void ScintillaEditBase_updateUi(ScintillaEditBase* self, int updated) {
 	self->updateUi(static_cast<Scintilla::Update>(updated));
 }
 
-void ScintillaEditBase_connect_UpdateUi(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_updateUi(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Update)>(&ScintillaEditBase::updateUi), self, [=](Scintilla::Update updated) {
 		Scintilla::Update updated_ret = updated;
 		int sigval1 = static_cast<int>(updated_ret);
-		miqt_exec_callback_ScintillaEditBase_UpdateUi(slot, sigval1);
+		miqt_exec_callback_ScintillaEditBase_updateUi(slot, sigval1);
 	});
 }
 
-void ScintillaEditBase_Modified(ScintillaEditBase* self, int typeVal, intptr_t position, intptr_t length, intptr_t linesAdded, struct miqt_string text, intptr_t line, int foldNow, int foldPrev) {
+void ScintillaEditBase_modified(ScintillaEditBase* self, int type, intptr_t position, intptr_t length, intptr_t linesAdded, struct miqt_string text, intptr_t line, int foldNow, int foldPrev) {
 	QByteArray text_QByteArray(text.data, text.len);
-	self->modified(static_cast<Scintilla::ModificationFlags>(typeVal), static_cast<Scintilla::Position>(position), static_cast<Scintilla::Position>(length), static_cast<Scintilla::Position>(linesAdded), text_QByteArray, static_cast<Scintilla::Position>(line), static_cast<Scintilla::FoldLevel>(foldNow), static_cast<Scintilla::FoldLevel>(foldPrev));
+	self->modified(static_cast<Scintilla::ModificationFlags>(type), static_cast<Scintilla::Position>(position), static_cast<Scintilla::Position>(length), static_cast<Scintilla::Position>(linesAdded), text_QByteArray, static_cast<Scintilla::Position>(line), static_cast<Scintilla::FoldLevel>(foldNow), static_cast<Scintilla::FoldLevel>(foldPrev));
 }
 
-void ScintillaEditBase_connect_Modified(ScintillaEditBase* self, intptr_t slot) {
-	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::ModificationFlags, Scintilla::Position, Scintilla::Position, Scintilla::Position, const QByteArray&, Scintilla::Position, Scintilla::FoldLevel, Scintilla::FoldLevel)>(&ScintillaEditBase::modified), self, [=](Scintilla::ModificationFlags typeVal, Scintilla::Position position, Scintilla::Position length, Scintilla::Position linesAdded, const QByteArray& text, Scintilla::Position line, Scintilla::FoldLevel foldNow, Scintilla::FoldLevel foldPrev) {
-		Scintilla::ModificationFlags typeVal_ret = typeVal;
-		int sigval1 = static_cast<int>(typeVal_ret);
+void ScintillaEditBase_connect_modified(ScintillaEditBase* self, intptr_t slot) {
+	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::ModificationFlags, Scintilla::Position, Scintilla::Position, Scintilla::Position, const QByteArray&, Scintilla::Position, Scintilla::FoldLevel, Scintilla::FoldLevel)>(&ScintillaEditBase::modified), self, [=](Scintilla::ModificationFlags type, Scintilla::Position position, Scintilla::Position length, Scintilla::Position linesAdded, const QByteArray& text, Scintilla::Position line, Scintilla::FoldLevel foldNow, Scintilla::FoldLevel foldPrev) {
+		Scintilla::ModificationFlags type_ret = type;
+		int sigval1 = static_cast<int>(type_ret);
 		Scintilla::Position position_ret = position;
 		intptr_t sigval2 = static_cast<intptr_t>(position_ret);
 		Scintilla::Position length_ret = length;
@@ -4086,15 +4086,15 @@ void ScintillaEditBase_connect_Modified(ScintillaEditBase* self, intptr_t slot) 
 		int sigval7 = static_cast<int>(foldNow_ret);
 		Scintilla::FoldLevel foldPrev_ret = foldPrev;
 		int sigval8 = static_cast<int>(foldPrev_ret);
-		miqt_exec_callback_ScintillaEditBase_Modified(slot, sigval1, sigval2, sigval3, sigval4, sigval5, sigval6, sigval7, sigval8);
+		miqt_exec_callback_ScintillaEditBase_modified(slot, sigval1, sigval2, sigval3, sigval4, sigval5, sigval6, sigval7, sigval8);
 	});
 }
 
-void ScintillaEditBase_MacroRecord(ScintillaEditBase* self, int message, uintptr_t wParam, intptr_t lParam) {
+void ScintillaEditBase_macroRecord(ScintillaEditBase* self, int message, uintptr_t wParam, intptr_t lParam) {
 	self->macroRecord(static_cast<Scintilla::Message>(message), static_cast<Scintilla::uptr_t>(wParam), static_cast<Scintilla::sptr_t>(lParam));
 }
 
-void ScintillaEditBase_connect_MacroRecord(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_macroRecord(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Message, Scintilla::uptr_t, Scintilla::sptr_t)>(&ScintillaEditBase::macroRecord), self, [=](Scintilla::Message message, Scintilla::uptr_t wParam, Scintilla::sptr_t lParam) {
 		Scintilla::Message message_ret = message;
 		int sigval1 = static_cast<int>(message_ret);
@@ -4102,78 +4102,78 @@ void ScintillaEditBase_connect_MacroRecord(ScintillaEditBase* self, intptr_t slo
 		uintptr_t sigval2 = static_cast<uintptr_t>(wParam_ret);
 		Scintilla::sptr_t lParam_ret = lParam;
 		intptr_t sigval3 = static_cast<intptr_t>(lParam_ret);
-		miqt_exec_callback_ScintillaEditBase_MacroRecord(slot, sigval1, sigval2, sigval3);
+		miqt_exec_callback_ScintillaEditBase_macroRecord(slot, sigval1, sigval2, sigval3);
 	});
 }
 
-void ScintillaEditBase_MarginClicked(ScintillaEditBase* self, intptr_t position, int modifiers, int margin) {
+void ScintillaEditBase_marginClicked(ScintillaEditBase* self, intptr_t position, int modifiers, int margin) {
 	self->marginClicked(static_cast<Scintilla::Position>(position), static_cast<Scintilla::KeyMod>(modifiers), static_cast<int>(margin));
 }
 
-void ScintillaEditBase_connect_MarginClicked(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_marginClicked(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, Scintilla::KeyMod, int)>(&ScintillaEditBase::marginClicked), self, [=](Scintilla::Position position, Scintilla::KeyMod modifiers, int margin) {
 		Scintilla::Position position_ret = position;
 		intptr_t sigval1 = static_cast<intptr_t>(position_ret);
 		Scintilla::KeyMod modifiers_ret = modifiers;
 		int sigval2 = static_cast<int>(modifiers_ret);
 		int sigval3 = margin;
-		miqt_exec_callback_ScintillaEditBase_MarginClicked(slot, sigval1, sigval2, sigval3);
+		miqt_exec_callback_ScintillaEditBase_marginClicked(slot, sigval1, sigval2, sigval3);
 	});
 }
 
-void ScintillaEditBase_TextAreaClicked(ScintillaEditBase* self, intptr_t line, int modifiers) {
+void ScintillaEditBase_textAreaClicked(ScintillaEditBase* self, intptr_t line, int modifiers) {
 	self->textAreaClicked(static_cast<Scintilla::Position>(line), static_cast<int>(modifiers));
 }
 
-void ScintillaEditBase_connect_TextAreaClicked(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_textAreaClicked(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, int)>(&ScintillaEditBase::textAreaClicked), self, [=](Scintilla::Position line, int modifiers) {
 		Scintilla::Position line_ret = line;
 		intptr_t sigval1 = static_cast<intptr_t>(line_ret);
 		int sigval2 = modifiers;
-		miqt_exec_callback_ScintillaEditBase_TextAreaClicked(slot, sigval1, sigval2);
+		miqt_exec_callback_ScintillaEditBase_textAreaClicked(slot, sigval1, sigval2);
 	});
 }
 
-void ScintillaEditBase_NeedShown(ScintillaEditBase* self, intptr_t position, intptr_t length) {
+void ScintillaEditBase_needShown(ScintillaEditBase* self, intptr_t position, intptr_t length) {
 	self->needShown(static_cast<Scintilla::Position>(position), static_cast<Scintilla::Position>(length));
 }
 
-void ScintillaEditBase_connect_NeedShown(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_needShown(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, Scintilla::Position)>(&ScintillaEditBase::needShown), self, [=](Scintilla::Position position, Scintilla::Position length) {
 		Scintilla::Position position_ret = position;
 		intptr_t sigval1 = static_cast<intptr_t>(position_ret);
 		Scintilla::Position length_ret = length;
 		intptr_t sigval2 = static_cast<intptr_t>(length_ret);
-		miqt_exec_callback_ScintillaEditBase_NeedShown(slot, sigval1, sigval2);
+		miqt_exec_callback_ScintillaEditBase_needShown(slot, sigval1, sigval2);
 	});
 }
 
-void ScintillaEditBase_Painted(ScintillaEditBase* self) {
+void ScintillaEditBase_painted(ScintillaEditBase* self) {
 	self->painted();
 }
 
-void ScintillaEditBase_connect_Painted(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_painted(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::painted), self, [=]() {
-		miqt_exec_callback_ScintillaEditBase_Painted(slot);
+		miqt_exec_callback_ScintillaEditBase_painted(slot);
 	});
 }
 
-void ScintillaEditBase_UserListSelection(ScintillaEditBase* self) {
+void ScintillaEditBase_userListSelection(ScintillaEditBase* self) {
 	self->userListSelection();
 }
 
-void ScintillaEditBase_connect_UserListSelection(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_userListSelection(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::userListSelection), self, [=]() {
-		miqt_exec_callback_ScintillaEditBase_UserListSelection(slot);
+		miqt_exec_callback_ScintillaEditBase_userListSelection(slot);
 	});
 }
 
-void ScintillaEditBase_UriDropped(ScintillaEditBase* self, struct miqt_string uri) {
+void ScintillaEditBase_uriDropped(ScintillaEditBase* self, struct miqt_string uri) {
 	QString uri_QString = QString::fromUtf8(uri.data, uri.len);
 	self->uriDropped(uri_QString);
 }
 
-void ScintillaEditBase_connect_UriDropped(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_uriDropped(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(const QString&)>(&ScintillaEditBase::uriDropped), self, [=](const QString& uri) {
 		const QString uri_ret = uri;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -4183,89 +4183,89 @@ void ScintillaEditBase_connect_UriDropped(ScintillaEditBase* self, intptr_t slot
 		uri_ms.data = static_cast<char*>(malloc(uri_ms.len));
 		memcpy(uri_ms.data, uri_b.data(), uri_ms.len);
 		struct miqt_string sigval1 = uri_ms;
-		miqt_exec_callback_ScintillaEditBase_UriDropped(slot, sigval1);
+		miqt_exec_callback_ScintillaEditBase_uriDropped(slot, sigval1);
 	});
 }
 
-void ScintillaEditBase_DwellStart(ScintillaEditBase* self, int x, int y) {
+void ScintillaEditBase_dwellStart(ScintillaEditBase* self, int x, int y) {
 	self->dwellStart(static_cast<int>(x), static_cast<int>(y));
 }
 
-void ScintillaEditBase_connect_DwellStart(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_dwellStart(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int, int)>(&ScintillaEditBase::dwellStart), self, [=](int x, int y) {
 		int sigval1 = x;
 		int sigval2 = y;
-		miqt_exec_callback_ScintillaEditBase_DwellStart(slot, sigval1, sigval2);
+		miqt_exec_callback_ScintillaEditBase_dwellStart(slot, sigval1, sigval2);
 	});
 }
 
-void ScintillaEditBase_DwellEnd(ScintillaEditBase* self, int x, int y) {
+void ScintillaEditBase_dwellEnd(ScintillaEditBase* self, int x, int y) {
 	self->dwellEnd(static_cast<int>(x), static_cast<int>(y));
 }
 
-void ScintillaEditBase_connect_DwellEnd(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_dwellEnd(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int, int)>(&ScintillaEditBase::dwellEnd), self, [=](int x, int y) {
 		int sigval1 = x;
 		int sigval2 = y;
-		miqt_exec_callback_ScintillaEditBase_DwellEnd(slot, sigval1, sigval2);
+		miqt_exec_callback_ScintillaEditBase_dwellEnd(slot, sigval1, sigval2);
 	});
 }
 
-void ScintillaEditBase_Zoom(ScintillaEditBase* self, int zoom) {
+void ScintillaEditBase_zoom(ScintillaEditBase* self, int zoom) {
 	self->zoom(static_cast<int>(zoom));
 }
 
-void ScintillaEditBase_connect_Zoom(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_zoom(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(int)>(&ScintillaEditBase::zoom), self, [=](int zoom) {
 		int sigval1 = zoom;
-		miqt_exec_callback_ScintillaEditBase_Zoom(slot, sigval1);
+		miqt_exec_callback_ScintillaEditBase_zoom(slot, sigval1);
 	});
 }
 
-void ScintillaEditBase_HotSpotClick(ScintillaEditBase* self, intptr_t position, int modifiers) {
+void ScintillaEditBase_hotSpotClick(ScintillaEditBase* self, intptr_t position, int modifiers) {
 	self->hotSpotClick(static_cast<Scintilla::Position>(position), static_cast<Scintilla::KeyMod>(modifiers));
 }
 
-void ScintillaEditBase_connect_HotSpotClick(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_hotSpotClick(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, Scintilla::KeyMod)>(&ScintillaEditBase::hotSpotClick), self, [=](Scintilla::Position position, Scintilla::KeyMod modifiers) {
 		Scintilla::Position position_ret = position;
 		intptr_t sigval1 = static_cast<intptr_t>(position_ret);
 		Scintilla::KeyMod modifiers_ret = modifiers;
 		int sigval2 = static_cast<int>(modifiers_ret);
-		miqt_exec_callback_ScintillaEditBase_HotSpotClick(slot, sigval1, sigval2);
+		miqt_exec_callback_ScintillaEditBase_hotSpotClick(slot, sigval1, sigval2);
 	});
 }
 
-void ScintillaEditBase_HotSpotDoubleClick(ScintillaEditBase* self, intptr_t position, int modifiers) {
+void ScintillaEditBase_hotSpotDoubleClick(ScintillaEditBase* self, intptr_t position, int modifiers) {
 	self->hotSpotDoubleClick(static_cast<Scintilla::Position>(position), static_cast<Scintilla::KeyMod>(modifiers));
 }
 
-void ScintillaEditBase_connect_HotSpotDoubleClick(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_hotSpotDoubleClick(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, Scintilla::KeyMod)>(&ScintillaEditBase::hotSpotDoubleClick), self, [=](Scintilla::Position position, Scintilla::KeyMod modifiers) {
 		Scintilla::Position position_ret = position;
 		intptr_t sigval1 = static_cast<intptr_t>(position_ret);
 		Scintilla::KeyMod modifiers_ret = modifiers;
 		int sigval2 = static_cast<int>(modifiers_ret);
-		miqt_exec_callback_ScintillaEditBase_HotSpotDoubleClick(slot, sigval1, sigval2);
+		miqt_exec_callback_ScintillaEditBase_hotSpotDoubleClick(slot, sigval1, sigval2);
 	});
 }
 
-void ScintillaEditBase_CallTipClick(ScintillaEditBase* self) {
+void ScintillaEditBase_callTipClick(ScintillaEditBase* self) {
 	self->callTipClick();
 }
 
-void ScintillaEditBase_connect_CallTipClick(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_callTipClick(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::callTipClick), self, [=]() {
-		miqt_exec_callback_ScintillaEditBase_CallTipClick(slot);
+		miqt_exec_callback_ScintillaEditBase_callTipClick(slot);
 	});
 }
 
-void ScintillaEditBase_AutoCompleteSelection(ScintillaEditBase* self, intptr_t position, struct miqt_string text) {
+void ScintillaEditBase_autoCompleteSelection(ScintillaEditBase* self, intptr_t position, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->autoCompleteSelection(static_cast<Scintilla::Position>(position), text_QString);
 }
 
-void ScintillaEditBase_connect_AutoCompleteSelection(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_autoCompleteSelection(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::Position, const QString&)>(&ScintillaEditBase::autoCompleteSelection), self, [=](Scintilla::Position position, const QString& text) {
 		Scintilla::Position position_ret = position;
 		intptr_t sigval1 = static_cast<intptr_t>(position_ret);
@@ -4277,100 +4277,100 @@ void ScintillaEditBase_connect_AutoCompleteSelection(ScintillaEditBase* self, in
 		text_ms.data = static_cast<char*>(malloc(text_ms.len));
 		memcpy(text_ms.data, text_b.data(), text_ms.len);
 		struct miqt_string sigval2 = text_ms;
-		miqt_exec_callback_ScintillaEditBase_AutoCompleteSelection(slot, sigval1, sigval2);
+		miqt_exec_callback_ScintillaEditBase_autoCompleteSelection(slot, sigval1, sigval2);
 	});
 }
 
-void ScintillaEditBase_AutoCompleteCancelled(ScintillaEditBase* self) {
+void ScintillaEditBase_autoCompleteCancelled(ScintillaEditBase* self) {
 	self->autoCompleteCancelled();
 }
 
-void ScintillaEditBase_connect_AutoCompleteCancelled(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_autoCompleteCancelled(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::autoCompleteCancelled), self, [=]() {
-		miqt_exec_callback_ScintillaEditBase_AutoCompleteCancelled(slot);
+		miqt_exec_callback_ScintillaEditBase_autoCompleteCancelled(slot);
 	});
 }
 
-void ScintillaEditBase_FocusChanged(ScintillaEditBase* self, bool focused) {
+void ScintillaEditBase_focusChanged(ScintillaEditBase* self, bool focused) {
 	self->focusChanged(focused);
 }
 
-void ScintillaEditBase_connect_FocusChanged(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_focusChanged(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(bool)>(&ScintillaEditBase::focusChanged), self, [=](bool focused) {
 		bool sigval1 = focused;
-		miqt_exec_callback_ScintillaEditBase_FocusChanged(slot, sigval1);
+		miqt_exec_callback_ScintillaEditBase_focusChanged(slot, sigval1);
 	});
 }
 
-void ScintillaEditBase_Notify(ScintillaEditBase* self, Scintilla__NotificationData* pscn) {
+void ScintillaEditBase_notify(ScintillaEditBase* self, Scintilla__NotificationData* pscn) {
 	self->notify(pscn);
 }
 
-void ScintillaEditBase_connect_Notify(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_notify(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::NotificationData*)>(&ScintillaEditBase::notify), self, [=](Scintilla::NotificationData* pscn) {
 		Scintilla__NotificationData* sigval1 = pscn;
-		miqt_exec_callback_ScintillaEditBase_Notify(slot, sigval1);
+		miqt_exec_callback_ScintillaEditBase_notify(slot, sigval1);
 	});
 }
 
-void ScintillaEditBase_Command(ScintillaEditBase* self, uintptr_t wParam, intptr_t lParam) {
+void ScintillaEditBase_command(ScintillaEditBase* self, uintptr_t wParam, intptr_t lParam) {
 	self->command(static_cast<Scintilla::uptr_t>(wParam), static_cast<Scintilla::sptr_t>(lParam));
 }
 
-void ScintillaEditBase_connect_Command(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_command(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(Scintilla::uptr_t, Scintilla::sptr_t)>(&ScintillaEditBase::command), self, [=](Scintilla::uptr_t wParam, Scintilla::sptr_t lParam) {
 		Scintilla::uptr_t wParam_ret = wParam;
 		uintptr_t sigval1 = static_cast<uintptr_t>(wParam_ret);
 		Scintilla::sptr_t lParam_ret = lParam;
 		intptr_t sigval2 = static_cast<intptr_t>(lParam_ret);
-		miqt_exec_callback_ScintillaEditBase_Command(slot, sigval1, sigval2);
+		miqt_exec_callback_ScintillaEditBase_command(slot, sigval1, sigval2);
 	});
 }
 
-void ScintillaEditBase_ButtonPressed(ScintillaEditBase* self, QMouseEvent* event) {
+void ScintillaEditBase_buttonPressed(ScintillaEditBase* self, QMouseEvent* event) {
 	self->buttonPressed(event);
 }
 
-void ScintillaEditBase_connect_ButtonPressed(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_buttonPressed(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(QMouseEvent*)>(&ScintillaEditBase::buttonPressed), self, [=](QMouseEvent* event) {
 		QMouseEvent* sigval1 = event;
-		miqt_exec_callback_ScintillaEditBase_ButtonPressed(slot, sigval1);
+		miqt_exec_callback_ScintillaEditBase_buttonPressed(slot, sigval1);
 	});
 }
 
-void ScintillaEditBase_ButtonReleased(ScintillaEditBase* self, QMouseEvent* event) {
+void ScintillaEditBase_buttonReleased(ScintillaEditBase* self, QMouseEvent* event) {
 	self->buttonReleased(event);
 }
 
-void ScintillaEditBase_connect_ButtonReleased(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_buttonReleased(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(QMouseEvent*)>(&ScintillaEditBase::buttonReleased), self, [=](QMouseEvent* event) {
 		QMouseEvent* sigval1 = event;
-		miqt_exec_callback_ScintillaEditBase_ButtonReleased(slot, sigval1);
+		miqt_exec_callback_ScintillaEditBase_buttonReleased(slot, sigval1);
 	});
 }
 
-void ScintillaEditBase_KeyPressed(ScintillaEditBase* self, QKeyEvent* event) {
+void ScintillaEditBase_keyPressed(ScintillaEditBase* self, QKeyEvent* event) {
 	self->keyPressed(event);
 }
 
-void ScintillaEditBase_connect_KeyPressed(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_keyPressed(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)(QKeyEvent*)>(&ScintillaEditBase::keyPressed), self, [=](QKeyEvent* event) {
 		QKeyEvent* sigval1 = event;
-		miqt_exec_callback_ScintillaEditBase_KeyPressed(slot, sigval1);
+		miqt_exec_callback_ScintillaEditBase_keyPressed(slot, sigval1);
 	});
 }
 
-void ScintillaEditBase_Resized(ScintillaEditBase* self) {
+void ScintillaEditBase_resized(ScintillaEditBase* self) {
 	self->resized();
 }
 
-void ScintillaEditBase_connect_Resized(ScintillaEditBase* self, intptr_t slot) {
+void ScintillaEditBase_connect_resized(ScintillaEditBase* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase::connect(self, static_cast<void (ScintillaEditBase::*)()>(&ScintillaEditBase::resized), self, [=]() {
-		miqt_exec_callback_ScintillaEditBase_Resized(slot);
+		miqt_exec_callback_ScintillaEditBase_resized(slot);
 	});
 }
 
-struct miqt_string ScintillaEditBase_Tr2(const char* s, const char* c) {
+struct miqt_string ScintillaEditBase_tr2(const char* s, const char* c) {
 	QString _ret = ScintillaEditBase::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -4381,7 +4381,7 @@ struct miqt_string ScintillaEditBase_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string ScintillaEditBase_Tr3(const char* s, const char* c, int n) {
+struct miqt_string ScintillaEditBase_tr3(const char* s, const char* c, int n) {
 	QString _ret = ScintillaEditBase::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -4392,7 +4392,7 @@ struct miqt_string ScintillaEditBase_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string ScintillaEditBase_TrUtf82(const char* s, const char* c) {
+struct miqt_string ScintillaEditBase_trUtf82(const char* s, const char* c) {
 	QString _ret = ScintillaEditBase::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -4403,7 +4403,7 @@ struct miqt_string ScintillaEditBase_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string ScintillaEditBase_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string ScintillaEditBase_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = ScintillaEditBase::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -4414,749 +4414,749 @@ struct miqt_string ScintillaEditBase_TrUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
-bool ScintillaEditBase_override_virtual_Send(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_send(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Send = slot;
+	self_cast->handle__send = slot;
 	return true;
 }
 
-intptr_t ScintillaEditBase_virtualbase_Send(const void* self, unsigned int iMessage, uintptr_t wParam, intptr_t lParam) {
-	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_Send(iMessage, wParam, lParam);
+intptr_t ScintillaEditBase_virtualbase_send(const void* self, unsigned int iMessage, uintptr_t wParam, intptr_t lParam) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_send(iMessage, wParam, lParam);
 }
 
-bool ScintillaEditBase_override_virtual_Sends(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_sends(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Sends = slot;
+	self_cast->handle__sends = slot;
 	return true;
 }
 
-intptr_t ScintillaEditBase_virtualbase_Sends(const void* self, unsigned int iMessage, uintptr_t wParam, const char* s) {
-	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_Sends(iMessage, wParam, s);
+intptr_t ScintillaEditBase_virtualbase_sends(const void* self, unsigned int iMessage, uintptr_t wParam, const char* s) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_sends(iMessage, wParam, s);
 }
 
-bool ScintillaEditBase_override_virtual_Event(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool ScintillaEditBase_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_Event(event);
+bool ScintillaEditBase_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_event(event);
 }
 
-bool ScintillaEditBase_override_virtual_PaintEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_paintEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__PaintEvent = slot;
+	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_PaintEvent(event);
+void ScintillaEditBase_virtualbase_paintEvent(void* self, QPaintEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_paintEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_WheelEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__WheelEvent = slot;
+	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_WheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_WheelEvent(event);
+void ScintillaEditBase_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_wheelEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__FocusInEvent = slot;
+	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_FocusInEvent(event);
+void ScintillaEditBase_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_focusInEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__FocusOutEvent = slot;
+	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_FocusOutEvent(event);
+void ScintillaEditBase_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_focusOutEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ResizeEvent = slot;
+	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_ResizeEvent(event);
+void ScintillaEditBase_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_resizeEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__KeyPressEvent = slot;
+	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_KeyPressEvent(event);
+void ScintillaEditBase_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_keyPressEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MousePressEvent = slot;
+	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_MousePressEvent(event);
+void ScintillaEditBase_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_mousePressEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MouseReleaseEvent = slot;
+	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_MouseReleaseEvent(event);
+void ScintillaEditBase_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_mouseReleaseEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MouseDoubleClickEvent = slot;
+	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_MouseDoubleClickEvent(event);
+void ScintillaEditBase_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_mouseDoubleClickEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MouseMoveEvent = slot;
+	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_MouseMoveEvent(event);
+void ScintillaEditBase_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_mouseMoveEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ContextMenuEvent = slot;
+	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_ContextMenuEvent(event);
+void ScintillaEditBase_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_contextMenuEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DragEnterEvent = slot;
+	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_DragEnterEvent(event);
+void ScintillaEditBase_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_dragEnterEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DragLeaveEvent = slot;
+	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_DragLeaveEvent(event);
+void ScintillaEditBase_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_dragLeaveEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DragMoveEvent = slot;
+	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_DragMoveEvent(event);
+void ScintillaEditBase_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_dragMoveEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_DropEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_dropEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DropEvent = slot;
+	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_DropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_DropEvent(event);
+void ScintillaEditBase_virtualbase_dropEvent(void* self, QDropEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_dropEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InputMethodEvent = slot;
+	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_InputMethodEvent(event);
+void ScintillaEditBase_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_inputMethodEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InputMethodQuery = slot;
+	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
-QVariant* ScintillaEditBase_virtualbase_InputMethodQuery(const void* self, int query) {
-	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_InputMethodQuery(query);
+QVariant* ScintillaEditBase_virtualbase_inputMethodQuery(const void* self, int query) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_inputMethodQuery(query);
 }
 
-bool ScintillaEditBase_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ScrollContentsBy = slot;
+	self_cast->handle__scrollContentsBy = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_ScrollContentsBy(void* self, int param1, int param2) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_ScrollContentsBy(param1, param2);
+void ScintillaEditBase_virtualbase_scrollContentsBy(void* self, int param1, int param2) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_scrollContentsBy(param1, param2);
 }
 
-bool ScintillaEditBase_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MinimumSizeHint = slot;
+	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
-QSize* ScintillaEditBase_virtualbase_MinimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_MinimumSizeHint();
+QSize* ScintillaEditBase_virtualbase_minimumSizeHint(const void* self) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_minimumSizeHint();
 }
 
-bool ScintillaEditBase_override_virtual_SizeHint(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_sizeHint(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SizeHint = slot;
+	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
-QSize* ScintillaEditBase_virtualbase_SizeHint(const void* self) {
-	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_SizeHint();
+QSize* ScintillaEditBase_virtualbase_sizeHint(const void* self) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_sizeHint();
 }
 
-bool ScintillaEditBase_override_virtual_SetupViewport(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_setupViewport(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetupViewport = slot;
+	self_cast->handle__setupViewport = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_SetupViewport(void* self, QWidget* viewport) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_SetupViewport(viewport);
+void ScintillaEditBase_virtualbase_setupViewport(void* self, QWidget* viewport) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_setupViewport(viewport);
 }
 
-bool ScintillaEditBase_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool ScintillaEditBase_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {
-	return ( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_EventFilter(param1, param2);
+bool ScintillaEditBase_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
+	return ( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_eventFilter(param1, param2);
 }
 
-bool ScintillaEditBase_override_virtual_ViewportEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_viewportEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ViewportEvent = slot;
+	self_cast->handle__viewportEvent = slot;
 	return true;
 }
 
-bool ScintillaEditBase_virtualbase_ViewportEvent(void* self, QEvent* param1) {
-	return ( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_ViewportEvent(param1);
+bool ScintillaEditBase_virtualbase_viewportEvent(void* self, QEvent* param1) {
+	return ( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_viewportEvent(param1);
 }
 
-bool ScintillaEditBase_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ViewportSizeHint = slot;
+	self_cast->handle__viewportSizeHint = slot;
 	return true;
 }
 
-QSize* ScintillaEditBase_virtualbase_ViewportSizeHint(const void* self) {
-	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_ViewportSizeHint();
+QSize* ScintillaEditBase_virtualbase_viewportSizeHint(const void* self) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_viewportSizeHint();
 }
 
-bool ScintillaEditBase_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_changeEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChangeEvent = slot;
+	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_ChangeEvent(void* self, QEvent* param1) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_ChangeEvent(param1);
+void ScintillaEditBase_virtualbase_changeEvent(void* self, QEvent* param1) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_changeEvent(param1);
 }
 
-bool ScintillaEditBase_override_virtual_DevType(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_devType(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DevType = slot;
+	self_cast->handle__devType = slot;
 	return true;
 }
 
-int ScintillaEditBase_virtualbase_DevType(const void* self) {
-	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_DevType();
+int ScintillaEditBase_virtualbase_devType(const void* self) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_devType();
 }
 
-bool ScintillaEditBase_override_virtual_SetVisible(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_setVisible(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetVisible = slot;
+	self_cast->handle__setVisible = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_SetVisible(void* self, bool visible) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_SetVisible(visible);
+void ScintillaEditBase_virtualbase_setVisible(void* self, bool visible) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_setVisible(visible);
 }
 
-bool ScintillaEditBase_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_heightForWidth(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HeightForWidth = slot;
+	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
-int ScintillaEditBase_virtualbase_HeightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_HeightForWidth(param1);
+int ScintillaEditBase_virtualbase_heightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_heightForWidth(param1);
 }
 
-bool ScintillaEditBase_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HasHeightForWidth = slot;
+	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
-bool ScintillaEditBase_virtualbase_HasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_HasHeightForWidth();
+bool ScintillaEditBase_virtualbase_hasHeightForWidth(const void* self) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_hasHeightForWidth();
 }
 
-bool ScintillaEditBase_override_virtual_PaintEngine(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_paintEngine(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__PaintEngine = slot;
+	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
-QPaintEngine* ScintillaEditBase_virtualbase_PaintEngine(const void* self) {
-	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_PaintEngine();
+QPaintEngine* ScintillaEditBase_virtualbase_paintEngine(const void* self) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_paintEngine();
 }
 
-bool ScintillaEditBase_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__KeyReleaseEvent = slot;
+	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_KeyReleaseEvent(event);
+void ScintillaEditBase_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_keyReleaseEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_EnterEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_enterEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EnterEvent = slot;
+	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_EnterEvent(void* self, QEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_EnterEvent(event);
+void ScintillaEditBase_virtualbase_enterEvent(void* self, QEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_enterEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__LeaveEvent = slot;
+	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_LeaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_LeaveEvent(event);
+void ScintillaEditBase_virtualbase_leaveEvent(void* self, QEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_leaveEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_MoveEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_moveEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MoveEvent = slot;
+	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_MoveEvent(event);
+void ScintillaEditBase_virtualbase_moveEvent(void* self, QMoveEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_moveEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_CloseEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_closeEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CloseEvent = slot;
+	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_CloseEvent(event);
+void ScintillaEditBase_virtualbase_closeEvent(void* self, QCloseEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_closeEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_TabletEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TabletEvent = slot;
+	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_TabletEvent(event);
+void ScintillaEditBase_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_tabletEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_ActionEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_actionEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ActionEvent = slot;
+	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_ActionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_ActionEvent(event);
+void ScintillaEditBase_virtualbase_actionEvent(void* self, QActionEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_actionEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_ShowEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_showEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ShowEvent = slot;
+	self_cast->handle__showEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_ShowEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_ShowEvent(event);
+void ScintillaEditBase_virtualbase_showEvent(void* self, QShowEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_showEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_HideEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_hideEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HideEvent = slot;
+	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_HideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_HideEvent(event);
+void ScintillaEditBase_virtualbase_hideEvent(void* self, QHideEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_hideEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_NativeEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__NativeEvent = slot;
+	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
-bool ScintillaEditBase_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
-	return ( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_NativeEvent(eventType, message, result);
+bool ScintillaEditBase_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
+	return ( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_nativeEvent(eventType, message, result);
 }
 
-bool ScintillaEditBase_override_virtual_Metric(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_metric(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Metric = slot;
+	self_cast->handle__metric = slot;
 	return true;
 }
 
-int ScintillaEditBase_virtualbase_Metric(const void* self, int param1) {
-	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_Metric(param1);
+int ScintillaEditBase_virtualbase_metric(const void* self, int param1) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_metric(param1);
 }
 
-bool ScintillaEditBase_override_virtual_InitPainter(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_initPainter(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InitPainter = slot;
+	self_cast->handle__initPainter = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_InitPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_InitPainter(painter);
+void ScintillaEditBase_virtualbase_initPainter(const void* self, QPainter* painter) {
+	( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_initPainter(painter);
 }
 
-bool ScintillaEditBase_override_virtual_Redirected(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_redirected(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Redirected = slot;
+	self_cast->handle__redirected = slot;
 	return true;
 }
 
-QPaintDevice* ScintillaEditBase_virtualbase_Redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_Redirected(offset);
+QPaintDevice* ScintillaEditBase_virtualbase_redirected(const void* self, QPoint* offset) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_redirected(offset);
 }
 
-bool ScintillaEditBase_override_virtual_SharedPainter(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SharedPainter = slot;
+	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
-QPainter* ScintillaEditBase_virtualbase_SharedPainter(const void* self) {
-	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_SharedPainter();
+QPainter* ScintillaEditBase_virtualbase_sharedPainter(const void* self) {
+	return ( (const MiqtVirtualScintillaEditBase*)(self) )->virtualbase_sharedPainter();
 }
 
-bool ScintillaEditBase_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__FocusNextPrevChild = slot;
+	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
-bool ScintillaEditBase_virtualbase_FocusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_FocusNextPrevChild(next);
+bool ScintillaEditBase_virtualbase_focusNextPrevChild(void* self, bool next) {
+	return ( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_focusNextPrevChild(next);
 }
 
-bool ScintillaEditBase_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_TimerEvent(event);
+void ScintillaEditBase_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_ChildEvent(event);
+void ScintillaEditBase_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_childEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_CustomEvent(event);
+void ScintillaEditBase_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_customEvent(event);
 }
 
-bool ScintillaEditBase_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_ConnectNotify(signal);
+void ScintillaEditBase_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool ScintillaEditBase_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool ScintillaEditBase_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEditBase* self_cast = dynamic_cast<MiqtVirtualScintillaEditBase*>( (ScintillaEditBase*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void ScintillaEditBase_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_DisconnectNotify(signal);
+void ScintillaEditBase_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualScintillaEditBase*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void ScintillaEditBase_Delete(ScintillaEditBase* self) {
+void ScintillaEditBase_delete(ScintillaEditBase* self) {
 	delete self;
 }
 
@@ -5170,130 +5170,130 @@ public:
 	virtual ~MiqtVirtualScintillaDocument() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return ScintillaDocument::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_ScintillaDocument_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_ScintillaDocument_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return ScintillaDocument::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return ScintillaDocument::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_ScintillaDocument_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_ScintillaDocument_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return ScintillaDocument::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			ScintillaDocument::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaDocument_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_ScintillaDocument_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		ScintillaDocument::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			ScintillaDocument::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaDocument_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_ScintillaDocument_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		ScintillaDocument::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			ScintillaDocument::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaDocument_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_ScintillaDocument_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		ScintillaDocument::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			ScintillaDocument::connectNotify(signal);
 			return;
 		}
@@ -5302,24 +5302,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_ScintillaDocument_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_ScintillaDocument_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		ScintillaDocument::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			ScintillaDocument::disconnectNotify(signal);
 			return;
 		}
@@ -5328,13 +5328,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_ScintillaDocument_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_ScintillaDocument_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		ScintillaDocument::disconnectNotify(*signal);
 
@@ -5358,15 +5358,15 @@ void ScintillaDocument_virtbase(ScintillaDocument* src, QObject** outptr_QObject
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* ScintillaDocument_MetaObject(const ScintillaDocument* self) {
+QMetaObject* ScintillaDocument_metaObject(const ScintillaDocument* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* ScintillaDocument_Metacast(ScintillaDocument* self, const char* param1) {
+void* ScintillaDocument_metacast(ScintillaDocument* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string ScintillaDocument_Tr(const char* s) {
+struct miqt_string ScintillaDocument_tr(const char* s) {
 	QString _ret = ScintillaDocument::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -5377,7 +5377,7 @@ struct miqt_string ScintillaDocument_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string ScintillaDocument_TrUtf8(const char* s) {
+struct miqt_string ScintillaDocument_trUtf8(const char* s) {
 	QString _ret = ScintillaDocument::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -5388,80 +5388,80 @@ struct miqt_string ScintillaDocument_TrUtf8(const char* s) {
 	return _ms;
 }
 
-void* ScintillaDocument_Pointer(ScintillaDocument* self) {
+void* ScintillaDocument_pointer(ScintillaDocument* self) {
 	return self->pointer();
 }
 
-int ScintillaDocument_LineFromPosition(ScintillaDocument* self, int pos) {
+int ScintillaDocument_lineFromPosition(ScintillaDocument* self, int pos) {
 	return self->line_from_position(static_cast<int>(pos));
 }
 
-bool ScintillaDocument_IsCrLf(ScintillaDocument* self, int pos) {
+bool ScintillaDocument_isCrLf(ScintillaDocument* self, int pos) {
 	return self->is_cr_lf(static_cast<int>(pos));
 }
 
-bool ScintillaDocument_DeleteChars(ScintillaDocument* self, int pos, int lenVal) {
-	return self->delete_chars(static_cast<int>(pos), static_cast<int>(lenVal));
+bool ScintillaDocument_deleteChars(ScintillaDocument* self, int pos, int len) {
+	return self->delete_chars(static_cast<int>(pos), static_cast<int>(len));
 }
 
-int ScintillaDocument_Undo(ScintillaDocument* self) {
+int ScintillaDocument_undo(ScintillaDocument* self) {
 	return self->undo();
 }
 
-int ScintillaDocument_Redo(ScintillaDocument* self) {
+int ScintillaDocument_redo(ScintillaDocument* self) {
 	return self->redo();
 }
 
-bool ScintillaDocument_CanUndo(ScintillaDocument* self) {
+bool ScintillaDocument_canUndo(ScintillaDocument* self) {
 	return self->can_undo();
 }
 
-bool ScintillaDocument_CanRedo(ScintillaDocument* self) {
+bool ScintillaDocument_canRedo(ScintillaDocument* self) {
 	return self->can_redo();
 }
 
-void ScintillaDocument_DeleteUndoHistory(ScintillaDocument* self) {
+void ScintillaDocument_deleteUndoHistory(ScintillaDocument* self) {
 	self->delete_undo_history();
 }
 
-bool ScintillaDocument_SetUndoCollection(ScintillaDocument* self, bool collect_undo) {
+bool ScintillaDocument_setUndoCollection(ScintillaDocument* self, bool collect_undo) {
 	return self->set_undo_collection(collect_undo);
 }
 
-bool ScintillaDocument_IsCollectingUndo(ScintillaDocument* self) {
+bool ScintillaDocument_isCollectingUndo(ScintillaDocument* self) {
 	return self->is_collecting_undo();
 }
 
-void ScintillaDocument_BeginUndoAction(ScintillaDocument* self) {
+void ScintillaDocument_beginUndoAction(ScintillaDocument* self) {
 	self->begin_undo_action();
 }
 
-void ScintillaDocument_EndUndoAction(ScintillaDocument* self) {
+void ScintillaDocument_endUndoAction(ScintillaDocument* self) {
 	self->end_undo_action();
 }
 
-void ScintillaDocument_SetSavePoint(ScintillaDocument* self) {
+void ScintillaDocument_setSavePoint(ScintillaDocument* self) {
 	self->set_save_point();
 }
 
-bool ScintillaDocument_IsSavePoint(ScintillaDocument* self) {
+bool ScintillaDocument_isSavePoint(ScintillaDocument* self) {
 	return self->is_save_point();
 }
 
-void ScintillaDocument_SetReadOnly(ScintillaDocument* self, bool read_only) {
+void ScintillaDocument_setReadOnly(ScintillaDocument* self, bool read_only) {
 	self->set_read_only(read_only);
 }
 
-bool ScintillaDocument_IsReadOnly(ScintillaDocument* self) {
+bool ScintillaDocument_isReadOnly(ScintillaDocument* self) {
 	return self->is_read_only();
 }
 
-void ScintillaDocument_InsertString(ScintillaDocument* self, int position, struct miqt_string str) {
+void ScintillaDocument_insertString(ScintillaDocument* self, int position, struct miqt_string str) {
 	QByteArray str_QByteArray(str.data, str.len);
 	self->insert_string(static_cast<int>(position), str_QByteArray);
 }
 
-struct miqt_string ScintillaDocument_GetCharRange(ScintillaDocument* self, int position, int length) {
+struct miqt_string ScintillaDocument_getCharRange(ScintillaDocument* self, int position, int length) {
 	QByteArray _qb = self->get_char_range(static_cast<int>(position), static_cast<int>(length));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -5470,117 +5470,117 @@ struct miqt_string ScintillaDocument_GetCharRange(ScintillaDocument* self, int p
 	return _ms;
 }
 
-char ScintillaDocument_StyleAt(ScintillaDocument* self, int position) {
+char ScintillaDocument_styleAt(ScintillaDocument* self, int position) {
 	return self->style_at(static_cast<int>(position));
 }
 
-int ScintillaDocument_LineStart(ScintillaDocument* self, int lineno) {
+int ScintillaDocument_lineStart(ScintillaDocument* self, int lineno) {
 	return self->line_start(static_cast<int>(lineno));
 }
 
-int ScintillaDocument_LineEnd(ScintillaDocument* self, int lineno) {
+int ScintillaDocument_lineEnd(ScintillaDocument* self, int lineno) {
 	return self->line_end(static_cast<int>(lineno));
 }
 
-int ScintillaDocument_LineEndPosition(ScintillaDocument* self, int pos) {
+int ScintillaDocument_lineEndPosition(ScintillaDocument* self, int pos) {
 	return self->line_end_position(static_cast<int>(pos));
 }
 
-int ScintillaDocument_Length(ScintillaDocument* self) {
+int ScintillaDocument_length(ScintillaDocument* self) {
 	return self->length();
 }
 
-int ScintillaDocument_LinesTotal(ScintillaDocument* self) {
+int ScintillaDocument_linesTotal(ScintillaDocument* self) {
 	return self->lines_total();
 }
 
-void ScintillaDocument_StartStyling(ScintillaDocument* self, int position) {
+void ScintillaDocument_startStyling(ScintillaDocument* self, int position) {
 	self->start_styling(static_cast<int>(position));
 }
 
-bool ScintillaDocument_SetStyleFor(ScintillaDocument* self, int length, char style) {
+bool ScintillaDocument_setStyleFor(ScintillaDocument* self, int length, char style) {
 	return self->set_style_for(static_cast<int>(length), static_cast<char>(style));
 }
 
-int ScintillaDocument_GetEndStyled(ScintillaDocument* self) {
+int ScintillaDocument_getEndStyled(ScintillaDocument* self) {
 	return self->get_end_styled();
 }
 
-void ScintillaDocument_EnsureStyledTo(ScintillaDocument* self, int position) {
+void ScintillaDocument_ensureStyledTo(ScintillaDocument* self, int position) {
 	self->ensure_styled_to(static_cast<int>(position));
 }
 
-void ScintillaDocument_SetCurrentIndicator(ScintillaDocument* self, int indic) {
+void ScintillaDocument_setCurrentIndicator(ScintillaDocument* self, int indic) {
 	self->set_current_indicator(static_cast<int>(indic));
 }
 
-void ScintillaDocument_DecorationFillRange(ScintillaDocument* self, int position, int value, int fillLength) {
+void ScintillaDocument_decorationFillRange(ScintillaDocument* self, int position, int value, int fillLength) {
 	self->decoration_fill_range(static_cast<int>(position), static_cast<int>(value), static_cast<int>(fillLength));
 }
 
-int ScintillaDocument_DecorationsValueAt(ScintillaDocument* self, int indic, int position) {
+int ScintillaDocument_decorationsValueAt(ScintillaDocument* self, int indic, int position) {
 	return self->decorations_value_at(static_cast<int>(indic), static_cast<int>(position));
 }
 
-int ScintillaDocument_DecorationsStart(ScintillaDocument* self, int indic, int position) {
+int ScintillaDocument_decorationsStart(ScintillaDocument* self, int indic, int position) {
 	return self->decorations_start(static_cast<int>(indic), static_cast<int>(position));
 }
 
-int ScintillaDocument_DecorationsEnd(ScintillaDocument* self, int indic, int position) {
+int ScintillaDocument_decorationsEnd(ScintillaDocument* self, int indic, int position) {
 	return self->decorations_end(static_cast<int>(indic), static_cast<int>(position));
 }
 
-int ScintillaDocument_GetCodePage(ScintillaDocument* self) {
+int ScintillaDocument_getCodePage(ScintillaDocument* self) {
 	return self->get_code_page();
 }
 
-void ScintillaDocument_SetCodePage(ScintillaDocument* self, int code_page) {
+void ScintillaDocument_setCodePage(ScintillaDocument* self, int code_page) {
 	self->set_code_page(static_cast<int>(code_page));
 }
 
-int ScintillaDocument_GetEolMode(ScintillaDocument* self) {
+int ScintillaDocument_getEolMode(ScintillaDocument* self) {
 	return self->get_eol_mode();
 }
 
-void ScintillaDocument_SetEolMode(ScintillaDocument* self, int eol_mode) {
+void ScintillaDocument_setEolMode(ScintillaDocument* self, int eol_mode) {
 	self->set_eol_mode(static_cast<int>(eol_mode));
 }
 
-int ScintillaDocument_MovePositionOutsideChar(ScintillaDocument* self, int pos, int move_dir, bool check_line_end) {
+int ScintillaDocument_movePositionOutsideChar(ScintillaDocument* self, int pos, int move_dir, bool check_line_end) {
 	return self->move_position_outside_char(static_cast<int>(pos), static_cast<int>(move_dir), check_line_end);
 }
 
-int ScintillaDocument_GetCharacter(ScintillaDocument* self, int pos) {
+int ScintillaDocument_getCharacter(ScintillaDocument* self, int pos) {
 	return self->get_character(static_cast<int>(pos));
 }
 
-void ScintillaDocument_ModifyAttempt(ScintillaDocument* self) {
+void ScintillaDocument_modifyAttempt(ScintillaDocument* self) {
 	self->modify_attempt();
 }
 
-void ScintillaDocument_connect_ModifyAttempt(ScintillaDocument* self, intptr_t slot) {
+void ScintillaDocument_connect_modifyAttempt(ScintillaDocument* self, intptr_t slot) {
 	MiqtVirtualScintillaDocument::connect(self, static_cast<void (ScintillaDocument::*)()>(&ScintillaDocument::modify_attempt), self, [=]() {
-		miqt_exec_callback_ScintillaDocument_ModifyAttempt(slot);
+		miqt_exec_callback_ScintillaDocument_modifyAttempt(slot);
 	});
 }
 
-void ScintillaDocument_SavePoint(ScintillaDocument* self, bool atSavePoint) {
+void ScintillaDocument_savePoint(ScintillaDocument* self, bool atSavePoint) {
 	self->save_point(atSavePoint);
 }
 
-void ScintillaDocument_connect_SavePoint(ScintillaDocument* self, intptr_t slot) {
+void ScintillaDocument_connect_savePoint(ScintillaDocument* self, intptr_t slot) {
 	MiqtVirtualScintillaDocument::connect(self, static_cast<void (ScintillaDocument::*)(bool)>(&ScintillaDocument::save_point), self, [=](bool atSavePoint) {
 		bool sigval1 = atSavePoint;
-		miqt_exec_callback_ScintillaDocument_SavePoint(slot, sigval1);
+		miqt_exec_callback_ScintillaDocument_savePoint(slot, sigval1);
 	});
 }
 
-void ScintillaDocument_Modified(ScintillaDocument* self, int position, int modification_type, struct miqt_string text, int length, int linesAdded, int line, int foldLevelNow, int foldLevelPrev) {
+void ScintillaDocument_modified(ScintillaDocument* self, int position, int modification_type, struct miqt_string text, int length, int linesAdded, int line, int foldLevelNow, int foldLevelPrev) {
 	QByteArray text_QByteArray(text.data, text.len);
 	self->modified(static_cast<int>(position), static_cast<int>(modification_type), text_QByteArray, static_cast<int>(length), static_cast<int>(linesAdded), static_cast<int>(line), static_cast<int>(foldLevelNow), static_cast<int>(foldLevelPrev));
 }
 
-void ScintillaDocument_connect_Modified(ScintillaDocument* self, intptr_t slot) {
+void ScintillaDocument_connect_modified(ScintillaDocument* self, intptr_t slot) {
 	MiqtVirtualScintillaDocument::connect(self, static_cast<void (ScintillaDocument::*)(int, int, const QByteArray&, int, int, int, int, int)>(&ScintillaDocument::modified), self, [=](int position, int modification_type, const QByteArray& text, int length, int linesAdded, int line, int foldLevelNow, int foldLevelPrev) {
 		int sigval1 = position;
 		int sigval2 = modification_type;
@@ -5595,33 +5595,33 @@ void ScintillaDocument_connect_Modified(ScintillaDocument* self, intptr_t slot) 
 		int sigval6 = line;
 		int sigval7 = foldLevelNow;
 		int sigval8 = foldLevelPrev;
-		miqt_exec_callback_ScintillaDocument_Modified(slot, sigval1, sigval2, sigval3, sigval4, sigval5, sigval6, sigval7, sigval8);
+		miqt_exec_callback_ScintillaDocument_modified(slot, sigval1, sigval2, sigval3, sigval4, sigval5, sigval6, sigval7, sigval8);
 	});
 }
 
-void ScintillaDocument_StyleNeeded(ScintillaDocument* self, int pos) {
+void ScintillaDocument_styleNeeded(ScintillaDocument* self, int pos) {
 	self->style_needed(static_cast<int>(pos));
 }
 
-void ScintillaDocument_connect_StyleNeeded(ScintillaDocument* self, intptr_t slot) {
+void ScintillaDocument_connect_styleNeeded(ScintillaDocument* self, intptr_t slot) {
 	MiqtVirtualScintillaDocument::connect(self, static_cast<void (ScintillaDocument::*)(int)>(&ScintillaDocument::style_needed), self, [=](int pos) {
 		int sigval1 = pos;
-		miqt_exec_callback_ScintillaDocument_StyleNeeded(slot, sigval1);
+		miqt_exec_callback_ScintillaDocument_styleNeeded(slot, sigval1);
 	});
 }
 
-void ScintillaDocument_ErrorOccurred(ScintillaDocument* self, int status) {
+void ScintillaDocument_errorOccurred(ScintillaDocument* self, int status) {
 	self->error_occurred(static_cast<int>(status));
 }
 
-void ScintillaDocument_connect_ErrorOccurred(ScintillaDocument* self, intptr_t slot) {
+void ScintillaDocument_connect_errorOccurred(ScintillaDocument* self, intptr_t slot) {
 	MiqtVirtualScintillaDocument::connect(self, static_cast<void (ScintillaDocument::*)(int)>(&ScintillaDocument::error_occurred), self, [=](int status) {
 		int sigval1 = status;
-		miqt_exec_callback_ScintillaDocument_ErrorOccurred(slot, sigval1);
+		miqt_exec_callback_ScintillaDocument_errorOccurred(slot, sigval1);
 	});
 }
 
-struct miqt_string ScintillaDocument_Tr2(const char* s, const char* c) {
+struct miqt_string ScintillaDocument_tr2(const char* s, const char* c) {
 	QString _ret = ScintillaDocument::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -5632,7 +5632,7 @@ struct miqt_string ScintillaDocument_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string ScintillaDocument_Tr3(const char* s, const char* c, int n) {
+struct miqt_string ScintillaDocument_tr3(const char* s, const char* c, int n) {
 	QString _ret = ScintillaDocument::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -5643,7 +5643,7 @@ struct miqt_string ScintillaDocument_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string ScintillaDocument_TrUtf82(const char* s, const char* c) {
+struct miqt_string ScintillaDocument_trUtf82(const char* s, const char* c) {
 	QString _ret = ScintillaDocument::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -5654,7 +5654,7 @@ struct miqt_string ScintillaDocument_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string ScintillaDocument_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string ScintillaDocument_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = ScintillaDocument::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -5665,109 +5665,109 @@ struct miqt_string ScintillaDocument_TrUtf83(const char* s, const char* c, int n
 	return _ms;
 }
 
-void ScintillaDocument_BeginUndoAction1(ScintillaDocument* self, bool coalesceWithPrior) {
+void ScintillaDocument_beginUndoAction1(ScintillaDocument* self, bool coalesceWithPrior) {
 	self->begin_undo_action(coalesceWithPrior);
 }
 
-bool ScintillaDocument_override_virtual_Event(void* self, intptr_t slot) {
+bool ScintillaDocument_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualScintillaDocument* self_cast = dynamic_cast<MiqtVirtualScintillaDocument*>( (ScintillaDocument*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool ScintillaDocument_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_Event(event);
+bool ScintillaDocument_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_event(event);
 }
 
-bool ScintillaDocument_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool ScintillaDocument_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualScintillaDocument* self_cast = dynamic_cast<MiqtVirtualScintillaDocument*>( (ScintillaDocument*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool ScintillaDocument_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_EventFilter(watched, event);
+bool ScintillaDocument_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool ScintillaDocument_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool ScintillaDocument_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaDocument* self_cast = dynamic_cast<MiqtVirtualScintillaDocument*>( (ScintillaDocument*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void ScintillaDocument_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_TimerEvent(event);
+void ScintillaDocument_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool ScintillaDocument_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool ScintillaDocument_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaDocument* self_cast = dynamic_cast<MiqtVirtualScintillaDocument*>( (ScintillaDocument*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void ScintillaDocument_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_ChildEvent(event);
+void ScintillaDocument_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_childEvent(event);
 }
 
-bool ScintillaDocument_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool ScintillaDocument_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaDocument* self_cast = dynamic_cast<MiqtVirtualScintillaDocument*>( (ScintillaDocument*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void ScintillaDocument_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_CustomEvent(event);
+void ScintillaDocument_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_customEvent(event);
 }
 
-bool ScintillaDocument_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool ScintillaDocument_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualScintillaDocument* self_cast = dynamic_cast<MiqtVirtualScintillaDocument*>( (ScintillaDocument*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void ScintillaDocument_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_ConnectNotify(signal);
+void ScintillaDocument_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool ScintillaDocument_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool ScintillaDocument_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualScintillaDocument* self_cast = dynamic_cast<MiqtVirtualScintillaDocument*>( (ScintillaDocument*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void ScintillaDocument_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_DisconnectNotify(signal);
+void ScintillaDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualScintillaDocument*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void ScintillaDocument_Delete(ScintillaDocument* self) {
+void ScintillaDocument_delete(ScintillaDocument* self) {
 	delete self;
 }
 
@@ -5780,11 +5780,11 @@ public:
 	virtual ~MiqtVirtualScintillaEdit() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Send = 0;
+	intptr_t handle__send = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual sptr_t send(unsigned int iMessage, uptr_t wParam, sptr_t lParam) const override {
-		if (handle__Send == 0) {
+		if (handle__send == 0) {
 			return ScintillaEdit::send(iMessage, wParam, lParam);
 		}
 		
@@ -5794,13 +5794,13 @@ public:
 		sptr_t lParam_ret = lParam;
 		intptr_t sigval3 = static_cast<intptr_t>(lParam_ret);
 
-		intptr_t callback_return_value = miqt_exec_callback_ScintillaEdit_Send(this, handle__Send, sigval1, sigval2, sigval3);
+		intptr_t callback_return_value = miqt_exec_callback_ScintillaEdit_send(this, handle__send, sigval1, sigval2, sigval3);
 
 		return static_cast<sptr_t>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	intptr_t virtualbase_Send(unsigned int iMessage, uintptr_t wParam, intptr_t lParam) const {
+	intptr_t virtualbase_send(unsigned int iMessage, uintptr_t wParam, intptr_t lParam) const {
 
 		sptr_t _ret = ScintillaEdit::send(static_cast<unsigned int>(iMessage), static_cast<uptr_t>(wParam), static_cast<sptr_t>(lParam));
 		return static_cast<intptr_t>(_ret);
@@ -5808,11 +5808,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Sends = 0;
+	intptr_t handle__sends = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual sptr_t sends(unsigned int iMessage, uptr_t wParam, const char* s) const override {
-		if (handle__Sends == 0) {
+		if (handle__sends == 0) {
 			return ScintillaEdit::sends(iMessage, wParam, s);
 		}
 		
@@ -5821,13 +5821,13 @@ public:
 		uintptr_t sigval2 = static_cast<uintptr_t>(wParam_ret);
 		const char* sigval3 = (const char*) s;
 
-		intptr_t callback_return_value = miqt_exec_callback_ScintillaEdit_Sends(this, handle__Sends, sigval1, sigval2, sigval3);
+		intptr_t callback_return_value = miqt_exec_callback_ScintillaEdit_sends(this, handle__sends, sigval1, sigval2, sigval3);
 
 		return static_cast<sptr_t>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	intptr_t virtualbase_Sends(unsigned int iMessage, uintptr_t wParam, const char* s) const {
+	intptr_t virtualbase_sends(unsigned int iMessage, uintptr_t wParam, const char* s) const {
 
 		sptr_t _ret = ScintillaEdit::sends(static_cast<unsigned int>(iMessage), static_cast<uptr_t>(wParam), s);
 		return static_cast<intptr_t>(_ret);
@@ -5835,442 +5835,442 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return ScintillaEdit::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_ScintillaEdit_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_ScintillaEdit_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return ScintillaEdit::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__PaintEvent = 0;
+	intptr_t handle__paintEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void paintEvent(QPaintEvent* event) override {
-		if (handle__PaintEvent == 0) {
+		if (handle__paintEvent == 0) {
 			ScintillaEdit::paintEvent(event);
 			return;
 		}
 		
 		QPaintEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_PaintEvent(this, handle__PaintEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_paintEvent(this, handle__paintEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_PaintEvent(QPaintEvent* event) {
+	void virtualbase_paintEvent(QPaintEvent* event) {
 
 		ScintillaEdit::paintEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__WheelEvent = 0;
+	intptr_t handle__wheelEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void wheelEvent(QWheelEvent* event) override {
-		if (handle__WheelEvent == 0) {
+		if (handle__wheelEvent == 0) {
 			ScintillaEdit::wheelEvent(event);
 			return;
 		}
 		
 		QWheelEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_WheelEvent(this, handle__WheelEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_wheelEvent(this, handle__wheelEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_WheelEvent(QWheelEvent* event) {
+	void virtualbase_wheelEvent(QWheelEvent* event) {
 
 		ScintillaEdit::wheelEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__FocusInEvent = 0;
+	intptr_t handle__focusInEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void focusInEvent(QFocusEvent* event) override {
-		if (handle__FocusInEvent == 0) {
+		if (handle__focusInEvent == 0) {
 			ScintillaEdit::focusInEvent(event);
 			return;
 		}
 		
 		QFocusEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_FocusInEvent(this, handle__FocusInEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_focusInEvent(this, handle__focusInEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_FocusInEvent(QFocusEvent* event) {
+	void virtualbase_focusInEvent(QFocusEvent* event) {
 
 		ScintillaEdit::focusInEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__FocusOutEvent = 0;
+	intptr_t handle__focusOutEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void focusOutEvent(QFocusEvent* event) override {
-		if (handle__FocusOutEvent == 0) {
+		if (handle__focusOutEvent == 0) {
 			ScintillaEdit::focusOutEvent(event);
 			return;
 		}
 		
 		QFocusEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_FocusOutEvent(this, handle__FocusOutEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_FocusOutEvent(QFocusEvent* event) {
+	void virtualbase_focusOutEvent(QFocusEvent* event) {
 
 		ScintillaEdit::focusOutEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ResizeEvent = 0;
+	intptr_t handle__resizeEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void resizeEvent(QResizeEvent* event) override {
-		if (handle__ResizeEvent == 0) {
+		if (handle__resizeEvent == 0) {
 			ScintillaEdit::resizeEvent(event);
 			return;
 		}
 		
 		QResizeEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_ResizeEvent(this, handle__ResizeEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_resizeEvent(this, handle__resizeEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ResizeEvent(QResizeEvent* event) {
+	void virtualbase_resizeEvent(QResizeEvent* event) {
 
 		ScintillaEdit::resizeEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__KeyPressEvent = 0;
+	intptr_t handle__keyPressEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void keyPressEvent(QKeyEvent* event) override {
-		if (handle__KeyPressEvent == 0) {
+		if (handle__keyPressEvent == 0) {
 			ScintillaEdit::keyPressEvent(event);
 			return;
 		}
 		
 		QKeyEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_KeyPressEvent(this, handle__KeyPressEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_KeyPressEvent(QKeyEvent* event) {
+	void virtualbase_keyPressEvent(QKeyEvent* event) {
 
 		ScintillaEdit::keyPressEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MousePressEvent = 0;
+	intptr_t handle__mousePressEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void mousePressEvent(QMouseEvent* event) override {
-		if (handle__MousePressEvent == 0) {
+		if (handle__mousePressEvent == 0) {
 			ScintillaEdit::mousePressEvent(event);
 			return;
 		}
 		
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_MousePressEvent(this, handle__MousePressEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MousePressEvent(QMouseEvent* event) {
+	void virtualbase_mousePressEvent(QMouseEvent* event) {
 
 		ScintillaEdit::mousePressEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MouseReleaseEvent = 0;
+	intptr_t handle__mouseReleaseEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void mouseReleaseEvent(QMouseEvent* event) override {
-		if (handle__MouseReleaseEvent == 0) {
+		if (handle__mouseReleaseEvent == 0) {
 			ScintillaEdit::mouseReleaseEvent(event);
 			return;
 		}
 		
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_MouseReleaseEvent(this, handle__MouseReleaseEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MouseReleaseEvent(QMouseEvent* event) {
+	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
 
 		ScintillaEdit::mouseReleaseEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MouseDoubleClickEvent = 0;
+	intptr_t handle__mouseDoubleClickEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void mouseDoubleClickEvent(QMouseEvent* event) override {
-		if (handle__MouseDoubleClickEvent == 0) {
+		if (handle__mouseDoubleClickEvent == 0) {
 			ScintillaEdit::mouseDoubleClickEvent(event);
 			return;
 		}
 		
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_MouseDoubleClickEvent(this, handle__MouseDoubleClickEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MouseDoubleClickEvent(QMouseEvent* event) {
+	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
 
 		ScintillaEdit::mouseDoubleClickEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MouseMoveEvent = 0;
+	intptr_t handle__mouseMoveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void mouseMoveEvent(QMouseEvent* event) override {
-		if (handle__MouseMoveEvent == 0) {
+		if (handle__mouseMoveEvent == 0) {
 			ScintillaEdit::mouseMoveEvent(event);
 			return;
 		}
 		
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_MouseMoveEvent(this, handle__MouseMoveEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MouseMoveEvent(QMouseEvent* event) {
+	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
 
 		ScintillaEdit::mouseMoveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ContextMenuEvent = 0;
+	intptr_t handle__contextMenuEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void contextMenuEvent(QContextMenuEvent* event) override {
-		if (handle__ContextMenuEvent == 0) {
+		if (handle__contextMenuEvent == 0) {
 			ScintillaEdit::contextMenuEvent(event);
 			return;
 		}
 		
 		QContextMenuEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_ContextMenuEvent(this, handle__ContextMenuEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ContextMenuEvent(QContextMenuEvent* event) {
+	void virtualbase_contextMenuEvent(QContextMenuEvent* event) {
 
 		ScintillaEdit::contextMenuEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DragEnterEvent = 0;
+	intptr_t handle__dragEnterEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dragEnterEvent(QDragEnterEvent* event) override {
-		if (handle__DragEnterEvent == 0) {
+		if (handle__dragEnterEvent == 0) {
 			ScintillaEdit::dragEnterEvent(event);
 			return;
 		}
 		
 		QDragEnterEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_DragEnterEvent(this, handle__DragEnterEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DragEnterEvent(QDragEnterEvent* event) {
+	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
 
 		ScintillaEdit::dragEnterEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DragLeaveEvent = 0;
+	intptr_t handle__dragLeaveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dragLeaveEvent(QDragLeaveEvent* event) override {
-		if (handle__DragLeaveEvent == 0) {
+		if (handle__dragLeaveEvent == 0) {
 			ScintillaEdit::dragLeaveEvent(event);
 			return;
 		}
 		
 		QDragLeaveEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_DragLeaveEvent(this, handle__DragLeaveEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DragLeaveEvent(QDragLeaveEvent* event) {
+	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
 
 		ScintillaEdit::dragLeaveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DragMoveEvent = 0;
+	intptr_t handle__dragMoveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dragMoveEvent(QDragMoveEvent* event) override {
-		if (handle__DragMoveEvent == 0) {
+		if (handle__dragMoveEvent == 0) {
 			ScintillaEdit::dragMoveEvent(event);
 			return;
 		}
 		
 		QDragMoveEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_DragMoveEvent(this, handle__DragMoveEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DragMoveEvent(QDragMoveEvent* event) {
+	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
 
 		ScintillaEdit::dragMoveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DropEvent = 0;
+	intptr_t handle__dropEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dropEvent(QDropEvent* event) override {
-		if (handle__DropEvent == 0) {
+		if (handle__dropEvent == 0) {
 			ScintillaEdit::dropEvent(event);
 			return;
 		}
 		
 		QDropEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_DropEvent(this, handle__DropEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_dropEvent(this, handle__dropEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DropEvent(QDropEvent* event) {
+	void virtualbase_dropEvent(QDropEvent* event) {
 
 		ScintillaEdit::dropEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InputMethodEvent = 0;
+	intptr_t handle__inputMethodEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void inputMethodEvent(QInputMethodEvent* event) override {
-		if (handle__InputMethodEvent == 0) {
+		if (handle__inputMethodEvent == 0) {
 			ScintillaEdit::inputMethodEvent(event);
 			return;
 		}
 		
 		QInputMethodEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_InputMethodEvent(this, handle__InputMethodEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_InputMethodEvent(QInputMethodEvent* event) {
+	void virtualbase_inputMethodEvent(QInputMethodEvent* event) {
 
 		ScintillaEdit::inputMethodEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InputMethodQuery = 0;
+	intptr_t handle__inputMethodQuery = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QVariant inputMethodQuery(Qt::InputMethodQuery query) const override {
-		if (handle__InputMethodQuery == 0) {
+		if (handle__inputMethodQuery == 0) {
 			return ScintillaEdit::inputMethodQuery(query);
 		}
 		
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_ScintillaEdit_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_ScintillaEdit_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QVariant* virtualbase_InputMethodQuery(int query) const {
+	QVariant* virtualbase_inputMethodQuery(int query) const {
 
 		return new QVariant(ScintillaEdit::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ScrollContentsBy = 0;
+	intptr_t handle__scrollContentsBy = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void scrollContentsBy(int param1, int param2) override {
-		if (handle__ScrollContentsBy == 0) {
+		if (handle__scrollContentsBy == 0) {
 			ScintillaEdit::scrollContentsBy(param1, param2);
 			return;
 		}
@@ -6278,514 +6278,514 @@ public:
 		int sigval1 = param1;
 		int sigval2 = param2;
 
-		miqt_exec_callback_ScintillaEdit_ScrollContentsBy(this, handle__ScrollContentsBy, sigval1, sigval2);
+		miqt_exec_callback_ScintillaEdit_scrollContentsBy(this, handle__scrollContentsBy, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ScrollContentsBy(int param1, int param2) {
+	void virtualbase_scrollContentsBy(int param1, int param2) {
 
 		ScintillaEdit::scrollContentsBy(static_cast<int>(param1), static_cast<int>(param2));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MinimumSizeHint = 0;
+	intptr_t handle__minimumSizeHint = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize minimumSizeHint() const override {
-		if (handle__MinimumSizeHint == 0) {
+		if (handle__minimumSizeHint == 0) {
 			return ScintillaEdit::minimumSizeHint();
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEdit_MinimumSizeHint(this, handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_ScintillaEdit_minimumSizeHint(this, handle__minimumSizeHint);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSize* virtualbase_MinimumSizeHint() const {
+	QSize* virtualbase_minimumSizeHint() const {
 
 		return new QSize(ScintillaEdit::minimumSizeHint());
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SizeHint = 0;
+	intptr_t handle__sizeHint = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize sizeHint() const override {
-		if (handle__SizeHint == 0) {
+		if (handle__sizeHint == 0) {
 			return ScintillaEdit::sizeHint();
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEdit_SizeHint(this, handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_ScintillaEdit_sizeHint(this, handle__sizeHint);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSize* virtualbase_SizeHint() const {
+	QSize* virtualbase_sizeHint() const {
 
 		return new QSize(ScintillaEdit::sizeHint());
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetupViewport = 0;
+	intptr_t handle__setupViewport = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setupViewport(QWidget* viewport) override {
-		if (handle__SetupViewport == 0) {
+		if (handle__setupViewport == 0) {
 			ScintillaEdit::setupViewport(viewport);
 			return;
 		}
 		
 		QWidget* sigval1 = viewport;
 
-		miqt_exec_callback_ScintillaEdit_SetupViewport(this, handle__SetupViewport, sigval1);
+		miqt_exec_callback_ScintillaEdit_setupViewport(this, handle__setupViewport, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetupViewport(QWidget* viewport) {
+	void virtualbase_setupViewport(QWidget* viewport) {
 
 		ScintillaEdit::setupViewport(viewport);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* param1, QEvent* param2) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return ScintillaEdit::eventFilter(param1, param2);
 		}
 		
 		QObject* sigval1 = param1;
 		QEvent* sigval2 = param2;
 
-		bool callback_return_value = miqt_exec_callback_ScintillaEdit_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_ScintillaEdit_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* param1, QEvent* param2) {
+	bool virtualbase_eventFilter(QObject* param1, QEvent* param2) {
 
 		return ScintillaEdit::eventFilter(param1, param2);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ViewportEvent = 0;
+	intptr_t handle__viewportEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool viewportEvent(QEvent* param1) override {
-		if (handle__ViewportEvent == 0) {
+		if (handle__viewportEvent == 0) {
 			return ScintillaEdit::viewportEvent(param1);
 		}
 		
 		QEvent* sigval1 = param1;
 
-		bool callback_return_value = miqt_exec_callback_ScintillaEdit_ViewportEvent(this, handle__ViewportEvent, sigval1);
+		bool callback_return_value = miqt_exec_callback_ScintillaEdit_viewportEvent(this, handle__viewportEvent, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_ViewportEvent(QEvent* param1) {
+	bool virtualbase_viewportEvent(QEvent* param1) {
 
 		return ScintillaEdit::viewportEvent(param1);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ViewportSizeHint = 0;
+	intptr_t handle__viewportSizeHint = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize viewportSizeHint() const override {
-		if (handle__ViewportSizeHint == 0) {
+		if (handle__viewportSizeHint == 0) {
 			return ScintillaEdit::viewportSizeHint();
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_ScintillaEdit_ViewportSizeHint(this, handle__ViewportSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_ScintillaEdit_viewportSizeHint(this, handle__viewportSizeHint);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSize* virtualbase_ViewportSizeHint() const {
+	QSize* virtualbase_viewportSizeHint() const {
 
 		return new QSize(ScintillaEdit::viewportSizeHint());
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChangeEvent = 0;
+	intptr_t handle__changeEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void changeEvent(QEvent* param1) override {
-		if (handle__ChangeEvent == 0) {
+		if (handle__changeEvent == 0) {
 			ScintillaEdit::changeEvent(param1);
 			return;
 		}
 		
 		QEvent* sigval1 = param1;
 
-		miqt_exec_callback_ScintillaEdit_ChangeEvent(this, handle__ChangeEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_changeEvent(this, handle__changeEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChangeEvent(QEvent* param1) {
+	void virtualbase_changeEvent(QEvent* param1) {
 
 		ScintillaEdit::changeEvent(param1);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DevType = 0;
+	intptr_t handle__devType = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int devType() const override {
-		if (handle__DevType == 0) {
+		if (handle__devType == 0) {
 			return ScintillaEdit::devType();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_ScintillaEdit_DevType(this, handle__DevType);
+		int callback_return_value = miqt_exec_callback_ScintillaEdit_devType(this, handle__devType);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_DevType() const {
+	int virtualbase_devType() const {
 
 		return ScintillaEdit::devType();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetVisible = 0;
+	intptr_t handle__setVisible = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setVisible(bool visible) override {
-		if (handle__SetVisible == 0) {
+		if (handle__setVisible == 0) {
 			ScintillaEdit::setVisible(visible);
 			return;
 		}
 		
 		bool sigval1 = visible;
 
-		miqt_exec_callback_ScintillaEdit_SetVisible(this, handle__SetVisible, sigval1);
+		miqt_exec_callback_ScintillaEdit_setVisible(this, handle__setVisible, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetVisible(bool visible) {
+	void virtualbase_setVisible(bool visible) {
 
 		ScintillaEdit::setVisible(visible);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HeightForWidth = 0;
+	intptr_t handle__heightForWidth = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int heightForWidth(int param1) const override {
-		if (handle__HeightForWidth == 0) {
+		if (handle__heightForWidth == 0) {
 			return ScintillaEdit::heightForWidth(param1);
 		}
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_ScintillaEdit_HeightForWidth(this, handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_ScintillaEdit_heightForWidth(this, handle__heightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_HeightForWidth(int param1) const {
+	int virtualbase_heightForWidth(int param1) const {
 
 		return ScintillaEdit::heightForWidth(static_cast<int>(param1));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HasHeightForWidth = 0;
+	intptr_t handle__hasHeightForWidth = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool hasHeightForWidth() const override {
-		if (handle__HasHeightForWidth == 0) {
+		if (handle__hasHeightForWidth == 0) {
 			return ScintillaEdit::hasHeightForWidth();
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_ScintillaEdit_HasHeightForWidth(this, handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_ScintillaEdit_hasHeightForWidth(this, handle__hasHeightForWidth);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_HasHeightForWidth() const {
+	bool virtualbase_hasHeightForWidth() const {
 
 		return ScintillaEdit::hasHeightForWidth();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__PaintEngine = 0;
+	intptr_t handle__paintEngine = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QPaintEngine* paintEngine() const override {
-		if (handle__PaintEngine == 0) {
+		if (handle__paintEngine == 0) {
 			return ScintillaEdit::paintEngine();
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_ScintillaEdit_PaintEngine(this, handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_ScintillaEdit_paintEngine(this, handle__paintEngine);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_PaintEngine() const {
+	QPaintEngine* virtualbase_paintEngine() const {
 
 		return ScintillaEdit::paintEngine();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__KeyReleaseEvent = 0;
+	intptr_t handle__keyReleaseEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void keyReleaseEvent(QKeyEvent* event) override {
-		if (handle__KeyReleaseEvent == 0) {
+		if (handle__keyReleaseEvent == 0) {
 			ScintillaEdit::keyReleaseEvent(event);
 			return;
 		}
 		
 		QKeyEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_KeyReleaseEvent(this, handle__KeyReleaseEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_KeyReleaseEvent(QKeyEvent* event) {
+	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
 
 		ScintillaEdit::keyReleaseEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EnterEvent = 0;
+	intptr_t handle__enterEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void enterEvent(QEvent* event) override {
-		if (handle__EnterEvent == 0) {
+		if (handle__enterEvent == 0) {
 			ScintillaEdit::enterEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_EnterEvent(this, handle__EnterEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_enterEvent(this, handle__enterEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_EnterEvent(QEvent* event) {
+	void virtualbase_enterEvent(QEvent* event) {
 
 		ScintillaEdit::enterEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__LeaveEvent = 0;
+	intptr_t handle__leaveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void leaveEvent(QEvent* event) override {
-		if (handle__LeaveEvent == 0) {
+		if (handle__leaveEvent == 0) {
 			ScintillaEdit::leaveEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_LeaveEvent(this, handle__LeaveEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_leaveEvent(this, handle__leaveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_LeaveEvent(QEvent* event) {
+	void virtualbase_leaveEvent(QEvent* event) {
 
 		ScintillaEdit::leaveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MoveEvent = 0;
+	intptr_t handle__moveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void moveEvent(QMoveEvent* event) override {
-		if (handle__MoveEvent == 0) {
+		if (handle__moveEvent == 0) {
 			ScintillaEdit::moveEvent(event);
 			return;
 		}
 		
 		QMoveEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_MoveEvent(this, handle__MoveEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_moveEvent(this, handle__moveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MoveEvent(QMoveEvent* event) {
+	void virtualbase_moveEvent(QMoveEvent* event) {
 
 		ScintillaEdit::moveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CloseEvent = 0;
+	intptr_t handle__closeEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void closeEvent(QCloseEvent* event) override {
-		if (handle__CloseEvent == 0) {
+		if (handle__closeEvent == 0) {
 			ScintillaEdit::closeEvent(event);
 			return;
 		}
 		
 		QCloseEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_CloseEvent(this, handle__CloseEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_closeEvent(this, handle__closeEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CloseEvent(QCloseEvent* event) {
+	void virtualbase_closeEvent(QCloseEvent* event) {
 
 		ScintillaEdit::closeEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TabletEvent = 0;
+	intptr_t handle__tabletEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void tabletEvent(QTabletEvent* event) override {
-		if (handle__TabletEvent == 0) {
+		if (handle__tabletEvent == 0) {
 			ScintillaEdit::tabletEvent(event);
 			return;
 		}
 		
 		QTabletEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_TabletEvent(this, handle__TabletEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_tabletEvent(this, handle__tabletEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TabletEvent(QTabletEvent* event) {
+	void virtualbase_tabletEvent(QTabletEvent* event) {
 
 		ScintillaEdit::tabletEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ActionEvent = 0;
+	intptr_t handle__actionEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void actionEvent(QActionEvent* event) override {
-		if (handle__ActionEvent == 0) {
+		if (handle__actionEvent == 0) {
 			ScintillaEdit::actionEvent(event);
 			return;
 		}
 		
 		QActionEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_ActionEvent(this, handle__ActionEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_actionEvent(this, handle__actionEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ActionEvent(QActionEvent* event) {
+	void virtualbase_actionEvent(QActionEvent* event) {
 
 		ScintillaEdit::actionEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ShowEvent = 0;
+	intptr_t handle__showEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void showEvent(QShowEvent* event) override {
-		if (handle__ShowEvent == 0) {
+		if (handle__showEvent == 0) {
 			ScintillaEdit::showEvent(event);
 			return;
 		}
 		
 		QShowEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_ShowEvent(this, handle__ShowEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_showEvent(this, handle__showEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ShowEvent(QShowEvent* event) {
+	void virtualbase_showEvent(QShowEvent* event) {
 
 		ScintillaEdit::showEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HideEvent = 0;
+	intptr_t handle__hideEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void hideEvent(QHideEvent* event) override {
-		if (handle__HideEvent == 0) {
+		if (handle__hideEvent == 0) {
 			ScintillaEdit::hideEvent(event);
 			return;
 		}
 		
 		QHideEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_HideEvent(this, handle__HideEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_hideEvent(this, handle__hideEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_HideEvent(QHideEvent* event) {
+	void virtualbase_hideEvent(QHideEvent* event) {
 
 		ScintillaEdit::hideEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__NativeEvent = 0;
+	intptr_t handle__nativeEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool nativeEvent(const QByteArray& eventType, void* message, long* result) override {
-		if (handle__NativeEvent == 0) {
+		if (handle__nativeEvent == 0) {
 			return ScintillaEdit::nativeEvent(eventType, message, result);
 		}
 		
@@ -6798,13 +6798,13 @@ public:
 		void* sigval2 = message;
 		long* sigval3 = result;
 
-		bool callback_return_value = miqt_exec_callback_ScintillaEdit_NativeEvent(this, handle__NativeEvent, sigval1, sigval2, sigval3);
+		bool callback_return_value = miqt_exec_callback_ScintillaEdit_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, long* result) {
+	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, long* result) {
 		QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
 		return ScintillaEdit::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
@@ -6812,199 +6812,199 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Metric = 0;
+	intptr_t handle__metric = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int metric(QPaintDevice::PaintDeviceMetric param1) const override {
-		if (handle__Metric == 0) {
+		if (handle__metric == 0) {
 			return ScintillaEdit::metric(param1);
 		}
 		
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_ScintillaEdit_Metric(this, handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_ScintillaEdit_metric(this, handle__metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_Metric(int param1) const {
+	int virtualbase_metric(int param1) const {
 
 		return ScintillaEdit::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InitPainter = 0;
+	intptr_t handle__initPainter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void initPainter(QPainter* painter) const override {
-		if (handle__InitPainter == 0) {
+		if (handle__initPainter == 0) {
 			ScintillaEdit::initPainter(painter);
 			return;
 		}
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_ScintillaEdit_InitPainter(this, handle__InitPainter, sigval1);
+		miqt_exec_callback_ScintillaEdit_initPainter(this, handle__initPainter, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_InitPainter(QPainter* painter) const {
+	void virtualbase_initPainter(QPainter* painter) const {
 
 		ScintillaEdit::initPainter(painter);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Redirected = 0;
+	intptr_t handle__redirected = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QPaintDevice* redirected(QPoint* offset) const override {
-		if (handle__Redirected == 0) {
+		if (handle__redirected == 0) {
 			return ScintillaEdit::redirected(offset);
 		}
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_ScintillaEdit_Redirected(this, handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_ScintillaEdit_redirected(this, handle__redirected, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_Redirected(QPoint* offset) const {
+	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
 
 		return ScintillaEdit::redirected(offset);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SharedPainter = 0;
+	intptr_t handle__sharedPainter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QPainter* sharedPainter() const override {
-		if (handle__SharedPainter == 0) {
+		if (handle__sharedPainter == 0) {
 			return ScintillaEdit::sharedPainter();
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_ScintillaEdit_SharedPainter(this, handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_ScintillaEdit_sharedPainter(this, handle__sharedPainter);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QPainter* virtualbase_SharedPainter() const {
+	QPainter* virtualbase_sharedPainter() const {
 
 		return ScintillaEdit::sharedPainter();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__FocusNextPrevChild = 0;
+	intptr_t handle__focusNextPrevChild = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool focusNextPrevChild(bool next) override {
-		if (handle__FocusNextPrevChild == 0) {
+		if (handle__focusNextPrevChild == 0) {
 			return ScintillaEdit::focusNextPrevChild(next);
 		}
 		
 		bool sigval1 = next;
 
-		bool callback_return_value = miqt_exec_callback_ScintillaEdit_FocusNextPrevChild(this, handle__FocusNextPrevChild, sigval1);
+		bool callback_return_value = miqt_exec_callback_ScintillaEdit_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_FocusNextPrevChild(bool next) {
+	bool virtualbase_focusNextPrevChild(bool next) {
 
 		return ScintillaEdit::focusNextPrevChild(next);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			ScintillaEdit::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		ScintillaEdit::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			ScintillaEdit::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		ScintillaEdit::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			ScintillaEdit::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_ScintillaEdit_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_ScintillaEdit_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		ScintillaEdit::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			ScintillaEdit::connectNotify(signal);
 			return;
 		}
@@ -7013,24 +7013,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_ScintillaEdit_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_ScintillaEdit_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		ScintillaEdit::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			ScintillaEdit::disconnectNotify(signal);
 			return;
 		}
@@ -7039,13 +7039,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_ScintillaEdit_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_ScintillaEdit_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		ScintillaEdit::disconnectNotify(*signal);
 
@@ -7065,15 +7065,15 @@ void ScintillaEdit_virtbase(ScintillaEdit* src, ScintillaEditBase** outptr_Scint
 	*outptr_ScintillaEditBase = static_cast<ScintillaEditBase*>(src);
 }
 
-QMetaObject* ScintillaEdit_MetaObject(const ScintillaEdit* self) {
+QMetaObject* ScintillaEdit_metaObject(const ScintillaEdit* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* ScintillaEdit_Metacast(ScintillaEdit* self, const char* param1) {
+void* ScintillaEdit_metacast(ScintillaEdit* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string ScintillaEdit_Tr(const char* s) {
+struct miqt_string ScintillaEdit_tr(const char* s) {
 	QString _ret = ScintillaEdit::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -7084,7 +7084,7 @@ struct miqt_string ScintillaEdit_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string ScintillaEdit_TrUtf8(const char* s) {
+struct miqt_string ScintillaEdit_trUtf8(const char* s) {
 	QString _ret = ScintillaEdit::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -7104,7 +7104,7 @@ struct miqt_string ScintillaEdit_TextReturner(const ScintillaEdit* self, int mes
 	return _ms;
 }
 
-struct miqt_map /* tuple of int and int */  ScintillaEdit_FindText(ScintillaEdit* self, int flags, const char* text, int cpMin, int cpMax) {
+struct miqt_map /* tuple of int and int */  ScintillaEdit_findText(ScintillaEdit* self, int flags, const char* text, int cpMin, int cpMax) {
 	QPair<int, int> _ret = self->find_text(static_cast<int>(flags), text, static_cast<int>(cpMin), static_cast<int>(cpMax));
 	// Convert QPair<> from C++ memory to manually-managed C memory
 	int* _first_arr = static_cast<int*>(malloc(sizeof(int)));
@@ -7118,7 +7118,7 @@ struct miqt_map /* tuple of int and int */  ScintillaEdit_FindText(ScintillaEdit
 	return _out;
 }
 
-struct miqt_string ScintillaEdit_GetTextRange(ScintillaEdit* self, int start, int end) {
+struct miqt_string ScintillaEdit_getTextRange(ScintillaEdit* self, int start, int end) {
 	QByteArray _qb = self->get_text_range(static_cast<int>(start), static_cast<int>(end));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -7127,15 +7127,15 @@ struct miqt_string ScintillaEdit_GetTextRange(ScintillaEdit* self, int start, in
 	return _ms;
 }
 
-ScintillaDocument* ScintillaEdit_GetDoc(ScintillaEdit* self) {
+ScintillaDocument* ScintillaEdit_getDoc(ScintillaEdit* self) {
 	return self->get_doc();
 }
 
-void ScintillaEdit_SetDoc(ScintillaEdit* self, ScintillaDocument* pdoc_) {
+void ScintillaEdit_setDoc(ScintillaEdit* self, ScintillaDocument* pdoc_) {
 	self->set_doc(pdoc_);
 }
 
-struct miqt_map /* tuple of int and int */  ScintillaEdit_FindText2(ScintillaEdit* self, int flags, const char* text, int cpMin, int cpMax) {
+struct miqt_map /* tuple of int and int */  ScintillaEdit_findText2(ScintillaEdit* self, int flags, const char* text, int cpMin, int cpMax) {
 	QPair<int, int> _ret = self->findText(static_cast<int>(flags), text, static_cast<int>(cpMin), static_cast<int>(cpMax));
 	// Convert QPair<> from C++ memory to manually-managed C memory
 	int* _first_arr = static_cast<int*>(malloc(sizeof(int)));
@@ -7149,7 +7149,7 @@ struct miqt_map /* tuple of int and int */  ScintillaEdit_FindText2(ScintillaEdi
 	return _out;
 }
 
-struct miqt_string ScintillaEdit_TextRange(ScintillaEdit* self, int start, int end) {
+struct miqt_string ScintillaEdit_textRange(ScintillaEdit* self, int start, int end) {
 	QByteArray _qb = self->textRange(static_cast<int>(start), static_cast<int>(end));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -7158,156 +7158,156 @@ struct miqt_string ScintillaEdit_TextRange(ScintillaEdit* self, int start, int e
 	return _ms;
 }
 
-long ScintillaEdit_FormatRange(ScintillaEdit* self, bool draw, QPaintDevice* target, QPaintDevice* measure, QRect* print_rect, QRect* page_rect, long range_start, long range_end) {
+long ScintillaEdit_formatRange(ScintillaEdit* self, bool draw, QPaintDevice* target, QPaintDevice* measure, QRect* print_rect, QRect* page_rect, long range_start, long range_end) {
 	return self->format_range(draw, target, measure, *print_rect, *page_rect, static_cast<long>(range_start), static_cast<long>(range_end));
 }
 
-long ScintillaEdit_FormatRange2(ScintillaEdit* self, bool draw, QPaintDevice* target, QPaintDevice* measure, QRect* print_rect, QRect* page_rect, long range_start, long range_end) {
+long ScintillaEdit_formatRange2(ScintillaEdit* self, bool draw, QPaintDevice* target, QPaintDevice* measure, QRect* print_rect, QRect* page_rect, long range_start, long range_end) {
 	return self->formatRange(draw, target, measure, *print_rect, *page_rect, static_cast<long>(range_start), static_cast<long>(range_end));
 }
 
-void ScintillaEdit_AddText(ScintillaEdit* self, intptr_t length, const char* text) {
+void ScintillaEdit_addText(ScintillaEdit* self, intptr_t length, const char* text) {
 	self->addText(static_cast<sptr_t>(length), text);
 }
 
-void ScintillaEdit_AddStyledText(ScintillaEdit* self, intptr_t length, const char* c) {
+void ScintillaEdit_addStyledText(ScintillaEdit* self, intptr_t length, const char* c) {
 	self->addStyledText(static_cast<sptr_t>(length), c);
 }
 
-void ScintillaEdit_InsertText(ScintillaEdit* self, intptr_t pos, const char* text) {
+void ScintillaEdit_insertText(ScintillaEdit* self, intptr_t pos, const char* text) {
 	self->insertText(static_cast<sptr_t>(pos), text);
 }
 
-void ScintillaEdit_ChangeInsertion(ScintillaEdit* self, intptr_t length, const char* text) {
+void ScintillaEdit_changeInsertion(ScintillaEdit* self, intptr_t length, const char* text) {
 	self->changeInsertion(static_cast<sptr_t>(length), text);
 }
 
-void ScintillaEdit_ClearAll(ScintillaEdit* self) {
+void ScintillaEdit_clearAll(ScintillaEdit* self) {
 	self->clearAll();
 }
 
-void ScintillaEdit_DeleteRange(ScintillaEdit* self, intptr_t start, intptr_t lengthDelete) {
+void ScintillaEdit_deleteRange(ScintillaEdit* self, intptr_t start, intptr_t lengthDelete) {
 	self->deleteRange(static_cast<sptr_t>(start), static_cast<sptr_t>(lengthDelete));
 }
 
-void ScintillaEdit_ClearDocumentStyle(ScintillaEdit* self) {
+void ScintillaEdit_clearDocumentStyle(ScintillaEdit* self) {
 	self->clearDocumentStyle();
 }
 
-intptr_t ScintillaEdit_Length(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_length(const ScintillaEdit* self) {
 	sptr_t _ret = self->length();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_CharAt(const ScintillaEdit* self, intptr_t pos) {
+intptr_t ScintillaEdit_charAt(const ScintillaEdit* self, intptr_t pos) {
 	sptr_t _ret = self->charAt(static_cast<sptr_t>(pos));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_CurrentPos(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_currentPos(const ScintillaEdit* self) {
 	sptr_t _ret = self->currentPos();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_Anchor(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_anchor(const ScintillaEdit* self) {
 	sptr_t _ret = self->anchor();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_StyleAt(const ScintillaEdit* self, intptr_t pos) {
+intptr_t ScintillaEdit_styleAt(const ScintillaEdit* self, intptr_t pos) {
 	sptr_t _ret = self->styleAt(static_cast<sptr_t>(pos));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_StyleIndexAt(const ScintillaEdit* self, intptr_t pos) {
+intptr_t ScintillaEdit_styleIndexAt(const ScintillaEdit* self, intptr_t pos) {
 	sptr_t _ret = self->styleIndexAt(static_cast<sptr_t>(pos));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_Redo(ScintillaEdit* self) {
+void ScintillaEdit_redo(ScintillaEdit* self) {
 	self->redo();
 }
 
-void ScintillaEdit_SetUndoCollection(ScintillaEdit* self, bool collectUndo) {
+void ScintillaEdit_setUndoCollection(ScintillaEdit* self, bool collectUndo) {
 	self->setUndoCollection(collectUndo);
 }
 
-void ScintillaEdit_SelectAll(ScintillaEdit* self) {
+void ScintillaEdit_selectAll(ScintillaEdit* self) {
 	self->selectAll();
 }
 
-void ScintillaEdit_SetSavePoint(ScintillaEdit* self) {
+void ScintillaEdit_setSavePoint(ScintillaEdit* self) {
 	self->setSavePoint();
 }
 
-bool ScintillaEdit_CanRedo(ScintillaEdit* self) {
+bool ScintillaEdit_canRedo(ScintillaEdit* self) {
 	return self->canRedo();
 }
 
-intptr_t ScintillaEdit_MarkerLineFromHandle(ScintillaEdit* self, intptr_t markerHandle) {
+intptr_t ScintillaEdit_markerLineFromHandle(ScintillaEdit* self, intptr_t markerHandle) {
 	sptr_t _ret = self->markerLineFromHandle(static_cast<sptr_t>(markerHandle));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_MarkerDeleteHandle(ScintillaEdit* self, intptr_t markerHandle) {
+void ScintillaEdit_markerDeleteHandle(ScintillaEdit* self, intptr_t markerHandle) {
 	self->markerDeleteHandle(static_cast<sptr_t>(markerHandle));
 }
 
-intptr_t ScintillaEdit_MarkerHandleFromLine(ScintillaEdit* self, intptr_t line, intptr_t which) {
+intptr_t ScintillaEdit_markerHandleFromLine(ScintillaEdit* self, intptr_t line, intptr_t which) {
 	sptr_t _ret = self->markerHandleFromLine(static_cast<sptr_t>(line), static_cast<sptr_t>(which));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_MarkerNumberFromLine(ScintillaEdit* self, intptr_t line, intptr_t which) {
+intptr_t ScintillaEdit_markerNumberFromLine(ScintillaEdit* self, intptr_t line, intptr_t which) {
 	sptr_t _ret = self->markerNumberFromLine(static_cast<sptr_t>(line), static_cast<sptr_t>(which));
 	return static_cast<intptr_t>(_ret);
 }
 
-bool ScintillaEdit_UndoCollection(const ScintillaEdit* self) {
+bool ScintillaEdit_undoCollection(const ScintillaEdit* self) {
 	return self->undoCollection();
 }
 
-intptr_t ScintillaEdit_ViewWS(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_viewWS(const ScintillaEdit* self) {
 	sptr_t _ret = self->viewWS();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetViewWS(ScintillaEdit* self, intptr_t viewWS) {
+void ScintillaEdit_setViewWS(ScintillaEdit* self, intptr_t viewWS) {
 	self->setViewWS(static_cast<sptr_t>(viewWS));
 }
 
-intptr_t ScintillaEdit_TabDrawMode(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_tabDrawMode(const ScintillaEdit* self) {
 	sptr_t _ret = self->tabDrawMode();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetTabDrawMode(ScintillaEdit* self, intptr_t tabDrawMode) {
+void ScintillaEdit_setTabDrawMode(ScintillaEdit* self, intptr_t tabDrawMode) {
 	self->setTabDrawMode(static_cast<sptr_t>(tabDrawMode));
 }
 
-intptr_t ScintillaEdit_PositionFromPoint(ScintillaEdit* self, intptr_t x, intptr_t y) {
+intptr_t ScintillaEdit_positionFromPoint(ScintillaEdit* self, intptr_t x, intptr_t y) {
 	sptr_t _ret = self->positionFromPoint(static_cast<sptr_t>(x), static_cast<sptr_t>(y));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_PositionFromPointClose(ScintillaEdit* self, intptr_t x, intptr_t y) {
+intptr_t ScintillaEdit_positionFromPointClose(ScintillaEdit* self, intptr_t x, intptr_t y) {
 	sptr_t _ret = self->positionFromPointClose(static_cast<sptr_t>(x), static_cast<sptr_t>(y));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_GotoLine(ScintillaEdit* self, intptr_t line) {
+void ScintillaEdit_gotoLine(ScintillaEdit* self, intptr_t line) {
 	self->gotoLine(static_cast<sptr_t>(line));
 }
 
-void ScintillaEdit_GotoPos(ScintillaEdit* self, intptr_t caret) {
+void ScintillaEdit_gotoPos(ScintillaEdit* self, intptr_t caret) {
 	self->gotoPos(static_cast<sptr_t>(caret));
 }
 
-void ScintillaEdit_SetAnchor(ScintillaEdit* self, intptr_t anchor) {
+void ScintillaEdit_setAnchor(ScintillaEdit* self, intptr_t anchor) {
 	self->setAnchor(static_cast<sptr_t>(anchor));
 }
 
-struct miqt_string ScintillaEdit_GetCurLine(ScintillaEdit* self, intptr_t length) {
+struct miqt_string ScintillaEdit_getCurLine(ScintillaEdit* self, intptr_t length) {
 	QByteArray _qb = self->getCurLine(static_cast<sptr_t>(length));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -7316,80 +7316,80 @@ struct miqt_string ScintillaEdit_GetCurLine(ScintillaEdit* self, intptr_t length
 	return _ms;
 }
 
-intptr_t ScintillaEdit_EndStyled(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_endStyled(const ScintillaEdit* self) {
 	sptr_t _ret = self->endStyled();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_ConvertEOLs(ScintillaEdit* self, intptr_t eolMode) {
+void ScintillaEdit_convertEOLs(ScintillaEdit* self, intptr_t eolMode) {
 	self->convertEOLs(static_cast<sptr_t>(eolMode));
 }
 
-intptr_t ScintillaEdit_EOLMode(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_eOLMode(const ScintillaEdit* self) {
 	sptr_t _ret = self->eOLMode();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetEOLMode(ScintillaEdit* self, intptr_t eolMode) {
+void ScintillaEdit_setEOLMode(ScintillaEdit* self, intptr_t eolMode) {
 	self->setEOLMode(static_cast<sptr_t>(eolMode));
 }
 
-void ScintillaEdit_StartStyling(ScintillaEdit* self, intptr_t start, intptr_t unused) {
+void ScintillaEdit_startStyling(ScintillaEdit* self, intptr_t start, intptr_t unused) {
 	self->startStyling(static_cast<sptr_t>(start), static_cast<sptr_t>(unused));
 }
 
-void ScintillaEdit_SetStyling(ScintillaEdit* self, intptr_t length, intptr_t style) {
+void ScintillaEdit_setStyling(ScintillaEdit* self, intptr_t length, intptr_t style) {
 	self->setStyling(static_cast<sptr_t>(length), static_cast<sptr_t>(style));
 }
 
-bool ScintillaEdit_BufferedDraw(const ScintillaEdit* self) {
+bool ScintillaEdit_bufferedDraw(const ScintillaEdit* self) {
 	return self->bufferedDraw();
 }
 
-void ScintillaEdit_SetBufferedDraw(ScintillaEdit* self, bool buffered) {
+void ScintillaEdit_setBufferedDraw(ScintillaEdit* self, bool buffered) {
 	self->setBufferedDraw(buffered);
 }
 
-void ScintillaEdit_SetTabWidth(ScintillaEdit* self, intptr_t tabWidth) {
+void ScintillaEdit_setTabWidth(ScintillaEdit* self, intptr_t tabWidth) {
 	self->setTabWidth(static_cast<sptr_t>(tabWidth));
 }
 
-intptr_t ScintillaEdit_TabWidth(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_tabWidth(const ScintillaEdit* self) {
 	sptr_t _ret = self->tabWidth();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetTabMinimumWidth(ScintillaEdit* self, intptr_t pixels) {
+void ScintillaEdit_setTabMinimumWidth(ScintillaEdit* self, intptr_t pixels) {
 	self->setTabMinimumWidth(static_cast<sptr_t>(pixels));
 }
 
-intptr_t ScintillaEdit_TabMinimumWidth(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_tabMinimumWidth(const ScintillaEdit* self) {
 	sptr_t _ret = self->tabMinimumWidth();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_ClearTabStops(ScintillaEdit* self, intptr_t line) {
+void ScintillaEdit_clearTabStops(ScintillaEdit* self, intptr_t line) {
 	self->clearTabStops(static_cast<sptr_t>(line));
 }
 
-void ScintillaEdit_AddTabStop(ScintillaEdit* self, intptr_t line, intptr_t x) {
+void ScintillaEdit_addTabStop(ScintillaEdit* self, intptr_t line, intptr_t x) {
 	self->addTabStop(static_cast<sptr_t>(line), static_cast<sptr_t>(x));
 }
 
-intptr_t ScintillaEdit_GetNextTabStop(ScintillaEdit* self, intptr_t line, intptr_t x) {
+intptr_t ScintillaEdit_getNextTabStop(ScintillaEdit* self, intptr_t line, intptr_t x) {
 	sptr_t _ret = self->getNextTabStop(static_cast<sptr_t>(line), static_cast<sptr_t>(x));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetCodePage(ScintillaEdit* self, intptr_t codePage) {
+void ScintillaEdit_setCodePage(ScintillaEdit* self, intptr_t codePage) {
 	self->setCodePage(static_cast<sptr_t>(codePage));
 }
 
-void ScintillaEdit_SetFontLocale(ScintillaEdit* self, const char* localeName) {
+void ScintillaEdit_setFontLocale(ScintillaEdit* self, const char* localeName) {
 	self->setFontLocale(localeName);
 }
 
-struct miqt_string ScintillaEdit_FontLocale(const ScintillaEdit* self) {
+struct miqt_string ScintillaEdit_fontLocale(const ScintillaEdit* self) {
 	QByteArray _qb = self->fontLocale();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -7398,226 +7398,226 @@ struct miqt_string ScintillaEdit_FontLocale(const ScintillaEdit* self) {
 	return _ms;
 }
 
-intptr_t ScintillaEdit_IMEInteraction(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_iMEInteraction(const ScintillaEdit* self) {
 	sptr_t _ret = self->iMEInteraction();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetIMEInteraction(ScintillaEdit* self, intptr_t imeInteraction) {
+void ScintillaEdit_setIMEInteraction(ScintillaEdit* self, intptr_t imeInteraction) {
 	self->setIMEInteraction(static_cast<sptr_t>(imeInteraction));
 }
 
-void ScintillaEdit_MarkerDefine(ScintillaEdit* self, intptr_t markerNumber, intptr_t markerSymbol) {
+void ScintillaEdit_markerDefine(ScintillaEdit* self, intptr_t markerNumber, intptr_t markerSymbol) {
 	self->markerDefine(static_cast<sptr_t>(markerNumber), static_cast<sptr_t>(markerSymbol));
 }
 
-void ScintillaEdit_MarkerSetFore(ScintillaEdit* self, intptr_t markerNumber, intptr_t fore) {
+void ScintillaEdit_markerSetFore(ScintillaEdit* self, intptr_t markerNumber, intptr_t fore) {
 	self->markerSetFore(static_cast<sptr_t>(markerNumber), static_cast<sptr_t>(fore));
 }
 
-void ScintillaEdit_MarkerSetBack(ScintillaEdit* self, intptr_t markerNumber, intptr_t back) {
+void ScintillaEdit_markerSetBack(ScintillaEdit* self, intptr_t markerNumber, intptr_t back) {
 	self->markerSetBack(static_cast<sptr_t>(markerNumber), static_cast<sptr_t>(back));
 }
 
-void ScintillaEdit_MarkerSetBackSelected(ScintillaEdit* self, intptr_t markerNumber, intptr_t back) {
+void ScintillaEdit_markerSetBackSelected(ScintillaEdit* self, intptr_t markerNumber, intptr_t back) {
 	self->markerSetBackSelected(static_cast<sptr_t>(markerNumber), static_cast<sptr_t>(back));
 }
 
-void ScintillaEdit_MarkerSetForeTranslucent(ScintillaEdit* self, intptr_t markerNumber, intptr_t fore) {
+void ScintillaEdit_markerSetForeTranslucent(ScintillaEdit* self, intptr_t markerNumber, intptr_t fore) {
 	self->markerSetForeTranslucent(static_cast<sptr_t>(markerNumber), static_cast<sptr_t>(fore));
 }
 
-void ScintillaEdit_MarkerSetBackTranslucent(ScintillaEdit* self, intptr_t markerNumber, intptr_t back) {
+void ScintillaEdit_markerSetBackTranslucent(ScintillaEdit* self, intptr_t markerNumber, intptr_t back) {
 	self->markerSetBackTranslucent(static_cast<sptr_t>(markerNumber), static_cast<sptr_t>(back));
 }
 
-void ScintillaEdit_MarkerSetBackSelectedTranslucent(ScintillaEdit* self, intptr_t markerNumber, intptr_t back) {
+void ScintillaEdit_markerSetBackSelectedTranslucent(ScintillaEdit* self, intptr_t markerNumber, intptr_t back) {
 	self->markerSetBackSelectedTranslucent(static_cast<sptr_t>(markerNumber), static_cast<sptr_t>(back));
 }
 
-void ScintillaEdit_MarkerSetStrokeWidth(ScintillaEdit* self, intptr_t markerNumber, intptr_t hundredths) {
+void ScintillaEdit_markerSetStrokeWidth(ScintillaEdit* self, intptr_t markerNumber, intptr_t hundredths) {
 	self->markerSetStrokeWidth(static_cast<sptr_t>(markerNumber), static_cast<sptr_t>(hundredths));
 }
 
-void ScintillaEdit_MarkerEnableHighlight(ScintillaEdit* self, bool enabled) {
+void ScintillaEdit_markerEnableHighlight(ScintillaEdit* self, bool enabled) {
 	self->markerEnableHighlight(enabled);
 }
 
-intptr_t ScintillaEdit_MarkerAdd(ScintillaEdit* self, intptr_t line, intptr_t markerNumber) {
+intptr_t ScintillaEdit_markerAdd(ScintillaEdit* self, intptr_t line, intptr_t markerNumber) {
 	sptr_t _ret = self->markerAdd(static_cast<sptr_t>(line), static_cast<sptr_t>(markerNumber));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_MarkerDelete(ScintillaEdit* self, intptr_t line, intptr_t markerNumber) {
+void ScintillaEdit_markerDelete(ScintillaEdit* self, intptr_t line, intptr_t markerNumber) {
 	self->markerDelete(static_cast<sptr_t>(line), static_cast<sptr_t>(markerNumber));
 }
 
-void ScintillaEdit_MarkerDeleteAll(ScintillaEdit* self, intptr_t markerNumber) {
+void ScintillaEdit_markerDeleteAll(ScintillaEdit* self, intptr_t markerNumber) {
 	self->markerDeleteAll(static_cast<sptr_t>(markerNumber));
 }
 
-intptr_t ScintillaEdit_MarkerGet(ScintillaEdit* self, intptr_t line) {
+intptr_t ScintillaEdit_markerGet(ScintillaEdit* self, intptr_t line) {
 	sptr_t _ret = self->markerGet(static_cast<sptr_t>(line));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_MarkerNext(ScintillaEdit* self, intptr_t lineStart, intptr_t markerMask) {
+intptr_t ScintillaEdit_markerNext(ScintillaEdit* self, intptr_t lineStart, intptr_t markerMask) {
 	sptr_t _ret = self->markerNext(static_cast<sptr_t>(lineStart), static_cast<sptr_t>(markerMask));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_MarkerPrevious(ScintillaEdit* self, intptr_t lineStart, intptr_t markerMask) {
+intptr_t ScintillaEdit_markerPrevious(ScintillaEdit* self, intptr_t lineStart, intptr_t markerMask) {
 	sptr_t _ret = self->markerPrevious(static_cast<sptr_t>(lineStart), static_cast<sptr_t>(markerMask));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_MarkerDefinePixmap(ScintillaEdit* self, intptr_t markerNumber, const char* pixmap) {
+void ScintillaEdit_markerDefinePixmap(ScintillaEdit* self, intptr_t markerNumber, const char* pixmap) {
 	self->markerDefinePixmap(static_cast<sptr_t>(markerNumber), pixmap);
 }
 
-void ScintillaEdit_MarkerAddSet(ScintillaEdit* self, intptr_t line, intptr_t markerSet) {
+void ScintillaEdit_markerAddSet(ScintillaEdit* self, intptr_t line, intptr_t markerSet) {
 	self->markerAddSet(static_cast<sptr_t>(line), static_cast<sptr_t>(markerSet));
 }
 
-void ScintillaEdit_MarkerSetAlpha(ScintillaEdit* self, intptr_t markerNumber, intptr_t alpha) {
+void ScintillaEdit_markerSetAlpha(ScintillaEdit* self, intptr_t markerNumber, intptr_t alpha) {
 	self->markerSetAlpha(static_cast<sptr_t>(markerNumber), static_cast<sptr_t>(alpha));
 }
 
-intptr_t ScintillaEdit_MarkerLayer(const ScintillaEdit* self, intptr_t markerNumber) {
+intptr_t ScintillaEdit_markerLayer(const ScintillaEdit* self, intptr_t markerNumber) {
 	sptr_t _ret = self->markerLayer(static_cast<sptr_t>(markerNumber));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_MarkerSetLayer(ScintillaEdit* self, intptr_t markerNumber, intptr_t layer) {
+void ScintillaEdit_markerSetLayer(ScintillaEdit* self, intptr_t markerNumber, intptr_t layer) {
 	self->markerSetLayer(static_cast<sptr_t>(markerNumber), static_cast<sptr_t>(layer));
 }
 
-void ScintillaEdit_SetMarginTypeN(ScintillaEdit* self, intptr_t margin, intptr_t marginType) {
+void ScintillaEdit_setMarginTypeN(ScintillaEdit* self, intptr_t margin, intptr_t marginType) {
 	self->setMarginTypeN(static_cast<sptr_t>(margin), static_cast<sptr_t>(marginType));
 }
 
-intptr_t ScintillaEdit_MarginTypeN(const ScintillaEdit* self, intptr_t margin) {
+intptr_t ScintillaEdit_marginTypeN(const ScintillaEdit* self, intptr_t margin) {
 	sptr_t _ret = self->marginTypeN(static_cast<sptr_t>(margin));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetMarginWidthN(ScintillaEdit* self, intptr_t margin, intptr_t pixelWidth) {
+void ScintillaEdit_setMarginWidthN(ScintillaEdit* self, intptr_t margin, intptr_t pixelWidth) {
 	self->setMarginWidthN(static_cast<sptr_t>(margin), static_cast<sptr_t>(pixelWidth));
 }
 
-intptr_t ScintillaEdit_MarginWidthN(const ScintillaEdit* self, intptr_t margin) {
+intptr_t ScintillaEdit_marginWidthN(const ScintillaEdit* self, intptr_t margin) {
 	sptr_t _ret = self->marginWidthN(static_cast<sptr_t>(margin));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetMarginMaskN(ScintillaEdit* self, intptr_t margin, intptr_t mask) {
+void ScintillaEdit_setMarginMaskN(ScintillaEdit* self, intptr_t margin, intptr_t mask) {
 	self->setMarginMaskN(static_cast<sptr_t>(margin), static_cast<sptr_t>(mask));
 }
 
-intptr_t ScintillaEdit_MarginMaskN(const ScintillaEdit* self, intptr_t margin) {
+intptr_t ScintillaEdit_marginMaskN(const ScintillaEdit* self, intptr_t margin) {
 	sptr_t _ret = self->marginMaskN(static_cast<sptr_t>(margin));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetMarginSensitiveN(ScintillaEdit* self, intptr_t margin, bool sensitive) {
+void ScintillaEdit_setMarginSensitiveN(ScintillaEdit* self, intptr_t margin, bool sensitive) {
 	self->setMarginSensitiveN(static_cast<sptr_t>(margin), sensitive);
 }
 
-bool ScintillaEdit_MarginSensitiveN(const ScintillaEdit* self, intptr_t margin) {
+bool ScintillaEdit_marginSensitiveN(const ScintillaEdit* self, intptr_t margin) {
 	return self->marginSensitiveN(static_cast<sptr_t>(margin));
 }
 
-void ScintillaEdit_SetMarginCursorN(ScintillaEdit* self, intptr_t margin, intptr_t cursor) {
+void ScintillaEdit_setMarginCursorN(ScintillaEdit* self, intptr_t margin, intptr_t cursor) {
 	self->setMarginCursorN(static_cast<sptr_t>(margin), static_cast<sptr_t>(cursor));
 }
 
-intptr_t ScintillaEdit_MarginCursorN(const ScintillaEdit* self, intptr_t margin) {
+intptr_t ScintillaEdit_marginCursorN(const ScintillaEdit* self, intptr_t margin) {
 	sptr_t _ret = self->marginCursorN(static_cast<sptr_t>(margin));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetMarginBackN(ScintillaEdit* self, intptr_t margin, intptr_t back) {
+void ScintillaEdit_setMarginBackN(ScintillaEdit* self, intptr_t margin, intptr_t back) {
 	self->setMarginBackN(static_cast<sptr_t>(margin), static_cast<sptr_t>(back));
 }
 
-intptr_t ScintillaEdit_MarginBackN(const ScintillaEdit* self, intptr_t margin) {
+intptr_t ScintillaEdit_marginBackN(const ScintillaEdit* self, intptr_t margin) {
 	sptr_t _ret = self->marginBackN(static_cast<sptr_t>(margin));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetMargins(ScintillaEdit* self, intptr_t margins) {
+void ScintillaEdit_setMargins(ScintillaEdit* self, intptr_t margins) {
 	self->setMargins(static_cast<sptr_t>(margins));
 }
 
-intptr_t ScintillaEdit_Margins(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_margins(const ScintillaEdit* self) {
 	sptr_t _ret = self->margins();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_StyleClearAll(ScintillaEdit* self) {
+void ScintillaEdit_styleClearAll(ScintillaEdit* self) {
 	self->styleClearAll();
 }
 
-void ScintillaEdit_StyleSetFore(ScintillaEdit* self, intptr_t style, intptr_t fore) {
+void ScintillaEdit_styleSetFore(ScintillaEdit* self, intptr_t style, intptr_t fore) {
 	self->styleSetFore(static_cast<sptr_t>(style), static_cast<sptr_t>(fore));
 }
 
-void ScintillaEdit_StyleSetBack(ScintillaEdit* self, intptr_t style, intptr_t back) {
+void ScintillaEdit_styleSetBack(ScintillaEdit* self, intptr_t style, intptr_t back) {
 	self->styleSetBack(static_cast<sptr_t>(style), static_cast<sptr_t>(back));
 }
 
-void ScintillaEdit_StyleSetBold(ScintillaEdit* self, intptr_t style, bool bold) {
+void ScintillaEdit_styleSetBold(ScintillaEdit* self, intptr_t style, bool bold) {
 	self->styleSetBold(static_cast<sptr_t>(style), bold);
 }
 
-void ScintillaEdit_StyleSetItalic(ScintillaEdit* self, intptr_t style, bool italic) {
+void ScintillaEdit_styleSetItalic(ScintillaEdit* self, intptr_t style, bool italic) {
 	self->styleSetItalic(static_cast<sptr_t>(style), italic);
 }
 
-void ScintillaEdit_StyleSetSize(ScintillaEdit* self, intptr_t style, intptr_t sizePoints) {
+void ScintillaEdit_styleSetSize(ScintillaEdit* self, intptr_t style, intptr_t sizePoints) {
 	self->styleSetSize(static_cast<sptr_t>(style), static_cast<sptr_t>(sizePoints));
 }
 
-void ScintillaEdit_StyleSetFont(ScintillaEdit* self, intptr_t style, const char* fontName) {
+void ScintillaEdit_styleSetFont(ScintillaEdit* self, intptr_t style, const char* fontName) {
 	self->styleSetFont(static_cast<sptr_t>(style), fontName);
 }
 
-void ScintillaEdit_StyleSetEOLFilled(ScintillaEdit* self, intptr_t style, bool eolFilled) {
+void ScintillaEdit_styleSetEOLFilled(ScintillaEdit* self, intptr_t style, bool eolFilled) {
 	self->styleSetEOLFilled(static_cast<sptr_t>(style), eolFilled);
 }
 
-void ScintillaEdit_StyleResetDefault(ScintillaEdit* self) {
+void ScintillaEdit_styleResetDefault(ScintillaEdit* self) {
 	self->styleResetDefault();
 }
 
-void ScintillaEdit_StyleSetUnderline(ScintillaEdit* self, intptr_t style, bool underline) {
+void ScintillaEdit_styleSetUnderline(ScintillaEdit* self, intptr_t style, bool underline) {
 	self->styleSetUnderline(static_cast<sptr_t>(style), underline);
 }
 
-intptr_t ScintillaEdit_StyleFore(const ScintillaEdit* self, intptr_t style) {
+intptr_t ScintillaEdit_styleFore(const ScintillaEdit* self, intptr_t style) {
 	sptr_t _ret = self->styleFore(static_cast<sptr_t>(style));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_StyleBack(const ScintillaEdit* self, intptr_t style) {
+intptr_t ScintillaEdit_styleBack(const ScintillaEdit* self, intptr_t style) {
 	sptr_t _ret = self->styleBack(static_cast<sptr_t>(style));
 	return static_cast<intptr_t>(_ret);
 }
 
-bool ScintillaEdit_StyleBold(const ScintillaEdit* self, intptr_t style) {
+bool ScintillaEdit_styleBold(const ScintillaEdit* self, intptr_t style) {
 	return self->styleBold(static_cast<sptr_t>(style));
 }
 
-bool ScintillaEdit_StyleItalic(const ScintillaEdit* self, intptr_t style) {
+bool ScintillaEdit_styleItalic(const ScintillaEdit* self, intptr_t style) {
 	return self->styleItalic(static_cast<sptr_t>(style));
 }
 
-intptr_t ScintillaEdit_StyleSize(const ScintillaEdit* self, intptr_t style) {
+intptr_t ScintillaEdit_styleSize(const ScintillaEdit* self, intptr_t style) {
 	sptr_t _ret = self->styleSize(static_cast<sptr_t>(style));
 	return static_cast<intptr_t>(_ret);
 }
 
-struct miqt_string ScintillaEdit_StyleFont(const ScintillaEdit* self, intptr_t style) {
+struct miqt_string ScintillaEdit_styleFont(const ScintillaEdit* self, intptr_t style) {
 	QByteArray _qb = self->styleFont(static_cast<sptr_t>(style));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -7626,88 +7626,88 @@ struct miqt_string ScintillaEdit_StyleFont(const ScintillaEdit* self, intptr_t s
 	return _ms;
 }
 
-bool ScintillaEdit_StyleEOLFilled(const ScintillaEdit* self, intptr_t style) {
+bool ScintillaEdit_styleEOLFilled(const ScintillaEdit* self, intptr_t style) {
 	return self->styleEOLFilled(static_cast<sptr_t>(style));
 }
 
-bool ScintillaEdit_StyleUnderline(const ScintillaEdit* self, intptr_t style) {
+bool ScintillaEdit_styleUnderline(const ScintillaEdit* self, intptr_t style) {
 	return self->styleUnderline(static_cast<sptr_t>(style));
 }
 
-intptr_t ScintillaEdit_StyleCase(const ScintillaEdit* self, intptr_t style) {
+intptr_t ScintillaEdit_styleCase(const ScintillaEdit* self, intptr_t style) {
 	sptr_t _ret = self->styleCase(static_cast<sptr_t>(style));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_StyleCharacterSet(const ScintillaEdit* self, intptr_t style) {
+intptr_t ScintillaEdit_styleCharacterSet(const ScintillaEdit* self, intptr_t style) {
 	sptr_t _ret = self->styleCharacterSet(static_cast<sptr_t>(style));
 	return static_cast<intptr_t>(_ret);
 }
 
-bool ScintillaEdit_StyleVisible(const ScintillaEdit* self, intptr_t style) {
+bool ScintillaEdit_styleVisible(const ScintillaEdit* self, intptr_t style) {
 	return self->styleVisible(static_cast<sptr_t>(style));
 }
 
-bool ScintillaEdit_StyleChangeable(const ScintillaEdit* self, intptr_t style) {
+bool ScintillaEdit_styleChangeable(const ScintillaEdit* self, intptr_t style) {
 	return self->styleChangeable(static_cast<sptr_t>(style));
 }
 
-bool ScintillaEdit_StyleHotSpot(const ScintillaEdit* self, intptr_t style) {
+bool ScintillaEdit_styleHotSpot(const ScintillaEdit* self, intptr_t style) {
 	return self->styleHotSpot(static_cast<sptr_t>(style));
 }
 
-void ScintillaEdit_StyleSetCase(ScintillaEdit* self, intptr_t style, intptr_t caseVisible) {
+void ScintillaEdit_styleSetCase(ScintillaEdit* self, intptr_t style, intptr_t caseVisible) {
 	self->styleSetCase(static_cast<sptr_t>(style), static_cast<sptr_t>(caseVisible));
 }
 
-void ScintillaEdit_StyleSetSizeFractional(ScintillaEdit* self, intptr_t style, intptr_t sizeHundredthPoints) {
+void ScintillaEdit_styleSetSizeFractional(ScintillaEdit* self, intptr_t style, intptr_t sizeHundredthPoints) {
 	self->styleSetSizeFractional(static_cast<sptr_t>(style), static_cast<sptr_t>(sizeHundredthPoints));
 }
 
-intptr_t ScintillaEdit_StyleSizeFractional(const ScintillaEdit* self, intptr_t style) {
+intptr_t ScintillaEdit_styleSizeFractional(const ScintillaEdit* self, intptr_t style) {
 	sptr_t _ret = self->styleSizeFractional(static_cast<sptr_t>(style));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_StyleSetWeight(ScintillaEdit* self, intptr_t style, intptr_t weight) {
+void ScintillaEdit_styleSetWeight(ScintillaEdit* self, intptr_t style, intptr_t weight) {
 	self->styleSetWeight(static_cast<sptr_t>(style), static_cast<sptr_t>(weight));
 }
 
-intptr_t ScintillaEdit_StyleWeight(const ScintillaEdit* self, intptr_t style) {
+intptr_t ScintillaEdit_styleWeight(const ScintillaEdit* self, intptr_t style) {
 	sptr_t _ret = self->styleWeight(static_cast<sptr_t>(style));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_StyleSetCharacterSet(ScintillaEdit* self, intptr_t style, intptr_t characterSet) {
+void ScintillaEdit_styleSetCharacterSet(ScintillaEdit* self, intptr_t style, intptr_t characterSet) {
 	self->styleSetCharacterSet(static_cast<sptr_t>(style), static_cast<sptr_t>(characterSet));
 }
 
-void ScintillaEdit_StyleSetHotSpot(ScintillaEdit* self, intptr_t style, bool hotspot) {
+void ScintillaEdit_styleSetHotSpot(ScintillaEdit* self, intptr_t style, bool hotspot) {
 	self->styleSetHotSpot(static_cast<sptr_t>(style), hotspot);
 }
 
-void ScintillaEdit_StyleSetCheckMonospaced(ScintillaEdit* self, intptr_t style, bool checkMonospaced) {
+void ScintillaEdit_styleSetCheckMonospaced(ScintillaEdit* self, intptr_t style, bool checkMonospaced) {
 	self->styleSetCheckMonospaced(static_cast<sptr_t>(style), checkMonospaced);
 }
 
-bool ScintillaEdit_StyleCheckMonospaced(const ScintillaEdit* self, intptr_t style) {
+bool ScintillaEdit_styleCheckMonospaced(const ScintillaEdit* self, intptr_t style) {
 	return self->styleCheckMonospaced(static_cast<sptr_t>(style));
 }
 
-void ScintillaEdit_StyleSetStretch(ScintillaEdit* self, intptr_t style, intptr_t stretch) {
+void ScintillaEdit_styleSetStretch(ScintillaEdit* self, intptr_t style, intptr_t stretch) {
 	self->styleSetStretch(static_cast<sptr_t>(style), static_cast<sptr_t>(stretch));
 }
 
-intptr_t ScintillaEdit_StyleStretch(const ScintillaEdit* self, intptr_t style) {
+intptr_t ScintillaEdit_styleStretch(const ScintillaEdit* self, intptr_t style) {
 	sptr_t _ret = self->styleStretch(static_cast<sptr_t>(style));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_StyleSetInvisibleRepresentation(ScintillaEdit* self, intptr_t style, const char* representation) {
+void ScintillaEdit_styleSetInvisibleRepresentation(ScintillaEdit* self, intptr_t style, const char* representation) {
 	self->styleSetInvisibleRepresentation(static_cast<sptr_t>(style), representation);
 }
 
-struct miqt_string ScintillaEdit_StyleInvisibleRepresentation(const ScintillaEdit* self, intptr_t style) {
+struct miqt_string ScintillaEdit_styleInvisibleRepresentation(const ScintillaEdit* self, intptr_t style) {
 	QByteArray _qb = self->styleInvisibleRepresentation(static_cast<sptr_t>(style));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -7716,121 +7716,121 @@ struct miqt_string ScintillaEdit_StyleInvisibleRepresentation(const ScintillaEdi
 	return _ms;
 }
 
-void ScintillaEdit_SetElementColour(ScintillaEdit* self, intptr_t element, intptr_t colourElement) {
+void ScintillaEdit_setElementColour(ScintillaEdit* self, intptr_t element, intptr_t colourElement) {
 	self->setElementColour(static_cast<sptr_t>(element), static_cast<sptr_t>(colourElement));
 }
 
-intptr_t ScintillaEdit_ElementColour(const ScintillaEdit* self, intptr_t element) {
+intptr_t ScintillaEdit_elementColour(const ScintillaEdit* self, intptr_t element) {
 	sptr_t _ret = self->elementColour(static_cast<sptr_t>(element));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_ResetElementColour(ScintillaEdit* self, intptr_t element) {
+void ScintillaEdit_resetElementColour(ScintillaEdit* self, intptr_t element) {
 	self->resetElementColour(static_cast<sptr_t>(element));
 }
 
-bool ScintillaEdit_ElementIsSet(const ScintillaEdit* self, intptr_t element) {
+bool ScintillaEdit_elementIsSet(const ScintillaEdit* self, intptr_t element) {
 	return self->elementIsSet(static_cast<sptr_t>(element));
 }
 
-bool ScintillaEdit_ElementAllowsTranslucent(const ScintillaEdit* self, intptr_t element) {
+bool ScintillaEdit_elementAllowsTranslucent(const ScintillaEdit* self, intptr_t element) {
 	return self->elementAllowsTranslucent(static_cast<sptr_t>(element));
 }
 
-intptr_t ScintillaEdit_ElementBaseColour(const ScintillaEdit* self, intptr_t element) {
+intptr_t ScintillaEdit_elementBaseColour(const ScintillaEdit* self, intptr_t element) {
 	sptr_t _ret = self->elementBaseColour(static_cast<sptr_t>(element));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetSelFore(ScintillaEdit* self, bool useSetting, intptr_t fore) {
+void ScintillaEdit_setSelFore(ScintillaEdit* self, bool useSetting, intptr_t fore) {
 	self->setSelFore(useSetting, static_cast<sptr_t>(fore));
 }
 
-void ScintillaEdit_SetSelBack(ScintillaEdit* self, bool useSetting, intptr_t back) {
+void ScintillaEdit_setSelBack(ScintillaEdit* self, bool useSetting, intptr_t back) {
 	self->setSelBack(useSetting, static_cast<sptr_t>(back));
 }
 
-intptr_t ScintillaEdit_SelAlpha(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_selAlpha(const ScintillaEdit* self) {
 	sptr_t _ret = self->selAlpha();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetSelAlpha(ScintillaEdit* self, intptr_t alpha) {
+void ScintillaEdit_setSelAlpha(ScintillaEdit* self, intptr_t alpha) {
 	self->setSelAlpha(static_cast<sptr_t>(alpha));
 }
 
-bool ScintillaEdit_SelEOLFilled(const ScintillaEdit* self) {
+bool ScintillaEdit_selEOLFilled(const ScintillaEdit* self) {
 	return self->selEOLFilled();
 }
 
-void ScintillaEdit_SetSelEOLFilled(ScintillaEdit* self, bool filled) {
+void ScintillaEdit_setSelEOLFilled(ScintillaEdit* self, bool filled) {
 	self->setSelEOLFilled(filled);
 }
 
-intptr_t ScintillaEdit_SelectionLayer(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_selectionLayer(const ScintillaEdit* self) {
 	sptr_t _ret = self->selectionLayer();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetSelectionLayer(ScintillaEdit* self, intptr_t layer) {
+void ScintillaEdit_setSelectionLayer(ScintillaEdit* self, intptr_t layer) {
 	self->setSelectionLayer(static_cast<sptr_t>(layer));
 }
 
-intptr_t ScintillaEdit_CaretLineLayer(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_caretLineLayer(const ScintillaEdit* self) {
 	sptr_t _ret = self->caretLineLayer();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetCaretLineLayer(ScintillaEdit* self, intptr_t layer) {
+void ScintillaEdit_setCaretLineLayer(ScintillaEdit* self, intptr_t layer) {
 	self->setCaretLineLayer(static_cast<sptr_t>(layer));
 }
 
-bool ScintillaEdit_CaretLineHighlightSubLine(const ScintillaEdit* self) {
+bool ScintillaEdit_caretLineHighlightSubLine(const ScintillaEdit* self) {
 	return self->caretLineHighlightSubLine();
 }
 
-void ScintillaEdit_SetCaretLineHighlightSubLine(ScintillaEdit* self, bool subLine) {
+void ScintillaEdit_setCaretLineHighlightSubLine(ScintillaEdit* self, bool subLine) {
 	self->setCaretLineHighlightSubLine(subLine);
 }
 
-void ScintillaEdit_SetCaretFore(ScintillaEdit* self, intptr_t fore) {
+void ScintillaEdit_setCaretFore(ScintillaEdit* self, intptr_t fore) {
 	self->setCaretFore(static_cast<sptr_t>(fore));
 }
 
-void ScintillaEdit_AssignCmdKey(ScintillaEdit* self, intptr_t keyDefinition, intptr_t sciCommand) {
+void ScintillaEdit_assignCmdKey(ScintillaEdit* self, intptr_t keyDefinition, intptr_t sciCommand) {
 	self->assignCmdKey(static_cast<sptr_t>(keyDefinition), static_cast<sptr_t>(sciCommand));
 }
 
-void ScintillaEdit_ClearCmdKey(ScintillaEdit* self, intptr_t keyDefinition) {
+void ScintillaEdit_clearCmdKey(ScintillaEdit* self, intptr_t keyDefinition) {
 	self->clearCmdKey(static_cast<sptr_t>(keyDefinition));
 }
 
-void ScintillaEdit_ClearAllCmdKeys(ScintillaEdit* self) {
+void ScintillaEdit_clearAllCmdKeys(ScintillaEdit* self) {
 	self->clearAllCmdKeys();
 }
 
-void ScintillaEdit_SetStylingEx(ScintillaEdit* self, intptr_t length, const char* styles) {
+void ScintillaEdit_setStylingEx(ScintillaEdit* self, intptr_t length, const char* styles) {
 	self->setStylingEx(static_cast<sptr_t>(length), styles);
 }
 
-void ScintillaEdit_StyleSetVisible(ScintillaEdit* self, intptr_t style, bool visible) {
+void ScintillaEdit_styleSetVisible(ScintillaEdit* self, intptr_t style, bool visible) {
 	self->styleSetVisible(static_cast<sptr_t>(style), visible);
 }
 
-intptr_t ScintillaEdit_CaretPeriod(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_caretPeriod(const ScintillaEdit* self) {
 	sptr_t _ret = self->caretPeriod();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetCaretPeriod(ScintillaEdit* self, intptr_t periodMilliseconds) {
+void ScintillaEdit_setCaretPeriod(ScintillaEdit* self, intptr_t periodMilliseconds) {
 	self->setCaretPeriod(static_cast<sptr_t>(periodMilliseconds));
 }
 
-void ScintillaEdit_SetWordChars(ScintillaEdit* self, const char* characters) {
+void ScintillaEdit_setWordChars(ScintillaEdit* self, const char* characters) {
 	self->setWordChars(characters);
 }
 
-struct miqt_string ScintillaEdit_WordChars(const ScintillaEdit* self) {
+struct miqt_string ScintillaEdit_wordChars(const ScintillaEdit* self) {
 	QByteArray _qb = self->wordChars();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -7839,88 +7839,88 @@ struct miqt_string ScintillaEdit_WordChars(const ScintillaEdit* self) {
 	return _ms;
 }
 
-void ScintillaEdit_SetCharacterCategoryOptimization(ScintillaEdit* self, intptr_t countCharacters) {
+void ScintillaEdit_setCharacterCategoryOptimization(ScintillaEdit* self, intptr_t countCharacters) {
 	self->setCharacterCategoryOptimization(static_cast<sptr_t>(countCharacters));
 }
 
-intptr_t ScintillaEdit_CharacterCategoryOptimization(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_characterCategoryOptimization(const ScintillaEdit* self) {
 	sptr_t _ret = self->characterCategoryOptimization();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_BeginUndoAction(ScintillaEdit* self) {
+void ScintillaEdit_beginUndoAction(ScintillaEdit* self) {
 	self->beginUndoAction();
 }
 
-void ScintillaEdit_EndUndoAction(ScintillaEdit* self) {
+void ScintillaEdit_endUndoAction(ScintillaEdit* self) {
 	self->endUndoAction();
 }
 
-intptr_t ScintillaEdit_UndoSequence(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_undoSequence(const ScintillaEdit* self) {
 	sptr_t _ret = self->undoSequence();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_UndoActions(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_undoActions(const ScintillaEdit* self) {
 	sptr_t _ret = self->undoActions();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetUndoSavePoint(ScintillaEdit* self, intptr_t action) {
+void ScintillaEdit_setUndoSavePoint(ScintillaEdit* self, intptr_t action) {
 	self->setUndoSavePoint(static_cast<sptr_t>(action));
 }
 
-intptr_t ScintillaEdit_UndoSavePoint(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_undoSavePoint(const ScintillaEdit* self) {
 	sptr_t _ret = self->undoSavePoint();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetUndoDetach(ScintillaEdit* self, intptr_t action) {
+void ScintillaEdit_setUndoDetach(ScintillaEdit* self, intptr_t action) {
 	self->setUndoDetach(static_cast<sptr_t>(action));
 }
 
-intptr_t ScintillaEdit_UndoDetach(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_undoDetach(const ScintillaEdit* self) {
 	sptr_t _ret = self->undoDetach();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetUndoTentative(ScintillaEdit* self, intptr_t action) {
+void ScintillaEdit_setUndoTentative(ScintillaEdit* self, intptr_t action) {
 	self->setUndoTentative(static_cast<sptr_t>(action));
 }
 
-intptr_t ScintillaEdit_UndoTentative(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_undoTentative(const ScintillaEdit* self) {
 	sptr_t _ret = self->undoTentative();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetUndoCurrent(ScintillaEdit* self, intptr_t action) {
+void ScintillaEdit_setUndoCurrent(ScintillaEdit* self, intptr_t action) {
 	self->setUndoCurrent(static_cast<sptr_t>(action));
 }
 
-intptr_t ScintillaEdit_UndoCurrent(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_undoCurrent(const ScintillaEdit* self) {
 	sptr_t _ret = self->undoCurrent();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_PushUndoActionType(ScintillaEdit* self, intptr_t typeVal, intptr_t pos) {
-	self->pushUndoActionType(static_cast<sptr_t>(typeVal), static_cast<sptr_t>(pos));
+void ScintillaEdit_pushUndoActionType(ScintillaEdit* self, intptr_t type, intptr_t pos) {
+	self->pushUndoActionType(static_cast<sptr_t>(type), static_cast<sptr_t>(pos));
 }
 
-void ScintillaEdit_ChangeLastUndoActionText(ScintillaEdit* self, intptr_t length, const char* text) {
+void ScintillaEdit_changeLastUndoActionText(ScintillaEdit* self, intptr_t length, const char* text) {
 	self->changeLastUndoActionText(static_cast<sptr_t>(length), text);
 }
 
-intptr_t ScintillaEdit_UndoActionType(const ScintillaEdit* self, intptr_t action) {
+intptr_t ScintillaEdit_undoActionType(const ScintillaEdit* self, intptr_t action) {
 	sptr_t _ret = self->undoActionType(static_cast<sptr_t>(action));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_UndoActionPosition(const ScintillaEdit* self, intptr_t action) {
+intptr_t ScintillaEdit_undoActionPosition(const ScintillaEdit* self, intptr_t action) {
 	sptr_t _ret = self->undoActionPosition(static_cast<sptr_t>(action));
 	return static_cast<intptr_t>(_ret);
 }
 
-struct miqt_string ScintillaEdit_UndoActionText(const ScintillaEdit* self, intptr_t action) {
+struct miqt_string ScintillaEdit_undoActionText(const ScintillaEdit* self, intptr_t action) {
 	QByteArray _qb = self->undoActionText(static_cast<sptr_t>(action));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -7929,418 +7929,418 @@ struct miqt_string ScintillaEdit_UndoActionText(const ScintillaEdit* self, intpt
 	return _ms;
 }
 
-void ScintillaEdit_IndicSetStyle(ScintillaEdit* self, intptr_t indicator, intptr_t indicatorStyle) {
+void ScintillaEdit_indicSetStyle(ScintillaEdit* self, intptr_t indicator, intptr_t indicatorStyle) {
 	self->indicSetStyle(static_cast<sptr_t>(indicator), static_cast<sptr_t>(indicatorStyle));
 }
 
-intptr_t ScintillaEdit_IndicStyle(const ScintillaEdit* self, intptr_t indicator) {
+intptr_t ScintillaEdit_indicStyle(const ScintillaEdit* self, intptr_t indicator) {
 	sptr_t _ret = self->indicStyle(static_cast<sptr_t>(indicator));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_IndicSetFore(ScintillaEdit* self, intptr_t indicator, intptr_t fore) {
+void ScintillaEdit_indicSetFore(ScintillaEdit* self, intptr_t indicator, intptr_t fore) {
 	self->indicSetFore(static_cast<sptr_t>(indicator), static_cast<sptr_t>(fore));
 }
 
-intptr_t ScintillaEdit_IndicFore(const ScintillaEdit* self, intptr_t indicator) {
+intptr_t ScintillaEdit_indicFore(const ScintillaEdit* self, intptr_t indicator) {
 	sptr_t _ret = self->indicFore(static_cast<sptr_t>(indicator));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_IndicSetUnder(ScintillaEdit* self, intptr_t indicator, bool under) {
+void ScintillaEdit_indicSetUnder(ScintillaEdit* self, intptr_t indicator, bool under) {
 	self->indicSetUnder(static_cast<sptr_t>(indicator), under);
 }
 
-bool ScintillaEdit_IndicUnder(const ScintillaEdit* self, intptr_t indicator) {
+bool ScintillaEdit_indicUnder(const ScintillaEdit* self, intptr_t indicator) {
 	return self->indicUnder(static_cast<sptr_t>(indicator));
 }
 
-void ScintillaEdit_IndicSetHoverStyle(ScintillaEdit* self, intptr_t indicator, intptr_t indicatorStyle) {
+void ScintillaEdit_indicSetHoverStyle(ScintillaEdit* self, intptr_t indicator, intptr_t indicatorStyle) {
 	self->indicSetHoverStyle(static_cast<sptr_t>(indicator), static_cast<sptr_t>(indicatorStyle));
 }
 
-intptr_t ScintillaEdit_IndicHoverStyle(const ScintillaEdit* self, intptr_t indicator) {
+intptr_t ScintillaEdit_indicHoverStyle(const ScintillaEdit* self, intptr_t indicator) {
 	sptr_t _ret = self->indicHoverStyle(static_cast<sptr_t>(indicator));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_IndicSetHoverFore(ScintillaEdit* self, intptr_t indicator, intptr_t fore) {
+void ScintillaEdit_indicSetHoverFore(ScintillaEdit* self, intptr_t indicator, intptr_t fore) {
 	self->indicSetHoverFore(static_cast<sptr_t>(indicator), static_cast<sptr_t>(fore));
 }
 
-intptr_t ScintillaEdit_IndicHoverFore(const ScintillaEdit* self, intptr_t indicator) {
+intptr_t ScintillaEdit_indicHoverFore(const ScintillaEdit* self, intptr_t indicator) {
 	sptr_t _ret = self->indicHoverFore(static_cast<sptr_t>(indicator));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_IndicSetFlags(ScintillaEdit* self, intptr_t indicator, intptr_t flags) {
+void ScintillaEdit_indicSetFlags(ScintillaEdit* self, intptr_t indicator, intptr_t flags) {
 	self->indicSetFlags(static_cast<sptr_t>(indicator), static_cast<sptr_t>(flags));
 }
 
-intptr_t ScintillaEdit_IndicFlags(const ScintillaEdit* self, intptr_t indicator) {
+intptr_t ScintillaEdit_indicFlags(const ScintillaEdit* self, intptr_t indicator) {
 	sptr_t _ret = self->indicFlags(static_cast<sptr_t>(indicator));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_IndicSetStrokeWidth(ScintillaEdit* self, intptr_t indicator, intptr_t hundredths) {
+void ScintillaEdit_indicSetStrokeWidth(ScintillaEdit* self, intptr_t indicator, intptr_t hundredths) {
 	self->indicSetStrokeWidth(static_cast<sptr_t>(indicator), static_cast<sptr_t>(hundredths));
 }
 
-intptr_t ScintillaEdit_IndicStrokeWidth(const ScintillaEdit* self, intptr_t indicator) {
+intptr_t ScintillaEdit_indicStrokeWidth(const ScintillaEdit* self, intptr_t indicator) {
 	sptr_t _ret = self->indicStrokeWidth(static_cast<sptr_t>(indicator));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetWhitespaceFore(ScintillaEdit* self, bool useSetting, intptr_t fore) {
+void ScintillaEdit_setWhitespaceFore(ScintillaEdit* self, bool useSetting, intptr_t fore) {
 	self->setWhitespaceFore(useSetting, static_cast<sptr_t>(fore));
 }
 
-void ScintillaEdit_SetWhitespaceBack(ScintillaEdit* self, bool useSetting, intptr_t back) {
+void ScintillaEdit_setWhitespaceBack(ScintillaEdit* self, bool useSetting, intptr_t back) {
 	self->setWhitespaceBack(useSetting, static_cast<sptr_t>(back));
 }
 
-void ScintillaEdit_SetWhitespaceSize(ScintillaEdit* self, intptr_t size) {
+void ScintillaEdit_setWhitespaceSize(ScintillaEdit* self, intptr_t size) {
 	self->setWhitespaceSize(static_cast<sptr_t>(size));
 }
 
-intptr_t ScintillaEdit_WhitespaceSize(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_whitespaceSize(const ScintillaEdit* self) {
 	sptr_t _ret = self->whitespaceSize();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetLineState(ScintillaEdit* self, intptr_t line, intptr_t state) {
+void ScintillaEdit_setLineState(ScintillaEdit* self, intptr_t line, intptr_t state) {
 	self->setLineState(static_cast<sptr_t>(line), static_cast<sptr_t>(state));
 }
 
-intptr_t ScintillaEdit_LineState(const ScintillaEdit* self, intptr_t line) {
+intptr_t ScintillaEdit_lineState(const ScintillaEdit* self, intptr_t line) {
 	sptr_t _ret = self->lineState(static_cast<sptr_t>(line));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_MaxLineState(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_maxLineState(const ScintillaEdit* self) {
 	sptr_t _ret = self->maxLineState();
 	return static_cast<intptr_t>(_ret);
 }
 
-bool ScintillaEdit_CaretLineVisible(const ScintillaEdit* self) {
+bool ScintillaEdit_caretLineVisible(const ScintillaEdit* self) {
 	return self->caretLineVisible();
 }
 
-void ScintillaEdit_SetCaretLineVisible(ScintillaEdit* self, bool show) {
+void ScintillaEdit_setCaretLineVisible(ScintillaEdit* self, bool show) {
 	self->setCaretLineVisible(show);
 }
 
-intptr_t ScintillaEdit_CaretLineBack(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_caretLineBack(const ScintillaEdit* self) {
 	sptr_t _ret = self->caretLineBack();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetCaretLineBack(ScintillaEdit* self, intptr_t back) {
+void ScintillaEdit_setCaretLineBack(ScintillaEdit* self, intptr_t back) {
 	self->setCaretLineBack(static_cast<sptr_t>(back));
 }
 
-intptr_t ScintillaEdit_CaretLineFrame(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_caretLineFrame(const ScintillaEdit* self) {
 	sptr_t _ret = self->caretLineFrame();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetCaretLineFrame(ScintillaEdit* self, intptr_t width) {
+void ScintillaEdit_setCaretLineFrame(ScintillaEdit* self, intptr_t width) {
 	self->setCaretLineFrame(static_cast<sptr_t>(width));
 }
 
-void ScintillaEdit_StyleSetChangeable(ScintillaEdit* self, intptr_t style, bool changeable) {
+void ScintillaEdit_styleSetChangeable(ScintillaEdit* self, intptr_t style, bool changeable) {
 	self->styleSetChangeable(static_cast<sptr_t>(style), changeable);
 }
 
-void ScintillaEdit_AutoCShow(ScintillaEdit* self, intptr_t lengthEntered, const char* itemList) {
+void ScintillaEdit_autoCShow(ScintillaEdit* self, intptr_t lengthEntered, const char* itemList) {
 	self->autoCShow(static_cast<sptr_t>(lengthEntered), itemList);
 }
 
-void ScintillaEdit_AutoCCancel(ScintillaEdit* self) {
+void ScintillaEdit_autoCCancel(ScintillaEdit* self) {
 	self->autoCCancel();
 }
 
-bool ScintillaEdit_AutoCActive(ScintillaEdit* self) {
+bool ScintillaEdit_autoCActive(ScintillaEdit* self) {
 	return self->autoCActive();
 }
 
-intptr_t ScintillaEdit_AutoCPosStart(ScintillaEdit* self) {
+intptr_t ScintillaEdit_autoCPosStart(ScintillaEdit* self) {
 	sptr_t _ret = self->autoCPosStart();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_AutoCComplete(ScintillaEdit* self) {
+void ScintillaEdit_autoCComplete(ScintillaEdit* self) {
 	self->autoCComplete();
 }
 
-void ScintillaEdit_AutoCStops(ScintillaEdit* self, const char* characterSet) {
+void ScintillaEdit_autoCStops(ScintillaEdit* self, const char* characterSet) {
 	self->autoCStops(characterSet);
 }
 
-void ScintillaEdit_AutoCSetSeparator(ScintillaEdit* self, intptr_t separatorCharacter) {
+void ScintillaEdit_autoCSetSeparator(ScintillaEdit* self, intptr_t separatorCharacter) {
 	self->autoCSetSeparator(static_cast<sptr_t>(separatorCharacter));
 }
 
-intptr_t ScintillaEdit_AutoCSeparator(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_autoCSeparator(const ScintillaEdit* self) {
 	sptr_t _ret = self->autoCSeparator();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_AutoCSelect(ScintillaEdit* self, const char* selectVal) {
-	self->autoCSelect(selectVal);
+void ScintillaEdit_autoCSelect(ScintillaEdit* self, const char* select) {
+	self->autoCSelect(select);
 }
 
-void ScintillaEdit_AutoCSetCancelAtStart(ScintillaEdit* self, bool cancel) {
+void ScintillaEdit_autoCSetCancelAtStart(ScintillaEdit* self, bool cancel) {
 	self->autoCSetCancelAtStart(cancel);
 }
 
-bool ScintillaEdit_AutoCCancelAtStart(const ScintillaEdit* self) {
+bool ScintillaEdit_autoCCancelAtStart(const ScintillaEdit* self) {
 	return self->autoCCancelAtStart();
 }
 
-void ScintillaEdit_AutoCSetFillUps(ScintillaEdit* self, const char* characterSet) {
+void ScintillaEdit_autoCSetFillUps(ScintillaEdit* self, const char* characterSet) {
 	self->autoCSetFillUps(characterSet);
 }
 
-void ScintillaEdit_AutoCSetChooseSingle(ScintillaEdit* self, bool chooseSingle) {
+void ScintillaEdit_autoCSetChooseSingle(ScintillaEdit* self, bool chooseSingle) {
 	self->autoCSetChooseSingle(chooseSingle);
 }
 
-bool ScintillaEdit_AutoCChooseSingle(const ScintillaEdit* self) {
+bool ScintillaEdit_autoCChooseSingle(const ScintillaEdit* self) {
 	return self->autoCChooseSingle();
 }
 
-void ScintillaEdit_AutoCSetIgnoreCase(ScintillaEdit* self, bool ignoreCase) {
+void ScintillaEdit_autoCSetIgnoreCase(ScintillaEdit* self, bool ignoreCase) {
 	self->autoCSetIgnoreCase(ignoreCase);
 }
 
-bool ScintillaEdit_AutoCIgnoreCase(const ScintillaEdit* self) {
+bool ScintillaEdit_autoCIgnoreCase(const ScintillaEdit* self) {
 	return self->autoCIgnoreCase();
 }
 
-void ScintillaEdit_UserListShow(ScintillaEdit* self, intptr_t listType, const char* itemList) {
+void ScintillaEdit_userListShow(ScintillaEdit* self, intptr_t listType, const char* itemList) {
 	self->userListShow(static_cast<sptr_t>(listType), itemList);
 }
 
-void ScintillaEdit_AutoCSetAutoHide(ScintillaEdit* self, bool autoHide) {
+void ScintillaEdit_autoCSetAutoHide(ScintillaEdit* self, bool autoHide) {
 	self->autoCSetAutoHide(autoHide);
 }
 
-bool ScintillaEdit_AutoCAutoHide(const ScintillaEdit* self) {
+bool ScintillaEdit_autoCAutoHide(const ScintillaEdit* self) {
 	return self->autoCAutoHide();
 }
 
-void ScintillaEdit_AutoCSetOptions(ScintillaEdit* self, intptr_t options) {
+void ScintillaEdit_autoCSetOptions(ScintillaEdit* self, intptr_t options) {
 	self->autoCSetOptions(static_cast<sptr_t>(options));
 }
 
-intptr_t ScintillaEdit_AutoCOptions(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_autoCOptions(const ScintillaEdit* self) {
 	sptr_t _ret = self->autoCOptions();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_AutoCSetDropRestOfWord(ScintillaEdit* self, bool dropRestOfWord) {
+void ScintillaEdit_autoCSetDropRestOfWord(ScintillaEdit* self, bool dropRestOfWord) {
 	self->autoCSetDropRestOfWord(dropRestOfWord);
 }
 
-bool ScintillaEdit_AutoCDropRestOfWord(const ScintillaEdit* self) {
+bool ScintillaEdit_autoCDropRestOfWord(const ScintillaEdit* self) {
 	return self->autoCDropRestOfWord();
 }
 
-void ScintillaEdit_RegisterImage(ScintillaEdit* self, intptr_t typeVal, const char* xpmData) {
-	self->registerImage(static_cast<sptr_t>(typeVal), xpmData);
+void ScintillaEdit_registerImage(ScintillaEdit* self, intptr_t type, const char* xpmData) {
+	self->registerImage(static_cast<sptr_t>(type), xpmData);
 }
 
-void ScintillaEdit_ClearRegisteredImages(ScintillaEdit* self) {
+void ScintillaEdit_clearRegisteredImages(ScintillaEdit* self) {
 	self->clearRegisteredImages();
 }
 
-intptr_t ScintillaEdit_AutoCTypeSeparator(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_autoCTypeSeparator(const ScintillaEdit* self) {
 	sptr_t _ret = self->autoCTypeSeparator();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_AutoCSetTypeSeparator(ScintillaEdit* self, intptr_t separatorCharacter) {
+void ScintillaEdit_autoCSetTypeSeparator(ScintillaEdit* self, intptr_t separatorCharacter) {
 	self->autoCSetTypeSeparator(static_cast<sptr_t>(separatorCharacter));
 }
 
-void ScintillaEdit_AutoCSetMaxWidth(ScintillaEdit* self, intptr_t characterCount) {
+void ScintillaEdit_autoCSetMaxWidth(ScintillaEdit* self, intptr_t characterCount) {
 	self->autoCSetMaxWidth(static_cast<sptr_t>(characterCount));
 }
 
-intptr_t ScintillaEdit_AutoCMaxWidth(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_autoCMaxWidth(const ScintillaEdit* self) {
 	sptr_t _ret = self->autoCMaxWidth();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_AutoCSetMaxHeight(ScintillaEdit* self, intptr_t rowCount) {
+void ScintillaEdit_autoCSetMaxHeight(ScintillaEdit* self, intptr_t rowCount) {
 	self->autoCSetMaxHeight(static_cast<sptr_t>(rowCount));
 }
 
-intptr_t ScintillaEdit_AutoCMaxHeight(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_autoCMaxHeight(const ScintillaEdit* self) {
 	sptr_t _ret = self->autoCMaxHeight();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_AutoCSetStyle(ScintillaEdit* self, intptr_t style) {
+void ScintillaEdit_autoCSetStyle(ScintillaEdit* self, intptr_t style) {
 	self->autoCSetStyle(static_cast<sptr_t>(style));
 }
 
-intptr_t ScintillaEdit_AutoCStyle(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_autoCStyle(const ScintillaEdit* self) {
 	sptr_t _ret = self->autoCStyle();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetIndent(ScintillaEdit* self, intptr_t indentSize) {
+void ScintillaEdit_setIndent(ScintillaEdit* self, intptr_t indentSize) {
 	self->setIndent(static_cast<sptr_t>(indentSize));
 }
 
-intptr_t ScintillaEdit_Indent(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_indent(const ScintillaEdit* self) {
 	sptr_t _ret = self->indent();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetUseTabs(ScintillaEdit* self, bool useTabs) {
+void ScintillaEdit_setUseTabs(ScintillaEdit* self, bool useTabs) {
 	self->setUseTabs(useTabs);
 }
 
-bool ScintillaEdit_UseTabs(const ScintillaEdit* self) {
+bool ScintillaEdit_useTabs(const ScintillaEdit* self) {
 	return self->useTabs();
 }
 
-void ScintillaEdit_SetLineIndentation(ScintillaEdit* self, intptr_t line, intptr_t indentation) {
+void ScintillaEdit_setLineIndentation(ScintillaEdit* self, intptr_t line, intptr_t indentation) {
 	self->setLineIndentation(static_cast<sptr_t>(line), static_cast<sptr_t>(indentation));
 }
 
-intptr_t ScintillaEdit_LineIndentation(const ScintillaEdit* self, intptr_t line) {
+intptr_t ScintillaEdit_lineIndentation(const ScintillaEdit* self, intptr_t line) {
 	sptr_t _ret = self->lineIndentation(static_cast<sptr_t>(line));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_LineIndentPosition(const ScintillaEdit* self, intptr_t line) {
+intptr_t ScintillaEdit_lineIndentPosition(const ScintillaEdit* self, intptr_t line) {
 	sptr_t _ret = self->lineIndentPosition(static_cast<sptr_t>(line));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_Column(const ScintillaEdit* self, intptr_t pos) {
+intptr_t ScintillaEdit_column(const ScintillaEdit* self, intptr_t pos) {
 	sptr_t _ret = self->column(static_cast<sptr_t>(pos));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_CountCharacters(ScintillaEdit* self, intptr_t start, intptr_t end) {
+intptr_t ScintillaEdit_countCharacters(ScintillaEdit* self, intptr_t start, intptr_t end) {
 	sptr_t _ret = self->countCharacters(static_cast<sptr_t>(start), static_cast<sptr_t>(end));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_CountCodeUnits(ScintillaEdit* self, intptr_t start, intptr_t end) {
+intptr_t ScintillaEdit_countCodeUnits(ScintillaEdit* self, intptr_t start, intptr_t end) {
 	sptr_t _ret = self->countCodeUnits(static_cast<sptr_t>(start), static_cast<sptr_t>(end));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetHScrollBar(ScintillaEdit* self, bool visible) {
+void ScintillaEdit_setHScrollBar(ScintillaEdit* self, bool visible) {
 	self->setHScrollBar(visible);
 }
 
-bool ScintillaEdit_HScrollBar(const ScintillaEdit* self) {
+bool ScintillaEdit_hScrollBar(const ScintillaEdit* self) {
 	return self->hScrollBar();
 }
 
-void ScintillaEdit_SetIndentationGuides(ScintillaEdit* self, intptr_t indentView) {
+void ScintillaEdit_setIndentationGuides(ScintillaEdit* self, intptr_t indentView) {
 	self->setIndentationGuides(static_cast<sptr_t>(indentView));
 }
 
-intptr_t ScintillaEdit_IndentationGuides(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_indentationGuides(const ScintillaEdit* self) {
 	sptr_t _ret = self->indentationGuides();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetHighlightGuide(ScintillaEdit* self, intptr_t column) {
+void ScintillaEdit_setHighlightGuide(ScintillaEdit* self, intptr_t column) {
 	self->setHighlightGuide(static_cast<sptr_t>(column));
 }
 
-intptr_t ScintillaEdit_HighlightGuide(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_highlightGuide(const ScintillaEdit* self) {
 	sptr_t _ret = self->highlightGuide();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_LineEndPosition(const ScintillaEdit* self, intptr_t line) {
+intptr_t ScintillaEdit_lineEndPosition(const ScintillaEdit* self, intptr_t line) {
 	sptr_t _ret = self->lineEndPosition(static_cast<sptr_t>(line));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_CodePage(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_codePage(const ScintillaEdit* self) {
 	sptr_t _ret = self->codePage();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_CaretFore(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_caretFore(const ScintillaEdit* self) {
 	sptr_t _ret = self->caretFore();
 	return static_cast<intptr_t>(_ret);
 }
 
-bool ScintillaEdit_ReadOnly(const ScintillaEdit* self) {
+bool ScintillaEdit_readOnly(const ScintillaEdit* self) {
 	return self->readOnly();
 }
 
-void ScintillaEdit_SetCurrentPos(ScintillaEdit* self, intptr_t caret) {
+void ScintillaEdit_setCurrentPos(ScintillaEdit* self, intptr_t caret) {
 	self->setCurrentPos(static_cast<sptr_t>(caret));
 }
 
-void ScintillaEdit_SetSelectionStart(ScintillaEdit* self, intptr_t anchor) {
+void ScintillaEdit_setSelectionStart(ScintillaEdit* self, intptr_t anchor) {
 	self->setSelectionStart(static_cast<sptr_t>(anchor));
 }
 
-intptr_t ScintillaEdit_SelectionStart(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_selectionStart(const ScintillaEdit* self) {
 	sptr_t _ret = self->selectionStart();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetSelectionEnd(ScintillaEdit* self, intptr_t caret) {
+void ScintillaEdit_setSelectionEnd(ScintillaEdit* self, intptr_t caret) {
 	self->setSelectionEnd(static_cast<sptr_t>(caret));
 }
 
-intptr_t ScintillaEdit_SelectionEnd(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_selectionEnd(const ScintillaEdit* self) {
 	sptr_t _ret = self->selectionEnd();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetEmptySelection(ScintillaEdit* self, intptr_t caret) {
+void ScintillaEdit_setEmptySelection(ScintillaEdit* self, intptr_t caret) {
 	self->setEmptySelection(static_cast<sptr_t>(caret));
 }
 
-void ScintillaEdit_SetPrintMagnification(ScintillaEdit* self, intptr_t magnification) {
+void ScintillaEdit_setPrintMagnification(ScintillaEdit* self, intptr_t magnification) {
 	self->setPrintMagnification(static_cast<sptr_t>(magnification));
 }
 
-intptr_t ScintillaEdit_PrintMagnification(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_printMagnification(const ScintillaEdit* self) {
 	sptr_t _ret = self->printMagnification();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetPrintColourMode(ScintillaEdit* self, intptr_t mode) {
+void ScintillaEdit_setPrintColourMode(ScintillaEdit* self, intptr_t mode) {
 	self->setPrintColourMode(static_cast<sptr_t>(mode));
 }
 
-intptr_t ScintillaEdit_PrintColourMode(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_printColourMode(const ScintillaEdit* self) {
 	sptr_t _ret = self->printColourMode();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetChangeHistory(ScintillaEdit* self, intptr_t changeHistory) {
+void ScintillaEdit_setChangeHistory(ScintillaEdit* self, intptr_t changeHistory) {
 	self->setChangeHistory(static_cast<sptr_t>(changeHistory));
 }
 
-intptr_t ScintillaEdit_ChangeHistory(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_changeHistory(const ScintillaEdit* self) {
 	sptr_t _ret = self->changeHistory();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_FirstVisibleLine(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_firstVisibleLine(const ScintillaEdit* self) {
 	sptr_t _ret = self->firstVisibleLine();
 	return static_cast<intptr_t>(_ret);
 }
 
-struct miqt_string ScintillaEdit_GetLine(ScintillaEdit* self, intptr_t line) {
+struct miqt_string ScintillaEdit_getLine(ScintillaEdit* self, intptr_t line) {
 	QByteArray _qb = self->getLine(static_cast<sptr_t>(line));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -8349,42 +8349,42 @@ struct miqt_string ScintillaEdit_GetLine(ScintillaEdit* self, intptr_t line) {
 	return _ms;
 }
 
-intptr_t ScintillaEdit_LineCount(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_lineCount(const ScintillaEdit* self) {
 	sptr_t _ret = self->lineCount();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_AllocateLines(ScintillaEdit* self, intptr_t lines) {
+void ScintillaEdit_allocateLines(ScintillaEdit* self, intptr_t lines) {
 	self->allocateLines(static_cast<sptr_t>(lines));
 }
 
-void ScintillaEdit_SetMarginLeft(ScintillaEdit* self, intptr_t pixelWidth) {
+void ScintillaEdit_setMarginLeft(ScintillaEdit* self, intptr_t pixelWidth) {
 	self->setMarginLeft(static_cast<sptr_t>(pixelWidth));
 }
 
-intptr_t ScintillaEdit_MarginLeft(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_marginLeft(const ScintillaEdit* self) {
 	sptr_t _ret = self->marginLeft();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetMarginRight(ScintillaEdit* self, intptr_t pixelWidth) {
+void ScintillaEdit_setMarginRight(ScintillaEdit* self, intptr_t pixelWidth) {
 	self->setMarginRight(static_cast<sptr_t>(pixelWidth));
 }
 
-intptr_t ScintillaEdit_MarginRight(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_marginRight(const ScintillaEdit* self) {
 	sptr_t _ret = self->marginRight();
 	return static_cast<intptr_t>(_ret);
 }
 
-bool ScintillaEdit_Modify(const ScintillaEdit* self) {
+bool ScintillaEdit_modify(const ScintillaEdit* self) {
 	return self->modify();
 }
 
-void ScintillaEdit_SetSel(ScintillaEdit* self, intptr_t anchor, intptr_t caret) {
+void ScintillaEdit_setSel(ScintillaEdit* self, intptr_t anchor, intptr_t caret) {
 	self->setSel(static_cast<sptr_t>(anchor), static_cast<sptr_t>(caret));
 }
 
-struct miqt_string ScintillaEdit_GetSelText(ScintillaEdit* self) {
+struct miqt_string ScintillaEdit_getSelText(ScintillaEdit* self) {
 	QByteArray _qb = self->getSelText();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -8393,95 +8393,95 @@ struct miqt_string ScintillaEdit_GetSelText(ScintillaEdit* self) {
 	return _ms;
 }
 
-void ScintillaEdit_HideSelection(ScintillaEdit* self, bool hide) {
+void ScintillaEdit_hideSelection(ScintillaEdit* self, bool hide) {
 	self->hideSelection(hide);
 }
 
-bool ScintillaEdit_SelectionHidden(const ScintillaEdit* self) {
+bool ScintillaEdit_selectionHidden(const ScintillaEdit* self) {
 	return self->selectionHidden();
 }
 
-intptr_t ScintillaEdit_PointXFromPosition(ScintillaEdit* self, intptr_t pos) {
+intptr_t ScintillaEdit_pointXFromPosition(ScintillaEdit* self, intptr_t pos) {
 	sptr_t _ret = self->pointXFromPosition(static_cast<sptr_t>(pos));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_PointYFromPosition(ScintillaEdit* self, intptr_t pos) {
+intptr_t ScintillaEdit_pointYFromPosition(ScintillaEdit* self, intptr_t pos) {
 	sptr_t _ret = self->pointYFromPosition(static_cast<sptr_t>(pos));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_LineFromPosition(ScintillaEdit* self, intptr_t pos) {
+intptr_t ScintillaEdit_lineFromPosition(ScintillaEdit* self, intptr_t pos) {
 	sptr_t _ret = self->lineFromPosition(static_cast<sptr_t>(pos));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_PositionFromLine(ScintillaEdit* self, intptr_t line) {
+intptr_t ScintillaEdit_positionFromLine(ScintillaEdit* self, intptr_t line) {
 	sptr_t _ret = self->positionFromLine(static_cast<sptr_t>(line));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_LineScroll(ScintillaEdit* self, intptr_t columns, intptr_t lines) {
+void ScintillaEdit_lineScroll(ScintillaEdit* self, intptr_t columns, intptr_t lines) {
 	self->lineScroll(static_cast<sptr_t>(columns), static_cast<sptr_t>(lines));
 }
 
-void ScintillaEdit_ScrollCaret(ScintillaEdit* self) {
+void ScintillaEdit_scrollCaret(ScintillaEdit* self) {
 	self->scrollCaret();
 }
 
-void ScintillaEdit_ScrollRange(ScintillaEdit* self, intptr_t secondary, intptr_t primary) {
+void ScintillaEdit_scrollRange(ScintillaEdit* self, intptr_t secondary, intptr_t primary) {
 	self->scrollRange(static_cast<sptr_t>(secondary), static_cast<sptr_t>(primary));
 }
 
-void ScintillaEdit_ReplaceSel(ScintillaEdit* self, const char* text) {
+void ScintillaEdit_replaceSel(ScintillaEdit* self, const char* text) {
 	self->replaceSel(text);
 }
 
-void ScintillaEdit_SetReadOnly(ScintillaEdit* self, bool readOnly) {
+void ScintillaEdit_setReadOnly(ScintillaEdit* self, bool readOnly) {
 	self->setReadOnly(readOnly);
 }
 
-void ScintillaEdit_Null(ScintillaEdit* self) {
+void ScintillaEdit_null(ScintillaEdit* self) {
 	self->null();
 }
 
-bool ScintillaEdit_CanPaste(ScintillaEdit* self) {
+bool ScintillaEdit_canPaste(ScintillaEdit* self) {
 	return self->canPaste();
 }
 
-bool ScintillaEdit_CanUndo(ScintillaEdit* self) {
+bool ScintillaEdit_canUndo(ScintillaEdit* self) {
 	return self->canUndo();
 }
 
-void ScintillaEdit_EmptyUndoBuffer(ScintillaEdit* self) {
+void ScintillaEdit_emptyUndoBuffer(ScintillaEdit* self) {
 	self->emptyUndoBuffer();
 }
 
-void ScintillaEdit_Undo(ScintillaEdit* self) {
+void ScintillaEdit_undo(ScintillaEdit* self) {
 	self->undo();
 }
 
-void ScintillaEdit_Cut(ScintillaEdit* self) {
+void ScintillaEdit_cut(ScintillaEdit* self) {
 	self->cut();
 }
 
-void ScintillaEdit_Copy(ScintillaEdit* self) {
+void ScintillaEdit_copy(ScintillaEdit* self) {
 	self->copy();
 }
 
-void ScintillaEdit_Paste(ScintillaEdit* self) {
+void ScintillaEdit_paste(ScintillaEdit* self) {
 	self->paste();
 }
 
-void ScintillaEdit_Clear(ScintillaEdit* self) {
+void ScintillaEdit_clear(ScintillaEdit* self) {
 	self->clear();
 }
 
-void ScintillaEdit_SetText(ScintillaEdit* self, const char* text) {
+void ScintillaEdit_setText(ScintillaEdit* self, const char* text) {
 	self->setText(text);
 }
 
-struct miqt_string ScintillaEdit_GetText(ScintillaEdit* self, intptr_t length) {
+struct miqt_string ScintillaEdit_getText(ScintillaEdit* self, intptr_t length) {
 	QByteArray _qb = self->getText(static_cast<sptr_t>(length));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -8490,84 +8490,84 @@ struct miqt_string ScintillaEdit_GetText(ScintillaEdit* self, intptr_t length) {
 	return _ms;
 }
 
-intptr_t ScintillaEdit_TextLength(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_textLength(const ScintillaEdit* self) {
 	sptr_t _ret = self->textLength();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_DirectFunction(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_directFunction(const ScintillaEdit* self) {
 	sptr_t _ret = self->directFunction();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_DirectStatusFunction(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_directStatusFunction(const ScintillaEdit* self) {
 	sptr_t _ret = self->directStatusFunction();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_DirectPointer(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_directPointer(const ScintillaEdit* self) {
 	sptr_t _ret = self->directPointer();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetOvertype(ScintillaEdit* self, bool overType) {
+void ScintillaEdit_setOvertype(ScintillaEdit* self, bool overType) {
 	self->setOvertype(overType);
 }
 
-bool ScintillaEdit_Overtype(const ScintillaEdit* self) {
+bool ScintillaEdit_overtype(const ScintillaEdit* self) {
 	return self->overtype();
 }
 
-void ScintillaEdit_SetCaretWidth(ScintillaEdit* self, intptr_t pixelWidth) {
+void ScintillaEdit_setCaretWidth(ScintillaEdit* self, intptr_t pixelWidth) {
 	self->setCaretWidth(static_cast<sptr_t>(pixelWidth));
 }
 
-intptr_t ScintillaEdit_CaretWidth(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_caretWidth(const ScintillaEdit* self) {
 	sptr_t _ret = self->caretWidth();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetTargetStart(ScintillaEdit* self, intptr_t start) {
+void ScintillaEdit_setTargetStart(ScintillaEdit* self, intptr_t start) {
 	self->setTargetStart(static_cast<sptr_t>(start));
 }
 
-intptr_t ScintillaEdit_TargetStart(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_targetStart(const ScintillaEdit* self) {
 	sptr_t _ret = self->targetStart();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetTargetStartVirtualSpace(ScintillaEdit* self, intptr_t space) {
+void ScintillaEdit_setTargetStartVirtualSpace(ScintillaEdit* self, intptr_t space) {
 	self->setTargetStartVirtualSpace(static_cast<sptr_t>(space));
 }
 
-intptr_t ScintillaEdit_TargetStartVirtualSpace(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_targetStartVirtualSpace(const ScintillaEdit* self) {
 	sptr_t _ret = self->targetStartVirtualSpace();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetTargetEnd(ScintillaEdit* self, intptr_t end) {
+void ScintillaEdit_setTargetEnd(ScintillaEdit* self, intptr_t end) {
 	self->setTargetEnd(static_cast<sptr_t>(end));
 }
 
-intptr_t ScintillaEdit_TargetEnd(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_targetEnd(const ScintillaEdit* self) {
 	sptr_t _ret = self->targetEnd();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetTargetEndVirtualSpace(ScintillaEdit* self, intptr_t space) {
+void ScintillaEdit_setTargetEndVirtualSpace(ScintillaEdit* self, intptr_t space) {
 	self->setTargetEndVirtualSpace(static_cast<sptr_t>(space));
 }
 
-intptr_t ScintillaEdit_TargetEndVirtualSpace(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_targetEndVirtualSpace(const ScintillaEdit* self) {
 	sptr_t _ret = self->targetEndVirtualSpace();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetTargetRange(ScintillaEdit* self, intptr_t start, intptr_t end) {
+void ScintillaEdit_setTargetRange(ScintillaEdit* self, intptr_t start, intptr_t end) {
 	self->setTargetRange(static_cast<sptr_t>(start), static_cast<sptr_t>(end));
 }
 
-struct miqt_string ScintillaEdit_TargetText(const ScintillaEdit* self) {
+struct miqt_string ScintillaEdit_targetText(const ScintillaEdit* self) {
 	QByteArray _qb = self->targetText();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -8576,168 +8576,168 @@ struct miqt_string ScintillaEdit_TargetText(const ScintillaEdit* self) {
 	return _ms;
 }
 
-void ScintillaEdit_TargetFromSelection(ScintillaEdit* self) {
+void ScintillaEdit_targetFromSelection(ScintillaEdit* self) {
 	self->targetFromSelection();
 }
 
-void ScintillaEdit_TargetWholeDocument(ScintillaEdit* self) {
+void ScintillaEdit_targetWholeDocument(ScintillaEdit* self) {
 	self->targetWholeDocument();
 }
 
-intptr_t ScintillaEdit_ReplaceTarget(ScintillaEdit* self, intptr_t length, const char* text) {
+intptr_t ScintillaEdit_replaceTarget(ScintillaEdit* self, intptr_t length, const char* text) {
 	sptr_t _ret = self->replaceTarget(static_cast<sptr_t>(length), text);
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_ReplaceTargetRE(ScintillaEdit* self, intptr_t length, const char* text) {
+intptr_t ScintillaEdit_replaceTargetRE(ScintillaEdit* self, intptr_t length, const char* text) {
 	sptr_t _ret = self->replaceTargetRE(static_cast<sptr_t>(length), text);
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_ReplaceTargetMinimal(ScintillaEdit* self, intptr_t length, const char* text) {
+intptr_t ScintillaEdit_replaceTargetMinimal(ScintillaEdit* self, intptr_t length, const char* text) {
 	sptr_t _ret = self->replaceTargetMinimal(static_cast<sptr_t>(length), text);
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_SearchInTarget(ScintillaEdit* self, intptr_t length, const char* text) {
+intptr_t ScintillaEdit_searchInTarget(ScintillaEdit* self, intptr_t length, const char* text) {
 	sptr_t _ret = self->searchInTarget(static_cast<sptr_t>(length), text);
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetSearchFlags(ScintillaEdit* self, intptr_t searchFlags) {
+void ScintillaEdit_setSearchFlags(ScintillaEdit* self, intptr_t searchFlags) {
 	self->setSearchFlags(static_cast<sptr_t>(searchFlags));
 }
 
-intptr_t ScintillaEdit_SearchFlags(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_searchFlags(const ScintillaEdit* self) {
 	sptr_t _ret = self->searchFlags();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_CallTipShow(ScintillaEdit* self, intptr_t pos, const char* definition) {
+void ScintillaEdit_callTipShow(ScintillaEdit* self, intptr_t pos, const char* definition) {
 	self->callTipShow(static_cast<sptr_t>(pos), definition);
 }
 
-void ScintillaEdit_CallTipCancel(ScintillaEdit* self) {
+void ScintillaEdit_callTipCancel(ScintillaEdit* self) {
 	self->callTipCancel();
 }
 
-bool ScintillaEdit_CallTipActive(ScintillaEdit* self) {
+bool ScintillaEdit_callTipActive(ScintillaEdit* self) {
 	return self->callTipActive();
 }
 
-intptr_t ScintillaEdit_CallTipPosStart(ScintillaEdit* self) {
+intptr_t ScintillaEdit_callTipPosStart(ScintillaEdit* self) {
 	sptr_t _ret = self->callTipPosStart();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_CallTipSetPosStart(ScintillaEdit* self, intptr_t posStart) {
+void ScintillaEdit_callTipSetPosStart(ScintillaEdit* self, intptr_t posStart) {
 	self->callTipSetPosStart(static_cast<sptr_t>(posStart));
 }
 
-void ScintillaEdit_CallTipSetHlt(ScintillaEdit* self, intptr_t highlightStart, intptr_t highlightEnd) {
+void ScintillaEdit_callTipSetHlt(ScintillaEdit* self, intptr_t highlightStart, intptr_t highlightEnd) {
 	self->callTipSetHlt(static_cast<sptr_t>(highlightStart), static_cast<sptr_t>(highlightEnd));
 }
 
-void ScintillaEdit_CallTipSetBack(ScintillaEdit* self, intptr_t back) {
+void ScintillaEdit_callTipSetBack(ScintillaEdit* self, intptr_t back) {
 	self->callTipSetBack(static_cast<sptr_t>(back));
 }
 
-void ScintillaEdit_CallTipSetFore(ScintillaEdit* self, intptr_t fore) {
+void ScintillaEdit_callTipSetFore(ScintillaEdit* self, intptr_t fore) {
 	self->callTipSetFore(static_cast<sptr_t>(fore));
 }
 
-void ScintillaEdit_CallTipSetForeHlt(ScintillaEdit* self, intptr_t fore) {
+void ScintillaEdit_callTipSetForeHlt(ScintillaEdit* self, intptr_t fore) {
 	self->callTipSetForeHlt(static_cast<sptr_t>(fore));
 }
 
-void ScintillaEdit_CallTipUseStyle(ScintillaEdit* self, intptr_t tabSize) {
+void ScintillaEdit_callTipUseStyle(ScintillaEdit* self, intptr_t tabSize) {
 	self->callTipUseStyle(static_cast<sptr_t>(tabSize));
 }
 
-void ScintillaEdit_CallTipSetPosition(ScintillaEdit* self, bool above) {
+void ScintillaEdit_callTipSetPosition(ScintillaEdit* self, bool above) {
 	self->callTipSetPosition(above);
 }
 
-intptr_t ScintillaEdit_VisibleFromDocLine(ScintillaEdit* self, intptr_t docLine) {
+intptr_t ScintillaEdit_visibleFromDocLine(ScintillaEdit* self, intptr_t docLine) {
 	sptr_t _ret = self->visibleFromDocLine(static_cast<sptr_t>(docLine));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_DocLineFromVisible(ScintillaEdit* self, intptr_t displayLine) {
+intptr_t ScintillaEdit_docLineFromVisible(ScintillaEdit* self, intptr_t displayLine) {
 	sptr_t _ret = self->docLineFromVisible(static_cast<sptr_t>(displayLine));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_WrapCount(ScintillaEdit* self, intptr_t docLine) {
+intptr_t ScintillaEdit_wrapCount(ScintillaEdit* self, intptr_t docLine) {
 	sptr_t _ret = self->wrapCount(static_cast<sptr_t>(docLine));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetFoldLevel(ScintillaEdit* self, intptr_t line, intptr_t level) {
+void ScintillaEdit_setFoldLevel(ScintillaEdit* self, intptr_t line, intptr_t level) {
 	self->setFoldLevel(static_cast<sptr_t>(line), static_cast<sptr_t>(level));
 }
 
-intptr_t ScintillaEdit_FoldLevel(const ScintillaEdit* self, intptr_t line) {
+intptr_t ScintillaEdit_foldLevel(const ScintillaEdit* self, intptr_t line) {
 	sptr_t _ret = self->foldLevel(static_cast<sptr_t>(line));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_LastChild(const ScintillaEdit* self, intptr_t line, intptr_t level) {
+intptr_t ScintillaEdit_lastChild(const ScintillaEdit* self, intptr_t line, intptr_t level) {
 	sptr_t _ret = self->lastChild(static_cast<sptr_t>(line), static_cast<sptr_t>(level));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_FoldParent(const ScintillaEdit* self, intptr_t line) {
+intptr_t ScintillaEdit_foldParent(const ScintillaEdit* self, intptr_t line) {
 	sptr_t _ret = self->foldParent(static_cast<sptr_t>(line));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_ShowLines(ScintillaEdit* self, intptr_t lineStart, intptr_t lineEnd) {
+void ScintillaEdit_showLines(ScintillaEdit* self, intptr_t lineStart, intptr_t lineEnd) {
 	self->showLines(static_cast<sptr_t>(lineStart), static_cast<sptr_t>(lineEnd));
 }
 
-void ScintillaEdit_HideLines(ScintillaEdit* self, intptr_t lineStart, intptr_t lineEnd) {
+void ScintillaEdit_hideLines(ScintillaEdit* self, intptr_t lineStart, intptr_t lineEnd) {
 	self->hideLines(static_cast<sptr_t>(lineStart), static_cast<sptr_t>(lineEnd));
 }
 
-bool ScintillaEdit_LineVisible(const ScintillaEdit* self, intptr_t line) {
+bool ScintillaEdit_lineVisible(const ScintillaEdit* self, intptr_t line) {
 	return self->lineVisible(static_cast<sptr_t>(line));
 }
 
-bool ScintillaEdit_AllLinesVisible(const ScintillaEdit* self) {
+bool ScintillaEdit_allLinesVisible(const ScintillaEdit* self) {
 	return self->allLinesVisible();
 }
 
-void ScintillaEdit_SetFoldExpanded(ScintillaEdit* self, intptr_t line, bool expanded) {
+void ScintillaEdit_setFoldExpanded(ScintillaEdit* self, intptr_t line, bool expanded) {
 	self->setFoldExpanded(static_cast<sptr_t>(line), expanded);
 }
 
-bool ScintillaEdit_FoldExpanded(const ScintillaEdit* self, intptr_t line) {
+bool ScintillaEdit_foldExpanded(const ScintillaEdit* self, intptr_t line) {
 	return self->foldExpanded(static_cast<sptr_t>(line));
 }
 
-void ScintillaEdit_ToggleFold(ScintillaEdit* self, intptr_t line) {
+void ScintillaEdit_toggleFold(ScintillaEdit* self, intptr_t line) {
 	self->toggleFold(static_cast<sptr_t>(line));
 }
 
-void ScintillaEdit_ToggleFoldShowText(ScintillaEdit* self, intptr_t line, const char* text) {
+void ScintillaEdit_toggleFoldShowText(ScintillaEdit* self, intptr_t line, const char* text) {
 	self->toggleFoldShowText(static_cast<sptr_t>(line), text);
 }
 
-void ScintillaEdit_FoldDisplayTextSetStyle(ScintillaEdit* self, intptr_t style) {
+void ScintillaEdit_foldDisplayTextSetStyle(ScintillaEdit* self, intptr_t style) {
 	self->foldDisplayTextSetStyle(static_cast<sptr_t>(style));
 }
 
-intptr_t ScintillaEdit_FoldDisplayTextStyle(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_foldDisplayTextStyle(const ScintillaEdit* self) {
 	sptr_t _ret = self->foldDisplayTextStyle();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetDefaultFoldDisplayText(ScintillaEdit* self, const char* text) {
+void ScintillaEdit_setDefaultFoldDisplayText(ScintillaEdit* self, const char* text) {
 	self->setDefaultFoldDisplayText(text);
 }
 
-struct miqt_string ScintillaEdit_GetDefaultFoldDisplayText(ScintillaEdit* self) {
+struct miqt_string ScintillaEdit_getDefaultFoldDisplayText(ScintillaEdit* self) {
 	QByteArray _qb = self->getDefaultFoldDisplayText();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -8746,224 +8746,224 @@ struct miqt_string ScintillaEdit_GetDefaultFoldDisplayText(ScintillaEdit* self) 
 	return _ms;
 }
 
-void ScintillaEdit_FoldLine(ScintillaEdit* self, intptr_t line, intptr_t action) {
+void ScintillaEdit_foldLine(ScintillaEdit* self, intptr_t line, intptr_t action) {
 	self->foldLine(static_cast<sptr_t>(line), static_cast<sptr_t>(action));
 }
 
-void ScintillaEdit_FoldChildren(ScintillaEdit* self, intptr_t line, intptr_t action) {
+void ScintillaEdit_foldChildren(ScintillaEdit* self, intptr_t line, intptr_t action) {
 	self->foldChildren(static_cast<sptr_t>(line), static_cast<sptr_t>(action));
 }
 
-void ScintillaEdit_ExpandChildren(ScintillaEdit* self, intptr_t line, intptr_t level) {
+void ScintillaEdit_expandChildren(ScintillaEdit* self, intptr_t line, intptr_t level) {
 	self->expandChildren(static_cast<sptr_t>(line), static_cast<sptr_t>(level));
 }
 
-void ScintillaEdit_FoldAll(ScintillaEdit* self, intptr_t action) {
+void ScintillaEdit_foldAll(ScintillaEdit* self, intptr_t action) {
 	self->foldAll(static_cast<sptr_t>(action));
 }
 
-void ScintillaEdit_EnsureVisible(ScintillaEdit* self, intptr_t line) {
+void ScintillaEdit_ensureVisible(ScintillaEdit* self, intptr_t line) {
 	self->ensureVisible(static_cast<sptr_t>(line));
 }
 
-void ScintillaEdit_SetAutomaticFold(ScintillaEdit* self, intptr_t automaticFold) {
+void ScintillaEdit_setAutomaticFold(ScintillaEdit* self, intptr_t automaticFold) {
 	self->setAutomaticFold(static_cast<sptr_t>(automaticFold));
 }
 
-intptr_t ScintillaEdit_AutomaticFold(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_automaticFold(const ScintillaEdit* self) {
 	sptr_t _ret = self->automaticFold();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetFoldFlags(ScintillaEdit* self, intptr_t flags) {
+void ScintillaEdit_setFoldFlags(ScintillaEdit* self, intptr_t flags) {
 	self->setFoldFlags(static_cast<sptr_t>(flags));
 }
 
-void ScintillaEdit_EnsureVisibleEnforcePolicy(ScintillaEdit* self, intptr_t line) {
+void ScintillaEdit_ensureVisibleEnforcePolicy(ScintillaEdit* self, intptr_t line) {
 	self->ensureVisibleEnforcePolicy(static_cast<sptr_t>(line));
 }
 
-void ScintillaEdit_SetTabIndents(ScintillaEdit* self, bool tabIndents) {
+void ScintillaEdit_setTabIndents(ScintillaEdit* self, bool tabIndents) {
 	self->setTabIndents(tabIndents);
 }
 
-bool ScintillaEdit_TabIndents(const ScintillaEdit* self) {
+bool ScintillaEdit_tabIndents(const ScintillaEdit* self) {
 	return self->tabIndents();
 }
 
-void ScintillaEdit_SetBackSpaceUnIndents(ScintillaEdit* self, bool bsUnIndents) {
+void ScintillaEdit_setBackSpaceUnIndents(ScintillaEdit* self, bool bsUnIndents) {
 	self->setBackSpaceUnIndents(bsUnIndents);
 }
 
-bool ScintillaEdit_BackSpaceUnIndents(const ScintillaEdit* self) {
+bool ScintillaEdit_backSpaceUnIndents(const ScintillaEdit* self) {
 	return self->backSpaceUnIndents();
 }
 
-void ScintillaEdit_SetMouseDwellTime(ScintillaEdit* self, intptr_t periodMilliseconds) {
+void ScintillaEdit_setMouseDwellTime(ScintillaEdit* self, intptr_t periodMilliseconds) {
 	self->setMouseDwellTime(static_cast<sptr_t>(periodMilliseconds));
 }
 
-intptr_t ScintillaEdit_MouseDwellTime(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_mouseDwellTime(const ScintillaEdit* self) {
 	sptr_t _ret = self->mouseDwellTime();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_WordStartPosition(ScintillaEdit* self, intptr_t pos, bool onlyWordCharacters) {
+intptr_t ScintillaEdit_wordStartPosition(ScintillaEdit* self, intptr_t pos, bool onlyWordCharacters) {
 	sptr_t _ret = self->wordStartPosition(static_cast<sptr_t>(pos), onlyWordCharacters);
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_WordEndPosition(ScintillaEdit* self, intptr_t pos, bool onlyWordCharacters) {
+intptr_t ScintillaEdit_wordEndPosition(ScintillaEdit* self, intptr_t pos, bool onlyWordCharacters) {
 	sptr_t _ret = self->wordEndPosition(static_cast<sptr_t>(pos), onlyWordCharacters);
 	return static_cast<intptr_t>(_ret);
 }
 
-bool ScintillaEdit_IsRangeWord(ScintillaEdit* self, intptr_t start, intptr_t end) {
+bool ScintillaEdit_isRangeWord(ScintillaEdit* self, intptr_t start, intptr_t end) {
 	return self->isRangeWord(static_cast<sptr_t>(start), static_cast<sptr_t>(end));
 }
 
-void ScintillaEdit_SetIdleStyling(ScintillaEdit* self, intptr_t idleStyling) {
+void ScintillaEdit_setIdleStyling(ScintillaEdit* self, intptr_t idleStyling) {
 	self->setIdleStyling(static_cast<sptr_t>(idleStyling));
 }
 
-intptr_t ScintillaEdit_IdleStyling(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_idleStyling(const ScintillaEdit* self) {
 	sptr_t _ret = self->idleStyling();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetWrapMode(ScintillaEdit* self, intptr_t wrapMode) {
+void ScintillaEdit_setWrapMode(ScintillaEdit* self, intptr_t wrapMode) {
 	self->setWrapMode(static_cast<sptr_t>(wrapMode));
 }
 
-intptr_t ScintillaEdit_WrapMode(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_wrapMode(const ScintillaEdit* self) {
 	sptr_t _ret = self->wrapMode();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetWrapVisualFlags(ScintillaEdit* self, intptr_t wrapVisualFlags) {
+void ScintillaEdit_setWrapVisualFlags(ScintillaEdit* self, intptr_t wrapVisualFlags) {
 	self->setWrapVisualFlags(static_cast<sptr_t>(wrapVisualFlags));
 }
 
-intptr_t ScintillaEdit_WrapVisualFlags(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_wrapVisualFlags(const ScintillaEdit* self) {
 	sptr_t _ret = self->wrapVisualFlags();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetWrapVisualFlagsLocation(ScintillaEdit* self, intptr_t wrapVisualFlagsLocation) {
+void ScintillaEdit_setWrapVisualFlagsLocation(ScintillaEdit* self, intptr_t wrapVisualFlagsLocation) {
 	self->setWrapVisualFlagsLocation(static_cast<sptr_t>(wrapVisualFlagsLocation));
 }
 
-intptr_t ScintillaEdit_WrapVisualFlagsLocation(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_wrapVisualFlagsLocation(const ScintillaEdit* self) {
 	sptr_t _ret = self->wrapVisualFlagsLocation();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetWrapStartIndent(ScintillaEdit* self, intptr_t indent) {
+void ScintillaEdit_setWrapStartIndent(ScintillaEdit* self, intptr_t indent) {
 	self->setWrapStartIndent(static_cast<sptr_t>(indent));
 }
 
-intptr_t ScintillaEdit_WrapStartIndent(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_wrapStartIndent(const ScintillaEdit* self) {
 	sptr_t _ret = self->wrapStartIndent();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetWrapIndentMode(ScintillaEdit* self, intptr_t wrapIndentMode) {
+void ScintillaEdit_setWrapIndentMode(ScintillaEdit* self, intptr_t wrapIndentMode) {
 	self->setWrapIndentMode(static_cast<sptr_t>(wrapIndentMode));
 }
 
-intptr_t ScintillaEdit_WrapIndentMode(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_wrapIndentMode(const ScintillaEdit* self) {
 	sptr_t _ret = self->wrapIndentMode();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetLayoutCache(ScintillaEdit* self, intptr_t cacheMode) {
+void ScintillaEdit_setLayoutCache(ScintillaEdit* self, intptr_t cacheMode) {
 	self->setLayoutCache(static_cast<sptr_t>(cacheMode));
 }
 
-intptr_t ScintillaEdit_LayoutCache(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_layoutCache(const ScintillaEdit* self) {
 	sptr_t _ret = self->layoutCache();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetScrollWidth(ScintillaEdit* self, intptr_t pixelWidth) {
+void ScintillaEdit_setScrollWidth(ScintillaEdit* self, intptr_t pixelWidth) {
 	self->setScrollWidth(static_cast<sptr_t>(pixelWidth));
 }
 
-intptr_t ScintillaEdit_ScrollWidth(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_scrollWidth(const ScintillaEdit* self) {
 	sptr_t _ret = self->scrollWidth();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetScrollWidthTracking(ScintillaEdit* self, bool tracking) {
+void ScintillaEdit_setScrollWidthTracking(ScintillaEdit* self, bool tracking) {
 	self->setScrollWidthTracking(tracking);
 }
 
-bool ScintillaEdit_ScrollWidthTracking(const ScintillaEdit* self) {
+bool ScintillaEdit_scrollWidthTracking(const ScintillaEdit* self) {
 	return self->scrollWidthTracking();
 }
 
-intptr_t ScintillaEdit_TextWidth(ScintillaEdit* self, intptr_t style, const char* text) {
+intptr_t ScintillaEdit_textWidth(ScintillaEdit* self, intptr_t style, const char* text) {
 	sptr_t _ret = self->textWidth(static_cast<sptr_t>(style), text);
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetEndAtLastLine(ScintillaEdit* self, bool endAtLastLine) {
+void ScintillaEdit_setEndAtLastLine(ScintillaEdit* self, bool endAtLastLine) {
 	self->setEndAtLastLine(endAtLastLine);
 }
 
-bool ScintillaEdit_EndAtLastLine(const ScintillaEdit* self) {
+bool ScintillaEdit_endAtLastLine(const ScintillaEdit* self) {
 	return self->endAtLastLine();
 }
 
-intptr_t ScintillaEdit_TextHeight(ScintillaEdit* self, intptr_t line) {
+intptr_t ScintillaEdit_textHeight(ScintillaEdit* self, intptr_t line) {
 	sptr_t _ret = self->textHeight(static_cast<sptr_t>(line));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetVScrollBar(ScintillaEdit* self, bool visible) {
+void ScintillaEdit_setVScrollBar(ScintillaEdit* self, bool visible) {
 	self->setVScrollBar(visible);
 }
 
-bool ScintillaEdit_VScrollBar(const ScintillaEdit* self) {
+bool ScintillaEdit_vScrollBar(const ScintillaEdit* self) {
 	return self->vScrollBar();
 }
 
-void ScintillaEdit_AppendText(ScintillaEdit* self, intptr_t length, const char* text) {
+void ScintillaEdit_appendText(ScintillaEdit* self, intptr_t length, const char* text) {
 	self->appendText(static_cast<sptr_t>(length), text);
 }
 
-intptr_t ScintillaEdit_PhasesDraw(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_phasesDraw(const ScintillaEdit* self) {
 	sptr_t _ret = self->phasesDraw();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetPhasesDraw(ScintillaEdit* self, intptr_t phases) {
+void ScintillaEdit_setPhasesDraw(ScintillaEdit* self, intptr_t phases) {
 	self->setPhasesDraw(static_cast<sptr_t>(phases));
 }
 
-void ScintillaEdit_SetFontQuality(ScintillaEdit* self, intptr_t fontQuality) {
+void ScintillaEdit_setFontQuality(ScintillaEdit* self, intptr_t fontQuality) {
 	self->setFontQuality(static_cast<sptr_t>(fontQuality));
 }
 
-intptr_t ScintillaEdit_FontQuality(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_fontQuality(const ScintillaEdit* self) {
 	sptr_t _ret = self->fontQuality();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetFirstVisibleLine(ScintillaEdit* self, intptr_t displayLine) {
+void ScintillaEdit_setFirstVisibleLine(ScintillaEdit* self, intptr_t displayLine) {
 	self->setFirstVisibleLine(static_cast<sptr_t>(displayLine));
 }
 
-void ScintillaEdit_SetMultiPaste(ScintillaEdit* self, intptr_t multiPaste) {
+void ScintillaEdit_setMultiPaste(ScintillaEdit* self, intptr_t multiPaste) {
 	self->setMultiPaste(static_cast<sptr_t>(multiPaste));
 }
 
-intptr_t ScintillaEdit_MultiPaste(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_multiPaste(const ScintillaEdit* self) {
 	sptr_t _ret = self->multiPaste();
 	return static_cast<intptr_t>(_ret);
 }
 
-struct miqt_string ScintillaEdit_Tag(const ScintillaEdit* self, intptr_t tagNumber) {
+struct miqt_string ScintillaEdit_tag(const ScintillaEdit* self, intptr_t tagNumber) {
 	QByteArray _qb = self->tag(static_cast<sptr_t>(tagNumber));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -8972,733 +8972,733 @@ struct miqt_string ScintillaEdit_Tag(const ScintillaEdit* self, intptr_t tagNumb
 	return _ms;
 }
 
-void ScintillaEdit_LinesJoin(ScintillaEdit* self) {
+void ScintillaEdit_linesJoin(ScintillaEdit* self) {
 	self->linesJoin();
 }
 
-void ScintillaEdit_LinesSplit(ScintillaEdit* self, intptr_t pixelWidth) {
+void ScintillaEdit_linesSplit(ScintillaEdit* self, intptr_t pixelWidth) {
 	self->linesSplit(static_cast<sptr_t>(pixelWidth));
 }
 
-void ScintillaEdit_SetFoldMarginColour(ScintillaEdit* self, bool useSetting, intptr_t back) {
+void ScintillaEdit_setFoldMarginColour(ScintillaEdit* self, bool useSetting, intptr_t back) {
 	self->setFoldMarginColour(useSetting, static_cast<sptr_t>(back));
 }
 
-void ScintillaEdit_SetFoldMarginHiColour(ScintillaEdit* self, bool useSetting, intptr_t fore) {
+void ScintillaEdit_setFoldMarginHiColour(ScintillaEdit* self, bool useSetting, intptr_t fore) {
 	self->setFoldMarginHiColour(useSetting, static_cast<sptr_t>(fore));
 }
 
-void ScintillaEdit_SetAccessibility(ScintillaEdit* self, intptr_t accessibility) {
+void ScintillaEdit_setAccessibility(ScintillaEdit* self, intptr_t accessibility) {
 	self->setAccessibility(static_cast<sptr_t>(accessibility));
 }
 
-intptr_t ScintillaEdit_Accessibility(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_accessibility(const ScintillaEdit* self) {
 	sptr_t _ret = self->accessibility();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_LineDown(ScintillaEdit* self) {
+void ScintillaEdit_lineDown(ScintillaEdit* self) {
 	self->lineDown();
 }
 
-void ScintillaEdit_LineDownExtend(ScintillaEdit* self) {
+void ScintillaEdit_lineDownExtend(ScintillaEdit* self) {
 	self->lineDownExtend();
 }
 
-void ScintillaEdit_LineUp(ScintillaEdit* self) {
+void ScintillaEdit_lineUp(ScintillaEdit* self) {
 	self->lineUp();
 }
 
-void ScintillaEdit_LineUpExtend(ScintillaEdit* self) {
+void ScintillaEdit_lineUpExtend(ScintillaEdit* self) {
 	self->lineUpExtend();
 }
 
-void ScintillaEdit_CharLeft(ScintillaEdit* self) {
+void ScintillaEdit_charLeft(ScintillaEdit* self) {
 	self->charLeft();
 }
 
-void ScintillaEdit_CharLeftExtend(ScintillaEdit* self) {
+void ScintillaEdit_charLeftExtend(ScintillaEdit* self) {
 	self->charLeftExtend();
 }
 
-void ScintillaEdit_CharRight(ScintillaEdit* self) {
+void ScintillaEdit_charRight(ScintillaEdit* self) {
 	self->charRight();
 }
 
-void ScintillaEdit_CharRightExtend(ScintillaEdit* self) {
+void ScintillaEdit_charRightExtend(ScintillaEdit* self) {
 	self->charRightExtend();
 }
 
-void ScintillaEdit_WordLeft(ScintillaEdit* self) {
+void ScintillaEdit_wordLeft(ScintillaEdit* self) {
 	self->wordLeft();
 }
 
-void ScintillaEdit_WordLeftExtend(ScintillaEdit* self) {
+void ScintillaEdit_wordLeftExtend(ScintillaEdit* self) {
 	self->wordLeftExtend();
 }
 
-void ScintillaEdit_WordRight(ScintillaEdit* self) {
+void ScintillaEdit_wordRight(ScintillaEdit* self) {
 	self->wordRight();
 }
 
-void ScintillaEdit_WordRightExtend(ScintillaEdit* self) {
+void ScintillaEdit_wordRightExtend(ScintillaEdit* self) {
 	self->wordRightExtend();
 }
 
-void ScintillaEdit_Home(ScintillaEdit* self) {
+void ScintillaEdit_home(ScintillaEdit* self) {
 	self->home();
 }
 
-void ScintillaEdit_HomeExtend(ScintillaEdit* self) {
+void ScintillaEdit_homeExtend(ScintillaEdit* self) {
 	self->homeExtend();
 }
 
-void ScintillaEdit_LineEnd(ScintillaEdit* self) {
+void ScintillaEdit_lineEnd(ScintillaEdit* self) {
 	self->lineEnd();
 }
 
-void ScintillaEdit_LineEndExtend(ScintillaEdit* self) {
+void ScintillaEdit_lineEndExtend(ScintillaEdit* self) {
 	self->lineEndExtend();
 }
 
-void ScintillaEdit_DocumentStart(ScintillaEdit* self) {
+void ScintillaEdit_documentStart(ScintillaEdit* self) {
 	self->documentStart();
 }
 
-void ScintillaEdit_DocumentStartExtend(ScintillaEdit* self) {
+void ScintillaEdit_documentStartExtend(ScintillaEdit* self) {
 	self->documentStartExtend();
 }
 
-void ScintillaEdit_DocumentEnd(ScintillaEdit* self) {
+void ScintillaEdit_documentEnd(ScintillaEdit* self) {
 	self->documentEnd();
 }
 
-void ScintillaEdit_DocumentEndExtend(ScintillaEdit* self) {
+void ScintillaEdit_documentEndExtend(ScintillaEdit* self) {
 	self->documentEndExtend();
 }
 
-void ScintillaEdit_PageUp(ScintillaEdit* self) {
+void ScintillaEdit_pageUp(ScintillaEdit* self) {
 	self->pageUp();
 }
 
-void ScintillaEdit_PageUpExtend(ScintillaEdit* self) {
+void ScintillaEdit_pageUpExtend(ScintillaEdit* self) {
 	self->pageUpExtend();
 }
 
-void ScintillaEdit_PageDown(ScintillaEdit* self) {
+void ScintillaEdit_pageDown(ScintillaEdit* self) {
 	self->pageDown();
 }
 
-void ScintillaEdit_PageDownExtend(ScintillaEdit* self) {
+void ScintillaEdit_pageDownExtend(ScintillaEdit* self) {
 	self->pageDownExtend();
 }
 
-void ScintillaEdit_EditToggleOvertype(ScintillaEdit* self) {
+void ScintillaEdit_editToggleOvertype(ScintillaEdit* self) {
 	self->editToggleOvertype();
 }
 
-void ScintillaEdit_Cancel(ScintillaEdit* self) {
+void ScintillaEdit_cancel(ScintillaEdit* self) {
 	self->cancel();
 }
 
-void ScintillaEdit_DeleteBack(ScintillaEdit* self) {
+void ScintillaEdit_deleteBack(ScintillaEdit* self) {
 	self->deleteBack();
 }
 
-void ScintillaEdit_Tab(ScintillaEdit* self) {
+void ScintillaEdit_tab(ScintillaEdit* self) {
 	self->tab();
 }
 
-void ScintillaEdit_LineIndent(ScintillaEdit* self) {
+void ScintillaEdit_lineIndent(ScintillaEdit* self) {
 	self->lineIndent();
 }
 
-void ScintillaEdit_BackTab(ScintillaEdit* self) {
+void ScintillaEdit_backTab(ScintillaEdit* self) {
 	self->backTab();
 }
 
-void ScintillaEdit_LineDedent(ScintillaEdit* self) {
+void ScintillaEdit_lineDedent(ScintillaEdit* self) {
 	self->lineDedent();
 }
 
-void ScintillaEdit_NewLine(ScintillaEdit* self) {
+void ScintillaEdit_newLine(ScintillaEdit* self) {
 	self->newLine();
 }
 
-void ScintillaEdit_FormFeed(ScintillaEdit* self) {
+void ScintillaEdit_formFeed(ScintillaEdit* self) {
 	self->formFeed();
 }
 
-void ScintillaEdit_VCHome(ScintillaEdit* self) {
+void ScintillaEdit_vCHome(ScintillaEdit* self) {
 	self->vCHome();
 }
 
-void ScintillaEdit_VCHomeExtend(ScintillaEdit* self) {
+void ScintillaEdit_vCHomeExtend(ScintillaEdit* self) {
 	self->vCHomeExtend();
 }
 
-void ScintillaEdit_ZoomIn(ScintillaEdit* self) {
+void ScintillaEdit_zoomIn(ScintillaEdit* self) {
 	self->zoomIn();
 }
 
-void ScintillaEdit_ZoomOut(ScintillaEdit* self) {
+void ScintillaEdit_zoomOut(ScintillaEdit* self) {
 	self->zoomOut();
 }
 
-void ScintillaEdit_DelWordLeft(ScintillaEdit* self) {
+void ScintillaEdit_delWordLeft(ScintillaEdit* self) {
 	self->delWordLeft();
 }
 
-void ScintillaEdit_DelWordRight(ScintillaEdit* self) {
+void ScintillaEdit_delWordRight(ScintillaEdit* self) {
 	self->delWordRight();
 }
 
-void ScintillaEdit_DelWordRightEnd(ScintillaEdit* self) {
+void ScintillaEdit_delWordRightEnd(ScintillaEdit* self) {
 	self->delWordRightEnd();
 }
 
-void ScintillaEdit_LineCut(ScintillaEdit* self) {
+void ScintillaEdit_lineCut(ScintillaEdit* self) {
 	self->lineCut();
 }
 
-void ScintillaEdit_LineDelete(ScintillaEdit* self) {
+void ScintillaEdit_lineDelete(ScintillaEdit* self) {
 	self->lineDelete();
 }
 
-void ScintillaEdit_LineTranspose(ScintillaEdit* self) {
+void ScintillaEdit_lineTranspose(ScintillaEdit* self) {
 	self->lineTranspose();
 }
 
-void ScintillaEdit_LineReverse(ScintillaEdit* self) {
+void ScintillaEdit_lineReverse(ScintillaEdit* self) {
 	self->lineReverse();
 }
 
-void ScintillaEdit_LineDuplicate(ScintillaEdit* self) {
+void ScintillaEdit_lineDuplicate(ScintillaEdit* self) {
 	self->lineDuplicate();
 }
 
-void ScintillaEdit_LowerCase(ScintillaEdit* self) {
+void ScintillaEdit_lowerCase(ScintillaEdit* self) {
 	self->lowerCase();
 }
 
-void ScintillaEdit_UpperCase(ScintillaEdit* self) {
+void ScintillaEdit_upperCase(ScintillaEdit* self) {
 	self->upperCase();
 }
 
-void ScintillaEdit_LineScrollDown(ScintillaEdit* self) {
+void ScintillaEdit_lineScrollDown(ScintillaEdit* self) {
 	self->lineScrollDown();
 }
 
-void ScintillaEdit_LineScrollUp(ScintillaEdit* self) {
+void ScintillaEdit_lineScrollUp(ScintillaEdit* self) {
 	self->lineScrollUp();
 }
 
-void ScintillaEdit_DeleteBackNotLine(ScintillaEdit* self) {
+void ScintillaEdit_deleteBackNotLine(ScintillaEdit* self) {
 	self->deleteBackNotLine();
 }
 
-void ScintillaEdit_HomeDisplay(ScintillaEdit* self) {
+void ScintillaEdit_homeDisplay(ScintillaEdit* self) {
 	self->homeDisplay();
 }
 
-void ScintillaEdit_HomeDisplayExtend(ScintillaEdit* self) {
+void ScintillaEdit_homeDisplayExtend(ScintillaEdit* self) {
 	self->homeDisplayExtend();
 }
 
-void ScintillaEdit_LineEndDisplay(ScintillaEdit* self) {
+void ScintillaEdit_lineEndDisplay(ScintillaEdit* self) {
 	self->lineEndDisplay();
 }
 
-void ScintillaEdit_LineEndDisplayExtend(ScintillaEdit* self) {
+void ScintillaEdit_lineEndDisplayExtend(ScintillaEdit* self) {
 	self->lineEndDisplayExtend();
 }
 
-void ScintillaEdit_HomeWrap(ScintillaEdit* self) {
+void ScintillaEdit_homeWrap(ScintillaEdit* self) {
 	self->homeWrap();
 }
 
-void ScintillaEdit_HomeWrapExtend(ScintillaEdit* self) {
+void ScintillaEdit_homeWrapExtend(ScintillaEdit* self) {
 	self->homeWrapExtend();
 }
 
-void ScintillaEdit_LineEndWrap(ScintillaEdit* self) {
+void ScintillaEdit_lineEndWrap(ScintillaEdit* self) {
 	self->lineEndWrap();
 }
 
-void ScintillaEdit_LineEndWrapExtend(ScintillaEdit* self) {
+void ScintillaEdit_lineEndWrapExtend(ScintillaEdit* self) {
 	self->lineEndWrapExtend();
 }
 
-void ScintillaEdit_VCHomeWrap(ScintillaEdit* self) {
+void ScintillaEdit_vCHomeWrap(ScintillaEdit* self) {
 	self->vCHomeWrap();
 }
 
-void ScintillaEdit_VCHomeWrapExtend(ScintillaEdit* self) {
+void ScintillaEdit_vCHomeWrapExtend(ScintillaEdit* self) {
 	self->vCHomeWrapExtend();
 }
 
-void ScintillaEdit_LineCopy(ScintillaEdit* self) {
+void ScintillaEdit_lineCopy(ScintillaEdit* self) {
 	self->lineCopy();
 }
 
-void ScintillaEdit_MoveCaretInsideView(ScintillaEdit* self) {
+void ScintillaEdit_moveCaretInsideView(ScintillaEdit* self) {
 	self->moveCaretInsideView();
 }
 
-intptr_t ScintillaEdit_LineLength(ScintillaEdit* self, intptr_t line) {
+intptr_t ScintillaEdit_lineLength(ScintillaEdit* self, intptr_t line) {
 	sptr_t _ret = self->lineLength(static_cast<sptr_t>(line));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_BraceHighlight(ScintillaEdit* self, intptr_t posA, intptr_t posB) {
+void ScintillaEdit_braceHighlight(ScintillaEdit* self, intptr_t posA, intptr_t posB) {
 	self->braceHighlight(static_cast<sptr_t>(posA), static_cast<sptr_t>(posB));
 }
 
-void ScintillaEdit_BraceHighlightIndicator(ScintillaEdit* self, bool useSetting, intptr_t indicator) {
+void ScintillaEdit_braceHighlightIndicator(ScintillaEdit* self, bool useSetting, intptr_t indicator) {
 	self->braceHighlightIndicator(useSetting, static_cast<sptr_t>(indicator));
 }
 
-void ScintillaEdit_BraceBadLight(ScintillaEdit* self, intptr_t pos) {
+void ScintillaEdit_braceBadLight(ScintillaEdit* self, intptr_t pos) {
 	self->braceBadLight(static_cast<sptr_t>(pos));
 }
 
-void ScintillaEdit_BraceBadLightIndicator(ScintillaEdit* self, bool useSetting, intptr_t indicator) {
+void ScintillaEdit_braceBadLightIndicator(ScintillaEdit* self, bool useSetting, intptr_t indicator) {
 	self->braceBadLightIndicator(useSetting, static_cast<sptr_t>(indicator));
 }
 
-intptr_t ScintillaEdit_BraceMatch(ScintillaEdit* self, intptr_t pos, intptr_t maxReStyle) {
+intptr_t ScintillaEdit_braceMatch(ScintillaEdit* self, intptr_t pos, intptr_t maxReStyle) {
 	sptr_t _ret = self->braceMatch(static_cast<sptr_t>(pos), static_cast<sptr_t>(maxReStyle));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_BraceMatchNext(ScintillaEdit* self, intptr_t pos, intptr_t startPos) {
+intptr_t ScintillaEdit_braceMatchNext(ScintillaEdit* self, intptr_t pos, intptr_t startPos) {
 	sptr_t _ret = self->braceMatchNext(static_cast<sptr_t>(pos), static_cast<sptr_t>(startPos));
 	return static_cast<intptr_t>(_ret);
 }
 
-bool ScintillaEdit_ViewEOL(const ScintillaEdit* self) {
+bool ScintillaEdit_viewEOL(const ScintillaEdit* self) {
 	return self->viewEOL();
 }
 
-void ScintillaEdit_SetViewEOL(ScintillaEdit* self, bool visible) {
+void ScintillaEdit_setViewEOL(ScintillaEdit* self, bool visible) {
 	self->setViewEOL(visible);
 }
 
-intptr_t ScintillaEdit_DocPointer(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_docPointer(const ScintillaEdit* self) {
 	sptr_t _ret = self->docPointer();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetDocPointer(ScintillaEdit* self, intptr_t doc) {
+void ScintillaEdit_setDocPointer(ScintillaEdit* self, intptr_t doc) {
 	self->setDocPointer(static_cast<sptr_t>(doc));
 }
 
-void ScintillaEdit_SetModEventMask(ScintillaEdit* self, intptr_t eventMask) {
+void ScintillaEdit_setModEventMask(ScintillaEdit* self, intptr_t eventMask) {
 	self->setModEventMask(static_cast<sptr_t>(eventMask));
 }
 
-intptr_t ScintillaEdit_EdgeColumn(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_edgeColumn(const ScintillaEdit* self) {
 	sptr_t _ret = self->edgeColumn();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetEdgeColumn(ScintillaEdit* self, intptr_t column) {
+void ScintillaEdit_setEdgeColumn(ScintillaEdit* self, intptr_t column) {
 	self->setEdgeColumn(static_cast<sptr_t>(column));
 }
 
-intptr_t ScintillaEdit_EdgeMode(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_edgeMode(const ScintillaEdit* self) {
 	sptr_t _ret = self->edgeMode();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetEdgeMode(ScintillaEdit* self, intptr_t edgeMode) {
+void ScintillaEdit_setEdgeMode(ScintillaEdit* self, intptr_t edgeMode) {
 	self->setEdgeMode(static_cast<sptr_t>(edgeMode));
 }
 
-intptr_t ScintillaEdit_EdgeColour(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_edgeColour(const ScintillaEdit* self) {
 	sptr_t _ret = self->edgeColour();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetEdgeColour(ScintillaEdit* self, intptr_t edgeColour) {
+void ScintillaEdit_setEdgeColour(ScintillaEdit* self, intptr_t edgeColour) {
 	self->setEdgeColour(static_cast<sptr_t>(edgeColour));
 }
 
-void ScintillaEdit_MultiEdgeAddLine(ScintillaEdit* self, intptr_t column, intptr_t edgeColour) {
+void ScintillaEdit_multiEdgeAddLine(ScintillaEdit* self, intptr_t column, intptr_t edgeColour) {
 	self->multiEdgeAddLine(static_cast<sptr_t>(column), static_cast<sptr_t>(edgeColour));
 }
 
-void ScintillaEdit_MultiEdgeClearAll(ScintillaEdit* self) {
+void ScintillaEdit_multiEdgeClearAll(ScintillaEdit* self) {
 	self->multiEdgeClearAll();
 }
 
-intptr_t ScintillaEdit_MultiEdgeColumn(const ScintillaEdit* self, intptr_t which) {
+intptr_t ScintillaEdit_multiEdgeColumn(const ScintillaEdit* self, intptr_t which) {
 	sptr_t _ret = self->multiEdgeColumn(static_cast<sptr_t>(which));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SearchAnchor(ScintillaEdit* self) {
+void ScintillaEdit_searchAnchor(ScintillaEdit* self) {
 	self->searchAnchor();
 }
 
-intptr_t ScintillaEdit_SearchNext(ScintillaEdit* self, intptr_t searchFlags, const char* text) {
+intptr_t ScintillaEdit_searchNext(ScintillaEdit* self, intptr_t searchFlags, const char* text) {
 	sptr_t _ret = self->searchNext(static_cast<sptr_t>(searchFlags), text);
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_SearchPrev(ScintillaEdit* self, intptr_t searchFlags, const char* text) {
+intptr_t ScintillaEdit_searchPrev(ScintillaEdit* self, intptr_t searchFlags, const char* text) {
 	sptr_t _ret = self->searchPrev(static_cast<sptr_t>(searchFlags), text);
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_LinesOnScreen(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_linesOnScreen(const ScintillaEdit* self) {
 	sptr_t _ret = self->linesOnScreen();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_UsePopUp(ScintillaEdit* self, intptr_t popUpMode) {
+void ScintillaEdit_usePopUp(ScintillaEdit* self, intptr_t popUpMode) {
 	self->usePopUp(static_cast<sptr_t>(popUpMode));
 }
 
-bool ScintillaEdit_SelectionIsRectangle(const ScintillaEdit* self) {
+bool ScintillaEdit_selectionIsRectangle(const ScintillaEdit* self) {
 	return self->selectionIsRectangle();
 }
 
-void ScintillaEdit_SetZoom(ScintillaEdit* self, intptr_t zoomInPoints) {
+void ScintillaEdit_setZoom(ScintillaEdit* self, intptr_t zoomInPoints) {
 	self->setZoom(static_cast<sptr_t>(zoomInPoints));
 }
 
-intptr_t ScintillaEdit_Zoom(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_zoom(const ScintillaEdit* self) {
 	sptr_t _ret = self->zoom();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_CreateDocument(ScintillaEdit* self, intptr_t bytes, intptr_t documentOptions) {
+intptr_t ScintillaEdit_createDocument(ScintillaEdit* self, intptr_t bytes, intptr_t documentOptions) {
 	sptr_t _ret = self->createDocument(static_cast<sptr_t>(bytes), static_cast<sptr_t>(documentOptions));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_AddRefDocument(ScintillaEdit* self, intptr_t doc) {
+void ScintillaEdit_addRefDocument(ScintillaEdit* self, intptr_t doc) {
 	self->addRefDocument(static_cast<sptr_t>(doc));
 }
 
-void ScintillaEdit_ReleaseDocument(ScintillaEdit* self, intptr_t doc) {
+void ScintillaEdit_releaseDocument(ScintillaEdit* self, intptr_t doc) {
 	self->releaseDocument(static_cast<sptr_t>(doc));
 }
 
-intptr_t ScintillaEdit_DocumentOptions(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_documentOptions(const ScintillaEdit* self) {
 	sptr_t _ret = self->documentOptions();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_ModEventMask(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_modEventMask(const ScintillaEdit* self) {
 	sptr_t _ret = self->modEventMask();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetCommandEvents(ScintillaEdit* self, bool commandEvents) {
+void ScintillaEdit_setCommandEvents(ScintillaEdit* self, bool commandEvents) {
 	self->setCommandEvents(commandEvents);
 }
 
-bool ScintillaEdit_CommandEvents(const ScintillaEdit* self) {
+bool ScintillaEdit_commandEvents(const ScintillaEdit* self) {
 	return self->commandEvents();
 }
 
-void ScintillaEdit_SetFocus(ScintillaEdit* self, bool focus) {
+void ScintillaEdit_setFocus(ScintillaEdit* self, bool focus) {
 	self->setFocus(focus);
 }
 
-bool ScintillaEdit_Focus(const ScintillaEdit* self) {
+bool ScintillaEdit_focus(const ScintillaEdit* self) {
 	return self->focus();
 }
 
-void ScintillaEdit_SetStatus(ScintillaEdit* self, intptr_t status) {
+void ScintillaEdit_setStatus(ScintillaEdit* self, intptr_t status) {
 	self->setStatus(static_cast<sptr_t>(status));
 }
 
-intptr_t ScintillaEdit_Status(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_status(const ScintillaEdit* self) {
 	sptr_t _ret = self->status();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetMouseDownCaptures(ScintillaEdit* self, bool captures) {
+void ScintillaEdit_setMouseDownCaptures(ScintillaEdit* self, bool captures) {
 	self->setMouseDownCaptures(captures);
 }
 
-bool ScintillaEdit_MouseDownCaptures(const ScintillaEdit* self) {
+bool ScintillaEdit_mouseDownCaptures(const ScintillaEdit* self) {
 	return self->mouseDownCaptures();
 }
 
-void ScintillaEdit_SetMouseWheelCaptures(ScintillaEdit* self, bool captures) {
+void ScintillaEdit_setMouseWheelCaptures(ScintillaEdit* self, bool captures) {
 	self->setMouseWheelCaptures(captures);
 }
 
-bool ScintillaEdit_MouseWheelCaptures(const ScintillaEdit* self) {
+bool ScintillaEdit_mouseWheelCaptures(const ScintillaEdit* self) {
 	return self->mouseWheelCaptures();
 }
 
-void ScintillaEdit_SetCursor(ScintillaEdit* self, intptr_t cursorType) {
+void ScintillaEdit_setCursor(ScintillaEdit* self, intptr_t cursorType) {
 	self->setCursor(static_cast<sptr_t>(cursorType));
 }
 
-intptr_t ScintillaEdit_Cursor(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_cursor(const ScintillaEdit* self) {
 	sptr_t _ret = self->cursor();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetControlCharSymbol(ScintillaEdit* self, intptr_t symbol) {
+void ScintillaEdit_setControlCharSymbol(ScintillaEdit* self, intptr_t symbol) {
 	self->setControlCharSymbol(static_cast<sptr_t>(symbol));
 }
 
-intptr_t ScintillaEdit_ControlCharSymbol(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_controlCharSymbol(const ScintillaEdit* self) {
 	sptr_t _ret = self->controlCharSymbol();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_WordPartLeft(ScintillaEdit* self) {
+void ScintillaEdit_wordPartLeft(ScintillaEdit* self) {
 	self->wordPartLeft();
 }
 
-void ScintillaEdit_WordPartLeftExtend(ScintillaEdit* self) {
+void ScintillaEdit_wordPartLeftExtend(ScintillaEdit* self) {
 	self->wordPartLeftExtend();
 }
 
-void ScintillaEdit_WordPartRight(ScintillaEdit* self) {
+void ScintillaEdit_wordPartRight(ScintillaEdit* self) {
 	self->wordPartRight();
 }
 
-void ScintillaEdit_WordPartRightExtend(ScintillaEdit* self) {
+void ScintillaEdit_wordPartRightExtend(ScintillaEdit* self) {
 	self->wordPartRightExtend();
 }
 
-void ScintillaEdit_SetVisiblePolicy(ScintillaEdit* self, intptr_t visiblePolicy, intptr_t visibleSlop) {
+void ScintillaEdit_setVisiblePolicy(ScintillaEdit* self, intptr_t visiblePolicy, intptr_t visibleSlop) {
 	self->setVisiblePolicy(static_cast<sptr_t>(visiblePolicy), static_cast<sptr_t>(visibleSlop));
 }
 
-void ScintillaEdit_DelLineLeft(ScintillaEdit* self) {
+void ScintillaEdit_delLineLeft(ScintillaEdit* self) {
 	self->delLineLeft();
 }
 
-void ScintillaEdit_DelLineRight(ScintillaEdit* self) {
+void ScintillaEdit_delLineRight(ScintillaEdit* self) {
 	self->delLineRight();
 }
 
-void ScintillaEdit_SetXOffset(ScintillaEdit* self, intptr_t xOffset) {
+void ScintillaEdit_setXOffset(ScintillaEdit* self, intptr_t xOffset) {
 	self->setXOffset(static_cast<sptr_t>(xOffset));
 }
 
-intptr_t ScintillaEdit_XOffset(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_xOffset(const ScintillaEdit* self) {
 	sptr_t _ret = self->xOffset();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_ChooseCaretX(ScintillaEdit* self) {
+void ScintillaEdit_chooseCaretX(ScintillaEdit* self) {
 	self->chooseCaretX();
 }
 
-void ScintillaEdit_GrabFocus(ScintillaEdit* self) {
+void ScintillaEdit_grabFocus(ScintillaEdit* self) {
 	self->grabFocus();
 }
 
-void ScintillaEdit_SetXCaretPolicy(ScintillaEdit* self, intptr_t caretPolicy, intptr_t caretSlop) {
+void ScintillaEdit_setXCaretPolicy(ScintillaEdit* self, intptr_t caretPolicy, intptr_t caretSlop) {
 	self->setXCaretPolicy(static_cast<sptr_t>(caretPolicy), static_cast<sptr_t>(caretSlop));
 }
 
-void ScintillaEdit_SetYCaretPolicy(ScintillaEdit* self, intptr_t caretPolicy, intptr_t caretSlop) {
+void ScintillaEdit_setYCaretPolicy(ScintillaEdit* self, intptr_t caretPolicy, intptr_t caretSlop) {
 	self->setYCaretPolicy(static_cast<sptr_t>(caretPolicy), static_cast<sptr_t>(caretSlop));
 }
 
-void ScintillaEdit_SetPrintWrapMode(ScintillaEdit* self, intptr_t wrapMode) {
+void ScintillaEdit_setPrintWrapMode(ScintillaEdit* self, intptr_t wrapMode) {
 	self->setPrintWrapMode(static_cast<sptr_t>(wrapMode));
 }
 
-intptr_t ScintillaEdit_PrintWrapMode(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_printWrapMode(const ScintillaEdit* self) {
 	sptr_t _ret = self->printWrapMode();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetHotspotActiveFore(ScintillaEdit* self, bool useSetting, intptr_t fore) {
+void ScintillaEdit_setHotspotActiveFore(ScintillaEdit* self, bool useSetting, intptr_t fore) {
 	self->setHotspotActiveFore(useSetting, static_cast<sptr_t>(fore));
 }
 
-intptr_t ScintillaEdit_HotspotActiveFore(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_hotspotActiveFore(const ScintillaEdit* self) {
 	sptr_t _ret = self->hotspotActiveFore();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetHotspotActiveBack(ScintillaEdit* self, bool useSetting, intptr_t back) {
+void ScintillaEdit_setHotspotActiveBack(ScintillaEdit* self, bool useSetting, intptr_t back) {
 	self->setHotspotActiveBack(useSetting, static_cast<sptr_t>(back));
 }
 
-intptr_t ScintillaEdit_HotspotActiveBack(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_hotspotActiveBack(const ScintillaEdit* self) {
 	sptr_t _ret = self->hotspotActiveBack();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetHotspotActiveUnderline(ScintillaEdit* self, bool underline) {
+void ScintillaEdit_setHotspotActiveUnderline(ScintillaEdit* self, bool underline) {
 	self->setHotspotActiveUnderline(underline);
 }
 
-bool ScintillaEdit_HotspotActiveUnderline(const ScintillaEdit* self) {
+bool ScintillaEdit_hotspotActiveUnderline(const ScintillaEdit* self) {
 	return self->hotspotActiveUnderline();
 }
 
-void ScintillaEdit_SetHotspotSingleLine(ScintillaEdit* self, bool singleLine) {
+void ScintillaEdit_setHotspotSingleLine(ScintillaEdit* self, bool singleLine) {
 	self->setHotspotSingleLine(singleLine);
 }
 
-bool ScintillaEdit_HotspotSingleLine(const ScintillaEdit* self) {
+bool ScintillaEdit_hotspotSingleLine(const ScintillaEdit* self) {
 	return self->hotspotSingleLine();
 }
 
-void ScintillaEdit_ParaDown(ScintillaEdit* self) {
+void ScintillaEdit_paraDown(ScintillaEdit* self) {
 	self->paraDown();
 }
 
-void ScintillaEdit_ParaDownExtend(ScintillaEdit* self) {
+void ScintillaEdit_paraDownExtend(ScintillaEdit* self) {
 	self->paraDownExtend();
 }
 
-void ScintillaEdit_ParaUp(ScintillaEdit* self) {
+void ScintillaEdit_paraUp(ScintillaEdit* self) {
 	self->paraUp();
 }
 
-void ScintillaEdit_ParaUpExtend(ScintillaEdit* self) {
+void ScintillaEdit_paraUpExtend(ScintillaEdit* self) {
 	self->paraUpExtend();
 }
 
-intptr_t ScintillaEdit_PositionBefore(ScintillaEdit* self, intptr_t pos) {
+intptr_t ScintillaEdit_positionBefore(ScintillaEdit* self, intptr_t pos) {
 	sptr_t _ret = self->positionBefore(static_cast<sptr_t>(pos));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_PositionAfter(ScintillaEdit* self, intptr_t pos) {
+intptr_t ScintillaEdit_positionAfter(ScintillaEdit* self, intptr_t pos) {
 	sptr_t _ret = self->positionAfter(static_cast<sptr_t>(pos));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_PositionRelative(ScintillaEdit* self, intptr_t pos, intptr_t relative) {
+intptr_t ScintillaEdit_positionRelative(ScintillaEdit* self, intptr_t pos, intptr_t relative) {
 	sptr_t _ret = self->positionRelative(static_cast<sptr_t>(pos), static_cast<sptr_t>(relative));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_PositionRelativeCodeUnits(ScintillaEdit* self, intptr_t pos, intptr_t relative) {
+intptr_t ScintillaEdit_positionRelativeCodeUnits(ScintillaEdit* self, intptr_t pos, intptr_t relative) {
 	sptr_t _ret = self->positionRelativeCodeUnits(static_cast<sptr_t>(pos), static_cast<sptr_t>(relative));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_CopyRange(ScintillaEdit* self, intptr_t start, intptr_t end) {
+void ScintillaEdit_copyRange(ScintillaEdit* self, intptr_t start, intptr_t end) {
 	self->copyRange(static_cast<sptr_t>(start), static_cast<sptr_t>(end));
 }
 
-void ScintillaEdit_CopyText(ScintillaEdit* self, intptr_t length, const char* text) {
+void ScintillaEdit_copyText(ScintillaEdit* self, intptr_t length, const char* text) {
 	self->copyText(static_cast<sptr_t>(length), text);
 }
 
-void ScintillaEdit_SetSelectionMode(ScintillaEdit* self, intptr_t selectionMode) {
+void ScintillaEdit_setSelectionMode(ScintillaEdit* self, intptr_t selectionMode) {
 	self->setSelectionMode(static_cast<sptr_t>(selectionMode));
 }
 
-void ScintillaEdit_ChangeSelectionMode(ScintillaEdit* self, intptr_t selectionMode) {
+void ScintillaEdit_changeSelectionMode(ScintillaEdit* self, intptr_t selectionMode) {
 	self->changeSelectionMode(static_cast<sptr_t>(selectionMode));
 }
 
-intptr_t ScintillaEdit_SelectionMode(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_selectionMode(const ScintillaEdit* self) {
 	sptr_t _ret = self->selectionMode();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetMoveExtendsSelection(ScintillaEdit* self, bool moveExtendsSelection) {
+void ScintillaEdit_setMoveExtendsSelection(ScintillaEdit* self, bool moveExtendsSelection) {
 	self->setMoveExtendsSelection(moveExtendsSelection);
 }
 
-bool ScintillaEdit_MoveExtendsSelection(const ScintillaEdit* self) {
+bool ScintillaEdit_moveExtendsSelection(const ScintillaEdit* self) {
 	return self->moveExtendsSelection();
 }
 
-intptr_t ScintillaEdit_GetLineSelStartPosition(ScintillaEdit* self, intptr_t line) {
+intptr_t ScintillaEdit_getLineSelStartPosition(ScintillaEdit* self, intptr_t line) {
 	sptr_t _ret = self->getLineSelStartPosition(static_cast<sptr_t>(line));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_GetLineSelEndPosition(ScintillaEdit* self, intptr_t line) {
+intptr_t ScintillaEdit_getLineSelEndPosition(ScintillaEdit* self, intptr_t line) {
 	sptr_t _ret = self->getLineSelEndPosition(static_cast<sptr_t>(line));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_LineDownRectExtend(ScintillaEdit* self) {
+void ScintillaEdit_lineDownRectExtend(ScintillaEdit* self) {
 	self->lineDownRectExtend();
 }
 
-void ScintillaEdit_LineUpRectExtend(ScintillaEdit* self) {
+void ScintillaEdit_lineUpRectExtend(ScintillaEdit* self) {
 	self->lineUpRectExtend();
 }
 
-void ScintillaEdit_CharLeftRectExtend(ScintillaEdit* self) {
+void ScintillaEdit_charLeftRectExtend(ScintillaEdit* self) {
 	self->charLeftRectExtend();
 }
 
-void ScintillaEdit_CharRightRectExtend(ScintillaEdit* self) {
+void ScintillaEdit_charRightRectExtend(ScintillaEdit* self) {
 	self->charRightRectExtend();
 }
 
-void ScintillaEdit_HomeRectExtend(ScintillaEdit* self) {
+void ScintillaEdit_homeRectExtend(ScintillaEdit* self) {
 	self->homeRectExtend();
 }
 
-void ScintillaEdit_VCHomeRectExtend(ScintillaEdit* self) {
+void ScintillaEdit_vCHomeRectExtend(ScintillaEdit* self) {
 	self->vCHomeRectExtend();
 }
 
-void ScintillaEdit_LineEndRectExtend(ScintillaEdit* self) {
+void ScintillaEdit_lineEndRectExtend(ScintillaEdit* self) {
 	self->lineEndRectExtend();
 }
 
-void ScintillaEdit_PageUpRectExtend(ScintillaEdit* self) {
+void ScintillaEdit_pageUpRectExtend(ScintillaEdit* self) {
 	self->pageUpRectExtend();
 }
 
-void ScintillaEdit_PageDownRectExtend(ScintillaEdit* self) {
+void ScintillaEdit_pageDownRectExtend(ScintillaEdit* self) {
 	self->pageDownRectExtend();
 }
 
-void ScintillaEdit_StutteredPageUp(ScintillaEdit* self) {
+void ScintillaEdit_stutteredPageUp(ScintillaEdit* self) {
 	self->stutteredPageUp();
 }
 
-void ScintillaEdit_StutteredPageUpExtend(ScintillaEdit* self) {
+void ScintillaEdit_stutteredPageUpExtend(ScintillaEdit* self) {
 	self->stutteredPageUpExtend();
 }
 
-void ScintillaEdit_StutteredPageDown(ScintillaEdit* self) {
+void ScintillaEdit_stutteredPageDown(ScintillaEdit* self) {
 	self->stutteredPageDown();
 }
 
-void ScintillaEdit_StutteredPageDownExtend(ScintillaEdit* self) {
+void ScintillaEdit_stutteredPageDownExtend(ScintillaEdit* self) {
 	self->stutteredPageDownExtend();
 }
 
-void ScintillaEdit_WordLeftEnd(ScintillaEdit* self) {
+void ScintillaEdit_wordLeftEnd(ScintillaEdit* self) {
 	self->wordLeftEnd();
 }
 
-void ScintillaEdit_WordLeftEndExtend(ScintillaEdit* self) {
+void ScintillaEdit_wordLeftEndExtend(ScintillaEdit* self) {
 	self->wordLeftEndExtend();
 }
 
-void ScintillaEdit_WordRightEnd(ScintillaEdit* self) {
+void ScintillaEdit_wordRightEnd(ScintillaEdit* self) {
 	self->wordRightEnd();
 }
 
-void ScintillaEdit_WordRightEndExtend(ScintillaEdit* self) {
+void ScintillaEdit_wordRightEndExtend(ScintillaEdit* self) {
 	self->wordRightEndExtend();
 }
 
-void ScintillaEdit_SetWhitespaceChars(ScintillaEdit* self, const char* characters) {
+void ScintillaEdit_setWhitespaceChars(ScintillaEdit* self, const char* characters) {
 	self->setWhitespaceChars(characters);
 }
 
-struct miqt_string ScintillaEdit_WhitespaceChars(const ScintillaEdit* self) {
+struct miqt_string ScintillaEdit_whitespaceChars(const ScintillaEdit* self) {
 	QByteArray _qb = self->whitespaceChars();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -9707,11 +9707,11 @@ struct miqt_string ScintillaEdit_WhitespaceChars(const ScintillaEdit* self) {
 	return _ms;
 }
 
-void ScintillaEdit_SetPunctuationChars(ScintillaEdit* self, const char* characters) {
+void ScintillaEdit_setPunctuationChars(ScintillaEdit* self, const char* characters) {
 	self->setPunctuationChars(characters);
 }
 
-struct miqt_string ScintillaEdit_PunctuationChars(const ScintillaEdit* self) {
+struct miqt_string ScintillaEdit_punctuationChars(const ScintillaEdit* self) {
 	QByteArray _qb = self->punctuationChars();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -9720,16 +9720,16 @@ struct miqt_string ScintillaEdit_PunctuationChars(const ScintillaEdit* self) {
 	return _ms;
 }
 
-void ScintillaEdit_SetCharsDefault(ScintillaEdit* self) {
+void ScintillaEdit_setCharsDefault(ScintillaEdit* self) {
 	self->setCharsDefault();
 }
 
-intptr_t ScintillaEdit_AutoCCurrent(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_autoCCurrent(const ScintillaEdit* self) {
 	sptr_t _ret = self->autoCCurrent();
 	return static_cast<intptr_t>(_ret);
 }
 
-struct miqt_string ScintillaEdit_AutoCCurrentText(const ScintillaEdit* self) {
+struct miqt_string ScintillaEdit_autoCCurrentText(const ScintillaEdit* self) {
 	QByteArray _qb = self->autoCCurrentText();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -9738,38 +9738,38 @@ struct miqt_string ScintillaEdit_AutoCCurrentText(const ScintillaEdit* self) {
 	return _ms;
 }
 
-void ScintillaEdit_AutoCSetCaseInsensitiveBehaviour(ScintillaEdit* self, intptr_t behaviour) {
+void ScintillaEdit_autoCSetCaseInsensitiveBehaviour(ScintillaEdit* self, intptr_t behaviour) {
 	self->autoCSetCaseInsensitiveBehaviour(static_cast<sptr_t>(behaviour));
 }
 
-intptr_t ScintillaEdit_AutoCCaseInsensitiveBehaviour(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_autoCCaseInsensitiveBehaviour(const ScintillaEdit* self) {
 	sptr_t _ret = self->autoCCaseInsensitiveBehaviour();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_AutoCSetMulti(ScintillaEdit* self, intptr_t multi) {
+void ScintillaEdit_autoCSetMulti(ScintillaEdit* self, intptr_t multi) {
 	self->autoCSetMulti(static_cast<sptr_t>(multi));
 }
 
-intptr_t ScintillaEdit_AutoCMulti(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_autoCMulti(const ScintillaEdit* self) {
 	sptr_t _ret = self->autoCMulti();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_AutoCSetOrder(ScintillaEdit* self, intptr_t order) {
+void ScintillaEdit_autoCSetOrder(ScintillaEdit* self, intptr_t order) {
 	self->autoCSetOrder(static_cast<sptr_t>(order));
 }
 
-intptr_t ScintillaEdit_AutoCOrder(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_autoCOrder(const ScintillaEdit* self) {
 	sptr_t _ret = self->autoCOrder();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_Allocate(ScintillaEdit* self, intptr_t bytes) {
+void ScintillaEdit_allocate(ScintillaEdit* self, intptr_t bytes) {
 	self->allocate(static_cast<sptr_t>(bytes));
 }
 
-struct miqt_string ScintillaEdit_TargetAsUTF8(ScintillaEdit* self) {
+struct miqt_string ScintillaEdit_targetAsUTF8(ScintillaEdit* self) {
 	QByteArray _qb = self->targetAsUTF8();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -9778,11 +9778,11 @@ struct miqt_string ScintillaEdit_TargetAsUTF8(ScintillaEdit* self) {
 	return _ms;
 }
 
-void ScintillaEdit_SetLengthForEncode(ScintillaEdit* self, intptr_t bytes) {
+void ScintillaEdit_setLengthForEncode(ScintillaEdit* self, intptr_t bytes) {
 	self->setLengthForEncode(static_cast<sptr_t>(bytes));
 }
 
-struct miqt_string ScintillaEdit_EncodedFromUTF8(ScintillaEdit* self, const char* utf8) {
+struct miqt_string ScintillaEdit_encodedFromUTF8(ScintillaEdit* self, const char* utf8) {
 	QByteArray _qb = self->encodedFromUTF8(utf8);
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -9791,135 +9791,135 @@ struct miqt_string ScintillaEdit_EncodedFromUTF8(ScintillaEdit* self, const char
 	return _ms;
 }
 
-intptr_t ScintillaEdit_FindColumn(ScintillaEdit* self, intptr_t line, intptr_t column) {
+intptr_t ScintillaEdit_findColumn(ScintillaEdit* self, intptr_t line, intptr_t column) {
 	sptr_t _ret = self->findColumn(static_cast<sptr_t>(line), static_cast<sptr_t>(column));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_CaretSticky(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_caretSticky(const ScintillaEdit* self) {
 	sptr_t _ret = self->caretSticky();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetCaretSticky(ScintillaEdit* self, intptr_t useCaretStickyBehaviour) {
+void ScintillaEdit_setCaretSticky(ScintillaEdit* self, intptr_t useCaretStickyBehaviour) {
 	self->setCaretSticky(static_cast<sptr_t>(useCaretStickyBehaviour));
 }
 
-void ScintillaEdit_ToggleCaretSticky(ScintillaEdit* self) {
+void ScintillaEdit_toggleCaretSticky(ScintillaEdit* self) {
 	self->toggleCaretSticky();
 }
 
-void ScintillaEdit_SetPasteConvertEndings(ScintillaEdit* self, bool convert) {
+void ScintillaEdit_setPasteConvertEndings(ScintillaEdit* self, bool convert) {
 	self->setPasteConvertEndings(convert);
 }
 
-bool ScintillaEdit_PasteConvertEndings(const ScintillaEdit* self) {
+bool ScintillaEdit_pasteConvertEndings(const ScintillaEdit* self) {
 	return self->pasteConvertEndings();
 }
 
-void ScintillaEdit_ReplaceRectangular(ScintillaEdit* self, intptr_t length, const char* text) {
+void ScintillaEdit_replaceRectangular(ScintillaEdit* self, intptr_t length, const char* text) {
 	self->replaceRectangular(static_cast<sptr_t>(length), text);
 }
 
-void ScintillaEdit_SelectionDuplicate(ScintillaEdit* self) {
+void ScintillaEdit_selectionDuplicate(ScintillaEdit* self) {
 	self->selectionDuplicate();
 }
 
-void ScintillaEdit_SetCaretLineBackAlpha(ScintillaEdit* self, intptr_t alpha) {
+void ScintillaEdit_setCaretLineBackAlpha(ScintillaEdit* self, intptr_t alpha) {
 	self->setCaretLineBackAlpha(static_cast<sptr_t>(alpha));
 }
 
-intptr_t ScintillaEdit_CaretLineBackAlpha(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_caretLineBackAlpha(const ScintillaEdit* self) {
 	sptr_t _ret = self->caretLineBackAlpha();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetCaretStyle(ScintillaEdit* self, intptr_t caretStyle) {
+void ScintillaEdit_setCaretStyle(ScintillaEdit* self, intptr_t caretStyle) {
 	self->setCaretStyle(static_cast<sptr_t>(caretStyle));
 }
 
-intptr_t ScintillaEdit_CaretStyle(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_caretStyle(const ScintillaEdit* self) {
 	sptr_t _ret = self->caretStyle();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetIndicatorCurrent(ScintillaEdit* self, intptr_t indicator) {
+void ScintillaEdit_setIndicatorCurrent(ScintillaEdit* self, intptr_t indicator) {
 	self->setIndicatorCurrent(static_cast<sptr_t>(indicator));
 }
 
-intptr_t ScintillaEdit_IndicatorCurrent(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_indicatorCurrent(const ScintillaEdit* self) {
 	sptr_t _ret = self->indicatorCurrent();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetIndicatorValue(ScintillaEdit* self, intptr_t value) {
+void ScintillaEdit_setIndicatorValue(ScintillaEdit* self, intptr_t value) {
 	self->setIndicatorValue(static_cast<sptr_t>(value));
 }
 
-intptr_t ScintillaEdit_IndicatorValue(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_indicatorValue(const ScintillaEdit* self) {
 	sptr_t _ret = self->indicatorValue();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_IndicatorFillRange(ScintillaEdit* self, intptr_t start, intptr_t lengthFill) {
+void ScintillaEdit_indicatorFillRange(ScintillaEdit* self, intptr_t start, intptr_t lengthFill) {
 	self->indicatorFillRange(static_cast<sptr_t>(start), static_cast<sptr_t>(lengthFill));
 }
 
-void ScintillaEdit_IndicatorClearRange(ScintillaEdit* self, intptr_t start, intptr_t lengthClear) {
+void ScintillaEdit_indicatorClearRange(ScintillaEdit* self, intptr_t start, intptr_t lengthClear) {
 	self->indicatorClearRange(static_cast<sptr_t>(start), static_cast<sptr_t>(lengthClear));
 }
 
-intptr_t ScintillaEdit_IndicatorAllOnFor(ScintillaEdit* self, intptr_t pos) {
+intptr_t ScintillaEdit_indicatorAllOnFor(ScintillaEdit* self, intptr_t pos) {
 	sptr_t _ret = self->indicatorAllOnFor(static_cast<sptr_t>(pos));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_IndicatorValueAt(ScintillaEdit* self, intptr_t indicator, intptr_t pos) {
+intptr_t ScintillaEdit_indicatorValueAt(ScintillaEdit* self, intptr_t indicator, intptr_t pos) {
 	sptr_t _ret = self->indicatorValueAt(static_cast<sptr_t>(indicator), static_cast<sptr_t>(pos));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_IndicatorStart(ScintillaEdit* self, intptr_t indicator, intptr_t pos) {
+intptr_t ScintillaEdit_indicatorStart(ScintillaEdit* self, intptr_t indicator, intptr_t pos) {
 	sptr_t _ret = self->indicatorStart(static_cast<sptr_t>(indicator), static_cast<sptr_t>(pos));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_IndicatorEnd(ScintillaEdit* self, intptr_t indicator, intptr_t pos) {
+intptr_t ScintillaEdit_indicatorEnd(ScintillaEdit* self, intptr_t indicator, intptr_t pos) {
 	sptr_t _ret = self->indicatorEnd(static_cast<sptr_t>(indicator), static_cast<sptr_t>(pos));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetPositionCache(ScintillaEdit* self, intptr_t size) {
+void ScintillaEdit_setPositionCache(ScintillaEdit* self, intptr_t size) {
 	self->setPositionCache(static_cast<sptr_t>(size));
 }
 
-intptr_t ScintillaEdit_PositionCache(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_positionCache(const ScintillaEdit* self) {
 	sptr_t _ret = self->positionCache();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetLayoutThreads(ScintillaEdit* self, intptr_t threads) {
+void ScintillaEdit_setLayoutThreads(ScintillaEdit* self, intptr_t threads) {
 	self->setLayoutThreads(static_cast<sptr_t>(threads));
 }
 
-intptr_t ScintillaEdit_LayoutThreads(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_layoutThreads(const ScintillaEdit* self) {
 	sptr_t _ret = self->layoutThreads();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_CopyAllowLine(ScintillaEdit* self) {
+void ScintillaEdit_copyAllowLine(ScintillaEdit* self) {
 	self->copyAllowLine();
 }
 
-void ScintillaEdit_CutAllowLine(ScintillaEdit* self) {
+void ScintillaEdit_cutAllowLine(ScintillaEdit* self) {
 	self->cutAllowLine();
 }
 
-void ScintillaEdit_SetCopySeparator(ScintillaEdit* self, const char* separator) {
+void ScintillaEdit_setCopySeparator(ScintillaEdit* self, const char* separator) {
 	self->setCopySeparator(separator);
 }
 
-struct miqt_string ScintillaEdit_CopySeparator(const ScintillaEdit* self) {
+struct miqt_string ScintillaEdit_copySeparator(const ScintillaEdit* self) {
 	QByteArray _qb = self->copySeparator();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -9928,67 +9928,67 @@ struct miqt_string ScintillaEdit_CopySeparator(const ScintillaEdit* self) {
 	return _ms;
 }
 
-intptr_t ScintillaEdit_CharacterPointer(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_characterPointer(const ScintillaEdit* self) {
 	sptr_t _ret = self->characterPointer();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_RangePointer(const ScintillaEdit* self, intptr_t start, intptr_t lengthRange) {
+intptr_t ScintillaEdit_rangePointer(const ScintillaEdit* self, intptr_t start, intptr_t lengthRange) {
 	sptr_t _ret = self->rangePointer(static_cast<sptr_t>(start), static_cast<sptr_t>(lengthRange));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_GapPosition(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_gapPosition(const ScintillaEdit* self) {
 	sptr_t _ret = self->gapPosition();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_IndicSetAlpha(ScintillaEdit* self, intptr_t indicator, intptr_t alpha) {
+void ScintillaEdit_indicSetAlpha(ScintillaEdit* self, intptr_t indicator, intptr_t alpha) {
 	self->indicSetAlpha(static_cast<sptr_t>(indicator), static_cast<sptr_t>(alpha));
 }
 
-intptr_t ScintillaEdit_IndicAlpha(const ScintillaEdit* self, intptr_t indicator) {
+intptr_t ScintillaEdit_indicAlpha(const ScintillaEdit* self, intptr_t indicator) {
 	sptr_t _ret = self->indicAlpha(static_cast<sptr_t>(indicator));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_IndicSetOutlineAlpha(ScintillaEdit* self, intptr_t indicator, intptr_t alpha) {
+void ScintillaEdit_indicSetOutlineAlpha(ScintillaEdit* self, intptr_t indicator, intptr_t alpha) {
 	self->indicSetOutlineAlpha(static_cast<sptr_t>(indicator), static_cast<sptr_t>(alpha));
 }
 
-intptr_t ScintillaEdit_IndicOutlineAlpha(const ScintillaEdit* self, intptr_t indicator) {
+intptr_t ScintillaEdit_indicOutlineAlpha(const ScintillaEdit* self, intptr_t indicator) {
 	sptr_t _ret = self->indicOutlineAlpha(static_cast<sptr_t>(indicator));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetExtraAscent(ScintillaEdit* self, intptr_t extraAscent) {
+void ScintillaEdit_setExtraAscent(ScintillaEdit* self, intptr_t extraAscent) {
 	self->setExtraAscent(static_cast<sptr_t>(extraAscent));
 }
 
-intptr_t ScintillaEdit_ExtraAscent(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_extraAscent(const ScintillaEdit* self) {
 	sptr_t _ret = self->extraAscent();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetExtraDescent(ScintillaEdit* self, intptr_t extraDescent) {
+void ScintillaEdit_setExtraDescent(ScintillaEdit* self, intptr_t extraDescent) {
 	self->setExtraDescent(static_cast<sptr_t>(extraDescent));
 }
 
-intptr_t ScintillaEdit_ExtraDescent(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_extraDescent(const ScintillaEdit* self) {
 	sptr_t _ret = self->extraDescent();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_MarkerSymbolDefined(ScintillaEdit* self, intptr_t markerNumber) {
+intptr_t ScintillaEdit_markerSymbolDefined(ScintillaEdit* self, intptr_t markerNumber) {
 	sptr_t _ret = self->markerSymbolDefined(static_cast<sptr_t>(markerNumber));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_MarginSetText(ScintillaEdit* self, intptr_t line, const char* text) {
+void ScintillaEdit_marginSetText(ScintillaEdit* self, intptr_t line, const char* text) {
 	self->marginSetText(static_cast<sptr_t>(line), text);
 }
 
-struct miqt_string ScintillaEdit_MarginText(const ScintillaEdit* self, intptr_t line) {
+struct miqt_string ScintillaEdit_marginText(const ScintillaEdit* self, intptr_t line) {
 	QByteArray _qb = self->marginText(static_cast<sptr_t>(line));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -9997,20 +9997,20 @@ struct miqt_string ScintillaEdit_MarginText(const ScintillaEdit* self, intptr_t 
 	return _ms;
 }
 
-void ScintillaEdit_MarginSetStyle(ScintillaEdit* self, intptr_t line, intptr_t style) {
+void ScintillaEdit_marginSetStyle(ScintillaEdit* self, intptr_t line, intptr_t style) {
 	self->marginSetStyle(static_cast<sptr_t>(line), static_cast<sptr_t>(style));
 }
 
-intptr_t ScintillaEdit_MarginStyle(const ScintillaEdit* self, intptr_t line) {
+intptr_t ScintillaEdit_marginStyle(const ScintillaEdit* self, intptr_t line) {
 	sptr_t _ret = self->marginStyle(static_cast<sptr_t>(line));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_MarginSetStyles(ScintillaEdit* self, intptr_t line, const char* styles) {
+void ScintillaEdit_marginSetStyles(ScintillaEdit* self, intptr_t line, const char* styles) {
 	self->marginSetStyles(static_cast<sptr_t>(line), styles);
 }
 
-struct miqt_string ScintillaEdit_MarginStyles(const ScintillaEdit* self, intptr_t line) {
+struct miqt_string ScintillaEdit_marginStyles(const ScintillaEdit* self, intptr_t line) {
 	QByteArray _qb = self->marginStyles(static_cast<sptr_t>(line));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -10019,33 +10019,33 @@ struct miqt_string ScintillaEdit_MarginStyles(const ScintillaEdit* self, intptr_
 	return _ms;
 }
 
-void ScintillaEdit_MarginTextClearAll(ScintillaEdit* self) {
+void ScintillaEdit_marginTextClearAll(ScintillaEdit* self) {
 	self->marginTextClearAll();
 }
 
-void ScintillaEdit_MarginSetStyleOffset(ScintillaEdit* self, intptr_t style) {
+void ScintillaEdit_marginSetStyleOffset(ScintillaEdit* self, intptr_t style) {
 	self->marginSetStyleOffset(static_cast<sptr_t>(style));
 }
 
-intptr_t ScintillaEdit_MarginStyleOffset(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_marginStyleOffset(const ScintillaEdit* self) {
 	sptr_t _ret = self->marginStyleOffset();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetMarginOptions(ScintillaEdit* self, intptr_t marginOptions) {
+void ScintillaEdit_setMarginOptions(ScintillaEdit* self, intptr_t marginOptions) {
 	self->setMarginOptions(static_cast<sptr_t>(marginOptions));
 }
 
-intptr_t ScintillaEdit_MarginOptions(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_marginOptions(const ScintillaEdit* self) {
 	sptr_t _ret = self->marginOptions();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_AnnotationSetText(ScintillaEdit* self, intptr_t line, const char* text) {
+void ScintillaEdit_annotationSetText(ScintillaEdit* self, intptr_t line, const char* text) {
 	self->annotationSetText(static_cast<sptr_t>(line), text);
 }
 
-struct miqt_string ScintillaEdit_AnnotationText(const ScintillaEdit* self, intptr_t line) {
+struct miqt_string ScintillaEdit_annotationText(const ScintillaEdit* self, intptr_t line) {
 	QByteArray _qb = self->annotationText(static_cast<sptr_t>(line));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -10054,20 +10054,20 @@ struct miqt_string ScintillaEdit_AnnotationText(const ScintillaEdit* self, intpt
 	return _ms;
 }
 
-void ScintillaEdit_AnnotationSetStyle(ScintillaEdit* self, intptr_t line, intptr_t style) {
+void ScintillaEdit_annotationSetStyle(ScintillaEdit* self, intptr_t line, intptr_t style) {
 	self->annotationSetStyle(static_cast<sptr_t>(line), static_cast<sptr_t>(style));
 }
 
-intptr_t ScintillaEdit_AnnotationStyle(const ScintillaEdit* self, intptr_t line) {
+intptr_t ScintillaEdit_annotationStyle(const ScintillaEdit* self, intptr_t line) {
 	sptr_t _ret = self->annotationStyle(static_cast<sptr_t>(line));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_AnnotationSetStyles(ScintillaEdit* self, intptr_t line, const char* styles) {
+void ScintillaEdit_annotationSetStyles(ScintillaEdit* self, intptr_t line, const char* styles) {
 	self->annotationSetStyles(static_cast<sptr_t>(line), styles);
 }
 
-struct miqt_string ScintillaEdit_AnnotationStyles(const ScintillaEdit* self, intptr_t line) {
+struct miqt_string ScintillaEdit_annotationStyles(const ScintillaEdit* self, intptr_t line) {
 	QByteArray _qb = self->annotationStyles(static_cast<sptr_t>(line));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -10076,415 +10076,415 @@ struct miqt_string ScintillaEdit_AnnotationStyles(const ScintillaEdit* self, int
 	return _ms;
 }
 
-intptr_t ScintillaEdit_AnnotationLines(const ScintillaEdit* self, intptr_t line) {
+intptr_t ScintillaEdit_annotationLines(const ScintillaEdit* self, intptr_t line) {
 	sptr_t _ret = self->annotationLines(static_cast<sptr_t>(line));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_AnnotationClearAll(ScintillaEdit* self) {
+void ScintillaEdit_annotationClearAll(ScintillaEdit* self) {
 	self->annotationClearAll();
 }
 
-void ScintillaEdit_AnnotationSetVisible(ScintillaEdit* self, intptr_t visible) {
+void ScintillaEdit_annotationSetVisible(ScintillaEdit* self, intptr_t visible) {
 	self->annotationSetVisible(static_cast<sptr_t>(visible));
 }
 
-intptr_t ScintillaEdit_AnnotationVisible(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_annotationVisible(const ScintillaEdit* self) {
 	sptr_t _ret = self->annotationVisible();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_AnnotationSetStyleOffset(ScintillaEdit* self, intptr_t style) {
+void ScintillaEdit_annotationSetStyleOffset(ScintillaEdit* self, intptr_t style) {
 	self->annotationSetStyleOffset(static_cast<sptr_t>(style));
 }
 
-intptr_t ScintillaEdit_AnnotationStyleOffset(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_annotationStyleOffset(const ScintillaEdit* self) {
 	sptr_t _ret = self->annotationStyleOffset();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_ReleaseAllExtendedStyles(ScintillaEdit* self) {
+void ScintillaEdit_releaseAllExtendedStyles(ScintillaEdit* self) {
 	self->releaseAllExtendedStyles();
 }
 
-intptr_t ScintillaEdit_AllocateExtendedStyles(ScintillaEdit* self, intptr_t numberStyles) {
+intptr_t ScintillaEdit_allocateExtendedStyles(ScintillaEdit* self, intptr_t numberStyles) {
 	sptr_t _ret = self->allocateExtendedStyles(static_cast<sptr_t>(numberStyles));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_AddUndoAction(ScintillaEdit* self, intptr_t token, intptr_t flags) {
+void ScintillaEdit_addUndoAction(ScintillaEdit* self, intptr_t token, intptr_t flags) {
 	self->addUndoAction(static_cast<sptr_t>(token), static_cast<sptr_t>(flags));
 }
 
-intptr_t ScintillaEdit_CharPositionFromPoint(ScintillaEdit* self, intptr_t x, intptr_t y) {
+intptr_t ScintillaEdit_charPositionFromPoint(ScintillaEdit* self, intptr_t x, intptr_t y) {
 	sptr_t _ret = self->charPositionFromPoint(static_cast<sptr_t>(x), static_cast<sptr_t>(y));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_CharPositionFromPointClose(ScintillaEdit* self, intptr_t x, intptr_t y) {
+intptr_t ScintillaEdit_charPositionFromPointClose(ScintillaEdit* self, intptr_t x, intptr_t y) {
 	sptr_t _ret = self->charPositionFromPointClose(static_cast<sptr_t>(x), static_cast<sptr_t>(y));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetMouseSelectionRectangularSwitch(ScintillaEdit* self, bool mouseSelectionRectangularSwitch) {
+void ScintillaEdit_setMouseSelectionRectangularSwitch(ScintillaEdit* self, bool mouseSelectionRectangularSwitch) {
 	self->setMouseSelectionRectangularSwitch(mouseSelectionRectangularSwitch);
 }
 
-bool ScintillaEdit_MouseSelectionRectangularSwitch(const ScintillaEdit* self) {
+bool ScintillaEdit_mouseSelectionRectangularSwitch(const ScintillaEdit* self) {
 	return self->mouseSelectionRectangularSwitch();
 }
 
-void ScintillaEdit_SetMultipleSelection(ScintillaEdit* self, bool multipleSelection) {
+void ScintillaEdit_setMultipleSelection(ScintillaEdit* self, bool multipleSelection) {
 	self->setMultipleSelection(multipleSelection);
 }
 
-bool ScintillaEdit_MultipleSelection(const ScintillaEdit* self) {
+bool ScintillaEdit_multipleSelection(const ScintillaEdit* self) {
 	return self->multipleSelection();
 }
 
-void ScintillaEdit_SetAdditionalSelectionTyping(ScintillaEdit* self, bool additionalSelectionTyping) {
+void ScintillaEdit_setAdditionalSelectionTyping(ScintillaEdit* self, bool additionalSelectionTyping) {
 	self->setAdditionalSelectionTyping(additionalSelectionTyping);
 }
 
-bool ScintillaEdit_AdditionalSelectionTyping(const ScintillaEdit* self) {
+bool ScintillaEdit_additionalSelectionTyping(const ScintillaEdit* self) {
 	return self->additionalSelectionTyping();
 }
 
-void ScintillaEdit_SetAdditionalCaretsBlink(ScintillaEdit* self, bool additionalCaretsBlink) {
+void ScintillaEdit_setAdditionalCaretsBlink(ScintillaEdit* self, bool additionalCaretsBlink) {
 	self->setAdditionalCaretsBlink(additionalCaretsBlink);
 }
 
-bool ScintillaEdit_AdditionalCaretsBlink(const ScintillaEdit* self) {
+bool ScintillaEdit_additionalCaretsBlink(const ScintillaEdit* self) {
 	return self->additionalCaretsBlink();
 }
 
-void ScintillaEdit_SetAdditionalCaretsVisible(ScintillaEdit* self, bool additionalCaretsVisible) {
+void ScintillaEdit_setAdditionalCaretsVisible(ScintillaEdit* self, bool additionalCaretsVisible) {
 	self->setAdditionalCaretsVisible(additionalCaretsVisible);
 }
 
-bool ScintillaEdit_AdditionalCaretsVisible(const ScintillaEdit* self) {
+bool ScintillaEdit_additionalCaretsVisible(const ScintillaEdit* self) {
 	return self->additionalCaretsVisible();
 }
 
-intptr_t ScintillaEdit_Selections(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_selections(const ScintillaEdit* self) {
 	sptr_t _ret = self->selections();
 	return static_cast<intptr_t>(_ret);
 }
 
-bool ScintillaEdit_SelectionEmpty(const ScintillaEdit* self) {
+bool ScintillaEdit_selectionEmpty(const ScintillaEdit* self) {
 	return self->selectionEmpty();
 }
 
-void ScintillaEdit_ClearSelections(ScintillaEdit* self) {
+void ScintillaEdit_clearSelections(ScintillaEdit* self) {
 	self->clearSelections();
 }
 
-void ScintillaEdit_SetSelection(ScintillaEdit* self, intptr_t caret, intptr_t anchor) {
+void ScintillaEdit_setSelection(ScintillaEdit* self, intptr_t caret, intptr_t anchor) {
 	self->setSelection(static_cast<sptr_t>(caret), static_cast<sptr_t>(anchor));
 }
 
-void ScintillaEdit_AddSelection(ScintillaEdit* self, intptr_t caret, intptr_t anchor) {
+void ScintillaEdit_addSelection(ScintillaEdit* self, intptr_t caret, intptr_t anchor) {
 	self->addSelection(static_cast<sptr_t>(caret), static_cast<sptr_t>(anchor));
 }
 
-intptr_t ScintillaEdit_SelectionFromPoint(ScintillaEdit* self, intptr_t x, intptr_t y) {
+intptr_t ScintillaEdit_selectionFromPoint(ScintillaEdit* self, intptr_t x, intptr_t y) {
 	sptr_t _ret = self->selectionFromPoint(static_cast<sptr_t>(x), static_cast<sptr_t>(y));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_DropSelectionN(ScintillaEdit* self, intptr_t selection) {
+void ScintillaEdit_dropSelectionN(ScintillaEdit* self, intptr_t selection) {
 	self->dropSelectionN(static_cast<sptr_t>(selection));
 }
 
-void ScintillaEdit_SetMainSelection(ScintillaEdit* self, intptr_t selection) {
+void ScintillaEdit_setMainSelection(ScintillaEdit* self, intptr_t selection) {
 	self->setMainSelection(static_cast<sptr_t>(selection));
 }
 
-intptr_t ScintillaEdit_MainSelection(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_mainSelection(const ScintillaEdit* self) {
 	sptr_t _ret = self->mainSelection();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetSelectionNCaret(ScintillaEdit* self, intptr_t selection, intptr_t caret) {
+void ScintillaEdit_setSelectionNCaret(ScintillaEdit* self, intptr_t selection, intptr_t caret) {
 	self->setSelectionNCaret(static_cast<sptr_t>(selection), static_cast<sptr_t>(caret));
 }
 
-intptr_t ScintillaEdit_SelectionNCaret(const ScintillaEdit* self, intptr_t selection) {
+intptr_t ScintillaEdit_selectionNCaret(const ScintillaEdit* self, intptr_t selection) {
 	sptr_t _ret = self->selectionNCaret(static_cast<sptr_t>(selection));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetSelectionNAnchor(ScintillaEdit* self, intptr_t selection, intptr_t anchor) {
+void ScintillaEdit_setSelectionNAnchor(ScintillaEdit* self, intptr_t selection, intptr_t anchor) {
 	self->setSelectionNAnchor(static_cast<sptr_t>(selection), static_cast<sptr_t>(anchor));
 }
 
-intptr_t ScintillaEdit_SelectionNAnchor(const ScintillaEdit* self, intptr_t selection) {
+intptr_t ScintillaEdit_selectionNAnchor(const ScintillaEdit* self, intptr_t selection) {
 	sptr_t _ret = self->selectionNAnchor(static_cast<sptr_t>(selection));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetSelectionNCaretVirtualSpace(ScintillaEdit* self, intptr_t selection, intptr_t space) {
+void ScintillaEdit_setSelectionNCaretVirtualSpace(ScintillaEdit* self, intptr_t selection, intptr_t space) {
 	self->setSelectionNCaretVirtualSpace(static_cast<sptr_t>(selection), static_cast<sptr_t>(space));
 }
 
-intptr_t ScintillaEdit_SelectionNCaretVirtualSpace(const ScintillaEdit* self, intptr_t selection) {
+intptr_t ScintillaEdit_selectionNCaretVirtualSpace(const ScintillaEdit* self, intptr_t selection) {
 	sptr_t _ret = self->selectionNCaretVirtualSpace(static_cast<sptr_t>(selection));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetSelectionNAnchorVirtualSpace(ScintillaEdit* self, intptr_t selection, intptr_t space) {
+void ScintillaEdit_setSelectionNAnchorVirtualSpace(ScintillaEdit* self, intptr_t selection, intptr_t space) {
 	self->setSelectionNAnchorVirtualSpace(static_cast<sptr_t>(selection), static_cast<sptr_t>(space));
 }
 
-intptr_t ScintillaEdit_SelectionNAnchorVirtualSpace(const ScintillaEdit* self, intptr_t selection) {
+intptr_t ScintillaEdit_selectionNAnchorVirtualSpace(const ScintillaEdit* self, intptr_t selection) {
 	sptr_t _ret = self->selectionNAnchorVirtualSpace(static_cast<sptr_t>(selection));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetSelectionNStart(ScintillaEdit* self, intptr_t selection, intptr_t anchor) {
+void ScintillaEdit_setSelectionNStart(ScintillaEdit* self, intptr_t selection, intptr_t anchor) {
 	self->setSelectionNStart(static_cast<sptr_t>(selection), static_cast<sptr_t>(anchor));
 }
 
-intptr_t ScintillaEdit_SelectionNStart(const ScintillaEdit* self, intptr_t selection) {
+intptr_t ScintillaEdit_selectionNStart(const ScintillaEdit* self, intptr_t selection) {
 	sptr_t _ret = self->selectionNStart(static_cast<sptr_t>(selection));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_SelectionNStartVirtualSpace(const ScintillaEdit* self, intptr_t selection) {
+intptr_t ScintillaEdit_selectionNStartVirtualSpace(const ScintillaEdit* self, intptr_t selection) {
 	sptr_t _ret = self->selectionNStartVirtualSpace(static_cast<sptr_t>(selection));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetSelectionNEnd(ScintillaEdit* self, intptr_t selection, intptr_t caret) {
+void ScintillaEdit_setSelectionNEnd(ScintillaEdit* self, intptr_t selection, intptr_t caret) {
 	self->setSelectionNEnd(static_cast<sptr_t>(selection), static_cast<sptr_t>(caret));
 }
 
-intptr_t ScintillaEdit_SelectionNEndVirtualSpace(const ScintillaEdit* self, intptr_t selection) {
+intptr_t ScintillaEdit_selectionNEndVirtualSpace(const ScintillaEdit* self, intptr_t selection) {
 	sptr_t _ret = self->selectionNEndVirtualSpace(static_cast<sptr_t>(selection));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_SelectionNEnd(const ScintillaEdit* self, intptr_t selection) {
+intptr_t ScintillaEdit_selectionNEnd(const ScintillaEdit* self, intptr_t selection) {
 	sptr_t _ret = self->selectionNEnd(static_cast<sptr_t>(selection));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetRectangularSelectionCaret(ScintillaEdit* self, intptr_t caret) {
+void ScintillaEdit_setRectangularSelectionCaret(ScintillaEdit* self, intptr_t caret) {
 	self->setRectangularSelectionCaret(static_cast<sptr_t>(caret));
 }
 
-intptr_t ScintillaEdit_RectangularSelectionCaret(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_rectangularSelectionCaret(const ScintillaEdit* self) {
 	sptr_t _ret = self->rectangularSelectionCaret();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetRectangularSelectionAnchor(ScintillaEdit* self, intptr_t anchor) {
+void ScintillaEdit_setRectangularSelectionAnchor(ScintillaEdit* self, intptr_t anchor) {
 	self->setRectangularSelectionAnchor(static_cast<sptr_t>(anchor));
 }
 
-intptr_t ScintillaEdit_RectangularSelectionAnchor(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_rectangularSelectionAnchor(const ScintillaEdit* self) {
 	sptr_t _ret = self->rectangularSelectionAnchor();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetRectangularSelectionCaretVirtualSpace(ScintillaEdit* self, intptr_t space) {
+void ScintillaEdit_setRectangularSelectionCaretVirtualSpace(ScintillaEdit* self, intptr_t space) {
 	self->setRectangularSelectionCaretVirtualSpace(static_cast<sptr_t>(space));
 }
 
-intptr_t ScintillaEdit_RectangularSelectionCaretVirtualSpace(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_rectangularSelectionCaretVirtualSpace(const ScintillaEdit* self) {
 	sptr_t _ret = self->rectangularSelectionCaretVirtualSpace();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetRectangularSelectionAnchorVirtualSpace(ScintillaEdit* self, intptr_t space) {
+void ScintillaEdit_setRectangularSelectionAnchorVirtualSpace(ScintillaEdit* self, intptr_t space) {
 	self->setRectangularSelectionAnchorVirtualSpace(static_cast<sptr_t>(space));
 }
 
-intptr_t ScintillaEdit_RectangularSelectionAnchorVirtualSpace(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_rectangularSelectionAnchorVirtualSpace(const ScintillaEdit* self) {
 	sptr_t _ret = self->rectangularSelectionAnchorVirtualSpace();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetVirtualSpaceOptions(ScintillaEdit* self, intptr_t virtualSpaceOptions) {
+void ScintillaEdit_setVirtualSpaceOptions(ScintillaEdit* self, intptr_t virtualSpaceOptions) {
 	self->setVirtualSpaceOptions(static_cast<sptr_t>(virtualSpaceOptions));
 }
 
-intptr_t ScintillaEdit_VirtualSpaceOptions(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_virtualSpaceOptions(const ScintillaEdit* self) {
 	sptr_t _ret = self->virtualSpaceOptions();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetRectangularSelectionModifier(ScintillaEdit* self, intptr_t modifier) {
+void ScintillaEdit_setRectangularSelectionModifier(ScintillaEdit* self, intptr_t modifier) {
 	self->setRectangularSelectionModifier(static_cast<sptr_t>(modifier));
 }
 
-intptr_t ScintillaEdit_RectangularSelectionModifier(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_rectangularSelectionModifier(const ScintillaEdit* self) {
 	sptr_t _ret = self->rectangularSelectionModifier();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetAdditionalSelFore(ScintillaEdit* self, intptr_t fore) {
+void ScintillaEdit_setAdditionalSelFore(ScintillaEdit* self, intptr_t fore) {
 	self->setAdditionalSelFore(static_cast<sptr_t>(fore));
 }
 
-void ScintillaEdit_SetAdditionalSelBack(ScintillaEdit* self, intptr_t back) {
+void ScintillaEdit_setAdditionalSelBack(ScintillaEdit* self, intptr_t back) {
 	self->setAdditionalSelBack(static_cast<sptr_t>(back));
 }
 
-void ScintillaEdit_SetAdditionalSelAlpha(ScintillaEdit* self, intptr_t alpha) {
+void ScintillaEdit_setAdditionalSelAlpha(ScintillaEdit* self, intptr_t alpha) {
 	self->setAdditionalSelAlpha(static_cast<sptr_t>(alpha));
 }
 
-intptr_t ScintillaEdit_AdditionalSelAlpha(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_additionalSelAlpha(const ScintillaEdit* self) {
 	sptr_t _ret = self->additionalSelAlpha();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetAdditionalCaretFore(ScintillaEdit* self, intptr_t fore) {
+void ScintillaEdit_setAdditionalCaretFore(ScintillaEdit* self, intptr_t fore) {
 	self->setAdditionalCaretFore(static_cast<sptr_t>(fore));
 }
 
-intptr_t ScintillaEdit_AdditionalCaretFore(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_additionalCaretFore(const ScintillaEdit* self) {
 	sptr_t _ret = self->additionalCaretFore();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_RotateSelection(ScintillaEdit* self) {
+void ScintillaEdit_rotateSelection(ScintillaEdit* self) {
 	self->rotateSelection();
 }
 
-void ScintillaEdit_SwapMainAnchorCaret(ScintillaEdit* self) {
+void ScintillaEdit_swapMainAnchorCaret(ScintillaEdit* self) {
 	self->swapMainAnchorCaret();
 }
 
-void ScintillaEdit_MultipleSelectAddNext(ScintillaEdit* self) {
+void ScintillaEdit_multipleSelectAddNext(ScintillaEdit* self) {
 	self->multipleSelectAddNext();
 }
 
-void ScintillaEdit_MultipleSelectAddEach(ScintillaEdit* self) {
+void ScintillaEdit_multipleSelectAddEach(ScintillaEdit* self) {
 	self->multipleSelectAddEach();
 }
 
-intptr_t ScintillaEdit_ChangeLexerState(ScintillaEdit* self, intptr_t start, intptr_t end) {
+intptr_t ScintillaEdit_changeLexerState(ScintillaEdit* self, intptr_t start, intptr_t end) {
 	sptr_t _ret = self->changeLexerState(static_cast<sptr_t>(start), static_cast<sptr_t>(end));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_ContractedFoldNext(ScintillaEdit* self, intptr_t lineStart) {
+intptr_t ScintillaEdit_contractedFoldNext(ScintillaEdit* self, intptr_t lineStart) {
 	sptr_t _ret = self->contractedFoldNext(static_cast<sptr_t>(lineStart));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_VerticalCentreCaret(ScintillaEdit* self) {
+void ScintillaEdit_verticalCentreCaret(ScintillaEdit* self) {
 	self->verticalCentreCaret();
 }
 
-void ScintillaEdit_MoveSelectedLinesUp(ScintillaEdit* self) {
+void ScintillaEdit_moveSelectedLinesUp(ScintillaEdit* self) {
 	self->moveSelectedLinesUp();
 }
 
-void ScintillaEdit_MoveSelectedLinesDown(ScintillaEdit* self) {
+void ScintillaEdit_moveSelectedLinesDown(ScintillaEdit* self) {
 	self->moveSelectedLinesDown();
 }
 
-void ScintillaEdit_SetIdentifier(ScintillaEdit* self, intptr_t identifier) {
+void ScintillaEdit_setIdentifier(ScintillaEdit* self, intptr_t identifier) {
 	self->setIdentifier(static_cast<sptr_t>(identifier));
 }
 
-intptr_t ScintillaEdit_Identifier(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_identifier(const ScintillaEdit* self) {
 	sptr_t _ret = self->identifier();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_RGBAImageSetWidth(ScintillaEdit* self, intptr_t width) {
+void ScintillaEdit_rGBAImageSetWidth(ScintillaEdit* self, intptr_t width) {
 	self->rGBAImageSetWidth(static_cast<sptr_t>(width));
 }
 
-void ScintillaEdit_RGBAImageSetHeight(ScintillaEdit* self, intptr_t height) {
+void ScintillaEdit_rGBAImageSetHeight(ScintillaEdit* self, intptr_t height) {
 	self->rGBAImageSetHeight(static_cast<sptr_t>(height));
 }
 
-void ScintillaEdit_RGBAImageSetScale(ScintillaEdit* self, intptr_t scalePercent) {
+void ScintillaEdit_rGBAImageSetScale(ScintillaEdit* self, intptr_t scalePercent) {
 	self->rGBAImageSetScale(static_cast<sptr_t>(scalePercent));
 }
 
-void ScintillaEdit_MarkerDefineRGBAImage(ScintillaEdit* self, intptr_t markerNumber, const char* pixels) {
+void ScintillaEdit_markerDefineRGBAImage(ScintillaEdit* self, intptr_t markerNumber, const char* pixels) {
 	self->markerDefineRGBAImage(static_cast<sptr_t>(markerNumber), pixels);
 }
 
-void ScintillaEdit_RegisterRGBAImage(ScintillaEdit* self, intptr_t typeVal, const char* pixels) {
-	self->registerRGBAImage(static_cast<sptr_t>(typeVal), pixels);
+void ScintillaEdit_registerRGBAImage(ScintillaEdit* self, intptr_t type, const char* pixels) {
+	self->registerRGBAImage(static_cast<sptr_t>(type), pixels);
 }
 
-void ScintillaEdit_ScrollToStart(ScintillaEdit* self) {
+void ScintillaEdit_scrollToStart(ScintillaEdit* self) {
 	self->scrollToStart();
 }
 
-void ScintillaEdit_ScrollToEnd(ScintillaEdit* self) {
+void ScintillaEdit_scrollToEnd(ScintillaEdit* self) {
 	self->scrollToEnd();
 }
 
-void ScintillaEdit_SetTechnology(ScintillaEdit* self, intptr_t technology) {
+void ScintillaEdit_setTechnology(ScintillaEdit* self, intptr_t technology) {
 	self->setTechnology(static_cast<sptr_t>(technology));
 }
 
-intptr_t ScintillaEdit_Technology(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_technology(const ScintillaEdit* self) {
 	sptr_t _ret = self->technology();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_CreateLoader(ScintillaEdit* self, intptr_t bytes, intptr_t documentOptions) {
+intptr_t ScintillaEdit_createLoader(ScintillaEdit* self, intptr_t bytes, intptr_t documentOptions) {
 	sptr_t _ret = self->createLoader(static_cast<sptr_t>(bytes), static_cast<sptr_t>(documentOptions));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_FindIndicatorShow(ScintillaEdit* self, intptr_t start, intptr_t end) {
+void ScintillaEdit_findIndicatorShow(ScintillaEdit* self, intptr_t start, intptr_t end) {
 	self->findIndicatorShow(static_cast<sptr_t>(start), static_cast<sptr_t>(end));
 }
 
-void ScintillaEdit_FindIndicatorFlash(ScintillaEdit* self, intptr_t start, intptr_t end) {
+void ScintillaEdit_findIndicatorFlash(ScintillaEdit* self, intptr_t start, intptr_t end) {
 	self->findIndicatorFlash(static_cast<sptr_t>(start), static_cast<sptr_t>(end));
 }
 
-void ScintillaEdit_FindIndicatorHide(ScintillaEdit* self) {
+void ScintillaEdit_findIndicatorHide(ScintillaEdit* self) {
 	self->findIndicatorHide();
 }
 
-void ScintillaEdit_VCHomeDisplay(ScintillaEdit* self) {
+void ScintillaEdit_vCHomeDisplay(ScintillaEdit* self) {
 	self->vCHomeDisplay();
 }
 
-void ScintillaEdit_VCHomeDisplayExtend(ScintillaEdit* self) {
+void ScintillaEdit_vCHomeDisplayExtend(ScintillaEdit* self) {
 	self->vCHomeDisplayExtend();
 }
 
-bool ScintillaEdit_CaretLineVisibleAlways(const ScintillaEdit* self) {
+bool ScintillaEdit_caretLineVisibleAlways(const ScintillaEdit* self) {
 	return self->caretLineVisibleAlways();
 }
 
-void ScintillaEdit_SetCaretLineVisibleAlways(ScintillaEdit* self, bool alwaysVisible) {
+void ScintillaEdit_setCaretLineVisibleAlways(ScintillaEdit* self, bool alwaysVisible) {
 	self->setCaretLineVisibleAlways(alwaysVisible);
 }
 
-void ScintillaEdit_SetLineEndTypesAllowed(ScintillaEdit* self, intptr_t lineEndBitSet) {
+void ScintillaEdit_setLineEndTypesAllowed(ScintillaEdit* self, intptr_t lineEndBitSet) {
 	self->setLineEndTypesAllowed(static_cast<sptr_t>(lineEndBitSet));
 }
 
-intptr_t ScintillaEdit_LineEndTypesAllowed(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_lineEndTypesAllowed(const ScintillaEdit* self) {
 	sptr_t _ret = self->lineEndTypesAllowed();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_LineEndTypesActive(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_lineEndTypesActive(const ScintillaEdit* self) {
 	sptr_t _ret = self->lineEndTypesActive();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetRepresentation(ScintillaEdit* self, const char* encodedCharacter, const char* representation) {
+void ScintillaEdit_setRepresentation(ScintillaEdit* self, const char* encodedCharacter, const char* representation) {
 	self->setRepresentation(encodedCharacter, representation);
 }
 
-struct miqt_string ScintillaEdit_Representation(const ScintillaEdit* self, const char* encodedCharacter) {
+struct miqt_string ScintillaEdit_representation(const ScintillaEdit* self, const char* encodedCharacter) {
 	QByteArray _qb = self->representation(encodedCharacter);
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -10493,37 +10493,37 @@ struct miqt_string ScintillaEdit_Representation(const ScintillaEdit* self, const
 	return _ms;
 }
 
-void ScintillaEdit_ClearRepresentation(ScintillaEdit* self, const char* encodedCharacter) {
+void ScintillaEdit_clearRepresentation(ScintillaEdit* self, const char* encodedCharacter) {
 	self->clearRepresentation(encodedCharacter);
 }
 
-void ScintillaEdit_ClearAllRepresentations(ScintillaEdit* self) {
+void ScintillaEdit_clearAllRepresentations(ScintillaEdit* self) {
 	self->clearAllRepresentations();
 }
 
-void ScintillaEdit_SetRepresentationAppearance(ScintillaEdit* self, const char* encodedCharacter, intptr_t appearance) {
+void ScintillaEdit_setRepresentationAppearance(ScintillaEdit* self, const char* encodedCharacter, intptr_t appearance) {
 	self->setRepresentationAppearance(encodedCharacter, static_cast<sptr_t>(appearance));
 }
 
-intptr_t ScintillaEdit_RepresentationAppearance(const ScintillaEdit* self, const char* encodedCharacter) {
+intptr_t ScintillaEdit_representationAppearance(const ScintillaEdit* self, const char* encodedCharacter) {
 	sptr_t _ret = self->representationAppearance(encodedCharacter);
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetRepresentationColour(ScintillaEdit* self, const char* encodedCharacter, intptr_t colour) {
+void ScintillaEdit_setRepresentationColour(ScintillaEdit* self, const char* encodedCharacter, intptr_t colour) {
 	self->setRepresentationColour(encodedCharacter, static_cast<sptr_t>(colour));
 }
 
-intptr_t ScintillaEdit_RepresentationColour(const ScintillaEdit* self, const char* encodedCharacter) {
+intptr_t ScintillaEdit_representationColour(const ScintillaEdit* self, const char* encodedCharacter) {
 	sptr_t _ret = self->representationColour(encodedCharacter);
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_EOLAnnotationSetText(ScintillaEdit* self, intptr_t line, const char* text) {
+void ScintillaEdit_eOLAnnotationSetText(ScintillaEdit* self, intptr_t line, const char* text) {
 	self->eOLAnnotationSetText(static_cast<sptr_t>(line), text);
 }
 
-struct miqt_string ScintillaEdit_EOLAnnotationText(const ScintillaEdit* self, intptr_t line) {
+struct miqt_string ScintillaEdit_eOLAnnotationText(const ScintillaEdit* self, intptr_t line) {
 	QByteArray _qb = self->eOLAnnotationText(static_cast<sptr_t>(line));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -10532,90 +10532,90 @@ struct miqt_string ScintillaEdit_EOLAnnotationText(const ScintillaEdit* self, in
 	return _ms;
 }
 
-void ScintillaEdit_EOLAnnotationSetStyle(ScintillaEdit* self, intptr_t line, intptr_t style) {
+void ScintillaEdit_eOLAnnotationSetStyle(ScintillaEdit* self, intptr_t line, intptr_t style) {
 	self->eOLAnnotationSetStyle(static_cast<sptr_t>(line), static_cast<sptr_t>(style));
 }
 
-intptr_t ScintillaEdit_EOLAnnotationStyle(const ScintillaEdit* self, intptr_t line) {
+intptr_t ScintillaEdit_eOLAnnotationStyle(const ScintillaEdit* self, intptr_t line) {
 	sptr_t _ret = self->eOLAnnotationStyle(static_cast<sptr_t>(line));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_EOLAnnotationClearAll(ScintillaEdit* self) {
+void ScintillaEdit_eOLAnnotationClearAll(ScintillaEdit* self) {
 	self->eOLAnnotationClearAll();
 }
 
-void ScintillaEdit_EOLAnnotationSetVisible(ScintillaEdit* self, intptr_t visible) {
+void ScintillaEdit_eOLAnnotationSetVisible(ScintillaEdit* self, intptr_t visible) {
 	self->eOLAnnotationSetVisible(static_cast<sptr_t>(visible));
 }
 
-intptr_t ScintillaEdit_EOLAnnotationVisible(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_eOLAnnotationVisible(const ScintillaEdit* self) {
 	sptr_t _ret = self->eOLAnnotationVisible();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_EOLAnnotationSetStyleOffset(ScintillaEdit* self, intptr_t style) {
+void ScintillaEdit_eOLAnnotationSetStyleOffset(ScintillaEdit* self, intptr_t style) {
 	self->eOLAnnotationSetStyleOffset(static_cast<sptr_t>(style));
 }
 
-intptr_t ScintillaEdit_EOLAnnotationStyleOffset(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_eOLAnnotationStyleOffset(const ScintillaEdit* self) {
 	sptr_t _ret = self->eOLAnnotationStyleOffset();
 	return static_cast<intptr_t>(_ret);
 }
 
-bool ScintillaEdit_SupportsFeature(const ScintillaEdit* self, intptr_t feature) {
+bool ScintillaEdit_supportsFeature(const ScintillaEdit* self, intptr_t feature) {
 	return self->supportsFeature(static_cast<sptr_t>(feature));
 }
 
-intptr_t ScintillaEdit_LineCharacterIndex(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_lineCharacterIndex(const ScintillaEdit* self) {
 	sptr_t _ret = self->lineCharacterIndex();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_AllocateLineCharacterIndex(ScintillaEdit* self, intptr_t lineCharacterIndex) {
+void ScintillaEdit_allocateLineCharacterIndex(ScintillaEdit* self, intptr_t lineCharacterIndex) {
 	self->allocateLineCharacterIndex(static_cast<sptr_t>(lineCharacterIndex));
 }
 
-void ScintillaEdit_ReleaseLineCharacterIndex(ScintillaEdit* self, intptr_t lineCharacterIndex) {
+void ScintillaEdit_releaseLineCharacterIndex(ScintillaEdit* self, intptr_t lineCharacterIndex) {
 	self->releaseLineCharacterIndex(static_cast<sptr_t>(lineCharacterIndex));
 }
 
-intptr_t ScintillaEdit_LineFromIndexPosition(ScintillaEdit* self, intptr_t pos, intptr_t lineCharacterIndex) {
+intptr_t ScintillaEdit_lineFromIndexPosition(ScintillaEdit* self, intptr_t pos, intptr_t lineCharacterIndex) {
 	sptr_t _ret = self->lineFromIndexPosition(static_cast<sptr_t>(pos), static_cast<sptr_t>(lineCharacterIndex));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_IndexPositionFromLine(ScintillaEdit* self, intptr_t line, intptr_t lineCharacterIndex) {
+intptr_t ScintillaEdit_indexPositionFromLine(ScintillaEdit* self, intptr_t line, intptr_t lineCharacterIndex) {
 	sptr_t _ret = self->indexPositionFromLine(static_cast<sptr_t>(line), static_cast<sptr_t>(lineCharacterIndex));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_StartRecord(ScintillaEdit* self) {
+void ScintillaEdit_startRecord(ScintillaEdit* self) {
 	self->startRecord();
 }
 
-void ScintillaEdit_StopRecord(ScintillaEdit* self) {
+void ScintillaEdit_stopRecord(ScintillaEdit* self) {
 	self->stopRecord();
 }
 
-intptr_t ScintillaEdit_Lexer(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_lexer(const ScintillaEdit* self) {
 	sptr_t _ret = self->lexer();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_Colourise(ScintillaEdit* self, intptr_t start, intptr_t end) {
+void ScintillaEdit_colourise(ScintillaEdit* self, intptr_t start, intptr_t end) {
 	self->colourise(static_cast<sptr_t>(start), static_cast<sptr_t>(end));
 }
 
-void ScintillaEdit_SetProperty(ScintillaEdit* self, const char* key, const char* value) {
+void ScintillaEdit_setProperty(ScintillaEdit* self, const char* key, const char* value) {
 	self->setProperty(key, value);
 }
 
-void ScintillaEdit_SetKeyWords(ScintillaEdit* self, intptr_t keyWordSet, const char* keyWords) {
+void ScintillaEdit_setKeyWords(ScintillaEdit* self, intptr_t keyWordSet, const char* keyWords) {
 	self->setKeyWords(static_cast<sptr_t>(keyWordSet), keyWords);
 }
 
-struct miqt_string ScintillaEdit_Property(const ScintillaEdit* self, const char* key) {
+struct miqt_string ScintillaEdit_property(const ScintillaEdit* self, const char* key) {
 	QByteArray _qb = self->property(key);
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -10624,7 +10624,7 @@ struct miqt_string ScintillaEdit_Property(const ScintillaEdit* self, const char*
 	return _ms;
 }
 
-struct miqt_string ScintillaEdit_PropertyExpanded(const ScintillaEdit* self, const char* key) {
+struct miqt_string ScintillaEdit_propertyExpanded(const ScintillaEdit* self, const char* key) {
 	QByteArray _qb = self->propertyExpanded(key);
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -10633,12 +10633,12 @@ struct miqt_string ScintillaEdit_PropertyExpanded(const ScintillaEdit* self, con
 	return _ms;
 }
 
-intptr_t ScintillaEdit_PropertyInt(const ScintillaEdit* self, const char* key, intptr_t defaultValue) {
+intptr_t ScintillaEdit_propertyInt(const ScintillaEdit* self, const char* key, intptr_t defaultValue) {
 	sptr_t _ret = self->propertyInt(key, static_cast<sptr_t>(defaultValue));
 	return static_cast<intptr_t>(_ret);
 }
 
-struct miqt_string ScintillaEdit_LexerLanguage(const ScintillaEdit* self) {
+struct miqt_string ScintillaEdit_lexerLanguage(const ScintillaEdit* self) {
 	QByteArray _qb = self->lexerLanguage();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -10647,12 +10647,12 @@ struct miqt_string ScintillaEdit_LexerLanguage(const ScintillaEdit* self) {
 	return _ms;
 }
 
-intptr_t ScintillaEdit_PrivateLexerCall(ScintillaEdit* self, intptr_t operation, intptr_t pointer) {
+intptr_t ScintillaEdit_privateLexerCall(ScintillaEdit* self, intptr_t operation, intptr_t pointer) {
 	sptr_t _ret = self->privateLexerCall(static_cast<sptr_t>(operation), static_cast<sptr_t>(pointer));
 	return static_cast<intptr_t>(_ret);
 }
 
-struct miqt_string ScintillaEdit_PropertyNames(ScintillaEdit* self) {
+struct miqt_string ScintillaEdit_propertyNames(ScintillaEdit* self) {
 	QByteArray _qb = self->propertyNames();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -10661,12 +10661,12 @@ struct miqt_string ScintillaEdit_PropertyNames(ScintillaEdit* self) {
 	return _ms;
 }
 
-intptr_t ScintillaEdit_PropertyType(ScintillaEdit* self, const char* name) {
+intptr_t ScintillaEdit_propertyType(ScintillaEdit* self, const char* name) {
 	sptr_t _ret = self->propertyType(name);
 	return static_cast<intptr_t>(_ret);
 }
 
-struct miqt_string ScintillaEdit_DescribeProperty(ScintillaEdit* self, const char* name) {
+struct miqt_string ScintillaEdit_describeProperty(ScintillaEdit* self, const char* name) {
 	QByteArray _qb = self->describeProperty(name);
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -10675,7 +10675,7 @@ struct miqt_string ScintillaEdit_DescribeProperty(ScintillaEdit* self, const cha
 	return _ms;
 }
 
-struct miqt_string ScintillaEdit_DescribeKeyWordSets(ScintillaEdit* self) {
+struct miqt_string ScintillaEdit_describeKeyWordSets(ScintillaEdit* self) {
 	QByteArray _qb = self->describeKeyWordSets();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -10684,50 +10684,50 @@ struct miqt_string ScintillaEdit_DescribeKeyWordSets(ScintillaEdit* self) {
 	return _ms;
 }
 
-intptr_t ScintillaEdit_LineEndTypesSupported(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_lineEndTypesSupported(const ScintillaEdit* self) {
 	sptr_t _ret = self->lineEndTypesSupported();
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_AllocateSubStyles(ScintillaEdit* self, intptr_t styleBase, intptr_t numberStyles) {
+intptr_t ScintillaEdit_allocateSubStyles(ScintillaEdit* self, intptr_t styleBase, intptr_t numberStyles) {
 	sptr_t _ret = self->allocateSubStyles(static_cast<sptr_t>(styleBase), static_cast<sptr_t>(numberStyles));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_SubStylesStart(const ScintillaEdit* self, intptr_t styleBase) {
+intptr_t ScintillaEdit_subStylesStart(const ScintillaEdit* self, intptr_t styleBase) {
 	sptr_t _ret = self->subStylesStart(static_cast<sptr_t>(styleBase));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_SubStylesLength(const ScintillaEdit* self, intptr_t styleBase) {
+intptr_t ScintillaEdit_subStylesLength(const ScintillaEdit* self, intptr_t styleBase) {
 	sptr_t _ret = self->subStylesLength(static_cast<sptr_t>(styleBase));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_StyleFromSubStyle(const ScintillaEdit* self, intptr_t subStyle) {
+intptr_t ScintillaEdit_styleFromSubStyle(const ScintillaEdit* self, intptr_t subStyle) {
 	sptr_t _ret = self->styleFromSubStyle(static_cast<sptr_t>(subStyle));
 	return static_cast<intptr_t>(_ret);
 }
 
-intptr_t ScintillaEdit_PrimaryStyleFromStyle(const ScintillaEdit* self, intptr_t style) {
+intptr_t ScintillaEdit_primaryStyleFromStyle(const ScintillaEdit* self, intptr_t style) {
 	sptr_t _ret = self->primaryStyleFromStyle(static_cast<sptr_t>(style));
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_FreeSubStyles(ScintillaEdit* self) {
+void ScintillaEdit_freeSubStyles(ScintillaEdit* self) {
 	self->freeSubStyles();
 }
 
-void ScintillaEdit_SetIdentifiers(ScintillaEdit* self, intptr_t style, const char* identifiers) {
+void ScintillaEdit_setIdentifiers(ScintillaEdit* self, intptr_t style, const char* identifiers) {
 	self->setIdentifiers(static_cast<sptr_t>(style), identifiers);
 }
 
-intptr_t ScintillaEdit_DistanceToSecondaryStyles(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_distanceToSecondaryStyles(const ScintillaEdit* self) {
 	sptr_t _ret = self->distanceToSecondaryStyles();
 	return static_cast<intptr_t>(_ret);
 }
 
-struct miqt_string ScintillaEdit_SubStyleBases(const ScintillaEdit* self) {
+struct miqt_string ScintillaEdit_subStyleBases(const ScintillaEdit* self) {
 	QByteArray _qb = self->subStyleBases();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -10736,12 +10736,12 @@ struct miqt_string ScintillaEdit_SubStyleBases(const ScintillaEdit* self) {
 	return _ms;
 }
 
-intptr_t ScintillaEdit_NamedStyles(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_namedStyles(const ScintillaEdit* self) {
 	sptr_t _ret = self->namedStyles();
 	return static_cast<intptr_t>(_ret);
 }
 
-struct miqt_string ScintillaEdit_NameOfStyle(ScintillaEdit* self, intptr_t style) {
+struct miqt_string ScintillaEdit_nameOfStyle(ScintillaEdit* self, intptr_t style) {
 	QByteArray _qb = self->nameOfStyle(static_cast<sptr_t>(style));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -10750,7 +10750,7 @@ struct miqt_string ScintillaEdit_NameOfStyle(ScintillaEdit* self, intptr_t style
 	return _ms;
 }
 
-struct miqt_string ScintillaEdit_TagsOfStyle(ScintillaEdit* self, intptr_t style) {
+struct miqt_string ScintillaEdit_tagsOfStyle(ScintillaEdit* self, intptr_t style) {
 	QByteArray _qb = self->tagsOfStyle(static_cast<sptr_t>(style));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -10759,7 +10759,7 @@ struct miqt_string ScintillaEdit_TagsOfStyle(ScintillaEdit* self, intptr_t style
 	return _ms;
 }
 
-struct miqt_string ScintillaEdit_DescriptionOfStyle(ScintillaEdit* self, intptr_t style) {
+struct miqt_string ScintillaEdit_descriptionOfStyle(ScintillaEdit* self, intptr_t style) {
 	QByteArray _qb = self->descriptionOfStyle(static_cast<sptr_t>(style));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -10768,20 +10768,20 @@ struct miqt_string ScintillaEdit_DescriptionOfStyle(ScintillaEdit* self, intptr_
 	return _ms;
 }
 
-void ScintillaEdit_SetILexer(ScintillaEdit* self, intptr_t ilexer) {
+void ScintillaEdit_setILexer(ScintillaEdit* self, intptr_t ilexer) {
 	self->setILexer(static_cast<sptr_t>(ilexer));
 }
 
-intptr_t ScintillaEdit_Bidirectional(const ScintillaEdit* self) {
+intptr_t ScintillaEdit_bidirectional(const ScintillaEdit* self) {
 	sptr_t _ret = self->bidirectional();
 	return static_cast<intptr_t>(_ret);
 }
 
-void ScintillaEdit_SetBidirectional(ScintillaEdit* self, intptr_t bidirectional) {
+void ScintillaEdit_setBidirectional(ScintillaEdit* self, intptr_t bidirectional) {
 	self->setBidirectional(static_cast<sptr_t>(bidirectional));
 }
 
-struct miqt_string ScintillaEdit_Tr2(const char* s, const char* c) {
+struct miqt_string ScintillaEdit_tr2(const char* s, const char* c) {
 	QString _ret = ScintillaEdit::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -10792,7 +10792,7 @@ struct miqt_string ScintillaEdit_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string ScintillaEdit_Tr3(const char* s, const char* c, int n) {
+struct miqt_string ScintillaEdit_tr3(const char* s, const char* c, int n) {
 	QString _ret = ScintillaEdit::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -10803,7 +10803,7 @@ struct miqt_string ScintillaEdit_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string ScintillaEdit_TrUtf82(const char* s, const char* c) {
+struct miqt_string ScintillaEdit_trUtf82(const char* s, const char* c) {
 	QString _ret = ScintillaEdit::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -10814,7 +10814,7 @@ struct miqt_string ScintillaEdit_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string ScintillaEdit_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string ScintillaEdit_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = ScintillaEdit::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -10825,749 +10825,749 @@ struct miqt_string ScintillaEdit_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool ScintillaEdit_override_virtual_Send(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_send(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Send = slot;
+	self_cast->handle__send = slot;
 	return true;
 }
 
-intptr_t ScintillaEdit_virtualbase_Send(const void* self, unsigned int iMessage, uintptr_t wParam, intptr_t lParam) {
-	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_Send(iMessage, wParam, lParam);
+intptr_t ScintillaEdit_virtualbase_send(const void* self, unsigned int iMessage, uintptr_t wParam, intptr_t lParam) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_send(iMessage, wParam, lParam);
 }
 
-bool ScintillaEdit_override_virtual_Sends(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_sends(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Sends = slot;
+	self_cast->handle__sends = slot;
 	return true;
 }
 
-intptr_t ScintillaEdit_virtualbase_Sends(const void* self, unsigned int iMessage, uintptr_t wParam, const char* s) {
-	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_Sends(iMessage, wParam, s);
+intptr_t ScintillaEdit_virtualbase_sends(const void* self, unsigned int iMessage, uintptr_t wParam, const char* s) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_sends(iMessage, wParam, s);
 }
 
-bool ScintillaEdit_override_virtual_Event(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool ScintillaEdit_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_Event(event);
+bool ScintillaEdit_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_event(event);
 }
 
-bool ScintillaEdit_override_virtual_PaintEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_paintEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__PaintEvent = slot;
+	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_PaintEvent(void* self, QPaintEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_PaintEvent(event);
+void ScintillaEdit_virtualbase_paintEvent(void* self, QPaintEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_paintEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_WheelEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__WheelEvent = slot;
+	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_WheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_WheelEvent(event);
+void ScintillaEdit_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_wheelEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__FocusInEvent = slot;
+	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_FocusInEvent(event);
+void ScintillaEdit_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_focusInEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__FocusOutEvent = slot;
+	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_FocusOutEvent(event);
+void ScintillaEdit_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_focusOutEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ResizeEvent = slot;
+	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_ResizeEvent(void* self, QResizeEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_ResizeEvent(event);
+void ScintillaEdit_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_resizeEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__KeyPressEvent = slot;
+	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_KeyPressEvent(event);
+void ScintillaEdit_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_keyPressEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MousePressEvent = slot;
+	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_MousePressEvent(event);
+void ScintillaEdit_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_mousePressEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MouseReleaseEvent = slot;
+	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_MouseReleaseEvent(event);
+void ScintillaEdit_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_mouseReleaseEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MouseDoubleClickEvent = slot;
+	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_MouseDoubleClickEvent(event);
+void ScintillaEdit_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_mouseDoubleClickEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MouseMoveEvent = slot;
+	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_MouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_MouseMoveEvent(event);
+void ScintillaEdit_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_mouseMoveEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ContextMenuEvent = slot;
+	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_ContextMenuEvent(event);
+void ScintillaEdit_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_contextMenuEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DragEnterEvent = slot;
+	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_DragEnterEvent(event);
+void ScintillaEdit_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_dragEnterEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DragLeaveEvent = slot;
+	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_DragLeaveEvent(event);
+void ScintillaEdit_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_dragLeaveEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DragMoveEvent = slot;
+	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_DragMoveEvent(event);
+void ScintillaEdit_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_dragMoveEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_DropEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_dropEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DropEvent = slot;
+	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_DropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_DropEvent(event);
+void ScintillaEdit_virtualbase_dropEvent(void* self, QDropEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_dropEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InputMethodEvent = slot;
+	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_InputMethodEvent(event);
+void ScintillaEdit_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_inputMethodEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InputMethodQuery = slot;
+	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
-QVariant* ScintillaEdit_virtualbase_InputMethodQuery(const void* self, int query) {
-	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_InputMethodQuery(query);
+QVariant* ScintillaEdit_virtualbase_inputMethodQuery(const void* self, int query) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_inputMethodQuery(query);
 }
 
-bool ScintillaEdit_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ScrollContentsBy = slot;
+	self_cast->handle__scrollContentsBy = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_ScrollContentsBy(void* self, int param1, int param2) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_ScrollContentsBy(param1, param2);
+void ScintillaEdit_virtualbase_scrollContentsBy(void* self, int param1, int param2) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_scrollContentsBy(param1, param2);
 }
 
-bool ScintillaEdit_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MinimumSizeHint = slot;
+	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
-QSize* ScintillaEdit_virtualbase_MinimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_MinimumSizeHint();
+QSize* ScintillaEdit_virtualbase_minimumSizeHint(const void* self) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_minimumSizeHint();
 }
 
-bool ScintillaEdit_override_virtual_SizeHint(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_sizeHint(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SizeHint = slot;
+	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
-QSize* ScintillaEdit_virtualbase_SizeHint(const void* self) {
-	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_SizeHint();
+QSize* ScintillaEdit_virtualbase_sizeHint(const void* self) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_sizeHint();
 }
 
-bool ScintillaEdit_override_virtual_SetupViewport(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_setupViewport(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetupViewport = slot;
+	self_cast->handle__setupViewport = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_SetupViewport(void* self, QWidget* viewport) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_SetupViewport(viewport);
+void ScintillaEdit_virtualbase_setupViewport(void* self, QWidget* viewport) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_setupViewport(viewport);
 }
 
-bool ScintillaEdit_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool ScintillaEdit_virtualbase_EventFilter(void* self, QObject* param1, QEvent* param2) {
-	return ( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_EventFilter(param1, param2);
+bool ScintillaEdit_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
+	return ( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_eventFilter(param1, param2);
 }
 
-bool ScintillaEdit_override_virtual_ViewportEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_viewportEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ViewportEvent = slot;
+	self_cast->handle__viewportEvent = slot;
 	return true;
 }
 
-bool ScintillaEdit_virtualbase_ViewportEvent(void* self, QEvent* param1) {
-	return ( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_ViewportEvent(param1);
+bool ScintillaEdit_virtualbase_viewportEvent(void* self, QEvent* param1) {
+	return ( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_viewportEvent(param1);
 }
 
-bool ScintillaEdit_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ViewportSizeHint = slot;
+	self_cast->handle__viewportSizeHint = slot;
 	return true;
 }
 
-QSize* ScintillaEdit_virtualbase_ViewportSizeHint(const void* self) {
-	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_ViewportSizeHint();
+QSize* ScintillaEdit_virtualbase_viewportSizeHint(const void* self) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_viewportSizeHint();
 }
 
-bool ScintillaEdit_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_changeEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChangeEvent = slot;
+	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_ChangeEvent(void* self, QEvent* param1) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_ChangeEvent(param1);
+void ScintillaEdit_virtualbase_changeEvent(void* self, QEvent* param1) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_changeEvent(param1);
 }
 
-bool ScintillaEdit_override_virtual_DevType(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_devType(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DevType = slot;
+	self_cast->handle__devType = slot;
 	return true;
 }
 
-int ScintillaEdit_virtualbase_DevType(const void* self) {
-	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_DevType();
+int ScintillaEdit_virtualbase_devType(const void* self) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_devType();
 }
 
-bool ScintillaEdit_override_virtual_SetVisible(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_setVisible(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetVisible = slot;
+	self_cast->handle__setVisible = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_SetVisible(void* self, bool visible) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_SetVisible(visible);
+void ScintillaEdit_virtualbase_setVisible(void* self, bool visible) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_setVisible(visible);
 }
 
-bool ScintillaEdit_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_heightForWidth(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HeightForWidth = slot;
+	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
-int ScintillaEdit_virtualbase_HeightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_HeightForWidth(param1);
+int ScintillaEdit_virtualbase_heightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_heightForWidth(param1);
 }
 
-bool ScintillaEdit_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HasHeightForWidth = slot;
+	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
-bool ScintillaEdit_virtualbase_HasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_HasHeightForWidth();
+bool ScintillaEdit_virtualbase_hasHeightForWidth(const void* self) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_hasHeightForWidth();
 }
 
-bool ScintillaEdit_override_virtual_PaintEngine(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_paintEngine(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__PaintEngine = slot;
+	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
-QPaintEngine* ScintillaEdit_virtualbase_PaintEngine(const void* self) {
-	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_PaintEngine();
+QPaintEngine* ScintillaEdit_virtualbase_paintEngine(const void* self) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_paintEngine();
 }
 
-bool ScintillaEdit_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__KeyReleaseEvent = slot;
+	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_KeyReleaseEvent(event);
+void ScintillaEdit_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_keyReleaseEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_EnterEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_enterEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EnterEvent = slot;
+	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_EnterEvent(void* self, QEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_EnterEvent(event);
+void ScintillaEdit_virtualbase_enterEvent(void* self, QEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_enterEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__LeaveEvent = slot;
+	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_LeaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_LeaveEvent(event);
+void ScintillaEdit_virtualbase_leaveEvent(void* self, QEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_leaveEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_MoveEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_moveEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MoveEvent = slot;
+	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_MoveEvent(event);
+void ScintillaEdit_virtualbase_moveEvent(void* self, QMoveEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_moveEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_CloseEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_closeEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CloseEvent = slot;
+	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_CloseEvent(event);
+void ScintillaEdit_virtualbase_closeEvent(void* self, QCloseEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_closeEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_TabletEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TabletEvent = slot;
+	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_TabletEvent(event);
+void ScintillaEdit_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_tabletEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_ActionEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_actionEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ActionEvent = slot;
+	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_ActionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_ActionEvent(event);
+void ScintillaEdit_virtualbase_actionEvent(void* self, QActionEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_actionEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_ShowEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_showEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ShowEvent = slot;
+	self_cast->handle__showEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_ShowEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_ShowEvent(event);
+void ScintillaEdit_virtualbase_showEvent(void* self, QShowEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_showEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_HideEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_hideEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HideEvent = slot;
+	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_HideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_HideEvent(event);
+void ScintillaEdit_virtualbase_hideEvent(void* self, QHideEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_hideEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_NativeEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__NativeEvent = slot;
+	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
-bool ScintillaEdit_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
-	return ( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_NativeEvent(eventType, message, result);
+bool ScintillaEdit_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
+	return ( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_nativeEvent(eventType, message, result);
 }
 
-bool ScintillaEdit_override_virtual_Metric(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_metric(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Metric = slot;
+	self_cast->handle__metric = slot;
 	return true;
 }
 
-int ScintillaEdit_virtualbase_Metric(const void* self, int param1) {
-	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_Metric(param1);
+int ScintillaEdit_virtualbase_metric(const void* self, int param1) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_metric(param1);
 }
 
-bool ScintillaEdit_override_virtual_InitPainter(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_initPainter(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InitPainter = slot;
+	self_cast->handle__initPainter = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_InitPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_InitPainter(painter);
+void ScintillaEdit_virtualbase_initPainter(const void* self, QPainter* painter) {
+	( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_initPainter(painter);
 }
 
-bool ScintillaEdit_override_virtual_Redirected(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_redirected(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Redirected = slot;
+	self_cast->handle__redirected = slot;
 	return true;
 }
 
-QPaintDevice* ScintillaEdit_virtualbase_Redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_Redirected(offset);
+QPaintDevice* ScintillaEdit_virtualbase_redirected(const void* self, QPoint* offset) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_redirected(offset);
 }
 
-bool ScintillaEdit_override_virtual_SharedPainter(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SharedPainter = slot;
+	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
-QPainter* ScintillaEdit_virtualbase_SharedPainter(const void* self) {
-	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_SharedPainter();
+QPainter* ScintillaEdit_virtualbase_sharedPainter(const void* self) {
+	return ( (const MiqtVirtualScintillaEdit*)(self) )->virtualbase_sharedPainter();
 }
 
-bool ScintillaEdit_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__FocusNextPrevChild = slot;
+	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
-bool ScintillaEdit_virtualbase_FocusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_FocusNextPrevChild(next);
+bool ScintillaEdit_virtualbase_focusNextPrevChild(void* self, bool next) {
+	return ( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_focusNextPrevChild(next);
 }
 
-bool ScintillaEdit_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_TimerEvent(event);
+void ScintillaEdit_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_ChildEvent(event);
+void ScintillaEdit_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_childEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_CustomEvent(event);
+void ScintillaEdit_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_customEvent(event);
 }
 
-bool ScintillaEdit_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_ConnectNotify(signal);
+void ScintillaEdit_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool ScintillaEdit_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool ScintillaEdit_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualScintillaEdit* self_cast = dynamic_cast<MiqtVirtualScintillaEdit*>( (ScintillaEdit*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void ScintillaEdit_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_DisconnectNotify(signal);
+void ScintillaEdit_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualScintillaEdit*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void ScintillaEdit_Delete(ScintillaEdit* self) {
+void ScintillaEdit_delete(ScintillaEdit* self) {
 	delete self;
 }
 

@@ -110,11 +110,11 @@ func UnsafeNewQWebEngineSettings(h unsafe.Pointer) *QWebEngineSettings {
 }
 
 func QWebEngineSettings_GlobalSettings() *QWebEngineSettings {
-	return newQWebEngineSettings(C.QWebEngineSettings_GlobalSettings())
+	return newQWebEngineSettings(C.QWebEngineSettings_globalSettings())
 }
 
 func QWebEngineSettings_DefaultSettings() *QWebEngineSettings {
-	return newQWebEngineSettings(C.QWebEngineSettings_DefaultSettings())
+	return newQWebEngineSettings(C.QWebEngineSettings_defaultSettings())
 }
 
 func (this *QWebEngineSettings) SetFontFamily(which QWebEngineSettings__FontFamily, family string) {
@@ -122,42 +122,42 @@ func (this *QWebEngineSettings) SetFontFamily(which QWebEngineSettings__FontFami
 	family_ms.data = C.CString(family)
 	family_ms.len = C.size_t(len(family))
 	defer C.free(unsafe.Pointer(family_ms.data))
-	C.QWebEngineSettings_SetFontFamily(this.h, (C.int)(which), family_ms)
+	C.QWebEngineSettings_setFontFamily(this.h, (C.int)(which), family_ms)
 }
 
 func (this *QWebEngineSettings) FontFamily(which QWebEngineSettings__FontFamily) string {
-	var _ms C.struct_miqt_string = C.QWebEngineSettings_FontFamily(this.h, (C.int)(which))
+	var _ms C.struct_miqt_string = C.QWebEngineSettings_fontFamily(this.h, (C.int)(which))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineSettings) ResetFontFamily(which QWebEngineSettings__FontFamily) {
-	C.QWebEngineSettings_ResetFontFamily(this.h, (C.int)(which))
+	C.QWebEngineSettings_resetFontFamily(this.h, (C.int)(which))
 }
 
 func (this *QWebEngineSettings) SetFontSize(typeVal QWebEngineSettings__FontSize, size int) {
-	C.QWebEngineSettings_SetFontSize(this.h, (C.int)(typeVal), (C.int)(size))
+	C.QWebEngineSettings_setFontSize(this.h, (C.int)(typeVal), (C.int)(size))
 }
 
 func (this *QWebEngineSettings) FontSize(typeVal QWebEngineSettings__FontSize) int {
-	return (int)(C.QWebEngineSettings_FontSize(this.h, (C.int)(typeVal)))
+	return (int)(C.QWebEngineSettings_fontSize(this.h, (C.int)(typeVal)))
 }
 
 func (this *QWebEngineSettings) ResetFontSize(typeVal QWebEngineSettings__FontSize) {
-	C.QWebEngineSettings_ResetFontSize(this.h, (C.int)(typeVal))
+	C.QWebEngineSettings_resetFontSize(this.h, (C.int)(typeVal))
 }
 
 func (this *QWebEngineSettings) SetAttribute(attr QWebEngineSettings__WebAttribute, on bool) {
-	C.QWebEngineSettings_SetAttribute(this.h, (C.int)(attr), (C.bool)(on))
+	C.QWebEngineSettings_setAttribute(this.h, (C.int)(attr), (C.bool)(on))
 }
 
 func (this *QWebEngineSettings) TestAttribute(attr QWebEngineSettings__WebAttribute) bool {
-	return (bool)(C.QWebEngineSettings_TestAttribute(this.h, (C.int)(attr)))
+	return (bool)(C.QWebEngineSettings_testAttribute(this.h, (C.int)(attr)))
 }
 
 func (this *QWebEngineSettings) ResetAttribute(attr QWebEngineSettings__WebAttribute) {
-	C.QWebEngineSettings_ResetAttribute(this.h, (C.int)(attr))
+	C.QWebEngineSettings_resetAttribute(this.h, (C.int)(attr))
 }
 
 func (this *QWebEngineSettings) SetDefaultTextEncoding(encoding string) {
@@ -165,24 +165,24 @@ func (this *QWebEngineSettings) SetDefaultTextEncoding(encoding string) {
 	encoding_ms.data = C.CString(encoding)
 	encoding_ms.len = C.size_t(len(encoding))
 	defer C.free(unsafe.Pointer(encoding_ms.data))
-	C.QWebEngineSettings_SetDefaultTextEncoding(this.h, encoding_ms)
+	C.QWebEngineSettings_setDefaultTextEncoding(this.h, encoding_ms)
 }
 
 func (this *QWebEngineSettings) DefaultTextEncoding() string {
-	var _ms C.struct_miqt_string = C.QWebEngineSettings_DefaultTextEncoding(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineSettings_defaultTextEncoding(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineSettings) UnknownUrlSchemePolicy() QWebEngineSettings__UnknownUrlSchemePolicy {
-	return (QWebEngineSettings__UnknownUrlSchemePolicy)(C.QWebEngineSettings_UnknownUrlSchemePolicy(this.h))
+	return (QWebEngineSettings__UnknownUrlSchemePolicy)(C.QWebEngineSettings_unknownUrlSchemePolicy(this.h))
 }
 
 func (this *QWebEngineSettings) SetUnknownUrlSchemePolicy(policy QWebEngineSettings__UnknownUrlSchemePolicy) {
-	C.QWebEngineSettings_SetUnknownUrlSchemePolicy(this.h, (C.int)(policy))
+	C.QWebEngineSettings_setUnknownUrlSchemePolicy(this.h, (C.int)(policy))
 }
 
 func (this *QWebEngineSettings) ResetUnknownUrlSchemePolicy() {
-	C.QWebEngineSettings_ResetUnknownUrlSchemePolicy(this.h)
+	C.QWebEngineSettings_resetUnknownUrlSchemePolicy(this.h)
 }

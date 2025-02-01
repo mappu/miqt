@@ -63,72 +63,72 @@ func UnsafeNewQPaintDevice(h unsafe.Pointer) *QPaintDevice {
 }
 
 func (this *QPaintDevice) DevType() int {
-	return (int)(C.QPaintDevice_DevType(this.h))
+	return (int)(C.QPaintDevice_devType(this.h))
 }
 
 func (this *QPaintDevice) PaintingActive() bool {
-	return (bool)(C.QPaintDevice_PaintingActive(this.h))
+	return (bool)(C.QPaintDevice_paintingActive(this.h))
 }
 
 func (this *QPaintDevice) PaintEngine() *QPaintEngine {
-	return newQPaintEngine(C.QPaintDevice_PaintEngine(this.h))
+	return newQPaintEngine(C.QPaintDevice_paintEngine(this.h))
 }
 
 func (this *QPaintDevice) Width() int {
-	return (int)(C.QPaintDevice_Width(this.h))
+	return (int)(C.QPaintDevice_width(this.h))
 }
 
 func (this *QPaintDevice) Height() int {
-	return (int)(C.QPaintDevice_Height(this.h))
+	return (int)(C.QPaintDevice_height(this.h))
 }
 
 func (this *QPaintDevice) WidthMM() int {
-	return (int)(C.QPaintDevice_WidthMM(this.h))
+	return (int)(C.QPaintDevice_widthMM(this.h))
 }
 
 func (this *QPaintDevice) HeightMM() int {
-	return (int)(C.QPaintDevice_HeightMM(this.h))
+	return (int)(C.QPaintDevice_heightMM(this.h))
 }
 
 func (this *QPaintDevice) LogicalDpiX() int {
-	return (int)(C.QPaintDevice_LogicalDpiX(this.h))
+	return (int)(C.QPaintDevice_logicalDpiX(this.h))
 }
 
 func (this *QPaintDevice) LogicalDpiY() int {
-	return (int)(C.QPaintDevice_LogicalDpiY(this.h))
+	return (int)(C.QPaintDevice_logicalDpiY(this.h))
 }
 
 func (this *QPaintDevice) PhysicalDpiX() int {
-	return (int)(C.QPaintDevice_PhysicalDpiX(this.h))
+	return (int)(C.QPaintDevice_physicalDpiX(this.h))
 }
 
 func (this *QPaintDevice) PhysicalDpiY() int {
-	return (int)(C.QPaintDevice_PhysicalDpiY(this.h))
+	return (int)(C.QPaintDevice_physicalDpiY(this.h))
 }
 
 func (this *QPaintDevice) DevicePixelRatio() int {
-	return (int)(C.QPaintDevice_DevicePixelRatio(this.h))
+	return (int)(C.QPaintDevice_devicePixelRatio(this.h))
 }
 
 func (this *QPaintDevice) DevicePixelRatioF() float64 {
-	return (float64)(C.QPaintDevice_DevicePixelRatioF(this.h))
+	return (float64)(C.QPaintDevice_devicePixelRatioF(this.h))
 }
 
 func (this *QPaintDevice) ColorCount() int {
-	return (int)(C.QPaintDevice_ColorCount(this.h))
+	return (int)(C.QPaintDevice_colorCount(this.h))
 }
 
 func (this *QPaintDevice) Depth() int {
-	return (int)(C.QPaintDevice_Depth(this.h))
+	return (int)(C.QPaintDevice_depth(this.h))
 }
 
 func QPaintDevice_DevicePixelRatioFScale() float64 {
-	return (float64)(C.QPaintDevice_DevicePixelRatioFScale())
+	return (float64)(C.QPaintDevice_devicePixelRatioFScale())
 }
 
 // Delete this object from C++ memory.
 func (this *QPaintDevice) Delete() {
-	C.QPaintDevice_Delete(this.h)
+	C.QPaintDevice_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

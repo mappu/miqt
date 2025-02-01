@@ -15,7 +15,7 @@ extern "C" {
 } /* extern C */
 #endif
 
-struct miqt_array /* of struct miqt_string */  QGenericPluginFactory_Keys() {
+struct miqt_array /* of struct miqt_string */  QGenericPluginFactory_keys() {
 	QStringList _ret = QGenericPluginFactory::keys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -35,13 +35,13 @@ struct miqt_array /* of struct miqt_string */  QGenericPluginFactory_Keys() {
 	return _out;
 }
 
-QObject* QGenericPluginFactory_Create(struct miqt_string param1, struct miqt_string param2) {
+QObject* QGenericPluginFactory_create(struct miqt_string param1, struct miqt_string param2) {
 	QString param1_QString = QString::fromUtf8(param1.data, param1.len);
 	QString param2_QString = QString::fromUtf8(param2.data, param2.len);
 	return QGenericPluginFactory::create(param1_QString, param2_QString);
 }
 
-void QGenericPluginFactory_Delete(QGenericPluginFactory* self) {
+void QGenericPluginFactory_delete(QGenericPluginFactory* self) {
 	delete self;
 }
 

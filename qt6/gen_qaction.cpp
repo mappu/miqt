@@ -21,21 +21,21 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QAction_Changed(intptr_t);
-void miqt_exec_callback_QAction_EnabledChanged(intptr_t, bool);
-void miqt_exec_callback_QAction_CheckableChanged(intptr_t, bool);
-void miqt_exec_callback_QAction_VisibleChanged(intptr_t);
-void miqt_exec_callback_QAction_Triggered(intptr_t);
-void miqt_exec_callback_QAction_Hovered(intptr_t);
-void miqt_exec_callback_QAction_Toggled(intptr_t, bool);
-void miqt_exec_callback_QAction_Triggered1(intptr_t, bool);
-bool miqt_exec_callback_QAction_Event(QAction*, intptr_t, QEvent*);
-bool miqt_exec_callback_QAction_EventFilter(QAction*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QAction_TimerEvent(QAction*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QAction_ChildEvent(QAction*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QAction_CustomEvent(QAction*, intptr_t, QEvent*);
-void miqt_exec_callback_QAction_ConnectNotify(QAction*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QAction_DisconnectNotify(QAction*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAction_changed(intptr_t);
+void miqt_exec_callback_QAction_enabledChanged(intptr_t, bool);
+void miqt_exec_callback_QAction_checkableChanged(intptr_t, bool);
+void miqt_exec_callback_QAction_visibleChanged(intptr_t);
+void miqt_exec_callback_QAction_triggered(intptr_t);
+void miqt_exec_callback_QAction_hovered(intptr_t);
+void miqt_exec_callback_QAction_toggled(intptr_t, bool);
+void miqt_exec_callback_QAction_triggered1(intptr_t, bool);
+bool miqt_exec_callback_QAction_event(QAction*, intptr_t, QEvent*);
+bool miqt_exec_callback_QAction_eventFilter(QAction*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QAction_timerEvent(QAction*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QAction_childEvent(QAction*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QAction_customEvent(QAction*, intptr_t, QEvent*);
+void miqt_exec_callback_QAction_connectNotify(QAction*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QAction_disconnectNotify(QAction*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -53,130 +53,130 @@ public:
 	virtual ~MiqtVirtualQAction() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* param1) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QAction::event(param1);
 		}
 		
 		QEvent* sigval1 = param1;
 
-		bool callback_return_value = miqt_exec_callback_QAction_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QAction_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* param1) {
+	bool virtualbase_event(QEvent* param1) {
 
 		return QAction::event(param1);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QAction::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QAction_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QAction_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QAction::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QAction::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QAction_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QAction_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QAction::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QAction::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QAction_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QAction_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QAction::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QAction::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QAction_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QAction_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QAction::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QAction::connectNotify(signal);
 			return;
 		}
@@ -185,24 +185,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QAction_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QAction_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QAction::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QAction::disconnectNotify(signal);
 			return;
 		}
@@ -211,13 +211,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QAction_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QAction_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QAction::disconnectNotify(*signal);
 
@@ -257,15 +257,15 @@ void QAction_virtbase(QAction* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QAction_MetaObject(const QAction* self) {
+QMetaObject* QAction_metaObject(const QAction* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QAction_Metacast(QAction* self, const char* param1) {
+void* QAction_metacast(QAction* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QAction_Tr(const char* s) {
+struct miqt_string QAction_tr(const char* s) {
 	QString _ret = QAction::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -276,7 +276,7 @@ struct miqt_string QAction_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_array /* of QObject* */  QAction_AssociatedObjects(const QAction* self) {
+struct miqt_array /* of QObject* */  QAction_associatedObjects(const QAction* self) {
 	QList<QObject *> _ret = self->associatedObjects();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QObject** _arr = static_cast<QObject**>(malloc(sizeof(QObject*) * _ret.length()));
@@ -289,28 +289,28 @@ struct miqt_array /* of QObject* */  QAction_AssociatedObjects(const QAction* se
 	return _out;
 }
 
-void QAction_SetActionGroup(QAction* self, QActionGroup* group) {
+void QAction_setActionGroup(QAction* self, QActionGroup* group) {
 	self->setActionGroup(group);
 }
 
-QActionGroup* QAction_ActionGroup(const QAction* self) {
+QActionGroup* QAction_actionGroup(const QAction* self) {
 	return self->actionGroup();
 }
 
-void QAction_SetIcon(QAction* self, QIcon* icon) {
+void QAction_setIcon(QAction* self, QIcon* icon) {
 	self->setIcon(*icon);
 }
 
-QIcon* QAction_Icon(const QAction* self) {
+QIcon* QAction_icon(const QAction* self) {
 	return new QIcon(self->icon());
 }
 
-void QAction_SetText(QAction* self, struct miqt_string text) {
+void QAction_setText(QAction* self, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setText(text_QString);
 }
 
-struct miqt_string QAction_Text(const QAction* self) {
+struct miqt_string QAction_text(const QAction* self) {
 	QString _ret = self->text();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -321,12 +321,12 @@ struct miqt_string QAction_Text(const QAction* self) {
 	return _ms;
 }
 
-void QAction_SetIconText(QAction* self, struct miqt_string text) {
+void QAction_setIconText(QAction* self, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setIconText(text_QString);
 }
 
-struct miqt_string QAction_IconText(const QAction* self) {
+struct miqt_string QAction_iconText(const QAction* self) {
 	QString _ret = self->iconText();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -337,12 +337,12 @@ struct miqt_string QAction_IconText(const QAction* self) {
 	return _ms;
 }
 
-void QAction_SetToolTip(QAction* self, struct miqt_string tip) {
+void QAction_setToolTip(QAction* self, struct miqt_string tip) {
 	QString tip_QString = QString::fromUtf8(tip.data, tip.len);
 	self->setToolTip(tip_QString);
 }
 
-struct miqt_string QAction_ToolTip(const QAction* self) {
+struct miqt_string QAction_toolTip(const QAction* self) {
 	QString _ret = self->toolTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -353,12 +353,12 @@ struct miqt_string QAction_ToolTip(const QAction* self) {
 	return _ms;
 }
 
-void QAction_SetStatusTip(QAction* self, struct miqt_string statusTip) {
+void QAction_setStatusTip(QAction* self, struct miqt_string statusTip) {
 	QString statusTip_QString = QString::fromUtf8(statusTip.data, statusTip.len);
 	self->setStatusTip(statusTip_QString);
 }
 
-struct miqt_string QAction_StatusTip(const QAction* self) {
+struct miqt_string QAction_statusTip(const QAction* self) {
 	QString _ret = self->statusTip();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -369,12 +369,12 @@ struct miqt_string QAction_StatusTip(const QAction* self) {
 	return _ms;
 }
 
-void QAction_SetWhatsThis(QAction* self, struct miqt_string what) {
+void QAction_setWhatsThis(QAction* self, struct miqt_string what) {
 	QString what_QString = QString::fromUtf8(what.data, what.len);
 	self->setWhatsThis(what_QString);
 }
 
-struct miqt_string QAction_WhatsThis(const QAction* self) {
+struct miqt_string QAction_whatsThis(const QAction* self) {
 	QString _ret = self->whatsThis();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -385,32 +385,32 @@ struct miqt_string QAction_WhatsThis(const QAction* self) {
 	return _ms;
 }
 
-void QAction_SetPriority(QAction* self, int priority) {
+void QAction_setPriority(QAction* self, int priority) {
 	self->setPriority(static_cast<QAction::Priority>(priority));
 }
 
-int QAction_Priority(const QAction* self) {
+int QAction_priority(const QAction* self) {
 	QAction::Priority _ret = self->priority();
 	return static_cast<int>(_ret);
 }
 
-void QAction_SetSeparator(QAction* self, bool b) {
+void QAction_setSeparator(QAction* self, bool b) {
 	self->setSeparator(b);
 }
 
-bool QAction_IsSeparator(const QAction* self) {
+bool QAction_isSeparator(const QAction* self) {
 	return self->isSeparator();
 }
 
-void QAction_SetShortcut(QAction* self, QKeySequence* shortcut) {
+void QAction_setShortcut(QAction* self, QKeySequence* shortcut) {
 	self->setShortcut(*shortcut);
 }
 
-QKeySequence* QAction_Shortcut(const QAction* self) {
+QKeySequence* QAction_shortcut(const QAction* self) {
 	return new QKeySequence(self->shortcut());
 }
 
-void QAction_SetShortcuts(QAction* self, struct miqt_array /* of QKeySequence* */  shortcuts) {
+void QAction_setShortcuts(QAction* self, struct miqt_array /* of QKeySequence* */  shortcuts) {
 	QList<QKeySequence> shortcuts_QList;
 	shortcuts_QList.reserve(shortcuts.len);
 	QKeySequence** shortcuts_arr = static_cast<QKeySequence**>(shortcuts.data);
@@ -420,11 +420,11 @@ void QAction_SetShortcuts(QAction* self, struct miqt_array /* of QKeySequence* *
 	self->setShortcuts(shortcuts_QList);
 }
 
-void QAction_SetShortcutsWithShortcuts(QAction* self, int shortcuts) {
+void QAction_setShortcutsWithShortcuts(QAction* self, int shortcuts) {
 	self->setShortcuts(static_cast<QKeySequence::StandardKey>(shortcuts));
 }
 
-struct miqt_array /* of QKeySequence* */  QAction_Shortcuts(const QAction* self) {
+struct miqt_array /* of QKeySequence* */  QAction_shortcuts(const QAction* self) {
 	QList<QKeySequence> _ret = self->shortcuts();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QKeySequence** _arr = static_cast<QKeySequence**>(malloc(sizeof(QKeySequence*) * _ret.length()));
@@ -437,198 +437,198 @@ struct miqt_array /* of QKeySequence* */  QAction_Shortcuts(const QAction* self)
 	return _out;
 }
 
-void QAction_SetShortcutContext(QAction* self, int context) {
+void QAction_setShortcutContext(QAction* self, int context) {
 	self->setShortcutContext(static_cast<Qt::ShortcutContext>(context));
 }
 
-int QAction_ShortcutContext(const QAction* self) {
+int QAction_shortcutContext(const QAction* self) {
 	Qt::ShortcutContext _ret = self->shortcutContext();
 	return static_cast<int>(_ret);
 }
 
-void QAction_SetAutoRepeat(QAction* self, bool autoRepeat) {
+void QAction_setAutoRepeat(QAction* self, bool autoRepeat) {
 	self->setAutoRepeat(autoRepeat);
 }
 
-bool QAction_AutoRepeat(const QAction* self) {
+bool QAction_autoRepeat(const QAction* self) {
 	return self->autoRepeat();
 }
 
-void QAction_SetFont(QAction* self, QFont* font) {
+void QAction_setFont(QAction* self, QFont* font) {
 	self->setFont(*font);
 }
 
-QFont* QAction_Font(const QAction* self) {
+QFont* QAction_font(const QAction* self) {
 	return new QFont(self->font());
 }
 
-void QAction_SetCheckable(QAction* self, bool checkable) {
+void QAction_setCheckable(QAction* self, bool checkable) {
 	self->setCheckable(checkable);
 }
 
-bool QAction_IsCheckable(const QAction* self) {
+bool QAction_isCheckable(const QAction* self) {
 	return self->isCheckable();
 }
 
-QVariant* QAction_Data(const QAction* self) {
+QVariant* QAction_data(const QAction* self) {
 	return new QVariant(self->data());
 }
 
-void QAction_SetData(QAction* self, QVariant* varVal) {
-	self->setData(*varVal);
+void QAction_setData(QAction* self, QVariant* var) {
+	self->setData(*var);
 }
 
-bool QAction_IsChecked(const QAction* self) {
+bool QAction_isChecked(const QAction* self) {
 	return self->isChecked();
 }
 
-bool QAction_IsEnabled(const QAction* self) {
+bool QAction_isEnabled(const QAction* self) {
 	return self->isEnabled();
 }
 
-bool QAction_IsVisible(const QAction* self) {
+bool QAction_isVisible(const QAction* self) {
 	return self->isVisible();
 }
 
-void QAction_Activate(QAction* self, int event) {
+void QAction_activate(QAction* self, int event) {
 	self->activate(static_cast<QAction::ActionEvent>(event));
 }
 
-void QAction_SetMenuRole(QAction* self, int menuRole) {
+void QAction_setMenuRole(QAction* self, int menuRole) {
 	self->setMenuRole(static_cast<QAction::MenuRole>(menuRole));
 }
 
-int QAction_MenuRole(const QAction* self) {
+int QAction_menuRole(const QAction* self) {
 	QAction::MenuRole _ret = self->menuRole();
 	return static_cast<int>(_ret);
 }
 
-void QAction_SetIconVisibleInMenu(QAction* self, bool visible) {
+void QAction_setIconVisibleInMenu(QAction* self, bool visible) {
 	self->setIconVisibleInMenu(visible);
 }
 
-bool QAction_IsIconVisibleInMenu(const QAction* self) {
+bool QAction_isIconVisibleInMenu(const QAction* self) {
 	return self->isIconVisibleInMenu();
 }
 
-void QAction_SetShortcutVisibleInContextMenu(QAction* self, bool show) {
+void QAction_setShortcutVisibleInContextMenu(QAction* self, bool show) {
 	self->setShortcutVisibleInContextMenu(show);
 }
 
-bool QAction_IsShortcutVisibleInContextMenu(const QAction* self) {
+bool QAction_isShortcutVisibleInContextMenu(const QAction* self) {
 	return self->isShortcutVisibleInContextMenu();
 }
 
-bool QAction_ShowStatusText(QAction* self) {
+bool QAction_showStatusText(QAction* self) {
 	return self->showStatusText();
 }
 
-void QAction_Trigger(QAction* self) {
+void QAction_trigger(QAction* self) {
 	self->trigger();
 }
 
-void QAction_Hover(QAction* self) {
+void QAction_hover(QAction* self) {
 	self->hover();
 }
 
-void QAction_SetChecked(QAction* self, bool checked) {
+void QAction_setChecked(QAction* self, bool checked) {
 	self->setChecked(checked);
 }
 
-void QAction_Toggle(QAction* self) {
+void QAction_toggle(QAction* self) {
 	self->toggle();
 }
 
-void QAction_SetEnabled(QAction* self, bool enabled) {
+void QAction_setEnabled(QAction* self, bool enabled) {
 	self->setEnabled(enabled);
 }
 
-void QAction_ResetEnabled(QAction* self) {
+void QAction_resetEnabled(QAction* self) {
 	self->resetEnabled();
 }
 
-void QAction_SetDisabled(QAction* self, bool b) {
+void QAction_setDisabled(QAction* self, bool b) {
 	self->setDisabled(b);
 }
 
-void QAction_SetVisible(QAction* self, bool visible) {
+void QAction_setVisible(QAction* self, bool visible) {
 	self->setVisible(visible);
 }
 
-void QAction_Changed(QAction* self) {
+void QAction_changed(QAction* self) {
 	self->changed();
 }
 
-void QAction_connect_Changed(QAction* self, intptr_t slot) {
+void QAction_connect_changed(QAction* self, intptr_t slot) {
 	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)()>(&QAction::changed), self, [=]() {
-		miqt_exec_callback_QAction_Changed(slot);
+		miqt_exec_callback_QAction_changed(slot);
 	});
 }
 
-void QAction_EnabledChanged(QAction* self, bool enabled) {
+void QAction_enabledChanged(QAction* self, bool enabled) {
 	self->enabledChanged(enabled);
 }
 
-void QAction_connect_EnabledChanged(QAction* self, intptr_t slot) {
+void QAction_connect_enabledChanged(QAction* self, intptr_t slot) {
 	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::enabledChanged), self, [=](bool enabled) {
 		bool sigval1 = enabled;
-		miqt_exec_callback_QAction_EnabledChanged(slot, sigval1);
+		miqt_exec_callback_QAction_enabledChanged(slot, sigval1);
 	});
 }
 
-void QAction_CheckableChanged(QAction* self, bool checkable) {
+void QAction_checkableChanged(QAction* self, bool checkable) {
 	self->checkableChanged(checkable);
 }
 
-void QAction_connect_CheckableChanged(QAction* self, intptr_t slot) {
+void QAction_connect_checkableChanged(QAction* self, intptr_t slot) {
 	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::checkableChanged), self, [=](bool checkable) {
 		bool sigval1 = checkable;
-		miqt_exec_callback_QAction_CheckableChanged(slot, sigval1);
+		miqt_exec_callback_QAction_checkableChanged(slot, sigval1);
 	});
 }
 
-void QAction_VisibleChanged(QAction* self) {
+void QAction_visibleChanged(QAction* self) {
 	self->visibleChanged();
 }
 
-void QAction_connect_VisibleChanged(QAction* self, intptr_t slot) {
+void QAction_connect_visibleChanged(QAction* self, intptr_t slot) {
 	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)()>(&QAction::visibleChanged), self, [=]() {
-		miqt_exec_callback_QAction_VisibleChanged(slot);
+		miqt_exec_callback_QAction_visibleChanged(slot);
 	});
 }
 
-void QAction_Triggered(QAction* self) {
+void QAction_triggered(QAction* self) {
 	self->triggered();
 }
 
-void QAction_connect_Triggered(QAction* self, intptr_t slot) {
+void QAction_connect_triggered(QAction* self, intptr_t slot) {
 	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::triggered), self, [=]() {
-		miqt_exec_callback_QAction_Triggered(slot);
+		miqt_exec_callback_QAction_triggered(slot);
 	});
 }
 
-void QAction_Hovered(QAction* self) {
+void QAction_hovered(QAction* self) {
 	self->hovered();
 }
 
-void QAction_connect_Hovered(QAction* self, intptr_t slot) {
+void QAction_connect_hovered(QAction* self, intptr_t slot) {
 	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)()>(&QAction::hovered), self, [=]() {
-		miqt_exec_callback_QAction_Hovered(slot);
+		miqt_exec_callback_QAction_hovered(slot);
 	});
 }
 
-void QAction_Toggled(QAction* self, bool param1) {
+void QAction_toggled(QAction* self, bool param1) {
 	self->toggled(param1);
 }
 
-void QAction_connect_Toggled(QAction* self, intptr_t slot) {
+void QAction_connect_toggled(QAction* self, intptr_t slot) {
 	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::toggled), self, [=](bool param1) {
 		bool sigval1 = param1;
-		miqt_exec_callback_QAction_Toggled(slot, sigval1);
+		miqt_exec_callback_QAction_toggled(slot, sigval1);
 	});
 }
 
-struct miqt_string QAction_Tr2(const char* s, const char* c) {
+struct miqt_string QAction_tr2(const char* s, const char* c) {
 	QString _ret = QAction::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -639,7 +639,7 @@ struct miqt_string QAction_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QAction_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QAction_tr3(const char* s, const char* c, int n) {
 	QString _ret = QAction::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -650,120 +650,120 @@ struct miqt_string QAction_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QAction_ShowStatusText1(QAction* self, QObject* object) {
+bool QAction_showStatusText1(QAction* self, QObject* object) {
 	return self->showStatusText(object);
 }
 
-void QAction_Triggered1(QAction* self, bool checked) {
+void QAction_triggered1(QAction* self, bool checked) {
 	self->triggered(checked);
 }
 
-void QAction_connect_Triggered1(QAction* self, intptr_t slot) {
+void QAction_connect_triggered1(QAction* self, intptr_t slot) {
 	MiqtVirtualQAction::connect(self, static_cast<void (QAction::*)(bool)>(&QAction::triggered), self, [=](bool checked) {
 		bool sigval1 = checked;
-		miqt_exec_callback_QAction_Triggered1(slot, sigval1);
+		miqt_exec_callback_QAction_triggered1(slot, sigval1);
 	});
 }
 
-bool QAction_override_virtual_Event(void* self, intptr_t slot) {
+bool QAction_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QAction_virtualbase_Event(void* self, QEvent* param1) {
-	return ( (MiqtVirtualQAction*)(self) )->virtualbase_Event(param1);
+bool QAction_virtualbase_event(void* self, QEvent* param1) {
+	return ( (MiqtVirtualQAction*)(self) )->virtualbase_event(param1);
 }
 
-bool QAction_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QAction_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QAction_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQAction*)(self) )->virtualbase_EventFilter(watched, event);
+bool QAction_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQAction*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QAction_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QAction_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QAction_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQAction*)(self) )->virtualbase_TimerEvent(event);
+void QAction_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQAction*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QAction_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QAction_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QAction_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQAction*)(self) )->virtualbase_ChildEvent(event);
+void QAction_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQAction*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QAction_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QAction_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QAction_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAction*)(self) )->virtualbase_CustomEvent(event);
+void QAction_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQAction*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QAction_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QAction_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QAction_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAction*)(self) )->virtualbase_ConnectNotify(signal);
+void QAction_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAction*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QAction_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QAction_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQAction* self_cast = dynamic_cast<MiqtVirtualQAction*>( (QAction*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QAction_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAction*)(self) )->virtualbase_DisconnectNotify(signal);
+void QAction_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQAction*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QAction_Delete(QAction* self) {
+void QAction_delete(QAction* self) {
 	delete self;
 }
 

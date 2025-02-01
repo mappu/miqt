@@ -66,42 +66,42 @@ func UnsafeNewQLibraryInfo(h unsafe.Pointer) *QLibraryInfo {
 }
 
 func QLibraryInfo_Licensee() string {
-	var _ms C.struct_miqt_string = C.QLibraryInfo_Licensee()
+	var _ms C.struct_miqt_string = C.QLibraryInfo_licensee()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QLibraryInfo_LicensedProducts() string {
-	var _ms C.struct_miqt_string = C.QLibraryInfo_LicensedProducts()
+	var _ms C.struct_miqt_string = C.QLibraryInfo_licensedProducts()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QLibraryInfo_BuildDate() *QDate {
-	_goptr := newQDate(C.QLibraryInfo_BuildDate())
+	_goptr := newQDate(C.QLibraryInfo_buildDate())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QLibraryInfo_Build() string {
-	_ret := C.QLibraryInfo_Build()
+	_ret := C.QLibraryInfo_build()
 	return C.GoString(_ret)
 }
 
 func QLibraryInfo_IsDebugBuild() bool {
-	return (bool)(C.QLibraryInfo_IsDebugBuild())
+	return (bool)(C.QLibraryInfo_isDebugBuild())
 }
 
 func QLibraryInfo_Version() *QVersionNumber {
-	_goptr := newQVersionNumber(C.QLibraryInfo_Version())
+	_goptr := newQVersionNumber(C.QLibraryInfo_version())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QLibraryInfo_Location(param1 QLibraryInfo__LibraryLocation) string {
-	var _ms C.struct_miqt_string = C.QLibraryInfo_Location((C.int)(param1))
+	var _ms C.struct_miqt_string = C.QLibraryInfo_location((C.int)(param1))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -112,7 +112,7 @@ func QLibraryInfo_PlatformPluginArguments(platformName string) []string {
 	platformName_ms.data = C.CString(platformName)
 	platformName_ms.len = C.size_t(len(platformName))
 	defer C.free(unsafe.Pointer(platformName_ms.data))
-	var _ma C.struct_miqt_array = C.QLibraryInfo_PlatformPluginArguments(platformName_ms)
+	var _ma C.struct_miqt_array = C.QLibraryInfo_platformPluginArguments(platformName_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -126,7 +126,7 @@ func QLibraryInfo_PlatformPluginArguments(platformName string) []string {
 
 // Delete this object from C++ memory.
 func (this *QLibraryInfo) Delete() {
-	C.QLibraryInfo_Delete(this.h)
+	C.QLibraryInfo_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

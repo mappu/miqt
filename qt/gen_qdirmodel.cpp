@@ -26,47 +26,47 @@
 extern "C" {
 #endif
 
-QModelIndex* miqt_exec_callback_QDirModel_Index(const QDirModel*, intptr_t, int, int, QModelIndex*);
-QModelIndex* miqt_exec_callback_QDirModel_Parent(const QDirModel*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QDirModel_RowCount(const QDirModel*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QDirModel_ColumnCount(const QDirModel*, intptr_t, QModelIndex*);
-QVariant* miqt_exec_callback_QDirModel_Data(const QDirModel*, intptr_t, QModelIndex*, int);
-bool miqt_exec_callback_QDirModel_SetData(QDirModel*, intptr_t, QModelIndex*, QVariant*, int);
-QVariant* miqt_exec_callback_QDirModel_HeaderData(const QDirModel*, intptr_t, int, int, int);
-bool miqt_exec_callback_QDirModel_HasChildren(const QDirModel*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QDirModel_Flags(const QDirModel*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QDirModel_Sort(QDirModel*, intptr_t, int, int);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QDirModel_MimeTypes(const QDirModel*, intptr_t);
-QMimeData* miqt_exec_callback_QDirModel_MimeData(const QDirModel*, intptr_t, struct miqt_array /* of QModelIndex* */ );
-bool miqt_exec_callback_QDirModel_DropMimeData(QDirModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
-int miqt_exec_callback_QDirModel_SupportedDropActions(const QDirModel*, intptr_t);
-QModelIndex* miqt_exec_callback_QDirModel_Sibling(const QDirModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QDirModel_SetHeaderData(QDirModel*, intptr_t, int, int, QVariant*, int);
-struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QDirModel_ItemData(const QDirModel*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QDirModel_SetItemData(QDirModel*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
-bool miqt_exec_callback_QDirModel_CanDropMimeData(const QDirModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
-int miqt_exec_callback_QDirModel_SupportedDragActions(const QDirModel*, intptr_t);
-bool miqt_exec_callback_QDirModel_InsertRows(QDirModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QDirModel_InsertColumns(QDirModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QDirModel_RemoveRows(QDirModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QDirModel_RemoveColumns(QDirModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QDirModel_MoveRows(QDirModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-bool miqt_exec_callback_QDirModel_MoveColumns(QDirModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-void miqt_exec_callback_QDirModel_FetchMore(QDirModel*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QDirModel_CanFetchMore(const QDirModel*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QDirModel_Buddy(const QDirModel*, intptr_t, QModelIndex*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QDirModel_Match(const QDirModel*, intptr_t, QModelIndex*, int, QVariant*, int, int);
-QSize* miqt_exec_callback_QDirModel_Span(const QDirModel*, intptr_t, QModelIndex*);
-struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QDirModel_RoleNames(const QDirModel*, intptr_t);
-bool miqt_exec_callback_QDirModel_Submit(QDirModel*, intptr_t);
-void miqt_exec_callback_QDirModel_Revert(QDirModel*, intptr_t);
-bool miqt_exec_callback_QDirModel_Event(QDirModel*, intptr_t, QEvent*);
-bool miqt_exec_callback_QDirModel_EventFilter(QDirModel*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QDirModel_TimerEvent(QDirModel*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QDirModel_ChildEvent(QDirModel*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QDirModel_CustomEvent(QDirModel*, intptr_t, QEvent*);
-void miqt_exec_callback_QDirModel_ConnectNotify(QDirModel*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QDirModel_DisconnectNotify(QDirModel*, intptr_t, QMetaMethod*);
+QModelIndex* miqt_exec_callback_QDirModel_index(const QDirModel*, intptr_t, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QDirModel_parent(const QDirModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QDirModel_rowCount(const QDirModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QDirModel_columnCount(const QDirModel*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QDirModel_data(const QDirModel*, intptr_t, QModelIndex*, int);
+bool miqt_exec_callback_QDirModel_setData(QDirModel*, intptr_t, QModelIndex*, QVariant*, int);
+QVariant* miqt_exec_callback_QDirModel_headerData(const QDirModel*, intptr_t, int, int, int);
+bool miqt_exec_callback_QDirModel_hasChildren(const QDirModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QDirModel_flags(const QDirModel*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QDirModel_sort(QDirModel*, intptr_t, int, int);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QDirModel_mimeTypes(const QDirModel*, intptr_t);
+QMimeData* miqt_exec_callback_QDirModel_mimeData(const QDirModel*, intptr_t, struct miqt_array /* of QModelIndex* */ );
+bool miqt_exec_callback_QDirModel_dropMimeData(QDirModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+int miqt_exec_callback_QDirModel_supportedDropActions(const QDirModel*, intptr_t);
+QModelIndex* miqt_exec_callback_QDirModel_sibling(const QDirModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QDirModel_setHeaderData(QDirModel*, intptr_t, int, int, QVariant*, int);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QDirModel_itemData(const QDirModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QDirModel_setItemData(QDirModel*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
+bool miqt_exec_callback_QDirModel_canDropMimeData(const QDirModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+int miqt_exec_callback_QDirModel_supportedDragActions(const QDirModel*, intptr_t);
+bool miqt_exec_callback_QDirModel_insertRows(QDirModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QDirModel_insertColumns(QDirModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QDirModel_removeRows(QDirModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QDirModel_removeColumns(QDirModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QDirModel_moveRows(QDirModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QDirModel_moveColumns(QDirModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+void miqt_exec_callback_QDirModel_fetchMore(QDirModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QDirModel_canFetchMore(const QDirModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QDirModel_buddy(const QDirModel*, intptr_t, QModelIndex*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QDirModel_match(const QDirModel*, intptr_t, QModelIndex*, int, QVariant*, int, int);
+QSize* miqt_exec_callback_QDirModel_span(const QDirModel*, intptr_t, QModelIndex*);
+struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QDirModel_roleNames(const QDirModel*, intptr_t);
+bool miqt_exec_callback_QDirModel_submit(QDirModel*, intptr_t);
+void miqt_exec_callback_QDirModel_revert(QDirModel*, intptr_t);
+bool miqt_exec_callback_QDirModel_event(QDirModel*, intptr_t, QEvent*);
+bool miqt_exec_callback_QDirModel_eventFilter(QDirModel*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QDirModel_timerEvent(QDirModel*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QDirModel_childEvent(QDirModel*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QDirModel_customEvent(QDirModel*, intptr_t, QEvent*);
+void miqt_exec_callback_QDirModel_connectNotify(QDirModel*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QDirModel_disconnectNotify(QDirModel*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -82,11 +82,11 @@ public:
 	virtual ~MiqtVirtualQDirModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Index = 0;
+	intptr_t handle__index = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndex index(int row, int column, const QModelIndex& parent) const override {
-		if (handle__Index == 0) {
+		if (handle__index == 0) {
 			return QDirModel::index(row, column, parent);
 		}
 		
@@ -96,24 +96,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QDirModel_Index(this, handle__Index, sigval1, sigval2, sigval3);
+		QModelIndex* callback_return_value = miqt_exec_callback_QDirModel_index(this, handle__index, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_Index(int row, int column, QModelIndex* parent) const {
+	QModelIndex* virtualbase_index(int row, int column, QModelIndex* parent) const {
 
 		return new QModelIndex(QDirModel::index(static_cast<int>(row), static_cast<int>(column), *parent));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Parent = 0;
+	intptr_t handle__parent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndex parent(const QModelIndex& child) const override {
-		if (handle__Parent == 0) {
+		if (handle__parent == 0) {
 			return QDirModel::parent(child);
 		}
 		
@@ -121,24 +121,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QDirModel_Parent(this, handle__Parent, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QDirModel_parent(this, handle__parent, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_Parent(QModelIndex* child) const {
+	QModelIndex* virtualbase_parent(QModelIndex* child) const {
 
 		return new QModelIndex(QDirModel::parent(*child));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__RowCount = 0;
+	intptr_t handle__rowCount = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int rowCount(const QModelIndex& parent) const override {
-		if (handle__RowCount == 0) {
+		if (handle__rowCount == 0) {
 			return QDirModel::rowCount(parent);
 		}
 		
@@ -146,24 +146,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		int callback_return_value = miqt_exec_callback_QDirModel_RowCount(this, handle__RowCount, sigval1);
+		int callback_return_value = miqt_exec_callback_QDirModel_rowCount(this, handle__rowCount, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_RowCount(QModelIndex* parent) const {
+	int virtualbase_rowCount(QModelIndex* parent) const {
 
 		return QDirModel::rowCount(*parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ColumnCount = 0;
+	intptr_t handle__columnCount = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int columnCount(const QModelIndex& parent) const override {
-		if (handle__ColumnCount == 0) {
+		if (handle__columnCount == 0) {
 			return QDirModel::columnCount(parent);
 		}
 		
@@ -171,24 +171,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		int callback_return_value = miqt_exec_callback_QDirModel_ColumnCount(this, handle__ColumnCount, sigval1);
+		int callback_return_value = miqt_exec_callback_QDirModel_columnCount(this, handle__columnCount, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_ColumnCount(QModelIndex* parent) const {
+	int virtualbase_columnCount(QModelIndex* parent) const {
 
 		return QDirModel::columnCount(*parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Data = 0;
+	intptr_t handle__data = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QVariant data(const QModelIndex& index, int role) const override {
-		if (handle__Data == 0) {
+		if (handle__data == 0) {
 			return QDirModel::data(index, role);
 		}
 		
@@ -197,24 +197,24 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		int sigval2 = role;
 
-		QVariant* callback_return_value = miqt_exec_callback_QDirModel_Data(this, handle__Data, sigval1, sigval2);
+		QVariant* callback_return_value = miqt_exec_callback_QDirModel_data(this, handle__data, sigval1, sigval2);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QVariant* virtualbase_Data(QModelIndex* index, int role) const {
+	QVariant* virtualbase_data(QModelIndex* index, int role) const {
 
 		return new QVariant(QDirModel::data(*index, static_cast<int>(role)));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetData = 0;
+	intptr_t handle__setData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool setData(const QModelIndex& index, const QVariant& value, int role) override {
-		if (handle__SetData == 0) {
+		if (handle__setData == 0) {
 			return QDirModel::setData(index, value, role);
 		}
 		
@@ -226,24 +226,24 @@ public:
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		int sigval3 = role;
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_SetData(this, handle__SetData, sigval1, sigval2, sigval3);
+		bool callback_return_value = miqt_exec_callback_QDirModel_setData(this, handle__setData, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_SetData(QModelIndex* index, QVariant* value, int role) {
+	bool virtualbase_setData(QModelIndex* index, QVariant* value, int role) {
 
 		return QDirModel::setData(*index, *value, static_cast<int>(role));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HeaderData = 0;
+	intptr_t handle__headerData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const override {
-		if (handle__HeaderData == 0) {
+		if (handle__headerData == 0) {
 			return QDirModel::headerData(section, orientation, role);
 		}
 		
@@ -252,24 +252,24 @@ public:
 		int sigval2 = static_cast<int>(orientation_ret);
 		int sigval3 = role;
 
-		QVariant* callback_return_value = miqt_exec_callback_QDirModel_HeaderData(this, handle__HeaderData, sigval1, sigval2, sigval3);
+		QVariant* callback_return_value = miqt_exec_callback_QDirModel_headerData(this, handle__headerData, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QVariant* virtualbase_HeaderData(int section, int orientation, int role) const {
+	QVariant* virtualbase_headerData(int section, int orientation, int role) const {
 
 		return new QVariant(QDirModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HasChildren = 0;
+	intptr_t handle__hasChildren = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool hasChildren(const QModelIndex& index) const override {
-		if (handle__HasChildren == 0) {
+		if (handle__hasChildren == 0) {
 			return QDirModel::hasChildren(index);
 		}
 		
@@ -277,24 +277,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_HasChildren(this, handle__HasChildren, sigval1);
+		bool callback_return_value = miqt_exec_callback_QDirModel_hasChildren(this, handle__hasChildren, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_HasChildren(QModelIndex* index) const {
+	bool virtualbase_hasChildren(QModelIndex* index) const {
 
 		return QDirModel::hasChildren(*index);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Flags = 0;
+	intptr_t handle__flags = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual Qt::ItemFlags flags(const QModelIndex& index) const override {
-		if (handle__Flags == 0) {
+		if (handle__flags == 0) {
 			return QDirModel::flags(index);
 		}
 		
@@ -302,13 +302,13 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		int callback_return_value = miqt_exec_callback_QDirModel_Flags(this, handle__Flags, sigval1);
+		int callback_return_value = miqt_exec_callback_QDirModel_flags(this, handle__flags, sigval1);
 
 		return static_cast<Qt::ItemFlags>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_Flags(QModelIndex* index) const {
+	int virtualbase_flags(QModelIndex* index) const {
 
 		Qt::ItemFlags _ret = QDirModel::flags(*index);
 		return static_cast<int>(_ret);
@@ -316,11 +316,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Sort = 0;
+	intptr_t handle__sort = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void sort(int column, Qt::SortOrder order) override {
-		if (handle__Sort == 0) {
+		if (handle__sort == 0) {
 			QDirModel::sort(column, order);
 			return;
 		}
@@ -329,29 +329,29 @@ public:
 		Qt::SortOrder order_ret = order;
 		int sigval2 = static_cast<int>(order_ret);
 
-		miqt_exec_callback_QDirModel_Sort(this, handle__Sort, sigval1, sigval2);
+		miqt_exec_callback_QDirModel_sort(this, handle__sort, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_Sort(int column, int order) {
+	void virtualbase_sort(int column, int order) {
 
 		QDirModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MimeTypes = 0;
+	intptr_t handle__mimeTypes = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QStringList mimeTypes() const override {
-		if (handle__MimeTypes == 0) {
+		if (handle__mimeTypes == 0) {
 			return QDirModel::mimeTypes();
 		}
 		
 
-		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QDirModel_MimeTypes(this, handle__MimeTypes);
+		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QDirModel_mimeTypes(this, handle__mimeTypes);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
@@ -364,7 +364,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	struct miqt_array /* of struct miqt_string */  virtualbase_MimeTypes() const {
+	struct miqt_array /* of struct miqt_string */  virtualbase_mimeTypes() const {
 
 		QStringList _ret = QDirModel::mimeTypes();
 		// Convert QList<> from C++ memory to manually-managed C memory
@@ -387,11 +387,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MimeData = 0;
+	intptr_t handle__mimeData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QMimeData* mimeData(const QModelIndexList& indexes) const override {
-		if (handle__MimeData == 0) {
+		if (handle__mimeData == 0) {
 			return QDirModel::mimeData(indexes);
 		}
 		
@@ -406,13 +406,13 @@ public:
 		indexes_out.data = static_cast<void*>(indexes_arr);
 		struct miqt_array /* of QModelIndex* */  sigval1 = indexes_out;
 
-		QMimeData* callback_return_value = miqt_exec_callback_QDirModel_MimeData(this, handle__MimeData, sigval1);
+		QMimeData* callback_return_value = miqt_exec_callback_QDirModel_mimeData(this, handle__mimeData, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QMimeData* virtualbase_MimeData(struct miqt_array /* of QModelIndex* */  indexes) const {
+	QMimeData* virtualbase_mimeData(struct miqt_array /* of QModelIndex* */  indexes) const {
 		QModelIndexList indexes_QList;
 		indexes_QList.reserve(indexes.len);
 		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
@@ -425,11 +425,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DropMimeData = 0;
+	intptr_t handle__dropMimeData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) override {
-		if (handle__DropMimeData == 0) {
+		if (handle__dropMimeData == 0) {
 			return QDirModel::dropMimeData(data, action, row, column, parent);
 		}
 		
@@ -442,35 +442,35 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_DropMimeData(this, handle__DropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
+		bool callback_return_value = miqt_exec_callback_QDirModel_dropMimeData(this, handle__dropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_DropMimeData(QMimeData* data, int action, int row, int column, QModelIndex* parent) {
+	bool virtualbase_dropMimeData(QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 
 		return QDirModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SupportedDropActions = 0;
+	intptr_t handle__supportedDropActions = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual Qt::DropActions supportedDropActions() const override {
-		if (handle__SupportedDropActions == 0) {
+		if (handle__supportedDropActions == 0) {
 			return QDirModel::supportedDropActions();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QDirModel_SupportedDropActions(this, handle__SupportedDropActions);
+		int callback_return_value = miqt_exec_callback_QDirModel_supportedDropActions(this, handle__supportedDropActions);
 
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_SupportedDropActions() const {
+	int virtualbase_supportedDropActions() const {
 
 		Qt::DropActions _ret = QDirModel::supportedDropActions();
 		return static_cast<int>(_ret);
@@ -478,11 +478,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Sibling = 0;
+	intptr_t handle__sibling = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndex sibling(int row, int column, const QModelIndex& idx) const override {
-		if (handle__Sibling == 0) {
+		if (handle__sibling == 0) {
 			return QDirModel::sibling(row, column, idx);
 		}
 		
@@ -492,24 +492,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&idx_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QDirModel_Sibling(this, handle__Sibling, sigval1, sigval2, sigval3);
+		QModelIndex* callback_return_value = miqt_exec_callback_QDirModel_sibling(this, handle__sibling, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_Sibling(int row, int column, QModelIndex* idx) const {
+	QModelIndex* virtualbase_sibling(int row, int column, QModelIndex* idx) const {
 
 		return new QModelIndex(QDirModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetHeaderData = 0;
+	intptr_t handle__setHeaderData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool setHeaderData(int section, Qt::Orientation orientation, const QVariant& value, int role) override {
-		if (handle__SetHeaderData == 0) {
+		if (handle__setHeaderData == 0) {
 			return QDirModel::setHeaderData(section, orientation, value, role);
 		}
 		
@@ -521,24 +521,24 @@ public:
 		QVariant* sigval3 = const_cast<QVariant*>(&value_ret);
 		int sigval4 = role;
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_SetHeaderData(this, handle__SetHeaderData, sigval1, sigval2, sigval3, sigval4);
+		bool callback_return_value = miqt_exec_callback_QDirModel_setHeaderData(this, handle__setHeaderData, sigval1, sigval2, sigval3, sigval4);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_SetHeaderData(int section, int orientation, QVariant* value, int role) {
+	bool virtualbase_setHeaderData(int section, int orientation, QVariant* value, int role) {
 
 		return QDirModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ItemData = 0;
+	intptr_t handle__itemData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QMap<int, QVariant> itemData(const QModelIndex& index) const override {
-		if (handle__ItemData == 0) {
+		if (handle__itemData == 0) {
 			return QDirModel::itemData(index);
 		}
 		
@@ -546,7 +546,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QDirModel_ItemData(this, handle__ItemData, sigval1);
+		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QDirModel_itemData(this, handle__itemData, sigval1);
 		QMap<int, QVariant> callback_return_value_QMap;
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
 		QVariant** callback_return_value_varr = static_cast<QVariant**>(callback_return_value.values);
@@ -558,7 +558,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	struct miqt_map /* of int to QVariant* */  virtualbase_ItemData(QModelIndex* index) const {
+	struct miqt_map /* of int to QVariant* */  virtualbase_itemData(QModelIndex* index) const {
 
 		QMap<int, QVariant> _ret = QDirModel::itemData(*index);
 		// Convert QMap<> from C++ memory to manually-managed C memory
@@ -579,11 +579,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetItemData = 0;
+	intptr_t handle__setItemData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool setItemData(const QModelIndex& index, const QMap<int, QVariant>& roles) override {
-		if (handle__SetItemData == 0) {
+		if (handle__setItemData == 0) {
 			return QDirModel::setItemData(index, roles);
 		}
 		
@@ -606,13 +606,13 @@ public:
 		roles_out.values = static_cast<void*>(roles_varr);
 		struct miqt_map /* of int to QVariant* */  sigval2 = roles_out;
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_SetItemData(this, handle__SetItemData, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QDirModel_setItemData(this, handle__setItemData, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_SetItemData(QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
+	bool virtualbase_setItemData(QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
 		QMap<int, QVariant> roles_QMap;
 		int* roles_karr = static_cast<int*>(roles.keys);
 		QVariant** roles_varr = static_cast<QVariant**>(roles.values);
@@ -625,11 +625,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CanDropMimeData = 0;
+	intptr_t handle__canDropMimeData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool canDropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) const override {
-		if (handle__CanDropMimeData == 0) {
+		if (handle__canDropMimeData == 0) {
 			return QDirModel::canDropMimeData(data, action, row, column, parent);
 		}
 		
@@ -642,35 +642,35 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_CanDropMimeData(this, handle__CanDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
+		bool callback_return_value = miqt_exec_callback_QDirModel_canDropMimeData(this, handle__canDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_CanDropMimeData(QMimeData* data, int action, int row, int column, QModelIndex* parent) const {
+	bool virtualbase_canDropMimeData(QMimeData* data, int action, int row, int column, QModelIndex* parent) const {
 
 		return QDirModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SupportedDragActions = 0;
+	intptr_t handle__supportedDragActions = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual Qt::DropActions supportedDragActions() const override {
-		if (handle__SupportedDragActions == 0) {
+		if (handle__supportedDragActions == 0) {
 			return QDirModel::supportedDragActions();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QDirModel_SupportedDragActions(this, handle__SupportedDragActions);
+		int callback_return_value = miqt_exec_callback_QDirModel_supportedDragActions(this, handle__supportedDragActions);
 
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_SupportedDragActions() const {
+	int virtualbase_supportedDragActions() const {
 
 		Qt::DropActions _ret = QDirModel::supportedDragActions();
 		return static_cast<int>(_ret);
@@ -678,11 +678,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InsertRows = 0;
+	intptr_t handle__insertRows = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool insertRows(int row, int count, const QModelIndex& parent) override {
-		if (handle__InsertRows == 0) {
+		if (handle__insertRows == 0) {
 			return QDirModel::insertRows(row, count, parent);
 		}
 		
@@ -692,24 +692,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_InsertRows(this, handle__InsertRows, sigval1, sigval2, sigval3);
+		bool callback_return_value = miqt_exec_callback_QDirModel_insertRows(this, handle__insertRows, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_InsertRows(int row, int count, QModelIndex* parent) {
+	bool virtualbase_insertRows(int row, int count, QModelIndex* parent) {
 
 		return QDirModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InsertColumns = 0;
+	intptr_t handle__insertColumns = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool insertColumns(int column, int count, const QModelIndex& parent) override {
-		if (handle__InsertColumns == 0) {
+		if (handle__insertColumns == 0) {
 			return QDirModel::insertColumns(column, count, parent);
 		}
 		
@@ -719,24 +719,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_InsertColumns(this, handle__InsertColumns, sigval1, sigval2, sigval3);
+		bool callback_return_value = miqt_exec_callback_QDirModel_insertColumns(this, handle__insertColumns, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_InsertColumns(int column, int count, QModelIndex* parent) {
+	bool virtualbase_insertColumns(int column, int count, QModelIndex* parent) {
 
 		return QDirModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__RemoveRows = 0;
+	intptr_t handle__removeRows = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool removeRows(int row, int count, const QModelIndex& parent) override {
-		if (handle__RemoveRows == 0) {
+		if (handle__removeRows == 0) {
 			return QDirModel::removeRows(row, count, parent);
 		}
 		
@@ -746,24 +746,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_RemoveRows(this, handle__RemoveRows, sigval1, sigval2, sigval3);
+		bool callback_return_value = miqt_exec_callback_QDirModel_removeRows(this, handle__removeRows, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_RemoveRows(int row, int count, QModelIndex* parent) {
+	bool virtualbase_removeRows(int row, int count, QModelIndex* parent) {
 
 		return QDirModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__RemoveColumns = 0;
+	intptr_t handle__removeColumns = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool removeColumns(int column, int count, const QModelIndex& parent) override {
-		if (handle__RemoveColumns == 0) {
+		if (handle__removeColumns == 0) {
 			return QDirModel::removeColumns(column, count, parent);
 		}
 		
@@ -773,24 +773,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_RemoveColumns(this, handle__RemoveColumns, sigval1, sigval2, sigval3);
+		bool callback_return_value = miqt_exec_callback_QDirModel_removeColumns(this, handle__removeColumns, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_RemoveColumns(int column, int count, QModelIndex* parent) {
+	bool virtualbase_removeColumns(int column, int count, QModelIndex* parent) {
 
 		return QDirModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MoveRows = 0;
+	intptr_t handle__moveRows = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool moveRows(const QModelIndex& sourceParent, int sourceRow, int count, const QModelIndex& destinationParent, int destinationChild) override {
-		if (handle__MoveRows == 0) {
+		if (handle__moveRows == 0) {
 			return QDirModel::moveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
 		}
 		
@@ -804,24 +804,24 @@ public:
 		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
 		int sigval5 = destinationChild;
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_MoveRows(this, handle__MoveRows, sigval1, sigval2, sigval3, sigval4, sigval5);
+		bool callback_return_value = miqt_exec_callback_QDirModel_moveRows(this, handle__moveRows, sigval1, sigval2, sigval3, sigval4, sigval5);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_MoveRows(QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
+	bool virtualbase_moveRows(QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
 
 		return QDirModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MoveColumns = 0;
+	intptr_t handle__moveColumns = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool moveColumns(const QModelIndex& sourceParent, int sourceColumn, int count, const QModelIndex& destinationParent, int destinationChild) override {
-		if (handle__MoveColumns == 0) {
+		if (handle__moveColumns == 0) {
 			return QDirModel::moveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
 		}
 		
@@ -835,24 +835,24 @@ public:
 		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
 		int sigval5 = destinationChild;
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_MoveColumns(this, handle__MoveColumns, sigval1, sigval2, sigval3, sigval4, sigval5);
+		bool callback_return_value = miqt_exec_callback_QDirModel_moveColumns(this, handle__moveColumns, sigval1, sigval2, sigval3, sigval4, sigval5);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_MoveColumns(QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
+	bool virtualbase_moveColumns(QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
 
 		return QDirModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__FetchMore = 0;
+	intptr_t handle__fetchMore = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void fetchMore(const QModelIndex& parent) override {
-		if (handle__FetchMore == 0) {
+		if (handle__fetchMore == 0) {
 			QDirModel::fetchMore(parent);
 			return;
 		}
@@ -861,24 +861,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		miqt_exec_callback_QDirModel_FetchMore(this, handle__FetchMore, sigval1);
+		miqt_exec_callback_QDirModel_fetchMore(this, handle__fetchMore, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_FetchMore(QModelIndex* parent) {
+	void virtualbase_fetchMore(QModelIndex* parent) {
 
 		QDirModel::fetchMore(*parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CanFetchMore = 0;
+	intptr_t handle__canFetchMore = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool canFetchMore(const QModelIndex& parent) const override {
-		if (handle__CanFetchMore == 0) {
+		if (handle__canFetchMore == 0) {
 			return QDirModel::canFetchMore(parent);
 		}
 		
@@ -886,24 +886,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_CanFetchMore(this, handle__CanFetchMore, sigval1);
+		bool callback_return_value = miqt_exec_callback_QDirModel_canFetchMore(this, handle__canFetchMore, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_CanFetchMore(QModelIndex* parent) const {
+	bool virtualbase_canFetchMore(QModelIndex* parent) const {
 
 		return QDirModel::canFetchMore(*parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Buddy = 0;
+	intptr_t handle__buddy = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndex buddy(const QModelIndex& index) const override {
-		if (handle__Buddy == 0) {
+		if (handle__buddy == 0) {
 			return QDirModel::buddy(index);
 		}
 		
@@ -911,24 +911,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QDirModel_Buddy(this, handle__Buddy, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QDirModel_buddy(this, handle__buddy, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_Buddy(QModelIndex* index) const {
+	QModelIndex* virtualbase_buddy(QModelIndex* index) const {
 
 		return new QModelIndex(QDirModel::buddy(*index));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Match = 0;
+	intptr_t handle__match = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndexList match(const QModelIndex& start, int role, const QVariant& value, int hits, Qt::MatchFlags flags) const override {
-		if (handle__Match == 0) {
+		if (handle__match == 0) {
 			return QDirModel::match(start, role, value, hits, flags);
 		}
 		
@@ -943,7 +943,7 @@ public:
 		Qt::MatchFlags flags_ret = flags;
 		int sigval5 = static_cast<int>(flags_ret);
 
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QDirModel_Match(this, handle__Match, sigval1, sigval2, sigval3, sigval4, sigval5);
+		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QDirModel_match(this, handle__match, sigval1, sigval2, sigval3, sigval4, sigval5);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
@@ -955,7 +955,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	struct miqt_array /* of QModelIndex* */  virtualbase_Match(QModelIndex* start, int role, QVariant* value, int hits, int flags) const {
+	struct miqt_array /* of QModelIndex* */  virtualbase_match(QModelIndex* start, int role, QVariant* value, int hits, int flags) const {
 
 		QModelIndexList _ret = QDirModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 		// Convert QList<> from C++ memory to manually-managed C memory
@@ -971,11 +971,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Span = 0;
+	intptr_t handle__span = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize span(const QModelIndex& index) const override {
-		if (handle__Span == 0) {
+		if (handle__span == 0) {
 			return QDirModel::span(index);
 		}
 		
@@ -983,29 +983,29 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QSize* callback_return_value = miqt_exec_callback_QDirModel_Span(this, handle__Span, sigval1);
+		QSize* callback_return_value = miqt_exec_callback_QDirModel_span(this, handle__span, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSize* virtualbase_Span(QModelIndex* index) const {
+	QSize* virtualbase_span(QModelIndex* index) const {
 
 		return new QSize(QDirModel::span(*index));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__RoleNames = 0;
+	intptr_t handle__roleNames = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QHash<int, QByteArray> roleNames() const override {
-		if (handle__RoleNames == 0) {
+		if (handle__roleNames == 0) {
 			return QDirModel::roleNames();
 		}
 		
 
-		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QDirModel_RoleNames(this, handle__RoleNames);
+		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QDirModel_roleNames(this, handle__roleNames);
 		QHash<int, QByteArray> callback_return_value_QMap;
 		callback_return_value_QMap.reserve(callback_return_value.len);
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
@@ -1019,7 +1019,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	struct miqt_map /* of int to struct miqt_string */  virtualbase_RoleNames() const {
+	struct miqt_map /* of int to struct miqt_string */  virtualbase_roleNames() const {
 
 		QHash<int, QByteArray> _ret = QDirModel::roleNames();
 		// Convert QMap<> from C++ memory to manually-managed C memory
@@ -1045,175 +1045,175 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Submit = 0;
+	intptr_t handle__submit = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool submit() override {
-		if (handle__Submit == 0) {
+		if (handle__submit == 0) {
 			return QDirModel::submit();
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_Submit(this, handle__Submit);
+		bool callback_return_value = miqt_exec_callback_QDirModel_submit(this, handle__submit);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Submit() {
+	bool virtualbase_submit() {
 
 		return QDirModel::submit();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Revert = 0;
+	intptr_t handle__revert = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void revert() override {
-		if (handle__Revert == 0) {
+		if (handle__revert == 0) {
 			QDirModel::revert();
 			return;
 		}
 		
 
-		miqt_exec_callback_QDirModel_Revert(this, handle__Revert);
+		miqt_exec_callback_QDirModel_revert(this, handle__revert);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_Revert() {
+	void virtualbase_revert() {
 
 		QDirModel::revert();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QDirModel::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QDirModel_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QDirModel::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QDirModel::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QDirModel_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QDirModel_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QDirModel::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QDirModel::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QDirModel_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QDirModel_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QDirModel::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QDirModel::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QDirModel_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QDirModel_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QDirModel::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QDirModel::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QDirModel_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QDirModel_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QDirModel::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QDirModel::connectNotify(signal);
 			return;
 		}
@@ -1222,24 +1222,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QDirModel_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QDirModel_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QDirModel::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QDirModel::disconnectNotify(signal);
 			return;
 		}
@@ -1248,13 +1248,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QDirModel_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QDirModel_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QDirModel::disconnectNotify(*signal);
 
@@ -1296,15 +1296,15 @@ void QDirModel_virtbase(QDirModel* src, QAbstractItemModel** outptr_QAbstractIte
 	*outptr_QAbstractItemModel = static_cast<QAbstractItemModel*>(src);
 }
 
-QMetaObject* QDirModel_MetaObject(const QDirModel* self) {
+QMetaObject* QDirModel_metaObject(const QDirModel* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QDirModel_Metacast(QDirModel* self, const char* param1) {
+void* QDirModel_metacast(QDirModel* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QDirModel_Tr(const char* s) {
+struct miqt_string QDirModel_tr(const char* s) {
 	QString _ret = QDirModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1315,7 +1315,7 @@ struct miqt_string QDirModel_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QDirModel_TrUtf8(const char* s) {
+struct miqt_string QDirModel_trUtf8(const char* s) {
 	QString _ret = QDirModel::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1326,48 +1326,48 @@ struct miqt_string QDirModel_TrUtf8(const char* s) {
 	return _ms;
 }
 
-QModelIndex* QDirModel_Index(const QDirModel* self, int row, int column, QModelIndex* parent) {
+QModelIndex* QDirModel_index(const QDirModel* self, int row, int column, QModelIndex* parent) {
 	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column), *parent));
 }
 
-QModelIndex* QDirModel_Parent(const QDirModel* self, QModelIndex* child) {
+QModelIndex* QDirModel_parent(const QDirModel* self, QModelIndex* child) {
 	return new QModelIndex(self->parent(*child));
 }
 
-int QDirModel_RowCount(const QDirModel* self, QModelIndex* parent) {
+int QDirModel_rowCount(const QDirModel* self, QModelIndex* parent) {
 	return self->rowCount(*parent);
 }
 
-int QDirModel_ColumnCount(const QDirModel* self, QModelIndex* parent) {
+int QDirModel_columnCount(const QDirModel* self, QModelIndex* parent) {
 	return self->columnCount(*parent);
 }
 
-QVariant* QDirModel_Data(const QDirModel* self, QModelIndex* index, int role) {
+QVariant* QDirModel_data(const QDirModel* self, QModelIndex* index, int role) {
 	return new QVariant(self->data(*index, static_cast<int>(role)));
 }
 
-bool QDirModel_SetData(QDirModel* self, QModelIndex* index, QVariant* value, int role) {
+bool QDirModel_setData(QDirModel* self, QModelIndex* index, QVariant* value, int role) {
 	return self->setData(*index, *value, static_cast<int>(role));
 }
 
-QVariant* QDirModel_HeaderData(const QDirModel* self, int section, int orientation, int role) {
+QVariant* QDirModel_headerData(const QDirModel* self, int section, int orientation, int role) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
-bool QDirModel_HasChildren(const QDirModel* self, QModelIndex* index) {
+bool QDirModel_hasChildren(const QDirModel* self, QModelIndex* index) {
 	return self->hasChildren(*index);
 }
 
-int QDirModel_Flags(const QDirModel* self, QModelIndex* index) {
+int QDirModel_flags(const QDirModel* self, QModelIndex* index) {
 	Qt::ItemFlags _ret = self->flags(*index);
 	return static_cast<int>(_ret);
 }
 
-void QDirModel_Sort(QDirModel* self, int column, int order) {
+void QDirModel_sort(QDirModel* self, int column, int order) {
 	self->sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 }
 
-struct miqt_array /* of struct miqt_string */  QDirModel_MimeTypes(const QDirModel* self) {
+struct miqt_array /* of struct miqt_string */  QDirModel_mimeTypes(const QDirModel* self) {
 	QStringList _ret = self->mimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -1387,7 +1387,7 @@ struct miqt_array /* of struct miqt_string */  QDirModel_MimeTypes(const QDirMod
 	return _out;
 }
 
-QMimeData* QDirModel_MimeData(const QDirModel* self, struct miqt_array /* of QModelIndex* */  indexes) {
+QMimeData* QDirModel_mimeData(const QDirModel* self, struct miqt_array /* of QModelIndex* */  indexes) {
 	QModelIndexList indexes_QList;
 	indexes_QList.reserve(indexes.len);
 	QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
@@ -1397,24 +1397,24 @@ QMimeData* QDirModel_MimeData(const QDirModel* self, struct miqt_array /* of QMo
 	return self->mimeData(indexes_QList);
 }
 
-bool QDirModel_DropMimeData(QDirModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
+bool QDirModel_dropMimeData(QDirModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
-int QDirModel_SupportedDropActions(const QDirModel* self) {
+int QDirModel_supportedDropActions(const QDirModel* self) {
 	Qt::DropActions _ret = self->supportedDropActions();
 	return static_cast<int>(_ret);
 }
 
-void QDirModel_SetIconProvider(QDirModel* self, QFileIconProvider* provider) {
+void QDirModel_setIconProvider(QDirModel* self, QFileIconProvider* provider) {
 	self->setIconProvider(provider);
 }
 
-QFileIconProvider* QDirModel_IconProvider(const QDirModel* self) {
+QFileIconProvider* QDirModel_iconProvider(const QDirModel* self) {
 	return self->iconProvider();
 }
 
-void QDirModel_SetNameFilters(QDirModel* self, struct miqt_array /* of struct miqt_string */  filters) {
+void QDirModel_setNameFilters(QDirModel* self, struct miqt_array /* of struct miqt_string */  filters) {
 	QStringList filters_QList;
 	filters_QList.reserve(filters.len);
 	struct miqt_string* filters_arr = static_cast<struct miqt_string*>(filters.data);
@@ -1425,7 +1425,7 @@ void QDirModel_SetNameFilters(QDirModel* self, struct miqt_array /* of struct mi
 	self->setNameFilters(filters_QList);
 }
 
-struct miqt_array /* of struct miqt_string */  QDirModel_NameFilters(const QDirModel* self) {
+struct miqt_array /* of struct miqt_string */  QDirModel_nameFilters(const QDirModel* self) {
 	QStringList _ret = self->nameFilters();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -1445,71 +1445,71 @@ struct miqt_array /* of struct miqt_string */  QDirModel_NameFilters(const QDirM
 	return _out;
 }
 
-void QDirModel_SetFilter(QDirModel* self, int filters) {
+void QDirModel_setFilter(QDirModel* self, int filters) {
 	self->setFilter(static_cast<QDir::Filters>(filters));
 }
 
-int QDirModel_Filter(const QDirModel* self) {
+int QDirModel_filter(const QDirModel* self) {
 	QDir::Filters _ret = self->filter();
 	return static_cast<int>(_ret);
 }
 
-void QDirModel_SetSorting(QDirModel* self, int sort) {
+void QDirModel_setSorting(QDirModel* self, int sort) {
 	self->setSorting(static_cast<QDir::SortFlags>(sort));
 }
 
-int QDirModel_Sorting(const QDirModel* self) {
+int QDirModel_sorting(const QDirModel* self) {
 	QDir::SortFlags _ret = self->sorting();
 	return static_cast<int>(_ret);
 }
 
-void QDirModel_SetResolveSymlinks(QDirModel* self, bool enable) {
+void QDirModel_setResolveSymlinks(QDirModel* self, bool enable) {
 	self->setResolveSymlinks(enable);
 }
 
-bool QDirModel_ResolveSymlinks(const QDirModel* self) {
+bool QDirModel_resolveSymlinks(const QDirModel* self) {
 	return self->resolveSymlinks();
 }
 
-void QDirModel_SetReadOnly(QDirModel* self, bool enable) {
+void QDirModel_setReadOnly(QDirModel* self, bool enable) {
 	self->setReadOnly(enable);
 }
 
-bool QDirModel_IsReadOnly(const QDirModel* self) {
+bool QDirModel_isReadOnly(const QDirModel* self) {
 	return self->isReadOnly();
 }
 
-void QDirModel_SetLazyChildCount(QDirModel* self, bool enable) {
+void QDirModel_setLazyChildCount(QDirModel* self, bool enable) {
 	self->setLazyChildCount(enable);
 }
 
-bool QDirModel_LazyChildCount(const QDirModel* self) {
+bool QDirModel_lazyChildCount(const QDirModel* self) {
 	return self->lazyChildCount();
 }
 
-QModelIndex* QDirModel_IndexWithPath(const QDirModel* self, struct miqt_string path) {
+QModelIndex* QDirModel_indexWithPath(const QDirModel* self, struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	return new QModelIndex(self->index(path_QString));
 }
 
-bool QDirModel_IsDir(const QDirModel* self, QModelIndex* index) {
+bool QDirModel_isDir(const QDirModel* self, QModelIndex* index) {
 	return self->isDir(*index);
 }
 
-QModelIndex* QDirModel_Mkdir(QDirModel* self, QModelIndex* parent, struct miqt_string name) {
+QModelIndex* QDirModel_mkdir(QDirModel* self, QModelIndex* parent, struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	return new QModelIndex(self->mkdir(*parent, name_QString));
 }
 
-bool QDirModel_Rmdir(QDirModel* self, QModelIndex* index) {
+bool QDirModel_rmdir(QDirModel* self, QModelIndex* index) {
 	return self->rmdir(*index);
 }
 
-bool QDirModel_Remove(QDirModel* self, QModelIndex* index) {
+bool QDirModel_remove(QDirModel* self, QModelIndex* index) {
 	return self->remove(*index);
 }
 
-struct miqt_string QDirModel_FilePath(const QDirModel* self, QModelIndex* index) {
+struct miqt_string QDirModel_filePath(const QDirModel* self, QModelIndex* index) {
 	QString _ret = self->filePath(*index);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1520,7 +1520,7 @@ struct miqt_string QDirModel_FilePath(const QDirModel* self, QModelIndex* index)
 	return _ms;
 }
 
-struct miqt_string QDirModel_FileName(const QDirModel* self, QModelIndex* index) {
+struct miqt_string QDirModel_fileName(const QDirModel* self, QModelIndex* index) {
 	QString _ret = self->fileName(*index);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1531,19 +1531,19 @@ struct miqt_string QDirModel_FileName(const QDirModel* self, QModelIndex* index)
 	return _ms;
 }
 
-QIcon* QDirModel_FileIcon(const QDirModel* self, QModelIndex* index) {
+QIcon* QDirModel_fileIcon(const QDirModel* self, QModelIndex* index) {
 	return new QIcon(self->fileIcon(*index));
 }
 
-QFileInfo* QDirModel_FileInfo(const QDirModel* self, QModelIndex* index) {
+QFileInfo* QDirModel_fileInfo(const QDirModel* self, QModelIndex* index) {
 	return new QFileInfo(self->fileInfo(*index));
 }
 
-void QDirModel_Refresh(QDirModel* self) {
+void QDirModel_refresh(QDirModel* self) {
 	self->refresh();
 }
 
-struct miqt_string QDirModel_Tr2(const char* s, const char* c) {
+struct miqt_string QDirModel_tr2(const char* s, const char* c) {
 	QString _ret = QDirModel::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1554,7 +1554,7 @@ struct miqt_string QDirModel_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QDirModel_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QDirModel_tr3(const char* s, const char* c, int n) {
 	QString _ret = QDirModel::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1565,7 +1565,7 @@ struct miqt_string QDirModel_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string QDirModel_TrUtf82(const char* s, const char* c) {
+struct miqt_string QDirModel_trUtf82(const char* s, const char* c) {
 	QString _ret = QDirModel::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1576,7 +1576,7 @@ struct miqt_string QDirModel_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QDirModel_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QDirModel_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QDirModel::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1587,590 +1587,590 @@ struct miqt_string QDirModel_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-QModelIndex* QDirModel_Index2(const QDirModel* self, struct miqt_string path, int column) {
+QModelIndex* QDirModel_index2(const QDirModel* self, struct miqt_string path, int column) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	return new QModelIndex(self->index(path_QString, static_cast<int>(column)));
 }
 
-void QDirModel_Refresh1(QDirModel* self, QModelIndex* parent) {
+void QDirModel_refresh1(QDirModel* self, QModelIndex* parent) {
 	self->refresh(*parent);
 }
 
-bool QDirModel_override_virtual_Index(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_index(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Index = slot;
+	self_cast->handle__index = slot;
 	return true;
 }
 
-QModelIndex* QDirModel_virtualbase_Index(const void* self, int row, int column, QModelIndex* parent) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_Index(row, column, parent);
+QModelIndex* QDirModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_index(row, column, parent);
 }
 
-bool QDirModel_override_virtual_Parent(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_parent(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Parent = slot;
+	self_cast->handle__parent = slot;
 	return true;
 }
 
-QModelIndex* QDirModel_virtualbase_Parent(const void* self, QModelIndex* child) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_Parent(child);
+QModelIndex* QDirModel_virtualbase_parent(const void* self, QModelIndex* child) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_parent(child);
 }
 
-bool QDirModel_override_virtual_RowCount(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_rowCount(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__RowCount = slot;
+	self_cast->handle__rowCount = slot;
 	return true;
 }
 
-int QDirModel_virtualbase_RowCount(const void* self, QModelIndex* parent) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_RowCount(parent);
+int QDirModel_virtualbase_rowCount(const void* self, QModelIndex* parent) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_rowCount(parent);
 }
 
-bool QDirModel_override_virtual_ColumnCount(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_columnCount(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ColumnCount = slot;
+	self_cast->handle__columnCount = slot;
 	return true;
 }
 
-int QDirModel_virtualbase_ColumnCount(const void* self, QModelIndex* parent) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_ColumnCount(parent);
+int QDirModel_virtualbase_columnCount(const void* self, QModelIndex* parent) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_columnCount(parent);
 }
 
-bool QDirModel_override_virtual_Data(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_data(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Data = slot;
+	self_cast->handle__data = slot;
 	return true;
 }
 
-QVariant* QDirModel_virtualbase_Data(const void* self, QModelIndex* index, int role) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_Data(index, role);
+QVariant* QDirModel_virtualbase_data(const void* self, QModelIndex* index, int role) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_data(index, role);
 }
 
-bool QDirModel_override_virtual_SetData(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_setData(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetData = slot;
+	self_cast->handle__setData = slot;
 	return true;
 }
 
-bool QDirModel_virtualbase_SetData(void* self, QModelIndex* index, QVariant* value, int role) {
-	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_SetData(index, value, role);
+bool QDirModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role) {
+	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_setData(index, value, role);
 }
 
-bool QDirModel_override_virtual_HeaderData(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_headerData(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HeaderData = slot;
+	self_cast->handle__headerData = slot;
 	return true;
 }
 
-QVariant* QDirModel_virtualbase_HeaderData(const void* self, int section, int orientation, int role) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_HeaderData(section, orientation, role);
+QVariant* QDirModel_virtualbase_headerData(const void* self, int section, int orientation, int role) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_headerData(section, orientation, role);
 }
 
-bool QDirModel_override_virtual_HasChildren(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_hasChildren(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HasChildren = slot;
+	self_cast->handle__hasChildren = slot;
 	return true;
 }
 
-bool QDirModel_virtualbase_HasChildren(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_HasChildren(index);
+bool QDirModel_virtualbase_hasChildren(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_hasChildren(index);
 }
 
-bool QDirModel_override_virtual_Flags(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_flags(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Flags = slot;
+	self_cast->handle__flags = slot;
 	return true;
 }
 
-int QDirModel_virtualbase_Flags(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_Flags(index);
+int QDirModel_virtualbase_flags(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_flags(index);
 }
 
-bool QDirModel_override_virtual_Sort(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_sort(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Sort = slot;
+	self_cast->handle__sort = slot;
 	return true;
 }
 
-void QDirModel_virtualbase_Sort(void* self, int column, int order) {
-	( (MiqtVirtualQDirModel*)(self) )->virtualbase_Sort(column, order);
+void QDirModel_virtualbase_sort(void* self, int column, int order) {
+	( (MiqtVirtualQDirModel*)(self) )->virtualbase_sort(column, order);
 }
 
-bool QDirModel_override_virtual_MimeTypes(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_mimeTypes(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MimeTypes = slot;
+	self_cast->handle__mimeTypes = slot;
 	return true;
 }
 
-struct miqt_array /* of struct miqt_string */  QDirModel_virtualbase_MimeTypes(const void* self) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_MimeTypes();
+struct miqt_array /* of struct miqt_string */  QDirModel_virtualbase_mimeTypes(const void* self) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_mimeTypes();
 }
 
-bool QDirModel_override_virtual_MimeData(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_mimeData(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MimeData = slot;
+	self_cast->handle__mimeData = slot;
 	return true;
 }
 
-QMimeData* QDirModel_virtualbase_MimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_MimeData(indexes);
+QMimeData* QDirModel_virtualbase_mimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_mimeData(indexes);
 }
 
-bool QDirModel_override_virtual_DropMimeData(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_dropMimeData(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DropMimeData = slot;
+	self_cast->handle__dropMimeData = slot;
 	return true;
 }
 
-bool QDirModel_virtualbase_DropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_DropMimeData(data, action, row, column, parent);
+bool QDirModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
+	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_dropMimeData(data, action, row, column, parent);
 }
 
-bool QDirModel_override_virtual_SupportedDropActions(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_supportedDropActions(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SupportedDropActions = slot;
+	self_cast->handle__supportedDropActions = slot;
 	return true;
 }
 
-int QDirModel_virtualbase_SupportedDropActions(const void* self) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_SupportedDropActions();
+int QDirModel_virtualbase_supportedDropActions(const void* self) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_supportedDropActions();
 }
 
-bool QDirModel_override_virtual_Sibling(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_sibling(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Sibling = slot;
+	self_cast->handle__sibling = slot;
 	return true;
 }
 
-QModelIndex* QDirModel_virtualbase_Sibling(const void* self, int row, int column, QModelIndex* idx) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_Sibling(row, column, idx);
+QModelIndex* QDirModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_sibling(row, column, idx);
 }
 
-bool QDirModel_override_virtual_SetHeaderData(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_setHeaderData(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetHeaderData = slot;
+	self_cast->handle__setHeaderData = slot;
 	return true;
 }
 
-bool QDirModel_virtualbase_SetHeaderData(void* self, int section, int orientation, QVariant* value, int role) {
-	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_SetHeaderData(section, orientation, value, role);
+bool QDirModel_virtualbase_setHeaderData(void* self, int section, int orientation, QVariant* value, int role) {
+	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_setHeaderData(section, orientation, value, role);
 }
 
-bool QDirModel_override_virtual_ItemData(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_itemData(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ItemData = slot;
+	self_cast->handle__itemData = slot;
 	return true;
 }
 
-struct miqt_map /* of int to QVariant* */  QDirModel_virtualbase_ItemData(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_ItemData(index);
+struct miqt_map /* of int to QVariant* */  QDirModel_virtualbase_itemData(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_itemData(index);
 }
 
-bool QDirModel_override_virtual_SetItemData(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_setItemData(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetItemData = slot;
+	self_cast->handle__setItemData = slot;
 	return true;
 }
 
-bool QDirModel_virtualbase_SetItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
-	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_SetItemData(index, roles);
+bool QDirModel_virtualbase_setItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
+	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_setItemData(index, roles);
 }
 
-bool QDirModel_override_virtual_CanDropMimeData(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_canDropMimeData(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CanDropMimeData = slot;
+	self_cast->handle__canDropMimeData = slot;
 	return true;
 }
 
-bool QDirModel_virtualbase_CanDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_CanDropMimeData(data, action, row, column, parent);
+bool QDirModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_canDropMimeData(data, action, row, column, parent);
 }
 
-bool QDirModel_override_virtual_SupportedDragActions(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_supportedDragActions(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SupportedDragActions = slot;
+	self_cast->handle__supportedDragActions = slot;
 	return true;
 }
 
-int QDirModel_virtualbase_SupportedDragActions(const void* self) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_SupportedDragActions();
+int QDirModel_virtualbase_supportedDragActions(const void* self) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_supportedDragActions();
 }
 
-bool QDirModel_override_virtual_InsertRows(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_insertRows(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InsertRows = slot;
+	self_cast->handle__insertRows = slot;
 	return true;
 }
 
-bool QDirModel_virtualbase_InsertRows(void* self, int row, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_InsertRows(row, count, parent);
+bool QDirModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent) {
+	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_insertRows(row, count, parent);
 }
 
-bool QDirModel_override_virtual_InsertColumns(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_insertColumns(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InsertColumns = slot;
+	self_cast->handle__insertColumns = slot;
 	return true;
 }
 
-bool QDirModel_virtualbase_InsertColumns(void* self, int column, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_InsertColumns(column, count, parent);
+bool QDirModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent) {
+	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_insertColumns(column, count, parent);
 }
 
-bool QDirModel_override_virtual_RemoveRows(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_removeRows(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__RemoveRows = slot;
+	self_cast->handle__removeRows = slot;
 	return true;
 }
 
-bool QDirModel_virtualbase_RemoveRows(void* self, int row, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_RemoveRows(row, count, parent);
+bool QDirModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent) {
+	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_removeRows(row, count, parent);
 }
 
-bool QDirModel_override_virtual_RemoveColumns(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_removeColumns(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__RemoveColumns = slot;
+	self_cast->handle__removeColumns = slot;
 	return true;
 }
 
-bool QDirModel_virtualbase_RemoveColumns(void* self, int column, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_RemoveColumns(column, count, parent);
+bool QDirModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent) {
+	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_removeColumns(column, count, parent);
 }
 
-bool QDirModel_override_virtual_MoveRows(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_moveRows(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MoveRows = slot;
+	self_cast->handle__moveRows = slot;
 	return true;
 }
 
-bool QDirModel_virtualbase_MoveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
-	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_MoveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
+bool QDirModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
+	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_moveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
 }
 
-bool QDirModel_override_virtual_MoveColumns(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_moveColumns(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MoveColumns = slot;
+	self_cast->handle__moveColumns = slot;
 	return true;
 }
 
-bool QDirModel_virtualbase_MoveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
-	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_MoveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
+bool QDirModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
+	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_moveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
 }
 
-bool QDirModel_override_virtual_FetchMore(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_fetchMore(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__FetchMore = slot;
+	self_cast->handle__fetchMore = slot;
 	return true;
 }
 
-void QDirModel_virtualbase_FetchMore(void* self, QModelIndex* parent) {
-	( (MiqtVirtualQDirModel*)(self) )->virtualbase_FetchMore(parent);
+void QDirModel_virtualbase_fetchMore(void* self, QModelIndex* parent) {
+	( (MiqtVirtualQDirModel*)(self) )->virtualbase_fetchMore(parent);
 }
 
-bool QDirModel_override_virtual_CanFetchMore(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_canFetchMore(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CanFetchMore = slot;
+	self_cast->handle__canFetchMore = slot;
 	return true;
 }
 
-bool QDirModel_virtualbase_CanFetchMore(const void* self, QModelIndex* parent) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_CanFetchMore(parent);
+bool QDirModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_canFetchMore(parent);
 }
 
-bool QDirModel_override_virtual_Buddy(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_buddy(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Buddy = slot;
+	self_cast->handle__buddy = slot;
 	return true;
 }
 
-QModelIndex* QDirModel_virtualbase_Buddy(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_Buddy(index);
+QModelIndex* QDirModel_virtualbase_buddy(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_buddy(index);
 }
 
-bool QDirModel_override_virtual_Match(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_match(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Match = slot;
+	self_cast->handle__match = slot;
 	return true;
 }
 
-struct miqt_array /* of QModelIndex* */  QDirModel_virtualbase_Match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_Match(start, role, value, hits, flags);
+struct miqt_array /* of QModelIndex* */  QDirModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_match(start, role, value, hits, flags);
 }
 
-bool QDirModel_override_virtual_Span(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_span(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Span = slot;
+	self_cast->handle__span = slot;
 	return true;
 }
 
-QSize* QDirModel_virtualbase_Span(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_Span(index);
+QSize* QDirModel_virtualbase_span(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_span(index);
 }
 
-bool QDirModel_override_virtual_RoleNames(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_roleNames(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__RoleNames = slot;
+	self_cast->handle__roleNames = slot;
 	return true;
 }
 
-struct miqt_map /* of int to struct miqt_string */  QDirModel_virtualbase_RoleNames(const void* self) {
-	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_RoleNames();
+struct miqt_map /* of int to struct miqt_string */  QDirModel_virtualbase_roleNames(const void* self) {
+	return ( (const MiqtVirtualQDirModel*)(self) )->virtualbase_roleNames();
 }
 
-bool QDirModel_override_virtual_Submit(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_submit(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Submit = slot;
+	self_cast->handle__submit = slot;
 	return true;
 }
 
-bool QDirModel_virtualbase_Submit(void* self) {
-	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_Submit();
+bool QDirModel_virtualbase_submit(void* self) {
+	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_submit();
 }
 
-bool QDirModel_override_virtual_Revert(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_revert(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Revert = slot;
+	self_cast->handle__revert = slot;
 	return true;
 }
 
-void QDirModel_virtualbase_Revert(void* self) {
-	( (MiqtVirtualQDirModel*)(self) )->virtualbase_Revert();
+void QDirModel_virtualbase_revert(void* self) {
+	( (MiqtVirtualQDirModel*)(self) )->virtualbase_revert();
 }
 
-bool QDirModel_override_virtual_Event(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QDirModel_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_Event(event);
+bool QDirModel_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_event(event);
 }
 
-bool QDirModel_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QDirModel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_EventFilter(watched, event);
+bool QDirModel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQDirModel*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QDirModel_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QDirModel_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQDirModel*)(self) )->virtualbase_TimerEvent(event);
+void QDirModel_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQDirModel*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QDirModel_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QDirModel_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQDirModel*)(self) )->virtualbase_ChildEvent(event);
+void QDirModel_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQDirModel*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QDirModel_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QDirModel_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQDirModel*)(self) )->virtualbase_CustomEvent(event);
+void QDirModel_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQDirModel*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QDirModel_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QDirModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQDirModel*)(self) )->virtualbase_ConnectNotify(signal);
+void QDirModel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQDirModel*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QDirModel_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QDirModel_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQDirModel* self_cast = dynamic_cast<MiqtVirtualQDirModel*>( (QDirModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QDirModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQDirModel*)(self) )->virtualbase_DisconnectNotify(signal);
+void QDirModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQDirModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QDirModel_Delete(QDirModel* self) {
+void QDirModel_delete(QDirModel* self) {
 	delete self;
 }
 

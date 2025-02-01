@@ -65,19 +65,19 @@ func NewQActionGroup(parent *QObject) *QActionGroup {
 }
 
 func (this *QActionGroup) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QActionGroup_MetaObject(this.h))
+	return newQMetaObject(C.QActionGroup_metaObject(this.h))
 }
 
 func (this *QActionGroup) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QActionGroup_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QActionGroup_metacast(this.h, param1_Cstring))
 }
 
 func QActionGroup_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QActionGroup_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QActionGroup_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -86,14 +86,14 @@ func QActionGroup_Tr(s string) string {
 func QActionGroup_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QActionGroup_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QActionGroup_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QActionGroup) AddAction(a *QAction) *QAction {
-	return newQAction(C.QActionGroup_AddAction(this.h, a.cPointer()))
+	return newQAction(C.QActionGroup_addAction(this.h, a.cPointer()))
 }
 
 func (this *QActionGroup) AddActionWithText(text string) *QAction {
@@ -101,7 +101,7 @@ func (this *QActionGroup) AddActionWithText(text string) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return newQAction(C.QActionGroup_AddActionWithText(this.h, text_ms))
+	return newQAction(C.QActionGroup_addActionWithText(this.h, text_ms))
 }
 
 func (this *QActionGroup) AddAction2(icon *QIcon, text string) *QAction {
@@ -109,15 +109,15 @@ func (this *QActionGroup) AddAction2(icon *QIcon, text string) *QAction {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	return newQAction(C.QActionGroup_AddAction2(this.h, icon.cPointer(), text_ms))
+	return newQAction(C.QActionGroup_addAction2(this.h, icon.cPointer(), text_ms))
 }
 
 func (this *QActionGroup) RemoveAction(a *QAction) {
-	C.QActionGroup_RemoveAction(this.h, a.cPointer())
+	C.QActionGroup_removeAction(this.h, a.cPointer())
 }
 
 func (this *QActionGroup) Actions() []*QAction {
-	var _ma C.struct_miqt_array = C.QActionGroup_Actions(this.h)
+	var _ma C.struct_miqt_array = C.QActionGroup_actions(this.h)
 	_ret := make([]*QAction, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAction)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -127,54 +127,54 @@ func (this *QActionGroup) Actions() []*QAction {
 }
 
 func (this *QActionGroup) CheckedAction() *QAction {
-	return newQAction(C.QActionGroup_CheckedAction(this.h))
+	return newQAction(C.QActionGroup_checkedAction(this.h))
 }
 
 func (this *QActionGroup) IsExclusive() bool {
-	return (bool)(C.QActionGroup_IsExclusive(this.h))
+	return (bool)(C.QActionGroup_isExclusive(this.h))
 }
 
 func (this *QActionGroup) IsEnabled() bool {
-	return (bool)(C.QActionGroup_IsEnabled(this.h))
+	return (bool)(C.QActionGroup_isEnabled(this.h))
 }
 
 func (this *QActionGroup) IsVisible() bool {
-	return (bool)(C.QActionGroup_IsVisible(this.h))
+	return (bool)(C.QActionGroup_isVisible(this.h))
 }
 
 func (this *QActionGroup) ExclusionPolicy() QActionGroup__ExclusionPolicy {
-	return (QActionGroup__ExclusionPolicy)(C.QActionGroup_ExclusionPolicy(this.h))
+	return (QActionGroup__ExclusionPolicy)(C.QActionGroup_exclusionPolicy(this.h))
 }
 
 func (this *QActionGroup) SetEnabled(enabled bool) {
-	C.QActionGroup_SetEnabled(this.h, (C.bool)(enabled))
+	C.QActionGroup_setEnabled(this.h, (C.bool)(enabled))
 }
 
 func (this *QActionGroup) SetDisabled(b bool) {
-	C.QActionGroup_SetDisabled(this.h, (C.bool)(b))
+	C.QActionGroup_setDisabled(this.h, (C.bool)(b))
 }
 
 func (this *QActionGroup) SetVisible(visible bool) {
-	C.QActionGroup_SetVisible(this.h, (C.bool)(visible))
+	C.QActionGroup_setVisible(this.h, (C.bool)(visible))
 }
 
 func (this *QActionGroup) SetExclusive(exclusive bool) {
-	C.QActionGroup_SetExclusive(this.h, (C.bool)(exclusive))
+	C.QActionGroup_setExclusive(this.h, (C.bool)(exclusive))
 }
 
 func (this *QActionGroup) SetExclusionPolicy(policy QActionGroup__ExclusionPolicy) {
-	C.QActionGroup_SetExclusionPolicy(this.h, (C.int)(policy))
+	C.QActionGroup_setExclusionPolicy(this.h, (C.int)(policy))
 }
 
 func (this *QActionGroup) Triggered(param1 *QAction) {
-	C.QActionGroup_Triggered(this.h, param1.cPointer())
+	C.QActionGroup_triggered(this.h, param1.cPointer())
 }
 func (this *QActionGroup) OnTriggered(slot func(param1 *QAction)) {
-	C.QActionGroup_connect_Triggered(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QActionGroup_connect_triggered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QActionGroup_Triggered
-func miqt_exec_callback_QActionGroup_Triggered(cb C.intptr_t, param1 *C.QAction) {
+//export miqt_exec_callback_QActionGroup_triggered
+func miqt_exec_callback_QActionGroup_triggered(cb C.intptr_t, param1 *C.QAction) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QAction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -187,14 +187,14 @@ func miqt_exec_callback_QActionGroup_Triggered(cb C.intptr_t, param1 *C.QAction)
 }
 
 func (this *QActionGroup) Hovered(param1 *QAction) {
-	C.QActionGroup_Hovered(this.h, param1.cPointer())
+	C.QActionGroup_hovered(this.h, param1.cPointer())
 }
 func (this *QActionGroup) OnHovered(slot func(param1 *QAction)) {
-	C.QActionGroup_connect_Hovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QActionGroup_connect_hovered(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QActionGroup_Hovered
-func miqt_exec_callback_QActionGroup_Hovered(cb C.intptr_t, param1 *C.QAction) {
+//export miqt_exec_callback_QActionGroup_hovered
+func miqt_exec_callback_QActionGroup_hovered(cb C.intptr_t, param1 *C.QAction) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QAction))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -211,7 +211,7 @@ func QActionGroup_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QActionGroup_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QActionGroup_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -222,7 +222,7 @@ func QActionGroup_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QActionGroup_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QActionGroup_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -233,7 +233,7 @@ func QActionGroup_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QActionGroup_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QActionGroup_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -244,7 +244,7 @@ func QActionGroup_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QActionGroup_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QActionGroup_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -252,18 +252,18 @@ func QActionGroup_TrUtf83(s string, c string, n int) string {
 
 func (this *QActionGroup) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QActionGroup_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QActionGroup_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QActionGroup) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QActionGroup_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QActionGroup) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QActionGroup_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QActionGroup_Event
-func miqt_exec_callback_QActionGroup_Event(self *C.QActionGroup, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QActionGroup_event
+func miqt_exec_callback_QActionGroup_event(self *C.QActionGroup, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -280,18 +280,18 @@ func miqt_exec_callback_QActionGroup_Event(self *C.QActionGroup, cb C.intptr_t, 
 
 func (this *QActionGroup) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QActionGroup_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QActionGroup_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QActionGroup) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QActionGroup_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QActionGroup) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QActionGroup_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QActionGroup_EventFilter
-func miqt_exec_callback_QActionGroup_EventFilter(self *C.QActionGroup, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QActionGroup_eventFilter
+func miqt_exec_callback_QActionGroup_eventFilter(self *C.QActionGroup, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -310,18 +310,18 @@ func miqt_exec_callback_QActionGroup_EventFilter(self *C.QActionGroup, cb C.intp
 
 func (this *QActionGroup) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QActionGroup_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QActionGroup_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QActionGroup) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QActionGroup_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QActionGroup) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QActionGroup_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QActionGroup_TimerEvent
-func miqt_exec_callback_QActionGroup_TimerEvent(self *C.QActionGroup, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QActionGroup_timerEvent
+func miqt_exec_callback_QActionGroup_timerEvent(self *C.QActionGroup, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -336,18 +336,18 @@ func miqt_exec_callback_QActionGroup_TimerEvent(self *C.QActionGroup, cb C.intpt
 
 func (this *QActionGroup) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QActionGroup_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QActionGroup_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QActionGroup) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QActionGroup_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QActionGroup) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QActionGroup_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QActionGroup_ChildEvent
-func miqt_exec_callback_QActionGroup_ChildEvent(self *C.QActionGroup, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QActionGroup_childEvent
+func miqt_exec_callback_QActionGroup_childEvent(self *C.QActionGroup, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -362,18 +362,18 @@ func miqt_exec_callback_QActionGroup_ChildEvent(self *C.QActionGroup, cb C.intpt
 
 func (this *QActionGroup) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QActionGroup_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QActionGroup_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QActionGroup) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QActionGroup_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QActionGroup) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QActionGroup_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QActionGroup_CustomEvent
-func miqt_exec_callback_QActionGroup_CustomEvent(self *C.QActionGroup, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QActionGroup_customEvent
+func miqt_exec_callback_QActionGroup_customEvent(self *C.QActionGroup, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -388,18 +388,18 @@ func miqt_exec_callback_QActionGroup_CustomEvent(self *C.QActionGroup, cb C.intp
 
 func (this *QActionGroup) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QActionGroup_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QActionGroup_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QActionGroup) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QActionGroup_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QActionGroup) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QActionGroup_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QActionGroup_ConnectNotify
-func miqt_exec_callback_QActionGroup_ConnectNotify(self *C.QActionGroup, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QActionGroup_connectNotify
+func miqt_exec_callback_QActionGroup_connectNotify(self *C.QActionGroup, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -414,18 +414,18 @@ func miqt_exec_callback_QActionGroup_ConnectNotify(self *C.QActionGroup, cb C.in
 
 func (this *QActionGroup) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QActionGroup_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QActionGroup_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QActionGroup) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QActionGroup_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QActionGroup) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QActionGroup_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QActionGroup_DisconnectNotify
-func miqt_exec_callback_QActionGroup_DisconnectNotify(self *C.QActionGroup, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QActionGroup_disconnectNotify
+func miqt_exec_callback_QActionGroup_disconnectNotify(self *C.QActionGroup, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -440,7 +440,7 @@ func miqt_exec_callback_QActionGroup_DisconnectNotify(self *C.QActionGroup, cb C
 
 // Delete this object from C++ memory.
 func (this *QActionGroup) Delete() {
-	C.QActionGroup_Delete(this.h)
+	C.QActionGroup_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

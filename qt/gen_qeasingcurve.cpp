@@ -20,62 +20,62 @@ QEasingCurve* QEasingCurve_new2(QEasingCurve* other) {
 	return new QEasingCurve(*other);
 }
 
-QEasingCurve* QEasingCurve_new3(int typeVal) {
-	return new QEasingCurve(static_cast<QEasingCurve::Type>(typeVal));
+QEasingCurve* QEasingCurve_new3(int type) {
+	return new QEasingCurve(static_cast<QEasingCurve::Type>(type));
 }
 
-void QEasingCurve_OperatorAssign(QEasingCurve* self, QEasingCurve* other) {
+void QEasingCurve_operatorAssign(QEasingCurve* self, QEasingCurve* other) {
 	self->operator=(*other);
 }
 
-void QEasingCurve_Swap(QEasingCurve* self, QEasingCurve* other) {
+void QEasingCurve_swap(QEasingCurve* self, QEasingCurve* other) {
 	self->swap(*other);
 }
 
-bool QEasingCurve_OperatorEqual(const QEasingCurve* self, QEasingCurve* other) {
+bool QEasingCurve_operatorEqual(const QEasingCurve* self, QEasingCurve* other) {
 	return (*self == *other);
 }
 
-bool QEasingCurve_OperatorNotEqual(const QEasingCurve* self, QEasingCurve* other) {
+bool QEasingCurve_operatorNotEqual(const QEasingCurve* self, QEasingCurve* other) {
 	return (*self != *other);
 }
 
-double QEasingCurve_Amplitude(const QEasingCurve* self) {
+double QEasingCurve_amplitude(const QEasingCurve* self) {
 	qreal _ret = self->amplitude();
 	return static_cast<double>(_ret);
 }
 
-void QEasingCurve_SetAmplitude(QEasingCurve* self, double amplitude) {
+void QEasingCurve_setAmplitude(QEasingCurve* self, double amplitude) {
 	self->setAmplitude(static_cast<qreal>(amplitude));
 }
 
-double QEasingCurve_Period(const QEasingCurve* self) {
+double QEasingCurve_period(const QEasingCurve* self) {
 	qreal _ret = self->period();
 	return static_cast<double>(_ret);
 }
 
-void QEasingCurve_SetPeriod(QEasingCurve* self, double period) {
+void QEasingCurve_setPeriod(QEasingCurve* self, double period) {
 	self->setPeriod(static_cast<qreal>(period));
 }
 
-double QEasingCurve_Overshoot(const QEasingCurve* self) {
+double QEasingCurve_overshoot(const QEasingCurve* self) {
 	qreal _ret = self->overshoot();
 	return static_cast<double>(_ret);
 }
 
-void QEasingCurve_SetOvershoot(QEasingCurve* self, double overshoot) {
+void QEasingCurve_setOvershoot(QEasingCurve* self, double overshoot) {
 	self->setOvershoot(static_cast<qreal>(overshoot));
 }
 
-void QEasingCurve_AddCubicBezierSegment(QEasingCurve* self, QPointF* c1, QPointF* c2, QPointF* endPoint) {
+void QEasingCurve_addCubicBezierSegment(QEasingCurve* self, QPointF* c1, QPointF* c2, QPointF* endPoint) {
 	self->addCubicBezierSegment(*c1, *c2, *endPoint);
 }
 
-void QEasingCurve_AddTCBSegment(QEasingCurve* self, QPointF* nextPoint, double t, double c, double b) {
+void QEasingCurve_addTCBSegment(QEasingCurve* self, QPointF* nextPoint, double t, double c, double b) {
 	self->addTCBSegment(*nextPoint, static_cast<qreal>(t), static_cast<qreal>(c), static_cast<qreal>(b));
 }
 
-struct miqt_array /* of QPointF* */  QEasingCurve_ToCubicSpline(const QEasingCurve* self) {
+struct miqt_array /* of QPointF* */  QEasingCurve_toCubicSpline(const QEasingCurve* self) {
 	QVector<QPointF> _ret = self->toCubicSpline();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QPointF** _arr = static_cast<QPointF**>(malloc(sizeof(QPointF*) * _ret.length()));
@@ -88,21 +88,21 @@ struct miqt_array /* of QPointF* */  QEasingCurve_ToCubicSpline(const QEasingCur
 	return _out;
 }
 
-int QEasingCurve_Type(const QEasingCurve* self) {
+int QEasingCurve_type(const QEasingCurve* self) {
 	QEasingCurve::Type _ret = self->type();
 	return static_cast<int>(_ret);
 }
 
-void QEasingCurve_SetType(QEasingCurve* self, int typeVal) {
-	self->setType(static_cast<QEasingCurve::Type>(typeVal));
+void QEasingCurve_setType(QEasingCurve* self, int type) {
+	self->setType(static_cast<QEasingCurve::Type>(type));
 }
 
-double QEasingCurve_ValueForProgress(const QEasingCurve* self, double progress) {
+double QEasingCurve_valueForProgress(const QEasingCurve* self, double progress) {
 	qreal _ret = self->valueForProgress(static_cast<qreal>(progress));
 	return static_cast<double>(_ret);
 }
 
-void QEasingCurve_Delete(QEasingCurve* self) {
+void QEasingCurve_delete(QEasingCurve* self) {
 	delete self;
 }
 

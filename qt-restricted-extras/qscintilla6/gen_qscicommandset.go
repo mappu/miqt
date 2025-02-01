@@ -46,15 +46,15 @@ func UnsafeNewQsciCommandSet(h unsafe.Pointer) *QsciCommandSet {
 }
 
 func (this *QsciCommandSet) ReadSettings(qs *qt6.QSettings) bool {
-	return (bool)(C.QsciCommandSet_ReadSettings(this.h, (*C.QSettings)(qs.UnsafePointer())))
+	return (bool)(C.QsciCommandSet_readSettings(this.h, (*C.QSettings)(qs.UnsafePointer())))
 }
 
 func (this *QsciCommandSet) WriteSettings(qs *qt6.QSettings) bool {
-	return (bool)(C.QsciCommandSet_WriteSettings(this.h, (*C.QSettings)(qs.UnsafePointer())))
+	return (bool)(C.QsciCommandSet_writeSettings(this.h, (*C.QSettings)(qs.UnsafePointer())))
 }
 
 func (this *QsciCommandSet) Commands() []*QsciCommand {
-	var _ma C.struct_miqt_array = C.QsciCommandSet_Commands(this.h)
+	var _ma C.struct_miqt_array = C.QsciCommandSet_commands(this.h)
 	_ret := make([]*QsciCommand, int(_ma.len))
 	_outCast := (*[0xffff]*C.QsciCommand)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -64,29 +64,29 @@ func (this *QsciCommandSet) Commands() []*QsciCommand {
 }
 
 func (this *QsciCommandSet) ClearKeys() {
-	C.QsciCommandSet_ClearKeys(this.h)
+	C.QsciCommandSet_clearKeys(this.h)
 }
 
 func (this *QsciCommandSet) ClearAlternateKeys() {
-	C.QsciCommandSet_ClearAlternateKeys(this.h)
+	C.QsciCommandSet_clearAlternateKeys(this.h)
 }
 
 func (this *QsciCommandSet) BoundTo(key int) *QsciCommand {
-	return newQsciCommand(C.QsciCommandSet_BoundTo(this.h, (C.int)(key)))
+	return newQsciCommand(C.QsciCommandSet_boundTo(this.h, (C.int)(key)))
 }
 
 func (this *QsciCommandSet) Find(command QsciCommand__Command) *QsciCommand {
-	return newQsciCommand(C.QsciCommandSet_Find(this.h, (C.int)(command)))
+	return newQsciCommand(C.QsciCommandSet_find(this.h, (C.int)(command)))
 }
 
 func (this *QsciCommandSet) ReadSettings2(qs *qt6.QSettings, prefix string) bool {
 	prefix_Cstring := C.CString(prefix)
 	defer C.free(unsafe.Pointer(prefix_Cstring))
-	return (bool)(C.QsciCommandSet_ReadSettings2(this.h, (*C.QSettings)(qs.UnsafePointer()), prefix_Cstring))
+	return (bool)(C.QsciCommandSet_readSettings2(this.h, (*C.QSettings)(qs.UnsafePointer()), prefix_Cstring))
 }
 
 func (this *QsciCommandSet) WriteSettings2(qs *qt6.QSettings, prefix string) bool {
 	prefix_Cstring := C.CString(prefix)
 	defer C.free(unsafe.Pointer(prefix_Cstring))
-	return (bool)(C.QsciCommandSet_WriteSettings2(this.h, (*C.QSettings)(qs.UnsafePointer()), prefix_Cstring))
+	return (bool)(C.QsciCommandSet_writeSettings2(this.h, (*C.QSettings)(qs.UnsafePointer()), prefix_Cstring))
 }

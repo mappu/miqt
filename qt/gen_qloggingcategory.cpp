@@ -17,48 +17,48 @@ QLoggingCategory* QLoggingCategory_new(const char* category) {
 	return new QLoggingCategory(category);
 }
 
-bool QLoggingCategory_IsDebugEnabled(const QLoggingCategory* self) {
+bool QLoggingCategory_isDebugEnabled(const QLoggingCategory* self) {
 	return self->isDebugEnabled();
 }
 
-bool QLoggingCategory_IsInfoEnabled(const QLoggingCategory* self) {
+bool QLoggingCategory_isInfoEnabled(const QLoggingCategory* self) {
 	return self->isInfoEnabled();
 }
 
-bool QLoggingCategory_IsWarningEnabled(const QLoggingCategory* self) {
+bool QLoggingCategory_isWarningEnabled(const QLoggingCategory* self) {
 	return self->isWarningEnabled();
 }
 
-bool QLoggingCategory_IsCriticalEnabled(const QLoggingCategory* self) {
+bool QLoggingCategory_isCriticalEnabled(const QLoggingCategory* self) {
 	return self->isCriticalEnabled();
 }
 
-const char* QLoggingCategory_CategoryName(const QLoggingCategory* self) {
+const char* QLoggingCategory_categoryName(const QLoggingCategory* self) {
 	return (const char*) self->categoryName();
 }
 
-QLoggingCategory* QLoggingCategory_OperatorCall(QLoggingCategory* self) {
+QLoggingCategory* QLoggingCategory_operatorCall(QLoggingCategory* self) {
 	QLoggingCategory& _ret = self->operator()();
 	// Cast returned reference into pointer
 	return &_ret;
 }
 
-QLoggingCategory* QLoggingCategory_OperatorCall2(const QLoggingCategory* self) {
+QLoggingCategory* QLoggingCategory_operatorCall2(const QLoggingCategory* self) {
 	const QLoggingCategory& _ret = self->operator()();
 	// Cast returned reference into pointer
 	return const_cast<QLoggingCategory*>(&_ret);
 }
 
-QLoggingCategory* QLoggingCategory_DefaultCategory() {
+QLoggingCategory* QLoggingCategory_defaultCategory() {
 	return QLoggingCategory::defaultCategory();
 }
 
-void QLoggingCategory_SetFilterRules(struct miqt_string rules) {
+void QLoggingCategory_setFilterRules(struct miqt_string rules) {
 	QString rules_QString = QString::fromUtf8(rules.data, rules.len);
 	QLoggingCategory::setFilterRules(rules_QString);
 }
 
-void QLoggingCategory_Delete(QLoggingCategory* self) {
+void QLoggingCategory_delete(QLoggingCategory* self) {
 	delete self;
 }
 

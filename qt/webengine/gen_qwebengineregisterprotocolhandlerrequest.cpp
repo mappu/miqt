@@ -22,19 +22,19 @@ QWebEngineRegisterProtocolHandlerRequest* QWebEngineRegisterProtocolHandlerReque
 	return new QWebEngineRegisterProtocolHandlerRequest(*param1);
 }
 
-void QWebEngineRegisterProtocolHandlerRequest_Accept(QWebEngineRegisterProtocolHandlerRequest* self) {
+void QWebEngineRegisterProtocolHandlerRequest_accept(QWebEngineRegisterProtocolHandlerRequest* self) {
 	self->accept();
 }
 
-void QWebEngineRegisterProtocolHandlerRequest_Reject(QWebEngineRegisterProtocolHandlerRequest* self) {
+void QWebEngineRegisterProtocolHandlerRequest_reject(QWebEngineRegisterProtocolHandlerRequest* self) {
 	self->reject();
 }
 
-QUrl* QWebEngineRegisterProtocolHandlerRequest_Origin(const QWebEngineRegisterProtocolHandlerRequest* self) {
+QUrl* QWebEngineRegisterProtocolHandlerRequest_origin(const QWebEngineRegisterProtocolHandlerRequest* self) {
 	return new QUrl(self->origin());
 }
 
-struct miqt_string QWebEngineRegisterProtocolHandlerRequest_Scheme(const QWebEngineRegisterProtocolHandlerRequest* self) {
+struct miqt_string QWebEngineRegisterProtocolHandlerRequest_scheme(const QWebEngineRegisterProtocolHandlerRequest* self) {
 	QString _ret = self->scheme();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -45,15 +45,15 @@ struct miqt_string QWebEngineRegisterProtocolHandlerRequest_Scheme(const QWebEng
 	return _ms;
 }
 
-bool QWebEngineRegisterProtocolHandlerRequest_OperatorEqual(const QWebEngineRegisterProtocolHandlerRequest* self, QWebEngineRegisterProtocolHandlerRequest* that) {
+bool QWebEngineRegisterProtocolHandlerRequest_operatorEqual(const QWebEngineRegisterProtocolHandlerRequest* self, QWebEngineRegisterProtocolHandlerRequest* that) {
 	return (*self == *that);
 }
 
-bool QWebEngineRegisterProtocolHandlerRequest_OperatorNotEqual(const QWebEngineRegisterProtocolHandlerRequest* self, QWebEngineRegisterProtocolHandlerRequest* that) {
+bool QWebEngineRegisterProtocolHandlerRequest_operatorNotEqual(const QWebEngineRegisterProtocolHandlerRequest* self, QWebEngineRegisterProtocolHandlerRequest* that) {
 	return (*self != *that);
 }
 
-void QWebEngineRegisterProtocolHandlerRequest_Delete(QWebEngineRegisterProtocolHandlerRequest* self) {
+void QWebEngineRegisterProtocolHandlerRequest_delete(QWebEngineRegisterProtocolHandlerRequest* self) {
 	delete self;
 }
 

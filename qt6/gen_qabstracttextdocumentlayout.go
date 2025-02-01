@@ -57,113 +57,113 @@ func NewQAbstractTextDocumentLayout(doc *QTextDocument) *QAbstractTextDocumentLa
 }
 
 func (this *QAbstractTextDocumentLayout) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QAbstractTextDocumentLayout_MetaObject(this.h))
+	return newQMetaObject(C.QAbstractTextDocumentLayout_metaObject(this.h))
 }
 
 func (this *QAbstractTextDocumentLayout) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAbstractTextDocumentLayout_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAbstractTextDocumentLayout_metacast(this.h, param1_Cstring))
 }
 
 func QAbstractTextDocumentLayout_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractTextDocumentLayout_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractTextDocumentLayout_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractTextDocumentLayout) Draw(painter *QPainter, context *QAbstractTextDocumentLayout__PaintContext) {
-	C.QAbstractTextDocumentLayout_Draw(this.h, painter.cPointer(), context.cPointer())
+	C.QAbstractTextDocumentLayout_draw(this.h, painter.cPointer(), context.cPointer())
 }
 
 func (this *QAbstractTextDocumentLayout) HitTest(point *QPointF, accuracy HitTestAccuracy) int {
-	return (int)(C.QAbstractTextDocumentLayout_HitTest(this.h, point.cPointer(), (C.int)(accuracy)))
+	return (int)(C.QAbstractTextDocumentLayout_hitTest(this.h, point.cPointer(), (C.int)(accuracy)))
 }
 
 func (this *QAbstractTextDocumentLayout) AnchorAt(pos *QPointF) string {
-	var _ms C.struct_miqt_string = C.QAbstractTextDocumentLayout_AnchorAt(this.h, pos.cPointer())
+	var _ms C.struct_miqt_string = C.QAbstractTextDocumentLayout_anchorAt(this.h, pos.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractTextDocumentLayout) ImageAt(pos *QPointF) string {
-	var _ms C.struct_miqt_string = C.QAbstractTextDocumentLayout_ImageAt(this.h, pos.cPointer())
+	var _ms C.struct_miqt_string = C.QAbstractTextDocumentLayout_imageAt(this.h, pos.cPointer())
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractTextDocumentLayout) FormatAt(pos *QPointF) *QTextFormat {
-	_goptr := newQTextFormat(C.QAbstractTextDocumentLayout_FormatAt(this.h, pos.cPointer()))
+	_goptr := newQTextFormat(C.QAbstractTextDocumentLayout_formatAt(this.h, pos.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) BlockWithMarkerAt(pos *QPointF) *QTextBlock {
-	_goptr := newQTextBlock(C.QAbstractTextDocumentLayout_BlockWithMarkerAt(this.h, pos.cPointer()))
+	_goptr := newQTextBlock(C.QAbstractTextDocumentLayout_blockWithMarkerAt(this.h, pos.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) PageCount() int {
-	return (int)(C.QAbstractTextDocumentLayout_PageCount(this.h))
+	return (int)(C.QAbstractTextDocumentLayout_pageCount(this.h))
 }
 
 func (this *QAbstractTextDocumentLayout) DocumentSize() *QSizeF {
-	_goptr := newQSizeF(C.QAbstractTextDocumentLayout_DocumentSize(this.h))
+	_goptr := newQSizeF(C.QAbstractTextDocumentLayout_documentSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) FrameBoundingRect(frame *QTextFrame) *QRectF {
-	_goptr := newQRectF(C.QAbstractTextDocumentLayout_FrameBoundingRect(this.h, frame.cPointer()))
+	_goptr := newQRectF(C.QAbstractTextDocumentLayout_frameBoundingRect(this.h, frame.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) BlockBoundingRect(block *QTextBlock) *QRectF {
-	_goptr := newQRectF(C.QAbstractTextDocumentLayout_BlockBoundingRect(this.h, block.cPointer()))
+	_goptr := newQRectF(C.QAbstractTextDocumentLayout_blockBoundingRect(this.h, block.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractTextDocumentLayout) SetPaintDevice(device *QPaintDevice) {
-	C.QAbstractTextDocumentLayout_SetPaintDevice(this.h, device.cPointer())
+	C.QAbstractTextDocumentLayout_setPaintDevice(this.h, device.cPointer())
 }
 
 func (this *QAbstractTextDocumentLayout) PaintDevice() *QPaintDevice {
-	return newQPaintDevice(C.QAbstractTextDocumentLayout_PaintDevice(this.h))
+	return newQPaintDevice(C.QAbstractTextDocumentLayout_paintDevice(this.h))
 }
 
 func (this *QAbstractTextDocumentLayout) Document() *QTextDocument {
-	return newQTextDocument(C.QAbstractTextDocumentLayout_Document(this.h))
+	return newQTextDocument(C.QAbstractTextDocumentLayout_document(this.h))
 }
 
 func (this *QAbstractTextDocumentLayout) RegisterHandler(objectType int, component *QObject) {
-	C.QAbstractTextDocumentLayout_RegisterHandler(this.h, (C.int)(objectType), component.cPointer())
+	C.QAbstractTextDocumentLayout_registerHandler(this.h, (C.int)(objectType), component.cPointer())
 }
 
 func (this *QAbstractTextDocumentLayout) UnregisterHandler(objectType int) {
-	C.QAbstractTextDocumentLayout_UnregisterHandler(this.h, (C.int)(objectType))
+	C.QAbstractTextDocumentLayout_unregisterHandler(this.h, (C.int)(objectType))
 }
 
 func (this *QAbstractTextDocumentLayout) HandlerForObject(objectType int) *QTextObjectInterface {
-	return newQTextObjectInterface(C.QAbstractTextDocumentLayout_HandlerForObject(this.h, (C.int)(objectType)))
+	return newQTextObjectInterface(C.QAbstractTextDocumentLayout_handlerForObject(this.h, (C.int)(objectType)))
 }
 
 func (this *QAbstractTextDocumentLayout) Update() {
-	C.QAbstractTextDocumentLayout_Update(this.h)
+	C.QAbstractTextDocumentLayout_update(this.h)
 }
 func (this *QAbstractTextDocumentLayout) OnUpdate(slot func()) {
-	C.QAbstractTextDocumentLayout_connect_Update(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractTextDocumentLayout_connect_update(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_Update
-func miqt_exec_callback_QAbstractTextDocumentLayout_Update(cb C.intptr_t) {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_update
+func miqt_exec_callback_QAbstractTextDocumentLayout_update(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -173,14 +173,14 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_Update(cb C.intptr_t) {
 }
 
 func (this *QAbstractTextDocumentLayout) UpdateBlock(block *QTextBlock) {
-	C.QAbstractTextDocumentLayout_UpdateBlock(this.h, block.cPointer())
+	C.QAbstractTextDocumentLayout_updateBlock(this.h, block.cPointer())
 }
 func (this *QAbstractTextDocumentLayout) OnUpdateBlock(slot func(block *QTextBlock)) {
-	C.QAbstractTextDocumentLayout_connect_UpdateBlock(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractTextDocumentLayout_connect_updateBlock(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_UpdateBlock
-func miqt_exec_callback_QAbstractTextDocumentLayout_UpdateBlock(cb C.intptr_t, block *C.QTextBlock) {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_updateBlock
+func miqt_exec_callback_QAbstractTextDocumentLayout_updateBlock(cb C.intptr_t, block *C.QTextBlock) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(block *QTextBlock))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -193,14 +193,14 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_UpdateBlock(cb C.intptr_t, b
 }
 
 func (this *QAbstractTextDocumentLayout) DocumentSizeChanged(newSize *QSizeF) {
-	C.QAbstractTextDocumentLayout_DocumentSizeChanged(this.h, newSize.cPointer())
+	C.QAbstractTextDocumentLayout_documentSizeChanged(this.h, newSize.cPointer())
 }
 func (this *QAbstractTextDocumentLayout) OnDocumentSizeChanged(slot func(newSize *QSizeF)) {
-	C.QAbstractTextDocumentLayout_connect_DocumentSizeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractTextDocumentLayout_connect_documentSizeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSizeChanged
-func miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSizeChanged(cb C.intptr_t, newSize *C.QSizeF) {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_documentSizeChanged
+func miqt_exec_callback_QAbstractTextDocumentLayout_documentSizeChanged(cb C.intptr_t, newSize *C.QSizeF) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(newSize *QSizeF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -213,14 +213,14 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSizeChanged(cb C.int
 }
 
 func (this *QAbstractTextDocumentLayout) PageCountChanged(newPages int) {
-	C.QAbstractTextDocumentLayout_PageCountChanged(this.h, (C.int)(newPages))
+	C.QAbstractTextDocumentLayout_pageCountChanged(this.h, (C.int)(newPages))
 }
 func (this *QAbstractTextDocumentLayout) OnPageCountChanged(slot func(newPages int)) {
-	C.QAbstractTextDocumentLayout_connect_PageCountChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractTextDocumentLayout_connect_pageCountChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_PageCountChanged
-func miqt_exec_callback_QAbstractTextDocumentLayout_PageCountChanged(cb C.intptr_t, newPages C.int) {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_pageCountChanged
+func miqt_exec_callback_QAbstractTextDocumentLayout_pageCountChanged(cb C.intptr_t, newPages C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(newPages int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -237,7 +237,7 @@ func QAbstractTextDocumentLayout_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractTextDocumentLayout_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractTextDocumentLayout_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -248,25 +248,25 @@ func QAbstractTextDocumentLayout_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractTextDocumentLayout_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractTextDocumentLayout_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractTextDocumentLayout) UnregisterHandler2(objectType int, component *QObject) {
-	C.QAbstractTextDocumentLayout_UnregisterHandler2(this.h, (C.int)(objectType), component.cPointer())
+	C.QAbstractTextDocumentLayout_unregisterHandler2(this.h, (C.int)(objectType), component.cPointer())
 }
 
 func (this *QAbstractTextDocumentLayout) Update1(param1 *QRectF) {
-	C.QAbstractTextDocumentLayout_Update1(this.h, param1.cPointer())
+	C.QAbstractTextDocumentLayout_update1(this.h, param1.cPointer())
 }
 func (this *QAbstractTextDocumentLayout) OnUpdate1(slot func(param1 *QRectF)) {
-	C.QAbstractTextDocumentLayout_connect_Update1(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractTextDocumentLayout_connect_update1(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_Update1
-func miqt_exec_callback_QAbstractTextDocumentLayout_Update1(cb C.intptr_t, param1 *C.QRectF) {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_update1
+func miqt_exec_callback_QAbstractTextDocumentLayout_update1(cb C.intptr_t, param1 *C.QRectF) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QRectF))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -278,15 +278,15 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_Update1(cb C.intptr_t, param
 	gofunc(slotval1)
 }
 
-func (this *QAbstractTextDocumentLayout) OnDraw(slot func(painter *QPainter, context *QAbstractTextDocumentLayout__PaintContext)) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_Draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) Ondraw(slot func(painter *QPainter, context *QAbstractTextDocumentLayout__PaintContext)) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_draw(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_Draw
-func miqt_exec_callback_QAbstractTextDocumentLayout_Draw(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, painter *C.QPainter, context *C.QAbstractTextDocumentLayout__PaintContext) {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_draw
+func miqt_exec_callback_QAbstractTextDocumentLayout_draw(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, painter *C.QPainter, context *C.QAbstractTextDocumentLayout__PaintContext) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(painter *QPainter, context *QAbstractTextDocumentLayout__PaintContext))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -300,15 +300,15 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_Draw(self *C.QAbstractTextDo
 	gofunc(slotval1, slotval2)
 
 }
-func (this *QAbstractTextDocumentLayout) OnHitTest(slot func(point *QPointF, accuracy HitTestAccuracy) int) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_HitTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) OnhitTest(slot func(point *QPointF, accuracy HitTestAccuracy) int) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_hitTest(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_HitTest
-func miqt_exec_callback_QAbstractTextDocumentLayout_HitTest(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, point *C.QPointF, accuracy C.int) C.int {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_hitTest
+func miqt_exec_callback_QAbstractTextDocumentLayout_hitTest(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, point *C.QPointF, accuracy C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(point *QPointF, accuracy HitTestAccuracy) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -324,15 +324,15 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_HitTest(self *C.QAbstractTex
 	return (C.int)(virtualReturn)
 
 }
-func (this *QAbstractTextDocumentLayout) OnPageCount(slot func() int) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_PageCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) OnpageCount(slot func() int) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_pageCount(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_PageCount
-func miqt_exec_callback_QAbstractTextDocumentLayout_PageCount(self *C.QAbstractTextDocumentLayout, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_pageCount
+func miqt_exec_callback_QAbstractTextDocumentLayout_pageCount(self *C.QAbstractTextDocumentLayout, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func() int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -343,15 +343,15 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_PageCount(self *C.QAbstractT
 	return (C.int)(virtualReturn)
 
 }
-func (this *QAbstractTextDocumentLayout) OnDocumentSize(slot func() *QSizeF) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_DocumentSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) OndocumentSize(slot func() *QSizeF) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_documentSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSize
-func miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSize(self *C.QAbstractTextDocumentLayout, cb C.intptr_t) *C.QSizeF {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_documentSize
+func miqt_exec_callback_QAbstractTextDocumentLayout_documentSize(self *C.QAbstractTextDocumentLayout, cb C.intptr_t) *C.QSizeF {
 	gofunc, ok := cgo.Handle(cb).Value().(func() *QSizeF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -362,15 +362,15 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_DocumentSize(self *C.QAbstra
 	return virtualReturn.cPointer()
 
 }
-func (this *QAbstractTextDocumentLayout) OnFrameBoundingRect(slot func(frame *QTextFrame) *QRectF) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_FrameBoundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) OnframeBoundingRect(slot func(frame *QTextFrame) *QRectF) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_frameBoundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_FrameBoundingRect
-func miqt_exec_callback_QAbstractTextDocumentLayout_FrameBoundingRect(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, frame *C.QTextFrame) *C.QRectF {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_frameBoundingRect
+func miqt_exec_callback_QAbstractTextDocumentLayout_frameBoundingRect(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, frame *C.QTextFrame) *C.QRectF {
 	gofunc, ok := cgo.Handle(cb).Value().(func(frame *QTextFrame) *QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -384,15 +384,15 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_FrameBoundingRect(self *C.QA
 	return virtualReturn.cPointer()
 
 }
-func (this *QAbstractTextDocumentLayout) OnBlockBoundingRect(slot func(block *QTextBlock) *QRectF) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_BlockBoundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) OnblockBoundingRect(slot func(block *QTextBlock) *QRectF) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_blockBoundingRect(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_BlockBoundingRect
-func miqt_exec_callback_QAbstractTextDocumentLayout_BlockBoundingRect(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, block *C.QTextBlock) *C.QRectF {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_blockBoundingRect
+func miqt_exec_callback_QAbstractTextDocumentLayout_blockBoundingRect(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, block *C.QTextBlock) *C.QRectF {
 	gofunc, ok := cgo.Handle(cb).Value().(func(block *QTextBlock) *QRectF)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -406,15 +406,15 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_BlockBoundingRect(self *C.QA
 	return virtualReturn.cPointer()
 
 }
-func (this *QAbstractTextDocumentLayout) OnDocumentChanged(slot func(from int, charsRemoved int, charsAdded int)) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_DocumentChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) OndocumentChanged(slot func(from int, charsRemoved int, charsAdded int)) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_documentChanged(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_DocumentChanged
-func miqt_exec_callback_QAbstractTextDocumentLayout_DocumentChanged(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, from C.int, charsRemoved C.int, charsAdded C.int) {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_documentChanged
+func miqt_exec_callback_QAbstractTextDocumentLayout_documentChanged(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, from C.int, charsRemoved C.int, charsAdded C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(from int, charsRemoved int, charsAdded int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -433,18 +433,18 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_DocumentChanged(self *C.QAbs
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_ResizeInlineObject(item QTextInlineObject, posInDocument int, format *QTextFormat) {
 
-	C.QAbstractTextDocumentLayout_virtualbase_ResizeInlineObject(unsafe.Pointer(this.h), item.cPointer(), (C.int)(posInDocument), format.cPointer())
+	C.QAbstractTextDocumentLayout_virtualbase_resizeInlineObject(unsafe.Pointer(this.h), item.cPointer(), (C.int)(posInDocument), format.cPointer())
 
 }
-func (this *QAbstractTextDocumentLayout) OnResizeInlineObject(slot func(super func(item QTextInlineObject, posInDocument int, format *QTextFormat), item QTextInlineObject, posInDocument int, format *QTextFormat)) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_ResizeInlineObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) OnresizeInlineObject(slot func(super func(item QTextInlineObject, posInDocument int, format *QTextFormat), item QTextInlineObject, posInDocument int, format *QTextFormat)) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_resizeInlineObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_ResizeInlineObject
-func miqt_exec_callback_QAbstractTextDocumentLayout_ResizeInlineObject(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, item *C.QTextInlineObject, posInDocument C.int, format *C.QTextFormat) {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_resizeInlineObject
+func miqt_exec_callback_QAbstractTextDocumentLayout_resizeInlineObject(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, item *C.QTextInlineObject, posInDocument C.int, format *C.QTextFormat) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(item QTextInlineObject, posInDocument int, format *QTextFormat), item QTextInlineObject, posInDocument int, format *QTextFormat))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -465,18 +465,18 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_ResizeInlineObject(self *C.Q
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_PositionInlineObject(item QTextInlineObject, posInDocument int, format *QTextFormat) {
 
-	C.QAbstractTextDocumentLayout_virtualbase_PositionInlineObject(unsafe.Pointer(this.h), item.cPointer(), (C.int)(posInDocument), format.cPointer())
+	C.QAbstractTextDocumentLayout_virtualbase_positionInlineObject(unsafe.Pointer(this.h), item.cPointer(), (C.int)(posInDocument), format.cPointer())
 
 }
-func (this *QAbstractTextDocumentLayout) OnPositionInlineObject(slot func(super func(item QTextInlineObject, posInDocument int, format *QTextFormat), item QTextInlineObject, posInDocument int, format *QTextFormat)) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_PositionInlineObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) OnpositionInlineObject(slot func(super func(item QTextInlineObject, posInDocument int, format *QTextFormat), item QTextInlineObject, posInDocument int, format *QTextFormat)) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_positionInlineObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_PositionInlineObject
-func miqt_exec_callback_QAbstractTextDocumentLayout_PositionInlineObject(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, item *C.QTextInlineObject, posInDocument C.int, format *C.QTextFormat) {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_positionInlineObject
+func miqt_exec_callback_QAbstractTextDocumentLayout_positionInlineObject(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, item *C.QTextInlineObject, posInDocument C.int, format *C.QTextFormat) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(item QTextInlineObject, posInDocument int, format *QTextFormat), item QTextInlineObject, posInDocument int, format *QTextFormat))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -497,18 +497,18 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_PositionInlineObject(self *C
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_DrawInlineObject(painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat) {
 
-	C.QAbstractTextDocumentLayout_virtualbase_DrawInlineObject(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer(), object.cPointer(), (C.int)(posInDocument), format.cPointer())
+	C.QAbstractTextDocumentLayout_virtualbase_drawInlineObject(unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer(), object.cPointer(), (C.int)(posInDocument), format.cPointer())
 
 }
-func (this *QAbstractTextDocumentLayout) OnDrawInlineObject(slot func(super func(painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat), painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat)) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_DrawInlineObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) OndrawInlineObject(slot func(super func(painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat), painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat)) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_drawInlineObject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_DrawInlineObject
-func miqt_exec_callback_QAbstractTextDocumentLayout_DrawInlineObject(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, painter *C.QPainter, rect *C.QRectF, object *C.QTextInlineObject, posInDocument C.int, format *C.QTextFormat) {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_drawInlineObject
+func miqt_exec_callback_QAbstractTextDocumentLayout_drawInlineObject(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, painter *C.QPainter, rect *C.QRectF, object *C.QTextInlineObject, posInDocument C.int, format *C.QTextFormat) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat), painter *QPainter, rect *QRectF, object QTextInlineObject, posInDocument int, format *QTextFormat))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -533,18 +533,18 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_DrawInlineObject(self *C.QAb
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QAbstractTextDocumentLayout_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QAbstractTextDocumentLayout_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QAbstractTextDocumentLayout) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_Event
-func miqt_exec_callback_QAbstractTextDocumentLayout_Event(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_event
+func miqt_exec_callback_QAbstractTextDocumentLayout_event(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -561,18 +561,18 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_Event(self *C.QAbstractTextD
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QAbstractTextDocumentLayout_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QAbstractTextDocumentLayout_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QAbstractTextDocumentLayout) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_EventFilter
-func miqt_exec_callback_QAbstractTextDocumentLayout_EventFilter(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_eventFilter
+func miqt_exec_callback_QAbstractTextDocumentLayout_eventFilter(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -591,18 +591,18 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_EventFilter(self *C.QAbstrac
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QAbstractTextDocumentLayout_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractTextDocumentLayout_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractTextDocumentLayout) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_TimerEvent
-func miqt_exec_callback_QAbstractTextDocumentLayout_TimerEvent(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_timerEvent
+func miqt_exec_callback_QAbstractTextDocumentLayout_timerEvent(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -617,18 +617,18 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_TimerEvent(self *C.QAbstract
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QAbstractTextDocumentLayout_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractTextDocumentLayout_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractTextDocumentLayout) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_ChildEvent
-func miqt_exec_callback_QAbstractTextDocumentLayout_ChildEvent(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_childEvent
+func miqt_exec_callback_QAbstractTextDocumentLayout_childEvent(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -643,18 +643,18 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_ChildEvent(self *C.QAbstract
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QAbstractTextDocumentLayout_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QAbstractTextDocumentLayout_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QAbstractTextDocumentLayout) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_CustomEvent
-func miqt_exec_callback_QAbstractTextDocumentLayout_CustomEvent(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_customEvent
+func miqt_exec_callback_QAbstractTextDocumentLayout_customEvent(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -669,18 +669,18 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_CustomEvent(self *C.QAbstrac
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QAbstractTextDocumentLayout_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QAbstractTextDocumentLayout_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QAbstractTextDocumentLayout) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_ConnectNotify
-func miqt_exec_callback_QAbstractTextDocumentLayout_ConnectNotify(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_connectNotify
+func miqt_exec_callback_QAbstractTextDocumentLayout_connectNotify(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -695,18 +695,18 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_ConnectNotify(self *C.QAbstr
 
 func (this *QAbstractTextDocumentLayout) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QAbstractTextDocumentLayout_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QAbstractTextDocumentLayout_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QAbstractTextDocumentLayout) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QAbstractTextDocumentLayout_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractTextDocumentLayout) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QAbstractTextDocumentLayout_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractTextDocumentLayout_DisconnectNotify
-func miqt_exec_callback_QAbstractTextDocumentLayout_DisconnectNotify(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAbstractTextDocumentLayout_disconnectNotify
+func miqt_exec_callback_QAbstractTextDocumentLayout_disconnectNotify(self *C.QAbstractTextDocumentLayout, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -721,7 +721,7 @@ func miqt_exec_callback_QAbstractTextDocumentLayout_DisconnectNotify(self *C.QAb
 
 // Delete this object from C++ memory.
 func (this *QAbstractTextDocumentLayout) Delete() {
-	C.QAbstractTextDocumentLayout_Delete(this.h)
+	C.QAbstractTextDocumentLayout_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -766,22 +766,22 @@ func UnsafeNewQTextObjectInterface(h unsafe.Pointer) *QTextObjectInterface {
 }
 
 func (this *QTextObjectInterface) IntrinsicSize(doc *QTextDocument, posInDocument int, format *QTextFormat) *QSizeF {
-	_goptr := newQSizeF(C.QTextObjectInterface_IntrinsicSize(this.h, doc.cPointer(), (C.int)(posInDocument), format.cPointer()))
+	_goptr := newQSizeF(C.QTextObjectInterface_intrinsicSize(this.h, doc.cPointer(), (C.int)(posInDocument), format.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTextObjectInterface) DrawObject(painter *QPainter, rect *QRectF, doc *QTextDocument, posInDocument int, format *QTextFormat) {
-	C.QTextObjectInterface_DrawObject(this.h, painter.cPointer(), rect.cPointer(), doc.cPointer(), (C.int)(posInDocument), format.cPointer())
+	C.QTextObjectInterface_drawObject(this.h, painter.cPointer(), rect.cPointer(), doc.cPointer(), (C.int)(posInDocument), format.cPointer())
 }
 
 func (this *QTextObjectInterface) OperatorAssign(param1 *QTextObjectInterface) {
-	C.QTextObjectInterface_OperatorAssign(this.h, param1.cPointer())
+	C.QTextObjectInterface_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QTextObjectInterface) Delete() {
-	C.QTextObjectInterface_Delete(this.h)
+	C.QTextObjectInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -832,12 +832,12 @@ func NewQAbstractTextDocumentLayout__Selection(param1 *QAbstractTextDocumentLayo
 }
 
 func (this *QAbstractTextDocumentLayout__Selection) OperatorAssign(param1 *QAbstractTextDocumentLayout__Selection) {
-	C.QAbstractTextDocumentLayout__Selection_OperatorAssign(this.h, param1.cPointer())
+	C.QAbstractTextDocumentLayout__Selection_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QAbstractTextDocumentLayout__Selection) Delete() {
-	C.QAbstractTextDocumentLayout__Selection_Delete(this.h)
+	C.QAbstractTextDocumentLayout__Selection_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -894,12 +894,12 @@ func NewQAbstractTextDocumentLayout__PaintContext2(param1 *QAbstractTextDocument
 }
 
 func (this *QAbstractTextDocumentLayout__PaintContext) OperatorAssign(param1 *QAbstractTextDocumentLayout__PaintContext) {
-	C.QAbstractTextDocumentLayout__PaintContext_OperatorAssign(this.h, param1.cPointer())
+	C.QAbstractTextDocumentLayout__PaintContext_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QAbstractTextDocumentLayout__PaintContext) Delete() {
-	C.QAbstractTextDocumentLayout__PaintContext_Delete(this.h)
+	C.QAbstractTextDocumentLayout__PaintContext_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

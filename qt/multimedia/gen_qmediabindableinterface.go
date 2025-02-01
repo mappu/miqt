@@ -46,12 +46,12 @@ func UnsafeNewQMediaBindableInterface(h unsafe.Pointer) *QMediaBindableInterface
 }
 
 func (this *QMediaBindableInterface) MediaObject() *QMediaObject {
-	return newQMediaObject(C.QMediaBindableInterface_MediaObject(this.h))
+	return newQMediaObject(C.QMediaBindableInterface_mediaObject(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QMediaBindableInterface) Delete() {
-	C.QMediaBindableInterface_Delete(this.h)
+	C.QMediaBindableInterface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

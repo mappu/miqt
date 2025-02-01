@@ -26,7 +26,7 @@ QTileRules* QTileRules_new4(int rule) {
 	return new QTileRules(static_cast<Qt::TileRule>(rule));
 }
 
-void QTileRules_Delete(QTileRules* self) {
+void QTileRules_delete(QTileRules* self) {
 	delete self;
 }
 

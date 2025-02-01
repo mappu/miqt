@@ -12,9 +12,9 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QVideoDeviceSelectorControl_SelectedDeviceChanged(intptr_t, int);
-void miqt_exec_callback_QVideoDeviceSelectorControl_SelectedDeviceChangedWithName(intptr_t, struct miqt_string);
-void miqt_exec_callback_QVideoDeviceSelectorControl_DevicesChanged(intptr_t);
+void miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChanged(intptr_t, int);
+void miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChangedWithName(intptr_t, struct miqt_string);
+void miqt_exec_callback_QVideoDeviceSelectorControl_devicesChanged(intptr_t);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -23,15 +23,15 @@ void QVideoDeviceSelectorControl_virtbase(QVideoDeviceSelectorControl* src, QMed
 	*outptr_QMediaControl = static_cast<QMediaControl*>(src);
 }
 
-QMetaObject* QVideoDeviceSelectorControl_MetaObject(const QVideoDeviceSelectorControl* self) {
+QMetaObject* QVideoDeviceSelectorControl_metaObject(const QVideoDeviceSelectorControl* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QVideoDeviceSelectorControl_Metacast(QVideoDeviceSelectorControl* self, const char* param1) {
+void* QVideoDeviceSelectorControl_metacast(QVideoDeviceSelectorControl* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QVideoDeviceSelectorControl_Tr(const char* s) {
+struct miqt_string QVideoDeviceSelectorControl_tr(const char* s) {
 	QString _ret = QVideoDeviceSelectorControl::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -42,7 +42,7 @@ struct miqt_string QVideoDeviceSelectorControl_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QVideoDeviceSelectorControl_TrUtf8(const char* s) {
+struct miqt_string QVideoDeviceSelectorControl_trUtf8(const char* s) {
 	QString _ret = QVideoDeviceSelectorControl::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -53,11 +53,11 @@ struct miqt_string QVideoDeviceSelectorControl_TrUtf8(const char* s) {
 	return _ms;
 }
 
-int QVideoDeviceSelectorControl_DeviceCount(const QVideoDeviceSelectorControl* self) {
+int QVideoDeviceSelectorControl_deviceCount(const QVideoDeviceSelectorControl* self) {
 	return self->deviceCount();
 }
 
-struct miqt_string QVideoDeviceSelectorControl_DeviceName(const QVideoDeviceSelectorControl* self, int index) {
+struct miqt_string QVideoDeviceSelectorControl_deviceName(const QVideoDeviceSelectorControl* self, int index) {
 	QString _ret = self->deviceName(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -68,7 +68,7 @@ struct miqt_string QVideoDeviceSelectorControl_DeviceName(const QVideoDeviceSele
 	return _ms;
 }
 
-struct miqt_string QVideoDeviceSelectorControl_DeviceDescription(const QVideoDeviceSelectorControl* self, int index) {
+struct miqt_string QVideoDeviceSelectorControl_deviceDescription(const QVideoDeviceSelectorControl* self, int index) {
 	QString _ret = self->deviceDescription(static_cast<int>(index));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -79,35 +79,35 @@ struct miqt_string QVideoDeviceSelectorControl_DeviceDescription(const QVideoDev
 	return _ms;
 }
 
-int QVideoDeviceSelectorControl_DefaultDevice(const QVideoDeviceSelectorControl* self) {
+int QVideoDeviceSelectorControl_defaultDevice(const QVideoDeviceSelectorControl* self) {
 	return self->defaultDevice();
 }
 
-int QVideoDeviceSelectorControl_SelectedDevice(const QVideoDeviceSelectorControl* self) {
+int QVideoDeviceSelectorControl_selectedDevice(const QVideoDeviceSelectorControl* self) {
 	return self->selectedDevice();
 }
 
-void QVideoDeviceSelectorControl_SetSelectedDevice(QVideoDeviceSelectorControl* self, int index) {
+void QVideoDeviceSelectorControl_setSelectedDevice(QVideoDeviceSelectorControl* self, int index) {
 	self->setSelectedDevice(static_cast<int>(index));
 }
 
-void QVideoDeviceSelectorControl_SelectedDeviceChanged(QVideoDeviceSelectorControl* self, int index) {
+void QVideoDeviceSelectorControl_selectedDeviceChanged(QVideoDeviceSelectorControl* self, int index) {
 	self->selectedDeviceChanged(static_cast<int>(index));
 }
 
-void QVideoDeviceSelectorControl_connect_SelectedDeviceChanged(QVideoDeviceSelectorControl* self, intptr_t slot) {
+void QVideoDeviceSelectorControl_connect_selectedDeviceChanged(QVideoDeviceSelectorControl* self, intptr_t slot) {
 	QVideoDeviceSelectorControl::connect(self, static_cast<void (QVideoDeviceSelectorControl::*)(int)>(&QVideoDeviceSelectorControl::selectedDeviceChanged), self, [=](int index) {
 		int sigval1 = index;
-		miqt_exec_callback_QVideoDeviceSelectorControl_SelectedDeviceChanged(slot, sigval1);
+		miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChanged(slot, sigval1);
 	});
 }
 
-void QVideoDeviceSelectorControl_SelectedDeviceChangedWithName(QVideoDeviceSelectorControl* self, struct miqt_string name) {
+void QVideoDeviceSelectorControl_selectedDeviceChangedWithName(QVideoDeviceSelectorControl* self, struct miqt_string name) {
 	QString name_QString = QString::fromUtf8(name.data, name.len);
 	self->selectedDeviceChanged(name_QString);
 }
 
-void QVideoDeviceSelectorControl_connect_SelectedDeviceChangedWithName(QVideoDeviceSelectorControl* self, intptr_t slot) {
+void QVideoDeviceSelectorControl_connect_selectedDeviceChangedWithName(QVideoDeviceSelectorControl* self, intptr_t slot) {
 	QVideoDeviceSelectorControl::connect(self, static_cast<void (QVideoDeviceSelectorControl::*)(const QString&)>(&QVideoDeviceSelectorControl::selectedDeviceChanged), self, [=](const QString& name) {
 		const QString name_ret = name;
 		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
@@ -117,21 +117,21 @@ void QVideoDeviceSelectorControl_connect_SelectedDeviceChangedWithName(QVideoDev
 		name_ms.data = static_cast<char*>(malloc(name_ms.len));
 		memcpy(name_ms.data, name_b.data(), name_ms.len);
 		struct miqt_string sigval1 = name_ms;
-		miqt_exec_callback_QVideoDeviceSelectorControl_SelectedDeviceChangedWithName(slot, sigval1);
+		miqt_exec_callback_QVideoDeviceSelectorControl_selectedDeviceChangedWithName(slot, sigval1);
 	});
 }
 
-void QVideoDeviceSelectorControl_DevicesChanged(QVideoDeviceSelectorControl* self) {
+void QVideoDeviceSelectorControl_devicesChanged(QVideoDeviceSelectorControl* self) {
 	self->devicesChanged();
 }
 
-void QVideoDeviceSelectorControl_connect_DevicesChanged(QVideoDeviceSelectorControl* self, intptr_t slot) {
+void QVideoDeviceSelectorControl_connect_devicesChanged(QVideoDeviceSelectorControl* self, intptr_t slot) {
 	QVideoDeviceSelectorControl::connect(self, static_cast<void (QVideoDeviceSelectorControl::*)()>(&QVideoDeviceSelectorControl::devicesChanged), self, [=]() {
-		miqt_exec_callback_QVideoDeviceSelectorControl_DevicesChanged(slot);
+		miqt_exec_callback_QVideoDeviceSelectorControl_devicesChanged(slot);
 	});
 }
 
-struct miqt_string QVideoDeviceSelectorControl_Tr2(const char* s, const char* c) {
+struct miqt_string QVideoDeviceSelectorControl_tr2(const char* s, const char* c) {
 	QString _ret = QVideoDeviceSelectorControl::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -142,7 +142,7 @@ struct miqt_string QVideoDeviceSelectorControl_Tr2(const char* s, const char* c)
 	return _ms;
 }
 
-struct miqt_string QVideoDeviceSelectorControl_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QVideoDeviceSelectorControl_tr3(const char* s, const char* c, int n) {
 	QString _ret = QVideoDeviceSelectorControl::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -153,7 +153,7 @@ struct miqt_string QVideoDeviceSelectorControl_Tr3(const char* s, const char* c,
 	return _ms;
 }
 
-struct miqt_string QVideoDeviceSelectorControl_TrUtf82(const char* s, const char* c) {
+struct miqt_string QVideoDeviceSelectorControl_trUtf82(const char* s, const char* c) {
 	QString _ret = QVideoDeviceSelectorControl::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -164,7 +164,7 @@ struct miqt_string QVideoDeviceSelectorControl_TrUtf82(const char* s, const char
 	return _ms;
 }
 
-struct miqt_string QVideoDeviceSelectorControl_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QVideoDeviceSelectorControl_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QVideoDeviceSelectorControl::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -175,7 +175,7 @@ struct miqt_string QVideoDeviceSelectorControl_TrUtf83(const char* s, const char
 	return _ms;
 }
 
-void QVideoDeviceSelectorControl_Delete(QVideoDeviceSelectorControl* self) {
+void QVideoDeviceSelectorControl_delete(QVideoDeviceSelectorControl* self) {
 	delete self;
 }
 

@@ -63,42 +63,42 @@ func NewQButtonGroup2(parent *QObject) *QButtonGroup {
 }
 
 func (this *QButtonGroup) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QButtonGroup_MetaObject(this.h))
+	return newQMetaObject(C.QButtonGroup_metaObject(this.h))
 }
 
 func (this *QButtonGroup) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QButtonGroup_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QButtonGroup_metacast(this.h, param1_Cstring))
 }
 
 func QButtonGroup_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QButtonGroup_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QButtonGroup_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QButtonGroup) SetExclusive(exclusive bool) {
-	C.QButtonGroup_SetExclusive(this.h, (C.bool)(exclusive))
+	C.QButtonGroup_setExclusive(this.h, (C.bool)(exclusive))
 }
 
 func (this *QButtonGroup) Exclusive() bool {
-	return (bool)(C.QButtonGroup_Exclusive(this.h))
+	return (bool)(C.QButtonGroup_exclusive(this.h))
 }
 
 func (this *QButtonGroup) AddButton(param1 *QAbstractButton) {
-	C.QButtonGroup_AddButton(this.h, param1.cPointer())
+	C.QButtonGroup_addButton(this.h, param1.cPointer())
 }
 
 func (this *QButtonGroup) RemoveButton(param1 *QAbstractButton) {
-	C.QButtonGroup_RemoveButton(this.h, param1.cPointer())
+	C.QButtonGroup_removeButton(this.h, param1.cPointer())
 }
 
 func (this *QButtonGroup) Buttons() []*QAbstractButton {
-	var _ma C.struct_miqt_array = C.QButtonGroup_Buttons(this.h)
+	var _ma C.struct_miqt_array = C.QButtonGroup_buttons(this.h)
 	_ret := make([]*QAbstractButton, int(_ma.len))
 	_outCast := (*[0xffff]*C.QAbstractButton)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -108,34 +108,34 @@ func (this *QButtonGroup) Buttons() []*QAbstractButton {
 }
 
 func (this *QButtonGroup) CheckedButton() *QAbstractButton {
-	return newQAbstractButton(C.QButtonGroup_CheckedButton(this.h))
+	return newQAbstractButton(C.QButtonGroup_checkedButton(this.h))
 }
 
 func (this *QButtonGroup) Button(id int) *QAbstractButton {
-	return newQAbstractButton(C.QButtonGroup_Button(this.h, (C.int)(id)))
+	return newQAbstractButton(C.QButtonGroup_button(this.h, (C.int)(id)))
 }
 
 func (this *QButtonGroup) SetId(button *QAbstractButton, id int) {
-	C.QButtonGroup_SetId(this.h, button.cPointer(), (C.int)(id))
+	C.QButtonGroup_setId(this.h, button.cPointer(), (C.int)(id))
 }
 
 func (this *QButtonGroup) Id(button *QAbstractButton) int {
-	return (int)(C.QButtonGroup_Id(this.h, button.cPointer()))
+	return (int)(C.QButtonGroup_id(this.h, button.cPointer()))
 }
 
 func (this *QButtonGroup) CheckedId() int {
-	return (int)(C.QButtonGroup_CheckedId(this.h))
+	return (int)(C.QButtonGroup_checkedId(this.h))
 }
 
 func (this *QButtonGroup) ButtonClicked(param1 *QAbstractButton) {
-	C.QButtonGroup_ButtonClicked(this.h, param1.cPointer())
+	C.QButtonGroup_buttonClicked(this.h, param1.cPointer())
 }
 func (this *QButtonGroup) OnButtonClicked(slot func(param1 *QAbstractButton)) {
-	C.QButtonGroup_connect_ButtonClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QButtonGroup_connect_buttonClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QButtonGroup_ButtonClicked
-func miqt_exec_callback_QButtonGroup_ButtonClicked(cb C.intptr_t, param1 *C.QAbstractButton) {
+//export miqt_exec_callback_QButtonGroup_buttonClicked
+func miqt_exec_callback_QButtonGroup_buttonClicked(cb C.intptr_t, param1 *C.QAbstractButton) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QAbstractButton))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -148,14 +148,14 @@ func miqt_exec_callback_QButtonGroup_ButtonClicked(cb C.intptr_t, param1 *C.QAbs
 }
 
 func (this *QButtonGroup) ButtonPressed(param1 *QAbstractButton) {
-	C.QButtonGroup_ButtonPressed(this.h, param1.cPointer())
+	C.QButtonGroup_buttonPressed(this.h, param1.cPointer())
 }
 func (this *QButtonGroup) OnButtonPressed(slot func(param1 *QAbstractButton)) {
-	C.QButtonGroup_connect_ButtonPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QButtonGroup_connect_buttonPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QButtonGroup_ButtonPressed
-func miqt_exec_callback_QButtonGroup_ButtonPressed(cb C.intptr_t, param1 *C.QAbstractButton) {
+//export miqt_exec_callback_QButtonGroup_buttonPressed
+func miqt_exec_callback_QButtonGroup_buttonPressed(cb C.intptr_t, param1 *C.QAbstractButton) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QAbstractButton))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -168,14 +168,14 @@ func miqt_exec_callback_QButtonGroup_ButtonPressed(cb C.intptr_t, param1 *C.QAbs
 }
 
 func (this *QButtonGroup) ButtonReleased(param1 *QAbstractButton) {
-	C.QButtonGroup_ButtonReleased(this.h, param1.cPointer())
+	C.QButtonGroup_buttonReleased(this.h, param1.cPointer())
 }
 func (this *QButtonGroup) OnButtonReleased(slot func(param1 *QAbstractButton)) {
-	C.QButtonGroup_connect_ButtonReleased(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QButtonGroup_connect_buttonReleased(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QButtonGroup_ButtonReleased
-func miqt_exec_callback_QButtonGroup_ButtonReleased(cb C.intptr_t, param1 *C.QAbstractButton) {
+//export miqt_exec_callback_QButtonGroup_buttonReleased
+func miqt_exec_callback_QButtonGroup_buttonReleased(cb C.intptr_t, param1 *C.QAbstractButton) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QAbstractButton))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -188,14 +188,14 @@ func miqt_exec_callback_QButtonGroup_ButtonReleased(cb C.intptr_t, param1 *C.QAb
 }
 
 func (this *QButtonGroup) ButtonToggled(param1 *QAbstractButton, param2 bool) {
-	C.QButtonGroup_ButtonToggled(this.h, param1.cPointer(), (C.bool)(param2))
+	C.QButtonGroup_buttonToggled(this.h, param1.cPointer(), (C.bool)(param2))
 }
 func (this *QButtonGroup) OnButtonToggled(slot func(param1 *QAbstractButton, param2 bool)) {
-	C.QButtonGroup_connect_ButtonToggled(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QButtonGroup_connect_buttonToggled(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QButtonGroup_ButtonToggled
-func miqt_exec_callback_QButtonGroup_ButtonToggled(cb C.intptr_t, param1 *C.QAbstractButton, param2 C.bool) {
+//export miqt_exec_callback_QButtonGroup_buttonToggled
+func miqt_exec_callback_QButtonGroup_buttonToggled(cb C.intptr_t, param1 *C.QAbstractButton, param2 C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 *QAbstractButton, param2 bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -210,14 +210,14 @@ func miqt_exec_callback_QButtonGroup_ButtonToggled(cb C.intptr_t, param1 *C.QAbs
 }
 
 func (this *QButtonGroup) IdClicked(param1 int) {
-	C.QButtonGroup_IdClicked(this.h, (C.int)(param1))
+	C.QButtonGroup_idClicked(this.h, (C.int)(param1))
 }
 func (this *QButtonGroup) OnIdClicked(slot func(param1 int)) {
-	C.QButtonGroup_connect_IdClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QButtonGroup_connect_idClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QButtonGroup_IdClicked
-func miqt_exec_callback_QButtonGroup_IdClicked(cb C.intptr_t, param1 C.int) {
+//export miqt_exec_callback_QButtonGroup_idClicked
+func miqt_exec_callback_QButtonGroup_idClicked(cb C.intptr_t, param1 C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -230,14 +230,14 @@ func miqt_exec_callback_QButtonGroup_IdClicked(cb C.intptr_t, param1 C.int) {
 }
 
 func (this *QButtonGroup) IdPressed(param1 int) {
-	C.QButtonGroup_IdPressed(this.h, (C.int)(param1))
+	C.QButtonGroup_idPressed(this.h, (C.int)(param1))
 }
 func (this *QButtonGroup) OnIdPressed(slot func(param1 int)) {
-	C.QButtonGroup_connect_IdPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QButtonGroup_connect_idPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QButtonGroup_IdPressed
-func miqt_exec_callback_QButtonGroup_IdPressed(cb C.intptr_t, param1 C.int) {
+//export miqt_exec_callback_QButtonGroup_idPressed
+func miqt_exec_callback_QButtonGroup_idPressed(cb C.intptr_t, param1 C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -250,14 +250,14 @@ func miqt_exec_callback_QButtonGroup_IdPressed(cb C.intptr_t, param1 C.int) {
 }
 
 func (this *QButtonGroup) IdReleased(param1 int) {
-	C.QButtonGroup_IdReleased(this.h, (C.int)(param1))
+	C.QButtonGroup_idReleased(this.h, (C.int)(param1))
 }
 func (this *QButtonGroup) OnIdReleased(slot func(param1 int)) {
-	C.QButtonGroup_connect_IdReleased(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QButtonGroup_connect_idReleased(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QButtonGroup_IdReleased
-func miqt_exec_callback_QButtonGroup_IdReleased(cb C.intptr_t, param1 C.int) {
+//export miqt_exec_callback_QButtonGroup_idReleased
+func miqt_exec_callback_QButtonGroup_idReleased(cb C.intptr_t, param1 C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -270,14 +270,14 @@ func miqt_exec_callback_QButtonGroup_IdReleased(cb C.intptr_t, param1 C.int) {
 }
 
 func (this *QButtonGroup) IdToggled(param1 int, param2 bool) {
-	C.QButtonGroup_IdToggled(this.h, (C.int)(param1), (C.bool)(param2))
+	C.QButtonGroup_idToggled(this.h, (C.int)(param1), (C.bool)(param2))
 }
 func (this *QButtonGroup) OnIdToggled(slot func(param1 int, param2 bool)) {
-	C.QButtonGroup_connect_IdToggled(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QButtonGroup_connect_idToggled(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QButtonGroup_IdToggled
-func miqt_exec_callback_QButtonGroup_IdToggled(cb C.intptr_t, param1 C.int, param2 C.bool) {
+//export miqt_exec_callback_QButtonGroup_idToggled
+func miqt_exec_callback_QButtonGroup_idToggled(cb C.intptr_t, param1 C.int, param2 C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 int, param2 bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -296,7 +296,7 @@ func QButtonGroup_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QButtonGroup_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QButtonGroup_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -307,30 +307,30 @@ func QButtonGroup_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QButtonGroup_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QButtonGroup_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QButtonGroup) AddButton2(param1 *QAbstractButton, id int) {
-	C.QButtonGroup_AddButton2(this.h, param1.cPointer(), (C.int)(id))
+	C.QButtonGroup_addButton2(this.h, param1.cPointer(), (C.int)(id))
 }
 
 func (this *QButtonGroup) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QButtonGroup_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QButtonGroup_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QButtonGroup) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QButtonGroup_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QButtonGroup) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QButtonGroup_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QButtonGroup_Event
-func miqt_exec_callback_QButtonGroup_Event(self *C.QButtonGroup, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QButtonGroup_event
+func miqt_exec_callback_QButtonGroup_event(self *C.QButtonGroup, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -347,18 +347,18 @@ func miqt_exec_callback_QButtonGroup_Event(self *C.QButtonGroup, cb C.intptr_t, 
 
 func (this *QButtonGroup) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QButtonGroup_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QButtonGroup_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QButtonGroup) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QButtonGroup_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QButtonGroup) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QButtonGroup_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QButtonGroup_EventFilter
-func miqt_exec_callback_QButtonGroup_EventFilter(self *C.QButtonGroup, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QButtonGroup_eventFilter
+func miqt_exec_callback_QButtonGroup_eventFilter(self *C.QButtonGroup, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -377,18 +377,18 @@ func miqt_exec_callback_QButtonGroup_EventFilter(self *C.QButtonGroup, cb C.intp
 
 func (this *QButtonGroup) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QButtonGroup_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QButtonGroup_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QButtonGroup) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QButtonGroup_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QButtonGroup) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QButtonGroup_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QButtonGroup_TimerEvent
-func miqt_exec_callback_QButtonGroup_TimerEvent(self *C.QButtonGroup, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QButtonGroup_timerEvent
+func miqt_exec_callback_QButtonGroup_timerEvent(self *C.QButtonGroup, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -403,18 +403,18 @@ func miqt_exec_callback_QButtonGroup_TimerEvent(self *C.QButtonGroup, cb C.intpt
 
 func (this *QButtonGroup) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QButtonGroup_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QButtonGroup_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QButtonGroup) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QButtonGroup_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QButtonGroup) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QButtonGroup_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QButtonGroup_ChildEvent
-func miqt_exec_callback_QButtonGroup_ChildEvent(self *C.QButtonGroup, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QButtonGroup_childEvent
+func miqt_exec_callback_QButtonGroup_childEvent(self *C.QButtonGroup, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -429,18 +429,18 @@ func miqt_exec_callback_QButtonGroup_ChildEvent(self *C.QButtonGroup, cb C.intpt
 
 func (this *QButtonGroup) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QButtonGroup_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QButtonGroup_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QButtonGroup) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QButtonGroup_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QButtonGroup) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QButtonGroup_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QButtonGroup_CustomEvent
-func miqt_exec_callback_QButtonGroup_CustomEvent(self *C.QButtonGroup, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QButtonGroup_customEvent
+func miqt_exec_callback_QButtonGroup_customEvent(self *C.QButtonGroup, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -455,18 +455,18 @@ func miqt_exec_callback_QButtonGroup_CustomEvent(self *C.QButtonGroup, cb C.intp
 
 func (this *QButtonGroup) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QButtonGroup_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QButtonGroup_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QButtonGroup) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QButtonGroup_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QButtonGroup) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QButtonGroup_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QButtonGroup_ConnectNotify
-func miqt_exec_callback_QButtonGroup_ConnectNotify(self *C.QButtonGroup, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QButtonGroup_connectNotify
+func miqt_exec_callback_QButtonGroup_connectNotify(self *C.QButtonGroup, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -481,18 +481,18 @@ func miqt_exec_callback_QButtonGroup_ConnectNotify(self *C.QButtonGroup, cb C.in
 
 func (this *QButtonGroup) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QButtonGroup_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QButtonGroup_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QButtonGroup) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QButtonGroup_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QButtonGroup) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QButtonGroup_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QButtonGroup_DisconnectNotify
-func miqt_exec_callback_QButtonGroup_DisconnectNotify(self *C.QButtonGroup, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QButtonGroup_disconnectNotify
+func miqt_exec_callback_QButtonGroup_disconnectNotify(self *C.QButtonGroup, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -507,7 +507,7 @@ func miqt_exec_callback_QButtonGroup_DisconnectNotify(self *C.QButtonGroup, cb C
 
 // Delete this object from C++ memory.
 func (this *QButtonGroup) Delete() {
-	C.QButtonGroup_Delete(this.h)
+	C.QButtonGroup_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

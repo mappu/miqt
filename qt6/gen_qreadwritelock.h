@@ -26,29 +26,29 @@ typedef struct QWriteLocker QWriteLocker;
 
 QReadWriteLock* QReadWriteLock_new();
 QReadWriteLock* QReadWriteLock_new2(int recursionMode);
-void QReadWriteLock_LockForRead(QReadWriteLock* self);
-bool QReadWriteLock_TryLockForRead(QReadWriteLock* self);
-bool QReadWriteLock_TryLockForReadWithTimeout(QReadWriteLock* self, int timeout);
-void QReadWriteLock_LockForWrite(QReadWriteLock* self);
-bool QReadWriteLock_TryLockForWrite(QReadWriteLock* self);
-bool QReadWriteLock_TryLockForWriteWithTimeout(QReadWriteLock* self, int timeout);
-void QReadWriteLock_Unlock(QReadWriteLock* self);
-void QReadWriteLock_Delete(QReadWriteLock* self);
+void QReadWriteLock_lockForRead(QReadWriteLock* self);
+bool QReadWriteLock_tryLockForRead(QReadWriteLock* self);
+bool QReadWriteLock_tryLockForReadWithTimeout(QReadWriteLock* self, int timeout);
+void QReadWriteLock_lockForWrite(QReadWriteLock* self);
+bool QReadWriteLock_tryLockForWrite(QReadWriteLock* self);
+bool QReadWriteLock_tryLockForWriteWithTimeout(QReadWriteLock* self, int timeout);
+void QReadWriteLock_unlock(QReadWriteLock* self);
+void QReadWriteLock_delete(QReadWriteLock* self);
 
 QReadLocker* QReadLocker_new(QReadWriteLock* readWriteLock);
-void QReadLocker_Unlock(QReadLocker* self);
-void QReadLocker_Relock(QReadLocker* self);
-QReadWriteLock* QReadLocker_ReadWriteLock(const QReadLocker* self);
-void QReadLocker_Delete(QReadLocker* self);
+void QReadLocker_unlock(QReadLocker* self);
+void QReadLocker_relock(QReadLocker* self);
+QReadWriteLock* QReadLocker_readWriteLock(const QReadLocker* self);
+void QReadLocker_delete(QReadLocker* self);
 
 QWriteLocker* QWriteLocker_new(QReadWriteLock* readWriteLock);
-void QWriteLocker_Unlock(QWriteLocker* self);
-void QWriteLocker_Relock(QWriteLocker* self);
-QReadWriteLock* QWriteLocker_ReadWriteLock(const QWriteLocker* self);
-void QWriteLocker_Delete(QWriteLocker* self);
+void QWriteLocker_unlock(QWriteLocker* self);
+void QWriteLocker_relock(QWriteLocker* self);
+QReadWriteLock* QWriteLocker_readWriteLock(const QWriteLocker* self);
+void QWriteLocker_delete(QWriteLocker* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

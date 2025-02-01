@@ -52,32 +52,32 @@ func NewQBasicTimer() *QBasicTimer {
 }
 
 func (this *QBasicTimer) Swap(other *QBasicTimer) {
-	C.QBasicTimer_Swap(this.h, other.cPointer())
+	C.QBasicTimer_swap(this.h, other.cPointer())
 }
 
 func (this *QBasicTimer) IsActive() bool {
-	return (bool)(C.QBasicTimer_IsActive(this.h))
+	return (bool)(C.QBasicTimer_isActive(this.h))
 }
 
 func (this *QBasicTimer) TimerId() int {
-	return (int)(C.QBasicTimer_TimerId(this.h))
+	return (int)(C.QBasicTimer_timerId(this.h))
 }
 
 func (this *QBasicTimer) Start(msec int, obj *QObject) {
-	C.QBasicTimer_Start(this.h, (C.int)(msec), obj.cPointer())
+	C.QBasicTimer_start(this.h, (C.int)(msec), obj.cPointer())
 }
 
 func (this *QBasicTimer) Start2(msec int, timerType TimerType, obj *QObject) {
-	C.QBasicTimer_Start2(this.h, (C.int)(msec), (C.int)(timerType), obj.cPointer())
+	C.QBasicTimer_start2(this.h, (C.int)(msec), (C.int)(timerType), obj.cPointer())
 }
 
 func (this *QBasicTimer) Stop() {
-	C.QBasicTimer_Stop(this.h)
+	C.QBasicTimer_stop(this.h)
 }
 
 // Delete this object from C++ memory.
 func (this *QBasicTimer) Delete() {
-	C.QBasicTimer_Delete(this.h)
+	C.QBasicTimer_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

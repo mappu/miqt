@@ -28,18 +28,18 @@ typedef struct QWhatsThis QWhatsThis;
 typedef struct QWidget QWidget;
 #endif
 
-void QWhatsThis_EnterWhatsThisMode();
-bool QWhatsThis_InWhatsThisMode();
-void QWhatsThis_LeaveWhatsThisMode();
-void QWhatsThis_ShowText(QPoint* pos, struct miqt_string text);
-void QWhatsThis_HideText();
-QAction* QWhatsThis_CreateAction();
-void QWhatsThis_ShowText3(QPoint* pos, struct miqt_string text, QWidget* w);
-QAction* QWhatsThis_CreateAction1(QObject* parent);
-void QWhatsThis_Delete(QWhatsThis* self);
+void QWhatsThis_enterWhatsThisMode();
+bool QWhatsThis_inWhatsThisMode();
+void QWhatsThis_leaveWhatsThisMode();
+void QWhatsThis_showText(QPoint* pos, struct miqt_string text);
+void QWhatsThis_hideText();
+QAction* QWhatsThis_createAction();
+void QWhatsThis_showText3(QPoint* pos, struct miqt_string text, QWidget* w);
+QAction* QWhatsThis_createAction1(QObject* parent);
+void QWhatsThis_delete(QWhatsThis* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

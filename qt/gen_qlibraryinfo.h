@@ -24,18 +24,18 @@ typedef struct QLibraryInfo QLibraryInfo;
 typedef struct QVersionNumber QVersionNumber;
 #endif
 
-struct miqt_string QLibraryInfo_Licensee();
-struct miqt_string QLibraryInfo_LicensedProducts();
-QDate* QLibraryInfo_BuildDate();
-const char* QLibraryInfo_Build();
-bool QLibraryInfo_IsDebugBuild();
-QVersionNumber* QLibraryInfo_Version();
-struct miqt_string QLibraryInfo_Location(int param1);
-struct miqt_array /* of struct miqt_string */  QLibraryInfo_PlatformPluginArguments(struct miqt_string platformName);
-void QLibraryInfo_Delete(QLibraryInfo* self);
+struct miqt_string QLibraryInfo_licensee();
+struct miqt_string QLibraryInfo_licensedProducts();
+QDate* QLibraryInfo_buildDate();
+const char* QLibraryInfo_build();
+bool QLibraryInfo_isDebugBuild();
+QVersionNumber* QLibraryInfo_version();
+struct miqt_string QLibraryInfo_location(int param1);
+struct miqt_array /* of struct miqt_string */  QLibraryInfo_platformPluginArguments(struct miqt_string platformName);
+void QLibraryInfo_delete(QLibraryInfo* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

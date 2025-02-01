@@ -13,74 +13,74 @@ extern "C" {
 } /* extern C */
 #endif
 
-int QPaintDevice_DevType(const QPaintDevice* self) {
+int QPaintDevice_devType(const QPaintDevice* self) {
 	return self->devType();
 }
 
-bool QPaintDevice_PaintingActive(const QPaintDevice* self) {
+bool QPaintDevice_paintingActive(const QPaintDevice* self) {
 	return self->paintingActive();
 }
 
-QPaintEngine* QPaintDevice_PaintEngine(const QPaintDevice* self) {
+QPaintEngine* QPaintDevice_paintEngine(const QPaintDevice* self) {
 	return self->paintEngine();
 }
 
-int QPaintDevice_Width(const QPaintDevice* self) {
+int QPaintDevice_width(const QPaintDevice* self) {
 	return self->width();
 }
 
-int QPaintDevice_Height(const QPaintDevice* self) {
+int QPaintDevice_height(const QPaintDevice* self) {
 	return self->height();
 }
 
-int QPaintDevice_WidthMM(const QPaintDevice* self) {
+int QPaintDevice_widthMM(const QPaintDevice* self) {
 	return self->widthMM();
 }
 
-int QPaintDevice_HeightMM(const QPaintDevice* self) {
+int QPaintDevice_heightMM(const QPaintDevice* self) {
 	return self->heightMM();
 }
 
-int QPaintDevice_LogicalDpiX(const QPaintDevice* self) {
+int QPaintDevice_logicalDpiX(const QPaintDevice* self) {
 	return self->logicalDpiX();
 }
 
-int QPaintDevice_LogicalDpiY(const QPaintDevice* self) {
+int QPaintDevice_logicalDpiY(const QPaintDevice* self) {
 	return self->logicalDpiY();
 }
 
-int QPaintDevice_PhysicalDpiX(const QPaintDevice* self) {
+int QPaintDevice_physicalDpiX(const QPaintDevice* self) {
 	return self->physicalDpiX();
 }
 
-int QPaintDevice_PhysicalDpiY(const QPaintDevice* self) {
+int QPaintDevice_physicalDpiY(const QPaintDevice* self) {
 	return self->physicalDpiY();
 }
 
-double QPaintDevice_DevicePixelRatio(const QPaintDevice* self) {
+double QPaintDevice_devicePixelRatio(const QPaintDevice* self) {
 	qreal _ret = self->devicePixelRatio();
 	return static_cast<double>(_ret);
 }
 
-double QPaintDevice_DevicePixelRatioF(const QPaintDevice* self) {
+double QPaintDevice_devicePixelRatioF(const QPaintDevice* self) {
 	qreal _ret = self->devicePixelRatioF();
 	return static_cast<double>(_ret);
 }
 
-int QPaintDevice_ColorCount(const QPaintDevice* self) {
+int QPaintDevice_colorCount(const QPaintDevice* self) {
 	return self->colorCount();
 }
 
-int QPaintDevice_Depth(const QPaintDevice* self) {
+int QPaintDevice_depth(const QPaintDevice* self) {
 	return self->depth();
 }
 
-double QPaintDevice_DevicePixelRatioFScale() {
+double QPaintDevice_devicePixelRatioFScale() {
 	qreal _ret = QPaintDevice::devicePixelRatioFScale();
 	return static_cast<double>(_ret);
 }
 
-void QPaintDevice_Delete(QPaintDevice* self) {
+void QPaintDevice_delete(QPaintDevice* self) {
 	delete self;
 }
 

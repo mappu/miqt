@@ -67,19 +67,19 @@ func NewQWebElement2(param1 *QWebElement) *QWebElement {
 }
 
 func (this *QWebElement) OperatorAssign(param1 *QWebElement) {
-	C.QWebElement_OperatorAssign(this.h, param1.cPointer())
+	C.QWebElement_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QWebElement) OperatorEqual(o *QWebElement) bool {
-	return (bool)(C.QWebElement_OperatorEqual(this.h, o.cPointer()))
+	return (bool)(C.QWebElement_operatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QWebElement) OperatorNotEqual(o *QWebElement) bool {
-	return (bool)(C.QWebElement_OperatorNotEqual(this.h, o.cPointer()))
+	return (bool)(C.QWebElement_operatorNotEqual(this.h, o.cPointer()))
 }
 
 func (this *QWebElement) IsNull() bool {
-	return (bool)(C.QWebElement_IsNull(this.h))
+	return (bool)(C.QWebElement_isNull(this.h))
 }
 
 func (this *QWebElement) FindAll(selectorQuery string) *QWebElementCollection {
@@ -87,7 +87,7 @@ func (this *QWebElement) FindAll(selectorQuery string) *QWebElementCollection {
 	selectorQuery_ms.data = C.CString(selectorQuery)
 	selectorQuery_ms.len = C.size_t(len(selectorQuery))
 	defer C.free(unsafe.Pointer(selectorQuery_ms.data))
-	_goptr := newQWebElementCollection(C.QWebElement_FindAll(this.h, selectorQuery_ms))
+	_goptr := newQWebElementCollection(C.QWebElement_findAll(this.h, selectorQuery_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -97,7 +97,7 @@ func (this *QWebElement) FindFirst(selectorQuery string) *QWebElement {
 	selectorQuery_ms.data = C.CString(selectorQuery)
 	selectorQuery_ms.len = C.size_t(len(selectorQuery))
 	defer C.free(unsafe.Pointer(selectorQuery_ms.data))
-	_goptr := newQWebElement(C.QWebElement_FindFirst(this.h, selectorQuery_ms))
+	_goptr := newQWebElement(C.QWebElement_findFirst(this.h, selectorQuery_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -107,11 +107,11 @@ func (this *QWebElement) SetPlainText(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QWebElement_SetPlainText(this.h, text_ms)
+	C.QWebElement_setPlainText(this.h, text_ms)
 }
 
 func (this *QWebElement) ToPlainText() string {
-	var _ms C.struct_miqt_string = C.QWebElement_ToPlainText(this.h)
+	var _ms C.struct_miqt_string = C.QWebElement_toPlainText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -122,11 +122,11 @@ func (this *QWebElement) SetOuterXml(markup string) {
 	markup_ms.data = C.CString(markup)
 	markup_ms.len = C.size_t(len(markup))
 	defer C.free(unsafe.Pointer(markup_ms.data))
-	C.QWebElement_SetOuterXml(this.h, markup_ms)
+	C.QWebElement_setOuterXml(this.h, markup_ms)
 }
 
 func (this *QWebElement) ToOuterXml() string {
-	var _ms C.struct_miqt_string = C.QWebElement_ToOuterXml(this.h)
+	var _ms C.struct_miqt_string = C.QWebElement_toOuterXml(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -137,11 +137,11 @@ func (this *QWebElement) SetInnerXml(markup string) {
 	markup_ms.data = C.CString(markup)
 	markup_ms.len = C.size_t(len(markup))
 	defer C.free(unsafe.Pointer(markup_ms.data))
-	C.QWebElement_SetInnerXml(this.h, markup_ms)
+	C.QWebElement_setInnerXml(this.h, markup_ms)
 }
 
 func (this *QWebElement) ToInnerXml() string {
-	var _ms C.struct_miqt_string = C.QWebElement_ToInnerXml(this.h)
+	var _ms C.struct_miqt_string = C.QWebElement_toInnerXml(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -156,7 +156,7 @@ func (this *QWebElement) SetAttribute(name string, value string) {
 	value_ms.data = C.CString(value)
 	value_ms.len = C.size_t(len(value))
 	defer C.free(unsafe.Pointer(value_ms.data))
-	C.QWebElement_SetAttribute(this.h, name_ms, value_ms)
+	C.QWebElement_setAttribute(this.h, name_ms, value_ms)
 }
 
 func (this *QWebElement) SetAttributeNS(namespaceUri string, name string, value string) {
@@ -172,7 +172,7 @@ func (this *QWebElement) SetAttributeNS(namespaceUri string, name string, value 
 	value_ms.data = C.CString(value)
 	value_ms.len = C.size_t(len(value))
 	defer C.free(unsafe.Pointer(value_ms.data))
-	C.QWebElement_SetAttributeNS(this.h, namespaceUri_ms, name_ms, value_ms)
+	C.QWebElement_setAttributeNS(this.h, namespaceUri_ms, name_ms, value_ms)
 }
 
 func (this *QWebElement) Attribute(name string) string {
@@ -180,7 +180,7 @@ func (this *QWebElement) Attribute(name string) string {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var _ms C.struct_miqt_string = C.QWebElement_Attribute(this.h, name_ms)
+	var _ms C.struct_miqt_string = C.QWebElement_attribute(this.h, name_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -195,7 +195,7 @@ func (this *QWebElement) AttributeNS(namespaceUri string, name string) string {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var _ms C.struct_miqt_string = C.QWebElement_AttributeNS(this.h, namespaceUri_ms, name_ms)
+	var _ms C.struct_miqt_string = C.QWebElement_attributeNS(this.h, namespaceUri_ms, name_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -206,7 +206,7 @@ func (this *QWebElement) HasAttribute(name string) bool {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	return (bool)(C.QWebElement_HasAttribute(this.h, name_ms))
+	return (bool)(C.QWebElement_hasAttribute(this.h, name_ms))
 }
 
 func (this *QWebElement) HasAttributeNS(namespaceUri string, name string) bool {
@@ -218,7 +218,7 @@ func (this *QWebElement) HasAttributeNS(namespaceUri string, name string) bool {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	return (bool)(C.QWebElement_HasAttributeNS(this.h, namespaceUri_ms, name_ms))
+	return (bool)(C.QWebElement_hasAttributeNS(this.h, namespaceUri_ms, name_ms))
 }
 
 func (this *QWebElement) RemoveAttribute(name string) {
@@ -226,7 +226,7 @@ func (this *QWebElement) RemoveAttribute(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QWebElement_RemoveAttribute(this.h, name_ms)
+	C.QWebElement_removeAttribute(this.h, name_ms)
 }
 
 func (this *QWebElement) RemoveAttributeNS(namespaceUri string, name string) {
@@ -238,15 +238,15 @@ func (this *QWebElement) RemoveAttributeNS(namespaceUri string, name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QWebElement_RemoveAttributeNS(this.h, namespaceUri_ms, name_ms)
+	C.QWebElement_removeAttributeNS(this.h, namespaceUri_ms, name_ms)
 }
 
 func (this *QWebElement) HasAttributes() bool {
-	return (bool)(C.QWebElement_HasAttributes(this.h))
+	return (bool)(C.QWebElement_hasAttributes(this.h))
 }
 
 func (this *QWebElement) AttributeNames() []string {
-	var _ma C.struct_miqt_array = C.QWebElement_AttributeNames(this.h)
+	var _ma C.struct_miqt_array = C.QWebElement_attributeNames(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -259,7 +259,7 @@ func (this *QWebElement) AttributeNames() []string {
 }
 
 func (this *QWebElement) Classes() []string {
-	var _ma C.struct_miqt_array = C.QWebElement_Classes(this.h)
+	var _ma C.struct_miqt_array = C.QWebElement_classes(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -276,7 +276,7 @@ func (this *QWebElement) HasClass(name string) bool {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	return (bool)(C.QWebElement_HasClass(this.h, name_ms))
+	return (bool)(C.QWebElement_hasClass(this.h, name_ms))
 }
 
 func (this *QWebElement) AddClass(name string) {
@@ -284,7 +284,7 @@ func (this *QWebElement) AddClass(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QWebElement_AddClass(this.h, name_ms)
+	C.QWebElement_addClass(this.h, name_ms)
 }
 
 func (this *QWebElement) RemoveClass(name string) {
@@ -292,7 +292,7 @@ func (this *QWebElement) RemoveClass(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QWebElement_RemoveClass(this.h, name_ms)
+	C.QWebElement_removeClass(this.h, name_ms)
 }
 
 func (this *QWebElement) ToggleClass(name string) {
@@ -300,89 +300,89 @@ func (this *QWebElement) ToggleClass(name string) {
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	C.QWebElement_ToggleClass(this.h, name_ms)
+	C.QWebElement_toggleClass(this.h, name_ms)
 }
 
 func (this *QWebElement) HasFocus() bool {
-	return (bool)(C.QWebElement_HasFocus(this.h))
+	return (bool)(C.QWebElement_hasFocus(this.h))
 }
 
 func (this *QWebElement) SetFocus() {
-	C.QWebElement_SetFocus(this.h)
+	C.QWebElement_setFocus(this.h)
 }
 
 func (this *QWebElement) Geometry() *qt.QRect {
-	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QWebElement_Geometry(this.h)))
+	_goptr := qt.UnsafeNewQRect(unsafe.Pointer(C.QWebElement_geometry(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElement) TagName() string {
-	var _ms C.struct_miqt_string = C.QWebElement_TagName(this.h)
+	var _ms C.struct_miqt_string = C.QWebElement_tagName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebElement) Prefix() string {
-	var _ms C.struct_miqt_string = C.QWebElement_Prefix(this.h)
+	var _ms C.struct_miqt_string = C.QWebElement_prefix(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebElement) LocalName() string {
-	var _ms C.struct_miqt_string = C.QWebElement_LocalName(this.h)
+	var _ms C.struct_miqt_string = C.QWebElement_localName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebElement) NamespaceUri() string {
-	var _ms C.struct_miqt_string = C.QWebElement_NamespaceUri(this.h)
+	var _ms C.struct_miqt_string = C.QWebElement_namespaceUri(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebElement) Parent() *QWebElement {
-	_goptr := newQWebElement(C.QWebElement_Parent(this.h))
+	_goptr := newQWebElement(C.QWebElement_parent(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElement) FirstChild() *QWebElement {
-	_goptr := newQWebElement(C.QWebElement_FirstChild(this.h))
+	_goptr := newQWebElement(C.QWebElement_firstChild(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElement) LastChild() *QWebElement {
-	_goptr := newQWebElement(C.QWebElement_LastChild(this.h))
+	_goptr := newQWebElement(C.QWebElement_lastChild(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElement) NextSibling() *QWebElement {
-	_goptr := newQWebElement(C.QWebElement_NextSibling(this.h))
+	_goptr := newQWebElement(C.QWebElement_nextSibling(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElement) PreviousSibling() *QWebElement {
-	_goptr := newQWebElement(C.QWebElement_PreviousSibling(this.h))
+	_goptr := newQWebElement(C.QWebElement_previousSibling(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElement) Document() *QWebElement {
-	_goptr := newQWebElement(C.QWebElement_Document(this.h))
+	_goptr := newQWebElement(C.QWebElement_document(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElement) WebFrame() *QWebFrame {
-	return newQWebFrame(C.QWebElement_WebFrame(this.h))
+	return newQWebFrame(C.QWebElement_webFrame(this.h))
 }
 
 func (this *QWebElement) AppendInside(markup string) {
@@ -390,11 +390,11 @@ func (this *QWebElement) AppendInside(markup string) {
 	markup_ms.data = C.CString(markup)
 	markup_ms.len = C.size_t(len(markup))
 	defer C.free(unsafe.Pointer(markup_ms.data))
-	C.QWebElement_AppendInside(this.h, markup_ms)
+	C.QWebElement_appendInside(this.h, markup_ms)
 }
 
 func (this *QWebElement) AppendInsideWithElement(element *QWebElement) {
-	C.QWebElement_AppendInsideWithElement(this.h, element.cPointer())
+	C.QWebElement_appendInsideWithElement(this.h, element.cPointer())
 }
 
 func (this *QWebElement) PrependInside(markup string) {
@@ -402,11 +402,11 @@ func (this *QWebElement) PrependInside(markup string) {
 	markup_ms.data = C.CString(markup)
 	markup_ms.len = C.size_t(len(markup))
 	defer C.free(unsafe.Pointer(markup_ms.data))
-	C.QWebElement_PrependInside(this.h, markup_ms)
+	C.QWebElement_prependInside(this.h, markup_ms)
 }
 
 func (this *QWebElement) PrependInsideWithElement(element *QWebElement) {
-	C.QWebElement_PrependInsideWithElement(this.h, element.cPointer())
+	C.QWebElement_prependInsideWithElement(this.h, element.cPointer())
 }
 
 func (this *QWebElement) AppendOutside(markup string) {
@@ -414,11 +414,11 @@ func (this *QWebElement) AppendOutside(markup string) {
 	markup_ms.data = C.CString(markup)
 	markup_ms.len = C.size_t(len(markup))
 	defer C.free(unsafe.Pointer(markup_ms.data))
-	C.QWebElement_AppendOutside(this.h, markup_ms)
+	C.QWebElement_appendOutside(this.h, markup_ms)
 }
 
 func (this *QWebElement) AppendOutsideWithElement(element *QWebElement) {
-	C.QWebElement_AppendOutsideWithElement(this.h, element.cPointer())
+	C.QWebElement_appendOutsideWithElement(this.h, element.cPointer())
 }
 
 func (this *QWebElement) PrependOutside(markup string) {
@@ -426,15 +426,15 @@ func (this *QWebElement) PrependOutside(markup string) {
 	markup_ms.data = C.CString(markup)
 	markup_ms.len = C.size_t(len(markup))
 	defer C.free(unsafe.Pointer(markup_ms.data))
-	C.QWebElement_PrependOutside(this.h, markup_ms)
+	C.QWebElement_prependOutside(this.h, markup_ms)
 }
 
 func (this *QWebElement) PrependOutsideWithElement(element *QWebElement) {
-	C.QWebElement_PrependOutsideWithElement(this.h, element.cPointer())
+	C.QWebElement_prependOutsideWithElement(this.h, element.cPointer())
 }
 
 func (this *QWebElement) EncloseContentsWith(element *QWebElement) {
-	C.QWebElement_EncloseContentsWith(this.h, element.cPointer())
+	C.QWebElement_encloseContentsWith(this.h, element.cPointer())
 }
 
 func (this *QWebElement) EncloseContentsWithWithMarkup(markup string) {
@@ -442,7 +442,7 @@ func (this *QWebElement) EncloseContentsWithWithMarkup(markup string) {
 	markup_ms.data = C.CString(markup)
 	markup_ms.len = C.size_t(len(markup))
 	defer C.free(unsafe.Pointer(markup_ms.data))
-	C.QWebElement_EncloseContentsWithWithMarkup(this.h, markup_ms)
+	C.QWebElement_encloseContentsWithWithMarkup(this.h, markup_ms)
 }
 
 func (this *QWebElement) EncloseWith(markup string) {
@@ -450,11 +450,11 @@ func (this *QWebElement) EncloseWith(markup string) {
 	markup_ms.data = C.CString(markup)
 	markup_ms.len = C.size_t(len(markup))
 	defer C.free(unsafe.Pointer(markup_ms.data))
-	C.QWebElement_EncloseWith(this.h, markup_ms)
+	C.QWebElement_encloseWith(this.h, markup_ms)
 }
 
 func (this *QWebElement) EncloseWithWithElement(element *QWebElement) {
-	C.QWebElement_EncloseWithWithElement(this.h, element.cPointer())
+	C.QWebElement_encloseWithWithElement(this.h, element.cPointer())
 }
 
 func (this *QWebElement) Replace(markup string) {
@@ -462,29 +462,29 @@ func (this *QWebElement) Replace(markup string) {
 	markup_ms.data = C.CString(markup)
 	markup_ms.len = C.size_t(len(markup))
 	defer C.free(unsafe.Pointer(markup_ms.data))
-	C.QWebElement_Replace(this.h, markup_ms)
+	C.QWebElement_replace(this.h, markup_ms)
 }
 
 func (this *QWebElement) ReplaceWithElement(element *QWebElement) {
-	C.QWebElement_ReplaceWithElement(this.h, element.cPointer())
+	C.QWebElement_replaceWithElement(this.h, element.cPointer())
 }
 
 func (this *QWebElement) Clone() *QWebElement {
-	_goptr := newQWebElement(C.QWebElement_Clone(this.h))
+	_goptr := newQWebElement(C.QWebElement_clone(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElement) TakeFromDocument() *QWebElement {
-	return newQWebElement(C.QWebElement_TakeFromDocument(this.h))
+	return newQWebElement(C.QWebElement_takeFromDocument(this.h))
 }
 
 func (this *QWebElement) RemoveFromDocument() {
-	C.QWebElement_RemoveFromDocument(this.h)
+	C.QWebElement_removeFromDocument(this.h)
 }
 
 func (this *QWebElement) RemoveAllChildren() {
-	C.QWebElement_RemoveAllChildren(this.h)
+	C.QWebElement_removeAllChildren(this.h)
 }
 
 func (this *QWebElement) EvaluateJavaScript(scriptSource string) *qt.QVariant {
@@ -492,7 +492,7 @@ func (this *QWebElement) EvaluateJavaScript(scriptSource string) *qt.QVariant {
 	scriptSource_ms.data = C.CString(scriptSource)
 	scriptSource_ms.len = C.size_t(len(scriptSource))
 	defer C.free(unsafe.Pointer(scriptSource_ms.data))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QWebElement_EvaluateJavaScript(this.h, scriptSource_ms)))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QWebElement_evaluateJavaScript(this.h, scriptSource_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -502,7 +502,7 @@ func (this *QWebElement) StyleProperty(name string, strategy QWebElement__StyleR
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var _ms C.struct_miqt_string = C.QWebElement_StyleProperty(this.h, name_ms, (C.int)(strategy))
+	var _ms C.struct_miqt_string = C.QWebElement_styleProperty(this.h, name_ms, (C.int)(strategy))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -517,15 +517,15 @@ func (this *QWebElement) SetStyleProperty(name string, value string) {
 	value_ms.data = C.CString(value)
 	value_ms.len = C.size_t(len(value))
 	defer C.free(unsafe.Pointer(value_ms.data))
-	C.QWebElement_SetStyleProperty(this.h, name_ms, value_ms)
+	C.QWebElement_setStyleProperty(this.h, name_ms, value_ms)
 }
 
 func (this *QWebElement) Render(painter *qt.QPainter) {
-	C.QWebElement_Render(this.h, (*C.QPainter)(painter.UnsafePointer()))
+	C.QWebElement_render(this.h, (*C.QPainter)(painter.UnsafePointer()))
 }
 
 func (this *QWebElement) Render2(painter *qt.QPainter, clipRect *qt.QRect) {
-	C.QWebElement_Render2(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QRect)(clipRect.UnsafePointer()))
+	C.QWebElement_render2(this.h, (*C.QPainter)(painter.UnsafePointer()), (*C.QRect)(clipRect.UnsafePointer()))
 }
 
 func (this *QWebElement) Attribute2(name string, defaultValue string) string {
@@ -537,7 +537,7 @@ func (this *QWebElement) Attribute2(name string, defaultValue string) string {
 	defaultValue_ms.data = C.CString(defaultValue)
 	defaultValue_ms.len = C.size_t(len(defaultValue))
 	defer C.free(unsafe.Pointer(defaultValue_ms.data))
-	var _ms C.struct_miqt_string = C.QWebElement_Attribute2(this.h, name_ms, defaultValue_ms)
+	var _ms C.struct_miqt_string = C.QWebElement_attribute2(this.h, name_ms, defaultValue_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -556,7 +556,7 @@ func (this *QWebElement) AttributeNS3(namespaceUri string, name string, defaultV
 	defaultValue_ms.data = C.CString(defaultValue)
 	defaultValue_ms.len = C.size_t(len(defaultValue))
 	defer C.free(unsafe.Pointer(defaultValue_ms.data))
-	var _ms C.struct_miqt_string = C.QWebElement_AttributeNS3(this.h, namespaceUri_ms, name_ms, defaultValue_ms)
+	var _ms C.struct_miqt_string = C.QWebElement_attributeNS3(this.h, namespaceUri_ms, name_ms, defaultValue_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -567,7 +567,7 @@ func (this *QWebElement) AttributeNames1(namespaceUri string) []string {
 	namespaceUri_ms.data = C.CString(namespaceUri)
 	namespaceUri_ms.len = C.size_t(len(namespaceUri))
 	defer C.free(unsafe.Pointer(namespaceUri_ms.data))
-	var _ma C.struct_miqt_array = C.QWebElement_AttributeNames1(this.h, namespaceUri_ms)
+	var _ma C.struct_miqt_array = C.QWebElement_attributeNames1(this.h, namespaceUri_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -581,7 +581,7 @@ func (this *QWebElement) AttributeNames1(namespaceUri string) []string {
 
 // Delete this object from C++ memory.
 func (this *QWebElement) Delete() {
-	C.QWebElement_Delete(this.h)
+	C.QWebElement_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -648,53 +648,53 @@ func NewQWebElementCollection3(param1 *QWebElementCollection) *QWebElementCollec
 }
 
 func (this *QWebElementCollection) OperatorAssign(param1 *QWebElementCollection) {
-	C.QWebElementCollection_OperatorAssign(this.h, param1.cPointer())
+	C.QWebElementCollection_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QWebElementCollection) OperatorPlus(other *QWebElementCollection) *QWebElementCollection {
-	_goptr := newQWebElementCollection(C.QWebElementCollection_OperatorPlus(this.h, other.cPointer()))
+	_goptr := newQWebElementCollection(C.QWebElementCollection_operatorPlus(this.h, other.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection) OperatorPlusAssign(other *QWebElementCollection) *QWebElementCollection {
-	return newQWebElementCollection(C.QWebElementCollection_OperatorPlusAssign(this.h, other.cPointer()))
+	return newQWebElementCollection(C.QWebElementCollection_operatorPlusAssign(this.h, other.cPointer()))
 }
 
 func (this *QWebElementCollection) Append(collection *QWebElementCollection) {
-	C.QWebElementCollection_Append(this.h, collection.cPointer())
+	C.QWebElementCollection_append(this.h, collection.cPointer())
 }
 
 func (this *QWebElementCollection) Count() int {
-	return (int)(C.QWebElementCollection_Count(this.h))
+	return (int)(C.QWebElementCollection_count(this.h))
 }
 
 func (this *QWebElementCollection) At(i int) *QWebElement {
-	_goptr := newQWebElement(C.QWebElementCollection_At(this.h, (C.int)(i)))
+	_goptr := newQWebElement(C.QWebElementCollection_at(this.h, (C.int)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection) OperatorSubscript(i int) *QWebElement {
-	_goptr := newQWebElement(C.QWebElementCollection_OperatorSubscript(this.h, (C.int)(i)))
+	_goptr := newQWebElement(C.QWebElementCollection_operatorSubscript(this.h, (C.int)(i)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection) First() *QWebElement {
-	_goptr := newQWebElement(C.QWebElementCollection_First(this.h))
+	_goptr := newQWebElement(C.QWebElementCollection_first(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection) Last() *QWebElement {
-	_goptr := newQWebElement(C.QWebElementCollection_Last(this.h))
+	_goptr := newQWebElement(C.QWebElementCollection_last(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection) ToList() []QWebElement {
-	var _ma C.struct_miqt_array = C.QWebElementCollection_ToList(this.h)
+	var _ma C.struct_miqt_array = C.QWebElementCollection_toList(this.h)
 	_ret := make([]QWebElement, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebElement)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -706,44 +706,44 @@ func (this *QWebElementCollection) ToList() []QWebElement {
 }
 
 func (this *QWebElementCollection) Begin() *QWebElementCollection__const_iterator {
-	_goptr := newQWebElementCollection__const_iterator(C.QWebElementCollection_Begin(this.h))
+	_goptr := newQWebElementCollection__const_iterator(C.QWebElementCollection_begin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection) End() *QWebElementCollection__const_iterator {
-	_goptr := newQWebElementCollection__const_iterator(C.QWebElementCollection_End(this.h))
+	_goptr := newQWebElementCollection__const_iterator(C.QWebElementCollection_end(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection) ConstBegin() *QWebElementCollection__const_iterator {
-	_goptr := newQWebElementCollection__const_iterator(C.QWebElementCollection_ConstBegin(this.h))
+	_goptr := newQWebElementCollection__const_iterator(C.QWebElementCollection_constBegin(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection) ConstEnd() *QWebElementCollection__const_iterator {
-	_goptr := newQWebElementCollection__const_iterator(C.QWebElementCollection_ConstEnd(this.h))
+	_goptr := newQWebElementCollection__const_iterator(C.QWebElementCollection_constEnd(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection) Begin2() *QWebElementCollection__iterator {
-	_goptr := newQWebElementCollection__iterator(C.QWebElementCollection_Begin2(this.h))
+	_goptr := newQWebElementCollection__iterator(C.QWebElementCollection_begin2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection) End2() *QWebElementCollection__iterator {
-	_goptr := newQWebElementCollection__iterator(C.QWebElementCollection_End2(this.h))
+	_goptr := newQWebElementCollection__iterator(C.QWebElementCollection_end2(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QWebElementCollection) Delete() {
-	C.QWebElementCollection_Delete(this.h)
+	C.QWebElementCollection_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -800,82 +800,82 @@ func NewQWebElementCollection__const_iterator2(o *QWebElementCollection__const_i
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorMultiply() *QWebElement {
-	_goptr := newQWebElement(C.QWebElementCollection__const_iterator_OperatorMultiply(this.h))
+	_goptr := newQWebElement(C.QWebElementCollection__const_iterator_operatorMultiply(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorEqual(o *QWebElementCollection__const_iterator) bool {
-	return (bool)(C.QWebElementCollection__const_iterator_OperatorEqual(this.h, o.cPointer()))
+	return (bool)(C.QWebElementCollection__const_iterator_operatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorNotEqual(o *QWebElementCollection__const_iterator) bool {
-	return (bool)(C.QWebElementCollection__const_iterator_OperatorNotEqual(this.h, o.cPointer()))
+	return (bool)(C.QWebElementCollection__const_iterator_operatorNotEqual(this.h, o.cPointer()))
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorLesser(o *QWebElementCollection__const_iterator) bool {
-	return (bool)(C.QWebElementCollection__const_iterator_OperatorLesser(this.h, o.cPointer()))
+	return (bool)(C.QWebElementCollection__const_iterator_operatorLesser(this.h, o.cPointer()))
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorLesserOrEqual(o *QWebElementCollection__const_iterator) bool {
-	return (bool)(C.QWebElementCollection__const_iterator_OperatorLesserOrEqual(this.h, o.cPointer()))
+	return (bool)(C.QWebElementCollection__const_iterator_operatorLesserOrEqual(this.h, o.cPointer()))
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorGreater(o *QWebElementCollection__const_iterator) bool {
-	return (bool)(C.QWebElementCollection__const_iterator_OperatorGreater(this.h, o.cPointer()))
+	return (bool)(C.QWebElementCollection__const_iterator_operatorGreater(this.h, o.cPointer()))
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorGreaterOrEqual(o *QWebElementCollection__const_iterator) bool {
-	return (bool)(C.QWebElementCollection__const_iterator_OperatorGreaterOrEqual(this.h, o.cPointer()))
+	return (bool)(C.QWebElementCollection__const_iterator_operatorGreaterOrEqual(this.h, o.cPointer()))
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorPlusPlus() *QWebElementCollection__const_iterator {
-	return newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_OperatorPlusPlus(this.h))
+	return newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_operatorPlusPlus(this.h))
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorPlusPlusWithInt(param1 int) *QWebElementCollection__const_iterator {
-	_goptr := newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1)))
+	_goptr := newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_operatorPlusPlusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorMinusMinus() *QWebElementCollection__const_iterator {
-	return newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_OperatorMinusMinus(this.h))
+	return newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_operatorMinusMinus(this.h))
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorMinusMinusWithInt(param1 int) *QWebElementCollection__const_iterator {
-	_goptr := newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1)))
+	_goptr := newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_operatorMinusMinusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorPlusAssign(j int) *QWebElementCollection__const_iterator {
-	return newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_OperatorPlusAssign(this.h, (C.int)(j)))
+	return newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_operatorPlusAssign(this.h, (C.int)(j)))
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorMinusAssign(j int) *QWebElementCollection__const_iterator {
-	return newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_OperatorMinusAssign(this.h, (C.int)(j)))
+	return newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_operatorMinusAssign(this.h, (C.int)(j)))
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorPlus(j int) *QWebElementCollection__const_iterator {
-	_goptr := newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_OperatorPlus(this.h, (C.int)(j)))
+	_goptr := newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_operatorPlus(this.h, (C.int)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorMinus(j int) *QWebElementCollection__const_iterator {
-	_goptr := newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_OperatorMinus(this.h, (C.int)(j)))
+	_goptr := newQWebElementCollection__const_iterator(C.QWebElementCollection__const_iterator_operatorMinus(this.h, (C.int)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection__const_iterator) OperatorMinusWithQWebElementCollectionconstIterator(j QWebElementCollection__const_iterator) int {
-	return (int)(C.QWebElementCollection__const_iterator_OperatorMinusWithQWebElementCollectionconstIterator(this.h, j.cPointer()))
+	return (int)(C.QWebElementCollection__const_iterator_operatorMinusWithQWebElementCollectionconstIterator(this.h, j.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QWebElementCollection__const_iterator) Delete() {
-	C.QWebElementCollection__const_iterator_Delete(this.h)
+	C.QWebElementCollection__const_iterator_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -932,82 +932,82 @@ func NewQWebElementCollection__iterator2(o *QWebElementCollection__iterator) *QW
 }
 
 func (this *QWebElementCollection__iterator) OperatorMultiply() *QWebElement {
-	_goptr := newQWebElement(C.QWebElementCollection__iterator_OperatorMultiply(this.h))
+	_goptr := newQWebElement(C.QWebElementCollection__iterator_operatorMultiply(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection__iterator) OperatorEqual(o *QWebElementCollection__iterator) bool {
-	return (bool)(C.QWebElementCollection__iterator_OperatorEqual(this.h, o.cPointer()))
+	return (bool)(C.QWebElementCollection__iterator_operatorEqual(this.h, o.cPointer()))
 }
 
 func (this *QWebElementCollection__iterator) OperatorNotEqual(o *QWebElementCollection__iterator) bool {
-	return (bool)(C.QWebElementCollection__iterator_OperatorNotEqual(this.h, o.cPointer()))
+	return (bool)(C.QWebElementCollection__iterator_operatorNotEqual(this.h, o.cPointer()))
 }
 
 func (this *QWebElementCollection__iterator) OperatorLesser(o *QWebElementCollection__iterator) bool {
-	return (bool)(C.QWebElementCollection__iterator_OperatorLesser(this.h, o.cPointer()))
+	return (bool)(C.QWebElementCollection__iterator_operatorLesser(this.h, o.cPointer()))
 }
 
 func (this *QWebElementCollection__iterator) OperatorLesserOrEqual(o *QWebElementCollection__iterator) bool {
-	return (bool)(C.QWebElementCollection__iterator_OperatorLesserOrEqual(this.h, o.cPointer()))
+	return (bool)(C.QWebElementCollection__iterator_operatorLesserOrEqual(this.h, o.cPointer()))
 }
 
 func (this *QWebElementCollection__iterator) OperatorGreater(o *QWebElementCollection__iterator) bool {
-	return (bool)(C.QWebElementCollection__iterator_OperatorGreater(this.h, o.cPointer()))
+	return (bool)(C.QWebElementCollection__iterator_operatorGreater(this.h, o.cPointer()))
 }
 
 func (this *QWebElementCollection__iterator) OperatorGreaterOrEqual(o *QWebElementCollection__iterator) bool {
-	return (bool)(C.QWebElementCollection__iterator_OperatorGreaterOrEqual(this.h, o.cPointer()))
+	return (bool)(C.QWebElementCollection__iterator_operatorGreaterOrEqual(this.h, o.cPointer()))
 }
 
 func (this *QWebElementCollection__iterator) OperatorPlusPlus() *QWebElementCollection__iterator {
-	return newQWebElementCollection__iterator(C.QWebElementCollection__iterator_OperatorPlusPlus(this.h))
+	return newQWebElementCollection__iterator(C.QWebElementCollection__iterator_operatorPlusPlus(this.h))
 }
 
 func (this *QWebElementCollection__iterator) OperatorPlusPlusWithInt(param1 int) *QWebElementCollection__iterator {
-	_goptr := newQWebElementCollection__iterator(C.QWebElementCollection__iterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1)))
+	_goptr := newQWebElementCollection__iterator(C.QWebElementCollection__iterator_operatorPlusPlusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection__iterator) OperatorMinusMinus() *QWebElementCollection__iterator {
-	return newQWebElementCollection__iterator(C.QWebElementCollection__iterator_OperatorMinusMinus(this.h))
+	return newQWebElementCollection__iterator(C.QWebElementCollection__iterator_operatorMinusMinus(this.h))
 }
 
 func (this *QWebElementCollection__iterator) OperatorMinusMinusWithInt(param1 int) *QWebElementCollection__iterator {
-	_goptr := newQWebElementCollection__iterator(C.QWebElementCollection__iterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1)))
+	_goptr := newQWebElementCollection__iterator(C.QWebElementCollection__iterator_operatorMinusMinusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection__iterator) OperatorPlusAssign(j int) *QWebElementCollection__iterator {
-	return newQWebElementCollection__iterator(C.QWebElementCollection__iterator_OperatorPlusAssign(this.h, (C.int)(j)))
+	return newQWebElementCollection__iterator(C.QWebElementCollection__iterator_operatorPlusAssign(this.h, (C.int)(j)))
 }
 
 func (this *QWebElementCollection__iterator) OperatorMinusAssign(j int) *QWebElementCollection__iterator {
-	return newQWebElementCollection__iterator(C.QWebElementCollection__iterator_OperatorMinusAssign(this.h, (C.int)(j)))
+	return newQWebElementCollection__iterator(C.QWebElementCollection__iterator_operatorMinusAssign(this.h, (C.int)(j)))
 }
 
 func (this *QWebElementCollection__iterator) OperatorPlus(j int) *QWebElementCollection__iterator {
-	_goptr := newQWebElementCollection__iterator(C.QWebElementCollection__iterator_OperatorPlus(this.h, (C.int)(j)))
+	_goptr := newQWebElementCollection__iterator(C.QWebElementCollection__iterator_operatorPlus(this.h, (C.int)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection__iterator) OperatorMinus(j int) *QWebElementCollection__iterator {
-	_goptr := newQWebElementCollection__iterator(C.QWebElementCollection__iterator_OperatorMinus(this.h, (C.int)(j)))
+	_goptr := newQWebElementCollection__iterator(C.QWebElementCollection__iterator_operatorMinus(this.h, (C.int)(j)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebElementCollection__iterator) OperatorMinusWithQWebElementCollectioniterator(j QWebElementCollection__iterator) int {
-	return (int)(C.QWebElementCollection__iterator_OperatorMinusWithQWebElementCollectioniterator(this.h, j.cPointer()))
+	return (int)(C.QWebElementCollection__iterator_operatorMinusWithQWebElementCollectioniterator(this.h, j.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QWebElementCollection__iterator) Delete() {
-	C.QWebElementCollection__iterator_Delete(this.h)
+	C.QWebElementCollection__iterator_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

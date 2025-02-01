@@ -265,158 +265,158 @@ func NewQPageSize9(size *QSizeF, units QPageSize__Unit, name string, matchPolicy
 }
 
 func (this *QPageSize) OperatorAssign(other *QPageSize) {
-	C.QPageSize_OperatorAssign(this.h, other.cPointer())
+	C.QPageSize_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QPageSize) Swap(other *QPageSize) {
-	C.QPageSize_Swap(this.h, other.cPointer())
+	C.QPageSize_swap(this.h, other.cPointer())
 }
 
 func (this *QPageSize) IsEquivalentTo(other *QPageSize) bool {
-	return (bool)(C.QPageSize_IsEquivalentTo(this.h, other.cPointer()))
+	return (bool)(C.QPageSize_isEquivalentTo(this.h, other.cPointer()))
 }
 
 func (this *QPageSize) IsValid() bool {
-	return (bool)(C.QPageSize_IsValid(this.h))
+	return (bool)(C.QPageSize_isValid(this.h))
 }
 
 func (this *QPageSize) Key() string {
-	var _ms C.struct_miqt_string = C.QPageSize_Key(this.h)
+	var _ms C.struct_miqt_string = C.QPageSize_key(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPageSize) Name() string {
-	var _ms C.struct_miqt_string = C.QPageSize_Name(this.h)
+	var _ms C.struct_miqt_string = C.QPageSize_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPageSize) Id() QPageSize__PageSizeId {
-	return (QPageSize__PageSizeId)(C.QPageSize_Id(this.h))
+	return (QPageSize__PageSizeId)(C.QPageSize_id(this.h))
 }
 
 func (this *QPageSize) WindowsId() int {
-	return (int)(C.QPageSize_WindowsId(this.h))
+	return (int)(C.QPageSize_windowsId(this.h))
 }
 
 func (this *QPageSize) DefinitionSize() *QSizeF {
-	_goptr := newQSizeF(C.QPageSize_DefinitionSize(this.h))
+	_goptr := newQSizeF(C.QPageSize_definitionSize(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageSize) DefinitionUnits() QPageSize__Unit {
-	return (QPageSize__Unit)(C.QPageSize_DefinitionUnits(this.h))
+	return (QPageSize__Unit)(C.QPageSize_definitionUnits(this.h))
 }
 
 func (this *QPageSize) Size(units QPageSize__Unit) *QSizeF {
-	_goptr := newQSizeF(C.QPageSize_Size(this.h, (C.int)(units)))
+	_goptr := newQSizeF(C.QPageSize_size(this.h, (C.int)(units)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageSize) SizePoints() *QSize {
-	_goptr := newQSize(C.QPageSize_SizePoints(this.h))
+	_goptr := newQSize(C.QPageSize_sizePoints(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageSize) SizePixels(resolution int) *QSize {
-	_goptr := newQSize(C.QPageSize_SizePixels(this.h, (C.int)(resolution)))
+	_goptr := newQSize(C.QPageSize_sizePixels(this.h, (C.int)(resolution)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageSize) Rect(units QPageSize__Unit) *QRectF {
-	_goptr := newQRectF(C.QPageSize_Rect(this.h, (C.int)(units)))
+	_goptr := newQRectF(C.QPageSize_rect(this.h, (C.int)(units)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageSize) RectPoints() *QRect {
-	_goptr := newQRect(C.QPageSize_RectPoints(this.h))
+	_goptr := newQRect(C.QPageSize_rectPoints(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPageSize) RectPixels(resolution int) *QRect {
-	_goptr := newQRect(C.QPageSize_RectPixels(this.h, (C.int)(resolution)))
+	_goptr := newQRect(C.QPageSize_rectPixels(this.h, (C.int)(resolution)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPageSize_KeyWithPageSizeId(pageSizeId QPageSize__PageSizeId) string {
-	var _ms C.struct_miqt_string = C.QPageSize_KeyWithPageSizeId((C.int)(pageSizeId))
+	var _ms C.struct_miqt_string = C.QPageSize_keyWithPageSizeId((C.int)(pageSizeId))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QPageSize_NameWithPageSizeId(pageSizeId QPageSize__PageSizeId) string {
-	var _ms C.struct_miqt_string = C.QPageSize_NameWithPageSizeId((C.int)(pageSizeId))
+	var _ms C.struct_miqt_string = C.QPageSize_nameWithPageSizeId((C.int)(pageSizeId))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QPageSize_IdWithPointSize(pointSize *QSize) QPageSize__PageSizeId {
-	return (QPageSize__PageSizeId)(C.QPageSize_IdWithPointSize(pointSize.cPointer()))
+	return (QPageSize__PageSizeId)(C.QPageSize_idWithPointSize(pointSize.cPointer()))
 }
 
 func QPageSize_Id2(size *QSizeF, units QPageSize__Unit) QPageSize__PageSizeId {
-	return (QPageSize__PageSizeId)(C.QPageSize_Id2(size.cPointer(), (C.int)(units)))
+	return (QPageSize__PageSizeId)(C.QPageSize_id2(size.cPointer(), (C.int)(units)))
 }
 
 func QPageSize_IdWithWindowsId(windowsId int) QPageSize__PageSizeId {
-	return (QPageSize__PageSizeId)(C.QPageSize_IdWithWindowsId((C.int)(windowsId)))
+	return (QPageSize__PageSizeId)(C.QPageSize_idWithWindowsId((C.int)(windowsId)))
 }
 
 func QPageSize_WindowsIdWithPageSizeId(pageSizeId QPageSize__PageSizeId) int {
-	return (int)(C.QPageSize_WindowsIdWithPageSizeId((C.int)(pageSizeId)))
+	return (int)(C.QPageSize_windowsIdWithPageSizeId((C.int)(pageSizeId)))
 }
 
 func QPageSize_DefinitionSizeWithPageSizeId(pageSizeId QPageSize__PageSizeId) *QSizeF {
-	_goptr := newQSizeF(C.QPageSize_DefinitionSizeWithPageSizeId((C.int)(pageSizeId)))
+	_goptr := newQSizeF(C.QPageSize_definitionSizeWithPageSizeId((C.int)(pageSizeId)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPageSize_DefinitionUnitsWithPageSizeId(pageSizeId QPageSize__PageSizeId) QPageSize__Unit {
-	return (QPageSize__Unit)(C.QPageSize_DefinitionUnitsWithPageSizeId((C.int)(pageSizeId)))
+	return (QPageSize__Unit)(C.QPageSize_definitionUnitsWithPageSizeId((C.int)(pageSizeId)))
 }
 
 func QPageSize_Size2(pageSizeId QPageSize__PageSizeId, units QPageSize__Unit) *QSizeF {
-	_goptr := newQSizeF(C.QPageSize_Size2((C.int)(pageSizeId), (C.int)(units)))
+	_goptr := newQSizeF(C.QPageSize_size2((C.int)(pageSizeId), (C.int)(units)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPageSize_SizePointsWithPageSizeId(pageSizeId QPageSize__PageSizeId) *QSize {
-	_goptr := newQSize(C.QPageSize_SizePointsWithPageSizeId((C.int)(pageSizeId)))
+	_goptr := newQSize(C.QPageSize_sizePointsWithPageSizeId((C.int)(pageSizeId)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPageSize_SizePixels2(pageSizeId QPageSize__PageSizeId, resolution int) *QSize {
-	_goptr := newQSize(C.QPageSize_SizePixels2((C.int)(pageSizeId), (C.int)(resolution)))
+	_goptr := newQSize(C.QPageSize_sizePixels2((C.int)(pageSizeId), (C.int)(resolution)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPageSize_Id22(pointSize *QSize, matchPolicy QPageSize__SizeMatchPolicy) QPageSize__PageSizeId {
-	return (QPageSize__PageSizeId)(C.QPageSize_Id22(pointSize.cPointer(), (C.int)(matchPolicy)))
+	return (QPageSize__PageSizeId)(C.QPageSize_id22(pointSize.cPointer(), (C.int)(matchPolicy)))
 }
 
 func QPageSize_Id3(size *QSizeF, units QPageSize__Unit, matchPolicy QPageSize__SizeMatchPolicy) QPageSize__PageSizeId {
-	return (QPageSize__PageSizeId)(C.QPageSize_Id3(size.cPointer(), (C.int)(units), (C.int)(matchPolicy)))
+	return (QPageSize__PageSizeId)(C.QPageSize_id3(size.cPointer(), (C.int)(units), (C.int)(matchPolicy)))
 }
 
 // Delete this object from C++ memory.
 func (this *QPageSize) Delete() {
-	C.QPageSize_Delete(this.h)
+	C.QPageSize_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

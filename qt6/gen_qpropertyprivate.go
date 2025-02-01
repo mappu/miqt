@@ -47,7 +47,7 @@ func UnsafeNewQUntypedPropertyData(h unsafe.Pointer) *QUntypedPropertyData {
 
 // Delete this object from C++ memory.
 func (this *QUntypedPropertyData) Delete() {
-	C.QUntypedPropertyData_Delete(this.h)
+	C.QUntypedPropertyData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -93,7 +93,7 @@ func UnsafeNewQPropertyProxyBindingData(h unsafe.Pointer) *QPropertyProxyBinding
 
 // Delete this object from C++ memory.
 func (this *QPropertyProxyBindingData) Delete() {
-	C.QPropertyProxyBindingData_Delete(this.h)
+	C.QPropertyProxyBindingData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

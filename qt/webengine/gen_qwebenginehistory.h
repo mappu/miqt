@@ -27,34 +27,34 @@ typedef struct QWebEngineHistoryItem QWebEngineHistoryItem;
 #endif
 
 QWebEngineHistoryItem* QWebEngineHistoryItem_new(QWebEngineHistoryItem* other);
-void QWebEngineHistoryItem_OperatorAssign(QWebEngineHistoryItem* self, QWebEngineHistoryItem* other);
-QUrl* QWebEngineHistoryItem_OriginalUrl(const QWebEngineHistoryItem* self);
-QUrl* QWebEngineHistoryItem_Url(const QWebEngineHistoryItem* self);
-struct miqt_string QWebEngineHistoryItem_Title(const QWebEngineHistoryItem* self);
-QDateTime* QWebEngineHistoryItem_LastVisited(const QWebEngineHistoryItem* self);
-QUrl* QWebEngineHistoryItem_IconUrl(const QWebEngineHistoryItem* self);
-bool QWebEngineHistoryItem_IsValid(const QWebEngineHistoryItem* self);
-void QWebEngineHistoryItem_Swap(QWebEngineHistoryItem* self, QWebEngineHistoryItem* other);
-void QWebEngineHistoryItem_Delete(QWebEngineHistoryItem* self);
+void QWebEngineHistoryItem_operatorAssign(QWebEngineHistoryItem* self, QWebEngineHistoryItem* other);
+QUrl* QWebEngineHistoryItem_originalUrl(const QWebEngineHistoryItem* self);
+QUrl* QWebEngineHistoryItem_url(const QWebEngineHistoryItem* self);
+struct miqt_string QWebEngineHistoryItem_title(const QWebEngineHistoryItem* self);
+QDateTime* QWebEngineHistoryItem_lastVisited(const QWebEngineHistoryItem* self);
+QUrl* QWebEngineHistoryItem_iconUrl(const QWebEngineHistoryItem* self);
+bool QWebEngineHistoryItem_isValid(const QWebEngineHistoryItem* self);
+void QWebEngineHistoryItem_swap(QWebEngineHistoryItem* self, QWebEngineHistoryItem* other);
+void QWebEngineHistoryItem_delete(QWebEngineHistoryItem* self);
 
-void QWebEngineHistory_Clear(QWebEngineHistory* self);
-struct miqt_array /* of QWebEngineHistoryItem* */  QWebEngineHistory_Items(const QWebEngineHistory* self);
-struct miqt_array /* of QWebEngineHistoryItem* */  QWebEngineHistory_BackItems(const QWebEngineHistory* self, int maxItems);
-struct miqt_array /* of QWebEngineHistoryItem* */  QWebEngineHistory_ForwardItems(const QWebEngineHistory* self, int maxItems);
-bool QWebEngineHistory_CanGoBack(const QWebEngineHistory* self);
-bool QWebEngineHistory_CanGoForward(const QWebEngineHistory* self);
-void QWebEngineHistory_Back(QWebEngineHistory* self);
-void QWebEngineHistory_Forward(QWebEngineHistory* self);
-void QWebEngineHistory_GoToItem(QWebEngineHistory* self, QWebEngineHistoryItem* item);
-QWebEngineHistoryItem* QWebEngineHistory_BackItem(const QWebEngineHistory* self);
-QWebEngineHistoryItem* QWebEngineHistory_CurrentItem(const QWebEngineHistory* self);
-QWebEngineHistoryItem* QWebEngineHistory_ForwardItem(const QWebEngineHistory* self);
-QWebEngineHistoryItem* QWebEngineHistory_ItemAt(const QWebEngineHistory* self, int i);
-int QWebEngineHistory_CurrentItemIndex(const QWebEngineHistory* self);
-int QWebEngineHistory_Count(const QWebEngineHistory* self);
+void QWebEngineHistory_clear(QWebEngineHistory* self);
+struct miqt_array /* of QWebEngineHistoryItem* */  QWebEngineHistory_items(const QWebEngineHistory* self);
+struct miqt_array /* of QWebEngineHistoryItem* */  QWebEngineHistory_backItems(const QWebEngineHistory* self, int maxItems);
+struct miqt_array /* of QWebEngineHistoryItem* */  QWebEngineHistory_forwardItems(const QWebEngineHistory* self, int maxItems);
+bool QWebEngineHistory_canGoBack(const QWebEngineHistory* self);
+bool QWebEngineHistory_canGoForward(const QWebEngineHistory* self);
+void QWebEngineHistory_back(QWebEngineHistory* self);
+void QWebEngineHistory_forward(QWebEngineHistory* self);
+void QWebEngineHistory_goToItem(QWebEngineHistory* self, QWebEngineHistoryItem* item);
+QWebEngineHistoryItem* QWebEngineHistory_backItem(const QWebEngineHistory* self);
+QWebEngineHistoryItem* QWebEngineHistory_currentItem(const QWebEngineHistory* self);
+QWebEngineHistoryItem* QWebEngineHistory_forwardItem(const QWebEngineHistory* self);
+QWebEngineHistoryItem* QWebEngineHistory_itemAt(const QWebEngineHistory* self, int i);
+int QWebEngineHistory_currentItemIndex(const QWebEngineHistory* self);
+int QWebEngineHistory_count(const QWebEngineHistory* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

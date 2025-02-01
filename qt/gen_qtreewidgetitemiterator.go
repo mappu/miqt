@@ -101,44 +101,44 @@ func NewQTreeWidgetItemIterator5(item *QTreeWidgetItem, flags QTreeWidgetItemIte
 }
 
 func (this *QTreeWidgetItemIterator) OperatorAssign(it *QTreeWidgetItemIterator) {
-	C.QTreeWidgetItemIterator_OperatorAssign(this.h, it.cPointer())
+	C.QTreeWidgetItemIterator_operatorAssign(this.h, it.cPointer())
 }
 
 func (this *QTreeWidgetItemIterator) OperatorPlusPlus() *QTreeWidgetItemIterator {
-	return newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_OperatorPlusPlus(this.h))
+	return newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_operatorPlusPlus(this.h))
 }
 
 func (this *QTreeWidgetItemIterator) OperatorPlusPlusWithInt(param1 int) *QTreeWidgetItemIterator {
-	_goptr := newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_OperatorPlusPlusWithInt(this.h, (C.int)(param1)))
+	_goptr := newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_operatorPlusPlusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTreeWidgetItemIterator) OperatorPlusAssign(n int) *QTreeWidgetItemIterator {
-	return newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_OperatorPlusAssign(this.h, (C.int)(n)))
+	return newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_operatorPlusAssign(this.h, (C.int)(n)))
 }
 
 func (this *QTreeWidgetItemIterator) OperatorMinusMinus() *QTreeWidgetItemIterator {
-	return newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_OperatorMinusMinus(this.h))
+	return newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_operatorMinusMinus(this.h))
 }
 
 func (this *QTreeWidgetItemIterator) OperatorMinusMinusWithInt(param1 int) *QTreeWidgetItemIterator {
-	_goptr := newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_OperatorMinusMinusWithInt(this.h, (C.int)(param1)))
+	_goptr := newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_operatorMinusMinusWithInt(this.h, (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTreeWidgetItemIterator) OperatorMinusAssign(n int) *QTreeWidgetItemIterator {
-	return newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_OperatorMinusAssign(this.h, (C.int)(n)))
+	return newQTreeWidgetItemIterator(C.QTreeWidgetItemIterator_operatorMinusAssign(this.h, (C.int)(n)))
 }
 
 func (this *QTreeWidgetItemIterator) OperatorMultiply() *QTreeWidgetItem {
-	return newQTreeWidgetItem(C.QTreeWidgetItemIterator_OperatorMultiply(this.h))
+	return newQTreeWidgetItem(C.QTreeWidgetItemIterator_operatorMultiply(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QTreeWidgetItemIterator) Delete() {
-	C.QTreeWidgetItemIterator_Delete(this.h)
+	C.QTreeWidgetItemIterator_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

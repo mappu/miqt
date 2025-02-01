@@ -59,97 +59,97 @@
 extern "C" {
 #endif
 
-QRect* miqt_exec_callback_QUndoView_VisualRect(const QUndoView*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QUndoView_ScrollTo(QUndoView*, intptr_t, QModelIndex*, int);
-QModelIndex* miqt_exec_callback_QUndoView_IndexAt(const QUndoView*, intptr_t, QPoint*);
-void miqt_exec_callback_QUndoView_DoItemsLayout(QUndoView*, intptr_t);
-void miqt_exec_callback_QUndoView_Reset(QUndoView*, intptr_t);
-void miqt_exec_callback_QUndoView_SetRootIndex(QUndoView*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QUndoView_Event(QUndoView*, intptr_t, QEvent*);
-void miqt_exec_callback_QUndoView_ScrollContentsBy(QUndoView*, intptr_t, int, int);
-void miqt_exec_callback_QUndoView_DataChanged(QUndoView*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
-void miqt_exec_callback_QUndoView_RowsInserted(QUndoView*, intptr_t, QModelIndex*, int, int);
-void miqt_exec_callback_QUndoView_RowsAboutToBeRemoved(QUndoView*, intptr_t, QModelIndex*, int, int);
-void miqt_exec_callback_QUndoView_MouseMoveEvent(QUndoView*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QUndoView_MouseReleaseEvent(QUndoView*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QUndoView_WheelEvent(QUndoView*, intptr_t, QWheelEvent*);
-void miqt_exec_callback_QUndoView_TimerEvent(QUndoView*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QUndoView_ResizeEvent(QUndoView*, intptr_t, QResizeEvent*);
-void miqt_exec_callback_QUndoView_DragMoveEvent(QUndoView*, intptr_t, QDragMoveEvent*);
-void miqt_exec_callback_QUndoView_DragLeaveEvent(QUndoView*, intptr_t, QDragLeaveEvent*);
-void miqt_exec_callback_QUndoView_DropEvent(QUndoView*, intptr_t, QDropEvent*);
-void miqt_exec_callback_QUndoView_StartDrag(QUndoView*, intptr_t, int);
-void miqt_exec_callback_QUndoView_InitViewItemOption(const QUndoView*, intptr_t, QStyleOptionViewItem*);
-void miqt_exec_callback_QUndoView_PaintEvent(QUndoView*, intptr_t, QPaintEvent*);
-int miqt_exec_callback_QUndoView_HorizontalOffset(const QUndoView*, intptr_t);
-int miqt_exec_callback_QUndoView_VerticalOffset(const QUndoView*, intptr_t);
-QModelIndex* miqt_exec_callback_QUndoView_MoveCursor(QUndoView*, intptr_t, int, int);
-void miqt_exec_callback_QUndoView_SetSelection(QUndoView*, intptr_t, QRect*, int);
-QRegion* miqt_exec_callback_QUndoView_VisualRegionForSelection(const QUndoView*, intptr_t, QItemSelection*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QUndoView_SelectedIndexes(const QUndoView*, intptr_t);
-void miqt_exec_callback_QUndoView_UpdateGeometries(QUndoView*, intptr_t);
-bool miqt_exec_callback_QUndoView_IsIndexHidden(const QUndoView*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QUndoView_SelectionChanged(QUndoView*, intptr_t, QItemSelection*, QItemSelection*);
-void miqt_exec_callback_QUndoView_CurrentChanged(QUndoView*, intptr_t, QModelIndex*, QModelIndex*);
-QSize* miqt_exec_callback_QUndoView_ViewportSizeHint(const QUndoView*, intptr_t);
-void miqt_exec_callback_QUndoView_SetModel(QUndoView*, intptr_t, QAbstractItemModel*);
-void miqt_exec_callback_QUndoView_SetSelectionModel(QUndoView*, intptr_t, QItemSelectionModel*);
-void miqt_exec_callback_QUndoView_KeyboardSearch(QUndoView*, intptr_t, struct miqt_string);
-int miqt_exec_callback_QUndoView_SizeHintForRow(const QUndoView*, intptr_t, int);
-int miqt_exec_callback_QUndoView_SizeHintForColumn(const QUndoView*, intptr_t, int);
-QAbstractItemDelegate* miqt_exec_callback_QUndoView_ItemDelegateForIndex(const QUndoView*, intptr_t, QModelIndex*);
-QVariant* miqt_exec_callback_QUndoView_InputMethodQuery(const QUndoView*, intptr_t, int);
-void miqt_exec_callback_QUndoView_SelectAll(QUndoView*, intptr_t);
-void miqt_exec_callback_QUndoView_UpdateEditorData(QUndoView*, intptr_t);
-void miqt_exec_callback_QUndoView_UpdateEditorGeometries(QUndoView*, intptr_t);
-void miqt_exec_callback_QUndoView_VerticalScrollbarAction(QUndoView*, intptr_t, int);
-void miqt_exec_callback_QUndoView_HorizontalScrollbarAction(QUndoView*, intptr_t, int);
-void miqt_exec_callback_QUndoView_VerticalScrollbarValueChanged(QUndoView*, intptr_t, int);
-void miqt_exec_callback_QUndoView_HorizontalScrollbarValueChanged(QUndoView*, intptr_t, int);
-void miqt_exec_callback_QUndoView_CloseEditor(QUndoView*, intptr_t, QWidget*, int);
-void miqt_exec_callback_QUndoView_CommitData(QUndoView*, intptr_t, QWidget*);
-void miqt_exec_callback_QUndoView_EditorDestroyed(QUndoView*, intptr_t, QObject*);
-bool miqt_exec_callback_QUndoView_Edit2(QUndoView*, intptr_t, QModelIndex*, int, QEvent*);
-int miqt_exec_callback_QUndoView_SelectionCommand(const QUndoView*, intptr_t, QModelIndex*, QEvent*);
-bool miqt_exec_callback_QUndoView_FocusNextPrevChild(QUndoView*, intptr_t, bool);
-bool miqt_exec_callback_QUndoView_ViewportEvent(QUndoView*, intptr_t, QEvent*);
-void miqt_exec_callback_QUndoView_MousePressEvent(QUndoView*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QUndoView_MouseDoubleClickEvent(QUndoView*, intptr_t, QMouseEvent*);
-void miqt_exec_callback_QUndoView_DragEnterEvent(QUndoView*, intptr_t, QDragEnterEvent*);
-void miqt_exec_callback_QUndoView_FocusInEvent(QUndoView*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QUndoView_FocusOutEvent(QUndoView*, intptr_t, QFocusEvent*);
-void miqt_exec_callback_QUndoView_KeyPressEvent(QUndoView*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QUndoView_InputMethodEvent(QUndoView*, intptr_t, QInputMethodEvent*);
-bool miqt_exec_callback_QUndoView_EventFilter(QUndoView*, intptr_t, QObject*, QEvent*);
-QSize* miqt_exec_callback_QUndoView_MinimumSizeHint(const QUndoView*, intptr_t);
-QSize* miqt_exec_callback_QUndoView_SizeHint(const QUndoView*, intptr_t);
-void miqt_exec_callback_QUndoView_SetupViewport(QUndoView*, intptr_t, QWidget*);
-void miqt_exec_callback_QUndoView_ContextMenuEvent(QUndoView*, intptr_t, QContextMenuEvent*);
-void miqt_exec_callback_QUndoView_ChangeEvent(QUndoView*, intptr_t, QEvent*);
-void miqt_exec_callback_QUndoView_InitStyleOption(const QUndoView*, intptr_t, QStyleOptionFrame*);
-int miqt_exec_callback_QUndoView_DevType(const QUndoView*, intptr_t);
-void miqt_exec_callback_QUndoView_SetVisible(QUndoView*, intptr_t, bool);
-int miqt_exec_callback_QUndoView_HeightForWidth(const QUndoView*, intptr_t, int);
-bool miqt_exec_callback_QUndoView_HasHeightForWidth(const QUndoView*, intptr_t);
-QPaintEngine* miqt_exec_callback_QUndoView_PaintEngine(const QUndoView*, intptr_t);
-void miqt_exec_callback_QUndoView_KeyReleaseEvent(QUndoView*, intptr_t, QKeyEvent*);
-void miqt_exec_callback_QUndoView_EnterEvent(QUndoView*, intptr_t, QEnterEvent*);
-void miqt_exec_callback_QUndoView_LeaveEvent(QUndoView*, intptr_t, QEvent*);
-void miqt_exec_callback_QUndoView_MoveEvent(QUndoView*, intptr_t, QMoveEvent*);
-void miqt_exec_callback_QUndoView_CloseEvent(QUndoView*, intptr_t, QCloseEvent*);
-void miqt_exec_callback_QUndoView_TabletEvent(QUndoView*, intptr_t, QTabletEvent*);
-void miqt_exec_callback_QUndoView_ActionEvent(QUndoView*, intptr_t, QActionEvent*);
-void miqt_exec_callback_QUndoView_ShowEvent(QUndoView*, intptr_t, QShowEvent*);
-void miqt_exec_callback_QUndoView_HideEvent(QUndoView*, intptr_t, QHideEvent*);
-bool miqt_exec_callback_QUndoView_NativeEvent(QUndoView*, intptr_t, struct miqt_string, void*, intptr_t*);
-int miqt_exec_callback_QUndoView_Metric(const QUndoView*, intptr_t, int);
-void miqt_exec_callback_QUndoView_InitPainter(const QUndoView*, intptr_t, QPainter*);
-QPaintDevice* miqt_exec_callback_QUndoView_Redirected(const QUndoView*, intptr_t, QPoint*);
-QPainter* miqt_exec_callback_QUndoView_SharedPainter(const QUndoView*, intptr_t);
-void miqt_exec_callback_QUndoView_ChildEvent(QUndoView*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QUndoView_CustomEvent(QUndoView*, intptr_t, QEvent*);
-void miqt_exec_callback_QUndoView_ConnectNotify(QUndoView*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QUndoView_DisconnectNotify(QUndoView*, intptr_t, QMetaMethod*);
+QRect* miqt_exec_callback_QUndoView_visualRect(const QUndoView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QUndoView_scrollTo(QUndoView*, intptr_t, QModelIndex*, int);
+QModelIndex* miqt_exec_callback_QUndoView_indexAt(const QUndoView*, intptr_t, QPoint*);
+void miqt_exec_callback_QUndoView_doItemsLayout(QUndoView*, intptr_t);
+void miqt_exec_callback_QUndoView_reset(QUndoView*, intptr_t);
+void miqt_exec_callback_QUndoView_setRootIndex(QUndoView*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QUndoView_event(QUndoView*, intptr_t, QEvent*);
+void miqt_exec_callback_QUndoView_scrollContentsBy(QUndoView*, intptr_t, int, int);
+void miqt_exec_callback_QUndoView_dataChanged(QUndoView*, intptr_t, QModelIndex*, QModelIndex*, struct miqt_array /* of int */ );
+void miqt_exec_callback_QUndoView_rowsInserted(QUndoView*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QUndoView_rowsAboutToBeRemoved(QUndoView*, intptr_t, QModelIndex*, int, int);
+void miqt_exec_callback_QUndoView_mouseMoveEvent(QUndoView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QUndoView_mouseReleaseEvent(QUndoView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QUndoView_wheelEvent(QUndoView*, intptr_t, QWheelEvent*);
+void miqt_exec_callback_QUndoView_timerEvent(QUndoView*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QUndoView_resizeEvent(QUndoView*, intptr_t, QResizeEvent*);
+void miqt_exec_callback_QUndoView_dragMoveEvent(QUndoView*, intptr_t, QDragMoveEvent*);
+void miqt_exec_callback_QUndoView_dragLeaveEvent(QUndoView*, intptr_t, QDragLeaveEvent*);
+void miqt_exec_callback_QUndoView_dropEvent(QUndoView*, intptr_t, QDropEvent*);
+void miqt_exec_callback_QUndoView_startDrag(QUndoView*, intptr_t, int);
+void miqt_exec_callback_QUndoView_initViewItemOption(const QUndoView*, intptr_t, QStyleOptionViewItem*);
+void miqt_exec_callback_QUndoView_paintEvent(QUndoView*, intptr_t, QPaintEvent*);
+int miqt_exec_callback_QUndoView_horizontalOffset(const QUndoView*, intptr_t);
+int miqt_exec_callback_QUndoView_verticalOffset(const QUndoView*, intptr_t);
+QModelIndex* miqt_exec_callback_QUndoView_moveCursor(QUndoView*, intptr_t, int, int);
+void miqt_exec_callback_QUndoView_setSelection(QUndoView*, intptr_t, QRect*, int);
+QRegion* miqt_exec_callback_QUndoView_visualRegionForSelection(const QUndoView*, intptr_t, QItemSelection*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QUndoView_selectedIndexes(const QUndoView*, intptr_t);
+void miqt_exec_callback_QUndoView_updateGeometries(QUndoView*, intptr_t);
+bool miqt_exec_callback_QUndoView_isIndexHidden(const QUndoView*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QUndoView_selectionChanged(QUndoView*, intptr_t, QItemSelection*, QItemSelection*);
+void miqt_exec_callback_QUndoView_currentChanged(QUndoView*, intptr_t, QModelIndex*, QModelIndex*);
+QSize* miqt_exec_callback_QUndoView_viewportSizeHint(const QUndoView*, intptr_t);
+void miqt_exec_callback_QUndoView_setModel(QUndoView*, intptr_t, QAbstractItemModel*);
+void miqt_exec_callback_QUndoView_setSelectionModel(QUndoView*, intptr_t, QItemSelectionModel*);
+void miqt_exec_callback_QUndoView_keyboardSearch(QUndoView*, intptr_t, struct miqt_string);
+int miqt_exec_callback_QUndoView_sizeHintForRow(const QUndoView*, intptr_t, int);
+int miqt_exec_callback_QUndoView_sizeHintForColumn(const QUndoView*, intptr_t, int);
+QAbstractItemDelegate* miqt_exec_callback_QUndoView_itemDelegateForIndex(const QUndoView*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QUndoView_inputMethodQuery(const QUndoView*, intptr_t, int);
+void miqt_exec_callback_QUndoView_selectAll(QUndoView*, intptr_t);
+void miqt_exec_callback_QUndoView_updateEditorData(QUndoView*, intptr_t);
+void miqt_exec_callback_QUndoView_updateEditorGeometries(QUndoView*, intptr_t);
+void miqt_exec_callback_QUndoView_verticalScrollbarAction(QUndoView*, intptr_t, int);
+void miqt_exec_callback_QUndoView_horizontalScrollbarAction(QUndoView*, intptr_t, int);
+void miqt_exec_callback_QUndoView_verticalScrollbarValueChanged(QUndoView*, intptr_t, int);
+void miqt_exec_callback_QUndoView_horizontalScrollbarValueChanged(QUndoView*, intptr_t, int);
+void miqt_exec_callback_QUndoView_closeEditor(QUndoView*, intptr_t, QWidget*, int);
+void miqt_exec_callback_QUndoView_commitData(QUndoView*, intptr_t, QWidget*);
+void miqt_exec_callback_QUndoView_editorDestroyed(QUndoView*, intptr_t, QObject*);
+bool miqt_exec_callback_QUndoView_edit2(QUndoView*, intptr_t, QModelIndex*, int, QEvent*);
+int miqt_exec_callback_QUndoView_selectionCommand(const QUndoView*, intptr_t, QModelIndex*, QEvent*);
+bool miqt_exec_callback_QUndoView_focusNextPrevChild(QUndoView*, intptr_t, bool);
+bool miqt_exec_callback_QUndoView_viewportEvent(QUndoView*, intptr_t, QEvent*);
+void miqt_exec_callback_QUndoView_mousePressEvent(QUndoView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QUndoView_mouseDoubleClickEvent(QUndoView*, intptr_t, QMouseEvent*);
+void miqt_exec_callback_QUndoView_dragEnterEvent(QUndoView*, intptr_t, QDragEnterEvent*);
+void miqt_exec_callback_QUndoView_focusInEvent(QUndoView*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QUndoView_focusOutEvent(QUndoView*, intptr_t, QFocusEvent*);
+void miqt_exec_callback_QUndoView_keyPressEvent(QUndoView*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QUndoView_inputMethodEvent(QUndoView*, intptr_t, QInputMethodEvent*);
+bool miqt_exec_callback_QUndoView_eventFilter(QUndoView*, intptr_t, QObject*, QEvent*);
+QSize* miqt_exec_callback_QUndoView_minimumSizeHint(const QUndoView*, intptr_t);
+QSize* miqt_exec_callback_QUndoView_sizeHint(const QUndoView*, intptr_t);
+void miqt_exec_callback_QUndoView_setupViewport(QUndoView*, intptr_t, QWidget*);
+void miqt_exec_callback_QUndoView_contextMenuEvent(QUndoView*, intptr_t, QContextMenuEvent*);
+void miqt_exec_callback_QUndoView_changeEvent(QUndoView*, intptr_t, QEvent*);
+void miqt_exec_callback_QUndoView_initStyleOption(const QUndoView*, intptr_t, QStyleOptionFrame*);
+int miqt_exec_callback_QUndoView_devType(const QUndoView*, intptr_t);
+void miqt_exec_callback_QUndoView_setVisible(QUndoView*, intptr_t, bool);
+int miqt_exec_callback_QUndoView_heightForWidth(const QUndoView*, intptr_t, int);
+bool miqt_exec_callback_QUndoView_hasHeightForWidth(const QUndoView*, intptr_t);
+QPaintEngine* miqt_exec_callback_QUndoView_paintEngine(const QUndoView*, intptr_t);
+void miqt_exec_callback_QUndoView_keyReleaseEvent(QUndoView*, intptr_t, QKeyEvent*);
+void miqt_exec_callback_QUndoView_enterEvent(QUndoView*, intptr_t, QEnterEvent*);
+void miqt_exec_callback_QUndoView_leaveEvent(QUndoView*, intptr_t, QEvent*);
+void miqt_exec_callback_QUndoView_moveEvent(QUndoView*, intptr_t, QMoveEvent*);
+void miqt_exec_callback_QUndoView_closeEvent(QUndoView*, intptr_t, QCloseEvent*);
+void miqt_exec_callback_QUndoView_tabletEvent(QUndoView*, intptr_t, QTabletEvent*);
+void miqt_exec_callback_QUndoView_actionEvent(QUndoView*, intptr_t, QActionEvent*);
+void miqt_exec_callback_QUndoView_showEvent(QUndoView*, intptr_t, QShowEvent*);
+void miqt_exec_callback_QUndoView_hideEvent(QUndoView*, intptr_t, QHideEvent*);
+bool miqt_exec_callback_QUndoView_nativeEvent(QUndoView*, intptr_t, struct miqt_string, void*, intptr_t*);
+int miqt_exec_callback_QUndoView_metric(const QUndoView*, intptr_t, int);
+void miqt_exec_callback_QUndoView_initPainter(const QUndoView*, intptr_t, QPainter*);
+QPaintDevice* miqt_exec_callback_QUndoView_redirected(const QUndoView*, intptr_t, QPoint*);
+QPainter* miqt_exec_callback_QUndoView_sharedPainter(const QUndoView*, intptr_t);
+void miqt_exec_callback_QUndoView_childEvent(QUndoView*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QUndoView_customEvent(QUndoView*, intptr_t, QEvent*);
+void miqt_exec_callback_QUndoView_connectNotify(QUndoView*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QUndoView_disconnectNotify(QUndoView*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -167,11 +167,11 @@ public:
 	virtual ~MiqtVirtualQUndoView() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__VisualRect = 0;
+	intptr_t handle__visualRect = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QRect visualRect(const QModelIndex& index) const override {
-		if (handle__VisualRect == 0) {
+		if (handle__visualRect == 0) {
 			return QUndoView::visualRect(index);
 		}
 		
@@ -179,24 +179,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QRect* callback_return_value = miqt_exec_callback_QUndoView_VisualRect(this, handle__VisualRect, sigval1);
+		QRect* callback_return_value = miqt_exec_callback_QUndoView_visualRect(this, handle__visualRect, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QRect* virtualbase_VisualRect(QModelIndex* index) const {
+	QRect* virtualbase_visualRect(QModelIndex* index) const {
 
 		return new QRect(QUndoView::visualRect(*index));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ScrollTo = 0;
+	intptr_t handle__scrollTo = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void scrollTo(const QModelIndex& index, QAbstractItemView::ScrollHint hint) override {
-		if (handle__ScrollTo == 0) {
+		if (handle__scrollTo == 0) {
 			QUndoView::scrollTo(index, hint);
 			return;
 		}
@@ -207,24 +207,24 @@ public:
 		QAbstractItemView::ScrollHint hint_ret = hint;
 		int sigval2 = static_cast<int>(hint_ret);
 
-		miqt_exec_callback_QUndoView_ScrollTo(this, handle__ScrollTo, sigval1, sigval2);
+		miqt_exec_callback_QUndoView_scrollTo(this, handle__scrollTo, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ScrollTo(QModelIndex* index, int hint) {
+	void virtualbase_scrollTo(QModelIndex* index, int hint) {
 
 		QUndoView::scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__IndexAt = 0;
+	intptr_t handle__indexAt = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndex indexAt(const QPoint& p) const override {
-		if (handle__IndexAt == 0) {
+		if (handle__indexAt == 0) {
 			return QUndoView::indexAt(p);
 		}
 		
@@ -232,70 +232,70 @@ public:
 		// Cast returned reference into pointer
 		QPoint* sigval1 = const_cast<QPoint*>(&p_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QUndoView_IndexAt(this, handle__IndexAt, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QUndoView_indexAt(this, handle__indexAt, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_IndexAt(QPoint* p) const {
+	QModelIndex* virtualbase_indexAt(QPoint* p) const {
 
 		return new QModelIndex(QUndoView::indexAt(*p));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DoItemsLayout = 0;
+	intptr_t handle__doItemsLayout = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void doItemsLayout() override {
-		if (handle__DoItemsLayout == 0) {
+		if (handle__doItemsLayout == 0) {
 			QUndoView::doItemsLayout();
 			return;
 		}
 		
 
-		miqt_exec_callback_QUndoView_DoItemsLayout(this, handle__DoItemsLayout);
+		miqt_exec_callback_QUndoView_doItemsLayout(this, handle__doItemsLayout);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DoItemsLayout() {
+	void virtualbase_doItemsLayout() {
 
 		QUndoView::doItemsLayout();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Reset = 0;
+	intptr_t handle__reset = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void reset() override {
-		if (handle__Reset == 0) {
+		if (handle__reset == 0) {
 			QUndoView::reset();
 			return;
 		}
 		
 
-		miqt_exec_callback_QUndoView_Reset(this, handle__Reset);
+		miqt_exec_callback_QUndoView_reset(this, handle__reset);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_Reset() {
+	void virtualbase_reset() {
 
 		QUndoView::reset();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetRootIndex = 0;
+	intptr_t handle__setRootIndex = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setRootIndex(const QModelIndex& index) override {
-		if (handle__SetRootIndex == 0) {
+		if (handle__setRootIndex == 0) {
 			QUndoView::setRootIndex(index);
 			return;
 		}
@@ -304,47 +304,47 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		miqt_exec_callback_QUndoView_SetRootIndex(this, handle__SetRootIndex, sigval1);
+		miqt_exec_callback_QUndoView_setRootIndex(this, handle__setRootIndex, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetRootIndex(QModelIndex* index) {
+	void virtualbase_setRootIndex(QModelIndex* index) {
 
 		QUndoView::setRootIndex(*index);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* e) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QUndoView::event(e);
 		}
 		
 		QEvent* sigval1 = e;
 
-		bool callback_return_value = miqt_exec_callback_QUndoView_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QUndoView_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* e) {
+	bool virtualbase_event(QEvent* e) {
 
 		return QUndoView::event(e);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ScrollContentsBy = 0;
+	intptr_t handle__scrollContentsBy = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void scrollContentsBy(int dx, int dy) override {
-		if (handle__ScrollContentsBy == 0) {
+		if (handle__scrollContentsBy == 0) {
 			QUndoView::scrollContentsBy(dx, dy);
 			return;
 		}
@@ -352,24 +352,24 @@ public:
 		int sigval1 = dx;
 		int sigval2 = dy;
 
-		miqt_exec_callback_QUndoView_ScrollContentsBy(this, handle__ScrollContentsBy, sigval1, sigval2);
+		miqt_exec_callback_QUndoView_scrollContentsBy(this, handle__scrollContentsBy, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ScrollContentsBy(int dx, int dy) {
+	void virtualbase_scrollContentsBy(int dx, int dy) {
 
 		QUndoView::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DataChanged = 0;
+	intptr_t handle__dataChanged = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dataChanged(const QModelIndex& topLeft, const QModelIndex& bottomRight, const QList<int>& roles) override {
-		if (handle__DataChanged == 0) {
+		if (handle__dataChanged == 0) {
 			QUndoView::dataChanged(topLeft, bottomRight, roles);
 			return;
 		}
@@ -391,13 +391,13 @@ public:
 		roles_out.data = static_cast<void*>(roles_arr);
 		struct miqt_array /* of int */  sigval3 = roles_out;
 
-		miqt_exec_callback_QUndoView_DataChanged(this, handle__DataChanged, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QUndoView_dataChanged(this, handle__dataChanged, sigval1, sigval2, sigval3);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DataChanged(QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
+	void virtualbase_dataChanged(QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
 		QList<int> roles_QList;
 		roles_QList.reserve(roles.len);
 		int* roles_arr = static_cast<int*>(roles.data);
@@ -410,11 +410,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__RowsInserted = 0;
+	intptr_t handle__rowsInserted = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void rowsInserted(const QModelIndex& parent, int start, int end) override {
-		if (handle__RowsInserted == 0) {
+		if (handle__rowsInserted == 0) {
 			QUndoView::rowsInserted(parent, start, end);
 			return;
 		}
@@ -425,24 +425,24 @@ public:
 		int sigval2 = start;
 		int sigval3 = end;
 
-		miqt_exec_callback_QUndoView_RowsInserted(this, handle__RowsInserted, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QUndoView_rowsInserted(this, handle__rowsInserted, sigval1, sigval2, sigval3);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_RowsInserted(QModelIndex* parent, int start, int end) {
+	void virtualbase_rowsInserted(QModelIndex* parent, int start, int end) {
 
 		QUndoView::rowsInserted(*parent, static_cast<int>(start), static_cast<int>(end));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__RowsAboutToBeRemoved = 0;
+	intptr_t handle__rowsAboutToBeRemoved = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void rowsAboutToBeRemoved(const QModelIndex& parent, int start, int end) override {
-		if (handle__RowsAboutToBeRemoved == 0) {
+		if (handle__rowsAboutToBeRemoved == 0) {
 			QUndoView::rowsAboutToBeRemoved(parent, start, end);
 			return;
 		}
@@ -453,216 +453,216 @@ public:
 		int sigval2 = start;
 		int sigval3 = end;
 
-		miqt_exec_callback_QUndoView_RowsAboutToBeRemoved(this, handle__RowsAboutToBeRemoved, sigval1, sigval2, sigval3);
+		miqt_exec_callback_QUndoView_rowsAboutToBeRemoved(this, handle__rowsAboutToBeRemoved, sigval1, sigval2, sigval3);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_RowsAboutToBeRemoved(QModelIndex* parent, int start, int end) {
+	void virtualbase_rowsAboutToBeRemoved(QModelIndex* parent, int start, int end) {
 
 		QUndoView::rowsAboutToBeRemoved(*parent, static_cast<int>(start), static_cast<int>(end));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MouseMoveEvent = 0;
+	intptr_t handle__mouseMoveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void mouseMoveEvent(QMouseEvent* e) override {
-		if (handle__MouseMoveEvent == 0) {
+		if (handle__mouseMoveEvent == 0) {
 			QUndoView::mouseMoveEvent(e);
 			return;
 		}
 		
 		QMouseEvent* sigval1 = e;
 
-		miqt_exec_callback_QUndoView_MouseMoveEvent(this, handle__MouseMoveEvent, sigval1);
+		miqt_exec_callback_QUndoView_mouseMoveEvent(this, handle__mouseMoveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MouseMoveEvent(QMouseEvent* e) {
+	void virtualbase_mouseMoveEvent(QMouseEvent* e) {
 
 		QUndoView::mouseMoveEvent(e);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MouseReleaseEvent = 0;
+	intptr_t handle__mouseReleaseEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void mouseReleaseEvent(QMouseEvent* e) override {
-		if (handle__MouseReleaseEvent == 0) {
+		if (handle__mouseReleaseEvent == 0) {
 			QUndoView::mouseReleaseEvent(e);
 			return;
 		}
 		
 		QMouseEvent* sigval1 = e;
 
-		miqt_exec_callback_QUndoView_MouseReleaseEvent(this, handle__MouseReleaseEvent, sigval1);
+		miqt_exec_callback_QUndoView_mouseReleaseEvent(this, handle__mouseReleaseEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MouseReleaseEvent(QMouseEvent* e) {
+	void virtualbase_mouseReleaseEvent(QMouseEvent* e) {
 
 		QUndoView::mouseReleaseEvent(e);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__WheelEvent = 0;
+	intptr_t handle__wheelEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void wheelEvent(QWheelEvent* e) override {
-		if (handle__WheelEvent == 0) {
+		if (handle__wheelEvent == 0) {
 			QUndoView::wheelEvent(e);
 			return;
 		}
 		
 		QWheelEvent* sigval1 = e;
 
-		miqt_exec_callback_QUndoView_WheelEvent(this, handle__WheelEvent, sigval1);
+		miqt_exec_callback_QUndoView_wheelEvent(this, handle__wheelEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_WheelEvent(QWheelEvent* e) {
+	void virtualbase_wheelEvent(QWheelEvent* e) {
 
 		QUndoView::wheelEvent(e);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* e) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QUndoView::timerEvent(e);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = e;
 
-		miqt_exec_callback_QUndoView_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QUndoView_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* e) {
+	void virtualbase_timerEvent(QTimerEvent* e) {
 
 		QUndoView::timerEvent(e);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ResizeEvent = 0;
+	intptr_t handle__resizeEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void resizeEvent(QResizeEvent* e) override {
-		if (handle__ResizeEvent == 0) {
+		if (handle__resizeEvent == 0) {
 			QUndoView::resizeEvent(e);
 			return;
 		}
 		
 		QResizeEvent* sigval1 = e;
 
-		miqt_exec_callback_QUndoView_ResizeEvent(this, handle__ResizeEvent, sigval1);
+		miqt_exec_callback_QUndoView_resizeEvent(this, handle__resizeEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ResizeEvent(QResizeEvent* e) {
+	void virtualbase_resizeEvent(QResizeEvent* e) {
 
 		QUndoView::resizeEvent(e);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DragMoveEvent = 0;
+	intptr_t handle__dragMoveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dragMoveEvent(QDragMoveEvent* e) override {
-		if (handle__DragMoveEvent == 0) {
+		if (handle__dragMoveEvent == 0) {
 			QUndoView::dragMoveEvent(e);
 			return;
 		}
 		
 		QDragMoveEvent* sigval1 = e;
 
-		miqt_exec_callback_QUndoView_DragMoveEvent(this, handle__DragMoveEvent, sigval1);
+		miqt_exec_callback_QUndoView_dragMoveEvent(this, handle__dragMoveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DragMoveEvent(QDragMoveEvent* e) {
+	void virtualbase_dragMoveEvent(QDragMoveEvent* e) {
 
 		QUndoView::dragMoveEvent(e);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DragLeaveEvent = 0;
+	intptr_t handle__dragLeaveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dragLeaveEvent(QDragLeaveEvent* e) override {
-		if (handle__DragLeaveEvent == 0) {
+		if (handle__dragLeaveEvent == 0) {
 			QUndoView::dragLeaveEvent(e);
 			return;
 		}
 		
 		QDragLeaveEvent* sigval1 = e;
 
-		miqt_exec_callback_QUndoView_DragLeaveEvent(this, handle__DragLeaveEvent, sigval1);
+		miqt_exec_callback_QUndoView_dragLeaveEvent(this, handle__dragLeaveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DragLeaveEvent(QDragLeaveEvent* e) {
+	void virtualbase_dragLeaveEvent(QDragLeaveEvent* e) {
 
 		QUndoView::dragLeaveEvent(e);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DropEvent = 0;
+	intptr_t handle__dropEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dropEvent(QDropEvent* e) override {
-		if (handle__DropEvent == 0) {
+		if (handle__dropEvent == 0) {
 			QUndoView::dropEvent(e);
 			return;
 		}
 		
 		QDropEvent* sigval1 = e;
 
-		miqt_exec_callback_QUndoView_DropEvent(this, handle__DropEvent, sigval1);
+		miqt_exec_callback_QUndoView_dropEvent(this, handle__dropEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DropEvent(QDropEvent* e) {
+	void virtualbase_dropEvent(QDropEvent* e) {
 
 		QUndoView::dropEvent(e);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__StartDrag = 0;
+	intptr_t handle__startDrag = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void startDrag(Qt::DropActions supportedActions) override {
-		if (handle__StartDrag == 0) {
+		if (handle__startDrag == 0) {
 			QUndoView::startDrag(supportedActions);
 			return;
 		}
@@ -670,116 +670,116 @@ public:
 		Qt::DropActions supportedActions_ret = supportedActions;
 		int sigval1 = static_cast<int>(supportedActions_ret);
 
-		miqt_exec_callback_QUndoView_StartDrag(this, handle__StartDrag, sigval1);
+		miqt_exec_callback_QUndoView_startDrag(this, handle__startDrag, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_StartDrag(int supportedActions) {
+	void virtualbase_startDrag(int supportedActions) {
 
 		QUndoView::startDrag(static_cast<Qt::DropActions>(supportedActions));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InitViewItemOption = 0;
+	intptr_t handle__initViewItemOption = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void initViewItemOption(QStyleOptionViewItem* option) const override {
-		if (handle__InitViewItemOption == 0) {
+		if (handle__initViewItemOption == 0) {
 			QUndoView::initViewItemOption(option);
 			return;
 		}
 		
 		QStyleOptionViewItem* sigval1 = option;
 
-		miqt_exec_callback_QUndoView_InitViewItemOption(this, handle__InitViewItemOption, sigval1);
+		miqt_exec_callback_QUndoView_initViewItemOption(this, handle__initViewItemOption, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_InitViewItemOption(QStyleOptionViewItem* option) const {
+	void virtualbase_initViewItemOption(QStyleOptionViewItem* option) const {
 
 		QUndoView::initViewItemOption(option);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__PaintEvent = 0;
+	intptr_t handle__paintEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void paintEvent(QPaintEvent* e) override {
-		if (handle__PaintEvent == 0) {
+		if (handle__paintEvent == 0) {
 			QUndoView::paintEvent(e);
 			return;
 		}
 		
 		QPaintEvent* sigval1 = e;
 
-		miqt_exec_callback_QUndoView_PaintEvent(this, handle__PaintEvent, sigval1);
+		miqt_exec_callback_QUndoView_paintEvent(this, handle__paintEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_PaintEvent(QPaintEvent* e) {
+	void virtualbase_paintEvent(QPaintEvent* e) {
 
 		QUndoView::paintEvent(e);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HorizontalOffset = 0;
+	intptr_t handle__horizontalOffset = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int horizontalOffset() const override {
-		if (handle__HorizontalOffset == 0) {
+		if (handle__horizontalOffset == 0) {
 			return QUndoView::horizontalOffset();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QUndoView_HorizontalOffset(this, handle__HorizontalOffset);
+		int callback_return_value = miqt_exec_callback_QUndoView_horizontalOffset(this, handle__horizontalOffset);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_HorizontalOffset() const {
+	int virtualbase_horizontalOffset() const {
 
 		return QUndoView::horizontalOffset();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__VerticalOffset = 0;
+	intptr_t handle__verticalOffset = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int verticalOffset() const override {
-		if (handle__VerticalOffset == 0) {
+		if (handle__verticalOffset == 0) {
 			return QUndoView::verticalOffset();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QUndoView_VerticalOffset(this, handle__VerticalOffset);
+		int callback_return_value = miqt_exec_callback_QUndoView_verticalOffset(this, handle__verticalOffset);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_VerticalOffset() const {
+	int virtualbase_verticalOffset() const {
 
 		return QUndoView::verticalOffset();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MoveCursor = 0;
+	intptr_t handle__moveCursor = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndex moveCursor(QAbstractItemView::CursorAction cursorAction, Qt::KeyboardModifiers modifiers) override {
-		if (handle__MoveCursor == 0) {
+		if (handle__moveCursor == 0) {
 			return QUndoView::moveCursor(cursorAction, modifiers);
 		}
 		
@@ -788,24 +788,24 @@ public:
 		Qt::KeyboardModifiers modifiers_ret = modifiers;
 		int sigval2 = static_cast<int>(modifiers_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QUndoView_MoveCursor(this, handle__MoveCursor, sigval1, sigval2);
+		QModelIndex* callback_return_value = miqt_exec_callback_QUndoView_moveCursor(this, handle__moveCursor, sigval1, sigval2);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_MoveCursor(int cursorAction, int modifiers) {
+	QModelIndex* virtualbase_moveCursor(int cursorAction, int modifiers) {
 
 		return new QModelIndex(QUndoView::moveCursor(static_cast<QAbstractItemView::CursorAction>(cursorAction), static_cast<Qt::KeyboardModifiers>(modifiers)));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetSelection = 0;
+	intptr_t handle__setSelection = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setSelection(const QRect& rect, QItemSelectionModel::SelectionFlags command) override {
-		if (handle__SetSelection == 0) {
+		if (handle__setSelection == 0) {
 			QUndoView::setSelection(rect, command);
 			return;
 		}
@@ -816,24 +816,24 @@ public:
 		QItemSelectionModel::SelectionFlags command_ret = command;
 		int sigval2 = static_cast<int>(command_ret);
 
-		miqt_exec_callback_QUndoView_SetSelection(this, handle__SetSelection, sigval1, sigval2);
+		miqt_exec_callback_QUndoView_setSelection(this, handle__setSelection, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetSelection(QRect* rect, int command) {
+	void virtualbase_setSelection(QRect* rect, int command) {
 
 		QUndoView::setSelection(*rect, static_cast<QItemSelectionModel::SelectionFlags>(command));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__VisualRegionForSelection = 0;
+	intptr_t handle__visualRegionForSelection = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QRegion visualRegionForSelection(const QItemSelection& selection) const override {
-		if (handle__VisualRegionForSelection == 0) {
+		if (handle__visualRegionForSelection == 0) {
 			return QUndoView::visualRegionForSelection(selection);
 		}
 		
@@ -841,29 +841,29 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
 
-		QRegion* callback_return_value = miqt_exec_callback_QUndoView_VisualRegionForSelection(this, handle__VisualRegionForSelection, sigval1);
+		QRegion* callback_return_value = miqt_exec_callback_QUndoView_visualRegionForSelection(this, handle__visualRegionForSelection, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QRegion* virtualbase_VisualRegionForSelection(QItemSelection* selection) const {
+	QRegion* virtualbase_visualRegionForSelection(QItemSelection* selection) const {
 
 		return new QRegion(QUndoView::visualRegionForSelection(*selection));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SelectedIndexes = 0;
+	intptr_t handle__selectedIndexes = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndexList selectedIndexes() const override {
-		if (handle__SelectedIndexes == 0) {
+		if (handle__selectedIndexes == 0) {
 			return QUndoView::selectedIndexes();
 		}
 		
 
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QUndoView_SelectedIndexes(this, handle__SelectedIndexes);
+		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QUndoView_selectedIndexes(this, handle__selectedIndexes);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
@@ -875,7 +875,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	struct miqt_array /* of QModelIndex* */  virtualbase_SelectedIndexes() const {
+	struct miqt_array /* of QModelIndex* */  virtualbase_selectedIndexes() const {
 
 		QModelIndexList _ret = QUndoView::selectedIndexes();
 		// Convert QList<> from C++ memory to manually-managed C memory
@@ -891,34 +891,34 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__UpdateGeometries = 0;
+	intptr_t handle__updateGeometries = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void updateGeometries() override {
-		if (handle__UpdateGeometries == 0) {
+		if (handle__updateGeometries == 0) {
 			QUndoView::updateGeometries();
 			return;
 		}
 		
 
-		miqt_exec_callback_QUndoView_UpdateGeometries(this, handle__UpdateGeometries);
+		miqt_exec_callback_QUndoView_updateGeometries(this, handle__updateGeometries);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_UpdateGeometries() {
+	void virtualbase_updateGeometries() {
 
 		QUndoView::updateGeometries();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__IsIndexHidden = 0;
+	intptr_t handle__isIndexHidden = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool isIndexHidden(const QModelIndex& index) const override {
-		if (handle__IsIndexHidden == 0) {
+		if (handle__isIndexHidden == 0) {
 			return QUndoView::isIndexHidden(index);
 		}
 		
@@ -926,24 +926,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		bool callback_return_value = miqt_exec_callback_QUndoView_IsIndexHidden(this, handle__IsIndexHidden, sigval1);
+		bool callback_return_value = miqt_exec_callback_QUndoView_isIndexHidden(this, handle__isIndexHidden, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_IsIndexHidden(QModelIndex* index) const {
+	bool virtualbase_isIndexHidden(QModelIndex* index) const {
 
 		return QUndoView::isIndexHidden(*index);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SelectionChanged = 0;
+	intptr_t handle__selectionChanged = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected) override {
-		if (handle__SelectionChanged == 0) {
+		if (handle__selectionChanged == 0) {
 			QUndoView::selectionChanged(selected, deselected);
 			return;
 		}
@@ -955,24 +955,24 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval2 = const_cast<QItemSelection*>(&deselected_ret);
 
-		miqt_exec_callback_QUndoView_SelectionChanged(this, handle__SelectionChanged, sigval1, sigval2);
+		miqt_exec_callback_QUndoView_selectionChanged(this, handle__selectionChanged, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SelectionChanged(QItemSelection* selected, QItemSelection* deselected) {
+	void virtualbase_selectionChanged(QItemSelection* selected, QItemSelection* deselected) {
 
 		QUndoView::selectionChanged(*selected, *deselected);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CurrentChanged = 0;
+	intptr_t handle__currentChanged = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void currentChanged(const QModelIndex& current, const QModelIndex& previous) override {
-		if (handle__CurrentChanged == 0) {
+		if (handle__currentChanged == 0) {
 			QUndoView::currentChanged(current, previous);
 			return;
 		}
@@ -984,94 +984,94 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval2 = const_cast<QModelIndex*>(&previous_ret);
 
-		miqt_exec_callback_QUndoView_CurrentChanged(this, handle__CurrentChanged, sigval1, sigval2);
+		miqt_exec_callback_QUndoView_currentChanged(this, handle__currentChanged, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CurrentChanged(QModelIndex* current, QModelIndex* previous) {
+	void virtualbase_currentChanged(QModelIndex* current, QModelIndex* previous) {
 
 		QUndoView::currentChanged(*current, *previous);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ViewportSizeHint = 0;
+	intptr_t handle__viewportSizeHint = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize viewportSizeHint() const override {
-		if (handle__ViewportSizeHint == 0) {
+		if (handle__viewportSizeHint == 0) {
 			return QUndoView::viewportSizeHint();
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QUndoView_ViewportSizeHint(this, handle__ViewportSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QUndoView_viewportSizeHint(this, handle__viewportSizeHint);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSize* virtualbase_ViewportSizeHint() const {
+	QSize* virtualbase_viewportSizeHint() const {
 
 		return new QSize(QUndoView::viewportSizeHint());
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetModel = 0;
+	intptr_t handle__setModel = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setModel(QAbstractItemModel* model) override {
-		if (handle__SetModel == 0) {
+		if (handle__setModel == 0) {
 			QUndoView::setModel(model);
 			return;
 		}
 		
 		QAbstractItemModel* sigval1 = model;
 
-		miqt_exec_callback_QUndoView_SetModel(this, handle__SetModel, sigval1);
+		miqt_exec_callback_QUndoView_setModel(this, handle__setModel, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetModel(QAbstractItemModel* model) {
+	void virtualbase_setModel(QAbstractItemModel* model) {
 
 		QUndoView::setModel(model);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetSelectionModel = 0;
+	intptr_t handle__setSelectionModel = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setSelectionModel(QItemSelectionModel* selectionModel) override {
-		if (handle__SetSelectionModel == 0) {
+		if (handle__setSelectionModel == 0) {
 			QUndoView::setSelectionModel(selectionModel);
 			return;
 		}
 		
 		QItemSelectionModel* sigval1 = selectionModel;
 
-		miqt_exec_callback_QUndoView_SetSelectionModel(this, handle__SetSelectionModel, sigval1);
+		miqt_exec_callback_QUndoView_setSelectionModel(this, handle__setSelectionModel, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetSelectionModel(QItemSelectionModel* selectionModel) {
+	void virtualbase_setSelectionModel(QItemSelectionModel* selectionModel) {
 
 		QUndoView::setSelectionModel(selectionModel);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__KeyboardSearch = 0;
+	intptr_t handle__keyboardSearch = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void keyboardSearch(const QString& search) override {
-		if (handle__KeyboardSearch == 0) {
+		if (handle__keyboardSearch == 0) {
 			QUndoView::keyboardSearch(search);
 			return;
 		}
@@ -1085,13 +1085,13 @@ public:
 		memcpy(search_ms.data, search_b.data(), search_ms.len);
 		struct miqt_string sigval1 = search_ms;
 
-		miqt_exec_callback_QUndoView_KeyboardSearch(this, handle__KeyboardSearch, sigval1);
+		miqt_exec_callback_QUndoView_keyboardSearch(this, handle__keyboardSearch, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_KeyboardSearch(struct miqt_string search) {
+	void virtualbase_keyboardSearch(struct miqt_string search) {
 		QString search_QString = QString::fromUtf8(search.data, search.len);
 
 		QUndoView::keyboardSearch(search_QString);
@@ -1099,57 +1099,57 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SizeHintForRow = 0;
+	intptr_t handle__sizeHintForRow = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int sizeHintForRow(int row) const override {
-		if (handle__SizeHintForRow == 0) {
+		if (handle__sizeHintForRow == 0) {
 			return QUndoView::sizeHintForRow(row);
 		}
 		
 		int sigval1 = row;
 
-		int callback_return_value = miqt_exec_callback_QUndoView_SizeHintForRow(this, handle__SizeHintForRow, sigval1);
+		int callback_return_value = miqt_exec_callback_QUndoView_sizeHintForRow(this, handle__sizeHintForRow, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_SizeHintForRow(int row) const {
+	int virtualbase_sizeHintForRow(int row) const {
 
 		return QUndoView::sizeHintForRow(static_cast<int>(row));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SizeHintForColumn = 0;
+	intptr_t handle__sizeHintForColumn = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int sizeHintForColumn(int column) const override {
-		if (handle__SizeHintForColumn == 0) {
+		if (handle__sizeHintForColumn == 0) {
 			return QUndoView::sizeHintForColumn(column);
 		}
 		
 		int sigval1 = column;
 
-		int callback_return_value = miqt_exec_callback_QUndoView_SizeHintForColumn(this, handle__SizeHintForColumn, sigval1);
+		int callback_return_value = miqt_exec_callback_QUndoView_sizeHintForColumn(this, handle__sizeHintForColumn, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_SizeHintForColumn(int column) const {
+	int virtualbase_sizeHintForColumn(int column) const {
 
 		return QUndoView::sizeHintForColumn(static_cast<int>(column));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ItemDelegateForIndex = 0;
+	intptr_t handle__itemDelegateForIndex = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QAbstractItemDelegate* itemDelegateForIndex(const QModelIndex& index) const override {
-		if (handle__ItemDelegateForIndex == 0) {
+		if (handle__itemDelegateForIndex == 0) {
 			return QUndoView::itemDelegateForIndex(index);
 		}
 		
@@ -1157,213 +1157,213 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QAbstractItemDelegate* callback_return_value = miqt_exec_callback_QUndoView_ItemDelegateForIndex(this, handle__ItemDelegateForIndex, sigval1);
+		QAbstractItemDelegate* callback_return_value = miqt_exec_callback_QUndoView_itemDelegateForIndex(this, handle__itemDelegateForIndex, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QAbstractItemDelegate* virtualbase_ItemDelegateForIndex(QModelIndex* index) const {
+	QAbstractItemDelegate* virtualbase_itemDelegateForIndex(QModelIndex* index) const {
 
 		return QUndoView::itemDelegateForIndex(*index);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InputMethodQuery = 0;
+	intptr_t handle__inputMethodQuery = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QVariant inputMethodQuery(Qt::InputMethodQuery query) const override {
-		if (handle__InputMethodQuery == 0) {
+		if (handle__inputMethodQuery == 0) {
 			return QUndoView::inputMethodQuery(query);
 		}
 		
 		Qt::InputMethodQuery query_ret = query;
 		int sigval1 = static_cast<int>(query_ret);
 
-		QVariant* callback_return_value = miqt_exec_callback_QUndoView_InputMethodQuery(this, handle__InputMethodQuery, sigval1);
+		QVariant* callback_return_value = miqt_exec_callback_QUndoView_inputMethodQuery(this, handle__inputMethodQuery, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QVariant* virtualbase_InputMethodQuery(int query) const {
+	QVariant* virtualbase_inputMethodQuery(int query) const {
 
 		return new QVariant(QUndoView::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SelectAll = 0;
+	intptr_t handle__selectAll = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void selectAll() override {
-		if (handle__SelectAll == 0) {
+		if (handle__selectAll == 0) {
 			QUndoView::selectAll();
 			return;
 		}
 		
 
-		miqt_exec_callback_QUndoView_SelectAll(this, handle__SelectAll);
+		miqt_exec_callback_QUndoView_selectAll(this, handle__selectAll);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SelectAll() {
+	void virtualbase_selectAll() {
 
 		QUndoView::selectAll();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__UpdateEditorData = 0;
+	intptr_t handle__updateEditorData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void updateEditorData() override {
-		if (handle__UpdateEditorData == 0) {
+		if (handle__updateEditorData == 0) {
 			QUndoView::updateEditorData();
 			return;
 		}
 		
 
-		miqt_exec_callback_QUndoView_UpdateEditorData(this, handle__UpdateEditorData);
+		miqt_exec_callback_QUndoView_updateEditorData(this, handle__updateEditorData);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_UpdateEditorData() {
+	void virtualbase_updateEditorData() {
 
 		QUndoView::updateEditorData();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__UpdateEditorGeometries = 0;
+	intptr_t handle__updateEditorGeometries = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void updateEditorGeometries() override {
-		if (handle__UpdateEditorGeometries == 0) {
+		if (handle__updateEditorGeometries == 0) {
 			QUndoView::updateEditorGeometries();
 			return;
 		}
 		
 
-		miqt_exec_callback_QUndoView_UpdateEditorGeometries(this, handle__UpdateEditorGeometries);
+		miqt_exec_callback_QUndoView_updateEditorGeometries(this, handle__updateEditorGeometries);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_UpdateEditorGeometries() {
+	void virtualbase_updateEditorGeometries() {
 
 		QUndoView::updateEditorGeometries();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__VerticalScrollbarAction = 0;
+	intptr_t handle__verticalScrollbarAction = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void verticalScrollbarAction(int action) override {
-		if (handle__VerticalScrollbarAction == 0) {
+		if (handle__verticalScrollbarAction == 0) {
 			QUndoView::verticalScrollbarAction(action);
 			return;
 		}
 		
 		int sigval1 = action;
 
-		miqt_exec_callback_QUndoView_VerticalScrollbarAction(this, handle__VerticalScrollbarAction, sigval1);
+		miqt_exec_callback_QUndoView_verticalScrollbarAction(this, handle__verticalScrollbarAction, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_VerticalScrollbarAction(int action) {
+	void virtualbase_verticalScrollbarAction(int action) {
 
 		QUndoView::verticalScrollbarAction(static_cast<int>(action));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HorizontalScrollbarAction = 0;
+	intptr_t handle__horizontalScrollbarAction = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void horizontalScrollbarAction(int action) override {
-		if (handle__HorizontalScrollbarAction == 0) {
+		if (handle__horizontalScrollbarAction == 0) {
 			QUndoView::horizontalScrollbarAction(action);
 			return;
 		}
 		
 		int sigval1 = action;
 
-		miqt_exec_callback_QUndoView_HorizontalScrollbarAction(this, handle__HorizontalScrollbarAction, sigval1);
+		miqt_exec_callback_QUndoView_horizontalScrollbarAction(this, handle__horizontalScrollbarAction, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_HorizontalScrollbarAction(int action) {
+	void virtualbase_horizontalScrollbarAction(int action) {
 
 		QUndoView::horizontalScrollbarAction(static_cast<int>(action));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__VerticalScrollbarValueChanged = 0;
+	intptr_t handle__verticalScrollbarValueChanged = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void verticalScrollbarValueChanged(int value) override {
-		if (handle__VerticalScrollbarValueChanged == 0) {
+		if (handle__verticalScrollbarValueChanged == 0) {
 			QUndoView::verticalScrollbarValueChanged(value);
 			return;
 		}
 		
 		int sigval1 = value;
 
-		miqt_exec_callback_QUndoView_VerticalScrollbarValueChanged(this, handle__VerticalScrollbarValueChanged, sigval1);
+		miqt_exec_callback_QUndoView_verticalScrollbarValueChanged(this, handle__verticalScrollbarValueChanged, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_VerticalScrollbarValueChanged(int value) {
+	void virtualbase_verticalScrollbarValueChanged(int value) {
 
 		QUndoView::verticalScrollbarValueChanged(static_cast<int>(value));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HorizontalScrollbarValueChanged = 0;
+	intptr_t handle__horizontalScrollbarValueChanged = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void horizontalScrollbarValueChanged(int value) override {
-		if (handle__HorizontalScrollbarValueChanged == 0) {
+		if (handle__horizontalScrollbarValueChanged == 0) {
 			QUndoView::horizontalScrollbarValueChanged(value);
 			return;
 		}
 		
 		int sigval1 = value;
 
-		miqt_exec_callback_QUndoView_HorizontalScrollbarValueChanged(this, handle__HorizontalScrollbarValueChanged, sigval1);
+		miqt_exec_callback_QUndoView_horizontalScrollbarValueChanged(this, handle__horizontalScrollbarValueChanged, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_HorizontalScrollbarValueChanged(int value) {
+	void virtualbase_horizontalScrollbarValueChanged(int value) {
 
 		QUndoView::horizontalScrollbarValueChanged(static_cast<int>(value));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CloseEditor = 0;
+	intptr_t handle__closeEditor = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void closeEditor(QWidget* editor, QAbstractItemDelegate::EndEditHint hint) override {
-		if (handle__CloseEditor == 0) {
+		if (handle__closeEditor == 0) {
 			QUndoView::closeEditor(editor, hint);
 			return;
 		}
@@ -1372,72 +1372,72 @@ public:
 		QAbstractItemDelegate::EndEditHint hint_ret = hint;
 		int sigval2 = static_cast<int>(hint_ret);
 
-		miqt_exec_callback_QUndoView_CloseEditor(this, handle__CloseEditor, sigval1, sigval2);
+		miqt_exec_callback_QUndoView_closeEditor(this, handle__closeEditor, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CloseEditor(QWidget* editor, int hint) {
+	void virtualbase_closeEditor(QWidget* editor, int hint) {
 
 		QUndoView::closeEditor(editor, static_cast<QAbstractItemDelegate::EndEditHint>(hint));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CommitData = 0;
+	intptr_t handle__commitData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void commitData(QWidget* editor) override {
-		if (handle__CommitData == 0) {
+		if (handle__commitData == 0) {
 			QUndoView::commitData(editor);
 			return;
 		}
 		
 		QWidget* sigval1 = editor;
 
-		miqt_exec_callback_QUndoView_CommitData(this, handle__CommitData, sigval1);
+		miqt_exec_callback_QUndoView_commitData(this, handle__commitData, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CommitData(QWidget* editor) {
+	void virtualbase_commitData(QWidget* editor) {
 
 		QUndoView::commitData(editor);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EditorDestroyed = 0;
+	intptr_t handle__editorDestroyed = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void editorDestroyed(QObject* editor) override {
-		if (handle__EditorDestroyed == 0) {
+		if (handle__editorDestroyed == 0) {
 			QUndoView::editorDestroyed(editor);
 			return;
 		}
 		
 		QObject* sigval1 = editor;
 
-		miqt_exec_callback_QUndoView_EditorDestroyed(this, handle__EditorDestroyed, sigval1);
+		miqt_exec_callback_QUndoView_editorDestroyed(this, handle__editorDestroyed, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_EditorDestroyed(QObject* editor) {
+	void virtualbase_editorDestroyed(QObject* editor) {
 
 		QUndoView::editorDestroyed(editor);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Edit2 = 0;
+	intptr_t handle__edit2 = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool edit(const QModelIndex& index, QAbstractItemView::EditTrigger trigger, QEvent* event) override {
-		if (handle__Edit2 == 0) {
+		if (handle__edit2 == 0) {
 			return QUndoView::edit(index, trigger, event);
 		}
 		
@@ -1448,24 +1448,24 @@ public:
 		int sigval2 = static_cast<int>(trigger_ret);
 		QEvent* sigval3 = event;
 
-		bool callback_return_value = miqt_exec_callback_QUndoView_Edit2(this, handle__Edit2, sigval1, sigval2, sigval3);
+		bool callback_return_value = miqt_exec_callback_QUndoView_edit2(this, handle__edit2, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Edit2(QModelIndex* index, int trigger, QEvent* event) {
+	bool virtualbase_edit2(QModelIndex* index, int trigger, QEvent* event) {
 
 		return QUndoView::edit(*index, static_cast<QAbstractItemView::EditTrigger>(trigger), event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SelectionCommand = 0;
+	intptr_t handle__selectionCommand = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QItemSelectionModel::SelectionFlags selectionCommand(const QModelIndex& index, const QEvent* event) const override {
-		if (handle__SelectionCommand == 0) {
+		if (handle__selectionCommand == 0) {
 			return QUndoView::selectionCommand(index, event);
 		}
 		
@@ -1474,13 +1474,13 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QEvent* sigval2 = (QEvent*) event;
 
-		int callback_return_value = miqt_exec_callback_QUndoView_SelectionCommand(this, handle__SelectionCommand, sigval1, sigval2);
+		int callback_return_value = miqt_exec_callback_QUndoView_selectionCommand(this, handle__selectionCommand, sigval1, sigval2);
 
 		return static_cast<QItemSelectionModel::SelectionFlags>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_SelectionCommand(QModelIndex* index, QEvent* event) const {
+	int virtualbase_selectionCommand(QModelIndex* index, QEvent* event) const {
 
 		QItemSelectionModel::SelectionFlags _ret = QUndoView::selectionCommand(*index, event);
 		return static_cast<int>(_ret);
@@ -1488,718 +1488,718 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__FocusNextPrevChild = 0;
+	intptr_t handle__focusNextPrevChild = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool focusNextPrevChild(bool next) override {
-		if (handle__FocusNextPrevChild == 0) {
+		if (handle__focusNextPrevChild == 0) {
 			return QUndoView::focusNextPrevChild(next);
 		}
 		
 		bool sigval1 = next;
 
-		bool callback_return_value = miqt_exec_callback_QUndoView_FocusNextPrevChild(this, handle__FocusNextPrevChild, sigval1);
+		bool callback_return_value = miqt_exec_callback_QUndoView_focusNextPrevChild(this, handle__focusNextPrevChild, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_FocusNextPrevChild(bool next) {
+	bool virtualbase_focusNextPrevChild(bool next) {
 
 		return QUndoView::focusNextPrevChild(next);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ViewportEvent = 0;
+	intptr_t handle__viewportEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool viewportEvent(QEvent* event) override {
-		if (handle__ViewportEvent == 0) {
+		if (handle__viewportEvent == 0) {
 			return QUndoView::viewportEvent(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QUndoView_ViewportEvent(this, handle__ViewportEvent, sigval1);
+		bool callback_return_value = miqt_exec_callback_QUndoView_viewportEvent(this, handle__viewportEvent, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_ViewportEvent(QEvent* event) {
+	bool virtualbase_viewportEvent(QEvent* event) {
 
 		return QUndoView::viewportEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MousePressEvent = 0;
+	intptr_t handle__mousePressEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void mousePressEvent(QMouseEvent* event) override {
-		if (handle__MousePressEvent == 0) {
+		if (handle__mousePressEvent == 0) {
 			QUndoView::mousePressEvent(event);
 			return;
 		}
 		
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_MousePressEvent(this, handle__MousePressEvent, sigval1);
+		miqt_exec_callback_QUndoView_mousePressEvent(this, handle__mousePressEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MousePressEvent(QMouseEvent* event) {
+	void virtualbase_mousePressEvent(QMouseEvent* event) {
 
 		QUndoView::mousePressEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MouseDoubleClickEvent = 0;
+	intptr_t handle__mouseDoubleClickEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void mouseDoubleClickEvent(QMouseEvent* event) override {
-		if (handle__MouseDoubleClickEvent == 0) {
+		if (handle__mouseDoubleClickEvent == 0) {
 			QUndoView::mouseDoubleClickEvent(event);
 			return;
 		}
 		
 		QMouseEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_MouseDoubleClickEvent(this, handle__MouseDoubleClickEvent, sigval1);
+		miqt_exec_callback_QUndoView_mouseDoubleClickEvent(this, handle__mouseDoubleClickEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MouseDoubleClickEvent(QMouseEvent* event) {
+	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
 
 		QUndoView::mouseDoubleClickEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DragEnterEvent = 0;
+	intptr_t handle__dragEnterEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void dragEnterEvent(QDragEnterEvent* event) override {
-		if (handle__DragEnterEvent == 0) {
+		if (handle__dragEnterEvent == 0) {
 			QUndoView::dragEnterEvent(event);
 			return;
 		}
 		
 		QDragEnterEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_DragEnterEvent(this, handle__DragEnterEvent, sigval1);
+		miqt_exec_callback_QUndoView_dragEnterEvent(this, handle__dragEnterEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DragEnterEvent(QDragEnterEvent* event) {
+	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
 
 		QUndoView::dragEnterEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__FocusInEvent = 0;
+	intptr_t handle__focusInEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void focusInEvent(QFocusEvent* event) override {
-		if (handle__FocusInEvent == 0) {
+		if (handle__focusInEvent == 0) {
 			QUndoView::focusInEvent(event);
 			return;
 		}
 		
 		QFocusEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_FocusInEvent(this, handle__FocusInEvent, sigval1);
+		miqt_exec_callback_QUndoView_focusInEvent(this, handle__focusInEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_FocusInEvent(QFocusEvent* event) {
+	void virtualbase_focusInEvent(QFocusEvent* event) {
 
 		QUndoView::focusInEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__FocusOutEvent = 0;
+	intptr_t handle__focusOutEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void focusOutEvent(QFocusEvent* event) override {
-		if (handle__FocusOutEvent == 0) {
+		if (handle__focusOutEvent == 0) {
 			QUndoView::focusOutEvent(event);
 			return;
 		}
 		
 		QFocusEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_FocusOutEvent(this, handle__FocusOutEvent, sigval1);
+		miqt_exec_callback_QUndoView_focusOutEvent(this, handle__focusOutEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_FocusOutEvent(QFocusEvent* event) {
+	void virtualbase_focusOutEvent(QFocusEvent* event) {
 
 		QUndoView::focusOutEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__KeyPressEvent = 0;
+	intptr_t handle__keyPressEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void keyPressEvent(QKeyEvent* event) override {
-		if (handle__KeyPressEvent == 0) {
+		if (handle__keyPressEvent == 0) {
 			QUndoView::keyPressEvent(event);
 			return;
 		}
 		
 		QKeyEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_KeyPressEvent(this, handle__KeyPressEvent, sigval1);
+		miqt_exec_callback_QUndoView_keyPressEvent(this, handle__keyPressEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_KeyPressEvent(QKeyEvent* event) {
+	void virtualbase_keyPressEvent(QKeyEvent* event) {
 
 		QUndoView::keyPressEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InputMethodEvent = 0;
+	intptr_t handle__inputMethodEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void inputMethodEvent(QInputMethodEvent* event) override {
-		if (handle__InputMethodEvent == 0) {
+		if (handle__inputMethodEvent == 0) {
 			QUndoView::inputMethodEvent(event);
 			return;
 		}
 		
 		QInputMethodEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_InputMethodEvent(this, handle__InputMethodEvent, sigval1);
+		miqt_exec_callback_QUndoView_inputMethodEvent(this, handle__inputMethodEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_InputMethodEvent(QInputMethodEvent* event) {
+	void virtualbase_inputMethodEvent(QInputMethodEvent* event) {
 
 		QUndoView::inputMethodEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* object, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QUndoView::eventFilter(object, event);
 		}
 		
 		QObject* sigval1 = object;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QUndoView_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QUndoView_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* object, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* object, QEvent* event) {
 
 		return QUndoView::eventFilter(object, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MinimumSizeHint = 0;
+	intptr_t handle__minimumSizeHint = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize minimumSizeHint() const override {
-		if (handle__MinimumSizeHint == 0) {
+		if (handle__minimumSizeHint == 0) {
 			return QUndoView::minimumSizeHint();
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QUndoView_MinimumSizeHint(this, handle__MinimumSizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QUndoView_minimumSizeHint(this, handle__minimumSizeHint);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSize* virtualbase_MinimumSizeHint() const {
+	QSize* virtualbase_minimumSizeHint() const {
 
 		return new QSize(QUndoView::minimumSizeHint());
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SizeHint = 0;
+	intptr_t handle__sizeHint = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize sizeHint() const override {
-		if (handle__SizeHint == 0) {
+		if (handle__sizeHint == 0) {
 			return QUndoView::sizeHint();
 		}
 		
 
-		QSize* callback_return_value = miqt_exec_callback_QUndoView_SizeHint(this, handle__SizeHint);
+		QSize* callback_return_value = miqt_exec_callback_QUndoView_sizeHint(this, handle__sizeHint);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSize* virtualbase_SizeHint() const {
+	QSize* virtualbase_sizeHint() const {
 
 		return new QSize(QUndoView::sizeHint());
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetupViewport = 0;
+	intptr_t handle__setupViewport = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setupViewport(QWidget* viewport) override {
-		if (handle__SetupViewport == 0) {
+		if (handle__setupViewport == 0) {
 			QUndoView::setupViewport(viewport);
 			return;
 		}
 		
 		QWidget* sigval1 = viewport;
 
-		miqt_exec_callback_QUndoView_SetupViewport(this, handle__SetupViewport, sigval1);
+		miqt_exec_callback_QUndoView_setupViewport(this, handle__setupViewport, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetupViewport(QWidget* viewport) {
+	void virtualbase_setupViewport(QWidget* viewport) {
 
 		QUndoView::setupViewport(viewport);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ContextMenuEvent = 0;
+	intptr_t handle__contextMenuEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void contextMenuEvent(QContextMenuEvent* param1) override {
-		if (handle__ContextMenuEvent == 0) {
+		if (handle__contextMenuEvent == 0) {
 			QUndoView::contextMenuEvent(param1);
 			return;
 		}
 		
 		QContextMenuEvent* sigval1 = param1;
 
-		miqt_exec_callback_QUndoView_ContextMenuEvent(this, handle__ContextMenuEvent, sigval1);
+		miqt_exec_callback_QUndoView_contextMenuEvent(this, handle__contextMenuEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ContextMenuEvent(QContextMenuEvent* param1) {
+	void virtualbase_contextMenuEvent(QContextMenuEvent* param1) {
 
 		QUndoView::contextMenuEvent(param1);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChangeEvent = 0;
+	intptr_t handle__changeEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void changeEvent(QEvent* param1) override {
-		if (handle__ChangeEvent == 0) {
+		if (handle__changeEvent == 0) {
 			QUndoView::changeEvent(param1);
 			return;
 		}
 		
 		QEvent* sigval1 = param1;
 
-		miqt_exec_callback_QUndoView_ChangeEvent(this, handle__ChangeEvent, sigval1);
+		miqt_exec_callback_QUndoView_changeEvent(this, handle__changeEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChangeEvent(QEvent* param1) {
+	void virtualbase_changeEvent(QEvent* param1) {
 
 		QUndoView::changeEvent(param1);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InitStyleOption = 0;
+	intptr_t handle__initStyleOption = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void initStyleOption(QStyleOptionFrame* option) const override {
-		if (handle__InitStyleOption == 0) {
+		if (handle__initStyleOption == 0) {
 			QUndoView::initStyleOption(option);
 			return;
 		}
 		
 		QStyleOptionFrame* sigval1 = option;
 
-		miqt_exec_callback_QUndoView_InitStyleOption(this, handle__InitStyleOption, sigval1);
+		miqt_exec_callback_QUndoView_initStyleOption(this, handle__initStyleOption, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_InitStyleOption(QStyleOptionFrame* option) const {
+	void virtualbase_initStyleOption(QStyleOptionFrame* option) const {
 
 		QUndoView::initStyleOption(option);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DevType = 0;
+	intptr_t handle__devType = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int devType() const override {
-		if (handle__DevType == 0) {
+		if (handle__devType == 0) {
 			return QUndoView::devType();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QUndoView_DevType(this, handle__DevType);
+		int callback_return_value = miqt_exec_callback_QUndoView_devType(this, handle__devType);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_DevType() const {
+	int virtualbase_devType() const {
 
 		return QUndoView::devType();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetVisible = 0;
+	intptr_t handle__setVisible = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setVisible(bool visible) override {
-		if (handle__SetVisible == 0) {
+		if (handle__setVisible == 0) {
 			QUndoView::setVisible(visible);
 			return;
 		}
 		
 		bool sigval1 = visible;
 
-		miqt_exec_callback_QUndoView_SetVisible(this, handle__SetVisible, sigval1);
+		miqt_exec_callback_QUndoView_setVisible(this, handle__setVisible, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetVisible(bool visible) {
+	void virtualbase_setVisible(bool visible) {
 
 		QUndoView::setVisible(visible);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HeightForWidth = 0;
+	intptr_t handle__heightForWidth = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int heightForWidth(int param1) const override {
-		if (handle__HeightForWidth == 0) {
+		if (handle__heightForWidth == 0) {
 			return QUndoView::heightForWidth(param1);
 		}
 		
 		int sigval1 = param1;
 
-		int callback_return_value = miqt_exec_callback_QUndoView_HeightForWidth(this, handle__HeightForWidth, sigval1);
+		int callback_return_value = miqt_exec_callback_QUndoView_heightForWidth(this, handle__heightForWidth, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_HeightForWidth(int param1) const {
+	int virtualbase_heightForWidth(int param1) const {
 
 		return QUndoView::heightForWidth(static_cast<int>(param1));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HasHeightForWidth = 0;
+	intptr_t handle__hasHeightForWidth = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool hasHeightForWidth() const override {
-		if (handle__HasHeightForWidth == 0) {
+		if (handle__hasHeightForWidth == 0) {
 			return QUndoView::hasHeightForWidth();
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QUndoView_HasHeightForWidth(this, handle__HasHeightForWidth);
+		bool callback_return_value = miqt_exec_callback_QUndoView_hasHeightForWidth(this, handle__hasHeightForWidth);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_HasHeightForWidth() const {
+	bool virtualbase_hasHeightForWidth() const {
 
 		return QUndoView::hasHeightForWidth();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__PaintEngine = 0;
+	intptr_t handle__paintEngine = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QPaintEngine* paintEngine() const override {
-		if (handle__PaintEngine == 0) {
+		if (handle__paintEngine == 0) {
 			return QUndoView::paintEngine();
 		}
 		
 
-		QPaintEngine* callback_return_value = miqt_exec_callback_QUndoView_PaintEngine(this, handle__PaintEngine);
+		QPaintEngine* callback_return_value = miqt_exec_callback_QUndoView_paintEngine(this, handle__paintEngine);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_PaintEngine() const {
+	QPaintEngine* virtualbase_paintEngine() const {
 
 		return QUndoView::paintEngine();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__KeyReleaseEvent = 0;
+	intptr_t handle__keyReleaseEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void keyReleaseEvent(QKeyEvent* event) override {
-		if (handle__KeyReleaseEvent == 0) {
+		if (handle__keyReleaseEvent == 0) {
 			QUndoView::keyReleaseEvent(event);
 			return;
 		}
 		
 		QKeyEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_KeyReleaseEvent(this, handle__KeyReleaseEvent, sigval1);
+		miqt_exec_callback_QUndoView_keyReleaseEvent(this, handle__keyReleaseEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_KeyReleaseEvent(QKeyEvent* event) {
+	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
 
 		QUndoView::keyReleaseEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EnterEvent = 0;
+	intptr_t handle__enterEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void enterEvent(QEnterEvent* event) override {
-		if (handle__EnterEvent == 0) {
+		if (handle__enterEvent == 0) {
 			QUndoView::enterEvent(event);
 			return;
 		}
 		
 		QEnterEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_EnterEvent(this, handle__EnterEvent, sigval1);
+		miqt_exec_callback_QUndoView_enterEvent(this, handle__enterEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_EnterEvent(QEnterEvent* event) {
+	void virtualbase_enterEvent(QEnterEvent* event) {
 
 		QUndoView::enterEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__LeaveEvent = 0;
+	intptr_t handle__leaveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void leaveEvent(QEvent* event) override {
-		if (handle__LeaveEvent == 0) {
+		if (handle__leaveEvent == 0) {
 			QUndoView::leaveEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_LeaveEvent(this, handle__LeaveEvent, sigval1);
+		miqt_exec_callback_QUndoView_leaveEvent(this, handle__leaveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_LeaveEvent(QEvent* event) {
+	void virtualbase_leaveEvent(QEvent* event) {
 
 		QUndoView::leaveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MoveEvent = 0;
+	intptr_t handle__moveEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void moveEvent(QMoveEvent* event) override {
-		if (handle__MoveEvent == 0) {
+		if (handle__moveEvent == 0) {
 			QUndoView::moveEvent(event);
 			return;
 		}
 		
 		QMoveEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_MoveEvent(this, handle__MoveEvent, sigval1);
+		miqt_exec_callback_QUndoView_moveEvent(this, handle__moveEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MoveEvent(QMoveEvent* event) {
+	void virtualbase_moveEvent(QMoveEvent* event) {
 
 		QUndoView::moveEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CloseEvent = 0;
+	intptr_t handle__closeEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void closeEvent(QCloseEvent* event) override {
-		if (handle__CloseEvent == 0) {
+		if (handle__closeEvent == 0) {
 			QUndoView::closeEvent(event);
 			return;
 		}
 		
 		QCloseEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_CloseEvent(this, handle__CloseEvent, sigval1);
+		miqt_exec_callback_QUndoView_closeEvent(this, handle__closeEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CloseEvent(QCloseEvent* event) {
+	void virtualbase_closeEvent(QCloseEvent* event) {
 
 		QUndoView::closeEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TabletEvent = 0;
+	intptr_t handle__tabletEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void tabletEvent(QTabletEvent* event) override {
-		if (handle__TabletEvent == 0) {
+		if (handle__tabletEvent == 0) {
 			QUndoView::tabletEvent(event);
 			return;
 		}
 		
 		QTabletEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_TabletEvent(this, handle__TabletEvent, sigval1);
+		miqt_exec_callback_QUndoView_tabletEvent(this, handle__tabletEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TabletEvent(QTabletEvent* event) {
+	void virtualbase_tabletEvent(QTabletEvent* event) {
 
 		QUndoView::tabletEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ActionEvent = 0;
+	intptr_t handle__actionEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void actionEvent(QActionEvent* event) override {
-		if (handle__ActionEvent == 0) {
+		if (handle__actionEvent == 0) {
 			QUndoView::actionEvent(event);
 			return;
 		}
 		
 		QActionEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_ActionEvent(this, handle__ActionEvent, sigval1);
+		miqt_exec_callback_QUndoView_actionEvent(this, handle__actionEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ActionEvent(QActionEvent* event) {
+	void virtualbase_actionEvent(QActionEvent* event) {
 
 		QUndoView::actionEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ShowEvent = 0;
+	intptr_t handle__showEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void showEvent(QShowEvent* event) override {
-		if (handle__ShowEvent == 0) {
+		if (handle__showEvent == 0) {
 			QUndoView::showEvent(event);
 			return;
 		}
 		
 		QShowEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_ShowEvent(this, handle__ShowEvent, sigval1);
+		miqt_exec_callback_QUndoView_showEvent(this, handle__showEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ShowEvent(QShowEvent* event) {
+	void virtualbase_showEvent(QShowEvent* event) {
 
 		QUndoView::showEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HideEvent = 0;
+	intptr_t handle__hideEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void hideEvent(QHideEvent* event) override {
-		if (handle__HideEvent == 0) {
+		if (handle__hideEvent == 0) {
 			QUndoView::hideEvent(event);
 			return;
 		}
 		
 		QHideEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_HideEvent(this, handle__HideEvent, sigval1);
+		miqt_exec_callback_QUndoView_hideEvent(this, handle__hideEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_HideEvent(QHideEvent* event) {
+	void virtualbase_hideEvent(QHideEvent* event) {
 
 		QUndoView::hideEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__NativeEvent = 0;
+	intptr_t handle__nativeEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool nativeEvent(const QByteArray& eventType, void* message, qintptr* result) override {
-		if (handle__NativeEvent == 0) {
+		if (handle__nativeEvent == 0) {
 			return QUndoView::nativeEvent(eventType, message, result);
 		}
 		
@@ -2213,13 +2213,13 @@ public:
 		qintptr* result_ret = result;
 		intptr_t* sigval3 = (intptr_t*)(result_ret);
 
-		bool callback_return_value = miqt_exec_callback_QUndoView_NativeEvent(this, handle__NativeEvent, sigval1, sigval2, sigval3);
+		bool callback_return_value = miqt_exec_callback_QUndoView_nativeEvent(this, handle__nativeEvent, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_NativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
+	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
 		QByteArray eventType_QByteArray(eventType.data, eventType.len);
 
 		return QUndoView::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
@@ -2227,152 +2227,152 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Metric = 0;
+	intptr_t handle__metric = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int metric(QPaintDevice::PaintDeviceMetric param1) const override {
-		if (handle__Metric == 0) {
+		if (handle__metric == 0) {
 			return QUndoView::metric(param1);
 		}
 		
 		QPaintDevice::PaintDeviceMetric param1_ret = param1;
 		int sigval1 = static_cast<int>(param1_ret);
 
-		int callback_return_value = miqt_exec_callback_QUndoView_Metric(this, handle__Metric, sigval1);
+		int callback_return_value = miqt_exec_callback_QUndoView_metric(this, handle__metric, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_Metric(int param1) const {
+	int virtualbase_metric(int param1) const {
 
 		return QUndoView::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InitPainter = 0;
+	intptr_t handle__initPainter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void initPainter(QPainter* painter) const override {
-		if (handle__InitPainter == 0) {
+		if (handle__initPainter == 0) {
 			QUndoView::initPainter(painter);
 			return;
 		}
 		
 		QPainter* sigval1 = painter;
 
-		miqt_exec_callback_QUndoView_InitPainter(this, handle__InitPainter, sigval1);
+		miqt_exec_callback_QUndoView_initPainter(this, handle__initPainter, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_InitPainter(QPainter* painter) const {
+	void virtualbase_initPainter(QPainter* painter) const {
 
 		QUndoView::initPainter(painter);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Redirected = 0;
+	intptr_t handle__redirected = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QPaintDevice* redirected(QPoint* offset) const override {
-		if (handle__Redirected == 0) {
+		if (handle__redirected == 0) {
 			return QUndoView::redirected(offset);
 		}
 		
 		QPoint* sigval1 = offset;
 
-		QPaintDevice* callback_return_value = miqt_exec_callback_QUndoView_Redirected(this, handle__Redirected, sigval1);
+		QPaintDevice* callback_return_value = miqt_exec_callback_QUndoView_redirected(this, handle__redirected, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_Redirected(QPoint* offset) const {
+	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
 
 		return QUndoView::redirected(offset);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SharedPainter = 0;
+	intptr_t handle__sharedPainter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QPainter* sharedPainter() const override {
-		if (handle__SharedPainter == 0) {
+		if (handle__sharedPainter == 0) {
 			return QUndoView::sharedPainter();
 		}
 		
 
-		QPainter* callback_return_value = miqt_exec_callback_QUndoView_SharedPainter(this, handle__SharedPainter);
+		QPainter* callback_return_value = miqt_exec_callback_QUndoView_sharedPainter(this, handle__sharedPainter);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QPainter* virtualbase_SharedPainter() const {
+	QPainter* virtualbase_sharedPainter() const {
 
 		return QUndoView::sharedPainter();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QUndoView::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QUndoView_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QUndoView::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QUndoView::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QUndoView_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QUndoView_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QUndoView::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QUndoView::connectNotify(signal);
 			return;
 		}
@@ -2381,24 +2381,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QUndoView_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QUndoView_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QUndoView::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QUndoView::disconnectNotify(signal);
 			return;
 		}
@@ -2407,13 +2407,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QUndoView_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QUndoView_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QUndoView::disconnectNotify(*signal);
 
@@ -2449,15 +2449,15 @@ void QUndoView_virtbase(QUndoView* src, QListView** outptr_QListView) {
 	*outptr_QListView = static_cast<QListView*>(src);
 }
 
-QMetaObject* QUndoView_MetaObject(const QUndoView* self) {
+QMetaObject* QUndoView_metaObject(const QUndoView* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QUndoView_Metacast(QUndoView* self, const char* param1) {
+void* QUndoView_metacast(QUndoView* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QUndoView_Tr(const char* s) {
+struct miqt_string QUndoView_tr(const char* s) {
 	QString _ret = QUndoView::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -2468,20 +2468,20 @@ struct miqt_string QUndoView_Tr(const char* s) {
 	return _ms;
 }
 
-QUndoStack* QUndoView_Stack(const QUndoView* self) {
+QUndoStack* QUndoView_stack(const QUndoView* self) {
 	return self->stack();
 }
 
-QUndoGroup* QUndoView_Group(const QUndoView* self) {
+QUndoGroup* QUndoView_group(const QUndoView* self) {
 	return self->group();
 }
 
-void QUndoView_SetEmptyLabel(QUndoView* self, struct miqt_string label) {
+void QUndoView_setEmptyLabel(QUndoView* self, struct miqt_string label) {
 	QString label_QString = QString::fromUtf8(label.data, label.len);
 	self->setEmptyLabel(label_QString);
 }
 
-struct miqt_string QUndoView_EmptyLabel(const QUndoView* self) {
+struct miqt_string QUndoView_emptyLabel(const QUndoView* self) {
 	QString _ret = self->emptyLabel();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -2492,23 +2492,23 @@ struct miqt_string QUndoView_EmptyLabel(const QUndoView* self) {
 	return _ms;
 }
 
-void QUndoView_SetCleanIcon(QUndoView* self, QIcon* icon) {
+void QUndoView_setCleanIcon(QUndoView* self, QIcon* icon) {
 	self->setCleanIcon(*icon);
 }
 
-QIcon* QUndoView_CleanIcon(const QUndoView* self) {
+QIcon* QUndoView_cleanIcon(const QUndoView* self) {
 	return new QIcon(self->cleanIcon());
 }
 
-void QUndoView_SetStack(QUndoView* self, QUndoStack* stack) {
+void QUndoView_setStack(QUndoView* self, QUndoStack* stack) {
 	self->setStack(stack);
 }
 
-void QUndoView_SetGroup(QUndoView* self, QUndoGroup* group) {
+void QUndoView_setGroup(QUndoView* self, QUndoGroup* group) {
 	self->setGroup(group);
 }
 
-struct miqt_string QUndoView_Tr2(const char* s, const char* c) {
+struct miqt_string QUndoView_tr2(const char* s, const char* c) {
 	QString _ret = QUndoView::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -2519,7 +2519,7 @@ struct miqt_string QUndoView_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QUndoView_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QUndoView_tr3(const char* s, const char* c, int n) {
 	QString _ret = QUndoView::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -2530,1281 +2530,1281 @@ struct miqt_string QUndoView_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QUndoView_override_virtual_VisualRect(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_visualRect(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__VisualRect = slot;
+	self_cast->handle__visualRect = slot;
 	return true;
 }
 
-QRect* QUndoView_virtualbase_VisualRect(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_VisualRect(index);
+QRect* QUndoView_virtualbase_visualRect(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_visualRect(index);
 }
 
-bool QUndoView_override_virtual_ScrollTo(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_scrollTo(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ScrollTo = slot;
+	self_cast->handle__scrollTo = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_ScrollTo(void* self, QModelIndex* index, int hint) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_ScrollTo(index, hint);
+void QUndoView_virtualbase_scrollTo(void* self, QModelIndex* index, int hint) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_scrollTo(index, hint);
 }
 
-bool QUndoView_override_virtual_IndexAt(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_indexAt(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__IndexAt = slot;
+	self_cast->handle__indexAt = slot;
 	return true;
 }
 
-QModelIndex* QUndoView_virtualbase_IndexAt(const void* self, QPoint* p) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_IndexAt(p);
+QModelIndex* QUndoView_virtualbase_indexAt(const void* self, QPoint* p) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_indexAt(p);
 }
 
-bool QUndoView_override_virtual_DoItemsLayout(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_doItemsLayout(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DoItemsLayout = slot;
+	self_cast->handle__doItemsLayout = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_DoItemsLayout(void* self) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_DoItemsLayout();
+void QUndoView_virtualbase_doItemsLayout(void* self) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_doItemsLayout();
 }
 
-bool QUndoView_override_virtual_Reset(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_reset(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Reset = slot;
+	self_cast->handle__reset = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_Reset(void* self) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_Reset();
+void QUndoView_virtualbase_reset(void* self) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_reset();
 }
 
-bool QUndoView_override_virtual_SetRootIndex(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_setRootIndex(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetRootIndex = slot;
+	self_cast->handle__setRootIndex = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_SetRootIndex(void* self, QModelIndex* index) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_SetRootIndex(index);
+void QUndoView_virtualbase_setRootIndex(void* self, QModelIndex* index) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_setRootIndex(index);
 }
 
-bool QUndoView_override_virtual_Event(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QUndoView_virtualbase_Event(void* self, QEvent* e) {
-	return ( (MiqtVirtualQUndoView*)(self) )->virtualbase_Event(e);
+bool QUndoView_virtualbase_event(void* self, QEvent* e) {
+	return ( (MiqtVirtualQUndoView*)(self) )->virtualbase_event(e);
 }
 
-bool QUndoView_override_virtual_ScrollContentsBy(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ScrollContentsBy = slot;
+	self_cast->handle__scrollContentsBy = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_ScrollContentsBy(void* self, int dx, int dy) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_ScrollContentsBy(dx, dy);
+void QUndoView_virtualbase_scrollContentsBy(void* self, int dx, int dy) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_scrollContentsBy(dx, dy);
 }
 
-bool QUndoView_override_virtual_DataChanged(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_dataChanged(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DataChanged = slot;
+	self_cast->handle__dataChanged = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_DataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_DataChanged(topLeft, bottomRight, roles);
+void QUndoView_virtualbase_dataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_dataChanged(topLeft, bottomRight, roles);
 }
 
-bool QUndoView_override_virtual_RowsInserted(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_rowsInserted(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__RowsInserted = slot;
+	self_cast->handle__rowsInserted = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_RowsInserted(void* self, QModelIndex* parent, int start, int end) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_RowsInserted(parent, start, end);
+void QUndoView_virtualbase_rowsInserted(void* self, QModelIndex* parent, int start, int end) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_rowsInserted(parent, start, end);
 }
 
-bool QUndoView_override_virtual_RowsAboutToBeRemoved(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_rowsAboutToBeRemoved(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__RowsAboutToBeRemoved = slot;
+	self_cast->handle__rowsAboutToBeRemoved = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_RowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_RowsAboutToBeRemoved(parent, start, end);
+void QUndoView_virtualbase_rowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_rowsAboutToBeRemoved(parent, start, end);
 }
 
-bool QUndoView_override_virtual_MouseMoveEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MouseMoveEvent = slot;
+	self_cast->handle__mouseMoveEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_MouseMoveEvent(void* self, QMouseEvent* e) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_MouseMoveEvent(e);
+void QUndoView_virtualbase_mouseMoveEvent(void* self, QMouseEvent* e) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_mouseMoveEvent(e);
 }
 
-bool QUndoView_override_virtual_MouseReleaseEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MouseReleaseEvent = slot;
+	self_cast->handle__mouseReleaseEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_MouseReleaseEvent(void* self, QMouseEvent* e) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_MouseReleaseEvent(e);
+void QUndoView_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* e) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_mouseReleaseEvent(e);
 }
 
-bool QUndoView_override_virtual_WheelEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_wheelEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__WheelEvent = slot;
+	self_cast->handle__wheelEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_WheelEvent(void* self, QWheelEvent* e) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_WheelEvent(e);
+void QUndoView_virtualbase_wheelEvent(void* self, QWheelEvent* e) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_wheelEvent(e);
 }
 
-bool QUndoView_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_TimerEvent(void* self, QTimerEvent* e) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_TimerEvent(e);
+void QUndoView_virtualbase_timerEvent(void* self, QTimerEvent* e) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_timerEvent(e);
 }
 
-bool QUndoView_override_virtual_ResizeEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_resizeEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ResizeEvent = slot;
+	self_cast->handle__resizeEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_ResizeEvent(void* self, QResizeEvent* e) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_ResizeEvent(e);
+void QUndoView_virtualbase_resizeEvent(void* self, QResizeEvent* e) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_resizeEvent(e);
 }
 
-bool QUndoView_override_virtual_DragMoveEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DragMoveEvent = slot;
+	self_cast->handle__dragMoveEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_DragMoveEvent(void* self, QDragMoveEvent* e) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_DragMoveEvent(e);
+void QUndoView_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* e) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_dragMoveEvent(e);
 }
 
-bool QUndoView_override_virtual_DragLeaveEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DragLeaveEvent = slot;
+	self_cast->handle__dragLeaveEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_DragLeaveEvent(void* self, QDragLeaveEvent* e) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_DragLeaveEvent(e);
+void QUndoView_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* e) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_dragLeaveEvent(e);
 }
 
-bool QUndoView_override_virtual_DropEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_dropEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DropEvent = slot;
+	self_cast->handle__dropEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_DropEvent(void* self, QDropEvent* e) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_DropEvent(e);
+void QUndoView_virtualbase_dropEvent(void* self, QDropEvent* e) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_dropEvent(e);
 }
 
-bool QUndoView_override_virtual_StartDrag(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_startDrag(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__StartDrag = slot;
+	self_cast->handle__startDrag = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_StartDrag(void* self, int supportedActions) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_StartDrag(supportedActions);
+void QUndoView_virtualbase_startDrag(void* self, int supportedActions) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_startDrag(supportedActions);
 }
 
-bool QUndoView_override_virtual_InitViewItemOption(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_initViewItemOption(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InitViewItemOption = slot;
+	self_cast->handle__initViewItemOption = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_InitViewItemOption(const void* self, QStyleOptionViewItem* option) {
-	( (const MiqtVirtualQUndoView*)(self) )->virtualbase_InitViewItemOption(option);
+void QUndoView_virtualbase_initViewItemOption(const void* self, QStyleOptionViewItem* option) {
+	( (const MiqtVirtualQUndoView*)(self) )->virtualbase_initViewItemOption(option);
 }
 
-bool QUndoView_override_virtual_PaintEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_paintEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__PaintEvent = slot;
+	self_cast->handle__paintEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_PaintEvent(void* self, QPaintEvent* e) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_PaintEvent(e);
+void QUndoView_virtualbase_paintEvent(void* self, QPaintEvent* e) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_paintEvent(e);
 }
 
-bool QUndoView_override_virtual_HorizontalOffset(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_horizontalOffset(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HorizontalOffset = slot;
+	self_cast->handle__horizontalOffset = slot;
 	return true;
 }
 
-int QUndoView_virtualbase_HorizontalOffset(const void* self) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_HorizontalOffset();
+int QUndoView_virtualbase_horizontalOffset(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_horizontalOffset();
 }
 
-bool QUndoView_override_virtual_VerticalOffset(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_verticalOffset(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__VerticalOffset = slot;
+	self_cast->handle__verticalOffset = slot;
 	return true;
 }
 
-int QUndoView_virtualbase_VerticalOffset(const void* self) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_VerticalOffset();
+int QUndoView_virtualbase_verticalOffset(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_verticalOffset();
 }
 
-bool QUndoView_override_virtual_MoveCursor(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_moveCursor(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MoveCursor = slot;
+	self_cast->handle__moveCursor = slot;
 	return true;
 }
 
-QModelIndex* QUndoView_virtualbase_MoveCursor(void* self, int cursorAction, int modifiers) {
-	return ( (MiqtVirtualQUndoView*)(self) )->virtualbase_MoveCursor(cursorAction, modifiers);
+QModelIndex* QUndoView_virtualbase_moveCursor(void* self, int cursorAction, int modifiers) {
+	return ( (MiqtVirtualQUndoView*)(self) )->virtualbase_moveCursor(cursorAction, modifiers);
 }
 
-bool QUndoView_override_virtual_SetSelection(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_setSelection(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetSelection = slot;
+	self_cast->handle__setSelection = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_SetSelection(void* self, QRect* rect, int command) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_SetSelection(rect, command);
+void QUndoView_virtualbase_setSelection(void* self, QRect* rect, int command) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_setSelection(rect, command);
 }
 
-bool QUndoView_override_virtual_VisualRegionForSelection(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_visualRegionForSelection(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__VisualRegionForSelection = slot;
+	self_cast->handle__visualRegionForSelection = slot;
 	return true;
 }
 
-QRegion* QUndoView_virtualbase_VisualRegionForSelection(const void* self, QItemSelection* selection) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_VisualRegionForSelection(selection);
+QRegion* QUndoView_virtualbase_visualRegionForSelection(const void* self, QItemSelection* selection) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_visualRegionForSelection(selection);
 }
 
-bool QUndoView_override_virtual_SelectedIndexes(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_selectedIndexes(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SelectedIndexes = slot;
+	self_cast->handle__selectedIndexes = slot;
 	return true;
 }
 
-struct miqt_array /* of QModelIndex* */  QUndoView_virtualbase_SelectedIndexes(const void* self) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_SelectedIndexes();
+struct miqt_array /* of QModelIndex* */  QUndoView_virtualbase_selectedIndexes(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_selectedIndexes();
 }
 
-bool QUndoView_override_virtual_UpdateGeometries(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_updateGeometries(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__UpdateGeometries = slot;
+	self_cast->handle__updateGeometries = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_UpdateGeometries(void* self) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_UpdateGeometries();
+void QUndoView_virtualbase_updateGeometries(void* self) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_updateGeometries();
 }
 
-bool QUndoView_override_virtual_IsIndexHidden(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_isIndexHidden(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__IsIndexHidden = slot;
+	self_cast->handle__isIndexHidden = slot;
 	return true;
 }
 
-bool QUndoView_virtualbase_IsIndexHidden(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_IsIndexHidden(index);
+bool QUndoView_virtualbase_isIndexHidden(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_isIndexHidden(index);
 }
 
-bool QUndoView_override_virtual_SelectionChanged(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_selectionChanged(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SelectionChanged = slot;
+	self_cast->handle__selectionChanged = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_SelectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_SelectionChanged(selected, deselected);
+void QUndoView_virtualbase_selectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_selectionChanged(selected, deselected);
 }
 
-bool QUndoView_override_virtual_CurrentChanged(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_currentChanged(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CurrentChanged = slot;
+	self_cast->handle__currentChanged = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_CurrentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_CurrentChanged(current, previous);
+void QUndoView_virtualbase_currentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_currentChanged(current, previous);
 }
 
-bool QUndoView_override_virtual_ViewportSizeHint(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ViewportSizeHint = slot;
+	self_cast->handle__viewportSizeHint = slot;
 	return true;
 }
 
-QSize* QUndoView_virtualbase_ViewportSizeHint(const void* self) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_ViewportSizeHint();
+QSize* QUndoView_virtualbase_viewportSizeHint(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_viewportSizeHint();
 }
 
-bool QUndoView_override_virtual_SetModel(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_setModel(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetModel = slot;
+	self_cast->handle__setModel = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_SetModel(void* self, QAbstractItemModel* model) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_SetModel(model);
+void QUndoView_virtualbase_setModel(void* self, QAbstractItemModel* model) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_setModel(model);
 }
 
-bool QUndoView_override_virtual_SetSelectionModel(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_setSelectionModel(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetSelectionModel = slot;
+	self_cast->handle__setSelectionModel = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_SetSelectionModel(void* self, QItemSelectionModel* selectionModel) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_SetSelectionModel(selectionModel);
+void QUndoView_virtualbase_setSelectionModel(void* self, QItemSelectionModel* selectionModel) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_setSelectionModel(selectionModel);
 }
 
-bool QUndoView_override_virtual_KeyboardSearch(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_keyboardSearch(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__KeyboardSearch = slot;
+	self_cast->handle__keyboardSearch = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_KeyboardSearch(void* self, struct miqt_string search) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_KeyboardSearch(search);
+void QUndoView_virtualbase_keyboardSearch(void* self, struct miqt_string search) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_keyboardSearch(search);
 }
 
-bool QUndoView_override_virtual_SizeHintForRow(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_sizeHintForRow(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SizeHintForRow = slot;
+	self_cast->handle__sizeHintForRow = slot;
 	return true;
 }
 
-int QUndoView_virtualbase_SizeHintForRow(const void* self, int row) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_SizeHintForRow(row);
+int QUndoView_virtualbase_sizeHintForRow(const void* self, int row) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_sizeHintForRow(row);
 }
 
-bool QUndoView_override_virtual_SizeHintForColumn(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_sizeHintForColumn(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SizeHintForColumn = slot;
+	self_cast->handle__sizeHintForColumn = slot;
 	return true;
 }
 
-int QUndoView_virtualbase_SizeHintForColumn(const void* self, int column) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_SizeHintForColumn(column);
+int QUndoView_virtualbase_sizeHintForColumn(const void* self, int column) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_sizeHintForColumn(column);
 }
 
-bool QUndoView_override_virtual_ItemDelegateForIndex(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_itemDelegateForIndex(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ItemDelegateForIndex = slot;
+	self_cast->handle__itemDelegateForIndex = slot;
 	return true;
 }
 
-QAbstractItemDelegate* QUndoView_virtualbase_ItemDelegateForIndex(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_ItemDelegateForIndex(index);
+QAbstractItemDelegate* QUndoView_virtualbase_itemDelegateForIndex(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_itemDelegateForIndex(index);
 }
 
-bool QUndoView_override_virtual_InputMethodQuery(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InputMethodQuery = slot;
+	self_cast->handle__inputMethodQuery = slot;
 	return true;
 }
 
-QVariant* QUndoView_virtualbase_InputMethodQuery(const void* self, int query) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_InputMethodQuery(query);
+QVariant* QUndoView_virtualbase_inputMethodQuery(const void* self, int query) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_inputMethodQuery(query);
 }
 
-bool QUndoView_override_virtual_SelectAll(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_selectAll(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SelectAll = slot;
+	self_cast->handle__selectAll = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_SelectAll(void* self) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_SelectAll();
+void QUndoView_virtualbase_selectAll(void* self) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_selectAll();
 }
 
-bool QUndoView_override_virtual_UpdateEditorData(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_updateEditorData(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__UpdateEditorData = slot;
+	self_cast->handle__updateEditorData = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_UpdateEditorData(void* self) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_UpdateEditorData();
+void QUndoView_virtualbase_updateEditorData(void* self) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_updateEditorData();
 }
 
-bool QUndoView_override_virtual_UpdateEditorGeometries(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_updateEditorGeometries(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__UpdateEditorGeometries = slot;
+	self_cast->handle__updateEditorGeometries = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_UpdateEditorGeometries(void* self) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_UpdateEditorGeometries();
+void QUndoView_virtualbase_updateEditorGeometries(void* self) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_updateEditorGeometries();
 }
 
-bool QUndoView_override_virtual_VerticalScrollbarAction(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_verticalScrollbarAction(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__VerticalScrollbarAction = slot;
+	self_cast->handle__verticalScrollbarAction = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_VerticalScrollbarAction(void* self, int action) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_VerticalScrollbarAction(action);
+void QUndoView_virtualbase_verticalScrollbarAction(void* self, int action) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_verticalScrollbarAction(action);
 }
 
-bool QUndoView_override_virtual_HorizontalScrollbarAction(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_horizontalScrollbarAction(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HorizontalScrollbarAction = slot;
+	self_cast->handle__horizontalScrollbarAction = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_HorizontalScrollbarAction(void* self, int action) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_HorizontalScrollbarAction(action);
+void QUndoView_virtualbase_horizontalScrollbarAction(void* self, int action) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_horizontalScrollbarAction(action);
 }
 
-bool QUndoView_override_virtual_VerticalScrollbarValueChanged(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_verticalScrollbarValueChanged(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__VerticalScrollbarValueChanged = slot;
+	self_cast->handle__verticalScrollbarValueChanged = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_VerticalScrollbarValueChanged(void* self, int value) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_VerticalScrollbarValueChanged(value);
+void QUndoView_virtualbase_verticalScrollbarValueChanged(void* self, int value) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_verticalScrollbarValueChanged(value);
 }
 
-bool QUndoView_override_virtual_HorizontalScrollbarValueChanged(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_horizontalScrollbarValueChanged(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HorizontalScrollbarValueChanged = slot;
+	self_cast->handle__horizontalScrollbarValueChanged = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_HorizontalScrollbarValueChanged(void* self, int value) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_HorizontalScrollbarValueChanged(value);
+void QUndoView_virtualbase_horizontalScrollbarValueChanged(void* self, int value) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_horizontalScrollbarValueChanged(value);
 }
 
-bool QUndoView_override_virtual_CloseEditor(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_closeEditor(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CloseEditor = slot;
+	self_cast->handle__closeEditor = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_CloseEditor(void* self, QWidget* editor, int hint) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_CloseEditor(editor, hint);
+void QUndoView_virtualbase_closeEditor(void* self, QWidget* editor, int hint) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_closeEditor(editor, hint);
 }
 
-bool QUndoView_override_virtual_CommitData(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_commitData(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CommitData = slot;
+	self_cast->handle__commitData = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_CommitData(void* self, QWidget* editor) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_CommitData(editor);
+void QUndoView_virtualbase_commitData(void* self, QWidget* editor) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_commitData(editor);
 }
 
-bool QUndoView_override_virtual_EditorDestroyed(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_editorDestroyed(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EditorDestroyed = slot;
+	self_cast->handle__editorDestroyed = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_EditorDestroyed(void* self, QObject* editor) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_EditorDestroyed(editor);
+void QUndoView_virtualbase_editorDestroyed(void* self, QObject* editor) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_editorDestroyed(editor);
 }
 
-bool QUndoView_override_virtual_Edit2(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_edit2(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Edit2 = slot;
+	self_cast->handle__edit2 = slot;
 	return true;
 }
 
-bool QUndoView_virtualbase_Edit2(void* self, QModelIndex* index, int trigger, QEvent* event) {
-	return ( (MiqtVirtualQUndoView*)(self) )->virtualbase_Edit2(index, trigger, event);
+bool QUndoView_virtualbase_edit2(void* self, QModelIndex* index, int trigger, QEvent* event) {
+	return ( (MiqtVirtualQUndoView*)(self) )->virtualbase_edit2(index, trigger, event);
 }
 
-bool QUndoView_override_virtual_SelectionCommand(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_selectionCommand(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SelectionCommand = slot;
+	self_cast->handle__selectionCommand = slot;
 	return true;
 }
 
-int QUndoView_virtualbase_SelectionCommand(const void* self, QModelIndex* index, QEvent* event) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_SelectionCommand(index, event);
+int QUndoView_virtualbase_selectionCommand(const void* self, QModelIndex* index, QEvent* event) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_selectionCommand(index, event);
 }
 
-bool QUndoView_override_virtual_FocusNextPrevChild(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__FocusNextPrevChild = slot;
+	self_cast->handle__focusNextPrevChild = slot;
 	return true;
 }
 
-bool QUndoView_virtualbase_FocusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQUndoView*)(self) )->virtualbase_FocusNextPrevChild(next);
+bool QUndoView_virtualbase_focusNextPrevChild(void* self, bool next) {
+	return ( (MiqtVirtualQUndoView*)(self) )->virtualbase_focusNextPrevChild(next);
 }
 
-bool QUndoView_override_virtual_ViewportEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_viewportEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ViewportEvent = slot;
+	self_cast->handle__viewportEvent = slot;
 	return true;
 }
 
-bool QUndoView_virtualbase_ViewportEvent(void* self, QEvent* event) {
-	return ( (MiqtVirtualQUndoView*)(self) )->virtualbase_ViewportEvent(event);
+bool QUndoView_virtualbase_viewportEvent(void* self, QEvent* event) {
+	return ( (MiqtVirtualQUndoView*)(self) )->virtualbase_viewportEvent(event);
 }
 
-bool QUndoView_override_virtual_MousePressEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MousePressEvent = slot;
+	self_cast->handle__mousePressEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_MousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_MousePressEvent(event);
+void QUndoView_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_mousePressEvent(event);
 }
 
-bool QUndoView_override_virtual_MouseDoubleClickEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MouseDoubleClickEvent = slot;
+	self_cast->handle__mouseDoubleClickEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_MouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_MouseDoubleClickEvent(event);
+void QUndoView_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_mouseDoubleClickEvent(event);
 }
 
-bool QUndoView_override_virtual_DragEnterEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DragEnterEvent = slot;
+	self_cast->handle__dragEnterEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_DragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_DragEnterEvent(event);
+void QUndoView_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_dragEnterEvent(event);
 }
 
-bool QUndoView_override_virtual_FocusInEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_focusInEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__FocusInEvent = slot;
+	self_cast->handle__focusInEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_FocusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_FocusInEvent(event);
+void QUndoView_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_focusInEvent(event);
 }
 
-bool QUndoView_override_virtual_FocusOutEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__FocusOutEvent = slot;
+	self_cast->handle__focusOutEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_FocusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_FocusOutEvent(event);
+void QUndoView_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_focusOutEvent(event);
 }
 
-bool QUndoView_override_virtual_KeyPressEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__KeyPressEvent = slot;
+	self_cast->handle__keyPressEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_KeyPressEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_KeyPressEvent(event);
+void QUndoView_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_keyPressEvent(event);
 }
 
-bool QUndoView_override_virtual_InputMethodEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InputMethodEvent = slot;
+	self_cast->handle__inputMethodEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_InputMethodEvent(void* self, QInputMethodEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_InputMethodEvent(event);
+void QUndoView_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_inputMethodEvent(event);
 }
 
-bool QUndoView_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QUndoView_virtualbase_EventFilter(void* self, QObject* object, QEvent* event) {
-	return ( (MiqtVirtualQUndoView*)(self) )->virtualbase_EventFilter(object, event);
+bool QUndoView_virtualbase_eventFilter(void* self, QObject* object, QEvent* event) {
+	return ( (MiqtVirtualQUndoView*)(self) )->virtualbase_eventFilter(object, event);
 }
 
-bool QUndoView_override_virtual_MinimumSizeHint(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MinimumSizeHint = slot;
+	self_cast->handle__minimumSizeHint = slot;
 	return true;
 }
 
-QSize* QUndoView_virtualbase_MinimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_MinimumSizeHint();
+QSize* QUndoView_virtualbase_minimumSizeHint(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_minimumSizeHint();
 }
 
-bool QUndoView_override_virtual_SizeHint(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_sizeHint(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SizeHint = slot;
+	self_cast->handle__sizeHint = slot;
 	return true;
 }
 
-QSize* QUndoView_virtualbase_SizeHint(const void* self) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_SizeHint();
+QSize* QUndoView_virtualbase_sizeHint(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_sizeHint();
 }
 
-bool QUndoView_override_virtual_SetupViewport(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_setupViewport(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetupViewport = slot;
+	self_cast->handle__setupViewport = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_SetupViewport(void* self, QWidget* viewport) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_SetupViewport(viewport);
+void QUndoView_virtualbase_setupViewport(void* self, QWidget* viewport) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_setupViewport(viewport);
 }
 
-bool QUndoView_override_virtual_ContextMenuEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ContextMenuEvent = slot;
+	self_cast->handle__contextMenuEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_ContextMenuEvent(void* self, QContextMenuEvent* param1) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_ContextMenuEvent(param1);
+void QUndoView_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_contextMenuEvent(param1);
 }
 
-bool QUndoView_override_virtual_ChangeEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_changeEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChangeEvent = slot;
+	self_cast->handle__changeEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_ChangeEvent(void* self, QEvent* param1) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_ChangeEvent(param1);
+void QUndoView_virtualbase_changeEvent(void* self, QEvent* param1) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_changeEvent(param1);
 }
 
-bool QUndoView_override_virtual_InitStyleOption(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_initStyleOption(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InitStyleOption = slot;
+	self_cast->handle__initStyleOption = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_InitStyleOption(const void* self, QStyleOptionFrame* option) {
-	( (const MiqtVirtualQUndoView*)(self) )->virtualbase_InitStyleOption(option);
+void QUndoView_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
+	( (const MiqtVirtualQUndoView*)(self) )->virtualbase_initStyleOption(option);
 }
 
-bool QUndoView_override_virtual_DevType(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_devType(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DevType = slot;
+	self_cast->handle__devType = slot;
 	return true;
 }
 
-int QUndoView_virtualbase_DevType(const void* self) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_DevType();
+int QUndoView_virtualbase_devType(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_devType();
 }
 
-bool QUndoView_override_virtual_SetVisible(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_setVisible(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetVisible = slot;
+	self_cast->handle__setVisible = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_SetVisible(void* self, bool visible) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_SetVisible(visible);
+void QUndoView_virtualbase_setVisible(void* self, bool visible) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_setVisible(visible);
 }
 
-bool QUndoView_override_virtual_HeightForWidth(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_heightForWidth(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HeightForWidth = slot;
+	self_cast->handle__heightForWidth = slot;
 	return true;
 }
 
-int QUndoView_virtualbase_HeightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_HeightForWidth(param1);
+int QUndoView_virtualbase_heightForWidth(const void* self, int param1) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_heightForWidth(param1);
 }
 
-bool QUndoView_override_virtual_HasHeightForWidth(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HasHeightForWidth = slot;
+	self_cast->handle__hasHeightForWidth = slot;
 	return true;
 }
 
-bool QUndoView_virtualbase_HasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_HasHeightForWidth();
+bool QUndoView_virtualbase_hasHeightForWidth(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_hasHeightForWidth();
 }
 
-bool QUndoView_override_virtual_PaintEngine(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_paintEngine(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__PaintEngine = slot;
+	self_cast->handle__paintEngine = slot;
 	return true;
 }
 
-QPaintEngine* QUndoView_virtualbase_PaintEngine(const void* self) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_PaintEngine();
+QPaintEngine* QUndoView_virtualbase_paintEngine(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_paintEngine();
 }
 
-bool QUndoView_override_virtual_KeyReleaseEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__KeyReleaseEvent = slot;
+	self_cast->handle__keyReleaseEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_KeyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_KeyReleaseEvent(event);
+void QUndoView_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_keyReleaseEvent(event);
 }
 
-bool QUndoView_override_virtual_EnterEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_enterEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EnterEvent = slot;
+	self_cast->handle__enterEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_EnterEvent(void* self, QEnterEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_EnterEvent(event);
+void QUndoView_virtualbase_enterEvent(void* self, QEnterEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_enterEvent(event);
 }
 
-bool QUndoView_override_virtual_LeaveEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_leaveEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__LeaveEvent = slot;
+	self_cast->handle__leaveEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_LeaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_LeaveEvent(event);
+void QUndoView_virtualbase_leaveEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_leaveEvent(event);
 }
 
-bool QUndoView_override_virtual_MoveEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_moveEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MoveEvent = slot;
+	self_cast->handle__moveEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_MoveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_MoveEvent(event);
+void QUndoView_virtualbase_moveEvent(void* self, QMoveEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_moveEvent(event);
 }
 
-bool QUndoView_override_virtual_CloseEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_closeEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CloseEvent = slot;
+	self_cast->handle__closeEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_CloseEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_CloseEvent(event);
+void QUndoView_virtualbase_closeEvent(void* self, QCloseEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_closeEvent(event);
 }
 
-bool QUndoView_override_virtual_TabletEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_tabletEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TabletEvent = slot;
+	self_cast->handle__tabletEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_TabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_TabletEvent(event);
+void QUndoView_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_tabletEvent(event);
 }
 
-bool QUndoView_override_virtual_ActionEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_actionEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ActionEvent = slot;
+	self_cast->handle__actionEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_ActionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_ActionEvent(event);
+void QUndoView_virtualbase_actionEvent(void* self, QActionEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_actionEvent(event);
 }
 
-bool QUndoView_override_virtual_ShowEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_showEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ShowEvent = slot;
+	self_cast->handle__showEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_ShowEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_ShowEvent(event);
+void QUndoView_virtualbase_showEvent(void* self, QShowEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_showEvent(event);
 }
 
-bool QUndoView_override_virtual_HideEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_hideEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HideEvent = slot;
+	self_cast->handle__hideEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_HideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_HideEvent(event);
+void QUndoView_virtualbase_hideEvent(void* self, QHideEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_hideEvent(event);
 }
 
-bool QUndoView_override_virtual_NativeEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_nativeEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__NativeEvent = slot;
+	self_cast->handle__nativeEvent = slot;
 	return true;
 }
 
-bool QUndoView_virtualbase_NativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
-	return ( (MiqtVirtualQUndoView*)(self) )->virtualbase_NativeEvent(eventType, message, result);
+bool QUndoView_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
+	return ( (MiqtVirtualQUndoView*)(self) )->virtualbase_nativeEvent(eventType, message, result);
 }
 
-bool QUndoView_override_virtual_Metric(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_metric(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Metric = slot;
+	self_cast->handle__metric = slot;
 	return true;
 }
 
-int QUndoView_virtualbase_Metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_Metric(param1);
+int QUndoView_virtualbase_metric(const void* self, int param1) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_metric(param1);
 }
 
-bool QUndoView_override_virtual_InitPainter(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_initPainter(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InitPainter = slot;
+	self_cast->handle__initPainter = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_InitPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQUndoView*)(self) )->virtualbase_InitPainter(painter);
+void QUndoView_virtualbase_initPainter(const void* self, QPainter* painter) {
+	( (const MiqtVirtualQUndoView*)(self) )->virtualbase_initPainter(painter);
 }
 
-bool QUndoView_override_virtual_Redirected(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_redirected(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Redirected = slot;
+	self_cast->handle__redirected = slot;
 	return true;
 }
 
-QPaintDevice* QUndoView_virtualbase_Redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_Redirected(offset);
+QPaintDevice* QUndoView_virtualbase_redirected(const void* self, QPoint* offset) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_redirected(offset);
 }
 
-bool QUndoView_override_virtual_SharedPainter(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_sharedPainter(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SharedPainter = slot;
+	self_cast->handle__sharedPainter = slot;
 	return true;
 }
 
-QPainter* QUndoView_virtualbase_SharedPainter(const void* self) {
-	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_SharedPainter();
+QPainter* QUndoView_virtualbase_sharedPainter(const void* self) {
+	return ( (const MiqtVirtualQUndoView*)(self) )->virtualbase_sharedPainter();
 }
 
-bool QUndoView_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_ChildEvent(event);
+void QUndoView_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QUndoView_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_CustomEvent(event);
+void QUndoView_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QUndoView_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_ConnectNotify(signal);
+void QUndoView_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QUndoView_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QUndoView_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQUndoView* self_cast = dynamic_cast<MiqtVirtualQUndoView*>( (QUndoView*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QUndoView_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQUndoView*)(self) )->virtualbase_DisconnectNotify(signal);
+void QUndoView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQUndoView*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QUndoView_Delete(QUndoView* self) {
+void QUndoView_delete(QUndoView* self) {
 	delete self;
 }
 

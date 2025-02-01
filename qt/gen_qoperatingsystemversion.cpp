@@ -25,37 +25,37 @@ QOperatingSystemVersion* QOperatingSystemVersion_new3(int osType, int vmajor, in
 	return new QOperatingSystemVersion(static_cast<QOperatingSystemVersion::OSType>(osType), static_cast<int>(vmajor), static_cast<int>(vminor), static_cast<int>(vmicro));
 }
 
-QOperatingSystemVersion* QOperatingSystemVersion_Current() {
+QOperatingSystemVersion* QOperatingSystemVersion_current() {
 	return new QOperatingSystemVersion(QOperatingSystemVersion::current());
 }
 
-int QOperatingSystemVersion_CurrentType() {
+int QOperatingSystemVersion_currentType() {
 	QOperatingSystemVersion::OSType _ret = QOperatingSystemVersion::currentType();
 	return static_cast<int>(_ret);
 }
 
-int QOperatingSystemVersion_MajorVersion(const QOperatingSystemVersion* self) {
+int QOperatingSystemVersion_majorVersion(const QOperatingSystemVersion* self) {
 	return self->majorVersion();
 }
 
-int QOperatingSystemVersion_MinorVersion(const QOperatingSystemVersion* self) {
+int QOperatingSystemVersion_minorVersion(const QOperatingSystemVersion* self) {
 	return self->minorVersion();
 }
 
-int QOperatingSystemVersion_MicroVersion(const QOperatingSystemVersion* self) {
+int QOperatingSystemVersion_microVersion(const QOperatingSystemVersion* self) {
 	return self->microVersion();
 }
 
-int QOperatingSystemVersion_SegmentCount(const QOperatingSystemVersion* self) {
+int QOperatingSystemVersion_segmentCount(const QOperatingSystemVersion* self) {
 	return self->segmentCount();
 }
 
-int QOperatingSystemVersion_Type(const QOperatingSystemVersion* self) {
+int QOperatingSystemVersion_type(const QOperatingSystemVersion* self) {
 	QOperatingSystemVersion::OSType _ret = self->type();
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string QOperatingSystemVersion_Name(const QOperatingSystemVersion* self) {
+struct miqt_string QOperatingSystemVersion_name(const QOperatingSystemVersion* self) {
 	QString _ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -66,7 +66,7 @@ struct miqt_string QOperatingSystemVersion_Name(const QOperatingSystemVersion* s
 	return _ms;
 }
 
-void QOperatingSystemVersion_Delete(QOperatingSystemVersion* self) {
+void QOperatingSystemVersion_delete(QOperatingSystemVersion* self) {
 	delete self;
 }
 

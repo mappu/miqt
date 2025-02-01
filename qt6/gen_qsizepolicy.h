@@ -25,33 +25,33 @@ typedef struct QVariant QVariant;
 QSizePolicy* QSizePolicy_new();
 QSizePolicy* QSizePolicy_new2(int horizontal, int vertical);
 QSizePolicy* QSizePolicy_new3(QSizePolicy* param1);
-QSizePolicy* QSizePolicy_new4(int horizontal, int vertical, int typeVal);
-int QSizePolicy_HorizontalPolicy(const QSizePolicy* self);
-int QSizePolicy_VerticalPolicy(const QSizePolicy* self);
-int QSizePolicy_ControlType(const QSizePolicy* self);
-void QSizePolicy_SetHorizontalPolicy(QSizePolicy* self, int d);
-void QSizePolicy_SetVerticalPolicy(QSizePolicy* self, int d);
-void QSizePolicy_SetControlType(QSizePolicy* self, int typeVal);
-int QSizePolicy_ExpandingDirections(const QSizePolicy* self);
-void QSizePolicy_SetHeightForWidth(QSizePolicy* self, bool b);
-bool QSizePolicy_HasHeightForWidth(const QSizePolicy* self);
-void QSizePolicy_SetWidthForHeight(QSizePolicy* self, bool b);
-bool QSizePolicy_HasWidthForHeight(const QSizePolicy* self);
-bool QSizePolicy_OperatorEqual(const QSizePolicy* self, QSizePolicy* s);
-bool QSizePolicy_OperatorNotEqual(const QSizePolicy* self, QSizePolicy* s);
+QSizePolicy* QSizePolicy_new4(int horizontal, int vertical, int type);
+int QSizePolicy_horizontalPolicy(const QSizePolicy* self);
+int QSizePolicy_verticalPolicy(const QSizePolicy* self);
+int QSizePolicy_controlType(const QSizePolicy* self);
+void QSizePolicy_setHorizontalPolicy(QSizePolicy* self, int d);
+void QSizePolicy_setVerticalPolicy(QSizePolicy* self, int d);
+void QSizePolicy_setControlType(QSizePolicy* self, int type);
+int QSizePolicy_expandingDirections(const QSizePolicy* self);
+void QSizePolicy_setHeightForWidth(QSizePolicy* self, bool b);
+bool QSizePolicy_hasHeightForWidth(const QSizePolicy* self);
+void QSizePolicy_setWidthForHeight(QSizePolicy* self, bool b);
+bool QSizePolicy_hasWidthForHeight(const QSizePolicy* self);
+bool QSizePolicy_operatorEqual(const QSizePolicy* self, QSizePolicy* s);
+bool QSizePolicy_operatorNotEqual(const QSizePolicy* self, QSizePolicy* s);
 QVariant* QSizePolicy_ToQVariant(const QSizePolicy* self);
-int QSizePolicy_HorizontalStretch(const QSizePolicy* self);
-int QSizePolicy_VerticalStretch(const QSizePolicy* self);
-void QSizePolicy_SetHorizontalStretch(QSizePolicy* self, int stretchFactor);
-void QSizePolicy_SetVerticalStretch(QSizePolicy* self, int stretchFactor);
-bool QSizePolicy_RetainSizeWhenHidden(const QSizePolicy* self);
-void QSizePolicy_SetRetainSizeWhenHidden(QSizePolicy* self, bool retainSize);
-void QSizePolicy_Transpose(QSizePolicy* self);
-QSizePolicy* QSizePolicy_Transposed(const QSizePolicy* self);
-void QSizePolicy_Delete(QSizePolicy* self);
+int QSizePolicy_horizontalStretch(const QSizePolicy* self);
+int QSizePolicy_verticalStretch(const QSizePolicy* self);
+void QSizePolicy_setHorizontalStretch(QSizePolicy* self, int stretchFactor);
+void QSizePolicy_setVerticalStretch(QSizePolicy* self, int stretchFactor);
+bool QSizePolicy_retainSizeWhenHidden(const QSizePolicy* self);
+void QSizePolicy_setRetainSizeWhenHidden(QSizePolicy* self, bool retainSize);
+void QSizePolicy_transpose(QSizePolicy* self);
+QSizePolicy* QSizePolicy_transposed(const QSizePolicy* self);
+void QSizePolicy_delete(QSizePolicy* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

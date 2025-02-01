@@ -111,7 +111,7 @@ func (this *QCborError) ToQCborError__Code() QCborError__Code {
 }
 
 func (this *QCborError) ToString() string {
-	var _ms C.struct_miqt_string = C.QCborError_ToString(this.h)
+	var _ms C.struct_miqt_string = C.QCborError_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -119,7 +119,7 @@ func (this *QCborError) ToString() string {
 
 // Delete this object from C++ memory.
 func (this *QCborError) Delete() {
-	C.QCborError_Delete(this.h)
+	C.QCborError_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

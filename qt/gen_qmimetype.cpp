@@ -22,31 +22,31 @@ QMimeType* QMimeType_new2(QMimeType* other) {
 	return new QMimeType(*other);
 }
 
-void QMimeType_OperatorAssign(QMimeType* self, QMimeType* other) {
+void QMimeType_operatorAssign(QMimeType* self, QMimeType* other) {
 	self->operator=(*other);
 }
 
-void QMimeType_Swap(QMimeType* self, QMimeType* other) {
+void QMimeType_swap(QMimeType* self, QMimeType* other) {
 	self->swap(*other);
 }
 
-bool QMimeType_OperatorEqual(const QMimeType* self, QMimeType* other) {
+bool QMimeType_operatorEqual(const QMimeType* self, QMimeType* other) {
 	return (*self == *other);
 }
 
-bool QMimeType_OperatorNotEqual(const QMimeType* self, QMimeType* other) {
+bool QMimeType_operatorNotEqual(const QMimeType* self, QMimeType* other) {
 	return (*self != *other);
 }
 
-bool QMimeType_IsValid(const QMimeType* self) {
+bool QMimeType_isValid(const QMimeType* self) {
 	return self->isValid();
 }
 
-bool QMimeType_IsDefault(const QMimeType* self) {
+bool QMimeType_isDefault(const QMimeType* self) {
 	return self->isDefault();
 }
 
-struct miqt_string QMimeType_Name(const QMimeType* self) {
+struct miqt_string QMimeType_name(const QMimeType* self) {
 	QString _ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -57,7 +57,7 @@ struct miqt_string QMimeType_Name(const QMimeType* self) {
 	return _ms;
 }
 
-struct miqt_string QMimeType_Comment(const QMimeType* self) {
+struct miqt_string QMimeType_comment(const QMimeType* self) {
 	QString _ret = self->comment();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -68,7 +68,7 @@ struct miqt_string QMimeType_Comment(const QMimeType* self) {
 	return _ms;
 }
 
-struct miqt_string QMimeType_GenericIconName(const QMimeType* self) {
+struct miqt_string QMimeType_genericIconName(const QMimeType* self) {
 	QString _ret = self->genericIconName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -79,7 +79,7 @@ struct miqt_string QMimeType_GenericIconName(const QMimeType* self) {
 	return _ms;
 }
 
-struct miqt_string QMimeType_IconName(const QMimeType* self) {
+struct miqt_string QMimeType_iconName(const QMimeType* self) {
 	QString _ret = self->iconName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -90,7 +90,7 @@ struct miqt_string QMimeType_IconName(const QMimeType* self) {
 	return _ms;
 }
 
-struct miqt_array /* of struct miqt_string */  QMimeType_GlobPatterns(const QMimeType* self) {
+struct miqt_array /* of struct miqt_string */  QMimeType_globPatterns(const QMimeType* self) {
 	QStringList _ret = self->globPatterns();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -110,7 +110,7 @@ struct miqt_array /* of struct miqt_string */  QMimeType_GlobPatterns(const QMim
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_string */  QMimeType_ParentMimeTypes(const QMimeType* self) {
+struct miqt_array /* of struct miqt_string */  QMimeType_parentMimeTypes(const QMimeType* self) {
 	QStringList _ret = self->parentMimeTypes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -130,7 +130,7 @@ struct miqt_array /* of struct miqt_string */  QMimeType_ParentMimeTypes(const Q
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_string */  QMimeType_AllAncestors(const QMimeType* self) {
+struct miqt_array /* of struct miqt_string */  QMimeType_allAncestors(const QMimeType* self) {
 	QStringList _ret = self->allAncestors();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -150,7 +150,7 @@ struct miqt_array /* of struct miqt_string */  QMimeType_AllAncestors(const QMim
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_string */  QMimeType_Aliases(const QMimeType* self) {
+struct miqt_array /* of struct miqt_string */  QMimeType_aliases(const QMimeType* self) {
 	QStringList _ret = self->aliases();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -170,7 +170,7 @@ struct miqt_array /* of struct miqt_string */  QMimeType_Aliases(const QMimeType
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_string */  QMimeType_Suffixes(const QMimeType* self) {
+struct miqt_array /* of struct miqt_string */  QMimeType_suffixes(const QMimeType* self) {
 	QStringList _ret = self->suffixes();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -190,7 +190,7 @@ struct miqt_array /* of struct miqt_string */  QMimeType_Suffixes(const QMimeTyp
 	return _out;
 }
 
-struct miqt_string QMimeType_PreferredSuffix(const QMimeType* self) {
+struct miqt_string QMimeType_preferredSuffix(const QMimeType* self) {
 	QString _ret = self->preferredSuffix();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -201,12 +201,12 @@ struct miqt_string QMimeType_PreferredSuffix(const QMimeType* self) {
 	return _ms;
 }
 
-bool QMimeType_Inherits(const QMimeType* self, struct miqt_string mimeTypeName) {
+bool QMimeType_inherits(const QMimeType* self, struct miqt_string mimeTypeName) {
 	QString mimeTypeName_QString = QString::fromUtf8(mimeTypeName.data, mimeTypeName.len);
 	return self->inherits(mimeTypeName_QString);
 }
 
-struct miqt_string QMimeType_FilterString(const QMimeType* self) {
+struct miqt_string QMimeType_filterString(const QMimeType* self) {
 	QString _ret = self->filterString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -217,7 +217,7 @@ struct miqt_string QMimeType_FilterString(const QMimeType* self) {
 	return _ms;
 }
 
-void QMimeType_Delete(QMimeType* self) {
+void QMimeType_delete(QMimeType* self) {
 	delete self;
 }
 

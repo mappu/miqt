@@ -39,12 +39,12 @@ QTextDocumentWriter* QTextDocumentWriter_new4(struct miqt_string fileName, struc
 	return new QTextDocumentWriter(fileName_QString, format_QByteArray);
 }
 
-void QTextDocumentWriter_SetFormat(QTextDocumentWriter* self, struct miqt_string format) {
+void QTextDocumentWriter_setFormat(QTextDocumentWriter* self, struct miqt_string format) {
 	QByteArray format_QByteArray(format.data, format.len);
 	self->setFormat(format_QByteArray);
 }
 
-struct miqt_string QTextDocumentWriter_Format(const QTextDocumentWriter* self) {
+struct miqt_string QTextDocumentWriter_format(const QTextDocumentWriter* self) {
 	QByteArray _qb = self->format();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -53,20 +53,20 @@ struct miqt_string QTextDocumentWriter_Format(const QTextDocumentWriter* self) {
 	return _ms;
 }
 
-void QTextDocumentWriter_SetDevice(QTextDocumentWriter* self, QIODevice* device) {
+void QTextDocumentWriter_setDevice(QTextDocumentWriter* self, QIODevice* device) {
 	self->setDevice(device);
 }
 
-QIODevice* QTextDocumentWriter_Device(const QTextDocumentWriter* self) {
+QIODevice* QTextDocumentWriter_device(const QTextDocumentWriter* self) {
 	return self->device();
 }
 
-void QTextDocumentWriter_SetFileName(QTextDocumentWriter* self, struct miqt_string fileName) {
+void QTextDocumentWriter_setFileName(QTextDocumentWriter* self, struct miqt_string fileName) {
 	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
 	self->setFileName(fileName_QString);
 }
 
-struct miqt_string QTextDocumentWriter_FileName(const QTextDocumentWriter* self) {
+struct miqt_string QTextDocumentWriter_fileName(const QTextDocumentWriter* self) {
 	QString _ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -77,23 +77,23 @@ struct miqt_string QTextDocumentWriter_FileName(const QTextDocumentWriter* self)
 	return _ms;
 }
 
-bool QTextDocumentWriter_Write(QTextDocumentWriter* self, QTextDocument* document) {
+bool QTextDocumentWriter_write(QTextDocumentWriter* self, QTextDocument* document) {
 	return self->write(document);
 }
 
-bool QTextDocumentWriter_WriteWithFragment(QTextDocumentWriter* self, QTextDocumentFragment* fragment) {
+bool QTextDocumentWriter_writeWithFragment(QTextDocumentWriter* self, QTextDocumentFragment* fragment) {
 	return self->write(*fragment);
 }
 
-void QTextDocumentWriter_SetCodec(QTextDocumentWriter* self, QTextCodec* codec) {
+void QTextDocumentWriter_setCodec(QTextDocumentWriter* self, QTextCodec* codec) {
 	self->setCodec(codec);
 }
 
-QTextCodec* QTextDocumentWriter_Codec(const QTextDocumentWriter* self) {
+QTextCodec* QTextDocumentWriter_codec(const QTextDocumentWriter* self) {
 	return self->codec();
 }
 
-struct miqt_array /* of struct miqt_string */  QTextDocumentWriter_SupportedDocumentFormats() {
+struct miqt_array /* of struct miqt_string */  QTextDocumentWriter_supportedDocumentFormats() {
 	QList<QByteArray> _ret = QTextDocumentWriter::supportedDocumentFormats();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -111,7 +111,7 @@ struct miqt_array /* of struct miqt_string */  QTextDocumentWriter_SupportedDocu
 	return _out;
 }
 
-void QTextDocumentWriter_Delete(QTextDocumentWriter* self) {
+void QTextDocumentWriter_delete(QTextDocumentWriter* self) {
 	delete self;
 }
 

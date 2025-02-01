@@ -70,19 +70,19 @@ func UnsafeNewQCameraImageProcessingControl(h unsafe.Pointer) *QCameraImageProce
 }
 
 func (this *QCameraImageProcessingControl) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraImageProcessingControl_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QCameraImageProcessingControl_metaObject(this.h)))
 }
 
 func (this *QCameraImageProcessingControl) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QCameraImageProcessingControl_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QCameraImageProcessingControl_metacast(this.h, param1_Cstring))
 }
 
 func QCameraImageProcessingControl_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraImageProcessingControl_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraImageProcessingControl_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -91,28 +91,28 @@ func QCameraImageProcessingControl_Tr(s string) string {
 func QCameraImageProcessingControl_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraImageProcessingControl_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraImageProcessingControl_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QCameraImageProcessingControl) IsParameterSupported(param1 QCameraImageProcessingControl__ProcessingParameter) bool {
-	return (bool)(C.QCameraImageProcessingControl_IsParameterSupported(this.h, (C.int)(param1)))
+	return (bool)(C.QCameraImageProcessingControl_isParameterSupported(this.h, (C.int)(param1)))
 }
 
 func (this *QCameraImageProcessingControl) IsParameterValueSupported(parameter QCameraImageProcessingControl__ProcessingParameter, value *qt.QVariant) bool {
-	return (bool)(C.QCameraImageProcessingControl_IsParameterValueSupported(this.h, (C.int)(parameter), (*C.QVariant)(value.UnsafePointer())))
+	return (bool)(C.QCameraImageProcessingControl_isParameterValueSupported(this.h, (C.int)(parameter), (*C.QVariant)(value.UnsafePointer())))
 }
 
 func (this *QCameraImageProcessingControl) Parameter(parameter QCameraImageProcessingControl__ProcessingParameter) *qt.QVariant {
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraImageProcessingControl_Parameter(this.h, (C.int)(parameter))))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QCameraImageProcessingControl_parameter(this.h, (C.int)(parameter))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCameraImageProcessingControl) SetParameter(parameter QCameraImageProcessingControl__ProcessingParameter, value *qt.QVariant) {
-	C.QCameraImageProcessingControl_SetParameter(this.h, (C.int)(parameter), (*C.QVariant)(value.UnsafePointer()))
+	C.QCameraImageProcessingControl_setParameter(this.h, (C.int)(parameter), (*C.QVariant)(value.UnsafePointer()))
 }
 
 func QCameraImageProcessingControl_Tr2(s string, c string) string {
@@ -120,7 +120,7 @@ func QCameraImageProcessingControl_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraImageProcessingControl_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraImageProcessingControl_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -131,7 +131,7 @@ func QCameraImageProcessingControl_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraImageProcessingControl_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraImageProcessingControl_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -142,7 +142,7 @@ func QCameraImageProcessingControl_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraImageProcessingControl_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCameraImageProcessingControl_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -153,7 +153,7 @@ func QCameraImageProcessingControl_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCameraImageProcessingControl_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCameraImageProcessingControl_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -161,7 +161,7 @@ func QCameraImageProcessingControl_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QCameraImageProcessingControl) Delete() {
-	C.QCameraImageProcessingControl_Delete(this.h)
+	C.QCameraImageProcessingControl_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

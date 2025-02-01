@@ -74,35 +74,35 @@ func NewQUrlQuery4(other *QUrlQuery) *QUrlQuery {
 }
 
 func (this *QUrlQuery) OperatorAssign(other *QUrlQuery) {
-	C.QUrlQuery_OperatorAssign(this.h, other.cPointer())
+	C.QUrlQuery_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QUrlQuery) OperatorEqual(other *QUrlQuery) bool {
-	return (bool)(C.QUrlQuery_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QUrlQuery_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QUrlQuery) OperatorNotEqual(other *QUrlQuery) bool {
-	return (bool)(C.QUrlQuery_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QUrlQuery_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QUrlQuery) Swap(other *QUrlQuery) {
-	C.QUrlQuery_Swap(this.h, other.cPointer())
+	C.QUrlQuery_swap(this.h, other.cPointer())
 }
 
 func (this *QUrlQuery) IsEmpty() bool {
-	return (bool)(C.QUrlQuery_IsEmpty(this.h))
+	return (bool)(C.QUrlQuery_isEmpty(this.h))
 }
 
 func (this *QUrlQuery) IsDetached() bool {
-	return (bool)(C.QUrlQuery_IsDetached(this.h))
+	return (bool)(C.QUrlQuery_isDetached(this.h))
 }
 
 func (this *QUrlQuery) Clear() {
-	C.QUrlQuery_Clear(this.h)
+	C.QUrlQuery_clear(this.h)
 }
 
 func (this *QUrlQuery) Query() string {
-	var _ms C.struct_miqt_string = C.QUrlQuery_Query(this.h)
+	var _ms C.struct_miqt_string = C.QUrlQuery_query(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -113,28 +113,28 @@ func (this *QUrlQuery) SetQuery(queryString string) {
 	queryString_ms.data = C.CString(queryString)
 	queryString_ms.len = C.size_t(len(queryString))
 	defer C.free(unsafe.Pointer(queryString_ms.data))
-	C.QUrlQuery_SetQuery(this.h, queryString_ms)
+	C.QUrlQuery_setQuery(this.h, queryString_ms)
 }
 
 func (this *QUrlQuery) ToString() string {
-	var _ms C.struct_miqt_string = C.QUrlQuery_ToString(this.h)
+	var _ms C.struct_miqt_string = C.QUrlQuery_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QUrlQuery) SetQueryDelimiters(valueDelimiter QChar, pairDelimiter QChar) {
-	C.QUrlQuery_SetQueryDelimiters(this.h, valueDelimiter.cPointer(), pairDelimiter.cPointer())
+	C.QUrlQuery_setQueryDelimiters(this.h, valueDelimiter.cPointer(), pairDelimiter.cPointer())
 }
 
 func (this *QUrlQuery) QueryValueDelimiter() *QChar {
-	_goptr := newQChar(C.QUrlQuery_QueryValueDelimiter(this.h))
+	_goptr := newQChar(C.QUrlQuery_queryValueDelimiter(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QUrlQuery) QueryPairDelimiter() *QChar {
-	_goptr := newQChar(C.QUrlQuery_QueryPairDelimiter(this.h))
+	_goptr := newQChar(C.QUrlQuery_queryPairDelimiter(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -168,14 +168,14 @@ func (this *QUrlQuery) SetQueryItems(query []struct {
 		query_CArray[i] = query_i_pair
 	}
 	query_ma := C.struct_miqt_array{len: C.size_t(len(query)), data: unsafe.Pointer(query_CArray)}
-	C.QUrlQuery_SetQueryItems(this.h, query_ma)
+	C.QUrlQuery_setQueryItems(this.h, query_ma)
 }
 
 func (this *QUrlQuery) QueryItems() []struct {
 	First  string
 	Second string
 } {
-	var _ma C.struct_miqt_array = C.QUrlQuery_QueryItems(this.h)
+	var _ma C.struct_miqt_array = C.QUrlQuery_queryItems(this.h)
 	_ret := make([]struct {
 		First  string
 		Second string
@@ -206,7 +206,7 @@ func (this *QUrlQuery) HasQueryItem(key string) bool {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	return (bool)(C.QUrlQuery_HasQueryItem(this.h, key_ms))
+	return (bool)(C.QUrlQuery_hasQueryItem(this.h, key_ms))
 }
 
 func (this *QUrlQuery) AddQueryItem(key string, value string) {
@@ -218,7 +218,7 @@ func (this *QUrlQuery) AddQueryItem(key string, value string) {
 	value_ms.data = C.CString(value)
 	value_ms.len = C.size_t(len(value))
 	defer C.free(unsafe.Pointer(value_ms.data))
-	C.QUrlQuery_AddQueryItem(this.h, key_ms, value_ms)
+	C.QUrlQuery_addQueryItem(this.h, key_ms, value_ms)
 }
 
 func (this *QUrlQuery) RemoveQueryItem(key string) {
@@ -226,7 +226,7 @@ func (this *QUrlQuery) RemoveQueryItem(key string) {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	C.QUrlQuery_RemoveQueryItem(this.h, key_ms)
+	C.QUrlQuery_removeQueryItem(this.h, key_ms)
 }
 
 func (this *QUrlQuery) QueryItemValue(key string) string {
@@ -234,7 +234,7 @@ func (this *QUrlQuery) QueryItemValue(key string) string {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	var _ms C.struct_miqt_string = C.QUrlQuery_QueryItemValue(this.h, key_ms)
+	var _ms C.struct_miqt_string = C.QUrlQuery_queryItemValue(this.h, key_ms)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -245,7 +245,7 @@ func (this *QUrlQuery) AllQueryItemValues(key string) []string {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	var _ma C.struct_miqt_array = C.QUrlQuery_AllQueryItemValues(this.h, key_ms)
+	var _ma C.struct_miqt_array = C.QUrlQuery_allQueryItemValues(this.h, key_ms)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -262,18 +262,18 @@ func (this *QUrlQuery) RemoveAllQueryItems(key string) {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	C.QUrlQuery_RemoveAllQueryItems(this.h, key_ms)
+	C.QUrlQuery_removeAllQueryItems(this.h, key_ms)
 }
 
 func (this *QUrlQuery) Query1(encoding QUrl__ComponentFormattingOption) string {
-	var _ms C.struct_miqt_string = C.QUrlQuery_Query1(this.h, (C.uint)(encoding))
+	var _ms C.struct_miqt_string = C.QUrlQuery_query1(this.h, (C.uint)(encoding))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QUrlQuery) ToString1(encoding QUrl__ComponentFormattingOption) string {
-	var _ms C.struct_miqt_string = C.QUrlQuery_ToString1(this.h, (C.uint)(encoding))
+	var _ms C.struct_miqt_string = C.QUrlQuery_toString1(this.h, (C.uint)(encoding))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -283,7 +283,7 @@ func (this *QUrlQuery) QueryItems1(encoding QUrl__ComponentFormattingOption) []s
 	First  string
 	Second string
 } {
-	var _ma C.struct_miqt_array = C.QUrlQuery_QueryItems1(this.h, (C.uint)(encoding))
+	var _ma C.struct_miqt_array = C.QUrlQuery_queryItems1(this.h, (C.uint)(encoding))
 	_ret := make([]struct {
 		First  string
 		Second string
@@ -314,7 +314,7 @@ func (this *QUrlQuery) QueryItemValue2(key string, encoding QUrl__ComponentForma
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	var _ms C.struct_miqt_string = C.QUrlQuery_QueryItemValue2(this.h, key_ms, (C.uint)(encoding))
+	var _ms C.struct_miqt_string = C.QUrlQuery_queryItemValue2(this.h, key_ms, (C.uint)(encoding))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -325,7 +325,7 @@ func (this *QUrlQuery) AllQueryItemValues2(key string, encoding QUrl__ComponentF
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	var _ma C.struct_miqt_array = C.QUrlQuery_AllQueryItemValues2(this.h, key_ms, (C.uint)(encoding))
+	var _ma C.struct_miqt_array = C.QUrlQuery_allQueryItemValues2(this.h, key_ms, (C.uint)(encoding))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -339,7 +339,7 @@ func (this *QUrlQuery) AllQueryItemValues2(key string, encoding QUrl__ComponentF
 
 // Delete this object from C++ memory.
 func (this *QUrlQuery) Delete() {
-	C.QUrlQuery_Delete(this.h)
+	C.QUrlQuery_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -28,37 +28,37 @@ typedef struct QRectF QRectF;
 
 QGlyphRun* QGlyphRun_new();
 QGlyphRun* QGlyphRun_new2(QGlyphRun* other);
-void QGlyphRun_OperatorAssign(QGlyphRun* self, QGlyphRun* other);
-void QGlyphRun_Swap(QGlyphRun* self, QGlyphRun* other);
-QRawFont* QGlyphRun_RawFont(const QGlyphRun* self);
-void QGlyphRun_SetRawFont(QGlyphRun* self, QRawFont* rawFont);
-void QGlyphRun_SetRawData(QGlyphRun* self, const unsigned int* glyphIndexArray, QPointF* glyphPositionArray, int size);
-struct miqt_array /* of unsigned int */  QGlyphRun_GlyphIndexes(const QGlyphRun* self);
-void QGlyphRun_SetGlyphIndexes(QGlyphRun* self, struct miqt_array /* of unsigned int */  glyphIndexes);
-struct miqt_array /* of QPointF* */  QGlyphRun_Positions(const QGlyphRun* self);
-void QGlyphRun_SetPositions(QGlyphRun* self, struct miqt_array /* of QPointF* */  positions);
-void QGlyphRun_Clear(QGlyphRun* self);
-bool QGlyphRun_OperatorEqual(const QGlyphRun* self, QGlyphRun* other);
-bool QGlyphRun_OperatorNotEqual(const QGlyphRun* self, QGlyphRun* other);
-void QGlyphRun_SetOverline(QGlyphRun* self, bool overline);
-bool QGlyphRun_Overline(const QGlyphRun* self);
-void QGlyphRun_SetUnderline(QGlyphRun* self, bool underline);
-bool QGlyphRun_Underline(const QGlyphRun* self);
-void QGlyphRun_SetStrikeOut(QGlyphRun* self, bool strikeOut);
-bool QGlyphRun_StrikeOut(const QGlyphRun* self);
-void QGlyphRun_SetRightToLeft(QGlyphRun* self, bool on);
-bool QGlyphRun_IsRightToLeft(const QGlyphRun* self);
-void QGlyphRun_SetFlag(QGlyphRun* self, int flag);
-void QGlyphRun_SetFlags(QGlyphRun* self, int flags);
-int QGlyphRun_Flags(const QGlyphRun* self);
-void QGlyphRun_SetBoundingRect(QGlyphRun* self, QRectF* boundingRect);
-QRectF* QGlyphRun_BoundingRect(const QGlyphRun* self);
-bool QGlyphRun_IsEmpty(const QGlyphRun* self);
-void QGlyphRun_SetFlag2(QGlyphRun* self, int flag, bool enabled);
-void QGlyphRun_Delete(QGlyphRun* self);
+void QGlyphRun_operatorAssign(QGlyphRun* self, QGlyphRun* other);
+void QGlyphRun_swap(QGlyphRun* self, QGlyphRun* other);
+QRawFont* QGlyphRun_rawFont(const QGlyphRun* self);
+void QGlyphRun_setRawFont(QGlyphRun* self, QRawFont* rawFont);
+void QGlyphRun_setRawData(QGlyphRun* self, const unsigned int* glyphIndexArray, QPointF* glyphPositionArray, int size);
+struct miqt_array /* of unsigned int */  QGlyphRun_glyphIndexes(const QGlyphRun* self);
+void QGlyphRun_setGlyphIndexes(QGlyphRun* self, struct miqt_array /* of unsigned int */  glyphIndexes);
+struct miqt_array /* of QPointF* */  QGlyphRun_positions(const QGlyphRun* self);
+void QGlyphRun_setPositions(QGlyphRun* self, struct miqt_array /* of QPointF* */  positions);
+void QGlyphRun_clear(QGlyphRun* self);
+bool QGlyphRun_operatorEqual(const QGlyphRun* self, QGlyphRun* other);
+bool QGlyphRun_operatorNotEqual(const QGlyphRun* self, QGlyphRun* other);
+void QGlyphRun_setOverline(QGlyphRun* self, bool overline);
+bool QGlyphRun_overline(const QGlyphRun* self);
+void QGlyphRun_setUnderline(QGlyphRun* self, bool underline);
+bool QGlyphRun_underline(const QGlyphRun* self);
+void QGlyphRun_setStrikeOut(QGlyphRun* self, bool strikeOut);
+bool QGlyphRun_strikeOut(const QGlyphRun* self);
+void QGlyphRun_setRightToLeft(QGlyphRun* self, bool on);
+bool QGlyphRun_isRightToLeft(const QGlyphRun* self);
+void QGlyphRun_setFlag(QGlyphRun* self, int flag);
+void QGlyphRun_setFlags(QGlyphRun* self, int flags);
+int QGlyphRun_flags(const QGlyphRun* self);
+void QGlyphRun_setBoundingRect(QGlyphRun* self, QRectF* boundingRect);
+QRectF* QGlyphRun_boundingRect(const QGlyphRun* self);
+bool QGlyphRun_isEmpty(const QGlyphRun* self);
+void QGlyphRun_setFlag2(QGlyphRun* self, int flag, bool enabled);
+void QGlyphRun_delete(QGlyphRun* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

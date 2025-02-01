@@ -46,14 +46,14 @@ func UnsafeNewQStaticPlugin(h unsafe.Pointer) *QStaticPlugin {
 }
 
 func (this *QStaticPlugin) MetaData() *QJsonObject {
-	_goptr := newQJsonObject(C.QStaticPlugin_MetaData(this.h))
+	_goptr := newQJsonObject(C.QStaticPlugin_metaData(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QStaticPlugin) Delete() {
-	C.QStaticPlugin_Delete(this.h)
+	C.QStaticPlugin_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

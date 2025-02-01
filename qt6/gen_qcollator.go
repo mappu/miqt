@@ -52,20 +52,20 @@ func NewQCollatorSortKey(other *QCollatorSortKey) *QCollatorSortKey {
 }
 
 func (this *QCollatorSortKey) OperatorAssign(other *QCollatorSortKey) {
-	C.QCollatorSortKey_OperatorAssign(this.h, other.cPointer())
+	C.QCollatorSortKey_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QCollatorSortKey) Swap(other *QCollatorSortKey) {
-	C.QCollatorSortKey_Swap(this.h, other.cPointer())
+	C.QCollatorSortKey_swap(this.h, other.cPointer())
 }
 
 func (this *QCollatorSortKey) Compare(key *QCollatorSortKey) int {
-	return (int)(C.QCollatorSortKey_Compare(this.h, key.cPointer()))
+	return (int)(C.QCollatorSortKey_compare(this.h, key.cPointer()))
 }
 
 // Delete this object from C++ memory.
 func (this *QCollatorSortKey) Delete() {
-	C.QCollatorSortKey_Delete(this.h)
+	C.QCollatorSortKey_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -128,45 +128,45 @@ func NewQCollator3(param1 *QCollator) *QCollator {
 }
 
 func (this *QCollator) OperatorAssign(param1 *QCollator) {
-	C.QCollator_OperatorAssign(this.h, param1.cPointer())
+	C.QCollator_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QCollator) Swap(other *QCollator) {
-	C.QCollator_Swap(this.h, other.cPointer())
+	C.QCollator_swap(this.h, other.cPointer())
 }
 
 func (this *QCollator) SetLocale(locale *QLocale) {
-	C.QCollator_SetLocale(this.h, locale.cPointer())
+	C.QCollator_setLocale(this.h, locale.cPointer())
 }
 
 func (this *QCollator) Locale() *QLocale {
-	_goptr := newQLocale(C.QCollator_Locale(this.h))
+	_goptr := newQLocale(C.QCollator_locale(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QCollator) CaseSensitivity() CaseSensitivity {
-	return (CaseSensitivity)(C.QCollator_CaseSensitivity(this.h))
+	return (CaseSensitivity)(C.QCollator_caseSensitivity(this.h))
 }
 
 func (this *QCollator) SetCaseSensitivity(cs CaseSensitivity) {
-	C.QCollator_SetCaseSensitivity(this.h, (C.int)(cs))
+	C.QCollator_setCaseSensitivity(this.h, (C.int)(cs))
 }
 
 func (this *QCollator) SetNumericMode(on bool) {
-	C.QCollator_SetNumericMode(this.h, (C.bool)(on))
+	C.QCollator_setNumericMode(this.h, (C.bool)(on))
 }
 
 func (this *QCollator) NumericMode() bool {
-	return (bool)(C.QCollator_NumericMode(this.h))
+	return (bool)(C.QCollator_numericMode(this.h))
 }
 
 func (this *QCollator) SetIgnorePunctuation(on bool) {
-	C.QCollator_SetIgnorePunctuation(this.h, (C.bool)(on))
+	C.QCollator_setIgnorePunctuation(this.h, (C.bool)(on))
 }
 
 func (this *QCollator) IgnorePunctuation() bool {
-	return (bool)(C.QCollator_IgnorePunctuation(this.h))
+	return (bool)(C.QCollator_ignorePunctuation(this.h))
 }
 
 func (this *QCollator) Compare(s1 string, s2 string) int {
@@ -178,11 +178,11 @@ func (this *QCollator) Compare(s1 string, s2 string) int {
 	s2_ms.data = C.CString(s2)
 	s2_ms.len = C.size_t(len(s2))
 	defer C.free(unsafe.Pointer(s2_ms.data))
-	return (int)(C.QCollator_Compare(this.h, s1_ms, s2_ms))
+	return (int)(C.QCollator_compare(this.h, s1_ms, s2_ms))
 }
 
 func (this *QCollator) Compare2(s1 *QChar, len1 int64, s2 *QChar, len2 int64) int {
-	return (int)(C.QCollator_Compare2(this.h, s1.cPointer(), (C.ptrdiff_t)(len1), s2.cPointer(), (C.ptrdiff_t)(len2)))
+	return (int)(C.QCollator_compare2(this.h, s1.cPointer(), (C.ptrdiff_t)(len1), s2.cPointer(), (C.ptrdiff_t)(len2)))
 }
 
 func (this *QCollator) OperatorCall(s1 string, s2 string) bool {
@@ -194,7 +194,7 @@ func (this *QCollator) OperatorCall(s1 string, s2 string) bool {
 	s2_ms.data = C.CString(s2)
 	s2_ms.len = C.size_t(len(s2))
 	defer C.free(unsafe.Pointer(s2_ms.data))
-	return (bool)(C.QCollator_OperatorCall(this.h, s1_ms, s2_ms))
+	return (bool)(C.QCollator_operatorCall(this.h, s1_ms, s2_ms))
 }
 
 func (this *QCollator) SortKey(stringVal string) *QCollatorSortKey {
@@ -202,14 +202,14 @@ func (this *QCollator) SortKey(stringVal string) *QCollatorSortKey {
 	stringVal_ms.data = C.CString(stringVal)
 	stringVal_ms.len = C.size_t(len(stringVal))
 	defer C.free(unsafe.Pointer(stringVal_ms.data))
-	_goptr := newQCollatorSortKey(C.QCollator_SortKey(this.h, stringVal_ms))
+	_goptr := newQCollatorSortKey(C.QCollator_sortKey(this.h, stringVal_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QCollator) Delete() {
-	C.QCollator_Delete(this.h)
+	C.QCollator_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

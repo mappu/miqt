@@ -27,15 +27,15 @@ typedef struct QScriptable QScriptable;
 #endif
 
 QScriptable* QScriptable_new();
-QScriptEngine* QScriptable_Engine(const QScriptable* self);
-QScriptContext* QScriptable_Context(const QScriptable* self);
-QScriptValue* QScriptable_ThisObject(const QScriptable* self);
-int QScriptable_ArgumentCount(const QScriptable* self);
-QScriptValue* QScriptable_Argument(const QScriptable* self, int index);
-void QScriptable_Delete(QScriptable* self);
+QScriptEngine* QScriptable_engine(const QScriptable* self);
+QScriptContext* QScriptable_context(const QScriptable* self);
+QScriptValue* QScriptable_thisObject(const QScriptable* self);
+int QScriptable_argumentCount(const QScriptable* self);
+QScriptValue* QScriptable_argument(const QScriptable* self, int index);
+void QScriptable_delete(QScriptable* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

@@ -58,60 +58,60 @@ func UnsafeNewQSessionManager(h unsafe.Pointer) *QSessionManager {
 }
 
 func (this *QSessionManager) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QSessionManager_MetaObject(this.h))
+	return newQMetaObject(C.QSessionManager_metaObject(this.h))
 }
 
 func (this *QSessionManager) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QSessionManager_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QSessionManager_metacast(this.h, param1_Cstring))
 }
 
 func QSessionManager_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QSessionManager_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QSessionManager_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSessionManager) SessionId() string {
-	var _ms C.struct_miqt_string = C.QSessionManager_SessionId(this.h)
+	var _ms C.struct_miqt_string = C.QSessionManager_sessionId(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSessionManager) SessionKey() string {
-	var _ms C.struct_miqt_string = C.QSessionManager_SessionKey(this.h)
+	var _ms C.struct_miqt_string = C.QSessionManager_sessionKey(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSessionManager) AllowsInteraction() bool {
-	return (bool)(C.QSessionManager_AllowsInteraction(this.h))
+	return (bool)(C.QSessionManager_allowsInteraction(this.h))
 }
 
 func (this *QSessionManager) AllowsErrorInteraction() bool {
-	return (bool)(C.QSessionManager_AllowsErrorInteraction(this.h))
+	return (bool)(C.QSessionManager_allowsErrorInteraction(this.h))
 }
 
 func (this *QSessionManager) Release() {
-	C.QSessionManager_Release(this.h)
+	C.QSessionManager_release(this.h)
 }
 
 func (this *QSessionManager) Cancel() {
-	C.QSessionManager_Cancel(this.h)
+	C.QSessionManager_cancel(this.h)
 }
 
 func (this *QSessionManager) SetRestartHint(restartHint QSessionManager__RestartHint) {
-	C.QSessionManager_SetRestartHint(this.h, (C.int)(restartHint))
+	C.QSessionManager_setRestartHint(this.h, (C.int)(restartHint))
 }
 
 func (this *QSessionManager) RestartHint() QSessionManager__RestartHint {
-	return (QSessionManager__RestartHint)(C.QSessionManager_RestartHint(this.h))
+	return (QSessionManager__RestartHint)(C.QSessionManager_restartHint(this.h))
 }
 
 func (this *QSessionManager) SetRestartCommand(restartCommand []string) {
@@ -125,11 +125,11 @@ func (this *QSessionManager) SetRestartCommand(restartCommand []string) {
 		restartCommand_CArray[i] = restartCommand_i_ms
 	}
 	restartCommand_ma := C.struct_miqt_array{len: C.size_t(len(restartCommand)), data: unsafe.Pointer(restartCommand_CArray)}
-	C.QSessionManager_SetRestartCommand(this.h, restartCommand_ma)
+	C.QSessionManager_setRestartCommand(this.h, restartCommand_ma)
 }
 
 func (this *QSessionManager) RestartCommand() []string {
-	var _ma C.struct_miqt_array = C.QSessionManager_RestartCommand(this.h)
+	var _ma C.struct_miqt_array = C.QSessionManager_restartCommand(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -152,11 +152,11 @@ func (this *QSessionManager) SetDiscardCommand(discardCommand []string) {
 		discardCommand_CArray[i] = discardCommand_i_ms
 	}
 	discardCommand_ma := C.struct_miqt_array{len: C.size_t(len(discardCommand)), data: unsafe.Pointer(discardCommand_CArray)}
-	C.QSessionManager_SetDiscardCommand(this.h, discardCommand_ma)
+	C.QSessionManager_setDiscardCommand(this.h, discardCommand_ma)
 }
 
 func (this *QSessionManager) DiscardCommand() []string {
-	var _ma C.struct_miqt_array = C.QSessionManager_DiscardCommand(this.h)
+	var _ma C.struct_miqt_array = C.QSessionManager_discardCommand(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -177,7 +177,7 @@ func (this *QSessionManager) SetManagerProperty(name string, value string) {
 	value_ms.data = C.CString(value)
 	value_ms.len = C.size_t(len(value))
 	defer C.free(unsafe.Pointer(value_ms.data))
-	C.QSessionManager_SetManagerProperty(this.h, name_ms, value_ms)
+	C.QSessionManager_setManagerProperty(this.h, name_ms, value_ms)
 }
 
 func (this *QSessionManager) SetManagerProperty2(name string, value []string) {
@@ -195,15 +195,15 @@ func (this *QSessionManager) SetManagerProperty2(name string, value []string) {
 		value_CArray[i] = value_i_ms
 	}
 	value_ma := C.struct_miqt_array{len: C.size_t(len(value)), data: unsafe.Pointer(value_CArray)}
-	C.QSessionManager_SetManagerProperty2(this.h, name_ms, value_ma)
+	C.QSessionManager_setManagerProperty2(this.h, name_ms, value_ma)
 }
 
 func (this *QSessionManager) IsPhase2() bool {
-	return (bool)(C.QSessionManager_IsPhase2(this.h))
+	return (bool)(C.QSessionManager_isPhase2(this.h))
 }
 
 func (this *QSessionManager) RequestPhase2() {
-	C.QSessionManager_RequestPhase2(this.h)
+	C.QSessionManager_requestPhase2(this.h)
 }
 
 func QSessionManager_Tr2(s string, c string) string {
@@ -211,7 +211,7 @@ func QSessionManager_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSessionManager_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QSessionManager_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -222,7 +222,7 @@ func QSessionManager_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSessionManager_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QSessionManager_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret

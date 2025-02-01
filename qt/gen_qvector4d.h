@@ -40,38 +40,38 @@ QVector4D* QVector4D_new7(QVector2D* vector, float zpos, float wpos);
 QVector4D* QVector4D_new8(QVector3D* vector);
 QVector4D* QVector4D_new9(QVector3D* vector, float wpos);
 QVector4D* QVector4D_new10(QVector4D* param1);
-bool QVector4D_IsNull(const QVector4D* self);
-float QVector4D_X(const QVector4D* self);
-float QVector4D_Y(const QVector4D* self);
-float QVector4D_Z(const QVector4D* self);
-float QVector4D_W(const QVector4D* self);
-void QVector4D_SetX(QVector4D* self, float x);
-void QVector4D_SetY(QVector4D* self, float y);
-void QVector4D_SetZ(QVector4D* self, float z);
-void QVector4D_SetW(QVector4D* self, float w);
-float QVector4D_OperatorSubscript(const QVector4D* self, int i);
-float QVector4D_Length(const QVector4D* self);
-float QVector4D_LengthSquared(const QVector4D* self);
-QVector4D* QVector4D_Normalized(const QVector4D* self);
-void QVector4D_Normalize(QVector4D* self);
-QVector4D* QVector4D_OperatorPlusAssign(QVector4D* self, QVector4D* vector);
-QVector4D* QVector4D_OperatorMinusAssign(QVector4D* self, QVector4D* vector);
-QVector4D* QVector4D_OperatorMultiplyAssign(QVector4D* self, float factor);
-QVector4D* QVector4D_OperatorMultiplyAssignWithVector(QVector4D* self, QVector4D* vector);
-QVector4D* QVector4D_OperatorDivideAssign(QVector4D* self, float divisor);
-QVector4D* QVector4D_OperatorDivideAssignWithVector(QVector4D* self, QVector4D* vector);
-float QVector4D_DotProduct(QVector4D* v1, QVector4D* v2);
-QVector2D* QVector4D_ToVector2D(const QVector4D* self);
-QVector2D* QVector4D_ToVector2DAffine(const QVector4D* self);
-QVector3D* QVector4D_ToVector3D(const QVector4D* self);
-QVector3D* QVector4D_ToVector3DAffine(const QVector4D* self);
-QPoint* QVector4D_ToPoint(const QVector4D* self);
-QPointF* QVector4D_ToPointF(const QVector4D* self);
+bool QVector4D_isNull(const QVector4D* self);
+float QVector4D_x(const QVector4D* self);
+float QVector4D_y(const QVector4D* self);
+float QVector4D_z(const QVector4D* self);
+float QVector4D_w(const QVector4D* self);
+void QVector4D_setX(QVector4D* self, float x);
+void QVector4D_setY(QVector4D* self, float y);
+void QVector4D_setZ(QVector4D* self, float z);
+void QVector4D_setW(QVector4D* self, float w);
+float QVector4D_operatorSubscript(const QVector4D* self, int i);
+float QVector4D_length(const QVector4D* self);
+float QVector4D_lengthSquared(const QVector4D* self);
+QVector4D* QVector4D_normalized(const QVector4D* self);
+void QVector4D_normalize(QVector4D* self);
+QVector4D* QVector4D_operatorPlusAssign(QVector4D* self, QVector4D* vector);
+QVector4D* QVector4D_operatorMinusAssign(QVector4D* self, QVector4D* vector);
+QVector4D* QVector4D_operatorMultiplyAssign(QVector4D* self, float factor);
+QVector4D* QVector4D_operatorMultiplyAssignWithVector(QVector4D* self, QVector4D* vector);
+QVector4D* QVector4D_operatorDivideAssign(QVector4D* self, float divisor);
+QVector4D* QVector4D_operatorDivideAssignWithVector(QVector4D* self, QVector4D* vector);
+float QVector4D_dotProduct(QVector4D* v1, QVector4D* v2);
+QVector2D* QVector4D_toVector2D(const QVector4D* self);
+QVector2D* QVector4D_toVector2DAffine(const QVector4D* self);
+QVector3D* QVector4D_toVector3D(const QVector4D* self);
+QVector3D* QVector4D_toVector3DAffine(const QVector4D* self);
+QPoint* QVector4D_toPoint(const QVector4D* self);
+QPointF* QVector4D_toPointF(const QVector4D* self);
 QVariant* QVector4D_ToQVariant(const QVector4D* self);
-void QVector4D_Delete(QVector4D* self);
+void QVector4D_delete(QVector4D* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

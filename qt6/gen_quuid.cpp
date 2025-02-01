@@ -24,19 +24,19 @@ QUuid* QUuid_new2(unsigned int l, uint16_t w1, uint16_t w2, unsigned char b1, un
 	return new QUuid(static_cast<uint>(l), static_cast<ushort>(w1), static_cast<ushort>(w2), static_cast<uchar>(b1), static_cast<uchar>(b2), static_cast<uchar>(b3), static_cast<uchar>(b4), static_cast<uchar>(b5), static_cast<uchar>(b6), static_cast<uchar>(b7), static_cast<uchar>(b8));
 }
 
-QUuid* QUuid_new3(QAnyStringView* stringVal) {
-	return new QUuid(*stringVal);
+QUuid* QUuid_new3(QAnyStringView* string) {
+	return new QUuid(*string);
 }
 
 QUuid* QUuid_new4(QUuid* param1) {
 	return new QUuid(*param1);
 }
 
-QUuid* QUuid_FromString(QAnyStringView* stringVal) {
-	return new QUuid(QUuid::fromString(*stringVal));
+QUuid* QUuid_fromString(QAnyStringView* string) {
+	return new QUuid(QUuid::fromString(*string));
 }
 
-struct miqt_string QUuid_ToString(const QUuid* self) {
+struct miqt_string QUuid_toString(const QUuid* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -47,7 +47,7 @@ struct miqt_string QUuid_ToString(const QUuid* self) {
 	return _ms;
 }
 
-struct miqt_string QUuid_ToByteArray(const QUuid* self) {
+struct miqt_string QUuid_toByteArray(const QUuid* self) {
 	QByteArray _qb = self->toByteArray();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -56,7 +56,7 @@ struct miqt_string QUuid_ToByteArray(const QUuid* self) {
 	return _ms;
 }
 
-struct miqt_string QUuid_ToRfc4122(const QUuid* self) {
+struct miqt_string QUuid_toRfc4122(const QUuid* self) {
 	QByteArray _qb = self->toRfc4122();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -65,65 +65,65 @@ struct miqt_string QUuid_ToRfc4122(const QUuid* self) {
 	return _ms;
 }
 
-QUuid* QUuid_FromRfc4122(QByteArrayView* param1) {
+QUuid* QUuid_fromRfc4122(QByteArrayView* param1) {
 	return new QUuid(QUuid::fromRfc4122(*param1));
 }
 
-bool QUuid_IsNull(const QUuid* self) {
+bool QUuid_isNull(const QUuid* self) {
 	return self->isNull();
 }
 
-bool QUuid_OperatorEqual(const QUuid* self, QUuid* orig) {
+bool QUuid_operatorEqual(const QUuid* self, QUuid* orig) {
 	return (*self == *orig);
 }
 
-bool QUuid_OperatorNotEqual(const QUuid* self, QUuid* orig) {
+bool QUuid_operatorNotEqual(const QUuid* self, QUuid* orig) {
 	return (*self != *orig);
 }
 
-bool QUuid_OperatorLesser(const QUuid* self, QUuid* other) {
+bool QUuid_operatorLesser(const QUuid* self, QUuid* other) {
 	return (*self < *other);
 }
 
-bool QUuid_OperatorGreater(const QUuid* self, QUuid* other) {
+bool QUuid_operatorGreater(const QUuid* self, QUuid* other) {
 	return (*self > *other);
 }
 
-QUuid* QUuid_CreateUuid() {
+QUuid* QUuid_createUuid() {
 	return new QUuid(QUuid::createUuid());
 }
 
-QUuid* QUuid_CreateUuidV3(QUuid* ns, struct miqt_string baseData) {
+QUuid* QUuid_createUuidV3(QUuid* ns, struct miqt_string baseData) {
 	QByteArray baseData_QByteArray(baseData.data, baseData.len);
 	return new QUuid(QUuid::createUuidV3(*ns, baseData_QByteArray));
 }
 
-QUuid* QUuid_CreateUuidV5(QUuid* ns, struct miqt_string baseData) {
+QUuid* QUuid_createUuidV5(QUuid* ns, struct miqt_string baseData) {
 	QByteArray baseData_QByteArray(baseData.data, baseData.len);
 	return new QUuid(QUuid::createUuidV5(*ns, baseData_QByteArray));
 }
 
-QUuid* QUuid_CreateUuidV32(QUuid* ns, struct miqt_string baseData) {
+QUuid* QUuid_createUuidV32(QUuid* ns, struct miqt_string baseData) {
 	QString baseData_QString = QString::fromUtf8(baseData.data, baseData.len);
 	return new QUuid(QUuid::createUuidV3(*ns, baseData_QString));
 }
 
-QUuid* QUuid_CreateUuidV52(QUuid* ns, struct miqt_string baseData) {
+QUuid* QUuid_createUuidV52(QUuid* ns, struct miqt_string baseData) {
 	QString baseData_QString = QString::fromUtf8(baseData.data, baseData.len);
 	return new QUuid(QUuid::createUuidV5(*ns, baseData_QString));
 }
 
-int QUuid_Variant(const QUuid* self) {
+int QUuid_variant(const QUuid* self) {
 	QUuid::Variant _ret = self->variant();
 	return static_cast<int>(_ret);
 }
 
-int QUuid_Version(const QUuid* self) {
+int QUuid_version(const QUuid* self) {
 	QUuid::Version _ret = self->version();
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string QUuid_ToString1(const QUuid* self, int mode) {
+struct miqt_string QUuid_toString1(const QUuid* self, int mode) {
 	QString _ret = self->toString(static_cast<QUuid::StringFormat>(mode));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -134,7 +134,7 @@ struct miqt_string QUuid_ToString1(const QUuid* self, int mode) {
 	return _ms;
 }
 
-struct miqt_string QUuid_ToByteArray1(const QUuid* self, int mode) {
+struct miqt_string QUuid_toByteArray1(const QUuid* self, int mode) {
 	QByteArray _qb = self->toByteArray(static_cast<QUuid::StringFormat>(mode));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -143,7 +143,7 @@ struct miqt_string QUuid_ToByteArray1(const QUuid* self, int mode) {
 	return _ms;
 }
 
-void QUuid_Delete(QUuid* self) {
+void QUuid_delete(QUuid* self) {
 	delete self;
 }
 

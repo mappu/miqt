@@ -17,15 +17,15 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QShortcut_Activated(intptr_t);
-void miqt_exec_callback_QShortcut_ActivatedAmbiguously(intptr_t);
-bool miqt_exec_callback_QShortcut_Event(QShortcut*, intptr_t, QEvent*);
-bool miqt_exec_callback_QShortcut_EventFilter(QShortcut*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QShortcut_TimerEvent(QShortcut*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QShortcut_ChildEvent(QShortcut*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QShortcut_CustomEvent(QShortcut*, intptr_t, QEvent*);
-void miqt_exec_callback_QShortcut_ConnectNotify(QShortcut*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QShortcut_DisconnectNotify(QShortcut*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QShortcut_activated(intptr_t);
+void miqt_exec_callback_QShortcut_activatedAmbiguously(intptr_t);
+bool miqt_exec_callback_QShortcut_event(QShortcut*, intptr_t, QEvent*);
+bool miqt_exec_callback_QShortcut_eventFilter(QShortcut*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QShortcut_timerEvent(QShortcut*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QShortcut_childEvent(QShortcut*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QShortcut_customEvent(QShortcut*, intptr_t, QEvent*);
+void miqt_exec_callback_QShortcut_connectNotify(QShortcut*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QShortcut_disconnectNotify(QShortcut*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -42,130 +42,130 @@ public:
 	virtual ~MiqtVirtualQShortcut() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* e) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QShortcut::event(e);
 		}
 		
 		QEvent* sigval1 = e;
 
-		bool callback_return_value = miqt_exec_callback_QShortcut_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QShortcut_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* e) {
+	bool virtualbase_event(QEvent* e) {
 
 		return QShortcut::event(e);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QShortcut::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QShortcut_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QShortcut_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QShortcut::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QShortcut::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QShortcut_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QShortcut_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QShortcut::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QShortcut::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QShortcut_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QShortcut_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QShortcut::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QShortcut::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QShortcut_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QShortcut_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QShortcut::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QShortcut::connectNotify(signal);
 			return;
 		}
@@ -174,24 +174,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QShortcut_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QShortcut_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QShortcut::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QShortcut::disconnectNotify(signal);
 			return;
 		}
@@ -200,13 +200,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QShortcut_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QShortcut_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QShortcut::disconnectNotify(*signal);
 
@@ -238,15 +238,15 @@ void QShortcut_virtbase(QShortcut* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QShortcut_MetaObject(const QShortcut* self) {
+QMetaObject* QShortcut_metaObject(const QShortcut* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QShortcut_Metacast(QShortcut* self, const char* param1) {
+void* QShortcut_metacast(QShortcut* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QShortcut_Tr(const char* s) {
+struct miqt_string QShortcut_tr(const char* s) {
 	QString _ret = QShortcut::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -257,7 +257,7 @@ struct miqt_string QShortcut_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QShortcut_TrUtf8(const char* s) {
+struct miqt_string QShortcut_trUtf8(const char* s) {
 	QString _ret = QShortcut::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -268,37 +268,37 @@ struct miqt_string QShortcut_TrUtf8(const char* s) {
 	return _ms;
 }
 
-void QShortcut_SetKey(QShortcut* self, QKeySequence* key) {
+void QShortcut_setKey(QShortcut* self, QKeySequence* key) {
 	self->setKey(*key);
 }
 
-QKeySequence* QShortcut_Key(const QShortcut* self) {
+QKeySequence* QShortcut_key(const QShortcut* self) {
 	return new QKeySequence(self->key());
 }
 
-void QShortcut_SetEnabled(QShortcut* self, bool enable) {
+void QShortcut_setEnabled(QShortcut* self, bool enable) {
 	self->setEnabled(enable);
 }
 
-bool QShortcut_IsEnabled(const QShortcut* self) {
+bool QShortcut_isEnabled(const QShortcut* self) {
 	return self->isEnabled();
 }
 
-void QShortcut_SetContext(QShortcut* self, int context) {
+void QShortcut_setContext(QShortcut* self, int context) {
 	self->setContext(static_cast<Qt::ShortcutContext>(context));
 }
 
-int QShortcut_Context(const QShortcut* self) {
+int QShortcut_context(const QShortcut* self) {
 	Qt::ShortcutContext _ret = self->context();
 	return static_cast<int>(_ret);
 }
 
-void QShortcut_SetWhatsThis(QShortcut* self, struct miqt_string text) {
+void QShortcut_setWhatsThis(QShortcut* self, struct miqt_string text) {
 	QString text_QString = QString::fromUtf8(text.data, text.len);
 	self->setWhatsThis(text_QString);
 }
 
-struct miqt_string QShortcut_WhatsThis(const QShortcut* self) {
+struct miqt_string QShortcut_whatsThis(const QShortcut* self) {
 	QString _ret = self->whatsThis();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -309,43 +309,43 @@ struct miqt_string QShortcut_WhatsThis(const QShortcut* self) {
 	return _ms;
 }
 
-void QShortcut_SetAutoRepeat(QShortcut* self, bool on) {
+void QShortcut_setAutoRepeat(QShortcut* self, bool on) {
 	self->setAutoRepeat(on);
 }
 
-bool QShortcut_AutoRepeat(const QShortcut* self) {
+bool QShortcut_autoRepeat(const QShortcut* self) {
 	return self->autoRepeat();
 }
 
-int QShortcut_Id(const QShortcut* self) {
+int QShortcut_id(const QShortcut* self) {
 	return self->id();
 }
 
-QWidget* QShortcut_ParentWidget(const QShortcut* self) {
+QWidget* QShortcut_parentWidget(const QShortcut* self) {
 	return self->parentWidget();
 }
 
-void QShortcut_Activated(QShortcut* self) {
+void QShortcut_activated(QShortcut* self) {
 	self->activated();
 }
 
-void QShortcut_connect_Activated(QShortcut* self, intptr_t slot) {
+void QShortcut_connect_activated(QShortcut* self, intptr_t slot) {
 	MiqtVirtualQShortcut::connect(self, static_cast<void (QShortcut::*)()>(&QShortcut::activated), self, [=]() {
-		miqt_exec_callback_QShortcut_Activated(slot);
+		miqt_exec_callback_QShortcut_activated(slot);
 	});
 }
 
-void QShortcut_ActivatedAmbiguously(QShortcut* self) {
+void QShortcut_activatedAmbiguously(QShortcut* self) {
 	self->activatedAmbiguously();
 }
 
-void QShortcut_connect_ActivatedAmbiguously(QShortcut* self, intptr_t slot) {
+void QShortcut_connect_activatedAmbiguously(QShortcut* self, intptr_t slot) {
 	MiqtVirtualQShortcut::connect(self, static_cast<void (QShortcut::*)()>(&QShortcut::activatedAmbiguously), self, [=]() {
-		miqt_exec_callback_QShortcut_ActivatedAmbiguously(slot);
+		miqt_exec_callback_QShortcut_activatedAmbiguously(slot);
 	});
 }
 
-struct miqt_string QShortcut_Tr2(const char* s, const char* c) {
+struct miqt_string QShortcut_tr2(const char* s, const char* c) {
 	QString _ret = QShortcut::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -356,7 +356,7 @@ struct miqt_string QShortcut_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QShortcut_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QShortcut_tr3(const char* s, const char* c, int n) {
 	QString _ret = QShortcut::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -367,7 +367,7 @@ struct miqt_string QShortcut_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string QShortcut_TrUtf82(const char* s, const char* c) {
+struct miqt_string QShortcut_trUtf82(const char* s, const char* c) {
 	QString _ret = QShortcut::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -378,7 +378,7 @@ struct miqt_string QShortcut_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QShortcut_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QShortcut_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QShortcut::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -389,105 +389,105 @@ struct miqt_string QShortcut_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QShortcut_override_virtual_Event(void* self, intptr_t slot) {
+bool QShortcut_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QShortcut_virtualbase_Event(void* self, QEvent* e) {
-	return ( (MiqtVirtualQShortcut*)(self) )->virtualbase_Event(e);
+bool QShortcut_virtualbase_event(void* self, QEvent* e) {
+	return ( (MiqtVirtualQShortcut*)(self) )->virtualbase_event(e);
 }
 
-bool QShortcut_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QShortcut_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QShortcut_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQShortcut*)(self) )->virtualbase_EventFilter(watched, event);
+bool QShortcut_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQShortcut*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QShortcut_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QShortcut_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QShortcut_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQShortcut*)(self) )->virtualbase_TimerEvent(event);
+void QShortcut_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQShortcut*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QShortcut_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QShortcut_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QShortcut_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQShortcut*)(self) )->virtualbase_ChildEvent(event);
+void QShortcut_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQShortcut*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QShortcut_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QShortcut_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QShortcut_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQShortcut*)(self) )->virtualbase_CustomEvent(event);
+void QShortcut_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQShortcut*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QShortcut_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QShortcut_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QShortcut_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQShortcut*)(self) )->virtualbase_ConnectNotify(signal);
+void QShortcut_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQShortcut*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QShortcut_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QShortcut_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQShortcut* self_cast = dynamic_cast<MiqtVirtualQShortcut*>( (QShortcut*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QShortcut_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQShortcut*)(self) )->virtualbase_DisconnectNotify(signal);
+void QShortcut_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQShortcut*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QShortcut_Delete(QShortcut* self) {
+void QShortcut_delete(QShortcut* self) {
 	delete self;
 }
 

@@ -74,11 +74,11 @@ func NewQStorageInfo4(other *QStorageInfo) *QStorageInfo {
 }
 
 func (this *QStorageInfo) OperatorAssign(other *QStorageInfo) {
-	C.QStorageInfo_OperatorAssign(this.h, other.cPointer())
+	C.QStorageInfo_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QStorageInfo) Swap(other *QStorageInfo) {
-	C.QStorageInfo_Swap(this.h, other.cPointer())
+	C.QStorageInfo_swap(this.h, other.cPointer())
 }
 
 func (this *QStorageInfo) SetPath(path string) {
@@ -86,89 +86,89 @@ func (this *QStorageInfo) SetPath(path string) {
 	path_ms.data = C.CString(path)
 	path_ms.len = C.size_t(len(path))
 	defer C.free(unsafe.Pointer(path_ms.data))
-	C.QStorageInfo_SetPath(this.h, path_ms)
+	C.QStorageInfo_setPath(this.h, path_ms)
 }
 
 func (this *QStorageInfo) RootPath() string {
-	var _ms C.struct_miqt_string = C.QStorageInfo_RootPath(this.h)
+	var _ms C.struct_miqt_string = C.QStorageInfo_rootPath(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QStorageInfo) Device() []byte {
-	var _bytearray C.struct_miqt_string = C.QStorageInfo_Device(this.h)
+	var _bytearray C.struct_miqt_string = C.QStorageInfo_device(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QStorageInfo) Subvolume() []byte {
-	var _bytearray C.struct_miqt_string = C.QStorageInfo_Subvolume(this.h)
+	var _bytearray C.struct_miqt_string = C.QStorageInfo_subvolume(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QStorageInfo) FileSystemType() []byte {
-	var _bytearray C.struct_miqt_string = C.QStorageInfo_FileSystemType(this.h)
+	var _bytearray C.struct_miqt_string = C.QStorageInfo_fileSystemType(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QStorageInfo) Name() string {
-	var _ms C.struct_miqt_string = C.QStorageInfo_Name(this.h)
+	var _ms C.struct_miqt_string = C.QStorageInfo_name(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QStorageInfo) DisplayName() string {
-	var _ms C.struct_miqt_string = C.QStorageInfo_DisplayName(this.h)
+	var _ms C.struct_miqt_string = C.QStorageInfo_displayName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QStorageInfo) BytesTotal() int64 {
-	return (int64)(C.QStorageInfo_BytesTotal(this.h))
+	return (int64)(C.QStorageInfo_bytesTotal(this.h))
 }
 
 func (this *QStorageInfo) BytesFree() int64 {
-	return (int64)(C.QStorageInfo_BytesFree(this.h))
+	return (int64)(C.QStorageInfo_bytesFree(this.h))
 }
 
 func (this *QStorageInfo) BytesAvailable() int64 {
-	return (int64)(C.QStorageInfo_BytesAvailable(this.h))
+	return (int64)(C.QStorageInfo_bytesAvailable(this.h))
 }
 
 func (this *QStorageInfo) BlockSize() int {
-	return (int)(C.QStorageInfo_BlockSize(this.h))
+	return (int)(C.QStorageInfo_blockSize(this.h))
 }
 
 func (this *QStorageInfo) IsRoot() bool {
-	return (bool)(C.QStorageInfo_IsRoot(this.h))
+	return (bool)(C.QStorageInfo_isRoot(this.h))
 }
 
 func (this *QStorageInfo) IsReadOnly() bool {
-	return (bool)(C.QStorageInfo_IsReadOnly(this.h))
+	return (bool)(C.QStorageInfo_isReadOnly(this.h))
 }
 
 func (this *QStorageInfo) IsReady() bool {
-	return (bool)(C.QStorageInfo_IsReady(this.h))
+	return (bool)(C.QStorageInfo_isReady(this.h))
 }
 
 func (this *QStorageInfo) IsValid() bool {
-	return (bool)(C.QStorageInfo_IsValid(this.h))
+	return (bool)(C.QStorageInfo_isValid(this.h))
 }
 
 func (this *QStorageInfo) Refresh() {
-	C.QStorageInfo_Refresh(this.h)
+	C.QStorageInfo_refresh(this.h)
 }
 
 func QStorageInfo_MountedVolumes() []QStorageInfo {
-	var _ma C.struct_miqt_array = C.QStorageInfo_MountedVolumes()
+	var _ma C.struct_miqt_array = C.QStorageInfo_mountedVolumes()
 	_ret := make([]QStorageInfo, int(_ma.len))
 	_outCast := (*[0xffff]*C.QStorageInfo)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -180,14 +180,14 @@ func QStorageInfo_MountedVolumes() []QStorageInfo {
 }
 
 func QStorageInfo_Root() *QStorageInfo {
-	_goptr := newQStorageInfo(C.QStorageInfo_Root())
+	_goptr := newQStorageInfo(C.QStorageInfo_root())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QStorageInfo) Delete() {
-	C.QStorageInfo_Delete(this.h)
+	C.QStorageInfo_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

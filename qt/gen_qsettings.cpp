@@ -18,13 +18,13 @@
 extern "C" {
 #endif
 
-bool miqt_exec_callback_QSettings_Event(QSettings*, intptr_t, QEvent*);
-bool miqt_exec_callback_QSettings_EventFilter(QSettings*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QSettings_TimerEvent(QSettings*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QSettings_ChildEvent(QSettings*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QSettings_CustomEvent(QSettings*, intptr_t, QEvent*);
-void miqt_exec_callback_QSettings_ConnectNotify(QSettings*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QSettings_DisconnectNotify(QSettings*, intptr_t, QMetaMethod*);
+bool miqt_exec_callback_QSettings_event(QSettings*, intptr_t, QEvent*);
+bool miqt_exec_callback_QSettings_eventFilter(QSettings*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QSettings_timerEvent(QSettings*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QSettings_childEvent(QSettings*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QSettings_customEvent(QSettings*, intptr_t, QEvent*);
+void miqt_exec_callback_QSettings_connectNotify(QSettings*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QSettings_disconnectNotify(QSettings*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -51,130 +51,130 @@ public:
 	virtual ~MiqtVirtualQSettings() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QSettings::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QSettings_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QSettings_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QSettings::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QSettings::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QSettings_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QSettings_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QSettings::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QSettings::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QSettings_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QSettings_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QSettings::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QSettings::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QSettings_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QSettings_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QSettings::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QSettings::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QSettings_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QSettings_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QSettings::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QSettings::connectNotify(signal);
 			return;
 		}
@@ -183,24 +183,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QSettings_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QSettings_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QSettings::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QSettings::disconnectNotify(signal);
 			return;
 		}
@@ -209,13 +209,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QSettings_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QSettings_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QSettings::disconnectNotify(*signal);
 
@@ -304,15 +304,15 @@ void QSettings_virtbase(QSettings* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QSettings_MetaObject(const QSettings* self) {
+QMetaObject* QSettings_metaObject(const QSettings* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QSettings_Metacast(QSettings* self, const char* param1) {
+void* QSettings_metacast(QSettings* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QSettings_Tr(const char* s) {
+struct miqt_string QSettings_tr(const char* s) {
 	QString _ret = QSettings::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -323,7 +323,7 @@ struct miqt_string QSettings_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QSettings_TrUtf8(const char* s) {
+struct miqt_string QSettings_trUtf8(const char* s) {
 	QString _ret = QSettings::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -334,37 +334,37 @@ struct miqt_string QSettings_TrUtf8(const char* s) {
 	return _ms;
 }
 
-void QSettings_Clear(QSettings* self) {
+void QSettings_clear(QSettings* self) {
 	self->clear();
 }
 
-void QSettings_Sync(QSettings* self) {
+void QSettings_sync(QSettings* self) {
 	self->sync();
 }
 
-int QSettings_Status(const QSettings* self) {
+int QSettings_status(const QSettings* self) {
 	QSettings::Status _ret = self->status();
 	return static_cast<int>(_ret);
 }
 
-bool QSettings_IsAtomicSyncRequired(const QSettings* self) {
+bool QSettings_isAtomicSyncRequired(const QSettings* self) {
 	return self->isAtomicSyncRequired();
 }
 
-void QSettings_SetAtomicSyncRequired(QSettings* self, bool enable) {
+void QSettings_setAtomicSyncRequired(QSettings* self, bool enable) {
 	self->setAtomicSyncRequired(enable);
 }
 
-void QSettings_BeginGroup(QSettings* self, struct miqt_string prefix) {
+void QSettings_beginGroup(QSettings* self, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	self->beginGroup(prefix_QString);
 }
 
-void QSettings_EndGroup(QSettings* self) {
+void QSettings_endGroup(QSettings* self) {
 	self->endGroup();
 }
 
-struct miqt_string QSettings_Group(const QSettings* self) {
+struct miqt_string QSettings_group(const QSettings* self) {
 	QString _ret = self->group();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -375,25 +375,25 @@ struct miqt_string QSettings_Group(const QSettings* self) {
 	return _ms;
 }
 
-int QSettings_BeginReadArray(QSettings* self, struct miqt_string prefix) {
+int QSettings_beginReadArray(QSettings* self, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	return self->beginReadArray(prefix_QString);
 }
 
-void QSettings_BeginWriteArray(QSettings* self, struct miqt_string prefix) {
+void QSettings_beginWriteArray(QSettings* self, struct miqt_string prefix) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	self->beginWriteArray(prefix_QString);
 }
 
-void QSettings_EndArray(QSettings* self) {
+void QSettings_endArray(QSettings* self) {
 	self->endArray();
 }
 
-void QSettings_SetArrayIndex(QSettings* self, int i) {
+void QSettings_setArrayIndex(QSettings* self, int i) {
 	self->setArrayIndex(static_cast<int>(i));
 }
 
-struct miqt_array /* of struct miqt_string */  QSettings_AllKeys(const QSettings* self) {
+struct miqt_array /* of struct miqt_string */  QSettings_allKeys(const QSettings* self) {
 	QStringList _ret = self->allKeys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -413,7 +413,7 @@ struct miqt_array /* of struct miqt_string */  QSettings_AllKeys(const QSettings
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_string */  QSettings_ChildKeys(const QSettings* self) {
+struct miqt_array /* of struct miqt_string */  QSettings_childKeys(const QSettings* self) {
 	QStringList _ret = self->childKeys();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -433,7 +433,7 @@ struct miqt_array /* of struct miqt_string */  QSettings_ChildKeys(const QSettin
 	return _out;
 }
 
-struct miqt_array /* of struct miqt_string */  QSettings_ChildGroups(const QSettings* self) {
+struct miqt_array /* of struct miqt_string */  QSettings_childGroups(const QSettings* self) {
 	QStringList _ret = self->childGroups();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -453,39 +453,39 @@ struct miqt_array /* of struct miqt_string */  QSettings_ChildGroups(const QSett
 	return _out;
 }
 
-bool QSettings_IsWritable(const QSettings* self) {
+bool QSettings_isWritable(const QSettings* self) {
 	return self->isWritable();
 }
 
-void QSettings_SetValue(QSettings* self, struct miqt_string key, QVariant* value) {
+void QSettings_setValue(QSettings* self, struct miqt_string key, QVariant* value) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
 	self->setValue(key_QString, *value);
 }
 
-QVariant* QSettings_Value(const QSettings* self, struct miqt_string key) {
+QVariant* QSettings_value(const QSettings* self, struct miqt_string key) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QVariant(self->value(key_QString));
 }
 
-void QSettings_Remove(QSettings* self, struct miqt_string key) {
+void QSettings_remove(QSettings* self, struct miqt_string key) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
 	self->remove(key_QString);
 }
 
-bool QSettings_Contains(const QSettings* self, struct miqt_string key) {
+bool QSettings_contains(const QSettings* self, struct miqt_string key) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return self->contains(key_QString);
 }
 
-void QSettings_SetFallbacksEnabled(QSettings* self, bool b) {
+void QSettings_setFallbacksEnabled(QSettings* self, bool b) {
 	self->setFallbacksEnabled(b);
 }
 
-bool QSettings_FallbacksEnabled(const QSettings* self) {
+bool QSettings_fallbacksEnabled(const QSettings* self) {
 	return self->fallbacksEnabled();
 }
 
-struct miqt_string QSettings_FileName(const QSettings* self) {
+struct miqt_string QSettings_fileName(const QSettings* self) {
 	QString _ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -496,17 +496,17 @@ struct miqt_string QSettings_FileName(const QSettings* self) {
 	return _ms;
 }
 
-int QSettings_Format(const QSettings* self) {
+int QSettings_format(const QSettings* self) {
 	QSettings::Format _ret = self->format();
 	return static_cast<int>(_ret);
 }
 
-int QSettings_Scope(const QSettings* self) {
+int QSettings_scope(const QSettings* self) {
 	QSettings::Scope _ret = self->scope();
 	return static_cast<int>(_ret);
 }
 
-struct miqt_string QSettings_OrganizationName(const QSettings* self) {
+struct miqt_string QSettings_organizationName(const QSettings* self) {
 	QString _ret = self->organizationName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -517,7 +517,7 @@ struct miqt_string QSettings_OrganizationName(const QSettings* self) {
 	return _ms;
 }
 
-struct miqt_string QSettings_ApplicationName(const QSettings* self) {
+struct miqt_string QSettings_applicationName(const QSettings* self) {
 	QString _ret = self->applicationName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -528,43 +528,43 @@ struct miqt_string QSettings_ApplicationName(const QSettings* self) {
 	return _ms;
 }
 
-void QSettings_SetIniCodec(QSettings* self, QTextCodec* codec) {
+void QSettings_setIniCodec(QSettings* self, QTextCodec* codec) {
 	self->setIniCodec(codec);
 }
 
-void QSettings_SetIniCodecWithCodecName(QSettings* self, const char* codecName) {
+void QSettings_setIniCodecWithCodecName(QSettings* self, const char* codecName) {
 	self->setIniCodec(codecName);
 }
 
-QTextCodec* QSettings_IniCodec(const QSettings* self) {
+QTextCodec* QSettings_iniCodec(const QSettings* self) {
 	return self->iniCodec();
 }
 
-void QSettings_SetDefaultFormat(int format) {
+void QSettings_setDefaultFormat(int format) {
 	QSettings::setDefaultFormat(static_cast<QSettings::Format>(format));
 }
 
-int QSettings_DefaultFormat() {
+int QSettings_defaultFormat() {
 	QSettings::Format _ret = QSettings::defaultFormat();
 	return static_cast<int>(_ret);
 }
 
-void QSettings_SetSystemIniPath(struct miqt_string dir) {
+void QSettings_setSystemIniPath(struct miqt_string dir) {
 	QString dir_QString = QString::fromUtf8(dir.data, dir.len);
 	QSettings::setSystemIniPath(dir_QString);
 }
 
-void QSettings_SetUserIniPath(struct miqt_string dir) {
+void QSettings_setUserIniPath(struct miqt_string dir) {
 	QString dir_QString = QString::fromUtf8(dir.data, dir.len);
 	QSettings::setUserIniPath(dir_QString);
 }
 
-void QSettings_SetPath(int format, int scope, struct miqt_string path) {
+void QSettings_setPath(int format, int scope, struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	QSettings::setPath(static_cast<QSettings::Format>(format), static_cast<QSettings::Scope>(scope), path_QString);
 }
 
-struct miqt_string QSettings_Tr2(const char* s, const char* c) {
+struct miqt_string QSettings_tr2(const char* s, const char* c) {
 	QString _ret = QSettings::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -575,7 +575,7 @@ struct miqt_string QSettings_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QSettings_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QSettings_tr3(const char* s, const char* c, int n) {
 	QString _ret = QSettings::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -586,7 +586,7 @@ struct miqt_string QSettings_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string QSettings_TrUtf82(const char* s, const char* c) {
+struct miqt_string QSettings_trUtf82(const char* s, const char* c) {
 	QString _ret = QSettings::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -597,7 +597,7 @@ struct miqt_string QSettings_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QSettings_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QSettings_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QSettings::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -608,115 +608,115 @@ struct miqt_string QSettings_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-void QSettings_BeginWriteArray2(QSettings* self, struct miqt_string prefix, int size) {
+void QSettings_beginWriteArray2(QSettings* self, struct miqt_string prefix, int size) {
 	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
 	self->beginWriteArray(prefix_QString, static_cast<int>(size));
 }
 
-QVariant* QSettings_Value2(const QSettings* self, struct miqt_string key, QVariant* defaultValue) {
+QVariant* QSettings_value2(const QSettings* self, struct miqt_string key, QVariant* defaultValue) {
 	QString key_QString = QString::fromUtf8(key.data, key.len);
 	return new QVariant(self->value(key_QString, *defaultValue));
 }
 
-bool QSettings_override_virtual_Event(void* self, intptr_t slot) {
+bool QSettings_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QSettings_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQSettings*)(self) )->virtualbase_Event(event);
+bool QSettings_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQSettings*)(self) )->virtualbase_event(event);
 }
 
-bool QSettings_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QSettings_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QSettings_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQSettings*)(self) )->virtualbase_EventFilter(watched, event);
+bool QSettings_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQSettings*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QSettings_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QSettings_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QSettings_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQSettings*)(self) )->virtualbase_TimerEvent(event);
+void QSettings_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQSettings*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QSettings_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QSettings_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QSettings_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQSettings*)(self) )->virtualbase_ChildEvent(event);
+void QSettings_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQSettings*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QSettings_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QSettings_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QSettings_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQSettings*)(self) )->virtualbase_CustomEvent(event);
+void QSettings_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQSettings*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QSettings_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QSettings_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QSettings_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSettings*)(self) )->virtualbase_ConnectNotify(signal);
+void QSettings_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQSettings*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QSettings_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QSettings_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QSettings_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSettings*)(self) )->virtualbase_DisconnectNotify(signal);
+void QSettings_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQSettings*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QSettings_Delete(QSettings* self) {
+void QSettings_delete(QSettings* self) {
 	delete self;
 }
 

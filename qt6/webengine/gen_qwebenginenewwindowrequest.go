@@ -60,46 +60,46 @@ func UnsafeNewQWebEngineNewWindowRequest(h unsafe.Pointer) *QWebEngineNewWindowR
 }
 
 func (this *QWebEngineNewWindowRequest) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineNewWindowRequest_MetaObject(this.h)))
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineNewWindowRequest_metaObject(this.h)))
 }
 
 func (this *QWebEngineNewWindowRequest) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWebEngineNewWindowRequest_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWebEngineNewWindowRequest_metacast(this.h, param1_Cstring))
 }
 
 func QWebEngineNewWindowRequest_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineNewWindowRequest_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineNewWindowRequest_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineNewWindowRequest) Destination() QWebEngineNewWindowRequest__DestinationType {
-	return (QWebEngineNewWindowRequest__DestinationType)(C.QWebEngineNewWindowRequest_Destination(this.h))
+	return (QWebEngineNewWindowRequest__DestinationType)(C.QWebEngineNewWindowRequest_destination(this.h))
 }
 
 func (this *QWebEngineNewWindowRequest) RequestedUrl() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineNewWindowRequest_RequestedUrl(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineNewWindowRequest_requestedUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineNewWindowRequest) RequestedGeometry() *qt6.QRect {
-	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(C.QWebEngineNewWindowRequest_RequestedGeometry(this.h)))
+	_goptr := qt6.UnsafeNewQRect(unsafe.Pointer(C.QWebEngineNewWindowRequest_requestedGeometry(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineNewWindowRequest) IsUserInitiated() bool {
-	return (bool)(C.QWebEngineNewWindowRequest_IsUserInitiated(this.h))
+	return (bool)(C.QWebEngineNewWindowRequest_isUserInitiated(this.h))
 }
 
 func (this *QWebEngineNewWindowRequest) OpenIn(param1 *QWebEnginePage) {
-	C.QWebEngineNewWindowRequest_OpenIn(this.h, param1.cPointer())
+	C.QWebEngineNewWindowRequest_openIn(this.h, param1.cPointer())
 }
 
 func QWebEngineNewWindowRequest_Tr2(s string, c string) string {
@@ -107,7 +107,7 @@ func QWebEngineNewWindowRequest_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineNewWindowRequest_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineNewWindowRequest_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -118,7 +118,7 @@ func QWebEngineNewWindowRequest_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineNewWindowRequest_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebEngineNewWindowRequest_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -126,7 +126,7 @@ func QWebEngineNewWindowRequest_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QWebEngineNewWindowRequest) Delete() {
-	C.QWebEngineNewWindowRequest_Delete(this.h)
+	C.QWebEngineNewWindowRequest_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

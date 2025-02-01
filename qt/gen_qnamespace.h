@@ -20,10 +20,10 @@ class QInternal;
 typedef struct QInternal QInternal;
 #endif
 
-void QInternal_Delete(QInternal* self);
+void QInternal_delete(QInternal* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

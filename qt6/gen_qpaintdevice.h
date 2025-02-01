@@ -26,30 +26,30 @@ typedef struct QPainter QPainter;
 typedef struct QPoint QPoint;
 #endif
 
-int QPaintDevice_DevType(const QPaintDevice* self);
-bool QPaintDevice_PaintingActive(const QPaintDevice* self);
-QPaintEngine* QPaintDevice_PaintEngine(const QPaintDevice* self);
-int QPaintDevice_Width(const QPaintDevice* self);
-int QPaintDevice_Height(const QPaintDevice* self);
-int QPaintDevice_WidthMM(const QPaintDevice* self);
-int QPaintDevice_HeightMM(const QPaintDevice* self);
-int QPaintDevice_LogicalDpiX(const QPaintDevice* self);
-int QPaintDevice_LogicalDpiY(const QPaintDevice* self);
-int QPaintDevice_PhysicalDpiX(const QPaintDevice* self);
-int QPaintDevice_PhysicalDpiY(const QPaintDevice* self);
-double QPaintDevice_DevicePixelRatio(const QPaintDevice* self);
-double QPaintDevice_DevicePixelRatioF(const QPaintDevice* self);
-int QPaintDevice_ColorCount(const QPaintDevice* self);
-int QPaintDevice_Depth(const QPaintDevice* self);
-double QPaintDevice_DevicePixelRatioFScale();
-int QPaintDevice_Metric(const QPaintDevice* self, int metric);
-void QPaintDevice_InitPainter(const QPaintDevice* self, QPainter* painter);
-QPaintDevice* QPaintDevice_Redirected(const QPaintDevice* self, QPoint* offset);
-QPainter* QPaintDevice_SharedPainter(const QPaintDevice* self);
-void QPaintDevice_Delete(QPaintDevice* self);
+int QPaintDevice_devType(const QPaintDevice* self);
+bool QPaintDevice_paintingActive(const QPaintDevice* self);
+QPaintEngine* QPaintDevice_paintEngine(const QPaintDevice* self);
+int QPaintDevice_width(const QPaintDevice* self);
+int QPaintDevice_height(const QPaintDevice* self);
+int QPaintDevice_widthMM(const QPaintDevice* self);
+int QPaintDevice_heightMM(const QPaintDevice* self);
+int QPaintDevice_logicalDpiX(const QPaintDevice* self);
+int QPaintDevice_logicalDpiY(const QPaintDevice* self);
+int QPaintDevice_physicalDpiX(const QPaintDevice* self);
+int QPaintDevice_physicalDpiY(const QPaintDevice* self);
+double QPaintDevice_devicePixelRatio(const QPaintDevice* self);
+double QPaintDevice_devicePixelRatioF(const QPaintDevice* self);
+int QPaintDevice_colorCount(const QPaintDevice* self);
+int QPaintDevice_depth(const QPaintDevice* self);
+double QPaintDevice_devicePixelRatioFScale();
+int QPaintDevice_metric(const QPaintDevice* self, int metric);
+void QPaintDevice_initPainter(const QPaintDevice* self, QPainter* painter);
+QPaintDevice* QPaintDevice_redirected(const QPaintDevice* self, QPoint* offset);
+QPainter* QPaintDevice_sharedPainter(const QPaintDevice* self);
+void QPaintDevice_delete(QPaintDevice* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

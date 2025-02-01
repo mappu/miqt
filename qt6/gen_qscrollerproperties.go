@@ -101,38 +101,38 @@ func NewQScrollerProperties2(sp *QScrollerProperties) *QScrollerProperties {
 }
 
 func (this *QScrollerProperties) OperatorAssign(sp *QScrollerProperties) {
-	C.QScrollerProperties_OperatorAssign(this.h, sp.cPointer())
+	C.QScrollerProperties_operatorAssign(this.h, sp.cPointer())
 }
 
 func (this *QScrollerProperties) OperatorEqual(sp *QScrollerProperties) bool {
-	return (bool)(C.QScrollerProperties_OperatorEqual(this.h, sp.cPointer()))
+	return (bool)(C.QScrollerProperties_operatorEqual(this.h, sp.cPointer()))
 }
 
 func (this *QScrollerProperties) OperatorNotEqual(sp *QScrollerProperties) bool {
-	return (bool)(C.QScrollerProperties_OperatorNotEqual(this.h, sp.cPointer()))
+	return (bool)(C.QScrollerProperties_operatorNotEqual(this.h, sp.cPointer()))
 }
 
 func QScrollerProperties_SetDefaultScrollerProperties(sp *QScrollerProperties) {
-	C.QScrollerProperties_SetDefaultScrollerProperties(sp.cPointer())
+	C.QScrollerProperties_setDefaultScrollerProperties(sp.cPointer())
 }
 
 func QScrollerProperties_UnsetDefaultScrollerProperties() {
-	C.QScrollerProperties_UnsetDefaultScrollerProperties()
+	C.QScrollerProperties_unsetDefaultScrollerProperties()
 }
 
 func (this *QScrollerProperties) ScrollMetric(metric QScrollerProperties__ScrollMetric) *QVariant {
-	_goptr := newQVariant(C.QScrollerProperties_ScrollMetric(this.h, (C.int)(metric)))
+	_goptr := newQVariant(C.QScrollerProperties_scrollMetric(this.h, (C.int)(metric)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScrollerProperties) SetScrollMetric(metric QScrollerProperties__ScrollMetric, value *QVariant) {
-	C.QScrollerProperties_SetScrollMetric(this.h, (C.int)(metric), value.cPointer())
+	C.QScrollerProperties_setScrollMetric(this.h, (C.int)(metric), value.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QScrollerProperties) Delete() {
-	C.QScrollerProperties_Delete(this.h)
+	C.QScrollerProperties_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -23,18 +23,18 @@ typedef struct QOperatingSystemVersion QOperatingSystemVersion;
 QOperatingSystemVersion* QOperatingSystemVersion_new(int osType, int vmajor);
 QOperatingSystemVersion* QOperatingSystemVersion_new2(int osType, int vmajor, int vminor);
 QOperatingSystemVersion* QOperatingSystemVersion_new3(int osType, int vmajor, int vminor, int vmicro);
-QOperatingSystemVersion* QOperatingSystemVersion_Current();
-int QOperatingSystemVersion_CurrentType();
-int QOperatingSystemVersion_MajorVersion(const QOperatingSystemVersion* self);
-int QOperatingSystemVersion_MinorVersion(const QOperatingSystemVersion* self);
-int QOperatingSystemVersion_MicroVersion(const QOperatingSystemVersion* self);
-int QOperatingSystemVersion_SegmentCount(const QOperatingSystemVersion* self);
-int QOperatingSystemVersion_Type(const QOperatingSystemVersion* self);
-struct miqt_string QOperatingSystemVersion_Name(const QOperatingSystemVersion* self);
-void QOperatingSystemVersion_Delete(QOperatingSystemVersion* self);
+QOperatingSystemVersion* QOperatingSystemVersion_current();
+int QOperatingSystemVersion_currentType();
+int QOperatingSystemVersion_majorVersion(const QOperatingSystemVersion* self);
+int QOperatingSystemVersion_minorVersion(const QOperatingSystemVersion* self);
+int QOperatingSystemVersion_microVersion(const QOperatingSystemVersion* self);
+int QOperatingSystemVersion_segmentCount(const QOperatingSystemVersion* self);
+int QOperatingSystemVersion_type(const QOperatingSystemVersion* self);
+struct miqt_string QOperatingSystemVersion_name(const QOperatingSystemVersion* self);
+void QOperatingSystemVersion_delete(QOperatingSystemVersion* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

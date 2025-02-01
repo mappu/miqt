@@ -27,27 +27,27 @@ typedef struct QObject QObject;
 #endif
 
 void QAudioOutputSelectorControl_virtbase(QAudioOutputSelectorControl* src, QMediaControl** outptr_QMediaControl);
-QMetaObject* QAudioOutputSelectorControl_MetaObject(const QAudioOutputSelectorControl* self);
-void* QAudioOutputSelectorControl_Metacast(QAudioOutputSelectorControl* self, const char* param1);
-struct miqt_string QAudioOutputSelectorControl_Tr(const char* s);
-struct miqt_string QAudioOutputSelectorControl_TrUtf8(const char* s);
-struct miqt_array /* of struct miqt_string */  QAudioOutputSelectorControl_AvailableOutputs(const QAudioOutputSelectorControl* self);
-struct miqt_string QAudioOutputSelectorControl_OutputDescription(const QAudioOutputSelectorControl* self, struct miqt_string name);
-struct miqt_string QAudioOutputSelectorControl_DefaultOutput(const QAudioOutputSelectorControl* self);
-struct miqt_string QAudioOutputSelectorControl_ActiveOutput(const QAudioOutputSelectorControl* self);
-void QAudioOutputSelectorControl_SetActiveOutput(QAudioOutputSelectorControl* self, struct miqt_string name);
-void QAudioOutputSelectorControl_ActiveOutputChanged(QAudioOutputSelectorControl* self, struct miqt_string name);
-void QAudioOutputSelectorControl_connect_ActiveOutputChanged(QAudioOutputSelectorControl* self, intptr_t slot);
-void QAudioOutputSelectorControl_AvailableOutputsChanged(QAudioOutputSelectorControl* self);
-void QAudioOutputSelectorControl_connect_AvailableOutputsChanged(QAudioOutputSelectorControl* self, intptr_t slot);
-struct miqt_string QAudioOutputSelectorControl_Tr2(const char* s, const char* c);
-struct miqt_string QAudioOutputSelectorControl_Tr3(const char* s, const char* c, int n);
-struct miqt_string QAudioOutputSelectorControl_TrUtf82(const char* s, const char* c);
-struct miqt_string QAudioOutputSelectorControl_TrUtf83(const char* s, const char* c, int n);
-void QAudioOutputSelectorControl_Delete(QAudioOutputSelectorControl* self);
+QMetaObject* QAudioOutputSelectorControl_metaObject(const QAudioOutputSelectorControl* self);
+void* QAudioOutputSelectorControl_metacast(QAudioOutputSelectorControl* self, const char* param1);
+struct miqt_string QAudioOutputSelectorControl_tr(const char* s);
+struct miqt_string QAudioOutputSelectorControl_trUtf8(const char* s);
+struct miqt_array /* of struct miqt_string */  QAudioOutputSelectorControl_availableOutputs(const QAudioOutputSelectorControl* self);
+struct miqt_string QAudioOutputSelectorControl_outputDescription(const QAudioOutputSelectorControl* self, struct miqt_string name);
+struct miqt_string QAudioOutputSelectorControl_defaultOutput(const QAudioOutputSelectorControl* self);
+struct miqt_string QAudioOutputSelectorControl_activeOutput(const QAudioOutputSelectorControl* self);
+void QAudioOutputSelectorControl_setActiveOutput(QAudioOutputSelectorControl* self, struct miqt_string name);
+void QAudioOutputSelectorControl_activeOutputChanged(QAudioOutputSelectorControl* self, struct miqt_string name);
+void QAudioOutputSelectorControl_connect_activeOutputChanged(QAudioOutputSelectorControl* self, intptr_t slot);
+void QAudioOutputSelectorControl_availableOutputsChanged(QAudioOutputSelectorControl* self);
+void QAudioOutputSelectorControl_connect_availableOutputsChanged(QAudioOutputSelectorControl* self, intptr_t slot);
+struct miqt_string QAudioOutputSelectorControl_tr2(const char* s, const char* c);
+struct miqt_string QAudioOutputSelectorControl_tr3(const char* s, const char* c, int n);
+struct miqt_string QAudioOutputSelectorControl_trUtf82(const char* s, const char* c);
+struct miqt_string QAudioOutputSelectorControl_trUtf83(const char* s, const char* c, int n);
+void QAudioOutputSelectorControl_delete(QAudioOutputSelectorControl* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

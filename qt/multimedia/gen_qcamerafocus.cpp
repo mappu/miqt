@@ -15,11 +15,11 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QCameraFocus_OpticalZoomChanged(intptr_t, double);
-void miqt_exec_callback_QCameraFocus_DigitalZoomChanged(intptr_t, double);
-void miqt_exec_callback_QCameraFocus_FocusZonesChanged(intptr_t);
-void miqt_exec_callback_QCameraFocus_MaximumOpticalZoomChanged(intptr_t, double);
-void miqt_exec_callback_QCameraFocus_MaximumDigitalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraFocus_opticalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraFocus_digitalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraFocus_focusZonesChanged(intptr_t);
+void miqt_exec_callback_QCameraFocus_maximumOpticalZoomChanged(intptr_t, double);
+void miqt_exec_callback_QCameraFocus_maximumDigitalZoomChanged(intptr_t, double);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -40,36 +40,36 @@ QCameraFocusZone* QCameraFocusZone_new4(QRectF* area, int status) {
 	return new QCameraFocusZone(*area, static_cast<QCameraFocusZone::FocusZoneStatus>(status));
 }
 
-void QCameraFocusZone_OperatorAssign(QCameraFocusZone* self, QCameraFocusZone* other) {
+void QCameraFocusZone_operatorAssign(QCameraFocusZone* self, QCameraFocusZone* other) {
 	self->operator=(*other);
 }
 
-bool QCameraFocusZone_OperatorEqual(const QCameraFocusZone* self, QCameraFocusZone* other) {
+bool QCameraFocusZone_operatorEqual(const QCameraFocusZone* self, QCameraFocusZone* other) {
 	return (*self == *other);
 }
 
-bool QCameraFocusZone_OperatorNotEqual(const QCameraFocusZone* self, QCameraFocusZone* other) {
+bool QCameraFocusZone_operatorNotEqual(const QCameraFocusZone* self, QCameraFocusZone* other) {
 	return (*self != *other);
 }
 
-bool QCameraFocusZone_IsValid(const QCameraFocusZone* self) {
+bool QCameraFocusZone_isValid(const QCameraFocusZone* self) {
 	return self->isValid();
 }
 
-QRectF* QCameraFocusZone_Area(const QCameraFocusZone* self) {
+QRectF* QCameraFocusZone_area(const QCameraFocusZone* self) {
 	return new QRectF(self->area());
 }
 
-int QCameraFocusZone_Status(const QCameraFocusZone* self) {
+int QCameraFocusZone_status(const QCameraFocusZone* self) {
 	QCameraFocusZone::FocusZoneStatus _ret = self->status();
 	return static_cast<int>(_ret);
 }
 
-void QCameraFocusZone_SetStatus(QCameraFocusZone* self, int status) {
+void QCameraFocusZone_setStatus(QCameraFocusZone* self, int status) {
 	self->setStatus(static_cast<QCameraFocusZone::FocusZoneStatus>(status));
 }
 
-void QCameraFocusZone_Delete(QCameraFocusZone* self) {
+void QCameraFocusZone_delete(QCameraFocusZone* self) {
 	delete self;
 }
 
@@ -77,15 +77,15 @@ void QCameraFocus_virtbase(QCameraFocus* src, QObject** outptr_QObject) {
 	*outptr_QObject = static_cast<QObject*>(src);
 }
 
-QMetaObject* QCameraFocus_MetaObject(const QCameraFocus* self) {
+QMetaObject* QCameraFocus_metaObject(const QCameraFocus* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QCameraFocus_Metacast(QCameraFocus* self, const char* param1) {
+void* QCameraFocus_metacast(QCameraFocus* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QCameraFocus_Tr(const char* s) {
+struct miqt_string QCameraFocus_tr(const char* s) {
 	QString _ret = QCameraFocus::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -96,7 +96,7 @@ struct miqt_string QCameraFocus_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QCameraFocus_TrUtf8(const char* s) {
+struct miqt_string QCameraFocus_trUtf8(const char* s) {
 	QString _ret = QCameraFocus::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -107,45 +107,45 @@ struct miqt_string QCameraFocus_TrUtf8(const char* s) {
 	return _ms;
 }
 
-bool QCameraFocus_IsAvailable(const QCameraFocus* self) {
+bool QCameraFocus_isAvailable(const QCameraFocus* self) {
 	return self->isAvailable();
 }
 
-int QCameraFocus_FocusMode(const QCameraFocus* self) {
+int QCameraFocus_focusMode(const QCameraFocus* self) {
 	QCameraFocus::FocusModes _ret = self->focusMode();
 	return static_cast<int>(_ret);
 }
 
-void QCameraFocus_SetFocusMode(QCameraFocus* self, int mode) {
+void QCameraFocus_setFocusMode(QCameraFocus* self, int mode) {
 	self->setFocusMode(static_cast<QCameraFocus::FocusModes>(mode));
 }
 
-bool QCameraFocus_IsFocusModeSupported(const QCameraFocus* self, int mode) {
+bool QCameraFocus_isFocusModeSupported(const QCameraFocus* self, int mode) {
 	return self->isFocusModeSupported(static_cast<QCameraFocus::FocusModes>(mode));
 }
 
-int QCameraFocus_FocusPointMode(const QCameraFocus* self) {
+int QCameraFocus_focusPointMode(const QCameraFocus* self) {
 	QCameraFocus::FocusPointMode _ret = self->focusPointMode();
 	return static_cast<int>(_ret);
 }
 
-void QCameraFocus_SetFocusPointMode(QCameraFocus* self, int mode) {
+void QCameraFocus_setFocusPointMode(QCameraFocus* self, int mode) {
 	self->setFocusPointMode(static_cast<QCameraFocus::FocusPointMode>(mode));
 }
 
-bool QCameraFocus_IsFocusPointModeSupported(const QCameraFocus* self, int param1) {
+bool QCameraFocus_isFocusPointModeSupported(const QCameraFocus* self, int param1) {
 	return self->isFocusPointModeSupported(static_cast<QCameraFocus::FocusPointMode>(param1));
 }
 
-QPointF* QCameraFocus_CustomFocusPoint(const QCameraFocus* self) {
+QPointF* QCameraFocus_customFocusPoint(const QCameraFocus* self) {
 	return new QPointF(self->customFocusPoint());
 }
 
-void QCameraFocus_SetCustomFocusPoint(QCameraFocus* self, QPointF* point) {
+void QCameraFocus_setCustomFocusPoint(QCameraFocus* self, QPointF* point) {
 	self->setCustomFocusPoint(*point);
 }
 
-struct miqt_array /* of QCameraFocusZone* */  QCameraFocus_FocusZones(const QCameraFocus* self) {
+struct miqt_array /* of QCameraFocusZone* */  QCameraFocus_focusZones(const QCameraFocus* self) {
 	QCameraFocusZoneList _ret = self->focusZones();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCameraFocusZone** _arr = static_cast<QCameraFocusZone**>(malloc(sizeof(QCameraFocusZone*) * _ret.length()));
@@ -158,89 +158,89 @@ struct miqt_array /* of QCameraFocusZone* */  QCameraFocus_FocusZones(const QCam
 	return _out;
 }
 
-double QCameraFocus_MaximumOpticalZoom(const QCameraFocus* self) {
+double QCameraFocus_maximumOpticalZoom(const QCameraFocus* self) {
 	qreal _ret = self->maximumOpticalZoom();
 	return static_cast<double>(_ret);
 }
 
-double QCameraFocus_MaximumDigitalZoom(const QCameraFocus* self) {
+double QCameraFocus_maximumDigitalZoom(const QCameraFocus* self) {
 	qreal _ret = self->maximumDigitalZoom();
 	return static_cast<double>(_ret);
 }
 
-double QCameraFocus_OpticalZoom(const QCameraFocus* self) {
+double QCameraFocus_opticalZoom(const QCameraFocus* self) {
 	qreal _ret = self->opticalZoom();
 	return static_cast<double>(_ret);
 }
 
-double QCameraFocus_DigitalZoom(const QCameraFocus* self) {
+double QCameraFocus_digitalZoom(const QCameraFocus* self) {
 	qreal _ret = self->digitalZoom();
 	return static_cast<double>(_ret);
 }
 
-void QCameraFocus_ZoomTo(QCameraFocus* self, double opticalZoom, double digitalZoom) {
+void QCameraFocus_zoomTo(QCameraFocus* self, double opticalZoom, double digitalZoom) {
 	self->zoomTo(static_cast<qreal>(opticalZoom), static_cast<qreal>(digitalZoom));
 }
 
-void QCameraFocus_OpticalZoomChanged(QCameraFocus* self, double param1) {
+void QCameraFocus_opticalZoomChanged(QCameraFocus* self, double param1) {
 	self->opticalZoomChanged(static_cast<qreal>(param1));
 }
 
-void QCameraFocus_connect_OpticalZoomChanged(QCameraFocus* self, intptr_t slot) {
+void QCameraFocus_connect_opticalZoomChanged(QCameraFocus* self, intptr_t slot) {
 	QCameraFocus::connect(self, static_cast<void (QCameraFocus::*)(qreal)>(&QCameraFocus::opticalZoomChanged), self, [=](qreal param1) {
 		qreal param1_ret = param1;
 		double sigval1 = static_cast<double>(param1_ret);
-		miqt_exec_callback_QCameraFocus_OpticalZoomChanged(slot, sigval1);
+		miqt_exec_callback_QCameraFocus_opticalZoomChanged(slot, sigval1);
 	});
 }
 
-void QCameraFocus_DigitalZoomChanged(QCameraFocus* self, double param1) {
+void QCameraFocus_digitalZoomChanged(QCameraFocus* self, double param1) {
 	self->digitalZoomChanged(static_cast<qreal>(param1));
 }
 
-void QCameraFocus_connect_DigitalZoomChanged(QCameraFocus* self, intptr_t slot) {
+void QCameraFocus_connect_digitalZoomChanged(QCameraFocus* self, intptr_t slot) {
 	QCameraFocus::connect(self, static_cast<void (QCameraFocus::*)(qreal)>(&QCameraFocus::digitalZoomChanged), self, [=](qreal param1) {
 		qreal param1_ret = param1;
 		double sigval1 = static_cast<double>(param1_ret);
-		miqt_exec_callback_QCameraFocus_DigitalZoomChanged(slot, sigval1);
+		miqt_exec_callback_QCameraFocus_digitalZoomChanged(slot, sigval1);
 	});
 }
 
-void QCameraFocus_FocusZonesChanged(QCameraFocus* self) {
+void QCameraFocus_focusZonesChanged(QCameraFocus* self) {
 	self->focusZonesChanged();
 }
 
-void QCameraFocus_connect_FocusZonesChanged(QCameraFocus* self, intptr_t slot) {
+void QCameraFocus_connect_focusZonesChanged(QCameraFocus* self, intptr_t slot) {
 	QCameraFocus::connect(self, static_cast<void (QCameraFocus::*)()>(&QCameraFocus::focusZonesChanged), self, [=]() {
-		miqt_exec_callback_QCameraFocus_FocusZonesChanged(slot);
+		miqt_exec_callback_QCameraFocus_focusZonesChanged(slot);
 	});
 }
 
-void QCameraFocus_MaximumOpticalZoomChanged(QCameraFocus* self, double param1) {
+void QCameraFocus_maximumOpticalZoomChanged(QCameraFocus* self, double param1) {
 	self->maximumOpticalZoomChanged(static_cast<qreal>(param1));
 }
 
-void QCameraFocus_connect_MaximumOpticalZoomChanged(QCameraFocus* self, intptr_t slot) {
+void QCameraFocus_connect_maximumOpticalZoomChanged(QCameraFocus* self, intptr_t slot) {
 	QCameraFocus::connect(self, static_cast<void (QCameraFocus::*)(qreal)>(&QCameraFocus::maximumOpticalZoomChanged), self, [=](qreal param1) {
 		qreal param1_ret = param1;
 		double sigval1 = static_cast<double>(param1_ret);
-		miqt_exec_callback_QCameraFocus_MaximumOpticalZoomChanged(slot, sigval1);
+		miqt_exec_callback_QCameraFocus_maximumOpticalZoomChanged(slot, sigval1);
 	});
 }
 
-void QCameraFocus_MaximumDigitalZoomChanged(QCameraFocus* self, double param1) {
+void QCameraFocus_maximumDigitalZoomChanged(QCameraFocus* self, double param1) {
 	self->maximumDigitalZoomChanged(static_cast<qreal>(param1));
 }
 
-void QCameraFocus_connect_MaximumDigitalZoomChanged(QCameraFocus* self, intptr_t slot) {
+void QCameraFocus_connect_maximumDigitalZoomChanged(QCameraFocus* self, intptr_t slot) {
 	QCameraFocus::connect(self, static_cast<void (QCameraFocus::*)(qreal)>(&QCameraFocus::maximumDigitalZoomChanged), self, [=](qreal param1) {
 		qreal param1_ret = param1;
 		double sigval1 = static_cast<double>(param1_ret);
-		miqt_exec_callback_QCameraFocus_MaximumDigitalZoomChanged(slot, sigval1);
+		miqt_exec_callback_QCameraFocus_maximumDigitalZoomChanged(slot, sigval1);
 	});
 }
 
-struct miqt_string QCameraFocus_Tr2(const char* s, const char* c) {
+struct miqt_string QCameraFocus_tr2(const char* s, const char* c) {
 	QString _ret = QCameraFocus::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -251,7 +251,7 @@ struct miqt_string QCameraFocus_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QCameraFocus_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QCameraFocus_tr3(const char* s, const char* c, int n) {
 	QString _ret = QCameraFocus::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -262,7 +262,7 @@ struct miqt_string QCameraFocus_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string QCameraFocus_TrUtf82(const char* s, const char* c) {
+struct miqt_string QCameraFocus_trUtf82(const char* s, const char* c) {
 	QString _ret = QCameraFocus::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -273,7 +273,7 @@ struct miqt_string QCameraFocus_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QCameraFocus_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QCameraFocus_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QCameraFocus::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();

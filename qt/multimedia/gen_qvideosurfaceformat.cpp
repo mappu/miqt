@@ -31,112 +31,112 @@ QVideoSurfaceFormat* QVideoSurfaceFormat_new4(QSize* size, int pixelFormat, int 
 	return new QVideoSurfaceFormat(*size, static_cast<QVideoFrame::PixelFormat>(pixelFormat), static_cast<QAbstractVideoBuffer::HandleType>(handleType));
 }
 
-void QVideoSurfaceFormat_OperatorAssign(QVideoSurfaceFormat* self, QVideoSurfaceFormat* format) {
+void QVideoSurfaceFormat_operatorAssign(QVideoSurfaceFormat* self, QVideoSurfaceFormat* format) {
 	self->operator=(*format);
 }
 
-bool QVideoSurfaceFormat_OperatorEqual(const QVideoSurfaceFormat* self, QVideoSurfaceFormat* format) {
+bool QVideoSurfaceFormat_operatorEqual(const QVideoSurfaceFormat* self, QVideoSurfaceFormat* format) {
 	return (*self == *format);
 }
 
-bool QVideoSurfaceFormat_OperatorNotEqual(const QVideoSurfaceFormat* self, QVideoSurfaceFormat* format) {
+bool QVideoSurfaceFormat_operatorNotEqual(const QVideoSurfaceFormat* self, QVideoSurfaceFormat* format) {
 	return (*self != *format);
 }
 
-bool QVideoSurfaceFormat_IsValid(const QVideoSurfaceFormat* self) {
+bool QVideoSurfaceFormat_isValid(const QVideoSurfaceFormat* self) {
 	return self->isValid();
 }
 
-int QVideoSurfaceFormat_PixelFormat(const QVideoSurfaceFormat* self) {
+int QVideoSurfaceFormat_pixelFormat(const QVideoSurfaceFormat* self) {
 	QVideoFrame::PixelFormat _ret = self->pixelFormat();
 	return static_cast<int>(_ret);
 }
 
-int QVideoSurfaceFormat_HandleType(const QVideoSurfaceFormat* self) {
+int QVideoSurfaceFormat_handleType(const QVideoSurfaceFormat* self) {
 	QAbstractVideoBuffer::HandleType _ret = self->handleType();
 	return static_cast<int>(_ret);
 }
 
-QSize* QVideoSurfaceFormat_FrameSize(const QVideoSurfaceFormat* self) {
+QSize* QVideoSurfaceFormat_frameSize(const QVideoSurfaceFormat* self) {
 	return new QSize(self->frameSize());
 }
 
-void QVideoSurfaceFormat_SetFrameSize(QVideoSurfaceFormat* self, QSize* size) {
+void QVideoSurfaceFormat_setFrameSize(QVideoSurfaceFormat* self, QSize* size) {
 	self->setFrameSize(*size);
 }
 
-void QVideoSurfaceFormat_SetFrameSize2(QVideoSurfaceFormat* self, int width, int height) {
+void QVideoSurfaceFormat_setFrameSize2(QVideoSurfaceFormat* self, int width, int height) {
 	self->setFrameSize(static_cast<int>(width), static_cast<int>(height));
 }
 
-int QVideoSurfaceFormat_FrameWidth(const QVideoSurfaceFormat* self) {
+int QVideoSurfaceFormat_frameWidth(const QVideoSurfaceFormat* self) {
 	return self->frameWidth();
 }
 
-int QVideoSurfaceFormat_FrameHeight(const QVideoSurfaceFormat* self) {
+int QVideoSurfaceFormat_frameHeight(const QVideoSurfaceFormat* self) {
 	return self->frameHeight();
 }
 
-QRect* QVideoSurfaceFormat_Viewport(const QVideoSurfaceFormat* self) {
+QRect* QVideoSurfaceFormat_viewport(const QVideoSurfaceFormat* self) {
 	return new QRect(self->viewport());
 }
 
-void QVideoSurfaceFormat_SetViewport(QVideoSurfaceFormat* self, QRect* viewport) {
+void QVideoSurfaceFormat_setViewport(QVideoSurfaceFormat* self, QRect* viewport) {
 	self->setViewport(*viewport);
 }
 
-int QVideoSurfaceFormat_ScanLineDirection(const QVideoSurfaceFormat* self) {
+int QVideoSurfaceFormat_scanLineDirection(const QVideoSurfaceFormat* self) {
 	QVideoSurfaceFormat::Direction _ret = self->scanLineDirection();
 	return static_cast<int>(_ret);
 }
 
-void QVideoSurfaceFormat_SetScanLineDirection(QVideoSurfaceFormat* self, int direction) {
+void QVideoSurfaceFormat_setScanLineDirection(QVideoSurfaceFormat* self, int direction) {
 	self->setScanLineDirection(static_cast<QVideoSurfaceFormat::Direction>(direction));
 }
 
-double QVideoSurfaceFormat_FrameRate(const QVideoSurfaceFormat* self) {
+double QVideoSurfaceFormat_frameRate(const QVideoSurfaceFormat* self) {
 	qreal _ret = self->frameRate();
 	return static_cast<double>(_ret);
 }
 
-void QVideoSurfaceFormat_SetFrameRate(QVideoSurfaceFormat* self, double rate) {
+void QVideoSurfaceFormat_setFrameRate(QVideoSurfaceFormat* self, double rate) {
 	self->setFrameRate(static_cast<qreal>(rate));
 }
 
-QSize* QVideoSurfaceFormat_PixelAspectRatio(const QVideoSurfaceFormat* self) {
+QSize* QVideoSurfaceFormat_pixelAspectRatio(const QVideoSurfaceFormat* self) {
 	return new QSize(self->pixelAspectRatio());
 }
 
-void QVideoSurfaceFormat_SetPixelAspectRatio(QVideoSurfaceFormat* self, QSize* ratio) {
+void QVideoSurfaceFormat_setPixelAspectRatio(QVideoSurfaceFormat* self, QSize* ratio) {
 	self->setPixelAspectRatio(*ratio);
 }
 
-void QVideoSurfaceFormat_SetPixelAspectRatio2(QVideoSurfaceFormat* self, int width, int height) {
+void QVideoSurfaceFormat_setPixelAspectRatio2(QVideoSurfaceFormat* self, int width, int height) {
 	self->setPixelAspectRatio(static_cast<int>(width), static_cast<int>(height));
 }
 
-int QVideoSurfaceFormat_YCbCrColorSpace(const QVideoSurfaceFormat* self) {
+int QVideoSurfaceFormat_yCbCrColorSpace(const QVideoSurfaceFormat* self) {
 	QVideoSurfaceFormat::YCbCrColorSpace _ret = self->yCbCrColorSpace();
 	return static_cast<int>(_ret);
 }
 
-void QVideoSurfaceFormat_SetYCbCrColorSpace(QVideoSurfaceFormat* self, int colorSpace) {
+void QVideoSurfaceFormat_setYCbCrColorSpace(QVideoSurfaceFormat* self, int colorSpace) {
 	self->setYCbCrColorSpace(static_cast<QVideoSurfaceFormat::YCbCrColorSpace>(colorSpace));
 }
 
-bool QVideoSurfaceFormat_IsMirrored(const QVideoSurfaceFormat* self) {
+bool QVideoSurfaceFormat_isMirrored(const QVideoSurfaceFormat* self) {
 	return self->isMirrored();
 }
 
-void QVideoSurfaceFormat_SetMirrored(QVideoSurfaceFormat* self, bool mirrored) {
+void QVideoSurfaceFormat_setMirrored(QVideoSurfaceFormat* self, bool mirrored) {
 	self->setMirrored(mirrored);
 }
 
-QSize* QVideoSurfaceFormat_SizeHint(const QVideoSurfaceFormat* self) {
+QSize* QVideoSurfaceFormat_sizeHint(const QVideoSurfaceFormat* self) {
 	return new QSize(self->sizeHint());
 }
 
-struct miqt_array /* of struct miqt_string */  QVideoSurfaceFormat_PropertyNames(const QVideoSurfaceFormat* self) {
+struct miqt_array /* of struct miqt_string */  QVideoSurfaceFormat_propertyNames(const QVideoSurfaceFormat* self) {
 	QList<QByteArray> _ret = self->propertyNames();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
@@ -154,15 +154,15 @@ struct miqt_array /* of struct miqt_string */  QVideoSurfaceFormat_PropertyNames
 	return _out;
 }
 
-QVariant* QVideoSurfaceFormat_Property(const QVideoSurfaceFormat* self, const char* name) {
+QVariant* QVideoSurfaceFormat_property(const QVideoSurfaceFormat* self, const char* name) {
 	return new QVariant(self->property(name));
 }
 
-void QVideoSurfaceFormat_SetProperty(QVideoSurfaceFormat* self, const char* name, QVariant* value) {
+void QVideoSurfaceFormat_setProperty(QVideoSurfaceFormat* self, const char* name, QVariant* value) {
 	self->setProperty(name, *value);
 }
 
-void QVideoSurfaceFormat_Delete(QVideoSurfaceFormat* self) {
+void QVideoSurfaceFormat_delete(QVideoSurfaceFormat* self) {
 	delete self;
 }
 

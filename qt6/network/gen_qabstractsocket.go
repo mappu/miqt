@@ -146,42 +146,42 @@ func NewQAbstractSocket(socketType QAbstractSocket__SocketType, parent *qt6.QObj
 }
 
 func (this *QAbstractSocket) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractSocket_MetaObject(this.h)))
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QAbstractSocket_metaObject(this.h)))
 }
 
 func (this *QAbstractSocket) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAbstractSocket_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAbstractSocket_metacast(this.h, param1_Cstring))
 }
 
 func QAbstractSocket_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractSocket_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractSocket_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractSocket) Resume() {
-	C.QAbstractSocket_Resume(this.h)
+	C.QAbstractSocket_resume(this.h)
 }
 
 func (this *QAbstractSocket) PauseMode() QAbstractSocket__PauseMode {
-	return (QAbstractSocket__PauseMode)(C.QAbstractSocket_PauseMode(this.h))
+	return (QAbstractSocket__PauseMode)(C.QAbstractSocket_pauseMode(this.h))
 }
 
 func (this *QAbstractSocket) SetPauseMode(pauseMode QAbstractSocket__PauseMode) {
-	C.QAbstractSocket_SetPauseMode(this.h, (C.int)(pauseMode))
+	C.QAbstractSocket_setPauseMode(this.h, (C.int)(pauseMode))
 }
 
 func (this *QAbstractSocket) Bind(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool {
-	return (bool)(C.QAbstractSocket_Bind(this.h, address.cPointer(), (C.uint16_t)(port), (C.int)(mode)))
+	return (bool)(C.QAbstractSocket_bind(this.h, address.cPointer(), (C.uint16_t)(port), (C.int)(mode)))
 }
 
 func (this *QAbstractSocket) Bind2() bool {
-	return (bool)(C.QAbstractSocket_Bind2(this.h))
+	return (bool)(C.QAbstractSocket_bind2(this.h))
 }
 
 func (this *QAbstractSocket) ConnectToHost(hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol) {
@@ -189,138 +189,138 @@ func (this *QAbstractSocket) ConnectToHost(hostName string, port uint16, mode qt
 	hostName_ms.data = C.CString(hostName)
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
-	C.QAbstractSocket_ConnectToHost(this.h, hostName_ms, (C.uint16_t)(port), (C.int)(mode), (C.int)(protocol))
+	C.QAbstractSocket_connectToHost(this.h, hostName_ms, (C.uint16_t)(port), (C.int)(mode), (C.int)(protocol))
 }
 
 func (this *QAbstractSocket) ConnectToHost2(address *QHostAddress, port uint16) {
-	C.QAbstractSocket_ConnectToHost2(this.h, address.cPointer(), (C.uint16_t)(port))
+	C.QAbstractSocket_connectToHost2(this.h, address.cPointer(), (C.uint16_t)(port))
 }
 
 func (this *QAbstractSocket) DisconnectFromHost() {
-	C.QAbstractSocket_DisconnectFromHost(this.h)
+	C.QAbstractSocket_disconnectFromHost(this.h)
 }
 
 func (this *QAbstractSocket) IsValid() bool {
-	return (bool)(C.QAbstractSocket_IsValid(this.h))
+	return (bool)(C.QAbstractSocket_isValid(this.h))
 }
 
 func (this *QAbstractSocket) BytesAvailable() int64 {
-	return (int64)(C.QAbstractSocket_BytesAvailable(this.h))
+	return (int64)(C.QAbstractSocket_bytesAvailable(this.h))
 }
 
 func (this *QAbstractSocket) BytesToWrite() int64 {
-	return (int64)(C.QAbstractSocket_BytesToWrite(this.h))
+	return (int64)(C.QAbstractSocket_bytesToWrite(this.h))
 }
 
 func (this *QAbstractSocket) LocalPort() uint16 {
-	return (uint16)(C.QAbstractSocket_LocalPort(this.h))
+	return (uint16)(C.QAbstractSocket_localPort(this.h))
 }
 
 func (this *QAbstractSocket) LocalAddress() *QHostAddress {
-	_goptr := newQHostAddress(C.QAbstractSocket_LocalAddress(this.h))
+	_goptr := newQHostAddress(C.QAbstractSocket_localAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractSocket) PeerPort() uint16 {
-	return (uint16)(C.QAbstractSocket_PeerPort(this.h))
+	return (uint16)(C.QAbstractSocket_peerPort(this.h))
 }
 
 func (this *QAbstractSocket) PeerAddress() *QHostAddress {
-	_goptr := newQHostAddress(C.QAbstractSocket_PeerAddress(this.h))
+	_goptr := newQHostAddress(C.QAbstractSocket_peerAddress(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractSocket) PeerName() string {
-	var _ms C.struct_miqt_string = C.QAbstractSocket_PeerName(this.h)
+	var _ms C.struct_miqt_string = C.QAbstractSocket_peerName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractSocket) ReadBufferSize() int64 {
-	return (int64)(C.QAbstractSocket_ReadBufferSize(this.h))
+	return (int64)(C.QAbstractSocket_readBufferSize(this.h))
 }
 
 func (this *QAbstractSocket) SetReadBufferSize(size int64) {
-	C.QAbstractSocket_SetReadBufferSize(this.h, (C.longlong)(size))
+	C.QAbstractSocket_setReadBufferSize(this.h, (C.longlong)(size))
 }
 
 func (this *QAbstractSocket) Abort() {
-	C.QAbstractSocket_Abort(this.h)
+	C.QAbstractSocket_abort(this.h)
 }
 
 func (this *QAbstractSocket) SocketDescriptor() uintptr {
-	return (uintptr)(C.QAbstractSocket_SocketDescriptor(this.h))
+	return (uintptr)(C.QAbstractSocket_socketDescriptor(this.h))
 }
 
 func (this *QAbstractSocket) SetSocketDescriptor(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool {
-	return (bool)(C.QAbstractSocket_SetSocketDescriptor(this.h, (C.intptr_t)(socketDescriptor), (C.int)(state), (C.int)(openMode)))
+	return (bool)(C.QAbstractSocket_setSocketDescriptor(this.h, (C.intptr_t)(socketDescriptor), (C.int)(state), (C.int)(openMode)))
 }
 
 func (this *QAbstractSocket) SetSocketOption(option QAbstractSocket__SocketOption, value *qt6.QVariant) {
-	C.QAbstractSocket_SetSocketOption(this.h, (C.int)(option), (*C.QVariant)(value.UnsafePointer()))
+	C.QAbstractSocket_setSocketOption(this.h, (C.int)(option), (*C.QVariant)(value.UnsafePointer()))
 }
 
 func (this *QAbstractSocket) SocketOption(option QAbstractSocket__SocketOption) *qt6.QVariant {
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QAbstractSocket_SocketOption(this.h, (C.int)(option))))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QAbstractSocket_socketOption(this.h, (C.int)(option))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractSocket) SocketType() QAbstractSocket__SocketType {
-	return (QAbstractSocket__SocketType)(C.QAbstractSocket_SocketType(this.h))
+	return (QAbstractSocket__SocketType)(C.QAbstractSocket_socketType(this.h))
 }
 
 func (this *QAbstractSocket) State() QAbstractSocket__SocketState {
-	return (QAbstractSocket__SocketState)(C.QAbstractSocket_State(this.h))
+	return (QAbstractSocket__SocketState)(C.QAbstractSocket_state(this.h))
 }
 
 func (this *QAbstractSocket) Error() QAbstractSocket__SocketError {
-	return (QAbstractSocket__SocketError)(C.QAbstractSocket_Error(this.h))
+	return (QAbstractSocket__SocketError)(C.QAbstractSocket_error(this.h))
 }
 
 func (this *QAbstractSocket) Close() {
-	C.QAbstractSocket_Close(this.h)
+	C.QAbstractSocket_close(this.h)
 }
 
 func (this *QAbstractSocket) IsSequential() bool {
-	return (bool)(C.QAbstractSocket_IsSequential(this.h))
+	return (bool)(C.QAbstractSocket_isSequential(this.h))
 }
 
 func (this *QAbstractSocket) Flush() bool {
-	return (bool)(C.QAbstractSocket_Flush(this.h))
+	return (bool)(C.QAbstractSocket_flush(this.h))
 }
 
 func (this *QAbstractSocket) WaitForConnected(msecs int) bool {
-	return (bool)(C.QAbstractSocket_WaitForConnected(this.h, (C.int)(msecs)))
+	return (bool)(C.QAbstractSocket_waitForConnected(this.h, (C.int)(msecs)))
 }
 
 func (this *QAbstractSocket) WaitForReadyRead(msecs int) bool {
-	return (bool)(C.QAbstractSocket_WaitForReadyRead(this.h, (C.int)(msecs)))
+	return (bool)(C.QAbstractSocket_waitForReadyRead(this.h, (C.int)(msecs)))
 }
 
 func (this *QAbstractSocket) WaitForBytesWritten(msecs int) bool {
-	return (bool)(C.QAbstractSocket_WaitForBytesWritten(this.h, (C.int)(msecs)))
+	return (bool)(C.QAbstractSocket_waitForBytesWritten(this.h, (C.int)(msecs)))
 }
 
 func (this *QAbstractSocket) WaitForDisconnected(msecs int) bool {
-	return (bool)(C.QAbstractSocket_WaitForDisconnected(this.h, (C.int)(msecs)))
+	return (bool)(C.QAbstractSocket_waitForDisconnected(this.h, (C.int)(msecs)))
 }
 
 func (this *QAbstractSocket) SetProxy(networkProxy *QNetworkProxy) {
-	C.QAbstractSocket_SetProxy(this.h, networkProxy.cPointer())
+	C.QAbstractSocket_setProxy(this.h, networkProxy.cPointer())
 }
 
 func (this *QAbstractSocket) Proxy() *QNetworkProxy {
-	_goptr := newQNetworkProxy(C.QAbstractSocket_Proxy(this.h))
+	_goptr := newQNetworkProxy(C.QAbstractSocket_proxy(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAbstractSocket) ProtocolTag() string {
-	var _ms C.struct_miqt_string = C.QAbstractSocket_ProtocolTag(this.h)
+	var _ms C.struct_miqt_string = C.QAbstractSocket_protocolTag(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -331,18 +331,18 @@ func (this *QAbstractSocket) SetProtocolTag(tag string) {
 	tag_ms.data = C.CString(tag)
 	tag_ms.len = C.size_t(len(tag))
 	defer C.free(unsafe.Pointer(tag_ms.data))
-	C.QAbstractSocket_SetProtocolTag(this.h, tag_ms)
+	C.QAbstractSocket_setProtocolTag(this.h, tag_ms)
 }
 
 func (this *QAbstractSocket) HostFound() {
-	C.QAbstractSocket_HostFound(this.h)
+	C.QAbstractSocket_hostFound(this.h)
 }
 func (this *QAbstractSocket) OnHostFound(slot func()) {
-	C.QAbstractSocket_connect_HostFound(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractSocket_connect_hostFound(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractSocket_HostFound
-func miqt_exec_callback_QAbstractSocket_HostFound(cb C.intptr_t) {
+//export miqt_exec_callback_QAbstractSocket_hostFound
+func miqt_exec_callback_QAbstractSocket_hostFound(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -352,14 +352,14 @@ func miqt_exec_callback_QAbstractSocket_HostFound(cb C.intptr_t) {
 }
 
 func (this *QAbstractSocket) Connected() {
-	C.QAbstractSocket_Connected(this.h)
+	C.QAbstractSocket_connected(this.h)
 }
 func (this *QAbstractSocket) OnConnected(slot func()) {
-	C.QAbstractSocket_connect_Connected(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractSocket_connect_connected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractSocket_Connected
-func miqt_exec_callback_QAbstractSocket_Connected(cb C.intptr_t) {
+//export miqt_exec_callback_QAbstractSocket_connected
+func miqt_exec_callback_QAbstractSocket_connected(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -369,14 +369,14 @@ func miqt_exec_callback_QAbstractSocket_Connected(cb C.intptr_t) {
 }
 
 func (this *QAbstractSocket) Disconnected() {
-	C.QAbstractSocket_Disconnected(this.h)
+	C.QAbstractSocket_disconnected(this.h)
 }
 func (this *QAbstractSocket) OnDisconnected(slot func()) {
-	C.QAbstractSocket_connect_Disconnected(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractSocket_connect_disconnected(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractSocket_Disconnected
-func miqt_exec_callback_QAbstractSocket_Disconnected(cb C.intptr_t) {
+//export miqt_exec_callback_QAbstractSocket_disconnected
+func miqt_exec_callback_QAbstractSocket_disconnected(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -386,14 +386,14 @@ func miqt_exec_callback_QAbstractSocket_Disconnected(cb C.intptr_t) {
 }
 
 func (this *QAbstractSocket) StateChanged(param1 QAbstractSocket__SocketState) {
-	C.QAbstractSocket_StateChanged(this.h, (C.int)(param1))
+	C.QAbstractSocket_stateChanged(this.h, (C.int)(param1))
 }
 func (this *QAbstractSocket) OnStateChanged(slot func(param1 QAbstractSocket__SocketState)) {
-	C.QAbstractSocket_connect_StateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractSocket_connect_stateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractSocket_StateChanged
-func miqt_exec_callback_QAbstractSocket_StateChanged(cb C.intptr_t, param1 C.int) {
+//export miqt_exec_callback_QAbstractSocket_stateChanged
+func miqt_exec_callback_QAbstractSocket_stateChanged(cb C.intptr_t, param1 C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 QAbstractSocket__SocketState))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -406,14 +406,14 @@ func miqt_exec_callback_QAbstractSocket_StateChanged(cb C.intptr_t, param1 C.int
 }
 
 func (this *QAbstractSocket) ErrorOccurred(param1 QAbstractSocket__SocketError) {
-	C.QAbstractSocket_ErrorOccurred(this.h, (C.int)(param1))
+	C.QAbstractSocket_errorOccurred(this.h, (C.int)(param1))
 }
 func (this *QAbstractSocket) OnErrorOccurred(slot func(param1 QAbstractSocket__SocketError)) {
-	C.QAbstractSocket_connect_ErrorOccurred(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractSocket_connect_errorOccurred(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractSocket_ErrorOccurred
-func miqt_exec_callback_QAbstractSocket_ErrorOccurred(cb C.intptr_t, param1 C.int) {
+//export miqt_exec_callback_QAbstractSocket_errorOccurred
+func miqt_exec_callback_QAbstractSocket_errorOccurred(cb C.intptr_t, param1 C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 QAbstractSocket__SocketError))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -426,14 +426,14 @@ func miqt_exec_callback_QAbstractSocket_ErrorOccurred(cb C.intptr_t, param1 C.in
 }
 
 func (this *QAbstractSocket) ProxyAuthenticationRequired(proxy *QNetworkProxy, authenticator *QAuthenticator) {
-	C.QAbstractSocket_ProxyAuthenticationRequired(this.h, proxy.cPointer(), authenticator.cPointer())
+	C.QAbstractSocket_proxyAuthenticationRequired(this.h, proxy.cPointer(), authenticator.cPointer())
 }
 func (this *QAbstractSocket) OnProxyAuthenticationRequired(slot func(proxy *QNetworkProxy, authenticator *QAuthenticator)) {
-	C.QAbstractSocket_connect_ProxyAuthenticationRequired(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractSocket_connect_proxyAuthenticationRequired(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractSocket_ProxyAuthenticationRequired
-func miqt_exec_callback_QAbstractSocket_ProxyAuthenticationRequired(cb C.intptr_t, proxy *C.QNetworkProxy, authenticator *C.QAuthenticator) {
+//export miqt_exec_callback_QAbstractSocket_proxyAuthenticationRequired
+func miqt_exec_callback_QAbstractSocket_proxyAuthenticationRequired(cb C.intptr_t, proxy *C.QNetworkProxy, authenticator *C.QAuthenticator) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(proxy *QNetworkProxy, authenticator *QAuthenticator))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -452,7 +452,7 @@ func QAbstractSocket_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractSocket_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractSocket_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -463,38 +463,38 @@ func QAbstractSocket_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractSocket_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractSocket_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractSocket) Bind1(port uint16) bool {
-	return (bool)(C.QAbstractSocket_Bind1(this.h, (C.uint16_t)(port)))
+	return (bool)(C.QAbstractSocket_bind1(this.h, (C.uint16_t)(port)))
 }
 
 func (this *QAbstractSocket) Bind22(port uint16, mode QAbstractSocket__BindFlag) bool {
-	return (bool)(C.QAbstractSocket_Bind22(this.h, (C.uint16_t)(port), (C.int)(mode)))
+	return (bool)(C.QAbstractSocket_bind22(this.h, (C.uint16_t)(port), (C.int)(mode)))
 }
 
 func (this *QAbstractSocket) ConnectToHost3(address *QHostAddress, port uint16, mode qt6.QIODeviceBase__OpenModeFlag) {
-	C.QAbstractSocket_ConnectToHost3(this.h, address.cPointer(), (C.uint16_t)(port), (C.int)(mode))
+	C.QAbstractSocket_connectToHost3(this.h, address.cPointer(), (C.uint16_t)(port), (C.int)(mode))
 }
 
 func (this *QAbstractSocket) callVirtualBase_Resume() {
 
-	C.QAbstractSocket_virtualbase_Resume(unsafe.Pointer(this.h))
+	C.QAbstractSocket_virtualbase_resume(unsafe.Pointer(this.h))
 
 }
-func (this *QAbstractSocket) OnResume(slot func(super func())) {
-	ok := C.QAbstractSocket_override_virtual_Resume(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) Onresume(slot func(super func())) {
+	ok := C.QAbstractSocket_override_virtual_resume(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_Resume
-func miqt_exec_callback_QAbstractSocket_Resume(self *C.QAbstractSocket, cb C.intptr_t) {
+//export miqt_exec_callback_QAbstractSocket_resume
+func miqt_exec_callback_QAbstractSocket_resume(self *C.QAbstractSocket, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -506,18 +506,18 @@ func miqt_exec_callback_QAbstractSocket_Resume(self *C.QAbstractSocket, cb C.int
 
 func (this *QAbstractSocket) callVirtualBase_Bind(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool {
 
-	return (bool)(C.QAbstractSocket_virtualbase_Bind(unsafe.Pointer(this.h), address.cPointer(), (C.uint16_t)(port), (C.int)(mode)))
+	return (bool)(C.QAbstractSocket_virtualbase_bind(unsafe.Pointer(this.h), address.cPointer(), (C.uint16_t)(port), (C.int)(mode)))
 
 }
-func (this *QAbstractSocket) OnBind(slot func(super func(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool, address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool) {
-	ok := C.QAbstractSocket_override_virtual_Bind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) Onbind(slot func(super func(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool, address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool) {
+	ok := C.QAbstractSocket_override_virtual_bind(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_Bind
-func miqt_exec_callback_QAbstractSocket_Bind(self *C.QAbstractSocket, cb C.intptr_t, address *C.QHostAddress, port C.uint16_t, mode C.int) C.bool {
+//export miqt_exec_callback_QAbstractSocket_bind
+func miqt_exec_callback_QAbstractSocket_bind(self *C.QAbstractSocket, cb C.intptr_t, address *C.QHostAddress, port C.uint16_t, mode C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool, address *QHostAddress, port uint16, mode QAbstractSocket__BindFlag) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -542,18 +542,18 @@ func (this *QAbstractSocket) callVirtualBase_ConnectToHost(hostName string, port
 	hostName_ms.len = C.size_t(len(hostName))
 	defer C.free(unsafe.Pointer(hostName_ms.data))
 
-	C.QAbstractSocket_virtualbase_ConnectToHost(unsafe.Pointer(this.h), hostName_ms, (C.uint16_t)(port), (C.int)(mode), (C.int)(protocol))
+	C.QAbstractSocket_virtualbase_connectToHost(unsafe.Pointer(this.h), hostName_ms, (C.uint16_t)(port), (C.int)(mode), (C.int)(protocol))
 
 }
-func (this *QAbstractSocket) OnConnectToHost(slot func(super func(hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol), hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol)) {
-	ok := C.QAbstractSocket_override_virtual_ConnectToHost(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnconnectToHost(slot func(super func(hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol), hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol)) {
+	ok := C.QAbstractSocket_override_virtual_connectToHost(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_ConnectToHost
-func miqt_exec_callback_QAbstractSocket_ConnectToHost(self *C.QAbstractSocket, cb C.intptr_t, hostName C.struct_miqt_string, port C.uint16_t, mode C.int, protocol C.int) {
+//export miqt_exec_callback_QAbstractSocket_connectToHost
+func miqt_exec_callback_QAbstractSocket_connectToHost(self *C.QAbstractSocket, cb C.intptr_t, hostName C.struct_miqt_string, port C.uint16_t, mode C.int, protocol C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol), hostName string, port uint16, mode qt6.QIODeviceBase__OpenModeFlag, protocol QAbstractSocket__NetworkLayerProtocol))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -576,18 +576,18 @@ func miqt_exec_callback_QAbstractSocket_ConnectToHost(self *C.QAbstractSocket, c
 
 func (this *QAbstractSocket) callVirtualBase_DisconnectFromHost() {
 
-	C.QAbstractSocket_virtualbase_DisconnectFromHost(unsafe.Pointer(this.h))
+	C.QAbstractSocket_virtualbase_disconnectFromHost(unsafe.Pointer(this.h))
 
 }
-func (this *QAbstractSocket) OnDisconnectFromHost(slot func(super func())) {
-	ok := C.QAbstractSocket_override_virtual_DisconnectFromHost(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OndisconnectFromHost(slot func(super func())) {
+	ok := C.QAbstractSocket_override_virtual_disconnectFromHost(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_DisconnectFromHost
-func miqt_exec_callback_QAbstractSocket_DisconnectFromHost(self *C.QAbstractSocket, cb C.intptr_t) {
+//export miqt_exec_callback_QAbstractSocket_disconnectFromHost
+func miqt_exec_callback_QAbstractSocket_disconnectFromHost(self *C.QAbstractSocket, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -599,18 +599,18 @@ func miqt_exec_callback_QAbstractSocket_DisconnectFromHost(self *C.QAbstractSock
 
 func (this *QAbstractSocket) callVirtualBase_BytesAvailable() int64 {
 
-	return (int64)(C.QAbstractSocket_virtualbase_BytesAvailable(unsafe.Pointer(this.h)))
+	return (int64)(C.QAbstractSocket_virtualbase_bytesAvailable(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractSocket) OnBytesAvailable(slot func(super func() int64) int64) {
-	ok := C.QAbstractSocket_override_virtual_BytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnbytesAvailable(slot func(super func() int64) int64) {
+	ok := C.QAbstractSocket_override_virtual_bytesAvailable(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_BytesAvailable
-func miqt_exec_callback_QAbstractSocket_BytesAvailable(self *C.QAbstractSocket, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QAbstractSocket_bytesAvailable
+func miqt_exec_callback_QAbstractSocket_bytesAvailable(self *C.QAbstractSocket, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -624,18 +624,18 @@ func miqt_exec_callback_QAbstractSocket_BytesAvailable(self *C.QAbstractSocket, 
 
 func (this *QAbstractSocket) callVirtualBase_BytesToWrite() int64 {
 
-	return (int64)(C.QAbstractSocket_virtualbase_BytesToWrite(unsafe.Pointer(this.h)))
+	return (int64)(C.QAbstractSocket_virtualbase_bytesToWrite(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractSocket) OnBytesToWrite(slot func(super func() int64) int64) {
-	ok := C.QAbstractSocket_override_virtual_BytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnbytesToWrite(slot func(super func() int64) int64) {
+	ok := C.QAbstractSocket_override_virtual_bytesToWrite(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_BytesToWrite
-func miqt_exec_callback_QAbstractSocket_BytesToWrite(self *C.QAbstractSocket, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QAbstractSocket_bytesToWrite
+func miqt_exec_callback_QAbstractSocket_bytesToWrite(self *C.QAbstractSocket, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -649,18 +649,18 @@ func miqt_exec_callback_QAbstractSocket_BytesToWrite(self *C.QAbstractSocket, cb
 
 func (this *QAbstractSocket) callVirtualBase_SetReadBufferSize(size int64) {
 
-	C.QAbstractSocket_virtualbase_SetReadBufferSize(unsafe.Pointer(this.h), (C.longlong)(size))
+	C.QAbstractSocket_virtualbase_setReadBufferSize(unsafe.Pointer(this.h), (C.longlong)(size))
 
 }
-func (this *QAbstractSocket) OnSetReadBufferSize(slot func(super func(size int64), size int64)) {
-	ok := C.QAbstractSocket_override_virtual_SetReadBufferSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnsetReadBufferSize(slot func(super func(size int64), size int64)) {
+	ok := C.QAbstractSocket_override_virtual_setReadBufferSize(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_SetReadBufferSize
-func miqt_exec_callback_QAbstractSocket_SetReadBufferSize(self *C.QAbstractSocket, cb C.intptr_t, size C.longlong) {
+//export miqt_exec_callback_QAbstractSocket_setReadBufferSize
+func miqt_exec_callback_QAbstractSocket_setReadBufferSize(self *C.QAbstractSocket, cb C.intptr_t, size C.longlong) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(size int64), size int64))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -675,18 +675,18 @@ func miqt_exec_callback_QAbstractSocket_SetReadBufferSize(self *C.QAbstractSocke
 
 func (this *QAbstractSocket) callVirtualBase_SocketDescriptor() uintptr {
 
-	return (uintptr)(C.QAbstractSocket_virtualbase_SocketDescriptor(unsafe.Pointer(this.h)))
+	return (uintptr)(C.QAbstractSocket_virtualbase_socketDescriptor(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractSocket) OnSocketDescriptor(slot func(super func() uintptr) uintptr) {
-	ok := C.QAbstractSocket_override_virtual_SocketDescriptor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnsocketDescriptor(slot func(super func() uintptr) uintptr) {
+	ok := C.QAbstractSocket_override_virtual_socketDescriptor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_SocketDescriptor
-func miqt_exec_callback_QAbstractSocket_SocketDescriptor(self *C.QAbstractSocket, cb C.intptr_t) C.intptr_t {
+//export miqt_exec_callback_QAbstractSocket_socketDescriptor
+func miqt_exec_callback_QAbstractSocket_socketDescriptor(self *C.QAbstractSocket, cb C.intptr_t) C.intptr_t {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() uintptr) uintptr)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -700,18 +700,18 @@ func miqt_exec_callback_QAbstractSocket_SocketDescriptor(self *C.QAbstractSocket
 
 func (this *QAbstractSocket) callVirtualBase_SetSocketDescriptor(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool {
 
-	return (bool)(C.QAbstractSocket_virtualbase_SetSocketDescriptor(unsafe.Pointer(this.h), (C.intptr_t)(socketDescriptor), (C.int)(state), (C.int)(openMode)))
+	return (bool)(C.QAbstractSocket_virtualbase_setSocketDescriptor(unsafe.Pointer(this.h), (C.intptr_t)(socketDescriptor), (C.int)(state), (C.int)(openMode)))
 
 }
-func (this *QAbstractSocket) OnSetSocketDescriptor(slot func(super func(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool, socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool) {
-	ok := C.QAbstractSocket_override_virtual_SetSocketDescriptor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnsetSocketDescriptor(slot func(super func(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool, socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool) {
+	ok := C.QAbstractSocket_override_virtual_setSocketDescriptor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_SetSocketDescriptor
-func miqt_exec_callback_QAbstractSocket_SetSocketDescriptor(self *C.QAbstractSocket, cb C.intptr_t, socketDescriptor C.intptr_t, state C.int, openMode C.int) C.bool {
+//export miqt_exec_callback_QAbstractSocket_setSocketDescriptor
+func miqt_exec_callback_QAbstractSocket_setSocketDescriptor(self *C.QAbstractSocket, cb C.intptr_t, socketDescriptor C.intptr_t, state C.int, openMode C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool, socketDescriptor uintptr, state QAbstractSocket__SocketState, openMode qt6.QIODeviceBase__OpenModeFlag) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -732,18 +732,18 @@ func miqt_exec_callback_QAbstractSocket_SetSocketDescriptor(self *C.QAbstractSoc
 
 func (this *QAbstractSocket) callVirtualBase_SetSocketOption(option QAbstractSocket__SocketOption, value *qt6.QVariant) {
 
-	C.QAbstractSocket_virtualbase_SetSocketOption(unsafe.Pointer(this.h), (C.int)(option), (*C.QVariant)(value.UnsafePointer()))
+	C.QAbstractSocket_virtualbase_setSocketOption(unsafe.Pointer(this.h), (C.int)(option), (*C.QVariant)(value.UnsafePointer()))
 
 }
-func (this *QAbstractSocket) OnSetSocketOption(slot func(super func(option QAbstractSocket__SocketOption, value *qt6.QVariant), option QAbstractSocket__SocketOption, value *qt6.QVariant)) {
-	ok := C.QAbstractSocket_override_virtual_SetSocketOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnsetSocketOption(slot func(super func(option QAbstractSocket__SocketOption, value *qt6.QVariant), option QAbstractSocket__SocketOption, value *qt6.QVariant)) {
+	ok := C.QAbstractSocket_override_virtual_setSocketOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_SetSocketOption
-func miqt_exec_callback_QAbstractSocket_SetSocketOption(self *C.QAbstractSocket, cb C.intptr_t, option C.int, value *C.QVariant) {
+//export miqt_exec_callback_QAbstractSocket_setSocketOption
+func miqt_exec_callback_QAbstractSocket_setSocketOption(self *C.QAbstractSocket, cb C.intptr_t, option C.int, value *C.QVariant) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option QAbstractSocket__SocketOption, value *qt6.QVariant), option QAbstractSocket__SocketOption, value *qt6.QVariant))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -760,20 +760,20 @@ func miqt_exec_callback_QAbstractSocket_SetSocketOption(self *C.QAbstractSocket,
 
 func (this *QAbstractSocket) callVirtualBase_SocketOption(option QAbstractSocket__SocketOption) *qt6.QVariant {
 
-	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QAbstractSocket_virtualbase_SocketOption(unsafe.Pointer(this.h), (C.int)(option))))
+	_goptr := qt6.UnsafeNewQVariant(unsafe.Pointer(C.QAbstractSocket_virtualbase_socketOption(unsafe.Pointer(this.h), (C.int)(option))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QAbstractSocket) OnSocketOption(slot func(super func(option QAbstractSocket__SocketOption) *qt6.QVariant, option QAbstractSocket__SocketOption) *qt6.QVariant) {
-	ok := C.QAbstractSocket_override_virtual_SocketOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnsocketOption(slot func(super func(option QAbstractSocket__SocketOption) *qt6.QVariant, option QAbstractSocket__SocketOption) *qt6.QVariant) {
+	ok := C.QAbstractSocket_override_virtual_socketOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_SocketOption
-func miqt_exec_callback_QAbstractSocket_SocketOption(self *C.QAbstractSocket, cb C.intptr_t, option C.int) *C.QVariant {
+//export miqt_exec_callback_QAbstractSocket_socketOption
+func miqt_exec_callback_QAbstractSocket_socketOption(self *C.QAbstractSocket, cb C.intptr_t, option C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option QAbstractSocket__SocketOption) *qt6.QVariant, option QAbstractSocket__SocketOption) *qt6.QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -790,18 +790,18 @@ func miqt_exec_callback_QAbstractSocket_SocketOption(self *C.QAbstractSocket, cb
 
 func (this *QAbstractSocket) callVirtualBase_Close() {
 
-	C.QAbstractSocket_virtualbase_Close(unsafe.Pointer(this.h))
+	C.QAbstractSocket_virtualbase_close(unsafe.Pointer(this.h))
 
 }
-func (this *QAbstractSocket) OnClose(slot func(super func())) {
-	ok := C.QAbstractSocket_override_virtual_Close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) Onclose(slot func(super func())) {
+	ok := C.QAbstractSocket_override_virtual_close(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_Close
-func miqt_exec_callback_QAbstractSocket_Close(self *C.QAbstractSocket, cb C.intptr_t) {
+//export miqt_exec_callback_QAbstractSocket_close
+func miqt_exec_callback_QAbstractSocket_close(self *C.QAbstractSocket, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -813,18 +813,18 @@ func miqt_exec_callback_QAbstractSocket_Close(self *C.QAbstractSocket, cb C.intp
 
 func (this *QAbstractSocket) callVirtualBase_IsSequential() bool {
 
-	return (bool)(C.QAbstractSocket_virtualbase_IsSequential(unsafe.Pointer(this.h)))
+	return (bool)(C.QAbstractSocket_virtualbase_isSequential(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractSocket) OnIsSequential(slot func(super func() bool) bool) {
-	ok := C.QAbstractSocket_override_virtual_IsSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnisSequential(slot func(super func() bool) bool) {
+	ok := C.QAbstractSocket_override_virtual_isSequential(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_IsSequential
-func miqt_exec_callback_QAbstractSocket_IsSequential(self *C.QAbstractSocket, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QAbstractSocket_isSequential
+func miqt_exec_callback_QAbstractSocket_isSequential(self *C.QAbstractSocket, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -838,18 +838,18 @@ func miqt_exec_callback_QAbstractSocket_IsSequential(self *C.QAbstractSocket, cb
 
 func (this *QAbstractSocket) callVirtualBase_WaitForConnected(msecs int) bool {
 
-	return (bool)(C.QAbstractSocket_virtualbase_WaitForConnected(unsafe.Pointer(this.h), (C.int)(msecs)))
+	return (bool)(C.QAbstractSocket_virtualbase_waitForConnected(unsafe.Pointer(this.h), (C.int)(msecs)))
 
 }
-func (this *QAbstractSocket) OnWaitForConnected(slot func(super func(msecs int) bool, msecs int) bool) {
-	ok := C.QAbstractSocket_override_virtual_WaitForConnected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnwaitForConnected(slot func(super func(msecs int) bool, msecs int) bool) {
+	ok := C.QAbstractSocket_override_virtual_waitForConnected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_WaitForConnected
-func miqt_exec_callback_QAbstractSocket_WaitForConnected(self *C.QAbstractSocket, cb C.intptr_t, msecs C.int) C.bool {
+//export miqt_exec_callback_QAbstractSocket_waitForConnected
+func miqt_exec_callback_QAbstractSocket_waitForConnected(self *C.QAbstractSocket, cb C.intptr_t, msecs C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msecs int) bool, msecs int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -866,18 +866,18 @@ func miqt_exec_callback_QAbstractSocket_WaitForConnected(self *C.QAbstractSocket
 
 func (this *QAbstractSocket) callVirtualBase_WaitForReadyRead(msecs int) bool {
 
-	return (bool)(C.QAbstractSocket_virtualbase_WaitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
+	return (bool)(C.QAbstractSocket_virtualbase_waitForReadyRead(unsafe.Pointer(this.h), (C.int)(msecs)))
 
 }
-func (this *QAbstractSocket) OnWaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
-	ok := C.QAbstractSocket_override_virtual_WaitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnwaitForReadyRead(slot func(super func(msecs int) bool, msecs int) bool) {
+	ok := C.QAbstractSocket_override_virtual_waitForReadyRead(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_WaitForReadyRead
-func miqt_exec_callback_QAbstractSocket_WaitForReadyRead(self *C.QAbstractSocket, cb C.intptr_t, msecs C.int) C.bool {
+//export miqt_exec_callback_QAbstractSocket_waitForReadyRead
+func miqt_exec_callback_QAbstractSocket_waitForReadyRead(self *C.QAbstractSocket, cb C.intptr_t, msecs C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msecs int) bool, msecs int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -894,18 +894,18 @@ func miqt_exec_callback_QAbstractSocket_WaitForReadyRead(self *C.QAbstractSocket
 
 func (this *QAbstractSocket) callVirtualBase_WaitForBytesWritten(msecs int) bool {
 
-	return (bool)(C.QAbstractSocket_virtualbase_WaitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
+	return (bool)(C.QAbstractSocket_virtualbase_waitForBytesWritten(unsafe.Pointer(this.h), (C.int)(msecs)))
 
 }
-func (this *QAbstractSocket) OnWaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
-	ok := C.QAbstractSocket_override_virtual_WaitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnwaitForBytesWritten(slot func(super func(msecs int) bool, msecs int) bool) {
+	ok := C.QAbstractSocket_override_virtual_waitForBytesWritten(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_WaitForBytesWritten
-func miqt_exec_callback_QAbstractSocket_WaitForBytesWritten(self *C.QAbstractSocket, cb C.intptr_t, msecs C.int) C.bool {
+//export miqt_exec_callback_QAbstractSocket_waitForBytesWritten
+func miqt_exec_callback_QAbstractSocket_waitForBytesWritten(self *C.QAbstractSocket, cb C.intptr_t, msecs C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msecs int) bool, msecs int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -922,18 +922,18 @@ func miqt_exec_callback_QAbstractSocket_WaitForBytesWritten(self *C.QAbstractSoc
 
 func (this *QAbstractSocket) callVirtualBase_WaitForDisconnected(msecs int) bool {
 
-	return (bool)(C.QAbstractSocket_virtualbase_WaitForDisconnected(unsafe.Pointer(this.h), (C.int)(msecs)))
+	return (bool)(C.QAbstractSocket_virtualbase_waitForDisconnected(unsafe.Pointer(this.h), (C.int)(msecs)))
 
 }
-func (this *QAbstractSocket) OnWaitForDisconnected(slot func(super func(msecs int) bool, msecs int) bool) {
-	ok := C.QAbstractSocket_override_virtual_WaitForDisconnected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnwaitForDisconnected(slot func(super func(msecs int) bool, msecs int) bool) {
+	ok := C.QAbstractSocket_override_virtual_waitForDisconnected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_WaitForDisconnected
-func miqt_exec_callback_QAbstractSocket_WaitForDisconnected(self *C.QAbstractSocket, cb C.intptr_t, msecs C.int) C.bool {
+//export miqt_exec_callback_QAbstractSocket_waitForDisconnected
+func miqt_exec_callback_QAbstractSocket_waitForDisconnected(self *C.QAbstractSocket, cb C.intptr_t, msecs C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(msecs int) bool, msecs int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -952,18 +952,18 @@ func (this *QAbstractSocket) callVirtualBase_ReadData(data string, maxlen int64)
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
-	return (int64)(C.QAbstractSocket_virtualbase_ReadData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
+	return (int64)(C.QAbstractSocket_virtualbase_readData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
 
 }
-func (this *QAbstractSocket) OnReadData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
-	ok := C.QAbstractSocket_override_virtual_ReadData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnreadData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+	ok := C.QAbstractSocket_override_virtual_readData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_ReadData
-func miqt_exec_callback_QAbstractSocket_ReadData(self *C.QAbstractSocket, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
+//export miqt_exec_callback_QAbstractSocket_readData
+func miqt_exec_callback_QAbstractSocket_readData(self *C.QAbstractSocket, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -985,18 +985,18 @@ func (this *QAbstractSocket) callVirtualBase_ReadLineData(data string, maxlen in
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
-	return (int64)(C.QAbstractSocket_virtualbase_ReadLineData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
+	return (int64)(C.QAbstractSocket_virtualbase_readLineData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(maxlen)))
 
 }
-func (this *QAbstractSocket) OnReadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
-	ok := C.QAbstractSocket_override_virtual_ReadLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnreadLineData(slot func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64) {
+	ok := C.QAbstractSocket_override_virtual_readLineData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_ReadLineData
-func miqt_exec_callback_QAbstractSocket_ReadLineData(self *C.QAbstractSocket, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
+//export miqt_exec_callback_QAbstractSocket_readLineData
+func miqt_exec_callback_QAbstractSocket_readLineData(self *C.QAbstractSocket, cb C.intptr_t, data *C.char, maxlen C.longlong) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, maxlen int64) int64, data string, maxlen int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1016,18 +1016,18 @@ func miqt_exec_callback_QAbstractSocket_ReadLineData(self *C.QAbstractSocket, cb
 
 func (this *QAbstractSocket) callVirtualBase_SkipData(maxSize int64) int64 {
 
-	return (int64)(C.QAbstractSocket_virtualbase_SkipData(unsafe.Pointer(this.h), (C.longlong)(maxSize)))
+	return (int64)(C.QAbstractSocket_virtualbase_skipData(unsafe.Pointer(this.h), (C.longlong)(maxSize)))
 
 }
-func (this *QAbstractSocket) OnSkipData(slot func(super func(maxSize int64) int64, maxSize int64) int64) {
-	ok := C.QAbstractSocket_override_virtual_SkipData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnskipData(slot func(super func(maxSize int64) int64, maxSize int64) int64) {
+	ok := C.QAbstractSocket_override_virtual_skipData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_SkipData
-func miqt_exec_callback_QAbstractSocket_SkipData(self *C.QAbstractSocket, cb C.intptr_t, maxSize C.longlong) C.longlong {
+//export miqt_exec_callback_QAbstractSocket_skipData
+func miqt_exec_callback_QAbstractSocket_skipData(self *C.QAbstractSocket, cb C.intptr_t, maxSize C.longlong) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(maxSize int64) int64, maxSize int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1046,18 +1046,18 @@ func (this *QAbstractSocket) callVirtualBase_WriteData(data string, lenVal int64
 	data_Cstring := C.CString(data)
 	defer C.free(unsafe.Pointer(data_Cstring))
 
-	return (int64)(C.QAbstractSocket_virtualbase_WriteData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(lenVal)))
+	return (int64)(C.QAbstractSocket_virtualbase_writeData(unsafe.Pointer(this.h), data_Cstring, (C.longlong)(lenVal)))
 
 }
-func (this *QAbstractSocket) OnWriteData(slot func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64) {
-	ok := C.QAbstractSocket_override_virtual_WriteData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnwriteData(slot func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64) {
+	ok := C.QAbstractSocket_override_virtual_writeData(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_WriteData
-func miqt_exec_callback_QAbstractSocket_WriteData(self *C.QAbstractSocket, cb C.intptr_t, data *C.const_char, lenVal C.longlong) C.longlong {
+//export miqt_exec_callback_QAbstractSocket_writeData
+func miqt_exec_callback_QAbstractSocket_writeData(self *C.QAbstractSocket, cb C.intptr_t, data *C.const_char, lenVal C.longlong) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(data string, lenVal int64) int64, data string, lenVal int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1077,18 +1077,18 @@ func miqt_exec_callback_QAbstractSocket_WriteData(self *C.QAbstractSocket, cb C.
 
 func (this *QAbstractSocket) callVirtualBase_Open(mode qt6.QIODeviceBase__OpenModeFlag) bool {
 
-	return (bool)(C.QAbstractSocket_virtualbase_Open(unsafe.Pointer(this.h), (C.int)(mode)))
+	return (bool)(C.QAbstractSocket_virtualbase_open(unsafe.Pointer(this.h), (C.int)(mode)))
 
 }
-func (this *QAbstractSocket) OnOpen(slot func(super func(mode qt6.QIODeviceBase__OpenModeFlag) bool, mode qt6.QIODeviceBase__OpenModeFlag) bool) {
-	ok := C.QAbstractSocket_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) Onopen(slot func(super func(mode qt6.QIODeviceBase__OpenModeFlag) bool, mode qt6.QIODeviceBase__OpenModeFlag) bool) {
+	ok := C.QAbstractSocket_override_virtual_open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_Open
-func miqt_exec_callback_QAbstractSocket_Open(self *C.QAbstractSocket, cb C.intptr_t, mode C.int) C.bool {
+//export miqt_exec_callback_QAbstractSocket_open
+func miqt_exec_callback_QAbstractSocket_open(self *C.QAbstractSocket, cb C.intptr_t, mode C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(mode qt6.QIODeviceBase__OpenModeFlag) bool, mode qt6.QIODeviceBase__OpenModeFlag) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1105,18 +1105,18 @@ func miqt_exec_callback_QAbstractSocket_Open(self *C.QAbstractSocket, cb C.intpt
 
 func (this *QAbstractSocket) callVirtualBase_Pos() int64 {
 
-	return (int64)(C.QAbstractSocket_virtualbase_Pos(unsafe.Pointer(this.h)))
+	return (int64)(C.QAbstractSocket_virtualbase_pos(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractSocket) OnPos(slot func(super func() int64) int64) {
-	ok := C.QAbstractSocket_override_virtual_Pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) Onpos(slot func(super func() int64) int64) {
+	ok := C.QAbstractSocket_override_virtual_pos(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_Pos
-func miqt_exec_callback_QAbstractSocket_Pos(self *C.QAbstractSocket, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QAbstractSocket_pos
+func miqt_exec_callback_QAbstractSocket_pos(self *C.QAbstractSocket, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1130,18 +1130,18 @@ func miqt_exec_callback_QAbstractSocket_Pos(self *C.QAbstractSocket, cb C.intptr
 
 func (this *QAbstractSocket) callVirtualBase_Size() int64 {
 
-	return (int64)(C.QAbstractSocket_virtualbase_Size(unsafe.Pointer(this.h)))
+	return (int64)(C.QAbstractSocket_virtualbase_size(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractSocket) OnSize(slot func(super func() int64) int64) {
-	ok := C.QAbstractSocket_override_virtual_Size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) Onsize(slot func(super func() int64) int64) {
+	ok := C.QAbstractSocket_override_virtual_size(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_Size
-func miqt_exec_callback_QAbstractSocket_Size(self *C.QAbstractSocket, cb C.intptr_t) C.longlong {
+//export miqt_exec_callback_QAbstractSocket_size
+func miqt_exec_callback_QAbstractSocket_size(self *C.QAbstractSocket, cb C.intptr_t) C.longlong {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int64) int64)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1155,18 +1155,18 @@ func miqt_exec_callback_QAbstractSocket_Size(self *C.QAbstractSocket, cb C.intpt
 
 func (this *QAbstractSocket) callVirtualBase_Seek(pos int64) bool {
 
-	return (bool)(C.QAbstractSocket_virtualbase_Seek(unsafe.Pointer(this.h), (C.longlong)(pos)))
+	return (bool)(C.QAbstractSocket_virtualbase_seek(unsafe.Pointer(this.h), (C.longlong)(pos)))
 
 }
-func (this *QAbstractSocket) OnSeek(slot func(super func(pos int64) bool, pos int64) bool) {
-	ok := C.QAbstractSocket_override_virtual_Seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) Onseek(slot func(super func(pos int64) bool, pos int64) bool) {
+	ok := C.QAbstractSocket_override_virtual_seek(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_Seek
-func miqt_exec_callback_QAbstractSocket_Seek(self *C.QAbstractSocket, cb C.intptr_t, pos C.longlong) C.bool {
+//export miqt_exec_callback_QAbstractSocket_seek
+func miqt_exec_callback_QAbstractSocket_seek(self *C.QAbstractSocket, cb C.intptr_t, pos C.longlong) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(pos int64) bool, pos int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1183,18 +1183,18 @@ func miqt_exec_callback_QAbstractSocket_Seek(self *C.QAbstractSocket, cb C.intpt
 
 func (this *QAbstractSocket) callVirtualBase_AtEnd() bool {
 
-	return (bool)(C.QAbstractSocket_virtualbase_AtEnd(unsafe.Pointer(this.h)))
+	return (bool)(C.QAbstractSocket_virtualbase_atEnd(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractSocket) OnAtEnd(slot func(super func() bool) bool) {
-	ok := C.QAbstractSocket_override_virtual_AtEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnatEnd(slot func(super func() bool) bool) {
+	ok := C.QAbstractSocket_override_virtual_atEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_AtEnd
-func miqt_exec_callback_QAbstractSocket_AtEnd(self *C.QAbstractSocket, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QAbstractSocket_atEnd
+func miqt_exec_callback_QAbstractSocket_atEnd(self *C.QAbstractSocket, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1208,18 +1208,18 @@ func miqt_exec_callback_QAbstractSocket_AtEnd(self *C.QAbstractSocket, cb C.intp
 
 func (this *QAbstractSocket) callVirtualBase_Reset() bool {
 
-	return (bool)(C.QAbstractSocket_virtualbase_Reset(unsafe.Pointer(this.h)))
+	return (bool)(C.QAbstractSocket_virtualbase_reset(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractSocket) OnReset(slot func(super func() bool) bool) {
-	ok := C.QAbstractSocket_override_virtual_Reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) Onreset(slot func(super func() bool) bool) {
+	ok := C.QAbstractSocket_override_virtual_reset(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_Reset
-func miqt_exec_callback_QAbstractSocket_Reset(self *C.QAbstractSocket, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QAbstractSocket_reset
+func miqt_exec_callback_QAbstractSocket_reset(self *C.QAbstractSocket, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1233,18 +1233,18 @@ func miqt_exec_callback_QAbstractSocket_Reset(self *C.QAbstractSocket, cb C.intp
 
 func (this *QAbstractSocket) callVirtualBase_CanReadLine() bool {
 
-	return (bool)(C.QAbstractSocket_virtualbase_CanReadLine(unsafe.Pointer(this.h)))
+	return (bool)(C.QAbstractSocket_virtualbase_canReadLine(unsafe.Pointer(this.h)))
 
 }
-func (this *QAbstractSocket) OnCanReadLine(slot func(super func() bool) bool) {
-	ok := C.QAbstractSocket_override_virtual_CanReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OncanReadLine(slot func(super func() bool) bool) {
+	ok := C.QAbstractSocket_override_virtual_canReadLine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_CanReadLine
-func miqt_exec_callback_QAbstractSocket_CanReadLine(self *C.QAbstractSocket, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QAbstractSocket_canReadLine
+func miqt_exec_callback_QAbstractSocket_canReadLine(self *C.QAbstractSocket, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1258,18 +1258,18 @@ func miqt_exec_callback_QAbstractSocket_CanReadLine(self *C.QAbstractSocket, cb 
 
 func (this *QAbstractSocket) callVirtualBase_Event(event *qt6.QEvent) bool {
 
-	return (bool)(C.QAbstractSocket_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QAbstractSocket_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QAbstractSocket) OnEvent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
-	ok := C.QAbstractSocket_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) Onevent(slot func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool) {
+	ok := C.QAbstractSocket_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_Event
-func miqt_exec_callback_QAbstractSocket_Event(self *C.QAbstractSocket, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QAbstractSocket_event
+func miqt_exec_callback_QAbstractSocket_event(self *C.QAbstractSocket, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent) bool, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1286,18 +1286,18 @@ func miqt_exec_callback_QAbstractSocket_Event(self *C.QAbstractSocket, cb C.intp
 
 func (this *QAbstractSocket) callVirtualBase_EventFilter(watched *qt6.QObject, event *qt6.QEvent) bool {
 
-	return (bool)(C.QAbstractSocket_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QAbstractSocket_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QAbstractSocket) OnEventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
-	ok := C.QAbstractSocket_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OneventFilter(slot func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool) {
+	ok := C.QAbstractSocket_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_EventFilter
-func miqt_exec_callback_QAbstractSocket_EventFilter(self *C.QAbstractSocket, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QAbstractSocket_eventFilter
+func miqt_exec_callback_QAbstractSocket_eventFilter(self *C.QAbstractSocket, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt6.QObject, event *qt6.QEvent) bool, watched *qt6.QObject, event *qt6.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1316,18 +1316,18 @@ func miqt_exec_callback_QAbstractSocket_EventFilter(self *C.QAbstractSocket, cb 
 
 func (this *QAbstractSocket) callVirtualBase_TimerEvent(event *qt6.QTimerEvent) {
 
-	C.QAbstractSocket_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QAbstractSocket_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QAbstractSocket) OnTimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
-	ok := C.QAbstractSocket_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OntimerEvent(slot func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent)) {
+	ok := C.QAbstractSocket_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_TimerEvent
-func miqt_exec_callback_QAbstractSocket_TimerEvent(self *C.QAbstractSocket, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QAbstractSocket_timerEvent
+func miqt_exec_callback_QAbstractSocket_timerEvent(self *C.QAbstractSocket, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QTimerEvent), event *qt6.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1342,18 +1342,18 @@ func miqt_exec_callback_QAbstractSocket_TimerEvent(self *C.QAbstractSocket, cb C
 
 func (this *QAbstractSocket) callVirtualBase_ChildEvent(event *qt6.QChildEvent) {
 
-	C.QAbstractSocket_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QAbstractSocket_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QAbstractSocket) OnChildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
-	ok := C.QAbstractSocket_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnchildEvent(slot func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent)) {
+	ok := C.QAbstractSocket_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_ChildEvent
-func miqt_exec_callback_QAbstractSocket_ChildEvent(self *C.QAbstractSocket, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QAbstractSocket_childEvent
+func miqt_exec_callback_QAbstractSocket_childEvent(self *C.QAbstractSocket, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QChildEvent), event *qt6.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1368,18 +1368,18 @@ func miqt_exec_callback_QAbstractSocket_ChildEvent(self *C.QAbstractSocket, cb C
 
 func (this *QAbstractSocket) callVirtualBase_CustomEvent(event *qt6.QEvent) {
 
-	C.QAbstractSocket_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QAbstractSocket_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QAbstractSocket) OnCustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
-	ok := C.QAbstractSocket_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OncustomEvent(slot func(super func(event *qt6.QEvent), event *qt6.QEvent)) {
+	ok := C.QAbstractSocket_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_CustomEvent
-func miqt_exec_callback_QAbstractSocket_CustomEvent(self *C.QAbstractSocket, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QAbstractSocket_customEvent
+func miqt_exec_callback_QAbstractSocket_customEvent(self *C.QAbstractSocket, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt6.QEvent), event *qt6.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1394,18 +1394,18 @@ func miqt_exec_callback_QAbstractSocket_CustomEvent(self *C.QAbstractSocket, cb 
 
 func (this *QAbstractSocket) callVirtualBase_ConnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QAbstractSocket_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QAbstractSocket_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QAbstractSocket) OnConnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QAbstractSocket_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OnconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QAbstractSocket_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_ConnectNotify
-func miqt_exec_callback_QAbstractSocket_ConnectNotify(self *C.QAbstractSocket, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAbstractSocket_connectNotify
+func miqt_exec_callback_QAbstractSocket_connectNotify(self *C.QAbstractSocket, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1420,18 +1420,18 @@ func miqt_exec_callback_QAbstractSocket_ConnectNotify(self *C.QAbstractSocket, c
 
 func (this *QAbstractSocket) callVirtualBase_DisconnectNotify(signal *qt6.QMetaMethod) {
 
-	C.QAbstractSocket_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QAbstractSocket_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QAbstractSocket) OnDisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
-	ok := C.QAbstractSocket_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QAbstractSocket) OndisconnectNotify(slot func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod)) {
+	ok := C.QAbstractSocket_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QAbstractSocket_DisconnectNotify
-func miqt_exec_callback_QAbstractSocket_DisconnectNotify(self *C.QAbstractSocket, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QAbstractSocket_disconnectNotify
+func miqt_exec_callback_QAbstractSocket_disconnectNotify(self *C.QAbstractSocket, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt6.QMetaMethod), signal *qt6.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1446,7 +1446,7 @@ func miqt_exec_callback_QAbstractSocket_DisconnectNotify(self *C.QAbstractSocket
 
 // Delete this object from C++ memory.
 func (this *QAbstractSocket) Delete() {
-	C.QAbstractSocket_Delete(this.h)
+	C.QAbstractSocket_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

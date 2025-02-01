@@ -88,33 +88,33 @@ func NewQVersionNumber6(param1 *QVersionNumber) *QVersionNumber {
 }
 
 func (this *QVersionNumber) IsNull() bool {
-	return (bool)(C.QVersionNumber_IsNull(this.h))
+	return (bool)(C.QVersionNumber_isNull(this.h))
 }
 
 func (this *QVersionNumber) IsNormalized() bool {
-	return (bool)(C.QVersionNumber_IsNormalized(this.h))
+	return (bool)(C.QVersionNumber_isNormalized(this.h))
 }
 
 func (this *QVersionNumber) MajorVersion() int {
-	return (int)(C.QVersionNumber_MajorVersion(this.h))
+	return (int)(C.QVersionNumber_majorVersion(this.h))
 }
 
 func (this *QVersionNumber) MinorVersion() int {
-	return (int)(C.QVersionNumber_MinorVersion(this.h))
+	return (int)(C.QVersionNumber_minorVersion(this.h))
 }
 
 func (this *QVersionNumber) MicroVersion() int {
-	return (int)(C.QVersionNumber_MicroVersion(this.h))
+	return (int)(C.QVersionNumber_microVersion(this.h))
 }
 
 func (this *QVersionNumber) Normalized() *QVersionNumber {
-	_goptr := newQVersionNumber(C.QVersionNumber_Normalized(this.h))
+	_goptr := newQVersionNumber(C.QVersionNumber_normalized(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVersionNumber) Segments() []int {
-	var _ma C.struct_miqt_array = C.QVersionNumber_Segments(this.h)
+	var _ma C.struct_miqt_array = C.QVersionNumber_segments(this.h)
 	_ret := make([]int, int(_ma.len))
 	_outCast := (*[0xffff]C.int)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -124,49 +124,49 @@ func (this *QVersionNumber) Segments() []int {
 }
 
 func (this *QVersionNumber) SegmentAt(index int64) int {
-	return (int)(C.QVersionNumber_SegmentAt(this.h, (C.ptrdiff_t)(index)))
+	return (int)(C.QVersionNumber_segmentAt(this.h, (C.ptrdiff_t)(index)))
 }
 
 func (this *QVersionNumber) SegmentCount() int64 {
-	return (int64)(C.QVersionNumber_SegmentCount(this.h))
+	return (int64)(C.QVersionNumber_segmentCount(this.h))
 }
 
 func (this *QVersionNumber) IsPrefixOf(other *QVersionNumber) bool {
-	return (bool)(C.QVersionNumber_IsPrefixOf(this.h, other.cPointer()))
+	return (bool)(C.QVersionNumber_isPrefixOf(this.h, other.cPointer()))
 }
 
 func QVersionNumber_Compare(v1 *QVersionNumber, v2 *QVersionNumber) int {
-	return (int)(C.QVersionNumber_Compare(v1.cPointer(), v2.cPointer()))
+	return (int)(C.QVersionNumber_compare(v1.cPointer(), v2.cPointer()))
 }
 
 func QVersionNumber_CommonPrefix(v1 *QVersionNumber, v2 *QVersionNumber) *QVersionNumber {
-	_goptr := newQVersionNumber(C.QVersionNumber_CommonPrefix(v1.cPointer(), v2.cPointer()))
+	_goptr := newQVersionNumber(C.QVersionNumber_commonPrefix(v1.cPointer(), v2.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVersionNumber) ToString() string {
-	var _ms C.struct_miqt_string = C.QVersionNumber_ToString(this.h)
+	var _ms C.struct_miqt_string = C.QVersionNumber_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QVersionNumber_FromString(stringVal QAnyStringView) *QVersionNumber {
-	_goptr := newQVersionNumber(C.QVersionNumber_FromString(stringVal.cPointer()))
+	_goptr := newQVersionNumber(C.QVersionNumber_fromString(stringVal.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QVersionNumber_FromString2(stringVal QAnyStringView, suffixIndex *int64) *QVersionNumber {
-	_goptr := newQVersionNumber(C.QVersionNumber_FromString2(stringVal.cPointer(), (*C.ptrdiff_t)(unsafe.Pointer(suffixIndex))))
+	_goptr := newQVersionNumber(C.QVersionNumber_fromString2(stringVal.cPointer(), (*C.ptrdiff_t)(unsafe.Pointer(suffixIndex))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QVersionNumber) Delete() {
-	C.QVersionNumber_Delete(this.h)
+	C.QVersionNumber_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -223,34 +223,34 @@ func NewQTypeRevision2(param1 *QTypeRevision) *QTypeRevision {
 }
 
 func QTypeRevision_Zero() *QTypeRevision {
-	_goptr := newQTypeRevision(C.QTypeRevision_Zero())
+	_goptr := newQTypeRevision(C.QTypeRevision_zero())
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QTypeRevision) HasMajorVersion() bool {
-	return (bool)(C.QTypeRevision_HasMajorVersion(this.h))
+	return (bool)(C.QTypeRevision_hasMajorVersion(this.h))
 }
 
 func (this *QTypeRevision) MajorVersion() byte {
-	return (byte)(C.QTypeRevision_MajorVersion(this.h))
+	return (byte)(C.QTypeRevision_majorVersion(this.h))
 }
 
 func (this *QTypeRevision) HasMinorVersion() bool {
-	return (bool)(C.QTypeRevision_HasMinorVersion(this.h))
+	return (bool)(C.QTypeRevision_hasMinorVersion(this.h))
 }
 
 func (this *QTypeRevision) MinorVersion() byte {
-	return (byte)(C.QTypeRevision_MinorVersion(this.h))
+	return (byte)(C.QTypeRevision_minorVersion(this.h))
 }
 
 func (this *QTypeRevision) IsValid() bool {
-	return (bool)(C.QTypeRevision_IsValid(this.h))
+	return (bool)(C.QTypeRevision_isValid(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QTypeRevision) Delete() {
-	C.QTypeRevision_Delete(this.h)
+	C.QTypeRevision_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

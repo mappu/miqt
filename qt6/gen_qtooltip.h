@@ -30,21 +30,21 @@ typedef struct QToolTip QToolTip;
 typedef struct QWidget QWidget;
 #endif
 
-void QToolTip_ShowText(QPoint* pos, struct miqt_string text);
-void QToolTip_HideText();
-bool QToolTip_IsVisible();
-struct miqt_string QToolTip_Text();
-QPalette* QToolTip_Palette();
-void QToolTip_SetPalette(QPalette* palette);
-QFont* QToolTip_Font();
-void QToolTip_SetFont(QFont* font);
-void QToolTip_ShowText3(QPoint* pos, struct miqt_string text, QWidget* w);
-void QToolTip_ShowText4(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect);
-void QToolTip_ShowText5(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect, int msecShowTime);
-void QToolTip_Delete(QToolTip* self);
+void QToolTip_showText(QPoint* pos, struct miqt_string text);
+void QToolTip_hideText();
+bool QToolTip_isVisible();
+struct miqt_string QToolTip_text();
+QPalette* QToolTip_palette();
+void QToolTip_setPalette(QPalette* palette);
+QFont* QToolTip_font();
+void QToolTip_setFont(QFont* font);
+void QToolTip_showText3(QPoint* pos, struct miqt_string text, QWidget* w);
+void QToolTip_showText4(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect);
+void QToolTip_showText5(QPoint* pos, struct miqt_string text, QWidget* w, QRect* rect, int msecShowTime);
+void QToolTip_delete(QToolTip* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

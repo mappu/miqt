@@ -20,15 +20,15 @@
 extern "C" {
 #endif
 
-void miqt_exec_callback_QState_OnEntry(QState*, intptr_t, QEvent*);
-void miqt_exec_callback_QState_OnExit(QState*, intptr_t, QEvent*);
-bool miqt_exec_callback_QState_Event(QState*, intptr_t, QEvent*);
-bool miqt_exec_callback_QState_EventFilter(QState*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QState_TimerEvent(QState*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QState_ChildEvent(QState*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QState_CustomEvent(QState*, intptr_t, QEvent*);
-void miqt_exec_callback_QState_ConnectNotify(QState*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QState_DisconnectNotify(QState*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QState_onEntry(QState*, intptr_t, QEvent*);
+void miqt_exec_callback_QState_onExit(QState*, intptr_t, QEvent*);
+bool miqt_exec_callback_QState_event(QState*, intptr_t, QEvent*);
+bool miqt_exec_callback_QState_eventFilter(QState*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QState_timerEvent(QState*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QState_childEvent(QState*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QState_customEvent(QState*, intptr_t, QEvent*);
+void miqt_exec_callback_QState_connectNotify(QState*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QState_disconnectNotify(QState*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -44,178 +44,178 @@ public:
 	virtual ~MiqtVirtualQState() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__OnEntry = 0;
+	intptr_t handle__onEntry = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void onEntry(QEvent* event) override {
-		if (handle__OnEntry == 0) {
+		if (handle__onEntry == 0) {
 			QState::onEntry(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QState_OnEntry(this, handle__OnEntry, sigval1);
+		miqt_exec_callback_QState_onEntry(this, handle__onEntry, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_OnEntry(QEvent* event) {
+	void virtualbase_onEntry(QEvent* event) {
 
 		QState::onEntry(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__OnExit = 0;
+	intptr_t handle__onExit = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void onExit(QEvent* event) override {
-		if (handle__OnExit == 0) {
+		if (handle__onExit == 0) {
 			QState::onExit(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QState_OnExit(this, handle__OnExit, sigval1);
+		miqt_exec_callback_QState_onExit(this, handle__onExit, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_OnExit(QEvent* event) {
+	void virtualbase_onExit(QEvent* event) {
 
 		QState::onExit(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* e) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QState::event(e);
 		}
 		
 		QEvent* sigval1 = e;
 
-		bool callback_return_value = miqt_exec_callback_QState_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QState_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* e) {
+	bool virtualbase_event(QEvent* e) {
 
 		return QState::event(e);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QState::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QState_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QState_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QState::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QState::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QState_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QState_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QState::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QState::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QState_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QState_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QState::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QState::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QState_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QState_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QState::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QState::connectNotify(signal);
 			return;
 		}
@@ -224,24 +224,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QState_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QState_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QState::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QState::disconnectNotify(signal);
 			return;
 		}
@@ -250,13 +250,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QState_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QState_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QState::disconnectNotify(*signal);
 
@@ -284,15 +284,15 @@ void QState_virtbase(QState* src, QAbstractState** outptr_QAbstractState) {
 	*outptr_QAbstractState = static_cast<QAbstractState*>(src);
 }
 
-QMetaObject* QState_MetaObject(const QState* self) {
+QMetaObject* QState_metaObject(const QState* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QState_Metacast(QState* self, const char* param1) {
+void* QState_metacast(QState* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QState_Tr(const char* s) {
+struct miqt_string QState_tr(const char* s) {
 	QString _ret = QState::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -303,7 +303,7 @@ struct miqt_string QState_Tr(const char* s) {
 	return _ms;
 }
 
-struct miqt_string QState_TrUtf8(const char* s) {
+struct miqt_string QState_trUtf8(const char* s) {
 	QString _ret = QState::trUtf8(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -314,31 +314,31 @@ struct miqt_string QState_TrUtf8(const char* s) {
 	return _ms;
 }
 
-QAbstractState* QState_ErrorState(const QState* self) {
+QAbstractState* QState_errorState(const QState* self) {
 	return self->errorState();
 }
 
-void QState_SetErrorState(QState* self, QAbstractState* state) {
+void QState_setErrorState(QState* self, QAbstractState* state) {
 	self->setErrorState(state);
 }
 
-void QState_AddTransition(QState* self, QAbstractTransition* transition) {
+void QState_addTransition(QState* self, QAbstractTransition* transition) {
 	self->addTransition(transition);
 }
 
-QSignalTransition* QState_AddTransition2(QState* self, QObject* sender, const char* signal, QAbstractState* target) {
+QSignalTransition* QState_addTransition2(QState* self, QObject* sender, const char* signal, QAbstractState* target) {
 	return self->addTransition(sender, signal, target);
 }
 
-QAbstractTransition* QState_AddTransitionWithTarget(QState* self, QAbstractState* target) {
+QAbstractTransition* QState_addTransitionWithTarget(QState* self, QAbstractState* target) {
 	return self->addTransition(target);
 }
 
-void QState_RemoveTransition(QState* self, QAbstractTransition* transition) {
+void QState_removeTransition(QState* self, QAbstractTransition* transition) {
 	self->removeTransition(transition);
 }
 
-struct miqt_array /* of QAbstractTransition* */  QState_Transitions(const QState* self) {
+struct miqt_array /* of QAbstractTransition* */  QState_transitions(const QState* self) {
 	QList<QAbstractTransition *> _ret = self->transitions();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QAbstractTransition** _arr = static_cast<QAbstractTransition**>(malloc(sizeof(QAbstractTransition*) * _ret.length()));
@@ -351,28 +351,28 @@ struct miqt_array /* of QAbstractTransition* */  QState_Transitions(const QState
 	return _out;
 }
 
-QAbstractState* QState_InitialState(const QState* self) {
+QAbstractState* QState_initialState(const QState* self) {
 	return self->initialState();
 }
 
-void QState_SetInitialState(QState* self, QAbstractState* state) {
+void QState_setInitialState(QState* self, QAbstractState* state) {
 	self->setInitialState(state);
 }
 
-int QState_ChildMode(const QState* self) {
+int QState_childMode(const QState* self) {
 	QState::ChildMode _ret = self->childMode();
 	return static_cast<int>(_ret);
 }
 
-void QState_SetChildMode(QState* self, int mode) {
+void QState_setChildMode(QState* self, int mode) {
 	self->setChildMode(static_cast<QState::ChildMode>(mode));
 }
 
-void QState_AssignProperty(QState* self, QObject* object, const char* name, QVariant* value) {
+void QState_assignProperty(QState* self, QObject* object, const char* name, QVariant* value) {
 	self->assignProperty(object, name, *value);
 }
 
-struct miqt_string QState_Tr2(const char* s, const char* c) {
+struct miqt_string QState_tr2(const char* s, const char* c) {
 	QString _ret = QState::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -383,7 +383,7 @@ struct miqt_string QState_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QState_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QState_tr3(const char* s, const char* c, int n) {
 	QString _ret = QState::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -394,7 +394,7 @@ struct miqt_string QState_Tr3(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-struct miqt_string QState_TrUtf82(const char* s, const char* c) {
+struct miqt_string QState_trUtf82(const char* s, const char* c) {
 	QString _ret = QState::trUtf8(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -405,7 +405,7 @@ struct miqt_string QState_TrUtf82(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QState_TrUtf83(const char* s, const char* c, int n) {
+struct miqt_string QState_trUtf83(const char* s, const char* c, int n) {
 	QString _ret = QState::trUtf8(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -416,133 +416,133 @@ struct miqt_string QState_TrUtf83(const char* s, const char* c, int n) {
 	return _ms;
 }
 
-bool QState_override_virtual_OnEntry(void* self, intptr_t slot) {
+bool QState_override_virtual_onEntry(void* self, intptr_t slot) {
 	MiqtVirtualQState* self_cast = dynamic_cast<MiqtVirtualQState*>( (QState*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__OnEntry = slot;
+	self_cast->handle__onEntry = slot;
 	return true;
 }
 
-void QState_virtualbase_OnEntry(void* self, QEvent* event) {
-	( (MiqtVirtualQState*)(self) )->virtualbase_OnEntry(event);
+void QState_virtualbase_onEntry(void* self, QEvent* event) {
+	( (MiqtVirtualQState*)(self) )->virtualbase_onEntry(event);
 }
 
-bool QState_override_virtual_OnExit(void* self, intptr_t slot) {
+bool QState_override_virtual_onExit(void* self, intptr_t slot) {
 	MiqtVirtualQState* self_cast = dynamic_cast<MiqtVirtualQState*>( (QState*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__OnExit = slot;
+	self_cast->handle__onExit = slot;
 	return true;
 }
 
-void QState_virtualbase_OnExit(void* self, QEvent* event) {
-	( (MiqtVirtualQState*)(self) )->virtualbase_OnExit(event);
+void QState_virtualbase_onExit(void* self, QEvent* event) {
+	( (MiqtVirtualQState*)(self) )->virtualbase_onExit(event);
 }
 
-bool QState_override_virtual_Event(void* self, intptr_t slot) {
+bool QState_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQState* self_cast = dynamic_cast<MiqtVirtualQState*>( (QState*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QState_virtualbase_Event(void* self, QEvent* e) {
-	return ( (MiqtVirtualQState*)(self) )->virtualbase_Event(e);
+bool QState_virtualbase_event(void* self, QEvent* e) {
+	return ( (MiqtVirtualQState*)(self) )->virtualbase_event(e);
 }
 
-bool QState_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QState_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQState* self_cast = dynamic_cast<MiqtVirtualQState*>( (QState*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QState_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQState*)(self) )->virtualbase_EventFilter(watched, event);
+bool QState_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQState*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QState_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QState_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQState* self_cast = dynamic_cast<MiqtVirtualQState*>( (QState*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QState_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQState*)(self) )->virtualbase_TimerEvent(event);
+void QState_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQState*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QState_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QState_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQState* self_cast = dynamic_cast<MiqtVirtualQState*>( (QState*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QState_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQState*)(self) )->virtualbase_ChildEvent(event);
+void QState_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQState*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QState_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QState_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQState* self_cast = dynamic_cast<MiqtVirtualQState*>( (QState*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QState_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQState*)(self) )->virtualbase_CustomEvent(event);
+void QState_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQState*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QState_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QState_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQState* self_cast = dynamic_cast<MiqtVirtualQState*>( (QState*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QState_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQState*)(self) )->virtualbase_ConnectNotify(signal);
+void QState_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQState*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QState_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QState_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQState* self_cast = dynamic_cast<MiqtVirtualQState*>( (QState*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QState_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQState*)(self) )->virtualbase_DisconnectNotify(signal);
+void QState_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQState*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QState_Delete(QState* self) {
+void QState_delete(QState* self) {
 	delete self;
 }
 

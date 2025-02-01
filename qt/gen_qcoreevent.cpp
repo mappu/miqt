@@ -15,52 +15,52 @@ extern "C" {
 } /* extern C */
 #endif
 
-QEvent* QEvent_new(int typeVal) {
-	return new QEvent(static_cast<QEvent::Type>(typeVal));
+QEvent* QEvent_new(int type) {
+	return new QEvent(static_cast<QEvent::Type>(type));
 }
 
 QEvent* QEvent_new2(QEvent* other) {
 	return new QEvent(*other);
 }
 
-void QEvent_OperatorAssign(QEvent* self, QEvent* other) {
+void QEvent_operatorAssign(QEvent* self, QEvent* other) {
 	self->operator=(*other);
 }
 
-int QEvent_Type(const QEvent* self) {
+int QEvent_type(const QEvent* self) {
 	QEvent::Type _ret = self->type();
 	return static_cast<int>(_ret);
 }
 
-bool QEvent_Spontaneous(const QEvent* self) {
+bool QEvent_spontaneous(const QEvent* self) {
 	return self->spontaneous();
 }
 
-void QEvent_SetAccepted(QEvent* self, bool accepted) {
+void QEvent_setAccepted(QEvent* self, bool accepted) {
 	self->setAccepted(accepted);
 }
 
-bool QEvent_IsAccepted(const QEvent* self) {
+bool QEvent_isAccepted(const QEvent* self) {
 	return self->isAccepted();
 }
 
-void QEvent_Accept(QEvent* self) {
+void QEvent_accept(QEvent* self) {
 	self->accept();
 }
 
-void QEvent_Ignore(QEvent* self) {
+void QEvent_ignore(QEvent* self) {
 	self->ignore();
 }
 
-int QEvent_RegisterEventType() {
+int QEvent_registerEventType() {
 	return QEvent::registerEventType();
 }
 
-int QEvent_RegisterEventType1(int hint) {
+int QEvent_registerEventType1(int hint) {
 	return QEvent::registerEventType(static_cast<int>(hint));
 }
 
-void QEvent_Delete(QEvent* self) {
+void QEvent_delete(QEvent* self) {
 	delete self;
 }
 
@@ -76,16 +76,16 @@ void QTimerEvent_virtbase(QTimerEvent* src, QEvent** outptr_QEvent) {
 	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
-int QTimerEvent_TimerId(const QTimerEvent* self) {
+int QTimerEvent_timerId(const QTimerEvent* self) {
 	return self->timerId();
 }
 
-void QTimerEvent_Delete(QTimerEvent* self) {
+void QTimerEvent_delete(QTimerEvent* self) {
 	delete self;
 }
 
-QChildEvent* QChildEvent_new(int typeVal, QObject* child) {
-	return new QChildEvent(static_cast<QEvent::Type>(typeVal), child);
+QChildEvent* QChildEvent_new(int type, QObject* child) {
+	return new QChildEvent(static_cast<QEvent::Type>(type), child);
 }
 
 QChildEvent* QChildEvent_new2(QChildEvent* param1) {
@@ -96,23 +96,23 @@ void QChildEvent_virtbase(QChildEvent* src, QEvent** outptr_QEvent) {
 	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
-QObject* QChildEvent_Child(const QChildEvent* self) {
+QObject* QChildEvent_child(const QChildEvent* self) {
 	return self->child();
 }
 
-bool QChildEvent_Added(const QChildEvent* self) {
+bool QChildEvent_added(const QChildEvent* self) {
 	return self->added();
 }
 
-bool QChildEvent_Polished(const QChildEvent* self) {
+bool QChildEvent_polished(const QChildEvent* self) {
 	return self->polished();
 }
 
-bool QChildEvent_Removed(const QChildEvent* self) {
+bool QChildEvent_removed(const QChildEvent* self) {
 	return self->removed();
 }
 
-void QChildEvent_Delete(QChildEvent* self) {
+void QChildEvent_delete(QChildEvent* self) {
 	delete self;
 }
 
@@ -129,7 +129,7 @@ void QDynamicPropertyChangeEvent_virtbase(QDynamicPropertyChangeEvent* src, QEve
 	*outptr_QEvent = static_cast<QEvent*>(src);
 }
 
-struct miqt_string QDynamicPropertyChangeEvent_PropertyName(const QDynamicPropertyChangeEvent* self) {
+struct miqt_string QDynamicPropertyChangeEvent_propertyName(const QDynamicPropertyChangeEvent* self) {
 	QByteArray _qb = self->propertyName();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -138,7 +138,7 @@ struct miqt_string QDynamicPropertyChangeEvent_PropertyName(const QDynamicProper
 	return _ms;
 }
 
-void QDynamicPropertyChangeEvent_Delete(QDynamicPropertyChangeEvent* self) {
+void QDynamicPropertyChangeEvent_delete(QDynamicPropertyChangeEvent* self) {
 	delete self;
 }
 

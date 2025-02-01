@@ -25,32 +25,32 @@ typedef struct QMimeType QMimeType;
 QMediaFormat* QMediaFormat_new();
 QMediaFormat* QMediaFormat_new2(QMediaFormat* other);
 QMediaFormat* QMediaFormat_new3(int format);
-void QMediaFormat_OperatorAssign(QMediaFormat* self, QMediaFormat* other);
-void QMediaFormat_Swap(QMediaFormat* self, QMediaFormat* other);
-int QMediaFormat_FileFormat(const QMediaFormat* self);
-void QMediaFormat_SetFileFormat(QMediaFormat* self, int f);
-void QMediaFormat_SetVideoCodec(QMediaFormat* self, int codec);
-int QMediaFormat_VideoCodec(const QMediaFormat* self);
-void QMediaFormat_SetAudioCodec(QMediaFormat* self, int codec);
-int QMediaFormat_AudioCodec(const QMediaFormat* self);
-bool QMediaFormat_IsSupported(const QMediaFormat* self, int mode);
-QMimeType* QMediaFormat_MimeType(const QMediaFormat* self);
-struct miqt_array /* of int */  QMediaFormat_SupportedFileFormats(QMediaFormat* self, int m);
-struct miqt_array /* of int */  QMediaFormat_SupportedVideoCodecs(QMediaFormat* self, int m);
-struct miqt_array /* of int */  QMediaFormat_SupportedAudioCodecs(QMediaFormat* self, int m);
-struct miqt_string QMediaFormat_FileFormatName(int fileFormat);
-struct miqt_string QMediaFormat_AudioCodecName(int codec);
-struct miqt_string QMediaFormat_VideoCodecName(int codec);
-struct miqt_string QMediaFormat_FileFormatDescription(int fileFormat);
-struct miqt_string QMediaFormat_AudioCodecDescription(int codec);
-struct miqt_string QMediaFormat_VideoCodecDescription(int codec);
-bool QMediaFormat_OperatorEqual(const QMediaFormat* self, QMediaFormat* other);
-bool QMediaFormat_OperatorNotEqual(const QMediaFormat* self, QMediaFormat* other);
-void QMediaFormat_ResolveForEncoding(QMediaFormat* self, int flags);
-void QMediaFormat_Delete(QMediaFormat* self);
+void QMediaFormat_operatorAssign(QMediaFormat* self, QMediaFormat* other);
+void QMediaFormat_swap(QMediaFormat* self, QMediaFormat* other);
+int QMediaFormat_fileFormat(const QMediaFormat* self);
+void QMediaFormat_setFileFormat(QMediaFormat* self, int f);
+void QMediaFormat_setVideoCodec(QMediaFormat* self, int codec);
+int QMediaFormat_videoCodec(const QMediaFormat* self);
+void QMediaFormat_setAudioCodec(QMediaFormat* self, int codec);
+int QMediaFormat_audioCodec(const QMediaFormat* self);
+bool QMediaFormat_isSupported(const QMediaFormat* self, int mode);
+QMimeType* QMediaFormat_mimeType(const QMediaFormat* self);
+struct miqt_array /* of int */  QMediaFormat_supportedFileFormats(QMediaFormat* self, int m);
+struct miqt_array /* of int */  QMediaFormat_supportedVideoCodecs(QMediaFormat* self, int m);
+struct miqt_array /* of int */  QMediaFormat_supportedAudioCodecs(QMediaFormat* self, int m);
+struct miqt_string QMediaFormat_fileFormatName(int fileFormat);
+struct miqt_string QMediaFormat_audioCodecName(int codec);
+struct miqt_string QMediaFormat_videoCodecName(int codec);
+struct miqt_string QMediaFormat_fileFormatDescription(int fileFormat);
+struct miqt_string QMediaFormat_audioCodecDescription(int codec);
+struct miqt_string QMediaFormat_videoCodecDescription(int codec);
+bool QMediaFormat_operatorEqual(const QMediaFormat* self, QMediaFormat* other);
+bool QMediaFormat_operatorNotEqual(const QMediaFormat* self, QMediaFormat* other);
+void QMediaFormat_resolveForEncoding(QMediaFormat* self, int flags);
+void QMediaFormat_delete(QMediaFormat* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

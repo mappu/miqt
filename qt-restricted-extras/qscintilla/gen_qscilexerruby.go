@@ -100,19 +100,19 @@ func NewQsciLexerRuby2(parent *qt.QObject) *QsciLexerRuby {
 }
 
 func (this *QsciLexerRuby) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciLexerRuby_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.QsciLexerRuby_metaObject(this.h)))
 }
 
 func (this *QsciLexerRuby) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QsciLexerRuby_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QsciLexerRuby_metacast(this.h, param1_Cstring))
 }
 
 func QsciLexerRuby_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QsciLexerRuby_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QsciLexerRuby_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -121,93 +121,93 @@ func QsciLexerRuby_Tr(s string) string {
 func QsciLexerRuby_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QsciLexerRuby_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QsciLexerRuby_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciLexerRuby) Language() string {
-	_ret := C.QsciLexerRuby_Language(this.h)
+	_ret := C.QsciLexerRuby_language(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerRuby) Lexer() string {
-	_ret := C.QsciLexerRuby_Lexer(this.h)
+	_ret := C.QsciLexerRuby_lexer(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerRuby) BlockEnd() string {
-	_ret := C.QsciLexerRuby_BlockEnd(this.h)
+	_ret := C.QsciLexerRuby_blockEnd(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerRuby) BlockStart() string {
-	_ret := C.QsciLexerRuby_BlockStart(this.h)
+	_ret := C.QsciLexerRuby_blockStart(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerRuby) BlockStartKeyword() string {
-	_ret := C.QsciLexerRuby_BlockStartKeyword(this.h)
+	_ret := C.QsciLexerRuby_blockStartKeyword(this.h)
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerRuby) BraceStyle() int {
-	return (int)(C.QsciLexerRuby_BraceStyle(this.h))
+	return (int)(C.QsciLexerRuby_braceStyle(this.h))
 }
 
 func (this *QsciLexerRuby) DefaultColor(style int) *qt.QColor {
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerRuby_DefaultColor(this.h, (C.int)(style))))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerRuby_defaultColor(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciLexerRuby) DefaultEolFill(style int) bool {
-	return (bool)(C.QsciLexerRuby_DefaultEolFill(this.h, (C.int)(style)))
+	return (bool)(C.QsciLexerRuby_defaultEolFill(this.h, (C.int)(style)))
 }
 
 func (this *QsciLexerRuby) DefaultFont(style int) *qt.QFont {
-	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerRuby_DefaultFont(this.h, (C.int)(style))))
+	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerRuby_defaultFont(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciLexerRuby) DefaultPaper(style int) *qt.QColor {
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerRuby_DefaultPaper(this.h, (C.int)(style))))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerRuby_defaultPaper(this.h, (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QsciLexerRuby) Keywords(set int) string {
-	_ret := C.QsciLexerRuby_Keywords(this.h, (C.int)(set))
+	_ret := C.QsciLexerRuby_keywords(this.h, (C.int)(set))
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerRuby) Description(style int) string {
-	var _ms C.struct_miqt_string = C.QsciLexerRuby_Description(this.h, (C.int)(style))
+	var _ms C.struct_miqt_string = C.QsciLexerRuby_description(this.h, (C.int)(style))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciLexerRuby) RefreshProperties() {
-	C.QsciLexerRuby_RefreshProperties(this.h)
+	C.QsciLexerRuby_refreshProperties(this.h)
 }
 
 func (this *QsciLexerRuby) SetFoldComments(fold bool) {
-	C.QsciLexerRuby_SetFoldComments(this.h, (C.bool)(fold))
+	C.QsciLexerRuby_setFoldComments(this.h, (C.bool)(fold))
 }
 
 func (this *QsciLexerRuby) FoldComments() bool {
-	return (bool)(C.QsciLexerRuby_FoldComments(this.h))
+	return (bool)(C.QsciLexerRuby_foldComments(this.h))
 }
 
 func (this *QsciLexerRuby) SetFoldCompact(fold bool) {
-	C.QsciLexerRuby_SetFoldCompact(this.h, (C.bool)(fold))
+	C.QsciLexerRuby_setFoldCompact(this.h, (C.bool)(fold))
 }
 
 func (this *QsciLexerRuby) FoldCompact() bool {
-	return (bool)(C.QsciLexerRuby_FoldCompact(this.h))
+	return (bool)(C.QsciLexerRuby_foldCompact(this.h))
 }
 
 func QsciLexerRuby_Tr2(s string, c string) string {
@@ -215,7 +215,7 @@ func QsciLexerRuby_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QsciLexerRuby_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QsciLexerRuby_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -226,7 +226,7 @@ func QsciLexerRuby_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QsciLexerRuby_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QsciLexerRuby_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -237,7 +237,7 @@ func QsciLexerRuby_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QsciLexerRuby_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QsciLexerRuby_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -248,35 +248,35 @@ func QsciLexerRuby_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QsciLexerRuby_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QsciLexerRuby_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QsciLexerRuby) BlockEnd1(style *int) string {
-	_ret := C.QsciLexerRuby_BlockEnd1(this.h, (*C.int)(unsafe.Pointer(style)))
+	_ret := C.QsciLexerRuby_blockEnd1(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerRuby) BlockStart1(style *int) string {
-	_ret := C.QsciLexerRuby_BlockStart1(this.h, (*C.int)(unsafe.Pointer(style)))
+	_ret := C.QsciLexerRuby_blockStart1(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
 
 func (this *QsciLexerRuby) BlockStartKeyword1(style *int) string {
-	_ret := C.QsciLexerRuby_BlockStartKeyword1(this.h, (*C.int)(unsafe.Pointer(style)))
+	_ret := C.QsciLexerRuby_blockStartKeyword1(this.h, (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 }
-func (this *QsciLexerRuby) OnLanguage(slot func() string) {
-	ok := C.QsciLexerRuby_override_virtual_Language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) Onlanguage(slot func() string) {
+	ok := C.QsciLexerRuby_override_virtual_language(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_Language
-func miqt_exec_callback_QsciLexerRuby_Language(self *C.QsciLexerRuby, cb C.intptr_t) *C.const_char {
+//export miqt_exec_callback_QsciLexerRuby_language
+func miqt_exec_callback_QsciLexerRuby_language(self *C.QsciLexerRuby, cb C.intptr_t) *C.const_char {
 	gofunc, ok := cgo.Handle(cb).Value().(func() string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -292,19 +292,19 @@ func miqt_exec_callback_QsciLexerRuby_Language(self *C.QsciLexerRuby, cb C.intpt
 
 func (this *QsciLexerRuby) callVirtualBase_Lexer() string {
 
-	_ret := C.QsciLexerRuby_virtualbase_Lexer(unsafe.Pointer(this.h))
+	_ret := C.QsciLexerRuby_virtualbase_lexer(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
 
 }
-func (this *QsciLexerRuby) OnLexer(slot func(super func() string) string) {
-	ok := C.QsciLexerRuby_override_virtual_Lexer(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) Onlexer(slot func(super func() string) string) {
+	ok := C.QsciLexerRuby_override_virtual_lexer(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_Lexer
-func miqt_exec_callback_QsciLexerRuby_Lexer(self *C.QsciLexerRuby, cb C.intptr_t) *C.const_char {
+//export miqt_exec_callback_QsciLexerRuby_lexer
+func miqt_exec_callback_QsciLexerRuby_lexer(self *C.QsciLexerRuby, cb C.intptr_t) *C.const_char {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() string) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -320,18 +320,18 @@ func miqt_exec_callback_QsciLexerRuby_Lexer(self *C.QsciLexerRuby, cb C.intptr_t
 
 func (this *QsciLexerRuby) callVirtualBase_LexerId() int {
 
-	return (int)(C.QsciLexerRuby_virtualbase_LexerId(unsafe.Pointer(this.h)))
+	return (int)(C.QsciLexerRuby_virtualbase_lexerId(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciLexerRuby) OnLexerId(slot func(super func() int) int) {
-	ok := C.QsciLexerRuby_override_virtual_LexerId(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnlexerId(slot func(super func() int) int) {
+	ok := C.QsciLexerRuby_override_virtual_lexerId(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_LexerId
-func miqt_exec_callback_QsciLexerRuby_LexerId(self *C.QsciLexerRuby, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QsciLexerRuby_lexerId
+func miqt_exec_callback_QsciLexerRuby_lexerId(self *C.QsciLexerRuby, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -345,19 +345,19 @@ func miqt_exec_callback_QsciLexerRuby_LexerId(self *C.QsciLexerRuby, cb C.intptr
 
 func (this *QsciLexerRuby) callVirtualBase_AutoCompletionFillups() string {
 
-	_ret := C.QsciLexerRuby_virtualbase_AutoCompletionFillups(unsafe.Pointer(this.h))
+	_ret := C.QsciLexerRuby_virtualbase_autoCompletionFillups(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
 
 }
-func (this *QsciLexerRuby) OnAutoCompletionFillups(slot func(super func() string) string) {
-	ok := C.QsciLexerRuby_override_virtual_AutoCompletionFillups(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnautoCompletionFillups(slot func(super func() string) string) {
+	ok := C.QsciLexerRuby_override_virtual_autoCompletionFillups(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_AutoCompletionFillups
-func miqt_exec_callback_QsciLexerRuby_AutoCompletionFillups(self *C.QsciLexerRuby, cb C.intptr_t) *C.const_char {
+//export miqt_exec_callback_QsciLexerRuby_autoCompletionFillups
+func miqt_exec_callback_QsciLexerRuby_autoCompletionFillups(self *C.QsciLexerRuby, cb C.intptr_t) *C.const_char {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() string) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -373,7 +373,7 @@ func miqt_exec_callback_QsciLexerRuby_AutoCompletionFillups(self *C.QsciLexerRub
 
 func (this *QsciLexerRuby) callVirtualBase_AutoCompletionWordSeparators() []string {
 
-	var _ma C.struct_miqt_array = C.QsciLexerRuby_virtualbase_AutoCompletionWordSeparators(unsafe.Pointer(this.h))
+	var _ma C.struct_miqt_array = C.QsciLexerRuby_virtualbase_autoCompletionWordSeparators(unsafe.Pointer(this.h))
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -385,15 +385,15 @@ func (this *QsciLexerRuby) callVirtualBase_AutoCompletionWordSeparators() []stri
 	return _ret
 
 }
-func (this *QsciLexerRuby) OnAutoCompletionWordSeparators(slot func(super func() []string) []string) {
-	ok := C.QsciLexerRuby_override_virtual_AutoCompletionWordSeparators(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnautoCompletionWordSeparators(slot func(super func() []string) []string) {
+	ok := C.QsciLexerRuby_override_virtual_autoCompletionWordSeparators(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_AutoCompletionWordSeparators
-func miqt_exec_callback_QsciLexerRuby_AutoCompletionWordSeparators(self *C.QsciLexerRuby, cb C.intptr_t) C.struct_miqt_array {
+//export miqt_exec_callback_QsciLexerRuby_autoCompletionWordSeparators
+func miqt_exec_callback_QsciLexerRuby_autoCompletionWordSeparators(self *C.QsciLexerRuby, cb C.intptr_t) C.struct_miqt_array {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() []string) []string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -417,19 +417,19 @@ func miqt_exec_callback_QsciLexerRuby_AutoCompletionWordSeparators(self *C.QsciL
 
 func (this *QsciLexerRuby) callVirtualBase_BlockEnd(style *int) string {
 
-	_ret := C.QsciLexerRuby_virtualbase_BlockEnd(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
+	_ret := C.QsciLexerRuby_virtualbase_blockEnd(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 
 }
-func (this *QsciLexerRuby) OnBlockEnd(slot func(super func(style *int) string, style *int) string) {
-	ok := C.QsciLexerRuby_override_virtual_BlockEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnblockEnd(slot func(super func(style *int) string, style *int) string) {
+	ok := C.QsciLexerRuby_override_virtual_blockEnd(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_BlockEnd
-func miqt_exec_callback_QsciLexerRuby_BlockEnd(self *C.QsciLexerRuby, cb C.intptr_t, style *C.int) *C.const_char {
+//export miqt_exec_callback_QsciLexerRuby_blockEnd
+func miqt_exec_callback_QsciLexerRuby_blockEnd(self *C.QsciLexerRuby, cb C.intptr_t, style *C.int) *C.const_char {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style *int) string, style *int) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -448,18 +448,18 @@ func miqt_exec_callback_QsciLexerRuby_BlockEnd(self *C.QsciLexerRuby, cb C.intpt
 
 func (this *QsciLexerRuby) callVirtualBase_BlockLookback() int {
 
-	return (int)(C.QsciLexerRuby_virtualbase_BlockLookback(unsafe.Pointer(this.h)))
+	return (int)(C.QsciLexerRuby_virtualbase_blockLookback(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciLexerRuby) OnBlockLookback(slot func(super func() int) int) {
-	ok := C.QsciLexerRuby_override_virtual_BlockLookback(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnblockLookback(slot func(super func() int) int) {
+	ok := C.QsciLexerRuby_override_virtual_blockLookback(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_BlockLookback
-func miqt_exec_callback_QsciLexerRuby_BlockLookback(self *C.QsciLexerRuby, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QsciLexerRuby_blockLookback
+func miqt_exec_callback_QsciLexerRuby_blockLookback(self *C.QsciLexerRuby, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -473,19 +473,19 @@ func miqt_exec_callback_QsciLexerRuby_BlockLookback(self *C.QsciLexerRuby, cb C.
 
 func (this *QsciLexerRuby) callVirtualBase_BlockStart(style *int) string {
 
-	_ret := C.QsciLexerRuby_virtualbase_BlockStart(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
+	_ret := C.QsciLexerRuby_virtualbase_blockStart(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 
 }
-func (this *QsciLexerRuby) OnBlockStart(slot func(super func(style *int) string, style *int) string) {
-	ok := C.QsciLexerRuby_override_virtual_BlockStart(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnblockStart(slot func(super func(style *int) string, style *int) string) {
+	ok := C.QsciLexerRuby_override_virtual_blockStart(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_BlockStart
-func miqt_exec_callback_QsciLexerRuby_BlockStart(self *C.QsciLexerRuby, cb C.intptr_t, style *C.int) *C.const_char {
+//export miqt_exec_callback_QsciLexerRuby_blockStart
+func miqt_exec_callback_QsciLexerRuby_blockStart(self *C.QsciLexerRuby, cb C.intptr_t, style *C.int) *C.const_char {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style *int) string, style *int) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -504,19 +504,19 @@ func miqt_exec_callback_QsciLexerRuby_BlockStart(self *C.QsciLexerRuby, cb C.int
 
 func (this *QsciLexerRuby) callVirtualBase_BlockStartKeyword(style *int) string {
 
-	_ret := C.QsciLexerRuby_virtualbase_BlockStartKeyword(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
+	_ret := C.QsciLexerRuby_virtualbase_blockStartKeyword(unsafe.Pointer(this.h), (*C.int)(unsafe.Pointer(style)))
 	return C.GoString(_ret)
 
 }
-func (this *QsciLexerRuby) OnBlockStartKeyword(slot func(super func(style *int) string, style *int) string) {
-	ok := C.QsciLexerRuby_override_virtual_BlockStartKeyword(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnblockStartKeyword(slot func(super func(style *int) string, style *int) string) {
+	ok := C.QsciLexerRuby_override_virtual_blockStartKeyword(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_BlockStartKeyword
-func miqt_exec_callback_QsciLexerRuby_BlockStartKeyword(self *C.QsciLexerRuby, cb C.intptr_t, style *C.int) *C.const_char {
+//export miqt_exec_callback_QsciLexerRuby_blockStartKeyword
+func miqt_exec_callback_QsciLexerRuby_blockStartKeyword(self *C.QsciLexerRuby, cb C.intptr_t, style *C.int) *C.const_char {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style *int) string, style *int) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -535,18 +535,18 @@ func miqt_exec_callback_QsciLexerRuby_BlockStartKeyword(self *C.QsciLexerRuby, c
 
 func (this *QsciLexerRuby) callVirtualBase_BraceStyle() int {
 
-	return (int)(C.QsciLexerRuby_virtualbase_BraceStyle(unsafe.Pointer(this.h)))
+	return (int)(C.QsciLexerRuby_virtualbase_braceStyle(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciLexerRuby) OnBraceStyle(slot func(super func() int) int) {
-	ok := C.QsciLexerRuby_override_virtual_BraceStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnbraceStyle(slot func(super func() int) int) {
+	ok := C.QsciLexerRuby_override_virtual_braceStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_BraceStyle
-func miqt_exec_callback_QsciLexerRuby_BraceStyle(self *C.QsciLexerRuby, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QsciLexerRuby_braceStyle
+func miqt_exec_callback_QsciLexerRuby_braceStyle(self *C.QsciLexerRuby, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -560,18 +560,18 @@ func miqt_exec_callback_QsciLexerRuby_BraceStyle(self *C.QsciLexerRuby, cb C.int
 
 func (this *QsciLexerRuby) callVirtualBase_CaseSensitive() bool {
 
-	return (bool)(C.QsciLexerRuby_virtualbase_CaseSensitive(unsafe.Pointer(this.h)))
+	return (bool)(C.QsciLexerRuby_virtualbase_caseSensitive(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciLexerRuby) OnCaseSensitive(slot func(super func() bool) bool) {
-	ok := C.QsciLexerRuby_override_virtual_CaseSensitive(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OncaseSensitive(slot func(super func() bool) bool) {
+	ok := C.QsciLexerRuby_override_virtual_caseSensitive(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_CaseSensitive
-func miqt_exec_callback_QsciLexerRuby_CaseSensitive(self *C.QsciLexerRuby, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QsciLexerRuby_caseSensitive
+func miqt_exec_callback_QsciLexerRuby_caseSensitive(self *C.QsciLexerRuby, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -585,20 +585,20 @@ func miqt_exec_callback_QsciLexerRuby_CaseSensitive(self *C.QsciLexerRuby, cb C.
 
 func (this *QsciLexerRuby) callVirtualBase_Color(style int) *qt.QColor {
 
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerRuby_virtualbase_Color(unsafe.Pointer(this.h), (C.int)(style))))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerRuby_virtualbase_color(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QsciLexerRuby) OnColor(slot func(super func(style int) *qt.QColor, style int) *qt.QColor) {
-	ok := C.QsciLexerRuby_override_virtual_Color(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) Oncolor(slot func(super func(style int) *qt.QColor, style int) *qt.QColor) {
+	ok := C.QsciLexerRuby_override_virtual_color(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_Color
-func miqt_exec_callback_QsciLexerRuby_Color(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) *C.QColor {
+//export miqt_exec_callback_QsciLexerRuby_color
+func miqt_exec_callback_QsciLexerRuby_color(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) *C.QColor {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt.QColor, style int) *qt.QColor)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -615,18 +615,18 @@ func miqt_exec_callback_QsciLexerRuby_Color(self *C.QsciLexerRuby, cb C.intptr_t
 
 func (this *QsciLexerRuby) callVirtualBase_EolFill(style int) bool {
 
-	return (bool)(C.QsciLexerRuby_virtualbase_EolFill(unsafe.Pointer(this.h), (C.int)(style)))
+	return (bool)(C.QsciLexerRuby_virtualbase_eolFill(unsafe.Pointer(this.h), (C.int)(style)))
 
 }
-func (this *QsciLexerRuby) OnEolFill(slot func(super func(style int) bool, style int) bool) {
-	ok := C.QsciLexerRuby_override_virtual_EolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OneolFill(slot func(super func(style int) bool, style int) bool) {
+	ok := C.QsciLexerRuby_override_virtual_eolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_EolFill
-func miqt_exec_callback_QsciLexerRuby_EolFill(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) C.bool {
+//export miqt_exec_callback_QsciLexerRuby_eolFill
+func miqt_exec_callback_QsciLexerRuby_eolFill(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) bool, style int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -643,20 +643,20 @@ func miqt_exec_callback_QsciLexerRuby_EolFill(self *C.QsciLexerRuby, cb C.intptr
 
 func (this *QsciLexerRuby) callVirtualBase_Font(style int) *qt.QFont {
 
-	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerRuby_virtualbase_Font(unsafe.Pointer(this.h), (C.int)(style))))
+	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerRuby_virtualbase_font(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QsciLexerRuby) OnFont(slot func(super func(style int) *qt.QFont, style int) *qt.QFont) {
-	ok := C.QsciLexerRuby_override_virtual_Font(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) Onfont(slot func(super func(style int) *qt.QFont, style int) *qt.QFont) {
+	ok := C.QsciLexerRuby_override_virtual_font(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_Font
-func miqt_exec_callback_QsciLexerRuby_Font(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) *C.QFont {
+//export miqt_exec_callback_QsciLexerRuby_font
+func miqt_exec_callback_QsciLexerRuby_font(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) *C.QFont {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt.QFont, style int) *qt.QFont)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -673,18 +673,18 @@ func miqt_exec_callback_QsciLexerRuby_Font(self *C.QsciLexerRuby, cb C.intptr_t,
 
 func (this *QsciLexerRuby) callVirtualBase_IndentationGuideView() int {
 
-	return (int)(C.QsciLexerRuby_virtualbase_IndentationGuideView(unsafe.Pointer(this.h)))
+	return (int)(C.QsciLexerRuby_virtualbase_indentationGuideView(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciLexerRuby) OnIndentationGuideView(slot func(super func() int) int) {
-	ok := C.QsciLexerRuby_override_virtual_IndentationGuideView(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnindentationGuideView(slot func(super func() int) int) {
+	ok := C.QsciLexerRuby_override_virtual_indentationGuideView(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_IndentationGuideView
-func miqt_exec_callback_QsciLexerRuby_IndentationGuideView(self *C.QsciLexerRuby, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QsciLexerRuby_indentationGuideView
+func miqt_exec_callback_QsciLexerRuby_indentationGuideView(self *C.QsciLexerRuby, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -698,19 +698,19 @@ func miqt_exec_callback_QsciLexerRuby_IndentationGuideView(self *C.QsciLexerRuby
 
 func (this *QsciLexerRuby) callVirtualBase_Keywords(set int) string {
 
-	_ret := C.QsciLexerRuby_virtualbase_Keywords(unsafe.Pointer(this.h), (C.int)(set))
+	_ret := C.QsciLexerRuby_virtualbase_keywords(unsafe.Pointer(this.h), (C.int)(set))
 	return C.GoString(_ret)
 
 }
-func (this *QsciLexerRuby) OnKeywords(slot func(super func(set int) string, set int) string) {
-	ok := C.QsciLexerRuby_override_virtual_Keywords(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) Onkeywords(slot func(super func(set int) string, set int) string) {
+	ok := C.QsciLexerRuby_override_virtual_keywords(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_Keywords
-func miqt_exec_callback_QsciLexerRuby_Keywords(self *C.QsciLexerRuby, cb C.intptr_t, set C.int) *C.const_char {
+//export miqt_exec_callback_QsciLexerRuby_keywords
+func miqt_exec_callback_QsciLexerRuby_keywords(self *C.QsciLexerRuby, cb C.intptr_t, set C.int) *C.const_char {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(set int) string, set int) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -729,18 +729,18 @@ func miqt_exec_callback_QsciLexerRuby_Keywords(self *C.QsciLexerRuby, cb C.intpt
 
 func (this *QsciLexerRuby) callVirtualBase_DefaultStyle() int {
 
-	return (int)(C.QsciLexerRuby_virtualbase_DefaultStyle(unsafe.Pointer(this.h)))
+	return (int)(C.QsciLexerRuby_virtualbase_defaultStyle(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciLexerRuby) OnDefaultStyle(slot func(super func() int) int) {
-	ok := C.QsciLexerRuby_override_virtual_DefaultStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OndefaultStyle(slot func(super func() int) int) {
+	ok := C.QsciLexerRuby_override_virtual_defaultStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_DefaultStyle
-func miqt_exec_callback_QsciLexerRuby_DefaultStyle(self *C.QsciLexerRuby, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QsciLexerRuby_defaultStyle
+func miqt_exec_callback_QsciLexerRuby_defaultStyle(self *C.QsciLexerRuby, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -751,15 +751,15 @@ func miqt_exec_callback_QsciLexerRuby_DefaultStyle(self *C.QsciLexerRuby, cb C.i
 	return (C.int)(virtualReturn)
 
 }
-func (this *QsciLexerRuby) OnDescription(slot func(style int) string) {
-	ok := C.QsciLexerRuby_override_virtual_Description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) Ondescription(slot func(style int) string) {
+	ok := C.QsciLexerRuby_override_virtual_description(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_Description
-func miqt_exec_callback_QsciLexerRuby_Description(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) C.struct_miqt_string {
+//export miqt_exec_callback_QsciLexerRuby_description
+func miqt_exec_callback_QsciLexerRuby_description(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) C.struct_miqt_string {
 	gofunc, ok := cgo.Handle(cb).Value().(func(style int) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -780,20 +780,20 @@ func miqt_exec_callback_QsciLexerRuby_Description(self *C.QsciLexerRuby, cb C.in
 
 func (this *QsciLexerRuby) callVirtualBase_Paper(style int) *qt.QColor {
 
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerRuby_virtualbase_Paper(unsafe.Pointer(this.h), (C.int)(style))))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerRuby_virtualbase_paper(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QsciLexerRuby) OnPaper(slot func(super func(style int) *qt.QColor, style int) *qt.QColor) {
-	ok := C.QsciLexerRuby_override_virtual_Paper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) Onpaper(slot func(super func(style int) *qt.QColor, style int) *qt.QColor) {
+	ok := C.QsciLexerRuby_override_virtual_paper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_Paper
-func miqt_exec_callback_QsciLexerRuby_Paper(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) *C.QColor {
+//export miqt_exec_callback_QsciLexerRuby_paper
+func miqt_exec_callback_QsciLexerRuby_paper(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) *C.QColor {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt.QColor, style int) *qt.QColor)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -810,20 +810,20 @@ func miqt_exec_callback_QsciLexerRuby_Paper(self *C.QsciLexerRuby, cb C.intptr_t
 
 func (this *QsciLexerRuby) callVirtualBase_DefaultColorWithStyle(style int) *qt.QColor {
 
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerRuby_virtualbase_DefaultColorWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerRuby_virtualbase_defaultColorWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QsciLexerRuby) OnDefaultColorWithStyle(slot func(super func(style int) *qt.QColor, style int) *qt.QColor) {
-	ok := C.QsciLexerRuby_override_virtual_DefaultColorWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OndefaultColorWithStyle(slot func(super func(style int) *qt.QColor, style int) *qt.QColor) {
+	ok := C.QsciLexerRuby_override_virtual_defaultColorWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_DefaultColorWithStyle
-func miqt_exec_callback_QsciLexerRuby_DefaultColorWithStyle(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) *C.QColor {
+//export miqt_exec_callback_QsciLexerRuby_defaultColorWithStyle
+func miqt_exec_callback_QsciLexerRuby_defaultColorWithStyle(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) *C.QColor {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt.QColor, style int) *qt.QColor)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -840,18 +840,18 @@ func miqt_exec_callback_QsciLexerRuby_DefaultColorWithStyle(self *C.QsciLexerRub
 
 func (this *QsciLexerRuby) callVirtualBase_DefaultEolFill(style int) bool {
 
-	return (bool)(C.QsciLexerRuby_virtualbase_DefaultEolFill(unsafe.Pointer(this.h), (C.int)(style)))
+	return (bool)(C.QsciLexerRuby_virtualbase_defaultEolFill(unsafe.Pointer(this.h), (C.int)(style)))
 
 }
-func (this *QsciLexerRuby) OnDefaultEolFill(slot func(super func(style int) bool, style int) bool) {
-	ok := C.QsciLexerRuby_override_virtual_DefaultEolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OndefaultEolFill(slot func(super func(style int) bool, style int) bool) {
+	ok := C.QsciLexerRuby_override_virtual_defaultEolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_DefaultEolFill
-func miqt_exec_callback_QsciLexerRuby_DefaultEolFill(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) C.bool {
+//export miqt_exec_callback_QsciLexerRuby_defaultEolFill
+func miqt_exec_callback_QsciLexerRuby_defaultEolFill(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) bool, style int) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -868,20 +868,20 @@ func miqt_exec_callback_QsciLexerRuby_DefaultEolFill(self *C.QsciLexerRuby, cb C
 
 func (this *QsciLexerRuby) callVirtualBase_DefaultFontWithStyle(style int) *qt.QFont {
 
-	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerRuby_virtualbase_DefaultFontWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
+	_goptr := qt.UnsafeNewQFont(unsafe.Pointer(C.QsciLexerRuby_virtualbase_defaultFontWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QsciLexerRuby) OnDefaultFontWithStyle(slot func(super func(style int) *qt.QFont, style int) *qt.QFont) {
-	ok := C.QsciLexerRuby_override_virtual_DefaultFontWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OndefaultFontWithStyle(slot func(super func(style int) *qt.QFont, style int) *qt.QFont) {
+	ok := C.QsciLexerRuby_override_virtual_defaultFontWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_DefaultFontWithStyle
-func miqt_exec_callback_QsciLexerRuby_DefaultFontWithStyle(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) *C.QFont {
+//export miqt_exec_callback_QsciLexerRuby_defaultFontWithStyle
+func miqt_exec_callback_QsciLexerRuby_defaultFontWithStyle(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) *C.QFont {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt.QFont, style int) *qt.QFont)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -898,20 +898,20 @@ func miqt_exec_callback_QsciLexerRuby_DefaultFontWithStyle(self *C.QsciLexerRuby
 
 func (this *QsciLexerRuby) callVirtualBase_DefaultPaperWithStyle(style int) *qt.QColor {
 
-	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerRuby_virtualbase_DefaultPaperWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
+	_goptr := qt.UnsafeNewQColor(unsafe.Pointer(C.QsciLexerRuby_virtualbase_defaultPaperWithStyle(unsafe.Pointer(this.h), (C.int)(style))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QsciLexerRuby) OnDefaultPaperWithStyle(slot func(super func(style int) *qt.QColor, style int) *qt.QColor) {
-	ok := C.QsciLexerRuby_override_virtual_DefaultPaperWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OndefaultPaperWithStyle(slot func(super func(style int) *qt.QColor, style int) *qt.QColor) {
+	ok := C.QsciLexerRuby_override_virtual_defaultPaperWithStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_DefaultPaperWithStyle
-func miqt_exec_callback_QsciLexerRuby_DefaultPaperWithStyle(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) *C.QColor {
+//export miqt_exec_callback_QsciLexerRuby_defaultPaperWithStyle
+func miqt_exec_callback_QsciLexerRuby_defaultPaperWithStyle(self *C.QsciLexerRuby, cb C.intptr_t, style C.int) *C.QColor {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(style int) *qt.QColor, style int) *qt.QColor)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -928,18 +928,18 @@ func miqt_exec_callback_QsciLexerRuby_DefaultPaperWithStyle(self *C.QsciLexerRub
 
 func (this *QsciLexerRuby) callVirtualBase_SetEditor(editor *QsciScintilla) {
 
-	C.QsciLexerRuby_virtualbase_SetEditor(unsafe.Pointer(this.h), editor.cPointer())
+	C.QsciLexerRuby_virtualbase_setEditor(unsafe.Pointer(this.h), editor.cPointer())
 
 }
-func (this *QsciLexerRuby) OnSetEditor(slot func(super func(editor *QsciScintilla), editor *QsciScintilla)) {
-	ok := C.QsciLexerRuby_override_virtual_SetEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnsetEditor(slot func(super func(editor *QsciScintilla), editor *QsciScintilla)) {
+	ok := C.QsciLexerRuby_override_virtual_setEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_SetEditor
-func miqt_exec_callback_QsciLexerRuby_SetEditor(self *C.QsciLexerRuby, cb C.intptr_t, editor *C.QsciScintilla) {
+//export miqt_exec_callback_QsciLexerRuby_setEditor
+func miqt_exec_callback_QsciLexerRuby_setEditor(self *C.QsciLexerRuby, cb C.intptr_t, editor *C.QsciScintilla) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(editor *QsciScintilla), editor *QsciScintilla))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -954,18 +954,18 @@ func miqt_exec_callback_QsciLexerRuby_SetEditor(self *C.QsciLexerRuby, cb C.intp
 
 func (this *QsciLexerRuby) callVirtualBase_RefreshProperties() {
 
-	C.QsciLexerRuby_virtualbase_RefreshProperties(unsafe.Pointer(this.h))
+	C.QsciLexerRuby_virtualbase_refreshProperties(unsafe.Pointer(this.h))
 
 }
-func (this *QsciLexerRuby) OnRefreshProperties(slot func(super func())) {
-	ok := C.QsciLexerRuby_override_virtual_RefreshProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnrefreshProperties(slot func(super func())) {
+	ok := C.QsciLexerRuby_override_virtual_refreshProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_RefreshProperties
-func miqt_exec_callback_QsciLexerRuby_RefreshProperties(self *C.QsciLexerRuby, cb C.intptr_t) {
+//export miqt_exec_callback_QsciLexerRuby_refreshProperties
+func miqt_exec_callback_QsciLexerRuby_refreshProperties(self *C.QsciLexerRuby, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -977,18 +977,18 @@ func miqt_exec_callback_QsciLexerRuby_RefreshProperties(self *C.QsciLexerRuby, c
 
 func (this *QsciLexerRuby) callVirtualBase_StyleBitsNeeded() int {
 
-	return (int)(C.QsciLexerRuby_virtualbase_StyleBitsNeeded(unsafe.Pointer(this.h)))
+	return (int)(C.QsciLexerRuby_virtualbase_styleBitsNeeded(unsafe.Pointer(this.h)))
 
 }
-func (this *QsciLexerRuby) OnStyleBitsNeeded(slot func(super func() int) int) {
-	ok := C.QsciLexerRuby_override_virtual_StyleBitsNeeded(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnstyleBitsNeeded(slot func(super func() int) int) {
+	ok := C.QsciLexerRuby_override_virtual_styleBitsNeeded(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_StyleBitsNeeded
-func miqt_exec_callback_QsciLexerRuby_StyleBitsNeeded(self *C.QsciLexerRuby, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QsciLexerRuby_styleBitsNeeded
+func miqt_exec_callback_QsciLexerRuby_styleBitsNeeded(self *C.QsciLexerRuby, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1002,19 +1002,19 @@ func miqt_exec_callback_QsciLexerRuby_StyleBitsNeeded(self *C.QsciLexerRuby, cb 
 
 func (this *QsciLexerRuby) callVirtualBase_WordCharacters() string {
 
-	_ret := C.QsciLexerRuby_virtualbase_WordCharacters(unsafe.Pointer(this.h))
+	_ret := C.QsciLexerRuby_virtualbase_wordCharacters(unsafe.Pointer(this.h))
 	return C.GoString(_ret)
 
 }
-func (this *QsciLexerRuby) OnWordCharacters(slot func(super func() string) string) {
-	ok := C.QsciLexerRuby_override_virtual_WordCharacters(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnwordCharacters(slot func(super func() string) string) {
+	ok := C.QsciLexerRuby_override_virtual_wordCharacters(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_WordCharacters
-func miqt_exec_callback_QsciLexerRuby_WordCharacters(self *C.QsciLexerRuby, cb C.intptr_t) *C.const_char {
+//export miqt_exec_callback_QsciLexerRuby_wordCharacters
+func miqt_exec_callback_QsciLexerRuby_wordCharacters(self *C.QsciLexerRuby, cb C.intptr_t) *C.const_char {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() string) string)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1030,18 +1030,18 @@ func miqt_exec_callback_QsciLexerRuby_WordCharacters(self *C.QsciLexerRuby, cb C
 
 func (this *QsciLexerRuby) callVirtualBase_SetAutoIndentStyle(autoindentstyle int) {
 
-	C.QsciLexerRuby_virtualbase_SetAutoIndentStyle(unsafe.Pointer(this.h), (C.int)(autoindentstyle))
+	C.QsciLexerRuby_virtualbase_setAutoIndentStyle(unsafe.Pointer(this.h), (C.int)(autoindentstyle))
 
 }
-func (this *QsciLexerRuby) OnSetAutoIndentStyle(slot func(super func(autoindentstyle int), autoindentstyle int)) {
-	ok := C.QsciLexerRuby_override_virtual_SetAutoIndentStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnsetAutoIndentStyle(slot func(super func(autoindentstyle int), autoindentstyle int)) {
+	ok := C.QsciLexerRuby_override_virtual_setAutoIndentStyle(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_SetAutoIndentStyle
-func miqt_exec_callback_QsciLexerRuby_SetAutoIndentStyle(self *C.QsciLexerRuby, cb C.intptr_t, autoindentstyle C.int) {
+//export miqt_exec_callback_QsciLexerRuby_setAutoIndentStyle
+func miqt_exec_callback_QsciLexerRuby_setAutoIndentStyle(self *C.QsciLexerRuby, cb C.intptr_t, autoindentstyle C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(autoindentstyle int), autoindentstyle int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1056,18 +1056,18 @@ func miqt_exec_callback_QsciLexerRuby_SetAutoIndentStyle(self *C.QsciLexerRuby, 
 
 func (this *QsciLexerRuby) callVirtualBase_SetColor(c *qt.QColor, style int) {
 
-	C.QsciLexerRuby_virtualbase_SetColor(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
+	C.QsciLexerRuby_virtualbase_setColor(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
 
 }
-func (this *QsciLexerRuby) OnSetColor(slot func(super func(c *qt.QColor, style int), c *qt.QColor, style int)) {
-	ok := C.QsciLexerRuby_override_virtual_SetColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnsetColor(slot func(super func(c *qt.QColor, style int), c *qt.QColor, style int)) {
+	ok := C.QsciLexerRuby_override_virtual_setColor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_SetColor
-func miqt_exec_callback_QsciLexerRuby_SetColor(self *C.QsciLexerRuby, cb C.intptr_t, c *C.QColor, style C.int) {
+//export miqt_exec_callback_QsciLexerRuby_setColor
+func miqt_exec_callback_QsciLexerRuby_setColor(self *C.QsciLexerRuby, cb C.intptr_t, c *C.QColor, style C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(c *qt.QColor, style int), c *qt.QColor, style int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1084,18 +1084,18 @@ func miqt_exec_callback_QsciLexerRuby_SetColor(self *C.QsciLexerRuby, cb C.intpt
 
 func (this *QsciLexerRuby) callVirtualBase_SetEolFill(eoffill bool, style int) {
 
-	C.QsciLexerRuby_virtualbase_SetEolFill(unsafe.Pointer(this.h), (C.bool)(eoffill), (C.int)(style))
+	C.QsciLexerRuby_virtualbase_setEolFill(unsafe.Pointer(this.h), (C.bool)(eoffill), (C.int)(style))
 
 }
-func (this *QsciLexerRuby) OnSetEolFill(slot func(super func(eoffill bool, style int), eoffill bool, style int)) {
-	ok := C.QsciLexerRuby_override_virtual_SetEolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnsetEolFill(slot func(super func(eoffill bool, style int), eoffill bool, style int)) {
+	ok := C.QsciLexerRuby_override_virtual_setEolFill(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_SetEolFill
-func miqt_exec_callback_QsciLexerRuby_SetEolFill(self *C.QsciLexerRuby, cb C.intptr_t, eoffill C.bool, style C.int) {
+//export miqt_exec_callback_QsciLexerRuby_setEolFill
+func miqt_exec_callback_QsciLexerRuby_setEolFill(self *C.QsciLexerRuby, cb C.intptr_t, eoffill C.bool, style C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eoffill bool, style int), eoffill bool, style int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1112,18 +1112,18 @@ func miqt_exec_callback_QsciLexerRuby_SetEolFill(self *C.QsciLexerRuby, cb C.int
 
 func (this *QsciLexerRuby) callVirtualBase_SetFont(f *qt.QFont, style int) {
 
-	C.QsciLexerRuby_virtualbase_SetFont(unsafe.Pointer(this.h), (*C.QFont)(f.UnsafePointer()), (C.int)(style))
+	C.QsciLexerRuby_virtualbase_setFont(unsafe.Pointer(this.h), (*C.QFont)(f.UnsafePointer()), (C.int)(style))
 
 }
-func (this *QsciLexerRuby) OnSetFont(slot func(super func(f *qt.QFont, style int), f *qt.QFont, style int)) {
-	ok := C.QsciLexerRuby_override_virtual_SetFont(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnsetFont(slot func(super func(f *qt.QFont, style int), f *qt.QFont, style int)) {
+	ok := C.QsciLexerRuby_override_virtual_setFont(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_SetFont
-func miqt_exec_callback_QsciLexerRuby_SetFont(self *C.QsciLexerRuby, cb C.intptr_t, f *C.QFont, style C.int) {
+//export miqt_exec_callback_QsciLexerRuby_setFont
+func miqt_exec_callback_QsciLexerRuby_setFont(self *C.QsciLexerRuby, cb C.intptr_t, f *C.QFont, style C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(f *qt.QFont, style int), f *qt.QFont, style int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1140,18 +1140,18 @@ func miqt_exec_callback_QsciLexerRuby_SetFont(self *C.QsciLexerRuby, cb C.intptr
 
 func (this *QsciLexerRuby) callVirtualBase_SetPaper(c *qt.QColor, style int) {
 
-	C.QsciLexerRuby_virtualbase_SetPaper(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
+	C.QsciLexerRuby_virtualbase_setPaper(unsafe.Pointer(this.h), (*C.QColor)(c.UnsafePointer()), (C.int)(style))
 
 }
-func (this *QsciLexerRuby) OnSetPaper(slot func(super func(c *qt.QColor, style int), c *qt.QColor, style int)) {
-	ok := C.QsciLexerRuby_override_virtual_SetPaper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnsetPaper(slot func(super func(c *qt.QColor, style int), c *qt.QColor, style int)) {
+	ok := C.QsciLexerRuby_override_virtual_setPaper(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_SetPaper
-func miqt_exec_callback_QsciLexerRuby_SetPaper(self *C.QsciLexerRuby, cb C.intptr_t, c *C.QColor, style C.int) {
+//export miqt_exec_callback_QsciLexerRuby_setPaper
+func miqt_exec_callback_QsciLexerRuby_setPaper(self *C.QsciLexerRuby, cb C.intptr_t, c *C.QColor, style C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(c *qt.QColor, style int), c *qt.QColor, style int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1172,18 +1172,18 @@ func (this *QsciLexerRuby) callVirtualBase_ReadProperties(qs *qt.QSettings, pref
 	prefix_ms.len = C.size_t(len(prefix))
 	defer C.free(unsafe.Pointer(prefix_ms.data))
 
-	return (bool)(C.QsciLexerRuby_virtualbase_ReadProperties(unsafe.Pointer(this.h), (*C.QSettings)(qs.UnsafePointer()), prefix_ms))
+	return (bool)(C.QsciLexerRuby_virtualbase_readProperties(unsafe.Pointer(this.h), (*C.QSettings)(qs.UnsafePointer()), prefix_ms))
 
 }
-func (this *QsciLexerRuby) OnReadProperties(slot func(super func(qs *qt.QSettings, prefix string) bool, qs *qt.QSettings, prefix string) bool) {
-	ok := C.QsciLexerRuby_override_virtual_ReadProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnreadProperties(slot func(super func(qs *qt.QSettings, prefix string) bool, qs *qt.QSettings, prefix string) bool) {
+	ok := C.QsciLexerRuby_override_virtual_readProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_ReadProperties
-func miqt_exec_callback_QsciLexerRuby_ReadProperties(self *C.QsciLexerRuby, cb C.intptr_t, qs *C.QSettings, prefix C.struct_miqt_string) C.bool {
+//export miqt_exec_callback_QsciLexerRuby_readProperties
+func miqt_exec_callback_QsciLexerRuby_readProperties(self *C.QsciLexerRuby, cb C.intptr_t, qs *C.QSettings, prefix C.struct_miqt_string) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(qs *qt.QSettings, prefix string) bool, qs *qt.QSettings, prefix string) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1209,18 +1209,18 @@ func (this *QsciLexerRuby) callVirtualBase_WriteProperties(qs *qt.QSettings, pre
 	prefix_ms.len = C.size_t(len(prefix))
 	defer C.free(unsafe.Pointer(prefix_ms.data))
 
-	return (bool)(C.QsciLexerRuby_virtualbase_WriteProperties(unsafe.Pointer(this.h), (*C.QSettings)(qs.UnsafePointer()), prefix_ms))
+	return (bool)(C.QsciLexerRuby_virtualbase_writeProperties(unsafe.Pointer(this.h), (*C.QSettings)(qs.UnsafePointer()), prefix_ms))
 
 }
-func (this *QsciLexerRuby) OnWriteProperties(slot func(super func(qs *qt.QSettings, prefix string) bool, qs *qt.QSettings, prefix string) bool) {
-	ok := C.QsciLexerRuby_override_virtual_WriteProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnwriteProperties(slot func(super func(qs *qt.QSettings, prefix string) bool, qs *qt.QSettings, prefix string) bool) {
+	ok := C.QsciLexerRuby_override_virtual_writeProperties(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_WriteProperties
-func miqt_exec_callback_QsciLexerRuby_WriteProperties(self *C.QsciLexerRuby, cb C.intptr_t, qs *C.QSettings, prefix C.struct_miqt_string) C.bool {
+//export miqt_exec_callback_QsciLexerRuby_writeProperties
+func miqt_exec_callback_QsciLexerRuby_writeProperties(self *C.QsciLexerRuby, cb C.intptr_t, qs *C.QSettings, prefix C.struct_miqt_string) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(qs *qt.QSettings, prefix string) bool, qs *qt.QSettings, prefix string) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1242,18 +1242,18 @@ func miqt_exec_callback_QsciLexerRuby_WriteProperties(self *C.QsciLexerRuby, cb 
 
 func (this *QsciLexerRuby) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.QsciLexerRuby_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QsciLexerRuby_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QsciLexerRuby) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.QsciLexerRuby_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.QsciLexerRuby_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_Event
-func miqt_exec_callback_QsciLexerRuby_Event(self *C.QsciLexerRuby, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QsciLexerRuby_event
+func miqt_exec_callback_QsciLexerRuby_event(self *C.QsciLexerRuby, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1270,18 +1270,18 @@ func miqt_exec_callback_QsciLexerRuby_Event(self *C.QsciLexerRuby, cb C.intptr_t
 
 func (this *QsciLexerRuby) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.QsciLexerRuby_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.QsciLexerRuby_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *QsciLexerRuby) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.QsciLexerRuby_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.QsciLexerRuby_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_EventFilter
-func miqt_exec_callback_QsciLexerRuby_EventFilter(self *C.QsciLexerRuby, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QsciLexerRuby_eventFilter
+func miqt_exec_callback_QsciLexerRuby_eventFilter(self *C.QsciLexerRuby, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1300,18 +1300,18 @@ func miqt_exec_callback_QsciLexerRuby_EventFilter(self *C.QsciLexerRuby, cb C.in
 
 func (this *QsciLexerRuby) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.QsciLexerRuby_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.QsciLexerRuby_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciLexerRuby) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.QsciLexerRuby_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.QsciLexerRuby_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_TimerEvent
-func miqt_exec_callback_QsciLexerRuby_TimerEvent(self *C.QsciLexerRuby, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QsciLexerRuby_timerEvent
+func miqt_exec_callback_QsciLexerRuby_timerEvent(self *C.QsciLexerRuby, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1326,18 +1326,18 @@ func miqt_exec_callback_QsciLexerRuby_TimerEvent(self *C.QsciLexerRuby, cb C.int
 
 func (this *QsciLexerRuby) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.QsciLexerRuby_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.QsciLexerRuby_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciLexerRuby) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.QsciLexerRuby_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.QsciLexerRuby_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_ChildEvent
-func miqt_exec_callback_QsciLexerRuby_ChildEvent(self *C.QsciLexerRuby, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QsciLexerRuby_childEvent
+func miqt_exec_callback_QsciLexerRuby_childEvent(self *C.QsciLexerRuby, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1352,18 +1352,18 @@ func miqt_exec_callback_QsciLexerRuby_ChildEvent(self *C.QsciLexerRuby, cb C.int
 
 func (this *QsciLexerRuby) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.QsciLexerRuby_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.QsciLexerRuby_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *QsciLexerRuby) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.QsciLexerRuby_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.QsciLexerRuby_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_CustomEvent
-func miqt_exec_callback_QsciLexerRuby_CustomEvent(self *C.QsciLexerRuby, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QsciLexerRuby_customEvent
+func miqt_exec_callback_QsciLexerRuby_customEvent(self *C.QsciLexerRuby, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1378,18 +1378,18 @@ func miqt_exec_callback_QsciLexerRuby_CustomEvent(self *C.QsciLexerRuby, cb C.in
 
 func (this *QsciLexerRuby) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.QsciLexerRuby_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QsciLexerRuby_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QsciLexerRuby) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QsciLexerRuby_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QsciLexerRuby_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_ConnectNotify
-func miqt_exec_callback_QsciLexerRuby_ConnectNotify(self *C.QsciLexerRuby, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QsciLexerRuby_connectNotify
+func miqt_exec_callback_QsciLexerRuby_connectNotify(self *C.QsciLexerRuby, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1404,18 +1404,18 @@ func miqt_exec_callback_QsciLexerRuby_ConnectNotify(self *C.QsciLexerRuby, cb C.
 
 func (this *QsciLexerRuby) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.QsciLexerRuby_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.QsciLexerRuby_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *QsciLexerRuby) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.QsciLexerRuby_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QsciLexerRuby) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.QsciLexerRuby_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QsciLexerRuby_DisconnectNotify
-func miqt_exec_callback_QsciLexerRuby_DisconnectNotify(self *C.QsciLexerRuby, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QsciLexerRuby_disconnectNotify
+func miqt_exec_callback_QsciLexerRuby_disconnectNotify(self *C.QsciLexerRuby, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1430,7 +1430,7 @@ func miqt_exec_callback_QsciLexerRuby_DisconnectNotify(self *C.QsciLexerRuby, cb
 
 // Delete this object from C++ memory.
 func (this *QsciLexerRuby) Delete() {
-	C.QsciLexerRuby_Delete(this.h)
+	C.QsciLexerRuby_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

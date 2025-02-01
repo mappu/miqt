@@ -100,93 +100,93 @@ func UnsafeNewQWebEngineDownloadRequest(h unsafe.Pointer) *QWebEngineDownloadReq
 }
 
 func (this *QWebEngineDownloadRequest) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineDownloadRequest_MetaObject(this.h)))
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineDownloadRequest_metaObject(this.h)))
 }
 
 func (this *QWebEngineDownloadRequest) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWebEngineDownloadRequest_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWebEngineDownloadRequest_metacast(this.h, param1_Cstring))
 }
 
 func QWebEngineDownloadRequest_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineDownloadRequest_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineDownloadRequest_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineDownloadRequest) Id() uint {
-	return (uint)(C.QWebEngineDownloadRequest_Id(this.h))
+	return (uint)(C.QWebEngineDownloadRequest_id(this.h))
 }
 
 func (this *QWebEngineDownloadRequest) State() QWebEngineDownloadRequest__DownloadState {
-	return (QWebEngineDownloadRequest__DownloadState)(C.QWebEngineDownloadRequest_State(this.h))
+	return (QWebEngineDownloadRequest__DownloadState)(C.QWebEngineDownloadRequest_state(this.h))
 }
 
 func (this *QWebEngineDownloadRequest) TotalBytes() int64 {
-	return (int64)(C.QWebEngineDownloadRequest_TotalBytes(this.h))
+	return (int64)(C.QWebEngineDownloadRequest_totalBytes(this.h))
 }
 
 func (this *QWebEngineDownloadRequest) ReceivedBytes() int64 {
-	return (int64)(C.QWebEngineDownloadRequest_ReceivedBytes(this.h))
+	return (int64)(C.QWebEngineDownloadRequest_receivedBytes(this.h))
 }
 
 func (this *QWebEngineDownloadRequest) Url() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineDownloadRequest_Url(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineDownloadRequest_url(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineDownloadRequest) MimeType() string {
-	var _ms C.struct_miqt_string = C.QWebEngineDownloadRequest_MimeType(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineDownloadRequest_mimeType(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineDownloadRequest) IsFinished() bool {
-	return (bool)(C.QWebEngineDownloadRequest_IsFinished(this.h))
+	return (bool)(C.QWebEngineDownloadRequest_isFinished(this.h))
 }
 
 func (this *QWebEngineDownloadRequest) IsPaused() bool {
-	return (bool)(C.QWebEngineDownloadRequest_IsPaused(this.h))
+	return (bool)(C.QWebEngineDownloadRequest_isPaused(this.h))
 }
 
 func (this *QWebEngineDownloadRequest) SavePageFormat() QWebEngineDownloadRequest__SavePageFormat {
-	return (QWebEngineDownloadRequest__SavePageFormat)(C.QWebEngineDownloadRequest_SavePageFormat(this.h))
+	return (QWebEngineDownloadRequest__SavePageFormat)(C.QWebEngineDownloadRequest_savePageFormat(this.h))
 }
 
 func (this *QWebEngineDownloadRequest) SetSavePageFormat(format QWebEngineDownloadRequest__SavePageFormat) {
-	C.QWebEngineDownloadRequest_SetSavePageFormat(this.h, (C.int)(format))
+	C.QWebEngineDownloadRequest_setSavePageFormat(this.h, (C.int)(format))
 }
 
 func (this *QWebEngineDownloadRequest) InterruptReason() QWebEngineDownloadRequest__DownloadInterruptReason {
-	return (QWebEngineDownloadRequest__DownloadInterruptReason)(C.QWebEngineDownloadRequest_InterruptReason(this.h))
+	return (QWebEngineDownloadRequest__DownloadInterruptReason)(C.QWebEngineDownloadRequest_interruptReason(this.h))
 }
 
 func (this *QWebEngineDownloadRequest) InterruptReasonString() string {
-	var _ms C.struct_miqt_string = C.QWebEngineDownloadRequest_InterruptReasonString(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineDownloadRequest_interruptReasonString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineDownloadRequest) IsSavePageDownload() bool {
-	return (bool)(C.QWebEngineDownloadRequest_IsSavePageDownload(this.h))
+	return (bool)(C.QWebEngineDownloadRequest_isSavePageDownload(this.h))
 }
 
 func (this *QWebEngineDownloadRequest) SuggestedFileName() string {
-	var _ms C.struct_miqt_string = C.QWebEngineDownloadRequest_SuggestedFileName(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineDownloadRequest_suggestedFileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineDownloadRequest) DownloadDirectory() string {
-	var _ms C.struct_miqt_string = C.QWebEngineDownloadRequest_DownloadDirectory(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineDownloadRequest_downloadDirectory(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -197,11 +197,11 @@ func (this *QWebEngineDownloadRequest) SetDownloadDirectory(directory string) {
 	directory_ms.data = C.CString(directory)
 	directory_ms.len = C.size_t(len(directory))
 	defer C.free(unsafe.Pointer(directory_ms.data))
-	C.QWebEngineDownloadRequest_SetDownloadDirectory(this.h, directory_ms)
+	C.QWebEngineDownloadRequest_setDownloadDirectory(this.h, directory_ms)
 }
 
 func (this *QWebEngineDownloadRequest) DownloadFileName() string {
-	var _ms C.struct_miqt_string = C.QWebEngineDownloadRequest_DownloadFileName(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineDownloadRequest_downloadFileName(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -212,38 +212,38 @@ func (this *QWebEngineDownloadRequest) SetDownloadFileName(fileName string) {
 	fileName_ms.data = C.CString(fileName)
 	fileName_ms.len = C.size_t(len(fileName))
 	defer C.free(unsafe.Pointer(fileName_ms.data))
-	C.QWebEngineDownloadRequest_SetDownloadFileName(this.h, fileName_ms)
+	C.QWebEngineDownloadRequest_setDownloadFileName(this.h, fileName_ms)
 }
 
 func (this *QWebEngineDownloadRequest) Page() *QWebEnginePage {
-	return newQWebEnginePage(C.QWebEngineDownloadRequest_Page(this.h))
+	return newQWebEnginePage(C.QWebEngineDownloadRequest_page(this.h))
 }
 
 func (this *QWebEngineDownloadRequest) Accept() {
-	C.QWebEngineDownloadRequest_Accept(this.h)
+	C.QWebEngineDownloadRequest_accept(this.h)
 }
 
 func (this *QWebEngineDownloadRequest) Cancel() {
-	C.QWebEngineDownloadRequest_Cancel(this.h)
+	C.QWebEngineDownloadRequest_cancel(this.h)
 }
 
 func (this *QWebEngineDownloadRequest) Pause() {
-	C.QWebEngineDownloadRequest_Pause(this.h)
+	C.QWebEngineDownloadRequest_pause(this.h)
 }
 
 func (this *QWebEngineDownloadRequest) Resume() {
-	C.QWebEngineDownloadRequest_Resume(this.h)
+	C.QWebEngineDownloadRequest_resume(this.h)
 }
 
 func (this *QWebEngineDownloadRequest) StateChanged(state QWebEngineDownloadRequest__DownloadState) {
-	C.QWebEngineDownloadRequest_StateChanged(this.h, (C.int)(state))
+	C.QWebEngineDownloadRequest_stateChanged(this.h, (C.int)(state))
 }
 func (this *QWebEngineDownloadRequest) OnStateChanged(slot func(state QWebEngineDownloadRequest__DownloadState)) {
-	C.QWebEngineDownloadRequest_connect_StateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineDownloadRequest_connect_stateChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineDownloadRequest_StateChanged
-func miqt_exec_callback_QWebEngineDownloadRequest_StateChanged(cb C.intptr_t, state C.int) {
+//export miqt_exec_callback_QWebEngineDownloadRequest_stateChanged
+func miqt_exec_callback_QWebEngineDownloadRequest_stateChanged(cb C.intptr_t, state C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(state QWebEngineDownloadRequest__DownloadState))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -256,14 +256,14 @@ func miqt_exec_callback_QWebEngineDownloadRequest_StateChanged(cb C.intptr_t, st
 }
 
 func (this *QWebEngineDownloadRequest) SavePageFormatChanged() {
-	C.QWebEngineDownloadRequest_SavePageFormatChanged(this.h)
+	C.QWebEngineDownloadRequest_savePageFormatChanged(this.h)
 }
 func (this *QWebEngineDownloadRequest) OnSavePageFormatChanged(slot func()) {
-	C.QWebEngineDownloadRequest_connect_SavePageFormatChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineDownloadRequest_connect_savePageFormatChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineDownloadRequest_SavePageFormatChanged
-func miqt_exec_callback_QWebEngineDownloadRequest_SavePageFormatChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QWebEngineDownloadRequest_savePageFormatChanged
+func miqt_exec_callback_QWebEngineDownloadRequest_savePageFormatChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -273,14 +273,14 @@ func miqt_exec_callback_QWebEngineDownloadRequest_SavePageFormatChanged(cb C.int
 }
 
 func (this *QWebEngineDownloadRequest) ReceivedBytesChanged() {
-	C.QWebEngineDownloadRequest_ReceivedBytesChanged(this.h)
+	C.QWebEngineDownloadRequest_receivedBytesChanged(this.h)
 }
 func (this *QWebEngineDownloadRequest) OnReceivedBytesChanged(slot func()) {
-	C.QWebEngineDownloadRequest_connect_ReceivedBytesChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineDownloadRequest_connect_receivedBytesChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineDownloadRequest_ReceivedBytesChanged
-func miqt_exec_callback_QWebEngineDownloadRequest_ReceivedBytesChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QWebEngineDownloadRequest_receivedBytesChanged
+func miqt_exec_callback_QWebEngineDownloadRequest_receivedBytesChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -290,14 +290,14 @@ func miqt_exec_callback_QWebEngineDownloadRequest_ReceivedBytesChanged(cb C.intp
 }
 
 func (this *QWebEngineDownloadRequest) TotalBytesChanged() {
-	C.QWebEngineDownloadRequest_TotalBytesChanged(this.h)
+	C.QWebEngineDownloadRequest_totalBytesChanged(this.h)
 }
 func (this *QWebEngineDownloadRequest) OnTotalBytesChanged(slot func()) {
-	C.QWebEngineDownloadRequest_connect_TotalBytesChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineDownloadRequest_connect_totalBytesChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineDownloadRequest_TotalBytesChanged
-func miqt_exec_callback_QWebEngineDownloadRequest_TotalBytesChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QWebEngineDownloadRequest_totalBytesChanged
+func miqt_exec_callback_QWebEngineDownloadRequest_totalBytesChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -307,14 +307,14 @@ func miqt_exec_callback_QWebEngineDownloadRequest_TotalBytesChanged(cb C.intptr_
 }
 
 func (this *QWebEngineDownloadRequest) InterruptReasonChanged() {
-	C.QWebEngineDownloadRequest_InterruptReasonChanged(this.h)
+	C.QWebEngineDownloadRequest_interruptReasonChanged(this.h)
 }
 func (this *QWebEngineDownloadRequest) OnInterruptReasonChanged(slot func()) {
-	C.QWebEngineDownloadRequest_connect_InterruptReasonChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineDownloadRequest_connect_interruptReasonChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineDownloadRequest_InterruptReasonChanged
-func miqt_exec_callback_QWebEngineDownloadRequest_InterruptReasonChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QWebEngineDownloadRequest_interruptReasonChanged
+func miqt_exec_callback_QWebEngineDownloadRequest_interruptReasonChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -324,14 +324,14 @@ func miqt_exec_callback_QWebEngineDownloadRequest_InterruptReasonChanged(cb C.in
 }
 
 func (this *QWebEngineDownloadRequest) IsFinishedChanged() {
-	C.QWebEngineDownloadRequest_IsFinishedChanged(this.h)
+	C.QWebEngineDownloadRequest_isFinishedChanged(this.h)
 }
 func (this *QWebEngineDownloadRequest) OnIsFinishedChanged(slot func()) {
-	C.QWebEngineDownloadRequest_connect_IsFinishedChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineDownloadRequest_connect_isFinishedChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineDownloadRequest_IsFinishedChanged
-func miqt_exec_callback_QWebEngineDownloadRequest_IsFinishedChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QWebEngineDownloadRequest_isFinishedChanged
+func miqt_exec_callback_QWebEngineDownloadRequest_isFinishedChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -341,14 +341,14 @@ func miqt_exec_callback_QWebEngineDownloadRequest_IsFinishedChanged(cb C.intptr_
 }
 
 func (this *QWebEngineDownloadRequest) IsPausedChanged() {
-	C.QWebEngineDownloadRequest_IsPausedChanged(this.h)
+	C.QWebEngineDownloadRequest_isPausedChanged(this.h)
 }
 func (this *QWebEngineDownloadRequest) OnIsPausedChanged(slot func()) {
-	C.QWebEngineDownloadRequest_connect_IsPausedChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineDownloadRequest_connect_isPausedChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineDownloadRequest_IsPausedChanged
-func miqt_exec_callback_QWebEngineDownloadRequest_IsPausedChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QWebEngineDownloadRequest_isPausedChanged
+func miqt_exec_callback_QWebEngineDownloadRequest_isPausedChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -358,14 +358,14 @@ func miqt_exec_callback_QWebEngineDownloadRequest_IsPausedChanged(cb C.intptr_t)
 }
 
 func (this *QWebEngineDownloadRequest) DownloadDirectoryChanged() {
-	C.QWebEngineDownloadRequest_DownloadDirectoryChanged(this.h)
+	C.QWebEngineDownloadRequest_downloadDirectoryChanged(this.h)
 }
 func (this *QWebEngineDownloadRequest) OnDownloadDirectoryChanged(slot func()) {
-	C.QWebEngineDownloadRequest_connect_DownloadDirectoryChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineDownloadRequest_connect_downloadDirectoryChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineDownloadRequest_DownloadDirectoryChanged
-func miqt_exec_callback_QWebEngineDownloadRequest_DownloadDirectoryChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QWebEngineDownloadRequest_downloadDirectoryChanged
+func miqt_exec_callback_QWebEngineDownloadRequest_downloadDirectoryChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -375,14 +375,14 @@ func miqt_exec_callback_QWebEngineDownloadRequest_DownloadDirectoryChanged(cb C.
 }
 
 func (this *QWebEngineDownloadRequest) DownloadFileNameChanged() {
-	C.QWebEngineDownloadRequest_DownloadFileNameChanged(this.h)
+	C.QWebEngineDownloadRequest_downloadFileNameChanged(this.h)
 }
 func (this *QWebEngineDownloadRequest) OnDownloadFileNameChanged(slot func()) {
-	C.QWebEngineDownloadRequest_connect_DownloadFileNameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QWebEngineDownloadRequest_connect_downloadFileNameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QWebEngineDownloadRequest_DownloadFileNameChanged
-func miqt_exec_callback_QWebEngineDownloadRequest_DownloadFileNameChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QWebEngineDownloadRequest_downloadFileNameChanged
+func miqt_exec_callback_QWebEngineDownloadRequest_downloadFileNameChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -396,7 +396,7 @@ func QWebEngineDownloadRequest_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineDownloadRequest_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineDownloadRequest_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -407,7 +407,7 @@ func QWebEngineDownloadRequest_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineDownloadRequest_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebEngineDownloadRequest_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -415,7 +415,7 @@ func QWebEngineDownloadRequest_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QWebEngineDownloadRequest) Delete() {
-	C.QWebEngineDownloadRequest_Delete(this.h)
+	C.QWebEngineDownloadRequest_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

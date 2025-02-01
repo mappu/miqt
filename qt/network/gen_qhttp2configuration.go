@@ -58,56 +58,56 @@ func NewQHttp2Configuration2(other *QHttp2Configuration) *QHttp2Configuration {
 }
 
 func (this *QHttp2Configuration) OperatorAssign(other *QHttp2Configuration) {
-	C.QHttp2Configuration_OperatorAssign(this.h, other.cPointer())
+	C.QHttp2Configuration_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QHttp2Configuration) SetServerPushEnabled(enable bool) {
-	C.QHttp2Configuration_SetServerPushEnabled(this.h, (C.bool)(enable))
+	C.QHttp2Configuration_setServerPushEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QHttp2Configuration) ServerPushEnabled() bool {
-	return (bool)(C.QHttp2Configuration_ServerPushEnabled(this.h))
+	return (bool)(C.QHttp2Configuration_serverPushEnabled(this.h))
 }
 
 func (this *QHttp2Configuration) SetHuffmanCompressionEnabled(enable bool) {
-	C.QHttp2Configuration_SetHuffmanCompressionEnabled(this.h, (C.bool)(enable))
+	C.QHttp2Configuration_setHuffmanCompressionEnabled(this.h, (C.bool)(enable))
 }
 
 func (this *QHttp2Configuration) HuffmanCompressionEnabled() bool {
-	return (bool)(C.QHttp2Configuration_HuffmanCompressionEnabled(this.h))
+	return (bool)(C.QHttp2Configuration_huffmanCompressionEnabled(this.h))
 }
 
 func (this *QHttp2Configuration) SetSessionReceiveWindowSize(size uint) bool {
-	return (bool)(C.QHttp2Configuration_SetSessionReceiveWindowSize(this.h, (C.uint)(size)))
+	return (bool)(C.QHttp2Configuration_setSessionReceiveWindowSize(this.h, (C.uint)(size)))
 }
 
 func (this *QHttp2Configuration) SessionReceiveWindowSize() uint {
-	return (uint)(C.QHttp2Configuration_SessionReceiveWindowSize(this.h))
+	return (uint)(C.QHttp2Configuration_sessionReceiveWindowSize(this.h))
 }
 
 func (this *QHttp2Configuration) SetStreamReceiveWindowSize(size uint) bool {
-	return (bool)(C.QHttp2Configuration_SetStreamReceiveWindowSize(this.h, (C.uint)(size)))
+	return (bool)(C.QHttp2Configuration_setStreamReceiveWindowSize(this.h, (C.uint)(size)))
 }
 
 func (this *QHttp2Configuration) StreamReceiveWindowSize() uint {
-	return (uint)(C.QHttp2Configuration_StreamReceiveWindowSize(this.h))
+	return (uint)(C.QHttp2Configuration_streamReceiveWindowSize(this.h))
 }
 
 func (this *QHttp2Configuration) SetMaxFrameSize(size uint) bool {
-	return (bool)(C.QHttp2Configuration_SetMaxFrameSize(this.h, (C.uint)(size)))
+	return (bool)(C.QHttp2Configuration_setMaxFrameSize(this.h, (C.uint)(size)))
 }
 
 func (this *QHttp2Configuration) MaxFrameSize() uint {
-	return (uint)(C.QHttp2Configuration_MaxFrameSize(this.h))
+	return (uint)(C.QHttp2Configuration_maxFrameSize(this.h))
 }
 
 func (this *QHttp2Configuration) Swap(other *QHttp2Configuration) {
-	C.QHttp2Configuration_Swap(this.h, other.cPointer())
+	C.QHttp2Configuration_swap(this.h, other.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QHttp2Configuration) Delete() {
-	C.QHttp2Configuration_Delete(this.h)
+	C.QHttp2Configuration_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

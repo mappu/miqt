@@ -104,19 +104,19 @@ func NewQSharedMemory4(key string, parent *QObject) *QSharedMemory {
 }
 
 func (this *QSharedMemory) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QSharedMemory_MetaObject(this.h))
+	return newQMetaObject(C.QSharedMemory_metaObject(this.h))
 }
 
 func (this *QSharedMemory) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QSharedMemory_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QSharedMemory_metacast(this.h, param1_Cstring))
 }
 
 func QSharedMemory_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QSharedMemory_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QSharedMemory_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -125,7 +125,7 @@ func QSharedMemory_Tr(s string) string {
 func QSharedMemory_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QSharedMemory_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QSharedMemory_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -136,11 +136,11 @@ func (this *QSharedMemory) SetKey(key string) {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	C.QSharedMemory_SetKey(this.h, key_ms)
+	C.QSharedMemory_setKey(this.h, key_ms)
 }
 
 func (this *QSharedMemory) Key() string {
-	var _ms C.struct_miqt_string = C.QSharedMemory_Key(this.h)
+	var _ms C.struct_miqt_string = C.QSharedMemory_key(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -151,62 +151,62 @@ func (this *QSharedMemory) SetNativeKey(key string) {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	C.QSharedMemory_SetNativeKey(this.h, key_ms)
+	C.QSharedMemory_setNativeKey(this.h, key_ms)
 }
 
 func (this *QSharedMemory) NativeKey() string {
-	var _ms C.struct_miqt_string = C.QSharedMemory_NativeKey(this.h)
+	var _ms C.struct_miqt_string = C.QSharedMemory_nativeKey(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSharedMemory) Create(size int) bool {
-	return (bool)(C.QSharedMemory_Create(this.h, (C.int)(size)))
+	return (bool)(C.QSharedMemory_create(this.h, (C.int)(size)))
 }
 
 func (this *QSharedMemory) Size() int {
-	return (int)(C.QSharedMemory_Size(this.h))
+	return (int)(C.QSharedMemory_size(this.h))
 }
 
 func (this *QSharedMemory) Attach() bool {
-	return (bool)(C.QSharedMemory_Attach(this.h))
+	return (bool)(C.QSharedMemory_attach(this.h))
 }
 
 func (this *QSharedMemory) IsAttached() bool {
-	return (bool)(C.QSharedMemory_IsAttached(this.h))
+	return (bool)(C.QSharedMemory_isAttached(this.h))
 }
 
 func (this *QSharedMemory) Detach() bool {
-	return (bool)(C.QSharedMemory_Detach(this.h))
+	return (bool)(C.QSharedMemory_detach(this.h))
 }
 
 func (this *QSharedMemory) Data() unsafe.Pointer {
-	return (unsafe.Pointer)(C.QSharedMemory_Data(this.h))
+	return (unsafe.Pointer)(C.QSharedMemory_data(this.h))
 }
 
 func (this *QSharedMemory) ConstData() unsafe.Pointer {
-	return (unsafe.Pointer)(C.QSharedMemory_ConstData(this.h))
+	return (unsafe.Pointer)(C.QSharedMemory_constData(this.h))
 }
 
 func (this *QSharedMemory) Data2() unsafe.Pointer {
-	return (unsafe.Pointer)(C.QSharedMemory_Data2(this.h))
+	return (unsafe.Pointer)(C.QSharedMemory_data2(this.h))
 }
 
 func (this *QSharedMemory) Lock() bool {
-	return (bool)(C.QSharedMemory_Lock(this.h))
+	return (bool)(C.QSharedMemory_lock(this.h))
 }
 
 func (this *QSharedMemory) Unlock() bool {
-	return (bool)(C.QSharedMemory_Unlock(this.h))
+	return (bool)(C.QSharedMemory_unlock(this.h))
 }
 
 func (this *QSharedMemory) Error() QSharedMemory__SharedMemoryError {
-	return (QSharedMemory__SharedMemoryError)(C.QSharedMemory_Error(this.h))
+	return (QSharedMemory__SharedMemoryError)(C.QSharedMemory_error(this.h))
 }
 
 func (this *QSharedMemory) ErrorString() string {
-	var _ms C.struct_miqt_string = C.QSharedMemory_ErrorString(this.h)
+	var _ms C.struct_miqt_string = C.QSharedMemory_errorString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -217,7 +217,7 @@ func QSharedMemory_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSharedMemory_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QSharedMemory_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -228,7 +228,7 @@ func QSharedMemory_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSharedMemory_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QSharedMemory_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -239,7 +239,7 @@ func QSharedMemory_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSharedMemory_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QSharedMemory_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -250,34 +250,34 @@ func QSharedMemory_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QSharedMemory_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QSharedMemory_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QSharedMemory) Create2(size int, mode QSharedMemory__AccessMode) bool {
-	return (bool)(C.QSharedMemory_Create2(this.h, (C.int)(size), (C.int)(mode)))
+	return (bool)(C.QSharedMemory_create2(this.h, (C.int)(size), (C.int)(mode)))
 }
 
 func (this *QSharedMemory) Attach1(mode QSharedMemory__AccessMode) bool {
-	return (bool)(C.QSharedMemory_Attach1(this.h, (C.int)(mode)))
+	return (bool)(C.QSharedMemory_attach1(this.h, (C.int)(mode)))
 }
 
 func (this *QSharedMemory) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QSharedMemory_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QSharedMemory_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QSharedMemory) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QSharedMemory_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSharedMemory) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QSharedMemory_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSharedMemory_Event
-func miqt_exec_callback_QSharedMemory_Event(self *C.QSharedMemory, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QSharedMemory_event
+func miqt_exec_callback_QSharedMemory_event(self *C.QSharedMemory, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -294,18 +294,18 @@ func miqt_exec_callback_QSharedMemory_Event(self *C.QSharedMemory, cb C.intptr_t
 
 func (this *QSharedMemory) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QSharedMemory_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QSharedMemory_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QSharedMemory) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QSharedMemory_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSharedMemory) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QSharedMemory_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSharedMemory_EventFilter
-func miqt_exec_callback_QSharedMemory_EventFilter(self *C.QSharedMemory, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QSharedMemory_eventFilter
+func miqt_exec_callback_QSharedMemory_eventFilter(self *C.QSharedMemory, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -324,18 +324,18 @@ func miqt_exec_callback_QSharedMemory_EventFilter(self *C.QSharedMemory, cb C.in
 
 func (this *QSharedMemory) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QSharedMemory_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSharedMemory_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSharedMemory) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QSharedMemory_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSharedMemory) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QSharedMemory_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSharedMemory_TimerEvent
-func miqt_exec_callback_QSharedMemory_TimerEvent(self *C.QSharedMemory, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QSharedMemory_timerEvent
+func miqt_exec_callback_QSharedMemory_timerEvent(self *C.QSharedMemory, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -350,18 +350,18 @@ func miqt_exec_callback_QSharedMemory_TimerEvent(self *C.QSharedMemory, cb C.int
 
 func (this *QSharedMemory) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QSharedMemory_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSharedMemory_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSharedMemory) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QSharedMemory_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSharedMemory) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QSharedMemory_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSharedMemory_ChildEvent
-func miqt_exec_callback_QSharedMemory_ChildEvent(self *C.QSharedMemory, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QSharedMemory_childEvent
+func miqt_exec_callback_QSharedMemory_childEvent(self *C.QSharedMemory, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -376,18 +376,18 @@ func miqt_exec_callback_QSharedMemory_ChildEvent(self *C.QSharedMemory, cb C.int
 
 func (this *QSharedMemory) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QSharedMemory_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QSharedMemory_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QSharedMemory) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QSharedMemory_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSharedMemory) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QSharedMemory_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSharedMemory_CustomEvent
-func miqt_exec_callback_QSharedMemory_CustomEvent(self *C.QSharedMemory, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QSharedMemory_customEvent
+func miqt_exec_callback_QSharedMemory_customEvent(self *C.QSharedMemory, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -402,18 +402,18 @@ func miqt_exec_callback_QSharedMemory_CustomEvent(self *C.QSharedMemory, cb C.in
 
 func (this *QSharedMemory) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QSharedMemory_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QSharedMemory_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSharedMemory) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QSharedMemory_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSharedMemory) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QSharedMemory_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSharedMemory_ConnectNotify
-func miqt_exec_callback_QSharedMemory_ConnectNotify(self *C.QSharedMemory, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QSharedMemory_connectNotify
+func miqt_exec_callback_QSharedMemory_connectNotify(self *C.QSharedMemory, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -428,18 +428,18 @@ func miqt_exec_callback_QSharedMemory_ConnectNotify(self *C.QSharedMemory, cb C.
 
 func (this *QSharedMemory) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QSharedMemory_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QSharedMemory_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QSharedMemory) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QSharedMemory_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QSharedMemory) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QSharedMemory_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QSharedMemory_DisconnectNotify
-func miqt_exec_callback_QSharedMemory_DisconnectNotify(self *C.QSharedMemory, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QSharedMemory_disconnectNotify
+func miqt_exec_callback_QSharedMemory_disconnectNotify(self *C.QSharedMemory, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -454,7 +454,7 @@ func miqt_exec_callback_QSharedMemory_DisconnectNotify(self *C.QSharedMemory, cb
 
 // Delete this object from C++ memory.
 func (this *QSharedMemory) Delete() {
-	C.QSharedMemory_Delete(this.h)
+	C.QSharedMemory_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -27,24 +27,24 @@ typedef struct QObject QObject;
 #endif
 
 void QCameraFlashControl_virtbase(QCameraFlashControl* src, QMediaControl** outptr_QMediaControl);
-QMetaObject* QCameraFlashControl_MetaObject(const QCameraFlashControl* self);
-void* QCameraFlashControl_Metacast(QCameraFlashControl* self, const char* param1);
-struct miqt_string QCameraFlashControl_Tr(const char* s);
-struct miqt_string QCameraFlashControl_TrUtf8(const char* s);
-int QCameraFlashControl_FlashMode(const QCameraFlashControl* self);
-void QCameraFlashControl_SetFlashMode(QCameraFlashControl* self, int mode);
-bool QCameraFlashControl_IsFlashModeSupported(const QCameraFlashControl* self, int mode);
-bool QCameraFlashControl_IsFlashReady(const QCameraFlashControl* self);
-void QCameraFlashControl_FlashReady(QCameraFlashControl* self, bool param1);
-void QCameraFlashControl_connect_FlashReady(QCameraFlashControl* self, intptr_t slot);
-struct miqt_string QCameraFlashControl_Tr2(const char* s, const char* c);
-struct miqt_string QCameraFlashControl_Tr3(const char* s, const char* c, int n);
-struct miqt_string QCameraFlashControl_TrUtf82(const char* s, const char* c);
-struct miqt_string QCameraFlashControl_TrUtf83(const char* s, const char* c, int n);
-void QCameraFlashControl_Delete(QCameraFlashControl* self);
+QMetaObject* QCameraFlashControl_metaObject(const QCameraFlashControl* self);
+void* QCameraFlashControl_metacast(QCameraFlashControl* self, const char* param1);
+struct miqt_string QCameraFlashControl_tr(const char* s);
+struct miqt_string QCameraFlashControl_trUtf8(const char* s);
+int QCameraFlashControl_flashMode(const QCameraFlashControl* self);
+void QCameraFlashControl_setFlashMode(QCameraFlashControl* self, int mode);
+bool QCameraFlashControl_isFlashModeSupported(const QCameraFlashControl* self, int mode);
+bool QCameraFlashControl_isFlashReady(const QCameraFlashControl* self);
+void QCameraFlashControl_flashReady(QCameraFlashControl* self, bool param1);
+void QCameraFlashControl_connect_flashReady(QCameraFlashControl* self, intptr_t slot);
+struct miqt_string QCameraFlashControl_tr2(const char* s, const char* c);
+struct miqt_string QCameraFlashControl_tr3(const char* s, const char* c, int n);
+struct miqt_string QCameraFlashControl_trUtf82(const char* s, const char* c);
+struct miqt_string QCameraFlashControl_trUtf83(const char* s, const char* c, int n);
+void QCameraFlashControl_delete(QCameraFlashControl* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

@@ -33,23 +33,23 @@ QCameraInfo* QCameraInfo_new4(struct miqt_string name) {
 	return new QCameraInfo(name_QByteArray);
 }
 
-void QCameraInfo_OperatorAssign(QCameraInfo* self, QCameraInfo* other) {
+void QCameraInfo_operatorAssign(QCameraInfo* self, QCameraInfo* other) {
 	self->operator=(*other);
 }
 
-bool QCameraInfo_OperatorEqual(const QCameraInfo* self, QCameraInfo* other) {
+bool QCameraInfo_operatorEqual(const QCameraInfo* self, QCameraInfo* other) {
 	return (*self == *other);
 }
 
-bool QCameraInfo_OperatorNotEqual(const QCameraInfo* self, QCameraInfo* other) {
+bool QCameraInfo_operatorNotEqual(const QCameraInfo* self, QCameraInfo* other) {
 	return (*self != *other);
 }
 
-bool QCameraInfo_IsNull(const QCameraInfo* self) {
+bool QCameraInfo_isNull(const QCameraInfo* self) {
 	return self->isNull();
 }
 
-struct miqt_string QCameraInfo_DeviceName(const QCameraInfo* self) {
+struct miqt_string QCameraInfo_deviceName(const QCameraInfo* self) {
 	QString _ret = self->deviceName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -60,7 +60,7 @@ struct miqt_string QCameraInfo_DeviceName(const QCameraInfo* self) {
 	return _ms;
 }
 
-struct miqt_string QCameraInfo_Description(const QCameraInfo* self) {
+struct miqt_string QCameraInfo_description(const QCameraInfo* self) {
 	QString _ret = self->description();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -71,20 +71,20 @@ struct miqt_string QCameraInfo_Description(const QCameraInfo* self) {
 	return _ms;
 }
 
-int QCameraInfo_Position(const QCameraInfo* self) {
+int QCameraInfo_position(const QCameraInfo* self) {
 	QCamera::Position _ret = self->position();
 	return static_cast<int>(_ret);
 }
 
-int QCameraInfo_Orientation(const QCameraInfo* self) {
+int QCameraInfo_orientation(const QCameraInfo* self) {
 	return self->orientation();
 }
 
-QCameraInfo* QCameraInfo_DefaultCamera() {
+QCameraInfo* QCameraInfo_defaultCamera() {
 	return new QCameraInfo(QCameraInfo::defaultCamera());
 }
 
-struct miqt_array /* of QCameraInfo* */  QCameraInfo_AvailableCameras() {
+struct miqt_array /* of QCameraInfo* */  QCameraInfo_availableCameras() {
 	QList<QCameraInfo> _ret = QCameraInfo::availableCameras();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCameraInfo** _arr = static_cast<QCameraInfo**>(malloc(sizeof(QCameraInfo*) * _ret.length()));
@@ -97,7 +97,7 @@ struct miqt_array /* of QCameraInfo* */  QCameraInfo_AvailableCameras() {
 	return _out;
 }
 
-struct miqt_array /* of QCameraInfo* */  QCameraInfo_AvailableCameras1(int position) {
+struct miqt_array /* of QCameraInfo* */  QCameraInfo_availableCameras1(int position) {
 	QList<QCameraInfo> _ret = QCameraInfo::availableCameras(static_cast<QCamera::Position>(position));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QCameraInfo** _arr = static_cast<QCameraInfo**>(malloc(sizeof(QCameraInfo*) * _ret.length()));
@@ -110,7 +110,7 @@ struct miqt_array /* of QCameraInfo* */  QCameraInfo_AvailableCameras1(int posit
 	return _out;
 }
 
-void QCameraInfo_Delete(QCameraInfo* self) {
+void QCameraInfo_delete(QCameraInfo* self) {
 	delete self;
 }
 

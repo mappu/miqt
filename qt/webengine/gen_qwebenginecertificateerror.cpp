@@ -25,20 +25,20 @@ QWebEngineCertificateError* QWebEngineCertificateError_new2(QWebEngineCertificat
 	return new QWebEngineCertificateError(*other);
 }
 
-int QWebEngineCertificateError_Error(const QWebEngineCertificateError* self) {
+int QWebEngineCertificateError_error(const QWebEngineCertificateError* self) {
 	QWebEngineCertificateError::Error _ret = self->error();
 	return static_cast<int>(_ret);
 }
 
-QUrl* QWebEngineCertificateError_Url(const QWebEngineCertificateError* self) {
+QUrl* QWebEngineCertificateError_url(const QWebEngineCertificateError* self) {
 	return new QUrl(self->url());
 }
 
-bool QWebEngineCertificateError_IsOverridable(const QWebEngineCertificateError* self) {
+bool QWebEngineCertificateError_isOverridable(const QWebEngineCertificateError* self) {
 	return self->isOverridable();
 }
 
-struct miqt_string QWebEngineCertificateError_ErrorDescription(const QWebEngineCertificateError* self) {
+struct miqt_string QWebEngineCertificateError_errorDescription(const QWebEngineCertificateError* self) {
 	QString _ret = self->errorDescription();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -49,31 +49,31 @@ struct miqt_string QWebEngineCertificateError_ErrorDescription(const QWebEngineC
 	return _ms;
 }
 
-void QWebEngineCertificateError_OperatorAssign(QWebEngineCertificateError* self, QWebEngineCertificateError* other) {
+void QWebEngineCertificateError_operatorAssign(QWebEngineCertificateError* self, QWebEngineCertificateError* other) {
 	self->operator=(*other);
 }
 
-void QWebEngineCertificateError_Defer(QWebEngineCertificateError* self) {
+void QWebEngineCertificateError_defer(QWebEngineCertificateError* self) {
 	self->defer();
 }
 
-bool QWebEngineCertificateError_Deferred(const QWebEngineCertificateError* self) {
+bool QWebEngineCertificateError_deferred(const QWebEngineCertificateError* self) {
 	return self->deferred();
 }
 
-void QWebEngineCertificateError_RejectCertificate(QWebEngineCertificateError* self) {
+void QWebEngineCertificateError_rejectCertificate(QWebEngineCertificateError* self) {
 	self->rejectCertificate();
 }
 
-void QWebEngineCertificateError_IgnoreCertificateError(QWebEngineCertificateError* self) {
+void QWebEngineCertificateError_ignoreCertificateError(QWebEngineCertificateError* self) {
 	self->ignoreCertificateError();
 }
 
-bool QWebEngineCertificateError_Answered(const QWebEngineCertificateError* self) {
+bool QWebEngineCertificateError_answered(const QWebEngineCertificateError* self) {
 	return self->answered();
 }
 
-struct miqt_array /* of QSslCertificate* */  QWebEngineCertificateError_CertificateChain(const QWebEngineCertificateError* self) {
+struct miqt_array /* of QSslCertificate* */  QWebEngineCertificateError_certificateChain(const QWebEngineCertificateError* self) {
 	QList<QSslCertificate> _ret = self->certificateChain();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCertificate** _arr = static_cast<QSslCertificate**>(malloc(sizeof(QSslCertificate*) * _ret.length()));
@@ -86,7 +86,7 @@ struct miqt_array /* of QSslCertificate* */  QWebEngineCertificateError_Certific
 	return _out;
 }
 
-void QWebEngineCertificateError_Delete(QWebEngineCertificateError* self) {
+void QWebEngineCertificateError_delete(QWebEngineCertificateError* self) {
 	delete self;
 }
 

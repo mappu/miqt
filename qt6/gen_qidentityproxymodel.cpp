@@ -26,55 +26,55 @@
 extern "C" {
 #endif
 
-int miqt_exec_callback_QIdentityProxyModel_ColumnCount(const QIdentityProxyModel*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QIdentityProxyModel_Index(const QIdentityProxyModel*, intptr_t, int, int, QModelIndex*);
-QModelIndex* miqt_exec_callback_QIdentityProxyModel_MapFromSource(const QIdentityProxyModel*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QIdentityProxyModel_MapToSource(const QIdentityProxyModel*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QIdentityProxyModel_Parent(const QIdentityProxyModel*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QIdentityProxyModel_RowCount(const QIdentityProxyModel*, intptr_t, QModelIndex*);
-QVariant* miqt_exec_callback_QIdentityProxyModel_HeaderData(const QIdentityProxyModel*, intptr_t, int, int, int);
-bool miqt_exec_callback_QIdentityProxyModel_DropMimeData(QIdentityProxyModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
-QModelIndex* miqt_exec_callback_QIdentityProxyModel_Sibling(const QIdentityProxyModel*, intptr_t, int, int, QModelIndex*);
-QItemSelection* miqt_exec_callback_QIdentityProxyModel_MapSelectionFromSource(const QIdentityProxyModel*, intptr_t, QItemSelection*);
-QItemSelection* miqt_exec_callback_QIdentityProxyModel_MapSelectionToSource(const QIdentityProxyModel*, intptr_t, QItemSelection*);
-struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QIdentityProxyModel_Match(const QIdentityProxyModel*, intptr_t, QModelIndex*, int, QVariant*, int, int);
-void miqt_exec_callback_QIdentityProxyModel_SetSourceModel(QIdentityProxyModel*, intptr_t, QAbstractItemModel*);
-bool miqt_exec_callback_QIdentityProxyModel_InsertColumns(QIdentityProxyModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QIdentityProxyModel_InsertRows(QIdentityProxyModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QIdentityProxyModel_RemoveColumns(QIdentityProxyModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QIdentityProxyModel_RemoveRows(QIdentityProxyModel*, intptr_t, int, int, QModelIndex*);
-bool miqt_exec_callback_QIdentityProxyModel_MoveRows(QIdentityProxyModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-bool miqt_exec_callback_QIdentityProxyModel_MoveColumns(QIdentityProxyModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
-bool miqt_exec_callback_QIdentityProxyModel_Submit(QIdentityProxyModel*, intptr_t);
-void miqt_exec_callback_QIdentityProxyModel_Revert(QIdentityProxyModel*, intptr_t);
-QVariant* miqt_exec_callback_QIdentityProxyModel_Data(const QIdentityProxyModel*, intptr_t, QModelIndex*, int);
-struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QIdentityProxyModel_ItemData(const QIdentityProxyModel*, intptr_t, QModelIndex*);
-int miqt_exec_callback_QIdentityProxyModel_Flags(const QIdentityProxyModel*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QIdentityProxyModel_SetData(QIdentityProxyModel*, intptr_t, QModelIndex*, QVariant*, int);
-bool miqt_exec_callback_QIdentityProxyModel_SetItemData(QIdentityProxyModel*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
-bool miqt_exec_callback_QIdentityProxyModel_SetHeaderData(QIdentityProxyModel*, intptr_t, int, int, QVariant*, int);
-bool miqt_exec_callback_QIdentityProxyModel_ClearItemData(QIdentityProxyModel*, intptr_t, QModelIndex*);
-QModelIndex* miqt_exec_callback_QIdentityProxyModel_Buddy(const QIdentityProxyModel*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QIdentityProxyModel_CanFetchMore(const QIdentityProxyModel*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QIdentityProxyModel_FetchMore(QIdentityProxyModel*, intptr_t, QModelIndex*);
-void miqt_exec_callback_QIdentityProxyModel_Sort(QIdentityProxyModel*, intptr_t, int, int);
-QSize* miqt_exec_callback_QIdentityProxyModel_Span(const QIdentityProxyModel*, intptr_t, QModelIndex*);
-bool miqt_exec_callback_QIdentityProxyModel_HasChildren(const QIdentityProxyModel*, intptr_t, QModelIndex*);
-QMimeData* miqt_exec_callback_QIdentityProxyModel_MimeData(const QIdentityProxyModel*, intptr_t, struct miqt_array /* of QModelIndex* */ );
-bool miqt_exec_callback_QIdentityProxyModel_CanDropMimeData(const QIdentityProxyModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
-struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QIdentityProxyModel_MimeTypes(const QIdentityProxyModel*, intptr_t);
-int miqt_exec_callback_QIdentityProxyModel_SupportedDragActions(const QIdentityProxyModel*, intptr_t);
-int miqt_exec_callback_QIdentityProxyModel_SupportedDropActions(const QIdentityProxyModel*, intptr_t);
-struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QIdentityProxyModel_RoleNames(const QIdentityProxyModel*, intptr_t);
-void miqt_exec_callback_QIdentityProxyModel_MultiData(const QIdentityProxyModel*, intptr_t, QModelIndex*, QModelRoleDataSpan*);
-void miqt_exec_callback_QIdentityProxyModel_ResetInternalData(QIdentityProxyModel*, intptr_t);
-bool miqt_exec_callback_QIdentityProxyModel_Event(QIdentityProxyModel*, intptr_t, QEvent*);
-bool miqt_exec_callback_QIdentityProxyModel_EventFilter(QIdentityProxyModel*, intptr_t, QObject*, QEvent*);
-void miqt_exec_callback_QIdentityProxyModel_TimerEvent(QIdentityProxyModel*, intptr_t, QTimerEvent*);
-void miqt_exec_callback_QIdentityProxyModel_ChildEvent(QIdentityProxyModel*, intptr_t, QChildEvent*);
-void miqt_exec_callback_QIdentityProxyModel_CustomEvent(QIdentityProxyModel*, intptr_t, QEvent*);
-void miqt_exec_callback_QIdentityProxyModel_ConnectNotify(QIdentityProxyModel*, intptr_t, QMetaMethod*);
-void miqt_exec_callback_QIdentityProxyModel_DisconnectNotify(QIdentityProxyModel*, intptr_t, QMetaMethod*);
+int miqt_exec_callback_QIdentityProxyModel_columnCount(const QIdentityProxyModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QIdentityProxyModel_index(const QIdentityProxyModel*, intptr_t, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QIdentityProxyModel_mapFromSource(const QIdentityProxyModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QIdentityProxyModel_mapToSource(const QIdentityProxyModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QIdentityProxyModel_parent(const QIdentityProxyModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QIdentityProxyModel_rowCount(const QIdentityProxyModel*, intptr_t, QModelIndex*);
+QVariant* miqt_exec_callback_QIdentityProxyModel_headerData(const QIdentityProxyModel*, intptr_t, int, int, int);
+bool miqt_exec_callback_QIdentityProxyModel_dropMimeData(QIdentityProxyModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+QModelIndex* miqt_exec_callback_QIdentityProxyModel_sibling(const QIdentityProxyModel*, intptr_t, int, int, QModelIndex*);
+QItemSelection* miqt_exec_callback_QIdentityProxyModel_mapSelectionFromSource(const QIdentityProxyModel*, intptr_t, QItemSelection*);
+QItemSelection* miqt_exec_callback_QIdentityProxyModel_mapSelectionToSource(const QIdentityProxyModel*, intptr_t, QItemSelection*);
+struct miqt_array /* of QModelIndex* */  miqt_exec_callback_QIdentityProxyModel_match(const QIdentityProxyModel*, intptr_t, QModelIndex*, int, QVariant*, int, int);
+void miqt_exec_callback_QIdentityProxyModel_setSourceModel(QIdentityProxyModel*, intptr_t, QAbstractItemModel*);
+bool miqt_exec_callback_QIdentityProxyModel_insertColumns(QIdentityProxyModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QIdentityProxyModel_insertRows(QIdentityProxyModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QIdentityProxyModel_removeColumns(QIdentityProxyModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QIdentityProxyModel_removeRows(QIdentityProxyModel*, intptr_t, int, int, QModelIndex*);
+bool miqt_exec_callback_QIdentityProxyModel_moveRows(QIdentityProxyModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QIdentityProxyModel_moveColumns(QIdentityProxyModel*, intptr_t, QModelIndex*, int, int, QModelIndex*, int);
+bool miqt_exec_callback_QIdentityProxyModel_submit(QIdentityProxyModel*, intptr_t);
+void miqt_exec_callback_QIdentityProxyModel_revert(QIdentityProxyModel*, intptr_t);
+QVariant* miqt_exec_callback_QIdentityProxyModel_data(const QIdentityProxyModel*, intptr_t, QModelIndex*, int);
+struct miqt_map /* of int to QVariant* */  miqt_exec_callback_QIdentityProxyModel_itemData(const QIdentityProxyModel*, intptr_t, QModelIndex*);
+int miqt_exec_callback_QIdentityProxyModel_flags(const QIdentityProxyModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QIdentityProxyModel_setData(QIdentityProxyModel*, intptr_t, QModelIndex*, QVariant*, int);
+bool miqt_exec_callback_QIdentityProxyModel_setItemData(QIdentityProxyModel*, intptr_t, QModelIndex*, struct miqt_map /* of int to QVariant* */ );
+bool miqt_exec_callback_QIdentityProxyModel_setHeaderData(QIdentityProxyModel*, intptr_t, int, int, QVariant*, int);
+bool miqt_exec_callback_QIdentityProxyModel_clearItemData(QIdentityProxyModel*, intptr_t, QModelIndex*);
+QModelIndex* miqt_exec_callback_QIdentityProxyModel_buddy(const QIdentityProxyModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QIdentityProxyModel_canFetchMore(const QIdentityProxyModel*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QIdentityProxyModel_fetchMore(QIdentityProxyModel*, intptr_t, QModelIndex*);
+void miqt_exec_callback_QIdentityProxyModel_sort(QIdentityProxyModel*, intptr_t, int, int);
+QSize* miqt_exec_callback_QIdentityProxyModel_span(const QIdentityProxyModel*, intptr_t, QModelIndex*);
+bool miqt_exec_callback_QIdentityProxyModel_hasChildren(const QIdentityProxyModel*, intptr_t, QModelIndex*);
+QMimeData* miqt_exec_callback_QIdentityProxyModel_mimeData(const QIdentityProxyModel*, intptr_t, struct miqt_array /* of QModelIndex* */ );
+bool miqt_exec_callback_QIdentityProxyModel_canDropMimeData(const QIdentityProxyModel*, intptr_t, QMimeData*, int, int, int, QModelIndex*);
+struct miqt_array /* of struct miqt_string */  miqt_exec_callback_QIdentityProxyModel_mimeTypes(const QIdentityProxyModel*, intptr_t);
+int miqt_exec_callback_QIdentityProxyModel_supportedDragActions(const QIdentityProxyModel*, intptr_t);
+int miqt_exec_callback_QIdentityProxyModel_supportedDropActions(const QIdentityProxyModel*, intptr_t);
+struct miqt_map /* of int to struct miqt_string */  miqt_exec_callback_QIdentityProxyModel_roleNames(const QIdentityProxyModel*, intptr_t);
+void miqt_exec_callback_QIdentityProxyModel_multiData(const QIdentityProxyModel*, intptr_t, QModelIndex*, QModelRoleDataSpan*);
+void miqt_exec_callback_QIdentityProxyModel_resetInternalData(QIdentityProxyModel*, intptr_t);
+bool miqt_exec_callback_QIdentityProxyModel_event(QIdentityProxyModel*, intptr_t, QEvent*);
+bool miqt_exec_callback_QIdentityProxyModel_eventFilter(QIdentityProxyModel*, intptr_t, QObject*, QEvent*);
+void miqt_exec_callback_QIdentityProxyModel_timerEvent(QIdentityProxyModel*, intptr_t, QTimerEvent*);
+void miqt_exec_callback_QIdentityProxyModel_childEvent(QIdentityProxyModel*, intptr_t, QChildEvent*);
+void miqt_exec_callback_QIdentityProxyModel_customEvent(QIdentityProxyModel*, intptr_t, QEvent*);
+void miqt_exec_callback_QIdentityProxyModel_connectNotify(QIdentityProxyModel*, intptr_t, QMetaMethod*);
+void miqt_exec_callback_QIdentityProxyModel_disconnectNotify(QIdentityProxyModel*, intptr_t, QMetaMethod*);
 #ifdef __cplusplus
 } /* extern C */
 #endif
@@ -88,11 +88,11 @@ public:
 	virtual ~MiqtVirtualQIdentityProxyModel() override = default;
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ColumnCount = 0;
+	intptr_t handle__columnCount = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int columnCount(const QModelIndex& parent) const override {
-		if (handle__ColumnCount == 0) {
+		if (handle__columnCount == 0) {
 			return QIdentityProxyModel::columnCount(parent);
 		}
 		
@@ -100,24 +100,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		int callback_return_value = miqt_exec_callback_QIdentityProxyModel_ColumnCount(this, handle__ColumnCount, sigval1);
+		int callback_return_value = miqt_exec_callback_QIdentityProxyModel_columnCount(this, handle__columnCount, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_ColumnCount(QModelIndex* parent) const {
+	int virtualbase_columnCount(QModelIndex* parent) const {
 
 		return QIdentityProxyModel::columnCount(*parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Index = 0;
+	intptr_t handle__index = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndex index(int row, int column, const QModelIndex& parent) const override {
-		if (handle__Index == 0) {
+		if (handle__index == 0) {
 			return QIdentityProxyModel::index(row, column, parent);
 		}
 		
@@ -127,24 +127,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_Index(this, handle__Index, sigval1, sigval2, sigval3);
+		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_index(this, handle__index, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_Index(int row, int column, QModelIndex* parent) const {
+	QModelIndex* virtualbase_index(int row, int column, QModelIndex* parent) const {
 
 		return new QModelIndex(QIdentityProxyModel::index(static_cast<int>(row), static_cast<int>(column), *parent));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MapFromSource = 0;
+	intptr_t handle__mapFromSource = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndex mapFromSource(const QModelIndex& sourceIndex) const override {
-		if (handle__MapFromSource == 0) {
+		if (handle__mapFromSource == 0) {
 			return QIdentityProxyModel::mapFromSource(sourceIndex);
 		}
 		
@@ -152,24 +152,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&sourceIndex_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_MapFromSource(this, handle__MapFromSource, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_mapFromSource(this, handle__mapFromSource, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_MapFromSource(QModelIndex* sourceIndex) const {
+	QModelIndex* virtualbase_mapFromSource(QModelIndex* sourceIndex) const {
 
 		return new QModelIndex(QIdentityProxyModel::mapFromSource(*sourceIndex));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MapToSource = 0;
+	intptr_t handle__mapToSource = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndex mapToSource(const QModelIndex& proxyIndex) const override {
-		if (handle__MapToSource == 0) {
+		if (handle__mapToSource == 0) {
 			return QIdentityProxyModel::mapToSource(proxyIndex);
 		}
 		
@@ -177,24 +177,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&proxyIndex_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_MapToSource(this, handle__MapToSource, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_mapToSource(this, handle__mapToSource, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_MapToSource(QModelIndex* proxyIndex) const {
+	QModelIndex* virtualbase_mapToSource(QModelIndex* proxyIndex) const {
 
 		return new QModelIndex(QIdentityProxyModel::mapToSource(*proxyIndex));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Parent = 0;
+	intptr_t handle__parent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndex parent(const QModelIndex& child) const override {
-		if (handle__Parent == 0) {
+		if (handle__parent == 0) {
 			return QIdentityProxyModel::parent(child);
 		}
 		
@@ -202,24 +202,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&child_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_Parent(this, handle__Parent, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_parent(this, handle__parent, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_Parent(QModelIndex* child) const {
+	QModelIndex* virtualbase_parent(QModelIndex* child) const {
 
 		return new QModelIndex(QIdentityProxyModel::parent(*child));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__RowCount = 0;
+	intptr_t handle__rowCount = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual int rowCount(const QModelIndex& parent) const override {
-		if (handle__RowCount == 0) {
+		if (handle__rowCount == 0) {
 			return QIdentityProxyModel::rowCount(parent);
 		}
 		
@@ -227,24 +227,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		int callback_return_value = miqt_exec_callback_QIdentityProxyModel_RowCount(this, handle__RowCount, sigval1);
+		int callback_return_value = miqt_exec_callback_QIdentityProxyModel_rowCount(this, handle__rowCount, sigval1);
 
 		return static_cast<int>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_RowCount(QModelIndex* parent) const {
+	int virtualbase_rowCount(QModelIndex* parent) const {
 
 		return QIdentityProxyModel::rowCount(*parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HeaderData = 0;
+	intptr_t handle__headerData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const override {
-		if (handle__HeaderData == 0) {
+		if (handle__headerData == 0) {
 			return QIdentityProxyModel::headerData(section, orientation, role);
 		}
 		
@@ -253,24 +253,24 @@ public:
 		int sigval2 = static_cast<int>(orientation_ret);
 		int sigval3 = role;
 
-		QVariant* callback_return_value = miqt_exec_callback_QIdentityProxyModel_HeaderData(this, handle__HeaderData, sigval1, sigval2, sigval3);
+		QVariant* callback_return_value = miqt_exec_callback_QIdentityProxyModel_headerData(this, handle__headerData, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QVariant* virtualbase_HeaderData(int section, int orientation, int role) const {
+	QVariant* virtualbase_headerData(int section, int orientation, int role) const {
 
 		return new QVariant(QIdentityProxyModel::headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DropMimeData = 0;
+	intptr_t handle__dropMimeData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool dropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) override {
-		if (handle__DropMimeData == 0) {
+		if (handle__dropMimeData == 0) {
 			return QIdentityProxyModel::dropMimeData(data, action, row, column, parent);
 		}
 		
@@ -283,24 +283,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_DropMimeData(this, handle__DropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_dropMimeData(this, handle__dropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_DropMimeData(QMimeData* data, int action, int row, int column, QModelIndex* parent) {
+	bool virtualbase_dropMimeData(QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 
 		return QIdentityProxyModel::dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Sibling = 0;
+	intptr_t handle__sibling = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndex sibling(int row, int column, const QModelIndex& idx) const override {
-		if (handle__Sibling == 0) {
+		if (handle__sibling == 0) {
 			return QIdentityProxyModel::sibling(row, column, idx);
 		}
 		
@@ -310,24 +310,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&idx_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_Sibling(this, handle__Sibling, sigval1, sigval2, sigval3);
+		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_sibling(this, handle__sibling, sigval1, sigval2, sigval3);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_Sibling(int row, int column, QModelIndex* idx) const {
+	QModelIndex* virtualbase_sibling(int row, int column, QModelIndex* idx) const {
 
 		return new QModelIndex(QIdentityProxyModel::sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MapSelectionFromSource = 0;
+	intptr_t handle__mapSelectionFromSource = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QItemSelection mapSelectionFromSource(const QItemSelection& selection) const override {
-		if (handle__MapSelectionFromSource == 0) {
+		if (handle__mapSelectionFromSource == 0) {
 			return QIdentityProxyModel::mapSelectionFromSource(selection);
 		}
 		
@@ -335,24 +335,24 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
 
-		QItemSelection* callback_return_value = miqt_exec_callback_QIdentityProxyModel_MapSelectionFromSource(this, handle__MapSelectionFromSource, sigval1);
+		QItemSelection* callback_return_value = miqt_exec_callback_QIdentityProxyModel_mapSelectionFromSource(this, handle__mapSelectionFromSource, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QItemSelection* virtualbase_MapSelectionFromSource(QItemSelection* selection) const {
+	QItemSelection* virtualbase_mapSelectionFromSource(QItemSelection* selection) const {
 
 		return new QItemSelection(QIdentityProxyModel::mapSelectionFromSource(*selection));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MapSelectionToSource = 0;
+	intptr_t handle__mapSelectionToSource = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QItemSelection mapSelectionToSource(const QItemSelection& selection) const override {
-		if (handle__MapSelectionToSource == 0) {
+		if (handle__mapSelectionToSource == 0) {
 			return QIdentityProxyModel::mapSelectionToSource(selection);
 		}
 		
@@ -360,24 +360,24 @@ public:
 		// Cast returned reference into pointer
 		QItemSelection* sigval1 = const_cast<QItemSelection*>(&selection_ret);
 
-		QItemSelection* callback_return_value = miqt_exec_callback_QIdentityProxyModel_MapSelectionToSource(this, handle__MapSelectionToSource, sigval1);
+		QItemSelection* callback_return_value = miqt_exec_callback_QIdentityProxyModel_mapSelectionToSource(this, handle__mapSelectionToSource, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QItemSelection* virtualbase_MapSelectionToSource(QItemSelection* selection) const {
+	QItemSelection* virtualbase_mapSelectionToSource(QItemSelection* selection) const {
 
 		return new QItemSelection(QIdentityProxyModel::mapSelectionToSource(*selection));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Match = 0;
+	intptr_t handle__match = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndexList match(const QModelIndex& start, int role, const QVariant& value, int hits, Qt::MatchFlags flags) const override {
-		if (handle__Match == 0) {
+		if (handle__match == 0) {
 			return QIdentityProxyModel::match(start, role, value, hits, flags);
 		}
 		
@@ -392,7 +392,7 @@ public:
 		Qt::MatchFlags flags_ret = flags;
 		int sigval5 = static_cast<int>(flags_ret);
 
-		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QIdentityProxyModel_Match(this, handle__Match, sigval1, sigval2, sigval3, sigval4, sigval5);
+		struct miqt_array /* of QModelIndex* */  callback_return_value = miqt_exec_callback_QIdentityProxyModel_match(this, handle__match, sigval1, sigval2, sigval3, sigval4, sigval5);
 		QModelIndexList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		QModelIndex** callback_return_value_arr = static_cast<QModelIndex**>(callback_return_value.data);
@@ -404,7 +404,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	struct miqt_array /* of QModelIndex* */  virtualbase_Match(QModelIndex* start, int role, QVariant* value, int hits, int flags) const {
+	struct miqt_array /* of QModelIndex* */  virtualbase_match(QModelIndex* start, int role, QVariant* value, int hits, int flags) const {
 
 		QModelIndexList _ret = QIdentityProxyModel::match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 		// Convert QList<> from C++ memory to manually-managed C memory
@@ -420,35 +420,35 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetSourceModel = 0;
+	intptr_t handle__setSourceModel = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void setSourceModel(QAbstractItemModel* sourceModel) override {
-		if (handle__SetSourceModel == 0) {
+		if (handle__setSourceModel == 0) {
 			QIdentityProxyModel::setSourceModel(sourceModel);
 			return;
 		}
 		
 		QAbstractItemModel* sigval1 = sourceModel;
 
-		miqt_exec_callback_QIdentityProxyModel_SetSourceModel(this, handle__SetSourceModel, sigval1);
+		miqt_exec_callback_QIdentityProxyModel_setSourceModel(this, handle__setSourceModel, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_SetSourceModel(QAbstractItemModel* sourceModel) {
+	void virtualbase_setSourceModel(QAbstractItemModel* sourceModel) {
 
 		QIdentityProxyModel::setSourceModel(sourceModel);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InsertColumns = 0;
+	intptr_t handle__insertColumns = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool insertColumns(int column, int count, const QModelIndex& parent) override {
-		if (handle__InsertColumns == 0) {
+		if (handle__insertColumns == 0) {
 			return QIdentityProxyModel::insertColumns(column, count, parent);
 		}
 		
@@ -458,24 +458,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_InsertColumns(this, handle__InsertColumns, sigval1, sigval2, sigval3);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_insertColumns(this, handle__insertColumns, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_InsertColumns(int column, int count, QModelIndex* parent) {
+	bool virtualbase_insertColumns(int column, int count, QModelIndex* parent) {
 
 		return QIdentityProxyModel::insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__InsertRows = 0;
+	intptr_t handle__insertRows = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool insertRows(int row, int count, const QModelIndex& parent) override {
-		if (handle__InsertRows == 0) {
+		if (handle__insertRows == 0) {
 			return QIdentityProxyModel::insertRows(row, count, parent);
 		}
 		
@@ -485,24 +485,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_InsertRows(this, handle__InsertRows, sigval1, sigval2, sigval3);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_insertRows(this, handle__insertRows, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_InsertRows(int row, int count, QModelIndex* parent) {
+	bool virtualbase_insertRows(int row, int count, QModelIndex* parent) {
 
 		return QIdentityProxyModel::insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__RemoveColumns = 0;
+	intptr_t handle__removeColumns = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool removeColumns(int column, int count, const QModelIndex& parent) override {
-		if (handle__RemoveColumns == 0) {
+		if (handle__removeColumns == 0) {
 			return QIdentityProxyModel::removeColumns(column, count, parent);
 		}
 		
@@ -512,24 +512,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_RemoveColumns(this, handle__RemoveColumns, sigval1, sigval2, sigval3);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_removeColumns(this, handle__removeColumns, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_RemoveColumns(int column, int count, QModelIndex* parent) {
+	bool virtualbase_removeColumns(int column, int count, QModelIndex* parent) {
 
 		return QIdentityProxyModel::removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__RemoveRows = 0;
+	intptr_t handle__removeRows = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool removeRows(int row, int count, const QModelIndex& parent) override {
-		if (handle__RemoveRows == 0) {
+		if (handle__removeRows == 0) {
 			return QIdentityProxyModel::removeRows(row, count, parent);
 		}
 		
@@ -539,24 +539,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval3 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_RemoveRows(this, handle__RemoveRows, sigval1, sigval2, sigval3);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_removeRows(this, handle__removeRows, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_RemoveRows(int row, int count, QModelIndex* parent) {
+	bool virtualbase_removeRows(int row, int count, QModelIndex* parent) {
 
 		return QIdentityProxyModel::removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MoveRows = 0;
+	intptr_t handle__moveRows = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool moveRows(const QModelIndex& sourceParent, int sourceRow, int count, const QModelIndex& destinationParent, int destinationChild) override {
-		if (handle__MoveRows == 0) {
+		if (handle__moveRows == 0) {
 			return QIdentityProxyModel::moveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
 		}
 		
@@ -570,24 +570,24 @@ public:
 		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
 		int sigval5 = destinationChild;
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_MoveRows(this, handle__MoveRows, sigval1, sigval2, sigval3, sigval4, sigval5);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_moveRows(this, handle__moveRows, sigval1, sigval2, sigval3, sigval4, sigval5);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_MoveRows(QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
+	bool virtualbase_moveRows(QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
 
 		return QIdentityProxyModel::moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MoveColumns = 0;
+	intptr_t handle__moveColumns = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool moveColumns(const QModelIndex& sourceParent, int sourceColumn, int count, const QModelIndex& destinationParent, int destinationChild) override {
-		if (handle__MoveColumns == 0) {
+		if (handle__moveColumns == 0) {
 			return QIdentityProxyModel::moveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
 		}
 		
@@ -601,69 +601,69 @@ public:
 		QModelIndex* sigval4 = const_cast<QModelIndex*>(&destinationParent_ret);
 		int sigval5 = destinationChild;
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_MoveColumns(this, handle__MoveColumns, sigval1, sigval2, sigval3, sigval4, sigval5);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_moveColumns(this, handle__moveColumns, sigval1, sigval2, sigval3, sigval4, sigval5);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_MoveColumns(QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
+	bool virtualbase_moveColumns(QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
 
 		return QIdentityProxyModel::moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Submit = 0;
+	intptr_t handle__submit = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool submit() override {
-		if (handle__Submit == 0) {
+		if (handle__submit == 0) {
 			return QIdentityProxyModel::submit();
 		}
 		
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_Submit(this, handle__Submit);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_submit(this, handle__submit);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Submit() {
+	bool virtualbase_submit() {
 
 		return QIdentityProxyModel::submit();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Revert = 0;
+	intptr_t handle__revert = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void revert() override {
-		if (handle__Revert == 0) {
+		if (handle__revert == 0) {
 			QIdentityProxyModel::revert();
 			return;
 		}
 		
 
-		miqt_exec_callback_QIdentityProxyModel_Revert(this, handle__Revert);
+		miqt_exec_callback_QIdentityProxyModel_revert(this, handle__revert);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_Revert() {
+	void virtualbase_revert() {
 
 		QIdentityProxyModel::revert();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Data = 0;
+	intptr_t handle__data = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QVariant data(const QModelIndex& proxyIndex, int role) const override {
-		if (handle__Data == 0) {
+		if (handle__data == 0) {
 			return QIdentityProxyModel::data(proxyIndex, role);
 		}
 		
@@ -672,24 +672,24 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&proxyIndex_ret);
 		int sigval2 = role;
 
-		QVariant* callback_return_value = miqt_exec_callback_QIdentityProxyModel_Data(this, handle__Data, sigval1, sigval2);
+		QVariant* callback_return_value = miqt_exec_callback_QIdentityProxyModel_data(this, handle__data, sigval1, sigval2);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QVariant* virtualbase_Data(QModelIndex* proxyIndex, int role) const {
+	QVariant* virtualbase_data(QModelIndex* proxyIndex, int role) const {
 
 		return new QVariant(QIdentityProxyModel::data(*proxyIndex, static_cast<int>(role)));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ItemData = 0;
+	intptr_t handle__itemData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QMap<int, QVariant> itemData(const QModelIndex& index) const override {
-		if (handle__ItemData == 0) {
+		if (handle__itemData == 0) {
 			return QIdentityProxyModel::itemData(index);
 		}
 		
@@ -697,7 +697,7 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QIdentityProxyModel_ItemData(this, handle__ItemData, sigval1);
+		struct miqt_map /* of int to QVariant* */  callback_return_value = miqt_exec_callback_QIdentityProxyModel_itemData(this, handle__itemData, sigval1);
 		QMap<int, QVariant> callback_return_value_QMap;
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
 		QVariant** callback_return_value_varr = static_cast<QVariant**>(callback_return_value.values);
@@ -709,7 +709,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	struct miqt_map /* of int to QVariant* */  virtualbase_ItemData(QModelIndex* index) const {
+	struct miqt_map /* of int to QVariant* */  virtualbase_itemData(QModelIndex* index) const {
 
 		QMap<int, QVariant> _ret = QIdentityProxyModel::itemData(*index);
 		// Convert QMap<> from C++ memory to manually-managed C memory
@@ -730,11 +730,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Flags = 0;
+	intptr_t handle__flags = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual Qt::ItemFlags flags(const QModelIndex& index) const override {
-		if (handle__Flags == 0) {
+		if (handle__flags == 0) {
 			return QIdentityProxyModel::flags(index);
 		}
 		
@@ -742,13 +742,13 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		int callback_return_value = miqt_exec_callback_QIdentityProxyModel_Flags(this, handle__Flags, sigval1);
+		int callback_return_value = miqt_exec_callback_QIdentityProxyModel_flags(this, handle__flags, sigval1);
 
 		return static_cast<Qt::ItemFlags>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_Flags(QModelIndex* index) const {
+	int virtualbase_flags(QModelIndex* index) const {
 
 		Qt::ItemFlags _ret = QIdentityProxyModel::flags(*index);
 		return static_cast<int>(_ret);
@@ -756,11 +756,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetData = 0;
+	intptr_t handle__setData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool setData(const QModelIndex& index, const QVariant& value, int role) override {
-		if (handle__SetData == 0) {
+		if (handle__setData == 0) {
 			return QIdentityProxyModel::setData(index, value, role);
 		}
 		
@@ -772,24 +772,24 @@ public:
 		QVariant* sigval2 = const_cast<QVariant*>(&value_ret);
 		int sigval3 = role;
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_SetData(this, handle__SetData, sigval1, sigval2, sigval3);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_setData(this, handle__setData, sigval1, sigval2, sigval3);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_SetData(QModelIndex* index, QVariant* value, int role) {
+	bool virtualbase_setData(QModelIndex* index, QVariant* value, int role) {
 
 		return QIdentityProxyModel::setData(*index, *value, static_cast<int>(role));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetItemData = 0;
+	intptr_t handle__setItemData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool setItemData(const QModelIndex& index, const QMap<int, QVariant>& roles) override {
-		if (handle__SetItemData == 0) {
+		if (handle__setItemData == 0) {
 			return QIdentityProxyModel::setItemData(index, roles);
 		}
 		
@@ -812,13 +812,13 @@ public:
 		roles_out.values = static_cast<void*>(roles_varr);
 		struct miqt_map /* of int to QVariant* */  sigval2 = roles_out;
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_SetItemData(this, handle__SetItemData, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_setItemData(this, handle__setItemData, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_SetItemData(QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
+	bool virtualbase_setItemData(QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
 		QMap<int, QVariant> roles_QMap;
 		int* roles_karr = static_cast<int*>(roles.keys);
 		QVariant** roles_varr = static_cast<QVariant**>(roles.values);
@@ -831,11 +831,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SetHeaderData = 0;
+	intptr_t handle__setHeaderData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool setHeaderData(int section, Qt::Orientation orientation, const QVariant& value, int role) override {
-		if (handle__SetHeaderData == 0) {
+		if (handle__setHeaderData == 0) {
 			return QIdentityProxyModel::setHeaderData(section, orientation, value, role);
 		}
 		
@@ -847,24 +847,24 @@ public:
 		QVariant* sigval3 = const_cast<QVariant*>(&value_ret);
 		int sigval4 = role;
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_SetHeaderData(this, handle__SetHeaderData, sigval1, sigval2, sigval3, sigval4);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_setHeaderData(this, handle__setHeaderData, sigval1, sigval2, sigval3, sigval4);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_SetHeaderData(int section, int orientation, QVariant* value, int role) {
+	bool virtualbase_setHeaderData(int section, int orientation, QVariant* value, int role) {
 
 		return QIdentityProxyModel::setHeaderData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), *value, static_cast<int>(role));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ClearItemData = 0;
+	intptr_t handle__clearItemData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool clearItemData(const QModelIndex& index) override {
-		if (handle__ClearItemData == 0) {
+		if (handle__clearItemData == 0) {
 			return QIdentityProxyModel::clearItemData(index);
 		}
 		
@@ -872,24 +872,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_ClearItemData(this, handle__ClearItemData, sigval1);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_clearItemData(this, handle__clearItemData, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_ClearItemData(QModelIndex* index) {
+	bool virtualbase_clearItemData(QModelIndex* index) {
 
 		return QIdentityProxyModel::clearItemData(*index);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Buddy = 0;
+	intptr_t handle__buddy = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QModelIndex buddy(const QModelIndex& index) const override {
-		if (handle__Buddy == 0) {
+		if (handle__buddy == 0) {
 			return QIdentityProxyModel::buddy(index);
 		}
 		
@@ -897,24 +897,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_Buddy(this, handle__Buddy, sigval1);
+		QModelIndex* callback_return_value = miqt_exec_callback_QIdentityProxyModel_buddy(this, handle__buddy, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_Buddy(QModelIndex* index) const {
+	QModelIndex* virtualbase_buddy(QModelIndex* index) const {
 
 		return new QModelIndex(QIdentityProxyModel::buddy(*index));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CanFetchMore = 0;
+	intptr_t handle__canFetchMore = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool canFetchMore(const QModelIndex& parent) const override {
-		if (handle__CanFetchMore == 0) {
+		if (handle__canFetchMore == 0) {
 			return QIdentityProxyModel::canFetchMore(parent);
 		}
 		
@@ -922,24 +922,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_CanFetchMore(this, handle__CanFetchMore, sigval1);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_canFetchMore(this, handle__canFetchMore, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_CanFetchMore(QModelIndex* parent) const {
+	bool virtualbase_canFetchMore(QModelIndex* parent) const {
 
 		return QIdentityProxyModel::canFetchMore(*parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__FetchMore = 0;
+	intptr_t handle__fetchMore = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void fetchMore(const QModelIndex& parent) override {
-		if (handle__FetchMore == 0) {
+		if (handle__fetchMore == 0) {
 			QIdentityProxyModel::fetchMore(parent);
 			return;
 		}
@@ -948,24 +948,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		miqt_exec_callback_QIdentityProxyModel_FetchMore(this, handle__FetchMore, sigval1);
+		miqt_exec_callback_QIdentityProxyModel_fetchMore(this, handle__fetchMore, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_FetchMore(QModelIndex* parent) {
+	void virtualbase_fetchMore(QModelIndex* parent) {
 
 		QIdentityProxyModel::fetchMore(*parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Sort = 0;
+	intptr_t handle__sort = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void sort(int column, Qt::SortOrder order) override {
-		if (handle__Sort == 0) {
+		if (handle__sort == 0) {
 			QIdentityProxyModel::sort(column, order);
 			return;
 		}
@@ -974,24 +974,24 @@ public:
 		Qt::SortOrder order_ret = order;
 		int sigval2 = static_cast<int>(order_ret);
 
-		miqt_exec_callback_QIdentityProxyModel_Sort(this, handle__Sort, sigval1, sigval2);
+		miqt_exec_callback_QIdentityProxyModel_sort(this, handle__sort, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_Sort(int column, int order) {
+	void virtualbase_sort(int column, int order) {
 
 		QIdentityProxyModel::sort(static_cast<int>(column), static_cast<Qt::SortOrder>(order));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Span = 0;
+	intptr_t handle__span = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QSize span(const QModelIndex& index) const override {
-		if (handle__Span == 0) {
+		if (handle__span == 0) {
 			return QIdentityProxyModel::span(index);
 		}
 		
@@ -999,24 +999,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 
-		QSize* callback_return_value = miqt_exec_callback_QIdentityProxyModel_Span(this, handle__Span, sigval1);
+		QSize* callback_return_value = miqt_exec_callback_QIdentityProxyModel_span(this, handle__span, sigval1);
 
 		return *callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QSize* virtualbase_Span(QModelIndex* index) const {
+	QSize* virtualbase_span(QModelIndex* index) const {
 
 		return new QSize(QIdentityProxyModel::span(*index));
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__HasChildren = 0;
+	intptr_t handle__hasChildren = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool hasChildren(const QModelIndex& parent) const override {
-		if (handle__HasChildren == 0) {
+		if (handle__hasChildren == 0) {
 			return QIdentityProxyModel::hasChildren(parent);
 		}
 		
@@ -1024,24 +1024,24 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_HasChildren(this, handle__HasChildren, sigval1);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_hasChildren(this, handle__hasChildren, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_HasChildren(QModelIndex* parent) const {
+	bool virtualbase_hasChildren(QModelIndex* parent) const {
 
 		return QIdentityProxyModel::hasChildren(*parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MimeData = 0;
+	intptr_t handle__mimeData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QMimeData* mimeData(const QModelIndexList& indexes) const override {
-		if (handle__MimeData == 0) {
+		if (handle__mimeData == 0) {
 			return QIdentityProxyModel::mimeData(indexes);
 		}
 		
@@ -1056,13 +1056,13 @@ public:
 		indexes_out.data = static_cast<void*>(indexes_arr);
 		struct miqt_array /* of QModelIndex* */  sigval1 = indexes_out;
 
-		QMimeData* callback_return_value = miqt_exec_callback_QIdentityProxyModel_MimeData(this, handle__MimeData, sigval1);
+		QMimeData* callback_return_value = miqt_exec_callback_QIdentityProxyModel_mimeData(this, handle__mimeData, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	QMimeData* virtualbase_MimeData(struct miqt_array /* of QModelIndex* */  indexes) const {
+	QMimeData* virtualbase_mimeData(struct miqt_array /* of QModelIndex* */  indexes) const {
 		QModelIndexList indexes_QList;
 		indexes_QList.reserve(indexes.len);
 		QModelIndex** indexes_arr = static_cast<QModelIndex**>(indexes.data);
@@ -1075,11 +1075,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CanDropMimeData = 0;
+	intptr_t handle__canDropMimeData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool canDropMimeData(const QMimeData* data, Qt::DropAction action, int row, int column, const QModelIndex& parent) const override {
-		if (handle__CanDropMimeData == 0) {
+		if (handle__canDropMimeData == 0) {
 			return QIdentityProxyModel::canDropMimeData(data, action, row, column, parent);
 		}
 		
@@ -1092,29 +1092,29 @@ public:
 		// Cast returned reference into pointer
 		QModelIndex* sigval5 = const_cast<QModelIndex*>(&parent_ret);
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_CanDropMimeData(this, handle__CanDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_canDropMimeData(this, handle__canDropMimeData, sigval1, sigval2, sigval3, sigval4, sigval5);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_CanDropMimeData(QMimeData* data, int action, int row, int column, QModelIndex* parent) const {
+	bool virtualbase_canDropMimeData(QMimeData* data, int action, int row, int column, QModelIndex* parent) const {
 
 		return QIdentityProxyModel::canDropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MimeTypes = 0;
+	intptr_t handle__mimeTypes = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QStringList mimeTypes() const override {
-		if (handle__MimeTypes == 0) {
+		if (handle__mimeTypes == 0) {
 			return QIdentityProxyModel::mimeTypes();
 		}
 		
 
-		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QIdentityProxyModel_MimeTypes(this, handle__MimeTypes);
+		struct miqt_array /* of struct miqt_string */  callback_return_value = miqt_exec_callback_QIdentityProxyModel_mimeTypes(this, handle__mimeTypes);
 		QStringList callback_return_value_QList;
 		callback_return_value_QList.reserve(callback_return_value.len);
 		struct miqt_string* callback_return_value_arr = static_cast<struct miqt_string*>(callback_return_value.data);
@@ -1127,7 +1127,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	struct miqt_array /* of struct miqt_string */  virtualbase_MimeTypes() const {
+	struct miqt_array /* of struct miqt_string */  virtualbase_mimeTypes() const {
 
 		QStringList _ret = QIdentityProxyModel::mimeTypes();
 		// Convert QList<> from C++ memory to manually-managed C memory
@@ -1150,22 +1150,22 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SupportedDragActions = 0;
+	intptr_t handle__supportedDragActions = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual Qt::DropActions supportedDragActions() const override {
-		if (handle__SupportedDragActions == 0) {
+		if (handle__supportedDragActions == 0) {
 			return QIdentityProxyModel::supportedDragActions();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QIdentityProxyModel_SupportedDragActions(this, handle__SupportedDragActions);
+		int callback_return_value = miqt_exec_callback_QIdentityProxyModel_supportedDragActions(this, handle__supportedDragActions);
 
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_SupportedDragActions() const {
+	int virtualbase_supportedDragActions() const {
 
 		Qt::DropActions _ret = QIdentityProxyModel::supportedDragActions();
 		return static_cast<int>(_ret);
@@ -1173,22 +1173,22 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__SupportedDropActions = 0;
+	intptr_t handle__supportedDropActions = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual Qt::DropActions supportedDropActions() const override {
-		if (handle__SupportedDropActions == 0) {
+		if (handle__supportedDropActions == 0) {
 			return QIdentityProxyModel::supportedDropActions();
 		}
 		
 
-		int callback_return_value = miqt_exec_callback_QIdentityProxyModel_SupportedDropActions(this, handle__SupportedDropActions);
+		int callback_return_value = miqt_exec_callback_QIdentityProxyModel_supportedDropActions(this, handle__supportedDropActions);
 
 		return static_cast<Qt::DropActions>(callback_return_value);
 	}
 
 	// Wrapper to allow calling protected method
-	int virtualbase_SupportedDropActions() const {
+	int virtualbase_supportedDropActions() const {
 
 		Qt::DropActions _ret = QIdentityProxyModel::supportedDropActions();
 		return static_cast<int>(_ret);
@@ -1196,16 +1196,16 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__RoleNames = 0;
+	intptr_t handle__roleNames = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual QHash<int, QByteArray> roleNames() const override {
-		if (handle__RoleNames == 0) {
+		if (handle__roleNames == 0) {
 			return QIdentityProxyModel::roleNames();
 		}
 		
 
-		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QIdentityProxyModel_RoleNames(this, handle__RoleNames);
+		struct miqt_map /* of int to struct miqt_string */  callback_return_value = miqt_exec_callback_QIdentityProxyModel_roleNames(this, handle__roleNames);
 		QHash<int, QByteArray> callback_return_value_QMap;
 		callback_return_value_QMap.reserve(callback_return_value.len);
 		int* callback_return_value_karr = static_cast<int*>(callback_return_value.keys);
@@ -1219,7 +1219,7 @@ public:
 	}
 
 	// Wrapper to allow calling protected method
-	struct miqt_map /* of int to struct miqt_string */  virtualbase_RoleNames() const {
+	struct miqt_map /* of int to struct miqt_string */  virtualbase_roleNames() const {
 
 		QHash<int, QByteArray> _ret = QIdentityProxyModel::roleNames();
 		// Convert QMap<> from C++ memory to manually-managed C memory
@@ -1245,11 +1245,11 @@ public:
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__MultiData = 0;
+	intptr_t handle__multiData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void multiData(const QModelIndex& index, QModelRoleDataSpan roleDataSpan) const override {
-		if (handle__MultiData == 0) {
+		if (handle__multiData == 0) {
 			QIdentityProxyModel::multiData(index, roleDataSpan);
 			return;
 		}
@@ -1259,166 +1259,166 @@ public:
 		QModelIndex* sigval1 = const_cast<QModelIndex*>(&index_ret);
 		QModelRoleDataSpan* sigval2 = new QModelRoleDataSpan(roleDataSpan);
 
-		miqt_exec_callback_QIdentityProxyModel_MultiData(this, handle__MultiData, sigval1, sigval2);
+		miqt_exec_callback_QIdentityProxyModel_multiData(this, handle__multiData, sigval1, sigval2);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_MultiData(QModelIndex* index, QModelRoleDataSpan* roleDataSpan) const {
+	void virtualbase_multiData(QModelIndex* index, QModelRoleDataSpan* roleDataSpan) const {
 
 		QIdentityProxyModel::multiData(*index, *roleDataSpan);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ResetInternalData = 0;
+	intptr_t handle__resetInternalData = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void resetInternalData() override {
-		if (handle__ResetInternalData == 0) {
+		if (handle__resetInternalData == 0) {
 			QIdentityProxyModel::resetInternalData();
 			return;
 		}
 		
 
-		miqt_exec_callback_QIdentityProxyModel_ResetInternalData(this, handle__ResetInternalData);
+		miqt_exec_callback_QIdentityProxyModel_resetInternalData(this, handle__resetInternalData);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ResetInternalData() {
+	void virtualbase_resetInternalData() {
 
 		QIdentityProxyModel::resetInternalData();
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__Event = 0;
+	intptr_t handle__event = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool event(QEvent* event) override {
-		if (handle__Event == 0) {
+		if (handle__event == 0) {
 			return QIdentityProxyModel::event(event);
 		}
 		
 		QEvent* sigval1 = event;
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_Event(this, handle__Event, sigval1);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_event(this, handle__event, sigval1);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_Event(QEvent* event) {
+	bool virtualbase_event(QEvent* event) {
 
 		return QIdentityProxyModel::event(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__EventFilter = 0;
+	intptr_t handle__eventFilter = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual bool eventFilter(QObject* watched, QEvent* event) override {
-		if (handle__EventFilter == 0) {
+		if (handle__eventFilter == 0) {
 			return QIdentityProxyModel::eventFilter(watched, event);
 		}
 		
 		QObject* sigval1 = watched;
 		QEvent* sigval2 = event;
 
-		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_EventFilter(this, handle__EventFilter, sigval1, sigval2);
+		bool callback_return_value = miqt_exec_callback_QIdentityProxyModel_eventFilter(this, handle__eventFilter, sigval1, sigval2);
 
 		return callback_return_value;
 	}
 
 	// Wrapper to allow calling protected method
-	bool virtualbase_EventFilter(QObject* watched, QEvent* event) {
+	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
 
 		return QIdentityProxyModel::eventFilter(watched, event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__TimerEvent = 0;
+	intptr_t handle__timerEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void timerEvent(QTimerEvent* event) override {
-		if (handle__TimerEvent == 0) {
+		if (handle__timerEvent == 0) {
 			QIdentityProxyModel::timerEvent(event);
 			return;
 		}
 		
 		QTimerEvent* sigval1 = event;
 
-		miqt_exec_callback_QIdentityProxyModel_TimerEvent(this, handle__TimerEvent, sigval1);
+		miqt_exec_callback_QIdentityProxyModel_timerEvent(this, handle__timerEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_TimerEvent(QTimerEvent* event) {
+	void virtualbase_timerEvent(QTimerEvent* event) {
 
 		QIdentityProxyModel::timerEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ChildEvent = 0;
+	intptr_t handle__childEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void childEvent(QChildEvent* event) override {
-		if (handle__ChildEvent == 0) {
+		if (handle__childEvent == 0) {
 			QIdentityProxyModel::childEvent(event);
 			return;
 		}
 		
 		QChildEvent* sigval1 = event;
 
-		miqt_exec_callback_QIdentityProxyModel_ChildEvent(this, handle__ChildEvent, sigval1);
+		miqt_exec_callback_QIdentityProxyModel_childEvent(this, handle__childEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ChildEvent(QChildEvent* event) {
+	void virtualbase_childEvent(QChildEvent* event) {
 
 		QIdentityProxyModel::childEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__CustomEvent = 0;
+	intptr_t handle__customEvent = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void customEvent(QEvent* event) override {
-		if (handle__CustomEvent == 0) {
+		if (handle__customEvent == 0) {
 			QIdentityProxyModel::customEvent(event);
 			return;
 		}
 		
 		QEvent* sigval1 = event;
 
-		miqt_exec_callback_QIdentityProxyModel_CustomEvent(this, handle__CustomEvent, sigval1);
+		miqt_exec_callback_QIdentityProxyModel_customEvent(this, handle__customEvent, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_CustomEvent(QEvent* event) {
+	void virtualbase_customEvent(QEvent* event) {
 
 		QIdentityProxyModel::customEvent(event);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__ConnectNotify = 0;
+	intptr_t handle__connectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void connectNotify(const QMetaMethod& signal) override {
-		if (handle__ConnectNotify == 0) {
+		if (handle__connectNotify == 0) {
 			QIdentityProxyModel::connectNotify(signal);
 			return;
 		}
@@ -1427,24 +1427,24 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QIdentityProxyModel_ConnectNotify(this, handle__ConnectNotify, sigval1);
+		miqt_exec_callback_QIdentityProxyModel_connectNotify(this, handle__connectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_ConnectNotify(QMetaMethod* signal) {
+	void virtualbase_connectNotify(QMetaMethod* signal) {
 
 		QIdentityProxyModel::connectNotify(*signal);
 
 	}
 
 	// cgo.Handle value for overwritten implementation
-	intptr_t handle__DisconnectNotify = 0;
+	intptr_t handle__disconnectNotify = 0;
 
 	// Subclass to allow providing a Go implementation
 	virtual void disconnectNotify(const QMetaMethod& signal) override {
-		if (handle__DisconnectNotify == 0) {
+		if (handle__disconnectNotify == 0) {
 			QIdentityProxyModel::disconnectNotify(signal);
 			return;
 		}
@@ -1453,13 +1453,13 @@ public:
 		// Cast returned reference into pointer
 		QMetaMethod* sigval1 = const_cast<QMetaMethod*>(&signal_ret);
 
-		miqt_exec_callback_QIdentityProxyModel_DisconnectNotify(this, handle__DisconnectNotify, sigval1);
+		miqt_exec_callback_QIdentityProxyModel_disconnectNotify(this, handle__disconnectNotify, sigval1);
 
 		
 	}
 
 	// Wrapper to allow calling protected method
-	void virtualbase_DisconnectNotify(QMetaMethod* signal) {
+	void virtualbase_disconnectNotify(QMetaMethod* signal) {
 
 		QIdentityProxyModel::disconnectNotify(*signal);
 
@@ -1479,15 +1479,15 @@ void QIdentityProxyModel_virtbase(QIdentityProxyModel* src, QAbstractProxyModel*
 	*outptr_QAbstractProxyModel = static_cast<QAbstractProxyModel*>(src);
 }
 
-QMetaObject* QIdentityProxyModel_MetaObject(const QIdentityProxyModel* self) {
+QMetaObject* QIdentityProxyModel_metaObject(const QIdentityProxyModel* self) {
 	return (QMetaObject*) self->metaObject();
 }
 
-void* QIdentityProxyModel_Metacast(QIdentityProxyModel* self, const char* param1) {
+void* QIdentityProxyModel_metacast(QIdentityProxyModel* self, const char* param1) {
 	return self->qt_metacast(param1);
 }
 
-struct miqt_string QIdentityProxyModel_Tr(const char* s) {
+struct miqt_string QIdentityProxyModel_tr(const char* s) {
 	QString _ret = QIdentityProxyModel::tr(s);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1498,51 +1498,51 @@ struct miqt_string QIdentityProxyModel_Tr(const char* s) {
 	return _ms;
 }
 
-int QIdentityProxyModel_ColumnCount(const QIdentityProxyModel* self, QModelIndex* parent) {
+int QIdentityProxyModel_columnCount(const QIdentityProxyModel* self, QModelIndex* parent) {
 	return self->columnCount(*parent);
 }
 
-QModelIndex* QIdentityProxyModel_Index(const QIdentityProxyModel* self, int row, int column, QModelIndex* parent) {
+QModelIndex* QIdentityProxyModel_index(const QIdentityProxyModel* self, int row, int column, QModelIndex* parent) {
 	return new QModelIndex(self->index(static_cast<int>(row), static_cast<int>(column), *parent));
 }
 
-QModelIndex* QIdentityProxyModel_MapFromSource(const QIdentityProxyModel* self, QModelIndex* sourceIndex) {
+QModelIndex* QIdentityProxyModel_mapFromSource(const QIdentityProxyModel* self, QModelIndex* sourceIndex) {
 	return new QModelIndex(self->mapFromSource(*sourceIndex));
 }
 
-QModelIndex* QIdentityProxyModel_MapToSource(const QIdentityProxyModel* self, QModelIndex* proxyIndex) {
+QModelIndex* QIdentityProxyModel_mapToSource(const QIdentityProxyModel* self, QModelIndex* proxyIndex) {
 	return new QModelIndex(self->mapToSource(*proxyIndex));
 }
 
-QModelIndex* QIdentityProxyModel_Parent(const QIdentityProxyModel* self, QModelIndex* child) {
+QModelIndex* QIdentityProxyModel_parent(const QIdentityProxyModel* self, QModelIndex* child) {
 	return new QModelIndex(self->parent(*child));
 }
 
-int QIdentityProxyModel_RowCount(const QIdentityProxyModel* self, QModelIndex* parent) {
+int QIdentityProxyModel_rowCount(const QIdentityProxyModel* self, QModelIndex* parent) {
 	return self->rowCount(*parent);
 }
 
-QVariant* QIdentityProxyModel_HeaderData(const QIdentityProxyModel* self, int section, int orientation, int role) {
+QVariant* QIdentityProxyModel_headerData(const QIdentityProxyModel* self, int section, int orientation, int role) {
 	return new QVariant(self->headerData(static_cast<int>(section), static_cast<Qt::Orientation>(orientation), static_cast<int>(role)));
 }
 
-bool QIdentityProxyModel_DropMimeData(QIdentityProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
+bool QIdentityProxyModel_dropMimeData(QIdentityProxyModel* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
 	return self->dropMimeData(data, static_cast<Qt::DropAction>(action), static_cast<int>(row), static_cast<int>(column), *parent);
 }
 
-QModelIndex* QIdentityProxyModel_Sibling(const QIdentityProxyModel* self, int row, int column, QModelIndex* idx) {
+QModelIndex* QIdentityProxyModel_sibling(const QIdentityProxyModel* self, int row, int column, QModelIndex* idx) {
 	return new QModelIndex(self->sibling(static_cast<int>(row), static_cast<int>(column), *idx));
 }
 
-QItemSelection* QIdentityProxyModel_MapSelectionFromSource(const QIdentityProxyModel* self, QItemSelection* selection) {
+QItemSelection* QIdentityProxyModel_mapSelectionFromSource(const QIdentityProxyModel* self, QItemSelection* selection) {
 	return new QItemSelection(self->mapSelectionFromSource(*selection));
 }
 
-QItemSelection* QIdentityProxyModel_MapSelectionToSource(const QIdentityProxyModel* self, QItemSelection* selection) {
+QItemSelection* QIdentityProxyModel_mapSelectionToSource(const QIdentityProxyModel* self, QItemSelection* selection) {
 	return new QItemSelection(self->mapSelectionToSource(*selection));
 }
 
-struct miqt_array /* of QModelIndex* */  QIdentityProxyModel_Match(const QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
+struct miqt_array /* of QModelIndex* */  QIdentityProxyModel_match(const QIdentityProxyModel* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
 	QModelIndexList _ret = self->match(*start, static_cast<int>(role), *value, static_cast<int>(hits), static_cast<Qt::MatchFlags>(flags));
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
@@ -1555,35 +1555,35 @@ struct miqt_array /* of QModelIndex* */  QIdentityProxyModel_Match(const QIdenti
 	return _out;
 }
 
-void QIdentityProxyModel_SetSourceModel(QIdentityProxyModel* self, QAbstractItemModel* sourceModel) {
+void QIdentityProxyModel_setSourceModel(QIdentityProxyModel* self, QAbstractItemModel* sourceModel) {
 	self->setSourceModel(sourceModel);
 }
 
-bool QIdentityProxyModel_InsertColumns(QIdentityProxyModel* self, int column, int count, QModelIndex* parent) {
+bool QIdentityProxyModel_insertColumns(QIdentityProxyModel* self, int column, int count, QModelIndex* parent) {
 	return self->insertColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 }
 
-bool QIdentityProxyModel_InsertRows(QIdentityProxyModel* self, int row, int count, QModelIndex* parent) {
+bool QIdentityProxyModel_insertRows(QIdentityProxyModel* self, int row, int count, QModelIndex* parent) {
 	return self->insertRows(static_cast<int>(row), static_cast<int>(count), *parent);
 }
 
-bool QIdentityProxyModel_RemoveColumns(QIdentityProxyModel* self, int column, int count, QModelIndex* parent) {
+bool QIdentityProxyModel_removeColumns(QIdentityProxyModel* self, int column, int count, QModelIndex* parent) {
 	return self->removeColumns(static_cast<int>(column), static_cast<int>(count), *parent);
 }
 
-bool QIdentityProxyModel_RemoveRows(QIdentityProxyModel* self, int row, int count, QModelIndex* parent) {
+bool QIdentityProxyModel_removeRows(QIdentityProxyModel* self, int row, int count, QModelIndex* parent) {
 	return self->removeRows(static_cast<int>(row), static_cast<int>(count), *parent);
 }
 
-bool QIdentityProxyModel_MoveRows(QIdentityProxyModel* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
+bool QIdentityProxyModel_moveRows(QIdentityProxyModel* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
 	return self->moveRows(*sourceParent, static_cast<int>(sourceRow), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 }
 
-bool QIdentityProxyModel_MoveColumns(QIdentityProxyModel* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
+bool QIdentityProxyModel_moveColumns(QIdentityProxyModel* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
 	return self->moveColumns(*sourceParent, static_cast<int>(sourceColumn), static_cast<int>(count), *destinationParent, static_cast<int>(destinationChild));
 }
 
-struct miqt_string QIdentityProxyModel_Tr2(const char* s, const char* c) {
+struct miqt_string QIdentityProxyModel_tr2(const char* s, const char* c) {
 	QString _ret = QIdentityProxyModel::tr(s, c);
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1594,7 +1594,7 @@ struct miqt_string QIdentityProxyModel_Tr2(const char* s, const char* c) {
 	return _ms;
 }
 
-struct miqt_string QIdentityProxyModel_Tr3(const char* s, const char* c, int n) {
+struct miqt_string QIdentityProxyModel_tr3(const char* s, const char* c, int n) {
 	QString _ret = QIdentityProxyModel::tr(s, c, static_cast<int>(n));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -1605,693 +1605,693 @@ struct miqt_string QIdentityProxyModel_Tr3(const char* s, const char* c, int n) 
 	return _ms;
 }
 
-bool QIdentityProxyModel_override_virtual_ColumnCount(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_columnCount(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ColumnCount = slot;
+	self_cast->handle__columnCount = slot;
 	return true;
 }
 
-int QIdentityProxyModel_virtualbase_ColumnCount(const void* self, QModelIndex* parent) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_ColumnCount(parent);
+int QIdentityProxyModel_virtualbase_columnCount(const void* self, QModelIndex* parent) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_columnCount(parent);
 }
 
-bool QIdentityProxyModel_override_virtual_Index(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_index(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Index = slot;
+	self_cast->handle__index = slot;
 	return true;
 }
 
-QModelIndex* QIdentityProxyModel_virtualbase_Index(const void* self, int row, int column, QModelIndex* parent) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_Index(row, column, parent);
+QModelIndex* QIdentityProxyModel_virtualbase_index(const void* self, int row, int column, QModelIndex* parent) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_index(row, column, parent);
 }
 
-bool QIdentityProxyModel_override_virtual_MapFromSource(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_mapFromSource(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MapFromSource = slot;
+	self_cast->handle__mapFromSource = slot;
 	return true;
 }
 
-QModelIndex* QIdentityProxyModel_virtualbase_MapFromSource(const void* self, QModelIndex* sourceIndex) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_MapFromSource(sourceIndex);
+QModelIndex* QIdentityProxyModel_virtualbase_mapFromSource(const void* self, QModelIndex* sourceIndex) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_mapFromSource(sourceIndex);
 }
 
-bool QIdentityProxyModel_override_virtual_MapToSource(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_mapToSource(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MapToSource = slot;
+	self_cast->handle__mapToSource = slot;
 	return true;
 }
 
-QModelIndex* QIdentityProxyModel_virtualbase_MapToSource(const void* self, QModelIndex* proxyIndex) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_MapToSource(proxyIndex);
+QModelIndex* QIdentityProxyModel_virtualbase_mapToSource(const void* self, QModelIndex* proxyIndex) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_mapToSource(proxyIndex);
 }
 
-bool QIdentityProxyModel_override_virtual_Parent(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_parent(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Parent = slot;
+	self_cast->handle__parent = slot;
 	return true;
 }
 
-QModelIndex* QIdentityProxyModel_virtualbase_Parent(const void* self, QModelIndex* child) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_Parent(child);
+QModelIndex* QIdentityProxyModel_virtualbase_parent(const void* self, QModelIndex* child) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_parent(child);
 }
 
-bool QIdentityProxyModel_override_virtual_RowCount(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_rowCount(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__RowCount = slot;
+	self_cast->handle__rowCount = slot;
 	return true;
 }
 
-int QIdentityProxyModel_virtualbase_RowCount(const void* self, QModelIndex* parent) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_RowCount(parent);
+int QIdentityProxyModel_virtualbase_rowCount(const void* self, QModelIndex* parent) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_rowCount(parent);
 }
 
-bool QIdentityProxyModel_override_virtual_HeaderData(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_headerData(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HeaderData = slot;
+	self_cast->handle__headerData = slot;
 	return true;
 }
 
-QVariant* QIdentityProxyModel_virtualbase_HeaderData(const void* self, int section, int orientation, int role) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_HeaderData(section, orientation, role);
+QVariant* QIdentityProxyModel_virtualbase_headerData(const void* self, int section, int orientation, int role) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_headerData(section, orientation, role);
 }
 
-bool QIdentityProxyModel_override_virtual_DropMimeData(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_dropMimeData(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DropMimeData = slot;
+	self_cast->handle__dropMimeData = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_DropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_DropMimeData(data, action, row, column, parent);
+bool QIdentityProxyModel_virtualbase_dropMimeData(void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
+	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_dropMimeData(data, action, row, column, parent);
 }
 
-bool QIdentityProxyModel_override_virtual_Sibling(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_sibling(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Sibling = slot;
+	self_cast->handle__sibling = slot;
 	return true;
 }
 
-QModelIndex* QIdentityProxyModel_virtualbase_Sibling(const void* self, int row, int column, QModelIndex* idx) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_Sibling(row, column, idx);
+QModelIndex* QIdentityProxyModel_virtualbase_sibling(const void* self, int row, int column, QModelIndex* idx) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_sibling(row, column, idx);
 }
 
-bool QIdentityProxyModel_override_virtual_MapSelectionFromSource(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_mapSelectionFromSource(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MapSelectionFromSource = slot;
+	self_cast->handle__mapSelectionFromSource = slot;
 	return true;
 }
 
-QItemSelection* QIdentityProxyModel_virtualbase_MapSelectionFromSource(const void* self, QItemSelection* selection) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_MapSelectionFromSource(selection);
+QItemSelection* QIdentityProxyModel_virtualbase_mapSelectionFromSource(const void* self, QItemSelection* selection) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_mapSelectionFromSource(selection);
 }
 
-bool QIdentityProxyModel_override_virtual_MapSelectionToSource(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_mapSelectionToSource(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MapSelectionToSource = slot;
+	self_cast->handle__mapSelectionToSource = slot;
 	return true;
 }
 
-QItemSelection* QIdentityProxyModel_virtualbase_MapSelectionToSource(const void* self, QItemSelection* selection) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_MapSelectionToSource(selection);
+QItemSelection* QIdentityProxyModel_virtualbase_mapSelectionToSource(const void* self, QItemSelection* selection) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_mapSelectionToSource(selection);
 }
 
-bool QIdentityProxyModel_override_virtual_Match(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_match(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Match = slot;
+	self_cast->handle__match = slot;
 	return true;
 }
 
-struct miqt_array /* of QModelIndex* */  QIdentityProxyModel_virtualbase_Match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_Match(start, role, value, hits, flags);
+struct miqt_array /* of QModelIndex* */  QIdentityProxyModel_virtualbase_match(const void* self, QModelIndex* start, int role, QVariant* value, int hits, int flags) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_match(start, role, value, hits, flags);
 }
 
-bool QIdentityProxyModel_override_virtual_SetSourceModel(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_setSourceModel(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetSourceModel = slot;
+	self_cast->handle__setSourceModel = slot;
 	return true;
 }
 
-void QIdentityProxyModel_virtualbase_SetSourceModel(void* self, QAbstractItemModel* sourceModel) {
-	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_SetSourceModel(sourceModel);
+void QIdentityProxyModel_virtualbase_setSourceModel(void* self, QAbstractItemModel* sourceModel) {
+	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_setSourceModel(sourceModel);
 }
 
-bool QIdentityProxyModel_override_virtual_InsertColumns(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_insertColumns(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InsertColumns = slot;
+	self_cast->handle__insertColumns = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_InsertColumns(void* self, int column, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_InsertColumns(column, count, parent);
+bool QIdentityProxyModel_virtualbase_insertColumns(void* self, int column, int count, QModelIndex* parent) {
+	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_insertColumns(column, count, parent);
 }
 
-bool QIdentityProxyModel_override_virtual_InsertRows(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_insertRows(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__InsertRows = slot;
+	self_cast->handle__insertRows = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_InsertRows(void* self, int row, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_InsertRows(row, count, parent);
+bool QIdentityProxyModel_virtualbase_insertRows(void* self, int row, int count, QModelIndex* parent) {
+	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_insertRows(row, count, parent);
 }
 
-bool QIdentityProxyModel_override_virtual_RemoveColumns(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_removeColumns(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__RemoveColumns = slot;
+	self_cast->handle__removeColumns = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_RemoveColumns(void* self, int column, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_RemoveColumns(column, count, parent);
+bool QIdentityProxyModel_virtualbase_removeColumns(void* self, int column, int count, QModelIndex* parent) {
+	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_removeColumns(column, count, parent);
 }
 
-bool QIdentityProxyModel_override_virtual_RemoveRows(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_removeRows(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__RemoveRows = slot;
+	self_cast->handle__removeRows = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_RemoveRows(void* self, int row, int count, QModelIndex* parent) {
-	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_RemoveRows(row, count, parent);
+bool QIdentityProxyModel_virtualbase_removeRows(void* self, int row, int count, QModelIndex* parent) {
+	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_removeRows(row, count, parent);
 }
 
-bool QIdentityProxyModel_override_virtual_MoveRows(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_moveRows(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MoveRows = slot;
+	self_cast->handle__moveRows = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_MoveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
-	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_MoveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
+bool QIdentityProxyModel_virtualbase_moveRows(void* self, QModelIndex* sourceParent, int sourceRow, int count, QModelIndex* destinationParent, int destinationChild) {
+	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_moveRows(sourceParent, sourceRow, count, destinationParent, destinationChild);
 }
 
-bool QIdentityProxyModel_override_virtual_MoveColumns(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_moveColumns(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MoveColumns = slot;
+	self_cast->handle__moveColumns = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_MoveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
-	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_MoveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
+bool QIdentityProxyModel_virtualbase_moveColumns(void* self, QModelIndex* sourceParent, int sourceColumn, int count, QModelIndex* destinationParent, int destinationChild) {
+	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_moveColumns(sourceParent, sourceColumn, count, destinationParent, destinationChild);
 }
 
-bool QIdentityProxyModel_override_virtual_Submit(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_submit(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Submit = slot;
+	self_cast->handle__submit = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_Submit(void* self) {
-	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_Submit();
+bool QIdentityProxyModel_virtualbase_submit(void* self) {
+	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_submit();
 }
 
-bool QIdentityProxyModel_override_virtual_Revert(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_revert(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Revert = slot;
+	self_cast->handle__revert = slot;
 	return true;
 }
 
-void QIdentityProxyModel_virtualbase_Revert(void* self) {
-	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_Revert();
+void QIdentityProxyModel_virtualbase_revert(void* self) {
+	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_revert();
 }
 
-bool QIdentityProxyModel_override_virtual_Data(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_data(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Data = slot;
+	self_cast->handle__data = slot;
 	return true;
 }
 
-QVariant* QIdentityProxyModel_virtualbase_Data(const void* self, QModelIndex* proxyIndex, int role) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_Data(proxyIndex, role);
+QVariant* QIdentityProxyModel_virtualbase_data(const void* self, QModelIndex* proxyIndex, int role) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_data(proxyIndex, role);
 }
 
-bool QIdentityProxyModel_override_virtual_ItemData(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_itemData(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ItemData = slot;
+	self_cast->handle__itemData = slot;
 	return true;
 }
 
-struct miqt_map /* of int to QVariant* */  QIdentityProxyModel_virtualbase_ItemData(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_ItemData(index);
+struct miqt_map /* of int to QVariant* */  QIdentityProxyModel_virtualbase_itemData(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_itemData(index);
 }
 
-bool QIdentityProxyModel_override_virtual_Flags(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_flags(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Flags = slot;
+	self_cast->handle__flags = slot;
 	return true;
 }
 
-int QIdentityProxyModel_virtualbase_Flags(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_Flags(index);
+int QIdentityProxyModel_virtualbase_flags(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_flags(index);
 }
 
-bool QIdentityProxyModel_override_virtual_SetData(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_setData(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetData = slot;
+	self_cast->handle__setData = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_SetData(void* self, QModelIndex* index, QVariant* value, int role) {
-	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_SetData(index, value, role);
+bool QIdentityProxyModel_virtualbase_setData(void* self, QModelIndex* index, QVariant* value, int role) {
+	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_setData(index, value, role);
 }
 
-bool QIdentityProxyModel_override_virtual_SetItemData(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_setItemData(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetItemData = slot;
+	self_cast->handle__setItemData = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_SetItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
-	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_SetItemData(index, roles);
+bool QIdentityProxyModel_virtualbase_setItemData(void* self, QModelIndex* index, struct miqt_map /* of int to QVariant* */  roles) {
+	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_setItemData(index, roles);
 }
 
-bool QIdentityProxyModel_override_virtual_SetHeaderData(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_setHeaderData(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SetHeaderData = slot;
+	self_cast->handle__setHeaderData = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_SetHeaderData(void* self, int section, int orientation, QVariant* value, int role) {
-	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_SetHeaderData(section, orientation, value, role);
+bool QIdentityProxyModel_virtualbase_setHeaderData(void* self, int section, int orientation, QVariant* value, int role) {
+	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_setHeaderData(section, orientation, value, role);
 }
 
-bool QIdentityProxyModel_override_virtual_ClearItemData(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_clearItemData(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ClearItemData = slot;
+	self_cast->handle__clearItemData = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_ClearItemData(void* self, QModelIndex* index) {
-	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_ClearItemData(index);
+bool QIdentityProxyModel_virtualbase_clearItemData(void* self, QModelIndex* index) {
+	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_clearItemData(index);
 }
 
-bool QIdentityProxyModel_override_virtual_Buddy(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_buddy(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Buddy = slot;
+	self_cast->handle__buddy = slot;
 	return true;
 }
 
-QModelIndex* QIdentityProxyModel_virtualbase_Buddy(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_Buddy(index);
+QModelIndex* QIdentityProxyModel_virtualbase_buddy(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_buddy(index);
 }
 
-bool QIdentityProxyModel_override_virtual_CanFetchMore(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_canFetchMore(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CanFetchMore = slot;
+	self_cast->handle__canFetchMore = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_CanFetchMore(const void* self, QModelIndex* parent) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_CanFetchMore(parent);
+bool QIdentityProxyModel_virtualbase_canFetchMore(const void* self, QModelIndex* parent) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_canFetchMore(parent);
 }
 
-bool QIdentityProxyModel_override_virtual_FetchMore(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_fetchMore(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__FetchMore = slot;
+	self_cast->handle__fetchMore = slot;
 	return true;
 }
 
-void QIdentityProxyModel_virtualbase_FetchMore(void* self, QModelIndex* parent) {
-	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_FetchMore(parent);
+void QIdentityProxyModel_virtualbase_fetchMore(void* self, QModelIndex* parent) {
+	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_fetchMore(parent);
 }
 
-bool QIdentityProxyModel_override_virtual_Sort(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_sort(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Sort = slot;
+	self_cast->handle__sort = slot;
 	return true;
 }
 
-void QIdentityProxyModel_virtualbase_Sort(void* self, int column, int order) {
-	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_Sort(column, order);
+void QIdentityProxyModel_virtualbase_sort(void* self, int column, int order) {
+	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_sort(column, order);
 }
 
-bool QIdentityProxyModel_override_virtual_Span(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_span(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Span = slot;
+	self_cast->handle__span = slot;
 	return true;
 }
 
-QSize* QIdentityProxyModel_virtualbase_Span(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_Span(index);
+QSize* QIdentityProxyModel_virtualbase_span(const void* self, QModelIndex* index) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_span(index);
 }
 
-bool QIdentityProxyModel_override_virtual_HasChildren(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_hasChildren(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__HasChildren = slot;
+	self_cast->handle__hasChildren = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_HasChildren(const void* self, QModelIndex* parent) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_HasChildren(parent);
+bool QIdentityProxyModel_virtualbase_hasChildren(const void* self, QModelIndex* parent) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_hasChildren(parent);
 }
 
-bool QIdentityProxyModel_override_virtual_MimeData(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_mimeData(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MimeData = slot;
+	self_cast->handle__mimeData = slot;
 	return true;
 }
 
-QMimeData* QIdentityProxyModel_virtualbase_MimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_MimeData(indexes);
+QMimeData* QIdentityProxyModel_virtualbase_mimeData(const void* self, struct miqt_array /* of QModelIndex* */  indexes) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_mimeData(indexes);
 }
 
-bool QIdentityProxyModel_override_virtual_CanDropMimeData(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_canDropMimeData(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CanDropMimeData = slot;
+	self_cast->handle__canDropMimeData = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_CanDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_CanDropMimeData(data, action, row, column, parent);
+bool QIdentityProxyModel_virtualbase_canDropMimeData(const void* self, QMimeData* data, int action, int row, int column, QModelIndex* parent) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_canDropMimeData(data, action, row, column, parent);
 }
 
-bool QIdentityProxyModel_override_virtual_MimeTypes(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_mimeTypes(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MimeTypes = slot;
+	self_cast->handle__mimeTypes = slot;
 	return true;
 }
 
-struct miqt_array /* of struct miqt_string */  QIdentityProxyModel_virtualbase_MimeTypes(const void* self) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_MimeTypes();
+struct miqt_array /* of struct miqt_string */  QIdentityProxyModel_virtualbase_mimeTypes(const void* self) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_mimeTypes();
 }
 
-bool QIdentityProxyModel_override_virtual_SupportedDragActions(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_supportedDragActions(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SupportedDragActions = slot;
+	self_cast->handle__supportedDragActions = slot;
 	return true;
 }
 
-int QIdentityProxyModel_virtualbase_SupportedDragActions(const void* self) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_SupportedDragActions();
+int QIdentityProxyModel_virtualbase_supportedDragActions(const void* self) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_supportedDragActions();
 }
 
-bool QIdentityProxyModel_override_virtual_SupportedDropActions(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_supportedDropActions(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__SupportedDropActions = slot;
+	self_cast->handle__supportedDropActions = slot;
 	return true;
 }
 
-int QIdentityProxyModel_virtualbase_SupportedDropActions(const void* self) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_SupportedDropActions();
+int QIdentityProxyModel_virtualbase_supportedDropActions(const void* self) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_supportedDropActions();
 }
 
-bool QIdentityProxyModel_override_virtual_RoleNames(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_roleNames(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__RoleNames = slot;
+	self_cast->handle__roleNames = slot;
 	return true;
 }
 
-struct miqt_map /* of int to struct miqt_string */  QIdentityProxyModel_virtualbase_RoleNames(const void* self) {
-	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_RoleNames();
+struct miqt_map /* of int to struct miqt_string */  QIdentityProxyModel_virtualbase_roleNames(const void* self) {
+	return ( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_roleNames();
 }
 
-bool QIdentityProxyModel_override_virtual_MultiData(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_multiData(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__MultiData = slot;
+	self_cast->handle__multiData = slot;
 	return true;
 }
 
-void QIdentityProxyModel_virtualbase_MultiData(const void* self, QModelIndex* index, QModelRoleDataSpan* roleDataSpan) {
-	( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_MultiData(index, roleDataSpan);
+void QIdentityProxyModel_virtualbase_multiData(const void* self, QModelIndex* index, QModelRoleDataSpan* roleDataSpan) {
+	( (const MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_multiData(index, roleDataSpan);
 }
 
-bool QIdentityProxyModel_override_virtual_ResetInternalData(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_resetInternalData(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ResetInternalData = slot;
+	self_cast->handle__resetInternalData = slot;
 	return true;
 }
 
-void QIdentityProxyModel_virtualbase_ResetInternalData(void* self) {
-	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_ResetInternalData();
+void QIdentityProxyModel_virtualbase_resetInternalData(void* self) {
+	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_resetInternalData();
 }
 
-bool QIdentityProxyModel_override_virtual_Event(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_event(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__Event = slot;
+	self_cast->handle__event = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_Event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_Event(event);
+bool QIdentityProxyModel_virtualbase_event(void* self, QEvent* event) {
+	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_event(event);
 }
 
-bool QIdentityProxyModel_override_virtual_EventFilter(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_eventFilter(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__EventFilter = slot;
+	self_cast->handle__eventFilter = slot;
 	return true;
 }
 
-bool QIdentityProxyModel_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_EventFilter(watched, event);
+bool QIdentityProxyModel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
+	return ( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_eventFilter(watched, event);
 }
 
-bool QIdentityProxyModel_override_virtual_TimerEvent(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_timerEvent(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__TimerEvent = slot;
+	self_cast->handle__timerEvent = slot;
 	return true;
 }
 
-void QIdentityProxyModel_virtualbase_TimerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_TimerEvent(event);
+void QIdentityProxyModel_virtualbase_timerEvent(void* self, QTimerEvent* event) {
+	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_timerEvent(event);
 }
 
-bool QIdentityProxyModel_override_virtual_ChildEvent(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_childEvent(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ChildEvent = slot;
+	self_cast->handle__childEvent = slot;
 	return true;
 }
 
-void QIdentityProxyModel_virtualbase_ChildEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_ChildEvent(event);
+void QIdentityProxyModel_virtualbase_childEvent(void* self, QChildEvent* event) {
+	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_childEvent(event);
 }
 
-bool QIdentityProxyModel_override_virtual_CustomEvent(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_customEvent(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__CustomEvent = slot;
+	self_cast->handle__customEvent = slot;
 	return true;
 }
 
-void QIdentityProxyModel_virtualbase_CustomEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_CustomEvent(event);
+void QIdentityProxyModel_virtualbase_customEvent(void* self, QEvent* event) {
+	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_customEvent(event);
 }
 
-bool QIdentityProxyModel_override_virtual_ConnectNotify(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_connectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__ConnectNotify = slot;
+	self_cast->handle__connectNotify = slot;
 	return true;
 }
 
-void QIdentityProxyModel_virtualbase_ConnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_ConnectNotify(signal);
+void QIdentityProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_connectNotify(signal);
 }
 
-bool QIdentityProxyModel_override_virtual_DisconnectNotify(void* self, intptr_t slot) {
+bool QIdentityProxyModel_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 	MiqtVirtualQIdentityProxyModel* self_cast = dynamic_cast<MiqtVirtualQIdentityProxyModel*>( (QIdentityProxyModel*)(self) );
 	if (self_cast == nullptr) {
 		return false;
 	}
 	
-	self_cast->handle__DisconnectNotify = slot;
+	self_cast->handle__disconnectNotify = slot;
 	return true;
 }
 
-void QIdentityProxyModel_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_DisconnectNotify(signal);
+void QIdentityProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
+	( (MiqtVirtualQIdentityProxyModel*)(self) )->virtualbase_disconnectNotify(signal);
 }
 
-void QIdentityProxyModel_Delete(QIdentityProxyModel* self) {
+void QIdentityProxyModel_delete(QIdentityProxyModel* self) {
 	delete self;
 }
 

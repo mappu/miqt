@@ -59,31 +59,31 @@ func NewQAudioEncoderSettings2(other *QAudioEncoderSettings) *QAudioEncoderSetti
 }
 
 func (this *QAudioEncoderSettings) OperatorAssign(other *QAudioEncoderSettings) {
-	C.QAudioEncoderSettings_OperatorAssign(this.h, other.cPointer())
+	C.QAudioEncoderSettings_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QAudioEncoderSettings) OperatorEqual(other *QAudioEncoderSettings) bool {
-	return (bool)(C.QAudioEncoderSettings_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QAudioEncoderSettings_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QAudioEncoderSettings) OperatorNotEqual(other *QAudioEncoderSettings) bool {
-	return (bool)(C.QAudioEncoderSettings_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QAudioEncoderSettings_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QAudioEncoderSettings) IsNull() bool {
-	return (bool)(C.QAudioEncoderSettings_IsNull(this.h))
+	return (bool)(C.QAudioEncoderSettings_isNull(this.h))
 }
 
 func (this *QAudioEncoderSettings) EncodingMode() QMultimedia__EncodingMode {
-	return (QMultimedia__EncodingMode)(C.QAudioEncoderSettings_EncodingMode(this.h))
+	return (QMultimedia__EncodingMode)(C.QAudioEncoderSettings_encodingMode(this.h))
 }
 
 func (this *QAudioEncoderSettings) SetEncodingMode(encodingMode QMultimedia__EncodingMode) {
-	C.QAudioEncoderSettings_SetEncodingMode(this.h, (C.int)(encodingMode))
+	C.QAudioEncoderSettings_setEncodingMode(this.h, (C.int)(encodingMode))
 }
 
 func (this *QAudioEncoderSettings) Codec() string {
-	var _ms C.struct_miqt_string = C.QAudioEncoderSettings_Codec(this.h)
+	var _ms C.struct_miqt_string = C.QAudioEncoderSettings_codec(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -94,39 +94,39 @@ func (this *QAudioEncoderSettings) SetCodec(codec string) {
 	codec_ms.data = C.CString(codec)
 	codec_ms.len = C.size_t(len(codec))
 	defer C.free(unsafe.Pointer(codec_ms.data))
-	C.QAudioEncoderSettings_SetCodec(this.h, codec_ms)
+	C.QAudioEncoderSettings_setCodec(this.h, codec_ms)
 }
 
 func (this *QAudioEncoderSettings) BitRate() int {
-	return (int)(C.QAudioEncoderSettings_BitRate(this.h))
+	return (int)(C.QAudioEncoderSettings_bitRate(this.h))
 }
 
 func (this *QAudioEncoderSettings) SetBitRate(bitrate int) {
-	C.QAudioEncoderSettings_SetBitRate(this.h, (C.int)(bitrate))
+	C.QAudioEncoderSettings_setBitRate(this.h, (C.int)(bitrate))
 }
 
 func (this *QAudioEncoderSettings) ChannelCount() int {
-	return (int)(C.QAudioEncoderSettings_ChannelCount(this.h))
+	return (int)(C.QAudioEncoderSettings_channelCount(this.h))
 }
 
 func (this *QAudioEncoderSettings) SetChannelCount(channels int) {
-	C.QAudioEncoderSettings_SetChannelCount(this.h, (C.int)(channels))
+	C.QAudioEncoderSettings_setChannelCount(this.h, (C.int)(channels))
 }
 
 func (this *QAudioEncoderSettings) SampleRate() int {
-	return (int)(C.QAudioEncoderSettings_SampleRate(this.h))
+	return (int)(C.QAudioEncoderSettings_sampleRate(this.h))
 }
 
 func (this *QAudioEncoderSettings) SetSampleRate(rate int) {
-	C.QAudioEncoderSettings_SetSampleRate(this.h, (C.int)(rate))
+	C.QAudioEncoderSettings_setSampleRate(this.h, (C.int)(rate))
 }
 
 func (this *QAudioEncoderSettings) Quality() QMultimedia__EncodingQuality {
-	return (QMultimedia__EncodingQuality)(C.QAudioEncoderSettings_Quality(this.h))
+	return (QMultimedia__EncodingQuality)(C.QAudioEncoderSettings_quality(this.h))
 }
 
 func (this *QAudioEncoderSettings) SetQuality(quality QMultimedia__EncodingQuality) {
-	C.QAudioEncoderSettings_SetQuality(this.h, (C.int)(quality))
+	C.QAudioEncoderSettings_setQuality(this.h, (C.int)(quality))
 }
 
 func (this *QAudioEncoderSettings) EncodingOption(option string) *qt.QVariant {
@@ -134,13 +134,13 @@ func (this *QAudioEncoderSettings) EncodingOption(option string) *qt.QVariant {
 	option_ms.data = C.CString(option)
 	option_ms.len = C.size_t(len(option))
 	defer C.free(unsafe.Pointer(option_ms.data))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QAudioEncoderSettings_EncodingOption(this.h, option_ms)))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QAudioEncoderSettings_encodingOption(this.h, option_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioEncoderSettings) EncodingOptions() map[string]qt.QVariant {
-	var _mm C.struct_miqt_map = C.QAudioEncoderSettings_EncodingOptions(this.h)
+	var _mm C.struct_miqt_map = C.QAudioEncoderSettings_encodingOptions(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
 	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
@@ -163,7 +163,7 @@ func (this *QAudioEncoderSettings) SetEncodingOption(option string, value *qt.QV
 	option_ms.data = C.CString(option)
 	option_ms.len = C.size_t(len(option))
 	defer C.free(unsafe.Pointer(option_ms.data))
-	C.QAudioEncoderSettings_SetEncodingOption(this.h, option_ms, (*C.QVariant)(value.UnsafePointer()))
+	C.QAudioEncoderSettings_setEncodingOption(this.h, option_ms, (*C.QVariant)(value.UnsafePointer()))
 }
 
 func (this *QAudioEncoderSettings) SetEncodingOptions(options map[string]qt.QVariant) {
@@ -186,12 +186,12 @@ func (this *QAudioEncoderSettings) SetEncodingOptions(options map[string]qt.QVar
 		keys:   unsafe.Pointer(options_Keys_CArray),
 		values: unsafe.Pointer(options_Values_CArray),
 	}
-	C.QAudioEncoderSettings_SetEncodingOptions(this.h, options_mm)
+	C.QAudioEncoderSettings_setEncodingOptions(this.h, options_mm)
 }
 
 // Delete this object from C++ memory.
 func (this *QAudioEncoderSettings) Delete() {
-	C.QAudioEncoderSettings_Delete(this.h)
+	C.QAudioEncoderSettings_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -248,31 +248,31 @@ func NewQVideoEncoderSettings2(other *QVideoEncoderSettings) *QVideoEncoderSetti
 }
 
 func (this *QVideoEncoderSettings) OperatorAssign(other *QVideoEncoderSettings) {
-	C.QVideoEncoderSettings_OperatorAssign(this.h, other.cPointer())
+	C.QVideoEncoderSettings_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QVideoEncoderSettings) OperatorEqual(other *QVideoEncoderSettings) bool {
-	return (bool)(C.QVideoEncoderSettings_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QVideoEncoderSettings_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QVideoEncoderSettings) OperatorNotEqual(other *QVideoEncoderSettings) bool {
-	return (bool)(C.QVideoEncoderSettings_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QVideoEncoderSettings_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QVideoEncoderSettings) IsNull() bool {
-	return (bool)(C.QVideoEncoderSettings_IsNull(this.h))
+	return (bool)(C.QVideoEncoderSettings_isNull(this.h))
 }
 
 func (this *QVideoEncoderSettings) EncodingMode() QMultimedia__EncodingMode {
-	return (QMultimedia__EncodingMode)(C.QVideoEncoderSettings_EncodingMode(this.h))
+	return (QMultimedia__EncodingMode)(C.QVideoEncoderSettings_encodingMode(this.h))
 }
 
 func (this *QVideoEncoderSettings) SetEncodingMode(encodingMode QMultimedia__EncodingMode) {
-	C.QVideoEncoderSettings_SetEncodingMode(this.h, (C.int)(encodingMode))
+	C.QVideoEncoderSettings_setEncodingMode(this.h, (C.int)(encodingMode))
 }
 
 func (this *QVideoEncoderSettings) Codec() string {
-	var _ms C.struct_miqt_string = C.QVideoEncoderSettings_Codec(this.h)
+	var _ms C.struct_miqt_string = C.QVideoEncoderSettings_codec(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -283,45 +283,45 @@ func (this *QVideoEncoderSettings) SetCodec(codec string) {
 	codec_ms.data = C.CString(codec)
 	codec_ms.len = C.size_t(len(codec))
 	defer C.free(unsafe.Pointer(codec_ms.data))
-	C.QVideoEncoderSettings_SetCodec(this.h, codec_ms)
+	C.QVideoEncoderSettings_setCodec(this.h, codec_ms)
 }
 
 func (this *QVideoEncoderSettings) Resolution() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoEncoderSettings_Resolution(this.h)))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoEncoderSettings_resolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVideoEncoderSettings) SetResolution(resolution *qt.QSize) {
-	C.QVideoEncoderSettings_SetResolution(this.h, (*C.QSize)(resolution.UnsafePointer()))
+	C.QVideoEncoderSettings_setResolution(this.h, (*C.QSize)(resolution.UnsafePointer()))
 }
 
 func (this *QVideoEncoderSettings) SetResolution2(width int, height int) {
-	C.QVideoEncoderSettings_SetResolution2(this.h, (C.int)(width), (C.int)(height))
+	C.QVideoEncoderSettings_setResolution2(this.h, (C.int)(width), (C.int)(height))
 }
 
 func (this *QVideoEncoderSettings) FrameRate() float64 {
-	return (float64)(C.QVideoEncoderSettings_FrameRate(this.h))
+	return (float64)(C.QVideoEncoderSettings_frameRate(this.h))
 }
 
 func (this *QVideoEncoderSettings) SetFrameRate(rate float64) {
-	C.QVideoEncoderSettings_SetFrameRate(this.h, (C.double)(rate))
+	C.QVideoEncoderSettings_setFrameRate(this.h, (C.double)(rate))
 }
 
 func (this *QVideoEncoderSettings) BitRate() int {
-	return (int)(C.QVideoEncoderSettings_BitRate(this.h))
+	return (int)(C.QVideoEncoderSettings_bitRate(this.h))
 }
 
 func (this *QVideoEncoderSettings) SetBitRate(bitrate int) {
-	C.QVideoEncoderSettings_SetBitRate(this.h, (C.int)(bitrate))
+	C.QVideoEncoderSettings_setBitRate(this.h, (C.int)(bitrate))
 }
 
 func (this *QVideoEncoderSettings) Quality() QMultimedia__EncodingQuality {
-	return (QMultimedia__EncodingQuality)(C.QVideoEncoderSettings_Quality(this.h))
+	return (QMultimedia__EncodingQuality)(C.QVideoEncoderSettings_quality(this.h))
 }
 
 func (this *QVideoEncoderSettings) SetQuality(quality QMultimedia__EncodingQuality) {
-	C.QVideoEncoderSettings_SetQuality(this.h, (C.int)(quality))
+	C.QVideoEncoderSettings_setQuality(this.h, (C.int)(quality))
 }
 
 func (this *QVideoEncoderSettings) EncodingOption(option string) *qt.QVariant {
@@ -329,13 +329,13 @@ func (this *QVideoEncoderSettings) EncodingOption(option string) *qt.QVariant {
 	option_ms.data = C.CString(option)
 	option_ms.len = C.size_t(len(option))
 	defer C.free(unsafe.Pointer(option_ms.data))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QVideoEncoderSettings_EncodingOption(this.h, option_ms)))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QVideoEncoderSettings_encodingOption(this.h, option_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVideoEncoderSettings) EncodingOptions() map[string]qt.QVariant {
-	var _mm C.struct_miqt_map = C.QVideoEncoderSettings_EncodingOptions(this.h)
+	var _mm C.struct_miqt_map = C.QVideoEncoderSettings_encodingOptions(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
 	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
@@ -358,7 +358,7 @@ func (this *QVideoEncoderSettings) SetEncodingOption(option string, value *qt.QV
 	option_ms.data = C.CString(option)
 	option_ms.len = C.size_t(len(option))
 	defer C.free(unsafe.Pointer(option_ms.data))
-	C.QVideoEncoderSettings_SetEncodingOption(this.h, option_ms, (*C.QVariant)(value.UnsafePointer()))
+	C.QVideoEncoderSettings_setEncodingOption(this.h, option_ms, (*C.QVariant)(value.UnsafePointer()))
 }
 
 func (this *QVideoEncoderSettings) SetEncodingOptions(options map[string]qt.QVariant) {
@@ -381,12 +381,12 @@ func (this *QVideoEncoderSettings) SetEncodingOptions(options map[string]qt.QVar
 		keys:   unsafe.Pointer(options_Keys_CArray),
 		values: unsafe.Pointer(options_Values_CArray),
 	}
-	C.QVideoEncoderSettings_SetEncodingOptions(this.h, options_mm)
+	C.QVideoEncoderSettings_setEncodingOptions(this.h, options_mm)
 }
 
 // Delete this object from C++ memory.
 func (this *QVideoEncoderSettings) Delete() {
-	C.QVideoEncoderSettings_Delete(this.h)
+	C.QVideoEncoderSettings_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -443,23 +443,23 @@ func NewQImageEncoderSettings2(other *QImageEncoderSettings) *QImageEncoderSetti
 }
 
 func (this *QImageEncoderSettings) OperatorAssign(other *QImageEncoderSettings) {
-	C.QImageEncoderSettings_OperatorAssign(this.h, other.cPointer())
+	C.QImageEncoderSettings_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QImageEncoderSettings) OperatorEqual(other *QImageEncoderSettings) bool {
-	return (bool)(C.QImageEncoderSettings_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QImageEncoderSettings_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QImageEncoderSettings) OperatorNotEqual(other *QImageEncoderSettings) bool {
-	return (bool)(C.QImageEncoderSettings_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QImageEncoderSettings_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QImageEncoderSettings) IsNull() bool {
-	return (bool)(C.QImageEncoderSettings_IsNull(this.h))
+	return (bool)(C.QImageEncoderSettings_isNull(this.h))
 }
 
 func (this *QImageEncoderSettings) Codec() string {
-	var _ms C.struct_miqt_string = C.QImageEncoderSettings_Codec(this.h)
+	var _ms C.struct_miqt_string = C.QImageEncoderSettings_codec(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -470,29 +470,29 @@ func (this *QImageEncoderSettings) SetCodec(codec string) {
 	codec_ms.data = C.CString(codec)
 	codec_ms.len = C.size_t(len(codec))
 	defer C.free(unsafe.Pointer(codec_ms.data))
-	C.QImageEncoderSettings_SetCodec(this.h, codec_ms)
+	C.QImageEncoderSettings_setCodec(this.h, codec_ms)
 }
 
 func (this *QImageEncoderSettings) Resolution() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QImageEncoderSettings_Resolution(this.h)))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QImageEncoderSettings_resolution(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImageEncoderSettings) SetResolution(resolution *qt.QSize) {
-	C.QImageEncoderSettings_SetResolution(this.h, (*C.QSize)(resolution.UnsafePointer()))
+	C.QImageEncoderSettings_setResolution(this.h, (*C.QSize)(resolution.UnsafePointer()))
 }
 
 func (this *QImageEncoderSettings) SetResolution2(width int, height int) {
-	C.QImageEncoderSettings_SetResolution2(this.h, (C.int)(width), (C.int)(height))
+	C.QImageEncoderSettings_setResolution2(this.h, (C.int)(width), (C.int)(height))
 }
 
 func (this *QImageEncoderSettings) Quality() QMultimedia__EncodingQuality {
-	return (QMultimedia__EncodingQuality)(C.QImageEncoderSettings_Quality(this.h))
+	return (QMultimedia__EncodingQuality)(C.QImageEncoderSettings_quality(this.h))
 }
 
 func (this *QImageEncoderSettings) SetQuality(quality QMultimedia__EncodingQuality) {
-	C.QImageEncoderSettings_SetQuality(this.h, (C.int)(quality))
+	C.QImageEncoderSettings_setQuality(this.h, (C.int)(quality))
 }
 
 func (this *QImageEncoderSettings) EncodingOption(option string) *qt.QVariant {
@@ -500,13 +500,13 @@ func (this *QImageEncoderSettings) EncodingOption(option string) *qt.QVariant {
 	option_ms.data = C.CString(option)
 	option_ms.len = C.size_t(len(option))
 	defer C.free(unsafe.Pointer(option_ms.data))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QImageEncoderSettings_EncodingOption(this.h, option_ms)))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QImageEncoderSettings_encodingOption(this.h, option_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QImageEncoderSettings) EncodingOptions() map[string]qt.QVariant {
-	var _mm C.struct_miqt_map = C.QImageEncoderSettings_EncodingOptions(this.h)
+	var _mm C.struct_miqt_map = C.QImageEncoderSettings_encodingOptions(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
 	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
@@ -529,7 +529,7 @@ func (this *QImageEncoderSettings) SetEncodingOption(option string, value *qt.QV
 	option_ms.data = C.CString(option)
 	option_ms.len = C.size_t(len(option))
 	defer C.free(unsafe.Pointer(option_ms.data))
-	C.QImageEncoderSettings_SetEncodingOption(this.h, option_ms, (*C.QVariant)(value.UnsafePointer()))
+	C.QImageEncoderSettings_setEncodingOption(this.h, option_ms, (*C.QVariant)(value.UnsafePointer()))
 }
 
 func (this *QImageEncoderSettings) SetEncodingOptions(options map[string]qt.QVariant) {
@@ -552,12 +552,12 @@ func (this *QImageEncoderSettings) SetEncodingOptions(options map[string]qt.QVar
 		keys:   unsafe.Pointer(options_Keys_CArray),
 		values: unsafe.Pointer(options_Values_CArray),
 	}
-	C.QImageEncoderSettings_SetEncodingOptions(this.h, options_mm)
+	C.QImageEncoderSettings_setEncodingOptions(this.h, options_mm)
 }
 
 // Delete this object from C++ memory.
 func (this *QImageEncoderSettings) Delete() {
-	C.QImageEncoderSettings_Delete(this.h)
+	C.QImageEncoderSettings_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

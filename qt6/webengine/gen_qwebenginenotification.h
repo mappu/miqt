@@ -29,28 +29,28 @@ typedef struct QWebEngineNotification QWebEngineNotification;
 #endif
 
 void QWebEngineNotification_virtbase(QWebEngineNotification* src, QObject** outptr_QObject);
-QMetaObject* QWebEngineNotification_MetaObject(const QWebEngineNotification* self);
-void* QWebEngineNotification_Metacast(QWebEngineNotification* self, const char* param1);
-struct miqt_string QWebEngineNotification_Tr(const char* s);
-bool QWebEngineNotification_Matches(const QWebEngineNotification* self, QWebEngineNotification* other);
-QUrl* QWebEngineNotification_Origin(const QWebEngineNotification* self);
-QImage* QWebEngineNotification_Icon(const QWebEngineNotification* self);
-struct miqt_string QWebEngineNotification_Title(const QWebEngineNotification* self);
-struct miqt_string QWebEngineNotification_Message(const QWebEngineNotification* self);
-struct miqt_string QWebEngineNotification_Tag(const QWebEngineNotification* self);
-struct miqt_string QWebEngineNotification_Language(const QWebEngineNotification* self);
-int QWebEngineNotification_Direction(const QWebEngineNotification* self);
-void QWebEngineNotification_Show(const QWebEngineNotification* self);
-void QWebEngineNotification_Click(const QWebEngineNotification* self);
-void QWebEngineNotification_Close(const QWebEngineNotification* self);
-void QWebEngineNotification_Closed(QWebEngineNotification* self);
-void QWebEngineNotification_connect_Closed(QWebEngineNotification* self, intptr_t slot);
-struct miqt_string QWebEngineNotification_Tr2(const char* s, const char* c);
-struct miqt_string QWebEngineNotification_Tr3(const char* s, const char* c, int n);
-void QWebEngineNotification_Delete(QWebEngineNotification* self);
+QMetaObject* QWebEngineNotification_metaObject(const QWebEngineNotification* self);
+void* QWebEngineNotification_metacast(QWebEngineNotification* self, const char* param1);
+struct miqt_string QWebEngineNotification_tr(const char* s);
+bool QWebEngineNotification_matches(const QWebEngineNotification* self, QWebEngineNotification* other);
+QUrl* QWebEngineNotification_origin(const QWebEngineNotification* self);
+QImage* QWebEngineNotification_icon(const QWebEngineNotification* self);
+struct miqt_string QWebEngineNotification_title(const QWebEngineNotification* self);
+struct miqt_string QWebEngineNotification_message(const QWebEngineNotification* self);
+struct miqt_string QWebEngineNotification_tag(const QWebEngineNotification* self);
+struct miqt_string QWebEngineNotification_language(const QWebEngineNotification* self);
+int QWebEngineNotification_direction(const QWebEngineNotification* self);
+void QWebEngineNotification_show(const QWebEngineNotification* self);
+void QWebEngineNotification_click(const QWebEngineNotification* self);
+void QWebEngineNotification_close(const QWebEngineNotification* self);
+void QWebEngineNotification_closed(QWebEngineNotification* self);
+void QWebEngineNotification_connect_closed(QWebEngineNotification* self, intptr_t slot);
+struct miqt_string QWebEngineNotification_tr2(const char* s, const char* c);
+struct miqt_string QWebEngineNotification_tr3(const char* s, const char* c, int n);
+void QWebEngineNotification_delete(QWebEngineNotification* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

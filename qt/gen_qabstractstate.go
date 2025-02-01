@@ -51,19 +51,19 @@ func UnsafeNewQAbstractState(h unsafe.Pointer) *QAbstractState {
 }
 
 func (this *QAbstractState) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QAbstractState_MetaObject(this.h))
+	return newQMetaObject(C.QAbstractState_metaObject(this.h))
 }
 
 func (this *QAbstractState) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QAbstractState_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QAbstractState_metacast(this.h, param1_Cstring))
 }
 
 func QAbstractState_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractState_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractState_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -72,33 +72,33 @@ func QAbstractState_Tr(s string) string {
 func QAbstractState_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractState_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractState_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAbstractState) ParentState() *QState {
-	return newQState(C.QAbstractState_ParentState(this.h))
+	return newQState(C.QAbstractState_parentState(this.h))
 }
 
 func (this *QAbstractState) Machine() *QStateMachine {
-	return newQStateMachine(C.QAbstractState_Machine(this.h))
+	return newQStateMachine(C.QAbstractState_machine(this.h))
 }
 
 func (this *QAbstractState) Active() bool {
-	return (bool)(C.QAbstractState_Active(this.h))
+	return (bool)(C.QAbstractState_active(this.h))
 }
 
 func (this *QAbstractState) ActiveChanged(active bool) {
-	C.QAbstractState_ActiveChanged(this.h, (C.bool)(active))
+	C.QAbstractState_activeChanged(this.h, (C.bool)(active))
 }
 func (this *QAbstractState) OnActiveChanged(slot func(active bool)) {
-	C.QAbstractState_connect_ActiveChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QAbstractState_connect_activeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QAbstractState_ActiveChanged
-func miqt_exec_callback_QAbstractState_ActiveChanged(cb C.intptr_t, active C.bool) {
+//export miqt_exec_callback_QAbstractState_activeChanged
+func miqt_exec_callback_QAbstractState_activeChanged(cb C.intptr_t, active C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(active bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -115,7 +115,7 @@ func QAbstractState_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractState_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractState_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -126,7 +126,7 @@ func QAbstractState_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractState_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractState_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -137,7 +137,7 @@ func QAbstractState_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractState_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QAbstractState_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -148,7 +148,7 @@ func QAbstractState_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QAbstractState_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QAbstractState_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -156,7 +156,7 @@ func QAbstractState_TrUtf83(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QAbstractState) Delete() {
-	C.QAbstractState_Delete(this.h)
+	C.QAbstractState_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

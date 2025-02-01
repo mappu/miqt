@@ -64,40 +64,40 @@ func NewQMediaTimeInterval3(param1 *QMediaTimeInterval) *QMediaTimeInterval {
 }
 
 func (this *QMediaTimeInterval) OperatorAssign(param1 *QMediaTimeInterval) {
-	C.QMediaTimeInterval_OperatorAssign(this.h, param1.cPointer())
+	C.QMediaTimeInterval_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QMediaTimeInterval) Start() int64 {
-	return (int64)(C.QMediaTimeInterval_Start(this.h))
+	return (int64)(C.QMediaTimeInterval_start(this.h))
 }
 
 func (this *QMediaTimeInterval) End() int64 {
-	return (int64)(C.QMediaTimeInterval_End(this.h))
+	return (int64)(C.QMediaTimeInterval_end(this.h))
 }
 
 func (this *QMediaTimeInterval) Contains(time int64) bool {
-	return (bool)(C.QMediaTimeInterval_Contains(this.h, (C.longlong)(time)))
+	return (bool)(C.QMediaTimeInterval_contains(this.h, (C.longlong)(time)))
 }
 
 func (this *QMediaTimeInterval) IsNormal() bool {
-	return (bool)(C.QMediaTimeInterval_IsNormal(this.h))
+	return (bool)(C.QMediaTimeInterval_isNormal(this.h))
 }
 
 func (this *QMediaTimeInterval) Normalized() *QMediaTimeInterval {
-	_goptr := newQMediaTimeInterval(C.QMediaTimeInterval_Normalized(this.h))
+	_goptr := newQMediaTimeInterval(C.QMediaTimeInterval_normalized(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QMediaTimeInterval) Translated(offset int64) *QMediaTimeInterval {
-	_goptr := newQMediaTimeInterval(C.QMediaTimeInterval_Translated(this.h, (C.longlong)(offset)))
+	_goptr := newQMediaTimeInterval(C.QMediaTimeInterval_translated(this.h, (C.longlong)(offset)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QMediaTimeInterval) Delete() {
-	C.QMediaTimeInterval_Delete(this.h)
+	C.QMediaTimeInterval_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -166,23 +166,23 @@ func NewQMediaTimeRange4(rangeVal *QMediaTimeRange) *QMediaTimeRange {
 }
 
 func (this *QMediaTimeRange) OperatorAssign(param1 *QMediaTimeRange) {
-	C.QMediaTimeRange_OperatorAssign(this.h, param1.cPointer())
+	C.QMediaTimeRange_operatorAssign(this.h, param1.cPointer())
 }
 
 func (this *QMediaTimeRange) OperatorAssignWithQMediaTimeInterval(param1 *QMediaTimeInterval) {
-	C.QMediaTimeRange_OperatorAssignWithQMediaTimeInterval(this.h, param1.cPointer())
+	C.QMediaTimeRange_operatorAssignWithQMediaTimeInterval(this.h, param1.cPointer())
 }
 
 func (this *QMediaTimeRange) EarliestTime() int64 {
-	return (int64)(C.QMediaTimeRange_EarliestTime(this.h))
+	return (int64)(C.QMediaTimeRange_earliestTime(this.h))
 }
 
 func (this *QMediaTimeRange) LatestTime() int64 {
-	return (int64)(C.QMediaTimeRange_LatestTime(this.h))
+	return (int64)(C.QMediaTimeRange_latestTime(this.h))
 }
 
 func (this *QMediaTimeRange) Intervals() []QMediaTimeInterval {
-	var _ma C.struct_miqt_array = C.QMediaTimeRange_Intervals(this.h)
+	var _ma C.struct_miqt_array = C.QMediaTimeRange_intervals(this.h)
 	_ret := make([]QMediaTimeInterval, int(_ma.len))
 	_outCast := (*[0xffff]*C.QMediaTimeInterval)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -194,64 +194,64 @@ func (this *QMediaTimeRange) Intervals() []QMediaTimeInterval {
 }
 
 func (this *QMediaTimeRange) IsEmpty() bool {
-	return (bool)(C.QMediaTimeRange_IsEmpty(this.h))
+	return (bool)(C.QMediaTimeRange_isEmpty(this.h))
 }
 
 func (this *QMediaTimeRange) IsContinuous() bool {
-	return (bool)(C.QMediaTimeRange_IsContinuous(this.h))
+	return (bool)(C.QMediaTimeRange_isContinuous(this.h))
 }
 
 func (this *QMediaTimeRange) Contains(time int64) bool {
-	return (bool)(C.QMediaTimeRange_Contains(this.h, (C.longlong)(time)))
+	return (bool)(C.QMediaTimeRange_contains(this.h, (C.longlong)(time)))
 }
 
 func (this *QMediaTimeRange) AddInterval(start int64, end int64) {
-	C.QMediaTimeRange_AddInterval(this.h, (C.longlong)(start), (C.longlong)(end))
+	C.QMediaTimeRange_addInterval(this.h, (C.longlong)(start), (C.longlong)(end))
 }
 
 func (this *QMediaTimeRange) AddIntervalWithInterval(interval *QMediaTimeInterval) {
-	C.QMediaTimeRange_AddIntervalWithInterval(this.h, interval.cPointer())
+	C.QMediaTimeRange_addIntervalWithInterval(this.h, interval.cPointer())
 }
 
 func (this *QMediaTimeRange) AddTimeRange(param1 *QMediaTimeRange) {
-	C.QMediaTimeRange_AddTimeRange(this.h, param1.cPointer())
+	C.QMediaTimeRange_addTimeRange(this.h, param1.cPointer())
 }
 
 func (this *QMediaTimeRange) RemoveInterval(start int64, end int64) {
-	C.QMediaTimeRange_RemoveInterval(this.h, (C.longlong)(start), (C.longlong)(end))
+	C.QMediaTimeRange_removeInterval(this.h, (C.longlong)(start), (C.longlong)(end))
 }
 
 func (this *QMediaTimeRange) RemoveIntervalWithInterval(interval *QMediaTimeInterval) {
-	C.QMediaTimeRange_RemoveIntervalWithInterval(this.h, interval.cPointer())
+	C.QMediaTimeRange_removeIntervalWithInterval(this.h, interval.cPointer())
 }
 
 func (this *QMediaTimeRange) RemoveTimeRange(param1 *QMediaTimeRange) {
-	C.QMediaTimeRange_RemoveTimeRange(this.h, param1.cPointer())
+	C.QMediaTimeRange_removeTimeRange(this.h, param1.cPointer())
 }
 
 func (this *QMediaTimeRange) OperatorPlusAssign(param1 *QMediaTimeRange) *QMediaTimeRange {
-	return newQMediaTimeRange(C.QMediaTimeRange_OperatorPlusAssign(this.h, param1.cPointer()))
+	return newQMediaTimeRange(C.QMediaTimeRange_operatorPlusAssign(this.h, param1.cPointer()))
 }
 
 func (this *QMediaTimeRange) OperatorPlusAssignWithQMediaTimeInterval(param1 *QMediaTimeInterval) *QMediaTimeRange {
-	return newQMediaTimeRange(C.QMediaTimeRange_OperatorPlusAssignWithQMediaTimeInterval(this.h, param1.cPointer()))
+	return newQMediaTimeRange(C.QMediaTimeRange_operatorPlusAssignWithQMediaTimeInterval(this.h, param1.cPointer()))
 }
 
 func (this *QMediaTimeRange) OperatorMinusAssign(param1 *QMediaTimeRange) *QMediaTimeRange {
-	return newQMediaTimeRange(C.QMediaTimeRange_OperatorMinusAssign(this.h, param1.cPointer()))
+	return newQMediaTimeRange(C.QMediaTimeRange_operatorMinusAssign(this.h, param1.cPointer()))
 }
 
 func (this *QMediaTimeRange) OperatorMinusAssignWithQMediaTimeInterval(param1 *QMediaTimeInterval) *QMediaTimeRange {
-	return newQMediaTimeRange(C.QMediaTimeRange_OperatorMinusAssignWithQMediaTimeInterval(this.h, param1.cPointer()))
+	return newQMediaTimeRange(C.QMediaTimeRange_operatorMinusAssignWithQMediaTimeInterval(this.h, param1.cPointer()))
 }
 
 func (this *QMediaTimeRange) Clear() {
-	C.QMediaTimeRange_Clear(this.h)
+	C.QMediaTimeRange_clear(this.h)
 }
 
 // Delete this object from C++ memory.
 func (this *QMediaTimeRange) Delete() {
-	C.QMediaTimeRange_Delete(this.h)
+	C.QMediaTimeRange_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -21,10 +21,10 @@ typedef struct QPartialOrdering QPartialOrdering;
 #endif
 
 QPartialOrdering* QPartialOrdering_new(QPartialOrdering* param1);
-void QPartialOrdering_Delete(QPartialOrdering* self);
+void QPartialOrdering_delete(QPartialOrdering* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

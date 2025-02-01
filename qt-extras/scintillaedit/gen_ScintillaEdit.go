@@ -1769,28 +1769,28 @@ func Scintilla__Internal__Point_FromInts(x_ int, y_ int) *Scintilla__Internal__P
 }
 
 func (this *Scintilla__Internal__Point) OperatorEqual(other Scintilla__Internal__Point) bool {
-	return (bool)(C.Scintilla__Internal__Point_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.Scintilla__Internal__Point_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *Scintilla__Internal__Point) OperatorNotEqual(other Scintilla__Internal__Point) bool {
-	return (bool)(C.Scintilla__Internal__Point_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.Scintilla__Internal__Point_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *Scintilla__Internal__Point) OperatorPlus(other Scintilla__Internal__Point) *Scintilla__Internal__Point {
-	_goptr := newScintilla__Internal__Point(C.Scintilla__Internal__Point_OperatorPlus(this.h, other.cPointer()))
+	_goptr := newScintilla__Internal__Point(C.Scintilla__Internal__Point_operatorPlus(this.h, other.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *Scintilla__Internal__Point) OperatorMinus(other Scintilla__Internal__Point) *Scintilla__Internal__Point {
-	_goptr := newScintilla__Internal__Point(C.Scintilla__Internal__Point_OperatorMinus(this.h, other.cPointer()))
+	_goptr := newScintilla__Internal__Point(C.Scintilla__Internal__Point_operatorMinus(this.h, other.cPointer()))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Point) Delete() {
-	C.Scintilla__Internal__Point_Delete(this.h)
+	C.Scintilla__Internal__Point_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1835,7 +1835,7 @@ func UnsafeNewScintilla__Internal__Interval(h unsafe.Pointer) *Scintilla__Intern
 }
 
 func (this *Scintilla__Internal__Interval) OperatorEqual(other *Scintilla__Internal__Interval) bool {
-	return (bool)(C.Scintilla__Internal__Interval_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.Scintilla__Internal__Interval_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *Scintilla__Internal__Interval) Width() float64 {
@@ -1858,7 +1858,7 @@ func (this *Scintilla__Internal__Interval) Offset(offset float64) *Scintilla__In
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Interval) Delete() {
-	C.Scintilla__Internal__Interval_Delete(this.h)
+	C.Scintilla__Internal__Interval_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -1945,7 +1945,7 @@ func Scintilla__Internal__PRectangle_FromInts(left_ int, top_ int, right_ int, b
 }
 
 func (this *Scintilla__Internal__PRectangle) OperatorEqual(rc *Scintilla__Internal__PRectangle) bool {
-	return (bool)(C.Scintilla__Internal__PRectangle_OperatorEqual(this.h, rc.cPointer()))
+	return (bool)(C.Scintilla__Internal__PRectangle_operatorEqual(this.h, rc.cPointer()))
 }
 
 func (this *Scintilla__Internal__PRectangle) Contains(pt Scintilla__Internal__Point) bool {
@@ -2010,7 +2010,7 @@ func (this *Scintilla__Internal__PRectangle) Empty() bool {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__PRectangle) Delete() {
-	C.Scintilla__Internal__PRectangle_Delete(this.h)
+	C.Scintilla__Internal__PRectangle_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2161,7 +2161,7 @@ func (this *Scintilla__Internal__ColourRGBA) GetAlphaComponent() float32 {
 }
 
 func (this *Scintilla__Internal__ColourRGBA) OperatorEqual(other *Scintilla__Internal__ColourRGBA) bool {
-	return (bool)(C.Scintilla__Internal__ColourRGBA_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.Scintilla__Internal__ColourRGBA_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *Scintilla__Internal__ColourRGBA) IsOpaque() bool {
@@ -2181,7 +2181,7 @@ func (this *Scintilla__Internal__ColourRGBA) MixedWith2(other Scintilla__Interna
 }
 
 func (this *Scintilla__Internal__ColourRGBA) OperatorAssign(param1 *Scintilla__Internal__ColourRGBA) {
-	C.Scintilla__Internal__ColourRGBA_OperatorAssign(this.h, param1.cPointer())
+	C.Scintilla__Internal__ColourRGBA_operatorAssign(this.h, param1.cPointer())
 }
 
 func Scintilla__Internal__ColourRGBA_Grey2(grey uint, alpha uint) *Scintilla__Internal__ColourRGBA {
@@ -2192,7 +2192,7 @@ func Scintilla__Internal__ColourRGBA_Grey2(grey uint, alpha uint) *Scintilla__In
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ColourRGBA) Delete() {
-	C.Scintilla__Internal__ColourRGBA_Delete(this.h)
+	C.Scintilla__Internal__ColourRGBA_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2260,7 +2260,7 @@ func (this *Scintilla__Internal__Stroke) WidthF() float32 {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Stroke) Delete() {
-	C.Scintilla__Internal__Stroke_Delete(this.h)
+	C.Scintilla__Internal__Stroke_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2318,7 +2318,7 @@ func NewScintilla__Internal__Fill2(param1 *Scintilla__Internal__Fill) *Scintilla
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Fill) Delete() {
-	C.Scintilla__Internal__Fill_Delete(this.h)
+	C.Scintilla__Internal__Fill_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2388,7 +2388,7 @@ func NewScintilla__Internal__FillStroke4(colourBoth Scintilla__Internal__ColourR
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__FillStroke) Delete() {
-	C.Scintilla__Internal__FillStroke_Delete(this.h)
+	C.Scintilla__Internal__FillStroke_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2440,7 +2440,7 @@ func NewScintilla__Internal__ColourStop(position_ float64, colour_ Scintilla__In
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ColourStop) Delete() {
-	C.Scintilla__Internal__ColourStop_Delete(this.h)
+	C.Scintilla__Internal__ColourStop_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2486,7 +2486,7 @@ func UnsafeNewScintilla__CharacterRange(h unsafe.Pointer) *Scintilla__CharacterR
 
 // Delete this object from C++ memory.
 func (this *Scintilla__CharacterRange) Delete() {
-	C.Scintilla__CharacterRange_Delete(this.h)
+	C.Scintilla__CharacterRange_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2532,7 +2532,7 @@ func UnsafeNewScintilla__CharacterRangeFull(h unsafe.Pointer) *Scintilla__Charac
 
 // Delete this object from C++ memory.
 func (this *Scintilla__CharacterRangeFull) Delete() {
-	C.Scintilla__CharacterRangeFull_Delete(this.h)
+	C.Scintilla__CharacterRangeFull_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2578,7 +2578,7 @@ func UnsafeNewScintilla__TextRange(h unsafe.Pointer) *Scintilla__TextRange {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__TextRange) Delete() {
-	C.Scintilla__TextRange_Delete(this.h)
+	C.Scintilla__TextRange_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2624,7 +2624,7 @@ func UnsafeNewScintilla__TextRangeFull(h unsafe.Pointer) *Scintilla__TextRangeFu
 
 // Delete this object from C++ memory.
 func (this *Scintilla__TextRangeFull) Delete() {
-	C.Scintilla__TextRangeFull_Delete(this.h)
+	C.Scintilla__TextRangeFull_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2670,7 +2670,7 @@ func UnsafeNewScintilla__TextToFind(h unsafe.Pointer) *Scintilla__TextToFind {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__TextToFind) Delete() {
-	C.Scintilla__TextToFind_Delete(this.h)
+	C.Scintilla__TextToFind_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2716,7 +2716,7 @@ func UnsafeNewScintilla__TextToFindFull(h unsafe.Pointer) *Scintilla__TextToFind
 
 // Delete this object from C++ memory.
 func (this *Scintilla__TextToFindFull) Delete() {
-	C.Scintilla__TextToFindFull_Delete(this.h)
+	C.Scintilla__TextToFindFull_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2762,7 +2762,7 @@ func UnsafeNewScintilla__Rectangle(h unsafe.Pointer) *Scintilla__Rectangle {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Rectangle) Delete() {
-	C.Scintilla__Rectangle_Delete(this.h)
+	C.Scintilla__Rectangle_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2808,7 +2808,7 @@ func UnsafeNewScintilla__RangeToFormat(h unsafe.Pointer) *Scintilla__RangeToForm
 
 // Delete this object from C++ memory.
 func (this *Scintilla__RangeToFormat) Delete() {
-	C.Scintilla__RangeToFormat_Delete(this.h)
+	C.Scintilla__RangeToFormat_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2854,7 +2854,7 @@ func UnsafeNewScintilla__RangeToFormatFull(h unsafe.Pointer) *Scintilla__RangeTo
 
 // Delete this object from C++ memory.
 func (this *Scintilla__RangeToFormatFull) Delete() {
-	C.Scintilla__RangeToFormatFull_Delete(this.h)
+	C.Scintilla__RangeToFormatFull_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2900,7 +2900,7 @@ func UnsafeNewScintilla__NotifyHeader(h unsafe.Pointer) *Scintilla__NotifyHeader
 
 // Delete this object from C++ memory.
 func (this *Scintilla__NotifyHeader) Delete() {
-	C.Scintilla__NotifyHeader_Delete(this.h)
+	C.Scintilla__NotifyHeader_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -2946,7 +2946,7 @@ func UnsafeNewScintilla__NotificationData(h unsafe.Pointer) *Scintilla__Notifica
 
 // Delete this object from C++ memory.
 func (this *Scintilla__NotificationData) Delete() {
-	C.Scintilla__NotificationData_Delete(this.h)
+	C.Scintilla__NotificationData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3068,7 +3068,7 @@ func NewScintilla__Internal__FontParameters9(faceName_ string, size_ float64, we
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__FontParameters) Delete() {
-	C.Scintilla__Internal__FontParameters_Delete(this.h)
+	C.Scintilla__Internal__FontParameters_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3120,7 +3120,7 @@ func NewScintilla__Internal__Font() *Scintilla__Internal__Font {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Font) Delete() {
-	C.Scintilla__Internal__Font_Delete(this.h)
+	C.Scintilla__Internal__Font_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3201,12 +3201,12 @@ func (this *Scintilla__Internal__IScreenLine) TabPositionAfter(xPosition float64
 }
 
 func (this *Scintilla__Internal__IScreenLine) OperatorAssign(param1 *Scintilla__Internal__IScreenLine) {
-	C.Scintilla__Internal__IScreenLine_OperatorAssign(this.h, param1.cPointer())
+	C.Scintilla__Internal__IScreenLine_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__IScreenLine) Delete() {
-	C.Scintilla__Internal__IScreenLine_Delete(this.h)
+	C.Scintilla__Internal__IScreenLine_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3259,12 +3259,12 @@ func (this *Scintilla__Internal__IScreenLineLayout) XFromPosition(caretPosition 
 }
 
 func (this *Scintilla__Internal__IScreenLineLayout) OperatorAssign(param1 *Scintilla__Internal__IScreenLineLayout) {
-	C.Scintilla__Internal__IScreenLineLayout_OperatorAssign(this.h, param1.cPointer())
+	C.Scintilla__Internal__IScreenLineLayout_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__IScreenLineLayout) Delete() {
-	C.Scintilla__Internal__IScreenLineLayout_Delete(this.h)
+	C.Scintilla__Internal__IScreenLineLayout_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -3322,7 +3322,7 @@ func NewScintilla__Internal__SurfaceMode2(codePage_ int, bidiR2L_ bool) *Scintil
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__SurfaceMode) Delete() {
-	C.Scintilla__Internal__SurfaceMode_Delete(this.h)
+	C.Scintilla__Internal__SurfaceMode_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4241,7 +4241,7 @@ func miqt_exec_callback_Scintilla__Internal__Surface_FlushDrawing(self *C.Scinti
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Surface) Delete() {
-	C.Scintilla__Internal__Surface_Delete(this.h)
+	C.Scintilla__Internal__Surface_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4292,7 +4292,7 @@ func NewScintilla__Internal__Window() *Scintilla__Internal__Window {
 }
 
 func (this *Scintilla__Internal__Window) OperatorAssign(wid_ unsafe.Pointer) {
-	C.Scintilla__Internal__Window_OperatorAssign(this.h, wid_)
+	C.Scintilla__Internal__Window_operatorAssign(this.h, wid_)
 }
 
 func (this *Scintilla__Internal__Window) GetID() unsafe.Pointer {
@@ -4355,7 +4355,7 @@ func (this *Scintilla__Internal__Window) Show1(show bool) {
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Window) Delete() {
-	C.Scintilla__Internal__Window_Delete(this.h)
+	C.Scintilla__Internal__Window_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4407,7 +4407,7 @@ func NewScintilla__Internal__ListBoxEvent(event_ Scintilla__Internal__ListBoxEve
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ListBoxEvent) Delete() {
-	C.Scintilla__Internal__ListBoxEvent_Delete(this.h)
+	C.Scintilla__Internal__ListBoxEvent_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4456,12 +4456,12 @@ func (this *Scintilla__Internal__IListBoxDelegate) ListNotify(plbe *Scintilla__I
 }
 
 func (this *Scintilla__Internal__IListBoxDelegate) OperatorAssign(param1 *Scintilla__Internal__IListBoxDelegate) {
-	C.Scintilla__Internal__IListBoxDelegate_OperatorAssign(this.h, param1.cPointer())
+	C.Scintilla__Internal__IListBoxDelegate_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__IListBoxDelegate) Delete() {
-	C.Scintilla__Internal__IListBoxDelegate_Delete(this.h)
+	C.Scintilla__Internal__IListBoxDelegate_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -4507,7 +4507,7 @@ func UnsafeNewScintilla__Internal__ListOptions(h unsafe.Pointer) *Scintilla__Int
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ListOptions) Delete() {
-	C.Scintilla__Internal__ListOptions_Delete(this.h)
+	C.Scintilla__Internal__ListOptions_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5052,7 +5052,7 @@ func miqt_exec_callback_Scintilla__Internal__ListBox_SetOptions(self *C.Scintill
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__ListBox) Delete() {
-	C.Scintilla__Internal__ListBox_Delete(this.h)
+	C.Scintilla__Internal__ListBox_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5120,7 +5120,7 @@ func (this *Scintilla__Internal__Menu) Show(pt Scintilla__Internal__Point, w *Sc
 
 // Delete this object from C++ memory.
 func (this *Scintilla__Internal__Menu) Delete() {
-	C.Scintilla__Internal__Menu_Delete(this.h)
+	C.Scintilla__Internal__Menu_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5166,7 +5166,7 @@ func UnsafeNewSci_CharacterRange(h unsafe.Pointer) *Sci_CharacterRange {
 
 // Delete this object from C++ memory.
 func (this *Sci_CharacterRange) Delete() {
-	C.Sci_CharacterRange_Delete(this.h)
+	C.Sci_CharacterRange_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5212,7 +5212,7 @@ func UnsafeNewSci_CharacterRangeFull(h unsafe.Pointer) *Sci_CharacterRangeFull {
 
 // Delete this object from C++ memory.
 func (this *Sci_CharacterRangeFull) Delete() {
-	C.Sci_CharacterRangeFull_Delete(this.h)
+	C.Sci_CharacterRangeFull_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5258,7 +5258,7 @@ func UnsafeNewSci_TextRange(h unsafe.Pointer) *Sci_TextRange {
 
 // Delete this object from C++ memory.
 func (this *Sci_TextRange) Delete() {
-	C.Sci_TextRange_Delete(this.h)
+	C.Sci_TextRange_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5304,7 +5304,7 @@ func UnsafeNewSci_TextRangeFull(h unsafe.Pointer) *Sci_TextRangeFull {
 
 // Delete this object from C++ memory.
 func (this *Sci_TextRangeFull) Delete() {
-	C.Sci_TextRangeFull_Delete(this.h)
+	C.Sci_TextRangeFull_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5350,7 +5350,7 @@ func UnsafeNewSci_TextToFind(h unsafe.Pointer) *Sci_TextToFind {
 
 // Delete this object from C++ memory.
 func (this *Sci_TextToFind) Delete() {
-	C.Sci_TextToFind_Delete(this.h)
+	C.Sci_TextToFind_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5396,7 +5396,7 @@ func UnsafeNewSci_TextToFindFull(h unsafe.Pointer) *Sci_TextToFindFull {
 
 // Delete this object from C++ memory.
 func (this *Sci_TextToFindFull) Delete() {
-	C.Sci_TextToFindFull_Delete(this.h)
+	C.Sci_TextToFindFull_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5442,7 +5442,7 @@ func UnsafeNewSci_Rectangle(h unsafe.Pointer) *Sci_Rectangle {
 
 // Delete this object from C++ memory.
 func (this *Sci_Rectangle) Delete() {
-	C.Sci_Rectangle_Delete(this.h)
+	C.Sci_Rectangle_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5488,7 +5488,7 @@ func UnsafeNewSci_RangeToFormat(h unsafe.Pointer) *Sci_RangeToFormat {
 
 // Delete this object from C++ memory.
 func (this *Sci_RangeToFormat) Delete() {
-	C.Sci_RangeToFormat_Delete(this.h)
+	C.Sci_RangeToFormat_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5534,7 +5534,7 @@ func UnsafeNewSci_RangeToFormatFull(h unsafe.Pointer) *Sci_RangeToFormatFull {
 
 // Delete this object from C++ memory.
 func (this *Sci_RangeToFormatFull) Delete() {
-	C.Sci_RangeToFormatFull_Delete(this.h)
+	C.Sci_RangeToFormatFull_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5580,7 +5580,7 @@ func UnsafeNewSci_NotifyHeader(h unsafe.Pointer) *Sci_NotifyHeader {
 
 // Delete this object from C++ memory.
 func (this *Sci_NotifyHeader) Delete() {
-	C.Sci_NotifyHeader_Delete(this.h)
+	C.Sci_NotifyHeader_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5626,7 +5626,7 @@ func UnsafeNewSCNotification(h unsafe.Pointer) *SCNotification {
 
 // Delete this object from C++ memory.
 func (this *SCNotification) Delete() {
-	C.SCNotification_Delete(this.h)
+	C.SCNotification_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -5687,19 +5687,19 @@ func NewScintillaEditBase2() *ScintillaEditBase {
 }
 
 func (this *ScintillaEditBase) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.ScintillaEditBase_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.ScintillaEditBase_metaObject(this.h)))
 }
 
 func (this *ScintillaEditBase) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.ScintillaEditBase_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.ScintillaEditBase_metacast(this.h, param1_Cstring))
 }
 
 func ScintillaEditBase_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaEditBase_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.ScintillaEditBase_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -5708,47 +5708,47 @@ func ScintillaEditBase_Tr(s string) string {
 func ScintillaEditBase_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaEditBase_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.ScintillaEditBase_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *ScintillaEditBase) Send(iMessage uint, wParam uintptr, lParam uintptr) uintptr {
-	return (uintptr)(C.ScintillaEditBase_Send(this.h, (C.uint)(iMessage), (C.uintptr_t)(wParam), (C.intptr_t)(lParam)))
+	return (uintptr)(C.ScintillaEditBase_send(this.h, (C.uint)(iMessage), (C.uintptr_t)(wParam), (C.intptr_t)(lParam)))
 }
 
 func (this *ScintillaEditBase) Sends(iMessage uint, wParam uintptr, s string) uintptr {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	return (uintptr)(C.ScintillaEditBase_Sends(this.h, (C.uint)(iMessage), (C.uintptr_t)(wParam), s_Cstring))
+	return (uintptr)(C.ScintillaEditBase_sends(this.h, (C.uint)(iMessage), (C.uintptr_t)(wParam), s_Cstring))
 }
 
 func (this *ScintillaEditBase) ScrollHorizontal(value int) {
-	C.ScintillaEditBase_ScrollHorizontal(this.h, (C.int)(value))
+	C.ScintillaEditBase_scrollHorizontal(this.h, (C.int)(value))
 }
 
 func (this *ScintillaEditBase) ScrollVertical(value int) {
-	C.ScintillaEditBase_ScrollVertical(this.h, (C.int)(value))
+	C.ScintillaEditBase_scrollVertical(this.h, (C.int)(value))
 }
 
 func (this *ScintillaEditBase) NotifyParent(scn Scintilla__NotificationData) {
-	C.ScintillaEditBase_NotifyParent(this.h, scn.cPointer())
+	C.ScintillaEditBase_notifyParent(this.h, scn.cPointer())
 }
 
 func (this *ScintillaEditBase) EventCommand(wParam uintptr, lParam uintptr) {
-	C.ScintillaEditBase_EventCommand(this.h, (C.uintptr_t)(wParam), (C.intptr_t)(lParam))
+	C.ScintillaEditBase_eventCommand(this.h, (C.uintptr_t)(wParam), (C.intptr_t)(lParam))
 }
 
 func (this *ScintillaEditBase) HorizontalScrolled(value int) {
-	C.ScintillaEditBase_HorizontalScrolled(this.h, (C.int)(value))
+	C.ScintillaEditBase_horizontalScrolled(this.h, (C.int)(value))
 }
 func (this *ScintillaEditBase) OnHorizontalScrolled(slot func(value int)) {
-	C.ScintillaEditBase_connect_HorizontalScrolled(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_horizontalScrolled(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_HorizontalScrolled
-func miqt_exec_callback_ScintillaEditBase_HorizontalScrolled(cb C.intptr_t, value C.int) {
+//export miqt_exec_callback_ScintillaEditBase_horizontalScrolled
+func miqt_exec_callback_ScintillaEditBase_horizontalScrolled(cb C.intptr_t, value C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(value int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5761,14 +5761,14 @@ func miqt_exec_callback_ScintillaEditBase_HorizontalScrolled(cb C.intptr_t, valu
 }
 
 func (this *ScintillaEditBase) VerticalScrolled(value int) {
-	C.ScintillaEditBase_VerticalScrolled(this.h, (C.int)(value))
+	C.ScintillaEditBase_verticalScrolled(this.h, (C.int)(value))
 }
 func (this *ScintillaEditBase) OnVerticalScrolled(slot func(value int)) {
-	C.ScintillaEditBase_connect_VerticalScrolled(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_verticalScrolled(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_VerticalScrolled
-func miqt_exec_callback_ScintillaEditBase_VerticalScrolled(cb C.intptr_t, value C.int) {
+//export miqt_exec_callback_ScintillaEditBase_verticalScrolled
+func miqt_exec_callback_ScintillaEditBase_verticalScrolled(cb C.intptr_t, value C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(value int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5781,14 +5781,14 @@ func miqt_exec_callback_ScintillaEditBase_VerticalScrolled(cb C.intptr_t, value 
 }
 
 func (this *ScintillaEditBase) HorizontalRangeChanged(max int, page int) {
-	C.ScintillaEditBase_HorizontalRangeChanged(this.h, (C.int)(max), (C.int)(page))
+	C.ScintillaEditBase_horizontalRangeChanged(this.h, (C.int)(max), (C.int)(page))
 }
 func (this *ScintillaEditBase) OnHorizontalRangeChanged(slot func(max int, page int)) {
-	C.ScintillaEditBase_connect_HorizontalRangeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_horizontalRangeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_HorizontalRangeChanged
-func miqt_exec_callback_ScintillaEditBase_HorizontalRangeChanged(cb C.intptr_t, max C.int, page C.int) {
+//export miqt_exec_callback_ScintillaEditBase_horizontalRangeChanged
+func miqt_exec_callback_ScintillaEditBase_horizontalRangeChanged(cb C.intptr_t, max C.int, page C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(max int, page int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5803,14 +5803,14 @@ func miqt_exec_callback_ScintillaEditBase_HorizontalRangeChanged(cb C.intptr_t, 
 }
 
 func (this *ScintillaEditBase) VerticalRangeChanged(max int, page int) {
-	C.ScintillaEditBase_VerticalRangeChanged(this.h, (C.int)(max), (C.int)(page))
+	C.ScintillaEditBase_verticalRangeChanged(this.h, (C.int)(max), (C.int)(page))
 }
 func (this *ScintillaEditBase) OnVerticalRangeChanged(slot func(max int, page int)) {
-	C.ScintillaEditBase_connect_VerticalRangeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_verticalRangeChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_VerticalRangeChanged
-func miqt_exec_callback_ScintillaEditBase_VerticalRangeChanged(cb C.intptr_t, max C.int, page C.int) {
+//export miqt_exec_callback_ScintillaEditBase_verticalRangeChanged
+func miqt_exec_callback_ScintillaEditBase_verticalRangeChanged(cb C.intptr_t, max C.int, page C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(max int, page int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5825,14 +5825,14 @@ func miqt_exec_callback_ScintillaEditBase_VerticalRangeChanged(cb C.intptr_t, ma
 }
 
 func (this *ScintillaEditBase) NotifyChange() {
-	C.ScintillaEditBase_NotifyChange(this.h)
+	C.ScintillaEditBase_notifyChange(this.h)
 }
 func (this *ScintillaEditBase) OnNotifyChange(slot func()) {
-	C.ScintillaEditBase_connect_NotifyChange(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_notifyChange(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_NotifyChange
-func miqt_exec_callback_ScintillaEditBase_NotifyChange(cb C.intptr_t) {
+//export miqt_exec_callback_ScintillaEditBase_notifyChange
+func miqt_exec_callback_ScintillaEditBase_notifyChange(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5842,14 +5842,14 @@ func miqt_exec_callback_ScintillaEditBase_NotifyChange(cb C.intptr_t) {
 }
 
 func (this *ScintillaEditBase) LinesAdded(linesAdded uintptr) {
-	C.ScintillaEditBase_LinesAdded(this.h, (C.intptr_t)(linesAdded))
+	C.ScintillaEditBase_linesAdded(this.h, (C.intptr_t)(linesAdded))
 }
 func (this *ScintillaEditBase) OnLinesAdded(slot func(linesAdded uintptr)) {
-	C.ScintillaEditBase_connect_LinesAdded(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_linesAdded(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_LinesAdded
-func miqt_exec_callback_ScintillaEditBase_LinesAdded(cb C.intptr_t, linesAdded C.intptr_t) {
+//export miqt_exec_callback_ScintillaEditBase_linesAdded
+func miqt_exec_callback_ScintillaEditBase_linesAdded(cb C.intptr_t, linesAdded C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(linesAdded uintptr))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5862,14 +5862,14 @@ func miqt_exec_callback_ScintillaEditBase_LinesAdded(cb C.intptr_t, linesAdded C
 }
 
 func (this *ScintillaEditBase) AboutToCopy(data *qt.QMimeData) {
-	C.ScintillaEditBase_AboutToCopy(this.h, (*C.QMimeData)(data.UnsafePointer()))
+	C.ScintillaEditBase_aboutToCopy(this.h, (*C.QMimeData)(data.UnsafePointer()))
 }
 func (this *ScintillaEditBase) OnAboutToCopy(slot func(data *qt.QMimeData)) {
-	C.ScintillaEditBase_connect_AboutToCopy(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_aboutToCopy(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_AboutToCopy
-func miqt_exec_callback_ScintillaEditBase_AboutToCopy(cb C.intptr_t, data *C.QMimeData) {
+//export miqt_exec_callback_ScintillaEditBase_aboutToCopy
+func miqt_exec_callback_ScintillaEditBase_aboutToCopy(cb C.intptr_t, data *C.QMimeData) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(data *qt.QMimeData))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5882,14 +5882,14 @@ func miqt_exec_callback_ScintillaEditBase_AboutToCopy(cb C.intptr_t, data *C.QMi
 }
 
 func (this *ScintillaEditBase) StyleNeeded(position uintptr) {
-	C.ScintillaEditBase_StyleNeeded(this.h, (C.intptr_t)(position))
+	C.ScintillaEditBase_styleNeeded(this.h, (C.intptr_t)(position))
 }
 func (this *ScintillaEditBase) OnStyleNeeded(slot func(position uintptr)) {
-	C.ScintillaEditBase_connect_StyleNeeded(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_styleNeeded(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_StyleNeeded
-func miqt_exec_callback_ScintillaEditBase_StyleNeeded(cb C.intptr_t, position C.intptr_t) {
+//export miqt_exec_callback_ScintillaEditBase_styleNeeded
+func miqt_exec_callback_ScintillaEditBase_styleNeeded(cb C.intptr_t, position C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(position uintptr))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5902,14 +5902,14 @@ func miqt_exec_callback_ScintillaEditBase_StyleNeeded(cb C.intptr_t, position C.
 }
 
 func (this *ScintillaEditBase) CharAdded(ch int) {
-	C.ScintillaEditBase_CharAdded(this.h, (C.int)(ch))
+	C.ScintillaEditBase_charAdded(this.h, (C.int)(ch))
 }
 func (this *ScintillaEditBase) OnCharAdded(slot func(ch int)) {
-	C.ScintillaEditBase_connect_CharAdded(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_charAdded(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_CharAdded
-func miqt_exec_callback_ScintillaEditBase_CharAdded(cb C.intptr_t, ch C.int) {
+//export miqt_exec_callback_ScintillaEditBase_charAdded
+func miqt_exec_callback_ScintillaEditBase_charAdded(cb C.intptr_t, ch C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(ch int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5922,14 +5922,14 @@ func miqt_exec_callback_ScintillaEditBase_CharAdded(cb C.intptr_t, ch C.int) {
 }
 
 func (this *ScintillaEditBase) SavePointChanged(dirty bool) {
-	C.ScintillaEditBase_SavePointChanged(this.h, (C.bool)(dirty))
+	C.ScintillaEditBase_savePointChanged(this.h, (C.bool)(dirty))
 }
 func (this *ScintillaEditBase) OnSavePointChanged(slot func(dirty bool)) {
-	C.ScintillaEditBase_connect_SavePointChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_savePointChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_SavePointChanged
-func miqt_exec_callback_ScintillaEditBase_SavePointChanged(cb C.intptr_t, dirty C.bool) {
+//export miqt_exec_callback_ScintillaEditBase_savePointChanged
+func miqt_exec_callback_ScintillaEditBase_savePointChanged(cb C.intptr_t, dirty C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(dirty bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5942,14 +5942,14 @@ func miqt_exec_callback_ScintillaEditBase_SavePointChanged(cb C.intptr_t, dirty 
 }
 
 func (this *ScintillaEditBase) ModifyAttemptReadOnly() {
-	C.ScintillaEditBase_ModifyAttemptReadOnly(this.h)
+	C.ScintillaEditBase_modifyAttemptReadOnly(this.h)
 }
 func (this *ScintillaEditBase) OnModifyAttemptReadOnly(slot func()) {
-	C.ScintillaEditBase_connect_ModifyAttemptReadOnly(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_modifyAttemptReadOnly(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_ModifyAttemptReadOnly
-func miqt_exec_callback_ScintillaEditBase_ModifyAttemptReadOnly(cb C.intptr_t) {
+//export miqt_exec_callback_ScintillaEditBase_modifyAttemptReadOnly
+func miqt_exec_callback_ScintillaEditBase_modifyAttemptReadOnly(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5959,14 +5959,14 @@ func miqt_exec_callback_ScintillaEditBase_ModifyAttemptReadOnly(cb C.intptr_t) {
 }
 
 func (this *ScintillaEditBase) Key(key int) {
-	C.ScintillaEditBase_Key(this.h, (C.int)(key))
+	C.ScintillaEditBase_key(this.h, (C.int)(key))
 }
 func (this *ScintillaEditBase) OnKey(slot func(key int)) {
-	C.ScintillaEditBase_connect_Key(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_key(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_Key
-func miqt_exec_callback_ScintillaEditBase_Key(cb C.intptr_t, key C.int) {
+//export miqt_exec_callback_ScintillaEditBase_key
+func miqt_exec_callback_ScintillaEditBase_key(cb C.intptr_t, key C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(key int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -5979,14 +5979,14 @@ func miqt_exec_callback_ScintillaEditBase_Key(cb C.intptr_t, key C.int) {
 }
 
 func (this *ScintillaEditBase) DoubleClick(position uintptr, line uintptr) {
-	C.ScintillaEditBase_DoubleClick(this.h, (C.intptr_t)(position), (C.intptr_t)(line))
+	C.ScintillaEditBase_doubleClick(this.h, (C.intptr_t)(position), (C.intptr_t)(line))
 }
 func (this *ScintillaEditBase) OnDoubleClick(slot func(position uintptr, line uintptr)) {
-	C.ScintillaEditBase_connect_DoubleClick(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_doubleClick(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_DoubleClick
-func miqt_exec_callback_ScintillaEditBase_DoubleClick(cb C.intptr_t, position C.intptr_t, line C.intptr_t) {
+//export miqt_exec_callback_ScintillaEditBase_doubleClick
+func miqt_exec_callback_ScintillaEditBase_doubleClick(cb C.intptr_t, position C.intptr_t, line C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(position uintptr, line uintptr))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6001,14 +6001,14 @@ func miqt_exec_callback_ScintillaEditBase_DoubleClick(cb C.intptr_t, position C.
 }
 
 func (this *ScintillaEditBase) UpdateUi(updated Scintilla__Update) {
-	C.ScintillaEditBase_UpdateUi(this.h, (C.int)(updated))
+	C.ScintillaEditBase_updateUi(this.h, (C.int)(updated))
 }
 func (this *ScintillaEditBase) OnUpdateUi(slot func(updated Scintilla__Update)) {
-	C.ScintillaEditBase_connect_UpdateUi(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_updateUi(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_UpdateUi
-func miqt_exec_callback_ScintillaEditBase_UpdateUi(cb C.intptr_t, updated C.int) {
+//export miqt_exec_callback_ScintillaEditBase_updateUi
+func miqt_exec_callback_ScintillaEditBase_updateUi(cb C.intptr_t, updated C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(updated Scintilla__Update))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6028,14 +6028,14 @@ func (this *ScintillaEditBase) Modified(typeVal Scintilla__ModificationFlags, po
 		text_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	text_alias.len = C.size_t(len(text))
-	C.ScintillaEditBase_Modified(this.h, (C.int)(typeVal), (C.intptr_t)(position), (C.intptr_t)(length), (C.intptr_t)(linesAdded), text_alias, (C.intptr_t)(line), (C.int)(foldNow), (C.int)(foldPrev))
+	C.ScintillaEditBase_modified(this.h, (C.int)(typeVal), (C.intptr_t)(position), (C.intptr_t)(length), (C.intptr_t)(linesAdded), text_alias, (C.intptr_t)(line), (C.int)(foldNow), (C.int)(foldPrev))
 }
 func (this *ScintillaEditBase) OnModified(slot func(typeVal Scintilla__ModificationFlags, position uintptr, length uintptr, linesAdded uintptr, text []byte, line uintptr, foldNow Scintilla__FoldLevel, foldPrev Scintilla__FoldLevel)) {
-	C.ScintillaEditBase_connect_Modified(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_modified(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_Modified
-func miqt_exec_callback_ScintillaEditBase_Modified(cb C.intptr_t, typeVal C.int, position C.intptr_t, length C.intptr_t, linesAdded C.intptr_t, text C.struct_miqt_string, line C.intptr_t, foldNow C.int, foldPrev C.int) {
+//export miqt_exec_callback_ScintillaEditBase_modified
+func miqt_exec_callback_ScintillaEditBase_modified(cb C.intptr_t, typeVal C.int, position C.intptr_t, length C.intptr_t, linesAdded C.intptr_t, text C.struct_miqt_string, line C.intptr_t, foldNow C.int, foldPrev C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(typeVal Scintilla__ModificationFlags, position uintptr, length uintptr, linesAdded uintptr, text []byte, line uintptr, foldNow Scintilla__FoldLevel, foldPrev Scintilla__FoldLevel))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6064,14 +6064,14 @@ func miqt_exec_callback_ScintillaEditBase_Modified(cb C.intptr_t, typeVal C.int,
 }
 
 func (this *ScintillaEditBase) MacroRecord(message Scintilla__Message, wParam uintptr, lParam uintptr) {
-	C.ScintillaEditBase_MacroRecord(this.h, (C.int)(message), (C.uintptr_t)(wParam), (C.intptr_t)(lParam))
+	C.ScintillaEditBase_macroRecord(this.h, (C.int)(message), (C.uintptr_t)(wParam), (C.intptr_t)(lParam))
 }
 func (this *ScintillaEditBase) OnMacroRecord(slot func(message Scintilla__Message, wParam uintptr, lParam uintptr)) {
-	C.ScintillaEditBase_connect_MacroRecord(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_macroRecord(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_MacroRecord
-func miqt_exec_callback_ScintillaEditBase_MacroRecord(cb C.intptr_t, message C.int, wParam C.uintptr_t, lParam C.intptr_t) {
+//export miqt_exec_callback_ScintillaEditBase_macroRecord
+func miqt_exec_callback_ScintillaEditBase_macroRecord(cb C.intptr_t, message C.int, wParam C.uintptr_t, lParam C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(message Scintilla__Message, wParam uintptr, lParam uintptr))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6088,14 +6088,14 @@ func miqt_exec_callback_ScintillaEditBase_MacroRecord(cb C.intptr_t, message C.i
 }
 
 func (this *ScintillaEditBase) MarginClicked(position uintptr, modifiers Scintilla__KeyMod, margin int) {
-	C.ScintillaEditBase_MarginClicked(this.h, (C.intptr_t)(position), (C.int)(modifiers), (C.int)(margin))
+	C.ScintillaEditBase_marginClicked(this.h, (C.intptr_t)(position), (C.int)(modifiers), (C.int)(margin))
 }
 func (this *ScintillaEditBase) OnMarginClicked(slot func(position uintptr, modifiers Scintilla__KeyMod, margin int)) {
-	C.ScintillaEditBase_connect_MarginClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_marginClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_MarginClicked
-func miqt_exec_callback_ScintillaEditBase_MarginClicked(cb C.intptr_t, position C.intptr_t, modifiers C.int, margin C.int) {
+//export miqt_exec_callback_ScintillaEditBase_marginClicked
+func miqt_exec_callback_ScintillaEditBase_marginClicked(cb C.intptr_t, position C.intptr_t, modifiers C.int, margin C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(position uintptr, modifiers Scintilla__KeyMod, margin int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6112,14 +6112,14 @@ func miqt_exec_callback_ScintillaEditBase_MarginClicked(cb C.intptr_t, position 
 }
 
 func (this *ScintillaEditBase) TextAreaClicked(line uintptr, modifiers int) {
-	C.ScintillaEditBase_TextAreaClicked(this.h, (C.intptr_t)(line), (C.int)(modifiers))
+	C.ScintillaEditBase_textAreaClicked(this.h, (C.intptr_t)(line), (C.int)(modifiers))
 }
 func (this *ScintillaEditBase) OnTextAreaClicked(slot func(line uintptr, modifiers int)) {
-	C.ScintillaEditBase_connect_TextAreaClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_textAreaClicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_TextAreaClicked
-func miqt_exec_callback_ScintillaEditBase_TextAreaClicked(cb C.intptr_t, line C.intptr_t, modifiers C.int) {
+//export miqt_exec_callback_ScintillaEditBase_textAreaClicked
+func miqt_exec_callback_ScintillaEditBase_textAreaClicked(cb C.intptr_t, line C.intptr_t, modifiers C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(line uintptr, modifiers int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6134,14 +6134,14 @@ func miqt_exec_callback_ScintillaEditBase_TextAreaClicked(cb C.intptr_t, line C.
 }
 
 func (this *ScintillaEditBase) NeedShown(position uintptr, length uintptr) {
-	C.ScintillaEditBase_NeedShown(this.h, (C.intptr_t)(position), (C.intptr_t)(length))
+	C.ScintillaEditBase_needShown(this.h, (C.intptr_t)(position), (C.intptr_t)(length))
 }
 func (this *ScintillaEditBase) OnNeedShown(slot func(position uintptr, length uintptr)) {
-	C.ScintillaEditBase_connect_NeedShown(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_needShown(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_NeedShown
-func miqt_exec_callback_ScintillaEditBase_NeedShown(cb C.intptr_t, position C.intptr_t, length C.intptr_t) {
+//export miqt_exec_callback_ScintillaEditBase_needShown
+func miqt_exec_callback_ScintillaEditBase_needShown(cb C.intptr_t, position C.intptr_t, length C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(position uintptr, length uintptr))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6156,14 +6156,14 @@ func miqt_exec_callback_ScintillaEditBase_NeedShown(cb C.intptr_t, position C.in
 }
 
 func (this *ScintillaEditBase) Painted() {
-	C.ScintillaEditBase_Painted(this.h)
+	C.ScintillaEditBase_painted(this.h)
 }
 func (this *ScintillaEditBase) OnPainted(slot func()) {
-	C.ScintillaEditBase_connect_Painted(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_painted(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_Painted
-func miqt_exec_callback_ScintillaEditBase_Painted(cb C.intptr_t) {
+//export miqt_exec_callback_ScintillaEditBase_painted
+func miqt_exec_callback_ScintillaEditBase_painted(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6173,14 +6173,14 @@ func miqt_exec_callback_ScintillaEditBase_Painted(cb C.intptr_t) {
 }
 
 func (this *ScintillaEditBase) UserListSelection() {
-	C.ScintillaEditBase_UserListSelection(this.h)
+	C.ScintillaEditBase_userListSelection(this.h)
 }
 func (this *ScintillaEditBase) OnUserListSelection(slot func()) {
-	C.ScintillaEditBase_connect_UserListSelection(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_userListSelection(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_UserListSelection
-func miqt_exec_callback_ScintillaEditBase_UserListSelection(cb C.intptr_t) {
+//export miqt_exec_callback_ScintillaEditBase_userListSelection
+func miqt_exec_callback_ScintillaEditBase_userListSelection(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6194,14 +6194,14 @@ func (this *ScintillaEditBase) UriDropped(uri string) {
 	uri_ms.data = C.CString(uri)
 	uri_ms.len = C.size_t(len(uri))
 	defer C.free(unsafe.Pointer(uri_ms.data))
-	C.ScintillaEditBase_UriDropped(this.h, uri_ms)
+	C.ScintillaEditBase_uriDropped(this.h, uri_ms)
 }
 func (this *ScintillaEditBase) OnUriDropped(slot func(uri string)) {
-	C.ScintillaEditBase_connect_UriDropped(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_uriDropped(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_UriDropped
-func miqt_exec_callback_ScintillaEditBase_UriDropped(cb C.intptr_t, uri C.struct_miqt_string) {
+//export miqt_exec_callback_ScintillaEditBase_uriDropped
+func miqt_exec_callback_ScintillaEditBase_uriDropped(cb C.intptr_t, uri C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(uri string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6217,14 +6217,14 @@ func miqt_exec_callback_ScintillaEditBase_UriDropped(cb C.intptr_t, uri C.struct
 }
 
 func (this *ScintillaEditBase) DwellStart(x int, y int) {
-	C.ScintillaEditBase_DwellStart(this.h, (C.int)(x), (C.int)(y))
+	C.ScintillaEditBase_dwellStart(this.h, (C.int)(x), (C.int)(y))
 }
 func (this *ScintillaEditBase) OnDwellStart(slot func(x int, y int)) {
-	C.ScintillaEditBase_connect_DwellStart(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_dwellStart(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_DwellStart
-func miqt_exec_callback_ScintillaEditBase_DwellStart(cb C.intptr_t, x C.int, y C.int) {
+//export miqt_exec_callback_ScintillaEditBase_dwellStart
+func miqt_exec_callback_ScintillaEditBase_dwellStart(cb C.intptr_t, x C.int, y C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(x int, y int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6239,14 +6239,14 @@ func miqt_exec_callback_ScintillaEditBase_DwellStart(cb C.intptr_t, x C.int, y C
 }
 
 func (this *ScintillaEditBase) DwellEnd(x int, y int) {
-	C.ScintillaEditBase_DwellEnd(this.h, (C.int)(x), (C.int)(y))
+	C.ScintillaEditBase_dwellEnd(this.h, (C.int)(x), (C.int)(y))
 }
 func (this *ScintillaEditBase) OnDwellEnd(slot func(x int, y int)) {
-	C.ScintillaEditBase_connect_DwellEnd(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_dwellEnd(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_DwellEnd
-func miqt_exec_callback_ScintillaEditBase_DwellEnd(cb C.intptr_t, x C.int, y C.int) {
+//export miqt_exec_callback_ScintillaEditBase_dwellEnd
+func miqt_exec_callback_ScintillaEditBase_dwellEnd(cb C.intptr_t, x C.int, y C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(x int, y int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6261,14 +6261,14 @@ func miqt_exec_callback_ScintillaEditBase_DwellEnd(cb C.intptr_t, x C.int, y C.i
 }
 
 func (this *ScintillaEditBase) Zoom(zoom int) {
-	C.ScintillaEditBase_Zoom(this.h, (C.int)(zoom))
+	C.ScintillaEditBase_zoom(this.h, (C.int)(zoom))
 }
 func (this *ScintillaEditBase) OnZoom(slot func(zoom int)) {
-	C.ScintillaEditBase_connect_Zoom(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_zoom(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_Zoom
-func miqt_exec_callback_ScintillaEditBase_Zoom(cb C.intptr_t, zoom C.int) {
+//export miqt_exec_callback_ScintillaEditBase_zoom
+func miqt_exec_callback_ScintillaEditBase_zoom(cb C.intptr_t, zoom C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(zoom int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6281,14 +6281,14 @@ func miqt_exec_callback_ScintillaEditBase_Zoom(cb C.intptr_t, zoom C.int) {
 }
 
 func (this *ScintillaEditBase) HotSpotClick(position uintptr, modifiers Scintilla__KeyMod) {
-	C.ScintillaEditBase_HotSpotClick(this.h, (C.intptr_t)(position), (C.int)(modifiers))
+	C.ScintillaEditBase_hotSpotClick(this.h, (C.intptr_t)(position), (C.int)(modifiers))
 }
 func (this *ScintillaEditBase) OnHotSpotClick(slot func(position uintptr, modifiers Scintilla__KeyMod)) {
-	C.ScintillaEditBase_connect_HotSpotClick(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_hotSpotClick(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_HotSpotClick
-func miqt_exec_callback_ScintillaEditBase_HotSpotClick(cb C.intptr_t, position C.intptr_t, modifiers C.int) {
+//export miqt_exec_callback_ScintillaEditBase_hotSpotClick
+func miqt_exec_callback_ScintillaEditBase_hotSpotClick(cb C.intptr_t, position C.intptr_t, modifiers C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(position uintptr, modifiers Scintilla__KeyMod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6303,14 +6303,14 @@ func miqt_exec_callback_ScintillaEditBase_HotSpotClick(cb C.intptr_t, position C
 }
 
 func (this *ScintillaEditBase) HotSpotDoubleClick(position uintptr, modifiers Scintilla__KeyMod) {
-	C.ScintillaEditBase_HotSpotDoubleClick(this.h, (C.intptr_t)(position), (C.int)(modifiers))
+	C.ScintillaEditBase_hotSpotDoubleClick(this.h, (C.intptr_t)(position), (C.int)(modifiers))
 }
 func (this *ScintillaEditBase) OnHotSpotDoubleClick(slot func(position uintptr, modifiers Scintilla__KeyMod)) {
-	C.ScintillaEditBase_connect_HotSpotDoubleClick(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_hotSpotDoubleClick(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_HotSpotDoubleClick
-func miqt_exec_callback_ScintillaEditBase_HotSpotDoubleClick(cb C.intptr_t, position C.intptr_t, modifiers C.int) {
+//export miqt_exec_callback_ScintillaEditBase_hotSpotDoubleClick
+func miqt_exec_callback_ScintillaEditBase_hotSpotDoubleClick(cb C.intptr_t, position C.intptr_t, modifiers C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(position uintptr, modifiers Scintilla__KeyMod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6325,14 +6325,14 @@ func miqt_exec_callback_ScintillaEditBase_HotSpotDoubleClick(cb C.intptr_t, posi
 }
 
 func (this *ScintillaEditBase) CallTipClick() {
-	C.ScintillaEditBase_CallTipClick(this.h)
+	C.ScintillaEditBase_callTipClick(this.h)
 }
 func (this *ScintillaEditBase) OnCallTipClick(slot func()) {
-	C.ScintillaEditBase_connect_CallTipClick(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_callTipClick(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_CallTipClick
-func miqt_exec_callback_ScintillaEditBase_CallTipClick(cb C.intptr_t) {
+//export miqt_exec_callback_ScintillaEditBase_callTipClick
+func miqt_exec_callback_ScintillaEditBase_callTipClick(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6346,14 +6346,14 @@ func (this *ScintillaEditBase) AutoCompleteSelection(position uintptr, text stri
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.ScintillaEditBase_AutoCompleteSelection(this.h, (C.intptr_t)(position), text_ms)
+	C.ScintillaEditBase_autoCompleteSelection(this.h, (C.intptr_t)(position), text_ms)
 }
 func (this *ScintillaEditBase) OnAutoCompleteSelection(slot func(position uintptr, text string)) {
-	C.ScintillaEditBase_connect_AutoCompleteSelection(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_autoCompleteSelection(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_AutoCompleteSelection
-func miqt_exec_callback_ScintillaEditBase_AutoCompleteSelection(cb C.intptr_t, position C.intptr_t, text C.struct_miqt_string) {
+//export miqt_exec_callback_ScintillaEditBase_autoCompleteSelection
+func miqt_exec_callback_ScintillaEditBase_autoCompleteSelection(cb C.intptr_t, position C.intptr_t, text C.struct_miqt_string) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(position uintptr, text string))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6371,14 +6371,14 @@ func miqt_exec_callback_ScintillaEditBase_AutoCompleteSelection(cb C.intptr_t, p
 }
 
 func (this *ScintillaEditBase) AutoCompleteCancelled() {
-	C.ScintillaEditBase_AutoCompleteCancelled(this.h)
+	C.ScintillaEditBase_autoCompleteCancelled(this.h)
 }
 func (this *ScintillaEditBase) OnAutoCompleteCancelled(slot func()) {
-	C.ScintillaEditBase_connect_AutoCompleteCancelled(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_autoCompleteCancelled(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_AutoCompleteCancelled
-func miqt_exec_callback_ScintillaEditBase_AutoCompleteCancelled(cb C.intptr_t) {
+//export miqt_exec_callback_ScintillaEditBase_autoCompleteCancelled
+func miqt_exec_callback_ScintillaEditBase_autoCompleteCancelled(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6388,14 +6388,14 @@ func miqt_exec_callback_ScintillaEditBase_AutoCompleteCancelled(cb C.intptr_t) {
 }
 
 func (this *ScintillaEditBase) FocusChanged(focused bool) {
-	C.ScintillaEditBase_FocusChanged(this.h, (C.bool)(focused))
+	C.ScintillaEditBase_focusChanged(this.h, (C.bool)(focused))
 }
 func (this *ScintillaEditBase) OnFocusChanged(slot func(focused bool)) {
-	C.ScintillaEditBase_connect_FocusChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_focusChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_FocusChanged
-func miqt_exec_callback_ScintillaEditBase_FocusChanged(cb C.intptr_t, focused C.bool) {
+//export miqt_exec_callback_ScintillaEditBase_focusChanged
+func miqt_exec_callback_ScintillaEditBase_focusChanged(cb C.intptr_t, focused C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(focused bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6408,14 +6408,14 @@ func miqt_exec_callback_ScintillaEditBase_FocusChanged(cb C.intptr_t, focused C.
 }
 
 func (this *ScintillaEditBase) Notify(pscn *Scintilla__NotificationData) {
-	C.ScintillaEditBase_Notify(this.h, pscn.cPointer())
+	C.ScintillaEditBase_notify(this.h, pscn.cPointer())
 }
 func (this *ScintillaEditBase) OnNotify(slot func(pscn *Scintilla__NotificationData)) {
-	C.ScintillaEditBase_connect_Notify(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_notify(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_Notify
-func miqt_exec_callback_ScintillaEditBase_Notify(cb C.intptr_t, pscn *C.Scintilla__NotificationData) {
+//export miqt_exec_callback_ScintillaEditBase_notify
+func miqt_exec_callback_ScintillaEditBase_notify(cb C.intptr_t, pscn *C.Scintilla__NotificationData) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(pscn *Scintilla__NotificationData))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6428,14 +6428,14 @@ func miqt_exec_callback_ScintillaEditBase_Notify(cb C.intptr_t, pscn *C.Scintill
 }
 
 func (this *ScintillaEditBase) Command(wParam uintptr, lParam uintptr) {
-	C.ScintillaEditBase_Command(this.h, (C.uintptr_t)(wParam), (C.intptr_t)(lParam))
+	C.ScintillaEditBase_command(this.h, (C.uintptr_t)(wParam), (C.intptr_t)(lParam))
 }
 func (this *ScintillaEditBase) OnCommand(slot func(wParam uintptr, lParam uintptr)) {
-	C.ScintillaEditBase_connect_Command(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_command(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_Command
-func miqt_exec_callback_ScintillaEditBase_Command(cb C.intptr_t, wParam C.uintptr_t, lParam C.intptr_t) {
+//export miqt_exec_callback_ScintillaEditBase_command
+func miqt_exec_callback_ScintillaEditBase_command(cb C.intptr_t, wParam C.uintptr_t, lParam C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(wParam uintptr, lParam uintptr))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6450,14 +6450,14 @@ func miqt_exec_callback_ScintillaEditBase_Command(cb C.intptr_t, wParam C.uintpt
 }
 
 func (this *ScintillaEditBase) ButtonPressed(event *qt.QMouseEvent) {
-	C.ScintillaEditBase_ButtonPressed(this.h, (*C.QMouseEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_buttonPressed(this.h, (*C.QMouseEvent)(event.UnsafePointer()))
 }
 func (this *ScintillaEditBase) OnButtonPressed(slot func(event *qt.QMouseEvent)) {
-	C.ScintillaEditBase_connect_ButtonPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_buttonPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_ButtonPressed
-func miqt_exec_callback_ScintillaEditBase_ButtonPressed(cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_ScintillaEditBase_buttonPressed
+func miqt_exec_callback_ScintillaEditBase_buttonPressed(cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6470,14 +6470,14 @@ func miqt_exec_callback_ScintillaEditBase_ButtonPressed(cb C.intptr_t, event *C.
 }
 
 func (this *ScintillaEditBase) ButtonReleased(event *qt.QMouseEvent) {
-	C.ScintillaEditBase_ButtonReleased(this.h, (*C.QMouseEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_buttonReleased(this.h, (*C.QMouseEvent)(event.UnsafePointer()))
 }
 func (this *ScintillaEditBase) OnButtonReleased(slot func(event *qt.QMouseEvent)) {
-	C.ScintillaEditBase_connect_ButtonReleased(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_buttonReleased(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_ButtonReleased
-func miqt_exec_callback_ScintillaEditBase_ButtonReleased(cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_ScintillaEditBase_buttonReleased
+func miqt_exec_callback_ScintillaEditBase_buttonReleased(cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6490,14 +6490,14 @@ func miqt_exec_callback_ScintillaEditBase_ButtonReleased(cb C.intptr_t, event *C
 }
 
 func (this *ScintillaEditBase) KeyPressed(event *qt.QKeyEvent) {
-	C.ScintillaEditBase_KeyPressed(this.h, (*C.QKeyEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_keyPressed(this.h, (*C.QKeyEvent)(event.UnsafePointer()))
 }
 func (this *ScintillaEditBase) OnKeyPressed(slot func(event *qt.QKeyEvent)) {
-	C.ScintillaEditBase_connect_KeyPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_keyPressed(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_KeyPressed
-func miqt_exec_callback_ScintillaEditBase_KeyPressed(cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_ScintillaEditBase_keyPressed
+func miqt_exec_callback_ScintillaEditBase_keyPressed(cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(event *qt.QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6510,14 +6510,14 @@ func miqt_exec_callback_ScintillaEditBase_KeyPressed(cb C.intptr_t, event *C.QKe
 }
 
 func (this *ScintillaEditBase) Resized() {
-	C.ScintillaEditBase_Resized(this.h)
+	C.ScintillaEditBase_resized(this.h)
 }
 func (this *ScintillaEditBase) OnResized(slot func()) {
-	C.ScintillaEditBase_connect_Resized(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaEditBase_connect_resized(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaEditBase_Resized
-func miqt_exec_callback_ScintillaEditBase_Resized(cb C.intptr_t) {
+//export miqt_exec_callback_ScintillaEditBase_resized
+func miqt_exec_callback_ScintillaEditBase_resized(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6531,7 +6531,7 @@ func ScintillaEditBase_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaEditBase_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.ScintillaEditBase_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -6542,7 +6542,7 @@ func ScintillaEditBase_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaEditBase_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.ScintillaEditBase_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -6553,7 +6553,7 @@ func ScintillaEditBase_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaEditBase_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.ScintillaEditBase_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -6564,7 +6564,7 @@ func ScintillaEditBase_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaEditBase_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.ScintillaEditBase_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -6572,18 +6572,18 @@ func ScintillaEditBase_TrUtf83(s string, c string, n int) string {
 
 func (this *ScintillaEditBase) callVirtualBase_Send(iMessage uint, wParam uintptr, lParam uintptr) uintptr {
 
-	return (uintptr)(C.ScintillaEditBase_virtualbase_Send(unsafe.Pointer(this.h), (C.uint)(iMessage), (C.uintptr_t)(wParam), (C.intptr_t)(lParam)))
+	return (uintptr)(C.ScintillaEditBase_virtualbase_send(unsafe.Pointer(this.h), (C.uint)(iMessage), (C.uintptr_t)(wParam), (C.intptr_t)(lParam)))
 
 }
-func (this *ScintillaEditBase) OnSend(slot func(super func(iMessage uint, wParam uintptr, lParam uintptr) uintptr, iMessage uint, wParam uintptr, lParam uintptr) uintptr) {
-	ok := C.ScintillaEditBase_override_virtual_Send(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) Onsend(slot func(super func(iMessage uint, wParam uintptr, lParam uintptr) uintptr, iMessage uint, wParam uintptr, lParam uintptr) uintptr) {
+	ok := C.ScintillaEditBase_override_virtual_send(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_Send
-func miqt_exec_callback_ScintillaEditBase_Send(self *C.ScintillaEditBase, cb C.intptr_t, iMessage C.uint, wParam C.uintptr_t, lParam C.intptr_t) C.intptr_t {
+//export miqt_exec_callback_ScintillaEditBase_send
+func miqt_exec_callback_ScintillaEditBase_send(self *C.ScintillaEditBase, cb C.intptr_t, iMessage C.uint, wParam C.uintptr_t, lParam C.intptr_t) C.intptr_t {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(iMessage uint, wParam uintptr, lParam uintptr) uintptr, iMessage uint, wParam uintptr, lParam uintptr) uintptr)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6606,18 +6606,18 @@ func (this *ScintillaEditBase) callVirtualBase_Sends(iMessage uint, wParam uintp
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
 
-	return (uintptr)(C.ScintillaEditBase_virtualbase_Sends(unsafe.Pointer(this.h), (C.uint)(iMessage), (C.uintptr_t)(wParam), s_Cstring))
+	return (uintptr)(C.ScintillaEditBase_virtualbase_sends(unsafe.Pointer(this.h), (C.uint)(iMessage), (C.uintptr_t)(wParam), s_Cstring))
 
 }
-func (this *ScintillaEditBase) OnSends(slot func(super func(iMessage uint, wParam uintptr, s string) uintptr, iMessage uint, wParam uintptr, s string) uintptr) {
-	ok := C.ScintillaEditBase_override_virtual_Sends(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) Onsends(slot func(super func(iMessage uint, wParam uintptr, s string) uintptr, iMessage uint, wParam uintptr, s string) uintptr) {
+	ok := C.ScintillaEditBase_override_virtual_sends(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_Sends
-func miqt_exec_callback_ScintillaEditBase_Sends(self *C.ScintillaEditBase, cb C.intptr_t, iMessage C.uint, wParam C.uintptr_t, s *C.const_char) C.intptr_t {
+//export miqt_exec_callback_ScintillaEditBase_sends
+func miqt_exec_callback_ScintillaEditBase_sends(self *C.ScintillaEditBase, cb C.intptr_t, iMessage C.uint, wParam C.uintptr_t, s *C.const_char) C.intptr_t {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(iMessage uint, wParam uintptr, s string) uintptr, iMessage uint, wParam uintptr, s string) uintptr)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6639,18 +6639,18 @@ func miqt_exec_callback_ScintillaEditBase_Sends(self *C.ScintillaEditBase, cb C.
 
 func (this *ScintillaEditBase) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.ScintillaEditBase_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.ScintillaEditBase_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *ScintillaEditBase) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.ScintillaEditBase_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.ScintillaEditBase_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_Event
-func miqt_exec_callback_ScintillaEditBase_Event(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_ScintillaEditBase_event
+func miqt_exec_callback_ScintillaEditBase_event(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6667,18 +6667,18 @@ func miqt_exec_callback_ScintillaEditBase_Event(self *C.ScintillaEditBase, cb C.
 
 func (this *ScintillaEditBase) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
 
-	C.ScintillaEditBase_virtualbase_PaintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnPaintEvent(slot func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnpaintEvent(slot func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_PaintEvent
-func miqt_exec_callback_ScintillaEditBase_PaintEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QPaintEvent) {
+//export miqt_exec_callback_ScintillaEditBase_paintEvent
+func miqt_exec_callback_ScintillaEditBase_paintEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6693,18 +6693,18 @@ func miqt_exec_callback_ScintillaEditBase_PaintEvent(self *C.ScintillaEditBase, 
 
 func (this *ScintillaEditBase) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
 
-	C.ScintillaEditBase_virtualbase_WheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnWheelEvent(slot func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnwheelEvent(slot func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_WheelEvent
-func miqt_exec_callback_ScintillaEditBase_WheelEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QWheelEvent) {
+//export miqt_exec_callback_ScintillaEditBase_wheelEvent
+func miqt_exec_callback_ScintillaEditBase_wheelEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6719,18 +6719,18 @@ func miqt_exec_callback_ScintillaEditBase_WheelEvent(self *C.ScintillaEditBase, 
 
 func (this *ScintillaEditBase) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
 
-	C.ScintillaEditBase_virtualbase_FocusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnFocusInEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnfocusInEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_FocusInEvent
-func miqt_exec_callback_ScintillaEditBase_FocusInEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_ScintillaEditBase_focusInEvent
+func miqt_exec_callback_ScintillaEditBase_focusInEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6745,18 +6745,18 @@ func miqt_exec_callback_ScintillaEditBase_FocusInEvent(self *C.ScintillaEditBase
 
 func (this *ScintillaEditBase) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
 
-	C.ScintillaEditBase_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnFocusOutEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnfocusOutEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_FocusOutEvent
-func miqt_exec_callback_ScintillaEditBase_FocusOutEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_ScintillaEditBase_focusOutEvent
+func miqt_exec_callback_ScintillaEditBase_focusOutEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6771,18 +6771,18 @@ func miqt_exec_callback_ScintillaEditBase_FocusOutEvent(self *C.ScintillaEditBas
 
 func (this *ScintillaEditBase) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
 
-	C.ScintillaEditBase_virtualbase_ResizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnResizeEvent(slot func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnresizeEvent(slot func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_ResizeEvent
-func miqt_exec_callback_ScintillaEditBase_ResizeEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QResizeEvent) {
+//export miqt_exec_callback_ScintillaEditBase_resizeEvent
+func miqt_exec_callback_ScintillaEditBase_resizeEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6797,18 +6797,18 @@ func miqt_exec_callback_ScintillaEditBase_ResizeEvent(self *C.ScintillaEditBase,
 
 func (this *ScintillaEditBase) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
 
-	C.ScintillaEditBase_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnKeyPressEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnkeyPressEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_KeyPressEvent
-func miqt_exec_callback_ScintillaEditBase_KeyPressEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_ScintillaEditBase_keyPressEvent
+func miqt_exec_callback_ScintillaEditBase_keyPressEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6823,18 +6823,18 @@ func miqt_exec_callback_ScintillaEditBase_KeyPressEvent(self *C.ScintillaEditBas
 
 func (this *ScintillaEditBase) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
 
-	C.ScintillaEditBase_virtualbase_MousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnMousePressEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnmousePressEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_MousePressEvent
-func miqt_exec_callback_ScintillaEditBase_MousePressEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_ScintillaEditBase_mousePressEvent
+func miqt_exec_callback_ScintillaEditBase_mousePressEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6849,18 +6849,18 @@ func miqt_exec_callback_ScintillaEditBase_MousePressEvent(self *C.ScintillaEditB
 
 func (this *ScintillaEditBase) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
 
-	C.ScintillaEditBase_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnMouseReleaseEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnmouseReleaseEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_MouseReleaseEvent
-func miqt_exec_callback_ScintillaEditBase_MouseReleaseEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_ScintillaEditBase_mouseReleaseEvent
+func miqt_exec_callback_ScintillaEditBase_mouseReleaseEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6875,18 +6875,18 @@ func miqt_exec_callback_ScintillaEditBase_MouseReleaseEvent(self *C.ScintillaEdi
 
 func (this *ScintillaEditBase) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
 
-	C.ScintillaEditBase_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnMouseDoubleClickEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnmouseDoubleClickEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_MouseDoubleClickEvent
-func miqt_exec_callback_ScintillaEditBase_MouseDoubleClickEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_ScintillaEditBase_mouseDoubleClickEvent
+func miqt_exec_callback_ScintillaEditBase_mouseDoubleClickEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6901,18 +6901,18 @@ func miqt_exec_callback_ScintillaEditBase_MouseDoubleClickEvent(self *C.Scintill
 
 func (this *ScintillaEditBase) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
 
-	C.ScintillaEditBase_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnMouseMoveEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnmouseMoveEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_MouseMoveEvent
-func miqt_exec_callback_ScintillaEditBase_MouseMoveEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_ScintillaEditBase_mouseMoveEvent
+func miqt_exec_callback_ScintillaEditBase_mouseMoveEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6927,18 +6927,18 @@ func miqt_exec_callback_ScintillaEditBase_MouseMoveEvent(self *C.ScintillaEditBa
 
 func (this *ScintillaEditBase) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
 
-	C.ScintillaEditBase_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnContextMenuEvent(slot func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OncontextMenuEvent(slot func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_ContextMenuEvent
-func miqt_exec_callback_ScintillaEditBase_ContextMenuEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QContextMenuEvent) {
+//export miqt_exec_callback_ScintillaEditBase_contextMenuEvent
+func miqt_exec_callback_ScintillaEditBase_contextMenuEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6953,18 +6953,18 @@ func miqt_exec_callback_ScintillaEditBase_ContextMenuEvent(self *C.ScintillaEdit
 
 func (this *ScintillaEditBase) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
 
-	C.ScintillaEditBase_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnDragEnterEvent(slot func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OndragEnterEvent(slot func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_DragEnterEvent
-func miqt_exec_callback_ScintillaEditBase_DragEnterEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QDragEnterEvent) {
+//export miqt_exec_callback_ScintillaEditBase_dragEnterEvent
+func miqt_exec_callback_ScintillaEditBase_dragEnterEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -6979,18 +6979,18 @@ func miqt_exec_callback_ScintillaEditBase_DragEnterEvent(self *C.ScintillaEditBa
 
 func (this *ScintillaEditBase) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
 
-	C.ScintillaEditBase_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnDragLeaveEvent(slot func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OndragLeaveEvent(slot func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_DragLeaveEvent
-func miqt_exec_callback_ScintillaEditBase_DragLeaveEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QDragLeaveEvent) {
+//export miqt_exec_callback_ScintillaEditBase_dragLeaveEvent
+func miqt_exec_callback_ScintillaEditBase_dragLeaveEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7005,18 +7005,18 @@ func miqt_exec_callback_ScintillaEditBase_DragLeaveEvent(self *C.ScintillaEditBa
 
 func (this *ScintillaEditBase) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
 
-	C.ScintillaEditBase_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnDragMoveEvent(slot func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OndragMoveEvent(slot func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_DragMoveEvent
-func miqt_exec_callback_ScintillaEditBase_DragMoveEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QDragMoveEvent) {
+//export miqt_exec_callback_ScintillaEditBase_dragMoveEvent
+func miqt_exec_callback_ScintillaEditBase_dragMoveEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7031,18 +7031,18 @@ func miqt_exec_callback_ScintillaEditBase_DragMoveEvent(self *C.ScintillaEditBas
 
 func (this *ScintillaEditBase) callVirtualBase_DropEvent(event *qt.QDropEvent) {
 
-	C.ScintillaEditBase_virtualbase_DropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnDropEvent(slot func(super func(event *qt.QDropEvent), event *qt.QDropEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OndropEvent(slot func(super func(event *qt.QDropEvent), event *qt.QDropEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_DropEvent
-func miqt_exec_callback_ScintillaEditBase_DropEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QDropEvent) {
+//export miqt_exec_callback_ScintillaEditBase_dropEvent
+func miqt_exec_callback_ScintillaEditBase_dropEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDropEvent), event *qt.QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7057,18 +7057,18 @@ func miqt_exec_callback_ScintillaEditBase_DropEvent(self *C.ScintillaEditBase, c
 
 func (this *ScintillaEditBase) callVirtualBase_InputMethodEvent(event *qt.QInputMethodEvent) {
 
-	C.ScintillaEditBase_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnInputMethodEvent(slot func(super func(event *qt.QInputMethodEvent), event *qt.QInputMethodEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OninputMethodEvent(slot func(super func(event *qt.QInputMethodEvent), event *qt.QInputMethodEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_InputMethodEvent
-func miqt_exec_callback_ScintillaEditBase_InputMethodEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QInputMethodEvent) {
+//export miqt_exec_callback_ScintillaEditBase_inputMethodEvent
+func miqt_exec_callback_ScintillaEditBase_inputMethodEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QInputMethodEvent), event *qt.QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7083,20 +7083,20 @@ func miqt_exec_callback_ScintillaEditBase_InputMethodEvent(self *C.ScintillaEdit
 
 func (this *ScintillaEditBase) callVirtualBase_InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
 
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.ScintillaEditBase_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.ScintillaEditBase_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *ScintillaEditBase) OnInputMethodQuery(slot func(super func(query qt.InputMethodQuery) *qt.QVariant, query qt.InputMethodQuery) *qt.QVariant) {
-	ok := C.ScintillaEditBase_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OninputMethodQuery(slot func(super func(query qt.InputMethodQuery) *qt.QVariant, query qt.InputMethodQuery) *qt.QVariant) {
+	ok := C.ScintillaEditBase_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_InputMethodQuery
-func miqt_exec_callback_ScintillaEditBase_InputMethodQuery(self *C.ScintillaEditBase, cb C.intptr_t, query C.int) *C.QVariant {
+//export miqt_exec_callback_ScintillaEditBase_inputMethodQuery
+func miqt_exec_callback_ScintillaEditBase_inputMethodQuery(self *C.ScintillaEditBase, cb C.intptr_t, query C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(query qt.InputMethodQuery) *qt.QVariant, query qt.InputMethodQuery) *qt.QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7113,18 +7113,18 @@ func miqt_exec_callback_ScintillaEditBase_InputMethodQuery(self *C.ScintillaEdit
 
 func (this *ScintillaEditBase) callVirtualBase_ScrollContentsBy(param1 int, param2 int) {
 
-	C.ScintillaEditBase_virtualbase_ScrollContentsBy(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2))
+	C.ScintillaEditBase_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2))
 
 }
-func (this *ScintillaEditBase) OnScrollContentsBy(slot func(super func(param1 int, param2 int), param1 int, param2 int)) {
-	ok := C.ScintillaEditBase_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnscrollContentsBy(slot func(super func(param1 int, param2 int), param1 int, param2 int)) {
+	ok := C.ScintillaEditBase_override_virtual_scrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_ScrollContentsBy
-func miqt_exec_callback_ScintillaEditBase_ScrollContentsBy(self *C.ScintillaEditBase, cb C.intptr_t, param1 C.int, param2 C.int) {
+//export miqt_exec_callback_ScintillaEditBase_scrollContentsBy
+func miqt_exec_callback_ScintillaEditBase_scrollContentsBy(self *C.ScintillaEditBase, cb C.intptr_t, param1 C.int, param2 C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int, param2 int), param1 int, param2 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7141,20 +7141,20 @@ func miqt_exec_callback_ScintillaEditBase_ScrollContentsBy(self *C.ScintillaEdit
 
 func (this *ScintillaEditBase) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *ScintillaEditBase) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	ok := C.ScintillaEditBase_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnminimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	ok := C.ScintillaEditBase_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_MinimumSizeHint
-func miqt_exec_callback_ScintillaEditBase_MinimumSizeHint(self *C.ScintillaEditBase, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_ScintillaEditBase_minimumSizeHint
+func miqt_exec_callback_ScintillaEditBase_minimumSizeHint(self *C.ScintillaEditBase, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7168,20 +7168,20 @@ func miqt_exec_callback_ScintillaEditBase_MinimumSizeHint(self *C.ScintillaEditB
 
 func (this *ScintillaEditBase) callVirtualBase_SizeHint() *qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_SizeHint(unsafe.Pointer(this.h))))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *ScintillaEditBase) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	ok := C.ScintillaEditBase_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnsizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	ok := C.ScintillaEditBase_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_SizeHint
-func miqt_exec_callback_ScintillaEditBase_SizeHint(self *C.ScintillaEditBase, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_ScintillaEditBase_sizeHint
+func miqt_exec_callback_ScintillaEditBase_sizeHint(self *C.ScintillaEditBase, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7195,18 +7195,18 @@ func miqt_exec_callback_ScintillaEditBase_SizeHint(self *C.ScintillaEditBase, cb
 
 func (this *ScintillaEditBase) callVirtualBase_SetupViewport(viewport *qt.QWidget) {
 
-	C.ScintillaEditBase_virtualbase_SetupViewport(unsafe.Pointer(this.h), (*C.QWidget)(viewport.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_setupViewport(unsafe.Pointer(this.h), (*C.QWidget)(viewport.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnSetupViewport(slot func(super func(viewport *qt.QWidget), viewport *qt.QWidget)) {
-	ok := C.ScintillaEditBase_override_virtual_SetupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnsetupViewport(slot func(super func(viewport *qt.QWidget), viewport *qt.QWidget)) {
+	ok := C.ScintillaEditBase_override_virtual_setupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_SetupViewport
-func miqt_exec_callback_ScintillaEditBase_SetupViewport(self *C.ScintillaEditBase, cb C.intptr_t, viewport *C.QWidget) {
+//export miqt_exec_callback_ScintillaEditBase_setupViewport
+func miqt_exec_callback_ScintillaEditBase_setupViewport(self *C.ScintillaEditBase, cb C.intptr_t, viewport *C.QWidget) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(viewport *qt.QWidget), viewport *qt.QWidget))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7221,18 +7221,18 @@ func miqt_exec_callback_ScintillaEditBase_SetupViewport(self *C.ScintillaEditBas
 
 func (this *ScintillaEditBase) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
 
-	return (bool)(C.ScintillaEditBase_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
+	return (bool)(C.ScintillaEditBase_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
 
 }
-func (this *ScintillaEditBase) OnEventFilter(slot func(super func(param1 *qt.QObject, param2 *qt.QEvent) bool, param1 *qt.QObject, param2 *qt.QEvent) bool) {
-	ok := C.ScintillaEditBase_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OneventFilter(slot func(super func(param1 *qt.QObject, param2 *qt.QEvent) bool, param1 *qt.QObject, param2 *qt.QEvent) bool) {
+	ok := C.ScintillaEditBase_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_EventFilter
-func miqt_exec_callback_ScintillaEditBase_EventFilter(self *C.ScintillaEditBase, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+//export miqt_exec_callback_ScintillaEditBase_eventFilter
+func miqt_exec_callback_ScintillaEditBase_eventFilter(self *C.ScintillaEditBase, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QObject, param2 *qt.QEvent) bool, param1 *qt.QObject, param2 *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7251,18 +7251,18 @@ func miqt_exec_callback_ScintillaEditBase_EventFilter(self *C.ScintillaEditBase,
 
 func (this *ScintillaEditBase) callVirtualBase_ViewportEvent(param1 *qt.QEvent) bool {
 
-	return (bool)(C.ScintillaEditBase_virtualbase_ViewportEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
+	return (bool)(C.ScintillaEditBase_virtualbase_viewportEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
 
 }
-func (this *ScintillaEditBase) OnViewportEvent(slot func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool) {
-	ok := C.ScintillaEditBase_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnviewportEvent(slot func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool) {
+	ok := C.ScintillaEditBase_override_virtual_viewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_ViewportEvent
-func miqt_exec_callback_ScintillaEditBase_ViewportEvent(self *C.ScintillaEditBase, cb C.intptr_t, param1 *C.QEvent) C.bool {
+//export miqt_exec_callback_ScintillaEditBase_viewportEvent
+func miqt_exec_callback_ScintillaEditBase_viewportEvent(self *C.ScintillaEditBase, cb C.intptr_t, param1 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7279,20 +7279,20 @@ func miqt_exec_callback_ScintillaEditBase_ViewportEvent(self *C.ScintillaEditBas
 
 func (this *ScintillaEditBase) callVirtualBase_ViewportSizeHint() *qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEditBase_virtualbase_viewportSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *ScintillaEditBase) OnViewportSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	ok := C.ScintillaEditBase_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnviewportSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	ok := C.ScintillaEditBase_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_ViewportSizeHint
-func miqt_exec_callback_ScintillaEditBase_ViewportSizeHint(self *C.ScintillaEditBase, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_ScintillaEditBase_viewportSizeHint
+func miqt_exec_callback_ScintillaEditBase_viewportSizeHint(self *C.ScintillaEditBase, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7306,18 +7306,18 @@ func miqt_exec_callback_ScintillaEditBase_ViewportSizeHint(self *C.ScintillaEdit
 
 func (this *ScintillaEditBase) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
 
-	C.ScintillaEditBase_virtualbase_ChangeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnChangeEvent(slot func(super func(param1 *qt.QEvent), param1 *qt.QEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnchangeEvent(slot func(super func(param1 *qt.QEvent), param1 *qt.QEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_ChangeEvent
-func miqt_exec_callback_ScintillaEditBase_ChangeEvent(self *C.ScintillaEditBase, cb C.intptr_t, param1 *C.QEvent) {
+//export miqt_exec_callback_ScintillaEditBase_changeEvent
+func miqt_exec_callback_ScintillaEditBase_changeEvent(self *C.ScintillaEditBase, cb C.intptr_t, param1 *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QEvent), param1 *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7332,18 +7332,18 @@ func miqt_exec_callback_ScintillaEditBase_ChangeEvent(self *C.ScintillaEditBase,
 
 func (this *ScintillaEditBase) callVirtualBase_DevType() int {
 
-	return (int)(C.ScintillaEditBase_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.ScintillaEditBase_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *ScintillaEditBase) OnDevType(slot func(super func() int) int) {
-	ok := C.ScintillaEditBase_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OndevType(slot func(super func() int) int) {
+	ok := C.ScintillaEditBase_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_DevType
-func miqt_exec_callback_ScintillaEditBase_DevType(self *C.ScintillaEditBase, cb C.intptr_t) C.int {
+//export miqt_exec_callback_ScintillaEditBase_devType
+func miqt_exec_callback_ScintillaEditBase_devType(self *C.ScintillaEditBase, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7357,18 +7357,18 @@ func miqt_exec_callback_ScintillaEditBase_DevType(self *C.ScintillaEditBase, cb 
 
 func (this *ScintillaEditBase) callVirtualBase_SetVisible(visible bool) {
 
-	C.ScintillaEditBase_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.ScintillaEditBase_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *ScintillaEditBase) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.ScintillaEditBase_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.ScintillaEditBase_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_SetVisible
-func miqt_exec_callback_ScintillaEditBase_SetVisible(self *C.ScintillaEditBase, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_ScintillaEditBase_setVisible
+func miqt_exec_callback_ScintillaEditBase_setVisible(self *C.ScintillaEditBase, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7383,18 +7383,18 @@ func miqt_exec_callback_ScintillaEditBase_SetVisible(self *C.ScintillaEditBase, 
 
 func (this *ScintillaEditBase) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.ScintillaEditBase_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.ScintillaEditBase_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *ScintillaEditBase) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.ScintillaEditBase_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.ScintillaEditBase_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_HeightForWidth
-func miqt_exec_callback_ScintillaEditBase_HeightForWidth(self *C.ScintillaEditBase, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_ScintillaEditBase_heightForWidth
+func miqt_exec_callback_ScintillaEditBase_heightForWidth(self *C.ScintillaEditBase, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7411,18 +7411,18 @@ func miqt_exec_callback_ScintillaEditBase_HeightForWidth(self *C.ScintillaEditBa
 
 func (this *ScintillaEditBase) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.ScintillaEditBase_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.ScintillaEditBase_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *ScintillaEditBase) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.ScintillaEditBase_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.ScintillaEditBase_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_HasHeightForWidth
-func miqt_exec_callback_ScintillaEditBase_HasHeightForWidth(self *C.ScintillaEditBase, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_ScintillaEditBase_hasHeightForWidth
+func miqt_exec_callback_ScintillaEditBase_hasHeightForWidth(self *C.ScintillaEditBase, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7436,18 +7436,18 @@ func miqt_exec_callback_ScintillaEditBase_HasHeightForWidth(self *C.ScintillaEdi
 
 func (this *ScintillaEditBase) callVirtualBase_PaintEngine() *qt.QPaintEngine {
 
-	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.ScintillaEditBase_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.ScintillaEditBase_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
 }
-func (this *ScintillaEditBase) OnPaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
-	ok := C.ScintillaEditBase_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnpaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
+	ok := C.ScintillaEditBase_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_PaintEngine
-func miqt_exec_callback_ScintillaEditBase_PaintEngine(self *C.ScintillaEditBase, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_ScintillaEditBase_paintEngine
+func miqt_exec_callback_ScintillaEditBase_paintEngine(self *C.ScintillaEditBase, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QPaintEngine) *qt.QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7461,18 +7461,18 @@ func miqt_exec_callback_ScintillaEditBase_PaintEngine(self *C.ScintillaEditBase,
 
 func (this *ScintillaEditBase) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
 
-	C.ScintillaEditBase_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnKeyReleaseEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnkeyReleaseEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_KeyReleaseEvent
-func miqt_exec_callback_ScintillaEditBase_KeyReleaseEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_ScintillaEditBase_keyReleaseEvent
+func miqt_exec_callback_ScintillaEditBase_keyReleaseEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7487,18 +7487,18 @@ func miqt_exec_callback_ScintillaEditBase_KeyReleaseEvent(self *C.ScintillaEditB
 
 func (this *ScintillaEditBase) callVirtualBase_EnterEvent(event *qt.QEvent) {
 
-	C.ScintillaEditBase_virtualbase_EnterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnEnterEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnenterEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_EnterEvent
-func miqt_exec_callback_ScintillaEditBase_EnterEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_ScintillaEditBase_enterEvent
+func miqt_exec_callback_ScintillaEditBase_enterEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7513,18 +7513,18 @@ func miqt_exec_callback_ScintillaEditBase_EnterEvent(self *C.ScintillaEditBase, 
 
 func (this *ScintillaEditBase) callVirtualBase_LeaveEvent(event *qt.QEvent) {
 
-	C.ScintillaEditBase_virtualbase_LeaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnLeaveEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnleaveEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_LeaveEvent
-func miqt_exec_callback_ScintillaEditBase_LeaveEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_ScintillaEditBase_leaveEvent
+func miqt_exec_callback_ScintillaEditBase_leaveEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7539,18 +7539,18 @@ func miqt_exec_callback_ScintillaEditBase_LeaveEvent(self *C.ScintillaEditBase, 
 
 func (this *ScintillaEditBase) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
 
-	C.ScintillaEditBase_virtualbase_MoveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnMoveEvent(slot func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnmoveEvent(slot func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_MoveEvent
-func miqt_exec_callback_ScintillaEditBase_MoveEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_ScintillaEditBase_moveEvent
+func miqt_exec_callback_ScintillaEditBase_moveEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7565,18 +7565,18 @@ func miqt_exec_callback_ScintillaEditBase_MoveEvent(self *C.ScintillaEditBase, c
 
 func (this *ScintillaEditBase) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
 
-	C.ScintillaEditBase_virtualbase_CloseEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnCloseEvent(slot func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OncloseEvent(slot func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_CloseEvent
-func miqt_exec_callback_ScintillaEditBase_CloseEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_ScintillaEditBase_closeEvent
+func miqt_exec_callback_ScintillaEditBase_closeEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7591,18 +7591,18 @@ func miqt_exec_callback_ScintillaEditBase_CloseEvent(self *C.ScintillaEditBase, 
 
 func (this *ScintillaEditBase) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
 
-	C.ScintillaEditBase_virtualbase_TabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnTabletEvent(slot func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OntabletEvent(slot func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_TabletEvent
-func miqt_exec_callback_ScintillaEditBase_TabletEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_ScintillaEditBase_tabletEvent
+func miqt_exec_callback_ScintillaEditBase_tabletEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7617,18 +7617,18 @@ func miqt_exec_callback_ScintillaEditBase_TabletEvent(self *C.ScintillaEditBase,
 
 func (this *ScintillaEditBase) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
 
-	C.ScintillaEditBase_virtualbase_ActionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnActionEvent(slot func(super func(event *qt.QActionEvent), event *qt.QActionEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnactionEvent(slot func(super func(event *qt.QActionEvent), event *qt.QActionEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_ActionEvent
-func miqt_exec_callback_ScintillaEditBase_ActionEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_ScintillaEditBase_actionEvent
+func miqt_exec_callback_ScintillaEditBase_actionEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QActionEvent), event *qt.QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7643,18 +7643,18 @@ func miqt_exec_callback_ScintillaEditBase_ActionEvent(self *C.ScintillaEditBase,
 
 func (this *ScintillaEditBase) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
 
-	C.ScintillaEditBase_virtualbase_ShowEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnShowEvent(slot func(super func(event *qt.QShowEvent), event *qt.QShowEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnshowEvent(slot func(super func(event *qt.QShowEvent), event *qt.QShowEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_ShowEvent
-func miqt_exec_callback_ScintillaEditBase_ShowEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QShowEvent) {
+//export miqt_exec_callback_ScintillaEditBase_showEvent
+func miqt_exec_callback_ScintillaEditBase_showEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QShowEvent), event *qt.QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7669,18 +7669,18 @@ func miqt_exec_callback_ScintillaEditBase_ShowEvent(self *C.ScintillaEditBase, c
 
 func (this *ScintillaEditBase) callVirtualBase_HideEvent(event *qt.QHideEvent) {
 
-	C.ScintillaEditBase_virtualbase_HideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnHideEvent(slot func(super func(event *qt.QHideEvent), event *qt.QHideEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnhideEvent(slot func(super func(event *qt.QHideEvent), event *qt.QHideEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_HideEvent
-func miqt_exec_callback_ScintillaEditBase_HideEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_ScintillaEditBase_hideEvent
+func miqt_exec_callback_ScintillaEditBase_hideEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QHideEvent), event *qt.QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7702,18 +7702,18 @@ func (this *ScintillaEditBase) callVirtualBase_NativeEvent(eventType []byte, mes
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.ScintillaEditBase_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
+	return (bool)(C.ScintillaEditBase_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *ScintillaEditBase) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
-	ok := C.ScintillaEditBase_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	ok := C.ScintillaEditBase_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_NativeEvent
-func miqt_exec_callback_ScintillaEditBase_NativeEvent(self *C.ScintillaEditBase, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
+//export miqt_exec_callback_ScintillaEditBase_nativeEvent
+func miqt_exec_callback_ScintillaEditBase_nativeEvent(self *C.ScintillaEditBase, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7736,18 +7736,18 @@ func miqt_exec_callback_ScintillaEditBase_NativeEvent(self *C.ScintillaEditBase,
 
 func (this *ScintillaEditBase) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.ScintillaEditBase_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.ScintillaEditBase_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *ScintillaEditBase) OnMetric(slot func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.ScintillaEditBase_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) Onmetric(slot func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.ScintillaEditBase_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_Metric
-func miqt_exec_callback_ScintillaEditBase_Metric(self *C.ScintillaEditBase, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_ScintillaEditBase_metric
+func miqt_exec_callback_ScintillaEditBase_metric(self *C.ScintillaEditBase, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7764,18 +7764,18 @@ func miqt_exec_callback_ScintillaEditBase_Metric(self *C.ScintillaEditBase, cb C
 
 func (this *ScintillaEditBase) callVirtualBase_InitPainter(painter *qt.QPainter) {
 
-	C.ScintillaEditBase_virtualbase_InitPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnInitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
-	ok := C.ScintillaEditBase_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OninitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
+	ok := C.ScintillaEditBase_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_InitPainter
-func miqt_exec_callback_ScintillaEditBase_InitPainter(self *C.ScintillaEditBase, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_ScintillaEditBase_initPainter
+func miqt_exec_callback_ScintillaEditBase_initPainter(self *C.ScintillaEditBase, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter), painter *qt.QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7790,18 +7790,18 @@ func miqt_exec_callback_ScintillaEditBase_InitPainter(self *C.ScintillaEditBase,
 
 func (this *ScintillaEditBase) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 
-	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.ScintillaEditBase_virtualbase_Redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
+	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.ScintillaEditBase_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
 }
-func (this *ScintillaEditBase) OnRedirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
-	ok := C.ScintillaEditBase_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) Onredirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
+	ok := C.ScintillaEditBase_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_Redirected
-func miqt_exec_callback_ScintillaEditBase_Redirected(self *C.ScintillaEditBase, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_ScintillaEditBase_redirected
+func miqt_exec_callback_ScintillaEditBase_redirected(self *C.ScintillaEditBase, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7818,18 +7818,18 @@ func miqt_exec_callback_ScintillaEditBase_Redirected(self *C.ScintillaEditBase, 
 
 func (this *ScintillaEditBase) callVirtualBase_SharedPainter() *qt.QPainter {
 
-	return qt.UnsafeNewQPainter(unsafe.Pointer(C.ScintillaEditBase_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return qt.UnsafeNewQPainter(unsafe.Pointer(C.ScintillaEditBase_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
 }
-func (this *ScintillaEditBase) OnSharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
-	ok := C.ScintillaEditBase_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnsharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
+	ok := C.ScintillaEditBase_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_SharedPainter
-func miqt_exec_callback_ScintillaEditBase_SharedPainter(self *C.ScintillaEditBase, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_ScintillaEditBase_sharedPainter
+func miqt_exec_callback_ScintillaEditBase_sharedPainter(self *C.ScintillaEditBase, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QPainter) *qt.QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7843,18 +7843,18 @@ func miqt_exec_callback_ScintillaEditBase_SharedPainter(self *C.ScintillaEditBas
 
 func (this *ScintillaEditBase) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.ScintillaEditBase_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.ScintillaEditBase_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *ScintillaEditBase) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.ScintillaEditBase_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.ScintillaEditBase_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_FocusNextPrevChild
-func miqt_exec_callback_ScintillaEditBase_FocusNextPrevChild(self *C.ScintillaEditBase, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_ScintillaEditBase_focusNextPrevChild
+func miqt_exec_callback_ScintillaEditBase_focusNextPrevChild(self *C.ScintillaEditBase, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7871,18 +7871,18 @@ func miqt_exec_callback_ScintillaEditBase_FocusNextPrevChild(self *C.ScintillaEd
 
 func (this *ScintillaEditBase) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.ScintillaEditBase_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_TimerEvent
-func miqt_exec_callback_ScintillaEditBase_TimerEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_ScintillaEditBase_timerEvent
+func miqt_exec_callback_ScintillaEditBase_timerEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7897,18 +7897,18 @@ func miqt_exec_callback_ScintillaEditBase_TimerEvent(self *C.ScintillaEditBase, 
 
 func (this *ScintillaEditBase) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.ScintillaEditBase_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_ChildEvent
-func miqt_exec_callback_ScintillaEditBase_ChildEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_ScintillaEditBase_childEvent
+func miqt_exec_callback_ScintillaEditBase_childEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7923,18 +7923,18 @@ func miqt_exec_callback_ScintillaEditBase_ChildEvent(self *C.ScintillaEditBase, 
 
 func (this *ScintillaEditBase) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.ScintillaEditBase_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.ScintillaEditBase_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.ScintillaEditBase_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_CustomEvent
-func miqt_exec_callback_ScintillaEditBase_CustomEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_ScintillaEditBase_customEvent
+func miqt_exec_callback_ScintillaEditBase_customEvent(self *C.ScintillaEditBase, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7949,18 +7949,18 @@ func miqt_exec_callback_ScintillaEditBase_CustomEvent(self *C.ScintillaEditBase,
 
 func (this *ScintillaEditBase) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.ScintillaEditBase_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.ScintillaEditBase_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.ScintillaEditBase_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_ConnectNotify
-func miqt_exec_callback_ScintillaEditBase_ConnectNotify(self *C.ScintillaEditBase, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_ScintillaEditBase_connectNotify
+func miqt_exec_callback_ScintillaEditBase_connectNotify(self *C.ScintillaEditBase, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -7975,18 +7975,18 @@ func miqt_exec_callback_ScintillaEditBase_ConnectNotify(self *C.ScintillaEditBas
 
 func (this *ScintillaEditBase) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.ScintillaEditBase_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.ScintillaEditBase_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *ScintillaEditBase) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.ScintillaEditBase_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEditBase) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.ScintillaEditBase_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEditBase_DisconnectNotify
-func miqt_exec_callback_ScintillaEditBase_DisconnectNotify(self *C.ScintillaEditBase, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_ScintillaEditBase_disconnectNotify
+func miqt_exec_callback_ScintillaEditBase_disconnectNotify(self *C.ScintillaEditBase, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -8001,7 +8001,7 @@ func miqt_exec_callback_ScintillaEditBase_DisconnectNotify(self *C.ScintillaEdit
 
 // Delete this object from C++ memory.
 func (this *ScintillaEditBase) Delete() {
-	C.ScintillaEditBase_Delete(this.h)
+	C.ScintillaEditBase_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -8068,19 +8068,19 @@ func NewScintillaDocument3(parent *qt.QObject, pdoc_ unsafe.Pointer) *ScintillaD
 }
 
 func (this *ScintillaDocument) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.ScintillaDocument_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.ScintillaDocument_metaObject(this.h)))
 }
 
 func (this *ScintillaDocument) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.ScintillaDocument_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.ScintillaDocument_metacast(this.h, param1_Cstring))
 }
 
 func ScintillaDocument_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaDocument_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.ScintillaDocument_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -8089,78 +8089,78 @@ func ScintillaDocument_Tr(s string) string {
 func ScintillaDocument_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaDocument_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.ScintillaDocument_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *ScintillaDocument) Pointer() unsafe.Pointer {
-	return (unsafe.Pointer)(C.ScintillaDocument_Pointer(this.h))
+	return (unsafe.Pointer)(C.ScintillaDocument_pointer(this.h))
 }
 
 func (this *ScintillaDocument) LineFromPosition(pos int) int {
-	return (int)(C.ScintillaDocument_LineFromPosition(this.h, (C.int)(pos)))
+	return (int)(C.ScintillaDocument_lineFromPosition(this.h, (C.int)(pos)))
 }
 
 func (this *ScintillaDocument) IsCrLf(pos int) bool {
-	return (bool)(C.ScintillaDocument_IsCrLf(this.h, (C.int)(pos)))
+	return (bool)(C.ScintillaDocument_isCrLf(this.h, (C.int)(pos)))
 }
 
 func (this *ScintillaDocument) DeleteChars(pos int, lenVal int) bool {
-	return (bool)(C.ScintillaDocument_DeleteChars(this.h, (C.int)(pos), (C.int)(lenVal)))
+	return (bool)(C.ScintillaDocument_deleteChars(this.h, (C.int)(pos), (C.int)(lenVal)))
 }
 
 func (this *ScintillaDocument) Undo() int {
-	return (int)(C.ScintillaDocument_Undo(this.h))
+	return (int)(C.ScintillaDocument_undo(this.h))
 }
 
 func (this *ScintillaDocument) Redo() int {
-	return (int)(C.ScintillaDocument_Redo(this.h))
+	return (int)(C.ScintillaDocument_redo(this.h))
 }
 
 func (this *ScintillaDocument) CanUndo() bool {
-	return (bool)(C.ScintillaDocument_CanUndo(this.h))
+	return (bool)(C.ScintillaDocument_canUndo(this.h))
 }
 
 func (this *ScintillaDocument) CanRedo() bool {
-	return (bool)(C.ScintillaDocument_CanRedo(this.h))
+	return (bool)(C.ScintillaDocument_canRedo(this.h))
 }
 
 func (this *ScintillaDocument) DeleteUndoHistory() {
-	C.ScintillaDocument_DeleteUndoHistory(this.h)
+	C.ScintillaDocument_deleteUndoHistory(this.h)
 }
 
 func (this *ScintillaDocument) SetUndoCollection(collect_undo bool) bool {
-	return (bool)(C.ScintillaDocument_SetUndoCollection(this.h, (C.bool)(collect_undo)))
+	return (bool)(C.ScintillaDocument_setUndoCollection(this.h, (C.bool)(collect_undo)))
 }
 
 func (this *ScintillaDocument) IsCollectingUndo() bool {
-	return (bool)(C.ScintillaDocument_IsCollectingUndo(this.h))
+	return (bool)(C.ScintillaDocument_isCollectingUndo(this.h))
 }
 
 func (this *ScintillaDocument) BeginUndoAction() {
-	C.ScintillaDocument_BeginUndoAction(this.h)
+	C.ScintillaDocument_beginUndoAction(this.h)
 }
 
 func (this *ScintillaDocument) EndUndoAction() {
-	C.ScintillaDocument_EndUndoAction(this.h)
+	C.ScintillaDocument_endUndoAction(this.h)
 }
 
 func (this *ScintillaDocument) SetSavePoint() {
-	C.ScintillaDocument_SetSavePoint(this.h)
+	C.ScintillaDocument_setSavePoint(this.h)
 }
 
 func (this *ScintillaDocument) IsSavePoint() bool {
-	return (bool)(C.ScintillaDocument_IsSavePoint(this.h))
+	return (bool)(C.ScintillaDocument_isSavePoint(this.h))
 }
 
 func (this *ScintillaDocument) SetReadOnly(read_only bool) {
-	C.ScintillaDocument_SetReadOnly(this.h, (C.bool)(read_only))
+	C.ScintillaDocument_setReadOnly(this.h, (C.bool)(read_only))
 }
 
 func (this *ScintillaDocument) IsReadOnly() bool {
-	return (bool)(C.ScintillaDocument_IsReadOnly(this.h))
+	return (bool)(C.ScintillaDocument_isReadOnly(this.h))
 }
 
 func (this *ScintillaDocument) InsertString(position int, str []byte) {
@@ -8171,109 +8171,109 @@ func (this *ScintillaDocument) InsertString(position int, str []byte) {
 		str_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	str_alias.len = C.size_t(len(str))
-	C.ScintillaDocument_InsertString(this.h, (C.int)(position), str_alias)
+	C.ScintillaDocument_insertString(this.h, (C.int)(position), str_alias)
 }
 
 func (this *ScintillaDocument) GetCharRange(position int, length int) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaDocument_GetCharRange(this.h, (C.int)(position), (C.int)(length))
+	var _bytearray C.struct_miqt_string = C.ScintillaDocument_getCharRange(this.h, (C.int)(position), (C.int)(length))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaDocument) StyleAt(position int) int8 {
-	return (int8)(C.ScintillaDocument_StyleAt(this.h, (C.int)(position)))
+	return (int8)(C.ScintillaDocument_styleAt(this.h, (C.int)(position)))
 }
 
 func (this *ScintillaDocument) LineStart(lineno int) int {
-	return (int)(C.ScintillaDocument_LineStart(this.h, (C.int)(lineno)))
+	return (int)(C.ScintillaDocument_lineStart(this.h, (C.int)(lineno)))
 }
 
 func (this *ScintillaDocument) LineEnd(lineno int) int {
-	return (int)(C.ScintillaDocument_LineEnd(this.h, (C.int)(lineno)))
+	return (int)(C.ScintillaDocument_lineEnd(this.h, (C.int)(lineno)))
 }
 
 func (this *ScintillaDocument) LineEndPosition(pos int) int {
-	return (int)(C.ScintillaDocument_LineEndPosition(this.h, (C.int)(pos)))
+	return (int)(C.ScintillaDocument_lineEndPosition(this.h, (C.int)(pos)))
 }
 
 func (this *ScintillaDocument) Length() int {
-	return (int)(C.ScintillaDocument_Length(this.h))
+	return (int)(C.ScintillaDocument_length(this.h))
 }
 
 func (this *ScintillaDocument) LinesTotal() int {
-	return (int)(C.ScintillaDocument_LinesTotal(this.h))
+	return (int)(C.ScintillaDocument_linesTotal(this.h))
 }
 
 func (this *ScintillaDocument) StartStyling(position int) {
-	C.ScintillaDocument_StartStyling(this.h, (C.int)(position))
+	C.ScintillaDocument_startStyling(this.h, (C.int)(position))
 }
 
 func (this *ScintillaDocument) SetStyleFor(length int, style int8) bool {
-	return (bool)(C.ScintillaDocument_SetStyleFor(this.h, (C.int)(length), (C.char)(style)))
+	return (bool)(C.ScintillaDocument_setStyleFor(this.h, (C.int)(length), (C.char)(style)))
 }
 
 func (this *ScintillaDocument) GetEndStyled() int {
-	return (int)(C.ScintillaDocument_GetEndStyled(this.h))
+	return (int)(C.ScintillaDocument_getEndStyled(this.h))
 }
 
 func (this *ScintillaDocument) EnsureStyledTo(position int) {
-	C.ScintillaDocument_EnsureStyledTo(this.h, (C.int)(position))
+	C.ScintillaDocument_ensureStyledTo(this.h, (C.int)(position))
 }
 
 func (this *ScintillaDocument) SetCurrentIndicator(indic int) {
-	C.ScintillaDocument_SetCurrentIndicator(this.h, (C.int)(indic))
+	C.ScintillaDocument_setCurrentIndicator(this.h, (C.int)(indic))
 }
 
 func (this *ScintillaDocument) DecorationFillRange(position int, value int, fillLength int) {
-	C.ScintillaDocument_DecorationFillRange(this.h, (C.int)(position), (C.int)(value), (C.int)(fillLength))
+	C.ScintillaDocument_decorationFillRange(this.h, (C.int)(position), (C.int)(value), (C.int)(fillLength))
 }
 
 func (this *ScintillaDocument) DecorationsValueAt(indic int, position int) int {
-	return (int)(C.ScintillaDocument_DecorationsValueAt(this.h, (C.int)(indic), (C.int)(position)))
+	return (int)(C.ScintillaDocument_decorationsValueAt(this.h, (C.int)(indic), (C.int)(position)))
 }
 
 func (this *ScintillaDocument) DecorationsStart(indic int, position int) int {
-	return (int)(C.ScintillaDocument_DecorationsStart(this.h, (C.int)(indic), (C.int)(position)))
+	return (int)(C.ScintillaDocument_decorationsStart(this.h, (C.int)(indic), (C.int)(position)))
 }
 
 func (this *ScintillaDocument) DecorationsEnd(indic int, position int) int {
-	return (int)(C.ScintillaDocument_DecorationsEnd(this.h, (C.int)(indic), (C.int)(position)))
+	return (int)(C.ScintillaDocument_decorationsEnd(this.h, (C.int)(indic), (C.int)(position)))
 }
 
 func (this *ScintillaDocument) GetCodePage() int {
-	return (int)(C.ScintillaDocument_GetCodePage(this.h))
+	return (int)(C.ScintillaDocument_getCodePage(this.h))
 }
 
 func (this *ScintillaDocument) SetCodePage(code_page int) {
-	C.ScintillaDocument_SetCodePage(this.h, (C.int)(code_page))
+	C.ScintillaDocument_setCodePage(this.h, (C.int)(code_page))
 }
 
 func (this *ScintillaDocument) GetEolMode() int {
-	return (int)(C.ScintillaDocument_GetEolMode(this.h))
+	return (int)(C.ScintillaDocument_getEolMode(this.h))
 }
 
 func (this *ScintillaDocument) SetEolMode(eol_mode int) {
-	C.ScintillaDocument_SetEolMode(this.h, (C.int)(eol_mode))
+	C.ScintillaDocument_setEolMode(this.h, (C.int)(eol_mode))
 }
 
 func (this *ScintillaDocument) MovePositionOutsideChar(pos int, move_dir int, check_line_end bool) int {
-	return (int)(C.ScintillaDocument_MovePositionOutsideChar(this.h, (C.int)(pos), (C.int)(move_dir), (C.bool)(check_line_end)))
+	return (int)(C.ScintillaDocument_movePositionOutsideChar(this.h, (C.int)(pos), (C.int)(move_dir), (C.bool)(check_line_end)))
 }
 
 func (this *ScintillaDocument) GetCharacter(pos int) int {
-	return (int)(C.ScintillaDocument_GetCharacter(this.h, (C.int)(pos)))
+	return (int)(C.ScintillaDocument_getCharacter(this.h, (C.int)(pos)))
 }
 
 func (this *ScintillaDocument) ModifyAttempt() {
-	C.ScintillaDocument_ModifyAttempt(this.h)
+	C.ScintillaDocument_modifyAttempt(this.h)
 }
 func (this *ScintillaDocument) OnModifyAttempt(slot func()) {
-	C.ScintillaDocument_connect_ModifyAttempt(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaDocument_connect_modifyAttempt(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaDocument_ModifyAttempt
-func miqt_exec_callback_ScintillaDocument_ModifyAttempt(cb C.intptr_t) {
+//export miqt_exec_callback_ScintillaDocument_modifyAttempt
+func miqt_exec_callback_ScintillaDocument_modifyAttempt(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -8283,14 +8283,14 @@ func miqt_exec_callback_ScintillaDocument_ModifyAttempt(cb C.intptr_t) {
 }
 
 func (this *ScintillaDocument) SavePoint(atSavePoint bool) {
-	C.ScintillaDocument_SavePoint(this.h, (C.bool)(atSavePoint))
+	C.ScintillaDocument_savePoint(this.h, (C.bool)(atSavePoint))
 }
 func (this *ScintillaDocument) OnSavePoint(slot func(atSavePoint bool)) {
-	C.ScintillaDocument_connect_SavePoint(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaDocument_connect_savePoint(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaDocument_SavePoint
-func miqt_exec_callback_ScintillaDocument_SavePoint(cb C.intptr_t, atSavePoint C.bool) {
+//export miqt_exec_callback_ScintillaDocument_savePoint
+func miqt_exec_callback_ScintillaDocument_savePoint(cb C.intptr_t, atSavePoint C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(atSavePoint bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -8310,14 +8310,14 @@ func (this *ScintillaDocument) Modified(position int, modification_type int, tex
 		text_alias.data = (*C.char)(unsafe.Pointer(nil))
 	}
 	text_alias.len = C.size_t(len(text))
-	C.ScintillaDocument_Modified(this.h, (C.int)(position), (C.int)(modification_type), text_alias, (C.int)(length), (C.int)(linesAdded), (C.int)(line), (C.int)(foldLevelNow), (C.int)(foldLevelPrev))
+	C.ScintillaDocument_modified(this.h, (C.int)(position), (C.int)(modification_type), text_alias, (C.int)(length), (C.int)(linesAdded), (C.int)(line), (C.int)(foldLevelNow), (C.int)(foldLevelPrev))
 }
 func (this *ScintillaDocument) OnModified(slot func(position int, modification_type int, text []byte, length int, linesAdded int, line int, foldLevelNow int, foldLevelPrev int)) {
-	C.ScintillaDocument_connect_Modified(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaDocument_connect_modified(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaDocument_Modified
-func miqt_exec_callback_ScintillaDocument_Modified(cb C.intptr_t, position C.int, modification_type C.int, text C.struct_miqt_string, length C.int, linesAdded C.int, line C.int, foldLevelNow C.int, foldLevelPrev C.int) {
+//export miqt_exec_callback_ScintillaDocument_modified
+func miqt_exec_callback_ScintillaDocument_modified(cb C.intptr_t, position C.int, modification_type C.int, text C.struct_miqt_string, length C.int, linesAdded C.int, line C.int, foldLevelNow C.int, foldLevelPrev C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(position int, modification_type int, text []byte, length int, linesAdded int, line int, foldLevelNow int, foldLevelPrev int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -8346,14 +8346,14 @@ func miqt_exec_callback_ScintillaDocument_Modified(cb C.intptr_t, position C.int
 }
 
 func (this *ScintillaDocument) StyleNeeded(pos int) {
-	C.ScintillaDocument_StyleNeeded(this.h, (C.int)(pos))
+	C.ScintillaDocument_styleNeeded(this.h, (C.int)(pos))
 }
 func (this *ScintillaDocument) OnStyleNeeded(slot func(pos int)) {
-	C.ScintillaDocument_connect_StyleNeeded(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaDocument_connect_styleNeeded(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaDocument_StyleNeeded
-func miqt_exec_callback_ScintillaDocument_StyleNeeded(cb C.intptr_t, pos C.int) {
+//export miqt_exec_callback_ScintillaDocument_styleNeeded
+func miqt_exec_callback_ScintillaDocument_styleNeeded(cb C.intptr_t, pos C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(pos int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -8366,14 +8366,14 @@ func miqt_exec_callback_ScintillaDocument_StyleNeeded(cb C.intptr_t, pos C.int) 
 }
 
 func (this *ScintillaDocument) ErrorOccurred(status int) {
-	C.ScintillaDocument_ErrorOccurred(this.h, (C.int)(status))
+	C.ScintillaDocument_errorOccurred(this.h, (C.int)(status))
 }
 func (this *ScintillaDocument) OnErrorOccurred(slot func(status int)) {
-	C.ScintillaDocument_connect_ErrorOccurred(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.ScintillaDocument_connect_errorOccurred(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_ScintillaDocument_ErrorOccurred
-func miqt_exec_callback_ScintillaDocument_ErrorOccurred(cb C.intptr_t, status C.int) {
+//export miqt_exec_callback_ScintillaDocument_errorOccurred
+func miqt_exec_callback_ScintillaDocument_errorOccurred(cb C.intptr_t, status C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(status int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -8390,7 +8390,7 @@ func ScintillaDocument_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaDocument_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.ScintillaDocument_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -8401,7 +8401,7 @@ func ScintillaDocument_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaDocument_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.ScintillaDocument_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -8412,7 +8412,7 @@ func ScintillaDocument_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaDocument_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.ScintillaDocument_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -8423,30 +8423,30 @@ func ScintillaDocument_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaDocument_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.ScintillaDocument_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *ScintillaDocument) BeginUndoAction1(coalesceWithPrior bool) {
-	C.ScintillaDocument_BeginUndoAction1(this.h, (C.bool)(coalesceWithPrior))
+	C.ScintillaDocument_beginUndoAction1(this.h, (C.bool)(coalesceWithPrior))
 }
 
 func (this *ScintillaDocument) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.ScintillaDocument_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.ScintillaDocument_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *ScintillaDocument) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.ScintillaDocument_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaDocument) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.ScintillaDocument_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaDocument_Event
-func miqt_exec_callback_ScintillaDocument_Event(self *C.ScintillaDocument, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_ScintillaDocument_event
+func miqt_exec_callback_ScintillaDocument_event(self *C.ScintillaDocument, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -8463,18 +8463,18 @@ func miqt_exec_callback_ScintillaDocument_Event(self *C.ScintillaDocument, cb C.
 
 func (this *ScintillaDocument) callVirtualBase_EventFilter(watched *qt.QObject, event *qt.QEvent) bool {
 
-	return (bool)(C.ScintillaDocument_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.ScintillaDocument_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(watched.UnsafePointer()), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *ScintillaDocument) OnEventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
-	ok := C.ScintillaDocument_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaDocument) OneventFilter(slot func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool) {
+	ok := C.ScintillaDocument_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaDocument_EventFilter
-func miqt_exec_callback_ScintillaDocument_EventFilter(self *C.ScintillaDocument, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_ScintillaDocument_eventFilter
+func miqt_exec_callback_ScintillaDocument_eventFilter(self *C.ScintillaDocument, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *qt.QObject, event *qt.QEvent) bool, watched *qt.QObject, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -8493,18 +8493,18 @@ func miqt_exec_callback_ScintillaDocument_EventFilter(self *C.ScintillaDocument,
 
 func (this *ScintillaDocument) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.ScintillaDocument_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.ScintillaDocument_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaDocument) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.ScintillaDocument_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaDocument) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.ScintillaDocument_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaDocument_TimerEvent
-func miqt_exec_callback_ScintillaDocument_TimerEvent(self *C.ScintillaDocument, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_ScintillaDocument_timerEvent
+func miqt_exec_callback_ScintillaDocument_timerEvent(self *C.ScintillaDocument, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -8519,18 +8519,18 @@ func miqt_exec_callback_ScintillaDocument_TimerEvent(self *C.ScintillaDocument, 
 
 func (this *ScintillaDocument) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.ScintillaDocument_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.ScintillaDocument_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaDocument) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.ScintillaDocument_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaDocument) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.ScintillaDocument_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaDocument_ChildEvent
-func miqt_exec_callback_ScintillaDocument_ChildEvent(self *C.ScintillaDocument, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_ScintillaDocument_childEvent
+func miqt_exec_callback_ScintillaDocument_childEvent(self *C.ScintillaDocument, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -8545,18 +8545,18 @@ func miqt_exec_callback_ScintillaDocument_ChildEvent(self *C.ScintillaDocument, 
 
 func (this *ScintillaDocument) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.ScintillaDocument_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.ScintillaDocument_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaDocument) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.ScintillaDocument_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaDocument) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.ScintillaDocument_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaDocument_CustomEvent
-func miqt_exec_callback_ScintillaDocument_CustomEvent(self *C.ScintillaDocument, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_ScintillaDocument_customEvent
+func miqt_exec_callback_ScintillaDocument_customEvent(self *C.ScintillaDocument, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -8571,18 +8571,18 @@ func miqt_exec_callback_ScintillaDocument_CustomEvent(self *C.ScintillaDocument,
 
 func (this *ScintillaDocument) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.ScintillaDocument_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.ScintillaDocument_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *ScintillaDocument) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.ScintillaDocument_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaDocument) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.ScintillaDocument_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaDocument_ConnectNotify
-func miqt_exec_callback_ScintillaDocument_ConnectNotify(self *C.ScintillaDocument, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_ScintillaDocument_connectNotify
+func miqt_exec_callback_ScintillaDocument_connectNotify(self *C.ScintillaDocument, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -8597,18 +8597,18 @@ func miqt_exec_callback_ScintillaDocument_ConnectNotify(self *C.ScintillaDocumen
 
 func (this *ScintillaDocument) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.ScintillaDocument_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.ScintillaDocument_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *ScintillaDocument) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.ScintillaDocument_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaDocument) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.ScintillaDocument_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaDocument_DisconnectNotify
-func miqt_exec_callback_ScintillaDocument_DisconnectNotify(self *C.ScintillaDocument, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_ScintillaDocument_disconnectNotify
+func miqt_exec_callback_ScintillaDocument_disconnectNotify(self *C.ScintillaDocument, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -8623,7 +8623,7 @@ func miqt_exec_callback_ScintillaDocument_DisconnectNotify(self *C.ScintillaDocu
 
 // Delete this object from C++ memory.
 func (this *ScintillaDocument) Delete() {
-	C.ScintillaDocument_Delete(this.h)
+	C.ScintillaDocument_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -8684,19 +8684,19 @@ func NewScintillaEdit2() *ScintillaEdit {
 }
 
 func (this *ScintillaEdit) MetaObject() *qt.QMetaObject {
-	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.ScintillaEdit_MetaObject(this.h)))
+	return qt.UnsafeNewQMetaObject(unsafe.Pointer(C.ScintillaEdit_metaObject(this.h)))
 }
 
 func (this *ScintillaEdit) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.ScintillaEdit_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.ScintillaEdit_metacast(this.h, param1_Cstring))
 }
 
 func ScintillaEdit_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaEdit_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.ScintillaEdit_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -8705,7 +8705,7 @@ func ScintillaEdit_Tr(s string) string {
 func ScintillaEdit_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaEdit_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.ScintillaEdit_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -8724,7 +8724,7 @@ func (this *ScintillaEdit) FindText(flags int, text string, cpMin int, cpMax int
 } {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	var _mm C.struct_miqt_map = C.ScintillaEdit_FindText(this.h, (C.int)(flags), text_Cstring, (C.int)(cpMin), (C.int)(cpMax))
+	var _mm C.struct_miqt_map = C.ScintillaEdit_findText(this.h, (C.int)(flags), text_Cstring, (C.int)(cpMin), (C.int)(cpMax))
 	_First_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
 	_entry_First := (int)(_First_CArray[0])
@@ -8738,18 +8738,18 @@ func (this *ScintillaEdit) FindText(flags int, text string, cpMin int, cpMax int
 }
 
 func (this *ScintillaEdit) GetTextRange(start int, end int) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_GetTextRange(this.h, (C.int)(start), (C.int)(end))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_getTextRange(this.h, (C.int)(start), (C.int)(end))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) GetDoc() *ScintillaDocument {
-	return newScintillaDocument(C.ScintillaEdit_GetDoc(this.h))
+	return newScintillaDocument(C.ScintillaEdit_getDoc(this.h))
 }
 
 func (this *ScintillaEdit) SetDoc(pdoc_ *ScintillaDocument) {
-	C.ScintillaEdit_SetDoc(this.h, pdoc_.cPointer())
+	C.ScintillaEdit_setDoc(this.h, pdoc_.cPointer())
 }
 
 func (this *ScintillaEdit) FindText2(flags int, text string, cpMin int, cpMax int) struct {
@@ -8758,7 +8758,7 @@ func (this *ScintillaEdit) FindText2(flags int, text string, cpMin int, cpMax in
 } {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	var _mm C.struct_miqt_map = C.ScintillaEdit_FindText2(this.h, (C.int)(flags), text_Cstring, (C.int)(cpMin), (C.int)(cpMax))
+	var _mm C.struct_miqt_map = C.ScintillaEdit_findText2(this.h, (C.int)(flags), text_Cstring, (C.int)(cpMin), (C.int)(cpMax))
 	_First_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.keys))
 	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
 	_entry_First := (int)(_First_CArray[0])
@@ -8772,2430 +8772,2430 @@ func (this *ScintillaEdit) FindText2(flags int, text string, cpMin int, cpMax in
 }
 
 func (this *ScintillaEdit) TextRange(start int, end int) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_TextRange(this.h, (C.int)(start), (C.int)(end))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_textRange(this.h, (C.int)(start), (C.int)(end))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) FormatRange(draw bool, target *qt.QPaintDevice, measure *qt.QPaintDevice, print_rect *qt.QRect, page_rect *qt.QRect, range_start int64, range_end int64) int64 {
-	return (int64)(C.ScintillaEdit_FormatRange(this.h, (C.bool)(draw), (*C.QPaintDevice)(target.UnsafePointer()), (*C.QPaintDevice)(measure.UnsafePointer()), (*C.QRect)(print_rect.UnsafePointer()), (*C.QRect)(page_rect.UnsafePointer()), (C.long)(range_start), (C.long)(range_end)))
+	return (int64)(C.ScintillaEdit_formatRange(this.h, (C.bool)(draw), (*C.QPaintDevice)(target.UnsafePointer()), (*C.QPaintDevice)(measure.UnsafePointer()), (*C.QRect)(print_rect.UnsafePointer()), (*C.QRect)(page_rect.UnsafePointer()), (C.long)(range_start), (C.long)(range_end)))
 }
 
 func (this *ScintillaEdit) FormatRange2(draw bool, target *qt.QPaintDevice, measure *qt.QPaintDevice, print_rect *qt.QRect, page_rect *qt.QRect, range_start int64, range_end int64) int64 {
-	return (int64)(C.ScintillaEdit_FormatRange2(this.h, (C.bool)(draw), (*C.QPaintDevice)(target.UnsafePointer()), (*C.QPaintDevice)(measure.UnsafePointer()), (*C.QRect)(print_rect.UnsafePointer()), (*C.QRect)(page_rect.UnsafePointer()), (C.long)(range_start), (C.long)(range_end)))
+	return (int64)(C.ScintillaEdit_formatRange2(this.h, (C.bool)(draw), (*C.QPaintDevice)(target.UnsafePointer()), (*C.QPaintDevice)(measure.UnsafePointer()), (*C.QRect)(print_rect.UnsafePointer()), (*C.QRect)(page_rect.UnsafePointer()), (C.long)(range_start), (C.long)(range_end)))
 }
 
 func (this *ScintillaEdit) AddText(length uintptr, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.ScintillaEdit_AddText(this.h, (C.intptr_t)(length), text_Cstring)
+	C.ScintillaEdit_addText(this.h, (C.intptr_t)(length), text_Cstring)
 }
 
 func (this *ScintillaEdit) AddStyledText(length uintptr, c string) {
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	C.ScintillaEdit_AddStyledText(this.h, (C.intptr_t)(length), c_Cstring)
+	C.ScintillaEdit_addStyledText(this.h, (C.intptr_t)(length), c_Cstring)
 }
 
 func (this *ScintillaEdit) InsertText(pos uintptr, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.ScintillaEdit_InsertText(this.h, (C.intptr_t)(pos), text_Cstring)
+	C.ScintillaEdit_insertText(this.h, (C.intptr_t)(pos), text_Cstring)
 }
 
 func (this *ScintillaEdit) ChangeInsertion(length uintptr, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.ScintillaEdit_ChangeInsertion(this.h, (C.intptr_t)(length), text_Cstring)
+	C.ScintillaEdit_changeInsertion(this.h, (C.intptr_t)(length), text_Cstring)
 }
 
 func (this *ScintillaEdit) ClearAll() {
-	C.ScintillaEdit_ClearAll(this.h)
+	C.ScintillaEdit_clearAll(this.h)
 }
 
 func (this *ScintillaEdit) DeleteRange(start uintptr, lengthDelete uintptr) {
-	C.ScintillaEdit_DeleteRange(this.h, (C.intptr_t)(start), (C.intptr_t)(lengthDelete))
+	C.ScintillaEdit_deleteRange(this.h, (C.intptr_t)(start), (C.intptr_t)(lengthDelete))
 }
 
 func (this *ScintillaEdit) ClearDocumentStyle() {
-	C.ScintillaEdit_ClearDocumentStyle(this.h)
+	C.ScintillaEdit_clearDocumentStyle(this.h)
 }
 
 func (this *ScintillaEdit) Length() uintptr {
-	return (uintptr)(C.ScintillaEdit_Length(this.h))
+	return (uintptr)(C.ScintillaEdit_length(this.h))
 }
 
 func (this *ScintillaEdit) CharAt(pos uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_CharAt(this.h, (C.intptr_t)(pos)))
+	return (uintptr)(C.ScintillaEdit_charAt(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) CurrentPos() uintptr {
-	return (uintptr)(C.ScintillaEdit_CurrentPos(this.h))
+	return (uintptr)(C.ScintillaEdit_currentPos(this.h))
 }
 
 func (this *ScintillaEdit) Anchor() uintptr {
-	return (uintptr)(C.ScintillaEdit_Anchor(this.h))
+	return (uintptr)(C.ScintillaEdit_anchor(this.h))
 }
 
 func (this *ScintillaEdit) StyleAt(pos uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_StyleAt(this.h, (C.intptr_t)(pos)))
+	return (uintptr)(C.ScintillaEdit_styleAt(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) StyleIndexAt(pos uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_StyleIndexAt(this.h, (C.intptr_t)(pos)))
+	return (uintptr)(C.ScintillaEdit_styleIndexAt(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) Redo() {
-	C.ScintillaEdit_Redo(this.h)
+	C.ScintillaEdit_redo(this.h)
 }
 
 func (this *ScintillaEdit) SetUndoCollection(collectUndo bool) {
-	C.ScintillaEdit_SetUndoCollection(this.h, (C.bool)(collectUndo))
+	C.ScintillaEdit_setUndoCollection(this.h, (C.bool)(collectUndo))
 }
 
 func (this *ScintillaEdit) SelectAll() {
-	C.ScintillaEdit_SelectAll(this.h)
+	C.ScintillaEdit_selectAll(this.h)
 }
 
 func (this *ScintillaEdit) SetSavePoint() {
-	C.ScintillaEdit_SetSavePoint(this.h)
+	C.ScintillaEdit_setSavePoint(this.h)
 }
 
 func (this *ScintillaEdit) CanRedo() bool {
-	return (bool)(C.ScintillaEdit_CanRedo(this.h))
+	return (bool)(C.ScintillaEdit_canRedo(this.h))
 }
 
 func (this *ScintillaEdit) MarkerLineFromHandle(markerHandle uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_MarkerLineFromHandle(this.h, (C.intptr_t)(markerHandle)))
+	return (uintptr)(C.ScintillaEdit_markerLineFromHandle(this.h, (C.intptr_t)(markerHandle)))
 }
 
 func (this *ScintillaEdit) MarkerDeleteHandle(markerHandle uintptr) {
-	C.ScintillaEdit_MarkerDeleteHandle(this.h, (C.intptr_t)(markerHandle))
+	C.ScintillaEdit_markerDeleteHandle(this.h, (C.intptr_t)(markerHandle))
 }
 
 func (this *ScintillaEdit) MarkerHandleFromLine(line uintptr, which uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_MarkerHandleFromLine(this.h, (C.intptr_t)(line), (C.intptr_t)(which)))
+	return (uintptr)(C.ScintillaEdit_markerHandleFromLine(this.h, (C.intptr_t)(line), (C.intptr_t)(which)))
 }
 
 func (this *ScintillaEdit) MarkerNumberFromLine(line uintptr, which uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_MarkerNumberFromLine(this.h, (C.intptr_t)(line), (C.intptr_t)(which)))
+	return (uintptr)(C.ScintillaEdit_markerNumberFromLine(this.h, (C.intptr_t)(line), (C.intptr_t)(which)))
 }
 
 func (this *ScintillaEdit) UndoCollection() bool {
-	return (bool)(C.ScintillaEdit_UndoCollection(this.h))
+	return (bool)(C.ScintillaEdit_undoCollection(this.h))
 }
 
 func (this *ScintillaEdit) ViewWS() uintptr {
-	return (uintptr)(C.ScintillaEdit_ViewWS(this.h))
+	return (uintptr)(C.ScintillaEdit_viewWS(this.h))
 }
 
 func (this *ScintillaEdit) SetViewWS(viewWS uintptr) {
-	C.ScintillaEdit_SetViewWS(this.h, (C.intptr_t)(viewWS))
+	C.ScintillaEdit_setViewWS(this.h, (C.intptr_t)(viewWS))
 }
 
 func (this *ScintillaEdit) TabDrawMode() uintptr {
-	return (uintptr)(C.ScintillaEdit_TabDrawMode(this.h))
+	return (uintptr)(C.ScintillaEdit_tabDrawMode(this.h))
 }
 
 func (this *ScintillaEdit) SetTabDrawMode(tabDrawMode uintptr) {
-	C.ScintillaEdit_SetTabDrawMode(this.h, (C.intptr_t)(tabDrawMode))
+	C.ScintillaEdit_setTabDrawMode(this.h, (C.intptr_t)(tabDrawMode))
 }
 
 func (this *ScintillaEdit) PositionFromPoint(x uintptr, y uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_PositionFromPoint(this.h, (C.intptr_t)(x), (C.intptr_t)(y)))
+	return (uintptr)(C.ScintillaEdit_positionFromPoint(this.h, (C.intptr_t)(x), (C.intptr_t)(y)))
 }
 
 func (this *ScintillaEdit) PositionFromPointClose(x uintptr, y uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_PositionFromPointClose(this.h, (C.intptr_t)(x), (C.intptr_t)(y)))
+	return (uintptr)(C.ScintillaEdit_positionFromPointClose(this.h, (C.intptr_t)(x), (C.intptr_t)(y)))
 }
 
 func (this *ScintillaEdit) GotoLine(line uintptr) {
-	C.ScintillaEdit_GotoLine(this.h, (C.intptr_t)(line))
+	C.ScintillaEdit_gotoLine(this.h, (C.intptr_t)(line))
 }
 
 func (this *ScintillaEdit) GotoPos(caret uintptr) {
-	C.ScintillaEdit_GotoPos(this.h, (C.intptr_t)(caret))
+	C.ScintillaEdit_gotoPos(this.h, (C.intptr_t)(caret))
 }
 
 func (this *ScintillaEdit) SetAnchor(anchor uintptr) {
-	C.ScintillaEdit_SetAnchor(this.h, (C.intptr_t)(anchor))
+	C.ScintillaEdit_setAnchor(this.h, (C.intptr_t)(anchor))
 }
 
 func (this *ScintillaEdit) GetCurLine(length uintptr) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_GetCurLine(this.h, (C.intptr_t)(length))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_getCurLine(this.h, (C.intptr_t)(length))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) EndStyled() uintptr {
-	return (uintptr)(C.ScintillaEdit_EndStyled(this.h))
+	return (uintptr)(C.ScintillaEdit_endStyled(this.h))
 }
 
 func (this *ScintillaEdit) ConvertEOLs(eolMode uintptr) {
-	C.ScintillaEdit_ConvertEOLs(this.h, (C.intptr_t)(eolMode))
+	C.ScintillaEdit_convertEOLs(this.h, (C.intptr_t)(eolMode))
 }
 
 func (this *ScintillaEdit) EOLMode() uintptr {
-	return (uintptr)(C.ScintillaEdit_EOLMode(this.h))
+	return (uintptr)(C.ScintillaEdit_eOLMode(this.h))
 }
 
 func (this *ScintillaEdit) SetEOLMode(eolMode uintptr) {
-	C.ScintillaEdit_SetEOLMode(this.h, (C.intptr_t)(eolMode))
+	C.ScintillaEdit_setEOLMode(this.h, (C.intptr_t)(eolMode))
 }
 
 func (this *ScintillaEdit) StartStyling(start uintptr, unused uintptr) {
-	C.ScintillaEdit_StartStyling(this.h, (C.intptr_t)(start), (C.intptr_t)(unused))
+	C.ScintillaEdit_startStyling(this.h, (C.intptr_t)(start), (C.intptr_t)(unused))
 }
 
 func (this *ScintillaEdit) SetStyling(length uintptr, style uintptr) {
-	C.ScintillaEdit_SetStyling(this.h, (C.intptr_t)(length), (C.intptr_t)(style))
+	C.ScintillaEdit_setStyling(this.h, (C.intptr_t)(length), (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) BufferedDraw() bool {
-	return (bool)(C.ScintillaEdit_BufferedDraw(this.h))
+	return (bool)(C.ScintillaEdit_bufferedDraw(this.h))
 }
 
 func (this *ScintillaEdit) SetBufferedDraw(buffered bool) {
-	C.ScintillaEdit_SetBufferedDraw(this.h, (C.bool)(buffered))
+	C.ScintillaEdit_setBufferedDraw(this.h, (C.bool)(buffered))
 }
 
 func (this *ScintillaEdit) SetTabWidth(tabWidth uintptr) {
-	C.ScintillaEdit_SetTabWidth(this.h, (C.intptr_t)(tabWidth))
+	C.ScintillaEdit_setTabWidth(this.h, (C.intptr_t)(tabWidth))
 }
 
 func (this *ScintillaEdit) TabWidth() uintptr {
-	return (uintptr)(C.ScintillaEdit_TabWidth(this.h))
+	return (uintptr)(C.ScintillaEdit_tabWidth(this.h))
 }
 
 func (this *ScintillaEdit) SetTabMinimumWidth(pixels uintptr) {
-	C.ScintillaEdit_SetTabMinimumWidth(this.h, (C.intptr_t)(pixels))
+	C.ScintillaEdit_setTabMinimumWidth(this.h, (C.intptr_t)(pixels))
 }
 
 func (this *ScintillaEdit) TabMinimumWidth() uintptr {
-	return (uintptr)(C.ScintillaEdit_TabMinimumWidth(this.h))
+	return (uintptr)(C.ScintillaEdit_tabMinimumWidth(this.h))
 }
 
 func (this *ScintillaEdit) ClearTabStops(line uintptr) {
-	C.ScintillaEdit_ClearTabStops(this.h, (C.intptr_t)(line))
+	C.ScintillaEdit_clearTabStops(this.h, (C.intptr_t)(line))
 }
 
 func (this *ScintillaEdit) AddTabStop(line uintptr, x uintptr) {
-	C.ScintillaEdit_AddTabStop(this.h, (C.intptr_t)(line), (C.intptr_t)(x))
+	C.ScintillaEdit_addTabStop(this.h, (C.intptr_t)(line), (C.intptr_t)(x))
 }
 
 func (this *ScintillaEdit) GetNextTabStop(line uintptr, x uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_GetNextTabStop(this.h, (C.intptr_t)(line), (C.intptr_t)(x)))
+	return (uintptr)(C.ScintillaEdit_getNextTabStop(this.h, (C.intptr_t)(line), (C.intptr_t)(x)))
 }
 
 func (this *ScintillaEdit) SetCodePage(codePage uintptr) {
-	C.ScintillaEdit_SetCodePage(this.h, (C.intptr_t)(codePage))
+	C.ScintillaEdit_setCodePage(this.h, (C.intptr_t)(codePage))
 }
 
 func (this *ScintillaEdit) SetFontLocale(localeName string) {
 	localeName_Cstring := C.CString(localeName)
 	defer C.free(unsafe.Pointer(localeName_Cstring))
-	C.ScintillaEdit_SetFontLocale(this.h, localeName_Cstring)
+	C.ScintillaEdit_setFontLocale(this.h, localeName_Cstring)
 }
 
 func (this *ScintillaEdit) FontLocale() []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_FontLocale(this.h)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_fontLocale(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) IMEInteraction() uintptr {
-	return (uintptr)(C.ScintillaEdit_IMEInteraction(this.h))
+	return (uintptr)(C.ScintillaEdit_iMEInteraction(this.h))
 }
 
 func (this *ScintillaEdit) SetIMEInteraction(imeInteraction uintptr) {
-	C.ScintillaEdit_SetIMEInteraction(this.h, (C.intptr_t)(imeInteraction))
+	C.ScintillaEdit_setIMEInteraction(this.h, (C.intptr_t)(imeInteraction))
 }
 
 func (this *ScintillaEdit) MarkerDefine(markerNumber uintptr, markerSymbol uintptr) {
-	C.ScintillaEdit_MarkerDefine(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(markerSymbol))
+	C.ScintillaEdit_markerDefine(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(markerSymbol))
 }
 
 func (this *ScintillaEdit) MarkerSetFore(markerNumber uintptr, fore uintptr) {
-	C.ScintillaEdit_MarkerSetFore(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(fore))
+	C.ScintillaEdit_markerSetFore(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) MarkerSetBack(markerNumber uintptr, back uintptr) {
-	C.ScintillaEdit_MarkerSetBack(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(back))
+	C.ScintillaEdit_markerSetBack(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) MarkerSetBackSelected(markerNumber uintptr, back uintptr) {
-	C.ScintillaEdit_MarkerSetBackSelected(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(back))
+	C.ScintillaEdit_markerSetBackSelected(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) MarkerSetForeTranslucent(markerNumber uintptr, fore uintptr) {
-	C.ScintillaEdit_MarkerSetForeTranslucent(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(fore))
+	C.ScintillaEdit_markerSetForeTranslucent(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) MarkerSetBackTranslucent(markerNumber uintptr, back uintptr) {
-	C.ScintillaEdit_MarkerSetBackTranslucent(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(back))
+	C.ScintillaEdit_markerSetBackTranslucent(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) MarkerSetBackSelectedTranslucent(markerNumber uintptr, back uintptr) {
-	C.ScintillaEdit_MarkerSetBackSelectedTranslucent(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(back))
+	C.ScintillaEdit_markerSetBackSelectedTranslucent(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) MarkerSetStrokeWidth(markerNumber uintptr, hundredths uintptr) {
-	C.ScintillaEdit_MarkerSetStrokeWidth(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(hundredths))
+	C.ScintillaEdit_markerSetStrokeWidth(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(hundredths))
 }
 
 func (this *ScintillaEdit) MarkerEnableHighlight(enabled bool) {
-	C.ScintillaEdit_MarkerEnableHighlight(this.h, (C.bool)(enabled))
+	C.ScintillaEdit_markerEnableHighlight(this.h, (C.bool)(enabled))
 }
 
 func (this *ScintillaEdit) MarkerAdd(line uintptr, markerNumber uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_MarkerAdd(this.h, (C.intptr_t)(line), (C.intptr_t)(markerNumber)))
+	return (uintptr)(C.ScintillaEdit_markerAdd(this.h, (C.intptr_t)(line), (C.intptr_t)(markerNumber)))
 }
 
 func (this *ScintillaEdit) MarkerDelete(line uintptr, markerNumber uintptr) {
-	C.ScintillaEdit_MarkerDelete(this.h, (C.intptr_t)(line), (C.intptr_t)(markerNumber))
+	C.ScintillaEdit_markerDelete(this.h, (C.intptr_t)(line), (C.intptr_t)(markerNumber))
 }
 
 func (this *ScintillaEdit) MarkerDeleteAll(markerNumber uintptr) {
-	C.ScintillaEdit_MarkerDeleteAll(this.h, (C.intptr_t)(markerNumber))
+	C.ScintillaEdit_markerDeleteAll(this.h, (C.intptr_t)(markerNumber))
 }
 
 func (this *ScintillaEdit) MarkerGet(line uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_MarkerGet(this.h, (C.intptr_t)(line)))
+	return (uintptr)(C.ScintillaEdit_markerGet(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) MarkerNext(lineStart uintptr, markerMask uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_MarkerNext(this.h, (C.intptr_t)(lineStart), (C.intptr_t)(markerMask)))
+	return (uintptr)(C.ScintillaEdit_markerNext(this.h, (C.intptr_t)(lineStart), (C.intptr_t)(markerMask)))
 }
 
 func (this *ScintillaEdit) MarkerPrevious(lineStart uintptr, markerMask uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_MarkerPrevious(this.h, (C.intptr_t)(lineStart), (C.intptr_t)(markerMask)))
+	return (uintptr)(C.ScintillaEdit_markerPrevious(this.h, (C.intptr_t)(lineStart), (C.intptr_t)(markerMask)))
 }
 
 func (this *ScintillaEdit) MarkerDefinePixmap(markerNumber uintptr, pixmap string) {
 	pixmap_Cstring := C.CString(pixmap)
 	defer C.free(unsafe.Pointer(pixmap_Cstring))
-	C.ScintillaEdit_MarkerDefinePixmap(this.h, (C.intptr_t)(markerNumber), pixmap_Cstring)
+	C.ScintillaEdit_markerDefinePixmap(this.h, (C.intptr_t)(markerNumber), pixmap_Cstring)
 }
 
 func (this *ScintillaEdit) MarkerAddSet(line uintptr, markerSet uintptr) {
-	C.ScintillaEdit_MarkerAddSet(this.h, (C.intptr_t)(line), (C.intptr_t)(markerSet))
+	C.ScintillaEdit_markerAddSet(this.h, (C.intptr_t)(line), (C.intptr_t)(markerSet))
 }
 
 func (this *ScintillaEdit) MarkerSetAlpha(markerNumber uintptr, alpha uintptr) {
-	C.ScintillaEdit_MarkerSetAlpha(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(alpha))
+	C.ScintillaEdit_markerSetAlpha(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(alpha))
 }
 
 func (this *ScintillaEdit) MarkerLayer(markerNumber uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_MarkerLayer(this.h, (C.intptr_t)(markerNumber)))
+	return (uintptr)(C.ScintillaEdit_markerLayer(this.h, (C.intptr_t)(markerNumber)))
 }
 
 func (this *ScintillaEdit) MarkerSetLayer(markerNumber uintptr, layer uintptr) {
-	C.ScintillaEdit_MarkerSetLayer(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(layer))
+	C.ScintillaEdit_markerSetLayer(this.h, (C.intptr_t)(markerNumber), (C.intptr_t)(layer))
 }
 
 func (this *ScintillaEdit) SetMarginTypeN(margin uintptr, marginType uintptr) {
-	C.ScintillaEdit_SetMarginTypeN(this.h, (C.intptr_t)(margin), (C.intptr_t)(marginType))
+	C.ScintillaEdit_setMarginTypeN(this.h, (C.intptr_t)(margin), (C.intptr_t)(marginType))
 }
 
 func (this *ScintillaEdit) MarginTypeN(margin uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_MarginTypeN(this.h, (C.intptr_t)(margin)))
+	return (uintptr)(C.ScintillaEdit_marginTypeN(this.h, (C.intptr_t)(margin)))
 }
 
 func (this *ScintillaEdit) SetMarginWidthN(margin uintptr, pixelWidth uintptr) {
-	C.ScintillaEdit_SetMarginWidthN(this.h, (C.intptr_t)(margin), (C.intptr_t)(pixelWidth))
+	C.ScintillaEdit_setMarginWidthN(this.h, (C.intptr_t)(margin), (C.intptr_t)(pixelWidth))
 }
 
 func (this *ScintillaEdit) MarginWidthN(margin uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_MarginWidthN(this.h, (C.intptr_t)(margin)))
+	return (uintptr)(C.ScintillaEdit_marginWidthN(this.h, (C.intptr_t)(margin)))
 }
 
 func (this *ScintillaEdit) SetMarginMaskN(margin uintptr, mask uintptr) {
-	C.ScintillaEdit_SetMarginMaskN(this.h, (C.intptr_t)(margin), (C.intptr_t)(mask))
+	C.ScintillaEdit_setMarginMaskN(this.h, (C.intptr_t)(margin), (C.intptr_t)(mask))
 }
 
 func (this *ScintillaEdit) MarginMaskN(margin uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_MarginMaskN(this.h, (C.intptr_t)(margin)))
+	return (uintptr)(C.ScintillaEdit_marginMaskN(this.h, (C.intptr_t)(margin)))
 }
 
 func (this *ScintillaEdit) SetMarginSensitiveN(margin uintptr, sensitive bool) {
-	C.ScintillaEdit_SetMarginSensitiveN(this.h, (C.intptr_t)(margin), (C.bool)(sensitive))
+	C.ScintillaEdit_setMarginSensitiveN(this.h, (C.intptr_t)(margin), (C.bool)(sensitive))
 }
 
 func (this *ScintillaEdit) MarginSensitiveN(margin uintptr) bool {
-	return (bool)(C.ScintillaEdit_MarginSensitiveN(this.h, (C.intptr_t)(margin)))
+	return (bool)(C.ScintillaEdit_marginSensitiveN(this.h, (C.intptr_t)(margin)))
 }
 
 func (this *ScintillaEdit) SetMarginCursorN(margin uintptr, cursor uintptr) {
-	C.ScintillaEdit_SetMarginCursorN(this.h, (C.intptr_t)(margin), (C.intptr_t)(cursor))
+	C.ScintillaEdit_setMarginCursorN(this.h, (C.intptr_t)(margin), (C.intptr_t)(cursor))
 }
 
 func (this *ScintillaEdit) MarginCursorN(margin uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_MarginCursorN(this.h, (C.intptr_t)(margin)))
+	return (uintptr)(C.ScintillaEdit_marginCursorN(this.h, (C.intptr_t)(margin)))
 }
 
 func (this *ScintillaEdit) SetMarginBackN(margin uintptr, back uintptr) {
-	C.ScintillaEdit_SetMarginBackN(this.h, (C.intptr_t)(margin), (C.intptr_t)(back))
+	C.ScintillaEdit_setMarginBackN(this.h, (C.intptr_t)(margin), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) MarginBackN(margin uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_MarginBackN(this.h, (C.intptr_t)(margin)))
+	return (uintptr)(C.ScintillaEdit_marginBackN(this.h, (C.intptr_t)(margin)))
 }
 
 func (this *ScintillaEdit) SetMargins(margins uintptr) {
-	C.ScintillaEdit_SetMargins(this.h, (C.intptr_t)(margins))
+	C.ScintillaEdit_setMargins(this.h, (C.intptr_t)(margins))
 }
 
 func (this *ScintillaEdit) Margins() uintptr {
-	return (uintptr)(C.ScintillaEdit_Margins(this.h))
+	return (uintptr)(C.ScintillaEdit_margins(this.h))
 }
 
 func (this *ScintillaEdit) StyleClearAll() {
-	C.ScintillaEdit_StyleClearAll(this.h)
+	C.ScintillaEdit_styleClearAll(this.h)
 }
 
 func (this *ScintillaEdit) StyleSetFore(style uintptr, fore uintptr) {
-	C.ScintillaEdit_StyleSetFore(this.h, (C.intptr_t)(style), (C.intptr_t)(fore))
+	C.ScintillaEdit_styleSetFore(this.h, (C.intptr_t)(style), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) StyleSetBack(style uintptr, back uintptr) {
-	C.ScintillaEdit_StyleSetBack(this.h, (C.intptr_t)(style), (C.intptr_t)(back))
+	C.ScintillaEdit_styleSetBack(this.h, (C.intptr_t)(style), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) StyleSetBold(style uintptr, bold bool) {
-	C.ScintillaEdit_StyleSetBold(this.h, (C.intptr_t)(style), (C.bool)(bold))
+	C.ScintillaEdit_styleSetBold(this.h, (C.intptr_t)(style), (C.bool)(bold))
 }
 
 func (this *ScintillaEdit) StyleSetItalic(style uintptr, italic bool) {
-	C.ScintillaEdit_StyleSetItalic(this.h, (C.intptr_t)(style), (C.bool)(italic))
+	C.ScintillaEdit_styleSetItalic(this.h, (C.intptr_t)(style), (C.bool)(italic))
 }
 
 func (this *ScintillaEdit) StyleSetSize(style uintptr, sizePoints uintptr) {
-	C.ScintillaEdit_StyleSetSize(this.h, (C.intptr_t)(style), (C.intptr_t)(sizePoints))
+	C.ScintillaEdit_styleSetSize(this.h, (C.intptr_t)(style), (C.intptr_t)(sizePoints))
 }
 
 func (this *ScintillaEdit) StyleSetFont(style uintptr, fontName string) {
 	fontName_Cstring := C.CString(fontName)
 	defer C.free(unsafe.Pointer(fontName_Cstring))
-	C.ScintillaEdit_StyleSetFont(this.h, (C.intptr_t)(style), fontName_Cstring)
+	C.ScintillaEdit_styleSetFont(this.h, (C.intptr_t)(style), fontName_Cstring)
 }
 
 func (this *ScintillaEdit) StyleSetEOLFilled(style uintptr, eolFilled bool) {
-	C.ScintillaEdit_StyleSetEOLFilled(this.h, (C.intptr_t)(style), (C.bool)(eolFilled))
+	C.ScintillaEdit_styleSetEOLFilled(this.h, (C.intptr_t)(style), (C.bool)(eolFilled))
 }
 
 func (this *ScintillaEdit) StyleResetDefault() {
-	C.ScintillaEdit_StyleResetDefault(this.h)
+	C.ScintillaEdit_styleResetDefault(this.h)
 }
 
 func (this *ScintillaEdit) StyleSetUnderline(style uintptr, underline bool) {
-	C.ScintillaEdit_StyleSetUnderline(this.h, (C.intptr_t)(style), (C.bool)(underline))
+	C.ScintillaEdit_styleSetUnderline(this.h, (C.intptr_t)(style), (C.bool)(underline))
 }
 
 func (this *ScintillaEdit) StyleFore(style uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_StyleFore(this.h, (C.intptr_t)(style)))
+	return (uintptr)(C.ScintillaEdit_styleFore(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleBack(style uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_StyleBack(this.h, (C.intptr_t)(style)))
+	return (uintptr)(C.ScintillaEdit_styleBack(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleBold(style uintptr) bool {
-	return (bool)(C.ScintillaEdit_StyleBold(this.h, (C.intptr_t)(style)))
+	return (bool)(C.ScintillaEdit_styleBold(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleItalic(style uintptr) bool {
-	return (bool)(C.ScintillaEdit_StyleItalic(this.h, (C.intptr_t)(style)))
+	return (bool)(C.ScintillaEdit_styleItalic(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleSize(style uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_StyleSize(this.h, (C.intptr_t)(style)))
+	return (uintptr)(C.ScintillaEdit_styleSize(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleFont(style uintptr) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_StyleFont(this.h, (C.intptr_t)(style))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_styleFont(this.h, (C.intptr_t)(style))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) StyleEOLFilled(style uintptr) bool {
-	return (bool)(C.ScintillaEdit_StyleEOLFilled(this.h, (C.intptr_t)(style)))
+	return (bool)(C.ScintillaEdit_styleEOLFilled(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleUnderline(style uintptr) bool {
-	return (bool)(C.ScintillaEdit_StyleUnderline(this.h, (C.intptr_t)(style)))
+	return (bool)(C.ScintillaEdit_styleUnderline(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleCase(style uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_StyleCase(this.h, (C.intptr_t)(style)))
+	return (uintptr)(C.ScintillaEdit_styleCase(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleCharacterSet(style uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_StyleCharacterSet(this.h, (C.intptr_t)(style)))
+	return (uintptr)(C.ScintillaEdit_styleCharacterSet(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleVisible(style uintptr) bool {
-	return (bool)(C.ScintillaEdit_StyleVisible(this.h, (C.intptr_t)(style)))
+	return (bool)(C.ScintillaEdit_styleVisible(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleChangeable(style uintptr) bool {
-	return (bool)(C.ScintillaEdit_StyleChangeable(this.h, (C.intptr_t)(style)))
+	return (bool)(C.ScintillaEdit_styleChangeable(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleHotSpot(style uintptr) bool {
-	return (bool)(C.ScintillaEdit_StyleHotSpot(this.h, (C.intptr_t)(style)))
+	return (bool)(C.ScintillaEdit_styleHotSpot(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleSetCase(style uintptr, caseVisible uintptr) {
-	C.ScintillaEdit_StyleSetCase(this.h, (C.intptr_t)(style), (C.intptr_t)(caseVisible))
+	C.ScintillaEdit_styleSetCase(this.h, (C.intptr_t)(style), (C.intptr_t)(caseVisible))
 }
 
 func (this *ScintillaEdit) StyleSetSizeFractional(style uintptr, sizeHundredthPoints uintptr) {
-	C.ScintillaEdit_StyleSetSizeFractional(this.h, (C.intptr_t)(style), (C.intptr_t)(sizeHundredthPoints))
+	C.ScintillaEdit_styleSetSizeFractional(this.h, (C.intptr_t)(style), (C.intptr_t)(sizeHundredthPoints))
 }
 
 func (this *ScintillaEdit) StyleSizeFractional(style uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_StyleSizeFractional(this.h, (C.intptr_t)(style)))
+	return (uintptr)(C.ScintillaEdit_styleSizeFractional(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleSetWeight(style uintptr, weight uintptr) {
-	C.ScintillaEdit_StyleSetWeight(this.h, (C.intptr_t)(style), (C.intptr_t)(weight))
+	C.ScintillaEdit_styleSetWeight(this.h, (C.intptr_t)(style), (C.intptr_t)(weight))
 }
 
 func (this *ScintillaEdit) StyleWeight(style uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_StyleWeight(this.h, (C.intptr_t)(style)))
+	return (uintptr)(C.ScintillaEdit_styleWeight(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleSetCharacterSet(style uintptr, characterSet uintptr) {
-	C.ScintillaEdit_StyleSetCharacterSet(this.h, (C.intptr_t)(style), (C.intptr_t)(characterSet))
+	C.ScintillaEdit_styleSetCharacterSet(this.h, (C.intptr_t)(style), (C.intptr_t)(characterSet))
 }
 
 func (this *ScintillaEdit) StyleSetHotSpot(style uintptr, hotspot bool) {
-	C.ScintillaEdit_StyleSetHotSpot(this.h, (C.intptr_t)(style), (C.bool)(hotspot))
+	C.ScintillaEdit_styleSetHotSpot(this.h, (C.intptr_t)(style), (C.bool)(hotspot))
 }
 
 func (this *ScintillaEdit) StyleSetCheckMonospaced(style uintptr, checkMonospaced bool) {
-	C.ScintillaEdit_StyleSetCheckMonospaced(this.h, (C.intptr_t)(style), (C.bool)(checkMonospaced))
+	C.ScintillaEdit_styleSetCheckMonospaced(this.h, (C.intptr_t)(style), (C.bool)(checkMonospaced))
 }
 
 func (this *ScintillaEdit) StyleCheckMonospaced(style uintptr) bool {
-	return (bool)(C.ScintillaEdit_StyleCheckMonospaced(this.h, (C.intptr_t)(style)))
+	return (bool)(C.ScintillaEdit_styleCheckMonospaced(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleSetStretch(style uintptr, stretch uintptr) {
-	C.ScintillaEdit_StyleSetStretch(this.h, (C.intptr_t)(style), (C.intptr_t)(stretch))
+	C.ScintillaEdit_styleSetStretch(this.h, (C.intptr_t)(style), (C.intptr_t)(stretch))
 }
 
 func (this *ScintillaEdit) StyleStretch(style uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_StyleStretch(this.h, (C.intptr_t)(style)))
+	return (uintptr)(C.ScintillaEdit_styleStretch(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) StyleSetInvisibleRepresentation(style uintptr, representation string) {
 	representation_Cstring := C.CString(representation)
 	defer C.free(unsafe.Pointer(representation_Cstring))
-	C.ScintillaEdit_StyleSetInvisibleRepresentation(this.h, (C.intptr_t)(style), representation_Cstring)
+	C.ScintillaEdit_styleSetInvisibleRepresentation(this.h, (C.intptr_t)(style), representation_Cstring)
 }
 
 func (this *ScintillaEdit) StyleInvisibleRepresentation(style uintptr) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_StyleInvisibleRepresentation(this.h, (C.intptr_t)(style))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_styleInvisibleRepresentation(this.h, (C.intptr_t)(style))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) SetElementColour(element uintptr, colourElement uintptr) {
-	C.ScintillaEdit_SetElementColour(this.h, (C.intptr_t)(element), (C.intptr_t)(colourElement))
+	C.ScintillaEdit_setElementColour(this.h, (C.intptr_t)(element), (C.intptr_t)(colourElement))
 }
 
 func (this *ScintillaEdit) ElementColour(element uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_ElementColour(this.h, (C.intptr_t)(element)))
+	return (uintptr)(C.ScintillaEdit_elementColour(this.h, (C.intptr_t)(element)))
 }
 
 func (this *ScintillaEdit) ResetElementColour(element uintptr) {
-	C.ScintillaEdit_ResetElementColour(this.h, (C.intptr_t)(element))
+	C.ScintillaEdit_resetElementColour(this.h, (C.intptr_t)(element))
 }
 
 func (this *ScintillaEdit) ElementIsSet(element uintptr) bool {
-	return (bool)(C.ScintillaEdit_ElementIsSet(this.h, (C.intptr_t)(element)))
+	return (bool)(C.ScintillaEdit_elementIsSet(this.h, (C.intptr_t)(element)))
 }
 
 func (this *ScintillaEdit) ElementAllowsTranslucent(element uintptr) bool {
-	return (bool)(C.ScintillaEdit_ElementAllowsTranslucent(this.h, (C.intptr_t)(element)))
+	return (bool)(C.ScintillaEdit_elementAllowsTranslucent(this.h, (C.intptr_t)(element)))
 }
 
 func (this *ScintillaEdit) ElementBaseColour(element uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_ElementBaseColour(this.h, (C.intptr_t)(element)))
+	return (uintptr)(C.ScintillaEdit_elementBaseColour(this.h, (C.intptr_t)(element)))
 }
 
 func (this *ScintillaEdit) SetSelFore(useSetting bool, fore uintptr) {
-	C.ScintillaEdit_SetSelFore(this.h, (C.bool)(useSetting), (C.intptr_t)(fore))
+	C.ScintillaEdit_setSelFore(this.h, (C.bool)(useSetting), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) SetSelBack(useSetting bool, back uintptr) {
-	C.ScintillaEdit_SetSelBack(this.h, (C.bool)(useSetting), (C.intptr_t)(back))
+	C.ScintillaEdit_setSelBack(this.h, (C.bool)(useSetting), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) SelAlpha() uintptr {
-	return (uintptr)(C.ScintillaEdit_SelAlpha(this.h))
+	return (uintptr)(C.ScintillaEdit_selAlpha(this.h))
 }
 
 func (this *ScintillaEdit) SetSelAlpha(alpha uintptr) {
-	C.ScintillaEdit_SetSelAlpha(this.h, (C.intptr_t)(alpha))
+	C.ScintillaEdit_setSelAlpha(this.h, (C.intptr_t)(alpha))
 }
 
 func (this *ScintillaEdit) SelEOLFilled() bool {
-	return (bool)(C.ScintillaEdit_SelEOLFilled(this.h))
+	return (bool)(C.ScintillaEdit_selEOLFilled(this.h))
 }
 
 func (this *ScintillaEdit) SetSelEOLFilled(filled bool) {
-	C.ScintillaEdit_SetSelEOLFilled(this.h, (C.bool)(filled))
+	C.ScintillaEdit_setSelEOLFilled(this.h, (C.bool)(filled))
 }
 
 func (this *ScintillaEdit) SelectionLayer() uintptr {
-	return (uintptr)(C.ScintillaEdit_SelectionLayer(this.h))
+	return (uintptr)(C.ScintillaEdit_selectionLayer(this.h))
 }
 
 func (this *ScintillaEdit) SetSelectionLayer(layer uintptr) {
-	C.ScintillaEdit_SetSelectionLayer(this.h, (C.intptr_t)(layer))
+	C.ScintillaEdit_setSelectionLayer(this.h, (C.intptr_t)(layer))
 }
 
 func (this *ScintillaEdit) CaretLineLayer() uintptr {
-	return (uintptr)(C.ScintillaEdit_CaretLineLayer(this.h))
+	return (uintptr)(C.ScintillaEdit_caretLineLayer(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretLineLayer(layer uintptr) {
-	C.ScintillaEdit_SetCaretLineLayer(this.h, (C.intptr_t)(layer))
+	C.ScintillaEdit_setCaretLineLayer(this.h, (C.intptr_t)(layer))
 }
 
 func (this *ScintillaEdit) CaretLineHighlightSubLine() bool {
-	return (bool)(C.ScintillaEdit_CaretLineHighlightSubLine(this.h))
+	return (bool)(C.ScintillaEdit_caretLineHighlightSubLine(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretLineHighlightSubLine(subLine bool) {
-	C.ScintillaEdit_SetCaretLineHighlightSubLine(this.h, (C.bool)(subLine))
+	C.ScintillaEdit_setCaretLineHighlightSubLine(this.h, (C.bool)(subLine))
 }
 
 func (this *ScintillaEdit) SetCaretFore(fore uintptr) {
-	C.ScintillaEdit_SetCaretFore(this.h, (C.intptr_t)(fore))
+	C.ScintillaEdit_setCaretFore(this.h, (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) AssignCmdKey(keyDefinition uintptr, sciCommand uintptr) {
-	C.ScintillaEdit_AssignCmdKey(this.h, (C.intptr_t)(keyDefinition), (C.intptr_t)(sciCommand))
+	C.ScintillaEdit_assignCmdKey(this.h, (C.intptr_t)(keyDefinition), (C.intptr_t)(sciCommand))
 }
 
 func (this *ScintillaEdit) ClearCmdKey(keyDefinition uintptr) {
-	C.ScintillaEdit_ClearCmdKey(this.h, (C.intptr_t)(keyDefinition))
+	C.ScintillaEdit_clearCmdKey(this.h, (C.intptr_t)(keyDefinition))
 }
 
 func (this *ScintillaEdit) ClearAllCmdKeys() {
-	C.ScintillaEdit_ClearAllCmdKeys(this.h)
+	C.ScintillaEdit_clearAllCmdKeys(this.h)
 }
 
 func (this *ScintillaEdit) SetStylingEx(length uintptr, styles string) {
 	styles_Cstring := C.CString(styles)
 	defer C.free(unsafe.Pointer(styles_Cstring))
-	C.ScintillaEdit_SetStylingEx(this.h, (C.intptr_t)(length), styles_Cstring)
+	C.ScintillaEdit_setStylingEx(this.h, (C.intptr_t)(length), styles_Cstring)
 }
 
 func (this *ScintillaEdit) StyleSetVisible(style uintptr, visible bool) {
-	C.ScintillaEdit_StyleSetVisible(this.h, (C.intptr_t)(style), (C.bool)(visible))
+	C.ScintillaEdit_styleSetVisible(this.h, (C.intptr_t)(style), (C.bool)(visible))
 }
 
 func (this *ScintillaEdit) CaretPeriod() uintptr {
-	return (uintptr)(C.ScintillaEdit_CaretPeriod(this.h))
+	return (uintptr)(C.ScintillaEdit_caretPeriod(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretPeriod(periodMilliseconds uintptr) {
-	C.ScintillaEdit_SetCaretPeriod(this.h, (C.intptr_t)(periodMilliseconds))
+	C.ScintillaEdit_setCaretPeriod(this.h, (C.intptr_t)(periodMilliseconds))
 }
 
 func (this *ScintillaEdit) SetWordChars(characters string) {
 	characters_Cstring := C.CString(characters)
 	defer C.free(unsafe.Pointer(characters_Cstring))
-	C.ScintillaEdit_SetWordChars(this.h, characters_Cstring)
+	C.ScintillaEdit_setWordChars(this.h, characters_Cstring)
 }
 
 func (this *ScintillaEdit) WordChars() []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_WordChars(this.h)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_wordChars(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) SetCharacterCategoryOptimization(countCharacters uintptr) {
-	C.ScintillaEdit_SetCharacterCategoryOptimization(this.h, (C.intptr_t)(countCharacters))
+	C.ScintillaEdit_setCharacterCategoryOptimization(this.h, (C.intptr_t)(countCharacters))
 }
 
 func (this *ScintillaEdit) CharacterCategoryOptimization() uintptr {
-	return (uintptr)(C.ScintillaEdit_CharacterCategoryOptimization(this.h))
+	return (uintptr)(C.ScintillaEdit_characterCategoryOptimization(this.h))
 }
 
 func (this *ScintillaEdit) BeginUndoAction() {
-	C.ScintillaEdit_BeginUndoAction(this.h)
+	C.ScintillaEdit_beginUndoAction(this.h)
 }
 
 func (this *ScintillaEdit) EndUndoAction() {
-	C.ScintillaEdit_EndUndoAction(this.h)
+	C.ScintillaEdit_endUndoAction(this.h)
 }
 
 func (this *ScintillaEdit) UndoSequence() uintptr {
-	return (uintptr)(C.ScintillaEdit_UndoSequence(this.h))
+	return (uintptr)(C.ScintillaEdit_undoSequence(this.h))
 }
 
 func (this *ScintillaEdit) UndoActions() uintptr {
-	return (uintptr)(C.ScintillaEdit_UndoActions(this.h))
+	return (uintptr)(C.ScintillaEdit_undoActions(this.h))
 }
 
 func (this *ScintillaEdit) SetUndoSavePoint(action uintptr) {
-	C.ScintillaEdit_SetUndoSavePoint(this.h, (C.intptr_t)(action))
+	C.ScintillaEdit_setUndoSavePoint(this.h, (C.intptr_t)(action))
 }
 
 func (this *ScintillaEdit) UndoSavePoint() uintptr {
-	return (uintptr)(C.ScintillaEdit_UndoSavePoint(this.h))
+	return (uintptr)(C.ScintillaEdit_undoSavePoint(this.h))
 }
 
 func (this *ScintillaEdit) SetUndoDetach(action uintptr) {
-	C.ScintillaEdit_SetUndoDetach(this.h, (C.intptr_t)(action))
+	C.ScintillaEdit_setUndoDetach(this.h, (C.intptr_t)(action))
 }
 
 func (this *ScintillaEdit) UndoDetach() uintptr {
-	return (uintptr)(C.ScintillaEdit_UndoDetach(this.h))
+	return (uintptr)(C.ScintillaEdit_undoDetach(this.h))
 }
 
 func (this *ScintillaEdit) SetUndoTentative(action uintptr) {
-	C.ScintillaEdit_SetUndoTentative(this.h, (C.intptr_t)(action))
+	C.ScintillaEdit_setUndoTentative(this.h, (C.intptr_t)(action))
 }
 
 func (this *ScintillaEdit) UndoTentative() uintptr {
-	return (uintptr)(C.ScintillaEdit_UndoTentative(this.h))
+	return (uintptr)(C.ScintillaEdit_undoTentative(this.h))
 }
 
 func (this *ScintillaEdit) SetUndoCurrent(action uintptr) {
-	C.ScintillaEdit_SetUndoCurrent(this.h, (C.intptr_t)(action))
+	C.ScintillaEdit_setUndoCurrent(this.h, (C.intptr_t)(action))
 }
 
 func (this *ScintillaEdit) UndoCurrent() uintptr {
-	return (uintptr)(C.ScintillaEdit_UndoCurrent(this.h))
+	return (uintptr)(C.ScintillaEdit_undoCurrent(this.h))
 }
 
 func (this *ScintillaEdit) PushUndoActionType(typeVal uintptr, pos uintptr) {
-	C.ScintillaEdit_PushUndoActionType(this.h, (C.intptr_t)(typeVal), (C.intptr_t)(pos))
+	C.ScintillaEdit_pushUndoActionType(this.h, (C.intptr_t)(typeVal), (C.intptr_t)(pos))
 }
 
 func (this *ScintillaEdit) ChangeLastUndoActionText(length uintptr, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.ScintillaEdit_ChangeLastUndoActionText(this.h, (C.intptr_t)(length), text_Cstring)
+	C.ScintillaEdit_changeLastUndoActionText(this.h, (C.intptr_t)(length), text_Cstring)
 }
 
 func (this *ScintillaEdit) UndoActionType(action uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_UndoActionType(this.h, (C.intptr_t)(action)))
+	return (uintptr)(C.ScintillaEdit_undoActionType(this.h, (C.intptr_t)(action)))
 }
 
 func (this *ScintillaEdit) UndoActionPosition(action uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_UndoActionPosition(this.h, (C.intptr_t)(action)))
+	return (uintptr)(C.ScintillaEdit_undoActionPosition(this.h, (C.intptr_t)(action)))
 }
 
 func (this *ScintillaEdit) UndoActionText(action uintptr) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_UndoActionText(this.h, (C.intptr_t)(action))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_undoActionText(this.h, (C.intptr_t)(action))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) IndicSetStyle(indicator uintptr, indicatorStyle uintptr) {
-	C.ScintillaEdit_IndicSetStyle(this.h, (C.intptr_t)(indicator), (C.intptr_t)(indicatorStyle))
+	C.ScintillaEdit_indicSetStyle(this.h, (C.intptr_t)(indicator), (C.intptr_t)(indicatorStyle))
 }
 
 func (this *ScintillaEdit) IndicStyle(indicator uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_IndicStyle(this.h, (C.intptr_t)(indicator)))
+	return (uintptr)(C.ScintillaEdit_indicStyle(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) IndicSetFore(indicator uintptr, fore uintptr) {
-	C.ScintillaEdit_IndicSetFore(this.h, (C.intptr_t)(indicator), (C.intptr_t)(fore))
+	C.ScintillaEdit_indicSetFore(this.h, (C.intptr_t)(indicator), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) IndicFore(indicator uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_IndicFore(this.h, (C.intptr_t)(indicator)))
+	return (uintptr)(C.ScintillaEdit_indicFore(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) IndicSetUnder(indicator uintptr, under bool) {
-	C.ScintillaEdit_IndicSetUnder(this.h, (C.intptr_t)(indicator), (C.bool)(under))
+	C.ScintillaEdit_indicSetUnder(this.h, (C.intptr_t)(indicator), (C.bool)(under))
 }
 
 func (this *ScintillaEdit) IndicUnder(indicator uintptr) bool {
-	return (bool)(C.ScintillaEdit_IndicUnder(this.h, (C.intptr_t)(indicator)))
+	return (bool)(C.ScintillaEdit_indicUnder(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) IndicSetHoverStyle(indicator uintptr, indicatorStyle uintptr) {
-	C.ScintillaEdit_IndicSetHoverStyle(this.h, (C.intptr_t)(indicator), (C.intptr_t)(indicatorStyle))
+	C.ScintillaEdit_indicSetHoverStyle(this.h, (C.intptr_t)(indicator), (C.intptr_t)(indicatorStyle))
 }
 
 func (this *ScintillaEdit) IndicHoverStyle(indicator uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_IndicHoverStyle(this.h, (C.intptr_t)(indicator)))
+	return (uintptr)(C.ScintillaEdit_indicHoverStyle(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) IndicSetHoverFore(indicator uintptr, fore uintptr) {
-	C.ScintillaEdit_IndicSetHoverFore(this.h, (C.intptr_t)(indicator), (C.intptr_t)(fore))
+	C.ScintillaEdit_indicSetHoverFore(this.h, (C.intptr_t)(indicator), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) IndicHoverFore(indicator uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_IndicHoverFore(this.h, (C.intptr_t)(indicator)))
+	return (uintptr)(C.ScintillaEdit_indicHoverFore(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) IndicSetFlags(indicator uintptr, flags uintptr) {
-	C.ScintillaEdit_IndicSetFlags(this.h, (C.intptr_t)(indicator), (C.intptr_t)(flags))
+	C.ScintillaEdit_indicSetFlags(this.h, (C.intptr_t)(indicator), (C.intptr_t)(flags))
 }
 
 func (this *ScintillaEdit) IndicFlags(indicator uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_IndicFlags(this.h, (C.intptr_t)(indicator)))
+	return (uintptr)(C.ScintillaEdit_indicFlags(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) IndicSetStrokeWidth(indicator uintptr, hundredths uintptr) {
-	C.ScintillaEdit_IndicSetStrokeWidth(this.h, (C.intptr_t)(indicator), (C.intptr_t)(hundredths))
+	C.ScintillaEdit_indicSetStrokeWidth(this.h, (C.intptr_t)(indicator), (C.intptr_t)(hundredths))
 }
 
 func (this *ScintillaEdit) IndicStrokeWidth(indicator uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_IndicStrokeWidth(this.h, (C.intptr_t)(indicator)))
+	return (uintptr)(C.ScintillaEdit_indicStrokeWidth(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) SetWhitespaceFore(useSetting bool, fore uintptr) {
-	C.ScintillaEdit_SetWhitespaceFore(this.h, (C.bool)(useSetting), (C.intptr_t)(fore))
+	C.ScintillaEdit_setWhitespaceFore(this.h, (C.bool)(useSetting), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) SetWhitespaceBack(useSetting bool, back uintptr) {
-	C.ScintillaEdit_SetWhitespaceBack(this.h, (C.bool)(useSetting), (C.intptr_t)(back))
+	C.ScintillaEdit_setWhitespaceBack(this.h, (C.bool)(useSetting), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) SetWhitespaceSize(size uintptr) {
-	C.ScintillaEdit_SetWhitespaceSize(this.h, (C.intptr_t)(size))
+	C.ScintillaEdit_setWhitespaceSize(this.h, (C.intptr_t)(size))
 }
 
 func (this *ScintillaEdit) WhitespaceSize() uintptr {
-	return (uintptr)(C.ScintillaEdit_WhitespaceSize(this.h))
+	return (uintptr)(C.ScintillaEdit_whitespaceSize(this.h))
 }
 
 func (this *ScintillaEdit) SetLineState(line uintptr, state uintptr) {
-	C.ScintillaEdit_SetLineState(this.h, (C.intptr_t)(line), (C.intptr_t)(state))
+	C.ScintillaEdit_setLineState(this.h, (C.intptr_t)(line), (C.intptr_t)(state))
 }
 
 func (this *ScintillaEdit) LineState(line uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_LineState(this.h, (C.intptr_t)(line)))
+	return (uintptr)(C.ScintillaEdit_lineState(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) MaxLineState() uintptr {
-	return (uintptr)(C.ScintillaEdit_MaxLineState(this.h))
+	return (uintptr)(C.ScintillaEdit_maxLineState(this.h))
 }
 
 func (this *ScintillaEdit) CaretLineVisible() bool {
-	return (bool)(C.ScintillaEdit_CaretLineVisible(this.h))
+	return (bool)(C.ScintillaEdit_caretLineVisible(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretLineVisible(show bool) {
-	C.ScintillaEdit_SetCaretLineVisible(this.h, (C.bool)(show))
+	C.ScintillaEdit_setCaretLineVisible(this.h, (C.bool)(show))
 }
 
 func (this *ScintillaEdit) CaretLineBack() uintptr {
-	return (uintptr)(C.ScintillaEdit_CaretLineBack(this.h))
+	return (uintptr)(C.ScintillaEdit_caretLineBack(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretLineBack(back uintptr) {
-	C.ScintillaEdit_SetCaretLineBack(this.h, (C.intptr_t)(back))
+	C.ScintillaEdit_setCaretLineBack(this.h, (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) CaretLineFrame() uintptr {
-	return (uintptr)(C.ScintillaEdit_CaretLineFrame(this.h))
+	return (uintptr)(C.ScintillaEdit_caretLineFrame(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretLineFrame(width uintptr) {
-	C.ScintillaEdit_SetCaretLineFrame(this.h, (C.intptr_t)(width))
+	C.ScintillaEdit_setCaretLineFrame(this.h, (C.intptr_t)(width))
 }
 
 func (this *ScintillaEdit) StyleSetChangeable(style uintptr, changeable bool) {
-	C.ScintillaEdit_StyleSetChangeable(this.h, (C.intptr_t)(style), (C.bool)(changeable))
+	C.ScintillaEdit_styleSetChangeable(this.h, (C.intptr_t)(style), (C.bool)(changeable))
 }
 
 func (this *ScintillaEdit) AutoCShow(lengthEntered uintptr, itemList string) {
 	itemList_Cstring := C.CString(itemList)
 	defer C.free(unsafe.Pointer(itemList_Cstring))
-	C.ScintillaEdit_AutoCShow(this.h, (C.intptr_t)(lengthEntered), itemList_Cstring)
+	C.ScintillaEdit_autoCShow(this.h, (C.intptr_t)(lengthEntered), itemList_Cstring)
 }
 
 func (this *ScintillaEdit) AutoCCancel() {
-	C.ScintillaEdit_AutoCCancel(this.h)
+	C.ScintillaEdit_autoCCancel(this.h)
 }
 
 func (this *ScintillaEdit) AutoCActive() bool {
-	return (bool)(C.ScintillaEdit_AutoCActive(this.h))
+	return (bool)(C.ScintillaEdit_autoCActive(this.h))
 }
 
 func (this *ScintillaEdit) AutoCPosStart() uintptr {
-	return (uintptr)(C.ScintillaEdit_AutoCPosStart(this.h))
+	return (uintptr)(C.ScintillaEdit_autoCPosStart(this.h))
 }
 
 func (this *ScintillaEdit) AutoCComplete() {
-	C.ScintillaEdit_AutoCComplete(this.h)
+	C.ScintillaEdit_autoCComplete(this.h)
 }
 
 func (this *ScintillaEdit) AutoCStops(characterSet string) {
 	characterSet_Cstring := C.CString(characterSet)
 	defer C.free(unsafe.Pointer(characterSet_Cstring))
-	C.ScintillaEdit_AutoCStops(this.h, characterSet_Cstring)
+	C.ScintillaEdit_autoCStops(this.h, characterSet_Cstring)
 }
 
 func (this *ScintillaEdit) AutoCSetSeparator(separatorCharacter uintptr) {
-	C.ScintillaEdit_AutoCSetSeparator(this.h, (C.intptr_t)(separatorCharacter))
+	C.ScintillaEdit_autoCSetSeparator(this.h, (C.intptr_t)(separatorCharacter))
 }
 
 func (this *ScintillaEdit) AutoCSeparator() uintptr {
-	return (uintptr)(C.ScintillaEdit_AutoCSeparator(this.h))
+	return (uintptr)(C.ScintillaEdit_autoCSeparator(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSelect(selectVal string) {
 	selectVal_Cstring := C.CString(selectVal)
 	defer C.free(unsafe.Pointer(selectVal_Cstring))
-	C.ScintillaEdit_AutoCSelect(this.h, selectVal_Cstring)
+	C.ScintillaEdit_autoCSelect(this.h, selectVal_Cstring)
 }
 
 func (this *ScintillaEdit) AutoCSetCancelAtStart(cancel bool) {
-	C.ScintillaEdit_AutoCSetCancelAtStart(this.h, (C.bool)(cancel))
+	C.ScintillaEdit_autoCSetCancelAtStart(this.h, (C.bool)(cancel))
 }
 
 func (this *ScintillaEdit) AutoCCancelAtStart() bool {
-	return (bool)(C.ScintillaEdit_AutoCCancelAtStart(this.h))
+	return (bool)(C.ScintillaEdit_autoCCancelAtStart(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetFillUps(characterSet string) {
 	characterSet_Cstring := C.CString(characterSet)
 	defer C.free(unsafe.Pointer(characterSet_Cstring))
-	C.ScintillaEdit_AutoCSetFillUps(this.h, characterSet_Cstring)
+	C.ScintillaEdit_autoCSetFillUps(this.h, characterSet_Cstring)
 }
 
 func (this *ScintillaEdit) AutoCSetChooseSingle(chooseSingle bool) {
-	C.ScintillaEdit_AutoCSetChooseSingle(this.h, (C.bool)(chooseSingle))
+	C.ScintillaEdit_autoCSetChooseSingle(this.h, (C.bool)(chooseSingle))
 }
 
 func (this *ScintillaEdit) AutoCChooseSingle() bool {
-	return (bool)(C.ScintillaEdit_AutoCChooseSingle(this.h))
+	return (bool)(C.ScintillaEdit_autoCChooseSingle(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetIgnoreCase(ignoreCase bool) {
-	C.ScintillaEdit_AutoCSetIgnoreCase(this.h, (C.bool)(ignoreCase))
+	C.ScintillaEdit_autoCSetIgnoreCase(this.h, (C.bool)(ignoreCase))
 }
 
 func (this *ScintillaEdit) AutoCIgnoreCase() bool {
-	return (bool)(C.ScintillaEdit_AutoCIgnoreCase(this.h))
+	return (bool)(C.ScintillaEdit_autoCIgnoreCase(this.h))
 }
 
 func (this *ScintillaEdit) UserListShow(listType uintptr, itemList string) {
 	itemList_Cstring := C.CString(itemList)
 	defer C.free(unsafe.Pointer(itemList_Cstring))
-	C.ScintillaEdit_UserListShow(this.h, (C.intptr_t)(listType), itemList_Cstring)
+	C.ScintillaEdit_userListShow(this.h, (C.intptr_t)(listType), itemList_Cstring)
 }
 
 func (this *ScintillaEdit) AutoCSetAutoHide(autoHide bool) {
-	C.ScintillaEdit_AutoCSetAutoHide(this.h, (C.bool)(autoHide))
+	C.ScintillaEdit_autoCSetAutoHide(this.h, (C.bool)(autoHide))
 }
 
 func (this *ScintillaEdit) AutoCAutoHide() bool {
-	return (bool)(C.ScintillaEdit_AutoCAutoHide(this.h))
+	return (bool)(C.ScintillaEdit_autoCAutoHide(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetOptions(options uintptr) {
-	C.ScintillaEdit_AutoCSetOptions(this.h, (C.intptr_t)(options))
+	C.ScintillaEdit_autoCSetOptions(this.h, (C.intptr_t)(options))
 }
 
 func (this *ScintillaEdit) AutoCOptions() uintptr {
-	return (uintptr)(C.ScintillaEdit_AutoCOptions(this.h))
+	return (uintptr)(C.ScintillaEdit_autoCOptions(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetDropRestOfWord(dropRestOfWord bool) {
-	C.ScintillaEdit_AutoCSetDropRestOfWord(this.h, (C.bool)(dropRestOfWord))
+	C.ScintillaEdit_autoCSetDropRestOfWord(this.h, (C.bool)(dropRestOfWord))
 }
 
 func (this *ScintillaEdit) AutoCDropRestOfWord() bool {
-	return (bool)(C.ScintillaEdit_AutoCDropRestOfWord(this.h))
+	return (bool)(C.ScintillaEdit_autoCDropRestOfWord(this.h))
 }
 
 func (this *ScintillaEdit) RegisterImage(typeVal uintptr, xpmData string) {
 	xpmData_Cstring := C.CString(xpmData)
 	defer C.free(unsafe.Pointer(xpmData_Cstring))
-	C.ScintillaEdit_RegisterImage(this.h, (C.intptr_t)(typeVal), xpmData_Cstring)
+	C.ScintillaEdit_registerImage(this.h, (C.intptr_t)(typeVal), xpmData_Cstring)
 }
 
 func (this *ScintillaEdit) ClearRegisteredImages() {
-	C.ScintillaEdit_ClearRegisteredImages(this.h)
+	C.ScintillaEdit_clearRegisteredImages(this.h)
 }
 
 func (this *ScintillaEdit) AutoCTypeSeparator() uintptr {
-	return (uintptr)(C.ScintillaEdit_AutoCTypeSeparator(this.h))
+	return (uintptr)(C.ScintillaEdit_autoCTypeSeparator(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetTypeSeparator(separatorCharacter uintptr) {
-	C.ScintillaEdit_AutoCSetTypeSeparator(this.h, (C.intptr_t)(separatorCharacter))
+	C.ScintillaEdit_autoCSetTypeSeparator(this.h, (C.intptr_t)(separatorCharacter))
 }
 
 func (this *ScintillaEdit) AutoCSetMaxWidth(characterCount uintptr) {
-	C.ScintillaEdit_AutoCSetMaxWidth(this.h, (C.intptr_t)(characterCount))
+	C.ScintillaEdit_autoCSetMaxWidth(this.h, (C.intptr_t)(characterCount))
 }
 
 func (this *ScintillaEdit) AutoCMaxWidth() uintptr {
-	return (uintptr)(C.ScintillaEdit_AutoCMaxWidth(this.h))
+	return (uintptr)(C.ScintillaEdit_autoCMaxWidth(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetMaxHeight(rowCount uintptr) {
-	C.ScintillaEdit_AutoCSetMaxHeight(this.h, (C.intptr_t)(rowCount))
+	C.ScintillaEdit_autoCSetMaxHeight(this.h, (C.intptr_t)(rowCount))
 }
 
 func (this *ScintillaEdit) AutoCMaxHeight() uintptr {
-	return (uintptr)(C.ScintillaEdit_AutoCMaxHeight(this.h))
+	return (uintptr)(C.ScintillaEdit_autoCMaxHeight(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetStyle(style uintptr) {
-	C.ScintillaEdit_AutoCSetStyle(this.h, (C.intptr_t)(style))
+	C.ScintillaEdit_autoCSetStyle(this.h, (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) AutoCStyle() uintptr {
-	return (uintptr)(C.ScintillaEdit_AutoCStyle(this.h))
+	return (uintptr)(C.ScintillaEdit_autoCStyle(this.h))
 }
 
 func (this *ScintillaEdit) SetIndent(indentSize uintptr) {
-	C.ScintillaEdit_SetIndent(this.h, (C.intptr_t)(indentSize))
+	C.ScintillaEdit_setIndent(this.h, (C.intptr_t)(indentSize))
 }
 
 func (this *ScintillaEdit) Indent() uintptr {
-	return (uintptr)(C.ScintillaEdit_Indent(this.h))
+	return (uintptr)(C.ScintillaEdit_indent(this.h))
 }
 
 func (this *ScintillaEdit) SetUseTabs(useTabs bool) {
-	C.ScintillaEdit_SetUseTabs(this.h, (C.bool)(useTabs))
+	C.ScintillaEdit_setUseTabs(this.h, (C.bool)(useTabs))
 }
 
 func (this *ScintillaEdit) UseTabs() bool {
-	return (bool)(C.ScintillaEdit_UseTabs(this.h))
+	return (bool)(C.ScintillaEdit_useTabs(this.h))
 }
 
 func (this *ScintillaEdit) SetLineIndentation(line uintptr, indentation uintptr) {
-	C.ScintillaEdit_SetLineIndentation(this.h, (C.intptr_t)(line), (C.intptr_t)(indentation))
+	C.ScintillaEdit_setLineIndentation(this.h, (C.intptr_t)(line), (C.intptr_t)(indentation))
 }
 
 func (this *ScintillaEdit) LineIndentation(line uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_LineIndentation(this.h, (C.intptr_t)(line)))
+	return (uintptr)(C.ScintillaEdit_lineIndentation(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) LineIndentPosition(line uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_LineIndentPosition(this.h, (C.intptr_t)(line)))
+	return (uintptr)(C.ScintillaEdit_lineIndentPosition(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) Column(pos uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_Column(this.h, (C.intptr_t)(pos)))
+	return (uintptr)(C.ScintillaEdit_column(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) CountCharacters(start uintptr, end uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_CountCharacters(this.h, (C.intptr_t)(start), (C.intptr_t)(end)))
+	return (uintptr)(C.ScintillaEdit_countCharacters(this.h, (C.intptr_t)(start), (C.intptr_t)(end)))
 }
 
 func (this *ScintillaEdit) CountCodeUnits(start uintptr, end uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_CountCodeUnits(this.h, (C.intptr_t)(start), (C.intptr_t)(end)))
+	return (uintptr)(C.ScintillaEdit_countCodeUnits(this.h, (C.intptr_t)(start), (C.intptr_t)(end)))
 }
 
 func (this *ScintillaEdit) SetHScrollBar(visible bool) {
-	C.ScintillaEdit_SetHScrollBar(this.h, (C.bool)(visible))
+	C.ScintillaEdit_setHScrollBar(this.h, (C.bool)(visible))
 }
 
 func (this *ScintillaEdit) HScrollBar() bool {
-	return (bool)(C.ScintillaEdit_HScrollBar(this.h))
+	return (bool)(C.ScintillaEdit_hScrollBar(this.h))
 }
 
 func (this *ScintillaEdit) SetIndentationGuides(indentView uintptr) {
-	C.ScintillaEdit_SetIndentationGuides(this.h, (C.intptr_t)(indentView))
+	C.ScintillaEdit_setIndentationGuides(this.h, (C.intptr_t)(indentView))
 }
 
 func (this *ScintillaEdit) IndentationGuides() uintptr {
-	return (uintptr)(C.ScintillaEdit_IndentationGuides(this.h))
+	return (uintptr)(C.ScintillaEdit_indentationGuides(this.h))
 }
 
 func (this *ScintillaEdit) SetHighlightGuide(column uintptr) {
-	C.ScintillaEdit_SetHighlightGuide(this.h, (C.intptr_t)(column))
+	C.ScintillaEdit_setHighlightGuide(this.h, (C.intptr_t)(column))
 }
 
 func (this *ScintillaEdit) HighlightGuide() uintptr {
-	return (uintptr)(C.ScintillaEdit_HighlightGuide(this.h))
+	return (uintptr)(C.ScintillaEdit_highlightGuide(this.h))
 }
 
 func (this *ScintillaEdit) LineEndPosition(line uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_LineEndPosition(this.h, (C.intptr_t)(line)))
+	return (uintptr)(C.ScintillaEdit_lineEndPosition(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) CodePage() uintptr {
-	return (uintptr)(C.ScintillaEdit_CodePage(this.h))
+	return (uintptr)(C.ScintillaEdit_codePage(this.h))
 }
 
 func (this *ScintillaEdit) CaretFore() uintptr {
-	return (uintptr)(C.ScintillaEdit_CaretFore(this.h))
+	return (uintptr)(C.ScintillaEdit_caretFore(this.h))
 }
 
 func (this *ScintillaEdit) ReadOnly() bool {
-	return (bool)(C.ScintillaEdit_ReadOnly(this.h))
+	return (bool)(C.ScintillaEdit_readOnly(this.h))
 }
 
 func (this *ScintillaEdit) SetCurrentPos(caret uintptr) {
-	C.ScintillaEdit_SetCurrentPos(this.h, (C.intptr_t)(caret))
+	C.ScintillaEdit_setCurrentPos(this.h, (C.intptr_t)(caret))
 }
 
 func (this *ScintillaEdit) SetSelectionStart(anchor uintptr) {
-	C.ScintillaEdit_SetSelectionStart(this.h, (C.intptr_t)(anchor))
+	C.ScintillaEdit_setSelectionStart(this.h, (C.intptr_t)(anchor))
 }
 
 func (this *ScintillaEdit) SelectionStart() uintptr {
-	return (uintptr)(C.ScintillaEdit_SelectionStart(this.h))
+	return (uintptr)(C.ScintillaEdit_selectionStart(this.h))
 }
 
 func (this *ScintillaEdit) SetSelectionEnd(caret uintptr) {
-	C.ScintillaEdit_SetSelectionEnd(this.h, (C.intptr_t)(caret))
+	C.ScintillaEdit_setSelectionEnd(this.h, (C.intptr_t)(caret))
 }
 
 func (this *ScintillaEdit) SelectionEnd() uintptr {
-	return (uintptr)(C.ScintillaEdit_SelectionEnd(this.h))
+	return (uintptr)(C.ScintillaEdit_selectionEnd(this.h))
 }
 
 func (this *ScintillaEdit) SetEmptySelection(caret uintptr) {
-	C.ScintillaEdit_SetEmptySelection(this.h, (C.intptr_t)(caret))
+	C.ScintillaEdit_setEmptySelection(this.h, (C.intptr_t)(caret))
 }
 
 func (this *ScintillaEdit) SetPrintMagnification(magnification uintptr) {
-	C.ScintillaEdit_SetPrintMagnification(this.h, (C.intptr_t)(magnification))
+	C.ScintillaEdit_setPrintMagnification(this.h, (C.intptr_t)(magnification))
 }
 
 func (this *ScintillaEdit) PrintMagnification() uintptr {
-	return (uintptr)(C.ScintillaEdit_PrintMagnification(this.h))
+	return (uintptr)(C.ScintillaEdit_printMagnification(this.h))
 }
 
 func (this *ScintillaEdit) SetPrintColourMode(mode uintptr) {
-	C.ScintillaEdit_SetPrintColourMode(this.h, (C.intptr_t)(mode))
+	C.ScintillaEdit_setPrintColourMode(this.h, (C.intptr_t)(mode))
 }
 
 func (this *ScintillaEdit) PrintColourMode() uintptr {
-	return (uintptr)(C.ScintillaEdit_PrintColourMode(this.h))
+	return (uintptr)(C.ScintillaEdit_printColourMode(this.h))
 }
 
 func (this *ScintillaEdit) SetChangeHistory(changeHistory uintptr) {
-	C.ScintillaEdit_SetChangeHistory(this.h, (C.intptr_t)(changeHistory))
+	C.ScintillaEdit_setChangeHistory(this.h, (C.intptr_t)(changeHistory))
 }
 
 func (this *ScintillaEdit) ChangeHistory() uintptr {
-	return (uintptr)(C.ScintillaEdit_ChangeHistory(this.h))
+	return (uintptr)(C.ScintillaEdit_changeHistory(this.h))
 }
 
 func (this *ScintillaEdit) FirstVisibleLine() uintptr {
-	return (uintptr)(C.ScintillaEdit_FirstVisibleLine(this.h))
+	return (uintptr)(C.ScintillaEdit_firstVisibleLine(this.h))
 }
 
 func (this *ScintillaEdit) GetLine(line uintptr) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_GetLine(this.h, (C.intptr_t)(line))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_getLine(this.h, (C.intptr_t)(line))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) LineCount() uintptr {
-	return (uintptr)(C.ScintillaEdit_LineCount(this.h))
+	return (uintptr)(C.ScintillaEdit_lineCount(this.h))
 }
 
 func (this *ScintillaEdit) AllocateLines(lines uintptr) {
-	C.ScintillaEdit_AllocateLines(this.h, (C.intptr_t)(lines))
+	C.ScintillaEdit_allocateLines(this.h, (C.intptr_t)(lines))
 }
 
 func (this *ScintillaEdit) SetMarginLeft(pixelWidth uintptr) {
-	C.ScintillaEdit_SetMarginLeft(this.h, (C.intptr_t)(pixelWidth))
+	C.ScintillaEdit_setMarginLeft(this.h, (C.intptr_t)(pixelWidth))
 }
 
 func (this *ScintillaEdit) MarginLeft() uintptr {
-	return (uintptr)(C.ScintillaEdit_MarginLeft(this.h))
+	return (uintptr)(C.ScintillaEdit_marginLeft(this.h))
 }
 
 func (this *ScintillaEdit) SetMarginRight(pixelWidth uintptr) {
-	C.ScintillaEdit_SetMarginRight(this.h, (C.intptr_t)(pixelWidth))
+	C.ScintillaEdit_setMarginRight(this.h, (C.intptr_t)(pixelWidth))
 }
 
 func (this *ScintillaEdit) MarginRight() uintptr {
-	return (uintptr)(C.ScintillaEdit_MarginRight(this.h))
+	return (uintptr)(C.ScintillaEdit_marginRight(this.h))
 }
 
 func (this *ScintillaEdit) Modify() bool {
-	return (bool)(C.ScintillaEdit_Modify(this.h))
+	return (bool)(C.ScintillaEdit_modify(this.h))
 }
 
 func (this *ScintillaEdit) SetSel(anchor uintptr, caret uintptr) {
-	C.ScintillaEdit_SetSel(this.h, (C.intptr_t)(anchor), (C.intptr_t)(caret))
+	C.ScintillaEdit_setSel(this.h, (C.intptr_t)(anchor), (C.intptr_t)(caret))
 }
 
 func (this *ScintillaEdit) GetSelText() []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_GetSelText(this.h)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_getSelText(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) HideSelection(hide bool) {
-	C.ScintillaEdit_HideSelection(this.h, (C.bool)(hide))
+	C.ScintillaEdit_hideSelection(this.h, (C.bool)(hide))
 }
 
 func (this *ScintillaEdit) SelectionHidden() bool {
-	return (bool)(C.ScintillaEdit_SelectionHidden(this.h))
+	return (bool)(C.ScintillaEdit_selectionHidden(this.h))
 }
 
 func (this *ScintillaEdit) PointXFromPosition(pos uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_PointXFromPosition(this.h, (C.intptr_t)(pos)))
+	return (uintptr)(C.ScintillaEdit_pointXFromPosition(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) PointYFromPosition(pos uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_PointYFromPosition(this.h, (C.intptr_t)(pos)))
+	return (uintptr)(C.ScintillaEdit_pointYFromPosition(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) LineFromPosition(pos uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_LineFromPosition(this.h, (C.intptr_t)(pos)))
+	return (uintptr)(C.ScintillaEdit_lineFromPosition(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) PositionFromLine(line uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_PositionFromLine(this.h, (C.intptr_t)(line)))
+	return (uintptr)(C.ScintillaEdit_positionFromLine(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) LineScroll(columns uintptr, lines uintptr) {
-	C.ScintillaEdit_LineScroll(this.h, (C.intptr_t)(columns), (C.intptr_t)(lines))
+	C.ScintillaEdit_lineScroll(this.h, (C.intptr_t)(columns), (C.intptr_t)(lines))
 }
 
 func (this *ScintillaEdit) ScrollCaret() {
-	C.ScintillaEdit_ScrollCaret(this.h)
+	C.ScintillaEdit_scrollCaret(this.h)
 }
 
 func (this *ScintillaEdit) ScrollRange(secondary uintptr, primary uintptr) {
-	C.ScintillaEdit_ScrollRange(this.h, (C.intptr_t)(secondary), (C.intptr_t)(primary))
+	C.ScintillaEdit_scrollRange(this.h, (C.intptr_t)(secondary), (C.intptr_t)(primary))
 }
 
 func (this *ScintillaEdit) ReplaceSel(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.ScintillaEdit_ReplaceSel(this.h, text_Cstring)
+	C.ScintillaEdit_replaceSel(this.h, text_Cstring)
 }
 
 func (this *ScintillaEdit) SetReadOnly(readOnly bool) {
-	C.ScintillaEdit_SetReadOnly(this.h, (C.bool)(readOnly))
+	C.ScintillaEdit_setReadOnly(this.h, (C.bool)(readOnly))
 }
 
 func (this *ScintillaEdit) Null() {
-	C.ScintillaEdit_Null(this.h)
+	C.ScintillaEdit_null(this.h)
 }
 
 func (this *ScintillaEdit) CanPaste() bool {
-	return (bool)(C.ScintillaEdit_CanPaste(this.h))
+	return (bool)(C.ScintillaEdit_canPaste(this.h))
 }
 
 func (this *ScintillaEdit) CanUndo() bool {
-	return (bool)(C.ScintillaEdit_CanUndo(this.h))
+	return (bool)(C.ScintillaEdit_canUndo(this.h))
 }
 
 func (this *ScintillaEdit) EmptyUndoBuffer() {
-	C.ScintillaEdit_EmptyUndoBuffer(this.h)
+	C.ScintillaEdit_emptyUndoBuffer(this.h)
 }
 
 func (this *ScintillaEdit) Undo() {
-	C.ScintillaEdit_Undo(this.h)
+	C.ScintillaEdit_undo(this.h)
 }
 
 func (this *ScintillaEdit) Cut() {
-	C.ScintillaEdit_Cut(this.h)
+	C.ScintillaEdit_cut(this.h)
 }
 
 func (this *ScintillaEdit) Copy() {
-	C.ScintillaEdit_Copy(this.h)
+	C.ScintillaEdit_copy(this.h)
 }
 
 func (this *ScintillaEdit) Paste() {
-	C.ScintillaEdit_Paste(this.h)
+	C.ScintillaEdit_paste(this.h)
 }
 
 func (this *ScintillaEdit) Clear() {
-	C.ScintillaEdit_Clear(this.h)
+	C.ScintillaEdit_clear(this.h)
 }
 
 func (this *ScintillaEdit) SetText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.ScintillaEdit_SetText(this.h, text_Cstring)
+	C.ScintillaEdit_setText(this.h, text_Cstring)
 }
 
 func (this *ScintillaEdit) GetText(length uintptr) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_GetText(this.h, (C.intptr_t)(length))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_getText(this.h, (C.intptr_t)(length))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) TextLength() uintptr {
-	return (uintptr)(C.ScintillaEdit_TextLength(this.h))
+	return (uintptr)(C.ScintillaEdit_textLength(this.h))
 }
 
 func (this *ScintillaEdit) DirectFunction() uintptr {
-	return (uintptr)(C.ScintillaEdit_DirectFunction(this.h))
+	return (uintptr)(C.ScintillaEdit_directFunction(this.h))
 }
 
 func (this *ScintillaEdit) DirectStatusFunction() uintptr {
-	return (uintptr)(C.ScintillaEdit_DirectStatusFunction(this.h))
+	return (uintptr)(C.ScintillaEdit_directStatusFunction(this.h))
 }
 
 func (this *ScintillaEdit) DirectPointer() uintptr {
-	return (uintptr)(C.ScintillaEdit_DirectPointer(this.h))
+	return (uintptr)(C.ScintillaEdit_directPointer(this.h))
 }
 
 func (this *ScintillaEdit) SetOvertype(overType bool) {
-	C.ScintillaEdit_SetOvertype(this.h, (C.bool)(overType))
+	C.ScintillaEdit_setOvertype(this.h, (C.bool)(overType))
 }
 
 func (this *ScintillaEdit) Overtype() bool {
-	return (bool)(C.ScintillaEdit_Overtype(this.h))
+	return (bool)(C.ScintillaEdit_overtype(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretWidth(pixelWidth uintptr) {
-	C.ScintillaEdit_SetCaretWidth(this.h, (C.intptr_t)(pixelWidth))
+	C.ScintillaEdit_setCaretWidth(this.h, (C.intptr_t)(pixelWidth))
 }
 
 func (this *ScintillaEdit) CaretWidth() uintptr {
-	return (uintptr)(C.ScintillaEdit_CaretWidth(this.h))
+	return (uintptr)(C.ScintillaEdit_caretWidth(this.h))
 }
 
 func (this *ScintillaEdit) SetTargetStart(start uintptr) {
-	C.ScintillaEdit_SetTargetStart(this.h, (C.intptr_t)(start))
+	C.ScintillaEdit_setTargetStart(this.h, (C.intptr_t)(start))
 }
 
 func (this *ScintillaEdit) TargetStart() uintptr {
-	return (uintptr)(C.ScintillaEdit_TargetStart(this.h))
+	return (uintptr)(C.ScintillaEdit_targetStart(this.h))
 }
 
 func (this *ScintillaEdit) SetTargetStartVirtualSpace(space uintptr) {
-	C.ScintillaEdit_SetTargetStartVirtualSpace(this.h, (C.intptr_t)(space))
+	C.ScintillaEdit_setTargetStartVirtualSpace(this.h, (C.intptr_t)(space))
 }
 
 func (this *ScintillaEdit) TargetStartVirtualSpace() uintptr {
-	return (uintptr)(C.ScintillaEdit_TargetStartVirtualSpace(this.h))
+	return (uintptr)(C.ScintillaEdit_targetStartVirtualSpace(this.h))
 }
 
 func (this *ScintillaEdit) SetTargetEnd(end uintptr) {
-	C.ScintillaEdit_SetTargetEnd(this.h, (C.intptr_t)(end))
+	C.ScintillaEdit_setTargetEnd(this.h, (C.intptr_t)(end))
 }
 
 func (this *ScintillaEdit) TargetEnd() uintptr {
-	return (uintptr)(C.ScintillaEdit_TargetEnd(this.h))
+	return (uintptr)(C.ScintillaEdit_targetEnd(this.h))
 }
 
 func (this *ScintillaEdit) SetTargetEndVirtualSpace(space uintptr) {
-	C.ScintillaEdit_SetTargetEndVirtualSpace(this.h, (C.intptr_t)(space))
+	C.ScintillaEdit_setTargetEndVirtualSpace(this.h, (C.intptr_t)(space))
 }
 
 func (this *ScintillaEdit) TargetEndVirtualSpace() uintptr {
-	return (uintptr)(C.ScintillaEdit_TargetEndVirtualSpace(this.h))
+	return (uintptr)(C.ScintillaEdit_targetEndVirtualSpace(this.h))
 }
 
 func (this *ScintillaEdit) SetTargetRange(start uintptr, end uintptr) {
-	C.ScintillaEdit_SetTargetRange(this.h, (C.intptr_t)(start), (C.intptr_t)(end))
+	C.ScintillaEdit_setTargetRange(this.h, (C.intptr_t)(start), (C.intptr_t)(end))
 }
 
 func (this *ScintillaEdit) TargetText() []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_TargetText(this.h)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_targetText(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) TargetFromSelection() {
-	C.ScintillaEdit_TargetFromSelection(this.h)
+	C.ScintillaEdit_targetFromSelection(this.h)
 }
 
 func (this *ScintillaEdit) TargetWholeDocument() {
-	C.ScintillaEdit_TargetWholeDocument(this.h)
+	C.ScintillaEdit_targetWholeDocument(this.h)
 }
 
 func (this *ScintillaEdit) ReplaceTarget(length uintptr, text string) uintptr {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	return (uintptr)(C.ScintillaEdit_ReplaceTarget(this.h, (C.intptr_t)(length), text_Cstring))
+	return (uintptr)(C.ScintillaEdit_replaceTarget(this.h, (C.intptr_t)(length), text_Cstring))
 }
 
 func (this *ScintillaEdit) ReplaceTargetRE(length uintptr, text string) uintptr {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	return (uintptr)(C.ScintillaEdit_ReplaceTargetRE(this.h, (C.intptr_t)(length), text_Cstring))
+	return (uintptr)(C.ScintillaEdit_replaceTargetRE(this.h, (C.intptr_t)(length), text_Cstring))
 }
 
 func (this *ScintillaEdit) ReplaceTargetMinimal(length uintptr, text string) uintptr {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	return (uintptr)(C.ScintillaEdit_ReplaceTargetMinimal(this.h, (C.intptr_t)(length), text_Cstring))
+	return (uintptr)(C.ScintillaEdit_replaceTargetMinimal(this.h, (C.intptr_t)(length), text_Cstring))
 }
 
 func (this *ScintillaEdit) SearchInTarget(length uintptr, text string) uintptr {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	return (uintptr)(C.ScintillaEdit_SearchInTarget(this.h, (C.intptr_t)(length), text_Cstring))
+	return (uintptr)(C.ScintillaEdit_searchInTarget(this.h, (C.intptr_t)(length), text_Cstring))
 }
 
 func (this *ScintillaEdit) SetSearchFlags(searchFlags uintptr) {
-	C.ScintillaEdit_SetSearchFlags(this.h, (C.intptr_t)(searchFlags))
+	C.ScintillaEdit_setSearchFlags(this.h, (C.intptr_t)(searchFlags))
 }
 
 func (this *ScintillaEdit) SearchFlags() uintptr {
-	return (uintptr)(C.ScintillaEdit_SearchFlags(this.h))
+	return (uintptr)(C.ScintillaEdit_searchFlags(this.h))
 }
 
 func (this *ScintillaEdit) CallTipShow(pos uintptr, definition string) {
 	definition_Cstring := C.CString(definition)
 	defer C.free(unsafe.Pointer(definition_Cstring))
-	C.ScintillaEdit_CallTipShow(this.h, (C.intptr_t)(pos), definition_Cstring)
+	C.ScintillaEdit_callTipShow(this.h, (C.intptr_t)(pos), definition_Cstring)
 }
 
 func (this *ScintillaEdit) CallTipCancel() {
-	C.ScintillaEdit_CallTipCancel(this.h)
+	C.ScintillaEdit_callTipCancel(this.h)
 }
 
 func (this *ScintillaEdit) CallTipActive() bool {
-	return (bool)(C.ScintillaEdit_CallTipActive(this.h))
+	return (bool)(C.ScintillaEdit_callTipActive(this.h))
 }
 
 func (this *ScintillaEdit) CallTipPosStart() uintptr {
-	return (uintptr)(C.ScintillaEdit_CallTipPosStart(this.h))
+	return (uintptr)(C.ScintillaEdit_callTipPosStart(this.h))
 }
 
 func (this *ScintillaEdit) CallTipSetPosStart(posStart uintptr) {
-	C.ScintillaEdit_CallTipSetPosStart(this.h, (C.intptr_t)(posStart))
+	C.ScintillaEdit_callTipSetPosStart(this.h, (C.intptr_t)(posStart))
 }
 
 func (this *ScintillaEdit) CallTipSetHlt(highlightStart uintptr, highlightEnd uintptr) {
-	C.ScintillaEdit_CallTipSetHlt(this.h, (C.intptr_t)(highlightStart), (C.intptr_t)(highlightEnd))
+	C.ScintillaEdit_callTipSetHlt(this.h, (C.intptr_t)(highlightStart), (C.intptr_t)(highlightEnd))
 }
 
 func (this *ScintillaEdit) CallTipSetBack(back uintptr) {
-	C.ScintillaEdit_CallTipSetBack(this.h, (C.intptr_t)(back))
+	C.ScintillaEdit_callTipSetBack(this.h, (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) CallTipSetFore(fore uintptr) {
-	C.ScintillaEdit_CallTipSetFore(this.h, (C.intptr_t)(fore))
+	C.ScintillaEdit_callTipSetFore(this.h, (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) CallTipSetForeHlt(fore uintptr) {
-	C.ScintillaEdit_CallTipSetForeHlt(this.h, (C.intptr_t)(fore))
+	C.ScintillaEdit_callTipSetForeHlt(this.h, (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) CallTipUseStyle(tabSize uintptr) {
-	C.ScintillaEdit_CallTipUseStyle(this.h, (C.intptr_t)(tabSize))
+	C.ScintillaEdit_callTipUseStyle(this.h, (C.intptr_t)(tabSize))
 }
 
 func (this *ScintillaEdit) CallTipSetPosition(above bool) {
-	C.ScintillaEdit_CallTipSetPosition(this.h, (C.bool)(above))
+	C.ScintillaEdit_callTipSetPosition(this.h, (C.bool)(above))
 }
 
 func (this *ScintillaEdit) VisibleFromDocLine(docLine uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_VisibleFromDocLine(this.h, (C.intptr_t)(docLine)))
+	return (uintptr)(C.ScintillaEdit_visibleFromDocLine(this.h, (C.intptr_t)(docLine)))
 }
 
 func (this *ScintillaEdit) DocLineFromVisible(displayLine uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_DocLineFromVisible(this.h, (C.intptr_t)(displayLine)))
+	return (uintptr)(C.ScintillaEdit_docLineFromVisible(this.h, (C.intptr_t)(displayLine)))
 }
 
 func (this *ScintillaEdit) WrapCount(docLine uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_WrapCount(this.h, (C.intptr_t)(docLine)))
+	return (uintptr)(C.ScintillaEdit_wrapCount(this.h, (C.intptr_t)(docLine)))
 }
 
 func (this *ScintillaEdit) SetFoldLevel(line uintptr, level uintptr) {
-	C.ScintillaEdit_SetFoldLevel(this.h, (C.intptr_t)(line), (C.intptr_t)(level))
+	C.ScintillaEdit_setFoldLevel(this.h, (C.intptr_t)(line), (C.intptr_t)(level))
 }
 
 func (this *ScintillaEdit) FoldLevel(line uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_FoldLevel(this.h, (C.intptr_t)(line)))
+	return (uintptr)(C.ScintillaEdit_foldLevel(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) LastChild(line uintptr, level uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_LastChild(this.h, (C.intptr_t)(line), (C.intptr_t)(level)))
+	return (uintptr)(C.ScintillaEdit_lastChild(this.h, (C.intptr_t)(line), (C.intptr_t)(level)))
 }
 
 func (this *ScintillaEdit) FoldParent(line uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_FoldParent(this.h, (C.intptr_t)(line)))
+	return (uintptr)(C.ScintillaEdit_foldParent(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) ShowLines(lineStart uintptr, lineEnd uintptr) {
-	C.ScintillaEdit_ShowLines(this.h, (C.intptr_t)(lineStart), (C.intptr_t)(lineEnd))
+	C.ScintillaEdit_showLines(this.h, (C.intptr_t)(lineStart), (C.intptr_t)(lineEnd))
 }
 
 func (this *ScintillaEdit) HideLines(lineStart uintptr, lineEnd uintptr) {
-	C.ScintillaEdit_HideLines(this.h, (C.intptr_t)(lineStart), (C.intptr_t)(lineEnd))
+	C.ScintillaEdit_hideLines(this.h, (C.intptr_t)(lineStart), (C.intptr_t)(lineEnd))
 }
 
 func (this *ScintillaEdit) LineVisible(line uintptr) bool {
-	return (bool)(C.ScintillaEdit_LineVisible(this.h, (C.intptr_t)(line)))
+	return (bool)(C.ScintillaEdit_lineVisible(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) AllLinesVisible() bool {
-	return (bool)(C.ScintillaEdit_AllLinesVisible(this.h))
+	return (bool)(C.ScintillaEdit_allLinesVisible(this.h))
 }
 
 func (this *ScintillaEdit) SetFoldExpanded(line uintptr, expanded bool) {
-	C.ScintillaEdit_SetFoldExpanded(this.h, (C.intptr_t)(line), (C.bool)(expanded))
+	C.ScintillaEdit_setFoldExpanded(this.h, (C.intptr_t)(line), (C.bool)(expanded))
 }
 
 func (this *ScintillaEdit) FoldExpanded(line uintptr) bool {
-	return (bool)(C.ScintillaEdit_FoldExpanded(this.h, (C.intptr_t)(line)))
+	return (bool)(C.ScintillaEdit_foldExpanded(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) ToggleFold(line uintptr) {
-	C.ScintillaEdit_ToggleFold(this.h, (C.intptr_t)(line))
+	C.ScintillaEdit_toggleFold(this.h, (C.intptr_t)(line))
 }
 
 func (this *ScintillaEdit) ToggleFoldShowText(line uintptr, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.ScintillaEdit_ToggleFoldShowText(this.h, (C.intptr_t)(line), text_Cstring)
+	C.ScintillaEdit_toggleFoldShowText(this.h, (C.intptr_t)(line), text_Cstring)
 }
 
 func (this *ScintillaEdit) FoldDisplayTextSetStyle(style uintptr) {
-	C.ScintillaEdit_FoldDisplayTextSetStyle(this.h, (C.intptr_t)(style))
+	C.ScintillaEdit_foldDisplayTextSetStyle(this.h, (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) FoldDisplayTextStyle() uintptr {
-	return (uintptr)(C.ScintillaEdit_FoldDisplayTextStyle(this.h))
+	return (uintptr)(C.ScintillaEdit_foldDisplayTextStyle(this.h))
 }
 
 func (this *ScintillaEdit) SetDefaultFoldDisplayText(text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.ScintillaEdit_SetDefaultFoldDisplayText(this.h, text_Cstring)
+	C.ScintillaEdit_setDefaultFoldDisplayText(this.h, text_Cstring)
 }
 
 func (this *ScintillaEdit) GetDefaultFoldDisplayText() []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_GetDefaultFoldDisplayText(this.h)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_getDefaultFoldDisplayText(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) FoldLine(line uintptr, action uintptr) {
-	C.ScintillaEdit_FoldLine(this.h, (C.intptr_t)(line), (C.intptr_t)(action))
+	C.ScintillaEdit_foldLine(this.h, (C.intptr_t)(line), (C.intptr_t)(action))
 }
 
 func (this *ScintillaEdit) FoldChildren(line uintptr, action uintptr) {
-	C.ScintillaEdit_FoldChildren(this.h, (C.intptr_t)(line), (C.intptr_t)(action))
+	C.ScintillaEdit_foldChildren(this.h, (C.intptr_t)(line), (C.intptr_t)(action))
 }
 
 func (this *ScintillaEdit) ExpandChildren(line uintptr, level uintptr) {
-	C.ScintillaEdit_ExpandChildren(this.h, (C.intptr_t)(line), (C.intptr_t)(level))
+	C.ScintillaEdit_expandChildren(this.h, (C.intptr_t)(line), (C.intptr_t)(level))
 }
 
 func (this *ScintillaEdit) FoldAll(action uintptr) {
-	C.ScintillaEdit_FoldAll(this.h, (C.intptr_t)(action))
+	C.ScintillaEdit_foldAll(this.h, (C.intptr_t)(action))
 }
 
 func (this *ScintillaEdit) EnsureVisible(line uintptr) {
-	C.ScintillaEdit_EnsureVisible(this.h, (C.intptr_t)(line))
+	C.ScintillaEdit_ensureVisible(this.h, (C.intptr_t)(line))
 }
 
 func (this *ScintillaEdit) SetAutomaticFold(automaticFold uintptr) {
-	C.ScintillaEdit_SetAutomaticFold(this.h, (C.intptr_t)(automaticFold))
+	C.ScintillaEdit_setAutomaticFold(this.h, (C.intptr_t)(automaticFold))
 }
 
 func (this *ScintillaEdit) AutomaticFold() uintptr {
-	return (uintptr)(C.ScintillaEdit_AutomaticFold(this.h))
+	return (uintptr)(C.ScintillaEdit_automaticFold(this.h))
 }
 
 func (this *ScintillaEdit) SetFoldFlags(flags uintptr) {
-	C.ScintillaEdit_SetFoldFlags(this.h, (C.intptr_t)(flags))
+	C.ScintillaEdit_setFoldFlags(this.h, (C.intptr_t)(flags))
 }
 
 func (this *ScintillaEdit) EnsureVisibleEnforcePolicy(line uintptr) {
-	C.ScintillaEdit_EnsureVisibleEnforcePolicy(this.h, (C.intptr_t)(line))
+	C.ScintillaEdit_ensureVisibleEnforcePolicy(this.h, (C.intptr_t)(line))
 }
 
 func (this *ScintillaEdit) SetTabIndents(tabIndents bool) {
-	C.ScintillaEdit_SetTabIndents(this.h, (C.bool)(tabIndents))
+	C.ScintillaEdit_setTabIndents(this.h, (C.bool)(tabIndents))
 }
 
 func (this *ScintillaEdit) TabIndents() bool {
-	return (bool)(C.ScintillaEdit_TabIndents(this.h))
+	return (bool)(C.ScintillaEdit_tabIndents(this.h))
 }
 
 func (this *ScintillaEdit) SetBackSpaceUnIndents(bsUnIndents bool) {
-	C.ScintillaEdit_SetBackSpaceUnIndents(this.h, (C.bool)(bsUnIndents))
+	C.ScintillaEdit_setBackSpaceUnIndents(this.h, (C.bool)(bsUnIndents))
 }
 
 func (this *ScintillaEdit) BackSpaceUnIndents() bool {
-	return (bool)(C.ScintillaEdit_BackSpaceUnIndents(this.h))
+	return (bool)(C.ScintillaEdit_backSpaceUnIndents(this.h))
 }
 
 func (this *ScintillaEdit) SetMouseDwellTime(periodMilliseconds uintptr) {
-	C.ScintillaEdit_SetMouseDwellTime(this.h, (C.intptr_t)(periodMilliseconds))
+	C.ScintillaEdit_setMouseDwellTime(this.h, (C.intptr_t)(periodMilliseconds))
 }
 
 func (this *ScintillaEdit) MouseDwellTime() uintptr {
-	return (uintptr)(C.ScintillaEdit_MouseDwellTime(this.h))
+	return (uintptr)(C.ScintillaEdit_mouseDwellTime(this.h))
 }
 
 func (this *ScintillaEdit) WordStartPosition(pos uintptr, onlyWordCharacters bool) uintptr {
-	return (uintptr)(C.ScintillaEdit_WordStartPosition(this.h, (C.intptr_t)(pos), (C.bool)(onlyWordCharacters)))
+	return (uintptr)(C.ScintillaEdit_wordStartPosition(this.h, (C.intptr_t)(pos), (C.bool)(onlyWordCharacters)))
 }
 
 func (this *ScintillaEdit) WordEndPosition(pos uintptr, onlyWordCharacters bool) uintptr {
-	return (uintptr)(C.ScintillaEdit_WordEndPosition(this.h, (C.intptr_t)(pos), (C.bool)(onlyWordCharacters)))
+	return (uintptr)(C.ScintillaEdit_wordEndPosition(this.h, (C.intptr_t)(pos), (C.bool)(onlyWordCharacters)))
 }
 
 func (this *ScintillaEdit) IsRangeWord(start uintptr, end uintptr) bool {
-	return (bool)(C.ScintillaEdit_IsRangeWord(this.h, (C.intptr_t)(start), (C.intptr_t)(end)))
+	return (bool)(C.ScintillaEdit_isRangeWord(this.h, (C.intptr_t)(start), (C.intptr_t)(end)))
 }
 
 func (this *ScintillaEdit) SetIdleStyling(idleStyling uintptr) {
-	C.ScintillaEdit_SetIdleStyling(this.h, (C.intptr_t)(idleStyling))
+	C.ScintillaEdit_setIdleStyling(this.h, (C.intptr_t)(idleStyling))
 }
 
 func (this *ScintillaEdit) IdleStyling() uintptr {
-	return (uintptr)(C.ScintillaEdit_IdleStyling(this.h))
+	return (uintptr)(C.ScintillaEdit_idleStyling(this.h))
 }
 
 func (this *ScintillaEdit) SetWrapMode(wrapMode uintptr) {
-	C.ScintillaEdit_SetWrapMode(this.h, (C.intptr_t)(wrapMode))
+	C.ScintillaEdit_setWrapMode(this.h, (C.intptr_t)(wrapMode))
 }
 
 func (this *ScintillaEdit) WrapMode() uintptr {
-	return (uintptr)(C.ScintillaEdit_WrapMode(this.h))
+	return (uintptr)(C.ScintillaEdit_wrapMode(this.h))
 }
 
 func (this *ScintillaEdit) SetWrapVisualFlags(wrapVisualFlags uintptr) {
-	C.ScintillaEdit_SetWrapVisualFlags(this.h, (C.intptr_t)(wrapVisualFlags))
+	C.ScintillaEdit_setWrapVisualFlags(this.h, (C.intptr_t)(wrapVisualFlags))
 }
 
 func (this *ScintillaEdit) WrapVisualFlags() uintptr {
-	return (uintptr)(C.ScintillaEdit_WrapVisualFlags(this.h))
+	return (uintptr)(C.ScintillaEdit_wrapVisualFlags(this.h))
 }
 
 func (this *ScintillaEdit) SetWrapVisualFlagsLocation(wrapVisualFlagsLocation uintptr) {
-	C.ScintillaEdit_SetWrapVisualFlagsLocation(this.h, (C.intptr_t)(wrapVisualFlagsLocation))
+	C.ScintillaEdit_setWrapVisualFlagsLocation(this.h, (C.intptr_t)(wrapVisualFlagsLocation))
 }
 
 func (this *ScintillaEdit) WrapVisualFlagsLocation() uintptr {
-	return (uintptr)(C.ScintillaEdit_WrapVisualFlagsLocation(this.h))
+	return (uintptr)(C.ScintillaEdit_wrapVisualFlagsLocation(this.h))
 }
 
 func (this *ScintillaEdit) SetWrapStartIndent(indent uintptr) {
-	C.ScintillaEdit_SetWrapStartIndent(this.h, (C.intptr_t)(indent))
+	C.ScintillaEdit_setWrapStartIndent(this.h, (C.intptr_t)(indent))
 }
 
 func (this *ScintillaEdit) WrapStartIndent() uintptr {
-	return (uintptr)(C.ScintillaEdit_WrapStartIndent(this.h))
+	return (uintptr)(C.ScintillaEdit_wrapStartIndent(this.h))
 }
 
 func (this *ScintillaEdit) SetWrapIndentMode(wrapIndentMode uintptr) {
-	C.ScintillaEdit_SetWrapIndentMode(this.h, (C.intptr_t)(wrapIndentMode))
+	C.ScintillaEdit_setWrapIndentMode(this.h, (C.intptr_t)(wrapIndentMode))
 }
 
 func (this *ScintillaEdit) WrapIndentMode() uintptr {
-	return (uintptr)(C.ScintillaEdit_WrapIndentMode(this.h))
+	return (uintptr)(C.ScintillaEdit_wrapIndentMode(this.h))
 }
 
 func (this *ScintillaEdit) SetLayoutCache(cacheMode uintptr) {
-	C.ScintillaEdit_SetLayoutCache(this.h, (C.intptr_t)(cacheMode))
+	C.ScintillaEdit_setLayoutCache(this.h, (C.intptr_t)(cacheMode))
 }
 
 func (this *ScintillaEdit) LayoutCache() uintptr {
-	return (uintptr)(C.ScintillaEdit_LayoutCache(this.h))
+	return (uintptr)(C.ScintillaEdit_layoutCache(this.h))
 }
 
 func (this *ScintillaEdit) SetScrollWidth(pixelWidth uintptr) {
-	C.ScintillaEdit_SetScrollWidth(this.h, (C.intptr_t)(pixelWidth))
+	C.ScintillaEdit_setScrollWidth(this.h, (C.intptr_t)(pixelWidth))
 }
 
 func (this *ScintillaEdit) ScrollWidth() uintptr {
-	return (uintptr)(C.ScintillaEdit_ScrollWidth(this.h))
+	return (uintptr)(C.ScintillaEdit_scrollWidth(this.h))
 }
 
 func (this *ScintillaEdit) SetScrollWidthTracking(tracking bool) {
-	C.ScintillaEdit_SetScrollWidthTracking(this.h, (C.bool)(tracking))
+	C.ScintillaEdit_setScrollWidthTracking(this.h, (C.bool)(tracking))
 }
 
 func (this *ScintillaEdit) ScrollWidthTracking() bool {
-	return (bool)(C.ScintillaEdit_ScrollWidthTracking(this.h))
+	return (bool)(C.ScintillaEdit_scrollWidthTracking(this.h))
 }
 
 func (this *ScintillaEdit) TextWidth(style uintptr, text string) uintptr {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	return (uintptr)(C.ScintillaEdit_TextWidth(this.h, (C.intptr_t)(style), text_Cstring))
+	return (uintptr)(C.ScintillaEdit_textWidth(this.h, (C.intptr_t)(style), text_Cstring))
 }
 
 func (this *ScintillaEdit) SetEndAtLastLine(endAtLastLine bool) {
-	C.ScintillaEdit_SetEndAtLastLine(this.h, (C.bool)(endAtLastLine))
+	C.ScintillaEdit_setEndAtLastLine(this.h, (C.bool)(endAtLastLine))
 }
 
 func (this *ScintillaEdit) EndAtLastLine() bool {
-	return (bool)(C.ScintillaEdit_EndAtLastLine(this.h))
+	return (bool)(C.ScintillaEdit_endAtLastLine(this.h))
 }
 
 func (this *ScintillaEdit) TextHeight(line uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_TextHeight(this.h, (C.intptr_t)(line)))
+	return (uintptr)(C.ScintillaEdit_textHeight(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) SetVScrollBar(visible bool) {
-	C.ScintillaEdit_SetVScrollBar(this.h, (C.bool)(visible))
+	C.ScintillaEdit_setVScrollBar(this.h, (C.bool)(visible))
 }
 
 func (this *ScintillaEdit) VScrollBar() bool {
-	return (bool)(C.ScintillaEdit_VScrollBar(this.h))
+	return (bool)(C.ScintillaEdit_vScrollBar(this.h))
 }
 
 func (this *ScintillaEdit) AppendText(length uintptr, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.ScintillaEdit_AppendText(this.h, (C.intptr_t)(length), text_Cstring)
+	C.ScintillaEdit_appendText(this.h, (C.intptr_t)(length), text_Cstring)
 }
 
 func (this *ScintillaEdit) PhasesDraw() uintptr {
-	return (uintptr)(C.ScintillaEdit_PhasesDraw(this.h))
+	return (uintptr)(C.ScintillaEdit_phasesDraw(this.h))
 }
 
 func (this *ScintillaEdit) SetPhasesDraw(phases uintptr) {
-	C.ScintillaEdit_SetPhasesDraw(this.h, (C.intptr_t)(phases))
+	C.ScintillaEdit_setPhasesDraw(this.h, (C.intptr_t)(phases))
 }
 
 func (this *ScintillaEdit) SetFontQuality(fontQuality uintptr) {
-	C.ScintillaEdit_SetFontQuality(this.h, (C.intptr_t)(fontQuality))
+	C.ScintillaEdit_setFontQuality(this.h, (C.intptr_t)(fontQuality))
 }
 
 func (this *ScintillaEdit) FontQuality() uintptr {
-	return (uintptr)(C.ScintillaEdit_FontQuality(this.h))
+	return (uintptr)(C.ScintillaEdit_fontQuality(this.h))
 }
 
 func (this *ScintillaEdit) SetFirstVisibleLine(displayLine uintptr) {
-	C.ScintillaEdit_SetFirstVisibleLine(this.h, (C.intptr_t)(displayLine))
+	C.ScintillaEdit_setFirstVisibleLine(this.h, (C.intptr_t)(displayLine))
 }
 
 func (this *ScintillaEdit) SetMultiPaste(multiPaste uintptr) {
-	C.ScintillaEdit_SetMultiPaste(this.h, (C.intptr_t)(multiPaste))
+	C.ScintillaEdit_setMultiPaste(this.h, (C.intptr_t)(multiPaste))
 }
 
 func (this *ScintillaEdit) MultiPaste() uintptr {
-	return (uintptr)(C.ScintillaEdit_MultiPaste(this.h))
+	return (uintptr)(C.ScintillaEdit_multiPaste(this.h))
 }
 
 func (this *ScintillaEdit) Tag(tagNumber uintptr) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_Tag(this.h, (C.intptr_t)(tagNumber))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_tag(this.h, (C.intptr_t)(tagNumber))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) LinesJoin() {
-	C.ScintillaEdit_LinesJoin(this.h)
+	C.ScintillaEdit_linesJoin(this.h)
 }
 
 func (this *ScintillaEdit) LinesSplit(pixelWidth uintptr) {
-	C.ScintillaEdit_LinesSplit(this.h, (C.intptr_t)(pixelWidth))
+	C.ScintillaEdit_linesSplit(this.h, (C.intptr_t)(pixelWidth))
 }
 
 func (this *ScintillaEdit) SetFoldMarginColour(useSetting bool, back uintptr) {
-	C.ScintillaEdit_SetFoldMarginColour(this.h, (C.bool)(useSetting), (C.intptr_t)(back))
+	C.ScintillaEdit_setFoldMarginColour(this.h, (C.bool)(useSetting), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) SetFoldMarginHiColour(useSetting bool, fore uintptr) {
-	C.ScintillaEdit_SetFoldMarginHiColour(this.h, (C.bool)(useSetting), (C.intptr_t)(fore))
+	C.ScintillaEdit_setFoldMarginHiColour(this.h, (C.bool)(useSetting), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) SetAccessibility(accessibility uintptr) {
-	C.ScintillaEdit_SetAccessibility(this.h, (C.intptr_t)(accessibility))
+	C.ScintillaEdit_setAccessibility(this.h, (C.intptr_t)(accessibility))
 }
 
 func (this *ScintillaEdit) Accessibility() uintptr {
-	return (uintptr)(C.ScintillaEdit_Accessibility(this.h))
+	return (uintptr)(C.ScintillaEdit_accessibility(this.h))
 }
 
 func (this *ScintillaEdit) LineDown() {
-	C.ScintillaEdit_LineDown(this.h)
+	C.ScintillaEdit_lineDown(this.h)
 }
 
 func (this *ScintillaEdit) LineDownExtend() {
-	C.ScintillaEdit_LineDownExtend(this.h)
+	C.ScintillaEdit_lineDownExtend(this.h)
 }
 
 func (this *ScintillaEdit) LineUp() {
-	C.ScintillaEdit_LineUp(this.h)
+	C.ScintillaEdit_lineUp(this.h)
 }
 
 func (this *ScintillaEdit) LineUpExtend() {
-	C.ScintillaEdit_LineUpExtend(this.h)
+	C.ScintillaEdit_lineUpExtend(this.h)
 }
 
 func (this *ScintillaEdit) CharLeft() {
-	C.ScintillaEdit_CharLeft(this.h)
+	C.ScintillaEdit_charLeft(this.h)
 }
 
 func (this *ScintillaEdit) CharLeftExtend() {
-	C.ScintillaEdit_CharLeftExtend(this.h)
+	C.ScintillaEdit_charLeftExtend(this.h)
 }
 
 func (this *ScintillaEdit) CharRight() {
-	C.ScintillaEdit_CharRight(this.h)
+	C.ScintillaEdit_charRight(this.h)
 }
 
 func (this *ScintillaEdit) CharRightExtend() {
-	C.ScintillaEdit_CharRightExtend(this.h)
+	C.ScintillaEdit_charRightExtend(this.h)
 }
 
 func (this *ScintillaEdit) WordLeft() {
-	C.ScintillaEdit_WordLeft(this.h)
+	C.ScintillaEdit_wordLeft(this.h)
 }
 
 func (this *ScintillaEdit) WordLeftExtend() {
-	C.ScintillaEdit_WordLeftExtend(this.h)
+	C.ScintillaEdit_wordLeftExtend(this.h)
 }
 
 func (this *ScintillaEdit) WordRight() {
-	C.ScintillaEdit_WordRight(this.h)
+	C.ScintillaEdit_wordRight(this.h)
 }
 
 func (this *ScintillaEdit) WordRightExtend() {
-	C.ScintillaEdit_WordRightExtend(this.h)
+	C.ScintillaEdit_wordRightExtend(this.h)
 }
 
 func (this *ScintillaEdit) Home() {
-	C.ScintillaEdit_Home(this.h)
+	C.ScintillaEdit_home(this.h)
 }
 
 func (this *ScintillaEdit) HomeExtend() {
-	C.ScintillaEdit_HomeExtend(this.h)
+	C.ScintillaEdit_homeExtend(this.h)
 }
 
 func (this *ScintillaEdit) LineEnd() {
-	C.ScintillaEdit_LineEnd(this.h)
+	C.ScintillaEdit_lineEnd(this.h)
 }
 
 func (this *ScintillaEdit) LineEndExtend() {
-	C.ScintillaEdit_LineEndExtend(this.h)
+	C.ScintillaEdit_lineEndExtend(this.h)
 }
 
 func (this *ScintillaEdit) DocumentStart() {
-	C.ScintillaEdit_DocumentStart(this.h)
+	C.ScintillaEdit_documentStart(this.h)
 }
 
 func (this *ScintillaEdit) DocumentStartExtend() {
-	C.ScintillaEdit_DocumentStartExtend(this.h)
+	C.ScintillaEdit_documentStartExtend(this.h)
 }
 
 func (this *ScintillaEdit) DocumentEnd() {
-	C.ScintillaEdit_DocumentEnd(this.h)
+	C.ScintillaEdit_documentEnd(this.h)
 }
 
 func (this *ScintillaEdit) DocumentEndExtend() {
-	C.ScintillaEdit_DocumentEndExtend(this.h)
+	C.ScintillaEdit_documentEndExtend(this.h)
 }
 
 func (this *ScintillaEdit) PageUp() {
-	C.ScintillaEdit_PageUp(this.h)
+	C.ScintillaEdit_pageUp(this.h)
 }
 
 func (this *ScintillaEdit) PageUpExtend() {
-	C.ScintillaEdit_PageUpExtend(this.h)
+	C.ScintillaEdit_pageUpExtend(this.h)
 }
 
 func (this *ScintillaEdit) PageDown() {
-	C.ScintillaEdit_PageDown(this.h)
+	C.ScintillaEdit_pageDown(this.h)
 }
 
 func (this *ScintillaEdit) PageDownExtend() {
-	C.ScintillaEdit_PageDownExtend(this.h)
+	C.ScintillaEdit_pageDownExtend(this.h)
 }
 
 func (this *ScintillaEdit) EditToggleOvertype() {
-	C.ScintillaEdit_EditToggleOvertype(this.h)
+	C.ScintillaEdit_editToggleOvertype(this.h)
 }
 
 func (this *ScintillaEdit) Cancel() {
-	C.ScintillaEdit_Cancel(this.h)
+	C.ScintillaEdit_cancel(this.h)
 }
 
 func (this *ScintillaEdit) DeleteBack() {
-	C.ScintillaEdit_DeleteBack(this.h)
+	C.ScintillaEdit_deleteBack(this.h)
 }
 
 func (this *ScintillaEdit) Tab() {
-	C.ScintillaEdit_Tab(this.h)
+	C.ScintillaEdit_tab(this.h)
 }
 
 func (this *ScintillaEdit) LineIndent() {
-	C.ScintillaEdit_LineIndent(this.h)
+	C.ScintillaEdit_lineIndent(this.h)
 }
 
 func (this *ScintillaEdit) BackTab() {
-	C.ScintillaEdit_BackTab(this.h)
+	C.ScintillaEdit_backTab(this.h)
 }
 
 func (this *ScintillaEdit) LineDedent() {
-	C.ScintillaEdit_LineDedent(this.h)
+	C.ScintillaEdit_lineDedent(this.h)
 }
 
 func (this *ScintillaEdit) NewLine() {
-	C.ScintillaEdit_NewLine(this.h)
+	C.ScintillaEdit_newLine(this.h)
 }
 
 func (this *ScintillaEdit) FormFeed() {
-	C.ScintillaEdit_FormFeed(this.h)
+	C.ScintillaEdit_formFeed(this.h)
 }
 
 func (this *ScintillaEdit) VCHome() {
-	C.ScintillaEdit_VCHome(this.h)
+	C.ScintillaEdit_vCHome(this.h)
 }
 
 func (this *ScintillaEdit) VCHomeExtend() {
-	C.ScintillaEdit_VCHomeExtend(this.h)
+	C.ScintillaEdit_vCHomeExtend(this.h)
 }
 
 func (this *ScintillaEdit) ZoomIn() {
-	C.ScintillaEdit_ZoomIn(this.h)
+	C.ScintillaEdit_zoomIn(this.h)
 }
 
 func (this *ScintillaEdit) ZoomOut() {
-	C.ScintillaEdit_ZoomOut(this.h)
+	C.ScintillaEdit_zoomOut(this.h)
 }
 
 func (this *ScintillaEdit) DelWordLeft() {
-	C.ScintillaEdit_DelWordLeft(this.h)
+	C.ScintillaEdit_delWordLeft(this.h)
 }
 
 func (this *ScintillaEdit) DelWordRight() {
-	C.ScintillaEdit_DelWordRight(this.h)
+	C.ScintillaEdit_delWordRight(this.h)
 }
 
 func (this *ScintillaEdit) DelWordRightEnd() {
-	C.ScintillaEdit_DelWordRightEnd(this.h)
+	C.ScintillaEdit_delWordRightEnd(this.h)
 }
 
 func (this *ScintillaEdit) LineCut() {
-	C.ScintillaEdit_LineCut(this.h)
+	C.ScintillaEdit_lineCut(this.h)
 }
 
 func (this *ScintillaEdit) LineDelete() {
-	C.ScintillaEdit_LineDelete(this.h)
+	C.ScintillaEdit_lineDelete(this.h)
 }
 
 func (this *ScintillaEdit) LineTranspose() {
-	C.ScintillaEdit_LineTranspose(this.h)
+	C.ScintillaEdit_lineTranspose(this.h)
 }
 
 func (this *ScintillaEdit) LineReverse() {
-	C.ScintillaEdit_LineReverse(this.h)
+	C.ScintillaEdit_lineReverse(this.h)
 }
 
 func (this *ScintillaEdit) LineDuplicate() {
-	C.ScintillaEdit_LineDuplicate(this.h)
+	C.ScintillaEdit_lineDuplicate(this.h)
 }
 
 func (this *ScintillaEdit) LowerCase() {
-	C.ScintillaEdit_LowerCase(this.h)
+	C.ScintillaEdit_lowerCase(this.h)
 }
 
 func (this *ScintillaEdit) UpperCase() {
-	C.ScintillaEdit_UpperCase(this.h)
+	C.ScintillaEdit_upperCase(this.h)
 }
 
 func (this *ScintillaEdit) LineScrollDown() {
-	C.ScintillaEdit_LineScrollDown(this.h)
+	C.ScintillaEdit_lineScrollDown(this.h)
 }
 
 func (this *ScintillaEdit) LineScrollUp() {
-	C.ScintillaEdit_LineScrollUp(this.h)
+	C.ScintillaEdit_lineScrollUp(this.h)
 }
 
 func (this *ScintillaEdit) DeleteBackNotLine() {
-	C.ScintillaEdit_DeleteBackNotLine(this.h)
+	C.ScintillaEdit_deleteBackNotLine(this.h)
 }
 
 func (this *ScintillaEdit) HomeDisplay() {
-	C.ScintillaEdit_HomeDisplay(this.h)
+	C.ScintillaEdit_homeDisplay(this.h)
 }
 
 func (this *ScintillaEdit) HomeDisplayExtend() {
-	C.ScintillaEdit_HomeDisplayExtend(this.h)
+	C.ScintillaEdit_homeDisplayExtend(this.h)
 }
 
 func (this *ScintillaEdit) LineEndDisplay() {
-	C.ScintillaEdit_LineEndDisplay(this.h)
+	C.ScintillaEdit_lineEndDisplay(this.h)
 }
 
 func (this *ScintillaEdit) LineEndDisplayExtend() {
-	C.ScintillaEdit_LineEndDisplayExtend(this.h)
+	C.ScintillaEdit_lineEndDisplayExtend(this.h)
 }
 
 func (this *ScintillaEdit) HomeWrap() {
-	C.ScintillaEdit_HomeWrap(this.h)
+	C.ScintillaEdit_homeWrap(this.h)
 }
 
 func (this *ScintillaEdit) HomeWrapExtend() {
-	C.ScintillaEdit_HomeWrapExtend(this.h)
+	C.ScintillaEdit_homeWrapExtend(this.h)
 }
 
 func (this *ScintillaEdit) LineEndWrap() {
-	C.ScintillaEdit_LineEndWrap(this.h)
+	C.ScintillaEdit_lineEndWrap(this.h)
 }
 
 func (this *ScintillaEdit) LineEndWrapExtend() {
-	C.ScintillaEdit_LineEndWrapExtend(this.h)
+	C.ScintillaEdit_lineEndWrapExtend(this.h)
 }
 
 func (this *ScintillaEdit) VCHomeWrap() {
-	C.ScintillaEdit_VCHomeWrap(this.h)
+	C.ScintillaEdit_vCHomeWrap(this.h)
 }
 
 func (this *ScintillaEdit) VCHomeWrapExtend() {
-	C.ScintillaEdit_VCHomeWrapExtend(this.h)
+	C.ScintillaEdit_vCHomeWrapExtend(this.h)
 }
 
 func (this *ScintillaEdit) LineCopy() {
-	C.ScintillaEdit_LineCopy(this.h)
+	C.ScintillaEdit_lineCopy(this.h)
 }
 
 func (this *ScintillaEdit) MoveCaretInsideView() {
-	C.ScintillaEdit_MoveCaretInsideView(this.h)
+	C.ScintillaEdit_moveCaretInsideView(this.h)
 }
 
 func (this *ScintillaEdit) LineLength(line uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_LineLength(this.h, (C.intptr_t)(line)))
+	return (uintptr)(C.ScintillaEdit_lineLength(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) BraceHighlight(posA uintptr, posB uintptr) {
-	C.ScintillaEdit_BraceHighlight(this.h, (C.intptr_t)(posA), (C.intptr_t)(posB))
+	C.ScintillaEdit_braceHighlight(this.h, (C.intptr_t)(posA), (C.intptr_t)(posB))
 }
 
 func (this *ScintillaEdit) BraceHighlightIndicator(useSetting bool, indicator uintptr) {
-	C.ScintillaEdit_BraceHighlightIndicator(this.h, (C.bool)(useSetting), (C.intptr_t)(indicator))
+	C.ScintillaEdit_braceHighlightIndicator(this.h, (C.bool)(useSetting), (C.intptr_t)(indicator))
 }
 
 func (this *ScintillaEdit) BraceBadLight(pos uintptr) {
-	C.ScintillaEdit_BraceBadLight(this.h, (C.intptr_t)(pos))
+	C.ScintillaEdit_braceBadLight(this.h, (C.intptr_t)(pos))
 }
 
 func (this *ScintillaEdit) BraceBadLightIndicator(useSetting bool, indicator uintptr) {
-	C.ScintillaEdit_BraceBadLightIndicator(this.h, (C.bool)(useSetting), (C.intptr_t)(indicator))
+	C.ScintillaEdit_braceBadLightIndicator(this.h, (C.bool)(useSetting), (C.intptr_t)(indicator))
 }
 
 func (this *ScintillaEdit) BraceMatch(pos uintptr, maxReStyle uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_BraceMatch(this.h, (C.intptr_t)(pos), (C.intptr_t)(maxReStyle)))
+	return (uintptr)(C.ScintillaEdit_braceMatch(this.h, (C.intptr_t)(pos), (C.intptr_t)(maxReStyle)))
 }
 
 func (this *ScintillaEdit) BraceMatchNext(pos uintptr, startPos uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_BraceMatchNext(this.h, (C.intptr_t)(pos), (C.intptr_t)(startPos)))
+	return (uintptr)(C.ScintillaEdit_braceMatchNext(this.h, (C.intptr_t)(pos), (C.intptr_t)(startPos)))
 }
 
 func (this *ScintillaEdit) ViewEOL() bool {
-	return (bool)(C.ScintillaEdit_ViewEOL(this.h))
+	return (bool)(C.ScintillaEdit_viewEOL(this.h))
 }
 
 func (this *ScintillaEdit) SetViewEOL(visible bool) {
-	C.ScintillaEdit_SetViewEOL(this.h, (C.bool)(visible))
+	C.ScintillaEdit_setViewEOL(this.h, (C.bool)(visible))
 }
 
 func (this *ScintillaEdit) DocPointer() uintptr {
-	return (uintptr)(C.ScintillaEdit_DocPointer(this.h))
+	return (uintptr)(C.ScintillaEdit_docPointer(this.h))
 }
 
 func (this *ScintillaEdit) SetDocPointer(doc uintptr) {
-	C.ScintillaEdit_SetDocPointer(this.h, (C.intptr_t)(doc))
+	C.ScintillaEdit_setDocPointer(this.h, (C.intptr_t)(doc))
 }
 
 func (this *ScintillaEdit) SetModEventMask(eventMask uintptr) {
-	C.ScintillaEdit_SetModEventMask(this.h, (C.intptr_t)(eventMask))
+	C.ScintillaEdit_setModEventMask(this.h, (C.intptr_t)(eventMask))
 }
 
 func (this *ScintillaEdit) EdgeColumn() uintptr {
-	return (uintptr)(C.ScintillaEdit_EdgeColumn(this.h))
+	return (uintptr)(C.ScintillaEdit_edgeColumn(this.h))
 }
 
 func (this *ScintillaEdit) SetEdgeColumn(column uintptr) {
-	C.ScintillaEdit_SetEdgeColumn(this.h, (C.intptr_t)(column))
+	C.ScintillaEdit_setEdgeColumn(this.h, (C.intptr_t)(column))
 }
 
 func (this *ScintillaEdit) EdgeMode() uintptr {
-	return (uintptr)(C.ScintillaEdit_EdgeMode(this.h))
+	return (uintptr)(C.ScintillaEdit_edgeMode(this.h))
 }
 
 func (this *ScintillaEdit) SetEdgeMode(edgeMode uintptr) {
-	C.ScintillaEdit_SetEdgeMode(this.h, (C.intptr_t)(edgeMode))
+	C.ScintillaEdit_setEdgeMode(this.h, (C.intptr_t)(edgeMode))
 }
 
 func (this *ScintillaEdit) EdgeColour() uintptr {
-	return (uintptr)(C.ScintillaEdit_EdgeColour(this.h))
+	return (uintptr)(C.ScintillaEdit_edgeColour(this.h))
 }
 
 func (this *ScintillaEdit) SetEdgeColour(edgeColour uintptr) {
-	C.ScintillaEdit_SetEdgeColour(this.h, (C.intptr_t)(edgeColour))
+	C.ScintillaEdit_setEdgeColour(this.h, (C.intptr_t)(edgeColour))
 }
 
 func (this *ScintillaEdit) MultiEdgeAddLine(column uintptr, edgeColour uintptr) {
-	C.ScintillaEdit_MultiEdgeAddLine(this.h, (C.intptr_t)(column), (C.intptr_t)(edgeColour))
+	C.ScintillaEdit_multiEdgeAddLine(this.h, (C.intptr_t)(column), (C.intptr_t)(edgeColour))
 }
 
 func (this *ScintillaEdit) MultiEdgeClearAll() {
-	C.ScintillaEdit_MultiEdgeClearAll(this.h)
+	C.ScintillaEdit_multiEdgeClearAll(this.h)
 }
 
 func (this *ScintillaEdit) MultiEdgeColumn(which uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_MultiEdgeColumn(this.h, (C.intptr_t)(which)))
+	return (uintptr)(C.ScintillaEdit_multiEdgeColumn(this.h, (C.intptr_t)(which)))
 }
 
 func (this *ScintillaEdit) SearchAnchor() {
-	C.ScintillaEdit_SearchAnchor(this.h)
+	C.ScintillaEdit_searchAnchor(this.h)
 }
 
 func (this *ScintillaEdit) SearchNext(searchFlags uintptr, text string) uintptr {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	return (uintptr)(C.ScintillaEdit_SearchNext(this.h, (C.intptr_t)(searchFlags), text_Cstring))
+	return (uintptr)(C.ScintillaEdit_searchNext(this.h, (C.intptr_t)(searchFlags), text_Cstring))
 }
 
 func (this *ScintillaEdit) SearchPrev(searchFlags uintptr, text string) uintptr {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	return (uintptr)(C.ScintillaEdit_SearchPrev(this.h, (C.intptr_t)(searchFlags), text_Cstring))
+	return (uintptr)(C.ScintillaEdit_searchPrev(this.h, (C.intptr_t)(searchFlags), text_Cstring))
 }
 
 func (this *ScintillaEdit) LinesOnScreen() uintptr {
-	return (uintptr)(C.ScintillaEdit_LinesOnScreen(this.h))
+	return (uintptr)(C.ScintillaEdit_linesOnScreen(this.h))
 }
 
 func (this *ScintillaEdit) UsePopUp(popUpMode uintptr) {
-	C.ScintillaEdit_UsePopUp(this.h, (C.intptr_t)(popUpMode))
+	C.ScintillaEdit_usePopUp(this.h, (C.intptr_t)(popUpMode))
 }
 
 func (this *ScintillaEdit) SelectionIsRectangle() bool {
-	return (bool)(C.ScintillaEdit_SelectionIsRectangle(this.h))
+	return (bool)(C.ScintillaEdit_selectionIsRectangle(this.h))
 }
 
 func (this *ScintillaEdit) SetZoom(zoomInPoints uintptr) {
-	C.ScintillaEdit_SetZoom(this.h, (C.intptr_t)(zoomInPoints))
+	C.ScintillaEdit_setZoom(this.h, (C.intptr_t)(zoomInPoints))
 }
 
 func (this *ScintillaEdit) Zoom() uintptr {
-	return (uintptr)(C.ScintillaEdit_Zoom(this.h))
+	return (uintptr)(C.ScintillaEdit_zoom(this.h))
 }
 
 func (this *ScintillaEdit) CreateDocument(bytes uintptr, documentOptions uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_CreateDocument(this.h, (C.intptr_t)(bytes), (C.intptr_t)(documentOptions)))
+	return (uintptr)(C.ScintillaEdit_createDocument(this.h, (C.intptr_t)(bytes), (C.intptr_t)(documentOptions)))
 }
 
 func (this *ScintillaEdit) AddRefDocument(doc uintptr) {
-	C.ScintillaEdit_AddRefDocument(this.h, (C.intptr_t)(doc))
+	C.ScintillaEdit_addRefDocument(this.h, (C.intptr_t)(doc))
 }
 
 func (this *ScintillaEdit) ReleaseDocument(doc uintptr) {
-	C.ScintillaEdit_ReleaseDocument(this.h, (C.intptr_t)(doc))
+	C.ScintillaEdit_releaseDocument(this.h, (C.intptr_t)(doc))
 }
 
 func (this *ScintillaEdit) DocumentOptions() uintptr {
-	return (uintptr)(C.ScintillaEdit_DocumentOptions(this.h))
+	return (uintptr)(C.ScintillaEdit_documentOptions(this.h))
 }
 
 func (this *ScintillaEdit) ModEventMask() uintptr {
-	return (uintptr)(C.ScintillaEdit_ModEventMask(this.h))
+	return (uintptr)(C.ScintillaEdit_modEventMask(this.h))
 }
 
 func (this *ScintillaEdit) SetCommandEvents(commandEvents bool) {
-	C.ScintillaEdit_SetCommandEvents(this.h, (C.bool)(commandEvents))
+	C.ScintillaEdit_setCommandEvents(this.h, (C.bool)(commandEvents))
 }
 
 func (this *ScintillaEdit) CommandEvents() bool {
-	return (bool)(C.ScintillaEdit_CommandEvents(this.h))
+	return (bool)(C.ScintillaEdit_commandEvents(this.h))
 }
 
 func (this *ScintillaEdit) SetFocus(focus bool) {
-	C.ScintillaEdit_SetFocus(this.h, (C.bool)(focus))
+	C.ScintillaEdit_setFocus(this.h, (C.bool)(focus))
 }
 
 func (this *ScintillaEdit) Focus() bool {
-	return (bool)(C.ScintillaEdit_Focus(this.h))
+	return (bool)(C.ScintillaEdit_focus(this.h))
 }
 
 func (this *ScintillaEdit) SetStatus(status uintptr) {
-	C.ScintillaEdit_SetStatus(this.h, (C.intptr_t)(status))
+	C.ScintillaEdit_setStatus(this.h, (C.intptr_t)(status))
 }
 
 func (this *ScintillaEdit) Status() uintptr {
-	return (uintptr)(C.ScintillaEdit_Status(this.h))
+	return (uintptr)(C.ScintillaEdit_status(this.h))
 }
 
 func (this *ScintillaEdit) SetMouseDownCaptures(captures bool) {
-	C.ScintillaEdit_SetMouseDownCaptures(this.h, (C.bool)(captures))
+	C.ScintillaEdit_setMouseDownCaptures(this.h, (C.bool)(captures))
 }
 
 func (this *ScintillaEdit) MouseDownCaptures() bool {
-	return (bool)(C.ScintillaEdit_MouseDownCaptures(this.h))
+	return (bool)(C.ScintillaEdit_mouseDownCaptures(this.h))
 }
 
 func (this *ScintillaEdit) SetMouseWheelCaptures(captures bool) {
-	C.ScintillaEdit_SetMouseWheelCaptures(this.h, (C.bool)(captures))
+	C.ScintillaEdit_setMouseWheelCaptures(this.h, (C.bool)(captures))
 }
 
 func (this *ScintillaEdit) MouseWheelCaptures() bool {
-	return (bool)(C.ScintillaEdit_MouseWheelCaptures(this.h))
+	return (bool)(C.ScintillaEdit_mouseWheelCaptures(this.h))
 }
 
 func (this *ScintillaEdit) SetCursor(cursorType uintptr) {
-	C.ScintillaEdit_SetCursor(this.h, (C.intptr_t)(cursorType))
+	C.ScintillaEdit_setCursor(this.h, (C.intptr_t)(cursorType))
 }
 
 func (this *ScintillaEdit) Cursor() uintptr {
-	return (uintptr)(C.ScintillaEdit_Cursor(this.h))
+	return (uintptr)(C.ScintillaEdit_cursor(this.h))
 }
 
 func (this *ScintillaEdit) SetControlCharSymbol(symbol uintptr) {
-	C.ScintillaEdit_SetControlCharSymbol(this.h, (C.intptr_t)(symbol))
+	C.ScintillaEdit_setControlCharSymbol(this.h, (C.intptr_t)(symbol))
 }
 
 func (this *ScintillaEdit) ControlCharSymbol() uintptr {
-	return (uintptr)(C.ScintillaEdit_ControlCharSymbol(this.h))
+	return (uintptr)(C.ScintillaEdit_controlCharSymbol(this.h))
 }
 
 func (this *ScintillaEdit) WordPartLeft() {
-	C.ScintillaEdit_WordPartLeft(this.h)
+	C.ScintillaEdit_wordPartLeft(this.h)
 }
 
 func (this *ScintillaEdit) WordPartLeftExtend() {
-	C.ScintillaEdit_WordPartLeftExtend(this.h)
+	C.ScintillaEdit_wordPartLeftExtend(this.h)
 }
 
 func (this *ScintillaEdit) WordPartRight() {
-	C.ScintillaEdit_WordPartRight(this.h)
+	C.ScintillaEdit_wordPartRight(this.h)
 }
 
 func (this *ScintillaEdit) WordPartRightExtend() {
-	C.ScintillaEdit_WordPartRightExtend(this.h)
+	C.ScintillaEdit_wordPartRightExtend(this.h)
 }
 
 func (this *ScintillaEdit) SetVisiblePolicy(visiblePolicy uintptr, visibleSlop uintptr) {
-	C.ScintillaEdit_SetVisiblePolicy(this.h, (C.intptr_t)(visiblePolicy), (C.intptr_t)(visibleSlop))
+	C.ScintillaEdit_setVisiblePolicy(this.h, (C.intptr_t)(visiblePolicy), (C.intptr_t)(visibleSlop))
 }
 
 func (this *ScintillaEdit) DelLineLeft() {
-	C.ScintillaEdit_DelLineLeft(this.h)
+	C.ScintillaEdit_delLineLeft(this.h)
 }
 
 func (this *ScintillaEdit) DelLineRight() {
-	C.ScintillaEdit_DelLineRight(this.h)
+	C.ScintillaEdit_delLineRight(this.h)
 }
 
 func (this *ScintillaEdit) SetXOffset(xOffset uintptr) {
-	C.ScintillaEdit_SetXOffset(this.h, (C.intptr_t)(xOffset))
+	C.ScintillaEdit_setXOffset(this.h, (C.intptr_t)(xOffset))
 }
 
 func (this *ScintillaEdit) XOffset() uintptr {
-	return (uintptr)(C.ScintillaEdit_XOffset(this.h))
+	return (uintptr)(C.ScintillaEdit_xOffset(this.h))
 }
 
 func (this *ScintillaEdit) ChooseCaretX() {
-	C.ScintillaEdit_ChooseCaretX(this.h)
+	C.ScintillaEdit_chooseCaretX(this.h)
 }
 
 func (this *ScintillaEdit) GrabFocus() {
-	C.ScintillaEdit_GrabFocus(this.h)
+	C.ScintillaEdit_grabFocus(this.h)
 }
 
 func (this *ScintillaEdit) SetXCaretPolicy(caretPolicy uintptr, caretSlop uintptr) {
-	C.ScintillaEdit_SetXCaretPolicy(this.h, (C.intptr_t)(caretPolicy), (C.intptr_t)(caretSlop))
+	C.ScintillaEdit_setXCaretPolicy(this.h, (C.intptr_t)(caretPolicy), (C.intptr_t)(caretSlop))
 }
 
 func (this *ScintillaEdit) SetYCaretPolicy(caretPolicy uintptr, caretSlop uintptr) {
-	C.ScintillaEdit_SetYCaretPolicy(this.h, (C.intptr_t)(caretPolicy), (C.intptr_t)(caretSlop))
+	C.ScintillaEdit_setYCaretPolicy(this.h, (C.intptr_t)(caretPolicy), (C.intptr_t)(caretSlop))
 }
 
 func (this *ScintillaEdit) SetPrintWrapMode(wrapMode uintptr) {
-	C.ScintillaEdit_SetPrintWrapMode(this.h, (C.intptr_t)(wrapMode))
+	C.ScintillaEdit_setPrintWrapMode(this.h, (C.intptr_t)(wrapMode))
 }
 
 func (this *ScintillaEdit) PrintWrapMode() uintptr {
-	return (uintptr)(C.ScintillaEdit_PrintWrapMode(this.h))
+	return (uintptr)(C.ScintillaEdit_printWrapMode(this.h))
 }
 
 func (this *ScintillaEdit) SetHotspotActiveFore(useSetting bool, fore uintptr) {
-	C.ScintillaEdit_SetHotspotActiveFore(this.h, (C.bool)(useSetting), (C.intptr_t)(fore))
+	C.ScintillaEdit_setHotspotActiveFore(this.h, (C.bool)(useSetting), (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) HotspotActiveFore() uintptr {
-	return (uintptr)(C.ScintillaEdit_HotspotActiveFore(this.h))
+	return (uintptr)(C.ScintillaEdit_hotspotActiveFore(this.h))
 }
 
 func (this *ScintillaEdit) SetHotspotActiveBack(useSetting bool, back uintptr) {
-	C.ScintillaEdit_SetHotspotActiveBack(this.h, (C.bool)(useSetting), (C.intptr_t)(back))
+	C.ScintillaEdit_setHotspotActiveBack(this.h, (C.bool)(useSetting), (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) HotspotActiveBack() uintptr {
-	return (uintptr)(C.ScintillaEdit_HotspotActiveBack(this.h))
+	return (uintptr)(C.ScintillaEdit_hotspotActiveBack(this.h))
 }
 
 func (this *ScintillaEdit) SetHotspotActiveUnderline(underline bool) {
-	C.ScintillaEdit_SetHotspotActiveUnderline(this.h, (C.bool)(underline))
+	C.ScintillaEdit_setHotspotActiveUnderline(this.h, (C.bool)(underline))
 }
 
 func (this *ScintillaEdit) HotspotActiveUnderline() bool {
-	return (bool)(C.ScintillaEdit_HotspotActiveUnderline(this.h))
+	return (bool)(C.ScintillaEdit_hotspotActiveUnderline(this.h))
 }
 
 func (this *ScintillaEdit) SetHotspotSingleLine(singleLine bool) {
-	C.ScintillaEdit_SetHotspotSingleLine(this.h, (C.bool)(singleLine))
+	C.ScintillaEdit_setHotspotSingleLine(this.h, (C.bool)(singleLine))
 }
 
 func (this *ScintillaEdit) HotspotSingleLine() bool {
-	return (bool)(C.ScintillaEdit_HotspotSingleLine(this.h))
+	return (bool)(C.ScintillaEdit_hotspotSingleLine(this.h))
 }
 
 func (this *ScintillaEdit) ParaDown() {
-	C.ScintillaEdit_ParaDown(this.h)
+	C.ScintillaEdit_paraDown(this.h)
 }
 
 func (this *ScintillaEdit) ParaDownExtend() {
-	C.ScintillaEdit_ParaDownExtend(this.h)
+	C.ScintillaEdit_paraDownExtend(this.h)
 }
 
 func (this *ScintillaEdit) ParaUp() {
-	C.ScintillaEdit_ParaUp(this.h)
+	C.ScintillaEdit_paraUp(this.h)
 }
 
 func (this *ScintillaEdit) ParaUpExtend() {
-	C.ScintillaEdit_ParaUpExtend(this.h)
+	C.ScintillaEdit_paraUpExtend(this.h)
 }
 
 func (this *ScintillaEdit) PositionBefore(pos uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_PositionBefore(this.h, (C.intptr_t)(pos)))
+	return (uintptr)(C.ScintillaEdit_positionBefore(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) PositionAfter(pos uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_PositionAfter(this.h, (C.intptr_t)(pos)))
+	return (uintptr)(C.ScintillaEdit_positionAfter(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) PositionRelative(pos uintptr, relative uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_PositionRelative(this.h, (C.intptr_t)(pos), (C.intptr_t)(relative)))
+	return (uintptr)(C.ScintillaEdit_positionRelative(this.h, (C.intptr_t)(pos), (C.intptr_t)(relative)))
 }
 
 func (this *ScintillaEdit) PositionRelativeCodeUnits(pos uintptr, relative uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_PositionRelativeCodeUnits(this.h, (C.intptr_t)(pos), (C.intptr_t)(relative)))
+	return (uintptr)(C.ScintillaEdit_positionRelativeCodeUnits(this.h, (C.intptr_t)(pos), (C.intptr_t)(relative)))
 }
 
 func (this *ScintillaEdit) CopyRange(start uintptr, end uintptr) {
-	C.ScintillaEdit_CopyRange(this.h, (C.intptr_t)(start), (C.intptr_t)(end))
+	C.ScintillaEdit_copyRange(this.h, (C.intptr_t)(start), (C.intptr_t)(end))
 }
 
 func (this *ScintillaEdit) CopyText(length uintptr, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.ScintillaEdit_CopyText(this.h, (C.intptr_t)(length), text_Cstring)
+	C.ScintillaEdit_copyText(this.h, (C.intptr_t)(length), text_Cstring)
 }
 
 func (this *ScintillaEdit) SetSelectionMode(selectionMode uintptr) {
-	C.ScintillaEdit_SetSelectionMode(this.h, (C.intptr_t)(selectionMode))
+	C.ScintillaEdit_setSelectionMode(this.h, (C.intptr_t)(selectionMode))
 }
 
 func (this *ScintillaEdit) ChangeSelectionMode(selectionMode uintptr) {
-	C.ScintillaEdit_ChangeSelectionMode(this.h, (C.intptr_t)(selectionMode))
+	C.ScintillaEdit_changeSelectionMode(this.h, (C.intptr_t)(selectionMode))
 }
 
 func (this *ScintillaEdit) SelectionMode() uintptr {
-	return (uintptr)(C.ScintillaEdit_SelectionMode(this.h))
+	return (uintptr)(C.ScintillaEdit_selectionMode(this.h))
 }
 
 func (this *ScintillaEdit) SetMoveExtendsSelection(moveExtendsSelection bool) {
-	C.ScintillaEdit_SetMoveExtendsSelection(this.h, (C.bool)(moveExtendsSelection))
+	C.ScintillaEdit_setMoveExtendsSelection(this.h, (C.bool)(moveExtendsSelection))
 }
 
 func (this *ScintillaEdit) MoveExtendsSelection() bool {
-	return (bool)(C.ScintillaEdit_MoveExtendsSelection(this.h))
+	return (bool)(C.ScintillaEdit_moveExtendsSelection(this.h))
 }
 
 func (this *ScintillaEdit) GetLineSelStartPosition(line uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_GetLineSelStartPosition(this.h, (C.intptr_t)(line)))
+	return (uintptr)(C.ScintillaEdit_getLineSelStartPosition(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) GetLineSelEndPosition(line uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_GetLineSelEndPosition(this.h, (C.intptr_t)(line)))
+	return (uintptr)(C.ScintillaEdit_getLineSelEndPosition(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) LineDownRectExtend() {
-	C.ScintillaEdit_LineDownRectExtend(this.h)
+	C.ScintillaEdit_lineDownRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) LineUpRectExtend() {
-	C.ScintillaEdit_LineUpRectExtend(this.h)
+	C.ScintillaEdit_lineUpRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) CharLeftRectExtend() {
-	C.ScintillaEdit_CharLeftRectExtend(this.h)
+	C.ScintillaEdit_charLeftRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) CharRightRectExtend() {
-	C.ScintillaEdit_CharRightRectExtend(this.h)
+	C.ScintillaEdit_charRightRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) HomeRectExtend() {
-	C.ScintillaEdit_HomeRectExtend(this.h)
+	C.ScintillaEdit_homeRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) VCHomeRectExtend() {
-	C.ScintillaEdit_VCHomeRectExtend(this.h)
+	C.ScintillaEdit_vCHomeRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) LineEndRectExtend() {
-	C.ScintillaEdit_LineEndRectExtend(this.h)
+	C.ScintillaEdit_lineEndRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) PageUpRectExtend() {
-	C.ScintillaEdit_PageUpRectExtend(this.h)
+	C.ScintillaEdit_pageUpRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) PageDownRectExtend() {
-	C.ScintillaEdit_PageDownRectExtend(this.h)
+	C.ScintillaEdit_pageDownRectExtend(this.h)
 }
 
 func (this *ScintillaEdit) StutteredPageUp() {
-	C.ScintillaEdit_StutteredPageUp(this.h)
+	C.ScintillaEdit_stutteredPageUp(this.h)
 }
 
 func (this *ScintillaEdit) StutteredPageUpExtend() {
-	C.ScintillaEdit_StutteredPageUpExtend(this.h)
+	C.ScintillaEdit_stutteredPageUpExtend(this.h)
 }
 
 func (this *ScintillaEdit) StutteredPageDown() {
-	C.ScintillaEdit_StutteredPageDown(this.h)
+	C.ScintillaEdit_stutteredPageDown(this.h)
 }
 
 func (this *ScintillaEdit) StutteredPageDownExtend() {
-	C.ScintillaEdit_StutteredPageDownExtend(this.h)
+	C.ScintillaEdit_stutteredPageDownExtend(this.h)
 }
 
 func (this *ScintillaEdit) WordLeftEnd() {
-	C.ScintillaEdit_WordLeftEnd(this.h)
+	C.ScintillaEdit_wordLeftEnd(this.h)
 }
 
 func (this *ScintillaEdit) WordLeftEndExtend() {
-	C.ScintillaEdit_WordLeftEndExtend(this.h)
+	C.ScintillaEdit_wordLeftEndExtend(this.h)
 }
 
 func (this *ScintillaEdit) WordRightEnd() {
-	C.ScintillaEdit_WordRightEnd(this.h)
+	C.ScintillaEdit_wordRightEnd(this.h)
 }
 
 func (this *ScintillaEdit) WordRightEndExtend() {
-	C.ScintillaEdit_WordRightEndExtend(this.h)
+	C.ScintillaEdit_wordRightEndExtend(this.h)
 }
 
 func (this *ScintillaEdit) SetWhitespaceChars(characters string) {
 	characters_Cstring := C.CString(characters)
 	defer C.free(unsafe.Pointer(characters_Cstring))
-	C.ScintillaEdit_SetWhitespaceChars(this.h, characters_Cstring)
+	C.ScintillaEdit_setWhitespaceChars(this.h, characters_Cstring)
 }
 
 func (this *ScintillaEdit) WhitespaceChars() []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_WhitespaceChars(this.h)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_whitespaceChars(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -11204,716 +11204,716 @@ func (this *ScintillaEdit) WhitespaceChars() []byte {
 func (this *ScintillaEdit) SetPunctuationChars(characters string) {
 	characters_Cstring := C.CString(characters)
 	defer C.free(unsafe.Pointer(characters_Cstring))
-	C.ScintillaEdit_SetPunctuationChars(this.h, characters_Cstring)
+	C.ScintillaEdit_setPunctuationChars(this.h, characters_Cstring)
 }
 
 func (this *ScintillaEdit) PunctuationChars() []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_PunctuationChars(this.h)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_punctuationChars(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) SetCharsDefault() {
-	C.ScintillaEdit_SetCharsDefault(this.h)
+	C.ScintillaEdit_setCharsDefault(this.h)
 }
 
 func (this *ScintillaEdit) AutoCCurrent() uintptr {
-	return (uintptr)(C.ScintillaEdit_AutoCCurrent(this.h))
+	return (uintptr)(C.ScintillaEdit_autoCCurrent(this.h))
 }
 
 func (this *ScintillaEdit) AutoCCurrentText() []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_AutoCCurrentText(this.h)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_autoCCurrentText(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) AutoCSetCaseInsensitiveBehaviour(behaviour uintptr) {
-	C.ScintillaEdit_AutoCSetCaseInsensitiveBehaviour(this.h, (C.intptr_t)(behaviour))
+	C.ScintillaEdit_autoCSetCaseInsensitiveBehaviour(this.h, (C.intptr_t)(behaviour))
 }
 
 func (this *ScintillaEdit) AutoCCaseInsensitiveBehaviour() uintptr {
-	return (uintptr)(C.ScintillaEdit_AutoCCaseInsensitiveBehaviour(this.h))
+	return (uintptr)(C.ScintillaEdit_autoCCaseInsensitiveBehaviour(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetMulti(multi uintptr) {
-	C.ScintillaEdit_AutoCSetMulti(this.h, (C.intptr_t)(multi))
+	C.ScintillaEdit_autoCSetMulti(this.h, (C.intptr_t)(multi))
 }
 
 func (this *ScintillaEdit) AutoCMulti() uintptr {
-	return (uintptr)(C.ScintillaEdit_AutoCMulti(this.h))
+	return (uintptr)(C.ScintillaEdit_autoCMulti(this.h))
 }
 
 func (this *ScintillaEdit) AutoCSetOrder(order uintptr) {
-	C.ScintillaEdit_AutoCSetOrder(this.h, (C.intptr_t)(order))
+	C.ScintillaEdit_autoCSetOrder(this.h, (C.intptr_t)(order))
 }
 
 func (this *ScintillaEdit) AutoCOrder() uintptr {
-	return (uintptr)(C.ScintillaEdit_AutoCOrder(this.h))
+	return (uintptr)(C.ScintillaEdit_autoCOrder(this.h))
 }
 
 func (this *ScintillaEdit) Allocate(bytes uintptr) {
-	C.ScintillaEdit_Allocate(this.h, (C.intptr_t)(bytes))
+	C.ScintillaEdit_allocate(this.h, (C.intptr_t)(bytes))
 }
 
 func (this *ScintillaEdit) TargetAsUTF8() []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_TargetAsUTF8(this.h)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_targetAsUTF8(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) SetLengthForEncode(bytes uintptr) {
-	C.ScintillaEdit_SetLengthForEncode(this.h, (C.intptr_t)(bytes))
+	C.ScintillaEdit_setLengthForEncode(this.h, (C.intptr_t)(bytes))
 }
 
 func (this *ScintillaEdit) EncodedFromUTF8(utf8 string) []byte {
 	utf8_Cstring := C.CString(utf8)
 	defer C.free(unsafe.Pointer(utf8_Cstring))
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_EncodedFromUTF8(this.h, utf8_Cstring)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_encodedFromUTF8(this.h, utf8_Cstring)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) FindColumn(line uintptr, column uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_FindColumn(this.h, (C.intptr_t)(line), (C.intptr_t)(column)))
+	return (uintptr)(C.ScintillaEdit_findColumn(this.h, (C.intptr_t)(line), (C.intptr_t)(column)))
 }
 
 func (this *ScintillaEdit) CaretSticky() uintptr {
-	return (uintptr)(C.ScintillaEdit_CaretSticky(this.h))
+	return (uintptr)(C.ScintillaEdit_caretSticky(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretSticky(useCaretStickyBehaviour uintptr) {
-	C.ScintillaEdit_SetCaretSticky(this.h, (C.intptr_t)(useCaretStickyBehaviour))
+	C.ScintillaEdit_setCaretSticky(this.h, (C.intptr_t)(useCaretStickyBehaviour))
 }
 
 func (this *ScintillaEdit) ToggleCaretSticky() {
-	C.ScintillaEdit_ToggleCaretSticky(this.h)
+	C.ScintillaEdit_toggleCaretSticky(this.h)
 }
 
 func (this *ScintillaEdit) SetPasteConvertEndings(convert bool) {
-	C.ScintillaEdit_SetPasteConvertEndings(this.h, (C.bool)(convert))
+	C.ScintillaEdit_setPasteConvertEndings(this.h, (C.bool)(convert))
 }
 
 func (this *ScintillaEdit) PasteConvertEndings() bool {
-	return (bool)(C.ScintillaEdit_PasteConvertEndings(this.h))
+	return (bool)(C.ScintillaEdit_pasteConvertEndings(this.h))
 }
 
 func (this *ScintillaEdit) ReplaceRectangular(length uintptr, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.ScintillaEdit_ReplaceRectangular(this.h, (C.intptr_t)(length), text_Cstring)
+	C.ScintillaEdit_replaceRectangular(this.h, (C.intptr_t)(length), text_Cstring)
 }
 
 func (this *ScintillaEdit) SelectionDuplicate() {
-	C.ScintillaEdit_SelectionDuplicate(this.h)
+	C.ScintillaEdit_selectionDuplicate(this.h)
 }
 
 func (this *ScintillaEdit) SetCaretLineBackAlpha(alpha uintptr) {
-	C.ScintillaEdit_SetCaretLineBackAlpha(this.h, (C.intptr_t)(alpha))
+	C.ScintillaEdit_setCaretLineBackAlpha(this.h, (C.intptr_t)(alpha))
 }
 
 func (this *ScintillaEdit) CaretLineBackAlpha() uintptr {
-	return (uintptr)(C.ScintillaEdit_CaretLineBackAlpha(this.h))
+	return (uintptr)(C.ScintillaEdit_caretLineBackAlpha(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretStyle(caretStyle uintptr) {
-	C.ScintillaEdit_SetCaretStyle(this.h, (C.intptr_t)(caretStyle))
+	C.ScintillaEdit_setCaretStyle(this.h, (C.intptr_t)(caretStyle))
 }
 
 func (this *ScintillaEdit) CaretStyle() uintptr {
-	return (uintptr)(C.ScintillaEdit_CaretStyle(this.h))
+	return (uintptr)(C.ScintillaEdit_caretStyle(this.h))
 }
 
 func (this *ScintillaEdit) SetIndicatorCurrent(indicator uintptr) {
-	C.ScintillaEdit_SetIndicatorCurrent(this.h, (C.intptr_t)(indicator))
+	C.ScintillaEdit_setIndicatorCurrent(this.h, (C.intptr_t)(indicator))
 }
 
 func (this *ScintillaEdit) IndicatorCurrent() uintptr {
-	return (uintptr)(C.ScintillaEdit_IndicatorCurrent(this.h))
+	return (uintptr)(C.ScintillaEdit_indicatorCurrent(this.h))
 }
 
 func (this *ScintillaEdit) SetIndicatorValue(value uintptr) {
-	C.ScintillaEdit_SetIndicatorValue(this.h, (C.intptr_t)(value))
+	C.ScintillaEdit_setIndicatorValue(this.h, (C.intptr_t)(value))
 }
 
 func (this *ScintillaEdit) IndicatorValue() uintptr {
-	return (uintptr)(C.ScintillaEdit_IndicatorValue(this.h))
+	return (uintptr)(C.ScintillaEdit_indicatorValue(this.h))
 }
 
 func (this *ScintillaEdit) IndicatorFillRange(start uintptr, lengthFill uintptr) {
-	C.ScintillaEdit_IndicatorFillRange(this.h, (C.intptr_t)(start), (C.intptr_t)(lengthFill))
+	C.ScintillaEdit_indicatorFillRange(this.h, (C.intptr_t)(start), (C.intptr_t)(lengthFill))
 }
 
 func (this *ScintillaEdit) IndicatorClearRange(start uintptr, lengthClear uintptr) {
-	C.ScintillaEdit_IndicatorClearRange(this.h, (C.intptr_t)(start), (C.intptr_t)(lengthClear))
+	C.ScintillaEdit_indicatorClearRange(this.h, (C.intptr_t)(start), (C.intptr_t)(lengthClear))
 }
 
 func (this *ScintillaEdit) IndicatorAllOnFor(pos uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_IndicatorAllOnFor(this.h, (C.intptr_t)(pos)))
+	return (uintptr)(C.ScintillaEdit_indicatorAllOnFor(this.h, (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) IndicatorValueAt(indicator uintptr, pos uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_IndicatorValueAt(this.h, (C.intptr_t)(indicator), (C.intptr_t)(pos)))
+	return (uintptr)(C.ScintillaEdit_indicatorValueAt(this.h, (C.intptr_t)(indicator), (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) IndicatorStart(indicator uintptr, pos uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_IndicatorStart(this.h, (C.intptr_t)(indicator), (C.intptr_t)(pos)))
+	return (uintptr)(C.ScintillaEdit_indicatorStart(this.h, (C.intptr_t)(indicator), (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) IndicatorEnd(indicator uintptr, pos uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_IndicatorEnd(this.h, (C.intptr_t)(indicator), (C.intptr_t)(pos)))
+	return (uintptr)(C.ScintillaEdit_indicatorEnd(this.h, (C.intptr_t)(indicator), (C.intptr_t)(pos)))
 }
 
 func (this *ScintillaEdit) SetPositionCache(size uintptr) {
-	C.ScintillaEdit_SetPositionCache(this.h, (C.intptr_t)(size))
+	C.ScintillaEdit_setPositionCache(this.h, (C.intptr_t)(size))
 }
 
 func (this *ScintillaEdit) PositionCache() uintptr {
-	return (uintptr)(C.ScintillaEdit_PositionCache(this.h))
+	return (uintptr)(C.ScintillaEdit_positionCache(this.h))
 }
 
 func (this *ScintillaEdit) SetLayoutThreads(threads uintptr) {
-	C.ScintillaEdit_SetLayoutThreads(this.h, (C.intptr_t)(threads))
+	C.ScintillaEdit_setLayoutThreads(this.h, (C.intptr_t)(threads))
 }
 
 func (this *ScintillaEdit) LayoutThreads() uintptr {
-	return (uintptr)(C.ScintillaEdit_LayoutThreads(this.h))
+	return (uintptr)(C.ScintillaEdit_layoutThreads(this.h))
 }
 
 func (this *ScintillaEdit) CopyAllowLine() {
-	C.ScintillaEdit_CopyAllowLine(this.h)
+	C.ScintillaEdit_copyAllowLine(this.h)
 }
 
 func (this *ScintillaEdit) CutAllowLine() {
-	C.ScintillaEdit_CutAllowLine(this.h)
+	C.ScintillaEdit_cutAllowLine(this.h)
 }
 
 func (this *ScintillaEdit) SetCopySeparator(separator string) {
 	separator_Cstring := C.CString(separator)
 	defer C.free(unsafe.Pointer(separator_Cstring))
-	C.ScintillaEdit_SetCopySeparator(this.h, separator_Cstring)
+	C.ScintillaEdit_setCopySeparator(this.h, separator_Cstring)
 }
 
 func (this *ScintillaEdit) CopySeparator() []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_CopySeparator(this.h)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_copySeparator(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) CharacterPointer() uintptr {
-	return (uintptr)(C.ScintillaEdit_CharacterPointer(this.h))
+	return (uintptr)(C.ScintillaEdit_characterPointer(this.h))
 }
 
 func (this *ScintillaEdit) RangePointer(start uintptr, lengthRange uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_RangePointer(this.h, (C.intptr_t)(start), (C.intptr_t)(lengthRange)))
+	return (uintptr)(C.ScintillaEdit_rangePointer(this.h, (C.intptr_t)(start), (C.intptr_t)(lengthRange)))
 }
 
 func (this *ScintillaEdit) GapPosition() uintptr {
-	return (uintptr)(C.ScintillaEdit_GapPosition(this.h))
+	return (uintptr)(C.ScintillaEdit_gapPosition(this.h))
 }
 
 func (this *ScintillaEdit) IndicSetAlpha(indicator uintptr, alpha uintptr) {
-	C.ScintillaEdit_IndicSetAlpha(this.h, (C.intptr_t)(indicator), (C.intptr_t)(alpha))
+	C.ScintillaEdit_indicSetAlpha(this.h, (C.intptr_t)(indicator), (C.intptr_t)(alpha))
 }
 
 func (this *ScintillaEdit) IndicAlpha(indicator uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_IndicAlpha(this.h, (C.intptr_t)(indicator)))
+	return (uintptr)(C.ScintillaEdit_indicAlpha(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) IndicSetOutlineAlpha(indicator uintptr, alpha uintptr) {
-	C.ScintillaEdit_IndicSetOutlineAlpha(this.h, (C.intptr_t)(indicator), (C.intptr_t)(alpha))
+	C.ScintillaEdit_indicSetOutlineAlpha(this.h, (C.intptr_t)(indicator), (C.intptr_t)(alpha))
 }
 
 func (this *ScintillaEdit) IndicOutlineAlpha(indicator uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_IndicOutlineAlpha(this.h, (C.intptr_t)(indicator)))
+	return (uintptr)(C.ScintillaEdit_indicOutlineAlpha(this.h, (C.intptr_t)(indicator)))
 }
 
 func (this *ScintillaEdit) SetExtraAscent(extraAscent uintptr) {
-	C.ScintillaEdit_SetExtraAscent(this.h, (C.intptr_t)(extraAscent))
+	C.ScintillaEdit_setExtraAscent(this.h, (C.intptr_t)(extraAscent))
 }
 
 func (this *ScintillaEdit) ExtraAscent() uintptr {
-	return (uintptr)(C.ScintillaEdit_ExtraAscent(this.h))
+	return (uintptr)(C.ScintillaEdit_extraAscent(this.h))
 }
 
 func (this *ScintillaEdit) SetExtraDescent(extraDescent uintptr) {
-	C.ScintillaEdit_SetExtraDescent(this.h, (C.intptr_t)(extraDescent))
+	C.ScintillaEdit_setExtraDescent(this.h, (C.intptr_t)(extraDescent))
 }
 
 func (this *ScintillaEdit) ExtraDescent() uintptr {
-	return (uintptr)(C.ScintillaEdit_ExtraDescent(this.h))
+	return (uintptr)(C.ScintillaEdit_extraDescent(this.h))
 }
 
 func (this *ScintillaEdit) MarkerSymbolDefined(markerNumber uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_MarkerSymbolDefined(this.h, (C.intptr_t)(markerNumber)))
+	return (uintptr)(C.ScintillaEdit_markerSymbolDefined(this.h, (C.intptr_t)(markerNumber)))
 }
 
 func (this *ScintillaEdit) MarginSetText(line uintptr, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.ScintillaEdit_MarginSetText(this.h, (C.intptr_t)(line), text_Cstring)
+	C.ScintillaEdit_marginSetText(this.h, (C.intptr_t)(line), text_Cstring)
 }
 
 func (this *ScintillaEdit) MarginText(line uintptr) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_MarginText(this.h, (C.intptr_t)(line))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_marginText(this.h, (C.intptr_t)(line))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) MarginSetStyle(line uintptr, style uintptr) {
-	C.ScintillaEdit_MarginSetStyle(this.h, (C.intptr_t)(line), (C.intptr_t)(style))
+	C.ScintillaEdit_marginSetStyle(this.h, (C.intptr_t)(line), (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) MarginStyle(line uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_MarginStyle(this.h, (C.intptr_t)(line)))
+	return (uintptr)(C.ScintillaEdit_marginStyle(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) MarginSetStyles(line uintptr, styles string) {
 	styles_Cstring := C.CString(styles)
 	defer C.free(unsafe.Pointer(styles_Cstring))
-	C.ScintillaEdit_MarginSetStyles(this.h, (C.intptr_t)(line), styles_Cstring)
+	C.ScintillaEdit_marginSetStyles(this.h, (C.intptr_t)(line), styles_Cstring)
 }
 
 func (this *ScintillaEdit) MarginStyles(line uintptr) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_MarginStyles(this.h, (C.intptr_t)(line))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_marginStyles(this.h, (C.intptr_t)(line))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) MarginTextClearAll() {
-	C.ScintillaEdit_MarginTextClearAll(this.h)
+	C.ScintillaEdit_marginTextClearAll(this.h)
 }
 
 func (this *ScintillaEdit) MarginSetStyleOffset(style uintptr) {
-	C.ScintillaEdit_MarginSetStyleOffset(this.h, (C.intptr_t)(style))
+	C.ScintillaEdit_marginSetStyleOffset(this.h, (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) MarginStyleOffset() uintptr {
-	return (uintptr)(C.ScintillaEdit_MarginStyleOffset(this.h))
+	return (uintptr)(C.ScintillaEdit_marginStyleOffset(this.h))
 }
 
 func (this *ScintillaEdit) SetMarginOptions(marginOptions uintptr) {
-	C.ScintillaEdit_SetMarginOptions(this.h, (C.intptr_t)(marginOptions))
+	C.ScintillaEdit_setMarginOptions(this.h, (C.intptr_t)(marginOptions))
 }
 
 func (this *ScintillaEdit) MarginOptions() uintptr {
-	return (uintptr)(C.ScintillaEdit_MarginOptions(this.h))
+	return (uintptr)(C.ScintillaEdit_marginOptions(this.h))
 }
 
 func (this *ScintillaEdit) AnnotationSetText(line uintptr, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.ScintillaEdit_AnnotationSetText(this.h, (C.intptr_t)(line), text_Cstring)
+	C.ScintillaEdit_annotationSetText(this.h, (C.intptr_t)(line), text_Cstring)
 }
 
 func (this *ScintillaEdit) AnnotationText(line uintptr) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_AnnotationText(this.h, (C.intptr_t)(line))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_annotationText(this.h, (C.intptr_t)(line))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) AnnotationSetStyle(line uintptr, style uintptr) {
-	C.ScintillaEdit_AnnotationSetStyle(this.h, (C.intptr_t)(line), (C.intptr_t)(style))
+	C.ScintillaEdit_annotationSetStyle(this.h, (C.intptr_t)(line), (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) AnnotationStyle(line uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_AnnotationStyle(this.h, (C.intptr_t)(line)))
+	return (uintptr)(C.ScintillaEdit_annotationStyle(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) AnnotationSetStyles(line uintptr, styles string) {
 	styles_Cstring := C.CString(styles)
 	defer C.free(unsafe.Pointer(styles_Cstring))
-	C.ScintillaEdit_AnnotationSetStyles(this.h, (C.intptr_t)(line), styles_Cstring)
+	C.ScintillaEdit_annotationSetStyles(this.h, (C.intptr_t)(line), styles_Cstring)
 }
 
 func (this *ScintillaEdit) AnnotationStyles(line uintptr) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_AnnotationStyles(this.h, (C.intptr_t)(line))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_annotationStyles(this.h, (C.intptr_t)(line))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) AnnotationLines(line uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_AnnotationLines(this.h, (C.intptr_t)(line)))
+	return (uintptr)(C.ScintillaEdit_annotationLines(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) AnnotationClearAll() {
-	C.ScintillaEdit_AnnotationClearAll(this.h)
+	C.ScintillaEdit_annotationClearAll(this.h)
 }
 
 func (this *ScintillaEdit) AnnotationSetVisible(visible uintptr) {
-	C.ScintillaEdit_AnnotationSetVisible(this.h, (C.intptr_t)(visible))
+	C.ScintillaEdit_annotationSetVisible(this.h, (C.intptr_t)(visible))
 }
 
 func (this *ScintillaEdit) AnnotationVisible() uintptr {
-	return (uintptr)(C.ScintillaEdit_AnnotationVisible(this.h))
+	return (uintptr)(C.ScintillaEdit_annotationVisible(this.h))
 }
 
 func (this *ScintillaEdit) AnnotationSetStyleOffset(style uintptr) {
-	C.ScintillaEdit_AnnotationSetStyleOffset(this.h, (C.intptr_t)(style))
+	C.ScintillaEdit_annotationSetStyleOffset(this.h, (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) AnnotationStyleOffset() uintptr {
-	return (uintptr)(C.ScintillaEdit_AnnotationStyleOffset(this.h))
+	return (uintptr)(C.ScintillaEdit_annotationStyleOffset(this.h))
 }
 
 func (this *ScintillaEdit) ReleaseAllExtendedStyles() {
-	C.ScintillaEdit_ReleaseAllExtendedStyles(this.h)
+	C.ScintillaEdit_releaseAllExtendedStyles(this.h)
 }
 
 func (this *ScintillaEdit) AllocateExtendedStyles(numberStyles uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_AllocateExtendedStyles(this.h, (C.intptr_t)(numberStyles)))
+	return (uintptr)(C.ScintillaEdit_allocateExtendedStyles(this.h, (C.intptr_t)(numberStyles)))
 }
 
 func (this *ScintillaEdit) AddUndoAction(token uintptr, flags uintptr) {
-	C.ScintillaEdit_AddUndoAction(this.h, (C.intptr_t)(token), (C.intptr_t)(flags))
+	C.ScintillaEdit_addUndoAction(this.h, (C.intptr_t)(token), (C.intptr_t)(flags))
 }
 
 func (this *ScintillaEdit) CharPositionFromPoint(x uintptr, y uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_CharPositionFromPoint(this.h, (C.intptr_t)(x), (C.intptr_t)(y)))
+	return (uintptr)(C.ScintillaEdit_charPositionFromPoint(this.h, (C.intptr_t)(x), (C.intptr_t)(y)))
 }
 
 func (this *ScintillaEdit) CharPositionFromPointClose(x uintptr, y uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_CharPositionFromPointClose(this.h, (C.intptr_t)(x), (C.intptr_t)(y)))
+	return (uintptr)(C.ScintillaEdit_charPositionFromPointClose(this.h, (C.intptr_t)(x), (C.intptr_t)(y)))
 }
 
 func (this *ScintillaEdit) SetMouseSelectionRectangularSwitch(mouseSelectionRectangularSwitch bool) {
-	C.ScintillaEdit_SetMouseSelectionRectangularSwitch(this.h, (C.bool)(mouseSelectionRectangularSwitch))
+	C.ScintillaEdit_setMouseSelectionRectangularSwitch(this.h, (C.bool)(mouseSelectionRectangularSwitch))
 }
 
 func (this *ScintillaEdit) MouseSelectionRectangularSwitch() bool {
-	return (bool)(C.ScintillaEdit_MouseSelectionRectangularSwitch(this.h))
+	return (bool)(C.ScintillaEdit_mouseSelectionRectangularSwitch(this.h))
 }
 
 func (this *ScintillaEdit) SetMultipleSelection(multipleSelection bool) {
-	C.ScintillaEdit_SetMultipleSelection(this.h, (C.bool)(multipleSelection))
+	C.ScintillaEdit_setMultipleSelection(this.h, (C.bool)(multipleSelection))
 }
 
 func (this *ScintillaEdit) MultipleSelection() bool {
-	return (bool)(C.ScintillaEdit_MultipleSelection(this.h))
+	return (bool)(C.ScintillaEdit_multipleSelection(this.h))
 }
 
 func (this *ScintillaEdit) SetAdditionalSelectionTyping(additionalSelectionTyping bool) {
-	C.ScintillaEdit_SetAdditionalSelectionTyping(this.h, (C.bool)(additionalSelectionTyping))
+	C.ScintillaEdit_setAdditionalSelectionTyping(this.h, (C.bool)(additionalSelectionTyping))
 }
 
 func (this *ScintillaEdit) AdditionalSelectionTyping() bool {
-	return (bool)(C.ScintillaEdit_AdditionalSelectionTyping(this.h))
+	return (bool)(C.ScintillaEdit_additionalSelectionTyping(this.h))
 }
 
 func (this *ScintillaEdit) SetAdditionalCaretsBlink(additionalCaretsBlink bool) {
-	C.ScintillaEdit_SetAdditionalCaretsBlink(this.h, (C.bool)(additionalCaretsBlink))
+	C.ScintillaEdit_setAdditionalCaretsBlink(this.h, (C.bool)(additionalCaretsBlink))
 }
 
 func (this *ScintillaEdit) AdditionalCaretsBlink() bool {
-	return (bool)(C.ScintillaEdit_AdditionalCaretsBlink(this.h))
+	return (bool)(C.ScintillaEdit_additionalCaretsBlink(this.h))
 }
 
 func (this *ScintillaEdit) SetAdditionalCaretsVisible(additionalCaretsVisible bool) {
-	C.ScintillaEdit_SetAdditionalCaretsVisible(this.h, (C.bool)(additionalCaretsVisible))
+	C.ScintillaEdit_setAdditionalCaretsVisible(this.h, (C.bool)(additionalCaretsVisible))
 }
 
 func (this *ScintillaEdit) AdditionalCaretsVisible() bool {
-	return (bool)(C.ScintillaEdit_AdditionalCaretsVisible(this.h))
+	return (bool)(C.ScintillaEdit_additionalCaretsVisible(this.h))
 }
 
 func (this *ScintillaEdit) Selections() uintptr {
-	return (uintptr)(C.ScintillaEdit_Selections(this.h))
+	return (uintptr)(C.ScintillaEdit_selections(this.h))
 }
 
 func (this *ScintillaEdit) SelectionEmpty() bool {
-	return (bool)(C.ScintillaEdit_SelectionEmpty(this.h))
+	return (bool)(C.ScintillaEdit_selectionEmpty(this.h))
 }
 
 func (this *ScintillaEdit) ClearSelections() {
-	C.ScintillaEdit_ClearSelections(this.h)
+	C.ScintillaEdit_clearSelections(this.h)
 }
 
 func (this *ScintillaEdit) SetSelection(caret uintptr, anchor uintptr) {
-	C.ScintillaEdit_SetSelection(this.h, (C.intptr_t)(caret), (C.intptr_t)(anchor))
+	C.ScintillaEdit_setSelection(this.h, (C.intptr_t)(caret), (C.intptr_t)(anchor))
 }
 
 func (this *ScintillaEdit) AddSelection(caret uintptr, anchor uintptr) {
-	C.ScintillaEdit_AddSelection(this.h, (C.intptr_t)(caret), (C.intptr_t)(anchor))
+	C.ScintillaEdit_addSelection(this.h, (C.intptr_t)(caret), (C.intptr_t)(anchor))
 }
 
 func (this *ScintillaEdit) SelectionFromPoint(x uintptr, y uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_SelectionFromPoint(this.h, (C.intptr_t)(x), (C.intptr_t)(y)))
+	return (uintptr)(C.ScintillaEdit_selectionFromPoint(this.h, (C.intptr_t)(x), (C.intptr_t)(y)))
 }
 
 func (this *ScintillaEdit) DropSelectionN(selection uintptr) {
-	C.ScintillaEdit_DropSelectionN(this.h, (C.intptr_t)(selection))
+	C.ScintillaEdit_dropSelectionN(this.h, (C.intptr_t)(selection))
 }
 
 func (this *ScintillaEdit) SetMainSelection(selection uintptr) {
-	C.ScintillaEdit_SetMainSelection(this.h, (C.intptr_t)(selection))
+	C.ScintillaEdit_setMainSelection(this.h, (C.intptr_t)(selection))
 }
 
 func (this *ScintillaEdit) MainSelection() uintptr {
-	return (uintptr)(C.ScintillaEdit_MainSelection(this.h))
+	return (uintptr)(C.ScintillaEdit_mainSelection(this.h))
 }
 
 func (this *ScintillaEdit) SetSelectionNCaret(selection uintptr, caret uintptr) {
-	C.ScintillaEdit_SetSelectionNCaret(this.h, (C.intptr_t)(selection), (C.intptr_t)(caret))
+	C.ScintillaEdit_setSelectionNCaret(this.h, (C.intptr_t)(selection), (C.intptr_t)(caret))
 }
 
 func (this *ScintillaEdit) SelectionNCaret(selection uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_SelectionNCaret(this.h, (C.intptr_t)(selection)))
+	return (uintptr)(C.ScintillaEdit_selectionNCaret(this.h, (C.intptr_t)(selection)))
 }
 
 func (this *ScintillaEdit) SetSelectionNAnchor(selection uintptr, anchor uintptr) {
-	C.ScintillaEdit_SetSelectionNAnchor(this.h, (C.intptr_t)(selection), (C.intptr_t)(anchor))
+	C.ScintillaEdit_setSelectionNAnchor(this.h, (C.intptr_t)(selection), (C.intptr_t)(anchor))
 }
 
 func (this *ScintillaEdit) SelectionNAnchor(selection uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_SelectionNAnchor(this.h, (C.intptr_t)(selection)))
+	return (uintptr)(C.ScintillaEdit_selectionNAnchor(this.h, (C.intptr_t)(selection)))
 }
 
 func (this *ScintillaEdit) SetSelectionNCaretVirtualSpace(selection uintptr, space uintptr) {
-	C.ScintillaEdit_SetSelectionNCaretVirtualSpace(this.h, (C.intptr_t)(selection), (C.intptr_t)(space))
+	C.ScintillaEdit_setSelectionNCaretVirtualSpace(this.h, (C.intptr_t)(selection), (C.intptr_t)(space))
 }
 
 func (this *ScintillaEdit) SelectionNCaretVirtualSpace(selection uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_SelectionNCaretVirtualSpace(this.h, (C.intptr_t)(selection)))
+	return (uintptr)(C.ScintillaEdit_selectionNCaretVirtualSpace(this.h, (C.intptr_t)(selection)))
 }
 
 func (this *ScintillaEdit) SetSelectionNAnchorVirtualSpace(selection uintptr, space uintptr) {
-	C.ScintillaEdit_SetSelectionNAnchorVirtualSpace(this.h, (C.intptr_t)(selection), (C.intptr_t)(space))
+	C.ScintillaEdit_setSelectionNAnchorVirtualSpace(this.h, (C.intptr_t)(selection), (C.intptr_t)(space))
 }
 
 func (this *ScintillaEdit) SelectionNAnchorVirtualSpace(selection uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_SelectionNAnchorVirtualSpace(this.h, (C.intptr_t)(selection)))
+	return (uintptr)(C.ScintillaEdit_selectionNAnchorVirtualSpace(this.h, (C.intptr_t)(selection)))
 }
 
 func (this *ScintillaEdit) SetSelectionNStart(selection uintptr, anchor uintptr) {
-	C.ScintillaEdit_SetSelectionNStart(this.h, (C.intptr_t)(selection), (C.intptr_t)(anchor))
+	C.ScintillaEdit_setSelectionNStart(this.h, (C.intptr_t)(selection), (C.intptr_t)(anchor))
 }
 
 func (this *ScintillaEdit) SelectionNStart(selection uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_SelectionNStart(this.h, (C.intptr_t)(selection)))
+	return (uintptr)(C.ScintillaEdit_selectionNStart(this.h, (C.intptr_t)(selection)))
 }
 
 func (this *ScintillaEdit) SelectionNStartVirtualSpace(selection uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_SelectionNStartVirtualSpace(this.h, (C.intptr_t)(selection)))
+	return (uintptr)(C.ScintillaEdit_selectionNStartVirtualSpace(this.h, (C.intptr_t)(selection)))
 }
 
 func (this *ScintillaEdit) SetSelectionNEnd(selection uintptr, caret uintptr) {
-	C.ScintillaEdit_SetSelectionNEnd(this.h, (C.intptr_t)(selection), (C.intptr_t)(caret))
+	C.ScintillaEdit_setSelectionNEnd(this.h, (C.intptr_t)(selection), (C.intptr_t)(caret))
 }
 
 func (this *ScintillaEdit) SelectionNEndVirtualSpace(selection uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_SelectionNEndVirtualSpace(this.h, (C.intptr_t)(selection)))
+	return (uintptr)(C.ScintillaEdit_selectionNEndVirtualSpace(this.h, (C.intptr_t)(selection)))
 }
 
 func (this *ScintillaEdit) SelectionNEnd(selection uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_SelectionNEnd(this.h, (C.intptr_t)(selection)))
+	return (uintptr)(C.ScintillaEdit_selectionNEnd(this.h, (C.intptr_t)(selection)))
 }
 
 func (this *ScintillaEdit) SetRectangularSelectionCaret(caret uintptr) {
-	C.ScintillaEdit_SetRectangularSelectionCaret(this.h, (C.intptr_t)(caret))
+	C.ScintillaEdit_setRectangularSelectionCaret(this.h, (C.intptr_t)(caret))
 }
 
 func (this *ScintillaEdit) RectangularSelectionCaret() uintptr {
-	return (uintptr)(C.ScintillaEdit_RectangularSelectionCaret(this.h))
+	return (uintptr)(C.ScintillaEdit_rectangularSelectionCaret(this.h))
 }
 
 func (this *ScintillaEdit) SetRectangularSelectionAnchor(anchor uintptr) {
-	C.ScintillaEdit_SetRectangularSelectionAnchor(this.h, (C.intptr_t)(anchor))
+	C.ScintillaEdit_setRectangularSelectionAnchor(this.h, (C.intptr_t)(anchor))
 }
 
 func (this *ScintillaEdit) RectangularSelectionAnchor() uintptr {
-	return (uintptr)(C.ScintillaEdit_RectangularSelectionAnchor(this.h))
+	return (uintptr)(C.ScintillaEdit_rectangularSelectionAnchor(this.h))
 }
 
 func (this *ScintillaEdit) SetRectangularSelectionCaretVirtualSpace(space uintptr) {
-	C.ScintillaEdit_SetRectangularSelectionCaretVirtualSpace(this.h, (C.intptr_t)(space))
+	C.ScintillaEdit_setRectangularSelectionCaretVirtualSpace(this.h, (C.intptr_t)(space))
 }
 
 func (this *ScintillaEdit) RectangularSelectionCaretVirtualSpace() uintptr {
-	return (uintptr)(C.ScintillaEdit_RectangularSelectionCaretVirtualSpace(this.h))
+	return (uintptr)(C.ScintillaEdit_rectangularSelectionCaretVirtualSpace(this.h))
 }
 
 func (this *ScintillaEdit) SetRectangularSelectionAnchorVirtualSpace(space uintptr) {
-	C.ScintillaEdit_SetRectangularSelectionAnchorVirtualSpace(this.h, (C.intptr_t)(space))
+	C.ScintillaEdit_setRectangularSelectionAnchorVirtualSpace(this.h, (C.intptr_t)(space))
 }
 
 func (this *ScintillaEdit) RectangularSelectionAnchorVirtualSpace() uintptr {
-	return (uintptr)(C.ScintillaEdit_RectangularSelectionAnchorVirtualSpace(this.h))
+	return (uintptr)(C.ScintillaEdit_rectangularSelectionAnchorVirtualSpace(this.h))
 }
 
 func (this *ScintillaEdit) SetVirtualSpaceOptions(virtualSpaceOptions uintptr) {
-	C.ScintillaEdit_SetVirtualSpaceOptions(this.h, (C.intptr_t)(virtualSpaceOptions))
+	C.ScintillaEdit_setVirtualSpaceOptions(this.h, (C.intptr_t)(virtualSpaceOptions))
 }
 
 func (this *ScintillaEdit) VirtualSpaceOptions() uintptr {
-	return (uintptr)(C.ScintillaEdit_VirtualSpaceOptions(this.h))
+	return (uintptr)(C.ScintillaEdit_virtualSpaceOptions(this.h))
 }
 
 func (this *ScintillaEdit) SetRectangularSelectionModifier(modifier uintptr) {
-	C.ScintillaEdit_SetRectangularSelectionModifier(this.h, (C.intptr_t)(modifier))
+	C.ScintillaEdit_setRectangularSelectionModifier(this.h, (C.intptr_t)(modifier))
 }
 
 func (this *ScintillaEdit) RectangularSelectionModifier() uintptr {
-	return (uintptr)(C.ScintillaEdit_RectangularSelectionModifier(this.h))
+	return (uintptr)(C.ScintillaEdit_rectangularSelectionModifier(this.h))
 }
 
 func (this *ScintillaEdit) SetAdditionalSelFore(fore uintptr) {
-	C.ScintillaEdit_SetAdditionalSelFore(this.h, (C.intptr_t)(fore))
+	C.ScintillaEdit_setAdditionalSelFore(this.h, (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) SetAdditionalSelBack(back uintptr) {
-	C.ScintillaEdit_SetAdditionalSelBack(this.h, (C.intptr_t)(back))
+	C.ScintillaEdit_setAdditionalSelBack(this.h, (C.intptr_t)(back))
 }
 
 func (this *ScintillaEdit) SetAdditionalSelAlpha(alpha uintptr) {
-	C.ScintillaEdit_SetAdditionalSelAlpha(this.h, (C.intptr_t)(alpha))
+	C.ScintillaEdit_setAdditionalSelAlpha(this.h, (C.intptr_t)(alpha))
 }
 
 func (this *ScintillaEdit) AdditionalSelAlpha() uintptr {
-	return (uintptr)(C.ScintillaEdit_AdditionalSelAlpha(this.h))
+	return (uintptr)(C.ScintillaEdit_additionalSelAlpha(this.h))
 }
 
 func (this *ScintillaEdit) SetAdditionalCaretFore(fore uintptr) {
-	C.ScintillaEdit_SetAdditionalCaretFore(this.h, (C.intptr_t)(fore))
+	C.ScintillaEdit_setAdditionalCaretFore(this.h, (C.intptr_t)(fore))
 }
 
 func (this *ScintillaEdit) AdditionalCaretFore() uintptr {
-	return (uintptr)(C.ScintillaEdit_AdditionalCaretFore(this.h))
+	return (uintptr)(C.ScintillaEdit_additionalCaretFore(this.h))
 }
 
 func (this *ScintillaEdit) RotateSelection() {
-	C.ScintillaEdit_RotateSelection(this.h)
+	C.ScintillaEdit_rotateSelection(this.h)
 }
 
 func (this *ScintillaEdit) SwapMainAnchorCaret() {
-	C.ScintillaEdit_SwapMainAnchorCaret(this.h)
+	C.ScintillaEdit_swapMainAnchorCaret(this.h)
 }
 
 func (this *ScintillaEdit) MultipleSelectAddNext() {
-	C.ScintillaEdit_MultipleSelectAddNext(this.h)
+	C.ScintillaEdit_multipleSelectAddNext(this.h)
 }
 
 func (this *ScintillaEdit) MultipleSelectAddEach() {
-	C.ScintillaEdit_MultipleSelectAddEach(this.h)
+	C.ScintillaEdit_multipleSelectAddEach(this.h)
 }
 
 func (this *ScintillaEdit) ChangeLexerState(start uintptr, end uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_ChangeLexerState(this.h, (C.intptr_t)(start), (C.intptr_t)(end)))
+	return (uintptr)(C.ScintillaEdit_changeLexerState(this.h, (C.intptr_t)(start), (C.intptr_t)(end)))
 }
 
 func (this *ScintillaEdit) ContractedFoldNext(lineStart uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_ContractedFoldNext(this.h, (C.intptr_t)(lineStart)))
+	return (uintptr)(C.ScintillaEdit_contractedFoldNext(this.h, (C.intptr_t)(lineStart)))
 }
 
 func (this *ScintillaEdit) VerticalCentreCaret() {
-	C.ScintillaEdit_VerticalCentreCaret(this.h)
+	C.ScintillaEdit_verticalCentreCaret(this.h)
 }
 
 func (this *ScintillaEdit) MoveSelectedLinesUp() {
-	C.ScintillaEdit_MoveSelectedLinesUp(this.h)
+	C.ScintillaEdit_moveSelectedLinesUp(this.h)
 }
 
 func (this *ScintillaEdit) MoveSelectedLinesDown() {
-	C.ScintillaEdit_MoveSelectedLinesDown(this.h)
+	C.ScintillaEdit_moveSelectedLinesDown(this.h)
 }
 
 func (this *ScintillaEdit) SetIdentifier(identifier uintptr) {
-	C.ScintillaEdit_SetIdentifier(this.h, (C.intptr_t)(identifier))
+	C.ScintillaEdit_setIdentifier(this.h, (C.intptr_t)(identifier))
 }
 
 func (this *ScintillaEdit) Identifier() uintptr {
-	return (uintptr)(C.ScintillaEdit_Identifier(this.h))
+	return (uintptr)(C.ScintillaEdit_identifier(this.h))
 }
 
 func (this *ScintillaEdit) RGBAImageSetWidth(width uintptr) {
-	C.ScintillaEdit_RGBAImageSetWidth(this.h, (C.intptr_t)(width))
+	C.ScintillaEdit_rGBAImageSetWidth(this.h, (C.intptr_t)(width))
 }
 
 func (this *ScintillaEdit) RGBAImageSetHeight(height uintptr) {
-	C.ScintillaEdit_RGBAImageSetHeight(this.h, (C.intptr_t)(height))
+	C.ScintillaEdit_rGBAImageSetHeight(this.h, (C.intptr_t)(height))
 }
 
 func (this *ScintillaEdit) RGBAImageSetScale(scalePercent uintptr) {
-	C.ScintillaEdit_RGBAImageSetScale(this.h, (C.intptr_t)(scalePercent))
+	C.ScintillaEdit_rGBAImageSetScale(this.h, (C.intptr_t)(scalePercent))
 }
 
 func (this *ScintillaEdit) MarkerDefineRGBAImage(markerNumber uintptr, pixels string) {
 	pixels_Cstring := C.CString(pixels)
 	defer C.free(unsafe.Pointer(pixels_Cstring))
-	C.ScintillaEdit_MarkerDefineRGBAImage(this.h, (C.intptr_t)(markerNumber), pixels_Cstring)
+	C.ScintillaEdit_markerDefineRGBAImage(this.h, (C.intptr_t)(markerNumber), pixels_Cstring)
 }
 
 func (this *ScintillaEdit) RegisterRGBAImage(typeVal uintptr, pixels string) {
 	pixels_Cstring := C.CString(pixels)
 	defer C.free(unsafe.Pointer(pixels_Cstring))
-	C.ScintillaEdit_RegisterRGBAImage(this.h, (C.intptr_t)(typeVal), pixels_Cstring)
+	C.ScintillaEdit_registerRGBAImage(this.h, (C.intptr_t)(typeVal), pixels_Cstring)
 }
 
 func (this *ScintillaEdit) ScrollToStart() {
-	C.ScintillaEdit_ScrollToStart(this.h)
+	C.ScintillaEdit_scrollToStart(this.h)
 }
 
 func (this *ScintillaEdit) ScrollToEnd() {
-	C.ScintillaEdit_ScrollToEnd(this.h)
+	C.ScintillaEdit_scrollToEnd(this.h)
 }
 
 func (this *ScintillaEdit) SetTechnology(technology uintptr) {
-	C.ScintillaEdit_SetTechnology(this.h, (C.intptr_t)(technology))
+	C.ScintillaEdit_setTechnology(this.h, (C.intptr_t)(technology))
 }
 
 func (this *ScintillaEdit) Technology() uintptr {
-	return (uintptr)(C.ScintillaEdit_Technology(this.h))
+	return (uintptr)(C.ScintillaEdit_technology(this.h))
 }
 
 func (this *ScintillaEdit) CreateLoader(bytes uintptr, documentOptions uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_CreateLoader(this.h, (C.intptr_t)(bytes), (C.intptr_t)(documentOptions)))
+	return (uintptr)(C.ScintillaEdit_createLoader(this.h, (C.intptr_t)(bytes), (C.intptr_t)(documentOptions)))
 }
 
 func (this *ScintillaEdit) FindIndicatorShow(start uintptr, end uintptr) {
-	C.ScintillaEdit_FindIndicatorShow(this.h, (C.intptr_t)(start), (C.intptr_t)(end))
+	C.ScintillaEdit_findIndicatorShow(this.h, (C.intptr_t)(start), (C.intptr_t)(end))
 }
 
 func (this *ScintillaEdit) FindIndicatorFlash(start uintptr, end uintptr) {
-	C.ScintillaEdit_FindIndicatorFlash(this.h, (C.intptr_t)(start), (C.intptr_t)(end))
+	C.ScintillaEdit_findIndicatorFlash(this.h, (C.intptr_t)(start), (C.intptr_t)(end))
 }
 
 func (this *ScintillaEdit) FindIndicatorHide() {
-	C.ScintillaEdit_FindIndicatorHide(this.h)
+	C.ScintillaEdit_findIndicatorHide(this.h)
 }
 
 func (this *ScintillaEdit) VCHomeDisplay() {
-	C.ScintillaEdit_VCHomeDisplay(this.h)
+	C.ScintillaEdit_vCHomeDisplay(this.h)
 }
 
 func (this *ScintillaEdit) VCHomeDisplayExtend() {
-	C.ScintillaEdit_VCHomeDisplayExtend(this.h)
+	C.ScintillaEdit_vCHomeDisplayExtend(this.h)
 }
 
 func (this *ScintillaEdit) CaretLineVisibleAlways() bool {
-	return (bool)(C.ScintillaEdit_CaretLineVisibleAlways(this.h))
+	return (bool)(C.ScintillaEdit_caretLineVisibleAlways(this.h))
 }
 
 func (this *ScintillaEdit) SetCaretLineVisibleAlways(alwaysVisible bool) {
-	C.ScintillaEdit_SetCaretLineVisibleAlways(this.h, (C.bool)(alwaysVisible))
+	C.ScintillaEdit_setCaretLineVisibleAlways(this.h, (C.bool)(alwaysVisible))
 }
 
 func (this *ScintillaEdit) SetLineEndTypesAllowed(lineEndBitSet uintptr) {
-	C.ScintillaEdit_SetLineEndTypesAllowed(this.h, (C.intptr_t)(lineEndBitSet))
+	C.ScintillaEdit_setLineEndTypesAllowed(this.h, (C.intptr_t)(lineEndBitSet))
 }
 
 func (this *ScintillaEdit) LineEndTypesAllowed() uintptr {
-	return (uintptr)(C.ScintillaEdit_LineEndTypesAllowed(this.h))
+	return (uintptr)(C.ScintillaEdit_lineEndTypesAllowed(this.h))
 }
 
 func (this *ScintillaEdit) LineEndTypesActive() uintptr {
-	return (uintptr)(C.ScintillaEdit_LineEndTypesActive(this.h))
+	return (uintptr)(C.ScintillaEdit_lineEndTypesActive(this.h))
 }
 
 func (this *ScintillaEdit) SetRepresentation(encodedCharacter string, representation string) {
@@ -11921,13 +11921,13 @@ func (this *ScintillaEdit) SetRepresentation(encodedCharacter string, representa
 	defer C.free(unsafe.Pointer(encodedCharacter_Cstring))
 	representation_Cstring := C.CString(representation)
 	defer C.free(unsafe.Pointer(representation_Cstring))
-	C.ScintillaEdit_SetRepresentation(this.h, encodedCharacter_Cstring, representation_Cstring)
+	C.ScintillaEdit_setRepresentation(this.h, encodedCharacter_Cstring, representation_Cstring)
 }
 
 func (this *ScintillaEdit) Representation(encodedCharacter string) []byte {
 	encodedCharacter_Cstring := C.CString(encodedCharacter)
 	defer C.free(unsafe.Pointer(encodedCharacter_Cstring))
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_Representation(this.h, encodedCharacter_Cstring)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_representation(this.h, encodedCharacter_Cstring)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -11936,116 +11936,116 @@ func (this *ScintillaEdit) Representation(encodedCharacter string) []byte {
 func (this *ScintillaEdit) ClearRepresentation(encodedCharacter string) {
 	encodedCharacter_Cstring := C.CString(encodedCharacter)
 	defer C.free(unsafe.Pointer(encodedCharacter_Cstring))
-	C.ScintillaEdit_ClearRepresentation(this.h, encodedCharacter_Cstring)
+	C.ScintillaEdit_clearRepresentation(this.h, encodedCharacter_Cstring)
 }
 
 func (this *ScintillaEdit) ClearAllRepresentations() {
-	C.ScintillaEdit_ClearAllRepresentations(this.h)
+	C.ScintillaEdit_clearAllRepresentations(this.h)
 }
 
 func (this *ScintillaEdit) SetRepresentationAppearance(encodedCharacter string, appearance uintptr) {
 	encodedCharacter_Cstring := C.CString(encodedCharacter)
 	defer C.free(unsafe.Pointer(encodedCharacter_Cstring))
-	C.ScintillaEdit_SetRepresentationAppearance(this.h, encodedCharacter_Cstring, (C.intptr_t)(appearance))
+	C.ScintillaEdit_setRepresentationAppearance(this.h, encodedCharacter_Cstring, (C.intptr_t)(appearance))
 }
 
 func (this *ScintillaEdit) RepresentationAppearance(encodedCharacter string) uintptr {
 	encodedCharacter_Cstring := C.CString(encodedCharacter)
 	defer C.free(unsafe.Pointer(encodedCharacter_Cstring))
-	return (uintptr)(C.ScintillaEdit_RepresentationAppearance(this.h, encodedCharacter_Cstring))
+	return (uintptr)(C.ScintillaEdit_representationAppearance(this.h, encodedCharacter_Cstring))
 }
 
 func (this *ScintillaEdit) SetRepresentationColour(encodedCharacter string, colour uintptr) {
 	encodedCharacter_Cstring := C.CString(encodedCharacter)
 	defer C.free(unsafe.Pointer(encodedCharacter_Cstring))
-	C.ScintillaEdit_SetRepresentationColour(this.h, encodedCharacter_Cstring, (C.intptr_t)(colour))
+	C.ScintillaEdit_setRepresentationColour(this.h, encodedCharacter_Cstring, (C.intptr_t)(colour))
 }
 
 func (this *ScintillaEdit) RepresentationColour(encodedCharacter string) uintptr {
 	encodedCharacter_Cstring := C.CString(encodedCharacter)
 	defer C.free(unsafe.Pointer(encodedCharacter_Cstring))
-	return (uintptr)(C.ScintillaEdit_RepresentationColour(this.h, encodedCharacter_Cstring))
+	return (uintptr)(C.ScintillaEdit_representationColour(this.h, encodedCharacter_Cstring))
 }
 
 func (this *ScintillaEdit) EOLAnnotationSetText(line uintptr, text string) {
 	text_Cstring := C.CString(text)
 	defer C.free(unsafe.Pointer(text_Cstring))
-	C.ScintillaEdit_EOLAnnotationSetText(this.h, (C.intptr_t)(line), text_Cstring)
+	C.ScintillaEdit_eOLAnnotationSetText(this.h, (C.intptr_t)(line), text_Cstring)
 }
 
 func (this *ScintillaEdit) EOLAnnotationText(line uintptr) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_EOLAnnotationText(this.h, (C.intptr_t)(line))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_eOLAnnotationText(this.h, (C.intptr_t)(line))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) EOLAnnotationSetStyle(line uintptr, style uintptr) {
-	C.ScintillaEdit_EOLAnnotationSetStyle(this.h, (C.intptr_t)(line), (C.intptr_t)(style))
+	C.ScintillaEdit_eOLAnnotationSetStyle(this.h, (C.intptr_t)(line), (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) EOLAnnotationStyle(line uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_EOLAnnotationStyle(this.h, (C.intptr_t)(line)))
+	return (uintptr)(C.ScintillaEdit_eOLAnnotationStyle(this.h, (C.intptr_t)(line)))
 }
 
 func (this *ScintillaEdit) EOLAnnotationClearAll() {
-	C.ScintillaEdit_EOLAnnotationClearAll(this.h)
+	C.ScintillaEdit_eOLAnnotationClearAll(this.h)
 }
 
 func (this *ScintillaEdit) EOLAnnotationSetVisible(visible uintptr) {
-	C.ScintillaEdit_EOLAnnotationSetVisible(this.h, (C.intptr_t)(visible))
+	C.ScintillaEdit_eOLAnnotationSetVisible(this.h, (C.intptr_t)(visible))
 }
 
 func (this *ScintillaEdit) EOLAnnotationVisible() uintptr {
-	return (uintptr)(C.ScintillaEdit_EOLAnnotationVisible(this.h))
+	return (uintptr)(C.ScintillaEdit_eOLAnnotationVisible(this.h))
 }
 
 func (this *ScintillaEdit) EOLAnnotationSetStyleOffset(style uintptr) {
-	C.ScintillaEdit_EOLAnnotationSetStyleOffset(this.h, (C.intptr_t)(style))
+	C.ScintillaEdit_eOLAnnotationSetStyleOffset(this.h, (C.intptr_t)(style))
 }
 
 func (this *ScintillaEdit) EOLAnnotationStyleOffset() uintptr {
-	return (uintptr)(C.ScintillaEdit_EOLAnnotationStyleOffset(this.h))
+	return (uintptr)(C.ScintillaEdit_eOLAnnotationStyleOffset(this.h))
 }
 
 func (this *ScintillaEdit) SupportsFeature(feature uintptr) bool {
-	return (bool)(C.ScintillaEdit_SupportsFeature(this.h, (C.intptr_t)(feature)))
+	return (bool)(C.ScintillaEdit_supportsFeature(this.h, (C.intptr_t)(feature)))
 }
 
 func (this *ScintillaEdit) LineCharacterIndex() uintptr {
-	return (uintptr)(C.ScintillaEdit_LineCharacterIndex(this.h))
+	return (uintptr)(C.ScintillaEdit_lineCharacterIndex(this.h))
 }
 
 func (this *ScintillaEdit) AllocateLineCharacterIndex(lineCharacterIndex uintptr) {
-	C.ScintillaEdit_AllocateLineCharacterIndex(this.h, (C.intptr_t)(lineCharacterIndex))
+	C.ScintillaEdit_allocateLineCharacterIndex(this.h, (C.intptr_t)(lineCharacterIndex))
 }
 
 func (this *ScintillaEdit) ReleaseLineCharacterIndex(lineCharacterIndex uintptr) {
-	C.ScintillaEdit_ReleaseLineCharacterIndex(this.h, (C.intptr_t)(lineCharacterIndex))
+	C.ScintillaEdit_releaseLineCharacterIndex(this.h, (C.intptr_t)(lineCharacterIndex))
 }
 
 func (this *ScintillaEdit) LineFromIndexPosition(pos uintptr, lineCharacterIndex uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_LineFromIndexPosition(this.h, (C.intptr_t)(pos), (C.intptr_t)(lineCharacterIndex)))
+	return (uintptr)(C.ScintillaEdit_lineFromIndexPosition(this.h, (C.intptr_t)(pos), (C.intptr_t)(lineCharacterIndex)))
 }
 
 func (this *ScintillaEdit) IndexPositionFromLine(line uintptr, lineCharacterIndex uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_IndexPositionFromLine(this.h, (C.intptr_t)(line), (C.intptr_t)(lineCharacterIndex)))
+	return (uintptr)(C.ScintillaEdit_indexPositionFromLine(this.h, (C.intptr_t)(line), (C.intptr_t)(lineCharacterIndex)))
 }
 
 func (this *ScintillaEdit) StartRecord() {
-	C.ScintillaEdit_StartRecord(this.h)
+	C.ScintillaEdit_startRecord(this.h)
 }
 
 func (this *ScintillaEdit) StopRecord() {
-	C.ScintillaEdit_StopRecord(this.h)
+	C.ScintillaEdit_stopRecord(this.h)
 }
 
 func (this *ScintillaEdit) Lexer() uintptr {
-	return (uintptr)(C.ScintillaEdit_Lexer(this.h))
+	return (uintptr)(C.ScintillaEdit_lexer(this.h))
 }
 
 func (this *ScintillaEdit) Colourise(start uintptr, end uintptr) {
-	C.ScintillaEdit_Colourise(this.h, (C.intptr_t)(start), (C.intptr_t)(end))
+	C.ScintillaEdit_colourise(this.h, (C.intptr_t)(start), (C.intptr_t)(end))
 }
 
 func (this *ScintillaEdit) SetProperty(key string, value string) {
@@ -12053,19 +12053,19 @@ func (this *ScintillaEdit) SetProperty(key string, value string) {
 	defer C.free(unsafe.Pointer(key_Cstring))
 	value_Cstring := C.CString(value)
 	defer C.free(unsafe.Pointer(value_Cstring))
-	C.ScintillaEdit_SetProperty(this.h, key_Cstring, value_Cstring)
+	C.ScintillaEdit_setProperty(this.h, key_Cstring, value_Cstring)
 }
 
 func (this *ScintillaEdit) SetKeyWords(keyWordSet uintptr, keyWords string) {
 	keyWords_Cstring := C.CString(keyWords)
 	defer C.free(unsafe.Pointer(keyWords_Cstring))
-	C.ScintillaEdit_SetKeyWords(this.h, (C.intptr_t)(keyWordSet), keyWords_Cstring)
+	C.ScintillaEdit_setKeyWords(this.h, (C.intptr_t)(keyWordSet), keyWords_Cstring)
 }
 
 func (this *ScintillaEdit) Property(key string) []byte {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_Property(this.h, key_Cstring)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_property(this.h, key_Cstring)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -12074,7 +12074,7 @@ func (this *ScintillaEdit) Property(key string) []byte {
 func (this *ScintillaEdit) PropertyExpanded(key string) []byte {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_PropertyExpanded(this.h, key_Cstring)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_propertyExpanded(this.h, key_Cstring)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -12083,22 +12083,22 @@ func (this *ScintillaEdit) PropertyExpanded(key string) []byte {
 func (this *ScintillaEdit) PropertyInt(key string, defaultValue uintptr) uintptr {
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	return (uintptr)(C.ScintillaEdit_PropertyInt(this.h, key_Cstring, (C.intptr_t)(defaultValue)))
+	return (uintptr)(C.ScintillaEdit_propertyInt(this.h, key_Cstring, (C.intptr_t)(defaultValue)))
 }
 
 func (this *ScintillaEdit) LexerLanguage() []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_LexerLanguage(this.h)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_lexerLanguage(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) PrivateLexerCall(operation uintptr, pointer uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_PrivateLexerCall(this.h, (C.intptr_t)(operation), (C.intptr_t)(pointer)))
+	return (uintptr)(C.ScintillaEdit_privateLexerCall(this.h, (C.intptr_t)(operation), (C.intptr_t)(pointer)))
 }
 
 func (this *ScintillaEdit) PropertyNames() []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_PropertyNames(this.h)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_propertyNames(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
@@ -12107,105 +12107,105 @@ func (this *ScintillaEdit) PropertyNames() []byte {
 func (this *ScintillaEdit) PropertyType(name string) uintptr {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	return (uintptr)(C.ScintillaEdit_PropertyType(this.h, name_Cstring))
+	return (uintptr)(C.ScintillaEdit_propertyType(this.h, name_Cstring))
 }
 
 func (this *ScintillaEdit) DescribeProperty(name string) []byte {
 	name_Cstring := C.CString(name)
 	defer C.free(unsafe.Pointer(name_Cstring))
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_DescribeProperty(this.h, name_Cstring)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_describeProperty(this.h, name_Cstring)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) DescribeKeyWordSets() []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_DescribeKeyWordSets(this.h)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_describeKeyWordSets(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) LineEndTypesSupported() uintptr {
-	return (uintptr)(C.ScintillaEdit_LineEndTypesSupported(this.h))
+	return (uintptr)(C.ScintillaEdit_lineEndTypesSupported(this.h))
 }
 
 func (this *ScintillaEdit) AllocateSubStyles(styleBase uintptr, numberStyles uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_AllocateSubStyles(this.h, (C.intptr_t)(styleBase), (C.intptr_t)(numberStyles)))
+	return (uintptr)(C.ScintillaEdit_allocateSubStyles(this.h, (C.intptr_t)(styleBase), (C.intptr_t)(numberStyles)))
 }
 
 func (this *ScintillaEdit) SubStylesStart(styleBase uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_SubStylesStart(this.h, (C.intptr_t)(styleBase)))
+	return (uintptr)(C.ScintillaEdit_subStylesStart(this.h, (C.intptr_t)(styleBase)))
 }
 
 func (this *ScintillaEdit) SubStylesLength(styleBase uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_SubStylesLength(this.h, (C.intptr_t)(styleBase)))
+	return (uintptr)(C.ScintillaEdit_subStylesLength(this.h, (C.intptr_t)(styleBase)))
 }
 
 func (this *ScintillaEdit) StyleFromSubStyle(subStyle uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_StyleFromSubStyle(this.h, (C.intptr_t)(subStyle)))
+	return (uintptr)(C.ScintillaEdit_styleFromSubStyle(this.h, (C.intptr_t)(subStyle)))
 }
 
 func (this *ScintillaEdit) PrimaryStyleFromStyle(style uintptr) uintptr {
-	return (uintptr)(C.ScintillaEdit_PrimaryStyleFromStyle(this.h, (C.intptr_t)(style)))
+	return (uintptr)(C.ScintillaEdit_primaryStyleFromStyle(this.h, (C.intptr_t)(style)))
 }
 
 func (this *ScintillaEdit) FreeSubStyles() {
-	C.ScintillaEdit_FreeSubStyles(this.h)
+	C.ScintillaEdit_freeSubStyles(this.h)
 }
 
 func (this *ScintillaEdit) SetIdentifiers(style uintptr, identifiers string) {
 	identifiers_Cstring := C.CString(identifiers)
 	defer C.free(unsafe.Pointer(identifiers_Cstring))
-	C.ScintillaEdit_SetIdentifiers(this.h, (C.intptr_t)(style), identifiers_Cstring)
+	C.ScintillaEdit_setIdentifiers(this.h, (C.intptr_t)(style), identifiers_Cstring)
 }
 
 func (this *ScintillaEdit) DistanceToSecondaryStyles() uintptr {
-	return (uintptr)(C.ScintillaEdit_DistanceToSecondaryStyles(this.h))
+	return (uintptr)(C.ScintillaEdit_distanceToSecondaryStyles(this.h))
 }
 
 func (this *ScintillaEdit) SubStyleBases() []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_SubStyleBases(this.h)
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_subStyleBases(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) NamedStyles() uintptr {
-	return (uintptr)(C.ScintillaEdit_NamedStyles(this.h))
+	return (uintptr)(C.ScintillaEdit_namedStyles(this.h))
 }
 
 func (this *ScintillaEdit) NameOfStyle(style uintptr) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_NameOfStyle(this.h, (C.intptr_t)(style))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_nameOfStyle(this.h, (C.intptr_t)(style))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) TagsOfStyle(style uintptr) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_TagsOfStyle(this.h, (C.intptr_t)(style))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_tagsOfStyle(this.h, (C.intptr_t)(style))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) DescriptionOfStyle(style uintptr) []byte {
-	var _bytearray C.struct_miqt_string = C.ScintillaEdit_DescriptionOfStyle(this.h, (C.intptr_t)(style))
+	var _bytearray C.struct_miqt_string = C.ScintillaEdit_descriptionOfStyle(this.h, (C.intptr_t)(style))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *ScintillaEdit) SetILexer(ilexer uintptr) {
-	C.ScintillaEdit_SetILexer(this.h, (C.intptr_t)(ilexer))
+	C.ScintillaEdit_setILexer(this.h, (C.intptr_t)(ilexer))
 }
 
 func (this *ScintillaEdit) Bidirectional() uintptr {
-	return (uintptr)(C.ScintillaEdit_Bidirectional(this.h))
+	return (uintptr)(C.ScintillaEdit_bidirectional(this.h))
 }
 
 func (this *ScintillaEdit) SetBidirectional(bidirectional uintptr) {
-	C.ScintillaEdit_SetBidirectional(this.h, (C.intptr_t)(bidirectional))
+	C.ScintillaEdit_setBidirectional(this.h, (C.intptr_t)(bidirectional))
 }
 
 func ScintillaEdit_Tr2(s string, c string) string {
@@ -12213,7 +12213,7 @@ func ScintillaEdit_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaEdit_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.ScintillaEdit_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -12224,7 +12224,7 @@ func ScintillaEdit_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaEdit_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.ScintillaEdit_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -12235,7 +12235,7 @@ func ScintillaEdit_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaEdit_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.ScintillaEdit_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -12246,7 +12246,7 @@ func ScintillaEdit_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.ScintillaEdit_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.ScintillaEdit_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -12254,18 +12254,18 @@ func ScintillaEdit_TrUtf83(s string, c string, n int) string {
 
 func (this *ScintillaEdit) callVirtualBase_Send(iMessage uint, wParam uintptr, lParam uintptr) uintptr {
 
-	return (uintptr)(C.ScintillaEdit_virtualbase_Send(unsafe.Pointer(this.h), (C.uint)(iMessage), (C.uintptr_t)(wParam), (C.intptr_t)(lParam)))
+	return (uintptr)(C.ScintillaEdit_virtualbase_send(unsafe.Pointer(this.h), (C.uint)(iMessage), (C.uintptr_t)(wParam), (C.intptr_t)(lParam)))
 
 }
-func (this *ScintillaEdit) OnSend(slot func(super func(iMessage uint, wParam uintptr, lParam uintptr) uintptr, iMessage uint, wParam uintptr, lParam uintptr) uintptr) {
-	ok := C.ScintillaEdit_override_virtual_Send(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) Onsend(slot func(super func(iMessage uint, wParam uintptr, lParam uintptr) uintptr, iMessage uint, wParam uintptr, lParam uintptr) uintptr) {
+	ok := C.ScintillaEdit_override_virtual_send(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_Send
-func miqt_exec_callback_ScintillaEdit_Send(self *C.ScintillaEdit, cb C.intptr_t, iMessage C.uint, wParam C.uintptr_t, lParam C.intptr_t) C.intptr_t {
+//export miqt_exec_callback_ScintillaEdit_send
+func miqt_exec_callback_ScintillaEdit_send(self *C.ScintillaEdit, cb C.intptr_t, iMessage C.uint, wParam C.uintptr_t, lParam C.intptr_t) C.intptr_t {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(iMessage uint, wParam uintptr, lParam uintptr) uintptr, iMessage uint, wParam uintptr, lParam uintptr) uintptr)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12288,18 +12288,18 @@ func (this *ScintillaEdit) callVirtualBase_Sends(iMessage uint, wParam uintptr, 
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
 
-	return (uintptr)(C.ScintillaEdit_virtualbase_Sends(unsafe.Pointer(this.h), (C.uint)(iMessage), (C.uintptr_t)(wParam), s_Cstring))
+	return (uintptr)(C.ScintillaEdit_virtualbase_sends(unsafe.Pointer(this.h), (C.uint)(iMessage), (C.uintptr_t)(wParam), s_Cstring))
 
 }
-func (this *ScintillaEdit) OnSends(slot func(super func(iMessage uint, wParam uintptr, s string) uintptr, iMessage uint, wParam uintptr, s string) uintptr) {
-	ok := C.ScintillaEdit_override_virtual_Sends(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) Onsends(slot func(super func(iMessage uint, wParam uintptr, s string) uintptr, iMessage uint, wParam uintptr, s string) uintptr) {
+	ok := C.ScintillaEdit_override_virtual_sends(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_Sends
-func miqt_exec_callback_ScintillaEdit_Sends(self *C.ScintillaEdit, cb C.intptr_t, iMessage C.uint, wParam C.uintptr_t, s *C.const_char) C.intptr_t {
+//export miqt_exec_callback_ScintillaEdit_sends
+func miqt_exec_callback_ScintillaEdit_sends(self *C.ScintillaEdit, cb C.intptr_t, iMessage C.uint, wParam C.uintptr_t, s *C.const_char) C.intptr_t {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(iMessage uint, wParam uintptr, s string) uintptr, iMessage uint, wParam uintptr, s string) uintptr)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12321,18 +12321,18 @@ func miqt_exec_callback_ScintillaEdit_Sends(self *C.ScintillaEdit, cb C.intptr_t
 
 func (this *ScintillaEdit) callVirtualBase_Event(event *qt.QEvent) bool {
 
-	return (bool)(C.ScintillaEdit_virtualbase_Event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
+	return (bool)(C.ScintillaEdit_virtualbase_event(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer())))
 
 }
-func (this *ScintillaEdit) OnEvent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
-	ok := C.ScintillaEdit_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) Onevent(slot func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool) {
+	ok := C.ScintillaEdit_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_Event
-func miqt_exec_callback_ScintillaEdit_Event(self *C.ScintillaEdit, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_ScintillaEdit_event
+func miqt_exec_callback_ScintillaEdit_event(self *C.ScintillaEdit, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent) bool, event *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12349,18 +12349,18 @@ func miqt_exec_callback_ScintillaEdit_Event(self *C.ScintillaEdit, cb C.intptr_t
 
 func (this *ScintillaEdit) callVirtualBase_PaintEvent(event *qt.QPaintEvent) {
 
-	C.ScintillaEdit_virtualbase_PaintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_paintEvent(unsafe.Pointer(this.h), (*C.QPaintEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnPaintEvent(slot func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent)) {
-	ok := C.ScintillaEdit_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnpaintEvent(slot func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent)) {
+	ok := C.ScintillaEdit_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_PaintEvent
-func miqt_exec_callback_ScintillaEdit_PaintEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QPaintEvent) {
+//export miqt_exec_callback_ScintillaEdit_paintEvent
+func miqt_exec_callback_ScintillaEdit_paintEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QPaintEvent), event *qt.QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12375,18 +12375,18 @@ func miqt_exec_callback_ScintillaEdit_PaintEvent(self *C.ScintillaEdit, cb C.int
 
 func (this *ScintillaEdit) callVirtualBase_WheelEvent(event *qt.QWheelEvent) {
 
-	C.ScintillaEdit_virtualbase_WheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_wheelEvent(unsafe.Pointer(this.h), (*C.QWheelEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnWheelEvent(slot func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent)) {
-	ok := C.ScintillaEdit_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnwheelEvent(slot func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent)) {
+	ok := C.ScintillaEdit_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_WheelEvent
-func miqt_exec_callback_ScintillaEdit_WheelEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QWheelEvent) {
+//export miqt_exec_callback_ScintillaEdit_wheelEvent
+func miqt_exec_callback_ScintillaEdit_wheelEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QWheelEvent), event *qt.QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12401,18 +12401,18 @@ func miqt_exec_callback_ScintillaEdit_WheelEvent(self *C.ScintillaEdit, cb C.int
 
 func (this *ScintillaEdit) callVirtualBase_FocusInEvent(event *qt.QFocusEvent) {
 
-	C.ScintillaEdit_virtualbase_FocusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_focusInEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnFocusInEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
-	ok := C.ScintillaEdit_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnfocusInEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	ok := C.ScintillaEdit_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_FocusInEvent
-func miqt_exec_callback_ScintillaEdit_FocusInEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_ScintillaEdit_focusInEvent
+func miqt_exec_callback_ScintillaEdit_focusInEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12427,18 +12427,18 @@ func miqt_exec_callback_ScintillaEdit_FocusInEvent(self *C.ScintillaEdit, cb C.i
 
 func (this *ScintillaEdit) callVirtualBase_FocusOutEvent(event *qt.QFocusEvent) {
 
-	C.ScintillaEdit_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_focusOutEvent(unsafe.Pointer(this.h), (*C.QFocusEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnFocusOutEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
-	ok := C.ScintillaEdit_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnfocusOutEvent(slot func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent)) {
+	ok := C.ScintillaEdit_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_FocusOutEvent
-func miqt_exec_callback_ScintillaEdit_FocusOutEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_ScintillaEdit_focusOutEvent
+func miqt_exec_callback_ScintillaEdit_focusOutEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QFocusEvent), event *qt.QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12453,18 +12453,18 @@ func miqt_exec_callback_ScintillaEdit_FocusOutEvent(self *C.ScintillaEdit, cb C.
 
 func (this *ScintillaEdit) callVirtualBase_ResizeEvent(event *qt.QResizeEvent) {
 
-	C.ScintillaEdit_virtualbase_ResizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_resizeEvent(unsafe.Pointer(this.h), (*C.QResizeEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnResizeEvent(slot func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent)) {
-	ok := C.ScintillaEdit_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnresizeEvent(slot func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent)) {
+	ok := C.ScintillaEdit_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_ResizeEvent
-func miqt_exec_callback_ScintillaEdit_ResizeEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QResizeEvent) {
+//export miqt_exec_callback_ScintillaEdit_resizeEvent
+func miqt_exec_callback_ScintillaEdit_resizeEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QResizeEvent), event *qt.QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12479,18 +12479,18 @@ func miqt_exec_callback_ScintillaEdit_ResizeEvent(self *C.ScintillaEdit, cb C.in
 
 func (this *ScintillaEdit) callVirtualBase_KeyPressEvent(event *qt.QKeyEvent) {
 
-	C.ScintillaEdit_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_keyPressEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnKeyPressEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
-	ok := C.ScintillaEdit_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnkeyPressEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
+	ok := C.ScintillaEdit_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_KeyPressEvent
-func miqt_exec_callback_ScintillaEdit_KeyPressEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_ScintillaEdit_keyPressEvent
+func miqt_exec_callback_ScintillaEdit_keyPressEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12505,18 +12505,18 @@ func miqt_exec_callback_ScintillaEdit_KeyPressEvent(self *C.ScintillaEdit, cb C.
 
 func (this *ScintillaEdit) callVirtualBase_MousePressEvent(event *qt.QMouseEvent) {
 
-	C.ScintillaEdit_virtualbase_MousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_mousePressEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnMousePressEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.ScintillaEdit_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnmousePressEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.ScintillaEdit_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_MousePressEvent
-func miqt_exec_callback_ScintillaEdit_MousePressEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_ScintillaEdit_mousePressEvent
+func miqt_exec_callback_ScintillaEdit_mousePressEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12531,18 +12531,18 @@ func miqt_exec_callback_ScintillaEdit_MousePressEvent(self *C.ScintillaEdit, cb 
 
 func (this *ScintillaEdit) callVirtualBase_MouseReleaseEvent(event *qt.QMouseEvent) {
 
-	C.ScintillaEdit_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnMouseReleaseEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.ScintillaEdit_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnmouseReleaseEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.ScintillaEdit_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_MouseReleaseEvent
-func miqt_exec_callback_ScintillaEdit_MouseReleaseEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_ScintillaEdit_mouseReleaseEvent
+func miqt_exec_callback_ScintillaEdit_mouseReleaseEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12557,18 +12557,18 @@ func miqt_exec_callback_ScintillaEdit_MouseReleaseEvent(self *C.ScintillaEdit, c
 
 func (this *ScintillaEdit) callVirtualBase_MouseDoubleClickEvent(event *qt.QMouseEvent) {
 
-	C.ScintillaEdit_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnMouseDoubleClickEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.ScintillaEdit_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnmouseDoubleClickEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.ScintillaEdit_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_MouseDoubleClickEvent
-func miqt_exec_callback_ScintillaEdit_MouseDoubleClickEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_ScintillaEdit_mouseDoubleClickEvent
+func miqt_exec_callback_ScintillaEdit_mouseDoubleClickEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12583,18 +12583,18 @@ func miqt_exec_callback_ScintillaEdit_MouseDoubleClickEvent(self *C.ScintillaEdi
 
 func (this *ScintillaEdit) callVirtualBase_MouseMoveEvent(event *qt.QMouseEvent) {
 
-	C.ScintillaEdit_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), (*C.QMouseEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnMouseMoveEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
-	ok := C.ScintillaEdit_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnmouseMoveEvent(slot func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent)) {
+	ok := C.ScintillaEdit_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_MouseMoveEvent
-func miqt_exec_callback_ScintillaEdit_MouseMoveEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_ScintillaEdit_mouseMoveEvent
+func miqt_exec_callback_ScintillaEdit_mouseMoveEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMouseEvent), event *qt.QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12609,18 +12609,18 @@ func miqt_exec_callback_ScintillaEdit_MouseMoveEvent(self *C.ScintillaEdit, cb C
 
 func (this *ScintillaEdit) callVirtualBase_ContextMenuEvent(event *qt.QContextMenuEvent) {
 
-	C.ScintillaEdit_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), (*C.QContextMenuEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnContextMenuEvent(slot func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent)) {
-	ok := C.ScintillaEdit_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OncontextMenuEvent(slot func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent)) {
+	ok := C.ScintillaEdit_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_ContextMenuEvent
-func miqt_exec_callback_ScintillaEdit_ContextMenuEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QContextMenuEvent) {
+//export miqt_exec_callback_ScintillaEdit_contextMenuEvent
+func miqt_exec_callback_ScintillaEdit_contextMenuEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QContextMenuEvent), event *qt.QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12635,18 +12635,18 @@ func miqt_exec_callback_ScintillaEdit_ContextMenuEvent(self *C.ScintillaEdit, cb
 
 func (this *ScintillaEdit) callVirtualBase_DragEnterEvent(event *qt.QDragEnterEvent) {
 
-	C.ScintillaEdit_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), (*C.QDragEnterEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnDragEnterEvent(slot func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent)) {
-	ok := C.ScintillaEdit_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OndragEnterEvent(slot func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent)) {
+	ok := C.ScintillaEdit_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_DragEnterEvent
-func miqt_exec_callback_ScintillaEdit_DragEnterEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QDragEnterEvent) {
+//export miqt_exec_callback_ScintillaEdit_dragEnterEvent
+func miqt_exec_callback_ScintillaEdit_dragEnterEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragEnterEvent), event *qt.QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12661,18 +12661,18 @@ func miqt_exec_callback_ScintillaEdit_DragEnterEvent(self *C.ScintillaEdit, cb C
 
 func (this *ScintillaEdit) callVirtualBase_DragLeaveEvent(event *qt.QDragLeaveEvent) {
 
-	C.ScintillaEdit_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), (*C.QDragLeaveEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnDragLeaveEvent(slot func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent)) {
-	ok := C.ScintillaEdit_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OndragLeaveEvent(slot func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent)) {
+	ok := C.ScintillaEdit_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_DragLeaveEvent
-func miqt_exec_callback_ScintillaEdit_DragLeaveEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QDragLeaveEvent) {
+//export miqt_exec_callback_ScintillaEdit_dragLeaveEvent
+func miqt_exec_callback_ScintillaEdit_dragLeaveEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragLeaveEvent), event *qt.QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12687,18 +12687,18 @@ func miqt_exec_callback_ScintillaEdit_DragLeaveEvent(self *C.ScintillaEdit, cb C
 
 func (this *ScintillaEdit) callVirtualBase_DragMoveEvent(event *qt.QDragMoveEvent) {
 
-	C.ScintillaEdit_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), (*C.QDragMoveEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnDragMoveEvent(slot func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent)) {
-	ok := C.ScintillaEdit_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OndragMoveEvent(slot func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent)) {
+	ok := C.ScintillaEdit_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_DragMoveEvent
-func miqt_exec_callback_ScintillaEdit_DragMoveEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QDragMoveEvent) {
+//export miqt_exec_callback_ScintillaEdit_dragMoveEvent
+func miqt_exec_callback_ScintillaEdit_dragMoveEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDragMoveEvent), event *qt.QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12713,18 +12713,18 @@ func miqt_exec_callback_ScintillaEdit_DragMoveEvent(self *C.ScintillaEdit, cb C.
 
 func (this *ScintillaEdit) callVirtualBase_DropEvent(event *qt.QDropEvent) {
 
-	C.ScintillaEdit_virtualbase_DropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_dropEvent(unsafe.Pointer(this.h), (*C.QDropEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnDropEvent(slot func(super func(event *qt.QDropEvent), event *qt.QDropEvent)) {
-	ok := C.ScintillaEdit_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OndropEvent(slot func(super func(event *qt.QDropEvent), event *qt.QDropEvent)) {
+	ok := C.ScintillaEdit_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_DropEvent
-func miqt_exec_callback_ScintillaEdit_DropEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QDropEvent) {
+//export miqt_exec_callback_ScintillaEdit_dropEvent
+func miqt_exec_callback_ScintillaEdit_dropEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QDropEvent), event *qt.QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12739,18 +12739,18 @@ func miqt_exec_callback_ScintillaEdit_DropEvent(self *C.ScintillaEdit, cb C.intp
 
 func (this *ScintillaEdit) callVirtualBase_InputMethodEvent(event *qt.QInputMethodEvent) {
 
-	C.ScintillaEdit_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), (*C.QInputMethodEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnInputMethodEvent(slot func(super func(event *qt.QInputMethodEvent), event *qt.QInputMethodEvent)) {
-	ok := C.ScintillaEdit_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OninputMethodEvent(slot func(super func(event *qt.QInputMethodEvent), event *qt.QInputMethodEvent)) {
+	ok := C.ScintillaEdit_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_InputMethodEvent
-func miqt_exec_callback_ScintillaEdit_InputMethodEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QInputMethodEvent) {
+//export miqt_exec_callback_ScintillaEdit_inputMethodEvent
+func miqt_exec_callback_ScintillaEdit_inputMethodEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QInputMethodEvent), event *qt.QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12765,20 +12765,20 @@ func miqt_exec_callback_ScintillaEdit_InputMethodEvent(self *C.ScintillaEdit, cb
 
 func (this *ScintillaEdit) callVirtualBase_InputMethodQuery(query qt.InputMethodQuery) *qt.QVariant {
 
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.ScintillaEdit_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.ScintillaEdit_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(query))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *ScintillaEdit) OnInputMethodQuery(slot func(super func(query qt.InputMethodQuery) *qt.QVariant, query qt.InputMethodQuery) *qt.QVariant) {
-	ok := C.ScintillaEdit_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OninputMethodQuery(slot func(super func(query qt.InputMethodQuery) *qt.QVariant, query qt.InputMethodQuery) *qt.QVariant) {
+	ok := C.ScintillaEdit_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_InputMethodQuery
-func miqt_exec_callback_ScintillaEdit_InputMethodQuery(self *C.ScintillaEdit, cb C.intptr_t, query C.int) *C.QVariant {
+//export miqt_exec_callback_ScintillaEdit_inputMethodQuery
+func miqt_exec_callback_ScintillaEdit_inputMethodQuery(self *C.ScintillaEdit, cb C.intptr_t, query C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(query qt.InputMethodQuery) *qt.QVariant, query qt.InputMethodQuery) *qt.QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12795,18 +12795,18 @@ func miqt_exec_callback_ScintillaEdit_InputMethodQuery(self *C.ScintillaEdit, cb
 
 func (this *ScintillaEdit) callVirtualBase_ScrollContentsBy(param1 int, param2 int) {
 
-	C.ScintillaEdit_virtualbase_ScrollContentsBy(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2))
+	C.ScintillaEdit_virtualbase_scrollContentsBy(unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2))
 
 }
-func (this *ScintillaEdit) OnScrollContentsBy(slot func(super func(param1 int, param2 int), param1 int, param2 int)) {
-	ok := C.ScintillaEdit_override_virtual_ScrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnscrollContentsBy(slot func(super func(param1 int, param2 int), param1 int, param2 int)) {
+	ok := C.ScintillaEdit_override_virtual_scrollContentsBy(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_ScrollContentsBy
-func miqt_exec_callback_ScintillaEdit_ScrollContentsBy(self *C.ScintillaEdit, cb C.intptr_t, param1 C.int, param2 C.int) {
+//export miqt_exec_callback_ScintillaEdit_scrollContentsBy
+func miqt_exec_callback_ScintillaEdit_scrollContentsBy(self *C.ScintillaEdit, cb C.intptr_t, param1 C.int, param2 C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int, param2 int), param1 int, param2 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12823,20 +12823,20 @@ func miqt_exec_callback_ScintillaEdit_ScrollContentsBy(self *C.ScintillaEdit, cb
 
 func (this *ScintillaEdit) callVirtualBase_MinimumSizeHint() *qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEdit_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h))))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEdit_virtualbase_minimumSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *ScintillaEdit) OnMinimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	ok := C.ScintillaEdit_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnminimumSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	ok := C.ScintillaEdit_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_MinimumSizeHint
-func miqt_exec_callback_ScintillaEdit_MinimumSizeHint(self *C.ScintillaEdit, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_ScintillaEdit_minimumSizeHint
+func miqt_exec_callback_ScintillaEdit_minimumSizeHint(self *C.ScintillaEdit, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12850,20 +12850,20 @@ func miqt_exec_callback_ScintillaEdit_MinimumSizeHint(self *C.ScintillaEdit, cb 
 
 func (this *ScintillaEdit) callVirtualBase_SizeHint() *qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEdit_virtualbase_SizeHint(unsafe.Pointer(this.h))))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEdit_virtualbase_sizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *ScintillaEdit) OnSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	ok := C.ScintillaEdit_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnsizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	ok := C.ScintillaEdit_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_SizeHint
-func miqt_exec_callback_ScintillaEdit_SizeHint(self *C.ScintillaEdit, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_ScintillaEdit_sizeHint
+func miqt_exec_callback_ScintillaEdit_sizeHint(self *C.ScintillaEdit, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12877,18 +12877,18 @@ func miqt_exec_callback_ScintillaEdit_SizeHint(self *C.ScintillaEdit, cb C.intpt
 
 func (this *ScintillaEdit) callVirtualBase_SetupViewport(viewport *qt.QWidget) {
 
-	C.ScintillaEdit_virtualbase_SetupViewport(unsafe.Pointer(this.h), (*C.QWidget)(viewport.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_setupViewport(unsafe.Pointer(this.h), (*C.QWidget)(viewport.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnSetupViewport(slot func(super func(viewport *qt.QWidget), viewport *qt.QWidget)) {
-	ok := C.ScintillaEdit_override_virtual_SetupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnsetupViewport(slot func(super func(viewport *qt.QWidget), viewport *qt.QWidget)) {
+	ok := C.ScintillaEdit_override_virtual_setupViewport(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_SetupViewport
-func miqt_exec_callback_ScintillaEdit_SetupViewport(self *C.ScintillaEdit, cb C.intptr_t, viewport *C.QWidget) {
+//export miqt_exec_callback_ScintillaEdit_setupViewport
+func miqt_exec_callback_ScintillaEdit_setupViewport(self *C.ScintillaEdit, cb C.intptr_t, viewport *C.QWidget) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(viewport *qt.QWidget), viewport *qt.QWidget))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12903,18 +12903,18 @@ func miqt_exec_callback_ScintillaEdit_SetupViewport(self *C.ScintillaEdit, cb C.
 
 func (this *ScintillaEdit) callVirtualBase_EventFilter(param1 *qt.QObject, param2 *qt.QEvent) bool {
 
-	return (bool)(C.ScintillaEdit_virtualbase_EventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
+	return (bool)(C.ScintillaEdit_virtualbase_eventFilter(unsafe.Pointer(this.h), (*C.QObject)(param1.UnsafePointer()), (*C.QEvent)(param2.UnsafePointer())))
 
 }
-func (this *ScintillaEdit) OnEventFilter(slot func(super func(param1 *qt.QObject, param2 *qt.QEvent) bool, param1 *qt.QObject, param2 *qt.QEvent) bool) {
-	ok := C.ScintillaEdit_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OneventFilter(slot func(super func(param1 *qt.QObject, param2 *qt.QEvent) bool, param1 *qt.QObject, param2 *qt.QEvent) bool) {
+	ok := C.ScintillaEdit_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_EventFilter
-func miqt_exec_callback_ScintillaEdit_EventFilter(self *C.ScintillaEdit, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+//export miqt_exec_callback_ScintillaEdit_eventFilter
+func miqt_exec_callback_ScintillaEdit_eventFilter(self *C.ScintillaEdit, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QObject, param2 *qt.QEvent) bool, param1 *qt.QObject, param2 *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12933,18 +12933,18 @@ func miqt_exec_callback_ScintillaEdit_EventFilter(self *C.ScintillaEdit, cb C.in
 
 func (this *ScintillaEdit) callVirtualBase_ViewportEvent(param1 *qt.QEvent) bool {
 
-	return (bool)(C.ScintillaEdit_virtualbase_ViewportEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
+	return (bool)(C.ScintillaEdit_virtualbase_viewportEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer())))
 
 }
-func (this *ScintillaEdit) OnViewportEvent(slot func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool) {
-	ok := C.ScintillaEdit_override_virtual_ViewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnviewportEvent(slot func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool) {
+	ok := C.ScintillaEdit_override_virtual_viewportEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_ViewportEvent
-func miqt_exec_callback_ScintillaEdit_ViewportEvent(self *C.ScintillaEdit, cb C.intptr_t, param1 *C.QEvent) C.bool {
+//export miqt_exec_callback_ScintillaEdit_viewportEvent
+func miqt_exec_callback_ScintillaEdit_viewportEvent(self *C.ScintillaEdit, cb C.intptr_t, param1 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QEvent) bool, param1 *qt.QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12961,20 +12961,20 @@ func miqt_exec_callback_ScintillaEdit_ViewportEvent(self *C.ScintillaEdit, cb C.
 
 func (this *ScintillaEdit) callVirtualBase_ViewportSizeHint() *qt.QSize {
 
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEdit_virtualbase_ViewportSizeHint(unsafe.Pointer(this.h))))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.ScintillaEdit_virtualbase_viewportSizeHint(unsafe.Pointer(this.h))))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *ScintillaEdit) OnViewportSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
-	ok := C.ScintillaEdit_override_virtual_ViewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnviewportSizeHint(slot func(super func() *qt.QSize) *qt.QSize) {
+	ok := C.ScintillaEdit_override_virtual_viewportSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_ViewportSizeHint
-func miqt_exec_callback_ScintillaEdit_ViewportSizeHint(self *C.ScintillaEdit, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_ScintillaEdit_viewportSizeHint
+func miqt_exec_callback_ScintillaEdit_viewportSizeHint(self *C.ScintillaEdit, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QSize) *qt.QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -12988,18 +12988,18 @@ func miqt_exec_callback_ScintillaEdit_ViewportSizeHint(self *C.ScintillaEdit, cb
 
 func (this *ScintillaEdit) callVirtualBase_ChangeEvent(param1 *qt.QEvent) {
 
-	C.ScintillaEdit_virtualbase_ChangeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_changeEvent(unsafe.Pointer(this.h), (*C.QEvent)(param1.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnChangeEvent(slot func(super func(param1 *qt.QEvent), param1 *qt.QEvent)) {
-	ok := C.ScintillaEdit_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnchangeEvent(slot func(super func(param1 *qt.QEvent), param1 *qt.QEvent)) {
+	ok := C.ScintillaEdit_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_ChangeEvent
-func miqt_exec_callback_ScintillaEdit_ChangeEvent(self *C.ScintillaEdit, cb C.intptr_t, param1 *C.QEvent) {
+//export miqt_exec_callback_ScintillaEdit_changeEvent
+func miqt_exec_callback_ScintillaEdit_changeEvent(self *C.ScintillaEdit, cb C.intptr_t, param1 *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *qt.QEvent), param1 *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13014,18 +13014,18 @@ func miqt_exec_callback_ScintillaEdit_ChangeEvent(self *C.ScintillaEdit, cb C.in
 
 func (this *ScintillaEdit) callVirtualBase_DevType() int {
 
-	return (int)(C.ScintillaEdit_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.ScintillaEdit_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *ScintillaEdit) OnDevType(slot func(super func() int) int) {
-	ok := C.ScintillaEdit_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OndevType(slot func(super func() int) int) {
+	ok := C.ScintillaEdit_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_DevType
-func miqt_exec_callback_ScintillaEdit_DevType(self *C.ScintillaEdit, cb C.intptr_t) C.int {
+//export miqt_exec_callback_ScintillaEdit_devType
+func miqt_exec_callback_ScintillaEdit_devType(self *C.ScintillaEdit, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13039,18 +13039,18 @@ func miqt_exec_callback_ScintillaEdit_DevType(self *C.ScintillaEdit, cb C.intptr
 
 func (this *ScintillaEdit) callVirtualBase_SetVisible(visible bool) {
 
-	C.ScintillaEdit_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.ScintillaEdit_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *ScintillaEdit) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.ScintillaEdit_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.ScintillaEdit_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_SetVisible
-func miqt_exec_callback_ScintillaEdit_SetVisible(self *C.ScintillaEdit, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_ScintillaEdit_setVisible
+func miqt_exec_callback_ScintillaEdit_setVisible(self *C.ScintillaEdit, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13065,18 +13065,18 @@ func miqt_exec_callback_ScintillaEdit_SetVisible(self *C.ScintillaEdit, cb C.int
 
 func (this *ScintillaEdit) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.ScintillaEdit_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.ScintillaEdit_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *ScintillaEdit) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.ScintillaEdit_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.ScintillaEdit_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_HeightForWidth
-func miqt_exec_callback_ScintillaEdit_HeightForWidth(self *C.ScintillaEdit, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_ScintillaEdit_heightForWidth
+func miqt_exec_callback_ScintillaEdit_heightForWidth(self *C.ScintillaEdit, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13093,18 +13093,18 @@ func miqt_exec_callback_ScintillaEdit_HeightForWidth(self *C.ScintillaEdit, cb C
 
 func (this *ScintillaEdit) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.ScintillaEdit_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.ScintillaEdit_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *ScintillaEdit) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.ScintillaEdit_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.ScintillaEdit_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_HasHeightForWidth
-func miqt_exec_callback_ScintillaEdit_HasHeightForWidth(self *C.ScintillaEdit, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_ScintillaEdit_hasHeightForWidth
+func miqt_exec_callback_ScintillaEdit_hasHeightForWidth(self *C.ScintillaEdit, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13118,18 +13118,18 @@ func miqt_exec_callback_ScintillaEdit_HasHeightForWidth(self *C.ScintillaEdit, c
 
 func (this *ScintillaEdit) callVirtualBase_PaintEngine() *qt.QPaintEngine {
 
-	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.ScintillaEdit_virtualbase_PaintEngine(unsafe.Pointer(this.h))))
+	return qt.UnsafeNewQPaintEngine(unsafe.Pointer(C.ScintillaEdit_virtualbase_paintEngine(unsafe.Pointer(this.h))))
 
 }
-func (this *ScintillaEdit) OnPaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
-	ok := C.ScintillaEdit_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnpaintEngine(slot func(super func() *qt.QPaintEngine) *qt.QPaintEngine) {
+	ok := C.ScintillaEdit_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_PaintEngine
-func miqt_exec_callback_ScintillaEdit_PaintEngine(self *C.ScintillaEdit, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_ScintillaEdit_paintEngine
+func miqt_exec_callback_ScintillaEdit_paintEngine(self *C.ScintillaEdit, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QPaintEngine) *qt.QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13143,18 +13143,18 @@ func miqt_exec_callback_ScintillaEdit_PaintEngine(self *C.ScintillaEdit, cb C.in
 
 func (this *ScintillaEdit) callVirtualBase_KeyReleaseEvent(event *qt.QKeyEvent) {
 
-	C.ScintillaEdit_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), (*C.QKeyEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnKeyReleaseEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
-	ok := C.ScintillaEdit_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnkeyReleaseEvent(slot func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent)) {
+	ok := C.ScintillaEdit_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_KeyReleaseEvent
-func miqt_exec_callback_ScintillaEdit_KeyReleaseEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_ScintillaEdit_keyReleaseEvent
+func miqt_exec_callback_ScintillaEdit_keyReleaseEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QKeyEvent), event *qt.QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13169,18 +13169,18 @@ func miqt_exec_callback_ScintillaEdit_KeyReleaseEvent(self *C.ScintillaEdit, cb 
 
 func (this *ScintillaEdit) callVirtualBase_EnterEvent(event *qt.QEvent) {
 
-	C.ScintillaEdit_virtualbase_EnterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_enterEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnEnterEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.ScintillaEdit_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnenterEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.ScintillaEdit_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_EnterEvent
-func miqt_exec_callback_ScintillaEdit_EnterEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_ScintillaEdit_enterEvent
+func miqt_exec_callback_ScintillaEdit_enterEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13195,18 +13195,18 @@ func miqt_exec_callback_ScintillaEdit_EnterEvent(self *C.ScintillaEdit, cb C.int
 
 func (this *ScintillaEdit) callVirtualBase_LeaveEvent(event *qt.QEvent) {
 
-	C.ScintillaEdit_virtualbase_LeaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_leaveEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnLeaveEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.ScintillaEdit_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnleaveEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.ScintillaEdit_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_LeaveEvent
-func miqt_exec_callback_ScintillaEdit_LeaveEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_ScintillaEdit_leaveEvent
+func miqt_exec_callback_ScintillaEdit_leaveEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13221,18 +13221,18 @@ func miqt_exec_callback_ScintillaEdit_LeaveEvent(self *C.ScintillaEdit, cb C.int
 
 func (this *ScintillaEdit) callVirtualBase_MoveEvent(event *qt.QMoveEvent) {
 
-	C.ScintillaEdit_virtualbase_MoveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_moveEvent(unsafe.Pointer(this.h), (*C.QMoveEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnMoveEvent(slot func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent)) {
-	ok := C.ScintillaEdit_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnmoveEvent(slot func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent)) {
+	ok := C.ScintillaEdit_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_MoveEvent
-func miqt_exec_callback_ScintillaEdit_MoveEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_ScintillaEdit_moveEvent
+func miqt_exec_callback_ScintillaEdit_moveEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QMoveEvent), event *qt.QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13247,18 +13247,18 @@ func miqt_exec_callback_ScintillaEdit_MoveEvent(self *C.ScintillaEdit, cb C.intp
 
 func (this *ScintillaEdit) callVirtualBase_CloseEvent(event *qt.QCloseEvent) {
 
-	C.ScintillaEdit_virtualbase_CloseEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_closeEvent(unsafe.Pointer(this.h), (*C.QCloseEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnCloseEvent(slot func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent)) {
-	ok := C.ScintillaEdit_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OncloseEvent(slot func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent)) {
+	ok := C.ScintillaEdit_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_CloseEvent
-func miqt_exec_callback_ScintillaEdit_CloseEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_ScintillaEdit_closeEvent
+func miqt_exec_callback_ScintillaEdit_closeEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QCloseEvent), event *qt.QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13273,18 +13273,18 @@ func miqt_exec_callback_ScintillaEdit_CloseEvent(self *C.ScintillaEdit, cb C.int
 
 func (this *ScintillaEdit) callVirtualBase_TabletEvent(event *qt.QTabletEvent) {
 
-	C.ScintillaEdit_virtualbase_TabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_tabletEvent(unsafe.Pointer(this.h), (*C.QTabletEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnTabletEvent(slot func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent)) {
-	ok := C.ScintillaEdit_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OntabletEvent(slot func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent)) {
+	ok := C.ScintillaEdit_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_TabletEvent
-func miqt_exec_callback_ScintillaEdit_TabletEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_ScintillaEdit_tabletEvent
+func miqt_exec_callback_ScintillaEdit_tabletEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTabletEvent), event *qt.QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13299,18 +13299,18 @@ func miqt_exec_callback_ScintillaEdit_TabletEvent(self *C.ScintillaEdit, cb C.in
 
 func (this *ScintillaEdit) callVirtualBase_ActionEvent(event *qt.QActionEvent) {
 
-	C.ScintillaEdit_virtualbase_ActionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_actionEvent(unsafe.Pointer(this.h), (*C.QActionEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnActionEvent(slot func(super func(event *qt.QActionEvent), event *qt.QActionEvent)) {
-	ok := C.ScintillaEdit_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnactionEvent(slot func(super func(event *qt.QActionEvent), event *qt.QActionEvent)) {
+	ok := C.ScintillaEdit_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_ActionEvent
-func miqt_exec_callback_ScintillaEdit_ActionEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_ScintillaEdit_actionEvent
+func miqt_exec_callback_ScintillaEdit_actionEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QActionEvent), event *qt.QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13325,18 +13325,18 @@ func miqt_exec_callback_ScintillaEdit_ActionEvent(self *C.ScintillaEdit, cb C.in
 
 func (this *ScintillaEdit) callVirtualBase_ShowEvent(event *qt.QShowEvent) {
 
-	C.ScintillaEdit_virtualbase_ShowEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_showEvent(unsafe.Pointer(this.h), (*C.QShowEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnShowEvent(slot func(super func(event *qt.QShowEvent), event *qt.QShowEvent)) {
-	ok := C.ScintillaEdit_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnshowEvent(slot func(super func(event *qt.QShowEvent), event *qt.QShowEvent)) {
+	ok := C.ScintillaEdit_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_ShowEvent
-func miqt_exec_callback_ScintillaEdit_ShowEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QShowEvent) {
+//export miqt_exec_callback_ScintillaEdit_showEvent
+func miqt_exec_callback_ScintillaEdit_showEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QShowEvent), event *qt.QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13351,18 +13351,18 @@ func miqt_exec_callback_ScintillaEdit_ShowEvent(self *C.ScintillaEdit, cb C.intp
 
 func (this *ScintillaEdit) callVirtualBase_HideEvent(event *qt.QHideEvent) {
 
-	C.ScintillaEdit_virtualbase_HideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_hideEvent(unsafe.Pointer(this.h), (*C.QHideEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnHideEvent(slot func(super func(event *qt.QHideEvent), event *qt.QHideEvent)) {
-	ok := C.ScintillaEdit_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnhideEvent(slot func(super func(event *qt.QHideEvent), event *qt.QHideEvent)) {
+	ok := C.ScintillaEdit_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_HideEvent
-func miqt_exec_callback_ScintillaEdit_HideEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_ScintillaEdit_hideEvent
+func miqt_exec_callback_ScintillaEdit_hideEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QHideEvent), event *qt.QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13384,18 +13384,18 @@ func (this *ScintillaEdit) callVirtualBase_NativeEvent(eventType []byte, message
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.ScintillaEdit_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
+	return (bool)(C.ScintillaEdit_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *ScintillaEdit) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
-	ok := C.ScintillaEdit_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	ok := C.ScintillaEdit_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_NativeEvent
-func miqt_exec_callback_ScintillaEdit_NativeEvent(self *C.ScintillaEdit, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
+//export miqt_exec_callback_ScintillaEdit_nativeEvent
+func miqt_exec_callback_ScintillaEdit_nativeEvent(self *C.ScintillaEdit, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13418,18 +13418,18 @@ func miqt_exec_callback_ScintillaEdit_NativeEvent(self *C.ScintillaEdit, cb C.in
 
 func (this *ScintillaEdit) callVirtualBase_Metric(param1 qt.QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.ScintillaEdit_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.ScintillaEdit_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *ScintillaEdit) OnMetric(slot func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.ScintillaEdit_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) Onmetric(slot func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.ScintillaEdit_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_Metric
-func miqt_exec_callback_ScintillaEdit_Metric(self *C.ScintillaEdit, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_ScintillaEdit_metric
+func miqt_exec_callback_ScintillaEdit_metric(self *C.ScintillaEdit, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 qt.QPaintDevice__PaintDeviceMetric) int, param1 qt.QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13446,18 +13446,18 @@ func miqt_exec_callback_ScintillaEdit_Metric(self *C.ScintillaEdit, cb C.intptr_
 
 func (this *ScintillaEdit) callVirtualBase_InitPainter(painter *qt.QPainter) {
 
-	C.ScintillaEdit_virtualbase_InitPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_initPainter(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnInitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
-	ok := C.ScintillaEdit_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OninitPainter(slot func(super func(painter *qt.QPainter), painter *qt.QPainter)) {
+	ok := C.ScintillaEdit_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_InitPainter
-func miqt_exec_callback_ScintillaEdit_InitPainter(self *C.ScintillaEdit, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_ScintillaEdit_initPainter
+func miqt_exec_callback_ScintillaEdit_initPainter(self *C.ScintillaEdit, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *qt.QPainter), painter *qt.QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13472,18 +13472,18 @@ func miqt_exec_callback_ScintillaEdit_InitPainter(self *C.ScintillaEdit, cb C.in
 
 func (this *ScintillaEdit) callVirtualBase_Redirected(offset *qt.QPoint) *qt.QPaintDevice {
 
-	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.ScintillaEdit_virtualbase_Redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
+	return qt.UnsafeNewQPaintDevice(unsafe.Pointer(C.ScintillaEdit_virtualbase_redirected(unsafe.Pointer(this.h), (*C.QPoint)(offset.UnsafePointer()))))
 
 }
-func (this *ScintillaEdit) OnRedirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
-	ok := C.ScintillaEdit_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) Onredirected(slot func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice) {
+	ok := C.ScintillaEdit_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_Redirected
-func miqt_exec_callback_ScintillaEdit_Redirected(self *C.ScintillaEdit, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_ScintillaEdit_redirected
+func miqt_exec_callback_ScintillaEdit_redirected(self *C.ScintillaEdit, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *qt.QPoint) *qt.QPaintDevice, offset *qt.QPoint) *qt.QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13500,18 +13500,18 @@ func miqt_exec_callback_ScintillaEdit_Redirected(self *C.ScintillaEdit, cb C.int
 
 func (this *ScintillaEdit) callVirtualBase_SharedPainter() *qt.QPainter {
 
-	return qt.UnsafeNewQPainter(unsafe.Pointer(C.ScintillaEdit_virtualbase_SharedPainter(unsafe.Pointer(this.h))))
+	return qt.UnsafeNewQPainter(unsafe.Pointer(C.ScintillaEdit_virtualbase_sharedPainter(unsafe.Pointer(this.h))))
 
 }
-func (this *ScintillaEdit) OnSharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
-	ok := C.ScintillaEdit_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnsharedPainter(slot func(super func() *qt.QPainter) *qt.QPainter) {
+	ok := C.ScintillaEdit_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_SharedPainter
-func miqt_exec_callback_ScintillaEdit_SharedPainter(self *C.ScintillaEdit, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_ScintillaEdit_sharedPainter
+func miqt_exec_callback_ScintillaEdit_sharedPainter(self *C.ScintillaEdit, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *qt.QPainter) *qt.QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13525,18 +13525,18 @@ func miqt_exec_callback_ScintillaEdit_SharedPainter(self *C.ScintillaEdit, cb C.
 
 func (this *ScintillaEdit) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.ScintillaEdit_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.ScintillaEdit_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *ScintillaEdit) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.ScintillaEdit_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.ScintillaEdit_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_FocusNextPrevChild
-func miqt_exec_callback_ScintillaEdit_FocusNextPrevChild(self *C.ScintillaEdit, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_ScintillaEdit_focusNextPrevChild
+func miqt_exec_callback_ScintillaEdit_focusNextPrevChild(self *C.ScintillaEdit, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13553,18 +13553,18 @@ func miqt_exec_callback_ScintillaEdit_FocusNextPrevChild(self *C.ScintillaEdit, 
 
 func (this *ScintillaEdit) callVirtualBase_TimerEvent(event *qt.QTimerEvent) {
 
-	C.ScintillaEdit_virtualbase_TimerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_timerEvent(unsafe.Pointer(this.h), (*C.QTimerEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnTimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
-	ok := C.ScintillaEdit_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OntimerEvent(slot func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent)) {
+	ok := C.ScintillaEdit_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_TimerEvent
-func miqt_exec_callback_ScintillaEdit_TimerEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_ScintillaEdit_timerEvent
+func miqt_exec_callback_ScintillaEdit_timerEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QTimerEvent), event *qt.QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13579,18 +13579,18 @@ func miqt_exec_callback_ScintillaEdit_TimerEvent(self *C.ScintillaEdit, cb C.int
 
 func (this *ScintillaEdit) callVirtualBase_ChildEvent(event *qt.QChildEvent) {
 
-	C.ScintillaEdit_virtualbase_ChildEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_childEvent(unsafe.Pointer(this.h), (*C.QChildEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnChildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
-	ok := C.ScintillaEdit_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnchildEvent(slot func(super func(event *qt.QChildEvent), event *qt.QChildEvent)) {
+	ok := C.ScintillaEdit_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_ChildEvent
-func miqt_exec_callback_ScintillaEdit_ChildEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_ScintillaEdit_childEvent
+func miqt_exec_callback_ScintillaEdit_childEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QChildEvent), event *qt.QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13605,18 +13605,18 @@ func miqt_exec_callback_ScintillaEdit_ChildEvent(self *C.ScintillaEdit, cb C.int
 
 func (this *ScintillaEdit) callVirtualBase_CustomEvent(event *qt.QEvent) {
 
-	C.ScintillaEdit_virtualbase_CustomEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_customEvent(unsafe.Pointer(this.h), (*C.QEvent)(event.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnCustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
-	ok := C.ScintillaEdit_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OncustomEvent(slot func(super func(event *qt.QEvent), event *qt.QEvent)) {
+	ok := C.ScintillaEdit_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_CustomEvent
-func miqt_exec_callback_ScintillaEdit_CustomEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_ScintillaEdit_customEvent
+func miqt_exec_callback_ScintillaEdit_customEvent(self *C.ScintillaEdit, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *qt.QEvent), event *qt.QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13631,18 +13631,18 @@ func miqt_exec_callback_ScintillaEdit_CustomEvent(self *C.ScintillaEdit, cb C.in
 
 func (this *ScintillaEdit) callVirtualBase_ConnectNotify(signal *qt.QMetaMethod) {
 
-	C.ScintillaEdit_virtualbase_ConnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_connectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnConnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.ScintillaEdit_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OnconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.ScintillaEdit_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_ConnectNotify
-func miqt_exec_callback_ScintillaEdit_ConnectNotify(self *C.ScintillaEdit, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_ScintillaEdit_connectNotify
+func miqt_exec_callback_ScintillaEdit_connectNotify(self *C.ScintillaEdit, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13657,18 +13657,18 @@ func miqt_exec_callback_ScintillaEdit_ConnectNotify(self *C.ScintillaEdit, cb C.
 
 func (this *ScintillaEdit) callVirtualBase_DisconnectNotify(signal *qt.QMetaMethod) {
 
-	C.ScintillaEdit_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
+	C.ScintillaEdit_virtualbase_disconnectNotify(unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer()))
 
 }
-func (this *ScintillaEdit) OnDisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
-	ok := C.ScintillaEdit_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *ScintillaEdit) OndisconnectNotify(slot func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod)) {
+	ok := C.ScintillaEdit_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_ScintillaEdit_DisconnectNotify
-func miqt_exec_callback_ScintillaEdit_DisconnectNotify(self *C.ScintillaEdit, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_ScintillaEdit_disconnectNotify
+func miqt_exec_callback_ScintillaEdit_disconnectNotify(self *C.ScintillaEdit, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *qt.QMetaMethod), signal *qt.QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -13683,7 +13683,7 @@ func miqt_exec_callback_ScintillaEdit_DisconnectNotify(self *C.ScintillaEdit, cb
 
 // Delete this object from C++ memory.
 func (this *ScintillaEdit) Delete() {
-	C.ScintillaEdit_Delete(this.h)
+	C.ScintillaEdit_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

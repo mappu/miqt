@@ -36,51 +36,51 @@ QNetworkCookie* QNetworkCookie_new4(struct miqt_string name, struct miqt_string 
 	return new QNetworkCookie(name_QByteArray, value_QByteArray);
 }
 
-void QNetworkCookie_OperatorAssign(QNetworkCookie* self, QNetworkCookie* other) {
+void QNetworkCookie_operatorAssign(QNetworkCookie* self, QNetworkCookie* other) {
 	self->operator=(*other);
 }
 
-void QNetworkCookie_Swap(QNetworkCookie* self, QNetworkCookie* other) {
+void QNetworkCookie_swap(QNetworkCookie* self, QNetworkCookie* other) {
 	self->swap(*other);
 }
 
-bool QNetworkCookie_OperatorEqual(const QNetworkCookie* self, QNetworkCookie* other) {
+bool QNetworkCookie_operatorEqual(const QNetworkCookie* self, QNetworkCookie* other) {
 	return (*self == *other);
 }
 
-bool QNetworkCookie_OperatorNotEqual(const QNetworkCookie* self, QNetworkCookie* other) {
+bool QNetworkCookie_operatorNotEqual(const QNetworkCookie* self, QNetworkCookie* other) {
 	return (*self != *other);
 }
 
-bool QNetworkCookie_IsSecure(const QNetworkCookie* self) {
+bool QNetworkCookie_isSecure(const QNetworkCookie* self) {
 	return self->isSecure();
 }
 
-void QNetworkCookie_SetSecure(QNetworkCookie* self, bool enable) {
+void QNetworkCookie_setSecure(QNetworkCookie* self, bool enable) {
 	self->setSecure(enable);
 }
 
-bool QNetworkCookie_IsHttpOnly(const QNetworkCookie* self) {
+bool QNetworkCookie_isHttpOnly(const QNetworkCookie* self) {
 	return self->isHttpOnly();
 }
 
-void QNetworkCookie_SetHttpOnly(QNetworkCookie* self, bool enable) {
+void QNetworkCookie_setHttpOnly(QNetworkCookie* self, bool enable) {
 	self->setHttpOnly(enable);
 }
 
-bool QNetworkCookie_IsSessionCookie(const QNetworkCookie* self) {
+bool QNetworkCookie_isSessionCookie(const QNetworkCookie* self) {
 	return self->isSessionCookie();
 }
 
-QDateTime* QNetworkCookie_ExpirationDate(const QNetworkCookie* self) {
+QDateTime* QNetworkCookie_expirationDate(const QNetworkCookie* self) {
 	return new QDateTime(self->expirationDate());
 }
 
-void QNetworkCookie_SetExpirationDate(QNetworkCookie* self, QDateTime* date) {
+void QNetworkCookie_setExpirationDate(QNetworkCookie* self, QDateTime* date) {
 	self->setExpirationDate(*date);
 }
 
-struct miqt_string QNetworkCookie_Domain(const QNetworkCookie* self) {
+struct miqt_string QNetworkCookie_domain(const QNetworkCookie* self) {
 	QString _ret = self->domain();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -91,12 +91,12 @@ struct miqt_string QNetworkCookie_Domain(const QNetworkCookie* self) {
 	return _ms;
 }
 
-void QNetworkCookie_SetDomain(QNetworkCookie* self, struct miqt_string domain) {
+void QNetworkCookie_setDomain(QNetworkCookie* self, struct miqt_string domain) {
 	QString domain_QString = QString::fromUtf8(domain.data, domain.len);
 	self->setDomain(domain_QString);
 }
 
-struct miqt_string QNetworkCookie_Path(const QNetworkCookie* self) {
+struct miqt_string QNetworkCookie_path(const QNetworkCookie* self) {
 	QString _ret = self->path();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -107,12 +107,12 @@ struct miqt_string QNetworkCookie_Path(const QNetworkCookie* self) {
 	return _ms;
 }
 
-void QNetworkCookie_SetPath(QNetworkCookie* self, struct miqt_string path) {
+void QNetworkCookie_setPath(QNetworkCookie* self, struct miqt_string path) {
 	QString path_QString = QString::fromUtf8(path.data, path.len);
 	self->setPath(path_QString);
 }
 
-struct miqt_string QNetworkCookie_Name(const QNetworkCookie* self) {
+struct miqt_string QNetworkCookie_name(const QNetworkCookie* self) {
 	QByteArray _qb = self->name();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -121,12 +121,12 @@ struct miqt_string QNetworkCookie_Name(const QNetworkCookie* self) {
 	return _ms;
 }
 
-void QNetworkCookie_SetName(QNetworkCookie* self, struct miqt_string cookieName) {
+void QNetworkCookie_setName(QNetworkCookie* self, struct miqt_string cookieName) {
 	QByteArray cookieName_QByteArray(cookieName.data, cookieName.len);
 	self->setName(cookieName_QByteArray);
 }
 
-struct miqt_string QNetworkCookie_Value(const QNetworkCookie* self) {
+struct miqt_string QNetworkCookie_value(const QNetworkCookie* self) {
 	QByteArray _qb = self->value();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -135,12 +135,12 @@ struct miqt_string QNetworkCookie_Value(const QNetworkCookie* self) {
 	return _ms;
 }
 
-void QNetworkCookie_SetValue(QNetworkCookie* self, struct miqt_string value) {
+void QNetworkCookie_setValue(QNetworkCookie* self, struct miqt_string value) {
 	QByteArray value_QByteArray(value.data, value.len);
 	self->setValue(value_QByteArray);
 }
 
-struct miqt_string QNetworkCookie_ToRawForm(const QNetworkCookie* self) {
+struct miqt_string QNetworkCookie_toRawForm(const QNetworkCookie* self) {
 	QByteArray _qb = self->toRawForm();
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -149,15 +149,15 @@ struct miqt_string QNetworkCookie_ToRawForm(const QNetworkCookie* self) {
 	return _ms;
 }
 
-bool QNetworkCookie_HasSameIdentifier(const QNetworkCookie* self, QNetworkCookie* other) {
+bool QNetworkCookie_hasSameIdentifier(const QNetworkCookie* self, QNetworkCookie* other) {
 	return self->hasSameIdentifier(*other);
 }
 
-void QNetworkCookie_Normalize(QNetworkCookie* self, QUrl* url) {
+void QNetworkCookie_normalize(QNetworkCookie* self, QUrl* url) {
 	self->normalize(*url);
 }
 
-struct miqt_array /* of QNetworkCookie* */  QNetworkCookie_ParseCookies(struct miqt_string cookieString) {
+struct miqt_array /* of QNetworkCookie* */  QNetworkCookie_parseCookies(struct miqt_string cookieString) {
 	QByteArray cookieString_QByteArray(cookieString.data, cookieString.len);
 	QList<QNetworkCookie> _ret = QNetworkCookie::parseCookies(cookieString_QByteArray);
 	// Convert QList<> from C++ memory to manually-managed C memory
@@ -171,7 +171,7 @@ struct miqt_array /* of QNetworkCookie* */  QNetworkCookie_ParseCookies(struct m
 	return _out;
 }
 
-struct miqt_string QNetworkCookie_ToRawForm1(const QNetworkCookie* self, int form) {
+struct miqt_string QNetworkCookie_toRawForm1(const QNetworkCookie* self, int form) {
 	QByteArray _qb = self->toRawForm(static_cast<QNetworkCookie::RawForm>(form));
 	struct miqt_string _ms;
 	_ms.len = _qb.length();
@@ -180,7 +180,7 @@ struct miqt_string QNetworkCookie_ToRawForm1(const QNetworkCookie* self, int for
 	return _ms;
 }
 
-void QNetworkCookie_Delete(QNetworkCookie* self) {
+void QNetworkCookie_delete(QNetworkCookie* self) {
 	delete self;
 }
 

@@ -45,13 +45,13 @@ func UnsafeNewQVLABaseBase(h unsafe.Pointer) *QVLABaseBase {
 }
 
 func (this *QVLABaseBase) Capacity() int64 {
-	return (int64)(C.QVLABaseBase_Capacity(this.h))
+	return (int64)(C.QVLABaseBase_capacity(this.h))
 }
 
 func (this *QVLABaseBase) Size() int64 {
-	return (int64)(C.QVLABaseBase_Size(this.h))
+	return (int64)(C.QVLABaseBase_size(this.h))
 }
 
 func (this *QVLABaseBase) Empty() bool {
-	return (bool)(C.QVLABaseBase_Empty(this.h))
+	return (bool)(C.QVLABaseBase_empty(this.h))
 }

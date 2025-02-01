@@ -111,19 +111,19 @@ func NewQProgressDialog6(labelText string, cancelButtonText string, minimum int,
 }
 
 func (this *QProgressDialog) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QProgressDialog_MetaObject(this.h))
+	return newQMetaObject(C.QProgressDialog_metaObject(this.h))
 }
 
 func (this *QProgressDialog) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QProgressDialog_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QProgressDialog_metacast(this.h, param1_Cstring))
 }
 
 func QProgressDialog_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QProgressDialog_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QProgressDialog_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -132,95 +132,95 @@ func QProgressDialog_Tr(s string) string {
 func QProgressDialog_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QProgressDialog_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QProgressDialog_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QProgressDialog) SetLabel(label *QLabel) {
-	C.QProgressDialog_SetLabel(this.h, label.cPointer())
+	C.QProgressDialog_setLabel(this.h, label.cPointer())
 }
 
 func (this *QProgressDialog) SetCancelButton(button *QPushButton) {
-	C.QProgressDialog_SetCancelButton(this.h, button.cPointer())
+	C.QProgressDialog_setCancelButton(this.h, button.cPointer())
 }
 
 func (this *QProgressDialog) SetBar(bar *QProgressBar) {
-	C.QProgressDialog_SetBar(this.h, bar.cPointer())
+	C.QProgressDialog_setBar(this.h, bar.cPointer())
 }
 
 func (this *QProgressDialog) WasCanceled() bool {
-	return (bool)(C.QProgressDialog_WasCanceled(this.h))
+	return (bool)(C.QProgressDialog_wasCanceled(this.h))
 }
 
 func (this *QProgressDialog) Minimum() int {
-	return (int)(C.QProgressDialog_Minimum(this.h))
+	return (int)(C.QProgressDialog_minimum(this.h))
 }
 
 func (this *QProgressDialog) Maximum() int {
-	return (int)(C.QProgressDialog_Maximum(this.h))
+	return (int)(C.QProgressDialog_maximum(this.h))
 }
 
 func (this *QProgressDialog) Value() int {
-	return (int)(C.QProgressDialog_Value(this.h))
+	return (int)(C.QProgressDialog_value(this.h))
 }
 
 func (this *QProgressDialog) SizeHint() *QSize {
-	_goptr := newQSize(C.QProgressDialog_SizeHint(this.h))
+	_goptr := newQSize(C.QProgressDialog_sizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QProgressDialog) LabelText() string {
-	var _ms C.struct_miqt_string = C.QProgressDialog_LabelText(this.h)
+	var _ms C.struct_miqt_string = C.QProgressDialog_labelText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QProgressDialog) MinimumDuration() int {
-	return (int)(C.QProgressDialog_MinimumDuration(this.h))
+	return (int)(C.QProgressDialog_minimumDuration(this.h))
 }
 
 func (this *QProgressDialog) SetAutoReset(reset bool) {
-	C.QProgressDialog_SetAutoReset(this.h, (C.bool)(reset))
+	C.QProgressDialog_setAutoReset(this.h, (C.bool)(reset))
 }
 
 func (this *QProgressDialog) AutoReset() bool {
-	return (bool)(C.QProgressDialog_AutoReset(this.h))
+	return (bool)(C.QProgressDialog_autoReset(this.h))
 }
 
 func (this *QProgressDialog) SetAutoClose(close bool) {
-	C.QProgressDialog_SetAutoClose(this.h, (C.bool)(close))
+	C.QProgressDialog_setAutoClose(this.h, (C.bool)(close))
 }
 
 func (this *QProgressDialog) AutoClose() bool {
-	return (bool)(C.QProgressDialog_AutoClose(this.h))
+	return (bool)(C.QProgressDialog_autoClose(this.h))
 }
 
 func (this *QProgressDialog) Cancel() {
-	C.QProgressDialog_Cancel(this.h)
+	C.QProgressDialog_cancel(this.h)
 }
 
 func (this *QProgressDialog) Reset() {
-	C.QProgressDialog_Reset(this.h)
+	C.QProgressDialog_reset(this.h)
 }
 
 func (this *QProgressDialog) SetMaximum(maximum int) {
-	C.QProgressDialog_SetMaximum(this.h, (C.int)(maximum))
+	C.QProgressDialog_setMaximum(this.h, (C.int)(maximum))
 }
 
 func (this *QProgressDialog) SetMinimum(minimum int) {
-	C.QProgressDialog_SetMinimum(this.h, (C.int)(minimum))
+	C.QProgressDialog_setMinimum(this.h, (C.int)(minimum))
 }
 
 func (this *QProgressDialog) SetRange(minimum int, maximum int) {
-	C.QProgressDialog_SetRange(this.h, (C.int)(minimum), (C.int)(maximum))
+	C.QProgressDialog_setRange(this.h, (C.int)(minimum), (C.int)(maximum))
 }
 
 func (this *QProgressDialog) SetValue(progress int) {
-	C.QProgressDialog_SetValue(this.h, (C.int)(progress))
+	C.QProgressDialog_setValue(this.h, (C.int)(progress))
 }
 
 func (this *QProgressDialog) SetLabelText(text string) {
@@ -228,7 +228,7 @@ func (this *QProgressDialog) SetLabelText(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QProgressDialog_SetLabelText(this.h, text_ms)
+	C.QProgressDialog_setLabelText(this.h, text_ms)
 }
 
 func (this *QProgressDialog) SetCancelButtonText(text string) {
@@ -236,22 +236,22 @@ func (this *QProgressDialog) SetCancelButtonText(text string) {
 	text_ms.data = C.CString(text)
 	text_ms.len = C.size_t(len(text))
 	defer C.free(unsafe.Pointer(text_ms.data))
-	C.QProgressDialog_SetCancelButtonText(this.h, text_ms)
+	C.QProgressDialog_setCancelButtonText(this.h, text_ms)
 }
 
 func (this *QProgressDialog) SetMinimumDuration(ms int) {
-	C.QProgressDialog_SetMinimumDuration(this.h, (C.int)(ms))
+	C.QProgressDialog_setMinimumDuration(this.h, (C.int)(ms))
 }
 
 func (this *QProgressDialog) Canceled() {
-	C.QProgressDialog_Canceled(this.h)
+	C.QProgressDialog_canceled(this.h)
 }
 func (this *QProgressDialog) OnCanceled(slot func()) {
-	C.QProgressDialog_connect_Canceled(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QProgressDialog_connect_canceled(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QProgressDialog_Canceled
-func miqt_exec_callback_QProgressDialog_Canceled(cb C.intptr_t) {
+//export miqt_exec_callback_QProgressDialog_canceled
+func miqt_exec_callback_QProgressDialog_canceled(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -265,7 +265,7 @@ func QProgressDialog_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QProgressDialog_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QProgressDialog_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -276,7 +276,7 @@ func QProgressDialog_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QProgressDialog_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QProgressDialog_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -287,7 +287,7 @@ func QProgressDialog_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QProgressDialog_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QProgressDialog_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -298,7 +298,7 @@ func QProgressDialog_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QProgressDialog_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QProgressDialog_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -306,20 +306,20 @@ func QProgressDialog_TrUtf83(s string, c string, n int) string {
 
 func (this *QProgressDialog) callVirtualBase_SizeHint() *QSize {
 
-	_goptr := newQSize(C.QProgressDialog_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QProgressDialog_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QProgressDialog) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QProgressDialog_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnsizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QProgressDialog_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_SizeHint
-func miqt_exec_callback_QProgressDialog_SizeHint(self *C.QProgressDialog, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QProgressDialog_sizeHint
+func miqt_exec_callback_QProgressDialog_sizeHint(self *C.QProgressDialog, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -333,18 +333,18 @@ func miqt_exec_callback_QProgressDialog_SizeHint(self *C.QProgressDialog, cb C.i
 
 func (this *QProgressDialog) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 
-	C.QProgressDialog_virtualbase_ResizeEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
-	ok := C.QProgressDialog_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnresizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+	ok := C.QProgressDialog_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_ResizeEvent
-func miqt_exec_callback_QProgressDialog_ResizeEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QResizeEvent) {
+//export miqt_exec_callback_QProgressDialog_resizeEvent
+func miqt_exec_callback_QProgressDialog_resizeEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QResizeEvent), event *QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -359,18 +359,18 @@ func miqt_exec_callback_QProgressDialog_ResizeEvent(self *C.QProgressDialog, cb 
 
 func (this *QProgressDialog) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
-	C.QProgressDialog_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
-	ok := C.QProgressDialog_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QProgressDialog_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_CloseEvent
-func miqt_exec_callback_QProgressDialog_CloseEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QProgressDialog_closeEvent
+func miqt_exec_callback_QProgressDialog_closeEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -385,18 +385,18 @@ func miqt_exec_callback_QProgressDialog_CloseEvent(self *C.QProgressDialog, cb C
 
 func (this *QProgressDialog) callVirtualBase_ChangeEvent(event *QEvent) {
 
-	C.QProgressDialog_virtualbase_ChangeEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnChangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QProgressDialog_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnchangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QProgressDialog_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_ChangeEvent
-func miqt_exec_callback_QProgressDialog_ChangeEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QProgressDialog_changeEvent
+func miqt_exec_callback_QProgressDialog_changeEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -411,18 +411,18 @@ func miqt_exec_callback_QProgressDialog_ChangeEvent(self *C.QProgressDialog, cb 
 
 func (this *QProgressDialog) callVirtualBase_ShowEvent(event *QShowEvent) {
 
-	C.QProgressDialog_virtualbase_ShowEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
-	ok := C.QProgressDialog_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnshowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	ok := C.QProgressDialog_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_ShowEvent
-func miqt_exec_callback_QProgressDialog_ShowEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QShowEvent) {
+//export miqt_exec_callback_QProgressDialog_showEvent
+func miqt_exec_callback_QProgressDialog_showEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QShowEvent), event *QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -437,18 +437,18 @@ func miqt_exec_callback_QProgressDialog_ShowEvent(self *C.QProgressDialog, cb C.
 
 func (this *QProgressDialog) callVirtualBase_SetVisible(visible bool) {
 
-	C.QProgressDialog_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QProgressDialog_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QProgressDialog) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QProgressDialog_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QProgressDialog_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_SetVisible
-func miqt_exec_callback_QProgressDialog_SetVisible(self *C.QProgressDialog, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QProgressDialog_setVisible
+func miqt_exec_callback_QProgressDialog_setVisible(self *C.QProgressDialog, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -463,20 +463,20 @@ func miqt_exec_callback_QProgressDialog_SetVisible(self *C.QProgressDialog, cb C
 
 func (this *QProgressDialog) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_goptr := newQSize(C.QProgressDialog_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QProgressDialog_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QProgressDialog) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QProgressDialog_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QProgressDialog_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_MinimumSizeHint
-func miqt_exec_callback_QProgressDialog_MinimumSizeHint(self *C.QProgressDialog, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QProgressDialog_minimumSizeHint
+func miqt_exec_callback_QProgressDialog_minimumSizeHint(self *C.QProgressDialog, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -490,18 +490,18 @@ func miqt_exec_callback_QProgressDialog_MinimumSizeHint(self *C.QProgressDialog,
 
 func (this *QProgressDialog) callVirtualBase_Open() {
 
-	C.QProgressDialog_virtualbase_Open(unsafe.Pointer(this.h))
+	C.QProgressDialog_virtualbase_open(unsafe.Pointer(this.h))
 
 }
-func (this *QProgressDialog) OnOpen(slot func(super func())) {
-	ok := C.QProgressDialog_override_virtual_Open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) Onopen(slot func(super func())) {
+	ok := C.QProgressDialog_override_virtual_open(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_Open
-func miqt_exec_callback_QProgressDialog_Open(self *C.QProgressDialog, cb C.intptr_t) {
+//export miqt_exec_callback_QProgressDialog_open
+func miqt_exec_callback_QProgressDialog_open(self *C.QProgressDialog, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -513,18 +513,18 @@ func miqt_exec_callback_QProgressDialog_Open(self *C.QProgressDialog, cb C.intpt
 
 func (this *QProgressDialog) callVirtualBase_Exec() int {
 
-	return (int)(C.QProgressDialog_virtualbase_Exec(unsafe.Pointer(this.h)))
+	return (int)(C.QProgressDialog_virtualbase_exec(unsafe.Pointer(this.h)))
 
 }
-func (this *QProgressDialog) OnExec(slot func(super func() int) int) {
-	ok := C.QProgressDialog_override_virtual_Exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) Onexec(slot func(super func() int) int) {
+	ok := C.QProgressDialog_override_virtual_exec(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_Exec
-func miqt_exec_callback_QProgressDialog_Exec(self *C.QProgressDialog, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QProgressDialog_exec
+func miqt_exec_callback_QProgressDialog_exec(self *C.QProgressDialog, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -538,18 +538,18 @@ func miqt_exec_callback_QProgressDialog_Exec(self *C.QProgressDialog, cb C.intpt
 
 func (this *QProgressDialog) callVirtualBase_Done(param1 int) {
 
-	C.QProgressDialog_virtualbase_Done(unsafe.Pointer(this.h), (C.int)(param1))
+	C.QProgressDialog_virtualbase_done(unsafe.Pointer(this.h), (C.int)(param1))
 
 }
-func (this *QProgressDialog) OnDone(slot func(super func(param1 int), param1 int)) {
-	ok := C.QProgressDialog_override_virtual_Done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) Ondone(slot func(super func(param1 int), param1 int)) {
+	ok := C.QProgressDialog_override_virtual_done(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_Done
-func miqt_exec_callback_QProgressDialog_Done(self *C.QProgressDialog, cb C.intptr_t, param1 C.int) {
+//export miqt_exec_callback_QProgressDialog_done
+func miqt_exec_callback_QProgressDialog_done(self *C.QProgressDialog, cb C.intptr_t, param1 C.int) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int), param1 int))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -564,18 +564,18 @@ func miqt_exec_callback_QProgressDialog_Done(self *C.QProgressDialog, cb C.intpt
 
 func (this *QProgressDialog) callVirtualBase_Accept() {
 
-	C.QProgressDialog_virtualbase_Accept(unsafe.Pointer(this.h))
+	C.QProgressDialog_virtualbase_accept(unsafe.Pointer(this.h))
 
 }
-func (this *QProgressDialog) OnAccept(slot func(super func())) {
-	ok := C.QProgressDialog_override_virtual_Accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) Onaccept(slot func(super func())) {
+	ok := C.QProgressDialog_override_virtual_accept(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_Accept
-func miqt_exec_callback_QProgressDialog_Accept(self *C.QProgressDialog, cb C.intptr_t) {
+//export miqt_exec_callback_QProgressDialog_accept
+func miqt_exec_callback_QProgressDialog_accept(self *C.QProgressDialog, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -587,18 +587,18 @@ func miqt_exec_callback_QProgressDialog_Accept(self *C.QProgressDialog, cb C.int
 
 func (this *QProgressDialog) callVirtualBase_Reject() {
 
-	C.QProgressDialog_virtualbase_Reject(unsafe.Pointer(this.h))
+	C.QProgressDialog_virtualbase_reject(unsafe.Pointer(this.h))
 
 }
-func (this *QProgressDialog) OnReject(slot func(super func())) {
-	ok := C.QProgressDialog_override_virtual_Reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) Onreject(slot func(super func())) {
+	ok := C.QProgressDialog_override_virtual_reject(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_Reject
-func miqt_exec_callback_QProgressDialog_Reject(self *C.QProgressDialog, cb C.intptr_t) {
+//export miqt_exec_callback_QProgressDialog_reject
+func miqt_exec_callback_QProgressDialog_reject(self *C.QProgressDialog, cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func()))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -610,18 +610,18 @@ func miqt_exec_callback_QProgressDialog_Reject(self *C.QProgressDialog, cb C.int
 
 func (this *QProgressDialog) callVirtualBase_KeyPressEvent(param1 *QKeyEvent) {
 
-	C.QProgressDialog_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QProgressDialog_virtualbase_keyPressEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QProgressDialog) OnKeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
-	ok := C.QProgressDialog_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnkeyPressEvent(slot func(super func(param1 *QKeyEvent), param1 *QKeyEvent)) {
+	ok := C.QProgressDialog_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_KeyPressEvent
-func miqt_exec_callback_QProgressDialog_KeyPressEvent(self *C.QProgressDialog, cb C.intptr_t, param1 *C.QKeyEvent) {
+//export miqt_exec_callback_QProgressDialog_keyPressEvent
+func miqt_exec_callback_QProgressDialog_keyPressEvent(self *C.QProgressDialog, cb C.intptr_t, param1 *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QKeyEvent), param1 *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -636,18 +636,18 @@ func miqt_exec_callback_QProgressDialog_KeyPressEvent(self *C.QProgressDialog, c
 
 func (this *QProgressDialog) callVirtualBase_ContextMenuEvent(param1 *QContextMenuEvent) {
 
-	C.QProgressDialog_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QProgressDialog_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QProgressDialog) OnContextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
-	ok := C.QProgressDialog_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OncontextMenuEvent(slot func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent)) {
+	ok := C.QProgressDialog_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_ContextMenuEvent
-func miqt_exec_callback_QProgressDialog_ContextMenuEvent(self *C.QProgressDialog, cb C.intptr_t, param1 *C.QContextMenuEvent) {
+//export miqt_exec_callback_QProgressDialog_contextMenuEvent
+func miqt_exec_callback_QProgressDialog_contextMenuEvent(self *C.QProgressDialog, cb C.intptr_t, param1 *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QContextMenuEvent), param1 *QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -662,18 +662,18 @@ func miqt_exec_callback_QProgressDialog_ContextMenuEvent(self *C.QProgressDialog
 
 func (this *QProgressDialog) callVirtualBase_EventFilter(param1 *QObject, param2 *QEvent) bool {
 
-	return (bool)(C.QProgressDialog_virtualbase_EventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
+	return (bool)(C.QProgressDialog_virtualbase_eventFilter(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
 }
-func (this *QProgressDialog) OnEventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
-	ok := C.QProgressDialog_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OneventFilter(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	ok := C.QProgressDialog_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_EventFilter
-func miqt_exec_callback_QProgressDialog_EventFilter(self *C.QProgressDialog, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+//export miqt_exec_callback_QProgressDialog_eventFilter
+func miqt_exec_callback_QProgressDialog_eventFilter(self *C.QProgressDialog, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -692,18 +692,18 @@ func miqt_exec_callback_QProgressDialog_EventFilter(self *C.QProgressDialog, cb 
 
 func (this *QProgressDialog) callVirtualBase_DevType() int {
 
-	return (int)(C.QProgressDialog_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QProgressDialog_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QProgressDialog) OnDevType(slot func(super func() int) int) {
-	ok := C.QProgressDialog_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OndevType(slot func(super func() int) int) {
+	ok := C.QProgressDialog_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_DevType
-func miqt_exec_callback_QProgressDialog_DevType(self *C.QProgressDialog, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QProgressDialog_devType
+func miqt_exec_callback_QProgressDialog_devType(self *C.QProgressDialog, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -717,18 +717,18 @@ func miqt_exec_callback_QProgressDialog_DevType(self *C.QProgressDialog, cb C.in
 
 func (this *QProgressDialog) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QProgressDialog_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QProgressDialog_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QProgressDialog) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QProgressDialog_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QProgressDialog_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_HeightForWidth
-func miqt_exec_callback_QProgressDialog_HeightForWidth(self *C.QProgressDialog, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QProgressDialog_heightForWidth
+func miqt_exec_callback_QProgressDialog_heightForWidth(self *C.QProgressDialog, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -745,18 +745,18 @@ func miqt_exec_callback_QProgressDialog_HeightForWidth(self *C.QProgressDialog, 
 
 func (this *QProgressDialog) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QProgressDialog_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QProgressDialog_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QProgressDialog) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QProgressDialog_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QProgressDialog_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_HasHeightForWidth
-func miqt_exec_callback_QProgressDialog_HasHeightForWidth(self *C.QProgressDialog, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QProgressDialog_hasHeightForWidth
+func miqt_exec_callback_QProgressDialog_hasHeightForWidth(self *C.QProgressDialog, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -770,18 +770,18 @@ func miqt_exec_callback_QProgressDialog_HasHeightForWidth(self *C.QProgressDialo
 
 func (this *QProgressDialog) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return newQPaintEngine(C.QProgressDialog_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+	return newQPaintEngine(C.QProgressDialog_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QProgressDialog) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	ok := C.QProgressDialog_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QProgressDialog_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_PaintEngine
-func miqt_exec_callback_QProgressDialog_PaintEngine(self *C.QProgressDialog, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QProgressDialog_paintEngine
+func miqt_exec_callback_QProgressDialog_paintEngine(self *C.QProgressDialog, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -795,18 +795,18 @@ func miqt_exec_callback_QProgressDialog_PaintEngine(self *C.QProgressDialog, cb 
 
 func (this *QProgressDialog) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QProgressDialog_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QProgressDialog_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QProgressDialog) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QProgressDialog_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QProgressDialog_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_Event
-func miqt_exec_callback_QProgressDialog_Event(self *C.QProgressDialog, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QProgressDialog_event
+func miqt_exec_callback_QProgressDialog_event(self *C.QProgressDialog, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -823,18 +823,18 @@ func miqt_exec_callback_QProgressDialog_Event(self *C.QProgressDialog, cb C.intp
 
 func (this *QProgressDialog) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 
-	C.QProgressDialog_virtualbase_MousePressEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QProgressDialog_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnmousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QProgressDialog_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_MousePressEvent
-func miqt_exec_callback_QProgressDialog_MousePressEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QProgressDialog_mousePressEvent
+func miqt_exec_callback_QProgressDialog_mousePressEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -849,18 +849,18 @@ func miqt_exec_callback_QProgressDialog_MousePressEvent(self *C.QProgressDialog,
 
 func (this *QProgressDialog) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
 
-	C.QProgressDialog_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QProgressDialog_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnmouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QProgressDialog_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_MouseReleaseEvent
-func miqt_exec_callback_QProgressDialog_MouseReleaseEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QProgressDialog_mouseReleaseEvent
+func miqt_exec_callback_QProgressDialog_mouseReleaseEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -875,18 +875,18 @@ func miqt_exec_callback_QProgressDialog_MouseReleaseEvent(self *C.QProgressDialo
 
 func (this *QProgressDialog) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
 
-	C.QProgressDialog_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QProgressDialog_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QProgressDialog_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_MouseDoubleClickEvent
-func miqt_exec_callback_QProgressDialog_MouseDoubleClickEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QProgressDialog_mouseDoubleClickEvent
+func miqt_exec_callback_QProgressDialog_mouseDoubleClickEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -901,18 +901,18 @@ func miqt_exec_callback_QProgressDialog_MouseDoubleClickEvent(self *C.QProgressD
 
 func (this *QProgressDialog) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 
-	C.QProgressDialog_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QProgressDialog_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnmouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QProgressDialog_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_MouseMoveEvent
-func miqt_exec_callback_QProgressDialog_MouseMoveEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QProgressDialog_mouseMoveEvent
+func miqt_exec_callback_QProgressDialog_mouseMoveEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -927,18 +927,18 @@ func miqt_exec_callback_QProgressDialog_MouseMoveEvent(self *C.QProgressDialog, 
 
 func (this *QProgressDialog) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
-	C.QProgressDialog_virtualbase_WheelEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
-	ok := C.QProgressDialog_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnwheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+	ok := C.QProgressDialog_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_WheelEvent
-func miqt_exec_callback_QProgressDialog_WheelEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QWheelEvent) {
+//export miqt_exec_callback_QProgressDialog_wheelEvent
+func miqt_exec_callback_QProgressDialog_wheelEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QWheelEvent), event *QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -953,18 +953,18 @@ func miqt_exec_callback_QProgressDialog_WheelEvent(self *C.QProgressDialog, cb C
 
 func (this *QProgressDialog) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
-	C.QProgressDialog_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QProgressDialog_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QProgressDialog_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_KeyReleaseEvent
-func miqt_exec_callback_QProgressDialog_KeyReleaseEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QProgressDialog_keyReleaseEvent
+func miqt_exec_callback_QProgressDialog_keyReleaseEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -979,18 +979,18 @@ func miqt_exec_callback_QProgressDialog_KeyReleaseEvent(self *C.QProgressDialog,
 
 func (this *QProgressDialog) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
-	C.QProgressDialog_virtualbase_FocusInEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QProgressDialog_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QProgressDialog_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_FocusInEvent
-func miqt_exec_callback_QProgressDialog_FocusInEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QProgressDialog_focusInEvent
+func miqt_exec_callback_QProgressDialog_focusInEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1005,18 +1005,18 @@ func miqt_exec_callback_QProgressDialog_FocusInEvent(self *C.QProgressDialog, cb
 
 func (this *QProgressDialog) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
-	C.QProgressDialog_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QProgressDialog_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QProgressDialog_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_FocusOutEvent
-func miqt_exec_callback_QProgressDialog_FocusOutEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QProgressDialog_focusOutEvent
+func miqt_exec_callback_QProgressDialog_focusOutEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1031,18 +1031,18 @@ func miqt_exec_callback_QProgressDialog_FocusOutEvent(self *C.QProgressDialog, c
 
 func (this *QProgressDialog) callVirtualBase_EnterEvent(event *QEvent) {
 
-	C.QProgressDialog_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnEnterEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QProgressDialog_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnenterEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QProgressDialog_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_EnterEvent
-func miqt_exec_callback_QProgressDialog_EnterEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QProgressDialog_enterEvent
+func miqt_exec_callback_QProgressDialog_enterEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1057,18 +1057,18 @@ func miqt_exec_callback_QProgressDialog_EnterEvent(self *C.QProgressDialog, cb C
 
 func (this *QProgressDialog) callVirtualBase_LeaveEvent(event *QEvent) {
 
-	C.QProgressDialog_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QProgressDialog_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QProgressDialog_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_LeaveEvent
-func miqt_exec_callback_QProgressDialog_LeaveEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QProgressDialog_leaveEvent
+func miqt_exec_callback_QProgressDialog_leaveEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1083,18 +1083,18 @@ func miqt_exec_callback_QProgressDialog_LeaveEvent(self *C.QProgressDialog, cb C
 
 func (this *QProgressDialog) callVirtualBase_PaintEvent(event *QPaintEvent) {
 
-	C.QProgressDialog_virtualbase_PaintEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnPaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
-	ok := C.QProgressDialog_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnpaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
+	ok := C.QProgressDialog_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_PaintEvent
-func miqt_exec_callback_QProgressDialog_PaintEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QPaintEvent) {
+//export miqt_exec_callback_QProgressDialog_paintEvent
+func miqt_exec_callback_QProgressDialog_paintEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QPaintEvent), event *QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1109,18 +1109,18 @@ func miqt_exec_callback_QProgressDialog_PaintEvent(self *C.QProgressDialog, cb C
 
 func (this *QProgressDialog) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
-	C.QProgressDialog_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
-	ok := C.QProgressDialog_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QProgressDialog_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_MoveEvent
-func miqt_exec_callback_QProgressDialog_MoveEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QProgressDialog_moveEvent
+func miqt_exec_callback_QProgressDialog_moveEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1135,18 +1135,18 @@ func miqt_exec_callback_QProgressDialog_MoveEvent(self *C.QProgressDialog, cb C.
 
 func (this *QProgressDialog) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
-	C.QProgressDialog_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
-	ok := C.QProgressDialog_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QProgressDialog_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_TabletEvent
-func miqt_exec_callback_QProgressDialog_TabletEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QProgressDialog_tabletEvent
+func miqt_exec_callback_QProgressDialog_tabletEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1161,18 +1161,18 @@ func miqt_exec_callback_QProgressDialog_TabletEvent(self *C.QProgressDialog, cb 
 
 func (this *QProgressDialog) callVirtualBase_ActionEvent(event *QActionEvent) {
 
-	C.QProgressDialog_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
-	ok := C.QProgressDialog_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QProgressDialog_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_ActionEvent
-func miqt_exec_callback_QProgressDialog_ActionEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QProgressDialog_actionEvent
+func miqt_exec_callback_QProgressDialog_actionEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1187,18 +1187,18 @@ func miqt_exec_callback_QProgressDialog_ActionEvent(self *C.QProgressDialog, cb 
 
 func (this *QProgressDialog) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
 
-	C.QProgressDialog_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
-	ok := C.QProgressDialog_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	ok := C.QProgressDialog_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_DragEnterEvent
-func miqt_exec_callback_QProgressDialog_DragEnterEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QDragEnterEvent) {
+//export miqt_exec_callback_QProgressDialog_dragEnterEvent
+func miqt_exec_callback_QProgressDialog_dragEnterEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragEnterEvent), event *QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1213,18 +1213,18 @@ func miqt_exec_callback_QProgressDialog_DragEnterEvent(self *C.QProgressDialog, 
 
 func (this *QProgressDialog) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 
-	C.QProgressDialog_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
-	ok := C.QProgressDialog_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	ok := C.QProgressDialog_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_DragMoveEvent
-func miqt_exec_callback_QProgressDialog_DragMoveEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QDragMoveEvent) {
+//export miqt_exec_callback_QProgressDialog_dragMoveEvent
+func miqt_exec_callback_QProgressDialog_dragMoveEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragMoveEvent), event *QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1239,18 +1239,18 @@ func miqt_exec_callback_QProgressDialog_DragMoveEvent(self *C.QProgressDialog, c
 
 func (this *QProgressDialog) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
 
-	C.QProgressDialog_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
-	ok := C.QProgressDialog_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	ok := C.QProgressDialog_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_DragLeaveEvent
-func miqt_exec_callback_QProgressDialog_DragLeaveEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QProgressDialog_dragLeaveEvent
+func miqt_exec_callback_QProgressDialog_dragLeaveEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1265,18 +1265,18 @@ func miqt_exec_callback_QProgressDialog_DragLeaveEvent(self *C.QProgressDialog, 
 
 func (this *QProgressDialog) callVirtualBase_DropEvent(event *QDropEvent) {
 
-	C.QProgressDialog_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
-	ok := C.QProgressDialog_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	ok := C.QProgressDialog_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_DropEvent
-func miqt_exec_callback_QProgressDialog_DropEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QDropEvent) {
+//export miqt_exec_callback_QProgressDialog_dropEvent
+func miqt_exec_callback_QProgressDialog_dropEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1291,18 +1291,18 @@ func miqt_exec_callback_QProgressDialog_DropEvent(self *C.QProgressDialog, cb C.
 
 func (this *QProgressDialog) callVirtualBase_HideEvent(event *QHideEvent) {
 
-	C.QProgressDialog_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
-	ok := C.QProgressDialog_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QProgressDialog_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_HideEvent
-func miqt_exec_callback_QProgressDialog_HideEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_QProgressDialog_hideEvent
+func miqt_exec_callback_QProgressDialog_hideEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1324,18 +1324,18 @@ func (this *QProgressDialog) callVirtualBase_NativeEvent(eventType []byte, messa
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QProgressDialog_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
+	return (bool)(C.QProgressDialog_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.long)(unsafe.Pointer(result))))
 
 }
-func (this *QProgressDialog) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
-	ok := C.QProgressDialog_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool) {
+	ok := C.QProgressDialog_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_NativeEvent
-func miqt_exec_callback_QProgressDialog_NativeEvent(self *C.QProgressDialog, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
+//export miqt_exec_callback_QProgressDialog_nativeEvent
+func miqt_exec_callback_QProgressDialog_nativeEvent(self *C.QProgressDialog, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.long) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *int64) bool, eventType []byte, message unsafe.Pointer, result *int64) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1358,18 +1358,18 @@ func miqt_exec_callback_QProgressDialog_NativeEvent(self *C.QProgressDialog, cb 
 
 func (this *QProgressDialog) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QProgressDialog_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QProgressDialog_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QProgressDialog) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QProgressDialog_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QProgressDialog_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_Metric
-func miqt_exec_callback_QProgressDialog_Metric(self *C.QProgressDialog, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QProgressDialog_metric
+func miqt_exec_callback_QProgressDialog_metric(self *C.QProgressDialog, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1386,18 +1386,18 @@ func miqt_exec_callback_QProgressDialog_Metric(self *C.QProgressDialog, cb C.int
 
 func (this *QProgressDialog) callVirtualBase_InitPainter(painter *QPainter) {
 
-	C.QProgressDialog_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+	C.QProgressDialog_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QProgressDialog) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	ok := C.QProgressDialog_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QProgressDialog_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_InitPainter
-func miqt_exec_callback_QProgressDialog_InitPainter(self *C.QProgressDialog, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QProgressDialog_initPainter
+func miqt_exec_callback_QProgressDialog_initPainter(self *C.QProgressDialog, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1412,18 +1412,18 @@ func miqt_exec_callback_QProgressDialog_InitPainter(self *C.QProgressDialog, cb 
 
 func (this *QProgressDialog) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return newQPaintDevice(C.QProgressDialog_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+	return newQPaintDevice(C.QProgressDialog_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QProgressDialog) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	ok := C.QProgressDialog_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QProgressDialog_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_Redirected
-func miqt_exec_callback_QProgressDialog_Redirected(self *C.QProgressDialog, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QProgressDialog_redirected
+func miqt_exec_callback_QProgressDialog_redirected(self *C.QProgressDialog, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1440,18 +1440,18 @@ func miqt_exec_callback_QProgressDialog_Redirected(self *C.QProgressDialog, cb C
 
 func (this *QProgressDialog) callVirtualBase_SharedPainter() *QPainter {
 
-	return newQPainter(C.QProgressDialog_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+	return newQPainter(C.QProgressDialog_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QProgressDialog) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	ok := C.QProgressDialog_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QProgressDialog_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_SharedPainter
-func miqt_exec_callback_QProgressDialog_SharedPainter(self *C.QProgressDialog, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QProgressDialog_sharedPainter
+func miqt_exec_callback_QProgressDialog_sharedPainter(self *C.QProgressDialog, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1465,18 +1465,18 @@ func miqt_exec_callback_QProgressDialog_SharedPainter(self *C.QProgressDialog, c
 
 func (this *QProgressDialog) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
 
-	C.QProgressDialog_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QProgressDialog_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QProgressDialog) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
-	ok := C.QProgressDialog_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QProgressDialog_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_InputMethodEvent
-func miqt_exec_callback_QProgressDialog_InputMethodEvent(self *C.QProgressDialog, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QProgressDialog_inputMethodEvent
+func miqt_exec_callback_QProgressDialog_inputMethodEvent(self *C.QProgressDialog, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1491,20 +1491,20 @@ func miqt_exec_callback_QProgressDialog_InputMethodEvent(self *C.QProgressDialog
 
 func (this *QProgressDialog) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_goptr := newQVariant(C.QProgressDialog_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
+	_goptr := newQVariant(C.QProgressDialog_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QProgressDialog) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
-	ok := C.QProgressDialog_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	ok := C.QProgressDialog_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_InputMethodQuery
-func miqt_exec_callback_QProgressDialog_InputMethodQuery(self *C.QProgressDialog, cb C.intptr_t, param1 C.int) *C.QVariant {
+//export miqt_exec_callback_QProgressDialog_inputMethodQuery
+func miqt_exec_callback_QProgressDialog_inputMethodQuery(self *C.QProgressDialog, cb C.intptr_t, param1 C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1521,18 +1521,18 @@ func miqt_exec_callback_QProgressDialog_InputMethodQuery(self *C.QProgressDialog
 
 func (this *QProgressDialog) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QProgressDialog_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QProgressDialog_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QProgressDialog) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QProgressDialog_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QProgressDialog_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_FocusNextPrevChild
-func miqt_exec_callback_QProgressDialog_FocusNextPrevChild(self *C.QProgressDialog, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QProgressDialog_focusNextPrevChild
+func miqt_exec_callback_QProgressDialog_focusNextPrevChild(self *C.QProgressDialog, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1549,18 +1549,18 @@ func miqt_exec_callback_QProgressDialog_FocusNextPrevChild(self *C.QProgressDial
 
 func (this *QProgressDialog) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QProgressDialog_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QProgressDialog_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QProgressDialog_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_TimerEvent
-func miqt_exec_callback_QProgressDialog_TimerEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QProgressDialog_timerEvent
+func miqt_exec_callback_QProgressDialog_timerEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1575,18 +1575,18 @@ func miqt_exec_callback_QProgressDialog_TimerEvent(self *C.QProgressDialog, cb C
 
 func (this *QProgressDialog) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QProgressDialog_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QProgressDialog_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QProgressDialog_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_ChildEvent
-func miqt_exec_callback_QProgressDialog_ChildEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QProgressDialog_childEvent
+func miqt_exec_callback_QProgressDialog_childEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1601,18 +1601,18 @@ func miqt_exec_callback_QProgressDialog_ChildEvent(self *C.QProgressDialog, cb C
 
 func (this *QProgressDialog) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QProgressDialog_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QProgressDialog_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QProgressDialog) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QProgressDialog_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QProgressDialog_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_CustomEvent
-func miqt_exec_callback_QProgressDialog_CustomEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QProgressDialog_customEvent
+func miqt_exec_callback_QProgressDialog_customEvent(self *C.QProgressDialog, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1627,18 +1627,18 @@ func miqt_exec_callback_QProgressDialog_CustomEvent(self *C.QProgressDialog, cb 
 
 func (this *QProgressDialog) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QProgressDialog_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QProgressDialog_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QProgressDialog) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QProgressDialog_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QProgressDialog_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_ConnectNotify
-func miqt_exec_callback_QProgressDialog_ConnectNotify(self *C.QProgressDialog, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QProgressDialog_connectNotify
+func miqt_exec_callback_QProgressDialog_connectNotify(self *C.QProgressDialog, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1653,18 +1653,18 @@ func miqt_exec_callback_QProgressDialog_ConnectNotify(self *C.QProgressDialog, c
 
 func (this *QProgressDialog) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QProgressDialog_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QProgressDialog_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QProgressDialog) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QProgressDialog_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QProgressDialog) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QProgressDialog_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QProgressDialog_DisconnectNotify
-func miqt_exec_callback_QProgressDialog_DisconnectNotify(self *C.QProgressDialog, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QProgressDialog_disconnectNotify
+func miqt_exec_callback_QProgressDialog_disconnectNotify(self *C.QProgressDialog, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1679,7 +1679,7 @@ func miqt_exec_callback_QProgressDialog_DisconnectNotify(self *C.QProgressDialog
 
 // Delete this object from C++ memory.
 func (this *QProgressDialog) Delete() {
-	C.QProgressDialog_Delete(this.h)
+	C.QProgressDialog_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

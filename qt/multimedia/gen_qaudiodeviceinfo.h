@@ -24,28 +24,28 @@ typedef struct QAudioFormat QAudioFormat;
 
 QAudioDeviceInfo* QAudioDeviceInfo_new();
 QAudioDeviceInfo* QAudioDeviceInfo_new2(QAudioDeviceInfo* other);
-void QAudioDeviceInfo_OperatorAssign(QAudioDeviceInfo* self, QAudioDeviceInfo* other);
-bool QAudioDeviceInfo_OperatorEqual(const QAudioDeviceInfo* self, QAudioDeviceInfo* other);
-bool QAudioDeviceInfo_OperatorNotEqual(const QAudioDeviceInfo* self, QAudioDeviceInfo* other);
-bool QAudioDeviceInfo_IsNull(const QAudioDeviceInfo* self);
-struct miqt_string QAudioDeviceInfo_DeviceName(const QAudioDeviceInfo* self);
-bool QAudioDeviceInfo_IsFormatSupported(const QAudioDeviceInfo* self, QAudioFormat* format);
-QAudioFormat* QAudioDeviceInfo_PreferredFormat(const QAudioDeviceInfo* self);
-QAudioFormat* QAudioDeviceInfo_NearestFormat(const QAudioDeviceInfo* self, QAudioFormat* format);
-struct miqt_array /* of struct miqt_string */  QAudioDeviceInfo_SupportedCodecs(const QAudioDeviceInfo* self);
-struct miqt_array /* of int */  QAudioDeviceInfo_SupportedSampleRates(const QAudioDeviceInfo* self);
-struct miqt_array /* of int */  QAudioDeviceInfo_SupportedChannelCounts(const QAudioDeviceInfo* self);
-struct miqt_array /* of int */  QAudioDeviceInfo_SupportedSampleSizes(const QAudioDeviceInfo* self);
-struct miqt_array /* of int */  QAudioDeviceInfo_SupportedByteOrders(const QAudioDeviceInfo* self);
-struct miqt_array /* of int */  QAudioDeviceInfo_SupportedSampleTypes(const QAudioDeviceInfo* self);
-struct miqt_string QAudioDeviceInfo_Realm(const QAudioDeviceInfo* self);
-QAudioDeviceInfo* QAudioDeviceInfo_DefaultInputDevice();
-QAudioDeviceInfo* QAudioDeviceInfo_DefaultOutputDevice();
-struct miqt_array /* of QAudioDeviceInfo* */  QAudioDeviceInfo_AvailableDevices(int mode);
-void QAudioDeviceInfo_Delete(QAudioDeviceInfo* self);
+void QAudioDeviceInfo_operatorAssign(QAudioDeviceInfo* self, QAudioDeviceInfo* other);
+bool QAudioDeviceInfo_operatorEqual(const QAudioDeviceInfo* self, QAudioDeviceInfo* other);
+bool QAudioDeviceInfo_operatorNotEqual(const QAudioDeviceInfo* self, QAudioDeviceInfo* other);
+bool QAudioDeviceInfo_isNull(const QAudioDeviceInfo* self);
+struct miqt_string QAudioDeviceInfo_deviceName(const QAudioDeviceInfo* self);
+bool QAudioDeviceInfo_isFormatSupported(const QAudioDeviceInfo* self, QAudioFormat* format);
+QAudioFormat* QAudioDeviceInfo_preferredFormat(const QAudioDeviceInfo* self);
+QAudioFormat* QAudioDeviceInfo_nearestFormat(const QAudioDeviceInfo* self, QAudioFormat* format);
+struct miqt_array /* of struct miqt_string */  QAudioDeviceInfo_supportedCodecs(const QAudioDeviceInfo* self);
+struct miqt_array /* of int */  QAudioDeviceInfo_supportedSampleRates(const QAudioDeviceInfo* self);
+struct miqt_array /* of int */  QAudioDeviceInfo_supportedChannelCounts(const QAudioDeviceInfo* self);
+struct miqt_array /* of int */  QAudioDeviceInfo_supportedSampleSizes(const QAudioDeviceInfo* self);
+struct miqt_array /* of int */  QAudioDeviceInfo_supportedByteOrders(const QAudioDeviceInfo* self);
+struct miqt_array /* of int */  QAudioDeviceInfo_supportedSampleTypes(const QAudioDeviceInfo* self);
+struct miqt_string QAudioDeviceInfo_realm(const QAudioDeviceInfo* self);
+QAudioDeviceInfo* QAudioDeviceInfo_defaultInputDevice();
+QAudioDeviceInfo* QAudioDeviceInfo_defaultOutputDevice();
+struct miqt_array /* of QAudioDeviceInfo* */  QAudioDeviceInfo_availableDevices(int mode);
+void QAudioDeviceInfo_delete(QAudioDeviceInfo* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

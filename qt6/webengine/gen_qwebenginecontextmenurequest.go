@@ -107,73 +107,73 @@ func UnsafeNewQWebEngineContextMenuRequest(h unsafe.Pointer) *QWebEngineContextM
 }
 
 func (this *QWebEngineContextMenuRequest) MetaObject() *qt6.QMetaObject {
-	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineContextMenuRequest_MetaObject(this.h)))
+	return qt6.UnsafeNewQMetaObject(unsafe.Pointer(C.QWebEngineContextMenuRequest_metaObject(this.h)))
 }
 
 func (this *QWebEngineContextMenuRequest) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QWebEngineContextMenuRequest_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QWebEngineContextMenuRequest_metacast(this.h, param1_Cstring))
 }
 
 func QWebEngineContextMenuRequest_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineContextMenuRequest_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineContextMenuRequest_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineContextMenuRequest) Position() *qt6.QPoint {
-	_goptr := qt6.UnsafeNewQPoint(unsafe.Pointer(C.QWebEngineContextMenuRequest_Position(this.h)))
+	_goptr := qt6.UnsafeNewQPoint(unsafe.Pointer(C.QWebEngineContextMenuRequest_position(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineContextMenuRequest) SelectedText() string {
-	var _ms C.struct_miqt_string = C.QWebEngineContextMenuRequest_SelectedText(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineContextMenuRequest_selectedText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineContextMenuRequest) LinkText() string {
-	var _ms C.struct_miqt_string = C.QWebEngineContextMenuRequest_LinkText(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineContextMenuRequest_linkText(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineContextMenuRequest) LinkUrl() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineContextMenuRequest_LinkUrl(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineContextMenuRequest_linkUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineContextMenuRequest) MediaUrl() *qt6.QUrl {
-	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineContextMenuRequest_MediaUrl(this.h)))
+	_goptr := qt6.UnsafeNewQUrl(unsafe.Pointer(C.QWebEngineContextMenuRequest_mediaUrl(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QWebEngineContextMenuRequest) MediaType() QWebEngineContextMenuRequest__MediaType {
-	return (QWebEngineContextMenuRequest__MediaType)(C.QWebEngineContextMenuRequest_MediaType(this.h))
+	return (QWebEngineContextMenuRequest__MediaType)(C.QWebEngineContextMenuRequest_mediaType(this.h))
 }
 
 func (this *QWebEngineContextMenuRequest) IsContentEditable() bool {
-	return (bool)(C.QWebEngineContextMenuRequest_IsContentEditable(this.h))
+	return (bool)(C.QWebEngineContextMenuRequest_isContentEditable(this.h))
 }
 
 func (this *QWebEngineContextMenuRequest) MisspelledWord() string {
-	var _ms C.struct_miqt_string = C.QWebEngineContextMenuRequest_MisspelledWord(this.h)
+	var _ms C.struct_miqt_string = C.QWebEngineContextMenuRequest_misspelledWord(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QWebEngineContextMenuRequest) SpellCheckerSuggestions() []string {
-	var _ma C.struct_miqt_array = C.QWebEngineContextMenuRequest_SpellCheckerSuggestions(this.h)
+	var _ma C.struct_miqt_array = C.QWebEngineContextMenuRequest_spellCheckerSuggestions(this.h)
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -186,19 +186,19 @@ func (this *QWebEngineContextMenuRequest) SpellCheckerSuggestions() []string {
 }
 
 func (this *QWebEngineContextMenuRequest) IsAccepted() bool {
-	return (bool)(C.QWebEngineContextMenuRequest_IsAccepted(this.h))
+	return (bool)(C.QWebEngineContextMenuRequest_isAccepted(this.h))
 }
 
 func (this *QWebEngineContextMenuRequest) SetAccepted(accepted bool) {
-	C.QWebEngineContextMenuRequest_SetAccepted(this.h, (C.bool)(accepted))
+	C.QWebEngineContextMenuRequest_setAccepted(this.h, (C.bool)(accepted))
 }
 
 func (this *QWebEngineContextMenuRequest) MediaFlags() QWebEngineContextMenuRequest__MediaFlag {
-	return (QWebEngineContextMenuRequest__MediaFlag)(C.QWebEngineContextMenuRequest_MediaFlags(this.h))
+	return (QWebEngineContextMenuRequest__MediaFlag)(C.QWebEngineContextMenuRequest_mediaFlags(this.h))
 }
 
 func (this *QWebEngineContextMenuRequest) EditFlags() QWebEngineContextMenuRequest__EditFlag {
-	return (QWebEngineContextMenuRequest__EditFlag)(C.QWebEngineContextMenuRequest_EditFlags(this.h))
+	return (QWebEngineContextMenuRequest__EditFlag)(C.QWebEngineContextMenuRequest_editFlags(this.h))
 }
 
 func QWebEngineContextMenuRequest_Tr2(s string, c string) string {
@@ -206,7 +206,7 @@ func QWebEngineContextMenuRequest_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineContextMenuRequest_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QWebEngineContextMenuRequest_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -217,7 +217,7 @@ func QWebEngineContextMenuRequest_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QWebEngineContextMenuRequest_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QWebEngineContextMenuRequest_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -225,7 +225,7 @@ func QWebEngineContextMenuRequest_Tr3(s string, c string, n int) string {
 
 // Delete this object from C++ memory.
 func (this *QWebEngineContextMenuRequest) Delete() {
-	C.QWebEngineContextMenuRequest_Delete(this.h)
+	C.QWebEngineContextMenuRequest_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

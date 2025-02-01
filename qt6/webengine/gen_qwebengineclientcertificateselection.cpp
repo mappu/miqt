@@ -17,23 +17,23 @@ QWebEngineClientCertificateSelection* QWebEngineClientCertificateSelection_new(Q
 	return new QWebEngineClientCertificateSelection(*param1);
 }
 
-void QWebEngineClientCertificateSelection_OperatorAssign(QWebEngineClientCertificateSelection* self, QWebEngineClientCertificateSelection* param1) {
+void QWebEngineClientCertificateSelection_operatorAssign(QWebEngineClientCertificateSelection* self, QWebEngineClientCertificateSelection* param1) {
 	self->operator=(*param1);
 }
 
-QUrl* QWebEngineClientCertificateSelection_Host(const QWebEngineClientCertificateSelection* self) {
+QUrl* QWebEngineClientCertificateSelection_host(const QWebEngineClientCertificateSelection* self) {
 	return new QUrl(self->host());
 }
 
-void QWebEngineClientCertificateSelection_Select(QWebEngineClientCertificateSelection* self, QSslCertificate* certificate) {
+void QWebEngineClientCertificateSelection_select(QWebEngineClientCertificateSelection* self, QSslCertificate* certificate) {
 	self->select(*certificate);
 }
 
-void QWebEngineClientCertificateSelection_SelectNone(QWebEngineClientCertificateSelection* self) {
+void QWebEngineClientCertificateSelection_selectNone(QWebEngineClientCertificateSelection* self) {
 	self->selectNone();
 }
 
-struct miqt_array /* of QSslCertificate* */  QWebEngineClientCertificateSelection_Certificates(const QWebEngineClientCertificateSelection* self) {
+struct miqt_array /* of QSslCertificate* */  QWebEngineClientCertificateSelection_certificates(const QWebEngineClientCertificateSelection* self) {
 	QList<QSslCertificate> _ret = self->certificates();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QSslCertificate** _arr = static_cast<QSslCertificate**>(malloc(sizeof(QSslCertificate*) * _ret.length()));
@@ -46,7 +46,7 @@ struct miqt_array /* of QSslCertificate* */  QWebEngineClientCertificateSelectio
 	return _out;
 }
 
-void QWebEngineClientCertificateSelection_Delete(QWebEngineClientCertificateSelection* self) {
+void QWebEngineClientCertificateSelection_delete(QWebEngineClientCertificateSelection* self) {
 	delete self;
 }
 

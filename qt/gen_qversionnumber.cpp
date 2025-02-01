@@ -40,31 +40,31 @@ QVersionNumber* QVersionNumber_new5(int maj, int min, int mic) {
 	return new QVersionNumber(static_cast<int>(maj), static_cast<int>(min), static_cast<int>(mic));
 }
 
-bool QVersionNumber_IsNull(const QVersionNumber* self) {
+bool QVersionNumber_isNull(const QVersionNumber* self) {
 	return self->isNull();
 }
 
-bool QVersionNumber_IsNormalized(const QVersionNumber* self) {
+bool QVersionNumber_isNormalized(const QVersionNumber* self) {
 	return self->isNormalized();
 }
 
-int QVersionNumber_MajorVersion(const QVersionNumber* self) {
+int QVersionNumber_majorVersion(const QVersionNumber* self) {
 	return self->majorVersion();
 }
 
-int QVersionNumber_MinorVersion(const QVersionNumber* self) {
+int QVersionNumber_minorVersion(const QVersionNumber* self) {
 	return self->minorVersion();
 }
 
-int QVersionNumber_MicroVersion(const QVersionNumber* self) {
+int QVersionNumber_microVersion(const QVersionNumber* self) {
 	return self->microVersion();
 }
 
-QVersionNumber* QVersionNumber_Normalized(const QVersionNumber* self) {
+QVersionNumber* QVersionNumber_normalized(const QVersionNumber* self) {
 	return new QVersionNumber(self->normalized());
 }
 
-struct miqt_array /* of int */  QVersionNumber_Segments(const QVersionNumber* self) {
+struct miqt_array /* of int */  QVersionNumber_segments(const QVersionNumber* self) {
 	QVector<int> _ret = self->segments();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	int* _arr = static_cast<int*>(malloc(sizeof(int) * _ret.length()));
@@ -77,27 +77,27 @@ struct miqt_array /* of int */  QVersionNumber_Segments(const QVersionNumber* se
 	return _out;
 }
 
-int QVersionNumber_SegmentAt(const QVersionNumber* self, int index) {
+int QVersionNumber_segmentAt(const QVersionNumber* self, int index) {
 	return self->segmentAt(static_cast<int>(index));
 }
 
-int QVersionNumber_SegmentCount(const QVersionNumber* self) {
+int QVersionNumber_segmentCount(const QVersionNumber* self) {
 	return self->segmentCount();
 }
 
-bool QVersionNumber_IsPrefixOf(const QVersionNumber* self, QVersionNumber* other) {
+bool QVersionNumber_isPrefixOf(const QVersionNumber* self, QVersionNumber* other) {
 	return self->isPrefixOf(*other);
 }
 
-int QVersionNumber_Compare(QVersionNumber* v1, QVersionNumber* v2) {
+int QVersionNumber_compare(QVersionNumber* v1, QVersionNumber* v2) {
 	return QVersionNumber::compare(*v1, *v2);
 }
 
-QVersionNumber* QVersionNumber_CommonPrefix(QVersionNumber* v1, QVersionNumber* v2) {
+QVersionNumber* QVersionNumber_commonPrefix(QVersionNumber* v1, QVersionNumber* v2) {
 	return new QVersionNumber(QVersionNumber::commonPrefix(*v1, *v2));
 }
 
-struct miqt_string QVersionNumber_ToString(const QVersionNumber* self) {
+struct miqt_string QVersionNumber_toString(const QVersionNumber* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -108,17 +108,17 @@ struct miqt_string QVersionNumber_ToString(const QVersionNumber* self) {
 	return _ms;
 }
 
-QVersionNumber* QVersionNumber_FromString(struct miqt_string stringVal) {
-	QString stringVal_QString = QString::fromUtf8(stringVal.data, stringVal.len);
-	return new QVersionNumber(QVersionNumber::fromString(stringVal_QString));
+QVersionNumber* QVersionNumber_fromString(struct miqt_string string) {
+	QString string_QString = QString::fromUtf8(string.data, string.len);
+	return new QVersionNumber(QVersionNumber::fromString(string_QString));
 }
 
-QVersionNumber* QVersionNumber_FromString22(struct miqt_string stringVal, int* suffixIndex) {
-	QString stringVal_QString = QString::fromUtf8(stringVal.data, stringVal.len);
-	return new QVersionNumber(QVersionNumber::fromString(stringVal_QString, static_cast<int*>(suffixIndex)));
+QVersionNumber* QVersionNumber_fromString22(struct miqt_string string, int* suffixIndex) {
+	QString string_QString = QString::fromUtf8(string.data, string.len);
+	return new QVersionNumber(QVersionNumber::fromString(string_QString, static_cast<int*>(suffixIndex)));
 }
 
-void QVersionNumber_Delete(QVersionNumber* self) {
+void QVersionNumber_delete(QVersionNumber* self) {
 	delete self;
 }
 

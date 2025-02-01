@@ -87,19 +87,19 @@ func NewQCoreApplication2(args []string, param3 int) *QCoreApplication {
 }
 
 func (this *QCoreApplication) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QCoreApplication_MetaObject(this.h))
+	return newQMetaObject(C.QCoreApplication_metaObject(this.h))
 }
 
 func (this *QCoreApplication) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QCoreApplication_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QCoreApplication_metacast(this.h, param1_Cstring))
 }
 
 func QCoreApplication_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCoreApplication_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCoreApplication_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -108,14 +108,14 @@ func QCoreApplication_Tr(s string) string {
 func QCoreApplication_TrUtf8(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QCoreApplication_TrUtf8(s_Cstring)
+	var _ms C.struct_miqt_string = C.QCoreApplication_trUtf8(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QCoreApplication_Arguments() []string {
-	var _ma C.struct_miqt_array = C.QCoreApplication_Arguments()
+	var _ma C.struct_miqt_array = C.QCoreApplication_arguments()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -128,11 +128,11 @@ func QCoreApplication_Arguments() []string {
 }
 
 func QCoreApplication_SetAttribute(attribute ApplicationAttribute) {
-	C.QCoreApplication_SetAttribute((C.int)(attribute))
+	C.QCoreApplication_setAttribute((C.int)(attribute))
 }
 
 func QCoreApplication_TestAttribute(attribute ApplicationAttribute) bool {
-	return (bool)(C.QCoreApplication_TestAttribute((C.int)(attribute)))
+	return (bool)(C.QCoreApplication_testAttribute((C.int)(attribute)))
 }
 
 func QCoreApplication_SetOrganizationDomain(orgDomain string) {
@@ -140,11 +140,11 @@ func QCoreApplication_SetOrganizationDomain(orgDomain string) {
 	orgDomain_ms.data = C.CString(orgDomain)
 	orgDomain_ms.len = C.size_t(len(orgDomain))
 	defer C.free(unsafe.Pointer(orgDomain_ms.data))
-	C.QCoreApplication_SetOrganizationDomain(orgDomain_ms)
+	C.QCoreApplication_setOrganizationDomain(orgDomain_ms)
 }
 
 func QCoreApplication_OrganizationDomain() string {
-	var _ms C.struct_miqt_string = C.QCoreApplication_OrganizationDomain()
+	var _ms C.struct_miqt_string = C.QCoreApplication_organizationDomain()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -155,11 +155,11 @@ func QCoreApplication_SetOrganizationName(orgName string) {
 	orgName_ms.data = C.CString(orgName)
 	orgName_ms.len = C.size_t(len(orgName))
 	defer C.free(unsafe.Pointer(orgName_ms.data))
-	C.QCoreApplication_SetOrganizationName(orgName_ms)
+	C.QCoreApplication_setOrganizationName(orgName_ms)
 }
 
 func QCoreApplication_OrganizationName() string {
-	var _ms C.struct_miqt_string = C.QCoreApplication_OrganizationName()
+	var _ms C.struct_miqt_string = C.QCoreApplication_organizationName()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -170,11 +170,11 @@ func QCoreApplication_SetApplicationName(application string) {
 	application_ms.data = C.CString(application)
 	application_ms.len = C.size_t(len(application))
 	defer C.free(unsafe.Pointer(application_ms.data))
-	C.QCoreApplication_SetApplicationName(application_ms)
+	C.QCoreApplication_setApplicationName(application_ms)
 }
 
 func QCoreApplication_ApplicationName() string {
-	var _ms C.struct_miqt_string = C.QCoreApplication_ApplicationName()
+	var _ms C.struct_miqt_string = C.QCoreApplication_applicationName()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -185,100 +185,100 @@ func QCoreApplication_SetApplicationVersion(version string) {
 	version_ms.data = C.CString(version)
 	version_ms.len = C.size_t(len(version))
 	defer C.free(unsafe.Pointer(version_ms.data))
-	C.QCoreApplication_SetApplicationVersion(version_ms)
+	C.QCoreApplication_setApplicationVersion(version_ms)
 }
 
 func QCoreApplication_ApplicationVersion() string {
-	var _ms C.struct_miqt_string = C.QCoreApplication_ApplicationVersion()
+	var _ms C.struct_miqt_string = C.QCoreApplication_applicationVersion()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QCoreApplication_SetSetuidAllowed(allow bool) {
-	C.QCoreApplication_SetSetuidAllowed((C.bool)(allow))
+	C.QCoreApplication_setSetuidAllowed((C.bool)(allow))
 }
 
 func QCoreApplication_IsSetuidAllowed() bool {
-	return (bool)(C.QCoreApplication_IsSetuidAllowed())
+	return (bool)(C.QCoreApplication_isSetuidAllowed())
 }
 
 func QCoreApplication_Instance() *QCoreApplication {
-	return newQCoreApplication(C.QCoreApplication_Instance())
+	return newQCoreApplication(C.QCoreApplication_instance())
 }
 
 func QCoreApplication_Exec() int {
-	return (int)(C.QCoreApplication_Exec())
+	return (int)(C.QCoreApplication_exec())
 }
 
 func QCoreApplication_ProcessEvents() {
-	C.QCoreApplication_ProcessEvents()
+	C.QCoreApplication_processEvents()
 }
 
 func QCoreApplication_ProcessEvents2(flags QEventLoop__ProcessEventsFlag, maxtime int) {
-	C.QCoreApplication_ProcessEvents2((C.int)(flags), (C.int)(maxtime))
+	C.QCoreApplication_processEvents2((C.int)(flags), (C.int)(maxtime))
 }
 
 func QCoreApplication_Exit() {
-	C.QCoreApplication_Exit()
+	C.QCoreApplication_exit()
 }
 
 func QCoreApplication_SendEvent(receiver *QObject, event *QEvent) bool {
-	return (bool)(C.QCoreApplication_SendEvent(receiver.cPointer(), event.cPointer()))
+	return (bool)(C.QCoreApplication_sendEvent(receiver.cPointer(), event.cPointer()))
 }
 
 func QCoreApplication_PostEvent(receiver *QObject, event *QEvent) {
-	C.QCoreApplication_PostEvent(receiver.cPointer(), event.cPointer())
+	C.QCoreApplication_postEvent(receiver.cPointer(), event.cPointer())
 }
 
 func QCoreApplication_SendPostedEvents() {
-	C.QCoreApplication_SendPostedEvents()
+	C.QCoreApplication_sendPostedEvents()
 }
 
 func QCoreApplication_RemovePostedEvents(receiver *QObject) {
-	C.QCoreApplication_RemovePostedEvents(receiver.cPointer())
+	C.QCoreApplication_removePostedEvents(receiver.cPointer())
 }
 
 func QCoreApplication_HasPendingEvents() bool {
-	return (bool)(C.QCoreApplication_HasPendingEvents())
+	return (bool)(C.QCoreApplication_hasPendingEvents())
 }
 
 func QCoreApplication_EventDispatcher() *QAbstractEventDispatcher {
-	return newQAbstractEventDispatcher(C.QCoreApplication_EventDispatcher())
+	return newQAbstractEventDispatcher(C.QCoreApplication_eventDispatcher())
 }
 
 func QCoreApplication_SetEventDispatcher(eventDispatcher *QAbstractEventDispatcher) {
-	C.QCoreApplication_SetEventDispatcher(eventDispatcher.cPointer())
+	C.QCoreApplication_setEventDispatcher(eventDispatcher.cPointer())
 }
 
 func (this *QCoreApplication) Notify(param1 *QObject, param2 *QEvent) bool {
-	return (bool)(C.QCoreApplication_Notify(this.h, param1.cPointer(), param2.cPointer()))
+	return (bool)(C.QCoreApplication_notify(this.h, param1.cPointer(), param2.cPointer()))
 }
 
 func QCoreApplication_StartingUp() bool {
-	return (bool)(C.QCoreApplication_StartingUp())
+	return (bool)(C.QCoreApplication_startingUp())
 }
 
 func QCoreApplication_ClosingDown() bool {
-	return (bool)(C.QCoreApplication_ClosingDown())
+	return (bool)(C.QCoreApplication_closingDown())
 }
 
 func QCoreApplication_ApplicationDirPath() string {
-	var _ms C.struct_miqt_string = C.QCoreApplication_ApplicationDirPath()
+	var _ms C.struct_miqt_string = C.QCoreApplication_applicationDirPath()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QCoreApplication_ApplicationFilePath() string {
-	var _ms C.struct_miqt_string = C.QCoreApplication_ApplicationFilePath()
+	var _ms C.struct_miqt_string = C.QCoreApplication_applicationFilePath()
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QCoreApplication_ApplicationPid() int64 {
-	return (int64)(C.QCoreApplication_ApplicationPid())
+	return (int64)(C.QCoreApplication_applicationPid())
 }
 
 func QCoreApplication_SetLibraryPaths(libraryPaths []string) {
@@ -292,11 +292,11 @@ func QCoreApplication_SetLibraryPaths(libraryPaths []string) {
 		libraryPaths_CArray[i] = libraryPaths_i_ms
 	}
 	libraryPaths_ma := C.struct_miqt_array{len: C.size_t(len(libraryPaths)), data: unsafe.Pointer(libraryPaths_CArray)}
-	C.QCoreApplication_SetLibraryPaths(libraryPaths_ma)
+	C.QCoreApplication_setLibraryPaths(libraryPaths_ma)
 }
 
 func QCoreApplication_LibraryPaths() []string {
-	var _ma C.struct_miqt_array = C.QCoreApplication_LibraryPaths()
+	var _ma C.struct_miqt_array = C.QCoreApplication_libraryPaths()
 	_ret := make([]string, int(_ma.len))
 	_outCast := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -313,7 +313,7 @@ func QCoreApplication_AddLibraryPath(param1 string) {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	C.QCoreApplication_AddLibraryPath(param1_ms)
+	C.QCoreApplication_addLibraryPath(param1_ms)
 }
 
 func QCoreApplication_RemoveLibraryPath(param1 string) {
@@ -321,15 +321,15 @@ func QCoreApplication_RemoveLibraryPath(param1 string) {
 	param1_ms.data = C.CString(param1)
 	param1_ms.len = C.size_t(len(param1))
 	defer C.free(unsafe.Pointer(param1_ms.data))
-	C.QCoreApplication_RemoveLibraryPath(param1_ms)
+	C.QCoreApplication_removeLibraryPath(param1_ms)
 }
 
 func QCoreApplication_InstallTranslator(messageFile *QTranslator) bool {
-	return (bool)(C.QCoreApplication_InstallTranslator(messageFile.cPointer()))
+	return (bool)(C.QCoreApplication_installTranslator(messageFile.cPointer()))
 }
 
 func QCoreApplication_RemoveTranslator(messageFile *QTranslator) bool {
-	return (bool)(C.QCoreApplication_RemoveTranslator(messageFile.cPointer()))
+	return (bool)(C.QCoreApplication_removeTranslator(messageFile.cPointer()))
 }
 
 func QCoreApplication_Translate(context string, key string) string {
@@ -337,45 +337,45 @@ func QCoreApplication_Translate(context string, key string) string {
 	defer C.free(unsafe.Pointer(context_Cstring))
 	key_Cstring := C.CString(key)
 	defer C.free(unsafe.Pointer(key_Cstring))
-	var _ms C.struct_miqt_string = C.QCoreApplication_Translate(context_Cstring, key_Cstring)
+	var _ms C.struct_miqt_string = C.QCoreApplication_translate(context_Cstring, key_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QCoreApplication_Flush() {
-	C.QCoreApplication_Flush()
+	C.QCoreApplication_flush()
 }
 
 func (this *QCoreApplication) InstallNativeEventFilter(filterObj *QAbstractNativeEventFilter) {
-	C.QCoreApplication_InstallNativeEventFilter(this.h, filterObj.cPointer())
+	C.QCoreApplication_installNativeEventFilter(this.h, filterObj.cPointer())
 }
 
 func (this *QCoreApplication) RemoveNativeEventFilter(filterObj *QAbstractNativeEventFilter) {
-	C.QCoreApplication_RemoveNativeEventFilter(this.h, filterObj.cPointer())
+	C.QCoreApplication_removeNativeEventFilter(this.h, filterObj.cPointer())
 }
 
 func QCoreApplication_IsQuitLockEnabled() bool {
-	return (bool)(C.QCoreApplication_IsQuitLockEnabled())
+	return (bool)(C.QCoreApplication_isQuitLockEnabled())
 }
 
 func QCoreApplication_SetQuitLockEnabled(enabled bool) {
-	C.QCoreApplication_SetQuitLockEnabled((C.bool)(enabled))
+	C.QCoreApplication_setQuitLockEnabled((C.bool)(enabled))
 }
 
 func QCoreApplication_Quit() {
-	C.QCoreApplication_Quit()
+	C.QCoreApplication_quit()
 }
 
 func (this *QCoreApplication) OrganizationNameChanged() {
-	C.QCoreApplication_OrganizationNameChanged(this.h)
+	C.QCoreApplication_organizationNameChanged(this.h)
 }
 func (this *QCoreApplication) OnOrganizationNameChanged(slot func()) {
-	C.QCoreApplication_connect_OrganizationNameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCoreApplication_connect_organizationNameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCoreApplication_OrganizationNameChanged
-func miqt_exec_callback_QCoreApplication_OrganizationNameChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QCoreApplication_organizationNameChanged
+func miqt_exec_callback_QCoreApplication_organizationNameChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -385,14 +385,14 @@ func miqt_exec_callback_QCoreApplication_OrganizationNameChanged(cb C.intptr_t) 
 }
 
 func (this *QCoreApplication) OrganizationDomainChanged() {
-	C.QCoreApplication_OrganizationDomainChanged(this.h)
+	C.QCoreApplication_organizationDomainChanged(this.h)
 }
 func (this *QCoreApplication) OnOrganizationDomainChanged(slot func()) {
-	C.QCoreApplication_connect_OrganizationDomainChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCoreApplication_connect_organizationDomainChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCoreApplication_OrganizationDomainChanged
-func miqt_exec_callback_QCoreApplication_OrganizationDomainChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QCoreApplication_organizationDomainChanged
+func miqt_exec_callback_QCoreApplication_organizationDomainChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -402,14 +402,14 @@ func miqt_exec_callback_QCoreApplication_OrganizationDomainChanged(cb C.intptr_t
 }
 
 func (this *QCoreApplication) ApplicationNameChanged() {
-	C.QCoreApplication_ApplicationNameChanged(this.h)
+	C.QCoreApplication_applicationNameChanged(this.h)
 }
 func (this *QCoreApplication) OnApplicationNameChanged(slot func()) {
-	C.QCoreApplication_connect_ApplicationNameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCoreApplication_connect_applicationNameChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCoreApplication_ApplicationNameChanged
-func miqt_exec_callback_QCoreApplication_ApplicationNameChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QCoreApplication_applicationNameChanged
+func miqt_exec_callback_QCoreApplication_applicationNameChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -419,14 +419,14 @@ func miqt_exec_callback_QCoreApplication_ApplicationNameChanged(cb C.intptr_t) {
 }
 
 func (this *QCoreApplication) ApplicationVersionChanged() {
-	C.QCoreApplication_ApplicationVersionChanged(this.h)
+	C.QCoreApplication_applicationVersionChanged(this.h)
 }
 func (this *QCoreApplication) OnApplicationVersionChanged(slot func()) {
-	C.QCoreApplication_connect_ApplicationVersionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QCoreApplication_connect_applicationVersionChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QCoreApplication_ApplicationVersionChanged
-func miqt_exec_callback_QCoreApplication_ApplicationVersionChanged(cb C.intptr_t) {
+//export miqt_exec_callback_QCoreApplication_applicationVersionChanged
+func miqt_exec_callback_QCoreApplication_applicationVersionChanged(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -440,7 +440,7 @@ func QCoreApplication_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCoreApplication_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCoreApplication_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -451,7 +451,7 @@ func QCoreApplication_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCoreApplication_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCoreApplication_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -462,7 +462,7 @@ func QCoreApplication_TrUtf82(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCoreApplication_TrUtf82(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QCoreApplication_trUtf82(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -473,38 +473,38 @@ func QCoreApplication_TrUtf83(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QCoreApplication_TrUtf83(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCoreApplication_trUtf83(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func QCoreApplication_SetAttribute2(attribute ApplicationAttribute, on bool) {
-	C.QCoreApplication_SetAttribute2((C.int)(attribute), (C.bool)(on))
+	C.QCoreApplication_setAttribute2((C.int)(attribute), (C.bool)(on))
 }
 
 func QCoreApplication_ProcessEvents1(flags QEventLoop__ProcessEventsFlag) {
-	C.QCoreApplication_ProcessEvents1((C.int)(flags))
+	C.QCoreApplication_processEvents1((C.int)(flags))
 }
 
 func QCoreApplication_Exit1(retcode int) {
-	C.QCoreApplication_Exit1((C.int)(retcode))
+	C.QCoreApplication_exit1((C.int)(retcode))
 }
 
 func QCoreApplication_PostEvent3(receiver *QObject, event *QEvent, priority int) {
-	C.QCoreApplication_PostEvent3(receiver.cPointer(), event.cPointer(), (C.int)(priority))
+	C.QCoreApplication_postEvent3(receiver.cPointer(), event.cPointer(), (C.int)(priority))
 }
 
 func QCoreApplication_SendPostedEvents1(receiver *QObject) {
-	C.QCoreApplication_SendPostedEvents1(receiver.cPointer())
+	C.QCoreApplication_sendPostedEvents1(receiver.cPointer())
 }
 
 func QCoreApplication_SendPostedEvents2(receiver *QObject, event_type int) {
-	C.QCoreApplication_SendPostedEvents2(receiver.cPointer(), (C.int)(event_type))
+	C.QCoreApplication_sendPostedEvents2(receiver.cPointer(), (C.int)(event_type))
 }
 
 func QCoreApplication_RemovePostedEvents2(receiver *QObject, eventType int) {
-	C.QCoreApplication_RemovePostedEvents2(receiver.cPointer(), (C.int)(eventType))
+	C.QCoreApplication_removePostedEvents2(receiver.cPointer(), (C.int)(eventType))
 }
 
 func QCoreApplication_Translate3(context string, key string, disambiguation string) string {
@@ -514,7 +514,7 @@ func QCoreApplication_Translate3(context string, key string, disambiguation stri
 	defer C.free(unsafe.Pointer(key_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms C.struct_miqt_string = C.QCoreApplication_Translate3(context_Cstring, key_Cstring, disambiguation_Cstring)
+	var _ms C.struct_miqt_string = C.QCoreApplication_translate3(context_Cstring, key_Cstring, disambiguation_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -527,7 +527,7 @@ func QCoreApplication_Translate4(context string, key string, disambiguation stri
 	defer C.free(unsafe.Pointer(key_Cstring))
 	disambiguation_Cstring := C.CString(disambiguation)
 	defer C.free(unsafe.Pointer(disambiguation_Cstring))
-	var _ms C.struct_miqt_string = C.QCoreApplication_Translate4(context_Cstring, key_Cstring, disambiguation_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QCoreApplication_translate4(context_Cstring, key_Cstring, disambiguation_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -535,18 +535,18 @@ func QCoreApplication_Translate4(context string, key string, disambiguation stri
 
 func (this *QCoreApplication) callVirtualBase_Notify(param1 *QObject, param2 *QEvent) bool {
 
-	return (bool)(C.QCoreApplication_virtualbase_Notify(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
+	return (bool)(C.QCoreApplication_virtualbase_notify(unsafe.Pointer(this.h), param1.cPointer(), param2.cPointer()))
 
 }
-func (this *QCoreApplication) OnNotify(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
-	ok := C.QCoreApplication_override_virtual_Notify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCoreApplication) Onnotify(slot func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool) {
+	ok := C.QCoreApplication_override_virtual_notify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCoreApplication_Notify
-func miqt_exec_callback_QCoreApplication_Notify(self *C.QCoreApplication, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
+//export miqt_exec_callback_QCoreApplication_notify
+func miqt_exec_callback_QCoreApplication_notify(self *C.QCoreApplication, cb C.intptr_t, param1 *C.QObject, param2 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QObject, param2 *QEvent) bool, param1 *QObject, param2 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -565,18 +565,18 @@ func miqt_exec_callback_QCoreApplication_Notify(self *C.QCoreApplication, cb C.i
 
 func (this *QCoreApplication) callVirtualBase_Event(param1 *QEvent) bool {
 
-	return (bool)(C.QCoreApplication_virtualbase_Event(unsafe.Pointer(this.h), param1.cPointer()))
+	return (bool)(C.QCoreApplication_virtualbase_event(unsafe.Pointer(this.h), param1.cPointer()))
 
 }
-func (this *QCoreApplication) OnEvent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
-	ok := C.QCoreApplication_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCoreApplication) Onevent(slot func(super func(param1 *QEvent) bool, param1 *QEvent) bool) {
+	ok := C.QCoreApplication_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCoreApplication_Event
-func miqt_exec_callback_QCoreApplication_Event(self *C.QCoreApplication, cb C.intptr_t, param1 *C.QEvent) C.bool {
+//export miqt_exec_callback_QCoreApplication_event
+func miqt_exec_callback_QCoreApplication_event(self *C.QCoreApplication, cb C.intptr_t, param1 *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QEvent) bool, param1 *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -593,18 +593,18 @@ func miqt_exec_callback_QCoreApplication_Event(self *C.QCoreApplication, cb C.in
 
 func (this *QCoreApplication) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QCoreApplication_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QCoreApplication_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QCoreApplication) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QCoreApplication_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCoreApplication) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QCoreApplication_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCoreApplication_EventFilter
-func miqt_exec_callback_QCoreApplication_EventFilter(self *C.QCoreApplication, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QCoreApplication_eventFilter
+func miqt_exec_callback_QCoreApplication_eventFilter(self *C.QCoreApplication, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -623,18 +623,18 @@ func miqt_exec_callback_QCoreApplication_EventFilter(self *C.QCoreApplication, c
 
 func (this *QCoreApplication) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QCoreApplication_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QCoreApplication_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QCoreApplication) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QCoreApplication_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCoreApplication) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QCoreApplication_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCoreApplication_TimerEvent
-func miqt_exec_callback_QCoreApplication_TimerEvent(self *C.QCoreApplication, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QCoreApplication_timerEvent
+func miqt_exec_callback_QCoreApplication_timerEvent(self *C.QCoreApplication, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -649,18 +649,18 @@ func miqt_exec_callback_QCoreApplication_TimerEvent(self *C.QCoreApplication, cb
 
 func (this *QCoreApplication) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QCoreApplication_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QCoreApplication_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QCoreApplication) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QCoreApplication_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCoreApplication) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QCoreApplication_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCoreApplication_ChildEvent
-func miqt_exec_callback_QCoreApplication_ChildEvent(self *C.QCoreApplication, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QCoreApplication_childEvent
+func miqt_exec_callback_QCoreApplication_childEvent(self *C.QCoreApplication, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -675,18 +675,18 @@ func miqt_exec_callback_QCoreApplication_ChildEvent(self *C.QCoreApplication, cb
 
 func (this *QCoreApplication) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QCoreApplication_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QCoreApplication_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QCoreApplication) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QCoreApplication_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCoreApplication) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QCoreApplication_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCoreApplication_CustomEvent
-func miqt_exec_callback_QCoreApplication_CustomEvent(self *C.QCoreApplication, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QCoreApplication_customEvent
+func miqt_exec_callback_QCoreApplication_customEvent(self *C.QCoreApplication, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -701,18 +701,18 @@ func miqt_exec_callback_QCoreApplication_CustomEvent(self *C.QCoreApplication, c
 
 func (this *QCoreApplication) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QCoreApplication_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QCoreApplication_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QCoreApplication) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QCoreApplication_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCoreApplication) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QCoreApplication_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCoreApplication_ConnectNotify
-func miqt_exec_callback_QCoreApplication_ConnectNotify(self *C.QCoreApplication, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QCoreApplication_connectNotify
+func miqt_exec_callback_QCoreApplication_connectNotify(self *C.QCoreApplication, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -727,18 +727,18 @@ func miqt_exec_callback_QCoreApplication_ConnectNotify(self *C.QCoreApplication,
 
 func (this *QCoreApplication) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QCoreApplication_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QCoreApplication_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QCoreApplication) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QCoreApplication_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QCoreApplication) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QCoreApplication_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QCoreApplication_DisconnectNotify
-func miqt_exec_callback_QCoreApplication_DisconnectNotify(self *C.QCoreApplication, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QCoreApplication_disconnectNotify
+func miqt_exec_callback_QCoreApplication_disconnectNotify(self *C.QCoreApplication, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -753,7 +753,7 @@ func miqt_exec_callback_QCoreApplication_DisconnectNotify(self *C.QCoreApplicati
 
 // Delete this object from C++ memory.
 func (this *QCoreApplication) Delete() {
-	C.QCoreApplication_Delete(this.h)
+	C.QCoreApplication_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

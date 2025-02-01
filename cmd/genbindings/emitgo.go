@@ -22,6 +22,23 @@ func goReservedWord(s string) bool {
 	}
 }
 
+func (nm CppMethod) goMethodName() string {
+	// Also make the first letter uppercase so it becomes public in Go
+	tmp := nm.SafeMethodName()
+	tmp = titleCase(tmp)
+	return tmp
+}
+
+func (p CppParameter) goParameterName() string {
+	// Also make the first letter uppercase so it becomes public in Go
+	parmName := p.ParameterName
+	if goReservedWord(parmName) {
+		parmName += "Val"
+	}
+
+	return parmName
+}
+
 func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 	if p.Pointer && p.ParameterType == "char" {
 		return "string"
@@ -247,7 +264,7 @@ func (gfs *goFileState) emitParametersGo(params []CppParameter) string {
 
 		} else {
 			// Ordinary parameter
-			tmp = append(tmp, p.ParameterName+" "+p.RenderTypeGo(gfs))
+			tmp = append(tmp, p.goParameterName()+" "+p.RenderTypeGo(gfs))
 
 		}
 	}
@@ -312,7 +329,7 @@ func (gfs *goFileState) emitParametersGo2CABIForwarding(m CppMethod) (preamble s
 
 func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble string, rvalue string) {
 
-	nameprefix := makeNamePrefix(p.ParameterName)
+	nameprefix := makeNamePrefix(p.goParameterName())
 
 	if p.ParameterType == "QString" {
 		// Go: convert string -> miqt_string*
@@ -320,8 +337,8 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 		gfs.imports["unsafe"] = struct{}{}
 		preamble += nameprefix + "_ms := C.struct_miqt_string{}\n"
-		preamble += nameprefix + "_ms.data = C.CString(" + p.ParameterName + ")\n"
-		preamble += nameprefix + "_ms.len = C.size_t(len(" + p.ParameterName + "))\n"
+		preamble += nameprefix + "_ms.data = C.CString(" + p.goParameterName() + ")\n"
+		preamble += nameprefix + "_ms.len = C.size_t(len(" + p.goParameterName() + "))\n"
 		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_ms.data))\n"
 
 		rvalue = nameprefix + "_ms"
@@ -333,12 +350,12 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 		gfs.imports["unsafe"] = struct{}{}
 		preamble += nameprefix + "_alias := C.struct_miqt_string{}\n"
-		preamble += "if len(" + p.ParameterName + ") > 0 {\n"
-		preamble += nameprefix + "_alias.data = (*C.char)(unsafe.Pointer(&" + p.ParameterName + "[0]))\n"
+		preamble += "if len(" + p.goParameterName() + ") > 0 {\n"
+		preamble += nameprefix + "_alias.data = (*C.char)(unsafe.Pointer(&" + p.goParameterName() + "[0]))\n"
 		preamble += "} else {\n"
 		preamble += nameprefix + "_alias.data = (*C.char)(unsafe.Pointer(nil))\n"
 		preamble += "}\n"
-		preamble += nameprefix + "_alias.len = C.size_t(len(" + p.ParameterName + "))\n"
+		preamble += nameprefix + "_alias.len = C.size_t(len(" + p.goParameterName() + "))\n"
 
 		rvalue = nameprefix + "_alias"
 
@@ -351,18 +368,18 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 		mallocSize := listType.mallocSizeCgoExpression()
 
-		preamble += nameprefix + "_CArray := (*[0xffff]" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + mallocSize + " * len(" + p.ParameterName + "))))\n"
+		preamble += nameprefix + "_CArray := (*[0xffff]" + listType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + mallocSize + " * len(" + p.goParameterName() + "))))\n"
 		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_CArray))\n"
 
-		preamble += "for i := range " + p.ParameterName + "{\n"
+		preamble += "for i := range " + p.goParameterName() + "{\n"
 
-		listType.ParameterName = p.ParameterName + "[i]"
+		listType.ParameterName = p.goParameterName() + "[i]"
 		addPreamble, innerRvalue := gfs.emitParameterGo2CABIForwarding(listType)
 		preamble += addPreamble
 		preamble += nameprefix + "_CArray[i] = " + innerRvalue + "\n"
 		preamble += "}\n"
 
-		preamble += nameprefix + "_ma := C.struct_miqt_array{len: C.size_t(len(" + p.ParameterName + ")), data: unsafe.Pointer(" + nameprefix + "_CArray)}\n"
+		preamble += nameprefix + "_ma := C.struct_miqt_array{len: C.size_t(len(" + p.goParameterName() + ")), data: unsafe.Pointer(" + nameprefix + "_CArray)}\n"
 
 		rvalue = nameprefix + "_ma"
 
@@ -374,15 +391,15 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 		gfs.imports["unsafe"] = struct{}{}
 
-		preamble += nameprefix + "_Keys_CArray := (*[0xffff]" + kType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + kType.mallocSizeCgoExpression() + " * len(" + p.ParameterName + "))))\n"
+		preamble += nameprefix + "_Keys_CArray := (*[0xffff]" + kType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + kType.mallocSizeCgoExpression() + " * len(" + p.goParameterName() + "))))\n"
 		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Keys_CArray))\n"
 
-		preamble += nameprefix + "_Values_CArray := (*[0xffff]" + vType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + vType.mallocSizeCgoExpression() + " * len(" + p.ParameterName + "))))\n"
+		preamble += nameprefix + "_Values_CArray := (*[0xffff]" + vType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + vType.mallocSizeCgoExpression() + " * len(" + p.goParameterName() + "))))\n"
 		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Values_CArray))\n"
 
 		preamble += nameprefix + "_ctr := 0\n"
 
-		preamble += "for " + nameprefix + "_k, " + nameprefix + "_v := range " + p.ParameterName + "{\n"
+		preamble += "for " + nameprefix + "_k, " + nameprefix + "_v := range " + p.goParameterName() + "{\n"
 
 		kType.ParameterName = nameprefix + "_k"
 		addPreamble, innerRvalue := gfs.emitParameterGo2CABIForwarding(kType)
@@ -398,7 +415,7 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 		preamble += "}\n"
 
-		preamble += nameprefix + "_mm := C.struct_miqt_map{\nlen: C.size_t(len(" + p.ParameterName + ")),\nkeys: unsafe.Pointer(" + nameprefix + "_Keys_CArray),\nvalues: unsafe.Pointer(" + nameprefix + "_Values_CArray),\n}\n"
+		preamble += nameprefix + "_mm := C.struct_miqt_map{\nlen: C.size_t(len(" + p.goParameterName() + ")),\nkeys: unsafe.Pointer(" + nameprefix + "_Keys_CArray),\nvalues: unsafe.Pointer(" + nameprefix + "_Values_CArray),\n}\n"
 
 		rvalue = nameprefix + "_mm"
 
@@ -413,12 +430,12 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 		preamble += nameprefix + "_Second_CArray := (*[0xffff]" + vType.parameterTypeCgo() + ")(C.malloc(C.size_t(" + vType.mallocSizeCgoExpression() + ")))\n"
 		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Second_CArray))\n"
 
-		kType.ParameterName = p.ParameterName + ".First"
+		kType.ParameterName = p.goParameterName() + ".First"
 		addPreamble, innerRvalue := gfs.emitParameterGo2CABIForwarding(kType)
 		preamble += addPreamble
 		preamble += nameprefix + "_First_CArray[0] = " + innerRvalue + "\n"
 
-		vType.ParameterName = p.ParameterName + ".Second"
+		vType.ParameterName = p.goParameterName() + ".Second"
 		addPreamble, innerRvalue = gfs.emitParameterGo2CABIForwarding(vType)
 		preamble += addPreamble
 		preamble += nameprefix + "_Second_CArray[0] = " + innerRvalue + "\n"
@@ -430,7 +447,7 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 	} else if p.Pointer && p.ParameterType == "char" {
 		// Single char* argument
 		gfs.imports["unsafe"] = struct{}{}
-		preamble += nameprefix + "_Cstring := C.CString(" + p.ParameterName + ")\n"
+		preamble += nameprefix + "_Cstring := C.CString(" + p.goParameterName() + ")\n"
 		preamble += "defer C.free(unsafe.Pointer(" + nameprefix + "_Cstring))\n"
 		rvalue = nameprefix + "_Cstring"
 
@@ -442,23 +459,23 @@ func (gfs *goFileState) emitParameterGo2CABIForwarding(p CppParameter) (preamble
 
 		if classInfo, ok := KnownClassnames[p.ParameterType]; ok && gfs.currentPackageName != classInfo.PackageName {
 			// Cross-package
-			rvalue = "(" + p.parameterTypeCgo() + ")(" + p.ParameterName + ".UnsafePointer())"
+			rvalue = "(" + p.parameterTypeCgo() + ")(" + p.goParameterName() + ".UnsafePointer())"
 		} else {
 			// Same package
-			rvalue = p.ParameterName + ".cPointer()"
+			rvalue = p.goParameterName() + ".cPointer()"
 		}
 
 	} else if p.IntType() || p.IsFlagType() || p.IsKnownEnum() || p.ParameterType == "bool" {
 		if p.Pointer || p.ByRef {
 			gfs.imports["unsafe"] = struct{}{}
-			rvalue = "(" + p.parameterTypeCgo() + ")(unsafe.Pointer(" + p.ParameterName + "))" // n.b. This may not work if the integer type conversion was wrong
+			rvalue = "(" + p.parameterTypeCgo() + ")(unsafe.Pointer(" + p.goParameterName() + "))" // n.b. This may not work if the integer type conversion was wrong
 		} else {
-			rvalue = "(" + p.parameterTypeCgo() + ")(" + p.ParameterName + ")"
+			rvalue = "(" + p.parameterTypeCgo() + ")(" + p.goParameterName() + ")"
 		}
 
 	} else {
 		// Default
-		rvalue = p.ParameterName
+		rvalue = p.goParameterName()
 	}
 
 	return preamble, rvalue
@@ -468,7 +485,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 
 	shouldReturn := assignExpr // "return "
 	afterword := ""
-	namePrefix := makeNamePrefix(rt.ParameterName)
+	namePrefix := makeNamePrefix(rt.goParameterName())
 
 	if rt.Void() {
 		shouldReturn = ""
@@ -644,7 +661,7 @@ func (gfs *goFileState) emitCabiToGo(assignExpr string, rt CppParameter, rvalue 
 		return assignExpr + "(" + rt.RenderTypeGo(gfs) + ")(" + rvalue + ")\n"
 
 	} else {
-		panic(fmt.Sprintf("emitgo::emitCabiToGo missing type handler for parameter %+v", rt))
+		return "int /* TODO  */" //panic(fmt.Sprintf("emitgo::emitCabiToGo missing type handler for parameter %+v", rt))
 	}
 
 }
@@ -849,19 +866,19 @@ import "C"
 			}
 
 			// Populate outptr pointers
-			ret.WriteString("C." + cabiClassName(c.ClassName) + "_virtbase(h" + xbaseParams + ")\n")
+			ret.WriteString("C." + cabiVirtBaseName(c) + "(h" + xbaseParams + ")\n")
 
 		}
 
 		ret.WriteString(`
 				return &` + goClassName + `{` + localInit + `}
 			}
-			
+
 			// UnsafeNew` + goClassName + ` constructs the type using only unsafe pointers.
 			func UnsafeNew` + goClassName + `(h unsafe.Pointer) *` + goClassName + ` {
 				return new` + goClassName + `( (*C.` + goClassName + `)(h) )
 			}
-			
+
 		`)
 
 		//
@@ -888,10 +905,10 @@ import "C"
 
 			// Call Cgo constructor
 
-			ret.WriteString(`				
-				return new` + goClassName + `(C.` + goClassName + `_new` + maybeSuffix(i) + `(` + forwarding + `))
+			ret.WriteString(`
+				return new` + goClassName + `(C.` + cabiNewName(c, i) + `(` + forwarding + `))
 			}
-			
+
 			`)
 
 		}
@@ -906,13 +923,13 @@ import "C"
 
 			returnTypeDecl := m.ReturnType.renderReturnTypeGo(&gfs)
 
-			rvalue := `C.` + goClassName + `_` + m.SafeMethodName() + `(` + forwarding + `)`
+			rvalue := `C.` + cabiMethodName(c, m) + `(` + forwarding + `)`
 
 			returnFunc := gfs.emitCabiToGo("return ", m.ReturnType, rvalue)
 
-			receiverAndMethod := `(this *` + goClassName + `) ` + m.SafeMethodName()
+			receiverAndMethod := `(this *` + goClassName + `) ` + m.goMethodName()
 			if m.IsStatic {
-				receiverAndMethod = goClassName + `_` + m.SafeMethodName()
+				receiverAndMethod = goClassName + `_` + m.goMethodName()
 			}
 
 			ret.WriteString(`
@@ -943,16 +960,16 @@ import "C"
 					conversion = "// Convert all CABI parameters to Go parameters\n"
 				}
 				for i, pp := range m.Parameters {
-					cgoNamedParams = append(cgoNamedParams, pp.ParameterName+" "+pp.parameterTypeCgo())
+					cgoNamedParams = append(cgoNamedParams, pp.goParameterName()+" "+pp.parameterTypeCgo())
 
 					paramNames = append(paramNames, fmt.Sprintf("slotval%d", i+1))
-					conversion += gfs.emitCabiToGo(fmt.Sprintf("slotval%d := ", i+1), pp, pp.ParameterName) + "\n"
+					conversion += gfs.emitCabiToGo(fmt.Sprintf("slotval%d := ", i+1), pp, pp.goParameterName()) + "\n"
 				}
 
 				goCbType := `func(` + gfs.emitParametersGo(m.Parameters) + `)`
 				callbackName := cabiCallbackName(c, m)
-				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot ` + goCbType + `) {
-					C.` + goClassName + `_connect_` + m.SafeMethodName() + `(this.h, C.intptr_t(cgo.NewHandle(slot)) )
+				ret.WriteString(`func (this *` + goClassName + `) On` + m.goMethodName() + `(slot ` + goCbType + `) {
+					C.` + cabiConnectName(c, m) + `(this.h, C.intptr_t(cgo.NewHandle(slot)) )
 				}
 
 				//export ` + callbackName + `
@@ -961,9 +978,9 @@ import "C"
 					if !ok {
 						panic("miqt: callback of non-callback type (heap corruption?)")
 					}
-				
+
 					` + conversion + `
-						
+
 					gofunc(` + strings.Join(paramNames, `, `) + ` )
 				}
 
@@ -987,9 +1004,9 @@ import "C"
 				returnTypeDecl := m.ReturnType.renderReturnTypeGo(&gfs)
 
 				ret.WriteString(`
-				func (this *` + goClassName + `) callVirtualBase_` + m.SafeMethodName() + `(` + gfs.emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
+				func (this *` + goClassName + `) callVirtualBase_` + m.goMethodName() + `(` + gfs.emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
 					` + preamble + `
-					` + gfs.emitCabiToGo("return ", m.ReturnType, `C.`+goClassName+`_virtualbase_`+m.SafeMethodName()+`(`+forwarding+`)`) + `
+					` + gfs.emitCabiToGo("return ", m.ReturnType, `C.`+cabiVirtualBaseName(c, m)+`(`+forwarding+`)`) + `
 				}
 			`)
 
@@ -1004,7 +1021,7 @@ import "C"
 				var cgoNamedParams []string
 				var paramNames []string
 				if !m.IsPureVirtual {
-					paramNames = append(paramNames, "(&"+goClassName+"{h: self}).callVirtualBase_"+m.SafeMethodName())
+					paramNames = append(paramNames, "(&"+goClassName+"{h: self}).callVirtualBase_"+m.goMethodName())
 				}
 				conversion := ""
 
@@ -1012,10 +1029,10 @@ import "C"
 					conversion = "// Convert all CABI parameters to Go parameters\n"
 				}
 				for i, pp := range m.Parameters {
-					cgoNamedParams = append(cgoNamedParams, pp.ParameterName+" "+pp.parameterTypeCgo())
+					cgoNamedParams = append(cgoNamedParams, pp.goParameterName()+" "+pp.parameterTypeCgo())
 
 					paramNames = append(paramNames, fmt.Sprintf("slotval%d", i+1))
-					conversion += gfs.emitCabiToGo(fmt.Sprintf("slotval%d := ", i+1), pp, pp.ParameterName) + "\n"
+					conversion += gfs.emitCabiToGo(fmt.Sprintf("slotval%d := ", i+1), pp, pp.goParameterName()) + "\n"
 				}
 
 				cabiReturnType := m.ReturnType.parameterTypeCgo()
@@ -1036,7 +1053,7 @@ import "C"
 				goCbType += `) ` + m.ReturnType.renderReturnTypeGo(&gfs)
 				callbackName := cabiCallbackName(c, m)
 				ret.WriteString(`func (this *` + goClassName + `) On` + m.SafeMethodName() + `(slot ` + goCbType + `) {
-					ok := C.` + goClassName + `_override_virtual_` + m.SafeMethodName() + `(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)) )
+					ok := C.` + cabiOverrideVirtualName(c, m) + `(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)) )
 					if !ok {
 						panic("miqt: can only override virtual methods for directly constructed types")
 					}
@@ -1048,7 +1065,7 @@ import "C"
 					if !ok {
 						panic("miqt: callback of non-callback type (heap corruption?)")
 					}
-				
+
 			`)
 				ret.WriteString(conversion + "\n")
 				if cabiReturnType == "" {
@@ -1075,9 +1092,9 @@ import "C"
 			ret.WriteString(`
 			// Delete this object from C++ memory.
 			func (this *` + goClassName + `) Delete() {
-				C.` + goClassName + `_Delete(this.h)
+				C.` + cabiDeleteName(c) + `(this.h)
 			}
-				
+
 			// GoGC adds a Go Finalizer to this pointer, so that it will be deleted
 			// from C++ memory once it is unreachable from Go memory.
 			func (this *` + goClassName + `) GoGC() {

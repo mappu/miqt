@@ -23,23 +23,23 @@ QPageRanges* QPageRanges_new2(QPageRanges* other) {
 	return new QPageRanges(*other);
 }
 
-void QPageRanges_OperatorAssign(QPageRanges* self, QPageRanges* other) {
+void QPageRanges_operatorAssign(QPageRanges* self, QPageRanges* other) {
 	self->operator=(*other);
 }
 
-void QPageRanges_Swap(QPageRanges* self, QPageRanges* other) {
+void QPageRanges_swap(QPageRanges* self, QPageRanges* other) {
 	self->swap(*other);
 }
 
-void QPageRanges_AddPage(QPageRanges* self, int pageNumber) {
+void QPageRanges_addPage(QPageRanges* self, int pageNumber) {
 	self->addPage(static_cast<int>(pageNumber));
 }
 
-void QPageRanges_AddRange(QPageRanges* self, int from, int to) {
+void QPageRanges_addRange(QPageRanges* self, int from, int to) {
 	self->addRange(static_cast<int>(from), static_cast<int>(to));
 }
 
-struct miqt_array /* of QPageRanges__Range* */  QPageRanges_ToRangeList(const QPageRanges* self) {
+struct miqt_array /* of QPageRanges__Range* */  QPageRanges_toRangeList(const QPageRanges* self) {
 	QList<QPageRanges::Range> _ret = self->toRangeList();
 	// Convert QList<> from C++ memory to manually-managed C memory
 	QPageRanges__Range** _arr = static_cast<QPageRanges__Range**>(malloc(sizeof(QPageRanges__Range*) * _ret.length()));
@@ -52,11 +52,11 @@ struct miqt_array /* of QPageRanges__Range* */  QPageRanges_ToRangeList(const QP
 	return _out;
 }
 
-void QPageRanges_Clear(QPageRanges* self) {
+void QPageRanges_clear(QPageRanges* self) {
 	self->clear();
 }
 
-struct miqt_string QPageRanges_ToString(const QPageRanges* self) {
+struct miqt_string QPageRanges_toString(const QPageRanges* self) {
 	QString _ret = self->toString();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -67,32 +67,32 @@ struct miqt_string QPageRanges_ToString(const QPageRanges* self) {
 	return _ms;
 }
 
-QPageRanges* QPageRanges_FromString(struct miqt_string ranges) {
+QPageRanges* QPageRanges_fromString(struct miqt_string ranges) {
 	QString ranges_QString = QString::fromUtf8(ranges.data, ranges.len);
 	return new QPageRanges(QPageRanges::fromString(ranges_QString));
 }
 
-bool QPageRanges_Contains(const QPageRanges* self, int pageNumber) {
+bool QPageRanges_contains(const QPageRanges* self, int pageNumber) {
 	return self->contains(static_cast<int>(pageNumber));
 }
 
-bool QPageRanges_IsEmpty(const QPageRanges* self) {
+bool QPageRanges_isEmpty(const QPageRanges* self) {
 	return self->isEmpty();
 }
 
-int QPageRanges_FirstPage(const QPageRanges* self) {
+int QPageRanges_firstPage(const QPageRanges* self) {
 	return self->firstPage();
 }
 
-int QPageRanges_LastPage(const QPageRanges* self) {
+int QPageRanges_lastPage(const QPageRanges* self) {
 	return self->lastPage();
 }
 
-void QPageRanges_Detach(QPageRanges* self) {
+void QPageRanges_detach(QPageRanges* self) {
 	self->detach();
 }
 
-void QPageRanges_Delete(QPageRanges* self) {
+void QPageRanges_delete(QPageRanges* self) {
 	delete self;
 }
 
@@ -104,11 +104,11 @@ QPageRanges__Range* QPageRanges__Range_new2(QPageRanges__Range* param1) {
 	return new QPageRanges::Range(*param1);
 }
 
-bool QPageRanges__Range_Contains(const QPageRanges__Range* self, int pageNumber) {
+bool QPageRanges__Range_contains(const QPageRanges__Range* self, int pageNumber) {
 	return self->contains(static_cast<int>(pageNumber));
 }
 
-void QPageRanges__Range_Delete(QPageRanges__Range* self) {
+void QPageRanges__Range_delete(QPageRanges__Range* self) {
 	delete self;
 }
 

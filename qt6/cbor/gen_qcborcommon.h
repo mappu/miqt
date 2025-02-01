@@ -21,11 +21,11 @@ typedef struct QCborError QCborError;
 #endif
 
 int QCborError_ToQCborError__Code(const QCborError* self);
-struct miqt_string QCborError_ToString(const QCborError* self);
-void QCborError_Delete(QCborError* self);
+struct miqt_string QCborError_toString(const QCborError* self);
+void QCborError_delete(QCborError* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

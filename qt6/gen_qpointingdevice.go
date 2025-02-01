@@ -83,22 +83,22 @@ func NewQPointingDeviceUniqueId2(param1 *QPointingDeviceUniqueId) *QPointingDevi
 }
 
 func QPointingDeviceUniqueId_FromNumericId(id int64) *QPointingDeviceUniqueId {
-	_goptr := newQPointingDeviceUniqueId(C.QPointingDeviceUniqueId_FromNumericId((C.longlong)(id)))
+	_goptr := newQPointingDeviceUniqueId(C.QPointingDeviceUniqueId_fromNumericId((C.longlong)(id)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QPointingDeviceUniqueId) IsValid() bool {
-	return (bool)(C.QPointingDeviceUniqueId_IsValid(this.h))
+	return (bool)(C.QPointingDeviceUniqueId_isValid(this.h))
 }
 
 func (this *QPointingDeviceUniqueId) NumericId() int64 {
-	return (int64)(C.QPointingDeviceUniqueId_NumericId(this.h))
+	return (int64)(C.QPointingDeviceUniqueId_numericId(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QPointingDeviceUniqueId) Delete() {
-	C.QPointingDeviceUniqueId_Delete(this.h)
+	C.QPointingDeviceUniqueId_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -211,71 +211,71 @@ func NewQPointingDevice6(name string, systemId int64, devType QInputDevice__Devi
 }
 
 func (this *QPointingDevice) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QPointingDevice_MetaObject(this.h))
+	return newQMetaObject(C.QPointingDevice_metaObject(this.h))
 }
 
 func (this *QPointingDevice) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QPointingDevice_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QPointingDevice_metacast(this.h, param1_Cstring))
 }
 
 func QPointingDevice_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QPointingDevice_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QPointingDevice_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QPointingDevice) SetType(devType QInputDevice__DeviceType) {
-	C.QPointingDevice_SetType(this.h, (C.int)(devType))
+	C.QPointingDevice_setType(this.h, (C.int)(devType))
 }
 
 func (this *QPointingDevice) SetCapabilities(caps QInputDevice__Capability) {
-	C.QPointingDevice_SetCapabilities(this.h, (C.int)(caps))
+	C.QPointingDevice_setCapabilities(this.h, (C.int)(caps))
 }
 
 func (this *QPointingDevice) SetMaximumTouchPoints(c int) {
-	C.QPointingDevice_SetMaximumTouchPoints(this.h, (C.int)(c))
+	C.QPointingDevice_setMaximumTouchPoints(this.h, (C.int)(c))
 }
 
 func (this *QPointingDevice) PointerType() QPointingDevice__PointerType {
-	return (QPointingDevice__PointerType)(C.QPointingDevice_PointerType(this.h))
+	return (QPointingDevice__PointerType)(C.QPointingDevice_pointerType(this.h))
 }
 
 func (this *QPointingDevice) MaximumPoints() int {
-	return (int)(C.QPointingDevice_MaximumPoints(this.h))
+	return (int)(C.QPointingDevice_maximumPoints(this.h))
 }
 
 func (this *QPointingDevice) ButtonCount() int {
-	return (int)(C.QPointingDevice_ButtonCount(this.h))
+	return (int)(C.QPointingDevice_buttonCount(this.h))
 }
 
 func (this *QPointingDevice) UniqueId() *QPointingDeviceUniqueId {
-	_goptr := newQPointingDeviceUniqueId(C.QPointingDevice_UniqueId(this.h))
+	_goptr := newQPointingDeviceUniqueId(C.QPointingDevice_uniqueId(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QPointingDevice_PrimaryPointingDevice() *QPointingDevice {
-	return newQPointingDevice(C.QPointingDevice_PrimaryPointingDevice())
+	return newQPointingDevice(C.QPointingDevice_primaryPointingDevice())
 }
 
 func (this *QPointingDevice) OperatorEqual(other *QPointingDevice) bool {
-	return (bool)(C.QPointingDevice_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QPointingDevice_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QPointingDevice) GrabChanged(grabber *QObject, transition QPointingDevice__GrabTransition, event *QPointerEvent, point *QEventPoint) {
-	C.QPointingDevice_GrabChanged(this.h, grabber.cPointer(), (C.int)(transition), event.cPointer(), point.cPointer())
+	C.QPointingDevice_grabChanged(this.h, grabber.cPointer(), (C.int)(transition), event.cPointer(), point.cPointer())
 }
 func (this *QPointingDevice) OnGrabChanged(slot func(grabber *QObject, transition QPointingDevice__GrabTransition, event *QPointerEvent, point *QEventPoint)) {
-	C.QPointingDevice_connect_GrabChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QPointingDevice_connect_grabChanged(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QPointingDevice_GrabChanged
-func miqt_exec_callback_QPointingDevice_GrabChanged(cb C.intptr_t, grabber *C.QObject, transition C.int, event *C.QPointerEvent, point *C.QEventPoint) {
+//export miqt_exec_callback_QPointingDevice_grabChanged
+func miqt_exec_callback_QPointingDevice_grabChanged(cb C.intptr_t, grabber *C.QObject, transition C.int, event *C.QPointerEvent, point *C.QEventPoint) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(grabber *QObject, transition QPointingDevice__GrabTransition, event *QPointerEvent, point *QEventPoint))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -298,7 +298,7 @@ func QPointingDevice_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QPointingDevice_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QPointingDevice_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -309,7 +309,7 @@ func QPointingDevice_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QPointingDevice_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QPointingDevice_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -320,23 +320,23 @@ func QPointingDevice_PrimaryPointingDevice1(seatName string) *QPointingDevice {
 	seatName_ms.data = C.CString(seatName)
 	seatName_ms.len = C.size_t(len(seatName))
 	defer C.free(unsafe.Pointer(seatName_ms.data))
-	return newQPointingDevice(C.QPointingDevice_PrimaryPointingDevice1(seatName_ms))
+	return newQPointingDevice(C.QPointingDevice_primaryPointingDevice1(seatName_ms))
 }
 
 func (this *QPointingDevice) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QPointingDevice_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QPointingDevice_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QPointingDevice) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QPointingDevice_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPointingDevice) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QPointingDevice_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPointingDevice_Event
-func miqt_exec_callback_QPointingDevice_Event(self *C.QPointingDevice, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QPointingDevice_event
+func miqt_exec_callback_QPointingDevice_event(self *C.QPointingDevice, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -353,18 +353,18 @@ func miqt_exec_callback_QPointingDevice_Event(self *C.QPointingDevice, cb C.intp
 
 func (this *QPointingDevice) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QPointingDevice_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QPointingDevice_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QPointingDevice) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QPointingDevice_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPointingDevice) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QPointingDevice_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPointingDevice_EventFilter
-func miqt_exec_callback_QPointingDevice_EventFilter(self *C.QPointingDevice, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QPointingDevice_eventFilter
+func miqt_exec_callback_QPointingDevice_eventFilter(self *C.QPointingDevice, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -383,18 +383,18 @@ func miqt_exec_callback_QPointingDevice_EventFilter(self *C.QPointingDevice, cb 
 
 func (this *QPointingDevice) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QPointingDevice_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QPointingDevice_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPointingDevice) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QPointingDevice_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPointingDevice) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QPointingDevice_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPointingDevice_TimerEvent
-func miqt_exec_callback_QPointingDevice_TimerEvent(self *C.QPointingDevice, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QPointingDevice_timerEvent
+func miqt_exec_callback_QPointingDevice_timerEvent(self *C.QPointingDevice, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -409,18 +409,18 @@ func miqt_exec_callback_QPointingDevice_TimerEvent(self *C.QPointingDevice, cb C
 
 func (this *QPointingDevice) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QPointingDevice_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QPointingDevice_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPointingDevice) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QPointingDevice_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPointingDevice) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QPointingDevice_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPointingDevice_ChildEvent
-func miqt_exec_callback_QPointingDevice_ChildEvent(self *C.QPointingDevice, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QPointingDevice_childEvent
+func miqt_exec_callback_QPointingDevice_childEvent(self *C.QPointingDevice, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -435,18 +435,18 @@ func miqt_exec_callback_QPointingDevice_ChildEvent(self *C.QPointingDevice, cb C
 
 func (this *QPointingDevice) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QPointingDevice_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QPointingDevice_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QPointingDevice) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QPointingDevice_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPointingDevice) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QPointingDevice_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPointingDevice_CustomEvent
-func miqt_exec_callback_QPointingDevice_CustomEvent(self *C.QPointingDevice, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QPointingDevice_customEvent
+func miqt_exec_callback_QPointingDevice_customEvent(self *C.QPointingDevice, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -461,18 +461,18 @@ func miqt_exec_callback_QPointingDevice_CustomEvent(self *C.QPointingDevice, cb 
 
 func (this *QPointingDevice) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QPointingDevice_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QPointingDevice_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QPointingDevice) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QPointingDevice_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPointingDevice) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QPointingDevice_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPointingDevice_ConnectNotify
-func miqt_exec_callback_QPointingDevice_ConnectNotify(self *C.QPointingDevice, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QPointingDevice_connectNotify
+func miqt_exec_callback_QPointingDevice_connectNotify(self *C.QPointingDevice, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -487,18 +487,18 @@ func miqt_exec_callback_QPointingDevice_ConnectNotify(self *C.QPointingDevice, c
 
 func (this *QPointingDevice) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QPointingDevice_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QPointingDevice_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QPointingDevice) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QPointingDevice_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QPointingDevice) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QPointingDevice_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QPointingDevice_DisconnectNotify
-func miqt_exec_callback_QPointingDevice_DisconnectNotify(self *C.QPointingDevice, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QPointingDevice_disconnectNotify
+func miqt_exec_callback_QPointingDevice_disconnectNotify(self *C.QPointingDevice, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -513,7 +513,7 @@ func miqt_exec_callback_QPointingDevice_DisconnectNotify(self *C.QPointingDevice
 
 // Delete this object from C++ memory.
 func (this *QPointingDevice) Delete() {
-	C.QPointingDevice_Delete(this.h)
+	C.QPointingDevice_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

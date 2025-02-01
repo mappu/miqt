@@ -21,13 +21,13 @@ typedef struct QAbstractNativeEventFilter QAbstractNativeEventFilter;
 #endif
 
 QAbstractNativeEventFilter* QAbstractNativeEventFilter_new();
-bool QAbstractNativeEventFilter_NativeEventFilter(QAbstractNativeEventFilter* self, struct miqt_string eventType, void* message, long* result);
-bool QAbstractNativeEventFilter_override_virtual_NativeEventFilter(void* self, intptr_t slot);
-bool QAbstractNativeEventFilter_virtualbase_NativeEventFilter(void* self, struct miqt_string eventType, void* message, long* result);
-void QAbstractNativeEventFilter_Delete(QAbstractNativeEventFilter* self);
+bool QAbstractNativeEventFilter_nativeEventFilter(QAbstractNativeEventFilter* self, struct miqt_string eventType, void* message, long* result);
+bool QAbstractNativeEventFilter_override_virtual_nativeEventFilter(void* self, intptr_t slot);
+bool QAbstractNativeEventFilter_virtualbase_nativeEventFilter(void* self, struct miqt_string eventType, void* message, long* result);
+void QAbstractNativeEventFilter_delete(QAbstractNativeEventFilter* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

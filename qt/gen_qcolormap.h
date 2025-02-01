@@ -23,21 +23,21 @@ typedef struct QColormap QColormap;
 #endif
 
 QColormap* QColormap_new(QColormap* colormap);
-void QColormap_Initialize();
-void QColormap_Cleanup();
-QColormap* QColormap_Instance();
-void QColormap_OperatorAssign(QColormap* self, QColormap* colormap);
-int QColormap_Mode(const QColormap* self);
-int QColormap_Depth(const QColormap* self);
-int QColormap_Size(const QColormap* self);
-unsigned int QColormap_Pixel(const QColormap* self, QColor* color);
-QColor* QColormap_ColorAt(const QColormap* self, unsigned int pixel);
-struct miqt_array /* of QColor* */  QColormap_Colormap(const QColormap* self);
-QColormap* QColormap_Instance1(int screen);
-void QColormap_Delete(QColormap* self);
+void QColormap_initialize();
+void QColormap_cleanup();
+QColormap* QColormap_instance();
+void QColormap_operatorAssign(QColormap* self, QColormap* colormap);
+int QColormap_mode(const QColormap* self);
+int QColormap_depth(const QColormap* self);
+int QColormap_size(const QColormap* self);
+unsigned int QColormap_pixel(const QColormap* self, QColor* color);
+QColor* QColormap_colorAt(const QColormap* self, unsigned int pixel);
+struct miqt_array /* of QColor* */  QColormap_colormap(const QColormap* self);
+QColormap* QColormap_instance1(int screen);
+void QColormap_delete(QColormap* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

@@ -27,22 +27,22 @@ typedef struct QWebEngineNavigationRequest QWebEngineNavigationRequest;
 #endif
 
 void QWebEngineNavigationRequest_virtbase(QWebEngineNavigationRequest* src, QObject** outptr_QObject);
-QMetaObject* QWebEngineNavigationRequest_MetaObject(const QWebEngineNavigationRequest* self);
-void* QWebEngineNavigationRequest_Metacast(QWebEngineNavigationRequest* self, const char* param1);
-struct miqt_string QWebEngineNavigationRequest_Tr(const char* s);
-QUrl* QWebEngineNavigationRequest_Url(const QWebEngineNavigationRequest* self);
-bool QWebEngineNavigationRequest_IsMainFrame(const QWebEngineNavigationRequest* self);
-int QWebEngineNavigationRequest_NavigationType(const QWebEngineNavigationRequest* self);
-void QWebEngineNavigationRequest_Accept(QWebEngineNavigationRequest* self);
-void QWebEngineNavigationRequest_Reject(QWebEngineNavigationRequest* self);
-void QWebEngineNavigationRequest_ActionChanged(QWebEngineNavigationRequest* self);
-void QWebEngineNavigationRequest_connect_ActionChanged(QWebEngineNavigationRequest* self, intptr_t slot);
-struct miqt_string QWebEngineNavigationRequest_Tr2(const char* s, const char* c);
-struct miqt_string QWebEngineNavigationRequest_Tr3(const char* s, const char* c, int n);
-void QWebEngineNavigationRequest_Delete(QWebEngineNavigationRequest* self);
+QMetaObject* QWebEngineNavigationRequest_metaObject(const QWebEngineNavigationRequest* self);
+void* QWebEngineNavigationRequest_metacast(QWebEngineNavigationRequest* self, const char* param1);
+struct miqt_string QWebEngineNavigationRequest_tr(const char* s);
+QUrl* QWebEngineNavigationRequest_url(const QWebEngineNavigationRequest* self);
+bool QWebEngineNavigationRequest_isMainFrame(const QWebEngineNavigationRequest* self);
+int QWebEngineNavigationRequest_navigationType(const QWebEngineNavigationRequest* self);
+void QWebEngineNavigationRequest_accept(QWebEngineNavigationRequest* self);
+void QWebEngineNavigationRequest_reject(QWebEngineNavigationRequest* self);
+void QWebEngineNavigationRequest_actionChanged(QWebEngineNavigationRequest* self);
+void QWebEngineNavigationRequest_connect_actionChanged(QWebEngineNavigationRequest* self, intptr_t slot);
+struct miqt_string QWebEngineNavigationRequest_tr2(const char* s, const char* c);
+struct miqt_string QWebEngineNavigationRequest_tr3(const char* s, const char* c, int n);
+void QWebEngineNavigationRequest_delete(QWebEngineNavigationRequest* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

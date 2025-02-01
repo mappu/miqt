@@ -37,35 +37,35 @@ typedef struct QTimerEvent QTimerEvent;
 QIconEnginePlugin* QIconEnginePlugin_new();
 QIconEnginePlugin* QIconEnginePlugin_new2(QObject* parent);
 void QIconEnginePlugin_virtbase(QIconEnginePlugin* src, QObject** outptr_QObject);
-QMetaObject* QIconEnginePlugin_MetaObject(const QIconEnginePlugin* self);
-void* QIconEnginePlugin_Metacast(QIconEnginePlugin* self, const char* param1);
-struct miqt_string QIconEnginePlugin_Tr(const char* s);
-struct miqt_string QIconEnginePlugin_TrUtf8(const char* s);
-QIconEngine* QIconEnginePlugin_Create(QIconEnginePlugin* self, struct miqt_string filename);
-struct miqt_string QIconEnginePlugin_Tr2(const char* s, const char* c);
-struct miqt_string QIconEnginePlugin_Tr3(const char* s, const char* c, int n);
-struct miqt_string QIconEnginePlugin_TrUtf82(const char* s, const char* c);
-struct miqt_string QIconEnginePlugin_TrUtf83(const char* s, const char* c, int n);
-bool QIconEnginePlugin_override_virtual_Create(void* self, intptr_t slot);
-QIconEngine* QIconEnginePlugin_virtualbase_Create(void* self, struct miqt_string filename);
-bool QIconEnginePlugin_override_virtual_Event(void* self, intptr_t slot);
-bool QIconEnginePlugin_virtualbase_Event(void* self, QEvent* event);
-bool QIconEnginePlugin_override_virtual_EventFilter(void* self, intptr_t slot);
-bool QIconEnginePlugin_virtualbase_EventFilter(void* self, QObject* watched, QEvent* event);
-bool QIconEnginePlugin_override_virtual_TimerEvent(void* self, intptr_t slot);
-void QIconEnginePlugin_virtualbase_TimerEvent(void* self, QTimerEvent* event);
-bool QIconEnginePlugin_override_virtual_ChildEvent(void* self, intptr_t slot);
-void QIconEnginePlugin_virtualbase_ChildEvent(void* self, QChildEvent* event);
-bool QIconEnginePlugin_override_virtual_CustomEvent(void* self, intptr_t slot);
-void QIconEnginePlugin_virtualbase_CustomEvent(void* self, QEvent* event);
-bool QIconEnginePlugin_override_virtual_ConnectNotify(void* self, intptr_t slot);
-void QIconEnginePlugin_virtualbase_ConnectNotify(void* self, QMetaMethod* signal);
-bool QIconEnginePlugin_override_virtual_DisconnectNotify(void* self, intptr_t slot);
-void QIconEnginePlugin_virtualbase_DisconnectNotify(void* self, QMetaMethod* signal);
-void QIconEnginePlugin_Delete(QIconEnginePlugin* self);
+QMetaObject* QIconEnginePlugin_metaObject(const QIconEnginePlugin* self);
+void* QIconEnginePlugin_metacast(QIconEnginePlugin* self, const char* param1);
+struct miqt_string QIconEnginePlugin_tr(const char* s);
+struct miqt_string QIconEnginePlugin_trUtf8(const char* s);
+QIconEngine* QIconEnginePlugin_create(QIconEnginePlugin* self, struct miqt_string filename);
+struct miqt_string QIconEnginePlugin_tr2(const char* s, const char* c);
+struct miqt_string QIconEnginePlugin_tr3(const char* s, const char* c, int n);
+struct miqt_string QIconEnginePlugin_trUtf82(const char* s, const char* c);
+struct miqt_string QIconEnginePlugin_trUtf83(const char* s, const char* c, int n);
+bool QIconEnginePlugin_override_virtual_create(void* self, intptr_t slot);
+QIconEngine* QIconEnginePlugin_virtualbase_create(void* self, struct miqt_string filename);
+bool QIconEnginePlugin_override_virtual_event(void* self, intptr_t slot);
+bool QIconEnginePlugin_virtualbase_event(void* self, QEvent* event);
+bool QIconEnginePlugin_override_virtual_eventFilter(void* self, intptr_t slot);
+bool QIconEnginePlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
+bool QIconEnginePlugin_override_virtual_timerEvent(void* self, intptr_t slot);
+void QIconEnginePlugin_virtualbase_timerEvent(void* self, QTimerEvent* event);
+bool QIconEnginePlugin_override_virtual_childEvent(void* self, intptr_t slot);
+void QIconEnginePlugin_virtualbase_childEvent(void* self, QChildEvent* event);
+bool QIconEnginePlugin_override_virtual_customEvent(void* self, intptr_t slot);
+void QIconEnginePlugin_virtualbase_customEvent(void* self, QEvent* event);
+bool QIconEnginePlugin_override_virtual_connectNotify(void* self, intptr_t slot);
+void QIconEnginePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
+bool QIconEnginePlugin_override_virtual_disconnectNotify(void* self, intptr_t slot);
+void QIconEnginePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QIconEnginePlugin_delete(QIconEnginePlugin* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

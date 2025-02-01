@@ -69,12 +69,12 @@ func UnsafeNewQIPv6Address(h unsafe.Pointer) *QIPv6Address {
 }
 
 func (this *QIPv6Address) OperatorSubscript(index int) byte {
-	return (byte)(C.QIPv6Address_OperatorSubscript(this.h, (C.int)(index)))
+	return (byte)(C.QIPv6Address_operatorSubscript(this.h, (C.int)(index)))
 }
 
 // Delete this object from C++ memory.
 func (this *QIPv6Address) Delete() {
-	C.QIPv6Address_Delete(this.h)
+	C.QIPv6Address_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -171,7 +171,7 @@ func NewQHostAddress8(address QHostAddress__SpecialAddress) *QHostAddress {
 }
 
 func (this *QHostAddress) OperatorAssign(other *QHostAddress) {
-	C.QHostAddress_OperatorAssign(this.h, other.cPointer())
+	C.QHostAddress_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QHostAddress) OperatorAssignWithAddress(address string) {
@@ -179,31 +179,31 @@ func (this *QHostAddress) OperatorAssignWithAddress(address string) {
 	address_ms.data = C.CString(address)
 	address_ms.len = C.size_t(len(address))
 	defer C.free(unsafe.Pointer(address_ms.data))
-	C.QHostAddress_OperatorAssignWithAddress(this.h, address_ms)
+	C.QHostAddress_operatorAssignWithAddress(this.h, address_ms)
 }
 
 func (this *QHostAddress) OperatorAssign2(address QHostAddress__SpecialAddress) {
-	C.QHostAddress_OperatorAssign2(this.h, (C.int)(address))
+	C.QHostAddress_operatorAssign2(this.h, (C.int)(address))
 }
 
 func (this *QHostAddress) Swap(other *QHostAddress) {
-	C.QHostAddress_Swap(this.h, other.cPointer())
+	C.QHostAddress_swap(this.h, other.cPointer())
 }
 
 func (this *QHostAddress) SetAddress(ip4Addr uint) {
-	C.QHostAddress_SetAddress(this.h, (C.uint)(ip4Addr))
+	C.QHostAddress_setAddress(this.h, (C.uint)(ip4Addr))
 }
 
 func (this *QHostAddress) SetAddressWithIp6Addr(ip6Addr *byte) {
-	C.QHostAddress_SetAddressWithIp6Addr(this.h, (*C.uchar)(unsafe.Pointer(ip6Addr)))
+	C.QHostAddress_setAddressWithIp6Addr(this.h, (*C.uchar)(unsafe.Pointer(ip6Addr)))
 }
 
 func (this *QHostAddress) SetAddress2(ip6Addr *byte) {
-	C.QHostAddress_SetAddress2(this.h, (*C.uchar)(unsafe.Pointer(ip6Addr)))
+	C.QHostAddress_setAddress2(this.h, (*C.uchar)(unsafe.Pointer(ip6Addr)))
 }
 
 func (this *QHostAddress) SetAddress3(ip6Addr *QIPv6Address) {
-	C.QHostAddress_SetAddress3(this.h, ip6Addr.cPointer())
+	C.QHostAddress_setAddress3(this.h, ip6Addr.cPointer())
 }
 
 func (this *QHostAddress) SetAddress4(address string) bool {
@@ -211,40 +211,40 @@ func (this *QHostAddress) SetAddress4(address string) bool {
 	address_ms.data = C.CString(address)
 	address_ms.len = C.size_t(len(address))
 	defer C.free(unsafe.Pointer(address_ms.data))
-	return (bool)(C.QHostAddress_SetAddress4(this.h, address_ms))
+	return (bool)(C.QHostAddress_setAddress4(this.h, address_ms))
 }
 
 func (this *QHostAddress) SetAddress5(address QHostAddress__SpecialAddress) {
-	C.QHostAddress_SetAddress5(this.h, (C.int)(address))
+	C.QHostAddress_setAddress5(this.h, (C.int)(address))
 }
 
 func (this *QHostAddress) Protocol() QAbstractSocket__NetworkLayerProtocol {
-	return (QAbstractSocket__NetworkLayerProtocol)(C.QHostAddress_Protocol(this.h))
+	return (QAbstractSocket__NetworkLayerProtocol)(C.QHostAddress_protocol(this.h))
 }
 
 func (this *QHostAddress) ToIPv4Address() uint {
-	return (uint)(C.QHostAddress_ToIPv4Address(this.h))
+	return (uint)(C.QHostAddress_toIPv4Address(this.h))
 }
 
 func (this *QHostAddress) ToIPv4AddressWithOk(ok *bool) uint {
-	return (uint)(C.QHostAddress_ToIPv4AddressWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
+	return (uint)(C.QHostAddress_toIPv4AddressWithOk(this.h, (*C.bool)(unsafe.Pointer(ok))))
 }
 
 func (this *QHostAddress) ToIPv6Address() *QIPv6Address {
-	_goptr := newQIPv6Address(C.QHostAddress_ToIPv6Address(this.h))
+	_goptr := newQIPv6Address(C.QHostAddress_toIPv6Address(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QHostAddress) ToString() string {
-	var _ms C.struct_miqt_string = C.QHostAddress_ToString(this.h)
+	var _ms C.struct_miqt_string = C.QHostAddress_toString(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QHostAddress) ScopeId() string {
-	var _ms C.struct_miqt_string = C.QHostAddress_ScopeId(this.h)
+	var _ms C.struct_miqt_string = C.QHostAddress_scopeId(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -255,39 +255,39 @@ func (this *QHostAddress) SetScopeId(id string) {
 	id_ms.data = C.CString(id)
 	id_ms.len = C.size_t(len(id))
 	defer C.free(unsafe.Pointer(id_ms.data))
-	C.QHostAddress_SetScopeId(this.h, id_ms)
+	C.QHostAddress_setScopeId(this.h, id_ms)
 }
 
 func (this *QHostAddress) IsEqual(address *QHostAddress) bool {
-	return (bool)(C.QHostAddress_IsEqual(this.h, address.cPointer()))
+	return (bool)(C.QHostAddress_isEqual(this.h, address.cPointer()))
 }
 
 func (this *QHostAddress) OperatorEqual(address *QHostAddress) bool {
-	return (bool)(C.QHostAddress_OperatorEqual(this.h, address.cPointer()))
+	return (bool)(C.QHostAddress_operatorEqual(this.h, address.cPointer()))
 }
 
 func (this *QHostAddress) OperatorEqualWithAddress(address QHostAddress__SpecialAddress) bool {
-	return (bool)(C.QHostAddress_OperatorEqualWithAddress(this.h, (C.int)(address)))
+	return (bool)(C.QHostAddress_operatorEqualWithAddress(this.h, (C.int)(address)))
 }
 
 func (this *QHostAddress) OperatorNotEqual(address *QHostAddress) bool {
-	return (bool)(C.QHostAddress_OperatorNotEqual(this.h, address.cPointer()))
+	return (bool)(C.QHostAddress_operatorNotEqual(this.h, address.cPointer()))
 }
 
 func (this *QHostAddress) OperatorNotEqualWithAddress(address QHostAddress__SpecialAddress) bool {
-	return (bool)(C.QHostAddress_OperatorNotEqualWithAddress(this.h, (C.int)(address)))
+	return (bool)(C.QHostAddress_operatorNotEqualWithAddress(this.h, (C.int)(address)))
 }
 
 func (this *QHostAddress) IsNull() bool {
-	return (bool)(C.QHostAddress_IsNull(this.h))
+	return (bool)(C.QHostAddress_isNull(this.h))
 }
 
 func (this *QHostAddress) Clear() {
-	C.QHostAddress_Clear(this.h)
+	C.QHostAddress_clear(this.h)
 }
 
 func (this *QHostAddress) IsInSubnet(subnet *QHostAddress, netmask int) bool {
-	return (bool)(C.QHostAddress_IsInSubnet(this.h, subnet.cPointer(), (C.int)(netmask)))
+	return (bool)(C.QHostAddress_isInSubnet(this.h, subnet.cPointer(), (C.int)(netmask)))
 }
 
 func (this *QHostAddress) IsInSubnetWithSubnet(subnet struct {
@@ -305,35 +305,35 @@ func (this *QHostAddress) IsInSubnetWithSubnet(subnet struct {
 		keys:   unsafe.Pointer(subnet_First_CArray),
 		values: unsafe.Pointer(subnet_Second_CArray),
 	}
-	return (bool)(C.QHostAddress_IsInSubnetWithSubnet(this.h, subnet_pair))
+	return (bool)(C.QHostAddress_isInSubnetWithSubnet(this.h, subnet_pair))
 }
 
 func (this *QHostAddress) IsLoopback() bool {
-	return (bool)(C.QHostAddress_IsLoopback(this.h))
+	return (bool)(C.QHostAddress_isLoopback(this.h))
 }
 
 func (this *QHostAddress) IsGlobal() bool {
-	return (bool)(C.QHostAddress_IsGlobal(this.h))
+	return (bool)(C.QHostAddress_isGlobal(this.h))
 }
 
 func (this *QHostAddress) IsLinkLocal() bool {
-	return (bool)(C.QHostAddress_IsLinkLocal(this.h))
+	return (bool)(C.QHostAddress_isLinkLocal(this.h))
 }
 
 func (this *QHostAddress) IsSiteLocal() bool {
-	return (bool)(C.QHostAddress_IsSiteLocal(this.h))
+	return (bool)(C.QHostAddress_isSiteLocal(this.h))
 }
 
 func (this *QHostAddress) IsUniqueLocalUnicast() bool {
-	return (bool)(C.QHostAddress_IsUniqueLocalUnicast(this.h))
+	return (bool)(C.QHostAddress_isUniqueLocalUnicast(this.h))
 }
 
 func (this *QHostAddress) IsMulticast() bool {
-	return (bool)(C.QHostAddress_IsMulticast(this.h))
+	return (bool)(C.QHostAddress_isMulticast(this.h))
 }
 
 func (this *QHostAddress) IsBroadcast() bool {
-	return (bool)(C.QHostAddress_IsBroadcast(this.h))
+	return (bool)(C.QHostAddress_isBroadcast(this.h))
 }
 
 func QHostAddress_ParseSubnet(subnet string) struct {
@@ -344,7 +344,7 @@ func QHostAddress_ParseSubnet(subnet string) struct {
 	subnet_ms.data = C.CString(subnet)
 	subnet_ms.len = C.size_t(len(subnet))
 	defer C.free(unsafe.Pointer(subnet_ms.data))
-	var _mm C.struct_miqt_map = C.QHostAddress_ParseSubnet(subnet_ms)
+	var _mm C.struct_miqt_map = C.QHostAddress_parseSubnet(subnet_ms)
 	_First_CArray := (*[0xffff]*C.QHostAddress)(unsafe.Pointer(_mm.keys))
 	_Second_CArray := (*[0xffff]C.int)(unsafe.Pointer(_mm.values))
 	_first_goptr := newQHostAddress(_First_CArray[0])
@@ -360,12 +360,12 @@ func QHostAddress_ParseSubnet(subnet string) struct {
 }
 
 func (this *QHostAddress) IsEqual2(address *QHostAddress, mode QHostAddress__ConversionModeFlag) bool {
-	return (bool)(C.QHostAddress_IsEqual2(this.h, address.cPointer(), (C.int)(mode)))
+	return (bool)(C.QHostAddress_isEqual2(this.h, address.cPointer(), (C.int)(mode)))
 }
 
 // Delete this object from C++ memory.
 func (this *QHostAddress) Delete() {
-	C.QHostAddress_Delete(this.h)
+	C.QHostAddress_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

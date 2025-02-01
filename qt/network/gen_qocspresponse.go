@@ -80,36 +80,36 @@ func NewQOcspResponse2(other *QOcspResponse) *QOcspResponse {
 }
 
 func (this *QOcspResponse) OperatorAssign(other *QOcspResponse) {
-	C.QOcspResponse_OperatorAssign(this.h, other.cPointer())
+	C.QOcspResponse_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QOcspResponse) CertificateStatus() QOcspCertificateStatus {
-	return (QOcspCertificateStatus)(C.QOcspResponse_CertificateStatus(this.h))
+	return (QOcspCertificateStatus)(C.QOcspResponse_certificateStatus(this.h))
 }
 
 func (this *QOcspResponse) RevocationReason() QOcspRevocationReason {
-	return (QOcspRevocationReason)(C.QOcspResponse_RevocationReason(this.h))
+	return (QOcspRevocationReason)(C.QOcspResponse_revocationReason(this.h))
 }
 
 func (this *QOcspResponse) Responder() *QSslCertificate {
-	_goptr := newQSslCertificate(C.QOcspResponse_Responder(this.h))
+	_goptr := newQSslCertificate(C.QOcspResponse_responder(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QOcspResponse) Subject() *QSslCertificate {
-	_goptr := newQSslCertificate(C.QOcspResponse_Subject(this.h))
+	_goptr := newQSslCertificate(C.QOcspResponse_subject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QOcspResponse) Swap(other *QOcspResponse) {
-	C.QOcspResponse_Swap(this.h, other.cPointer())
+	C.QOcspResponse_swap(this.h, other.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QOcspResponse) Delete() {
-	C.QOcspResponse_Delete(this.h)
+	C.QOcspResponse_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

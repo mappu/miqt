@@ -20,35 +20,35 @@ QReadWriteLock* QReadWriteLock_new2(int recursionMode) {
 	return new QReadWriteLock(static_cast<QReadWriteLock::RecursionMode>(recursionMode));
 }
 
-void QReadWriteLock_LockForRead(QReadWriteLock* self) {
+void QReadWriteLock_lockForRead(QReadWriteLock* self) {
 	self->lockForRead();
 }
 
-bool QReadWriteLock_TryLockForRead(QReadWriteLock* self) {
+bool QReadWriteLock_tryLockForRead(QReadWriteLock* self) {
 	return self->tryLockForRead();
 }
 
-bool QReadWriteLock_TryLockForReadWithTimeout(QReadWriteLock* self, int timeout) {
+bool QReadWriteLock_tryLockForReadWithTimeout(QReadWriteLock* self, int timeout) {
 	return self->tryLockForRead(static_cast<int>(timeout));
 }
 
-void QReadWriteLock_LockForWrite(QReadWriteLock* self) {
+void QReadWriteLock_lockForWrite(QReadWriteLock* self) {
 	self->lockForWrite();
 }
 
-bool QReadWriteLock_TryLockForWrite(QReadWriteLock* self) {
+bool QReadWriteLock_tryLockForWrite(QReadWriteLock* self) {
 	return self->tryLockForWrite();
 }
 
-bool QReadWriteLock_TryLockForWriteWithTimeout(QReadWriteLock* self, int timeout) {
+bool QReadWriteLock_tryLockForWriteWithTimeout(QReadWriteLock* self, int timeout) {
 	return self->tryLockForWrite(static_cast<int>(timeout));
 }
 
-void QReadWriteLock_Unlock(QReadWriteLock* self) {
+void QReadWriteLock_unlock(QReadWriteLock* self) {
 	self->unlock();
 }
 
-void QReadWriteLock_Delete(QReadWriteLock* self) {
+void QReadWriteLock_delete(QReadWriteLock* self) {
 	delete self;
 }
 
@@ -56,19 +56,19 @@ QReadLocker* QReadLocker_new(QReadWriteLock* readWriteLock) {
 	return new QReadLocker(readWriteLock);
 }
 
-void QReadLocker_Unlock(QReadLocker* self) {
+void QReadLocker_unlock(QReadLocker* self) {
 	self->unlock();
 }
 
-void QReadLocker_Relock(QReadLocker* self) {
+void QReadLocker_relock(QReadLocker* self) {
 	self->relock();
 }
 
-QReadWriteLock* QReadLocker_ReadWriteLock(const QReadLocker* self) {
+QReadWriteLock* QReadLocker_readWriteLock(const QReadLocker* self) {
 	return self->readWriteLock();
 }
 
-void QReadLocker_Delete(QReadLocker* self) {
+void QReadLocker_delete(QReadLocker* self) {
 	delete self;
 }
 
@@ -76,19 +76,19 @@ QWriteLocker* QWriteLocker_new(QReadWriteLock* readWriteLock) {
 	return new QWriteLocker(readWriteLock);
 }
 
-void QWriteLocker_Unlock(QWriteLocker* self) {
+void QWriteLocker_unlock(QWriteLocker* self) {
 	self->unlock();
 }
 
-void QWriteLocker_Relock(QWriteLocker* self) {
+void QWriteLocker_relock(QWriteLocker* self) {
 	self->relock();
 }
 
-QReadWriteLock* QWriteLocker_ReadWriteLock(const QWriteLocker* self) {
+QReadWriteLock* QWriteLocker_readWriteLock(const QWriteLocker* self) {
 	return self->readWriteLock();
 }
 
-void QWriteLocker_Delete(QWriteLocker* self) {
+void QWriteLocker_delete(QWriteLocker* self) {
 	delete self;
 }
 

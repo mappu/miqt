@@ -46,19 +46,19 @@ func UnsafeNewQWebEngineScriptCollection(h unsafe.Pointer) *QWebEngineScriptColl
 }
 
 func (this *QWebEngineScriptCollection) IsEmpty() bool {
-	return (bool)(C.QWebEngineScriptCollection_IsEmpty(this.h))
+	return (bool)(C.QWebEngineScriptCollection_isEmpty(this.h))
 }
 
 func (this *QWebEngineScriptCollection) Count() int {
-	return (int)(C.QWebEngineScriptCollection_Count(this.h))
+	return (int)(C.QWebEngineScriptCollection_count(this.h))
 }
 
 func (this *QWebEngineScriptCollection) Size() int {
-	return (int)(C.QWebEngineScriptCollection_Size(this.h))
+	return (int)(C.QWebEngineScriptCollection_size(this.h))
 }
 
 func (this *QWebEngineScriptCollection) Contains(value *QWebEngineScript) bool {
-	return (bool)(C.QWebEngineScriptCollection_Contains(this.h, value.cPointer()))
+	return (bool)(C.QWebEngineScriptCollection_contains(this.h, value.cPointer()))
 }
 
 func (this *QWebEngineScriptCollection) FindScript(name string) *QWebEngineScript {
@@ -66,7 +66,7 @@ func (this *QWebEngineScriptCollection) FindScript(name string) *QWebEngineScrip
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	_goptr := newQWebEngineScript(C.QWebEngineScriptCollection_FindScript(this.h, name_ms))
+	_goptr := newQWebEngineScript(C.QWebEngineScriptCollection_findScript(this.h, name_ms))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -76,7 +76,7 @@ func (this *QWebEngineScriptCollection) FindScripts(name string) []QWebEngineScr
 	name_ms.data = C.CString(name)
 	name_ms.len = C.size_t(len(name))
 	defer C.free(unsafe.Pointer(name_ms.data))
-	var _ma C.struct_miqt_array = C.QWebEngineScriptCollection_FindScripts(this.h, name_ms)
+	var _ma C.struct_miqt_array = C.QWebEngineScriptCollection_findScripts(this.h, name_ms)
 	_ret := make([]QWebEngineScript, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebEngineScript)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -88,7 +88,7 @@ func (this *QWebEngineScriptCollection) FindScripts(name string) []QWebEngineScr
 }
 
 func (this *QWebEngineScriptCollection) Insert(param1 *QWebEngineScript) {
-	C.QWebEngineScriptCollection_Insert(this.h, param1.cPointer())
+	C.QWebEngineScriptCollection_insert(this.h, param1.cPointer())
 }
 
 func (this *QWebEngineScriptCollection) InsertWithList(list []QWebEngineScript) {
@@ -98,19 +98,19 @@ func (this *QWebEngineScriptCollection) InsertWithList(list []QWebEngineScript) 
 		list_CArray[i] = list[i].cPointer()
 	}
 	list_ma := C.struct_miqt_array{len: C.size_t(len(list)), data: unsafe.Pointer(list_CArray)}
-	C.QWebEngineScriptCollection_InsertWithList(this.h, list_ma)
+	C.QWebEngineScriptCollection_insertWithList(this.h, list_ma)
 }
 
 func (this *QWebEngineScriptCollection) Remove(param1 *QWebEngineScript) bool {
-	return (bool)(C.QWebEngineScriptCollection_Remove(this.h, param1.cPointer()))
+	return (bool)(C.QWebEngineScriptCollection_remove(this.h, param1.cPointer()))
 }
 
 func (this *QWebEngineScriptCollection) Clear() {
-	C.QWebEngineScriptCollection_Clear(this.h)
+	C.QWebEngineScriptCollection_clear(this.h)
 }
 
 func (this *QWebEngineScriptCollection) ToList() []QWebEngineScript {
-	var _ma C.struct_miqt_array = C.QWebEngineScriptCollection_ToList(this.h)
+	var _ma C.struct_miqt_array = C.QWebEngineScriptCollection_toList(this.h)
 	_ret := make([]QWebEngineScript, int(_ma.len))
 	_outCast := (*[0xffff]*C.QWebEngineScript)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -123,7 +123,7 @@ func (this *QWebEngineScriptCollection) ToList() []QWebEngineScript {
 
 // Delete this object from C++ memory.
 func (this *QWebEngineScriptCollection) Delete() {
-	C.QWebEngineScriptCollection_Delete(this.h)
+	C.QWebEngineScriptCollection_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

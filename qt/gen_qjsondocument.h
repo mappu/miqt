@@ -30,43 +30,43 @@ typedef struct QJsonValue QJsonValue;
 typedef struct QVariant QVariant;
 #endif
 
-struct miqt_string QJsonParseError_ErrorString(const QJsonParseError* self);
-void QJsonParseError_Delete(QJsonParseError* self);
+struct miqt_string QJsonParseError_errorString(const QJsonParseError* self);
+void QJsonParseError_delete(QJsonParseError* self);
 
 QJsonDocument* QJsonDocument_new();
 QJsonDocument* QJsonDocument_new2(QJsonObject* object);
 QJsonDocument* QJsonDocument_new3(QJsonArray* array);
 QJsonDocument* QJsonDocument_new4(QJsonDocument* other);
-void QJsonDocument_OperatorAssign(QJsonDocument* self, QJsonDocument* other);
-void QJsonDocument_Swap(QJsonDocument* self, QJsonDocument* other);
-QJsonDocument* QJsonDocument_FromRawData(const char* data, int size);
-const char* QJsonDocument_RawData(const QJsonDocument* self, int* size);
-QJsonDocument* QJsonDocument_FromBinaryData(struct miqt_string data);
-struct miqt_string QJsonDocument_ToBinaryData(const QJsonDocument* self);
-QJsonDocument* QJsonDocument_FromVariant(QVariant* variant);
-QVariant* QJsonDocument_ToVariant(const QJsonDocument* self);
-QJsonDocument* QJsonDocument_FromJson(struct miqt_string json);
-struct miqt_string QJsonDocument_ToJson(const QJsonDocument* self);
-struct miqt_string QJsonDocument_ToJsonWithFormat(const QJsonDocument* self, int format);
-bool QJsonDocument_IsEmpty(const QJsonDocument* self);
-bool QJsonDocument_IsArray(const QJsonDocument* self);
-bool QJsonDocument_IsObject(const QJsonDocument* self);
-QJsonObject* QJsonDocument_Object(const QJsonDocument* self);
-QJsonArray* QJsonDocument_Array(const QJsonDocument* self);
-void QJsonDocument_SetObject(QJsonDocument* self, QJsonObject* object);
-void QJsonDocument_SetArray(QJsonDocument* self, QJsonArray* array);
-QJsonValue* QJsonDocument_OperatorSubscript(const QJsonDocument* self, struct miqt_string key);
-QJsonValue* QJsonDocument_OperatorSubscriptWithInt(const QJsonDocument* self, int i);
-bool QJsonDocument_OperatorEqual(const QJsonDocument* self, QJsonDocument* other);
-bool QJsonDocument_OperatorNotEqual(const QJsonDocument* self, QJsonDocument* other);
-bool QJsonDocument_IsNull(const QJsonDocument* self);
-QJsonDocument* QJsonDocument_FromRawData3(const char* data, int size, int validation);
-QJsonDocument* QJsonDocument_FromBinaryData2(struct miqt_string data, int validation);
-QJsonDocument* QJsonDocument_FromJson2(struct miqt_string json, QJsonParseError* error);
-void QJsonDocument_Delete(QJsonDocument* self);
+void QJsonDocument_operatorAssign(QJsonDocument* self, QJsonDocument* other);
+void QJsonDocument_swap(QJsonDocument* self, QJsonDocument* other);
+QJsonDocument* QJsonDocument_fromRawData(const char* data, int size);
+const char* QJsonDocument_rawData(const QJsonDocument* self, int* size);
+QJsonDocument* QJsonDocument_fromBinaryData(struct miqt_string data);
+struct miqt_string QJsonDocument_toBinaryData(const QJsonDocument* self);
+QJsonDocument* QJsonDocument_fromVariant(QVariant* variant);
+QVariant* QJsonDocument_toVariant(const QJsonDocument* self);
+QJsonDocument* QJsonDocument_fromJson(struct miqt_string json);
+struct miqt_string QJsonDocument_toJson(const QJsonDocument* self);
+struct miqt_string QJsonDocument_toJsonWithFormat(const QJsonDocument* self, int format);
+bool QJsonDocument_isEmpty(const QJsonDocument* self);
+bool QJsonDocument_isArray(const QJsonDocument* self);
+bool QJsonDocument_isObject(const QJsonDocument* self);
+QJsonObject* QJsonDocument_object(const QJsonDocument* self);
+QJsonArray* QJsonDocument_array(const QJsonDocument* self);
+void QJsonDocument_setObject(QJsonDocument* self, QJsonObject* object);
+void QJsonDocument_setArray(QJsonDocument* self, QJsonArray* array);
+QJsonValue* QJsonDocument_operatorSubscript(const QJsonDocument* self, struct miqt_string key);
+QJsonValue* QJsonDocument_operatorSubscriptWithInt(const QJsonDocument* self, int i);
+bool QJsonDocument_operatorEqual(const QJsonDocument* self, QJsonDocument* other);
+bool QJsonDocument_operatorNotEqual(const QJsonDocument* self, QJsonDocument* other);
+bool QJsonDocument_isNull(const QJsonDocument* self);
+QJsonDocument* QJsonDocument_fromRawData3(const char* data, int size, int validation);
+QJsonDocument* QJsonDocument_fromBinaryData2(struct miqt_string data, int validation);
+QJsonDocument* QJsonDocument_fromJson2(struct miqt_string json, QJsonParseError* error);
+void QJsonDocument_delete(QJsonDocument* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

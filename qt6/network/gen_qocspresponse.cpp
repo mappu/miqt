@@ -19,33 +19,33 @@ QOcspResponse* QOcspResponse_new2(QOcspResponse* other) {
 	return new QOcspResponse(*other);
 }
 
-void QOcspResponse_OperatorAssign(QOcspResponse* self, QOcspResponse* other) {
+void QOcspResponse_operatorAssign(QOcspResponse* self, QOcspResponse* other) {
 	self->operator=(*other);
 }
 
-int QOcspResponse_CertificateStatus(const QOcspResponse* self) {
+int QOcspResponse_certificateStatus(const QOcspResponse* self) {
 	QOcspCertificateStatus _ret = self->certificateStatus();
 	return static_cast<int>(_ret);
 }
 
-int QOcspResponse_RevocationReason(const QOcspResponse* self) {
+int QOcspResponse_revocationReason(const QOcspResponse* self) {
 	QOcspRevocationReason _ret = self->revocationReason();
 	return static_cast<int>(_ret);
 }
 
-QSslCertificate* QOcspResponse_Responder(const QOcspResponse* self) {
+QSslCertificate* QOcspResponse_responder(const QOcspResponse* self) {
 	return new QSslCertificate(self->responder());
 }
 
-QSslCertificate* QOcspResponse_Subject(const QOcspResponse* self) {
+QSslCertificate* QOcspResponse_subject(const QOcspResponse* self) {
 	return new QSslCertificate(self->subject());
 }
 
-void QOcspResponse_Swap(QOcspResponse* self, QOcspResponse* other) {
+void QOcspResponse_swap(QOcspResponse* self, QOcspResponse* other) {
 	self->swap(*other);
 }
 
-void QOcspResponse_Delete(QOcspResponse* self) {
+void QOcspResponse_delete(QOcspResponse* self) {
 	delete self;
 }
 

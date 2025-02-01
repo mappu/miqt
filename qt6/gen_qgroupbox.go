@@ -83,26 +83,26 @@ func NewQGroupBox4(title string, parent *QWidget) *QGroupBox {
 }
 
 func (this *QGroupBox) MetaObject() *QMetaObject {
-	return newQMetaObject(C.QGroupBox_MetaObject(this.h))
+	return newQMetaObject(C.QGroupBox_metaObject(this.h))
 }
 
 func (this *QGroupBox) Metacast(param1 string) unsafe.Pointer {
 	param1_Cstring := C.CString(param1)
 	defer C.free(unsafe.Pointer(param1_Cstring))
-	return (unsafe.Pointer)(C.QGroupBox_Metacast(this.h, param1_Cstring))
+	return (unsafe.Pointer)(C.QGroupBox_metacast(this.h, param1_Cstring))
 }
 
 func QGroupBox_Tr(s string) string {
 	s_Cstring := C.CString(s)
 	defer C.free(unsafe.Pointer(s_Cstring))
-	var _ms C.struct_miqt_string = C.QGroupBox_Tr(s_Cstring)
+	var _ms C.struct_miqt_string = C.QGroupBox_tr(s_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QGroupBox) Title() string {
-	var _ms C.struct_miqt_string = C.QGroupBox_Title(this.h)
+	var _ms C.struct_miqt_string = C.QGroupBox_title(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -113,56 +113,56 @@ func (this *QGroupBox) SetTitle(title string) {
 	title_ms.data = C.CString(title)
 	title_ms.len = C.size_t(len(title))
 	defer C.free(unsafe.Pointer(title_ms.data))
-	C.QGroupBox_SetTitle(this.h, title_ms)
+	C.QGroupBox_setTitle(this.h, title_ms)
 }
 
 func (this *QGroupBox) Alignment() AlignmentFlag {
-	return (AlignmentFlag)(C.QGroupBox_Alignment(this.h))
+	return (AlignmentFlag)(C.QGroupBox_alignment(this.h))
 }
 
 func (this *QGroupBox) SetAlignment(alignment int) {
-	C.QGroupBox_SetAlignment(this.h, (C.int)(alignment))
+	C.QGroupBox_setAlignment(this.h, (C.int)(alignment))
 }
 
 func (this *QGroupBox) MinimumSizeHint() *QSize {
-	_goptr := newQSize(C.QGroupBox_MinimumSizeHint(this.h))
+	_goptr := newQSize(C.QGroupBox_minimumSizeHint(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QGroupBox) IsFlat() bool {
-	return (bool)(C.QGroupBox_IsFlat(this.h))
+	return (bool)(C.QGroupBox_isFlat(this.h))
 }
 
 func (this *QGroupBox) SetFlat(flat bool) {
-	C.QGroupBox_SetFlat(this.h, (C.bool)(flat))
+	C.QGroupBox_setFlat(this.h, (C.bool)(flat))
 }
 
 func (this *QGroupBox) IsCheckable() bool {
-	return (bool)(C.QGroupBox_IsCheckable(this.h))
+	return (bool)(C.QGroupBox_isCheckable(this.h))
 }
 
 func (this *QGroupBox) SetCheckable(checkable bool) {
-	C.QGroupBox_SetCheckable(this.h, (C.bool)(checkable))
+	C.QGroupBox_setCheckable(this.h, (C.bool)(checkable))
 }
 
 func (this *QGroupBox) IsChecked() bool {
-	return (bool)(C.QGroupBox_IsChecked(this.h))
+	return (bool)(C.QGroupBox_isChecked(this.h))
 }
 
 func (this *QGroupBox) SetChecked(checked bool) {
-	C.QGroupBox_SetChecked(this.h, (C.bool)(checked))
+	C.QGroupBox_setChecked(this.h, (C.bool)(checked))
 }
 
 func (this *QGroupBox) Clicked() {
-	C.QGroupBox_Clicked(this.h)
+	C.QGroupBox_clicked(this.h)
 }
 func (this *QGroupBox) OnClicked(slot func()) {
-	C.QGroupBox_connect_Clicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QGroupBox_connect_clicked(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QGroupBox_Clicked
-func miqt_exec_callback_QGroupBox_Clicked(cb C.intptr_t) {
+//export miqt_exec_callback_QGroupBox_clicked
+func miqt_exec_callback_QGroupBox_clicked(cb C.intptr_t) {
 	gofunc, ok := cgo.Handle(cb).Value().(func())
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -172,14 +172,14 @@ func miqt_exec_callback_QGroupBox_Clicked(cb C.intptr_t) {
 }
 
 func (this *QGroupBox) Toggled(param1 bool) {
-	C.QGroupBox_Toggled(this.h, (C.bool)(param1))
+	C.QGroupBox_toggled(this.h, (C.bool)(param1))
 }
 func (this *QGroupBox) OnToggled(slot func(param1 bool)) {
-	C.QGroupBox_connect_Toggled(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QGroupBox_connect_toggled(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QGroupBox_Toggled
-func miqt_exec_callback_QGroupBox_Toggled(cb C.intptr_t, param1 C.bool) {
+//export miqt_exec_callback_QGroupBox_toggled
+func miqt_exec_callback_QGroupBox_toggled(cb C.intptr_t, param1 C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(param1 bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -196,7 +196,7 @@ func QGroupBox_Tr2(s string, c string) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QGroupBox_Tr2(s_Cstring, c_Cstring)
+	var _ms C.struct_miqt_string = C.QGroupBox_tr2(s_Cstring, c_Cstring)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -207,21 +207,21 @@ func QGroupBox_Tr3(s string, c string, n int) string {
 	defer C.free(unsafe.Pointer(s_Cstring))
 	c_Cstring := C.CString(c)
 	defer C.free(unsafe.Pointer(c_Cstring))
-	var _ms C.struct_miqt_string = C.QGroupBox_Tr3(s_Cstring, c_Cstring, (C.int)(n))
+	var _ms C.struct_miqt_string = C.QGroupBox_tr3(s_Cstring, c_Cstring, (C.int)(n))
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QGroupBox) Clicked1(checked bool) {
-	C.QGroupBox_Clicked1(this.h, (C.bool)(checked))
+	C.QGroupBox_clicked1(this.h, (C.bool)(checked))
 }
 func (this *QGroupBox) OnClicked1(slot func(checked bool)) {
-	C.QGroupBox_connect_Clicked1(this.h, C.intptr_t(cgo.NewHandle(slot)))
+	C.QGroupBox_connect_clicked1(this.h, C.intptr_t(cgo.NewHandle(slot)))
 }
 
-//export miqt_exec_callback_QGroupBox_Clicked1
-func miqt_exec_callback_QGroupBox_Clicked1(cb C.intptr_t, checked C.bool) {
+//export miqt_exec_callback_QGroupBox_clicked1
+func miqt_exec_callback_QGroupBox_clicked1(cb C.intptr_t, checked C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(checked bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -235,20 +235,20 @@ func miqt_exec_callback_QGroupBox_Clicked1(cb C.intptr_t, checked C.bool) {
 
 func (this *QGroupBox) callVirtualBase_MinimumSizeHint() *QSize {
 
-	_goptr := newQSize(C.QGroupBox_virtualbase_MinimumSizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QGroupBox_virtualbase_minimumSizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QGroupBox) OnMinimumSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QGroupBox_override_virtual_MinimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnminimumSizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QGroupBox_override_virtual_minimumSizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_MinimumSizeHint
-func miqt_exec_callback_QGroupBox_MinimumSizeHint(self *C.QGroupBox, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QGroupBox_minimumSizeHint
+func miqt_exec_callback_QGroupBox_minimumSizeHint(self *C.QGroupBox, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -262,18 +262,18 @@ func miqt_exec_callback_QGroupBox_MinimumSizeHint(self *C.QGroupBox, cb C.intptr
 
 func (this *QGroupBox) callVirtualBase_Event(event *QEvent) bool {
 
-	return (bool)(C.QGroupBox_virtualbase_Event(unsafe.Pointer(this.h), event.cPointer()))
+	return (bool)(C.QGroupBox_virtualbase_event(unsafe.Pointer(this.h), event.cPointer()))
 
 }
-func (this *QGroupBox) OnEvent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
-	ok := C.QGroupBox_override_virtual_Event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) Onevent(slot func(super func(event *QEvent) bool, event *QEvent) bool) {
+	ok := C.QGroupBox_override_virtual_event(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_Event
-func miqt_exec_callback_QGroupBox_Event(self *C.QGroupBox, cb C.intptr_t, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QGroupBox_event
+func miqt_exec_callback_QGroupBox_event(self *C.QGroupBox, cb C.intptr_t, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent) bool, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -290,18 +290,18 @@ func miqt_exec_callback_QGroupBox_Event(self *C.QGroupBox, cb C.intptr_t, event 
 
 func (this *QGroupBox) callVirtualBase_ChildEvent(event *QChildEvent) {
 
-	C.QGroupBox_virtualbase_ChildEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_childEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnChildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
-	ok := C.QGroupBox_override_virtual_ChildEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnchildEvent(slot func(super func(event *QChildEvent), event *QChildEvent)) {
+	ok := C.QGroupBox_override_virtual_childEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_ChildEvent
-func miqt_exec_callback_QGroupBox_ChildEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QChildEvent) {
+//export miqt_exec_callback_QGroupBox_childEvent
+func miqt_exec_callback_QGroupBox_childEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QChildEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QChildEvent), event *QChildEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -316,18 +316,18 @@ func miqt_exec_callback_QGroupBox_ChildEvent(self *C.QGroupBox, cb C.intptr_t, e
 
 func (this *QGroupBox) callVirtualBase_ResizeEvent(event *QResizeEvent) {
 
-	C.QGroupBox_virtualbase_ResizeEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_resizeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnResizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
-	ok := C.QGroupBox_override_virtual_ResizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnresizeEvent(slot func(super func(event *QResizeEvent), event *QResizeEvent)) {
+	ok := C.QGroupBox_override_virtual_resizeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_ResizeEvent
-func miqt_exec_callback_QGroupBox_ResizeEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QResizeEvent) {
+//export miqt_exec_callback_QGroupBox_resizeEvent
+func miqt_exec_callback_QGroupBox_resizeEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QResizeEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QResizeEvent), event *QResizeEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -342,18 +342,18 @@ func miqt_exec_callback_QGroupBox_ResizeEvent(self *C.QGroupBox, cb C.intptr_t, 
 
 func (this *QGroupBox) callVirtualBase_PaintEvent(event *QPaintEvent) {
 
-	C.QGroupBox_virtualbase_PaintEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_paintEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnPaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
-	ok := C.QGroupBox_override_virtual_PaintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnpaintEvent(slot func(super func(event *QPaintEvent), event *QPaintEvent)) {
+	ok := C.QGroupBox_override_virtual_paintEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_PaintEvent
-func miqt_exec_callback_QGroupBox_PaintEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QPaintEvent) {
+//export miqt_exec_callback_QGroupBox_paintEvent
+func miqt_exec_callback_QGroupBox_paintEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QPaintEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QPaintEvent), event *QPaintEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -368,18 +368,18 @@ func miqt_exec_callback_QGroupBox_PaintEvent(self *C.QGroupBox, cb C.intptr_t, e
 
 func (this *QGroupBox) callVirtualBase_FocusInEvent(event *QFocusEvent) {
 
-	C.QGroupBox_virtualbase_FocusInEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_focusInEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnFocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QGroupBox_override_virtual_FocusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnfocusInEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QGroupBox_override_virtual_focusInEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_FocusInEvent
-func miqt_exec_callback_QGroupBox_FocusInEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QGroupBox_focusInEvent
+func miqt_exec_callback_QGroupBox_focusInEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -394,18 +394,18 @@ func miqt_exec_callback_QGroupBox_FocusInEvent(self *C.QGroupBox, cb C.intptr_t,
 
 func (this *QGroupBox) callVirtualBase_ChangeEvent(event *QEvent) {
 
-	C.QGroupBox_virtualbase_ChangeEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_changeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnChangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QGroupBox_override_virtual_ChangeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnchangeEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QGroupBox_override_virtual_changeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_ChangeEvent
-func miqt_exec_callback_QGroupBox_ChangeEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QGroupBox_changeEvent
+func miqt_exec_callback_QGroupBox_changeEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -420,18 +420,18 @@ func miqt_exec_callback_QGroupBox_ChangeEvent(self *C.QGroupBox, cb C.intptr_t, 
 
 func (this *QGroupBox) callVirtualBase_MousePressEvent(event *QMouseEvent) {
 
-	C.QGroupBox_virtualbase_MousePressEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_mousePressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnMousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QGroupBox_override_virtual_MousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnmousePressEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QGroupBox_override_virtual_mousePressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_MousePressEvent
-func miqt_exec_callback_QGroupBox_MousePressEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QGroupBox_mousePressEvent
+func miqt_exec_callback_QGroupBox_mousePressEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -446,18 +446,18 @@ func miqt_exec_callback_QGroupBox_MousePressEvent(self *C.QGroupBox, cb C.intptr
 
 func (this *QGroupBox) callVirtualBase_MouseMoveEvent(event *QMouseEvent) {
 
-	C.QGroupBox_virtualbase_MouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_mouseMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnMouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QGroupBox_override_virtual_MouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnmouseMoveEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QGroupBox_override_virtual_mouseMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_MouseMoveEvent
-func miqt_exec_callback_QGroupBox_MouseMoveEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QGroupBox_mouseMoveEvent
+func miqt_exec_callback_QGroupBox_mouseMoveEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -472,18 +472,18 @@ func miqt_exec_callback_QGroupBox_MouseMoveEvent(self *C.QGroupBox, cb C.intptr_
 
 func (this *QGroupBox) callVirtualBase_MouseReleaseEvent(event *QMouseEvent) {
 
-	C.QGroupBox_virtualbase_MouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_mouseReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnMouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QGroupBox_override_virtual_MouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnmouseReleaseEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QGroupBox_override_virtual_mouseReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_MouseReleaseEvent
-func miqt_exec_callback_QGroupBox_MouseReleaseEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QGroupBox_mouseReleaseEvent
+func miqt_exec_callback_QGroupBox_mouseReleaseEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -498,18 +498,18 @@ func miqt_exec_callback_QGroupBox_MouseReleaseEvent(self *C.QGroupBox, cb C.intp
 
 func (this *QGroupBox) callVirtualBase_InitStyleOption(option *QStyleOptionGroupBox) {
 
-	C.QGroupBox_virtualbase_InitStyleOption(unsafe.Pointer(this.h), option.cPointer())
+	C.QGroupBox_virtualbase_initStyleOption(unsafe.Pointer(this.h), option.cPointer())
 
 }
-func (this *QGroupBox) OnInitStyleOption(slot func(super func(option *QStyleOptionGroupBox), option *QStyleOptionGroupBox)) {
-	ok := C.QGroupBox_override_virtual_InitStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OninitStyleOption(slot func(super func(option *QStyleOptionGroupBox), option *QStyleOptionGroupBox)) {
+	ok := C.QGroupBox_override_virtual_initStyleOption(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_InitStyleOption
-func miqt_exec_callback_QGroupBox_InitStyleOption(self *C.QGroupBox, cb C.intptr_t, option *C.QStyleOptionGroupBox) {
+//export miqt_exec_callback_QGroupBox_initStyleOption
+func miqt_exec_callback_QGroupBox_initStyleOption(self *C.QGroupBox, cb C.intptr_t, option *C.QStyleOptionGroupBox) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(option *QStyleOptionGroupBox), option *QStyleOptionGroupBox))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -524,18 +524,18 @@ func miqt_exec_callback_QGroupBox_InitStyleOption(self *C.QGroupBox, cb C.intptr
 
 func (this *QGroupBox) callVirtualBase_DevType() int {
 
-	return (int)(C.QGroupBox_virtualbase_DevType(unsafe.Pointer(this.h)))
+	return (int)(C.QGroupBox_virtualbase_devType(unsafe.Pointer(this.h)))
 
 }
-func (this *QGroupBox) OnDevType(slot func(super func() int) int) {
-	ok := C.QGroupBox_override_virtual_DevType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OndevType(slot func(super func() int) int) {
+	ok := C.QGroupBox_override_virtual_devType(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_DevType
-func miqt_exec_callback_QGroupBox_DevType(self *C.QGroupBox, cb C.intptr_t) C.int {
+//export miqt_exec_callback_QGroupBox_devType
+func miqt_exec_callback_QGroupBox_devType(self *C.QGroupBox, cb C.intptr_t) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -549,18 +549,18 @@ func miqt_exec_callback_QGroupBox_DevType(self *C.QGroupBox, cb C.intptr_t) C.in
 
 func (this *QGroupBox) callVirtualBase_SetVisible(visible bool) {
 
-	C.QGroupBox_virtualbase_SetVisible(unsafe.Pointer(this.h), (C.bool)(visible))
+	C.QGroupBox_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))
 
 }
-func (this *QGroupBox) OnSetVisible(slot func(super func(visible bool), visible bool)) {
-	ok := C.QGroupBox_override_virtual_SetVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnsetVisible(slot func(super func(visible bool), visible bool)) {
+	ok := C.QGroupBox_override_virtual_setVisible(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_SetVisible
-func miqt_exec_callback_QGroupBox_SetVisible(self *C.QGroupBox, cb C.intptr_t, visible C.bool) {
+//export miqt_exec_callback_QGroupBox_setVisible
+func miqt_exec_callback_QGroupBox_setVisible(self *C.QGroupBox, cb C.intptr_t, visible C.bool) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(visible bool), visible bool))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -575,20 +575,20 @@ func miqt_exec_callback_QGroupBox_SetVisible(self *C.QGroupBox, cb C.intptr_t, v
 
 func (this *QGroupBox) callVirtualBase_SizeHint() *QSize {
 
-	_goptr := newQSize(C.QGroupBox_virtualbase_SizeHint(unsafe.Pointer(this.h)))
+	_goptr := newQSize(C.QGroupBox_virtualbase_sizeHint(unsafe.Pointer(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QGroupBox) OnSizeHint(slot func(super func() *QSize) *QSize) {
-	ok := C.QGroupBox_override_virtual_SizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnsizeHint(slot func(super func() *QSize) *QSize) {
+	ok := C.QGroupBox_override_virtual_sizeHint(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_SizeHint
-func miqt_exec_callback_QGroupBox_SizeHint(self *C.QGroupBox, cb C.intptr_t) *C.QSize {
+//export miqt_exec_callback_QGroupBox_sizeHint
+func miqt_exec_callback_QGroupBox_sizeHint(self *C.QGroupBox, cb C.intptr_t) *C.QSize {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QSize) *QSize)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -602,18 +602,18 @@ func miqt_exec_callback_QGroupBox_SizeHint(self *C.QGroupBox, cb C.intptr_t) *C.
 
 func (this *QGroupBox) callVirtualBase_HeightForWidth(param1 int) int {
 
-	return (int)(C.QGroupBox_virtualbase_HeightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QGroupBox_virtualbase_heightForWidth(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QGroupBox) OnHeightForWidth(slot func(super func(param1 int) int, param1 int) int) {
-	ok := C.QGroupBox_override_virtual_HeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnheightForWidth(slot func(super func(param1 int) int, param1 int) int) {
+	ok := C.QGroupBox_override_virtual_heightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_HeightForWidth
-func miqt_exec_callback_QGroupBox_HeightForWidth(self *C.QGroupBox, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QGroupBox_heightForWidth
+func miqt_exec_callback_QGroupBox_heightForWidth(self *C.QGroupBox, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 int) int, param1 int) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -630,18 +630,18 @@ func miqt_exec_callback_QGroupBox_HeightForWidth(self *C.QGroupBox, cb C.intptr_
 
 func (this *QGroupBox) callVirtualBase_HasHeightForWidth() bool {
 
-	return (bool)(C.QGroupBox_virtualbase_HasHeightForWidth(unsafe.Pointer(this.h)))
+	return (bool)(C.QGroupBox_virtualbase_hasHeightForWidth(unsafe.Pointer(this.h)))
 
 }
-func (this *QGroupBox) OnHasHeightForWidth(slot func(super func() bool) bool) {
-	ok := C.QGroupBox_override_virtual_HasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnhasHeightForWidth(slot func(super func() bool) bool) {
+	ok := C.QGroupBox_override_virtual_hasHeightForWidth(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_HasHeightForWidth
-func miqt_exec_callback_QGroupBox_HasHeightForWidth(self *C.QGroupBox, cb C.intptr_t) C.bool {
+//export miqt_exec_callback_QGroupBox_hasHeightForWidth
+func miqt_exec_callback_QGroupBox_hasHeightForWidth(self *C.QGroupBox, cb C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -655,18 +655,18 @@ func miqt_exec_callback_QGroupBox_HasHeightForWidth(self *C.QGroupBox, cb C.intp
 
 func (this *QGroupBox) callVirtualBase_PaintEngine() *QPaintEngine {
 
-	return newQPaintEngine(C.QGroupBox_virtualbase_PaintEngine(unsafe.Pointer(this.h)))
+	return newQPaintEngine(C.QGroupBox_virtualbase_paintEngine(unsafe.Pointer(this.h)))
 
 }
-func (this *QGroupBox) OnPaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
-	ok := C.QGroupBox_override_virtual_PaintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnpaintEngine(slot func(super func() *QPaintEngine) *QPaintEngine) {
+	ok := C.QGroupBox_override_virtual_paintEngine(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_PaintEngine
-func miqt_exec_callback_QGroupBox_PaintEngine(self *C.QGroupBox, cb C.intptr_t) *C.QPaintEngine {
+//export miqt_exec_callback_QGroupBox_paintEngine
+func miqt_exec_callback_QGroupBox_paintEngine(self *C.QGroupBox, cb C.intptr_t) *C.QPaintEngine {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPaintEngine) *QPaintEngine)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -680,18 +680,18 @@ func miqt_exec_callback_QGroupBox_PaintEngine(self *C.QGroupBox, cb C.intptr_t) 
 
 func (this *QGroupBox) callVirtualBase_MouseDoubleClickEvent(event *QMouseEvent) {
 
-	C.QGroupBox_virtualbase_MouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_mouseDoubleClickEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnMouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
-	ok := C.QGroupBox_override_virtual_MouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnmouseDoubleClickEvent(slot func(super func(event *QMouseEvent), event *QMouseEvent)) {
+	ok := C.QGroupBox_override_virtual_mouseDoubleClickEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_MouseDoubleClickEvent
-func miqt_exec_callback_QGroupBox_MouseDoubleClickEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QMouseEvent) {
+//export miqt_exec_callback_QGroupBox_mouseDoubleClickEvent
+func miqt_exec_callback_QGroupBox_mouseDoubleClickEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QMouseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMouseEvent), event *QMouseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -706,18 +706,18 @@ func miqt_exec_callback_QGroupBox_MouseDoubleClickEvent(self *C.QGroupBox, cb C.
 
 func (this *QGroupBox) callVirtualBase_WheelEvent(event *QWheelEvent) {
 
-	C.QGroupBox_virtualbase_WheelEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_wheelEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnWheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
-	ok := C.QGroupBox_override_virtual_WheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnwheelEvent(slot func(super func(event *QWheelEvent), event *QWheelEvent)) {
+	ok := C.QGroupBox_override_virtual_wheelEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_WheelEvent
-func miqt_exec_callback_QGroupBox_WheelEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QWheelEvent) {
+//export miqt_exec_callback_QGroupBox_wheelEvent
+func miqt_exec_callback_QGroupBox_wheelEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QWheelEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QWheelEvent), event *QWheelEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -732,18 +732,18 @@ func miqt_exec_callback_QGroupBox_WheelEvent(self *C.QGroupBox, cb C.intptr_t, e
 
 func (this *QGroupBox) callVirtualBase_KeyPressEvent(event *QKeyEvent) {
 
-	C.QGroupBox_virtualbase_KeyPressEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_keyPressEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnKeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QGroupBox_override_virtual_KeyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnkeyPressEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QGroupBox_override_virtual_keyPressEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_KeyPressEvent
-func miqt_exec_callback_QGroupBox_KeyPressEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QGroupBox_keyPressEvent
+func miqt_exec_callback_QGroupBox_keyPressEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -758,18 +758,18 @@ func miqt_exec_callback_QGroupBox_KeyPressEvent(self *C.QGroupBox, cb C.intptr_t
 
 func (this *QGroupBox) callVirtualBase_KeyReleaseEvent(event *QKeyEvent) {
 
-	C.QGroupBox_virtualbase_KeyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_keyReleaseEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnKeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
-	ok := C.QGroupBox_override_virtual_KeyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnkeyReleaseEvent(slot func(super func(event *QKeyEvent), event *QKeyEvent)) {
+	ok := C.QGroupBox_override_virtual_keyReleaseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_KeyReleaseEvent
-func miqt_exec_callback_QGroupBox_KeyReleaseEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QKeyEvent) {
+//export miqt_exec_callback_QGroupBox_keyReleaseEvent
+func miqt_exec_callback_QGroupBox_keyReleaseEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QKeyEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QKeyEvent), event *QKeyEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -784,18 +784,18 @@ func miqt_exec_callback_QGroupBox_KeyReleaseEvent(self *C.QGroupBox, cb C.intptr
 
 func (this *QGroupBox) callVirtualBase_FocusOutEvent(event *QFocusEvent) {
 
-	C.QGroupBox_virtualbase_FocusOutEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_focusOutEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnFocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
-	ok := C.QGroupBox_override_virtual_FocusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnfocusOutEvent(slot func(super func(event *QFocusEvent), event *QFocusEvent)) {
+	ok := C.QGroupBox_override_virtual_focusOutEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_FocusOutEvent
-func miqt_exec_callback_QGroupBox_FocusOutEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QFocusEvent) {
+//export miqt_exec_callback_QGroupBox_focusOutEvent
+func miqt_exec_callback_QGroupBox_focusOutEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QFocusEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QFocusEvent), event *QFocusEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -810,18 +810,18 @@ func miqt_exec_callback_QGroupBox_FocusOutEvent(self *C.QGroupBox, cb C.intptr_t
 
 func (this *QGroupBox) callVirtualBase_EnterEvent(event *QEnterEvent) {
 
-	C.QGroupBox_virtualbase_EnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_enterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnEnterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
-	ok := C.QGroupBox_override_virtual_EnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnenterEvent(slot func(super func(event *QEnterEvent), event *QEnterEvent)) {
+	ok := C.QGroupBox_override_virtual_enterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_EnterEvent
-func miqt_exec_callback_QGroupBox_EnterEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QEnterEvent) {
+//export miqt_exec_callback_QGroupBox_enterEvent
+func miqt_exec_callback_QGroupBox_enterEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEnterEvent), event *QEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -836,18 +836,18 @@ func miqt_exec_callback_QGroupBox_EnterEvent(self *C.QGroupBox, cb C.intptr_t, e
 
 func (this *QGroupBox) callVirtualBase_LeaveEvent(event *QEvent) {
 
-	C.QGroupBox_virtualbase_LeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_leaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnLeaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QGroupBox_override_virtual_LeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnleaveEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QGroupBox_override_virtual_leaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_LeaveEvent
-func miqt_exec_callback_QGroupBox_LeaveEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QGroupBox_leaveEvent
+func miqt_exec_callback_QGroupBox_leaveEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -862,18 +862,18 @@ func miqt_exec_callback_QGroupBox_LeaveEvent(self *C.QGroupBox, cb C.intptr_t, e
 
 func (this *QGroupBox) callVirtualBase_MoveEvent(event *QMoveEvent) {
 
-	C.QGroupBox_virtualbase_MoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_moveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnMoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
-	ok := C.QGroupBox_override_virtual_MoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnmoveEvent(slot func(super func(event *QMoveEvent), event *QMoveEvent)) {
+	ok := C.QGroupBox_override_virtual_moveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_MoveEvent
-func miqt_exec_callback_QGroupBox_MoveEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QMoveEvent) {
+//export miqt_exec_callback_QGroupBox_moveEvent
+func miqt_exec_callback_QGroupBox_moveEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QMoveEvent), event *QMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -888,18 +888,18 @@ func miqt_exec_callback_QGroupBox_MoveEvent(self *C.QGroupBox, cb C.intptr_t, ev
 
 func (this *QGroupBox) callVirtualBase_CloseEvent(event *QCloseEvent) {
 
-	C.QGroupBox_virtualbase_CloseEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_closeEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnCloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
-	ok := C.QGroupBox_override_virtual_CloseEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OncloseEvent(slot func(super func(event *QCloseEvent), event *QCloseEvent)) {
+	ok := C.QGroupBox_override_virtual_closeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_CloseEvent
-func miqt_exec_callback_QGroupBox_CloseEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QCloseEvent) {
+//export miqt_exec_callback_QGroupBox_closeEvent
+func miqt_exec_callback_QGroupBox_closeEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QCloseEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QCloseEvent), event *QCloseEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -914,18 +914,18 @@ func miqt_exec_callback_QGroupBox_CloseEvent(self *C.QGroupBox, cb C.intptr_t, e
 
 func (this *QGroupBox) callVirtualBase_ContextMenuEvent(event *QContextMenuEvent) {
 
-	C.QGroupBox_virtualbase_ContextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_contextMenuEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnContextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
-	ok := C.QGroupBox_override_virtual_ContextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OncontextMenuEvent(slot func(super func(event *QContextMenuEvent), event *QContextMenuEvent)) {
+	ok := C.QGroupBox_override_virtual_contextMenuEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_ContextMenuEvent
-func miqt_exec_callback_QGroupBox_ContextMenuEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QContextMenuEvent) {
+//export miqt_exec_callback_QGroupBox_contextMenuEvent
+func miqt_exec_callback_QGroupBox_contextMenuEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QContextMenuEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QContextMenuEvent), event *QContextMenuEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -940,18 +940,18 @@ func miqt_exec_callback_QGroupBox_ContextMenuEvent(self *C.QGroupBox, cb C.intpt
 
 func (this *QGroupBox) callVirtualBase_TabletEvent(event *QTabletEvent) {
 
-	C.QGroupBox_virtualbase_TabletEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_tabletEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnTabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
-	ok := C.QGroupBox_override_virtual_TabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OntabletEvent(slot func(super func(event *QTabletEvent), event *QTabletEvent)) {
+	ok := C.QGroupBox_override_virtual_tabletEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_TabletEvent
-func miqt_exec_callback_QGroupBox_TabletEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QTabletEvent) {
+//export miqt_exec_callback_QGroupBox_tabletEvent
+func miqt_exec_callback_QGroupBox_tabletEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QTabletEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTabletEvent), event *QTabletEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -966,18 +966,18 @@ func miqt_exec_callback_QGroupBox_TabletEvent(self *C.QGroupBox, cb C.intptr_t, 
 
 func (this *QGroupBox) callVirtualBase_ActionEvent(event *QActionEvent) {
 
-	C.QGroupBox_virtualbase_ActionEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_actionEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnActionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
-	ok := C.QGroupBox_override_virtual_ActionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnactionEvent(slot func(super func(event *QActionEvent), event *QActionEvent)) {
+	ok := C.QGroupBox_override_virtual_actionEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_ActionEvent
-func miqt_exec_callback_QGroupBox_ActionEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QActionEvent) {
+//export miqt_exec_callback_QGroupBox_actionEvent
+func miqt_exec_callback_QGroupBox_actionEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QActionEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QActionEvent), event *QActionEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -992,18 +992,18 @@ func miqt_exec_callback_QGroupBox_ActionEvent(self *C.QGroupBox, cb C.intptr_t, 
 
 func (this *QGroupBox) callVirtualBase_DragEnterEvent(event *QDragEnterEvent) {
 
-	C.QGroupBox_virtualbase_DragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_dragEnterEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnDragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
-	ok := C.QGroupBox_override_virtual_DragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OndragEnterEvent(slot func(super func(event *QDragEnterEvent), event *QDragEnterEvent)) {
+	ok := C.QGroupBox_override_virtual_dragEnterEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_DragEnterEvent
-func miqt_exec_callback_QGroupBox_DragEnterEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QDragEnterEvent) {
+//export miqt_exec_callback_QGroupBox_dragEnterEvent
+func miqt_exec_callback_QGroupBox_dragEnterEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QDragEnterEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragEnterEvent), event *QDragEnterEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1018,18 +1018,18 @@ func miqt_exec_callback_QGroupBox_DragEnterEvent(self *C.QGroupBox, cb C.intptr_
 
 func (this *QGroupBox) callVirtualBase_DragMoveEvent(event *QDragMoveEvent) {
 
-	C.QGroupBox_virtualbase_DragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_dragMoveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnDragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
-	ok := C.QGroupBox_override_virtual_DragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OndragMoveEvent(slot func(super func(event *QDragMoveEvent), event *QDragMoveEvent)) {
+	ok := C.QGroupBox_override_virtual_dragMoveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_DragMoveEvent
-func miqt_exec_callback_QGroupBox_DragMoveEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QDragMoveEvent) {
+//export miqt_exec_callback_QGroupBox_dragMoveEvent
+func miqt_exec_callback_QGroupBox_dragMoveEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QDragMoveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragMoveEvent), event *QDragMoveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1044,18 +1044,18 @@ func miqt_exec_callback_QGroupBox_DragMoveEvent(self *C.QGroupBox, cb C.intptr_t
 
 func (this *QGroupBox) callVirtualBase_DragLeaveEvent(event *QDragLeaveEvent) {
 
-	C.QGroupBox_virtualbase_DragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_dragLeaveEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnDragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
-	ok := C.QGroupBox_override_virtual_DragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OndragLeaveEvent(slot func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent)) {
+	ok := C.QGroupBox_override_virtual_dragLeaveEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_DragLeaveEvent
-func miqt_exec_callback_QGroupBox_DragLeaveEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QDragLeaveEvent) {
+//export miqt_exec_callback_QGroupBox_dragLeaveEvent
+func miqt_exec_callback_QGroupBox_dragLeaveEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QDragLeaveEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDragLeaveEvent), event *QDragLeaveEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1070,18 +1070,18 @@ func miqt_exec_callback_QGroupBox_DragLeaveEvent(self *C.QGroupBox, cb C.intptr_
 
 func (this *QGroupBox) callVirtualBase_DropEvent(event *QDropEvent) {
 
-	C.QGroupBox_virtualbase_DropEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_dropEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnDropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
-	ok := C.QGroupBox_override_virtual_DropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OndropEvent(slot func(super func(event *QDropEvent), event *QDropEvent)) {
+	ok := C.QGroupBox_override_virtual_dropEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_DropEvent
-func miqt_exec_callback_QGroupBox_DropEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QDropEvent) {
+//export miqt_exec_callback_QGroupBox_dropEvent
+func miqt_exec_callback_QGroupBox_dropEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QDropEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QDropEvent), event *QDropEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1096,18 +1096,18 @@ func miqt_exec_callback_QGroupBox_DropEvent(self *C.QGroupBox, cb C.intptr_t, ev
 
 func (this *QGroupBox) callVirtualBase_ShowEvent(event *QShowEvent) {
 
-	C.QGroupBox_virtualbase_ShowEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_showEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnShowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
-	ok := C.QGroupBox_override_virtual_ShowEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnshowEvent(slot func(super func(event *QShowEvent), event *QShowEvent)) {
+	ok := C.QGroupBox_override_virtual_showEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_ShowEvent
-func miqt_exec_callback_QGroupBox_ShowEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QShowEvent) {
+//export miqt_exec_callback_QGroupBox_showEvent
+func miqt_exec_callback_QGroupBox_showEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QShowEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QShowEvent), event *QShowEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1122,18 +1122,18 @@ func miqt_exec_callback_QGroupBox_ShowEvent(self *C.QGroupBox, cb C.intptr_t, ev
 
 func (this *QGroupBox) callVirtualBase_HideEvent(event *QHideEvent) {
 
-	C.QGroupBox_virtualbase_HideEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_hideEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnHideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
-	ok := C.QGroupBox_override_virtual_HideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnhideEvent(slot func(super func(event *QHideEvent), event *QHideEvent)) {
+	ok := C.QGroupBox_override_virtual_hideEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_HideEvent
-func miqt_exec_callback_QGroupBox_HideEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QHideEvent) {
+//export miqt_exec_callback_QGroupBox_hideEvent
+func miqt_exec_callback_QGroupBox_hideEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QHideEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QHideEvent), event *QHideEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1155,18 +1155,18 @@ func (this *QGroupBox) callVirtualBase_NativeEvent(eventType []byte, message uns
 	}
 	eventType_alias.len = C.size_t(len(eventType))
 
-	return (bool)(C.QGroupBox_virtualbase_NativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
+	return (bool)(C.QGroupBox_virtualbase_nativeEvent(unsafe.Pointer(this.h), eventType_alias, message, (*C.intptr_t)(unsafe.Pointer(result))))
 
 }
-func (this *QGroupBox) OnNativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
-	ok := C.QGroupBox_override_virtual_NativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnnativeEvent(slot func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool) {
+	ok := C.QGroupBox_override_virtual_nativeEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_NativeEvent
-func miqt_exec_callback_QGroupBox_NativeEvent(self *C.QGroupBox, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
+//export miqt_exec_callback_QGroupBox_nativeEvent
+func miqt_exec_callback_QGroupBox_nativeEvent(self *C.QGroupBox, cb C.intptr_t, eventType C.struct_miqt_string, message unsafe.Pointer, result *C.intptr_t) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(eventType []byte, message unsafe.Pointer, result *uintptr) bool, eventType []byte, message unsafe.Pointer, result *uintptr) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1189,18 +1189,18 @@ func miqt_exec_callback_QGroupBox_NativeEvent(self *C.QGroupBox, cb C.intptr_t, 
 
 func (this *QGroupBox) callVirtualBase_Metric(param1 QPaintDevice__PaintDeviceMetric) int {
 
-	return (int)(C.QGroupBox_virtualbase_Metric(unsafe.Pointer(this.h), (C.int)(param1)))
+	return (int)(C.QGroupBox_virtualbase_metric(unsafe.Pointer(this.h), (C.int)(param1)))
 
 }
-func (this *QGroupBox) OnMetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
-	ok := C.QGroupBox_override_virtual_Metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) Onmetric(slot func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int) {
+	ok := C.QGroupBox_override_virtual_metric(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_Metric
-func miqt_exec_callback_QGroupBox_Metric(self *C.QGroupBox, cb C.intptr_t, param1 C.int) C.int {
+//export miqt_exec_callback_QGroupBox_metric
+func miqt_exec_callback_QGroupBox_metric(self *C.QGroupBox, cb C.intptr_t, param1 C.int) C.int {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 QPaintDevice__PaintDeviceMetric) int, param1 QPaintDevice__PaintDeviceMetric) int)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1217,18 +1217,18 @@ func miqt_exec_callback_QGroupBox_Metric(self *C.QGroupBox, cb C.intptr_t, param
 
 func (this *QGroupBox) callVirtualBase_InitPainter(painter *QPainter) {
 
-	C.QGroupBox_virtualbase_InitPainter(unsafe.Pointer(this.h), painter.cPointer())
+	C.QGroupBox_virtualbase_initPainter(unsafe.Pointer(this.h), painter.cPointer())
 
 }
-func (this *QGroupBox) OnInitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
-	ok := C.QGroupBox_override_virtual_InitPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OninitPainter(slot func(super func(painter *QPainter), painter *QPainter)) {
+	ok := C.QGroupBox_override_virtual_initPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_InitPainter
-func miqt_exec_callback_QGroupBox_InitPainter(self *C.QGroupBox, cb C.intptr_t, painter *C.QPainter) {
+//export miqt_exec_callback_QGroupBox_initPainter
+func miqt_exec_callback_QGroupBox_initPainter(self *C.QGroupBox, cb C.intptr_t, painter *C.QPainter) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(painter *QPainter), painter *QPainter))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1243,18 +1243,18 @@ func miqt_exec_callback_QGroupBox_InitPainter(self *C.QGroupBox, cb C.intptr_t, 
 
 func (this *QGroupBox) callVirtualBase_Redirected(offset *QPoint) *QPaintDevice {
 
-	return newQPaintDevice(C.QGroupBox_virtualbase_Redirected(unsafe.Pointer(this.h), offset.cPointer()))
+	return newQPaintDevice(C.QGroupBox_virtualbase_redirected(unsafe.Pointer(this.h), offset.cPointer()))
 
 }
-func (this *QGroupBox) OnRedirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
-	ok := C.QGroupBox_override_virtual_Redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) Onredirected(slot func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice) {
+	ok := C.QGroupBox_override_virtual_redirected(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_Redirected
-func miqt_exec_callback_QGroupBox_Redirected(self *C.QGroupBox, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
+//export miqt_exec_callback_QGroupBox_redirected
+func miqt_exec_callback_QGroupBox_redirected(self *C.QGroupBox, cb C.intptr_t, offset *C.QPoint) *C.QPaintDevice {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(offset *QPoint) *QPaintDevice, offset *QPoint) *QPaintDevice)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1271,18 +1271,18 @@ func miqt_exec_callback_QGroupBox_Redirected(self *C.QGroupBox, cb C.intptr_t, o
 
 func (this *QGroupBox) callVirtualBase_SharedPainter() *QPainter {
 
-	return newQPainter(C.QGroupBox_virtualbase_SharedPainter(unsafe.Pointer(this.h)))
+	return newQPainter(C.QGroupBox_virtualbase_sharedPainter(unsafe.Pointer(this.h)))
 
 }
-func (this *QGroupBox) OnSharedPainter(slot func(super func() *QPainter) *QPainter) {
-	ok := C.QGroupBox_override_virtual_SharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnsharedPainter(slot func(super func() *QPainter) *QPainter) {
+	ok := C.QGroupBox_override_virtual_sharedPainter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_SharedPainter
-func miqt_exec_callback_QGroupBox_SharedPainter(self *C.QGroupBox, cb C.intptr_t) *C.QPainter {
+//export miqt_exec_callback_QGroupBox_sharedPainter
+func miqt_exec_callback_QGroupBox_sharedPainter(self *C.QGroupBox, cb C.intptr_t) *C.QPainter {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func() *QPainter) *QPainter)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1296,18 +1296,18 @@ func miqt_exec_callback_QGroupBox_SharedPainter(self *C.QGroupBox, cb C.intptr_t
 
 func (this *QGroupBox) callVirtualBase_InputMethodEvent(param1 *QInputMethodEvent) {
 
-	C.QGroupBox_virtualbase_InputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
+	C.QGroupBox_virtualbase_inputMethodEvent(unsafe.Pointer(this.h), param1.cPointer())
 
 }
-func (this *QGroupBox) OnInputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
-	ok := C.QGroupBox_override_virtual_InputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OninputMethodEvent(slot func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent)) {
+	ok := C.QGroupBox_override_virtual_inputMethodEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_InputMethodEvent
-func miqt_exec_callback_QGroupBox_InputMethodEvent(self *C.QGroupBox, cb C.intptr_t, param1 *C.QInputMethodEvent) {
+//export miqt_exec_callback_QGroupBox_inputMethodEvent
+func miqt_exec_callback_QGroupBox_inputMethodEvent(self *C.QGroupBox, cb C.intptr_t, param1 *C.QInputMethodEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 *QInputMethodEvent), param1 *QInputMethodEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1322,20 +1322,20 @@ func miqt_exec_callback_QGroupBox_InputMethodEvent(self *C.QGroupBox, cb C.intpt
 
 func (this *QGroupBox) callVirtualBase_InputMethodQuery(param1 InputMethodQuery) *QVariant {
 
-	_goptr := newQVariant(C.QGroupBox_virtualbase_InputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
+	_goptr := newQVariant(C.QGroupBox_virtualbase_inputMethodQuery(unsafe.Pointer(this.h), (C.int)(param1)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 
 }
-func (this *QGroupBox) OnInputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
-	ok := C.QGroupBox_override_virtual_InputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OninputMethodQuery(slot func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant) {
+	ok := C.QGroupBox_override_virtual_inputMethodQuery(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_InputMethodQuery
-func miqt_exec_callback_QGroupBox_InputMethodQuery(self *C.QGroupBox, cb C.intptr_t, param1 C.int) *C.QVariant {
+//export miqt_exec_callback_QGroupBox_inputMethodQuery
+func miqt_exec_callback_QGroupBox_inputMethodQuery(self *C.QGroupBox, cb C.intptr_t, param1 C.int) *C.QVariant {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(param1 InputMethodQuery) *QVariant, param1 InputMethodQuery) *QVariant)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1352,18 +1352,18 @@ func miqt_exec_callback_QGroupBox_InputMethodQuery(self *C.QGroupBox, cb C.intpt
 
 func (this *QGroupBox) callVirtualBase_FocusNextPrevChild(next bool) bool {
 
-	return (bool)(C.QGroupBox_virtualbase_FocusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
+	return (bool)(C.QGroupBox_virtualbase_focusNextPrevChild(unsafe.Pointer(this.h), (C.bool)(next)))
 
 }
-func (this *QGroupBox) OnFocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
-	ok := C.QGroupBox_override_virtual_FocusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnfocusNextPrevChild(slot func(super func(next bool) bool, next bool) bool) {
+	ok := C.QGroupBox_override_virtual_focusNextPrevChild(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_FocusNextPrevChild
-func miqt_exec_callback_QGroupBox_FocusNextPrevChild(self *C.QGroupBox, cb C.intptr_t, next C.bool) C.bool {
+//export miqt_exec_callback_QGroupBox_focusNextPrevChild
+func miqt_exec_callback_QGroupBox_focusNextPrevChild(self *C.QGroupBox, cb C.intptr_t, next C.bool) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(next bool) bool, next bool) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1380,18 +1380,18 @@ func miqt_exec_callback_QGroupBox_FocusNextPrevChild(self *C.QGroupBox, cb C.int
 
 func (this *QGroupBox) callVirtualBase_EventFilter(watched *QObject, event *QEvent) bool {
 
-	return (bool)(C.QGroupBox_virtualbase_EventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
+	return (bool)(C.QGroupBox_virtualbase_eventFilter(unsafe.Pointer(this.h), watched.cPointer(), event.cPointer()))
 
 }
-func (this *QGroupBox) OnEventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
-	ok := C.QGroupBox_override_virtual_EventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OneventFilter(slot func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool) {
+	ok := C.QGroupBox_override_virtual_eventFilter(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_EventFilter
-func miqt_exec_callback_QGroupBox_EventFilter(self *C.QGroupBox, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
+//export miqt_exec_callback_QGroupBox_eventFilter
+func miqt_exec_callback_QGroupBox_eventFilter(self *C.QGroupBox, cb C.intptr_t, watched *C.QObject, event *C.QEvent) C.bool {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(watched *QObject, event *QEvent) bool, watched *QObject, event *QEvent) bool)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1410,18 +1410,18 @@ func miqt_exec_callback_QGroupBox_EventFilter(self *C.QGroupBox, cb C.intptr_t, 
 
 func (this *QGroupBox) callVirtualBase_TimerEvent(event *QTimerEvent) {
 
-	C.QGroupBox_virtualbase_TimerEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_timerEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnTimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
-	ok := C.QGroupBox_override_virtual_TimerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OntimerEvent(slot func(super func(event *QTimerEvent), event *QTimerEvent)) {
+	ok := C.QGroupBox_override_virtual_timerEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_TimerEvent
-func miqt_exec_callback_QGroupBox_TimerEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QTimerEvent) {
+//export miqt_exec_callback_QGroupBox_timerEvent
+func miqt_exec_callback_QGroupBox_timerEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QTimerEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QTimerEvent), event *QTimerEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1436,18 +1436,18 @@ func miqt_exec_callback_QGroupBox_TimerEvent(self *C.QGroupBox, cb C.intptr_t, e
 
 func (this *QGroupBox) callVirtualBase_CustomEvent(event *QEvent) {
 
-	C.QGroupBox_virtualbase_CustomEvent(unsafe.Pointer(this.h), event.cPointer())
+	C.QGroupBox_virtualbase_customEvent(unsafe.Pointer(this.h), event.cPointer())
 
 }
-func (this *QGroupBox) OnCustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
-	ok := C.QGroupBox_override_virtual_CustomEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OncustomEvent(slot func(super func(event *QEvent), event *QEvent)) {
+	ok := C.QGroupBox_override_virtual_customEvent(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_CustomEvent
-func miqt_exec_callback_QGroupBox_CustomEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QEvent) {
+//export miqt_exec_callback_QGroupBox_customEvent
+func miqt_exec_callback_QGroupBox_customEvent(self *C.QGroupBox, cb C.intptr_t, event *C.QEvent) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(event *QEvent), event *QEvent))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1462,18 +1462,18 @@ func miqt_exec_callback_QGroupBox_CustomEvent(self *C.QGroupBox, cb C.intptr_t, 
 
 func (this *QGroupBox) callVirtualBase_ConnectNotify(signal *QMetaMethod) {
 
-	C.QGroupBox_virtualbase_ConnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QGroupBox_virtualbase_connectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGroupBox) OnConnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QGroupBox_override_virtual_ConnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OnconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QGroupBox_override_virtual_connectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_ConnectNotify
-func miqt_exec_callback_QGroupBox_ConnectNotify(self *C.QGroupBox, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QGroupBox_connectNotify
+func miqt_exec_callback_QGroupBox_connectNotify(self *C.QGroupBox, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1488,18 +1488,18 @@ func miqt_exec_callback_QGroupBox_ConnectNotify(self *C.QGroupBox, cb C.intptr_t
 
 func (this *QGroupBox) callVirtualBase_DisconnectNotify(signal *QMetaMethod) {
 
-	C.QGroupBox_virtualbase_DisconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
+	C.QGroupBox_virtualbase_disconnectNotify(unsafe.Pointer(this.h), signal.cPointer())
 
 }
-func (this *QGroupBox) OnDisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
-	ok := C.QGroupBox_override_virtual_DisconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QGroupBox) OndisconnectNotify(slot func(super func(signal *QMetaMethod), signal *QMetaMethod)) {
+	ok := C.QGroupBox_override_virtual_disconnectNotify(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QGroupBox_DisconnectNotify
-func miqt_exec_callback_QGroupBox_DisconnectNotify(self *C.QGroupBox, cb C.intptr_t, signal *C.QMetaMethod) {
+//export miqt_exec_callback_QGroupBox_disconnectNotify
+func miqt_exec_callback_QGroupBox_disconnectNotify(self *C.QGroupBox, cb C.intptr_t, signal *C.QMetaMethod) {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(signal *QMetaMethod), signal *QMetaMethod))
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -1514,7 +1514,7 @@ func miqt_exec_callback_QGroupBox_DisconnectNotify(self *C.QGroupBox, cb C.intpt
 
 // Delete this object from C++ memory.
 func (this *QGroupBox) Delete() {
-	C.QGroupBox_Delete(this.h)
+	C.QGroupBox_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

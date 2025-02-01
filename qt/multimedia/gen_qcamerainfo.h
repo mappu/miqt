@@ -26,21 +26,21 @@ QCameraInfo* QCameraInfo_new();
 QCameraInfo* QCameraInfo_new2(QCamera* camera);
 QCameraInfo* QCameraInfo_new3(QCameraInfo* other);
 QCameraInfo* QCameraInfo_new4(struct miqt_string name);
-void QCameraInfo_OperatorAssign(QCameraInfo* self, QCameraInfo* other);
-bool QCameraInfo_OperatorEqual(const QCameraInfo* self, QCameraInfo* other);
-bool QCameraInfo_OperatorNotEqual(const QCameraInfo* self, QCameraInfo* other);
-bool QCameraInfo_IsNull(const QCameraInfo* self);
-struct miqt_string QCameraInfo_DeviceName(const QCameraInfo* self);
-struct miqt_string QCameraInfo_Description(const QCameraInfo* self);
-int QCameraInfo_Position(const QCameraInfo* self);
-int QCameraInfo_Orientation(const QCameraInfo* self);
-QCameraInfo* QCameraInfo_DefaultCamera();
-struct miqt_array /* of QCameraInfo* */  QCameraInfo_AvailableCameras();
-struct miqt_array /* of QCameraInfo* */  QCameraInfo_AvailableCameras1(int position);
-void QCameraInfo_Delete(QCameraInfo* self);
+void QCameraInfo_operatorAssign(QCameraInfo* self, QCameraInfo* other);
+bool QCameraInfo_operatorEqual(const QCameraInfo* self, QCameraInfo* other);
+bool QCameraInfo_operatorNotEqual(const QCameraInfo* self, QCameraInfo* other);
+bool QCameraInfo_isNull(const QCameraInfo* self);
+struct miqt_string QCameraInfo_deviceName(const QCameraInfo* self);
+struct miqt_string QCameraInfo_description(const QCameraInfo* self);
+int QCameraInfo_position(const QCameraInfo* self);
+int QCameraInfo_orientation(const QCameraInfo* self);
+QCameraInfo* QCameraInfo_defaultCamera();
+struct miqt_array /* of QCameraInfo* */  QCameraInfo_availableCameras();
+struct miqt_array /* of QCameraInfo* */  QCameraInfo_availableCameras1(int position);
+void QCameraInfo_delete(QCameraInfo* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

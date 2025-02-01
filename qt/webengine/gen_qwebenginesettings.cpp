@@ -13,20 +13,20 @@ extern "C" {
 } /* extern C */
 #endif
 
-QWebEngineSettings* QWebEngineSettings_GlobalSettings() {
+QWebEngineSettings* QWebEngineSettings_globalSettings() {
 	return QWebEngineSettings::globalSettings();
 }
 
-QWebEngineSettings* QWebEngineSettings_DefaultSettings() {
+QWebEngineSettings* QWebEngineSettings_defaultSettings() {
 	return QWebEngineSettings::defaultSettings();
 }
 
-void QWebEngineSettings_SetFontFamily(QWebEngineSettings* self, int which, struct miqt_string family) {
+void QWebEngineSettings_setFontFamily(QWebEngineSettings* self, int which, struct miqt_string family) {
 	QString family_QString = QString::fromUtf8(family.data, family.len);
 	self->setFontFamily(static_cast<QWebEngineSettings::FontFamily>(which), family_QString);
 }
 
-struct miqt_string QWebEngineSettings_FontFamily(const QWebEngineSettings* self, int which) {
+struct miqt_string QWebEngineSettings_fontFamily(const QWebEngineSettings* self, int which) {
 	QString _ret = self->fontFamily(static_cast<QWebEngineSettings::FontFamily>(which));
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -37,40 +37,40 @@ struct miqt_string QWebEngineSettings_FontFamily(const QWebEngineSettings* self,
 	return _ms;
 }
 
-void QWebEngineSettings_ResetFontFamily(QWebEngineSettings* self, int which) {
+void QWebEngineSettings_resetFontFamily(QWebEngineSettings* self, int which) {
 	self->resetFontFamily(static_cast<QWebEngineSettings::FontFamily>(which));
 }
 
-void QWebEngineSettings_SetFontSize(QWebEngineSettings* self, int typeVal, int size) {
-	self->setFontSize(static_cast<QWebEngineSettings::FontSize>(typeVal), static_cast<int>(size));
+void QWebEngineSettings_setFontSize(QWebEngineSettings* self, int type, int size) {
+	self->setFontSize(static_cast<QWebEngineSettings::FontSize>(type), static_cast<int>(size));
 }
 
-int QWebEngineSettings_FontSize(const QWebEngineSettings* self, int typeVal) {
-	return self->fontSize(static_cast<QWebEngineSettings::FontSize>(typeVal));
+int QWebEngineSettings_fontSize(const QWebEngineSettings* self, int type) {
+	return self->fontSize(static_cast<QWebEngineSettings::FontSize>(type));
 }
 
-void QWebEngineSettings_ResetFontSize(QWebEngineSettings* self, int typeVal) {
-	self->resetFontSize(static_cast<QWebEngineSettings::FontSize>(typeVal));
+void QWebEngineSettings_resetFontSize(QWebEngineSettings* self, int type) {
+	self->resetFontSize(static_cast<QWebEngineSettings::FontSize>(type));
 }
 
-void QWebEngineSettings_SetAttribute(QWebEngineSettings* self, int attr, bool on) {
+void QWebEngineSettings_setAttribute(QWebEngineSettings* self, int attr, bool on) {
 	self->setAttribute(static_cast<QWebEngineSettings::WebAttribute>(attr), on);
 }
 
-bool QWebEngineSettings_TestAttribute(const QWebEngineSettings* self, int attr) {
+bool QWebEngineSettings_testAttribute(const QWebEngineSettings* self, int attr) {
 	return self->testAttribute(static_cast<QWebEngineSettings::WebAttribute>(attr));
 }
 
-void QWebEngineSettings_ResetAttribute(QWebEngineSettings* self, int attr) {
+void QWebEngineSettings_resetAttribute(QWebEngineSettings* self, int attr) {
 	self->resetAttribute(static_cast<QWebEngineSettings::WebAttribute>(attr));
 }
 
-void QWebEngineSettings_SetDefaultTextEncoding(QWebEngineSettings* self, struct miqt_string encoding) {
+void QWebEngineSettings_setDefaultTextEncoding(QWebEngineSettings* self, struct miqt_string encoding) {
 	QString encoding_QString = QString::fromUtf8(encoding.data, encoding.len);
 	self->setDefaultTextEncoding(encoding_QString);
 }
 
-struct miqt_string QWebEngineSettings_DefaultTextEncoding(const QWebEngineSettings* self) {
+struct miqt_string QWebEngineSettings_defaultTextEncoding(const QWebEngineSettings* self) {
 	QString _ret = self->defaultTextEncoding();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -81,16 +81,16 @@ struct miqt_string QWebEngineSettings_DefaultTextEncoding(const QWebEngineSettin
 	return _ms;
 }
 
-int QWebEngineSettings_UnknownUrlSchemePolicy(const QWebEngineSettings* self) {
+int QWebEngineSettings_unknownUrlSchemePolicy(const QWebEngineSettings* self) {
 	QWebEngineSettings::UnknownUrlSchemePolicy _ret = self->unknownUrlSchemePolicy();
 	return static_cast<int>(_ret);
 }
 
-void QWebEngineSettings_SetUnknownUrlSchemePolicy(QWebEngineSettings* self, int policy) {
+void QWebEngineSettings_setUnknownUrlSchemePolicy(QWebEngineSettings* self, int policy) {
 	self->setUnknownUrlSchemePolicy(static_cast<QWebEngineSettings::UnknownUrlSchemePolicy>(policy));
 }
 
-void QWebEngineSettings_ResetUnknownUrlSchemePolicy(QWebEngineSettings* self) {
+void QWebEngineSettings_resetUnknownUrlSchemePolicy(QWebEngineSettings* self) {
 	self->resetUnknownUrlSchemePolicy();
 }
 

@@ -18,11 +18,11 @@ QWebDatabase* QWebDatabase_new(QWebDatabase* other) {
 	return new QWebDatabase(*other);
 }
 
-void QWebDatabase_OperatorAssign(QWebDatabase* self, QWebDatabase* other) {
+void QWebDatabase_operatorAssign(QWebDatabase* self, QWebDatabase* other) {
 	self->operator=(*other);
 }
 
-struct miqt_string QWebDatabase_Name(const QWebDatabase* self) {
+struct miqt_string QWebDatabase_name(const QWebDatabase* self) {
 	QString _ret = self->name();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -33,7 +33,7 @@ struct miqt_string QWebDatabase_Name(const QWebDatabase* self) {
 	return _ms;
 }
 
-struct miqt_string QWebDatabase_DisplayName(const QWebDatabase* self) {
+struct miqt_string QWebDatabase_displayName(const QWebDatabase* self) {
 	QString _ret = self->displayName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -44,17 +44,17 @@ struct miqt_string QWebDatabase_DisplayName(const QWebDatabase* self) {
 	return _ms;
 }
 
-long long QWebDatabase_ExpectedSize(const QWebDatabase* self) {
+long long QWebDatabase_expectedSize(const QWebDatabase* self) {
 	qint64 _ret = self->expectedSize();
 	return static_cast<long long>(_ret);
 }
 
-long long QWebDatabase_Size(const QWebDatabase* self) {
+long long QWebDatabase_size(const QWebDatabase* self) {
 	qint64 _ret = self->size();
 	return static_cast<long long>(_ret);
 }
 
-struct miqt_string QWebDatabase_FileName(const QWebDatabase* self) {
+struct miqt_string QWebDatabase_fileName(const QWebDatabase* self) {
 	QString _ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -65,19 +65,19 @@ struct miqt_string QWebDatabase_FileName(const QWebDatabase* self) {
 	return _ms;
 }
 
-QWebSecurityOrigin* QWebDatabase_Origin(const QWebDatabase* self) {
+QWebSecurityOrigin* QWebDatabase_origin(const QWebDatabase* self) {
 	return new QWebSecurityOrigin(self->origin());
 }
 
-void QWebDatabase_RemoveDatabase(QWebDatabase* param1) {
+void QWebDatabase_removeDatabase(QWebDatabase* param1) {
 	QWebDatabase::removeDatabase(*param1);
 }
 
-void QWebDatabase_RemoveAllDatabases() {
+void QWebDatabase_removeAllDatabases() {
 	QWebDatabase::removeAllDatabases();
 }
 
-void QWebDatabase_Delete(QWebDatabase* self) {
+void QWebDatabase_delete(QWebDatabase* self) {
 	delete self;
 }
 

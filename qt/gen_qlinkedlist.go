@@ -53,7 +53,7 @@ func NewQLinkedListData() *QLinkedListData {
 
 // Delete this object from C++ memory.
 func (this *QLinkedListData) Delete() {
-	C.QLinkedListData_Delete(this.h)
+	C.QLinkedListData_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

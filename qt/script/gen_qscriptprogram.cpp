@@ -38,15 +38,15 @@ QScriptProgram* QScriptProgram_new5(struct miqt_string sourceCode, struct miqt_s
 	return new QScriptProgram(sourceCode_QString, fileName_QString, static_cast<int>(firstLineNumber));
 }
 
-void QScriptProgram_OperatorAssign(QScriptProgram* self, QScriptProgram* other) {
+void QScriptProgram_operatorAssign(QScriptProgram* self, QScriptProgram* other) {
 	self->operator=(*other);
 }
 
-bool QScriptProgram_IsNull(const QScriptProgram* self) {
+bool QScriptProgram_isNull(const QScriptProgram* self) {
 	return self->isNull();
 }
 
-struct miqt_string QScriptProgram_SourceCode(const QScriptProgram* self) {
+struct miqt_string QScriptProgram_sourceCode(const QScriptProgram* self) {
 	QString _ret = self->sourceCode();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -57,7 +57,7 @@ struct miqt_string QScriptProgram_SourceCode(const QScriptProgram* self) {
 	return _ms;
 }
 
-struct miqt_string QScriptProgram_FileName(const QScriptProgram* self) {
+struct miqt_string QScriptProgram_fileName(const QScriptProgram* self) {
 	QString _ret = self->fileName();
 	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
 	QByteArray _b = _ret.toUtf8();
@@ -68,19 +68,19 @@ struct miqt_string QScriptProgram_FileName(const QScriptProgram* self) {
 	return _ms;
 }
 
-int QScriptProgram_FirstLineNumber(const QScriptProgram* self) {
+int QScriptProgram_firstLineNumber(const QScriptProgram* self) {
 	return self->firstLineNumber();
 }
 
-bool QScriptProgram_OperatorEqual(const QScriptProgram* self, QScriptProgram* other) {
+bool QScriptProgram_operatorEqual(const QScriptProgram* self, QScriptProgram* other) {
 	return (*self == *other);
 }
 
-bool QScriptProgram_OperatorNotEqual(const QScriptProgram* self, QScriptProgram* other) {
+bool QScriptProgram_operatorNotEqual(const QScriptProgram* self, QScriptProgram* other) {
 	return (*self != *other);
 }
 
-void QScriptProgram_Delete(QScriptProgram* self) {
+void QScriptProgram_delete(QScriptProgram* self) {
 	delete self;
 }
 

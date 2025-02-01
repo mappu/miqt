@@ -26,21 +26,21 @@ typedef struct QWebEngineCertificateError QWebEngineCertificateError;
 
 QWebEngineCertificateError* QWebEngineCertificateError_new(int error, QUrl* url, bool overridable, struct miqt_string errorDescription);
 QWebEngineCertificateError* QWebEngineCertificateError_new2(QWebEngineCertificateError* other);
-int QWebEngineCertificateError_Error(const QWebEngineCertificateError* self);
-QUrl* QWebEngineCertificateError_Url(const QWebEngineCertificateError* self);
-bool QWebEngineCertificateError_IsOverridable(const QWebEngineCertificateError* self);
-struct miqt_string QWebEngineCertificateError_ErrorDescription(const QWebEngineCertificateError* self);
-void QWebEngineCertificateError_OperatorAssign(QWebEngineCertificateError* self, QWebEngineCertificateError* other);
-void QWebEngineCertificateError_Defer(QWebEngineCertificateError* self);
-bool QWebEngineCertificateError_Deferred(const QWebEngineCertificateError* self);
-void QWebEngineCertificateError_RejectCertificate(QWebEngineCertificateError* self);
-void QWebEngineCertificateError_IgnoreCertificateError(QWebEngineCertificateError* self);
-bool QWebEngineCertificateError_Answered(const QWebEngineCertificateError* self);
-struct miqt_array /* of QSslCertificate* */  QWebEngineCertificateError_CertificateChain(const QWebEngineCertificateError* self);
-void QWebEngineCertificateError_Delete(QWebEngineCertificateError* self);
+int QWebEngineCertificateError_error(const QWebEngineCertificateError* self);
+QUrl* QWebEngineCertificateError_url(const QWebEngineCertificateError* self);
+bool QWebEngineCertificateError_isOverridable(const QWebEngineCertificateError* self);
+struct miqt_string QWebEngineCertificateError_errorDescription(const QWebEngineCertificateError* self);
+void QWebEngineCertificateError_operatorAssign(QWebEngineCertificateError* self, QWebEngineCertificateError* other);
+void QWebEngineCertificateError_defer(QWebEngineCertificateError* self);
+bool QWebEngineCertificateError_deferred(const QWebEngineCertificateError* self);
+void QWebEngineCertificateError_rejectCertificate(QWebEngineCertificateError* self);
+void QWebEngineCertificateError_ignoreCertificateError(QWebEngineCertificateError* self);
+bool QWebEngineCertificateError_answered(const QWebEngineCertificateError* self);
+struct miqt_array /* of QSslCertificate* */  QWebEngineCertificateError_certificateChain(const QWebEngineCertificateError* self);
+void QWebEngineCertificateError_delete(QWebEngineCertificateError* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif

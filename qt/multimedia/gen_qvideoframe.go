@@ -122,131 +122,131 @@ func NewQVideoFrame4(other *QVideoFrame) *QVideoFrame {
 }
 
 func (this *QVideoFrame) OperatorAssign(other *QVideoFrame) {
-	C.QVideoFrame_OperatorAssign(this.h, other.cPointer())
+	C.QVideoFrame_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QVideoFrame) OperatorEqual(other *QVideoFrame) bool {
-	return (bool)(C.QVideoFrame_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QVideoFrame_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QVideoFrame) OperatorNotEqual(other *QVideoFrame) bool {
-	return (bool)(C.QVideoFrame_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QVideoFrame_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QVideoFrame) IsValid() bool {
-	return (bool)(C.QVideoFrame_IsValid(this.h))
+	return (bool)(C.QVideoFrame_isValid(this.h))
 }
 
 func (this *QVideoFrame) PixelFormat() QVideoFrame__PixelFormat {
-	return (QVideoFrame__PixelFormat)(C.QVideoFrame_PixelFormat(this.h))
+	return (QVideoFrame__PixelFormat)(C.QVideoFrame_pixelFormat(this.h))
 }
 
 func (this *QVideoFrame) HandleType() QAbstractVideoBuffer__HandleType {
-	return (QAbstractVideoBuffer__HandleType)(C.QVideoFrame_HandleType(this.h))
+	return (QAbstractVideoBuffer__HandleType)(C.QVideoFrame_handleType(this.h))
 }
 
 func (this *QVideoFrame) Size() *qt.QSize {
-	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoFrame_Size(this.h)))
+	_goptr := qt.UnsafeNewQSize(unsafe.Pointer(C.QVideoFrame_size(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVideoFrame) Width() int {
-	return (int)(C.QVideoFrame_Width(this.h))
+	return (int)(C.QVideoFrame_width(this.h))
 }
 
 func (this *QVideoFrame) Height() int {
-	return (int)(C.QVideoFrame_Height(this.h))
+	return (int)(C.QVideoFrame_height(this.h))
 }
 
 func (this *QVideoFrame) FieldType() QVideoFrame__FieldType {
-	return (QVideoFrame__FieldType)(C.QVideoFrame_FieldType(this.h))
+	return (QVideoFrame__FieldType)(C.QVideoFrame_fieldType(this.h))
 }
 
 func (this *QVideoFrame) SetFieldType(fieldType QVideoFrame__FieldType) {
-	C.QVideoFrame_SetFieldType(this.h, (C.int)(fieldType))
+	C.QVideoFrame_setFieldType(this.h, (C.int)(fieldType))
 }
 
 func (this *QVideoFrame) IsMapped() bool {
-	return (bool)(C.QVideoFrame_IsMapped(this.h))
+	return (bool)(C.QVideoFrame_isMapped(this.h))
 }
 
 func (this *QVideoFrame) IsReadable() bool {
-	return (bool)(C.QVideoFrame_IsReadable(this.h))
+	return (bool)(C.QVideoFrame_isReadable(this.h))
 }
 
 func (this *QVideoFrame) IsWritable() bool {
-	return (bool)(C.QVideoFrame_IsWritable(this.h))
+	return (bool)(C.QVideoFrame_isWritable(this.h))
 }
 
 func (this *QVideoFrame) MapMode() QAbstractVideoBuffer__MapMode {
-	return (QAbstractVideoBuffer__MapMode)(C.QVideoFrame_MapMode(this.h))
+	return (QAbstractVideoBuffer__MapMode)(C.QVideoFrame_mapMode(this.h))
 }
 
 func (this *QVideoFrame) Map(mode QAbstractVideoBuffer__MapMode) bool {
-	return (bool)(C.QVideoFrame_Map(this.h, (C.int)(mode)))
+	return (bool)(C.QVideoFrame_map(this.h, (C.int)(mode)))
 }
 
 func (this *QVideoFrame) Unmap() {
-	C.QVideoFrame_Unmap(this.h)
+	C.QVideoFrame_unmap(this.h)
 }
 
 func (this *QVideoFrame) BytesPerLine() int {
-	return (int)(C.QVideoFrame_BytesPerLine(this.h))
+	return (int)(C.QVideoFrame_bytesPerLine(this.h))
 }
 
 func (this *QVideoFrame) BytesPerLineWithPlane(plane int) int {
-	return (int)(C.QVideoFrame_BytesPerLineWithPlane(this.h, (C.int)(plane)))
+	return (int)(C.QVideoFrame_bytesPerLineWithPlane(this.h, (C.int)(plane)))
 }
 
 func (this *QVideoFrame) Bits() *byte {
-	return (*byte)(unsafe.Pointer(C.QVideoFrame_Bits(this.h)))
+	return (*byte)(unsafe.Pointer(C.QVideoFrame_bits(this.h)))
 }
 
 func (this *QVideoFrame) BitsWithPlane(plane int) *byte {
-	return (*byte)(unsafe.Pointer(C.QVideoFrame_BitsWithPlane(this.h, (C.int)(plane))))
+	return (*byte)(unsafe.Pointer(C.QVideoFrame_bitsWithPlane(this.h, (C.int)(plane))))
 }
 
 func (this *QVideoFrame) Bits2() *byte {
-	return (*byte)(unsafe.Pointer(C.QVideoFrame_Bits2(this.h)))
+	return (*byte)(unsafe.Pointer(C.QVideoFrame_bits2(this.h)))
 }
 
 func (this *QVideoFrame) Bits3(plane int) *byte {
-	return (*byte)(unsafe.Pointer(C.QVideoFrame_Bits3(this.h, (C.int)(plane))))
+	return (*byte)(unsafe.Pointer(C.QVideoFrame_bits3(this.h, (C.int)(plane))))
 }
 
 func (this *QVideoFrame) MappedBytes() int {
-	return (int)(C.QVideoFrame_MappedBytes(this.h))
+	return (int)(C.QVideoFrame_mappedBytes(this.h))
 }
 
 func (this *QVideoFrame) PlaneCount() int {
-	return (int)(C.QVideoFrame_PlaneCount(this.h))
+	return (int)(C.QVideoFrame_planeCount(this.h))
 }
 
 func (this *QVideoFrame) Handle() *qt.QVariant {
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QVideoFrame_Handle(this.h)))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QVideoFrame_handle(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QVideoFrame) StartTime() int64 {
-	return (int64)(C.QVideoFrame_StartTime(this.h))
+	return (int64)(C.QVideoFrame_startTime(this.h))
 }
 
 func (this *QVideoFrame) SetStartTime(time int64) {
-	C.QVideoFrame_SetStartTime(this.h, (C.longlong)(time))
+	C.QVideoFrame_setStartTime(this.h, (C.longlong)(time))
 }
 
 func (this *QVideoFrame) EndTime() int64 {
-	return (int64)(C.QVideoFrame_EndTime(this.h))
+	return (int64)(C.QVideoFrame_endTime(this.h))
 }
 
 func (this *QVideoFrame) SetEndTime(time int64) {
-	C.QVideoFrame_SetEndTime(this.h, (C.longlong)(time))
+	C.QVideoFrame_setEndTime(this.h, (C.longlong)(time))
 }
 
 func (this *QVideoFrame) AvailableMetaData() map[string]qt.QVariant {
-	var _mm C.struct_miqt_map = C.QVideoFrame_AvailableMetaData(this.h)
+	var _mm C.struct_miqt_map = C.QVideoFrame_availableMetaData(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
 	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
@@ -269,7 +269,7 @@ func (this *QVideoFrame) MetaData(key string) *qt.QVariant {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QVideoFrame_MetaData(this.h, key_ms)))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QVideoFrame_metaData(this.h, key_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
@@ -279,26 +279,26 @@ func (this *QVideoFrame) SetMetaData(key string, value *qt.QVariant) {
 	key_ms.data = C.CString(key)
 	key_ms.len = C.size_t(len(key))
 	defer C.free(unsafe.Pointer(key_ms.data))
-	C.QVideoFrame_SetMetaData(this.h, key_ms, (*C.QVariant)(value.UnsafePointer()))
+	C.QVideoFrame_setMetaData(this.h, key_ms, (*C.QVariant)(value.UnsafePointer()))
 }
 
 func (this *QVideoFrame) Image() *qt.QImage {
-	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(C.QVideoFrame_Image(this.h)))
+	_goptr := qt.UnsafeNewQImage(unsafe.Pointer(C.QVideoFrame_image(this.h)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func QVideoFrame_PixelFormatFromImageFormat(format qt.QImage__Format) QVideoFrame__PixelFormat {
-	return (QVideoFrame__PixelFormat)(C.QVideoFrame_PixelFormatFromImageFormat((C.int)(format)))
+	return (QVideoFrame__PixelFormat)(C.QVideoFrame_pixelFormatFromImageFormat((C.int)(format)))
 }
 
 func QVideoFrame_ImageFormatFromPixelFormat(format QVideoFrame__PixelFormat) qt.QImage__Format {
-	return (qt.QImage__Format)(C.QVideoFrame_ImageFormatFromPixelFormat((C.int)(format)))
+	return (qt.QImage__Format)(C.QVideoFrame_imageFormatFromPixelFormat((C.int)(format)))
 }
 
 // Delete this object from C++ memory.
 func (this *QVideoFrame) Delete() {
-	C.QVideoFrame_Delete(this.h)
+	C.QVideoFrame_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

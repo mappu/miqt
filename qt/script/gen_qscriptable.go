@@ -52,32 +52,32 @@ func NewQScriptable() *QScriptable {
 }
 
 func (this *QScriptable) Engine() *QScriptEngine {
-	return newQScriptEngine(C.QScriptable_Engine(this.h))
+	return newQScriptEngine(C.QScriptable_engine(this.h))
 }
 
 func (this *QScriptable) Context() *QScriptContext {
-	return newQScriptContext(C.QScriptable_Context(this.h))
+	return newQScriptContext(C.QScriptable_context(this.h))
 }
 
 func (this *QScriptable) ThisObject() *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptable_ThisObject(this.h))
+	_goptr := newQScriptValue(C.QScriptable_thisObject(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QScriptable) ArgumentCount() int {
-	return (int)(C.QScriptable_ArgumentCount(this.h))
+	return (int)(C.QScriptable_argumentCount(this.h))
 }
 
 func (this *QScriptable) Argument(index int) *QScriptValue {
-	_goptr := newQScriptValue(C.QScriptable_Argument(this.h, (C.int)(index)))
+	_goptr := newQScriptValue(C.QScriptable_argument(this.h, (C.int)(index)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 // Delete this object from C++ memory.
 func (this *QScriptable) Delete() {
-	C.QScriptable_Delete(this.h)
+	C.QScriptable_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

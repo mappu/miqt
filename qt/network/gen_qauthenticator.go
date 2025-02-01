@@ -59,19 +59,19 @@ func NewQAuthenticator2(other *QAuthenticator) *QAuthenticator {
 }
 
 func (this *QAuthenticator) OperatorAssign(other *QAuthenticator) {
-	C.QAuthenticator_OperatorAssign(this.h, other.cPointer())
+	C.QAuthenticator_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QAuthenticator) OperatorEqual(other *QAuthenticator) bool {
-	return (bool)(C.QAuthenticator_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QAuthenticator_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QAuthenticator) OperatorNotEqual(other *QAuthenticator) bool {
-	return (bool)(C.QAuthenticator_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QAuthenticator_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QAuthenticator) User() string {
-	var _ms C.struct_miqt_string = C.QAuthenticator_User(this.h)
+	var _ms C.struct_miqt_string = C.QAuthenticator_user(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -82,11 +82,11 @@ func (this *QAuthenticator) SetUser(user string) {
 	user_ms.data = C.CString(user)
 	user_ms.len = C.size_t(len(user))
 	defer C.free(unsafe.Pointer(user_ms.data))
-	C.QAuthenticator_SetUser(this.h, user_ms)
+	C.QAuthenticator_setUser(this.h, user_ms)
 }
 
 func (this *QAuthenticator) Password() string {
-	var _ms C.struct_miqt_string = C.QAuthenticator_Password(this.h)
+	var _ms C.struct_miqt_string = C.QAuthenticator_password(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -97,11 +97,11 @@ func (this *QAuthenticator) SetPassword(password string) {
 	password_ms.data = C.CString(password)
 	password_ms.len = C.size_t(len(password))
 	defer C.free(unsafe.Pointer(password_ms.data))
-	C.QAuthenticator_SetPassword(this.h, password_ms)
+	C.QAuthenticator_setPassword(this.h, password_ms)
 }
 
 func (this *QAuthenticator) Realm() string {
-	var _ms C.struct_miqt_string = C.QAuthenticator_Realm(this.h)
+	var _ms C.struct_miqt_string = C.QAuthenticator_realm(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
@@ -112,7 +112,7 @@ func (this *QAuthenticator) SetRealm(realm string) {
 	realm_ms.data = C.CString(realm)
 	realm_ms.len = C.size_t(len(realm))
 	defer C.free(unsafe.Pointer(realm_ms.data))
-	C.QAuthenticator_SetRealm(this.h, realm_ms)
+	C.QAuthenticator_setRealm(this.h, realm_ms)
 }
 
 func (this *QAuthenticator) Option(opt string) *qt.QVariant {
@@ -120,13 +120,13 @@ func (this *QAuthenticator) Option(opt string) *qt.QVariant {
 	opt_ms.data = C.CString(opt)
 	opt_ms.len = C.size_t(len(opt))
 	defer C.free(unsafe.Pointer(opt_ms.data))
-	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QAuthenticator_Option(this.h, opt_ms)))
+	_goptr := qt.UnsafeNewQVariant(unsafe.Pointer(C.QAuthenticator_option(this.h, opt_ms)))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAuthenticator) Options() map[string]qt.QVariant {
-	var _mm C.struct_miqt_map = C.QAuthenticator_Options(this.h)
+	var _mm C.struct_miqt_map = C.QAuthenticator_options(this.h)
 	_ret := make(map[string]qt.QVariant, int(_mm.len))
 	_Keys := (*[0xffff]C.struct_miqt_string)(unsafe.Pointer(_mm.keys))
 	_Values := (*[0xffff]*C.QVariant)(unsafe.Pointer(_mm.values))
@@ -149,20 +149,20 @@ func (this *QAuthenticator) SetOption(opt string, value *qt.QVariant) {
 	opt_ms.data = C.CString(opt)
 	opt_ms.len = C.size_t(len(opt))
 	defer C.free(unsafe.Pointer(opt_ms.data))
-	C.QAuthenticator_SetOption(this.h, opt_ms, (*C.QVariant)(value.UnsafePointer()))
+	C.QAuthenticator_setOption(this.h, opt_ms, (*C.QVariant)(value.UnsafePointer()))
 }
 
 func (this *QAuthenticator) IsNull() bool {
-	return (bool)(C.QAuthenticator_IsNull(this.h))
+	return (bool)(C.QAuthenticator_isNull(this.h))
 }
 
 func (this *QAuthenticator) Detach() {
-	C.QAuthenticator_Detach(this.h)
+	C.QAuthenticator_detach(this.h)
 }
 
 // Delete this object from C++ memory.
 func (this *QAuthenticator) Delete() {
-	C.QAuthenticator_Delete(this.h)
+	C.QAuthenticator_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

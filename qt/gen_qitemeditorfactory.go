@@ -47,23 +47,23 @@ func UnsafeNewQItemEditorCreatorBase(h unsafe.Pointer) *QItemEditorCreatorBase {
 }
 
 func (this *QItemEditorCreatorBase) CreateWidget(parent *QWidget) *QWidget {
-	return newQWidget(C.QItemEditorCreatorBase_CreateWidget(this.h, parent.cPointer()))
+	return newQWidget(C.QItemEditorCreatorBase_createWidget(this.h, parent.cPointer()))
 }
 
 func (this *QItemEditorCreatorBase) ValuePropertyName() []byte {
-	var _bytearray C.struct_miqt_string = C.QItemEditorCreatorBase_ValuePropertyName(this.h)
+	var _bytearray C.struct_miqt_string = C.QItemEditorCreatorBase_valuePropertyName(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QItemEditorCreatorBase) OperatorAssign(param1 *QItemEditorCreatorBase) {
-	C.QItemEditorCreatorBase_OperatorAssign(this.h, param1.cPointer())
+	C.QItemEditorCreatorBase_operatorAssign(this.h, param1.cPointer())
 }
 
 // Delete this object from C++ memory.
 func (this *QItemEditorCreatorBase) Delete() {
-	C.QItemEditorCreatorBase_Delete(this.h)
+	C.QItemEditorCreatorBase_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted
@@ -120,42 +120,42 @@ func NewQItemEditorFactory2(param1 *QItemEditorFactory) *QItemEditorFactory {
 }
 
 func (this *QItemEditorFactory) CreateEditor(userType int, parent *QWidget) *QWidget {
-	return newQWidget(C.QItemEditorFactory_CreateEditor(this.h, (C.int)(userType), parent.cPointer()))
+	return newQWidget(C.QItemEditorFactory_createEditor(this.h, (C.int)(userType), parent.cPointer()))
 }
 
 func (this *QItemEditorFactory) ValuePropertyName(userType int) []byte {
-	var _bytearray C.struct_miqt_string = C.QItemEditorFactory_ValuePropertyName(this.h, (C.int)(userType))
+	var _bytearray C.struct_miqt_string = C.QItemEditorFactory_valuePropertyName(this.h, (C.int)(userType))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QItemEditorFactory) RegisterEditor(userType int, creator *QItemEditorCreatorBase) {
-	C.QItemEditorFactory_RegisterEditor(this.h, (C.int)(userType), creator.cPointer())
+	C.QItemEditorFactory_registerEditor(this.h, (C.int)(userType), creator.cPointer())
 }
 
 func QItemEditorFactory_DefaultFactory() *QItemEditorFactory {
-	return newQItemEditorFactory(C.QItemEditorFactory_DefaultFactory())
+	return newQItemEditorFactory(C.QItemEditorFactory_defaultFactory())
 }
 
 func QItemEditorFactory_SetDefaultFactory(factory *QItemEditorFactory) {
-	C.QItemEditorFactory_SetDefaultFactory(factory.cPointer())
+	C.QItemEditorFactory_setDefaultFactory(factory.cPointer())
 }
 
 func (this *QItemEditorFactory) callVirtualBase_CreateEditor(userType int, parent *QWidget) *QWidget {
 
-	return newQWidget(C.QItemEditorFactory_virtualbase_CreateEditor(unsafe.Pointer(this.h), (C.int)(userType), parent.cPointer()))
+	return newQWidget(C.QItemEditorFactory_virtualbase_createEditor(unsafe.Pointer(this.h), (C.int)(userType), parent.cPointer()))
 
 }
-func (this *QItemEditorFactory) OnCreateEditor(slot func(super func(userType int, parent *QWidget) *QWidget, userType int, parent *QWidget) *QWidget) {
-	ok := C.QItemEditorFactory_override_virtual_CreateEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QItemEditorFactory) OncreateEditor(slot func(super func(userType int, parent *QWidget) *QWidget, userType int, parent *QWidget) *QWidget) {
+	ok := C.QItemEditorFactory_override_virtual_createEditor(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QItemEditorFactory_CreateEditor
-func miqt_exec_callback_QItemEditorFactory_CreateEditor(self *C.QItemEditorFactory, cb C.intptr_t, userType C.int, parent *C.QWidget) *C.QWidget {
+//export miqt_exec_callback_QItemEditorFactory_createEditor
+func miqt_exec_callback_QItemEditorFactory_createEditor(self *C.QItemEditorFactory, cb C.intptr_t, userType C.int, parent *C.QWidget) *C.QWidget {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(userType int, parent *QWidget) *QWidget, userType int, parent *QWidget) *QWidget)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -174,20 +174,20 @@ func miqt_exec_callback_QItemEditorFactory_CreateEditor(self *C.QItemEditorFacto
 
 func (this *QItemEditorFactory) callVirtualBase_ValuePropertyName(userType int) []byte {
 
-	var _bytearray C.struct_miqt_string = C.QItemEditorFactory_virtualbase_ValuePropertyName(unsafe.Pointer(this.h), (C.int)(userType))
+	var _bytearray C.struct_miqt_string = C.QItemEditorFactory_virtualbase_valuePropertyName(unsafe.Pointer(this.h), (C.int)(userType))
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
-func (this *QItemEditorFactory) OnValuePropertyName(slot func(super func(userType int) []byte, userType int) []byte) {
-	ok := C.QItemEditorFactory_override_virtual_ValuePropertyName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
+func (this *QItemEditorFactory) OnvaluePropertyName(slot func(super func(userType int) []byte, userType int) []byte) {
+	ok := C.QItemEditorFactory_override_virtual_valuePropertyName(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {
 		panic("miqt: can only override virtual methods for directly constructed types")
 	}
 }
 
-//export miqt_exec_callback_QItemEditorFactory_ValuePropertyName
-func miqt_exec_callback_QItemEditorFactory_ValuePropertyName(self *C.QItemEditorFactory, cb C.intptr_t, userType C.int) C.struct_miqt_string {
+//export miqt_exec_callback_QItemEditorFactory_valuePropertyName
+func miqt_exec_callback_QItemEditorFactory_valuePropertyName(self *C.QItemEditorFactory, cb C.intptr_t, userType C.int) C.struct_miqt_string {
 	gofunc, ok := cgo.Handle(cb).Value().(func(super func(userType int) []byte, userType int) []byte)
 	if !ok {
 		panic("miqt: callback of non-callback type (heap corruption?)")
@@ -211,7 +211,7 @@ func miqt_exec_callback_QItemEditorFactory_ValuePropertyName(self *C.QItemEditor
 
 // Delete this object from C++ memory.
 func (this *QItemEditorFactory) Delete() {
-	C.QItemEditorFactory_Delete(this.h)
+	C.QItemEditorFactory_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

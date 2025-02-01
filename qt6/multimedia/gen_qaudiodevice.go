@@ -66,75 +66,75 @@ func NewQAudioDevice2(other *QAudioDevice) *QAudioDevice {
 }
 
 func (this *QAudioDevice) Swap(other *QAudioDevice) {
-	C.QAudioDevice_Swap(this.h, other.cPointer())
+	C.QAudioDevice_swap(this.h, other.cPointer())
 }
 
 func (this *QAudioDevice) OperatorAssign(other *QAudioDevice) {
-	C.QAudioDevice_OperatorAssign(this.h, other.cPointer())
+	C.QAudioDevice_operatorAssign(this.h, other.cPointer())
 }
 
 func (this *QAudioDevice) OperatorEqual(other *QAudioDevice) bool {
-	return (bool)(C.QAudioDevice_OperatorEqual(this.h, other.cPointer()))
+	return (bool)(C.QAudioDevice_operatorEqual(this.h, other.cPointer()))
 }
 
 func (this *QAudioDevice) OperatorNotEqual(other *QAudioDevice) bool {
-	return (bool)(C.QAudioDevice_OperatorNotEqual(this.h, other.cPointer()))
+	return (bool)(C.QAudioDevice_operatorNotEqual(this.h, other.cPointer()))
 }
 
 func (this *QAudioDevice) IsNull() bool {
-	return (bool)(C.QAudioDevice_IsNull(this.h))
+	return (bool)(C.QAudioDevice_isNull(this.h))
 }
 
 func (this *QAudioDevice) Id() []byte {
-	var _bytearray C.struct_miqt_string = C.QAudioDevice_Id(this.h)
+	var _bytearray C.struct_miqt_string = C.QAudioDevice_id(this.h)
 	_ret := C.GoBytes(unsafe.Pointer(_bytearray.data), C.int(int64(_bytearray.len)))
 	C.free(unsafe.Pointer(_bytearray.data))
 	return _ret
 }
 
 func (this *QAudioDevice) Description() string {
-	var _ms C.struct_miqt_string = C.QAudioDevice_Description(this.h)
+	var _ms C.struct_miqt_string = C.QAudioDevice_description(this.h)
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
 
 func (this *QAudioDevice) IsDefault() bool {
-	return (bool)(C.QAudioDevice_IsDefault(this.h))
+	return (bool)(C.QAudioDevice_isDefault(this.h))
 }
 
 func (this *QAudioDevice) Mode() QAudioDevice__Mode {
-	return (QAudioDevice__Mode)(C.QAudioDevice_Mode(this.h))
+	return (QAudioDevice__Mode)(C.QAudioDevice_mode(this.h))
 }
 
 func (this *QAudioDevice) IsFormatSupported(format *QAudioFormat) bool {
-	return (bool)(C.QAudioDevice_IsFormatSupported(this.h, format.cPointer()))
+	return (bool)(C.QAudioDevice_isFormatSupported(this.h, format.cPointer()))
 }
 
 func (this *QAudioDevice) PreferredFormat() *QAudioFormat {
-	_goptr := newQAudioFormat(C.QAudioDevice_PreferredFormat(this.h))
+	_goptr := newQAudioFormat(C.QAudioDevice_preferredFormat(this.h))
 	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
 	return _goptr
 }
 
 func (this *QAudioDevice) MinimumSampleRate() int {
-	return (int)(C.QAudioDevice_MinimumSampleRate(this.h))
+	return (int)(C.QAudioDevice_minimumSampleRate(this.h))
 }
 
 func (this *QAudioDevice) MaximumSampleRate() int {
-	return (int)(C.QAudioDevice_MaximumSampleRate(this.h))
+	return (int)(C.QAudioDevice_maximumSampleRate(this.h))
 }
 
 func (this *QAudioDevice) MinimumChannelCount() int {
-	return (int)(C.QAudioDevice_MinimumChannelCount(this.h))
+	return (int)(C.QAudioDevice_minimumChannelCount(this.h))
 }
 
 func (this *QAudioDevice) MaximumChannelCount() int {
-	return (int)(C.QAudioDevice_MaximumChannelCount(this.h))
+	return (int)(C.QAudioDevice_maximumChannelCount(this.h))
 }
 
 func (this *QAudioDevice) SupportedSampleFormats() []QAudioFormat__SampleFormat {
-	var _ma C.struct_miqt_array = C.QAudioDevice_SupportedSampleFormats(this.h)
+	var _ma C.struct_miqt_array = C.QAudioDevice_supportedSampleFormats(this.h)
 	_ret := make([]QAudioFormat__SampleFormat, int(_ma.len))
 	_outCast := (*[0xffff]C.uint16_t)(unsafe.Pointer(_ma.data)) // hey ya
 	for i := 0; i < int(_ma.len); i++ {
@@ -144,12 +144,12 @@ func (this *QAudioDevice) SupportedSampleFormats() []QAudioFormat__SampleFormat 
 }
 
 func (this *QAudioDevice) ChannelConfiguration() QAudioFormat__ChannelConfig {
-	return (QAudioFormat__ChannelConfig)(C.QAudioDevice_ChannelConfiguration(this.h))
+	return (QAudioFormat__ChannelConfig)(C.QAudioDevice_channelConfiguration(this.h))
 }
 
 // Delete this object from C++ memory.
 func (this *QAudioDevice) Delete() {
-	C.QAudioDevice_Delete(this.h)
+	C.QAudioDevice_delete(this.h)
 }
 
 // GoGC adds a Go Finalizer to this pointer, so that it will be deleted

@@ -30,38 +30,38 @@ QVideoSurfaceFormat* QVideoSurfaceFormat_new();
 QVideoSurfaceFormat* QVideoSurfaceFormat_new2(QSize* size, int pixelFormat);
 QVideoSurfaceFormat* QVideoSurfaceFormat_new3(QVideoSurfaceFormat* format);
 QVideoSurfaceFormat* QVideoSurfaceFormat_new4(QSize* size, int pixelFormat, int handleType);
-void QVideoSurfaceFormat_OperatorAssign(QVideoSurfaceFormat* self, QVideoSurfaceFormat* format);
-bool QVideoSurfaceFormat_OperatorEqual(const QVideoSurfaceFormat* self, QVideoSurfaceFormat* format);
-bool QVideoSurfaceFormat_OperatorNotEqual(const QVideoSurfaceFormat* self, QVideoSurfaceFormat* format);
-bool QVideoSurfaceFormat_IsValid(const QVideoSurfaceFormat* self);
-int QVideoSurfaceFormat_PixelFormat(const QVideoSurfaceFormat* self);
-int QVideoSurfaceFormat_HandleType(const QVideoSurfaceFormat* self);
-QSize* QVideoSurfaceFormat_FrameSize(const QVideoSurfaceFormat* self);
-void QVideoSurfaceFormat_SetFrameSize(QVideoSurfaceFormat* self, QSize* size);
-void QVideoSurfaceFormat_SetFrameSize2(QVideoSurfaceFormat* self, int width, int height);
-int QVideoSurfaceFormat_FrameWidth(const QVideoSurfaceFormat* self);
-int QVideoSurfaceFormat_FrameHeight(const QVideoSurfaceFormat* self);
-QRect* QVideoSurfaceFormat_Viewport(const QVideoSurfaceFormat* self);
-void QVideoSurfaceFormat_SetViewport(QVideoSurfaceFormat* self, QRect* viewport);
-int QVideoSurfaceFormat_ScanLineDirection(const QVideoSurfaceFormat* self);
-void QVideoSurfaceFormat_SetScanLineDirection(QVideoSurfaceFormat* self, int direction);
-double QVideoSurfaceFormat_FrameRate(const QVideoSurfaceFormat* self);
-void QVideoSurfaceFormat_SetFrameRate(QVideoSurfaceFormat* self, double rate);
-QSize* QVideoSurfaceFormat_PixelAspectRatio(const QVideoSurfaceFormat* self);
-void QVideoSurfaceFormat_SetPixelAspectRatio(QVideoSurfaceFormat* self, QSize* ratio);
-void QVideoSurfaceFormat_SetPixelAspectRatio2(QVideoSurfaceFormat* self, int width, int height);
-int QVideoSurfaceFormat_YCbCrColorSpace(const QVideoSurfaceFormat* self);
-void QVideoSurfaceFormat_SetYCbCrColorSpace(QVideoSurfaceFormat* self, int colorSpace);
-bool QVideoSurfaceFormat_IsMirrored(const QVideoSurfaceFormat* self);
-void QVideoSurfaceFormat_SetMirrored(QVideoSurfaceFormat* self, bool mirrored);
-QSize* QVideoSurfaceFormat_SizeHint(const QVideoSurfaceFormat* self);
-struct miqt_array /* of struct miqt_string */  QVideoSurfaceFormat_PropertyNames(const QVideoSurfaceFormat* self);
-QVariant* QVideoSurfaceFormat_Property(const QVideoSurfaceFormat* self, const char* name);
-void QVideoSurfaceFormat_SetProperty(QVideoSurfaceFormat* self, const char* name, QVariant* value);
-void QVideoSurfaceFormat_Delete(QVideoSurfaceFormat* self);
+void QVideoSurfaceFormat_operatorAssign(QVideoSurfaceFormat* self, QVideoSurfaceFormat* format);
+bool QVideoSurfaceFormat_operatorEqual(const QVideoSurfaceFormat* self, QVideoSurfaceFormat* format);
+bool QVideoSurfaceFormat_operatorNotEqual(const QVideoSurfaceFormat* self, QVideoSurfaceFormat* format);
+bool QVideoSurfaceFormat_isValid(const QVideoSurfaceFormat* self);
+int QVideoSurfaceFormat_pixelFormat(const QVideoSurfaceFormat* self);
+int QVideoSurfaceFormat_handleType(const QVideoSurfaceFormat* self);
+QSize* QVideoSurfaceFormat_frameSize(const QVideoSurfaceFormat* self);
+void QVideoSurfaceFormat_setFrameSize(QVideoSurfaceFormat* self, QSize* size);
+void QVideoSurfaceFormat_setFrameSize2(QVideoSurfaceFormat* self, int width, int height);
+int QVideoSurfaceFormat_frameWidth(const QVideoSurfaceFormat* self);
+int QVideoSurfaceFormat_frameHeight(const QVideoSurfaceFormat* self);
+QRect* QVideoSurfaceFormat_viewport(const QVideoSurfaceFormat* self);
+void QVideoSurfaceFormat_setViewport(QVideoSurfaceFormat* self, QRect* viewport);
+int QVideoSurfaceFormat_scanLineDirection(const QVideoSurfaceFormat* self);
+void QVideoSurfaceFormat_setScanLineDirection(QVideoSurfaceFormat* self, int direction);
+double QVideoSurfaceFormat_frameRate(const QVideoSurfaceFormat* self);
+void QVideoSurfaceFormat_setFrameRate(QVideoSurfaceFormat* self, double rate);
+QSize* QVideoSurfaceFormat_pixelAspectRatio(const QVideoSurfaceFormat* self);
+void QVideoSurfaceFormat_setPixelAspectRatio(QVideoSurfaceFormat* self, QSize* ratio);
+void QVideoSurfaceFormat_setPixelAspectRatio2(QVideoSurfaceFormat* self, int width, int height);
+int QVideoSurfaceFormat_yCbCrColorSpace(const QVideoSurfaceFormat* self);
+void QVideoSurfaceFormat_setYCbCrColorSpace(QVideoSurfaceFormat* self, int colorSpace);
+bool QVideoSurfaceFormat_isMirrored(const QVideoSurfaceFormat* self);
+void QVideoSurfaceFormat_setMirrored(QVideoSurfaceFormat* self, bool mirrored);
+QSize* QVideoSurfaceFormat_sizeHint(const QVideoSurfaceFormat* self);
+struct miqt_array /* of struct miqt_string */  QVideoSurfaceFormat_propertyNames(const QVideoSurfaceFormat* self);
+QVariant* QVideoSurfaceFormat_property(const QVideoSurfaceFormat* self, const char* name);
+void QVideoSurfaceFormat_setProperty(QVideoSurfaceFormat* self, const char* name, QVariant* value);
+void QVideoSurfaceFormat_delete(QVideoSurfaceFormat* self);
 
 #ifdef __cplusplus
 } /* extern C */
-#endif 
+#endif
 
 #endif
