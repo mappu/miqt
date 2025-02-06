@@ -410,7 +410,7 @@ type CppClass struct {
 	PrivateMethods []string
 }
 
-// Virtual checks if the class has any virtual methods. This requires global
+// VirtualMethods checks if the class has any virtual methods. This requires global
 // state knowledge as virtual methods might have been inherited.
 // C++ constructors cannot be virtual.
 func (c *CppClass) VirtualMethods() []CppMethod {
