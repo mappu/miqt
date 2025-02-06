@@ -22,6 +22,7 @@ func main() {
 	packageName := flag.String("Package", "main", "Package to use in generated Go files")
 	variableName := flag.String("VariableName", "_resourceRcc", "Temporary global variable name for loading embedded data")
 	useQt6 := flag.Bool("Qt6", false, "Use Qt 6 instead of Qt 5")
+	rccBinary := flag.String("RccBinary", "rcc", "(Optional) Custom path to the Qt rcc program")
 	flag.Parse()
 
 	// Check if input file exists
@@ -43,7 +44,7 @@ func main() {
 
 	// Compile qrc to binary resource file
 
-	rccCmd := exec.Command(`rcc`, `--binary`, `-o`, *outputRcc, *input)
+	rccCmd := exec.Command(*rccBinary, `--binary`, `-o`, *outputRcc, *input)
 	rccCmd.Stderr = os.Stderr
 	rccCmd.Stdout = os.Stdout
 	err := rccCmd.Run()
