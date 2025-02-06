@@ -62,6 +62,10 @@ func cabiVirtualBaseName(c CppClass, m CppMethod) string {
 	return cabiClassName(c.ClassName) + `_virtualbase_` + m.SafeMethodName()
 }
 
+func cabiProtectedBaseName(c CppClass, m CppMethod) string {
+	return cabiClassName(c.ClassName) + `_protectedbase_` + m.SafeMethodName()
+}
+
 func cabiOverrideVirtualName(c CppClass, m CppMethod) string {
 	return cabiClassName(c.ClassName) + `_override_virtual_` + m.SafeMethodName()
 }
@@ -600,9 +604,49 @@ func getCppZeroValue(p CppParameter) string {
 		return "0"
 	} else if p.ParameterType == "bool" {
 		return "false"
+	} else if p.ParameterType == "void" {
+		return ""
 	} else {
 		return p.RenderTypeQtCpp() + "()"
 	}
+}
+
+func getCabiZeroValue(p CppParameter) string {
+	// n.b. Identical to getCppZeroValue in most cases
+
+	if p.Pointer {
+		return getCppZeroValue(p)
+	} else if p.IsKnownEnum() {
+		return getCppZeroValue(p)
+	} else if p.IntType() {
+		return getCppZeroValue(p)
+	} else if p.ParameterType == "bool" {
+		return getCppZeroValue(p)
+	} else if p.ParameterType == "void" {
+		return getCppZeroValue(p)
+
+	} else if p.ParameterType == "QString" || p.ParameterType == "QByteArray" {
+		return "(struct miqt_string){}"
+
+	} else if _, ok := p.QListOf(); ok {
+		return "(struct miqt_array){}"
+
+	} else if _, ok := p.QSetOf(); ok {
+		return "(struct miqt_array){}"
+
+	} else if _, _, ok := p.QMapOf(); ok {
+		return "(struct miqt_map){}"
+
+	} else if _, _, ok := p.QPairOf(); ok {
+		return "(struct miqt_map){}"
+
+	} else {
+		// Difference for Qt classes: Qt C++ can expect to return them by value,
+		// but CABI always needs to return them by pointer
+
+		return "nullptr"
+	}
+
 }
 
 // getReferencedTypes finds all referenced Qt types in this file.
@@ -651,6 +695,12 @@ func getReferencedTypes(src *CppParsedHeader) []string {
 			maybeAddType(m.ReturnType)
 		}
 		for _, vm := range c.VirtualMethods() {
+			for _, p := range vm.Parameters {
+				maybeAddType(p)
+			}
+			maybeAddType(vm.ReturnType)
+		}
+		for _, vm := range c.ProtectedMethods() {
 			for _, p := range vm.Parameters {
 				maybeAddType(p)
 			}
@@ -773,6 +823,8 @@ extern "C" {
 	for _, c := range src.Classes {
 
 		className := cabiClassName(c.ClassName)
+		virtualMethods := c.VirtualMethods()
+		protectedMethods := c.ProtectedMethods()
 
 		for i, ctor := range c.Ctors {
 			ret.WriteString(fmt.Sprintf("%s* %s(%s);\n", className, cabiNewName(c, i), emitParametersCabiConstructor(&c, &ctor)))
@@ -789,6 +841,10 @@ extern "C" {
 		}
 
 		for _, m := range c.Methods {
+			if m.IsProtected && !m.IsVirtual {
+				continue // Can't call directly, have to go through our wrapper
+			}
+
 			ret.WriteString(fmt.Sprintf("%s %s(%s);\n", m.ReturnType.RenderTypeCabi(), cabiMethodName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+className+"*")))
 
 			if m.IsSignal {
@@ -796,10 +852,16 @@ extern "C" {
 			}
 		}
 
-		for _, m := range c.VirtualMethods() {
+		for _, m := range virtualMethods {
 			ret.WriteString(fmt.Sprintf("bool %s(%s* self, intptr_t slot);\n", cabiOverrideVirtualName(c, m), "void" /*methodPrefixName*/))
 
 			ret.WriteString(fmt.Sprintf("%s %s(%s);\n", m.ReturnType.RenderTypeCabi(), cabiVirtualBaseName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+"void" /*className*/ +"*")))
+		}
+
+		if len(virtualMethods) > 0 {
+			for _, m := range protectedMethods {
+				ret.WriteString(fmt.Sprintf("%s %s(bool* _dynamic_cast_ok, %s);\n", m.ReturnType.RenderTypeCabi(), cabiProtectedBaseName(c, m), emitParametersCabi(m, ifv(m.IsConst, "const ", "")+"void" /*className*/ +"*")))
+			}
 		}
 
 		// delete
@@ -908,6 +970,7 @@ extern "C" {
 		methodPrefixName := cabiClassName(c.ClassName)
 		cppClassName := c.ClassName
 		virtualMethods := c.VirtualMethods()
+		protectedMethods := c.ProtectedMethods()
 
 		if len(virtualMethods) > 0 {
 
@@ -1035,6 +1098,21 @@ extern "C" {
 					)
 
 				}
+			}
+
+			if len(protectedMethods) > 0 {
+				ret.WriteString("\t// Wrappers to allow calling protected methods:\n")
+			}
+
+			for _, m := range protectedMethods {
+
+				// The protectedbase wrapper needs to take CABI parameters, not
+				// real Qt parameters, in case there are protected enum types
+				// (e.g. QAbstractItemView::CursorAction)
+
+				ret.WriteString(
+					"\tfriend " + m.ReturnType.RenderTypeCabi() + " " + cabiProtectedBaseName(c, m) + "(bool* _dynamic_cast_ok, " + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+"void*") + ");\n",
+				)
 			}
 
 			ret.WriteString(
@@ -1260,6 +1338,36 @@ extern "C" {
 
 			}
 
+		}
+
+		if len(virtualMethods) > 0 {
+			// This is a subclassed class. In that case, we allow calling
+			// protected methods
+			// This is a standalone function, but it can access the protected
+			// method via a friend declaration
+
+			for _, m := range protectedMethods {
+
+				vbpreamble, vbforwarding := emitParametersCABI2CppForwarding(m.Parameters, "\t\t")
+				vbCallTarget := "self_cast->" + m.CppCallTarget() + "(" + vbforwarding + ")"
+
+				ret.WriteString(
+					m.ReturnType.RenderTypeCabi() + " " + cabiProtectedBaseName(c, m) + "(bool* _dynamic_cast_ok, " + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+"void*") + ") {\n" +
+
+						"\t" + cppClassName + "* self_cast = dynamic_cast<" + cppClassName + "*>( (" + cabiClassName(c.ClassName) + "*)(self) );\n" +
+						"\tif (self_cast == nullptr) {\n" +
+						"\t\t*_dynamic_cast_ok = false;\n" +
+						"\t\treturn " + getCabiZeroValue(m.ReturnType) + ";\n" +
+						"\t}\n" +
+						"\t\n" +
+						"\t*_dynamic_cast_ok = true;\n" +
+						"\t" + vbpreamble + "\n" +
+						emitAssignCppToCabi("\treturn ", m.ReturnType, vbCallTarget) + "\n" +
+						"}\n" +
+						"\n",
+				)
+
+			}
 		}
 
 		// Delete

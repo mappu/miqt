@@ -516,13 +516,25 @@ func (c *CppClass) ProtectedMethods() []CppMethod {
 	var block = slice_to_set(c.PrivateMethods)
 
 	for _, m := range c.Methods {
+
+		// A public method with the same name blocks-out any protected methods
+		// with the same name (even if the signature is different).
+		// e.g.
+		// QTextList::setFormat(const QTextListFormat&) [PUBLIC] inherits
+		// QTextBlockGroup inherits
+		// QTextObject::setFormat(const QTextFormat&) [PROTECTED]
+		// FIXME support selecting the parent overload(?)
+
 		if !m.IsProtected {
+			block[m.MethodName] = struct{}{}
 			continue
 		}
 		if m.IsVirtual {
+			block[m.MethodName] = struct{}{}
 			continue
 		}
 		if m.IsSignal {
+			block[m.MethodName] = struct{}{}
 			continue
 		}
 
@@ -535,6 +547,7 @@ func (c *CppClass) ProtectedMethods() []CppMethod {
 	}
 
 	for _, cinfo := range c.AllInheritsClassInfo() {
+
 		for _, m := range cinfo.Class.Methods {
 			if !m.IsProtected {
 				continue
@@ -582,6 +595,7 @@ func (c *CppClass) ProtectedMethods() []CppMethod {
 }
 
 // AllInheritsClassInfo recursively finds and lists all the parent classes of this class.
+// It returns closest-ancestor-first.
 func (c *CppClass) AllInheritsClassInfo() []lookupResultClass {
 	var ret []lookupResultClass
 

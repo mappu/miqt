@@ -988,6 +988,43 @@ import "C"
 			}
 		}
 
+		if len(c.VirtualMethods()) > 0 {
+			// We only do protected methods if we are subclassing, and we only subclass if there are virtuals
+			// FIXME should we subclass in either case...?
+			for _, m := range c.ProtectedMethods() {
+
+				preamble, forwarding := gfs.emitParametersGo2CABIForwarding(m)
+
+				forwarding = "unsafe.Pointer(this.h)" + strings.TrimPrefix(forwarding, `this.h`) // TODO integrate properly
+
+				returnTypeDecl := m.ReturnType.renderReturnTypeGo(&gfs)
+
+				gfs.imports["unsafe"] = struct{}{}
+
+				ret.WriteString(`
+			// ` + m.goMethodName() + ` can only be called from a ` + goClassName + ` that was directly constructed.
+			func (this *` + goClassName + `) ` + m.goMethodName() + ` (` + gfs.emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
+				` + preamble + `
+				var _dynamic_cast_ok C.bool = false
+				` + gfs.emitCabiToGo("_ret := ", m.ReturnType, `C.`+cabiProtectedBaseName(c, m)+`(&_dynamic_cast_ok, `+forwarding+`)`) + `
+				if !_dynamic_cast_ok {
+					panic("miqt: can only call protected methods for directly constructed types")
+				}
+				`)
+
+				if !m.ReturnType.Void() {
+					ret.WriteString(`
+					return _ret
+				`)
+				}
+
+				ret.WriteString(`
+				}
+				`)
+
+			}
+		}
+
 		for _, m := range c.VirtualMethods() {
 			gfs.imports["unsafe"] = struct{}{}
 			gfs.imports["runtime/cgo"] = struct{}{}
@@ -1008,7 +1045,7 @@ import "C"
 					` + preamble + `
 					` + gfs.emitCabiToGo("return ", m.ReturnType, `C.`+cabiVirtualBaseName(c, m)+`(`+forwarding+`)`) + `
 				}
-			`)
+				`)
 
 			}
 
