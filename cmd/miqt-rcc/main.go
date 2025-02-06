@@ -21,6 +21,7 @@ func main() {
 	outputGo := flag.String("OutputGo", "", "(Optional) Path to .go output file. If omitted, interred from the input file path")
 	packageName := flag.String("Package", "main", "Package to use in generated Go files")
 	variableName := flag.String("VariableName", "_resourceRcc", "Temporary global variable name for loading embedded data")
+	useQt6 := flag.Bool("Qt6", false, "Use Qt 6 instead of Qt 5")
 	flag.Parse()
 
 	// Check if input file exists
@@ -52,6 +53,11 @@ func main() {
 
 	//  Create Go file that loads the resource
 
+	miqtImport := `"github.com/mappu/miqt/qt"`
+	if *useQt6 {
+		miqtImport = `qt "github.com/mappu/miqt/qt6"`
+	}
+
 	goSrcData := `
 package ` + *packageName + `
 
@@ -60,7 +66,7 @@ package ` + *packageName + `
 import (
 	"embed"
 	
-	"github.com/mappu/miqt/qt"
+	` + miqtImport + `
 )
 
 //go:embed ` + *outputRcc + `
