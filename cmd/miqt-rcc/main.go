@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strings"
 )
 
@@ -41,12 +42,19 @@ func RccExec() error {
 		*outputRcc = strings.TrimSuffix(*outputGo, `.go`) + `.rcc`
 	}
 
+	// The rcc output path must be relative to the output go file path
+
+	embedPath, err := filepath.Rel(filepath.Dir(*outputGo), *outputRcc)
+	if err != nil {
+		return err
+	}
+
 	// Compile qrc to binary resource file
 
 	rccCmd := exec.Command(*rccBinary, `--binary`, `-o`, *outputRcc, *input)
 	rccCmd.Stderr = os.Stderr
 	rccCmd.Stdout = os.Stdout
-	err := rccCmd.Run()
+	err = rccCmd.Run()
 	if err != nil {
 		return err
 	}
@@ -69,7 +77,7 @@ import (
 	` + miqtImport + `
 )
 
-//go:embed ` + *outputRcc + `
+//go:embed ` + embedPath + `
 var ` + *variableName + ` []byte
 
 func init() {
