@@ -12,7 +12,7 @@ import (
 	"strings"
 )
 
-func main() {
+func RccExec() error {
 
 	// Parse arguments
 
@@ -28,8 +28,7 @@ func main() {
 	// Check if input file exists
 
 	if _, err := os.Stat(*input); os.IsNotExist(err) {
-		fmt.Fprintf(os.Stderr, "Input file '%s' not found\n", *input)
-		os.Exit(1)
+		return fmt.Errorf("Input file '%s' not found\n", *input)
 	}
 
 	// Fill in default output names, if not specified
@@ -49,8 +48,7 @@ func main() {
 	rccCmd.Stdout = os.Stdout
 	err := rccCmd.Run()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "rcc: %s\n", err.Error())
-		os.Exit(1)
+		return err
 	}
 
 	//  Create Go file that loads the resource
@@ -83,12 +81,21 @@ func init() {
 
 	outputData, err := format.Source([]byte(goSrcData))
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	err = ioutil.WriteFile(*outputGo, outputData, 0644)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Writing to '%s': %s\n", *outputGo, err.Error())
+		return fmt.Errorf("Writing to '%s': %w", *outputGo, err)
+	}
+
+	return nil
+}
+
+func main() {
+	err := RccExec()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "rcc: %s\n", err.Error())
 		os.Exit(1)
 	}
 
