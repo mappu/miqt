@@ -10,7 +10,15 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strconv"
 	"strings"
+)
+
+const (
+	DefaultPackageName  string = "main"
+	DefaultVariableName string = "_resourceRcc"
+	DefaultIsQt6        bool   = false
+	DefaultRccBinary    string = "rcc"
 )
 
 func RccExec() error {
@@ -20,10 +28,10 @@ func RccExec() error {
 	input := flag.String("Input", "", "Path to .qrc input file")
 	outputGo := flag.String("OutputGo", "", "(Optional) Path to .go output file. If omitted, interred from the input file path")
 	outputRcc := flag.String("OutputRcc", "", "(Optional) Path to .rcc output file. If omitted, inferred from the output Go file path")
-	packageName := flag.String("Package", "main", "Package to use in generated Go files")
-	variableName := flag.String("VariableName", "_resourceRcc", "Temporary global variable name for loading embedded data")
-	useQt6 := flag.Bool("Qt6", false, "Use Qt 6 instead of Qt 5")
-	rccBinary := flag.String("RccBinary", "rcc", "(Optional) Custom path to the Qt rcc program")
+	packageName := flag.String("Package", DefaultPackageName, "Package to use in generated Go files")
+	variableName := flag.String("VariableName", DefaultVariableName, "Temporary global variable name for loading embedded data")
+	useQt6 := flag.Bool("Qt6", DefaultIsQt6, "Use Qt 6 instead of Qt 5")
+	rccBinary := flag.String("RccBinary", DefaultRccBinary, "(Optional) Custom path to the Qt rcc program")
 	flag.Parse()
 
 	// Check if input file exists
@@ -59,17 +67,38 @@ func RccExec() error {
 		return err
 	}
 
-	//  Create Go file that loads the resource
+	// Figure out import statement
 
 	miqtImport := `"github.com/mappu/miqt/qt"`
 	if *useQt6 {
 		miqtImport = `qt "github.com/mappu/miqt/qt6"`
 	}
 
+	// Figure out regeneration command
+
+	generate := `miqt-rcc` +
+		` -Input ` + strconv.Quote(*input) +
+		` -OutputGo ` + strconv.Quote(filepath.Base(*outputGo)) +
+		` -OutputRcc ` + strconv.Quote(embedPath)
+	if *packageName != DefaultPackageName {
+		generate += ` -Package ` + strconv.Quote(*packageName)
+	}
+	if *variableName != DefaultVariableName {
+		generate += ` -Variable ` + strconv.Quote(*variableName)
+	}
+	if *useQt6 != DefaultIsQt6 {
+		generate += ` -Qt6`
+	}
+	if *rccBinary != DefaultRccBinary {
+		generate += ` -RccBinary ` + strconv.Quote(*rccBinary)
+	}
+
+	// Create Go file that loads the resource
+
 	goSrcData := `
 package ` + *packageName + `
 
-//go:generate miqt-rcc "` + strings.Join(os.Args[1:], `" "`) + `"
+//go:generate ` + generate + `
 
 import (
 	"embed"
