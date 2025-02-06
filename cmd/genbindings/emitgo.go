@@ -173,13 +173,13 @@ func (p CppParameter) RenderTypeGo(gfs *goFileState) string {
 	return ret // ignore const
 }
 
-func (p CppParameter) renderReturnTypeGo(gfs *goFileState) string {
+func (p CppParameter) renderReturnTypeGo(gfs *goFileState, indirection bool) string {
 	ret := p.RenderTypeGo(gfs)
 	if ret == "void" {
 		ret = ""
 	}
 
-	if p.QtClassType() && p.ParameterType != "QString" && p.ParameterType != "QByteArray" && !(p.Pointer || p.ByRef) {
+	if indirection && p.QtClassType() && p.ParameterType != "QString" && p.ParameterType != "QByteArray" && !(p.Pointer || p.ByRef) {
 		// FIXME normalize this part
 		ret = "*" + ret
 	}
@@ -921,7 +921,7 @@ import "C"
 
 			preamble, forwarding := gfs.emitParametersGo2CABIForwarding(m)
 
-			returnTypeDecl := m.ReturnType.renderReturnTypeGo(&gfs)
+			returnTypeDecl := m.ReturnType.renderReturnTypeGo(&gfs, true)
 
 			rvalue := `C.` + cabiMethodName(c, m) + `(` + forwarding + `)`
 
@@ -997,7 +997,7 @@ import "C"
 
 				forwarding = "unsafe.Pointer(this.h)" + strings.TrimPrefix(forwarding, `this.h`) // TODO integrate properly
 
-				returnTypeDecl := m.ReturnType.renderReturnTypeGo(&gfs)
+				returnTypeDecl := m.ReturnType.renderReturnTypeGo(&gfs, false)
 
 				gfs.imports["unsafe"] = struct{}{}
 
@@ -1006,7 +1006,7 @@ import "C"
 			func (this *` + goClassName + `) ` + m.goMethodName() + ` (` + gfs.emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
 				` + preamble + `
 				var _dynamic_cast_ok C.bool = false
-				` + gfs.emitCabiToGo("_ret := ", m.ReturnType, `C.`+cabiProtectedBaseName(c, m)+`(&_dynamic_cast_ok, `+forwarding+`)`) + `
+				` + gfs.emitCabiToGo("_method_ret := ", m.ReturnType, `C.`+cabiProtectedBaseName(c, m)+`(&_dynamic_cast_ok, `+forwarding+`)`) + `
 				if !_dynamic_cast_ok {
 					panic("miqt: can only call protected methods for directly constructed types")
 				}
@@ -1014,7 +1014,7 @@ import "C"
 
 				if !m.ReturnType.Void() {
 					ret.WriteString(`
-					return _ret
+					return _method_ret
 				`)
 				}
 
@@ -1038,7 +1038,7 @@ import "C"
 
 				forwarding = "unsafe.Pointer(this.h)" + strings.TrimPrefix(forwarding, `this.h`) // TODO integrate properly
 
-				returnTypeDecl := m.ReturnType.renderReturnTypeGo(&gfs)
+				returnTypeDecl := m.ReturnType.renderReturnTypeGo(&gfs, true)
 
 				ret.WriteString(`
 				func (this *` + goClassName + `) callVirtualBase_` + m.goMethodName() + `(` + gfs.emitParametersGo(m.Parameters) + `) ` + returnTypeDecl + ` {
@@ -1077,7 +1077,7 @@ import "C"
 					cabiReturnType = ""
 				}
 
-				superCbType := `func(` + gfs.emitParametersGo(m.Parameters) + `) ` + m.ReturnType.renderReturnTypeGo(&gfs)
+				superCbType := `func(` + gfs.emitParametersGo(m.Parameters) + `) ` + m.ReturnType.renderReturnTypeGo(&gfs, true)
 
 				goCbType := `func(`
 				if !m.IsPureVirtual {
@@ -1087,7 +1087,7 @@ import "C"
 					}
 				}
 				goCbType += gfs.emitParametersGo(m.Parameters)
-				goCbType += `) ` + m.ReturnType.renderReturnTypeGo(&gfs)
+				goCbType += `) ` + m.ReturnType.renderReturnTypeGo(&gfs, true)
 				callbackName := cabiCallbackName(c, m)
 				ret.WriteString(`func (this *` + goClassName + `) On` + m.goMethodName() + `(slot ` + goCbType + `) {
 					ok := C.` + cabiOverrideVirtualName(c, m) + `(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)) )
