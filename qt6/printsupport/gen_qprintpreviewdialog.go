@@ -160,6 +160,140 @@ func QPrintPreviewDialog_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+// AdjustPosition can only be called from a QPrintPreviewDialog that was directly constructed.
+func (this *QPrintPreviewDialog) AdjustPosition(param1 *qt6.QWidget) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QPrintPreviewDialog_protectedbase_adjustPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QWidget)(param1.UnsafePointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// UpdateMicroFocus can only be called from a QPrintPreviewDialog that was directly constructed.
+func (this *QPrintPreviewDialog) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QPrintPreviewDialog_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QPrintPreviewDialog that was directly constructed.
+func (this *QPrintPreviewDialog) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QPrintPreviewDialog_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QPrintPreviewDialog that was directly constructed.
+func (this *QPrintPreviewDialog) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QPrintPreviewDialog_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QPrintPreviewDialog that was directly constructed.
+func (this *QPrintPreviewDialog) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QPrintPreviewDialog_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QPrintPreviewDialog that was directly constructed.
+func (this *QPrintPreviewDialog) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QPrintPreviewDialog_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QPrintPreviewDialog that was directly constructed.
+func (this *QPrintPreviewDialog) Sender() *qt6.QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := qt6.UnsafeNewQObject(unsafe.Pointer(C.QPrintPreviewDialog_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QPrintPreviewDialog that was directly constructed.
+func (this *QPrintPreviewDialog) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QPrintPreviewDialog_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QPrintPreviewDialog that was directly constructed.
+func (this *QPrintPreviewDialog) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QPrintPreviewDialog_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QPrintPreviewDialog that was directly constructed.
+func (this *QPrintPreviewDialog) IsSignalConnected(signal *qt6.QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QPrintPreviewDialog_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QPrintPreviewDialog) callVirtualBase_SetVisible(visible bool) {
 
 	C.QPrintPreviewDialog_virtualbase_setVisible(unsafe.Pointer(this.h), (C.bool)(visible))

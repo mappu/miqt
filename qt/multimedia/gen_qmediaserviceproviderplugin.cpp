@@ -9,6 +9,7 @@
 #include <QMediaServiceProviderPlugin>
 #include <QMediaServiceSupportedDevicesInterface>
 #include <QMediaServiceSupportedFormatsInterface>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>

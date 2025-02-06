@@ -15,6 +15,7 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QEventPoint;
 class QPoint;
 #if defined(WORKAROUND_INNER_CLASS_DEFINITION_QTest__QTouchEventSequence)
 typedef QTest::QTouchEventSequence QTest__QTouchEventSequence;
@@ -23,6 +24,7 @@ class QTest__QTouchEventSequence;
 #endif
 class QWindow;
 #else
+typedef struct QEventPoint QEventPoint;
 typedef struct QPoint QPoint;
 typedef struct QTest__QTouchEventSequence QTest__QTouchEventSequence;
 typedef struct QWindow QWindow;

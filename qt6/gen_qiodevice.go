@@ -436,6 +436,92 @@ func (this *QIODevice) ReadLine1(maxlen int64) []byte {
 	return _ret
 }
 
+// SetOpenMode can only be called from a QIODevice that was directly constructed.
+func (this *QIODevice) SetOpenMode(openMode QIODeviceBase__OpenModeFlag) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QIODevice_protectedbase_setOpenMode(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(openMode))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetErrorString can only be called from a QIODevice that was directly constructed.
+func (this *QIODevice) SetErrorString(errorString string) {
+	errorString_ms := C.struct_miqt_string{}
+	errorString_ms.data = C.CString(errorString)
+	errorString_ms.len = C.size_t(len(errorString))
+	defer C.free(unsafe.Pointer(errorString_ms.data))
+
+	var _dynamic_cast_ok C.bool = false
+	C.QIODevice_protectedbase_setErrorString(&_dynamic_cast_ok, unsafe.Pointer(this.h), errorString_ms)
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Sender can only be called from a QIODevice that was directly constructed.
+func (this *QIODevice) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QIODevice_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QIODevice that was directly constructed.
+func (this *QIODevice) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QIODevice_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QIODevice that was directly constructed.
+func (this *QIODevice) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QIODevice_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QIODevice that was directly constructed.
+func (this *QIODevice) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QIODevice_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QIODevice) callVirtualBase_IsSequential() bool {
 
 	return (bool)(C.QIODevice_virtualbase_isSequential(unsafe.Pointer(this.h)))

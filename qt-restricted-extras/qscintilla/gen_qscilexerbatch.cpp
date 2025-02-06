@@ -1060,6 +1060,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QsciLexerBatch_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciLexerBatch_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciLexerBatch_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QsciLexerBatch_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QsciLexerBatch* QsciLexerBatch_new() {
@@ -1759,6 +1764,58 @@ bool QsciLexerBatch_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QsciLexerBatch_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciLexerBatch*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QsciLexerBatch_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciLexerBatch* self_cast = dynamic_cast<MiqtVirtualQsciLexerBatch*>( (QsciLexerBatch*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QsciLexerBatch_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciLexerBatch* self_cast = dynamic_cast<MiqtVirtualQsciLexerBatch*>( (QsciLexerBatch*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QsciLexerBatch_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQsciLexerBatch* self_cast = dynamic_cast<MiqtVirtualQsciLexerBatch*>( (QsciLexerBatch*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QsciLexerBatch_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQsciLexerBatch* self_cast = dynamic_cast<MiqtVirtualQsciLexerBatch*>( (QsciLexerBatch*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QsciLexerBatch_delete(QsciLexerBatch* self) {

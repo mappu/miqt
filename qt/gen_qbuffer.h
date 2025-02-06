@@ -107,6 +107,12 @@ bool QBuffer_override_virtual_childEvent(void* self, intptr_t slot);
 void QBuffer_virtualbase_childEvent(void* self, QChildEvent* event);
 bool QBuffer_override_virtual_customEvent(void* self, intptr_t slot);
 void QBuffer_virtualbase_customEvent(void* self, QEvent* event);
+void QBuffer_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode);
+void QBuffer_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString);
+QObject* QBuffer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QBuffer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QBuffer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QBuffer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QBuffer_delete(QBuffer* self);
 
 #ifdef __cplusplus

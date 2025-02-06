@@ -15,6 +15,7 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QPageLayout;
 class QPagedPaintDevice;
 #if defined(WORKAROUND_INNER_CLASS_DEFINITION_QPagedPaintDevice__Margins)
 typedef QPagedPaintDevice::Margins QPagedPaintDevice__Margins;
@@ -32,6 +33,7 @@ class QRect;
 class QRectF;
 class QSizeF;
 #else
+typedef struct QPageLayout QPageLayout;
 typedef struct QPagedPaintDevice QPagedPaintDevice;
 typedef struct QPagedPaintDevice__Margins QPagedPaintDevice__Margins;
 typedef struct QPaintDevice QPaintDevice;
@@ -145,6 +147,8 @@ bool QPrinter_override_virtual_redirected(void* self, intptr_t slot);
 QPaintDevice* QPrinter_virtualbase_redirected(const void* self, QPoint* offset);
 bool QPrinter_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QPrinter_virtualbase_sharedPainter(const void* self);
+void QPrinter_protectedbase_setEngines(bool* _dynamic_cast_ok, void* self, QPrintEngine* printEngine, QPaintEngine* paintEngine);
+QPageLayout* QPrinter_protectedbase_devicePageLayout(bool* _dynamic_cast_ok, const void* self);
 void QPrinter_delete(QPrinter* self);
 
 #ifdef __cplusplus

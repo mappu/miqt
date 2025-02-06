@@ -23,6 +23,7 @@ class QPropertyObserver;
 class QPropertyObserverBase;
 class QUntypedBindable;
 class QUntypedPropertyBinding;
+class QUntypedPropertyData;
 #else
 typedef struct QMetaType QMetaType;
 typedef struct QPropertyBindingError QPropertyBindingError;
@@ -32,6 +33,7 @@ typedef struct QPropertyObserver QPropertyObserver;
 typedef struct QPropertyObserverBase QPropertyObserverBase;
 typedef struct QUntypedBindable QUntypedBindable;
 typedef struct QUntypedPropertyBinding QUntypedPropertyBinding;
+typedef struct QUntypedPropertyData QUntypedPropertyData;
 #endif
 
 QPropertyBindingSourceLocation* QPropertyBindingSourceLocation_new();

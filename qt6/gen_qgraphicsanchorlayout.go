@@ -233,6 +233,42 @@ func (this *QGraphicsAnchorLayout) AddAnchors3(firstItem *QGraphicsLayoutItem, s
 	C.QGraphicsAnchorLayout_addAnchors3(this.h, firstItem.cPointer(), secondItem.cPointer(), (C.int)(orientations))
 }
 
+// AddChildLayoutItem can only be called from a QGraphicsAnchorLayout that was directly constructed.
+func (this *QGraphicsAnchorLayout) AddChildLayoutItem(layoutItem *QGraphicsLayoutItem) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsAnchorLayout_protectedbase_addChildLayoutItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), layoutItem.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetGraphicsItem can only be called from a QGraphicsAnchorLayout that was directly constructed.
+func (this *QGraphicsAnchorLayout) SetGraphicsItem(item *QGraphicsItem) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsAnchorLayout_protectedbase_setGraphicsItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), item.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetOwnedByLayout can only be called from a QGraphicsAnchorLayout that was directly constructed.
+func (this *QGraphicsAnchorLayout) SetOwnedByLayout(ownedByLayout bool) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsAnchorLayout_protectedbase_setOwnedByLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(ownedByLayout))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
 func (this *QGraphicsAnchorLayout) callVirtualBase_RemoveAt(index int) {
 
 	C.QGraphicsAnchorLayout_virtualbase_removeAt(unsafe.Pointer(this.h), (C.int)(index))

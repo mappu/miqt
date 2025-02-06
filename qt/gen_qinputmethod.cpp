@@ -1,5 +1,6 @@
 #include <QInputMethod>
 #include <QLocale>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QRectF>

@@ -334,6 +334,8 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QPrinter_protectedbase_setEngines(bool* _dynamic_cast_ok, void* self, QPrintEngine* printEngine, QPaintEngine* paintEngine);
 };
 
 QPrinter* QPrinter_new() {
@@ -787,6 +789,19 @@ bool QPrinter_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QPrinter_virtualbase_sharedPainter(const void* self) {
 	return ( (const MiqtVirtualQPrinter*)(self) )->virtualbase_sharedPainter();
+}
+
+void QPrinter_protectedbase_setEngines(bool* _dynamic_cast_ok, void* self, QPrintEngine* printEngine, QPaintEngine* paintEngine) {
+	MiqtVirtualQPrinter* self_cast = dynamic_cast<MiqtVirtualQPrinter*>( (QPrinter*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setEngines(printEngine, paintEngine);
+
 }
 
 void QPrinter_delete(QPrinter* self) {

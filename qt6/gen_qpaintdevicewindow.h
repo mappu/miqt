@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QEvent;
 class QExposeEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPaintDevice;
@@ -29,6 +30,7 @@ class QWindow;
 #else
 typedef struct QEvent QEvent;
 typedef struct QExposeEvent QExposeEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPaintDevice QPaintDevice;

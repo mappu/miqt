@@ -257,6 +257,17 @@ bool QGraphicsProxyWidget_override_virtual_extension(void* self, intptr_t slot);
 QVariant* QGraphicsProxyWidget_virtualbase_extension(const void* self, QVariant* variant);
 bool QGraphicsProxyWidget_override_virtual_isEmpty(void* self, intptr_t slot);
 bool QGraphicsProxyWidget_virtualbase_isEmpty(const void* self);
+QGraphicsProxyWidget* QGraphicsProxyWidget_protectedbase_newProxyWidget(bool* _dynamic_cast_ok, void* self, QWidget* param1);
+void QGraphicsProxyWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+QObject* QGraphicsProxyWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsProxyWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsProxyWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QGraphicsProxyWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
+void QGraphicsProxyWidget_protectedbase_addToIndex(bool* _dynamic_cast_ok, void* self);
+void QGraphicsProxyWidget_protectedbase_removeFromIndex(bool* _dynamic_cast_ok, void* self);
+void QGraphicsProxyWidget_protectedbase_prepareGeometryChange(bool* _dynamic_cast_ok, void* self);
+void QGraphicsProxyWidget_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
+void QGraphicsProxyWidget_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
 void QGraphicsProxyWidget_delete(QGraphicsProxyWidget* self);
 
 #ifdef __cplusplus

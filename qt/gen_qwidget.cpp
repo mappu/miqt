@@ -1263,6 +1263,21 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+	friend void QWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+	friend void QWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+	friend bool QWidget_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+	friend bool QWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+	friend void QWidget_protectedbase_create1(bool* _dynamic_cast_ok, void* self, uintptr_t param1);
+	friend void QWidget_protectedbase_create2(bool* _dynamic_cast_ok, void* self, uintptr_t param1, bool initializeWindow);
+	friend void QWidget_protectedbase_create3(bool* _dynamic_cast_ok, void* self, uintptr_t param1, bool initializeWindow, bool destroyOldWindow);
+	friend void QWidget_protectedbase_destroy1(bool* _dynamic_cast_ok, void* self, bool destroyWindow);
+	friend void QWidget_protectedbase_destroy2(bool* _dynamic_cast_ok, void* self, bool destroyWindow, bool destroySubWindows);
+	friend QObject* QWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QWidget* QWidget_new(QWidget* parent) {
@@ -3251,6 +3266,188 @@ bool QWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWidget*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->updateMicroFocus();
+
+}
+
+void QWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create();
+
+}
+
+void QWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy();
+
+}
+
+bool QWidget_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusNextChild();
+
+}
+
+bool QWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self) {
+	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->focusPreviousChild();
+
+}
+
+void QWidget_protectedbase_create1(bool* _dynamic_cast_ok, void* self, uintptr_t param1) {
+	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create(static_cast<WId>(param1));
+
+}
+
+void QWidget_protectedbase_create2(bool* _dynamic_cast_ok, void* self, uintptr_t param1, bool initializeWindow) {
+	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create(static_cast<WId>(param1), initializeWindow);
+
+}
+
+void QWidget_protectedbase_create3(bool* _dynamic_cast_ok, void* self, uintptr_t param1, bool initializeWindow, bool destroyOldWindow) {
+	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->create(static_cast<WId>(param1), initializeWindow, destroyOldWindow);
+
+}
+
+void QWidget_protectedbase_destroy1(bool* _dynamic_cast_ok, void* self, bool destroyWindow) {
+	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy(destroyWindow);
+
+}
+
+void QWidget_protectedbase_destroy2(bool* _dynamic_cast_ok, void* self, bool destroyWindow, bool destroySubWindows) {
+	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->destroy(destroyWindow, destroySubWindows);
+
+}
+
+QObject* QWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQWidget* self_cast = dynamic_cast<MiqtVirtualQWidget*>( (QWidget*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QWidget_delete(QWidget* self) {

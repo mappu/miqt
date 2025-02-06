@@ -1060,6 +1060,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QsciLexerMatlab_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciLexerMatlab_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciLexerMatlab_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QsciLexerMatlab_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QsciLexerMatlab* QsciLexerMatlab_new() {
@@ -1743,6 +1748,58 @@ bool QsciLexerMatlab_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QsciLexerMatlab_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciLexerMatlab*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QsciLexerMatlab_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciLexerMatlab* self_cast = dynamic_cast<MiqtVirtualQsciLexerMatlab*>( (QsciLexerMatlab*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QsciLexerMatlab_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciLexerMatlab* self_cast = dynamic_cast<MiqtVirtualQsciLexerMatlab*>( (QsciLexerMatlab*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QsciLexerMatlab_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQsciLexerMatlab* self_cast = dynamic_cast<MiqtVirtualQsciLexerMatlab*>( (QsciLexerMatlab*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QsciLexerMatlab_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQsciLexerMatlab* self_cast = dynamic_cast<MiqtVirtualQsciLexerMatlab*>( (QsciLexerMatlab*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QsciLexerMatlab_delete(QsciLexerMatlab* self) {

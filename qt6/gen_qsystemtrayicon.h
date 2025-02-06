@@ -85,6 +85,10 @@ bool QSystemTrayIcon_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSystemTrayIcon_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSystemTrayIcon_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSystemTrayIcon_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QSystemTrayIcon_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QSystemTrayIcon_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QSystemTrayIcon_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QSystemTrayIcon_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QSystemTrayIcon_delete(QSystemTrayIcon* self);
 
 #ifdef __cplusplus

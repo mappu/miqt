@@ -18,6 +18,7 @@ extern "C" {
 class QImageEncoderControl;
 class QImageEncoderSettings;
 class QMediaControl;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QSize;
@@ -25,6 +26,7 @@ class QSize;
 typedef struct QImageEncoderControl QImageEncoderControl;
 typedef struct QImageEncoderSettings QImageEncoderSettings;
 typedef struct QMediaControl QMediaControl;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QSize QSize;

@@ -16,6 +16,7 @@ extern "C" {
 
 #ifdef __cplusplus
 class QEvent;
+class QGraphicsItem;
 class QGraphicsLayout;
 class QGraphicsLayoutItem;
 class QGraphicsLinearLayout;
@@ -23,6 +24,7 @@ class QRectF;
 class QSizeF;
 #else
 typedef struct QEvent QEvent;
+typedef struct QGraphicsItem QGraphicsItem;
 typedef struct QGraphicsLayout QGraphicsLayout;
 typedef struct QGraphicsLayoutItem QGraphicsLayoutItem;
 typedef struct QGraphicsLinearLayout QGraphicsLinearLayout;
@@ -78,6 +80,9 @@ bool QGraphicsLinearLayout_override_virtual_updateGeometry(void* self, intptr_t 
 void QGraphicsLinearLayout_virtualbase_updateGeometry(void* self);
 bool QGraphicsLinearLayout_override_virtual_widgetEvent(void* self, intptr_t slot);
 void QGraphicsLinearLayout_virtualbase_widgetEvent(void* self, QEvent* e);
+void QGraphicsLinearLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem);
+void QGraphicsLinearLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
+void QGraphicsLinearLayout_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
 void QGraphicsLinearLayout_delete(QGraphicsLinearLayout* self);
 
 #ifdef __cplusplus

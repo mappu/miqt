@@ -145,6 +145,172 @@ func QItemDelegate_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+// DrawBackground can only be called from a QItemDelegate that was directly constructed.
+func (this *QItemDelegate) DrawBackground(painter *QPainter, option *QStyleOptionViewItem, index *QModelIndex) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QItemDelegate_protectedbase_drawBackground(&_dynamic_cast_ok, unsafe.Pointer(this.h), painter.cPointer(), option.cPointer(), index.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// DoLayout can only be called from a QItemDelegate that was directly constructed.
+func (this *QItemDelegate) DoLayout(option *QStyleOptionViewItem, checkRect *QRect, iconRect *QRect, textRect *QRect, hint bool) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QItemDelegate_protectedbase_doLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer(), checkRect.cPointer(), iconRect.cPointer(), textRect.cPointer(), (C.bool)(hint))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Rect can only be called from a QItemDelegate that was directly constructed.
+func (this *QItemDelegate) Rect(option *QStyleOptionViewItem, index *QModelIndex, role int) QRect {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRect(C.QItemDelegate_protectedbase_rect(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer(), index.cPointer(), (C.int)(role)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SetOptions can only be called from a QItemDelegate that was directly constructed.
+func (this *QItemDelegate) SetOptions(index *QModelIndex, option *QStyleOptionViewItem) QStyleOptionViewItem {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQStyleOptionViewItem(C.QItemDelegate_protectedbase_setOptions(&_dynamic_cast_ok, unsafe.Pointer(this.h), index.cPointer(), option.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Decoration can only be called from a QItemDelegate that was directly constructed.
+func (this *QItemDelegate) Decoration(option *QStyleOptionViewItem, variant *QVariant) QPixmap {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQPixmap(C.QItemDelegate_protectedbase_decoration(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer(), variant.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// DoCheck can only be called from a QItemDelegate that was directly constructed.
+func (this *QItemDelegate) DoCheck(option *QStyleOptionViewItem, bounding *QRect, variant *QVariant) QRect {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRect(C.QItemDelegate_protectedbase_doCheck(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer(), bounding.cPointer(), variant.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// TextRectangle can only be called from a QItemDelegate that was directly constructed.
+func (this *QItemDelegate) TextRectangle(painter *QPainter, rect *QRect, font *QFont, text string) QRect {
+	text_ms := C.struct_miqt_string{}
+	text_ms.data = C.CString(text)
+	text_ms.len = C.size_t(len(text))
+	defer C.free(unsafe.Pointer(text_ms.data))
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRect(C.QItemDelegate_protectedbase_textRectangle(&_dynamic_cast_ok, unsafe.Pointer(this.h), painter.cPointer(), rect.cPointer(), font.cPointer(), text_ms))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QItemDelegate that was directly constructed.
+func (this *QItemDelegate) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QItemDelegate_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QItemDelegate that was directly constructed.
+func (this *QItemDelegate) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QItemDelegate_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QItemDelegate that was directly constructed.
+func (this *QItemDelegate) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QItemDelegate_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QItemDelegate that was directly constructed.
+func (this *QItemDelegate) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QItemDelegate_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QItemDelegate) callVirtualBase_Paint(painter *QPainter, option *QStyleOptionViewItem, index *QModelIndex) {
 
 	C.QItemDelegate_virtualbase_paint(unsafe.Pointer(this.h), painter.cPointer(), option.cPointer(), index.cPointer())

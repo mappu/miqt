@@ -310,6 +310,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QPauseAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QPauseAnimation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QPauseAnimation_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QPauseAnimation_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QPauseAnimation* QPauseAnimation_new() {
@@ -566,6 +571,58 @@ bool QPauseAnimation_override_virtual_disconnectNotify(void* self, intptr_t slot
 
 void QPauseAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQPauseAnimation*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QPauseAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQPauseAnimation* self_cast = dynamic_cast<MiqtVirtualQPauseAnimation*>( (QPauseAnimation*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QPauseAnimation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQPauseAnimation* self_cast = dynamic_cast<MiqtVirtualQPauseAnimation*>( (QPauseAnimation*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QPauseAnimation_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQPauseAnimation* self_cast = dynamic_cast<MiqtVirtualQPauseAnimation*>( (QPauseAnimation*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QPauseAnimation_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQPauseAnimation* self_cast = dynamic_cast<MiqtVirtualQPauseAnimation*>( (QPauseAnimation*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QPauseAnimation_delete(QPauseAnimation* self) {

@@ -17,7 +17,9 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractItemModel;
 class QAbstractListModel;
+class QDataStream;
 class QDateTime;
+class QMetaMethod;
 class QMetaObject;
 class QModelIndex;
 class QObject;
@@ -29,7 +31,9 @@ class QWebEngineHistoryModel;
 #else
 typedef struct QAbstractItemModel QAbstractItemModel;
 typedef struct QAbstractListModel QAbstractListModel;
+typedef struct QDataStream QDataStream;
 typedef struct QDateTime QDateTime;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QModelIndex QModelIndex;
 typedef struct QObject QObject;

@@ -2,6 +2,7 @@
 #include <QFileDevice>
 #include <QIODevice>
 #include <QIODeviceBase>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>

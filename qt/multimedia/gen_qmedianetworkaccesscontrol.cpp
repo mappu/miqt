@@ -1,6 +1,7 @@
 #include <QList>
 #include <QMediaControl>
 #include <QMediaNetworkAccessControl>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QNetworkConfiguration>
 #include <QObject>

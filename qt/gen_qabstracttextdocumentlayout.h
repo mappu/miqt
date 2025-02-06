@@ -37,6 +37,7 @@ class QPointF;
 class QRectF;
 class QSizeF;
 class QTextBlock;
+class QTextCharFormat;
 class QTextDocument;
 class QTextFormat;
 class QTextFrame;
@@ -58,6 +59,7 @@ typedef struct QPointF QPointF;
 typedef struct QRectF QRectF;
 typedef struct QSizeF QSizeF;
 typedef struct QTextBlock QTextBlock;
+typedef struct QTextCharFormat QTextCharFormat;
 typedef struct QTextDocument QTextDocument;
 typedef struct QTextFormat QTextFormat;
 typedef struct QTextFrame QTextFrame;
@@ -141,6 +143,12 @@ bool QAbstractTextDocumentLayout_override_virtual_connectNotify(void* self, intp
 void QAbstractTextDocumentLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractTextDocumentLayout_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractTextDocumentLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+int QAbstractTextDocumentLayout_protectedbase_formatIndex(bool* _dynamic_cast_ok, void* self, int pos);
+QTextCharFormat* QAbstractTextDocumentLayout_protectedbase_format(bool* _dynamic_cast_ok, void* self, int pos);
+QObject* QAbstractTextDocumentLayout_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QAbstractTextDocumentLayout_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QAbstractTextDocumentLayout_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QAbstractTextDocumentLayout_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QAbstractTextDocumentLayout_delete(QAbstractTextDocumentLayout* self);
 
 QSizeF* QTextObjectInterface_intrinsicSize(QTextObjectInterface* self, QTextDocument* doc, int posInDocument, QTextFormat* format);

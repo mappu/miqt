@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QCameraFocus;
 class QCameraFocusZone;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPointF;
@@ -24,6 +25,7 @@ class QRectF;
 #else
 typedef struct QCameraFocus QCameraFocus;
 typedef struct QCameraFocusZone QCameraFocusZone;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPointF QPointF;

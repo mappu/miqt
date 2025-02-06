@@ -20,6 +20,7 @@ class QMediaContent;
 class QMediaControl;
 class QMediaPlayerControl;
 class QMediaTimeRange;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 #else
@@ -28,6 +29,7 @@ typedef struct QMediaContent QMediaContent;
 typedef struct QMediaControl QMediaControl;
 typedef struct QMediaPlayerControl QMediaPlayerControl;
 typedef struct QMediaTimeRange QMediaTimeRange;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif

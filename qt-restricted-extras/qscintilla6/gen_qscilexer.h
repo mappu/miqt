@@ -190,6 +190,10 @@ bool QsciLexer_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexer_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QsciLexer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QsciLexer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QsciLexer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QsciLexer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QsciLexer_delete(QsciLexer* self);
 
 #ifdef __cplusplus

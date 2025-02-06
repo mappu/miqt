@@ -7,6 +7,7 @@
 #include <QPaintEngine>
 #include <QPainter>
 #include <QPoint>
+#include <QPrintEngine>
 #include <QPrinter>
 #include <QRect>
 #include <qsciprinter.h>
@@ -464,6 +465,8 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QsciPrinter_protectedbase_setEngines(bool* _dynamic_cast_ok, void* self, QPrintEngine* printEngine, QPaintEngine* paintEngine);
 };
 
 QsciPrinter* QsciPrinter_new() {
@@ -743,6 +746,19 @@ bool QsciPrinter_override_virtual_sharedPainter(void* self, intptr_t slot) {
 
 QPainter* QsciPrinter_virtualbase_sharedPainter(const void* self) {
 	return ( (const MiqtVirtualQsciPrinter*)(self) )->virtualbase_sharedPainter();
+}
+
+void QsciPrinter_protectedbase_setEngines(bool* _dynamic_cast_ok, void* self, QPrintEngine* printEngine, QPaintEngine* paintEngine) {
+	MiqtVirtualQsciPrinter* self_cast = dynamic_cast<MiqtVirtualQsciPrinter*>( (QsciPrinter*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setEngines(printEngine, paintEngine);
+
 }
 
 void QsciPrinter_delete(QsciPrinter* self) {

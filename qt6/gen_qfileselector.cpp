@@ -207,6 +207,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QFileSelector_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QFileSelector_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QFileSelector_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QFileSelector_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QFileSelector* QFileSelector_new() {
@@ -425,6 +430,58 @@ bool QFileSelector_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QFileSelector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQFileSelector*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QFileSelector_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQFileSelector* self_cast = dynamic_cast<MiqtVirtualQFileSelector*>( (QFileSelector*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QFileSelector_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQFileSelector* self_cast = dynamic_cast<MiqtVirtualQFileSelector*>( (QFileSelector*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QFileSelector_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQFileSelector* self_cast = dynamic_cast<MiqtVirtualQFileSelector*>( (QFileSelector*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QFileSelector_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQFileSelector* self_cast = dynamic_cast<MiqtVirtualQFileSelector*>( (QFileSelector*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QFileSelector_delete(QFileSelector* self) {

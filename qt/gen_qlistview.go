@@ -358,6 +358,428 @@ func QListView_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+// ResizeContents can only be called from a QListView that was directly constructed.
+func (this *QListView) ResizeContents(width int, height int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_resizeContents(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(width), (C.int)(height))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ContentsSize can only be called from a QListView that was directly constructed.
+func (this *QListView) ContentsSize() QSize {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQSize(C.QListView_protectedbase_contentsSize(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// RectForIndex can only be called from a QListView that was directly constructed.
+func (this *QListView) RectForIndex(index *QModelIndex) QRect {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQRect(C.QListView_protectedbase_rectForIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), index.cPointer()))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SetPositionForIndex can only be called from a QListView that was directly constructed.
+func (this *QListView) SetPositionForIndex(position *QPoint, index *QModelIndex) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_setPositionForIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), position.cPointer(), index.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetHorizontalStepsPerItem can only be called from a QListView that was directly constructed.
+func (this *QListView) SetHorizontalStepsPerItem(steps int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_setHorizontalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(steps))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// HorizontalStepsPerItem can only be called from a QListView that was directly constructed.
+func (this *QListView) HorizontalStepsPerItem() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QListView_protectedbase_horizontalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SetVerticalStepsPerItem can only be called from a QListView that was directly constructed.
+func (this *QListView) SetVerticalStepsPerItem(steps int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_setVerticalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(steps))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// VerticalStepsPerItem can only be called from a QListView that was directly constructed.
+func (this *QListView) VerticalStepsPerItem() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QListView_protectedbase_verticalStepsPerItem(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// State can only be called from a QListView that was directly constructed.
+func (this *QListView) State() QAbstractItemView__State {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (QAbstractItemView__State)(C.QListView_protectedbase_state(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SetState can only be called from a QListView that was directly constructed.
+func (this *QListView) SetState(state QAbstractItemView__State) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_setState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ScheduleDelayedItemsLayout can only be called from a QListView that was directly constructed.
+func (this *QListView) ScheduleDelayedItemsLayout() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_scheduleDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ExecuteDelayedItemsLayout can only be called from a QListView that was directly constructed.
+func (this *QListView) ExecuteDelayedItemsLayout() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_executeDelayedItemsLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetDirtyRegion can only be called from a QListView that was directly constructed.
+func (this *QListView) SetDirtyRegion(region *QRegion) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_setDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), region.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ScrollDirtyRegion can only be called from a QListView that was directly constructed.
+func (this *QListView) ScrollDirtyRegion(dx int, dy int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_scrollDirtyRegion(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(dx), (C.int)(dy))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// DirtyRegionOffset can only be called from a QListView that was directly constructed.
+func (this *QListView) DirtyRegionOffset() QPoint {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQPoint(C.QListView_protectedbase_dirtyRegionOffset(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// StartAutoScroll can only be called from a QListView that was directly constructed.
+func (this *QListView) StartAutoScroll() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_startAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// StopAutoScroll can only be called from a QListView that was directly constructed.
+func (this *QListView) StopAutoScroll() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_stopAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// DoAutoScroll can only be called from a QListView that was directly constructed.
+func (this *QListView) DoAutoScroll() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_doAutoScroll(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// DropIndicatorPosition can only be called from a QListView that was directly constructed.
+func (this *QListView) DropIndicatorPosition() QAbstractItemView__DropIndicatorPosition {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (QAbstractItemView__DropIndicatorPosition)(C.QListView_protectedbase_dropIndicatorPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SetViewportMargins can only be called from a QListView that was directly constructed.
+func (this *QListView) SetViewportMargins(left int, top int, right int, bottom int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_setViewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(left), (C.int)(top), (C.int)(right), (C.int)(bottom))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ViewportMargins can only be called from a QListView that was directly constructed.
+func (this *QListView) ViewportMargins() QMargins {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQMargins(C.QListView_protectedbase_viewportMargins(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// DrawFrame can only be called from a QListView that was directly constructed.
+func (this *QListView) DrawFrame(param1 *QPainter) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// InitStyleOption can only be called from a QListView that was directly constructed.
+func (this *QListView) InitStyleOption(option *QStyleOptionFrame) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// UpdateMicroFocus can only be called from a QListView that was directly constructed.
+func (this *QListView) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QListView that was directly constructed.
+func (this *QListView) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QListView that was directly constructed.
+func (this *QListView) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QListView_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QListView that was directly constructed.
+func (this *QListView) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QListView_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QListView that was directly constructed.
+func (this *QListView) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QListView_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QListView that was directly constructed.
+func (this *QListView) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QListView_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QListView that was directly constructed.
+func (this *QListView) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QListView_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QListView that was directly constructed.
+func (this *QListView) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QListView_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QListView that was directly constructed.
+func (this *QListView) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QListView_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QListView) callVirtualBase_VisualRect(index *QModelIndex) *QRect {
 
 	_goptr := newQRect(C.QListView_virtualbase_visualRect(unsafe.Pointer(this.h), index.cPointer()))

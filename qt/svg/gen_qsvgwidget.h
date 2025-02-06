@@ -196,6 +196,15 @@ bool QSvgWidget_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSvgWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSvgWidget_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSvgWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QSvgWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+void QSvgWidget_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+void QSvgWidget_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+bool QSvgWidget_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+bool QSvgWidget_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+QObject* QSvgWidget_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QSvgWidget_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QSvgWidget_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QSvgWidget_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QSvgWidget_delete(QSvgWidget* self);
 
 #ifdef __cplusplus

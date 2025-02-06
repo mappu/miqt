@@ -1,6 +1,7 @@
 #include <QAction>
 #include <QChildEvent>
 #include <QEvent>
+#include <QList>
 #include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
@@ -255,6 +256,12 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend struct miqt_array /* of QWidget* */  QWidgetAction_protectedbase_createdWidgets(bool* _dynamic_cast_ok, const void* self);
+	friend QObject* QWidgetAction_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QWidgetAction_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QWidgetAction_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QWidgetAction_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QWidgetAction* QWidgetAction_new(QObject* parent) {
@@ -446,6 +453,80 @@ bool QWidgetAction_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QWidgetAction_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+struct miqt_array /* of QWidget* */  QWidgetAction_protectedbase_createdWidgets(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWidgetAction* self_cast = dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return (struct miqt_array){};
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	QList<QWidget *> _ret = self_cast->createdWidgets();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QWidget** _arr = static_cast<QWidget**>(malloc(sizeof(QWidget*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = _ret[i];
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+
+}
+
+QObject* QWidgetAction_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWidgetAction* self_cast = dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QWidgetAction_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWidgetAction* self_cast = dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QWidgetAction_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQWidgetAction* self_cast = dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QWidgetAction_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQWidgetAction* self_cast = dynamic_cast<MiqtVirtualQWidgetAction*>( (QWidgetAction*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QWidgetAction_delete(QWidgetAction* self) {

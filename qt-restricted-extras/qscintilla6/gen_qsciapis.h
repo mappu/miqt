@@ -87,6 +87,10 @@ bool QsciAPIs_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciAPIs_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciAPIs_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciAPIs_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QsciAPIs_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QsciAPIs_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QsciAPIs_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QsciAPIs_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QsciAPIs_delete(QsciAPIs* self);
 
 #ifdef __cplusplus

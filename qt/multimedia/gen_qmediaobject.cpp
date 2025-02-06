@@ -1,6 +1,8 @@
+#include <QByteArray>
 #include <QList>
 #include <QMediaObject>
 #include <QMediaService>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>

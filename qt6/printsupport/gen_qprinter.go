@@ -417,6 +417,18 @@ func (this *QPrinter) PrintRange() QPrinter__PrintRange {
 	return (QPrinter__PrintRange)(C.QPrinter_printRange(this.h))
 }
 
+// SetEngines can only be called from a QPrinter that was directly constructed.
+func (this *QPrinter) SetEngines(printEngine *QPrintEngine, paintEngine *qt6.QPaintEngine) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QPrinter_protectedbase_setEngines(&_dynamic_cast_ok, unsafe.Pointer(this.h), printEngine.cPointer(), (*C.QPaintEngine)(paintEngine.UnsafePointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
 func (this *QPrinter) callVirtualBase_DevType() int {
 
 	return (int)(C.QPrinter_virtualbase_devType(unsafe.Pointer(this.h)))

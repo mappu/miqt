@@ -197,6 +197,15 @@ bool QWebInspector_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWebInspector_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebInspector_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebInspector_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QWebInspector_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+void QWebInspector_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+void QWebInspector_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+bool QWebInspector_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+bool QWebInspector_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+QObject* QWebInspector_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QWebInspector_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QWebInspector_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QWebInspector_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QWebInspector_delete(QWebInspector* self);
 
 #ifdef __cplusplus

@@ -387,6 +387,92 @@ func (this *QFile) Open33(fd int, ioFlags QIODevice__OpenModeFlag, handleFlags Q
 	return (bool)(C.QFile_open33(this.h, (C.int)(fd), (C.int)(ioFlags), (C.int)(handleFlags)))
 }
 
+// SetOpenMode can only be called from a QFile that was directly constructed.
+func (this *QFile) SetOpenMode(openMode QIODevice__OpenModeFlag) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QFile_protectedbase_setOpenMode(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(openMode))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetErrorString can only be called from a QFile that was directly constructed.
+func (this *QFile) SetErrorString(errorString string) {
+	errorString_ms := C.struct_miqt_string{}
+	errorString_ms.data = C.CString(errorString)
+	errorString_ms.len = C.size_t(len(errorString))
+	defer C.free(unsafe.Pointer(errorString_ms.data))
+
+	var _dynamic_cast_ok C.bool = false
+	C.QFile_protectedbase_setErrorString(&_dynamic_cast_ok, unsafe.Pointer(this.h), errorString_ms)
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Sender can only be called from a QFile that was directly constructed.
+func (this *QFile) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QFile_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QFile that was directly constructed.
+func (this *QFile) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QFile_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QFile that was directly constructed.
+func (this *QFile) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QFile_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QFile that was directly constructed.
+func (this *QFile) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QFile_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QFile) callVirtualBase_FileName() string {
 
 	var _ms C.struct_miqt_string = C.QFile_virtualbase_fileName(unsafe.Pointer(this.h))

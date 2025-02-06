@@ -1,5 +1,6 @@
 #include <QCameraExposure>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QPointF>

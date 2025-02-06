@@ -1,5 +1,6 @@
 #include <QClipboard>
 #include <QImage>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QMimeData>
 #include <QObject>

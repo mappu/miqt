@@ -916,6 +916,180 @@ func (this *QSslSocket) WaitForEncrypted1(msecs int) bool {
 	return (bool)(C.QSslSocket_waitForEncrypted1(this.h, (C.int)(msecs)))
 }
 
+// SetSocketState can only be called from a QSslSocket that was directly constructed.
+func (this *QSslSocket) SetSocketState(state QAbstractSocket__SocketState) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSslSocket_protectedbase_setSocketState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(state))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetSocketError can only be called from a QSslSocket that was directly constructed.
+func (this *QSslSocket) SetSocketError(socketError QAbstractSocket__SocketError) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSslSocket_protectedbase_setSocketError(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(socketError))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetLocalPort can only be called from a QSslSocket that was directly constructed.
+func (this *QSslSocket) SetLocalPort(port uint16) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSslSocket_protectedbase_setLocalPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.uint16_t)(port))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetLocalAddress can only be called from a QSslSocket that was directly constructed.
+func (this *QSslSocket) SetLocalAddress(address *QHostAddress) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSslSocket_protectedbase_setLocalAddress(&_dynamic_cast_ok, unsafe.Pointer(this.h), address.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetPeerPort can only be called from a QSslSocket that was directly constructed.
+func (this *QSslSocket) SetPeerPort(port uint16) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSslSocket_protectedbase_setPeerPort(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.uint16_t)(port))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetPeerAddress can only be called from a QSslSocket that was directly constructed.
+func (this *QSslSocket) SetPeerAddress(address *QHostAddress) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSslSocket_protectedbase_setPeerAddress(&_dynamic_cast_ok, unsafe.Pointer(this.h), address.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetPeerName can only be called from a QSslSocket that was directly constructed.
+func (this *QSslSocket) SetPeerName(name string) {
+	name_ms := C.struct_miqt_string{}
+	name_ms.data = C.CString(name)
+	name_ms.len = C.size_t(len(name))
+	defer C.free(unsafe.Pointer(name_ms.data))
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSslSocket_protectedbase_setPeerName(&_dynamic_cast_ok, unsafe.Pointer(this.h), name_ms)
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetOpenMode can only be called from a QSslSocket that was directly constructed.
+func (this *QSslSocket) SetOpenMode(openMode qt.QIODevice__OpenModeFlag) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSslSocket_protectedbase_setOpenMode(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(openMode))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetErrorString can only be called from a QSslSocket that was directly constructed.
+func (this *QSslSocket) SetErrorString(errorString string) {
+	errorString_ms := C.struct_miqt_string{}
+	errorString_ms.data = C.CString(errorString)
+	errorString_ms.len = C.size_t(len(errorString))
+	defer C.free(unsafe.Pointer(errorString_ms.data))
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSslSocket_protectedbase_setErrorString(&_dynamic_cast_ok, unsafe.Pointer(this.h), errorString_ms)
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Sender can only be called from a QSslSocket that was directly constructed.
+func (this *QSslSocket) Sender() *qt.QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QSslSocket_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QSslSocket that was directly constructed.
+func (this *QSslSocket) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QSslSocket_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QSslSocket that was directly constructed.
+func (this *QSslSocket) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QSslSocket_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QSslSocket that was directly constructed.
+func (this *QSslSocket) IsSignalConnected(signal *qt.QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QSslSocket_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QSslSocket) callVirtualBase_Resume() {
 
 	C.QSslSocket_virtualbase_resume(unsafe.Pointer(this.h))

@@ -18,12 +18,14 @@ extern "C" {
 class QDateTime;
 class QFileDevice;
 class QIODevice;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 #else
 typedef struct QDateTime QDateTime;
 typedef struct QFileDevice QFileDevice;
 typedef struct QIODevice QIODevice;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif

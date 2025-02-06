@@ -15,6 +15,7 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QEventPoint;
 class QPoint;
 #if defined(WORKAROUND_INNER_CLASS_DEFINITION_QTest__QTouchEventSequence)
 typedef QTest::QTouchEventSequence QTest__QTouchEventSequence;
@@ -28,6 +29,7 @@ class QTest__QTouchEventWidgetSequence;
 #endif
 class QWidget;
 #else
+typedef struct QEventPoint QEventPoint;
 typedef struct QPoint QPoint;
 typedef struct QTest__QTouchEventSequence QTest__QTouchEventSequence;
 typedef struct QTest__QTouchEventWidgetSequence QTest__QTouchEventWidgetSequence;
@@ -48,6 +50,8 @@ bool QTest__QTouchEventWidgetSequence_override_virtual_stationary(void* self, in
 QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_virtualbase_stationary(void* self, int touchId);
 bool QTest__QTouchEventWidgetSequence_override_virtual_commit(void* self, intptr_t slot);
 bool QTest__QTouchEventWidgetSequence_virtualbase_commit(void* self, bool processEvents);
+QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_point(bool* _dynamic_cast_ok, void* self, int touchId);
+QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_pointOrPreviousPoint(bool* _dynamic_cast_ok, void* self, int touchId);
 void QTest__QTouchEventWidgetSequence_delete(QTest__QTouchEventWidgetSequence* self);
 
 #ifdef __cplusplus

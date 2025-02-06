@@ -159,6 +159,7 @@ bool QStandardItem_override_virtual_write(void* self, intptr_t slot);
 void QStandardItem_virtualbase_write(const void* self, QDataStream* out);
 bool QStandardItem_override_virtual_operatorLesser(void* self, intptr_t slot);
 bool QStandardItem_virtualbase_operatorLesser(const void* self, QStandardItem* other);
+void QStandardItem_protectedbase_emitDataChanged(bool* _dynamic_cast_ok, void* self);
 void QStandardItem_delete(QStandardItem* self);
 
 QStandardItemModel* QStandardItemModel_new();
@@ -321,6 +322,31 @@ bool QStandardItemModel_override_virtual_connectNotify(void* self, intptr_t slot
 void QStandardItemModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStandardItemModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStandardItemModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QStandardItemModel_protectedbase_resetInternalData(bool* _dynamic_cast_ok, void* self);
+QModelIndex* QStandardItemModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
+void QStandardItemModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
+bool QStandardItemModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream);
+void QStandardItemModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+void QStandardItemModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void* self);
+void QStandardItemModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+void QStandardItemModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void* self);
+bool QStandardItemModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow);
+void QStandardItemModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* self);
+void QStandardItemModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+void QStandardItemModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, void* self);
+void QStandardItemModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+void QStandardItemModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, void* self);
+bool QStandardItemModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn);
+void QStandardItemModel_protectedbase_endMoveColumns(bool* _dynamic_cast_ok, void* self);
+void QStandardItemModel_protectedbase_beginResetModel(bool* _dynamic_cast_ok, void* self);
+void QStandardItemModel_protectedbase_endResetModel(bool* _dynamic_cast_ok, void* self);
+void QStandardItemModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, QModelIndex* from, QModelIndex* to);
+void QStandardItemModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to);
+struct miqt_array /* of QModelIndex* */  QStandardItemModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self);
+QObject* QStandardItemModel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QStandardItemModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QStandardItemModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QStandardItemModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QStandardItemModel_delete(QStandardItemModel* self);
 
 #ifdef __cplusplus

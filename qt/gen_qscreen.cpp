@@ -1,4 +1,5 @@
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QPixmap>

@@ -323,6 +323,11 @@ bool QWindow_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWindow_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWindow_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWindow_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void* QWindow_protectedbase_resolveInterface(bool* _dynamic_cast_ok, const void* self, const char* name, int revision);
+QObject* QWindow_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QWindow_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QWindow_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QWindow_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QWindow_delete(QWindow* self);
 
 #ifdef __cplusplus

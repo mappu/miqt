@@ -161,6 +161,10 @@ bool QStyle_override_virtual_connectNotify(void* self, intptr_t slot);
 void QStyle_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QStyle_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QStyle_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QStyle_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QStyle_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QStyle_delete(QStyle* self);
 
 #ifdef __cplusplus

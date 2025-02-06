@@ -221,6 +221,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QSettings_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QSettings_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QSettings_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QSettings_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QSettings* QSettings_new(struct miqt_string organization) {
@@ -714,6 +719,58 @@ bool QSettings_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QSettings_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSettings*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QSettings_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QSettings_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QSettings_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QSettings_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQSettings* self_cast = dynamic_cast<MiqtVirtualQSettings*>( (QSettings*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QSettings_delete(QSettings* self) {

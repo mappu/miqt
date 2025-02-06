@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QAbstractState;
 class QEvent;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QState;
@@ -24,6 +25,7 @@ class QStateMachine;
 #else
 typedef struct QAbstractState QAbstractState;
 typedef struct QEvent QEvent;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QState QState;

@@ -302,6 +302,190 @@ func (this *QSplitter) SetOpaqueResize1(opaque bool) {
 	C.QSplitter_setOpaqueResize1(this.h, (C.bool)(opaque))
 }
 
+// MoveSplitter can only be called from a QSplitter that was directly constructed.
+func (this *QSplitter) MoveSplitter(pos int, index int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSplitter_protectedbase_moveSplitter(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(pos), (C.int)(index))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetRubberBand can only be called from a QSplitter that was directly constructed.
+func (this *QSplitter) SetRubberBand(position int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSplitter_protectedbase_setRubberBand(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(position))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ClosestLegalPosition can only be called from a QSplitter that was directly constructed.
+func (this *QSplitter) ClosestLegalPosition(param1 int, param2 int) int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QSplitter_protectedbase_closestLegalPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(param1), (C.int)(param2)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// DrawFrame can only be called from a QSplitter that was directly constructed.
+func (this *QSplitter) DrawFrame(param1 *QPainter) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSplitter_protectedbase_drawFrame(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// InitStyleOption can only be called from a QSplitter that was directly constructed.
+func (this *QSplitter) InitStyleOption(option *QStyleOptionFrame) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSplitter_protectedbase_initStyleOption(&_dynamic_cast_ok, unsafe.Pointer(this.h), option.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// UpdateMicroFocus can only be called from a QSplitter that was directly constructed.
+func (this *QSplitter) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSplitter_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QSplitter that was directly constructed.
+func (this *QSplitter) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSplitter_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QSplitter that was directly constructed.
+func (this *QSplitter) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSplitter_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QSplitter that was directly constructed.
+func (this *QSplitter) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QSplitter_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QSplitter that was directly constructed.
+func (this *QSplitter) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QSplitter_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QSplitter that was directly constructed.
+func (this *QSplitter) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QSplitter_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QSplitter that was directly constructed.
+func (this *QSplitter) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QSplitter_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QSplitter that was directly constructed.
+func (this *QSplitter) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QSplitter_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QSplitter that was directly constructed.
+func (this *QSplitter) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QSplitter_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QSplitter) callVirtualBase_SizeHint() *QSize {
 
 	_goptr := newQSize(C.QSplitter_virtualbase_sizeHint(unsafe.Pointer(this.h)))
@@ -1728,6 +1912,154 @@ func QSplitterHandle_TrUtf83(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+// MoveSplitter can only be called from a QSplitterHandle that was directly constructed.
+func (this *QSplitterHandle) MoveSplitter(p int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSplitterHandle_protectedbase_moveSplitter(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(p))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ClosestLegalPosition can only be called from a QSplitterHandle that was directly constructed.
+func (this *QSplitterHandle) ClosestLegalPosition(p int) int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QSplitterHandle_protectedbase_closestLegalPosition(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(p)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// UpdateMicroFocus can only be called from a QSplitterHandle that was directly constructed.
+func (this *QSplitterHandle) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSplitterHandle_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Create can only be called from a QSplitterHandle that was directly constructed.
+func (this *QSplitterHandle) Create() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSplitterHandle_protectedbase_create(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Destroy can only be called from a QSplitterHandle that was directly constructed.
+func (this *QSplitterHandle) Destroy() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSplitterHandle_protectedbase_destroy(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// FocusNextChild can only be called from a QSplitterHandle that was directly constructed.
+func (this *QSplitterHandle) FocusNextChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QSplitterHandle_protectedbase_focusNextChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// FocusPreviousChild can only be called from a QSplitterHandle that was directly constructed.
+func (this *QSplitterHandle) FocusPreviousChild() bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QSplitterHandle_protectedbase_focusPreviousChild(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QSplitterHandle that was directly constructed.
+func (this *QSplitterHandle) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QSplitterHandle_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QSplitterHandle that was directly constructed.
+func (this *QSplitterHandle) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QSplitterHandle_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QSplitterHandle that was directly constructed.
+func (this *QSplitterHandle) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QSplitterHandle_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QSplitterHandle that was directly constructed.
+func (this *QSplitterHandle) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QSplitterHandle_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
 }
 
 func (this *QSplitterHandle) callVirtualBase_SizeHint() *QSize {

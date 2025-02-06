@@ -1,9 +1,11 @@
 #include <QAbstractItemModel>
 #include <QAbstractListModel>
 #include <QByteArray>
+#include <QDataStream>
 #include <QDateTime>
 #include <QList>
 #include <QMap>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QModelIndex>
 #include <QObject>

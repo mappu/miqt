@@ -176,6 +176,150 @@ func QGraphicsProxyWidget_TrUtf83(s string, c string, n int) string {
 	return _ret
 }
 
+// NewProxyWidget can only be called from a QGraphicsProxyWidget that was directly constructed.
+func (this *QGraphicsProxyWidget) NewProxyWidget(param1 *QWidget) *QGraphicsProxyWidget {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQGraphicsProxyWidget(C.QGraphicsProxyWidget_protectedbase_newProxyWidget(&_dynamic_cast_ok, unsafe.Pointer(this.h), param1.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// UpdateMicroFocus can only be called from a QGraphicsProxyWidget that was directly constructed.
+func (this *QGraphicsProxyWidget) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsProxyWidget_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Sender can only be called from a QGraphicsProxyWidget that was directly constructed.
+func (this *QGraphicsProxyWidget) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QGraphicsProxyWidget_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QGraphicsProxyWidget that was directly constructed.
+func (this *QGraphicsProxyWidget) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsProxyWidget_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QGraphicsProxyWidget that was directly constructed.
+func (this *QGraphicsProxyWidget) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsProxyWidget_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QGraphicsProxyWidget that was directly constructed.
+func (this *QGraphicsProxyWidget) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsProxyWidget_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// AddToIndex can only be called from a QGraphicsProxyWidget that was directly constructed.
+func (this *QGraphicsProxyWidget) AddToIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsProxyWidget_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RemoveFromIndex can only be called from a QGraphicsProxyWidget that was directly constructed.
+func (this *QGraphicsProxyWidget) RemoveFromIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsProxyWidget_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// PrepareGeometryChange can only be called from a QGraphicsProxyWidget that was directly constructed.
+func (this *QGraphicsProxyWidget) PrepareGeometryChange() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsProxyWidget_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetGraphicsItem can only be called from a QGraphicsProxyWidget that was directly constructed.
+func (this *QGraphicsProxyWidget) SetGraphicsItem(item *QGraphicsItem) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsProxyWidget_protectedbase_setGraphicsItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), item.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetOwnedByLayout can only be called from a QGraphicsProxyWidget that was directly constructed.
+func (this *QGraphicsProxyWidget) SetOwnedByLayout(ownedByLayout bool) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsProxyWidget_protectedbase_setOwnedByLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(ownedByLayout))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
 func (this *QGraphicsProxyWidget) callVirtualBase_SetGeometry(rect *QRectF) {
 
 	C.QGraphicsProxyWidget_virtualbase_setGeometry(unsafe.Pointer(this.h), rect.cPointer())

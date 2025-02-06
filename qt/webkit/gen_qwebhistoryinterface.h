@@ -65,6 +65,10 @@ bool QWebHistoryInterface_override_virtual_connectNotify(void* self, intptr_t sl
 void QWebHistoryInterface_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebHistoryInterface_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebHistoryInterface_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QWebHistoryInterface_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QWebHistoryInterface_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QWebHistoryInterface_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QWebHistoryInterface_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QWebHistoryInterface_delete(QWebHistoryInterface* self);
 
 #ifdef __cplusplus

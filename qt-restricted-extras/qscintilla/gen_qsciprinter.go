@@ -92,6 +92,34 @@ func (this *QsciPrinter) SetWrapMode(wmode QsciScintilla__WrapMode) {
 	C.QsciPrinter_setWrapMode(this.h, (C.int)(wmode))
 }
 
+// SetEngines can only be called from a QsciPrinter that was directly constructed.
+func (this *QsciPrinter) SetEngines(printEngine *printsupport.QPrintEngine, paintEngine *qt.QPaintEngine) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QsciPrinter_protectedbase_setEngines(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QPrintEngine)(printEngine.UnsafePointer()), (*C.QPaintEngine)(paintEngine.UnsafePointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// DevicePageLayout can only be called from a QsciPrinter that was directly constructed.
+func (this *QsciPrinter) DevicePageLayout() qt.QPageLayout {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := qt.UnsafeNewQPageLayout(unsafe.Pointer(C.QsciPrinter_protectedbase_devicePageLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QsciPrinter) callVirtualBase_FormatPage(painter *qt.QPainter, drawing bool, area *qt.QRect, pagenr int) {
 
 	C.QsciPrinter_virtualbase_formatPage(unsafe.Pointer(this.h), (*C.QPainter)(painter.UnsafePointer()), (C.bool)(drawing), (*C.QRect)(area.UnsafePointer()), (C.int)(pagenr))

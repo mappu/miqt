@@ -116,6 +116,10 @@ bool QCameraImageCapture_override_virtual_connectNotify(void* self, intptr_t slo
 void QCameraImageCapture_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QCameraImageCapture_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QCameraImageCapture_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QCameraImageCapture_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QCameraImageCapture_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QCameraImageCapture_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QCameraImageCapture_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QCameraImageCapture_delete(QCameraImageCapture* self);
 
 #ifdef __cplusplus

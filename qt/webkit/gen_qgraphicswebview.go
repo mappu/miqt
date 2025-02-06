@@ -545,6 +545,136 @@ func (this *QGraphicsWebView) SetRenderHint2(param1 qt.QPainter__RenderHint, ena
 	C.QGraphicsWebView_setRenderHint2(this.h, (C.int)(param1), (C.bool)(enabled))
 }
 
+// UpdateMicroFocus can only be called from a QGraphicsWebView that was directly constructed.
+func (this *QGraphicsWebView) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsWebView_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Sender can only be called from a QGraphicsWebView that was directly constructed.
+func (this *QGraphicsWebView) Sender() *qt.QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := qt.UnsafeNewQObject(unsafe.Pointer(C.QGraphicsWebView_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h))))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QGraphicsWebView that was directly constructed.
+func (this *QGraphicsWebView) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsWebView_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QGraphicsWebView that was directly constructed.
+func (this *QGraphicsWebView) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsWebView_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QGraphicsWebView that was directly constructed.
+func (this *QGraphicsWebView) IsSignalConnected(signal *qt.QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsWebView_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QMetaMethod)(signal.UnsafePointer())))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// AddToIndex can only be called from a QGraphicsWebView that was directly constructed.
+func (this *QGraphicsWebView) AddToIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsWebView_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RemoveFromIndex can only be called from a QGraphicsWebView that was directly constructed.
+func (this *QGraphicsWebView) RemoveFromIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsWebView_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// PrepareGeometryChange can only be called from a QGraphicsWebView that was directly constructed.
+func (this *QGraphicsWebView) PrepareGeometryChange() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsWebView_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetGraphicsItem can only be called from a QGraphicsWebView that was directly constructed.
+func (this *QGraphicsWebView) SetGraphicsItem(item *qt.QGraphicsItem) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsWebView_protectedbase_setGraphicsItem(&_dynamic_cast_ok, unsafe.Pointer(this.h), (*C.QGraphicsItem)(item.UnsafePointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetOwnedByLayout can only be called from a QGraphicsWebView that was directly constructed.
+func (this *QGraphicsWebView) SetOwnedByLayout(ownedByLayout bool) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsWebView_protectedbase_setOwnedByLayout(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.bool)(ownedByLayout))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
 func (this *QGraphicsWebView) callVirtualBase_SetGeometry(rect *qt.QRectF) {
 
 	C.QGraphicsWebView_virtualbase_setGeometry(unsafe.Pointer(this.h), (*C.QRectF)(rect.UnsafePointer()))

@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QInputMethod;
 class QLocale;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QRectF;
@@ -25,6 +26,7 @@ class QVariant;
 #else
 typedef struct QInputMethod QInputMethod;
 typedef struct QLocale QLocale;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QRectF QRectF;

@@ -68,6 +68,11 @@ bool QGraphicsTransform_override_virtual_connectNotify(void* self, intptr_t slot
 void QGraphicsTransform_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsTransform_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsTransform_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QGraphicsTransform_protectedbase_update(bool* _dynamic_cast_ok, void* self);
+QObject* QGraphicsTransform_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsTransform_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsTransform_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QGraphicsTransform_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QGraphicsTransform_delete(QGraphicsTransform* self);
 
 QGraphicsScale* QGraphicsScale_new();
@@ -116,6 +121,11 @@ bool QGraphicsScale_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGraphicsScale_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsScale_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsScale_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QGraphicsScale_protectedbase_update(bool* _dynamic_cast_ok, void* self);
+QObject* QGraphicsScale_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsScale_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsScale_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QGraphicsScale_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QGraphicsScale_delete(QGraphicsScale* self);
 
 QGraphicsRotation* QGraphicsRotation_new();
@@ -159,6 +169,11 @@ bool QGraphicsRotation_override_virtual_connectNotify(void* self, intptr_t slot)
 void QGraphicsRotation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsRotation_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsRotation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QGraphicsRotation_protectedbase_update(bool* _dynamic_cast_ok, void* self);
+QObject* QGraphicsRotation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsRotation_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsRotation_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QGraphicsRotation_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QGraphicsRotation_delete(QGraphicsRotation* self);
 
 #ifdef __cplusplus

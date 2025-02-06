@@ -24,6 +24,7 @@ class QMediaServiceProviderHint;
 class QMediaServiceProviderPlugin;
 class QMediaServiceSupportedDevicesInterface;
 class QMediaServiceSupportedFormatsInterface;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 #else
@@ -36,6 +37,7 @@ typedef struct QMediaServiceProviderHint QMediaServiceProviderHint;
 typedef struct QMediaServiceProviderPlugin QMediaServiceProviderPlugin;
 typedef struct QMediaServiceSupportedDevicesInterface QMediaServiceSupportedDevicesInterface;
 typedef struct QMediaServiceSupportedFormatsInterface QMediaServiceSupportedFormatsInterface;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 #endif

@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QClipboard;
 class QImage;
+class QMetaMethod;
 class QMetaObject;
 class QMimeData;
 class QObject;
@@ -24,6 +25,7 @@ class QPixmap;
 #else
 typedef struct QClipboard QClipboard;
 typedef struct QImage QImage;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMimeData QMimeData;
 typedef struct QObject QObject;

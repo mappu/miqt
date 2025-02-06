@@ -113,6 +113,10 @@ bool QPdfWriter_override_virtual_redirected(void* self, intptr_t slot);
 QPaintDevice* QPdfWriter_virtualbase_redirected(const void* self, QPoint* offset);
 bool QPdfWriter_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QPdfWriter_virtualbase_sharedPainter(const void* self);
+QObject* QPdfWriter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QPdfWriter_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QPdfWriter_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QPdfWriter_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QPdfWriter_delete(QPdfWriter* self);
 
 #ifdef __cplusplus

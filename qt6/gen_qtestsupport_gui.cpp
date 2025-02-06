@@ -1,3 +1,4 @@
+#include <QEventPoint>
 #include <QPoint>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTest__QTouchEventSequence
 #include <QWindow>

@@ -1,5 +1,6 @@
 #include <QByteArray>
 #include <QIODevice>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>

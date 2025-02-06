@@ -16,11 +16,13 @@ extern "C" {
 
 #ifdef __cplusplus
 class QChar;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QStyleHints;
 #else
 typedef struct QChar QChar;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QStyleHints QStyleHints;

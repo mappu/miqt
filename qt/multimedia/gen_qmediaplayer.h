@@ -167,6 +167,12 @@ bool QMediaPlayer_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMediaPlayer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMediaPlayer_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMediaPlayer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QMediaPlayer_protectedbase_addPropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name);
+void QMediaPlayer_protectedbase_removePropertyWatch(bool* _dynamic_cast_ok, void* self, struct miqt_string name);
+QObject* QMediaPlayer_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QMediaPlayer_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QMediaPlayer_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QMediaPlayer_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QMediaPlayer_delete(QMediaPlayer* self);
 
 #ifdef __cplusplus

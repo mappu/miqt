@@ -77,6 +77,10 @@ bool QAmbientSound_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAmbientSound_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAmbientSound_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAmbientSound_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QAmbientSound_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QAmbientSound_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QAmbientSound_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QAmbientSound_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QAmbientSound_delete(QAmbientSound* self);
 
 #ifdef __cplusplus

@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QEvent;
 class QIcon;
+class QMetaMethod;
 class QMetaObject;
 class QNetworkRequest;
 class QObject;
@@ -38,6 +39,7 @@ class QWebSecurityOrigin;
 #else
 typedef struct QEvent QEvent;
 typedef struct QIcon QIcon;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QNetworkRequest QNetworkRequest;
 typedef struct QObject QObject;

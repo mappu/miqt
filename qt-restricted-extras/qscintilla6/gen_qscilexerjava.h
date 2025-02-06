@@ -146,6 +146,12 @@ bool QsciLexerJava_override_virtual_connectNotify(void* self, intptr_t slot);
 void QsciLexerJava_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QsciLexerJava_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QsciLexerJava_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QsciLexerJava_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
+bool QsciLexerJava_protectedbase_writeProperties(bool* _dynamic_cast_ok, const void* self, QSettings* qs, struct miqt_string prefix);
+QObject* QsciLexerJava_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QsciLexerJava_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QsciLexerJava_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QsciLexerJava_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QsciLexerJava_delete(QsciLexerJava* self);
 
 #ifdef __cplusplus

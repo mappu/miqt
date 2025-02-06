@@ -211,6 +211,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QLibrary_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QLibrary_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QLibrary_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QLibrary_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QLibrary* QLibrary_new() {
@@ -491,6 +496,58 @@ bool QLibrary_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QLibrary_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQLibrary*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QLibrary_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQLibrary* self_cast = dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QLibrary_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQLibrary* self_cast = dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QLibrary_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQLibrary* self_cast = dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QLibrary_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQLibrary* self_cast = dynamic_cast<MiqtVirtualQLibrary*>( (QLibrary*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QLibrary_delete(QLibrary* self) {

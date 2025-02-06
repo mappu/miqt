@@ -403,6 +403,12 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend void QTextFrame_protectedbase_setFormat(bool* _dynamic_cast_ok, void* self, QTextFormat* format);
+	friend QObject* QTextFrame_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QTextFrame_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QTextFrame_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QTextFrame_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QTextFrame* QTextFrame_new(QTextDocument* doc) {
@@ -640,6 +646,71 @@ bool QTextFrame_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 
 void QTextFrame_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQTextFrame*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+void QTextFrame_protectedbase_setFormat(bool* _dynamic_cast_ok, void* self, QTextFormat* format) {
+	MiqtVirtualQTextFrame* self_cast = dynamic_cast<MiqtVirtualQTextFrame*>( (QTextFrame*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return ;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	self_cast->setFormat(*format);
+
+}
+
+QObject* QTextFrame_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTextFrame* self_cast = dynamic_cast<MiqtVirtualQTextFrame*>( (QTextFrame*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QTextFrame_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQTextFrame* self_cast = dynamic_cast<MiqtVirtualQTextFrame*>( (QTextFrame*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QTextFrame_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQTextFrame* self_cast = dynamic_cast<MiqtVirtualQTextFrame*>( (QTextFrame*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QTextFrame_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQTextFrame* self_cast = dynamic_cast<MiqtVirtualQTextFrame*>( (QTextFrame*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QTextFrame_delete(QTextFrame* self) {

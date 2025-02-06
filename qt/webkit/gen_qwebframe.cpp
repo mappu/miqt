@@ -2,6 +2,7 @@
 #include <QEvent>
 #include <QIcon>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QNetworkRequest>
 #include <QObject>

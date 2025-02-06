@@ -250,6 +250,15 @@ bool QAbstractButton_override_virtual_connectNotify(void* self, intptr_t slot);
 void QAbstractButton_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractButton_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractButton_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QAbstractButton_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+void QAbstractButton_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+void QAbstractButton_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+bool QAbstractButton_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+bool QAbstractButton_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+QObject* QAbstractButton_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QAbstractButton_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QAbstractButton_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QAbstractButton_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QAbstractButton_delete(QAbstractButton* self);
 
 #ifdef __cplusplus

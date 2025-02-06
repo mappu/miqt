@@ -1,3 +1,4 @@
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QRect>

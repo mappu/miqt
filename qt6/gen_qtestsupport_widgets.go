@@ -88,6 +88,34 @@ func (this *QTest__QTouchEventWidgetSequence) Release3(touchId int, pt *QPoint, 
 	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_release3(this.h, (C.int)(touchId), pt.cPointer(), widget.cPointer()))
 }
 
+// Point can only be called from a QTest__QTouchEventWidgetSequence that was directly constructed.
+func (this *QTest__QTouchEventWidgetSequence) Point(touchId int) *QEventPoint {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQEventPoint(C.QTest__QTouchEventWidgetSequence_protectedbase_point(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(touchId)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// PointOrPreviousPoint can only be called from a QTest__QTouchEventWidgetSequence that was directly constructed.
+func (this *QTest__QTouchEventWidgetSequence) PointOrPreviousPoint(touchId int) *QEventPoint {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQEventPoint(C.QTest__QTouchEventWidgetSequence_protectedbase_pointOrPreviousPoint(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(touchId)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QTest__QTouchEventWidgetSequence) callVirtualBase_Stationary(touchId int) *QTest__QTouchEventWidgetSequence {
 
 	return newQTest__QTouchEventWidgetSequence(C.QTest__QTouchEventWidgetSequence_virtualbase_stationary(unsafe.Pointer(this.h), (C.int)(touchId)))

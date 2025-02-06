@@ -207,6 +207,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QSharedMemory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QSharedMemory_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QSharedMemory_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QSharedMemory_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QSharedMemory* QSharedMemory_new() {
@@ -497,6 +502,58 @@ bool QSharedMemory_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 
 void QSharedMemory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QSharedMemory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQSharedMemory* self_cast = dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QSharedMemory_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQSharedMemory* self_cast = dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QSharedMemory_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQSharedMemory* self_cast = dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QSharedMemory_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQSharedMemory* self_cast = dynamic_cast<MiqtVirtualQSharedMemory*>( (QSharedMemory*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QSharedMemory_delete(QSharedMemory* self) {

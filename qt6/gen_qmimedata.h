@@ -87,6 +87,10 @@ bool QMimeData_override_virtual_connectNotify(void* self, intptr_t slot);
 void QMimeData_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QMimeData_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QMimeData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QMimeData_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QMimeData_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QMimeData_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QMimeData_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QMimeData_delete(QMimeData* self);
 
 #ifdef __cplusplus

@@ -219,6 +219,358 @@ func QTransposeProxyModel_Tr3(s string, c string, n int) string {
 	return _ret
 }
 
+// CreateSourceIndex can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) CreateSourceIndex(row int, col int, internalPtr unsafe.Pointer) QModelIndex {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQModelIndex(C.QTransposeProxyModel_protectedbase_createSourceIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(col), internalPtr))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// CreateIndex can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) CreateIndex(row int, column int) QModelIndex {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQModelIndex(C.QTransposeProxyModel_protectedbase_createIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// EncodeData can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) EncodeData(indexes []QModelIndex, stream *QDataStream) {
+	indexes_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(indexes))))
+	defer C.free(unsafe.Pointer(indexes_CArray))
+	for i := range indexes {
+		indexes_CArray[i] = indexes[i].cPointer()
+	}
+	indexes_ma := C.struct_miqt_array{len: C.size_t(len(indexes)), data: unsafe.Pointer(indexes_CArray)}
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTransposeProxyModel_protectedbase_encodeData(&_dynamic_cast_ok, unsafe.Pointer(this.h), indexes_ma, stream.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// DecodeData can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) DecodeData(row int, column int, parent *QModelIndex, stream *QDataStream) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QTransposeProxyModel_protectedbase_decodeData(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(row), (C.int)(column), parent.cPointer(), stream.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// BeginInsertRows can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) BeginInsertRows(parent *QModelIndex, first int, last int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTransposeProxyModel_protectedbase_beginInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// EndInsertRows can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) EndInsertRows() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTransposeProxyModel_protectedbase_endInsertRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// BeginRemoveRows can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) BeginRemoveRows(parent *QModelIndex, first int, last int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTransposeProxyModel_protectedbase_beginRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// EndRemoveRows can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) EndRemoveRows() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTransposeProxyModel_protectedbase_endRemoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// BeginMoveRows can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) BeginMoveRows(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationRow int) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QTransposeProxyModel_protectedbase_beginMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceFirst), (C.int)(sourceLast), destinationParent.cPointer(), (C.int)(destinationRow)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// EndMoveRows can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) EndMoveRows() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTransposeProxyModel_protectedbase_endMoveRows(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// BeginInsertColumns can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) BeginInsertColumns(parent *QModelIndex, first int, last int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTransposeProxyModel_protectedbase_beginInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// EndInsertColumns can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) EndInsertColumns() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTransposeProxyModel_protectedbase_endInsertColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// BeginRemoveColumns can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) BeginRemoveColumns(parent *QModelIndex, first int, last int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTransposeProxyModel_protectedbase_beginRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), parent.cPointer(), (C.int)(first), (C.int)(last))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// EndRemoveColumns can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) EndRemoveColumns() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTransposeProxyModel_protectedbase_endRemoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// BeginMoveColumns can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) BeginMoveColumns(sourceParent *QModelIndex, sourceFirst int, sourceLast int, destinationParent *QModelIndex, destinationColumn int) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QTransposeProxyModel_protectedbase_beginMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h), sourceParent.cPointer(), (C.int)(sourceFirst), (C.int)(sourceLast), destinationParent.cPointer(), (C.int)(destinationColumn)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// EndMoveColumns can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) EndMoveColumns() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTransposeProxyModel_protectedbase_endMoveColumns(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// BeginResetModel can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) BeginResetModel() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTransposeProxyModel_protectedbase_beginResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// EndResetModel can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) EndResetModel() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTransposeProxyModel_protectedbase_endResetModel(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ChangePersistentIndex can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) ChangePersistentIndex(from *QModelIndex, to *QModelIndex) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTransposeProxyModel_protectedbase_changePersistentIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h), from.cPointer(), to.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// ChangePersistentIndexList can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) ChangePersistentIndexList(from []QModelIndex, to []QModelIndex) {
+	from_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(from))))
+	defer C.free(unsafe.Pointer(from_CArray))
+	for i := range from {
+		from_CArray[i] = from[i].cPointer()
+	}
+	from_ma := C.struct_miqt_array{len: C.size_t(len(from)), data: unsafe.Pointer(from_CArray)}
+	to_CArray := (*[0xffff]*C.QModelIndex)(C.malloc(C.size_t(8 * len(to))))
+	defer C.free(unsafe.Pointer(to_CArray))
+	for i := range to {
+		to_CArray[i] = to[i].cPointer()
+	}
+	to_ma := C.struct_miqt_array{len: C.size_t(len(to)), data: unsafe.Pointer(to_CArray)}
+
+	var _dynamic_cast_ok C.bool = false
+	C.QTransposeProxyModel_protectedbase_changePersistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h), from_ma, to_ma)
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// PersistentIndexList can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) PersistentIndexList() []QModelIndex {
+
+	var _dynamic_cast_ok C.bool = false
+	var _ma C.struct_miqt_array = C.QTransposeProxyModel_protectedbase_persistentIndexList(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+	_ret := make([]QModelIndex, int(_ma.len))
+	_outCast := (*[0xffff]*C.QModelIndex)(unsafe.Pointer(_ma.data)) // hey ya
+	for i := 0; i < int(_ma.len); i++ {
+		_lv_goptr := newQModelIndex(_outCast[i])
+		_lv_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+		_ret[i] = *_lv_goptr
+	}
+	_method_ret := _ret
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QTransposeProxyModel_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QTransposeProxyModel_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QTransposeProxyModel_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QTransposeProxyModel that was directly constructed.
+func (this *QTransposeProxyModel) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QTransposeProxyModel_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
 func (this *QTransposeProxyModel) callVirtualBase_SetSourceModel(newSourceModel *QAbstractItemModel) {
 
 	C.QTransposeProxyModel_virtualbase_setSourceModel(unsafe.Pointer(this.h), newSourceModel.cPointer())

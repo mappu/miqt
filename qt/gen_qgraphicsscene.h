@@ -313,6 +313,11 @@ bool QGraphicsScene_override_virtual_connectNotify(void* self, intptr_t slot);
 void QGraphicsScene_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QGraphicsScene_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QGraphicsScene_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+bool QGraphicsScene_protectedbase_focusNextPrevChild(bool* _dynamic_cast_ok, void* self, bool next);
+QObject* QGraphicsScene_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsScene_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QGraphicsScene_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QGraphicsScene_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QGraphicsScene_delete(QGraphicsScene* self);
 
 #ifdef __cplusplus

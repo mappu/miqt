@@ -18,6 +18,7 @@ extern "C" {
 class QAbstractItemModel;
 class QAbstractProxyModel;
 class QChildEvent;
+class QDataStream;
 class QEvent;
 class QIdentityProxyModel;
 class QItemSelection;
@@ -34,6 +35,7 @@ class QVariant;
 typedef struct QAbstractItemModel QAbstractItemModel;
 typedef struct QAbstractProxyModel QAbstractProxyModel;
 typedef struct QChildEvent QChildEvent;
+typedef struct QDataStream QDataStream;
 typedef struct QEvent QEvent;
 typedef struct QIdentityProxyModel QIdentityProxyModel;
 typedef struct QItemSelection QItemSelection;
@@ -173,6 +175,31 @@ bool QIdentityProxyModel_override_virtual_connectNotify(void* self, intptr_t slo
 void QIdentityProxyModel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QIdentityProxyModel_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QIdentityProxyModel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QModelIndex* QIdentityProxyModel_protectedbase_createSourceIndex(bool* _dynamic_cast_ok, const void* self, int row, int col, void* internalPtr);
+QModelIndex* QIdentityProxyModel_protectedbase_createIndex(bool* _dynamic_cast_ok, const void* self, int row, int column);
+void QIdentityProxyModel_protectedbase_encodeData(bool* _dynamic_cast_ok, const void* self, struct miqt_array /* of QModelIndex* */  indexes, QDataStream* stream);
+bool QIdentityProxyModel_protectedbase_decodeData(bool* _dynamic_cast_ok, void* self, int row, int column, QModelIndex* parent, QDataStream* stream);
+void QIdentityProxyModel_protectedbase_beginInsertRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+void QIdentityProxyModel_protectedbase_endInsertRows(bool* _dynamic_cast_ok, void* self);
+void QIdentityProxyModel_protectedbase_beginRemoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+void QIdentityProxyModel_protectedbase_endRemoveRows(bool* _dynamic_cast_ok, void* self);
+bool QIdentityProxyModel_protectedbase_beginMoveRows(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationRow);
+void QIdentityProxyModel_protectedbase_endMoveRows(bool* _dynamic_cast_ok, void* self);
+void QIdentityProxyModel_protectedbase_beginInsertColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+void QIdentityProxyModel_protectedbase_endInsertColumns(bool* _dynamic_cast_ok, void* self);
+void QIdentityProxyModel_protectedbase_beginRemoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* parent, int first, int last);
+void QIdentityProxyModel_protectedbase_endRemoveColumns(bool* _dynamic_cast_ok, void* self);
+bool QIdentityProxyModel_protectedbase_beginMoveColumns(bool* _dynamic_cast_ok, void* self, QModelIndex* sourceParent, int sourceFirst, int sourceLast, QModelIndex* destinationParent, int destinationColumn);
+void QIdentityProxyModel_protectedbase_endMoveColumns(bool* _dynamic_cast_ok, void* self);
+void QIdentityProxyModel_protectedbase_beginResetModel(bool* _dynamic_cast_ok, void* self);
+void QIdentityProxyModel_protectedbase_endResetModel(bool* _dynamic_cast_ok, void* self);
+void QIdentityProxyModel_protectedbase_changePersistentIndex(bool* _dynamic_cast_ok, void* self, QModelIndex* from, QModelIndex* to);
+void QIdentityProxyModel_protectedbase_changePersistentIndexList(bool* _dynamic_cast_ok, void* self, struct miqt_array /* of QModelIndex* */  from, struct miqt_array /* of QModelIndex* */  to);
+struct miqt_array /* of QModelIndex* */  QIdentityProxyModel_protectedbase_persistentIndexList(bool* _dynamic_cast_ok, const void* self);
+QObject* QIdentityProxyModel_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QIdentityProxyModel_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QIdentityProxyModel_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QIdentityProxyModel_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QIdentityProxyModel_delete(QIdentityProxyModel* self);
 
 #ifdef __cplusplus

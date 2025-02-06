@@ -18,8 +18,10 @@ extern "C" {
 class QEvent;
 class QGraphicsAnchor;
 class QGraphicsAnchorLayout;
+class QGraphicsItem;
 class QGraphicsLayout;
 class QGraphicsLayoutItem;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QRectF;
@@ -28,8 +30,10 @@ class QSizeF;
 typedef struct QEvent QEvent;
 typedef struct QGraphicsAnchor QGraphicsAnchor;
 typedef struct QGraphicsAnchorLayout QGraphicsAnchorLayout;
+typedef struct QGraphicsItem QGraphicsItem;
 typedef struct QGraphicsLayout QGraphicsLayout;
 typedef struct QGraphicsLayoutItem QGraphicsLayoutItem;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QRectF QRectF;
@@ -88,6 +92,9 @@ bool QGraphicsAnchorLayout_override_virtual_widgetEvent(void* self, intptr_t slo
 void QGraphicsAnchorLayout_virtualbase_widgetEvent(void* self, QEvent* e);
 bool QGraphicsAnchorLayout_override_virtual_isEmpty(void* self, intptr_t slot);
 bool QGraphicsAnchorLayout_virtualbase_isEmpty(const void* self);
+void QGraphicsAnchorLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem);
+void QGraphicsAnchorLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
+void QGraphicsAnchorLayout_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
 void QGraphicsAnchorLayout_delete(QGraphicsAnchorLayout* self);
 
 #ifdef __cplusplus

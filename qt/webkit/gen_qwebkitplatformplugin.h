@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QColor;
 class QFont;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QRect;
@@ -37,6 +38,7 @@ class QWebTouchModifier;
 #else
 typedef struct QColor QColor;
 typedef struct QFont QFont;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QRect QRect;

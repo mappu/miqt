@@ -16,12 +16,14 @@ extern "C" {
 
 #ifdef __cplusplus
 class QImage;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QUrl;
 class QWebEngineNotification;
 #else
 typedef struct QImage QImage;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QUrl QUrl;

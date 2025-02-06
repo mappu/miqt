@@ -3,6 +3,7 @@
 #include <QAbstractNativeEventFilter>
 #include <QByteArray>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QSocketNotifier>

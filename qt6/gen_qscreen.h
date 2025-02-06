@@ -15,6 +15,7 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QPixmap;
@@ -25,6 +26,7 @@ class QSize;
 class QSizeF;
 class QTransform;
 #else
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QPixmap QPixmap;

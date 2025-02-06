@@ -18,6 +18,7 @@ extern "C" {
 class QCameraImageCaptureControl;
 class QImage;
 class QMediaControl;
+class QMetaMethod;
 class QMetaObject;
 class QObject;
 class QVariant;
@@ -26,6 +27,7 @@ class QVideoFrame;
 typedef struct QCameraImageCaptureControl QCameraImageCaptureControl;
 typedef struct QImage QImage;
 typedef struct QMediaControl QMediaControl;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QObject QObject;
 typedef struct QVariant QVariant;

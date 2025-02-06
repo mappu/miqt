@@ -133,6 +133,19 @@ bool QSctpSocket_override_virtual_connectNotify(void* self, intptr_t slot);
 void QSctpSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QSctpSocket_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QSctpSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QSctpSocket_protectedbase_setSocketState(bool* _dynamic_cast_ok, void* self, int state);
+void QSctpSocket_protectedbase_setSocketError(bool* _dynamic_cast_ok, void* self, int socketError);
+void QSctpSocket_protectedbase_setLocalPort(bool* _dynamic_cast_ok, void* self, uint16_t port);
+void QSctpSocket_protectedbase_setLocalAddress(bool* _dynamic_cast_ok, void* self, QHostAddress* address);
+void QSctpSocket_protectedbase_setPeerPort(bool* _dynamic_cast_ok, void* self, uint16_t port);
+void QSctpSocket_protectedbase_setPeerAddress(bool* _dynamic_cast_ok, void* self, QHostAddress* address);
+void QSctpSocket_protectedbase_setPeerName(bool* _dynamic_cast_ok, void* self, struct miqt_string name);
+void QSctpSocket_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode);
+void QSctpSocket_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString);
+QObject* QSctpSocket_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QSctpSocket_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QSctpSocket_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QSctpSocket_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QSctpSocket_delete(QSctpSocket* self);
 
 #ifdef __cplusplus

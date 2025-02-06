@@ -294,6 +294,10 @@ bool QWebPage_override_virtual_connectNotify(void* self, intptr_t slot);
 void QWebPage_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebPage_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebPage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QWebPage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QWebPage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QWebPage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QWebPage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QWebPage_delete(QWebPage* self);
 
 QWebPage__ViewportAttributes* QWebPage__ViewportAttributes_new();

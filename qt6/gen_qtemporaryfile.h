@@ -116,6 +116,12 @@ bool QTemporaryFile_override_virtual_connectNotify(void* self, intptr_t slot);
 void QTemporaryFile_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QTemporaryFile_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QTemporaryFile_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QTemporaryFile_protectedbase_setOpenMode(bool* _dynamic_cast_ok, void* self, int openMode);
+void QTemporaryFile_protectedbase_setErrorString(bool* _dynamic_cast_ok, void* self, struct miqt_string errorString);
+QObject* QTemporaryFile_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QTemporaryFile_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QTemporaryFile_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QTemporaryFile_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QTemporaryFile_delete(QTemporaryFile* self);
 
 #ifdef __cplusplus

@@ -1,5 +1,6 @@
 #include <QList>
 #include <QMediaControl>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QSize>

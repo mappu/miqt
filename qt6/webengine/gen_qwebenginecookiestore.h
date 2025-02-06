@@ -15,6 +15,7 @@ extern "C" {
 #endif
 
 #ifdef __cplusplus
+class QMetaMethod;
 class QMetaObject;
 class QNetworkCookie;
 class QObject;
@@ -26,6 +27,7 @@ typedef QWebEngineCookieStore::FilterRequest QWebEngineCookieStore__FilterReques
 class QWebEngineCookieStore__FilterRequest;
 #endif
 #else
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QNetworkCookie QNetworkCookie;
 typedef struct QObject QObject;

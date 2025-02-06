@@ -17,6 +17,7 @@ extern "C" {
 #ifdef __cplusplus
 class QEvent;
 class QGraphicsGridLayout;
+class QGraphicsItem;
 class QGraphicsLayout;
 class QGraphicsLayoutItem;
 class QRectF;
@@ -24,6 +25,7 @@ class QSizeF;
 #else
 typedef struct QEvent QEvent;
 typedef struct QGraphicsGridLayout QGraphicsGridLayout;
+typedef struct QGraphicsItem QGraphicsItem;
 typedef struct QGraphicsLayout QGraphicsLayout;
 typedef struct QGraphicsLayoutItem QGraphicsLayoutItem;
 typedef struct QRectF QRectF;
@@ -98,6 +100,9 @@ bool QGraphicsGridLayout_override_virtual_updateGeometry(void* self, intptr_t sl
 void QGraphicsGridLayout_virtualbase_updateGeometry(void* self);
 bool QGraphicsGridLayout_override_virtual_widgetEvent(void* self, intptr_t slot);
 void QGraphicsGridLayout_virtualbase_widgetEvent(void* self, QEvent* e);
+void QGraphicsGridLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem);
+void QGraphicsGridLayout_protectedbase_setGraphicsItem(bool* _dynamic_cast_ok, void* self, QGraphicsItem* item);
+void QGraphicsGridLayout_protectedbase_setOwnedByLayout(bool* _dynamic_cast_ok, void* self, bool ownedByLayout);
 void QGraphicsGridLayout_delete(QGraphicsGridLayout* self);
 
 #ifdef __cplusplus

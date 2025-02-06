@@ -584,6 +584,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QWebEnginePage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QWebEnginePage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QWebEnginePage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QWebEnginePage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QWebEnginePage* QWebEnginePage_new() {
@@ -1575,6 +1580,58 @@ bool QWebEnginePage_override_virtual_disconnectNotify(void* self, intptr_t slot)
 
 void QWebEnginePage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQWebEnginePage*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QWebEnginePage_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QWebEnginePage_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QWebEnginePage_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QWebEnginePage_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQWebEnginePage* self_cast = dynamic_cast<MiqtVirtualQWebEnginePage*>( (QWebEnginePage*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QWebEnginePage_delete(QWebEnginePage* self) {

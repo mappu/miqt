@@ -18,6 +18,7 @@ extern "C" {
 class QAbstractNetworkCache;
 class QDateTime;
 class QIODevice;
+class QMetaMethod;
 class QMetaObject;
 class QNetworkCacheMetaData;
 class QObject;
@@ -27,6 +28,7 @@ class QVariant;
 typedef struct QAbstractNetworkCache QAbstractNetworkCache;
 typedef struct QDateTime QDateTime;
 typedef struct QIODevice QIODevice;
+typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QNetworkCacheMetaData QNetworkCacheMetaData;
 typedef struct QObject QObject;

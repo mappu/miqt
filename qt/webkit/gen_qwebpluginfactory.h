@@ -98,6 +98,10 @@ bool QWebPluginFactory_override_virtual_connectNotify(void* self, intptr_t slot)
 void QWebPluginFactory_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QWebPluginFactory_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QWebPluginFactory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QWebPluginFactory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QWebPluginFactory_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QWebPluginFactory_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QWebPluginFactory_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QWebPluginFactory_delete(QWebPluginFactory* self);
 
 QWebPluginFactory__MimeType* QWebPluginFactory__MimeType_new(QWebPluginFactory__MimeType* param1);

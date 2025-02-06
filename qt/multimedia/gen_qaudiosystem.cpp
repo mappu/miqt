@@ -4,6 +4,7 @@
 #include <QAudioFormat>
 #include <QIODevice>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>

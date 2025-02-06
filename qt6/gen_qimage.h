@@ -209,6 +209,15 @@ bool QImage_override_virtual_redirected(void* self, intptr_t slot);
 QPaintDevice* QImage_virtualbase_redirected(const void* self, QPoint* offset);
 bool QImage_override_virtual_sharedPainter(void* self, intptr_t slot);
 QPainter* QImage_virtualbase_sharedPainter(const void* self);
+QImage* QImage_protectedbase_mirroredHelper(bool* _dynamic_cast_ok, const void* self, bool horizontal, bool vertical);
+QImage* QImage_protectedbase_rgbSwappedHelper(bool* _dynamic_cast_ok, const void* self);
+void QImage_protectedbase_mirroredInplace(bool* _dynamic_cast_ok, void* self, bool horizontal, bool vertical);
+void QImage_protectedbase_rgbSwappedInplace(bool* _dynamic_cast_ok, void* self);
+QImage* QImage_protectedbase_convertToFormatHelper(bool* _dynamic_cast_ok, const void* self, int format, int flags);
+bool QImage_protectedbase_convertToFormatInplace(bool* _dynamic_cast_ok, void* self, int format, int flags);
+QImage* QImage_protectedbase_smoothScaled(bool* _dynamic_cast_ok, const void* self, int w, int h);
+void QImage_protectedbase_detachMetadata(bool* _dynamic_cast_ok, void* self);
+void QImage_protectedbase_detachMetadata1(bool* _dynamic_cast_ok, void* self, bool invalidateCache);
 void QImage_delete(QImage* self);
 
 #ifdef __cplusplus

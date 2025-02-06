@@ -1,3 +1,4 @@
+#include <QEventPoint>
 #include <QPoint>
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTest__QTouchEventSequence
 #define WORKAROUND_INNER_CLASS_DEFINITION_QTest__QTouchEventWidgetSequence
@@ -70,6 +71,9 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_point(bool* _dynamic_cast_ok, void* self, int touchId);
+	friend QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_pointOrPreviousPoint(bool* _dynamic_cast_ok, void* self, int touchId);
 };
 
 QTest__QTouchEventWidgetSequence* QTest__QTouchEventWidgetSequence_new(QTest__QTouchEventWidgetSequence* param1) {
@@ -152,6 +156,36 @@ bool QTest__QTouchEventWidgetSequence_override_virtual_commit(void* self, intptr
 
 bool QTest__QTouchEventWidgetSequence_virtualbase_commit(void* self, bool processEvents) {
 	return ( (MiqtVirtualQTestQTouchEventWidgetSequence*)(self) )->virtualbase_commit(processEvents);
+}
+
+QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_point(bool* _dynamic_cast_ok, void* self, int touchId) {
+	MiqtVirtualQTestQTouchEventWidgetSequence* self_cast = dynamic_cast<MiqtVirtualQTestQTouchEventWidgetSequence*>( (QTest__QTouchEventWidgetSequence*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	QEventPoint& _ret = self_cast->point(static_cast<int>(touchId));
+	// Cast returned reference into pointer
+	return &_ret;
+
+}
+
+QEventPoint* QTest__QTouchEventWidgetSequence_protectedbase_pointOrPreviousPoint(bool* _dynamic_cast_ok, void* self, int touchId) {
+	MiqtVirtualQTestQTouchEventWidgetSequence* self_cast = dynamic_cast<MiqtVirtualQTestQTouchEventWidgetSequence*>( (QTest__QTouchEventWidgetSequence*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	QEventPoint& _ret = self_cast->pointOrPreviousPoint(static_cast<int>(touchId));
+	// Cast returned reference into pointer
+	return &_ret;
+
 }
 
 void QTest__QTouchEventWidgetSequence_delete(QTest__QTouchEventWidgetSequence* self) {

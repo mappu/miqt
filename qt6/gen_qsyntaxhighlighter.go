@@ -118,6 +118,198 @@ func QSyntaxHighlighter_Tr3(s string, c string, n int) string {
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
 }
+
+// SetFormat can only be called from a QSyntaxHighlighter that was directly constructed.
+func (this *QSyntaxHighlighter) SetFormat(start int, count int, format *QTextCharFormat) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSyntaxHighlighter_protectedbase_setFormat(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(start), (C.int)(count), format.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetFormat2 can only be called from a QSyntaxHighlighter that was directly constructed.
+func (this *QSyntaxHighlighter) SetFormat2(start int, count int, color *QColor) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSyntaxHighlighter_protectedbase_setFormat2(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(start), (C.int)(count), color.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetFormat3 can only be called from a QSyntaxHighlighter that was directly constructed.
+func (this *QSyntaxHighlighter) SetFormat3(start int, count int, font *QFont) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSyntaxHighlighter_protectedbase_setFormat3(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(start), (C.int)(count), font.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Format can only be called from a QSyntaxHighlighter that was directly constructed.
+func (this *QSyntaxHighlighter) Format(pos int) QTextCharFormat {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQTextCharFormat(C.QSyntaxHighlighter_protectedbase_format(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(pos)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// PreviousBlockState can only be called from a QSyntaxHighlighter that was directly constructed.
+func (this *QSyntaxHighlighter) PreviousBlockState() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QSyntaxHighlighter_protectedbase_previousBlockState(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// CurrentBlockState can only be called from a QSyntaxHighlighter that was directly constructed.
+func (this *QSyntaxHighlighter) CurrentBlockState() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QSyntaxHighlighter_protectedbase_currentBlockState(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SetCurrentBlockState can only be called from a QSyntaxHighlighter that was directly constructed.
+func (this *QSyntaxHighlighter) SetCurrentBlockState(newState int) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSyntaxHighlighter_protectedbase_setCurrentBlockState(&_dynamic_cast_ok, unsafe.Pointer(this.h), (C.int)(newState))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// SetCurrentBlockUserData can only be called from a QSyntaxHighlighter that was directly constructed.
+func (this *QSyntaxHighlighter) SetCurrentBlockUserData(data *QTextBlockUserData) {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QSyntaxHighlighter_protectedbase_setCurrentBlockUserData(&_dynamic_cast_ok, unsafe.Pointer(this.h), data.cPointer())
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// CurrentBlockUserData can only be called from a QSyntaxHighlighter that was directly constructed.
+func (this *QSyntaxHighlighter) CurrentBlockUserData() *QTextBlockUserData {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQTextBlockUserData(C.QSyntaxHighlighter_protectedbase_currentBlockUserData(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// CurrentBlock can only be called from a QSyntaxHighlighter that was directly constructed.
+func (this *QSyntaxHighlighter) CurrentBlock() QTextBlock {
+
+	var _dynamic_cast_ok C.bool = false
+	_goptr := newQTextBlock(C.QSyntaxHighlighter_protectedbase_currentBlock(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+	_goptr.GoGC() // Qt uses pass-by-value semantics for this type. Mimic with finalizer
+	_method_ret := *_goptr
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Sender can only be called from a QSyntaxHighlighter that was directly constructed.
+func (this *QSyntaxHighlighter) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QSyntaxHighlighter_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QSyntaxHighlighter that was directly constructed.
+func (this *QSyntaxHighlighter) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QSyntaxHighlighter_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QSyntaxHighlighter that was directly constructed.
+func (this *QSyntaxHighlighter) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QSyntaxHighlighter_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QSyntaxHighlighter that was directly constructed.
+func (this *QSyntaxHighlighter) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QSyntaxHighlighter_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
 func (this *QSyntaxHighlighter) OnHighlightBlock(slot func(text string)) {
 	ok := C.QSyntaxHighlighter_override_virtual_highlightBlock(unsafe.Pointer(this.h), C.intptr_t(cgo.NewHandle(slot)))
 	if !ok {

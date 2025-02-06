@@ -31,6 +31,7 @@ class QFrame;
 class QHideEvent;
 class QInputMethodEvent;
 class QKeyEvent;
+class QMargins;
 class QMetaMethod;
 class QMetaObject;
 class QMouseEvent;
@@ -68,6 +69,7 @@ typedef struct QFrame QFrame;
 typedef struct QHideEvent QHideEvent;
 typedef struct QInputMethodEvent QInputMethodEvent;
 typedef struct QKeyEvent QKeyEvent;
+typedef struct QMargins QMargins;
 typedef struct QMetaMethod QMetaMethod;
 typedef struct QMetaObject QMetaObject;
 typedef struct QMouseEvent QMouseEvent;
@@ -240,6 +242,19 @@ bool QAbstractScrollArea_override_virtual_connectNotify(void* self, intptr_t slo
 void QAbstractScrollArea_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QAbstractScrollArea_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QAbstractScrollArea_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+void QAbstractScrollArea_protectedbase_setViewportMargins(bool* _dynamic_cast_ok, void* self, int left, int top, int right, int bottom);
+void QAbstractScrollArea_protectedbase_setViewportMarginsWithMargins(bool* _dynamic_cast_ok, void* self, QMargins* margins);
+QMargins* QAbstractScrollArea_protectedbase_viewportMargins(bool* _dynamic_cast_ok, const void* self);
+void QAbstractScrollArea_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
+void QAbstractScrollArea_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
+void QAbstractScrollArea_protectedbase_create(bool* _dynamic_cast_ok, void* self);
+void QAbstractScrollArea_protectedbase_destroy(bool* _dynamic_cast_ok, void* self);
+bool QAbstractScrollArea_protectedbase_focusNextChild(bool* _dynamic_cast_ok, void* self);
+bool QAbstractScrollArea_protectedbase_focusPreviousChild(bool* _dynamic_cast_ok, void* self);
+QObject* QAbstractScrollArea_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QAbstractScrollArea_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QAbstractScrollArea_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QAbstractScrollArea_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QAbstractScrollArea_delete(QAbstractScrollArea* self);
 
 #ifdef __cplusplus

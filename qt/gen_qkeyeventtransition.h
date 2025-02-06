@@ -75,6 +75,10 @@ bool QKeyEventTransition_override_virtual_connectNotify(void* self, intptr_t slo
 void QKeyEventTransition_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 bool QKeyEventTransition_override_virtual_disconnectNotify(void* self, intptr_t slot);
 void QKeyEventTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
+QObject* QKeyEventTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+int QKeyEventTransition_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+int QKeyEventTransition_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+bool QKeyEventTransition_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 void QKeyEventTransition_delete(QKeyEventTransition* self);
 
 #ifdef __cplusplus

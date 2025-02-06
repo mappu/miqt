@@ -1,5 +1,6 @@
 #include <QCameraExposureControl>
 #include <QMediaControl>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QObject>
 #include <QString>

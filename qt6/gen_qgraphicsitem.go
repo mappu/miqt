@@ -1039,6 +1039,54 @@ func (this *QGraphicsItem) Scroll3(dx float64, dy float64, rect *QRectF) {
 	C.QGraphicsItem_scroll3(this.h, (C.double)(dx), (C.double)(dy), rect.cPointer())
 }
 
+// UpdateMicroFocus can only be called from a QGraphicsItem that was directly constructed.
+func (this *QGraphicsItem) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsItem_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddToIndex can only be called from a QGraphicsItem that was directly constructed.
+func (this *QGraphicsItem) AddToIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsItem_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RemoveFromIndex can only be called from a QGraphicsItem that was directly constructed.
+func (this *QGraphicsItem) RemoveFromIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsItem_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// PrepareGeometryChange can only be called from a QGraphicsItem that was directly constructed.
+func (this *QGraphicsItem) PrepareGeometryChange() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsItem_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
 func (this *QGraphicsItem) callVirtualBase_Advance(phase int) {
 
 	C.QGraphicsItem_virtualbase_advance(unsafe.Pointer(this.h), (C.int)(phase))
@@ -2299,6 +2347,112 @@ func (this *QGraphicsObject) GrabGesture2(typeVal GestureType, flags GestureFlag
 	C.QGraphicsObject_grabGesture2(this.h, (C.int)(typeVal), (C.int)(flags))
 }
 
+// UpdateMicroFocus can only be called from a QGraphicsObject that was directly constructed.
+func (this *QGraphicsObject) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsObject_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Sender can only be called from a QGraphicsObject that was directly constructed.
+func (this *QGraphicsObject) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QGraphicsObject_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QGraphicsObject that was directly constructed.
+func (this *QGraphicsObject) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsObject_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QGraphicsObject that was directly constructed.
+func (this *QGraphicsObject) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsObject_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QGraphicsObject that was directly constructed.
+func (this *QGraphicsObject) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsObject_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// AddToIndex can only be called from a QGraphicsObject that was directly constructed.
+func (this *QGraphicsObject) AddToIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsObject_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RemoveFromIndex can only be called from a QGraphicsObject that was directly constructed.
+func (this *QGraphicsObject) RemoveFromIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsObject_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// PrepareGeometryChange can only be called from a QGraphicsObject that was directly constructed.
+func (this *QGraphicsObject) PrepareGeometryChange() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsObject_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
 func (this *QGraphicsObject) callVirtualBase_Event(ev *QEvent) bool {
 
 	return (bool)(C.QGraphicsObject_virtualbase_event(unsafe.Pointer(this.h), ev.cPointer()))
@@ -3517,6 +3671,54 @@ func (this *QAbstractGraphicsShapeItem) OpaqueArea() *QPainterPath {
 	return _goptr
 }
 
+// UpdateMicroFocus can only be called from a QAbstractGraphicsShapeItem that was directly constructed.
+func (this *QAbstractGraphicsShapeItem) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QAbstractGraphicsShapeItem_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddToIndex can only be called from a QAbstractGraphicsShapeItem that was directly constructed.
+func (this *QAbstractGraphicsShapeItem) AddToIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QAbstractGraphicsShapeItem_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RemoveFromIndex can only be called from a QAbstractGraphicsShapeItem that was directly constructed.
+func (this *QAbstractGraphicsShapeItem) RemoveFromIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QAbstractGraphicsShapeItem_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// PrepareGeometryChange can only be called from a QAbstractGraphicsShapeItem that was directly constructed.
+func (this *QAbstractGraphicsShapeItem) PrepareGeometryChange() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QAbstractGraphicsShapeItem_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
 func (this *QAbstractGraphicsShapeItem) callVirtualBase_IsObscuredBy(item *QGraphicsItem) bool {
 
 	return (bool)(C.QAbstractGraphicsShapeItem_virtualbase_isObscuredBy(unsafe.Pointer(this.h), item.cPointer()))
@@ -4571,6 +4773,54 @@ func (this *QGraphicsPathItem) OpaqueArea() *QPainterPath {
 
 func (this *QGraphicsPathItem) Type() int {
 	return (int)(C.QGraphicsPathItem_type(this.h))
+}
+
+// UpdateMicroFocus can only be called from a QGraphicsPathItem that was directly constructed.
+func (this *QGraphicsPathItem) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsPathItem_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddToIndex can only be called from a QGraphicsPathItem that was directly constructed.
+func (this *QGraphicsPathItem) AddToIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsPathItem_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RemoveFromIndex can only be called from a QGraphicsPathItem that was directly constructed.
+func (this *QGraphicsPathItem) RemoveFromIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsPathItem_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// PrepareGeometryChange can only be called from a QGraphicsPathItem that was directly constructed.
+func (this *QGraphicsPathItem) PrepareGeometryChange() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsPathItem_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
 }
 
 func (this *QGraphicsPathItem) callVirtualBase_BoundingRect() *QRectF {
@@ -5657,6 +5907,54 @@ func (this *QGraphicsRectItem) OpaqueArea() *QPainterPath {
 
 func (this *QGraphicsRectItem) Type() int {
 	return (int)(C.QGraphicsRectItem_type(this.h))
+}
+
+// UpdateMicroFocus can only be called from a QGraphicsRectItem that was directly constructed.
+func (this *QGraphicsRectItem) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsRectItem_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddToIndex can only be called from a QGraphicsRectItem that was directly constructed.
+func (this *QGraphicsRectItem) AddToIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsRectItem_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RemoveFromIndex can only be called from a QGraphicsRectItem that was directly constructed.
+func (this *QGraphicsRectItem) RemoveFromIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsRectItem_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// PrepareGeometryChange can only be called from a QGraphicsRectItem that was directly constructed.
+func (this *QGraphicsRectItem) PrepareGeometryChange() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsRectItem_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
 }
 
 func (this *QGraphicsRectItem) callVirtualBase_BoundingRect() *QRectF {
@@ -6761,6 +7059,54 @@ func (this *QGraphicsEllipseItem) Type() int {
 	return (int)(C.QGraphicsEllipseItem_type(this.h))
 }
 
+// UpdateMicroFocus can only be called from a QGraphicsEllipseItem that was directly constructed.
+func (this *QGraphicsEllipseItem) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsEllipseItem_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddToIndex can only be called from a QGraphicsEllipseItem that was directly constructed.
+func (this *QGraphicsEllipseItem) AddToIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsEllipseItem_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RemoveFromIndex can only be called from a QGraphicsEllipseItem that was directly constructed.
+func (this *QGraphicsEllipseItem) RemoveFromIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsEllipseItem_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// PrepareGeometryChange can only be called from a QGraphicsEllipseItem that was directly constructed.
+func (this *QGraphicsEllipseItem) PrepareGeometryChange() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsEllipseItem_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
 func (this *QGraphicsEllipseItem) callVirtualBase_BoundingRect() *QRectF {
 
 	_goptr := newQRectF(C.QGraphicsEllipseItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
@@ -7815,6 +8161,54 @@ func (this *QGraphicsPolygonItem) OpaqueArea() *QPainterPath {
 
 func (this *QGraphicsPolygonItem) Type() int {
 	return (int)(C.QGraphicsPolygonItem_type(this.h))
+}
+
+// UpdateMicroFocus can only be called from a QGraphicsPolygonItem that was directly constructed.
+func (this *QGraphicsPolygonItem) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsPolygonItem_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddToIndex can only be called from a QGraphicsPolygonItem that was directly constructed.
+func (this *QGraphicsPolygonItem) AddToIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsPolygonItem_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RemoveFromIndex can only be called from a QGraphicsPolygonItem that was directly constructed.
+func (this *QGraphicsPolygonItem) RemoveFromIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsPolygonItem_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// PrepareGeometryChange can only be called from a QGraphicsPolygonItem that was directly constructed.
+func (this *QGraphicsPolygonItem) PrepareGeometryChange() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsPolygonItem_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
 }
 
 func (this *QGraphicsPolygonItem) callVirtualBase_BoundingRect() *QRectF {
@@ -8911,6 +9305,54 @@ func (this *QGraphicsLineItem) OpaqueArea() *QPainterPath {
 
 func (this *QGraphicsLineItem) Type() int {
 	return (int)(C.QGraphicsLineItem_type(this.h))
+}
+
+// UpdateMicroFocus can only be called from a QGraphicsLineItem that was directly constructed.
+func (this *QGraphicsLineItem) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsLineItem_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddToIndex can only be called from a QGraphicsLineItem that was directly constructed.
+func (this *QGraphicsLineItem) AddToIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsLineItem_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RemoveFromIndex can only be called from a QGraphicsLineItem that was directly constructed.
+func (this *QGraphicsLineItem) RemoveFromIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsLineItem_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// PrepareGeometryChange can only be called from a QGraphicsLineItem that was directly constructed.
+func (this *QGraphicsLineItem) PrepareGeometryChange() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsLineItem_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
 }
 
 func (this *QGraphicsLineItem) callVirtualBase_BoundingRect() *QRectF {
@@ -10011,6 +10453,54 @@ func (this *QGraphicsPixmapItem) ShapeMode() QGraphicsPixmapItem__ShapeMode {
 
 func (this *QGraphicsPixmapItem) SetShapeMode(mode QGraphicsPixmapItem__ShapeMode) {
 	C.QGraphicsPixmapItem_setShapeMode(this.h, (C.int)(mode))
+}
+
+// UpdateMicroFocus can only be called from a QGraphicsPixmapItem that was directly constructed.
+func (this *QGraphicsPixmapItem) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsPixmapItem_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddToIndex can only be called from a QGraphicsPixmapItem that was directly constructed.
+func (this *QGraphicsPixmapItem) AddToIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsPixmapItem_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RemoveFromIndex can only be called from a QGraphicsPixmapItem that was directly constructed.
+func (this *QGraphicsPixmapItem) RemoveFromIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsPixmapItem_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// PrepareGeometryChange can only be called from a QGraphicsPixmapItem that was directly constructed.
+func (this *QGraphicsPixmapItem) PrepareGeometryChange() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsPixmapItem_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
 }
 
 func (this *QGraphicsPixmapItem) callVirtualBase_BoundingRect() *QRectF {
@@ -11278,6 +11768,112 @@ func QGraphicsTextItem_Tr3(s string, c string, n int) string {
 	_ret := C.GoStringN(_ms.data, C.int(int64(_ms.len)))
 	C.free(unsafe.Pointer(_ms.data))
 	return _ret
+}
+
+// UpdateMicroFocus can only be called from a QGraphicsTextItem that was directly constructed.
+func (this *QGraphicsTextItem) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsTextItem_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// Sender can only be called from a QGraphicsTextItem that was directly constructed.
+func (this *QGraphicsTextItem) Sender() *QObject {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := newQObject(C.QGraphicsTextItem_protectedbase_sender(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// SenderSignalIndex can only be called from a QGraphicsTextItem that was directly constructed.
+func (this *QGraphicsTextItem) SenderSignalIndex() int {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsTextItem_protectedbase_senderSignalIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h)))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// Receivers can only be called from a QGraphicsTextItem that was directly constructed.
+func (this *QGraphicsTextItem) Receivers(signal string) int {
+	signal_Cstring := C.CString(signal)
+	defer C.free(unsafe.Pointer(signal_Cstring))
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (int)(C.QGraphicsTextItem_protectedbase_receivers(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal_Cstring))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// IsSignalConnected can only be called from a QGraphicsTextItem that was directly constructed.
+func (this *QGraphicsTextItem) IsSignalConnected(signal *QMetaMethod) bool {
+
+	var _dynamic_cast_ok C.bool = false
+	_method_ret := (bool)(C.QGraphicsTextItem_protectedbase_isSignalConnected(&_dynamic_cast_ok, unsafe.Pointer(this.h), signal.cPointer()))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+	return _method_ret
+
+}
+
+// AddToIndex can only be called from a QGraphicsTextItem that was directly constructed.
+func (this *QGraphicsTextItem) AddToIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsTextItem_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RemoveFromIndex can only be called from a QGraphicsTextItem that was directly constructed.
+func (this *QGraphicsTextItem) RemoveFromIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsTextItem_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// PrepareGeometryChange can only be called from a QGraphicsTextItem that was directly constructed.
+func (this *QGraphicsTextItem) PrepareGeometryChange() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsTextItem_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
 }
 
 func (this *QGraphicsTextItem) callVirtualBase_BoundingRect() *QRectF {
@@ -12561,6 +13157,54 @@ func (this *QGraphicsSimpleTextItem) Type() int {
 	return (int)(C.QGraphicsSimpleTextItem_type(this.h))
 }
 
+// UpdateMicroFocus can only be called from a QGraphicsSimpleTextItem that was directly constructed.
+func (this *QGraphicsSimpleTextItem) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsSimpleTextItem_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddToIndex can only be called from a QGraphicsSimpleTextItem that was directly constructed.
+func (this *QGraphicsSimpleTextItem) AddToIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsSimpleTextItem_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RemoveFromIndex can only be called from a QGraphicsSimpleTextItem that was directly constructed.
+func (this *QGraphicsSimpleTextItem) RemoveFromIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsSimpleTextItem_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// PrepareGeometryChange can only be called from a QGraphicsSimpleTextItem that was directly constructed.
+func (this *QGraphicsSimpleTextItem) PrepareGeometryChange() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsSimpleTextItem_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
 func (this *QGraphicsSimpleTextItem) callVirtualBase_BoundingRect() *QRectF {
 
 	_goptr := newQRectF(C.QGraphicsSimpleTextItem_virtualbase_boundingRect(unsafe.Pointer(this.h)))
@@ -13605,6 +14249,54 @@ func (this *QGraphicsItemGroup) OpaqueArea() *QPainterPath {
 
 func (this *QGraphicsItemGroup) Type() int {
 	return (int)(C.QGraphicsItemGroup_type(this.h))
+}
+
+// UpdateMicroFocus can only be called from a QGraphicsItemGroup that was directly constructed.
+func (this *QGraphicsItemGroup) UpdateMicroFocus() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsItemGroup_protectedbase_updateMicroFocus(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// AddToIndex can only be called from a QGraphicsItemGroup that was directly constructed.
+func (this *QGraphicsItemGroup) AddToIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsItemGroup_protectedbase_addToIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// RemoveFromIndex can only be called from a QGraphicsItemGroup that was directly constructed.
+func (this *QGraphicsItemGroup) RemoveFromIndex() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsItemGroup_protectedbase_removeFromIndex(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
+}
+
+// PrepareGeometryChange can only be called from a QGraphicsItemGroup that was directly constructed.
+func (this *QGraphicsItemGroup) PrepareGeometryChange() {
+
+	var _dynamic_cast_ok C.bool = false
+	C.QGraphicsItemGroup_protectedbase_prepareGeometryChange(&_dynamic_cast_ok, unsafe.Pointer(this.h))
+
+	if !_dynamic_cast_ok {
+		panic("miqt: can only call protected methods for directly constructed types")
+	}
+
 }
 
 func (this *QGraphicsItemGroup) callVirtualBase_BoundingRect() *QRectF {

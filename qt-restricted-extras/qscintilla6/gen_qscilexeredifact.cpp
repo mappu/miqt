@@ -1060,6 +1060,11 @@ public:
 
 	}
 
+	// Wrappers to allow calling protected methods:
+	friend QObject* QsciLexerEDIFACT_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciLexerEDIFACT_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self);
+	friend int QsciLexerEDIFACT_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal);
+	friend bool QsciLexerEDIFACT_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal);
 };
 
 QsciLexerEDIFACT* QsciLexerEDIFACT_new() {
@@ -1702,6 +1707,58 @@ bool QsciLexerEDIFACT_override_virtual_disconnectNotify(void* self, intptr_t slo
 
 void QsciLexerEDIFACT_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
 	( (MiqtVirtualQsciLexerEDIFACT*)(self) )->virtualbase_disconnectNotify(signal);
+}
+
+QObject* QsciLexerEDIFACT_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciLexerEDIFACT* self_cast = dynamic_cast<MiqtVirtualQsciLexerEDIFACT*>( (QsciLexerEDIFACT*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return nullptr;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->sender();
+
+}
+
+int QsciLexerEDIFACT_protectedbase_senderSignalIndex(bool* _dynamic_cast_ok, const void* self) {
+	MiqtVirtualQsciLexerEDIFACT* self_cast = dynamic_cast<MiqtVirtualQsciLexerEDIFACT*>( (QsciLexerEDIFACT*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->senderSignalIndex();
+
+}
+
+int QsciLexerEDIFACT_protectedbase_receivers(bool* _dynamic_cast_ok, const void* self, const char* signal) {
+	MiqtVirtualQsciLexerEDIFACT* self_cast = dynamic_cast<MiqtVirtualQsciLexerEDIFACT*>( (QsciLexerEDIFACT*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return 0;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->receivers(signal);
+
+}
+
+bool QsciLexerEDIFACT_protectedbase_isSignalConnected(bool* _dynamic_cast_ok, const void* self, QMetaMethod* signal) {
+	MiqtVirtualQsciLexerEDIFACT* self_cast = dynamic_cast<MiqtVirtualQsciLexerEDIFACT*>( (QsciLexerEDIFACT*)(self) );
+	if (self_cast == nullptr) {
+		*_dynamic_cast_ok = false;
+		return false;
+	}
+	
+	*_dynamic_cast_ok = true;
+	
+	return self_cast->isSignalConnected(*signal);
+
 }
 
 void QsciLexerEDIFACT_delete(QsciLexerEDIFACT* self) {

@@ -2,6 +2,7 @@
 #include <QIODevice>
 #include <QIODeviceBase>
 #include <QList>
+#include <QMetaMethod>
 #include <QMetaObject>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
