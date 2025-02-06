@@ -616,10 +616,13 @@ func getCabiZeroValue(p CppParameter) string {
 
 	if p.Pointer {
 		return getCppZeroValue(p)
-	} else if p.IsKnownEnum() {
-		return getCppZeroValue(p)
+	} else if ev, ok := KnownEnums[p.ParameterType]; ok {
+		// In CABI the zero value may be the underlying type of an enum instead
+		return "(" + ev.Enum.UnderlyingType.RenderTypeCabi() + ")(0)"
+
 	} else if p.IntType() {
-		return getCppZeroValue(p)
+		return getCppZeroValue(p) // default
+
 	} else if p.ParameterType == "bool" {
 		return getCppZeroValue(p)
 	} else if p.ParameterType == "void" {
