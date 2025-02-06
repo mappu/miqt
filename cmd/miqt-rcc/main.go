@@ -17,8 +17,8 @@ func main() {
 	// Parse arguments
 
 	input := flag.String("Input", "", "Path to .qrc input file")
-	outputRcc := flag.String("OutputRcc", "", "(Optional) Path to .rcc output file. If omitted, inferred from the input file path")
 	outputGo := flag.String("OutputGo", "", "(Optional) Path to .go output file. If omitted, interred from the input file path")
+	outputRcc := flag.String("OutputRcc", "", "(Optional) Path to .rcc output file. If omitted, inferred from the output Go file path")
 	packageName := flag.String("Package", "main", "Package to use in generated Go files")
 	variableName := flag.String("VariableName", "_resourceRcc", "Temporary global variable name for loading embedded data")
 	useQt6 := flag.Bool("Qt6", false, "Use Qt 6 instead of Qt 5")
@@ -33,11 +33,12 @@ func main() {
 
 	// Fill in default output names, if not specified
 
-	if *outputRcc == "" {
-		*outputRcc = strings.TrimSuffix(*input, `.qrc`) + `.rcc`
-	}
 	if *outputGo == "" {
 		*outputGo = strings.TrimSuffix(*input, `.qrc`) + `.go`
+	}
+	if *outputRcc == "" {
+		// Base this on the outputGo filename, not the input filename
+		*outputRcc = strings.TrimSuffix(*outputGo, `.go`) + `.rcc`
 	}
 
 	// Compile qrc to binary resource file
