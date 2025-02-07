@@ -1358,6 +1358,30 @@ extern "C" {
 				vbpreamble, vbforwarding := emitParametersCABI2CppForwarding(m.Parameters, "\t\t")
 				vbCallTarget := "self_cast->" + m.CppCallTarget() + "(" + vbforwarding + ")"
 
+				assignStmts := emitAssignCppToCabi("\treturn ", m.ReturnType, vbCallTarget)
+
+				// FIXME(hack): In some platforms, instantiating a protected
+				// enum fails in friend context:
+				//
+				//     QAbstractItemView::State _ret = self_cast->state();
+				//     error: 'State' is a protected member of 'QAbstractItemView'
+				//
+				// @ref https://stackoverflow.com/q/52191903
+				// However, it works fine on most other platforms. Probably this
+				// is a GCC vs Clang difference.
+				//
+				// Work around it for this specific class (fingers-crossed) by
+				// referencing the protected enum via its subclass name
+				assignStmts = strings.Replace(assignStmts, c.ClassName+`::`, cppSubclassName(c)+`::`, -1)
+
+				// Also need to scan parent classes (e.g. QColumnView friend
+				// functions refer to its parent QAbstractItemView::State)
+				for _, classInherit := range c.AllInheritsClassInfo() {
+					assignStmts = strings.Replace(assignStmts, classInherit.Class.ClassName+`::`, cppSubclassName(c)+`::`, -1)
+				}
+
+				//
+
 				ret.WriteString(
 					m.ReturnType.RenderTypeCabi() + " " + cabiProtectedBaseName(c, m) + "(bool* _dynamic_cast_ok, " + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+"void*") + ") {\n" +
 
@@ -1369,7 +1393,7 @@ extern "C" {
 						"\t\n" +
 						"\t*_dynamic_cast_ok = true;\n" +
 						"\t" + vbpreamble + "\n" +
-						emitAssignCppToCabi("\treturn ", m.ReturnType, vbCallTarget) + "\n" +
+						assignStmts + "\n" +
 						"}\n" +
 						"\n",
 				)
