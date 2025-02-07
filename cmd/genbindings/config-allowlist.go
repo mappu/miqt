@@ -323,6 +323,14 @@ func AllowMethod(className string, mm CppMethod) error {
 
 func AllowCtor(className string, mm CppMethod) bool {
 
+	if className == `QStringConverterBase` {
+		// Both the main ctor and the copy constructor were changed from public to protected between 6.8.1 and 6.8.2
+		// @ref https://github.com/qt/qtbase/commit/41679e0b4398c0de38a8107642dc643fe2c3554f
+		// @ref https://github.com/mappu/miqt/issues/168
+		// Block both ctors from generation
+		return false
+	}
+
 	// Default allow
 	return true
 }
