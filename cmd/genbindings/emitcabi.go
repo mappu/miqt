@@ -70,6 +70,10 @@ func cabiOverrideVirtualName(c CppClass, m CppMethod) string {
 	return cabiClassName(c.ClassName) + `_override_virtual_` + m.SafeMethodName()
 }
 
+func cppSubclassName(c CppClass) string {
+	return "MiqtVirtual" + strings.Replace(c.ClassName, `::`, ``, -1)
+}
+
 func (p CppParameter) RenderTypeCabi() string {
 
 	if p.ParameterType == "QString" {
@@ -977,7 +981,7 @@ extern "C" {
 
 		if len(virtualMethods) > 0 {
 
-			overriddenClassName := "MiqtVirtual" + strings.Replace(cppClassName, `::`, ``, -1)
+			overriddenClassName := cppSubclassName(c)
 
 			ret.WriteString("class " + overriddenClassName + " final : public " + cppClassName + " {\n" +
 				"public:\n" +
