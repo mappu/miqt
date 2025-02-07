@@ -5,6 +5,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 )
@@ -60,6 +61,10 @@ replace github.com/mappu/miqt => ` + filepath.Clean(RccDir+`/../../`) + `
 	// Build miqt-rcc and add it to our fake tools path
 
 	toolsDir := t.TempDir()
+	newPathEnv := "PATH=" + toolsDir + `:` + os.Getenv(`PATH`)
+	if runtime.GOOS == "windows" { // uses a different separator
+		newPathEnv = "PATH=" + toolsDir + `;` + os.Getenv(`PATH`)
+	}
 
 	t.Run("Compile miqt-rcc", func(t *testing.T) {
 
@@ -116,7 +121,7 @@ replace github.com/mappu/miqt => ` + filepath.Clean(RccDir+`/../../`) + `
 		// Verify that `go generate` works
 
 		regenCmd := exec.Command(`go`, `generate`)
-		regenCmd.Env = []string{"PATH=" + toolsDir + ":" + os.Getenv("PATH")}
+		regenCmd.Env = []string{newPathEnv}
 		regenCmd.Dir = td
 		regenCmd.Stderr = os.Stderr
 		err = regenCmd.Run()
