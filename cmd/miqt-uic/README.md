@@ -2,7 +2,21 @@
 
 The miqt-uic program compiles Qt Designer `.ui` files into MIQT `.go` files.
 
-For usage information, see the `examples/uidesigner` folder.
+## Usage
+
+For example usage information, see the `examples/uidesigner` folder.
+
+```
+Usage of ./miqt-uic:
+  -InFile string
+        Input .ui file
+  -OutFile string
+        Output .go file, or - for stdout (default "-")
+  -Package string
+        Custom package name (default "main")
+  -Qt6
+        Use Qt 6 instead of Qt 5
+```
 
 ## Architecture design
 

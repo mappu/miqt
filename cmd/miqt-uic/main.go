@@ -9,9 +9,14 @@ import (
 	"strings"
 )
 
+const (
+	DefaultIsQt6 = false
+)
+
 func main() {
 	inFile := flag.String("InFile", "", "Input .ui file")
 	outFile := flag.String("OutFile", "-", "Output .go file, or - for stdout")
+	useQt6 := flag.Bool("Qt6", DefaultIsQt6, "Use Qt 6 instead of Qt 5")
 	packageName := flag.String("Package", "main", "Custom package name")
 	flag.Parse()
 
@@ -31,7 +36,7 @@ func main() {
 		panic(err)
 	}
 
-	gosrc, err := generate(*packageName, strings.Join(os.Args[1:], " "), parsed)
+	gosrc, err := generate(*packageName, strings.Join(os.Args[1:], " "), parsed, *useQt6)
 	if err != nil {
 		panic(err)
 	}
