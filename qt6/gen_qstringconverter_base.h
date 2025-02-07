@@ -28,8 +28,6 @@ typedef struct QStringConverterBase QStringConverterBase;
 typedef struct QStringConverterBase__State QStringConverterBase__State;
 #endif
 
-QStringConverterBase* QStringConverterBase_new(QStringConverterBase* param1);
-QStringConverterBase* QStringConverterBase_new2();
 
 void QStringConverter_virtbase(QStringConverter* src, QStringConverterBase** outptr_QStringConverterBase);
 bool QStringConverter_isValid(const QStringConverter* self);

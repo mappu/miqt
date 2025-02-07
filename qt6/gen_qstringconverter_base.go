@@ -71,18 +71,6 @@ func UnsafeNewQStringConverterBase(h unsafe.Pointer) *QStringConverterBase {
 	return newQStringConverterBase((*C.QStringConverterBase)(h))
 }
 
-// NewQStringConverterBase constructs a new QStringConverterBase object.
-func NewQStringConverterBase(param1 *QStringConverterBase) *QStringConverterBase {
-
-	return newQStringConverterBase(C.QStringConverterBase_new(param1.cPointer()))
-}
-
-// NewQStringConverterBase2 constructs a new QStringConverterBase object.
-func NewQStringConverterBase2() *QStringConverterBase {
-
-	return newQStringConverterBase(C.QStringConverterBase_new2())
-}
-
 type QStringConverter struct {
 	h *C.QStringConverter
 	*QStringConverterBase

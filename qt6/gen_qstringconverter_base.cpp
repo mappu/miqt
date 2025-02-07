@@ -12,14 +12,6 @@ extern "C" {
 } /* extern C */
 #endif
 
-QStringConverterBase* QStringConverterBase_new(QStringConverterBase* param1) {
-	return new QStringConverterBase(*param1);
-}
-
-QStringConverterBase* QStringConverterBase_new2() {
-	return new QStringConverterBase();
-}
-
 void QStringConverter_virtbase(QStringConverter* src, QStringConverterBase** outptr_QStringConverterBase) {
 	*outptr_QStringConverterBase = static_cast<QStringConverterBase*>(src);
 }
