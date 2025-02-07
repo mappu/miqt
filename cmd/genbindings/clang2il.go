@@ -394,6 +394,10 @@ nextMethod:
 			// an existing class instance
 			mm.IsStatic = true
 
+			if !AllowCtor(ret.ClassName, mm) {
+				continue
+			}
+
 			ret.Ctors = append(ret.Ctors, mm)
 
 		case "CXXDestructorDecl":

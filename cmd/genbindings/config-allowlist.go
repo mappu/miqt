@@ -321,6 +321,12 @@ func AllowMethod(className string, mm CppMethod) error {
 	return nil // OK, allow
 }
 
+func AllowCtor(className string, mm CppMethod) bool {
+
+	// Default allow
+	return true
+}
+
 // AllowType controls whether to permit binding of a method, if a method uses
 // this type in its parameter list or return type.
 // Any type not permitted by AllowClass is also not permitted by this method.
