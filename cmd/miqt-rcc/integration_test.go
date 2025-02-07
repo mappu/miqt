@@ -118,6 +118,13 @@ replace github.com/mappu/miqt => ` + filepath.Clean(RccDir+`/../../`) + `
 
 	t.Run("Go generate", func(t *testing.T) {
 
+		// Check timestamp before generation
+
+		fiBefore, err := os.Stat(filepath.Join(td, `resources.go`))
+		if err != nil {
+			t.Fatal(err)
+		}
+
 		// Verify that `go generate` works
 
 		regenCmd := exec.Command(`go`, `generate`)
@@ -132,6 +139,17 @@ replace github.com/mappu/miqt => ` + filepath.Clean(RccDir+`/../../`) + `
 		goResult, err := ioutil.ReadFile(filepath.Join(td, `resources.go`))
 		if err != nil {
 			t.Fatal(err)
+		}
+
+		// Verify that the resources.go file was actually replaced
+
+		fiAfter, err := os.Stat(filepath.Join(td, `resources.go`))
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		if !fiAfter.ModTime().After(fiBefore.ModTime()) {
+			t.Errorf("expected mtime %v to be after original mtime %v", fiAfter.ModTime(), fiBefore.ModTime())
 		}
 
 		// Verify the go:embed line accurately used a relative path
