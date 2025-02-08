@@ -1086,22 +1086,13 @@ extern "C" {
 					// real Qt parameters, in case there are protected enum types
 					// (e.g. QAbstractItemView::CursorAction)
 
-					var parametersCabi []string
-					for _, p := range m.Parameters {
-						parametersCabi = append(parametersCabi, p.RenderTypeCabi()+" "+p.cParameterName())
-					}
-					vbpreamble, vbforwarding := emitParametersCABI2CppForwarding(m.Parameters, "\t\t")
-
-					vbCallTarget := methodPrefixName + "::" + m.CppCallTarget() + "(" + vbforwarding + ")"
+					// Because (in the Go projection) this is only exposed as a
+					// super() argument to a real virtual override, we know that
+					// the pointer type correctly points to our subclass and
+					// therefore no dynamic_cast<> validation is required
 
 					ret.WriteString(
-						"\t// Wrapper to allow calling protected method\n" +
-							"\t" + m.ReturnType.RenderTypeCabi() + " virtualbase_" + m.SafeMethodName() + "(" + strings.Join(parametersCabi, ", ") + ") " + ifv(m.IsConst, "const ", "") + "{\n" +
-							vbpreamble + "\n" +
-							emitAssignCppToCabi("\t\treturn ", m.ReturnType, vbCallTarget) + "\n" +
-							"\t}\n" +
-
-							"\n",
+						"\tfriend " + m.ReturnType.RenderTypeCabi() + " " + cabiVirtualBaseName(c, m) + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+"void*") + ");\n\n",
 					)
 
 				}
@@ -1343,26 +1334,24 @@ extern "C" {
 
 			if !m.IsPureVirtual {
 				// This is not generally exposed in the Go binding, but when overriding
-				// the method, allows Go code to call super()
+				// the method, allows Go code to call super().
 
-				// It uses CABI-CABI, the CABI-QtC++ type conversion will be done
-				// inside the class method so as to allow for accessing protected
-				// types.
-				// Both the parameters and return type are given in CABI format.
+				// This calls the target Qt C++ method directly using fully
+				// qualified syntax (`MiqtSubclass->QFoo::Bar()`). This method
+				// takes and returns CABI types.
 
-				var parameterNames []string
-				for _, param := range m.Parameters {
-					parameterNames = append(parameterNames, param.cParameterName())
+				var parametersCabi []string
+				for _, p := range m.Parameters {
+					parametersCabi = append(parametersCabi, p.RenderTypeCabi()+" "+p.cParameterName())
 				}
+				vbpreamble, vbforwarding := emitParametersCABI2CppForwarding(m.Parameters, "\t")
 
-				// callTarget is an rvalue representing the full C++ function call.
-				// These are never static
-
-				callTarget := "( (" + ifv(m.IsConst, "const ", "") + cppClassName + "*)(self) )->virtualbase_" + m.SafeMethodName() + "(" + strings.Join(parameterNames, `, `) + ")"
+				callTarget := "( (" + ifv(m.IsConst, "const ", "") + cppClassName + "*)(self) )->" + c.ClassName + "::" + m.CppCallTarget() + "(" + vbforwarding + ")"
 
 				ret.WriteString(
 					m.ReturnType.RenderTypeCabi() + " " + cabiVirtualBaseName(c, m) + "(" + emitParametersCabi(m, ifv(m.IsConst, "const ", "")+"void*") + ") {\n" +
-						"\t" + ifv(m.ReturnType.Void(), "", "return ") + callTarget + ";\n" +
+						vbpreamble + "\n" +
+						fixupProtectedReferences(emitAssignCppToCabi("\treturn ", m.ReturnType, callTarget)) + "\n" +
 						"}\n" +
 						"\n",
 				)
