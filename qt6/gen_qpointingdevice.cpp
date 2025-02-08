@@ -84,12 +84,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QPointingDevice::event(event);
-
-	}
+	friend bool QPointingDevice_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -108,12 +103,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QPointingDevice::eventFilter(watched, event);
-
-	}
+	friend bool QPointingDevice_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -132,12 +122,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QPointingDevice::timerEvent(event);
-
-	}
+	friend void QPointingDevice_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -156,12 +141,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QPointingDevice::childEvent(event);
-
-	}
+	friend void QPointingDevice_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -180,12 +160,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QPointingDevice::customEvent(event);
-
-	}
+	friend void QPointingDevice_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -206,12 +181,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QPointingDevice::connectNotify(*signal);
-
-	}
+	friend void QPointingDevice_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -232,12 +202,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QPointingDevice::disconnectNotify(*signal);
-
-	}
+	friend void QPointingDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QPointingDevice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -392,7 +357,9 @@ bool QPointingDevice_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QPointingDevice_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQPointingDevice*)(self) )->MiqtVirtualQPointingDevice::event(event);
+
 }
 
 bool QPointingDevice_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -406,7 +373,9 @@ bool QPointingDevice_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QPointingDevice_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQPointingDevice*)(self) )->MiqtVirtualQPointingDevice::eventFilter(watched, event);
+
 }
 
 bool QPointingDevice_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -420,7 +389,9 @@ bool QPointingDevice_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QPointingDevice_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQPointingDevice*)(self) )->MiqtVirtualQPointingDevice::timerEvent(event);
+
 }
 
 bool QPointingDevice_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -434,7 +405,9 @@ bool QPointingDevice_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QPointingDevice_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQPointingDevice*)(self) )->MiqtVirtualQPointingDevice::childEvent(event);
+
 }
 
 bool QPointingDevice_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -448,7 +421,9 @@ bool QPointingDevice_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QPointingDevice_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQPointingDevice*)(self) )->MiqtVirtualQPointingDevice::customEvent(event);
+
 }
 
 bool QPointingDevice_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -462,7 +437,9 @@ bool QPointingDevice_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QPointingDevice_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQPointingDevice*)(self) )->MiqtVirtualQPointingDevice::connectNotify(*signal);
+
 }
 
 bool QPointingDevice_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -476,7 +453,9 @@ bool QPointingDevice_override_virtual_disconnectNotify(void* self, intptr_t slot
 }
 
 void QPointingDevice_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQPointingDevice*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQPointingDevice*)(self) )->MiqtVirtualQPointingDevice::disconnectNotify(*signal);
+
 }
 
 QObject* QPointingDevice_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

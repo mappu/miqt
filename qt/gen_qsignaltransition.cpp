@@ -57,12 +57,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventTest(QEvent* event) {
-
-		return QSignalTransition::eventTest(event);
-
-	}
+	friend bool QSignalTransition_virtualbase_eventTest(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__onTransition = 0;
@@ -81,12 +76,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_onTransition(QEvent* event) {
-
-		QSignalTransition::onTransition(event);
-
-	}
+	friend void QSignalTransition_virtualbase_onTransition(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -104,12 +94,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* e) {
-
-		return QSignalTransition::event(e);
-
-	}
+	friend bool QSignalTransition_virtualbase_event(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -128,12 +113,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QSignalTransition::eventFilter(watched, event);
-
-	}
+	friend bool QSignalTransition_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -152,12 +132,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QSignalTransition::timerEvent(event);
-
-	}
+	friend void QSignalTransition_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -176,12 +151,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QSignalTransition::childEvent(event);
-
-	}
+	friend void QSignalTransition_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -200,12 +170,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QSignalTransition::customEvent(event);
-
-	}
+	friend void QSignalTransition_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -226,12 +191,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QSignalTransition::connectNotify(*signal);
-
-	}
+	friend void QSignalTransition_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -252,12 +212,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QSignalTransition::disconnectNotify(*signal);
-
-	}
+	friend void QSignalTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QSignalTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -393,7 +348,9 @@ bool QSignalTransition_override_virtual_eventTest(void* self, intptr_t slot) {
 }
 
 bool QSignalTransition_virtualbase_eventTest(void* self, QEvent* event) {
-	return ( (MiqtVirtualQSignalTransition*)(self) )->virtualbase_eventTest(event);
+
+	return ( (MiqtVirtualQSignalTransition*)(self) )->MiqtVirtualQSignalTransition::eventTest(event);
+
 }
 
 bool QSignalTransition_override_virtual_onTransition(void* self, intptr_t slot) {
@@ -407,7 +364,9 @@ bool QSignalTransition_override_virtual_onTransition(void* self, intptr_t slot) 
 }
 
 void QSignalTransition_virtualbase_onTransition(void* self, QEvent* event) {
-	( (MiqtVirtualQSignalTransition*)(self) )->virtualbase_onTransition(event);
+
+	( (MiqtVirtualQSignalTransition*)(self) )->MiqtVirtualQSignalTransition::onTransition(event);
+
 }
 
 bool QSignalTransition_override_virtual_event(void* self, intptr_t slot) {
@@ -421,7 +380,9 @@ bool QSignalTransition_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QSignalTransition_virtualbase_event(void* self, QEvent* e) {
-	return ( (MiqtVirtualQSignalTransition*)(self) )->virtualbase_event(e);
+
+	return ( (MiqtVirtualQSignalTransition*)(self) )->MiqtVirtualQSignalTransition::event(e);
+
 }
 
 bool QSignalTransition_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -435,7 +396,9 @@ bool QSignalTransition_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QSignalTransition_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQSignalTransition*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQSignalTransition*)(self) )->MiqtVirtualQSignalTransition::eventFilter(watched, event);
+
 }
 
 bool QSignalTransition_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -449,7 +412,9 @@ bool QSignalTransition_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QSignalTransition_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQSignalTransition*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQSignalTransition*)(self) )->MiqtVirtualQSignalTransition::timerEvent(event);
+
 }
 
 bool QSignalTransition_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -463,7 +428,9 @@ bool QSignalTransition_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QSignalTransition_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQSignalTransition*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQSignalTransition*)(self) )->MiqtVirtualQSignalTransition::childEvent(event);
+
 }
 
 bool QSignalTransition_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -477,7 +444,9 @@ bool QSignalTransition_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QSignalTransition_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQSignalTransition*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQSignalTransition*)(self) )->MiqtVirtualQSignalTransition::customEvent(event);
+
 }
 
 bool QSignalTransition_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -491,7 +460,9 @@ bool QSignalTransition_override_virtual_connectNotify(void* self, intptr_t slot)
 }
 
 void QSignalTransition_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSignalTransition*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQSignalTransition*)(self) )->MiqtVirtualQSignalTransition::connectNotify(*signal);
+
 }
 
 bool QSignalTransition_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -505,7 +476,9 @@ bool QSignalTransition_override_virtual_disconnectNotify(void* self, intptr_t sl
 }
 
 void QSignalTransition_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSignalTransition*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQSignalTransition*)(self) )->MiqtVirtualQSignalTransition::disconnectNotify(*signal);
+
 }
 
 QObject* QSignalTransition_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

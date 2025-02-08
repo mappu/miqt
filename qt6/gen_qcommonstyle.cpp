@@ -91,12 +91,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawPrimitive(int pe, QStyleOption* opt, QPainter* p, QWidget* w) const {
-
-		QCommonStyle::drawPrimitive(static_cast<QStyle::PrimitiveElement>(pe), opt, p, w);
-
-	}
+	friend void QCommonStyle_virtualbase_drawPrimitive(const void* self, int pe, QStyleOption* opt, QPainter* p, QWidget* w);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawControl = 0;
@@ -119,12 +114,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawControl(int element, QStyleOption* opt, QPainter* p, QWidget* w) const {
-
-		QCommonStyle::drawControl(static_cast<QStyle::ControlElement>(element), opt, p, w);
-
-	}
+	friend void QCommonStyle_virtualbase_drawControl(const void* self, int element, QStyleOption* opt, QPainter* p, QWidget* w);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__subElementRect = 0;
@@ -145,12 +135,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRect* virtualbase_subElementRect(int r, QStyleOption* opt, QWidget* widget) const {
-
-		return new QRect(QCommonStyle::subElementRect(static_cast<QStyle::SubElement>(r), opt, widget));
-
-	}
+	friend QRect* QCommonStyle_virtualbase_subElementRect(const void* self, int r, QStyleOption* opt, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawComplexControl = 0;
@@ -173,12 +158,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawComplexControl(int cc, QStyleOptionComplex* opt, QPainter* p, QWidget* w) const {
-
-		QCommonStyle::drawComplexControl(static_cast<QStyle::ComplexControl>(cc), opt, p, w);
-
-	}
+	friend void QCommonStyle_virtualbase_drawComplexControl(const void* self, int cc, QStyleOptionComplex* opt, QPainter* p, QWidget* w);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hitTestComplexControl = 0;
@@ -202,13 +182,7 @@ public:
 		return static_cast<QStyle::SubControl>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_hitTestComplexControl(int cc, QStyleOptionComplex* opt, QPoint* pt, QWidget* w) const {
-
-		QStyle::SubControl _ret = QCommonStyle::hitTestComplexControl(static_cast<QStyle::ComplexControl>(cc), opt, *pt, w);
-		return static_cast<int>(_ret);
-
-	}
+	friend int QCommonStyle_virtualbase_hitTestComplexControl(const void* self, int cc, QStyleOptionComplex* opt, QPoint* pt, QWidget* w);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__subControlRect = 0;
@@ -231,12 +205,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRect* virtualbase_subControlRect(int cc, QStyleOptionComplex* opt, int sc, QWidget* w) const {
-
-		return new QRect(QCommonStyle::subControlRect(static_cast<QStyle::ComplexControl>(cc), opt, static_cast<QStyle::SubControl>(sc), w));
-
-	}
+	friend QRect* QCommonStyle_virtualbase_subControlRect(const void* self, int cc, QStyleOptionComplex* opt, int sc, QWidget* w);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeFromContents = 0;
@@ -260,12 +229,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeFromContents(int ct, QStyleOption* opt, QSize* contentsSize, QWidget* widget) const {
-
-		return new QSize(QCommonStyle::sizeFromContents(static_cast<QStyle::ContentsType>(ct), opt, *contentsSize, widget));
-
-	}
+	friend QSize* QCommonStyle_virtualbase_sizeFromContents(const void* self, int ct, QStyleOption* opt, QSize* contentsSize, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__pixelMetric = 0;
@@ -286,12 +250,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_pixelMetric(int m, QStyleOption* opt, QWidget* widget) const {
-
-		return QCommonStyle::pixelMetric(static_cast<QStyle::PixelMetric>(m), opt, widget);
-
-	}
+	friend int QCommonStyle_virtualbase_pixelMetric(const void* self, int m, QStyleOption* opt, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__styleHint = 0;
@@ -313,12 +272,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_styleHint(int sh, QStyleOption* opt, QWidget* w, QStyleHintReturn* shret) const {
-
-		return QCommonStyle::styleHint(static_cast<QStyle::StyleHint>(sh), opt, w, shret);
-
-	}
+	friend int QCommonStyle_virtualbase_styleHint(const void* self, int sh, QStyleOption* opt, QWidget* w, QStyleHintReturn* shret);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__standardIcon = 0;
@@ -339,12 +293,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QIcon* virtualbase_standardIcon(int standardIcon, QStyleOption* opt, QWidget* widget) const {
-
-		return new QIcon(QCommonStyle::standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon), opt, widget));
-
-	}
+	friend QIcon* QCommonStyle_virtualbase_standardIcon(const void* self, int standardIcon, QStyleOption* opt, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__standardPixmap = 0;
@@ -365,12 +314,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPixmap* virtualbase_standardPixmap(int sp, QStyleOption* opt, QWidget* widget) const {
-
-		return new QPixmap(QCommonStyle::standardPixmap(static_cast<QStyle::StandardPixmap>(sp), opt, widget));
-
-	}
+	friend QPixmap* QCommonStyle_virtualbase_standardPixmap(const void* self, int sp, QStyleOption* opt, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__generatedIconPixmap = 0;
@@ -393,12 +337,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPixmap* virtualbase_generatedIconPixmap(int iconMode, QPixmap* pixmap, QStyleOption* opt) const {
-
-		return new QPixmap(QCommonStyle::generatedIconPixmap(static_cast<QIcon::Mode>(iconMode), *pixmap, opt));
-
-	}
+	friend QPixmap* QCommonStyle_virtualbase_generatedIconPixmap(const void* self, int iconMode, QPixmap* pixmap, QStyleOption* opt);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__layoutSpacing = 0;
@@ -423,12 +362,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_layoutSpacing(int control1, int control2, int orientation, QStyleOption* option, QWidget* widget) const {
-
-		return QCommonStyle::layoutSpacing(static_cast<QSizePolicy::ControlType>(control1), static_cast<QSizePolicy::ControlType>(control2), static_cast<Qt::Orientation>(orientation), option, widget);
-
-	}
+	friend int QCommonStyle_virtualbase_layoutSpacing(const void* self, int control1, int control2, int orientation, QStyleOption* option, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__polish = 0;
@@ -449,12 +383,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_polish(QPalette* param1) {
-
-		QCommonStyle::polish(*param1);
-
-	}
+	friend void QCommonStyle_virtualbase_polish(void* self, QPalette* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__polishWithApp = 0;
@@ -473,12 +402,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_polishWithApp(QApplication* app) {
-
-		QCommonStyle::polish(app);
-
-	}
+	friend void QCommonStyle_virtualbase_polishWithApp(void* self, QApplication* app);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__polishWithWidget = 0;
@@ -497,12 +421,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_polishWithWidget(QWidget* widget) {
-
-		QCommonStyle::polish(widget);
-
-	}
+	friend void QCommonStyle_virtualbase_polishWithWidget(void* self, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__unpolish = 0;
@@ -521,12 +440,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_unpolish(QWidget* widget) {
-
-		QCommonStyle::unpolish(widget);
-
-	}
+	friend void QCommonStyle_virtualbase_unpolish(void* self, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__unpolishWithApplication = 0;
@@ -545,12 +459,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_unpolishWithApplication(QApplication* application) {
-
-		QCommonStyle::unpolish(application);
-
-	}
+	friend void QCommonStyle_virtualbase_unpolishWithApplication(void* self, QApplication* application);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__itemTextRect = 0;
@@ -583,13 +492,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRect* virtualbase_itemTextRect(QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string text) const {
-		QString text_QString = QString::fromUtf8(text.data, text.len);
-
-		return new QRect(QCommonStyle::itemTextRect(*fm, *r, static_cast<int>(flags), enabled, text_QString));
-
-	}
+	friend QRect* QCommonStyle_virtualbase_itemTextRect(const void* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string text);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__itemPixmapRect = 0;
@@ -613,12 +516,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRect* virtualbase_itemPixmapRect(QRect* r, int flags, QPixmap* pixmap) const {
-
-		return new QRect(QCommonStyle::itemPixmapRect(*r, static_cast<int>(flags), *pixmap));
-
-	}
+	friend QRect* QCommonStyle_virtualbase_itemPixmapRect(const void* self, QRect* r, int flags, QPixmap* pixmap);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawItemText = 0;
@@ -655,13 +553,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawItemText(QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole) const {
-		QString text_QString = QString::fromUtf8(text.data, text.len);
-
-		QCommonStyle::drawItemText(painter, *rect, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
-
-	}
+	friend void QCommonStyle_virtualbase_drawItemText(const void* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawItemPixmap = 0;
@@ -687,12 +579,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawItemPixmap(QPainter* painter, QRect* rect, int alignment, QPixmap* pixmap) const {
-
-		QCommonStyle::drawItemPixmap(painter, *rect, static_cast<int>(alignment), *pixmap);
-
-	}
+	friend void QCommonStyle_virtualbase_drawItemPixmap(const void* self, QPainter* painter, QRect* rect, int alignment, QPixmap* pixmap);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__standardPalette = 0;
@@ -709,12 +596,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPalette* virtualbase_standardPalette() const {
-
-		return new QPalette(QCommonStyle::standardPalette());
-
-	}
+	friend QPalette* QCommonStyle_virtualbase_standardPalette(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -732,12 +614,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QCommonStyle::event(event);
-
-	}
+	friend bool QCommonStyle_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -756,12 +633,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QCommonStyle::eventFilter(watched, event);
-
-	}
+	friend bool QCommonStyle_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -780,12 +652,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QCommonStyle::timerEvent(event);
-
-	}
+	friend void QCommonStyle_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -804,12 +671,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QCommonStyle::childEvent(event);
-
-	}
+	friend void QCommonStyle_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -828,12 +690,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QCommonStyle::customEvent(event);
-
-	}
+	friend void QCommonStyle_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -854,12 +711,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QCommonStyle::connectNotify(*signal);
-
-	}
+	friend void QCommonStyle_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -880,12 +732,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QCommonStyle::disconnectNotify(*signal);
-
-	}
+	friend void QCommonStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QCommonStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -1027,7 +874,9 @@ bool QCommonStyle_override_virtual_drawPrimitive(void* self, intptr_t slot) {
 }
 
 void QCommonStyle_virtualbase_drawPrimitive(const void* self, int pe, QStyleOption* opt, QPainter* p, QWidget* w) {
-	( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_drawPrimitive(pe, opt, p, w);
+
+	( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::drawPrimitive(static_cast<MiqtVirtualQCommonStyle::PrimitiveElement>(pe), opt, p, w);
+
 }
 
 bool QCommonStyle_override_virtual_drawControl(void* self, intptr_t slot) {
@@ -1041,7 +890,9 @@ bool QCommonStyle_override_virtual_drawControl(void* self, intptr_t slot) {
 }
 
 void QCommonStyle_virtualbase_drawControl(const void* self, int element, QStyleOption* opt, QPainter* p, QWidget* w) {
-	( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_drawControl(element, opt, p, w);
+
+	( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::drawControl(static_cast<MiqtVirtualQCommonStyle::ControlElement>(element), opt, p, w);
+
 }
 
 bool QCommonStyle_override_virtual_subElementRect(void* self, intptr_t slot) {
@@ -1055,7 +906,9 @@ bool QCommonStyle_override_virtual_subElementRect(void* self, intptr_t slot) {
 }
 
 QRect* QCommonStyle_virtualbase_subElementRect(const void* self, int r, QStyleOption* opt, QWidget* widget) {
-	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_subElementRect(r, opt, widget);
+
+	return new QRect(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::subElementRect(static_cast<MiqtVirtualQCommonStyle::SubElement>(r), opt, widget));
+
 }
 
 bool QCommonStyle_override_virtual_drawComplexControl(void* self, intptr_t slot) {
@@ -1069,7 +922,9 @@ bool QCommonStyle_override_virtual_drawComplexControl(void* self, intptr_t slot)
 }
 
 void QCommonStyle_virtualbase_drawComplexControl(const void* self, int cc, QStyleOptionComplex* opt, QPainter* p, QWidget* w) {
-	( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_drawComplexControl(cc, opt, p, w);
+
+	( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::drawComplexControl(static_cast<MiqtVirtualQCommonStyle::ComplexControl>(cc), opt, p, w);
+
 }
 
 bool QCommonStyle_override_virtual_hitTestComplexControl(void* self, intptr_t slot) {
@@ -1083,7 +938,10 @@ bool QCommonStyle_override_virtual_hitTestComplexControl(void* self, intptr_t sl
 }
 
 int QCommonStyle_virtualbase_hitTestComplexControl(const void* self, int cc, QStyleOptionComplex* opt, QPoint* pt, QWidget* w) {
-	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_hitTestComplexControl(cc, opt, pt, w);
+
+	MiqtVirtualQCommonStyle::SubControl _ret = ( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::hitTestComplexControl(static_cast<MiqtVirtualQCommonStyle::ComplexControl>(cc), opt, *pt, w);
+	return static_cast<int>(_ret);
+
 }
 
 bool QCommonStyle_override_virtual_subControlRect(void* self, intptr_t slot) {
@@ -1097,7 +955,9 @@ bool QCommonStyle_override_virtual_subControlRect(void* self, intptr_t slot) {
 }
 
 QRect* QCommonStyle_virtualbase_subControlRect(const void* self, int cc, QStyleOptionComplex* opt, int sc, QWidget* w) {
-	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_subControlRect(cc, opt, sc, w);
+
+	return new QRect(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::subControlRect(static_cast<MiqtVirtualQCommonStyle::ComplexControl>(cc), opt, static_cast<MiqtVirtualQCommonStyle::SubControl>(sc), w));
+
 }
 
 bool QCommonStyle_override_virtual_sizeFromContents(void* self, intptr_t slot) {
@@ -1111,7 +971,9 @@ bool QCommonStyle_override_virtual_sizeFromContents(void* self, intptr_t slot) {
 }
 
 QSize* QCommonStyle_virtualbase_sizeFromContents(const void* self, int ct, QStyleOption* opt, QSize* contentsSize, QWidget* widget) {
-	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_sizeFromContents(ct, opt, contentsSize, widget);
+
+	return new QSize(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::sizeFromContents(static_cast<MiqtVirtualQCommonStyle::ContentsType>(ct), opt, *contentsSize, widget));
+
 }
 
 bool QCommonStyle_override_virtual_pixelMetric(void* self, intptr_t slot) {
@@ -1125,7 +987,9 @@ bool QCommonStyle_override_virtual_pixelMetric(void* self, intptr_t slot) {
 }
 
 int QCommonStyle_virtualbase_pixelMetric(const void* self, int m, QStyleOption* opt, QWidget* widget) {
-	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_pixelMetric(m, opt, widget);
+
+	return ( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::pixelMetric(static_cast<MiqtVirtualQCommonStyle::PixelMetric>(m), opt, widget);
+
 }
 
 bool QCommonStyle_override_virtual_styleHint(void* self, intptr_t slot) {
@@ -1139,7 +1003,9 @@ bool QCommonStyle_override_virtual_styleHint(void* self, intptr_t slot) {
 }
 
 int QCommonStyle_virtualbase_styleHint(const void* self, int sh, QStyleOption* opt, QWidget* w, QStyleHintReturn* shret) {
-	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_styleHint(sh, opt, w, shret);
+
+	return ( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::styleHint(static_cast<MiqtVirtualQCommonStyle::StyleHint>(sh), opt, w, shret);
+
 }
 
 bool QCommonStyle_override_virtual_standardIcon(void* self, intptr_t slot) {
@@ -1153,7 +1019,9 @@ bool QCommonStyle_override_virtual_standardIcon(void* self, intptr_t slot) {
 }
 
 QIcon* QCommonStyle_virtualbase_standardIcon(const void* self, int standardIcon, QStyleOption* opt, QWidget* widget) {
-	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_standardIcon(standardIcon, opt, widget);
+
+	return new QIcon(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::standardIcon(static_cast<MiqtVirtualQCommonStyle::StandardPixmap>(standardIcon), opt, widget));
+
 }
 
 bool QCommonStyle_override_virtual_standardPixmap(void* self, intptr_t slot) {
@@ -1167,7 +1035,9 @@ bool QCommonStyle_override_virtual_standardPixmap(void* self, intptr_t slot) {
 }
 
 QPixmap* QCommonStyle_virtualbase_standardPixmap(const void* self, int sp, QStyleOption* opt, QWidget* widget) {
-	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_standardPixmap(sp, opt, widget);
+
+	return new QPixmap(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::standardPixmap(static_cast<MiqtVirtualQCommonStyle::StandardPixmap>(sp), opt, widget));
+
 }
 
 bool QCommonStyle_override_virtual_generatedIconPixmap(void* self, intptr_t slot) {
@@ -1181,7 +1051,9 @@ bool QCommonStyle_override_virtual_generatedIconPixmap(void* self, intptr_t slot
 }
 
 QPixmap* QCommonStyle_virtualbase_generatedIconPixmap(const void* self, int iconMode, QPixmap* pixmap, QStyleOption* opt) {
-	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_generatedIconPixmap(iconMode, pixmap, opt);
+
+	return new QPixmap(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::generatedIconPixmap(static_cast<QIcon::Mode>(iconMode), *pixmap, opt));
+
 }
 
 bool QCommonStyle_override_virtual_layoutSpacing(void* self, intptr_t slot) {
@@ -1195,7 +1067,9 @@ bool QCommonStyle_override_virtual_layoutSpacing(void* self, intptr_t slot) {
 }
 
 int QCommonStyle_virtualbase_layoutSpacing(const void* self, int control1, int control2, int orientation, QStyleOption* option, QWidget* widget) {
-	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_layoutSpacing(control1, control2, orientation, option, widget);
+
+	return ( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::layoutSpacing(static_cast<QSizePolicy::ControlType>(control1), static_cast<QSizePolicy::ControlType>(control2), static_cast<Qt::Orientation>(orientation), option, widget);
+
 }
 
 bool QCommonStyle_override_virtual_polish(void* self, intptr_t slot) {
@@ -1209,7 +1083,9 @@ bool QCommonStyle_override_virtual_polish(void* self, intptr_t slot) {
 }
 
 void QCommonStyle_virtualbase_polish(void* self, QPalette* param1) {
-	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_polish(param1);
+
+	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::polish(*param1);
+
 }
 
 bool QCommonStyle_override_virtual_polishWithApp(void* self, intptr_t slot) {
@@ -1223,7 +1099,9 @@ bool QCommonStyle_override_virtual_polishWithApp(void* self, intptr_t slot) {
 }
 
 void QCommonStyle_virtualbase_polishWithApp(void* self, QApplication* app) {
-	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_polishWithApp(app);
+
+	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::polish(app);
+
 }
 
 bool QCommonStyle_override_virtual_polishWithWidget(void* self, intptr_t slot) {
@@ -1237,7 +1115,9 @@ bool QCommonStyle_override_virtual_polishWithWidget(void* self, intptr_t slot) {
 }
 
 void QCommonStyle_virtualbase_polishWithWidget(void* self, QWidget* widget) {
-	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_polishWithWidget(widget);
+
+	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::polish(widget);
+
 }
 
 bool QCommonStyle_override_virtual_unpolish(void* self, intptr_t slot) {
@@ -1251,7 +1131,9 @@ bool QCommonStyle_override_virtual_unpolish(void* self, intptr_t slot) {
 }
 
 void QCommonStyle_virtualbase_unpolish(void* self, QWidget* widget) {
-	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_unpolish(widget);
+
+	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::unpolish(widget);
+
 }
 
 bool QCommonStyle_override_virtual_unpolishWithApplication(void* self, intptr_t slot) {
@@ -1265,7 +1147,9 @@ bool QCommonStyle_override_virtual_unpolishWithApplication(void* self, intptr_t 
 }
 
 void QCommonStyle_virtualbase_unpolishWithApplication(void* self, QApplication* application) {
-	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_unpolishWithApplication(application);
+
+	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::unpolish(application);
+
 }
 
 bool QCommonStyle_override_virtual_itemTextRect(void* self, intptr_t slot) {
@@ -1279,7 +1163,10 @@ bool QCommonStyle_override_virtual_itemTextRect(void* self, intptr_t slot) {
 }
 
 QRect* QCommonStyle_virtualbase_itemTextRect(const void* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string text) {
-	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_itemTextRect(fm, r, flags, enabled, text);
+	QString text_QString = QString::fromUtf8(text.data, text.len);
+
+	return new QRect(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::itemTextRect(*fm, *r, static_cast<int>(flags), enabled, text_QString));
+
 }
 
 bool QCommonStyle_override_virtual_itemPixmapRect(void* self, intptr_t slot) {
@@ -1293,7 +1180,9 @@ bool QCommonStyle_override_virtual_itemPixmapRect(void* self, intptr_t slot) {
 }
 
 QRect* QCommonStyle_virtualbase_itemPixmapRect(const void* self, QRect* r, int flags, QPixmap* pixmap) {
-	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_itemPixmapRect(r, flags, pixmap);
+
+	return new QRect(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::itemPixmapRect(*r, static_cast<int>(flags), *pixmap));
+
 }
 
 bool QCommonStyle_override_virtual_drawItemText(void* self, intptr_t slot) {
@@ -1307,7 +1196,10 @@ bool QCommonStyle_override_virtual_drawItemText(void* self, intptr_t slot) {
 }
 
 void QCommonStyle_virtualbase_drawItemText(const void* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole) {
-	( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_drawItemText(painter, rect, flags, pal, enabled, text, textRole);
+	QString text_QString = QString::fromUtf8(text.data, text.len);
+
+	( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::drawItemText(painter, *rect, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
+
 }
 
 bool QCommonStyle_override_virtual_drawItemPixmap(void* self, intptr_t slot) {
@@ -1321,7 +1213,9 @@ bool QCommonStyle_override_virtual_drawItemPixmap(void* self, intptr_t slot) {
 }
 
 void QCommonStyle_virtualbase_drawItemPixmap(const void* self, QPainter* painter, QRect* rect, int alignment, QPixmap* pixmap) {
-	( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_drawItemPixmap(painter, rect, alignment, pixmap);
+
+	( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::drawItemPixmap(painter, *rect, static_cast<int>(alignment), *pixmap);
+
 }
 
 bool QCommonStyle_override_virtual_standardPalette(void* self, intptr_t slot) {
@@ -1335,7 +1229,9 @@ bool QCommonStyle_override_virtual_standardPalette(void* self, intptr_t slot) {
 }
 
 QPalette* QCommonStyle_virtualbase_standardPalette(const void* self) {
-	return ( (const MiqtVirtualQCommonStyle*)(self) )->virtualbase_standardPalette();
+
+	return new QPalette(( (const MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::standardPalette());
+
 }
 
 bool QCommonStyle_override_virtual_event(void* self, intptr_t slot) {
@@ -1349,7 +1245,9 @@ bool QCommonStyle_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QCommonStyle_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::event(event);
+
 }
 
 bool QCommonStyle_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1363,7 +1261,9 @@ bool QCommonStyle_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QCommonStyle_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::eventFilter(watched, event);
+
 }
 
 bool QCommonStyle_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1377,7 +1277,9 @@ bool QCommonStyle_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QCommonStyle_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::timerEvent(event);
+
 }
 
 bool QCommonStyle_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1391,7 +1293,9 @@ bool QCommonStyle_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QCommonStyle_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::childEvent(event);
+
 }
 
 bool QCommonStyle_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1405,7 +1309,9 @@ bool QCommonStyle_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QCommonStyle_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::customEvent(event);
+
 }
 
 bool QCommonStyle_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1419,7 +1325,9 @@ bool QCommonStyle_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QCommonStyle_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::connectNotify(*signal);
+
 }
 
 bool QCommonStyle_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1433,7 +1341,9 @@ bool QCommonStyle_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QCommonStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQCommonStyle*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQCommonStyle*)(self) )->MiqtVirtualQCommonStyle::disconnectNotify(*signal);
+
 }
 
 QObject* QCommonStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

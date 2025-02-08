@@ -55,12 +55,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QAnimationGroup::event(event);
-
-	}
+	friend bool QAnimationGroup_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__duration = 0;
@@ -113,12 +108,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_updateState(int newState, int oldState) {
-
-		QAnimationGroup::updateState(static_cast<QAbstractAnimation::State>(newState), static_cast<QAbstractAnimation::State>(oldState));
-
-	}
+	friend void QAnimationGroup_virtualbase_updateState(void* self, int newState, int oldState);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateDirection = 0;
@@ -138,12 +128,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_updateDirection(int direction) {
-
-		QAnimationGroup::updateDirection(static_cast<QAbstractAnimation::Direction>(direction));
-
-	}
+	friend void QAnimationGroup_virtualbase_updateDirection(void* self, int direction);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -162,12 +147,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QAnimationGroup::eventFilter(watched, event);
-
-	}
+	friend bool QAnimationGroup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -186,12 +166,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QAnimationGroup::timerEvent(event);
-
-	}
+	friend void QAnimationGroup_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -210,12 +185,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QAnimationGroup::childEvent(event);
-
-	}
+	friend void QAnimationGroup_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -234,12 +204,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QAnimationGroup::customEvent(event);
-
-	}
+	friend void QAnimationGroup_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -260,12 +225,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QAnimationGroup::connectNotify(*signal);
-
-	}
+	friend void QAnimationGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -286,12 +246,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QAnimationGroup::disconnectNotify(*signal);
-
-	}
+	friend void QAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QAnimationGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -429,7 +384,9 @@ bool QAnimationGroup_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QAnimationGroup_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQAnimationGroup*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQAnimationGroup*)(self) )->MiqtVirtualQAnimationGroup::event(event);
+
 }
 
 bool QAnimationGroup_override_virtual_duration(void* self, intptr_t slot) {
@@ -463,7 +420,9 @@ bool QAnimationGroup_override_virtual_updateState(void* self, intptr_t slot) {
 }
 
 void QAnimationGroup_virtualbase_updateState(void* self, int newState, int oldState) {
-	( (MiqtVirtualQAnimationGroup*)(self) )->virtualbase_updateState(newState, oldState);
+
+	( (MiqtVirtualQAnimationGroup*)(self) )->MiqtVirtualQAnimationGroup::updateState(static_cast<MiqtVirtualQAnimationGroup::State>(newState), static_cast<MiqtVirtualQAnimationGroup::State>(oldState));
+
 }
 
 bool QAnimationGroup_override_virtual_updateDirection(void* self, intptr_t slot) {
@@ -477,7 +436,9 @@ bool QAnimationGroup_override_virtual_updateDirection(void* self, intptr_t slot)
 }
 
 void QAnimationGroup_virtualbase_updateDirection(void* self, int direction) {
-	( (MiqtVirtualQAnimationGroup*)(self) )->virtualbase_updateDirection(direction);
+
+	( (MiqtVirtualQAnimationGroup*)(self) )->MiqtVirtualQAnimationGroup::updateDirection(static_cast<MiqtVirtualQAnimationGroup::Direction>(direction));
+
 }
 
 bool QAnimationGroup_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -491,7 +452,9 @@ bool QAnimationGroup_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QAnimationGroup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQAnimationGroup*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQAnimationGroup*)(self) )->MiqtVirtualQAnimationGroup::eventFilter(watched, event);
+
 }
 
 bool QAnimationGroup_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -505,7 +468,9 @@ bool QAnimationGroup_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QAnimationGroup_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQAnimationGroup*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQAnimationGroup*)(self) )->MiqtVirtualQAnimationGroup::timerEvent(event);
+
 }
 
 bool QAnimationGroup_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -519,7 +484,9 @@ bool QAnimationGroup_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QAnimationGroup_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQAnimationGroup*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQAnimationGroup*)(self) )->MiqtVirtualQAnimationGroup::childEvent(event);
+
 }
 
 bool QAnimationGroup_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -533,7 +500,9 @@ bool QAnimationGroup_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QAnimationGroup_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAnimationGroup*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQAnimationGroup*)(self) )->MiqtVirtualQAnimationGroup::customEvent(event);
+
 }
 
 bool QAnimationGroup_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -547,7 +516,9 @@ bool QAnimationGroup_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QAnimationGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAnimationGroup*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQAnimationGroup*)(self) )->MiqtVirtualQAnimationGroup::connectNotify(*signal);
+
 }
 
 bool QAnimationGroup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -561,7 +532,9 @@ bool QAnimationGroup_override_virtual_disconnectNotify(void* self, intptr_t slot
 }
 
 void QAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAnimationGroup*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQAnimationGroup*)(self) )->MiqtVirtualQAnimationGroup::disconnectNotify(*signal);
+
 }
 
 QObject* QAnimationGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

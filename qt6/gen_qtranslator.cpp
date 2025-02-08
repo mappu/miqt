@@ -57,19 +57,7 @@ public:
 		return callback_return_value_QString;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_string virtualbase_translate(const char* context, const char* sourceText, const char* disambiguation, int n) const {
-
-		QString _ret = QTranslator::translate(context, sourceText, disambiguation, static_cast<int>(n));
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray _b = _ret.toUtf8();
-		struct miqt_string _ms;
-		_ms.len = _b.length();
-		_ms.data = static_cast<char*>(malloc(_ms.len));
-		memcpy(_ms.data, _b.data(), _ms.len);
-		return _ms;
-
-	}
+	friend struct miqt_string QTranslator_virtualbase_translate(const void* self, const char* context, const char* sourceText, const char* disambiguation, int n);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEmpty = 0;
@@ -86,12 +74,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEmpty() const {
-
-		return QTranslator::isEmpty();
-
-	}
+	friend bool QTranslator_virtualbase_isEmpty(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -109,12 +92,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QTranslator::event(event);
-
-	}
+	friend bool QTranslator_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -133,12 +111,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QTranslator::eventFilter(watched, event);
-
-	}
+	friend bool QTranslator_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -157,12 +130,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QTranslator::timerEvent(event);
-
-	}
+	friend void QTranslator_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -181,12 +149,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QTranslator::childEvent(event);
-
-	}
+	friend void QTranslator_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -205,12 +168,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QTranslator::customEvent(event);
-
-	}
+	friend void QTranslator_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -231,12 +189,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QTranslator::connectNotify(*signal);
-
-	}
+	friend void QTranslator_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -257,12 +210,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QTranslator::disconnectNotify(*signal);
-
-	}
+	friend void QTranslator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QTranslator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -433,7 +381,16 @@ bool QTranslator_override_virtual_translate(void* self, intptr_t slot) {
 }
 
 struct miqt_string QTranslator_virtualbase_translate(const void* self, const char* context, const char* sourceText, const char* disambiguation, int n) {
-	return ( (const MiqtVirtualQTranslator*)(self) )->virtualbase_translate(context, sourceText, disambiguation, n);
+
+	QString _ret = ( (const MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::translate(context, sourceText, disambiguation, static_cast<int>(n));
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray _b = _ret.toUtf8();
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
+
 }
 
 bool QTranslator_override_virtual_isEmpty(void* self, intptr_t slot) {
@@ -447,7 +404,9 @@ bool QTranslator_override_virtual_isEmpty(void* self, intptr_t slot) {
 }
 
 bool QTranslator_virtualbase_isEmpty(const void* self) {
-	return ( (const MiqtVirtualQTranslator*)(self) )->virtualbase_isEmpty();
+
+	return ( (const MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::isEmpty();
+
 }
 
 bool QTranslator_override_virtual_event(void* self, intptr_t slot) {
@@ -461,7 +420,9 @@ bool QTranslator_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QTranslator_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQTranslator*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::event(event);
+
 }
 
 bool QTranslator_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -475,7 +436,9 @@ bool QTranslator_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QTranslator_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQTranslator*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::eventFilter(watched, event);
+
 }
 
 bool QTranslator_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -489,7 +452,9 @@ bool QTranslator_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QTranslator_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQTranslator*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::timerEvent(event);
+
 }
 
 bool QTranslator_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -503,7 +468,9 @@ bool QTranslator_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QTranslator_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQTranslator*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::childEvent(event);
+
 }
 
 bool QTranslator_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -517,7 +484,9 @@ bool QTranslator_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QTranslator_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQTranslator*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::customEvent(event);
+
 }
 
 bool QTranslator_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -531,7 +500,9 @@ bool QTranslator_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QTranslator_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQTranslator*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::connectNotify(*signal);
+
 }
 
 bool QTranslator_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -545,7 +516,9 @@ bool QTranslator_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QTranslator_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQTranslator*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQTranslator*)(self) )->MiqtVirtualQTranslator::disconnectNotify(*signal);
+
 }
 
 QObject* QTranslator_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

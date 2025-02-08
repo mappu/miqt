@@ -60,12 +60,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QUndoGroup::event(event);
-
-	}
+	friend bool QUndoGroup_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -84,12 +79,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QUndoGroup::eventFilter(watched, event);
-
-	}
+	friend bool QUndoGroup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -108,12 +98,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QUndoGroup::timerEvent(event);
-
-	}
+	friend void QUndoGroup_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -132,12 +117,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QUndoGroup::childEvent(event);
-
-	}
+	friend void QUndoGroup_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -156,12 +136,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QUndoGroup::customEvent(event);
-
-	}
+	friend void QUndoGroup_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -182,12 +157,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QUndoGroup::connectNotify(*signal);
-
-	}
+	friend void QUndoGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -208,12 +178,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QUndoGroup::disconnectNotify(*signal);
-
-	}
+	friend void QUndoGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QUndoGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -468,7 +433,9 @@ bool QUndoGroup_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QUndoGroup_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQUndoGroup*)(self) )->MiqtVirtualQUndoGroup::event(event);
+
 }
 
 bool QUndoGroup_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -482,7 +449,9 @@ bool QUndoGroup_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QUndoGroup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQUndoGroup*)(self) )->MiqtVirtualQUndoGroup::eventFilter(watched, event);
+
 }
 
 bool QUndoGroup_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -496,7 +465,9 @@ bool QUndoGroup_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QUndoGroup_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQUndoGroup*)(self) )->MiqtVirtualQUndoGroup::timerEvent(event);
+
 }
 
 bool QUndoGroup_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -510,7 +481,9 @@ bool QUndoGroup_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QUndoGroup_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQUndoGroup*)(self) )->MiqtVirtualQUndoGroup::childEvent(event);
+
 }
 
 bool QUndoGroup_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -524,7 +497,9 @@ bool QUndoGroup_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QUndoGroup_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQUndoGroup*)(self) )->MiqtVirtualQUndoGroup::customEvent(event);
+
 }
 
 bool QUndoGroup_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -538,7 +513,9 @@ bool QUndoGroup_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QUndoGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQUndoGroup*)(self) )->MiqtVirtualQUndoGroup::connectNotify(*signal);
+
 }
 
 bool QUndoGroup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -552,7 +529,9 @@ bool QUndoGroup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QUndoGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQUndoGroup*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQUndoGroup*)(self) )->MiqtVirtualQUndoGroup::disconnectNotify(*signal);
+
 }
 
 QObject* QUndoGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

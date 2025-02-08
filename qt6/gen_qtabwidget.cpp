@@ -126,12 +126,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QTabWidget::sizeHint());
-
-	}
+	friend QSize* QTabWidget_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -148,12 +143,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QTabWidget::minimumSizeHint());
-
-	}
+	friend QSize* QTabWidget_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -171,12 +161,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int width) const {
-
-		return QTabWidget::heightForWidth(static_cast<int>(width));
-
-	}
+	friend int QTabWidget_virtualbase_heightForWidth(const void* self, int width);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -193,12 +178,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QTabWidget::hasHeightForWidth();
-
-	}
+	friend bool QTabWidget_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabInserted = 0;
@@ -217,12 +197,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabInserted(int index) {
-
-		QTabWidget::tabInserted(static_cast<int>(index));
-
-	}
+	friend void QTabWidget_virtualbase_tabInserted(void* self, int index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabRemoved = 0;
@@ -241,12 +216,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabRemoved(int index) {
-
-		QTabWidget::tabRemoved(static_cast<int>(index));
-
-	}
+	friend void QTabWidget_virtualbase_tabRemoved(void* self, int index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -265,12 +235,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* param1) {
-
-		QTabWidget::showEvent(param1);
-
-	}
+	friend void QTabWidget_virtualbase_showEvent(void* self, QShowEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -289,12 +254,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* param1) {
-
-		QTabWidget::resizeEvent(param1);
-
-	}
+	friend void QTabWidget_virtualbase_resizeEvent(void* self, QResizeEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -313,12 +273,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* param1) {
-
-		QTabWidget::keyPressEvent(param1);
-
-	}
+	friend void QTabWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -337,12 +292,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* param1) {
-
-		QTabWidget::paintEvent(param1);
-
-	}
+	friend void QTabWidget_virtualbase_paintEvent(void* self, QPaintEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -361,12 +311,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* param1) {
-
-		QTabWidget::changeEvent(param1);
-
-	}
+	friend void QTabWidget_virtualbase_changeEvent(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -384,12 +329,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* param1) {
-
-		return QTabWidget::event(param1);
-
-	}
+	friend bool QTabWidget_virtualbase_event(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initStyleOption = 0;
@@ -408,12 +348,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initStyleOption(QStyleOptionTabWidgetFrame* option) const {
-
-		QTabWidget::initStyleOption(option);
-
-	}
+	friend void QTabWidget_virtualbase_initStyleOption(const void* self, QStyleOptionTabWidgetFrame* option);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -430,12 +365,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QTabWidget::devType();
-
-	}
+	friend int QTabWidget_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -454,12 +384,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QTabWidget::setVisible(visible);
-
-	}
+	friend void QTabWidget_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -476,12 +401,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QTabWidget::paintEngine();
-
-	}
+	friend QPaintEngine* QTabWidget_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -500,12 +420,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* event) {
-
-		QTabWidget::mousePressEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -524,12 +439,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
-
-		QTabWidget::mouseReleaseEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -548,12 +458,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QTabWidget::mouseDoubleClickEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -572,12 +477,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QTabWidget::mouseMoveEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -596,12 +496,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QTabWidget::wheelEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -620,12 +515,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QTabWidget::keyReleaseEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -644,12 +534,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QTabWidget::focusInEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -668,12 +553,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QTabWidget::focusOutEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -692,12 +572,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEnterEvent* event) {
-
-		QTabWidget::enterEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_enterEvent(void* self, QEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -716,12 +591,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QTabWidget::leaveEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -740,12 +610,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QTabWidget::moveEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -764,12 +629,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QTabWidget::closeEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -788,12 +648,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* event) {
-
-		QTabWidget::contextMenuEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -812,12 +667,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QTabWidget::tabletEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -836,12 +686,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QTabWidget::actionEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -860,12 +705,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QTabWidget::dragEnterEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -884,12 +724,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QTabWidget::dragMoveEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -908,12 +743,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QTabWidget::dragLeaveEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -932,12 +762,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QTabWidget::dropEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -956,12 +781,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QTabWidget::hideEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -987,13 +807,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QTabWidget::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
-	}
+	friend bool QTabWidget_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -1012,12 +826,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QTabWidget::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QTabWidget_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1036,12 +845,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QTabWidget::initPainter(painter);
-
-	}
+	friend void QTabWidget_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1059,12 +863,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QTabWidget::redirected(offset);
-
-	}
+	friend QPaintDevice* QTabWidget_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1081,12 +880,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QTabWidget::sharedPainter();
-
-	}
+	friend QPainter* QTabWidget_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1105,12 +899,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QTabWidget::inputMethodEvent(param1);
-
-	}
+	friend void QTabWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1129,12 +918,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QTabWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QTabWidget_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1152,12 +936,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QTabWidget::focusNextPrevChild(next);
-
-	}
+	friend bool QTabWidget_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1176,12 +955,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QTabWidget::eventFilter(watched, event);
-
-	}
+	friend bool QTabWidget_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1200,12 +974,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QTabWidget::timerEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1224,12 +993,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QTabWidget::childEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1248,12 +1012,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QTabWidget::customEvent(event);
-
-	}
+	friend void QTabWidget_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1274,12 +1033,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QTabWidget::connectNotify(*signal);
-
-	}
+	friend void QTabWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1300,12 +1054,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QTabWidget::disconnectNotify(*signal);
-
-	}
+	friend void QTabWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QTabWidget_protectedbase_setTabBar(bool* _dynamic_cast_ok, void* self, QTabBar* tabBar);
@@ -1667,7 +1416,9 @@ bool QTabWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QTabWidget_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQTabWidget*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::sizeHint());
+
 }
 
 bool QTabWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1681,7 +1432,9 @@ bool QTabWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QTabWidget_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQTabWidget*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::minimumSizeHint());
+
 }
 
 bool QTabWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1695,7 +1448,9 @@ bool QTabWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QTabWidget_virtualbase_heightForWidth(const void* self, int width) {
-	return ( (const MiqtVirtualQTabWidget*)(self) )->virtualbase_heightForWidth(width);
+
+	return ( (const MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::heightForWidth(static_cast<int>(width));
+
 }
 
 bool QTabWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1709,7 +1464,9 @@ bool QTabWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QTabWidget_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQTabWidget*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::hasHeightForWidth();
+
 }
 
 bool QTabWidget_override_virtual_tabInserted(void* self, intptr_t slot) {
@@ -1723,7 +1480,9 @@ bool QTabWidget_override_virtual_tabInserted(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_tabInserted(void* self, int index) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_tabInserted(index);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::tabInserted(static_cast<int>(index));
+
 }
 
 bool QTabWidget_override_virtual_tabRemoved(void* self, intptr_t slot) {
@@ -1737,7 +1496,9 @@ bool QTabWidget_override_virtual_tabRemoved(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_tabRemoved(void* self, int index) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_tabRemoved(index);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::tabRemoved(static_cast<int>(index));
+
 }
 
 bool QTabWidget_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1751,7 +1512,9 @@ bool QTabWidget_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_showEvent(void* self, QShowEvent* param1) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_showEvent(param1);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::showEvent(param1);
+
 }
 
 bool QTabWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1765,7 +1528,9 @@ bool QTabWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_resizeEvent(param1);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::resizeEvent(param1);
+
 }
 
 bool QTabWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1779,7 +1544,9 @@ bool QTabWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_keyPressEvent(param1);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::keyPressEvent(param1);
+
 }
 
 bool QTabWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1793,7 +1560,9 @@ bool QTabWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_paintEvent(param1);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::paintEvent(param1);
+
 }
 
 bool QTabWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1807,7 +1576,9 @@ bool QTabWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_changeEvent(void* self, QEvent* param1) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_changeEvent(param1);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::changeEvent(param1);
+
 }
 
 bool QTabWidget_override_virtual_event(void* self, intptr_t slot) {
@@ -1821,7 +1592,9 @@ bool QTabWidget_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QTabWidget_virtualbase_event(void* self, QEvent* param1) {
-	return ( (MiqtVirtualQTabWidget*)(self) )->virtualbase_event(param1);
+
+	return ( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::event(param1);
+
 }
 
 bool QTabWidget_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -1835,7 +1608,9 @@ bool QTabWidget_override_virtual_initStyleOption(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_initStyleOption(const void* self, QStyleOptionTabWidgetFrame* option) {
-	( (const MiqtVirtualQTabWidget*)(self) )->virtualbase_initStyleOption(option);
+
+	( (const MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::initStyleOption(option);
+
 }
 
 bool QTabWidget_override_virtual_devType(void* self, intptr_t slot) {
@@ -1849,7 +1624,9 @@ bool QTabWidget_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QTabWidget_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQTabWidget*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::devType();
+
 }
 
 bool QTabWidget_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1863,7 +1640,9 @@ bool QTabWidget_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::setVisible(visible);
+
 }
 
 bool QTabWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1877,7 +1656,9 @@ bool QTabWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QTabWidget_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQTabWidget*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::paintEngine();
+
 }
 
 bool QTabWidget_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1891,7 +1672,9 @@ bool QTabWidget_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_mousePressEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::mousePressEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1905,7 +1688,9 @@ bool QTabWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_mouseReleaseEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::mouseReleaseEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1919,7 +1704,9 @@ bool QTabWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot
 }
 
 void QTabWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::mouseDoubleClickEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1933,7 +1720,9 @@ bool QTabWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::mouseMoveEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1947,7 +1736,9 @@ bool QTabWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::wheelEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1961,7 +1752,9 @@ bool QTabWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::keyReleaseEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1975,7 +1768,9 @@ bool QTabWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::focusInEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1989,7 +1784,9 @@ bool QTabWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::focusOutEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -2003,7 +1800,9 @@ bool QTabWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::enterEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -2017,7 +1816,9 @@ bool QTabWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::leaveEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -2031,7 +1832,9 @@ bool QTabWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::moveEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -2045,7 +1848,9 @@ bool QTabWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::closeEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -2059,7 +1864,9 @@ bool QTabWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_contextMenuEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::contextMenuEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -2073,7 +1880,9 @@ bool QTabWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::tabletEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -2087,7 +1896,9 @@ bool QTabWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::actionEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -2101,7 +1912,9 @@ bool QTabWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::dragEnterEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -2115,7 +1928,9 @@ bool QTabWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::dragMoveEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -2129,7 +1944,9 @@ bool QTabWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::dragLeaveEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -2143,7 +1960,9 @@ bool QTabWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::dropEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -2157,7 +1976,9 @@ bool QTabWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::hideEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -2171,7 +1992,10 @@ bool QTabWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QTabWidget_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
-	return ( (MiqtVirtualQTabWidget*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
 }
 
 bool QTabWidget_override_virtual_metric(void* self, intptr_t slot) {
@@ -2185,7 +2009,9 @@ bool QTabWidget_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QTabWidget_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQTabWidget*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::metric(static_cast<MiqtVirtualQTabWidget::PaintDeviceMetric>(param1));
+
 }
 
 bool QTabWidget_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -2199,7 +2025,9 @@ bool QTabWidget_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQTabWidget*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::initPainter(painter);
+
 }
 
 bool QTabWidget_override_virtual_redirected(void* self, intptr_t slot) {
@@ -2213,7 +2041,9 @@ bool QTabWidget_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QTabWidget_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQTabWidget*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::redirected(offset);
+
 }
 
 bool QTabWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2227,7 +2057,9 @@ bool QTabWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QTabWidget_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQTabWidget*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::sharedPainter();
+
 }
 
 bool QTabWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2241,7 +2073,9 @@ bool QTabWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::inputMethodEvent(param1);
+
 }
 
 bool QTabWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2255,7 +2089,9 @@ bool QTabWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 }
 
 QVariant* QTabWidget_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQTabWidget*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QTabWidget_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2269,7 +2105,9 @@ bool QTabWidget_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 }
 
 bool QTabWidget_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQTabWidget*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::focusNextPrevChild(next);
+
 }
 
 bool QTabWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2283,7 +2121,9 @@ bool QTabWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QTabWidget_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQTabWidget*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::eventFilter(watched, event);
+
 }
 
 bool QTabWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2297,7 +2137,9 @@ bool QTabWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::timerEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2311,7 +2153,9 @@ bool QTabWidget_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::childEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2325,7 +2169,9 @@ bool QTabWidget_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::customEvent(event);
+
 }
 
 bool QTabWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2339,7 +2185,9 @@ bool QTabWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::connectNotify(*signal);
+
 }
 
 bool QTabWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2353,7 +2201,9 @@ bool QTabWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QTabWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQTabWidget*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQTabWidget*)(self) )->MiqtVirtualQTabWidget::disconnectNotify(*signal);
+
 }
 
 void QTabWidget_protectedbase_setTabBar(bool* _dynamic_cast_ok, void* self, QTabBar* tabBar) {

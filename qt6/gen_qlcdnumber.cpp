@@ -122,12 +122,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QLCDNumber::sizeHint());
-
-	}
+	friend QSize* QLCDNumber_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -145,12 +140,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* e) {
-
-		return QLCDNumber::event(e);
-
-	}
+	friend bool QLCDNumber_virtualbase_event(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -169,12 +159,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* param1) {
-
-		QLCDNumber::paintEvent(param1);
-
-	}
+	friend void QLCDNumber_virtualbase_paintEvent(void* self, QPaintEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -193,12 +178,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* param1) {
-
-		QLCDNumber::changeEvent(param1);
-
-	}
+	friend void QLCDNumber_virtualbase_changeEvent(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initStyleOption = 0;
@@ -217,12 +197,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initStyleOption(QStyleOptionFrame* option) const {
-
-		QLCDNumber::initStyleOption(option);
-
-	}
+	friend void QLCDNumber_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -239,12 +214,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QLCDNumber::devType();
-
-	}
+	friend int QLCDNumber_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -263,12 +233,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QLCDNumber::setVisible(visible);
-
-	}
+	friend void QLCDNumber_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -285,12 +250,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QLCDNumber::minimumSizeHint());
-
-	}
+	friend QSize* QLCDNumber_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -308,12 +268,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QLCDNumber::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QLCDNumber_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -330,12 +285,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QLCDNumber::hasHeightForWidth();
-
-	}
+	friend bool QLCDNumber_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -352,12 +302,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QLCDNumber::paintEngine();
-
-	}
+	friend QPaintEngine* QLCDNumber_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -376,12 +321,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* event) {
-
-		QLCDNumber::mousePressEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -400,12 +340,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
-
-		QLCDNumber::mouseReleaseEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -424,12 +359,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QLCDNumber::mouseDoubleClickEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -448,12 +378,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QLCDNumber::mouseMoveEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -472,12 +397,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QLCDNumber::wheelEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -496,12 +416,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* event) {
-
-		QLCDNumber::keyPressEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -520,12 +435,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QLCDNumber::keyReleaseEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -544,12 +454,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QLCDNumber::focusInEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -568,12 +473,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QLCDNumber::focusOutEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -592,12 +492,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEnterEvent* event) {
-
-		QLCDNumber::enterEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_enterEvent(void* self, QEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -616,12 +511,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QLCDNumber::leaveEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -640,12 +530,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QLCDNumber::moveEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -664,12 +549,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* event) {
-
-		QLCDNumber::resizeEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_resizeEvent(void* self, QResizeEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -688,12 +568,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QLCDNumber::closeEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -712,12 +587,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* event) {
-
-		QLCDNumber::contextMenuEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -736,12 +606,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QLCDNumber::tabletEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -760,12 +625,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QLCDNumber::actionEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -784,12 +644,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QLCDNumber::dragEnterEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -808,12 +663,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QLCDNumber::dragMoveEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -832,12 +682,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QLCDNumber::dragLeaveEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -856,12 +701,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QLCDNumber::dropEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -880,12 +720,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QLCDNumber::showEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -904,12 +739,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QLCDNumber::hideEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -935,13 +765,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QLCDNumber::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
-	}
+	friend bool QLCDNumber_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -960,12 +784,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QLCDNumber::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QLCDNumber_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -984,12 +803,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QLCDNumber::initPainter(painter);
-
-	}
+	friend void QLCDNumber_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1007,12 +821,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QLCDNumber::redirected(offset);
-
-	}
+	friend QPaintDevice* QLCDNumber_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1029,12 +838,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QLCDNumber::sharedPainter();
-
-	}
+	friend QPainter* QLCDNumber_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1053,12 +857,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QLCDNumber::inputMethodEvent(param1);
-
-	}
+	friend void QLCDNumber_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1077,12 +876,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QLCDNumber::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QLCDNumber_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1100,12 +894,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QLCDNumber::focusNextPrevChild(next);
-
-	}
+	friend bool QLCDNumber_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1124,12 +913,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QLCDNumber::eventFilter(watched, event);
-
-	}
+	friend bool QLCDNumber_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1148,12 +932,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QLCDNumber::timerEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1172,12 +951,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QLCDNumber::childEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1196,12 +970,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QLCDNumber::customEvent(event);
-
-	}
+	friend void QLCDNumber_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1222,12 +991,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QLCDNumber::connectNotify(*signal);
-
-	}
+	friend void QLCDNumber_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1248,12 +1012,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QLCDNumber::disconnectNotify(*signal);
-
-	}
+	friend void QLCDNumber_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QLCDNumber_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
@@ -1433,7 +1192,9 @@ bool QLCDNumber_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QLCDNumber_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::sizeHint());
+
 }
 
 bool QLCDNumber_override_virtual_event(void* self, intptr_t slot) {
@@ -1447,7 +1208,9 @@ bool QLCDNumber_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QLCDNumber_virtualbase_event(void* self, QEvent* e) {
-	return ( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_event(e);
+
+	return ( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::event(e);
+
 }
 
 bool QLCDNumber_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1461,7 +1224,9 @@ bool QLCDNumber_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_paintEvent(param1);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::paintEvent(param1);
+
 }
 
 bool QLCDNumber_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1475,7 +1240,9 @@ bool QLCDNumber_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_changeEvent(void* self, QEvent* param1) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_changeEvent(param1);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::changeEvent(param1);
+
 }
 
 bool QLCDNumber_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -1489,7 +1256,9 @@ bool QLCDNumber_override_virtual_initStyleOption(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_initStyleOption(const void* self, QStyleOptionFrame* option) {
-	( (const MiqtVirtualQLCDNumber*)(self) )->virtualbase_initStyleOption(option);
+
+	( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::initStyleOption(option);
+
 }
 
 bool QLCDNumber_override_virtual_devType(void* self, intptr_t slot) {
@@ -1503,7 +1272,9 @@ bool QLCDNumber_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QLCDNumber_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::devType();
+
 }
 
 bool QLCDNumber_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1517,7 +1288,9 @@ bool QLCDNumber_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::setVisible(visible);
+
 }
 
 bool QLCDNumber_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1531,7 +1304,9 @@ bool QLCDNumber_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QLCDNumber_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::minimumSizeHint());
+
 }
 
 bool QLCDNumber_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1545,7 +1320,9 @@ bool QLCDNumber_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QLCDNumber_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QLCDNumber_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1559,7 +1336,9 @@ bool QLCDNumber_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QLCDNumber_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::hasHeightForWidth();
+
 }
 
 bool QLCDNumber_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1573,7 +1352,9 @@ bool QLCDNumber_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QLCDNumber_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::paintEngine();
+
 }
 
 bool QLCDNumber_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1587,7 +1368,9 @@ bool QLCDNumber_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_mousePressEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::mousePressEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1601,7 +1384,9 @@ bool QLCDNumber_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_mouseReleaseEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::mouseReleaseEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1615,7 +1400,9 @@ bool QLCDNumber_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot
 }
 
 void QLCDNumber_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::mouseDoubleClickEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1629,7 +1416,9 @@ bool QLCDNumber_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::mouseMoveEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1643,7 +1432,9 @@ bool QLCDNumber_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::wheelEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1657,7 +1448,9 @@ bool QLCDNumber_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_keyPressEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::keyPressEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1671,7 +1464,9 @@ bool QLCDNumber_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::keyReleaseEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1685,7 +1480,9 @@ bool QLCDNumber_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::focusInEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1699,7 +1496,9 @@ bool QLCDNumber_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::focusOutEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1713,7 +1512,9 @@ bool QLCDNumber_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::enterEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1727,7 +1528,9 @@ bool QLCDNumber_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::leaveEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1741,7 +1544,9 @@ bool QLCDNumber_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::moveEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1755,7 +1560,9 @@ bool QLCDNumber_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_resizeEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::resizeEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1769,7 +1576,9 @@ bool QLCDNumber_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::closeEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1783,7 +1592,9 @@ bool QLCDNumber_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_contextMenuEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::contextMenuEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1797,7 +1608,9 @@ bool QLCDNumber_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::tabletEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1811,7 +1624,9 @@ bool QLCDNumber_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::actionEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1825,7 +1640,9 @@ bool QLCDNumber_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::dragEnterEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1839,7 +1656,9 @@ bool QLCDNumber_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::dragMoveEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1853,7 +1672,9 @@ bool QLCDNumber_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::dragLeaveEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1867,7 +1688,9 @@ bool QLCDNumber_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::dropEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1881,7 +1704,9 @@ bool QLCDNumber_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::showEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1895,7 +1720,9 @@ bool QLCDNumber_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::hideEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -1909,7 +1736,10 @@ bool QLCDNumber_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QLCDNumber_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
-	return ( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
 }
 
 bool QLCDNumber_override_virtual_metric(void* self, intptr_t slot) {
@@ -1923,7 +1753,9 @@ bool QLCDNumber_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QLCDNumber_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::metric(static_cast<MiqtVirtualQLCDNumber::PaintDeviceMetric>(param1));
+
 }
 
 bool QLCDNumber_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -1937,7 +1769,9 @@ bool QLCDNumber_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQLCDNumber*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::initPainter(painter);
+
 }
 
 bool QLCDNumber_override_virtual_redirected(void* self, intptr_t slot) {
@@ -1951,7 +1785,9 @@ bool QLCDNumber_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QLCDNumber_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::redirected(offset);
+
 }
 
 bool QLCDNumber_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -1965,7 +1801,9 @@ bool QLCDNumber_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QLCDNumber_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::sharedPainter();
+
 }
 
 bool QLCDNumber_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -1979,7 +1817,9 @@ bool QLCDNumber_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::inputMethodEvent(param1);
+
 }
 
 bool QLCDNumber_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -1993,7 +1833,9 @@ bool QLCDNumber_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 }
 
 QVariant* QLCDNumber_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQLCDNumber*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QLCDNumber_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2007,7 +1849,9 @@ bool QLCDNumber_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 }
 
 bool QLCDNumber_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::focusNextPrevChild(next);
+
 }
 
 bool QLCDNumber_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2021,7 +1865,9 @@ bool QLCDNumber_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QLCDNumber_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::eventFilter(watched, event);
+
 }
 
 bool QLCDNumber_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2035,7 +1881,9 @@ bool QLCDNumber_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::timerEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2049,7 +1897,9 @@ bool QLCDNumber_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::childEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2063,7 +1913,9 @@ bool QLCDNumber_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::customEvent(event);
+
 }
 
 bool QLCDNumber_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2077,7 +1929,9 @@ bool QLCDNumber_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::connectNotify(*signal);
+
 }
 
 bool QLCDNumber_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2091,7 +1945,9 @@ bool QLCDNumber_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QLCDNumber_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQLCDNumber*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQLCDNumber*)(self) )->MiqtVirtualQLCDNumber::disconnectNotify(*signal);
+
 }
 
 void QLCDNumber_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {

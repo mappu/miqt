@@ -123,12 +123,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_done(int param1) {
-
-		QErrorMessage::done(static_cast<int>(param1));
-
-	}
+	friend void QErrorMessage_virtualbase_done(void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -147,12 +142,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* e) {
-
-		QErrorMessage::changeEvent(e);
-
-	}
+	friend void QErrorMessage_virtualbase_changeEvent(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -171,12 +161,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QErrorMessage::setVisible(visible);
-
-	}
+	friend void QErrorMessage_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -193,12 +178,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QErrorMessage::sizeHint());
-
-	}
+	friend QSize* QErrorMessage_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -215,12 +195,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QErrorMessage::minimumSizeHint());
-
-	}
+	friend QSize* QErrorMessage_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -238,12 +213,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_open() {
-
-		QErrorMessage::open();
-
-	}
+	friend void QErrorMessage_virtualbase_open(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__exec = 0;
@@ -260,12 +230,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_exec() {
-
-		return QErrorMessage::exec();
-
-	}
+	friend int QErrorMessage_virtualbase_exec(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__accept = 0;
@@ -283,12 +248,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_accept() {
-
-		QErrorMessage::accept();
-
-	}
+	friend void QErrorMessage_virtualbase_accept(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__reject = 0;
@@ -306,12 +266,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_reject() {
-
-		QErrorMessage::reject();
-
-	}
+	friend void QErrorMessage_virtualbase_reject(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -330,12 +285,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* param1) {
-
-		QErrorMessage::keyPressEvent(param1);
-
-	}
+	friend void QErrorMessage_virtualbase_keyPressEvent(void* self, QKeyEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -354,12 +304,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* param1) {
-
-		QErrorMessage::closeEvent(param1);
-
-	}
+	friend void QErrorMessage_virtualbase_closeEvent(void* self, QCloseEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -378,12 +323,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* param1) {
-
-		QErrorMessage::showEvent(param1);
-
-	}
+	friend void QErrorMessage_virtualbase_showEvent(void* self, QShowEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -402,12 +342,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* param1) {
-
-		QErrorMessage::resizeEvent(param1);
-
-	}
+	friend void QErrorMessage_virtualbase_resizeEvent(void* self, QResizeEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -426,12 +361,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* param1) {
-
-		QErrorMessage::contextMenuEvent(param1);
-
-	}
+	friend void QErrorMessage_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -450,12 +380,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* param1, QEvent* param2) {
-
-		return QErrorMessage::eventFilter(param1, param2);
-
-	}
+	friend bool QErrorMessage_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -472,12 +397,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QErrorMessage::devType();
-
-	}
+	friend int QErrorMessage_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -495,12 +415,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QErrorMessage::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QErrorMessage_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -517,12 +432,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QErrorMessage::hasHeightForWidth();
-
-	}
+	friend bool QErrorMessage_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -539,12 +449,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QErrorMessage::paintEngine();
-
-	}
+	friend QPaintEngine* QErrorMessage_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -562,12 +467,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QErrorMessage::event(event);
-
-	}
+	friend bool QErrorMessage_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -586,12 +486,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* event) {
-
-		QErrorMessage::mousePressEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -610,12 +505,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
-
-		QErrorMessage::mouseReleaseEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -634,12 +524,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QErrorMessage::mouseDoubleClickEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -658,12 +543,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QErrorMessage::mouseMoveEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -682,12 +562,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QErrorMessage::wheelEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -706,12 +581,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QErrorMessage::keyReleaseEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -730,12 +600,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QErrorMessage::focusInEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -754,12 +619,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QErrorMessage::focusOutEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -778,12 +638,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEvent* event) {
-
-		QErrorMessage::enterEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_enterEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -802,12 +657,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QErrorMessage::leaveEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -826,12 +676,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* event) {
-
-		QErrorMessage::paintEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_paintEvent(void* self, QPaintEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -850,12 +695,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QErrorMessage::moveEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -874,12 +714,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QErrorMessage::tabletEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -898,12 +733,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QErrorMessage::actionEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -922,12 +752,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QErrorMessage::dragEnterEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -946,12 +771,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QErrorMessage::dragMoveEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -970,12 +790,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QErrorMessage::dragLeaveEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -994,12 +809,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QErrorMessage::dropEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -1018,12 +828,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QErrorMessage::hideEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -1048,13 +853,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, long* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QErrorMessage::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
-
-	}
+	friend bool QErrorMessage_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -1073,12 +872,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QErrorMessage::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QErrorMessage_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1097,12 +891,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QErrorMessage::initPainter(painter);
-
-	}
+	friend void QErrorMessage_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1120,12 +909,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QErrorMessage::redirected(offset);
-
-	}
+	friend QPaintDevice* QErrorMessage_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1142,12 +926,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QErrorMessage::sharedPainter();
-
-	}
+	friend QPainter* QErrorMessage_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1166,12 +945,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QErrorMessage::inputMethodEvent(param1);
-
-	}
+	friend void QErrorMessage_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1190,12 +964,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QErrorMessage::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QErrorMessage_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1213,12 +982,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QErrorMessage::focusNextPrevChild(next);
-
-	}
+	friend bool QErrorMessage_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1237,12 +1001,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QErrorMessage::timerEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1261,12 +1020,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QErrorMessage::childEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1285,12 +1039,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QErrorMessage::customEvent(event);
-
-	}
+	friend void QErrorMessage_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1311,12 +1060,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QErrorMessage::connectNotify(*signal);
-
-	}
+	friend void QErrorMessage_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1337,12 +1081,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QErrorMessage::disconnectNotify(*signal);
-
-	}
+	friend void QErrorMessage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QErrorMessage_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
@@ -1469,7 +1208,9 @@ bool QErrorMessage_override_virtual_done(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_done(void* self, int param1) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_done(param1);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::done(static_cast<int>(param1));
+
 }
 
 bool QErrorMessage_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1483,7 +1224,9 @@ bool QErrorMessage_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_changeEvent(void* self, QEvent* e) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_changeEvent(e);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::changeEvent(e);
+
 }
 
 bool QErrorMessage_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1497,7 +1240,9 @@ bool QErrorMessage_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::setVisible(visible);
+
 }
 
 bool QErrorMessage_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1511,7 +1256,9 @@ bool QErrorMessage_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QErrorMessage_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::sizeHint());
+
 }
 
 bool QErrorMessage_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1525,7 +1272,9 @@ bool QErrorMessage_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QErrorMessage_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::minimumSizeHint());
+
 }
 
 bool QErrorMessage_override_virtual_open(void* self, intptr_t slot) {
@@ -1539,7 +1288,9 @@ bool QErrorMessage_override_virtual_open(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_open(void* self) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_open();
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::open();
+
 }
 
 bool QErrorMessage_override_virtual_exec(void* self, intptr_t slot) {
@@ -1553,7 +1304,9 @@ bool QErrorMessage_override_virtual_exec(void* self, intptr_t slot) {
 }
 
 int QErrorMessage_virtualbase_exec(void* self) {
-	return ( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_exec();
+
+	return ( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::exec();
+
 }
 
 bool QErrorMessage_override_virtual_accept(void* self, intptr_t slot) {
@@ -1567,7 +1320,9 @@ bool QErrorMessage_override_virtual_accept(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_accept(void* self) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_accept();
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::accept();
+
 }
 
 bool QErrorMessage_override_virtual_reject(void* self, intptr_t slot) {
@@ -1581,7 +1336,9 @@ bool QErrorMessage_override_virtual_reject(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_reject(void* self) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_reject();
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::reject();
+
 }
 
 bool QErrorMessage_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1595,7 +1352,9 @@ bool QErrorMessage_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_keyPressEvent(param1);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::keyPressEvent(param1);
+
 }
 
 bool QErrorMessage_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1609,7 +1368,9 @@ bool QErrorMessage_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_closeEvent(void* self, QCloseEvent* param1) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_closeEvent(param1);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::closeEvent(param1);
+
 }
 
 bool QErrorMessage_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1623,7 +1384,9 @@ bool QErrorMessage_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_showEvent(void* self, QShowEvent* param1) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_showEvent(param1);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::showEvent(param1);
+
 }
 
 bool QErrorMessage_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1637,7 +1400,9 @@ bool QErrorMessage_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_resizeEvent(param1);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::resizeEvent(param1);
+
 }
 
 bool QErrorMessage_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1651,7 +1416,9 @@ bool QErrorMessage_override_virtual_contextMenuEvent(void* self, intptr_t slot) 
 }
 
 void QErrorMessage_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_contextMenuEvent(param1);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::contextMenuEvent(param1);
+
 }
 
 bool QErrorMessage_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1665,7 +1432,9 @@ bool QErrorMessage_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QErrorMessage_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
-	return ( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_eventFilter(param1, param2);
+
+	return ( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::eventFilter(param1, param2);
+
 }
 
 bool QErrorMessage_override_virtual_devType(void* self, intptr_t slot) {
@@ -1679,7 +1448,9 @@ bool QErrorMessage_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QErrorMessage_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::devType();
+
 }
 
 bool QErrorMessage_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1693,7 +1464,9 @@ bool QErrorMessage_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QErrorMessage_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QErrorMessage_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1707,7 +1480,9 @@ bool QErrorMessage_override_virtual_hasHeightForWidth(void* self, intptr_t slot)
 }
 
 bool QErrorMessage_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::hasHeightForWidth();
+
 }
 
 bool QErrorMessage_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1721,7 +1496,9 @@ bool QErrorMessage_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QErrorMessage_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::paintEngine();
+
 }
 
 bool QErrorMessage_override_virtual_event(void* self, intptr_t slot) {
@@ -1735,7 +1512,9 @@ bool QErrorMessage_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QErrorMessage_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::event(event);
+
 }
 
 bool QErrorMessage_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1749,7 +1528,9 @@ bool QErrorMessage_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_mousePressEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::mousePressEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1763,7 +1544,9 @@ bool QErrorMessage_override_virtual_mouseReleaseEvent(void* self, intptr_t slot)
 }
 
 void QErrorMessage_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_mouseReleaseEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::mouseReleaseEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1777,7 +1560,9 @@ bool QErrorMessage_override_virtual_mouseDoubleClickEvent(void* self, intptr_t s
 }
 
 void QErrorMessage_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::mouseDoubleClickEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1791,7 +1576,9 @@ bool QErrorMessage_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::mouseMoveEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1805,7 +1592,9 @@ bool QErrorMessage_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::wheelEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1819,7 +1608,9 @@ bool QErrorMessage_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::keyReleaseEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1833,7 +1624,9 @@ bool QErrorMessage_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::focusInEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1847,7 +1640,9 @@ bool QErrorMessage_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::focusOutEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1861,7 +1656,9 @@ bool QErrorMessage_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_enterEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::enterEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1875,7 +1672,9 @@ bool QErrorMessage_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::leaveEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1889,7 +1688,9 @@ bool QErrorMessage_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_paintEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::paintEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1903,7 +1704,9 @@ bool QErrorMessage_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::moveEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1917,7 +1720,9 @@ bool QErrorMessage_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::tabletEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1931,7 +1736,9 @@ bool QErrorMessage_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::actionEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1945,7 +1752,9 @@ bool QErrorMessage_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::dragEnterEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1959,7 +1768,9 @@ bool QErrorMessage_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::dragMoveEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1973,7 +1784,9 @@ bool QErrorMessage_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::dragLeaveEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1987,7 +1800,9 @@ bool QErrorMessage_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::dropEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -2001,7 +1816,9 @@ bool QErrorMessage_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::hideEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -2015,7 +1832,10 @@ bool QErrorMessage_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QErrorMessage_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
-	return ( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+
 }
 
 bool QErrorMessage_override_virtual_metric(void* self, intptr_t slot) {
@@ -2029,7 +1849,9 @@ bool QErrorMessage_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QErrorMessage_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::metric(static_cast<MiqtVirtualQErrorMessage::PaintDeviceMetric>(param1));
+
 }
 
 bool QErrorMessage_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -2043,7 +1865,9 @@ bool QErrorMessage_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQErrorMessage*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::initPainter(painter);
+
 }
 
 bool QErrorMessage_override_virtual_redirected(void* self, intptr_t slot) {
@@ -2057,7 +1881,9 @@ bool QErrorMessage_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QErrorMessage_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::redirected(offset);
+
 }
 
 bool QErrorMessage_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2071,7 +1897,9 @@ bool QErrorMessage_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QErrorMessage_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::sharedPainter();
+
 }
 
 bool QErrorMessage_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2085,7 +1913,9 @@ bool QErrorMessage_override_virtual_inputMethodEvent(void* self, intptr_t slot) 
 }
 
 void QErrorMessage_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::inputMethodEvent(param1);
+
 }
 
 bool QErrorMessage_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2099,7 +1929,9 @@ bool QErrorMessage_override_virtual_inputMethodQuery(void* self, intptr_t slot) 
 }
 
 QVariant* QErrorMessage_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQErrorMessage*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QErrorMessage_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2113,7 +1945,9 @@ bool QErrorMessage_override_virtual_focusNextPrevChild(void* self, intptr_t slot
 }
 
 bool QErrorMessage_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::focusNextPrevChild(next);
+
 }
 
 bool QErrorMessage_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2127,7 +1961,9 @@ bool QErrorMessage_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::timerEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2141,7 +1977,9 @@ bool QErrorMessage_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::childEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2155,7 +1993,9 @@ bool QErrorMessage_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::customEvent(event);
+
 }
 
 bool QErrorMessage_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2169,7 +2009,9 @@ bool QErrorMessage_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QErrorMessage_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::connectNotify(*signal);
+
 }
 
 bool QErrorMessage_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2183,7 +2025,9 @@ bool QErrorMessage_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 }
 
 void QErrorMessage_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQErrorMessage*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQErrorMessage*)(self) )->MiqtVirtualQErrorMessage::disconnectNotify(*signal);
+
 }
 
 void QErrorMessage_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {

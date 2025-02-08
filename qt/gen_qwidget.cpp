@@ -155,12 +155,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QWidget::devType();
-
-	}
+	friend int QWidget_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -179,12 +174,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QWidget::setVisible(visible);
-
-	}
+	friend void QWidget_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -201,12 +191,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QWidget::sizeHint());
-
-	}
+	friend QSize* QWidget_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -223,12 +208,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QWidget::minimumSizeHint());
-
-	}
+	friend QSize* QWidget_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -246,12 +226,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QWidget::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QWidget_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -268,12 +243,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QWidget::hasHeightForWidth();
-
-	}
+	friend bool QWidget_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -290,12 +260,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QWidget::paintEngine();
-
-	}
+	friend QPaintEngine* QWidget_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -313,12 +278,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QWidget::event(event);
-
-	}
+	friend bool QWidget_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -337,12 +297,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* event) {
-
-		QWidget::mousePressEvent(event);
-
-	}
+	friend void QWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -361,12 +316,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
-
-		QWidget::mouseReleaseEvent(event);
-
-	}
+	friend void QWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -385,12 +335,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QWidget::mouseDoubleClickEvent(event);
-
-	}
+	friend void QWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -409,12 +354,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QWidget::mouseMoveEvent(event);
-
-	}
+	friend void QWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -433,12 +373,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QWidget::wheelEvent(event);
-
-	}
+	friend void QWidget_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -457,12 +392,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* event) {
-
-		QWidget::keyPressEvent(event);
-
-	}
+	friend void QWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -481,12 +411,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QWidget::keyReleaseEvent(event);
-
-	}
+	friend void QWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -505,12 +430,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QWidget::focusInEvent(event);
-
-	}
+	friend void QWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -529,12 +449,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QWidget::focusOutEvent(event);
-
-	}
+	friend void QWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -553,12 +468,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEvent* event) {
-
-		QWidget::enterEvent(event);
-
-	}
+	friend void QWidget_virtualbase_enterEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -577,12 +487,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QWidget::leaveEvent(event);
-
-	}
+	friend void QWidget_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -601,12 +506,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* event) {
-
-		QWidget::paintEvent(event);
-
-	}
+	friend void QWidget_virtualbase_paintEvent(void* self, QPaintEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -625,12 +525,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QWidget::moveEvent(event);
-
-	}
+	friend void QWidget_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -649,12 +544,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* event) {
-
-		QWidget::resizeEvent(event);
-
-	}
+	friend void QWidget_virtualbase_resizeEvent(void* self, QResizeEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -673,12 +563,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QWidget::closeEvent(event);
-
-	}
+	friend void QWidget_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -697,12 +582,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* event) {
-
-		QWidget::contextMenuEvent(event);
-
-	}
+	friend void QWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -721,12 +601,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QWidget::tabletEvent(event);
-
-	}
+	friend void QWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -745,12 +620,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QWidget::actionEvent(event);
-
-	}
+	friend void QWidget_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -769,12 +639,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QWidget::dragEnterEvent(event);
-
-	}
+	friend void QWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -793,12 +658,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QWidget::dragMoveEvent(event);
-
-	}
+	friend void QWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -817,12 +677,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QWidget::dragLeaveEvent(event);
-
-	}
+	friend void QWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -841,12 +696,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QWidget::dropEvent(event);
-
-	}
+	friend void QWidget_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -865,12 +715,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QWidget::showEvent(event);
-
-	}
+	friend void QWidget_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -889,12 +734,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QWidget::hideEvent(event);
-
-	}
+	friend void QWidget_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -919,13 +759,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, long* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QWidget::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
-
-	}
+	friend bool QWidget_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -944,12 +778,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* param1) {
-
-		QWidget::changeEvent(param1);
-
-	}
+	friend void QWidget_virtualbase_changeEvent(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -968,12 +797,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QWidget::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QWidget_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -992,12 +816,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QWidget::initPainter(painter);
-
-	}
+	friend void QWidget_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1015,12 +834,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QWidget::redirected(offset);
-
-	}
+	friend QPaintDevice* QWidget_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1037,12 +851,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QWidget::sharedPainter();
-
-	}
+	friend QPainter* QWidget_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1061,12 +870,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QWidget::inputMethodEvent(param1);
-
-	}
+	friend void QWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1085,12 +889,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QWidget_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1108,12 +907,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QWidget::focusNextPrevChild(next);
-
-	}
+	friend bool QWidget_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1132,12 +926,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QWidget::eventFilter(watched, event);
-
-	}
+	friend bool QWidget_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1156,12 +945,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QWidget::timerEvent(event);
-
-	}
+	friend void QWidget_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1180,12 +964,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QWidget::childEvent(event);
-
-	}
+	friend void QWidget_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1204,12 +983,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QWidget::customEvent(event);
-
-	}
+	friend void QWidget_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1230,12 +1004,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QWidget::connectNotify(*signal);
-
-	}
+	friend void QWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1256,12 +1025,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QWidget::disconnectNotify(*signal);
-
-	}
+	friend void QWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -2621,7 +2385,9 @@ bool QWidget_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QWidget_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQWidget*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::devType();
+
 }
 
 bool QWidget_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -2635,7 +2401,9 @@ bool QWidget_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::setVisible(visible);
+
 }
 
 bool QWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -2649,7 +2417,9 @@ bool QWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QWidget_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQWidget*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::sizeHint());
+
 }
 
 bool QWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -2663,7 +2433,9 @@ bool QWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QWidget_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQWidget*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::minimumSizeHint());
+
 }
 
 bool QWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -2677,7 +2449,9 @@ bool QWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QWidget_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQWidget*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -2691,7 +2465,9 @@ bool QWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QWidget_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQWidget*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::hasHeightForWidth();
+
 }
 
 bool QWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -2705,7 +2481,9 @@ bool QWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QWidget_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQWidget*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::paintEngine();
+
 }
 
 bool QWidget_override_virtual_event(void* self, intptr_t slot) {
@@ -2719,7 +2497,9 @@ bool QWidget_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QWidget_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQWidget*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::event(event);
+
 }
 
 bool QWidget_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -2733,7 +2513,9 @@ bool QWidget_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_mousePressEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::mousePressEvent(event);
+
 }
 
 bool QWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -2747,7 +2529,9 @@ bool QWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_mouseReleaseEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::mouseReleaseEvent(event);
+
 }
 
 bool QWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -2761,7 +2545,9 @@ bool QWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::mouseDoubleClickEvent(event);
+
 }
 
 bool QWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -2775,7 +2561,9 @@ bool QWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::mouseMoveEvent(event);
+
 }
 
 bool QWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -2789,7 +2577,9 @@ bool QWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::wheelEvent(event);
+
 }
 
 bool QWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -2803,7 +2593,9 @@ bool QWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_keyPressEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::keyPressEvent(event);
+
 }
 
 bool QWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -2817,7 +2609,9 @@ bool QWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::keyReleaseEvent(event);
+
 }
 
 bool QWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -2831,7 +2625,9 @@ bool QWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::focusInEvent(event);
+
 }
 
 bool QWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -2845,7 +2641,9 @@ bool QWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::focusOutEvent(event);
+
 }
 
 bool QWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -2859,7 +2657,9 @@ bool QWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_enterEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::enterEvent(event);
+
 }
 
 bool QWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -2873,7 +2673,9 @@ bool QWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::leaveEvent(event);
+
 }
 
 bool QWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -2887,7 +2689,9 @@ bool QWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_paintEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::paintEvent(event);
+
 }
 
 bool QWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -2901,7 +2705,9 @@ bool QWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::moveEvent(event);
+
 }
 
 bool QWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -2915,7 +2721,9 @@ bool QWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_resizeEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::resizeEvent(event);
+
 }
 
 bool QWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -2929,7 +2737,9 @@ bool QWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::closeEvent(event);
+
 }
 
 bool QWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -2943,7 +2753,9 @@ bool QWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_contextMenuEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::contextMenuEvent(event);
+
 }
 
 bool QWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -2957,7 +2769,9 @@ bool QWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::tabletEvent(event);
+
 }
 
 bool QWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -2971,7 +2785,9 @@ bool QWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::actionEvent(event);
+
 }
 
 bool QWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -2985,7 +2801,9 @@ bool QWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::dragEnterEvent(event);
+
 }
 
 bool QWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -2999,7 +2817,9 @@ bool QWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::dragMoveEvent(event);
+
 }
 
 bool QWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -3013,7 +2833,9 @@ bool QWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::dragLeaveEvent(event);
+
 }
 
 bool QWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -3027,7 +2849,9 @@ bool QWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::dropEvent(event);
+
 }
 
 bool QWidget_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -3041,7 +2865,9 @@ bool QWidget_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::showEvent(event);
+
 }
 
 bool QWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -3055,7 +2881,9 @@ bool QWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::hideEvent(event);
+
 }
 
 bool QWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -3069,7 +2897,10 @@ bool QWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QWidget_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
-	return ( (MiqtVirtualQWidget*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+
 }
 
 bool QWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -3083,7 +2914,9 @@ bool QWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_changeEvent(void* self, QEvent* param1) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_changeEvent(param1);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::changeEvent(param1);
+
 }
 
 bool QWidget_override_virtual_metric(void* self, intptr_t slot) {
@@ -3097,7 +2930,9 @@ bool QWidget_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QWidget_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQWidget*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::metric(static_cast<MiqtVirtualQWidget::PaintDeviceMetric>(param1));
+
 }
 
 bool QWidget_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -3111,7 +2946,9 @@ bool QWidget_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQWidget*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::initPainter(painter);
+
 }
 
 bool QWidget_override_virtual_redirected(void* self, intptr_t slot) {
@@ -3125,7 +2962,9 @@ bool QWidget_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QWidget_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQWidget*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::redirected(offset);
+
 }
 
 bool QWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -3139,7 +2978,9 @@ bool QWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QWidget_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQWidget*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::sharedPainter();
+
 }
 
 bool QWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -3153,7 +2994,9 @@ bool QWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::inputMethodEvent(param1);
+
 }
 
 bool QWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -3167,7 +3010,9 @@ bool QWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 }
 
 QVariant* QWidget_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQWidget*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QWidget_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -3181,7 +3026,9 @@ bool QWidget_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 }
 
 bool QWidget_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQWidget*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::focusNextPrevChild(next);
+
 }
 
 bool QWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -3195,7 +3042,9 @@ bool QWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QWidget_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQWidget*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::eventFilter(watched, event);
+
 }
 
 bool QWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -3209,7 +3058,9 @@ bool QWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::timerEvent(event);
+
 }
 
 bool QWidget_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -3223,7 +3074,9 @@ bool QWidget_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::childEvent(event);
+
 }
 
 bool QWidget_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -3237,7 +3090,9 @@ bool QWidget_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::customEvent(event);
+
 }
 
 bool QWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -3251,7 +3106,9 @@ bool QWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::connectNotify(*signal);
+
 }
 
 bool QWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -3265,7 +3122,9 @@ bool QWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQWidget*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQWidget*)(self) )->MiqtVirtualQWidget::disconnectNotify(*signal);
+
 }
 
 void QWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

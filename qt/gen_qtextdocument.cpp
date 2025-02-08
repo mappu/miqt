@@ -101,12 +101,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_clear() {
-
-		QTextDocument::clear();
-
-	}
+	friend void QTextDocument_virtualbase_clear(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__createObject = 0;
@@ -126,12 +121,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QTextObject* virtualbase_createObject(QTextFormat* f) {
-
-		return QTextDocument::createObject(*f);
-
-	}
+	friend QTextObject* QTextDocument_virtualbase_createObject(void* self, QTextFormat* f);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__loadResource = 0;
@@ -152,12 +142,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_loadResource(int type, QUrl* name) {
-
-		return new QVariant(QTextDocument::loadResource(static_cast<int>(type), *name));
-
-	}
+	friend QVariant* QTextDocument_virtualbase_loadResource(void* self, int type, QUrl* name);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -175,12 +160,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QTextDocument::event(event);
-
-	}
+	friend bool QTextDocument_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -199,12 +179,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QTextDocument::eventFilter(watched, event);
-
-	}
+	friend bool QTextDocument_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -223,12 +198,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QTextDocument::timerEvent(event);
-
-	}
+	friend void QTextDocument_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -247,12 +217,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QTextDocument::childEvent(event);
-
-	}
+	friend void QTextDocument_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -271,12 +236,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QTextDocument::customEvent(event);
-
-	}
+	friend void QTextDocument_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -297,12 +257,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QTextDocument::connectNotify(*signal);
-
-	}
+	friend void QTextDocument_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -323,12 +278,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QTextDocument::disconnectNotify(*signal);
-
-	}
+	friend void QTextDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QTextDocument_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -1031,7 +981,9 @@ bool QTextDocument_override_virtual_clear(void* self, intptr_t slot) {
 }
 
 void QTextDocument_virtualbase_clear(void* self) {
-	( (MiqtVirtualQTextDocument*)(self) )->virtualbase_clear();
+
+	( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::clear();
+
 }
 
 bool QTextDocument_override_virtual_createObject(void* self, intptr_t slot) {
@@ -1045,7 +997,9 @@ bool QTextDocument_override_virtual_createObject(void* self, intptr_t slot) {
 }
 
 QTextObject* QTextDocument_virtualbase_createObject(void* self, QTextFormat* f) {
-	return ( (MiqtVirtualQTextDocument*)(self) )->virtualbase_createObject(f);
+
+	return ( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::createObject(*f);
+
 }
 
 bool QTextDocument_override_virtual_loadResource(void* self, intptr_t slot) {
@@ -1059,7 +1013,9 @@ bool QTextDocument_override_virtual_loadResource(void* self, intptr_t slot) {
 }
 
 QVariant* QTextDocument_virtualbase_loadResource(void* self, int type, QUrl* name) {
-	return ( (MiqtVirtualQTextDocument*)(self) )->virtualbase_loadResource(type, name);
+
+	return new QVariant(( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::loadResource(static_cast<int>(type), *name));
+
 }
 
 bool QTextDocument_override_virtual_event(void* self, intptr_t slot) {
@@ -1073,7 +1029,9 @@ bool QTextDocument_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QTextDocument_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQTextDocument*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::event(event);
+
 }
 
 bool QTextDocument_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1087,7 +1045,9 @@ bool QTextDocument_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QTextDocument_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQTextDocument*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::eventFilter(watched, event);
+
 }
 
 bool QTextDocument_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1101,7 +1061,9 @@ bool QTextDocument_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QTextDocument_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQTextDocument*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::timerEvent(event);
+
 }
 
 bool QTextDocument_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1115,7 +1077,9 @@ bool QTextDocument_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QTextDocument_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQTextDocument*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::childEvent(event);
+
 }
 
 bool QTextDocument_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1129,7 +1093,9 @@ bool QTextDocument_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QTextDocument_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQTextDocument*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::customEvent(event);
+
 }
 
 bool QTextDocument_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1143,7 +1109,9 @@ bool QTextDocument_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QTextDocument_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQTextDocument*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::connectNotify(*signal);
+
 }
 
 bool QTextDocument_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1157,7 +1125,9 @@ bool QTextDocument_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 }
 
 void QTextDocument_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQTextDocument*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQTextDocument*)(self) )->MiqtVirtualQTextDocument::disconnectNotify(*signal);
+
 }
 
 QObject* QTextDocument_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

@@ -321,12 +321,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QDnsLookup::event(event);
-
-	}
+	friend bool QDnsLookup_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -345,12 +340,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QDnsLookup::eventFilter(watched, event);
-
-	}
+	friend bool QDnsLookup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -369,12 +359,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QDnsLookup::timerEvent(event);
-
-	}
+	friend void QDnsLookup_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -393,12 +378,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QDnsLookup::childEvent(event);
-
-	}
+	friend void QDnsLookup_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -417,12 +397,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QDnsLookup::customEvent(event);
-
-	}
+	friend void QDnsLookup_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -443,12 +418,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QDnsLookup::connectNotify(*signal);
-
-	}
+	friend void QDnsLookup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -469,12 +439,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QDnsLookup::disconnectNotify(*signal);
-
-	}
+	friend void QDnsLookup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QDnsLookup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -773,7 +738,9 @@ bool QDnsLookup_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QDnsLookup_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQDnsLookup*)(self) )->MiqtVirtualQDnsLookup::event(event);
+
 }
 
 bool QDnsLookup_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -787,7 +754,9 @@ bool QDnsLookup_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QDnsLookup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQDnsLookup*)(self) )->MiqtVirtualQDnsLookup::eventFilter(watched, event);
+
 }
 
 bool QDnsLookup_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -801,7 +770,9 @@ bool QDnsLookup_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QDnsLookup_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQDnsLookup*)(self) )->MiqtVirtualQDnsLookup::timerEvent(event);
+
 }
 
 bool QDnsLookup_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -815,7 +786,9 @@ bool QDnsLookup_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QDnsLookup_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQDnsLookup*)(self) )->MiqtVirtualQDnsLookup::childEvent(event);
+
 }
 
 bool QDnsLookup_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -829,7 +802,9 @@ bool QDnsLookup_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QDnsLookup_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQDnsLookup*)(self) )->MiqtVirtualQDnsLookup::customEvent(event);
+
 }
 
 bool QDnsLookup_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -843,7 +818,9 @@ bool QDnsLookup_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QDnsLookup_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQDnsLookup*)(self) )->MiqtVirtualQDnsLookup::connectNotify(*signal);
+
 }
 
 bool QDnsLookup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -857,7 +834,9 @@ bool QDnsLookup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QDnsLookup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQDnsLookup*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQDnsLookup*)(self) )->MiqtVirtualQDnsLookup::disconnectNotify(*signal);
+
 }
 
 QObject* QDnsLookup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

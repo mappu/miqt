@@ -62,12 +62,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QMediaCaptureSession::event(event);
-
-	}
+	friend bool QMediaCaptureSession_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -86,12 +81,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QMediaCaptureSession::eventFilter(watched, event);
-
-	}
+	friend bool QMediaCaptureSession_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -110,12 +100,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QMediaCaptureSession::timerEvent(event);
-
-	}
+	friend void QMediaCaptureSession_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -134,12 +119,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QMediaCaptureSession::childEvent(event);
-
-	}
+	friend void QMediaCaptureSession_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -158,12 +138,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QMediaCaptureSession::customEvent(event);
-
-	}
+	friend void QMediaCaptureSession_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -184,12 +159,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QMediaCaptureSession::connectNotify(*signal);
-
-	}
+	friend void QMediaCaptureSession_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -210,12 +180,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QMediaCaptureSession::disconnectNotify(*signal);
-
-	}
+	friend void QMediaCaptureSession_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QMediaCaptureSession_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -404,7 +369,9 @@ bool QMediaCaptureSession_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QMediaCaptureSession_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQMediaCaptureSession*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQMediaCaptureSession*)(self) )->MiqtVirtualQMediaCaptureSession::event(event);
+
 }
 
 bool QMediaCaptureSession_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -418,7 +385,9 @@ bool QMediaCaptureSession_override_virtual_eventFilter(void* self, intptr_t slot
 }
 
 bool QMediaCaptureSession_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQMediaCaptureSession*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQMediaCaptureSession*)(self) )->MiqtVirtualQMediaCaptureSession::eventFilter(watched, event);
+
 }
 
 bool QMediaCaptureSession_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -432,7 +401,9 @@ bool QMediaCaptureSession_override_virtual_timerEvent(void* self, intptr_t slot)
 }
 
 void QMediaCaptureSession_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQMediaCaptureSession*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQMediaCaptureSession*)(self) )->MiqtVirtualQMediaCaptureSession::timerEvent(event);
+
 }
 
 bool QMediaCaptureSession_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -446,7 +417,9 @@ bool QMediaCaptureSession_override_virtual_childEvent(void* self, intptr_t slot)
 }
 
 void QMediaCaptureSession_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQMediaCaptureSession*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQMediaCaptureSession*)(self) )->MiqtVirtualQMediaCaptureSession::childEvent(event);
+
 }
 
 bool QMediaCaptureSession_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -460,7 +433,9 @@ bool QMediaCaptureSession_override_virtual_customEvent(void* self, intptr_t slot
 }
 
 void QMediaCaptureSession_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQMediaCaptureSession*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQMediaCaptureSession*)(self) )->MiqtVirtualQMediaCaptureSession::customEvent(event);
+
 }
 
 bool QMediaCaptureSession_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -474,7 +449,9 @@ bool QMediaCaptureSession_override_virtual_connectNotify(void* self, intptr_t sl
 }
 
 void QMediaCaptureSession_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQMediaCaptureSession*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQMediaCaptureSession*)(self) )->MiqtVirtualQMediaCaptureSession::connectNotify(*signal);
+
 }
 
 bool QMediaCaptureSession_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -488,7 +465,9 @@ bool QMediaCaptureSession_override_virtual_disconnectNotify(void* self, intptr_t
 }
 
 void QMediaCaptureSession_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQMediaCaptureSession*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQMediaCaptureSession*)(self) )->MiqtVirtualQMediaCaptureSession::disconnectNotify(*signal);
+
 }
 
 QObject* QMediaCaptureSession_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

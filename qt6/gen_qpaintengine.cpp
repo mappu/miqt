@@ -168,12 +168,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawRects(QRect* rects, int rectCount) {
-
-		QPaintEngine::drawRects(rects, static_cast<int>(rectCount));
-
-	}
+	friend void QPaintEngine_virtualbase_drawRects(void* self, QRect* rects, int rectCount);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawRects2 = 0;
@@ -193,12 +188,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawRects2(QRectF* rects, int rectCount) {
-
-		QPaintEngine::drawRects(rects, static_cast<int>(rectCount));
-
-	}
+	friend void QPaintEngine_virtualbase_drawRects2(void* self, QRectF* rects, int rectCount);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawLines = 0;
@@ -218,12 +208,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawLines(QLine* lines, int lineCount) {
-
-		QPaintEngine::drawLines(lines, static_cast<int>(lineCount));
-
-	}
+	friend void QPaintEngine_virtualbase_drawLines(void* self, QLine* lines, int lineCount);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawLines2 = 0;
@@ -243,12 +228,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawLines2(QLineF* lines, int lineCount) {
-
-		QPaintEngine::drawLines(lines, static_cast<int>(lineCount));
-
-	}
+	friend void QPaintEngine_virtualbase_drawLines2(void* self, QLineF* lines, int lineCount);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawEllipse = 0;
@@ -269,12 +249,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawEllipse(QRectF* r) {
-
-		QPaintEngine::drawEllipse(*r);
-
-	}
+	friend void QPaintEngine_virtualbase_drawEllipse(void* self, QRectF* r);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawEllipseWithQRect = 0;
@@ -295,12 +270,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawEllipseWithQRect(QRect* r) {
-
-		QPaintEngine::drawEllipse(*r);
-
-	}
+	friend void QPaintEngine_virtualbase_drawEllipseWithQRect(void* self, QRect* r);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawPath = 0;
@@ -321,12 +291,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawPath(QPainterPath* path) {
-
-		QPaintEngine::drawPath(*path);
-
-	}
+	friend void QPaintEngine_virtualbase_drawPath(void* self, QPainterPath* path);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawPoints = 0;
@@ -346,12 +311,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawPoints(QPointF* points, int pointCount) {
-
-		QPaintEngine::drawPoints(points, static_cast<int>(pointCount));
-
-	}
+	friend void QPaintEngine_virtualbase_drawPoints(void* self, QPointF* points, int pointCount);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawPoints2 = 0;
@@ -371,12 +331,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawPoints2(QPoint* points, int pointCount) {
-
-		QPaintEngine::drawPoints(points, static_cast<int>(pointCount));
-
-	}
+	friend void QPaintEngine_virtualbase_drawPoints2(void* self, QPoint* points, int pointCount);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawPolygon = 0;
@@ -398,12 +353,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawPolygon(QPointF* points, int pointCount, int mode) {
-
-		QPaintEngine::drawPolygon(points, static_cast<int>(pointCount), static_cast<QPaintEngine::PolygonDrawMode>(mode));
-
-	}
+	friend void QPaintEngine_virtualbase_drawPolygon(void* self, QPointF* points, int pointCount, int mode);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawPolygon2 = 0;
@@ -425,12 +375,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawPolygon2(QPoint* points, int pointCount, int mode) {
-
-		QPaintEngine::drawPolygon(points, static_cast<int>(pointCount), static_cast<QPaintEngine::PolygonDrawMode>(mode));
-
-	}
+	friend void QPaintEngine_virtualbase_drawPolygon2(void* self, QPoint* points, int pointCount, int mode);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawPixmap = 0;
@@ -478,12 +423,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawTextItem(QPointF* p, QTextItem* textItem) {
-
-		QPaintEngine::drawTextItem(*p, *textItem);
-
-	}
+	friend void QPaintEngine_virtualbase_drawTextItem(void* self, QPointF* p, QTextItem* textItem);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawTiledPixmap = 0;
@@ -510,12 +450,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawTiledPixmap(QRectF* r, QPixmap* pixmap, QPointF* s) {
-
-		QPaintEngine::drawTiledPixmap(*r, *pixmap, *s);
-
-	}
+	friend void QPaintEngine_virtualbase_drawTiledPixmap(void* self, QRectF* r, QPixmap* pixmap, QPointF* s);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawImage = 0;
@@ -544,12 +479,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawImage(QRectF* r, QImage* pm, QRectF* sr, int flags) {
-
-		QPaintEngine::drawImage(*r, *pm, *sr, static_cast<Qt::ImageConversionFlags>(flags));
-
-	}
+	friend void QPaintEngine_virtualbase_drawImage(void* self, QRectF* r, QImage* pm, QRectF* sr, int flags);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__coordinateOffset = 0;
@@ -566,12 +496,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPoint* virtualbase_coordinateOffset() const {
-
-		return new QPoint(QPaintEngine::coordinateOffset());
-
-	}
+	friend QPoint* QPaintEngine_virtualbase_coordinateOffset(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__type = 0;
@@ -604,12 +529,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPixmap* virtualbase_createPixmap(QSize* size) {
-
-		return new QPixmap(QPaintEngine::createPixmap(*size));
-
-	}
+	friend QPixmap* QPaintEngine_virtualbase_createPixmap(void* self, QSize* size);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__createPixmapFromImage = 0;
@@ -629,12 +549,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPixmap* virtualbase_createPixmapFromImage(QImage* image, int flags) {
-
-		return new QPixmap(QPaintEngine::createPixmapFromImage(*image, static_cast<Qt::ImageConversionFlags>(flags)));
-
-	}
+	friend QPixmap* QPaintEngine_virtualbase_createPixmapFromImage(void* self, QImage* image, int flags);
 
 };
 
@@ -840,7 +755,9 @@ bool QPaintEngine_override_virtual_drawRects(void* self, intptr_t slot) {
 }
 
 void QPaintEngine_virtualbase_drawRects(void* self, QRect* rects, int rectCount) {
-	( (MiqtVirtualQPaintEngine*)(self) )->virtualbase_drawRects(rects, rectCount);
+
+	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawRects(rects, static_cast<int>(rectCount));
+
 }
 
 bool QPaintEngine_override_virtual_drawRects2(void* self, intptr_t slot) {
@@ -854,7 +771,9 @@ bool QPaintEngine_override_virtual_drawRects2(void* self, intptr_t slot) {
 }
 
 void QPaintEngine_virtualbase_drawRects2(void* self, QRectF* rects, int rectCount) {
-	( (MiqtVirtualQPaintEngine*)(self) )->virtualbase_drawRects2(rects, rectCount);
+
+	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawRects(rects, static_cast<int>(rectCount));
+
 }
 
 bool QPaintEngine_override_virtual_drawLines(void* self, intptr_t slot) {
@@ -868,7 +787,9 @@ bool QPaintEngine_override_virtual_drawLines(void* self, intptr_t slot) {
 }
 
 void QPaintEngine_virtualbase_drawLines(void* self, QLine* lines, int lineCount) {
-	( (MiqtVirtualQPaintEngine*)(self) )->virtualbase_drawLines(lines, lineCount);
+
+	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawLines(lines, static_cast<int>(lineCount));
+
 }
 
 bool QPaintEngine_override_virtual_drawLines2(void* self, intptr_t slot) {
@@ -882,7 +803,9 @@ bool QPaintEngine_override_virtual_drawLines2(void* self, intptr_t slot) {
 }
 
 void QPaintEngine_virtualbase_drawLines2(void* self, QLineF* lines, int lineCount) {
-	( (MiqtVirtualQPaintEngine*)(self) )->virtualbase_drawLines2(lines, lineCount);
+
+	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawLines(lines, static_cast<int>(lineCount));
+
 }
 
 bool QPaintEngine_override_virtual_drawEllipse(void* self, intptr_t slot) {
@@ -896,7 +819,9 @@ bool QPaintEngine_override_virtual_drawEllipse(void* self, intptr_t slot) {
 }
 
 void QPaintEngine_virtualbase_drawEllipse(void* self, QRectF* r) {
-	( (MiqtVirtualQPaintEngine*)(self) )->virtualbase_drawEllipse(r);
+
+	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawEllipse(*r);
+
 }
 
 bool QPaintEngine_override_virtual_drawEllipseWithQRect(void* self, intptr_t slot) {
@@ -910,7 +835,9 @@ bool QPaintEngine_override_virtual_drawEllipseWithQRect(void* self, intptr_t slo
 }
 
 void QPaintEngine_virtualbase_drawEllipseWithQRect(void* self, QRect* r) {
-	( (MiqtVirtualQPaintEngine*)(self) )->virtualbase_drawEllipseWithQRect(r);
+
+	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawEllipse(*r);
+
 }
 
 bool QPaintEngine_override_virtual_drawPath(void* self, intptr_t slot) {
@@ -924,7 +851,9 @@ bool QPaintEngine_override_virtual_drawPath(void* self, intptr_t slot) {
 }
 
 void QPaintEngine_virtualbase_drawPath(void* self, QPainterPath* path) {
-	( (MiqtVirtualQPaintEngine*)(self) )->virtualbase_drawPath(path);
+
+	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawPath(*path);
+
 }
 
 bool QPaintEngine_override_virtual_drawPoints(void* self, intptr_t slot) {
@@ -938,7 +867,9 @@ bool QPaintEngine_override_virtual_drawPoints(void* self, intptr_t slot) {
 }
 
 void QPaintEngine_virtualbase_drawPoints(void* self, QPointF* points, int pointCount) {
-	( (MiqtVirtualQPaintEngine*)(self) )->virtualbase_drawPoints(points, pointCount);
+
+	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawPoints(points, static_cast<int>(pointCount));
+
 }
 
 bool QPaintEngine_override_virtual_drawPoints2(void* self, intptr_t slot) {
@@ -952,7 +883,9 @@ bool QPaintEngine_override_virtual_drawPoints2(void* self, intptr_t slot) {
 }
 
 void QPaintEngine_virtualbase_drawPoints2(void* self, QPoint* points, int pointCount) {
-	( (MiqtVirtualQPaintEngine*)(self) )->virtualbase_drawPoints2(points, pointCount);
+
+	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawPoints(points, static_cast<int>(pointCount));
+
 }
 
 bool QPaintEngine_override_virtual_drawPolygon(void* self, intptr_t slot) {
@@ -966,7 +899,9 @@ bool QPaintEngine_override_virtual_drawPolygon(void* self, intptr_t slot) {
 }
 
 void QPaintEngine_virtualbase_drawPolygon(void* self, QPointF* points, int pointCount, int mode) {
-	( (MiqtVirtualQPaintEngine*)(self) )->virtualbase_drawPolygon(points, pointCount, mode);
+
+	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawPolygon(points, static_cast<int>(pointCount), static_cast<MiqtVirtualQPaintEngine::PolygonDrawMode>(mode));
+
 }
 
 bool QPaintEngine_override_virtual_drawPolygon2(void* self, intptr_t slot) {
@@ -980,7 +915,9 @@ bool QPaintEngine_override_virtual_drawPolygon2(void* self, intptr_t slot) {
 }
 
 void QPaintEngine_virtualbase_drawPolygon2(void* self, QPoint* points, int pointCount, int mode) {
-	( (MiqtVirtualQPaintEngine*)(self) )->virtualbase_drawPolygon2(points, pointCount, mode);
+
+	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawPolygon(points, static_cast<int>(pointCount), static_cast<MiqtVirtualQPaintEngine::PolygonDrawMode>(mode));
+
 }
 
 bool QPaintEngine_override_virtual_drawPixmap(void* self, intptr_t slot) {
@@ -1004,7 +941,9 @@ bool QPaintEngine_override_virtual_drawTextItem(void* self, intptr_t slot) {
 }
 
 void QPaintEngine_virtualbase_drawTextItem(void* self, QPointF* p, QTextItem* textItem) {
-	( (MiqtVirtualQPaintEngine*)(self) )->virtualbase_drawTextItem(p, textItem);
+
+	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawTextItem(*p, *textItem);
+
 }
 
 bool QPaintEngine_override_virtual_drawTiledPixmap(void* self, intptr_t slot) {
@@ -1018,7 +957,9 @@ bool QPaintEngine_override_virtual_drawTiledPixmap(void* self, intptr_t slot) {
 }
 
 void QPaintEngine_virtualbase_drawTiledPixmap(void* self, QRectF* r, QPixmap* pixmap, QPointF* s) {
-	( (MiqtVirtualQPaintEngine*)(self) )->virtualbase_drawTiledPixmap(r, pixmap, s);
+
+	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawTiledPixmap(*r, *pixmap, *s);
+
 }
 
 bool QPaintEngine_override_virtual_drawImage(void* self, intptr_t slot) {
@@ -1032,7 +973,9 @@ bool QPaintEngine_override_virtual_drawImage(void* self, intptr_t slot) {
 }
 
 void QPaintEngine_virtualbase_drawImage(void* self, QRectF* r, QImage* pm, QRectF* sr, int flags) {
-	( (MiqtVirtualQPaintEngine*)(self) )->virtualbase_drawImage(r, pm, sr, flags);
+
+	( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::drawImage(*r, *pm, *sr, static_cast<Qt::ImageConversionFlags>(flags));
+
 }
 
 bool QPaintEngine_override_virtual_coordinateOffset(void* self, intptr_t slot) {
@@ -1046,7 +989,9 @@ bool QPaintEngine_override_virtual_coordinateOffset(void* self, intptr_t slot) {
 }
 
 QPoint* QPaintEngine_virtualbase_coordinateOffset(const void* self) {
-	return ( (const MiqtVirtualQPaintEngine*)(self) )->virtualbase_coordinateOffset();
+
+	return new QPoint(( (const MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::coordinateOffset());
+
 }
 
 bool QPaintEngine_override_virtual_type(void* self, intptr_t slot) {
@@ -1070,7 +1015,9 @@ bool QPaintEngine_override_virtual_createPixmap(void* self, intptr_t slot) {
 }
 
 QPixmap* QPaintEngine_virtualbase_createPixmap(void* self, QSize* size) {
-	return ( (MiqtVirtualQPaintEngine*)(self) )->virtualbase_createPixmap(size);
+
+	return new QPixmap(( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::createPixmap(*size));
+
 }
 
 bool QPaintEngine_override_virtual_createPixmapFromImage(void* self, intptr_t slot) {
@@ -1084,7 +1031,9 @@ bool QPaintEngine_override_virtual_createPixmapFromImage(void* self, intptr_t sl
 }
 
 QPixmap* QPaintEngine_virtualbase_createPixmapFromImage(void* self, QImage* image, int flags) {
-	return ( (MiqtVirtualQPaintEngine*)(self) )->virtualbase_createPixmapFromImage(image, flags);
+
+	return new QPixmap(( (MiqtVirtualQPaintEngine*)(self) )->MiqtVirtualQPaintEngine::createPixmapFromImage(*image, static_cast<Qt::ImageConversionFlags>(flags)));
+
 }
 
 void QPaintEngine_delete(QPaintEngine* self) {

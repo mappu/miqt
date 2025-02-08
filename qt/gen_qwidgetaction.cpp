@@ -54,12 +54,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* param1) {
-
-		return QWidgetAction::event(param1);
-
-	}
+	friend bool QWidgetAction_virtualbase_event(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -78,12 +73,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* param1, QEvent* param2) {
-
-		return QWidgetAction::eventFilter(param1, param2);
-
-	}
+	friend bool QWidgetAction_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__createWidget = 0;
@@ -101,12 +91,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QWidget* virtualbase_createWidget(QWidget* parent) {
-
-		return QWidgetAction::createWidget(parent);
-
-	}
+	friend QWidget* QWidgetAction_virtualbase_createWidget(void* self, QWidget* parent);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__deleteWidget = 0;
@@ -125,12 +110,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_deleteWidget(QWidget* widget) {
-
-		QWidgetAction::deleteWidget(widget);
-
-	}
+	friend void QWidgetAction_virtualbase_deleteWidget(void* self, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -149,12 +129,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QWidgetAction::timerEvent(event);
-
-	}
+	friend void QWidgetAction_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -173,12 +148,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QWidgetAction::childEvent(event);
-
-	}
+	friend void QWidgetAction_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -197,12 +167,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QWidgetAction::customEvent(event);
-
-	}
+	friend void QWidgetAction_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -223,12 +188,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QWidgetAction::connectNotify(*signal);
-
-	}
+	friend void QWidgetAction_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -249,12 +209,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QWidgetAction::disconnectNotify(*signal);
-
-	}
+	friend void QWidgetAction_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend struct miqt_array /* of QWidget* */  QWidgetAction_protectedbase_createdWidgets(bool* _dynamic_cast_ok, const void* self);
@@ -373,7 +328,9 @@ bool QWidgetAction_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QWidgetAction_virtualbase_event(void* self, QEvent* param1) {
-	return ( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_event(param1);
+
+	return ( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::event(param1);
+
 }
 
 bool QWidgetAction_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -387,7 +344,9 @@ bool QWidgetAction_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QWidgetAction_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
-	return ( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_eventFilter(param1, param2);
+
+	return ( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::eventFilter(param1, param2);
+
 }
 
 bool QWidgetAction_override_virtual_createWidget(void* self, intptr_t slot) {
@@ -401,7 +360,9 @@ bool QWidgetAction_override_virtual_createWidget(void* self, intptr_t slot) {
 }
 
 QWidget* QWidgetAction_virtualbase_createWidget(void* self, QWidget* parent) {
-	return ( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_createWidget(parent);
+
+	return ( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::createWidget(parent);
+
 }
 
 bool QWidgetAction_override_virtual_deleteWidget(void* self, intptr_t slot) {
@@ -415,7 +376,9 @@ bool QWidgetAction_override_virtual_deleteWidget(void* self, intptr_t slot) {
 }
 
 void QWidgetAction_virtualbase_deleteWidget(void* self, QWidget* widget) {
-	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_deleteWidget(widget);
+
+	( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::deleteWidget(widget);
+
 }
 
 bool QWidgetAction_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -429,7 +392,9 @@ bool QWidgetAction_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QWidgetAction_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::timerEvent(event);
+
 }
 
 bool QWidgetAction_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -443,7 +408,9 @@ bool QWidgetAction_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QWidgetAction_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::childEvent(event);
+
 }
 
 bool QWidgetAction_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -457,7 +424,9 @@ bool QWidgetAction_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QWidgetAction_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::customEvent(event);
+
 }
 
 bool QWidgetAction_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -471,7 +440,9 @@ bool QWidgetAction_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QWidgetAction_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::connectNotify(*signal);
+
 }
 
 bool QWidgetAction_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -485,7 +456,9 @@ bool QWidgetAction_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 }
 
 void QWidgetAction_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQWidgetAction*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQWidgetAction*)(self) )->MiqtVirtualQWidgetAction::disconnectNotify(*signal);
+
 }
 
 struct miqt_array /* of QWidget* */  QWidgetAction_protectedbase_createdWidgets(bool* _dynamic_cast_ok, const void* self) {

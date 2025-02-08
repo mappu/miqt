@@ -175,12 +175,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_indexAt(QPoint* point) const {
-
-		return new QModelIndex(QColumnView::indexAt(*point));
-
-	}
+	friend QModelIndex* QColumnView_virtualbase_indexAt(const void* self, QPoint* point);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__scrollTo = 0;
@@ -203,12 +198,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_scrollTo(QModelIndex* index, int hint) {
-
-		QColumnView::scrollTo(*index, static_cast<QAbstractItemView::ScrollHint>(hint));
-
-	}
+	friend void QColumnView_virtualbase_scrollTo(void* self, QModelIndex* index, int hint);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -225,12 +215,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QColumnView::sizeHint());
-
-	}
+	friend QSize* QColumnView_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__visualRect = 0;
@@ -250,12 +235,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRect* virtualbase_visualRect(QModelIndex* index) const {
-
-		return new QRect(QColumnView::visualRect(*index));
-
-	}
+	friend QRect* QColumnView_virtualbase_visualRect(const void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setModel = 0;
@@ -274,12 +254,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setModel(QAbstractItemModel* model) {
-
-		QColumnView::setModel(model);
-
-	}
+	friend void QColumnView_virtualbase_setModel(void* self, QAbstractItemModel* model);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setSelectionModel = 0;
@@ -298,12 +273,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setSelectionModel(QItemSelectionModel* selectionModel) {
-
-		QColumnView::setSelectionModel(selectionModel);
-
-	}
+	friend void QColumnView_virtualbase_setSelectionModel(void* self, QItemSelectionModel* selectionModel);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setRootIndex = 0;
@@ -324,12 +294,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setRootIndex(QModelIndex* index) {
-
-		QColumnView::setRootIndex(*index);
-
-	}
+	friend void QColumnView_virtualbase_setRootIndex(void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__selectAll = 0;
@@ -347,12 +312,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_selectAll() {
-
-		QColumnView::selectAll();
-
-	}
+	friend void QColumnView_virtualbase_selectAll(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isIndexHidden = 0;
@@ -372,12 +332,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isIndexHidden(QModelIndex* index) const {
-
-		return QColumnView::isIndexHidden(*index);
-
-	}
+	friend bool QColumnView_virtualbase_isIndexHidden(const void* self, QModelIndex* index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveCursor = 0;
@@ -398,12 +353,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QModelIndex* virtualbase_moveCursor(int cursorAction, int modifiers) {
-
-		return new QModelIndex(QColumnView::moveCursor(static_cast<QAbstractItemView::CursorAction>(cursorAction), static_cast<Qt::KeyboardModifiers>(modifiers)));
-
-	}
+	friend QModelIndex* QColumnView_virtualbase_moveCursor(void* self, int cursorAction, int modifiers);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -422,12 +372,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* event) {
-
-		QColumnView::resizeEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_resizeEvent(void* self, QResizeEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setSelection = 0;
@@ -450,12 +395,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setSelection(QRect* rect, int command) {
-
-		QColumnView::setSelection(*rect, static_cast<QItemSelectionModel::SelectionFlags>(command));
-
-	}
+	friend void QColumnView_virtualbase_setSelection(void* self, QRect* rect, int command);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__visualRegionForSelection = 0;
@@ -475,12 +415,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRegion* virtualbase_visualRegionForSelection(QItemSelection* selection) const {
-
-		return new QRegion(QColumnView::visualRegionForSelection(*selection));
-
-	}
+	friend QRegion* QColumnView_virtualbase_visualRegionForSelection(const void* self, QItemSelection* selection);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__horizontalOffset = 0;
@@ -497,12 +432,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_horizontalOffset() const {
-
-		return QColumnView::horizontalOffset();
-
-	}
+	friend int QColumnView_virtualbase_horizontalOffset(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__verticalOffset = 0;
@@ -519,12 +449,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_verticalOffset() const {
-
-		return QColumnView::verticalOffset();
-
-	}
+	friend int QColumnView_virtualbase_verticalOffset(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__rowsInserted = 0;
@@ -547,12 +472,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_rowsInserted(QModelIndex* parent, int start, int end) {
-
-		QColumnView::rowsInserted(*parent, static_cast<int>(start), static_cast<int>(end));
-
-	}
+	friend void QColumnView_virtualbase_rowsInserted(void* self, QModelIndex* parent, int start, int end);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__currentChanged = 0;
@@ -576,12 +496,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_currentChanged(QModelIndex* current, QModelIndex* previous) {
-
-		QColumnView::currentChanged(*current, *previous);
-
-	}
+	friend void QColumnView_virtualbase_currentChanged(void* self, QModelIndex* current, QModelIndex* previous);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__scrollContentsBy = 0;
@@ -601,12 +516,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_scrollContentsBy(int dx, int dy) {
-
-		QColumnView::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
-
-	}
+	friend void QColumnView_virtualbase_scrollContentsBy(void* self, int dx, int dy);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__createColumn = 0;
@@ -626,12 +536,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QAbstractItemView* virtualbase_createColumn(QModelIndex* rootIndex) {
-
-		return QColumnView::createColumn(*rootIndex);
-
-	}
+	friend QAbstractItemView* QColumnView_virtualbase_createColumn(void* self, QModelIndex* rootIndex);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyboardSearch = 0;
@@ -657,13 +562,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyboardSearch(struct miqt_string search) {
-		QString search_QString = QString::fromUtf8(search.data, search.len);
-
-		QColumnView::keyboardSearch(search_QString);
-
-	}
+	friend void QColumnView_virtualbase_keyboardSearch(void* self, struct miqt_string search);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHintForRow = 0;
@@ -681,12 +580,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_sizeHintForRow(int row) const {
-
-		return QColumnView::sizeHintForRow(static_cast<int>(row));
-
-	}
+	friend int QColumnView_virtualbase_sizeHintForRow(const void* self, int row);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHintForColumn = 0;
@@ -704,12 +598,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_sizeHintForColumn(int column) const {
-
-		return QColumnView::sizeHintForColumn(static_cast<int>(column));
-
-	}
+	friend int QColumnView_virtualbase_sizeHintForColumn(const void* self, int column);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -728,12 +617,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int query) const {
-
-		return new QVariant(QColumnView::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
-
-	}
+	friend QVariant* QColumnView_virtualbase_inputMethodQuery(const void* self, int query);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__reset = 0;
@@ -751,12 +635,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_reset() {
-
-		QColumnView::reset();
-
-	}
+	friend void QColumnView_virtualbase_reset(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__doItemsLayout = 0;
@@ -774,12 +653,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_doItemsLayout() {
-
-		QColumnView::doItemsLayout();
-
-	}
+	friend void QColumnView_virtualbase_doItemsLayout(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dataChanged = 0;
@@ -813,18 +687,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dataChanged(QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
-		QVector<int> roles_QList;
-		roles_QList.reserve(roles.len);
-		int* roles_arr = static_cast<int*>(roles.data);
-		for(size_t i = 0; i < roles.len; ++i) {
-			roles_QList.push_back(static_cast<int>(roles_arr[i]));
-		}
-
-		QColumnView::dataChanged(*topLeft, *bottomRight, roles_QList);
-
-	}
+	friend void QColumnView_virtualbase_dataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__rowsAboutToBeRemoved = 0;
@@ -847,12 +710,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_rowsAboutToBeRemoved(QModelIndex* parent, int start, int end) {
-
-		QColumnView::rowsAboutToBeRemoved(*parent, static_cast<int>(start), static_cast<int>(end));
-
-	}
+	friend void QColumnView_virtualbase_rowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__selectionChanged = 0;
@@ -876,12 +734,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_selectionChanged(QItemSelection* selected, QItemSelection* deselected) {
-
-		QColumnView::selectionChanged(*selected, *deselected);
-
-	}
+	friend void QColumnView_virtualbase_selectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateEditorData = 0;
@@ -899,12 +752,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_updateEditorData() {
-
-		QColumnView::updateEditorData();
-
-	}
+	friend void QColumnView_virtualbase_updateEditorData(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateEditorGeometries = 0;
@@ -922,12 +770,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_updateEditorGeometries() {
-
-		QColumnView::updateEditorGeometries();
-
-	}
+	friend void QColumnView_virtualbase_updateEditorGeometries(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateGeometries = 0;
@@ -945,12 +788,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_updateGeometries() {
-
-		QColumnView::updateGeometries();
-
-	}
+	friend void QColumnView_virtualbase_updateGeometries(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__verticalScrollbarAction = 0;
@@ -969,12 +807,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_verticalScrollbarAction(int action) {
-
-		QColumnView::verticalScrollbarAction(static_cast<int>(action));
-
-	}
+	friend void QColumnView_virtualbase_verticalScrollbarAction(void* self, int action);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__horizontalScrollbarAction = 0;
@@ -993,12 +826,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_horizontalScrollbarAction(int action) {
-
-		QColumnView::horizontalScrollbarAction(static_cast<int>(action));
-
-	}
+	friend void QColumnView_virtualbase_horizontalScrollbarAction(void* self, int action);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__verticalScrollbarValueChanged = 0;
@@ -1017,12 +845,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_verticalScrollbarValueChanged(int value) {
-
-		QColumnView::verticalScrollbarValueChanged(static_cast<int>(value));
-
-	}
+	friend void QColumnView_virtualbase_verticalScrollbarValueChanged(void* self, int value);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__horizontalScrollbarValueChanged = 0;
@@ -1041,12 +864,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_horizontalScrollbarValueChanged(int value) {
-
-		QColumnView::horizontalScrollbarValueChanged(static_cast<int>(value));
-
-	}
+	friend void QColumnView_virtualbase_horizontalScrollbarValueChanged(void* self, int value);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEditor = 0;
@@ -1067,12 +885,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEditor(QWidget* editor, int hint) {
-
-		QColumnView::closeEditor(editor, static_cast<QAbstractItemDelegate::EndEditHint>(hint));
-
-	}
+	friend void QColumnView_virtualbase_closeEditor(void* self, QWidget* editor, int hint);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__commitData = 0;
@@ -1091,12 +904,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_commitData(QWidget* editor) {
-
-		QColumnView::commitData(editor);
-
-	}
+	friend void QColumnView_virtualbase_commitData(void* self, QWidget* editor);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__editorDestroyed = 0;
@@ -1115,12 +923,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_editorDestroyed(QObject* editor) {
-
-		QColumnView::editorDestroyed(editor);
-
-	}
+	friend void QColumnView_virtualbase_editorDestroyed(void* self, QObject* editor);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__selectedIndexes = 0;
@@ -1143,21 +946,7 @@ public:
 		return callback_return_value_QList;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_array /* of QModelIndex* */  virtualbase_selectedIndexes() const {
-
-		QModelIndexList _ret = QColumnView::selectedIndexes();
-		// Convert QList<> from C++ memory to manually-managed C memory
-		QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
-		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-			_arr[i] = new QModelIndex(_ret[i]);
-		}
-		struct miqt_array _out;
-		_out.len = _ret.length();
-		_out.data = static_cast<void*>(_arr);
-		return _out;
-
-	}
+	friend struct miqt_array /* of QModelIndex* */  QColumnView_virtualbase_selectedIndexes(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__edit2 = 0;
@@ -1180,12 +969,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_edit2(QModelIndex* index, int trigger, QEvent* event) {
-
-		return QColumnView::edit(*index, static_cast<QAbstractItemView::EditTrigger>(trigger), event);
-
-	}
+	friend bool QColumnView_virtualbase_edit2(void* self, QModelIndex* index, int trigger, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__selectionCommand = 0;
@@ -1206,13 +990,7 @@ public:
 		return static_cast<QItemSelectionModel::SelectionFlags>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_selectionCommand(QModelIndex* index, QEvent* event) const {
-
-		QItemSelectionModel::SelectionFlags _ret = QColumnView::selectionCommand(*index, event);
-		return static_cast<int>(_ret);
-
-	}
+	friend int QColumnView_virtualbase_selectionCommand(const void* self, QModelIndex* index, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__startDrag = 0;
@@ -1232,12 +1010,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_startDrag(int supportedActions) {
-
-		QColumnView::startDrag(static_cast<Qt::DropActions>(supportedActions));
-
-	}
+	friend void QColumnView_virtualbase_startDrag(void* self, int supportedActions);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__viewOptions = 0;
@@ -1254,12 +1027,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QStyleOptionViewItem* virtualbase_viewOptions() const {
-
-		return new QStyleOptionViewItem(QColumnView::viewOptions());
-
-	}
+	friend QStyleOptionViewItem* QColumnView_virtualbase_viewOptions(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1277,12 +1045,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QColumnView::focusNextPrevChild(next);
-
-	}
+	friend bool QColumnView_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -1300,12 +1063,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QColumnView::event(event);
-
-	}
+	friend bool QColumnView_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__viewportEvent = 0;
@@ -1323,12 +1081,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_viewportEvent(QEvent* event) {
-
-		return QColumnView::viewportEvent(event);
-
-	}
+	friend bool QColumnView_virtualbase_viewportEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -1347,12 +1100,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* event) {
-
-		QColumnView::mousePressEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -1371,12 +1119,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QColumnView::mouseMoveEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -1395,12 +1138,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
-
-		QColumnView::mouseReleaseEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -1419,12 +1157,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QColumnView::mouseDoubleClickEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -1443,12 +1176,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QColumnView::dragEnterEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -1467,12 +1195,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QColumnView::dragMoveEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -1491,12 +1214,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QColumnView::dragLeaveEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -1515,12 +1233,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QColumnView::dropEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -1539,12 +1252,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QColumnView::focusInEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -1563,12 +1271,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QColumnView::focusOutEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -1587,12 +1290,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* event) {
-
-		QColumnView::keyPressEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1611,12 +1309,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QColumnView::timerEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1635,12 +1328,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* event) {
-
-		QColumnView::inputMethodEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1659,12 +1347,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* object, QEvent* event) {
-
-		return QColumnView::eventFilter(object, event);
-
-	}
+	friend bool QColumnView_virtualbase_eventFilter(void* self, QObject* object, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__viewportSizeHint = 0;
@@ -1681,12 +1364,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_viewportSizeHint() const {
-
-		return new QSize(QColumnView::viewportSizeHint());
-
-	}
+	friend QSize* QColumnView_virtualbase_viewportSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -1703,12 +1381,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QColumnView::minimumSizeHint());
-
-	}
+	friend QSize* QColumnView_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setupViewport = 0;
@@ -1727,12 +1400,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setupViewport(QWidget* viewport) {
-
-		QColumnView::setupViewport(viewport);
-
-	}
+	friend void QColumnView_virtualbase_setupViewport(void* self, QWidget* viewport);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -1751,12 +1419,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* param1) {
-
-		QColumnView::paintEvent(param1);
-
-	}
+	friend void QColumnView_virtualbase_paintEvent(void* self, QPaintEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -1775,12 +1438,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* param1) {
-
-		QColumnView::wheelEvent(param1);
-
-	}
+	friend void QColumnView_virtualbase_wheelEvent(void* self, QWheelEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -1799,12 +1457,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* param1) {
-
-		QColumnView::contextMenuEvent(param1);
-
-	}
+	friend void QColumnView_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -1823,12 +1476,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* param1) {
-
-		QColumnView::changeEvent(param1);
-
-	}
+	friend void QColumnView_virtualbase_changeEvent(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -1845,12 +1493,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QColumnView::devType();
-
-	}
+	friend int QColumnView_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -1869,12 +1512,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QColumnView::setVisible(visible);
-
-	}
+	friend void QColumnView_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1892,12 +1530,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QColumnView::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QColumnView_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -1914,12 +1547,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QColumnView::hasHeightForWidth();
-
-	}
+	friend bool QColumnView_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -1936,12 +1564,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QColumnView::paintEngine();
-
-	}
+	friend QPaintEngine* QColumnView_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -1960,12 +1583,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QColumnView::keyReleaseEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -1984,12 +1602,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEvent* event) {
-
-		QColumnView::enterEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_enterEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -2008,12 +1621,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QColumnView::leaveEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -2032,12 +1640,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QColumnView::moveEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -2056,12 +1659,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QColumnView::closeEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -2080,12 +1678,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QColumnView::tabletEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -2104,12 +1697,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QColumnView::actionEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -2128,12 +1716,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QColumnView::showEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -2152,12 +1735,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QColumnView::hideEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -2182,13 +1760,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, long* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QColumnView::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
-
-	}
+	friend bool QColumnView_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -2207,12 +1779,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QColumnView::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QColumnView_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -2231,12 +1798,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QColumnView::initPainter(painter);
-
-	}
+	friend void QColumnView_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -2254,12 +1816,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QColumnView::redirected(offset);
-
-	}
+	friend QPaintDevice* QColumnView_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -2276,12 +1833,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QColumnView::sharedPainter();
-
-	}
+	friend QPainter* QColumnView_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -2300,12 +1852,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QColumnView::childEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -2324,12 +1871,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QColumnView::customEvent(event);
-
-	}
+	friend void QColumnView_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -2350,12 +1892,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QColumnView::connectNotify(*signal);
-
-	}
+	friend void QColumnView_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -2376,12 +1913,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QColumnView::disconnectNotify(*signal);
-
-	}
+	friend void QColumnView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QColumnView_protectedbase_initializeColumn(bool* _dynamic_cast_ok, const void* self, QAbstractItemView* column);
@@ -2596,7 +2128,9 @@ bool QColumnView_override_virtual_indexAt(void* self, intptr_t slot) {
 }
 
 QModelIndex* QColumnView_virtualbase_indexAt(const void* self, QPoint* point) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_indexAt(point);
+
+	return new QModelIndex(( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::indexAt(*point));
+
 }
 
 bool QColumnView_override_virtual_scrollTo(void* self, intptr_t slot) {
@@ -2610,7 +2144,9 @@ bool QColumnView_override_virtual_scrollTo(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_scrollTo(void* self, QModelIndex* index, int hint) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_scrollTo(index, hint);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::scrollTo(*index, static_cast<MiqtVirtualQColumnView::ScrollHint>(hint));
+
 }
 
 bool QColumnView_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -2624,7 +2160,9 @@ bool QColumnView_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QColumnView_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::sizeHint());
+
 }
 
 bool QColumnView_override_virtual_visualRect(void* self, intptr_t slot) {
@@ -2638,7 +2176,9 @@ bool QColumnView_override_virtual_visualRect(void* self, intptr_t slot) {
 }
 
 QRect* QColumnView_virtualbase_visualRect(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_visualRect(index);
+
+	return new QRect(( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::visualRect(*index));
+
 }
 
 bool QColumnView_override_virtual_setModel(void* self, intptr_t slot) {
@@ -2652,7 +2192,9 @@ bool QColumnView_override_virtual_setModel(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_setModel(void* self, QAbstractItemModel* model) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_setModel(model);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::setModel(model);
+
 }
 
 bool QColumnView_override_virtual_setSelectionModel(void* self, intptr_t slot) {
@@ -2666,7 +2208,9 @@ bool QColumnView_override_virtual_setSelectionModel(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_setSelectionModel(void* self, QItemSelectionModel* selectionModel) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_setSelectionModel(selectionModel);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::setSelectionModel(selectionModel);
+
 }
 
 bool QColumnView_override_virtual_setRootIndex(void* self, intptr_t slot) {
@@ -2680,7 +2224,9 @@ bool QColumnView_override_virtual_setRootIndex(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_setRootIndex(void* self, QModelIndex* index) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_setRootIndex(index);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::setRootIndex(*index);
+
 }
 
 bool QColumnView_override_virtual_selectAll(void* self, intptr_t slot) {
@@ -2694,7 +2240,9 @@ bool QColumnView_override_virtual_selectAll(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_selectAll(void* self) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_selectAll();
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::selectAll();
+
 }
 
 bool QColumnView_override_virtual_isIndexHidden(void* self, intptr_t slot) {
@@ -2708,7 +2256,9 @@ bool QColumnView_override_virtual_isIndexHidden(void* self, intptr_t slot) {
 }
 
 bool QColumnView_virtualbase_isIndexHidden(const void* self, QModelIndex* index) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_isIndexHidden(index);
+
+	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::isIndexHidden(*index);
+
 }
 
 bool QColumnView_override_virtual_moveCursor(void* self, intptr_t slot) {
@@ -2722,7 +2272,9 @@ bool QColumnView_override_virtual_moveCursor(void* self, intptr_t slot) {
 }
 
 QModelIndex* QColumnView_virtualbase_moveCursor(void* self, int cursorAction, int modifiers) {
-	return ( (MiqtVirtualQColumnView*)(self) )->virtualbase_moveCursor(cursorAction, modifiers);
+
+	return new QModelIndex(( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::moveCursor(static_cast<MiqtVirtualQColumnView::CursorAction>(cursorAction), static_cast<Qt::KeyboardModifiers>(modifiers)));
+
 }
 
 bool QColumnView_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -2736,7 +2288,9 @@ bool QColumnView_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_resizeEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::resizeEvent(event);
+
 }
 
 bool QColumnView_override_virtual_setSelection(void* self, intptr_t slot) {
@@ -2750,7 +2304,9 @@ bool QColumnView_override_virtual_setSelection(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_setSelection(void* self, QRect* rect, int command) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_setSelection(rect, command);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::setSelection(*rect, static_cast<QItemSelectionModel::SelectionFlags>(command));
+
 }
 
 bool QColumnView_override_virtual_visualRegionForSelection(void* self, intptr_t slot) {
@@ -2764,7 +2320,9 @@ bool QColumnView_override_virtual_visualRegionForSelection(void* self, intptr_t 
 }
 
 QRegion* QColumnView_virtualbase_visualRegionForSelection(const void* self, QItemSelection* selection) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_visualRegionForSelection(selection);
+
+	return new QRegion(( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::visualRegionForSelection(*selection));
+
 }
 
 bool QColumnView_override_virtual_horizontalOffset(void* self, intptr_t slot) {
@@ -2778,7 +2336,9 @@ bool QColumnView_override_virtual_horizontalOffset(void* self, intptr_t slot) {
 }
 
 int QColumnView_virtualbase_horizontalOffset(const void* self) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_horizontalOffset();
+
+	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::horizontalOffset();
+
 }
 
 bool QColumnView_override_virtual_verticalOffset(void* self, intptr_t slot) {
@@ -2792,7 +2352,9 @@ bool QColumnView_override_virtual_verticalOffset(void* self, intptr_t slot) {
 }
 
 int QColumnView_virtualbase_verticalOffset(const void* self) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_verticalOffset();
+
+	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::verticalOffset();
+
 }
 
 bool QColumnView_override_virtual_rowsInserted(void* self, intptr_t slot) {
@@ -2806,7 +2368,9 @@ bool QColumnView_override_virtual_rowsInserted(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_rowsInserted(void* self, QModelIndex* parent, int start, int end) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_rowsInserted(parent, start, end);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::rowsInserted(*parent, static_cast<int>(start), static_cast<int>(end));
+
 }
 
 bool QColumnView_override_virtual_currentChanged(void* self, intptr_t slot) {
@@ -2820,7 +2384,9 @@ bool QColumnView_override_virtual_currentChanged(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_currentChanged(void* self, QModelIndex* current, QModelIndex* previous) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_currentChanged(current, previous);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::currentChanged(*current, *previous);
+
 }
 
 bool QColumnView_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
@@ -2834,7 +2400,9 @@ bool QColumnView_override_virtual_scrollContentsBy(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_scrollContentsBy(void* self, int dx, int dy) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_scrollContentsBy(dx, dy);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::scrollContentsBy(static_cast<int>(dx), static_cast<int>(dy));
+
 }
 
 bool QColumnView_override_virtual_createColumn(void* self, intptr_t slot) {
@@ -2848,7 +2416,9 @@ bool QColumnView_override_virtual_createColumn(void* self, intptr_t slot) {
 }
 
 QAbstractItemView* QColumnView_virtualbase_createColumn(void* self, QModelIndex* rootIndex) {
-	return ( (MiqtVirtualQColumnView*)(self) )->virtualbase_createColumn(rootIndex);
+
+	return ( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::createColumn(*rootIndex);
+
 }
 
 bool QColumnView_override_virtual_keyboardSearch(void* self, intptr_t slot) {
@@ -2862,7 +2432,10 @@ bool QColumnView_override_virtual_keyboardSearch(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_keyboardSearch(void* self, struct miqt_string search) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_keyboardSearch(search);
+	QString search_QString = QString::fromUtf8(search.data, search.len);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::keyboardSearch(search_QString);
+
 }
 
 bool QColumnView_override_virtual_sizeHintForRow(void* self, intptr_t slot) {
@@ -2876,7 +2449,9 @@ bool QColumnView_override_virtual_sizeHintForRow(void* self, intptr_t slot) {
 }
 
 int QColumnView_virtualbase_sizeHintForRow(const void* self, int row) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_sizeHintForRow(row);
+
+	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::sizeHintForRow(static_cast<int>(row));
+
 }
 
 bool QColumnView_override_virtual_sizeHintForColumn(void* self, intptr_t slot) {
@@ -2890,7 +2465,9 @@ bool QColumnView_override_virtual_sizeHintForColumn(void* self, intptr_t slot) {
 }
 
 int QColumnView_virtualbase_sizeHintForColumn(const void* self, int column) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_sizeHintForColumn(column);
+
+	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::sizeHintForColumn(static_cast<int>(column));
+
 }
 
 bool QColumnView_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2904,7 +2481,9 @@ bool QColumnView_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 }
 
 QVariant* QColumnView_virtualbase_inputMethodQuery(const void* self, int query) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_inputMethodQuery(query);
+
+	return new QVariant(( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::inputMethodQuery(static_cast<Qt::InputMethodQuery>(query)));
+
 }
 
 bool QColumnView_override_virtual_reset(void* self, intptr_t slot) {
@@ -2918,7 +2497,9 @@ bool QColumnView_override_virtual_reset(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_reset(void* self) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_reset();
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::reset();
+
 }
 
 bool QColumnView_override_virtual_doItemsLayout(void* self, intptr_t slot) {
@@ -2932,7 +2513,9 @@ bool QColumnView_override_virtual_doItemsLayout(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_doItemsLayout(void* self) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_doItemsLayout();
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::doItemsLayout();
+
 }
 
 bool QColumnView_override_virtual_dataChanged(void* self, intptr_t slot) {
@@ -2946,7 +2529,15 @@ bool QColumnView_override_virtual_dataChanged(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_dataChanged(void* self, QModelIndex* topLeft, QModelIndex* bottomRight, struct miqt_array /* of int */  roles) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_dataChanged(topLeft, bottomRight, roles);
+	QVector<int> roles_QList;
+	roles_QList.reserve(roles.len);
+	int* roles_arr = static_cast<int*>(roles.data);
+	for(size_t i = 0; i < roles.len; ++i) {
+		roles_QList.push_back(static_cast<int>(roles_arr[i]));
+	}
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::dataChanged(*topLeft, *bottomRight, roles_QList);
+
 }
 
 bool QColumnView_override_virtual_rowsAboutToBeRemoved(void* self, intptr_t slot) {
@@ -2960,7 +2551,9 @@ bool QColumnView_override_virtual_rowsAboutToBeRemoved(void* self, intptr_t slot
 }
 
 void QColumnView_virtualbase_rowsAboutToBeRemoved(void* self, QModelIndex* parent, int start, int end) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_rowsAboutToBeRemoved(parent, start, end);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::rowsAboutToBeRemoved(*parent, static_cast<int>(start), static_cast<int>(end));
+
 }
 
 bool QColumnView_override_virtual_selectionChanged(void* self, intptr_t slot) {
@@ -2974,7 +2567,9 @@ bool QColumnView_override_virtual_selectionChanged(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_selectionChanged(void* self, QItemSelection* selected, QItemSelection* deselected) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_selectionChanged(selected, deselected);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::selectionChanged(*selected, *deselected);
+
 }
 
 bool QColumnView_override_virtual_updateEditorData(void* self, intptr_t slot) {
@@ -2988,7 +2583,9 @@ bool QColumnView_override_virtual_updateEditorData(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_updateEditorData(void* self) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_updateEditorData();
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::updateEditorData();
+
 }
 
 bool QColumnView_override_virtual_updateEditorGeometries(void* self, intptr_t slot) {
@@ -3002,7 +2599,9 @@ bool QColumnView_override_virtual_updateEditorGeometries(void* self, intptr_t sl
 }
 
 void QColumnView_virtualbase_updateEditorGeometries(void* self) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_updateEditorGeometries();
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::updateEditorGeometries();
+
 }
 
 bool QColumnView_override_virtual_updateGeometries(void* self, intptr_t slot) {
@@ -3016,7 +2615,9 @@ bool QColumnView_override_virtual_updateGeometries(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_updateGeometries(void* self) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_updateGeometries();
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::updateGeometries();
+
 }
 
 bool QColumnView_override_virtual_verticalScrollbarAction(void* self, intptr_t slot) {
@@ -3030,7 +2631,9 @@ bool QColumnView_override_virtual_verticalScrollbarAction(void* self, intptr_t s
 }
 
 void QColumnView_virtualbase_verticalScrollbarAction(void* self, int action) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_verticalScrollbarAction(action);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::verticalScrollbarAction(static_cast<int>(action));
+
 }
 
 bool QColumnView_override_virtual_horizontalScrollbarAction(void* self, intptr_t slot) {
@@ -3044,7 +2647,9 @@ bool QColumnView_override_virtual_horizontalScrollbarAction(void* self, intptr_t
 }
 
 void QColumnView_virtualbase_horizontalScrollbarAction(void* self, int action) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_horizontalScrollbarAction(action);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::horizontalScrollbarAction(static_cast<int>(action));
+
 }
 
 bool QColumnView_override_virtual_verticalScrollbarValueChanged(void* self, intptr_t slot) {
@@ -3058,7 +2663,9 @@ bool QColumnView_override_virtual_verticalScrollbarValueChanged(void* self, intp
 }
 
 void QColumnView_virtualbase_verticalScrollbarValueChanged(void* self, int value) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_verticalScrollbarValueChanged(value);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::verticalScrollbarValueChanged(static_cast<int>(value));
+
 }
 
 bool QColumnView_override_virtual_horizontalScrollbarValueChanged(void* self, intptr_t slot) {
@@ -3072,7 +2679,9 @@ bool QColumnView_override_virtual_horizontalScrollbarValueChanged(void* self, in
 }
 
 void QColumnView_virtualbase_horizontalScrollbarValueChanged(void* self, int value) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_horizontalScrollbarValueChanged(value);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::horizontalScrollbarValueChanged(static_cast<int>(value));
+
 }
 
 bool QColumnView_override_virtual_closeEditor(void* self, intptr_t slot) {
@@ -3086,7 +2695,9 @@ bool QColumnView_override_virtual_closeEditor(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_closeEditor(void* self, QWidget* editor, int hint) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_closeEditor(editor, hint);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::closeEditor(editor, static_cast<QAbstractItemDelegate::EndEditHint>(hint));
+
 }
 
 bool QColumnView_override_virtual_commitData(void* self, intptr_t slot) {
@@ -3100,7 +2711,9 @@ bool QColumnView_override_virtual_commitData(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_commitData(void* self, QWidget* editor) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_commitData(editor);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::commitData(editor);
+
 }
 
 bool QColumnView_override_virtual_editorDestroyed(void* self, intptr_t slot) {
@@ -3114,7 +2727,9 @@ bool QColumnView_override_virtual_editorDestroyed(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_editorDestroyed(void* self, QObject* editor) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_editorDestroyed(editor);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::editorDestroyed(editor);
+
 }
 
 bool QColumnView_override_virtual_selectedIndexes(void* self, intptr_t slot) {
@@ -3128,7 +2743,18 @@ bool QColumnView_override_virtual_selectedIndexes(void* self, intptr_t slot) {
 }
 
 struct miqt_array /* of QModelIndex* */  QColumnView_virtualbase_selectedIndexes(const void* self) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_selectedIndexes();
+
+	QModelIndexList _ret = ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::selectedIndexes();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	QModelIndex** _arr = static_cast<QModelIndex**>(malloc(sizeof(QModelIndex*) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		_arr[i] = new QModelIndex(_ret[i]);
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+
 }
 
 bool QColumnView_override_virtual_edit2(void* self, intptr_t slot) {
@@ -3142,7 +2768,9 @@ bool QColumnView_override_virtual_edit2(void* self, intptr_t slot) {
 }
 
 bool QColumnView_virtualbase_edit2(void* self, QModelIndex* index, int trigger, QEvent* event) {
-	return ( (MiqtVirtualQColumnView*)(self) )->virtualbase_edit2(index, trigger, event);
+
+	return ( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::edit(*index, static_cast<MiqtVirtualQColumnView::EditTrigger>(trigger), event);
+
 }
 
 bool QColumnView_override_virtual_selectionCommand(void* self, intptr_t slot) {
@@ -3156,7 +2784,10 @@ bool QColumnView_override_virtual_selectionCommand(void* self, intptr_t slot) {
 }
 
 int QColumnView_virtualbase_selectionCommand(const void* self, QModelIndex* index, QEvent* event) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_selectionCommand(index, event);
+
+	QItemSelectionModel::SelectionFlags _ret = ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::selectionCommand(*index, event);
+	return static_cast<int>(_ret);
+
 }
 
 bool QColumnView_override_virtual_startDrag(void* self, intptr_t slot) {
@@ -3170,7 +2801,9 @@ bool QColumnView_override_virtual_startDrag(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_startDrag(void* self, int supportedActions) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_startDrag(supportedActions);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::startDrag(static_cast<Qt::DropActions>(supportedActions));
+
 }
 
 bool QColumnView_override_virtual_viewOptions(void* self, intptr_t slot) {
@@ -3184,7 +2817,9 @@ bool QColumnView_override_virtual_viewOptions(void* self, intptr_t slot) {
 }
 
 QStyleOptionViewItem* QColumnView_virtualbase_viewOptions(const void* self) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_viewOptions();
+
+	return new QStyleOptionViewItem(( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::viewOptions());
+
 }
 
 bool QColumnView_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -3198,7 +2833,9 @@ bool QColumnView_override_virtual_focusNextPrevChild(void* self, intptr_t slot) 
 }
 
 bool QColumnView_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQColumnView*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::focusNextPrevChild(next);
+
 }
 
 bool QColumnView_override_virtual_event(void* self, intptr_t slot) {
@@ -3212,7 +2849,9 @@ bool QColumnView_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QColumnView_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQColumnView*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::event(event);
+
 }
 
 bool QColumnView_override_virtual_viewportEvent(void* self, intptr_t slot) {
@@ -3226,7 +2865,9 @@ bool QColumnView_override_virtual_viewportEvent(void* self, intptr_t slot) {
 }
 
 bool QColumnView_virtualbase_viewportEvent(void* self, QEvent* event) {
-	return ( (MiqtVirtualQColumnView*)(self) )->virtualbase_viewportEvent(event);
+
+	return ( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::viewportEvent(event);
+
 }
 
 bool QColumnView_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -3240,7 +2881,9 @@ bool QColumnView_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_mousePressEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::mousePressEvent(event);
+
 }
 
 bool QColumnView_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -3254,7 +2897,9 @@ bool QColumnView_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::mouseMoveEvent(event);
+
 }
 
 bool QColumnView_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -3268,7 +2913,9 @@ bool QColumnView_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_mouseReleaseEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::mouseReleaseEvent(event);
+
 }
 
 bool QColumnView_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -3282,7 +2929,9 @@ bool QColumnView_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slo
 }
 
 void QColumnView_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::mouseDoubleClickEvent(event);
+
 }
 
 bool QColumnView_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -3296,7 +2945,9 @@ bool QColumnView_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::dragEnterEvent(event);
+
 }
 
 bool QColumnView_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -3310,7 +2961,9 @@ bool QColumnView_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::dragMoveEvent(event);
+
 }
 
 bool QColumnView_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -3324,7 +2977,9 @@ bool QColumnView_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::dragLeaveEvent(event);
+
 }
 
 bool QColumnView_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -3338,7 +2993,9 @@ bool QColumnView_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::dropEvent(event);
+
 }
 
 bool QColumnView_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -3352,7 +3009,9 @@ bool QColumnView_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::focusInEvent(event);
+
 }
 
 bool QColumnView_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -3366,7 +3025,9 @@ bool QColumnView_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::focusOutEvent(event);
+
 }
 
 bool QColumnView_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -3380,7 +3041,9 @@ bool QColumnView_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_keyPressEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::keyPressEvent(event);
+
 }
 
 bool QColumnView_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -3394,7 +3057,9 @@ bool QColumnView_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::timerEvent(event);
+
 }
 
 bool QColumnView_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -3408,7 +3073,9 @@ bool QColumnView_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_inputMethodEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::inputMethodEvent(event);
+
 }
 
 bool QColumnView_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -3422,7 +3089,9 @@ bool QColumnView_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QColumnView_virtualbase_eventFilter(void* self, QObject* object, QEvent* event) {
-	return ( (MiqtVirtualQColumnView*)(self) )->virtualbase_eventFilter(object, event);
+
+	return ( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::eventFilter(object, event);
+
 }
 
 bool QColumnView_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
@@ -3436,7 +3105,9 @@ bool QColumnView_override_virtual_viewportSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QColumnView_virtualbase_viewportSizeHint(const void* self) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_viewportSizeHint();
+
+	return new QSize(( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::viewportSizeHint());
+
 }
 
 bool QColumnView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -3450,7 +3121,9 @@ bool QColumnView_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QColumnView_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::minimumSizeHint());
+
 }
 
 bool QColumnView_override_virtual_setupViewport(void* self, intptr_t slot) {
@@ -3464,7 +3137,9 @@ bool QColumnView_override_virtual_setupViewport(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_setupViewport(void* self, QWidget* viewport) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_setupViewport(viewport);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::setupViewport(viewport);
+
 }
 
 bool QColumnView_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -3478,7 +3153,9 @@ bool QColumnView_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_paintEvent(param1);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::paintEvent(param1);
+
 }
 
 bool QColumnView_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -3492,7 +3169,9 @@ bool QColumnView_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_wheelEvent(void* self, QWheelEvent* param1) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_wheelEvent(param1);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::wheelEvent(param1);
+
 }
 
 bool QColumnView_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -3506,7 +3185,9 @@ bool QColumnView_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_contextMenuEvent(param1);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::contextMenuEvent(param1);
+
 }
 
 bool QColumnView_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -3520,7 +3201,9 @@ bool QColumnView_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_changeEvent(void* self, QEvent* param1) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_changeEvent(param1);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::changeEvent(param1);
+
 }
 
 bool QColumnView_override_virtual_devType(void* self, intptr_t slot) {
@@ -3534,7 +3217,9 @@ bool QColumnView_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QColumnView_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::devType();
+
 }
 
 bool QColumnView_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -3548,7 +3233,9 @@ bool QColumnView_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::setVisible(visible);
+
 }
 
 bool QColumnView_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -3562,7 +3249,9 @@ bool QColumnView_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QColumnView_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QColumnView_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -3576,7 +3265,9 @@ bool QColumnView_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QColumnView_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::hasHeightForWidth();
+
 }
 
 bool QColumnView_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -3590,7 +3281,9 @@ bool QColumnView_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QColumnView_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::paintEngine();
+
 }
 
 bool QColumnView_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -3604,7 +3297,9 @@ bool QColumnView_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::keyReleaseEvent(event);
+
 }
 
 bool QColumnView_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -3618,7 +3313,9 @@ bool QColumnView_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_enterEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::enterEvent(event);
+
 }
 
 bool QColumnView_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -3632,7 +3329,9 @@ bool QColumnView_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::leaveEvent(event);
+
 }
 
 bool QColumnView_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -3646,7 +3345,9 @@ bool QColumnView_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::moveEvent(event);
+
 }
 
 bool QColumnView_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -3660,7 +3361,9 @@ bool QColumnView_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::closeEvent(event);
+
 }
 
 bool QColumnView_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -3674,7 +3377,9 @@ bool QColumnView_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::tabletEvent(event);
+
 }
 
 bool QColumnView_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -3688,7 +3393,9 @@ bool QColumnView_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::actionEvent(event);
+
 }
 
 bool QColumnView_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -3702,7 +3409,9 @@ bool QColumnView_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::showEvent(event);
+
 }
 
 bool QColumnView_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -3716,7 +3425,9 @@ bool QColumnView_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::hideEvent(event);
+
 }
 
 bool QColumnView_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -3730,7 +3441,10 @@ bool QColumnView_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QColumnView_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
-	return ( (MiqtVirtualQColumnView*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+
 }
 
 bool QColumnView_override_virtual_metric(void* self, intptr_t slot) {
@@ -3744,7 +3458,9 @@ bool QColumnView_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QColumnView_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::metric(static_cast<MiqtVirtualQColumnView::PaintDeviceMetric>(param1));
+
 }
 
 bool QColumnView_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -3758,7 +3474,9 @@ bool QColumnView_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQColumnView*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::initPainter(painter);
+
 }
 
 bool QColumnView_override_virtual_redirected(void* self, intptr_t slot) {
@@ -3772,7 +3490,9 @@ bool QColumnView_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QColumnView_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::redirected(offset);
+
 }
 
 bool QColumnView_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -3786,7 +3506,9 @@ bool QColumnView_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QColumnView_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQColumnView*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::sharedPainter();
+
 }
 
 bool QColumnView_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -3800,7 +3522,9 @@ bool QColumnView_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::childEvent(event);
+
 }
 
 bool QColumnView_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -3814,7 +3538,9 @@ bool QColumnView_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::customEvent(event);
+
 }
 
 bool QColumnView_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -3828,7 +3554,9 @@ bool QColumnView_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::connectNotify(*signal);
+
 }
 
 bool QColumnView_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -3842,7 +3570,9 @@ bool QColumnView_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QColumnView_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQColumnView*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQColumnView*)(self) )->MiqtVirtualQColumnView::disconnectNotify(*signal);
+
 }
 
 void QColumnView_protectedbase_initializeColumn(bool* _dynamic_cast_ok, const void* self, QAbstractItemView* column) {

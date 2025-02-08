@@ -133,12 +133,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_addItem(QLayoutItem* param1) {
-
-		QBoxLayout::addItem(param1);
-
-	}
+	friend void QBoxLayout_virtualbase_addItem(void* self, QLayoutItem* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -155,12 +150,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QBoxLayout::sizeHint());
-
-	}
+	friend QSize* QBoxLayout_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSize = 0;
@@ -177,12 +167,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSize() const {
-
-		return new QSize(QBoxLayout::minimumSize());
-
-	}
+	friend QSize* QBoxLayout_virtualbase_minimumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__maximumSize = 0;
@@ -199,12 +184,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_maximumSize() const {
-
-		return new QSize(QBoxLayout::maximumSize());
-
-	}
+	friend QSize* QBoxLayout_virtualbase_maximumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -221,12 +201,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QBoxLayout::hasHeightForWidth();
-
-	}
+	friend bool QBoxLayout_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -244,12 +219,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QBoxLayout::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QBoxLayout_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumHeightForWidth = 0;
@@ -267,12 +237,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_minimumHeightForWidth(int param1) const {
-
-		return QBoxLayout::minimumHeightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QBoxLayout_virtualbase_minimumHeightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__expandingDirections = 0;
@@ -289,13 +254,7 @@ public:
 		return static_cast<Qt::Orientations>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_expandingDirections() const {
-
-		Qt::Orientations _ret = QBoxLayout::expandingDirections();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QBoxLayout_virtualbase_expandingDirections(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__invalidate = 0;
@@ -313,12 +272,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_invalidate() {
-
-		QBoxLayout::invalidate();
-
-	}
+	friend void QBoxLayout_virtualbase_invalidate(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__itemAt = 0;
@@ -336,12 +290,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QLayoutItem* virtualbase_itemAt(int param1) const {
-
-		return QBoxLayout::itemAt(static_cast<int>(param1));
-
-	}
+	friend QLayoutItem* QBoxLayout_virtualbase_itemAt(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__takeAt = 0;
@@ -359,12 +308,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QLayoutItem* virtualbase_takeAt(int param1) {
-
-		return QBoxLayout::takeAt(static_cast<int>(param1));
-
-	}
+	friend QLayoutItem* QBoxLayout_virtualbase_takeAt(void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__count = 0;
@@ -381,12 +325,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_count() const {
-
-		return QBoxLayout::count();
-
-	}
+	friend int QBoxLayout_virtualbase_count(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setGeometry = 0;
@@ -407,12 +346,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setGeometry(QRect* geometry) {
-
-		QBoxLayout::setGeometry(*geometry);
-
-	}
+	friend void QBoxLayout_virtualbase_setGeometry(void* self, QRect* geometry);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__geometry = 0;
@@ -429,12 +363,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRect* virtualbase_geometry() const {
-
-		return new QRect(QBoxLayout::geometry());
-
-	}
+	friend QRect* QBoxLayout_virtualbase_geometry(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__indexOf = 0;
@@ -452,12 +381,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_indexOf(QWidget* param1) const {
-
-		return QBoxLayout::indexOf(param1);
-
-	}
+	friend int QBoxLayout_virtualbase_indexOf(const void* self, QWidget* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEmpty = 0;
@@ -474,12 +398,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEmpty() const {
-
-		return QBoxLayout::isEmpty();
-
-	}
+	friend bool QBoxLayout_virtualbase_isEmpty(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__controlTypes = 0;
@@ -496,13 +415,7 @@ public:
 		return static_cast<QSizePolicy::ControlTypes>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_controlTypes() const {
-
-		QSizePolicy::ControlTypes _ret = QBoxLayout::controlTypes();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QBoxLayout_virtualbase_controlTypes(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__layout = 0;
@@ -519,12 +432,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QLayout* virtualbase_layout() {
-
-		return QBoxLayout::layout();
-
-	}
+	friend QLayout* QBoxLayout_virtualbase_layout(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -543,12 +451,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* e) {
-
-		QBoxLayout::childEvent(e);
-
-	}
+	friend void QBoxLayout_virtualbase_childEvent(void* self, QChildEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -566,12 +469,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QBoxLayout::event(event);
-
-	}
+	friend bool QBoxLayout_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -590,12 +488,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QBoxLayout::eventFilter(watched, event);
-
-	}
+	friend bool QBoxLayout_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -614,12 +507,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QBoxLayout::timerEvent(event);
-
-	}
+	friend void QBoxLayout_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -638,12 +526,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QBoxLayout::customEvent(event);
-
-	}
+	friend void QBoxLayout_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -664,12 +547,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QBoxLayout::connectNotify(*signal);
-
-	}
+	friend void QBoxLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -690,12 +568,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QBoxLayout::disconnectNotify(*signal);
-
-	}
+	friend void QBoxLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__widget = 0;
@@ -712,12 +585,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QWidget* virtualbase_widget() {
-
-		return QBoxLayout::widget();
-
-	}
+	friend QWidget* QBoxLayout_virtualbase_widget(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__spacerItem = 0;
@@ -734,12 +602,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSpacerItem* virtualbase_spacerItem() {
-
-		return QBoxLayout::spacerItem();
-
-	}
+	friend QSpacerItem* QBoxLayout_virtualbase_spacerItem(void* self);
 
 	// Wrappers to allow calling protected methods:
 	friend void QBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
@@ -1016,7 +879,9 @@ bool QBoxLayout_override_virtual_addItem(void* self, intptr_t slot) {
 }
 
 void QBoxLayout_virtualbase_addItem(void* self, QLayoutItem* param1) {
-	( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_addItem(param1);
+
+	( (MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::addItem(param1);
+
 }
 
 bool QBoxLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1030,7 +895,9 @@ bool QBoxLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QBoxLayout_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQBoxLayout*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::sizeHint());
+
 }
 
 bool QBoxLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
@@ -1044,7 +911,9 @@ bool QBoxLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
 }
 
 QSize* QBoxLayout_virtualbase_minimumSize(const void* self) {
-	return ( (const MiqtVirtualQBoxLayout*)(self) )->virtualbase_minimumSize();
+
+	return new QSize(( (const MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::minimumSize());
+
 }
 
 bool QBoxLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
@@ -1058,7 +927,9 @@ bool QBoxLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
 }
 
 QSize* QBoxLayout_virtualbase_maximumSize(const void* self) {
-	return ( (const MiqtVirtualQBoxLayout*)(self) )->virtualbase_maximumSize();
+
+	return new QSize(( (const MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::maximumSize());
+
 }
 
 bool QBoxLayout_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1072,7 +943,9 @@ bool QBoxLayout_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QBoxLayout_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQBoxLayout*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::hasHeightForWidth();
+
 }
 
 bool QBoxLayout_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1086,7 +959,9 @@ bool QBoxLayout_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QBoxLayout_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQBoxLayout*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QBoxLayout_override_virtual_minimumHeightForWidth(void* self, intptr_t slot) {
@@ -1100,7 +975,9 @@ bool QBoxLayout_override_virtual_minimumHeightForWidth(void* self, intptr_t slot
 }
 
 int QBoxLayout_virtualbase_minimumHeightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQBoxLayout*)(self) )->virtualbase_minimumHeightForWidth(param1);
+
+	return ( (const MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::minimumHeightForWidth(static_cast<int>(param1));
+
 }
 
 bool QBoxLayout_override_virtual_expandingDirections(void* self, intptr_t slot) {
@@ -1114,7 +991,10 @@ bool QBoxLayout_override_virtual_expandingDirections(void* self, intptr_t slot) 
 }
 
 int QBoxLayout_virtualbase_expandingDirections(const void* self) {
-	return ( (const MiqtVirtualQBoxLayout*)(self) )->virtualbase_expandingDirections();
+
+	Qt::Orientations _ret = ( (const MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::expandingDirections();
+	return static_cast<int>(_ret);
+
 }
 
 bool QBoxLayout_override_virtual_invalidate(void* self, intptr_t slot) {
@@ -1128,7 +1008,9 @@ bool QBoxLayout_override_virtual_invalidate(void* self, intptr_t slot) {
 }
 
 void QBoxLayout_virtualbase_invalidate(void* self) {
-	( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_invalidate();
+
+	( (MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::invalidate();
+
 }
 
 bool QBoxLayout_override_virtual_itemAt(void* self, intptr_t slot) {
@@ -1142,7 +1024,9 @@ bool QBoxLayout_override_virtual_itemAt(void* self, intptr_t slot) {
 }
 
 QLayoutItem* QBoxLayout_virtualbase_itemAt(const void* self, int param1) {
-	return ( (const MiqtVirtualQBoxLayout*)(self) )->virtualbase_itemAt(param1);
+
+	return ( (const MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::itemAt(static_cast<int>(param1));
+
 }
 
 bool QBoxLayout_override_virtual_takeAt(void* self, intptr_t slot) {
@@ -1156,7 +1040,9 @@ bool QBoxLayout_override_virtual_takeAt(void* self, intptr_t slot) {
 }
 
 QLayoutItem* QBoxLayout_virtualbase_takeAt(void* self, int param1) {
-	return ( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_takeAt(param1);
+
+	return ( (MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::takeAt(static_cast<int>(param1));
+
 }
 
 bool QBoxLayout_override_virtual_count(void* self, intptr_t slot) {
@@ -1170,7 +1056,9 @@ bool QBoxLayout_override_virtual_count(void* self, intptr_t slot) {
 }
 
 int QBoxLayout_virtualbase_count(const void* self) {
-	return ( (const MiqtVirtualQBoxLayout*)(self) )->virtualbase_count();
+
+	return ( (const MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::count();
+
 }
 
 bool QBoxLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
@@ -1184,7 +1072,9 @@ bool QBoxLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
 }
 
 void QBoxLayout_virtualbase_setGeometry(void* self, QRect* geometry) {
-	( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_setGeometry(geometry);
+
+	( (MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::setGeometry(*geometry);
+
 }
 
 bool QBoxLayout_override_virtual_geometry(void* self, intptr_t slot) {
@@ -1198,7 +1088,9 @@ bool QBoxLayout_override_virtual_geometry(void* self, intptr_t slot) {
 }
 
 QRect* QBoxLayout_virtualbase_geometry(const void* self) {
-	return ( (const MiqtVirtualQBoxLayout*)(self) )->virtualbase_geometry();
+
+	return new QRect(( (const MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::geometry());
+
 }
 
 bool QBoxLayout_override_virtual_indexOf(void* self, intptr_t slot) {
@@ -1212,7 +1104,9 @@ bool QBoxLayout_override_virtual_indexOf(void* self, intptr_t slot) {
 }
 
 int QBoxLayout_virtualbase_indexOf(const void* self, QWidget* param1) {
-	return ( (const MiqtVirtualQBoxLayout*)(self) )->virtualbase_indexOf(param1);
+
+	return ( (const MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::indexOf(param1);
+
 }
 
 bool QBoxLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
@@ -1226,7 +1120,9 @@ bool QBoxLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
 }
 
 bool QBoxLayout_virtualbase_isEmpty(const void* self) {
-	return ( (const MiqtVirtualQBoxLayout*)(self) )->virtualbase_isEmpty();
+
+	return ( (const MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::isEmpty();
+
 }
 
 bool QBoxLayout_override_virtual_controlTypes(void* self, intptr_t slot) {
@@ -1240,7 +1136,10 @@ bool QBoxLayout_override_virtual_controlTypes(void* self, intptr_t slot) {
 }
 
 int QBoxLayout_virtualbase_controlTypes(const void* self) {
-	return ( (const MiqtVirtualQBoxLayout*)(self) )->virtualbase_controlTypes();
+
+	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::controlTypes();
+	return static_cast<int>(_ret);
+
 }
 
 bool QBoxLayout_override_virtual_layout(void* self, intptr_t slot) {
@@ -1254,7 +1153,9 @@ bool QBoxLayout_override_virtual_layout(void* self, intptr_t slot) {
 }
 
 QLayout* QBoxLayout_virtualbase_layout(void* self) {
-	return ( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_layout();
+
+	return ( (MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::layout();
+
 }
 
 bool QBoxLayout_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1268,7 +1169,9 @@ bool QBoxLayout_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QBoxLayout_virtualbase_childEvent(void* self, QChildEvent* e) {
-	( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_childEvent(e);
+
+	( (MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::childEvent(e);
+
 }
 
 bool QBoxLayout_override_virtual_event(void* self, intptr_t slot) {
@@ -1282,7 +1185,9 @@ bool QBoxLayout_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QBoxLayout_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::event(event);
+
 }
 
 bool QBoxLayout_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1296,7 +1201,9 @@ bool QBoxLayout_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QBoxLayout_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::eventFilter(watched, event);
+
 }
 
 bool QBoxLayout_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1310,7 +1217,9 @@ bool QBoxLayout_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QBoxLayout_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::timerEvent(event);
+
 }
 
 bool QBoxLayout_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1324,7 +1233,9 @@ bool QBoxLayout_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QBoxLayout_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::customEvent(event);
+
 }
 
 bool QBoxLayout_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1338,7 +1249,9 @@ bool QBoxLayout_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QBoxLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::connectNotify(*signal);
+
 }
 
 bool QBoxLayout_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1352,7 +1265,9 @@ bool QBoxLayout_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QBoxLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::disconnectNotify(*signal);
+
 }
 
 bool QBoxLayout_override_virtual_widget(void* self, intptr_t slot) {
@@ -1366,7 +1281,9 @@ bool QBoxLayout_override_virtual_widget(void* self, intptr_t slot) {
 }
 
 QWidget* QBoxLayout_virtualbase_widget(void* self) {
-	return ( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_widget();
+
+	return ( (MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::widget();
+
 }
 
 bool QBoxLayout_override_virtual_spacerItem(void* self, intptr_t slot) {
@@ -1380,7 +1297,9 @@ bool QBoxLayout_override_virtual_spacerItem(void* self, intptr_t slot) {
 }
 
 QSpacerItem* QBoxLayout_virtualbase_spacerItem(void* self) {
-	return ( (MiqtVirtualQBoxLayout*)(self) )->virtualbase_spacerItem();
+
+	return ( (MiqtVirtualQBoxLayout*)(self) )->MiqtVirtualQBoxLayout::spacerItem();
+
 }
 
 void QBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
@@ -1529,12 +1448,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_addItem(QLayoutItem* param1) {
-
-		QHBoxLayout::addItem(param1);
-
-	}
+	friend void QHBoxLayout_virtualbase_addItem(void* self, QLayoutItem* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -1551,12 +1465,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QHBoxLayout::sizeHint());
-
-	}
+	friend QSize* QHBoxLayout_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSize = 0;
@@ -1573,12 +1482,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSize() const {
-
-		return new QSize(QHBoxLayout::minimumSize());
-
-	}
+	friend QSize* QHBoxLayout_virtualbase_minimumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__maximumSize = 0;
@@ -1595,12 +1499,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_maximumSize() const {
-
-		return new QSize(QHBoxLayout::maximumSize());
-
-	}
+	friend QSize* QHBoxLayout_virtualbase_maximumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -1617,12 +1516,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QHBoxLayout::hasHeightForWidth();
-
-	}
+	friend bool QHBoxLayout_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1640,12 +1534,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QHBoxLayout::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QHBoxLayout_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumHeightForWidth = 0;
@@ -1663,12 +1552,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_minimumHeightForWidth(int param1) const {
-
-		return QHBoxLayout::minimumHeightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QHBoxLayout_virtualbase_minimumHeightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__expandingDirections = 0;
@@ -1685,13 +1569,7 @@ public:
 		return static_cast<Qt::Orientations>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_expandingDirections() const {
-
-		Qt::Orientations _ret = QHBoxLayout::expandingDirections();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QHBoxLayout_virtualbase_expandingDirections(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__invalidate = 0;
@@ -1709,12 +1587,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_invalidate() {
-
-		QHBoxLayout::invalidate();
-
-	}
+	friend void QHBoxLayout_virtualbase_invalidate(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__itemAt = 0;
@@ -1732,12 +1605,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QLayoutItem* virtualbase_itemAt(int param1) const {
-
-		return QHBoxLayout::itemAt(static_cast<int>(param1));
-
-	}
+	friend QLayoutItem* QHBoxLayout_virtualbase_itemAt(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__takeAt = 0;
@@ -1755,12 +1623,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QLayoutItem* virtualbase_takeAt(int param1) {
-
-		return QHBoxLayout::takeAt(static_cast<int>(param1));
-
-	}
+	friend QLayoutItem* QHBoxLayout_virtualbase_takeAt(void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__count = 0;
@@ -1777,12 +1640,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_count() const {
-
-		return QHBoxLayout::count();
-
-	}
+	friend int QHBoxLayout_virtualbase_count(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setGeometry = 0;
@@ -1803,12 +1661,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setGeometry(QRect* geometry) {
-
-		QHBoxLayout::setGeometry(*geometry);
-
-	}
+	friend void QHBoxLayout_virtualbase_setGeometry(void* self, QRect* geometry);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__geometry = 0;
@@ -1825,12 +1678,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRect* virtualbase_geometry() const {
-
-		return new QRect(QHBoxLayout::geometry());
-
-	}
+	friend QRect* QHBoxLayout_virtualbase_geometry(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__indexOf = 0;
@@ -1848,12 +1696,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_indexOf(QWidget* param1) const {
-
-		return QHBoxLayout::indexOf(param1);
-
-	}
+	friend int QHBoxLayout_virtualbase_indexOf(const void* self, QWidget* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEmpty = 0;
@@ -1870,12 +1713,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEmpty() const {
-
-		return QHBoxLayout::isEmpty();
-
-	}
+	friend bool QHBoxLayout_virtualbase_isEmpty(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__controlTypes = 0;
@@ -1892,13 +1730,7 @@ public:
 		return static_cast<QSizePolicy::ControlTypes>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_controlTypes() const {
-
-		QSizePolicy::ControlTypes _ret = QHBoxLayout::controlTypes();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QHBoxLayout_virtualbase_controlTypes(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__layout = 0;
@@ -1915,12 +1747,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QLayout* virtualbase_layout() {
-
-		return QHBoxLayout::layout();
-
-	}
+	friend QLayout* QHBoxLayout_virtualbase_layout(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1939,12 +1766,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* e) {
-
-		QHBoxLayout::childEvent(e);
-
-	}
+	friend void QHBoxLayout_virtualbase_childEvent(void* self, QChildEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -1962,12 +1784,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QHBoxLayout::event(event);
-
-	}
+	friend bool QHBoxLayout_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1986,12 +1803,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QHBoxLayout::eventFilter(watched, event);
-
-	}
+	friend bool QHBoxLayout_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -2010,12 +1822,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QHBoxLayout::timerEvent(event);
-
-	}
+	friend void QHBoxLayout_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -2034,12 +1841,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QHBoxLayout::customEvent(event);
-
-	}
+	friend void QHBoxLayout_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -2060,12 +1862,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QHBoxLayout::connectNotify(*signal);
-
-	}
+	friend void QHBoxLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -2086,12 +1883,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QHBoxLayout::disconnectNotify(*signal);
-
-	}
+	friend void QHBoxLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__widget = 0;
@@ -2108,12 +1900,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QWidget* virtualbase_widget() {
-
-		return QHBoxLayout::widget();
-
-	}
+	friend QWidget* QHBoxLayout_virtualbase_widget(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__spacerItem = 0;
@@ -2130,12 +1917,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSpacerItem* virtualbase_spacerItem() {
-
-		return QHBoxLayout::spacerItem();
-
-	}
+	friend QSpacerItem* QHBoxLayout_virtualbase_spacerItem(void* self);
 
 	// Wrappers to allow calling protected methods:
 	friend void QHBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
@@ -2246,7 +2028,9 @@ bool QHBoxLayout_override_virtual_addItem(void* self, intptr_t slot) {
 }
 
 void QHBoxLayout_virtualbase_addItem(void* self, QLayoutItem* param1) {
-	( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_addItem(param1);
+
+	( (MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::addItem(param1);
+
 }
 
 bool QHBoxLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -2260,7 +2044,9 @@ bool QHBoxLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QHBoxLayout_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQHBoxLayout*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::sizeHint());
+
 }
 
 bool QHBoxLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
@@ -2274,7 +2060,9 @@ bool QHBoxLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
 }
 
 QSize* QHBoxLayout_virtualbase_minimumSize(const void* self) {
-	return ( (const MiqtVirtualQHBoxLayout*)(self) )->virtualbase_minimumSize();
+
+	return new QSize(( (const MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::minimumSize());
+
 }
 
 bool QHBoxLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
@@ -2288,7 +2076,9 @@ bool QHBoxLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
 }
 
 QSize* QHBoxLayout_virtualbase_maximumSize(const void* self) {
-	return ( (const MiqtVirtualQHBoxLayout*)(self) )->virtualbase_maximumSize();
+
+	return new QSize(( (const MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::maximumSize());
+
 }
 
 bool QHBoxLayout_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -2302,7 +2092,9 @@ bool QHBoxLayout_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QHBoxLayout_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQHBoxLayout*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::hasHeightForWidth();
+
 }
 
 bool QHBoxLayout_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -2316,7 +2108,9 @@ bool QHBoxLayout_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QHBoxLayout_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQHBoxLayout*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QHBoxLayout_override_virtual_minimumHeightForWidth(void* self, intptr_t slot) {
@@ -2330,7 +2124,9 @@ bool QHBoxLayout_override_virtual_minimumHeightForWidth(void* self, intptr_t slo
 }
 
 int QHBoxLayout_virtualbase_minimumHeightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQHBoxLayout*)(self) )->virtualbase_minimumHeightForWidth(param1);
+
+	return ( (const MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::minimumHeightForWidth(static_cast<int>(param1));
+
 }
 
 bool QHBoxLayout_override_virtual_expandingDirections(void* self, intptr_t slot) {
@@ -2344,7 +2140,10 @@ bool QHBoxLayout_override_virtual_expandingDirections(void* self, intptr_t slot)
 }
 
 int QHBoxLayout_virtualbase_expandingDirections(const void* self) {
-	return ( (const MiqtVirtualQHBoxLayout*)(self) )->virtualbase_expandingDirections();
+
+	Qt::Orientations _ret = ( (const MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::expandingDirections();
+	return static_cast<int>(_ret);
+
 }
 
 bool QHBoxLayout_override_virtual_invalidate(void* self, intptr_t slot) {
@@ -2358,7 +2157,9 @@ bool QHBoxLayout_override_virtual_invalidate(void* self, intptr_t slot) {
 }
 
 void QHBoxLayout_virtualbase_invalidate(void* self) {
-	( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_invalidate();
+
+	( (MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::invalidate();
+
 }
 
 bool QHBoxLayout_override_virtual_itemAt(void* self, intptr_t slot) {
@@ -2372,7 +2173,9 @@ bool QHBoxLayout_override_virtual_itemAt(void* self, intptr_t slot) {
 }
 
 QLayoutItem* QHBoxLayout_virtualbase_itemAt(const void* self, int param1) {
-	return ( (const MiqtVirtualQHBoxLayout*)(self) )->virtualbase_itemAt(param1);
+
+	return ( (const MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::itemAt(static_cast<int>(param1));
+
 }
 
 bool QHBoxLayout_override_virtual_takeAt(void* self, intptr_t slot) {
@@ -2386,7 +2189,9 @@ bool QHBoxLayout_override_virtual_takeAt(void* self, intptr_t slot) {
 }
 
 QLayoutItem* QHBoxLayout_virtualbase_takeAt(void* self, int param1) {
-	return ( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_takeAt(param1);
+
+	return ( (MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::takeAt(static_cast<int>(param1));
+
 }
 
 bool QHBoxLayout_override_virtual_count(void* self, intptr_t slot) {
@@ -2400,7 +2205,9 @@ bool QHBoxLayout_override_virtual_count(void* self, intptr_t slot) {
 }
 
 int QHBoxLayout_virtualbase_count(const void* self) {
-	return ( (const MiqtVirtualQHBoxLayout*)(self) )->virtualbase_count();
+
+	return ( (const MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::count();
+
 }
 
 bool QHBoxLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
@@ -2414,7 +2221,9 @@ bool QHBoxLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
 }
 
 void QHBoxLayout_virtualbase_setGeometry(void* self, QRect* geometry) {
-	( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_setGeometry(geometry);
+
+	( (MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::setGeometry(*geometry);
+
 }
 
 bool QHBoxLayout_override_virtual_geometry(void* self, intptr_t slot) {
@@ -2428,7 +2237,9 @@ bool QHBoxLayout_override_virtual_geometry(void* self, intptr_t slot) {
 }
 
 QRect* QHBoxLayout_virtualbase_geometry(const void* self) {
-	return ( (const MiqtVirtualQHBoxLayout*)(self) )->virtualbase_geometry();
+
+	return new QRect(( (const MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::geometry());
+
 }
 
 bool QHBoxLayout_override_virtual_indexOf(void* self, intptr_t slot) {
@@ -2442,7 +2253,9 @@ bool QHBoxLayout_override_virtual_indexOf(void* self, intptr_t slot) {
 }
 
 int QHBoxLayout_virtualbase_indexOf(const void* self, QWidget* param1) {
-	return ( (const MiqtVirtualQHBoxLayout*)(self) )->virtualbase_indexOf(param1);
+
+	return ( (const MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::indexOf(param1);
+
 }
 
 bool QHBoxLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
@@ -2456,7 +2269,9 @@ bool QHBoxLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
 }
 
 bool QHBoxLayout_virtualbase_isEmpty(const void* self) {
-	return ( (const MiqtVirtualQHBoxLayout*)(self) )->virtualbase_isEmpty();
+
+	return ( (const MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::isEmpty();
+
 }
 
 bool QHBoxLayout_override_virtual_controlTypes(void* self, intptr_t slot) {
@@ -2470,7 +2285,10 @@ bool QHBoxLayout_override_virtual_controlTypes(void* self, intptr_t slot) {
 }
 
 int QHBoxLayout_virtualbase_controlTypes(const void* self) {
-	return ( (const MiqtVirtualQHBoxLayout*)(self) )->virtualbase_controlTypes();
+
+	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::controlTypes();
+	return static_cast<int>(_ret);
+
 }
 
 bool QHBoxLayout_override_virtual_layout(void* self, intptr_t slot) {
@@ -2484,7 +2302,9 @@ bool QHBoxLayout_override_virtual_layout(void* self, intptr_t slot) {
 }
 
 QLayout* QHBoxLayout_virtualbase_layout(void* self) {
-	return ( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_layout();
+
+	return ( (MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::layout();
+
 }
 
 bool QHBoxLayout_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2498,7 +2318,9 @@ bool QHBoxLayout_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QHBoxLayout_virtualbase_childEvent(void* self, QChildEvent* e) {
-	( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_childEvent(e);
+
+	( (MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::childEvent(e);
+
 }
 
 bool QHBoxLayout_override_virtual_event(void* self, intptr_t slot) {
@@ -2512,7 +2334,9 @@ bool QHBoxLayout_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QHBoxLayout_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::event(event);
+
 }
 
 bool QHBoxLayout_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2526,7 +2350,9 @@ bool QHBoxLayout_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QHBoxLayout_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::eventFilter(watched, event);
+
 }
 
 bool QHBoxLayout_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2540,7 +2366,9 @@ bool QHBoxLayout_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QHBoxLayout_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::timerEvent(event);
+
 }
 
 bool QHBoxLayout_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2554,7 +2382,9 @@ bool QHBoxLayout_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QHBoxLayout_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::customEvent(event);
+
 }
 
 bool QHBoxLayout_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2568,7 +2398,9 @@ bool QHBoxLayout_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QHBoxLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::connectNotify(*signal);
+
 }
 
 bool QHBoxLayout_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2582,7 +2414,9 @@ bool QHBoxLayout_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QHBoxLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::disconnectNotify(*signal);
+
 }
 
 bool QHBoxLayout_override_virtual_widget(void* self, intptr_t slot) {
@@ -2596,7 +2430,9 @@ bool QHBoxLayout_override_virtual_widget(void* self, intptr_t slot) {
 }
 
 QWidget* QHBoxLayout_virtualbase_widget(void* self) {
-	return ( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_widget();
+
+	return ( (MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::widget();
+
 }
 
 bool QHBoxLayout_override_virtual_spacerItem(void* self, intptr_t slot) {
@@ -2610,7 +2446,9 @@ bool QHBoxLayout_override_virtual_spacerItem(void* self, intptr_t slot) {
 }
 
 QSpacerItem* QHBoxLayout_virtualbase_spacerItem(void* self) {
-	return ( (MiqtVirtualQHBoxLayout*)(self) )->virtualbase_spacerItem();
+
+	return ( (MiqtVirtualQHBoxLayout*)(self) )->MiqtVirtualQHBoxLayout::spacerItem();
+
 }
 
 void QHBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {
@@ -2759,12 +2597,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_addItem(QLayoutItem* param1) {
-
-		QVBoxLayout::addItem(param1);
-
-	}
+	friend void QVBoxLayout_virtualbase_addItem(void* self, QLayoutItem* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -2781,12 +2614,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QVBoxLayout::sizeHint());
-
-	}
+	friend QSize* QVBoxLayout_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSize = 0;
@@ -2803,12 +2631,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSize() const {
-
-		return new QSize(QVBoxLayout::minimumSize());
-
-	}
+	friend QSize* QVBoxLayout_virtualbase_minimumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__maximumSize = 0;
@@ -2825,12 +2648,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_maximumSize() const {
-
-		return new QSize(QVBoxLayout::maximumSize());
-
-	}
+	friend QSize* QVBoxLayout_virtualbase_maximumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -2847,12 +2665,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QVBoxLayout::hasHeightForWidth();
-
-	}
+	friend bool QVBoxLayout_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -2870,12 +2683,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QVBoxLayout::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QVBoxLayout_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumHeightForWidth = 0;
@@ -2893,12 +2701,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_minimumHeightForWidth(int param1) const {
-
-		return QVBoxLayout::minimumHeightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QVBoxLayout_virtualbase_minimumHeightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__expandingDirections = 0;
@@ -2915,13 +2718,7 @@ public:
 		return static_cast<Qt::Orientations>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_expandingDirections() const {
-
-		Qt::Orientations _ret = QVBoxLayout::expandingDirections();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QVBoxLayout_virtualbase_expandingDirections(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__invalidate = 0;
@@ -2939,12 +2736,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_invalidate() {
-
-		QVBoxLayout::invalidate();
-
-	}
+	friend void QVBoxLayout_virtualbase_invalidate(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__itemAt = 0;
@@ -2962,12 +2754,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QLayoutItem* virtualbase_itemAt(int param1) const {
-
-		return QVBoxLayout::itemAt(static_cast<int>(param1));
-
-	}
+	friend QLayoutItem* QVBoxLayout_virtualbase_itemAt(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__takeAt = 0;
@@ -2985,12 +2772,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QLayoutItem* virtualbase_takeAt(int param1) {
-
-		return QVBoxLayout::takeAt(static_cast<int>(param1));
-
-	}
+	friend QLayoutItem* QVBoxLayout_virtualbase_takeAt(void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__count = 0;
@@ -3007,12 +2789,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_count() const {
-
-		return QVBoxLayout::count();
-
-	}
+	friend int QVBoxLayout_virtualbase_count(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setGeometry = 0;
@@ -3033,12 +2810,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setGeometry(QRect* geometry) {
-
-		QVBoxLayout::setGeometry(*geometry);
-
-	}
+	friend void QVBoxLayout_virtualbase_setGeometry(void* self, QRect* geometry);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__geometry = 0;
@@ -3055,12 +2827,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRect* virtualbase_geometry() const {
-
-		return new QRect(QVBoxLayout::geometry());
-
-	}
+	friend QRect* QVBoxLayout_virtualbase_geometry(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__indexOf = 0;
@@ -3078,12 +2845,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_indexOf(QWidget* param1) const {
-
-		return QVBoxLayout::indexOf(param1);
-
-	}
+	friend int QVBoxLayout_virtualbase_indexOf(const void* self, QWidget* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEmpty = 0;
@@ -3100,12 +2862,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEmpty() const {
-
-		return QVBoxLayout::isEmpty();
-
-	}
+	friend bool QVBoxLayout_virtualbase_isEmpty(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__controlTypes = 0;
@@ -3122,13 +2879,7 @@ public:
 		return static_cast<QSizePolicy::ControlTypes>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_controlTypes() const {
-
-		QSizePolicy::ControlTypes _ret = QVBoxLayout::controlTypes();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QVBoxLayout_virtualbase_controlTypes(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__layout = 0;
@@ -3145,12 +2896,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QLayout* virtualbase_layout() {
-
-		return QVBoxLayout::layout();
-
-	}
+	friend QLayout* QVBoxLayout_virtualbase_layout(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -3169,12 +2915,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* e) {
-
-		QVBoxLayout::childEvent(e);
-
-	}
+	friend void QVBoxLayout_virtualbase_childEvent(void* self, QChildEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -3192,12 +2933,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QVBoxLayout::event(event);
-
-	}
+	friend bool QVBoxLayout_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -3216,12 +2952,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QVBoxLayout::eventFilter(watched, event);
-
-	}
+	friend bool QVBoxLayout_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -3240,12 +2971,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QVBoxLayout::timerEvent(event);
-
-	}
+	friend void QVBoxLayout_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -3264,12 +2990,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QVBoxLayout::customEvent(event);
-
-	}
+	friend void QVBoxLayout_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -3290,12 +3011,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QVBoxLayout::connectNotify(*signal);
-
-	}
+	friend void QVBoxLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -3316,12 +3032,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QVBoxLayout::disconnectNotify(*signal);
-
-	}
+	friend void QVBoxLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__widget = 0;
@@ -3338,12 +3049,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QWidget* virtualbase_widget() {
-
-		return QVBoxLayout::widget();
-
-	}
+	friend QWidget* QVBoxLayout_virtualbase_widget(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__spacerItem = 0;
@@ -3360,12 +3066,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSpacerItem* virtualbase_spacerItem() {
-
-		return QVBoxLayout::spacerItem();
-
-	}
+	friend QSpacerItem* QVBoxLayout_virtualbase_spacerItem(void* self);
 
 	// Wrappers to allow calling protected methods:
 	friend void QVBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
@@ -3476,7 +3177,9 @@ bool QVBoxLayout_override_virtual_addItem(void* self, intptr_t slot) {
 }
 
 void QVBoxLayout_virtualbase_addItem(void* self, QLayoutItem* param1) {
-	( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_addItem(param1);
+
+	( (MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::addItem(param1);
+
 }
 
 bool QVBoxLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -3490,7 +3193,9 @@ bool QVBoxLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QVBoxLayout_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQVBoxLayout*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::sizeHint());
+
 }
 
 bool QVBoxLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
@@ -3504,7 +3209,9 @@ bool QVBoxLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
 }
 
 QSize* QVBoxLayout_virtualbase_minimumSize(const void* self) {
-	return ( (const MiqtVirtualQVBoxLayout*)(self) )->virtualbase_minimumSize();
+
+	return new QSize(( (const MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::minimumSize());
+
 }
 
 bool QVBoxLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
@@ -3518,7 +3225,9 @@ bool QVBoxLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
 }
 
 QSize* QVBoxLayout_virtualbase_maximumSize(const void* self) {
-	return ( (const MiqtVirtualQVBoxLayout*)(self) )->virtualbase_maximumSize();
+
+	return new QSize(( (const MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::maximumSize());
+
 }
 
 bool QVBoxLayout_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -3532,7 +3241,9 @@ bool QVBoxLayout_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QVBoxLayout_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQVBoxLayout*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::hasHeightForWidth();
+
 }
 
 bool QVBoxLayout_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -3546,7 +3257,9 @@ bool QVBoxLayout_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QVBoxLayout_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQVBoxLayout*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QVBoxLayout_override_virtual_minimumHeightForWidth(void* self, intptr_t slot) {
@@ -3560,7 +3273,9 @@ bool QVBoxLayout_override_virtual_minimumHeightForWidth(void* self, intptr_t slo
 }
 
 int QVBoxLayout_virtualbase_minimumHeightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQVBoxLayout*)(self) )->virtualbase_minimumHeightForWidth(param1);
+
+	return ( (const MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::minimumHeightForWidth(static_cast<int>(param1));
+
 }
 
 bool QVBoxLayout_override_virtual_expandingDirections(void* self, intptr_t slot) {
@@ -3574,7 +3289,10 @@ bool QVBoxLayout_override_virtual_expandingDirections(void* self, intptr_t slot)
 }
 
 int QVBoxLayout_virtualbase_expandingDirections(const void* self) {
-	return ( (const MiqtVirtualQVBoxLayout*)(self) )->virtualbase_expandingDirections();
+
+	Qt::Orientations _ret = ( (const MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::expandingDirections();
+	return static_cast<int>(_ret);
+
 }
 
 bool QVBoxLayout_override_virtual_invalidate(void* self, intptr_t slot) {
@@ -3588,7 +3306,9 @@ bool QVBoxLayout_override_virtual_invalidate(void* self, intptr_t slot) {
 }
 
 void QVBoxLayout_virtualbase_invalidate(void* self) {
-	( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_invalidate();
+
+	( (MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::invalidate();
+
 }
 
 bool QVBoxLayout_override_virtual_itemAt(void* self, intptr_t slot) {
@@ -3602,7 +3322,9 @@ bool QVBoxLayout_override_virtual_itemAt(void* self, intptr_t slot) {
 }
 
 QLayoutItem* QVBoxLayout_virtualbase_itemAt(const void* self, int param1) {
-	return ( (const MiqtVirtualQVBoxLayout*)(self) )->virtualbase_itemAt(param1);
+
+	return ( (const MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::itemAt(static_cast<int>(param1));
+
 }
 
 bool QVBoxLayout_override_virtual_takeAt(void* self, intptr_t slot) {
@@ -3616,7 +3338,9 @@ bool QVBoxLayout_override_virtual_takeAt(void* self, intptr_t slot) {
 }
 
 QLayoutItem* QVBoxLayout_virtualbase_takeAt(void* self, int param1) {
-	return ( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_takeAt(param1);
+
+	return ( (MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::takeAt(static_cast<int>(param1));
+
 }
 
 bool QVBoxLayout_override_virtual_count(void* self, intptr_t slot) {
@@ -3630,7 +3354,9 @@ bool QVBoxLayout_override_virtual_count(void* self, intptr_t slot) {
 }
 
 int QVBoxLayout_virtualbase_count(const void* self) {
-	return ( (const MiqtVirtualQVBoxLayout*)(self) )->virtualbase_count();
+
+	return ( (const MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::count();
+
 }
 
 bool QVBoxLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
@@ -3644,7 +3370,9 @@ bool QVBoxLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
 }
 
 void QVBoxLayout_virtualbase_setGeometry(void* self, QRect* geometry) {
-	( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_setGeometry(geometry);
+
+	( (MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::setGeometry(*geometry);
+
 }
 
 bool QVBoxLayout_override_virtual_geometry(void* self, intptr_t slot) {
@@ -3658,7 +3386,9 @@ bool QVBoxLayout_override_virtual_geometry(void* self, intptr_t slot) {
 }
 
 QRect* QVBoxLayout_virtualbase_geometry(const void* self) {
-	return ( (const MiqtVirtualQVBoxLayout*)(self) )->virtualbase_geometry();
+
+	return new QRect(( (const MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::geometry());
+
 }
 
 bool QVBoxLayout_override_virtual_indexOf(void* self, intptr_t slot) {
@@ -3672,7 +3402,9 @@ bool QVBoxLayout_override_virtual_indexOf(void* self, intptr_t slot) {
 }
 
 int QVBoxLayout_virtualbase_indexOf(const void* self, QWidget* param1) {
-	return ( (const MiqtVirtualQVBoxLayout*)(self) )->virtualbase_indexOf(param1);
+
+	return ( (const MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::indexOf(param1);
+
 }
 
 bool QVBoxLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
@@ -3686,7 +3418,9 @@ bool QVBoxLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
 }
 
 bool QVBoxLayout_virtualbase_isEmpty(const void* self) {
-	return ( (const MiqtVirtualQVBoxLayout*)(self) )->virtualbase_isEmpty();
+
+	return ( (const MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::isEmpty();
+
 }
 
 bool QVBoxLayout_override_virtual_controlTypes(void* self, intptr_t slot) {
@@ -3700,7 +3434,10 @@ bool QVBoxLayout_override_virtual_controlTypes(void* self, intptr_t slot) {
 }
 
 int QVBoxLayout_virtualbase_controlTypes(const void* self) {
-	return ( (const MiqtVirtualQVBoxLayout*)(self) )->virtualbase_controlTypes();
+
+	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::controlTypes();
+	return static_cast<int>(_ret);
+
 }
 
 bool QVBoxLayout_override_virtual_layout(void* self, intptr_t slot) {
@@ -3714,7 +3451,9 @@ bool QVBoxLayout_override_virtual_layout(void* self, intptr_t slot) {
 }
 
 QLayout* QVBoxLayout_virtualbase_layout(void* self) {
-	return ( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_layout();
+
+	return ( (MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::layout();
+
 }
 
 bool QVBoxLayout_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -3728,7 +3467,9 @@ bool QVBoxLayout_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QVBoxLayout_virtualbase_childEvent(void* self, QChildEvent* e) {
-	( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_childEvent(e);
+
+	( (MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::childEvent(e);
+
 }
 
 bool QVBoxLayout_override_virtual_event(void* self, intptr_t slot) {
@@ -3742,7 +3483,9 @@ bool QVBoxLayout_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QVBoxLayout_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::event(event);
+
 }
 
 bool QVBoxLayout_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -3756,7 +3499,9 @@ bool QVBoxLayout_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QVBoxLayout_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::eventFilter(watched, event);
+
 }
 
 bool QVBoxLayout_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -3770,7 +3515,9 @@ bool QVBoxLayout_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QVBoxLayout_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::timerEvent(event);
+
 }
 
 bool QVBoxLayout_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -3784,7 +3531,9 @@ bool QVBoxLayout_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QVBoxLayout_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::customEvent(event);
+
 }
 
 bool QVBoxLayout_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -3798,7 +3547,9 @@ bool QVBoxLayout_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QVBoxLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::connectNotify(*signal);
+
 }
 
 bool QVBoxLayout_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -3812,7 +3563,9 @@ bool QVBoxLayout_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QVBoxLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::disconnectNotify(*signal);
+
 }
 
 bool QVBoxLayout_override_virtual_widget(void* self, intptr_t slot) {
@@ -3826,7 +3579,9 @@ bool QVBoxLayout_override_virtual_widget(void* self, intptr_t slot) {
 }
 
 QWidget* QVBoxLayout_virtualbase_widget(void* self) {
-	return ( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_widget();
+
+	return ( (MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::widget();
+
 }
 
 bool QVBoxLayout_override_virtual_spacerItem(void* self, intptr_t slot) {
@@ -3840,7 +3595,9 @@ bool QVBoxLayout_override_virtual_spacerItem(void* self, intptr_t slot) {
 }
 
 QSpacerItem* QVBoxLayout_virtualbase_spacerItem(void* self) {
-	return ( (MiqtVirtualQVBoxLayout*)(self) )->virtualbase_spacerItem();
+
+	return ( (MiqtVirtualQVBoxLayout*)(self) )->MiqtVirtualQVBoxLayout::spacerItem();
+
 }
 
 void QVBoxLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {

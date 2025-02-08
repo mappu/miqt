@@ -67,12 +67,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_formatPage(QPainter* painter, bool drawing, QRect* area, int pagenr) {
-
-		QsciPrinter::formatPage(*painter, drawing, *area, static_cast<int>(pagenr));
-
-	}
+	friend void QsciPrinter_virtualbase_formatPage(void* self, QPainter* painter, bool drawing, QRect* area, int pagenr);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMagnification = 0;
@@ -91,12 +86,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setMagnification(int magnification) {
-
-		QsciPrinter::setMagnification(static_cast<int>(magnification));
-
-	}
+	friend void QsciPrinter_virtualbase_setMagnification(void* self, int magnification);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__printRange = 0;
@@ -119,12 +109,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_printRange(QsciScintillaBase* qsb, QPainter* painter, int from, int to) {
-
-		return QsciPrinter::printRange(qsb, *painter, static_cast<int>(from), static_cast<int>(to));
-
-	}
+	friend int QsciPrinter_virtualbase_printRange(void* self, QsciScintillaBase* qsb, QPainter* painter, int from, int to);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__printRange2 = 0;
@@ -144,12 +129,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_printRange2(QsciScintillaBase* qsb, int from, int to) {
-
-		return QsciPrinter::printRange(qsb, static_cast<int>(from), static_cast<int>(to));
-
-	}
+	friend int QsciPrinter_virtualbase_printRange2(void* self, QsciScintillaBase* qsb, int from, int to);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setWrapMode = 0;
@@ -169,12 +149,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setWrapMode(int wmode) {
-
-		QsciPrinter::setWrapMode(static_cast<QsciScintilla::WrapMode>(wmode));
-
-	}
+	friend void QsciPrinter_virtualbase_setWrapMode(void* self, int wmode);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -191,12 +166,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QsciPrinter::devType();
-
-	}
+	friend int QsciPrinter_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setPageSize = 0;
@@ -216,12 +186,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setPageSize(int pageSize) {
-
-		QsciPrinter::setPageSize(static_cast<QPagedPaintDevice::PageSize>(pageSize));
-
-	}
+	friend void QsciPrinter_virtualbase_setPageSize(void* self, int pageSize);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setPageSizeMM = 0;
@@ -242,12 +207,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setPageSizeMM(QSizeF* size) {
-
-		QsciPrinter::setPageSizeMM(*size);
-
-	}
+	friend void QsciPrinter_virtualbase_setPageSizeMM(void* self, QSizeF* size);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__newPage = 0;
@@ -264,12 +224,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_newPage() {
-
-		return QsciPrinter::newPage();
-
-	}
+	friend bool QsciPrinter_virtualbase_newPage(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -286,12 +241,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QsciPrinter::paintEngine();
-
-	}
+	friend QPaintEngine* QsciPrinter_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMargins = 0;
@@ -312,12 +262,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setMargins(QPagedPaintDevice__Margins* m) {
-
-		QsciPrinter::setMargins(*m);
-
-	}
+	friend void QsciPrinter_virtualbase_setMargins(void* self, QPagedPaintDevice__Margins* m);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -336,12 +281,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QsciPrinter::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QsciPrinter_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -360,12 +300,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QsciPrinter::initPainter(painter);
-
-	}
+	friend void QsciPrinter_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -383,12 +318,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QsciPrinter::redirected(offset);
-
-	}
+	friend QPaintDevice* QsciPrinter_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -405,12 +335,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QsciPrinter::sharedPainter();
-
-	}
+	friend QPainter* QsciPrinter_virtualbase_sharedPainter(const void* self);
 
 	// Wrappers to allow calling protected methods:
 	friend void QsciPrinter_protectedbase_setEngines(bool* _dynamic_cast_ok, void* self, QPrintEngine* printEngine, QPaintEngine* paintEngine);
@@ -469,7 +394,9 @@ bool QsciPrinter_override_virtual_formatPage(void* self, intptr_t slot) {
 }
 
 void QsciPrinter_virtualbase_formatPage(void* self, QPainter* painter, bool drawing, QRect* area, int pagenr) {
-	( (MiqtVirtualQsciPrinter*)(self) )->virtualbase_formatPage(painter, drawing, area, pagenr);
+
+	( (MiqtVirtualQsciPrinter*)(self) )->MiqtVirtualQsciPrinter::formatPage(*painter, drawing, *area, static_cast<int>(pagenr));
+
 }
 
 bool QsciPrinter_override_virtual_setMagnification(void* self, intptr_t slot) {
@@ -483,7 +410,9 @@ bool QsciPrinter_override_virtual_setMagnification(void* self, intptr_t slot) {
 }
 
 void QsciPrinter_virtualbase_setMagnification(void* self, int magnification) {
-	( (MiqtVirtualQsciPrinter*)(self) )->virtualbase_setMagnification(magnification);
+
+	( (MiqtVirtualQsciPrinter*)(self) )->MiqtVirtualQsciPrinter::setMagnification(static_cast<int>(magnification));
+
 }
 
 bool QsciPrinter_override_virtual_printRange(void* self, intptr_t slot) {
@@ -497,7 +426,9 @@ bool QsciPrinter_override_virtual_printRange(void* self, intptr_t slot) {
 }
 
 int QsciPrinter_virtualbase_printRange(void* self, QsciScintillaBase* qsb, QPainter* painter, int from, int to) {
-	return ( (MiqtVirtualQsciPrinter*)(self) )->virtualbase_printRange(qsb, painter, from, to);
+
+	return ( (MiqtVirtualQsciPrinter*)(self) )->MiqtVirtualQsciPrinter::printRange(qsb, *painter, static_cast<int>(from), static_cast<int>(to));
+
 }
 
 bool QsciPrinter_override_virtual_printRange2(void* self, intptr_t slot) {
@@ -511,7 +442,9 @@ bool QsciPrinter_override_virtual_printRange2(void* self, intptr_t slot) {
 }
 
 int QsciPrinter_virtualbase_printRange2(void* self, QsciScintillaBase* qsb, int from, int to) {
-	return ( (MiqtVirtualQsciPrinter*)(self) )->virtualbase_printRange2(qsb, from, to);
+
+	return ( (MiqtVirtualQsciPrinter*)(self) )->MiqtVirtualQsciPrinter::printRange(qsb, static_cast<int>(from), static_cast<int>(to));
+
 }
 
 bool QsciPrinter_override_virtual_setWrapMode(void* self, intptr_t slot) {
@@ -525,7 +458,9 @@ bool QsciPrinter_override_virtual_setWrapMode(void* self, intptr_t slot) {
 }
 
 void QsciPrinter_virtualbase_setWrapMode(void* self, int wmode) {
-	( (MiqtVirtualQsciPrinter*)(self) )->virtualbase_setWrapMode(wmode);
+
+	( (MiqtVirtualQsciPrinter*)(self) )->MiqtVirtualQsciPrinter::setWrapMode(static_cast<QsciScintilla::WrapMode>(wmode));
+
 }
 
 bool QsciPrinter_override_virtual_devType(void* self, intptr_t slot) {
@@ -539,7 +474,9 @@ bool QsciPrinter_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QsciPrinter_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQsciPrinter*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQsciPrinter*)(self) )->MiqtVirtualQsciPrinter::devType();
+
 }
 
 bool QsciPrinter_override_virtual_setPageSize(void* self, intptr_t slot) {
@@ -553,7 +490,9 @@ bool QsciPrinter_override_virtual_setPageSize(void* self, intptr_t slot) {
 }
 
 void QsciPrinter_virtualbase_setPageSize(void* self, int pageSize) {
-	( (MiqtVirtualQsciPrinter*)(self) )->virtualbase_setPageSize(pageSize);
+
+	( (MiqtVirtualQsciPrinter*)(self) )->MiqtVirtualQsciPrinter::setPageSize(static_cast<MiqtVirtualQsciPrinter::PageSize>(pageSize));
+
 }
 
 bool QsciPrinter_override_virtual_setPageSizeMM(void* self, intptr_t slot) {
@@ -567,7 +506,9 @@ bool QsciPrinter_override_virtual_setPageSizeMM(void* self, intptr_t slot) {
 }
 
 void QsciPrinter_virtualbase_setPageSizeMM(void* self, QSizeF* size) {
-	( (MiqtVirtualQsciPrinter*)(self) )->virtualbase_setPageSizeMM(size);
+
+	( (MiqtVirtualQsciPrinter*)(self) )->MiqtVirtualQsciPrinter::setPageSizeMM(*size);
+
 }
 
 bool QsciPrinter_override_virtual_newPage(void* self, intptr_t slot) {
@@ -581,7 +522,9 @@ bool QsciPrinter_override_virtual_newPage(void* self, intptr_t slot) {
 }
 
 bool QsciPrinter_virtualbase_newPage(void* self) {
-	return ( (MiqtVirtualQsciPrinter*)(self) )->virtualbase_newPage();
+
+	return ( (MiqtVirtualQsciPrinter*)(self) )->MiqtVirtualQsciPrinter::newPage();
+
 }
 
 bool QsciPrinter_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -595,7 +538,9 @@ bool QsciPrinter_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QsciPrinter_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQsciPrinter*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQsciPrinter*)(self) )->MiqtVirtualQsciPrinter::paintEngine();
+
 }
 
 bool QsciPrinter_override_virtual_setMargins(void* self, intptr_t slot) {
@@ -609,7 +554,9 @@ bool QsciPrinter_override_virtual_setMargins(void* self, intptr_t slot) {
 }
 
 void QsciPrinter_virtualbase_setMargins(void* self, QPagedPaintDevice__Margins* m) {
-	( (MiqtVirtualQsciPrinter*)(self) )->virtualbase_setMargins(m);
+
+	( (MiqtVirtualQsciPrinter*)(self) )->MiqtVirtualQsciPrinter::setMargins(*m);
+
 }
 
 bool QsciPrinter_override_virtual_metric(void* self, intptr_t slot) {
@@ -623,7 +570,9 @@ bool QsciPrinter_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QsciPrinter_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQsciPrinter*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQsciPrinter*)(self) )->MiqtVirtualQsciPrinter::metric(static_cast<MiqtVirtualQsciPrinter::PaintDeviceMetric>(param1));
+
 }
 
 bool QsciPrinter_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -637,7 +586,9 @@ bool QsciPrinter_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QsciPrinter_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQsciPrinter*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQsciPrinter*)(self) )->MiqtVirtualQsciPrinter::initPainter(painter);
+
 }
 
 bool QsciPrinter_override_virtual_redirected(void* self, intptr_t slot) {
@@ -651,7 +602,9 @@ bool QsciPrinter_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QsciPrinter_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQsciPrinter*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQsciPrinter*)(self) )->MiqtVirtualQsciPrinter::redirected(offset);
+
 }
 
 bool QsciPrinter_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -665,7 +618,9 @@ bool QsciPrinter_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QsciPrinter_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQsciPrinter*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQsciPrinter*)(self) )->MiqtVirtualQsciPrinter::sharedPainter();
+
 }
 
 void QsciPrinter_protectedbase_setEngines(bool* _dynamic_cast_ok, void* self, QPrintEngine* printEngine, QPaintEngine* paintEngine) {

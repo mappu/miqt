@@ -70,14 +70,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_loadPicture(struct miqt_string format, struct miqt_string filename, QPicture* pic) {
-		QString format_QString = QString::fromUtf8(format.data, format.len);
-		QString filename_QString = QString::fromUtf8(filename.data, filename.len);
-
-		return QPictureFormatPlugin::loadPicture(format_QString, filename_QString, pic);
-
-	}
+	friend bool QPictureFormatPlugin_virtualbase_loadPicture(void* self, struct miqt_string format, struct miqt_string filename, QPicture* pic);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__savePicture = 0;
@@ -113,14 +106,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_savePicture(struct miqt_string format, struct miqt_string filename, QPicture* pic) {
-		QString format_QString = QString::fromUtf8(format.data, format.len);
-		QString filename_QString = QString::fromUtf8(filename.data, filename.len);
-
-		return QPictureFormatPlugin::savePicture(format_QString, filename_QString, *pic);
-
-	}
+	friend bool QPictureFormatPlugin_virtualbase_savePicture(void* self, struct miqt_string format, struct miqt_string filename, QPicture* pic);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__installIOHandler = 0;
@@ -161,12 +147,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QPictureFormatPlugin::event(event);
-
-	}
+	friend bool QPictureFormatPlugin_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -185,12 +166,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QPictureFormatPlugin::eventFilter(watched, event);
-
-	}
+	friend bool QPictureFormatPlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -209,12 +185,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QPictureFormatPlugin::timerEvent(event);
-
-	}
+	friend void QPictureFormatPlugin_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -233,12 +204,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QPictureFormatPlugin::childEvent(event);
-
-	}
+	friend void QPictureFormatPlugin_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -257,12 +223,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QPictureFormatPlugin::customEvent(event);
-
-	}
+	friend void QPictureFormatPlugin_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -283,12 +244,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QPictureFormatPlugin::connectNotify(*signal);
-
-	}
+	friend void QPictureFormatPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -309,12 +265,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QPictureFormatPlugin::disconnectNotify(*signal);
-
-	}
+	friend void QPictureFormatPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QPictureFormatPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -437,7 +388,11 @@ bool QPictureFormatPlugin_override_virtual_loadPicture(void* self, intptr_t slot
 }
 
 bool QPictureFormatPlugin_virtualbase_loadPicture(void* self, struct miqt_string format, struct miqt_string filename, QPicture* pic) {
-	return ( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_loadPicture(format, filename, pic);
+	QString format_QString = QString::fromUtf8(format.data, format.len);
+	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
+
+	return ( (MiqtVirtualQPictureFormatPlugin*)(self) )->MiqtVirtualQPictureFormatPlugin::loadPicture(format_QString, filename_QString, pic);
+
 }
 
 bool QPictureFormatPlugin_override_virtual_savePicture(void* self, intptr_t slot) {
@@ -451,7 +406,11 @@ bool QPictureFormatPlugin_override_virtual_savePicture(void* self, intptr_t slot
 }
 
 bool QPictureFormatPlugin_virtualbase_savePicture(void* self, struct miqt_string format, struct miqt_string filename, QPicture* pic) {
-	return ( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_savePicture(format, filename, pic);
+	QString format_QString = QString::fromUtf8(format.data, format.len);
+	QString filename_QString = QString::fromUtf8(filename.data, filename.len);
+
+	return ( (MiqtVirtualQPictureFormatPlugin*)(self) )->MiqtVirtualQPictureFormatPlugin::savePicture(format_QString, filename_QString, *pic);
+
 }
 
 bool QPictureFormatPlugin_override_virtual_installIOHandler(void* self, intptr_t slot) {
@@ -475,7 +434,9 @@ bool QPictureFormatPlugin_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QPictureFormatPlugin_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQPictureFormatPlugin*)(self) )->MiqtVirtualQPictureFormatPlugin::event(event);
+
 }
 
 bool QPictureFormatPlugin_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -489,7 +450,9 @@ bool QPictureFormatPlugin_override_virtual_eventFilter(void* self, intptr_t slot
 }
 
 bool QPictureFormatPlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQPictureFormatPlugin*)(self) )->MiqtVirtualQPictureFormatPlugin::eventFilter(watched, event);
+
 }
 
 bool QPictureFormatPlugin_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -503,7 +466,9 @@ bool QPictureFormatPlugin_override_virtual_timerEvent(void* self, intptr_t slot)
 }
 
 void QPictureFormatPlugin_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQPictureFormatPlugin*)(self) )->MiqtVirtualQPictureFormatPlugin::timerEvent(event);
+
 }
 
 bool QPictureFormatPlugin_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -517,7 +482,9 @@ bool QPictureFormatPlugin_override_virtual_childEvent(void* self, intptr_t slot)
 }
 
 void QPictureFormatPlugin_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQPictureFormatPlugin*)(self) )->MiqtVirtualQPictureFormatPlugin::childEvent(event);
+
 }
 
 bool QPictureFormatPlugin_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -531,7 +498,9 @@ bool QPictureFormatPlugin_override_virtual_customEvent(void* self, intptr_t slot
 }
 
 void QPictureFormatPlugin_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQPictureFormatPlugin*)(self) )->MiqtVirtualQPictureFormatPlugin::customEvent(event);
+
 }
 
 bool QPictureFormatPlugin_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -545,7 +514,9 @@ bool QPictureFormatPlugin_override_virtual_connectNotify(void* self, intptr_t sl
 }
 
 void QPictureFormatPlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQPictureFormatPlugin*)(self) )->MiqtVirtualQPictureFormatPlugin::connectNotify(*signal);
+
 }
 
 bool QPictureFormatPlugin_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -559,7 +530,9 @@ bool QPictureFormatPlugin_override_virtual_disconnectNotify(void* self, intptr_t
 }
 
 void QPictureFormatPlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQPictureFormatPlugin*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQPictureFormatPlugin*)(self) )->MiqtVirtualQPictureFormatPlugin::disconnectNotify(*signal);
+
 }
 
 QObject* QPictureFormatPlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

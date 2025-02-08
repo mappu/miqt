@@ -125,12 +125,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QMediaObject* virtualbase_mediaObject() const {
-
-		return QVideoWidget::mediaObject();
-
-	}
+	friend QMediaObject* QVideoWidget_virtualbase_mediaObject(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -147,12 +142,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QVideoWidget::sizeHint());
-
-	}
+	friend QSize* QVideoWidget_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -170,12 +160,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QVideoWidget::event(event);
-
-	}
+	friend bool QVideoWidget_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -194,12 +179,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QVideoWidget::showEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -218,12 +198,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QVideoWidget::hideEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -242,12 +217,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* event) {
-
-		QVideoWidget::resizeEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_resizeEvent(void* self, QResizeEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -266,12 +236,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QVideoWidget::moveEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -290,12 +255,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* event) {
-
-		QVideoWidget::paintEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_paintEvent(void* self, QPaintEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMediaObject = 0;
@@ -313,12 +273,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_setMediaObject(QMediaObject* object) {
-
-		return QVideoWidget::setMediaObject(object);
-
-	}
+	friend bool QVideoWidget_virtualbase_setMediaObject(void* self, QMediaObject* object);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -335,12 +290,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QVideoWidget::devType();
-
-	}
+	friend int QVideoWidget_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -359,12 +309,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QVideoWidget::setVisible(visible);
-
-	}
+	friend void QVideoWidget_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -381,12 +326,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QVideoWidget::minimumSizeHint());
-
-	}
+	friend QSize* QVideoWidget_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -404,12 +344,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QVideoWidget::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QVideoWidget_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -426,12 +361,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QVideoWidget::hasHeightForWidth();
-
-	}
+	friend bool QVideoWidget_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -448,12 +378,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QVideoWidget::paintEngine();
-
-	}
+	friend QPaintEngine* QVideoWidget_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -472,12 +397,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* event) {
-
-		QVideoWidget::mousePressEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -496,12 +416,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
-
-		QVideoWidget::mouseReleaseEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -520,12 +435,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QVideoWidget::mouseDoubleClickEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -544,12 +454,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QVideoWidget::mouseMoveEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -568,12 +473,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QVideoWidget::wheelEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -592,12 +492,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* event) {
-
-		QVideoWidget::keyPressEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -616,12 +511,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QVideoWidget::keyReleaseEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -640,12 +530,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QVideoWidget::focusInEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -664,12 +549,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QVideoWidget::focusOutEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -688,12 +568,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEvent* event) {
-
-		QVideoWidget::enterEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_enterEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -712,12 +587,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QVideoWidget::leaveEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -736,12 +606,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QVideoWidget::closeEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -760,12 +625,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* event) {
-
-		QVideoWidget::contextMenuEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -784,12 +644,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QVideoWidget::tabletEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -808,12 +663,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QVideoWidget::actionEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -832,12 +682,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QVideoWidget::dragEnterEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -856,12 +701,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QVideoWidget::dragMoveEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -880,12 +720,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QVideoWidget::dragLeaveEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -904,12 +739,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QVideoWidget::dropEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -934,13 +764,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, long* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QVideoWidget::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
-
-	}
+	friend bool QVideoWidget_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -959,12 +783,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* param1) {
-
-		QVideoWidget::changeEvent(param1);
-
-	}
+	friend void QVideoWidget_virtualbase_changeEvent(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -983,12 +802,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QVideoWidget::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QVideoWidget_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1007,12 +821,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QVideoWidget::initPainter(painter);
-
-	}
+	friend void QVideoWidget_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1030,12 +839,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QVideoWidget::redirected(offset);
-
-	}
+	friend QPaintDevice* QVideoWidget_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1052,12 +856,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QVideoWidget::sharedPainter();
-
-	}
+	friend QPainter* QVideoWidget_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1076,12 +875,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QVideoWidget::inputMethodEvent(param1);
-
-	}
+	friend void QVideoWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1100,12 +894,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QVideoWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QVideoWidget_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1123,12 +912,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QVideoWidget::focusNextPrevChild(next);
-
-	}
+	friend bool QVideoWidget_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1147,12 +931,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QVideoWidget::eventFilter(watched, event);
-
-	}
+	friend bool QVideoWidget_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1171,12 +950,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QVideoWidget::timerEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1195,12 +969,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QVideoWidget::childEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1219,12 +988,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QVideoWidget::customEvent(event);
-
-	}
+	friend void QVideoWidget_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1245,12 +1009,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QVideoWidget::connectNotify(*signal);
-
-	}
+	friend void QVideoWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1271,12 +1030,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QVideoWidget::disconnectNotify(*signal);
-
-	}
+	friend void QVideoWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QVideoWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -1500,7 +1254,9 @@ bool QVideoWidget_override_virtual_mediaObject(void* self, intptr_t slot) {
 }
 
 QMediaObject* QVideoWidget_virtualbase_mediaObject(const void* self) {
-	return ( (const MiqtVirtualQVideoWidget*)(self) )->virtualbase_mediaObject();
+
+	return ( (const MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::mediaObject();
+
 }
 
 bool QVideoWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1514,7 +1270,9 @@ bool QVideoWidget_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QVideoWidget_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQVideoWidget*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::sizeHint());
+
 }
 
 bool QVideoWidget_override_virtual_event(void* self, intptr_t slot) {
@@ -1528,7 +1286,9 @@ bool QVideoWidget_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QVideoWidget_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::event(event);
+
 }
 
 bool QVideoWidget_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1542,7 +1302,9 @@ bool QVideoWidget_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::showEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1556,7 +1318,9 @@ bool QVideoWidget_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::hideEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1570,7 +1334,9 @@ bool QVideoWidget_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_resizeEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::resizeEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1584,7 +1350,9 @@ bool QVideoWidget_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::moveEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1598,7 +1366,9 @@ bool QVideoWidget_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_paintEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::paintEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_setMediaObject(void* self, intptr_t slot) {
@@ -1612,7 +1382,9 @@ bool QVideoWidget_override_virtual_setMediaObject(void* self, intptr_t slot) {
 }
 
 bool QVideoWidget_virtualbase_setMediaObject(void* self, QMediaObject* object) {
-	return ( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_setMediaObject(object);
+
+	return ( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::setMediaObject(object);
+
 }
 
 bool QVideoWidget_override_virtual_devType(void* self, intptr_t slot) {
@@ -1626,7 +1398,9 @@ bool QVideoWidget_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QVideoWidget_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQVideoWidget*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::devType();
+
 }
 
 bool QVideoWidget_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1640,7 +1414,9 @@ bool QVideoWidget_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::setVisible(visible);
+
 }
 
 bool QVideoWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1654,7 +1430,9 @@ bool QVideoWidget_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QVideoWidget_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQVideoWidget*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::minimumSizeHint());
+
 }
 
 bool QVideoWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1668,7 +1446,9 @@ bool QVideoWidget_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QVideoWidget_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQVideoWidget*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QVideoWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1682,7 +1462,9 @@ bool QVideoWidget_override_virtual_hasHeightForWidth(void* self, intptr_t slot) 
 }
 
 bool QVideoWidget_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQVideoWidget*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::hasHeightForWidth();
+
 }
 
 bool QVideoWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1696,7 +1478,9 @@ bool QVideoWidget_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QVideoWidget_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQVideoWidget*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::paintEngine();
+
 }
 
 bool QVideoWidget_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1710,7 +1494,9 @@ bool QVideoWidget_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_mousePressEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::mousePressEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1724,7 +1510,9 @@ bool QVideoWidget_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) 
 }
 
 void QVideoWidget_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_mouseReleaseEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::mouseReleaseEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1738,7 +1526,9 @@ bool QVideoWidget_override_virtual_mouseDoubleClickEvent(void* self, intptr_t sl
 }
 
 void QVideoWidget_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::mouseDoubleClickEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1752,7 +1542,9 @@ bool QVideoWidget_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::mouseMoveEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1766,7 +1558,9 @@ bool QVideoWidget_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::wheelEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1780,7 +1574,9 @@ bool QVideoWidget_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_keyPressEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::keyPressEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1794,7 +1590,9 @@ bool QVideoWidget_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::keyReleaseEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1808,7 +1606,9 @@ bool QVideoWidget_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::focusInEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1822,7 +1622,9 @@ bool QVideoWidget_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::focusOutEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1836,7 +1638,9 @@ bool QVideoWidget_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_enterEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::enterEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1850,7 +1654,9 @@ bool QVideoWidget_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::leaveEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1864,7 +1670,9 @@ bool QVideoWidget_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::closeEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1878,7 +1686,9 @@ bool QVideoWidget_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_contextMenuEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::contextMenuEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1892,7 +1702,9 @@ bool QVideoWidget_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::tabletEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1906,7 +1718,9 @@ bool QVideoWidget_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::actionEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1920,7 +1734,9 @@ bool QVideoWidget_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::dragEnterEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1934,7 +1750,9 @@ bool QVideoWidget_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::dragMoveEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1948,7 +1766,9 @@ bool QVideoWidget_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::dragLeaveEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1962,7 +1782,9 @@ bool QVideoWidget_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::dropEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -1976,7 +1798,10 @@ bool QVideoWidget_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QVideoWidget_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
-	return ( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+
 }
 
 bool QVideoWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1990,7 +1815,9 @@ bool QVideoWidget_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_changeEvent(void* self, QEvent* param1) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_changeEvent(param1);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::changeEvent(param1);
+
 }
 
 bool QVideoWidget_override_virtual_metric(void* self, intptr_t slot) {
@@ -2004,7 +1831,9 @@ bool QVideoWidget_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QVideoWidget_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQVideoWidget*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::metric(static_cast<MiqtVirtualQVideoWidget::PaintDeviceMetric>(param1));
+
 }
 
 bool QVideoWidget_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -2018,7 +1847,9 @@ bool QVideoWidget_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQVideoWidget*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::initPainter(painter);
+
 }
 
 bool QVideoWidget_override_virtual_redirected(void* self, intptr_t slot) {
@@ -2032,7 +1863,9 @@ bool QVideoWidget_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QVideoWidget_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQVideoWidget*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::redirected(offset);
+
 }
 
 bool QVideoWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2046,7 +1879,9 @@ bool QVideoWidget_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QVideoWidget_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQVideoWidget*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::sharedPainter();
+
 }
 
 bool QVideoWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2060,7 +1895,9 @@ bool QVideoWidget_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::inputMethodEvent(param1);
+
 }
 
 bool QVideoWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2074,7 +1911,9 @@ bool QVideoWidget_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 }
 
 QVariant* QVideoWidget_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQVideoWidget*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QVideoWidget_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2088,7 +1927,9 @@ bool QVideoWidget_override_virtual_focusNextPrevChild(void* self, intptr_t slot)
 }
 
 bool QVideoWidget_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::focusNextPrevChild(next);
+
 }
 
 bool QVideoWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2102,7 +1943,9 @@ bool QVideoWidget_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QVideoWidget_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::eventFilter(watched, event);
+
 }
 
 bool QVideoWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2116,7 +1959,9 @@ bool QVideoWidget_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::timerEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2130,7 +1975,9 @@ bool QVideoWidget_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::childEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2144,7 +1991,9 @@ bool QVideoWidget_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::customEvent(event);
+
 }
 
 bool QVideoWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2158,7 +2007,9 @@ bool QVideoWidget_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::connectNotify(*signal);
+
 }
 
 bool QVideoWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2172,7 +2023,9 @@ bool QVideoWidget_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QVideoWidget_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQVideoWidget*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQVideoWidget*)(self) )->MiqtVirtualQVideoWidget::disconnectNotify(*signal);
+
 }
 
 void QVideoWidget_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

@@ -69,14 +69,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_scriptLoad(long long id, struct miqt_string program, struct miqt_string fileName, int baseLineNumber) {
-		QString program_QString = QString::fromUtf8(program.data, program.len);
-		QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
-
-		QScriptEngineAgent::scriptLoad(static_cast<qint64>(id), program_QString, fileName_QString, static_cast<int>(baseLineNumber));
-
-	}
+	friend void QScriptEngineAgent_virtualbase_scriptLoad(void* self, long long id, struct miqt_string program, struct miqt_string fileName, int baseLineNumber);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__scriptUnload = 0;
@@ -96,12 +89,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_scriptUnload(long long id) {
-
-		QScriptEngineAgent::scriptUnload(static_cast<qint64>(id));
-
-	}
+	friend void QScriptEngineAgent_virtualbase_scriptUnload(void* self, long long id);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextPush = 0;
@@ -119,12 +107,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextPush() {
-
-		QScriptEngineAgent::contextPush();
-
-	}
+	friend void QScriptEngineAgent_virtualbase_contextPush(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextPop = 0;
@@ -142,12 +125,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextPop() {
-
-		QScriptEngineAgent::contextPop();
-
-	}
+	friend void QScriptEngineAgent_virtualbase_contextPop(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__functionEntry = 0;
@@ -167,12 +145,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_functionEntry(long long scriptId) {
-
-		QScriptEngineAgent::functionEntry(static_cast<qint64>(scriptId));
-
-	}
+	friend void QScriptEngineAgent_virtualbase_functionEntry(void* self, long long scriptId);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__functionExit = 0;
@@ -195,12 +168,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_functionExit(long long scriptId, QScriptValue* returnValue) {
-
-		QScriptEngineAgent::functionExit(static_cast<qint64>(scriptId), *returnValue);
-
-	}
+	friend void QScriptEngineAgent_virtualbase_functionExit(void* self, long long scriptId, QScriptValue* returnValue);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__positionChange = 0;
@@ -222,12 +190,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_positionChange(long long scriptId, int lineNumber, int columnNumber) {
-
-		QScriptEngineAgent::positionChange(static_cast<qint64>(scriptId), static_cast<int>(lineNumber), static_cast<int>(columnNumber));
-
-	}
+	friend void QScriptEngineAgent_virtualbase_positionChange(void* self, long long scriptId, int lineNumber, int columnNumber);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__exceptionThrow = 0;
@@ -251,12 +214,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_exceptionThrow(long long scriptId, QScriptValue* exception, bool hasHandler) {
-
-		QScriptEngineAgent::exceptionThrow(static_cast<qint64>(scriptId), *exception, hasHandler);
-
-	}
+	friend void QScriptEngineAgent_virtualbase_exceptionThrow(void* self, long long scriptId, QScriptValue* exception, bool hasHandler);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__exceptionCatch = 0;
@@ -279,12 +237,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_exceptionCatch(long long scriptId, QScriptValue* exception) {
-
-		QScriptEngineAgent::exceptionCatch(static_cast<qint64>(scriptId), *exception);
-
-	}
+	friend void QScriptEngineAgent_virtualbase_exceptionCatch(void* self, long long scriptId, QScriptValue* exception);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__supportsExtension = 0;
@@ -303,12 +256,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_supportsExtension(int extension) const {
-
-		return QScriptEngineAgent::supportsExtension(static_cast<QScriptEngineAgent::Extension>(extension));
-
-	}
+	friend bool QScriptEngineAgent_virtualbase_supportsExtension(const void* self, int extension);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__extension = 0;
@@ -330,12 +278,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_extension(int extension, QVariant* argument) {
-
-		return new QVariant(QScriptEngineAgent::extension(static_cast<QScriptEngineAgent::Extension>(extension), *argument));
-
-	}
+	friend QVariant* QScriptEngineAgent_virtualbase_extension(void* self, int extension, QVariant* argument);
 
 };
 
@@ -404,7 +347,11 @@ bool QScriptEngineAgent_override_virtual_scriptLoad(void* self, intptr_t slot) {
 }
 
 void QScriptEngineAgent_virtualbase_scriptLoad(void* self, long long id, struct miqt_string program, struct miqt_string fileName, int baseLineNumber) {
-	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_scriptLoad(id, program, fileName, baseLineNumber);
+	QString program_QString = QString::fromUtf8(program.data, program.len);
+	QString fileName_QString = QString::fromUtf8(fileName.data, fileName.len);
+
+	( (MiqtVirtualQScriptEngineAgent*)(self) )->MiqtVirtualQScriptEngineAgent::scriptLoad(static_cast<qint64>(id), program_QString, fileName_QString, static_cast<int>(baseLineNumber));
+
 }
 
 bool QScriptEngineAgent_override_virtual_scriptUnload(void* self, intptr_t slot) {
@@ -418,7 +365,9 @@ bool QScriptEngineAgent_override_virtual_scriptUnload(void* self, intptr_t slot)
 }
 
 void QScriptEngineAgent_virtualbase_scriptUnload(void* self, long long id) {
-	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_scriptUnload(id);
+
+	( (MiqtVirtualQScriptEngineAgent*)(self) )->MiqtVirtualQScriptEngineAgent::scriptUnload(static_cast<qint64>(id));
+
 }
 
 bool QScriptEngineAgent_override_virtual_contextPush(void* self, intptr_t slot) {
@@ -432,7 +381,9 @@ bool QScriptEngineAgent_override_virtual_contextPush(void* self, intptr_t slot) 
 }
 
 void QScriptEngineAgent_virtualbase_contextPush(void* self) {
-	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_contextPush();
+
+	( (MiqtVirtualQScriptEngineAgent*)(self) )->MiqtVirtualQScriptEngineAgent::contextPush();
+
 }
 
 bool QScriptEngineAgent_override_virtual_contextPop(void* self, intptr_t slot) {
@@ -446,7 +397,9 @@ bool QScriptEngineAgent_override_virtual_contextPop(void* self, intptr_t slot) {
 }
 
 void QScriptEngineAgent_virtualbase_contextPop(void* self) {
-	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_contextPop();
+
+	( (MiqtVirtualQScriptEngineAgent*)(self) )->MiqtVirtualQScriptEngineAgent::contextPop();
+
 }
 
 bool QScriptEngineAgent_override_virtual_functionEntry(void* self, intptr_t slot) {
@@ -460,7 +413,9 @@ bool QScriptEngineAgent_override_virtual_functionEntry(void* self, intptr_t slot
 }
 
 void QScriptEngineAgent_virtualbase_functionEntry(void* self, long long scriptId) {
-	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_functionEntry(scriptId);
+
+	( (MiqtVirtualQScriptEngineAgent*)(self) )->MiqtVirtualQScriptEngineAgent::functionEntry(static_cast<qint64>(scriptId));
+
 }
 
 bool QScriptEngineAgent_override_virtual_functionExit(void* self, intptr_t slot) {
@@ -474,7 +429,9 @@ bool QScriptEngineAgent_override_virtual_functionExit(void* self, intptr_t slot)
 }
 
 void QScriptEngineAgent_virtualbase_functionExit(void* self, long long scriptId, QScriptValue* returnValue) {
-	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_functionExit(scriptId, returnValue);
+
+	( (MiqtVirtualQScriptEngineAgent*)(self) )->MiqtVirtualQScriptEngineAgent::functionExit(static_cast<qint64>(scriptId), *returnValue);
+
 }
 
 bool QScriptEngineAgent_override_virtual_positionChange(void* self, intptr_t slot) {
@@ -488,7 +445,9 @@ bool QScriptEngineAgent_override_virtual_positionChange(void* self, intptr_t slo
 }
 
 void QScriptEngineAgent_virtualbase_positionChange(void* self, long long scriptId, int lineNumber, int columnNumber) {
-	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_positionChange(scriptId, lineNumber, columnNumber);
+
+	( (MiqtVirtualQScriptEngineAgent*)(self) )->MiqtVirtualQScriptEngineAgent::positionChange(static_cast<qint64>(scriptId), static_cast<int>(lineNumber), static_cast<int>(columnNumber));
+
 }
 
 bool QScriptEngineAgent_override_virtual_exceptionThrow(void* self, intptr_t slot) {
@@ -502,7 +461,9 @@ bool QScriptEngineAgent_override_virtual_exceptionThrow(void* self, intptr_t slo
 }
 
 void QScriptEngineAgent_virtualbase_exceptionThrow(void* self, long long scriptId, QScriptValue* exception, bool hasHandler) {
-	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_exceptionThrow(scriptId, exception, hasHandler);
+
+	( (MiqtVirtualQScriptEngineAgent*)(self) )->MiqtVirtualQScriptEngineAgent::exceptionThrow(static_cast<qint64>(scriptId), *exception, hasHandler);
+
 }
 
 bool QScriptEngineAgent_override_virtual_exceptionCatch(void* self, intptr_t slot) {
@@ -516,7 +477,9 @@ bool QScriptEngineAgent_override_virtual_exceptionCatch(void* self, intptr_t slo
 }
 
 void QScriptEngineAgent_virtualbase_exceptionCatch(void* self, long long scriptId, QScriptValue* exception) {
-	( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_exceptionCatch(scriptId, exception);
+
+	( (MiqtVirtualQScriptEngineAgent*)(self) )->MiqtVirtualQScriptEngineAgent::exceptionCatch(static_cast<qint64>(scriptId), *exception);
+
 }
 
 bool QScriptEngineAgent_override_virtual_supportsExtension(void* self, intptr_t slot) {
@@ -530,7 +493,9 @@ bool QScriptEngineAgent_override_virtual_supportsExtension(void* self, intptr_t 
 }
 
 bool QScriptEngineAgent_virtualbase_supportsExtension(const void* self, int extension) {
-	return ( (const MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_supportsExtension(extension);
+
+	return ( (const MiqtVirtualQScriptEngineAgent*)(self) )->MiqtVirtualQScriptEngineAgent::supportsExtension(static_cast<MiqtVirtualQScriptEngineAgent::Extension>(extension));
+
 }
 
 bool QScriptEngineAgent_override_virtual_extension(void* self, intptr_t slot) {
@@ -544,7 +509,9 @@ bool QScriptEngineAgent_override_virtual_extension(void* self, intptr_t slot) {
 }
 
 QVariant* QScriptEngineAgent_virtualbase_extension(void* self, int extension, QVariant* argument) {
-	return ( (MiqtVirtualQScriptEngineAgent*)(self) )->virtualbase_extension(extension, argument);
+
+	return new QVariant(( (MiqtVirtualQScriptEngineAgent*)(self) )->MiqtVirtualQScriptEngineAgent::extension(static_cast<MiqtVirtualQScriptEngineAgent::Extension>(extension), *argument));
+
 }
 
 void QScriptEngineAgent_delete(QScriptEngineAgent* self) {

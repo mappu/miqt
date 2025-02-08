@@ -60,12 +60,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QMediaObject* virtualbase_mediaObject() const {
-
-		return QRadioData::mediaObject();
-
-	}
+	friend QMediaObject* QRadioData_virtualbase_mediaObject(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setMediaObject = 0;
@@ -83,12 +78,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_setMediaObject(QMediaObject* mediaObject) {
-
-		return QRadioData::setMediaObject(mediaObject);
-
-	}
+	friend bool QRadioData_virtualbase_setMediaObject(void* self, QMediaObject* mediaObject);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -106,12 +96,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QRadioData::event(event);
-
-	}
+	friend bool QRadioData_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -130,12 +115,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QRadioData::eventFilter(watched, event);
-
-	}
+	friend bool QRadioData_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -154,12 +134,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QRadioData::timerEvent(event);
-
-	}
+	friend void QRadioData_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -178,12 +153,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QRadioData::childEvent(event);
-
-	}
+	friend void QRadioData_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -202,12 +172,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QRadioData::customEvent(event);
-
-	}
+	friend void QRadioData_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -228,12 +193,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QRadioData::connectNotify(*signal);
-
-	}
+	friend void QRadioData_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -254,12 +214,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QRadioData::disconnectNotify(*signal);
-
-	}
+	friend void QRadioData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QRadioData_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -559,7 +514,9 @@ bool QRadioData_override_virtual_mediaObject(void* self, intptr_t slot) {
 }
 
 QMediaObject* QRadioData_virtualbase_mediaObject(const void* self) {
-	return ( (const MiqtVirtualQRadioData*)(self) )->virtualbase_mediaObject();
+
+	return ( (const MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::mediaObject();
+
 }
 
 bool QRadioData_override_virtual_setMediaObject(void* self, intptr_t slot) {
@@ -573,7 +530,9 @@ bool QRadioData_override_virtual_setMediaObject(void* self, intptr_t slot) {
 }
 
 bool QRadioData_virtualbase_setMediaObject(void* self, QMediaObject* mediaObject) {
-	return ( (MiqtVirtualQRadioData*)(self) )->virtualbase_setMediaObject(mediaObject);
+
+	return ( (MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::setMediaObject(mediaObject);
+
 }
 
 bool QRadioData_override_virtual_event(void* self, intptr_t slot) {
@@ -587,7 +546,9 @@ bool QRadioData_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QRadioData_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQRadioData*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::event(event);
+
 }
 
 bool QRadioData_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -601,7 +562,9 @@ bool QRadioData_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QRadioData_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQRadioData*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::eventFilter(watched, event);
+
 }
 
 bool QRadioData_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -615,7 +578,9 @@ bool QRadioData_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QRadioData_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQRadioData*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::timerEvent(event);
+
 }
 
 bool QRadioData_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -629,7 +594,9 @@ bool QRadioData_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QRadioData_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQRadioData*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::childEvent(event);
+
 }
 
 bool QRadioData_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -643,7 +610,9 @@ bool QRadioData_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QRadioData_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQRadioData*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::customEvent(event);
+
 }
 
 bool QRadioData_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -657,7 +626,9 @@ bool QRadioData_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QRadioData_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQRadioData*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::connectNotify(*signal);
+
 }
 
 bool QRadioData_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -671,7 +642,9 @@ bool QRadioData_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QRadioData_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQRadioData*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQRadioData*)(self) )->MiqtVirtualQRadioData::disconnectNotify(*signal);
+
 }
 
 QObject* QRadioData_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
