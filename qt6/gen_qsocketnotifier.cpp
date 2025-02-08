@@ -53,12 +53,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* param1) {
-
-		return QSocketNotifier::event(param1);
-
-	}
+	friend bool QSocketNotifier_virtualbase_event(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -77,12 +72,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QSocketNotifier::eventFilter(watched, event);
-
-	}
+	friend bool QSocketNotifier_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -101,12 +91,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QSocketNotifier::timerEvent(event);
-
-	}
+	friend void QSocketNotifier_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -125,12 +110,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QSocketNotifier::childEvent(event);
-
-	}
+	friend void QSocketNotifier_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -149,12 +129,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QSocketNotifier::customEvent(event);
-
-	}
+	friend void QSocketNotifier_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -175,12 +150,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QSocketNotifier::connectNotify(*signal);
-
-	}
+	friend void QSocketNotifier_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -201,12 +171,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QSocketNotifier::disconnectNotify(*signal);
-
-	}
+	friend void QSocketNotifier_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QSocketNotifier_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -313,7 +278,9 @@ bool QSocketNotifier_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QSocketNotifier_virtualbase_event(void* self, QEvent* param1) {
-	return ( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_event(param1);
+
+	return ( (MiqtVirtualQSocketNotifier*)(self) )->MiqtVirtualQSocketNotifier::event(param1);
+
 }
 
 bool QSocketNotifier_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -327,7 +294,9 @@ bool QSocketNotifier_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QSocketNotifier_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQSocketNotifier*)(self) )->MiqtVirtualQSocketNotifier::eventFilter(watched, event);
+
 }
 
 bool QSocketNotifier_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -341,7 +310,9 @@ bool QSocketNotifier_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QSocketNotifier_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQSocketNotifier*)(self) )->MiqtVirtualQSocketNotifier::timerEvent(event);
+
 }
 
 bool QSocketNotifier_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -355,7 +326,9 @@ bool QSocketNotifier_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QSocketNotifier_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQSocketNotifier*)(self) )->MiqtVirtualQSocketNotifier::childEvent(event);
+
 }
 
 bool QSocketNotifier_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -369,7 +342,9 @@ bool QSocketNotifier_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QSocketNotifier_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQSocketNotifier*)(self) )->MiqtVirtualQSocketNotifier::customEvent(event);
+
 }
 
 bool QSocketNotifier_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -383,7 +358,9 @@ bool QSocketNotifier_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QSocketNotifier_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQSocketNotifier*)(self) )->MiqtVirtualQSocketNotifier::connectNotify(*signal);
+
 }
 
 bool QSocketNotifier_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -397,7 +374,9 @@ bool QSocketNotifier_override_virtual_disconnectNotify(void* self, intptr_t slot
 }
 
 void QSocketNotifier_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSocketNotifier*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQSocketNotifier*)(self) )->MiqtVirtualQSocketNotifier::disconnectNotify(*signal);
+
 }
 
 QObject* QSocketNotifier_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

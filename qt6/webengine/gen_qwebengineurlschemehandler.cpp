@@ -68,12 +68,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QWebEngineUrlSchemeHandler::event(event);
-
-	}
+	friend bool QWebEngineUrlSchemeHandler_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -92,12 +87,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QWebEngineUrlSchemeHandler::eventFilter(watched, event);
-
-	}
+	friend bool QWebEngineUrlSchemeHandler_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -116,12 +106,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QWebEngineUrlSchemeHandler::timerEvent(event);
-
-	}
+	friend void QWebEngineUrlSchemeHandler_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -140,12 +125,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QWebEngineUrlSchemeHandler::childEvent(event);
-
-	}
+	friend void QWebEngineUrlSchemeHandler_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -164,12 +144,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QWebEngineUrlSchemeHandler::customEvent(event);
-
-	}
+	friend void QWebEngineUrlSchemeHandler_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -190,12 +165,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QWebEngineUrlSchemeHandler::connectNotify(*signal);
-
-	}
+	friend void QWebEngineUrlSchemeHandler_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -216,12 +186,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QWebEngineUrlSchemeHandler::disconnectNotify(*signal);
-
-	}
+	friend void QWebEngineUrlSchemeHandler_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QWebEngineUrlSchemeHandler_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -308,7 +273,9 @@ bool QWebEngineUrlSchemeHandler_override_virtual_event(void* self, intptr_t slot
 }
 
 bool QWebEngineUrlSchemeHandler_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->MiqtVirtualQWebEngineUrlSchemeHandler::event(event);
+
 }
 
 bool QWebEngineUrlSchemeHandler_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -322,7 +289,9 @@ bool QWebEngineUrlSchemeHandler_override_virtual_eventFilter(void* self, intptr_
 }
 
 bool QWebEngineUrlSchemeHandler_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->MiqtVirtualQWebEngineUrlSchemeHandler::eventFilter(watched, event);
+
 }
 
 bool QWebEngineUrlSchemeHandler_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -336,7 +305,9 @@ bool QWebEngineUrlSchemeHandler_override_virtual_timerEvent(void* self, intptr_t
 }
 
 void QWebEngineUrlSchemeHandler_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->MiqtVirtualQWebEngineUrlSchemeHandler::timerEvent(event);
+
 }
 
 bool QWebEngineUrlSchemeHandler_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -350,7 +321,9 @@ bool QWebEngineUrlSchemeHandler_override_virtual_childEvent(void* self, intptr_t
 }
 
 void QWebEngineUrlSchemeHandler_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->MiqtVirtualQWebEngineUrlSchemeHandler::childEvent(event);
+
 }
 
 bool QWebEngineUrlSchemeHandler_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -364,7 +337,9 @@ bool QWebEngineUrlSchemeHandler_override_virtual_customEvent(void* self, intptr_
 }
 
 void QWebEngineUrlSchemeHandler_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->MiqtVirtualQWebEngineUrlSchemeHandler::customEvent(event);
+
 }
 
 bool QWebEngineUrlSchemeHandler_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -378,7 +353,9 @@ bool QWebEngineUrlSchemeHandler_override_virtual_connectNotify(void* self, intpt
 }
 
 void QWebEngineUrlSchemeHandler_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->MiqtVirtualQWebEngineUrlSchemeHandler::connectNotify(*signal);
+
 }
 
 bool QWebEngineUrlSchemeHandler_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -392,7 +369,9 @@ bool QWebEngineUrlSchemeHandler_override_virtual_disconnectNotify(void* self, in
 }
 
 void QWebEngineUrlSchemeHandler_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQWebEngineUrlSchemeHandler*)(self) )->MiqtVirtualQWebEngineUrlSchemeHandler::disconnectNotify(*signal);
+
 }
 
 QObject* QWebEngineUrlSchemeHandler_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

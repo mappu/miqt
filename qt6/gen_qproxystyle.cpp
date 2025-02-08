@@ -94,12 +94,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawPrimitive(int element, QStyleOption* option, QPainter* painter, QWidget* widget) const {
-
-		QProxyStyle::drawPrimitive(static_cast<QStyle::PrimitiveElement>(element), option, painter, widget);
-
-	}
+	friend void QProxyStyle_virtualbase_drawPrimitive(const void* self, int element, QStyleOption* option, QPainter* painter, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawControl = 0;
@@ -122,12 +117,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawControl(int element, QStyleOption* option, QPainter* painter, QWidget* widget) const {
-
-		QProxyStyle::drawControl(static_cast<QStyle::ControlElement>(element), option, painter, widget);
-
-	}
+	friend void QProxyStyle_virtualbase_drawControl(const void* self, int element, QStyleOption* option, QPainter* painter, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawComplexControl = 0;
@@ -150,12 +140,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawComplexControl(int control, QStyleOptionComplex* option, QPainter* painter, QWidget* widget) const {
-
-		QProxyStyle::drawComplexControl(static_cast<QStyle::ComplexControl>(control), option, painter, widget);
-
-	}
+	friend void QProxyStyle_virtualbase_drawComplexControl(const void* self, int control, QStyleOptionComplex* option, QPainter* painter, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawItemText = 0;
@@ -192,13 +177,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawItemText(QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole) const {
-		QString text_QString = QString::fromUtf8(text.data, text.len);
-
-		QProxyStyle::drawItemText(painter, *rect, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
-
-	}
+	friend void QProxyStyle_virtualbase_drawItemText(const void* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__drawItemPixmap = 0;
@@ -224,12 +203,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_drawItemPixmap(QPainter* painter, QRect* rect, int alignment, QPixmap* pixmap) const {
-
-		QProxyStyle::drawItemPixmap(painter, *rect, static_cast<int>(alignment), *pixmap);
-
-	}
+	friend void QProxyStyle_virtualbase_drawItemPixmap(const void* self, QPainter* painter, QRect* rect, int alignment, QPixmap* pixmap);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeFromContents = 0;
@@ -253,12 +227,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeFromContents(int type, QStyleOption* option, QSize* size, QWidget* widget) const {
-
-		return new QSize(QProxyStyle::sizeFromContents(static_cast<QStyle::ContentsType>(type), option, *size, widget));
-
-	}
+	friend QSize* QProxyStyle_virtualbase_sizeFromContents(const void* self, int type, QStyleOption* option, QSize* size, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__subElementRect = 0;
@@ -279,12 +248,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRect* virtualbase_subElementRect(int element, QStyleOption* option, QWidget* widget) const {
-
-		return new QRect(QProxyStyle::subElementRect(static_cast<QStyle::SubElement>(element), option, widget));
-
-	}
+	friend QRect* QProxyStyle_virtualbase_subElementRect(const void* self, int element, QStyleOption* option, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__subControlRect = 0;
@@ -307,12 +271,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRect* virtualbase_subControlRect(int cc, QStyleOptionComplex* opt, int sc, QWidget* widget) const {
-
-		return new QRect(QProxyStyle::subControlRect(static_cast<QStyle::ComplexControl>(cc), opt, static_cast<QStyle::SubControl>(sc), widget));
-
-	}
+	friend QRect* QProxyStyle_virtualbase_subControlRect(const void* self, int cc, QStyleOptionComplex* opt, int sc, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__itemTextRect = 0;
@@ -345,13 +304,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRect* virtualbase_itemTextRect(QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string text) const {
-		QString text_QString = QString::fromUtf8(text.data, text.len);
-
-		return new QRect(QProxyStyle::itemTextRect(*fm, *r, static_cast<int>(flags), enabled, text_QString));
-
-	}
+	friend QRect* QProxyStyle_virtualbase_itemTextRect(const void* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string text);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__itemPixmapRect = 0;
@@ -375,12 +328,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRect* virtualbase_itemPixmapRect(QRect* r, int flags, QPixmap* pixmap) const {
-
-		return new QRect(QProxyStyle::itemPixmapRect(*r, static_cast<int>(flags), *pixmap));
-
-	}
+	friend QRect* QProxyStyle_virtualbase_itemPixmapRect(const void* self, QRect* r, int flags, QPixmap* pixmap);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hitTestComplexControl = 0;
@@ -404,13 +352,7 @@ public:
 		return static_cast<QStyle::SubControl>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_hitTestComplexControl(int control, QStyleOptionComplex* option, QPoint* pos, QWidget* widget) const {
-
-		QStyle::SubControl _ret = QProxyStyle::hitTestComplexControl(static_cast<QStyle::ComplexControl>(control), option, *pos, widget);
-		return static_cast<int>(_ret);
-
-	}
+	friend int QProxyStyle_virtualbase_hitTestComplexControl(const void* self, int control, QStyleOptionComplex* option, QPoint* pos, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__styleHint = 0;
@@ -432,12 +374,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_styleHint(int hint, QStyleOption* option, QWidget* widget, QStyleHintReturn* returnData) const {
-
-		return QProxyStyle::styleHint(static_cast<QStyle::StyleHint>(hint), option, widget, returnData);
-
-	}
+	friend int QProxyStyle_virtualbase_styleHint(const void* self, int hint, QStyleOption* option, QWidget* widget, QStyleHintReturn* returnData);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__pixelMetric = 0;
@@ -458,12 +395,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_pixelMetric(int metric, QStyleOption* option, QWidget* widget) const {
-
-		return QProxyStyle::pixelMetric(static_cast<QStyle::PixelMetric>(metric), option, widget);
-
-	}
+	friend int QProxyStyle_virtualbase_pixelMetric(const void* self, int metric, QStyleOption* option, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__layoutSpacing = 0;
@@ -488,12 +420,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_layoutSpacing(int control1, int control2, int orientation, QStyleOption* option, QWidget* widget) const {
-
-		return QProxyStyle::layoutSpacing(static_cast<QSizePolicy::ControlType>(control1), static_cast<QSizePolicy::ControlType>(control2), static_cast<Qt::Orientation>(orientation), option, widget);
-
-	}
+	friend int QProxyStyle_virtualbase_layoutSpacing(const void* self, int control1, int control2, int orientation, QStyleOption* option, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__standardIcon = 0;
@@ -514,12 +441,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QIcon* virtualbase_standardIcon(int standardIcon, QStyleOption* option, QWidget* widget) const {
-
-		return new QIcon(QProxyStyle::standardIcon(static_cast<QStyle::StandardPixmap>(standardIcon), option, widget));
-
-	}
+	friend QIcon* QProxyStyle_virtualbase_standardIcon(const void* self, int standardIcon, QStyleOption* option, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__standardPixmap = 0;
@@ -540,12 +462,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPixmap* virtualbase_standardPixmap(int standardPixmap, QStyleOption* opt, QWidget* widget) const {
-
-		return new QPixmap(QProxyStyle::standardPixmap(static_cast<QStyle::StandardPixmap>(standardPixmap), opt, widget));
-
-	}
+	friend QPixmap* QProxyStyle_virtualbase_standardPixmap(const void* self, int standardPixmap, QStyleOption* opt, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__generatedIconPixmap = 0;
@@ -568,12 +485,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPixmap* virtualbase_generatedIconPixmap(int iconMode, QPixmap* pixmap, QStyleOption* opt) const {
-
-		return new QPixmap(QProxyStyle::generatedIconPixmap(static_cast<QIcon::Mode>(iconMode), *pixmap, opt));
-
-	}
+	friend QPixmap* QProxyStyle_virtualbase_generatedIconPixmap(const void* self, int iconMode, QPixmap* pixmap, QStyleOption* opt);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__standardPalette = 0;
@@ -590,12 +502,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPalette* virtualbase_standardPalette() const {
-
-		return new QPalette(QProxyStyle::standardPalette());
-
-	}
+	friend QPalette* QProxyStyle_virtualbase_standardPalette(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__polish = 0;
@@ -614,12 +521,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_polish(QWidget* widget) {
-
-		QProxyStyle::polish(widget);
-
-	}
+	friend void QProxyStyle_virtualbase_polish(void* self, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__polishWithPal = 0;
@@ -640,12 +542,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_polishWithPal(QPalette* pal) {
-
-		QProxyStyle::polish(*pal);
-
-	}
+	friend void QProxyStyle_virtualbase_polishWithPal(void* self, QPalette* pal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__polishWithApp = 0;
@@ -664,12 +561,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_polishWithApp(QApplication* app) {
-
-		QProxyStyle::polish(app);
-
-	}
+	friend void QProxyStyle_virtualbase_polishWithApp(void* self, QApplication* app);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__unpolish = 0;
@@ -688,12 +580,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_unpolish(QWidget* widget) {
-
-		QProxyStyle::unpolish(widget);
-
-	}
+	friend void QProxyStyle_virtualbase_unpolish(void* self, QWidget* widget);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__unpolishWithApp = 0;
@@ -712,12 +599,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_unpolishWithApp(QApplication* app) {
-
-		QProxyStyle::unpolish(app);
-
-	}
+	friend void QProxyStyle_virtualbase_unpolishWithApp(void* self, QApplication* app);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -735,12 +617,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* e) {
-
-		return QProxyStyle::event(e);
-
-	}
+	friend bool QProxyStyle_virtualbase_event(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -759,12 +636,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QProxyStyle::eventFilter(watched, event);
-
-	}
+	friend bool QProxyStyle_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -783,12 +655,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QProxyStyle::timerEvent(event);
-
-	}
+	friend void QProxyStyle_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -807,12 +674,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QProxyStyle::childEvent(event);
-
-	}
+	friend void QProxyStyle_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -831,12 +693,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QProxyStyle::customEvent(event);
-
-	}
+	friend void QProxyStyle_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -857,12 +714,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QProxyStyle::connectNotify(*signal);
-
-	}
+	friend void QProxyStyle_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -883,12 +735,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QProxyStyle::disconnectNotify(*signal);
-
-	}
+	friend void QProxyStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QProxyStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -1069,7 +916,9 @@ bool QProxyStyle_override_virtual_drawPrimitive(void* self, intptr_t slot) {
 }
 
 void QProxyStyle_virtualbase_drawPrimitive(const void* self, int element, QStyleOption* option, QPainter* painter, QWidget* widget) {
-	( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_drawPrimitive(element, option, painter, widget);
+
+	( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::drawPrimitive(static_cast<MiqtVirtualQProxyStyle::PrimitiveElement>(element), option, painter, widget);
+
 }
 
 bool QProxyStyle_override_virtual_drawControl(void* self, intptr_t slot) {
@@ -1083,7 +932,9 @@ bool QProxyStyle_override_virtual_drawControl(void* self, intptr_t slot) {
 }
 
 void QProxyStyle_virtualbase_drawControl(const void* self, int element, QStyleOption* option, QPainter* painter, QWidget* widget) {
-	( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_drawControl(element, option, painter, widget);
+
+	( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::drawControl(static_cast<MiqtVirtualQProxyStyle::ControlElement>(element), option, painter, widget);
+
 }
 
 bool QProxyStyle_override_virtual_drawComplexControl(void* self, intptr_t slot) {
@@ -1097,7 +948,9 @@ bool QProxyStyle_override_virtual_drawComplexControl(void* self, intptr_t slot) 
 }
 
 void QProxyStyle_virtualbase_drawComplexControl(const void* self, int control, QStyleOptionComplex* option, QPainter* painter, QWidget* widget) {
-	( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_drawComplexControl(control, option, painter, widget);
+
+	( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::drawComplexControl(static_cast<MiqtVirtualQProxyStyle::ComplexControl>(control), option, painter, widget);
+
 }
 
 bool QProxyStyle_override_virtual_drawItemText(void* self, intptr_t slot) {
@@ -1111,7 +964,10 @@ bool QProxyStyle_override_virtual_drawItemText(void* self, intptr_t slot) {
 }
 
 void QProxyStyle_virtualbase_drawItemText(const void* self, QPainter* painter, QRect* rect, int flags, QPalette* pal, bool enabled, struct miqt_string text, int textRole) {
-	( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_drawItemText(painter, rect, flags, pal, enabled, text, textRole);
+	QString text_QString = QString::fromUtf8(text.data, text.len);
+
+	( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::drawItemText(painter, *rect, static_cast<int>(flags), *pal, enabled, text_QString, static_cast<QPalette::ColorRole>(textRole));
+
 }
 
 bool QProxyStyle_override_virtual_drawItemPixmap(void* self, intptr_t slot) {
@@ -1125,7 +981,9 @@ bool QProxyStyle_override_virtual_drawItemPixmap(void* self, intptr_t slot) {
 }
 
 void QProxyStyle_virtualbase_drawItemPixmap(const void* self, QPainter* painter, QRect* rect, int alignment, QPixmap* pixmap) {
-	( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_drawItemPixmap(painter, rect, alignment, pixmap);
+
+	( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::drawItemPixmap(painter, *rect, static_cast<int>(alignment), *pixmap);
+
 }
 
 bool QProxyStyle_override_virtual_sizeFromContents(void* self, intptr_t slot) {
@@ -1139,7 +997,9 @@ bool QProxyStyle_override_virtual_sizeFromContents(void* self, intptr_t slot) {
 }
 
 QSize* QProxyStyle_virtualbase_sizeFromContents(const void* self, int type, QStyleOption* option, QSize* size, QWidget* widget) {
-	return ( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_sizeFromContents(type, option, size, widget);
+
+	return new QSize(( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::sizeFromContents(static_cast<MiqtVirtualQProxyStyle::ContentsType>(type), option, *size, widget));
+
 }
 
 bool QProxyStyle_override_virtual_subElementRect(void* self, intptr_t slot) {
@@ -1153,7 +1013,9 @@ bool QProxyStyle_override_virtual_subElementRect(void* self, intptr_t slot) {
 }
 
 QRect* QProxyStyle_virtualbase_subElementRect(const void* self, int element, QStyleOption* option, QWidget* widget) {
-	return ( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_subElementRect(element, option, widget);
+
+	return new QRect(( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::subElementRect(static_cast<MiqtVirtualQProxyStyle::SubElement>(element), option, widget));
+
 }
 
 bool QProxyStyle_override_virtual_subControlRect(void* self, intptr_t slot) {
@@ -1167,7 +1029,9 @@ bool QProxyStyle_override_virtual_subControlRect(void* self, intptr_t slot) {
 }
 
 QRect* QProxyStyle_virtualbase_subControlRect(const void* self, int cc, QStyleOptionComplex* opt, int sc, QWidget* widget) {
-	return ( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_subControlRect(cc, opt, sc, widget);
+
+	return new QRect(( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::subControlRect(static_cast<MiqtVirtualQProxyStyle::ComplexControl>(cc), opt, static_cast<MiqtVirtualQProxyStyle::SubControl>(sc), widget));
+
 }
 
 bool QProxyStyle_override_virtual_itemTextRect(void* self, intptr_t slot) {
@@ -1181,7 +1045,10 @@ bool QProxyStyle_override_virtual_itemTextRect(void* self, intptr_t slot) {
 }
 
 QRect* QProxyStyle_virtualbase_itemTextRect(const void* self, QFontMetrics* fm, QRect* r, int flags, bool enabled, struct miqt_string text) {
-	return ( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_itemTextRect(fm, r, flags, enabled, text);
+	QString text_QString = QString::fromUtf8(text.data, text.len);
+
+	return new QRect(( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::itemTextRect(*fm, *r, static_cast<int>(flags), enabled, text_QString));
+
 }
 
 bool QProxyStyle_override_virtual_itemPixmapRect(void* self, intptr_t slot) {
@@ -1195,7 +1062,9 @@ bool QProxyStyle_override_virtual_itemPixmapRect(void* self, intptr_t slot) {
 }
 
 QRect* QProxyStyle_virtualbase_itemPixmapRect(const void* self, QRect* r, int flags, QPixmap* pixmap) {
-	return ( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_itemPixmapRect(r, flags, pixmap);
+
+	return new QRect(( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::itemPixmapRect(*r, static_cast<int>(flags), *pixmap));
+
 }
 
 bool QProxyStyle_override_virtual_hitTestComplexControl(void* self, intptr_t slot) {
@@ -1209,7 +1078,10 @@ bool QProxyStyle_override_virtual_hitTestComplexControl(void* self, intptr_t slo
 }
 
 int QProxyStyle_virtualbase_hitTestComplexControl(const void* self, int control, QStyleOptionComplex* option, QPoint* pos, QWidget* widget) {
-	return ( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_hitTestComplexControl(control, option, pos, widget);
+
+	MiqtVirtualQProxyStyle::SubControl _ret = ( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::hitTestComplexControl(static_cast<MiqtVirtualQProxyStyle::ComplexControl>(control), option, *pos, widget);
+	return static_cast<int>(_ret);
+
 }
 
 bool QProxyStyle_override_virtual_styleHint(void* self, intptr_t slot) {
@@ -1223,7 +1095,9 @@ bool QProxyStyle_override_virtual_styleHint(void* self, intptr_t slot) {
 }
 
 int QProxyStyle_virtualbase_styleHint(const void* self, int hint, QStyleOption* option, QWidget* widget, QStyleHintReturn* returnData) {
-	return ( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_styleHint(hint, option, widget, returnData);
+
+	return ( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::styleHint(static_cast<MiqtVirtualQProxyStyle::StyleHint>(hint), option, widget, returnData);
+
 }
 
 bool QProxyStyle_override_virtual_pixelMetric(void* self, intptr_t slot) {
@@ -1237,7 +1111,9 @@ bool QProxyStyle_override_virtual_pixelMetric(void* self, intptr_t slot) {
 }
 
 int QProxyStyle_virtualbase_pixelMetric(const void* self, int metric, QStyleOption* option, QWidget* widget) {
-	return ( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_pixelMetric(metric, option, widget);
+
+	return ( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::pixelMetric(static_cast<MiqtVirtualQProxyStyle::PixelMetric>(metric), option, widget);
+
 }
 
 bool QProxyStyle_override_virtual_layoutSpacing(void* self, intptr_t slot) {
@@ -1251,7 +1127,9 @@ bool QProxyStyle_override_virtual_layoutSpacing(void* self, intptr_t slot) {
 }
 
 int QProxyStyle_virtualbase_layoutSpacing(const void* self, int control1, int control2, int orientation, QStyleOption* option, QWidget* widget) {
-	return ( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_layoutSpacing(control1, control2, orientation, option, widget);
+
+	return ( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::layoutSpacing(static_cast<QSizePolicy::ControlType>(control1), static_cast<QSizePolicy::ControlType>(control2), static_cast<Qt::Orientation>(orientation), option, widget);
+
 }
 
 bool QProxyStyle_override_virtual_standardIcon(void* self, intptr_t slot) {
@@ -1265,7 +1143,9 @@ bool QProxyStyle_override_virtual_standardIcon(void* self, intptr_t slot) {
 }
 
 QIcon* QProxyStyle_virtualbase_standardIcon(const void* self, int standardIcon, QStyleOption* option, QWidget* widget) {
-	return ( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_standardIcon(standardIcon, option, widget);
+
+	return new QIcon(( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::standardIcon(static_cast<MiqtVirtualQProxyStyle::StandardPixmap>(standardIcon), option, widget));
+
 }
 
 bool QProxyStyle_override_virtual_standardPixmap(void* self, intptr_t slot) {
@@ -1279,7 +1159,9 @@ bool QProxyStyle_override_virtual_standardPixmap(void* self, intptr_t slot) {
 }
 
 QPixmap* QProxyStyle_virtualbase_standardPixmap(const void* self, int standardPixmap, QStyleOption* opt, QWidget* widget) {
-	return ( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_standardPixmap(standardPixmap, opt, widget);
+
+	return new QPixmap(( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::standardPixmap(static_cast<MiqtVirtualQProxyStyle::StandardPixmap>(standardPixmap), opt, widget));
+
 }
 
 bool QProxyStyle_override_virtual_generatedIconPixmap(void* self, intptr_t slot) {
@@ -1293,7 +1175,9 @@ bool QProxyStyle_override_virtual_generatedIconPixmap(void* self, intptr_t slot)
 }
 
 QPixmap* QProxyStyle_virtualbase_generatedIconPixmap(const void* self, int iconMode, QPixmap* pixmap, QStyleOption* opt) {
-	return ( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_generatedIconPixmap(iconMode, pixmap, opt);
+
+	return new QPixmap(( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::generatedIconPixmap(static_cast<QIcon::Mode>(iconMode), *pixmap, opt));
+
 }
 
 bool QProxyStyle_override_virtual_standardPalette(void* self, intptr_t slot) {
@@ -1307,7 +1191,9 @@ bool QProxyStyle_override_virtual_standardPalette(void* self, intptr_t slot) {
 }
 
 QPalette* QProxyStyle_virtualbase_standardPalette(const void* self) {
-	return ( (const MiqtVirtualQProxyStyle*)(self) )->virtualbase_standardPalette();
+
+	return new QPalette(( (const MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::standardPalette());
+
 }
 
 bool QProxyStyle_override_virtual_polish(void* self, intptr_t slot) {
@@ -1321,7 +1207,9 @@ bool QProxyStyle_override_virtual_polish(void* self, intptr_t slot) {
 }
 
 void QProxyStyle_virtualbase_polish(void* self, QWidget* widget) {
-	( (MiqtVirtualQProxyStyle*)(self) )->virtualbase_polish(widget);
+
+	( (MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::polish(widget);
+
 }
 
 bool QProxyStyle_override_virtual_polishWithPal(void* self, intptr_t slot) {
@@ -1335,7 +1223,9 @@ bool QProxyStyle_override_virtual_polishWithPal(void* self, intptr_t slot) {
 }
 
 void QProxyStyle_virtualbase_polishWithPal(void* self, QPalette* pal) {
-	( (MiqtVirtualQProxyStyle*)(self) )->virtualbase_polishWithPal(pal);
+
+	( (MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::polish(*pal);
+
 }
 
 bool QProxyStyle_override_virtual_polishWithApp(void* self, intptr_t slot) {
@@ -1349,7 +1239,9 @@ bool QProxyStyle_override_virtual_polishWithApp(void* self, intptr_t slot) {
 }
 
 void QProxyStyle_virtualbase_polishWithApp(void* self, QApplication* app) {
-	( (MiqtVirtualQProxyStyle*)(self) )->virtualbase_polishWithApp(app);
+
+	( (MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::polish(app);
+
 }
 
 bool QProxyStyle_override_virtual_unpolish(void* self, intptr_t slot) {
@@ -1363,7 +1255,9 @@ bool QProxyStyle_override_virtual_unpolish(void* self, intptr_t slot) {
 }
 
 void QProxyStyle_virtualbase_unpolish(void* self, QWidget* widget) {
-	( (MiqtVirtualQProxyStyle*)(self) )->virtualbase_unpolish(widget);
+
+	( (MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::unpolish(widget);
+
 }
 
 bool QProxyStyle_override_virtual_unpolishWithApp(void* self, intptr_t slot) {
@@ -1377,7 +1271,9 @@ bool QProxyStyle_override_virtual_unpolishWithApp(void* self, intptr_t slot) {
 }
 
 void QProxyStyle_virtualbase_unpolishWithApp(void* self, QApplication* app) {
-	( (MiqtVirtualQProxyStyle*)(self) )->virtualbase_unpolishWithApp(app);
+
+	( (MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::unpolish(app);
+
 }
 
 bool QProxyStyle_override_virtual_event(void* self, intptr_t slot) {
@@ -1391,7 +1287,9 @@ bool QProxyStyle_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QProxyStyle_virtualbase_event(void* self, QEvent* e) {
-	return ( (MiqtVirtualQProxyStyle*)(self) )->virtualbase_event(e);
+
+	return ( (MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::event(e);
+
 }
 
 bool QProxyStyle_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1405,7 +1303,9 @@ bool QProxyStyle_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QProxyStyle_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQProxyStyle*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::eventFilter(watched, event);
+
 }
 
 bool QProxyStyle_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1419,7 +1319,9 @@ bool QProxyStyle_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QProxyStyle_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQProxyStyle*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::timerEvent(event);
+
 }
 
 bool QProxyStyle_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1433,7 +1335,9 @@ bool QProxyStyle_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QProxyStyle_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQProxyStyle*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::childEvent(event);
+
 }
 
 bool QProxyStyle_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1447,7 +1351,9 @@ bool QProxyStyle_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QProxyStyle_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQProxyStyle*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::customEvent(event);
+
 }
 
 bool QProxyStyle_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1461,7 +1367,9 @@ bool QProxyStyle_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QProxyStyle_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQProxyStyle*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::connectNotify(*signal);
+
 }
 
 bool QProxyStyle_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1475,7 +1383,9 @@ bool QProxyStyle_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QProxyStyle_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQProxyStyle*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQProxyStyle*)(self) )->MiqtVirtualQProxyStyle::disconnectNotify(*signal);
+
 }
 
 QObject* QProxyStyle_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

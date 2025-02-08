@@ -71,12 +71,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QWebChannelAbstractTransport::event(event);
-
-	}
+	friend bool QWebChannelAbstractTransport_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -95,12 +90,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QWebChannelAbstractTransport::eventFilter(watched, event);
-
-	}
+	friend bool QWebChannelAbstractTransport_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -119,12 +109,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QWebChannelAbstractTransport::timerEvent(event);
-
-	}
+	friend void QWebChannelAbstractTransport_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -143,12 +128,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QWebChannelAbstractTransport::childEvent(event);
-
-	}
+	friend void QWebChannelAbstractTransport_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -167,12 +147,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QWebChannelAbstractTransport::customEvent(event);
-
-	}
+	friend void QWebChannelAbstractTransport_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -193,12 +168,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QWebChannelAbstractTransport::connectNotify(*signal);
-
-	}
+	friend void QWebChannelAbstractTransport_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -219,12 +189,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QWebChannelAbstractTransport::disconnectNotify(*signal);
-
-	}
+	friend void QWebChannelAbstractTransport_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QWebChannelAbstractTransport_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -325,7 +290,9 @@ bool QWebChannelAbstractTransport_override_virtual_event(void* self, intptr_t sl
 }
 
 bool QWebChannelAbstractTransport_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->MiqtVirtualQWebChannelAbstractTransport::event(event);
+
 }
 
 bool QWebChannelAbstractTransport_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -339,7 +306,9 @@ bool QWebChannelAbstractTransport_override_virtual_eventFilter(void* self, intpt
 }
 
 bool QWebChannelAbstractTransport_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->MiqtVirtualQWebChannelAbstractTransport::eventFilter(watched, event);
+
 }
 
 bool QWebChannelAbstractTransport_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -353,7 +322,9 @@ bool QWebChannelAbstractTransport_override_virtual_timerEvent(void* self, intptr
 }
 
 void QWebChannelAbstractTransport_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->MiqtVirtualQWebChannelAbstractTransport::timerEvent(event);
+
 }
 
 bool QWebChannelAbstractTransport_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -367,7 +338,9 @@ bool QWebChannelAbstractTransport_override_virtual_childEvent(void* self, intptr
 }
 
 void QWebChannelAbstractTransport_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->MiqtVirtualQWebChannelAbstractTransport::childEvent(event);
+
 }
 
 bool QWebChannelAbstractTransport_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -381,7 +354,9 @@ bool QWebChannelAbstractTransport_override_virtual_customEvent(void* self, intpt
 }
 
 void QWebChannelAbstractTransport_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->MiqtVirtualQWebChannelAbstractTransport::customEvent(event);
+
 }
 
 bool QWebChannelAbstractTransport_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -395,7 +370,9 @@ bool QWebChannelAbstractTransport_override_virtual_connectNotify(void* self, int
 }
 
 void QWebChannelAbstractTransport_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->MiqtVirtualQWebChannelAbstractTransport::connectNotify(*signal);
+
 }
 
 bool QWebChannelAbstractTransport_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -409,7 +386,9 @@ bool QWebChannelAbstractTransport_override_virtual_disconnectNotify(void* self, 
 }
 
 void QWebChannelAbstractTransport_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQWebChannelAbstractTransport*)(self) )->MiqtVirtualQWebChannelAbstractTransport::disconnectNotify(*signal);
+
 }
 
 QObject* QWebChannelAbstractTransport_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

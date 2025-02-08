@@ -65,12 +65,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_notify(QObject* param1, QEvent* param2) {
-
-		return QApplication::notify(param1, param2);
-
-	}
+	friend bool QApplication_virtualbase_notify(void* self, QObject* param1, QEvent* param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -88,12 +83,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* param1) {
-
-		return QApplication::event(param1);
-
-	}
+	friend bool QApplication_virtualbase_event(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -112,12 +102,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QApplication::eventFilter(watched, event);
-
-	}
+	friend bool QApplication_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -136,12 +121,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QApplication::timerEvent(event);
-
-	}
+	friend void QApplication_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -160,12 +140,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QApplication::childEvent(event);
-
-	}
+	friend void QApplication_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -184,12 +159,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QApplication::customEvent(event);
-
-	}
+	friend void QApplication_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -210,12 +180,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QApplication::connectNotify(*signal);
-
-	}
+	friend void QApplication_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -236,12 +201,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QApplication::disconnectNotify(*signal);
-
-	}
+	friend void QApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QApplication_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -614,7 +574,9 @@ bool QApplication_override_virtual_notify(void* self, intptr_t slot) {
 }
 
 bool QApplication_virtualbase_notify(void* self, QObject* param1, QEvent* param2) {
-	return ( (MiqtVirtualQApplication*)(self) )->virtualbase_notify(param1, param2);
+
+	return ( (MiqtVirtualQApplication*)(self) )->MiqtVirtualQApplication::notify(param1, param2);
+
 }
 
 bool QApplication_override_virtual_event(void* self, intptr_t slot) {
@@ -628,7 +590,9 @@ bool QApplication_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QApplication_virtualbase_event(void* self, QEvent* param1) {
-	return ( (MiqtVirtualQApplication*)(self) )->virtualbase_event(param1);
+
+	return ( (MiqtVirtualQApplication*)(self) )->MiqtVirtualQApplication::event(param1);
+
 }
 
 bool QApplication_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -642,7 +606,9 @@ bool QApplication_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QApplication_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQApplication*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQApplication*)(self) )->MiqtVirtualQApplication::eventFilter(watched, event);
+
 }
 
 bool QApplication_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -656,7 +622,9 @@ bool QApplication_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QApplication_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQApplication*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQApplication*)(self) )->MiqtVirtualQApplication::timerEvent(event);
+
 }
 
 bool QApplication_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -670,7 +638,9 @@ bool QApplication_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QApplication_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQApplication*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQApplication*)(self) )->MiqtVirtualQApplication::childEvent(event);
+
 }
 
 bool QApplication_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -684,7 +654,9 @@ bool QApplication_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QApplication_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQApplication*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQApplication*)(self) )->MiqtVirtualQApplication::customEvent(event);
+
 }
 
 bool QApplication_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -698,7 +670,9 @@ bool QApplication_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QApplication_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQApplication*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQApplication*)(self) )->MiqtVirtualQApplication::connectNotify(*signal);
+
 }
 
 bool QApplication_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -712,7 +686,9 @@ bool QApplication_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QApplication_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQApplication*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQApplication*)(self) )->MiqtVirtualQApplication::disconnectNotify(*signal);
+
 }
 
 QObject* QApplication_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

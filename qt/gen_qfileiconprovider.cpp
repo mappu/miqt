@@ -42,12 +42,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QIcon* virtualbase_icon(int type) const {
-
-		return new QIcon(QFileIconProvider::icon(static_cast<QFileIconProvider::IconType>(type)));
-
-	}
+	friend QIcon* QFileIconProvider_virtualbase_icon(const void* self, int type);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__iconWithInfo = 0;
@@ -67,12 +62,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QIcon* virtualbase_iconWithInfo(QFileInfo* info) const {
-
-		return new QIcon(QFileIconProvider::icon(*info));
-
-	}
+	friend QIcon* QFileIconProvider_virtualbase_iconWithInfo(const void* self, QFileInfo* info);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__type = 0;
@@ -93,19 +83,7 @@ public:
 		return callback_return_value_QString;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_string virtualbase_type(QFileInfo* info) const {
-
-		QString _ret = QFileIconProvider::type(*info);
-		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-		QByteArray _b = _ret.toUtf8();
-		struct miqt_string _ms;
-		_ms.len = _b.length();
-		_ms.data = static_cast<char*>(malloc(_ms.len));
-		memcpy(_ms.data, _b.data(), _ms.len);
-		return _ms;
-
-	}
+	friend struct miqt_string QFileIconProvider_virtualbase_type(const void* self, QFileInfo* info);
 
 };
 
@@ -152,7 +130,9 @@ bool QFileIconProvider_override_virtual_icon(void* self, intptr_t slot) {
 }
 
 QIcon* QFileIconProvider_virtualbase_icon(const void* self, int type) {
-	return ( (const MiqtVirtualQFileIconProvider*)(self) )->virtualbase_icon(type);
+
+	return new QIcon(( (const MiqtVirtualQFileIconProvider*)(self) )->MiqtVirtualQFileIconProvider::icon(static_cast<MiqtVirtualQFileIconProvider::IconType>(type)));
+
 }
 
 bool QFileIconProvider_override_virtual_iconWithInfo(void* self, intptr_t slot) {
@@ -166,7 +146,9 @@ bool QFileIconProvider_override_virtual_iconWithInfo(void* self, intptr_t slot) 
 }
 
 QIcon* QFileIconProvider_virtualbase_iconWithInfo(const void* self, QFileInfo* info) {
-	return ( (const MiqtVirtualQFileIconProvider*)(self) )->virtualbase_iconWithInfo(info);
+
+	return new QIcon(( (const MiqtVirtualQFileIconProvider*)(self) )->MiqtVirtualQFileIconProvider::icon(*info));
+
 }
 
 bool QFileIconProvider_override_virtual_type(void* self, intptr_t slot) {
@@ -180,7 +162,16 @@ bool QFileIconProvider_override_virtual_type(void* self, intptr_t slot) {
 }
 
 struct miqt_string QFileIconProvider_virtualbase_type(const void* self, QFileInfo* info) {
-	return ( (const MiqtVirtualQFileIconProvider*)(self) )->virtualbase_type(info);
+
+	QString _ret = ( (const MiqtVirtualQFileIconProvider*)(self) )->MiqtVirtualQFileIconProvider::type(*info);
+	// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+	QByteArray _b = _ret.toUtf8();
+	struct miqt_string _ms;
+	_ms.len = _b.length();
+	_ms.data = static_cast<char*>(malloc(_ms.len));
+	memcpy(_ms.data, _b.data(), _ms.len);
+	return _ms;
+
 }
 
 void QFileIconProvider_delete(QFileIconProvider* self) {

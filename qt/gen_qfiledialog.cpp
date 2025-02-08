@@ -142,12 +142,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QFileDialog::setVisible(visible);
-
-	}
+	friend void QFileDialog_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__done = 0;
@@ -166,12 +161,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_done(int result) {
-
-		QFileDialog::done(static_cast<int>(result));
-
-	}
+	friend void QFileDialog_virtualbase_done(void* self, int result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__accept = 0;
@@ -189,12 +179,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_accept() {
-
-		QFileDialog::accept();
-
-	}
+	friend void QFileDialog_virtualbase_accept(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -213,12 +198,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* e) {
-
-		QFileDialog::changeEvent(e);
-
-	}
+	friend void QFileDialog_virtualbase_changeEvent(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -235,12 +215,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QFileDialog::sizeHint());
-
-	}
+	friend QSize* QFileDialog_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -257,12 +232,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QFileDialog::minimumSizeHint());
-
-	}
+	friend QSize* QFileDialog_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -280,12 +250,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_open() {
-
-		QFileDialog::open();
-
-	}
+	friend void QFileDialog_virtualbase_open(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__exec = 0;
@@ -302,12 +267,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_exec() {
-
-		return QFileDialog::exec();
-
-	}
+	friend int QFileDialog_virtualbase_exec(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__reject = 0;
@@ -325,12 +285,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_reject() {
-
-		QFileDialog::reject();
-
-	}
+	friend void QFileDialog_virtualbase_reject(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -349,12 +304,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* param1) {
-
-		QFileDialog::keyPressEvent(param1);
-
-	}
+	friend void QFileDialog_virtualbase_keyPressEvent(void* self, QKeyEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -373,12 +323,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* param1) {
-
-		QFileDialog::closeEvent(param1);
-
-	}
+	friend void QFileDialog_virtualbase_closeEvent(void* self, QCloseEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -397,12 +342,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* param1) {
-
-		QFileDialog::showEvent(param1);
-
-	}
+	friend void QFileDialog_virtualbase_showEvent(void* self, QShowEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -421,12 +361,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* param1) {
-
-		QFileDialog::resizeEvent(param1);
-
-	}
+	friend void QFileDialog_virtualbase_resizeEvent(void* self, QResizeEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -445,12 +380,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* param1) {
-
-		QFileDialog::contextMenuEvent(param1);
-
-	}
+	friend void QFileDialog_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -469,12 +399,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* param1, QEvent* param2) {
-
-		return QFileDialog::eventFilter(param1, param2);
-
-	}
+	friend bool QFileDialog_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -491,12 +416,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QFileDialog::devType();
-
-	}
+	friend int QFileDialog_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -514,12 +434,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QFileDialog::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QFileDialog_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -536,12 +451,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QFileDialog::hasHeightForWidth();
-
-	}
+	friend bool QFileDialog_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -558,12 +468,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QFileDialog::paintEngine();
-
-	}
+	friend QPaintEngine* QFileDialog_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -581,12 +486,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QFileDialog::event(event);
-
-	}
+	friend bool QFileDialog_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -605,12 +505,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* event) {
-
-		QFileDialog::mousePressEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -629,12 +524,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
-
-		QFileDialog::mouseReleaseEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -653,12 +543,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QFileDialog::mouseDoubleClickEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -677,12 +562,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QFileDialog::mouseMoveEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -701,12 +581,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QFileDialog::wheelEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -725,12 +600,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QFileDialog::keyReleaseEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -749,12 +619,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QFileDialog::focusInEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -773,12 +638,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QFileDialog::focusOutEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -797,12 +657,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEvent* event) {
-
-		QFileDialog::enterEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_enterEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -821,12 +676,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QFileDialog::leaveEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -845,12 +695,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* event) {
-
-		QFileDialog::paintEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_paintEvent(void* self, QPaintEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -869,12 +714,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QFileDialog::moveEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -893,12 +733,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QFileDialog::tabletEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -917,12 +752,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QFileDialog::actionEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -941,12 +771,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QFileDialog::dragEnterEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -965,12 +790,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QFileDialog::dragMoveEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -989,12 +809,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QFileDialog::dragLeaveEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -1013,12 +828,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QFileDialog::dropEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -1037,12 +847,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QFileDialog::hideEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -1067,13 +872,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, long* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QFileDialog::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
-
-	}
+	friend bool QFileDialog_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -1092,12 +891,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QFileDialog::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QFileDialog_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1116,12 +910,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QFileDialog::initPainter(painter);
-
-	}
+	friend void QFileDialog_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1139,12 +928,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QFileDialog::redirected(offset);
-
-	}
+	friend QPaintDevice* QFileDialog_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1161,12 +945,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QFileDialog::sharedPainter();
-
-	}
+	friend QPainter* QFileDialog_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1185,12 +964,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QFileDialog::inputMethodEvent(param1);
-
-	}
+	friend void QFileDialog_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1209,12 +983,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QFileDialog::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QFileDialog_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1232,12 +1001,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QFileDialog::focusNextPrevChild(next);
-
-	}
+	friend bool QFileDialog_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1256,12 +1020,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QFileDialog::timerEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1280,12 +1039,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QFileDialog::childEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1304,12 +1058,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QFileDialog::customEvent(event);
-
-	}
+	friend void QFileDialog_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1330,12 +1079,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QFileDialog::connectNotify(*signal);
-
-	}
+	friend void QFileDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1356,12 +1100,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QFileDialog::disconnectNotify(*signal);
-
-	}
+	friend void QFileDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QFileDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
@@ -2526,7 +2265,9 @@ bool QFileDialog_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::setVisible(visible);
+
 }
 
 bool QFileDialog_override_virtual_done(void* self, intptr_t slot) {
@@ -2540,7 +2281,9 @@ bool QFileDialog_override_virtual_done(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_done(void* self, int result) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_done(result);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::done(static_cast<int>(result));
+
 }
 
 bool QFileDialog_override_virtual_accept(void* self, intptr_t slot) {
@@ -2554,7 +2297,9 @@ bool QFileDialog_override_virtual_accept(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_accept(void* self) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_accept();
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::accept();
+
 }
 
 bool QFileDialog_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -2568,7 +2313,9 @@ bool QFileDialog_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_changeEvent(void* self, QEvent* e) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_changeEvent(e);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::changeEvent(e);
+
 }
 
 bool QFileDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -2582,7 +2329,9 @@ bool QFileDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QFileDialog_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQFileDialog*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::sizeHint());
+
 }
 
 bool QFileDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -2596,7 +2345,9 @@ bool QFileDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QFileDialog_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQFileDialog*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::minimumSizeHint());
+
 }
 
 bool QFileDialog_override_virtual_open(void* self, intptr_t slot) {
@@ -2610,7 +2361,9 @@ bool QFileDialog_override_virtual_open(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_open(void* self) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_open();
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::open();
+
 }
 
 bool QFileDialog_override_virtual_exec(void* self, intptr_t slot) {
@@ -2624,7 +2377,9 @@ bool QFileDialog_override_virtual_exec(void* self, intptr_t slot) {
 }
 
 int QFileDialog_virtualbase_exec(void* self) {
-	return ( (MiqtVirtualQFileDialog*)(self) )->virtualbase_exec();
+
+	return ( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::exec();
+
 }
 
 bool QFileDialog_override_virtual_reject(void* self, intptr_t slot) {
@@ -2638,7 +2393,9 @@ bool QFileDialog_override_virtual_reject(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_reject(void* self) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_reject();
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::reject();
+
 }
 
 bool QFileDialog_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -2652,7 +2409,9 @@ bool QFileDialog_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_keyPressEvent(param1);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::keyPressEvent(param1);
+
 }
 
 bool QFileDialog_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -2666,7 +2425,9 @@ bool QFileDialog_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_closeEvent(void* self, QCloseEvent* param1) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_closeEvent(param1);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::closeEvent(param1);
+
 }
 
 bool QFileDialog_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -2680,7 +2441,9 @@ bool QFileDialog_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_showEvent(void* self, QShowEvent* param1) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_showEvent(param1);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::showEvent(param1);
+
 }
 
 bool QFileDialog_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -2694,7 +2457,9 @@ bool QFileDialog_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_resizeEvent(param1);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::resizeEvent(param1);
+
 }
 
 bool QFileDialog_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -2708,7 +2473,9 @@ bool QFileDialog_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_contextMenuEvent(param1);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::contextMenuEvent(param1);
+
 }
 
 bool QFileDialog_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2722,7 +2489,9 @@ bool QFileDialog_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QFileDialog_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
-	return ( (MiqtVirtualQFileDialog*)(self) )->virtualbase_eventFilter(param1, param2);
+
+	return ( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::eventFilter(param1, param2);
+
 }
 
 bool QFileDialog_override_virtual_devType(void* self, intptr_t slot) {
@@ -2736,7 +2505,9 @@ bool QFileDialog_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QFileDialog_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQFileDialog*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::devType();
+
 }
 
 bool QFileDialog_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -2750,7 +2521,9 @@ bool QFileDialog_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QFileDialog_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQFileDialog*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QFileDialog_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -2764,7 +2537,9 @@ bool QFileDialog_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QFileDialog_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQFileDialog*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::hasHeightForWidth();
+
 }
 
 bool QFileDialog_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -2778,7 +2553,9 @@ bool QFileDialog_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QFileDialog_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQFileDialog*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::paintEngine();
+
 }
 
 bool QFileDialog_override_virtual_event(void* self, intptr_t slot) {
@@ -2792,7 +2569,9 @@ bool QFileDialog_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QFileDialog_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQFileDialog*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::event(event);
+
 }
 
 bool QFileDialog_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -2806,7 +2585,9 @@ bool QFileDialog_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_mousePressEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::mousePressEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -2820,7 +2601,9 @@ bool QFileDialog_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_mouseReleaseEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::mouseReleaseEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -2834,7 +2617,9 @@ bool QFileDialog_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slo
 }
 
 void QFileDialog_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::mouseDoubleClickEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -2848,7 +2633,9 @@ bool QFileDialog_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::mouseMoveEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -2862,7 +2649,9 @@ bool QFileDialog_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::wheelEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -2876,7 +2665,9 @@ bool QFileDialog_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::keyReleaseEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -2890,7 +2681,9 @@ bool QFileDialog_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::focusInEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -2904,7 +2697,9 @@ bool QFileDialog_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::focusOutEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -2918,7 +2713,9 @@ bool QFileDialog_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_enterEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::enterEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -2932,7 +2729,9 @@ bool QFileDialog_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::leaveEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -2946,7 +2745,9 @@ bool QFileDialog_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_paintEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::paintEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -2960,7 +2761,9 @@ bool QFileDialog_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::moveEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -2974,7 +2777,9 @@ bool QFileDialog_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::tabletEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -2988,7 +2793,9 @@ bool QFileDialog_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::actionEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -3002,7 +2809,9 @@ bool QFileDialog_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::dragEnterEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -3016,7 +2825,9 @@ bool QFileDialog_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::dragMoveEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -3030,7 +2841,9 @@ bool QFileDialog_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::dragLeaveEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -3044,7 +2857,9 @@ bool QFileDialog_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::dropEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -3058,7 +2873,9 @@ bool QFileDialog_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::hideEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -3072,7 +2889,10 @@ bool QFileDialog_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QFileDialog_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
-	return ( (MiqtVirtualQFileDialog*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+
 }
 
 bool QFileDialog_override_virtual_metric(void* self, intptr_t slot) {
@@ -3086,7 +2906,9 @@ bool QFileDialog_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QFileDialog_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQFileDialog*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::metric(static_cast<MiqtVirtualQFileDialog::PaintDeviceMetric>(param1));
+
 }
 
 bool QFileDialog_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -3100,7 +2922,9 @@ bool QFileDialog_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQFileDialog*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::initPainter(painter);
+
 }
 
 bool QFileDialog_override_virtual_redirected(void* self, intptr_t slot) {
@@ -3114,7 +2938,9 @@ bool QFileDialog_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QFileDialog_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQFileDialog*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::redirected(offset);
+
 }
 
 bool QFileDialog_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -3128,7 +2954,9 @@ bool QFileDialog_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QFileDialog_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQFileDialog*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::sharedPainter();
+
 }
 
 bool QFileDialog_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -3142,7 +2970,9 @@ bool QFileDialog_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::inputMethodEvent(param1);
+
 }
 
 bool QFileDialog_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -3156,7 +2986,9 @@ bool QFileDialog_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 }
 
 QVariant* QFileDialog_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQFileDialog*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QFileDialog_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -3170,7 +3002,9 @@ bool QFileDialog_override_virtual_focusNextPrevChild(void* self, intptr_t slot) 
 }
 
 bool QFileDialog_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQFileDialog*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::focusNextPrevChild(next);
+
 }
 
 bool QFileDialog_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -3184,7 +3018,9 @@ bool QFileDialog_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::timerEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -3198,7 +3034,9 @@ bool QFileDialog_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::childEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -3212,7 +3050,9 @@ bool QFileDialog_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::customEvent(event);
+
 }
 
 bool QFileDialog_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -3226,7 +3066,9 @@ bool QFileDialog_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::connectNotify(*signal);
+
 }
 
 bool QFileDialog_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -3240,7 +3082,9 @@ bool QFileDialog_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QFileDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQFileDialog*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQFileDialog*)(self) )->MiqtVirtualQFileDialog::disconnectNotify(*signal);
+
 }
 
 void QFileDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {

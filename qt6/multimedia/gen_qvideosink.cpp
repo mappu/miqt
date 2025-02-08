@@ -55,12 +55,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QVideoSink::event(event);
-
-	}
+	friend bool QVideoSink_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -79,12 +74,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QVideoSink::eventFilter(watched, event);
-
-	}
+	friend bool QVideoSink_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -103,12 +93,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QVideoSink::timerEvent(event);
-
-	}
+	friend void QVideoSink_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -127,12 +112,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QVideoSink::childEvent(event);
-
-	}
+	friend void QVideoSink_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -151,12 +131,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QVideoSink::customEvent(event);
-
-	}
+	friend void QVideoSink_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -177,12 +152,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QVideoSink::connectNotify(*signal);
-
-	}
+	friend void QVideoSink_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -203,12 +173,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QVideoSink::disconnectNotify(*signal);
-
-	}
+	friend void QVideoSink_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QVideoSink_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -351,7 +316,9 @@ bool QVideoSink_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QVideoSink_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQVideoSink*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQVideoSink*)(self) )->MiqtVirtualQVideoSink::event(event);
+
 }
 
 bool QVideoSink_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -365,7 +332,9 @@ bool QVideoSink_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QVideoSink_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQVideoSink*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQVideoSink*)(self) )->MiqtVirtualQVideoSink::eventFilter(watched, event);
+
 }
 
 bool QVideoSink_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -379,7 +348,9 @@ bool QVideoSink_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QVideoSink_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQVideoSink*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQVideoSink*)(self) )->MiqtVirtualQVideoSink::timerEvent(event);
+
 }
 
 bool QVideoSink_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -393,7 +364,9 @@ bool QVideoSink_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QVideoSink_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQVideoSink*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQVideoSink*)(self) )->MiqtVirtualQVideoSink::childEvent(event);
+
 }
 
 bool QVideoSink_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -407,7 +380,9 @@ bool QVideoSink_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QVideoSink_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQVideoSink*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQVideoSink*)(self) )->MiqtVirtualQVideoSink::customEvent(event);
+
 }
 
 bool QVideoSink_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -421,7 +396,9 @@ bool QVideoSink_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QVideoSink_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQVideoSink*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQVideoSink*)(self) )->MiqtVirtualQVideoSink::connectNotify(*signal);
+
 }
 
 bool QVideoSink_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -435,7 +412,9 @@ bool QVideoSink_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QVideoSink_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQVideoSink*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQVideoSink*)(self) )->MiqtVirtualQVideoSink::disconnectNotify(*signal);
+
 }
 
 QObject* QVideoSink_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

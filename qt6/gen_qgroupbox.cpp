@@ -123,12 +123,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QGroupBox::minimumSizeHint());
-
-	}
+	friend QSize* QGroupBox_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -146,12 +141,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QGroupBox::event(event);
-
-	}
+	friend bool QGroupBox_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -170,12 +160,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QGroupBox::childEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -194,12 +179,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* event) {
-
-		QGroupBox::resizeEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_resizeEvent(void* self, QResizeEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -218,12 +198,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* event) {
-
-		QGroupBox::paintEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_paintEvent(void* self, QPaintEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -242,12 +217,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QGroupBox::focusInEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -266,12 +236,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* event) {
-
-		QGroupBox::changeEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_changeEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -290,12 +255,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* event) {
-
-		QGroupBox::mousePressEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -314,12 +274,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QGroupBox::mouseMoveEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -338,12 +293,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
-
-		QGroupBox::mouseReleaseEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initStyleOption = 0;
@@ -362,12 +312,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initStyleOption(QStyleOptionGroupBox* option) const {
-
-		QGroupBox::initStyleOption(option);
-
-	}
+	friend void QGroupBox_virtualbase_initStyleOption(const void* self, QStyleOptionGroupBox* option);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -384,12 +329,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QGroupBox::devType();
-
-	}
+	friend int QGroupBox_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -408,12 +348,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QGroupBox::setVisible(visible);
-
-	}
+	friend void QGroupBox_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -430,12 +365,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QGroupBox::sizeHint());
-
-	}
+	friend QSize* QGroupBox_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -453,12 +383,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QGroupBox::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QGroupBox_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -475,12 +400,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QGroupBox::hasHeightForWidth();
-
-	}
+	friend bool QGroupBox_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -497,12 +417,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QGroupBox::paintEngine();
-
-	}
+	friend QPaintEngine* QGroupBox_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -521,12 +436,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QGroupBox::mouseDoubleClickEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -545,12 +455,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QGroupBox::wheelEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -569,12 +474,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* event) {
-
-		QGroupBox::keyPressEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_keyPressEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -593,12 +493,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QGroupBox::keyReleaseEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -617,12 +512,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QGroupBox::focusOutEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -641,12 +531,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEnterEvent* event) {
-
-		QGroupBox::enterEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_enterEvent(void* self, QEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -665,12 +550,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QGroupBox::leaveEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -689,12 +569,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QGroupBox::moveEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -713,12 +588,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QGroupBox::closeEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -737,12 +607,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* event) {
-
-		QGroupBox::contextMenuEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -761,12 +626,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QGroupBox::tabletEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -785,12 +645,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QGroupBox::actionEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -809,12 +664,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QGroupBox::dragEnterEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -833,12 +683,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QGroupBox::dragMoveEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -857,12 +702,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QGroupBox::dragLeaveEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -881,12 +721,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QGroupBox::dropEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -905,12 +740,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QGroupBox::showEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -929,12 +759,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QGroupBox::hideEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -960,13 +785,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QGroupBox::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
-	}
+	friend bool QGroupBox_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -985,12 +804,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QGroupBox::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QGroupBox_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1009,12 +823,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QGroupBox::initPainter(painter);
-
-	}
+	friend void QGroupBox_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1032,12 +841,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QGroupBox::redirected(offset);
-
-	}
+	friend QPaintDevice* QGroupBox_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1054,12 +858,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QGroupBox::sharedPainter();
-
-	}
+	friend QPainter* QGroupBox_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1078,12 +877,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QGroupBox::inputMethodEvent(param1);
-
-	}
+	friend void QGroupBox_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1102,12 +896,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QGroupBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QGroupBox_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1125,12 +914,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QGroupBox::focusNextPrevChild(next);
-
-	}
+	friend bool QGroupBox_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1149,12 +933,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QGroupBox::eventFilter(watched, event);
-
-	}
+	friend bool QGroupBox_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1173,12 +952,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QGroupBox::timerEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1197,12 +971,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QGroupBox::customEvent(event);
-
-	}
+	friend void QGroupBox_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1223,12 +992,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QGroupBox::connectNotify(*signal);
-
-	}
+	friend void QGroupBox_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1249,12 +1013,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QGroupBox::disconnectNotify(*signal);
-
-	}
+	friend void QGroupBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QGroupBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self);
@@ -1427,7 +1186,9 @@ bool QGroupBox_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QGroupBox_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQGroupBox*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::minimumSizeHint());
+
 }
 
 bool QGroupBox_override_virtual_event(void* self, intptr_t slot) {
@@ -1441,7 +1202,9 @@ bool QGroupBox_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QGroupBox_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQGroupBox*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::event(event);
+
 }
 
 bool QGroupBox_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1455,7 +1218,9 @@ bool QGroupBox_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::childEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1469,7 +1234,9 @@ bool QGroupBox_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_resizeEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::resizeEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1483,7 +1250,9 @@ bool QGroupBox_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_paintEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::paintEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1497,7 +1266,9 @@ bool QGroupBox_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::focusInEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1511,7 +1282,9 @@ bool QGroupBox_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_changeEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_changeEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::changeEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1525,7 +1298,9 @@ bool QGroupBox_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_mousePressEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::mousePressEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1539,7 +1314,9 @@ bool QGroupBox_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::mouseMoveEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1553,7 +1330,9 @@ bool QGroupBox_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_mouseReleaseEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::mouseReleaseEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_initStyleOption(void* self, intptr_t slot) {
@@ -1567,7 +1346,9 @@ bool QGroupBox_override_virtual_initStyleOption(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_initStyleOption(const void* self, QStyleOptionGroupBox* option) {
-	( (const MiqtVirtualQGroupBox*)(self) )->virtualbase_initStyleOption(option);
+
+	( (const MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::initStyleOption(option);
+
 }
 
 bool QGroupBox_override_virtual_devType(void* self, intptr_t slot) {
@@ -1581,7 +1362,9 @@ bool QGroupBox_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QGroupBox_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQGroupBox*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::devType();
+
 }
 
 bool QGroupBox_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1595,7 +1378,9 @@ bool QGroupBox_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::setVisible(visible);
+
 }
 
 bool QGroupBox_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1609,7 +1394,9 @@ bool QGroupBox_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QGroupBox_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQGroupBox*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::sizeHint());
+
 }
 
 bool QGroupBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1623,7 +1410,9 @@ bool QGroupBox_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QGroupBox_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQGroupBox*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QGroupBox_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1637,7 +1426,9 @@ bool QGroupBox_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QGroupBox_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQGroupBox*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::hasHeightForWidth();
+
 }
 
 bool QGroupBox_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1651,7 +1442,9 @@ bool QGroupBox_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QGroupBox_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQGroupBox*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::paintEngine();
+
 }
 
 bool QGroupBox_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1665,7 +1458,9 @@ bool QGroupBox_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot)
 }
 
 void QGroupBox_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::mouseDoubleClickEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1679,7 +1474,9 @@ bool QGroupBox_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::wheelEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1693,7 +1490,9 @@ bool QGroupBox_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_keyPressEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_keyPressEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::keyPressEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1707,7 +1506,9 @@ bool QGroupBox_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::keyReleaseEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1721,7 +1522,9 @@ bool QGroupBox_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::focusOutEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1735,7 +1538,9 @@ bool QGroupBox_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::enterEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1749,7 +1554,9 @@ bool QGroupBox_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::leaveEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1763,7 +1570,9 @@ bool QGroupBox_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::moveEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1777,7 +1586,9 @@ bool QGroupBox_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::closeEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1791,7 +1602,9 @@ bool QGroupBox_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_contextMenuEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::contextMenuEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1805,7 +1618,9 @@ bool QGroupBox_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::tabletEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1819,7 +1634,9 @@ bool QGroupBox_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::actionEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1833,7 +1650,9 @@ bool QGroupBox_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::dragEnterEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1847,7 +1666,9 @@ bool QGroupBox_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::dragMoveEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1861,7 +1682,9 @@ bool QGroupBox_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::dragLeaveEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -1875,7 +1698,9 @@ bool QGroupBox_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::dropEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1889,7 +1714,9 @@ bool QGroupBox_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::showEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -1903,7 +1730,9 @@ bool QGroupBox_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::hideEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -1917,7 +1746,10 @@ bool QGroupBox_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QGroupBox_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
-	return ( (MiqtVirtualQGroupBox*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
 }
 
 bool QGroupBox_override_virtual_metric(void* self, intptr_t slot) {
@@ -1931,7 +1763,9 @@ bool QGroupBox_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QGroupBox_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQGroupBox*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::metric(static_cast<MiqtVirtualQGroupBox::PaintDeviceMetric>(param1));
+
 }
 
 bool QGroupBox_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -1945,7 +1779,9 @@ bool QGroupBox_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQGroupBox*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::initPainter(painter);
+
 }
 
 bool QGroupBox_override_virtual_redirected(void* self, intptr_t slot) {
@@ -1959,7 +1795,9 @@ bool QGroupBox_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QGroupBox_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQGroupBox*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::redirected(offset);
+
 }
 
 bool QGroupBox_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -1973,7 +1811,9 @@ bool QGroupBox_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QGroupBox_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQGroupBox*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::sharedPainter();
+
 }
 
 bool QGroupBox_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -1987,7 +1827,9 @@ bool QGroupBox_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::inputMethodEvent(param1);
+
 }
 
 bool QGroupBox_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2001,7 +1843,9 @@ bool QGroupBox_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 }
 
 QVariant* QGroupBox_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQGroupBox*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QGroupBox_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2015,7 +1859,9 @@ bool QGroupBox_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 }
 
 bool QGroupBox_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQGroupBox*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::focusNextPrevChild(next);
+
 }
 
 bool QGroupBox_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2029,7 +1875,9 @@ bool QGroupBox_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QGroupBox_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQGroupBox*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::eventFilter(watched, event);
+
 }
 
 bool QGroupBox_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2043,7 +1891,9 @@ bool QGroupBox_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::timerEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2057,7 +1907,9 @@ bool QGroupBox_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::customEvent(event);
+
 }
 
 bool QGroupBox_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2071,7 +1923,9 @@ bool QGroupBox_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::connectNotify(*signal);
+
 }
 
 bool QGroupBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2085,7 +1939,9 @@ bool QGroupBox_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QGroupBox_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGroupBox*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQGroupBox*)(self) )->MiqtVirtualQGroupBox::disconnectNotify(*signal);
+
 }
 
 void QGroupBox_protectedbase_updateMicroFocus(bool* _dynamic_cast_ok, void* self) {

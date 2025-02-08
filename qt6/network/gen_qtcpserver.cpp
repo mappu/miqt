@@ -57,12 +57,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasPendingConnections() const {
-
-		return QTcpServer::hasPendingConnections();
-
-	}
+	friend bool QTcpServer_virtualbase_hasPendingConnections(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nextPendingConnection = 0;
@@ -79,12 +74,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QTcpSocket* virtualbase_nextPendingConnection() {
-
-		return QTcpServer::nextPendingConnection();
-
-	}
+	friend QTcpSocket* QTcpServer_virtualbase_nextPendingConnection(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__incomingConnection = 0;
@@ -104,12 +94,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_incomingConnection(intptr_t handle) {
-
-		QTcpServer::incomingConnection((qintptr)(handle));
-
-	}
+	friend void QTcpServer_virtualbase_incomingConnection(void* self, intptr_t handle);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -127,12 +112,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QTcpServer::event(event);
-
-	}
+	friend bool QTcpServer_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -151,12 +131,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QTcpServer::eventFilter(watched, event);
-
-	}
+	friend bool QTcpServer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -175,12 +150,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QTcpServer::timerEvent(event);
-
-	}
+	friend void QTcpServer_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -199,12 +169,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QTcpServer::childEvent(event);
-
-	}
+	friend void QTcpServer_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -223,12 +188,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QTcpServer::customEvent(event);
-
-	}
+	friend void QTcpServer_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -249,12 +209,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QTcpServer::connectNotify(*signal);
-
-	}
+	friend void QTcpServer_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -275,12 +230,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QTcpServer::disconnectNotify(*signal);
-
-	}
+	friend void QTcpServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QTcpServer_protectedbase_addPendingConnection(bool* _dynamic_cast_ok, void* self, QTcpSocket* socket);
@@ -482,7 +432,9 @@ bool QTcpServer_override_virtual_hasPendingConnections(void* self, intptr_t slot
 }
 
 bool QTcpServer_virtualbase_hasPendingConnections(const void* self) {
-	return ( (const MiqtVirtualQTcpServer*)(self) )->virtualbase_hasPendingConnections();
+
+	return ( (const MiqtVirtualQTcpServer*)(self) )->MiqtVirtualQTcpServer::hasPendingConnections();
+
 }
 
 bool QTcpServer_override_virtual_nextPendingConnection(void* self, intptr_t slot) {
@@ -496,7 +448,9 @@ bool QTcpServer_override_virtual_nextPendingConnection(void* self, intptr_t slot
 }
 
 QTcpSocket* QTcpServer_virtualbase_nextPendingConnection(void* self) {
-	return ( (MiqtVirtualQTcpServer*)(self) )->virtualbase_nextPendingConnection();
+
+	return ( (MiqtVirtualQTcpServer*)(self) )->MiqtVirtualQTcpServer::nextPendingConnection();
+
 }
 
 bool QTcpServer_override_virtual_incomingConnection(void* self, intptr_t slot) {
@@ -510,7 +464,9 @@ bool QTcpServer_override_virtual_incomingConnection(void* self, intptr_t slot) {
 }
 
 void QTcpServer_virtualbase_incomingConnection(void* self, intptr_t handle) {
-	( (MiqtVirtualQTcpServer*)(self) )->virtualbase_incomingConnection(handle);
+
+	( (MiqtVirtualQTcpServer*)(self) )->MiqtVirtualQTcpServer::incomingConnection((qintptr)(handle));
+
 }
 
 bool QTcpServer_override_virtual_event(void* self, intptr_t slot) {
@@ -524,7 +480,9 @@ bool QTcpServer_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QTcpServer_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQTcpServer*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQTcpServer*)(self) )->MiqtVirtualQTcpServer::event(event);
+
 }
 
 bool QTcpServer_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -538,7 +496,9 @@ bool QTcpServer_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QTcpServer_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQTcpServer*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQTcpServer*)(self) )->MiqtVirtualQTcpServer::eventFilter(watched, event);
+
 }
 
 bool QTcpServer_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -552,7 +512,9 @@ bool QTcpServer_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QTcpServer_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQTcpServer*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQTcpServer*)(self) )->MiqtVirtualQTcpServer::timerEvent(event);
+
 }
 
 bool QTcpServer_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -566,7 +528,9 @@ bool QTcpServer_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QTcpServer_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQTcpServer*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQTcpServer*)(self) )->MiqtVirtualQTcpServer::childEvent(event);
+
 }
 
 bool QTcpServer_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -580,7 +544,9 @@ bool QTcpServer_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QTcpServer_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQTcpServer*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQTcpServer*)(self) )->MiqtVirtualQTcpServer::customEvent(event);
+
 }
 
 bool QTcpServer_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -594,7 +560,9 @@ bool QTcpServer_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QTcpServer_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQTcpServer*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQTcpServer*)(self) )->MiqtVirtualQTcpServer::connectNotify(*signal);
+
 }
 
 bool QTcpServer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -608,7 +576,9 @@ bool QTcpServer_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QTcpServer_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQTcpServer*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQTcpServer*)(self) )->MiqtVirtualQTcpServer::disconnectNotify(*signal);
+
 }
 
 void QTcpServer_protectedbase_addPendingConnection(bool* _dynamic_cast_ok, void* self, QTcpSocket* socket) {

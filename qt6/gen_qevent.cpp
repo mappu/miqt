@@ -209,12 +209,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QInputEvent* virtualbase_clone() const {
-
-		return QInputEvent::clone();
-
-	}
+	friend QInputEvent* QInputEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setTimestamp = 0;
@@ -234,12 +229,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setTimestamp(unsigned long long timestamp) {
-
-		QInputEvent::setTimestamp(static_cast<quint64>(timestamp));
-
-	}
+	friend void QInputEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -258,12 +248,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QInputEvent::setAccepted(accepted);
-
-	}
+	friend void QInputEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -321,7 +306,9 @@ bool QInputEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QInputEvent* QInputEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQInputEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQInputEvent*)(self) )->MiqtVirtualQInputEvent::clone();
+
 }
 
 bool QInputEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
@@ -335,7 +322,9 @@ bool QInputEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 }
 
 void QInputEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
-	( (MiqtVirtualQInputEvent*)(self) )->virtualbase_setTimestamp(timestamp);
+
+	( (MiqtVirtualQInputEvent*)(self) )->MiqtVirtualQInputEvent::setTimestamp(static_cast<quint64>(timestamp));
+
 }
 
 bool QInputEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -349,7 +338,9 @@ bool QInputEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QInputEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQInputEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQInputEvent*)(self) )->MiqtVirtualQInputEvent::setAccepted(accepted);
+
 }
 
 void QInputEvent_delete(QInputEvent* self) {
@@ -380,12 +371,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPointerEvent* virtualbase_clone() const {
-
-		return QPointerEvent::clone();
-
-	}
+	friend QPointerEvent* QPointerEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setTimestamp = 0;
@@ -405,12 +391,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setTimestamp(unsigned long long timestamp) {
-
-		QPointerEvent::setTimestamp(static_cast<quint64>(timestamp));
-
-	}
+	friend void QPointerEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isBeginEvent = 0;
@@ -427,12 +408,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isBeginEvent() const {
-
-		return QPointerEvent::isBeginEvent();
-
-	}
+	friend bool QPointerEvent_virtualbase_isBeginEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isUpdateEvent = 0;
@@ -449,12 +425,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isUpdateEvent() const {
-
-		return QPointerEvent::isUpdateEvent();
-
-	}
+	friend bool QPointerEvent_virtualbase_isUpdateEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEndEvent = 0;
@@ -471,12 +442,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEndEvent() const {
-
-		return QPointerEvent::isEndEvent();
-
-	}
+	friend bool QPointerEvent_virtualbase_isEndEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -495,12 +461,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QPointerEvent::setAccepted(accepted);
-
-	}
+	friend void QPointerEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -626,7 +587,9 @@ bool QPointerEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QPointerEvent* QPointerEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQPointerEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQPointerEvent*)(self) )->MiqtVirtualQPointerEvent::clone();
+
 }
 
 bool QPointerEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
@@ -640,7 +603,9 @@ bool QPointerEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 }
 
 void QPointerEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
-	( (MiqtVirtualQPointerEvent*)(self) )->virtualbase_setTimestamp(timestamp);
+
+	( (MiqtVirtualQPointerEvent*)(self) )->MiqtVirtualQPointerEvent::setTimestamp(static_cast<quint64>(timestamp));
+
 }
 
 bool QPointerEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
@@ -654,7 +619,9 @@ bool QPointerEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
 }
 
 bool QPointerEvent_virtualbase_isBeginEvent(const void* self) {
-	return ( (const MiqtVirtualQPointerEvent*)(self) )->virtualbase_isBeginEvent();
+
+	return ( (const MiqtVirtualQPointerEvent*)(self) )->MiqtVirtualQPointerEvent::isBeginEvent();
+
 }
 
 bool QPointerEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
@@ -668,7 +635,9 @@ bool QPointerEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
 }
 
 bool QPointerEvent_virtualbase_isUpdateEvent(const void* self) {
-	return ( (const MiqtVirtualQPointerEvent*)(self) )->virtualbase_isUpdateEvent();
+
+	return ( (const MiqtVirtualQPointerEvent*)(self) )->MiqtVirtualQPointerEvent::isUpdateEvent();
+
 }
 
 bool QPointerEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
@@ -682,7 +651,9 @@ bool QPointerEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
 }
 
 bool QPointerEvent_virtualbase_isEndEvent(const void* self) {
-	return ( (const MiqtVirtualQPointerEvent*)(self) )->virtualbase_isEndEvent();
+
+	return ( (const MiqtVirtualQPointerEvent*)(self) )->MiqtVirtualQPointerEvent::isEndEvent();
+
 }
 
 bool QPointerEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -696,7 +667,9 @@ bool QPointerEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QPointerEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQPointerEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQPointerEvent*)(self) )->MiqtVirtualQPointerEvent::setAccepted(accepted);
+
 }
 
 void QPointerEvent_delete(QPointerEvent* self) {
@@ -780,12 +753,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QEnterEvent* virtualbase_clone() const {
-
-		return QEnterEvent::clone();
-
-	}
+	friend QEnterEvent* QEnterEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isBeginEvent = 0;
@@ -802,12 +770,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isBeginEvent() const {
-
-		return QEnterEvent::isBeginEvent();
-
-	}
+	friend bool QEnterEvent_virtualbase_isBeginEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isUpdateEvent = 0;
@@ -824,12 +787,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isUpdateEvent() const {
-
-		return QEnterEvent::isUpdateEvent();
-
-	}
+	friend bool QEnterEvent_virtualbase_isUpdateEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEndEvent = 0;
@@ -846,12 +804,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEndEvent() const {
-
-		return QEnterEvent::isEndEvent();
-
-	}
+	friend bool QEnterEvent_virtualbase_isEndEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setTimestamp = 0;
@@ -871,12 +824,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setTimestamp(unsigned long long timestamp) {
-
-		QEnterEvent::setTimestamp(static_cast<quint64>(timestamp));
-
-	}
+	friend void QEnterEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -895,12 +843,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QEnterEvent::setAccepted(accepted);
-
-	}
+	friend void QEnterEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -967,7 +910,9 @@ bool QEnterEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QEnterEvent* QEnterEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQEnterEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQEnterEvent*)(self) )->MiqtVirtualQEnterEvent::clone();
+
 }
 
 bool QEnterEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
@@ -981,7 +926,9 @@ bool QEnterEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
 }
 
 bool QEnterEvent_virtualbase_isBeginEvent(const void* self) {
-	return ( (const MiqtVirtualQEnterEvent*)(self) )->virtualbase_isBeginEvent();
+
+	return ( (const MiqtVirtualQEnterEvent*)(self) )->MiqtVirtualQEnterEvent::isBeginEvent();
+
 }
 
 bool QEnterEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
@@ -995,7 +942,9 @@ bool QEnterEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
 }
 
 bool QEnterEvent_virtualbase_isUpdateEvent(const void* self) {
-	return ( (const MiqtVirtualQEnterEvent*)(self) )->virtualbase_isUpdateEvent();
+
+	return ( (const MiqtVirtualQEnterEvent*)(self) )->MiqtVirtualQEnterEvent::isUpdateEvent();
+
 }
 
 bool QEnterEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
@@ -1009,7 +958,9 @@ bool QEnterEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
 }
 
 bool QEnterEvent_virtualbase_isEndEvent(const void* self) {
-	return ( (const MiqtVirtualQEnterEvent*)(self) )->virtualbase_isEndEvent();
+
+	return ( (const MiqtVirtualQEnterEvent*)(self) )->MiqtVirtualQEnterEvent::isEndEvent();
+
 }
 
 bool QEnterEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
@@ -1023,7 +974,9 @@ bool QEnterEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 }
 
 void QEnterEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
-	( (MiqtVirtualQEnterEvent*)(self) )->virtualbase_setTimestamp(timestamp);
+
+	( (MiqtVirtualQEnterEvent*)(self) )->MiqtVirtualQEnterEvent::setTimestamp(static_cast<quint64>(timestamp));
+
 }
 
 bool QEnterEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -1037,7 +990,9 @@ bool QEnterEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QEnterEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQEnterEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQEnterEvent*)(self) )->MiqtVirtualQEnterEvent::setAccepted(accepted);
+
 }
 
 void QEnterEvent_delete(QEnterEvent* self) {
@@ -1073,12 +1028,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QMouseEvent* virtualbase_clone() const {
-
-		return QMouseEvent::clone();
-
-	}
+	friend QMouseEvent* QMouseEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isBeginEvent = 0;
@@ -1095,12 +1045,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isBeginEvent() const {
-
-		return QMouseEvent::isBeginEvent();
-
-	}
+	friend bool QMouseEvent_virtualbase_isBeginEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isUpdateEvent = 0;
@@ -1117,12 +1062,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isUpdateEvent() const {
-
-		return QMouseEvent::isUpdateEvent();
-
-	}
+	friend bool QMouseEvent_virtualbase_isUpdateEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEndEvent = 0;
@@ -1139,12 +1079,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEndEvent() const {
-
-		return QMouseEvent::isEndEvent();
-
-	}
+	friend bool QMouseEvent_virtualbase_isEndEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setTimestamp = 0;
@@ -1164,12 +1099,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setTimestamp(unsigned long long timestamp) {
-
-		QMouseEvent::setTimestamp(static_cast<quint64>(timestamp));
-
-	}
+	friend void QMouseEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -1188,12 +1118,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QMouseEvent::setAccepted(accepted);
-
-	}
+	friend void QMouseEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -1294,7 +1219,9 @@ bool QMouseEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QMouseEvent* QMouseEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQMouseEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQMouseEvent*)(self) )->MiqtVirtualQMouseEvent::clone();
+
 }
 
 bool QMouseEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
@@ -1308,7 +1235,9 @@ bool QMouseEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
 }
 
 bool QMouseEvent_virtualbase_isBeginEvent(const void* self) {
-	return ( (const MiqtVirtualQMouseEvent*)(self) )->virtualbase_isBeginEvent();
+
+	return ( (const MiqtVirtualQMouseEvent*)(self) )->MiqtVirtualQMouseEvent::isBeginEvent();
+
 }
 
 bool QMouseEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
@@ -1322,7 +1251,9 @@ bool QMouseEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
 }
 
 bool QMouseEvent_virtualbase_isUpdateEvent(const void* self) {
-	return ( (const MiqtVirtualQMouseEvent*)(self) )->virtualbase_isUpdateEvent();
+
+	return ( (const MiqtVirtualQMouseEvent*)(self) )->MiqtVirtualQMouseEvent::isUpdateEvent();
+
 }
 
 bool QMouseEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
@@ -1336,7 +1267,9 @@ bool QMouseEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
 }
 
 bool QMouseEvent_virtualbase_isEndEvent(const void* self) {
-	return ( (const MiqtVirtualQMouseEvent*)(self) )->virtualbase_isEndEvent();
+
+	return ( (const MiqtVirtualQMouseEvent*)(self) )->MiqtVirtualQMouseEvent::isEndEvent();
+
 }
 
 bool QMouseEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
@@ -1350,7 +1283,9 @@ bool QMouseEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 }
 
 void QMouseEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
-	( (MiqtVirtualQMouseEvent*)(self) )->virtualbase_setTimestamp(timestamp);
+
+	( (MiqtVirtualQMouseEvent*)(self) )->MiqtVirtualQMouseEvent::setTimestamp(static_cast<quint64>(timestamp));
+
 }
 
 bool QMouseEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -1364,7 +1299,9 @@ bool QMouseEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QMouseEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQMouseEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQMouseEvent*)(self) )->MiqtVirtualQMouseEvent::setAccepted(accepted);
+
 }
 
 void QMouseEvent_delete(QMouseEvent* self) {
@@ -1398,12 +1335,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QHoverEvent* virtualbase_clone() const {
-
-		return QHoverEvent::clone();
-
-	}
+	friend QHoverEvent* QHoverEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isUpdateEvent = 0;
@@ -1420,12 +1352,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isUpdateEvent() const {
-
-		return QHoverEvent::isUpdateEvent();
-
-	}
+	friend bool QHoverEvent_virtualbase_isUpdateEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isBeginEvent = 0;
@@ -1442,12 +1369,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isBeginEvent() const {
-
-		return QHoverEvent::isBeginEvent();
-
-	}
+	friend bool QHoverEvent_virtualbase_isBeginEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEndEvent = 0;
@@ -1464,12 +1386,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEndEvent() const {
-
-		return QHoverEvent::isEndEvent();
-
-	}
+	friend bool QHoverEvent_virtualbase_isEndEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setTimestamp = 0;
@@ -1489,12 +1406,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setTimestamp(unsigned long long timestamp) {
-
-		QHoverEvent::setTimestamp(static_cast<quint64>(timestamp));
-
-	}
+	friend void QHoverEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -1513,12 +1425,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QHoverEvent::setAccepted(accepted);
-
-	}
+	friend void QHoverEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -1585,7 +1492,9 @@ bool QHoverEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QHoverEvent* QHoverEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQHoverEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQHoverEvent*)(self) )->MiqtVirtualQHoverEvent::clone();
+
 }
 
 bool QHoverEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
@@ -1599,7 +1508,9 @@ bool QHoverEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
 }
 
 bool QHoverEvent_virtualbase_isUpdateEvent(const void* self) {
-	return ( (const MiqtVirtualQHoverEvent*)(self) )->virtualbase_isUpdateEvent();
+
+	return ( (const MiqtVirtualQHoverEvent*)(self) )->MiqtVirtualQHoverEvent::isUpdateEvent();
+
 }
 
 bool QHoverEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
@@ -1613,7 +1524,9 @@ bool QHoverEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
 }
 
 bool QHoverEvent_virtualbase_isBeginEvent(const void* self) {
-	return ( (const MiqtVirtualQHoverEvent*)(self) )->virtualbase_isBeginEvent();
+
+	return ( (const MiqtVirtualQHoverEvent*)(self) )->MiqtVirtualQHoverEvent::isBeginEvent();
+
 }
 
 bool QHoverEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
@@ -1627,7 +1540,9 @@ bool QHoverEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
 }
 
 bool QHoverEvent_virtualbase_isEndEvent(const void* self) {
-	return ( (const MiqtVirtualQHoverEvent*)(self) )->virtualbase_isEndEvent();
+
+	return ( (const MiqtVirtualQHoverEvent*)(self) )->MiqtVirtualQHoverEvent::isEndEvent();
+
 }
 
 bool QHoverEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
@@ -1641,7 +1556,9 @@ bool QHoverEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 }
 
 void QHoverEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
-	( (MiqtVirtualQHoverEvent*)(self) )->virtualbase_setTimestamp(timestamp);
+
+	( (MiqtVirtualQHoverEvent*)(self) )->MiqtVirtualQHoverEvent::setTimestamp(static_cast<quint64>(timestamp));
+
 }
 
 bool QHoverEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -1655,7 +1572,9 @@ bool QHoverEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QHoverEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQHoverEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQHoverEvent*)(self) )->MiqtVirtualQHoverEvent::setAccepted(accepted);
+
 }
 
 void QHoverEvent_delete(QHoverEvent* self) {
@@ -1686,12 +1605,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QWheelEvent* virtualbase_clone() const {
-
-		return QWheelEvent::clone();
-
-	}
+	friend QWheelEvent* QWheelEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isBeginEvent = 0;
@@ -1708,12 +1622,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isBeginEvent() const {
-
-		return QWheelEvent::isBeginEvent();
-
-	}
+	friend bool QWheelEvent_virtualbase_isBeginEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isUpdateEvent = 0;
@@ -1730,12 +1639,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isUpdateEvent() const {
-
-		return QWheelEvent::isUpdateEvent();
-
-	}
+	friend bool QWheelEvent_virtualbase_isUpdateEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEndEvent = 0;
@@ -1752,12 +1656,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEndEvent() const {
-
-		return QWheelEvent::isEndEvent();
-
-	}
+	friend bool QWheelEvent_virtualbase_isEndEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setTimestamp = 0;
@@ -1777,12 +1676,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setTimestamp(unsigned long long timestamp) {
-
-		QWheelEvent::setTimestamp(static_cast<quint64>(timestamp));
-
-	}
+	friend void QWheelEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -1801,12 +1695,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QWheelEvent::setAccepted(accepted);
-
-	}
+	friend void QWheelEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -1883,7 +1772,9 @@ bool QWheelEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QWheelEvent* QWheelEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQWheelEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQWheelEvent*)(self) )->MiqtVirtualQWheelEvent::clone();
+
 }
 
 bool QWheelEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
@@ -1897,7 +1788,9 @@ bool QWheelEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
 }
 
 bool QWheelEvent_virtualbase_isBeginEvent(const void* self) {
-	return ( (const MiqtVirtualQWheelEvent*)(self) )->virtualbase_isBeginEvent();
+
+	return ( (const MiqtVirtualQWheelEvent*)(self) )->MiqtVirtualQWheelEvent::isBeginEvent();
+
 }
 
 bool QWheelEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
@@ -1911,7 +1804,9 @@ bool QWheelEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
 }
 
 bool QWheelEvent_virtualbase_isUpdateEvent(const void* self) {
-	return ( (const MiqtVirtualQWheelEvent*)(self) )->virtualbase_isUpdateEvent();
+
+	return ( (const MiqtVirtualQWheelEvent*)(self) )->MiqtVirtualQWheelEvent::isUpdateEvent();
+
 }
 
 bool QWheelEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
@@ -1925,7 +1820,9 @@ bool QWheelEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
 }
 
 bool QWheelEvent_virtualbase_isEndEvent(const void* self) {
-	return ( (const MiqtVirtualQWheelEvent*)(self) )->virtualbase_isEndEvent();
+
+	return ( (const MiqtVirtualQWheelEvent*)(self) )->MiqtVirtualQWheelEvent::isEndEvent();
+
 }
 
 bool QWheelEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
@@ -1939,7 +1836,9 @@ bool QWheelEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 }
 
 void QWheelEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
-	( (MiqtVirtualQWheelEvent*)(self) )->virtualbase_setTimestamp(timestamp);
+
+	( (MiqtVirtualQWheelEvent*)(self) )->MiqtVirtualQWheelEvent::setTimestamp(static_cast<quint64>(timestamp));
+
 }
 
 bool QWheelEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -1953,7 +1852,9 @@ bool QWheelEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QWheelEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQWheelEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQWheelEvent*)(self) )->MiqtVirtualQWheelEvent::setAccepted(accepted);
+
 }
 
 void QWheelEvent_delete(QWheelEvent* self) {
@@ -1982,12 +1883,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QTabletEvent* virtualbase_clone() const {
-
-		return QTabletEvent::clone();
-
-	}
+	friend QTabletEvent* QTabletEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isBeginEvent = 0;
@@ -2004,12 +1900,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isBeginEvent() const {
-
-		return QTabletEvent::isBeginEvent();
-
-	}
+	friend bool QTabletEvent_virtualbase_isBeginEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isUpdateEvent = 0;
@@ -2026,12 +1917,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isUpdateEvent() const {
-
-		return QTabletEvent::isUpdateEvent();
-
-	}
+	friend bool QTabletEvent_virtualbase_isUpdateEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEndEvent = 0;
@@ -2048,12 +1934,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEndEvent() const {
-
-		return QTabletEvent::isEndEvent();
-
-	}
+	friend bool QTabletEvent_virtualbase_isEndEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setTimestamp = 0;
@@ -2073,12 +1954,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setTimestamp(unsigned long long timestamp) {
-
-		QTabletEvent::setTimestamp(static_cast<quint64>(timestamp));
-
-	}
+	friend void QTabletEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -2097,12 +1973,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QTabletEvent::setAccepted(accepted);
-
-	}
+	friend void QTabletEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -2206,7 +2077,9 @@ bool QTabletEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QTabletEvent* QTabletEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQTabletEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQTabletEvent*)(self) )->MiqtVirtualQTabletEvent::clone();
+
 }
 
 bool QTabletEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
@@ -2220,7 +2093,9 @@ bool QTabletEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
 }
 
 bool QTabletEvent_virtualbase_isBeginEvent(const void* self) {
-	return ( (const MiqtVirtualQTabletEvent*)(self) )->virtualbase_isBeginEvent();
+
+	return ( (const MiqtVirtualQTabletEvent*)(self) )->MiqtVirtualQTabletEvent::isBeginEvent();
+
 }
 
 bool QTabletEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
@@ -2234,7 +2109,9 @@ bool QTabletEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
 }
 
 bool QTabletEvent_virtualbase_isUpdateEvent(const void* self) {
-	return ( (const MiqtVirtualQTabletEvent*)(self) )->virtualbase_isUpdateEvent();
+
+	return ( (const MiqtVirtualQTabletEvent*)(self) )->MiqtVirtualQTabletEvent::isUpdateEvent();
+
 }
 
 bool QTabletEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
@@ -2248,7 +2125,9 @@ bool QTabletEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
 }
 
 bool QTabletEvent_virtualbase_isEndEvent(const void* self) {
-	return ( (const MiqtVirtualQTabletEvent*)(self) )->virtualbase_isEndEvent();
+
+	return ( (const MiqtVirtualQTabletEvent*)(self) )->MiqtVirtualQTabletEvent::isEndEvent();
+
 }
 
 bool QTabletEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
@@ -2262,7 +2141,9 @@ bool QTabletEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 }
 
 void QTabletEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
-	( (MiqtVirtualQTabletEvent*)(self) )->virtualbase_setTimestamp(timestamp);
+
+	( (MiqtVirtualQTabletEvent*)(self) )->MiqtVirtualQTabletEvent::setTimestamp(static_cast<quint64>(timestamp));
+
 }
 
 bool QTabletEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -2276,7 +2157,9 @@ bool QTabletEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QTabletEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQTabletEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQTabletEvent*)(self) )->MiqtVirtualQTabletEvent::setAccepted(accepted);
+
 }
 
 void QTabletEvent_delete(QTabletEvent* self) {
@@ -2307,12 +2190,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QNativeGestureEvent* virtualbase_clone() const {
-
-		return QNativeGestureEvent::clone();
-
-	}
+	friend QNativeGestureEvent* QNativeGestureEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isBeginEvent = 0;
@@ -2329,12 +2207,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isBeginEvent() const {
-
-		return QNativeGestureEvent::isBeginEvent();
-
-	}
+	friend bool QNativeGestureEvent_virtualbase_isBeginEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isUpdateEvent = 0;
@@ -2351,12 +2224,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isUpdateEvent() const {
-
-		return QNativeGestureEvent::isUpdateEvent();
-
-	}
+	friend bool QNativeGestureEvent_virtualbase_isUpdateEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEndEvent = 0;
@@ -2373,12 +2241,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEndEvent() const {
-
-		return QNativeGestureEvent::isEndEvent();
-
-	}
+	friend bool QNativeGestureEvent_virtualbase_isEndEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setTimestamp = 0;
@@ -2398,12 +2261,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setTimestamp(unsigned long long timestamp) {
-
-		QNativeGestureEvent::setTimestamp(static_cast<quint64>(timestamp));
-
-	}
+	friend void QNativeGestureEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -2422,12 +2280,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QNativeGestureEvent::setAccepted(accepted);
-
-	}
+	friend void QNativeGestureEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -2500,7 +2353,9 @@ bool QNativeGestureEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QNativeGestureEvent* QNativeGestureEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->MiqtVirtualQNativeGestureEvent::clone();
+
 }
 
 bool QNativeGestureEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
@@ -2514,7 +2369,9 @@ bool QNativeGestureEvent_override_virtual_isBeginEvent(void* self, intptr_t slot
 }
 
 bool QNativeGestureEvent_virtualbase_isBeginEvent(const void* self) {
-	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->virtualbase_isBeginEvent();
+
+	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->MiqtVirtualQNativeGestureEvent::isBeginEvent();
+
 }
 
 bool QNativeGestureEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
@@ -2528,7 +2385,9 @@ bool QNativeGestureEvent_override_virtual_isUpdateEvent(void* self, intptr_t slo
 }
 
 bool QNativeGestureEvent_virtualbase_isUpdateEvent(const void* self) {
-	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->virtualbase_isUpdateEvent();
+
+	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->MiqtVirtualQNativeGestureEvent::isUpdateEvent();
+
 }
 
 bool QNativeGestureEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
@@ -2542,7 +2401,9 @@ bool QNativeGestureEvent_override_virtual_isEndEvent(void* self, intptr_t slot) 
 }
 
 bool QNativeGestureEvent_virtualbase_isEndEvent(const void* self) {
-	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->virtualbase_isEndEvent();
+
+	return ( (const MiqtVirtualQNativeGestureEvent*)(self) )->MiqtVirtualQNativeGestureEvent::isEndEvent();
+
 }
 
 bool QNativeGestureEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
@@ -2556,7 +2417,9 @@ bool QNativeGestureEvent_override_virtual_setTimestamp(void* self, intptr_t slot
 }
 
 void QNativeGestureEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
-	( (MiqtVirtualQNativeGestureEvent*)(self) )->virtualbase_setTimestamp(timestamp);
+
+	( (MiqtVirtualQNativeGestureEvent*)(self) )->MiqtVirtualQNativeGestureEvent::setTimestamp(static_cast<quint64>(timestamp));
+
 }
 
 bool QNativeGestureEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -2570,7 +2433,9 @@ bool QNativeGestureEvent_override_virtual_setAccepted(void* self, intptr_t slot)
 }
 
 void QNativeGestureEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQNativeGestureEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQNativeGestureEvent*)(self) )->MiqtVirtualQNativeGestureEvent::setAccepted(accepted);
+
 }
 
 void QNativeGestureEvent_delete(QNativeGestureEvent* self) {
@@ -2607,12 +2472,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QKeyEvent* virtualbase_clone() const {
-
-		return QKeyEvent::clone();
-
-	}
+	friend QKeyEvent* QKeyEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setTimestamp = 0;
@@ -2632,12 +2492,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setTimestamp(unsigned long long timestamp) {
-
-		QKeyEvent::setTimestamp(static_cast<quint64>(timestamp));
-
-	}
+	friend void QKeyEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -2656,12 +2511,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QKeyEvent::setAccepted(accepted);
-
-	}
+	friend void QKeyEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -2778,7 +2628,9 @@ bool QKeyEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QKeyEvent* QKeyEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQKeyEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQKeyEvent*)(self) )->MiqtVirtualQKeyEvent::clone();
+
 }
 
 bool QKeyEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
@@ -2792,7 +2644,9 @@ bool QKeyEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 }
 
 void QKeyEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
-	( (MiqtVirtualQKeyEvent*)(self) )->virtualbase_setTimestamp(timestamp);
+
+	( (MiqtVirtualQKeyEvent*)(self) )->MiqtVirtualQKeyEvent::setTimestamp(static_cast<quint64>(timestamp));
+
 }
 
 bool QKeyEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -2806,7 +2660,9 @@ bool QKeyEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QKeyEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQKeyEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQKeyEvent*)(self) )->MiqtVirtualQKeyEvent::setAccepted(accepted);
+
 }
 
 void QKeyEvent_delete(QKeyEvent* self) {
@@ -2836,12 +2692,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QFocusEvent* virtualbase_clone() const {
-
-		return QFocusEvent::clone();
-
-	}
+	friend QFocusEvent* QFocusEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -2860,12 +2711,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QFocusEvent::setAccepted(accepted);
-
-	}
+	friend void QFocusEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -2909,7 +2755,9 @@ bool QFocusEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QFocusEvent* QFocusEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQFocusEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQFocusEvent*)(self) )->MiqtVirtualQFocusEvent::clone();
+
 }
 
 bool QFocusEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -2923,7 +2771,9 @@ bool QFocusEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QFocusEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQFocusEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQFocusEvent*)(self) )->MiqtVirtualQFocusEvent::setAccepted(accepted);
+
 }
 
 void QFocusEvent_delete(QFocusEvent* self) {
@@ -2953,12 +2803,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEvent* virtualbase_clone() const {
-
-		return QPaintEvent::clone();
-
-	}
+	friend QPaintEvent* QPaintEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -2977,12 +2822,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QPaintEvent::setAccepted(accepted);
-
-	}
+	friend void QPaintEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -3025,7 +2865,9 @@ bool QPaintEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QPaintEvent* QPaintEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQPaintEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQPaintEvent*)(self) )->MiqtVirtualQPaintEvent::clone();
+
 }
 
 bool QPaintEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -3039,7 +2881,9 @@ bool QPaintEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QPaintEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQPaintEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQPaintEvent*)(self) )->MiqtVirtualQPaintEvent::setAccepted(accepted);
+
 }
 
 void QPaintEvent_delete(QPaintEvent* self) {
@@ -3068,12 +2912,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QMoveEvent* virtualbase_clone() const {
-
-		return QMoveEvent::clone();
-
-	}
+	friend QMoveEvent* QMoveEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -3092,12 +2931,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QMoveEvent::setAccepted(accepted);
-
-	}
+	friend void QMoveEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -3136,7 +2970,9 @@ bool QMoveEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QMoveEvent* QMoveEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQMoveEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQMoveEvent*)(self) )->MiqtVirtualQMoveEvent::clone();
+
 }
 
 bool QMoveEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -3150,7 +2986,9 @@ bool QMoveEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QMoveEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQMoveEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQMoveEvent*)(self) )->MiqtVirtualQMoveEvent::setAccepted(accepted);
+
 }
 
 void QMoveEvent_delete(QMoveEvent* self) {
@@ -3179,12 +3017,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QExposeEvent* virtualbase_clone() const {
-
-		return QExposeEvent::clone();
-
-	}
+	friend QExposeEvent* QExposeEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -3203,12 +3036,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QExposeEvent::setAccepted(accepted);
-
-	}
+	friend void QExposeEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -3241,7 +3069,9 @@ bool QExposeEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QExposeEvent* QExposeEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQExposeEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQExposeEvent*)(self) )->MiqtVirtualQExposeEvent::clone();
+
 }
 
 bool QExposeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -3255,7 +3085,9 @@ bool QExposeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QExposeEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQExposeEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQExposeEvent*)(self) )->MiqtVirtualQExposeEvent::setAccepted(accepted);
+
 }
 
 void QExposeEvent_delete(QExposeEvent* self) {
@@ -3284,12 +3116,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPlatformSurfaceEvent* virtualbase_clone() const {
-
-		return QPlatformSurfaceEvent::clone();
-
-	}
+	friend QPlatformSurfaceEvent* QPlatformSurfaceEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -3308,12 +3135,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QPlatformSurfaceEvent::setAccepted(accepted);
-
-	}
+	friend void QPlatformSurfaceEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -3345,7 +3167,9 @@ bool QPlatformSurfaceEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QPlatformSurfaceEvent* QPlatformSurfaceEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQPlatformSurfaceEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQPlatformSurfaceEvent*)(self) )->MiqtVirtualQPlatformSurfaceEvent::clone();
+
 }
 
 bool QPlatformSurfaceEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -3359,7 +3183,9 @@ bool QPlatformSurfaceEvent_override_virtual_setAccepted(void* self, intptr_t slo
 }
 
 void QPlatformSurfaceEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQPlatformSurfaceEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQPlatformSurfaceEvent*)(self) )->MiqtVirtualQPlatformSurfaceEvent::setAccepted(accepted);
+
 }
 
 void QPlatformSurfaceEvent_delete(QPlatformSurfaceEvent* self) {
@@ -3388,12 +3214,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QResizeEvent* virtualbase_clone() const {
-
-		return QResizeEvent::clone();
-
-	}
+	friend QResizeEvent* QResizeEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -3412,12 +3233,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QResizeEvent::setAccepted(accepted);
-
-	}
+	friend void QResizeEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -3456,7 +3272,9 @@ bool QResizeEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QResizeEvent* QResizeEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQResizeEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQResizeEvent*)(self) )->MiqtVirtualQResizeEvent::clone();
+
 }
 
 bool QResizeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -3470,7 +3288,9 @@ bool QResizeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QResizeEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQResizeEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQResizeEvent*)(self) )->MiqtVirtualQResizeEvent::setAccepted(accepted);
+
 }
 
 void QResizeEvent_delete(QResizeEvent* self) {
@@ -3499,12 +3319,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QCloseEvent* virtualbase_clone() const {
-
-		return QCloseEvent::clone();
-
-	}
+	friend QCloseEvent* QCloseEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -3523,12 +3338,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QCloseEvent::setAccepted(accepted);
-
-	}
+	friend void QCloseEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -3555,7 +3365,9 @@ bool QCloseEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QCloseEvent* QCloseEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQCloseEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQCloseEvent*)(self) )->MiqtVirtualQCloseEvent::clone();
+
 }
 
 bool QCloseEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -3569,7 +3381,9 @@ bool QCloseEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QCloseEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQCloseEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQCloseEvent*)(self) )->MiqtVirtualQCloseEvent::setAccepted(accepted);
+
 }
 
 void QCloseEvent_delete(QCloseEvent* self) {
@@ -3598,12 +3412,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QIconDragEvent* virtualbase_clone() const {
-
-		return QIconDragEvent::clone();
-
-	}
+	friend QIconDragEvent* QIconDragEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -3622,12 +3431,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QIconDragEvent::setAccepted(accepted);
-
-	}
+	friend void QIconDragEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -3654,7 +3458,9 @@ bool QIconDragEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QIconDragEvent* QIconDragEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQIconDragEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQIconDragEvent*)(self) )->MiqtVirtualQIconDragEvent::clone();
+
 }
 
 bool QIconDragEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -3668,7 +3474,9 @@ bool QIconDragEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QIconDragEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQIconDragEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQIconDragEvent*)(self) )->MiqtVirtualQIconDragEvent::setAccepted(accepted);
+
 }
 
 void QIconDragEvent_delete(QIconDragEvent* self) {
@@ -3697,12 +3505,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QShowEvent* virtualbase_clone() const {
-
-		return QShowEvent::clone();
-
-	}
+	friend QShowEvent* QShowEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -3721,12 +3524,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QShowEvent::setAccepted(accepted);
-
-	}
+	friend void QShowEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -3753,7 +3551,9 @@ bool QShowEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QShowEvent* QShowEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQShowEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQShowEvent*)(self) )->MiqtVirtualQShowEvent::clone();
+
 }
 
 bool QShowEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -3767,7 +3567,9 @@ bool QShowEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QShowEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQShowEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQShowEvent*)(self) )->MiqtVirtualQShowEvent::setAccepted(accepted);
+
 }
 
 void QShowEvent_delete(QShowEvent* self) {
@@ -3796,12 +3598,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QHideEvent* virtualbase_clone() const {
-
-		return QHideEvent::clone();
-
-	}
+	friend QHideEvent* QHideEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -3820,12 +3617,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QHideEvent::setAccepted(accepted);
-
-	}
+	friend void QHideEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -3852,7 +3644,9 @@ bool QHideEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QHideEvent* QHideEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQHideEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQHideEvent*)(self) )->MiqtVirtualQHideEvent::clone();
+
 }
 
 bool QHideEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -3866,7 +3660,9 @@ bool QHideEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QHideEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQHideEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQHideEvent*)(self) )->MiqtVirtualQHideEvent::setAccepted(accepted);
+
 }
 
 void QHideEvent_delete(QHideEvent* self) {
@@ -3897,12 +3693,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QContextMenuEvent* virtualbase_clone() const {
-
-		return QContextMenuEvent::clone();
-
-	}
+	friend QContextMenuEvent* QContextMenuEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setTimestamp = 0;
@@ -3922,12 +3713,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setTimestamp(unsigned long long timestamp) {
-
-		QContextMenuEvent::setTimestamp(static_cast<quint64>(timestamp));
-
-	}
+	friend void QContextMenuEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -3946,12 +3732,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QContextMenuEvent::setAccepted(accepted);
-
-	}
+	friend void QContextMenuEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -4019,7 +3800,9 @@ bool QContextMenuEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QContextMenuEvent* QContextMenuEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQContextMenuEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQContextMenuEvent*)(self) )->MiqtVirtualQContextMenuEvent::clone();
+
 }
 
 bool QContextMenuEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
@@ -4033,7 +3816,9 @@ bool QContextMenuEvent_override_virtual_setTimestamp(void* self, intptr_t slot) 
 }
 
 void QContextMenuEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
-	( (MiqtVirtualQContextMenuEvent*)(self) )->virtualbase_setTimestamp(timestamp);
+
+	( (MiqtVirtualQContextMenuEvent*)(self) )->MiqtVirtualQContextMenuEvent::setTimestamp(static_cast<quint64>(timestamp));
+
 }
 
 bool QContextMenuEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -4047,7 +3832,9 @@ bool QContextMenuEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QContextMenuEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQContextMenuEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQContextMenuEvent*)(self) )->MiqtVirtualQContextMenuEvent::setAccepted(accepted);
+
 }
 
 void QContextMenuEvent_delete(QContextMenuEvent* self) {
@@ -4077,12 +3864,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QInputMethodEvent* virtualbase_clone() const {
-
-		return QInputMethodEvent::clone();
-
-	}
+	friend QInputMethodEvent* QInputMethodEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -4101,12 +3883,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QInputMethodEvent::setAccepted(accepted);
-
-	}
+	friend void QInputMethodEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -4202,7 +3979,9 @@ bool QInputMethodEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QInputMethodEvent* QInputMethodEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQInputMethodEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQInputMethodEvent*)(self) )->MiqtVirtualQInputMethodEvent::clone();
+
 }
 
 bool QInputMethodEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -4216,7 +3995,9 @@ bool QInputMethodEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QInputMethodEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQInputMethodEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQInputMethodEvent*)(self) )->MiqtVirtualQInputMethodEvent::setAccepted(accepted);
+
 }
 
 void QInputMethodEvent_delete(QInputMethodEvent* self) {
@@ -4245,12 +4026,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QInputMethodQueryEvent* virtualbase_clone() const {
-
-		return QInputMethodQueryEvent::clone();
-
-	}
+	friend QInputMethodQueryEvent* QInputMethodQueryEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -4269,12 +4045,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QInputMethodQueryEvent::setAccepted(accepted);
-
-	}
+	friend void QInputMethodQueryEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -4314,7 +4085,9 @@ bool QInputMethodQueryEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QInputMethodQueryEvent* QInputMethodQueryEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQInputMethodQueryEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQInputMethodQueryEvent*)(self) )->MiqtVirtualQInputMethodQueryEvent::clone();
+
 }
 
 bool QInputMethodQueryEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -4328,7 +4101,9 @@ bool QInputMethodQueryEvent_override_virtual_setAccepted(void* self, intptr_t sl
 }
 
 void QInputMethodQueryEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQInputMethodQueryEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQInputMethodQueryEvent*)(self) )->MiqtVirtualQInputMethodQueryEvent::setAccepted(accepted);
+
 }
 
 void QInputMethodQueryEvent_delete(QInputMethodQueryEvent* self) {
@@ -4358,12 +4133,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QDropEvent* virtualbase_clone() const {
-
-		return QDropEvent::clone();
-
-	}
+	friend QDropEvent* QDropEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -4382,12 +4152,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QDropEvent::setAccepted(accepted);
-
-	}
+	friend void QDropEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -4481,7 +4246,9 @@ bool QDropEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QDropEvent* QDropEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQDropEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQDropEvent*)(self) )->MiqtVirtualQDropEvent::clone();
+
 }
 
 bool QDropEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -4495,7 +4262,9 @@ bool QDropEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QDropEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQDropEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQDropEvent*)(self) )->MiqtVirtualQDropEvent::setAccepted(accepted);
+
 }
 
 void QDropEvent_delete(QDropEvent* self) {
@@ -4525,12 +4294,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QDragMoveEvent* virtualbase_clone() const {
-
-		return QDragMoveEvent::clone();
-
-	}
+	friend QDragMoveEvent* QDragMoveEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -4549,12 +4313,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QDragMoveEvent::setAccepted(accepted);
-
-	}
+	friend void QDragMoveEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -4605,7 +4364,9 @@ bool QDragMoveEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QDragMoveEvent* QDragMoveEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQDragMoveEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQDragMoveEvent*)(self) )->MiqtVirtualQDragMoveEvent::clone();
+
 }
 
 bool QDragMoveEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -4619,7 +4380,9 @@ bool QDragMoveEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QDragMoveEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQDragMoveEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQDragMoveEvent*)(self) )->MiqtVirtualQDragMoveEvent::setAccepted(accepted);
+
 }
 
 void QDragMoveEvent_delete(QDragMoveEvent* self) {
@@ -4648,12 +4411,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QDragEnterEvent* virtualbase_clone() const {
-
-		return QDragEnterEvent::clone();
-
-	}
+	friend QDragEnterEvent* QDragEnterEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -4672,12 +4430,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QDragEnterEvent::setAccepted(accepted);
-
-	}
+	friend void QDragEnterEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -4704,7 +4457,9 @@ bool QDragEnterEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QDragEnterEvent* QDragEnterEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQDragEnterEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQDragEnterEvent*)(self) )->MiqtVirtualQDragEnterEvent::clone();
+
 }
 
 bool QDragEnterEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -4718,7 +4473,9 @@ bool QDragEnterEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QDragEnterEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQDragEnterEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQDragEnterEvent*)(self) )->MiqtVirtualQDragEnterEvent::setAccepted(accepted);
+
 }
 
 void QDragEnterEvent_delete(QDragEnterEvent* self) {
@@ -4747,12 +4504,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QDragLeaveEvent* virtualbase_clone() const {
-
-		return QDragLeaveEvent::clone();
-
-	}
+	friend QDragLeaveEvent* QDragLeaveEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -4771,12 +4523,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QDragLeaveEvent::setAccepted(accepted);
-
-	}
+	friend void QDragLeaveEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -4803,7 +4550,9 @@ bool QDragLeaveEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QDragLeaveEvent* QDragLeaveEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQDragLeaveEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQDragLeaveEvent*)(self) )->MiqtVirtualQDragLeaveEvent::clone();
+
 }
 
 bool QDragLeaveEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -4817,7 +4566,9 @@ bool QDragLeaveEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QDragLeaveEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQDragLeaveEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQDragLeaveEvent*)(self) )->MiqtVirtualQDragLeaveEvent::setAccepted(accepted);
+
 }
 
 void QDragLeaveEvent_delete(QDragLeaveEvent* self) {
@@ -4846,12 +4597,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QHelpEvent* virtualbase_clone() const {
-
-		return QHelpEvent::clone();
-
-	}
+	friend QHelpEvent* QHelpEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -4870,12 +4616,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QHelpEvent::setAccepted(accepted);
-
-	}
+	friend void QHelpEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -4930,7 +4671,9 @@ bool QHelpEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QHelpEvent* QHelpEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQHelpEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQHelpEvent*)(self) )->MiqtVirtualQHelpEvent::clone();
+
 }
 
 bool QHelpEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -4944,7 +4687,9 @@ bool QHelpEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QHelpEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQHelpEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQHelpEvent*)(self) )->MiqtVirtualQHelpEvent::setAccepted(accepted);
+
 }
 
 void QHelpEvent_delete(QHelpEvent* self) {
@@ -4973,12 +4718,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QStatusTipEvent* virtualbase_clone() const {
-
-		return QStatusTipEvent::clone();
-
-	}
+	friend QStatusTipEvent* QStatusTipEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -4997,12 +4737,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QStatusTipEvent::setAccepted(accepted);
-
-	}
+	friend void QStatusTipEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -5041,7 +4776,9 @@ bool QStatusTipEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QStatusTipEvent* QStatusTipEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQStatusTipEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQStatusTipEvent*)(self) )->MiqtVirtualQStatusTipEvent::clone();
+
 }
 
 bool QStatusTipEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -5055,7 +4792,9 @@ bool QStatusTipEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QStatusTipEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQStatusTipEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQStatusTipEvent*)(self) )->MiqtVirtualQStatusTipEvent::setAccepted(accepted);
+
 }
 
 void QStatusTipEvent_delete(QStatusTipEvent* self) {
@@ -5084,12 +4823,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QWhatsThisClickedEvent* virtualbase_clone() const {
-
-		return QWhatsThisClickedEvent::clone();
-
-	}
+	friend QWhatsThisClickedEvent* QWhatsThisClickedEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -5108,12 +4842,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QWhatsThisClickedEvent::setAccepted(accepted);
-
-	}
+	friend void QWhatsThisClickedEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -5152,7 +4881,9 @@ bool QWhatsThisClickedEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QWhatsThisClickedEvent* QWhatsThisClickedEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQWhatsThisClickedEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQWhatsThisClickedEvent*)(self) )->MiqtVirtualQWhatsThisClickedEvent::clone();
+
 }
 
 bool QWhatsThisClickedEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -5166,7 +4897,9 @@ bool QWhatsThisClickedEvent_override_virtual_setAccepted(void* self, intptr_t sl
 }
 
 void QWhatsThisClickedEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQWhatsThisClickedEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQWhatsThisClickedEvent*)(self) )->MiqtVirtualQWhatsThisClickedEvent::setAccepted(accepted);
+
 }
 
 void QWhatsThisClickedEvent_delete(QWhatsThisClickedEvent* self) {
@@ -5196,12 +4929,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QActionEvent* virtualbase_clone() const {
-
-		return QActionEvent::clone();
-
-	}
+	friend QActionEvent* QActionEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -5220,12 +4948,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QActionEvent::setAccepted(accepted);
-
-	}
+	friend void QActionEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -5264,7 +4987,9 @@ bool QActionEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QActionEvent* QActionEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQActionEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQActionEvent*)(self) )->MiqtVirtualQActionEvent::clone();
+
 }
 
 bool QActionEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -5278,7 +5003,9 @@ bool QActionEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QActionEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQActionEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQActionEvent*)(self) )->MiqtVirtualQActionEvent::setAccepted(accepted);
+
 }
 
 void QActionEvent_delete(QActionEvent* self) {
@@ -5308,12 +5035,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QFileOpenEvent* virtualbase_clone() const {
-
-		return QFileOpenEvent::clone();
-
-	}
+	friend QFileOpenEvent* QFileOpenEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -5332,12 +5054,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QFileOpenEvent::setAccepted(accepted);
-
-	}
+	friend void QFileOpenEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -5388,7 +5105,9 @@ bool QFileOpenEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QFileOpenEvent* QFileOpenEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQFileOpenEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQFileOpenEvent*)(self) )->MiqtVirtualQFileOpenEvent::clone();
+
 }
 
 bool QFileOpenEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -5402,7 +5121,9 @@ bool QFileOpenEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QFileOpenEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQFileOpenEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQFileOpenEvent*)(self) )->MiqtVirtualQFileOpenEvent::setAccepted(accepted);
+
 }
 
 void QFileOpenEvent_delete(QFileOpenEvent* self) {
@@ -5431,12 +5152,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QToolBarChangeEvent* virtualbase_clone() const {
-
-		return QToolBarChangeEvent::clone();
-
-	}
+	friend QToolBarChangeEvent* QToolBarChangeEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -5455,12 +5171,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QToolBarChangeEvent::setAccepted(accepted);
-
-	}
+	friend void QToolBarChangeEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -5491,7 +5202,9 @@ bool QToolBarChangeEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QToolBarChangeEvent* QToolBarChangeEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQToolBarChangeEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQToolBarChangeEvent*)(self) )->MiqtVirtualQToolBarChangeEvent::clone();
+
 }
 
 bool QToolBarChangeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -5505,7 +5218,9 @@ bool QToolBarChangeEvent_override_virtual_setAccepted(void* self, intptr_t slot)
 }
 
 void QToolBarChangeEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQToolBarChangeEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQToolBarChangeEvent*)(self) )->MiqtVirtualQToolBarChangeEvent::setAccepted(accepted);
+
 }
 
 void QToolBarChangeEvent_delete(QToolBarChangeEvent* self) {
@@ -5535,12 +5250,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QShortcutEvent* virtualbase_clone() const {
-
-		return QShortcutEvent::clone();
-
-	}
+	friend QShortcutEvent* QShortcutEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -5559,12 +5269,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QShortcutEvent::setAccepted(accepted);
-
-	}
+	friend void QShortcutEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -5609,7 +5314,9 @@ bool QShortcutEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QShortcutEvent* QShortcutEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQShortcutEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQShortcutEvent*)(self) )->MiqtVirtualQShortcutEvent::clone();
+
 }
 
 bool QShortcutEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -5623,7 +5330,9 @@ bool QShortcutEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QShortcutEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQShortcutEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQShortcutEvent*)(self) )->MiqtVirtualQShortcutEvent::setAccepted(accepted);
+
 }
 
 void QShortcutEvent_delete(QShortcutEvent* self) {
@@ -5653,12 +5362,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QWindowStateChangeEvent* virtualbase_clone() const {
-
-		return QWindowStateChangeEvent::clone();
-
-	}
+	friend QWindowStateChangeEvent* QWindowStateChangeEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -5677,12 +5381,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QWindowStateChangeEvent::setAccepted(accepted);
-
-	}
+	friend void QWindowStateChangeEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -5722,7 +5421,9 @@ bool QWindowStateChangeEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QWindowStateChangeEvent* QWindowStateChangeEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQWindowStateChangeEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQWindowStateChangeEvent*)(self) )->MiqtVirtualQWindowStateChangeEvent::clone();
+
 }
 
 bool QWindowStateChangeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -5736,7 +5437,9 @@ bool QWindowStateChangeEvent_override_virtual_setAccepted(void* self, intptr_t s
 }
 
 void QWindowStateChangeEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQWindowStateChangeEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQWindowStateChangeEvent*)(self) )->MiqtVirtualQWindowStateChangeEvent::setAccepted(accepted);
+
 }
 
 void QWindowStateChangeEvent_delete(QWindowStateChangeEvent* self) {
@@ -5770,12 +5473,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QTouchEvent* virtualbase_clone() const {
-
-		return QTouchEvent::clone();
-
-	}
+	friend QTouchEvent* QTouchEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isBeginEvent = 0;
@@ -5792,12 +5490,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isBeginEvent() const {
-
-		return QTouchEvent::isBeginEvent();
-
-	}
+	friend bool QTouchEvent_virtualbase_isBeginEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isUpdateEvent = 0;
@@ -5814,12 +5507,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isUpdateEvent() const {
-
-		return QTouchEvent::isUpdateEvent();
-
-	}
+	friend bool QTouchEvent_virtualbase_isUpdateEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEndEvent = 0;
@@ -5836,12 +5524,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEndEvent() const {
-
-		return QTouchEvent::isEndEvent();
-
-	}
+	friend bool QTouchEvent_virtualbase_isEndEvent(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setTimestamp = 0;
@@ -5861,12 +5544,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setTimestamp(unsigned long long timestamp) {
-
-		QTouchEvent::setTimestamp(static_cast<quint64>(timestamp));
-
-	}
+	friend void QTouchEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -5885,12 +5563,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QTouchEvent::setAccepted(accepted);
-
-	}
+	friend void QTouchEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -5983,7 +5656,9 @@ bool QTouchEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QTouchEvent* QTouchEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQTouchEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQTouchEvent*)(self) )->MiqtVirtualQTouchEvent::clone();
+
 }
 
 bool QTouchEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
@@ -5997,7 +5672,9 @@ bool QTouchEvent_override_virtual_isBeginEvent(void* self, intptr_t slot) {
 }
 
 bool QTouchEvent_virtualbase_isBeginEvent(const void* self) {
-	return ( (const MiqtVirtualQTouchEvent*)(self) )->virtualbase_isBeginEvent();
+
+	return ( (const MiqtVirtualQTouchEvent*)(self) )->MiqtVirtualQTouchEvent::isBeginEvent();
+
 }
 
 bool QTouchEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
@@ -6011,7 +5688,9 @@ bool QTouchEvent_override_virtual_isUpdateEvent(void* self, intptr_t slot) {
 }
 
 bool QTouchEvent_virtualbase_isUpdateEvent(const void* self) {
-	return ( (const MiqtVirtualQTouchEvent*)(self) )->virtualbase_isUpdateEvent();
+
+	return ( (const MiqtVirtualQTouchEvent*)(self) )->MiqtVirtualQTouchEvent::isUpdateEvent();
+
 }
 
 bool QTouchEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
@@ -6025,7 +5704,9 @@ bool QTouchEvent_override_virtual_isEndEvent(void* self, intptr_t slot) {
 }
 
 bool QTouchEvent_virtualbase_isEndEvent(const void* self) {
-	return ( (const MiqtVirtualQTouchEvent*)(self) )->virtualbase_isEndEvent();
+
+	return ( (const MiqtVirtualQTouchEvent*)(self) )->MiqtVirtualQTouchEvent::isEndEvent();
+
 }
 
 bool QTouchEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
@@ -6039,7 +5720,9 @@ bool QTouchEvent_override_virtual_setTimestamp(void* self, intptr_t slot) {
 }
 
 void QTouchEvent_virtualbase_setTimestamp(void* self, unsigned long long timestamp) {
-	( (MiqtVirtualQTouchEvent*)(self) )->virtualbase_setTimestamp(timestamp);
+
+	( (MiqtVirtualQTouchEvent*)(self) )->MiqtVirtualQTouchEvent::setTimestamp(static_cast<quint64>(timestamp));
+
 }
 
 bool QTouchEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -6053,7 +5736,9 @@ bool QTouchEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QTouchEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQTouchEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQTouchEvent*)(self) )->MiqtVirtualQTouchEvent::setAccepted(accepted);
+
 }
 
 void QTouchEvent_delete(QTouchEvent* self) {
@@ -6082,12 +5767,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QScrollPrepareEvent* virtualbase_clone() const {
-
-		return QScrollPrepareEvent::clone();
-
-	}
+	friend QScrollPrepareEvent* QScrollPrepareEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -6106,12 +5786,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QScrollPrepareEvent::setAccepted(accepted);
-
-	}
+	friend void QScrollPrepareEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -6166,7 +5841,9 @@ bool QScrollPrepareEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QScrollPrepareEvent* QScrollPrepareEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQScrollPrepareEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQScrollPrepareEvent*)(self) )->MiqtVirtualQScrollPrepareEvent::clone();
+
 }
 
 bool QScrollPrepareEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -6180,7 +5857,9 @@ bool QScrollPrepareEvent_override_virtual_setAccepted(void* self, intptr_t slot)
 }
 
 void QScrollPrepareEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQScrollPrepareEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQScrollPrepareEvent*)(self) )->MiqtVirtualQScrollPrepareEvent::setAccepted(accepted);
+
 }
 
 void QScrollPrepareEvent_delete(QScrollPrepareEvent* self) {
@@ -6209,12 +5888,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QScrollEvent* virtualbase_clone() const {
-
-		return QScrollEvent::clone();
-
-	}
+	friend QScrollEvent* QScrollEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -6233,12 +5907,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QScrollEvent::setAccepted(accepted);
-
-	}
+	friend void QScrollEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -6278,7 +5947,9 @@ bool QScrollEvent_override_virtual_clone(void* self, intptr_t slot) {
 }
 
 QScrollEvent* QScrollEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQScrollEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQScrollEvent*)(self) )->MiqtVirtualQScrollEvent::clone();
+
 }
 
 bool QScrollEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -6292,7 +5963,9 @@ bool QScrollEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
 }
 
 void QScrollEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQScrollEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQScrollEvent*)(self) )->MiqtVirtualQScrollEvent::setAccepted(accepted);
+
 }
 
 void QScrollEvent_delete(QScrollEvent* self) {
@@ -6321,12 +5994,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QScreenOrientationChangeEvent* virtualbase_clone() const {
-
-		return QScreenOrientationChangeEvent::clone();
-
-	}
+	friend QScreenOrientationChangeEvent* QScreenOrientationChangeEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -6345,12 +6013,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QScreenOrientationChangeEvent::setAccepted(accepted);
-
-	}
+	friend void QScreenOrientationChangeEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -6386,7 +6049,9 @@ bool QScreenOrientationChangeEvent_override_virtual_clone(void* self, intptr_t s
 }
 
 QScreenOrientationChangeEvent* QScreenOrientationChangeEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQScreenOrientationChangeEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQScreenOrientationChangeEvent*)(self) )->MiqtVirtualQScreenOrientationChangeEvent::clone();
+
 }
 
 bool QScreenOrientationChangeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -6400,7 +6065,9 @@ bool QScreenOrientationChangeEvent_override_virtual_setAccepted(void* self, intp
 }
 
 void QScreenOrientationChangeEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQScreenOrientationChangeEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQScreenOrientationChangeEvent*)(self) )->MiqtVirtualQScreenOrientationChangeEvent::setAccepted(accepted);
+
 }
 
 void QScreenOrientationChangeEvent_delete(QScreenOrientationChangeEvent* self) {
@@ -6429,12 +6096,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QApplicationStateChangeEvent* virtualbase_clone() const {
-
-		return QApplicationStateChangeEvent::clone();
-
-	}
+	friend QApplicationStateChangeEvent* QApplicationStateChangeEvent_virtualbase_clone(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAccepted = 0;
@@ -6453,12 +6115,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAccepted(bool accepted) {
-
-		QApplicationStateChangeEvent::setAccepted(accepted);
-
-	}
+	friend void QApplicationStateChangeEvent_virtualbase_setAccepted(void* self, bool accepted);
 
 };
 
@@ -6490,7 +6147,9 @@ bool QApplicationStateChangeEvent_override_virtual_clone(void* self, intptr_t sl
 }
 
 QApplicationStateChangeEvent* QApplicationStateChangeEvent_virtualbase_clone(const void* self) {
-	return ( (const MiqtVirtualQApplicationStateChangeEvent*)(self) )->virtualbase_clone();
+
+	return ( (const MiqtVirtualQApplicationStateChangeEvent*)(self) )->MiqtVirtualQApplicationStateChangeEvent::clone();
+
 }
 
 bool QApplicationStateChangeEvent_override_virtual_setAccepted(void* self, intptr_t slot) {
@@ -6504,7 +6163,9 @@ bool QApplicationStateChangeEvent_override_virtual_setAccepted(void* self, intpt
 }
 
 void QApplicationStateChangeEvent_virtualbase_setAccepted(void* self, bool accepted) {
-	( (MiqtVirtualQApplicationStateChangeEvent*)(self) )->virtualbase_setAccepted(accepted);
+
+	( (MiqtVirtualQApplicationStateChangeEvent*)(self) )->MiqtVirtualQApplicationStateChangeEvent::setAccepted(accepted);
+
 }
 
 void QApplicationStateChangeEvent_delete(QApplicationStateChangeEvent* self) {

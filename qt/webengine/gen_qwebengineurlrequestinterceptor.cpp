@@ -70,12 +70,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QWebEngineUrlRequestInterceptor::event(event);
-
-	}
+	friend bool QWebEngineUrlRequestInterceptor_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -94,12 +89,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QWebEngineUrlRequestInterceptor::eventFilter(watched, event);
-
-	}
+	friend bool QWebEngineUrlRequestInterceptor_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -118,12 +108,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QWebEngineUrlRequestInterceptor::timerEvent(event);
-
-	}
+	friend void QWebEngineUrlRequestInterceptor_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -142,12 +127,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QWebEngineUrlRequestInterceptor::childEvent(event);
-
-	}
+	friend void QWebEngineUrlRequestInterceptor_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -166,12 +146,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QWebEngineUrlRequestInterceptor::customEvent(event);
-
-	}
+	friend void QWebEngineUrlRequestInterceptor_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -192,12 +167,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QWebEngineUrlRequestInterceptor::connectNotify(*signal);
-
-	}
+	friend void QWebEngineUrlRequestInterceptor_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -218,12 +188,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QWebEngineUrlRequestInterceptor::disconnectNotify(*signal);
-
-	}
+	friend void QWebEngineUrlRequestInterceptor_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QWebEngineUrlRequestInterceptor_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -343,7 +308,9 @@ bool QWebEngineUrlRequestInterceptor_override_virtual_event(void* self, intptr_t
 }
 
 bool QWebEngineUrlRequestInterceptor_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->MiqtVirtualQWebEngineUrlRequestInterceptor::event(event);
+
 }
 
 bool QWebEngineUrlRequestInterceptor_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -357,7 +324,9 @@ bool QWebEngineUrlRequestInterceptor_override_virtual_eventFilter(void* self, in
 }
 
 bool QWebEngineUrlRequestInterceptor_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->MiqtVirtualQWebEngineUrlRequestInterceptor::eventFilter(watched, event);
+
 }
 
 bool QWebEngineUrlRequestInterceptor_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -371,7 +340,9 @@ bool QWebEngineUrlRequestInterceptor_override_virtual_timerEvent(void* self, int
 }
 
 void QWebEngineUrlRequestInterceptor_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->MiqtVirtualQWebEngineUrlRequestInterceptor::timerEvent(event);
+
 }
 
 bool QWebEngineUrlRequestInterceptor_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -385,7 +356,9 @@ bool QWebEngineUrlRequestInterceptor_override_virtual_childEvent(void* self, int
 }
 
 void QWebEngineUrlRequestInterceptor_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->MiqtVirtualQWebEngineUrlRequestInterceptor::childEvent(event);
+
 }
 
 bool QWebEngineUrlRequestInterceptor_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -399,7 +372,9 @@ bool QWebEngineUrlRequestInterceptor_override_virtual_customEvent(void* self, in
 }
 
 void QWebEngineUrlRequestInterceptor_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->MiqtVirtualQWebEngineUrlRequestInterceptor::customEvent(event);
+
 }
 
 bool QWebEngineUrlRequestInterceptor_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -413,7 +388,9 @@ bool QWebEngineUrlRequestInterceptor_override_virtual_connectNotify(void* self, 
 }
 
 void QWebEngineUrlRequestInterceptor_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->MiqtVirtualQWebEngineUrlRequestInterceptor::connectNotify(*signal);
+
 }
 
 bool QWebEngineUrlRequestInterceptor_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -427,7 +404,9 @@ bool QWebEngineUrlRequestInterceptor_override_virtual_disconnectNotify(void* sel
 }
 
 void QWebEngineUrlRequestInterceptor_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQWebEngineUrlRequestInterceptor*)(self) )->MiqtVirtualQWebEngineUrlRequestInterceptor::disconnectNotify(*signal);
+
 }
 
 QObject* QWebEngineUrlRequestInterceptor_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

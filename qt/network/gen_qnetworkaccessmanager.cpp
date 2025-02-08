@@ -80,12 +80,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QNetworkReply* virtualbase_createRequest(int op, QNetworkRequest* request, QIODevice* outgoingData) {
-
-		return QNetworkAccessManager::createRequest(static_cast<QNetworkAccessManager::Operation>(op), *request, outgoingData);
-
-	}
+	friend QNetworkReply* QNetworkAccessManager_virtualbase_createRequest(void* self, int op, QNetworkRequest* request, QIODevice* outgoingData);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -103,12 +98,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QNetworkAccessManager::event(event);
-
-	}
+	friend bool QNetworkAccessManager_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -127,12 +117,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QNetworkAccessManager::eventFilter(watched, event);
-
-	}
+	friend bool QNetworkAccessManager_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -151,12 +136,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QNetworkAccessManager::timerEvent(event);
-
-	}
+	friend void QNetworkAccessManager_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -175,12 +155,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QNetworkAccessManager::childEvent(event);
-
-	}
+	friend void QNetworkAccessManager_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -199,12 +174,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QNetworkAccessManager::customEvent(event);
-
-	}
+	friend void QNetworkAccessManager_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -225,12 +195,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QNetworkAccessManager::connectNotify(*signal);
-
-	}
+	friend void QNetworkAccessManager_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -251,12 +216,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QNetworkAccessManager::disconnectNotify(*signal);
-
-	}
+	friend void QNetworkAccessManager_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_protectedbase_supportedSchemesImplementation(bool* _dynamic_cast_ok, const void* self);
@@ -716,7 +676,9 @@ bool QNetworkAccessManager_override_virtual_createRequest(void* self, intptr_t s
 }
 
 QNetworkReply* QNetworkAccessManager_virtualbase_createRequest(void* self, int op, QNetworkRequest* request, QIODevice* outgoingData) {
-	return ( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_createRequest(op, request, outgoingData);
+
+	return ( (MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::createRequest(static_cast<MiqtVirtualQNetworkAccessManager::Operation>(op), *request, outgoingData);
+
 }
 
 bool QNetworkAccessManager_override_virtual_event(void* self, intptr_t slot) {
@@ -730,7 +692,9 @@ bool QNetworkAccessManager_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QNetworkAccessManager_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::event(event);
+
 }
 
 bool QNetworkAccessManager_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -744,7 +708,9 @@ bool QNetworkAccessManager_override_virtual_eventFilter(void* self, intptr_t slo
 }
 
 bool QNetworkAccessManager_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::eventFilter(watched, event);
+
 }
 
 bool QNetworkAccessManager_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -758,7 +724,9 @@ bool QNetworkAccessManager_override_virtual_timerEvent(void* self, intptr_t slot
 }
 
 void QNetworkAccessManager_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::timerEvent(event);
+
 }
 
 bool QNetworkAccessManager_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -772,7 +740,9 @@ bool QNetworkAccessManager_override_virtual_childEvent(void* self, intptr_t slot
 }
 
 void QNetworkAccessManager_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::childEvent(event);
+
 }
 
 bool QNetworkAccessManager_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -786,7 +756,9 @@ bool QNetworkAccessManager_override_virtual_customEvent(void* self, intptr_t slo
 }
 
 void QNetworkAccessManager_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::customEvent(event);
+
 }
 
 bool QNetworkAccessManager_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -800,7 +772,9 @@ bool QNetworkAccessManager_override_virtual_connectNotify(void* self, intptr_t s
 }
 
 void QNetworkAccessManager_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::connectNotify(*signal);
+
 }
 
 bool QNetworkAccessManager_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -814,7 +788,9 @@ bool QNetworkAccessManager_override_virtual_disconnectNotify(void* self, intptr_
 }
 
 void QNetworkAccessManager_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQNetworkAccessManager*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQNetworkAccessManager*)(self) )->MiqtVirtualQNetworkAccessManager::disconnectNotify(*signal);
+
 }
 
 struct miqt_array /* of struct miqt_string */  QNetworkAccessManager_protectedbase_supportedSchemesImplementation(bool* _dynamic_cast_ok, const void* self) {

@@ -82,12 +82,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QAbstractVideoFilter::event(event);
-
-	}
+	friend bool QAbstractVideoFilter_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -106,12 +101,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QAbstractVideoFilter::eventFilter(watched, event);
-
-	}
+	friend bool QAbstractVideoFilter_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -130,12 +120,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QAbstractVideoFilter::timerEvent(event);
-
-	}
+	friend void QAbstractVideoFilter_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -154,12 +139,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QAbstractVideoFilter::childEvent(event);
-
-	}
+	friend void QAbstractVideoFilter_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -178,12 +158,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QAbstractVideoFilter::customEvent(event);
-
-	}
+	friend void QAbstractVideoFilter_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -204,12 +179,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QAbstractVideoFilter::connectNotify(*signal);
-
-	}
+	friend void QAbstractVideoFilter_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -230,12 +200,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QAbstractVideoFilter::disconnectNotify(*signal);
-
-	}
+	friend void QAbstractVideoFilter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QAbstractVideoFilter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -373,7 +338,9 @@ bool QAbstractVideoFilter_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QAbstractVideoFilter_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQAbstractVideoFilter*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQAbstractVideoFilter*)(self) )->MiqtVirtualQAbstractVideoFilter::event(event);
+
 }
 
 bool QAbstractVideoFilter_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -387,7 +354,9 @@ bool QAbstractVideoFilter_override_virtual_eventFilter(void* self, intptr_t slot
 }
 
 bool QAbstractVideoFilter_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQAbstractVideoFilter*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQAbstractVideoFilter*)(self) )->MiqtVirtualQAbstractVideoFilter::eventFilter(watched, event);
+
 }
 
 bool QAbstractVideoFilter_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -401,7 +370,9 @@ bool QAbstractVideoFilter_override_virtual_timerEvent(void* self, intptr_t slot)
 }
 
 void QAbstractVideoFilter_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQAbstractVideoFilter*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQAbstractVideoFilter*)(self) )->MiqtVirtualQAbstractVideoFilter::timerEvent(event);
+
 }
 
 bool QAbstractVideoFilter_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -415,7 +386,9 @@ bool QAbstractVideoFilter_override_virtual_childEvent(void* self, intptr_t slot)
 }
 
 void QAbstractVideoFilter_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQAbstractVideoFilter*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQAbstractVideoFilter*)(self) )->MiqtVirtualQAbstractVideoFilter::childEvent(event);
+
 }
 
 bool QAbstractVideoFilter_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -429,7 +402,9 @@ bool QAbstractVideoFilter_override_virtual_customEvent(void* self, intptr_t slot
 }
 
 void QAbstractVideoFilter_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAbstractVideoFilter*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQAbstractVideoFilter*)(self) )->MiqtVirtualQAbstractVideoFilter::customEvent(event);
+
 }
 
 bool QAbstractVideoFilter_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -443,7 +418,9 @@ bool QAbstractVideoFilter_override_virtual_connectNotify(void* self, intptr_t sl
 }
 
 void QAbstractVideoFilter_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAbstractVideoFilter*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQAbstractVideoFilter*)(self) )->MiqtVirtualQAbstractVideoFilter::connectNotify(*signal);
+
 }
 
 bool QAbstractVideoFilter_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -457,7 +434,9 @@ bool QAbstractVideoFilter_override_virtual_disconnectNotify(void* self, intptr_t
 }
 
 void QAbstractVideoFilter_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAbstractVideoFilter*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQAbstractVideoFilter*)(self) )->MiqtVirtualQAbstractVideoFilter::disconnectNotify(*signal);
+
 }
 
 QObject* QAbstractVideoFilter_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

@@ -75,12 +75,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QIconEnginePlugin::event(event);
-
-	}
+	friend bool QIconEnginePlugin_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -99,12 +94,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QIconEnginePlugin::eventFilter(watched, event);
-
-	}
+	friend bool QIconEnginePlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -123,12 +113,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QIconEnginePlugin::timerEvent(event);
-
-	}
+	friend void QIconEnginePlugin_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -147,12 +132,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QIconEnginePlugin::childEvent(event);
-
-	}
+	friend void QIconEnginePlugin_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -171,12 +151,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QIconEnginePlugin::customEvent(event);
-
-	}
+	friend void QIconEnginePlugin_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -197,12 +172,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QIconEnginePlugin::connectNotify(*signal);
-
-	}
+	friend void QIconEnginePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -223,12 +193,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QIconEnginePlugin::disconnectNotify(*signal);
-
-	}
+	friend void QIconEnginePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QIconEnginePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -316,7 +281,9 @@ bool QIconEnginePlugin_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QIconEnginePlugin_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQIconEnginePlugin*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQIconEnginePlugin*)(self) )->MiqtVirtualQIconEnginePlugin::event(event);
+
 }
 
 bool QIconEnginePlugin_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -330,7 +297,9 @@ bool QIconEnginePlugin_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QIconEnginePlugin_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQIconEnginePlugin*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQIconEnginePlugin*)(self) )->MiqtVirtualQIconEnginePlugin::eventFilter(watched, event);
+
 }
 
 bool QIconEnginePlugin_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -344,7 +313,9 @@ bool QIconEnginePlugin_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QIconEnginePlugin_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQIconEnginePlugin*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQIconEnginePlugin*)(self) )->MiqtVirtualQIconEnginePlugin::timerEvent(event);
+
 }
 
 bool QIconEnginePlugin_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -358,7 +329,9 @@ bool QIconEnginePlugin_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QIconEnginePlugin_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQIconEnginePlugin*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQIconEnginePlugin*)(self) )->MiqtVirtualQIconEnginePlugin::childEvent(event);
+
 }
 
 bool QIconEnginePlugin_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -372,7 +345,9 @@ bool QIconEnginePlugin_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QIconEnginePlugin_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQIconEnginePlugin*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQIconEnginePlugin*)(self) )->MiqtVirtualQIconEnginePlugin::customEvent(event);
+
 }
 
 bool QIconEnginePlugin_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -386,7 +361,9 @@ bool QIconEnginePlugin_override_virtual_connectNotify(void* self, intptr_t slot)
 }
 
 void QIconEnginePlugin_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQIconEnginePlugin*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQIconEnginePlugin*)(self) )->MiqtVirtualQIconEnginePlugin::connectNotify(*signal);
+
 }
 
 bool QIconEnginePlugin_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -400,7 +377,9 @@ bool QIconEnginePlugin_override_virtual_disconnectNotify(void* self, intptr_t sl
 }
 
 void QIconEnginePlugin_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQIconEnginePlugin*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQIconEnginePlugin*)(self) )->MiqtVirtualQIconEnginePlugin::disconnectNotify(*signal);
+
 }
 
 QObject* QIconEnginePlugin_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

@@ -57,12 +57,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_duration() const {
-
-		return QSequentialAnimationGroup::duration();
-
-	}
+	friend int QSequentialAnimationGroup_virtualbase_duration(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -80,12 +75,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QSequentialAnimationGroup::event(event);
-
-	}
+	friend bool QSequentialAnimationGroup_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateCurrentTime = 0;
@@ -104,12 +94,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_updateCurrentTime(int param1) {
-
-		QSequentialAnimationGroup::updateCurrentTime(static_cast<int>(param1));
-
-	}
+	friend void QSequentialAnimationGroup_virtualbase_updateCurrentTime(void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateState = 0;
@@ -131,12 +116,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_updateState(int newState, int oldState) {
-
-		QSequentialAnimationGroup::updateState(static_cast<QAbstractAnimation::State>(newState), static_cast<QAbstractAnimation::State>(oldState));
-
-	}
+	friend void QSequentialAnimationGroup_virtualbase_updateState(void* self, int newState, int oldState);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateDirection = 0;
@@ -156,12 +136,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_updateDirection(int direction) {
-
-		QSequentialAnimationGroup::updateDirection(static_cast<QAbstractAnimation::Direction>(direction));
-
-	}
+	friend void QSequentialAnimationGroup_virtualbase_updateDirection(void* self, int direction);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -180,12 +155,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QSequentialAnimationGroup::eventFilter(watched, event);
-
-	}
+	friend bool QSequentialAnimationGroup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -204,12 +174,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QSequentialAnimationGroup::timerEvent(event);
-
-	}
+	friend void QSequentialAnimationGroup_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -228,12 +193,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QSequentialAnimationGroup::childEvent(event);
-
-	}
+	friend void QSequentialAnimationGroup_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -252,12 +212,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QSequentialAnimationGroup::customEvent(event);
-
-	}
+	friend void QSequentialAnimationGroup_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -278,12 +233,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QSequentialAnimationGroup::connectNotify(*signal);
-
-	}
+	friend void QSequentialAnimationGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -304,12 +254,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QSequentialAnimationGroup::disconnectNotify(*signal);
-
-	}
+	friend void QSequentialAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QSequentialAnimationGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -442,7 +387,9 @@ bool QSequentialAnimationGroup_override_virtual_duration(void* self, intptr_t sl
 }
 
 int QSequentialAnimationGroup_virtualbase_duration(const void* self) {
-	return ( (const MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_duration();
+
+	return ( (const MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::duration();
+
 }
 
 bool QSequentialAnimationGroup_override_virtual_event(void* self, intptr_t slot) {
@@ -456,7 +403,9 @@ bool QSequentialAnimationGroup_override_virtual_event(void* self, intptr_t slot)
 }
 
 bool QSequentialAnimationGroup_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::event(event);
+
 }
 
 bool QSequentialAnimationGroup_override_virtual_updateCurrentTime(void* self, intptr_t slot) {
@@ -470,7 +419,9 @@ bool QSequentialAnimationGroup_override_virtual_updateCurrentTime(void* self, in
 }
 
 void QSequentialAnimationGroup_virtualbase_updateCurrentTime(void* self, int param1) {
-	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_updateCurrentTime(param1);
+
+	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::updateCurrentTime(static_cast<int>(param1));
+
 }
 
 bool QSequentialAnimationGroup_override_virtual_updateState(void* self, intptr_t slot) {
@@ -484,7 +435,9 @@ bool QSequentialAnimationGroup_override_virtual_updateState(void* self, intptr_t
 }
 
 void QSequentialAnimationGroup_virtualbase_updateState(void* self, int newState, int oldState) {
-	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_updateState(newState, oldState);
+
+	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::updateState(static_cast<MiqtVirtualQSequentialAnimationGroup::State>(newState), static_cast<MiqtVirtualQSequentialAnimationGroup::State>(oldState));
+
 }
 
 bool QSequentialAnimationGroup_override_virtual_updateDirection(void* self, intptr_t slot) {
@@ -498,7 +451,9 @@ bool QSequentialAnimationGroup_override_virtual_updateDirection(void* self, intp
 }
 
 void QSequentialAnimationGroup_virtualbase_updateDirection(void* self, int direction) {
-	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_updateDirection(direction);
+
+	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::updateDirection(static_cast<MiqtVirtualQSequentialAnimationGroup::Direction>(direction));
+
 }
 
 bool QSequentialAnimationGroup_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -512,7 +467,9 @@ bool QSequentialAnimationGroup_override_virtual_eventFilter(void* self, intptr_t
 }
 
 bool QSequentialAnimationGroup_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::eventFilter(watched, event);
+
 }
 
 bool QSequentialAnimationGroup_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -526,7 +483,9 @@ bool QSequentialAnimationGroup_override_virtual_timerEvent(void* self, intptr_t 
 }
 
 void QSequentialAnimationGroup_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::timerEvent(event);
+
 }
 
 bool QSequentialAnimationGroup_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -540,7 +499,9 @@ bool QSequentialAnimationGroup_override_virtual_childEvent(void* self, intptr_t 
 }
 
 void QSequentialAnimationGroup_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::childEvent(event);
+
 }
 
 bool QSequentialAnimationGroup_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -554,7 +515,9 @@ bool QSequentialAnimationGroup_override_virtual_customEvent(void* self, intptr_t
 }
 
 void QSequentialAnimationGroup_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::customEvent(event);
+
 }
 
 bool QSequentialAnimationGroup_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -568,7 +531,9 @@ bool QSequentialAnimationGroup_override_virtual_connectNotify(void* self, intptr
 }
 
 void QSequentialAnimationGroup_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::connectNotify(*signal);
+
 }
 
 bool QSequentialAnimationGroup_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -582,7 +547,9 @@ bool QSequentialAnimationGroup_override_virtual_disconnectNotify(void* self, int
 }
 
 void QSequentialAnimationGroup_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQSequentialAnimationGroup*)(self) )->MiqtVirtualQSequentialAnimationGroup::disconnectNotify(*signal);
+
 }
 
 QObject* QSequentialAnimationGroup_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

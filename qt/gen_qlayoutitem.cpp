@@ -210,12 +210,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QLayoutItem::hasHeightForWidth();
-
-	}
+	friend bool QLayoutItem_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -233,12 +228,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QLayoutItem::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QLayoutItem_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumHeightForWidth = 0;
@@ -256,12 +246,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_minimumHeightForWidth(int param1) const {
-
-		return QLayoutItem::minimumHeightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QLayoutItem_virtualbase_minimumHeightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__invalidate = 0;
@@ -279,12 +264,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_invalidate() {
-
-		QLayoutItem::invalidate();
-
-	}
+	friend void QLayoutItem_virtualbase_invalidate(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__widget = 0;
@@ -301,12 +281,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QWidget* virtualbase_widget() {
-
-		return QLayoutItem::widget();
-
-	}
+	friend QWidget* QLayoutItem_virtualbase_widget(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__layout = 0;
@@ -323,12 +298,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QLayout* virtualbase_layout() {
-
-		return QLayoutItem::layout();
-
-	}
+	friend QLayout* QLayoutItem_virtualbase_layout(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__spacerItem = 0;
@@ -345,12 +315,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSpacerItem* virtualbase_spacerItem() {
-
-		return QLayoutItem::spacerItem();
-
-	}
+	friend QSpacerItem* QLayoutItem_virtualbase_spacerItem(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__controlTypes = 0;
@@ -367,13 +332,7 @@ public:
 		return static_cast<QSizePolicy::ControlTypes>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_controlTypes() const {
-
-		QSizePolicy::ControlTypes _ret = QLayoutItem::controlTypes();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QLayoutItem_virtualbase_controlTypes(const void* self);
 
 };
 
@@ -541,7 +500,9 @@ bool QLayoutItem_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QLayoutItem_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQLayoutItem*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQLayoutItem*)(self) )->MiqtVirtualQLayoutItem::hasHeightForWidth();
+
 }
 
 bool QLayoutItem_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -555,7 +516,9 @@ bool QLayoutItem_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QLayoutItem_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQLayoutItem*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQLayoutItem*)(self) )->MiqtVirtualQLayoutItem::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QLayoutItem_override_virtual_minimumHeightForWidth(void* self, intptr_t slot) {
@@ -569,7 +532,9 @@ bool QLayoutItem_override_virtual_minimumHeightForWidth(void* self, intptr_t slo
 }
 
 int QLayoutItem_virtualbase_minimumHeightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQLayoutItem*)(self) )->virtualbase_minimumHeightForWidth(param1);
+
+	return ( (const MiqtVirtualQLayoutItem*)(self) )->MiqtVirtualQLayoutItem::minimumHeightForWidth(static_cast<int>(param1));
+
 }
 
 bool QLayoutItem_override_virtual_invalidate(void* self, intptr_t slot) {
@@ -583,7 +548,9 @@ bool QLayoutItem_override_virtual_invalidate(void* self, intptr_t slot) {
 }
 
 void QLayoutItem_virtualbase_invalidate(void* self) {
-	( (MiqtVirtualQLayoutItem*)(self) )->virtualbase_invalidate();
+
+	( (MiqtVirtualQLayoutItem*)(self) )->MiqtVirtualQLayoutItem::invalidate();
+
 }
 
 bool QLayoutItem_override_virtual_widget(void* self, intptr_t slot) {
@@ -597,7 +564,9 @@ bool QLayoutItem_override_virtual_widget(void* self, intptr_t slot) {
 }
 
 QWidget* QLayoutItem_virtualbase_widget(void* self) {
-	return ( (MiqtVirtualQLayoutItem*)(self) )->virtualbase_widget();
+
+	return ( (MiqtVirtualQLayoutItem*)(self) )->MiqtVirtualQLayoutItem::widget();
+
 }
 
 bool QLayoutItem_override_virtual_layout(void* self, intptr_t slot) {
@@ -611,7 +580,9 @@ bool QLayoutItem_override_virtual_layout(void* self, intptr_t slot) {
 }
 
 QLayout* QLayoutItem_virtualbase_layout(void* self) {
-	return ( (MiqtVirtualQLayoutItem*)(self) )->virtualbase_layout();
+
+	return ( (MiqtVirtualQLayoutItem*)(self) )->MiqtVirtualQLayoutItem::layout();
+
 }
 
 bool QLayoutItem_override_virtual_spacerItem(void* self, intptr_t slot) {
@@ -625,7 +596,9 @@ bool QLayoutItem_override_virtual_spacerItem(void* self, intptr_t slot) {
 }
 
 QSpacerItem* QLayoutItem_virtualbase_spacerItem(void* self) {
-	return ( (MiqtVirtualQLayoutItem*)(self) )->virtualbase_spacerItem();
+
+	return ( (MiqtVirtualQLayoutItem*)(self) )->MiqtVirtualQLayoutItem::spacerItem();
+
 }
 
 bool QLayoutItem_override_virtual_controlTypes(void* self, intptr_t slot) {
@@ -639,7 +612,10 @@ bool QLayoutItem_override_virtual_controlTypes(void* self, intptr_t slot) {
 }
 
 int QLayoutItem_virtualbase_controlTypes(const void* self) {
-	return ( (const MiqtVirtualQLayoutItem*)(self) )->virtualbase_controlTypes();
+
+	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQLayoutItem*)(self) )->MiqtVirtualQLayoutItem::controlTypes();
+	return static_cast<int>(_ret);
+
 }
 
 void QLayoutItem_delete(QLayoutItem* self) {
@@ -671,12 +647,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QSpacerItem::sizeHint());
-
-	}
+	friend QSize* QSpacerItem_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSize = 0;
@@ -693,12 +664,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSize() const {
-
-		return new QSize(QSpacerItem::minimumSize());
-
-	}
+	friend QSize* QSpacerItem_virtualbase_minimumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__maximumSize = 0;
@@ -715,12 +681,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_maximumSize() const {
-
-		return new QSize(QSpacerItem::maximumSize());
-
-	}
+	friend QSize* QSpacerItem_virtualbase_maximumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__expandingDirections = 0;
@@ -737,13 +698,7 @@ public:
 		return static_cast<Qt::Orientations>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_expandingDirections() const {
-
-		Qt::Orientations _ret = QSpacerItem::expandingDirections();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QSpacerItem_virtualbase_expandingDirections(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEmpty = 0;
@@ -760,12 +715,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEmpty() const {
-
-		return QSpacerItem::isEmpty();
-
-	}
+	friend bool QSpacerItem_virtualbase_isEmpty(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setGeometry = 0;
@@ -786,12 +736,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setGeometry(QRect* geometry) {
-
-		QSpacerItem::setGeometry(*geometry);
-
-	}
+	friend void QSpacerItem_virtualbase_setGeometry(void* self, QRect* geometry);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__geometry = 0;
@@ -808,12 +753,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRect* virtualbase_geometry() const {
-
-		return new QRect(QSpacerItem::geometry());
-
-	}
+	friend QRect* QSpacerItem_virtualbase_geometry(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__spacerItem = 0;
@@ -830,12 +770,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSpacerItem* virtualbase_spacerItem() {
-
-		return QSpacerItem::spacerItem();
-
-	}
+	friend QSpacerItem* QSpacerItem_virtualbase_spacerItem(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -852,12 +787,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QSpacerItem::hasHeightForWidth();
-
-	}
+	friend bool QSpacerItem_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -875,12 +805,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QSpacerItem::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QSpacerItem_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumHeightForWidth = 0;
@@ -898,12 +823,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_minimumHeightForWidth(int param1) const {
-
-		return QSpacerItem::minimumHeightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QSpacerItem_virtualbase_minimumHeightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__invalidate = 0;
@@ -921,12 +841,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_invalidate() {
-
-		QSpacerItem::invalidate();
-
-	}
+	friend void QSpacerItem_virtualbase_invalidate(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__widget = 0;
@@ -943,12 +858,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QWidget* virtualbase_widget() {
-
-		return QSpacerItem::widget();
-
-	}
+	friend QWidget* QSpacerItem_virtualbase_widget(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__layout = 0;
@@ -965,12 +875,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QLayout* virtualbase_layout() {
-
-		return QSpacerItem::layout();
-
-	}
+	friend QLayout* QSpacerItem_virtualbase_layout(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__controlTypes = 0;
@@ -987,13 +892,7 @@ public:
 		return static_cast<QSizePolicy::ControlTypes>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_controlTypes() const {
-
-		QSizePolicy::ControlTypes _ret = QSpacerItem::controlTypes();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QSpacerItem_virtualbase_controlTypes(const void* self);
 
 };
 
@@ -1077,7 +976,9 @@ bool QSpacerItem_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QSpacerItem_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::sizeHint());
+
 }
 
 bool QSpacerItem_override_virtual_minimumSize(void* self, intptr_t slot) {
@@ -1091,7 +992,9 @@ bool QSpacerItem_override_virtual_minimumSize(void* self, intptr_t slot) {
 }
 
 QSize* QSpacerItem_virtualbase_minimumSize(const void* self) {
-	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_minimumSize();
+
+	return new QSize(( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::minimumSize());
+
 }
 
 bool QSpacerItem_override_virtual_maximumSize(void* self, intptr_t slot) {
@@ -1105,7 +1008,9 @@ bool QSpacerItem_override_virtual_maximumSize(void* self, intptr_t slot) {
 }
 
 QSize* QSpacerItem_virtualbase_maximumSize(const void* self) {
-	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_maximumSize();
+
+	return new QSize(( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::maximumSize());
+
 }
 
 bool QSpacerItem_override_virtual_expandingDirections(void* self, intptr_t slot) {
@@ -1119,7 +1024,10 @@ bool QSpacerItem_override_virtual_expandingDirections(void* self, intptr_t slot)
 }
 
 int QSpacerItem_virtualbase_expandingDirections(const void* self) {
-	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_expandingDirections();
+
+	Qt::Orientations _ret = ( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::expandingDirections();
+	return static_cast<int>(_ret);
+
 }
 
 bool QSpacerItem_override_virtual_isEmpty(void* self, intptr_t slot) {
@@ -1133,7 +1041,9 @@ bool QSpacerItem_override_virtual_isEmpty(void* self, intptr_t slot) {
 }
 
 bool QSpacerItem_virtualbase_isEmpty(const void* self) {
-	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_isEmpty();
+
+	return ( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::isEmpty();
+
 }
 
 bool QSpacerItem_override_virtual_setGeometry(void* self, intptr_t slot) {
@@ -1147,7 +1057,9 @@ bool QSpacerItem_override_virtual_setGeometry(void* self, intptr_t slot) {
 }
 
 void QSpacerItem_virtualbase_setGeometry(void* self, QRect* geometry) {
-	( (MiqtVirtualQSpacerItem*)(self) )->virtualbase_setGeometry(geometry);
+
+	( (MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::setGeometry(*geometry);
+
 }
 
 bool QSpacerItem_override_virtual_geometry(void* self, intptr_t slot) {
@@ -1161,7 +1073,9 @@ bool QSpacerItem_override_virtual_geometry(void* self, intptr_t slot) {
 }
 
 QRect* QSpacerItem_virtualbase_geometry(const void* self) {
-	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_geometry();
+
+	return new QRect(( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::geometry());
+
 }
 
 bool QSpacerItem_override_virtual_spacerItem(void* self, intptr_t slot) {
@@ -1175,7 +1089,9 @@ bool QSpacerItem_override_virtual_spacerItem(void* self, intptr_t slot) {
 }
 
 QSpacerItem* QSpacerItem_virtualbase_spacerItem(void* self) {
-	return ( (MiqtVirtualQSpacerItem*)(self) )->virtualbase_spacerItem();
+
+	return ( (MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::spacerItem();
+
 }
 
 bool QSpacerItem_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1189,7 +1105,9 @@ bool QSpacerItem_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QSpacerItem_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::hasHeightForWidth();
+
 }
 
 bool QSpacerItem_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1203,7 +1121,9 @@ bool QSpacerItem_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QSpacerItem_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QSpacerItem_override_virtual_minimumHeightForWidth(void* self, intptr_t slot) {
@@ -1217,7 +1137,9 @@ bool QSpacerItem_override_virtual_minimumHeightForWidth(void* self, intptr_t slo
 }
 
 int QSpacerItem_virtualbase_minimumHeightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_minimumHeightForWidth(param1);
+
+	return ( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::minimumHeightForWidth(static_cast<int>(param1));
+
 }
 
 bool QSpacerItem_override_virtual_invalidate(void* self, intptr_t slot) {
@@ -1231,7 +1153,9 @@ bool QSpacerItem_override_virtual_invalidate(void* self, intptr_t slot) {
 }
 
 void QSpacerItem_virtualbase_invalidate(void* self) {
-	( (MiqtVirtualQSpacerItem*)(self) )->virtualbase_invalidate();
+
+	( (MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::invalidate();
+
 }
 
 bool QSpacerItem_override_virtual_widget(void* self, intptr_t slot) {
@@ -1245,7 +1169,9 @@ bool QSpacerItem_override_virtual_widget(void* self, intptr_t slot) {
 }
 
 QWidget* QSpacerItem_virtualbase_widget(void* self) {
-	return ( (MiqtVirtualQSpacerItem*)(self) )->virtualbase_widget();
+
+	return ( (MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::widget();
+
 }
 
 bool QSpacerItem_override_virtual_layout(void* self, intptr_t slot) {
@@ -1259,7 +1185,9 @@ bool QSpacerItem_override_virtual_layout(void* self, intptr_t slot) {
 }
 
 QLayout* QSpacerItem_virtualbase_layout(void* self) {
-	return ( (MiqtVirtualQSpacerItem*)(self) )->virtualbase_layout();
+
+	return ( (MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::layout();
+
 }
 
 bool QSpacerItem_override_virtual_controlTypes(void* self, intptr_t slot) {
@@ -1273,7 +1201,10 @@ bool QSpacerItem_override_virtual_controlTypes(void* self, intptr_t slot) {
 }
 
 int QSpacerItem_virtualbase_controlTypes(const void* self) {
-	return ( (const MiqtVirtualQSpacerItem*)(self) )->virtualbase_controlTypes();
+
+	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQSpacerItem*)(self) )->MiqtVirtualQSpacerItem::controlTypes();
+	return static_cast<int>(_ret);
+
 }
 
 void QSpacerItem_delete(QSpacerItem* self) {
@@ -1302,12 +1233,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QWidgetItem::sizeHint());
-
-	}
+	friend QSize* QWidgetItem_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSize = 0;
@@ -1324,12 +1250,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSize() const {
-
-		return new QSize(QWidgetItem::minimumSize());
-
-	}
+	friend QSize* QWidgetItem_virtualbase_minimumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__maximumSize = 0;
@@ -1346,12 +1267,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_maximumSize() const {
-
-		return new QSize(QWidgetItem::maximumSize());
-
-	}
+	friend QSize* QWidgetItem_virtualbase_maximumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__expandingDirections = 0;
@@ -1368,13 +1284,7 @@ public:
 		return static_cast<Qt::Orientations>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_expandingDirections() const {
-
-		Qt::Orientations _ret = QWidgetItem::expandingDirections();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QWidgetItem_virtualbase_expandingDirections(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEmpty = 0;
@@ -1391,12 +1301,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEmpty() const {
-
-		return QWidgetItem::isEmpty();
-
-	}
+	friend bool QWidgetItem_virtualbase_isEmpty(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setGeometry = 0;
@@ -1417,12 +1322,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setGeometry(QRect* geometry) {
-
-		QWidgetItem::setGeometry(*geometry);
-
-	}
+	friend void QWidgetItem_virtualbase_setGeometry(void* self, QRect* geometry);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__geometry = 0;
@@ -1439,12 +1339,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRect* virtualbase_geometry() const {
-
-		return new QRect(QWidgetItem::geometry());
-
-	}
+	friend QRect* QWidgetItem_virtualbase_geometry(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__widget = 0;
@@ -1461,12 +1356,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QWidget* virtualbase_widget() {
-
-		return QWidgetItem::widget();
-
-	}
+	friend QWidget* QWidgetItem_virtualbase_widget(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -1483,12 +1373,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QWidgetItem::hasHeightForWidth();
-
-	}
+	friend bool QWidgetItem_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1506,12 +1391,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QWidgetItem::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QWidgetItem_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__controlTypes = 0;
@@ -1528,13 +1408,7 @@ public:
 		return static_cast<QSizePolicy::ControlTypes>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_controlTypes() const {
-
-		QSizePolicy::ControlTypes _ret = QWidgetItem::controlTypes();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QWidgetItem_virtualbase_controlTypes(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumHeightForWidth = 0;
@@ -1552,12 +1426,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_minimumHeightForWidth(int param1) const {
-
-		return QWidgetItem::minimumHeightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QWidgetItem_virtualbase_minimumHeightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__invalidate = 0;
@@ -1575,12 +1444,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_invalidate() {
-
-		QWidgetItem::invalidate();
-
-	}
+	friend void QWidgetItem_virtualbase_invalidate(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__layout = 0;
@@ -1597,12 +1461,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QLayout* virtualbase_layout() {
-
-		return QWidgetItem::layout();
-
-	}
+	friend QLayout* QWidgetItem_virtualbase_layout(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__spacerItem = 0;
@@ -1619,12 +1478,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSpacerItem* virtualbase_spacerItem() {
-
-		return QWidgetItem::spacerItem();
-
-	}
+	friend QSpacerItem* QWidgetItem_virtualbase_spacerItem(void* self);
 
 };
 
@@ -1693,7 +1547,9 @@ bool QWidgetItem_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QWidgetItem_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::sizeHint());
+
 }
 
 bool QWidgetItem_override_virtual_minimumSize(void* self, intptr_t slot) {
@@ -1707,7 +1563,9 @@ bool QWidgetItem_override_virtual_minimumSize(void* self, intptr_t slot) {
 }
 
 QSize* QWidgetItem_virtualbase_minimumSize(const void* self) {
-	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_minimumSize();
+
+	return new QSize(( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::minimumSize());
+
 }
 
 bool QWidgetItem_override_virtual_maximumSize(void* self, intptr_t slot) {
@@ -1721,7 +1579,9 @@ bool QWidgetItem_override_virtual_maximumSize(void* self, intptr_t slot) {
 }
 
 QSize* QWidgetItem_virtualbase_maximumSize(const void* self) {
-	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_maximumSize();
+
+	return new QSize(( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::maximumSize());
+
 }
 
 bool QWidgetItem_override_virtual_expandingDirections(void* self, intptr_t slot) {
@@ -1735,7 +1595,10 @@ bool QWidgetItem_override_virtual_expandingDirections(void* self, intptr_t slot)
 }
 
 int QWidgetItem_virtualbase_expandingDirections(const void* self) {
-	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_expandingDirections();
+
+	Qt::Orientations _ret = ( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::expandingDirections();
+	return static_cast<int>(_ret);
+
 }
 
 bool QWidgetItem_override_virtual_isEmpty(void* self, intptr_t slot) {
@@ -1749,7 +1612,9 @@ bool QWidgetItem_override_virtual_isEmpty(void* self, intptr_t slot) {
 }
 
 bool QWidgetItem_virtualbase_isEmpty(const void* self) {
-	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_isEmpty();
+
+	return ( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::isEmpty();
+
 }
 
 bool QWidgetItem_override_virtual_setGeometry(void* self, intptr_t slot) {
@@ -1763,7 +1628,9 @@ bool QWidgetItem_override_virtual_setGeometry(void* self, intptr_t slot) {
 }
 
 void QWidgetItem_virtualbase_setGeometry(void* self, QRect* geometry) {
-	( (MiqtVirtualQWidgetItem*)(self) )->virtualbase_setGeometry(geometry);
+
+	( (MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::setGeometry(*geometry);
+
 }
 
 bool QWidgetItem_override_virtual_geometry(void* self, intptr_t slot) {
@@ -1777,7 +1644,9 @@ bool QWidgetItem_override_virtual_geometry(void* self, intptr_t slot) {
 }
 
 QRect* QWidgetItem_virtualbase_geometry(const void* self) {
-	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_geometry();
+
+	return new QRect(( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::geometry());
+
 }
 
 bool QWidgetItem_override_virtual_widget(void* self, intptr_t slot) {
@@ -1791,7 +1660,9 @@ bool QWidgetItem_override_virtual_widget(void* self, intptr_t slot) {
 }
 
 QWidget* QWidgetItem_virtualbase_widget(void* self) {
-	return ( (MiqtVirtualQWidgetItem*)(self) )->virtualbase_widget();
+
+	return ( (MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::widget();
+
 }
 
 bool QWidgetItem_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1805,7 +1676,9 @@ bool QWidgetItem_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QWidgetItem_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::hasHeightForWidth();
+
 }
 
 bool QWidgetItem_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1819,7 +1692,9 @@ bool QWidgetItem_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QWidgetItem_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QWidgetItem_override_virtual_controlTypes(void* self, intptr_t slot) {
@@ -1833,7 +1708,10 @@ bool QWidgetItem_override_virtual_controlTypes(void* self, intptr_t slot) {
 }
 
 int QWidgetItem_virtualbase_controlTypes(const void* self) {
-	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_controlTypes();
+
+	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::controlTypes();
+	return static_cast<int>(_ret);
+
 }
 
 bool QWidgetItem_override_virtual_minimumHeightForWidth(void* self, intptr_t slot) {
@@ -1847,7 +1725,9 @@ bool QWidgetItem_override_virtual_minimumHeightForWidth(void* self, intptr_t slo
 }
 
 int QWidgetItem_virtualbase_minimumHeightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQWidgetItem*)(self) )->virtualbase_minimumHeightForWidth(param1);
+
+	return ( (const MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::minimumHeightForWidth(static_cast<int>(param1));
+
 }
 
 bool QWidgetItem_override_virtual_invalidate(void* self, intptr_t slot) {
@@ -1861,7 +1741,9 @@ bool QWidgetItem_override_virtual_invalidate(void* self, intptr_t slot) {
 }
 
 void QWidgetItem_virtualbase_invalidate(void* self) {
-	( (MiqtVirtualQWidgetItem*)(self) )->virtualbase_invalidate();
+
+	( (MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::invalidate();
+
 }
 
 bool QWidgetItem_override_virtual_layout(void* self, intptr_t slot) {
@@ -1875,7 +1757,9 @@ bool QWidgetItem_override_virtual_layout(void* self, intptr_t slot) {
 }
 
 QLayout* QWidgetItem_virtualbase_layout(void* self) {
-	return ( (MiqtVirtualQWidgetItem*)(self) )->virtualbase_layout();
+
+	return ( (MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::layout();
+
 }
 
 bool QWidgetItem_override_virtual_spacerItem(void* self, intptr_t slot) {
@@ -1889,7 +1773,9 @@ bool QWidgetItem_override_virtual_spacerItem(void* self, intptr_t slot) {
 }
 
 QSpacerItem* QWidgetItem_virtualbase_spacerItem(void* self) {
-	return ( (MiqtVirtualQWidgetItem*)(self) )->virtualbase_spacerItem();
+
+	return ( (MiqtVirtualQWidgetItem*)(self) )->MiqtVirtualQWidgetItem::spacerItem();
+
 }
 
 void QWidgetItem_delete(QWidgetItem* self) {
@@ -1918,12 +1804,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QWidgetItemV2::sizeHint());
-
-	}
+	friend QSize* QWidgetItemV2_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSize = 0;
@@ -1940,12 +1821,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSize() const {
-
-		return new QSize(QWidgetItemV2::minimumSize());
-
-	}
+	friend QSize* QWidgetItemV2_virtualbase_minimumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__maximumSize = 0;
@@ -1962,12 +1838,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_maximumSize() const {
-
-		return new QSize(QWidgetItemV2::maximumSize());
-
-	}
+	friend QSize* QWidgetItemV2_virtualbase_maximumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -1985,12 +1856,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int width) const {
-
-		return QWidgetItemV2::heightForWidth(static_cast<int>(width));
-
-	}
+	friend int QWidgetItemV2_virtualbase_heightForWidth(const void* self, int width);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__expandingDirections = 0;
@@ -2007,13 +1873,7 @@ public:
 		return static_cast<Qt::Orientations>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_expandingDirections() const {
-
-		Qt::Orientations _ret = QWidgetItemV2::expandingDirections();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QWidgetItemV2_virtualbase_expandingDirections(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEmpty = 0;
@@ -2030,12 +1890,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEmpty() const {
-
-		return QWidgetItemV2::isEmpty();
-
-	}
+	friend bool QWidgetItemV2_virtualbase_isEmpty(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setGeometry = 0;
@@ -2056,12 +1911,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setGeometry(QRect* geometry) {
-
-		QWidgetItemV2::setGeometry(*geometry);
-
-	}
+	friend void QWidgetItemV2_virtualbase_setGeometry(void* self, QRect* geometry);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__geometry = 0;
@@ -2078,12 +1928,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRect* virtualbase_geometry() const {
-
-		return new QRect(QWidgetItemV2::geometry());
-
-	}
+	friend QRect* QWidgetItemV2_virtualbase_geometry(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__widget = 0;
@@ -2100,12 +1945,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QWidget* virtualbase_widget() {
-
-		return QWidgetItemV2::widget();
-
-	}
+	friend QWidget* QWidgetItemV2_virtualbase_widget(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -2122,12 +1962,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QWidgetItemV2::hasHeightForWidth();
-
-	}
+	friend bool QWidgetItemV2_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__controlTypes = 0;
@@ -2144,13 +1979,7 @@ public:
 		return static_cast<QSizePolicy::ControlTypes>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_controlTypes() const {
-
-		QSizePolicy::ControlTypes _ret = QWidgetItemV2::controlTypes();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QWidgetItemV2_virtualbase_controlTypes(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumHeightForWidth = 0;
@@ -2168,12 +1997,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_minimumHeightForWidth(int param1) const {
-
-		return QWidgetItemV2::minimumHeightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QWidgetItemV2_virtualbase_minimumHeightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__invalidate = 0;
@@ -2191,12 +2015,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_invalidate() {
-
-		QWidgetItemV2::invalidate();
-
-	}
+	friend void QWidgetItemV2_virtualbase_invalidate(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__layout = 0;
@@ -2213,12 +2032,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QLayout* virtualbase_layout() {
-
-		return QWidgetItemV2::layout();
-
-	}
+	friend QLayout* QWidgetItemV2_virtualbase_layout(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__spacerItem = 0;
@@ -2235,12 +2049,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSpacerItem* virtualbase_spacerItem() {
-
-		return QWidgetItemV2::spacerItem();
-
-	}
+	friend QSpacerItem* QWidgetItemV2_virtualbase_spacerItem(void* self);
 
 };
 
@@ -2279,7 +2088,9 @@ bool QWidgetItemV2_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QWidgetItemV2_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::sizeHint());
+
 }
 
 bool QWidgetItemV2_override_virtual_minimumSize(void* self, intptr_t slot) {
@@ -2293,7 +2104,9 @@ bool QWidgetItemV2_override_virtual_minimumSize(void* self, intptr_t slot) {
 }
 
 QSize* QWidgetItemV2_virtualbase_minimumSize(const void* self) {
-	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_minimumSize();
+
+	return new QSize(( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::minimumSize());
+
 }
 
 bool QWidgetItemV2_override_virtual_maximumSize(void* self, intptr_t slot) {
@@ -2307,7 +2120,9 @@ bool QWidgetItemV2_override_virtual_maximumSize(void* self, intptr_t slot) {
 }
 
 QSize* QWidgetItemV2_virtualbase_maximumSize(const void* self) {
-	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_maximumSize();
+
+	return new QSize(( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::maximumSize());
+
 }
 
 bool QWidgetItemV2_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -2321,7 +2136,9 @@ bool QWidgetItemV2_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QWidgetItemV2_virtualbase_heightForWidth(const void* self, int width) {
-	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_heightForWidth(width);
+
+	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::heightForWidth(static_cast<int>(width));
+
 }
 
 bool QWidgetItemV2_override_virtual_expandingDirections(void* self, intptr_t slot) {
@@ -2335,7 +2152,10 @@ bool QWidgetItemV2_override_virtual_expandingDirections(void* self, intptr_t slo
 }
 
 int QWidgetItemV2_virtualbase_expandingDirections(const void* self) {
-	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_expandingDirections();
+
+	Qt::Orientations _ret = ( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::expandingDirections();
+	return static_cast<int>(_ret);
+
 }
 
 bool QWidgetItemV2_override_virtual_isEmpty(void* self, intptr_t slot) {
@@ -2349,7 +2169,9 @@ bool QWidgetItemV2_override_virtual_isEmpty(void* self, intptr_t slot) {
 }
 
 bool QWidgetItemV2_virtualbase_isEmpty(const void* self) {
-	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_isEmpty();
+
+	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::isEmpty();
+
 }
 
 bool QWidgetItemV2_override_virtual_setGeometry(void* self, intptr_t slot) {
@@ -2363,7 +2185,9 @@ bool QWidgetItemV2_override_virtual_setGeometry(void* self, intptr_t slot) {
 }
 
 void QWidgetItemV2_virtualbase_setGeometry(void* self, QRect* geometry) {
-	( (MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_setGeometry(geometry);
+
+	( (MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::setGeometry(*geometry);
+
 }
 
 bool QWidgetItemV2_override_virtual_geometry(void* self, intptr_t slot) {
@@ -2377,7 +2201,9 @@ bool QWidgetItemV2_override_virtual_geometry(void* self, intptr_t slot) {
 }
 
 QRect* QWidgetItemV2_virtualbase_geometry(const void* self) {
-	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_geometry();
+
+	return new QRect(( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::geometry());
+
 }
 
 bool QWidgetItemV2_override_virtual_widget(void* self, intptr_t slot) {
@@ -2391,7 +2217,9 @@ bool QWidgetItemV2_override_virtual_widget(void* self, intptr_t slot) {
 }
 
 QWidget* QWidgetItemV2_virtualbase_widget(void* self) {
-	return ( (MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_widget();
+
+	return ( (MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::widget();
+
 }
 
 bool QWidgetItemV2_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -2405,7 +2233,9 @@ bool QWidgetItemV2_override_virtual_hasHeightForWidth(void* self, intptr_t slot)
 }
 
 bool QWidgetItemV2_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::hasHeightForWidth();
+
 }
 
 bool QWidgetItemV2_override_virtual_controlTypes(void* self, intptr_t slot) {
@@ -2419,7 +2249,10 @@ bool QWidgetItemV2_override_virtual_controlTypes(void* self, intptr_t slot) {
 }
 
 int QWidgetItemV2_virtualbase_controlTypes(const void* self) {
-	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_controlTypes();
+
+	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::controlTypes();
+	return static_cast<int>(_ret);
+
 }
 
 bool QWidgetItemV2_override_virtual_minimumHeightForWidth(void* self, intptr_t slot) {
@@ -2433,7 +2266,9 @@ bool QWidgetItemV2_override_virtual_minimumHeightForWidth(void* self, intptr_t s
 }
 
 int QWidgetItemV2_virtualbase_minimumHeightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_minimumHeightForWidth(param1);
+
+	return ( (const MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::minimumHeightForWidth(static_cast<int>(param1));
+
 }
 
 bool QWidgetItemV2_override_virtual_invalidate(void* self, intptr_t slot) {
@@ -2447,7 +2282,9 @@ bool QWidgetItemV2_override_virtual_invalidate(void* self, intptr_t slot) {
 }
 
 void QWidgetItemV2_virtualbase_invalidate(void* self) {
-	( (MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_invalidate();
+
+	( (MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::invalidate();
+
 }
 
 bool QWidgetItemV2_override_virtual_layout(void* self, intptr_t slot) {
@@ -2461,7 +2298,9 @@ bool QWidgetItemV2_override_virtual_layout(void* self, intptr_t slot) {
 }
 
 QLayout* QWidgetItemV2_virtualbase_layout(void* self) {
-	return ( (MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_layout();
+
+	return ( (MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::layout();
+
 }
 
 bool QWidgetItemV2_override_virtual_spacerItem(void* self, intptr_t slot) {
@@ -2475,7 +2314,9 @@ bool QWidgetItemV2_override_virtual_spacerItem(void* self, intptr_t slot) {
 }
 
 QSpacerItem* QWidgetItemV2_virtualbase_spacerItem(void* self) {
-	return ( (MiqtVirtualQWidgetItemV2*)(self) )->virtualbase_spacerItem();
+
+	return ( (MiqtVirtualQWidgetItemV2*)(self) )->MiqtVirtualQWidgetItemV2::spacerItem();
+
 }
 
 void QWidgetItemV2_delete(QWidgetItemV2* self) {

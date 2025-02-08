@@ -129,12 +129,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QColorDialog::setVisible(visible);
-
-	}
+	friend void QColorDialog_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -153,12 +148,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* event) {
-
-		QColorDialog::changeEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_changeEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__done = 0;
@@ -177,12 +167,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_done(int result) {
-
-		QColorDialog::done(static_cast<int>(result));
-
-	}
+	friend void QColorDialog_virtualbase_done(void* self, int result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -199,12 +184,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QColorDialog::sizeHint());
-
-	}
+	friend QSize* QColorDialog_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -221,12 +201,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QColorDialog::minimumSizeHint());
-
-	}
+	friend QSize* QColorDialog_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -244,12 +219,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_open() {
-
-		QColorDialog::open();
-
-	}
+	friend void QColorDialog_virtualbase_open(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__exec = 0;
@@ -266,12 +236,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_exec() {
-
-		return QColorDialog::exec();
-
-	}
+	friend int QColorDialog_virtualbase_exec(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__accept = 0;
@@ -289,12 +254,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_accept() {
-
-		QColorDialog::accept();
-
-	}
+	friend void QColorDialog_virtualbase_accept(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__reject = 0;
@@ -312,12 +272,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_reject() {
-
-		QColorDialog::reject();
-
-	}
+	friend void QColorDialog_virtualbase_reject(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -336,12 +291,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* param1) {
-
-		QColorDialog::keyPressEvent(param1);
-
-	}
+	friend void QColorDialog_virtualbase_keyPressEvent(void* self, QKeyEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -360,12 +310,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* param1) {
-
-		QColorDialog::closeEvent(param1);
-
-	}
+	friend void QColorDialog_virtualbase_closeEvent(void* self, QCloseEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -384,12 +329,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* param1) {
-
-		QColorDialog::showEvent(param1);
-
-	}
+	friend void QColorDialog_virtualbase_showEvent(void* self, QShowEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -408,12 +348,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* param1) {
-
-		QColorDialog::resizeEvent(param1);
-
-	}
+	friend void QColorDialog_virtualbase_resizeEvent(void* self, QResizeEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -432,12 +367,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* param1) {
-
-		QColorDialog::contextMenuEvent(param1);
-
-	}
+	friend void QColorDialog_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -456,12 +386,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* param1, QEvent* param2) {
-
-		return QColorDialog::eventFilter(param1, param2);
-
-	}
+	friend bool QColorDialog_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -478,12 +403,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QColorDialog::devType();
-
-	}
+	friend int QColorDialog_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -501,12 +421,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QColorDialog::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QColorDialog_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -523,12 +438,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QColorDialog::hasHeightForWidth();
-
-	}
+	friend bool QColorDialog_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -545,12 +455,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QColorDialog::paintEngine();
-
-	}
+	friend QPaintEngine* QColorDialog_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -568,12 +473,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QColorDialog::event(event);
-
-	}
+	friend bool QColorDialog_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -592,12 +492,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* event) {
-
-		QColorDialog::mousePressEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -616,12 +511,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
-
-		QColorDialog::mouseReleaseEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -640,12 +530,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QColorDialog::mouseDoubleClickEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -664,12 +549,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QColorDialog::mouseMoveEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -688,12 +568,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QColorDialog::wheelEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -712,12 +587,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QColorDialog::keyReleaseEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -736,12 +606,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QColorDialog::focusInEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -760,12 +625,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QColorDialog::focusOutEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -784,12 +644,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEnterEvent* event) {
-
-		QColorDialog::enterEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_enterEvent(void* self, QEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -808,12 +663,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QColorDialog::leaveEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -832,12 +682,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* event) {
-
-		QColorDialog::paintEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_paintEvent(void* self, QPaintEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -856,12 +701,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QColorDialog::moveEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -880,12 +720,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QColorDialog::tabletEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -904,12 +739,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QColorDialog::actionEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -928,12 +758,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QColorDialog::dragEnterEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -952,12 +777,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QColorDialog::dragMoveEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -976,12 +796,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QColorDialog::dragLeaveEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -1000,12 +815,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QColorDialog::dropEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -1024,12 +834,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QColorDialog::hideEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -1055,13 +860,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, intptr_t* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QColorDialog::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
-
-	}
+	friend bool QColorDialog_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -1080,12 +879,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QColorDialog::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QColorDialog_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1104,12 +898,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QColorDialog::initPainter(painter);
-
-	}
+	friend void QColorDialog_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1127,12 +916,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QColorDialog::redirected(offset);
-
-	}
+	friend QPaintDevice* QColorDialog_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1149,12 +933,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QColorDialog::sharedPainter();
-
-	}
+	friend QPainter* QColorDialog_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1173,12 +952,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QColorDialog::inputMethodEvent(param1);
-
-	}
+	friend void QColorDialog_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1197,12 +971,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QColorDialog::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QColorDialog_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1220,12 +989,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QColorDialog::focusNextPrevChild(next);
-
-	}
+	friend bool QColorDialog_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1244,12 +1008,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QColorDialog::timerEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1268,12 +1027,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QColorDialog::childEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1292,12 +1046,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QColorDialog::customEvent(event);
-
-	}
+	friend void QColorDialog_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1318,12 +1067,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QColorDialog::connectNotify(*signal);
-
-	}
+	friend void QColorDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1344,12 +1088,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QColorDialog::disconnectNotify(*signal);
-
-	}
+	friend void QColorDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QColorDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1);
@@ -1541,7 +1280,9 @@ bool QColorDialog_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::setVisible(visible);
+
 }
 
 bool QColorDialog_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1555,7 +1296,9 @@ bool QColorDialog_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_changeEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_changeEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::changeEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_done(void* self, intptr_t slot) {
@@ -1569,7 +1312,9 @@ bool QColorDialog_override_virtual_done(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_done(void* self, int result) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_done(result);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::done(static_cast<int>(result));
+
 }
 
 bool QColorDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -1583,7 +1328,9 @@ bool QColorDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QColorDialog_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQColorDialog*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::sizeHint());
+
 }
 
 bool QColorDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1597,7 +1344,9 @@ bool QColorDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QColorDialog_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQColorDialog*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::minimumSizeHint());
+
 }
 
 bool QColorDialog_override_virtual_open(void* self, intptr_t slot) {
@@ -1611,7 +1360,9 @@ bool QColorDialog_override_virtual_open(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_open(void* self) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_open();
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::open();
+
 }
 
 bool QColorDialog_override_virtual_exec(void* self, intptr_t slot) {
@@ -1625,7 +1376,9 @@ bool QColorDialog_override_virtual_exec(void* self, intptr_t slot) {
 }
 
 int QColorDialog_virtualbase_exec(void* self) {
-	return ( (MiqtVirtualQColorDialog*)(self) )->virtualbase_exec();
+
+	return ( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::exec();
+
 }
 
 bool QColorDialog_override_virtual_accept(void* self, intptr_t slot) {
@@ -1639,7 +1392,9 @@ bool QColorDialog_override_virtual_accept(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_accept(void* self) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_accept();
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::accept();
+
 }
 
 bool QColorDialog_override_virtual_reject(void* self, intptr_t slot) {
@@ -1653,7 +1408,9 @@ bool QColorDialog_override_virtual_reject(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_reject(void* self) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_reject();
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::reject();
+
 }
 
 bool QColorDialog_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1667,7 +1424,9 @@ bool QColorDialog_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_keyPressEvent(param1);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::keyPressEvent(param1);
+
 }
 
 bool QColorDialog_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1681,7 +1440,9 @@ bool QColorDialog_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_closeEvent(void* self, QCloseEvent* param1) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_closeEvent(param1);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::closeEvent(param1);
+
 }
 
 bool QColorDialog_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1695,7 +1456,9 @@ bool QColorDialog_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_showEvent(void* self, QShowEvent* param1) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_showEvent(param1);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::showEvent(param1);
+
 }
 
 bool QColorDialog_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1709,7 +1472,9 @@ bool QColorDialog_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_resizeEvent(void* self, QResizeEvent* param1) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_resizeEvent(param1);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::resizeEvent(param1);
+
 }
 
 bool QColorDialog_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1723,7 +1488,9 @@ bool QColorDialog_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_contextMenuEvent(param1);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::contextMenuEvent(param1);
+
 }
 
 bool QColorDialog_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1737,7 +1504,9 @@ bool QColorDialog_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QColorDialog_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
-	return ( (MiqtVirtualQColorDialog*)(self) )->virtualbase_eventFilter(param1, param2);
+
+	return ( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::eventFilter(param1, param2);
+
 }
 
 bool QColorDialog_override_virtual_devType(void* self, intptr_t slot) {
@@ -1751,7 +1520,9 @@ bool QColorDialog_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QColorDialog_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQColorDialog*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::devType();
+
 }
 
 bool QColorDialog_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1765,7 +1536,9 @@ bool QColorDialog_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QColorDialog_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQColorDialog*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QColorDialog_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1779,7 +1552,9 @@ bool QColorDialog_override_virtual_hasHeightForWidth(void* self, intptr_t slot) 
 }
 
 bool QColorDialog_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQColorDialog*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::hasHeightForWidth();
+
 }
 
 bool QColorDialog_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1793,7 +1568,9 @@ bool QColorDialog_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QColorDialog_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQColorDialog*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::paintEngine();
+
 }
 
 bool QColorDialog_override_virtual_event(void* self, intptr_t slot) {
@@ -1807,7 +1584,9 @@ bool QColorDialog_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QColorDialog_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQColorDialog*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::event(event);
+
 }
 
 bool QColorDialog_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1821,7 +1600,9 @@ bool QColorDialog_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_mousePressEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::mousePressEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1835,7 +1616,9 @@ bool QColorDialog_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) 
 }
 
 void QColorDialog_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_mouseReleaseEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::mouseReleaseEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1849,7 +1632,9 @@ bool QColorDialog_override_virtual_mouseDoubleClickEvent(void* self, intptr_t sl
 }
 
 void QColorDialog_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::mouseDoubleClickEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1863,7 +1648,9 @@ bool QColorDialog_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::mouseMoveEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1877,7 +1664,9 @@ bool QColorDialog_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::wheelEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1891,7 +1680,9 @@ bool QColorDialog_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::keyReleaseEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1905,7 +1696,9 @@ bool QColorDialog_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::focusInEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1919,7 +1712,9 @@ bool QColorDialog_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::focusOutEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1933,7 +1728,9 @@ bool QColorDialog_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_enterEvent(void* self, QEnterEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::enterEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1947,7 +1744,9 @@ bool QColorDialog_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::leaveEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1961,7 +1760,9 @@ bool QColorDialog_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_paintEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::paintEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1975,7 +1776,9 @@ bool QColorDialog_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::moveEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1989,7 +1792,9 @@ bool QColorDialog_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::tabletEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -2003,7 +1808,9 @@ bool QColorDialog_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::actionEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -2017,7 +1824,9 @@ bool QColorDialog_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::dragEnterEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -2031,7 +1840,9 @@ bool QColorDialog_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::dragMoveEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -2045,7 +1856,9 @@ bool QColorDialog_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::dragLeaveEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -2059,7 +1872,9 @@ bool QColorDialog_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::dropEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -2073,7 +1888,9 @@ bool QColorDialog_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::hideEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -2087,7 +1904,10 @@ bool QColorDialog_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QColorDialog_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, intptr_t* result) {
-	return ( (MiqtVirtualQColorDialog*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::nativeEvent(eventType_QByteArray, message, (qintptr*)(result));
+
 }
 
 bool QColorDialog_override_virtual_metric(void* self, intptr_t slot) {
@@ -2101,7 +1921,9 @@ bool QColorDialog_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QColorDialog_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQColorDialog*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::metric(static_cast<MiqtVirtualQColorDialog::PaintDeviceMetric>(param1));
+
 }
 
 bool QColorDialog_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -2115,7 +1937,9 @@ bool QColorDialog_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQColorDialog*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::initPainter(painter);
+
 }
 
 bool QColorDialog_override_virtual_redirected(void* self, intptr_t slot) {
@@ -2129,7 +1953,9 @@ bool QColorDialog_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QColorDialog_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQColorDialog*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::redirected(offset);
+
 }
 
 bool QColorDialog_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2143,7 +1969,9 @@ bool QColorDialog_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QColorDialog_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQColorDialog*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::sharedPainter();
+
 }
 
 bool QColorDialog_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2157,7 +1985,9 @@ bool QColorDialog_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::inputMethodEvent(param1);
+
 }
 
 bool QColorDialog_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2171,7 +2001,9 @@ bool QColorDialog_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 }
 
 QVariant* QColorDialog_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQColorDialog*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QColorDialog_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2185,7 +2017,9 @@ bool QColorDialog_override_virtual_focusNextPrevChild(void* self, intptr_t slot)
 }
 
 bool QColorDialog_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQColorDialog*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::focusNextPrevChild(next);
+
 }
 
 bool QColorDialog_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2199,7 +2033,9 @@ bool QColorDialog_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::timerEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2213,7 +2049,9 @@ bool QColorDialog_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::childEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2227,7 +2065,9 @@ bool QColorDialog_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::customEvent(event);
+
 }
 
 bool QColorDialog_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2241,7 +2081,9 @@ bool QColorDialog_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::connectNotify(*signal);
+
 }
 
 bool QColorDialog_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2255,7 +2097,9 @@ bool QColorDialog_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QColorDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQColorDialog*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQColorDialog*)(self) )->MiqtVirtualQColorDialog::disconnectNotify(*signal);
+
 }
 
 void QColorDialog_protectedbase_adjustPosition(bool* _dynamic_cast_ok, void* self, QWidget* param1) {

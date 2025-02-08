@@ -52,12 +52,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QSharedMemory::event(event);
-
-	}
+	friend bool QSharedMemory_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -76,12 +71,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QSharedMemory::eventFilter(watched, event);
-
-	}
+	friend bool QSharedMemory_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -100,12 +90,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QSharedMemory::timerEvent(event);
-
-	}
+	friend void QSharedMemory_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -124,12 +109,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QSharedMemory::childEvent(event);
-
-	}
+	friend void QSharedMemory_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -148,12 +128,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QSharedMemory::customEvent(event);
-
-	}
+	friend void QSharedMemory_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -174,12 +149,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QSharedMemory::connectNotify(*signal);
-
-	}
+	friend void QSharedMemory_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -200,12 +170,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QSharedMemory::disconnectNotify(*signal);
-
-	}
+	friend void QSharedMemory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QSharedMemory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -385,7 +350,9 @@ bool QSharedMemory_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QSharedMemory_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQSharedMemory*)(self) )->MiqtVirtualQSharedMemory::event(event);
+
 }
 
 bool QSharedMemory_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -399,7 +366,9 @@ bool QSharedMemory_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QSharedMemory_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQSharedMemory*)(self) )->MiqtVirtualQSharedMemory::eventFilter(watched, event);
+
 }
 
 bool QSharedMemory_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -413,7 +382,9 @@ bool QSharedMemory_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QSharedMemory_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQSharedMemory*)(self) )->MiqtVirtualQSharedMemory::timerEvent(event);
+
 }
 
 bool QSharedMemory_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -427,7 +398,9 @@ bool QSharedMemory_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QSharedMemory_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQSharedMemory*)(self) )->MiqtVirtualQSharedMemory::childEvent(event);
+
 }
 
 bool QSharedMemory_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -441,7 +414,9 @@ bool QSharedMemory_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QSharedMemory_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQSharedMemory*)(self) )->MiqtVirtualQSharedMemory::customEvent(event);
+
 }
 
 bool QSharedMemory_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -455,7 +430,9 @@ bool QSharedMemory_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QSharedMemory_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQSharedMemory*)(self) )->MiqtVirtualQSharedMemory::connectNotify(*signal);
+
 }
 
 bool QSharedMemory_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -469,7 +446,9 @@ bool QSharedMemory_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 }
 
 void QSharedMemory_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSharedMemory*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQSharedMemory*)(self) )->MiqtVirtualQSharedMemory::disconnectNotify(*signal);
+
 }
 
 QObject* QSharedMemory_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

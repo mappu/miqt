@@ -89,12 +89,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setFoldCompact(bool fold) {
-
-		QsciLexerFortran::setFoldCompact(fold);
-
-	}
+	friend void QsciLexerFortran_virtualbase_setFoldCompact(void* self, bool fold);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__language = 0;
@@ -126,12 +121,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	const char* virtualbase_lexer() const {
-
-		return (const char*) QsciLexerFortran::lexer();
-
-	}
+	friend const char* QsciLexerFortran_virtualbase_lexer(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__lexerId = 0;
@@ -148,12 +138,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_lexerId() const {
-
-		return QsciLexerFortran::lexerId();
-
-	}
+	friend int QsciLexerFortran_virtualbase_lexerId(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__autoCompletionFillups = 0;
@@ -170,12 +155,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	const char* virtualbase_autoCompletionFillups() const {
-
-		return (const char*) QsciLexerFortran::autoCompletionFillups();
-
-	}
+	friend const char* QsciLexerFortran_virtualbase_autoCompletionFillups(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__autoCompletionWordSeparators = 0;
@@ -199,28 +179,7 @@ public:
 		return callback_return_value_QList;
 	}
 
-	// Wrapper to allow calling protected method
-	struct miqt_array /* of struct miqt_string */  virtualbase_autoCompletionWordSeparators() const {
-
-		QStringList _ret = QsciLexerFortran::autoCompletionWordSeparators();
-		// Convert QList<> from C++ memory to manually-managed C memory
-		struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
-		for (size_t i = 0, e = _ret.length(); i < e; ++i) {
-			QString _lv_ret = _ret[i];
-			// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
-			QByteArray _lv_b = _lv_ret.toUtf8();
-			struct miqt_string _lv_ms;
-			_lv_ms.len = _lv_b.length();
-			_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
-			memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
-			_arr[i] = _lv_ms;
-		}
-		struct miqt_array _out;
-		_out.len = _ret.length();
-		_out.data = static_cast<void*>(_arr);
-		return _out;
-
-	}
+	friend struct miqt_array /* of struct miqt_string */  QsciLexerFortran_virtualbase_autoCompletionWordSeparators(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__blockEnd = 0;
@@ -238,12 +197,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	const char* virtualbase_blockEnd(int* style) const {
-
-		return (const char*) QsciLexerFortran::blockEnd(static_cast<int*>(style));
-
-	}
+	friend const char* QsciLexerFortran_virtualbase_blockEnd(const void* self, int* style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__blockLookback = 0;
@@ -260,12 +214,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_blockLookback() const {
-
-		return QsciLexerFortran::blockLookback();
-
-	}
+	friend int QsciLexerFortran_virtualbase_blockLookback(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__blockStart = 0;
@@ -283,12 +232,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	const char* virtualbase_blockStart(int* style) const {
-
-		return (const char*) QsciLexerFortran::blockStart(static_cast<int*>(style));
-
-	}
+	friend const char* QsciLexerFortran_virtualbase_blockStart(const void* self, int* style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__blockStartKeyword = 0;
@@ -306,12 +250,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	const char* virtualbase_blockStartKeyword(int* style) const {
-
-		return (const char*) QsciLexerFortran::blockStartKeyword(static_cast<int*>(style));
-
-	}
+	friend const char* QsciLexerFortran_virtualbase_blockStartKeyword(const void* self, int* style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__braceStyle = 0;
@@ -328,12 +267,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_braceStyle() const {
-
-		return QsciLexerFortran::braceStyle();
-
-	}
+	friend int QsciLexerFortran_virtualbase_braceStyle(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__caseSensitive = 0;
@@ -350,12 +284,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_caseSensitive() const {
-
-		return QsciLexerFortran::caseSensitive();
-
-	}
+	friend bool QsciLexerFortran_virtualbase_caseSensitive(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__color = 0;
@@ -373,12 +302,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QColor* virtualbase_color(int style) const {
-
-		return new QColor(QsciLexerFortran::color(static_cast<int>(style)));
-
-	}
+	friend QColor* QsciLexerFortran_virtualbase_color(const void* self, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eolFill = 0;
@@ -396,12 +320,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eolFill(int style) const {
-
-		return QsciLexerFortran::eolFill(static_cast<int>(style));
-
-	}
+	friend bool QsciLexerFortran_virtualbase_eolFill(const void* self, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__font = 0;
@@ -419,12 +338,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QFont* virtualbase_font(int style) const {
-
-		return new QFont(QsciLexerFortran::font(static_cast<int>(style)));
-
-	}
+	friend QFont* QsciLexerFortran_virtualbase_font(const void* self, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__indentationGuideView = 0;
@@ -441,12 +355,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_indentationGuideView() const {
-
-		return QsciLexerFortran::indentationGuideView();
-
-	}
+	friend int QsciLexerFortran_virtualbase_indentationGuideView(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keywords = 0;
@@ -464,12 +373,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	const char* virtualbase_keywords(int set) const {
-
-		return (const char*) QsciLexerFortran::keywords(static_cast<int>(set));
-
-	}
+	friend const char* QsciLexerFortran_virtualbase_keywords(const void* self, int set);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__defaultStyle = 0;
@@ -486,12 +390,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_defaultStyle() const {
-
-		return QsciLexerFortran::defaultStyle();
-
-	}
+	friend int QsciLexerFortran_virtualbase_defaultStyle(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__description = 0;
@@ -526,12 +425,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QColor* virtualbase_paper(int style) const {
-
-		return new QColor(QsciLexerFortran::paper(static_cast<int>(style)));
-
-	}
+	friend QColor* QsciLexerFortran_virtualbase_paper(const void* self, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__defaultColorWithStyle = 0;
@@ -549,12 +443,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QColor* virtualbase_defaultColorWithStyle(int style) const {
-
-		return new QColor(QsciLexerFortran::defaultColor(static_cast<int>(style)));
-
-	}
+	friend QColor* QsciLexerFortran_virtualbase_defaultColorWithStyle(const void* self, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__defaultEolFill = 0;
@@ -572,12 +461,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_defaultEolFill(int style) const {
-
-		return QsciLexerFortran::defaultEolFill(static_cast<int>(style));
-
-	}
+	friend bool QsciLexerFortran_virtualbase_defaultEolFill(const void* self, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__defaultFontWithStyle = 0;
@@ -595,12 +479,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QFont* virtualbase_defaultFontWithStyle(int style) const {
-
-		return new QFont(QsciLexerFortran::defaultFont(static_cast<int>(style)));
-
-	}
+	friend QFont* QsciLexerFortran_virtualbase_defaultFontWithStyle(const void* self, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__defaultPaperWithStyle = 0;
@@ -618,12 +497,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QColor* virtualbase_defaultPaperWithStyle(int style) const {
-
-		return new QColor(QsciLexerFortran::defaultPaper(static_cast<int>(style)));
-
-	}
+	friend QColor* QsciLexerFortran_virtualbase_defaultPaperWithStyle(const void* self, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setEditor = 0;
@@ -642,12 +516,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setEditor(QsciScintilla* editor) {
-
-		QsciLexerFortran::setEditor(editor);
-
-	}
+	friend void QsciLexerFortran_virtualbase_setEditor(void* self, QsciScintilla* editor);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__refreshProperties = 0;
@@ -665,12 +534,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_refreshProperties() {
-
-		QsciLexerFortran::refreshProperties();
-
-	}
+	friend void QsciLexerFortran_virtualbase_refreshProperties(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__styleBitsNeeded = 0;
@@ -687,12 +551,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_styleBitsNeeded() const {
-
-		return QsciLexerFortran::styleBitsNeeded();
-
-	}
+	friend int QsciLexerFortran_virtualbase_styleBitsNeeded(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wordCharacters = 0;
@@ -709,12 +568,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	const char* virtualbase_wordCharacters() const {
-
-		return (const char*) QsciLexerFortran::wordCharacters();
-
-	}
+	friend const char* QsciLexerFortran_virtualbase_wordCharacters(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setAutoIndentStyle = 0;
@@ -733,12 +587,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setAutoIndentStyle(int autoindentstyle) {
-
-		QsciLexerFortran::setAutoIndentStyle(static_cast<int>(autoindentstyle));
-
-	}
+	friend void QsciLexerFortran_virtualbase_setAutoIndentStyle(void* self, int autoindentstyle);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setColor = 0;
@@ -760,12 +609,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setColor(QColor* c, int style) {
-
-		QsciLexerFortran::setColor(*c, static_cast<int>(style));
-
-	}
+	friend void QsciLexerFortran_virtualbase_setColor(void* self, QColor* c, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setEolFill = 0;
@@ -785,12 +629,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setEolFill(bool eoffill, int style) {
-
-		QsciLexerFortran::setEolFill(eoffill, static_cast<int>(style));
-
-	}
+	friend void QsciLexerFortran_virtualbase_setEolFill(void* self, bool eoffill, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setFont = 0;
@@ -812,12 +651,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setFont(QFont* f, int style) {
-
-		QsciLexerFortran::setFont(*f, static_cast<int>(style));
-
-	}
+	friend void QsciLexerFortran_virtualbase_setFont(void* self, QFont* f, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setPaper = 0;
@@ -839,12 +673,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setPaper(QColor* c, int style) {
-
-		QsciLexerFortran::setPaper(*c, static_cast<int>(style));
-
-	}
+	friend void QsciLexerFortran_virtualbase_setPaper(void* self, QColor* c, int style);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__readProperties = 0;
@@ -872,13 +701,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_readProperties(QSettings* qs, struct miqt_string prefix) {
-		QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
-
-		return QsciLexerFortran::readProperties(*qs, prefix_QString);
-
-	}
+	friend bool QsciLexerFortran_virtualbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__writeProperties = 0;
@@ -906,13 +729,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_writeProperties(QSettings* qs, struct miqt_string prefix) const {
-		QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
-
-		return QsciLexerFortran::writeProperties(*qs, prefix_QString);
-
-	}
+	friend bool QsciLexerFortran_virtualbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -930,12 +747,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QsciLexerFortran::event(event);
-
-	}
+	friend bool QsciLexerFortran_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -954,12 +766,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QsciLexerFortran::eventFilter(watched, event);
-
-	}
+	friend bool QsciLexerFortran_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -978,12 +785,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QsciLexerFortran::timerEvent(event);
-
-	}
+	friend void QsciLexerFortran_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1002,12 +804,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QsciLexerFortran::childEvent(event);
-
-	}
+	friend void QsciLexerFortran_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1026,12 +823,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QsciLexerFortran::customEvent(event);
-
-	}
+	friend void QsciLexerFortran_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1052,12 +844,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QsciLexerFortran::connectNotify(*signal);
-
-	}
+	friend void QsciLexerFortran_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1078,12 +865,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QsciLexerFortran::disconnectNotify(*signal);
-
-	}
+	friend void QsciLexerFortran_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend bool QsciLexerFortran_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix);
@@ -1170,7 +952,9 @@ bool QsciLexerFortran_override_virtual_setFoldCompact(void* self, intptr_t slot)
 }
 
 void QsciLexerFortran_virtualbase_setFoldCompact(void* self, bool fold) {
-	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_setFoldCompact(fold);
+
+	( (MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::setFoldCompact(fold);
+
 }
 
 bool QsciLexerFortran_override_virtual_language(void* self, intptr_t slot) {
@@ -1194,7 +978,9 @@ bool QsciLexerFortran_override_virtual_lexer(void* self, intptr_t slot) {
 }
 
 const char* QsciLexerFortran_virtualbase_lexer(const void* self) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_lexer();
+
+	return (const char*) ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::lexer();
+
 }
 
 bool QsciLexerFortran_override_virtual_lexerId(void* self, intptr_t slot) {
@@ -1208,7 +994,9 @@ bool QsciLexerFortran_override_virtual_lexerId(void* self, intptr_t slot) {
 }
 
 int QsciLexerFortran_virtualbase_lexerId(const void* self) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_lexerId();
+
+	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::lexerId();
+
 }
 
 bool QsciLexerFortran_override_virtual_autoCompletionFillups(void* self, intptr_t slot) {
@@ -1222,7 +1010,9 @@ bool QsciLexerFortran_override_virtual_autoCompletionFillups(void* self, intptr_
 }
 
 const char* QsciLexerFortran_virtualbase_autoCompletionFillups(const void* self) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_autoCompletionFillups();
+
+	return (const char*) ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::autoCompletionFillups();
+
 }
 
 bool QsciLexerFortran_override_virtual_autoCompletionWordSeparators(void* self, intptr_t slot) {
@@ -1236,7 +1026,25 @@ bool QsciLexerFortran_override_virtual_autoCompletionWordSeparators(void* self, 
 }
 
 struct miqt_array /* of struct miqt_string */  QsciLexerFortran_virtualbase_autoCompletionWordSeparators(const void* self) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_autoCompletionWordSeparators();
+
+	QStringList _ret = ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::autoCompletionWordSeparators();
+	// Convert QList<> from C++ memory to manually-managed C memory
+	struct miqt_string* _arr = static_cast<struct miqt_string*>(malloc(sizeof(struct miqt_string) * _ret.length()));
+	for (size_t i = 0, e = _ret.length(); i < e; ++i) {
+		QString _lv_ret = _ret[i];
+		// Convert QString from UTF-16 in C++ RAII memory to UTF-8 in manually-managed C memory
+		QByteArray _lv_b = _lv_ret.toUtf8();
+		struct miqt_string _lv_ms;
+		_lv_ms.len = _lv_b.length();
+		_lv_ms.data = static_cast<char*>(malloc(_lv_ms.len));
+		memcpy(_lv_ms.data, _lv_b.data(), _lv_ms.len);
+		_arr[i] = _lv_ms;
+	}
+	struct miqt_array _out;
+	_out.len = _ret.length();
+	_out.data = static_cast<void*>(_arr);
+	return _out;
+
 }
 
 bool QsciLexerFortran_override_virtual_blockEnd(void* self, intptr_t slot) {
@@ -1250,7 +1058,9 @@ bool QsciLexerFortran_override_virtual_blockEnd(void* self, intptr_t slot) {
 }
 
 const char* QsciLexerFortran_virtualbase_blockEnd(const void* self, int* style) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_blockEnd(style);
+
+	return (const char*) ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::blockEnd(static_cast<int*>(style));
+
 }
 
 bool QsciLexerFortran_override_virtual_blockLookback(void* self, intptr_t slot) {
@@ -1264,7 +1074,9 @@ bool QsciLexerFortran_override_virtual_blockLookback(void* self, intptr_t slot) 
 }
 
 int QsciLexerFortran_virtualbase_blockLookback(const void* self) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_blockLookback();
+
+	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::blockLookback();
+
 }
 
 bool QsciLexerFortran_override_virtual_blockStart(void* self, intptr_t slot) {
@@ -1278,7 +1090,9 @@ bool QsciLexerFortran_override_virtual_blockStart(void* self, intptr_t slot) {
 }
 
 const char* QsciLexerFortran_virtualbase_blockStart(const void* self, int* style) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_blockStart(style);
+
+	return (const char*) ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::blockStart(static_cast<int*>(style));
+
 }
 
 bool QsciLexerFortran_override_virtual_blockStartKeyword(void* self, intptr_t slot) {
@@ -1292,7 +1106,9 @@ bool QsciLexerFortran_override_virtual_blockStartKeyword(void* self, intptr_t sl
 }
 
 const char* QsciLexerFortran_virtualbase_blockStartKeyword(const void* self, int* style) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_blockStartKeyword(style);
+
+	return (const char*) ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::blockStartKeyword(static_cast<int*>(style));
+
 }
 
 bool QsciLexerFortran_override_virtual_braceStyle(void* self, intptr_t slot) {
@@ -1306,7 +1122,9 @@ bool QsciLexerFortran_override_virtual_braceStyle(void* self, intptr_t slot) {
 }
 
 int QsciLexerFortran_virtualbase_braceStyle(const void* self) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_braceStyle();
+
+	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::braceStyle();
+
 }
 
 bool QsciLexerFortran_override_virtual_caseSensitive(void* self, intptr_t slot) {
@@ -1320,7 +1138,9 @@ bool QsciLexerFortran_override_virtual_caseSensitive(void* self, intptr_t slot) 
 }
 
 bool QsciLexerFortran_virtualbase_caseSensitive(const void* self) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_caseSensitive();
+
+	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::caseSensitive();
+
 }
 
 bool QsciLexerFortran_override_virtual_color(void* self, intptr_t slot) {
@@ -1334,7 +1154,9 @@ bool QsciLexerFortran_override_virtual_color(void* self, intptr_t slot) {
 }
 
 QColor* QsciLexerFortran_virtualbase_color(const void* self, int style) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_color(style);
+
+	return new QColor(( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::color(static_cast<int>(style)));
+
 }
 
 bool QsciLexerFortran_override_virtual_eolFill(void* self, intptr_t slot) {
@@ -1348,7 +1170,9 @@ bool QsciLexerFortran_override_virtual_eolFill(void* self, intptr_t slot) {
 }
 
 bool QsciLexerFortran_virtualbase_eolFill(const void* self, int style) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_eolFill(style);
+
+	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::eolFill(static_cast<int>(style));
+
 }
 
 bool QsciLexerFortran_override_virtual_font(void* self, intptr_t slot) {
@@ -1362,7 +1186,9 @@ bool QsciLexerFortran_override_virtual_font(void* self, intptr_t slot) {
 }
 
 QFont* QsciLexerFortran_virtualbase_font(const void* self, int style) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_font(style);
+
+	return new QFont(( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::font(static_cast<int>(style)));
+
 }
 
 bool QsciLexerFortran_override_virtual_indentationGuideView(void* self, intptr_t slot) {
@@ -1376,7 +1202,9 @@ bool QsciLexerFortran_override_virtual_indentationGuideView(void* self, intptr_t
 }
 
 int QsciLexerFortran_virtualbase_indentationGuideView(const void* self) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_indentationGuideView();
+
+	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::indentationGuideView();
+
 }
 
 bool QsciLexerFortran_override_virtual_keywords(void* self, intptr_t slot) {
@@ -1390,7 +1218,9 @@ bool QsciLexerFortran_override_virtual_keywords(void* self, intptr_t slot) {
 }
 
 const char* QsciLexerFortran_virtualbase_keywords(const void* self, int set) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_keywords(set);
+
+	return (const char*) ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::keywords(static_cast<int>(set));
+
 }
 
 bool QsciLexerFortran_override_virtual_defaultStyle(void* self, intptr_t slot) {
@@ -1404,7 +1234,9 @@ bool QsciLexerFortran_override_virtual_defaultStyle(void* self, intptr_t slot) {
 }
 
 int QsciLexerFortran_virtualbase_defaultStyle(const void* self) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_defaultStyle();
+
+	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::defaultStyle();
+
 }
 
 bool QsciLexerFortran_override_virtual_description(void* self, intptr_t slot) {
@@ -1428,7 +1260,9 @@ bool QsciLexerFortran_override_virtual_paper(void* self, intptr_t slot) {
 }
 
 QColor* QsciLexerFortran_virtualbase_paper(const void* self, int style) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_paper(style);
+
+	return new QColor(( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::paper(static_cast<int>(style)));
+
 }
 
 bool QsciLexerFortran_override_virtual_defaultColorWithStyle(void* self, intptr_t slot) {
@@ -1442,7 +1276,9 @@ bool QsciLexerFortran_override_virtual_defaultColorWithStyle(void* self, intptr_
 }
 
 QColor* QsciLexerFortran_virtualbase_defaultColorWithStyle(const void* self, int style) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_defaultColorWithStyle(style);
+
+	return new QColor(( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::defaultColor(static_cast<int>(style)));
+
 }
 
 bool QsciLexerFortran_override_virtual_defaultEolFill(void* self, intptr_t slot) {
@@ -1456,7 +1292,9 @@ bool QsciLexerFortran_override_virtual_defaultEolFill(void* self, intptr_t slot)
 }
 
 bool QsciLexerFortran_virtualbase_defaultEolFill(const void* self, int style) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_defaultEolFill(style);
+
+	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::defaultEolFill(static_cast<int>(style));
+
 }
 
 bool QsciLexerFortran_override_virtual_defaultFontWithStyle(void* self, intptr_t slot) {
@@ -1470,7 +1308,9 @@ bool QsciLexerFortran_override_virtual_defaultFontWithStyle(void* self, intptr_t
 }
 
 QFont* QsciLexerFortran_virtualbase_defaultFontWithStyle(const void* self, int style) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_defaultFontWithStyle(style);
+
+	return new QFont(( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::defaultFont(static_cast<int>(style)));
+
 }
 
 bool QsciLexerFortran_override_virtual_defaultPaperWithStyle(void* self, intptr_t slot) {
@@ -1484,7 +1324,9 @@ bool QsciLexerFortran_override_virtual_defaultPaperWithStyle(void* self, intptr_
 }
 
 QColor* QsciLexerFortran_virtualbase_defaultPaperWithStyle(const void* self, int style) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_defaultPaperWithStyle(style);
+
+	return new QColor(( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::defaultPaper(static_cast<int>(style)));
+
 }
 
 bool QsciLexerFortran_override_virtual_setEditor(void* self, intptr_t slot) {
@@ -1498,7 +1340,9 @@ bool QsciLexerFortran_override_virtual_setEditor(void* self, intptr_t slot) {
 }
 
 void QsciLexerFortran_virtualbase_setEditor(void* self, QsciScintilla* editor) {
-	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_setEditor(editor);
+
+	( (MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::setEditor(editor);
+
 }
 
 bool QsciLexerFortran_override_virtual_refreshProperties(void* self, intptr_t slot) {
@@ -1512,7 +1356,9 @@ bool QsciLexerFortran_override_virtual_refreshProperties(void* self, intptr_t sl
 }
 
 void QsciLexerFortran_virtualbase_refreshProperties(void* self) {
-	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_refreshProperties();
+
+	( (MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::refreshProperties();
+
 }
 
 bool QsciLexerFortran_override_virtual_styleBitsNeeded(void* self, intptr_t slot) {
@@ -1526,7 +1372,9 @@ bool QsciLexerFortran_override_virtual_styleBitsNeeded(void* self, intptr_t slot
 }
 
 int QsciLexerFortran_virtualbase_styleBitsNeeded(const void* self) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_styleBitsNeeded();
+
+	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::styleBitsNeeded();
+
 }
 
 bool QsciLexerFortran_override_virtual_wordCharacters(void* self, intptr_t slot) {
@@ -1540,7 +1388,9 @@ bool QsciLexerFortran_override_virtual_wordCharacters(void* self, intptr_t slot)
 }
 
 const char* QsciLexerFortran_virtualbase_wordCharacters(const void* self) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_wordCharacters();
+
+	return (const char*) ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::wordCharacters();
+
 }
 
 bool QsciLexerFortran_override_virtual_setAutoIndentStyle(void* self, intptr_t slot) {
@@ -1554,7 +1404,9 @@ bool QsciLexerFortran_override_virtual_setAutoIndentStyle(void* self, intptr_t s
 }
 
 void QsciLexerFortran_virtualbase_setAutoIndentStyle(void* self, int autoindentstyle) {
-	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_setAutoIndentStyle(autoindentstyle);
+
+	( (MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::setAutoIndentStyle(static_cast<int>(autoindentstyle));
+
 }
 
 bool QsciLexerFortran_override_virtual_setColor(void* self, intptr_t slot) {
@@ -1568,7 +1420,9 @@ bool QsciLexerFortran_override_virtual_setColor(void* self, intptr_t slot) {
 }
 
 void QsciLexerFortran_virtualbase_setColor(void* self, QColor* c, int style) {
-	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_setColor(c, style);
+
+	( (MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::setColor(*c, static_cast<int>(style));
+
 }
 
 bool QsciLexerFortran_override_virtual_setEolFill(void* self, intptr_t slot) {
@@ -1582,7 +1436,9 @@ bool QsciLexerFortran_override_virtual_setEolFill(void* self, intptr_t slot) {
 }
 
 void QsciLexerFortran_virtualbase_setEolFill(void* self, bool eoffill, int style) {
-	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_setEolFill(eoffill, style);
+
+	( (MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::setEolFill(eoffill, static_cast<int>(style));
+
 }
 
 bool QsciLexerFortran_override_virtual_setFont(void* self, intptr_t slot) {
@@ -1596,7 +1452,9 @@ bool QsciLexerFortran_override_virtual_setFont(void* self, intptr_t slot) {
 }
 
 void QsciLexerFortran_virtualbase_setFont(void* self, QFont* f, int style) {
-	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_setFont(f, style);
+
+	( (MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::setFont(*f, static_cast<int>(style));
+
 }
 
 bool QsciLexerFortran_override_virtual_setPaper(void* self, intptr_t slot) {
@@ -1610,7 +1468,9 @@ bool QsciLexerFortran_override_virtual_setPaper(void* self, intptr_t slot) {
 }
 
 void QsciLexerFortran_virtualbase_setPaper(void* self, QColor* c, int style) {
-	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_setPaper(c, style);
+
+	( (MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::setPaper(*c, static_cast<int>(style));
+
 }
 
 bool QsciLexerFortran_override_virtual_readProperties(void* self, intptr_t slot) {
@@ -1624,7 +1484,10 @@ bool QsciLexerFortran_override_virtual_readProperties(void* self, intptr_t slot)
 }
 
 bool QsciLexerFortran_virtualbase_readProperties(void* self, QSettings* qs, struct miqt_string prefix) {
-	return ( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_readProperties(qs, prefix);
+	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
+
+	return ( (MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::readProperties(*qs, prefix_QString);
+
 }
 
 bool QsciLexerFortran_override_virtual_writeProperties(void* self, intptr_t slot) {
@@ -1638,7 +1501,10 @@ bool QsciLexerFortran_override_virtual_writeProperties(void* self, intptr_t slot
 }
 
 bool QsciLexerFortran_virtualbase_writeProperties(const void* self, QSettings* qs, struct miqt_string prefix) {
-	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_writeProperties(qs, prefix);
+	QString prefix_QString = QString::fromUtf8(prefix.data, prefix.len);
+
+	return ( (const MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::writeProperties(*qs, prefix_QString);
+
 }
 
 bool QsciLexerFortran_override_virtual_event(void* self, intptr_t slot) {
@@ -1652,7 +1518,9 @@ bool QsciLexerFortran_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QsciLexerFortran_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::event(event);
+
 }
 
 bool QsciLexerFortran_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1666,7 +1534,9 @@ bool QsciLexerFortran_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QsciLexerFortran_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::eventFilter(watched, event);
+
 }
 
 bool QsciLexerFortran_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1680,7 +1550,9 @@ bool QsciLexerFortran_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QsciLexerFortran_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::timerEvent(event);
+
 }
 
 bool QsciLexerFortran_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1694,7 +1566,9 @@ bool QsciLexerFortran_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QsciLexerFortran_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::childEvent(event);
+
 }
 
 bool QsciLexerFortran_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1708,7 +1582,9 @@ bool QsciLexerFortran_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QsciLexerFortran_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::customEvent(event);
+
 }
 
 bool QsciLexerFortran_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1722,7 +1598,9 @@ bool QsciLexerFortran_override_virtual_connectNotify(void* self, intptr_t slot) 
 }
 
 void QsciLexerFortran_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::connectNotify(*signal);
+
 }
 
 bool QsciLexerFortran_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1736,7 +1614,9 @@ bool QsciLexerFortran_override_virtual_disconnectNotify(void* self, intptr_t slo
 }
 
 void QsciLexerFortran_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQsciLexerFortran*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQsciLexerFortran*)(self) )->MiqtVirtualQsciLexerFortran::disconnectNotify(*signal);
+
 }
 
 bool QsciLexerFortran_protectedbase_readProperties(bool* _dynamic_cast_ok, void* self, QSettings* qs, struct miqt_string prefix) {

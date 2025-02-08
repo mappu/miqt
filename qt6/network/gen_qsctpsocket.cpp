@@ -85,12 +85,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_close() {
-
-		QSctpSocket::close();
-
-	}
+	friend void QSctpSocket_virtualbase_close(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectFromHost = 0;
@@ -108,12 +103,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectFromHost() {
-
-		QSctpSocket::disconnectFromHost();
-
-	}
+	friend void QSctpSocket_virtualbase_disconnectFromHost(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__readData = 0;
@@ -133,13 +123,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_readData(char* data, long long maxlen) {
-
-		qint64 _ret = QSctpSocket::readData(data, static_cast<qint64>(maxlen));
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QSctpSocket_virtualbase_readData(void* self, char* data, long long maxlen);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__readLineData = 0;
@@ -159,13 +143,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_readLineData(char* data, long long maxlen) {
-
-		qint64 _ret = QSctpSocket::readLineData(data, static_cast<qint64>(maxlen));
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QSctpSocket_virtualbase_readLineData(void* self, char* data, long long maxlen);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resume = 0;
@@ -183,12 +161,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resume() {
-
-		QSctpSocket::resume();
-
-	}
+	friend void QSctpSocket_virtualbase_resume(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__bind = 0;
@@ -212,12 +185,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_bind(QHostAddress* address, uint16_t port, int mode) {
-
-		return QSctpSocket::bind(*address, static_cast<quint16>(port), static_cast<QAbstractSocket::BindMode>(mode));
-
-	}
+	friend bool QSctpSocket_virtualbase_bind(void* self, QHostAddress* address, uint16_t port, int mode);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectToHost = 0;
@@ -249,13 +217,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectToHost(struct miqt_string hostName, uint16_t port, int mode, int protocol) {
-		QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
-
-		QSctpSocket::connectToHost(hostName_QString, static_cast<quint16>(port), static_cast<QIODeviceBase::OpenMode>(mode), static_cast<QAbstractSocket::NetworkLayerProtocol>(protocol));
-
-	}
+	friend void QSctpSocket_virtualbase_connectToHost(void* self, struct miqt_string hostName, uint16_t port, int mode, int protocol);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__bytesAvailable = 0;
@@ -272,13 +234,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_bytesAvailable() const {
-
-		qint64 _ret = QSctpSocket::bytesAvailable();
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QSctpSocket_virtualbase_bytesAvailable(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__bytesToWrite = 0;
@@ -295,13 +251,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_bytesToWrite() const {
-
-		qint64 _ret = QSctpSocket::bytesToWrite();
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QSctpSocket_virtualbase_bytesToWrite(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setReadBufferSize = 0;
@@ -321,12 +271,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setReadBufferSize(long long size) {
-
-		QSctpSocket::setReadBufferSize(static_cast<qint64>(size));
-
-	}
+	friend void QSctpSocket_virtualbase_setReadBufferSize(void* self, long long size);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__socketDescriptor = 0;
@@ -343,13 +288,7 @@ public:
 		return (qintptr)(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	intptr_t virtualbase_socketDescriptor() const {
-
-		qintptr _ret = QSctpSocket::socketDescriptor();
-		return (intptr_t)(_ret);
-
-	}
+	friend intptr_t QSctpSocket_virtualbase_socketDescriptor(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setSocketDescriptor = 0;
@@ -372,12 +311,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_setSocketDescriptor(intptr_t socketDescriptor, int state, int openMode) {
-
-		return QSctpSocket::setSocketDescriptor((qintptr)(socketDescriptor), static_cast<QAbstractSocket::SocketState>(state), static_cast<QIODeviceBase::OpenMode>(openMode));
-
-	}
+	friend bool QSctpSocket_virtualbase_setSocketDescriptor(void* self, intptr_t socketDescriptor, int state, int openMode);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setSocketOption = 0;
@@ -400,12 +334,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setSocketOption(int option, QVariant* value) {
-
-		QSctpSocket::setSocketOption(static_cast<QAbstractSocket::SocketOption>(option), *value);
-
-	}
+	friend void QSctpSocket_virtualbase_setSocketOption(void* self, int option, QVariant* value);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__socketOption = 0;
@@ -424,12 +353,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_socketOption(int option) {
-
-		return new QVariant(QSctpSocket::socketOption(static_cast<QAbstractSocket::SocketOption>(option)));
-
-	}
+	friend QVariant* QSctpSocket_virtualbase_socketOption(void* self, int option);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isSequential = 0;
@@ -446,12 +370,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isSequential() const {
-
-		return QSctpSocket::isSequential();
-
-	}
+	friend bool QSctpSocket_virtualbase_isSequential(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__waitForConnected = 0;
@@ -469,12 +388,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_waitForConnected(int msecs) {
-
-		return QSctpSocket::waitForConnected(static_cast<int>(msecs));
-
-	}
+	friend bool QSctpSocket_virtualbase_waitForConnected(void* self, int msecs);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__waitForReadyRead = 0;
@@ -492,12 +406,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_waitForReadyRead(int msecs) {
-
-		return QSctpSocket::waitForReadyRead(static_cast<int>(msecs));
-
-	}
+	friend bool QSctpSocket_virtualbase_waitForReadyRead(void* self, int msecs);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__waitForBytesWritten = 0;
@@ -515,12 +424,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_waitForBytesWritten(int msecs) {
-
-		return QSctpSocket::waitForBytesWritten(static_cast<int>(msecs));
-
-	}
+	friend bool QSctpSocket_virtualbase_waitForBytesWritten(void* self, int msecs);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__waitForDisconnected = 0;
@@ -538,12 +442,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_waitForDisconnected(int msecs) {
-
-		return QSctpSocket::waitForDisconnected(static_cast<int>(msecs));
-
-	}
+	friend bool QSctpSocket_virtualbase_waitForDisconnected(void* self, int msecs);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__skipData = 0;
@@ -562,13 +461,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_skipData(long long maxSize) {
-
-		qint64 _ret = QSctpSocket::skipData(static_cast<qint64>(maxSize));
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QSctpSocket_virtualbase_skipData(void* self, long long maxSize);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__writeData = 0;
@@ -588,13 +481,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_writeData(const char* data, long long len) {
-
-		qint64 _ret = QSctpSocket::writeData(data, static_cast<qint64>(len));
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QSctpSocket_virtualbase_writeData(void* self, const char* data, long long len);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -613,12 +500,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_open(int mode) {
-
-		return QSctpSocket::open(static_cast<QIODeviceBase::OpenMode>(mode));
-
-	}
+	friend bool QSctpSocket_virtualbase_open(void* self, int mode);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__pos = 0;
@@ -635,13 +517,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_pos() const {
-
-		qint64 _ret = QSctpSocket::pos();
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QSctpSocket_virtualbase_pos(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__size = 0;
@@ -658,13 +534,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_size() const {
-
-		qint64 _ret = QSctpSocket::size();
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QSctpSocket_virtualbase_size(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__seek = 0;
@@ -683,12 +553,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_seek(long long pos) {
-
-		return QSctpSocket::seek(static_cast<qint64>(pos));
-
-	}
+	friend bool QSctpSocket_virtualbase_seek(void* self, long long pos);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__atEnd = 0;
@@ -705,12 +570,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_atEnd() const {
-
-		return QSctpSocket::atEnd();
-
-	}
+	friend bool QSctpSocket_virtualbase_atEnd(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__reset = 0;
@@ -727,12 +587,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_reset() {
-
-		return QSctpSocket::reset();
-
-	}
+	friend bool QSctpSocket_virtualbase_reset(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__canReadLine = 0;
@@ -749,12 +604,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_canReadLine() const {
-
-		return QSctpSocket::canReadLine();
-
-	}
+	friend bool QSctpSocket_virtualbase_canReadLine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -772,12 +622,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QSctpSocket::event(event);
-
-	}
+	friend bool QSctpSocket_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -796,12 +641,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QSctpSocket::eventFilter(watched, event);
-
-	}
+	friend bool QSctpSocket_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -820,12 +660,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QSctpSocket::timerEvent(event);
-
-	}
+	friend void QSctpSocket_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -844,12 +679,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QSctpSocket::childEvent(event);
-
-	}
+	friend void QSctpSocket_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -868,12 +698,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QSctpSocket::customEvent(event);
-
-	}
+	friend void QSctpSocket_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -894,12 +719,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QSctpSocket::connectNotify(*signal);
-
-	}
+	friend void QSctpSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -920,12 +740,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QSctpSocket::disconnectNotify(*signal);
-
-	}
+	friend void QSctpSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QSctpSocket_protectedbase_setSocketState(bool* _dynamic_cast_ok, void* self, int state);
@@ -1035,7 +850,9 @@ bool QSctpSocket_override_virtual_close(void* self, intptr_t slot) {
 }
 
 void QSctpSocket_virtualbase_close(void* self) {
-	( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_close();
+
+	( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::close();
+
 }
 
 bool QSctpSocket_override_virtual_disconnectFromHost(void* self, intptr_t slot) {
@@ -1049,7 +866,9 @@ bool QSctpSocket_override_virtual_disconnectFromHost(void* self, intptr_t slot) 
 }
 
 void QSctpSocket_virtualbase_disconnectFromHost(void* self) {
-	( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_disconnectFromHost();
+
+	( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::disconnectFromHost();
+
 }
 
 bool QSctpSocket_override_virtual_readData(void* self, intptr_t slot) {
@@ -1063,7 +882,10 @@ bool QSctpSocket_override_virtual_readData(void* self, intptr_t slot) {
 }
 
 long long QSctpSocket_virtualbase_readData(void* self, char* data, long long maxlen) {
-	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_readData(data, maxlen);
+
+	qint64 _ret = ( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::readData(data, static_cast<qint64>(maxlen));
+	return static_cast<long long>(_ret);
+
 }
 
 bool QSctpSocket_override_virtual_readLineData(void* self, intptr_t slot) {
@@ -1077,7 +899,10 @@ bool QSctpSocket_override_virtual_readLineData(void* self, intptr_t slot) {
 }
 
 long long QSctpSocket_virtualbase_readLineData(void* self, char* data, long long maxlen) {
-	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_readLineData(data, maxlen);
+
+	qint64 _ret = ( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::readLineData(data, static_cast<qint64>(maxlen));
+	return static_cast<long long>(_ret);
+
 }
 
 bool QSctpSocket_override_virtual_resume(void* self, intptr_t slot) {
@@ -1091,7 +916,9 @@ bool QSctpSocket_override_virtual_resume(void* self, intptr_t slot) {
 }
 
 void QSctpSocket_virtualbase_resume(void* self) {
-	( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_resume();
+
+	( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::resume();
+
 }
 
 bool QSctpSocket_override_virtual_bind(void* self, intptr_t slot) {
@@ -1105,7 +932,9 @@ bool QSctpSocket_override_virtual_bind(void* self, intptr_t slot) {
 }
 
 bool QSctpSocket_virtualbase_bind(void* self, QHostAddress* address, uint16_t port, int mode) {
-	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_bind(address, port, mode);
+
+	return ( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::bind(*address, static_cast<quint16>(port), static_cast<MiqtVirtualQSctpSocket::BindMode>(mode));
+
 }
 
 bool QSctpSocket_override_virtual_connectToHost(void* self, intptr_t slot) {
@@ -1119,7 +948,10 @@ bool QSctpSocket_override_virtual_connectToHost(void* self, intptr_t slot) {
 }
 
 void QSctpSocket_virtualbase_connectToHost(void* self, struct miqt_string hostName, uint16_t port, int mode, int protocol) {
-	( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_connectToHost(hostName, port, mode, protocol);
+	QString hostName_QString = QString::fromUtf8(hostName.data, hostName.len);
+
+	( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::connectToHost(hostName_QString, static_cast<quint16>(port), static_cast<MiqtVirtualQSctpSocket::OpenMode>(mode), static_cast<MiqtVirtualQSctpSocket::NetworkLayerProtocol>(protocol));
+
 }
 
 bool QSctpSocket_override_virtual_bytesAvailable(void* self, intptr_t slot) {
@@ -1133,7 +965,10 @@ bool QSctpSocket_override_virtual_bytesAvailable(void* self, intptr_t slot) {
 }
 
 long long QSctpSocket_virtualbase_bytesAvailable(const void* self) {
-	return ( (const MiqtVirtualQSctpSocket*)(self) )->virtualbase_bytesAvailable();
+
+	qint64 _ret = ( (const MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::bytesAvailable();
+	return static_cast<long long>(_ret);
+
 }
 
 bool QSctpSocket_override_virtual_bytesToWrite(void* self, intptr_t slot) {
@@ -1147,7 +982,10 @@ bool QSctpSocket_override_virtual_bytesToWrite(void* self, intptr_t slot) {
 }
 
 long long QSctpSocket_virtualbase_bytesToWrite(const void* self) {
-	return ( (const MiqtVirtualQSctpSocket*)(self) )->virtualbase_bytesToWrite();
+
+	qint64 _ret = ( (const MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::bytesToWrite();
+	return static_cast<long long>(_ret);
+
 }
 
 bool QSctpSocket_override_virtual_setReadBufferSize(void* self, intptr_t slot) {
@@ -1161,7 +999,9 @@ bool QSctpSocket_override_virtual_setReadBufferSize(void* self, intptr_t slot) {
 }
 
 void QSctpSocket_virtualbase_setReadBufferSize(void* self, long long size) {
-	( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_setReadBufferSize(size);
+
+	( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::setReadBufferSize(static_cast<qint64>(size));
+
 }
 
 bool QSctpSocket_override_virtual_socketDescriptor(void* self, intptr_t slot) {
@@ -1175,7 +1015,10 @@ bool QSctpSocket_override_virtual_socketDescriptor(void* self, intptr_t slot) {
 }
 
 intptr_t QSctpSocket_virtualbase_socketDescriptor(const void* self) {
-	return ( (const MiqtVirtualQSctpSocket*)(self) )->virtualbase_socketDescriptor();
+
+	qintptr _ret = ( (const MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::socketDescriptor();
+	return (intptr_t)(_ret);
+
 }
 
 bool QSctpSocket_override_virtual_setSocketDescriptor(void* self, intptr_t slot) {
@@ -1189,7 +1032,9 @@ bool QSctpSocket_override_virtual_setSocketDescriptor(void* self, intptr_t slot)
 }
 
 bool QSctpSocket_virtualbase_setSocketDescriptor(void* self, intptr_t socketDescriptor, int state, int openMode) {
-	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_setSocketDescriptor(socketDescriptor, state, openMode);
+
+	return ( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::setSocketDescriptor((qintptr)(socketDescriptor), static_cast<MiqtVirtualQSctpSocket::SocketState>(state), static_cast<MiqtVirtualQSctpSocket::OpenMode>(openMode));
+
 }
 
 bool QSctpSocket_override_virtual_setSocketOption(void* self, intptr_t slot) {
@@ -1203,7 +1048,9 @@ bool QSctpSocket_override_virtual_setSocketOption(void* self, intptr_t slot) {
 }
 
 void QSctpSocket_virtualbase_setSocketOption(void* self, int option, QVariant* value) {
-	( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_setSocketOption(option, value);
+
+	( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::setSocketOption(static_cast<MiqtVirtualQSctpSocket::SocketOption>(option), *value);
+
 }
 
 bool QSctpSocket_override_virtual_socketOption(void* self, intptr_t slot) {
@@ -1217,7 +1064,9 @@ bool QSctpSocket_override_virtual_socketOption(void* self, intptr_t slot) {
 }
 
 QVariant* QSctpSocket_virtualbase_socketOption(void* self, int option) {
-	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_socketOption(option);
+
+	return new QVariant(( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::socketOption(static_cast<MiqtVirtualQSctpSocket::SocketOption>(option)));
+
 }
 
 bool QSctpSocket_override_virtual_isSequential(void* self, intptr_t slot) {
@@ -1231,7 +1080,9 @@ bool QSctpSocket_override_virtual_isSequential(void* self, intptr_t slot) {
 }
 
 bool QSctpSocket_virtualbase_isSequential(const void* self) {
-	return ( (const MiqtVirtualQSctpSocket*)(self) )->virtualbase_isSequential();
+
+	return ( (const MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::isSequential();
+
 }
 
 bool QSctpSocket_override_virtual_waitForConnected(void* self, intptr_t slot) {
@@ -1245,7 +1096,9 @@ bool QSctpSocket_override_virtual_waitForConnected(void* self, intptr_t slot) {
 }
 
 bool QSctpSocket_virtualbase_waitForConnected(void* self, int msecs) {
-	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_waitForConnected(msecs);
+
+	return ( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::waitForConnected(static_cast<int>(msecs));
+
 }
 
 bool QSctpSocket_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
@@ -1259,7 +1112,9 @@ bool QSctpSocket_override_virtual_waitForReadyRead(void* self, intptr_t slot) {
 }
 
 bool QSctpSocket_virtualbase_waitForReadyRead(void* self, int msecs) {
-	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_waitForReadyRead(msecs);
+
+	return ( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::waitForReadyRead(static_cast<int>(msecs));
+
 }
 
 bool QSctpSocket_override_virtual_waitForBytesWritten(void* self, intptr_t slot) {
@@ -1273,7 +1128,9 @@ bool QSctpSocket_override_virtual_waitForBytesWritten(void* self, intptr_t slot)
 }
 
 bool QSctpSocket_virtualbase_waitForBytesWritten(void* self, int msecs) {
-	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_waitForBytesWritten(msecs);
+
+	return ( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::waitForBytesWritten(static_cast<int>(msecs));
+
 }
 
 bool QSctpSocket_override_virtual_waitForDisconnected(void* self, intptr_t slot) {
@@ -1287,7 +1144,9 @@ bool QSctpSocket_override_virtual_waitForDisconnected(void* self, intptr_t slot)
 }
 
 bool QSctpSocket_virtualbase_waitForDisconnected(void* self, int msecs) {
-	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_waitForDisconnected(msecs);
+
+	return ( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::waitForDisconnected(static_cast<int>(msecs));
+
 }
 
 bool QSctpSocket_override_virtual_skipData(void* self, intptr_t slot) {
@@ -1301,7 +1160,10 @@ bool QSctpSocket_override_virtual_skipData(void* self, intptr_t slot) {
 }
 
 long long QSctpSocket_virtualbase_skipData(void* self, long long maxSize) {
-	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_skipData(maxSize);
+
+	qint64 _ret = ( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::skipData(static_cast<qint64>(maxSize));
+	return static_cast<long long>(_ret);
+
 }
 
 bool QSctpSocket_override_virtual_writeData(void* self, intptr_t slot) {
@@ -1315,7 +1177,10 @@ bool QSctpSocket_override_virtual_writeData(void* self, intptr_t slot) {
 }
 
 long long QSctpSocket_virtualbase_writeData(void* self, const char* data, long long len) {
-	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_writeData(data, len);
+
+	qint64 _ret = ( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::writeData(data, static_cast<qint64>(len));
+	return static_cast<long long>(_ret);
+
 }
 
 bool QSctpSocket_override_virtual_open(void* self, intptr_t slot) {
@@ -1329,7 +1194,9 @@ bool QSctpSocket_override_virtual_open(void* self, intptr_t slot) {
 }
 
 bool QSctpSocket_virtualbase_open(void* self, int mode) {
-	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_open(mode);
+
+	return ( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::open(static_cast<MiqtVirtualQSctpSocket::OpenMode>(mode));
+
 }
 
 bool QSctpSocket_override_virtual_pos(void* self, intptr_t slot) {
@@ -1343,7 +1210,10 @@ bool QSctpSocket_override_virtual_pos(void* self, intptr_t slot) {
 }
 
 long long QSctpSocket_virtualbase_pos(const void* self) {
-	return ( (const MiqtVirtualQSctpSocket*)(self) )->virtualbase_pos();
+
+	qint64 _ret = ( (const MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::pos();
+	return static_cast<long long>(_ret);
+
 }
 
 bool QSctpSocket_override_virtual_size(void* self, intptr_t slot) {
@@ -1357,7 +1227,10 @@ bool QSctpSocket_override_virtual_size(void* self, intptr_t slot) {
 }
 
 long long QSctpSocket_virtualbase_size(const void* self) {
-	return ( (const MiqtVirtualQSctpSocket*)(self) )->virtualbase_size();
+
+	qint64 _ret = ( (const MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::size();
+	return static_cast<long long>(_ret);
+
 }
 
 bool QSctpSocket_override_virtual_seek(void* self, intptr_t slot) {
@@ -1371,7 +1244,9 @@ bool QSctpSocket_override_virtual_seek(void* self, intptr_t slot) {
 }
 
 bool QSctpSocket_virtualbase_seek(void* self, long long pos) {
-	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_seek(pos);
+
+	return ( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::seek(static_cast<qint64>(pos));
+
 }
 
 bool QSctpSocket_override_virtual_atEnd(void* self, intptr_t slot) {
@@ -1385,7 +1260,9 @@ bool QSctpSocket_override_virtual_atEnd(void* self, intptr_t slot) {
 }
 
 bool QSctpSocket_virtualbase_atEnd(const void* self) {
-	return ( (const MiqtVirtualQSctpSocket*)(self) )->virtualbase_atEnd();
+
+	return ( (const MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::atEnd();
+
 }
 
 bool QSctpSocket_override_virtual_reset(void* self, intptr_t slot) {
@@ -1399,7 +1276,9 @@ bool QSctpSocket_override_virtual_reset(void* self, intptr_t slot) {
 }
 
 bool QSctpSocket_virtualbase_reset(void* self) {
-	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_reset();
+
+	return ( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::reset();
+
 }
 
 bool QSctpSocket_override_virtual_canReadLine(void* self, intptr_t slot) {
@@ -1413,7 +1292,9 @@ bool QSctpSocket_override_virtual_canReadLine(void* self, intptr_t slot) {
 }
 
 bool QSctpSocket_virtualbase_canReadLine(const void* self) {
-	return ( (const MiqtVirtualQSctpSocket*)(self) )->virtualbase_canReadLine();
+
+	return ( (const MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::canReadLine();
+
 }
 
 bool QSctpSocket_override_virtual_event(void* self, intptr_t slot) {
@@ -1427,7 +1308,9 @@ bool QSctpSocket_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QSctpSocket_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::event(event);
+
 }
 
 bool QSctpSocket_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1441,7 +1324,9 @@ bool QSctpSocket_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QSctpSocket_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::eventFilter(watched, event);
+
 }
 
 bool QSctpSocket_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1455,7 +1340,9 @@ bool QSctpSocket_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QSctpSocket_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::timerEvent(event);
+
 }
 
 bool QSctpSocket_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1469,7 +1356,9 @@ bool QSctpSocket_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QSctpSocket_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::childEvent(event);
+
 }
 
 bool QSctpSocket_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1483,7 +1372,9 @@ bool QSctpSocket_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QSctpSocket_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::customEvent(event);
+
 }
 
 bool QSctpSocket_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1497,7 +1388,9 @@ bool QSctpSocket_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QSctpSocket_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::connectNotify(*signal);
+
 }
 
 bool QSctpSocket_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1511,7 +1404,9 @@ bool QSctpSocket_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QSctpSocket_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQSctpSocket*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQSctpSocket*)(self) )->MiqtVirtualQSctpSocket::disconnectNotify(*signal);
+
 }
 
 void QSctpSocket_protectedbase_setSocketState(bool* _dynamic_cast_ok, void* self, int state) {

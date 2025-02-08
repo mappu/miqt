@@ -55,12 +55,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QAmbientSound::event(event);
-
-	}
+	friend bool QAmbientSound_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -79,12 +74,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QAmbientSound::eventFilter(watched, event);
-
-	}
+	friend bool QAmbientSound_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -103,12 +93,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QAmbientSound::timerEvent(event);
-
-	}
+	friend void QAmbientSound_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -127,12 +112,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QAmbientSound::childEvent(event);
-
-	}
+	friend void QAmbientSound_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -151,12 +131,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QAmbientSound::customEvent(event);
-
-	}
+	friend void QAmbientSound_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -177,12 +152,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QAmbientSound::connectNotify(*signal);
-
-	}
+	friend void QAmbientSound_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -203,12 +173,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QAmbientSound::disconnectNotify(*signal);
-
-	}
+	friend void QAmbientSound_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QAmbientSound_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -365,7 +330,9 @@ bool QAmbientSound_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QAmbientSound_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQAmbientSound*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQAmbientSound*)(self) )->MiqtVirtualQAmbientSound::event(event);
+
 }
 
 bool QAmbientSound_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -379,7 +346,9 @@ bool QAmbientSound_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QAmbientSound_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQAmbientSound*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQAmbientSound*)(self) )->MiqtVirtualQAmbientSound::eventFilter(watched, event);
+
 }
 
 bool QAmbientSound_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -393,7 +362,9 @@ bool QAmbientSound_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QAmbientSound_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQAmbientSound*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQAmbientSound*)(self) )->MiqtVirtualQAmbientSound::timerEvent(event);
+
 }
 
 bool QAmbientSound_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -407,7 +378,9 @@ bool QAmbientSound_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QAmbientSound_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQAmbientSound*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQAmbientSound*)(self) )->MiqtVirtualQAmbientSound::childEvent(event);
+
 }
 
 bool QAmbientSound_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -421,7 +394,9 @@ bool QAmbientSound_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QAmbientSound_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAmbientSound*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQAmbientSound*)(self) )->MiqtVirtualQAmbientSound::customEvent(event);
+
 }
 
 bool QAmbientSound_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -435,7 +410,9 @@ bool QAmbientSound_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QAmbientSound_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAmbientSound*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQAmbientSound*)(self) )->MiqtVirtualQAmbientSound::connectNotify(*signal);
+
 }
 
 bool QAmbientSound_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -449,7 +426,9 @@ bool QAmbientSound_override_virtual_disconnectNotify(void* self, intptr_t slot) 
 }
 
 void QAmbientSound_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAmbientSound*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQAmbientSound*)(self) )->MiqtVirtualQAmbientSound::disconnectNotify(*signal);
+
 }
 
 QObject* QAmbientSound_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

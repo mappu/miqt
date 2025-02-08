@@ -75,12 +75,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QGridLayout::sizeHint());
-
-	}
+	friend QSize* QGridLayout_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSize = 0;
@@ -97,12 +92,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSize() const {
-
-		return new QSize(QGridLayout::minimumSize());
-
-	}
+	friend QSize* QGridLayout_virtualbase_minimumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__maximumSize = 0;
@@ -119,12 +109,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_maximumSize() const {
-
-		return new QSize(QGridLayout::maximumSize());
-
-	}
+	friend QSize* QGridLayout_virtualbase_maximumSize(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -141,12 +126,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QGridLayout::hasHeightForWidth();
-
-	}
+	friend bool QGridLayout_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -164,12 +144,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QGridLayout::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QGridLayout_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumHeightForWidth = 0;
@@ -187,12 +162,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_minimumHeightForWidth(int param1) const {
-
-		return QGridLayout::minimumHeightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QGridLayout_virtualbase_minimumHeightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__expandingDirections = 0;
@@ -209,13 +179,7 @@ public:
 		return static_cast<Qt::Orientations>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_expandingDirections() const {
-
-		Qt::Orientations _ret = QGridLayout::expandingDirections();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QGridLayout_virtualbase_expandingDirections(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__invalidate = 0;
@@ -233,12 +197,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_invalidate() {
-
-		QGridLayout::invalidate();
-
-	}
+	friend void QGridLayout_virtualbase_invalidate(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__itemAt = 0;
@@ -256,12 +215,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QLayoutItem* virtualbase_itemAt(int index) const {
-
-		return QGridLayout::itemAt(static_cast<int>(index));
-
-	}
+	friend QLayoutItem* QGridLayout_virtualbase_itemAt(const void* self, int index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__takeAt = 0;
@@ -279,12 +233,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QLayoutItem* virtualbase_takeAt(int index) {
-
-		return QGridLayout::takeAt(static_cast<int>(index));
-
-	}
+	friend QLayoutItem* QGridLayout_virtualbase_takeAt(void* self, int index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__count = 0;
@@ -301,12 +250,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_count() const {
-
-		return QGridLayout::count();
-
-	}
+	friend int QGridLayout_virtualbase_count(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setGeometry = 0;
@@ -327,12 +271,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setGeometry(QRect* geometry) {
-
-		QGridLayout::setGeometry(*geometry);
-
-	}
+	friend void QGridLayout_virtualbase_setGeometry(void* self, QRect* geometry);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__addItemWithQLayoutItem = 0;
@@ -351,12 +290,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_addItemWithQLayoutItem(QLayoutItem* param1) {
-
-		QGridLayout::addItem(param1);
-
-	}
+	friend void QGridLayout_virtualbase_addItemWithQLayoutItem(void* self, QLayoutItem* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__geometry = 0;
@@ -373,12 +307,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QRect* virtualbase_geometry() const {
-
-		return new QRect(QGridLayout::geometry());
-
-	}
+	friend QRect* QGridLayout_virtualbase_geometry(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__indexOf = 0;
@@ -396,12 +325,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_indexOf(QWidget* param1) const {
-
-		return QGridLayout::indexOf(param1);
-
-	}
+	friend int QGridLayout_virtualbase_indexOf(const void* self, QWidget* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__isEmpty = 0;
@@ -418,12 +342,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_isEmpty() const {
-
-		return QGridLayout::isEmpty();
-
-	}
+	friend bool QGridLayout_virtualbase_isEmpty(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__controlTypes = 0;
@@ -440,13 +359,7 @@ public:
 		return static_cast<QSizePolicy::ControlTypes>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_controlTypes() const {
-
-		QSizePolicy::ControlTypes _ret = QGridLayout::controlTypes();
-		return static_cast<int>(_ret);
-
-	}
+	friend int QGridLayout_virtualbase_controlTypes(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__layout = 0;
@@ -463,12 +376,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QLayout* virtualbase_layout() {
-
-		return QGridLayout::layout();
-
-	}
+	friend QLayout* QGridLayout_virtualbase_layout(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -487,12 +395,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* e) {
-
-		QGridLayout::childEvent(e);
-
-	}
+	friend void QGridLayout_virtualbase_childEvent(void* self, QChildEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -510,12 +413,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QGridLayout::event(event);
-
-	}
+	friend bool QGridLayout_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -534,12 +432,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QGridLayout::eventFilter(watched, event);
-
-	}
+	friend bool QGridLayout_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -558,12 +451,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QGridLayout::timerEvent(event);
-
-	}
+	friend void QGridLayout_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -582,12 +470,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QGridLayout::customEvent(event);
-
-	}
+	friend void QGridLayout_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -608,12 +491,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QGridLayout::connectNotify(*signal);
-
-	}
+	friend void QGridLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -634,12 +512,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QGridLayout::disconnectNotify(*signal);
-
-	}
+	friend void QGridLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__widget = 0;
@@ -656,12 +529,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QWidget* virtualbase_widget() {
-
-		return QGridLayout::widget();
-
-	}
+	friend QWidget* QGridLayout_virtualbase_widget(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__spacerItem = 0;
@@ -678,12 +546,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSpacerItem* virtualbase_spacerItem() {
-
-		return QGridLayout::spacerItem();
-
-	}
+	friend QSpacerItem* QGridLayout_virtualbase_spacerItem(void* self);
 
 	// Wrappers to allow calling protected methods:
 	friend void QGridLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1);
@@ -984,7 +847,9 @@ bool QGridLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QGridLayout_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::sizeHint());
+
 }
 
 bool QGridLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
@@ -998,7 +863,9 @@ bool QGridLayout_override_virtual_minimumSize(void* self, intptr_t slot) {
 }
 
 QSize* QGridLayout_virtualbase_minimumSize(const void* self) {
-	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_minimumSize();
+
+	return new QSize(( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::minimumSize());
+
 }
 
 bool QGridLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
@@ -1012,7 +879,9 @@ bool QGridLayout_override_virtual_maximumSize(void* self, intptr_t slot) {
 }
 
 QSize* QGridLayout_virtualbase_maximumSize(const void* self) {
-	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_maximumSize();
+
+	return new QSize(( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::maximumSize());
+
 }
 
 bool QGridLayout_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1026,7 +895,9 @@ bool QGridLayout_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QGridLayout_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::hasHeightForWidth();
+
 }
 
 bool QGridLayout_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1040,7 +911,9 @@ bool QGridLayout_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QGridLayout_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QGridLayout_override_virtual_minimumHeightForWidth(void* self, intptr_t slot) {
@@ -1054,7 +927,9 @@ bool QGridLayout_override_virtual_minimumHeightForWidth(void* self, intptr_t slo
 }
 
 int QGridLayout_virtualbase_minimumHeightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_minimumHeightForWidth(param1);
+
+	return ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::minimumHeightForWidth(static_cast<int>(param1));
+
 }
 
 bool QGridLayout_override_virtual_expandingDirections(void* self, intptr_t slot) {
@@ -1068,7 +943,10 @@ bool QGridLayout_override_virtual_expandingDirections(void* self, intptr_t slot)
 }
 
 int QGridLayout_virtualbase_expandingDirections(const void* self) {
-	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_expandingDirections();
+
+	Qt::Orientations _ret = ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::expandingDirections();
+	return static_cast<int>(_ret);
+
 }
 
 bool QGridLayout_override_virtual_invalidate(void* self, intptr_t slot) {
@@ -1082,7 +960,9 @@ bool QGridLayout_override_virtual_invalidate(void* self, intptr_t slot) {
 }
 
 void QGridLayout_virtualbase_invalidate(void* self) {
-	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_invalidate();
+
+	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::invalidate();
+
 }
 
 bool QGridLayout_override_virtual_itemAt(void* self, intptr_t slot) {
@@ -1096,7 +976,9 @@ bool QGridLayout_override_virtual_itemAt(void* self, intptr_t slot) {
 }
 
 QLayoutItem* QGridLayout_virtualbase_itemAt(const void* self, int index) {
-	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_itemAt(index);
+
+	return ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::itemAt(static_cast<int>(index));
+
 }
 
 bool QGridLayout_override_virtual_takeAt(void* self, intptr_t slot) {
@@ -1110,7 +992,9 @@ bool QGridLayout_override_virtual_takeAt(void* self, intptr_t slot) {
 }
 
 QLayoutItem* QGridLayout_virtualbase_takeAt(void* self, int index) {
-	return ( (MiqtVirtualQGridLayout*)(self) )->virtualbase_takeAt(index);
+
+	return ( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::takeAt(static_cast<int>(index));
+
 }
 
 bool QGridLayout_override_virtual_count(void* self, intptr_t slot) {
@@ -1124,7 +1008,9 @@ bool QGridLayout_override_virtual_count(void* self, intptr_t slot) {
 }
 
 int QGridLayout_virtualbase_count(const void* self) {
-	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_count();
+
+	return ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::count();
+
 }
 
 bool QGridLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
@@ -1138,7 +1024,9 @@ bool QGridLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
 }
 
 void QGridLayout_virtualbase_setGeometry(void* self, QRect* geometry) {
-	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_setGeometry(geometry);
+
+	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::setGeometry(*geometry);
+
 }
 
 bool QGridLayout_override_virtual_addItemWithQLayoutItem(void* self, intptr_t slot) {
@@ -1152,7 +1040,9 @@ bool QGridLayout_override_virtual_addItemWithQLayoutItem(void* self, intptr_t sl
 }
 
 void QGridLayout_virtualbase_addItemWithQLayoutItem(void* self, QLayoutItem* param1) {
-	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_addItemWithQLayoutItem(param1);
+
+	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::addItem(param1);
+
 }
 
 bool QGridLayout_override_virtual_geometry(void* self, intptr_t slot) {
@@ -1166,7 +1056,9 @@ bool QGridLayout_override_virtual_geometry(void* self, intptr_t slot) {
 }
 
 QRect* QGridLayout_virtualbase_geometry(const void* self) {
-	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_geometry();
+
+	return new QRect(( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::geometry());
+
 }
 
 bool QGridLayout_override_virtual_indexOf(void* self, intptr_t slot) {
@@ -1180,7 +1072,9 @@ bool QGridLayout_override_virtual_indexOf(void* self, intptr_t slot) {
 }
 
 int QGridLayout_virtualbase_indexOf(const void* self, QWidget* param1) {
-	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_indexOf(param1);
+
+	return ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::indexOf(param1);
+
 }
 
 bool QGridLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
@@ -1194,7 +1088,9 @@ bool QGridLayout_override_virtual_isEmpty(void* self, intptr_t slot) {
 }
 
 bool QGridLayout_virtualbase_isEmpty(const void* self) {
-	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_isEmpty();
+
+	return ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::isEmpty();
+
 }
 
 bool QGridLayout_override_virtual_controlTypes(void* self, intptr_t slot) {
@@ -1208,7 +1104,10 @@ bool QGridLayout_override_virtual_controlTypes(void* self, intptr_t slot) {
 }
 
 int QGridLayout_virtualbase_controlTypes(const void* self) {
-	return ( (const MiqtVirtualQGridLayout*)(self) )->virtualbase_controlTypes();
+
+	QSizePolicy::ControlTypes _ret = ( (const MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::controlTypes();
+	return static_cast<int>(_ret);
+
 }
 
 bool QGridLayout_override_virtual_layout(void* self, intptr_t slot) {
@@ -1222,7 +1121,9 @@ bool QGridLayout_override_virtual_layout(void* self, intptr_t slot) {
 }
 
 QLayout* QGridLayout_virtualbase_layout(void* self) {
-	return ( (MiqtVirtualQGridLayout*)(self) )->virtualbase_layout();
+
+	return ( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::layout();
+
 }
 
 bool QGridLayout_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1236,7 +1137,9 @@ bool QGridLayout_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QGridLayout_virtualbase_childEvent(void* self, QChildEvent* e) {
-	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_childEvent(e);
+
+	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::childEvent(e);
+
 }
 
 bool QGridLayout_override_virtual_event(void* self, intptr_t slot) {
@@ -1250,7 +1153,9 @@ bool QGridLayout_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QGridLayout_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQGridLayout*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::event(event);
+
 }
 
 bool QGridLayout_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1264,7 +1169,9 @@ bool QGridLayout_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QGridLayout_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQGridLayout*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::eventFilter(watched, event);
+
 }
 
 bool QGridLayout_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1278,7 +1185,9 @@ bool QGridLayout_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QGridLayout_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::timerEvent(event);
+
 }
 
 bool QGridLayout_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1292,7 +1201,9 @@ bool QGridLayout_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QGridLayout_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::customEvent(event);
+
 }
 
 bool QGridLayout_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1306,7 +1217,9 @@ bool QGridLayout_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QGridLayout_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::connectNotify(*signal);
+
 }
 
 bool QGridLayout_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1320,7 +1233,9 @@ bool QGridLayout_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QGridLayout_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQGridLayout*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::disconnectNotify(*signal);
+
 }
 
 bool QGridLayout_override_virtual_widget(void* self, intptr_t slot) {
@@ -1334,7 +1249,9 @@ bool QGridLayout_override_virtual_widget(void* self, intptr_t slot) {
 }
 
 QWidget* QGridLayout_virtualbase_widget(void* self) {
-	return ( (MiqtVirtualQGridLayout*)(self) )->virtualbase_widget();
+
+	return ( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::widget();
+
 }
 
 bool QGridLayout_override_virtual_spacerItem(void* self, intptr_t slot) {
@@ -1348,7 +1265,9 @@ bool QGridLayout_override_virtual_spacerItem(void* self, intptr_t slot) {
 }
 
 QSpacerItem* QGridLayout_virtualbase_spacerItem(void* self) {
-	return ( (MiqtVirtualQGridLayout*)(self) )->virtualbase_spacerItem();
+
+	return ( (MiqtVirtualQGridLayout*)(self) )->MiqtVirtualQGridLayout::spacerItem();
+
 }
 
 void QGridLayout_protectedbase_widgetEvent(bool* _dynamic_cast_ok, void* self, QEvent* param1) {

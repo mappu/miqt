@@ -161,12 +161,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_removeAt(int index) {
-
-		QGraphicsAnchorLayout::removeAt(static_cast<int>(index));
-
-	}
+	friend void QGraphicsAnchorLayout_virtualbase_removeAt(void* self, int index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setGeometry = 0;
@@ -187,12 +182,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setGeometry(QRectF* rect) {
-
-		QGraphicsAnchorLayout::setGeometry(*rect);
-
-	}
+	friend void QGraphicsAnchorLayout_virtualbase_setGeometry(void* self, QRectF* rect);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__count = 0;
@@ -209,12 +199,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_count() const {
-
-		return QGraphicsAnchorLayout::count();
-
-	}
+	friend int QGraphicsAnchorLayout_virtualbase_count(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__itemAt = 0;
@@ -232,12 +217,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QGraphicsLayoutItem* virtualbase_itemAt(int index) const {
-
-		return QGraphicsAnchorLayout::itemAt(static_cast<int>(index));
-
-	}
+	friend QGraphicsLayoutItem* QGraphicsAnchorLayout_virtualbase_itemAt(const void* self, int index);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__invalidate = 0;
@@ -255,12 +235,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_invalidate() {
-
-		QGraphicsAnchorLayout::invalidate();
-
-	}
+	friend void QGraphicsAnchorLayout_virtualbase_invalidate(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sizeHint = 0;
@@ -282,12 +257,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSizeF* virtualbase_sizeHint(int which, QSizeF* constraint) const {
-
-		return new QSizeF(QGraphicsAnchorLayout::sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
-
-	}
+	friend QSizeF* QGraphicsAnchorLayout_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__getContentsMargins = 0;
@@ -313,12 +283,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_getContentsMargins(double* left, double* top, double* right, double* bottom) const {
-
-		QGraphicsAnchorLayout::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
-
-	}
+	friend void QGraphicsAnchorLayout_virtualbase_getContentsMargins(const void* self, double* left, double* top, double* right, double* bottom);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateGeometry = 0;
@@ -336,12 +301,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_updateGeometry() {
-
-		QGraphicsAnchorLayout::updateGeometry();
-
-	}
+	friend void QGraphicsAnchorLayout_virtualbase_updateGeometry(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__widgetEvent = 0;
@@ -360,12 +320,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_widgetEvent(QEvent* e) {
-
-		QGraphicsAnchorLayout::widgetEvent(e);
-
-	}
+	friend void QGraphicsAnchorLayout_virtualbase_widgetEvent(void* self, QEvent* e);
 
 	// Wrappers to allow calling protected methods:
 	friend void QGraphicsAnchorLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem);
@@ -458,7 +413,9 @@ bool QGraphicsAnchorLayout_override_virtual_removeAt(void* self, intptr_t slot) 
 }
 
 void QGraphicsAnchorLayout_virtualbase_removeAt(void* self, int index) {
-	( (MiqtVirtualQGraphicsAnchorLayout*)(self) )->virtualbase_removeAt(index);
+
+	( (MiqtVirtualQGraphicsAnchorLayout*)(self) )->MiqtVirtualQGraphicsAnchorLayout::removeAt(static_cast<int>(index));
+
 }
 
 bool QGraphicsAnchorLayout_override_virtual_setGeometry(void* self, intptr_t slot) {
@@ -472,7 +429,9 @@ bool QGraphicsAnchorLayout_override_virtual_setGeometry(void* self, intptr_t slo
 }
 
 void QGraphicsAnchorLayout_virtualbase_setGeometry(void* self, QRectF* rect) {
-	( (MiqtVirtualQGraphicsAnchorLayout*)(self) )->virtualbase_setGeometry(rect);
+
+	( (MiqtVirtualQGraphicsAnchorLayout*)(self) )->MiqtVirtualQGraphicsAnchorLayout::setGeometry(*rect);
+
 }
 
 bool QGraphicsAnchorLayout_override_virtual_count(void* self, intptr_t slot) {
@@ -486,7 +445,9 @@ bool QGraphicsAnchorLayout_override_virtual_count(void* self, intptr_t slot) {
 }
 
 int QGraphicsAnchorLayout_virtualbase_count(const void* self) {
-	return ( (const MiqtVirtualQGraphicsAnchorLayout*)(self) )->virtualbase_count();
+
+	return ( (const MiqtVirtualQGraphicsAnchorLayout*)(self) )->MiqtVirtualQGraphicsAnchorLayout::count();
+
 }
 
 bool QGraphicsAnchorLayout_override_virtual_itemAt(void* self, intptr_t slot) {
@@ -500,7 +461,9 @@ bool QGraphicsAnchorLayout_override_virtual_itemAt(void* self, intptr_t slot) {
 }
 
 QGraphicsLayoutItem* QGraphicsAnchorLayout_virtualbase_itemAt(const void* self, int index) {
-	return ( (const MiqtVirtualQGraphicsAnchorLayout*)(self) )->virtualbase_itemAt(index);
+
+	return ( (const MiqtVirtualQGraphicsAnchorLayout*)(self) )->MiqtVirtualQGraphicsAnchorLayout::itemAt(static_cast<int>(index));
+
 }
 
 bool QGraphicsAnchorLayout_override_virtual_invalidate(void* self, intptr_t slot) {
@@ -514,7 +477,9 @@ bool QGraphicsAnchorLayout_override_virtual_invalidate(void* self, intptr_t slot
 }
 
 void QGraphicsAnchorLayout_virtualbase_invalidate(void* self) {
-	( (MiqtVirtualQGraphicsAnchorLayout*)(self) )->virtualbase_invalidate();
+
+	( (MiqtVirtualQGraphicsAnchorLayout*)(self) )->MiqtVirtualQGraphicsAnchorLayout::invalidate();
+
 }
 
 bool QGraphicsAnchorLayout_override_virtual_sizeHint(void* self, intptr_t slot) {
@@ -528,7 +493,9 @@ bool QGraphicsAnchorLayout_override_virtual_sizeHint(void* self, intptr_t slot) 
 }
 
 QSizeF* QGraphicsAnchorLayout_virtualbase_sizeHint(const void* self, int which, QSizeF* constraint) {
-	return ( (const MiqtVirtualQGraphicsAnchorLayout*)(self) )->virtualbase_sizeHint(which, constraint);
+
+	return new QSizeF(( (const MiqtVirtualQGraphicsAnchorLayout*)(self) )->MiqtVirtualQGraphicsAnchorLayout::sizeHint(static_cast<Qt::SizeHint>(which), *constraint));
+
 }
 
 bool QGraphicsAnchorLayout_override_virtual_getContentsMargins(void* self, intptr_t slot) {
@@ -542,7 +509,9 @@ bool QGraphicsAnchorLayout_override_virtual_getContentsMargins(void* self, intpt
 }
 
 void QGraphicsAnchorLayout_virtualbase_getContentsMargins(const void* self, double* left, double* top, double* right, double* bottom) {
-	( (const MiqtVirtualQGraphicsAnchorLayout*)(self) )->virtualbase_getContentsMargins(left, top, right, bottom);
+
+	( (const MiqtVirtualQGraphicsAnchorLayout*)(self) )->MiqtVirtualQGraphicsAnchorLayout::getContentsMargins(static_cast<qreal*>(left), static_cast<qreal*>(top), static_cast<qreal*>(right), static_cast<qreal*>(bottom));
+
 }
 
 bool QGraphicsAnchorLayout_override_virtual_updateGeometry(void* self, intptr_t slot) {
@@ -556,7 +525,9 @@ bool QGraphicsAnchorLayout_override_virtual_updateGeometry(void* self, intptr_t 
 }
 
 void QGraphicsAnchorLayout_virtualbase_updateGeometry(void* self) {
-	( (MiqtVirtualQGraphicsAnchorLayout*)(self) )->virtualbase_updateGeometry();
+
+	( (MiqtVirtualQGraphicsAnchorLayout*)(self) )->MiqtVirtualQGraphicsAnchorLayout::updateGeometry();
+
 }
 
 bool QGraphicsAnchorLayout_override_virtual_widgetEvent(void* self, intptr_t slot) {
@@ -570,7 +541,9 @@ bool QGraphicsAnchorLayout_override_virtual_widgetEvent(void* self, intptr_t slo
 }
 
 void QGraphicsAnchorLayout_virtualbase_widgetEvent(void* self, QEvent* e) {
-	( (MiqtVirtualQGraphicsAnchorLayout*)(self) )->virtualbase_widgetEvent(e);
+
+	( (MiqtVirtualQGraphicsAnchorLayout*)(self) )->MiqtVirtualQGraphicsAnchorLayout::widgetEvent(e);
+
 }
 
 void QGraphicsAnchorLayout_protectedbase_addChildLayoutItem(bool* _dynamic_cast_ok, void* self, QGraphicsLayoutItem* layoutItem) {

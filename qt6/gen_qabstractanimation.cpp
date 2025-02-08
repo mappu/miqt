@@ -88,12 +88,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QAbstractAnimation::event(event);
-
-	}
+	friend bool QAbstractAnimation_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateCurrentTime = 0;
@@ -131,12 +126,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_updateState(int newState, int oldState) {
-
-		QAbstractAnimation::updateState(static_cast<QAbstractAnimation::State>(newState), static_cast<QAbstractAnimation::State>(oldState));
-
-	}
+	friend void QAbstractAnimation_virtualbase_updateState(void* self, int newState, int oldState);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__updateDirection = 0;
@@ -156,12 +146,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_updateDirection(int direction) {
-
-		QAbstractAnimation::updateDirection(static_cast<QAbstractAnimation::Direction>(direction));
-
-	}
+	friend void QAbstractAnimation_virtualbase_updateDirection(void* self, int direction);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -180,12 +165,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QAbstractAnimation::eventFilter(watched, event);
-
-	}
+	friend bool QAbstractAnimation_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -204,12 +184,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QAbstractAnimation::timerEvent(event);
-
-	}
+	friend void QAbstractAnimation_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -228,12 +203,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QAbstractAnimation::childEvent(event);
-
-	}
+	friend void QAbstractAnimation_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -252,12 +222,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QAbstractAnimation::customEvent(event);
-
-	}
+	friend void QAbstractAnimation_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -278,12 +243,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QAbstractAnimation::connectNotify(*signal);
-
-	}
+	friend void QAbstractAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -304,12 +264,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QAbstractAnimation::disconnectNotify(*signal);
-
-	}
+	friend void QAbstractAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QAbstractAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -513,7 +468,9 @@ bool QAbstractAnimation_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QAbstractAnimation_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQAbstractAnimation*)(self) )->MiqtVirtualQAbstractAnimation::event(event);
+
 }
 
 bool QAbstractAnimation_override_virtual_updateCurrentTime(void* self, intptr_t slot) {
@@ -537,7 +494,9 @@ bool QAbstractAnimation_override_virtual_updateState(void* self, intptr_t slot) 
 }
 
 void QAbstractAnimation_virtualbase_updateState(void* self, int newState, int oldState) {
-	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_updateState(newState, oldState);
+
+	( (MiqtVirtualQAbstractAnimation*)(self) )->MiqtVirtualQAbstractAnimation::updateState(static_cast<MiqtVirtualQAbstractAnimation::State>(newState), static_cast<MiqtVirtualQAbstractAnimation::State>(oldState));
+
 }
 
 bool QAbstractAnimation_override_virtual_updateDirection(void* self, intptr_t slot) {
@@ -551,7 +510,9 @@ bool QAbstractAnimation_override_virtual_updateDirection(void* self, intptr_t sl
 }
 
 void QAbstractAnimation_virtualbase_updateDirection(void* self, int direction) {
-	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_updateDirection(direction);
+
+	( (MiqtVirtualQAbstractAnimation*)(self) )->MiqtVirtualQAbstractAnimation::updateDirection(static_cast<MiqtVirtualQAbstractAnimation::Direction>(direction));
+
 }
 
 bool QAbstractAnimation_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -565,7 +526,9 @@ bool QAbstractAnimation_override_virtual_eventFilter(void* self, intptr_t slot) 
 }
 
 bool QAbstractAnimation_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQAbstractAnimation*)(self) )->MiqtVirtualQAbstractAnimation::eventFilter(watched, event);
+
 }
 
 bool QAbstractAnimation_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -579,7 +542,9 @@ bool QAbstractAnimation_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractAnimation_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQAbstractAnimation*)(self) )->MiqtVirtualQAbstractAnimation::timerEvent(event);
+
 }
 
 bool QAbstractAnimation_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -593,7 +558,9 @@ bool QAbstractAnimation_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QAbstractAnimation_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQAbstractAnimation*)(self) )->MiqtVirtualQAbstractAnimation::childEvent(event);
+
 }
 
 bool QAbstractAnimation_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -607,7 +574,9 @@ bool QAbstractAnimation_override_virtual_customEvent(void* self, intptr_t slot) 
 }
 
 void QAbstractAnimation_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQAbstractAnimation*)(self) )->MiqtVirtualQAbstractAnimation::customEvent(event);
+
 }
 
 bool QAbstractAnimation_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -621,7 +590,9 @@ bool QAbstractAnimation_override_virtual_connectNotify(void* self, intptr_t slot
 }
 
 void QAbstractAnimation_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQAbstractAnimation*)(self) )->MiqtVirtualQAbstractAnimation::connectNotify(*signal);
+
 }
 
 bool QAbstractAnimation_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -635,7 +606,9 @@ bool QAbstractAnimation_override_virtual_disconnectNotify(void* self, intptr_t s
 }
 
 void QAbstractAnimation_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAbstractAnimation*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQAbstractAnimation*)(self) )->MiqtVirtualQAbstractAnimation::disconnectNotify(*signal);
+
 }
 
 QObject* QAbstractAnimation_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {
@@ -718,12 +691,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_advance() {
-
-		QAnimationDriver::advance();
-
-	}
+	friend void QAnimationDriver_virtualbase_advance(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__elapsed = 0;
@@ -740,13 +708,7 @@ public:
 		return static_cast<qint64>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	long long virtualbase_elapsed() const {
-
-		qint64 _ret = QAnimationDriver::elapsed();
-		return static_cast<long long>(_ret);
-
-	}
+	friend long long QAnimationDriver_virtualbase_elapsed(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__start = 0;
@@ -764,12 +726,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_start() {
-
-		QAnimationDriver::start();
-
-	}
+	friend void QAnimationDriver_virtualbase_start(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__stop = 0;
@@ -787,12 +744,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_stop() {
-
-		QAnimationDriver::stop();
-
-	}
+	friend void QAnimationDriver_virtualbase_stop(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -810,12 +762,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QAnimationDriver::event(event);
-
-	}
+	friend bool QAnimationDriver_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -834,12 +781,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QAnimationDriver::eventFilter(watched, event);
-
-	}
+	friend bool QAnimationDriver_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -858,12 +800,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QAnimationDriver::timerEvent(event);
-
-	}
+	friend void QAnimationDriver_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -882,12 +819,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QAnimationDriver::childEvent(event);
-
-	}
+	friend void QAnimationDriver_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -906,12 +838,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QAnimationDriver::customEvent(event);
-
-	}
+	friend void QAnimationDriver_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -932,12 +859,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QAnimationDriver::connectNotify(*signal);
-
-	}
+	friend void QAnimationDriver_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -958,12 +880,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QAnimationDriver::disconnectNotify(*signal);
-
-	}
+	friend void QAnimationDriver_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QAnimationDriver_protectedbase_advanceAnimation(bool* _dynamic_cast_ok, void* self);
@@ -1078,7 +995,9 @@ bool QAnimationDriver_override_virtual_advance(void* self, intptr_t slot) {
 }
 
 void QAnimationDriver_virtualbase_advance(void* self) {
-	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_advance();
+
+	( (MiqtVirtualQAnimationDriver*)(self) )->MiqtVirtualQAnimationDriver::advance();
+
 }
 
 bool QAnimationDriver_override_virtual_elapsed(void* self, intptr_t slot) {
@@ -1092,7 +1011,10 @@ bool QAnimationDriver_override_virtual_elapsed(void* self, intptr_t slot) {
 }
 
 long long QAnimationDriver_virtualbase_elapsed(const void* self) {
-	return ( (const MiqtVirtualQAnimationDriver*)(self) )->virtualbase_elapsed();
+
+	qint64 _ret = ( (const MiqtVirtualQAnimationDriver*)(self) )->MiqtVirtualQAnimationDriver::elapsed();
+	return static_cast<long long>(_ret);
+
 }
 
 bool QAnimationDriver_override_virtual_start(void* self, intptr_t slot) {
@@ -1106,7 +1028,9 @@ bool QAnimationDriver_override_virtual_start(void* self, intptr_t slot) {
 }
 
 void QAnimationDriver_virtualbase_start(void* self) {
-	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_start();
+
+	( (MiqtVirtualQAnimationDriver*)(self) )->MiqtVirtualQAnimationDriver::start();
+
 }
 
 bool QAnimationDriver_override_virtual_stop(void* self, intptr_t slot) {
@@ -1120,7 +1044,9 @@ bool QAnimationDriver_override_virtual_stop(void* self, intptr_t slot) {
 }
 
 void QAnimationDriver_virtualbase_stop(void* self) {
-	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_stop();
+
+	( (MiqtVirtualQAnimationDriver*)(self) )->MiqtVirtualQAnimationDriver::stop();
+
 }
 
 bool QAnimationDriver_override_virtual_event(void* self, intptr_t slot) {
@@ -1134,7 +1060,9 @@ bool QAnimationDriver_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QAnimationDriver_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQAnimationDriver*)(self) )->MiqtVirtualQAnimationDriver::event(event);
+
 }
 
 bool QAnimationDriver_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1148,7 +1076,9 @@ bool QAnimationDriver_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QAnimationDriver_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQAnimationDriver*)(self) )->MiqtVirtualQAnimationDriver::eventFilter(watched, event);
+
 }
 
 bool QAnimationDriver_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -1162,7 +1092,9 @@ bool QAnimationDriver_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QAnimationDriver_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQAnimationDriver*)(self) )->MiqtVirtualQAnimationDriver::timerEvent(event);
+
 }
 
 bool QAnimationDriver_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -1176,7 +1108,9 @@ bool QAnimationDriver_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QAnimationDriver_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQAnimationDriver*)(self) )->MiqtVirtualQAnimationDriver::childEvent(event);
+
 }
 
 bool QAnimationDriver_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -1190,7 +1124,9 @@ bool QAnimationDriver_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QAnimationDriver_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQAnimationDriver*)(self) )->MiqtVirtualQAnimationDriver::customEvent(event);
+
 }
 
 bool QAnimationDriver_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -1204,7 +1140,9 @@ bool QAnimationDriver_override_virtual_connectNotify(void* self, intptr_t slot) 
 }
 
 void QAnimationDriver_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQAnimationDriver*)(self) )->MiqtVirtualQAnimationDriver::connectNotify(*signal);
+
 }
 
 bool QAnimationDriver_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -1218,7 +1156,9 @@ bool QAnimationDriver_override_virtual_disconnectNotify(void* self, intptr_t slo
 }
 
 void QAnimationDriver_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQAnimationDriver*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQAnimationDriver*)(self) )->MiqtVirtualQAnimationDriver::disconnectNotify(*signal);
+
 }
 
 void QAnimationDriver_protectedbase_advanceAnimation(bool* _dynamic_cast_ok, void* self) {

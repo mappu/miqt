@@ -129,12 +129,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QProgressDialog::sizeHint());
-
-	}
+	friend QSize* QProgressDialog_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -153,12 +148,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* event) {
-
-		QProgressDialog::resizeEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_resizeEvent(void* self, QResizeEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -177,12 +167,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QProgressDialog::closeEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -201,12 +186,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* event) {
-
-		QProgressDialog::changeEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_changeEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -225,12 +205,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QProgressDialog::showEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -249,12 +224,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QProgressDialog::setVisible(visible);
-
-	}
+	friend void QProgressDialog_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -271,12 +241,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QProgressDialog::minimumSizeHint());
-
-	}
+	friend QSize* QProgressDialog_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__open = 0;
@@ -294,12 +259,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_open() {
-
-		QProgressDialog::open();
-
-	}
+	friend void QProgressDialog_virtualbase_open(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__exec = 0;
@@ -316,12 +276,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_exec() {
-
-		return QProgressDialog::exec();
-
-	}
+	friend int QProgressDialog_virtualbase_exec(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__done = 0;
@@ -340,12 +295,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_done(int param1) {
-
-		QProgressDialog::done(static_cast<int>(param1));
-
-	}
+	friend void QProgressDialog_virtualbase_done(void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__accept = 0;
@@ -363,12 +313,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_accept() {
-
-		QProgressDialog::accept();
-
-	}
+	friend void QProgressDialog_virtualbase_accept(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__reject = 0;
@@ -386,12 +331,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_reject() {
-
-		QProgressDialog::reject();
-
-	}
+	friend void QProgressDialog_virtualbase_reject(void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -410,12 +350,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* param1) {
-
-		QProgressDialog::keyPressEvent(param1);
-
-	}
+	friend void QProgressDialog_virtualbase_keyPressEvent(void* self, QKeyEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -434,12 +369,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* param1) {
-
-		QProgressDialog::contextMenuEvent(param1);
-
-	}
+	friend void QProgressDialog_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -458,12 +388,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* param1, QEvent* param2) {
-
-		return QProgressDialog::eventFilter(param1, param2);
-
-	}
+	friend bool QProgressDialog_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -480,12 +405,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QProgressDialog::devType();
-
-	}
+	friend int QProgressDialog_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -503,12 +423,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QProgressDialog::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QProgressDialog_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -525,12 +440,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QProgressDialog::hasHeightForWidth();
-
-	}
+	friend bool QProgressDialog_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -547,12 +457,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QProgressDialog::paintEngine();
-
-	}
+	friend QPaintEngine* QProgressDialog_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -570,12 +475,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QProgressDialog::event(event);
-
-	}
+	friend bool QProgressDialog_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -594,12 +494,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* event) {
-
-		QProgressDialog::mousePressEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_mousePressEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -618,12 +513,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* event) {
-
-		QProgressDialog::mouseReleaseEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -642,12 +532,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QProgressDialog::mouseDoubleClickEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -666,12 +551,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* event) {
-
-		QProgressDialog::mouseMoveEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -690,12 +570,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QProgressDialog::wheelEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -714,12 +589,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QProgressDialog::keyReleaseEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -738,12 +608,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* event) {
-
-		QProgressDialog::focusInEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_focusInEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -762,12 +627,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* event) {
-
-		QProgressDialog::focusOutEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_focusOutEvent(void* self, QFocusEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -786,12 +646,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEvent* event) {
-
-		QProgressDialog::enterEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_enterEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -810,12 +665,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QProgressDialog::leaveEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -834,12 +684,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* event) {
-
-		QProgressDialog::paintEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_paintEvent(void* self, QPaintEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -858,12 +703,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QProgressDialog::moveEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -882,12 +722,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QProgressDialog::tabletEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -906,12 +741,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QProgressDialog::actionEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -930,12 +760,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QProgressDialog::dragEnterEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -954,12 +779,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QProgressDialog::dragMoveEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -978,12 +798,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QProgressDialog::dragLeaveEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -1002,12 +817,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QProgressDialog::dropEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -1026,12 +836,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QProgressDialog::hideEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -1056,13 +861,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, long* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QProgressDialog::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
-
-	}
+	friend bool QProgressDialog_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -1081,12 +880,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QProgressDialog::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QProgressDialog_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -1105,12 +899,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QProgressDialog::initPainter(painter);
-
-	}
+	friend void QProgressDialog_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1128,12 +917,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QProgressDialog::redirected(offset);
-
-	}
+	friend QPaintDevice* QProgressDialog_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1150,12 +934,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QProgressDialog::sharedPainter();
-
-	}
+	friend QPainter* QProgressDialog_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1174,12 +953,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QProgressDialog::inputMethodEvent(param1);
-
-	}
+	friend void QProgressDialog_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1198,12 +972,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QProgressDialog::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QProgressDialog_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -1221,12 +990,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QProgressDialog::focusNextPrevChild(next);
-
-	}
+	friend bool QProgressDialog_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1245,12 +1009,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QProgressDialog::timerEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1269,12 +1028,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QProgressDialog::childEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1293,12 +1047,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QProgressDialog::customEvent(event);
-
-	}
+	friend void QProgressDialog_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1319,12 +1068,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QProgressDialog::connectNotify(*signal);
-
-	}
+	friend void QProgressDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1345,12 +1089,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QProgressDialog::disconnectNotify(*signal);
-
-	}
+	friend void QProgressDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QProgressDialog_protectedbase_forceShow(bool* _dynamic_cast_ok, void* self);
@@ -1596,7 +1335,9 @@ bool QProgressDialog_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QProgressDialog_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQProgressDialog*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::sizeHint());
+
 }
 
 bool QProgressDialog_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1610,7 +1351,9 @@ bool QProgressDialog_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_resizeEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::resizeEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1624,7 +1367,9 @@ bool QProgressDialog_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::closeEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1638,7 +1383,9 @@ bool QProgressDialog_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_changeEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_changeEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::changeEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -1652,7 +1399,9 @@ bool QProgressDialog_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::showEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1666,7 +1415,9 @@ bool QProgressDialog_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::setVisible(visible);
+
 }
 
 bool QProgressDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1680,7 +1431,9 @@ bool QProgressDialog_override_virtual_minimumSizeHint(void* self, intptr_t slot)
 }
 
 QSize* QProgressDialog_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQProgressDialog*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::minimumSizeHint());
+
 }
 
 bool QProgressDialog_override_virtual_open(void* self, intptr_t slot) {
@@ -1694,7 +1447,9 @@ bool QProgressDialog_override_virtual_open(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_open(void* self) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_open();
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::open();
+
 }
 
 bool QProgressDialog_override_virtual_exec(void* self, intptr_t slot) {
@@ -1708,7 +1463,9 @@ bool QProgressDialog_override_virtual_exec(void* self, intptr_t slot) {
 }
 
 int QProgressDialog_virtualbase_exec(void* self) {
-	return ( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_exec();
+
+	return ( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::exec();
+
 }
 
 bool QProgressDialog_override_virtual_done(void* self, intptr_t slot) {
@@ -1722,7 +1479,9 @@ bool QProgressDialog_override_virtual_done(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_done(void* self, int param1) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_done(param1);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::done(static_cast<int>(param1));
+
 }
 
 bool QProgressDialog_override_virtual_accept(void* self, intptr_t slot) {
@@ -1736,7 +1495,9 @@ bool QProgressDialog_override_virtual_accept(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_accept(void* self) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_accept();
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::accept();
+
 }
 
 bool QProgressDialog_override_virtual_reject(void* self, intptr_t slot) {
@@ -1750,7 +1511,9 @@ bool QProgressDialog_override_virtual_reject(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_reject(void* self) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_reject();
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::reject();
+
 }
 
 bool QProgressDialog_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1764,7 +1527,9 @@ bool QProgressDialog_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_keyPressEvent(void* self, QKeyEvent* param1) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_keyPressEvent(param1);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::keyPressEvent(param1);
+
 }
 
 bool QProgressDialog_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1778,7 +1543,9 @@ bool QProgressDialog_override_virtual_contextMenuEvent(void* self, intptr_t slot
 }
 
 void QProgressDialog_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* param1) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_contextMenuEvent(param1);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::contextMenuEvent(param1);
+
 }
 
 bool QProgressDialog_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -1792,7 +1559,9 @@ bool QProgressDialog_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QProgressDialog_virtualbase_eventFilter(void* self, QObject* param1, QEvent* param2) {
-	return ( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_eventFilter(param1, param2);
+
+	return ( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::eventFilter(param1, param2);
+
 }
 
 bool QProgressDialog_override_virtual_devType(void* self, intptr_t slot) {
@@ -1806,7 +1575,9 @@ bool QProgressDialog_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QProgressDialog_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQProgressDialog*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::devType();
+
 }
 
 bool QProgressDialog_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1820,7 +1591,9 @@ bool QProgressDialog_override_virtual_heightForWidth(void* self, intptr_t slot) 
 }
 
 int QProgressDialog_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQProgressDialog*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QProgressDialog_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1834,7 +1607,9 @@ bool QProgressDialog_override_virtual_hasHeightForWidth(void* self, intptr_t slo
 }
 
 bool QProgressDialog_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQProgressDialog*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::hasHeightForWidth();
+
 }
 
 bool QProgressDialog_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1848,7 +1623,9 @@ bool QProgressDialog_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QProgressDialog_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQProgressDialog*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::paintEngine();
+
 }
 
 bool QProgressDialog_override_virtual_event(void* self, intptr_t slot) {
@@ -1862,7 +1639,9 @@ bool QProgressDialog_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QProgressDialog_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::event(event);
+
 }
 
 bool QProgressDialog_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1876,7 +1655,9 @@ bool QProgressDialog_override_virtual_mousePressEvent(void* self, intptr_t slot)
 }
 
 void QProgressDialog_virtualbase_mousePressEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_mousePressEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::mousePressEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1890,7 +1671,9 @@ bool QProgressDialog_override_virtual_mouseReleaseEvent(void* self, intptr_t slo
 }
 
 void QProgressDialog_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_mouseReleaseEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::mouseReleaseEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1904,7 +1687,9 @@ bool QProgressDialog_override_virtual_mouseDoubleClickEvent(void* self, intptr_t
 }
 
 void QProgressDialog_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::mouseDoubleClickEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1918,7 +1703,9 @@ bool QProgressDialog_override_virtual_mouseMoveEvent(void* self, intptr_t slot) 
 }
 
 void QProgressDialog_virtualbase_mouseMoveEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_mouseMoveEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::mouseMoveEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1932,7 +1719,9 @@ bool QProgressDialog_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::wheelEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1946,7 +1735,9 @@ bool QProgressDialog_override_virtual_keyReleaseEvent(void* self, intptr_t slot)
 }
 
 void QProgressDialog_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::keyReleaseEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1960,7 +1751,9 @@ bool QProgressDialog_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_focusInEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_focusInEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::focusInEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1974,7 +1767,9 @@ bool QProgressDialog_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_focusOutEvent(void* self, QFocusEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_focusOutEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::focusOutEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1988,7 +1783,9 @@ bool QProgressDialog_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_enterEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::enterEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -2002,7 +1799,9 @@ bool QProgressDialog_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::leaveEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -2016,7 +1815,9 @@ bool QProgressDialog_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_paintEvent(void* self, QPaintEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_paintEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::paintEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -2030,7 +1831,9 @@ bool QProgressDialog_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::moveEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -2044,7 +1847,9 @@ bool QProgressDialog_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::tabletEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -2058,7 +1863,9 @@ bool QProgressDialog_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::actionEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -2072,7 +1879,9 @@ bool QProgressDialog_override_virtual_dragEnterEvent(void* self, intptr_t slot) 
 }
 
 void QProgressDialog_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::dragEnterEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -2086,7 +1895,9 @@ bool QProgressDialog_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::dragMoveEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -2100,7 +1911,9 @@ bool QProgressDialog_override_virtual_dragLeaveEvent(void* self, intptr_t slot) 
 }
 
 void QProgressDialog_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::dragLeaveEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -2114,7 +1927,9 @@ bool QProgressDialog_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::dropEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -2128,7 +1943,9 @@ bool QProgressDialog_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::hideEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -2142,7 +1959,10 @@ bool QProgressDialog_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QProgressDialog_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
-	return ( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+
 }
 
 bool QProgressDialog_override_virtual_metric(void* self, intptr_t slot) {
@@ -2156,7 +1976,9 @@ bool QProgressDialog_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QProgressDialog_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQProgressDialog*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::metric(static_cast<MiqtVirtualQProgressDialog::PaintDeviceMetric>(param1));
+
 }
 
 bool QProgressDialog_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -2170,7 +1992,9 @@ bool QProgressDialog_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQProgressDialog*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::initPainter(painter);
+
 }
 
 bool QProgressDialog_override_virtual_redirected(void* self, intptr_t slot) {
@@ -2184,7 +2008,9 @@ bool QProgressDialog_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QProgressDialog_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQProgressDialog*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::redirected(offset);
+
 }
 
 bool QProgressDialog_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2198,7 +2024,9 @@ bool QProgressDialog_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QProgressDialog_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQProgressDialog*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::sharedPainter();
+
 }
 
 bool QProgressDialog_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2212,7 +2040,9 @@ bool QProgressDialog_override_virtual_inputMethodEvent(void* self, intptr_t slot
 }
 
 void QProgressDialog_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::inputMethodEvent(param1);
+
 }
 
 bool QProgressDialog_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2226,7 +2056,9 @@ bool QProgressDialog_override_virtual_inputMethodQuery(void* self, intptr_t slot
 }
 
 QVariant* QProgressDialog_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQProgressDialog*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QProgressDialog_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -2240,7 +2072,9 @@ bool QProgressDialog_override_virtual_focusNextPrevChild(void* self, intptr_t sl
 }
 
 bool QProgressDialog_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::focusNextPrevChild(next);
+
 }
 
 bool QProgressDialog_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2254,7 +2088,9 @@ bool QProgressDialog_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::timerEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2268,7 +2104,9 @@ bool QProgressDialog_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::childEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2282,7 +2120,9 @@ bool QProgressDialog_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::customEvent(event);
+
 }
 
 bool QProgressDialog_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2296,7 +2136,9 @@ bool QProgressDialog_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QProgressDialog_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::connectNotify(*signal);
+
 }
 
 bool QProgressDialog_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2310,7 +2152,9 @@ bool QProgressDialog_override_virtual_disconnectNotify(void* self, intptr_t slot
 }
 
 void QProgressDialog_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQProgressDialog*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQProgressDialog*)(self) )->MiqtVirtualQProgressDialog::disconnectNotify(*signal);
+
 }
 
 void QProgressDialog_protectedbase_forceShow(bool* _dynamic_cast_ok, void* self) {

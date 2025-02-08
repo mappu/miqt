@@ -57,12 +57,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* event) {
-
-		return QNetworkConfigurationManager::event(event);
-
-	}
+	friend bool QNetworkConfigurationManager_virtualbase_event(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -81,12 +76,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QNetworkConfigurationManager::eventFilter(watched, event);
-
-	}
+	friend bool QNetworkConfigurationManager_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -105,12 +95,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QNetworkConfigurationManager::timerEvent(event);
-
-	}
+	friend void QNetworkConfigurationManager_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -129,12 +114,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QNetworkConfigurationManager::childEvent(event);
-
-	}
+	friend void QNetworkConfigurationManager_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -153,12 +133,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QNetworkConfigurationManager::customEvent(event);
-
-	}
+	friend void QNetworkConfigurationManager_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -179,12 +154,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QNetworkConfigurationManager::connectNotify(*signal);
-
-	}
+	friend void QNetworkConfigurationManager_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -205,12 +175,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QNetworkConfigurationManager::disconnectNotify(*signal);
-
-	}
+	friend void QNetworkConfigurationManager_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend QObject* QNetworkConfigurationManager_protectedbase_sender(bool* _dynamic_cast_ok, const void* self);
@@ -424,7 +389,9 @@ bool QNetworkConfigurationManager_override_virtual_event(void* self, intptr_t sl
 }
 
 bool QNetworkConfigurationManager_virtualbase_event(void* self, QEvent* event) {
-	return ( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_event(event);
+
+	return ( (MiqtVirtualQNetworkConfigurationManager*)(self) )->MiqtVirtualQNetworkConfigurationManager::event(event);
+
 }
 
 bool QNetworkConfigurationManager_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -438,7 +405,9 @@ bool QNetworkConfigurationManager_override_virtual_eventFilter(void* self, intpt
 }
 
 bool QNetworkConfigurationManager_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQNetworkConfigurationManager*)(self) )->MiqtVirtualQNetworkConfigurationManager::eventFilter(watched, event);
+
 }
 
 bool QNetworkConfigurationManager_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -452,7 +421,9 @@ bool QNetworkConfigurationManager_override_virtual_timerEvent(void* self, intptr
 }
 
 void QNetworkConfigurationManager_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->MiqtVirtualQNetworkConfigurationManager::timerEvent(event);
+
 }
 
 bool QNetworkConfigurationManager_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -466,7 +437,9 @@ bool QNetworkConfigurationManager_override_virtual_childEvent(void* self, intptr
 }
 
 void QNetworkConfigurationManager_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->MiqtVirtualQNetworkConfigurationManager::childEvent(event);
+
 }
 
 bool QNetworkConfigurationManager_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -480,7 +453,9 @@ bool QNetworkConfigurationManager_override_virtual_customEvent(void* self, intpt
 }
 
 void QNetworkConfigurationManager_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->MiqtVirtualQNetworkConfigurationManager::customEvent(event);
+
 }
 
 bool QNetworkConfigurationManager_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -494,7 +469,9 @@ bool QNetworkConfigurationManager_override_virtual_connectNotify(void* self, int
 }
 
 void QNetworkConfigurationManager_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->MiqtVirtualQNetworkConfigurationManager::connectNotify(*signal);
+
 }
 
 bool QNetworkConfigurationManager_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -508,7 +485,9 @@ bool QNetworkConfigurationManager_override_virtual_disconnectNotify(void* self, 
 }
 
 void QNetworkConfigurationManager_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQNetworkConfigurationManager*)(self) )->MiqtVirtualQNetworkConfigurationManager::disconnectNotify(*signal);
+
 }
 
 QObject* QNetworkConfigurationManager_protectedbase_sender(bool* _dynamic_cast_ok, const void* self) {

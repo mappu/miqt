@@ -49,12 +49,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QSvgGenerator::paintEngine();
-
-	}
+	friend QPaintEngine* QSvgGenerator_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -73,12 +68,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int metric) const {
-
-		return QSvgGenerator::metric(static_cast<QPaintDevice::PaintDeviceMetric>(metric));
-
-	}
+	friend int QSvgGenerator_virtualbase_metric(const void* self, int metric);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -95,12 +85,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QSvgGenerator::devType();
-
-	}
+	friend int QSvgGenerator_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -119,12 +104,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QSvgGenerator::initPainter(painter);
-
-	}
+	friend void QSvgGenerator_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -142,12 +122,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QSvgGenerator::redirected(offset);
-
-	}
+	friend QPaintDevice* QSvgGenerator_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -164,12 +139,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QSvgGenerator::sharedPainter();
-
-	}
+	friend QPainter* QSvgGenerator_virtualbase_sharedPainter(const void* self);
 
 };
 
@@ -280,7 +250,9 @@ bool QSvgGenerator_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QSvgGenerator_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQSvgGenerator*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQSvgGenerator*)(self) )->MiqtVirtualQSvgGenerator::paintEngine();
+
 }
 
 bool QSvgGenerator_override_virtual_metric(void* self, intptr_t slot) {
@@ -294,7 +266,9 @@ bool QSvgGenerator_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QSvgGenerator_virtualbase_metric(const void* self, int metric) {
-	return ( (const MiqtVirtualQSvgGenerator*)(self) )->virtualbase_metric(metric);
+
+	return ( (const MiqtVirtualQSvgGenerator*)(self) )->MiqtVirtualQSvgGenerator::metric(static_cast<MiqtVirtualQSvgGenerator::PaintDeviceMetric>(metric));
+
 }
 
 bool QSvgGenerator_override_virtual_devType(void* self, intptr_t slot) {
@@ -308,7 +282,9 @@ bool QSvgGenerator_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QSvgGenerator_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQSvgGenerator*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQSvgGenerator*)(self) )->MiqtVirtualQSvgGenerator::devType();
+
 }
 
 bool QSvgGenerator_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -322,7 +298,9 @@ bool QSvgGenerator_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QSvgGenerator_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQSvgGenerator*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQSvgGenerator*)(self) )->MiqtVirtualQSvgGenerator::initPainter(painter);
+
 }
 
 bool QSvgGenerator_override_virtual_redirected(void* self, intptr_t slot) {
@@ -336,7 +314,9 @@ bool QSvgGenerator_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QSvgGenerator_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQSvgGenerator*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQSvgGenerator*)(self) )->MiqtVirtualQSvgGenerator::redirected(offset);
+
 }
 
 bool QSvgGenerator_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -350,7 +330,9 @@ bool QSvgGenerator_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QSvgGenerator_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQSvgGenerator*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQSvgGenerator*)(self) )->MiqtVirtualQSvgGenerator::sharedPainter();
+
 }
 
 void QSvgGenerator_delete(QSvgGenerator* self) {

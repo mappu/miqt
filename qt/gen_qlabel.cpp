@@ -126,12 +126,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_sizeHint() const {
-
-		return new QSize(QLabel::sizeHint());
-
-	}
+	friend QSize* QLabel_virtualbase_sizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__minimumSizeHint = 0;
@@ -148,12 +143,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QSize* virtualbase_minimumSizeHint() const {
-
-		return new QSize(QLabel::minimumSizeHint());
-
-	}
+	friend QSize* QLabel_virtualbase_minimumSizeHint(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__heightForWidth = 0;
@@ -171,12 +161,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_heightForWidth(int param1) const {
-
-		return QLabel::heightForWidth(static_cast<int>(param1));
-
-	}
+	friend int QLabel_virtualbase_heightForWidth(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__event = 0;
@@ -194,12 +179,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_event(QEvent* e) {
-
-		return QLabel::event(e);
-
-	}
+	friend bool QLabel_virtualbase_event(void* self, QEvent* e);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyPressEvent = 0;
@@ -218,12 +198,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyPressEvent(QKeyEvent* ev) {
-
-		QLabel::keyPressEvent(ev);
-
-	}
+	friend void QLabel_virtualbase_keyPressEvent(void* self, QKeyEvent* ev);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEvent = 0;
@@ -242,12 +217,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_paintEvent(QPaintEvent* param1) {
-
-		QLabel::paintEvent(param1);
-
-	}
+	friend void QLabel_virtualbase_paintEvent(void* self, QPaintEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__changeEvent = 0;
@@ -266,12 +236,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_changeEvent(QEvent* param1) {
-
-		QLabel::changeEvent(param1);
-
-	}
+	friend void QLabel_virtualbase_changeEvent(void* self, QEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mousePressEvent = 0;
@@ -290,12 +255,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mousePressEvent(QMouseEvent* ev) {
-
-		QLabel::mousePressEvent(ev);
-
-	}
+	friend void QLabel_virtualbase_mousePressEvent(void* self, QMouseEvent* ev);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseMoveEvent = 0;
@@ -314,12 +274,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseMoveEvent(QMouseEvent* ev) {
-
-		QLabel::mouseMoveEvent(ev);
-
-	}
+	friend void QLabel_virtualbase_mouseMoveEvent(void* self, QMouseEvent* ev);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseReleaseEvent = 0;
@@ -338,12 +293,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseReleaseEvent(QMouseEvent* ev) {
-
-		QLabel::mouseReleaseEvent(ev);
-
-	}
+	friend void QLabel_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* ev);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__contextMenuEvent = 0;
@@ -362,12 +312,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_contextMenuEvent(QContextMenuEvent* ev) {
-
-		QLabel::contextMenuEvent(ev);
-
-	}
+	friend void QLabel_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* ev);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusInEvent = 0;
@@ -386,12 +331,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusInEvent(QFocusEvent* ev) {
-
-		QLabel::focusInEvent(ev);
-
-	}
+	friend void QLabel_virtualbase_focusInEvent(void* self, QFocusEvent* ev);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusOutEvent = 0;
@@ -410,12 +350,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_focusOutEvent(QFocusEvent* ev) {
-
-		QLabel::focusOutEvent(ev);
-
-	}
+	friend void QLabel_virtualbase_focusOutEvent(void* self, QFocusEvent* ev);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__focusNextPrevChild = 0;
@@ -433,12 +368,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_focusNextPrevChild(bool next) {
-
-		return QLabel::focusNextPrevChild(next);
-
-	}
+	friend bool QLabel_virtualbase_focusNextPrevChild(void* self, bool next);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__devType = 0;
@@ -455,12 +385,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_devType() const {
-
-		return QLabel::devType();
-
-	}
+	friend int QLabel_virtualbase_devType(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__setVisible = 0;
@@ -479,12 +404,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_setVisible(bool visible) {
-
-		QLabel::setVisible(visible);
-
-	}
+	friend void QLabel_virtualbase_setVisible(void* self, bool visible);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hasHeightForWidth = 0;
@@ -501,12 +421,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_hasHeightForWidth() const {
-
-		return QLabel::hasHeightForWidth();
-
-	}
+	friend bool QLabel_virtualbase_hasHeightForWidth(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__paintEngine = 0;
@@ -523,12 +438,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintEngine* virtualbase_paintEngine() const {
-
-		return QLabel::paintEngine();
-
-	}
+	friend QPaintEngine* QLabel_virtualbase_paintEngine(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__mouseDoubleClickEvent = 0;
@@ -547,12 +457,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_mouseDoubleClickEvent(QMouseEvent* event) {
-
-		QLabel::mouseDoubleClickEvent(event);
-
-	}
+	friend void QLabel_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__wheelEvent = 0;
@@ -571,12 +476,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_wheelEvent(QWheelEvent* event) {
-
-		QLabel::wheelEvent(event);
-
-	}
+	friend void QLabel_virtualbase_wheelEvent(void* self, QWheelEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__keyReleaseEvent = 0;
@@ -595,12 +495,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_keyReleaseEvent(QKeyEvent* event) {
-
-		QLabel::keyReleaseEvent(event);
-
-	}
+	friend void QLabel_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__enterEvent = 0;
@@ -619,12 +514,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_enterEvent(QEvent* event) {
-
-		QLabel::enterEvent(event);
-
-	}
+	friend void QLabel_virtualbase_enterEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__leaveEvent = 0;
@@ -643,12 +533,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_leaveEvent(QEvent* event) {
-
-		QLabel::leaveEvent(event);
-
-	}
+	friend void QLabel_virtualbase_leaveEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__moveEvent = 0;
@@ -667,12 +552,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_moveEvent(QMoveEvent* event) {
-
-		QLabel::moveEvent(event);
-
-	}
+	friend void QLabel_virtualbase_moveEvent(void* self, QMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__resizeEvent = 0;
@@ -691,12 +571,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_resizeEvent(QResizeEvent* event) {
-
-		QLabel::resizeEvent(event);
-
-	}
+	friend void QLabel_virtualbase_resizeEvent(void* self, QResizeEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__closeEvent = 0;
@@ -715,12 +590,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_closeEvent(QCloseEvent* event) {
-
-		QLabel::closeEvent(event);
-
-	}
+	friend void QLabel_virtualbase_closeEvent(void* self, QCloseEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__tabletEvent = 0;
@@ -739,12 +609,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_tabletEvent(QTabletEvent* event) {
-
-		QLabel::tabletEvent(event);
-
-	}
+	friend void QLabel_virtualbase_tabletEvent(void* self, QTabletEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__actionEvent = 0;
@@ -763,12 +628,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_actionEvent(QActionEvent* event) {
-
-		QLabel::actionEvent(event);
-
-	}
+	friend void QLabel_virtualbase_actionEvent(void* self, QActionEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragEnterEvent = 0;
@@ -787,12 +647,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragEnterEvent(QDragEnterEvent* event) {
-
-		QLabel::dragEnterEvent(event);
-
-	}
+	friend void QLabel_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragMoveEvent = 0;
@@ -811,12 +666,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragMoveEvent(QDragMoveEvent* event) {
-
-		QLabel::dragMoveEvent(event);
-
-	}
+	friend void QLabel_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dragLeaveEvent = 0;
@@ -835,12 +685,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dragLeaveEvent(QDragLeaveEvent* event) {
-
-		QLabel::dragLeaveEvent(event);
-
-	}
+	friend void QLabel_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__dropEvent = 0;
@@ -859,12 +704,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_dropEvent(QDropEvent* event) {
-
-		QLabel::dropEvent(event);
-
-	}
+	friend void QLabel_virtualbase_dropEvent(void* self, QDropEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__showEvent = 0;
@@ -883,12 +723,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_showEvent(QShowEvent* event) {
-
-		QLabel::showEvent(event);
-
-	}
+	friend void QLabel_virtualbase_showEvent(void* self, QShowEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__hideEvent = 0;
@@ -907,12 +742,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_hideEvent(QHideEvent* event) {
-
-		QLabel::hideEvent(event);
-
-	}
+	friend void QLabel_virtualbase_hideEvent(void* self, QHideEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__nativeEvent = 0;
@@ -937,13 +767,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_nativeEvent(struct miqt_string eventType, void* message, long* result) {
-		QByteArray eventType_QByteArray(eventType.data, eventType.len);
-
-		return QLabel::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
-
-	}
+	friend bool QLabel_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__metric = 0;
@@ -962,12 +786,7 @@ public:
 		return static_cast<int>(callback_return_value);
 	}
 
-	// Wrapper to allow calling protected method
-	int virtualbase_metric(int param1) const {
-
-		return QLabel::metric(static_cast<QPaintDevice::PaintDeviceMetric>(param1));
-
-	}
+	friend int QLabel_virtualbase_metric(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__initPainter = 0;
@@ -986,12 +805,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_initPainter(QPainter* painter) const {
-
-		QLabel::initPainter(painter);
-
-	}
+	friend void QLabel_virtualbase_initPainter(const void* self, QPainter* painter);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__redirected = 0;
@@ -1009,12 +823,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPaintDevice* virtualbase_redirected(QPoint* offset) const {
-
-		return QLabel::redirected(offset);
-
-	}
+	friend QPaintDevice* QLabel_virtualbase_redirected(const void* self, QPoint* offset);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__sharedPainter = 0;
@@ -1031,12 +840,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QPainter* virtualbase_sharedPainter() const {
-
-		return QLabel::sharedPainter();
-
-	}
+	friend QPainter* QLabel_virtualbase_sharedPainter(const void* self);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodEvent = 0;
@@ -1055,12 +859,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_inputMethodEvent(QInputMethodEvent* param1) {
-
-		QLabel::inputMethodEvent(param1);
-
-	}
+	friend void QLabel_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__inputMethodQuery = 0;
@@ -1079,12 +878,7 @@ public:
 		return *callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	QVariant* virtualbase_inputMethodQuery(int param1) const {
-
-		return new QVariant(QLabel::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
-
-	}
+	friend QVariant* QLabel_virtualbase_inputMethodQuery(const void* self, int param1);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__eventFilter = 0;
@@ -1103,12 +897,7 @@ public:
 		return callback_return_value;
 	}
 
-	// Wrapper to allow calling protected method
-	bool virtualbase_eventFilter(QObject* watched, QEvent* event) {
-
-		return QLabel::eventFilter(watched, event);
-
-	}
+	friend bool QLabel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__timerEvent = 0;
@@ -1127,12 +916,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_timerEvent(QTimerEvent* event) {
-
-		QLabel::timerEvent(event);
-
-	}
+	friend void QLabel_virtualbase_timerEvent(void* self, QTimerEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__childEvent = 0;
@@ -1151,12 +935,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_childEvent(QChildEvent* event) {
-
-		QLabel::childEvent(event);
-
-	}
+	friend void QLabel_virtualbase_childEvent(void* self, QChildEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__customEvent = 0;
@@ -1175,12 +954,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_customEvent(QEvent* event) {
-
-		QLabel::customEvent(event);
-
-	}
+	friend void QLabel_virtualbase_customEvent(void* self, QEvent* event);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__connectNotify = 0;
@@ -1201,12 +975,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_connectNotify(QMetaMethod* signal) {
-
-		QLabel::connectNotify(*signal);
-
-	}
+	friend void QLabel_virtualbase_connectNotify(void* self, QMetaMethod* signal);
 
 	// cgo.Handle value for overwritten implementation
 	intptr_t handle__disconnectNotify = 0;
@@ -1227,12 +996,7 @@ public:
 		
 	}
 
-	// Wrapper to allow calling protected method
-	void virtualbase_disconnectNotify(QMetaMethod* signal) {
-
-		QLabel::disconnectNotify(*signal);
-
-	}
+	friend void QLabel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal);
 
 	// Wrappers to allow calling protected methods:
 	friend void QLabel_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1);
@@ -1572,7 +1336,9 @@ bool QLabel_override_virtual_sizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QLabel_virtualbase_sizeHint(const void* self) {
-	return ( (const MiqtVirtualQLabel*)(self) )->virtualbase_sizeHint();
+
+	return new QSize(( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::sizeHint());
+
 }
 
 bool QLabel_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
@@ -1586,7 +1352,9 @@ bool QLabel_override_virtual_minimumSizeHint(void* self, intptr_t slot) {
 }
 
 QSize* QLabel_virtualbase_minimumSizeHint(const void* self) {
-	return ( (const MiqtVirtualQLabel*)(self) )->virtualbase_minimumSizeHint();
+
+	return new QSize(( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::minimumSizeHint());
+
 }
 
 bool QLabel_override_virtual_heightForWidth(void* self, intptr_t slot) {
@@ -1600,7 +1368,9 @@ bool QLabel_override_virtual_heightForWidth(void* self, intptr_t slot) {
 }
 
 int QLabel_virtualbase_heightForWidth(const void* self, int param1) {
-	return ( (const MiqtVirtualQLabel*)(self) )->virtualbase_heightForWidth(param1);
+
+	return ( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::heightForWidth(static_cast<int>(param1));
+
 }
 
 bool QLabel_override_virtual_event(void* self, intptr_t slot) {
@@ -1614,7 +1384,9 @@ bool QLabel_override_virtual_event(void* self, intptr_t slot) {
 }
 
 bool QLabel_virtualbase_event(void* self, QEvent* e) {
-	return ( (MiqtVirtualQLabel*)(self) )->virtualbase_event(e);
+
+	return ( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::event(e);
+
 }
 
 bool QLabel_override_virtual_keyPressEvent(void* self, intptr_t slot) {
@@ -1628,7 +1400,9 @@ bool QLabel_override_virtual_keyPressEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_keyPressEvent(void* self, QKeyEvent* ev) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_keyPressEvent(ev);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::keyPressEvent(ev);
+
 }
 
 bool QLabel_override_virtual_paintEvent(void* self, intptr_t slot) {
@@ -1642,7 +1416,9 @@ bool QLabel_override_virtual_paintEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_paintEvent(void* self, QPaintEvent* param1) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_paintEvent(param1);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::paintEvent(param1);
+
 }
 
 bool QLabel_override_virtual_changeEvent(void* self, intptr_t slot) {
@@ -1656,7 +1432,9 @@ bool QLabel_override_virtual_changeEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_changeEvent(void* self, QEvent* param1) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_changeEvent(param1);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::changeEvent(param1);
+
 }
 
 bool QLabel_override_virtual_mousePressEvent(void* self, intptr_t slot) {
@@ -1670,7 +1448,9 @@ bool QLabel_override_virtual_mousePressEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_mousePressEvent(void* self, QMouseEvent* ev) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_mousePressEvent(ev);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::mousePressEvent(ev);
+
 }
 
 bool QLabel_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
@@ -1684,7 +1464,9 @@ bool QLabel_override_virtual_mouseMoveEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_mouseMoveEvent(void* self, QMouseEvent* ev) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_mouseMoveEvent(ev);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::mouseMoveEvent(ev);
+
 }
 
 bool QLabel_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
@@ -1698,7 +1480,9 @@ bool QLabel_override_virtual_mouseReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_mouseReleaseEvent(void* self, QMouseEvent* ev) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_mouseReleaseEvent(ev);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::mouseReleaseEvent(ev);
+
 }
 
 bool QLabel_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
@@ -1712,7 +1496,9 @@ bool QLabel_override_virtual_contextMenuEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_contextMenuEvent(void* self, QContextMenuEvent* ev) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_contextMenuEvent(ev);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::contextMenuEvent(ev);
+
 }
 
 bool QLabel_override_virtual_focusInEvent(void* self, intptr_t slot) {
@@ -1726,7 +1512,9 @@ bool QLabel_override_virtual_focusInEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_focusInEvent(void* self, QFocusEvent* ev) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_focusInEvent(ev);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::focusInEvent(ev);
+
 }
 
 bool QLabel_override_virtual_focusOutEvent(void* self, intptr_t slot) {
@@ -1740,7 +1528,9 @@ bool QLabel_override_virtual_focusOutEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_focusOutEvent(void* self, QFocusEvent* ev) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_focusOutEvent(ev);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::focusOutEvent(ev);
+
 }
 
 bool QLabel_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
@@ -1754,7 +1544,9 @@ bool QLabel_override_virtual_focusNextPrevChild(void* self, intptr_t slot) {
 }
 
 bool QLabel_virtualbase_focusNextPrevChild(void* self, bool next) {
-	return ( (MiqtVirtualQLabel*)(self) )->virtualbase_focusNextPrevChild(next);
+
+	return ( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::focusNextPrevChild(next);
+
 }
 
 bool QLabel_override_virtual_devType(void* self, intptr_t slot) {
@@ -1768,7 +1560,9 @@ bool QLabel_override_virtual_devType(void* self, intptr_t slot) {
 }
 
 int QLabel_virtualbase_devType(const void* self) {
-	return ( (const MiqtVirtualQLabel*)(self) )->virtualbase_devType();
+
+	return ( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::devType();
+
 }
 
 bool QLabel_override_virtual_setVisible(void* self, intptr_t slot) {
@@ -1782,7 +1576,9 @@ bool QLabel_override_virtual_setVisible(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_setVisible(void* self, bool visible) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_setVisible(visible);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::setVisible(visible);
+
 }
 
 bool QLabel_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
@@ -1796,7 +1592,9 @@ bool QLabel_override_virtual_hasHeightForWidth(void* self, intptr_t slot) {
 }
 
 bool QLabel_virtualbase_hasHeightForWidth(const void* self) {
-	return ( (const MiqtVirtualQLabel*)(self) )->virtualbase_hasHeightForWidth();
+
+	return ( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::hasHeightForWidth();
+
 }
 
 bool QLabel_override_virtual_paintEngine(void* self, intptr_t slot) {
@@ -1810,7 +1608,9 @@ bool QLabel_override_virtual_paintEngine(void* self, intptr_t slot) {
 }
 
 QPaintEngine* QLabel_virtualbase_paintEngine(const void* self) {
-	return ( (const MiqtVirtualQLabel*)(self) )->virtualbase_paintEngine();
+
+	return ( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::paintEngine();
+
 }
 
 bool QLabel_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
@@ -1824,7 +1624,9 @@ bool QLabel_override_virtual_mouseDoubleClickEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_mouseDoubleClickEvent(void* self, QMouseEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_mouseDoubleClickEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::mouseDoubleClickEvent(event);
+
 }
 
 bool QLabel_override_virtual_wheelEvent(void* self, intptr_t slot) {
@@ -1838,7 +1640,9 @@ bool QLabel_override_virtual_wheelEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_wheelEvent(void* self, QWheelEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_wheelEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::wheelEvent(event);
+
 }
 
 bool QLabel_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
@@ -1852,7 +1656,9 @@ bool QLabel_override_virtual_keyReleaseEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_keyReleaseEvent(void* self, QKeyEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_keyReleaseEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::keyReleaseEvent(event);
+
 }
 
 bool QLabel_override_virtual_enterEvent(void* self, intptr_t slot) {
@@ -1866,7 +1672,9 @@ bool QLabel_override_virtual_enterEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_enterEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_enterEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::enterEvent(event);
+
 }
 
 bool QLabel_override_virtual_leaveEvent(void* self, intptr_t slot) {
@@ -1880,7 +1688,9 @@ bool QLabel_override_virtual_leaveEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_leaveEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_leaveEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::leaveEvent(event);
+
 }
 
 bool QLabel_override_virtual_moveEvent(void* self, intptr_t slot) {
@@ -1894,7 +1704,9 @@ bool QLabel_override_virtual_moveEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_moveEvent(void* self, QMoveEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_moveEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::moveEvent(event);
+
 }
 
 bool QLabel_override_virtual_resizeEvent(void* self, intptr_t slot) {
@@ -1908,7 +1720,9 @@ bool QLabel_override_virtual_resizeEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_resizeEvent(void* self, QResizeEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_resizeEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::resizeEvent(event);
+
 }
 
 bool QLabel_override_virtual_closeEvent(void* self, intptr_t slot) {
@@ -1922,7 +1736,9 @@ bool QLabel_override_virtual_closeEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_closeEvent(void* self, QCloseEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_closeEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::closeEvent(event);
+
 }
 
 bool QLabel_override_virtual_tabletEvent(void* self, intptr_t slot) {
@@ -1936,7 +1752,9 @@ bool QLabel_override_virtual_tabletEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_tabletEvent(void* self, QTabletEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_tabletEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::tabletEvent(event);
+
 }
 
 bool QLabel_override_virtual_actionEvent(void* self, intptr_t slot) {
@@ -1950,7 +1768,9 @@ bool QLabel_override_virtual_actionEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_actionEvent(void* self, QActionEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_actionEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::actionEvent(event);
+
 }
 
 bool QLabel_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
@@ -1964,7 +1784,9 @@ bool QLabel_override_virtual_dragEnterEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_dragEnterEvent(void* self, QDragEnterEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_dragEnterEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::dragEnterEvent(event);
+
 }
 
 bool QLabel_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
@@ -1978,7 +1800,9 @@ bool QLabel_override_virtual_dragMoveEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_dragMoveEvent(void* self, QDragMoveEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_dragMoveEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::dragMoveEvent(event);
+
 }
 
 bool QLabel_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
@@ -1992,7 +1816,9 @@ bool QLabel_override_virtual_dragLeaveEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_dragLeaveEvent(void* self, QDragLeaveEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_dragLeaveEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::dragLeaveEvent(event);
+
 }
 
 bool QLabel_override_virtual_dropEvent(void* self, intptr_t slot) {
@@ -2006,7 +1832,9 @@ bool QLabel_override_virtual_dropEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_dropEvent(void* self, QDropEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_dropEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::dropEvent(event);
+
 }
 
 bool QLabel_override_virtual_showEvent(void* self, intptr_t slot) {
@@ -2020,7 +1848,9 @@ bool QLabel_override_virtual_showEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_showEvent(void* self, QShowEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_showEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::showEvent(event);
+
 }
 
 bool QLabel_override_virtual_hideEvent(void* self, intptr_t slot) {
@@ -2034,7 +1864,9 @@ bool QLabel_override_virtual_hideEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_hideEvent(void* self, QHideEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_hideEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::hideEvent(event);
+
 }
 
 bool QLabel_override_virtual_nativeEvent(void* self, intptr_t slot) {
@@ -2048,7 +1880,10 @@ bool QLabel_override_virtual_nativeEvent(void* self, intptr_t slot) {
 }
 
 bool QLabel_virtualbase_nativeEvent(void* self, struct miqt_string eventType, void* message, long* result) {
-	return ( (MiqtVirtualQLabel*)(self) )->virtualbase_nativeEvent(eventType, message, result);
+	QByteArray eventType_QByteArray(eventType.data, eventType.len);
+
+	return ( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::nativeEvent(eventType_QByteArray, message, static_cast<long*>(result));
+
 }
 
 bool QLabel_override_virtual_metric(void* self, intptr_t slot) {
@@ -2062,7 +1897,9 @@ bool QLabel_override_virtual_metric(void* self, intptr_t slot) {
 }
 
 int QLabel_virtualbase_metric(const void* self, int param1) {
-	return ( (const MiqtVirtualQLabel*)(self) )->virtualbase_metric(param1);
+
+	return ( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::metric(static_cast<MiqtVirtualQLabel::PaintDeviceMetric>(param1));
+
 }
 
 bool QLabel_override_virtual_initPainter(void* self, intptr_t slot) {
@@ -2076,7 +1913,9 @@ bool QLabel_override_virtual_initPainter(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_initPainter(const void* self, QPainter* painter) {
-	( (const MiqtVirtualQLabel*)(self) )->virtualbase_initPainter(painter);
+
+	( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::initPainter(painter);
+
 }
 
 bool QLabel_override_virtual_redirected(void* self, intptr_t slot) {
@@ -2090,7 +1929,9 @@ bool QLabel_override_virtual_redirected(void* self, intptr_t slot) {
 }
 
 QPaintDevice* QLabel_virtualbase_redirected(const void* self, QPoint* offset) {
-	return ( (const MiqtVirtualQLabel*)(self) )->virtualbase_redirected(offset);
+
+	return ( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::redirected(offset);
+
 }
 
 bool QLabel_override_virtual_sharedPainter(void* self, intptr_t slot) {
@@ -2104,7 +1945,9 @@ bool QLabel_override_virtual_sharedPainter(void* self, intptr_t slot) {
 }
 
 QPainter* QLabel_virtualbase_sharedPainter(const void* self) {
-	return ( (const MiqtVirtualQLabel*)(self) )->virtualbase_sharedPainter();
+
+	return ( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::sharedPainter();
+
 }
 
 bool QLabel_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
@@ -2118,7 +1961,9 @@ bool QLabel_override_virtual_inputMethodEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_inputMethodEvent(void* self, QInputMethodEvent* param1) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_inputMethodEvent(param1);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::inputMethodEvent(param1);
+
 }
 
 bool QLabel_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
@@ -2132,7 +1977,9 @@ bool QLabel_override_virtual_inputMethodQuery(void* self, intptr_t slot) {
 }
 
 QVariant* QLabel_virtualbase_inputMethodQuery(const void* self, int param1) {
-	return ( (const MiqtVirtualQLabel*)(self) )->virtualbase_inputMethodQuery(param1);
+
+	return new QVariant(( (const MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::inputMethodQuery(static_cast<Qt::InputMethodQuery>(param1)));
+
 }
 
 bool QLabel_override_virtual_eventFilter(void* self, intptr_t slot) {
@@ -2146,7 +1993,9 @@ bool QLabel_override_virtual_eventFilter(void* self, intptr_t slot) {
 }
 
 bool QLabel_virtualbase_eventFilter(void* self, QObject* watched, QEvent* event) {
-	return ( (MiqtVirtualQLabel*)(self) )->virtualbase_eventFilter(watched, event);
+
+	return ( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::eventFilter(watched, event);
+
 }
 
 bool QLabel_override_virtual_timerEvent(void* self, intptr_t slot) {
@@ -2160,7 +2009,9 @@ bool QLabel_override_virtual_timerEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_timerEvent(void* self, QTimerEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_timerEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::timerEvent(event);
+
 }
 
 bool QLabel_override_virtual_childEvent(void* self, intptr_t slot) {
@@ -2174,7 +2025,9 @@ bool QLabel_override_virtual_childEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_childEvent(void* self, QChildEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_childEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::childEvent(event);
+
 }
 
 bool QLabel_override_virtual_customEvent(void* self, intptr_t slot) {
@@ -2188,7 +2041,9 @@ bool QLabel_override_virtual_customEvent(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_customEvent(void* self, QEvent* event) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_customEvent(event);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::customEvent(event);
+
 }
 
 bool QLabel_override_virtual_connectNotify(void* self, intptr_t slot) {
@@ -2202,7 +2057,9 @@ bool QLabel_override_virtual_connectNotify(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_connectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_connectNotify(signal);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::connectNotify(*signal);
+
 }
 
 bool QLabel_override_virtual_disconnectNotify(void* self, intptr_t slot) {
@@ -2216,7 +2073,9 @@ bool QLabel_override_virtual_disconnectNotify(void* self, intptr_t slot) {
 }
 
 void QLabel_virtualbase_disconnectNotify(void* self, QMetaMethod* signal) {
-	( (MiqtVirtualQLabel*)(self) )->virtualbase_disconnectNotify(signal);
+
+	( (MiqtVirtualQLabel*)(self) )->MiqtVirtualQLabel::disconnectNotify(*signal);
+
 }
 
 void QLabel_protectedbase_drawFrame(bool* _dynamic_cast_ok, void* self, QPainter* param1) {
